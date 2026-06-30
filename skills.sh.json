@@ -20,7 +20,10 @@
         "risk-register-governance-review",
         "customer-advisory-board-review",
         "revenue-forecast-capacity-review",
-        "experimentation-platform-governance-review"
+        "experimentation-platform-governance-review",
+        "enterprise-onboarding-implementation-review",
+        "model-router-cost-quality-review",
+        "user-research-repository-review"
       ]
     },
     {
@@ -57,7 +60,8 @@
         "launch-narrative-review",
         "brand-trust-review",
         "partner-co-marketing-launch-review",
-        "lifecycle-email-system-review"
+        "lifecycle-email-system-review",
+        "localization-quality-program-review"
       ]
     },
     {
@@ -74,7 +78,8 @@
         "tax-invoicing-compliance-review",
         "checkout-conversion-review",
         "cost-margin-unit-economics-review",
-        "observability-cost-governance-review"
+        "observability-cost-governance-review",
+        "contract-lifecycle-renewal-review"
       ]
     },
     {
@@ -140,7 +145,10 @@
         "trust-center-readiness-review",
         "procurement-security-review",
         "compliance-evidence-room-review",
-        "data-governance-access-review"
+        "data-governance-access-review",
+        "support-workforce-planning-review",
+        "data-warehouse-metrics-layer-review",
+        "compliance-audit-readiness-review"
       ]
     },
     {

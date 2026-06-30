@@ -1,0 +1,10 @@
+skill: model-router-cost-quality-review
+positive_prompts:
+  - "Design a model router for an AI SaaS product that must balance support-chat quality, coding-agent reasoning, summarization cost, provider outages, privacy constraints, and premium-tier promises."
+  - "Audit a model routing setup where every request uses the strongest model, costs are rising, fallback is untested, and no eval proves cheaper routes are safe."
+negative_prompts:
+  - "Plan enterprise customer kickoff and data migration."
+expected_behavior:
+  - "Defines task taxonomy, quality bar, latency SLO, privacy tier, user tier, cost ceiling, eval matrix, and rollback gates."
+  - "Separates cheap default, premium, specialist, cascade, fallback, cache, budget throttle, and human-review paths."
+  - "Flags cost-only routing, unsafe fallback, missing evals, opaque route decisions, and provider/privacy contract gaps."

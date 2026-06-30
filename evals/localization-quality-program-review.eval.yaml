@@ -1,0 +1,10 @@
+skill: localization-quality-program-review
+positive_prompts:
+  - "Plan localization QA for a subscription mobile app launching Japanese, Korean, German, and Arabic across onboarding, checkout, cancellation, push notifications, help center, store listings, and support macros."
+  - "Audit why localized releases ship with truncated buttons, untranslated billing emails, broken RTL layouts, inconsistent terminology, and market-specific support complaints."
+negative_prompts:
+  - "Audit a data warehouse metrics layer for ARR and churn definitions."
+expected_behavior:
+  - "Scopes product UI, billing, cancellation, notifications, emails, help center, support macros, store listings, legal/privacy, marketing, and platform surfaces."
+  - "Includes source readiness, pseudo-localization, glossary/style guide, translation memory, in-context review, functional LQA, RTL/accessibility, defect severity, and release gates."
+  - "Flags translation-only launches, unsupported critical flows, placeholder/plural/truncation bugs, vendor-only review, and missing market feedback loops."

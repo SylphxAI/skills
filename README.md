@@ -153,6 +153,14 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`skill-catalog-generator`](./skills/skill-catalog-generator/SKILL.md) | Generating skill catalogs, quality scores, groupings, gaps, and marketplace metadata. | Preview |
 | [`skill-marketplace-creator`](./skills/skill-marketplace-creator/SKILL.md) | Creating, curating, validating, or operating a marketplace of reusable agent skills. | Preview |
 
+| [`contract-lifecycle-renewal-review`](./skills/contract-lifecycle-renewal-review/SKILL.md) | Separates renewal, expansion, downgrade, cancellation, true-up, collections, and amendment workflows with explicit owners | Preview |
+| [`enterprise-onboarding-implementation-review`](./skills/enterprise-onboarding-implementation-review/SKILL.md) | Maps stakeholders, success criteria, dependencies, milestones, escalation rules, and customer/internal actions | Preview |
+| [`model-router-cost-quality-review`](./skills/model-router-cost-quality-review/SKILL.md) | Defines task taxonomy, quality bar, latency SLO, privacy tier, user tier, cost ceiling, eval matrix, and rollback gates | Preview |
+| [`user-research-repository-review`](./skills/user-research-repository-review/SKILL.md) | Defines evidence taxonomy, consent/redaction rules, tagging, confidence scoring, decision linkage, stale-review cadence, and repository ownership | Preview |
+| [`support-workforce-planning-review`](./skills/support-workforce-planning-review/SKILL.md) | Forecasts volume by channel, severity, language, segment, issue type, arrival pattern, handle time, seasonality, and launch/incident drivers | Preview |
+| [`data-warehouse-metrics-layer-review`](./skills/data-warehouse-metrics-layer-review/SKILL.md) | Defines canonical metric contracts with owner, formula, grain, dimensions, filters, timezone, identity, lineage, freshness SLA, tests, and access tier | Preview |
+| [`localization-quality-program-review`](./skills/localization-quality-program-review/SKILL.md) | Scopes product UI, billing, cancellation, notifications, emails, help center, support macros, store listings, legal/privacy, marketing, and platform surfaces | Preview |
+| [`compliance-audit-readiness-review`](./skills/compliance-audit-readiness-review/SKILL.md) | Defines audit scope, control matrix, evidence sources, owners, collection cadence, sample workflow, walkthrough prep, gap register, remediation SLA, and claim approval | Preview |
 The generated registry lives at [`registry/skills.json`](./registry/skills.json).
 
 ## Public/private boundary

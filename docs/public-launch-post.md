@@ -25,8 +25,8 @@ Most AI-agent skill repos become prompt dumps. We wanted something closer to a p
 
 Current coverage:
 
-- 115 preview skills;
-- product lifecycle, UI, growth, pricing, payments, mobile/game systems, distribution, desktop OS, backup, support, privacy, abuse/fraud, incidents, analytics, and skill marketplace operations;
+- 123 preview skills;
+- product lifecycle, UI, growth, pricing, payments, mobile/game systems, distribution, desktop OS, backup, support, privacy, abuse/fraud, incidents, analytics, renewals, enterprise onboarding, AI model routing, metrics layers, localization QA, audit readiness, and skill marketplace operations;
 - generated registry and static catalog;
 - validation for schema, eval coverage, catalog coverage, reference structure, behavior examples, and catalog drift.
 

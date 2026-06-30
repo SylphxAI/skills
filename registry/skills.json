@@ -263,6 +263,19 @@
       ]
     },
     {
+      "name": "compliance-audit-readiness-review",
+      "description": "Prepare and audit compliance readiness for SOC 2, ISO 27001, GDPR, HIPAA-adjacent, procurement, internal controls, policy evidence, control owners, auditor requests, sampling, walkthroughs, exceptions, remediation, report claims, and renewal cadence. Use when teams need audit-ready evidence without inventing compliance claims.",
+      "status": "preview",
+      "path": "skills/compliance-audit-readiness-review",
+      "references": [
+        "compliance-audit-readiness-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "compliance-evidence-room-review",
       "description": "Design and audit compliance evidence rooms, gated security document portals, SOC/ISO reports, pen test summaries, policies, DPAs, subprocessors, audit evidence, access approval, expiry, watermarking, renewal, and buyer proof workflows. Use when enterprise customers or auditors need sensitive evidence without uncontrolled document sharing.",
       "status": "preview",
@@ -282,6 +295,19 @@
       "path": "skills/content-policy-appeals-review",
       "references": [
         "content-policy-appeals-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "contract-lifecycle-renewal-review",
+      "description": "Review SaaS and enterprise contract lifecycle, renewals, auto-renewal windows, true-ups, co-terming, amendments, cancellations, expansion, procurement, legal, billing, entitlements, and customer-success handoffs. Use when agents need to design or audit renewal workflows that protect revenue without trapping customers.",
+      "status": "preview",
+      "path": "skills/contract-lifecycle-renewal-review",
+      "references": [
+        "contract-lifecycle-renewal-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -445,6 +471,19 @@
       ]
     },
     {
+      "name": "data-warehouse-metrics-layer-review",
+      "description": "Design and audit data warehouse metrics layers, semantic models, KPI definitions, source lineage, grain, dimensions, ownership, freshness, quality tests, backfills, access, dashboards, finance/product reconciliation, and metric change control. Use when teams need trusted metrics instead of duplicated BI formulas.",
+      "status": "preview",
+      "path": "skills/data-warehouse-metrics-layer-review",
+      "references": [
+        "data-warehouse-metrics-layer-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "decision-memo-writer",
       "description": "Write and review decision memos for product, strategy, pricing, launch, growth, design, marketplace, operations, platform, and investment choices. Use when a team needs a clear recommendation, options, tradeoffs, evidence, assumptions, risks, decision owner, reversible/irreversible classification, success metrics, and follow-up plan instead of open-ended discussion.",
       "status": "preview",
@@ -503,6 +542,19 @@
       "path": "skills/empty-state-and-loading-review",
       "references": [
         "empty-loading-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "enterprise-onboarding-implementation-review",
+      "description": "Plan and audit enterprise onboarding and implementation programs covering kickoff, success criteria, stakeholder mapping, SSO/SCIM, integrations, data migration, sandboxing, training, go-live gates, risk escalation, support handoff, and adoption proof. Use when a sold customer must become live and successful without heroic project management.",
+      "status": "preview",
+      "path": "skills/enterprise-onboarding-implementation-review",
+      "references": [
+        "enterprise-onboarding-implementation-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -757,6 +809,19 @@
       ]
     },
     {
+      "name": "localization-quality-program-review",
+      "description": "Plan and audit localization quality programs for mobile apps, games, SaaS, web, desktop, store listings, lifecycle messages, support content, legal copy, RTL, truncation, pluralization, cultural fit, in-context review, pseudo-localization, LQA, release gates, and market feedback. Use when translation must become launch-quality product experience.",
+      "status": "preview",
+      "path": "skills/localization-quality-program-review",
+      "references": [
+        "localization-quality-program-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "macos-release-readiness",
       "description": "Audit macOS app release readiness including app bundle identity, signing, notarization, sandboxing, hardened runtime, permissions, keychain, app support data, launch agents, login items, menu bar, Dock behavior, file associations, universal builds, auto-update, crash logs, backup, uninstall, and support diagnostics. Use when shipping or reviewing macOS desktop apps and utilities.",
       "status": "preview",
@@ -843,6 +908,19 @@
       "path": "skills/mobile-first-ui-review",
       "references": [
         "mobile-ui-rules.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "model-router-cost-quality-review",
+      "description": "Design and audit AI model routers that balance task quality, latency, cost, reliability, safety, privacy, context size, tool use, fallback, caching, evals, budgets, and provider outages. Use when an agent or product must choose models dynamically instead of hard-coding one default model.",
+      "status": "preview",
+      "path": "skills/model-router-cost-quality-review",
+      "references": [
+        "model-router-cost-quality-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1424,6 +1502,19 @@
       ]
     },
     {
+      "name": "support-workforce-planning-review",
+      "description": "Forecast and audit customer support workforce plans across channels, languages, queues, SLAs, severity tiers, launches, incidents, seasonality, shrinkage, occupancy, escalation, QA, macros, deflection, BPO/vendor coverage, and burnout risk. Use when support demand must be staffed without sacrificing quality or trust.",
+      "status": "preview",
+      "path": "skills/support-workforce-planning-review",
+      "references": [
+        "support-workforce-planning-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "tax-invoicing-compliance-review",
       "description": "Design and audit tax, invoicing, receipt, VAT/GST/sales-tax, reverse charge, tax ID, billing address, subscription invoice, app-store receipt, marketplace seller invoice, credit note, refund document, and finance-support handoff flows. Use when money flows need compliant customer documents, tax metadata, jurisdiction handling, and audit evidence.",
       "status": "preview",
@@ -1469,6 +1560,19 @@
       "path": "skills/user-preferences-settings-review",
       "references": [
         "user-preferences-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "user-research-repository-review",
+      "description": "Design and audit user research repositories that turn interviews, surveys, usability tests, support tickets, sales calls, churn reasons, app reviews, and product analytics into tagged, consent-safe, decision-linked evidence. Use when product teams need reusable insight instead of anecdote piles.",
+      "status": "preview",
+      "path": "skills/user-research-repository-review",
+      "references": [
+        "user-research-repository-patterns.md"
       ],
       "scripts": [],
       "agents": [

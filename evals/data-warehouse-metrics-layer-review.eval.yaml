@@ -1,0 +1,10 @@
+skill: data-warehouse-metrics-layer-review
+positive_prompts:
+  - "Design a data warehouse metrics layer for SaaS KPIs covering activation, conversion, churn, ARR, support SLA, AI cost, experiments, lineage, freshness, and dashboard certification."
+  - "Audit why product, finance, and support dashboards disagree on active accounts, revenue, churn, and SLA metrics."
+negative_prompts:
+  - "Plan localization QA for Japanese and Arabic app releases."
+expected_behavior:
+  - "Defines canonical metric contracts with owner, formula, grain, dimensions, filters, timezone, identity, lineage, freshness SLA, tests, and access tier."
+  - "Includes certified/exploratory/deprecated status, quality checks, backfill/change log, consumer notification, and finance/product/support reconciliation."
+  - "Flags duplicated BI formulas, ownerless KPIs, missing grain/timezone, silent backfills, sensitive dimension exposure, and dashboard mistrust."
