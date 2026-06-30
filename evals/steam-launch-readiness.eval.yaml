@@ -1,0 +1,10 @@
+skill: steam-launch-readiness
+positive_prompts:
+  - "Audit our Steam coming-soon page and demo plan before Next Fest."
+  - "Create a launch readiness matrix for our PC game releasing on Steam next month."
+negative_prompts:
+  - "Design an App Store subscription restore flow."
+expected_behavior:
+  - "Connects Steam store assets, wishlist growth, demo, build quality, pricing, and community ops."
+  - "Identifies launch blockers around promise mismatch, platform claims, refunds, and review risk."
+  - "Creates a pre-launch through first-week operations matrix."

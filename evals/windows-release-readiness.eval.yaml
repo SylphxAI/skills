@@ -1,0 +1,10 @@
+skill: windows-release-readiness
+positive_prompts:
+  - "Audit this Windows tray app installer and auto-update plan before launch."
+  - "Create a Windows release readiness matrix for a desktop utility using file associations and a background service."
+negative_prompts:
+  - "Design a Steam wishlist campaign."
+expected_behavior:
+  - "Covers Windows installer identity, signing, reputation, privilege, startup/services, registry/file associations, updates, uninstall, and diagnostics."
+  - "Separates blockers from enterprise/admin polish and support improvements."
+  - "Requires user-controllable background behavior and safe uninstall/update recovery."

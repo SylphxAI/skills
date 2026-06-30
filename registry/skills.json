@@ -16,6 +16,19 @@
       ]
     },
     {
+      "name": "ad-monetization-review",
+      "description": "Design and audit in-app advertising monetization for mobile apps, games, web apps, and content products including rewarded ads, interstitials, banners, native ads, offerwalls, mediation, frequency caps, payer suppression, privacy consent, UX placement, revenue analytics, and ad fatigue. Use when adding ads, improving ARPDAU, balancing IAA with IAP/subscriptions, or reducing churn from ads.",
+      "status": "preview",
+      "path": "skills/ad-monetization-review",
+      "references": [
+        "ad-monetization-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "analytics-event-taxonomy",
       "description": "Design and audit analytics event taxonomies for product funnels, SaaS, mobile apps, games, web apps, desktop utilities, marketplaces, notifications, payments, support, and launches. Use when defining events, properties, naming, identity, funnels, cohorts, attribution, guardrail metrics, dashboards, or analytics quality rules.",
       "status": "preview",
@@ -68,6 +81,19 @@
       ]
     },
     {
+      "name": "checkout-conversion-review",
+      "description": "Audit and design checkout, cart, payment, trial, upgrade, paywall, Apple Pay, Google Pay, card, invoice, discount, tax, error recovery, and post-purchase conversion flows for SaaS, apps, games, utilities, marketplaces, and web products. Use when improving revenue conversion, reducing payment failure, making checkout trustworthy, or reviewing checkout analytics and support readiness.",
+      "status": "preview",
+      "path": "skills/checkout-conversion-review",
+      "references": [
+        "checkout-conversion-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "customer-support-operations",
       "description": "Design customer support operations for software products including help centers, ticket triage, refund handling, escalation, support tooling, incident communication, macros, trust recovery, abuse review, and product feedback loops. Use when building or auditing support systems for apps, games, SaaS, utilities, stores, or subscription products.",
       "status": "preview",
@@ -81,12 +107,38 @@
       ]
     },
     {
+      "name": "daily-reward-and-streak-review",
+      "description": "Design and audit daily rewards, check-ins, streaks, missions, calendars, streak repair, lifecycle notifications, retention loops, live events, game economies, habit formation, and anti-abuse controls for apps and games. Use when building daily login rewards, streak mechanics, reward calendars, return rituals, or retention systems that should increase engagement without coercion.",
+      "status": "preview",
+      "path": "skills/daily-reward-and-streak-review",
+      "references": [
+        "daily-reward-streak-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "desktop-os-integration",
       "description": "Design and audit desktop OS integration for macOS and Windows apps, utilities, SaaS companions, developer tools, launchers, and games. Use when planning menu bar/tray behavior, installers, auto-update, startup/login items, permissions, file associations, notifications, local storage, keychain/credential storage, backup, uninstall, and OS-specific settings.",
       "status": "preview",
       "path": "skills/desktop-os-integration",
       "references": [
         "desktop-os-integration-matrix.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "developer-tool-product-design",
+      "description": "Design and audit developer tools, APIs, SDKs, CLIs, libraries, platforms, dashboards, docs, examples, onboarding, quickstarts, pricing, usage limits, telemetry, changelogs, support, and community growth. Use when building developer-facing products, improving developer experience, launching APIs/SDKs, or reviewing docs-to-activation funnels.",
+      "status": "preview",
+      "path": "skills/developer-tool-product-design",
+      "references": [
+        "developer-tool-product-systems.md"
       ],
       "scripts": [],
       "agents": [
@@ -198,12 +250,38 @@
       ]
     },
     {
+      "name": "macos-release-readiness",
+      "description": "Audit macOS app release readiness including app bundle identity, signing, notarization, sandboxing, hardened runtime, permissions, keychain, app support data, launch agents, login items, menu bar, Dock behavior, file associations, universal builds, auto-update, crash logs, backup, uninstall, and support diagnostics. Use when shipping or reviewing macOS desktop apps and utilities.",
+      "status": "preview",
+      "path": "skills/macos-release-readiness",
+      "references": [
+        "macos-release-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "market-research-synthesis",
       "description": "Research and synthesize competitors, app-store listings, reviews, pricing pages, positioning, feature sets, customer complaints, and market patterns into an original product strategy. Use when doing market research, competitor analysis, category design, product positioning, idea validation, or collecting the best ideas in a market without copying them.",
       "status": "preview",
       "path": "skills/market-research-synthesis",
       "references": [
         "research-synthesis-method.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "marketplace-product-ops",
+      "description": "Design and audit marketplace operating systems including two-sided marketplaces, creator marketplaces, plugin/skill/app marketplaces, listings, submissions, review queues, ranking, trust and safety, payouts, disputes, refunds, moderation, quality scoring, discovery, support, and growth loops. Use when creating or improving a marketplace repository, store, directory, creator platform, or community exchange.",
+      "status": "preview",
+      "path": "skills/marketplace-product-ops",
+      "references": [
+        "marketplace-product-ops-systems.md"
       ],
       "scripts": [],
       "agents": [
@@ -436,6 +514,19 @@
       ]
     },
     {
+      "name": "steam-launch-readiness",
+      "description": "Prepare Steam launch readiness for PC games including store page, capsule art, trailer, screenshots, tags, wishlist funnel, demo, playtest, achievements, cloud saves, controller support, localization, pricing, discounts, refund expectations, community hub, patch notes, reviews, and launch operations. Use when launching, auditing, or improving a game on Steam.",
+      "status": "preview",
+      "path": "skills/steam-launch-readiness",
+      "references": [
+        "steam-launch-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "store-listing-optimization",
       "description": "Optimize store listings for App Store, Google Play, Steam, Microsoft Store, browser extensions, and direct-download products across title, subtitle, short description, screenshots, trailers, capsule art, keywords/tags, reviews, localization, pricing, privacy claims, and conversion measurement. Use when improving channel pages before launch or after weak store conversion.",
       "status": "preview",
@@ -455,6 +546,19 @@
       "path": "skills/subscription-entitlement-review",
       "references": [
         "subscription-entitlement-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "windows-release-readiness",
+      "description": "Audit Windows app release readiness including installer/MSIX identity, code signing, SmartScreen reputation, services, startup tasks, tray behavior, registry and file associations, notifications, credential storage, AppData/ProgramData, firewall prompts, auto-update, rollback, uninstall cleanup, crash logs, Microsoft Store certification, and support diagnostics. Use when shipping or reviewing Windows desktop apps and utilities.",
+      "status": "preview",
+      "path": "skills/windows-release-readiness",
+      "references": [
+        "windows-release-systems.md"
       ],
       "scripts": [],
       "agents": [

@@ -30,12 +30,12 @@ async function main() {
   }
 
   const installVerification = existsSync(installVerificationPath) ? await readFile(installVerificationPath, 'utf8') : '';
-  for (const required of ['npm run verify:install', 'npx skills add SylphxAI/skills --list', '35']) {
+  for (const required of ['npm run verify:install', 'npx skills add SylphxAI/skills --list', String(registry.skills.length)]) {
     if (!installVerification.includes(required)) errors.push(`docs/install-verification.md missing ${required}`);
   }
 
   const directoryPayload = existsSync(directoryPayloadPath) ? await readFile(directoryPayloadPath, 'utf8') : '';
-  for (const required of ['skills.sh', 'SkillsMP', 'ClaudeSkill', 'Cross AI Tools', 'No skills found for']) {
+  for (const required of ['skills.sh', 'SkillsMP', 'ClaudeSkill', 'Cross AI Tools', 'Open skills CLI', 'Do not close launch distribution issue #1']) {
     if (!directoryPayload.includes(required)) errors.push(`docs/directory-submission-payloads.md missing ${required}`);
   }
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Steam Launch Readiness"
+  short_description: "Prepare a strong Steam launch"
+  default_prompt: "Use $steam-launch-readiness to prepare this PC game for Steam launch."

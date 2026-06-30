@@ -41,7 +41,8 @@
         "saas-subscription-pricing",
         "subscription-entitlement-review",
         "refund-and-support-flow-review",
-        "payment-platform-readiness"
+        "payment-platform-readiness",
+        "checkout-conversion-review"
       ]
     },
     {
@@ -51,6 +52,8 @@
         "mobile-app-product-systems",
         "notification-strategy-review",
         "game-economy-review",
+        "ad-monetization-review",
+        "daily-reward-and-streak-review",
         "onboarding-activation-review"
       ]
     },
@@ -61,7 +64,10 @@
         "app-store-distribution-readiness",
         "store-listing-optimization",
         "launch-readiness-review",
+        "steam-launch-readiness",
         "desktop-os-integration",
+        "macos-release-readiness",
+        "windows-release-readiness",
         "backup-restore-design",
         "changelog-and-release-notes"
       ]
@@ -76,6 +82,14 @@
         "abuse-fraud-risk-review",
         "incident-communication-playbook",
         "analytics-event-taxonomy"
+      ]
+    },
+    {
+      "title": "Developer & Marketplace Products",
+      "description": "Skills for developer tools, plugin stores, creator marketplaces, public directories, quality review, discovery, and marketplace operations.",
+      "skills": [
+        "developer-tool-product-design",
+        "marketplace-product-ops"
       ]
     },
     {

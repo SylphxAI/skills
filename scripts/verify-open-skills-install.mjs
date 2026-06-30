@@ -7,6 +7,8 @@ import { execFileSync, spawnSync } from 'node:child_process';
 const repoRoot = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
 const registryPath = path.join(repoRoot, 'registry', 'skills.json');
 const keepTemp = process.argv.includes('--keep-temp');
+const sourceArg = process.argv.slice(2).find((arg) => arg !== '--keep-temp');
+const skillSource = sourceArg || process.env.SKILLS_SOURCE || 'SylphxAI/skills';
 
 function run(command, args, options) {
   const startedAt = new Date().toISOString();
@@ -48,7 +50,7 @@ async function main() {
     schemaVersion: 1,
     generatedBy: 'scripts/verify-open-skills-install.mjs',
     generatedAt: new Date().toISOString(),
-    package: 'SylphxAI/skills',
+    package: skillSource,
     expectedSkillCount: expectedSkills.length,
     expectedSkills,
     tempRoot: keepTemp ? tempRoot : '<removed>',
@@ -59,7 +61,7 @@ async function main() {
     installedSkills: [],
   };
 
-  const listStep = run('npx', ['--yes', 'skills', 'add', 'SylphxAI/skills', '--list'], { cwd: project, env });
+  const listStep = run('npx', ['--yes', 'skills', 'add', skillSource, '--list'], { cwd: project, env });
   proof.steps.push({ name: 'list', ...listStep, stdoutSample: listStep.stdout.slice(0, 4000) });
   if (listStep.exitCode !== 0) throw new Error(`list command failed with ${listStep.exitCode}`);
   const missingFromList = expectedSkills.filter((name) => !listStep.stdout.includes(name));
@@ -71,7 +73,7 @@ async function main() {
     throw new Error(`list output missing ${missingFromList.length} skill(s): ${missingFromList.join(', ')}`);
   }
 
-  const installStep = run('npx', ['--yes', 'skills', 'add', 'SylphxAI/skills', '--global', '--skill', '*', '--agent', 'codex', '-y', '--copy'], { cwd: project, env });
+  const installStep = run('npx', ['--yes', 'skills', 'add', skillSource, '--global', '--skill', '*', '--agent', 'codex', '-y', '--copy'], { cwd: project, env });
   proof.steps.push({ name: 'install-all', ...installStep, stdoutSample: installStep.stdout.slice(0, 4000) });
   if (installStep.exitCode !== 0) throw new Error(`install command failed with ${installStep.exitCode}`);
 

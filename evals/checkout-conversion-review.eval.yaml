@@ -1,0 +1,10 @@
+skill: checkout-conversion-review
+positive_prompts:
+  - "Audit this SaaS pricing-to-checkout funnel and find trustworthy conversion gains."
+  - "Review our mobile app paywall and Apple Pay fallback before launch."
+negative_prompts:
+  - "Write a refund support macro for an already refunded account."
+expected_behavior:
+  - "Maps checkout as a stateful funnel from offer to entitlement grant."
+  - "Separates conversion lifts from trust, payment reliability, support, and refund risks."
+  - "Defines events and guardrail metrics before proposing experiments."

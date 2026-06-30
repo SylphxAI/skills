@@ -1,0 +1,10 @@
+skill: daily-reward-and-streak-review
+positive_prompts:
+  - "Design a daily check-in and streak system for our language learning app."
+  - "Audit this mobile game reward calendar for economy and retention risks."
+negative_prompts:
+  - "Explain how OAuth scopes should be named."
+expected_behavior:
+  - "Connects daily rewards to a meaningful core behavior."
+  - "Defines missed-day, repair, notification, and abuse states."
+  - "Balances retention lift against economy, trust, and fatigue risks."
