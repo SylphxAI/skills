@@ -1,0 +1,9 @@
+skill: game-economy-review
+positive_prompts:
+  - "Review a mobile puzzle game economy with daily rewards, rewarded ads, IAP bundles, refunds, and live events."
+  - "Design a fair progression and currency system for a casual game launching on mobile and Steam."
+negative_prompts:
+  - "Create a desktop installer checklist."
+expected_behavior:
+  - "Maps currencies, sources, sinks, offers, events, refunds, and abuse risks."
+  - "Balances monetization with fairness, trust, and live-ops measurement."

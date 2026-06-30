@@ -1,0 +1,9 @@
+skill: notification-strategy-review
+positive_prompts:
+  - "Design notification strategy for a mobile game with daily rewards, promos, and support-safe refund messages."
+  - "Audit SaaS lifecycle emails and push notifications for fatigue and conversion quality."
+negative_prompts:
+  - "Create a pricing plan table."
+expected_behavior:
+  - "Builds a taxonomy by channel, consent, frequency, and user value."
+  - "Includes quiet hours, preferences, event schema, and negative-signal metrics."

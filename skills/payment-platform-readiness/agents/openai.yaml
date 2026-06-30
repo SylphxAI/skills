@@ -1,0 +1,4 @@
+interface:
+  display_name: "Payment Platform Readiness"
+  short_description: "Payment Platform readiness"
+  default_prompt: "Use $payment-platform-readiness to handle a realistic product task in this domain."

@@ -42,12 +42,64 @@
       ]
     },
     {
+      "name": "desktop-os-integration",
+      "description": "Design and audit desktop OS integration for macOS and Windows apps, utilities, SaaS companions, developer tools, launchers, and games. Use when planning menu bar/tray behavior, installers, auto-update, startup/login items, permissions, file associations, notifications, local storage, keychain/credential storage, backup, uninstall, and OS-specific settings.",
+      "status": "preview",
+      "path": "skills/desktop-os-integration",
+      "references": [
+        "desktop-os-integration-matrix.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "execution-simplification",
+      "description": "Turn complex product, engineering, operations, strategy, or go-to-market problems into a simple execution plan with clear invariants, decision boundaries, sequencing, risks, and next actions. Use when a task feels messy, cross-functional, over-scoped, ambiguous, or when the user asks for critical thinking, simplification, roadmap decomposition, or high-agency execution strategy.",
+      "status": "preview",
+      "path": "skills/execution-simplification",
+      "references": [
+        "simplification-method.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "game-economy-review",
+      "description": "Review and design game economy systems for mobile, PC, casual, live-service, and app-like games including currencies, sources/sinks, progression, rewards, daily check-ins, battle passes, IAP, ads, events, refunds, anti-abuse, fairness, and live-ops measurement. Use when building or auditing monetization and retention loops in games.",
+      "status": "preview",
+      "path": "skills/game-economy-review",
+      "references": [
+        "game-economy-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "interface-craft",
       "description": "Improve product interfaces with tasteful UI craft, micro-interactions, accessibility-preserving polish, and detail-oriented review. Use when building UI, reviewing components, improving perceived quality, making an interface feel better, or auditing forms, buttons, motion, typography, empty states, loading states, and navigation polish.",
       "status": "preview",
       "path": "skills/interface-craft",
       "references": [
         "interface-craft-rules.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "landing-page-critique",
+      "description": "Critique and improve landing pages for SaaS, apps, games, utilities, developer tools, marketplaces, and launches. Use when reviewing hero copy, positioning, proof, demos, CTAs, objections, social proof, SEO, conversion analytics, waitlists, product-led growth pages, or campaign landing pages.",
+      "status": "preview",
+      "path": "skills/landing-page-critique",
+      "references": [
+        "landing-page-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -83,12 +135,90 @@
       ]
     },
     {
+      "name": "mobile-first-ui-review",
+      "description": "Review and improve mobile-first UI for apps, web products, SaaS, utilities, and games across touch ergonomics, safe areas, navigation, forms, permissions, loading, offline states, and perceived speed. Use when designing or auditing mobile interfaces, responsive mobile views, onboarding screens, purchase flows, settings, or any UI that must feel fast and modern on phones.",
+      "status": "preview",
+      "path": "skills/mobile-first-ui-review",
+      "references": [
+        "mobile-ui-rules.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "motion-transition-review",
+      "description": "Review and design subtle product motion, animation, and transitions for UI state changes, navigation, loading, gestures, modals, drawers, games, and desktop/mobile apps. Use when an interface feels jumpy, slow, lifeless, over-animated, or when adding modern micro-interactions while preserving accessibility and reduced-motion behavior.",
+      "status": "preview",
+      "path": "skills/motion-transition-review",
+      "references": [
+        "motion-transition-rules.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "notification-strategy-review",
+      "description": "Design or audit notification strategy across push, email, in-app messages, SMS, lifecycle messaging, reminders, games, SaaS, mobile apps, and desktop utilities. Use when planning permission prompts, notification taxonomy, user controls, retention campaigns, quiet hours, deliverability, fatigue, event triggers, or support-safe messaging.",
+      "status": "preview",
+      "path": "skills/notification-strategy-review",
+      "references": [
+        "notification-strategy-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "payment-platform-readiness",
+      "description": "Prepare payment platform integration for Apple Pay, Google Pay, Google Play Billing, App Store IAP, web checkout, subscriptions, one-time purchases, refunds, restore purchases, receipts, tax, entitlement grants, and support traces. Use when designing or auditing payment flows for apps, games, SaaS, desktop utilities, stores, or marketplaces.",
+      "status": "preview",
+      "path": "skills/payment-platform-readiness",
+      "references": [
+        "payment-platform-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "pricing-page-critique",
+      "description": "Critique and improve pricing pages, plan tables, SaaS packaging, subscription pages, freemium limits, trials, upgrades, cancellation explanations, and enterprise conversion. Use when reviewing monetization UX, pricing communication, plan comparison, value metric clarity, or paywall/pricing-page experiments.",
+      "status": "preview",
+      "path": "skills/pricing-page-critique",
+      "references": [
+        "pricing-page-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "product-lifecycle-architect",
       "description": "Plan and review products end to end across strategy, market research, product design, UI, monetization, distribution, operations, promotion, customer support, and lifecycle management. Use when designing a new app, SaaS, game, utility, web product, desktop product, product roadmap, launch plan, or full product operating system.",
       "status": "preview",
       "path": "skills/product-lifecycle-architect",
       "references": [
         "product-lifecycle-matrix.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "responsive-layout-review",
+      "description": "Review and improve responsive layouts across mobile, tablet, desktop, web apps, SaaS dashboards, marketing pages, and desktop-like utilities. Use when designing breakpoints, adaptive navigation, grids, density, sidebars, tables, modals, keyboard states, or layouts that must work from small screens to wide monitors.",
+      "status": "preview",
+      "path": "skills/responsive-layout-review",
+      "references": [
+        "responsive-layout-rules.md"
       ],
       "scripts": [],
       "agents": [

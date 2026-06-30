@@ -1,0 +1,9 @@
+skill: desktop-os-integration
+positive_prompts:
+  - "Create a macOS and Windows readiness checklist for a desktop AI utility with tray/menu bar, auto-update, backup, and local credentials."
+  - "Audit a Windows app installer and file association plan for trust and supportability."
+negative_prompts:
+  - "Improve a mobile daily check-in reward economy."
+expected_behavior:
+  - "Covers install, update, uninstall, startup, permissions, storage, credentials, files, notifications, and backup."
+  - "Separates macOS, Windows, and shared behavior."

@@ -12,7 +12,7 @@ The repository foundation is ready for production:
 - quality bar and original-synthesis policy exist;
 - preview skills prove the structure.
 
-The foundation is not finished forever. The next foundation layer is behavior evals, static catalog generation, and automated draft PRs.
+The foundation is not finished forever. Behavior eval coverage is now enforced; the next foundation layer is static catalog coverage, examples, scoring, and automated draft PRs.
 
 ## Production cadence
 
@@ -39,9 +39,9 @@ For modern, fast, subtle, responsive interfaces.
 Candidate skills:
 
 - `interface-craft` (already seeded)
-- `mobile-first-ui-review`
-- `responsive-layout-review`
-- `motion-transition-review`
+- `mobile-first-ui-review` (seeded)
+- `responsive-layout-review` (seeded)
+- `motion-transition-review` (seeded)
 - `design-system-extractor`
 - `empty-state-and-loading-review`
 
@@ -54,8 +54,8 @@ Candidate skills:
 - `mobile-app-product-systems` (seeded in this batch)
 - `onboarding-activation-review`
 - `subscription-and-entitlement-review`
-- `notification-strategy-review`
-- `game-economy-review`
+- `notification-strategy-review` (seeded)
+- `game-economy-review` (seeded)
 - `refund-and-support-flow-review`
 
 ### 4. Marketing Design Pack
@@ -65,8 +65,8 @@ For acquisition, conversion, positioning, and campaign systems.
 Candidate skills:
 
 - `startup-growth-review` (already seeded)
-- `landing-page-critique`
-- `pricing-page-critique`
+- `landing-page-critique` (seeded)
+- `pricing-page-critique` (seeded)
 - `product-positioning`
 - `seo-content-brief`
 - `promotion-campaign-review`
@@ -78,3 +78,30 @@ Candidate skills:
 - A visible quality bar that rejects prompt dumps.
 - Weekly public demos showing how agents improve with the skill loaded.
 - Good install experience through skills directories.
+
+
+### 5. Platform, Payments & Desktop Pack
+
+For products that must survive real payment channels, store review, and OS integration.
+
+Candidate skills:
+
+- `payment-platform-readiness` (seeded)
+- `desktop-os-integration` (seeded)
+- `store-listing-optimization`
+- `launch-readiness-review`
+- `macos-release-readiness`
+- `windows-release-readiness`
+
+### 6. Operations, Trust & Support Pack
+
+For reducing churn, support load, data loss, abuse, and policy risk.
+
+Candidate skills:
+
+- `backup-restore-design` (seeded)
+- `customer-support-operations` (seeded)
+- `privacy-and-data-retention-review`
+- `abuse-fraud-risk-review`
+- `incident-communication-playbook`
+- `analytics-event-taxonomy`

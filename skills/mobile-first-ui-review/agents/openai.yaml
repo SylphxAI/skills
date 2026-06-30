@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile First UI Review"
+  short_description: "Mobile First UI review"
+  default_prompt: "Use $mobile-first-ui-review to handle a realistic product task in this domain."

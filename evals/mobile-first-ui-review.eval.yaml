@@ -1,0 +1,9 @@
+skill: mobile-first-ui-review
+positive_prompts:
+  - "Review this mobile onboarding and subscription flow for one-handed usability and trust."
+  - "Improve a mobile web checkout so it feels fast, modern, and resilient to keyboard and safe-area issues."
+negative_prompts:
+  - "Design a Postgres schema for audit logs."
+expected_behavior:
+  - "Audits reachability, safe areas, inputs, loading, offline, settings, and permission timing."
+  - "Uses rule IDs and separates blockers from polish."

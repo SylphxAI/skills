@@ -1,0 +1,9 @@
+skill: pricing-page-critique
+positive_prompts:
+  - "Critique this SaaS pricing page for conversion and trust."
+  - "Improve a subscription paywall so pricing, trial, restore, and cancellation are clear."
+negative_prompts:
+  - "Review a responsive table layout."
+expected_behavior:
+  - "Checks value metric, plan differentiation, risk reducers, cancellation, and measurement."
+  - "Rejects dark patterns and hidden material terms."

@@ -5,32 +5,64 @@
     {
       "title": "Product Lifecycle",
       "description": "Skills for planning complete products from market research through support, growth, and operations.",
-      "skills": ["product-lifecycle-architect", "market-research-synthesis"]
+      "skills": [
+        "product-lifecycle-architect",
+        "execution-simplification",
+        "market-research-synthesis"
+      ]
     },
     {
-      "title": "Design & Product Craft",
-      "description": "Skills for product taste, interface polish, and user-perceived quality.",
-      "skills": ["interface-craft"]
+      "title": "UI Design & Product Craft",
+      "description": "Skills for modern, fast, subtle, mobile-first, responsive interfaces.",
+      "skills": [
+        "interface-craft",
+        "mobile-first-ui-review",
+        "motion-transition-review",
+        "responsive-layout-review"
+      ]
     },
     {
-      "title": "Mobile Product Systems",
-      "description": "Skills for mobile app monetization, retention, refunds, notifications, IAP, IAA, and rewards.",
-      "skills": ["mobile-app-product-systems"]
+      "title": "Growth & Conversion",
+      "description": "Skills for acquisition, positioning, landing pages, pricing pages, funnels, and launch growth.",
+      "skills": [
+        "landing-page-critique",
+        "pricing-page-critique",
+        "startup-growth-review"
+      ]
     },
     {
       "title": "Pricing & Monetization",
-      "description": "Skills for SaaS pricing, subscription packaging, trials, expansion, and revenue systems.",
-      "skills": ["saas-subscription-pricing", "startup-growth-review"]
+      "description": "Skills for SaaS pricing, subscriptions, payments, purchases, entitlements, and revenue systems.",
+      "skills": [
+        "saas-subscription-pricing",
+        "payment-platform-readiness"
+      ]
     },
     {
-      "title": "Distribution & Operations",
+      "title": "Mobile & Game Product Systems",
+      "description": "Skills for mobile app monetization, retention, refunds, notifications, game economies, IAP, IAA, and rewards.",
+      "skills": [
+        "mobile-app-product-systems",
+        "notification-strategy-review",
+        "game-economy-review"
+      ]
+    },
+    {
+      "title": "Distribution, Platforms & Operations",
       "description": "Skills for store launch, OS integration, backup, restore, support, and product operations.",
-      "skills": ["app-store-distribution-readiness", "backup-restore-design", "customer-support-operations"]
+      "skills": [
+        "app-store-distribution-readiness",
+        "desktop-os-integration",
+        "backup-restore-design",
+        "customer-support-operations"
+      ]
     },
     {
       "title": "Agent Skill Operations",
       "description": "Skills for creating, curating, validating, and operating reusable agent skills.",
-      "skills": ["skill-marketplace-creator"]
+      "skills": [
+        "skill-marketplace-creator"
+      ]
     }
   ]
 }

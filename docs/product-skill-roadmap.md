@@ -14,6 +14,13 @@ The repository must cover common product forms:
 - content/community products;
 - commerce products.
 
+
+## Current coverage snapshot
+
+The repository now contains 20 preview skills with eval coverage. The first expansion deliberately fills the highest-demand product matrix cells: mobile-first UI, motion, responsive layout, landing pages, pricing pages, notifications, payments, desktop OS integration, game economy, and execution simplification.
+
+See [`sota-product-operating-matrix.md`](./sota-product-operating-matrix.md) for the full lifecycle/product/channel matrix and the first 60-skill destination map. See [`skill-factory-automation.md`](./skill-factory-automation.md) for the automation loop that turns market knowledge into original Sylphx skills.
+
 ## North-star quality
 
 Every cell in the matrix should eventually have:
@@ -85,6 +92,8 @@ Every cell in the matrix should eventually have:
 
 ### P1 — high-demand depth
 
+Completed in the first expansion:
+
 - `mobile-first-ui-review`
 - `motion-transition-review`
 - `responsive-layout-review`
@@ -92,9 +101,17 @@ Every cell in the matrix should eventually have:
 - `landing-page-critique`
 - `notification-strategy-review`
 - `game-economy-review`
-- `refund-and-support-flow-review`
 - `desktop-os-integration`
 - `payment-platform-readiness`
+- `execution-simplification`
+
+Next P1 depth target:
+
+- `refund-and-support-flow-review`
+- `subscription-entitlement-review`
+- `onboarding-activation-review`
+- `checkout-conversion-review`
+- `promotion-campaign-review`
 
 ### P2 — defensibility and operations
 
@@ -111,7 +128,7 @@ Every cell in the matrix should eventually have:
 
 ## Execution cadence
 
-- Add 5-10 foundation skills quickly.
+- Keep adding useful skills in batches, but require eval coverage and matrix placement for every new skill.
 - Deepen each skill with one reference file per hard domain.
 - Add eval prompts immediately after each skill.
 - Promote skills from preview only after they have examples and at least one forward-test.

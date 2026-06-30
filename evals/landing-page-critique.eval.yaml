@@ -1,0 +1,9 @@
+skill: landing-page-critique
+positive_prompts:
+  - "Critique this SaaS landing page and propose higher-converting sections without making false claims."
+  - "Review a game landing page for wishlist conversion and product clarity."
+negative_prompts:
+  - "Design a backup retention policy."
+expected_behavior:
+  - "Diagnoses audience, promise, proof, CTA, objections, and measurement."
+  - "Proposes experiments with hypotheses and metrics."

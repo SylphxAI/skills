@@ -1,0 +1,9 @@
+skill: responsive-layout-review
+positive_prompts:
+  - "Audit this SaaS dashboard so it works from phone to wide desktop."
+  - "Design responsive behavior for a pricing page with cards, FAQ, and checkout CTA."
+negative_prompts:
+  - "Write a Steam launch campaign."
+expected_behavior:
+  - "Uses content stress points rather than arbitrary device-only breakpoints."
+  - "Checks tables, navigation, forms, modals, hover, keyboard, and long content."

@@ -1,0 +1,9 @@
+skill: payment-platform-readiness
+positive_prompts:
+  - "Audit an iOS subscription payment flow with Apple Pay, IAP, restore purchases, refunds, and support tooling."
+  - "Design payment readiness for a SaaS app with web checkout and marketplace payouts later."
+negative_prompts:
+  - "Review landing page headline copy."
+expected_behavior:
+  - "Separates catalog, checkout, receipt/webhook, entitlement, refund, support, and reconciliation."
+  - "Rejects client-only durable grants and includes idempotent ledger events."

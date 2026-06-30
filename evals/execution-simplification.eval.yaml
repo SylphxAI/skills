@@ -1,0 +1,9 @@
+skill: execution-simplification
+positive_prompts:
+  - "Turn this broad product roadmap into a simple execution plan with assumptions, risks, and validation."
+  - "Use critical thinking to simplify a messy app launch plan covering UI, payments, support, and promotion."
+negative_prompts:
+  - "Review a CSS animation easing curve."
+expected_behavior:
+  - "Separates facts, assumptions, decisions, constraints, reversible actions, and proof."
+  - "Produces a sequenced plan with validation and avoids fake phases."

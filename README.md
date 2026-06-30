@@ -31,13 +31,23 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 
 | Skill | Use when | Status |
 | --- | --- | --- |
-| [`interface-craft`](./skills/interface-craft/SKILL.md) | Building, polishing, or reviewing UI for product craft and tasteful micro-details. | Preview |
-| [`startup-growth-review`](./skills/startup-growth-review/SKILL.md) | Reviewing a startup product, landing page, funnel, or go-to-market plan for growth leverage. | Preview |
-| [`mobile-app-product-systems`](./skills/mobile-app-product-systems/SKILL.md) | Designing or reviewing mobile app/game monetization, retention, notification, refund, and reward systems. | Preview |
-| [`product-lifecycle-architect`](./skills/product-lifecycle-architect/SKILL.md) | Planning a product end-to-end from strategy through support and growth. | Preview |
+| [`product-lifecycle-architect`](./skills/product-lifecycle-architect/SKILL.md) | Planning a product end-to-end from strategy through support, growth, and operations. | Preview |
+| [`execution-simplification`](./skills/execution-simplification/SKILL.md) | Turning messy cross-functional product problems into simple execution plans. | Preview |
 | [`market-research-synthesis`](./skills/market-research-synthesis/SKILL.md) | Synthesizing competitors, reviews, pricing, and market patterns into original strategy. | Preview |
+| [`interface-craft`](./skills/interface-craft/SKILL.md) | Building, polishing, or reviewing UI for product craft and tasteful micro-details. | Preview |
+| [`mobile-first-ui-review`](./skills/mobile-first-ui-review/SKILL.md) | Auditing mobile-first flows for touch ergonomics, safe areas, forms, permissions, and speed. | Preview |
+| [`motion-transition-review`](./skills/motion-transition-review/SKILL.md) | Designing subtle, accessible motion for state changes, navigation, gestures, and loading. | Preview |
+| [`responsive-layout-review`](./skills/responsive-layout-review/SKILL.md) | Making layouts work from compact mobile views to wide desktop workspaces. | Preview |
+| [`landing-page-critique`](./skills/landing-page-critique/SKILL.md) | Improving landing pages for positioning, proof, CTA clarity, objections, and conversion. | Preview |
+| [`pricing-page-critique`](./skills/pricing-page-critique/SKILL.md) | Improving pricing pages, plan tables, trials, risk reducers, and monetization UX. | Preview |
+| [`startup-growth-review`](./skills/startup-growth-review/SKILL.md) | Reviewing a startup product, funnel, positioning, launch, or go-to-market plan. | Preview |
 | [`saas-subscription-pricing`](./skills/saas-subscription-pricing/SKILL.md) | Designing SaaS pricing, packaging, trials, cancellation, and expansion. | Preview |
+| [`mobile-app-product-systems`](./skills/mobile-app-product-systems/SKILL.md) | Designing mobile app/game monetization, retention, notification, refund, and reward systems. | Preview |
+| [`notification-strategy-review`](./skills/notification-strategy-review/SKILL.md) | Designing push, email, in-app, SMS, and lifecycle notifications without fatigue. | Preview |
+| [`game-economy-review`](./skills/game-economy-review/SKILL.md) | Reviewing currencies, sources/sinks, rewards, ads, IAP, events, refunds, and fairness. | Preview |
+| [`payment-platform-readiness`](./skills/payment-platform-readiness/SKILL.md) | Preparing Apple Pay, Google Pay, IAP, web checkout, refunds, entitlements, and reconciliation. | Preview |
 | [`app-store-distribution-readiness`](./skills/app-store-distribution-readiness/SKILL.md) | Preparing apps, games, and desktop software for store/channel launch. | Preview |
+| [`desktop-os-integration`](./skills/desktop-os-integration/SKILL.md) | Designing macOS/Windows installers, auto-update, tray/menu, permissions, files, and backup. | Preview |
 | [`backup-restore-design`](./skills/backup-restore-design/SKILL.md) | Designing backup, restore, export, sync, and data durability systems. | Preview |
 | [`customer-support-operations`](./skills/customer-support-operations/SKILL.md) | Designing support, refund, escalation, help center, and trust operations. | Preview |
 | [`skill-marketplace-creator`](./skills/skill-marketplace-creator/SKILL.md) | Creating, curating, validating, or operating a marketplace of reusable agent skills. | Preview |
@@ -55,13 +65,16 @@ A Sylphx skill must be:
 5. **Safe** — no secrets, unsafe shell snippets, malicious instructions, dark patterns, or license laundering.
 6. **Original synthesis** — learn from the world, then publish Sylphx-owned structure, examples, and wording; attribution is only needed for direct quotes, third-party code/assets, or license-required excerpts.
 
-See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md), [`docs/skill-authoring-principles.md`](./docs/skill-authoring-principles.md), [`docs/product-skill-roadmap.md`](./docs/product-skill-roadmap.md), and [`docs/skill-packs.md`](./docs/skill-packs.md).
+See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md), [`docs/skill-authoring-principles.md`](./docs/skill-authoring-principles.md), [`docs/product-skill-roadmap.md`](./docs/product-skill-roadmap.md), [`docs/sota-product-operating-matrix.md`](./docs/sota-product-operating-matrix.md), [`docs/skill-factory-automation.md`](./docs/skill-factory-automation.md), and [`docs/skill-packs.md`](./docs/skill-packs.md).
 
 ## Validate locally
 
 ```bash
-node scripts/validate-skills.mjs
 node scripts/generate-registry.mjs
+node scripts/validate-skills.mjs --check-registry
+node scripts/validate-evals.mjs
+node scripts/validate-catalog.mjs
+node scripts/validate-reference-quality.mjs
 ```
 
 ## Contribute

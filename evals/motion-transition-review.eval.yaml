@@ -1,0 +1,9 @@
+skill: motion-transition-review
+positive_prompts:
+  - "Review this modal and page transition system for subtle modern motion."
+  - "Specify motion for a mobile reward moment without hurting accessibility or performance."
+negative_prompts:
+  - "Create a refund abuse policy for consumable IAP."
+expected_behavior:
+  - "Classifies the state change before recommending animation."
+  - "Includes reduced-motion and interruptibility requirements."
