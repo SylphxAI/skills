@@ -1,0 +1,10 @@
+skill: data-quality-observability-review
+positive_prompts:
+  - "Design data quality observability for product analytics and billing dashboards with freshness, schema drift, reconciliation, alerts, and backfills."
+  - "Audit a metric dashboard that executives use for pricing decisions but has unreliable event pipelines."
+negative_prompts:
+  - "Draft a partner launch email."
+expected_behavior:
+  - "Classifies datasets by decision impact before choosing checks and severity."
+  - "Includes freshness, schema, volume, uniqueness, reconciliation, lineage, dashboard trust states, alerts, and backfill proof."
+  - "Protects sensitive data and creates owner-routed incident paths for wrong metrics."

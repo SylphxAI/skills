@@ -1,0 +1,10 @@
+skill: risk-register-governance-review
+positive_prompts:
+  - "Create a risk register for launching an AI billing assistant with product, privacy, revenue, support, and model-quality risks."
+  - "Audit a launch plan where risks are scattered across docs and no one owns mitigations or review dates."
+negative_prompts:
+  - "Write SDK installation instructions."
+expected_behavior:
+  - "Separates risks from assumptions, issues, incidents, dependencies, and decisions."
+  - "Defines severity, likelihood, detectability, controls, mitigations, owners, evidence, review cadence, and accepted-risk authority."
+  - "Flags unowned, stale, or vanity risks that cannot change launch decisions."

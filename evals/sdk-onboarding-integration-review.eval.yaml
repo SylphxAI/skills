@@ -1,0 +1,10 @@
+skill: sdk-onboarding-integration-review
+positive_prompts:
+  - "Review SDK onboarding for a payments API with auth keys, sandbox data, webhooks, quickstart, errors, telemetry, and version migration."
+  - "Design a developer quickstart that gets a new user from docs to first successful API call in under ten minutes."
+negative_prompts:
+  - "Audit brand trust claims on a landing page."
+expected_behavior:
+  - "Defines first success and maps docs discovery through production readiness."
+  - "Includes runnable quickstart, sandbox data, credentials, examples, structured errors, webhooks, telemetry, versioning, and migration."
+  - "Flags production-secret, real-money, opaque-error, and breaking-change risks."

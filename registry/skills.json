@@ -224,6 +224,19 @@
       ]
     },
     {
+      "name": "content-policy-appeals-review",
+      "description": "Design and audit content policy, UGC rules, creator marketplace policies, enforcement ladders, takedowns, warnings, strikes, appeals, evidence retention, transparency notices, moderator QA, policy edge cases, user safety, and creator trust. Use when products host content, listings, profiles, comments, mods, plugins, communities, or AI-generated material.",
+      "status": "preview",
+      "path": "skills/content-policy-appeals-review",
+      "references": [
+        "content-policy-appeals-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "cost-margin-unit-economics-review",
       "description": "Design and audit product cost structure, gross margin, COGS, cloud/AI inference cost, payment fees, app-store commissions, marketplace payouts, refunds, support cost, usage-based margin, CAC/LTV, payback, cohort profitability, free-tier economics, and pricing sustainability. Use when deciding whether SaaS, app, game, API, AI, marketplace, or subscription monetization can profitably scale.",
       "status": "preview",
@@ -334,6 +347,19 @@
       "path": "skills/data-import-migration-review",
       "references": [
         "data-import-migration-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "data-quality-observability-review",
+      "description": "Design and audit data quality observability for analytics events, product metrics, warehouses, imports, pipelines, dashboards, AI datasets, billing data, and operational reports. Use when teams need freshness, completeness, accuracy, schema drift detection, lineage, backfill safety, alerting, incident ownership, and metric trust.",
+      "status": "preview",
+      "path": "skills/data-quality-observability-review",
+      "references": [
+        "data-quality-observability-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -798,6 +824,19 @@
       ]
     },
     {
+      "name": "partner-co-marketing-launch-review",
+      "description": "Design and audit partner co-marketing launches, integration announcements, joint messaging, launch assets, approval workflows, channel plans, attribution, lead routing, marketplace listings, webinars, case studies, incentives, enablement, partner commitments, and post-launch follow-up. Use when a product launch depends on a partner ecosystem or joint go-to-market motion.",
+      "status": "preview",
+      "path": "skills/partner-co-marketing-launch-review",
+      "references": [
+        "partner-co-marketing-launch-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "partner-integration-ecosystem-review",
       "description": "Design and audit partner integration ecosystems, APIs, app directories, OAuth flows, webhooks, SDKs, partner onboarding, certification, co-marketing, revenue share, support boundaries, abuse controls, and ecosystem health. Use when a product depends on third-party integrations, platform partners, developer apps, marketplace listings, or strategic distribution channels.",
       "status": "preview",
@@ -928,6 +967,19 @@
       ]
     },
     {
+      "name": "release-train-change-management-review",
+      "description": "Design and audit release trains, change management, release calendars, risk classification, freeze windows, release notes, staged rollout, owner approvals, dependency readiness, rollback, support/comms, incident handoff, and post-release review. Use when shipping many product changes across apps, SaaS, games, APIs, desktop, or platform surfaces.",
+      "status": "preview",
+      "path": "skills/release-train-change-management-review",
+      "references": [
+        "release-train-change-management-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "responsive-layout-review",
       "description": "Review and improve responsive layouts across mobile, tablet, desktop, web apps, SaaS dashboards, marketing pages, and desktop-like utilities. Use when designing breakpoints, adaptive navigation, grids, density, sidebars, tables, modals, keyboard states, or layouts that must work from small screens to wide monitors.",
       "status": "preview",
@@ -954,6 +1006,19 @@
       ]
     },
     {
+      "name": "risk-register-governance-review",
+      "description": "Design and audit product risk registers, decision governance, mitigation ownership, severity/likelihood scoring, control evidence, review cadence, triggers, assumptions, dependencies, AI/safety risk, commercial risk, operational risk, privacy/security risk, and acceptance decisions. Use when a product team needs to track and reduce material risk instead of relying on scattered notes.",
+      "status": "preview",
+      "path": "skills/risk-register-governance-review",
+      "references": [
+        "risk-register-governance-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "saas-subscription-pricing",
       "description": "Design SaaS and subscription pricing, packaging, trials, freemium limits, usage metrics, plan tiers, cancellation, downgrade, expansion, win-back, and enterprise readiness. Use when creating or reviewing pricing pages, SaaS packaging, subscription strategy, billing UX, monetization experiments, or revenue model design.",
       "status": "preview",
@@ -973,6 +1038,32 @@
       "path": "skills/sales-demo-script-review",
       "references": [
         "sales-demo-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "sdk-onboarding-integration-review",
+      "description": "Design and audit SDK, API, CLI, webhook, and developer-platform onboarding across quickstarts, auth keys, sandbox data, examples, docs IA, install friction, versioning, errors, observability, migration guides, sample apps, telemetry, and time-to-first-success. Use when developers need to integrate quickly and reliably.",
+      "status": "preview",
+      "path": "skills/sdk-onboarding-integration-review",
+      "references": [
+        "sdk-onboarding-integration-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "search-discovery-relevance-review",
+      "description": "Design and audit product search, marketplace discovery, recommendation surfaces, filters, facets, relevance signals, zero-results, query understanding, ranking drift, result quality evals, fairness, sponsored placement boundaries, and feedback loops. Use when users need to find content, products, creators, docs, apps, skills, or inventory quickly and trust the results.",
+      "status": "preview",
+      "path": "skills/search-discovery-relevance-review",
+      "references": [
+        "search-discovery-relevance-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1105,6 +1196,19 @@
       "path": "skills/subscription-entitlement-review",
       "references": [
         "subscription-entitlement-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "support-deflection-knowledge-base-review",
+      "description": "Design and audit support deflection, knowledge bases, help-center search, article quality, macros, chatbots, in-product help, diagnostics, escalation paths, unresolved-user recovery, support analytics, and product feedback loops. Use when reducing tickets while preserving customer trust and fast human help for high-stakes issues.",
+      "status": "preview",
+      "path": "skills/support-deflection-knowledge-base-review",
+      "references": [
+        "support-deflection-knowledge-base-patterns.md"
       ],
       "scripts": [],
       "agents": [

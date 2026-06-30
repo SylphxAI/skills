@@ -16,7 +16,8 @@
         "enterprise-readiness-review",
         "sales-demo-script-review",
         "agentic-workflow-designer",
-        "customer-feedback-intake-review"
+        "customer-feedback-intake-review",
+        "risk-register-governance-review"
       ]
     },
     {
@@ -50,7 +51,8 @@
         "localization-market-expansion-review",
         "referral-loop-review",
         "launch-narrative-review",
-        "brand-trust-review"
+        "brand-trust-review",
+        "partner-co-marketing-launch-review"
       ]
     },
     {
@@ -102,7 +104,8 @@
         "backup-restore-design",
         "changelog-and-release-notes",
         "offline-sync-conflict-review",
-        "feature-sunset-deprecation-review"
+        "feature-sunset-deprecation-review",
+        "release-train-change-management-review"
       ]
     },
     {
@@ -122,7 +125,10 @@
         "incident-communication-playbook",
         "analytics-event-taxonomy",
         "account-recovery-identity-review",
-        "data-import-migration-review"
+        "data-import-migration-review",
+        "data-quality-observability-review",
+        "content-policy-appeals-review",
+        "support-deflection-knowledge-base-review"
       ]
     },
     {
@@ -135,7 +141,9 @@
         "community-launch-ops-review",
         "partner-integration-ecosystem-review",
         "creator-ranking-quality-review",
-        "api-rate-limit-quota-review"
+        "api-rate-limit-quota-review",
+        "search-discovery-relevance-review",
+        "sdk-onboarding-integration-review"
       ]
     },
     {
