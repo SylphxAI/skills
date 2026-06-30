@@ -11,6 +11,8 @@
         "market-research-synthesis",
         "decision-memo-writer",
         "opportunity-scoring-review",
+        "enterprise-readiness-review",
+        "sales-demo-script-review",
         "agentic-workflow-designer"
       ]
     },
@@ -38,6 +40,7 @@
         "product-positioning",
         "seo-content-brief",
         "promotion-campaign-review",
+        "winback-campaign-review",
         "referral-loop-review",
         "launch-narrative-review"
       ]
@@ -76,6 +79,7 @@
         "app-store-distribution-readiness",
         "store-listing-optimization",
         "launch-readiness-review",
+        "release-health-dashboard-review",
         "steam-launch-readiness",
         "microsoft-store-readiness",
         "store-review-policy-risk",
@@ -91,9 +95,12 @@
       "description": "Skills for support operations, help centers, privacy, abuse/fraud, incident communications, and analytics taxonomy.",
       "skills": [
         "customer-support-operations",
+        "customer-success-health-review",
         "help-center-architecture",
         "privacy-and-data-retention-review",
+        "data-export-portability-review",
         "abuse-fraud-risk-review",
+        "moderation-trust-review",
         "incident-communication-playbook",
         "analytics-event-taxonomy"
       ]
@@ -112,7 +119,8 @@
       "description": "Skills for creating, curating, validating, and operating reusable agent skills.",
       "skills": [
         "skill-marketplace-creator",
-        "skill-eval-designer"
+        "skill-eval-designer",
+        "skill-catalog-generator"
       ]
     }
   ]

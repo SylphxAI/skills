@@ -1,0 +1,10 @@
+skill: data-export-portability-review
+positive_prompts:
+  - "Design a SaaS workspace data export and account deletion flow with admin exports, billing records, backups, and support copy."
+  - "Audit data portability for a desktop app that stores local files, cloud sync data, and user settings."
+negative_prompts:
+  - "Create a product launch narrative for Product Hunt."
+expected_behavior:
+  - "Separates export, deletion, backup restore, migration, and legal/privacy request flows."
+  - "Defines requester authority, data classes, formats, delivery, expiry, and retention exceptions."
+  - "Avoids exporting secrets or other users’ private data without authority."

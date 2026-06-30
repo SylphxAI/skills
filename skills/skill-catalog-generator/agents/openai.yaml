@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Catalog Generator"
+  short_description: "Generate skill catalogs with quality signals"
+  default_prompt: "Use $skill-catalog-generator to turn this skill repository into a searchable, scored catalog."

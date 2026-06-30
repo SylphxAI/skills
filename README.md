@@ -42,6 +42,8 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`market-research-synthesis`](./skills/market-research-synthesis/SKILL.md) | Synthesizing competitors, reviews, pricing, and market patterns into original strategy. | Preview |
 | [`decision-memo-writer`](./skills/decision-memo-writer/SKILL.md) | Writing decision memos with owner, options, evidence, tradeoffs, risks, metrics, and revisit triggers. | Preview |
 | [`opportunity-scoring-review`](./skills/opportunity-scoring-review/SKILL.md) | Scoring roadmap, growth, product, and market opportunities by impact, confidence, effort, risk, and learning. | Preview |
+| [`enterprise-readiness-review`](./skills/enterprise-readiness-review/SKILL.md) | Auditing enterprise readiness across security, identity, procurement, support, and rollout. | Preview |
+| [`sales-demo-script-review`](./skills/sales-demo-script-review/SKILL.md) | Creating buyer-specific sales demo scripts with discovery, proof, objections, and next steps. | Preview |
 | [`agentic-workflow-designer`](./skills/agentic-workflow-designer/SKILL.md) | Designing reliable agentic workflows with autonomy levels, tool boundaries, gates, handoffs, and evals. | Preview |
 | [`interface-craft`](./skills/interface-craft/SKILL.md) | Building, polishing, or reviewing UI for product craft and tasteful micro-details. | Preview |
 | [`mobile-first-ui-review`](./skills/mobile-first-ui-review/SKILL.md) | Auditing mobile-first flows for touch ergonomics, safe areas, forms, permissions, and speed. | Preview |
@@ -58,6 +60,7 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`product-positioning`](./skills/product-positioning/SKILL.md) | Sharpening audience, category, alternatives, differentiation, proof, and message hierarchy. | Preview |
 | [`seo-content-brief`](./skills/seo-content-brief/SKILL.md) | Creating product-led SEO briefs around intent, original value, internal links, and conversion. | Preview |
 | [`promotion-campaign-review`](./skills/promotion-campaign-review/SKILL.md) | Designing offers, promotions, launches, win-back, events, and campaign guardrails. | Preview |
+| [`winback-campaign-review`](./skills/winback-campaign-review/SKILL.md) | Designing ethical win-back and reactivation campaigns for churned or dormant users. | Preview |
 | [`referral-loop-review`](./skills/referral-loop-review/SKILL.md) | Designing referral loops, rewards, attribution, fraud controls, support evidence, and retained-value metrics. | Preview |
 | [`launch-narrative-review`](./skills/launch-narrative-review/SKILL.md) | Shaping launch narratives around audience, old way, new way, proof, objections, assets, and CTA. | Preview |
 | [`saas-subscription-pricing`](./skills/saas-subscription-pricing/SKILL.md) | Designing SaaS pricing, packaging, trials, cancellation, and expansion. | Preview |
@@ -77,6 +80,7 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`app-store-distribution-readiness`](./skills/app-store-distribution-readiness/SKILL.md) | Preparing apps, games, and desktop software for store/channel launch. | Preview |
 | [`store-listing-optimization`](./skills/store-listing-optimization/SKILL.md) | Optimizing App Store, Google Play, Steam, Microsoft Store, and direct-download listings. | Preview |
 | [`launch-readiness-review`](./skills/launch-readiness-review/SKILL.md) | Reviewing go/no-go readiness across product, payments, support, analytics, trust, and rollback. | Preview |
+| [`release-health-dashboard-review`](./skills/release-health-dashboard-review/SKILL.md) | Designing release health dashboards, staged rollout gates, rollback, and post-release review. | Preview |
 | [`steam-launch-readiness`](./skills/steam-launch-readiness/SKILL.md) | Preparing Steam store pages, wishlists, demos, builds, pricing, community, and launch-week ops. | Preview |
 | [`microsoft-store-readiness`](./skills/microsoft-store-readiness/SKILL.md) | Preparing Windows apps for Microsoft Store packaging, listing, certification, monetization, and rollout. | Preview |
 | [`store-review-policy-risk`](./skills/store-review-policy-risk/SKILL.md) | Auditing store submission risk across payments, privacy, permissions, UGC, ads, claims, and reviewer notes. | Preview |
@@ -86,15 +90,19 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`backup-restore-design`](./skills/backup-restore-design/SKILL.md) | Designing backup, restore, export, sync, and data durability systems. | Preview |
 | [`changelog-and-release-notes`](./skills/changelog-and-release-notes/SKILL.md) | Writing user-facing release notes, technical changelogs, and support-aware update communication. | Preview |
 | [`customer-support-operations`](./skills/customer-support-operations/SKILL.md) | Designing support, refund, escalation, help center, and trust operations. | Preview |
+| [`customer-success-health-review`](./skills/customer-success-health-review/SKILL.md) | Scoring customer health and mapping renewal, adoption, expansion, and success playbooks. | Preview |
 | [`help-center-architecture`](./skills/help-center-architecture/SKILL.md) | Structuring help centers, support docs, search, escalation, and article maintenance. | Preview |
 | [`privacy-and-data-retention-review`](./skills/privacy-and-data-retention-review/SKILL.md) | Reviewing data collection, retention, deletion, export, telemetry, backups, and disclosures. | Preview |
+| [`data-export-portability-review`](./skills/data-export-portability-review/SKILL.md) | Designing trusted export, portability, deletion, migration, and offboarding flows. | Preview |
 | [`abuse-fraud-risk-review`](./skills/abuse-fraud-risk-review/SKILL.md) | Designing abuse, fraud, spam, refund, promotion, marketplace, and game-economy controls. | Preview |
+| [`moderation-trust-review`](./skills/moderation-trust-review/SKILL.md) | Designing moderation queues, appeals, enforcement ladders, and trust operations. | Preview |
 | [`incident-communication-playbook`](./skills/incident-communication-playbook/SKILL.md) | Planning outage, payment, data, privacy, game, and support incident communications. | Preview |
 | [`analytics-event-taxonomy`](./skills/analytics-event-taxonomy/SKILL.md) | Defining event names, properties, funnels, identity, guardrails, and instrumentation QA. | Preview |
 | [`developer-tool-product-design`](./skills/developer-tool-product-design/SKILL.md) | Designing developer tools, APIs, SDKs, CLIs, docs, examples, pricing, telemetry, and support. | Preview |
 | [`marketplace-product-ops`](./skills/marketplace-product-ops/SKILL.md) | Operating marketplaces with submissions, review queues, ranking, trust, payouts, disputes, and moderation. | Preview |
 | [`creator-onboarding-review`](./skills/creator-onboarding-review/SKILL.md) | Designing creator onboarding, submission quality gates, review feedback, publishing, analytics, and payouts readiness. | Preview |
 | [`skill-eval-designer`](./skills/skill-eval-designer/SKILL.md) | Designing behavior evals, positive/negative prompts, rubrics, regression cases, and forward-tests for skills. | Preview |
+| [`skill-catalog-generator`](./skills/skill-catalog-generator/SKILL.md) | Generating skill catalogs, quality scores, groupings, gaps, and marketplace metadata. | Preview |
 | [`skill-marketplace-creator`](./skills/skill-marketplace-creator/SKILL.md) | Creating, curating, validating, or operating a marketplace of reusable agent skills. | Preview |
 
 The generated registry lives at [`registry/skills.json`](./registry/skills.json).

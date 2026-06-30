@@ -1,0 +1,10 @@
+skill: sales-demo-script-review
+positive_prompts:
+  - "Create a 20-minute sales demo script for a developer tool selling to a product leader and developer champion."
+  - "Audit an enterprise SaaS demo for discovery, proof, objections, and next-step commitment."
+negative_prompts:
+  - "Design a data export JSON schema."
+expected_behavior:
+  - "Builds the demo around buyer pain, outcome, proof, objections, and next commitment instead of feature touring."
+  - "Tailors talk track by persona and separates verified proof from roadmap claims."
+  - "Includes timing, click path, buyer checks, follow-up owners, and deal learning."

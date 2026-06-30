@@ -1,0 +1,10 @@
+skill: customer-success-health-review
+positive_prompts:
+  - "Build a customer health score and renewal risk playbook for a B2B SaaS with onboarding, support, and usage data."
+  - "Audit customer success operations for a developer tool with enterprise accounts and expansion goals."
+negative_prompts:
+  - "Create a Steam capsule art checklist."
+expected_behavior:
+  - "Separates activation, adoption, outcome, sentiment, support load, renewal risk, and expansion readiness."
+  - "Maps each health state to an owner action and proof of recovery."
+  - "Calls out data quality gaps instead of pretending every account can be scored."

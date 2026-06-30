@@ -133,6 +133,19 @@
       ]
     },
     {
+      "name": "customer-success-health-review",
+      "description": "Design and audit customer health scoring, onboarding success, adoption, renewal risk, expansion readiness, support signals, QBRs, lifecycle playbooks, and account success operations for SaaS, developer tools, marketplaces, and B2B products. Use when building customer success dashboards, health scores, churn risk reviews, renewal playbooks, or expansion motions.",
+      "status": "preview",
+      "path": "skills/customer-success-health-review",
+      "references": [
+        "customer-health-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "customer-support-operations",
       "description": "Design customer support operations for software products including help centers, ticket triage, refund handling, escalation, support tooling, incident communication, macros, trust recovery, abuse review, and product feedback loops. Use when building or auditing support systems for apps, games, SaaS, utilities, stores, or subscription products.",
       "status": "preview",
@@ -152,6 +165,19 @@
       "path": "skills/daily-reward-and-streak-review",
       "references": [
         "daily-reward-streak-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "data-export-portability-review",
+      "description": "Design and audit data export, portability, backup handoff, account deletion, workspace offboarding, migration, machine-readable formats, admin exports, and user trust flows for SaaS, apps, marketplaces, games, and desktop software. Use when users need to export, move, delete, restore, or leave with their data safely.",
+      "status": "preview",
+      "path": "skills/data-export-portability-review",
+      "references": [
+        "data-portability-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -217,6 +243,19 @@
       "path": "skills/empty-state-and-loading-review",
       "references": [
         "empty-loading-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "enterprise-readiness-review",
+      "description": "Audit and design enterprise readiness across security review, SSO, SCIM, RBAC, audit logs, admin controls, procurement, legal, privacy, compliance evidence, SLA/support, implementation, pilot, rollout, and expansion. Use when selling SaaS, developer tools, marketplaces, or platforms to larger organizations or preparing an enterprise plan.",
+      "status": "preview",
+      "path": "skills/enterprise-readiness-review",
+      "references": [
+        "enterprise-readiness-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -447,6 +486,19 @@
       ]
     },
     {
+      "name": "moderation-trust-review",
+      "description": "Design and audit moderation, trust, safety, policy, review queues, creator or user submissions, appeals, enforcement ladders, transparency, and marketplace/community integrity flows. Use when products include UGC, reviews, comments, listings, plugins, skills, marketplaces, communities, or creator submissions that need safe publishing and fair enforcement.",
+      "status": "preview",
+      "path": "skills/moderation-trust-review",
+      "references": [
+        "moderation-trust-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "motion-transition-review",
       "description": "Review and design subtle product motion, animation, and transitions for UI state changes, navigation, loading, gestures, modals, drawers, games, and desktop/mobile apps. Use when an interface feels jumpy, slow, lifeless, over-animated, or when adding modern micro-interactions while preserving accessibility and reduced-motion behavior.",
       "status": "preview",
@@ -603,6 +655,19 @@
       ]
     },
     {
+      "name": "release-health-dashboard-review",
+      "description": "Design and audit release health dashboards, rollout gates, canary metrics, crash/error monitoring, support signals, store release status, desktop auto-update adoption, rollback triggers, and post-release review for apps, SaaS, games, web, and desktop software. Use when launching releases, patches, experiments, or staged rollouts that need operational confidence.",
+      "status": "preview",
+      "path": "skills/release-health-dashboard-review",
+      "references": [
+        "release-health-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "responsive-layout-review",
       "description": "Review and improve responsive layouts across mobile, tablet, desktop, web apps, SaaS dashboards, marketing pages, and desktop-like utilities. Use when designing breakpoints, adaptive navigation, grids, density, sidebars, tables, modals, keyboard states, or layouts that must work from small screens to wide monitors.",
       "status": "preview",
@@ -642,12 +707,38 @@
       ]
     },
     {
+      "name": "sales-demo-script-review",
+      "description": "Create and audit sales demo scripts, discovery flows, buyer-specific narratives, proof paths, objection handling, next-step commitments, and follow-up plans for SaaS, developer tools, marketplaces, platforms, and enterprise products. Use when preparing demos for founders, product leaders, developers, finance buyers, IT/security reviewers, or procurement-led sales motions.",
+      "status": "preview",
+      "path": "skills/sales-demo-script-review",
+      "references": [
+        "sales-demo-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "seo-content-brief",
       "description": "Create SEO content briefs for SaaS, apps, developer tools, utilities, marketplaces, games, and product-led websites across search intent, topic clusters, SERP differentiation, outline, internal links, conversion path, schema, freshness, and evidence. Use when planning content that should rank, convert, and support product positioning without becoming generic keyword stuffing.",
       "status": "preview",
       "path": "skills/seo-content-brief",
       "references": [
         "seo-content-brief-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "skill-catalog-generator",
+      "description": "Create, audit, and update searchable skill catalogs, marketplace groupings, registry metadata, quality scores, demo matrices, and install/discovery surfaces for AI-agent skill repositories. Use when turning a SKILL.md repository into a catalog, ranking skills, finding coverage gaps, or preparing public/private skill marketplace metadata.",
+      "status": "preview",
+      "path": "skills/skill-catalog-generator",
+      "references": [
+        "catalog-generation-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -754,6 +845,19 @@
       "path": "skills/usage-based-pricing-review",
       "references": [
         "usage-based-pricing-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "winback-campaign-review",
+      "description": "Design and audit win-back, reactivation, churn recovery, cancellation follow-up, dormant-user, lapsed-subscriber, lifecycle offer, and re-engagement campaigns for SaaS, apps, games, marketplaces, and developer tools. Use when trying to recover churned users, reactivate dormant accounts, or build ethical promotion flows with segmentation, offers, messaging, and metrics.",
+      "status": "preview",
+      "path": "skills/winback-campaign-review",
+      "references": [
+        "winback-campaign-patterns.md"
       ],
       "scripts": [],
       "agents": [

@@ -1,0 +1,10 @@
+skill: winback-campaign-review
+positive_prompts:
+  - "Design a win-back campaign for cancelled SaaS subscribers with different churn reasons and discount guardrails."
+  - "Review a dormant mobile game user reactivation campaign with push notifications and comeback rewards."
+negative_prompts:
+  - "Audit Windows installer signing and auto-update behavior."
+expected_behavior:
+  - "Segments churned users by reason, value history, consent, and economics."
+  - "Connects message, offer, landing path, support handling, and fatigue limits."
+  - "Measures incremental retained activity or revenue instead of vanity engagement."

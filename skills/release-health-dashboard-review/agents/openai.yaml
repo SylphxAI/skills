@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Health Dashboard Review"
+  short_description: "Define release health metrics and gates"
+  default_prompt: "Use $release-health-dashboard-review to design release health dashboards, gates, and rollback signals."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Success Health Review"
+  short_description: "Score customer health and success motions"
+  default_prompt: "Use $customer-success-health-review to build a customer health score and success playbook."
