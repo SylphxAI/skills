@@ -7,9 +7,9 @@ This repository grows around high-demand job clusters, not random one-off prompt
 The repository foundation is production-ready:
 
 - public repo, CI, registry, catalog, and install verification exist;
-- 67 preview skills are present with evals, behavior examples, and references;
+- 75 preview skills are present with evals, behavior examples, and references;
 - quality bar and original-synthesis policy are explicit;
-- high-leverage product cells now cover strategy, opportunity scoring, agentic workflows, revenue, usage pricing, payouts, mobile/game retention, live events, referrals, accessibility, store policy risk, Steam, Microsoft Store, macOS, Windows, developer tools, creator onboarding, skill evals, catalog automation, marketplace moderation, win-back, customer health, enterprise readiness, sales demos, data portability, release health, and marketplace ops.
+- high-leverage product cells now cover strategy, opportunity scoring, agentic workflows, revenue, usage pricing, payouts, mobile/game retention, live events, referrals, accessibility, store policy risk, Steam, Microsoft Store, macOS, Windows, developer tools, creator onboarding, skill evals, catalog automation, marketplace moderation, win-back, customer health, enterprise readiness, sales demos, data portability, release health, experiment design, permission UX, localization, admin settings IA, security questionnaires, billing reconciliation, game soft launch, community launch ops, and marketplace ops.
 
 ## Priority packs
 
@@ -20,6 +20,7 @@ The repository foundation is production-ready:
 - `execution-simplification`
 - `decision-memo-writer`
 - `opportunity-scoring-review`
+- `experiment-design-review`
 - `agentic-workflow-designer`
 - `enterprise-readiness-review`
 - `sales-demo-script-review`
@@ -33,6 +34,8 @@ The repository foundation is production-ready:
 - `accessibility-product-review`
 - `design-system-extractor`
 - `form-ux-review`
+- `app-permission-ux-review`
+- `admin-settings-ia-review`
 - `empty-state-and-loading-review`
 
 ### 3. Product Systems Pack
@@ -46,6 +49,7 @@ The repository foundation is production-ready:
 - `daily-reward-and-streak-review`
 - `live-event-ops-review`
 - `retention-cohort-review`
+- `game-soft-launch-review`
 
 ### 4. Revenue & Monetization Pack
 
@@ -56,9 +60,11 @@ The repository foundation is production-ready:
 - `customer-success-health-review`
 - `payment-platform-readiness`
 - `marketplace-payouts-review`
+- `billing-reconciliation-review`
 - `ad-monetization-review`
 - `promotion-campaign-review`
 - `winback-campaign-review`
+- `localization-market-expansion-review`
 
 ### 5. Marketing Design Pack
 
@@ -77,6 +83,8 @@ The repository foundation is production-ready:
 - `steam-launch-readiness`
 - `microsoft-store-readiness`
 - `store-review-policy-risk`
+- `app-permission-ux-review`
+- `localization-market-expansion-review`
 - `desktop-os-integration`
 - `macos-release-readiness`
 - `windows-release-readiness`
@@ -89,6 +97,7 @@ The repository foundation is production-ready:
 - `backup-restore-design`
 - `customer-support-operations`
 - `customer-success-health-review`
+- `security-questionnaire-response-review`
 - `privacy-and-data-retention-review`
 - `data-export-portability-review`
 - `abuse-fraud-risk-review`
@@ -104,14 +113,16 @@ The repository foundation is production-ready:
 - `marketplace-product-ops`
 - `moderation-trust-review`
 - `marketplace-payouts-review`
+- `billing-reconciliation-review`
 - `creator-onboarding-review`
+- `community-launch-ops-review`
 - `skill-marketplace-creator`
 - `skill-eval-designer`
 - `skill-catalog-generator`
 
 ## What will attract stars
 
-- Skills that solve painful, common jobs: UI polish, accessibility, checkout conversion, usage pricing, decision memos, opportunity scoring, agentic workflows, mobile monetization, Steam/Microsoft launch, desktop release, developer onboarding, creator onboarding, marketplace payouts, skill evals, catalog automation, moderation trust, customer health, enterprise readiness, data portability, release health, and production readiness.
+- Skills that solve painful, common jobs: UI polish, accessibility, checkout conversion, usage pricing, decision memos, opportunity scoring, agentic workflows, mobile monetization, Steam/Microsoft launch, desktop release, developer onboarding, creator onboarding, marketplace payouts, skill evals, catalog automation, moderation trust, customer health, enterprise readiness, data portability, release health, experiment design, app permission UX, localization, admin settings IA, security questionnaires, billing reconciliation, game soft launch, community launch ops, and production readiness.
 - Before/after examples and public demos for every high-demand skill.
 - Visible quality bar that rejects prompt dumps and requires state machines, decision tables, event schemas, and eval prompts.
 - Installability through open skills CLI and third-party directories.

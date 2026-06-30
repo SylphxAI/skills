@@ -1,0 +1,10 @@
+skill: localization-market-expansion-review
+positive_prompts:
+  - "Plan localization and market expansion for a subscription mobile app entering Japan and Korea."
+  - "Audit a SaaS regional launch plan for translation, pricing, support, payments, legal, and acquisition risk."
+negative_prompts:
+  - "Review a keyboard accessibility issue in a modal dialog."
+expected_behavior:
+  - "Separates translation from market demand, i18n infrastructure, pricing, payments, support, legal, and launch channels."
+  - "Produces a readiness matrix with launch gates and market-specific risks."
+  - "Defines post-launch metrics for conversion, retention, refunds, support load, and cohort quality."

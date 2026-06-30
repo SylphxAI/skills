@@ -11,6 +11,7 @@
         "market-research-synthesis",
         "decision-memo-writer",
         "opportunity-scoring-review",
+        "experiment-design-review",
         "enterprise-readiness-review",
         "sales-demo-script-review",
         "agentic-workflow-designer"
@@ -27,6 +28,8 @@
         "accessibility-product-review",
         "design-system-extractor",
         "form-ux-review",
+        "app-permission-ux-review",
+        "admin-settings-ia-review",
         "empty-state-and-loading-review"
       ]
     },
@@ -41,6 +44,7 @@
         "seo-content-brief",
         "promotion-campaign-review",
         "winback-campaign-review",
+        "localization-market-expansion-review",
         "referral-loop-review",
         "launch-narrative-review"
       ]
@@ -55,6 +59,7 @@
         "refund-and-support-flow-review",
         "payment-platform-readiness",
         "marketplace-payouts-review",
+        "billing-reconciliation-review",
         "checkout-conversion-review"
       ]
     },
@@ -68,6 +73,7 @@
         "ad-monetization-review",
         "daily-reward-and-streak-review",
         "live-event-ops-review",
+        "game-soft-launch-review",
         "retention-cohort-review",
         "onboarding-activation-review"
       ]
@@ -99,6 +105,7 @@
         "help-center-architecture",
         "privacy-and-data-retention-review",
         "data-export-portability-review",
+        "security-questionnaire-response-review",
         "abuse-fraud-risk-review",
         "moderation-trust-review",
         "incident-communication-playbook",
@@ -111,7 +118,8 @@
       "skills": [
         "developer-tool-product-design",
         "marketplace-product-ops",
-        "creator-onboarding-review"
+        "creator-onboarding-review",
+        "community-launch-ops-review"
       ]
     },
     {

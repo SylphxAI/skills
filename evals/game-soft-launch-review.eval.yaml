@@ -1,0 +1,10 @@
+skill: game-soft-launch-review
+positive_prompts:
+  - "Plan a mobile game soft launch with test markets, FTUE, retention, IAP, rewarded ads, economy, crashes, and scale gates."
+  - "Audit whether a casual game should expand from soft launch to global launch based on cohorts and live-ops metrics."
+negative_prompts:
+  - "Prepare security questionnaire answers for an enterprise buyer."
+expected_behavior:
+  - "Defines segmented gate metrics across retention, session quality, economy, IAP, ads, crashes, store conversion, support, and sentiment."
+  - "Separates product learning, monetization, technical readiness, acquisition quality, and listing tests."
+  - "Produces scale, iterate, hold, or kill decisions with caveats and player-trust guardrails."

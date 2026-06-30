@@ -1,0 +1,10 @@
+skill: billing-reconciliation-review
+positive_prompts:
+  - "Design billing reconciliation for a SaaS with Stripe subscriptions, invoices, credits, refunds, entitlements, and support adjustments."
+  - "Audit marketplace payout reconciliation across sales, fees, refunds, chargebacks, creator balances, and payouts."
+negative_prompts:
+  - "Plan a localization launch for a new language."
+expected_behavior:
+  - "Separates order, payment, invoice, ledger, entitlement, tax, refund, dispute, and payout states."
+  - "Defines reconciliation keys, invariants, mismatch classes, exception queue, repair actions, and audit evidence."
+  - "Connects billing mismatches to support timelines and customer access impact."

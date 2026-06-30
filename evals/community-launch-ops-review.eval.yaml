@@ -1,0 +1,10 @@
+skill: community-launch-ops-review
+positive_prompts:
+  - "Design launch operations for a developer tool community with Discord channels, beta feedback, support routing, moderation, events, and health metrics."
+  - "Audit a mobile game community launch plan for roles, spoilers, scams, live events, bug feedback, and moderation coverage."
+negative_prompts:
+  - "Design an A/B test for a checkout button."
+expected_behavior:
+  - "Defines community purpose, platform, channels, roles, moderation, support routing, feedback loops, events, and owner coverage."
+  - "Separates community, support, marketing, beta, creator, and advocacy jobs."
+  - "Measures health with retained contribution, helpfulness, signal quality, moderation load, response time, and safety incidents."
