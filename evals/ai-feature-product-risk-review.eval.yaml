@@ -1,0 +1,10 @@
+skill: ai-feature-product-risk-review
+positive_prompts:
+  - "Review product risks for launching an AI support copilot that drafts replies, classifies tickets, and suggests refunds."
+  - "Design rollout gates, evals, UI transparency, and fallback for an AI agent feature that can modify workspace settings."
+negative_prompts:
+  - "Plan a community launch calendar."
+expected_behavior:
+  - "Classifies AI job, autonomy level, data sensitivity, harm if wrong, and model/output boundaries."
+  - "Requires evals, UI transparency, fallback, monitoring, support paths, and rollout gates."
+  - "Flags high-risk automation, privacy, hallucination, abuse, cost, latency, and provider/model-change risks."

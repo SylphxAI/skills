@@ -1,0 +1,10 @@
+skill: feature-flag-rollout-review
+positive_prompts:
+  - "Design a staged rollout plan for a risky AI feature using flags, guardrails, kill switch, support notes, and cleanup."
+  - "Audit feature flag debt and rollout gates for a SaaS billing migration."
+negative_prompts:
+  - "Write a creator marketplace ranking formula."
+expected_behavior:
+  - "Classifies flag type and defines exposure unit, targeting, owner, default state, metrics, and cleanup deadline."
+  - "Includes staged rollout gates, guardrails, kill switch, rollback, support visibility, and event tracking."
+  - "Calls out stale flag debt, entitlement bypass risk, and unsafe targeting."

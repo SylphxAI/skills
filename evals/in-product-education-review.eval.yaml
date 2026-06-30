@@ -1,0 +1,10 @@
+skill: in-product-education-review
+positive_prompts:
+  - "Design in-product education for a SaaS onboarding flow with checklists, empty states, templates, contextual help, and expert-user suppression."
+  - "Audit feature discovery tooltips and upgrade education for annoyance, accessibility, localization, and retained action."
+negative_prompts:
+  - "Review tax invoice requirements for VAT IDs."
+expected_behavior:
+  - "Chooses education format based on user moment and confusion, not generic tours."
+  - "Defines trigger, dismissal, persistence, accessibility, localization, help handoff, and retained-action metrics."
+  - "Flags when education is masking broken IA, defaults, or product copy."

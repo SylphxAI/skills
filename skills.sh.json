@@ -12,6 +12,7 @@
         "decision-memo-writer",
         "opportunity-scoring-review",
         "experiment-design-review",
+        "ai-feature-product-risk-review",
         "enterprise-readiness-review",
         "sales-demo-script-review",
         "agentic-workflow-designer"
@@ -30,7 +31,8 @@
         "form-ux-review",
         "app-permission-ux-review",
         "admin-settings-ia-review",
-        "empty-state-and-loading-review"
+        "empty-state-and-loading-review",
+        "in-product-education-review"
       ]
     },
     {
@@ -60,6 +62,7 @@
         "payment-platform-readiness",
         "marketplace-payouts-review",
         "billing-reconciliation-review",
+        "tax-invoicing-compliance-review",
         "checkout-conversion-review"
       ]
     },
@@ -86,6 +89,7 @@
         "store-listing-optimization",
         "launch-readiness-review",
         "release-health-dashboard-review",
+        "feature-flag-rollout-review",
         "steam-launch-readiness",
         "microsoft-store-readiness",
         "store-review-policy-risk",
@@ -101,11 +105,13 @@
       "description": "Skills for support operations, help centers, privacy, abuse/fraud, incident communications, and analytics taxonomy.",
       "skills": [
         "customer-support-operations",
+        "support-quality-qa-review",
         "customer-success-health-review",
         "help-center-architecture",
         "privacy-and-data-retention-review",
         "data-export-portability-review",
         "security-questionnaire-response-review",
+        "user-preferences-settings-review",
         "abuse-fraud-risk-review",
         "moderation-trust-review",
         "incident-communication-playbook",
@@ -119,7 +125,9 @@
         "developer-tool-product-design",
         "marketplace-product-ops",
         "creator-onboarding-review",
-        "community-launch-ops-review"
+        "community-launch-ops-review",
+        "partner-integration-ecosystem-review",
+        "creator-ranking-quality-review"
       ]
     },
     {

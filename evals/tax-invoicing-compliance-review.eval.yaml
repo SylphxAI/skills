@@ -1,0 +1,10 @@
+skill: tax-invoicing-compliance-review
+positive_prompts:
+  - "Audit tax and invoicing flows for a SaaS with B2B invoices, VAT IDs, refunds, credits, and app-store subscriptions."
+  - "Design marketplace buyer receipts and seller statements across fees, taxes, payouts, and refunds."
+negative_prompts:
+  - "Plan a feature flag cleanup campaign."
+expected_behavior:
+  - "Identifies seller/merchant of record, buyer type, jurisdiction, document type, tax metadata, and finance owner."
+  - "Separates receipts, B2B invoices, app-store receipts, marketplace statements, credit notes, and corrections."
+  - "Routes legal/tax decisions to qualified owners and links documents to ledger/reconciliation."

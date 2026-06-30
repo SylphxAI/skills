@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Feature Product Risk Review"
+  short_description: "Audit AI feature product risks"
+  default_prompt: "Use $ai-feature-product-risk-review to review AI feature UX, safety, trust, evals, and rollout risks."

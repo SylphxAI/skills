@@ -12,9 +12,9 @@ Core message:
 
 ## Public proof points
 
-- 75 preview skills.
-- 75 eval files.
-- 75 behavior examples.
+- 83 preview skills.
+- 83 eval files.
+- 83 behavior examples.
 - Generated registry: `registry/skills.json`.
 - Generated static catalog: `catalog/index.html`.
 - Live skills.sh listing: `https://www.skills.sh/sylphxai/skills`.

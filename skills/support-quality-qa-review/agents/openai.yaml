@@ -1,0 +1,4 @@
+interface:
+  display_name: "Support Quality QA Review"
+  short_description: "Audit support quality and QA loops"
+  default_prompt: "Use $support-quality-qa-review to design support QA scorecards, macros, escalations, and coaching loops."

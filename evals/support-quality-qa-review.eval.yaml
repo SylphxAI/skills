@@ -1,0 +1,10 @@
+skill: support-quality-qa-review
+positive_prompts:
+  - "Design a support QA scorecard and coaching loop for SaaS billing, refunds, account access, and technical support tickets."
+  - "Audit AI-assisted support macros for hallucination risk, policy accuracy, escalation, and customer trust."
+negative_prompts:
+  - "Plan a partner app directory launch."
+expected_behavior:
+  - "Defines QA dimensions beyond speed: accuracy, policy, evidence, tone, resolution, escalation, safety, and prevention."
+  - "Creates sampling, calibration, coaching, macro update, automation QA, and product feedback loops."
+  - "Protects customer privacy and separates agent coaching from product/system defects."

@@ -1,0 +1,10 @@
+skill: creator-ranking-quality-review
+positive_prompts:
+  - "Audit ranking quality for a plugin marketplace with new creators, paid promotion, reviews, installs, retention, and abuse risk."
+  - "Design a creator ranking scorecard for an AI skills marketplace that rewards quality and prevents spam."
+negative_prompts:
+  - "Design personal theme and notification preferences."
+expected_behavior:
+  - "Separates eligibility, ranking, editorial featuring, paid promotion, and moderation enforcement."
+  - "Uses quality, relevance, freshness, reliability, retained value, fairness, and abuse-resistant signals."
+  - "Includes creator feedback, appeals, governance cadence, experiments, and user-trust guardrails."
