@@ -1,0 +1,10 @@
+skill: support-deflection-knowledge-base-review
+positive_prompts:
+  - "Audit a help center and chatbot for reducing refund, account access, and integration tickets without trapping unresolved users."
+  - "Design support deflection metrics that measure resolution quality, recontact, escalation, sentiment, and product feedback loops."
+negative_prompts:
+  - "Model AI SaaS unit economics."
+expected_behavior:
+  - "Separates deflection targets by contact driver and stakes before choosing articles, search, macros, or chatbot answers."
+  - "Includes article ownership, freshness, search QA, source citation, escalation triggers, diagnostics, and product feedback loop."
+  - "Warns against optimizing deflection rate while unresolved users churn, refund, or recontact."

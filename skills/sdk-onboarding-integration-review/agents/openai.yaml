@@ -1,0 +1,4 @@
+interface:
+  display_name: "SDK Onboarding Integration Review"
+  short_description: "Improve SDK integration success"
+  default_prompt: "Use $sdk-onboarding-integration-review to review SDK onboarding and developer time-to-first-success."

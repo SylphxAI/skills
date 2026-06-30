@@ -1,0 +1,10 @@
+skill: partner-co-marketing-launch-review
+positive_prompts:
+  - "Plan a partner co-marketing launch for a new integration with joint messaging, assets, approvals, attribution, lead routing, and support readiness."
+  - "Audit a marketplace partner announcement where claims, logos, UTMs, and inbound follow-up are not yet approved."
+negative_prompts:
+  - "Design data quality alerts for a dashboard."
+expected_behavior:
+  - "Classifies partner motion and defines shared audience, joint value, proof, CTA, and success metric."
+  - "Includes assets, approvals, channel calendar, attribution, lead routing, enablement, support readiness, and post-launch review."
+  - "Flags unsupported partner claims, privacy/lead-sharing risk, weak attribution, and missing follow-up ownership."

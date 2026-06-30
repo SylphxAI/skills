@@ -1,0 +1,10 @@
+skill: content-policy-appeals-review
+positive_prompts:
+  - "Design policy enforcement and appeals for a plugin marketplace with takedowns, warnings, creator trust, evidence, and restoration."
+  - "Audit moderation appeals for UGC where automation removes content and creators complain about vague notices."
+negative_prompts:
+  - "Design a release train calendar."
+expected_behavior:
+  - "Separates policy definition, detection, review, enforcement, notice, appeal, restoration, QA, and transparency."
+  - "Includes severity ladders, evidence packages, notices, appeal SLA, reviewer independence, restoration side effects, and metrics."
+  - "Flags vague rules, leaked abuse signals, automation false positives, and missing restoration paths."

@@ -1,0 +1,10 @@
+skill: search-discovery-relevance-review
+positive_prompts:
+  - "Audit marketplace search relevance for plugins with filters, sponsored placement, new creators, zero-results, and ranking evals."
+  - "Design discovery quality guardrails for a content app that mixes search, recommendations, and editorial curation."
+negative_prompts:
+  - "Review account recovery MFA reset risk."
+expected_behavior:
+  - "Separates retrieval, eligibility, ranking, personalization, editorial, paid placement, and moderation."
+  - "Defines eval queries, relevance metrics, zero-result recovery, debug tools, guardrails, canary rollout, and rollback."
+  - "Flags click-only optimization, unlabeled sponsored results, cold-start unfairness, and trust risks."

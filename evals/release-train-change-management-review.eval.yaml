@@ -1,0 +1,10 @@
+skill: release-train-change-management-review
+positive_prompts:
+  - "Plan a release train for SaaS billing, API, UI, and mobile changes with risk classes, readiness gates, rollout, rollback, and support comms."
+  - "Audit change management for a game live event and desktop release scheduled in the same week."
+negative_prompts:
+  - "Design a feedback intake taxonomy."
+expected_behavior:
+  - "Classifies changes by risk and assigns special gates for billing, auth, migrations, APIs, infra, and store releases."
+  - "Includes calendar, freeze rules, dependency map, staged rollout, release health guardrails, rollback, comms, and post-release review."
+  - "Prevents calendar-driven rollout when guardrails fail."
