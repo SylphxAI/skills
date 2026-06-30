@@ -1,0 +1,10 @@
+skill: admin-settings-ia-review
+positive_prompts:
+  - "Design admin settings IA for a B2B SaaS with members, billing, SSO, API keys, data export, and workspace deletion."
+  - "Audit a marketplace creator admin panel for roles, publishing controls, payouts, dangerous actions, and audit logs."
+negative_prompts:
+  - "Create a win-back email sequence."
+expected_behavior:
+  - "Organizes settings by actor, scope, risk, and user mental model rather than backend concepts."
+  - "Defines role gates, defaults, confirmations, audit logs, disabled states, and recovery paths."
+  - "Separates personal, workspace, billing, security, data, integration, and support controls."

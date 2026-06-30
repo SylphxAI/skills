@@ -1,0 +1,10 @@
+skill: experiment-design-review
+positive_prompts:
+  - "Design an A/B experiment for a SaaS onboarding change with activation, retention, support, and guardrail metrics."
+  - "Review a pricing experiment plan for sample bias, decision rules, and customer-trust risk."
+negative_prompts:
+  - "Write an app store subtitle for a meditation app."
+expected_behavior:
+  - "Starts from the decision, hypothesis, metric mechanism, and guardrails before choosing a test type."
+  - "Defines exposure, eligibility, instrumentation, analysis window, decision rule, and rollback path."
+  - "Calls out underpowered tests, unsafe variants, novelty effects, peeking, and false-confidence risks."

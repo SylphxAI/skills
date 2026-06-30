@@ -1,0 +1,10 @@
+skill: security-questionnaire-response-review
+positive_prompts:
+  - "Prepare security questionnaire responses for an enterprise buyer asking about SSO, encryption, subprocessors, retention, incident response, and audit logs."
+  - "Audit a vendor risk questionnaire response for unsupported compliance claims and missing evidence."
+negative_prompts:
+  - "Design a community launch content calendar."
+expected_behavior:
+  - "Classifies answers as current fact, partial, not applicable, compensating control, roadmap, unknown, or review-required."
+  - "Requires evidence and owner review for material security, privacy, compliance, SLA, and subprocessor claims."
+  - "Avoids inventing certifications or commitments and creates a gap register."

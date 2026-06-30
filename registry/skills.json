@@ -42,6 +42,19 @@
       ]
     },
     {
+      "name": "admin-settings-ia-review",
+      "description": "Design and audit admin settings information architecture, workspace controls, role and permission settings, billing/admin separation, security settings, defaults, auditability, dangerous actions, policy inheritance, team management, and enterprise admin UX. Use when building settings for SaaS, developer tools, marketplaces, desktop apps, or multi-user products.",
+      "status": "preview",
+      "path": "skills/admin-settings-ia-review",
+      "references": [
+        "admin-settings-ia-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "agentic-workflow-designer",
       "description": "Design agentic workflows, AI agent operating loops, delegation patterns, human gates, tool boundaries, handoffs, evals, memory, review checkpoints, failure recovery, observability, and autonomy levels for product, engineering, research, support, marketing, operations, and skill-factory work. Use when creating repeatable workflows for AI agents or improving multi-step agent execution quality.",
       "status": "preview",
@@ -61,6 +74,19 @@
       "path": "skills/analytics-event-taxonomy",
       "references": [
         "analytics-event-taxonomy-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "app-permission-ux-review",
+      "description": "Design and audit permission request UX, consent moments, privacy rationale, denial recovery, settings paths, OS prompts, notification opt-ins, location/camera/microphone/photo/contact access, tracking prompts, and trust copy for mobile, desktop, web, and games. Use when products need sensitive access without hurting conversion, review approval, accessibility, or user trust.",
+      "status": "preview",
+      "path": "skills/app-permission-ux-review",
+      "references": [
+        "permission-ux-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -94,6 +120,19 @@
       ]
     },
     {
+      "name": "billing-reconciliation-review",
+      "description": "Design and audit billing reconciliation across invoices, payments, ledgers, entitlements, app-store receipts, subscriptions, IAP, payouts, refunds, chargebacks, taxes, credits, adjustments, revenue recognition inputs, and support evidence. Use when money movement, customer access, or marketplace balances must match across systems.",
+      "status": "preview",
+      "path": "skills/billing-reconciliation-review",
+      "references": [
+        "billing-reconciliation-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "changelog-and-release-notes",
       "description": "Write and review changelogs, release notes, app-store update notes, launch notes, migration notes, breaking-change notices, and customer-facing product update communication for SaaS, apps, games, developer tools, desktop software, and marketplaces. Use when a release needs clear user value, risk communication, upgrade guidance, or support-aware wording.",
       "status": "preview",
@@ -113,6 +152,19 @@
       "path": "skills/checkout-conversion-review",
       "references": [
         "checkout-conversion-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "community-launch-ops-review",
+      "description": "Plan and audit community launch operations, Discord/Slack/forum setup, roles, moderation, announcement cadence, beta cohorts, creator/member onboarding, feedback loops, events, content calendar, support routing, trust policies, and community health metrics. Use when launching or revitalizing a product community for apps, games, developer tools, marketplaces, or SaaS.",
+      "status": "preview",
+      "path": "skills/community-launch-ops-review",
+      "references": [
+        "community-launch-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -276,6 +328,19 @@
       ]
     },
     {
+      "name": "experiment-design-review",
+      "description": "Design and audit product experiments, A/B tests, feature rollouts, pricing tests, onboarding tests, lifecycle experiments, holdouts, guardrail metrics, sample plans, decision rules, and learning reviews. Use when testing product, UI, growth, monetization, retention, marketplace, or live-ops changes and the agent must avoid false confidence or harmful experiments.",
+      "status": "preview",
+      "path": "skills/experiment-design-review",
+      "references": [
+        "experiment-design-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "form-ux-review",
       "description": "Review and design form UX for signup, checkout, onboarding, settings, support, enterprise lead forms, creator submission, marketplace listing, payment, cancellation, data export, and admin workflows across web, mobile, and desktop. Use when improving form completion, clarity, accessibility, validation, errors, field order, progressive disclosure, autosave, trust, fraud controls, and support evidence.",
       "status": "preview",
@@ -295,6 +360,19 @@
       "path": "skills/game-economy-review",
       "references": [
         "game-economy-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "game-soft-launch-review",
+      "description": "Plan and audit mobile or PC game soft launches, test markets, cohort gates, economy balance, IAP, ads, retention, FTUE, live events, store listing tests, crash/performance health, community feedback, and scale/kill decisions. Use when preparing a game before global launch or evaluating whether to expand, iterate, or stop.",
+      "status": "preview",
+      "path": "skills/game-soft-launch-review",
+      "references": [
+        "game-soft-launch-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -386,6 +464,19 @@
       "path": "skills/live-event-ops-review",
       "references": [
         "live-event-ops-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "localization-market-expansion-review",
+      "description": "Plan and audit localization, internationalization, regional launch, market entry, translation quality, pricing localization, app store metadata, support readiness, legal/cultural risk, payment methods, time zones, and growth experiments. Use when expanding apps, SaaS, games, developer tools, marketplaces, or content products into new countries or languages.",
+      "status": "preview",
+      "path": "skills/localization-market-expansion-review",
+      "references": [
+        "localization-expansion-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -713,6 +804,19 @@
       "path": "skills/sales-demo-script-review",
       "references": [
         "sales-demo-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "security-questionnaire-response-review",
+      "description": "Prepare and review security questionnaire responses, trust center answers, vendor risk evidence, enterprise buyer security packets, control mappings, gaps, remediation notes, and truthful sales handoffs. Use when responding to customer security reviews, procurement questionnaires, SSO/audit/data questions, privacy evidence requests, or enterprise trust due diligence.",
+      "status": "preview",
+      "path": "skills/security-questionnaire-response-review",
+      "references": [
+        "security-questionnaire-patterns.md"
       ],
       "scripts": [],
       "agents": [
