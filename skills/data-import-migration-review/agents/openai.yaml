@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Import Migration Review"
+  short_description: "Plan safe product data imports"
+  default_prompt: "Use $data-import-migration-review to design a safe data import or customer migration plan."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Account Recovery Identity Review"
+  short_description: "Secure account recovery flows"
+  default_prompt: "Use $account-recovery-identity-review to review account recovery without increasing takeover risk."
