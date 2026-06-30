@@ -1,0 +1,4 @@
+interface:
+  display_name: "Live Event Ops Review"
+  short_description: "Operate live product events"
+  default_prompt: "Use $live-event-ops-review to design or audit this live event operating plan."

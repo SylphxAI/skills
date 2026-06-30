@@ -1,0 +1,4 @@
+interface:
+  display_name: "Accessibility Product Review"
+  short_description: "Review accessible product UX"
+  default_prompt: "Use $accessibility-product-review to review this product flow for accessibility and inclusive UX."
