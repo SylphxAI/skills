@@ -68,6 +68,19 @@
       ]
     },
     {
+      "name": "ai-feature-product-risk-review",
+      "description": "Design and audit AI feature product risks across user value, model limitations, hallucination, automation boundaries, human review, privacy, safety, evals, latency, cost, transparency, abuse, fallback, rollout, and support. Use when adding AI assistants, copilots, generators, classifiers, recommendations, agents, or automated decisions to a product.",
+      "status": "preview",
+      "path": "skills/ai-feature-product-risk-review",
+      "references": [
+        "ai-feature-risk-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "analytics-event-taxonomy",
       "description": "Design and audit analytics event taxonomies for product funnels, SaaS, mobile apps, games, web apps, desktop utilities, marketplaces, notifications, payments, support, and launches. Use when defining events, properties, naming, identity, funnels, cohorts, attribution, guardrail metrics, dashboards, or analytics quality rules.",
       "status": "preview",
@@ -178,6 +191,19 @@
       "path": "skills/creator-onboarding-review",
       "references": [
         "creator-onboarding-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "creator-ranking-quality-review",
+      "description": "Design and audit creator, listing, plugin, skill, app, marketplace, content, or community ranking quality across relevance, quality signals, freshness, fairness, fraud resistance, diversity, monetization, review abuse, creator trust, and user outcomes. Use when marketplaces need discovery/ranking systems that reward quality without becoming pay-to-win or spam-prone.",
+      "status": "preview",
+      "path": "skills/creator-ranking-quality-review",
+      "references": [
+        "creator-ranking-quality-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -341,6 +367,19 @@
       ]
     },
     {
+      "name": "feature-flag-rollout-review",
+      "description": "Design and audit feature flags, staged rollouts, kill switches, targeting rules, exposure plans, holdouts, rollout gates, rollback paths, flag cleanup, and operational ownership for SaaS, apps, games, AI features, marketplaces, and desktop software. Use when releasing risky changes gradually or when a product needs safe experimentation, canaries, or emergency disablement.",
+      "status": "preview",
+      "path": "skills/feature-flag-rollout-review",
+      "references": [
+        "feature-flag-rollout-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "form-ux-review",
       "description": "Review and design form UX for signup, checkout, onboarding, settings, support, enterprise lead forms, creator submission, marketplace listing, payment, cancellation, data export, and admin workflows across web, mobile, and desktop. Use when improving form completion, clarity, accessibility, validation, errors, field order, progressive disclosure, autosave, trust, fraud controls, and support evidence.",
       "status": "preview",
@@ -386,6 +425,19 @@
       "path": "skills/help-center-architecture",
       "references": [
         "help-center-architecture-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "in-product-education-review",
+      "description": "Design and audit in-product education, onboarding checklists, tooltips, empty-state guidance, contextual help, tours, templates, examples, nudges, feature discovery, upgrade education, and help-center handoffs. Use when a product needs to teach users without cluttering UI, blocking expert workflows, or becoming spammy growth messaging.",
+      "status": "preview",
+      "path": "skills/in-product-education-review",
+      "references": [
+        "in-product-education-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -635,6 +687,19 @@
       "path": "skills/opportunity-scoring-review",
       "references": [
         "opportunity-scoring-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "partner-integration-ecosystem-review",
+      "description": "Design and audit partner integration ecosystems, APIs, app directories, OAuth flows, webhooks, SDKs, partner onboarding, certification, co-marketing, revenue share, support boundaries, abuse controls, and ecosystem health. Use when a product depends on third-party integrations, platform partners, developer apps, marketplace listings, or strategic distribution channels.",
+      "status": "preview",
+      "path": "skills/partner-integration-ecosystem-review",
+      "references": [
+        "partner-ecosystem-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -943,12 +1008,51 @@
       ]
     },
     {
+      "name": "support-quality-qa-review",
+      "description": "Design and audit customer support quality assurance, ticket review scorecards, macro quality, escalation correctness, refund/support fairness, tone, evidence handling, coaching loops, calibration, automation QA, and support health metrics. Use when improving support operations for SaaS, apps, games, marketplaces, developer tools, billing, trust, or community products.",
+      "status": "preview",
+      "path": "skills/support-quality-qa-review",
+      "references": [
+        "support-quality-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "tax-invoicing-compliance-review",
+      "description": "Design and audit tax, invoicing, receipt, VAT/GST/sales-tax, reverse charge, tax ID, billing address, subscription invoice, app-store receipt, marketplace seller invoice, credit note, refund document, and finance-support handoff flows. Use when money flows need compliant customer documents, tax metadata, jurisdiction handling, and audit evidence.",
+      "status": "preview",
+      "path": "skills/tax-invoicing-compliance-review",
+      "references": [
+        "tax-invoicing-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "usage-based-pricing-review",
       "description": "Design and audit usage-based pricing, metering, quotas, credits, overages, spend controls, billing events, cost drivers, value metrics, free allowances, invoices, expansion paths, abuse controls, and customer trust for SaaS, APIs, AI products, infrastructure tools, developer platforms, marketplaces, and consumption businesses. Use when pricing is tied to seats, usage, credits, API calls, storage, compute, messages, tokens, transactions, or metered value.",
       "status": "preview",
       "path": "skills/usage-based-pricing-review",
       "references": [
         "usage-based-pricing-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "user-preferences-settings-review",
+      "description": "Design and audit user preferences, personalization controls, notification settings, privacy toggles, accessibility options, language/region settings, theme, default behavior, reset/export behavior, cross-device sync, and settings discoverability. Use when users need durable control over product behavior without confusing admin policy, billing, or security settings.",
+      "status": "preview",
+      "path": "skills/user-preferences-settings-review",
+      "references": [
+        "user-preferences-patterns.md"
       ],
       "scripts": [],
       "agents": [

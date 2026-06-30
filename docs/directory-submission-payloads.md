@@ -9,12 +9,12 @@ Use these copy-ready payloads when submitting Sylphx Skills to external director
 - skills.sh page: `https://www.skills.sh/sylphxai/skills`
 - Catalog: `catalog/index.html`
 - License: MIT
-- Skill count: 75 preview skills
+- Skill count: 83 preview skills
 - Quality proof: CI validates registry drift, static catalog drift, skill schema, eval coverage, catalog coverage, reference structure, behavior examples, and launch kit coverage.
 
 ## Short description
 
-Curated, eval-backed AI-agent skills for product planning, UI craft, growth, checkout conversion, SaaS pricing, subscriptions, payments, mobile apps, games, Steam launch, Microsoft Store, store review risk, macOS/Windows release readiness, developer tools, marketplaces, referral loops, retention analytics, win-back, customer health, enterprise readiness, data portability, release health, experiment design, permission UX, localization, admin settings IA, security questionnaires, billing reconciliation, game soft launch, community launch ops, moderation, accessibility, support, privacy, fraud, incidents, analytics, and skill-marketplace workflows.
+Curated, eval-backed AI-agent skills for product planning, UI craft, growth, checkout conversion, SaaS pricing, subscriptions, payments, mobile apps, games, Steam launch, Microsoft Store, store review risk, macOS/Windows release readiness, developer tools, marketplaces, referral loops, retention analytics, win-back, customer health, enterprise readiness, data portability, release health, experiment design, permission UX, localization, admin settings IA, security questionnaires, billing reconciliation, game soft launch, community launch ops, feature flags, partner ecosystems, tax/invoicing, user preferences, support QA, in-product education, AI feature risk, creator ranking quality, moderation, accessibility, support, privacy, fraud, incidents, analytics, and skill-marketplace workflows.
 
 ## Long description
 

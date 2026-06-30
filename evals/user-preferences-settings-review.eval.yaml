@@ -1,0 +1,10 @@
+skill: user-preferences-settings-review
+positive_prompts:
+  - "Design user preferences for a SaaS with notifications, language, theme, privacy personalization, AI memory, and accessibility settings."
+  - "Audit mobile app preference settings for defaults, sync, reset, disabled states, and privacy trust."
+negative_prompts:
+  - "Create a tax invoice correction workflow."
+expected_behavior:
+  - "Separates personal preferences from consent, security, billing/admin settings, workspace policy, and entitlements."
+  - "Defines scope, default, persistence, sync, reset/export/delete, disabled states, and migration behavior."
+  - "Covers sensitive preferences like notifications, privacy, accessibility, language, and AI personalization."

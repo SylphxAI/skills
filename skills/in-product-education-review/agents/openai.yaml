@@ -1,0 +1,4 @@
+interface:
+  display_name: "In Product Education Review"
+  short_description: "Design in-product education and guidance"
+  default_prompt: "Use $in-product-education-review to design tooltips, tours, checklists, help, and education triggers."

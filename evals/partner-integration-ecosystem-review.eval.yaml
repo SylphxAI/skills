@@ -1,0 +1,10 @@
+skill: partner-integration-ecosystem-review
+positive_prompts:
+  - "Design a partner app ecosystem for a B2B SaaS with OAuth, webhooks, certification, directory ranking, and support boundaries."
+  - "Audit partner onboarding and revenue-share risks for a marketplace integration program."
+negative_prompts:
+  - "Design user notification preferences."
+expected_behavior:
+  - "Starts from user workflow value and defines partner tiers, access, certification, support, incentives, and health metrics."
+  - "Covers OAuth scopes, webhooks, rate limits, data handling, revocation, directory ranking, and abuse controls."
+  - "Separates strategic partners, app developers, affiliates, implementation partners, and data partners."
