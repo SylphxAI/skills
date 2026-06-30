@@ -57,6 +57,11 @@ npm run check
 npx skills add SylphxAI/skills --list
 ```
 
+Control-plane selector values are projected from `.doctrine/project.json` into
+GitHub custom properties. `sylphx_deployable=false` is the durable signal that
+this public repository has no runtime deployment until a hosted marketplace or
+API is introduced.
+
 ## Commercial Direction
 
 Public skills are MIT-licensed and used for distribution, trust, and demand
