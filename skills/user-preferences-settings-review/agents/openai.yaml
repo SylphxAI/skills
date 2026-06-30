@@ -1,0 +1,4 @@
+interface:
+  display_name: "User Preferences Settings Review"
+  short_description: "Design user preferences and controls"
+  default_prompt: "Use $user-preferences-settings-review to design user preferences, defaults, privacy controls, and reset behavior."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Creator Ranking Quality Review"
+  short_description: "Review marketplace ranking quality"
+  default_prompt: "Use $creator-ranking-quality-review to audit creator marketplace ranking, quality, fairness, and trust metrics."

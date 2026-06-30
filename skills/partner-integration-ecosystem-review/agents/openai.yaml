@@ -1,0 +1,4 @@
+interface:
+  display_name: "Partner Integration Ecosystem Review"
+  short_description: "Design partner integration ecosystems"
+  default_prompt: "Use $partner-integration-ecosystem-review to audit partner integrations, APIs, incentives, and ecosystem risks."
