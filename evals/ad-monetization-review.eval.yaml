@@ -1,0 +1,10 @@
+skill: ad-monetization-review
+positive_prompts:
+  - "Review our mobile game ad placements before we add interstitials and rewarded ads."
+  - "Design ad monetization for a freemium utility app without hurting subscriptions."
+negative_prompts:
+  - "Plan our Steam capsule art and wishlist campaign."
+expected_behavior:
+  - "Classifies ad formats and placements by user intent and natural breaks."
+  - "Defines caps, suppression, consent, and kill-switch rules."
+  - "Measures ad revenue together with retention, payer conversion, complaints, and fatigue."

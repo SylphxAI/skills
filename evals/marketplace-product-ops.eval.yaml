@@ -1,0 +1,10 @@
+skill: marketplace-product-ops
+positive_prompts:
+  - "Design the operating model for our AI skill marketplace repository and external submissions."
+  - "Audit this plugin marketplace for ranking, creator review, disputes, and payouts."
+negative_prompts:
+  - "Review a macOS installer notarization plan."
+expected_behavior:
+  - "Models marketplace supply, demand, review, ranking, transaction, dispute, payout, and removal states."
+  - "Balances growth with quality, trust, creator incentives, and support operations."
+  - "Defines policies, queue states, metrics, and appeal paths."

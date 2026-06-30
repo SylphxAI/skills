@@ -5,8 +5,8 @@
     "registry/skills.json",
     "skills.sh.json"
   ],
-  "skillCount": 35,
-  "groupCount": 8,
+  "skillCount": 43,
+  "groupCount": 9,
   "generated": [
     "catalog/index.html",
     "catalog/groups/product-lifecycle.html",
@@ -16,14 +16,19 @@
     "catalog/groups/mobile-game-product-systems.html",
     "catalog/groups/distribution-platforms-release-ops.html",
     "catalog/groups/trust-support-analytics.html",
+    "catalog/groups/developer-marketplace-products.html",
     "catalog/groups/agent-skill-operations.html",
     "catalog/skills/abuse-fraud-risk-review.html",
+    "catalog/skills/ad-monetization-review.html",
     "catalog/skills/analytics-event-taxonomy.html",
     "catalog/skills/app-store-distribution-readiness.html",
     "catalog/skills/backup-restore-design.html",
     "catalog/skills/changelog-and-release-notes.html",
+    "catalog/skills/checkout-conversion-review.html",
     "catalog/skills/customer-support-operations.html",
+    "catalog/skills/daily-reward-and-streak-review.html",
     "catalog/skills/desktop-os-integration.html",
+    "catalog/skills/developer-tool-product-design.html",
     "catalog/skills/empty-state-and-loading-review.html",
     "catalog/skills/execution-simplification.html",
     "catalog/skills/game-economy-review.html",
@@ -32,7 +37,9 @@
     "catalog/skills/interface-craft.html",
     "catalog/skills/landing-page-critique.html",
     "catalog/skills/launch-readiness-review.html",
+    "catalog/skills/macos-release-readiness.html",
     "catalog/skills/market-research-synthesis.html",
+    "catalog/skills/marketplace-product-ops.html",
     "catalog/skills/mobile-app-product-systems.html",
     "catalog/skills/mobile-first-ui-review.html",
     "catalog/skills/motion-transition-review.html",
@@ -50,7 +57,9 @@
     "catalog/skills/seo-content-brief.html",
     "catalog/skills/skill-marketplace-creator.html",
     "catalog/skills/startup-growth-review.html",
+    "catalog/skills/steam-launch-readiness.html",
     "catalog/skills/store-listing-optimization.html",
-    "catalog/skills/subscription-entitlement-review.html"
+    "catalog/skills/subscription-entitlement-review.html",
+    "catalog/skills/windows-release-readiness.html"
   ]
 }

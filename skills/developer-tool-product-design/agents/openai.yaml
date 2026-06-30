@@ -1,0 +1,4 @@
+interface:
+  display_name: "Developer Tool Product Design"
+  short_description: "Design developer products well"
+  default_prompt: "Use $developer-tool-product-design to review this developer tool product experience."

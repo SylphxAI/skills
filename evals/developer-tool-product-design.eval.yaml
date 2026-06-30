@@ -1,0 +1,10 @@
+skill: developer-tool-product-design
+positive_prompts:
+  - "Review our API docs and SDK onboarding for developer activation."
+  - "Design a product experience for a new CLI developer tool with pricing and support readiness."
+negative_prompts:
+  - "Plan a daily login reward calendar for a mobile game."
+expected_behavior:
+  - "Maps developer adoption from discovery to first success and production use."
+  - "Treats docs, examples, errors, limits, pricing, and support as one product system."
+  - "Defines activation and trust metrics beyond signup."

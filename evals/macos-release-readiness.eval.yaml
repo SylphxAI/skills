@@ -1,0 +1,10 @@
+skill: macos-release-readiness
+positive_prompts:
+  - "Audit this macOS menu bar utility before public release."
+  - "Create a macOS release readiness checklist for an app using screen recording and login items."
+negative_prompts:
+  - "Plan a Google Play subscription renewal experiment."
+expected_behavior:
+  - "Covers macOS identity, signing, notarization, sandbox, permissions, local data, keychain, updates, and diagnostics."
+  - "Separates blockers from polish and support improvements."
+  - "Requires user-controllable background/login behavior and safe update recovery."

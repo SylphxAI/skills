@@ -6,50 +6,65 @@ Use these copy-ready payloads when submitting Sylphx Skills to external director
 
 - Repository: `https://github.com/SylphxAI/skills`
 - Install: `npx skills add SylphxAI/skills`
+- skills.sh page: `https://www.skills.sh/sylphxai/skills`
 - Catalog: `catalog/index.html`
 - License: MIT
-- Skill count: 35 preview skills
+- Skill count: 43 preview skills
 - Quality proof: CI validates registry drift, static catalog drift, skill schema, eval coverage, catalog coverage, reference structure, behavior examples, and launch kit coverage.
 
 ## Short description
 
-Curated, eval-backed AI-agent skills for product planning, UI craft, growth, SaaS pricing, subscriptions, payments, mobile apps, games, store launch, desktop OS integration, support, privacy, fraud, incidents, analytics, and skill-marketplace workflows.
+Curated, eval-backed AI-agent skills for product planning, UI craft, growth, checkout conversion, SaaS pricing, subscriptions, payments, mobile apps, games, Steam launch, macOS/Windows release readiness, developer tools, marketplaces, support, privacy, fraud, incidents, analytics, and skill-marketplace workflows.
 
 ## Long description
 
 Sylphx Skills is a public repository of high-signal `SKILL.md` packages for AI agents. It is built as a product operating knowledge matrix rather than a prompt dump: compact skill instructions, progressively disclosed references, rule IDs, decision tables, state machines, event schemas, behavior examples, eval prompts, generated registry, static catalog, and CI validation.
 
-The collection helps agents reason through the full lifecycle of software products: planning, research, product design, UI, monetization, distribution, operations, promotion, customer support, trust, privacy, analytics, and marketplace operations.
+The collection helps agents reason through the full lifecycle of software products: planning, research, product design, UI, monetization, distribution, operations, promotion, customer support, trust, privacy, analytics, developer experience, and marketplace operations.
 
 ## Suggested tags
 
-`ai-agents`, `skills`, `product-design`, `ui-design`, `saas`, `mobile-apps`, `games`, `growth`, `pricing`, `payments`, `customer-support`, `analytics`, `agent-tools`
+`ai-agents`, `skills`, `ai-skills`, `agent-skills`, `agent-tools`, `claude-skills`, `claude-code-skill`, `product-design`, `ui-design`, `saas`, `mobile-apps`, `games`, `growth`, `pricing`, `payments`, `developer-tools`, `marketplace`, `customer-support`, `analytics`
 
 ## Directory-specific notes
 
 ### skills.sh
 
-- Submit repository: `SylphxAI/skills`
+- Public page: `https://www.skills.sh/sylphxai/skills`
+- Repository: `SylphxAI/skills`
 - Metadata file: `skills.sh.json`
 - Install command: `npx skills add SylphxAI/skills`
 - Verification: `npm run verify:install`
+- Badge note: do not add `https://skills.sh/b/SylphxAI/skills` until the endpoint returns a valid repository badge rather than `resource not found`.
 
 ### SkillsMP
 
-- Submit as: public skill repository / collection
-- Primary categories: Product, Design, Growth, Operations, Agent Skills
-- Representative skills: `interface-craft`, `mobile-app-product-systems`, `payment-platform-readiness`, `game-economy-review`, `privacy-and-data-retention-review`
+- Submit/index as: public skill repository / collection.
+- Known indexer requirement: public GitHub repository with `SKILL.md` frontmatter and GitHub topic `claude-skills` or `claude-code-skill`.
+- Primary categories: Product, Design, Growth, Operations, Developer Tools, Marketplace, Agent Skills.
+- Representative skills: `interface-craft`, `checkout-conversion-review`, `mobile-app-product-systems`, `payment-platform-readiness`, `steam-launch-readiness`, `developer-tool-product-design`, `marketplace-product-ops`.
 
-### ClaudeSkill
+### ClaudeSkill / ClaudeSkill Hub
 
-- Submit as: open skill folder collection
+- Submit as: open skill folder collection.
 - Note: skills are self-contained under `skills/<skill-name>/` and include `SKILL.md` frontmatter with only `name` and `description`.
+- If no submit route is live, keep this as a manual external gate.
 
 ### Cross AI Tools
 
-- Submit as: AI-agent skill repository
+- Submit as: AI-agent skill repository if a submission route appears or contact is available.
 - Emphasize: installable via open skills CLI, cross-agent folder pattern, generated catalog, MIT license, eval-backed quality gates.
 
 ## Current external discovery status
 
-As of 2026-06-30 UTC, `npx skills find SylphxAI` returned `No skills found for "SylphxAI"`. That means external directory indexing is still pending even though direct GitHub install works.
+As of 2026-06-30 UTC:
+
+| Surface | Status | Evidence |
+| --- | --- | --- |
+| Open skills CLI | Live | `npx skills add SylphxAI/skills --list` resolves the GitHub repo and lists the public skills. |
+| skills.sh | Live | `https://www.skills.sh/sylphxai/skills` renders the repository page. |
+| SkillsMP | Pending | Search returns older `SylphxAI/flow` entries, not `github.com/SylphxAI/skills`; topic-based daily sync is required. |
+| Cross AI Tools | Pending | Public search/listing did not show `SylphxAI/skills`; no stable public submit route found. |
+| ClaudeSkill / ClaudeSkill Hub | Pending | Site exists, but no stable submit/listing route for this repo was verified. |
+
+Do not close launch distribution issue #1 until at least two third-party directories have stable public proof for `github.com/SylphxAI/skills` specifically.

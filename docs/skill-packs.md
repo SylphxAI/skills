@@ -1,108 +1,95 @@
 # Skill Packs
 
-This repository should grow around high-demand job clusters, not random one-off prompts.
+This repository grows around high-demand job clusters, not random one-off prompts. A pack is valuable only if it helps an agent produce a concrete product artifact: a state machine, launch matrix, UX review, support flow, pricing model, or operational checklist.
 
 ## Foundation status
 
-The repository foundation is ready for production:
+The repository foundation is production-ready:
 
-- public repo and release exist;
-- validation CI is green;
-- generated registry exists;
-- quality bar and original-synthesis policy exist;
-- preview skills prove the structure.
-
-The foundation is not finished forever. Behavior eval coverage, catalog coverage, and reference structure quality are now enforced; the next foundation layer is examples, scoring, static marketplace pages, and automated draft PRs.
-
-## Production cadence
-
-Start now. Target one useful skill per day until the first 10-skill collection is complete, then switch to quality iteration and distribution.
+- public repo, CI, registry, catalog, and install verification exist;
+- 43 preview skills are present with evals, behavior examples, and references;
+- quality bar and original-synthesis policy are explicit;
+- high-leverage product cells now cover revenue, mobile/game retention, Steam, macOS, Windows, developer tools, and marketplace ops.
 
 ## Priority packs
 
-### 1. Workflow Pack
+### 1. Product Lifecycle Pack
 
-For agents that help people run better work, not just write code.
-
-Candidate skills:
-
-- `agentic-workflow-designer`
-- `github-pr-review`
-- `meeting-to-execution-plan`
-- `decision-memo-writer`
-- `production-readiness-review`
+- `product-lifecycle-architect`
+- `market-research-synthesis`
+- `execution-simplification`
+- next: `decision-memo-writer`, `opportunity-scoring-review`
 
 ### 2. UI Design Pack
 
-For modern, fast, subtle, responsive interfaces.
+- `interface-craft`
+- `mobile-first-ui-review`
+- `responsive-layout-review`
+- `motion-transition-review`
+- `empty-state-and-loading-review`
+- next: `design-system-extractor`, `accessibility-product-review`, `form-ux-review`
 
-Candidate skills:
+### 3. Product Systems Pack
 
-- `interface-craft` (already seeded)
-- `mobile-first-ui-review` (seeded)
-- `responsive-layout-review` (seeded)
-- `motion-transition-review` (seeded)
-- `design-system-extractor`
-- `empty-state-and-loading-review` (seeded)
+- `mobile-app-product-systems`
+- `onboarding-activation-review`
+- `subscription-entitlement-review`
+- `notification-strategy-review`
+- `game-economy-review`
+- `refund-and-support-flow-review`
+- `daily-reward-and-streak-review`
 
-### 3. Product Design Pack
+### 4. Revenue & Monetization Pack
 
-For apps, games, monetization, retention, and product systems.
+- `saas-subscription-pricing`
+- `pricing-page-critique`
+- `checkout-conversion-review`
+- `payment-platform-readiness`
+- `ad-monetization-review`
+- `promotion-campaign-review`
+- next: `usage-based-pricing-review`, `marketplace-payouts-review`
 
-Candidate skills:
+### 5. Marketing Design Pack
 
-- `mobile-app-product-systems` (seeded in this batch)
-- `onboarding-activation-review` (seeded)
-- `subscription-and-entitlement-review` (covered by `subscription-entitlement-review`)
-- `notification-strategy-review` (seeded)
-- `game-economy-review` (seeded)
-- `refund-and-support-flow-review` (seeded)
+- `startup-growth-review`
+- `landing-page-critique`
+- `product-positioning`
+- `seo-content-brief`
+- `store-listing-optimization`
+- next: `launch-narrative-review`, `referral-loop-review`
 
-### 4. Marketing Design Pack
+### 6. Platform, Distribution & Desktop Pack
 
-For acquisition, conversion, positioning, and campaign systems.
+- `app-store-distribution-readiness`
+- `steam-launch-readiness`
+- `desktop-os-integration`
+- `macos-release-readiness`
+- `windows-release-readiness`
+- `launch-readiness-review`
+- `changelog-and-release-notes`
+- next: `microsoft-store-readiness`, `store-review-policy-risk`
 
-Candidate skills:
+### 7. Operations, Trust & Support Pack
 
-- `startup-growth-review` (already seeded)
-- `landing-page-critique` (seeded)
-- `pricing-page-critique` (seeded)
-- `product-positioning` (seeded)
-- `seo-content-brief` (seeded)
-- `promotion-campaign-review` (seeded)
+- `backup-restore-design`
+- `customer-support-operations`
+- `privacy-and-data-retention-review`
+- `abuse-fraud-risk-review`
+- `incident-communication-playbook`
+- `analytics-event-taxonomy`
+- `help-center-architecture`
+
+### 8. Developer & Marketplace Pack
+
+- `developer-tool-product-design`
+- `marketplace-product-ops`
+- `skill-marketplace-creator`
+- next: `creator-onboarding-review`, `skill-eval-designer`, `skill-catalog-generator`
 
 ## What will attract stars
 
-- Skills that solve painful, common jobs: UI polish, mobile monetization, startup growth, PR review, production readiness.
-- Before/after examples in every skill page.
-- A visible quality bar that rejects prompt dumps.
-- Weekly public demos showing how agents improve with the skill loaded.
-- Good install experience through skills directories.
-
-
-### 5. Platform, Payments & Desktop Pack
-
-For products that must survive real payment channels, store review, and OS integration.
-
-Candidate skills:
-
-- `payment-platform-readiness` (seeded)
-- `desktop-os-integration` (seeded)
-- `store-listing-optimization` (seeded)
-- `launch-readiness-review` (seeded)
-- `macos-release-readiness`
-- `windows-release-readiness`
-
-### 6. Operations, Trust & Support Pack
-
-For reducing churn, support load, data loss, abuse, and policy risk.
-
-Candidate skills:
-
-- `backup-restore-design` (seeded)
-- `customer-support-operations` (seeded)
-- `privacy-and-data-retention-review` (seeded)
-- `abuse-fraud-risk-review` (seeded)
-- `incident-communication-playbook` (seeded)
-- `analytics-event-taxonomy` (seeded)
-- `help-center-architecture` (seeded)
+- Skills that solve painful, common jobs: UI polish, checkout conversion, mobile monetization, Steam launch, desktop release, developer onboarding, marketplace ops, production readiness.
+- Before/after examples and public demos for every high-demand skill.
+- Visible quality bar that rejects prompt dumps and requires state machines, decision tables, event schemas, and eval prompts.
+- Installability through open skills CLI and third-party directories.
+- Weekly public demos showing how agents improve with a skill loaded.
