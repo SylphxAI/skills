@@ -1,0 +1,10 @@
+skill: legal-terms-policy-review
+positive_prompts:
+  - "Review legal terms surfaces for a SaaS checkout adding trials, auto-renewal, cancellation, refunds, AI feature disclaimers, acceptable use, and regional privacy notices."
+  - "Audit whether pricing pages, support macros, sales decks, store listings, and product UI contradict approved terms and refund policy."
+negative_prompts:
+  - "Audit usage metering accuracy for invoices."
+expected_behavior:
+  - "Maps product promises, restrictions, billing terms, renewals, cancellation, refunds, AI/data use, and marketplace rules to approved policy sources."
+  - "Includes disclosure placement, acknowledgement, versioning, change notice, evidence retention, support/legal escalation, and cross-surface consistency checks."
+  - "Flags invented legal language, buried obligations, contradictory copy, unversioned changes, dark-pattern terms, and unsupported legal claims."

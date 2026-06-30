@@ -1,0 +1,10 @@
+skill: product-analytics-instrumentation-review
+positive_prompts:
+  - "Design analytics instrumentation for SaaS onboarding, activation, checkout, subscription upgrade, support contact, experiment exposure, identity merge, and dashboard QA across web and server events."
+  - "Audit a product launch where dashboards disagree because event names, identity, consent, server/client tracking, and property schemas were not defined."
+negative_prompts:
+  - "Review legal terms for refund and auto-renewal notices."
+expected_behavior:
+  - "Defines decision questions, event contracts, properties, identity/session/account rules, source reliability, consent/privacy, QA fixtures, dashboard owners, and drift monitoring."
+  - "Separates client, server, billing/support joins, experiment exposures, attribution, lifecycle events, errors, and derived metric inputs."
+  - "Flags track-everything analytics, client-only critical truth, missing schemas, bad identity merges, PII properties, and dashboard-defined metrics."

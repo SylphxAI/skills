@@ -1,0 +1,10 @@
+skill: incident-status-page-ops-review
+positive_prompts:
+  - "Design status page operations for a SaaS platform with component taxonomy, public incident updates, private enterprise notifications, maintenance windows, support macros, SLO impact, and post-incident follow-up."
+  - "Audit a status page where incidents are acknowledged late, degraded regional components stay green, support sends different messages, and subscribers get no follow-up."
+negative_prompts:
+  - "Review revenue recognition for prepaid credits."
+expected_behavior:
+  - "Defines component taxonomy, declaration thresholds, update cadence, templates, subscriber channels, approval paths, support coordination, SLO impact, maintenance, and post-incident follow-up."
+  - "Separates investigating, identified, monitoring, resolved, maintenance, degraded, partial outage, security-sensitive, and follow-up communications."
+  - "Flags delayed acknowledgement, false uptime, speculative root cause, leaked security detail, contradictory messaging, and overdue updates."

@@ -1,0 +1,10 @@
+skill: revenue-recognition-policy-review
+positive_prompts:
+  - "Review revenue-recognition impact for a SaaS packaging change with annual prepaid credits, usage overages, onboarding fees, discounts, upgrades, refunds, and contract amendments."
+  - "Audit a launch where billing, entitlements, CRM orders, usage ledgers, and revenue schedules may disagree after new usage-based pricing."
+negative_prompts:
+  - "Design a customer reference program for enterprise sales."
+expected_behavior:
+  - "Separates invoice, payment, entitlement, delivery, usage consumption, and revenue recognition records."
+  - "Includes performance obligations, delivery evidence, refund/credit terms, contract modifications, exception approvals, ledger reconciliation, and finance launch gates."
+  - "Flags invoice-date recognition, hidden side letters, unreviewed bundles/credits, unsupported accounting claims, and revenue drift."

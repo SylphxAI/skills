@@ -1,0 +1,10 @@
+skill: customer-reference-program-review
+positive_prompts:
+  - "Design a customer reference program for enterprise SaaS with logos, quotes, case studies, private reference calls, segment matching, consent, renewal risk, sales intake, and advocacy fatigue controls."
+  - "Audit reference usage where sales reuses old logos, invents ROI claims, over-asks the same champions, and lacks approval records."
+negative_prompts:
+  - "Design product analytics event contracts for onboarding."
+expected_behavior:
+  - "Defines proof needs, eligibility, consent scope, approval, segment matching, request intake, usage limits, incentives, refresh/retirement, and sales enablement workflow."
+  - "Separates logo, quote, case study, reference call, webinar, analyst/procurement proof, and anonymized aggregate evidence."
+  - "Flags unauthorized logos, invented claims, advocacy fatigue, unhealthy customer asks, stale metrics, and references replacing real product proof."

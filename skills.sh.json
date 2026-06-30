@@ -25,7 +25,8 @@
         "model-router-cost-quality-review",
         "user-research-repository-review",
         "sales-qualification-discovery-review",
-        "ai-safety-red-team-review"
+        "ai-safety-red-team-review",
+        "product-analytics-instrumentation-review"
       ]
     },
     {
@@ -66,7 +67,9 @@
         "localization-quality-program-review",
         "enterprise-expansion-health-review",
         "partner-channel-program-review",
-        "customer-training-academy-review"
+        "customer-training-academy-review",
+        "customer-reference-program-review",
+        "trial-conversion-sales-assist-review"
       ]
     },
     {
@@ -85,7 +88,9 @@
         "cost-margin-unit-economics-review",
         "observability-cost-governance-review",
         "contract-lifecycle-renewal-review",
-        "usage-metering-accuracy-review"
+        "usage-metering-accuracy-review",
+        "revenue-recognition-policy-review",
+        "procurement-pricing-packaging-review"
       ]
     },
     {
@@ -124,7 +129,8 @@
         "feature-sunset-deprecation-review",
         "release-train-change-management-review",
         "service-level-slo-review",
-        "reliability-incident-learning-review"
+        "reliability-incident-learning-review",
+        "incident-status-page-ops-review"
       ]
     },
     {
@@ -156,7 +162,9 @@
         "data-warehouse-metrics-layer-review",
         "compliance-audit-readiness-review",
         "data-residency-region-review",
-        "privacy-impact-assessment-review"
+        "privacy-impact-assessment-review",
+        "legal-terms-policy-review",
+        "support-escalation-engineering-review"
       ]
     },
     {

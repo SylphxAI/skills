@@ -9,12 +9,12 @@ Use these copy-ready payloads when submitting Sylphx Skills to external director
 - skills.sh page: `https://www.skills.sh/sylphxai/skills`
 - Catalog: `catalog/index.html`
 - License: MIT
-- Skill count: 131 preview skills
+- Skill count: 139 preview skills
 - Quality proof: CI validates registry drift, static catalog drift, skill schema, eval coverage, catalog coverage, reference structure, behavior examples, and launch kit coverage.
 
 ## Short description
 
-Curated, eval-backed AI-agent skills for product planning, UI craft, growth, checkout conversion, SaaS pricing, subscriptions, payments, mobile apps, games, Steam launch, Microsoft Store, store review risk, macOS/Windows release readiness, developer tools, marketplaces, referral loops, retention analytics, win-back, customer health, enterprise readiness, data portability, release health, experiment design, permission UX, localization, admin settings IA, security questionnaires, billing reconciliation, game soft launch, community launch ops, feature flags, partner ecosystems, tax/invoicing, user preferences, support QA, in-product education, AI feature risk, creator ranking quality, moderation, accessibility, support, privacy, fraud, incidents, analytics, contract renewals, enterprise onboarding, model routing, research repositories, support workforce planning, metrics layers, localization QA, audit readiness, sales qualification, enterprise expansion, usage metering, AI red teams, data residency, privacy impact assessments, partner channels, customer training, and skill-marketplace workflows.
+Curated, eval-backed AI-agent skills for product planning, UI craft, growth, checkout conversion, SaaS pricing, subscriptions, payments, mobile apps, games, Steam launch, Microsoft Store, store review risk, macOS/Windows release readiness, developer tools, marketplaces, referral loops, retention analytics, win-back, customer health, enterprise readiness, data portability, release health, experiment design, permission UX, localization, admin settings IA, security questionnaires, billing reconciliation, game soft launch, community launch ops, feature flags, partner ecosystems, tax/invoicing, user preferences, support QA, in-product education, AI feature risk, creator ranking quality, moderation, accessibility, support, privacy, fraud, incidents, analytics, contract renewals, enterprise onboarding, model routing, research repositories, support workforce planning, metrics layers, localization QA, audit readiness, sales qualification, enterprise expansion, usage metering, AI red teams, data residency, privacy impact assessments, partner channels, customer training, revenue recognition, legal terms, product analytics instrumentation, customer references, status page operations, support-engineering escalation, procurement packaging, trial conversion, and skill-marketplace workflows.
 
 ## Long description
 

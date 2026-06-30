@@ -1,0 +1,10 @@
+skill: trial-conversion-sales-assist-review
+positive_prompts:
+  - "Design sales-assisted trial conversion for a developer SaaS with activation milestones, PQL scoring, enterprise intent, in-product prompts, demo offers, trial extensions, consent, suppression, and retention guardrails."
+  - "Audit a trial funnel where every signup gets sales outreach, activation is weak, paid retention is low, refunds rise, and product/sales signals are disconnected."
+negative_prompts:
+  - "Review support-to-engineering escalation severity."
+expected_behavior:
+  - "Defines activation milestones, PQL scoring, firmographic fit, account identity, intent signals, routing rules, nudges, demo/CS handoff, trial extension policy, suppression, and experiment guardrails."
+  - "Separates self-serve, sales-assist, enterprise routing, nurture, extension-needed, and bad-fit states."
+  - "Flags sales-spam routing, misleading urgency, surprise billing, conversion-only optimization, consent/privacy gaps, and disconnected CRM/product signals."

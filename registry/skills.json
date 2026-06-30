@@ -393,6 +393,19 @@
       ]
     },
     {
+      "name": "customer-reference-program-review",
+      "description": "Design and audit customer reference programs covering reference eligibility, consent, legal approval, quote/case-study evidence, logo use, segment matching, sales requests, advocacy fatigue, confidentiality, incentives, renewal/health risk, win stories, analyst/procurement proof, and reference governance. Use when sales and marketing need credible customer proof without overusing or misrepresenting customers.",
+      "status": "preview",
+      "path": "skills/customer-reference-program-review",
+      "references": [
+        "customer-reference-program-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "customer-success-health-review",
       "description": "Design and audit customer health scoring, onboarding success, adoption, renewal risk, expansion readiness, support signals, QBRs, lifecycle playbooks, and account success operations for SaaS, developer tools, marketplaces, and B2B products. Use when building customer success dashboards, health scores, churn risk reviews, renewal playbooks, or expansion motions.",
       "status": "preview",
@@ -770,6 +783,19 @@
       ]
     },
     {
+      "name": "incident-status-page-ops-review",
+      "description": "Design and audit incident status page operations covering component taxonomy, incident declaration, public/private updates, subscriber notifications, templates, severity, SLO impact, customer segmentation, uptime history, maintenance windows, post-incident follow-up, support coordination, and trust-preserving communications. Use when reliability incidents need accurate external communication.",
+      "status": "preview",
+      "path": "skills/incident-status-page-ops-review",
+      "references": [
+        "incident-status-page-ops-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "interface-craft",
       "description": "Improve product interfaces with tasteful UI craft, micro-interactions, accessibility-preserving polish, and detail-oriented review. Use when building UI, reviewing components, improving perceived quality, making an interface feel better, or auditing forms, buttons, motion, typography, empty states, loading states, and navigation polish.",
       "status": "preview",
@@ -815,6 +841,19 @@
       "path": "skills/launch-readiness-review",
       "references": [
         "launch-readiness-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "legal-terms-policy-review",
+      "description": "Review product legal terms and policy surfaces covering Terms of Service, privacy policy links, acceptable use, refunds, trials, renewals, cancellation, billing disclosures, AI disclaimers, marketplace rules, store policies, consent, regional notices, versioning, change notice, and support/legal escalation. Use when product flows or public copy create legal commitments or user obligations.",
+      "status": "preview",
+      "path": "skills/legal-terms-policy-review",
+      "references": [
+        "legal-terms-policy-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1188,12 +1227,38 @@
       ]
     },
     {
+      "name": "procurement-pricing-packaging-review",
+      "description": "Review enterprise procurement pricing and packaging covering SKU structure, tier names, seat/usage metrics, minimums, commits, discounts, price holds, order forms, PO/invoice needs, tax, legal/security review, renewal uplift, co-terming, true-ups, budget cycles, procurement objections, and buyer-facing value proof. Use when pricing must pass procurement without damaging margin or trust.",
+      "status": "preview",
+      "path": "skills/procurement-pricing-packaging-review",
+      "references": [
+        "procurement-pricing-packaging-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "procurement-security-review",
       "description": "Design and audit enterprise procurement security review readiness, vendor risk questionnaires, security evidence packets, DPAs, subprocessors, insurance, policies, SOC/ISO evidence, pen test summaries, AI/data-use answers, redlines, gap handling, and sales/legal/security handoff. Use when deals stall on vendor review or buyer assurance.",
       "status": "preview",
       "path": "skills/procurement-security-review",
       "references": [
         "procurement-security-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "product-analytics-instrumentation-review",
+      "description": "Design and audit product analytics instrumentation for events, properties, identity, sessions, funnels, cohorts, experiments, attribution, billing/support joins, privacy, consent, data quality, mobile/web/server tracking, dashboards, QA, release gates, and metric ownership. Use when teams need trustworthy behavior data before product decisions or launches.",
+      "status": "preview",
+      "path": "skills/product-analytics-instrumentation-review",
+      "references": [
+        "product-analytics-instrumentation-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1337,6 +1402,19 @@
       "path": "skills/revenue-forecast-capacity-review",
       "references": [
         "revenue-forecast-capacity-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "revenue-recognition-policy-review",
+      "description": "Review revenue recognition policy impacts for SaaS, subscriptions, usage billing, credits, discounts, bundles, upgrades, downgrades, renewals, cancellations, refunds, implementation fees, marketplaces, deferred revenue, contract modifications, and finance handoffs. Use when product, pricing, billing, or sales changes could affect when revenue should be recognized.",
+      "status": "preview",
+      "path": "skills/revenue-recognition-policy-review",
+      "references": [
+        "revenue-recognition-policy-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1580,6 +1658,19 @@
       ]
     },
     {
+      "name": "support-escalation-engineering-review",
+      "description": "Design and audit support-to-engineering escalation workflows covering severity, reproduction, logs, customer impact, ownership, SLAs, bug intake, incident boundary, feature requests, known issues, engineering triage, workaround, customer updates, closure proof, and feedback loops. Use when support needs reliable engineering help without noisy or invisible escalations.",
+      "status": "preview",
+      "path": "skills/support-escalation-engineering-review",
+      "references": [
+        "support-escalation-engineering-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "support-quality-qa-review",
       "description": "Design and audit customer support quality assurance, ticket review scorecards, macro quality, escalation correctness, refund/support fairness, tone, evidence handling, coaching loops, calibration, automation QA, and support health metrics. Use when improving support operations for SaaS, apps, games, marketplaces, developer tools, billing, trust, or community products.",
       "status": "preview",
@@ -1612,6 +1703,19 @@
       "path": "skills/tax-invoicing-compliance-review",
       "references": [
         "tax-invoicing-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "trial-conversion-sales-assist-review",
+      "description": "Design and audit sales-assisted trial conversion for SaaS and developer tools covering activation signals, PQL scoring, usage intent, sales routing, in-product nudges, demo offers, procurement readiness, upgrade prompts, trial extension, nurture, handoff, experiment guardrails, and trust-preserving outreach. Use when free trials or freemium users should convert without spam or dark patterns.",
+      "status": "preview",
+      "path": "skills/trial-conversion-sales-assist-review",
+      "references": [
+        "trial-conversion-sales-assist-patterns.md"
       ],
       "scripts": [],
       "agents": [
