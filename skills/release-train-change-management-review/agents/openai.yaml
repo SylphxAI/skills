@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Train Change Management Review"
+  short_description: "Coordinate release trains safely"
+  default_prompt: "Use $release-train-change-management-review to plan a release train and change-management process."

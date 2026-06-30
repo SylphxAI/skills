@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Quality Observability Review"
+  short_description: "Monitor data quality signals"
+  default_prompt: "Use $data-quality-observability-review to design data quality observability for product metrics and pipelines."
