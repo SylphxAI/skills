@@ -1,0 +1,4 @@
+interface:
+  display_name: "Partner Risk Due Diligence Review"
+  short_description: "Assess partner ecosystem risk"
+  default_prompt: "Use $partner-risk-due-diligence-review to assess partner risk before integration or co-marketing."

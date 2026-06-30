@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lifecycle Email System Review"
+  short_description: "Design lifecycle email systems"
+  default_prompt: "Use $lifecycle-email-system-review to design lifecycle email with segmentation, consent, and deliverability."

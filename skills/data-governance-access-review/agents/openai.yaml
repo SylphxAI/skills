@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Governance Access Review"
+  short_description: "Govern data access safely"
+  default_prompt: "Use $data-governance-access-review to design data governance and access controls."
