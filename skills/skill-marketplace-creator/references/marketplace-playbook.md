@@ -53,7 +53,7 @@ Recommended:
 - No secrets or private data.
 - No unsafe shell commands unless tightly scoped and explained.
 - Links to local references resolve.
-- Third-party sources are license-compatible and attributed.
+- Content is original synthesis, not copied expression or close paraphrase. Direct quotes, third-party code/assets, or license-required excerpts have permission and attribution.
 - At least one realistic example prompt exists for complex skills.
 
 ## Agent factory
@@ -61,7 +61,7 @@ Recommended:
 Use agents to create drafts, not to publish automatically.
 
 1. Scout: find knowledge gaps and source material.
-2. License: decide whether source use is allowed.
+2. Rights: decide whether any direct source material is being included. Prefer no direct inclusion; synthesize original guidance instead.
 3. Distill: extract reusable workflow, not prose.
 4. Author: create `SKILL.md`, references, and scripts.
 5. Eval: test trigger and output behavior.

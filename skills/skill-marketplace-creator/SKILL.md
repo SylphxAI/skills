@@ -19,7 +19,7 @@ Use this skill to build a skill ecosystem that is useful, trustworthy, and distr
 
 - Start repository-first. GitHub is the first marketplace, trust surface, and contribution flow.
 - Curate before scaling. A small set of excellent skills beats a huge undifferentiated directory.
-- Keep content attribution-safe. Distill original workflows; do not launder third-party writing.
+- Keep content original. Distill workflows into Sylphx-owned structure, examples, and wording; do not copy or lightly paraphrase third-party writing.
 - Make quality machine-checkable where possible.
 - Separate skills from MCP tools: skills teach behavior; MCP servers provide capabilities.
 
