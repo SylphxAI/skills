@@ -1,0 +1,10 @@
+skill: accessibility-conformance-program-review
+positive_prompts:
+  - "Design an accessibility conformance program for SaaS with WCAG targets, VPAT evidence, assistive-tech testing, issue severity, remediation SLAs, and release gates."
+  - "Audit an accessibility claim that relies on automated scanner results but lacks keyboard and screen reader workflow testing."
+negative_prompts:
+  - "Design an observability cost budget."
+expected_behavior:
+  - "Defines scope, standard, evidence, test matrix, severity, owners, remediation SLAs, exceptions, and release gates."
+  - "Combines automated, keyboard, screen reader, focus, contrast, motion, zoom, touch, and workflow testing."
+  - "Flags unsupported conformance claims, scanner-only audits, unowned remediation, stale VPATs, and critical blockers."

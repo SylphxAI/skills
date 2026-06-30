@@ -1,0 +1,4 @@
+interface:
+  display_name: "Observability Cost Governance Review"
+  short_description: "Control observability cost"
+  default_prompt: "Use $observability-cost-governance-review to govern logs, metrics, traces, and observability spend."

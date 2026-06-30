@@ -1,0 +1,10 @@
+skill: reliability-incident-learning-review
+positive_prompts:
+  - "Run an incident learning review for a release regression that caused API downtime, late status updates, and repeat support tickets."
+  - "Audit postmortem action items to ensure they actually reduce recurrence risk and improve SLO evidence."
+negative_prompts:
+  - "Prepare a procurement DPA response."
+expected_behavior:
+  - "Separates incident trigger, contributing factors, latent conditions, detection gaps, response gaps, and customer communication gaps."
+  - "Includes timeline, impact, action owners, due dates, evidence, SLO/error budget linkage, recurrence checks, and learning distribution."
+  - "Flags blameful root-cause narratives, shallow actions, closed-without-proof follow-up, and hidden customer impact."

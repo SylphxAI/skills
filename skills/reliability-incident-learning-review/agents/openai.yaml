@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reliability Incident Learning Review"
+  short_description: "Turn incidents into learning"
+  default_prompt: "Use $reliability-incident-learning-review to turn incidents into reliability learning and action."

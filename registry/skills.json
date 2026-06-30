@@ -16,6 +16,19 @@
       ]
     },
     {
+      "name": "accessibility-conformance-program-review",
+      "description": "Design and audit accessibility conformance programs for apps, SaaS, websites, desktop software, games, marketplaces, and developer tools. Covers WCAG targets, VPAT/ACR, audits, assistive-tech testing, design systems, issue severity, ownership, remediation, release gates, procurement evidence, and customer communication. Use when accessibility needs durable governance beyond one-off audits.",
+      "status": "preview",
+      "path": "skills/accessibility-conformance-program-review",
+      "references": [
+        "accessibility-conformance-program-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "accessibility-product-review",
       "description": "Review product accessibility and inclusive UX for web, mobile, desktop, SaaS, games, developer tools, checkout, onboarding, settings, forms, dashboards, notifications, motion, keyboard, screen reader, touch, color contrast, focus, error recovery, cognitive load, reduced motion, captions, localization, and assistive technology compatibility. Use when designing, building, or auditing product flows for accessible, usable, modern experiences.",
       "status": "preview",
@@ -250,6 +263,19 @@
       ]
     },
     {
+      "name": "compliance-evidence-room-review",
+      "description": "Design and audit compliance evidence rooms, gated security document portals, SOC/ISO reports, pen test summaries, policies, DPAs, subprocessors, audit evidence, access approval, expiry, watermarking, renewal, and buyer proof workflows. Use when enterprise customers or auditors need sensitive evidence without uncontrolled document sharing.",
+      "status": "preview",
+      "path": "skills/compliance-evidence-room-review",
+      "references": [
+        "compliance-evidence-room-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "content-policy-appeals-review",
       "description": "Design and audit content policy, UGC rules, creator marketplace policies, enforcement ladders, takedowns, warnings, strikes, appeals, evidence retention, transparency notices, moderator QA, policy edge cases, user safety, and creator trust. Use when products host content, listings, profiles, comments, mods, plugins, communities, or AI-generated material.",
       "status": "preview",
@@ -380,6 +406,19 @@
       ]
     },
     {
+      "name": "data-governance-access-review",
+      "description": "Design and audit data governance, data classification, access controls, least privilege, approval workflows, owner review, retention, deletion, audit logs, data catalog, sensitive fields, analytics access, support/admin access, AI dataset access, and break-glass paths. Use when teams need product data access without privacy, security, or compliance drift.",
+      "status": "preview",
+      "path": "skills/data-governance-access-review",
+      "references": [
+        "data-governance-access-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "data-import-migration-review",
       "description": "Design and audit data imports, customer migrations, bulk uploads, CSV/schema mapping, backfills, migration wizards, dry runs, validation, idempotency, reconciliation, rollback, progress visibility, and support handoffs. Use when moving product data between systems, onboarding customers from competitors, importing files, or migrating accounts without data loss.",
       "status": "preview",
@@ -503,6 +542,19 @@
       "path": "skills/experiment-design-review",
       "references": [
         "experiment-design-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "experimentation-platform-governance-review",
+      "description": "Design and audit experimentation platform governance for A/B tests, holdouts, feature tests, pricing experiments, lifecycle campaigns, marketplace ranking tests, game economy tests, AI experiments, exposure allocation, metrics, guardrails, conflicts, ethics, rollout, and decision review. Use when experiments should create reliable product learning without harming users or corrupting decisions.",
+      "status": "preview",
+      "path": "skills/experimentation-platform-governance-review",
+      "references": [
+        "experimentation-platform-governance-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -659,6 +711,19 @@
       "path": "skills/launch-readiness-review",
       "references": [
         "launch-readiness-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "lifecycle-email-system-review",
+      "description": "Design and audit lifecycle email systems for onboarding, activation, education, retention, winback, billing, product updates, community, marketplace, and transactional messaging. Covers segmentation, consent, suppression, deliverability, frequency caps, triggers, personalization, localization, measurement, and support handoff. Use when email should drive product outcomes without spam or trust damage.",
+      "status": "preview",
+      "path": "skills/lifecycle-email-system-review",
+      "references": [
+        "lifecycle-email-system-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -824,6 +889,19 @@
       ]
     },
     {
+      "name": "observability-cost-governance-review",
+      "description": "Design and audit observability cost governance across logs, metrics, traces, events, profiling, session replay, analytics, retention, sampling, cardinality, dashboards, alerting, ownership, privacy redaction, budgets, and incident usefulness. Use when telemetry spend grows or observability needs to stay useful, safe, and cost-efficient.",
+      "status": "preview",
+      "path": "skills/observability-cost-governance-review",
+      "references": [
+        "observability-cost-governance-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "offline-sync-conflict-review",
       "description": "Design and audit offline sync, queued mutations, reconnect behavior, conflict resolution, local-first UX, draft persistence, tombstones, attachment sync, optimistic updates, multi-device edits, merge policies, data-loss recovery, and sync observability. Use when mobile, desktop, PWA, field, creator, or collaboration products must keep working without reliable connectivity.",
       "status": "preview",
@@ -882,6 +960,19 @@
       "path": "skills/partner-integration-ecosystem-review",
       "references": [
         "partner-ecosystem-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "partner-risk-due-diligence-review",
+      "description": "Design and audit partner risk due diligence for integrations, resellers, agencies, affiliates, marketplace partners, creators, data-sharing partners, AI providers, and co-marketing. Covers strategic fit, security/privacy, legal, operational dependency, brand risk, support burden, incentives, exit plans, and monitoring. Use when committing to partner ecosystems or joint go-to-market.",
+      "status": "preview",
+      "path": "skills/partner-risk-due-diligence-review",
+      "references": [
+        "partner-risk-due-diligence-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1038,6 +1129,19 @@
       "path": "skills/release-train-change-management-review",
       "references": [
         "release-train-change-management-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "reliability-incident-learning-review",
+      "description": "Design and audit reliability incident learning, postmortems, incident timelines, contributing factors, action items, recurrence prevention, customer impact, status updates, error budget learning, operational follow-through, and blameless review. Use when outages, degraded service, data incidents, support spikes, or release failures need durable improvement instead of shallow postmortems.",
+      "status": "preview",
+      "path": "skills/reliability-incident-learning-review",
+      "references": [
+        "reliability-incident-learning-patterns.md"
       ],
       "scripts": [],
       "agents": [

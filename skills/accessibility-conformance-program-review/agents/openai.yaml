@@ -1,0 +1,4 @@
+interface:
+  display_name: "Accessibility Conformance Program Review"
+  short_description: "Run accessibility conformance"
+  default_prompt: "Use $accessibility-conformance-program-review to build an accessibility conformance program."

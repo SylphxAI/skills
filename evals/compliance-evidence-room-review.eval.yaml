@@ -1,0 +1,10 @@
+skill: compliance-evidence-room-review
+positive_prompts:
+  - "Design a compliance evidence room for enterprise buyers with SOC reports, pen test summaries, DPAs, access approval, expiry, and audit logs."
+  - "Audit a security document portal for stale evidence, uncontrolled downloads, missing approvals, and buyer follow-up ownership."
+negative_prompts:
+  - "Design a lifecycle email onboarding sequence."
+expected_behavior:
+  - "Classifies evidence by sensitivity, audience, scope, owner, version, and expiry."
+  - "Includes gated access, requester identity, terms/NDA, audit trail, revocation, follow-up routing, and stale-document review."
+  - "Flags uncontrolled report sharing, sales-uploaded evidence, expired compliance documents, and overbroad assurance claims."

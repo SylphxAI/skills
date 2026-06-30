@@ -1,0 +1,10 @@
+skill: observability-cost-governance-review
+positive_prompts:
+  - "Review observability cost for logs, metrics, traces, session replay, retention, sampling, cardinality, privacy redaction, and incident usefulness."
+  - "Design telemetry governance so teams can reduce spend without losing SLO, security, billing, or support evidence."
+negative_prompts:
+  - "Audit a customer advisory board agenda."
+expected_behavior:
+  - "Classifies telemetry by decision value and incident/support/audit need before reducing cost."
+  - "Includes owners, budgets, cardinality, sampling, retention, redaction, cost allocation, dashboard cleanup, and exception rules."
+  - "Flags unbounded labels, raw sensitive logs, cutting critical evidence, and forever debug telemetry."

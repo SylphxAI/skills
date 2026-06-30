@@ -1,0 +1,10 @@
+skill: data-governance-access-review
+positive_prompts:
+  - "Design data governance for analytics, support, and AI datasets with classification, approvals, least privilege, audit logs, retention, and break-glass access."
+  - "Audit production data access to find stale grants, overbroad roles, missing owner reviews, and sensitive data copies."
+negative_prompts:
+  - "Plan a partner co-marketing webinar."
+expected_behavior:
+  - "Classifies data sensitivity, purpose, residency, retention, and customer impact before granting access."
+  - "Includes request workflow, owner approval, duration, least privilege, audit logs, access reviews, offboarding, and break-glass policy."
+  - "Flags permanent broad access, raw PII copies, AI dataset leakage, and missing stale-access revocation."
