@@ -19,7 +19,8 @@
         "customer-feedback-intake-review",
         "risk-register-governance-review",
         "customer-advisory-board-review",
-        "revenue-forecast-capacity-review"
+        "revenue-forecast-capacity-review",
+        "experimentation-platform-governance-review"
       ]
     },
     {
@@ -36,7 +37,8 @@
         "app-permission-ux-review",
         "admin-settings-ia-review",
         "empty-state-and-loading-review",
-        "in-product-education-review"
+        "in-product-education-review",
+        "accessibility-conformance-program-review"
       ]
     },
     {
@@ -54,7 +56,8 @@
         "referral-loop-review",
         "launch-narrative-review",
         "brand-trust-review",
-        "partner-co-marketing-launch-review"
+        "partner-co-marketing-launch-review",
+        "lifecycle-email-system-review"
       ]
     },
     {
@@ -70,7 +73,8 @@
         "billing-reconciliation-review",
         "tax-invoicing-compliance-review",
         "checkout-conversion-review",
-        "cost-margin-unit-economics-review"
+        "cost-margin-unit-economics-review",
+        "observability-cost-governance-review"
       ]
     },
     {
@@ -108,7 +112,8 @@
         "offline-sync-conflict-review",
         "feature-sunset-deprecation-review",
         "release-train-change-management-review",
-        "service-level-slo-review"
+        "service-level-slo-review",
+        "reliability-incident-learning-review"
       ]
     },
     {
@@ -133,7 +138,9 @@
         "content-policy-appeals-review",
         "support-deflection-knowledge-base-review",
         "trust-center-readiness-review",
-        "procurement-security-review"
+        "procurement-security-review",
+        "compliance-evidence-room-review",
+        "data-governance-access-review"
       ]
     },
     {
@@ -150,7 +157,8 @@
         "search-discovery-relevance-review",
         "sdk-onboarding-integration-review",
         "platform-certification-program-review",
-        "community-governance-review"
+        "community-governance-review",
+        "partner-risk-due-diligence-review"
       ]
     },
     {

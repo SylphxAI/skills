@@ -1,0 +1,10 @@
+skill: partner-risk-due-diligence-review
+positive_prompts:
+  - "Run partner risk due diligence for an AI integration partner with data sharing, privacy, support, fallback, co-marketing claims, and exit planning."
+  - "Audit an affiliate/reseller partnership for incentive abuse, customer confusion, brand risk, attribution, and support ownership."
+negative_prompts:
+  - "Design accessibility conformance testing."
+expected_behavior:
+  - "Classifies partner motion and dependency depth before weighing upside."
+  - "Includes data boundaries, security/privacy/legal review, support ownership, incentives, contracts, monitoring, degradation, and exit plan."
+  - "Flags revenue-over-risk bias, unsupported co-marketing claims, customer data sharing risk, and hidden support burden."

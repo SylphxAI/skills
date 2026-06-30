@@ -1,0 +1,10 @@
+skill: lifecycle-email-system-review
+positive_prompts:
+  - "Design lifecycle email for SaaS onboarding and retention with consent, segmentation, triggers, suppression, deliverability, frequency caps, and activation metrics."
+  - "Audit winback emails for churned users to avoid consent, fatigue, localization, unsubscribe, and trust issues."
+negative_prompts:
+  - "Review platform certification badge criteria."
+expected_behavior:
+  - "Classifies message type and consent basis before designing triggers or content."
+  - "Includes eligibility, suppression, preference handling, frequency caps, deliverability, localization, event tracking, support visibility, and negative guardrails."
+  - "Flags transactional/promotional mixing, open-rate-only optimization, emailing deleted/churned users, and fatigue risk."

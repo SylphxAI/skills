@@ -52,6 +52,7 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`motion-transition-review`](./skills/motion-transition-review/SKILL.md) | Designing subtle, accessible motion for state changes, navigation, gestures, and loading. | Preview |
 | [`responsive-layout-review`](./skills/responsive-layout-review/SKILL.md) | Making layouts work from compact mobile views to wide desktop workspaces. | Preview |
 | [`accessibility-product-review`](./skills/accessibility-product-review/SKILL.md) | Reviewing critical product flows for keyboard, screen reader, motion, contrast, touch, and recovery access. | Preview |
+| [`accessibility-conformance-program-review`](./skills/accessibility-conformance-program-review/SKILL.md) | Building accessibility conformance programs with WCAG targets, audits, VPAT/ACR, remediation, and gates. | Preview |
 | [`design-system-extractor`](./skills/design-system-extractor/SKILL.md) | Extracting tokens, components, states, patterns, accessibility rules, and migration plans from existing UI. | Preview |
 | [`form-ux-review`](./skills/form-ux-review/SKILL.md) | Auditing form flows for field necessity, validation, errors, accessibility, trust, autosave, and completion quality. | Preview |
 | [`app-permission-ux-review`](./skills/app-permission-ux-review/SKILL.md) | Auditing permission prompts, sensitive access, denial recovery, settings, and trust copy. | Preview |
@@ -67,6 +68,7 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`seo-content-brief`](./skills/seo-content-brief/SKILL.md) | Creating product-led SEO briefs around intent, original value, internal links, and conversion. | Preview |
 | [`promotion-campaign-review`](./skills/promotion-campaign-review/SKILL.md) | Designing offers, promotions, launches, win-back, events, and campaign guardrails. | Preview |
 | [`winback-campaign-review`](./skills/winback-campaign-review/SKILL.md) | Designing ethical win-back and reactivation campaigns for churned or dormant users. | Preview |
+| [`lifecycle-email-system-review`](./skills/lifecycle-email-system-review/SKILL.md) | Designing lifecycle email systems, segmentation, consent, deliverability, suppression, and triggers. | Preview |
 | [`localization-market-expansion-review`](./skills/localization-market-expansion-review/SKILL.md) | Planning localization, regional launch, pricing, payments, support, and market expansion. | Preview |
 | [`referral-loop-review`](./skills/referral-loop-review/SKILL.md) | Designing referral loops, rewards, attribution, fraud controls, support evidence, and retained-value metrics. | Preview |
 | [`launch-narrative-review`](./skills/launch-narrative-review/SKILL.md) | Shaping launch narratives around audience, old way, new way, proof, objections, assets, and CTA. | Preview |
@@ -75,9 +77,11 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`saas-subscription-pricing`](./skills/saas-subscription-pricing/SKILL.md) | Designing SaaS pricing, packaging, trials, cancellation, and expansion. | Preview |
 | [`usage-based-pricing-review`](./skills/usage-based-pricing-review/SKILL.md) | Designing usage-based pricing, metering, credits, quotas, overages, spend controls, and billing trust. | Preview |
 | [`cost-margin-unit-economics-review`](./skills/cost-margin-unit-economics-review/SKILL.md) | Reviewing COGS, gross margin, usage cost, CAC/LTV, refunds, support load, and pricing sustainability. | Preview |
+| [`observability-cost-governance-review`](./skills/observability-cost-governance-review/SKILL.md) | Governing logs, metrics, traces, cardinality, sampling, retention, ownership, budgets, and privacy. | Preview |
 | [`risk-register-governance-review`](./skills/risk-register-governance-review/SKILL.md) | Creating risk registers with severity, likelihood, controls, mitigations, owners, and review cadence. | Preview |
 | [`customer-advisory-board-review`](./skills/customer-advisory-board-review/SKILL.md) | Designing customer advisory boards, member selection, agendas, roadmap signal, commitments, and follow-up. | Preview |
 | [`revenue-forecast-capacity-review`](./skills/revenue-forecast-capacity-review/SKILL.md) | Reviewing revenue forecasts, funnel assumptions, gross margin, capacity constraints, and scenarios. | Preview |
+| [`experimentation-platform-governance-review`](./skills/experimentation-platform-governance-review/SKILL.md) | Governing A/B tests, holdouts, metrics, exposure, guardrails, ethics, conflicts, and decisions. | Preview |
 | [`subscription-entitlement-review`](./skills/subscription-entitlement-review/SKILL.md) | Keeping subscriptions, plans, trials, renewals, refunds, and access states consistent. | Preview |
 | [`refund-and-support-flow-review`](./skills/refund-and-support-flow-review/SKILL.md) | Designing fair refund, entitlement, appeal, abuse review, and support flows. | Preview |
 | [`payment-platform-readiness`](./skills/payment-platform-readiness/SKILL.md) | Preparing Apple Pay, Google Pay, IAP, web checkout, refunds, entitlements, and reconciliation. | Preview |
@@ -110,6 +114,7 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`feature-sunset-deprecation-review`](./skills/feature-sunset-deprecation-review/SKILL.md) | Planning feature, API, integration, workflow, or plan sunset with migration and communication. | Preview |
 | [`release-train-change-management-review`](./skills/release-train-change-management-review/SKILL.md) | Planning release trains, change calendars, risk classes, staged rollout, rollback, and support readiness. | Preview |
 | [`service-level-slo-review`](./skills/service-level-slo-review/SKILL.md) | Designing SLOs, SLIs, SLAs, error budgets, status pages, maintenance windows, and reliability promises. | Preview |
+| [`reliability-incident-learning-review`](./skills/reliability-incident-learning-review/SKILL.md) | Turning incidents into timelines, contributing factors, action items, recurrence prevention, and learning. | Preview |
 | [`customer-support-operations`](./skills/customer-support-operations/SKILL.md) | Designing support, refund, escalation, help center, and trust operations. | Preview |
 | [`account-recovery-identity-review`](./skills/account-recovery-identity-review/SKILL.md) | Reviewing password reset, MFA/passkey recovery, SSO fallback, proof, and takeover risk. | Preview |
 | [`support-quality-qa-review`](./skills/support-quality-qa-review/SKILL.md) | Designing support QA scorecards, macro reviews, calibration, coaching, and product loops. | Preview |
@@ -123,6 +128,8 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`data-quality-observability-review`](./skills/data-quality-observability-review/SKILL.md) | Designing data quality checks, freshness, completeness, schema drift, lineage, alerts, and metric trust. | Preview |
 | [`trust-center-readiness-review`](./skills/trust-center-readiness-review/SKILL.md) | Preparing trust centers with security, privacy, compliance, subprocessors, uptime, policies, and evidence. | Preview |
 | [`procurement-security-review`](./skills/procurement-security-review/SKILL.md) | Preparing enterprise procurement security reviews, evidence packets, questionnaires, DPAs, and gap handling. | Preview |
+| [`compliance-evidence-room-review`](./skills/compliance-evidence-room-review/SKILL.md) | Designing compliance evidence rooms, gated reports, document access, expiry, approvals, and audit logs. | Preview |
+| [`data-governance-access-review`](./skills/data-governance-access-review/SKILL.md) | Designing data classification, access controls, approvals, least privilege, retention, audits, and break-glass. | Preview |
 | [`security-questionnaire-response-review`](./skills/security-questionnaire-response-review/SKILL.md) | Preparing truthful security questionnaire answers with evidence, caveats, and gaps. | Preview |
 | [`abuse-fraud-risk-review`](./skills/abuse-fraud-risk-review/SKILL.md) | Designing abuse, fraud, spam, refund, promotion, marketplace, and game-economy controls. | Preview |
 | [`moderation-trust-review`](./skills/moderation-trust-review/SKILL.md) | Designing moderation queues, appeals, enforcement ladders, and trust operations. | Preview |
@@ -138,6 +145,7 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`creator-onboarding-review`](./skills/creator-onboarding-review/SKILL.md) | Designing creator onboarding, submission quality gates, review feedback, publishing, analytics, and payouts readiness. | Preview |
 | [`community-launch-ops-review`](./skills/community-launch-ops-review/SKILL.md) | Planning community launch operations, channels, roles, moderation, events, and feedback loops. | Preview |
 | [`partner-integration-ecosystem-review`](./skills/partner-integration-ecosystem-review/SKILL.md) | Designing partner ecosystems, APIs, certification, directories, incentives, and support boundaries. | Preview |
+| [`partner-risk-due-diligence-review`](./skills/partner-risk-due-diligence-review/SKILL.md) | Assessing partner fit, data sharing, brand risk, legal/privacy/security exposure, incentives, and exit plans. | Preview |
 | [`creator-ranking-quality-review`](./skills/creator-ranking-quality-review/SKILL.md) | Auditing marketplace ranking quality, fairness, freshness, fraud resistance, and creator trust. | Preview |
 | [`search-discovery-relevance-review`](./skills/search-discovery-relevance-review/SKILL.md) | Auditing search, discovery, filters, relevance signals, zero-results, ranking drift, and fairness. | Preview |
 | [`skill-eval-designer`](./skills/skill-eval-designer/SKILL.md) | Designing behavior evals, positive/negative prompts, rubrics, regression cases, and forward-tests for skills. | Preview |
