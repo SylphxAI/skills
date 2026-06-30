@@ -1,0 +1,10 @@
+skill: skill-marketplace-creator
+positive_prompts:
+  - "Design a public repository for sharing AI agent skills."
+  - "Create quality gates for a SKILL.md marketplace."
+negative_prompts:
+  - "Write a SQL query for monthly revenue."
+expected_behavior:
+  - "Starts repository-first unless a heavier marketplace is justified."
+  - "Separates skills from MCP tools."
+  - "Includes validation, safety, license, and eval gates."

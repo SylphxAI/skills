@@ -1,0 +1,21 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Design & Product Craft",
+      "description": "Skills for product taste, interface polish, and user-perceived quality.",
+      "skills": ["interface-craft"]
+    },
+    {
+      "title": "Growth & Market",
+      "description": "Skills for startup positioning, funnels, and practical growth leverage.",
+      "skills": ["startup-growth-review"]
+    },
+    {
+      "title": "Agent Skill Operations",
+      "description": "Skills for creating, curating, validating, and operating reusable agent skills.",
+      "skills": ["skill-marketplace-creator"]
+    }
+  ]
+}

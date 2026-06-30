@@ -1,0 +1,10 @@
+{
+  "name": "@sylphx/skills-repo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-skills.mjs",
+    "registry": "node scripts/generate-registry.mjs",
+    "check": "node scripts/generate-registry.mjs && node scripts/validate-skills.mjs --check-registry"
+  }
+}

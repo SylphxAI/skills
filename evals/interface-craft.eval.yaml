@@ -1,0 +1,10 @@
+skill: interface-craft
+positive_prompts:
+  - "Review this React form and make it feel more polished without changing the product direction."
+  - "Build a modal with tasteful motion and accessible keyboard behavior."
+negative_prompts:
+  - "Explain OAuth 2.0 token exchange."
+expected_behavior:
+  - "Identifies concrete UI surfaces before suggesting details."
+  - "Prioritizes accessibility and reduced-motion constraints."
+  - "Uses rule IDs when reviewing."

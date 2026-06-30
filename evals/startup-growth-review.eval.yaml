@@ -1,0 +1,10 @@
+skill: startup-growth-review
+positive_prompts:
+  - "Audit this landing page for growth and conversion issues."
+  - "Help me choose the first three growth experiments for a B2B SaaS launch."
+negative_prompts:
+  - "Fix this TypeScript type error."
+expected_behavior:
+  - "Separates diagnosis from assumptions."
+  - "Prioritizes actions by impact, confidence, speed, and strategic fit."
+  - "Rejects spammy or deceptive growth tactics."
