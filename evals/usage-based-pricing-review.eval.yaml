@@ -1,0 +1,10 @@
+skill: usage-based-pricing-review
+positive_prompts:
+  - "Design usage-based pricing for an AI API with tokens, credits, free allowance, and enterprise controls."
+  - "Audit this metered billing model for a SaaS product that charges by storage and monthly active projects."
+negative_prompts:
+  - "Review our Steam capsule art and demo plan."
+expected_behavior:
+  - "Separates value metric, cost driver, metered event, billable unit, entitlement, and invoice line."
+  - "Defines spend controls, thresholds, anomaly handling, disputes, and support evidence."
+  - "Evaluates pricing by retained revenue, margin, support load, and customer trust."

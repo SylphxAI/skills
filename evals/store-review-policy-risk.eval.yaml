@@ -1,0 +1,10 @@
+skill: store-review-policy-risk
+positive_prompts:
+  - "Audit our App Store and Google Play submission for subscriptions, UGC, ads, and privacy policy risk."
+  - "Create a store review risk register for a health-adjacent AI mobile app."
+negative_prompts:
+  - "Analyze SaaS monthly retention cohorts."
+expected_behavior:
+  - "Builds a channel-specific risk register across metadata, payments, privacy, permissions, UGC, ads, and regulated claims."
+  - "Requires reviewer notes, evidence, demo paths, and current policy verification."
+  - "Separates hard blockers, clarifications, metadata fixes, product fixes, and post-approval monitoring."

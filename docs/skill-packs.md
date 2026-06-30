@@ -7,9 +7,9 @@ This repository grows around high-demand job clusters, not random one-off prompt
 The repository foundation is production-ready:
 
 - public repo, CI, registry, catalog, and install verification exist;
-- 43 preview skills are present with evals, behavior examples, and references;
+- 51 preview skills are present with evals, behavior examples, and references;
 - quality bar and original-synthesis policy are explicit;
-- high-leverage product cells now cover revenue, mobile/game retention, Steam, macOS, Windows, developer tools, and marketplace ops.
+- high-leverage product cells now cover revenue, usage pricing, payouts, mobile/game retention, live events, referrals, accessibility, store policy risk, Steam, Microsoft Store, macOS, Windows, developer tools, and marketplace ops.
 
 ## Priority packs
 
@@ -18,7 +18,7 @@ The repository foundation is production-ready:
 - `product-lifecycle-architect`
 - `market-research-synthesis`
 - `execution-simplification`
-- next: `decision-memo-writer`, `opportunity-scoring-review`
+- next: `decision-memo-writer`, `opportunity-scoring-review`, `agentic-workflow-designer`
 
 ### 2. UI Design Pack
 
@@ -26,8 +26,9 @@ The repository foundation is production-ready:
 - `mobile-first-ui-review`
 - `responsive-layout-review`
 - `motion-transition-review`
+- `accessibility-product-review`
 - `empty-state-and-loading-review`
-- next: `design-system-extractor`, `accessibility-product-review`, `form-ux-review`
+- next: `design-system-extractor`, `form-ux-review`
 
 ### 3. Product Systems Pack
 
@@ -38,16 +39,20 @@ The repository foundation is production-ready:
 - `game-economy-review`
 - `refund-and-support-flow-review`
 - `daily-reward-and-streak-review`
+- `live-event-ops-review`
+- `retention-cohort-review`
 
 ### 4. Revenue & Monetization Pack
 
 - `saas-subscription-pricing`
+- `usage-based-pricing-review`
 - `pricing-page-critique`
 - `checkout-conversion-review`
 - `payment-platform-readiness`
+- `marketplace-payouts-review`
 - `ad-monetization-review`
 - `promotion-campaign-review`
-- next: `usage-based-pricing-review`, `marketplace-payouts-review`
+- next: `winback-campaign-review`, `customer-success-health-review`
 
 ### 5. Marketing Design Pack
 
@@ -56,18 +61,20 @@ The repository foundation is production-ready:
 - `product-positioning`
 - `seo-content-brief`
 - `store-listing-optimization`
-- next: `launch-narrative-review`, `referral-loop-review`
+- `referral-loop-review`
+- next: `launch-narrative-review`
 
 ### 6. Platform, Distribution & Desktop Pack
 
 - `app-store-distribution-readiness`
 - `steam-launch-readiness`
+- `microsoft-store-readiness`
+- `store-review-policy-risk`
 - `desktop-os-integration`
 - `macos-release-readiness`
 - `windows-release-readiness`
 - `launch-readiness-review`
 - `changelog-and-release-notes`
-- next: `microsoft-store-readiness`, `store-review-policy-risk`
 
 ### 7. Operations, Trust & Support Pack
 
@@ -78,17 +85,19 @@ The repository foundation is production-ready:
 - `incident-communication-playbook`
 - `analytics-event-taxonomy`
 - `help-center-architecture`
+- `accessibility-product-review`
 
 ### 8. Developer & Marketplace Pack
 
 - `developer-tool-product-design`
 - `marketplace-product-ops`
+- `marketplace-payouts-review`
 - `skill-marketplace-creator`
-- next: `creator-onboarding-review`, `skill-eval-designer`, `skill-catalog-generator`
+- next: `creator-onboarding-review`, `skill-eval-designer`, `skill-catalog-generator`, `moderation-trust-review`
 
 ## What will attract stars
 
-- Skills that solve painful, common jobs: UI polish, checkout conversion, mobile monetization, Steam launch, desktop release, developer onboarding, marketplace ops, production readiness.
+- Skills that solve painful, common jobs: UI polish, accessibility, checkout conversion, usage pricing, mobile monetization, Steam/Microsoft launch, desktop release, developer onboarding, marketplace payouts, production readiness.
 - Before/after examples and public demos for every high-demand skill.
 - Visible quality bar that rejects prompt dumps and requires state machines, decision tables, event schemas, and eval prompts.
 - Installability through open skills CLI and third-party directories.

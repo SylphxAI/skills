@@ -19,6 +19,7 @@
         "mobile-first-ui-review",
         "motion-transition-review",
         "responsive-layout-review",
+        "accessibility-product-review",
         "empty-state-and-loading-review"
       ]
     },
@@ -31,7 +32,8 @@
         "startup-growth-review",
         "product-positioning",
         "seo-content-brief",
-        "promotion-campaign-review"
+        "promotion-campaign-review",
+        "referral-loop-review"
       ]
     },
     {
@@ -39,9 +41,11 @@
       "description": "Skills for SaaS pricing, subscriptions, payments, purchases, entitlements, refunds, and revenue systems.",
       "skills": [
         "saas-subscription-pricing",
+        "usage-based-pricing-review",
         "subscription-entitlement-review",
         "refund-and-support-flow-review",
         "payment-platform-readiness",
+        "marketplace-payouts-review",
         "checkout-conversion-review"
       ]
     },
@@ -54,6 +58,8 @@
         "game-economy-review",
         "ad-monetization-review",
         "daily-reward-and-streak-review",
+        "live-event-ops-review",
+        "retention-cohort-review",
         "onboarding-activation-review"
       ]
     },
@@ -65,6 +71,8 @@
         "store-listing-optimization",
         "launch-readiness-review",
         "steam-launch-readiness",
+        "microsoft-store-readiness",
+        "store-review-policy-risk",
         "desktop-os-integration",
         "macos-release-readiness",
         "windows-release-readiness",

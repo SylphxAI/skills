@@ -44,6 +44,7 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`mobile-first-ui-review`](./skills/mobile-first-ui-review/SKILL.md) | Auditing mobile-first flows for touch ergonomics, safe areas, forms, permissions, and speed. | Preview |
 | [`motion-transition-review`](./skills/motion-transition-review/SKILL.md) | Designing subtle, accessible motion for state changes, navigation, gestures, and loading. | Preview |
 | [`responsive-layout-review`](./skills/responsive-layout-review/SKILL.md) | Making layouts work from compact mobile views to wide desktop workspaces. | Preview |
+| [`accessibility-product-review`](./skills/accessibility-product-review/SKILL.md) | Reviewing critical product flows for keyboard, screen reader, motion, contrast, touch, and recovery access. | Preview |
 | [`empty-state-and-loading-review`](./skills/empty-state-and-loading-review/SKILL.md) | Improving empty, loading, offline, zero-result, and error recovery states. | Preview |
 | [`landing-page-critique`](./skills/landing-page-critique/SKILL.md) | Improving landing pages for positioning, proof, CTA clarity, objections, and conversion. | Preview |
 | [`pricing-page-critique`](./skills/pricing-page-critique/SKILL.md) | Improving pricing pages, plan tables, trials, risk reducers, and monetization UX. | Preview |
@@ -52,20 +53,27 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`product-positioning`](./skills/product-positioning/SKILL.md) | Sharpening audience, category, alternatives, differentiation, proof, and message hierarchy. | Preview |
 | [`seo-content-brief`](./skills/seo-content-brief/SKILL.md) | Creating product-led SEO briefs around intent, original value, internal links, and conversion. | Preview |
 | [`promotion-campaign-review`](./skills/promotion-campaign-review/SKILL.md) | Designing offers, promotions, launches, win-back, events, and campaign guardrails. | Preview |
+| [`referral-loop-review`](./skills/referral-loop-review/SKILL.md) | Designing referral loops, rewards, attribution, fraud controls, support evidence, and retained-value metrics. | Preview |
 | [`saas-subscription-pricing`](./skills/saas-subscription-pricing/SKILL.md) | Designing SaaS pricing, packaging, trials, cancellation, and expansion. | Preview |
+| [`usage-based-pricing-review`](./skills/usage-based-pricing-review/SKILL.md) | Designing usage-based pricing, metering, credits, quotas, overages, spend controls, and billing trust. | Preview |
 | [`subscription-entitlement-review`](./skills/subscription-entitlement-review/SKILL.md) | Keeping subscriptions, plans, trials, renewals, refunds, and access states consistent. | Preview |
 | [`refund-and-support-flow-review`](./skills/refund-and-support-flow-review/SKILL.md) | Designing fair refund, entitlement, appeal, abuse review, and support flows. | Preview |
 | [`payment-platform-readiness`](./skills/payment-platform-readiness/SKILL.md) | Preparing Apple Pay, Google Pay, IAP, web checkout, refunds, entitlements, and reconciliation. | Preview |
+| [`marketplace-payouts-review`](./skills/marketplace-payouts-review/SKILL.md) | Designing marketplace seller balances, fees, holds, refunds, chargebacks, ledgers, and payouts. | Preview |
 | [`mobile-app-product-systems`](./skills/mobile-app-product-systems/SKILL.md) | Designing mobile app/game monetization, retention, notification, refund, and reward systems. | Preview |
 | [`notification-strategy-review`](./skills/notification-strategy-review/SKILL.md) | Designing push, email, in-app, SMS, and lifecycle notifications without fatigue. | Preview |
 | [`game-economy-review`](./skills/game-economy-review/SKILL.md) | Reviewing currencies, sources/sinks, rewards, ads, IAP, events, refunds, and fairness. | Preview |
 | [`ad-monetization-review`](./skills/ad-monetization-review/SKILL.md) | Designing rewarded ads, interstitials, mediation, caps, privacy, and ad fatigue guardrails. | Preview |
 | [`daily-reward-and-streak-review`](./skills/daily-reward-and-streak-review/SKILL.md) | Designing daily rewards, streaks, missions, repair, notifications, economy impact, and anti-abuse controls. | Preview |
+| [`live-event-ops-review`](./skills/live-event-ops-review/SKILL.md) | Operating live events with eligibility, rewards, offers, monitoring, support, rollback, and post-event learning. | Preview |
+| [`retention-cohort-review`](./skills/retention-cohort-review/SKILL.md) | Diagnosing activation, retention, resurrection, churn, cohort quality, and product action plans. | Preview |
 | [`onboarding-activation-review`](./skills/onboarding-activation-review/SKILL.md) | Improving first-run setup, permission timing, aha moments, and activation metrics. | Preview |
 | [`app-store-distribution-readiness`](./skills/app-store-distribution-readiness/SKILL.md) | Preparing apps, games, and desktop software for store/channel launch. | Preview |
 | [`store-listing-optimization`](./skills/store-listing-optimization/SKILL.md) | Optimizing App Store, Google Play, Steam, Microsoft Store, and direct-download listings. | Preview |
 | [`launch-readiness-review`](./skills/launch-readiness-review/SKILL.md) | Reviewing go/no-go readiness across product, payments, support, analytics, trust, and rollback. | Preview |
 | [`steam-launch-readiness`](./skills/steam-launch-readiness/SKILL.md) | Preparing Steam store pages, wishlists, demos, builds, pricing, community, and launch-week ops. | Preview |
+| [`microsoft-store-readiness`](./skills/microsoft-store-readiness/SKILL.md) | Preparing Windows apps for Microsoft Store packaging, listing, certification, monetization, and rollout. | Preview |
+| [`store-review-policy-risk`](./skills/store-review-policy-risk/SKILL.md) | Auditing store submission risk across payments, privacy, permissions, UGC, ads, claims, and reviewer notes. | Preview |
 | [`desktop-os-integration`](./skills/desktop-os-integration/SKILL.md) | Designing macOS/Windows installers, auto-update, tray/menu, permissions, files, and backup. | Preview |
 | [`macos-release-readiness`](./skills/macos-release-readiness/SKILL.md) | Auditing macOS signing, notarization, permissions, keychain, data, updates, uninstall, and diagnostics. | Preview |
 | [`windows-release-readiness`](./skills/windows-release-readiness/SKILL.md) | Auditing Windows installers, signing, services, startup, registry, updates, uninstall, and diagnostics. | Preview |

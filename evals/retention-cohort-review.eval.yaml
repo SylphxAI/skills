@@ -1,0 +1,10 @@
+skill: retention-cohort-review
+positive_prompts:
+  - "Analyze why D7 retention dropped after our mobile app onboarding redesign."
+  - "Review SaaS weekly retention cohorts and propose product actions."
+negative_prompts:
+  - "Audit a marketplace payout ledger."
+expected_behavior:
+  - "Defines retained action, cohort type, time grain, and meaningful segment cuts before diagnosing."
+  - "Separates measurement artifacts from product mechanisms and acquisition mix."
+  - "Produces product hypotheses with guardrail metrics instead of generic retention advice."

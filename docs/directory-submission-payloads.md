@@ -9,18 +9,18 @@ Use these copy-ready payloads when submitting Sylphx Skills to external director
 - skills.sh page: `https://www.skills.sh/sylphxai/skills`
 - Catalog: `catalog/index.html`
 - License: MIT
-- Skill count: 43 preview skills
+- Skill count: 51 preview skills
 - Quality proof: CI validates registry drift, static catalog drift, skill schema, eval coverage, catalog coverage, reference structure, behavior examples, and launch kit coverage.
 
 ## Short description
 
-Curated, eval-backed AI-agent skills for product planning, UI craft, growth, checkout conversion, SaaS pricing, subscriptions, payments, mobile apps, games, Steam launch, macOS/Windows release readiness, developer tools, marketplaces, support, privacy, fraud, incidents, analytics, and skill-marketplace workflows.
+Curated, eval-backed AI-agent skills for product planning, UI craft, growth, checkout conversion, SaaS pricing, subscriptions, payments, mobile apps, games, Steam launch, Microsoft Store, store review risk, macOS/Windows release readiness, developer tools, marketplaces, referral loops, retention analytics, accessibility, support, privacy, fraud, incidents, analytics, and skill-marketplace workflows.
 
 ## Long description
 
 Sylphx Skills is a public repository of high-signal `SKILL.md` packages for AI agents. It is built as a product operating knowledge matrix rather than a prompt dump: compact skill instructions, progressively disclosed references, rule IDs, decision tables, state machines, event schemas, behavior examples, eval prompts, generated registry, static catalog, and CI validation.
 
-The collection helps agents reason through the full lifecycle of software products: planning, research, product design, UI, monetization, distribution, operations, promotion, customer support, trust, privacy, analytics, developer experience, and marketplace operations.
+The collection helps agents reason through the full lifecycle of software products: planning, research, product design, UI, monetization, distribution, operations, promotion, customer support, trust, privacy, analytics, developer experience, marketplace operations, accessibility, referral loops, retention analytics, and live event operations.
 
 ## Suggested tags
 

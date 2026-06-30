@@ -1,0 +1,10 @@
+skill: marketplace-payouts-review
+positive_prompts:
+  - "Audit marketplace payout flows for a plugin marketplace with revenue share, refunds, and chargebacks."
+  - "Design seller balances and payout holds for a creator marketplace."
+negative_prompts:
+  - "Create a mobile onboarding animation plan."
+expected_behavior:
+  - "Separates ledger truth, displayed balances, provider states, holds, refunds, chargebacks, and payouts."
+  - "Defines risk windows, reason-coded holds, payout failure recovery, and seller support evidence."
+  - "Flags compliance-sensitive payout decisions for qualified review while preserving product state design."
