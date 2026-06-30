@@ -1,0 +1,4 @@
+interface:
+  display_name: "Help Center Architecture"
+  short_description: "Structure help centers and support docs"
+  default_prompt: "Use $help-center-architecture to handle a realistic product task in this domain."

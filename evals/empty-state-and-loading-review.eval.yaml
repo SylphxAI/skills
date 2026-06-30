@@ -1,0 +1,9 @@
+skill: empty-state-and-loading-review
+positive_prompts:
+  - "Review empty, loading, offline, and error states for a SaaS dashboard."
+  - "Design zero-result and first-use states for a mobile app search and onboarding flow."
+negative_prompts:
+  - "Design a subscription entitlement ledger."
+expected_behavior:
+  - "Classifies the state type before prescribing UI."
+  - "Includes copy, action, accessibility, layout stability, recovery, and event checks."

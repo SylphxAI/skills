@@ -1,0 +1,4 @@
+interface:
+  display_name: "Changelog And Release Notes"
+  short_description: "Write release notes and changelogs"
+  default_prompt: "Use $changelog-and-release-notes to handle a realistic product task in this domain."

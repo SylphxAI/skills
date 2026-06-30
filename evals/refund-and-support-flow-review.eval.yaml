@@ -1,0 +1,9 @@
+skill: refund-and-support-flow-review
+positive_prompts:
+  - "Design refund and support handling for a mobile game where users refund consumables after spending them."
+  - "Audit a SaaS refund flow for subscription access, support macros, and abuse review."
+negative_prompts:
+  - "Create a responsive dashboard layout."
+expected_behavior:
+  - "Separates refund, entitlement, account action, support, and abuse review."
+  - "Rejects automatic bans and coercive repurchase threats."

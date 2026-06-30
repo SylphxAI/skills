@@ -12,7 +12,7 @@ The repository foundation is ready for production:
 - quality bar and original-synthesis policy exist;
 - preview skills prove the structure.
 
-The foundation is not finished forever. Behavior eval coverage is now enforced; the next foundation layer is static catalog coverage, examples, scoring, and automated draft PRs.
+The foundation is not finished forever. Behavior eval coverage, catalog coverage, and reference structure quality are now enforced; the next foundation layer is examples, scoring, static marketplace pages, and automated draft PRs.
 
 ## Production cadence
 
@@ -43,7 +43,7 @@ Candidate skills:
 - `responsive-layout-review` (seeded)
 - `motion-transition-review` (seeded)
 - `design-system-extractor`
-- `empty-state-and-loading-review`
+- `empty-state-and-loading-review` (seeded)
 
 ### 3. Product Design Pack
 
@@ -52,11 +52,11 @@ For apps, games, monetization, retention, and product systems.
 Candidate skills:
 
 - `mobile-app-product-systems` (seeded in this batch)
-- `onboarding-activation-review`
-- `subscription-and-entitlement-review`
+- `onboarding-activation-review` (seeded)
+- `subscription-and-entitlement-review` (covered by `subscription-entitlement-review`)
 - `notification-strategy-review` (seeded)
 - `game-economy-review` (seeded)
-- `refund-and-support-flow-review`
+- `refund-and-support-flow-review` (seeded)
 
 ### 4. Marketing Design Pack
 
@@ -67,9 +67,9 @@ Candidate skills:
 - `startup-growth-review` (already seeded)
 - `landing-page-critique` (seeded)
 - `pricing-page-critique` (seeded)
-- `product-positioning`
-- `seo-content-brief`
-- `promotion-campaign-review`
+- `product-positioning` (seeded)
+- `seo-content-brief` (seeded)
+- `promotion-campaign-review` (seeded)
 
 ## What will attract stars
 
@@ -88,8 +88,8 @@ Candidate skills:
 
 - `payment-platform-readiness` (seeded)
 - `desktop-os-integration` (seeded)
-- `store-listing-optimization`
-- `launch-readiness-review`
+- `store-listing-optimization` (seeded)
+- `launch-readiness-review` (seeded)
 - `macos-release-readiness`
 - `windows-release-readiness`
 
@@ -101,7 +101,8 @@ Candidate skills:
 
 - `backup-restore-design` (seeded)
 - `customer-support-operations` (seeded)
-- `privacy-and-data-retention-review`
-- `abuse-fraud-risk-review`
-- `incident-communication-playbook`
-- `analytics-event-taxonomy`
+- `privacy-and-data-retention-review` (seeded)
+- `abuse-fraud-risk-review` (seeded)
+- `incident-communication-playbook` (seeded)
+- `analytics-event-taxonomy` (seeded)
+- `help-center-architecture` (seeded)

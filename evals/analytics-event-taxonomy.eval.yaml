@@ -1,0 +1,9 @@
+skill: analytics-event-taxonomy
+positive_prompts:
+  - "Design an analytics taxonomy for a SaaS onboarding, checkout, subscription, refund, and support funnel."
+  - "Audit event names and properties for a mobile game with notifications, IAP, ads, and live events."
+negative_prompts:
+  - "Write a status page incident update."
+expected_behavior:
+  - "Starts from decision questions and defines event names, properties, owners, identity, funnels, and QA."
+  - "Includes failure/guardrail metrics and privacy/cardinality constraints."

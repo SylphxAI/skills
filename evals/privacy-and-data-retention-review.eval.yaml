@@ -1,0 +1,9 @@
+skill: privacy-and-data-retention-review
+positive_prompts:
+  - "Review privacy and retention for a SaaS app with analytics, billing, support tickets, backups, and account deletion."
+  - "Audit an iOS app data safety posture before App Store submission."
+negative_prompts:
+  - "Optimize Steam capsule art."
+expected_behavior:
+  - "Maps collection, use, storage, sharing, retention, deletion/export, backups, and disclosures."
+  - "Flags sensitive data, support access, third-party SDKs, and store form consistency."

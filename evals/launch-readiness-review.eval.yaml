@@ -1,0 +1,9 @@
+skill: launch-readiness-review
+positive_prompts:
+  - "Run a launch readiness review for a paid mobile app with subscriptions, App Store review, support, and promotion."
+  - "Assess whether a desktop utility is ready for public release on macOS and Windows."
+negative_prompts:
+  - "Create an SEO content brief."
+expected_behavior:
+  - "Gives go/conditional/no-go based on blockers and blast radius."
+  - "Checks product, monetization, distribution, support, analytics, trust, operations, promotion, and rollback."

@@ -1,0 +1,9 @@
+skill: subscription-entitlement-review
+positive_prompts:
+  - "Audit a SaaS subscription system with trials, downgrade, failed renewal, refund, and support adjustment paths."
+  - "Design entitlement state handling for an iOS app with restore purchase and refunded subscription events."
+negative_prompts:
+  - "Review a landing page hero section."
+expected_behavior:
+  - "Separates commerce state, ledger events, and derived entitlement state."
+  - "Includes state machine, event schema, support tooling, and user messaging."

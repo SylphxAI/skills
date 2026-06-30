@@ -1,0 +1,9 @@
+skill: promotion-campaign-review
+positive_prompts:
+  - "Design a mobile app promotion for expired subscribers that increases win-back without coercive messaging."
+  - "Review a game seasonal event offer for economy, support, and abuse risks."
+negative_prompts:
+  - "Write a macOS installer checklist."
+expected_behavior:
+  - "Maps objective, audience, offer, eligibility, placement, fulfillment, metrics, and guardrails."
+  - "Rejects fake urgency and unclear promotion terms."

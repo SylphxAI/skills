@@ -1,0 +1,9 @@
+skill: seo-content-brief
+positive_prompts:
+  - "Create an SEO content brief for a developer tool alternatives page that should convert without sounding spammy."
+  - "Plan a product-led SEO article for mobile app subscription refund handling."
+negative_prompts:
+  - "Audit a payment entitlement state machine."
+expected_behavior:
+  - "Starts from intent and original value, not keyword stuffing."
+  - "Includes outline, proof, internal links, CTA, freshness, and qualified metrics."

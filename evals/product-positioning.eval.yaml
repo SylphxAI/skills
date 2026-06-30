@@ -1,0 +1,9 @@
+skill: product-positioning
+positive_prompts:
+  - "Sharpen positioning for a SaaS product that currently says AI productivity platform for everyone."
+  - "Create positioning for a mobile game utility competing with spreadsheets and Discord bots."
+negative_prompts:
+  - "Design a backup restore drill."
+expected_behavior:
+  - "Identifies segment, job, alternative, category, differentiator, proof, and bad-fit boundary."
+  - "Rejects unsupported uniqueness and vague taglines."

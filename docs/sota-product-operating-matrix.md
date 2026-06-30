@@ -58,14 +58,14 @@ Prioritize skills with the highest combined score across six dimensions:
 
 | Product type | Required coverage | Current skills | Missing high-value skills |
 | --- | --- | --- | --- |
-| Mobile app | onboarding, permissions, subscription/IAP, restore, notifications, support, app-store review, offline. | `mobile-first-ui-review`, `mobile-app-product-systems`, `payment-platform-readiness`, `app-store-distribution-readiness` | onboarding-activation-review, subscription-entitlement-review |
+| Mobile app | onboarding, permissions, subscription/IAP, restore, notifications, support, app-store review, offline. | `mobile-first-ui-review`, `onboarding-activation-review`, `mobile-app-product-systems`, `subscription-entitlement-review`, `payment-platform-readiness`, `app-store-distribution-readiness` | app-specific examples and demos |
 | Mobile game | core loop, economy, IAP, ads, daily rewards, events, refund handling, anti-abuse, live ops. | `game-economy-review`, `mobile-app-product-systems`, `notification-strategy-review` | live-event-ops-review, ad-monetization-review |
-| Web app | responsive layout, auth/account, checkout, SEO, loading/error states, support, analytics. | `responsive-layout-review`, `interface-craft`, `landing-page-critique`, `backup-restore-design` | analytics-event-taxonomy |
+| Web app | responsive layout, auth/account, checkout, SEO, loading/error states, support, analytics. | `responsive-layout-review`, `interface-craft`, `empty-state-and-loading-review`, `landing-page-critique`, `seo-content-brief`, `backup-restore-design`, `analytics-event-taxonomy` | checkout-conversion-review |
 | SaaS | pricing, packaging, trial, onboarding, billing, cancellation, expansion, support, backup/export. | `saas-subscription-pricing`, `pricing-page-critique`, `customer-support-operations`, `backup-restore-design` | cancellation-save-flow-review, enterprise-readiness-review |
 | Desktop utility | install, auto-update, permissions, local storage, backup, tray/menu, credentials, uninstall. | `desktop-os-integration`, `backup-restore-design`, `payment-platform-readiness` | updater-release-readiness, desktop-support-diagnostics |
 | Developer tool | docs, CLI/API onboarding, examples, pricing, limits, telemetry, changelog, support. | partial via lifecycle/pricing/support | developer-tool-product-design, docs-onboarding-review |
 | Marketplace/community | creator onboarding, trust, moderation, payouts, disputes, ranking, community loops. | `skill-marketplace-creator`, `payment-platform-readiness` | marketplace-product-ops, moderation-trust-review |
-| Commerce product | catalog, checkout, payments, refunds, support, fraud, retention, promotions. | `payment-platform-readiness`, `customer-support-operations`, `landing-page-critique` | fraud-risk-review, promotion-campaign-review |
+| Commerce product | catalog, checkout, payments, refunds, support, fraud, retention, promotions. | `payment-platform-readiness`, `refund-and-support-flow-review`, `customer-support-operations`, `landing-page-critique`, `abuse-fraud-risk-review`, `promotion-campaign-review` | checkout-conversion-review |
 | Content product | discovery, SEO, notifications, subscriptions, creator workflows, retention. | `landing-page-critique`, `notification-strategy-review`, `saas-subscription-pricing` | content-growth-loop-review |
 
 ## Platform and channel matrix
@@ -80,7 +80,7 @@ Prioritize skills with the highest combined score across six dimensions:
 | Microsoft Store | package identity, certification, IAP, updates, Windows notifications, listing. | `app-store-distribution-readiness`, `desktop-os-integration` | certification checklist |
 | macOS | app bundle, notarization, sandbox, menu bar, login item, permissions, keychain, backup. | `desktop-os-integration` | macOS-specific release runbook |
 | Windows | installer/MSIX, signing, tray, startup, registry, credential manager, firewall, uninstall. | `desktop-os-integration` | Windows diagnostics and updater runbook |
-| Web/direct | landing, SEO, checkout, trust, signed downloads, auto-update, support, changelog. | `landing-page-critique`, `payment-platform-readiness`, `desktop-os-integration` | release-note and changelog skill |
+| Web/direct | landing, SEO, checkout, trust, signed downloads, auto-update, support, changelog. | `landing-page-critique`, `seo-content-brief`, `payment-platform-readiness`, `desktop-os-integration`, `changelog-and-release-notes` | signed-download examples |
 
 ## Revenue leverage matrix
 
@@ -185,7 +185,7 @@ Prioritize skills with the highest combined score across six dimensions:
 
 | Wave | Goal | Deliverables |
 | --- | --- | --- |
-| Wave 1 | Make the repo obviously useful. | 20 eval-backed preview skills, registry, README, CI, SOTA matrix. |
+| Wave 1 | Make the repo obviously useful. | 35 eval-backed preview skills, registry, README, CI, SOTA matrix, and completed P1/P2 pack seeds. |
 | Wave 2 | Make the repo demonstrably better than prompt lists. | examples, before/after outputs, screenshots, static catalog, skill pages. |
 | Wave 3 | Cover revenue systems deeply. | subscription-entitlement, checkout, refund/support, campaigns, game live ops. |
 | Wave 4 | Cover trust and operations. | privacy, abuse/fraud, incidents, analytics, help center, changelogs. |

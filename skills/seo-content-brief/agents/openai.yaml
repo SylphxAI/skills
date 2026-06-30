@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO Content Brief"
+  short_description: "Create product-led SEO briefs"
+  default_prompt: "Use $seo-content-brief to handle a realistic product task in this domain."

@@ -13,48 +13,69 @@
     },
     {
       "title": "UI Design & Product Craft",
-      "description": "Skills for modern, fast, subtle, mobile-first, responsive interfaces.",
+      "description": "Skills for modern, fast, subtle, mobile-first, responsive interfaces and resilient UI states.",
       "skills": [
         "interface-craft",
         "mobile-first-ui-review",
         "motion-transition-review",
-        "responsive-layout-review"
+        "responsive-layout-review",
+        "empty-state-and-loading-review"
       ]
     },
     {
       "title": "Growth & Conversion",
-      "description": "Skills for acquisition, positioning, landing pages, pricing pages, funnels, and launch growth.",
+      "description": "Skills for acquisition, positioning, SEO, landing pages, pricing pages, funnels, campaigns, and launch growth.",
       "skills": [
         "landing-page-critique",
         "pricing-page-critique",
-        "startup-growth-review"
+        "startup-growth-review",
+        "product-positioning",
+        "seo-content-brief",
+        "promotion-campaign-review"
       ]
     },
     {
-      "title": "Pricing & Monetization",
-      "description": "Skills for SaaS pricing, subscriptions, payments, purchases, entitlements, and revenue systems.",
+      "title": "Pricing, Payments & Monetization",
+      "description": "Skills for SaaS pricing, subscriptions, payments, purchases, entitlements, refunds, and revenue systems.",
       "skills": [
         "saas-subscription-pricing",
+        "subscription-entitlement-review",
+        "refund-and-support-flow-review",
         "payment-platform-readiness"
       ]
     },
     {
       "title": "Mobile & Game Product Systems",
-      "description": "Skills for mobile app monetization, retention, refunds, notifications, game economies, IAP, IAA, and rewards.",
+      "description": "Skills for mobile app monetization, retention, onboarding, notifications, game economies, IAP, IAA, and rewards.",
       "skills": [
         "mobile-app-product-systems",
         "notification-strategy-review",
-        "game-economy-review"
+        "game-economy-review",
+        "onboarding-activation-review"
       ]
     },
     {
-      "title": "Distribution, Platforms & Operations",
-      "description": "Skills for store launch, OS integration, backup, restore, support, and product operations.",
+      "title": "Distribution, Platforms & Release Ops",
+      "description": "Skills for store launch, OS integration, listings, launch readiness, backup, changelogs, and product operations.",
       "skills": [
         "app-store-distribution-readiness",
+        "store-listing-optimization",
+        "launch-readiness-review",
         "desktop-os-integration",
         "backup-restore-design",
-        "customer-support-operations"
+        "changelog-and-release-notes"
+      ]
+    },
+    {
+      "title": "Trust, Support & Analytics",
+      "description": "Skills for support operations, help centers, privacy, abuse/fraud, incident communications, and analytics taxonomy.",
+      "skills": [
+        "customer-support-operations",
+        "help-center-architecture",
+        "privacy-and-data-retention-review",
+        "abuse-fraud-risk-review",
+        "incident-communication-playbook",
+        "analytics-event-taxonomy"
       ]
     },
     {

@@ -1,0 +1,9 @@
+skill: help-center-architecture
+positive_prompts:
+  - "Design help center architecture for a SaaS app with onboarding, billing, refunds, privacy, and troubleshooting."
+  - "Audit support docs for a mobile game with IAP, events, account recovery, and fair-play issues."
+negative_prompts:
+  - "Create an app-store screenshot experiment."
+expected_behavior:
+  - "Structures help by user problem/lifecycle and includes escalation, search, ownership, analytics, and product feedback."
+  - "Makes billing, refund, deletion, privacy, and account routes findable."

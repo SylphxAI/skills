@@ -1,0 +1,9 @@
+skill: incident-communication-playbook
+positive_prompts:
+  - "Draft incident communications for a payment outage that caused entitlement delays and support tickets."
+  - "Create a playbook for a mobile game economy exploit requiring rollback and compensation."
+negative_prompts:
+  - "Create a product positioning statement."
+expected_behavior:
+  - "Separates known facts, unknowns, mitigation, workaround, next update, support macro, and follow-up."
+  - "Handles payment/data/privacy/security incidents with higher review and precise wording."

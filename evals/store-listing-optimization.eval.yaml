@@ -1,0 +1,9 @@
+skill: store-listing-optimization
+positive_prompts:
+  - "Optimize an App Store listing for a subscription utility with weak install conversion."
+  - "Review a Steam page for wishlist conversion, trailer, tags, demo, and capsule art."
+negative_prompts:
+  - "Design an incident communication flow."
+expected_behavior:
+  - "Separates channel assets and policies while focusing on conversion and trust."
+  - "Includes experiment plan and retained-user guardrails."

@@ -1,0 +1,9 @@
+skill: changelog-and-release-notes
+positive_prompts:
+  - "Write release notes for a SaaS pricing and API change with migration and support implications."
+  - "Review app-store update notes for a mobile game economy patch and bug fixes."
+negative_prompts:
+  - "Design a store listing screenshot sequence."
+expected_behavior:
+  - "Separates public notes, technical changelog, store notes, and support notes."
+  - "Calls out breaking changes, action required, support routes, and security/privacy constraints."

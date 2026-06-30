@@ -3,6 +3,32 @@
   "generatedBy": "scripts/generate-registry.mjs",
   "skills": [
     {
+      "name": "abuse-fraud-risk-review",
+      "description": "Review abuse, fraud, spam, promotion abuse, payment fraud, refund abuse, account takeover risk, marketplace trust, game economy exploits, referral abuse, automation abuse, and moderation risk for software products. Use when designing controls, risk ladders, rate limits, manual review, user messaging, support escalation, or fraud-safe product systems.",
+      "status": "preview",
+      "path": "skills/abuse-fraud-risk-review",
+      "references": [
+        "abuse-fraud-risk-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "analytics-event-taxonomy",
+      "description": "Design and audit analytics event taxonomies for product funnels, SaaS, mobile apps, games, web apps, desktop utilities, marketplaces, notifications, payments, support, and launches. Use when defining events, properties, naming, identity, funnels, cohorts, attribution, guardrail metrics, dashboards, or analytics quality rules.",
+      "status": "preview",
+      "path": "skills/analytics-event-taxonomy",
+      "references": [
+        "analytics-event-taxonomy-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "app-store-distribution-readiness",
       "description": "Prepare mobile apps, desktop software, games, and utilities for distribution through App Store, Google Play, Steam, Microsoft Store, web, or direct download. Use when planning launch readiness, store metadata, screenshots, privacy disclosures, payments, subscriptions, store review, OS integration, updates, or release operations.",
       "status": "preview",
@@ -22,6 +48,19 @@
       "path": "skills/backup-restore-design",
       "references": [
         "backup-restore-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "changelog-and-release-notes",
+      "description": "Write and review changelogs, release notes, app-store update notes, launch notes, migration notes, breaking-change notices, and customer-facing product update communication for SaaS, apps, games, developer tools, desktop software, and marketplaces. Use when a release needs clear user value, risk communication, upgrade guidance, or support-aware wording.",
+      "status": "preview",
+      "path": "skills/changelog-and-release-notes",
+      "references": [
+        "changelog-release-notes-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -55,6 +94,19 @@
       ]
     },
     {
+      "name": "empty-state-and-loading-review",
+      "description": "Review and design empty states, loading states, skeletons, progress indicators, offline states, first-use states, zero-result states, and error recovery for apps, SaaS, games, utilities, and web products. Use when a product surface feels blank, confusing, slow, dead, or when designing resilient UI states beyond the happy path.",
+      "status": "preview",
+      "path": "skills/empty-state-and-loading-review",
+      "references": [
+        "empty-loading-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "execution-simplification",
       "description": "Turn complex product, engineering, operations, strategy, or go-to-market problems into a simple execution plan with clear invariants, decision boundaries, sequencing, risks, and next actions. Use when a task feels messy, cross-functional, over-scoped, ambiguous, or when the user asks for critical thinking, simplification, roadmap decomposition, or high-agency execution strategy.",
       "status": "preview",
@@ -81,6 +133,32 @@
       ]
     },
     {
+      "name": "help-center-architecture",
+      "description": "Design and audit help center, documentation, support knowledge base, FAQ, troubleshooting, refund/cancellation guides, onboarding docs, developer docs, game support articles, and self-service support architecture. Use when reducing support load, improving customer success, structuring support content, or creating help content tied to product flows.",
+      "status": "preview",
+      "path": "skills/help-center-architecture",
+      "references": [
+        "help-center-architecture-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "incident-communication-playbook",
+      "description": "Create incident communication playbooks for outages, data issues, payment failures, store launch problems, privacy incidents, game economy issues, support backlogs, and degraded product experiences. Use when planning status updates, customer notices, internal coordination, postmortems, support macros, incident timelines, or trust-recovery communication.",
+      "status": "preview",
+      "path": "skills/incident-communication-playbook",
+      "references": [
+        "incident-communication-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "interface-craft",
       "description": "Improve product interfaces with tasteful UI craft, micro-interactions, accessibility-preserving polish, and detail-oriented review. Use when building UI, reviewing components, improving perceived quality, making an interface feel better, or auditing forms, buttons, motion, typography, empty states, loading states, and navigation polish.",
       "status": "preview",
@@ -100,6 +178,19 @@
       "path": "skills/landing-page-critique",
       "references": [
         "landing-page-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "launch-readiness-review",
+      "description": "Review launch readiness for SaaS, mobile apps, games, desktop software, developer tools, marketplaces, and major releases across product quality, pricing, payments, distribution, support, analytics, incident readiness, promotion, legal/trust, rollback, and post-launch learning. Use when preparing public launch, store submission, beta, release, major campaign, or go/no-go review.",
+      "status": "preview",
+      "path": "skills/launch-readiness-review",
+      "references": [
+        "launch-readiness-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -174,6 +265,19 @@
       ]
     },
     {
+      "name": "onboarding-activation-review",
+      "description": "Review and design onboarding and activation flows for SaaS, mobile apps, games, developer tools, utilities, marketplaces, and web products. Use when improving first-run experience, setup checklists, permission timing, aha moments, trial activation, invite/team setup, empty states, tutorials, or early retention measurement.",
+      "status": "preview",
+      "path": "skills/onboarding-activation-review",
+      "references": [
+        "onboarding-activation-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "payment-platform-readiness",
       "description": "Prepare payment platform integration for Apple Pay, Google Pay, Google Play Billing, App Store IAP, web checkout, subscriptions, one-time purchases, refunds, restore purchases, receipts, tax, entitlement grants, and support traces. Use when designing or auditing payment flows for apps, games, SaaS, desktop utilities, stores, or marketplaces.",
       "status": "preview",
@@ -200,12 +304,64 @@
       ]
     },
     {
+      "name": "privacy-and-data-retention-review",
+      "description": "Review privacy, data retention, deletion, export, consent, telemetry, analytics, backups, account closure, children/minors, store disclosures, and data lifecycle for SaaS, apps, games, desktop utilities, developer tools, marketplaces, and support systems. Use when product decisions touch user data, tracking, storage, privacy claims, compliance risk, or trust.",
+      "status": "preview",
+      "path": "skills/privacy-and-data-retention-review",
+      "references": [
+        "privacy-data-retention-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "product-lifecycle-architect",
       "description": "Plan and review products end to end across strategy, market research, product design, UI, monetization, distribution, operations, promotion, customer support, and lifecycle management. Use when designing a new app, SaaS, game, utility, web product, desktop product, product roadmap, launch plan, or full product operating system.",
       "status": "preview",
       "path": "skills/product-lifecycle-architect",
       "references": [
         "product-lifecycle-matrix.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "product-positioning",
+      "description": "Develop and critique product positioning for SaaS, apps, games, developer tools, utilities, marketplaces, and launches across audience, category, wedge, alternatives, differentiation, proof, messaging hierarchy, and landing-page narrative. Use when a product sounds generic, targets too many people, competes poorly, or needs a sharper market story.",
+      "status": "preview",
+      "path": "skills/product-positioning",
+      "references": [
+        "product-positioning-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "promotion-campaign-review",
+      "description": "Design and audit promotion campaigns, offers, discounts, launches, win-back, lifecycle campaigns, app/game events, referral pushes, and seasonal campaigns across audience, eligibility, placement, messaging, fulfillment, measurement, fraud controls, and support readiness. Use when planning campaigns that should grow revenue or retention without dark patterns.",
+      "status": "preview",
+      "path": "skills/promotion-campaign-review",
+      "references": [
+        "promotion-campaign-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "refund-and-support-flow-review",
+      "description": "Design and audit refund, cancellation, chargeback, dispute, entitlement revocation, repurchase, appeal, and customer support flows for SaaS, mobile apps, games, utilities, marketplaces, and subscriptions. Use when handling refund policy, abuse ladders, support macros, account restrictions, trust recovery, or post-refund product access.",
+      "status": "preview",
+      "path": "skills/refund-and-support-flow-review",
+      "references": [
+        "refund-support-flow-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -239,6 +395,19 @@
       ]
     },
     {
+      "name": "seo-content-brief",
+      "description": "Create SEO content briefs for SaaS, apps, developer tools, utilities, marketplaces, games, and product-led websites across search intent, topic clusters, SERP differentiation, outline, internal links, conversion path, schema, freshness, and evidence. Use when planning content that should rank, convert, and support product positioning without becoming generic keyword stuffing.",
+      "status": "preview",
+      "path": "skills/seo-content-brief",
+      "references": [
+        "seo-content-brief-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "skill-marketplace-creator",
       "description": "Create, curate, validate, and operate repositories or marketplaces for reusable AI agent skills. Use when designing a skill marketplace, scaffolding a public skill repo, converting domain knowledge into SKILL.md packages, defining skill quality gates, evaluating skill submissions, planning skill distribution, or building an agent-powered skill factory.",
       "status": "preview",
@@ -260,6 +429,32 @@
       "path": "skills/startup-growth-review",
       "references": [
         "growth-levers.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "store-listing-optimization",
+      "description": "Optimize store listings for App Store, Google Play, Steam, Microsoft Store, browser extensions, and direct-download products across title, subtitle, short description, screenshots, trailers, capsule art, keywords/tags, reviews, localization, pricing, privacy claims, and conversion measurement. Use when improving channel pages before launch or after weak store conversion.",
+      "status": "preview",
+      "path": "skills/store-listing-optimization",
+      "references": [
+        "store-listing-optimization-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "subscription-entitlement-review",
+      "description": "Design and audit subscription and entitlement systems for SaaS, mobile apps, games, desktop utilities, and marketplaces across plans, trials, renewals, grace periods, downgrades, upgrades, restore purchases, refunds, revocations, usage limits, ledger events, and support tooling. Use when pricing, billing, access, or account state must stay consistent after payment changes.",
+      "status": "preview",
+      "path": "skills/subscription-entitlement-review",
+      "references": [
+        "subscription-entitlement-patterns.md"
       ],
       "scripts": [],
       "agents": [

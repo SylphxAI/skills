@@ -1,0 +1,9 @@
+skill: onboarding-activation-review
+positive_prompts:
+  - "Review onboarding for a SaaS app that asks for signup, import, team invite, and payment before value."
+  - "Design first-run activation for a mobile game and a developer CLI tool."
+negative_prompts:
+  - "Write support copy for a refund dispute."
+expected_behavior:
+  - "Defines activation as first value, not screen completion."
+  - "Maps friction, permission timing, first action, metrics, and experiment backlog."

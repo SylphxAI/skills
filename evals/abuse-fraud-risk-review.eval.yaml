@@ -1,0 +1,9 @@
+skill: abuse-fraud-risk-review
+positive_prompts:
+  - "Review refund and promotion abuse risks for a mobile game with premium currency and referral rewards."
+  - "Design fraud controls for a SaaS marketplace with payouts and disputes."
+negative_prompts:
+  - "Write release notes for a UI bug fix."
+expected_behavior:
+  - "Starts from incentives/assets and proposes a control ladder with review and appeal."
+  - "Balances abuse prevention with privacy, false positives, support, and user trust."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Privacy And Data Retention Review"
+  short_description: "Review privacy and data retention"
+  default_prompt: "Use $privacy-and-data-retention-review to handle a realistic product task in this domain."

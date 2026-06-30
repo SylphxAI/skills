@@ -1,0 +1,4 @@
+interface:
+  display_name: "Subscription Entitlement Review"
+  short_description: "Review subscription and entitlement systems"
+  default_prompt: "Use $subscription-entitlement-review to handle a realistic product task in this domain."
