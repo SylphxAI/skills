@@ -1,0 +1,10 @@
+skill: design-system-extractor
+positive_prompts:
+  - "Extract a design system from this SaaS dashboard and pricing page UI."
+  - "Audit a mobile app UI and turn repeated patterns into tokens and components."
+negative_prompts:
+  - "Prioritize revenue opportunities for a marketplace."
+expected_behavior:
+  - "Inventories existing surfaces before normalizing tokens and components."
+  - "Separates primitives, semantic tokens, components, states, patterns, and exceptions."
+  - "Includes accessibility, responsive behavior, inconsistencies, and migration plan."

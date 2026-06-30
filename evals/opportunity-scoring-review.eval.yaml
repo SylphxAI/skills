@@ -1,0 +1,10 @@
+skill: opportunity-scoring-review
+positive_prompts:
+  - "Score these ten roadmap opportunities for a SaaS product with limited engineering capacity."
+  - "Prioritize growth bets for a mobile app across referrals, checkout, onboarding, and notifications."
+negative_prompts:
+  - "Draft App Store reviewer notes for a subscription app."
+expected_behavior:
+  - "Normalizes feature ideas into opportunities/outcomes before scoring."
+  - "Scores impact, confidence, effort, risk, fit, urgency, and learning with evidence caveats."
+  - "Produces ranking, sensitivity analysis, sequencing, and next validation steps."

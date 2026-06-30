@@ -42,6 +42,19 @@
       ]
     },
     {
+      "name": "agentic-workflow-designer",
+      "description": "Design agentic workflows, AI agent operating loops, delegation patterns, human gates, tool boundaries, handoffs, evals, memory, review checkpoints, failure recovery, observability, and autonomy levels for product, engineering, research, support, marketing, operations, and skill-factory work. Use when creating repeatable workflows for AI agents or improving multi-step agent execution quality.",
+      "status": "preview",
+      "path": "skills/agentic-workflow-designer",
+      "references": [
+        "agentic-workflow-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "analytics-event-taxonomy",
       "description": "Design and audit analytics event taxonomies for product funnels, SaaS, mobile apps, games, web apps, desktop utilities, marketplaces, notifications, payments, support, and launches. Use when defining events, properties, naming, identity, funnels, cohorts, attribution, guardrail metrics, dashboards, or analytics quality rules.",
       "status": "preview",
@@ -107,6 +120,19 @@
       ]
     },
     {
+      "name": "creator-onboarding-review",
+      "description": "Design and audit creator, seller, developer, plugin author, marketplace contributor, community moderator, and content partner onboarding for marketplaces, app stores, skill repositories, template stores, game UGC, creator economies, affiliate programs, and developer ecosystems. Use when improving submission readiness, quality, trust, payout setup, review queues, publishing, analytics, support, and creator activation.",
+      "status": "preview",
+      "path": "skills/creator-onboarding-review",
+      "references": [
+        "creator-onboarding-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "customer-support-operations",
       "description": "Design customer support operations for software products including help centers, ticket triage, refund handling, escalation, support tooling, incident communication, macros, trust recovery, abuse review, and product feedback loops. Use when building or auditing support systems for apps, games, SaaS, utilities, stores, or subscription products.",
       "status": "preview",
@@ -126,6 +152,32 @@
       "path": "skills/daily-reward-and-streak-review",
       "references": [
         "daily-reward-streak-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "decision-memo-writer",
+      "description": "Write and review decision memos for product, strategy, pricing, launch, growth, design, marketplace, operations, platform, and investment choices. Use when a team needs a clear recommendation, options, tradeoffs, evidence, assumptions, risks, decision owner, reversible/irreversible classification, success metrics, and follow-up plan instead of open-ended discussion.",
+      "status": "preview",
+      "path": "skills/decision-memo-writer",
+      "references": [
+        "decision-memo-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "design-system-extractor",
+      "description": "Extract, audit, and document design systems from existing product UI, screenshots, Figma-like specs, codebases, component libraries, CSS, design tokens, mobile apps, web apps, dashboards, and marketing pages. Use when turning inconsistent UI into reusable tokens, components, patterns, spacing, typography, color, motion, accessibility, and product craft rules.",
+      "status": "preview",
+      "path": "skills/design-system-extractor",
+      "references": [
+        "design-system-extraction-systems.md"
       ],
       "scripts": [],
       "agents": [
@@ -178,6 +230,19 @@
       "path": "skills/execution-simplification",
       "references": [
         "simplification-method.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "form-ux-review",
+      "description": "Review and design form UX for signup, checkout, onboarding, settings, support, enterprise lead forms, creator submission, marketplace listing, payment, cancellation, data export, and admin workflows across web, mobile, and desktop. Use when improving form completion, clarity, accessibility, validation, errors, field order, progressive disclosure, autosave, trust, fraud controls, and support evidence.",
+      "status": "preview",
+      "path": "skills/form-ux-review",
+      "references": [
+        "form-ux-systems.md"
       ],
       "scripts": [],
       "agents": [
@@ -243,6 +308,19 @@
       "path": "skills/landing-page-critique",
       "references": [
         "landing-page-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "launch-narrative-review",
+      "description": "Create and critique launch narratives for products, features, SaaS, apps, games, developer tools, marketplaces, pricing changes, public repositories, and campaigns. Use when shaping launch positioning, audience, category, story arc, proof, demo, objections, announcement copy, changelog, founder note, launch post, press angle, community post, or go-to-market message.",
+      "status": "preview",
+      "path": "skills/launch-narrative-review",
+      "references": [
+        "launch-narrative-systems.md"
       ],
       "scripts": [],
       "agents": [
@@ -408,6 +486,19 @@
       ]
     },
     {
+      "name": "opportunity-scoring-review",
+      "description": "Score, compare, and prioritize product, growth, design, monetization, marketplace, operations, platform, and support opportunities. Use when deciding what to build next, ranking roadmap bets, comparing market opportunities, prioritizing experiments, or balancing impact, confidence, effort, risk, revenue, strategic fit, urgency, and learning value.",
+      "status": "preview",
+      "path": "skills/opportunity-scoring-review",
+      "references": [
+        "opportunity-scoring-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "payment-platform-readiness",
       "description": "Prepare payment platform integration for Apple Pay, Google Pay, Google Play Billing, App Store IAP, web checkout, subscriptions, one-time purchases, refunds, restore purchases, receipts, tax, entitlement grants, and support traces. Use when designing or auditing payment flows for apps, games, SaaS, desktop utilities, stores, or marketplaces.",
       "status": "preview",
@@ -557,6 +648,19 @@
       "path": "skills/seo-content-brief",
       "references": [
         "seo-content-brief-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "skill-eval-designer",
+      "description": "Design behavior evals, positive and negative prompts, expected behaviors, rubrics, fixtures, golden outputs, forward-tests, regression cases, and quality gates for AI agent skills and reusable agent workflows. Use when creating or improving SKILL.md packages, validating trigger descriptions, proving agent behavior changes, avoiding prompt dumps, or building eval-backed skill marketplaces.",
+      "status": "preview",
+      "path": "skills/skill-eval-designer",
+      "references": [
+        "skill-eval-systems.md"
       ],
       "scripts": [],
       "agents": [

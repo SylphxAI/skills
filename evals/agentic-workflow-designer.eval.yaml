@@ -1,0 +1,10 @@
+skill: agentic-workflow-designer
+positive_prompts:
+  - "Design an agent workflow that turns market research into new public skills with evals and PRs."
+  - "Create an agentic support triage workflow with human approval gates."
+negative_prompts:
+  - "Write pricing page hero copy."
+expected_behavior:
+  - "Classifies autonomy and risk before designing steps."
+  - "Defines state machine, tool contracts, approval gates, evidence, recovery, and evals."
+  - "Produces durable handoff artifacts rather than relying on hidden context."

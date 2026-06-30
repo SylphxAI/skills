@@ -1,0 +1,10 @@
+skill: launch-narrative-review
+positive_prompts:
+  - "Sharpen the launch narrative for a public AI skills repository."
+  - "Review our pricing change launch post for proof, objections, and claim risk."
+negative_prompts:
+  - "Score internal product roadmap opportunities."
+expected_behavior:
+  - "Builds a narrative around audience, old way, new way, proof, objections, and CTA."
+  - "Separates shipped facts from roadmap and reviews unsupported claims."
+  - "Adapts message by channel and defines qualified-action metrics."

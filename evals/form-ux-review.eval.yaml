@@ -1,0 +1,10 @@
+skill: form-ux-review
+positive_prompts:
+  - "Audit our SaaS signup and checkout forms for conversion, accessibility, and trust."
+  - "Review a creator submission form that has too many fields and high abandonment."
+negative_prompts:
+  - "Write a launch narrative for a new API product."
+expected_behavior:
+  - "Maps user goal, field necessity, validation timing, errors, accessibility, and recovery."
+  - "Separates useful friction from internal-only friction."
+  - "Defines form events, abandonment diagnosis, and downstream quality guardrails."
