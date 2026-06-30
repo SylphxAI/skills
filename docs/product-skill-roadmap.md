@@ -2,7 +2,7 @@
 
 Sylphx Skills is a public product-operating knowledge matrix for agents. It helps an agent build, launch, monetize, support, and improve products across mobile apps, games, web apps, SaaS, desktop software, utilities, developer tools, marketplaces, and community products.
 
-The repository now contains **99 preview skills with eval coverage**. The current expansion closes the next operating-depth layer of the roadmap: data quality observability, search and discovery relevance, SDK onboarding integration, release train change management, risk register governance, content-policy appeals, support deflection knowledge bases, and partner co-marketing launch.
+The repository now contains **107 preview skills with eval coverage**. The current expansion closes the next operating-depth layer of the roadmap: trust center readiness, service-level SLOs, procurement security review, customer advisory boards, AI eval regression operations, platform certification programs, revenue forecast capacity, and community governance.
 
 See [`sota-product-operating-matrix.md`](./sota-product-operating-matrix.md) for the lifecycle/product/channel matrix. See [`skill-factory-automation.md`](./skill-factory-automation.md) for the automation loop that turns market knowledge into original Sylphx skills.
 
@@ -14,15 +14,15 @@ Every cell in the matrix should eventually have a dedicated or shared skill, sta
 
 | Lifecycle | Questions the skill must answer | Core skills | Priority |
 | --- | --- | --- | --- |
-| Strategy and planning | Who is it for? Why now? What is the wedge? What is the decision? | `product-lifecycle-architect`, `market-research-synthesis`, `execution-simplification`, `decision-memo-writer`, `opportunity-scoring-review`, `experiment-design-review`, `ai-feature-product-risk-review`, `customer-feedback-intake-review`, `feature-sunset-deprecation-review`, `cost-margin-unit-economics-review`, `risk-register-governance-review`, `enterprise-readiness-review`, `sales-demo-script-review` | P0 |
-| Agentic execution | How should AI agents do repeatable work safely and observably? | `agentic-workflow-designer`, `skill-eval-designer`, `skill-marketplace-creator`, `skill-catalog-generator` | P0 |
+| Strategy and planning | Who is it for? Why now? What is the wedge? What is the decision? | `product-lifecycle-architect`, `market-research-synthesis`, `execution-simplification`, `decision-memo-writer`, `opportunity-scoring-review`, `experiment-design-review`, `ai-feature-product-risk-review`, `customer-feedback-intake-review`, `feature-sunset-deprecation-review`, `cost-margin-unit-economics-review`, `risk-register-governance-review`, `customer-advisory-board-review`, `revenue-forecast-capacity-review`, `enterprise-readiness-review`, `sales-demo-script-review` | P0 |
+| Agentic execution | How should AI agents do repeatable work safely and observably? | `agentic-workflow-designer`, `skill-eval-designer`, `skill-marketplace-creator`, `ai-eval-regression-ops-review`, `skill-catalog-generator` | P0 |
 | Product design | What systems must exist: onboarding, payment, support, notifications, data, trust? | `product-lifecycle-architect`, `mobile-app-product-systems`, `onboarding-activation-review`, `subscription-entitlement-review`, `account-recovery-identity-review`, `data-import-migration-review`, `data-quality-observability-review`, `offline-sync-conflict-review`, `customer-feedback-intake-review`, `customer-success-health-review`, `data-export-portability-review`, `admin-settings-ia-review`, `user-preferences-settings-review`, `ai-feature-product-risk-review` | P0 |
 | UI and interaction | How should the product feel: modern, fast, subtle, responsive, accessible, resilient? | `interface-craft`, `mobile-first-ui-review`, `motion-transition-review`, `responsive-layout-review`, `accessibility-product-review`, `design-system-extractor`, `form-ux-review`, `app-permission-ux-review`, `admin-settings-ia-review`, `user-preferences-settings-review`, `in-product-education-review`, `empty-state-and-loading-review` | P0 |
 | Monetization | SaaS pricing, usage pricing, subscriptions, IAP, IAA, payouts, trials, refunds, checkout, expansion. | `saas-subscription-pricing`, `usage-based-pricing-review`, `cost-margin-unit-economics-review`, `pricing-page-critique`, `checkout-conversion-review`, `marketplace-payouts-review`, `billing-reconciliation-review`, `tax-invoicing-compliance-review`, `subscription-entitlement-review`, `refund-and-support-flow-review`, `payment-platform-readiness`, `ad-monetization-review` | P0 |
-| Distribution and narrative | App stores, Steam, Microsoft Store, web, review policy, launch story, release notes. | `app-store-distribution-readiness`, `store-listing-optimization`, `launch-readiness-review`, `release-health-dashboard-review`, `feature-flag-rollout-review`, `feature-sunset-deprecation-review`, `release-train-change-management-review`, `app-permission-ux-review`, `localization-market-expansion-review`, `brand-trust-review`, `launch-narrative-review`, `steam-launch-readiness`, `microsoft-store-readiness`, `store-review-policy-risk`, `changelog-and-release-notes` | P0 |
-| Growth and retention | Offers, referrals, lifecycle messaging, live events, cohorts, SEO. | `startup-growth-review`, `landing-page-critique`, `product-positioning`, `brand-trust-review`, `partner-co-marketing-launch-review`, `seo-content-brief`, `promotion-campaign-review`, `winback-campaign-review`, `localization-market-expansion-review`, `experiment-design-review`, `in-product-education-review`, `referral-loop-review`, `retention-cohort-review`, `live-event-ops-review`, `notification-strategy-review` | P0 |
-| Developer/community products | API/SDK/CLI adoption, marketplace supply quality, creator onboarding, payouts, ranking, disputes. | `developer-tool-product-design`, `api-rate-limit-quota-review`, `sdk-onboarding-integration-review`, `data-import-migration-review`, `search-discovery-relevance-review`, `marketplace-product-ops`, `moderation-trust-review`, `creator-onboarding-review`, `community-launch-ops-review`, `partner-integration-ecosystem-review`, `creator-ranking-quality-review`, `search-discovery-relevance-review`, `content-policy-appeals-review`, `marketplace-payouts-review`, `skill-marketplace-creator`, `skill-catalog-generator` | P0 |
-| Trust and support | Accessibility, privacy, store review, abuse, data retention, incidents, help centers, support. | `accessibility-product-review`, `privacy-and-data-retention-review`, `data-export-portability-review`, `data-import-migration-review`, `data-quality-observability-review`, `account-recovery-identity-review`, `customer-feedback-intake-review`, `support-deflection-knowledge-base-review`, `content-policy-appeals-review`, `brand-trust-review`, `security-questionnaire-response-review`, `store-review-policy-risk`, `abuse-fraud-risk-review`, `moderation-trust-review`, `customer-support-operations`, `support-quality-qa-review`, `customer-success-health-review`, `help-center-architecture`, `incident-communication-playbook` | P0 |
+| Distribution and narrative | App stores, Steam, Microsoft Store, web, review policy, launch story, release notes. | `app-store-distribution-readiness`, `store-listing-optimization`, `launch-readiness-review`, `release-health-dashboard-review`, `feature-flag-rollout-review`, `feature-sunset-deprecation-review`, `release-train-change-management-review`, `service-level-slo-review`, `app-permission-ux-review`, `localization-market-expansion-review`, `brand-trust-review`, `launch-narrative-review`, `steam-launch-readiness`, `microsoft-store-readiness`, `store-review-policy-risk`, `changelog-and-release-notes` | P0 |
+| Growth and retention | Offers, referrals, lifecycle messaging, live events, cohorts, SEO. | `startup-growth-review`, `landing-page-critique`, `product-positioning`, `brand-trust-review`, `partner-co-marketing-launch-review`, `customer-advisory-board-review`, `seo-content-brief`, `promotion-campaign-review`, `winback-campaign-review`, `localization-market-expansion-review`, `experiment-design-review`, `in-product-education-review`, `referral-loop-review`, `retention-cohort-review`, `live-event-ops-review`, `notification-strategy-review` | P0 |
+| Developer/community products | API/SDK/CLI adoption, marketplace supply quality, creator onboarding, payouts, ranking, disputes. | `developer-tool-product-design`, `api-rate-limit-quota-review`, `sdk-onboarding-integration-review`, `data-import-migration-review`, `search-discovery-relevance-review`, `platform-certification-program-review`, `community-governance-review`, `marketplace-product-ops`, `moderation-trust-review`, `creator-onboarding-review`, `community-launch-ops-review`, `partner-integration-ecosystem-review`, `creator-ranking-quality-review`, `search-discovery-relevance-review`, `content-policy-appeals-review`, `marketplace-payouts-review`, `skill-marketplace-creator`, `ai-eval-regression-ops-review`, `skill-catalog-generator` | P0 |
+| Trust and support | Accessibility, privacy, store review, abuse, data retention, incidents, help centers, support. | `accessibility-product-review`, `privacy-and-data-retention-review`, `data-export-portability-review`, `data-import-migration-review`, `data-quality-observability-review`, `account-recovery-identity-review`, `customer-feedback-intake-review`, `support-deflection-knowledge-base-review`, `content-policy-appeals-review`, `trust-center-readiness-review`, `procurement-security-review`, `brand-trust-review`, `security-questionnaire-response-review`, `store-review-policy-risk`, `abuse-fraud-risk-review`, `moderation-trust-review`, `customer-support-operations`, `support-quality-qa-review`, `customer-success-health-review`, `help-center-architecture`, `incident-communication-playbook` | P0 |
 
 ## Product type coverage matrix
 
@@ -39,14 +39,14 @@ Every cell in the matrix should eventually have a dedicated or shared skill, sta
 
 ## Remaining high-value gaps
 
-- `trust-center-readiness-review`
-- `service-level-slo-review`
-- `procurement-security-review`
-- `customer-advisory-board-review`
-- `ai-eval-regression-ops-review`
-- `platform-certification-program-review`
-- `revenue-forecast-capacity-review`
-- `community-governance-review`
+- `compliance-evidence-room-review`
+- `reliability-incident-learning-review`
+- `lifecycle-email-system-review`
+- `partner-risk-due-diligence-review`
+- `data-governance-access-review`
+- `experimentation-platform-governance-review`
+- `observability-cost-governance-review`
+- `accessibility-conformance-program-review`
 
 ## Definition of SOTA coverage
 

@@ -81,6 +81,19 @@
       ]
     },
     {
+      "name": "ai-eval-regression-ops-review",
+      "description": "Design and audit AI eval regression operations, golden datasets, prompt/model release gates, rubric governance, judge drift, safety cases, quality monitoring, cost/latency guardrails, failure triage, provider/model changes, human review, and rollback. Use when AI features, agents, copilots, recommendations, or automation need reliable improvement without silent regressions.",
+      "status": "preview",
+      "path": "skills/ai-eval-regression-ops-review",
+      "references": [
+        "ai-eval-regression-ops-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "ai-feature-product-risk-review",
       "description": "Design and audit AI feature product risks across user value, model limitations, hallucination, automation boundaries, human review, privacy, safety, evals, latency, cost, transparency, abuse, fallback, rollout, and support. Use when adding AI assistants, copilots, generators, classifiers, recommendations, agents, or automated decisions to a product.",
       "status": "preview",
@@ -211,6 +224,19 @@
       ]
     },
     {
+      "name": "community-governance-review",
+      "description": "Design and audit community governance for forums, Discord/Slack communities, creator ecosystems, game communities, open-source projects, marketplaces, ambassador programs, and user councils. Covers norms, roles, moderation, escalation, transparency, events, incentives, leadership succession, safety, feedback loops, and sustainability. Use when community health matters to product growth and trust.",
+      "status": "preview",
+      "path": "skills/community-governance-review",
+      "references": [
+        "community-governance-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "community-launch-ops-review",
       "description": "Plan and audit community launch operations, Discord/Slack/forum setup, roles, moderation, announcement cadence, beta cohorts, creator/member onboarding, feedback loops, events, content calendar, support routing, trust policies, and community health metrics. Use when launching or revitalizing a product community for apps, games, developer tools, marketplaces, or SaaS.",
       "status": "preview",
@@ -269,6 +295,19 @@
       "path": "skills/creator-ranking-quality-review",
       "references": [
         "creator-ranking-quality-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "customer-advisory-board-review",
+      "description": "Design and audit customer advisory boards, design partner councils, creator councils, beta cohorts, executive councils, research panels, agenda planning, member selection, confidentiality, incentive boundaries, roadmap signal, commitment management, feedback synthesis, and follow-up loops. Use when customer input should inform strategy without turning into roadmap-by-committee.",
+      "status": "preview",
+      "path": "skills/customer-advisory-board-review",
+      "references": [
+        "customer-advisory-board-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -863,6 +902,19 @@
       ]
     },
     {
+      "name": "platform-certification-program-review",
+      "description": "Design and audit platform certification programs for partners, apps, plugins, integrations, agencies, creators, marketplace listings, templates, and developers. Covers eligibility, quality gates, test suites, badge policy, renewal, audits, appeals, revocation, partner enablement, directory ranking, and customer trust. Use when a platform needs reliable ecosystem quality signals.",
+      "status": "preview",
+      "path": "skills/platform-certification-program-review",
+      "references": [
+        "platform-certification-program-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "pricing-page-critique",
       "description": "Critique and improve pricing pages, plan tables, SaaS packaging, subscription pages, freemium limits, trials, upgrades, cancellation explanations, and enterprise conversion. Use when reviewing monetization UX, pricing communication, plan comparison, value metric clarity, or paywall/pricing-page experiments.",
       "status": "preview",
@@ -882,6 +934,19 @@
       "path": "skills/privacy-and-data-retention-review",
       "references": [
         "privacy-data-retention-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "procurement-security-review",
+      "description": "Design and audit enterprise procurement security review readiness, vendor risk questionnaires, security evidence packets, DPAs, subprocessors, insurance, policies, SOC/ISO evidence, pen test summaries, AI/data-use answers, redlines, gap handling, and sales/legal/security handoff. Use when deals stall on vendor review or buyer assurance.",
+      "status": "preview",
+      "path": "skills/procurement-security-review",
+      "references": [
+        "procurement-security-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1006,6 +1071,19 @@
       ]
     },
     {
+      "name": "revenue-forecast-capacity-review",
+      "description": "Design and audit revenue forecasts, capacity planning, funnel assumptions, pipeline, conversion, expansion, churn, retention cohorts, gross margin, infrastructure capacity, support capacity, sales capacity, inventory/supply, scenario planning, leading indicators, and forecast governance. Use when growth plans, pricing, launches, or operations need financially credible capacity-aware planning.",
+      "status": "preview",
+      "path": "skills/revenue-forecast-capacity-review",
+      "references": [
+        "revenue-forecast-capacity-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "risk-register-governance-review",
       "description": "Design and audit product risk registers, decision governance, mitigation ownership, severity/likelihood scoring, control evidence, review cadence, triggers, assumptions, dependencies, AI/safety risk, commercial risk, operational risk, privacy/security risk, and acceptance decisions. Use when a product team needs to track and reduce material risk instead of relying on scattered notes.",
       "status": "preview",
@@ -1090,6 +1168,19 @@
       "path": "skills/seo-content-brief",
       "references": [
         "seo-content-brief-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "service-level-slo-review",
+      "description": "Design and audit service levels, SLIs, SLOs, SLAs, error budgets, maintenance windows, incident status, support response promises, uptime claims, API latency targets, data freshness targets, recovery objectives, and customer communication. Use when a product needs reliability promises that engineering, support, sales, and customers can trust.",
+      "status": "preview",
+      "path": "skills/service-level-slo-review",
+      "references": [
+        "service-level-slo-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1235,6 +1326,19 @@
       "path": "skills/tax-invoicing-compliance-review",
       "references": [
         "tax-invoicing-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "trust-center-readiness-review",
+      "description": "Design and audit public trust centers, security pages, privacy/compliance portals, subprocessors, uptime/status links, data protection summaries, policy libraries, evidence request flows, customer assurance, sales enablement, and review cadence. Use when a SaaS, developer tool, marketplace, AI product, or enterprise product needs credible trust proof before procurement or launch.",
+      "status": "preview",
+      "path": "skills/trust-center-readiness-review",
+      "references": [
+        "trust-center-readiness-patterns.md"
       ],
       "scripts": [],
       "agents": [

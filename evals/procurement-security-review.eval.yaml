@@ -1,0 +1,10 @@
+skill: procurement-security-review
+positive_prompts:
+  - "Prepare an enterprise procurement security response with questionnaire answers, SOC evidence access, DPA/subprocessor review, AI data-use wording, and gap handling."
+  - "Audit a sales security packet for unsupported claims, stale evidence, access-control risk, and post-signature commitments."
+negative_prompts:
+  - "Design a community moderation ladder."
+expected_behavior:
+  - "Classifies procurement request type and maps each answer to evidence, owner, date, scope, caveat, and approval status."
+  - "Includes gated evidence access, gap wording, redline decision owners, DPA/subprocessor handling, AI data-use boundaries, and post-signature tracking."
+  - "Flags invented controls, uncontrolled sensitive evidence, sales-only commitments, and stale answer libraries."

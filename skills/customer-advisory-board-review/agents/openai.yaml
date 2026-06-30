@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Advisory Board Review"
+  short_description: "Run customer advisory boards"
+  default_prompt: "Use $customer-advisory-board-review to design a customer advisory board with useful product signal."

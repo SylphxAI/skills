@@ -1,0 +1,4 @@
+interface:
+  display_name: "Platform Certification Program Review"
+  short_description: "Design certification programs"
+  default_prompt: "Use $platform-certification-program-review to design a partner or marketplace certification program."

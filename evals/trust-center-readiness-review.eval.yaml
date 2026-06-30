@@ -1,0 +1,10 @@
+skill: trust-center-readiness-review
+positive_prompts:
+  - "Prepare a trust center for an AI SaaS product with security, privacy, subprocessors, compliance claims, gated evidence, and sales handoffs."
+  - "Audit a public security page for stale claims, unsupported certifications, sensitive details, and trust-center owner cadence."
+negative_prompts:
+  - "Design a mobile game live event economy."
+expected_behavior:
+  - "Separates public claims, gated evidence, sales answers, legal commitments, and internal controls."
+  - "Maps each trust claim to owner, evidence, scope, date, qualifier, access policy, and review cadence."
+  - "Flags unsupported certifications, stale subprocessors, overbroad AI/privacy claims, and public leakage of sensitive evidence."

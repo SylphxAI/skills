@@ -1,0 +1,10 @@
+skill: service-level-slo-review
+positive_prompts:
+  - "Design SLOs and customer-facing service levels for a SaaS API with uptime, latency, data freshness, support targets, status page, and error budget policy."
+  - "Audit an enterprise SLA promise against actual monitoring, incident comms, maintenance windows, and support response targets."
+negative_prompts:
+  - "Write partner webinar social copy."
+expected_behavior:
+  - "Separates SLIs, SLOs, SLAs, support targets, RTO/RPO, maintenance windows, and status promises."
+  - "Starts from user journeys and defines measurement windows, exclusions, error budget policy, alerting, and customer communication."
+  - "Flags overpromised SLAs, green status during degradation, and sales/trust claims without measured evidence."

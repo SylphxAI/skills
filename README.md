@@ -76,6 +76,8 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`usage-based-pricing-review`](./skills/usage-based-pricing-review/SKILL.md) | Designing usage-based pricing, metering, credits, quotas, overages, spend controls, and billing trust. | Preview |
 | [`cost-margin-unit-economics-review`](./skills/cost-margin-unit-economics-review/SKILL.md) | Reviewing COGS, gross margin, usage cost, CAC/LTV, refunds, support load, and pricing sustainability. | Preview |
 | [`risk-register-governance-review`](./skills/risk-register-governance-review/SKILL.md) | Creating risk registers with severity, likelihood, controls, mitigations, owners, and review cadence. | Preview |
+| [`customer-advisory-board-review`](./skills/customer-advisory-board-review/SKILL.md) | Designing customer advisory boards, member selection, agendas, roadmap signal, commitments, and follow-up. | Preview |
+| [`revenue-forecast-capacity-review`](./skills/revenue-forecast-capacity-review/SKILL.md) | Reviewing revenue forecasts, funnel assumptions, gross margin, capacity constraints, and scenarios. | Preview |
 | [`subscription-entitlement-review`](./skills/subscription-entitlement-review/SKILL.md) | Keeping subscriptions, plans, trials, renewals, refunds, and access states consistent. | Preview |
 | [`refund-and-support-flow-review`](./skills/refund-and-support-flow-review/SKILL.md) | Designing fair refund, entitlement, appeal, abuse review, and support flows. | Preview |
 | [`payment-platform-readiness`](./skills/payment-platform-readiness/SKILL.md) | Preparing Apple Pay, Google Pay, IAP, web checkout, refunds, entitlements, and reconciliation. | Preview |
@@ -107,6 +109,7 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`changelog-and-release-notes`](./skills/changelog-and-release-notes/SKILL.md) | Writing user-facing release notes, technical changelogs, and support-aware update communication. | Preview |
 | [`feature-sunset-deprecation-review`](./skills/feature-sunset-deprecation-review/SKILL.md) | Planning feature, API, integration, workflow, or plan sunset with migration and communication. | Preview |
 | [`release-train-change-management-review`](./skills/release-train-change-management-review/SKILL.md) | Planning release trains, change calendars, risk classes, staged rollout, rollback, and support readiness. | Preview |
+| [`service-level-slo-review`](./skills/service-level-slo-review/SKILL.md) | Designing SLOs, SLIs, SLAs, error budgets, status pages, maintenance windows, and reliability promises. | Preview |
 | [`customer-support-operations`](./skills/customer-support-operations/SKILL.md) | Designing support, refund, escalation, help center, and trust operations. | Preview |
 | [`account-recovery-identity-review`](./skills/account-recovery-identity-review/SKILL.md) | Reviewing password reset, MFA/passkey recovery, SSO fallback, proof, and takeover risk. | Preview |
 | [`support-quality-qa-review`](./skills/support-quality-qa-review/SKILL.md) | Designing support QA scorecards, macro reviews, calibration, coaching, and product loops. | Preview |
@@ -118,15 +121,19 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`data-export-portability-review`](./skills/data-export-portability-review/SKILL.md) | Designing trusted export, portability, deletion, migration, and offboarding flows. | Preview |
 | [`data-import-migration-review`](./skills/data-import-migration-review/SKILL.md) | Designing imports, migrations, bulk uploads, mapping, dry runs, reconciliation, and rollback. | Preview |
 | [`data-quality-observability-review`](./skills/data-quality-observability-review/SKILL.md) | Designing data quality checks, freshness, completeness, schema drift, lineage, alerts, and metric trust. | Preview |
+| [`trust-center-readiness-review`](./skills/trust-center-readiness-review/SKILL.md) | Preparing trust centers with security, privacy, compliance, subprocessors, uptime, policies, and evidence. | Preview |
+| [`procurement-security-review`](./skills/procurement-security-review/SKILL.md) | Preparing enterprise procurement security reviews, evidence packets, questionnaires, DPAs, and gap handling. | Preview |
 | [`security-questionnaire-response-review`](./skills/security-questionnaire-response-review/SKILL.md) | Preparing truthful security questionnaire answers with evidence, caveats, and gaps. | Preview |
 | [`abuse-fraud-risk-review`](./skills/abuse-fraud-risk-review/SKILL.md) | Designing abuse, fraud, spam, refund, promotion, marketplace, and game-economy controls. | Preview |
 | [`moderation-trust-review`](./skills/moderation-trust-review/SKILL.md) | Designing moderation queues, appeals, enforcement ladders, and trust operations. | Preview |
 | [`content-policy-appeals-review`](./skills/content-policy-appeals-review/SKILL.md) | Designing content policy, enforcement ladders, appeals, evidence, transparency, and moderation QA. | Preview |
+| [`community-governance-review`](./skills/community-governance-review/SKILL.md) | Designing community governance, roles, norms, moderation, councils, escalation, safety, and sustainability. | Preview |
 | [`incident-communication-playbook`](./skills/incident-communication-playbook/SKILL.md) | Planning outage, payment, data, privacy, game, and support incident communications. | Preview |
 | [`analytics-event-taxonomy`](./skills/analytics-event-taxonomy/SKILL.md) | Defining event names, properties, funnels, identity, guardrails, and instrumentation QA. | Preview |
 | [`developer-tool-product-design`](./skills/developer-tool-product-design/SKILL.md) | Designing developer tools, APIs, SDKs, CLIs, docs, examples, pricing, telemetry, and support. | Preview |
 | [`api-rate-limit-quota-review`](./skills/api-rate-limit-quota-review/SKILL.md) | Designing API limits, quotas, headers, tiers, burst policy, dashboards, and developer UX. | Preview |
 | [`sdk-onboarding-integration-review`](./skills/sdk-onboarding-integration-review/SKILL.md) | Reviewing SDK quickstarts, auth, sandbox data, examples, errors, telemetry, and version migration. | Preview |
+| [`platform-certification-program-review`](./skills/platform-certification-program-review/SKILL.md) | Designing certification programs for partners, apps, plugins, creators, badges, renewal, and audits. | Preview |
 | [`marketplace-product-ops`](./skills/marketplace-product-ops/SKILL.md) | Operating marketplaces with submissions, review queues, ranking, trust, payouts, disputes, and moderation. | Preview |
 | [`creator-onboarding-review`](./skills/creator-onboarding-review/SKILL.md) | Designing creator onboarding, submission quality gates, review feedback, publishing, analytics, and payouts readiness. | Preview |
 | [`community-launch-ops-review`](./skills/community-launch-ops-review/SKILL.md) | Planning community launch operations, channels, roles, moderation, events, and feedback loops. | Preview |
@@ -134,6 +141,7 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`creator-ranking-quality-review`](./skills/creator-ranking-quality-review/SKILL.md) | Auditing marketplace ranking quality, fairness, freshness, fraud resistance, and creator trust. | Preview |
 | [`search-discovery-relevance-review`](./skills/search-discovery-relevance-review/SKILL.md) | Auditing search, discovery, filters, relevance signals, zero-results, ranking drift, and fairness. | Preview |
 | [`skill-eval-designer`](./skills/skill-eval-designer/SKILL.md) | Designing behavior evals, positive/negative prompts, rubrics, regression cases, and forward-tests for skills. | Preview |
+| [`ai-eval-regression-ops-review`](./skills/ai-eval-regression-ops-review/SKILL.md) | Operating AI eval regression suites with datasets, rubrics, judge drift, release gates, and rollback. | Preview |
 | [`skill-catalog-generator`](./skills/skill-catalog-generator/SKILL.md) | Generating skill catalogs, quality scores, groupings, gaps, and marketplace metadata. | Preview |
 | [`skill-marketplace-creator`](./skills/skill-marketplace-creator/SKILL.md) | Creating, curating, validating, or operating a marketplace of reusable agent skills. | Preview |
 
