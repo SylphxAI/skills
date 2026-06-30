@@ -1,6 +1,13 @@
 # Sylphx Skills Agent Instructions
 
 This repository is a public skill marketplace seed, not a product runtime.
+It is the public companion to private Sylphx engineering doctrine: keep this repo
+self-contained, public-safe, and installable without private context. Internal
+Sylphx agents may apply private Doctrine in addition to this file, but private
+Doctrine must not be copied into public skills.
+
+Before changing repository boundaries, read [`PROJECT.md`](./PROJECT.md) and
+[`.doctrine/project.json`](./.doctrine/project.json).
 
 ## Non-negotiables
 
