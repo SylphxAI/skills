@@ -1,0 +1,10 @@
+skill: moderation-trust-review
+positive_prompts:
+  - "Design moderation and appeal flows for a public plugin marketplace with creator submissions."
+  - "Audit trust and safety operations for a community app with reviews, comments, spam, and harassment reports."
+negative_prompts:
+  - "Write a SaaS pricing page headline."
+expected_behavior:
+  - "Separates content state, visibility, enforcement, appeal, evidence, and policy ownership."
+  - "Uses queue types and enforcement ladders instead of one-size-fits-all bans."
+  - "Includes metrics for false positives, false negatives, queue age, appeals, and trust impact."

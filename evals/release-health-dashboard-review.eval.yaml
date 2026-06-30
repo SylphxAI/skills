@@ -1,0 +1,10 @@
+skill: release-health-dashboard-review
+positive_prompts:
+  - "Design a release health dashboard and rollback gates for a mobile app staged rollout with payments and onboarding risk."
+  - "Audit a desktop app auto-update release plan for crash spikes, adoption, support tickets, and rollback signals."
+negative_prompts:
+  - "Design a referral reward program."
+expected_behavior:
+  - "Separates build/deploy success from real user health, business health, support, and channel status."
+  - "Defines metrics with baselines, segments, thresholds, owners, and actions."
+  - "Includes hold, rollback, hotfix, communication, and post-release review gates."

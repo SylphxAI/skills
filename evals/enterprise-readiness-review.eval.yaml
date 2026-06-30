@@ -1,0 +1,10 @@
+skill: enterprise-readiness-review
+positive_prompts:
+  - "Audit whether our B2B SaaS is ready for enterprise buyers asking for SSO, SCIM, audit logs, DPA, and SLA."
+  - "Create an enterprise readiness matrix for a developer platform preparing a paid enterprise plan."
+negative_prompts:
+  - "Design a daily reward streak system for a casual game."
+expected_behavior:
+  - "Separates identity/admin, security, legal, procurement, support, implementation, and product gaps."
+  - "Avoids unsupported compliance or SLA claims and asks for proof."
+  - "Produces blocker levels, owner, buyer impact, and pilot rollout gates."

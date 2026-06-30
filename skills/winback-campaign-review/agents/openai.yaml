@@ -1,0 +1,4 @@
+interface:
+  display_name: "Winback Campaign Review"
+  short_description: "Design churn win-back lifecycle campaigns"
+  default_prompt: "Use $winback-campaign-review to design a win-back campaign for dormant or churned users."
