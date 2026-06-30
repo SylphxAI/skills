@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Marketplace Creator"
+  short_description: "Build curated skill marketplaces"
+  default_prompt: "Use $skill-marketplace-creator to design and validate a curated AI agent skill marketplace."

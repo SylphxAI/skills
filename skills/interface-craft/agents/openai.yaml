@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interface Craft"
+  short_description: "Polish UI with craft details"
+  default_prompt: "Use $interface-craft to review this interface for tasteful, high-impact polish."
