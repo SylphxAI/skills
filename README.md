@@ -46,7 +46,7 @@ A Sylphx skill must be:
 3. **Progressively disclosed** — detailed knowledge lives in `references/`; deterministic work lives in `scripts/`.
 4. **Evaluable** — examples show when the skill should trigger and what better output looks like.
 5. **Safe** — no secrets, unsafe shell snippets, malicious instructions, dark patterns, or license laundering.
-6. **Attribution-safe** — original content by default; third-party material requires compatible license and explicit attribution.
+6. **Original synthesis** — learn from the world, then publish Sylphx-owned structure, examples, and wording; attribution is only needed for direct quotes, third-party code/assets, or license-required excerpts.
 
 See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md).
 

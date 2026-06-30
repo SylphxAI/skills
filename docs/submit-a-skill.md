@@ -25,4 +25,4 @@ Avoid:
 
 ## Licensing
 
-Default to original writing. If a skill is based on third-party material, include compatible license evidence and attribution in a reference file.
+Default to original synthesis. It is fine to learn from public knowledge, competitor products, docs, talks, and articles, but the submitted skill must use its own structure, examples, and wording. Do not copy or closely paraphrase source text. Include permission and attribution only when you intentionally include direct quotes, third-party code/assets, or license-required excerpts.

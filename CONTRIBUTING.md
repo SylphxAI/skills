@@ -18,4 +18,4 @@ node scripts/validate-skills.mjs --check-registry
 
 ## Acceptance bar
 
-We accept skills that are useful, safe, original or attribution-safe, agent-readable, and testable. We reject prompt dumps, vague advice, dark-pattern growth tactics, malware-like scripts, and copied content without a compatible license.
+We accept skills that are useful, safe, original, agent-readable, and testable. We reject prompt dumps, vague advice, dark-pattern growth tactics, malware-like scripts, copied expression, and lightly rewritten source material. General ideas and public knowledge do not need per-source attribution, but direct quotes, third-party code/assets, or license-bound excerpts require permission and attribution.
