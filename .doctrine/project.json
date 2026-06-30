@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "repo": "SylphxAI/skills",
+    "name": "Sylphx Skills",
+    "lifecycle": "production",
+    "layer": "tooling",
+    "policyPool": "agent-tool",
+    "summary": "Public, curated, eval-backed Agent Skills repository for reusable product, design, growth, monetization, operations, and marketplace workflows.",
+    "goals": [
+      "Publish high-signal public SKILL.md packages for skills-compatible agents.",
+      "Maintain generated registry, catalog metadata, validation scripts, and eval fixtures for every public skill.",
+      "Provide a public install surface through the open skills CLI without leaking private Sylphx doctrine or customer data."
+    ],
+    "nonGoals": [
+      "Own private Sylphx engineering doctrine, delivery policy, ADR governance, CI rules, or internal operating standards.",
+      "Publish customer-specific, proprietary, confidential, or credential-dependent instructions.",
+      "Provide runtime tools, MCP servers, APIs, hosted marketplace infrastructure, or package publication from this repository."
+    ],
+    "links": [
+      {
+        "url": "https://github.com/SylphxAI/skills",
+        "type": "repo",
+        "title": "Public skill repository"
+      }
+    ]
+  },
+  "boundaries": {
+    "owns": [
+      {
+        "name": "public-agent-skills",
+        "description": "Public SKILL.md packages, references, scripts, eval fixtures, quality rules, and contribution guidance for reusable agent workflows."
+      },
+      {
+        "name": "public-skill-catalog",
+        "description": "Generated registry and marketplace grouping metadata for public skill discovery and installation."
+      }
+    ],
+    "doesNotOwn": [
+      "Private Sylphx engineering doctrine, ADR governance, delivery standards, or internal operating policy.",
+      "Customer-specific or repository-specific runtime behavior in downstream products.",
+      "Hosted marketplace APIs, MCP servers, paid entitlement systems, or package publication flows."
+    ],
+    "publicSurfaces": [
+      {
+        "type": "documentation",
+        "name": "Public repository entry point",
+        "location": "README.md"
+      },
+      {
+        "type": "documentation",
+        "name": "Agent instructions",
+        "location": "AGENTS.md"
+      },
+      {
+        "type": "manifest",
+        "name": "Generated public skill registry",
+        "location": "registry/skills.json"
+      },
+      {
+        "type": "manifest",
+        "name": "Skills marketplace grouping metadata",
+        "location": "skills.sh.json"
+      },
+      {
+        "type": "documentation",
+        "name": "Public skill corpus",
+        "location": "skills/"
+      },
+      {
+        "type": "documentation",
+        "name": "Skill quality and contribution docs",
+        "location": "docs/"
+      },
+      {
+        "type": "schema",
+        "name": "Behavior eval fixtures",
+        "location": "evals/"
+      },
+      {
+        "type": "cli",
+        "name": "Skill repository validation scripts",
+        "location": "scripts/"
+      }
+    ],
+    "allowedDependencies": [
+      {
+        "repo": "vercel-labs/skills",
+        "surface": "open skills CLI and conventional SKILL.md discovery layout",
+        "direction": "peer-public"
+      }
+    ],
+    "forbiddenCouplings": [
+      "Do not copy private Sylphx doctrine standards into this public repository.",
+      "Do not publish secrets, credentials, proprietary customer data, or internal incident details.",
+      "Do not make public skills depend on private repositories, private tools, or private runtime credentials.",
+      "Do not treat public skill advice as overriding private Doctrine when used by internal Sylphx agents."
+    ]
+  },
+  "documentation": {
+    "adr": {
+      "path": "docs/",
+      "status": "planned"
+    },
+    "specs": {
+      "path": "docs/",
+      "status": "present"
+    },
+    "catalog": {
+      "path": ".doctrine/project.json",
+      "status": "present"
+    },
+    "runbooks": {
+      "path": "docs/ and README.md",
+      "status": "present"
+    },
+    "generatedReferences": {
+      "path": "registry/skills.json and skills.sh.json",
+      "status": "present"
+    }
+  },
+  "delivery": {
+    "ciModel": "legacy-ci",
+    "requiredContexts": [
+      "validate"
+    ],
+    "deployPath": "Non-deployable public content repository. Delivery is merge to main after validation; no runtime deployment is required until a hosted marketplace surface is introduced.",
+    "productionProof": "Default-branch readback plus npm run check and npx skills add SylphxAI/skills --list prove public skill availability.",
+    "recoveryClass": "source-revertable",
+    "deployable": false
+  },
+  "commercial": {
+    "status": "not-applicable",
+    "decisionHome": "not-applicable: this public repository currently publishes MIT-licensed skills and no paid entitlement surface.",
+    "pricingSourceOfTruth": "not-applicable: no pricing or billing surface in this repository.",
+    "metricsSourceOfTruth": "not-applicable: no install analytics source declared yet.",
+    "requiredRecords": [
+      "none"
+    ],
+    "guardrails": [
+      "Commercial private registries, custom skill creation, scoring services, or hosted marketplace products require an owning commercial decision before implementation."
+    ]
+  },
+  "adoption": {
+    "status": "full",
+    "gaps": []
+  }
+}

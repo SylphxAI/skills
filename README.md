@@ -69,6 +69,20 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 
 The generated registry lives at [`registry/skills.json`](./registry/skills.json).
 
+## Public/private boundary
+
+This repository is the public skill marketplace seed. It publishes MIT-licensed,
+self-contained skills that must not depend on private Sylphx repositories,
+credentials, customer data, or internal operating policy. Private Sylphx
+engineering doctrine lives outside this public repository. Internal Sylphx
+agents may install private Doctrine skills alongside these public skills; when
+there is a conflict, private Doctrine governs internal work and this repository
+provides advisory domain craft.
+
+Project identity and delivery boundary are recorded in
+[`.doctrine/project.json`](./.doctrine/project.json) and summarized in
+[`PROJECT.md`](./PROJECT.md).
+
 ## Quality bar
 
 A Sylphx skill must be:
