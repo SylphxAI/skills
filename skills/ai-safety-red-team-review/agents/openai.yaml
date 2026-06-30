@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Safety Red Team Review"
+  short_description: "Red-team AI product risks"
+  default_prompt: "Use $ai-safety-red-team-review to plan an AI safety red-team review."

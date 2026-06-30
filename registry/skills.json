@@ -120,6 +120,19 @@
       ]
     },
     {
+      "name": "ai-safety-red-team-review",
+      "description": "Plan and audit AI safety red-team reviews for prompt injection, jailbreaks, data exfiltration, tool misuse, unsafe autonomy, hallucinated actions, privacy leakage, harmful content, policy bypass, model routing fallback, eval coverage, mitigations, release gates, and incident response. Use when an AI feature needs adversarial testing before or after launch.",
+      "status": "preview",
+      "path": "skills/ai-safety-red-team-review",
+      "references": [
+        "ai-safety-red-team-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "analytics-event-taxonomy",
       "description": "Design and audit analytics event taxonomies for product funnels, SaaS, mobile apps, games, web apps, desktop utilities, marketplaces, notifications, payments, support, and launches. Use when defining events, properties, naming, identity, funnels, cohorts, attribution, guardrail metrics, dashboards, or analytics quality rules.",
       "status": "preview",
@@ -406,6 +419,19 @@
       ]
     },
     {
+      "name": "customer-training-academy-review",
+      "description": "Design and audit customer training academies for onboarding, admin enablement, role-based curricula, certification, labs, templates, webinars, office hours, self-serve courses, localization, accessibility, lifecycle triggers, partner/customer education, adoption metrics, support deflection, and content governance. Use when education must improve activation, retention, expansion, and support quality.",
+      "status": "preview",
+      "path": "skills/customer-training-academy-review",
+      "references": [
+        "customer-training-academy-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "daily-reward-and-streak-review",
       "description": "Design and audit daily rewards, check-ins, streaks, missions, calendars, streak repair, lifecycle notifications, retention loops, live events, game economies, habit formation, and anti-abuse controls for apps and games. Use when building daily login rewards, streak mechanics, reward calendars, return rituals, or retention systems that should increase engagement without coercion.",
       "status": "preview",
@@ -464,6 +490,19 @@
       "path": "skills/data-quality-observability-review",
       "references": [
         "data-quality-observability-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "data-residency-region-review",
+      "description": "Design and audit data residency and regional operating models covering customer region commitments, data classification, storage, processing, backups, logs, analytics, search, AI providers, subprocessors, support/admin access, replication, failover, deletion, migrations, contracts, and proof. Use when customers or regulators require clarity about where data lives and moves.",
+      "status": "preview",
+      "path": "skills/data-residency-region-review",
+      "references": [
+        "data-residency-region-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -542,6 +581,19 @@
       "path": "skills/empty-state-and-loading-review",
       "references": [
         "empty-loading-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "enterprise-expansion-health-review",
+      "description": "Review enterprise account health and expansion readiness across adoption, value proof, champion strength, executive alignment, usage whitespace, renewal risk, support history, incidents, seat growth, product fit, procurement timing, pricing, QBRs, and handoff between customer success, sales, support, and product. Use when teams want expansion revenue without harming trust.",
+      "status": "preview",
+      "path": "skills/enterprise-expansion-health-review",
+      "references": [
+        "enterprise-expansion-health-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1019,6 +1071,19 @@
       ]
     },
     {
+      "name": "partner-channel-program-review",
+      "description": "Design and audit partner channel programs covering reseller, referral, agency, implementation, technology, marketplace, affiliate, and co-sell motions; tiers, incentives, certification, lead registration, deal protection, MDF, enablement, support ownership, compliance, conflict, reporting, and partner health. Use when growth depends on partners without losing customer trust or margin.",
+      "status": "preview",
+      "path": "skills/partner-channel-program-review",
+      "references": [
+        "partner-channel-program-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "partner-co-marketing-launch-review",
       "description": "Design and audit partner co-marketing launches, integration announcements, joint messaging, launch assets, approval workflows, channel plans, attribution, lead routing, marketplace listings, webinars, case studies, incentives, enablement, partner commitments, and post-launch follow-up. Use when a product launch depends on a partner ecosystem or joint go-to-market motion.",
       "status": "preview",
@@ -1103,6 +1168,19 @@
       "path": "skills/privacy-and-data-retention-review",
       "references": [
         "privacy-data-retention-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "privacy-impact-assessment-review",
+      "description": "Run privacy impact assessments for new features, data collection, analytics, AI processing, profiling, vendors, retention, consent, legal basis, minimization, sensitive data, children/regulated users, DSAR, cross-border transfer, security controls, mitigations, launch gates, and record keeping. Use when product changes may affect personal data or user trust.",
+      "status": "preview",
+      "path": "skills/privacy-impact-assessment-review",
+      "references": [
+        "privacy-impact-assessment-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1298,6 +1376,19 @@
       "path": "skills/sales-demo-script-review",
       "references": [
         "sales-demo-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "sales-qualification-discovery-review",
+      "description": "Design and audit B2B sales qualification and discovery workflows covering ICP fit, buyer pain, urgency, authority, budget, decision process, procurement path, champion strength, technical fit, risk, no-fit disqualification, mutual action plans, CRM hygiene, and handoff to solution engineering or customer success. Use when agents need to decide whether an opportunity is real and what must be learned next.",
+      "status": "preview",
+      "path": "skills/sales-qualification-discovery-review",
+      "references": [
+        "sales-qualification-discovery-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1547,6 +1638,19 @@
       "path": "skills/usage-based-pricing-review",
       "references": [
         "usage-based-pricing-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "usage-metering-accuracy-review",
+      "description": "Design and audit usage-metering accuracy for usage-based pricing, credits, quotas, overages, AI/token billing, API calls, seats, storage, event ingestion, idempotency, late events, aggregation, reconciliation, invoices, customer visibility, disputes, corrections, and revenue leakage. Use when billable usage must be trusted by customers and finance.",
+      "status": "preview",
+      "path": "skills/usage-metering-accuracy-review",
+      "references": [
+        "usage-metering-accuracy-patterns.md"
       ],
       "scripts": [],
       "agents": [

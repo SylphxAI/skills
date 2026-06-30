@@ -1,0 +1,10 @@
+skill: partner-channel-program-review
+positive_prompts:
+  - "Design a partner channel program for SaaS with referral, reseller, implementation, and technology partners, including tiers, incentives, lead registration, certification, support ownership, MDF, and conflict rules."
+  - "Audit a channel motion where partners generate low-quality leads, promise unsupported discounts, confuse support ownership, and fight direct sales over attribution."
+negative_prompts:
+  - "Run a privacy impact assessment for AI analytics."
+expected_behavior:
+  - "Defines partner motion, qualification, tiers, obligations, incentives, lead registration, deal protection, certification, enablement, claims policy, support ownership, and governance."
+  - "Includes metrics for accepted leads, conversion, time-to-live, retention, support load, NPS, margin, complaints, and partner health."
+  - "Flags low-quality incentives, unsupported partner claims, missing support handoff, channel conflict, margin-negative discounts, and customer harm."

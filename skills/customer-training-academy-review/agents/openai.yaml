@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Training Academy Review"
+  short_description: "Design customer academy"
+  default_prompt: "Use $customer-training-academy-review to design a customer training academy."
