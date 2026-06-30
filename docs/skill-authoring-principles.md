@@ -59,3 +59,8 @@ A skill is ready to publish when:
 4. The skill gives different, better output than a base model.
 5. It has at least one positive prompt, one negative prompt, and expected behavior.
 6. It rejects unsafe, manipulative, or policy-risky shortcuts.
+
+
+## Behavior examples
+
+Every preview skill should include `examples/behavior/<skill>.md`. The file is a lightweight before/after behavior target: positive prompt, weak baseline, skill-shaped output, negative trigger, and expected behavior. It helps contributors improve skills without bloating `SKILL.md`.
