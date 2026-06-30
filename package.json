@@ -12,6 +12,7 @@
     "catalog": "node scripts/generate-catalog.mjs",
     "validate:catalog-site": "node scripts/generate-catalog.mjs --check",
     "validate:examples": "node scripts/validate-behavior-examples.mjs",
-    "validate:launch": "node scripts/validate-launch-kit.mjs"
+    "validate:launch": "node scripts/validate-launch-kit.mjs",
+    "verify:install": "node scripts/verify-open-skills-install.mjs"
   }
 }

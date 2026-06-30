@@ -25,6 +25,7 @@ Core message:
 | Surface | Action | Status |
 | --- | --- | --- |
 | GitHub README | Make install path, catalog, quality bar, and roadmap visible. | Ready |
+| Open skills CLI list/install | Verify `npx skills add SylphxAI/skills --list` and all-skill install in isolated HOME. | Verified locally |
 | skills.sh | Submit `SylphxAI/skills` repository or wait for indexer if auto-discovered. | External gate |
 | SkillsMP | Submit repo URL, description, tags, and install instructions if listing is open. | External gate |
 | ClaudeSkill | Submit repo URL and representative skills if listing is open. | External gate |
@@ -46,7 +47,7 @@ Specific skill command:
 npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 ```
 
-Run install verification only in an environment where downloading npm packages is acceptable. Record the CLI version, command output, and installed skill path in the launch issue.
+Run install verification only in an environment where downloading npm packages is acceptable. `npm run verify:install` performs this in an isolated temporary HOME and checks all 35 skills.
 
 ## Launch sequence
 
@@ -66,3 +67,7 @@ These steps may require accounts, web forms, or third-party indexer timing:
 - install-count badge availability;
 - enabling GitHub Pages or another public static host;
 - social/community posting from the company account.
+
+## Submission payloads
+
+Copy-ready directory payloads live in [`directory-submission-payloads.md`](./directory-submission-payloads.md).

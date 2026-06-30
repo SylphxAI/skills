@@ -25,6 +25,8 @@ Install the whole collection with the open skills CLI:
 npx skills add SylphxAI/skills
 ```
 
+Install verification details: [`docs/install-verification.md`](./docs/install-verification.md).
+
 Install a specific skill when your client supports skill selection:
 
 ```bash
@@ -112,6 +114,9 @@ node scripts/validate-reference-quality.mjs
 node scripts/validate-behavior-examples.mjs
 node scripts/validate-launch-kit.mjs
 node scripts/generate-catalog.mjs --check
+
+# Optional external install verification
+npm run verify:install
 ```
 
 ## Contribute
@@ -123,6 +128,8 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`docs/submit-a-skill.md`](./docs
 - Demo matrix: [`examples/launch-demos.md`](./examples/launch-demos.md)
 - Distribution plan: [`docs/distribution-launch-plan.md`](./docs/distribution-launch-plan.md)
 - Public launch post: [`docs/public-launch-post.md`](./docs/public-launch-post.md)
+- Install verification: [`docs/install-verification.md`](./docs/install-verification.md)
+- Directory submission payloads: [`docs/directory-submission-payloads.md`](./docs/directory-submission-payloads.md)
 
 ## Roadmap
 
