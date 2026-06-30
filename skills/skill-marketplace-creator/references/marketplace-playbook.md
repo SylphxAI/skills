@@ -75,3 +75,20 @@ Use agents to create drafts, not to publish automatically.
 - Add install badges to README.
 - Create skill packs by job: design, growth, engineering, security, data.
 - Invite expert maintainers for verified categories.
+
+## Marketplace quality rule IDs
+
+- `marketplace-1` — Repository-only launch is the default first stage because it maximizes speed, GitHub trust, searchability, and contribution visibility.
+- `marketplace-2` — A skill is publishable only when trigger metadata, references, validation, evals, and install path are all present.
+- `marketplace-3` — Do not rank skills only by popularity; include quality gates, freshness, safety, originality, and eval coverage.
+- `marketplace-4` — Submissions need a rights/originality declaration before review, even when attribution is not required.
+- `marketplace-5` — Marketplace automation can draft and validate skills, but publishing requires review of usefulness, safety, and originality.
+
+## Marketplace stage decision table
+
+| Stage | Use when | Do not add yet |
+| --- | --- | --- |
+| Repository-only | Need reputation, SEO, installability, and fast iteration | Accounts, payments, complex ranking |
+| Static catalog | Need browsing, search, badges, and pack pages | User-generated submissions without review |
+| API registry | External tools need programmatic search/install metadata | Monetization before quality signals |
+| Full marketplace | There is enough supply, demand, moderation, and trust need | Dark ranking, unreviewed paid placement |
