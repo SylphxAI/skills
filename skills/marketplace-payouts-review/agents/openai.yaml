@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketplace Payouts Review"
+  short_description: "Design marketplace payouts"
+  default_prompt: "Use $marketplace-payouts-review to audit this marketplace payout and ledger flow."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Store Review Policy Risk"
+  short_description: "Reduce app store review risk"
+  default_prompt: "Use $store-review-policy-risk to audit this app or game for store review policy risk."

@@ -1,0 +1,10 @@
+skill: microsoft-store-readiness
+positive_prompts:
+  - "Prepare a Microsoft Store submission checklist for a Windows subscription utility."
+  - "Audit this MSIX app for Store certification, listing, privacy, purchases, and rollout risk."
+negative_prompts:
+  - "Design a Google Play daily reward calendar."
+expected_behavior:
+  - "Separates Microsoft Store submission requirements from general Windows release readiness."
+  - "Covers package identity, manifest capabilities, listing truth, monetization, certification quality, support, and rollout."
+  - "Requires current policy verification and reviewer notes for sensitive behavior."

@@ -1,0 +1,10 @@
+skill: accessibility-product-review
+positive_prompts:
+  - "Review this SaaS checkout and cancellation flow for accessibility blockers."
+  - "Audit a mobile onboarding flow for keyboard, screen reader, motion, contrast, and error recovery."
+negative_prompts:
+  - "Design marketplace payout reconciliation."
+expected_behavior:
+  - "Starts from critical user tasks and affected users, not generic compliance slogans."
+  - "Covers keyboard, screen reader semantics, focus, forms, motion, contrast, touch, dynamic content, and recovery."
+  - "Separates P0 blockers, design-system fixes, and validation/regression checks."

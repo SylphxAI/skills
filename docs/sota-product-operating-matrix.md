@@ -21,12 +21,12 @@ Prioritize skills with the highest combined score across six dimensions:
 
 | Dimension | Why it matters | High-score examples |
 | --- | --- | --- |
-| Frequency | Common tasks attract stars and repeated use. | UI polish, pricing pages, checkout, launch readiness, support flows |
-| Revenue leverage | Better decisions can increase conversion, retention, ARPU, or retained revenue. | pricing, checkout, ads, subscriptions, promotion, game economy |
-| Failure cost | Mistakes create refunds, bans, churn, support load, data loss, policy rejection, or bad reviews. | payments, subscriptions, backup, privacy, desktop release, Steam launch |
-| Agent gap | Base models often give generic advice without operational state, support, or metrics. | entitlements, refund handling, macOS/Windows release, marketplace ops |
-| Cross-product reuse | Useful across SaaS, apps, games, utilities, developer tools, and web. | responsive UI, support ops, market research, backup, checkout |
-| Public attractiveness | Easy to demo and understand in a GitHub README. | before/after UI, checkout audit, Steam launch checklist, developer quickstart review |
+| Frequency | Common tasks attract stars and repeated use. | UI polish, accessibility, pricing, checkout, launch readiness, support flows |
+| Revenue leverage | Better decisions can increase conversion, retention, ARPU, margin, or retained revenue. | usage pricing, checkout, payouts, referrals, ads, subscriptions, game economy |
+| Failure cost | Mistakes create refunds, bans, churn, support load, data loss, policy rejection, inaccessible flows, or bad reviews. | payments, payouts, store review, accessibility, backup, desktop release |
+| Agent gap | Base models often give generic advice without operational state, support, or metrics. | entitlements, usage billing, payout ledgers, Microsoft Store, live events |
+| Cross-product reuse | Useful across SaaS, apps, games, utilities, developer tools, marketplaces, and web. | responsive UI, support ops, market research, backup, checkout, accessibility |
+| Public attractiveness | Easy to demo and understand in a GitHub README. | before/after UI, checkout audit, retention diagnosis, Steam/Microsoft launch checklist |
 
 ## Master lifecycle matrix
 
@@ -35,70 +35,41 @@ Prioritize skills with the highest combined score across six dimensions:
 | Strategy and wedge | Audience, pain, timing, differentiation, business model, proof target. | `product-lifecycle-architect`, `execution-simplification`, `market-research-synthesis` | decision memo and opportunity scoring |
 | Market research | Competitors, reviews, pricing, store listings, complaints, pattern synthesis. | `market-research-synthesis` | review-mining and competitor matrix helpers |
 | Product architecture | Core loop, onboarding, accounts, billing, settings, support, data, trust. | `product-lifecycle-architect`, `mobile-app-product-systems`, `onboarding-activation-review` | product-system blueprints by product type |
-| UI craft | Perceived speed, hierarchy, micro-details, accessibility, empty/loading/error states. | `interface-craft`, `mobile-first-ui-review`, `motion-transition-review`, `responsive-layout-review`, `empty-state-and-loading-review` | component-specific demos and screenshots |
-| SaaS pricing | Value metric, tiers, trials, freemium, cancellation, expansion. | `saas-subscription-pricing`, `pricing-page-critique` | pricing experiments and packaging calculators |
-| Checkout and payments | Wallets, discounts, tax, payment errors, receipts, entitlements, support traces. | `checkout-conversion-review`, `payment-platform-readiness`, `subscription-entitlement-review` | provider-specific ledgers and reconciliation scripts |
-| Mobile monetization | Subscription, IAP, IAA, promotions, notifications, daily rewards, refunds. | `mobile-app-product-systems`, `ad-monetization-review`, `daily-reward-and-streak-review` | live-event and cohort-retention skills |
-| Notifications | Push, email, SMS, in-app, desktop, consent, fatigue, lifecycle events. | `notification-strategy-review` | lifecycle campaign playbooks |
-| Game economy | Currency, sources/sinks, progression, ads, IAP, events, fairness. | `game-economy-review`, `ad-monetization-review`, `daily-reward-and-streak-review` | economy simulation helper |
-| Distribution | App Store, Google Play, Steam, Microsoft Store, web/direct download. | `app-store-distribution-readiness`, `store-listing-optimization`, `steam-launch-readiness`, `launch-readiness-review` | Microsoft Store-specific depth |
-| Desktop OS | macOS, Windows, installer, update, tray/menu, permissions, credentials. | `desktop-os-integration`, `macos-release-readiness`, `windows-release-readiness` | signed-download and auto-update demos |
+| UI craft/accessibility | Perceived speed, hierarchy, micro-details, accessibility, empty/loading/error states. | `interface-craft`, `mobile-first-ui-review`, `motion-transition-review`, `responsive-layout-review`, `accessibility-product-review`, `empty-state-and-loading-review` | design-system extractor and form UX |
+| SaaS and usage pricing | Value metric, tiers, usage units, credits, trials, freemium, cancellation, expansion. | `saas-subscription-pricing`, `usage-based-pricing-review`, `pricing-page-critique` | calculators and pricing experiment helpers |
+| Checkout, payments, payouts | Wallets, discounts, tax, payment errors, receipts, entitlements, seller balances, payout holds. | `checkout-conversion-review`, `payment-platform-readiness`, `subscription-entitlement-review`, `marketplace-payouts-review` | provider-specific ledgers and reconciliation scripts |
+| Mobile monetization | Subscription, IAP, IAA, promotions, notifications, daily rewards, refunds. | `mobile-app-product-systems`, `ad-monetization-review`, `daily-reward-and-streak-review` | win-back campaign skill |
+| Retention and live ops | Cohorts, lifecycle events, live events, rewards, notifications, fatigue, economy impact. | `retention-cohort-review`, `live-event-ops-review`, `notification-strategy-review`, `daily-reward-and-streak-review` | cohort dashboard examples |
+| Game economy | Currency, sources/sinks, progression, ads, IAP, events, fairness. | `game-economy-review`, `ad-monetization-review`, `daily-reward-and-streak-review`, `live-event-ops-review` | economy simulation helper |
+| Growth loops | Referral, promotion, positioning, SEO, landing conversion, launch narrative. | `referral-loop-review`, `promotion-campaign-review`, `product-positioning`, `seo-content-brief`, `landing-page-critique` | launch narrative and win-back skills |
+| Distribution | App Store, Google Play, Steam, Microsoft Store, web/direct download. | `app-store-distribution-readiness`, `store-listing-optimization`, `steam-launch-readiness`, `microsoft-store-readiness`, `store-review-policy-risk`, `launch-readiness-review` | signed-download examples |
+| Desktop OS | macOS, Windows, installer, update, tray/menu, permissions, credentials. | `desktop-os-integration`, `macos-release-readiness`, `windows-release-readiness`, `microsoft-store-readiness` | auto-update demos |
 | Backup/data | Versioning, export, restore drills, sync, deletion, local/cloud data. | `backup-restore-design` | restore-drill templates and scripts |
-| Developer tools | API/SDK/CLI onboarding, docs, examples, limits, errors, pricing, changelog. | `developer-tool-product-design` | docs-to-first-success demo suite |
-| Marketplaces | Submission, review, ranking, quality, disputes, payouts, moderation, support. | `marketplace-product-ops`, `skill-marketplace-creator` | creator onboarding and scoring skills |
+| Developer tools | API/SDK/CLI onboarding, docs, examples, limits, usage pricing, errors, changelog. | `developer-tool-product-design`, `usage-based-pricing-review` | docs-to-first-success demo suite |
+| Marketplaces | Submission, review, ranking, quality, payouts, disputes, moderation, support. | `marketplace-product-ops`, `marketplace-payouts-review`, `skill-marketplace-creator` | creator onboarding and scoring skills |
 | Operations/support | Help center, refund, escalation, incident comms, analytics taxonomy. | `customer-support-operations`, `help-center-architecture`, `refund-and-support-flow-review`, `incident-communication-playbook`, `analytics-event-taxonomy` | support-macro and triage generators |
-| Trust/compliance | Privacy, data retention, abuse/fraud, policy risk, safe growth. | `privacy-and-data-retention-review`, `abuse-fraud-risk-review` | store-review-policy-risk skill |
+| Trust/compliance | Accessibility, privacy, data retention, abuse/fraud, policy risk, safe growth. | `accessibility-product-review`, `privacy-and-data-retention-review`, `store-review-policy-risk`, `abuse-fraud-risk-review` | moderation trust review |
 
-## Product type coverage matrix
+## Current coverage proof
 
-| Product type | Must cover | Current skills |
-| --- | --- | --- |
-| Mobile app | onboarding, permissions, subscriptions, IAP, IAA, notifications, restore purchase, offline state, app-store review | `mobile-app-product-systems`, `checkout-conversion-review`, `ad-monetization-review`, `app-store-distribution-readiness` |
-| Mobile game | economy, rewarded ads, daily rewards, streaks, offers, refunds, anti-abuse, live events | `game-economy-review`, `ad-monetization-review`, `daily-reward-and-streak-review` |
-| SaaS | pricing, packaging, checkout, trials, cancellation, expansion, support, backup/export | `saas-subscription-pricing`, `pricing-page-critique`, `checkout-conversion-review`, `backup-restore-design` |
-| Web app | responsive UI, SEO/landing, checkout, auth, data export, support, browser states | `interface-craft`, `responsive-layout-review`, `landing-page-critique`, `checkout-conversion-review` |
-| Desktop utility | installers, update, backup, file associations, permissions, menu/tray, local data | `desktop-os-integration`, `macos-release-readiness`, `windows-release-readiness` |
-| Developer tool | docs, quickstart, CLI/API, SDKs, limits, pricing, telemetry, changelog, support | `developer-tool-product-design`, `help-center-architecture`, `changelog-and-release-notes` |
-| Marketplace/community | submissions, ranking, trust, creator tools, disputes, payouts, moderation, growth loops | `marketplace-product-ops`, `abuse-fraud-risk-review`, `customer-support-operations` |
-| PC game | Steam store page, wishlist, demo, platform features, community, refunds, reviews, patch ops | `steam-launch-readiness`, `game-economy-review`, `changelog-and-release-notes` |
+- 51 preview skills are live in `skills/`, each with `SKILL.md`, at least one reference, `agents/openai.yaml`, eval, behavior example, registry entry, and catalog page.
+- The latest depth batch covers: `usage-based-pricing-review`, `marketplace-payouts-review`, `microsoft-store-readiness`, `store-review-policy-risk`, `live-event-ops-review`, `retention-cohort-review`, `referral-loop-review`, and `accessibility-product-review`.
+- Earlier depth covers checkout, ads, daily rewards, Steam, developer tools, marketplace ops, macOS, Windows, payments, refunds, subscriptions, UI craft, launch, privacy, support, analytics, and incidents.
 
-## Platform and channel matrix
+## Remaining high-value gaps
 
-| Area | Details to cover | Skill home |
-| --- | --- | --- |
-| Apple Pay | wallet sheet readiness, region support, fallback, errors, entitlement and support traces | `payment-platform-readiness`, `checkout-conversion-review` |
-| Google Play Billing | products, subscriptions, purchase tokens, restore, refund/revoke, event processing | `mobile-app-product-systems`, `payment-platform-readiness` |
-| App Store | metadata, screenshots, privacy nutrition, subscriptions, review notes, restore purchases | `app-store-distribution-readiness`, `store-listing-optimization` |
-| Google Play | listing, data safety, billing, testing tracks, pre-launch report, policy risk | `app-store-distribution-readiness`, `store-listing-optimization` |
-| Steam | store page, wishlist, demo, achievements, cloud saves, refunds, community hub | `steam-launch-readiness` |
-| Microsoft Store | package identity, listing, IAP, updates, Windows integration, certification | `app-store-distribution-readiness`, `windows-release-readiness` |
-| macOS | signing, notarization, sandbox, permissions, keychain, launch agents, backup, updates | `macos-release-readiness`, `desktop-os-integration` |
-| Windows | installer/MSIX, signing, SmartScreen, tray, startup, registry/file associations, services, uninstall | `windows-release-readiness`, `desktop-os-integration` |
-| Backup | versioning, encryption, restore drills, export, cloud/local conflict resolution | `backup-restore-design` |
-| Developer ecosystems | SDK/API/CLI quickstart, examples, errors, limits, pricing, status, changelog | `developer-tool-product-design` |
-| Skill/app marketplaces | submission, review, ranking, quality, disputes, payouts, moderation | `marketplace-product-ops`, `skill-marketplace-creator` |
-
-## First 60-skill destination map
-
-### Completed foundation and depth cells
-
-- 43 preview skills are live in `skills/`, each with `SKILL.md`, at least one reference, `agents/openai.yaml`, eval, behavior example, registry entry, and catalog page.
-- This includes the first high-revenue depth batch: `checkout-conversion-review`, `ad-monetization-review`, `daily-reward-and-streak-review`, `steam-launch-readiness`, `developer-tool-product-design`, `marketplace-product-ops`, `macos-release-readiness`, and `windows-release-readiness`.
-
-### Remaining high-value gaps
-
-- `usage-based-pricing-review`
-- `marketplace-payouts-review`
-- `microsoft-store-readiness`
-- `store-review-policy-risk`
-- `live-event-ops-review`
-- `retention-cohort-review`
-- `referral-loop-review`
-- `accessibility-product-review`
+- `decision-memo-writer`
+- `opportunity-scoring-review`
+- `agentic-workflow-designer`
 - `design-system-extractor`
+- `form-ux-review`
+- `launch-narrative-review`
 - `creator-onboarding-review`
 - `skill-eval-designer`
-- `decision-memo-writer`
+- `skill-catalog-generator`
+- `moderation-trust-review`
+- `winback-campaign-review`
+- `customer-success-health-review`
 
 ## Execution cadence
 

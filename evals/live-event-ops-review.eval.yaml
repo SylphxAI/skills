@@ -1,0 +1,10 @@
+skill: live-event-ops-review
+positive_prompts:
+  - "Plan a two-week mobile game live event with rewards, offers, notifications, and support readiness."
+  - "Audit a SaaS community challenge event before launch."
+negative_prompts:
+  - "Create a Microsoft Store package identity checklist."
+expected_behavior:
+  - "Treats a live event as a versioned operating system with setup, launch, monitoring, support, shutdown, and review."
+  - "Balances engagement and monetization with economy, fairness, compensation, and rollback risk."
+  - "Defines eligibility, event events, metrics, support macros, and post-event decisions."

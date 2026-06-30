@@ -1,0 +1,10 @@
+skill: referral-loop-review
+positive_prompts:
+  - "Design a referral program for a B2B SaaS with account credits and team invites."
+  - "Audit a mobile game referral reward for abuse and economy impact."
+negative_prompts:
+  - "Review Microsoft Store certification risk."
+expected_behavior:
+  - "Starts from value moment, inviter/invitee fit, reward type, qualification, and attribution."
+  - "Defines pending rewards, reversal, fraud controls, support evidence, and retained-value metrics."
+  - "Separates referral, affiliate, team invite, and spammy growth patterns."

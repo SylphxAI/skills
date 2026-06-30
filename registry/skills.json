@@ -16,6 +16,19 @@
       ]
     },
     {
+      "name": "accessibility-product-review",
+      "description": "Review product accessibility and inclusive UX for web, mobile, desktop, SaaS, games, developer tools, checkout, onboarding, settings, forms, dashboards, notifications, motion, keyboard, screen reader, touch, color contrast, focus, error recovery, cognitive load, reduced motion, captions, localization, and assistive technology compatibility. Use when designing, building, or auditing product flows for accessible, usable, modern experiences.",
+      "status": "preview",
+      "path": "skills/accessibility-product-review",
+      "references": [
+        "accessibility-product-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "ad-monetization-review",
       "description": "Design and audit in-app advertising monetization for mobile apps, games, web apps, and content products including rewarded ads, interstitials, banners, native ads, offerwalls, mediation, frequency caps, payer suppression, privacy consent, UX placement, revenue analytics, and ad fatigue. Use when adding ads, improving ARPDAU, balancing IAA with IAP/subscriptions, or reducing churn from ads.",
       "status": "preview",
@@ -250,6 +263,19 @@
       ]
     },
     {
+      "name": "live-event-ops-review",
+      "description": "Design and audit live event operations for mobile games, PC games, apps, SaaS communities, marketplaces, launches, seasonal campaigns, limited-time offers, reward calendars, challenges, tournaments, content drops, promotions, and lifecycle events. Use when planning event calendars, segmentation, eligibility, economy impact, rollout, observability, support, compensation, rollback, or post-event learning.",
+      "status": "preview",
+      "path": "skills/live-event-ops-review",
+      "references": [
+        "live-event-ops-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "macos-release-readiness",
       "description": "Audit macOS app release readiness including app bundle identity, signing, notarization, sandboxing, hardened runtime, permissions, keychain, app support data, launch agents, login items, menu bar, Dock behavior, file associations, universal builds, auto-update, crash logs, backup, uninstall, and support diagnostics. Use when shipping or reviewing macOS desktop apps and utilities.",
       "status": "preview",
@@ -276,12 +302,38 @@
       ]
     },
     {
+      "name": "marketplace-payouts-review",
+      "description": "Design and audit marketplace payout, earnings, fee, revenue share, seller balance, creator payout, refund, chargeback, hold, clawback, split payment, ledger, tax/compliance handoff, payout support, and dispute flows for creator marketplaces, app/plugin stores, gig marketplaces, game marketplaces, affiliate programs, and two-sided platforms. Use when money moves from buyers through the platform to sellers or creators.",
+      "status": "preview",
+      "path": "skills/marketplace-payouts-review",
+      "references": [
+        "marketplace-payout-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "marketplace-product-ops",
       "description": "Design and audit marketplace operating systems including two-sided marketplaces, creator marketplaces, plugin/skill/app marketplaces, listings, submissions, review queues, ranking, trust and safety, payouts, disputes, refunds, moderation, quality scoring, discovery, support, and growth loops. Use when creating or improving a marketplace repository, store, directory, creator platform, or community exchange.",
       "status": "preview",
       "path": "skills/marketplace-product-ops",
       "references": [
         "marketplace-product-ops-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "microsoft-store-readiness",
+      "description": "Prepare Microsoft Store release readiness for Windows apps, desktop utilities, games, PWAs, and packaged software including package identity, MSIX/AppX packaging, Store listing, screenshots, age ratings, privacy, capabilities, in-app purchases, subscriptions, updates, certification, installer behavior, Windows integration, telemetry, crash quality, support links, and release rollout. Use when submitting or auditing products for Microsoft Store.",
+      "status": "preview",
+      "path": "skills/microsoft-store-readiness",
+      "references": [
+        "microsoft-store-systems.md"
       ],
       "scripts": [],
       "agents": [
@@ -434,6 +486,19 @@
       ]
     },
     {
+      "name": "referral-loop-review",
+      "description": "Design and audit referral, invite, affiliate, ambassador, creator, team-invite, waitlist, viral loop, reward, attribution, fraud-control, promotion, and lifecycle referral systems for SaaS, mobile apps, games, marketplaces, developer tools, and communities. Use when creating or improving referral programs that should grow users or revenue without spam, fake scarcity, abuse, or trust damage.",
+      "status": "preview",
+      "path": "skills/referral-loop-review",
+      "references": [
+        "referral-loop-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "refund-and-support-flow-review",
       "description": "Design and audit refund, cancellation, chargeback, dispute, entitlement revocation, repurchase, appeal, and customer support flows for SaaS, mobile apps, games, utilities, marketplaces, and subscriptions. Use when handling refund policy, abuse ladders, support macros, account restrictions, trust recovery, or post-refund product access.",
       "status": "preview",
@@ -453,6 +518,19 @@
       "path": "skills/responsive-layout-review",
       "references": [
         "responsive-layout-rules.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "retention-cohort-review",
+      "description": "Analyze and improve retention cohorts for SaaS, mobile apps, games, developer tools, marketplaces, subscriptions, content products, and communities including activation cohorts, D1/D7/D30, weekly/monthly retention, rolling retention, resurrection, churn, segment bias, lifecycle events, monetization impact, cohort dashboards, and experiment readouts. Use when retention looks weak, confusing, misleading, or needs an action plan.",
+      "status": "preview",
+      "path": "skills/retention-cohort-review",
+      "references": [
+        "retention-cohort-systems.md"
       ],
       "scripts": [],
       "agents": [
@@ -540,12 +618,38 @@
       ]
     },
     {
+      "name": "store-review-policy-risk",
+      "description": "Audit store review and platform policy risk across App Store, Google Play, Microsoft Store, Steam, web/direct download, mobile apps, games, SaaS companions, utilities, subscriptions, IAP, ads, UGC, privacy, permissions, health, finance, children, AI features, notifications, dark patterns, refunds, and review notes. Use when preparing submission, launch, major monetization changes, or auditing any product that may be rejected, delisted, or delayed by channel policy.",
+      "status": "preview",
+      "path": "skills/store-review-policy-risk",
+      "references": [
+        "store-review-policy-risk-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "subscription-entitlement-review",
       "description": "Design and audit subscription and entitlement systems for SaaS, mobile apps, games, desktop utilities, and marketplaces across plans, trials, renewals, grace periods, downgrades, upgrades, restore purchases, refunds, revocations, usage limits, ledger events, and support tooling. Use when pricing, billing, access, or account state must stay consistent after payment changes.",
       "status": "preview",
       "path": "skills/subscription-entitlement-review",
       "references": [
         "subscription-entitlement-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "usage-based-pricing-review",
+      "description": "Design and audit usage-based pricing, metering, quotas, credits, overages, spend controls, billing events, cost drivers, value metrics, free allowances, invoices, expansion paths, abuse controls, and customer trust for SaaS, APIs, AI products, infrastructure tools, developer platforms, marketplaces, and consumption businesses. Use when pricing is tied to seats, usage, credits, API calls, storage, compute, messages, tokens, transactions, or metered value.",
+      "status": "preview",
+      "path": "skills/usage-based-pricing-review",
+      "references": [
+        "usage-based-pricing-systems.md"
       ],
       "scripts": [],
       "agents": [
