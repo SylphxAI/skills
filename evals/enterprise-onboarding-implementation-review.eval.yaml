@@ -1,0 +1,10 @@
+skill: enterprise-onboarding-implementation-review
+positive_prompts:
+  - "Plan enterprise onboarding for a SaaS customer that needs SSO, SCIM, data import, Salesforce integration, admin training, go-live validation, and customer-success handoff."
+  - "Audit why enterprise implementations keep slipping after kickoff because customer owners, security review, data migration, and success criteria are unclear."
+negative_prompts:
+  - "Review a refund abuse policy for a mobile game."
+expected_behavior:
+  - "Maps stakeholders, success criteria, dependencies, milestones, escalation rules, and customer/internal actions."
+  - "Separates SSO/SCIM, data migration, integrations, environments, permissions, training, support readiness, and adoption handoff."
+  - "Flags configuration-only go-live, unclear ownership, hidden blockers, scope creep, and sales promises without implementation proof."

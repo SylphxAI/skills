@@ -1,0 +1,10 @@
+skill: contract-lifecycle-renewal-review
+positive_prompts:
+  - "Design a contract renewal workflow for enterprise SaaS with auto-renewal notice windows, expansion offers, downgrade requests, true-ups, billing handoff, and entitlement changes."
+  - "Audit a renewal process where sales promises discounts, support handles cancellations, billing changes seats manually, and customer success owns adoption risk."
+negative_prompts:
+  - "Design a localization QA plan for a mobile app release."
+expected_behavior:
+  - "Separates renewal, expansion, downgrade, cancellation, true-up, collections, and amendment workflows with explicit owners."
+  - "Includes contract source of truth, notice windows, health signals, procurement/legal timing, billing/provisioning handoff, and customer communication."
+  - "Flags surprise auto-renewal, CRM-only entitlement changes, unsupported discount promises, and dark-pattern cancellation risk."

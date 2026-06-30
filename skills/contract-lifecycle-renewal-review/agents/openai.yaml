@@ -1,0 +1,4 @@
+interface:
+  display_name: "Contract Lifecycle Renewal Review"
+  short_description: "Review contract renewals"
+  default_prompt: "Use $contract-lifecycle-renewal-review to audit an enterprise renewal workflow."

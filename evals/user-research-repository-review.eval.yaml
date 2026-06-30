@@ -1,0 +1,10 @@
+skill: user-research-repository-review
+positive_prompts:
+  - "Design a user research repository that combines interviews, usability tests, support tickets, churn reasons, app reviews, and analytics anomalies into consent-safe decision-linked insights."
+  - "Audit a research archive where teams paste quotes into docs, forget consent, cannot find evidence by segment, and roadmap decisions cite anecdotes without confidence."
+negative_prompts:
+  - "Design a model routing cost policy for AI inference."
+expected_behavior:
+  - "Defines evidence taxonomy, consent/redaction rules, tagging, confidence scoring, decision linkage, stale-review cadence, and repository ownership."
+  - "Separates observation, interpretation, synthesized insight, recommendation, and decision outcome."
+  - "Flags PII leakage, loud-anecdote bias, unsearchable archives, stale insights, and quote-driven roadmap decisions."

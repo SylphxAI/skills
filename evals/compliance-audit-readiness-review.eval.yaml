@@ -1,0 +1,10 @@
+skill: compliance-audit-readiness-review
+positive_prompts:
+  - "Prepare SOC 2 and ISO audit readiness for a SaaS company with control owners, evidence calendar, auditor samples, walkthroughs, exceptions, trust center claims, and remediation tracking."
+  - "Audit a compliance process where evidence is collected manually at deadline, security questionnaire answers drift from audit reports, and control owners are unclear."
+negative_prompts:
+  - "Forecast support staffing for a product launch."
+expected_behavior:
+  - "Defines audit scope, control matrix, evidence sources, owners, collection cadence, sample workflow, walkthrough prep, gap register, remediation SLA, and claim approval."
+  - "Synchronizes audit evidence with trust center, security questionnaires, DPAs, subprocessors, policies, and sales claims."
+  - "Flags unsupported certifications, deadline evidence scrambles, altered evidence, ownerless controls, stale claims, and hidden exceptions."

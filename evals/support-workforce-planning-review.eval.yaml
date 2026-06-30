@@ -1,0 +1,10 @@
+skill: support-workforce-planning-review
+positive_prompts:
+  - "Forecast support staffing for a SaaS product launching annual plans, a data migration, and a new enterprise tier across email, chat, billing, technical escalation, and two languages."
+  - "Audit a support team with rising backlog, missed SLAs, high occupancy, inconsistent macros, launch spikes, and burnout risk."
+negative_prompts:
+  - "Design a contract renewal workflow for enterprise accounts."
+expected_behavior:
+  - "Forecasts volume by channel, severity, language, segment, issue type, arrival pattern, handle time, seasonality, and launch/incident drivers."
+  - "Includes shrinkage, occupancy, backlog aging, SLA risk, escalation lanes, QA, macros, deflection quality, hiring/vendor triggers, and burnout risk."
+  - "Flags average-volume staffing, hidden human support, interchangeable-agent assumptions, QA drift, and unowned product defects."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Support Workforce Planning Review"
+  short_description: "Plan support staffing"
+  default_prompt: "Use $support-workforce-planning-review to forecast support staffing and coverage."
