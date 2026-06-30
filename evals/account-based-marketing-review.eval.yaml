@@ -1,0 +1,10 @@
+skill: account-based-marketing-review
+positive_prompts:
+  - "Design an ABM program for enterprise SaaS targeting 50 strategic accounts with buying committee mapping, intent signals, executive outreach, SDR plays, events, ads, sales alignment, and attribution."
+  - "Audit an ABM motion that is really generic email demand-gen, double-counts pipeline, targets unsupported accounts, and uses creepy personalization."
+negative_prompts:
+  - "Design admin audit log retention for enterprise customers."
+expected_behavior:
+  - "Defines target account selection, tiering, buying committee, intent/trigger signals, personalized offers, channel orchestration, sales handoff, suppression rules, and measurement."
+  - "Separates one-to-one, one-to-few, programmatic, expansion, partner, and reactivation ABM motions."
+  - "Flags generic lead-gen labeled ABM, creepy personalization, double-counted attribution, unsupported account targeting, and sales-capacity mismatch."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Admin Audit Log Review"
+  short_description: "Design admin audit logs"
+  default_prompt: "Use $admin-audit-log-review to review admin audit log coverage."

@@ -1,0 +1,10 @@
+skill: marketplace-trust-safety-economics-review
+positive_prompts:
+  - "Review trust-safety economics for a creator marketplace with ranking boosts, payouts, refunds, disputes, ratings, quality gates, fraud risk, appeals, take rate, and moderation cost."
+  - "Audit a marketplace where GMV is growing but refunds, chargebacks, spam listings, seller appeals, and support cost are destroying trust and margin."
+negative_prompts:
+  - "Design admin audit logs for SSO changes."
+expected_behavior:
+  - "Models buyer/seller/platform incentives, quality gates, ranking/payout guardrails, disputes, refunds, enforcement ladder, appeals, and trust-health unit economics."
+  - "Includes fraud, spam, review manipulation, refund abuse, payout abuse, low-quality supply, collusion, moderation cost, false positives, and liquidity metrics."
+  - "Flags GMV-only optimization, harmful incentives, payout-before-risk controls, no appeals, hidden moderation costs, and ranking gaming."

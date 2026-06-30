@@ -69,7 +69,10 @@
         "partner-channel-program-review",
         "customer-training-academy-review",
         "customer-reference-program-review",
-        "trial-conversion-sales-assist-review"
+        "trial-conversion-sales-assist-review",
+        "account-based-marketing-review",
+        "customer-community-events-review",
+        "product-led-sales-routing-review"
       ]
     },
     {
@@ -164,7 +167,11 @@
         "data-residency-region-review",
         "privacy-impact-assessment-review",
         "legal-terms-policy-review",
-        "support-escalation-engineering-review"
+        "support-escalation-engineering-review",
+        "revops-crm-governance-review",
+        "enterprise-security-exception-review",
+        "admin-audit-log-review",
+        "data-lineage-impact-review"
       ]
     },
     {
@@ -182,7 +189,8 @@
         "sdk-onboarding-integration-review",
         "platform-certification-program-review",
         "community-governance-review",
-        "partner-risk-due-diligence-review"
+        "partner-risk-due-diligence-review",
+        "marketplace-trust-safety-economics-review"
       ]
     },
     {
