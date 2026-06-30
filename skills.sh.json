@@ -3,19 +3,29 @@
   "notGrouped": "bottom",
   "groupings": [
     {
+      "title": "Product Lifecycle",
+      "description": "Skills for planning complete products from market research through support, growth, and operations.",
+      "skills": ["product-lifecycle-architect", "market-research-synthesis"]
+    },
+    {
       "title": "Design & Product Craft",
       "description": "Skills for product taste, interface polish, and user-perceived quality.",
       "skills": ["interface-craft"]
     },
     {
-      "title": "Growth & Market",
-      "description": "Skills for startup positioning, funnels, and practical growth leverage.",
-      "skills": ["startup-growth-review"]
-    },
-    {
       "title": "Mobile Product Systems",
       "description": "Skills for mobile app monetization, retention, refunds, notifications, IAP, IAA, and rewards.",
       "skills": ["mobile-app-product-systems"]
+    },
+    {
+      "title": "Pricing & Monetization",
+      "description": "Skills for SaaS pricing, subscription packaging, trials, expansion, and revenue systems.",
+      "skills": ["saas-subscription-pricing", "startup-growth-review"]
+    },
+    {
+      "title": "Distribution & Operations",
+      "description": "Skills for store launch, OS integration, backup, restore, support, and product operations.",
+      "skills": ["app-store-distribution-readiness", "backup-restore-design", "customer-support-operations"]
     },
     {
       "title": "Agent Skill Operations",

@@ -1,0 +1,10 @@
+skill: customer-support-operations
+positive_prompts:
+  - "Design support operations for a subscription mobile app with refunds and restore-purchase issues."
+  - "Create a help center and escalation model for a SaaS product."
+negative_prompts:
+  - "Create a database index migration."
+expected_behavior:
+  - "Defines channels, issue taxonomy, triage, escalation, tooling, macros, and metrics."
+  - "Connects support patterns back to product fixes."
+  - "Handles refunds, backup/data loss, incidents, and abuse review with trust-preserving language."

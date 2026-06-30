@@ -1,0 +1,10 @@
+skill: app-store-distribution-readiness
+positive_prompts:
+  - "Prepare my iOS app and Android app for store launch."
+  - "Review launch readiness for a Steam game with cloud saves and refunds."
+negative_prompts:
+  - "Write a Python function to parse JSON."
+expected_behavior:
+  - "Identifies target distribution channels first."
+  - "Covers metadata, privacy, payments, testing, review, release, and support."
+  - "Includes OS integration details and launch blockers."

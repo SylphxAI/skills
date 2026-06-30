@@ -1,0 +1,10 @@
+skill: backup-restore-design
+positive_prompts:
+  - "Design backup and restore for a SaaS project management product."
+  - "Review how a desktop utility should handle local data, cloud sync, restore, and export."
+negative_prompts:
+  - "Make this landing page copy punchier."
+expected_behavior:
+  - "Classifies data types and durability needs."
+  - "Defines RPO/RTO, restore states, conflicts, export, and support tooling."
+  - "Treats restore drills as required, not optional."

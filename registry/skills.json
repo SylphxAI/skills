@@ -3,12 +3,64 @@
   "generatedBy": "scripts/generate-registry.mjs",
   "skills": [
     {
+      "name": "app-store-distribution-readiness",
+      "description": "Prepare mobile apps, desktop software, games, and utilities for distribution through App Store, Google Play, Steam, Microsoft Store, web, or direct download. Use when planning launch readiness, store metadata, screenshots, privacy disclosures, payments, subscriptions, store review, OS integration, updates, or release operations.",
+      "status": "preview",
+      "path": "skills/app-store-distribution-readiness",
+      "references": [
+        "distribution-channel-matrix.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "backup-restore-design",
+      "description": "Design backup, restore, sync, export, recovery, data durability, cloud/local storage, versioning, migration, deletion, and disaster recovery systems. Use when building or reviewing backup strategy for SaaS, mobile apps, desktop utilities, games, user-generated content, account data, or business-critical workflows.",
+      "status": "preview",
+      "path": "skills/backup-restore-design",
+      "references": [
+        "backup-restore-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "customer-support-operations",
+      "description": "Design customer support operations for software products including help centers, ticket triage, refund handling, escalation, support tooling, incident communication, macros, trust recovery, abuse review, and product feedback loops. Use when building or auditing support systems for apps, games, SaaS, utilities, stores, or subscription products.",
+      "status": "preview",
+      "path": "skills/customer-support-operations",
+      "references": [
+        "support-ops-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "interface-craft",
       "description": "Improve product interfaces with tasteful UI craft, micro-interactions, accessibility-preserving polish, and detail-oriented review. Use when building UI, reviewing components, improving perceived quality, making an interface feel better, or auditing forms, buttons, motion, typography, empty states, loading states, and navigation polish.",
       "status": "preview",
       "path": "skills/interface-craft",
       "references": [
         "interface-craft-rules.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "market-research-synthesis",
+      "description": "Research and synthesize competitors, app-store listings, reviews, pricing pages, positioning, feature sets, customer complaints, and market patterns into an original product strategy. Use when doing market research, competitor analysis, category design, product positioning, idea validation, or collecting the best ideas in a market without copying them.",
+      "status": "preview",
+      "path": "skills/market-research-synthesis",
+      "references": [
+        "research-synthesis-method.md"
       ],
       "scripts": [],
       "agents": [
@@ -24,6 +76,32 @@
         "mobile-systems-rules.md",
         "promotion-system-patterns.md",
         "refund-and-entitlement-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "product-lifecycle-architect",
+      "description": "Plan and review products end to end across strategy, market research, product design, UI, monetization, distribution, operations, promotion, customer support, and lifecycle management. Use when designing a new app, SaaS, game, utility, web product, desktop product, product roadmap, launch plan, or full product operating system.",
+      "status": "preview",
+      "path": "skills/product-lifecycle-architect",
+      "references": [
+        "product-lifecycle-matrix.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "saas-subscription-pricing",
+      "description": "Design SaaS and subscription pricing, packaging, trials, freemium limits, usage metrics, plan tiers, cancellation, downgrade, expansion, win-back, and enterprise readiness. Use when creating or reviewing pricing pages, SaaS packaging, subscription strategy, billing UX, monetization experiments, or revenue model design.",
+      "status": "preview",
+      "path": "skills/saas-subscription-pricing",
+      "references": [
+        "pricing-packaging-patterns.md"
       ],
       "scripts": [],
       "agents": [

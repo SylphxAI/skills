@@ -11,7 +11,7 @@ We optimize for **quality over volume**:
 - concise `SKILL.md` instructions with progressive disclosure;
 - practical references and scripts instead of long prompt dumps;
 - trigger descriptions that tell agents exactly when to use each skill;
-- validation, security review, attribution, and lightweight evals before publish.
+- validation, security review, original-synthesis review, and lightweight evals before publish.
 
 ## Install
 
@@ -33,8 +33,14 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | --- | --- | --- |
 | [`interface-craft`](./skills/interface-craft/SKILL.md) | Building, polishing, or reviewing UI for product craft and tasteful micro-details. | Preview |
 | [`startup-growth-review`](./skills/startup-growth-review/SKILL.md) | Reviewing a startup product, landing page, funnel, or go-to-market plan for growth leverage. | Preview |
-| [`skill-marketplace-creator`](./skills/skill-marketplace-creator/SKILL.md) | Creating, curating, validating, or operating a marketplace of reusable agent skills. | Preview |
 | [`mobile-app-product-systems`](./skills/mobile-app-product-systems/SKILL.md) | Designing or reviewing mobile app/game monetization, retention, notification, refund, and reward systems. | Preview |
+| [`product-lifecycle-architect`](./skills/product-lifecycle-architect/SKILL.md) | Planning a product end-to-end from strategy through support and growth. | Preview |
+| [`market-research-synthesis`](./skills/market-research-synthesis/SKILL.md) | Synthesizing competitors, reviews, pricing, and market patterns into original strategy. | Preview |
+| [`saas-subscription-pricing`](./skills/saas-subscription-pricing/SKILL.md) | Designing SaaS pricing, packaging, trials, cancellation, and expansion. | Preview |
+| [`app-store-distribution-readiness`](./skills/app-store-distribution-readiness/SKILL.md) | Preparing apps, games, and desktop software for store/channel launch. | Preview |
+| [`backup-restore-design`](./skills/backup-restore-design/SKILL.md) | Designing backup, restore, export, sync, and data durability systems. | Preview |
+| [`customer-support-operations`](./skills/customer-support-operations/SKILL.md) | Designing support, refund, escalation, help center, and trust operations. | Preview |
+| [`skill-marketplace-creator`](./skills/skill-marketplace-creator/SKILL.md) | Creating, curating, validating, or operating a marketplace of reusable agent skills. | Preview |
 
 The generated registry lives at [`registry/skills.json`](./registry/skills.json).
 
@@ -49,7 +55,7 @@ A Sylphx skill must be:
 5. **Safe** — no secrets, unsafe shell snippets, malicious instructions, dark patterns, or license laundering.
 6. **Original synthesis** — learn from the world, then publish Sylphx-owned structure, examples, and wording; attribution is only needed for direct quotes, third-party code/assets, or license-required excerpts.
 
-See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md), [`docs/skill-authoring-principles.md`](./docs/skill-authoring-principles.md), and [`docs/skill-packs.md`](./docs/skill-packs.md).
+See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md), [`docs/skill-authoring-principles.md`](./docs/skill-authoring-principles.md), [`docs/product-skill-roadmap.md`](./docs/product-skill-roadmap.md), and [`docs/skill-packs.md`](./docs/skill-packs.md).
 
 ## Validate locally
 

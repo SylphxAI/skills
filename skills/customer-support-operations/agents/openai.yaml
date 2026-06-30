@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Support Operations"
+  short_description: "Design scalable support systems"
+  default_prompt: "Use $customer-support-operations to design customer support, refund handling, incident communication, help center, and trust operations."

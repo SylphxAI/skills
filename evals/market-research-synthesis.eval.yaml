@@ -1,0 +1,10 @@
+skill: market-research-synthesis
+positive_prompts:
+  - "Research the market for a new Mac utility and synthesize what we should build."
+  - "Compare competitors in this mobile game category and find the wedge."
+negative_prompts:
+  - "Generate a random SVG icon."
+expected_behavior:
+  - "Uses multiple source surfaces, not one competitor."
+  - "Separates table stakes from differentiation opportunities."
+  - "Produces original synthesis rather than copied competitor structure."

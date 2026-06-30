@@ -1,0 +1,4 @@
+interface:
+  display_name: "SaaS Subscription Pricing"
+  short_description: "Design SaaS pricing and packaging"
+  default_prompt: "Use $saas-subscription-pricing to design SaaS packaging, subscription pricing, trials, expansion, and cancellation flows."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "App Store Distribution Readiness"
+  short_description: "Prepare software for store launch"
+  default_prompt: "Use $app-store-distribution-readiness to prepare an app, game, or desktop software product for App Store, Google Play, Steam, or Microsoft Store launch."

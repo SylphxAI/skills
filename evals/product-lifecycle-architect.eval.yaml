@@ -1,0 +1,10 @@
+skill: product-lifecycle-architect
+positive_prompts:
+  - "Plan the full product operating system for a mobile subscription app, from idea to support."
+  - "Create a roadmap for a desktop utility covering distribution, backup, promotion, and customer support."
+negative_prompts:
+  - "Fix this CSS flexbox bug."
+expected_behavior:
+  - "Classifies product type and business model before planning."
+  - "Covers planning, research, design, monetization, distribution, operations, growth, and support."
+  - "Identifies state machines, edge cases, metrics, and trust risks."

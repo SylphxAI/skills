@@ -1,0 +1,4 @@
+interface:
+  display_name: "Backup Restore Design"
+  short_description: "Design resilient backup flows"
+  default_prompt: "Use $backup-restore-design to design backup, restore, sync, export, recovery, and data durability systems."
