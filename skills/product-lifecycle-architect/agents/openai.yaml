@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Lifecycle Architect"
+  short_description: "Plan products from idea to ops"
+  default_prompt: "Use $product-lifecycle-architect to plan a product from strategy through design, launch, operations, promotion, and customer support."

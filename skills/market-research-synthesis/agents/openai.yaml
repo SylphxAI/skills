@@ -1,0 +1,4 @@
+interface:
+  display_name: "Market Research Synthesis"
+  short_description: "Synthesize competitors into strategy"
+  default_prompt: "Use $market-research-synthesis to research competitors, synthesize market patterns, and create an original product strategy."
