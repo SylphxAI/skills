@@ -18,7 +18,11 @@ Classify the request into one or more surfaces:
 - **Notifications**: push permission, transactional, lifecycle, promotional, quiet hours.
 - **Trust**: receipts, support, cancel flow, refund clarity, parental/age-sensitive UX.
 
-Then read only the relevant sections in `references/mobile-systems-rules.md`.
+Then read only the relevant references:
+
+- General systems: `references/mobile-systems-rules.md`
+- Refunds, revocation, repurchase, and abuse handling: `references/refund-and-entitlement-patterns.md`
+- Promotions, offers, eligibility, placement, and campaign measurement: `references/promotion-system-patterns.md`
 
 ## Workflow
 
@@ -26,7 +30,8 @@ Then read only the relevant sections in `references/mobile-systems-rules.md`.
 2. Identify the business model: paid app, subscription, consumable IAP, non-consumable IAP, ads, hybrid, or game economy.
 3. Apply the trust gate before recommending monetization or engagement tactics.
 4. Design the state machine, not just the screen: eligibility, entitlement, cooldown, failure, restore, refund, and support states.
-5. Produce UX, events, and edge cases together.
+5. Produce UX, events, edge cases, and policy/trust guardrails together.
+6. For refund or promotion work, include a decision table or state machine rather than generic advice.
 
 ## Trust gate
 
