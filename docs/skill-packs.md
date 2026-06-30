@@ -7,9 +7,9 @@ This repository grows around high-demand job clusters, not random one-off prompt
 The repository foundation is production-ready:
 
 - public repo, CI, registry, catalog, and install verification exist;
-- 83 preview skills are present with evals, behavior examples, and references;
+- 91 preview skills are present with evals, behavior examples, and references;
 - quality bar and original-synthesis policy are explicit;
-- high-leverage product cells now cover strategy, opportunity scoring, agentic workflows, revenue, usage pricing, payouts, mobile/game retention, live events, referrals, accessibility, store policy risk, Steam, Microsoft Store, macOS, Windows, developer tools, creator onboarding, skill evals, catalog automation, marketplace moderation, win-back, customer health, enterprise readiness, sales demos, data portability, release health, experiment design, permission UX, localization, admin settings IA, security questionnaires, billing reconciliation, game soft launch, community launch ops, feature flags, partner ecosystems, tax/invoicing, user preferences, support QA, in-product education, AI feature risk, creator ranking quality, and marketplace ops.
+- high-leverage product cells now cover strategy, opportunity scoring, agentic workflows, revenue, usage pricing, unit economics, payouts, mobile/game retention, live events, referrals, accessibility, store policy risk, Steam, Microsoft Store, macOS, Windows, developer tools, creator onboarding, skill evals, catalog automation, marketplace moderation, win-back, customer health, enterprise readiness, sales demos, data portability, data import/migration, release health, experiment design, permission UX, localization, admin settings IA, account recovery, security questionnaires, billing reconciliation, game soft launch, community launch ops, feature flags, partner ecosystems, tax/invoicing, user preferences, support QA, customer feedback, in-product education, offline sync, AI feature risk, creator ranking quality, brand trust, sunset/deprecation, API quotas, and marketplace ops.
 
 ## Priority packs
 
@@ -22,6 +22,9 @@ The repository foundation is production-ready:
 - `opportunity-scoring-review`
 - `experiment-design-review`
 - `ai-feature-product-risk-review`
+- `customer-feedback-intake-review`
+- `feature-sunset-deprecation-review`
+- `cost-margin-unit-economics-review`
 - `agentic-workflow-designer`
 - `enterprise-readiness-review`
 - `sales-demo-script-review`
@@ -40,6 +43,7 @@ The repository foundation is production-ready:
 - `user-preferences-settings-review`
 - `in-product-education-review`
 - `empty-state-and-loading-review`
+- `offline-sync-conflict-review`
 
 ### 3. Product Systems Pack
 
@@ -53,11 +57,17 @@ The repository foundation is production-ready:
 - `live-event-ops-review`
 - `retention-cohort-review`
 - `game-soft-launch-review`
+- `data-import-migration-review`
+- `account-recovery-identity-review`
+- `offline-sync-conflict-review`
+- `customer-feedback-intake-review`
+- `feature-sunset-deprecation-review`
 
 ### 4. Revenue & Monetization Pack
 
 - `saas-subscription-pricing`
 - `usage-based-pricing-review`
+- `cost-margin-unit-economics-review`
 - `pricing-page-critique`
 - `checkout-conversion-review`
 - `customer-success-health-review`
@@ -75,6 +85,7 @@ The repository foundation is production-ready:
 - `startup-growth-review`
 - `landing-page-critique`
 - `product-positioning`
+- `brand-trust-review`
 - `seo-content-brief`
 - `store-listing-optimization`
 - `referral-loop-review`
@@ -95,17 +106,23 @@ The repository foundation is production-ready:
 - `launch-readiness-review`
 - `release-health-dashboard-review`
 - `feature-flag-rollout-review`
+- `feature-sunset-deprecation-review`
+- `offline-sync-conflict-review`
 - `changelog-and-release-notes`
 
 ### 7. Operations, Trust & Support Pack
 
 - `backup-restore-design`
 - `customer-support-operations`
-- `customer-success-health-review`
-- `security-questionnaire-response-review`
 - `support-quality-qa-review`
+- `customer-feedback-intake-review`
+- `customer-success-health-review`
+- `account-recovery-identity-review`
+- `security-questionnaire-response-review`
 - `privacy-and-data-retention-review`
 - `data-export-portability-review`
+- `data-import-migration-review`
+- `brand-trust-review`
 - `abuse-fraud-risk-review`
 - `moderation-trust-review`
 - `incident-communication-playbook`
@@ -116,6 +133,8 @@ The repository foundation is production-ready:
 ### 8. Developer, Marketplace & Skill Ops Pack
 
 - `developer-tool-product-design`
+- `api-rate-limit-quota-review`
+- `data-import-migration-review`
 - `marketplace-product-ops`
 - `moderation-trust-review`
 - `marketplace-payouts-review`
@@ -131,7 +150,7 @@ The repository foundation is production-ready:
 
 ## What will attract stars
 
-- Skills that solve painful, common jobs: UI polish, accessibility, checkout conversion, usage pricing, decision memos, opportunity scoring, agentic workflows, mobile monetization, Steam/Microsoft launch, desktop release, developer onboarding, creator onboarding, marketplace payouts, skill evals, catalog automation, moderation trust, customer health, enterprise readiness, data portability, release health, experiment design, app permission UX, localization, admin settings IA, security questionnaires, billing reconciliation, game soft launch, community launch ops, feature-flag rollout, partner ecosystems, tax/invoicing, user preferences, support QA, in-product education, AI feature risk, creator ranking quality, and production readiness.
+- Skills that solve painful, common jobs: UI polish, accessibility, checkout conversion, usage pricing, unit economics, decision memos, opportunity scoring, agentic workflows, mobile monetization, Steam/Microsoft launch, desktop release, developer onboarding, API quotas, creator onboarding, marketplace payouts, skill evals, catalog automation, moderation trust, customer health, enterprise readiness, data portability, data import/migration, release health, experiment design, app permission UX, localization, admin settings IA, account recovery, security questionnaires, billing reconciliation, game soft launch, community launch ops, feature-flag rollout, partner ecosystems, tax/invoicing, user preferences, support QA, customer feedback intake, in-product education, offline sync, AI feature risk, creator ranking quality, feature sunset, brand trust, and production readiness.
 - Before/after examples and public demos for every high-demand skill.
 - Visible quality bar that rejects prompt dumps and requires state machines, decision tables, event schemas, and eval prompts.
 - Installability through open skills CLI and third-party directories.

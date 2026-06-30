@@ -1,0 +1,10 @@
+skill: brand-trust-review
+positive_prompts:
+  - "Audit a SaaS landing page and pricing flow for trust signals, proof quality, claim risk, cancellation clarity, and support expectations."
+  - "Review brand trust for an AI feature launch that needs transparent limitations, privacy reassurance, proof, and fallback paths."
+negative_prompts:
+  - "Design an offline sync conflict resolver."
+expected_behavior:
+  - "Maps user skepticism to specific claims, proof, risk reducers, and trust surfaces."
+  - "Flags unsupported claims, hidden pricing/cancellation risk, fake urgency, and weak privacy/support promises."
+  - "Adds metrics for conversion quality, refunds, support trust questions, sentiment, and churn reasons."

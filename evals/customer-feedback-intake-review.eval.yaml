@@ -1,0 +1,10 @@
+skill: customer-feedback-intake-review
+positive_prompts:
+  - "Design a feedback intake loop that turns support tickets, app reviews, and churn reasons into roadmap evidence without overreacting to anecdotes."
+  - "Audit feature request triage for dedupe, evidence scoring, owner routing, privacy redaction, and customer follow-up."
+negative_prompts:
+  - "Design API retry headers for rate limiting."
+expected_behavior:
+  - "Separates bugs, UX confusion, feature requests, pricing objections, churn reasons, praise, risk signals, and research leads."
+  - "Defines taxonomy, dedupe, enrichment, evidence scoring, routing, decision linkage, privacy redaction, and close-the-loop status."
+  - "Warns against loud-customer bias and false roadmap commitments."

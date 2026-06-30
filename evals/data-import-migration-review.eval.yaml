@@ -1,0 +1,10 @@
+skill: data-import-migration-review
+positive_prompts:
+  - "Design a self-serve CSV import for moving customers from a competitor with mapping, dry run, rollback, and support evidence."
+  - "Audit a background billing data backfill for idempotency, progress, validation, and customer acceptance."
+negative_prompts:
+  - "Write a pricing-page hero section."
+expected_behavior:
+  - "Classifies migration mode and source-of-truth write policy before suggesting implementation."
+  - "Includes schema mapping, dry run, idempotency, dedupe, progress, retry, rollback, and reconciliation."
+  - "Protects sensitive data and creates customer/support-visible acceptance evidence."
