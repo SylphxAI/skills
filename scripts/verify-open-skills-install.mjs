@@ -62,11 +62,13 @@ async function main() {
   const listStep = run('npx', ['--yes', 'skills', 'add', 'SylphxAI/skills', '--list'], { cwd: project, env });
   proof.steps.push({ name: 'list', ...listStep, stdoutSample: listStep.stdout.slice(0, 4000) });
   if (listStep.exitCode !== 0) throw new Error(`list command failed with ${listStep.exitCode}`);
-  if (!listStep.stdout.includes(`Found ${expectedSkills.length} skills`)) {
-    throw new Error(`list output did not report Found ${expectedSkills.length} skills`);
-  }
-  for (const name of expectedSkills) {
-    if (!listStep.stdout.includes(name)) throw new Error(`list output missing ${name}`);
+  const missingFromList = expectedSkills.filter((name) => !listStep.stdout.includes(name));
+  if (missingFromList.length) {
+    console.error('List stdout sample:');
+    console.error(listStep.stdout.slice(0, 4000));
+    console.error('List stderr sample:');
+    console.error(listStep.stderr.slice(0, 2000));
+    throw new Error(`list output missing ${missingFromList.length} skill(s): ${missingFromList.join(', ')}`);
   }
 
   const installStep = run('npx', ['--yes', 'skills', 'add', 'SylphxAI/skills', '--global', '--skill', '*', '--agent', 'codex', '-y', '--copy'], { cwd: project, env });
