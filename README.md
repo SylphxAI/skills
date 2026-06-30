@@ -110,12 +110,19 @@ node scripts/validate-evals.mjs
 node scripts/validate-catalog.mjs
 node scripts/validate-reference-quality.mjs
 node scripts/validate-behavior-examples.mjs
+node scripts/validate-launch-kit.mjs
 node scripts/generate-catalog.mjs --check
 ```
 
 ## Contribute
 
 See [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`docs/submit-a-skill.md`](./docs/submit-a-skill.md).
+
+## Launch kit
+
+- Demo matrix: [`examples/launch-demos.md`](./examples/launch-demos.md)
+- Distribution plan: [`docs/distribution-launch-plan.md`](./docs/distribution-launch-plan.md)
+- Public launch post: [`docs/public-launch-post.md`](./docs/public-launch-post.md)
 
 ## Roadmap
 

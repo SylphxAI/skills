@@ -1,0 +1,68 @@
+# Distribution Launch Plan
+
+This repository is ready to be promoted as a public, eval-backed skill marketplace seed. GitHub remains the source of truth; external directories and posts should point back to the repo, install command, and generated catalog.
+
+## Launch positioning
+
+**Sylphx Skills** is a curated set of product, design, growth, monetization, platform, trust, support, analytics, and agent-operation skills for AI agents.
+
+Core message:
+
+> Curated, eval-backed skills for AI agents that help teams design, launch, monetize, support, and operate better software products.
+
+## Public proof points
+
+- 35 preview skills.
+- 35 eval files.
+- 35 behavior examples.
+- Generated registry: `registry/skills.json`.
+- Generated static catalog: `catalog/index.html`.
+- CI gates for registry drift, catalog drift, skill schema, eval coverage, catalog coverage, reference structure, and behavior examples.
+- Original-synthesis policy and quality bar.
+
+## Directory submission checklist
+
+| Surface | Action | Status |
+| --- | --- | --- |
+| GitHub README | Make install path, catalog, quality bar, and roadmap visible. | Ready |
+| skills.sh | Submit `SylphxAI/skills` repository or wait for indexer if auto-discovered. | External gate |
+| SkillsMP | Submit repo URL, description, tags, and install instructions if listing is open. | External gate |
+| ClaudeSkill | Submit repo URL and representative skills if listing is open. | External gate |
+| Cross AI Tools | Submit as AI-agent skill repository if accepted. | External gate |
+| Social launch | Use `docs/public-launch-post.md`. | Ready |
+| Product/community posts | Link to catalog, README, and demo matrix. | Ready |
+
+## Install verification
+
+Preferred command:
+
+```bash
+npx skills add SylphxAI/skills
+```
+
+Specific skill command:
+
+```bash
+npx skills add https://github.com/SylphxAI/skills --skill interface-craft
+```
+
+Run install verification only in an environment where downloading npm packages is acceptable. Record the CLI version, command output, and installed skill path in the launch issue.
+
+## Launch sequence
+
+1. Confirm CI is green on `main`.
+2. Open `catalog/index.html` locally or via a published static host.
+3. Verify install command in a clean environment.
+4. Submit to external directories where submission is available.
+5. Publish launch post.
+6. Add badges/links after directories index the repo.
+7. Review stars, issues, installs, and external feedback weekly.
+
+## Manual gates
+
+These steps may require accounts, web forms, or third-party indexer timing:
+
+- third-party directory submission;
+- install-count badge availability;
+- enabling GitHub Pages or another public static host;
+- social/community posting from the company account.
