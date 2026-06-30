@@ -1,0 +1,10 @@
+skill: skill-eval-designer
+positive_prompts:
+  - "Design eval prompts and expected behavior for a new checkout conversion skill."
+  - "Create regression evals for a skill that over-triggers on unrelated store policy questions."
+negative_prompts:
+  - "Write a marketplace payout policy memo."
+expected_behavior:
+  - "Defines behavior boundary before writing prompts."
+  - "Includes positive, negative, edge, artifact-shape, safety, and regression cases."
+  - "Keeps assertions observable without leaking a full expected answer."

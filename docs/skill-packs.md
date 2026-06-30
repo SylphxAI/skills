@@ -1,15 +1,15 @@
 # Skill Packs
 
-This repository grows around high-demand job clusters, not random one-off prompts. A pack is valuable only if it helps an agent produce a concrete product artifact: a state machine, launch matrix, UX review, support flow, pricing model, or operational checklist.
+This repository grows around high-demand job clusters, not random one-off prompts. A pack is valuable only if it helps an agent produce a concrete product artifact: a state machine, launch matrix, UX review, support flow, pricing model, decision memo, or operational checklist.
 
 ## Foundation status
 
 The repository foundation is production-ready:
 
 - public repo, CI, registry, catalog, and install verification exist;
-- 51 preview skills are present with evals, behavior examples, and references;
+- 59 preview skills are present with evals, behavior examples, and references;
 - quality bar and original-synthesis policy are explicit;
-- high-leverage product cells now cover revenue, usage pricing, payouts, mobile/game retention, live events, referrals, accessibility, store policy risk, Steam, Microsoft Store, macOS, Windows, developer tools, and marketplace ops.
+- high-leverage product cells now cover strategy, opportunity scoring, agentic workflows, revenue, usage pricing, payouts, mobile/game retention, live events, referrals, accessibility, store policy risk, Steam, Microsoft Store, macOS, Windows, developer tools, creator onboarding, skill evals, and marketplace ops.
 
 ## Priority packs
 
@@ -18,7 +18,9 @@ The repository foundation is production-ready:
 - `product-lifecycle-architect`
 - `market-research-synthesis`
 - `execution-simplification`
-- next: `decision-memo-writer`, `opportunity-scoring-review`, `agentic-workflow-designer`
+- `decision-memo-writer`
+- `opportunity-scoring-review`
+- `agentic-workflow-designer`
 
 ### 2. UI Design Pack
 
@@ -27,8 +29,9 @@ The repository foundation is production-ready:
 - `responsive-layout-review`
 - `motion-transition-review`
 - `accessibility-product-review`
+- `design-system-extractor`
+- `form-ux-review`
 - `empty-state-and-loading-review`
-- next: `design-system-extractor`, `form-ux-review`
 
 ### 3. Product Systems Pack
 
@@ -62,7 +65,7 @@ The repository foundation is production-ready:
 - `seo-content-brief`
 - `store-listing-optimization`
 - `referral-loop-review`
-- next: `launch-narrative-review`
+- `launch-narrative-review`
 
 ### 6. Platform, Distribution & Desktop Pack
 
@@ -87,17 +90,19 @@ The repository foundation is production-ready:
 - `help-center-architecture`
 - `accessibility-product-review`
 
-### 8. Developer & Marketplace Pack
+### 8. Developer, Marketplace & Skill Ops Pack
 
 - `developer-tool-product-design`
 - `marketplace-product-ops`
 - `marketplace-payouts-review`
+- `creator-onboarding-review`
 - `skill-marketplace-creator`
-- next: `creator-onboarding-review`, `skill-eval-designer`, `skill-catalog-generator`, `moderation-trust-review`
+- `skill-eval-designer`
+- next: `skill-catalog-generator`, `moderation-trust-review`
 
 ## What will attract stars
 
-- Skills that solve painful, common jobs: UI polish, accessibility, checkout conversion, usage pricing, mobile monetization, Steam/Microsoft launch, desktop release, developer onboarding, marketplace payouts, production readiness.
+- Skills that solve painful, common jobs: UI polish, accessibility, checkout conversion, usage pricing, decision memos, opportunity scoring, agentic workflows, mobile monetization, Steam/Microsoft launch, desktop release, developer onboarding, creator onboarding, marketplace payouts, skill evals, and production readiness.
 - Before/after examples and public demos for every high-demand skill.
 - Visible quality bar that rejects prompt dumps and requires state machines, decision tables, event schemas, and eval prompts.
 - Installability through open skills CLI and third-party directories.

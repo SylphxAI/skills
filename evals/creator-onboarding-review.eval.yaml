@@ -1,0 +1,10 @@
+skill: creator-onboarding-review
+positive_prompts:
+  - "Review creator onboarding for an AI skill marketplace with submissions and quality gates."
+  - "Design onboarding for plugin developers in a marketplace with payouts and review queues."
+negative_prompts:
+  - "Audit checkout payment retry errors."
+expected_behavior:
+  - "Defines creator activation as accepted supply or demand success, not signup."
+  - "Maps onboarding, quality checklist, review feedback, publishing, analytics, payout/support, and abuse controls."
+  - "Produces quality gates, creator metrics, and marketplace feedback loops."

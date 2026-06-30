@@ -1,0 +1,10 @@
+skill: decision-memo-writer
+positive_prompts:
+  - "Write a decision memo on whether to launch usage-based pricing next quarter."
+  - "Create a decision memo choosing between Steam-first and App Store-first launch strategy."
+negative_prompts:
+  - "Audit a form for keyboard accessibility."
+expected_behavior:
+  - "Frames one accountable decision with owner, deadline, options, and decision type."
+  - "Separates facts, assumptions, constraints, unknowns, and preferences."
+  - "Recommends a path with evidence, tradeoffs, success metrics, guardrails, and revisit triggers."

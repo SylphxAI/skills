@@ -8,7 +8,10 @@
       "skills": [
         "product-lifecycle-architect",
         "execution-simplification",
-        "market-research-synthesis"
+        "market-research-synthesis",
+        "decision-memo-writer",
+        "opportunity-scoring-review",
+        "agentic-workflow-designer"
       ]
     },
     {
@@ -20,6 +23,8 @@
         "motion-transition-review",
         "responsive-layout-review",
         "accessibility-product-review",
+        "design-system-extractor",
+        "form-ux-review",
         "empty-state-and-loading-review"
       ]
     },
@@ -33,7 +38,8 @@
         "product-positioning",
         "seo-content-brief",
         "promotion-campaign-review",
-        "referral-loop-review"
+        "referral-loop-review",
+        "launch-narrative-review"
       ]
     },
     {
@@ -97,14 +103,16 @@
       "description": "Skills for developer tools, plugin stores, creator marketplaces, public directories, quality review, discovery, and marketplace operations.",
       "skills": [
         "developer-tool-product-design",
-        "marketplace-product-ops"
+        "marketplace-product-ops",
+        "creator-onboarding-review"
       ]
     },
     {
       "title": "Agent Skill Operations",
       "description": "Skills for creating, curating, validating, and operating reusable agent skills.",
       "skills": [
-        "skill-marketplace-creator"
+        "skill-marketplace-creator",
+        "skill-eval-designer"
       ]
     }
   ]
