@@ -1,0 +1,10 @@
+skill: customer-advisory-board-review
+positive_prompts:
+  - "Design a customer advisory board for enterprise SaaS roadmap strategy with member selection, confidentiality, agenda, synthesis, commitments, and follow-up."
+  - "Audit a creator council that is influencing marketplace ranking and policy decisions without bias controls or commitment tracking."
+negative_prompts:
+  - "Prepare an enterprise SOC evidence packet."
+expected_behavior:
+  - "Starts from decisions to inform and classifies the format before selecting members and agenda."
+  - "Includes member criteria, bias coverage, confidentiality, incentives, evidence capture, synthesis, commitment control, and follow-up."
+  - "Warns against roadmap-by-committee, logo bias, unapproved promises, and meetings without decision linkage."

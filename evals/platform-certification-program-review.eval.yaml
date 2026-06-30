@@ -1,0 +1,10 @@
+skill: platform-certification-program-review
+positive_prompts:
+  - "Design a certification program for marketplace plugins with eligibility, quality tests, badges, renewal, appeals, revocation, and directory effects."
+  - "Audit a partner certification badge that currently mixes paid tiers, quality claims, and search ranking boosts."
+negative_prompts:
+  - "Design service-level SLOs for an API."
+expected_behavior:
+  - "Defines certification promise, scope, criteria, evidence, tests, reviewers, thresholds, and renewal cadence."
+  - "Separates paid tiers, editorial featuring, ranking, and quality certification while defining badge meaning and expiry."
+  - "Includes audit, appeal, revocation, restoration, partner enablement, and customer-trust metrics."

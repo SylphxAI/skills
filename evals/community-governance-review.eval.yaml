@@ -1,0 +1,10 @@
+skill: community-governance-review
+positive_prompts:
+  - "Design governance for a creator marketplace community with roles, norms, moderation, councils, events, feedback routing, transparency, and leader sustainability."
+  - "Audit a game community Discord where engagement is high but harassment reports, faction capture, and moderator burnout are rising."
+negative_prompts:
+  - "Review a revenue forecast capacity plan."
+expected_behavior:
+  - "Classifies community type and defines purpose, member promise, roles, norms, decision boundaries, and feedback routes."
+  - "Includes moderation ladder, transparency, incentives, events, health metrics, safety escalation, and leadership sustainability."
+  - "Flags vanity engagement, faction capture, unpaid leader overload, harassment neglect, and incentives that reward low-quality volume."

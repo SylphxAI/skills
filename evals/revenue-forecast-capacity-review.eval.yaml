@@ -1,0 +1,10 @@
+skill: revenue-forecast-capacity-review
+positive_prompts:
+  - "Review a revenue forecast for an AI SaaS launch with funnel assumptions, retention, gross margin, inference cost, support capacity, and scenarios."
+  - "Design capacity-aware forecasting for a marketplace launch where demand, seller supply, support, and GMV may grow unevenly."
+negative_prompts:
+  - "Create a content policy appeals notice."
+expected_behavior:
+  - "Starts from the planning decision and classifies forecast type before modeling assumptions."
+  - "Includes base/upside/downside scenarios, churn, expansion, refunds, fees, margin, cash timing, leading indicators, and capacity constraints."
+  - "Flags single optimistic forecasts, stale pipeline, ignored support/infra/supply capacity, and false precision."

@@ -1,0 +1,10 @@
+skill: ai-eval-regression-ops-review
+positive_prompts:
+  - "Design AI eval regression ops for a support copilot with golden cases, safety slices, model-as-judge calibration, release gates, live monitoring, and rollback."
+  - "Audit an AI agent release that improved aggregate eval score but regressed critical billing and safety cases."
+negative_prompts:
+  - "Plan a customer advisory board agenda."
+expected_behavior:
+  - "Classifies eval types and defines dataset governance, rubric versioning, judge calibration, and release thresholds."
+  - "Includes critical slices, safety, latency, cost, fallback, live monitoring, failure triage, provider/model-change policy, and rollback."
+  - "Flags aggregate-only releases, uncalibrated judges, privacy leakage, and offline-only proof."

@@ -17,7 +17,9 @@
         "sales-demo-script-review",
         "agentic-workflow-designer",
         "customer-feedback-intake-review",
-        "risk-register-governance-review"
+        "risk-register-governance-review",
+        "customer-advisory-board-review",
+        "revenue-forecast-capacity-review"
       ]
     },
     {
@@ -105,7 +107,8 @@
         "changelog-and-release-notes",
         "offline-sync-conflict-review",
         "feature-sunset-deprecation-review",
-        "release-train-change-management-review"
+        "release-train-change-management-review",
+        "service-level-slo-review"
       ]
     },
     {
@@ -128,7 +131,9 @@
         "data-import-migration-review",
         "data-quality-observability-review",
         "content-policy-appeals-review",
-        "support-deflection-knowledge-base-review"
+        "support-deflection-knowledge-base-review",
+        "trust-center-readiness-review",
+        "procurement-security-review"
       ]
     },
     {
@@ -143,7 +148,9 @@
         "creator-ranking-quality-review",
         "api-rate-limit-quota-review",
         "search-discovery-relevance-review",
-        "sdk-onboarding-integration-review"
+        "sdk-onboarding-integration-review",
+        "platform-certification-program-review",
+        "community-governance-review"
       ]
     },
     {
@@ -152,7 +159,8 @@
       "skills": [
         "skill-marketplace-creator",
         "skill-eval-designer",
-        "skill-catalog-generator"
+        "skill-catalog-generator",
+        "ai-eval-regression-ops-review"
       ]
     }
   ]

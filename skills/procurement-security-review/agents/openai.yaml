@@ -1,0 +1,4 @@
+interface:
+  display_name: "Procurement Security Review"
+  short_description: "Prepare procurement security proof"
+  default_prompt: "Use $procurement-security-review to prepare enterprise procurement and security review evidence."
