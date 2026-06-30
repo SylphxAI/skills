@@ -1,0 +1,4 @@
+interface:
+  display_name: "Community Governance Review"
+  short_description: "Design community governance"
+  default_prompt: "Use $community-governance-review to design community governance, roles, norms, and escalation."
