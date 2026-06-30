@@ -13,6 +13,11 @@
       "skills": ["startup-growth-review"]
     },
     {
+      "title": "Mobile Product Systems",
+      "description": "Skills for mobile app monetization, retention, refunds, notifications, IAP, IAA, and rewards.",
+      "skills": ["mobile-app-product-systems"]
+    },
+    {
       "title": "Agent Skill Operations",
       "description": "Skills for creating, curating, validating, and operating reusable agent skills.",
       "skills": ["skill-marketplace-creator"]

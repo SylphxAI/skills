@@ -34,6 +34,7 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`interface-craft`](./skills/interface-craft/SKILL.md) | Building, polishing, or reviewing UI for product craft and tasteful micro-details. | Preview |
 | [`startup-growth-review`](./skills/startup-growth-review/SKILL.md) | Reviewing a startup product, landing page, funnel, or go-to-market plan for growth leverage. | Preview |
 | [`skill-marketplace-creator`](./skills/skill-marketplace-creator/SKILL.md) | Creating, curating, validating, or operating a marketplace of reusable agent skills. | Preview |
+| [`mobile-app-product-systems`](./skills/mobile-app-product-systems/SKILL.md) | Designing or reviewing mobile app/game monetization, retention, notification, refund, and reward systems. | Preview |
 
 The generated registry lives at [`registry/skills.json`](./registry/skills.json).
 
@@ -48,7 +49,7 @@ A Sylphx skill must be:
 5. **Safe** — no secrets, unsafe shell snippets, malicious instructions, dark patterns, or license laundering.
 6. **Original synthesis** — learn from the world, then publish Sylphx-owned structure, examples, and wording; attribution is only needed for direct quotes, third-party code/assets, or license-required excerpts.
 
-See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md).
+See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md) and [`docs/skill-packs.md`](./docs/skill-packs.md).
 
 ## Validate locally
 

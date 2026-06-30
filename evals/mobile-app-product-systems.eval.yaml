@@ -1,0 +1,10 @@
+skill: mobile-app-product-systems
+positive_prompts:
+  - "Design the subscription, refund, promotion, notification, and daily check-in systems for a mobile game."
+  - "Review this iOS app's IAP and rewarded ads flow for trust and retention problems."
+negative_prompts:
+  - "Write a SQL migration for adding a user table."
+expected_behavior:
+  - "Classifies the mobile product surface before giving advice."
+  - "Defines entitlement, refund, restore, promotion, notification, and reward edge cases."
+  - "Rejects fake scarcity, manipulative streaks, and disruptive ads."

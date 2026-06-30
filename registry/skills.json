@@ -16,6 +16,19 @@
       ]
     },
     {
+      "name": "mobile-app-product-systems",
+      "description": "Design and review mobile app and mobile game product systems including refunds, promotions, subscriptions, in-app purchases, in-app ads, notifications, daily check-ins, rewards, entitlement states, retention loops, and store-compliant monetization UX. Use when building or auditing iOS/Android apps, mobile games, consumer apps, app-store monetization flows, or lifecycle engagement systems.",
+      "status": "preview",
+      "path": "skills/mobile-app-product-systems",
+      "references": [
+        "mobile-systems-rules.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "skill-marketplace-creator",
       "description": "Create, curate, validate, and operate repositories or marketplaces for reusable AI agent skills. Use when designing a skill marketplace, scaffolding a public skill repo, converting domain knowledge into SKILL.md packages, defining skill quality gates, evaluating skill submissions, planning skill distribution, or building an agent-powered skill factory.",
       "status": "preview",
