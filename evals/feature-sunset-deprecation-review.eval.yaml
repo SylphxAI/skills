@@ -1,0 +1,10 @@
+skill: feature-sunset-deprecation-review
+positive_prompts:
+  - "Plan the deprecation of a public API version with usage analysis, notice, migration docs, final warnings, and cleanup."
+  - "Audit removal of a paid SaaS feature for customer trust, contract exceptions, support readiness, and rollback criteria."
+negative_prompts:
+  - "Create a customer feedback taxonomy."
+expected_behavior:
+  - "Measures impacted usage, revenue, contracts, support load, and dependencies before choosing a notice path."
+  - "Includes migration alternatives, staged communication, exception policy, kill date, rollback/extension criteria, and cleanup."
+  - "Warns against indefinite deprecated features and one-size-fits-all changelog notices."

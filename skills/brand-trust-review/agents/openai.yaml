@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Trust Review"
+  short_description: "Audit product trust signals"
+  default_prompt: "Use $brand-trust-review to audit brand trust, claims, proof, and customer confidence."

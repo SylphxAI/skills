@@ -1,0 +1,10 @@
+skill: cost-margin-unit-economics-review
+positive_prompts:
+  - "Review unit economics for an AI SaaS plan with inference cost, usage outliers, support burden, refunds, CAC, and gross margin."
+  - "Model marketplace contribution margin with take rate, payouts, disputes, payment fees, fraud, and support cost."
+negative_prompts:
+  - "Draft an account recovery support script."
+expected_behavior:
+  - "Classifies monetization model and separates revenue, variable cost, fixed allocation, gross margin, contribution margin, CAC, retention, and payback."
+  - "Includes payment/platform fees, refunds, support, abuse, AI/cloud cost, partner payouts, and usage outliers."
+  - "Suggests pricing/cost levers with trust guardrails instead of surprise overages or hostile limits."

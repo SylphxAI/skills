@@ -1,0 +1,10 @@
+skill: account-recovery-identity-review
+positive_prompts:
+  - "Design MFA recovery for a SaaS workspace admin who lost their phone without creating an account takeover path."
+  - "Audit password reset and support-assisted recovery for account enumeration, rate limits, and session invalidation."
+negative_prompts:
+  - "Plan a creator marketplace payout schedule."
+expected_behavior:
+  - "Classifies recovery scenario and asset sensitivity before choosing proof and friction."
+  - "Includes anti-enumeration, rate limits, cooldowns, notifications, session invalidation, and audit logs."
+  - "Defines support escalation boundaries without allowing support to bypass identity proof."

@@ -1,0 +1,10 @@
+skill: offline-sync-conflict-review
+positive_prompts:
+  - "Design offline sync for a mobile field app with queued edits, attachments, reconnect conflicts, and data-loss recovery."
+  - "Audit a PWA offline mode that currently uses last-write-wins for settings, notes, and billing actions."
+negative_prompts:
+  - "Create a launch narrative for a new pricing page."
+expected_behavior:
+  - "Classifies data and mutation types before choosing merge policies."
+  - "Includes local queue, idempotency, tombstones, attachment retry, auth refresh, conflict UI, and support diagnostics."
+  - "Flags unsafe last-write-wins and silent overwrite risks for high-impact records."

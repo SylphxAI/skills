@@ -1,0 +1,10 @@
+skill: api-rate-limit-quota-review
+positive_prompts:
+  - "Design rate limits and monthly quotas for a public AI API with cost-weighted endpoints, headers, dashboards, and upgrades."
+  - "Audit API 429 behavior for developer experience, billing alignment, and enterprise overrides."
+negative_prompts:
+  - "Review a mobile app onboarding animation."
+expected_behavior:
+  - "Separates rate limits, quotas, concurrency caps, payload caps, spend caps, and entitlement gates."
+  - "Specifies principal, unit, headers, error shape, dashboard, alerts, support override, and migration comms."
+  - "Aligns quotas with abuse prevention, billing, usage metering, and tenant isolation."

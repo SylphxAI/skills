@@ -1,0 +1,4 @@
+interface:
+  display_name: "Offline Sync Conflict Review"
+  short_description: "Review offline sync conflicts"
+  default_prompt: "Use $offline-sync-conflict-review to design an offline sync and conflict-resolution flow."

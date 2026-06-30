@@ -70,8 +70,10 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`localization-market-expansion-review`](./skills/localization-market-expansion-review/SKILL.md) | Planning localization, regional launch, pricing, payments, support, and market expansion. | Preview |
 | [`referral-loop-review`](./skills/referral-loop-review/SKILL.md) | Designing referral loops, rewards, attribution, fraud controls, support evidence, and retained-value metrics. | Preview |
 | [`launch-narrative-review`](./skills/launch-narrative-review/SKILL.md) | Shaping launch narratives around audience, old way, new way, proof, objections, assets, and CTA. | Preview |
+| [`brand-trust-review`](./skills/brand-trust-review/SKILL.md) | Auditing brand trust across claims, proof, pricing clarity, privacy promises, testimonials, and support reputation. | Preview |
 | [`saas-subscription-pricing`](./skills/saas-subscription-pricing/SKILL.md) | Designing SaaS pricing, packaging, trials, cancellation, and expansion. | Preview |
 | [`usage-based-pricing-review`](./skills/usage-based-pricing-review/SKILL.md) | Designing usage-based pricing, metering, credits, quotas, overages, spend controls, and billing trust. | Preview |
+| [`cost-margin-unit-economics-review`](./skills/cost-margin-unit-economics-review/SKILL.md) | Reviewing COGS, gross margin, usage cost, CAC/LTV, refunds, support load, and pricing sustainability. | Preview |
 | [`subscription-entitlement-review`](./skills/subscription-entitlement-review/SKILL.md) | Keeping subscriptions, plans, trials, renewals, refunds, and access states consistent. | Preview |
 | [`refund-and-support-flow-review`](./skills/refund-and-support-flow-review/SKILL.md) | Designing fair refund, entitlement, appeal, abuse review, and support flows. | Preview |
 | [`payment-platform-readiness`](./skills/payment-platform-readiness/SKILL.md) | Preparing Apple Pay, Google Pay, IAP, web checkout, refunds, entitlements, and reconciliation. | Preview |
@@ -99,19 +101,25 @@ npx skills add https://github.com/SylphxAI/skills --skill interface-craft
 | [`macos-release-readiness`](./skills/macos-release-readiness/SKILL.md) | Auditing macOS signing, notarization, permissions, keychain, data, updates, uninstall, and diagnostics. | Preview |
 | [`windows-release-readiness`](./skills/windows-release-readiness/SKILL.md) | Auditing Windows installers, signing, services, startup, registry, updates, uninstall, and diagnostics. | Preview |
 | [`backup-restore-design`](./skills/backup-restore-design/SKILL.md) | Designing backup, restore, export, sync, and data durability systems. | Preview |
+| [`offline-sync-conflict-review`](./skills/offline-sync-conflict-review/SKILL.md) | Designing offline queues, reconnect sync, conflict resolution, local state, and data-loss recovery. | Preview |
 | [`changelog-and-release-notes`](./skills/changelog-and-release-notes/SKILL.md) | Writing user-facing release notes, technical changelogs, and support-aware update communication. | Preview |
+| [`feature-sunset-deprecation-review`](./skills/feature-sunset-deprecation-review/SKILL.md) | Planning feature, API, integration, workflow, or plan sunset with migration and communication. | Preview |
 | [`customer-support-operations`](./skills/customer-support-operations/SKILL.md) | Designing support, refund, escalation, help center, and trust operations. | Preview |
+| [`account-recovery-identity-review`](./skills/account-recovery-identity-review/SKILL.md) | Reviewing password reset, MFA/passkey recovery, SSO fallback, proof, and takeover risk. | Preview |
 | [`support-quality-qa-review`](./skills/support-quality-qa-review/SKILL.md) | Designing support QA scorecards, macro reviews, calibration, coaching, and product loops. | Preview |
+| [`customer-feedback-intake-review`](./skills/customer-feedback-intake-review/SKILL.md) | Designing feedback intake, tagging, dedupe, routing, evidence scoring, and roadmap loops. | Preview |
 | [`customer-success-health-review`](./skills/customer-success-health-review/SKILL.md) | Scoring customer health and mapping renewal, adoption, expansion, and success playbooks. | Preview |
 | [`help-center-architecture`](./skills/help-center-architecture/SKILL.md) | Structuring help centers, support docs, search, escalation, and article maintenance. | Preview |
 | [`privacy-and-data-retention-review`](./skills/privacy-and-data-retention-review/SKILL.md) | Reviewing data collection, retention, deletion, export, telemetry, backups, and disclosures. | Preview |
 | [`data-export-portability-review`](./skills/data-export-portability-review/SKILL.md) | Designing trusted export, portability, deletion, migration, and offboarding flows. | Preview |
+| [`data-import-migration-review`](./skills/data-import-migration-review/SKILL.md) | Designing imports, migrations, bulk uploads, mapping, dry runs, reconciliation, and rollback. | Preview |
 | [`security-questionnaire-response-review`](./skills/security-questionnaire-response-review/SKILL.md) | Preparing truthful security questionnaire answers with evidence, caveats, and gaps. | Preview |
 | [`abuse-fraud-risk-review`](./skills/abuse-fraud-risk-review/SKILL.md) | Designing abuse, fraud, spam, refund, promotion, marketplace, and game-economy controls. | Preview |
 | [`moderation-trust-review`](./skills/moderation-trust-review/SKILL.md) | Designing moderation queues, appeals, enforcement ladders, and trust operations. | Preview |
 | [`incident-communication-playbook`](./skills/incident-communication-playbook/SKILL.md) | Planning outage, payment, data, privacy, game, and support incident communications. | Preview |
 | [`analytics-event-taxonomy`](./skills/analytics-event-taxonomy/SKILL.md) | Defining event names, properties, funnels, identity, guardrails, and instrumentation QA. | Preview |
 | [`developer-tool-product-design`](./skills/developer-tool-product-design/SKILL.md) | Designing developer tools, APIs, SDKs, CLIs, docs, examples, pricing, telemetry, and support. | Preview |
+| [`api-rate-limit-quota-review`](./skills/api-rate-limit-quota-review/SKILL.md) | Designing API limits, quotas, headers, tiers, burst policy, dashboards, and developer UX. | Preview |
 | [`marketplace-product-ops`](./skills/marketplace-product-ops/SKILL.md) | Operating marketplaces with submissions, review queues, ranking, trust, payouts, disputes, and moderation. | Preview |
 | [`creator-onboarding-review`](./skills/creator-onboarding-review/SKILL.md) | Designing creator onboarding, submission quality gates, review feedback, publishing, analytics, and payouts readiness. | Preview |
 | [`community-launch-ops-review`](./skills/community-launch-ops-review/SKILL.md) | Planning community launch operations, channels, roles, moderation, events, and feedback loops. | Preview |

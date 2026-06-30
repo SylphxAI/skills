@@ -29,6 +29,19 @@
       ]
     },
     {
+      "name": "account-recovery-identity-review",
+      "description": "Design and audit account recovery, password reset, MFA reset, passkey recovery, SSO fallback, device change, email/phone change, account ownership proof, support escalation, anti-takeover controls, lockouts, notifications, and recovery analytics. Use when users can lose access or attackers can exploit recovery to take over an account.",
+      "status": "preview",
+      "path": "skills/account-recovery-identity-review",
+      "references": [
+        "account-recovery-identity-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "ad-monetization-review",
       "description": "Design and audit in-app advertising monetization for mobile apps, games, web apps, and content products including rewarded ads, interstitials, banners, native ads, offerwalls, mediation, frequency caps, payer suppression, privacy consent, UX placement, revenue analytics, and ad fatigue. Use when adding ads, improving ARPDAU, balancing IAA with IAP/subscriptions, or reducing churn from ads.",
       "status": "preview",
@@ -94,6 +107,19 @@
       ]
     },
     {
+      "name": "api-rate-limit-quota-review",
+      "description": "Design and audit API rate limits, quotas, fair-use policy, burst handling, concurrency limits, usage tiers, overages, retry headers, developer dashboards, webhooks, abuse controls, tenant isolation, enterprise overrides, and migration communication. Use when launching APIs, SDKs, developer platforms, AI endpoints, marketplace APIs, or usage-priced products.",
+      "status": "preview",
+      "path": "skills/api-rate-limit-quota-review",
+      "references": [
+        "api-rate-limit-quota-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "app-permission-ux-review",
       "description": "Design and audit permission request UX, consent moments, privacy rationale, denial recovery, settings paths, OS prompts, notification opt-ins, location/camera/microphone/photo/contact access, tracking prompts, and trust copy for mobile, desktop, web, and games. Use when products need sensitive access without hurting conversion, review approval, accessibility, or user trust.",
       "status": "preview",
@@ -146,6 +172,19 @@
       ]
     },
     {
+      "name": "brand-trust-review",
+      "description": "Design and audit brand trust for product websites, landing pages, app listings, onboarding, checkout, pricing, AI features, privacy pages, social proof, support reputation, testimonials, claims, guarantees, and launch narratives. Use when a product needs credibility, reduced skepticism, clearer proof, safer claims, or a more trustworthy customer experience.",
+      "status": "preview",
+      "path": "skills/brand-trust-review",
+      "references": [
+        "brand-trust-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "changelog-and-release-notes",
       "description": "Write and review changelogs, release notes, app-store update notes, launch notes, migration notes, breaking-change notices, and customer-facing product update communication for SaaS, apps, games, developer tools, desktop software, and marketplaces. Use when a release needs clear user value, risk communication, upgrade guidance, or support-aware wording.",
       "status": "preview",
@@ -185,6 +224,19 @@
       ]
     },
     {
+      "name": "cost-margin-unit-economics-review",
+      "description": "Design and audit product cost structure, gross margin, COGS, cloud/AI inference cost, payment fees, app-store commissions, marketplace payouts, refunds, support cost, usage-based margin, CAC/LTV, payback, cohort profitability, free-tier economics, and pricing sustainability. Use when deciding whether SaaS, app, game, API, AI, marketplace, or subscription monetization can profitably scale.",
+      "status": "preview",
+      "path": "skills/cost-margin-unit-economics-review",
+      "references": [
+        "cost-margin-unit-economics-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "creator-onboarding-review",
       "description": "Design and audit creator, seller, developer, plugin author, marketplace contributor, community moderator, and content partner onboarding for marketplaces, app stores, skill repositories, template stores, game UGC, creator economies, affiliate programs, and developer ecosystems. Use when improving submission readiness, quality, trust, payout setup, review queues, publishing, analytics, support, and creator activation.",
       "status": "preview",
@@ -204,6 +256,19 @@
       "path": "skills/creator-ranking-quality-review",
       "references": [
         "creator-ranking-quality-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "customer-feedback-intake-review",
+      "description": "Design and audit customer feedback intake across support tickets, sales calls, app reviews, surveys, NPS, communities, cancellation reasons, feature requests, bug reports, and product analytics. Use when teams need to turn noisy feedback into evidence, prioritization input, roadmap decisions, and customer follow-up without overreacting to anecdotes.",
+      "status": "preview",
+      "path": "skills/customer-feedback-intake-review",
+      "references": [
+        "customer-feedback-intake-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -256,6 +321,19 @@
       "path": "skills/data-export-portability-review",
       "references": [
         "data-portability-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "data-import-migration-review",
+      "description": "Design and audit data imports, customer migrations, bulk uploads, CSV/schema mapping, backfills, migration wizards, dry runs, validation, idempotency, reconciliation, rollback, progress visibility, and support handoffs. Use when moving product data between systems, onboarding customers from competitors, importing files, or migrating accounts without data loss.",
+      "status": "preview",
+      "path": "skills/data-import-migration-review",
+      "references": [
+        "data-import-migration-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -373,6 +451,19 @@
       "path": "skills/feature-flag-rollout-review",
       "references": [
         "feature-flag-rollout-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "feature-sunset-deprecation-review",
+      "description": "Design and audit feature sunsets, API deprecations, plan removals, integration shutdowns, legacy workflow retirement, game event closure, migration alternatives, usage analysis, customer communication, contract exceptions, support readiness, kill dates, and post-sunset cleanup. Use when removing or materially changing a product capability without breaking trust.",
+      "status": "preview",
+      "path": "skills/feature-sunset-deprecation-review",
+      "references": [
+        "feature-sunset-deprecation-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -661,6 +752,19 @@
       "path": "skills/notification-strategy-review",
       "references": [
         "notification-strategy-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "offline-sync-conflict-review",
+      "description": "Design and audit offline sync, queued mutations, reconnect behavior, conflict resolution, local-first UX, draft persistence, tombstones, attachment sync, optimistic updates, multi-device edits, merge policies, data-loss recovery, and sync observability. Use when mobile, desktop, PWA, field, creator, or collaboration products must keep working without reliable connectivity.",
+      "status": "preview",
+      "path": "skills/offline-sync-conflict-review",
+      "references": [
+        "offline-sync-conflict-patterns.md"
       ],
       "scripts": [],
       "agents": [
