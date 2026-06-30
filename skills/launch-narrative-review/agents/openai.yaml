@@ -1,0 +1,4 @@
+interface:
+  display_name: "Launch Narrative Review"
+  short_description: "Shape stronger launch stories"
+  default_prompt: "Use $launch-narrative-review to sharpen this product launch narrative."

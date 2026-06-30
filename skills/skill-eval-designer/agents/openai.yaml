@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Eval Designer"
+  short_description: "Design behavior evals for skills"
+  default_prompt: "Use $skill-eval-designer to design behavior evals for this agent skill."

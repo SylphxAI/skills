@@ -1,0 +1,4 @@
+interface:
+  display_name: "Creator Onboarding Review"
+  short_description: "Onboard creators effectively"
+  default_prompt: "Use $creator-onboarding-review to review this creator onboarding flow."
