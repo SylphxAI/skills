@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trust, Support &amp; Analytics</title>
+  <meta name="description" content="Skills for support operations, help centers, privacy, abuse/fraud, incident communications, and analytics taxonomy.">
+  <style>
+    :root { color-scheme: light dark; --bg: #0b0c10; --panel: #11131a; --text: #f4f7fb; --muted: #a9b2c3; --line: #273042; --accent: #8bd3ff; --chip: #1c2636; }
+    @media (prefers-color-scheme: light) { :root { --bg: #fbfcff; --panel: #ffffff; --text: #101828; --muted: #526071; --line: #d9e1ec; --accent: #075985; --chip: #edf4ff; } }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header, main, footer { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 42px 0 22px; }
+    nav { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; color: var(--muted); }
+    h1 { font-size: clamp(2rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -0.05em; margin: 0 0 14px; }
+    h2 { margin-top: 42px; letter-spacing: -0.025em; }
+    p.lede { max-width: 760px; color: var(--muted); font-size: 1.08rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .card { border: 1px solid var(--line); background: var(--panel); border-radius: 18px; padding: 18px; min-height: 100%; }
+    .card h3 { margin: 0 0 8px; letter-spacing: -0.02em; }
+    .muted { color: var(--muted); }
+    .chip { display: inline-block; padding: 4px 9px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 0.84rem; margin: 0 6px 6px 0; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    pre { overflow: auto; padding: 14px; border-radius: 14px; background: #05070b; color: #f4f7fb; border: 1px solid var(--line); }
+    .meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+    footer { padding: 42px 0; color: var(--muted); font-size: 0.92rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../index.html">Catalog</a>
+      <a href="https://github.com/SylphxAI/skills">GitHub</a>
+      <a href="https://github.com/SylphxAI/skills/blob/main/README.md">Install</a>
+    </nav>
+    <h1>Trust, Support &amp; Analytics</h1>
+    <p class="lede">Skills for support operations, help centers, privacy, abuse/fraud, incident communications, and analytics taxonomy.</p>
+  </header>
+  <main>
+
+<p><a href="../index.html">← Back to catalog</a></p>
+<section class="grid">
+<article class="card">
+  <h3><a href="../skills/customer-support-operations.html">customer-support-operations</a></h3>
+  <p class="muted">Design customer support operations for software products including help centers, ticket triage, refund handling, escalation, support tooling, incident communication, macros, trust recovery, abuse review, and product feedback loops. Use when building or auditing support systems for apps, games, SaaS, utilities, stores, or subscription products.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill customer-support-operations</pre>
+</article>
+<article class="card">
+  <h3><a href="../skills/help-center-architecture.html">help-center-architecture</a></h3>
+  <p class="muted">Design and audit help center, documentation, support knowledge base, FAQ, troubleshooting, refund/cancellation guides, onboarding docs, developer docs, game support articles, and self-service support architecture. Use when reducing support load, improving customer success, structuring support content, or creating help content tied to product flows.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill help-center-architecture</pre>
+</article>
+<article class="card">
+  <h3><a href="../skills/privacy-and-data-retention-review.html">privacy-and-data-retention-review</a></h3>
+  <p class="muted">Review privacy, data retention, deletion, export, consent, telemetry, analytics, backups, account closure, children/minors, store disclosures, and data lifecycle for SaaS, apps, games, desktop utilities, developer tools, marketplaces, and support systems. Use when product decisions touch user data, tracking, storage, privacy claims, compliance risk, or trust.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill privacy-and-data-retention-review</pre>
+</article>
+<article class="card">
+  <h3><a href="../skills/abuse-fraud-risk-review.html">abuse-fraud-risk-review</a></h3>
+  <p class="muted">Review abuse, fraud, spam, promotion abuse, payment fraud, refund abuse, account takeover risk, marketplace trust, game economy exploits, referral abuse, automation abuse, and moderation risk for software products. Use when designing controls, risk ladders, rate limits, manual review, user messaging, support escalation, or fraud-safe product systems.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill abuse-fraud-risk-review</pre>
+</article>
+<article class="card">
+  <h3><a href="../skills/incident-communication-playbook.html">incident-communication-playbook</a></h3>
+  <p class="muted">Create incident communication playbooks for outages, data issues, payment failures, store launch problems, privacy incidents, game economy issues, support backlogs, and degraded product experiences. Use when planning status updates, customer notices, internal coordination, postmortems, support macros, incident timelines, or trust-recovery communication.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill incident-communication-playbook</pre>
+</article>
+<article class="card">
+  <h3><a href="../skills/analytics-event-taxonomy.html">analytics-event-taxonomy</a></h3>
+  <p class="muted">Design and audit analytics event taxonomies for product funnels, SaaS, mobile apps, games, web apps, desktop utilities, marketplaces, notifications, payments, support, and launches. Use when defining events, properties, naming, identity, funnels, cohorts, attribution, guardrail metrics, dashboards, or analytics quality rules.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill analytics-event-taxonomy</pre>
+</article>
+</section>
+  </main>
+  <footer>Generated from <code>registry/skills.json</code> and <code>skills.sh.json</code>. GitHub remains the source of truth.</footer>
+</body>
+</html>

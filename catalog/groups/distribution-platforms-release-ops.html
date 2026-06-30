@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Distribution, Platforms &amp; Release Ops</title>
+  <meta name="description" content="Skills for store launch, OS integration, listings, launch readiness, backup, changelogs, and product operations.">
+  <style>
+    :root { color-scheme: light dark; --bg: #0b0c10; --panel: #11131a; --text: #f4f7fb; --muted: #a9b2c3; --line: #273042; --accent: #8bd3ff; --chip: #1c2636; }
+    @media (prefers-color-scheme: light) { :root { --bg: #fbfcff; --panel: #ffffff; --text: #101828; --muted: #526071; --line: #d9e1ec; --accent: #075985; --chip: #edf4ff; } }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header, main, footer { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 42px 0 22px; }
+    nav { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; color: var(--muted); }
+    h1 { font-size: clamp(2rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -0.05em; margin: 0 0 14px; }
+    h2 { margin-top: 42px; letter-spacing: -0.025em; }
+    p.lede { max-width: 760px; color: var(--muted); font-size: 1.08rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .card { border: 1px solid var(--line); background: var(--panel); border-radius: 18px; padding: 18px; min-height: 100%; }
+    .card h3 { margin: 0 0 8px; letter-spacing: -0.02em; }
+    .muted { color: var(--muted); }
+    .chip { display: inline-block; padding: 4px 9px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 0.84rem; margin: 0 6px 6px 0; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    pre { overflow: auto; padding: 14px; border-radius: 14px; background: #05070b; color: #f4f7fb; border: 1px solid var(--line); }
+    .meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+    footer { padding: 42px 0; color: var(--muted); font-size: 0.92rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../index.html">Catalog</a>
+      <a href="https://github.com/SylphxAI/skills">GitHub</a>
+      <a href="https://github.com/SylphxAI/skills/blob/main/README.md">Install</a>
+    </nav>
+    <h1>Distribution, Platforms &amp; Release Ops</h1>
+    <p class="lede">Skills for store launch, OS integration, listings, launch readiness, backup, changelogs, and product operations.</p>
+  </header>
+  <main>
+
+<p><a href="../index.html">← Back to catalog</a></p>
+<section class="grid">
+<article class="card">
+  <h3><a href="../skills/app-store-distribution-readiness.html">app-store-distribution-readiness</a></h3>
+  <p class="muted">Prepare mobile apps, desktop software, games, and utilities for distribution through App Store, Google Play, Steam, Microsoft Store, web, or direct download. Use when planning launch readiness, store metadata, screenshots, privacy disclosures, payments, subscriptions, store review, OS integration, updates, or release operations.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill app-store-distribution-readiness</pre>
+</article>
+<article class="card">
+  <h3><a href="../skills/store-listing-optimization.html">store-listing-optimization</a></h3>
+  <p class="muted">Optimize store listings for App Store, Google Play, Steam, Microsoft Store, browser extensions, and direct-download products across title, subtitle, short description, screenshots, trailers, capsule art, keywords/tags, reviews, localization, pricing, privacy claims, and conversion measurement. Use when improving channel pages before launch or after weak store conversion.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill store-listing-optimization</pre>
+</article>
+<article class="card">
+  <h3><a href="../skills/launch-readiness-review.html">launch-readiness-review</a></h3>
+  <p class="muted">Review launch readiness for SaaS, mobile apps, games, desktop software, developer tools, marketplaces, and major releases across product quality, pricing, payments, distribution, support, analytics, incident readiness, promotion, legal/trust, rollback, and post-launch learning. Use when preparing public launch, store submission, beta, release, major campaign, or go/no-go review.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill launch-readiness-review</pre>
+</article>
+<article class="card">
+  <h3><a href="../skills/desktop-os-integration.html">desktop-os-integration</a></h3>
+  <p class="muted">Design and audit desktop OS integration for macOS and Windows apps, utilities, SaaS companions, developer tools, launchers, and games. Use when planning menu bar/tray behavior, installers, auto-update, startup/login items, permissions, file associations, notifications, local storage, keychain/credential storage, backup, uninstall, and OS-specific settings.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill desktop-os-integration</pre>
+</article>
+<article class="card">
+  <h3><a href="../skills/backup-restore-design.html">backup-restore-design</a></h3>
+  <p class="muted">Design backup, restore, sync, export, recovery, data durability, cloud/local storage, versioning, migration, deletion, and disaster recovery systems. Use when building or reviewing backup strategy for SaaS, mobile apps, desktop utilities, games, user-generated content, account data, or business-critical workflows.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill backup-restore-design</pre>
+</article>
+<article class="card">
+  <h3><a href="../skills/changelog-and-release-notes.html">changelog-and-release-notes</a></h3>
+  <p class="muted">Write and review changelogs, release notes, app-store update notes, launch notes, migration notes, breaking-change notices, and customer-facing product update communication for SaaS, apps, games, developer tools, desktop software, and marketplaces. Use when a release needs clear user value, risk communication, upgrade guidance, or support-aware wording.</p>
+  <div class="meta"><span class="chip">preview</span><span class="chip">1 refs</span><span class="chip">1 agents</span></div>
+  <pre>npx skills add https://github.com/SylphxAI/skills --skill changelog-and-release-notes</pre>
+</article>
+</section>
+  </main>
+  <footer>Generated from <code>registry/skills.json</code> and <code>skills.sh.json</code>. GitHub remains the source of truth.</footer>
+</body>
+</html>

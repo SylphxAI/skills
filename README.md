@@ -13,6 +13,10 @@ We optimize for **quality over volume**:
 - trigger descriptions that tell agents exactly when to use each skill;
 - validation, security review, original-synthesis review, and lightweight evals before publish.
 
+## Browse
+
+A generated static catalog lives in [`catalog/index.html`](./catalog/index.html). It is built from [`registry/skills.json`](./registry/skills.json) and [`skills.sh.json`](./skills.sh.json), so GitHub remains the source of truth.
+
 ## Install
 
 Install the whole collection with the open skills CLI:
@@ -86,10 +90,12 @@ See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md), [`docs/skill-aut
 
 ```bash
 node scripts/generate-registry.mjs
+node scripts/generate-catalog.mjs
 node scripts/validate-skills.mjs --check-registry
 node scripts/validate-evals.mjs
 node scripts/validate-catalog.mjs
 node scripts/validate-reference-quality.mjs
+node scripts/generate-catalog.mjs --check
 ```
 
 ## Contribute

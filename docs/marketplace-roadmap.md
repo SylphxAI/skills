@@ -28,3 +28,15 @@
 - Skill evaluation and scoring.
 - Custom skill creation service.
 - Sponsored but clearly labelled placements.
+
+
+## Current static catalog
+
+The repository now includes a generated static catalog under [`catalog/`](../catalog/index.html). It is intentionally lightweight: no app framework, no database, no duplicate manual copy. The generator reads `registry/skills.json` and `skills.sh.json` and writes:
+
+- `catalog/index.html` for all groups and skills;
+- `catalog/groups/*.html` for topic pages;
+- `catalog/skills/*.html` for skill pages with install commands and source links;
+- `catalog/catalog-manifest.json` for generated-file traceability.
+
+CI regenerates the catalog and fails if the committed output drifts from the registry.

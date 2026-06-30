@@ -14,8 +14,10 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/generate-registry.mjs
-      - run: git diff --exit-code registry/skills.json
+      - run: node scripts/generate-catalog.mjs
+      - run: git diff --exit-code registry/skills.json catalog
       - run: node scripts/validate-skills.mjs --check-registry
       - run: node scripts/validate-evals.mjs
       - run: node scripts/validate-catalog.mjs
       - run: node scripts/validate-reference-quality.mjs
+      - run: node scripts/generate-catalog.mjs --check
