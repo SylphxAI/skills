@@ -1,0 +1,4 @@
+interface:
+  display_name: "Moderation Trust Review"
+  short_description: "Review moderation queues and trust policy"
+  default_prompt: "Use $moderation-trust-review to design moderation policy, queues, appeals, and trust signals."
