@@ -1,0 +1,10 @@
+skill: support-escalation-engineering-review
+positive_prompts:
+  - "Design support-to-engineering escalation for a SaaS product with severity tiers, reproduction requirements, logs, known issues, incidents, enterprise customer updates, workarounds, and closure proof."
+  - "Audit an escalation queue full of vague tickets, duplicate bugs, missing owners, no customer update cadence, premature closures, and recurring product defects."
+negative_prompts:
+  - "Design a partner co-marketing launch plan."
+expected_behavior:
+  - "Defines escalation classes, severity, evidence requirements, specialized paths, owners, triage cadence, workaround policy, customer update cadence, closure proof, and feedback loops."
+  - "Includes reproduction, logs/traces, impact, affected accounts, data/security/billing paths, known issues, duplicate linking, and support/engineering RACI."
+  - "Flags vague escalations, incidents hidden in bug queues, premature closure, invisible engineering status, duplicate noise, and recurring defects without product action."

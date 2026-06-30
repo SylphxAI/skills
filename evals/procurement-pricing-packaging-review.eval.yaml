@@ -1,0 +1,10 @@
+skill: procurement-pricing-packaging-review
+positive_prompts:
+  - "Review enterprise pricing and packaging for a SaaS product with seat tiers, usage commits, add-ons, discounts, order forms, PO/invoice needs, security review, renewal uplift, and true-ups."
+  - "Audit why procurement deals stall because SKUs are unclear, discount exceptions are ad hoc, security/legal artifacts are missing, and billing cannot support custom terms."
+negative_prompts:
+  - "Design incident status page update templates."
+expected_behavior:
+  - "Defines SKU/tier/entitlement/value metric, included limits, add-ons, minimums, commits, overages, services, discount rules, procurement proof, order/billing handoff, and renewal path."
+  - "Includes margin/operational impact, deal-desk controls, security/legal/tax/invoice readiness, quote/order/CRM/billing consistency, and objection tracking."
+  - "Flags bespoke SKU sprawl, hidden overages/uplifts, unapproved discounts, procurement proof gaps, billing unsupported terms, and trust-damaging concessions."
