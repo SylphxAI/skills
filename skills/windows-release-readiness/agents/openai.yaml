@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows Release Readiness"
+  short_description: "Ship reliable Windows releases"
+  default_prompt: "Use $windows-release-readiness to audit this Windows app release plan."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketplace Product Ops"
+  short_description: "Operate trusted marketplaces"
+  default_prompt: "Use $marketplace-product-ops to design or audit this marketplace operating system."
