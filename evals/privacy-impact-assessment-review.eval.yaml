@@ -1,0 +1,10 @@
+skill: privacy-impact-assessment-review
+positive_prompts:
+  - "Run a privacy impact assessment for a new AI analytics feature collecting behavioral events, support text, account metadata, vendor processing, cross-border transfer, retention, and user opt-out controls."
+  - "Audit a product change that adds profiling, new vendors, longer retention, and sensitive support data without a clear data map or user controls."
+negative_prompts:
+  - "Forecast support workforce coverage for launch week."
+expected_behavior:
+  - "Maps data subjects, fields, sources, purposes, legal basis, retention, sharing, vendors, regions, security controls, and user controls."
+  - "Includes minimization, notice/consent, DSAR/deletion, elevated review, vendor checks, risk scoring, mitigations, launch gates, and reopening triggers."
+  - "Flags convenience collection, stale legal basis, AI/profiling risk, sensitive data without review, vendor misuse, and one-time checkbox privacy review."

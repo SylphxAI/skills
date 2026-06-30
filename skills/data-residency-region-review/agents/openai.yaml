@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Residency Region Review"
+  short_description: "Design data residency"
+  default_prompt: "Use $data-residency-region-review to review data residency and regional architecture."

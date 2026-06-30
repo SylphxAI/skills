@@ -23,7 +23,9 @@
         "experimentation-platform-governance-review",
         "enterprise-onboarding-implementation-review",
         "model-router-cost-quality-review",
-        "user-research-repository-review"
+        "user-research-repository-review",
+        "sales-qualification-discovery-review",
+        "ai-safety-red-team-review"
       ]
     },
     {
@@ -61,7 +63,10 @@
         "brand-trust-review",
         "partner-co-marketing-launch-review",
         "lifecycle-email-system-review",
-        "localization-quality-program-review"
+        "localization-quality-program-review",
+        "enterprise-expansion-health-review",
+        "partner-channel-program-review",
+        "customer-training-academy-review"
       ]
     },
     {
@@ -79,7 +84,8 @@
         "checkout-conversion-review",
         "cost-margin-unit-economics-review",
         "observability-cost-governance-review",
-        "contract-lifecycle-renewal-review"
+        "contract-lifecycle-renewal-review",
+        "usage-metering-accuracy-review"
       ]
     },
     {
@@ -148,7 +154,9 @@
         "data-governance-access-review",
         "support-workforce-planning-review",
         "data-warehouse-metrics-layer-review",
-        "compliance-audit-readiness-review"
+        "compliance-audit-readiness-review",
+        "data-residency-region-review",
+        "privacy-impact-assessment-review"
       ]
     },
     {

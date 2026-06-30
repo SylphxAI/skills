@@ -1,0 +1,10 @@
+skill: usage-metering-accuracy-review
+positive_prompts:
+  - "Audit usage metering for an AI SaaS product billing tokens, API calls, storage, credits, overages, quota enforcement, customer usage dashboards, invoice lines, and disputes."
+  - "Design controls for late events, duplicate events, plan changes, backfills, replay, credits, customer-visible estimates, and finance reconciliation."
+negative_prompts:
+  - "Review enterprise account expansion health."
+expected_behavior:
+  - "Defines billable unit, source event, identity, idempotency, rating rule, grain, quota/estimate/final invoice boundaries, and event-to-invoice lineage."
+  - "Includes duplicate/late/backfill handling, reconciliation, customer visibility, correction workflow, audit trail, alerts, replay tests, and dispute support."
+  - "Flags untraceable invoices, silent corrections, mixed estimate/final truth, missing dispute handling, and usage pricing without metering controls."

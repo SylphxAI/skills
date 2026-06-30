@@ -1,0 +1,10 @@
+skill: ai-safety-red-team-review
+positive_prompts:
+  - "Plan an AI safety red-team for a tool-using support agent with private customer data, file uploads, retrieval, model fallback, account actions, and release gates."
+  - "Audit an AI feature where prompt-injection tests are ad hoc, tool permissions are broad, fallback models bypass policy, and severe findings lack regression tests."
+negative_prompts:
+  - "Design a partner reseller channel program."
+expected_behavior:
+  - "Defines assets at risk, attack classes, system surfaces, severity model, fixtures, mitigations, owners, release gates, telemetry, regression tests, and incident triggers."
+  - "Covers prompt injection, jailbreak, data leakage, tool misuse, unsafe autonomy, hallucinated actions, fallback regression, privacy, and over-blocking."
+  - "Flags generic policy-only testing, broad tool permissions, missing audit/kill switches, unclosed severe findings, and no regression evidence."

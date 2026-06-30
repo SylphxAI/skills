@@ -1,0 +1,10 @@
+skill: data-residency-region-review
+positive_prompts:
+  - "Design data residency for EU enterprise customers covering storage, processing, backups, logs, analytics, support access, AI providers, subprocessors, failover, deletion, and customer evidence."
+  - "Audit whether our residency claim is true when metadata, support attachments, telemetry, search indexes, logs, and model inputs may cross regions."
+negative_prompts:
+  - "Build a sales discovery call script."
+expected_behavior:
+  - "Defines residency promise by data class, system, storage, processing, replication, backup, logs, analytics, support, AI providers, and subprocessors."
+  - "Includes allowed transfers, access controls, failover/restore, migration, deletion, drift monitoring, contract evidence, and customer proof plan."
+  - "Flags false residency claims, hidden metadata/log/AI transfers, support access drift, unapproved failover, and unsupported customer answers."

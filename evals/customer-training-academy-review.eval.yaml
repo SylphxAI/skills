@@ -1,0 +1,10 @@
+skill: customer-training-academy-review
+positive_prompts:
+  - "Design a customer training academy for enterprise SaaS with admin onboarding, end-user workflows, certification, sandbox labs, webinars, partner training, localization, accessibility, and adoption metrics."
+  - "Audit an academy where completion is high but activation is low, support tickets remain high, certification is outdated, and training hides onboarding UX problems."
+negative_prompts:
+  - "Audit usage metering for token billing."
+expected_behavior:
+  - "Defines learner personas, jobs, role-based curricula, formats, labs/templates, assessments, certification, lifecycle triggers, localization, accessibility, content ownership, and release versioning."
+  - "Connects academy metrics to activation, time-to-value, adoption depth, support deflection quality, retention, expansion, partner quality, and learner satisfaction."
+  - "Flags training-as-UX-bandage, completion-only metrics, stale certification, missing localization/accessibility, and deflection that hides unresolved issues."

@@ -1,0 +1,10 @@
+skill: enterprise-expansion-health-review
+positive_prompts:
+  - "Review enterprise expansion readiness for an account with rising usage, open support issues, a QBR next month, a possible new department, renewal in 120 days, and uncertain executive sponsorship."
+  - "Audit an upsell process where sales chases whitespace while customer success sees adoption gaps, support sees incidents, and the customer has not proven value."
+negative_prompts:
+  - "Design a data residency architecture for EU customers."
+expected_behavior:
+  - "Assesses adoption, value outcomes, support burden, incident history, relationship strength, renewal risk, product fit, whitespace, and procurement timing."
+  - "Separates stabilize-first, renewal-only, expansion-suspect, expansion-qualified, executive-alignment, and procurement-ready states."
+  - "Flags pushing expansion into unhealthy accounts, raw-usage-only upsell, QBR sales pitches, weak champion, and uncoordinated commercial changes."

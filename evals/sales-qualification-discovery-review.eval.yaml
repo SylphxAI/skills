@@ -1,0 +1,10 @@
+skill: sales-qualification-discovery-review
+positive_prompts:
+  - "Design a sales qualification and discovery workflow for enterprise SaaS leads with ICP fit, buyer pain, budget, authority, procurement, security review, technical validation, and mutual action plans."
+  - "Audit a sales pipeline where reps create opportunities from weak inbound interest, hide no-fit accounts, skip decision-process mapping, and forecast stalled deals."
+negative_prompts:
+  - "Plan localization QA for Arabic and Japanese releases."
+expected_behavior:
+  - "Defines ICP fit, pain, impact, urgency, buying committee, budget/process, technical fit, next commitment, disqualification reasons, and CRM hygiene."
+  - "Separates no-fit, nurture, discovery-needed, qualified, technical validation, procurement, and stalled states."
+  - "Flags enthusiasm-only qualification, fake urgency, hidden no-fit, weak champion, unsupported promises, and pipeline zombies."
