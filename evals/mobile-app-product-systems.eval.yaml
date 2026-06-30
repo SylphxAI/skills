@@ -1,5 +1,7 @@
 skill: mobile-app-product-systems
 positive_prompts:
+  - "A user bought premium currency, spent it, then got a refund. Should we ban them or ask them to buy again?"
+  - "Design a win-back promotion for lapsed subscribers without training loyal users to churn."
   - "Design the subscription, refund, promotion, notification, and daily check-in systems for a mobile game."
   - "Review this iOS app's IAP and rewarded ads flow for trust and retention problems."
 negative_prompts:
@@ -7,4 +9,6 @@ negative_prompts:
 expected_behavior:
   - "Classifies the mobile product surface before giving advice."
   - "Defines entitlement, refund, restore, promotion, notification, and reward edge cases."
+  - "Separates entitlement revocation from account bans and uses an abuse policy ladder."
+  - "Designs promotions with objective, audience, eligibility, placement, fulfillment, measurement, and guardrails."
   - "Rejects fake scarcity, manipulative streaks, and disruptive ads."

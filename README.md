@@ -49,7 +49,7 @@ A Sylphx skill must be:
 5. **Safe** — no secrets, unsafe shell snippets, malicious instructions, dark patterns, or license laundering.
 6. **Original synthesis** — learn from the world, then publish Sylphx-owned structure, examples, and wording; attribution is only needed for direct quotes, third-party code/assets, or license-required excerpts.
 
-See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md) and [`docs/skill-packs.md`](./docs/skill-packs.md).
+See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md), [`docs/skill-authoring-principles.md`](./docs/skill-authoring-principles.md), and [`docs/skill-packs.md`](./docs/skill-packs.md).
 
 ## Validate locally
 

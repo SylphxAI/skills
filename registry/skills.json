@@ -21,7 +21,9 @@
       "status": "preview",
       "path": "skills/mobile-app-product-systems",
       "references": [
-        "mobile-systems-rules.md"
+        "mobile-systems-rules.md",
+        "promotion-system-patterns.md",
+        "refund-and-entitlement-patterns.md"
       ],
       "scripts": [],
       "agents": [
