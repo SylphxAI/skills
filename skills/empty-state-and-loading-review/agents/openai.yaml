@@ -1,0 +1,4 @@
+interface:
+  display_name: "Empty State And Loading Review"
+  short_description: "Improve empty and loading states"
+  default_prompt: "Use $empty-state-and-loading-review to handle a realistic product task in this domain."

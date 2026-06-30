@@ -1,0 +1,4 @@
+interface:
+  display_name: "Onboarding Activation Review"
+  short_description: "Improve onboarding and activation"
+  default_prompt: "Use $onboarding-activation-review to handle a realistic product task in this domain."

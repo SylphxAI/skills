@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Positioning"
+  short_description: "Sharpen product positioning"
+  default_prompt: "Use $product-positioning to handle a realistic product task in this domain."

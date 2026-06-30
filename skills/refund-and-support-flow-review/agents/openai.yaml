@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refund And Support Flow Review"
+  short_description: "Design fair refund and support flows"
+  default_prompt: "Use $refund-and-support-flow-review to handle a realistic product task in this domain."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Incident Communication Playbook"
+  short_description: "Plan incident communication"
+  default_prompt: "Use $incident-communication-playbook to handle a realistic product task in this domain."
