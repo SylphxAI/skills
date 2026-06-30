@@ -1,0 +1,4 @@
+interface:
+  display_name: "Revenue Recognition Policy Review"
+  short_description: "Review revenue recognition"
+  default_prompt: "Use $revenue-recognition-policy-review to review revenue recognition policy for a product change."

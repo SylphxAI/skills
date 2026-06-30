@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Reference Program Review"
+  short_description: "Build customer references"
+  default_prompt: "Use $customer-reference-program-review to design a customer reference program."
