@@ -29,6 +29,8 @@ Use this skill to turn a Steam release into a coordinated product, store, commun
 ```text
 Game/launch context:
 Release strategy:
+Launch calendar:
+- <pre-launch/demo/embargo/launch/day-1/week-1 beat> -> owner, decision gate
 
 Readiness matrix:
 - Store page:
@@ -47,4 +49,7 @@ Commercial policy:
 
 Wishlist/review/learning plan:
 - <action> -> metric, timing
+
+Review-bombing / incident response:
+- <signal> -> valid-defect triage, moderation/reporting path, player communication
 ```

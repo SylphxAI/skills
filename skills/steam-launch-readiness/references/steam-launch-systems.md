@@ -55,9 +55,24 @@ Track or request these metrics when available:
 - `crash_reported`: build_version, hardware_class, driver_version, scene_or_match_state, fatality, repeat_count.
 - `server_health_sampled`: region, match_id, latency_bucket, disconnect_count, error_rate, capacity_utilization.
 - `save_integrity_checked`: build_version, device_count, conflict_detected, restore_success, data_loss_risk.
+- `cohort_retention_sampled`: cohort_date, source, country, tutorial_completed, day1_returned, day7_returned, party_or_solo.
 - `refund_signal`: playtime_bucket, reason_theme, crash_or_performance_related.
 - `review_theme_logged`: sentiment, theme, build_version, response_needed.
 - `hotfix_decision_logged`: decision, trigger_metric, owner, shipped_at, rollback_available, player_message_url.
+
+## Launch calendar skeleton
+
+Use concrete beats so "launch ops" does not become generic advice.
+
+| Window | Gate | Owner | Output |
+| --- | --- | --- | --- |
+| T-8 to T-6 weeks | Coming-soon page, demo scope, tags, trailer promise, pricing draft reviewed | product/marketing | store-claim audit and demo acceptance list |
+| T-6 to T-4 weeks | Creator list, press kit, community rules, telemetry, crash reporting, server soak plan ready | community/engineering | embargo note, support macros, telemetry dashboard |
+| T-4 to T-2 weeks | Demo feedback triaged; P0 crashes, save loss, onboarding, controller, and performance issues closed | production/QA | go/no-go report and known-issues draft |
+| T-14 to T-7 days | Creator keys only after stable build; discount, regional price, DLC wording, and refund/review plan signed off | release/business | key list, policy matrix, public messaging pack |
+| Launch day | Monitor checkout, server, crash, refund, review, support, and community signals hourly | release/community | decision ledger and player-facing status |
+| Days 1-3 | Twice-daily hotfix/rollback review and patch-note communication | release manager | hotfix decisions, rollback/no-rollback rationale |
+| Days 4-7 | Daily learning review: retention, wishlist-to-purchase, refunds, reviews, support, patch outcomes | product/live ops | week-1 readout and roadmap adjustment |
 
 ## Technical launch gates
 
@@ -89,6 +104,7 @@ Use a matrix instead of ad hoc launch opinions.
 - Break refund/review monitoring by playtime bucket, build version, hardware class, country/price tier, source campaign, and first-session outcome.
 - If negative reviews cite a real defect, acknowledge the issue, publish the known-issue state, give a fix/rollback ETA when known, and avoid arguing in public threads.
 - If review bombing is suspected, still separate valid product defects from coordinated abuse; moderation and reporting should not replace fixing real launch quality issues.
+- Prepare a review-bombing playbook before launch: freeze defensive replies, group reviews by theme/source/time, identify valid product defects, preserve evidence for moderation/reporting, publish a calm known-issue or clarification post, and keep patch/update communication separate from abuse reporting.
 - If store copy created wrong expectations, change copy/trailer/tags before buying more traffic.
 
 ## First-week decision ledger
@@ -101,6 +117,7 @@ Run launch week as a decision system. Review these twice daily on days 0-3 and d
 | Refund rate | playtime bucket, country, source | Exceeds target or clusters around a defect | fix defect, adjust store copy, support macro |
 | Negative review themes | build, language, feature claim | New repeated theme with proof | public response, patch, roadmap clarification |
 | Demo-to-wishlist | source, festival day, session length | Traffic high but conversion weak | improve end-card, store CTA, trailer promise |
+| Cohort retention | source, country, party/solo, tutorial complete | First-session success does not translate into D1/D7 return | onboarding, matchmaking, balance, roadmap priority |
 | Multiplayer health | region, match type, time of day | disconnect/latency causes churn | capacity, matchmaking, incident post |
 | Support tickets | theme, severity, duplicate count | Duplicate theme overwhelms queue | pinned post, FAQ, macro, patch priority |
 | Patch outcome | before/after metric | Hotfix fails or worsens a signal | rollback, pause promotion, explain next step |

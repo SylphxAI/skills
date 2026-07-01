@@ -23,6 +23,7 @@ A strong answer after loading the skill should:
 - Identifies launch blockers around promise mismatch, platform claims, refunds, and review risk.
 - Defines technical gates for crash reporting, performance, multiplayer/server health, cloud saves, controller support, hotfixes, and rollback.
 - Uses a verified commercial policy matrix for regional pricing, launch discount, DLC roadmap, creator keys, embargoes, refunds, and review response.
+- Includes a launch calendar, review-bombing incident playbook, cohort retention, and first-week server-health learning metrics.
 - Creates a pre-launch through first-week operations matrix.
 
 It should also produce the artifact shape requested by `skills/steam-launch-readiness/SKILL.md`, such as a readiness matrix, state model, decision table, event schema, checklist, or implementation-ready plan.
@@ -39,4 +40,5 @@ The skill should not load for this prompt unless the user adds an explicit steam
 - Identifies launch blockers around promise mismatch, platform claims, refunds, and review risk.
 - Defines technical gates for crash reporting, performance, multiplayer/server health, cloud saves, controller support, hotfixes, and rollback.
 - Uses a verified commercial policy matrix for regional pricing, launch discount, DLC roadmap, creator keys, embargoes, refunds, and review response.
+- Includes a launch calendar, review-bombing incident playbook, cohort retention, and first-week server-health learning metrics.
 - Creates a pre-launch through first-week operations matrix.
