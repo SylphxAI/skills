@@ -1,0 +1,135 @@
+Data classes:
+- User-created content: notes, notebooks/tags, note history, embedded objects, attachments, OCR/index metadata that can be rebuilt.
+- Account/sync state: user ID, device IDs, sync cursors, object versions, tombstones, regional storage assignment.
+- Encryption material: user public keys, encrypted data keys, device key registrations, recovery key metadata. Never store plaintext keys server-side.
+- Deleted items: soft-deleted notes/attachments, tombstones, purge markers.
+- Operational/audit: backup/restore events, restore manifests, support actions, integrity check results.
+- Settings/preferences: app settings, sort order, editor preferences; lower criticality.
+- Analytics: non-restorable and excluded from user restore/export unless legally required.
+
+Durability target:
+- RPO:
+  - Local device: edits persisted immediately to local encrypted store.
+  - Cloud sync: target under 60 seconds after connectivity returns.
+  - Server snapshot backup: no more than 24 hours of restorable cloud-state loss.
+  - Attachments: uploaded with content hash verification before marked synced.
+- RTO:
+  - Device replacement/reinstall: user can restore notes after login/key recovery within minutes to hours depending on attachment volume.
+  - Accidental deletion: self-serve restore within minutes.
+  - Regional/service incident: restore priority users within 24 hours; full regional recovery target 72 hours.
+- Retention:
+  - Deleted items: 30 days default, configurable for business plans.
+  - Version history: 90 days or last N versions per note; longer for paid/business tiers.
+  - Server backup snapshots: daily for 35 days, monthly for 12 months.
+  - Tombstones: retain at least 90 days to prevent deleted data resurrecting on old devices.
+- Encryption:
+  - Notes and attachments encrypted client-side before upload.
+  - Backups store encrypted blobs and encrypted metadata only.
+  - Restore can recover ciphertext without support seeing plaintext.
+- Regional storage:
+  - User data pinned to selected/home region.
+  - Backups remain in-region unless user/admin explicitly enables cross-region disaster recovery with disclosure.
+  - Region migration uses encrypted export/import manifests and audit logs.
+
+Backup design:
+- Local-first:
+  - Each device stores an encrypted local database with append-only change log.
+  - Every mutation creates an immutable operation: create, update, attach, move, delete, restore, purge.
+  - Notes and attachments use stable object IDs, version IDs, hashes, sizes, encryption key IDs, and parent relationships.
+- Cloud sync:
+  - Sync uploads encrypted operations/blobs, not plaintext documents.
+  - Server maintains per-user encrypted object store plus operation log.
+  - Attachments are content-addressed by encrypted hash; upload is complete only after checksum match.
+  - Sync cursors are per-device and monotonic.
+- Server backups:
+  - Daily point-in-time snapshots of encrypted object store, operation log, tombstones, account region, and device/key metadata.
+  - Backup manifests include object counts, byte counts, Merkle/hash tree roots, snapshot timestamp, region, schema version.
+  - Backups are immutable/WORM for retention window to resist ransomware-like corruption.
+  - Separate credentials and write path for backup storage; production app cannot overwrite historical snapshots.
+- Ransomware-like corruption protection:
+  - Detect mass edits/deletes/encryption-looking changes by velocity, entropy, object churn, and attachment overwrite patterns.
+  - Auto-create protected checkpoint before applying suspicious bulk sync.
+  - Allow “restore account to checkpoint” while preserving newer clean notes as separate copies.
+- Deleted-item recovery:
+  - Delete creates tombstone and moves item to trash.
+  - Purge creates irreversible purge marker after retention/legal constraints.
+  - Attachments referenced only by deleted notes are retained until trash/version retention expires.
+- User export:
+  - Self-serve export of notes, metadata, attachments, and version history where practical.
+  - Formats: Markdown/HTML/PDF plus JSON manifest; attachments in original encrypted-decrypted form locally after user unlocks.
+  - Server can provide encrypted export package; client decrypts locally.
+- Proof backups work:
+  - Automated restore drill daily against sampled encrypted backup snapshots into isolated test accounts.
+  - Verify manifest counts, hashes, attachment readability after client-side test decryption with test keys.
+  - Monthly full-region restore simulation.
+  - Track restore success rate, median RTO, partial-restore causes, and last successful drill timestamp.
+
+Restore design:
+- Restore state machine:
+  - requested -> preparing -> restoring -> verifying -> complete
+  - restoring -> conflict -> user_choice -> restoring
+  - verifying -> partial_restore -> support_required
+- Self-serve restore cases:
+  - New device/reinstall: login, recover/unlock encryption keys, download metadata first, then notes, then attachments lazily.
+  - Deleted note: restore from trash/version history, preserving original timestamps and creating a new restore operation.
+  - Previous version: restore as new version or duplicate note.
+  - Account checkpoint: choose timestamp before corruption; preview affected notes; restore in-place or into “Recovered” notebook.
+- Support-assisted restore:
+  - Support can locate snapshots, manifests, object IDs, and restore status.
+  - Support cannot decrypt user content.
+  - Any support action requires user authorization, ticket ID, reason code, and audit log.
+  - Support can trigger encrypted snapshot restore to user account or separate recovery account.
+
+Conflict handling:
+- Preferences: latest-write-wins.
+- Notes: merge text only where CRDT/operation merge is safe.
+- Attachments/binary files: keep both copies with conflict suffix and source device/time.
+- Deletes vs edits:
+  - If one device edits while another deletes, keep edited note and mark deletion conflict.
+  - User chooses keep, delete, or duplicate.
+- Restore vs current data:
+  - Never silently overwrite current user content.
+  - Default restore creates recovered copies or a recovery notebook.
+  - In-place rollback requires explicit confirmation.
+- Old device reappearing:
+  - Tombstone retention prevents resurrection.
+  - Stale devices must resync from server checkpoint before uploading old operations.
+
+Support/admin tooling:
+- Admin dashboard:
+  - User region, backup coverage, last successful sync, last backup snapshot, available restore points.
+  - Restore drill status, manifest verification, corruption alerts.
+  - Restore job lifecycle and error details without plaintext content.
+- Required audit events:
+  - `backup_scheduled`
+  - `backup_started`
+  - `backup_completed`
+  - `backup_failed`
+  - `restore_requested`
+  - `restore_started`
+  - `restore_conflict_detected`
+  - `restore_completed`
+  - `restore_partial`
+  - `restore_failed`
+  - `export_requested`
+  - `export_completed`
+  - `support_restore_authorized`
+  - `support_restore_started`
+  - `support_restore_completed`
+  - `backup_drill_started`
+  - `backup_drill_completed`
+  - `backup_drill_failed`
+  - `corruption_checkpoint_created`
+- Event fields:
+  - event_id, user_id, account_id, region, actor_type, actor_id, device_id, request_id, snapshot_id, object_counts, byte_counts, started_at, completed_at, status, error_code, conflict_count, partial_count, ticket_id, authorization_id.
+
+Failure modes:
+- Lost device without recovery key: ciphertext may be recoverable, plaintext is not; communicate clearly during setup.
+- Backup snapshot missing objects: restore marked partial; retry alternate snapshot; escalate to support.
+- Attachment hash mismatch: quarantine object, retry upload/download, do not mark restore complete.
+- Regional outage: fail over only to approved region policy; preserve residency commitments.
+- Corrupt client database: rebuild from operation log/cloud snapshot after key unlock.
+- Ransomware/bulk corruption synced: restore from protected checkpoint; keep post-checkpoint clean edits separately.
+- Stale offline device resurrects deleted content: reject or quarantine operations older than server tombstone horizon.
+- Support misuse: least-privilege access, dual approval for bulk/account restore, immutable audit log.
+- Restore drill failure: page owning team, block backup health status from showing green, require remediation and successful rerun.

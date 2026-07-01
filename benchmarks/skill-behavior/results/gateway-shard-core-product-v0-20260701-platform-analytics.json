@@ -1,0 +1,426 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-shard-core-product-v0-20260701-platform-analytics",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "steam-launch-commercial-readiness-001",
+      "desktop-os-integration-release-001",
+      "product-analytics-revenue-funnel-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "5003d234ead9bf2cfc05ea28d36e0a191c7f0b61",
+      "branch": "codex/benchmark-final-suite-coverage",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T12:22:53.305Z",
+    "completedAt": "2026-07-01T12:27:25.026Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "steam-launch-commercial-readiness-001",
+      "skill": "steam-launch-readiness",
+      "promptSha256": "9ac8c2667aa3204e8d7a19f5abe62e46a5a60f3700fa2a8e2630586522852a40",
+      "skillContextSha256": "b9f21cea7627251667bca3deae3d51ed45a3adea326be99195acfe9bb6af6a13",
+      "skillBodySha256": "28ebda07e4bb3244d6778fb107c686b626348cd5a38507e981b3c373517fcf6c",
+      "skillReferenceSha256": [
+        {
+          "path": "references/steam-launch-systems.md",
+          "sha256": "1137f4a3b04f175542a377eb1c8424b85f446cd46040b683ddc7dbbeffbea2f8"
+        }
+      ],
+      "skillLoadedPromptSha256": "ef053f4429a1c18265fe6852041465b83cfd48215e0f7ca392d7d701f2769806",
+      "baseline": {
+        "score": 4.44,
+        "criterionScores": {
+          "store-conversion": 5,
+          "technical-readiness": 4,
+          "commercial-policy": 5,
+          "community-ops": 4.5,
+          "post-launch-learning": 3
+        },
+        "criticalFailures": [],
+        "rationale": "Very complete and concrete, especially store, pricing, discount, DLC, refund, review, moderation, and creator timing. Technical plan lacks explicit crash reporting and rollback gates; post-launch learning is mostly cadence, not measurement.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/steam-launch-commercial-readiness-001-baseline.md",
+        "outputSha256": "5c455a7095adc02e14b4fb6d669fa95608babb289a641f8bf635bed40653a0e9",
+        "latencyMs": 34407,
+        "usage": {
+          "input_tokens": 101,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1805,
+          "output_tokens_details": {
+            "reasoning_tokens": 66
+          },
+          "total_tokens": 1906
+        }
+      },
+      "skillLoaded": {
+        "score": 4.69,
+        "criterionScores": {
+          "store-conversion": 4.5,
+          "technical-readiness": 5,
+          "commercial-policy": 4.5,
+          "community-ops": 5,
+          "post-launch-learning": 4.5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong operational readiness with blockers, owners, telemetry, rollback, moderation, refund/review triage, and creator timing. Slightly less concrete on exact launch discount and regional price table than ideal, but covers all required artifacts.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/steam-launch-commercial-readiness-001-skill-loaded.md",
+        "outputSha256": "ffbd4c75c0f874406bdeccaef9a81fabe6e6ec746c9eae5d549c9ec97bd8bfdf",
+        "latencyMs": 32094,
+        "usage": {
+          "input_tokens": 1295,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1255,
+          "output_tokens_details": {
+            "reasoning_tokens": 46
+          },
+          "total_tokens": 2550
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/steam-launch-commercial-readiness-001-judge-raw.md",
+      "judgeOutputSha256": "c291bb5be06dd2e9fe6b8eed49d2fe1acd9e41721b77082d194a85305788d1ef",
+      "judgeLatencyMs": 20236,
+      "judgeUsage": {
+        "input_tokens": 3695,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 1039,
+        "output_tokens_details": {
+          "reasoning_tokens": 827
+        },
+        "total_tokens": 4734
+      }
+    },
+    {
+      "taskId": "desktop-os-integration-release-001",
+      "skill": "desktop-os-integration",
+      "promptSha256": "6842892a97437da94ac4a4f207430132ce63dc27ceed8b62db0730436d3daa9f",
+      "skillContextSha256": "af06ebece67784148b3b24f55aa736aa6c963c8c9e612d176cc7f350b2abd477",
+      "skillBodySha256": "7e86f88ee17e75b3141977cd8cc85a3f5e5001902b8fb3b901a2dedb008119f1",
+      "skillReferenceSha256": [
+        {
+          "path": "references/desktop-os-integration-matrix.md",
+          "sha256": "41d599e563916f5fdcf17eb323ef6620a4e5faf8c3cd7d0daae03ac93d1af975"
+        }
+      ],
+      "skillLoadedPromptSha256": "b8fb249942851260aaef970040d9d9d814395a1ca2775df4f4efe1885a415ff0",
+      "baseline": {
+        "score": 4.62,
+        "criterionScores": {
+          "platform-native-fit": 4.8,
+          "trust-permissions": 4.8,
+          "release-integrity": 4.8,
+          "enterprise-readiness": 4.8,
+          "testability": 3.4
+        },
+        "criticalFailures": [],
+        "rationale": "Excellent coverage of macOS/Windows conventions, signing/notarization, updater safety, permissions, crash reporting, and enterprise controls. Includes some concrete tests, but lacks a consolidated regression matrix with permission reset and compatibility coverage.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/desktop-os-integration-release-001-baseline.md",
+        "outputSha256": "6516331ecb86827405c718477942d0d779c038fc188d422130b0e4f3d91003a0",
+        "latencyMs": 35107,
+        "usage": {
+          "input_tokens": 104,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1693,
+          "output_tokens_details": {
+            "reasoning_tokens": 58
+          },
+          "total_tokens": 1797
+        }
+      },
+      "skillLoaded": {
+        "score": 4.45,
+        "criterionScores": {
+          "platform-native-fit": 4.8,
+          "trust-permissions": 4.7,
+          "release-integrity": 4.7,
+          "enterprise-readiness": 4.7,
+          "testability": 2.5
+        },
+        "criticalFailures": [
+          "Missing explicit regression test plan"
+        ],
+        "rationale": "Very comprehensive desktop-native matrix with strong permissions, signing, update, enterprise, and uninstall coverage. Main gap is no clear regression test plan covering cross-OS compatibility, update failures, permission resets, and rollback validation.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/desktop-os-integration-release-001-skill-loaded.md",
+        "outputSha256": "330793c90079bfdf51e1e6a3c29288fc136a251286d87b8edf9816101ea65976",
+        "latencyMs": 28407,
+        "usage": {
+          "input_tokens": 834,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1369,
+          "output_tokens_details": {
+            "reasoning_tokens": 29
+          },
+          "total_tokens": 2203
+        }
+      },
+      "preference": "baseline",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/desktop-os-integration-release-001-judge-raw.md",
+      "judgeOutputSha256": "fb6890f339575b86ab636479d51b4ddfd89a3cde5b98e3d948f28ba55e6e696a",
+      "judgeLatencyMs": 11057,
+      "judgeUsage": {
+        "input_tokens": 3723,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 518,
+        "output_tokens_details": {
+          "reasoning_tokens": 290
+        },
+        "total_tokens": 4241
+      }
+    },
+    {
+      "taskId": "product-analytics-revenue-funnel-001",
+      "skill": "product-analytics-instrumentation-review",
+      "promptSha256": "acf64c7ea3a71997be2e04e6aabea0097d2c0b61d06e58c0f68b1501a8d9f36c",
+      "skillContextSha256": "1f3273cd126abe21b1212a85ecb81c401d26e48ecc3ecd2cf0f5eebb9ab80e9c",
+      "skillBodySha256": "b570547f72968b8d1a419150c62dafd1e86efe2a6b7c68e82dc01b60e4dc21b6",
+      "skillReferenceSha256": [
+        {
+          "path": "references/product-analytics-instrumentation-patterns.md",
+          "sha256": "a5e0bf4ee0e5b22c4232da7946d66e566ad3b6a860090bfb8db55bf16fa4681a"
+        }
+      ],
+      "skillLoadedPromptSha256": "5ee56d52d6e460cd317aa1fa45c51865275d87f55c13e2642556ec3d3d265758",
+      "baseline": {
+        "score": 4.19,
+        "criterionScores": {
+          "decision-orientation": 4,
+          "taxonomy-quality": 4.5,
+          "identity-attribution": 4,
+          "dashboard-readiness": 4.5,
+          "data-quality": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive taxonomy, lifecycle coverage, dashboards, consent notes, and QA checklist. Slightly less decision-led, ownership is only lightly specified, identity privacy boundaries are less detailed, and data-quality lacks explicit schema drift/backfill/anomaly alert policies.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/product-analytics-revenue-funnel-001-baseline.md",
+        "outputSha256": "e0574413662e3702f6f17a109b67e4612744fde1c37e988121d5a45852618336",
+        "latencyMs": 35498,
+        "usage": {
+          "input_tokens": 102,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1870,
+          "output_tokens_details": {
+            "reasoning_tokens": 68
+          },
+          "total_tokens": 1972
+        }
+      },
+      "skillLoaded": {
+        "score": 4.74,
+        "criterionScores": {
+          "decision-orientation": 5,
+          "taxonomy-quality": 4.6,
+          "identity-attribution": 4.8,
+          "dashboard-readiness": 4.3,
+          "data-quality": 4.8
+        },
+        "criticalFailures": [],
+        "rationale": "Strongly ties instrumentation to decisions, owners, risks, source-of-truth boundaries, consent, identity stitching, and validation gates. Dashboard plan is somewhat less metric-detailed than A, but overall more operationally ready and privacy-aware.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/product-analytics-revenue-funnel-001-skill-loaded.md",
+        "outputSha256": "f81985f272cfcac09f595425756be0fef5c88ea5cabc13c2fca4670e13ad6259",
+        "latencyMs": 34643,
+        "usage": {
+          "input_tokens": 1197,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1691,
+          "output_tokens_details": {
+            "reasoning_tokens": 29
+          },
+          "total_tokens": 2888
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/product-analytics-revenue-funnel-001-judge-raw.md",
+      "judgeOutputSha256": "18020596223cd769ec926e69e0d356a8f01aa70861bdc7ffdfb5d0dcda1a8dbe",
+      "judgeLatencyMs": 11951,
+      "judgeUsage": {
+        "input_tokens": 4207,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 578,
+        "output_tokens_details": {
+          "reasoning_tokens": 357
+        },
+        "total_tokens": 4785
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "steam-launch-commercial-readiness-001",
+      "promptType": "positive",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [
+        "steam-launch-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt explicitly asks to run Steam launch readiness for an indie multiplayer game and lists directly relevant Steam launch topics such as wishlist conversion, demo, achievements, cloud saves, regional pricing, launch discount, community hub moderation, refund risk, reviews, patch cadence, and influencer embargo timing.",
+      "latencyMs": 12045,
+      "usage": {
+        "input_tokens": 222,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 75,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 297
+      }
+    },
+    {
+      "taskId": "steam-launch-commercial-readiness-001",
+      "promptType": "negative-control",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks for designing an enterprise SCIM role lifecycle review, which concerns identity/access management and provisioning governance, not launching, auditing, or improving a PC game on Steam.",
+      "latencyMs": 6076,
+      "usage": {
+        "input_tokens": 177,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 54,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 231
+      }
+    },
+    {
+      "taskId": "desktop-os-integration-release-001",
+      "promptType": "positive",
+      "expectedSkill": "desktop-os-integration",
+      "triggeredSkills": [
+        "desktop-os-integration"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly requests reviewing desktop OS integration for a macOS and Windows productivity app, covering auto-update, login items, file associations, drag-and-drop, notifications, tray/menu bar, deep links, permissions, crash reporting, code signing/notarization, and enterprise installation—all explicitly within the skill description.",
+      "latencyMs": 2525,
+      "usage": {
+        "input_tokens": 226,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 80,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 306
+      }
+    },
+    {
+      "taskId": "desktop-os-integration-release-001",
+      "promptType": "negative-control",
+      "expectedSkill": "desktop-os-integration",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks for designing a daily login reward economy for a casual mobile game, which is game economy/design work and not directly related to desktop OS integration topics like installers, tray/menu behavior, permissions, file associations, or OS-specific settings.",
+      "latencyMs": 2285,
+      "usage": {
+        "input_tokens": 181,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 67,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 248
+      }
+    },
+    {
+      "taskId": "product-analytics-revenue-funnel-001",
+      "promptType": "positive",
+      "expectedSkill": "product-analytics-instrumentation-review",
+      "triggeredSkills": [
+        "product-analytics-instrumentation-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt explicitly requests a review of product analytics instrumentation for a subscription app, including attribution, onboarding, paywall events, trials, purchases, refunds, cancellations, opt-ins, activation, feature usage, cohorts, privacy consent, event naming, identity stitching, and dashboard readiness—all core areas covered by the product-analytics-instrumentation-review skill.",
+      "latencyMs": 2670,
+      "usage": {
+        "input_tokens": 219,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 88,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 307
+      }
+    },
+    {
+      "taskId": "product-analytics-revenue-funnel-001",
+      "promptType": "negative-control",
+      "expectedSkill": "product-analytics-instrumentation-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks for a Steam community moderation plan for launch week, which is about community management and moderation operations. It does not directly involve product analytics instrumentation, event tracking, funnels, cohorts, experiments, attribution, or data quality design.",
+      "latencyMs": 2704,
+      "usage": {
+        "input_tokens": 174,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 66,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 240
+      }
+    }
+  ]
+}
