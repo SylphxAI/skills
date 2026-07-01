@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-shard-core-product-v0-20260701-lifecycle-retention",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "notification-lifecycle-growth-001",
+      "daily-reward-streak-economy-001",
+      "backup-restore-customer-data-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "abfce3b43725f957067a1900a133be9311d4f3d1",
+      "branch": "codex/benchmark-final-suite-coverage",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T12:11:57.686Z",
+    "completedAt": "2026-07-01T12:16:51.631Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "notification-lifecycle-growth-001",
+      "skill": "notification-strategy-review",
+      "promptSha256": "ef1451aeb0bd6caf51f6f0224bfc1e425572abe6ef0c08cd3519b5558d2fd3fa",
+      "skillContextSha256": "051c0dd48e9c457142e1a8ece348e5f70322e64fabbe55e8d8af762eaf34e46f",
+      "skillBodySha256": "7db14b8c65a82d80568a8436b4ba9e29d0f3a7da90bccc596ec02cde54b91ce9",
+      "skillReferenceSha256": [
+        {
+          "path": "references/notification-strategy-patterns.md",
+          "sha256": "a51b79cb4bf888b11132336d1758e6422526a318484495364a0e455e28f9bb77"
+        }
+      ],
+      "skillLoadedPromptSha256": "ddf67617671793ccd5b96252fde127bf13f0dd9791ab91e01dc455b261130418",
+      "baseline": {
+        "score": 4.7,
+        "criterionScores": {
+          "user-value": 4.8,
+          "permission-consent": 4.7,
+          "frequency-policy": 4.6,
+          "lifecycle-targeting": 4.9,
+          "measurement": 4.5
+        },
+        "criticalFailures": [],
+        "rationale": "Complete strategy with clear taxonomy, lifecycle matrix, caps, quiet hours, opt-in and preference center. Strong separation of transactional and marketing. Minor gaps: regional consent and cross-channel deduplication are mentioned but not deeply specified.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/notification-lifecycle-growth-001-baseline.md",
+        "outputSha256": "6d6e186b97457cf7645b62bb53483bcda32c4b3bcd00084adc43456cb28bd339",
+        "latencyMs": 32791,
+        "usage": {
+          "input_tokens": 101,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1740,
+          "output_tokens_details": {
+            "reasoning_tokens": 42
+          },
+          "total_tokens": 1841
+        }
+      },
+      "skillLoaded": {
+        "score": 4.7,
+        "criterionScores": {
+          "user-value": 5,
+          "permission-consent": 4.5,
+          "frequency-policy": 4.5,
+          "lifecycle-targeting": 4.7,
+          "measurement": 4.8
+        },
+        "criticalFailures": [],
+        "rationale": "Excellent taxonomy with user value, controls, harm guardrails, events, and measurement. Covers all journeys and channels. Minor gaps: no explicit lifecycle map artifact, limited regional consent detail, and priority rules are less formal than caps.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/notification-lifecycle-growth-001-skill-loaded.md",
+        "outputSha256": "0de09fed3d84da3938b44e8fab620c77bb72997e274a0bca9148e1b8dc406d6c",
+        "latencyMs": 23630,
+        "usage": {
+          "input_tokens": 885,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1193,
+          "output_tokens_details": {
+            "reasoning_tokens": 27
+          },
+          "total_tokens": 2078
+        }
+      },
+      "preference": "tie",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/notification-lifecycle-growth-001-judge-raw.md",
+      "judgeOutputSha256": "d8cd247110a5a3631bda7fd01ad6ff6f765799bd4e5b11bc74221edb4ccfd9f6",
+      "judgeLatencyMs": 19254,
+      "judgeUsage": {
+        "input_tokens": 3599,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 736,
+        "output_tokens_details": {
+          "reasoning_tokens": 516
+        },
+        "total_tokens": 4335
+      }
+    },
+    {
+      "taskId": "daily-reward-streak-economy-001",
+      "skill": "daily-reward-and-streak-review",
+      "promptSha256": "32d0baff68dbe831708015c94361580a1f365d54988df902cbd3eb025cfd0543",
+      "skillContextSha256": "b0c44b4e067949d7f29542414dfc682dad924337e9996b3e25201b668ebee792",
+      "skillBodySha256": "8feb7871f868eb2528d11b7fbd0585852bfd50a57f7c412f987ab9a439bab62f",
+      "skillReferenceSha256": [
+        {
+          "path": "references/daily-reward-streak-systems.md",
+          "sha256": "ec62d750fda9a6321887dacb1f7f3d66e811960f0de8a7797158f608cc99a88a"
+        }
+      ],
+      "skillLoadedPromptSha256": "a391bb64567477fe3aeb6f55ed7cf7ecc3fc3ecd89020eeb44d935b1a40998ea",
+      "baseline": {
+        "score": 3.9,
+        "criterionScores": {
+          "retention-ethics": 4.5,
+          "state-rules": 4,
+          "economy-balance": 3.5,
+          "abuse-prevention": 3.5,
+          "measurement": 3.5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong ethical guidance and solid rules for resets, freezes, timezone, offline, and notifications. Missing an explicit streak state machine, gives limited economy sink/progression analysis, and abuse/measurement coverage is less complete.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/daily-reward-streak-economy-001-baseline.md",
+        "outputSha256": "6d62c10bc65aa5878071011ea962eed80491f1cd57c087d486274d177423d3af",
+        "latencyMs": 31429,
+        "usage": {
+          "input_tokens": 106,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1559,
+          "output_tokens_details": {
+            "reasoning_tokens": 69
+          },
+          "total_tokens": 1665
+        }
+      },
+      "skillLoaded": {
+        "score": 4.9,
+        "criterionScores": {
+          "retention-ethics": 5,
+          "state-rules": 5,
+          "economy-balance": 5,
+          "abuse-prevention": 4.5,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive, concrete policy with state machine, timezone/offline handling, VIP limits, economy guardrails, abuse controls, and measurement. Slightly light on explicit multi-accounting, but duplicate-device/account controls mostly cover it.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/daily-reward-streak-economy-001-skill-loaded.md",
+        "outputSha256": "ddc940491ada7b223eab0bb4cc2a60d29d2a9e1aaea4fcf941092bc19a70654d",
+        "latencyMs": 31443,
+        "usage": {
+          "input_tokens": 1200,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1475,
+          "output_tokens_details": {
+            "reasoning_tokens": 13
+          },
+          "total_tokens": 2675
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/daily-reward-streak-economy-001-judge-raw.md",
+      "judgeOutputSha256": "c57ea601ccce8d19d111454201aa0904c04b3873ad5b5aa507195a023b101a36",
+      "judgeLatencyMs": 10292,
+      "judgeUsage": {
+        "input_tokens": 3705,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 489,
+        "output_tokens_details": {
+          "reasoning_tokens": 271
+        },
+        "total_tokens": 4194
+      }
+    },
+    {
+      "taskId": "backup-restore-customer-data-001",
+      "skill": "backup-restore-design",
+      "promptSha256": "882d9ce4c32e306bf6f9892caa8ddfbe56263feeb28da0a9cd18b4b518157a6f",
+      "skillContextSha256": "f647948d42c33d51de3c79c571707f158f13cb273cba03cbdcddb20cf6e510fa",
+      "skillBodySha256": "1c0ad09e8f417b5582a62adfc0e119701ad140f31f8a2734fca4cb7b4b543de2",
+      "skillReferenceSha256": [
+        {
+          "path": "references/backup-restore-patterns.md",
+          "sha256": "773a34e3ff643d18a0fbeded29a75ad1ab5d94888d87eefd0fc80fdbed6b29dc"
+        }
+      ],
+      "skillLoadedPromptSha256": "7c82459e9eaeda29a06f34cd57ad2261110acd44bddd6e5a08211b413d36c28a",
+      "baseline": {
+        "score": 4.2,
+        "criterionScores": {
+          "recovery-objectives": 4,
+          "restore-proof": 4.5,
+          "corruption-deletion": 4.5,
+          "security-privacy": 4.5,
+          "operations": 3
+        },
+        "criticalFailures": [],
+        "rationale": "Strong coverage of backup layers, E2EE, deletion/corruption recovery, regional storage, exports, and restore testing. Weaker on precise RTO promises, owner roles, cost controls, customer communications, and escalation runbook details.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/backup-restore-customer-data-001-baseline.md",
+        "outputSha256": "330135dc97ce061cbde6ef23d337b80133e381c87974e363862ad8d67562c56e",
+        "latencyMs": 83592,
+        "usage": {
+          "input_tokens": 100,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1668,
+          "output_tokens_details": {
+            "reasoning_tokens": 43
+          },
+          "total_tokens": 1768
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "recovery-objectives": 5,
+          "restore-proof": 5,
+          "corruption-deletion": 5,
+          "security-privacy": 5,
+          "operations": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive design with explicit scope, RPO/RTO, retention, immutable backups, runbooks, corruption handling, E2EE/key limits, regional controls, support workflows, audit events, drills, metrics, and failure escalation.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/backup-restore-customer-data-001-skill-loaded.md",
+        "outputSha256": "343747e48503954ffafb1f5357a485844072c1a228ebaed7fe2b297173317a4c",
+        "latencyMs": 36124,
+        "usage": {
+          "input_tokens": 755,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1707,
+          "output_tokens_details": {
+            "reasoning_tokens": 19
+          },
+          "total_tokens": 2462
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/backup-restore-customer-data-001-judge-raw.md",
+      "judgeOutputSha256": "2533b47b1b3aa7af349c6f5b81d4df0553c60e64f437097309abbca25c4a439f",
+      "judgeLatencyMs": 9001,
+      "judgeUsage": {
+        "input_tokens": 4057,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 427,
+        "output_tokens_details": {
+          "reasoning_tokens": 214
+        },
+        "total_tokens": 4484
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "notification-lifecycle-growth-001",
+      "promptType": "positive",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [
+        "notification-strategy-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to create a notification strategy for a mobile productivity app, including onboarding nudges, trial reminders, workflow recovery, summaries, win-back, transactional alerts, quiet hours, localization, push/email/in-app channels, opt-in prompts, frequency caps, and unsubscribe preferences—all core areas of the notification-strategy-review skill.",
+      "latencyMs": 2911,
+      "usage": {
+        "input_tokens": 216,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 85,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 301
+      }
+    },
+    {
+      "taskId": "notification-lifecycle-growth-001",
+      "promptType": "negative-control",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about backup and restore architecture for a desktop file app, which concerns data storage, synchronization, recovery, and system design rather than notification strategy, messaging, reminders, permission prompts, or user communication channels.",
+      "latencyMs": 2274,
+      "usage": {
+        "input_tokens": 173,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 62,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 235
+      }
+    },
+    {
+      "taskId": "daily-reward-streak-economy-001",
+      "promptType": "positive",
+      "expectedSkill": "daily-reward-and-streak-review",
+      "triggeredSkills": [
+        "daily-reward-and-streak-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt explicitly asks to review a daily reward and streak system for a mobile game, including login bonuses, streak freezes, calendar rewards, gacha currency, comeback bonuses, time-zone changes, offline play, anti-abuse for clock manipulation, VIP multipliers, notifications, monetization pressure, retention, and player trust—all directly within the skill’s scope.",
+      "latencyMs": 2790,
+      "usage": {
+        "input_tokens": 231,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 90,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 321
+      }
+    },
+    {
+      "taskId": "daily-reward-streak-economy-001",
+      "promptType": "negative-control",
+      "expectedSkill": "daily-reward-and-streak-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks for a Microsoft Store package submission checklist, which is about app packaging, compliance, and store submission workflow. It does not involve daily rewards, streaks, missions, retention loops, reward calendars, or related engagement mechanics.",
+      "latencyMs": 2659,
+      "usage": {
+        "input_tokens": 180,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 66,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 246
+      }
+    },
+    {
+      "taskId": "backup-restore-customer-data-001",
+      "promptType": "positive",
+      "expectedSkill": "backup-restore-design",
+      "triggeredSkills": [
+        "backup-restore-design"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt explicitly asks to design backup and restore for a notes app, including local-first data, cloud sync, end-to-end encryption, attachments, deleted-item recovery, device loss, corruption/ransomware recovery, export, regional storage, support-assisted restore, and restore verification. This directly matches the backup-restore-design skill scope.",
+      "latencyMs": 2893,
+      "usage": {
+        "input_tokens": 212,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 85,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 297
+      }
+    },
+    {
+      "taskId": "backup-restore-customer-data-001",
+      "promptType": "negative-control",
+      "expectedSkill": "backup-restore-design",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about reviewing marketing copy for a referral campaign landing page headline, not designing or reviewing backup, restore, recovery, storage, versioning, migration, deletion, or disaster recovery systems.",
+      "latencyMs": 2847,
+      "usage": {
+        "input_tokens": 167,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 58,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 225
+      }
+    }
+  ]
+}
