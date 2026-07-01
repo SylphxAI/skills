@@ -11,7 +11,7 @@ The repository currently has strong **structural proof**:
 - `npm run check` validates schema, catalog, eval, reference, launch-kit, and benchmark-fixture coverage;
 - `npm run verify:install` proves the public install surface.
 
-This is not the same as behavioral proof. Until benchmark result files exist under `benchmarks/skill-behavior/results/`, the honest public claim is: **the skills are preview skills with benchmark fixtures, not proven SOTA skills**.
+This is not the same as behavioral proof. A calibration result under `benchmarks/skill-behavior/results/` proves the benchmark pipeline can produce paired behavioral evidence, but it does not prove repository-level usefulness. Until complete suite or per-skill results pass the claim gates, the honest public claim is: **the skills are preview skills with benchmark fixtures and calibration evidence, not proven SOTA skills**.
 
 ## Scientific benchmark design
 
@@ -108,6 +108,15 @@ Prepare provider-neutral JSONL jobs for a benchmark run:
 npm run benchmark:prepare -- benchmarks/skill-behavior/tasks/core-product-v0.json --out /tmp/core-product-v0.jobs.jsonl --run-id <run-id>
 ```
 
+Shard large runs:
+
+```bash
+npm run benchmark:prepare -- benchmarks/skill-behavior/tasks/core-product-v0.json --out /tmp/core-product-v0-shard.jobs.jsonl --run-id <run-id> --start 0 --limit 5
+npm run benchmark:run:openai -- benchmarks/skill-behavior/tasks/core-product-v0.json --out /tmp/core-product-v0-shard.result.json --run-id <run-id> --start 0 --limit 5
+```
+
+Use `--task-id <id>` to rerun a specific failed or suspicious task. Multiple task IDs can be repeated or comma-separated.
+
 Summarize one or more scored runs:
 
 ```bash
@@ -125,6 +134,8 @@ Use `--dry-run` before a paid run. The runner records raw baseline and skill-loa
 The summarizer expects scored result files. It reports the strongest public claim tier supported by the data; it does not upgrade a result to "Useful" unless sample depth, win rate, average delta, critical-failure, and over-trigger gates pass.
 
 Valid result files must be audit-grade: they need runner identity, model, blind-judge status, per-criterion scores, critical failures, and output references for both baseline and skill-loaded answers. A single aggregate score without raw-output traceability is not enough evidence for a usefulness claim.
+
+`core-product-v0` has 20 tasks, so a complete suite result can support a repository-level "Useful" claim only if all other gates pass. It does not prove every individual skill useful; individual skill claims still need at least 5 positive tasks for that skill.
 
 ## What this changes in repository strategy
 

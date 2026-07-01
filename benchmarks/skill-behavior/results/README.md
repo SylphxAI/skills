@@ -1,6 +1,6 @@
 # Benchmark Results
 
-No public behavioral result should be added here unless it records a paired baseline-vs-skill run.
+This directory contains public paired baseline-vs-skill result files. A calibration result proves the runner and scoring pipeline work, but it is not enough to claim a skill or the repository is useful.
 
 A valid result file must include:
 
@@ -20,4 +20,4 @@ Generated results should be produced by a reproducible runner, for example:
 OPENAI_API_KEY=... npm run benchmark:run:openai -- benchmarks/skill-behavior/tasks/core-product-v0.json --out benchmarks/skill-behavior/results/<run-id>.json --output-dir benchmarks/skill-behavior/results/<run-id>-outputs --run-id <run-id>
 ```
 
-Structural validation and install verification are not behavioral proof. If this directory is empty, the repository has no public benchmark data yet.
+Structural validation and install verification are not behavioral proof. Treat small calibration files as pipeline evidence only; usefulness claims require the sample-depth and claim gates in `docs/skill-benchmark-methodology.md`.

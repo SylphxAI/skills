@@ -7,7 +7,7 @@ const repoRoot = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
 const defaultBaseUrl = 'https://api.openai.com/v1';
 
 function usage() {
-  console.error(`Usage: node scripts/run-benchmark-openai.mjs <tasks.json> --out <result.json> [options]\n\nOptions:\n  --run-id <id>              Stable run identifier. Defaults to timestamp.\n  --model <model>            Answer model. Defaults to OPENAI_MODEL or gpt-5.5.\n  --judge-model <model>      Judge/trigger model. Defaults to BENCHMARK_JUDGE_MODEL or --model.\n  --base-url <url>           OpenAI-compatible API base URL. Defaults to https://api.openai.com/v1.\n  --output-dir <dir>         Directory for raw outputs. Defaults to /tmp/skill-benchmark-<run-id>.\n  --temperature <number>     Answer temperature. Defaults to 0.2.\n  --max-output-tokens <n>    Answer token cap. Defaults to 3500.\n  --limit <n>                Run only the first n tasks. Useful for smoke tests.\n  --no-references            Do not include skill reference files in skill-loaded prompts.\n  --skip-trigger-checks      Do not run positive/negative trigger classifier checks.\n  --dry-run                  Validate inputs and print planned calls without contacting the API.\n`);
+  console.error(`Usage: node scripts/run-benchmark-openai.mjs <tasks.json> --out <result.json> [options]\n\nOptions:\n  --run-id <id>              Stable run identifier. Defaults to timestamp.\n  --model <model>            Answer model. Defaults to OPENAI_MODEL or gpt-5.5.\n  --judge-model <model>      Judge/trigger model. Defaults to BENCHMARK_JUDGE_MODEL or --model.\n  --base-url <url>           OpenAI-compatible API base URL. Defaults to https://api.openai.com/v1.\n  --output-dir <dir>         Directory for raw outputs. Defaults to /tmp/skill-benchmark-<run-id>.\n  --temperature <number>     Answer temperature. Defaults to 0.2.\n  --max-output-tokens <n>    Answer token cap. Defaults to 3500.\n  --start <n>                Zero-based task offset after optional task-id filtering. Defaults to 0.\n  --limit <n>                Run only n selected tasks. Useful for smoke tests and shards.\n  --task-id <id>             Run a specific task id. Repeat or comma-separate for multiple tasks.\n  --no-references            Do not include skill reference files in skill-loaded prompts.\n  --skip-trigger-checks      Do not run positive/negative trigger classifier checks.\n  --dry-run                  Validate inputs and print planned calls without contacting the API.\n`);
   process.exit(1);
 }
 
@@ -20,6 +20,8 @@ function parseArgs(argv) {
     maxOutputTokens: 3500,
     includeReferences: true,
     triggerChecks: true,
+    taskIds: [],
+    start: 0,
     dryRun: false,
   };
   const positional = [];
@@ -33,7 +35,9 @@ function parseArgs(argv) {
     else if (arg === '--output-dir') args.outputDir = argv[++i];
     else if (arg === '--temperature') args.temperature = Number(argv[++i]);
     else if (arg === '--max-output-tokens') args.maxOutputTokens = Number(argv[++i]);
+    else if (arg === '--start') args.start = Number(argv[++i]);
     else if (arg === '--limit') args.limit = Number(argv[++i]);
+    else if (arg === '--task-id') args.taskIds.push(...argv[++i].split(',').map((value) => value.trim()).filter(Boolean));
     else if (arg === '--no-references') args.includeReferences = false;
     else if (arg === '--skip-trigger-checks') args.triggerChecks = false;
     else if (arg === '--dry-run') args.dryRun = true;
@@ -43,6 +47,7 @@ function parseArgs(argv) {
   if (positional.length !== 1 || !args.out) usage();
   if (!Number.isFinite(args.temperature)) throw new Error('--temperature must be a number');
   if (!Number.isInteger(args.maxOutputTokens) || args.maxOutputTokens < 1) throw new Error('--max-output-tokens must be a positive integer');
+  if (!Number.isInteger(args.start) || args.start < 0) throw new Error('--start must be a non-negative integer');
   if (args.limit !== undefined && (!Number.isInteger(args.limit) || args.limit < 1)) throw new Error('--limit must be a positive integer');
   args.taskFile = positional[0];
   args.judgeModel ||= args.model;
@@ -50,6 +55,18 @@ function parseArgs(argv) {
   args.outputDir = path.resolve(repoRoot, args.outputDir || path.join('/tmp', `skill-benchmark-${args.runId}`));
   args.out = path.resolve(repoRoot, args.out);
   return args;
+}
+
+function selectTasks(tasks, args) {
+  let selected = tasks;
+  if (args.taskIds.length) {
+    const wanted = new Set(args.taskIds);
+    selected = tasks.filter((task) => wanted.has(task.id));
+    const found = new Set(selected.map((task) => task.id));
+    const missing = [...wanted].filter((taskId) => !found.has(taskId));
+    if (missing.length) throw new Error(`Unknown task id(s): ${missing.join(', ')}`);
+  }
+  return selected.slice(args.start, args.limit ? args.start + args.limit : undefined);
 }
 
 async function readTextIfExists(file) {
@@ -313,7 +330,7 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   const taskPath = path.resolve(repoRoot, args.taskFile);
   const suite = JSON.parse(await readFile(taskPath, 'utf8'));
-  const tasks = (suite.tasks || []).slice(0, args.limit || undefined);
+  const tasks = selectTasks(suite.tasks || [], args);
   const apiKey = process.env.OPENAI_API_KEY;
 
   if (!tasks.length) throw new Error('No benchmark tasks found');
@@ -327,6 +344,7 @@ async function main() {
     model: args.model,
     judgeModel: args.judgeModel,
     taskCount: tasks.length,
+    selectedTaskIds: tasks.map((task) => task.id),
     answerCalls: tasks.length * 2,
     judgeCalls: tasks.length,
     triggerCheckCalls: args.triggerChecks ? tasks.length * 2 : 0,

@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-calibration-interface-craft-20260701",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 3500,
+    "includeReferences": true,
+    "startedAt": "2026-07-01T09:47:45.876Z",
+    "completedAt": "2026-07-01T09:49:18.536Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "interface-craft-checkout-review-001",
+      "skill": "interface-craft",
+      "baseline": {
+        "score": 3.8,
+        "criterionScores": {
+          "trigger-fit": 4.5,
+          "accessibility": 3.5,
+          "state-quality": 4.4,
+          "restraint": 3,
+          "actionability": 4
+        },
+        "criticalFailures": [
+          "Missing rule IDs",
+          "No reduced-motion guidance"
+        ],
+        "rationale": "Good checkout-specific recommendations with concrete state handling, inline errors, focus, labels, and mobile fixes. However it misses required rule IDs, omits reduced-motion guidance, and includes more lower-priority/product-adjacent findings than necessary.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-calibration-interface-craft-20260701-outputs/interface-craft-checkout-review-001-baseline.md",
+        "outputSha256": "f4ca4cb28bcf27f1da37dc82254ce421268a0b8f752a1f0c95f0910c8d7273bb",
+        "latencyMs": 34188,
+        "usage": {
+          "input_tokens": 64,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1784,
+          "output_tokens_details": {
+            "reasoning_tokens": 38
+          },
+          "total_tokens": 1848
+        }
+      },
+      "skillLoaded": {
+        "score": 4.6,
+        "criterionScores": {
+          "trigger-fit": 4.8,
+          "accessibility": 4.5,
+          "state-quality": 4.8,
+          "restraint": 4.3,
+          "actionability": 4.7
+        },
+        "criticalFailures": [],
+        "rationale": "Strong UI craft review with rule IDs, ranked priorities, concrete fixes, and coverage of disabled/loading/error/success/mobile states. Accessibility is solid, including labels, focus, touch targets, and reduced motion, though screen-reader implementation details could be fuller.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-calibration-interface-craft-20260701-outputs/interface-craft-checkout-review-001-skill-loaded.md",
+        "outputSha256": "6a6f240956388ab367d6acb991cf497aa8c03b7c5f2c957fafd0385e3c910f5d",
+        "latencyMs": 37056,
+        "usage": {
+          "input_tokens": 1252,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1411,
+          "output_tokens_details": {
+            "reasoning_tokens": 56
+          },
+          "total_tokens": 2663
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-calibration-interface-craft-20260701-outputs/interface-craft-checkout-review-001-judge-raw.md",
+      "judgeOutputSha256": "a1840db58d16b8aaf7bfcd798fcd99b562c0a5bacd7cc1ca3963af0fa89ee52d",
+      "judgeLatencyMs": 13018,
+      "judgeUsage": {
+        "input_tokens": 3796,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 653,
+        "output_tokens_details": {
+          "reasoning_tokens": 420
+        },
+        "total_tokens": 4449
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "interface-craft-checkout-review-001",
+      "promptType": "positive",
+      "expectedSkill": "interface-craft",
+      "triggeredSkills": [
+        "interface-craft"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks to review a SaaS checkout form and identify high-impact UI craft fixes across form fields, disabled submit button, async state, error toast, success redirect, and mobile layout. This directly matches interface-craft's focus on UI review, forms, buttons, loading/error states, micro-interactions, accessibility, and polish without changing strategy.",
+      "latencyMs": 2916,
+      "usage": {
+        "input_tokens": 205,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 89,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 294
+      }
+    },
+    {
+      "taskId": "interface-craft-checkout-review-001",
+      "promptType": "negative-control",
+      "expectedSkill": "interface-craft",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks to design a partner SPIF dispute workflow, which is primarily a business/process workflow task. It does not specifically request UI craft, component review, micro-interactions, visual polish, accessibility, or interface-quality improvements.",
+      "latencyMs": 5476,
+      "usage": {
+        "input_tokens": 165,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 133,
+        "output_tokens_details": {
+          "reasoning_tokens": 66
+        },
+        "total_tokens": 298
+      }
+    }
+  ]
+}
