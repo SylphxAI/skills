@@ -26,4 +26,5 @@ jobs:
       - run: node scripts/validate-benchmark-output-safety.mjs
       - run: node scripts/validate-benchmark-claims.mjs
       - run: node scripts/validate-sota-evidence.mjs
+      - run: node scripts/generate-skill-evidence-matrix.mjs --check
       - run: node scripts/generate-catalog.mjs --check

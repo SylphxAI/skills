@@ -11,7 +11,7 @@ The repository currently has strong **structural proof**:
 - `npm run check` validates schema, catalog, eval, reference, launch-kit, and benchmark-fixture coverage;
 - `npm run verify:install` proves the public install surface.
 
-This is not the same as behavioral proof. Current public results under `benchmarks/skill-behavior/results/` support the repository-level **SOTA candidate** tier across the current `core-product-v0` and `hard-product-v0` samples: Useful gates pass, at least two suites have meaningful depth, clean shared-task multi-model overlap passes, the confidence-interval lower bound is above zero, and negative-control over-trigger remains below threshold. This does not prove every individual skill useful without per-skill sample depth, and it is not an unbounded claim that every downstream product context will improve.
+This is not the same as behavioral proof. Current public results under `benchmarks/skill-behavior/results/` support the repository-level **SOTA candidate** tier across the current `core-product-v0` and `hard-product-v0` samples: Useful gates pass, at least two suites have meaningful depth, clean shared-task multi-model overlap passes, the confidence-interval lower bound is above zero, and negative-control over-trigger remains below threshold. This does not prove every individual skill useful without per-skill sample depth, and it is not an unbounded claim that every downstream product context will improve. The generated [`skill evidence matrix`](./skill-evidence-matrix.md) is the per-skill truth surface: it separates individually useful, suite-supporting, and structural-preview skills.
 
 ## Scientific benchmark design
 
@@ -126,6 +126,15 @@ npm run validate:sota-evidence
 ```
 
 This gate reselects the current suite from committed result JSON and fails if any benchmark task lacks a clean current result, any skill-loaded answer scores below 5.00, any selected result regresses against baseline, any skill-loaded answer has a critical failure, any selected negative-control prompt over-triggers, fewer than two suites have meaningful depth, or the result corpus lacks enough clean shared-task multi-model overlap. It is intentionally stricter than the public SOTA-candidate tier and protects the current repository claim from drifting as new tasks/results are added.
+
+Regenerate and validate the per-skill evidence matrix after benchmark changes:
+
+```bash
+npm run evidence:matrix
+npm run validate:evidence-matrix
+```
+
+This matrix is intentionally stricter than repository-level marketing language. A skill with one to four good current tasks can support the suite-level claim, but it remains below the individual-useful threshold until it has at least five distinct current positive benchmark tasks and passes the usefulness gates for that skill.
 
 This recomputes the current-suite summary, compares it with the committed current-suite summary, and blocks
 README/docs wording that claims a stronger tier than the data supports.
