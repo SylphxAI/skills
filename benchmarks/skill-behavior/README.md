@@ -64,6 +64,14 @@ Use repeated `--task-id` values, or a comma-separated `--task-id`, to rerun fail
 Use `--resume` with the same `--out` path to skip already-scored tasks and continue after a transient gateway failure. The runner checkpoints the result file after every completed task.
 Duplicate task reruns are useful for before/after analysis, but they do not increase repository-level sample depth. The summarizer reports duplicate task IDs and blocks claim upgrades for duplicate-containing summaries.
 
+Summarize the current suite after reruns by selecting one current sample per task:
+
+```bash
+npm run benchmark:summarize:current -- benchmarks/skill-behavior/results/*.json
+```
+
+Current-suite mode prefers clean git provenance, then newest runner completion time, then deterministic run/file order. It excludes superseded reruns from sample depth.
+
 Merge completed shards:
 
 ```bash
