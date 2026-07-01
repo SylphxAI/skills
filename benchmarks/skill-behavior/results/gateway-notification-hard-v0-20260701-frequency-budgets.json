@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-notification-hard-v0-20260701-frequency-budgets",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "notification-permission-fatigue-recovery-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "33d978d531f0b5bb5e6f74e0a975b0aac6596abf",
+      "branch": "codex/improve-notification-fatigue-benchmark",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T18:55:33.308Z",
+    "completedAt": "2026-07-01T18:57:00.840Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "notification-permission-fatigue-recovery-001",
+      "skill": "notification-strategy-review",
+      "promptSha256": "4f496ae00de6e1ac113daa70b4bc8ce196f5156c63532e45c5a272d2f2d0e865",
+      "skillContextSha256": "0e2cf92d721348a29d2184b0fb76a991e63fdd12daf7b3d731be8a8345162795",
+      "skillBodySha256": "fd7ae4d77fe071a8e45cb062857a534d27b3d69005ba5383576f034dceec6f4d",
+      "skillReferenceSha256": [
+        {
+          "path": "references/notification-strategy-patterns.md",
+          "sha256": "dc4da3e22983af134d4e85dbc571cf8be72966bb0d76b2b0f3cfaac7d873f1cb"
+        }
+      ],
+      "skillLoadedPromptSha256": "86f69c7e2c21a77c94b692795adc79108d9964a976f1459d57dfbd3ae051a9d7",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "lifecycle-intent": 4,
+          "permission-trust": 4.25,
+          "suppression-fatigue": 3.5,
+          "commercial-recovery": 4.5,
+          "measurement": 3.5
+        },
+        "criticalFailures": [],
+        "rationale": "Solid strategy covering required areas, with contextual permission asks and commercial flows. Less precise on cross-channel suppression, cooldowns, lifecycle intent per message, and measurement lacks delivery/retention/guardrail depth compared with A.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-notification-hard-v0-20260701-frequency-budgets-outputs/notification-permission-fatigue-recovery-001-baseline.md",
+        "outputSha256": "22504bcdfa3162a4b90f84b05fa1b5d53917d8d4ee4b2b4a8870ab673c08d578",
+        "latencyMs": 34763,
+        "usage": {
+          "input_tokens": 94,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1749,
+          "output_tokens_details": {
+            "reasoning_tokens": 55
+          },
+          "total_tokens": 1843
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "lifecycle-intent": 5,
+          "permission-trust": 5,
+          "suppression-fatigue": 5,
+          "commercial-recovery": 5,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive lifecycle matrix tied to user intent, strong consent and denial handling, detailed caps/quiet hours/dedupe, respectful commercial recovery, and robust event instrumentation plus trust guardrails.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-notification-hard-v0-20260701-frequency-budgets-outputs/notification-permission-fatigue-recovery-001-skill-loaded.md",
+        "outputSha256": "4b39c00fd7506097d99afbecd120a41a4cb6f66a4dc45935419b138032728ace",
+        "latencyMs": 34470,
+        "usage": {
+          "input_tokens": 3024,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1825,
+          "output_tokens_details": {
+            "reasoning_tokens": 22
+          },
+          "total_tokens": 4849
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-notification-hard-v0-20260701-frequency-budgets-outputs/notification-permission-fatigue-recovery-001-judge-raw.md",
+      "judgeOutputSha256": "bb838b65d3ceb9607e6921e5116658465fc8326b06da96c4cf236d2a5cc3b3a8",
+      "judgeLatencyMs": 9845,
+      "judgeUsage": {
+        "input_tokens": 4375,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 472,
+        "output_tokens_details": {
+          "reasoning_tokens": 270
+        },
+        "total_tokens": 4847
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "notification-permission-fatigue-recovery-001",
+      "promptType": "positive",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [
+        "notification-strategy-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to review a notification strategy for a subscription productivity app, covering permission prompts, trial and renewal reminders, failed payment recovery, win-back campaigns, quiet hours, digest mode, notification fatigue, opt-out recovery, and platform permission denial handling—all core areas in the skill description.",
+      "latencyMs": 5946,
+      "usage": {
+        "input_tokens": 209,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 77,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 286
+      }
+    },
+    {
+      "taskId": "notification-permission-fatigue-recovery-001",
+      "promptType": "negative-control",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about designing a payout reserve policy for a global creator marketplace, which relates to payments, risk, compliance, and marketplace operations rather than notification strategy, messaging, reminders, or user communication channels.",
+      "latencyMs": 2221,
+      "usage": {
+        "input_tokens": 173,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 60,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 233
+      }
+    }
+  ]
+}

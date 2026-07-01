@@ -258,7 +258,7 @@ OpenAI Responses API runner, and the methodology in
 
 Current public status: skills are schema-validated, install-verified, and the current benchmark evidence
 across `core-product-v0` plus `hard-product-v0` supports the repository-level **SOTA candidate** tier:
-25 current task samples, +1.22 average skill uplift, 100.0% skill win rate, 100.0% non-regression rate,
+25 current task samples, +1.24 average skill uplift, 100.0% skill win rate, 100.0% non-regression rate,
 0.0% negative-control over-trigger rate, positive confidence interval, and passing shared-task multi-model
 overlap. The current suite also reports answer token/latency overhead so quality gains can be weighed
 against added context cost. See the

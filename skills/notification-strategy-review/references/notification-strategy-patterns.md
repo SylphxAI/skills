@@ -28,6 +28,8 @@
 - `notify-13` — Denied-permission recovery should use in-product education and preference centers, not repeated platform prompts or dark patterns.
 - `notify-14` — Commercial recovery messages need lifecycle intent, honest urgency, billing/support context, and stop conditions.
 - `notify-15` — Guardrail metrics must include delivery, retention, opt-in, opt-out, unsubscribe, complaint/spam, support contacts, and notification-attributed churn.
+- `notify-16` — Frequency caps must be explicit at global, category, lifecycle-event, and channel levels; vague "avoid spam" guidance is not enough.
+- `notify-17` — Suppression decisions should be deterministic and explainable: priority, dedupe key, cooldown, quiet hours, digest eligibility, conversion/support stop condition, and emergency override reason.
 
 ## Lifecycle matrix
 
@@ -40,6 +42,53 @@
 | Renewal/payment recovery | Renewal approaching or payment failed | Prevent service disruption with factual billing help | Email + in-app; push for urgent opted-in service risk | Stop after payment updated, cancellation, or support escalation |
 | Win-back | User is inactive and has prior value history | Offer relevant reason to return without guilt or fake urgency | Email/in-app; push only if explicitly opted into lifecycle updates | Stop after unsubscribe, repeated non-engagement, or win-back cap |
 | Transactional/security | Receipt, refund, backup, login, password, critical service state | Keep user informed about account/service truth | Required factual channel; no marketing content | Do not include upsell; respect legal/channel requirements |
+
+## Frequency budget matrix
+
+Use exact caps as starting defaults to review against product risk, region, user choice, and legal policy.
+
+| Category | Default cap | Cooldown | Digest rule | Override |
+| --- | --- | --- | --- | --- |
+| Security | No marketing cap; event-based only | Dedupe identical event for 10 minutes | Never digest critical security | Critical security/account safety |
+| Billing/failed payment | 1 per day per billing incident, 4 per incident before support review | Suppress 24h after open, payment update, cancel, or support ticket | Never digest imminent service loss; factual only | Grace ending or imminent access loss |
+| Trial/renewal lifecycle | 2-3 total per lifecycle window | 48h between non-urgent reminders | Include in account digest when urgency >72h away | Renewal/account-risk notice where required |
+| Utility reminders | User-configured; default max 2/day | Per task/reminder key after open/complete | Digest low-urgency reminders when >2 queued | User-requested exact-time reminder |
+| Digest | User-selected daily/weekly; default weekly | Skip if no meaningful content | Digest is the aggregation surface | None |
+| Win-back/marketing | Max 2/month and 3/90 days | 14-30 days after no engagement | Prefer email digest/roundup | None |
+| Opt-out recovery | In-app only after a new value moment; max 1/30 days | 30 days after dismissal | Never cross-channel | None |
+
+Global defaults:
+
+- Max one non-transactional push per day and three non-transactional notifications per week unless the user requested reminders.
+- Max three total notifications per day across push/email/in-app/SMS, excluding security and required transactional messages.
+- If multiple low-priority messages compete, send a digest and suppress individual sends.
+- Suppress all non-critical sends during quiet hours; queue at the next acceptable local time, not immediately at midnight.
+- If a user opens, converts, pays, cancels, unsubscribes, files support, or completes the task, suppress remaining messages for the same dedupe key.
+
+## Priority and suppression ladder
+
+When a user is eligible for more than one message, choose in this order:
+
+1. Security/account safety.
+2. Billing/service continuity with truthful support context.
+3. User-requested utility reminders.
+4. Trial/renewal lifecycle education.
+5. Digest summaries with meaningful content.
+6. Win-back or marketing.
+7. Opt-out recovery education.
+
+Suppression algorithm:
+
+```text
+if consent_state blocks channel -> suppress(consent)
+if preference_state disabled category -> suppress(preference)
+if dedupe_key already satisfied -> suppress(dedupe)
+if quiet_hours and not critical -> delay(quiet_hours)
+if global_cap_hit or category_cap_hit -> digest_or_suppress(frequency_cap)
+if cooldown_active -> suppress(cooldown)
+if stale_trigger or conversion/support stop condition -> suppress(stale_or_resolved)
+else schedule highest priority allowed channel
+```
 
 ## Consent, region, and preference matrix
 
@@ -65,12 +114,14 @@ Suppression rules:
 - Prefer digesting low-urgency nudges when multiple lifecycle events compete.
 - Apply quiet hours by user timezone except for user-requested or critical transactional/security messages.
 - Escalate channels only when value decays with time and the user has granted that channel.
+- Record `frequency_budget_id`, `cap_type`, `cap_remaining`, and `suppression_decision_version` for auditability.
 
 ## Event schema
 
 Track: `notification_eligible`, `permission_prompt_shown`, `permission_result`, `notification_scheduled`, `notification_suppressed`, `notification_sent`, `notification_delivered`, `notification_opened`, `notification_dismissed`, `preference_changed`, `unsubscribe_clicked`, `conversion_after_notification`, `retention_after_notification`, `complaint_or_spam_signal`, `support_contact_after_notification`.
 
 Important properties: `channel`, `category`, `campaign_id`, `trigger_event`, `lifecycle_state`, `dedupe_key`, `locale`, `region`, `timezone`, `quiet_hours_applied`, `frequency_bucket`, `priority`, `consent_state`, `preference_state`, `suppression_reason`, `unsubscribe_scope`, `delivery_status`, `message_version`.
+Frequency properties: `frequency_budget_id`, `global_cap_remaining`, `category_cap_remaining`, `lifecycle_event_cap_remaining`, `cooldown_until`, `digest_candidate`, `override_reason`, `suppression_decision_version`.
 
 Guardrail metrics:
 
