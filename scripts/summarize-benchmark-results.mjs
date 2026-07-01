@@ -48,6 +48,62 @@ function duplicateTaskIds(rows) {
   return [...counts.entries()].filter(([, count]) => count > 1).map(([taskId]) => taskId).sort();
 }
 
+function parseArgs(argv) {
+  const args = {
+    currentSuite: false,
+    files: [],
+  };
+  for (const arg of argv) {
+    if (arg === '--current-suite') {
+      args.currentSuite = true;
+      continue;
+    }
+    if (arg.startsWith('--')) {
+      throw new Error(`Unknown option: ${arg}`);
+    }
+    args.files.push(arg);
+  }
+  return args;
+}
+
+function rowTimestamp(row) {
+  return Date.parse(row.completedAt || row.startedAt || '') || 0;
+}
+
+function isClean(row) {
+  return row.sourceDirty === false;
+}
+
+function compareCurrentRows(a, b) {
+  if (isClean(a) !== isClean(b)) return isClean(a) ? 1 : -1;
+  const timeDelta = rowTimestamp(a) - rowTimestamp(b);
+  if (timeDelta !== 0) return timeDelta;
+  const runDelta = String(a.runId || '').localeCompare(String(b.runId || ''));
+  if (runDelta !== 0) return runDelta;
+  return String(a.file).localeCompare(String(b.file));
+}
+
+function selectCurrentSuite(rows, triggerChecks) {
+  const byTask = new Map();
+  for (const row of rows) {
+    const existing = byTask.get(row.taskId);
+    if (!existing || compareCurrentRows(row, existing) > 0) byTask.set(row.taskId, row);
+  }
+
+  const selectedRows = [...byTask.values()].sort((a, b) => a.taskId.localeCompare(b.taskId));
+  const selectedKeys = new Set(selectedRows.map((row) => `${row.file}\0${row.taskId}`));
+  const supersededRows = rows
+    .filter((row) => !selectedKeys.has(`${row.file}\0${row.taskId}`))
+    .sort((a, b) => a.taskId.localeCompare(b.taskId) || String(a.completedAt || '').localeCompare(String(b.completedAt || '')));
+  const selectedTriggerChecks = triggerChecks.filter((check) => selectedKeys.has(`${check.file}\0${check.taskId}`));
+
+  return {
+    rows: selectedRows,
+    triggerChecks: selectedTriggerChecks,
+    supersededRows,
+  };
+}
+
 function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci, duplicateIds }) {
   const skillCounts = new Map();
   const skillTaskIds = new Map();
@@ -100,16 +156,18 @@ function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baseline
 }
 
 async function main() {
-  const files = process.argv.slice(2);
+  const args = parseArgs(process.argv.slice(2));
+  const { files } = args;
   if (!files.length) {
-    console.error('Usage: node scripts/summarize-benchmark-results.mjs benchmarks/skill-behavior/results/*.json');
+    console.error('Usage: node scripts/summarize-benchmark-results.mjs [--current-suite] benchmarks/skill-behavior/results/*.json');
     process.exit(1);
   }
 
-  const rows = [];
-  const triggerChecks = [];
+  let rows = [];
+  let triggerChecks = [];
   for (const file of files) {
     const result = JSON.parse(await readFile(file, 'utf8'));
+    const source = result.runner?.source || {};
     for (const sample of result.samples || []) {
       const loaded = skillRecord(sample);
       rows.push({
@@ -117,6 +175,10 @@ async function main() {
         runId: result.runId,
         model: result.model,
         suite: result.suite,
+        startedAt: result.runner?.startedAt || null,
+        completedAt: result.runner?.completedAt || null,
+        sourceHead: source.head || null,
+        sourceDirty: typeof source.dirty === 'boolean' ? source.dirty : null,
         taskId: sample.taskId,
         skill: sample.skill,
         baselineScore: sample.baseline.score,
@@ -128,13 +190,26 @@ async function main() {
       });
     }
     for (const check of result.triggerChecks || []) {
-      triggerChecks.push(check);
+      triggerChecks.push({
+        ...check,
+        file,
+        runId: result.runId,
+        completedAt: result.runner?.completedAt || null,
+        sourceDirty: typeof source.dirty === 'boolean' ? source.dirty : null,
+      });
     }
   }
 
   if (!rows.length) {
     console.error('No scored samples found in result files.');
     process.exit(1);
+  }
+
+  let selection = null;
+  if (args.currentSuite) {
+    selection = selectCurrentSuite(rows, triggerChecks);
+    rows = selection.rows;
+    triggerChecks = selection.triggerChecks;
   }
 
   const deltas = rows.map((row) => row.delta);
@@ -152,6 +227,13 @@ async function main() {
 
   console.log('# Skill Behavior Benchmark Summary');
   console.log('');
+  if (args.currentSuite) {
+    console.log('- Selection mode: current-suite');
+    console.log('- Selection rule: prefer clean git provenance, then newest runner completion time, then run/file lexical order');
+    console.log(`- Superseded samples excluded: ${selection.supersededRows.length}`);
+    const supersededTaskIds = [...new Set(selection.supersededRows.map((row) => row.taskId))].sort();
+    if (supersededTaskIds.length) console.log(`- Superseded task IDs: ${supersededTaskIds.join(', ')}`);
+  }
   console.log(`- Samples: ${rows.length}`);
   console.log(`- Unique task coverage: ${assessment.uniqueTaskCount}`);
   if (assessment.duplicateTaskIds.length) console.log(`- Duplicate task IDs: ${assessment.duplicateTaskIds.join(', ')}`);
