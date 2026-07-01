@@ -1,0 +1,4 @@
+interface:
+  display_name: "Enterprise Role Lifecycle Review"
+  short_description: "Govern enterprise role lifecycle"
+  default_prompt: "Use $enterprise-role-lifecycle-review to audit enterprise role lifecycle controls."

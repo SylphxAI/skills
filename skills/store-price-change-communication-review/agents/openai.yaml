@@ -1,0 +1,4 @@
+interface:
+  display_name: "Store Price Change Communication Review"
+  short_description: "Coordinate store price changes"
+  default_prompt: "Use $store-price-change-communication-review to coordinate store price change communication."
