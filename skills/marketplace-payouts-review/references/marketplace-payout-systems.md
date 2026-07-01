@@ -20,6 +20,8 @@ Payouts are a trust system. Creators/sellers need predictable earnings, buyers n
 - `payout-14` — Seller support needs dashboard states, evidence collection, appeal/dispute workflow, admin approval controls, SLA, escalation path, and metrics for creator trust and support load.
 - `payout-15` — Tax readiness needs product states for form not started, submitted, invalid, expired, verified, withholding required, reportable threshold reached, report generated, correction requested, and payout blocked; qualified tax owners decide the policy.
 - `payout-16` — Statutory reporting and withholding must be modeled as evidence and handoff states, not hidden back-office work: jurisdiction, form type/status, withholding rate/source, report period, filing/export status, correction workflow, and seller-visible message.
+- `payout-17` — Provider outages, webhook replays, partial payout files, and manual finance workarounds need an explicit incident state machine: queued, paused, provider-pending, partially-submitted, failed, retry-blocked, reconciled, released, reversed, and manual-review.
+- `payout-18` — Manual payout workarounds must be internal reconciliation artifacts unless they pass the same signed payout-batch, idempotency, dual-approval, provider-trace, and ledger-posting controls as the normal payout path.
 
 ## Decision table
 
@@ -37,6 +39,8 @@ Payouts are a trust system. Creators/sellers need predictable earnings, buyers n
 | Sanctions/KYC potential match | Move affected funds to compliance-held state | Block payout until qualified review resolves | Provide non-sensitive compliance-review message |
 | Failed bank transfer | Return funds to available or held based on failure reason | Do not retry invalid destinations indefinitely | Show provider reason, remediation, and trace ID |
 | Negative balance | Offset future earnings before new payouts | Block payout until non-negative unless exception approved | Show itemized reversal lineage and cure path |
+| Provider outage during payout release | Freeze affected payout queue and keep balances in queued, provider-pending, partially-submitted, failed, retry-blocked, or manual-review states until reconciled | Do not retry, export, or mark paid until idempotency and provider trace reconciliation pass | Show outage status, ETA review cadence, affected payout state, support case path, and no-action-needed message |
+| Duplicate webhook or partial payout file | Quarantine callbacks and reconcile per seller/row against ledger and provider trace IDs | Release only reconciled rows; reverse or retry-block mismatches with approval | Explain paid, pending, failed, or reversed status without exposing provider internals |
 
 ## Payout policy table
 
@@ -85,7 +89,36 @@ seller_earning_available -> payout_batch_created -> payout_submitted -> payout_p
 payout_submitted -> payout_failed -> payout_method_fix_required -> payout_resubmitted
 payout_paid -> chargeback_received -> negative_balance_or_clawback
 manual_adjustment_requested -> approved -> ledger_adjustment_posted
+
+outage branch:
+payout_queued -> provider_outage_detected -> payout_paused
+payout_paused -> submission_started -> payout_provider_pending
+payout_provider_pending -> partial_file_detected -> payout_partially_submitted
+payout_provider_pending -> provider_failure_callback -> payout_failed
+payout_partially_submitted -> duplicate_webhook_or_retry -> payout_retry_blocked
+payout_retry_blocked -> owner_assigned -> payout_manual_review
+payout_partially_submitted -> provider_trace_reconciled -> payout_reconciled
+payout_failed -> destination_or_provider_fixed -> payout_reconciled
+payout_reconciled -> release_gate_passed -> payout_released
+payout_reconciled -> reversal_required -> payout_reversed
 ```
+
+Incident states must be operationally owned, not just named:
+
+| State | Owner | Required evidence | Exit gate | Creator/support message |
+| --- | --- | --- | --- | --- |
+| payout_queued | payout scheduler owner | batch_id, seller rows, idempotency keys, ledger snapshot | healthy provider and no active blockers | next scheduled payout date |
+| payout_paused | incident commander | outage alert, status-page or provider ticket, freeze flag | provider status stable or manual review path approved | payout delayed, balance safe, update cadence |
+| payout_provider_pending | payout ops | submitted rows, provider trace/request IDs | callback, timeout, or provider failure classified | payout submitted and being verified |
+| payout_partially_submitted | finance + payout ops | partial file, accepted/rejected row map, provider ack set | per-row reconciliation completed | affected rows are being reconciled |
+| payout_failed | payout ops | failure code, destination state, bank/provider callback | destination fixed or retry blocked with owner | failed transfer reason and remediation path |
+| payout_retry_blocked | engineering owner | duplicate webhook/retry evidence, idempotency collision | owner approves replay/no-op/reversal | duplicate retry suppressed; no action needed |
+| payout_manual_review | finance + risk owner | mismatch packet, ledger snapshot, support case | dual approval and ledger adjustment decision | under specialist review with SLA |
+| payout_reconciled | finance owner | ledger/provider/internal file three-way match | release or reversal decision recorded | final verification complete |
+| payout_released | payout ops | payout_paid ledger event and provider trace | support readback available | paid/released with traceable status |
+| payout_reversed | finance + support owner | reversal source_event_id and negative-balance effect | creator notified and appeal path open | reversal reason, lineage, and appeal/cure path |
+
+Recovery learning should capture provider status-page/ticket timeline, SLA evidence, failed monitor or retry control, queue/backlog metrics, duplicate-payment prevention evidence, and the resilience fix before the next payout window.
 
 ## Event schema
 
@@ -97,6 +130,9 @@ Recommended events:
 - `seller_balance_changed`: seller_id, balance_type, delta_amount, reason, ledger_entry_id.
 - `payout_batch_created`: batch_id, seller_count, total_amount, currency, schedule.
 - `payout_result`: payout_id, seller_id, amount, destination_type, result, failure_reason.
+- `payout_incident_state_changed`: payout_id, batch_id, seller_id, incident_id, from_state, to_state, reason_code, owner, provider_trace_id.
+- `payout_webhook_quarantined`: provider_event_id, payout_id, batch_id, seller_id, idempotency_key, quarantine_reason, received_at.
+- `payout_reconciliation_completed`: incident_id, payout_id, seller_id, ledger_entry_ids, provider_trace_ids, result, mismatch_reason.
 - `payout_hold_created`: seller_id, amount, reason_code, review_owner, expected_review_at.
 - `payout_hold_released`: hold_id, seller_id, amount, release_reason, reviewer_or_job_id.
 - `tax_compliance_status_changed`: seller_id, jurisdiction, form_status, withholding_rate, effective_at.
@@ -130,6 +166,22 @@ Support/admin tooling should include:
 - safe message templates that explain status without making unqualified legal, tax, sanctions, or fraud determinations.
 
 Track creator trust and marketplace health with payout latency, held-balance age, failed-transfer rate, dispute win rate, reversal loss, negative-balance recovery, creator payout ticket rate, creator payout CSAT, and reconciliation mismatch rate.
+
+## Abuse hold and appeal model
+
+Abuse-related payout holds should be scoped to risk and reversible on evidence. A refund spike, self-purchase signal, linked account, review burst, or payout-threshold farming pattern is an investigation signal, not an automatic final decision.
+
+| Signal | Initial payout action | Evidence packet | Release or clawback path | False-positive guardrail |
+| --- | --- | --- | --- | --- |
+| Refund spike | Partial rolling reserve on affected earnings; do not freeze all historical balance by default | refund ratio vs cohort, buyer complaints, dispute status, delivery evidence | release reserve after cohort-normal refund window; claw back only tied reversed earnings | compare with legitimate launch cohort and marketing campaign |
+| Self-purchase suspicion | Hold affected earnings and block payout of linked suspicious orders | buyer/seller link graph, payment fingerprint, device/IP, order timing, KYC/payment method match | reverse affected earnings or release if independent buyer proof clears | require reviewer confirmation before account-level action |
+| Review manipulation | Hold earnings tied to manipulated listings or suspicious buyer set | review graph, buyer eligibility, purchase proof, moderation case, listing IDs | release clean orders; reverse only orders tied to confirmed manipulation | separate organic launch surge from coordinated fake reviews |
+| Cross-account payment methods | Destination/KYC verification hold | account links, destination owner, KYC state, provider verification, support evidence | release after destination verified; negative balance only for paid-out reversed orders | provide safe verification path without exposing detection thresholds |
+| Payout-threshold farming | Delay or reserve threshold-adjacent payouts while reviewing velocity | payout threshold history, destination changes, order quality, refund/dispute lag | release when order quality and refund window clear; adjust threshold policy if needed | avoid punishing small legitimate creators for normal threshold timing |
+
+Abuse support macros should say what status is visible, what evidence the seller can provide, the review SLA, and the appeal path. They must not leak fraud thresholds, model weights, buyer identities, or sanctions/tax conclusions.
+
+Reviewer QA should sample both holds and releases. Track false-hold rate, appeal overturn rate, held-balance age, buyer loss, reversal loss, legitimate-launch release time, creator payout CSAT, and support ticket rate.
 
 ## Review checklist
 
