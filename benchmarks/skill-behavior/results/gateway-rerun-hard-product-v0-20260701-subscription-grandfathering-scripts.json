@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-rerun-hard-product-v0-20260701-subscription-grandfathering-scripts",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "subscription-price-increase-grandfathering-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "4ea681848ef36f9b4d947822232239567d1ecd1c",
+      "branch": "codex/improve-subscription-grandfathering",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T18:06:45.342Z",
+    "completedAt": "2026-07-01T18:08:25.575Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "subscription-price-increase-grandfathering-001",
+      "skill": "subscription-price-increase-retention-review",
+      "promptSha256": "1b85c1ab7f5bbecefab67531975cdcfc2bf00792682453319c975abd27f17e4a",
+      "skillContextSha256": "acf778b37a610a83fc20d0ca7196653554db3e428d17954d6c157072c61f465c",
+      "skillBodySha256": "8d23cf17d80bb43767c7d7e1af4e4ec039248207190f279bffe9d55899baf814",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-price-increase-retention-patterns.md",
+          "sha256": "94381560c1644f232bd464526ed9ccdff927b6bc88282fcd5ef4857ea9c25ed7"
+        }
+      ],
+      "skillLoadedPromptSha256": "75b2dcb898e90027790cbc2f2ad30c92ffec4d1f5664f49105faf0ce57b83c11",
+      "baseline": {
+        "score": 4.3,
+        "criterionScores": {
+          "segmentation": 4,
+          "policy-mechanics": 4.7,
+          "trust-communications": 4.5,
+          "measurement": 4,
+          "risk-controls": 3.5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong plan with renewal constraints, migration offers, support scripts, sales exceptions, and reporting. Weaker on explicit discount-customer segmentation, cancellation paths, complaint/cohort measurement, and threshold-based rollback triggers.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-subscription-grandfathering-scripts-outputs/subscription-price-increase-grandfathering-001-baseline.md",
+        "outputSha256": "b90ee190eee0b1ad79171ebfbe8ae53118f5785429119b367137acd22bc42dc7",
+        "latencyMs": 44446,
+        "usage": {
+          "input_tokens": 102,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1944,
+          "output_tokens_details": {
+            "reasoning_tokens": 28
+          },
+          "total_tokens": 2046
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "segmentation": 5,
+          "policy-mechanics": 5,
+          "trust-communications": 5,
+          "measurement": 4.8,
+          "risk-controls": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive cohort segmentation, contract-aware mechanics, strong scripts and exception paths, detailed reporting, and explicit rollback triggers. Minor measurement gap: logo churn/complaint signals are implied rather than always named.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-subscription-grandfathering-scripts-outputs/subscription-price-increase-grandfathering-001-skill-loaded.md",
+        "outputSha256": "fb7ea11db76cdd80410e5561f793116bd6f39fc8e0a19d6e66543eade404a131",
+        "latencyMs": 37319,
+        "usage": {
+          "input_tokens": 3454,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1997,
+          "output_tokens_details": {
+            "reasoning_tokens": 11
+          },
+          "total_tokens": 5451
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-subscription-grandfathering-scripts-outputs/subscription-price-increase-grandfathering-001-judge-raw.md",
+      "judgeOutputSha256": "455fb042cd704fe80233a5cd1b0eff6f77987d267c809562a773282bfdb969b6",
+      "judgeLatencyMs": 13412,
+      "judgeUsage": {
+        "input_tokens": 4780,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 643,
+        "output_tokens_details": {
+          "reasoning_tokens": 447
+        },
+        "total_tokens": 5423
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "subscription-price-increase-grandfathering-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [
+        "subscription-price-increase-retention-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to plan a subscription price increase for B2B SaaS, including legacy contracts, self-serve users, enterprise customers, grandfathered plans, usage overages, cancellation risk, migration offers, notification timing, support scripts, sales exceptions, and revenue-retention reporting—all core elements covered by the subscription-price-increase-retention-review skill.",
+      "latencyMs": 2562,
+      "usage": {
+        "input_tokens": 231,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 91,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 322
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-grandfathering-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks to audit a Steam demo page for wishlist conversion before a festival event, which is about store page/demo marketing and conversion optimization, not subscription price increases, retention programs, grandfathering, save offers, or pricing-change compliance.",
+      "latencyMs": 2488,
+      "usage": {
+        "input_tokens": 189,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 66,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 255
+      }
+    }
+  ]
+}
