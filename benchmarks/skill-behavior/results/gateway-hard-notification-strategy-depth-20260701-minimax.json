@@ -1,0 +1,557 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-hard-notification-strategy-depth-20260701-minimax",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 8000,
+    "answerWordLimit": 850,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "notification-cross-channel-dedupe-incident-001",
+      "notification-game-liveops-fatigue-001",
+      "notification-critical-utility-preferences-001",
+      "notification-sensitive-transactional-privacy-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "8b886be63955be91adfcbd8f3b5a63c03d4c78fe",
+      "branch": "codex/notification-strategy-individual-evidence",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T22:38:13.352Z",
+    "completedAt": "2026-07-01T22:42:22.684Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "notification-cross-channel-dedupe-incident-001",
+      "skill": "notification-strategy-review",
+      "promptSha256": "25ed9239c355f39b6008ebfc9d3acb23a74d72db89aa909dd5c8fbe3904b7887",
+      "skillContextSha256": "06828156b6ec292fbab1d27d8a88b5d57b422242ee60e92643083902bb6fcf86",
+      "skillBodySha256": "582be639dd97af6e568e853d2287de268c72401da3874db67b6b07e9ddf041a1",
+      "skillReferenceSha256": [
+        {
+          "path": "references/notification-strategy-patterns.md",
+          "sha256": "94bf276dc5a7cc92a0513dc95058a7cb5e394d9b40c4e78f3c0dd334b9c5acc7"
+        }
+      ],
+      "skillLoadedPromptSha256": "4d0d35277393c5f840ec2304a4df2e104a9442c8043b9d867297807f7e7d5103",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "incident-readback": 2,
+          "dedupe-stop-rules": 3,
+          "frequency-quiet-hours": 3,
+          "commercial-trust": 4,
+          "measurement": 2
+        },
+        "criticalFailures": [
+          "incomplete incident readback",
+          "incomplete measurement plan"
+        ],
+        "rationale": "Good containment decision and rejects CTR-only optimization, but incident readback is not broken down by cohort/channel/event/state/timezone. Dedup key is too generic, stale expiry is absent, frequency policy lacks lifecycle/global detail, and measurement misses revenue/retention/churn.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-cross-channel-dedupe-incident-001-baseline.md",
+        "outputSha256": "852f3ee948e54c2e8a7cd63aec937f654eb0afc58d38aab0a87679d22231febb",
+        "latencyMs": 13493,
+        "usage": {
+          "input_tokens": 287,
+          "input_tokens_details": {
+            "cached_tokens": 286
+          },
+          "output_tokens": 1565,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1852
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "incident-readback": 4,
+          "dedupe-stop-rules": 4,
+          "frequency-quiet-hours": 5,
+          "commercial-trust": 5,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive recovery and policy with cohort/channel/event readback, strong dedupe, stop rules, quiet hours, consent, trust guardrails, and measurement. Minor gaps: stale-event expiry and timezone/payment-state breakdown are not fully explicit in the readback.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-cross-channel-dedupe-incident-001-skill-loaded.md",
+        "outputSha256": "c89aab59636949962ce4a73494c7cddd777f9e99859a378d69a3a4b1ff98516e",
+        "latencyMs": 25944,
+        "usage": {
+          "input_tokens": 5003,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 2371,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 7374
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-cross-channel-dedupe-incident-001-judge-raw.md",
+      "judgeOutputSha256": "0a20ac62ebec80cb784d9a668df2d00f068709763ce80a0343290d0613a591d0",
+      "judgeLatencyMs": 13102,
+      "judgeUsage": {
+        "input_tokens": 4204,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 813,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5017
+      }
+    },
+    {
+      "taskId": "notification-game-liveops-fatigue-001",
+      "skill": "notification-strategy-review",
+      "promptSha256": "fbd32868724ad934c4a7b49dd8d8c975f70082bdfd0d4840aa089a4266f97db5",
+      "skillContextSha256": "06828156b6ec292fbab1d27d8a88b5d57b422242ee60e92643083902bb6fcf86",
+      "skillBodySha256": "582be639dd97af6e568e853d2287de268c72401da3874db67b6b07e9ddf041a1",
+      "skillReferenceSha256": [
+        {
+          "path": "references/notification-strategy-patterns.md",
+          "sha256": "94bf276dc5a7cc92a0513dc95058a7cb5e394d9b40c4e78f3c0dd334b9c5acc7"
+        }
+      ],
+      "skillLoadedPromptSha256": "263918d2973782106bfeecce0f3d590d062120a24bf199b59017ba37e9ab0c74",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "game-taxonomy": 5,
+          "frequency-event-controls": 3,
+          "consent-safety": 4,
+          "commercial-balance": 4,
+          "measurement": 3
+        },
+        "criticalFailures": [
+          "Allows live-event and raid quiet-hours overrides, effectively permitting marketing/event urgency to bypass quiet-hour protections."
+        ],
+        "rationale": "Strong taxonomy, minors policy, caps, and trust framing. However, event/raid quiet-hour overrides conflict with no marketing emergency override, digesting and stop rules are incomplete, and measurement omits several fatigue signals like complaints, uninstalls, and support contacts.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-game-liveops-fatigue-001-baseline.md",
+        "outputSha256": "de3f673ebb6892ed9e1dab105a98b3a9be746f52e84692e08184553b915a5938",
+        "latencyMs": 26570,
+        "usage": {
+          "input_tokens": 281,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1696,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1977
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "game-taxonomy": 5,
+          "frequency-event-controls": 5,
+          "consent-safety": 5,
+          "commercial-balance": 5,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive taxonomy, granular caps, quiet-hour rules, dedupe, stop conditions, consent handling, minor protections, and explicit prohibition on marketing overrides. Balances revenue with fatigue and tracks retention, revenue, opt-outs, complaints, churn, support, and holdouts.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-game-liveops-fatigue-001-skill-loaded.md",
+        "outputSha256": "dd0cea0b46347e73b631f1101a5250b1ce1abcd444e99980e8db894bffc69322",
+        "latencyMs": 27414,
+        "usage": {
+          "input_tokens": 4997,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 2513,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 7510
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-game-liveops-fatigue-001-judge-raw.md",
+      "judgeOutputSha256": "d4f1e863644850923778c63874f67a4025c21bef015c7b71a4d55bf00166d640",
+      "judgeLatencyMs": 13123,
+      "judgeUsage": {
+        "input_tokens": 4375,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 763,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5138
+      }
+    },
+    {
+      "taskId": "notification-critical-utility-preferences-001",
+      "skill": "notification-strategy-review",
+      "promptSha256": "7526c0433d1ba127c5d6baa90adcaffd22e78e6ffa30a581dea4860bb991fbb3",
+      "skillContextSha256": "06828156b6ec292fbab1d27d8a88b5d57b422242ee60e92643083902bb6fcf86",
+      "skillBodySha256": "582be639dd97af6e568e853d2287de268c72401da3874db67b6b07e9ddf041a1",
+      "skillReferenceSha256": [
+        {
+          "path": "references/notification-strategy-patterns.md",
+          "sha256": "94bf276dc5a7cc92a0513dc95058a7cb5e394d9b40c4e78f3c0dd334b9c5acc7"
+        }
+      ],
+      "skillLoadedPromptSha256": "e0d6d626de10163439bdc5a12da0eb0fbfd9c641e15db574d1fdbd176e56c30f",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "taxonomy-separation": 4,
+          "preference-consent": 3,
+          "emergency-override": 3,
+          "suppression-dedupe": 2,
+          "trust-metrics": 1
+        },
+        "criticalFailures": [
+          "missing event schema",
+          "missing trust metrics",
+          "incomplete suppression and stop rules"
+        ],
+        "rationale": "Strong taxonomy and basic preferences, but lacks denied-permission fallback, regional consent evidence, unsubscribe scope, event schema, stale expiry, stop conditions, suppression reasons, and required trust metrics. Quiet-hours handling lets P1 bypass too broadly.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-critical-utility-preferences-001-baseline.md",
+        "outputSha256": "2bba1cde2d42553c93423988dd3c57d2fbf9282924b06932213be6af58f04da4",
+        "latencyMs": 15282,
+        "usage": {
+          "input_tokens": 282,
+          "input_tokens_details": {
+            "cached_tokens": 281
+          },
+          "output_tokens": 1896,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2178
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "taxonomy-separation": 5,
+          "preference-consent": 5,
+          "emergency-override": 5,
+          "suppression-dedupe": 4,
+          "trust-metrics": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive policy with clear taxonomy, regional consent evidence, permission-denied recovery, unsubscribe scopes, override limits and reasons, quiet-hours rules, dedupe keys, stop conditions, suppression reasons, event properties, and trust metrics. Stale expiry is only partially explicit.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-critical-utility-preferences-001-skill-loaded.md",
+        "outputSha256": "475b3ab34f04f2c4366512ef51a21c03557d42c0311a474b6ec9fcddfd9599f5",
+        "latencyMs": 21625,
+        "usage": {
+          "input_tokens": 4998,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 2678,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 7676
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-critical-utility-preferences-001-judge-raw.md",
+      "judgeOutputSha256": "450d6ad59f44ab687192e68a515f9cd70d9cdf0a642f8ddf49359f3c09295421",
+      "judgeLatencyMs": 20475,
+      "judgeUsage": {
+        "input_tokens": 4463,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 1044,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5507
+      }
+    },
+    {
+      "taskId": "notification-sensitive-transactional-privacy-001",
+      "skill": "notification-strategy-review",
+      "promptSha256": "384d30d538bef5798acdf3dc6c342f1ac90497554d3436505ff22b70514bd50c",
+      "skillContextSha256": "06828156b6ec292fbab1d27d8a88b5d57b422242ee60e92643083902bb6fcf86",
+      "skillBodySha256": "582be639dd97af6e568e853d2287de268c72401da3874db67b6b07e9ddf041a1",
+      "skillReferenceSha256": [
+        {
+          "path": "references/notification-strategy-patterns.md",
+          "sha256": "94bf276dc5a7cc92a0513dc95058a7cb5e394d9b40c4e78f3c0dd334b9c5acc7"
+        }
+      ],
+      "skillLoadedPromptSha256": "e7185b07f0381c4d6120c5633434a5bebb4c8349849bea11ba8ce84bb3aeab49",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "privacy-redaction": 3,
+          "taxonomy-consent": 3,
+          "channel-mechanics": 1,
+          "support-evidence": 3,
+          "trust-metrics": 2
+        },
+        "criticalFailures": [
+          "Critical/security and high-priority routing sends SMS broadly, including masked amounts/merchants/location-adjacent alerts.",
+          "Claims critical security consent is non-revocable for regulatory reasons without support.",
+          "Missing required mechanics such as List-Unsubscribe, STOP/HELP handling, denied-permission fallback, token/bounce cleanup, and regional evidence."
+        ],
+        "rationale": "Good category coverage and some minor/shared-device protections, but channel mechanics are largely absent. Consent is less channel-specific and includes unsupported non-revocable claims. Privacy omits lock-screen/email-subject detail and allows potentially sensitive SMS content.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-sensitive-transactional-privacy-001-baseline.md",
+        "outputSha256": "5f2a88e82765e4b1ab2cc368ab9f5def6a774f29371e2159a5bf9a2ad0fb8b98",
+        "latencyMs": 19697,
+        "usage": {
+          "input_tokens": 292,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1836,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2128
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "privacy-redaction": 5,
+          "taxonomy-consent": 5,
+          "channel-mechanics": 5,
+          "support-evidence": 4,
+          "trust-metrics": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive taxonomy, consent separation, redaction, auth-gated links, minor/shared-device safeguards, and channel mechanics. Support evidence is privacy-preserving, though no formal event schema. Trust metrics are broad but could more explicitly cover failed critical alerts and retention/conversion.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-sensitive-transactional-privacy-001-skill-loaded.md",
+        "outputSha256": "551ffc92a3c7fe0ed76d6485e443089a3d3bb544871f264fd2ae7881b7a2dff0",
+        "latencyMs": 20349,
+        "usage": {
+          "input_tokens": 5008,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 2478,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 7486
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-notification-strategy-depth-20260701-minimax-outputs/notification-sensitive-transactional-privacy-001-judge-raw.md",
+      "judgeOutputSha256": "788568e1ce2c4fd7277d1a803db9f9f4cb4de29f43e31e614be4f6aacb92c702",
+      "judgeLatencyMs": 14562,
+      "judgeUsage": {
+        "input_tokens": 4455,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 864,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5319
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "notification-cross-channel-dedupe-incident-001",
+      "promptType": "positive",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [
+        "notification-strategy-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1795,
+      "usage": {
+        "input_tokens": 210,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 43,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 253
+      }
+    },
+    {
+      "taskId": "notification-cross-channel-dedupe-incident-001",
+      "promptType": "negative-control",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2779,
+      "usage": {
+        "input_tokens": 152,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 85,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 237
+      }
+    },
+    {
+      "taskId": "notification-game-liveops-fatigue-001",
+      "promptType": "positive",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [
+        "notification-strategy-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1880,
+      "usage": {
+        "input_tokens": 205,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 27,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 232
+      }
+    },
+    {
+      "taskId": "notification-game-liveops-fatigue-001",
+      "promptType": "negative-control",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2265,
+      "usage": {
+        "input_tokens": 152,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 53,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 205
+      }
+    },
+    {
+      "taskId": "notification-critical-utility-preferences-001",
+      "promptType": "positive",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [
+        "notification-strategy-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 3728,
+      "usage": {
+        "input_tokens": 205,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 39,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 244
+      }
+    },
+    {
+      "taskId": "notification-critical-utility-preferences-001",
+      "promptType": "negative-control",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2105,
+      "usage": {
+        "input_tokens": 151,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 77,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 228
+      }
+    },
+    {
+      "taskId": "notification-sensitive-transactional-privacy-001",
+      "promptType": "positive",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [
+        "notification-strategy-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1572,
+      "usage": {
+        "input_tokens": 215,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 35,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 250
+      }
+    },
+    {
+      "taskId": "notification-sensitive-transactional-privacy-001",
+      "promptType": "negative-control",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1540,
+      "usage": {
+        "input_tokens": 155,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 34,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 189
+      }
+    }
+  ]
+}
