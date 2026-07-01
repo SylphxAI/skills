@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-daily-reward-core-v0-20260701-monetization-guardrails",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "daily-reward-streak-economy-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "bc7179444778e97dd4f3e9583729cd5b1bb17ae9",
+      "branch": "codex/improve-daily-reward-benchmark",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T18:40:37.548Z",
+    "completedAt": "2026-07-01T18:41:29.405Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "daily-reward-streak-economy-001",
+      "skill": "daily-reward-and-streak-review",
+      "promptSha256": "32d0baff68dbe831708015c94361580a1f365d54988df902cbd3eb025cfd0543",
+      "skillContextSha256": "28d3d8ab6bea239c8665f5a7925b3b88352b3225a02cdd806147eb30227a2872",
+      "skillBodySha256": "76fd18474c88b58270c008e4367621dc85a68fbf885ae6b9dcbb5734973b0a63",
+      "skillReferenceSha256": [
+        {
+          "path": "references/daily-reward-streak-systems.md",
+          "sha256": "05771cc18928e41edb2066b2d083cc5681ff3034ca2945dbf38155095c64151c"
+        }
+      ],
+      "skillLoadedPromptSha256": "2857704e6f52fd8626304da38648c93c8c59b924a7b5f002456a075dd3be1f76",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "retention-ethics": 4,
+          "state-rules": 3,
+          "economy-balance": 3,
+          "abuse-prevention": 3,
+          "measurement": 3
+        },
+        "criticalFailures": [
+          "Missing explicit streak state machine",
+          "Offline rules are internally inconsistent",
+          "Economy sinks are not defined"
+        ],
+        "rationale": "Trust-oriented and covers many policies, but lacks a precise state machine, has contradictory offline handling, limited multi-account/exploit remediation, and shallow economy balance. Metrics omit spend impact and cohort health depth.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-daily-reward-core-v0-20260701-monetization-guardrails-outputs/daily-reward-streak-economy-001-baseline.md",
+        "outputSha256": "bd59439b1f57a432bbcd5b1938f5f4db6b0f414de45f2f08919336f7f36809a7",
+        "latencyMs": 22866,
+        "usage": {
+          "input_tokens": 264,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1392,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1656
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "retention-ethics": 5,
+          "state-rules": 5,
+          "economy-balance": 4,
+          "abuse-prevention": 5,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive policy, state model, trust guardrails, abuse ladder, and metrics. Strong anti-pressure monetization handling. Economy analysis is solid but could more explicitly define sinks beyond caps and budget reviews.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-daily-reward-core-v0-20260701-monetization-guardrails-outputs/daily-reward-streak-economy-001-skill-loaded.md",
+        "outputSha256": "5c654ac04e87dd91ab7cc22c37523ce4ea99ebda7ef4649ed589479ba0dc9867",
+        "latencyMs": 10758,
+        "usage": {
+          "input_tokens": 2529,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1028,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3557
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-daily-reward-core-v0-20260701-monetization-guardrails-outputs/daily-reward-streak-economy-001-judge-raw.md",
+      "judgeOutputSha256": "df9970321f195b323f2d07977ac54e90a5385598381699d5256770112ada5247",
+      "judgeLatencyMs": 11994,
+      "judgeUsage": {
+        "input_tokens": 2599,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 716,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3315
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "daily-reward-streak-economy-001",
+      "promptType": "positive",
+      "expectedSkill": "daily-reward-and-streak-review",
+      "triggeredSkills": [
+        "daily-reward-and-streak-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2456,
+      "usage": {
+        "input_tokens": 199,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 56,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 255
+      }
+    },
+    {
+      "taskId": "daily-reward-streak-economy-001",
+      "promptType": "negative-control",
+      "expectedSkill": "daily-reward-and-streak-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 3768,
+      "usage": {
+        "input_tokens": 148,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 41,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 189
+      }
+    }
+  ]
+}
