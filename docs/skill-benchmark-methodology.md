@@ -145,7 +145,7 @@ For longer tasks that risk provider or gateway timeouts, use `--answer-word-limi
 
 The summarizer expects scored result files. It reports the strongest public claim tier supported by the data; it does not upgrade a result to "Useful" unless sample depth, win rate, average delta, critical-failure, and over-trigger gates pass.
 
-Valid result files must be audit-grade: they need runner identity, model, blind-judge status, per-criterion scores, critical failures, and output references for both baseline and skill-loaded answers. A single aggregate score without raw-output traceability is not enough evidence for a usefulness claim.
+Valid result files must be audit-grade: they need runner identity, model, blind-judge status, per-criterion scores, critical failures, and output references for both baseline and skill-loaded answers. New runner output also records source metadata plus prompt and skill-context hashes so historical results remain interpretable after a skill changes. A single aggregate score without raw-output traceability is not enough evidence for a usefulness claim.
 
 `core-product-v0` has 20 tasks, so a complete suite result can support a repository-level "Useful" claim only if all other gates pass. It does not prove every individual skill useful; individual skill claims still need at least 5 positive tasks for that skill.
 

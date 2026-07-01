@@ -89,6 +89,7 @@ A result file is accepted only when it includes:
 - optional `triggerChecks` for positive and negative-control prompts so over-trigger rate can be reported.
 
 Do not commit a generated result unless raw outputs or output hashes are reviewable and the run configuration is reproducible.
+New runner outputs also include `runner.source`, prompt hashes, and skill body/reference hashes so future skill edits do not blur which context produced a historical result.
 
 ## Current suite coverage
 

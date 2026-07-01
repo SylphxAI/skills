@@ -75,6 +75,26 @@ function validateExistingReference(reference, prefix, errors) {
   if (!existsSync(file)) errors.push(`${prefix}: referenced output file does not exist: ${reference}`);
 }
 
+function validateSha256(value, prefix, errors) {
+  if (value !== undefined && (typeof value !== 'string' || !/^[a-f0-9]{64}$/.test(value))) {
+    errors.push(`${prefix}: must be a lowercase sha256 hex string`);
+  }
+}
+
+function validateSource(source, prefix, errors) {
+  if (source === undefined) return;
+  if (!isObject(source)) {
+    errors.push(`${prefix}: must be an object when present`);
+    return;
+  }
+  if (!source.type || typeof source.type !== 'string') errors.push(`${prefix}.type: string is required`);
+  if (source.type === 'git') {
+    if (typeof source.head !== 'string' || !/^[a-f0-9]{40}$/.test(source.head)) errors.push(`${prefix}.head: git sha is required`);
+    if (typeof source.branch !== 'string' || !source.branch) errors.push(`${prefix}.branch: string is required`);
+    if (typeof source.dirty !== 'boolean') errors.push(`${prefix}.dirty: boolean is required`);
+  }
+}
+
 function validateScoredRecord(record, condition, prefix, task, errors) {
   if (!record || typeof record !== 'object') {
     errors.push(`${prefix}: missing ${condition} record`);
@@ -103,6 +123,7 @@ function validateResult(result, file, taskIndex, errors) {
   if (!result.runId || !/^[a-zA-Z0-9._:-]+$/.test(result.runId)) errors.push(`${file}: missing or invalid runId`);
   if (!result.model) errors.push(`${file}: missing model`);
   if (!isObject(result.runner) || !result.runner.name) errors.push(`${file}: missing runner.name`);
+  if (isObject(result.runner)) validateSource(result.runner.source, `${file}: runner.source`, errors);
   if (!isObject(result.judge) || !result.judge.name) errors.push(`${file}: missing judge.name`);
   if (!isObject(result.judge) || typeof result.judge.blinded !== 'boolean') errors.push(`${file}: judge.blinded boolean is required`);
   if (!Array.isArray(result.samples) || result.samples.length === 0) errors.push(`${file}: samples must be non-empty`);
@@ -116,6 +137,24 @@ function validateResult(result, file, taskIndex, errors) {
     }
     if (result.suite && result.suite !== task.suite) errors.push(`${prefix}: task ${sample.taskId} belongs to suite ${task.suite}, not ${result.suite}`);
     if (sample.skill !== task.skill) errors.push(`${prefix}: skill must be ${task.skill}`);
+    validateSha256(sample.promptSha256, `${prefix}.promptSha256`, errors);
+    validateSha256(sample.skillContextSha256, `${prefix}.skillContextSha256`, errors);
+    validateSha256(sample.skillBodySha256, `${prefix}.skillBodySha256`, errors);
+    validateSha256(sample.skillLoadedPromptSha256, `${prefix}.skillLoadedPromptSha256`, errors);
+    if (sample.skillReferenceSha256 !== undefined) {
+      if (!Array.isArray(sample.skillReferenceSha256)) {
+        errors.push(`${prefix}.skillReferenceSha256: must be an array when present`);
+      } else {
+        for (const [refIndex, ref] of sample.skillReferenceSha256.entries()) {
+          if (!isObject(ref)) {
+            errors.push(`${prefix}.skillReferenceSha256[${refIndex}]: must be an object`);
+            continue;
+          }
+          if (typeof ref.path !== 'string' || !ref.path) errors.push(`${prefix}.skillReferenceSha256[${refIndex}].path: string is required`);
+          validateSha256(ref.sha256, `${prefix}.skillReferenceSha256[${refIndex}].sha256`, errors);
+        }
+      }
+    }
     validateScoredRecord(sample.baseline, 'baseline', prefix, task, errors);
     validateScoredRecord(sample.skillLoaded || sample.skill, 'skillLoaded', prefix, task, errors);
     validateExistingReference(sample.judgeOutputRef, `${prefix}.judgeOutputRef`, errors);
