@@ -7,4 +7,6 @@ negative_prompts:
 expected_behavior:
   - "Identifies concrete UI surfaces before suggesting details."
   - "Prioritizes accessibility and reduced-motion constraints."
-  - "Uses rule IDs when reviewing."
+  - "Uses ranked findings with rule IDs when reviewing."
+  - "Covers disabled, loading, error, success, focus, mobile, and duplicate-submit states when present."
+  - "Ends with the smallest consistent implementation plan."
