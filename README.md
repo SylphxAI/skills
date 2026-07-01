@@ -258,7 +258,7 @@ OpenAI Responses API runner, and the methodology in
 
 Current public status: skills are schema-validated, install-verified, and the current benchmark evidence
 across `core-product-v0` plus `hard-product-v0` supports the repository-level **SOTA candidate** tier:
-34 current task samples, +1.53 average skill uplift, 100.0% skill win rate, 100.0% non-regression rate,
+37 current task samples, +1.62 average skill uplift, 100.0% skill win rate, 100.0% non-regression rate,
 0.0% negative-control over-trigger rate, positive confidence interval, and passing clean shared-task multi-model
 overlap. The current suite also reports answer token/latency overhead so quality gains can be weighed
 against added context cost. The `validate:sota-evidence` gate additionally requires every current
@@ -270,7 +270,7 @@ This is still a bounded benchmark claim, not an unqualified claim that every ind
 every downstream product context. The generated
 [`skill evidence matrix`](./docs/skill-evidence-matrix.md) shows which skills have current behavioral
 coverage, which skills only support the suite-level claim, and which skills remain structural-preview only;
-`marketplace-payouts-review`, `payment-platform-readiness`, and `steam-launch-readiness` now have individual-useful public benchmark depth.
+`marketplace-payouts-review`, `payment-platform-readiness`, `steam-launch-readiness`, and `subscription-price-increase-retention-review` now have individual-useful public benchmark depth.
 
 ## Quality bar
 
