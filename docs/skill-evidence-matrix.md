@@ -7,10 +7,10 @@ This matrix prevents repository-level benchmark evidence from being over-read as
 ## Summary
 
 - Published skills: 195
-- Current benchmark tasks selected: 28
+- Current benchmark tasks selected: 31
 - Current benchmark suites represented: 2
 - Skills with current behavioral benchmark coverage: 20
-- Skills with individual-useful evidence: 1
+- Skills with individual-useful evidence: 2
 - Skills still structural-preview only: 175
 
 ## Status definitions
@@ -28,8 +28,8 @@ The repository-level SOTA-candidate claim is validated separately by the current
 | Skill | Evidence status | Current tasks | Avg delta | Win rate | Non-regression | Positive trigger recall | Negative over-trigger | Critical failures | Current task IDs | Note |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |
 | marketplace-payouts-review | individual-useful | 5 | 1.20 | 100.0% | 100.0% | 100.0% | 0.0% | 3→0 | marketplace-payout-abuse-appeal-001, marketplace-payout-compliance-release-001, marketplace-payout-provider-outage-001, marketplace-payout-tax-hold-001, marketplace-payouts-creator-001 | Individual skill usefulness gates pass on current public benchmark tasks. |
+| payment-platform-readiness | individual-useful | 5 | 1.80 | 100.0% | 100.0% | 100.0% | 0.0% | 8→0 | payment-platform-invoice-tax-close-001, payment-platform-store-refund-revoke-001, payment-platform-webhook-ledger-001, payment-platform-webhook-outage-replay-001, payment-webhook-entitlement-race-001 | Individual skill usefulness gates pass on current public benchmark tasks. |
 | notification-strategy-review | benchmarked-suite-support | 2 | 1.50 | 100.0% | 100.0% | 100.0% | 0.0% | 0→0 | notification-lifecycle-growth-001, notification-permission-fatigue-recovery-001 | Supports repository-level suite evidence; needs 3 more current task(s) for an individual-useful claim. |
-| payment-platform-readiness | benchmarked-suite-support | 2 | 1.50 | 100.0% | 100.0% | 100.0% | 0.0% | 3→0 | payment-platform-webhook-ledger-001, payment-webhook-entitlement-race-001 | Supports repository-level suite evidence; needs 3 more current task(s) for an individual-useful claim. |
 | steam-launch-readiness | benchmarked-suite-support | 2 | 2.00 | 100.0% | 100.0% | 100.0% | 0.0% | 5→0 | steam-demo-refund-review-risk-001, steam-launch-commercial-readiness-001 | Supports repository-level suite evidence; needs 3 more current task(s) for an individual-useful claim. |
 | subscription-price-increase-retention-review | benchmarked-suite-support | 2 | 1.00 | 100.0% | 100.0% | 100.0% | 0.0% | 0→0 | subscription-price-increase-grandfathering-001, subscription-price-increase-retention-001 | Supports repository-level suite evidence; needs 3 more current task(s) for an individual-useful claim. |
 | app-store-distribution-readiness | benchmarked-suite-support | 1 | 1.00 | 100.0% | 100.0% | 100.0% | 0.0% | 2→0 | app-store-launch-readiness-001 | Supports repository-level suite evidence; needs 4 more current task(s) for an individual-useful claim. |
