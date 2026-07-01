@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-steam-hard-v0-20260701-incident-learning",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "steam-demo-refund-review-risk-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "98545e4b084eaf6b69c50862a9a2603e574061ce",
+      "branch": "codex/improve-steam-launch-benchmark",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T18:21:19.256Z",
+    "completedAt": "2026-07-01T18:22:38.996Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "steam-demo-refund-review-risk-001",
+      "skill": "steam-launch-readiness",
+      "promptSha256": "524a3b7350bf4994dde7ab05cc94a53edfe843b345a13d53e9624eae041ef304",
+      "skillContextSha256": "e9c676109cd688ef7efc3fa8441fe939eef28dcb7639e04d8a08b2877ccbf031",
+      "skillBodySha256": "72b431db3c5de50e2a837bc2efd109f542b225f72be208a0dcb0575241ec9767",
+      "skillReferenceSha256": [
+        {
+          "path": "references/steam-launch-systems.md",
+          "sha256": "a322746ac7defd56d3f9f488ad21967950198763a4bd3755abaaccae64d39aa6"
+        }
+      ],
+      "skillLoadedPromptSha256": "25cb1da0c6c1ddf8ed3a92814d91d5cbce910c9be7f646cddd593fc0635a103b",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "store-demo-fit": 4.3,
+          "build-readiness": 4,
+          "commercial-risk": 4.2,
+          "community-ops": 4.3,
+          "measurement": 3.2
+        },
+        "criticalFailures": [],
+        "rationale": "Strong practical coverage of demo, store, pricing, DLC, moderation, keys, rollback, and first-week cadence. Measurement is thinner, with fewer refund/review/support metrics tied to explicit decision thresholds.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-steam-hard-v0-20260701-incident-learning-outputs/steam-demo-refund-review-risk-001-baseline.md",
+        "outputSha256": "76f2f3c73c215689ef9675ff594d0f0332fd03225c983b0a4c80866c294a3fcf",
+        "latencyMs": 34500,
+        "usage": {
+          "input_tokens": 100,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1714,
+          "output_tokens_details": {
+            "reasoning_tokens": 61
+          },
+          "total_tokens": 1814
+        }
+      },
+      "skillLoaded": {
+        "score": 4.9,
+        "criterionScores": {
+          "store-demo-fit": 5,
+          "build-readiness": 5,
+          "commercial-risk": 5,
+          "community-ops": 5,
+          "measurement": 4.5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive audit with launch calendar, readiness matrix, risk controls, rollback gates, community ops, and metrics tied to decisions. Minor weakness: some thresholds are qualitative rather than numeric.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-steam-hard-v0-20260701-incident-learning-outputs/steam-demo-refund-review-risk-001-skill-loaded.md",
+        "outputSha256": "3e4a5d5a44cba80b799e021db1f1958f10fda904d2fec7b770f6aee29585e2d1",
+        "latencyMs": 30513,
+        "usage": {
+          "input_tokens": 3230,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1624,
+          "output_tokens_details": {
+            "reasoning_tokens": 26
+          },
+          "total_tokens": 4854
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-steam-hard-v0-20260701-incident-learning-outputs/steam-demo-refund-review-risk-001-judge-raw.md",
+      "judgeOutputSha256": "bfc8563b90a4ef8d7599f05f3f97f05132e329fc9bfdc6b838b3cc5d4f9f731b",
+      "judgeLatencyMs": 9367,
+      "judgeUsage": {
+        "input_tokens": 4126,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 448,
+        "output_tokens_details": {
+          "reasoning_tokens": 253
+        },
+        "total_tokens": 4574
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "steam-demo-refund-review-risk-001",
+      "promptType": "positive",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [
+        "steam-launch-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to audit a Steam launch plan for an indie game entering Next Fest and explicitly includes Steam launch readiness topics such as demo, wishlists, regional pricing, DLC roadmap, cloud saves, controller support, reviews, refund risk, community moderation, streamer keys, build rollback, and first-week live operations.",
+      "latencyMs": 2702,
+      "usage": {
+        "input_tokens": 221,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 82,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 303
+      }
+    },
+    {
+      "taskId": "steam-demo-refund-review-risk-001",
+      "promptType": "negative-control",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about reviewing a SaaS failed-payment email sequence for subscription recovery, which is unrelated to preparing or auditing a PC game launch on Steam.",
+      "latencyMs": 2650,
+      "usage": {
+        "input_tokens": 180,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 49,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 229
+      }
+    }
+  ]
+}
