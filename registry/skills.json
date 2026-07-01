@@ -94,6 +94,19 @@
       ]
     },
     {
+      "name": "admin-delegation-boundary-review",
+      "description": "Design and audit admin delegation boundaries for enterprise SaaS and marketplace products covering delegated admin roles, tenant hierarchy, scoped permissions, inherited access, approval chains, impersonation, break-glass, support handoff, audit logs, separation of duties, customer-visible controls, and privilege drift. Use when products need safe delegated administration without creating shadow superusers.",
+      "status": "preview",
+      "path": "skills/admin-delegation-boundary-review",
+      "references": [
+        "admin-delegation-boundary-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "admin-settings-ia-review",
       "description": "Design and audit admin settings information architecture, workspace controls, role and permission settings, billing/admin separation, security settings, defaults, auditability, dangerous actions, policy inheritance, team management, and enterprise admin UX. Use when building settings for SaaS, developer tools, marketplaces, desktop apps, or multi-user products.",
       "status": "preview",
@@ -276,6 +289,19 @@
       ]
     },
     {
+      "name": "board-metrics-operating-review",
+      "description": "Design and audit board metrics operating systems for SaaS, marketplace, app, and game businesses covering metric definitions, source-of-truth datasets, cohort views, ARR/MRR, retention, gross margin, CAC, pipeline, product usage, incidents, forecast, board narrative, owner signoff, variance analysis, and action follow-up. Use when executive teams need board-ready truth instead of spreadsheet theater.",
+      "status": "preview",
+      "path": "skills/board-metrics-operating-review",
+      "references": [
+        "board-metrics-operating-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "brand-trust-review",
       "description": "Design and audit brand trust for product websites, landing pages, app listings, onboarding, checkout, pricing, AI features, privacy pages, social proof, support reputation, testimonials, claims, guarantees, and launch narratives. Use when a product needs credibility, reduced skepticism, clearer proof, safer claims, or a more trustworthy customer experience.",
       "status": "preview",
@@ -373,6 +399,19 @@
       "path": "skills/content-policy-appeals-review",
       "references": [
         "content-policy-appeals-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "contract-amendment-approval-review",
+      "description": "Design and audit contract amendment approval workflows covering amendment scope, clause changes, pricing, term, SLA, DPA, security, data residency, AI/data-use commitments, support obligations, billing impact, product capability, approval authority, obligation register updates, and renewal effects. Use when commercial teams need controlled amendment decisions without hidden obligations.",
+      "status": "preview",
+      "path": "skills/contract-amendment-approval-review",
+      "references": [
+        "contract-amendment-approval-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -737,6 +776,19 @@
       "path": "skills/desktop-os-integration",
       "references": [
         "desktop-os-integration-matrix.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "developer-quota-credit-abuse-review",
+      "description": "Design and audit developer quota and credit abuse controls for API, AI, compute, storage, marketplace, and sandbox products covering free credits, trial limits, quota ladders, promo codes, account linking, token churn, expensive endpoints, fraud signals, risk-based throttling, appeal paths, cost guardrails, and legitimate developer activation. Use when generous developer programs risk abuse or runaway cost.",
+      "status": "preview",
+      "path": "skills/developer-quota-credit-abuse-review",
+      "references": [
+        "developer-quota-credit-abuse-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1290,6 +1342,19 @@
       ]
     },
     {
+      "name": "marketplace-policy-model-feedback-loop-review",
+      "description": "Design and audit marketplace policy and model feedback loops for AI, app, creator, plugin, and seller marketplaces covering policy taxonomy, model signals, reviewer labels, enforcement actions, appeals, dispute outcomes, false positives, false negatives, drift, policy changes, model retraining, release gates, and user-facing explanations. Use when automated or assisted enforcement must learn without becoming opaque or unfair.",
+      "status": "preview",
+      "path": "skills/marketplace-policy-model-feedback-loop-review",
+      "references": [
+        "marketplace-policy-model-feedback-loop-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "marketplace-product-ops",
       "description": "Design and audit marketplace operating systems including two-sided marketplaces, creator marketplaces, plugin/skill/app marketplaces, listings, submissions, review queues, ranking, trust and safety, payouts, disputes, refunds, moderation, quality scoring, discovery, support, and growth loops. Use when creating or improving a marketplace repository, store, directory, creator platform, or community exchange.",
       "status": "preview",
@@ -1591,6 +1656,19 @@
       ]
     },
     {
+      "name": "partner-spiff-dispute-resolution-review",
+      "description": "Design and audit partner SPIF dispute resolution for channel, reseller, referral, marketplace, and sales incentive programs covering eligibility, deal registration, attribution conflicts, payout calculations, evidence packets, approval authority, clawbacks, fraud signals, partner communication, SLA, appeals, program learning, and ROI. Use when incentive disputes risk channel trust or payout abuse.",
+      "status": "preview",
+      "path": "skills/partner-spiff-dispute-resolution-review",
+      "references": [
+        "partner-spiff-dispute-resolution-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "partner-support-enablement-review",
       "description": "Design and audit partner support enablement across partner tiers, implementation roles, support access, escalation paths, training, certification, runbooks, knowledge bases, customer handoffs, co-sell motions, SLAs, sandbox environments, release updates, feedback loops, and quality metrics. Use when partners need to support customers without creating hidden operational risk.",
       "status": "preview",
@@ -1818,6 +1896,19 @@
       "path": "skills/release-evidence-pack-review",
       "references": [
         "release-evidence-pack-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "release-freeze-change-control-review",
+      "description": "Design and audit release freeze change control for holiday freezes, enterprise blackout windows, app-store deadlines, incident recovery, compliance windows, infrastructure freezes, and critical hotfixes covering change intake, severity, approval authority, customer scope, rollback, monitoring, communication, exception expiry, and post-freeze review. Use when teams must control changes during frozen release windows.",
+      "status": "preview",
+      "path": "skills/release-freeze-change-control-review",
+      "references": [
+        "release-freeze-change-control-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -2249,6 +2340,19 @@
       "path": "skills/subscription-entitlement-review",
       "references": [
         "subscription-entitlement-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "subscription-price-increase-retention-review",
+      "description": "Design and audit subscription price-increase retention programs for SaaS, mobile apps, games, and digital subscriptions covering cohort segmentation, value narrative, grandfathering, save offers, annual-plan migration, cancellation recovery, consent/notice timing, support scripts, refund paths, churn monitoring, revenue lift, fairness, and platform compliance. Use when price changes must protect trust and net revenue.",
+      "status": "preview",
+      "path": "skills/subscription-price-increase-retention-review",
+      "references": [
+        "subscription-price-increase-retention-patterns.md"
       ],
       "scripts": [],
       "agents": [

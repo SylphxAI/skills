@@ -1,0 +1,4 @@
+interface:
+  display_name: "Board Metrics Operating Review"
+  short_description: "Prepare board metric systems"
+  default_prompt: "Use $board-metrics-operating-review to design board metrics operating reviews."

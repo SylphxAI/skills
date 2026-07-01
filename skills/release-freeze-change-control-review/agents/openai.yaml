@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Freeze Change Control Review"
+  short_description: "Govern release freeze changes"
+  default_prompt: "Use $release-freeze-change-control-review to run release freeze change control."

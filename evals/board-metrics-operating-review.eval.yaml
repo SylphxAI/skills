@@ -1,0 +1,10 @@
+skill: board-metrics-operating-review
+positive_prompts:
+  - "Prepare a board metrics operating review for a SaaS company with ARR, MRR, NRR, GRR, churn cohorts, CAC, gross margin, pipeline, product usage, support load, incidents, burn, runway, forecast variance, owner signoff, board asks, and action follow-up."
+  - "Audit a board pack where metrics come from spreadsheets, CRM, billing, product analytics, and finance close with unclear definitions, unreconciled variances, vanity narratives, and drifting board action items."
+negative_prompts:
+  - "Review delegated admin boundaries."
+expected_behavior:
+  - "Defines metric dictionary, source-of-truth map, reconciliation boundaries, owner signoff, cohort/segment cuts, variance narrative, forecast bridge, board asks, and action register."
+  - "Separates accounting, billing, CRM, product analytics, support, incident, hiring, forecast, board narrative, and decision/action follow-up metrics."
+  - "Flags spreadsheet theater, metric sprawl, reconciliation gaps, owner gaps, hidden missed-plan drivers, vanity narratives, action drift, and metric drift after system changes."

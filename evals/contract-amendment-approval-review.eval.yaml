@@ -1,0 +1,10 @@
+skill: contract-amendment-approval-review
+positive_prompts:
+  - "Review a contract amendment request for an enterprise SaaS customer changing pricing, term length, SLA credits, DPA language, data residency, AI data-use commitments, support response time, product roadmap promises, billing setup, approvals, and renewal impact."
+  - "Design an amendment approval workflow so legal, sales, finance, security, privacy, product, support, billing, and customer success do not create hidden obligations through side letters or emails."
+negative_prompts:
+  - "Review release freeze change control."
+expected_behavior:
+  - "Defines amendment scope, clause/source documents, risk tier, approval matrix, legal/commercial/security/privacy/product/support impact, obligation register updates, billing/provisioning mapping, verification, and renewal effects."
+  - "Separates legal interpretation, commercial policy, finance/margin, product capability, support/SLA, privacy/security, billing, provisioning, customer communication, and renewal review work."
+  - "Flags hidden obligations, side-letter bypass, authority gaps, unsupported product promises, unmapped billing/support impact, register gaps, system mismatch, and renewal surprises."

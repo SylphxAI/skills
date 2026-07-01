@@ -1,0 +1,10 @@
+skill: partner-spiff-dispute-resolution-review
+positive_prompts:
+  - "Resolve a partner SPIF dispute involving duplicate attribution, late deal registration, referral commission calculation, reseller rebate cap, invoice/tax requirements, clawback risk, CRM evidence, partner appeal, fraud signals, approval authority, and partner communication."
+  - "Design a SPIF dispute workflow that protects channel trust while preventing relationship-pressure payouts, spreadsheet truth, duplicate claims, fake leads, unclear appeals, and repeated incentive-program disputes."
+negative_prompts:
+  - "Review developer quota credit abuse."
+expected_behavior:
+  - "Defines program terms, eligibility, attribution source order, evidence packet, payout calculation, approval authority, dispute SLA, partner communication, appeal route, clawback handling, fraud escalation, and program feedback."
+  - "Separates eligibility disputes, duplicate attribution, late registration, calculation errors, clawbacks, tier disputes, fraud suspicion, appeals, and program learning paths."
+  - "Flags relationship-pressure payouts, spreadsheet truth, evidence gaps, hidden eligibility rules, double payouts, fake leads, weak appeals, partner trust damage, and repeated dispute patterns."
