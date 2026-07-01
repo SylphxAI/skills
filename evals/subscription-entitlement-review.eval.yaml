@@ -7,3 +7,5 @@ negative_prompts:
 expected_behavior:
   - "Separates commerce state, ledger events, and derived entitlement state."
   - "Includes state machine, event schema, support tooling, and user messaging."
+  - "Includes explicit channel precedence and conflict resolution for web, App Store, Google Play, team invoice, family sharing, and support overrides."
+  - "Handles idempotency, event ordering, restore purchase reconciliation, offline access, and auditability."
