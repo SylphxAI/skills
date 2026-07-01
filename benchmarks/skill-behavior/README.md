@@ -45,6 +45,7 @@ Before that, call the skill **Preview / unproven** even if it passes repository 
 - `scripts/run-benchmark-openai.mjs` — optional OpenAI Responses API runner that generates raw outputs, blind judge scores, and result JSON.
 - `scripts/merge-benchmark-results.mjs` — merges non-overlapping shard result files into a full-suite result.
 - `scripts/validate-benchmarks.mjs` — validates task/result file shape and skill references.
+- `scripts/validate-benchmark-claims.mjs` — recomputes the current-suite summary and rejects stale or over-broad public benchmark claims.
 - `scripts/summarize-benchmark-results.mjs` — computes score deltas, win rates, trigger rates, answer token/latency overhead, and supported claim tier from result files.
 
 Prepare a run pack:
@@ -101,6 +102,18 @@ A result file is accepted only when it includes:
 Do not commit a generated result unless raw outputs or output hashes are reviewable and the run configuration is reproducible.
 New runner outputs also include `runner.source`, prompt hashes, and skill body/reference hashes so future skill edits do not blur which context produced a historical result.
 When available, usage and latency fields are summarized as answer-generation overhead. Judge and trigger-classifier overhead are audit costs, not skill-loaded answer overhead.
+
+## Claim integrity gate
+
+Public benchmark claims must remain mechanically tied to current result JSON:
+
+```bash
+npm run validate:benchmark-claims
+```
+
+This gate recomputes the current-suite summary, checks the committed current-suite summary is not stale,
+verifies the README's current status metrics match the computed tier, and rejects universal claims such as
+"all skills are SOTA" unless the text explicitly negates that claim.
 
 ## Current suite coverage
 
