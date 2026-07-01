@@ -26,7 +26,7 @@ Use this skill to convert board metrics, board pack, investor reporting, operati
 - Do not invent release-ready period values when the user has not supplied data. Use clearly prefixed `illustrative_not_source_of_truth` values for examples, set signoff/confidence to blocked or illustrative, and create a data-request register.
 - Do not accept owner signoff as a vague plan. Show the signoff artifact: metric owner, source owner, finance/data reviewer, lock time, confidence status, unresolved caveat, and release decision.
 - Do not leave variance as a blank template. If source values are missing, provide an illustrative_not_source_of_truth bridge with sample driver deltas and explicitly block release until source-tied actuals replace it.
-- Under tight word limits, prioritize: current-period snapshot, six full metric definitions with formulas/source/cadence/segment/caveat, driver-based variance bridge, signoff ledger, board asks, action register.
+- Under tight word limits, prioritize: current-period snapshot, compact full-coverage metric dictionary for every requested board-critical metric, driver-based variance bridge, signoff ledger, board asks, action register. Do not drop MRR, GRR, support load, incidents, burn, runway, or forecast variance.
 
 ## Output format
 
@@ -45,6 +45,7 @@ Operating metrics plan:
 
 Metric dictionary and reconciliation map:
 - <metric> -> <formula, source, cadence, segment, caveat, owner>
+Required coverage: ARR, MRR, NRR, GRR, churn cohorts, CAC/payback, gross margin, pipeline, product usage, support load, incidents, burn, runway, forecast variance.
 
 Variance narrative:
 - <driver> -> <plan delta, evidence, operating implication, owner action>

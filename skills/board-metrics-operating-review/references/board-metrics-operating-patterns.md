@@ -63,7 +63,7 @@ If the prompt asks for a board review but supplies no actual period data, produc
 
 Illustrative example rows should cover at least revenue, retention, gross margin, pipeline, product usage, support/incidents, burn/runway, and forecast variance. Use driver language such as new ARR shortfall, expansion beat, churn cohort deterioration, hosting cost pressure, pipeline slippage, incident repeat cause, hiring timing, or data-quality change.
 
-When space is limited, do not spend the budget on a full blank table. Prefer a filled illustrative snapshot plus a release block:
+When space is limited, do not spend the budget on a full blank table. Prefer a filled illustrative snapshot plus a release block, but keep dictionary coverage complete across ARR, MRR, NRR, GRR, churn cohorts, CAC/payback, gross margin, pipeline, product usage, support load, incidents, burn, runway, and forecast variance:
 
 ```text
 Release status: blocked until source-tied actuals, plan, prior, variance, owner signoff, and confidence replace illustrative values.

@@ -25,6 +25,7 @@ A strong answer after loading the skill should:
 - Includes a current-period board snapshot with actual, plan, prior, variance, status, owner, signoff, confidence, and decision implication for board-critical metrics.
 - Shows owner signoff as a release artifact and avoids inventing release-ready period values by using clearly prefixed illustrative_not_source_of_truth values plus data-request actions.
 - When source values are absent, provides a clearly labeled illustrative_not_source_of_truth current-period snapshot and driver-based variance bridge while blocking release until real values and signoff are supplied.
+- Covers ARR, MRR, NRR, GRR, churn cohorts, CAC/payback, gross margin, pipeline, product usage, support load, incidents, burn, runway, and forecast variance without dropping requested metrics.
 
 It should also produce the artifact shape requested by `skills/board-metrics-operating-review/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
 
