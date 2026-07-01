@@ -154,6 +154,7 @@ For longer tasks that risk provider or gateway timeouts, use `--answer-word-limi
 
 The summarizer expects scored result files. It reports the strongest public claim tier supported by the data; it does not upgrade a result to "Useful" unless sample depth, win rate, average delta, critical-failure, and over-trigger gates pass.
 When result files include usage and latency metadata, the summary also reports answer-generation token overhead, latency overhead, and score delta per 1k added input tokens. These are not claim gates yet, but they are required context for deciding whether a higher-quality skill is commercially and operationally worth the extra prompt budget.
+The summary prints SOTA-candidate gates separately from Useful gates. A SOTA-candidate claim requires Useful to pass plus multiple suites, multiple models, a positive confidence-interval lower bound, and low over-trigger rate.
 
 Valid result files must be audit-grade: they need runner identity, model, blind-judge status, per-criterion scores, critical failures, and output references for both baseline and skill-loaded answers. New runner output also records source metadata plus prompt and skill-context hashes so historical results remain interpretable after a skill changes. A single aggregate score without raw-output traceability is not enough evidence for a usefulness claim.
 
