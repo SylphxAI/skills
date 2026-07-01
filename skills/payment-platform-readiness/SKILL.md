@@ -58,7 +58,7 @@ Reconciliation and finance close:
 - Explicit close events -> invoice_created / tax_calculated / coupon_applied / credit_note_issued / payment_succeeded_or_failed / refund_or_dispute / fee_recorded / settlement_received / revenue_exported / entitlement_granted_or_revoked / dunning_started_or_exhausted / manual_adjustment
 
 Support-safe correction flow:
-- <case> -> <lookup evidence, allowed action, approval, ledger event, customer message>
+- <case> -> lookup keys (account_id, user_id, invoice_id, payment_intent/charge, subscription, entitlement_id, tax document, support_case_id), evidence, allowed action, approval, ledger event, customer message
 
 Webhook outage replay flow:
 - Use a table: state, owner, required evidence, ordering/idempotency rule, dead-letter handling, exit gate, customer/support impact

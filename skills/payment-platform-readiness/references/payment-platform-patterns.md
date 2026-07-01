@@ -179,6 +179,7 @@ Starter tolerance table:
 Support console must show:
 
 - user/account and entitlement state with "why";
+- invoice lookup by invoice ID, account ID, subscription ID, payment intent/charge ID, tax document/export ID, entitlement ID, support case, and customer email;
 - provider identifiers and latest verified provider status;
 - ledger timeline, raw payload hash, projection version, and replay button;
 - invoice, tax, fee, settlement, refund, dispute, and chargeback records;
