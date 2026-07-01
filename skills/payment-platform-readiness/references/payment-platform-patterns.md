@@ -31,6 +31,7 @@
 - `payment-18` — Customer trust requires temporary access or grace only when policy permits, clear status messaging, fast restore/retry paths, and support-safe remediation for false revocations.
 - `payment-19` — Webhook outages and backlogs need explicit replay states: paused, quarantined, deduplicated, ordered by provider effective time, replaying, projector-repaired, finance-reconciled, and resumed; arrival order is evidence, not entitlement truth.
 - `payment-20` — Month-close readiness requires separate ledger events and owners for invoice, tax, coupon, credit note, payment, refund, dispute, fee, settlement, revenue export, entitlement, dunning, and manual adjustment; invoice status is not access truth.
+- `payment-21` — Finance-close gates need numeric tolerances, source systems, owner, exception queue, SLA, and close-blocking rule; vague "reconcile monthly" language is not launch-ready.
 
 ## State machine
 
@@ -155,8 +156,21 @@ Invoice and tax launches need ledger events that finance can close without sprea
 | `settlement_received` | settlement_id, gross, fees, net, currency, deposit date | finance | settlement equals invoices minus refunds/disputes/fees within tolerance |
 | `revenue_exported` | export_id, accounting period, revenue lines, deferred/reversal flags | finance | revenue recognition export ties to ledger and exceptions |
 | `manual_adjustment` | actor, reason, approval, source_case_id, ledger effect, expiry, customer-visible reason | support/finance | adjustment has approval and is included in close exceptions |
+| `entitlement_granted` / `entitlement_revoked` | entitlement_id, account_id, source ledger event, access period, projection_version | entitlement owner | access state ties to paid/grace/dunning/revoke policy |
+| `dunning_started` / `dunning_exhausted` | invoice_id, retry schedule, grace end, suspension date, customer message | billing/support | dunning state matches entitlement and customer notices |
 
 Month-close exceptions need named owner, tolerance, SLA, customer impact, and resolution action. Examples: invoice-paid/no-entitlement, active-entitlement/unpaid-invoice, tax mismatch, provider fee mismatch, settlement shortfall, duplicate credit note, unresolved dispute, support adjustment without approval, and revenue export mismatch.
+
+Starter tolerance table:
+
+| Close check | Source systems | Cadence | Starter tolerance | Owner | Close blocker |
+| --- | --- | --- | --- | --- | --- |
+| Invoice to ledger | Stripe invoice export, internal ledger | daily and month-close | zero missing paid invoices | billing ops | any paid invoice missing ledger event |
+| Tax/VAT | tax engine, invoice lines, tax report | daily in launch, month-close | zero jurisdiction/rate mismatches unless tax owner approves | tax owner | unowned tax mismatch |
+| Fees and settlement | processor fees, settlement/payout report, bank deposit | daily | currency rounding only; no unexplained amount over approved threshold | finance/treasury | unexplained settlement shortfall |
+| Refunds, disputes, credit notes | provider refund/dispute report, credit note export, ledger | daily and close | zero unmatched money events | finance/support | unmatched refund/dispute/credit note |
+| Entitlement exposure | entitlement projection, invoices, dunning state | hourly launch, daily steady state | zero paid-without-access and zero unpaid-active outside policy grace | entitlement owner | stale access or false revoke without owner |
+| Revenue export | ledger, revenue schedule, accounting export | close | export total equals approved ledger total within accounting tolerance | controller | unapproved revenue export mismatch |
 
 ## Support tooling
 

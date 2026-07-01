@@ -16,7 +16,8 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 5. Check platform-specific constraints, sandbox/live separation, fallback paths, customer messaging, finance close, and operational rollback.
 6. For outages or backlogs, define explicit ingestion states: paused, quarantined, deduplicated, ordered by provider effective time, replaying, projector-repaired, finance-reconciled, and resumed.
 7. For invoice/tax/finance-close launches, model invoice, tax, coupon, credit note, refund, dispute, fee, settlement, revenue export, entitlement, dunning, and manual adjustment as separate events with owners and exception queues.
-8. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability dashboards, rollback controls, and launch checklist.
+8. For finance close, name numeric tolerances, cadence, owner, source systems, exception queue, and close blocker for every money/tax/settlement/revenue check.
+9. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability dashboards, rollback controls, and launch checklist.
 
 ## Guardrails
 
@@ -52,7 +53,8 @@ Provider precedence rules:
 
 Reconciliation and finance close:
 - <money/settlement/tax/fee/entitlement check> -> <source, cadence, owner, exception action>
-- Explicit close events -> invoice_created / tax_calculated / coupon_applied / credit_note_issued / payment_succeeded_or_failed / refund_or_dispute / fee_recorded / settlement_received / revenue_exported / manual_adjustment
+- Close control table -> check, source systems, cadence, numeric tolerance, owner, exception queue, close blocker
+- Explicit close events -> invoice_created / tax_calculated / coupon_applied / credit_note_issued / payment_succeeded_or_failed / refund_or_dispute / fee_recorded / settlement_received / revenue_exported / entitlement_granted_or_revoked / dunning_started_or_exhausted / manual_adjustment
 
 Support-safe correction flow:
 - <case> -> <lookup evidence, allowed action, approval, ledger event, customer message>
