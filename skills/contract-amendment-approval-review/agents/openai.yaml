@@ -1,0 +1,4 @@
+interface:
+  display_name: "Contract Amendment Approval Review"
+  short_description: "Govern contract amendments"
+  default_prompt: "Use $contract-amendment-approval-review to review contract amendment approvals."

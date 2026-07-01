@@ -1,0 +1,4 @@
+interface:
+  display_name: "Partner SPIF Dispute Resolution Review"
+  short_description: "Resolve partner SPIF disputes"
+  default_prompt: "Use $partner-spiff-dispute-resolution-review to resolve partner SPIF disputes."
