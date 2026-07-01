@@ -18,6 +18,10 @@ A Steam launch is a funnel from first impression to wishlist to purchase to firs
 - `steam-12` — Pricing, discount, DLC, embargo, creator-key, refund, and review-response decisions need a verified policy matrix; do not invent platform policy or make unsupported promises.
 - `steam-13` — First-week learning must produce decisions: hotfix now, rollback, change store copy, pin known issue, adjust regional price, retarget creators, or defer to roadmap.
 - `steam-14` — First-week operating metrics need numeric or pre-agreed thresholds. If studio-specific targets are missing, provide starter tripwires labeled as internal defaults to replace before launch.
+- `steam-15` — Store promise audits must explicitly verify capsule, short description, tags, trailer, screenshots, achievements, settings, controller support, cloud saves, localization, system requirements, demo scope, and DLC wording against the shipped build.
+- `steam-16` — Creator keys and embargo plans need a press kit, locked build version, known-issues note, content guidance, support owner, review/coverage monitoring, and fallback if the build or policy changes before embargo lift.
+- `steam-17` — Player communication during launch incidents needs a bug-report format, known-issue state, ETA policy, support macro, public update cadence, owner, and explicit decision type: hotfix, rollback, store-copy change, promotion pause, or roadmap clarification.
+- `steam-18` — Commercial launch advice must avoid unsupported platform policy claims. Verify current Steamworks/store-console behavior for pricing, discounts, refunds, reviews, creator keys, and DLC before treating it as policy.
 
 ## Readiness decision table
 
@@ -31,6 +35,7 @@ A Steam launch is a funnel from first impression to wishlist to purchase to firs
 | Support/community | Bug report and moderation flow exists | No owner for launch-week traffic | macros, triage board, response SLA |
 | Pricing | Price matches value and region expectations | Discount trains immediate waiting | pricing rationale and launch discount rule |
 | Commercial policy | Price/discount/DLC/key/embargo/refund posture is documented | Unsupported policy claims or bait-and-switch roadmap | policy matrix, owner approval, communication draft |
+| Creator/press readiness | Press kit, known-issues note, key list, embargo timing, build version, and support coverage are aligned | Unstable keys, unclear embargo, no support owner, or missing known-issues context | press kit, creator key register, embargo note, support macro |
 
 ## State machine
 
@@ -51,6 +56,7 @@ Track or request these metrics when available:
 - `store_page_viewed`: source, country, language, tag set, device class.
 - `wishlist_added`: source, campaign, demo_exposed, festival_exposed.
 - `demo_started`: build, source, session_length, tutorial_completed.
+- `demo_feedback_theme_recorded`: source, forum_theme, review_theme, support_theme, severity, owner.
 - `purchase_started`: country, price, discount, wishlist_age_days.
 - `first_session_completed`: crash, settings_changed, achievement_unlocked, save_created.
 - `crash_reported`: build_version, hardware_class, driver_version, scene_or_match_state, fatality, repeat_count.
@@ -107,6 +113,7 @@ Use a matrix instead of ad hoc launch opinions.
 - If review bombing is suspected, still separate valid product defects from coordinated abuse; moderation and reporting should not replace fixing real launch quality issues.
 - Prepare a review-bombing playbook before launch: freeze defensive replies, group reviews by theme/source/time, identify valid product defects, preserve evidence for moderation/reporting, publish a calm known-issue or clarification post, and keep patch/update communication separate from abuse reporting.
 - If store copy created wrong expectations, change copy/trailer/tags before buying more traffic.
+- Bug-report format should request build version, OS/hardware class, region/server, reproduction steps, save/log attachment, screenshot/video when safe, expected vs actual result, and severity. Public ETA language should separate "investigating", "fix identified", "hotfix in test", "rollback live", and "roadmap clarification"; do not promise exact timing unless the release owner approved it.
 
 ## First-week decision ledger
 
