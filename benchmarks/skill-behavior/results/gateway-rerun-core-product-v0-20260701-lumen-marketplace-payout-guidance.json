@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-lumen-marketplace-payout-guidance",
+  "model": "sylphx/lumen",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 3400,
+    "answerWordLimit": 650,
+    "maxAttempts": 6,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "marketplace-payouts-creator-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "34d4d6663f402fe2a565a2dd6087d6c4b9ce6af4",
+      "branch": "codex/lumen-overlap-marketplace-ops-shard",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T15:26:24.106Z",
+    "completedAt": "2026-07-01T15:30:53.372Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "sylphx/lumen",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "skill": "marketplace-payouts-review",
+      "promptSha256": "c3517d04e81341c93a1953f5b1d209f4633310043121dae9a183e4eb8b5c4054",
+      "skillContextSha256": "fb770a23edd73c024313362dcfe8c8f2eb33edbea5654c7a7fc44f960f1224b0",
+      "skillBodySha256": "a229dca6317cfe5396360dc033c494603ce7d14cd8706e56ac2dde8aa20cde58",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-payout-systems.md",
+          "sha256": "7b25290e3149d7c13eacf48b4c90cfee4ed16bb0df5bf300656fb4de1a4f55bd"
+        }
+      ],
+      "skillLoadedPromptSha256": "b0ea7c869c9ca76ab6b3807819609b58a8499b03c7bcb53efdb1721c0b88404a",
+      "baseline": {
+        "score": 4.142857142857143,
+        "criterionScores": {
+          "ledger-truth": 3,
+          "risk-controls": 5,
+          "seller-experience": 5,
+          "schedule-policy": 5,
+          "marketplace-health": 3
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-marketplace-payout-guidance-outputs/marketplace-payouts-creator-001-baseline.md",
+        "outputSha256": "fdb6d58fcfb1b1dccca6056a48f922d7a8d296d8e1edd692efcdc63199984207",
+        "latencyMs": 131777,
+        "usage": {
+          "input_tokens": 89,
+          "input_tokens_details": {
+            "cached_tokens": 64
+          },
+          "output_tokens": 2186,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2275
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "ledger-truth": 5,
+          "risk-controls": 5,
+          "seller-experience": 5,
+          "schedule-policy": 5,
+          "marketplace-health": 5
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-marketplace-payout-guidance-outputs/marketplace-payouts-creator-001-skill-loaded.md",
+        "outputSha256": "4dc534482edb46714c4eba6feaab02bc679325c4043aed8b31020eb506194e32",
+        "latencyMs": 55300,
+        "usage": {
+          "input_tokens": 2885,
+          "input_tokens_details": {
+            "cached_tokens": 2880
+          },
+          "output_tokens": 2462,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5347
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-marketplace-payout-guidance-outputs/marketplace-payouts-creator-001-judge-raw.md",
+      "judgeOutputSha256": "36a51e957fa4b4304c1a93de905a04ae4119c49fca8f6d6b0f6e209c3e722763",
+      "judgeLatencyMs": 62099,
+      "judgeUsage": {
+        "input_tokens": 2080,
+        "input_tokens_details": {
+          "cached_tokens": 64
+        },
+        "output_tokens": 1695,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3775
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "promptType": "positive",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [
+        "marketplace-payouts-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 7742,
+      "usage": {
+        "input_tokens": 193,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 216,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 409
+      }
+    },
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "promptType": "negative-control",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 12339,
+      "usage": {
+        "input_tokens": 155,
+        "input_tokens_details": {
+          "cached_tokens": 128
+        },
+        "output_tokens": 355,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 510
+      }
+    }
+  ]
+}
