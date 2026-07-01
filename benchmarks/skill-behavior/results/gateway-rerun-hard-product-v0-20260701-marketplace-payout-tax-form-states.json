@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-rerun-hard-product-v0-20260701-marketplace-payout-tax-form-states",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "marketplace-payout-tax-hold-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "c6b1597317068489d04152116a87099edecae4d6",
+      "branch": "codex/improve-marketplace-payout-holds",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T17:39:14.607Z",
+    "completedAt": "2026-07-01T17:40:40.023Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "marketplace-payout-tax-hold-001",
+      "skill": "marketplace-payouts-review",
+      "promptSha256": "370bc5690c28a5cb7f905599cb200c2b61f862c96f6a3640bc2ef49ee80379d7",
+      "skillContextSha256": "f7c57ed71d2b2abb1a5e3678ab31f0307b78e23bf41e55895998eafea0e81159",
+      "skillBodySha256": "844e1604de93e4412184f636312f888f4bf5ab2f5c4849e5ab3c51111291ea9c",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-payout-systems.md",
+          "sha256": "11563a2c5327298406d8ce33a647bff4585d8a87e9ddb6e7ae94849b8023cd0b"
+        }
+      ],
+      "skillLoadedPromptSha256": "2426a90f95a7edad41021285099e9875d179e5e17c4d3c44203732ff19badfac",
+      "baseline": {
+        "score": 4.6,
+        "criterionScores": {
+          "balance-state-model": 4.5,
+          "risk-controls": 5,
+          "compliance-readiness": 4.5,
+          "creator-support": 4.5,
+          "marketplace-incentives": 4.5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive ledger-first design with strong holds, disputes, tax, sanctions, failed transfers, and negative balance handling. Slightly less formal on disputed balance state and creator support macros/evidence than B.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payout-tax-form-states-outputs/marketplace-payout-tax-hold-001-baseline.md",
+        "outputSha256": "4dcbe30d736c1becae64cbf1dc15b947d070c14213ae56b8f63a096ef921b930",
+        "latencyMs": 34854,
+        "usage": {
+          "input_tokens": 93,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1865,
+          "output_tokens_details": {
+            "reasoning_tokens": 83
+          },
+          "total_tokens": 1958
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "balance-state-model": 5,
+          "risk-controls": 5,
+          "compliance-readiness": 5,
+          "creator-support": 5,
+          "marketplace-incentives": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Excellent complete design: explicit state machine, reserves and release criteria, compliance/provider readiness, audit invariants, dashboard/support workflows, dispute evidence, failed payout recovery, and balanced marketplace risk/trust incentives.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payout-tax-form-states-outputs/marketplace-payout-tax-hold-001-skill-loaded.md",
+        "outputSha256": "6396401fd341a856218f331ee443c842c1cee9349d3dc17915b8cdb2d5e92210",
+        "latencyMs": 34654,
+        "usage": {
+          "input_tokens": 3637,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1869,
+          "output_tokens_details": {
+            "reasoning_tokens": 13
+          },
+          "total_tokens": 5506
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payout-tax-form-states-outputs/marketplace-payout-tax-hold-001-judge-raw.md",
+      "judgeOutputSha256": "76226a60f586686d5bd5ecae2463fd0d372a4be9ca6b8a14820c317bc069bbb0",
+      "judgeLatencyMs": 10908,
+      "judgeUsage": {
+        "input_tokens": 4522,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 540,
+        "output_tokens_details": {
+          "reasoning_tokens": 335
+        },
+        "total_tokens": 5062
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "marketplace-payout-tax-hold-001",
+      "promptType": "positive",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [
+        "marketplace-payouts-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to design payout operations for a global AI-skill marketplace, including creator balances, refunds, disputes, fraud review, tax forms, sanctions screening, holds, thresholds, failed transfers, negative balances, and support tickets—all core areas covered by the marketplace-payouts-review skill.",
+      "latencyMs": 2452,
+      "usage": {
+        "input_tokens": 228,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 78,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 306
+      }
+    },
+    {
+      "taskId": "marketplace-payout-tax-hold-001",
+      "promptType": "negative-control",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks for a desktop tray icon checklist for a local note-taking utility, which is unrelated to marketplace payouts, seller earnings, fees, refunds, ledgers, or money movement between buyers and sellers.",
+      "latencyMs": 2541,
+      "usage": {
+        "input_tokens": 195,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 60,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 255
+      }
+    }
+  ]
+}
