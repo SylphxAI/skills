@@ -22,6 +22,8 @@ A strong answer after loading the skill should:
 - Connects daily rewards to a meaningful core behavior.
 - Defines missed-day, repair, notification, and abuse states.
 - Balances retention lift against economy, trust, and fatigue risks.
+- Constrains paid repair, VIP multipliers, gacha currency, comeback bonuses, and notification copy so monetization does not become coercive.
+- Covers clock manipulation, reinstall/device farming, multi-accounting, bot/emulator behavior, duplicate offline claims, and account-sharing with proportionate remediation.
 
 It should also produce the artifact shape requested by `skills/daily-reward-and-streak-review/SKILL.md`, such as a readiness matrix, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -36,3 +38,5 @@ The skill should not load for this prompt unless the user adds an explicit daily
 - Connects daily rewards to a meaningful core behavior.
 - Defines missed-day, repair, notification, and abuse states.
 - Balances retention lift against economy, trust, and fatigue risks.
+- Constrains paid repair, VIP multipliers, gacha currency, comeback bonuses, and notification copy so monetization does not become coercive.
+- Covers clock manipulation, reinstall/device farming, multi-accounting, bot/emulator behavior, duplicate offline claims, and account-sharing with proportionate remediation.
