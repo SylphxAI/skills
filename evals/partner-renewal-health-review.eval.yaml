@@ -1,0 +1,10 @@
+skill: partner-renewal-health-review
+positive_prompts:
+  - "Review partner renewal health for a channel and implementation partner with sourced pipeline, customer outcomes, support burden, certification status, compliance gaps, dispute history, co-marketing commitments, contract renewal, expansion tier request, and possible exit plan."
+  - "Audit partner renewal health, channel partner renewal, reseller health, implementation partner renewal, technology partner review, co-marketing renewal, and partner scorecard questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review release evidence pack."
+expected_behavior:
+  - "Defines partner type, renewal date, revenue/pipeline, customer outcomes, support quality, certification, compliance, enablement usage, disputes, contract terms, owner, and renewal decision."
+  - "Balances business value with customer trust through remediation, tier expansion, downgrade, referral pause, renegotiation, decertification, or exit paths."
+  - "Flags relationship-inertia renewals, pipeline-over-trust bias, tier expansion without evidence, ignored compliance gaps, and exits without transition plans."

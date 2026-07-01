@@ -1,0 +1,10 @@
+skill: store-subscription-policy-compliance-review
+positive_prompts:
+  - "Review store subscription policy compliance for an iOS and Android app with trial paywalls, intro offers, restore purchase, cancellation disclosure, receipt validation, server notifications, refunds, grace periods, metadata screenshots, reviewer notes, and support macros."
+  - "Audit store subscription policy, app subscription compliance, IAP review, trial disclosure, cancellation flow, restore purchase, entitlement, and store rejection-prevention questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Assemble a release evidence pack."
+expected_behavior:
+  - "Defines store, product IDs, pricing, trial/intro terms, paywall copy, entitlement behavior, receipt/server notification tests, cancellation/restore evidence, metadata/screenshots, reviewer notes, and support readiness."
+  - "Covers purchase, renewal, cancellation, restore, refund, grace period, billing retry, upgrade/downgrade, price changes, family sharing, and account deletion expectations."
+  - "Flags unclear subscription terms, client-only entitlement truth, metadata/paywall mismatch, hidden cancellation/restore paths, missing reviewer evidence, and post-launch monitoring gaps."

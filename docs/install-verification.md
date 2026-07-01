@@ -48,9 +48,9 @@ Last verified from a clean temporary HOME on 2026-06-30 UTC using the local chec
 
 | Check | Result |
 | --- | --- |
-| `npx --yes skills add <local checkout path> --list` | exit 0; reported 171 skills |
+| `npx --yes skills add <local checkout path> --list` | exit 0; reported 179 skills |
 | `npx --yes skills add <local checkout path> --global --skill '*' --agent codex -y --copy` | exit 0 |
-| Installed `SKILL.md` files | 171 |
+| Installed `SKILL.md` files | 179 |
 | `npx --yes skills list --global --json` | exit 0 |
 
-Default-branch proof should be refreshed with `npm run verify:install` after the 171-skill expansion merges to `main`. Third-party directory listing still depends on external indexers or manual submission flows.
+Default-branch proof should be refreshed with `npm run verify:install` after the 179-skill expansion merges to `main`. Third-party directory listing still depends on external indexers or manual submission flows.

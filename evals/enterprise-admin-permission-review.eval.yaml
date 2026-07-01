@@ -1,0 +1,10 @@
+skill: enterprise-admin-permission-review
+positive_prompts:
+  - "Review enterprise admin permissions for a SaaS customer with custom roles, delegated admins, SSO/SCIM group mappings, data export/delete powers, billing powers, support impersonation, break-glass access, audit logs, and quarterly access reviews."
+  - "Audit enterprise admin permission, RBAC, custom role, delegated administration, role request, access review, and break-glass permission questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review marketplace fraud queue design."
+expected_behavior:
+  - "Defines privileged actions, resources, scopes, roles, identity mappings, approval owners, risk tiers, audit events, expiry, and revocation triggers."
+  - "Separates user, billing, security, data, integration, support, export/delete, and break-glass powers with least privilege and separation of duties."
+  - "Flags vague admin roles, SSO/SCIM false confidence, permanent temporary access, missing audit logs, overbroad export/delete permissions, and stale access reviews."

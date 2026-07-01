@@ -1,0 +1,10 @@
+skill: marketplace-fraud-review-queue-review
+positive_prompts:
+  - "Review a marketplace fraud queue for an AI app marketplace with payout holds, refund abuse, fake reviews, chargebacks, seller scams, account takeover signals, queue priority, reviewer evidence, appeals, QA sampling, and fairness monitoring."
+  - "Audit marketplace fraud review queue, trust queue, payout hold review, refund abuse, fake review, account takeover, collusion, and reviewer QA questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review enterprise admin permissions."
+expected_behavior:
+  - "Defines fraud surfaces, signal sources, entities, risk tiers, financial exposure, evidence packages, queue priority, reviewer actions, SLAs, appeals, QA, and policy/model feedback."
+  - "Separates payout holds, refund abuse, fake reviews, chargebacks, account takeover, collusion, listing scams, buyer abuse, and seller abuse."
+  - "Flags leaked fraud signals, revenue-biased decisions, automated scores as final decisions, loss-only optimization, weak appeals, and false-positive blind spots."
