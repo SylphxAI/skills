@@ -249,6 +249,12 @@ Project identity and delivery boundary are recorded in
 [`.doctrine/project.json`](./.doctrine/project.json) and summarized in
 [`PROJECT.md`](./PROJECT.md).
 
+## Behavioral benchmark
+
+Installability is not the same as usefulness. The repository now includes a paired baseline-vs-skill benchmark framework in [`benchmarks/skill-behavior/`](./benchmarks/skill-behavior/) and the methodology in [`docs/skill-benchmark-methodology.md`](./docs/skill-benchmark-methodology.md).
+
+Current public status: skills are schema-validated and install-verified, but behavioral usefulness should be claimed only after a public result file shows skill-loaded outputs beating baseline outputs on the benchmark rubric.
+
 ## Quality bar
 
 A Sylphx skill must be:

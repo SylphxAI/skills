@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "description": "Initial paired benchmark suite for high-demand product, UI, monetization, distribution, marketplace, and recent operating-control skills.",
+  "tasks": [
+    {
+      "id": "interface-craft-checkout-review-001",
+      "skill": "interface-craft",
+      "category": "ui-craft",
+      "prompt": "Review a SaaS checkout form with email, company name, coupon, card details, disabled submit button, async payment state, error toast, success redirect, and mobile layout. Identify the highest-impact UI craft fixes without changing the product strategy.",
+      "negativeControlPrompt": "Design a partner SPIF dispute workflow.",
+      "expectedArtifacts": ["ranked UI findings", "rule IDs", "accessibility-preserving fixes", "smallest consistent implementation plan"],
+      "failureModes": ["cosmetic-only feedback", "missing label/focus/loading/error states", "motion without reduced-motion guard", "too many low-signal findings"],
+      "rubric": [
+        { "id": "trigger-fit", "weight": 1, "required": true, "description": "Recognizes the task as UI craft review rather than generic product advice." },
+        { "id": "accessibility", "weight": 2, "required": true, "description": "Covers keyboard, label, focus, screen reader, touch target, and reduced-motion implications." },
+        { "id": "state-quality", "weight": 2, "required": true, "description": "Handles disabled, loading, error, success, duplicate-submit, and mobile states." },
+        { "id": "restraint", "weight": 1, "required": false, "description": "Prioritizes a few material fixes instead of decorative polish." },
+        { "id": "actionability", "weight": 2, "required": true, "description": "Gives concrete fixes that an engineer/designer can implement." }
+      ]
+    },
+    {
+      "id": "refund-entitlement-support-001",
+      "skill": "refund-and-support-flow-review",
+      "category": "monetization-support",
+      "prompt": "Design refund handling for a mobile subscription app with App Store, Google Play, and Stripe purchases. Include entitlement revocation, grace period, chargebacks, refund abuse, one-time goodwill refunds, support macros, analytics, and whether to warn, downgrade, or ban repeat abusers.",
+      "negativeControlPrompt": "Review a mobile-first onboarding layout.",
+      "expectedArtifacts": ["refund state machine", "channel-specific policy table", "support flow", "abuse ladder", "event schema"],
+      "failureModes": ["one-size-fits-all refund policy", "instant ban recommendation", "missing entitlement truth", "missing support/customer trust handling"],
+      "rubric": [
+        { "id": "channel-separation", "weight": 2, "required": true, "description": "Separates App Store, Google Play, Stripe, chargeback, cancellation, and goodwill paths." },
+        { "id": "entitlements", "weight": 2, "required": true, "description": "Defines entitlement source of truth, revocation timing, grace, restore, and edge cases." },
+        { "id": "abuse-trust-balance", "weight": 2, "required": true, "description": "Balances abuse prevention with false positives, user trust, warnings, appeals, and support." },
+        { "id": "support-readiness", "weight": 1, "required": true, "description": "Includes support taxonomy, macros, escalation, and communication language." },
+        { "id": "measurement", "weight": 1, "required": false, "description": "Defines events/metrics for refunds, entitlement changes, abuse, support load, and churn." }
+      ]
+    },
+    {
+      "id": "promotion-campaign-subscription-001",
+      "skill": "promotion-campaign-review",
+      "category": "growth",
+      "prompt": "Design a promotion campaign for a mobile productivity subscription with annual-plan discount, win-back segment, creator affiliate codes, in-app paywall, email, push notification, fraud risk, campaign calendar, and success metrics.",
+      "negativeControlPrompt": "Audit board metrics definitions.",
+      "expectedArtifacts": ["campaign objective", "audience segments", "offer mechanics", "channel plan", "fraud/support guardrails", "measurement plan"],
+      "failureModes": ["generic marketing slogans", "missing eligibility/abuse rules", "missing lifecycle/channel sequencing", "no guardrail metrics"],
+      "rubric": [
+        { "id": "offer-logic", "weight": 2, "required": true, "description": "Defines eligibility, discount, timing, caps, and subscription economics." },
+        { "id": "segmentation", "weight": 2, "required": true, "description": "Separates new, active, win-back, affiliate, and high-risk segments." },
+        { "id": "channel-sequencing", "weight": 1, "required": true, "description": "Coordinates paywall, email, push, affiliate, and calendar sequencing." },
+        { "id": "risk-controls", "weight": 2, "required": true, "description": "Covers promo abuse, support confusion, refund pressure, and brand trust." },
+        { "id": "measurement", "weight": 1, "required": true, "description": "Includes conversion, incremental revenue, retention, margin, and guardrail metrics." }
+      ]
+    },
+    {
+      "id": "subscription-pricing-saas-001",
+      "skill": "saas-subscription-pricing",
+      "category": "pricing",
+      "prompt": "Create SaaS subscription pricing for a B2B analytics product with free trial, team plan, enterprise plan, seat limits, usage-based overages, annual discount, procurement requirements, support tiers, expansion path, and unit economics concerns.",
+      "negativeControlPrompt": "Review marketplace policy model feedback loops.",
+      "expectedArtifacts": ["pricing architecture", "packaging tiers", "metric and limit choices", "unit economics", "experiment/rollout plan"],
+      "failureModes": ["random price points", "no packaging logic", "missing buyer/procurement path", "missing margin and expansion tradeoffs"],
+      "rubric": [
+        { "id": "buyer-fit", "weight": 2, "required": true, "description": "Connects tiers to buyer segments, jobs, procurement, and willingness to pay." },
+        { "id": "packaging", "weight": 2, "required": true, "description": "Defines tier boundaries, limits, overages, annual terms, and enterprise gates." },
+        { "id": "economics", "weight": 2, "required": true, "description": "Models margin, cost drivers, expansion, discounting, and abuse risk." },
+        { "id": "migration", "weight": 1, "required": false, "description": "Includes rollout, grandfathering, comms, and experiment plan." },
+        { "id": "support-sales", "weight": 1, "required": false, "description": "Handles sales/support enablement and objection handling." }
+      ]
+    },
+    {
+      "id": "mobile-first-permission-onboarding-001",
+      "skill": "mobile-first-ui-review",
+      "category": "mobile-ui",
+      "prompt": "Review a mobile onboarding flow that asks for notification permission, location permission, account creation, and subscription trial start. The flow feels heavy and users drop before activation. Recommend mobile-first UI and interaction fixes.",
+      "negativeControlPrompt": "Design contract amendment approvals.",
+      "expectedArtifacts": ["mobile journey review", "permission timing", "touch and safe-area fixes", "activation metrics", "recovery states"],
+      "failureModes": ["desktop-first advice", "permission dark patterns", "missing denial recovery", "missing mobile ergonomics"],
+      "rubric": [
+        { "id": "mobile-ergonomics", "weight": 2, "required": true, "description": "Covers thumb reach, safe areas, touch targets, keyboard, and viewport constraints." },
+        { "id": "permission-timing", "weight": 2, "required": true, "description": "Sequences permission asks after value proof and includes denial recovery." },
+        { "id": "activation", "weight": 1, "required": true, "description": "Reduces friction while preserving the core activation moment." },
+        { "id": "accessibility", "weight": 1, "required": true, "description": "Maintains screen reader, focus, text size, and motion accessibility." },
+        { "id": "measurement", "weight": 1, "required": false, "description": "Defines funnel and guardrail metrics for onboarding changes." }
+      ]
+    },
+    {
+      "id": "app-store-launch-readiness-001",
+      "skill": "app-store-distribution-readiness",
+      "category": "distribution",
+      "prompt": "Prepare an iOS and Android subscription app for launch with IAP setup, privacy labels, screenshots, review notes, TestFlight/internal testing, support contact, refund/restore flow, push notification permission, and staged rollout.",
+      "negativeControlPrompt": "Prepare a board metrics operating review.",
+      "expectedArtifacts": ["store readiness checklist", "IAP/privacy evidence", "review notes", "support and rollout plan", "blocker list"],
+      "failureModes": ["generic launch checklist", "missing IAP/privacy/reviewer evidence", "missing restore/refund support", "ignoring cross-store differences"],
+      "rubric": [
+        { "id": "store-specificity", "weight": 2, "required": true, "description": "Separates Apple and Google requirements, review behavior, testing, and rollout." },
+        { "id": "monetization-compliance", "weight": 2, "required": true, "description": "Covers IAP, subscription disclosure, restore purchase, refunds, and receipt/server truth." },
+        { "id": "privacy-permissions", "weight": 2, "required": true, "description": "Covers privacy labels, permissions, data use, support, and reviewer notes." },
+        { "id": "launch-ops", "weight": 1, "required": true, "description": "Includes staged rollout, monitoring, support contact, and rollback/release notes." },
+        { "id": "evidence", "weight": 1, "required": false, "description": "Links readiness items to durable evidence and owners." }
+      ]
+    },
+    {
+      "id": "marketplace-payouts-creator-001",
+      "skill": "marketplace-payouts-review",
+      "category": "marketplace-commerce",
+      "prompt": "Design marketplace payouts for an AI template marketplace with creator onboarding, KYC/tax, revenue share, refunds, chargebacks, payout holds, fraud review, payout schedule, seller dashboard, disputes, and support operations.",
+      "negativeControlPrompt": "Review mobile UI permission timing.",
+      "expectedArtifacts": ["payout lifecycle", "risk controls", "seller/support workflow", "ledger/events", "dispute process"],
+      "failureModes": ["pay creators immediately without holds", "missing refunds/chargebacks", "missing tax/KYC", "no ledger or dispute process"],
+      "rubric": [
+        { "id": "ledger-truth", "weight": 2, "required": true, "description": "Defines payout source of truth, ledger events, reversals, and reconciliation." },
+        { "id": "risk-controls", "weight": 2, "required": true, "description": "Covers KYC/tax, payout holds, fraud, refunds, chargebacks, and disputes." },
+        { "id": "seller-experience", "weight": 1, "required": true, "description": "Includes dashboard, communication, support, and appeal/review paths." },
+        { "id": "schedule-policy", "weight": 1, "required": true, "description": "Defines timing, thresholds, currencies, fees, and payout exceptions." },
+        { "id": "marketplace-health", "weight": 1, "required": false, "description": "Measures creator trust, buyer trust, loss, support load, and liquidity." }
+      ]
+    },
+    {
+      "id": "skill-marketplace-creator-001",
+      "skill": "skill-marketplace-creator",
+      "category": "skill-ops",
+      "prompt": "Design a public skill marketplace repository for AI agents that avoids prompt spam. Include skill quality bar, contribution review, install surface, catalog metadata, evals, examples, benchmark proof, and roadmap governance.",
+      "negativeControlPrompt": "Review app store launch readiness.",
+      "expectedArtifacts": ["repository architecture", "quality gates", "catalog/install plan", "eval/benchmark plan", "contribution workflow"],
+      "failureModes": ["optimizes only for number of skills", "missing installability", "missing eval/benchmark proof", "no contribution governance"],
+      "rubric": [
+        { "id": "marketplace-architecture", "weight": 2, "required": true, "description": "Defines repo structure, registry, catalog, grouping, install flow, and contribution surfaces." },
+        { "id": "quality-gates", "weight": 2, "required": true, "description": "Requires skill authoring standards, review, safety, original synthesis, and drift checks." },
+        { "id": "behavior-proof", "weight": 2, "required": true, "description": "Includes benchmark/eval methodology that proves output improvement, not just schema validity." },
+        { "id": "community-value", "weight": 1, "required": true, "description": "Explains why external users should trust/star/use the repository." },
+        { "id": "governance", "weight": 1, "required": false, "description": "Defines roadmap, tiers, deprecation, and maintenance policy." }
+      ]
+    },
+    {
+      "id": "board-metrics-operating-001",
+      "skill": "board-metrics-operating-review",
+      "category": "operating-controls",
+      "prompt": "Prepare a board metrics operating review for a SaaS company with ARR, MRR, NRR, GRR, churn cohorts, CAC, gross margin, pipeline, product usage, support load, incidents, burn, runway, forecast variance, owner signoff, board asks, and action follow-up.",
+      "negativeControlPrompt": "Review a checkout form UI for accessibility and polish.",
+      "expectedArtifacts": ["metric dictionary", "source-of-truth map", "variance narrative", "board asks", "action register"],
+      "failureModes": ["spreadsheet theater", "undefined metrics", "missing owner signoff", "vanity narrative", "no action follow-up"],
+      "rubric": [
+        { "id": "metric-definitions", "weight": 2, "required": true, "description": "Defines formulas, owners, sources, cadence, segments, and caveats." },
+        { "id": "reconciliation", "weight": 2, "required": true, "description": "Separates accounting, billing, CRM, product analytics, support, incidents, and forecast truth." },
+        { "id": "variance", "weight": 2, "required": true, "description": "Explains plan variance through drivers instead of narrative spin." },
+        { "id": "decisions", "weight": 1, "required": true, "description": "Turns metrics into board decisions, asks, owners, and follow-up actions." },
+        { "id": "data-quality", "weight": 1, "required": false, "description": "Flags drift, stale definitions, schema changes, and confidence gaps." }
+      ]
+    },
+    {
+      "id": "developer-quota-credit-abuse-001",
+      "skill": "developer-quota-credit-abuse-review",
+      "category": "developer-trust",
+      "prompt": "Review developer quota and credit abuse controls for an API/AI platform with free trial credits, promo codes, token usage, expensive endpoints, multi-accounting, trust tiers, throttling, manual review, appeals, support messaging, and cost guardrails.",
+      "negativeControlPrompt": "Design a subscription pricing page narrative.",
+      "expectedArtifacts": ["quota ladder", "credit ledger", "trust tiers", "abuse controls", "appeal/support path", "cost metrics"],
+      "failureModes": ["kills legitimate activation", "no credit ledger", "exposes abuse thresholds", "automated final actions", "no appeal path"],
+      "rubric": [
+        { "id": "quota-ledger", "weight": 2, "required": true, "description": "Defines quota units, credit value, ledger, expiry, reversal, and attribution." },
+        { "id": "trust-tiers", "weight": 2, "required": true, "description": "Uses graduated trust and costly-operation gates without destroying activation." },
+        { "id": "abuse-detection", "weight": 2, "required": true, "description": "Covers multi-accounting, promo cycling, token churn, endpoint mix, and cost spikes without leaking thresholds." },
+        { "id": "appeals", "weight": 1, "required": true, "description": "Includes manual review, developer messaging, false-positive handling, and appeal path." },
+        { "id": "metrics", "weight": 1, "required": false, "description": "Measures cost, activation, conversion, abuse loss, support load, and developer retention." }
+      ]
+    },
+    {
+      "id": "release-freeze-control-001",
+      "skill": "release-freeze-change-control-review",
+      "category": "release-ops",
+      "prompt": "Run release freeze change control for a holiday freeze with a security hotfix, customer-specific blackout, app-store deadline, infrastructure change request, rollback plan, monitoring dashboard, support comms, approval authority, and post-freeze exception review.",
+      "negativeControlPrompt": "Design marketplace payouts for creators.",
+      "expectedArtifacts": ["freeze scope", "severity ladder", "approval matrix", "rollback/monitoring evidence", "exception register", "post-freeze review"],
+      "failureModes": ["freeze slogan without scope", "shadow change approval", "missing rollback", "no exception retirement", "blocks urgent security fix"],
+      "rubric": [
+        { "id": "freeze-scope", "weight": 2, "required": true, "description": "Defines protected systems, windows, allowed changes, approvers, and comms." },
+        { "id": "severity-authority", "weight": 2, "required": true, "description": "Classifies security, hotfix, infrastructure, store, compliance, and customer blackout changes with authority." },
+        { "id": "evidence", "weight": 2, "required": true, "description": "Requires rollout, rollback, monitoring, support readiness, and owner availability." },
+        { "id": "retirement", "weight": 1, "required": true, "description": "Includes exception expiry, post-change verification, and debt backlog." },
+        { "id": "learning", "weight": 1, "required": false, "description": "Converts repeated exceptions into planning/test/architecture improvements." }
+      ]
+    },
+    {
+      "id": "subscription-price-increase-retention-001",
+      "skill": "subscription-price-increase-retention-review",
+      "category": "pricing-retention",
+      "prompt": "Plan subscription price-increase retention for SaaS and mobile subscribers across direct, App Store, and Google Play billing with cohort segmentation, grandfathering, save offers, annual migration, cancellation recovery, consent notices, support scripts, refunds, churn monitoring, and net revenue guardrails.",
+      "negativeControlPrompt": "Review developer API quota abuse controls.",
+      "expectedArtifacts": ["cohort segmentation", "notice/consent plan", "value narrative", "save-offer policy", "support/refund plan", "net revenue readback"],
+      "failureModes": ["headline revenue bias", "hidden price messaging", "platform rule assumptions", "dark-pattern cancellation", "no cohort readback"],
+      "rubric": [
+        { "id": "cohorts", "weight": 2, "required": true, "description": "Segments by plan, tenure, usage, billing channel, region, renewal date, and churn risk." },
+        { "id": "platform-rules", "weight": 2, "required": true, "description": "Handles direct, App Store, and Google Play consent/notice/cancel/refund behavior separately." },
+        { "id": "retention-policy", "weight": 2, "required": true, "description": "Defines value narrative, grandfathering, phased increases, annual migration, save offers, and fairness." },
+        { "id": "support-trust", "weight": 1, "required": true, "description": "Includes transparent cancellation recovery, support scripts, refund handling, and complaint monitoring." },
+        { "id": "net-revenue", "weight": 1, "required": false, "description": "Measures uplift, churn, refunds, payment failures, support load, LTV, and cohort readback." }
+      ]
+    }
+  ]
+}

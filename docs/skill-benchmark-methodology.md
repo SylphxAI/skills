@@ -1,0 +1,128 @@
+# Skill Benchmark Methodology
+
+This document defines how Sylphx Skills proves that a skill is useful. A valid claim must compare agent behavior with and without the skill. Repository validation alone is not proof of usefulness.
+
+## Current proof status
+
+The repository currently has strong **structural proof**:
+
+- every skill has installable `SKILL.md` metadata;
+- every skill has references, eval fixtures, behavior examples, registry entries, and catalog pages;
+- `npm run check` validates schema, catalog, eval, reference, launch-kit, and benchmark-fixture coverage;
+- `npm run verify:install` proves the public install surface.
+
+This is not the same as behavioral proof. Until benchmark result files exist under `benchmarks/skill-behavior/results/`, the honest public claim is: **the skills are preview skills with benchmark fixtures, not proven SOTA skills**.
+
+## Scientific benchmark design
+
+Use a paired experiment.
+
+| Condition | Context given to model | Purpose |
+| --- | --- | --- |
+| Baseline | User prompt only | Measures what the base model already does. |
+| Skill-loaded | Same prompt plus the target skill and linked references | Measures incremental value from the skill. |
+
+Keep the model, temperature, prompt, and tool availability constant. Randomize answer order before judging. Judges should not know whether an answer is baseline or skill-loaded.
+
+## What to measure
+
+### 1. Trigger quality
+
+- Positive trigger recall: the skill should load for benchmark prompts that need it.
+- Negative-control precision: the skill should not load for unrelated prompts.
+- Over-trigger rate: unrelated prompts that cause the skill to be used.
+
+### 2. Output quality uplift
+
+Score baseline and skill-loaded answers with the same task rubric on a 0-5 scale.
+
+Report:
+
+- average baseline score;
+- average skill-loaded score;
+- average paired delta;
+- skill win rate;
+- non-regression rate;
+- bootstrap confidence interval for score delta.
+
+### 3. Critical omissions
+
+Count high-impact failures, for example:
+
+- missing rollback/appeal/support path;
+- unsafe or deceptive recommendation;
+- missing source-of-truth boundary;
+- generic answer with no decision table, state model, or concrete artifact;
+- hallucinated policy or unsupported legal/security claims.
+
+### 4. Cost and latency overhead
+
+When runners can measure it, record:
+
+- input tokens added by skill body and references;
+- output tokens;
+- latency;
+- model cost;
+- whether the quality uplift justifies the context overhead.
+
+## Claim tiers
+
+| Tier | Evidence required | Public wording |
+| --- | --- | --- |
+| Preview | Installs and passes schema/reference/eval checks | "Preview skill" |
+| Benchmarked | Public paired benchmark result exists | "Benchmarked on <suite>" |
+| Useful | Win rate >= 70%, avg delta >= 0.50/5, no safety regression | "Improves output on benchmark tasks" |
+| SOTA candidate | Multiple suites/models, stable confidence interval, low over-trigger rate | "SOTA candidate" |
+
+Do not call a skill SOTA based on volume, catalog coverage, or a single hand-written example.
+
+## Minimum useful benchmark
+
+A useful benchmark for one skill needs at least:
+
+- 5 positive tasks;
+- 5 negative-control prompts;
+- rubric criteria with required items and weights;
+- baseline and skill-loaded model outputs;
+- blind scoring or at least independent scoring;
+- public result JSON and summary.
+
+A useful benchmark for the whole repository needs at least:
+
+- 20+ tasks across major categories;
+- coverage of UI/design, monetization, distribution, support/trust, developer/marketplace, and skill operations;
+- separate results by skill category;
+- a public statement of which skills are unproven.
+
+## How to run the current benchmark fixtures
+
+Validate task and result schema:
+
+```bash
+npm run validate:benchmarks
+```
+
+Prepare provider-neutral JSONL jobs for a benchmark run:
+
+```bash
+npm run benchmark:prepare -- benchmarks/skill-behavior/tasks/core-product-v0.json --out /tmp/core-product-v0.jobs.jsonl --run-id <run-id>
+```
+
+Summarize one or more scored runs:
+
+```bash
+npm run benchmark:summarize -- benchmarks/skill-behavior/results/*.json
+```
+
+The summarizer expects scored result files. It does not generate model answers. A future runner can automate answer generation through an LLM provider, but raw outputs and judge scores should remain reviewable.
+
+Valid result files must be audit-grade: they need runner identity, model, blind-judge status, per-criterion scores, critical failures, and output references for both baseline and skill-loaded answers. A single aggregate score without raw-output traceability is not enough evidence for a usefulness claim.
+
+## What this changes in repository strategy
+
+The next high-leverage work is not adding more skills. It is:
+
+1. benchmark the top skills against baseline;
+2. demote or mark unproven skills that do not improve output;
+3. deepen the highest-demand skills with targeted rules from benchmark failures;
+4. delete or merge skills that remain generic after evaluation.
