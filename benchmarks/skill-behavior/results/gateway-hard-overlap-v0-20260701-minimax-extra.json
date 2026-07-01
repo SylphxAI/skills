@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-hard-overlap-v0-20260701-minimax-extra",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "marketplace-payout-tax-hold-001",
+      "notification-permission-fatigue-recovery-001",
+      "subscription-price-increase-grandfathering-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "622fbe62354e30bd8699cf69033c3edc9ebee21c",
+      "branch": "codex/clean-model-overlap-gate",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T20:38:44.363Z",
+    "completedAt": "2026-07-01T20:41:17.669Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "marketplace-payout-tax-hold-001",
+      "skill": "marketplace-payouts-review",
+      "promptSha256": "370bc5690c28a5cb7f905599cb200c2b61f862c96f6a3640bc2ef49ee80379d7",
+      "skillContextSha256": "f7c57ed71d2b2abb1a5e3678ab31f0307b78e23bf41e55895998eafea0e81159",
+      "skillBodySha256": "844e1604de93e4412184f636312f888f4bf5ab2f5c4849e5ab3c51111291ea9c",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-payout-systems.md",
+          "sha256": "11563a2c5327298406d8ce33a647bff4585d8a87e9ddb6e7ae94849b8023cd0b"
+        }
+      ],
+      "skillLoadedPromptSha256": "2426a90f95a7edad41021285099e9875d179e5e17c4d3c44203732ff19badfac",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "balance-state-model": 4,
+          "risk-controls": 4,
+          "compliance-readiness": 4,
+          "creator-support": 3,
+          "marketplace-incentives": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Strong ledger, payout lifecycle, holds, reserves, disputes, failed transfers, and negative balance handling. Compliance and audit readiness are solid. Creator support has SLAs and notifications but lacks concrete support macros and detailed creator-facing dispute evidence templates.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-overlap-v0-20260701-minimax-extra-outputs/marketplace-payout-tax-hold-001-baseline.md",
+        "outputSha256": "eef91e010fe3b41905bd26cba41c10abffb4bad51b8b6f5778991cbffdb2b594",
+        "latencyMs": 13942,
+        "usage": {
+          "input_tokens": 253,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1362,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1615
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "balance-state-model": 5,
+          "risk-controls": 5,
+          "compliance-readiness": 5,
+          "creator-support": 4,
+          "marketplace-incentives": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive state machine, ledger events, holds, reserves, fraud, sanctions, chargebacks, negative balances, failed payout recovery, provider constraints, audit fields, and reporting. Creator dashboard and support flow are strong, though explicit support macros are not provided.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-overlap-v0-20260701-minimax-extra-outputs/marketplace-payout-tax-hold-001-skill-loaded.md",
+        "outputSha256": "fbe716b91703082dc05a0f5a95fc5109f78c99a27a01d7a61ae1553348074615",
+        "latencyMs": 23732,
+        "usage": {
+          "input_tokens": 3794,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1652,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5446
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-overlap-v0-20260701-minimax-extra-outputs/marketplace-payout-tax-hold-001-judge-raw.md",
+      "judgeOutputSha256": "7f20e43d24229de4babe0a60885c1b6b0022c4b183411efb7c7a2bc96cbad00c",
+      "judgeLatencyMs": 10092,
+      "judgeUsage": {
+        "input_tokens": 3183,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 551,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3734
+      }
+    },
+    {
+      "taskId": "notification-permission-fatigue-recovery-001",
+      "skill": "notification-strategy-review",
+      "promptSha256": "4f496ae00de6e1ac113daa70b4bc8ce196f5156c63532e45c5a272d2f2d0e865",
+      "skillContextSha256": "0e2cf92d721348a29d2184b0fb76a991e63fdd12daf7b3d731be8a8345162795",
+      "skillBodySha256": "fd7ae4d77fe071a8e45cb062857a534d27b3d69005ba5383576f034dceec6f4d",
+      "skillReferenceSha256": [
+        {
+          "path": "references/notification-strategy-patterns.md",
+          "sha256": "dc4da3e22983af134d4e85dbc571cf8be72966bb0d76b2b0f3cfaac7d873f1cb"
+        }
+      ],
+      "skillLoadedPromptSha256": "86f69c7e2c21a77c94b692795adc79108d9964a976f1459d57dfbd3ae051a9d7",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "lifecycle-intent": 4,
+          "permission-trust": 3,
+          "suppression-fatigue": 4,
+          "commercial-recovery": 4,
+          "measurement": 3
+        },
+        "criticalFailures": [],
+        "rationale": "Covers most lifecycle and recovery cases with useful matrices and controls, but has risky/unsupported consent claims, high fatigue caps, limited cross-channel suppression detail, and incomplete measurement guardrails for delivery, complaints, unsubscribe, and retention.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-overlap-v0-20260701-minimax-extra-outputs/notification-permission-fatigue-recovery-001-baseline.md",
+        "outputSha256": "5dbeec887b8ff7b50d6ed9795e97dd28f698b436b6c5df7936728fa2bf083050",
+        "latencyMs": 20689,
+        "usage": {
+          "input_tokens": 254,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1235,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1489
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "lifecycle-intent": 5,
+          "permission-trust": 5,
+          "suppression-fatigue": 5,
+          "commercial-recovery": 5,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Complete lifecycle matrix, strong consent and denial handling, detailed suppression/quiet-hours/digest rules, respectful commercial recovery, and comprehensive measurement with guardrails and event schema.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-overlap-v0-20260701-minimax-extra-outputs/notification-permission-fatigue-recovery-001-skill-loaded.md",
+        "outputSha256": "d54a143b2c873e7bbcade11f7a4596225381acbe477a96009c4c706babcf0f47",
+        "latencyMs": 14430,
+        "usage": {
+          "input_tokens": 3193,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1706,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4899
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-overlap-v0-20260701-minimax-extra-outputs/notification-permission-fatigue-recovery-001-judge-raw.md",
+      "judgeOutputSha256": "e6074f9bdd078ebfc7641fba3aa7702e771edf3e7c323da5125652b9f0924acb",
+      "judgeLatencyMs": 12764,
+      "judgeUsage": {
+        "input_tokens": 3183,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 700,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3883
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-grandfathering-001",
+      "skill": "subscription-price-increase-retention-review",
+      "promptSha256": "1b85c1ab7f5bbecefab67531975cdcfc2bf00792682453319c975abd27f17e4a",
+      "skillContextSha256": "acf778b37a610a83fc20d0ca7196653554db3e428d17954d6c157072c61f465c",
+      "skillBodySha256": "8d23cf17d80bb43767c7d7e1af4e4ec039248207190f279bffe9d55899baf814",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-price-increase-retention-patterns.md",
+          "sha256": "94381560c1644f232bd464526ed9ccdff927b6bc88282fcd5ef4857ea9c25ed7"
+        }
+      ],
+      "skillLoadedPromptSha256": "75b2dcb898e90027790cbc2f2ad30c92ffec4d1f5664f49105faf0ce57b83c11",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "segmentation": 4,
+          "policy-mechanics": 4,
+          "trust-communications": 4,
+          "measurement": 3,
+          "risk-controls": 2
+        },
+        "criticalFailures": [],
+        "rationale": "Solid plan with key segments, migration offers, scripts, exception policy, and reporting. Weaker on discount/usage-heavy segmentation, rollback triggers, support-load and complaint measurement, and includes an unsupported ROI claim in communications.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-overlap-v0-20260701-minimax-extra-outputs/subscription-price-increase-grandfathering-001-baseline.md",
+        "outputSha256": "6ceba091fafe70b917084c99cd0002994f81fdfe69c13ba32cf5cc900f9509c5",
+        "latencyMs": 16663,
+        "usage": {
+          "input_tokens": 262,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1240,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1502
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "segmentation": 5,
+          "policy-mechanics": 5,
+          "trust-communications": 5,
+          "measurement": 4,
+          "risk-controls": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive segmented rollout with contract constraints, grandfathering, migration, exceptions, scripts, notice cadence, and rollback triggers. Measurement is strong but less explicit on ARR/NRR, expansion, and full cohort reporting than ideal.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-overlap-v0-20260701-minimax-extra-outputs/subscription-price-increase-grandfathering-001-skill-loaded.md",
+        "outputSha256": "72191a0cae5555eddcae2760e7a6bae26c462d4e22441a979aa2628b0a71c0c6",
+        "latencyMs": 14077,
+        "usage": {
+          "input_tokens": 3608,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1519,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5127
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-overlap-v0-20260701-minimax-extra-outputs/subscription-price-increase-grandfathering-001-judge-raw.md",
+      "judgeOutputSha256": "95f63e16594c55fee2d323725c2fc7253a8ecd7847a9141dbb82df32aae471ca",
+      "judgeLatencyMs": 13635,
+      "judgeUsage": {
+        "input_tokens": 3065,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 847,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3912
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "marketplace-payout-tax-hold-001",
+      "promptType": "positive",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [
+        "marketplace-payouts-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2572,
+      "usage": {
+        "input_tokens": 196,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 44,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 240
+      }
+    },
+    {
+      "taskId": "marketplace-payout-tax-hold-001",
+      "promptType": "negative-control",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2144,
+      "usage": {
+        "input_tokens": 163,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 50,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 213
+      }
+    },
+    {
+      "taskId": "notification-permission-fatigue-recovery-001",
+      "promptType": "positive",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [
+        "notification-strategy-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2009,
+      "usage": {
+        "input_tokens": 177,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 34,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 211
+      }
+    },
+    {
+      "taskId": "notification-permission-fatigue-recovery-001",
+      "promptType": "negative-control",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1870,
+      "usage": {
+        "input_tokens": 141,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 47,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 188
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-grandfathering-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [
+        "subscription-price-increase-retention-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2575,
+      "usage": {
+        "input_tokens": 199,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 37,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 236
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-grandfathering-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2081,
+      "usage": {
+        "input_tokens": 157,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 52,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 209
+      }
+    }
+  ]
+}

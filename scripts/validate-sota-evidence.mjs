@@ -174,11 +174,12 @@ async function main() {
     errors.push(`current suite has ${selectedSuiteDepth.qualifying.length} suites with >=${MIN_ROWS_PER_SUITE} rows; expected at least ${MIN_SUITES_WITH_DEPTH} (${detail})`);
   }
 
-  const overlap = modelOverlap(rows);
+  const overlapRows = rows.filter((row) => row.sourceDirty === false && row.runnerPartial !== true);
+  const overlap = modelOverlap(overlapRows);
   const requiredModelOverlap = Math.min(MAX_REQUIRED_MODEL_OVERLAP, selectedIds.size);
   if (overlap.bestOverlap < requiredModelOverlap) {
     const modelCounts = [...overlap.modelTaskIds.entries()].map(([model, taskIds]) => `${model}=${taskIds.size}`).join(', ');
-    errors.push(`best shared-task model overlap is ${overlap.bestOverlap}; expected at least ${requiredModelOverlap} (${modelCounts})`);
+    errors.push(`best clean shared-task model overlap is ${overlap.bestOverlap}; expected at least ${requiredModelOverlap} (${modelCounts})`);
   }
 
   for (const taskId of tasks.keys()) {
@@ -235,7 +236,7 @@ async function main() {
       + `${averageDelta.toFixed(2)} average delta, `
       + `${MIN_SKILL_SCORE.toFixed(2)} min skill score, `
       + `${selectedSuiteDepth.qualifying.length} suite-depth groups, `
-      + `${overlap.bestOverlap}/${requiredModelOverlap} best shared-task model overlap, `
+      + `${overlap.bestOverlap}/${requiredModelOverlap} best clean shared-task model overlap, `
       + '0 regressions, 0 over-triggers, clean provenance',
   );
 }
