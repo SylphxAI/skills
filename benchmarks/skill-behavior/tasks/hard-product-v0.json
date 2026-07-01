@@ -311,6 +311,112 @@
           "description": "Defines rollback or mitigation triggers when churn, complaints, or sales escalations exceed guardrails."
         }
       ]
+    },
+    {
+      "id": "marketplace-payout-provider-outage-001",
+      "skill": "marketplace-payouts-review",
+      "category": "marketplace-ops",
+      "prompt": "Design the payout incident plan for a creator marketplace when the payout provider has a regional outage during month-end payout release. The queue has pending creator balances, duplicate webhook retries, one partial payout file, failed bank-transfer callbacks, manual finance pressure to export a CSV workaround, creators asking for ETA, and a risk that retries could double-pay or skip reversals. Define the state machine, idempotency and reconciliation controls, creator/support messaging, operational runbook, and recovery gates.",
+      "negativeControlPrompt": "Critique the hover, focus, and empty-state styling of a SaaS dashboard navigation sidebar.",
+      "expectedArtifacts": [
+        "payout incident state machine",
+        "idempotency and duplicate-payment controls",
+        "provider outage reconciliation runbook",
+        "creator/support communications",
+        "recovery and post-incident gates"
+      ],
+      "failureModes": [
+        "manual CSV workaround bypasses ledger and approval controls",
+        "no idempotency key or duplicate payout prevention",
+        "missing partial-file and webhook retry reconciliation",
+        "creator support gives vague or inconsistent status",
+        "no recovery gate before resuming payout release"
+      ],
+      "rubric": [
+        {
+          "id": "incident-state-machine",
+          "weight": 2,
+          "required": true,
+          "description": "Defines queued, paused, provider-pending, partially-submitted, failed, retry-blocked, reconciled, released, and reversed payout states with owners and transitions."
+        },
+        {
+          "id": "idempotency-controls",
+          "weight": 2,
+          "required": true,
+          "description": "Uses immutable ledger events, idempotency keys, provider trace IDs, retry locks, duplicate-payment detection, and approval gates for any manual export path."
+        },
+        {
+          "id": "reconciliation-runbook",
+          "weight": 2,
+          "required": true,
+          "description": "Covers partial payout files, webhook replay, failed callbacks, bank-return timing, provider status pages, balance holds, and finance reconciliation before release."
+        },
+        {
+          "id": "creator-communications",
+          "weight": 1,
+          "required": true,
+          "description": "Provides creator dashboard states, support macros, ETA policy, escalation path, and transparent but non-alarming outage messaging."
+        },
+        {
+          "id": "recovery-learning",
+          "weight": 1,
+          "required": false,
+          "description": "Defines resume criteria, rollback/compensation policy, monitoring, incident review, provider SLA evidence, and future resilience improvements."
+        }
+      ]
+    },
+    {
+      "id": "marketplace-payout-abuse-appeal-001",
+      "skill": "marketplace-payouts-review",
+      "category": "marketplace-ops",
+      "prompt": "Review payout policy for a creator marketplace where several sellers show refund spikes, suspicious self-purchases, review manipulation signals, cross-account payment methods, and sudden payout-threshold farming. Some sellers are legitimate launch winners and support is receiving angry appeal tickets. Define the payout hold policy, fraud evidence packet, reserve and release criteria, appeal workflow, seller messaging, reviewer QA, and marketplace health metrics.",
+      "negativeControlPrompt": "Write release notes for a Mac menu-bar screenshot utility adding keyboard shortcuts.",
+      "expectedArtifacts": [
+        "abuse-aware payout hold policy",
+        "fraud evidence and reserve model",
+        "appeal and false-positive workflow",
+        "seller support messaging",
+        "reviewer QA and marketplace health metrics"
+      ],
+      "failureModes": [
+        "automatically bans or withholds payouts from every seller with a refund spike",
+        "leaks fraud thresholds or sensitive detection signals in seller messaging",
+        "no reserve math or release criteria",
+        "no appeal, false-positive, or reviewer QA path",
+        "optimizes loss prevention while ignoring legitimate creator trust and marketplace liquidity"
+      ],
+      "rubric": [
+        {
+          "id": "risk-segmentation",
+          "weight": 2,
+          "required": true,
+          "description": "Separates refund spikes, self-purchase suspicion, review manipulation, account linkage, payout farming, legitimate launch success, and false-positive cases."
+        },
+        {
+          "id": "hold-reserve-policy",
+          "weight": 2,
+          "required": true,
+          "description": "Defines payout holds, partial reserves, rolling reserves, release criteria, clawbacks, negative balances, and buyer-protection exposure without over-blocking legitimate sellers."
+        },
+        {
+          "id": "evidence-and-review",
+          "weight": 2,
+          "required": true,
+          "description": "Specifies evidence packets, reviewer queue priority, reviewer QA, dual approval for severe actions, audit trail, and threshold confidentiality."
+        },
+        {
+          "id": "appeal-communications",
+          "weight": 1,
+          "required": true,
+          "description": "Provides seller-visible status, non-leaky support macros, appeal SLA, acceptable evidence, and reinstatement/release messaging."
+        },
+        {
+          "id": "marketplace-health",
+          "weight": 1,
+          "required": false,
+          "description": "Tracks loss rate, false positives, appeal overturns, creator trust, liquidity, support load, buyer harm, and policy feedback loops."
+        }
+      ]
     }
   ]
 }
