@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sales Engineering Handoff Review"
+  short_description: "Handoff sales engineering work"
+  default_prompt: "Use $sales-engineering-handoff-review to design a sales engineering handoff."
