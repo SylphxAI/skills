@@ -2,23 +2,23 @@
 
 - Selection mode: current-suite
 - Selection rule: prefer clean git provenance, then newest runner completion time, then run/file lexical order
-- Superseded samples excluded: 42
-- Superseded task IDs: app-store-launch-readiness-001, backup-restore-customer-data-001, board-metrics-operating-001, daily-reward-streak-economy-001, desktop-os-integration-release-001, developer-quota-credit-abuse-001, interface-craft-checkout-review-001, marketplace-payout-tax-hold-001, marketplace-payouts-creator-001, mobile-first-permission-onboarding-001, notification-lifecycle-growth-001, notification-permission-fatigue-recovery-001, payment-platform-webhook-ledger-001, product-analytics-revenue-funnel-001, promotion-campaign-subscription-001, refund-entitlement-support-001, release-freeze-control-001, skill-marketplace-creator-001, steam-launch-commercial-readiness-001, subscription-entitlement-cross-platform-001, subscription-price-increase-retention-001, subscription-pricing-saas-001
+- Superseded samples excluded: 43
+- Superseded task IDs: app-store-launch-readiness-001, backup-restore-customer-data-001, board-metrics-operating-001, daily-reward-streak-economy-001, desktop-os-integration-release-001, developer-quota-credit-abuse-001, interface-craft-checkout-review-001, marketplace-payout-tax-hold-001, marketplace-payouts-creator-001, mobile-first-permission-onboarding-001, notification-lifecycle-growth-001, notification-permission-fatigue-recovery-001, payment-platform-webhook-ledger-001, product-analytics-revenue-funnel-001, promotion-campaign-subscription-001, refund-entitlement-support-001, release-freeze-control-001, skill-marketplace-creator-001, steam-launch-commercial-readiness-001, subscription-entitlement-cross-platform-001, subscription-price-increase-grandfathering-001, subscription-price-increase-retention-001, subscription-pricing-saas-001
 - Samples: 25
 - Unique task coverage: 25
 - Average baseline score: 3.70
-- Average skill-loaded score: 4.77
-- Average delta: 1.07 (95% bootstrap CI 0.89 to 1.28)
+- Average skill-loaded score: 4.78
+- Average delta: 1.08 (95% bootstrap CI 0.90 to 1.28)
 - Skill win rate: 100.0%
 - Non-regression rate: 100.0%
 - Critical failure delta: 19 (21 baseline vs 2 skill-loaded)
 - Positive trigger recall: 100.0%
 - Negative-control over-trigger rate: 0.0%
-- Answer input tokens: baseline avg 226, skill-loaded avg 1694, added 1467 (25/25 samples)
-- Answer output tokens: baseline avg 1707, skill-loaded avg 1376, delta -332 (25/25 samples)
-- Answer total tokens: baseline avg 1934, skill-loaded avg 3069, delta 1136 (25/25 samples)
-- Quality efficiency: 0.73 score delta per 1k added input tokens
-- Answer latency: baseline avg 28.53s, skill-loaded avg 25.36s, delta -3.17s (25/25 samples)
+- Answer input tokens: baseline avg 226, skill-loaded avg 1777, added 1551 (25/25 samples)
+- Answer output tokens: baseline avg 1718, skill-loaded avg 1387, delta -331 (25/25 samples)
+- Answer total tokens: baseline avg 1944, skill-loaded avg 3164, delta 1220 (25/25 samples)
+- Quality efficiency: 0.70 score delta per 1k added input tokens
+- Answer latency: baseline avg 28.94s, skill-loaded avg 25.41s, delta -3.53s (25/25 samples)
 - Claim tier supported by this data: SOTA candidate
 - Claim depth scope: suite
 - Useful-claim gates: sampleDepth=pass, winRate=pass, avgDelta=pass, criticalFailures=pass, overTrigger=pass
@@ -48,6 +48,6 @@
 | steam-demo-refund-review-risk-001 | steam-launch-readiness | 4.43 | 4.93 | 0.50 | skill |
 | steam-launch-commercial-readiness-001 | steam-launch-readiness | 3.00 | 4.00 | 1.00 | skill |
 | subscription-entitlement-cross-platform-001 | subscription-entitlement-review | 3.10 | 4.80 | 1.70 | skill |
-| subscription-price-increase-grandfathering-001 | subscription-price-increase-retention-review | 4.30 | 4.84 | 0.54 | skill |
+| subscription-price-increase-grandfathering-001 | subscription-price-increase-retention-review | 4.30 | 5.00 | 0.70 | skill |
 | subscription-price-increase-retention-001 | subscription-price-increase-retention-review | 4.00 | 5.00 | 1.00 | skill |
 | subscription-pricing-saas-001 | saas-subscription-pricing | 3.40 | 4.50 | 1.10 | skill |
