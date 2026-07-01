@@ -10,6 +10,9 @@ const resultDir = path.join(repoRoot, 'benchmarks', 'skill-behavior', 'results')
 const MIN_CURRENT_SAMPLES = 26;
 const MIN_SKILL_SCORE = 5;
 const MIN_AVERAGE_DELTA = 1;
+const MIN_SUITES_WITH_DEPTH = 2;
+const MIN_ROWS_PER_SUITE = 5;
+const MAX_REQUIRED_MODEL_OVERLAP = 20;
 
 function rel(file) {
   return path.relative(repoRoot, file).split(path.sep).join('/');
@@ -79,6 +82,7 @@ async function loadRows(errors) {
         baseline: sample.baseline,
         skillLoaded: skillRecord(sample),
         preference: sample.preference,
+        model: result.model,
         sourceDirty: source.dirty,
         sourceHead: source.head,
         runnerPartial: runner.partial,
@@ -107,6 +111,44 @@ function selectedTriggerChecksFor(row, triggerChecks) {
   return triggerChecks.filter((check) => check.taskId === row.taskId && check.file === row.file && check.runId === row.runId);
 }
 
+function suiteDepth(rows) {
+  const counts = new Map();
+  for (const row of rows) counts.set(row.suite || '<missing>', (counts.get(row.suite || '<missing>') || 0) + 1);
+  const qualifying = [...counts.entries()].filter(([, count]) => count >= MIN_ROWS_PER_SUITE);
+  return { counts, qualifying };
+}
+
+function intersectionSize(left, right) {
+  let count = 0;
+  const [smaller, larger] = left.size <= right.size ? [left, right] : [right, left];
+  for (const value of smaller) {
+    if (larger.has(value)) count += 1;
+  }
+  return count;
+}
+
+function modelOverlap(rows) {
+  const modelTaskIds = new Map();
+  for (const row of rows) {
+    if (!row.model) continue;
+    if (!modelTaskIds.has(row.model)) modelTaskIds.set(row.model, new Set());
+    modelTaskIds.get(row.model).add(row.taskId);
+  }
+  let bestOverlap = 0;
+  let bestPair = [];
+  const entries = [...modelTaskIds.entries()];
+  for (let i = 0; i < entries.length; i += 1) {
+    for (let j = i + 1; j < entries.length; j += 1) {
+      const overlap = intersectionSize(entries[i][1], entries[j][1]);
+      if (overlap > bestOverlap) {
+        bestOverlap = overlap;
+        bestPair = [entries[i][0], entries[j][0]];
+      }
+    }
+  }
+  return { modelTaskIds, bestOverlap, bestPair };
+}
+
 function score(record) {
   return Number(record?.score);
 }
@@ -126,6 +168,19 @@ async function main() {
   }
 
   const selectedIds = new Set(selected.map((row) => row.taskId));
+  const selectedSuiteDepth = suiteDepth(selected);
+  if (selectedSuiteDepth.qualifying.length < MIN_SUITES_WITH_DEPTH) {
+    const detail = [...selectedSuiteDepth.counts.entries()].map(([suite, count]) => `${suite}=${count}`).join(', ');
+    errors.push(`current suite has ${selectedSuiteDepth.qualifying.length} suites with >=${MIN_ROWS_PER_SUITE} rows; expected at least ${MIN_SUITES_WITH_DEPTH} (${detail})`);
+  }
+
+  const overlap = modelOverlap(rows);
+  const requiredModelOverlap = Math.min(MAX_REQUIRED_MODEL_OVERLAP, selectedIds.size);
+  if (overlap.bestOverlap < requiredModelOverlap) {
+    const modelCounts = [...overlap.modelTaskIds.entries()].map(([model, taskIds]) => `${model}=${taskIds.size}`).join(', ');
+    errors.push(`best shared-task model overlap is ${overlap.bestOverlap}; expected at least ${requiredModelOverlap} (${modelCounts})`);
+  }
+
   for (const taskId of tasks.keys()) {
     if (!selectedIds.has(taskId)) errors.push(`current suite is missing benchmark task ${taskId}`);
   }
@@ -178,7 +233,10 @@ async function main() {
   console.log(
     `Validated SOTA evidence gate: ${selected.length} current samples, `
       + `${averageDelta.toFixed(2)} average delta, `
-      + `${MIN_SKILL_SCORE.toFixed(2)} min skill score, 0 regressions, 0 over-triggers, clean provenance`,
+      + `${MIN_SKILL_SCORE.toFixed(2)} min skill score, `
+      + `${selectedSuiteDepth.qualifying.length} suite-depth groups, `
+      + `${overlap.bestOverlap}/${requiredModelOverlap} best shared-task model overlap, `
+      + '0 regressions, 0 over-triggers, clean provenance',
   );
 }
 

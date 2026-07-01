@@ -263,7 +263,8 @@ across `core-product-v0` plus `hard-product-v0` supports the repository-level **
 overlap. The current suite also reports answer token/latency overhead so quality gains can be weighed
 against added context cost. The `validate:sota-evidence` gate additionally requires every current
 benchmark task to have clean provenance, 5.00 skill-loaded score, no regressions, no skill-loaded
-critical failures, and no negative-control over-trigger. See the
+critical failures, no negative-control over-trigger, at least two suite-depth groups, and sufficient
+shared-task model overlap. See the
 [`current-suite-20260701` summary](./benchmarks/skill-behavior/results/current-suite-20260701-summary.md).
 This is still a bounded benchmark claim, not an unqualified claim that every individual skill is SOTA in
 every downstream product context.

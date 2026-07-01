@@ -125,7 +125,7 @@ Validate the stricter repository SOTA-evidence gate:
 npm run validate:sota-evidence
 ```
 
-This gate reselects the current suite from committed result JSON and fails if any benchmark task lacks a clean current result, any skill-loaded answer scores below 5.00, any selected result regresses against baseline, any skill-loaded answer has a critical failure, or any selected negative-control prompt over-triggers. It is intentionally stricter than the public SOTA-candidate tier and protects the current repository claim from drifting as new tasks/results are added.
+This gate reselects the current suite from committed result JSON and fails if any benchmark task lacks a clean current result, any skill-loaded answer scores below 5.00, any selected result regresses against baseline, any skill-loaded answer has a critical failure, any selected negative-control prompt over-triggers, fewer than two suites have meaningful depth, or the result corpus lacks enough shared-task multi-model overlap. It is intentionally stricter than the public SOTA-candidate tier and protects the current repository claim from drifting as new tasks/results are added.
 
 This recomputes the current-suite summary, compares it with the committed current-suite summary, and blocks
 README/docs wording that claims a stronger tier than the data supports.
