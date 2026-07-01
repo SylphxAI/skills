@@ -1,0 +1,10 @@
+skill: developer-quota-credit-abuse-review
+positive_prompts:
+  - "Review developer quota and credit abuse controls for an API/AI platform with free trial credits, promo codes, token usage, expensive endpoints, multi-accounting, trust tiers, throttling, manual review, appeals, support messaging, and cost guardrails."
+  - "Design a quota ladder and credit ledger that lets legitimate developers scale while controlling promo-credit cycling, AI token abuse, compute cost spikes, false positives, and developer churn."
+negative_prompts:
+  - "Review contract amendment approvals."
+expected_behavior:
+  - "Defines quota units, credit ledger, trust tiers, costly operations, abuse signals, throttling actions, review queues, appeals, developer messaging, upgrade path, cost monitoring, and feedback loops."
+  - "Separates trial credits, promo credits, API quotas, AI token usage, compute/storage, expensive endpoints, multi-accounting, manual review, legitimate scale-up, and appeal paths."
+  - "Flags ledger gaps, exposed thresholds, activation-killing friction, automated final actions, promo cycling, cost runaway, false positives, weak appeals, and unmeasured developer harm."

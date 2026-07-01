@@ -29,7 +29,8 @@
         "product-analytics-instrumentation-review",
         "feature-request-prioritization-review",
         "customer-onboarding-migration-runbook-review",
-        "executive-business-review-operating-system-review"
+        "executive-business-review-operating-system-review",
+        "board-metrics-operating-review"
       ]
     },
     {
@@ -105,7 +106,10 @@
         "lifecycle-pricing-experiment-review",
         "pricing-contract-exception-register-review",
         "contract-obligation-renewal-audit-review",
-        "partner-incentive-payout-governance-review"
+        "partner-incentive-payout-governance-review",
+        "contract-amendment-approval-review",
+        "subscription-price-increase-retention-review",
+        "partner-spiff-dispute-resolution-review"
       ]
     },
     {
@@ -153,7 +157,8 @@
         "release-evidence-pack-review",
         "store-subscription-policy-compliance-review",
         "release-readiness-exception-board-review",
-        "store-price-change-communication-review"
+        "store-price-change-communication-review",
+        "release-freeze-change-control-review"
       ]
     },
     {
@@ -202,7 +207,8 @@
         "privacy-consent-preference-center-review",
         "enterprise-admin-permission-review",
         "customer-escalation-war-room-review",
-        "enterprise-role-lifecycle-review"
+        "enterprise-role-lifecycle-review",
+        "admin-delegation-boundary-review"
       ]
     },
     {
@@ -230,7 +236,9 @@
         "integration-sandbox-certification-review",
         "marketplace-fraud-review-queue-review",
         "developer-sandbox-abuse-prevention-review",
-        "marketplace-risk-model-calibration-review"
+        "marketplace-risk-model-calibration-review",
+        "developer-quota-credit-abuse-review",
+        "marketplace-policy-model-feedback-loop-review"
       ]
     },
     {

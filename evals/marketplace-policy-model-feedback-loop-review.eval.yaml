@@ -1,0 +1,10 @@
+skill: marketplace-policy-model-feedback-loop-review
+positive_prompts:
+  - "Review a marketplace policy/model feedback loop for AI app enforcement with policy taxonomy, model risk signals, reviewer labels, fake listings, seller scams, appeal reversals, false positives, drift, policy changes, retraining gates, user explanations, and marketplace health metrics."
+  - "Design feedback loops so reviewer decisions, appeal outcomes, disputes, support tickets, and new abuse patterns improve policy and model behavior without leaking thresholds or over-penalizing legitimate sellers."
+negative_prompts:
+  - "Review partner SPIF disputes."
+expected_behavior:
+  - "Defines policy taxonomy, model-signal mapping, label schema, reviewer QA, enforcement actions, appeals, dispute feedback, drift monitoring, retraining criteria, release gates, explanation boundaries, and marketplace health guardrails."
+  - "Separates policy wording, model output, threshold calibration, reviewer guidance, enforcement action, appeal learning, retraining, and product-control changes."
+  - "Flags model-score-as-policy, label noise, appeal gaps, threshold leakage, loss-only optimization, fairness blind spots, overfitting, reviewer drift, and trust/liquidity harm."

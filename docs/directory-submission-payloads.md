@@ -9,7 +9,7 @@ Use these copy-ready payloads when submitting Sylphx Skills to external director
 - skills.sh page: `https://www.skills.sh/sylphxai/skills`
 - Catalog: `catalog/index.html`
 - License: MIT
-- Skill count: 187 preview skills
+- Skill count: 195 preview skills
 - Quality proof: CI validates registry drift, static catalog drift, skill schema, eval coverage, catalog coverage, reference structure, behavior examples, and launch kit coverage.
 
 ## Short description

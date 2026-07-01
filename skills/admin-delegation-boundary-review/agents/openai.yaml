@@ -1,0 +1,4 @@
+interface:
+  display_name: "Admin Delegation Boundary Review"
+  short_description: "Define admin delegation boundaries"
+  default_prompt: "Use $admin-delegation-boundary-review to review delegated admin boundaries."

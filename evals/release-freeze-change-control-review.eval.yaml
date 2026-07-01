@@ -1,0 +1,10 @@
+skill: release-freeze-change-control-review
+positive_prompts:
+  - "Run release freeze change control for a holiday freeze with a security hotfix, customer-specific blackout, app-store deadline, infrastructure change request, rollback plan, monitoring dashboard, support comms, approval authority, and post-freeze exception review."
+  - "Audit a release freeze process where teams make shadow changes during blackout windows, emergency exceptions lack rollback proof, and repeated freeze exceptions never become planning or architecture fixes."
+negative_prompts:
+  - "Review subscription price increase retention."
+expected_behavior:
+  - "Defines freeze scope, protected systems, allowed change classes, severity ladder, evidence requirements, approval matrix, rollout/rollback guardrails, monitoring, communication, exception register, and post-freeze review."
+  - "Separates planned freeze, emergency hotfix, security patch, store deadline, customer blackout, infrastructure freeze, incident recovery, compliance override, and rejected change paths."
+  - "Flags shadow changes, vague freeze scope, severity blur, authority gaps, missing rollback/support/monitoring, zombie exceptions, and repeated freeze debt."

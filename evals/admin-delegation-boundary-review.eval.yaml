@@ -1,0 +1,10 @@
+skill: admin-delegation-boundary-review
+positive_prompts:
+  - "Review admin delegation boundaries for an enterprise SaaS product with tenant hierarchy, delegated customer admins, reseller-managed accounts, inherited permissions, billing/security actions, support impersonation, break-glass, audit logs, owner transfer, and privilege drift."
+  - "Design a delegated admin model that separates customer admins, reseller admins, internal support access, sensitive-action approvals, customer-visible controls, and stale delegation reviews."
+negative_prompts:
+  - "Prepare board metrics for a quarterly board meeting."
+expected_behavior:
+  - "Defines tenant hierarchy, delegated scopes, role/action matrix, sensitive-action gates, approval chains, support/impersonation controls, audit events, drift review, and customer-visible recovery paths."
+  - "Separates customer admin, reseller admin, marketplace seller admin, internal support, impersonation, break-glass, inherited access, and owner-transfer paths."
+  - "Flags shadow superusers, source-of-truth conflict, overbroad inherited access, missing approval/audit evidence, stale delegation, and customer UI ambiguity."

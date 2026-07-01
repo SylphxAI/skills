@@ -1,0 +1,10 @@
+skill: subscription-price-increase-retention-review
+positive_prompts:
+  - "Plan subscription price-increase retention for SaaS and mobile subscribers across direct, App Store, and Google Play billing with cohort segmentation, grandfathering, save offers, annual migration, cancellation recovery, consent notices, support scripts, refunds, churn monitoring, and net revenue guardrails."
+  - "Audit a price increase where revenue lift looks good but high-tenure customers are angry, low-usage users churn, support tickets spike, save offers leak margin, and platform consent timing is unclear."
+negative_prompts:
+  - "Run release freeze change control."
+expected_behavior:
+  - "Defines affected plans/cohorts, price sensitivity, billing channels, consent/notice timing, value narrative, grandfathering, save offers, cancellation recovery, support scripts, refund paths, experiments, and net-revenue/churn monitoring."
+  - "Separates broad increase, cohort-specific increase, grandfathering sunset, annual migration, packaging change, trial-to-paid change, regional adjustment, and churn recovery paths."
+  - "Flags headline-revenue bias, hidden price messaging, platform rule assumptions, dark-pattern cancellation, save-offer leakage, churn/support/refund blind spots, and missing cohort readback."
