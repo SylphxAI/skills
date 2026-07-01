@@ -576,6 +576,165 @@
           "description": "Names test fixtures, sandbox/live separation, dashboards, alerts, rollback/kill switches, go-live approvals, and month-close proof."
         }
       ]
+    },
+    {
+      "id": "steam-launch-multiplayer-incident-001",
+      "skill": "steam-launch-readiness",
+      "category": "game-distribution",
+      "prompt": "Design launch-day readiness for a Steam co-op multiplayer game where day-one traffic may overload matchmaking, anti-cheat false positives can block legitimate players, a save-migration bug may corrupt progression, refund risk is rising in the first two hours, and the community hub is filling with disconnect complaints. Define technical gates, rollback/hotfix decision thresholds, player communications, support/community triage, review-response posture, and first-week operating metrics.",
+      "negativeControlPrompt": "Design save-offer governance for a SaaS subscription price increase.",
+      "expectedArtifacts": [
+        "multiplayer launch technical gates",
+        "rollback and hotfix decision thresholds",
+        "player communications and known-issues plan",
+        "support/community triage workflow",
+        "first-week metrics and owners"
+      ],
+      "failureModes": [
+        "store checklist without server/save/anti-cheat gates",
+        "no numeric thresholds for disconnects, crash, refund, or review risk",
+        "defensive community replies instead of known-issue communication",
+        "no rollback or save-migration safety plan",
+        "ignores first two hours refund/review feedback loop"
+      ],
+      "rubric": [
+        {
+          "id": "technical-gates",
+          "weight": 2,
+          "required": true,
+          "description": "Covers matchmaking, region capacity, anti-cheat false positives, crash/performance telemetry, save migration integrity, rollback, and hotfix proof."
+        },
+        {
+          "id": "decision-thresholds",
+          "weight": 2,
+          "required": true,
+          "description": "Defines numeric or pre-agreed tripwires for disconnects, matchmaking latency, crash-free sessions, save corruption, refunds, negative reviews, support volume, and patch outcome."
+        },
+        {
+          "id": "player-comms",
+          "weight": 2,
+          "required": true,
+          "description": "Provides known-issues post, ETA policy, patch-note cadence, refund/review-safe wording, and non-defensive review/community response."
+        },
+        {
+          "id": "community-support-ops",
+          "weight": 1,
+          "required": true,
+          "description": "Includes community hub moderation, bug report format, support macros, escalation owners, duplicate-theme triage, and abuse/reporting boundaries."
+        },
+        {
+          "id": "first-week-learning",
+          "weight": 1,
+          "required": false,
+          "description": "Links first-week metrics to hotfix, rollback, promotion pause, store-copy change, capacity changes, and roadmap decisions."
+        }
+      ]
+    },
+    {
+      "id": "steam-launch-store-demo-mismatch-001",
+      "skill": "steam-launch-readiness",
+      "category": "game-distribution",
+      "prompt": "Audit a Steam Next Fest demo and launch page where the trailer shows features not in the demo, screenshots imply full controller and cloud-save support, localization claims are partially unverified, the demo tutorial under-teaches the core loop, and players may expect launch-day content that is actually planned as DLC. Define the store/demo promise audit, build/platform gates, expectation-setting fixes, refund/review risk controls, wishlist measurement, and launch blockers.",
+      "negativeControlPrompt": "Audit invoice tax reconciliation for a B2B SaaS billing stack.",
+      "expectedArtifacts": [
+        "store/demo promise audit",
+        "platform feature verification matrix",
+        "expectation-setting and copy fixes",
+        "refund/review risk controls",
+        "wishlist/demo measurement plan"
+      ],
+      "failureModes": [
+        "marketing polish without correcting misleading feature claims",
+        "claims controller/cloud/localization support without build proof",
+        "missing demo-to-wishlist and tutorial completion measurement",
+        "DLC roadmap creates bait-and-switch risk",
+        "no launch blocker list for store/build mismatch"
+      ],
+      "rubric": [
+        {
+          "id": "store-promise-fit",
+          "weight": 2,
+          "required": true,
+          "description": "Audits capsule, trailer, screenshots, tags, short description, demo scope, DLC wording, and feature claims against the playable build."
+        },
+        {
+          "id": "platform-feature-proof",
+          "weight": 2,
+          "required": true,
+          "description": "Requires evidence for controller support, cloud saves, localization, achievements, system requirements, save compatibility, and settings before claims go live."
+        },
+        {
+          "id": "expectation-risk-controls",
+          "weight": 2,
+          "required": true,
+          "description": "Defines copy/trailer/tag/demo changes, known limitations, refund/review-risk messaging, and launch blockers for mismatched promises."
+        },
+        {
+          "id": "demo-wishlist-measurement",
+          "weight": 1,
+          "required": true,
+          "description": "Tracks demo start/completion, tutorial drop-off, end-card CTR, wishlist conversion, forum themes, crash/performance, and segment readback."
+        },
+        {
+          "id": "launch-readiness",
+          "weight": 1,
+          "required": false,
+          "description": "Names owners, proof artifacts, blocker severity, patch/copy decision path, and first-week learning cadence."
+        }
+      ]
+    },
+    {
+      "id": "steam-launch-commercial-community-risk-001",
+      "skill": "steam-launch-readiness",
+      "category": "game-distribution",
+      "prompt": "Review commercial and community launch risk for a Steam game with regional pricing controversy, a 10% launch discount, planned DLC roadmap, streamer keys under embargo, a small localization bug, possible review bombing from a balance change, refund-sensitive performance issues on low-end hardware, and moderators worried about toxic threads. Define the verified policy matrix, pricing/DLC/creator-key decisions, community moderation and review-response plan, refund-risk triage, promotion-pause triggers, and first-week decision ledger.",
+      "negativeControlPrompt": "Review cross-platform subscription entitlement precedence for App Store, Google Play, and Stripe.",
+      "expectedArtifacts": [
+        "commercial policy matrix",
+        "pricing discount and DLC decision plan",
+        "creator key and embargo plan",
+        "community/review-bombing response plan",
+        "refund-risk and promotion-pause thresholds"
+      ],
+      "failureModes": [
+        "unsupported claims about Steam pricing/refund/review policy",
+        "regional pricing or DLC decisions without player trust guardrails",
+        "defensive review responses or ignoring valid defects during review bombing",
+        "no creator embargo/support readiness",
+        "no thresholds for refund risk, low-end performance, moderation load, or promotion pause"
+      ],
+      "rubric": [
+        {
+          "id": "commercial-policy",
+          "weight": 2,
+          "required": true,
+          "description": "Builds a verified pricing/discount/DLC/creator-key/embargo/refund/review-response matrix with owners, evidence, and no unsupported platform-policy claims."
+        },
+        {
+          "id": "trust-risk",
+          "weight": 2,
+          "required": true,
+          "description": "Handles regional pricing controversy, DLC expectation risk, localization bug, low-end performance/refund risk, balance backlash, and player-facing messaging."
+        },
+        {
+          "id": "community-review-ops",
+          "weight": 2,
+          "required": true,
+          "description": "Defines moderation, toxic-thread handling, review-bombing separation from valid defects, response macros, reporting evidence, and known-issues communication."
+        },
+        {
+          "id": "promotion-creator-plan",
+          "weight": 1,
+          "required": true,
+          "description": "Covers launch discount rationale, promotion pause triggers, streamer keys, embargo timing, press kit, build stability, and support coverage."
+        },
+        {
+          "id": "decision-ledger",
+          "weight": 1,
+          "required": false,
+          "description": "Maps first-week signals to price/copy/promotion/hotfix/roadmap decisions with thresholds, segments, owners, and review cadence."
+        }
+      ]
     }
   ]
 }

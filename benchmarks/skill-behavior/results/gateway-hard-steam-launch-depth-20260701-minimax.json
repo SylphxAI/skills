@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-hard-steam-launch-depth-20260701-minimax",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "steam-launch-multiplayer-incident-001",
+      "steam-launch-store-demo-mismatch-001",
+      "steam-launch-commercial-community-risk-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "53d08e52d8eacab8294ec1b17f30871598ee43e9",
+      "branch": "codex/steam-launch-individual-evidence",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T21:49:33.118Z",
+    "completedAt": "2026-07-01T21:52:25.636Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "steam-launch-multiplayer-incident-001",
+      "skill": "steam-launch-readiness",
+      "promptSha256": "c4f58935b91098de3cde46dcf7245c1879e940994bf63056c86fd54eaea7ea17",
+      "skillContextSha256": "5f5c93735d249a5b04cf1c8e5323021614673a7f3b5fab28ad50218d9c572ea1",
+      "skillBodySha256": "a1421c738a69ca05355a265d2e0bb04911a1df3e3a12b81ef6239e5c2b37c1a7",
+      "skillReferenceSha256": [
+        {
+          "path": "references/steam-launch-systems.md",
+          "sha256": "72cd93881150dc47bf46a1ab6d7070fd32117ad237821973433b0430fb571ee2"
+        }
+      ],
+      "skillLoadedPromptSha256": "4bf3399b5eac6d38c4dc729bfe4c5cbdd60c42aceb7bdc7886d070cb5f562106",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "technical-gates": 4,
+          "decision-thresholds": 3,
+          "player-comms": 4,
+          "community-support-ops": 4,
+          "first-week-learning": 2
+        },
+        "criticalFailures": [
+          "Missing numeric crash-free, negative-review, support-volume, and patch-outcome thresholds",
+          "First-week metrics lack owners and are weakly linked to roadmap, capacity, store-copy, rollback, or promotion decisions"
+        ],
+        "rationale": "Strong structure and many useful thresholds, but incomplete decision coverage for crashes, reviews, support, and patch outcomes. Communications and triage are solid, though bug-report format and first-week owner/action links are underdeveloped.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-steam-launch-depth-20260701-minimax-outputs/steam-launch-multiplayer-incident-001-baseline.md",
+        "outputSha256": "994be047714b28588b7e27b7b24d50e6d18f6dff4e124331a2d5bdde3c8f0049",
+        "latencyMs": 14464,
+        "usage": {
+          "input_tokens": 293,
+          "input_tokens_details": {
+            "cached_tokens": 292
+          },
+          "output_tokens": 1173,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1466
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "technical-gates": 5,
+          "decision-thresholds": 5,
+          "player-comms": 5,
+          "community-support-ops": 5,
+          "first-week-learning": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive launch plan with concrete gates, numeric tripwires, save rollback safety, anti-cheat appeals, known-issues cadence, support workflows, review posture, owners, and first-week decision loops tied to fixes, rollback, copy, and promotion.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-steam-launch-depth-20260701-minimax-outputs/steam-launch-multiplayer-incident-001-skill-loaded.md",
+        "outputSha256": "290e7e30a1c292f57314f118e405ad37097c9fc77e2db9c43a81ff63ca026f2e",
+        "latencyMs": 15086,
+        "usage": {
+          "input_tokens": 4341,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1390,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5731
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-steam-launch-depth-20260701-minimax-outputs/steam-launch-multiplayer-incident-001-judge-raw.md",
+      "judgeOutputSha256": "76a7d5a88bfe9dc50a060d6062b3ffb0392b02e8658ef7a3481c6d65d4a63571",
+      "judgeLatencyMs": 11679,
+      "judgeUsage": {
+        "input_tokens": 2826,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 835,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3661
+      }
+    },
+    {
+      "taskId": "steam-launch-store-demo-mismatch-001",
+      "skill": "steam-launch-readiness",
+      "promptSha256": "27241b602aaed2439fe37a0c0ec6f5e1f05564c527b9c9959b106113ab5fa210",
+      "skillContextSha256": "5f5c93735d249a5b04cf1c8e5323021614673a7f3b5fab28ad50218d9c572ea1",
+      "skillBodySha256": "a1421c738a69ca05355a265d2e0bb04911a1df3e3a12b81ef6239e5c2b37c1a7",
+      "skillReferenceSha256": [
+        {
+          "path": "references/steam-launch-systems.md",
+          "sha256": "72cd93881150dc47bf46a1ab6d7070fd32117ad237821973433b0430fb571ee2"
+        }
+      ],
+      "skillLoadedPromptSha256": "2ba9bd17acb1e0cb4ec9fdf47b24c8a6cfe07bf2556f522ca4dbbc2303831676",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "store-promise-fit": 4,
+          "platform-feature-proof": 3,
+          "expectation-risk-controls": 4,
+          "demo-wishlist-measurement": 3,
+          "launch-readiness": 3
+        },
+        "criticalFailures": [
+          "Suggests blocking reviews citing missing DLC via off-topic flags, an unsupported platform-policy claim."
+        ],
+        "rationale": "Strong promise audit, copy fixes, tutorial plan, and hard blockers. Weaker on achievements, settings, save compatibility, owners, segment readback, crash/forum measurement. Includes risky review-moderation advice.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-steam-launch-depth-20260701-minimax-outputs/steam-launch-store-demo-mismatch-001-baseline.md",
+        "outputSha256": "576684d79a8f0a37d73c8219e505dff9d1c64f0e5415e840173d5977db308259",
+        "latencyMs": 13526,
+        "usage": {
+          "input_tokens": 296,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1339,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1635
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "store-promise-fit": 5,
+          "platform-feature-proof": 4,
+          "expectation-risk-controls": 5,
+          "demo-wishlist-measurement": 5,
+          "launch-readiness": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive audit with build proof gates, DLC expectation controls, refund/review playbooks, measurement events, owners, proof artifacts, P0 blockers, and first-week cadence. Achievements proof is mentioned but less detailed than other platform checks.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-steam-launch-depth-20260701-minimax-outputs/steam-launch-store-demo-mismatch-001-skill-loaded.md",
+        "outputSha256": "a513b8b8ba8d412209473c4d5d418c091f3484b2eb3576702bd86b996b8b7757",
+        "latencyMs": 14101,
+        "usage": {
+          "input_tokens": 4344,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1482,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5826
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-steam-launch-depth-20260701-minimax-outputs/steam-launch-store-demo-mismatch-001-judge-raw.md",
+      "judgeOutputSha256": "85b01ec75469ed794db20750de482adf68d1cce68a63bc900a50a1697de50b13",
+      "judgeLatencyMs": 14407,
+      "judgeUsage": {
+        "input_tokens": 3150,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 811,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3961
+      }
+    },
+    {
+      "taskId": "steam-launch-commercial-community-risk-001",
+      "skill": "steam-launch-readiness",
+      "promptSha256": "27a72a726e2b9cc390463f52b94efa70334904e2153125c5f51447f528507bfc",
+      "skillContextSha256": "5f5c93735d249a5b04cf1c8e5323021614673a7f3b5fab28ad50218d9c572ea1",
+      "skillBodySha256": "a1421c738a69ca05355a265d2e0bb04911a1df3e3a12b81ef6239e5c2b37c1a7",
+      "skillReferenceSha256": [
+        {
+          "path": "references/steam-launch-systems.md",
+          "sha256": "72cd93881150dc47bf46a1ab6d7070fd32117ad237821973433b0430fb571ee2"
+        }
+      ],
+      "skillLoadedPromptSha256": "b8faab0d59411a2c56c7c9062a900d86f9ce0dc10df86a5b5cc1a12e38f63fc2",
+      "baseline": {
+        "score": 2,
+        "criterionScores": {
+          "commercial-policy": 2,
+          "trust-risk": 2,
+          "community-review-ops": 2,
+          "promotion-creator-plan": 2,
+          "decision-ledger": 2
+        },
+        "criticalFailures": [
+          "unsupported platform-policy claims",
+          "weak creator support readiness",
+          "insufficient player-trust guardrails"
+        ],
+        "rationale": "Includes required sections but makes unsupported or risky Steam claims, invents unavailable signals/actions, lacks evidence fields, weakly separates valid defects from review bombing, and gives questionable pricing/refund responses. Ledger has owners and triggers but shallow segments/cadence.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-steam-launch-depth-20260701-minimax-outputs/steam-launch-commercial-community-risk-001-baseline.md",
+        "outputSha256": "e93a39174be60857aadc0eb766270092ea354da67bc9693b0fc4fee153532506",
+        "latencyMs": 26529,
+        "usage": {
+          "input_tokens": 303,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 2157,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2460
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "commercial-policy": 5,
+          "trust-risk": 5,
+          "community-review-ops": 5,
+          "promotion-creator-plan": 5,
+          "decision-ledger": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive matrix with owners, evidence, guardrails, creator embargo readiness, moderation/review-bomb plan, refund triage, promotion thresholds, and first-week ledger. Avoids unsupported Steam-policy claims by labeling thresholds as starter/internal.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-steam-launch-depth-20260701-minimax-outputs/steam-launch-commercial-community-risk-001-skill-loaded.md",
+        "outputSha256": "a9c8dcb7919e2851725c6e7d83cb536d53120ad16c2abc9d61766dcfa6a36ce9",
+        "latencyMs": 18903,
+        "usage": {
+          "input_tokens": 4351,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1592,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5943
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-steam-launch-depth-20260701-minimax-outputs/steam-launch-commercial-community-risk-001-judge-raw.md",
+      "judgeOutputSha256": "b92eb0b1e1ea663b862465333ef183fba9e0ff20eaa22c74f81984699c1bf98a",
+      "judgeLatencyMs": 16859,
+      "judgeUsage": {
+        "input_tokens": 2993,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 674,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3667
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "steam-launch-multiplayer-incident-001",
+      "promptType": "positive",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [
+        "steam-launch-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 6954,
+      "usage": {
+        "input_tokens": 223,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 35,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 258
+      }
+    },
+    {
+      "taskId": "steam-launch-multiplayer-incident-001",
+      "promptType": "negative-control",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 3255,
+      "usage": {
+        "input_tokens": 149,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 42,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 191
+      }
+    },
+    {
+      "taskId": "steam-launch-store-demo-mismatch-001",
+      "promptType": "positive",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [
+        "steam-launch-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1781,
+      "usage": {
+        "input_tokens": 223,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 46,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 269
+      }
+    },
+    {
+      "taskId": "steam-launch-store-demo-mismatch-001",
+      "promptType": "negative-control",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1734,
+      "usage": {
+        "input_tokens": 150,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 45,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 195
+      }
+    },
+    {
+      "taskId": "steam-launch-commercial-community-risk-001",
+      "promptType": "positive",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [
+        "steam-launch-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 8822,
+      "usage": {
+        "input_tokens": 233,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 39,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 272
+      }
+    },
+    {
+      "taskId": "steam-launch-commercial-community-risk-001",
+      "promptType": "negative-control",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1895,
+      "usage": {
+        "input_tokens": 152,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 51,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 203
+      }
+    }
+  ]
+}

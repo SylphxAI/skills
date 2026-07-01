@@ -14,7 +14,10 @@ Use this skill to turn a Steam release into a coordinated product, store, commun
 3. Audit store page promise, wishlist funnel, demo/playtest plan, build quality, community readiness, pricing, and support.
 4. Separate pre-launch, launch-day, first-week, and post-launch operations.
 5. Convert vague launch advice into decision gates: technical release gates, commercial policy gates, community response gates, and first-week learning gates with numeric or pre-agreed thresholds.
-6. Produce a readiness matrix with blockers, assets, telemetry, and review-risk mitigations.
+6. Verify store promise details against build proof: capsule, short description, tags, trailer, screenshots, achievements, cloud saves, controller support, settings, localization, system requirements, demo scope, and DLC wording.
+7. Make player communication operational: bug-report format, known-issue state, ETA policy, support macro, public update cadence, and whether the fix is hotfix, rollback, copy change, or roadmap item.
+8. Do not assert Steam discount/refund/review policy from memory. Use a policy-verification matrix and label numeric tripwires as internal starter thresholds unless the studio supplied approved targets.
+9. Produce a readiness matrix with blockers, assets, telemetry, and review-risk mitigations.
 
 ## Guardrails
 
@@ -39,9 +42,13 @@ Readiness matrix:
 - Build/platform:
 - Community/support:
 - Launch operations:
+- Creator/press readiness:
 
 Technical gates:
 - <gate> -> metric/threshold, owner, proof
+
+Store/build promise audit:
+- <capsule/short-description/tag/trailer/screenshot/demo/DLC/achievement/cloud-save/controller/localization/system-requirement/settings claim> -> build proof, owner, blocker/fix
 
 First-week decision thresholds:
 - <signal> -> <numeric/pre-agreed threshold>, segment, owner, action
@@ -51,10 +58,12 @@ P0 blockers:
 
 Commercial policy:
 - <pricing/discount/DLC/refund risk decision> -> rationale, evidence, rollback/communication path
+- Creator keys / embargo / press kit -> build version, known-issues note, support owner, embargo time, content guidance
 
 Wishlist/review/learning plan:
 - <action> -> metric, timing
 
 Review-bombing / incident response:
 - <signal> -> valid-defect triage, moderation/reporting path, player communication
+- Bug-report format / support macro / ETA policy / roadmap-or-hotfix decision:
 ```
