@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-steam-core-v0-20260701-incident-learning",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "steam-launch-commercial-readiness-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "fb4d4d3a8058639978830bb9f1d5e3b15aab8721",
+      "branch": "codex/improve-steam-launch-benchmark",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T18:18:48.673Z",
+    "completedAt": "2026-07-01T18:20:49.253Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "steam-launch-commercial-readiness-001",
+      "skill": "steam-launch-readiness",
+      "promptSha256": "9ac8c2667aa3204e8d7a19f5abe62e46a5a60f3700fa2a8e2630586522852a40",
+      "skillContextSha256": "e9c676109cd688ef7efc3fa8441fe939eef28dcb7639e04d8a08b2877ccbf031",
+      "skillBodySha256": "72b431db3c5de50e2a837bc2efd109f542b225f72be208a0dcb0575241ec9767",
+      "skillReferenceSha256": [
+        {
+          "path": "references/steam-launch-systems.md",
+          "sha256": "a322746ac7defd56d3f9f488ad21967950198763a4bd3755abaaccae64d39aa6"
+        }
+      ],
+      "skillLoadedPromptSha256": "503120ee265273940626996c1a7eab22e1bf6d9186ddae8deb9af37ab752a802",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "store-conversion": 4,
+          "technical-readiness": 3,
+          "commercial-policy": 3,
+          "community-ops": 4,
+          "post-launch-learning": 2
+        },
+        "criticalFailures": [
+          "regional pricing/discount policy mistakes",
+          "missing crash reporting gate"
+        ],
+        "rationale": "Covers many requested launch areas and artifacts, but omits tags/trailer depth, crash reporting, robust multiplayer gates, and post-launch learning. Includes questionable Steam discount and review-control claims, plus risky regional pricing assumptions.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-steam-core-v0-20260701-incident-learning-outputs/steam-launch-commercial-readiness-001-baseline.md",
+        "outputSha256": "e0e72a2d66f87f5cac21199280e052090cc383295f966e02e5b76684d024a242",
+        "latencyMs": 83153,
+        "usage": {
+          "input_tokens": 262,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1362,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1624
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "store-conversion": 5,
+          "technical-readiness": 5,
+          "commercial-policy": 5,
+          "community-ops": 5,
+          "post-launch-learning": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive readiness plan with store checklist, technical gates, pricing/discount policy, moderation and review-bombing response, creator embargo, refund handling, and learning metrics. Multiplayer, anti-cheat, rollback, cloud saves, and live-ops cadence are well covered.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-steam-core-v0-20260701-incident-learning-outputs/steam-launch-commercial-readiness-001-skill-loaded.md",
+        "outputSha256": "c330bed821c79388bfcc45ee90cde7e248610ce03797a2bd1ba716df502c5a7a",
+        "latencyMs": 15684,
+        "usage": {
+          "input_tokens": 3415,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1330,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4745
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-steam-core-v0-20260701-incident-learning-outputs/steam-launch-commercial-readiness-001-judge-raw.md",
+      "judgeOutputSha256": "0021e8f868849f9ed355fb71fab0bc5a0e82fba3d81c7077e5e3bd906e9908f4",
+      "judgeLatencyMs": 17363,
+      "judgeUsage": {
+        "input_tokens": 3196,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 1011,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4207
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "steam-launch-commercial-readiness-001",
+      "promptType": "positive",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [
+        "steam-launch-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1532,
+      "usage": {
+        "input_tokens": 190,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 29,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 219
+      }
+    },
+    {
+      "taskId": "steam-launch-commercial-readiness-001",
+      "promptType": "negative-control",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2837,
+      "usage": {
+        "input_tokens": 145,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 48,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 193
+      }
+    }
+  ]
+}
