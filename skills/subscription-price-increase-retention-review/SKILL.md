@@ -29,6 +29,8 @@ Use this skill to convert subscription price increase, retention plan, grandfath
 - Do not assume store-billed and direct-billed subscriptions have identical consent, renewal, or cancellation behavior.
 - Do not state platform price-change rules as universal facts. Mark App Store and Google Play behavior as channel-specific, region-sensitive, and subject to current store-console/API verification.
 - Do not launch a store-billed cohort when the current no-action outcome, refund route, receipt/server-notification signal, or country exception is unknown.
+- When a prompt says the team is unsure, do not fill gaps with platform memory. Put `verify before rollout` in the matrix and list the exact evidence needed to unblock.
+- Avoid words like `generally`, `usually`, or `in most regions` for consent, renewal, or refund behavior unless the current rollout evidence is supplied.
 - Do not skip renewal-date and no-action states; define what happens when notice is delivered, consent is pending, consent is accepted, consent is declined, no response is received, renewal succeeds, or renewal fails.
 - Do not treat discounted, sales-exception, grandfathered, usage-heavy, and enterprise-contract customers as one cohort.
 - Do not launch without pre-agreed mitigation triggers for churn, complaints, refund/support spikes, failed renewals, or sales escalations.
@@ -42,6 +44,10 @@ Audience / source of truth / risk boundary:
 Channel rule matrix:
 | Channel | Notice/consent | Renewal/no-action outcome | Cancellation/refund route | Evidence to verify |
 | --- | --- | --- | --- | --- |
+
+Consent and renewal state table:
+| Channel | Consent not required | Consent pending | Accepted | Declined | No response | Renewed old/new price | Payment failed/disputed | Required evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 Priority cohort matrix:
 | Cohort | Channel/region/renewal window | Churn risk | Treatment | Guardrail |

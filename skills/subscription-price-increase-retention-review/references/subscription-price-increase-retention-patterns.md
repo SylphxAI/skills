@@ -56,7 +56,7 @@ Use these fields before choosing grandfathering or save offers:
 
 ### Channel rule matrix
 
-Do not rely on generic platform memory. Fill this matrix with current store-console/API evidence before launch:
+Do not rely on generic platform memory. Fill this matrix with current store-console/API evidence before launch. If the prompt does not provide that evidence, write `verify before rollout` instead of guessing.
 
 | Channel | Verify | User states to handle | Support/refund route |
 | --- | --- | --- | --- |
@@ -65,6 +65,16 @@ Do not rely on generic platform memory. Fill this matrix with current store-cons
 | Google Play | Current Play price-migration/price-change flow, base plan/offer setup, region timing, RTDN signal, user no-action outcome | platform notice shown, accepted, declined, no response, renewal/cancel state, grace/account-hold state | Google refund route, support macro explaining Play-managed billing |
 
 If the current platform rule is unknown, write `verify before rollout` and make launch blocked for that channel.
+
+### Consent and renewal state table
+
+Use this table when store behavior is uncertain. Unknown states are launch blockers, not blanks to fill from memory.
+
+| Channel | Consent not required | Consent pending | Accepted | Declined | No response | Renewed old/new price | Payment failed/disputed | Required evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Direct | Verify ToS/contract and local notice requirement | Notice delivered, in-app/email timestamp | Consent/event record if required | Preserve old price/cancel if required by policy | Define invoice outcome before launch | Invoice/payment ledger proves price | Retry, grace, chargeback path | ToS, notice logs, invoices, payment events |
+| App Store | `verify before rollout` per country/subscription group | Store notification/subscriber status as verified | Receipt/server notification confirms accepted/new price | Store-managed cancellation or old-price state as verified | `verify before rollout`; block if unknown | Receipt/server notification proves renewal price | Store refund/dispute evidence | App Store Connect/config, receipt/server notification, territory evidence |
+| Google Play | `verify before rollout` per country/base plan | Play price-change/migration state as verified | RTDN/API confirms accepted/new price | Cancel/old-price/account state as verified | `verify before rollout`; block if unknown | RTDN/API proves renewal price | Grace/account-hold/refund evidence | Play Console/base plan, RTDN/API, country evidence |
 
 ### Offer governance and experiment design
 
