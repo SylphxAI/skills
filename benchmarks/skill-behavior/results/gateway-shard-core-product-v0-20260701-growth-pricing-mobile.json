@@ -50,7 +50,7 @@
         ],
         "rationale": "Solid structure, channels, calendar, affiliate controls, and metrics. Weaker on eligibility depth, active/monthly subscriber handling, high-risk segmentation, support guardrails, abuse rejection visibility, margin thresholds, and full lifecycle suppression/rollback rules.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/promotion-campaign-subscription-001-baseline.md",
-        "outputSha256": "cd8db8d9c5f557004d2d9d67f47cd7159bc056aee0b95a200f9ea143cdb87267",
+        "outputSha256": "eb25d53b28f3ddc78c4d2e7a43173da94c2c2e6b33554b143ed59fc9d8a055a7",
         "latencyMs": 40026,
         "usage": {
           "input_tokens": 89,
@@ -76,7 +76,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive campaign with precise eligibility, discount rules, caps, renewal economics, sequencing, support/fraud controls, rollback thresholds, calendar, experiments, and guardrail metrics. Minor gap: general new-user segment is mostly embedded in creator/free traffic.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/promotion-campaign-subscription-001-skill-loaded.md",
-        "outputSha256": "daf4a4155236bcb0daef7e1a7ef90147ac9c666c4ba3e1f4708ad4fe2490af78",
+        "outputSha256": "a2c5338764835ee29b34da3096d557c44287910b048c2db6b2363ee1a4185bfc",
         "latencyMs": 36184,
         "usage": {
           "input_tokens": 859,
@@ -96,7 +96,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/promotion-campaign-subscription-001-judge-raw.md",
-      "judgeOutputSha256": "49449a6207e5aa9d36336adc6b92a59527b80d8cc1f355b68a73f3fb7b04ab61",
+      "judgeOutputSha256": "79dec6ee92a76d4cfc0dcf43cb390adf93d3f61d88da8240437d985bc81e326c",
       "judgeLatencyMs": 18403,
       "judgeUsage": {
         "input_tokens": 4513,
@@ -127,7 +127,7 @@
         ],
         "rationale": "Clear pricing tables, procurement guardrails, support tiers, expansion path, and margin targets. Less nuanced packaging logic than A and essentially omits migration, rollout, and experimentation artifacts.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/subscription-pricing-saas-001-baseline.md",
-        "outputSha256": "e83bbcb623c1eb24e3b2a9e8ebfe485c7a3cf54df9da5ad8572cf3b6aff6443d",
+        "outputSha256": "edf8d008bf2da6e447cadc13b60d11561ddad79fe045d2cee6cef9cb5395ef45",
         "latencyMs": 34235,
         "usage": {
           "input_tokens": 94,
@@ -155,7 +155,7 @@
         ],
         "rationale": "Strong architecture, tier logic, procurement gates, overage controls, expansion triggers, and unit-economics risks. Weaker on quantitative margin modeling and lacks a real rollout/experiment plan.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/subscription-pricing-saas-001-skill-loaded.md",
-        "outputSha256": "7a5787363bef773491fa26fe04af4faf0ab0fddf169874709988f1c97dbe6b53",
+        "outputSha256": "4ab7ae2ee23a302cf707fae2af3d73773096b3b0cbc314866d2a769cbd616545",
         "latencyMs": 37261,
         "usage": {
           "input_tokens": 799,
@@ -175,7 +175,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/subscription-pricing-saas-001-judge-raw.md",
-      "judgeOutputSha256": "ae7a61288e4dcb82d2db7bdf16970541c9ef7a84dbc57992496e0d67c9ddb3cc",
+      "judgeOutputSha256": "f146f8b68da89d51ea57393b3a152472b3a3f28fac17b44f2b8403e0db67834a",
       "judgeLatencyMs": 15373,
       "judgeUsage": {
         "input_tokens": 4048,
@@ -207,7 +207,7 @@
         ],
         "rationale": "Excellent value-first sequencing, permission timing, recovery paths, activation, and funnel metrics. However, required accessibility coverage is absent and mobile ergonomics miss safe-area, keyboard, and viewport details.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/mobile-first-permission-onboarding-001-baseline.md",
-        "outputSha256": "acd45fcbb5c738ebead059812d7dd004aa16d74813ef3457ec707b07588709ec",
+        "outputSha256": "751300353b5b7d282730ff8dc5b4b5387019ebad2650c624ce87eda81628e790",
         "latencyMs": 33487,
         "usage": {
           "input_tokens": 87,
@@ -235,7 +235,7 @@
         ],
         "rationale": "Strong mobile-first journey with safe-area, keyboard, viewport, permission recovery, and activation sequencing. Measurement is mostly event-based, not full funnel/guardrails. Accessibility is largely absent.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/mobile-first-permission-onboarding-001-skill-loaded.md",
-        "outputSha256": "595e0048244dd4236da3d96d99457242f94e0302dfc3871c8042473ffd7f3514",
+        "outputSha256": "9f67d6ab2f4b3d189afbe77d295473bb703e2d52ce3a3deb617423fb17bf8b77",
         "latencyMs": 27092,
         "usage": {
           "input_tokens": 950,
@@ -255,7 +255,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/mobile-first-permission-onboarding-001-judge-raw.md",
-      "judgeOutputSha256": "bee60c69667fd3046a89483590ba563fb79249ad582a2c3000d9963f3f02ac46",
+      "judgeOutputSha256": "e215e62b299d4c3f7f8c5bdf235950ad013c5c8a7b755fe89cc87608f422d31b",
       "judgeLatencyMs": 14196,
       "judgeUsage": {
         "input_tokens": 3800,
@@ -284,7 +284,7 @@
         "criticalFailures": [],
         "rationale": "Very strong checklist with store-specific IAP, privacy, review templates, testing, support, refunds, push, and rollout. Weaker on explicit blocker list and ownership/evidence mapping; minor overbroad refund wording and iOS rollout precision issues.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/app-store-launch-readiness-001-baseline.md",
-        "outputSha256": "b1d647d46adc5b2245d2ab169ee7d964d506cbe8582ce590985ddb1464a72651",
+        "outputSha256": "b78e3c04d84d6d46d03616bc621a9289df48573106bc8f817b324a2e1ceecb37",
         "latencyMs": 44161,
         "usage": {
           "input_tokens": 91,
@@ -310,7 +310,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive cross-store plan with Apple/Google distinctions, IAP, privacy, review notes, testing, support, rollout, and explicit blockers with owners. Evidence artifacts are implied rather than fully linked to durable records.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/app-store-launch-readiness-001-skill-loaded.md",
-        "outputSha256": "9b19769891d79df0a95756f1215a130249342e287c626749c7010a858265fd43",
+        "outputSha256": "d78598197441d25131a67749c199227d4a2a9945bfb24df6737d1d96f46e7da4",
         "latencyMs": 33440,
         "usage": {
           "input_tokens": 811,
@@ -330,7 +330,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/app-store-launch-readiness-001-judge-raw.md",
-      "judgeOutputSha256": "a07d871ca5069e8bc6991a55c621f2b33ad852df986d17b2b829ab28bd252d91",
+      "judgeOutputSha256": "eaf967cb0c927bad610f0cb4659099aa5d8f2f5f706d4f1493e4f9b5e4daaab2",
       "judgeLatencyMs": 14574,
       "judgeUsage": {
         "input_tokens": 4764,

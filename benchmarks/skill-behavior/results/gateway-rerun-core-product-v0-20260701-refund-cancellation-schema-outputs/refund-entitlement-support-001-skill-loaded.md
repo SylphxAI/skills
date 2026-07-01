@@ -1,27 +1,3 @@
-<think>
-The user wants a refund handling design for a mobile subscription app with App Store, Google Play, and Stripe. They want:
-- Entitlement revocation
-- Grace period
-- Chargebacks
-- Refund abuse
-- One-time goodwill refunds
-- Support macros
-- Analytics
-- Whether to warn, downgrade, or ban repeat abusers
-
-I need to use the skill context (refund-and-support-flow-review) to produce a concise, audit-friendly answer under 650 words. The skill specifies an output format with:
-- Purchase/refund context
-- Authority
-- Provider table
-- Entitlement state machine
-- Decision table
-- Abuse and trust ladder
-- Support macros/events
-- Metrics/dashboard
-
-Let me structure this tightly.
-</think>
-
 ```text
 PURCHASE/REFUND CONTEXT
 - Products: mobile subscription (auto-renewing) + consumables + non-consumables.

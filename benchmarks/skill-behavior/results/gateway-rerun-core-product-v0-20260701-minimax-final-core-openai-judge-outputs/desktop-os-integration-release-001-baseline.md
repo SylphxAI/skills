@@ -1,9 +1,3 @@
-<think>
-The user wants a focused review of desktop OS integration for a productivity app shipping on macOS and Windows. They've listed many features and want a concise, audit-friendly response under 650 words. Let me structure this as a technical integration matrix/rubric covering each feature area with decisions and constraints.
-
-I'll prioritize artifacts: integration matrix, key decisions, constraints, risks. Use tables where possible foraudit clarity.
-</think>
-
 # Desktop OS Integration Review: macOS & Windows
 
 ## 1. Integration Matrix

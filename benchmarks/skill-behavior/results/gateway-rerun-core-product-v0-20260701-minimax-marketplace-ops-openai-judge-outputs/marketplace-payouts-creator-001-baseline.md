@@ -1,19 +1,3 @@
-<think>
-The user wants me to design a comprehensive marketplace payouts system for an AI template marketplace. Let me create a concise, audit-friendly response covering all the requested components. I need to stay within 650 words and prioritize artifacts and key decisions.
-
-Let me structure this as a clean operational document with the key components:
-1. Creator onboarding & KYC/tax
-2. Revenue share
-3. Refunds & chargebacks
-4. Payout holds & fraud review
-5. Payout schedule
-6. Seller dashboard
-7. Disputes
-8. Support operations
-
-I'll use tables and bullet points for clarity.
-</think>
-
 # AI Template Marketplace – Payouts Operating Manual
 
 ## 1. Account States (Lifecycle Gates)

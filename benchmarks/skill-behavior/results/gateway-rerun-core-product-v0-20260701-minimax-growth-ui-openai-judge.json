@@ -68,7 +68,7 @@
         ],
         "rationale": "Recognizes the checkout UI craft task and gives many concrete fixes, but omits required rule IDs and an implementation plan. Accessibility coverage is incomplete, especially labels, touch targets, and reduced-motion.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/interface-craft-checkout-review-001-baseline.md",
-        "outputSha256": "a014c76abb485fd9a798e670dc9525cd6e5b5314d48ff78a40b4866e47390656",
+        "outputSha256": "169bd1d3fc394af702976d25cac4baa45bc2dc9e9520afdbbf81c9dce1cba1d0",
         "latencyMs": 25498,
         "usage": {
           "input_tokens": 255,
@@ -94,7 +94,7 @@
         "criticalFailures": [],
         "rationale": "Strong UI craft audit with ranked findings, rule IDs, concrete fixes, and a small implementation plan. Covers labels, focus, screen readers, touch targets, reduced motion, disabled/loading/error/success/duplicate-submit/mobile states.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/interface-craft-checkout-review-001-skill-loaded.md",
-        "outputSha256": "5e240ea53462ea352c0719a058bc539caa365cdb19f57204358116b1e803eadd",
+        "outputSha256": "0b585bbd79922dbdd45802d9d29afe94033f7d254b8e5b1f4e1fc06e27f8ac34",
         "latencyMs": 14672,
         "usage": {
           "input_tokens": 1536,
@@ -114,7 +114,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/interface-craft-checkout-review-001-judge-raw.md",
-      "judgeOutputSha256": "18514b55317bfd50706878c2775da2c5f7625817bafa9145f5ce79d4de4cf4da",
+      "judgeOutputSha256": "9081dab01d9af5c3c7fc6ca2f091411e7b3db348d03fc5beebd87485e4278849",
       "judgeLatencyMs": 12040,
       "judgeUsage": {
         "input_tokens": 3246,
@@ -157,7 +157,7 @@
         ],
         "rationale": "Covers providers, scoring, macros, and analytics, but leans punitive with device/account bans, has immediate revocation conflicting with grace, weak restore/cancellation handling, and includes questionable platform claims and provider actions.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/refund-entitlement-support-001-baseline.md",
-        "outputSha256": "37040590da729c4c600d076695397c9fb4b3e9d7b077a0eaa2e807a103276373",
+        "outputSha256": "f63e0aa95cc97d54f3fd40143fc429cf99bf330cbf40cf4e4df96a33cf75bd68",
         "latencyMs": 18622,
         "usage": {
           "input_tokens": 261,
@@ -183,7 +183,7 @@
         "criticalFailures": [],
         "rationale": "Strong channel-specific handling, entitlement state machine, grace, chargebacks, goodwill, abuse ladder, appeals, and macros. Slightly weak on explicit cancellation path and lacks a fully specified event schema despite useful metrics.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/refund-entitlement-support-001-skill-loaded.md",
-        "outputSha256": "ced1bb3f343399341a7413bf4beb0bcfa20569b79e9ea36ea77ee676b5b80c3c",
+        "outputSha256": "058f7e304c861684d905e8c2166c34e4810e970269bcece7a04160128c28b14c",
         "latencyMs": 20614,
         "usage": {
           "input_tokens": 1901,
@@ -203,7 +203,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/refund-entitlement-support-001-judge-raw.md",
-      "judgeOutputSha256": "8dd54dfecdf2ef333aa788259921060668fab2852dc99f29229f1d090a2bc772",
+      "judgeOutputSha256": "f425db416ca3d6351c2bb122a79fb5192833ec53e6da0c03175112fc2ded0b64",
       "judgeLatencyMs": 10551,
       "judgeUsage": {
         "input_tokens": 3272,
@@ -242,7 +242,7 @@
         "criticalFailures": [],
         "rationale": "Strong structure, calendar, offer tiers, affiliate caps, and fraud controls. Weaker on explicit new/active/high-risk segmentation, support confusion and brand trust guardrails, incrementality, retention, margin, and guardrail measurement beyond fraud/refunds.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/promotion-campaign-subscription-001-baseline.md",
-        "outputSha256": "6912b5b3ce033637d3e830fe4aa5fa6eb60e3dfcb111d51442f3a359a7b7c04e",
+        "outputSha256": "ed4ddbf9eb6b8af22fa6aa90824c6003db34b38d6aa7e8d447821e14dac70524",
         "latencyMs": 22010,
         "usage": {
           "input_tokens": 249,
@@ -268,7 +268,7 @@
         "criticalFailures": [],
         "rationale": "Complete campaign with objective, mechanics, lifecycle sequencing, calendar, eligibility, anti-abuse, support/trust guardrails, holdouts, margin and retention metrics. Minor gap: high-risk users are handled more as risk rules than an explicit audience segment.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/promotion-campaign-subscription-001-skill-loaded.md",
-        "outputSha256": "b681a0e79dd46c37952529fd24b8cb96a2a2d97711a0da93231ffcf6d4116ed7",
+        "outputSha256": "8d46d2b2203738708909455dd6bd379cdac47082a0cddc96a7ad717ee19c585b",
         "latencyMs": 16514,
         "usage": {
           "input_tokens": 1032,
@@ -288,7 +288,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/promotion-campaign-subscription-001-judge-raw.md",
-      "judgeOutputSha256": "6a45f5b5469a011154f0266d67b7993a036449ff5198956ce788540ac03b463f",
+      "judgeOutputSha256": "577dab38917989f613b379c4873ed0304012d0fe0fb3af89bf597ea9bd66bc69",
       "judgeLatencyMs": 12756,
       "judgeUsage": {
         "input_tokens": 3103,
@@ -330,7 +330,7 @@
         ],
         "rationale": "Strong tier tables, procurement, support, and expansion path. However, rollout/migration artifacts are largely absent, some economics are unsupported or internally unclear, and usage packaging omits Business included allowances.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/subscription-pricing-saas-001-baseline.md",
-        "outputSha256": "e2ea33f9a2bea46a7647808b3117609605901d4089abd608fd1f0c4f6169d894",
+        "outputSha256": "f3ef7cdd067faa07eace3ad91549cd53e3ccebf8810cef6f24a5d89a0545f48f",
         "latencyMs": 27855,
         "usage": {
           "input_tokens": 254,
@@ -356,7 +356,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive architecture with clear segments, procurement path, limits, overages, support, expansion, rollout, and experiments. Minor pricing ambiguity around per-seat plans with included seat bases and a possible unit-cost/overage margin inconsistency.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/subscription-pricing-saas-001-skill-loaded.md",
-        "outputSha256": "c42de4ed81f0b64399b51190f086c00d11ea337c4c500a2c6ca6baadc5600a3b",
+        "outputSha256": "97e54e394f3e7cf3f38ccda6d77cc7328687ada8c5a34299c25be02039ca7b2d",
         "latencyMs": 20101,
         "usage": {
           "input_tokens": 1580,
@@ -376,7 +376,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/subscription-pricing-saas-001-judge-raw.md",
-      "judgeOutputSha256": "5ac3a3726cbf402591d49805e295d85f15ff070b55020818556324e63d40a868",
+      "judgeOutputSha256": "5c43291d4dad6f1234f95a79556f84b16ec0551c3e2811639d53bdb99910b590",
       "judgeLatencyMs": 14468,
       "judgeUsage": {
         "input_tokens": 4190,
@@ -418,7 +418,7 @@
         ],
         "rationale": "Strong permission sequencing, friction reduction, and recovery/re-entry guidance. However, it misses explicit safe-area, keyboard, touch-target, viewport, and accessibility requirements. Measurement is useful but lacks clear guardrail metrics.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/mobile-first-permission-onboarding-001-baseline.md",
-        "outputSha256": "528631dc8c5f56e5f19c6fbf2cbd941aa64c0ca507e4a02e295a128979efa124",
+        "outputSha256": "e9deb91d42f9dc76c040dc1b48c1948711db864816073bd51a71b6678d870e57",
         "latencyMs": 25629,
         "usage": {
           "input_tokens": 247,
@@ -444,7 +444,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive mobile-first review covering thumb reach, safe areas, keyboard, touch targets, permission timing, denial/skipped recovery, activation simplification, accessibility, and instrumentation. Measurement could define clearer quantitative guardrails, but overall satisfies the task strongly.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/mobile-first-permission-onboarding-001-skill-loaded.md",
-        "outputSha256": "49cfd0ec9fabec51d9fd0a620e531e565eb6da03dabdbbfdfb44026553862f7d",
+        "outputSha256": "406392eea2b6e9fb17167cd2b880ffd230a309cf076641b33bf86d59c160ecf9",
         "latencyMs": 29034,
         "usage": {
           "input_tokens": 1492,
@@ -464,7 +464,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge-outputs/mobile-first-permission-onboarding-001-judge-raw.md",
-      "judgeOutputSha256": "e454f2563efc1d9f1a631f297e0be16edf3abf7522cdd33ddcbc1166964fd135",
+      "judgeOutputSha256": "408f67a1a0809ca3cc8c4aaa5c71dd9e5b39fea0270754713a07dea05ff65a09",
       "judgeLatencyMs": 12473,
       "judgeUsage": {
         "input_tokens": 2683,

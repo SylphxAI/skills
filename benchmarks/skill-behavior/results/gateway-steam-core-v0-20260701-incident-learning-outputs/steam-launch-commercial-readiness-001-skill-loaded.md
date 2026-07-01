@@ -1,7 +1,3 @@
-<think>
-The user wants a Steam launch readiness audit for an indie multiplayer game with all the listed concerns. I need to use the skill output format and keep it under 650 words. Let me build a tight, audit-friendly response covering all requested areas.
-</think>
-
 ```text
 Game/launch context:
 - Genre/audience: indie multiplayer (party-friendly, low-friction onboarding, online co-op/versus).

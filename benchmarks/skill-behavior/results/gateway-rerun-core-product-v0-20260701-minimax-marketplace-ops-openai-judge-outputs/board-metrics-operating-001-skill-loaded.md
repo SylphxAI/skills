@@ -1,13 +1,3 @@
-<think>
-The user wants a board metrics operating review for a SaaS company. I need to follow the skill's output format and workflow while staying under 650 words. Let me build this compactly but completely, covering all the requested items: ARR, MRR, NRR, GRR, churn cohorts, CAC, gross margin, pipeline, product usage, support load, incidents, burn, runway, forecast variance, owner signoff, board asks, action follow-up.
-
-I'll structure as:
-1. Board metrics context (audience, source of truth, risk boundary)
-2. Operating metrics plan (table)
-3. Definitions/sources/owners/variance narrative/board asks/risks/follow-ups (bullet form)
-4. Brief state machine + event schema + decision table refs (compact)
-</think>
-
 # Board Metrics Operating Review — SaaS
 
 ## Board metrics context

@@ -64,7 +64,7 @@
         "criticalFailures": [],
         "rationale": "Strong ledger, replay, support, reconciliation, and release gates. Slightly weaker because refund, revoke, and chargeback policies are sometimes collapsed into immediate revocation, with less nuanced customer-protection handling than Answer A.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/payment-webhook-entitlement-race-001-baseline.md",
-        "outputSha256": "5c8676dab041a04516a87a4e197223375ad10b2b7aec19c02ce874d3260b17d3",
+        "outputSha256": "1f438bc17136289a003840c91dcd2a9e35970f8efdcee8538d28303341f11c16",
         "latencyMs": 34031,
         "usage": {
           "input_tokens": 107,
@@ -90,7 +90,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive server-side append-only ledger with idempotency, deterministic replay, provider-specific semantics, reconciliation/support tooling, launch blockers, tests, observability, and customer-safe handling of grace, restores, partial refunds, disputes, and manual grants.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/payment-webhook-entitlement-race-001-skill-loaded.md",
-        "outputSha256": "5ee5eaab5417bb8b464786cab6a4979c6395cf4d82b542967005a60e944cb77f",
+        "outputSha256": "aa42599d0552153cd01f97a57cb75e34c3cc8d2343a666fecfeaf12fab229b84",
         "latencyMs": 29078,
         "usage": {
           "input_tokens": 949,
@@ -110,7 +110,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/payment-webhook-entitlement-race-001-judge-raw.md",
-      "judgeOutputSha256": "f3d9f0b0b36e96a391ea18d985eec977c45d3066542fafe2407a0bbff8356e83",
+      "judgeOutputSha256": "b7b3ff5b95ef9738693148845dba8b74d1679a3394f12397e68ed1045b25d763",
       "judgeLatencyMs": 9118,
       "judgeUsage": {
         "input_tokens": 4021,
@@ -149,7 +149,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive ledger-first design with holds, sanctions, tax, failed payouts, refunds, disputes, negative balances, support queues, and audit controls. Slightly less explicit on disputed/reversed as formal states and support macros.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/marketplace-payout-tax-hold-001-baseline.md",
-        "outputSha256": "e305892fc9b5df52676e63c5f432dd9e77df1fa08b7929f4700fe634287ec23c",
+        "outputSha256": "490d4543f0a6a660068087775795b519abfe08c2fcc3a1e982fe0f978ebf7252",
         "latencyMs": 49364,
         "usage": {
           "input_tokens": 93,
@@ -175,7 +175,7 @@
         "criticalFailures": [],
         "rationale": "Strong event flow, creator messages, negative balance handling, failed payout recovery, and dispute logic. Weaker than A on explicit reserve policy, compliance reporting/country eligibility/provider constraints, and formal hold release governance.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/marketplace-payout-tax-hold-001-skill-loaded.md",
-        "outputSha256": "2d211b1c3836b8d0be40b4ba15d2e829721ba81f4487febb8c33e3d52eca1f9d",
+        "outputSha256": "14f3ff890f02e7a9433e509a83c4d02fcf6af099e2ae40ef3ea6b849e1801348",
         "latencyMs": 29153,
         "usage": {
           "input_tokens": 1405,
@@ -195,7 +195,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/marketplace-payout-tax-hold-001-judge-raw.md",
-      "judgeOutputSha256": "5edec8817f8b7d99b681c7cb3cc243f10daced3056e471beb189cfb9b92ebeb7",
+      "judgeOutputSha256": "5eb48ec336038f02084ca6dcd4e556b4c43fd718e252414a0baef08b9e760270",
       "judgeLatencyMs": 14911,
       "judgeUsage": {
         "input_tokens": 4164,
@@ -234,7 +234,7 @@
         "criticalFailures": [],
         "rationale": "Strong practical strategy with contextual permission ask, denial handling, quiet hours, digest, caps, and commercial flows. However, lifecycle matrix is less complete, and measurement misses some required guardrails such as delivery, retention, and unsubscribe specificity.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/notification-permission-fatigue-recovery-001-baseline.md",
-        "outputSha256": "e11db6abe0728b115151e230d0afaf03118656b573f8d763b8d48a0b52ec1827",
+        "outputSha256": "fc4d73300aba8ffacf77af0f778bd6011838ab240ea1b187ccbcb85b32f1cb1c",
         "latencyMs": 32464,
         "usage": {
           "input_tokens": 750,
@@ -260,7 +260,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive lifecycle taxonomy maps triggers, value, channels, frequency, and controls. Strong permission, denial, opt-out, billing, win-back, suppression, and experimentation coverage. Measurement is robust, though retention/delivery guardrails could be slightly more explicit.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/notification-permission-fatigue-recovery-001-skill-loaded.md",
-        "outputSha256": "479dd81a276e2379675381984cb3fee5fcdf6ff767fb163e7284e9813a230956",
+        "outputSha256": "e3a332fff416dc21a501d8d42c21d628ea8bace6931f9cea575d29e21a7b3e10",
         "latencyMs": 30914,
         "usage": {
           "input_tokens": 878,
@@ -280,7 +280,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/notification-permission-fatigue-recovery-001-judge-raw.md",
-      "judgeOutputSha256": "d34220b56bc71a384a358d9b8cad75042df0342fc3820485c8301c5e2b31d4d1",
+      "judgeOutputSha256": "fb465eefc13a3863d2d14e2fa67b4db130560c2960120ec9be4b4227353ad2dc",
       "judgeLatencyMs": 11492,
       "judgeUsage": {
         "input_tokens": 3719,
@@ -319,7 +319,7 @@
         "criticalFailures": [],
         "rationale": "Very solid audit covering all required areas, including pricing, DLC, cloud saves, controller support, refunds, moderation, rollback, and live ops. Slightly less integrated as a readiness matrix and measurement is less decision-linked.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/steam-demo-refund-review-risk-001-baseline.md",
-        "outputSha256": "445de0ca6a2ba9d25ed98ddee582113f9e4fc39f865d75327df6b6491e82a49f",
+        "outputSha256": "84e4f77bb991cd6f807502d152b303a26900965bbddc619d1908c1cb8f55b26e",
         "latencyMs": 37820,
         "usage": {
           "input_tokens": 100,
@@ -345,7 +345,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive readiness matrix with explicit blockers, evidence, rollback, community ops, refund/review controls, and demo-to-wishlist measurement. Strongly ties store claims, demo scope, build gates, and first-week decisions.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/steam-demo-refund-review-risk-001-skill-loaded.md",
-        "outputSha256": "0b7c605299865c684e97b5f4c37e8c6070cc6a306a4ea8242b82fe724533ee50",
+        "outputSha256": "d5694a70c6af41f22276116ecddea0dde6de22d5426b8d6582620266ebf41dad",
         "latencyMs": 23695,
         "usage": {
           "input_tokens": 1294,
@@ -365,7 +365,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/steam-demo-refund-review-risk-001-judge-raw.md",
-      "judgeOutputSha256": "a175899a6b5ce26624ab3bfb435320fb9db7d9e590b32763a33f300f36ee513d",
+      "judgeOutputSha256": "be0386c4f81164e71e4a2d47ace782dd285c8773523a310b3af6beb2519a1c5b",
       "judgeLatencyMs": 9259,
       "judgeUsage": {
         "input_tokens": 3662,
@@ -404,7 +404,7 @@
         "criticalFailures": [],
         "rationale": "Strong practical plan covering renewals, grandfathering, overages, scripts, exceptions, and retention reporting. Weaker on explicit discount segmentation, complaint/cohort signals, and lacks concrete rollback or mitigation triggers tied to guardrail breaches.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/subscription-price-increase-grandfathering-001-baseline.md",
-        "outputSha256": "d4983d348a3cfb8c967b101fbac94d11c7e21b829603df059ef607e506912f03",
+        "outputSha256": "9dbe6222e653d5676385429a32e16b6906222bfcfb710ade33d0c6c7e269c3dc",
         "latencyMs": 34071,
         "usage": {
           "input_tokens": 102,
@@ -430,7 +430,7 @@
         "criticalFailures": [],
         "rationale": "Highly complete plan with differentiated cohorts, contract constraints, migration/grandfathering, support and sales paths, event schema, and reporting. Minor gaps: discount-customer segmentation and rollback thresholds are not fully explicit.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/subscription-price-increase-grandfathering-001-skill-loaded.md",
-        "outputSha256": "28dd8d56b8ebb6b316d7c25e1b9fe49661a535069bf64096c0036ff4f01a9339",
+        "outputSha256": "a243737f4b410fbf7d4ff267c57696dfc31c4873edc0447bd5e000e902eec996",
         "latencyMs": 36037,
         "usage": {
           "input_tokens": 1373,
@@ -450,7 +450,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/subscription-price-increase-grandfathering-001-judge-raw.md",
-      "judgeOutputSha256": "4c9d9da8545fc91b17f60af77e6ffff41625a6cceacfcf08146b7c976203f421",
+      "judgeOutputSha256": "b46c351b602d09827f3c05cd23b9f0b09d27319f659258e6913b5834dac8e97d",
       "judgeLatencyMs": 12658,
       "judgeUsage": {
         "input_tokens": 4094,

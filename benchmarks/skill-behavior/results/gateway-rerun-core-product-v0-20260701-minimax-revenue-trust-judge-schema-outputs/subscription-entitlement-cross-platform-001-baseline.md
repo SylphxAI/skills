@@ -1,30 +1,3 @@
-<think>
-The user wants a comprehensive subscription entitlement design covering multiple purchase channels and edge cases. Let me structure this concisely within 650 words.
-
-Key elements to cover:
-1. One user, multiple purchase sources (web Stripe, App Store, Google Play, team admin invoice)
-2. Restore purchases
-3. Receipt validation
-4. Family sharing edge cases
-5. Team seat changes
-6. Plan downgrades
-7. Grace periods
-8. Refunds
-9. Chargebacks
-10. Offline mobile access
-
-I should organize this as an audit-friendly artifact. Let me use tables/lists and be concise.
-
-Structure:
-- Canonical entitlement model (source of truth)
-- Source normalization rules
-- Validation per channel
-- Edge cases
-- Offline behavior
-
-Let me draft this carefully to stay under 650 words.
-</think>
-
 # Subscription Entitlement Design — Single User, Multi-Source
 
 ## 1. Canonical Entitlement Model (Server-Side Source of Truth)

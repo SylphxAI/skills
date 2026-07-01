@@ -1,30 +1,3 @@
-<think>
-The user wants me to review a daily reward and streak system for a mobile game. I need to use the daily-reward-and-streak-review skill and follow the output format. The answer budget is 650 words max, so I need to be concise and audit-friendly.
-
-Let me think about the key components to address:
-- Login bonuses
-- Streak freezes
-- Calendar rewards
-- Gacha currency
-- Comeback bonuses
-- Time-zone changes
-- Offline play
-- Abuse via clock manipulation
-- VIP multipliers
-- Notifications
-- Monetization pressure
-
-I need to follow the output format exactly:
-- Core return behavior:
-- Reward promise:
-- Loop design (cadence, trigger, reward, recovery, cap)
-- State model (states with entry, exit, user message)
-- Economy/support risks (risk -> mitigation)
-- Metrics
-
-Let me draft a comprehensive but concise response within 650 words. I need to be audit-friendly and focus on artifacts and rubric-critical decisions.
-</think>
-
 ```text
 Core return behavior:
 Reconnect players to a satisfying session each day by anchoring a low-friction login, then pulling them into one meaningful action (a quest, a run, a match, a chapter) that gives the reward meaning. Streaks celebrate continuity of play, not app opens.

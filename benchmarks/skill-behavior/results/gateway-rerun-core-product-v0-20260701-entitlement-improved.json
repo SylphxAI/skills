@@ -60,7 +60,7 @@
         "criticalFailures": [],
         "rationale": "Strong overall design with server validation, restore, team seats, downgrades, refunds, and offline access. Less explicit event ordering, channel-specific precedence table, restored/offline state modeling, support diagnostics, admin visibility, and anomaly detection.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-entitlement-improved-outputs/subscription-entitlement-cross-platform-001-baseline.md",
-        "outputSha256": "a784991721f8937ec39be393394710e428734b84d8b0dadca40c9e75803fc64a",
+        "outputSha256": "6865b9fbd1be87a99f758700dec5c92598f7b31f24d59b825e9580310c48bcc6",
         "latencyMs": 33297,
         "usage": {
           "input_tokens": 107,
@@ -86,7 +86,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive ledger-based design with explicit channel precedence, conflict scoping, restore/offline rules, detailed audit events, and support diagnostics. Minor gap: paused/restored/offline are not all formal top-level states.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-entitlement-improved-outputs/subscription-entitlement-cross-platform-001-skill-loaded.md",
-        "outputSha256": "73b15cfebe0d34f18b79315c7f9d0d5b410783dd660002fdb616a39ca8d181a5",
+        "outputSha256": "59b3a3eafe1cc283566c047a9a53eed06b6a588fa06905fb9dc4de25f0d110a6",
         "latencyMs": 30692,
         "usage": {
           "input_tokens": 2010,
@@ -106,7 +106,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-entitlement-improved-outputs/subscription-entitlement-cross-platform-001-judge-raw.md",
-      "judgeOutputSha256": "897961011d4302601bd97c3c18351971ec0fe831947fce22b360d5b272d26810",
+      "judgeOutputSha256": "9352aa7af6cc8d44966bae1bc76ca1504d7f20afe5e5b9c94d3440980a0e0529",
       "judgeLatencyMs": 21407,
       "judgeUsage": {
         "input_tokens": 4057,

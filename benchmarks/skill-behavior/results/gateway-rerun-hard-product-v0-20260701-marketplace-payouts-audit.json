@@ -60,7 +60,7 @@
         "criticalFailures": [],
         "rationale": "Very complete ledger-first design with refunds, disputes, sanctions, tax, holds, failures, and support. Slightly weaker as a formal state machine because disputed, failed, reversed, and held are not all first-class balance states.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payouts-audit-outputs/marketplace-payout-tax-hold-001-baseline.md",
-        "outputSha256": "a7cd459e376fcf614c3e8c5edd49072fe623c3c8b8bf9fce3345eb00a8357ca2",
+        "outputSha256": "2ec4c569b9f4b99f76be867b179c6dbbf02b3e0c300b56c4a6bab90b27b76d45",
         "latencyMs": 37896,
         "usage": {
           "input_tokens": 93,
@@ -86,7 +86,7 @@
         "criticalFailures": [],
         "rationale": "Excellent formal state machine and operational flow, with creator-facing messages, evidence, holds, reserves, negative balances, and audit invariants. Compliance is strong but less specific on tax forms and statutory reporting than Answer A.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payouts-audit-outputs/marketplace-payout-tax-hold-001-skill-loaded.md",
-        "outputSha256": "9299c6509718c4cd79b3191709ae1b3124ba576f1bf20a18bacccb29b841b0d1",
+        "outputSha256": "c85ffddd472ae511d8a44b15e02dd5c478f61b0dc4348952d62aeefc98f6da09",
         "latencyMs": 34832,
         "usage": {
           "input_tokens": 2262,
@@ -106,7 +106,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payouts-audit-outputs/marketplace-payout-tax-hold-001-judge-raw.md",
-      "judgeOutputSha256": "4c079fa3e6893c49d5caf65b57babacf0259f78ea8877825eb352fa17ef20475",
+      "judgeOutputSha256": "134b9319c63a0639b104495aafcbd4a582fd3fd38fecee1bacc5549689a7653f",
       "judgeLatencyMs": 19076,
       "judgeUsage": {
         "input_tokens": 4530,

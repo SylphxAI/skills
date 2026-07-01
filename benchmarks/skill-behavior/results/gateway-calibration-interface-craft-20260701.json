@@ -39,7 +39,7 @@
         ],
         "rationale": "Good checkout-specific recommendations with concrete state handling, inline errors, focus, labels, and mobile fixes. However it misses required rule IDs, omits reduced-motion guidance, and includes more lower-priority/product-adjacent findings than necessary.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-calibration-interface-craft-20260701-outputs/interface-craft-checkout-review-001-baseline.md",
-        "outputSha256": "f4ca4cb28bcf27f1da37dc82254ce421268a0b8f752a1f0c95f0910c8d7273bb",
+        "outputSha256": "1ef29ab627f9788669fde57b1230492181ac2083c686ac6086847621d2e16ec8",
         "latencyMs": 34188,
         "usage": {
           "input_tokens": 64,
@@ -65,7 +65,7 @@
         "criticalFailures": [],
         "rationale": "Strong UI craft review with rule IDs, ranked priorities, concrete fixes, and coverage of disabled/loading/error/success/mobile states. Accessibility is solid, including labels, focus, touch targets, and reduced motion, though screen-reader implementation details could be fuller.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-calibration-interface-craft-20260701-outputs/interface-craft-checkout-review-001-skill-loaded.md",
-        "outputSha256": "6a6f240956388ab367d6acb991cf497aa8c03b7c5f2c957fafd0385e3c910f5d",
+        "outputSha256": "d895288a94d2fa2fd1258a83554c0fdf5e6027eb7bdc2ec42157edf81cc2db7d",
         "latencyMs": 37056,
         "usage": {
           "input_tokens": 1252,
@@ -85,7 +85,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-calibration-interface-craft-20260701-outputs/interface-craft-checkout-review-001-judge-raw.md",
-      "judgeOutputSha256": "a1840db58d16b8aaf7bfcd798fcd99b562c0a5bacd7cc1ca3963af0fa89ee52d",
+      "judgeOutputSha256": "9222192473d1ad2bf0dde5d0e13bf50ba53eff1936bdd5c71fe0b13c6caa67fc",
       "judgeLatencyMs": 13018,
       "judgeUsage": {
         "input_tokens": 3796,

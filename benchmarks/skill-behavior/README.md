@@ -11,7 +11,7 @@ For each benchmark task, run the same model under two paired conditions:
 1. **Baseline** — the user prompt only. The model does not receive the target skill body or references.
 2. **Skill-loaded** — the same user prompt plus explicit access to the target skill and its linked references.
 
-Judge outputs using the task rubric without revealing which condition produced which output. Randomize answer order before judging. Keep raw outputs, per-criterion scores, critical failures, and trigger checks so results can be audited.
+Judge outputs using the task rubric without revealing which condition produced which output. Randomize answer order before judging. Keep sanitized outputs, per-criterion scores, critical failures, and trigger checks so results can be audited without publishing model reasoning traces.
 
 ## Metrics
 
@@ -45,6 +45,8 @@ Before that, call the skill **Preview / unproven** even if it passes repository 
 - `scripts/run-benchmark-openai.mjs` — optional OpenAI Responses API runner that generates raw outputs, blind judge scores, and result JSON.
 - `scripts/merge-benchmark-results.mjs` — merges non-overlapping shard result files into a full-suite result.
 - `scripts/validate-benchmarks.mjs` — validates task/result file shape and skill references.
+- `scripts/sanitize-benchmark-outputs.mjs` — strips model reasoning trace blocks from committed outputs and refreshes file hashes.
+- `scripts/validate-benchmark-output-safety.mjs` — verifies committed outputs have no `<think>` traces and that output hashes match the referenced files.
 - `scripts/validate-benchmark-claims.mjs` — recomputes the current-suite summary and rejects stale or over-broad public benchmark claims.
 - `scripts/summarize-benchmark-results.mjs` — computes score deltas, win rates, trigger rates, answer token/latency overhead, and supported claim tier from result files.
 
@@ -88,6 +90,7 @@ OPENAI_API_KEY=... npm run benchmark:run:openai -- benchmarks/skill-behavior/tas
 
 Use `--dry-run` first to confirm task count, model, judge model, output path, and expected API calls without sending data to the API.
 For long-form tasks, use `--answer-word-limit <n>` to apply the same concise-answer budget to both baseline and skill-loaded prompts. The runner records the limit in result metadata, so budgeted runs stay reproducible and are not mixed silently with unbudgeted runs.
+The runner strips leading `<think>...</think>` reasoning blocks before saving outputs, judging answers, and computing output hashes. If older or external outputs are added, run `npm run sanitize:benchmark-outputs` before committing.
 
 ## Result evidence requirements
 
@@ -99,9 +102,19 @@ A result file is accepted only when it includes:
 - baseline and skill-loaded `score`, `criterionScores`, `criticalFailures`, and an output reference (`outputRef`, `outputPath`, or `outputSha256`);
 - optional `triggerChecks` for positive and negative-control prompts so over-trigger rate can be reported.
 
-Do not commit a generated result unless raw outputs or output hashes are reviewable and the run configuration is reproducible.
+Do not commit a generated result unless sanitized outputs or output hashes are reviewable and the run configuration is reproducible.
 New runner outputs also include `runner.source`, prompt hashes, and skill body/reference hashes so future skill edits do not blur which context produced a historical result.
 When available, usage and latency fields are summarized as answer-generation overhead. Judge and trigger-classifier overhead are audit costs, not skill-loaded answer overhead.
+
+## Output safety gate
+
+Public benchmark evidence must not leak model reasoning traces and result hashes must verify the committed files:
+
+```bash
+npm run validate:benchmark-outputs
+```
+
+This gate scans committed benchmark output markdown files for `<think>...</think>` blocks and checks every referenced `outputSha256` / `judgeOutputSha256` against the file content.
 
 ## Claim integrity gate
 

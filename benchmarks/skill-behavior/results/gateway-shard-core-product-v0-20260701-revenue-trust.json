@@ -63,7 +63,7 @@
         "criticalFailures": [],
         "rationale": "Strong operational change-control plan with approvals, rollback, monitoring, comms, and decisions. Weaker on explicit severity ladder coverage, compliance classification, exception expiry/retirement, debt backlog, and repeated-exception learning.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/release-freeze-control-001-baseline.md",
-        "outputSha256": "b43dd57df1f4308e8d7f424b63beebbd1eb380996e88fb39166d2874c62872b5",
+        "outputSha256": "26ebd91a106aac228f810d9807eaf63d569b5f5db69617e548797559c38c0ccd",
         "latencyMs": 24850,
         "usage": {
           "input_tokens": 94,
@@ -89,7 +89,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive plan with scope, severity ladder, approval matrix, evidence gates, exception register, retirement, and post-freeze learning. Minor weakness: freeze dates/windows are referenced but not concretely populated.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/release-freeze-control-001-skill-loaded.md",
-        "outputSha256": "a43d5d68d7c4229a0156b1af4a124008de1b6210a6593db83210ab0a5cc1ecfc",
+        "outputSha256": "9aeae73cbe99af4a62199d374e81e53d22aef00ecb02f4c29f947a7e41dff208",
         "latencyMs": 46338,
         "usage": {
           "input_tokens": 1291,
@@ -109,7 +109,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/release-freeze-control-001-judge-raw.md",
-      "judgeOutputSha256": "54897424fe1c08bc5e407e24ec2a3f131259d53d1b5f94c136f68cb5996d8c7c",
+      "judgeOutputSha256": "6d31c32db9054b51a1bdc75d78ee44e364ea5f1eac9e7b62ea34a45c61ab647a",
       "judgeLatencyMs": 13655,
       "judgeUsage": {
         "input_tokens": 3712,
@@ -148,7 +148,7 @@
         "criticalFailures": [],
         "rationale": "Strong structured plan covering consent, grandfathering, save offers, cancellation, refunds, monitoring, and net uplift. Slightly weaker cohort segmentation lacks explicit renewal-date and churn-risk segmentation, and cohort readback is less operationalized.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-price-increase-retention-001-baseline.md",
-        "outputSha256": "1f55ec65f4020a02886977efd631ca4c1b874eeb29d5f433e1548a6302aa8346",
+        "outputSha256": "37ad3b18a392fc96acb93603db57b658ad1c7c559f9e33271ea05377f4f890e7",
         "latencyMs": 38109,
         "usage": {
           "input_tokens": 102,
@@ -174,7 +174,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive plan with cohort fields, channel-specific handling, transparent cancellation, refunds, support scripts, event schema, launch gates, and net revenue guardrails. Minor limitation: platform rules are referenced rather than deeply specified.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-price-increase-retention-001-skill-loaded.md",
-        "outputSha256": "46f540bdcc131327a34c15313a1699400d9bab1edaac67014a7660ee0eee8510",
+        "outputSha256": "614c0417f75831c2288c0dbedd95fd03aa6f0293ac9f7586de1072a8611b5cec",
         "latencyMs": 30682,
         "usage": {
           "input_tokens": 1373,
@@ -194,7 +194,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-price-increase-retention-001-judge-raw.md",
-      "judgeOutputSha256": "55dbec4f585c669990b9653f1be78e5b5f0d16afa07de9f774099d7a3e22a157",
+      "judgeOutputSha256": "f54a442b3b05de411a2883d9414c4eb0920df8f7d89d3b6cfc4fd1fb1679c93f",
       "judgeLatencyMs": 10752,
       "judgeUsage": {
         "input_tokens": 4102,
@@ -233,7 +233,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive launch-gate checklist with strong webhook, tax, refund/dispute, and reconciliation coverage. It is somewhat checklist-heavy and lacks a clear payment state model/entitlement contract and explicit rollback evidence.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/payment-platform-webhook-ledger-001-baseline.md",
-        "outputSha256": "072c55feeaf7658fdd12a95173fec6208743102d8c0bd49addb369ddb0566e6b",
+        "outputSha256": "f9e30377c1203ee8a64c61df0925ca746ec32e833e7d25adae31c1470da7a153",
         "latencyMs": 129970,
         "usage": {
           "input_tokens": 104,
@@ -259,7 +259,7 @@
         "criticalFailures": [],
         "rationale": "Stronger on payment truth, event coverage, entitlement states, and explicit blockers. Reconciliation is solid. Launch gates miss some approval/rollback details, but overall maps closely to the required artifacts and failure modes.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/payment-platform-webhook-ledger-001-skill-loaded.md",
-        "outputSha256": "bb027ad7e40ffb9bbeecd7a3698c785faf7062ffe6b7ab956ca1dc0ae3df00e8",
+        "outputSha256": "8986d63f54162fc7408aecd6dad2affaef928044b5a4710fa049fd048e83b884",
         "latencyMs": 24863,
         "usage": {
           "input_tokens": 946,
@@ -279,7 +279,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/payment-platform-webhook-ledger-001-judge-raw.md",
-      "judgeOutputSha256": "1e3f93109c32835ff86cdf21da6a5206bd8abc09f1a0aac0d715ed0fcf9908fd",
+      "judgeOutputSha256": "785a4e6fd9ba82edf9b1b0bcaed5f881afd5c44b70324918cf329f8466346504",
       "judgeLatencyMs": 11789,
       "judgeUsage": {
         "input_tokens": 3995,
@@ -318,7 +318,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive server-side ledger, validation, idempotency, provider-specific handling, restore/offline behavior, team conflicts, and audit/reconciliation. Slight gaps: no literal precedence table, trial/restored not fully modeled as canonical states.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-entitlement-cross-platform-001-baseline.md",
-        "outputSha256": "c0d094a6242efe79654ad71c140db198a4b77cde03f3fdf699f76bfb5905c778",
+        "outputSha256": "1fafa3ecbcc1e58485b8cfc1d78313d9233c357fd2bf543a556e11d40e0a616b",
         "latencyMs": 36808,
         "usage": {
           "input_tokens": 107,
@@ -344,7 +344,7 @@
         "criticalFailures": [],
         "rationale": "Strong coverage of ledger-derived entitlements, restore, support diagnostics, family/team cases, and state handling. Less explicit channel precedence, thinner audit event specification, and less detailed event ordering/anti-duplication than A.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-entitlement-cross-platform-001-skill-loaded.md",
-        "outputSha256": "a3af2ebbac0ccacc0c448e94f3b5f7378e29e19bd06a53ca1475d31f97ebc18e",
+        "outputSha256": "c3e8a4c89a21c5e6c291a7aff12a5ed5c9f1802076c25af05000a6a1abec5bd4",
         "latencyMs": 29039,
         "usage": {
           "input_tokens": 1063,
@@ -364,7 +364,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-entitlement-cross-platform-001-judge-raw.md",
-      "judgeOutputSha256": "182231a1290238979a231db7543491df30fd23eee4eb347bb2b8ea8b482f219c",
+      "judgeOutputSha256": "7160a380901fd7eec9530f72531dcdbae56476909dad8adca673661814b9bd59",
       "judgeLatencyMs": 11006,
       "judgeUsage": {
         "input_tokens": 4110,

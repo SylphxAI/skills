@@ -1,9 +1,3 @@
-<think>
-The user wants a mobile-first UI review of an onboarding flow with: notification permission, location permission, account creation, and subscription trial start. Flow feels heavy, users drop before activation. Need concise, audit-friendly output under 650 words.
-
-Let me follow the skill's output format and structure my findings with rule IDs, separating critical from polish, plus accessibility checks and mobile acceptance checks.
-</think>
-
 ```text
 Surface: Onboarding flow (4 steps: notifications, location, account creation, trial start)
 Primary mobile job: Reach a usable, personalized app state as quickly as possible with minimal taps and zero "what is this?" moments.

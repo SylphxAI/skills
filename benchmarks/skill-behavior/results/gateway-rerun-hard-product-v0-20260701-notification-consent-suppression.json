@@ -62,7 +62,7 @@
         ],
         "rationale": "Comprehensive lifecycle, permission, fatigue, quiet-hours, digest, and commercial recovery guidance. However, measurement is underdeveloped, mostly fatigue indicators, missing full delivery, conversion, retention, complaint, unsubscribe, and experimentation guardrails.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-notification-consent-suppression-outputs/notification-permission-fatigue-recovery-001-baseline.md",
-        "outputSha256": "191211eb05b83df84275b2452a47a655d9371427160a36a9da07ce882a9db6bf",
+        "outputSha256": "e864ded350ed664c7e373c73be6a5a701da160198daa0111326285749ad2503e",
         "latencyMs": 39605,
         "usage": {
           "input_tokens": 94,
@@ -88,7 +88,7 @@
         "criticalFailures": [],
         "rationale": "Excellent lifecycle matrix tied to intent, consent states, suppression, and metrics. Strong permission recovery, opt-out respect, commercial recovery, quiet hours, dedupe, and detailed measurement/guardrail events. Minor room for clearer global frequency caps.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-notification-consent-suppression-outputs/notification-permission-fatigue-recovery-001-skill-loaded.md",
-        "outputSha256": "2c8d242045a566b320547203a8228ba660ffe22e1d42f068b70722edc71b2313",
+        "outputSha256": "60411839cfd241ddc80f3b72a397194aa217b60d7b0ce98c67bcd60ab82b84a8",
         "latencyMs": 32034,
         "usage": {
           "input_tokens": 2164,
@@ -108,7 +108,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-notification-consent-suppression-outputs/notification-permission-fatigue-recovery-001-judge-raw.md",
-      "judgeOutputSha256": "ecf46bac57970ed820bf5e7e1b4ac0cb2d8496b253df81c77276d5415eafd2e1",
+      "judgeOutputSha256": "478468413b3598e479c3569aecabbd480417cbdf7d8d5defc84b934dc7a2a34d",
       "judgeLatencyMs": 12557,
       "judgeUsage": {
         "input_tokens": 4308,

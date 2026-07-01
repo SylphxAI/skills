@@ -1,17 +1,3 @@
-<think>
-The user wants a review of a mobile onboarding flow with 4 steps: notification permission, location permission, account creation, and subscription trial. The flow feels heavy with drop-off. They want mobile-first UI and interaction fixes.
-
-Answer budget: 650 words max. Concise, audit-friendly, prioritize artifacts and rubric-critical decisions.
-
-Let me structure this as an audit-style review with:
-1. Diagnosis of friction points
-2. Recommended fixes with mobile-first UI patterns
-3. Prioritized changes (P0/P1/P2)
-4. Specific interaction details
-
-Let me draft a tight, structuredresponse.
-</think>
-
 # Onboarding Flow Audit & Fix Plan
 
 ## Diagnosis: Where & Why Users Drop

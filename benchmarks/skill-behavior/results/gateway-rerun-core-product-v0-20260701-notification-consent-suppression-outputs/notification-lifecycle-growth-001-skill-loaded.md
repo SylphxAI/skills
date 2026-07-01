@@ -1,7 +1,3 @@
-<think>
-The user wants a notification strategy for a mobile productivity app. I need to use the skill format provided and keep it under 650 words. Let me build concise, audit-friendly artifacts covering all requested elements.
-</think>
-
 ```text
 Notification objective:
 Help users complete valuable work without burying them in noise. Notifications earn attention by tying every send to a verifiable user value moment, respecting consent and quiet hours, and stopping the moment a lifecycle event resolves.

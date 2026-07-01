@@ -1,9 +1,3 @@
-<think>
-The user wants me to review desktop OS integration for a productivity app shipping on macOS and Windows. I need to use the skill context to produce an audit-friendly output following the specified format, within 650 words. Let me focus on the rubric-critical artifacts: integration matrix, blockers, user-facing settings, and regression test plan.
-
-Let me structure this carefully tostay within budget while hitting all critical areas.
-</think>
-
 ```text
 OS targets: macOS 12+ (Intel + Apple Silicon universal), Windows 10/11 (x64; ARM64 if promised)
 Distribution: Signed installer (PKG/MSI or MSIX) outside store; optional Store/MSIX channel for enterprise

@@ -1,9 +1,3 @@
-<think>
-The user wants a concise, audit-friendly distribution readiness plan for an iOS and Android subscription app. They want specific artifacts: IAP setup, privacy labels, screenshots, review notes, TestFlight/internal testing, support contact, refund/restore flow, push notification permission, and staged rollout.
-
-I need to follow the skill output format and stay within 650 words. Let me structure this clearly.
-</think>
-
 ```text
 Channels: Apple App Store (iOS/iPadOS), Google Play (Android)
 Product type: Subscription app (auto-renewable subscription + optional IAP)

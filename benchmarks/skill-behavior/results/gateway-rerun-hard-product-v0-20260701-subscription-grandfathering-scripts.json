@@ -60,7 +60,7 @@
         "criticalFailures": [],
         "rationale": "Strong plan with renewal constraints, migration offers, support scripts, sales exceptions, and reporting. Weaker on explicit discount-customer segmentation, cancellation paths, complaint/cohort measurement, and threshold-based rollback triggers.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-subscription-grandfathering-scripts-outputs/subscription-price-increase-grandfathering-001-baseline.md",
-        "outputSha256": "b90ee190eee0b1ad79171ebfbe8ae53118f5785429119b367137acd22bc42dc7",
+        "outputSha256": "7b6392d1b00e263df8f5f0490de2e4a400208e546dd25b16f65445807ed34c47",
         "latencyMs": 44446,
         "usage": {
           "input_tokens": 102,
@@ -86,7 +86,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive cohort segmentation, contract-aware mechanics, strong scripts and exception paths, detailed reporting, and explicit rollback triggers. Minor measurement gap: logo churn/complaint signals are implied rather than always named.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-subscription-grandfathering-scripts-outputs/subscription-price-increase-grandfathering-001-skill-loaded.md",
-        "outputSha256": "fb7ea11db76cdd80410e5561f793116bd6f39fc8e0a19d6e66543eade404a131",
+        "outputSha256": "fad82f86554ffc56382c9e8cff16c71ed9fae4945a2ee2a03f6aabfa47c57493",
         "latencyMs": 37319,
         "usage": {
           "input_tokens": 3454,
@@ -106,7 +106,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-subscription-grandfathering-scripts-outputs/subscription-price-increase-grandfathering-001-judge-raw.md",
-      "judgeOutputSha256": "455fb042cd704fe80233a5cd1b0eff6f77987d267c809562a773282bfdb969b6",
+      "judgeOutputSha256": "e84fa62ed9393e2c11375ac2fe81d2bcb41678a747542186ee632c3404d1ae48",
       "judgeLatencyMs": 13412,
       "judgeUsage": {
         "input_tokens": 4780,

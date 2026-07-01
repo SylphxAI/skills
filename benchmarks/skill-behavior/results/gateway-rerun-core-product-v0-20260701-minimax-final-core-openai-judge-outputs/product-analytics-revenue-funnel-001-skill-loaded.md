@@ -1,17 +1,3 @@
-<think>
-The user wants a product analytics instrumentation review for a subscription app covering a wide range of tracking areas. I need to use the skill's workflow and output format, keep it under 650 words, and produce the artifact structure specified.
-
-Let me draft a concise, audit-friendly response using the required format:
-
-1. Analytics context
-2. Instrumentation plan (table)
-3. Event contracts / QA / privacy / dashboard handoff (bullets)
-
-I'll cover all the requested areas: landing attribution, onboarding, paywall, trial, purchase, refund, cancellation, notifications, activation, features, cohorts, consent, naming, identity stitching, dashboards.
-
-Keep it tight andtable-driven.
-</think>
-
 **Analytics context:**
 Audience: growth, monetization, retention PMs + lifecycle marketing + finance ops. Source of truth: server billing system for money events; client SDK for behavior; attribution partner for installs; warehouse for cohorts. Risk boundary: money, entitlement, and refund decisions are server-trusted only; client events are directional.
 

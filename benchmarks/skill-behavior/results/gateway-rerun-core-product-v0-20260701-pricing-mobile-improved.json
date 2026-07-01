@@ -64,7 +64,7 @@
         ],
         "rationale": "Strong tiering, procurement path, usage metrics, support tiers, and economics guardrails. However, it omits the required rollout/experiment and migration artifacts, with no grandfathering, comms, or pricing test plan.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/subscription-pricing-saas-001-baseline.md",
-        "outputSha256": "509d058e3c194a59a2c9d46de2449c4f0d570d53406e2e0aca4fda8b4265fdf9",
+        "outputSha256": "f5ccc86feed4199df6cf3be4a18a1835fd9a9285f591cb1f0d136b7bc2eed2dd",
         "latencyMs": 39660,
         "usage": {
           "input_tokens": 94,
@@ -90,7 +90,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive architecture with buyer segments, procurement gates, tier limits, overages, support, economics guardrails, and rollout/migration plan. Minor weakness: some price points and thresholds are plausible but not deeply justified by quantitative cost modeling.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/subscription-pricing-saas-001-skill-loaded.md",
-        "outputSha256": "8af3fbc26d559b86b32e052cae1cb94ed40967573f808a42829225698975d5aa",
+        "outputSha256": "5692e18e6af1a5d0af37652e3ec1b7e87d1d9a10b57e4ffc7ee1fe95e6a1b0c0",
         "latencyMs": 36725,
         "usage": {
           "input_tokens": 1155,
@@ -110,7 +110,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/subscription-pricing-saas-001-judge-raw.md",
-      "judgeOutputSha256": "10ad69048643589a36a75c6127cc6176e62a910563bbd185711a287689ea8591",
+      "judgeOutputSha256": "6463ccdff597a1e496d7ac282fbc22830c975cb98962b5e41049d0d5bd9e7783",
       "judgeLatencyMs": 11479,
       "judgeUsage": {
         "input_tokens": 4658,
@@ -151,7 +151,7 @@
         ],
         "rationale": "Strong value-led journey, contextual permissions, activation sequencing, recovery alternatives, and funnel metrics. Mobile ergonomics are useful but light on safe areas, touch targets, keyboard, and viewport constraints. Accessibility is essentially absent.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/mobile-first-permission-onboarding-001-baseline.md",
-        "outputSha256": "5553b9b074c0b592aa7c431669cc778aa3016b28f385d976b48fa35bb6eb3a65",
+        "outputSha256": "4a972747954de0d92b0c8460dc4437d399b0fd3996b456e5d56237fab7ec1d2e",
         "latencyMs": 47911,
         "usage": {
           "input_tokens": 87,
@@ -177,7 +177,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive mobile-first review with contextual permission timing, denial recovery, safe-area/keyboard/viewport fixes, activation-preserving sequencing, and detailed accessibility checks. Measurement lists events but is weaker on explicit funnel rates and guardrail metrics.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/mobile-first-permission-onboarding-001-skill-loaded.md",
-        "outputSha256": "62068ac0c655972fba4d5342429c0d6fcb182838813b732daa606a0968941d02",
+        "outputSha256": "0eb28923ce686650691a88b9525aa9e82e4fb93fd896de290a1c58aee5e573b2",
         "latencyMs": 32065,
         "usage": {
           "input_tokens": 1332,
@@ -197,7 +197,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/mobile-first-permission-onboarding-001-judge-raw.md",
-      "judgeOutputSha256": "1dfb0249cc3ccb551d1dcf3ee6b1591ab1f60e388186cbbc7c1eaf41bc0bf14f",
+      "judgeOutputSha256": "c2a3cd248324d0d2ad0c95aea68b884cebb97ac1ec6f21fa271423d11fbc8383",
       "judgeLatencyMs": 14797,
       "judgeUsage": {
         "input_tokens": 4228,

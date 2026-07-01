@@ -1,17 +1,3 @@
-<think>
-The user wants a payment platform readiness review for a SaaS product using Stripe, Apple Pay, Google Pay, with invoices, tax, coupons, async webhooks, delayed settlement, failed payments, disputes, refunds, entitlement updates, and finance reconciliation. They want the highest-risk launch gates before accepting real customer money.
-
-I need to follow the skill's output format and use the rule IDs from the reference. Let me produce a concise, audit-friendly answer within 650 words.
-
-Key things to cover:
-- Payment surfaces and billing model
-- Readiness matrix (Catalog, Checkout, Confirmation, Entitlement, Refund/revoke, Support/reconciliation)
-- Blockers
-- Launch gates (highest risk before real money)
-
-Let me structure this carefully and stay under 650 words.
-</think>
-
 ```
 Payment surfaces:
 - Checkout: Stripe Payment Element (web), Stripe Terminal fallback, Apple Pay (web + mobile web), Google Pay (web + mobile web)

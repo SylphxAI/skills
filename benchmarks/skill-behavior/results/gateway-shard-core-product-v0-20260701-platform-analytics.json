@@ -62,7 +62,7 @@
         "criticalFailures": [],
         "rationale": "Very complete and concrete, especially store, pricing, discount, DLC, refund, review, moderation, and creator timing. Technical plan lacks explicit crash reporting and rollback gates; post-launch learning is mostly cadence, not measurement.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/steam-launch-commercial-readiness-001-baseline.md",
-        "outputSha256": "5c455a7095adc02e14b4fb6d669fa95608babb289a641f8bf635bed40653a0e9",
+        "outputSha256": "ca080738d1c315b2e1c3d26a48bd49fcd619ee9bc495af299bc216b545c31fa3",
         "latencyMs": 34407,
         "usage": {
           "input_tokens": 101,
@@ -88,7 +88,7 @@
         "criticalFailures": [],
         "rationale": "Strong operational readiness with blockers, owners, telemetry, rollback, moderation, refund/review triage, and creator timing. Slightly less concrete on exact launch discount and regional price table than ideal, but covers all required artifacts.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/steam-launch-commercial-readiness-001-skill-loaded.md",
-        "outputSha256": "ffbd4c75c0f874406bdeccaef9a81fabe6e6ec746c9eae5d549c9ec97bd8bfdf",
+        "outputSha256": "b6f8dc6ec825caade77e2c397f07ae3d91bd48380c4e989a852779e28469c219",
         "latencyMs": 32094,
         "usage": {
           "input_tokens": 1295,
@@ -108,7 +108,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/steam-launch-commercial-readiness-001-judge-raw.md",
-      "judgeOutputSha256": "c291bb5be06dd2e9fe6b8eed49d2fe1acd9e41721b77082d194a85305788d1ef",
+      "judgeOutputSha256": "b5c09e9370bdc57510d6ed07dea0ba5a3207b12d8b5b19733e30491d1a200270",
       "judgeLatencyMs": 20236,
       "judgeUsage": {
         "input_tokens": 3695,
@@ -147,7 +147,7 @@
         "criticalFailures": [],
         "rationale": "Excellent coverage of macOS/Windows conventions, signing/notarization, updater safety, permissions, crash reporting, and enterprise controls. Includes some concrete tests, but lacks a consolidated regression matrix with permission reset and compatibility coverage.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/desktop-os-integration-release-001-baseline.md",
-        "outputSha256": "6516331ecb86827405c718477942d0d779c038fc188d422130b0e4f3d91003a0",
+        "outputSha256": "050370f34df26fbd247e35ec58f2fec038219a51e4d12b47ea6feca4dc7702a7",
         "latencyMs": 35107,
         "usage": {
           "input_tokens": 104,
@@ -175,7 +175,7 @@
         ],
         "rationale": "Very comprehensive desktop-native matrix with strong permissions, signing, update, enterprise, and uninstall coverage. Main gap is no clear regression test plan covering cross-OS compatibility, update failures, permission resets, and rollback validation.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/desktop-os-integration-release-001-skill-loaded.md",
-        "outputSha256": "330793c90079bfdf51e1e6a3c29288fc136a251286d87b8edf9816101ea65976",
+        "outputSha256": "cdb6b8e2ea1a63f3c393813cffce4f4b835a85d6c476332284957595aee322dc",
         "latencyMs": 28407,
         "usage": {
           "input_tokens": 834,
@@ -195,7 +195,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/desktop-os-integration-release-001-judge-raw.md",
-      "judgeOutputSha256": "fb6890f339575b86ab636479d51b4ddfd89a3cde5b98e3d948f28ba55e6e696a",
+      "judgeOutputSha256": "9b631cde5e86735e6bb0b6f078ed812b2bcab272764c6a156823b2b5497685b0",
       "judgeLatencyMs": 11057,
       "judgeUsage": {
         "input_tokens": 3723,
@@ -234,7 +234,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive taxonomy, lifecycle coverage, dashboards, consent notes, and QA checklist. Slightly less decision-led, ownership is only lightly specified, identity privacy boundaries are less detailed, and data-quality lacks explicit schema drift/backfill/anomaly alert policies.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/product-analytics-revenue-funnel-001-baseline.md",
-        "outputSha256": "e0574413662e3702f6f17a109b67e4612744fde1c37e988121d5a45852618336",
+        "outputSha256": "374c1df497ab9f940407751ea28eb3b0d8453c7205de5cbf299e845740fe0d29",
         "latencyMs": 35498,
         "usage": {
           "input_tokens": 102,
@@ -260,7 +260,7 @@
         "criticalFailures": [],
         "rationale": "Strongly ties instrumentation to decisions, owners, risks, source-of-truth boundaries, consent, identity stitching, and validation gates. Dashboard plan is somewhat less metric-detailed than A, but overall more operationally ready and privacy-aware.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/product-analytics-revenue-funnel-001-skill-loaded.md",
-        "outputSha256": "f81985f272cfcac09f595425756be0fef5c88ea5cabc13c2fca4670e13ad6259",
+        "outputSha256": "80d2e90bfe73069aba69f5a5475edf0141d246aa7d687b8e4b49c3871399cb58",
         "latencyMs": 34643,
         "usage": {
           "input_tokens": 1197,
@@ -280,7 +280,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics-outputs/product-analytics-revenue-funnel-001-judge-raw.md",
-      "judgeOutputSha256": "18020596223cd769ec926e69e0d356a8f01aa70861bdc7ffdfb5d0dcda1a8dbe",
+      "judgeOutputSha256": "4558ec4a8db9bd80531f68d52fd44696a485aea717bc953e4c4f9387dde88d4b",
       "judgeLatencyMs": 11951,
       "judgeUsage": {
         "input_tokens": 4207,

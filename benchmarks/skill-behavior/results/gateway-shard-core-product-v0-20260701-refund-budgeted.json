@@ -47,7 +47,7 @@
         ],
         "rationale": "Strong entitlement, abuse, goodwill, chargeback, event, and metrics coverage. However it lacks an explicit refund state machine and full support flow/taxonomy, and some ban language for chargeback abuse is broader than ideal.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-refund-budgeted-outputs/refund-entitlement-support-001-baseline.md",
-        "outputSha256": "ade1853641c4d7ee4b5b95cfc6b8e8c1c4a77dfcdad72fc5e9230be1d7728c30",
+        "outputSha256": "65577e45b4fe9b5f2f867f53fe0e3606f907449b27cbd0b01c6b56e11f537349",
         "latencyMs": 38837,
         "usage": {
           "input_tokens": 103,
@@ -73,7 +73,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive channel-specific handling, state flow, abuse ladder, goodwill, chargebacks, macros, appeals, and analytics. Entitlement source and edge cases are strong, though event schema could include more required fields and support taxonomy could be more formal.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-refund-budgeted-outputs/refund-entitlement-support-001-skill-loaded.md",
-        "outputSha256": "d4792d6be49cbab62752b0348ea76af320291f4a4e0525ce7d2e3d7dbd2f11ed",
+        "outputSha256": "f04d7a5f19e1d894a0bcb9b8caeb5af7055d48aef69f01bfae9663ecb66af9c9",
         "latencyMs": 36786,
         "usage": {
           "input_tokens": 1047,
@@ -93,7 +93,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-refund-budgeted-outputs/refund-entitlement-support-001-judge-raw.md",
-      "judgeOutputSha256": "5f8f135f76e71640b4665f47487e6b1761f788bd2515d29ac041a85e7e54f259",
+      "judgeOutputSha256": "8858e6d5fd8fc390fb3e3578f8999310d810e3bceb59959cb9e8d6208d129c66",
       "judgeLatencyMs": 11102,
       "judgeUsage": {
         "input_tokens": 4440,

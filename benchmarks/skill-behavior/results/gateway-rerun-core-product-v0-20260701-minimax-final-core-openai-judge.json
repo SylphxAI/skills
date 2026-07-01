@@ -64,7 +64,7 @@
         "criticalFailures": [],
         "rationale": "Strong ethics, trust guardrails, notifications, VIP limits, and metrics. However, it lacks a true streak state machine, gives imprecise offline rules, misses multi-accounting, and includes unsupported benchmark claims.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/daily-reward-streak-economy-001-baseline.md",
-        "outputSha256": "7f65e6313368447ccde7363e79998de62e62609c5b764f5f85e7e3cd0a9be003",
+        "outputSha256": "610e18cfbde8a2fdb8b12a817711baae960f216aa41b9f759eb8301b78d5ddf5",
         "latencyMs": 43486,
         "usage": {
           "input_tokens": 264,
@@ -90,7 +90,7 @@
         "criticalFailures": [],
         "rationale": "More complete artifact set: calendar policy, explicit state model, recovery rules, timezone/offline handling, economy controls, trust metrics, and abuse detection. Minor gaps include limited multi-account coverage and a paid repair path that could pressure users.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/daily-reward-streak-economy-001-skill-loaded.md",
-        "outputSha256": "0fa7074792cb3f1af6abb28a4835fa4761a0b6b7b054d3f9cdf6430ad26ca2ca",
+        "outputSha256": "6a709120d8449653069d8de929668999bd9d1a0baa3132e06ce524f13c967733",
         "latencyMs": 35879,
         "usage": {
           "input_tokens": 1355,
@@ -110,7 +110,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/daily-reward-streak-economy-001-judge-raw.md",
-      "judgeOutputSha256": "bb5d073fbb397684b2fe7947f668321c8716019ff49d887549985a7de52e0e4c",
+      "judgeOutputSha256": "6d2ec1b0921e9bd35aeea12628729c60f9e3aafeb3609aa8c86e7ecb08e97710",
       "judgeLatencyMs": 11723,
       "judgeUsage": {
         "input_tokens": 4192,
@@ -149,7 +149,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive scope, retention, RPO/RTO, restore paths, immutable backups, point-in-time recovery, E2EE, regional storage, export, and restore drills. Minor gaps: restore runbook is scenario-based not procedural, evidence retention and ops roles/cost controls are thin.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/backup-restore-customer-data-001-baseline.md",
-        "outputSha256": "8cf8aaf1ced56d65cf2fb40fd0522504130321f50fd6ba2b3e9fde737eb8ab28",
+        "outputSha256": "de70efe805e385f35cb0777bcb152ac38d195f6a5a22b8a848f8e88435f99b54",
         "latencyMs": 27976,
         "usage": {
           "input_tokens": 260,
@@ -175,7 +175,7 @@
         "criticalFailures": [],
         "rationale": "Strong objectives, retention, snapshots, ransomware handling, user restore, drills, and support tooling. Security is weakened by unclear org/HSM recovery-key access under E2EE, export is under-specified, and restore evidence retention/checksum detail is lighter.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/backup-restore-customer-data-001-skill-loaded.md",
-        "outputSha256": "985accb389890c9a86519d47f04444c0f8047ee4b4cab9c1f51027964b517f03",
+        "outputSha256": "c2b6ea03a0efa719a0d64f3fbea376ba78fb3a333e1dba2cf546cff61ec85303",
         "latencyMs": 19608,
         "usage": {
           "input_tokens": 917,
@@ -195,7 +195,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/backup-restore-customer-data-001-judge-raw.md",
-      "judgeOutputSha256": "9b550729311ad504871c314ec97dbfed54d819fc0a2f973b49065bbf21c828cd",
+      "judgeOutputSha256": "b3d596a60f82bf16c739f140a38ee6a3e6e7011b97a74269f8ef0e8a5fdffd10",
       "judgeLatencyMs": 14618,
       "judgeUsage": {
         "input_tokens": 2845,
@@ -237,7 +237,7 @@
         ],
         "rationale": "Good domain matrix and covers anti-cheat, refunds, moderation, regional pricing, embargo, and cadence. Store conversion omits trailer/tags details. Post-launch learning lacks cohort retention, wishlist conversion, review analysis, patch outcome tracking, and explicit crash reporting.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/steam-launch-commercial-readiness-001-baseline.md",
-        "outputSha256": "37e5f4e4ee9a729c3a02944348af037df2593ef7aa1ba8731ec9192a2231105a",
+        "outputSha256": "dc44b6e67861604bed82a9f60496d334382c5140cbc2bfff666dc8043e99f55b",
         "latencyMs": 29963,
         "usage": {
           "input_tokens": 262,
@@ -263,7 +263,7 @@
         "criticalFailures": [],
         "rationale": "Strong artifact coverage with checklist, pricing, moderation, gates, cadence, wishlist/review plan. Covers refund and review risks. Technical section misses explicit crash reporting, and some pricing/DLC specifics are unsupported or slightly questionable.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/steam-launch-commercial-readiness-001-skill-loaded.md",
-        "outputSha256": "329c9346011e599e68236bbe20bb19690d5354903c7b84fbb44bed7e5f219d82",
+        "outputSha256": "dad979da454bcd388e0572fe486745fe7aac806a7166da5851269cbe79cb939b",
         "latencyMs": 29105,
         "usage": {
           "input_tokens": 1468,
@@ -283,7 +283,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/steam-launch-commercial-readiness-001-judge-raw.md",
-      "judgeOutputSha256": "fce5bcd74e33ed6d357a996b7c8592a8a72f5287a541748492a6d17037dec1f5",
+      "judgeOutputSha256": "b9be6921a2f4abea322e5b5605bf7cec5c56a1a442d438582580341276c1cc84",
       "judgeLatencyMs": 14548,
       "judgeUsage": {
         "input_tokens": 3230,
@@ -324,7 +324,7 @@
         ],
         "rationale": "Strong OS integration matrix and good signing, notarization, update, and enterprise coverage. Permission UX is addressed. However, it lacks the required regression test plan and has limited compatibility/update/permission reset testing detail.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/desktop-os-integration-release-001-baseline.md",
-        "outputSha256": "69047c4a06aa019c327481f7b970d18a844051f60adb99235e686e8306186861",
+        "outputSha256": "0c31afa20de2b83d07bab0d3c8aa0f04d3b2b3111def591ab08a6f6dc869be0a",
         "latencyMs": 23076,
         "usage": {
           "input_tokens": 265,
@@ -350,7 +350,7 @@
         "criticalFailures": [],
         "rationale": "Complete artifacts: integration matrix, permission prompts, signing/update gates, enterprise notes, diagnostics, rollback, and detailed regression tests. Handles macOS and Windows conventions with user trust, managed environments, and compatibility coverage.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/desktop-os-integration-release-001-skill-loaded.md",
-        "outputSha256": "3b19014775d2ee209e9bdf8dd54d3038330245a2a4db3ff9925fdbfd8c4298c0",
+        "outputSha256": "7e7673610aeff138af89f612e3ea5b1f7a4619b6edcdc9e1fc19745aa591aec6",
         "latencyMs": 21751,
         "usage": {
           "input_tokens": 1402,
@@ -370,7 +370,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/desktop-os-integration-release-001-judge-raw.md",
-      "judgeOutputSha256": "00da028d2d222581bc0e342cb10620a92f1c7e68a1557b1a3a0a166cac2b86e1",
+      "judgeOutputSha256": "0856845a4db9cbc11c35168d59e262442ab9399b7a2f4e75487d18a69d6bb1b5",
       "judgeLatencyMs": 11999,
       "judgeUsage": {
         "input_tokens": 3341,
@@ -409,7 +409,7 @@
         "criticalFailures": [],
         "rationale": "Strong audit with required artifacts, revenue/refund/cancel coverage, consent and identity gaps, and dashboard deliverables. Some findings are unsupported assumptions, and data-quality controls lack duplicate detection, backfill policy, schema drift checks, and anomaly alerts.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/product-analytics-revenue-funnel-001-baseline.md",
-        "outputSha256": "0433e34dbd09f0a3da6a8c24fa853f24fb64f34563f8aaa486902b8d93fe7a6d",
+        "outputSha256": "63e02f10792903def89d429cc7145456dcbff62266577b638c41eb5af62af771",
         "latencyMs": 20895,
         "usage": {
           "input_tokens": 262,
@@ -435,7 +435,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive, decision-oriented plan with event contracts, owners, revenue/refund/cancel events, consent controls, identity merge rules, attribution, QA gates, alerts, and dashboard ownership. Cross-device stitching and specific dashboard suite are less explicit but mostly covered.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/product-analytics-revenue-funnel-001-skill-loaded.md",
-        "outputSha256": "b4e63955554ce10837e133dc824edfa6e730bc8757144a27a5eeb634fccf6b78",
+        "outputSha256": "189613e2b4e8f6d9c9d1a67e87692906955543f45ecf0524e599eddf63c7910c",
         "latencyMs": 21165,
         "usage": {
           "input_tokens": 1361,
@@ -455,7 +455,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/product-analytics-revenue-funnel-001-judge-raw.md",
-      "judgeOutputSha256": "08a613c75ad071aeca5247003449bd8127f63ff5a15a76ba51849af7d18bc61e",
+      "judgeOutputSha256": "e17eb9eafc01b3d4f6d4405adc52b17648fc2b461e10716cfd32eba8e75e8435",
       "judgeLatencyMs": 9426,
       "judgeUsage": {
         "input_tokens": 3137,
