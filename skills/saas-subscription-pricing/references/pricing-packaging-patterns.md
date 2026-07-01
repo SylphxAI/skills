@@ -22,6 +22,9 @@
 - `pricing-6` — Enterprise pricing needs proof: SSO/SAML, audit, DPA, support/SLA, security docs, admin controls.
 - `pricing-7` — Any pricing change needs a rollout plan: audience, hypothesis, holdout or staged exposure, guardrail metrics, rollback trigger, owner, and review date.
 - `pricing-8` — Migration must name who is grandfathered, for how long, what changes at renewal, what support can offer, and how customers export or downgrade before enforcement.
+- `pricing-9` — Per-seat pricing must distinguish seat minimums from bundled included seats. Do not say "$X/seat includes 20 seats" unless the invoice mechanics are explicit.
+- `pricing-10` — Overage rates must clear marginal cost at the target gross margin after discounts, credits, infrastructure spikes, and support load.
+- `pricing-11` — Annual discounts and multi-year concessions must be translated into effective ARR, margin, payback, renewal risk, and sales approval thresholds.
 
 ## Pricing page requirements
 
@@ -34,6 +37,35 @@
 - Support level by plan.
 - Security/compliance route for enterprise.
 - Sales/support enablement: approved objection handling, save offers, discount authority, escalation path, and procurement checklist.
+
+## Pricing arithmetic checklist
+
+Before presenting a pricing table, run this consistency pass.
+
+| Item | Required check | Failure to avoid |
+| --- | --- | --- |
+| Seat pricing | State per-seat price, minimum paid seats, included admin/viewer seats, and added-seat price separately | "$49/seat with 20 seats included" ambiguity |
+| Usage allowance | State included monthly usage, metered unit, overage tier, alert levels, hard cap/degrade mode, and prepaid pack discount | Bill shock or undefined throttling |
+| Overage margin | Overage price >= marginal cost / (1 - target gross margin), with support and burst costs considered | Overage that loses money at scale |
+| Annual discount | Show monthly equivalent, annual invoice amount, renewal date, cancellation/refund boundary, and effective discount | Confusing annual savings or discount leakage |
+| Procurement | State PO/invoice, tax, DPA/MSA, security review, SLA, billing contact, and approval owner | Enterprise deal stalls after pricing page |
+| Expansion | Define seat expansion, usage expansion, feature expansion, and sales-assist trigger | No path from Team to Business/Enterprise |
+| Downgrade/cancel | Explain timing, retained data, exports, disabled features, and overage true-up | Surprise loss of data or trust-breaking renewal |
+
+Use placeholders when actual prices are unknown, but make the math structure explicit:
+
+```text
+Plan price:
+- Team: $X/seat/month, minimum N paid seats, includes Y rows/month.
+- Additional seats: same seat price or $Z/viewer if viewer seats are distinct.
+- Overage: $A per B rows after 80/90/100% alerts; cap/degrade at C%.
+
+Margin sanity:
+- Marginal cost per B rows:
+- Required price at target gross margin:
+- Proposed overage price:
+- Discount-adjusted floor:
+```
 
 ## Rollout and migration plan
 
@@ -102,6 +134,19 @@ Use concrete numbers only as placeholders to be validated, but do not omit the m
 
 - Seat expansion: include base seats per plan and an incremental seat price or sales-assist trigger.
 - Usage overages: price the value metric in tiers, for example events, rows scanned, reports, or seats, with 80/90/100% alerts and a hard cap or throttled degrade mode.
-- Unit economics: state gross margin target, cost driver, CAC payback target, NRR target, and support-cost guardrail.
+- Unit economics: state gross margin target, cost driver, marginal usage cost, overage margin floor, CAC payback target, NRR target, and support-cost guardrail.
 - Enterprise route: require SSO/SAML, audit logs, DPA/MSA, PO/invoice support, security review, SLA, admin controls, and named support escalation.
 - Enablement: give sales/support the main objections, approved concessions, refund/credit boundary, and when to escalate to finance/legal.
+
+## Common B2B analytics packaging pattern
+
+For analytics products, a clear hybrid usually reads better than a dense table:
+
+| Plan | Buyer | Seat rule | Usage rule | Enterprise gate |
+| --- | --- | --- | --- | --- |
+| Trial | evaluator | temporary seats, no paid commitment | limited usage and export watermark | none |
+| Team | team lead | per-seat price with a minimum seat commitment or explicit starter bundle | included rows/events, metered overage, alerts | no custom contract |
+| Business | department owner | higher minimum, admin/viewer rules, annual default | higher included usage, cheaper overage, prepaid packs | SAML/audit/basic security docs |
+| Enterprise | procurement/security buyer | negotiated annual or multi-year commitment | committed usage band, true-up, custom caps | SSO/SCIM, DPA/MSA, SLA, security review, invoice/PO |
+
+When using a minimum commitment, write "minimum 5 paid seats" rather than "includes 5 seats." When using a bundle, write "$X/month includes 5 seats; extra seats are $Y/seat/month." Do not use both patterns in the same row.
