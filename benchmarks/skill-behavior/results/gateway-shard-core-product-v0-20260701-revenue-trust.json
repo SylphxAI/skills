@@ -1,0 +1,552 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-shard-core-product-v0-20260701-revenue-trust",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "release-freeze-control-001",
+      "subscription-price-increase-retention-001",
+      "payment-platform-webhook-ledger-001",
+      "subscription-entitlement-cross-platform-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "0d1ce50626d427cd322c77f2d6ba8fc3dff570fb",
+      "branch": "codex/benchmark-revenue-trust-shard",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T11:52:26.052Z",
+    "completedAt": "2026-07-01T11:59:38.225Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "release-freeze-control-001",
+      "skill": "release-freeze-change-control-review",
+      "promptSha256": "43802360e0e914fd0682de584bf967e5d3782947d77649dc77a168a2d21a4322",
+      "skillContextSha256": "fd2a6b01f9d0b57e91357bdebf8fdb405b46a7346e4a200d60fedd361ae8543b",
+      "skillBodySha256": "0f09b708ef1be55e23a6a4abafbe9dcb9745afc41f4bb58525146ef35d0c7f81",
+      "skillReferenceSha256": [
+        {
+          "path": "references/release-freeze-change-control-patterns.md",
+          "sha256": "0038505178df01e7e82babe02c8e2ec9aae65d9dfa9c4007c699b55eee7ea68b"
+        }
+      ],
+      "skillLoadedPromptSha256": "9073fa76bb98b637373bd35a91b68c026bacb730ca45320cf4d9d0fb9c0be27f",
+      "baseline": {
+        "score": 4.1,
+        "criterionScores": {
+          "freeze-scope": 4.5,
+          "severity-authority": 4,
+          "evidence": 4.5,
+          "retirement": 3,
+          "learning": 3.5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong operational change-control plan with approvals, rollback, monitoring, comms, and decisions. Weaker on explicit severity ladder coverage, compliance classification, exception expiry/retirement, debt backlog, and repeated-exception learning.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/release-freeze-control-001-baseline.md",
+        "outputSha256": "b43dd57df1f4308e8d7f424b63beebbd1eb380996e88fb39166d2874c62872b5",
+        "latencyMs": 24850,
+        "usage": {
+          "input_tokens": 94,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1318,
+          "output_tokens_details": {
+            "reasoning_tokens": 32
+          },
+          "total_tokens": 1412
+        }
+      },
+      "skillLoaded": {
+        "score": 4.9,
+        "criterionScores": {
+          "freeze-scope": 4.5,
+          "severity-authority": 5,
+          "evidence": 5,
+          "retirement": 5,
+          "learning": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive plan with scope, severity ladder, approval matrix, evidence gates, exception register, retirement, and post-freeze learning. Minor weakness: freeze dates/windows are referenced but not concretely populated.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/release-freeze-control-001-skill-loaded.md",
+        "outputSha256": "a43d5d68d7c4229a0156b1af4a124008de1b6210a6593db83210ab0a5cc1ecfc",
+        "latencyMs": 46338,
+        "usage": {
+          "input_tokens": 1291,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1760,
+          "output_tokens_details": {
+            "reasoning_tokens": 37
+          },
+          "total_tokens": 3051
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/release-freeze-control-001-judge-raw.md",
+      "judgeOutputSha256": "54897424fe1c08bc5e407e24ec2a3f131259d53d1b5f94c136f68cb5996d8c7c",
+      "judgeLatencyMs": 13655,
+      "judgeUsage": {
+        "input_tokens": 3712,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 630,
+        "output_tokens_details": {
+          "reasoning_tokens": 429
+        },
+        "total_tokens": 4342
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-retention-001",
+      "skill": "subscription-price-increase-retention-review",
+      "promptSha256": "99fcad2d4fa5bb84e9b80831f77355d03ff57af346be61a4e1223bb60afbb034",
+      "skillContextSha256": "3a52f5a88cbee91f2c93c6fd11a3aea56986663053ec4868a50bd97b9d4d90c0",
+      "skillBodySha256": "9685115e1fe1574d678428e7bd47341a069696f88a40f931c935cf3f6f597b73",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-price-increase-retention-patterns.md",
+          "sha256": "d446add3af54afcce120ad7eff4636a9b7d47183bd3aa6515bcef3e64994716f"
+        }
+      ],
+      "skillLoadedPromptSha256": "42621d09fdf7be3e6cd51adec72a569d9e5516ec66f3a7ce1025e4eea67ffa75",
+      "baseline": {
+        "score": 4.55,
+        "criterionScores": {
+          "cohorts": 4.3,
+          "platform-rules": 4.6,
+          "retention-policy": 4.8,
+          "support-trust": 4.8,
+          "net-revenue": 4.5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong structured plan covering consent, grandfathering, save offers, cancellation, refunds, monitoring, and net uplift. Slightly weaker cohort segmentation lacks explicit renewal-date and churn-risk segmentation, and cohort readback is less operationalized.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-price-increase-retention-001-baseline.md",
+        "outputSha256": "1f55ec65f4020a02886977efd631ca4c1b874eeb29d5f433e1548a6302aa8346",
+        "latencyMs": 38109,
+        "usage": {
+          "input_tokens": 102,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1825,
+          "output_tokens_details": {
+            "reasoning_tokens": 59
+          },
+          "total_tokens": 1927
+        }
+      },
+      "skillLoaded": {
+        "score": 4.8,
+        "criterionScores": {
+          "cohorts": 4.8,
+          "platform-rules": 4.7,
+          "retention-policy": 5,
+          "support-trust": 5,
+          "net-revenue": 4.8
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive plan with cohort fields, channel-specific handling, transparent cancellation, refunds, support scripts, event schema, launch gates, and net revenue guardrails. Minor limitation: platform rules are referenced rather than deeply specified.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-price-increase-retention-001-skill-loaded.md",
+        "outputSha256": "46f540bdcc131327a34c15313a1699400d9bab1edaac67014a7660ee0eee8510",
+        "latencyMs": 30682,
+        "usage": {
+          "input_tokens": 1373,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1639,
+          "output_tokens_details": {
+            "reasoning_tokens": 52
+          },
+          "total_tokens": 3012
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-price-increase-retention-001-judge-raw.md",
+      "judgeOutputSha256": "55dbec4f585c669990b9653f1be78e5b5f0d16afa07de9f774099d7a3e22a157",
+      "judgeLatencyMs": 10752,
+      "judgeUsage": {
+        "input_tokens": 4102,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 530,
+        "output_tokens_details": {
+          "reasoning_tokens": 309
+        },
+        "total_tokens": 4632
+      }
+    },
+    {
+      "taskId": "payment-platform-webhook-ledger-001",
+      "skill": "payment-platform-readiness",
+      "promptSha256": "d02f611df4f61b0b6398c8d47f5c516cf43e1902614bed64300ff7a1a9a402cf",
+      "skillContextSha256": "7edc551f3bc5d619afb4816d892a1b0277637a414ad20b8473b405feeae7a2a3",
+      "skillBodySha256": "032b60d1bb3ee18d120214570322f3520e68b266edaf23953cee22c4e0a1d0c8",
+      "skillReferenceSha256": [
+        {
+          "path": "references/payment-platform-patterns.md",
+          "sha256": "63fe574aa4cca6d312a43414d078aa4198a16f0e6c5673e3710576bc06446b00"
+        }
+      ],
+      "skillLoadedPromptSha256": "334f8dd6823443014086ad25750ad5500c47a8307c8af90baf620735aa36a142",
+      "baseline": {
+        "score": 4.2,
+        "criterionScores": {
+          "payment-truth": 4.3,
+          "ledger-reconciliation": 4.5,
+          "entitlement-contract": 4,
+          "launch-gates": 4,
+          "customer-trust": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive launch-gate checklist with strong webhook, tax, refund/dispute, and reconciliation coverage. It is somewhat checklist-heavy and lacks a clear payment state model/entitlement contract and explicit rollback evidence.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/payment-platform-webhook-ledger-001-baseline.md",
+        "outputSha256": "072c55feeaf7658fdd12a95173fec6208743102d8c0bd49addb369ddb0566e6b",
+        "latencyMs": 129970,
+        "usage": {
+          "input_tokens": 104,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 2035,
+          "output_tokens_details": {
+            "reasoning_tokens": 53
+          },
+          "total_tokens": 2139
+        }
+      },
+      "skillLoaded": {
+        "score": 4.3,
+        "criterionScores": {
+          "payment-truth": 4.5,
+          "ledger-reconciliation": 4.3,
+          "entitlement-contract": 4.5,
+          "launch-gates": 3.8,
+          "customer-trust": 4.2
+        },
+        "criticalFailures": [],
+        "rationale": "Stronger on payment truth, event coverage, entitlement states, and explicit blockers. Reconciliation is solid. Launch gates miss some approval/rollback details, but overall maps closely to the required artifacts and failure modes.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/payment-platform-webhook-ledger-001-skill-loaded.md",
+        "outputSha256": "bb027ad7e40ffb9bbeecd7a3698c785faf7062ffe6b7ab956ca1dc0ae3df00e8",
+        "latencyMs": 24863,
+        "usage": {
+          "input_tokens": 946,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1324,
+          "output_tokens_details": {
+            "reasoning_tokens": 66
+          },
+          "total_tokens": 2270
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/payment-platform-webhook-ledger-001-judge-raw.md",
+      "judgeOutputSha256": "1e3f93109c32835ff86cdf21da6a5206bd8abc09f1a0aac0d715ed0fcf9908fd",
+      "judgeLatencyMs": 11789,
+      "judgeUsage": {
+        "input_tokens": 3995,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 577,
+        "output_tokens_details": {
+          "reasoning_tokens": 363
+        },
+        "total_tokens": 4572
+      }
+    },
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "skill": "subscription-entitlement-review",
+      "promptSha256": "e8c4f377eea213bf5c8afa15c3bf6c781a34b7c07020ffa8496c924c559d3b61",
+      "skillContextSha256": "0b03738b00d1bcb371beb3b2766d9fcfa88e2fcf952ab80c11a2f972e5afd116",
+      "skillBodySha256": "3e47b2eeb9c8a5c4c13d6e94505f58138c8a659d92b329f3d368a63fdb0e3555",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-entitlement-patterns.md",
+          "sha256": "59f9642b8761ffd115ca8722a2034b48227648dd6e2d0f626c31c2077e1ead7e"
+        }
+      ],
+      "skillLoadedPromptSha256": "a2d66712a238501fdaa7072c7b770d1026c7ebef992d5bb0c571b32306c653bc",
+      "baseline": {
+        "score": 4.55,
+        "criterionScores": {
+          "source-of-truth": 4.8,
+          "channel-precedence": 4.5,
+          "state-transitions": 4.5,
+          "customer-support": 4.3,
+          "auditability": 4.5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive server-side ledger, validation, idempotency, provider-specific handling, restore/offline behavior, team conflicts, and audit/reconciliation. Slight gaps: no literal precedence table, trial/restored not fully modeled as canonical states.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-entitlement-cross-platform-001-baseline.md",
+        "outputSha256": "c0d094a6242efe79654ad71c140db198a4b77cde03f3fdf699f76bfb5905c778",
+        "latencyMs": 36808,
+        "usage": {
+          "input_tokens": 107,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1857,
+          "output_tokens_details": {
+            "reasoning_tokens": 34
+          },
+          "total_tokens": 1964
+        }
+      },
+      "skillLoaded": {
+        "score": 4.24,
+        "criterionScores": {
+          "source-of-truth": 4.4,
+          "channel-precedence": 4,
+          "state-transitions": 4.4,
+          "customer-support": 4.5,
+          "auditability": 3.8
+        },
+        "criticalFailures": [],
+        "rationale": "Strong coverage of ledger-derived entitlements, restore, support diagnostics, family/team cases, and state handling. Less explicit channel precedence, thinner audit event specification, and less detailed event ordering/anti-duplication than A.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-entitlement-cross-platform-001-skill-loaded.md",
+        "outputSha256": "a3af2ebbac0ccacc0c448e94f3b5f7378e29e19bd06a53ca1475d31f97ebc18e",
+        "latencyMs": 29039,
+        "usage": {
+          "input_tokens": 1063,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1551,
+          "output_tokens_details": {
+            "reasoning_tokens": 16
+          },
+          "total_tokens": 2614
+        }
+      },
+      "preference": "baseline",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust-outputs/subscription-entitlement-cross-platform-001-judge-raw.md",
+      "judgeOutputSha256": "182231a1290238979a231db7543491df30fd23eee4eb347bb2b8ea8b482f219c",
+      "judgeLatencyMs": 11006,
+      "judgeUsage": {
+        "input_tokens": 4110,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 529,
+        "output_tokens_details": {
+          "reasoning_tokens": 305
+        },
+        "total_tokens": 4639
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "release-freeze-control-001",
+      "promptType": "positive",
+      "expectedSkill": "release-freeze-change-control-review",
+      "triggeredSkills": [
+        "release-freeze-change-control-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to run release freeze change control for a holiday freeze and includes security hotfixes, customer-specific blackout, app-store deadline, infrastructure change request, rollback plan, monitoring, support communications, approval authority, and post-freeze exception review, all of which are core elements of the skill description.",
+      "latencyMs": 2516,
+      "usage": {
+        "input_tokens": 218,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 81,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 299
+      }
+    },
+    {
+      "taskId": "release-freeze-control-001",
+      "promptType": "negative-control",
+      "expectedSkill": "release-freeze-change-control-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks to design marketplace payouts for creators, which concerns payment flows, creator compensation, marketplace economics, and possibly compliance/tax/fraud. It does not involve release freezes, blackout windows, change control, hotfix approvals, or controlling changes during frozen release windows.",
+      "latencyMs": 3021,
+      "usage": {
+        "input_tokens": 177,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 73,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 250
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-retention-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [
+        "subscription-price-increase-retention-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to plan subscription price-increase retention for SaaS and mobile subscribers, explicitly covering cohort segmentation, grandfathering, save offers, annual migration, cancellation recovery, consent notices, support scripts, refunds, churn monitoring, and net revenue guardrails, which matches the skill description exactly.",
+      "latencyMs": 2949,
+      "usage": {
+        "input_tokens": 231,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 78,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 309
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-retention-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks to review developer API quota abuse controls, which concerns API rate limiting, abuse prevention, and developer platform governance, not subscription price-increase retention, pricing changes, churn mitigation, or related compliance.",
+      "latencyMs": 2449,
+      "usage": {
+        "input_tokens": 183,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 61,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 244
+      }
+    },
+    {
+      "taskId": "payment-platform-webhook-ledger-001",
+      "promptType": "positive",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [
+        "payment-platform-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt explicitly asks to review payment platform readiness for a SaaS product using Stripe, Apple Pay, Google Pay, invoices, tax, coupons, webhooks, delayed settlement, failed payments, disputes, refunds, entitlement updates, and finance reconciliation, and to design launch gates before accepting real customer money. This directly matches the skill’s scope of auditing/designing payment flows, subscriptions, refunds, tax, entitlement grants, and support/finance readiness.",
+      "latencyMs": 5201,
+      "usage": {
+        "input_tokens": 223,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 108,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 331
+      }
+    },
+    {
+      "taskId": "payment-platform-webhook-ledger-001",
+      "promptType": "negative-control",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about reviewing typography and hover polish for a landing page hero section, which is a UI/visual design task and not directly related to payment platform integration, checkout, subscriptions, refunds, receipts, taxes, or entitlements.",
+      "latencyMs": 2299,
+      "usage": {
+        "input_tokens": 178,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 66,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 244
+      }
+    },
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-entitlement-review",
+      "triggeredSkills": [
+        "subscription-entitlement-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt explicitly asks to design subscription entitlement behavior across Stripe, App Store, Google Play, invoices, restore purchases, receipt validation, family sharing, team seats, downgrades, grace periods, refunds, chargebacks, and offline access—all core topics in subscription and entitlement system design/audit.",
+      "latencyMs": 3163,
+      "usage": {
+        "input_tokens": 232,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 78,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 310
+      }
+    },
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-entitlement-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about planning a seasonal social media marketing campaign, not designing or auditing subscription, billing, entitlement, access, or account-state behavior.",
+      "latencyMs": 2697,
+      "usage": {
+        "input_tokens": 183,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 76,
+        "output_tokens_details": {
+          "reasoning_tokens": 26
+        },
+        "total_tokens": 259
+      }
+    }
+  ]
+}
