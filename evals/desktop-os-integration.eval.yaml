@@ -7,3 +7,4 @@ negative_prompts:
 expected_behavior:
   - "Covers install, update, uninstall, startup, permissions, storage, credentials, files, notifications, and backup."
   - "Separates macOS, Windows, and shared behavior."
+  - "Includes explicit cross-OS regression tests for update, rollback, permission reset, file associations, deep links, startup, tray/menu bar, notifications, and enterprise install."

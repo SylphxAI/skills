@@ -21,6 +21,7 @@ A strong answer after loading the skill should:
 
 - Covers install, update, uninstall, startup, permissions, storage, credentials, files, notifications, and backup.
 - Separates macOS, Windows, and shared behavior.
+- Includes explicit cross-OS regression tests for update, rollback, permission reset, file associations, deep links, startup, tray/menu bar, notifications, and enterprise install.
 
 It should also produce the artifact shape requested by `skills/desktop-os-integration/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -34,3 +35,4 @@ The skill should not load for this prompt unless the user adds an explicit deskt
 
 - Covers install, update, uninstall, startup, permissions, storage, credentials, files, notifications, and backup.
 - Separates macOS, Windows, and shared behavior.
+- Includes explicit cross-OS regression tests for update, rollback, permission reset, file associations, deep links, startup, tray/menu bar, notifications, and enterprise install.
