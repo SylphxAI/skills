@@ -103,6 +103,23 @@ payout_reconciled -> release_gate_passed -> payout_released
 payout_reconciled -> reversal_required -> payout_reversed
 ```
 
+Incident states must be operationally owned, not just named:
+
+| State | Owner | Required evidence | Exit gate | Creator/support message |
+| --- | --- | --- | --- | --- |
+| payout_queued | payout scheduler owner | batch_id, seller rows, idempotency keys, ledger snapshot | healthy provider and no active blockers | next scheduled payout date |
+| payout_paused | incident commander | outage alert, status-page or provider ticket, freeze flag | provider status stable or manual review path approved | payout delayed, balance safe, update cadence |
+| payout_provider_pending | payout ops | submitted rows, provider trace/request IDs | callback, timeout, or provider failure classified | payout submitted and being verified |
+| payout_partially_submitted | finance + payout ops | partial file, accepted/rejected row map, provider ack set | per-row reconciliation completed | affected rows are being reconciled |
+| payout_failed | payout ops | failure code, destination state, bank/provider callback | destination fixed or retry blocked with owner | failed transfer reason and remediation path |
+| payout_retry_blocked | engineering owner | duplicate webhook/retry evidence, idempotency collision | owner approves replay/no-op/reversal | duplicate retry suppressed; no action needed |
+| payout_manual_review | finance + risk owner | mismatch packet, ledger snapshot, support case | dual approval and ledger adjustment decision | under specialist review with SLA |
+| payout_reconciled | finance owner | ledger/provider/internal file three-way match | release or reversal decision recorded | final verification complete |
+| payout_released | payout ops | payout_paid ledger event and provider trace | support readback available | paid/released with traceable status |
+| payout_reversed | finance + support owner | reversal source_event_id and negative-balance effect | creator notified and appeal path open | reversal reason, lineage, and appeal/cure path |
+
+Recovery learning should capture provider status-page/ticket timeline, SLA evidence, failed monitor or retry control, queue/backlog metrics, duplicate-payment prevention evidence, and the resilience fix before the next payout window.
+
 ## Event schema
 
 Recommended events:
