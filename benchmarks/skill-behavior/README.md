@@ -36,6 +36,7 @@ Do not market a skill as proven useful until it has a public result file showing
 - negative-control over-trigger rate below 5%.
 
 Before that, call the skill **Preview / unproven** even if it passes repository validation.
+The generated [`docs/skill-evidence-matrix.md`](../../docs/skill-evidence-matrix.md) is the public per-skill status surface.
 
 ## Files
 
@@ -49,6 +50,7 @@ Before that, call the skill **Preview / unproven** even if it passes repository 
 - `scripts/validate-benchmark-output-safety.mjs` — verifies committed outputs have no `<think>` traces and that output hashes match the referenced files.
 - `scripts/validate-benchmark-claims.mjs` — recomputes the current-suite summary and rejects stale or over-broad public benchmark claims.
 - `scripts/summarize-benchmark-results.mjs` — computes score deltas, win rates, trigger rates, answer token/latency overhead, and supported claim tier from result files.
+- `scripts/generate-skill-evidence-matrix.mjs` — regenerates the per-skill evidence matrix and rejects stale individual-skill claim status.
 
 Prepare a run pack:
 
@@ -75,6 +77,7 @@ npm run benchmark:summarize:current -- benchmarks/skill-behavior/results/*.json
 
 Current-suite mode prefers clean git provenance, then newest runner completion time, then deterministic run/file order. It excludes superseded reruns from sample depth.
 The summary prints SOTA-candidate gates separately, so a Useful result cannot be mistaken for SOTA without multiple-suite depth and shared-task multi-model evidence.
+After benchmark changes, regenerate the per-skill matrix with `npm run evidence:matrix` and verify it with `npm run validate:evidence-matrix`.
 
 Merge completed shards:
 

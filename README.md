@@ -267,7 +267,9 @@ critical failures, no negative-control over-trigger, at least two suite-depth gr
 clean shared-task model overlap. See the
 [`current-suite-20260701` summary](./benchmarks/skill-behavior/results/current-suite-20260701-summary.md).
 This is still a bounded benchmark claim, not an unqualified claim that every individual skill is SOTA in
-every downstream product context.
+every downstream product context. The generated
+[`skill evidence matrix`](./docs/skill-evidence-matrix.md) shows which skills have current behavioral
+coverage, which skills only support the suite-level claim, and which skills remain structural-preview only.
 
 ## Quality bar
 
@@ -280,7 +282,7 @@ A Sylphx skill must be:
 5. **Safe** — no secrets, unsafe shell snippets, malicious instructions, dark patterns, or license laundering.
 6. **Original synthesis** — learn from the world, then publish Sylphx-owned structure, examples, and wording; attribution is only needed for direct quotes, third-party code/assets, or license-required excerpts.
 
-See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md), [`docs/skill-authoring-principles.md`](./docs/skill-authoring-principles.md), [`docs/behavior-eval-rubric.md`](./docs/behavior-eval-rubric.md), [`docs/product-skill-roadmap.md`](./docs/product-skill-roadmap.md), [`docs/sota-product-operating-matrix.md`](./docs/sota-product-operating-matrix.md), [`docs/skill-factory-automation.md`](./docs/skill-factory-automation.md), and [`docs/skill-packs.md`](./docs/skill-packs.md).
+See [`docs/skill-quality-bar.md`](./docs/skill-quality-bar.md), [`docs/skill-authoring-principles.md`](./docs/skill-authoring-principles.md), [`docs/behavior-eval-rubric.md`](./docs/behavior-eval-rubric.md), [`docs/product-skill-roadmap.md`](./docs/product-skill-roadmap.md), [`docs/sota-product-operating-matrix.md`](./docs/sota-product-operating-matrix.md), [`docs/skill-evidence-matrix.md`](./docs/skill-evidence-matrix.md), [`docs/skill-factory-automation.md`](./docs/skill-factory-automation.md), and [`docs/skill-packs.md`](./docs/skill-packs.md).
 
 ## Validate locally
 
@@ -293,6 +295,7 @@ node scripts/validate-catalog.mjs
 node scripts/validate-reference-quality.mjs
 node scripts/validate-behavior-examples.mjs
 node scripts/validate-launch-kit.mjs
+npm run validate:evidence-matrix
 node scripts/generate-catalog.mjs --check
 
 # Optional external install verification
