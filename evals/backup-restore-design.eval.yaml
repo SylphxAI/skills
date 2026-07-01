@@ -8,3 +8,5 @@ expected_behavior:
   - "Classifies data types and durability needs."
   - "Defines RPO/RTO, restore states, conflicts, export, and support tooling."
   - "Treats restore drills as required, not optional."
+  - "For E2EE systems, prevents support/admin plaintext access or unilateral key unwrap while preserving client-side recovery."
+  - "Includes procedural restore runbook, manifest/checksum verification, evidence retention, owner/alerting, and cost/capacity guardrails."

@@ -316,9 +316,35 @@ function triggerSchema() {
 
 function judgePrompt({ task, aOutput, bOutput }) {
   const rubric = (task.rubric || []).map((criterion) => `- ${criterion.id} (weight ${criterion.weight}${criterion.required ? ', required' : ''}): ${criterion.description}`).join('\n');
+  const criterionShape = Object.fromEntries((task.rubric || []).map((criterion) => [criterion.id, 0]));
   const artifacts = (task.expectedArtifacts || []).map((item) => `- ${item}`).join('\n');
   const failureModes = (task.failureModes || []).map((item) => `- ${item}`).join('\n');
-  return `You are judging two anonymized answers to the same benchmark task. Return JSON only. Do not infer which answer used a skill. Score each answer from 0 to 5 using the rubric. Keep each rationale to 40 words or fewer. Penalize generic advice, missing required artifacts, unsafe policy claims, and unsupported assumptions.\n\n## Task\n${task.prompt}\n\n## Expected artifacts\n${artifacts}\n\n## Failure modes\n${failureModes}\n\n## Rubric\n${rubric}\n\n## Answer A\n${aOutput}\n\n## Answer B\n${bOutput}`;
+  return `You are judging two anonymized answers to the same benchmark task. Return JSON only. Do not infer which answer used a skill. Score each answer from 0 to 5 using every rubric criterion. Keep each rationale to 40 words or fewer. Penalize generic advice, missing required artifacts, unsafe policy claims, and unsupported assumptions.
+
+Return exactly this JSON shape, preserving the criterionScores keys:
+{
+  "winner": "a|b|tie",
+  "a": {"score": 0, "criterionScores": ${JSON.stringify(criterionShape)}, "criticalFailures": [], "rationale": ""},
+  "b": {"score": 0, "criterionScores": ${JSON.stringify(criterionShape)}, "criticalFailures": [], "rationale": ""}
+}
+
+## Task
+${task.prompt}
+
+## Expected artifacts
+${artifacts}
+
+## Failure modes
+${failureModes}
+
+## Rubric
+${rubric}
+
+## Answer A
+${aOutput}
+
+## Answer B
+${bOutput}`;
 }
 
 function triggerPrompt({ task, skillDescription, prompt }) {
@@ -357,14 +383,19 @@ function weightedScore(task, criterionScores) {
   return total ? weighted / total : 0;
 }
 
-function coerceScoreRecord(task, record) {
+function coerceScoreRecord(task, record, label) {
   const criterionScores = {};
+  let validCriterionScoreCount = 0;
   for (const criterion of task.rubric || []) {
     const underscoredId = criterion.id.replaceAll('-', '_');
     const rawValue = record?.criterionScores?.[criterion.id] ?? record?.criterionScores?.[underscoredId] ?? record?.[criterion.id] ?? record?.[underscoredId];
     const value = rawValue && typeof rawValue === 'object' ? rawValue.score : rawValue;
     const score = Number(value);
+    if (Number.isFinite(score)) validCriterionScoreCount += 1;
     criterionScores[criterion.id] = Number.isFinite(score) ? score : 0;
+  }
+  if ((task.rubric || []).length && validCriterionScoreCount === 0) {
+    throw new Error(`Judge response for ${task.id} ${label} is missing per-criterion scores`);
   }
   const score = Number.isFinite(Number(record?.score)) ? Number(record.score) : weightedScore(task, criterionScores);
   return {
@@ -376,8 +407,8 @@ function coerceScoreRecord(task, record) {
 }
 
 function coerceJudgment(task, judgmentJson) {
-  const a = coerceScoreRecord(task, judgmentJson.a || judgmentJson.A || judgmentJson.answer_a || judgmentJson.answerA || judgmentJson.AnswerA || judgmentJson['Answer A']);
-  const b = coerceScoreRecord(task, judgmentJson.b || judgmentJson.B || judgmentJson.answer_b || judgmentJson.answerB || judgmentJson.AnswerB || judgmentJson['Answer B']);
+  const a = coerceScoreRecord(task, judgmentJson.a || judgmentJson.A || judgmentJson.answer_a || judgmentJson.answer_A || judgmentJson.answerA || judgmentJson.AnswerA || judgmentJson['Answer A'], 'answer A');
+  const b = coerceScoreRecord(task, judgmentJson.b || judgmentJson.B || judgmentJson.answer_b || judgmentJson.answer_B || judgmentJson.answerB || judgmentJson.AnswerB || judgmentJson['Answer B'], 'answer B');
   let winner = typeof judgmentJson.winner === 'string' ? judgmentJson.winner.toLowerCase() : null;
   if (!['a', 'b', 'tie'].includes(winner)) {
     if (a.score > b.score) winner = 'a';

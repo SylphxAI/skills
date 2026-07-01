@@ -21,6 +21,10 @@
 - `backup-6` — Handle device replacement and app reinstall explicitly.
 - `backup-7` — Encrypt backups containing private user data.
 - `backup-8` — Log restore attempts, success, partial restore, and user-visible conflicts.
+- `backup-9` — Restore proof needs a procedural runbook, manifest/checksum verification, sampled drills, retained evidence, owners, alerts, and review cadence.
+- `backup-10` — For E2EE products, support can verify ciphertext existence/integrity and guide client-side recovery; do not give support plaintext, master keys, or unilateral key unwrap authority.
+- `backup-11` — Separate sync, hot backup, immutable cold backup, export, and support-assisted restore; each has different trust and recovery semantics.
+- `backup-12` — Define operational guardrails: backup lag, restore success rate, drill pass rate, storage growth, regional replication health, cost budget, and stale snapshot alerts.
 
 ## Restore state machine
 
@@ -57,3 +61,13 @@ restore_failed
 export_requested
 export_completed
 ```
+
+## Restore proof checklist
+
+- RPO/RTO stated in user terms, for example "recover notes changed in the last 15 minutes within 2 hours".
+- Restore runbook lists trigger, owner, pre-checks, snapshot selection, key availability, dry-run restore, checksum verification, user confirmation, rollback, and post-incident review.
+- Every snapshot has a manifest with schema version, object count, byte count, content hashes, attachment hashes, region, retention class, and encryption key ID or key-version reference.
+- Automated restore drill runs at least nightly in staging and sampled production-equivalent accounts; keep evidence for audit review.
+- Support tooling shows snapshot existence, integrity status, restore eligibility, region, and trace IDs without exposing plaintext.
+- Export includes a manifest, checksums, attachments, schema version, and re-import instructions.
+- Alerts cover backup lag, failed backup, missing cold snapshot, restore drill failure, hash mismatch, regional replication lag, retention purge failure, and storage-cost anomaly.

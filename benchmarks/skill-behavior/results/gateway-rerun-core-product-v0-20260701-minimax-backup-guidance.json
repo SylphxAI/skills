@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-minimax-backup-guidance",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "backup-restore-customer-data-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "d9bc39a50c15ab25c161a64c067a418aafc67b27",
+      "branch": "codex/minimax-overlap-smoke",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T17:08:24.357Z",
+    "completedAt": "2026-07-01T17:09:15.647Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "backup-restore-customer-data-001",
+      "skill": "backup-restore-design",
+      "promptSha256": "882d9ce4c32e306bf6f9892caa8ddfbe56263feeb28da0a9cd18b4b518157a6f",
+      "skillContextSha256": "f58d3d9a6f7161e09d418d69083b723c022b3817121fa7b27346eca6a8d899fe",
+      "skillBodySha256": "47611399c2c1ffcbdaf49c9c17341afd3d2bcf4ec19b08cb9116de86e190026e",
+      "skillReferenceSha256": [
+        {
+          "path": "references/backup-restore-patterns.md",
+          "sha256": "469e587f7d26b1cde5274bb715150608c1c1db873c4c44e608699de7d57e3574"
+        }
+      ],
+      "skillLoadedPromptSha256": "57c11bcc8e6279775a4d7d1addd29843d96113fd5cfc712d8d4395a7ae889f62",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "recovery-objectives": 3,
+          "restore-proof": 4,
+          "corruption-deletion": 4,
+          "security-privacy": 4,
+          "operations": 2
+        },
+        "criticalFailures": [],
+        "rationale": "Strong architecture, E2EE, WORM snapshots, deleted-item recovery, and restore testing. However RPO/RTO are not explicit, restore runbook is thin, evidence retention/monitoring are incomplete, and operations lacks roles, escalation, comms, and cost controls.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-backup-guidance-outputs/backup-restore-customer-data-001-baseline.md",
+        "outputSha256": "687a137100b05bc652e63734e329ab7e52841e92fadcdd130ae03fe8da9ba79d",
+        "latencyMs": 16893,
+        "usage": {
+          "input_tokens": 260,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1453,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1713
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "recovery-objectives": 5,
+          "restore-proof": 5,
+          "corruption-deletion": 5,
+          "security-privacy": 4,
+          "operations": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive scope, RPO/RTO, retention, runbook, checksums, drills, monitoring, deletion/corruption/device-loss handling, support tooling, and failure modes. Minor concerns: regional storage is muddied by multi-region replication, and customer communications/cost controls are limited.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-backup-guidance-outputs/backup-restore-customer-data-001-skill-loaded.md",
+        "outputSha256": "39f4d7d705bcc4d1c0b7096c492026126a7b6d2d4acddc610963a0d95de6093b",
+        "latencyMs": 17615,
+        "usage": {
+          "input_tokens": 1357,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1117,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2474
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-backup-guidance-outputs/backup-restore-customer-data-001-judge-raw.md",
+      "judgeOutputSha256": "5bcde0a0fcd017c2d0e9e3468a9f4f52303f22b5d228f36e4215a23d43014795",
+      "judgeLatencyMs": 12415,
+      "judgeUsage": {
+        "input_tokens": 3123,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 801,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3924
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "backup-restore-customer-data-001",
+      "promptType": "positive",
+      "expectedSkill": "backup-restore-design",
+      "triggeredSkills": [
+        "backup-restore-design"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2538,
+      "usage": {
+        "input_tokens": 180,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 34,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 214
+      }
+    },
+    {
+      "taskId": "backup-restore-customer-data-001",
+      "promptType": "negative-control",
+      "expectedSkill": "backup-restore-design",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1821,
+      "usage": {
+        "input_tokens": 135,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 40,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 175
+      }
+    }
+  ]
+}
