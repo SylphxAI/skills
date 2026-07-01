@@ -22,6 +22,7 @@
 - Claim tier supported by this data: Useful
 - Claim depth scope: suite
 - Useful-claim gates: sampleDepth=pass, winRate=pass, avgDelta=pass, criticalFailures=pass, overTrigger=pass
+- SOTA-candidate gates: useful=pass, multiSuite=fail(1/2), multiModel=fail(1/2), ciLowerAboveZero=pass, overTrigger=pass
 
 | Task | Skill | Baseline | Skill-loaded | Delta | Preference |
 | --- | --- | ---: | ---: | ---: | --- |

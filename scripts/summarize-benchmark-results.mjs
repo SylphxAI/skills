@@ -203,18 +203,30 @@ function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baseline
   const criticalOk = skillCritical <= baselineCritical;
   const triggerOk = overTriggerRate !== null && overTriggerRate < 0.05;
   const useful = sampleDepthOk && winRateOk && deltaOk && criticalOk && triggerOk;
-  const sotaCandidate = useful && suiteNames.size >= 2 && modelNames.size >= 2 && ci && ci.low > 0;
+  const multiSuiteOk = suiteNames.size >= 2;
+  const multiModelOk = modelNames.size >= 2;
+  const confidenceOk = Boolean(ci && ci.low > 0);
+  const sotaCandidate = useful && multiSuiteOk && multiModelOk && confidenceOk && triggerOk;
 
   return {
     tier: sotaCandidate ? 'SOTA candidate' : useful ? 'Useful' : 'Benchmarked',
     sampleDepthScope: hasDuplicates ? 'duplicate-tasks' : hasSuiteDepth ? 'suite' : hasPerSkillDepth ? `single-skill:${singleSkill}` : 'insufficient',
     uniqueTaskCount: uniqueTaskIds.size,
     duplicateTaskIds: duplicateIds,
+    suiteCount: suiteNames.size,
+    modelCount: modelNames.size,
     checks: {
       sampleDepthOk,
       winRateOk,
       deltaOk,
       criticalOk,
+      triggerOk,
+    },
+    sotaChecks: {
+      usefulOk: useful,
+      multiSuiteOk,
+      multiModelOk,
+      confidenceOk,
       triggerOk,
     },
     overTriggerRate,
@@ -333,6 +345,7 @@ async function main() {
   console.log(`- Claim tier supported by this data: ${assessment.tier}`);
   console.log(`- Claim depth scope: ${assessment.sampleDepthScope}`);
   console.log(`- Useful-claim gates: sampleDepth=${assessment.checks.sampleDepthOk ? 'pass' : 'fail'}, winRate=${assessment.checks.winRateOk ? 'pass' : 'fail'}, avgDelta=${assessment.checks.deltaOk ? 'pass' : 'fail'}, criticalFailures=${assessment.checks.criticalOk ? 'pass' : 'fail'}, overTrigger=${assessment.checks.triggerOk ? 'pass' : 'fail'}`);
+  console.log(`- SOTA-candidate gates: useful=${assessment.sotaChecks.usefulOk ? 'pass' : 'fail'}, multiSuite=${assessment.sotaChecks.multiSuiteOk ? 'pass' : `fail(${assessment.suiteCount}/2)`}, multiModel=${assessment.sotaChecks.multiModelOk ? 'pass' : `fail(${assessment.modelCount}/2)`}, ciLowerAboveZero=${assessment.sotaChecks.confidenceOk ? 'pass' : 'fail'}, overTrigger=${assessment.sotaChecks.triggerOk ? 'pass' : 'fail'}`);
   console.log('');
   console.log('| Task | Skill | Baseline | Skill-loaded | Delta | Preference |');
   console.log('| --- | --- | ---: | ---: | ---: | --- |');

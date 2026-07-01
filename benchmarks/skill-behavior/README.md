@@ -71,6 +71,7 @@ npm run benchmark:summarize:current -- benchmarks/skill-behavior/results/*.json
 ```
 
 Current-suite mode prefers clean git provenance, then newest runner completion time, then deterministic run/file order. It excludes superseded reruns from sample depth.
+The summary prints SOTA-candidate gates separately, so a Useful result cannot be mistaken for SOTA without multiple-suite and multiple-model evidence.
 
 Merge completed shards:
 
