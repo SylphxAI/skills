@@ -33,6 +33,10 @@ Each behavior example must include:
 
 The example is not a benchmark score. It is a compact review target for maintainers and contributors.
 
+## Benchmark boundary
+
+The lightweight eval files in `evals/` are trigger and expectation fixtures. They do not prove a skill improves model behavior. Behavioral proof lives in `benchmarks/skill-behavior/` and must compare baseline output against skill-loaded output on the same prompt.
+
 ## Forward-testing protocol
 
 Use forward-testing for tricky or high-impact skills.
