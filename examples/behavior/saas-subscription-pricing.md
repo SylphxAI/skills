@@ -22,6 +22,8 @@ A strong answer after loading the skill should:
 - Identifies buyer, value metric, cost driver, and expansion path.
 - Covers trial/freemium/tiers/usage/enterprise tradeoffs.
 - Defines exact limits, overage mechanics, caps, alert thresholds, margin targets, CAC payback, NRR, and cost controls.
+- Separates per-seat price, minimum seat commitment, bundled seats, added-seat price, and annual discount mechanics without ambiguity.
+- Checks overage rates against marginal cost, discount-adjusted gross margin floor, support load, and abuse risk.
 - Includes support/sales enablement, objection handling, procurement path, and escalation rules.
 - Includes cancellation, downgrade, renewal, metrics, and trust concerns.
 
@@ -38,5 +40,7 @@ The skill should not load for this prompt unless the user adds an explicit saas-
 - Identifies buyer, value metric, cost driver, and expansion path.
 - Covers trial/freemium/tiers/usage/enterprise tradeoffs.
 - Defines exact limits, overage mechanics, caps, alert thresholds, margin targets, CAC payback, NRR, and cost controls.
+- Separates per-seat price, minimum seat commitment, bundled seats, added-seat price, and annual discount mechanics without ambiguity.
+- Checks overage rates against marginal cost, discount-adjusted gross margin floor, support load, and abuse risk.
 - Includes support/sales enablement, objection handling, procurement path, and escalation rules.
 - Includes cancellation, downgrade, renewal, metrics, and trust concerns.
