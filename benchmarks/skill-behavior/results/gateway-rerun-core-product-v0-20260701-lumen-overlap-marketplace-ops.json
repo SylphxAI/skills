@@ -1,0 +1,670 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops",
+  "model": "sylphx/lumen",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 3400,
+    "answerWordLimit": 650,
+    "maxAttempts": 3,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 150000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "app-store-launch-readiness-001",
+      "marketplace-payouts-creator-001",
+      "skill-marketplace-creator-001",
+      "board-metrics-operating-001",
+      "developer-quota-credit-abuse-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "cbead84a0ecd1da1757e1b2dacd3ab005fa30d72",
+      "branch": "codex/lumen-overlap-marketplace-ops-shard",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T14:55:21.029Z",
+    "completedAt": "2026-07-01T15:18:08.569Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "sylphx/lumen",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "skill": "app-store-distribution-readiness",
+      "promptSha256": "b1fb2cb75fa28c60277562411915b0d722c47e498d719136198b2715ddf8db58",
+      "skillContextSha256": "76ff0e2cc7bfd4046dafdd2ee8794da42f8bcb8dc5b2f1e9922723ecb9c92408",
+      "skillBodySha256": "df57240b966894dddfaa2ff905d841c83789c9897b02c282ac6cc1a4d9501d76",
+      "skillReferenceSha256": [
+        {
+          "path": "references/distribution-channel-matrix.md",
+          "sha256": "67c382bb18859d408093b9b77a15da0adccb89df96dc69e3ab99d842d547410a"
+        }
+      ],
+      "skillLoadedPromptSha256": "51b77d64a3d67bdd7fc2aa66a6460c9d707dc02cdf6182ad98126a9d47df3a9c",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "store-specificity": 5,
+          "monetization-compliance": 5,
+          "privacy-permissions": 4,
+          "launch-ops": 3,
+          "evidence": 1
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/app-store-launch-readiness-001-baseline.md",
+        "outputSha256": "cd6ac9804c4b916ad5716fb7075a3d2e55b1ccc0ddd1d7f20791268a24a70f2f",
+        "latencyMs": 108995,
+        "usage": {
+          "input_tokens": 88,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1913,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2001
+        }
+      },
+      "skillLoaded": {
+        "score": 4.125,
+        "criterionScores": {
+          "store-specificity": 4,
+          "monetization-compliance": 4,
+          "privacy-permissions": 4,
+          "launch-ops": 5,
+          "evidence": 4
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/app-store-launch-readiness-001-skill-loaded.md",
+        "outputSha256": "b7b819f3c87e357d039db7ea078f3c64aa87f230dfbf6cd31bd78ea84702c172",
+        "latencyMs": 16894,
+        "usage": {
+          "input_tokens": 810,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 529,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1339
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/app-store-launch-readiness-001-judge-raw.md",
+      "judgeOutputSha256": "15da76cbc376ad5488165802e7f79cd40a9c1e6eba069e8bd7f9dd9cf97e25ea",
+      "judgeLatencyMs": 230587,
+      "judgeUsage": {
+        "input_tokens": 1673,
+        "input_tokens_details": {
+          "cached_tokens": 1664
+        },
+        "output_tokens": 2275,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3948
+      }
+    },
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "skill": "marketplace-payouts-review",
+      "promptSha256": "c3517d04e81341c93a1953f5b1d209f4633310043121dae9a183e4eb8b5c4054",
+      "skillContextSha256": "ef8bbf6f9d487082092fd428a14fb762506066053de060c88f132902ac960dc2",
+      "skillBodySha256": "d77946908aa1500dffd5941184bad3b55569b2627fec11311edce3f92ed28b41",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-payout-systems.md",
+          "sha256": "262d19e264b117fa7c1354f12b07015f1f35f8fda383452b09161183299712c6"
+        }
+      ],
+      "skillLoadedPromptSha256": "770bfd91646a8828e47e56b8f2111295a48a1d1191b7510073cf881d78836c25",
+      "baseline": {
+        "score": 4.857142857142857,
+        "criterionScores": {
+          "ledger-truth": 5,
+          "risk-controls": 5,
+          "seller-experience": 5,
+          "schedule-policy": 5,
+          "marketplace-health": 4
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/marketplace-payouts-creator-001-baseline.md",
+        "outputSha256": "d8044e3530e9ff1223168dd3d5a173bee46b49373943b2f1105c5faaeff34f6d",
+        "latencyMs": 179457,
+        "usage": {
+          "input_tokens": 89,
+          "input_tokens_details": {
+            "cached_tokens": 64
+          },
+          "output_tokens": 1943,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2032
+        }
+      },
+      "skillLoaded": {
+        "score": 4.714285714285714,
+        "criterionScores": {
+          "ledger-truth": 5,
+          "risk-controls": 5,
+          "seller-experience": 4,
+          "schedule-policy": 4,
+          "marketplace-health": 5
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/marketplace-payouts-creator-001-skill-loaded.md",
+        "outputSha256": "09a534144ba10256b829165634919f33634bdf112fdc05852934b75b4b4e63f2",
+        "latencyMs": 52545,
+        "usage": {
+          "input_tokens": 2272,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 2447,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4719
+        }
+      },
+      "preference": "baseline",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/marketplace-payouts-creator-001-judge-raw.md",
+      "judgeOutputSha256": "ccbd7290a7635bd5230e7b75b64918f507fb10f2707139e021ee477b62883012",
+      "judgeLatencyMs": 34947,
+      "judgeUsage": {
+        "input_tokens": 2136,
+        "input_tokens_details": {
+          "cached_tokens": 64
+        },
+        "output_tokens": 1488,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3624
+      }
+    },
+    {
+      "taskId": "skill-marketplace-creator-001",
+      "skill": "skill-marketplace-creator",
+      "promptSha256": "34d62e6a8afcf75ae84f6250eeb2fa59b2bbbcf67e56530b44429cb04e351f8a",
+      "skillContextSha256": "8e91d5933d9b7321c9cc3207b816cfa696004c5137523e072d60ed7c74568188",
+      "skillBodySha256": "b2c8ede5094b2dd916c98c5467243982ab8957fc8931025ee6566fcedb610d77",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-playbook.md",
+          "sha256": "1dbbeca8e6b1c6ebdf3b7f42d48a7a384dcf8bc6fe19d952cba5437a3a34ecaf"
+        }
+      ],
+      "skillLoadedPromptSha256": "311a93ec4976237257928c3420303054264dc5eba1b4c3fdb700317e2a42bf1a",
+      "baseline": {
+        "score": 2.625,
+        "criterionScores": {
+          "marketplace-architecture": 3,
+          "quality-gates": 2,
+          "behavior-proof": 3,
+          "community-value": 2,
+          "governance": 3
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/skill-marketplace-creator-001-baseline.md",
+        "outputSha256": "5881980def9f7463c89b60bb733ca8e95d01837222d5026187e3f6b6b752f951",
+        "latencyMs": 177323,
+        "usage": {
+          "input_tokens": 85,
+          "input_tokens_details": {
+            "cached_tokens": 64
+          },
+          "output_tokens": 2259,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2344
+        }
+      },
+      "skillLoaded": {
+        "score": 4.25,
+        "criterionScores": {
+          "marketplace-architecture": 5,
+          "quality-gates": 4,
+          "behavior-proof": 4,
+          "community-value": 4,
+          "governance": 4
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/skill-marketplace-creator-001-skill-loaded.md",
+        "outputSha256": "60d20cac3cf004aaa26869db08e667e737e4169a0af75171927e9332800009bf",
+        "latencyMs": 45963,
+        "usage": {
+          "input_tokens": 1302,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 2000,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3302
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/skill-marketplace-creator-001-judge-raw.md",
+      "judgeOutputSha256": "d5b18b488c8b7ea9322e2681201f4be096bd385caac180869c2261ab319ebd86",
+      "judgeLatencyMs": 53770,
+      "judgeUsage": {
+        "input_tokens": 1707,
+        "input_tokens_details": {
+          "cached_tokens": 64
+        },
+        "output_tokens": 2466,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4173
+      }
+    },
+    {
+      "taskId": "board-metrics-operating-001",
+      "skill": "board-metrics-operating-review",
+      "promptSha256": "06272ec9dc07a3b79130ac0be0dd152954d487dd50534622f11303aa694d2df4",
+      "skillContextSha256": "c87aa31ee090da6b966f057807e0ff26a0f8d1353d298c58b6411094cf908e0d",
+      "skillBodySha256": "b253b834719cf20b8326806c3c664b3c5523fc1bbc189ec9a3404eefe2f817ac",
+      "skillReferenceSha256": [
+        {
+          "path": "references/board-metrics-operating-patterns.md",
+          "sha256": "406dea3eb6b0df289b45a4e82249e579ceb98ffadb0554cfff83577764509905"
+        }
+      ],
+      "skillLoadedPromptSha256": "82a26d2c7dc9e4ed52f8270846221183f183263d799642847400a8d402600c2c",
+      "baseline": {
+        "score": 1.25,
+        "criterionScores": {
+          "metric-definitions": 0,
+          "reconciliation": 0,
+          "variance": 3,
+          "decisions": 4,
+          "data-quality": 0
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/board-metrics-operating-001-baseline.md",
+        "outputSha256": "ec78107350799e22793d0eed8a4115e55a0ffe53ba37b5f6bf905a75e2dc79e3",
+        "latencyMs": 50791,
+        "usage": {
+          "input_tokens": 106,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 2010,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2116
+        }
+      },
+      "skillLoaded": {
+        "score": 4.5,
+        "criterionScores": {
+          "metric-definitions": 5,
+          "reconciliation": 5,
+          "variance": 4,
+          "decisions": 4,
+          "data-quality": 4
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/board-metrics-operating-001-skill-loaded.md",
+        "outputSha256": "d92a7c8670a328688b0197d307bfc4aa32649029fda1f044919b9064e5255dc5",
+        "latencyMs": 54021,
+        "usage": {
+          "input_tokens": 1321,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1942,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3263
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/board-metrics-operating-001-judge-raw.md",
+      "judgeOutputSha256": "03a478b9f6481bf17f1a58968d9eb27bb64c6c8dd999326ce5877eb2951de13e",
+      "judgeLatencyMs": 115033,
+      "judgeUsage": {
+        "input_tokens": 1774,
+        "input_tokens_details": {
+          "cached_tokens": 64
+        },
+        "output_tokens": 2621,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4395
+      }
+    },
+    {
+      "taskId": "developer-quota-credit-abuse-001",
+      "skill": "developer-quota-credit-abuse-review",
+      "promptSha256": "0781b3547ebb78bc347728bcc73523e8a3aa4e02d61fb5f33f4277a1021ae60d",
+      "skillContextSha256": "df73a1681e6d3ef1386c13ecceae7708ce7bfad33f9577292c804fbee47dd0b3",
+      "skillBodySha256": "5baad71dd4abeb2b224ba6dfbfeac33a15062c0aa29814574ba0387a3c22f85d",
+      "skillReferenceSha256": [
+        {
+          "path": "references/developer-quota-credit-abuse-patterns.md",
+          "sha256": "03e9b111094bb7122735aa427a3d00485b033db14c225fc3878602309444d5a2"
+        }
+      ],
+      "skillLoadedPromptSha256": "008db51cd74f4fc0cee543a2d1c67e86063c0c5409cc34c7dbbba7e17d7df507",
+      "baseline": {
+        "score": 4.625,
+        "criterionScores": {
+          "quota-ledger": 5,
+          "trust-tiers": 5,
+          "abuse-detection": 5,
+          "appeals": 5,
+          "metrics": 2
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/developer-quota-credit-abuse-001-baseline.md",
+        "outputSha256": "1c7e18058d7160b9cd78321b7dcf29273e654c934b73790f7e150c9235152a50",
+        "latencyMs": 48598,
+        "usage": {
+          "input_tokens": 95,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1821,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1916
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "quota-ledger": 5,
+          "trust-tiers": 5,
+          "abuse-detection": 5,
+          "appeals": 5,
+          "metrics": 5
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/developer-quota-credit-abuse-001-skill-loaded.md",
+        "outputSha256": "4c2cc20797a4e0a3b1e9503861965780ca6102d083941163a40ef9fdd916f4de",
+        "latencyMs": 48450,
+        "usage": {
+          "input_tokens": 1365,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 2081,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3446
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops-outputs/developer-quota-credit-abuse-001-judge-raw.md",
+      "judgeOutputSha256": "6bcf9fe966532be14a51b0ff44ac4a77e942796ac48e4fdac886a65bcb824d8f",
+      "judgeLatencyMs": 43638,
+      "judgeUsage": {
+        "input_tokens": 1772,
+        "input_tokens_details": {
+          "cached_tokens": 64
+        },
+        "output_tokens": 1970,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3742
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "promptType": "positive",
+      "expectedSkill": "app-store-distribution-readiness",
+      "triggeredSkills": [
+        "app-store-distribution-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 7221,
+      "usage": {
+        "input_tokens": 168,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 199,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 367
+      }
+    },
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "promptType": "negative-control",
+      "expectedSkill": "app-store-distribution-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 11184,
+      "usage": {
+        "input_tokens": 132,
+        "input_tokens_details": {
+          "cached_tokens": 64
+        },
+        "output_tokens": 284,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 416
+      }
+    },
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "promptType": "positive",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [
+        "marketplace-payouts-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 13289,
+      "usage": {
+        "input_tokens": 193,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 305,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 498
+      }
+    },
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "promptType": "negative-control",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 8470,
+      "usage": {
+        "input_tokens": 155,
+        "input_tokens_details": {
+          "cached_tokens": 128
+        },
+        "output_tokens": 310,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 465
+      }
+    },
+    {
+      "taskId": "skill-marketplace-creator-001",
+      "promptType": "positive",
+      "expectedSkill": "skill-marketplace-creator",
+      "triggeredSkills": [
+        "skill-marketplace-creator"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 6829,
+      "usage": {
+        "input_tokens": 166,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 355,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 521
+      }
+    },
+    {
+      "taskId": "skill-marketplace-creator-001",
+      "promptType": "negative-control",
+      "expectedSkill": "skill-marketplace-creator",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 8580,
+      "usage": {
+        "input_tokens": 132,
+        "input_tokens_details": {
+          "cached_tokens": 64
+        },
+        "output_tokens": 312,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 444
+      }
+    },
+    {
+      "taskId": "board-metrics-operating-001",
+      "promptType": "positive",
+      "expectedSkill": "board-metrics-operating-review",
+      "triggeredSkills": [
+        "board-metrics-operating-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 8044,
+      "usage": {
+        "input_tokens": 205,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 361,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 566
+      }
+    },
+    {
+      "taskId": "board-metrics-operating-001",
+      "promptType": "negative-control",
+      "expectedSkill": "board-metrics-operating-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 8315,
+      "usage": {
+        "input_tokens": 154,
+        "input_tokens_details": {
+          "cached_tokens": 64
+        },
+        "output_tokens": 265,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 419
+      }
+    },
+    {
+      "taskId": "developer-quota-credit-abuse-001",
+      "promptType": "positive",
+      "expectedSkill": "developer-quota-credit-abuse-review",
+      "triggeredSkills": [
+        "developer-quota-credit-abuse-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 23558,
+      "usage": {
+        "input_tokens": 193,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 352,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 545
+      }
+    },
+    {
+      "taskId": "developer-quota-credit-abuse-001",
+      "promptType": "negative-control",
+      "expectedSkill": "developer-quota-credit-abuse-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 11013,
+      "usage": {
+        "input_tokens": 150,
+        "input_tokens_details": {
+          "cached_tokens": 64
+        },
+        "output_tokens": 309,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 459
+      }
+    }
+  ]
+}
