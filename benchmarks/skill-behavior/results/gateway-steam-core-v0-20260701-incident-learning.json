@@ -63,7 +63,7 @@
         ],
         "rationale": "Covers many requested launch areas and artifacts, but omits tags/trailer depth, crash reporting, robust multiplayer gates, and post-launch learning. Includes questionable Steam discount and review-control claims, plus risky regional pricing assumptions.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-steam-core-v0-20260701-incident-learning-outputs/steam-launch-commercial-readiness-001-baseline.md",
-        "outputSha256": "e0e72a2d66f87f5cac21199280e052090cc383295f966e02e5b76684d024a242",
+        "outputSha256": "5f439cc9c3cb0d739d0b8390d4100ed9a385bc1f5b8092feedde951f78cf55ec",
         "latencyMs": 83153,
         "usage": {
           "input_tokens": 262,
@@ -89,7 +89,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive readiness plan with store checklist, technical gates, pricing/discount policy, moderation and review-bombing response, creator embargo, refund handling, and learning metrics. Multiplayer, anti-cheat, rollback, cloud saves, and live-ops cadence are well covered.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-steam-core-v0-20260701-incident-learning-outputs/steam-launch-commercial-readiness-001-skill-loaded.md",
-        "outputSha256": "c330bed821c79388bfcc45ee90cde7e248610ce03797a2bd1ba716df502c5a7a",
+        "outputSha256": "d7c9283b74c3bf7994d37c06c99f4f0d102a9dbcbf865dbffba636616397a9ab",
         "latencyMs": 15684,
         "usage": {
           "input_tokens": 3415,
@@ -109,7 +109,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-steam-core-v0-20260701-incident-learning-outputs/steam-launch-commercial-readiness-001-judge-raw.md",
-      "judgeOutputSha256": "0021e8f868849f9ed355fb71fab0bc5a0e82fba3d81c7077e5e3bd906e9908f4",
+      "judgeOutputSha256": "f0838759e8440f9ca6dab89dfaa249e3546f21336c7f6045dc27a731d1174425",
       "judgeLatencyMs": 17363,
       "judgeUsage": {
         "input_tokens": 3196,

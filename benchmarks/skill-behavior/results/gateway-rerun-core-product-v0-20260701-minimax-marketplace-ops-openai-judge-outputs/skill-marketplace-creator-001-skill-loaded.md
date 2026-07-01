@@ -1,7 +1,3 @@
-<think>
-The user wants a public skill marketplace repository design for AI agents that avoids prompt spam. They want specific artifacts: skill quality bar, contribution review, install surface, catalog metadata, evals, examples, benchmark proof, and roadmap governance. Answer budget is 650 words max. Let me be concise and audit-friendly.
-</think>
-
 ```text
 Recommended shape: repository-only (stage 1) → static catalog (stage 2) → API registry (stage 3). Skip full marketplace until supply, moderation, and demand justify it.
 

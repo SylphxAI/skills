@@ -1,17 +1,3 @@
-<think>
-The user wants a refund handling design for a mobile subscription app with three payment providers: App Store, Google Play, and Stripe (web). They want:
-1. Entitlement revocation
-2. Grace period
-3. Chargebacks
-4. Refund abuse detection
-5. One-time goodwill refunds
-6. Support macros
-7. Analytics
-8. Enforcement actions: warn, downgrade, or ban repeat abusers
-
-I need to keep this concise and audit-friendly, under 650 words. I should prioritize artifacts and rubric-critical decisions. Let me structure this as a tight policy doc / runbook.
-</think>
-
 # Refund Handling Policy — Mobile Subscription App
 
 ## 1. Provider Routing (single source of truth)

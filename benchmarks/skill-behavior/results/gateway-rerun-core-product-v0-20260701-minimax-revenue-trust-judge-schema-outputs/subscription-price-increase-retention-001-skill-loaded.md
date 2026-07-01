@@ -1,14 +1,3 @@
-<think>
-The user wants me to plan subscription price-increase retention for SaaS and mobile subscribers across direct, App Store, and Google Play billing. I need to follow the skill's output format and keep it under 650 words.
-
-Let me structure this properly with:
-1. Subscription price-increase context
-2. Retention and trust plan (table)
-3. Cohorts, value narrative, notices, save offers, cancellation recovery, support, refunds, metrics, and guardrails
-
-Ineed to keep it concise and audit-friendly, prioritizing artifacts and rubric-critical decisions.
-</think>
-
 ```text
 Subscription price-increase context:
 Audience: SaaS (B2B + B2C) and mobile-app subscribers on three billing channels — direct (web), Apple App Store, Google Play. Includes free→paid, monthly, annual, and grandfathered legacy plans. Two renewal cycles overlap (annual renewals next 60–120 days; monthly renewals continuous).

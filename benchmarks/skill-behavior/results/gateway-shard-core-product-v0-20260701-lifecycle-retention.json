@@ -62,7 +62,7 @@
         "criticalFailures": [],
         "rationale": "Complete strategy with clear taxonomy, lifecycle matrix, caps, quiet hours, opt-in and preference center. Strong separation of transactional and marketing. Minor gaps: regional consent and cross-channel deduplication are mentioned but not deeply specified.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/notification-lifecycle-growth-001-baseline.md",
-        "outputSha256": "6d6e186b97457cf7645b62bb53483bcda32c4b3bcd00084adc43456cb28bd339",
+        "outputSha256": "578232df7d16850bd19305274cc70e5da745c51668f11c72f715bbef2ba5f792",
         "latencyMs": 32791,
         "usage": {
           "input_tokens": 101,
@@ -88,7 +88,7 @@
         "criticalFailures": [],
         "rationale": "Excellent taxonomy with user value, controls, harm guardrails, events, and measurement. Covers all journeys and channels. Minor gaps: no explicit lifecycle map artifact, limited regional consent detail, and priority rules are less formal than caps.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/notification-lifecycle-growth-001-skill-loaded.md",
-        "outputSha256": "0de09fed3d84da3938b44e8fab620c77bb72997e274a0bca9148e1b8dc406d6c",
+        "outputSha256": "d782e38307fc1132e1e4336023837088ffd684c45a921e70a8701124266086b9",
         "latencyMs": 23630,
         "usage": {
           "input_tokens": 885,
@@ -108,7 +108,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/notification-lifecycle-growth-001-judge-raw.md",
-      "judgeOutputSha256": "d8cd247110a5a3631bda7fd01ad6ff6f765799bd4e5b11bc74221edb4ccfd9f6",
+      "judgeOutputSha256": "35b13ee44e27eac0041948c8b12ba9c33f3fabc215b735b5b9f4e9313e7c551f",
       "judgeLatencyMs": 19254,
       "judgeUsage": {
         "input_tokens": 3599,
@@ -147,7 +147,7 @@
         "criticalFailures": [],
         "rationale": "Strong ethical guidance and solid rules for resets, freezes, timezone, offline, and notifications. Missing an explicit streak state machine, gives limited economy sink/progression analysis, and abuse/measurement coverage is less complete.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/daily-reward-streak-economy-001-baseline.md",
-        "outputSha256": "6d62c10bc65aa5878071011ea962eed80491f1cd57c087d486274d177423d3af",
+        "outputSha256": "6557727c22e1fb8bcb829ae7afe4dc7977aabcbb2f6c73d4f4bc63842bbd51f6",
         "latencyMs": 31429,
         "usage": {
           "input_tokens": 106,
@@ -173,7 +173,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive, concrete policy with state machine, timezone/offline handling, VIP limits, economy guardrails, abuse controls, and measurement. Slightly light on explicit multi-accounting, but duplicate-device/account controls mostly cover it.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/daily-reward-streak-economy-001-skill-loaded.md",
-        "outputSha256": "ddc940491ada7b223eab0bb4cc2a60d29d2a9e1aaea4fcf941092bc19a70654d",
+        "outputSha256": "592bb87aafeee597cbc395deaffc2b85c35c42f36d361a6a28783c0c31dd305a",
         "latencyMs": 31443,
         "usage": {
           "input_tokens": 1200,
@@ -193,7 +193,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/daily-reward-streak-economy-001-judge-raw.md",
-      "judgeOutputSha256": "c57ea601ccce8d19d111454201aa0904c04b3873ad5b5aa507195a023b101a36",
+      "judgeOutputSha256": "76b7832f0894f13e3eb96f8fbd83547cffc8ce7168c4e93051c582c4e5570870",
       "judgeLatencyMs": 10292,
       "judgeUsage": {
         "input_tokens": 3705,
@@ -232,7 +232,7 @@
         "criticalFailures": [],
         "rationale": "Strong coverage of backup layers, E2EE, deletion/corruption recovery, regional storage, exports, and restore testing. Weaker on precise RTO promises, owner roles, cost controls, customer communications, and escalation runbook details.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/backup-restore-customer-data-001-baseline.md",
-        "outputSha256": "330135dc97ce061cbde6ef23d337b80133e381c87974e363862ad8d67562c56e",
+        "outputSha256": "26296c3e8ae82a68599f72734ac535fd3e721c691873d1167cdc9577548b2771",
         "latencyMs": 83592,
         "usage": {
           "input_tokens": 100,
@@ -258,7 +258,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive design with explicit scope, RPO/RTO, retention, immutable backups, runbooks, corruption handling, E2EE/key limits, regional controls, support workflows, audit events, drills, metrics, and failure escalation.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/backup-restore-customer-data-001-skill-loaded.md",
-        "outputSha256": "343747e48503954ffafb1f5357a485844072c1a228ebaed7fe2b297173317a4c",
+        "outputSha256": "8a779db547cd09d1b261a1d31eb7982b80af4168b2dbb0ae5bfb65a8591f44d8",
         "latencyMs": 36124,
         "usage": {
           "input_tokens": 755,
@@ -278,7 +278,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention-outputs/backup-restore-customer-data-001-judge-raw.md",
-      "judgeOutputSha256": "2533b47b1b3aa7af349c6f5b81d4df0553c60e64f437097309abbca25c4a439f",
+      "judgeOutputSha256": "19d86b4116b914b408930e02a6d664e1ae825acf6ec4380488c7b59641c6af7e",
       "judgeLatencyMs": 9001,
       "judgeUsage": {
         "input_tokens": 4057,

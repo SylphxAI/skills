@@ -1,18 +1,3 @@
-<think>
-The user wants me to design a promotion campaign for a mobile productivity subscription with specific requirements:
-- Annual-plan discount
-- Win-back segment
-- Creator affiliate codes
-- In-app paywall
-- Email
-- Push notification
-- Fraud risk
-- Campaign calendar
-- Success metrics
-
-I need to follow the skill's output format and keep it under 650 words. Let me structurethis carefully.
-</think>
-
 ```text
 Objective: Lift annual-plan conversion by 12% and recover lapsed users, while preserving margin and trust across paid, owned, and partner channels.
 

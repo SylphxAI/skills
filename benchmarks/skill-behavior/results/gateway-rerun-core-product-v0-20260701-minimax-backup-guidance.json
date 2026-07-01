@@ -60,7 +60,7 @@
         "criticalFailures": [],
         "rationale": "Strong architecture, E2EE, WORM snapshots, deleted-item recovery, and restore testing. However RPO/RTO are not explicit, restore runbook is thin, evidence retention/monitoring are incomplete, and operations lacks roles, escalation, comms, and cost controls.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-backup-guidance-outputs/backup-restore-customer-data-001-baseline.md",
-        "outputSha256": "687a137100b05bc652e63734e329ab7e52841e92fadcdd130ae03fe8da9ba79d",
+        "outputSha256": "c73ef5e32170d92379daee15c2055c02a058254b9b08776fc86503b7e99f815f",
         "latencyMs": 16893,
         "usage": {
           "input_tokens": 260,
@@ -86,7 +86,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive scope, RPO/RTO, retention, runbook, checksums, drills, monitoring, deletion/corruption/device-loss handling, support tooling, and failure modes. Minor concerns: regional storage is muddied by multi-region replication, and customer communications/cost controls are limited.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-backup-guidance-outputs/backup-restore-customer-data-001-skill-loaded.md",
-        "outputSha256": "39f4d7d705bcc4d1c0b7096c492026126a7b6d2d4acddc610963a0d95de6093b",
+        "outputSha256": "d06ffb73299df47e203f910de9e932ab71842af639940d62dbb5e24864255bb9",
         "latencyMs": 17615,
         "usage": {
           "input_tokens": 1357,
@@ -106,7 +106,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-backup-guidance-outputs/backup-restore-customer-data-001-judge-raw.md",
-      "judgeOutputSha256": "5bcde0a0fcd017c2d0e9e3468a9f4f52303f22b5d228f36e4215a23d43014795",
+      "judgeOutputSha256": "4fd6c6a97bb76a8405d5e4ba9f8fb739f6911011c443f3ccb63b54d68c09b3bf",
       "judgeLatencyMs": 12415,
       "judgeUsage": {
         "input_tokens": 3123,

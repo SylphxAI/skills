@@ -142,6 +142,17 @@ function outputText(response) {
   return parts.join('\n').trim();
 }
 
+function stripReasoningTrace(text) {
+  return text
+    .replace(/^\s*<think>[\s\S]*?<\/think>\s*/i, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function canonicalOutputText(text) {
+  return `${stripReasoningTrace(text).trim()}\n`;
+}
+
 function sha256(text) {
   return crypto.createHash('sha256').update(text).digest('hex');
 }
@@ -418,14 +429,14 @@ function coerceJudgment(task, judgmentJson) {
   return { a, b, winner };
 }
 
-function normalizeRecord(record, outputFile, apiCall) {
+function normalizeRecord(record, outputFile, apiCall, storedOutputText) {
   return {
     score: Number(record.score),
     criterionScores: record.criterionScores || {},
     criticalFailures: Array.isArray(record.criticalFailures) ? record.criticalFailures : [],
     rationale: record.rationale || '',
     outputRef: outputRef(outputFile),
-    outputSha256: sha256(apiCall.text),
+    outputSha256: sha256(storedOutputText),
     latencyMs: apiCall.latencyMs,
     usage: apiCall.response.usage || null,
   };
@@ -440,8 +451,9 @@ function preferenceFromWinner(winner, order) {
 async function writeOutput(outDir, taskId, condition, text) {
   await mkdir(outDir, { recursive: true });
   const file = path.join(outDir, `${taskId}-${condition}.md`);
-  await writeFile(file, `${text.trim()}\n`);
-  return file;
+  const storedText = canonicalOutputText(text);
+  await writeFile(file, storedText);
+  return { file, storedText, promptText: storedText.trim() };
 }
 
 
@@ -627,8 +639,8 @@ async function main() {
       requestTimeoutMs: args.requestTimeoutMs,
     });
 
-    const baselineFile = await writeOutput(args.outputDir, task.id, 'baseline', baseline.text);
-    const skillFile = await writeOutput(args.outputDir, task.id, 'skill-loaded', skillLoaded.text);
+    const baselineOutput = await writeOutput(args.outputDir, task.id, 'baseline', baseline.text);
+    const skillOutput = await writeOutput(args.outputDir, task.id, 'skill-loaded', skillLoaded.text);
 
     const flip = Number.parseInt(sha256(`${args.runId}:${task.id}`).slice(0, 2), 16) % 2 === 0;
     const order = flip ? { a: 'skillLoaded', b: 'baseline' } : { a: 'baseline', b: 'skillLoaded' };
@@ -638,8 +650,8 @@ async function main() {
       model: args.judgeModel,
       input: judgePrompt({
         task,
-        aOutput: order.a === 'skillLoaded' ? skillLoaded.text : baseline.text,
-        bOutput: order.b === 'skillLoaded' ? skillLoaded.text : baseline.text,
+        aOutput: order.a === 'skillLoaded' ? skillOutput.promptText : baselineOutput.promptText,
+        bOutput: order.b === 'skillLoaded' ? skillOutput.promptText : baselineOutput.promptText,
       }),
       maxOutputTokens: Math.max(4000, args.maxOutputTokens),
       temperature: 0,
@@ -649,8 +661,8 @@ async function main() {
       retryBaseMs: args.retryBaseMs,
       requestTimeoutMs: args.requestTimeoutMs,
     });
-    const judgeFile = await writeOutput(args.outputDir, task.id, 'judge-raw', judgment.text);
-    const judgmentJson = coerceJudgment(task, parseModelJson(judgment.text, 'judge'));
+    const judgeOutput = await writeOutput(args.outputDir, task.id, 'judge-raw', judgment.text);
+    const judgmentJson = coerceJudgment(task, parseModelJson(judgeOutput.promptText, 'judge'));
     const judgmentA = judgmentJson.a;
     const judgmentB = judgmentJson.b;
     const baselineJudgment = order.a === 'baseline' ? judgmentA : judgmentB;
@@ -664,12 +676,12 @@ async function main() {
       skillBodySha256: sha256(skillMarkdown),
       skillReferenceSha256: references.map((ref) => ({ path: ref.path, sha256: sha256(ref.content) })),
       skillLoadedPromptSha256: sha256(skillInput),
-      baseline: normalizeRecord(baselineJudgment, baselineFile, baseline),
-      skillLoaded: normalizeRecord(skillJudgment, skillFile, skillLoaded),
+      baseline: normalizeRecord(baselineJudgment, baselineOutput.file, baseline, baselineOutput.storedText),
+      skillLoaded: normalizeRecord(skillJudgment, skillOutput.file, skillLoaded, skillOutput.storedText),
       preference: preferenceFromWinner(judgmentJson.winner, order),
       blindOrder: { a: 'hidden', b: 'hidden' },
-      judgeOutputRef: outputRef(judgeFile),
-      judgeOutputSha256: sha256(judgment.text),
+      judgeOutputRef: outputRef(judgeOutput.file),
+      judgeOutputSha256: sha256(judgeOutput.storedText),
       judgeLatencyMs: judgment.latencyMs,
       judgeUsage: judgment.response.usage || null,
     });

@@ -63,7 +63,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive design with double-entry ledger, compensating entries, compliance, holds, fraud, refunds, chargebacks, appeals, support tooling, and reconciliation. Schedule is clear, though currency/fee exceptions and marketplace-health measurement are somewhat lighter.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/marketplace-payouts-creator-001-baseline.md",
-        "outputSha256": "ee7d04af9435090e2ae7d77fc0e1e4abd60b6c92f362902bf163b2f04b9488dc",
+        "outputSha256": "768adf345d4780641f2860f77e6c629f73ed7235ce99d4076b09cb441a5c1f58",
         "latencyMs": 33766,
         "usage": {
           "input_tokens": 90,
@@ -89,7 +89,7 @@
         "criticalFailures": [],
         "rationale": "Excellent lifecycle, ledger events, reversals, holds, KYC/tax, refunds, chargebacks, dashboard, support, and reconciliation. Schedule covers timing/thresholds/currency but less explicit on liquidity and marketplace-health metrics.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/marketplace-payouts-creator-001-skill-loaded.md",
-        "outputSha256": "aa99cb865b295b0b4ce5e48a4f7dd7c7e87f4ecb0967cfc76496d042c2bdf569",
+        "outputSha256": "beab14010cde5cfae9c6d714e3f4be1526e33b6a2b4a7f72d4014dc646fe7dfa",
         "latencyMs": 42218,
         "usage": {
           "input_tokens": 1402,
@@ -109,7 +109,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/marketplace-payouts-creator-001-judge-raw.md",
-      "judgeOutputSha256": "9929c895db863ba553e7c5d20f61ccbae84aa5982dbe5f8f980401cd5b455b89",
+      "judgeOutputSha256": "e16f91e447c7e236581bdf71a4a22faeac3d7583c469687b874aae396dce9bb7",
       "judgeLatencyMs": 7957,
       "judgeUsage": {
         "input_tokens": 4200,
@@ -148,7 +148,7 @@
         "criticalFailures": [],
         "rationale": "Strong quality bar, install contract, metadata, evals, reproducible benchmark requirements, and governance. Slightly weaker on concrete repository architecture and registry/catalog file layout than A, but behavior-proof methodology is excellent.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/skill-marketplace-creator-001-baseline.md",
-        "outputSha256": "d2feea8f5b7a350d4c0faf3c43d4ae48332816c2f21a650df48bcc509f116ce0",
+        "outputSha256": "bc125edd7a142d5c7646af68ef45ae1adafc5e0487540a3a069ec97f053b5dce",
         "latencyMs": 35957,
         "usage": {
           "input_tokens": 87,
@@ -174,7 +174,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive repository tree, registry/catalog/install surfaces, PR workflow, quality gates, anti-spam rules, evals, benchmark artifacts, and roadmap governance. Benchmark proof is strong, though it could more explicitly require baseline output-improvement comparisons.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/skill-marketplace-creator-001-skill-loaded.md",
-        "outputSha256": "686b6e0a3a5083d1b5c155babece6bf7bf7971fb62f262f72c0a2028d0536057",
+        "outputSha256": "0823aec110c910b49e4b97c4580ba9213e87892698cd301707f80baf1257438f",
         "latencyMs": 37782,
         "usage": {
           "input_tokens": 1304,
@@ -194,7 +194,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/skill-marketplace-creator-001-judge-raw.md",
-      "judgeOutputSha256": "052b2da8c10ab8308171242147b2e17284074a3be8f33796bd2bec3331306b3b",
+      "judgeOutputSha256": "c0284a0b7e44ecfd57f30376cb2c396ec5287a94243a3ec77e8fe744cf7dd9e0",
       "judgeLatencyMs": 9647,
       "judgeUsage": {
         "input_tokens": 4348,
@@ -237,7 +237,7 @@
         ],
         "rationale": "Useful board-pack template with owner signoff, asks, and action follow-up, but largely placeholder-driven. It lacks formulas, source mapping, reconciliation rules, and data-quality checks, risking spreadsheet theater.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/board-metrics-operating-001-baseline.md",
-        "outputSha256": "474de13f49498acc8a2565747c0fc11197e22090081a82f0602e61f10b92467e",
+        "outputSha256": "d02c21354159d324d91dc8191fffb51142afba713271fb80bfdeecd9aa550a99",
         "latencyMs": 38137,
         "usage": {
           "input_tokens": 107,
@@ -263,7 +263,7 @@
         "criticalFailures": [],
         "rationale": "Strong operating review design with definitions, owners, sources, cadence, reconciliation boundaries, variance drivers, board decisions, and action register. Minor gaps include some missing explicit formulas for metrics like runway and gross margin.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/board-metrics-operating-001-skill-loaded.md",
-        "outputSha256": "47e806318cd72bebc222d0a0ae0f647b45c0ce5f0778621d4e9eaa8be717660f",
+        "outputSha256": "d737aef4ef17af2250bc4d47439b4c036d892fd3254697a0c330cf66401529c2",
         "latencyMs": 31033,
         "usage": {
           "input_tokens": 1319,
@@ -283,7 +283,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/board-metrics-operating-001-judge-raw.md",
-      "judgeOutputSha256": "5974acffdd47fe89f4d11ab974c712281478acc60a3f4ed669b38997f6220ca0",
+      "judgeOutputSha256": "fff91783ea5c0fe507c99bf4ceb7b4bd808be90c75acbd33f3c7b796f841405f",
       "judgeLatencyMs": 13744,
       "judgeUsage": {
         "input_tokens": 4335,
@@ -322,7 +322,7 @@
         "criticalFailures": [],
         "rationale": "Strong quota/trust/abuse plan with support messages and appeals. Weaker on explicit credit ledger mechanics: source-of-truth, reversals, and attribution are scattered rather than defined. Some automated suspension language risks over-enforcement.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/developer-quota-credit-abuse-001-baseline.md",
-        "outputSha256": "f2d0f43f24be999a92e774c20f1a1c2e76cf1aec68ec8dd9ccc866717aa118da",
+        "outputSha256": "2d754689f8f0abbb1a8480c74b54ba4bccf48cd6779e9d6c9062286287cc3950",
         "latencyMs": 33416,
         "usage": {
           "input_tokens": 97,
@@ -348,7 +348,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive artifact set: ledger, quota units, trust tiers, abuse controls, review/appeals, events, and metrics. Avoids threshold leakage and preserves activation. Minor gap: lacks concrete quota ladder amounts or example credit values.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/developer-quota-credit-abuse-001-skill-loaded.md",
-        "outputSha256": "d84ebdd6d95ca8efa110d868855b9a02b9f25f85e7aacde9dba881c6502bf035",
+        "outputSha256": "e04547563c51c4a634a24c96bc51635b93d749262eb00102ee30fe0f9dc08218",
         "latencyMs": 31915,
         "usage": {
           "input_tokens": 1351,
@@ -368,7 +368,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/developer-quota-credit-abuse-001-judge-raw.md",
-      "judgeOutputSha256": "c4199b61e12eaa619403d39d31cf8dc1205f2f6745783dda8ec27792cf60bb46",
+      "judgeOutputSha256": "4097a0495931f6495247719ac82ee137c19e666c41a978fe3c1a781b1c1f2313",
       "judgeLatencyMs": 14913,
       "judgeUsage": {
         "input_tokens": 4029,

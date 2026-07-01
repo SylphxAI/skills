@@ -60,7 +60,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-marketplace-payout-guidance-outputs/marketplace-payouts-creator-001-baseline.md",
-        "outputSha256": "fdb6d58fcfb1b1dccca6056a48f922d7a8d296d8e1edd692efcdc63199984207",
+        "outputSha256": "a39710467160997b5c7db720c91b92a862d4268939d03b82f991ff41eea49148",
         "latencyMs": 131777,
         "usage": {
           "input_tokens": 89,
@@ -86,7 +86,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-marketplace-payout-guidance-outputs/marketplace-payouts-creator-001-skill-loaded.md",
-        "outputSha256": "4dc534482edb46714c4eba6feaab02bc679325c4043aed8b31020eb506194e32",
+        "outputSha256": "7356356cb30d88d0e0fad1a38e55535b910e628b3ee1bb812d754393e1501ab2",
         "latencyMs": 55300,
         "usage": {
           "input_tokens": 2885,
@@ -106,7 +106,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-marketplace-payout-guidance-outputs/marketplace-payouts-creator-001-judge-raw.md",
-      "judgeOutputSha256": "36a51e957fa4b4304c1a93de905a04ae4119c49fca8f6d6b0f6e209c3e722763",
+      "judgeOutputSha256": "50cc4679f9321c1fcf116fe810ea264ee1fe1317e4ef11e6ad3d9e2391c35013",
       "judgeLatencyMs": 62099,
       "judgeUsage": {
         "input_tokens": 2080,

@@ -1,37 +1,3 @@
-<think>
-The user is asking for a review of developer quota and credit abuse controls for an API/AI platform. They want a concise, audit-friendly response covering specific areas:
-1. Free trial credits
-2. Promo codes
-3. Token usage
-4. Expensive endpoints
-5. Multi-accounting
-6. Trust tiers
-7. Throttling
-8. Manual review
-9. Appeals
-10. Support messaging
-11. Cost guardrails
-
-Budget: 650 words max. Prioritize artifacts and rubric-critical decisions.
-
-Let me structure this as a review framework/audit document with clear sections, tables where useful, and decisive recommendations. This should be a practical operational document, not generic explanation.
-
-Let me organize:
-
-1. Threat model summary
-2. Control matrix (table) by abuse vector × control
-3. Trust tiers
-4. Quota & rate limit policy
-5. Cost guardrails (circuit breakers, spend caps)
-6. Detection signals (multi-account, token farming)
-7. Manual review & appeals SLA
-8. Support messaging templates
-9. Metrics & KPIs
-10. Gaps & prioritized recommendations
-
-Let me keep this tight and within 650 words.
-</think>
-
 # Developer Quota & Credit Abuse Control Review
 
 ## 1. Threat Model (Abuse Vectors → Impact)

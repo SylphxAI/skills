@@ -1,23 +1,3 @@
-<think>
-The user wants me to design backup and restore for a cross-platform notes app with specific requirements. Let me use the skill context to structure the answer concisely, under 650 words, focused on the requested artifacts and rubric-critical decisions.
-
-Key requirements:
-- Cross-platform notes app
-- Local-first data
-- Cloud sync
-- End-to-end encryption
-- Attachments
-- Deleted-item recovery
-- Device loss
-- Ransomware-like corruption
-- User export
-- Regional storage
-- Support-assisted restore
-- Proof that restores actually work
-
-I'll follow the skill outputformat and use the patterns from the references.
-</think>
-
 ```text
 Data classes:
 - Note bodies & metadata (titles, tags, folders, links) — user content, highest trust

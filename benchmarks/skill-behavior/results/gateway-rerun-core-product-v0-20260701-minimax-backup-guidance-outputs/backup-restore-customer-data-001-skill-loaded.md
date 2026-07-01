@@ -1,23 +1,3 @@
-<think>
-The user wants a backup/restore design for a cross-platform notes app with very specific requirements. I need to follow the skill's output format and keep it under 650 words. Let me structure this carefully.
-
-Key requirements:
-- Cross-platform notes app
-- Local-first data
-- Cloud sync
-- E2EE
-- Attachments
-- Deleted-item recovery
-- Device loss recovery
-- Ransomware-like corruption recovery
-- User export
-- Regional storage
-- Support-assisted restore
-- Proof restores work
-
-I'll follow the skill formatexactly.
-</think>
-
 ```text
 Data classes:
 - Note bodies + attachments (user-created, highest trust)

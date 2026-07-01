@@ -1,14 +1,3 @@
-<think>
-The user wants a comprehensive subscription price-increase retention review following the skill's structure. I need to produce:
-1. Subscription price-increase context
-2. Channel rule matrix
-3. Priority cohort matrix
-4. Retention and trust plan
-5. Cohort/value narrative/notices/save offers/cancellation/support/refunds/metrics/guardrails bullets
-
-The word budget is 650 words, so I need to be concise and audit-friendly. Let me build this carefully covering all required areas: cohort segmentation, grandfathering, save offers, annual migration, cancellation recovery, consent notices, support scripts, refunds, churn monitoring, net revenue guardrails, and platform compliance for direct, App Store, Google Play.
-</think>
-
 **Subscription price-increase context:**
 Audience: SaaS web/app subscribers and mobile in-app subscribers on monthly and annual plans across direct billing, App Store, and Google Play. Source of truth: billing system of record + store receipts + entitlement service. Risk boundary: protect net revenue and trust over headline ARPU; block launch where channel consent/refund rules are unverified.
 

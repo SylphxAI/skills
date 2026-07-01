@@ -1,21 +1,3 @@
-<think>
-The user wants a comprehensive plan for subscription price-increase retention across multiple billing platforms (direct, App Store, Google Play). Let me structure this concisely within 650 words, focusing on the requested artifacts and key decisions.
-
-Key components to cover:
-1. Cohort segmentation
-2. Grandfathering policy
-3. Save offers
-4. Annual migration
-5. Cancellation recovery
-6. Consent notices
-7. Support scripts
-8. Refunds
-9. Churn monitoring
-10. Net revenue guardrails
-
-Let me make this audit-friendly with clear sections, tables, and decision rules.
-</think>
-
 # Subscription Price-Increase Retention Plan
 
 ## 1. Cohort Segmentation (Decision Matrix)

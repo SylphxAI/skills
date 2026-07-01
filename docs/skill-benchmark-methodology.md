@@ -86,6 +86,7 @@ A useful benchmark for one skill needs at least:
 - baseline and skill-loaded model outputs;
 - blind scoring or at least independent scoring;
 - public result JSON and summary.
+- sanitized public outputs with no model reasoning traces and file-verifiable hashes.
 
 A useful benchmark for the whole repository needs at least:
 
@@ -103,6 +104,14 @@ Validate task and result schema:
 ```bash
 npm run validate:benchmarks
 ```
+
+Validate public output hygiene:
+
+```bash
+npm run validate:benchmark-outputs
+```
+
+Committed benchmark outputs must not contain `<think>...</think>` reasoning traces, and every recorded output hash must match the referenced file. Run `npm run sanitize:benchmark-outputs` before committing older or externally generated outputs.
 
 Validate that public benchmark claims still match the current result evidence:
 

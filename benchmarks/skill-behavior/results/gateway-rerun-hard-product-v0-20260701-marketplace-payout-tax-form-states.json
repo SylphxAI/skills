@@ -60,7 +60,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive ledger-first design with strong holds, disputes, tax, sanctions, failed transfers, and negative balance handling. Slightly less formal on disputed balance state and creator support macros/evidence than B.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payout-tax-form-states-outputs/marketplace-payout-tax-hold-001-baseline.md",
-        "outputSha256": "4dcbe30d736c1becae64cbf1dc15b947d070c14213ae56b8f63a096ef921b930",
+        "outputSha256": "76ef6260e95a059062982230a5986b8c87aeadb717abec65132657d87fc31526",
         "latencyMs": 34854,
         "usage": {
           "input_tokens": 93,
@@ -86,7 +86,7 @@
         "criticalFailures": [],
         "rationale": "Excellent complete design: explicit state machine, reserves and release criteria, compliance/provider readiness, audit invariants, dashboard/support workflows, dispute evidence, failed payout recovery, and balanced marketplace risk/trust incentives.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payout-tax-form-states-outputs/marketplace-payout-tax-hold-001-skill-loaded.md",
-        "outputSha256": "6396401fd341a856218f331ee443c842c1cee9349d3dc17915b8cdb2d5e92210",
+        "outputSha256": "827758f96790cbf127781ba27460fc6e1f400b0177e48961a00e2e6fb2fd2295",
         "latencyMs": 34654,
         "usage": {
           "input_tokens": 3637,
@@ -106,7 +106,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payout-tax-form-states-outputs/marketplace-payout-tax-hold-001-judge-raw.md",
-      "judgeOutputSha256": "76226a60f586686d5bd5ecae2463fd0d372a4be9ca6b8a14820c317bc069bbb0",
+      "judgeOutputSha256": "17e052ed8fab4aeb87ddf4ff10de4d9e59ee498787292e44e9277e3d7805df21",
       "judgeLatencyMs": 10908,
       "judgeUsage": {
         "input_tokens": 4522,

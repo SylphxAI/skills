@@ -1,18 +1,3 @@
-<think>
-The user wants a refund handling design for a mobile subscription app with three purchase channels: App Store, Google Play, and Stripe. They want it concise (under 650 words) and audit-friendly. The skill provides a clear output format. Let me produce the artifacts in the requested format, keeping it tight.
-
-Key things to cover:
-- Provider table for App Store, Google Play, Stripe (refunds and chargebacks)
-- Entitlement state machine with grace period
-- Decision table covering accidental, non-consumable, consumable, chargeback, abuse
-- Abuse ladder with score bands and approval thresholds
-- Support macros
-- Event schema / metrics
-- Address whether to warn/downgrade/ban repeat abusers (the skill guardrails say: do not auto-ban after normal refund, do not coerce repurchase with threats, reversible audit trail)
-
-Let me structure this to be audit-friendly and withinthe word budget. I'll use the exact output format from the skill.
-</think>
-
 **Purchase/refund context:**
 Three purchase channels (Apple App Store, Google Play, Stripe), subscription + consumable + non-consumable IAP mix. Authority split: store/processed refunds are provider-owned; entitlement revocation is server-owned; account restrictions require abuse-review approval.
 

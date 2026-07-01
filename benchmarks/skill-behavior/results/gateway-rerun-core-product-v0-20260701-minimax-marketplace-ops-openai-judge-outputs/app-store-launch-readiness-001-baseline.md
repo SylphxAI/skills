@@ -1,19 +1,3 @@
-<think>
-The user wants me to prepare a launch checklist for an iOS and Android subscription app. Let me structure this concisely across the requested areas:
-
-1. IAP setup
-2. Privacy labels
-3. Screenshots
-4. Review notes
-5. TestFlight/internal testing
-6. Support contact
-7. Refund/restore flow
-8. Push notification permission
-9. Staged rollout
-
-Need to stay under 650 words. Be audit-friendly with clear artifacts and decisions. Use concise formatting.
-</think>
-
 # Subscription App Launch Playbook
 
 ## 1. IAP Setup

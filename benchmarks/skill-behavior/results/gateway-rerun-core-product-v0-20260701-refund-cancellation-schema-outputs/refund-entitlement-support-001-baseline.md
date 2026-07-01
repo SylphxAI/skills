@@ -1,20 +1,3 @@
-<think>
-The user wants a comprehensive refund handling design for a mobile subscription app with three payment platforms. Let me structure this concisely within 650 words, prioritizing the rubric-critical artifacts: entitlement revocation, grace period logic, chargebacks, refund abuse scoring, goodwill refunds, support macros, analytics events, and enforcement tiers.
-
-I'll organize as:
-1. Architecture / source of truth
-2. Refund event flow (webhooks)
-3. Entitlement revocation + grace period
-4. Chargeback handling
-5. Refund abuse scoring model
-6. One-time goodwill refund logic
-7. Support macros (table)
-8. Analytics events
-9. Enforcement tiers (warn/downgrade/ban)
-
-Keeptight and audit-friendly.
-</think>
-
 # Refund Handling Design — Mobile Subscription App
 
 ## 1. Source of Truth & Architecture

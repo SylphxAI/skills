@@ -1,9 +1,3 @@
-<think>
-The user wants a SaaS subscription pricing design for a B2B analytics product. Let me use the skill's output format and stay within 650 words. I need to include: free trial, team plan, enterprise plan, seat limits, usage-based overages, annual discount, procurement requirements, support tiers, expansion path, unit economics.
-
-Let me structurethis tightly.
-</think>
-
 ```text
 Recommended model:
 Hybrid seat-based + usage-based (events ingested / rows scanned). Seats fund predictable revenue; usage aligns price to value for analytics workloads. Annual prepay with 20% discount; monthly allowed for Team only.

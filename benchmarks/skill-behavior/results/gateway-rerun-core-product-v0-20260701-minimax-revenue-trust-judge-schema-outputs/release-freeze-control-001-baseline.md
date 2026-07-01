@@ -1,28 +1,3 @@
-<think>
-The user wants me to run a release freeze change control process for a holiday freeze. They need specific artifacts:
-1. Security hotfix handling
-2. Customer-specific blackout
-3. App-store deadline
-4. Infrastructure change request
-5. Rollback plan
-6. Monitoring dashboard
-7. Support comms
-8. Approval authority
-9. Post-freeze exception review
-
-I need to keep it under 650 words, concise, audit-friendly. Let me structure this as a proper change control document with clear sections.
-
-Let me draft this efficiently:
-
-**Freeze Window**: Define the holiday freeze period
-**Change Categories & Rules**
-**Each artifact**
-**Approval matrix**
-**Exception review**
-
-Let me write this concisely.
-</think>
-
 # Release Freeze Change Control — Holiday Window
 
 **Freeze Window**: 2025-12-19 00:00 UTC → 2026-01-02 23:59 UTC

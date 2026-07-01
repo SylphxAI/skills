@@ -1,20 +1,3 @@
-<think>
-The user wants me to design subscription entitlement behavior using the subscription-entitlement-review skill. I need to follow the output format and stay within 650 words. Let me build the artifactsbased on the skill context.
-
-Let me structure this carefully:
-
-1. Billing model
-2. Provider/platform
-3. Entitlement surfaces
-4. State model
-5. Channel precedence table
-6. Audit events
-7. Risks and fixes
-8. Support/readiness checks
-
-I'll keep it tight and audit-friendly.
-</think>
-
 ```text
 Billing model: Per-user SaaS with mobile companion apps; tiered plans (Free, Pro, Team) billed monthly/annually; team plans via admin invoice; trials 14 days; family sharing eligible on Pro only.
 

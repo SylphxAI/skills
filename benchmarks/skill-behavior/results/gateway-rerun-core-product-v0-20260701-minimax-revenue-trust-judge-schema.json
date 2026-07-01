@@ -64,7 +64,7 @@
         "criticalFailures": [],
         "rationale": "Good approval matrix, rollback, monitoring, support comms, and review package. Scope lacks a clear protected-systems inventory, compliance classification is missing, and exception expiry/retirement and debt backlog handling are less explicit.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/release-freeze-control-001-baseline.md",
-        "outputSha256": "3d16d5154451b1848747e2a0f4cd249a84077b9ef2a1313a8af3e766de575ae4",
+        "outputSha256": "2d9997ca13f6fbc347cde8dac28cb264889d052ab57a68ced421e14514589726",
         "latencyMs": 35099,
         "usage": {
           "input_tokens": 254,
@@ -90,7 +90,7 @@
         "criticalFailures": [],
         "rationale": "Strong scope, protected systems, windows, comms, approvals, rollback, monitoring, exception register events, expiry, retirement, and learning loop. Slight gap: compliance changes are not explicitly classified in the severity ladder.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/release-freeze-control-001-skill-loaded.md",
-        "outputSha256": "4c7fa33db0f590f7fd2c221e1c2277b216c07d8aef0fd600d464e19683fad0b4",
+        "outputSha256": "341d86bebe9b104433a4dbf86fb68d8c73bcc6b41ec288a696984645df533cd6",
         "latencyMs": 31076,
         "usage": {
           "input_tokens": 1454,
@@ -110,7 +110,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/release-freeze-control-001-judge-raw.md",
-      "judgeOutputSha256": "241a79046b680810423777f6ac5c43973a515c1704d6df3ee928c3db4fad5291",
+      "judgeOutputSha256": "e37a1693ca77048cd96ff70e29b77dec6bd163253fe686c95e50f3f3ecdfabaf",
       "judgeLatencyMs": 11571,
       "judgeUsage": {
         "input_tokens": 3370,
@@ -149,7 +149,7 @@
         "criticalFailures": [],
         "rationale": "Strong retention mechanics, offers, refunds, dashboards, and net revenue gates. Cohorts miss explicit region, renewal-date, billing-channel segmentation. Some platform details are vague or assumed, and cancellation “wall” wording risks dark-pattern perception.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-price-increase-retention-001-baseline.md",
-        "outputSha256": "9f9c393913757734520b5d0fa3d6b440e60631a943d49b129e5a9f9be9646925",
+        "outputSha256": "bf2f0abeffa0f60a2cbcc853669c29c51b055614eccad3b75b501eb8433f5e05",
         "latencyMs": 25701,
         "usage": {
           "input_tokens": 262,
@@ -175,7 +175,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive plan with cohorts, notices, value narrative, support/refunds, cancellation transparency, experimentation, and cohort readbacks. Minor gaps: renewal-date segmentation is less explicit, churn-risk segmentation is mostly embedded, and some consent behavior may overgeneralize platform rules.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-price-increase-retention-001-skill-loaded.md",
-        "outputSha256": "61e4d2bb03768278ebd4d9ae733593637c688430576db95641ab2473adbc296d",
+        "outputSha256": "8b7a0b89ffe32c7e97d70a854eb7cfafdeb2e52b9fef69fc1848c7ebbd93e59d",
         "latencyMs": 26628,
         "usage": {
           "input_tokens": 1536,
@@ -195,7 +195,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-price-increase-retention-001-judge-raw.md",
-      "judgeOutputSha256": "859a3af65f7911bc10241db1e4e1506066f28ca52a8b769ad382f6c3c0afbc5e",
+      "judgeOutputSha256": "1c2eb9c564b7b5c4aaa861d9d21635bf38b017283b740f6fc993174a2514bcf1",
       "judgeLatencyMs": 12953,
       "judgeUsage": {
         "input_tokens": 3481,
@@ -234,7 +234,7 @@
         "criticalFailures": [],
         "rationale": "Strong webhook idempotency, entitlement, refunds/disputes, reconciliation, and gates. Missing explicit payment state model, limited fee detail, weaker sandbox/live separation and test-card specificity, and customer communications are less complete.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/payment-platform-webhook-ledger-001-baseline.md",
-        "outputSha256": "b53ed1a97110f083770b636c9896a03bab7137cac0b7410b6ef4ab97206d0c52",
+        "outputSha256": "990717e6bb15f45cb3b4cfe0c75aeac0a1e23ec0d63dba0234719b23ffcbbe72",
         "latencyMs": 40887,
         "usage": {
           "input_tokens": 264,
@@ -260,7 +260,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive readiness review with server-side webhook truth, replay/idempotency, entitlement states, launch gates, rollback, support, disclosure, and failed-payment recovery. Ledger coverage is strong but fees are only implicit via Stripe reports/payouts.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/payment-platform-webhook-ledger-001-skill-loaded.md",
-        "outputSha256": "b4a2af5a108f4d246599fd1549bab30c9a45c8b0e7715e420aaccd07fb428a95",
+        "outputSha256": "117b9eeb1eda683bce36db69ff8c3b1c5c24961309c2a903cfccb374fcf3e236",
         "latencyMs": 16493,
         "usage": {
           "input_tokens": 1103,
@@ -280,7 +280,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/payment-platform-webhook-ledger-001-judge-raw.md",
-      "judgeOutputSha256": "47e229e3305d6a49b1b23622673c37a47cda118be6a8dafdf706ba90810d79f6",
+      "judgeOutputSha256": "4840b14c3ac59cfb25e9d475130ded79c4b04f6da269fd99b2095b2c4a361482",
       "judgeLatencyMs": 13427,
       "judgeUsage": {
         "input_tokens": 4042,
@@ -322,7 +322,7 @@
         ],
         "rationale": "Good server-side model, validation matrix, precedence, offline, and audit ledger. However support artifacts are sparse, state model misses trial/paused/restored detail, and deduplication/event ordering are not sufficiently specified.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-entitlement-cross-platform-001-baseline.md",
-        "outputSha256": "26b41dfc9aab81936c80f8f6572ef957d829966471163e9f2b4408bedb97873f",
+        "outputSha256": "3d862c29b37069965ba3d2fdbfe7da0e5e46752e5c6c8092344823ee9cb496c4",
         "latencyMs": 16018,
         "usage": {
           "input_tokens": 266,
@@ -348,7 +348,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive design with server-led ledger, validation, idempotency, precedence, per-source conflict handling, support workflows, audit events, and reconciliation. Minor gaps: paused/restored/offline are more events or overlays than fully modeled states.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-entitlement-cross-platform-001-skill-loaded.md",
-        "outputSha256": "4ede4b99cc56f7cdc681215e4ce1a8f6a52ead2570d021d3cbd5099c7480389d",
+        "outputSha256": "431793c0a320bbe40b6400af0089ecb79b6b20b088c6498657c659b6b11d7762",
         "latencyMs": 24035,
         "usage": {
           "input_tokens": 2162,
@@ -368,7 +368,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-entitlement-cross-platform-001-judge-raw.md",
-      "judgeOutputSha256": "70d5d987138573a952973449efb408526fc00ca44e622fa8c12af46e281bfd11",
+      "judgeOutputSha256": "1c18f0b5532202f6c213c127736f7dc5a2d7b44708cb5e9edc2b8ce76302f34c",
       "judgeLatencyMs": 18141,
       "judgeUsage": {
         "input_tokens": 3318,
@@ -407,7 +407,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive caps, targeting, quiet hours, localization, and preferences. Weaker on explicit user value per notification, measurement omits retention, complaints, deliverability, and trust. Push cannot-disables for transactional/security are overbroad.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/notification-lifecycle-growth-001-baseline.md",
-        "outputSha256": "9266ad9f1714ad4e8180136c4e77dcb23f7fdb5069e7e61dd3237a4a493ae084",
+        "outputSha256": "0b9409cc5366dd8041fa5e55b27c8ef6e5a9fd49967e4d2abea72b3eeab7032c",
         "latencyMs": 12910,
         "usage": {
           "input_tokens": 262,
@@ -433,7 +433,7 @@
         "criticalFailures": [],
         "rationale": "Strong taxonomy, lifecycle triggers, user-value framing, caps, quiet hours, preferences, and measurement events. Minor gaps: regional consent is not explicit, and cross-channel deduplication is implied more than fully specified.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/notification-lifecycle-growth-001-skill-loaded.md",
-        "outputSha256": "07748f9f4da23e26e4dd2bc13b6c7f33b54b98a2d8a1e305d7bd875d4547cc3f",
+        "outputSha256": "15f1971d003e6ee329c36a38223a4d7fc4816c1ac52ff5573baefbdc67dca915",
         "latencyMs": 15239,
         "usage": {
           "input_tokens": 1049,
@@ -453,7 +453,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/notification-lifecycle-growth-001-judge-raw.md",
-      "judgeOutputSha256": "39404ab595f7ff0c2be1519e3d2a45ac8a9621d966a9682db1cd47ef7ea77a5c",
+      "judgeOutputSha256": "e253f03a944e09683d9b0294ce1671c9eb1e48d8cd1a852b80deee5de1856d14",
       "judgeLatencyMs": 15789,
       "judgeUsage": {
         "input_tokens": 3068,

@@ -63,7 +63,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/interface-craft-checkout-review-001-baseline.md",
-        "outputSha256": "2a5c3dd8555bc564dca9a32c1b9d61588ab4f4ee672f1f37ed10f8a28afd1a8b",
+        "outputSha256": "4d78250512403586fc99a07933478ce4352db09ff94cb9a5634ad04e0cc6a511",
         "latencyMs": 40803,
         "usage": {
           "input_tokens": 94,
@@ -89,7 +89,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/interface-craft-checkout-review-001-skill-loaded.md",
-        "outputSha256": "51c8a2d13ab6f42df8aeabde60b839067204653e6a22222cffe892b06e075f09",
+        "outputSha256": "3b3a3b66d572977fd381369517e990f83c67062ac955967701dd6f4a08dd91cd",
         "latencyMs": 47420,
         "usage": {
           "input_tokens": 1382,
@@ -109,7 +109,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/interface-craft-checkout-review-001-judge-raw.md",
-      "judgeOutputSha256": "2ec68f2ef8216dd58f77c5f6033123de852ed0fe76900e24466cc853bfc8639d",
+      "judgeOutputSha256": "8e4a3242c70df46b4fb64b977598170dccd6043e6e89f67bbd70da8ddebf095d",
       "judgeLatencyMs": 117046,
       "judgeUsage": {
         "input_tokens": 1713,
@@ -148,7 +148,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/promotion-campaign-subscription-001-baseline.md",
-        "outputSha256": "9c710f8a990cfcc924007608fa995ed9a5682571e707d9b739a5a29314e0767a",
+        "outputSha256": "dd0f28fdb5625ff02955a7a5604f7911073d031ca16fb12c636c7067445bbeeb",
         "latencyMs": 47564,
         "usage": {
           "input_tokens": 87,
@@ -174,7 +174,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/promotion-campaign-subscription-001-skill-loaded.md",
-        "outputSha256": "8647175662d49ca2986bc8b0c4c48b4752390927c9a307bf9c281336e8775037",
+        "outputSha256": "d1e390faedac93d09ce0c235aa1e031afbaef92d98e4768aa1be22d03071f014",
         "latencyMs": 51697,
         "usage": {
           "input_tokens": 868,
@@ -194,7 +194,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/promotion-campaign-subscription-001-judge-raw.md",
-      "judgeOutputSha256": "5447961319f361ba2a282bfdd09ed8cb7c8554f3f08838bd0906a801a9d10990",
+      "judgeOutputSha256": "73e4319948f54f402de12bbe122996ef4a4047dfd6980b7c6ec4f290ca63a937",
       "judgeLatencyMs": 36597,
       "judgeUsage": {
         "input_tokens": 1715,
@@ -233,7 +233,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/subscription-pricing-saas-001-baseline.md",
-        "outputSha256": "de382e354fa28675dd98c712ba52958f36196c715f800c731c890c3a834a233d",
+        "outputSha256": "11f8d49e162bfdae8256136439bfef33d10d18a236023f519e74bfdbc0074eaa",
         "latencyMs": 40908,
         "usage": {
           "input_tokens": 92,
@@ -259,7 +259,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/subscription-pricing-saas-001-skill-loaded.md",
-        "outputSha256": "020b89f57fdf9f05d12caff8ae2d453cce6ba6a1f9124181d095b359b352b9a3",
+        "outputSha256": "991a0fd8c322dd3ed48e28b501c76ed455e145946310cead9898ecf18dd33157",
         "latencyMs": 111861,
         "usage": {
           "input_tokens": 1426,
@@ -279,7 +279,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/subscription-pricing-saas-001-judge-raw.md",
-      "judgeOutputSha256": "97490e7f524adb3896d4545d3246ec05ad7a3a50ebcc9cd8b815c9b283631ec5",
+      "judgeOutputSha256": "4b6ac1429dcd7606b425f43950a42991bc3940adee729b6dcb57cbea2c1d698a",
       "judgeLatencyMs": 43560,
       "judgeUsage": {
         "input_tokens": 1746,
@@ -318,7 +318,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/mobile-first-permission-onboarding-001-baseline.md",
-        "outputSha256": "0434019b0b2246c88531de060e452c1eddbd1b6940adc365340a0f560d9b9300",
+        "outputSha256": "bfd476e3a60f97adb3c5e67b73502f0c7fa3d544d185a15d77252cd4effd7cd8",
         "latencyMs": 49142,
         "usage": {
           "input_tokens": 86,
@@ -344,7 +344,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/mobile-first-permission-onboarding-001-skill-loaded.md",
-        "outputSha256": "1c356962657af446d2b07e524a83fdd77b8a551c166fbd231be2bd093569bead",
+        "outputSha256": "34c4445a406262dd55f6de0753dfab1a5aabc115772e964e3ea9509ce6047449",
         "latencyMs": 54293,
         "usage": {
           "input_tokens": 1334,
@@ -364,7 +364,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance-outputs/mobile-first-permission-onboarding-001-judge-raw.md",
-      "judgeOutputSha256": "785a6bc413260c3ecb51f7b3eafd591dff8803e6b3be48eb288afc4e2cbfa3b1",
+      "judgeOutputSha256": "eec904fc95e573cdc84a6af9fa12ec38b2fbde5f119c606a8694d6a91920a94a",
       "judgeLatencyMs": 53342,
       "judgeUsage": {
         "input_tokens": 1785,

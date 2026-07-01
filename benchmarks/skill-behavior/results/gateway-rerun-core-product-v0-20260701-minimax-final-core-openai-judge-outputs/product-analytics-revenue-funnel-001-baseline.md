@@ -1,32 +1,3 @@
-<think>
-The user wants me to review product analytics instrumentation for a subscription app covering a comprehensive list of topics. They want it concise (max 650 words) and audit-friendly, prioritizing artifacts and rubric-critical decisions.
-
-I should structure this as an audit review with:
-1. Clear pass/fail/partial findings per area
-2. Specific recommendations
-3. Owner/priority indicators
-4. Focus on artifacts (specs, schemas, dashboards)
-
-Let me draft a tight, audit-style review covering each area mentioned:
-- Landing page attribution
-- Onboarding steps
-- Paywall impressions
-- Trial starts
-- Purchases
-- Refunds
-- Cancellation reasons
-- Notification opt-ins
-- Activation events
-- Feature usage
-- Cohorts
-- Privacy consent
-- Event naming
-- Identity stitching
-- Dashboard readiness
-
-I'll use a table or structured list for audit efficiency. Keep it under 650 words.
-</think>
-
 # Analytics Instrumentation Review — Subscription App
 
 **Reviewer:** Analytics Audit | **Scope:** Full subscription funnel + retention telemetry | **Format:** Findings + artifacts required to close.

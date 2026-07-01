@@ -62,7 +62,7 @@
         ],
         "rationale": "Strong integration, trust, signing, and enterprise coverage, but mostly checklist/audit oriented. It lacks the required regression test plan with cross-OS, update, permission reset, and compatibility coverage.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-desktop-os-improved-outputs/desktop-os-integration-release-001-baseline.md",
-        "outputSha256": "ba1929266b1a492fe11b9efdab9b5e5a0ab772229842b3612b86adfdcbdc7504",
+        "outputSha256": "432f603ebfe8937ec7509227129a319d542a29fd6acb9741c9a6dfaff3a40a79",
         "latencyMs": 37973,
         "usage": {
           "input_tokens": 104,
@@ -88,7 +88,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive desktop-native review covering macOS and Windows conventions, permissions, signing/notarization, updater rollback, crash reporting, enterprise deployment, diagnostics, and a detailed regression plan.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-desktop-os-improved-outputs/desktop-os-integration-release-001-skill-loaded.md",
-        "outputSha256": "a8f274a0e3ecf4a63037eead548c66a651ede4906d4873e228f1d904f886e68e",
+        "outputSha256": "d2eaecf841a2435cac364c95ed45e80565c784b97bce7b04934393cc51025909",
         "latencyMs": 29711,
         "usage": {
           "input_tokens": 1246,
@@ -108,7 +108,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-desktop-os-improved-outputs/desktop-os-integration-release-001-judge-raw.md",
-      "judgeOutputSha256": "4bc5a2cf0b6d2c2f7575fc1bb27de526f02305367798eed167edc94f2660e0c2",
+      "judgeOutputSha256": "aac7949931e3e11344f27ac47f9b336eb4453297acc0ed7d80d0300516a59682",
       "judgeLatencyMs": 9839,
       "judgeUsage": {
         "input_tokens": 3972,

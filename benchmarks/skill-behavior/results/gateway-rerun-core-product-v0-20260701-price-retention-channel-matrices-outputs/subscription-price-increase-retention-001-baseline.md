@@ -1,23 +1,3 @@
-<think>
-The user wants a concise, audit-friendly plan for subscription price-increase retention across multiple billing channels. They want specific artifacts: cohort segmentation, grandfathering, save offers, annual migration, cancellation recovery, consent notices, support scripts, refunds, churn monitoring, and net revenue guardrails. Budget is 650 words.
-
-Let me structure this tightly:
-
-1. Scope & channels
-2. Cohort segmentation
-3. Grandfathering matrix
-4. Save offers ladder
-5. Annual migration
-6. Cancellation recovery
-7. Consent notices (legal)
-8. Support scripts
-9. Refunds
-10. Churn monitoring
-11. Net revenue guardrails
-
-I'll use tables and bulletpoints to maximize information density. Stay under 650 words.
-</think>
-
 # Price-Increase Retention Plan — SaaS + Mobile Subscriptions
 
 ## 1. Scope & Channels

@@ -60,7 +60,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-refund-guidance-outputs/refund-entitlement-support-001-baseline.md",
-        "outputSha256": "6ac1a3a4789d263d8b685c285cb21dde74c99aba624acdc857c7f87c88b08e2b",
+        "outputSha256": "2580caae9189f61052541332090baf7ea9250dcbbe775cb3b2e68d5e80bd6806",
         "latencyMs": 58155,
         "usage": {
           "input_tokens": 101,
@@ -86,7 +86,7 @@
         "criticalFailures": [],
         "rationale": "",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-refund-guidance-outputs/refund-entitlement-support-001-skill-loaded.md",
-        "outputSha256": "ad63cecb36500790a7ddb11eea854b822c93dac63ce6022f7058db0c08eac253",
+        "outputSha256": "9b7af79217026d32348749e30ce414184540c098dc424cdf3d5fce44dcc09319",
         "latencyMs": 56541,
         "usage": {
           "input_tokens": 1731,
@@ -106,7 +106,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-refund-guidance-outputs/refund-entitlement-support-001-judge-raw.md",
-      "judgeOutputSha256": "5bdf9c700a01dc99f5ed637548667cd94a08881f96da460c3dec814c7f237e38",
+      "judgeOutputSha256": "60bc1638f77a99c95cdf20d676822065b4ef8a36b2c5d41c9c204ee71e0b2aab",
       "judgeLatencyMs": 38492,
       "judgeUsage": {
         "input_tokens": 2092,

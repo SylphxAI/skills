@@ -1,14 +1,3 @@
-<think>
-The user wants me to produce a developer quota and credit abuse review using the skill's format. They want it concise (≤650 words) and audit-friendly. I should produce:
-
-1. Developer quota/credit context block
-2. Audience / source of truth / risk boundary
-3. Quota abuse control plan table
-4. Trigger-based policy lines for credits, quota tiers, costly operations, trust signals, throttles, reviews, appeals, and cost guardrails
-
-Let me draft a concise, audit-friendly response that hits therubric items without exceeding the word budget.
-</think>
-
 ```text
 Developer quota/credit context:
 Platform exposes free trial credits, partner promo codes, AI token consumption, expensive inference endpoints, multi-tenant API keys, sandbox storage, and webhook egress. Source of truth = ledger service (source, expiry, consumption, reversal, linkage, cost attribution) joined to identity graph and risk-scoring service. Audience = self-serve developers, partner integrators, sandbox evaluators, and contract tenants. Risk boundary = (a) cost runaway from token churn or expensive endpoints, (b) promo cycling / multi-accounting fraud, (c) legitimate scale-up blocked, (d) false-positive suspension without appeal.

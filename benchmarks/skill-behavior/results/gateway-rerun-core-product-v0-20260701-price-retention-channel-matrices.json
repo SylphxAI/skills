@@ -60,7 +60,7 @@
         "criticalFailures": [],
         "rationale": "Strong structure and many artifacts, but cohorts miss explicit region, billing channel, renewal-date, usage segmentation. Platform handling includes some broad assumptions. Net revenue lacks payment failures, support load, LTV, and explicit cohort readback.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-price-retention-channel-matrices-outputs/subscription-price-increase-retention-001-baseline.md",
-        "outputSha256": "53143041007dd3ed73d2e64b642d911c36b07554ffe18cd7594120645204fcb3",
+        "outputSha256": "23bd74ed81e44167afc57476a9d6b15fae23fba632e5f8979e4748116be02a9a",
         "latencyMs": 22627,
         "usage": {
           "input_tokens": 262,
@@ -86,7 +86,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive plan covering required artifacts, channel-specific notices/refunds/cancellation behavior, detailed cohort segmentation, transparent save and cancellation policies, support macros, churn monitoring, and net revenue readback with guardrails.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-price-retention-channel-matrices-outputs/subscription-price-increase-retention-001-skill-loaded.md",
-        "outputSha256": "f629a5bb26b3f71ca9107ceae308d0e5344544d5a05033e8bcfdef9bc20e2a70",
+        "outputSha256": "1e01858b86937ff17bd41e26a8738dbfa6b9722e993fda1bb4141621ca25e01f",
         "latencyMs": 38871,
         "usage": {
           "input_tokens": 2439,
@@ -106,7 +106,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-price-retention-channel-matrices-outputs/subscription-price-increase-retention-001-judge-raw.md",
-      "judgeOutputSha256": "25ead564b56dee6e42d96dc8fb19d781f15ad72975010f9fea93db975793ac57",
+      "judgeOutputSha256": "50538c78bc6d2f51cea54d7709509239af275200fcfeb40dba38e3be4687f844",
       "judgeLatencyMs": 10930,
       "judgeUsage": {
         "input_tokens": 3482,

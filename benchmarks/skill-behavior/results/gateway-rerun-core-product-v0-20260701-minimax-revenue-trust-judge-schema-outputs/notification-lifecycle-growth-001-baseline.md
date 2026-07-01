@@ -1,19 +1,3 @@
-<think>
-The user wants a notification strategy for a mobile productivity app. Let me create a concise, audit-friendly strategy that covers all the requested elements. Word budget is 650 words. I need to prioritize artifacts and rubric-critical decisions.
-
-Let me structure this:
-1. Strategy overview (brief)
-2. Notification taxonomy with triggers, content, channels, timing
-3. Frequency caps
-4. Quiet hours & localization
-5. Opt-in flow
-6. Unsubscribe preferences
-7. Channel matrix
-8. Key metrics
-
-Let me draft this tightly.
-</think>
-
 # Mobile Productivity App — Notification Strategy
 
 ## 1. Strategy Principles

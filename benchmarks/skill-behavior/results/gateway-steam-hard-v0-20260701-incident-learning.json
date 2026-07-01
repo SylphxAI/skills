@@ -60,7 +60,7 @@
         "criticalFailures": [],
         "rationale": "Strong practical coverage of demo, store, pricing, DLC, moderation, keys, rollback, and first-week cadence. Measurement is thinner, with fewer refund/review/support metrics tied to explicit decision thresholds.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-steam-hard-v0-20260701-incident-learning-outputs/steam-demo-refund-review-risk-001-baseline.md",
-        "outputSha256": "76f2f3c73c215689ef9675ff594d0f0332fd03225c983b0a4c80866c294a3fcf",
+        "outputSha256": "a56e676a8012b91217ccb99708376a8bbcd8921ce5e39f718947c8912f90f2a6",
         "latencyMs": 34500,
         "usage": {
           "input_tokens": 100,
@@ -86,7 +86,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive audit with launch calendar, readiness matrix, risk controls, rollback gates, community ops, and metrics tied to decisions. Minor weakness: some thresholds are qualitative rather than numeric.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-steam-hard-v0-20260701-incident-learning-outputs/steam-demo-refund-review-risk-001-skill-loaded.md",
-        "outputSha256": "3e4a5d5a44cba80b799e021db1f1958f10fda904d2fec7b770f6aee29585e2d1",
+        "outputSha256": "16ac4bb8929526328f445ca7e7f620867186996d2e2597a0d803e35159357c80",
         "latencyMs": 30513,
         "usage": {
           "input_tokens": 3230,
@@ -106,7 +106,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-steam-hard-v0-20260701-incident-learning-outputs/steam-demo-refund-review-risk-001-judge-raw.md",
-      "judgeOutputSha256": "bfc8563b90a4ef8d7599f05f3f97f05132e329fc9bfdc6b838b3cc5d4f9f731b",
+      "judgeOutputSha256": "28c04e3afc1fbf48dce903f36bd488ed04158c8f26f86144aad466b486c647de",
       "judgeLatencyMs": 9367,
       "judgeUsage": {
         "input_tokens": 4126,

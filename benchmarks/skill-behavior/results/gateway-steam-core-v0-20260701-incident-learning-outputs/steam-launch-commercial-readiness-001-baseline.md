@@ -1,33 +1,3 @@
-<think>
-The user wants a "Steam launch readiness" report for an indie multiplayer game with many specific concerns. They want it concise, audit-friendly, under 650 words. They want artifacts and rubric-critical decisions prioritized over explanation.
-
-Let me structure this as a launch readiness checklist with clear go/no-go decisions, risk assessments, and concrete artifacts needed for each item. I'll use a tabular/structured format for audit-friendliness.
-
-Key areas:
-1. Wishlist conversion
-2. Demo
-3. Achievements
-4. Cloud saves
-5. DLC plan
-6. Regional pricing
-7. Launch discount
-8. Anti-cheat
-9. Community hub moderation
-10. Refund risk
-11. Review bombing
-12. Patch cadence
-13. Creator/influencer embargo timing
-
-I'll make this tight, decision-oriented, with explicit owners and deadlines implied. Let me draft within 650 words.
-
-Format plan:
-- Header with status legend
-- Per-item: Status (Ready/At Risk/Blocked), Artifact, Decision/Rationale, Owner
-- Closing: Top 3 risks, sign-off line
-
-Let me writethis concisely.
-</think>
-
 # Steam Launch Readiness — Indie Multiplayer Title
 
 **Status legend:** 🟢 Ready · 🟡 At Risk · 🔴 Blocked · **Target launch:** T-14 days gate

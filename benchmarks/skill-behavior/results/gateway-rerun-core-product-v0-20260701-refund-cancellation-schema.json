@@ -60,7 +60,7 @@
         "criticalFailures": [],
         "rationale": "Strong entitlement and abuse design with macros/events, but lacks a true channel-specific policy table/state machine. Some unsupported platform assumptions and harsh device blacklist/clawback language reduce trust balance.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-refund-cancellation-schema-outputs/refund-entitlement-support-001-baseline.md",
-        "outputSha256": "834376d81d058dab92de8ccd2994cb40ab44189dfc03759a5827e351de6e69cc",
+        "outputSha256": "4449dc862054e22fa657e1f844b060daef28f7cf0c176885f6ad48074d79215b",
         "latencyMs": 21671,
         "usage": {
           "input_tokens": 261,
@@ -86,7 +86,7 @@
         "criticalFailures": [],
         "rationale": "Comprehensive provider separation, entitlement ledger/state machine, balanced abuse ladder with appeals, clear macros, events, and metrics. Support taxonomy/escalation is present but could be slightly more operationally detailed.",
         "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-refund-cancellation-schema-outputs/refund-entitlement-support-001-skill-loaded.md",
-        "outputSha256": "a87f26a7283b84e0e2ffe6c479faf895aa9d885a4095e7f9af740ab31a737c5d",
+        "outputSha256": "17fb64b9b69d3ba4aca516cddea21b88c372907676c1c527d95f997ddd0dd654",
         "latencyMs": 11584,
         "usage": {
           "input_tokens": 2413,
@@ -106,7 +106,7 @@
         "b": "hidden"
       },
       "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-refund-cancellation-schema-outputs/refund-entitlement-support-001-judge-raw.md",
-      "judgeOutputSha256": "21b9017b07c11f9acdcb3f1dbdf45260e3ff5ae2f0a618aeb5c7d0663b4218ec",
+      "judgeOutputSha256": "4585ea7bfd8e7dcb1ff454eba7e05fa5243203499d9d625c73b07491e310bad3",
       "judgeLatencyMs": 12557,
       "judgeUsage": {
         "input_tokens": 3151,

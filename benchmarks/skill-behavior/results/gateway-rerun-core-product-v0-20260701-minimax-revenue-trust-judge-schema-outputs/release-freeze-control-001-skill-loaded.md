@@ -1,7 +1,3 @@
-<think>
-The user wants a release freeze change control review for a holiday freeze covering: security hotfix, customer-specific blackout, app-store deadline, infrastructure change request, rollback plan, monitoring dashboard, support comms, approval authority, and post-freeze exception review. Must stay under 650 words. Use the skill's output format.
-</think>
-
 # Release Freeze Change Control Review
 
 **Release freeze context**

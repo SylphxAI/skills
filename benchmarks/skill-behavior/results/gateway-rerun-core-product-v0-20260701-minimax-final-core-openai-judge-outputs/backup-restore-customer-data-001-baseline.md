@@ -1,23 +1,3 @@
-<think>
-The user wants a comprehensive design for backup and restore for a cross-platform notes app. The constraints are many features to cover but only 650 words. I need to prioritize artifacts and key decisions. Let me structure this as an audit-friendly design document with clear sections covering each requirement.
-
-Key requirements:
-1. Cross-platform
-2. Local-first data
-3. Cloud sync
-4. End-to-end encryption
-5. Attachments
-6. Deleted-item recovery
-7. Device loss
-8. Ransomware-like corruption
-9. User export
-10. Regional storage
-11. Support-assisted restore
-12. Proof that restores work
-
-I'll organize this as a compact spec with: architecture, data model, encryption, backup strategy, restore flows, recovery features, validation/proof, support tools, and regional considerations.
-</think>
-
 # Backup & Restore Design — Cross-Platform Notes App
 
 ## 1. Data Model (Local-First Foundation)

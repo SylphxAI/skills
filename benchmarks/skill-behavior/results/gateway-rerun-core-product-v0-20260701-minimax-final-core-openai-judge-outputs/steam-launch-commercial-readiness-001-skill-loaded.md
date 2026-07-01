@@ -1,20 +1,3 @@
-<think>
-The user wants a Steam launch readiness audit for an indie multiplayer game with specific concerns: wishlist conversion, demo, achievements, cloud saves, DLC plan, regional pricing, launch discount, anti-cheat, community hub moderation, refund risk, review bombing, patch cadence, and creator/influencer embargo timing.
-
-I need to follow the skill's output format and keep it under 650 words. Let me build a tight, audit-ready matrix.
-
-Format required:
-- Game/launch context
-- Release strategy
-- Readiness matrix (Store page, Build/platform, Community/support, Launch operations)
-- P0 blockers
-- Wishlist/review plan
-
-Let me also weave in the user's specific asks: multiplayer-specific risks (anti-cheat, netcode, server cost), DLC plan, regional pricing strategy, creator embargo timing, review bombing prevention.
-
-I'll be concise and structured.
-</think>
-
 ```text
 Game/launch context:
 - Genre: Indie multiplayer (co-op/competitive hybrid, low player counts 2–8)
