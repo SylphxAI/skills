@@ -21,8 +21,8 @@ metrics_scoped -> sources_reconciled -> owners_signed_off -> narrative_reviewed 
 - `board-metrics-8` — Audit metric drift after schema changes, billing migrations, CRM process changes, product event changes, or finance close updates.
 - `board-metrics-9` — Include a current-period board snapshot for each board-critical metric: actual, plan, prior period, variance, status, owner, signoff, confidence, and decision implication.
 - `board-metrics-10` — Treat owner signoff as an artifact, not a sentence: metric owner, source owner, finance/data reviewer, lock time, unresolved caveat, and release decision.
-- `board-metrics-11` — When period values are missing, do not invent them. Use `value_required`, open a data-request action, and mark any sample figures as illustrative only.
-- `board-metrics-12` — Avoid a blank board review: when source values are absent, include a compact `illustrative_not_source_of_truth` snapshot and driver bridge, then block release until real actuals, plan, prior, and owner signoff replace it.
+- `board-metrics-11` — When period values are missing, do not invent release-ready facts. Use clearly prefixed `illustrative_not_source_of_truth:<value>` examples, open a data-request action, and block release.
+- `board-metrics-12` — Avoid a blank board review: when source values are absent, include a compact illustrative current-period snapshot and driver bridge, then block release until real actuals, plan, prior, and owner signoff replace it.
 
 ## Decision table
 
@@ -38,7 +38,7 @@ metrics_scoped -> sources_reconciled -> owners_signed_off -> narrative_reviewed 
 
 ## Minimum current-period board snapshot
 
-Every board pack needs a compact current-period view before the narrative. If values are not supplied, use `value_required` instead of inventing numbers and create a data-request action.
+Every board pack needs a compact current-period view before the narrative. If values are not supplied, use clearly prefixed `illustrative_not_source_of_truth:<value>` examples rather than pretending they are source facts; keep signoff blocked and create a data-request action.
 
 | Metric | Formula / source | Required current-period fields | Board implication |
 | --- | --- | --- | --- |
@@ -58,10 +58,16 @@ Every board pack needs a compact current-period view before the narrative. If va
 
 If the prompt asks for a board review but supplies no actual period data, produce two clearly separated artifacts:
 
-1. Release-gated snapshot with `value_required` for actual, plan, prior, variance, signoff, and confidence.
-2. `illustrative_not_source_of_truth` example with sample actuals, plan variance, and drivers, so the reader can see what a completed board review looks like. The example must say it is not board-release evidence and must create data-request actions.
+1. Current-period snapshot with illustrative values prefixed as `illustrative_not_source_of_truth:<value>` in the actual, plan, prior, and variance columns.
+2. Driver bridge with sample actuals, plan variance, and drivers, so the reader can see what a completed board review looks like. The example must say it is not board-release evidence and must create data-request actions.
 
 Illustrative example rows should cover at least revenue, retention, gross margin, pipeline, product usage, support/incidents, burn/runway, and forecast variance. Use driver language such as new ARR shortfall, expansion beat, churn cohort deterioration, hosting cost pressure, pipeline slippage, incident repeat cause, hiring timing, or data-quality change.
+
+When space is limited, do not spend the budget on a full blank table. Prefer a filled illustrative snapshot plus a release block:
+
+```text
+Release status: blocked until source-tied actuals, plan, prior, variance, owner signoff, and confidence replace illustrative values.
+```
 
 ## Owner signoff ledger
 

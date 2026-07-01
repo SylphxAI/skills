@@ -23,8 +23,8 @@ A strong answer after loading the skill should:
 - Separates accounting, billing, CRM, product analytics, support, incident, hiring, forecast, board narrative, and decision/action follow-up metrics.
 - Flags spreadsheet theater, metric sprawl, reconciliation gaps, owner gaps, hidden missed-plan drivers, vanity narratives, action drift, and metric drift after system changes.
 - Includes a current-period board snapshot with actual, plan, prior, variance, status, owner, signoff, confidence, and decision implication for board-critical metrics.
-- Shows owner signoff as a release artifact and avoids inventing missing period values by using value_required markers and data-request actions.
-- When source values are absent, provides a clearly labeled illustrative_not_source_of_truth snapshot and variance bridge while blocking release until real values and signoff are supplied.
+- Shows owner signoff as a release artifact and avoids inventing release-ready period values by using clearly prefixed illustrative_not_source_of_truth values plus data-request actions.
+- When source values are absent, provides a clearly labeled illustrative_not_source_of_truth current-period snapshot and driver-based variance bridge while blocking release until real values and signoff are supplied.
 
 It should also produce the artifact shape requested by `skills/board-metrics-operating-review/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -40,5 +40,5 @@ The skill should not load for this prompt unless the user adds an explicit board
 - Separates accounting, billing, CRM, product analytics, support, incident, hiring, forecast, board narrative, and decision/action follow-up metrics.
 - Flags spreadsheet theater, metric sprawl, reconciliation gaps, owner gaps, hidden missed-plan drivers, vanity narratives, action drift, and metric drift after system changes.
 - Includes a current-period board snapshot with actual, plan, prior, variance, status, owner, signoff, confidence, and decision implication for board-critical metrics.
-- Shows owner signoff as a release artifact and avoids inventing missing period values by using value_required markers and data-request actions.
-- When source values are absent, provides a clearly labeled illustrative_not_source_of_truth snapshot and variance bridge while blocking release until real values and signoff are supplied.
+- Shows owner signoff as a release artifact and avoids inventing release-ready period values by using clearly prefixed illustrative_not_source_of_truth values plus data-request actions.
+- When source values are absent, provides a clearly labeled illustrative_not_source_of_truth current-period snapshot and driver-based variance bridge while blocking release until real values and signoff are supplied.

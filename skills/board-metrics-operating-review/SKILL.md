@@ -13,7 +13,7 @@ Use this skill to convert board metrics, board pack, investor reporting, operati
 2. Read `references/board-metrics-operating-patterns.md`.
 3. Classify the situation as monthly operating review, quarterly board pack, financing prep, missed-plan review, metric definition cleanup, investor update, budget review, or strategic pivot discussion.
 4. Define metric dictionary, current-period metric snapshot, source-of-truth map, data-quality checks, owner signoff ledger, variance narrative, forecast bridge, risk register, board asks, and follow-up actions.
-5. If the user supplies no period values, produce a non-release draft: show `value_required` release fields, then include a clearly labeled `illustrative_not_source_of_truth` mini snapshot and variance bridge so the board-review shape is concrete without pretending to know company facts.
+5. If the user supplies no period values, produce a non-release illustrative draft: fill the current-period snapshot with clearly prefixed `illustrative_not_source_of_truth` values, set signoff to blocked, and add data-request actions. Do not leave the board review as blank `value_required` tables unless the user specifically asks for a data-request checklist only.
 6. Produce board metrics operating review, state machine, decision table, event schema, metric pack checklist, signed metric-release plan, board decision memo, and board action register.
 
 ## Guardrails
@@ -23,9 +23,10 @@ Use this skill to convert board metrics, board pack, investor reporting, operati
 - Do not hide missed-plan drivers behind vanity growth narratives.
 - Do not end board reporting without explicit decisions, asks, owners, and follow-up dates.
 - Do not publish a board pack without a current-period snapshot: actual, plan, prior period, variance, owner, signoff status, confidence, and decision implication for each board-critical metric.
-- Do not invent period values when the user has not supplied data. Use `value_required` markers and a data-request register; mark illustrative numbers as illustrative only.
+- Do not invent release-ready period values when the user has not supplied data. Use clearly prefixed `illustrative_not_source_of_truth` values for examples, set signoff/confidence to blocked or illustrative, and create a data-request register.
 - Do not accept owner signoff as a vague plan. Show the signoff artifact: metric owner, source owner, finance/data reviewer, lock time, confidence status, unresolved caveat, and release decision.
-- Do not leave variance as a blank template. If source values are missing, provide an illustrative_not_source_of_truth bridge with sample drivers and explicitly block release until source-tied actuals replace it.
+- Do not leave variance as a blank template. If source values are missing, provide an illustrative_not_source_of_truth bridge with sample driver deltas and explicitly block release until source-tied actuals replace it.
+- Under tight word limits, prioritize: current-period snapshot, six full metric definitions with formulas/source/cadence/segment/caveat, driver-based variance bridge, signoff ledger, board asks, action register.
 
 ## Output format
 
@@ -36,10 +37,7 @@ Audience / source of truth / risk boundary:
 Current-period board snapshot:
 | Metric | Actual | Plan | Prior | Variance | Status | Owner | Signoff | Confidence | Decision implication |
 | --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- | --- |
-
-Illustrative_not_source_of_truth snapshot when source values are absent:
-| Metric | Illustrative actual | Illustrative plan | Illustrative variance | Driver | Board implication |
-| --- | ---: | ---: | ---: | --- | --- |
+Use `illustrative_not_source_of_truth:<value>` in value cells when source values are absent; keep signoff blocked.
 
 Operating metrics plan:
 | Area | Decision | Evidence | Risk | Owner |
