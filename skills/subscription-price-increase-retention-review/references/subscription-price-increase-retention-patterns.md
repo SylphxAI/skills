@@ -3,10 +3,10 @@
 ## Subscription Price Increase Retention Review state machine
 
 ```text
-increase_scoped -> cohorts_segmented -> value_message_prepared -> notice_delivered -> renewal_observed -> retention_learned
-       |                 |                    |                        |                 |                 |
-       v                 v                    v                        v                 v                 v
- scope_gap        cohort_blindspot      weak_value_story         consent_gap       churn_spike      learning_gap
+increase_scoped -> cohorts_segmented -> channel_rules_verified -> value_message_prepared -> notice_delivered -> renewal_observed -> retention_learned
+       |                 |                       |                         |                        |                 |
+       v                 v                       v                         v                        v                 v
+ scope_gap        cohort_blindspot        channel_blocked          weak_value_story           churn_spike      learning_gap
 ```
 
 ## Rule IDs
@@ -23,6 +23,8 @@ increase_scoped -> cohorts_segmented -> value_message_prepared -> notice_deliver
 - `price-retention-10` — Keep App Store and Google Play behavior in a verification matrix instead of assuming one consent model; record current console/API rule, country exception, receipt/RTDN signal, and user no-action outcome.
 - `price-retention-11` — Discounted, grandfathered, enterprise-contract, sales-exception, usage-overage, and hardship customers need separate treatment, approval owners, and migration paths.
 - `price-retention-12` — Rollback and mitigation triggers must be defined before launch: churn, downgrade, complaint, refund, failed-renewal, support-load, sales-escalation, and net-revenue breaches each need an owner and action.
+- `price-retention-13` — Save offers need governance: eligibility, exclusions, expiry, frequency cap, cost, abuse/fairness guardrail, and holdout measurement.
+- `price-retention-14` — Launch sequencing should be renewal-window aware: block unverifiable store channels, delay too-close renewals, protect active contracts, then scale only after cohort readback clears.
 
 ## Mandatory matrices
 
@@ -54,7 +56,7 @@ Use these fields before choosing grandfathering or save offers:
 
 ### Channel rule matrix
 
-Do not rely on generic platform memory. Fill this matrix with current store-console/API evidence before launch:
+Do not rely on generic platform memory. Fill this matrix with current store-console/API evidence before launch. If the prompt does not provide that evidence, write `verify before rollout` instead of guessing.
 
 | Channel | Verify | User states to handle | Support/refund route |
 | --- | --- | --- | --- |
@@ -63,6 +65,64 @@ Do not rely on generic platform memory. Fill this matrix with current store-cons
 | Google Play | Current Play price-migration/price-change flow, base plan/offer setup, region timing, RTDN signal, user no-action outcome | platform notice shown, accepted, declined, no response, renewal/cancel state, grace/account-hold state | Google refund route, support macro explaining Play-managed billing |
 
 If the current platform rule is unknown, write `verify before rollout` and make launch blocked for that channel.
+
+### Consent and renewal state table
+
+Use this table when store behavior is uncertain. Unknown states are launch blockers, not blanks to fill from memory.
+
+| Channel | Consent not required | Consent pending | Accepted | Declined | No response | Renewed old/new price | Payment failed/disputed | Required evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Direct | Verify ToS/contract and local notice requirement | Notice delivered, in-app/email timestamp | Consent/event record if required | Preserve old price/cancel if required by policy | Define invoice outcome before launch | Invoice/payment ledger proves price | Retry, grace, chargeback path | ToS, notice logs, invoices, payment events |
+| App Store | `verify before rollout` per country/subscription group | Store notification/subscriber status as verified | Receipt/server notification confirms accepted/new price | Store-managed cancellation or old-price state as verified | `verify before rollout`; block if unknown | Receipt/server notification proves renewal price | Store refund/dispute evidence | App Store Connect/config, receipt/server notification, territory evidence |
+| Google Play | `verify before rollout` per country/base plan | Play price-change/migration state as verified | RTDN/API confirms accepted/new price | Cancel/old-price/account state as verified | `verify before rollout`; block if unknown | RTDN/API proves renewal price | Grace/account-hold/refund evidence | Play Console/base plan, RTDN/API, country evidence |
+
+### Offer governance and experiment design
+
+Save offers protect net revenue only when they are bounded. Use an explicit offer register:
+
+| Field | Required decision |
+| --- | --- |
+| Eligibility | Cohort, tenure, usage, churn risk, billing channel, region, and margin floor. |
+| Exclusions | Enterprise contracts, abusive repeat churn threats, unsupported store channel, hardship/manual-review cohorts, and already-discounted plans when stacking would break margin. |
+| Offer type | Annual migration, phased increase, temporary loyalty credit, downgrade path, pause, grandfather extension, or one-time retention discount. |
+| Expiry and frequency cap | Expiration date, renewal cutoff, maximum uses per account, and cooldown before another save offer. |
+| Measurement | Holdout or matched cohort, offer shown/accepted, retained revenue, refund/support cost, complaint rate, and later churn. |
+| Fairness control | Plain-language eligibility, accessible cancellation, no hidden penalty for declining, and exception owner for hardship cases. |
+
+### Launch sequence
+
+1. Freeze source-of-truth cohorts and exclude any account with missing billing channel, renewal date, contract term, or discount provenance.
+2. Verify channel rules for direct billing, App Store, Google Play, reseller, and enterprise contracts; mark unknown store behavior as a launch blocker.
+3. Stage by renewal window: T-90/T-60 cohorts first, then T-30 only if notice is already valid; delay renewal-week and just-renewed cohorts unless a refund/support policy is pre-approved.
+4. Send value narrative and notice with exact old price, new price, effective date, cancellation route, refund route, and support contact.
+5. Observe consent, renewal, payment failure, cancellation intent, refund, complaint, and support load by cohort before opening the next tranche.
+6. Pause or roll back when guardrails breach; do not compensate with broader discounts unless the offer register and finance owner approve it.
+
+### Live rollout incident readback
+
+When a price change is already live and noisy, the first artifact is not a new campaign plan; it is an evidence readback and go/no-go decision.
+Do not invent named regions, tax outcomes, or threshold values when the prompt does not supply them. Use explicit unset values such as `launched country/territory`, `country A`, `+Xpp vs holdout`, `>Yx baseline`, and `threshold to set` until telemetry or policy evidence exists.
+
+| Dimension | Required split |
+| --- | --- |
+| Region | launched country/territory, currency, tax display, language/localization, regional price delta |
+| Channel | direct, App Store, Google Play, reseller, enterprise invoice |
+| Plan/package | legacy plan, current plan, new package, annual, monthly, add-on/overage exposure |
+| Protected cohort | grandfathered, coupon/discount, education/nonprofit, hardship, sales exception, enterprise contract |
+| Renewal window | T-90/T-60/T-30/T-7, renewal week, grace/account-hold, just-renewed/refund window |
+| Signal breach | cancellation, downgrade, failed renewal, refund, dispute, complaint/social sentiment, support tickets, sales escalation |
+| Commercial readback | gross uplift, churn loss, refunds/credits, support cost, sales concessions, net revenue, projected LTV/NRR |
+
+Use a decision table with explicit owners:
+
+| Condition | Decision | Owner | Measurement value |
+| --- | --- | --- | --- |
+| Contract or sales-exception breach risk | Stop automation; account-owner/legal review before any new notice | Sales/Legal | any unapproved contract/exception touched |
+| Grandfathered or education trust breach | Pause cohort; extend protected period or restore prior price while policy is corrected | Pricing council + Support | complaint/refund rate `>Yx baseline` or `+Xpp vs holdout` |
+| Country/localization complaint spike | Pause that launched country/territory; correct tax display, language, and effective date using verified evidence | Product/Growth | localized complaint rate `>Yx baseline` |
+| Refund/dispute/support spike above threshold | Freeze affected channel; activate refund/goodwill macro and support escalation queue | Support/Billing | refund/dispute/support `>Yx baseline` |
+| Net revenue below control after churn/refunds/credits/support/sales concessions | Roll back or redesign price/packaging before scaling | Finance/Pricing | net revenue or projected LTV/NRR below holdout/control |
+| Metrics recover and no blocker remains | Resume next tranche from T-90/T-60 cohorts only | Rollout owner | all blocking thresholds clear for `N` days |
 
 ## Decision table
 
