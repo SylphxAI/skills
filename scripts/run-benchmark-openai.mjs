@@ -7,7 +7,7 @@ const repoRoot = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
 const defaultBaseUrl = 'https://api.openai.com/v1';
 
 function usage() {
-  console.error(`Usage: node scripts/run-benchmark-openai.mjs <tasks.json> --out <result.json> [options]\n\nOptions:\n  --run-id <id>              Stable run identifier. Defaults to timestamp.\n  --model <model>            Answer model. Defaults to OPENAI_MODEL or gpt-5.5.\n  --judge-model <model>      Judge/trigger model. Defaults to BENCHMARK_JUDGE_MODEL or --model.\n  --base-url <url>           OpenAI-compatible API base URL. Defaults to https://api.openai.com/v1.\n  --output-dir <dir>         Directory for raw outputs. Defaults to /tmp/skill-benchmark-<run-id>.\n  --temperature <number>     Answer temperature. Defaults to 0.2.\n  --max-output-tokens <n>    Answer token cap. Defaults to 1800.\n  --limit <n>                Run only the first n tasks. Useful for smoke tests.\n  --no-references            Do not include skill reference files in skill-loaded prompts.\n  --skip-trigger-checks      Do not run positive/negative trigger classifier checks.\n  --dry-run                  Validate inputs and print planned calls without contacting the API.\n`);
+  console.error(`Usage: node scripts/run-benchmark-openai.mjs <tasks.json> --out <result.json> [options]\n\nOptions:\n  --run-id <id>              Stable run identifier. Defaults to timestamp.\n  --model <model>            Answer model. Defaults to OPENAI_MODEL or gpt-5.5.\n  --judge-model <model>      Judge/trigger model. Defaults to BENCHMARK_JUDGE_MODEL or --model.\n  --base-url <url>           OpenAI-compatible API base URL. Defaults to https://api.openai.com/v1.\n  --output-dir <dir>         Directory for raw outputs. Defaults to /tmp/skill-benchmark-<run-id>.\n  --temperature <number>     Answer temperature. Defaults to 0.2.\n  --max-output-tokens <n>    Answer token cap. Defaults to 3500.\n  --limit <n>                Run only the first n tasks. Useful for smoke tests.\n  --no-references            Do not include skill reference files in skill-loaded prompts.\n  --skip-trigger-checks      Do not run positive/negative trigger classifier checks.\n  --dry-run                  Validate inputs and print planned calls without contacting the API.\n`);
   process.exit(1);
 }
 
@@ -17,7 +17,7 @@ function parseArgs(argv) {
     judgeModel: process.env.BENCHMARK_JUDGE_MODEL,
     baseUrl: process.env.OPENAI_BASE_URL || defaultBaseUrl,
     temperature: 0.2,
-    maxOutputTokens: 1800,
+    maxOutputTokens: 3500,
     includeReferences: true,
     triggerChecks: true,
     dryRun: false,
@@ -114,27 +114,44 @@ async function callResponses({ apiKey, baseUrl, model, input, maxOutputTokens, t
   if (textFormat) body.text = { format: textFormat };
 
   const startedAt = Date.now();
-  const response = await fetch(`${baseUrl.replace(/\/$/, '')}/responses`, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify(body),
-  });
-  const raw = await response.text();
-  const latencyMs = Date.now() - startedAt;
-  let parsed;
-  try {
-    parsed = JSON.parse(raw);
-  } catch {
-    parsed = { raw };
+  let lastError;
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    const response = await fetch(`${baseUrl.replace(/\/$/, '')}/responses`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(body),
+    });
+    const raw = await response.text();
+    const latencyMs = Date.now() - startedAt;
+    let parsed;
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      parsed = { raw };
+    }
+    if (!response.ok) {
+      const message = parsed?.error?.message || raw;
+      lastError = new Error(`OpenAI Responses API failed (${response.status}, attempt ${attempt}/3): ${message}`);
+      if ((response.status === 429 || response.status >= 500) && attempt < 3) {
+        await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+        continue;
+      }
+      throw lastError;
+    }
+    if (parsed.status && parsed.status !== 'completed') {
+      const details = parsed.incomplete_details ? ` ${JSON.stringify(parsed.incomplete_details)}` : '';
+      throw new Error(`OpenAI Responses API returned status=${parsed.status}; increase --max-output-tokens or use another model.${details}`);
+    }
+    const text = outputText(parsed);
+    if (!text.trim()) {
+      throw new Error('OpenAI Responses API returned no output text despite a successful HTTP response.');
+    }
+    return { response: parsed, text, latencyMs };
   }
-  if (!response.ok) {
-    const message = parsed?.error?.message || raw;
-    throw new Error(`OpenAI Responses API failed (${response.status}): ${message}`);
-  }
-  return { response: parsed, text: outputText(parsed), latencyMs };
+  throw lastError || new Error('OpenAI Responses API failed without a response');
 }
 
 function criterionScoreSchema(rubric) {
@@ -154,7 +171,7 @@ function judgmentSchema(task) {
       score: { type: 'number', description: 'Overall weighted score from 0 to 5.' },
       criterionScores: criterionScoreSchema(task.rubric),
       criticalFailures: { type: 'array', items: { type: 'string' } },
-      rationale: { type: 'string' },
+      rationale: { type: 'string', description: 'Short rationale, 40 words or fewer.' },
     },
     required: ['score', 'criterionScores', 'criticalFailures', 'rationale'],
     additionalProperties: false,
@@ -197,11 +214,73 @@ function judgePrompt({ task, aOutput, bOutput }) {
   const rubric = (task.rubric || []).map((criterion) => `- ${criterion.id} (weight ${criterion.weight}${criterion.required ? ', required' : ''}): ${criterion.description}`).join('\n');
   const artifacts = (task.expectedArtifacts || []).map((item) => `- ${item}`).join('\n');
   const failureModes = (task.failureModes || []).map((item) => `- ${item}`).join('\n');
-  return `You are judging two anonymized answers to the same benchmark task. Return JSON only. Do not infer which answer used a skill. Score each answer from 0 to 5 using the rubric. Penalize generic advice, missing required artifacts, unsafe policy claims, and unsupported assumptions.\n\n## Task\n${task.prompt}\n\n## Expected artifacts\n${artifacts}\n\n## Failure modes\n${failureModes}\n\n## Rubric\n${rubric}\n\n## Answer A\n${aOutput}\n\n## Answer B\n${bOutput}`;
+  return `You are judging two anonymized answers to the same benchmark task. Return JSON only. Do not infer which answer used a skill. Score each answer from 0 to 5 using the rubric. Keep each rationale to 40 words or fewer. Penalize generic advice, missing required artifacts, unsafe policy claims, and unsupported assumptions.\n\n## Task\n${task.prompt}\n\n## Expected artifacts\n${artifacts}\n\n## Failure modes\n${failureModes}\n\n## Rubric\n${rubric}\n\n## Answer A\n${aOutput}\n\n## Answer B\n${bOutput}`;
 }
 
 function triggerPrompt({ task, skillDescription, prompt }) {
   return `Decide whether this skill should be used for the user prompt. Return JSON only.\n\n## Skill name\n${task.skill}\n\n## Skill description\n${skillDescription}\n\n## User prompt\n${prompt}\n\nUse shouldTrigger=true only when the skill is directly relevant, not merely adjacent.`;
+}
+
+function parseModelJson(text, label) {
+  const trimmed = text.trim();
+  const fenced = trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
+  const candidate = fenced ? fenced[1].trim() : trimmed;
+  try {
+    return JSON.parse(candidate);
+  } catch (error) {
+    const start = candidate.indexOf('{');
+    const end = candidate.lastIndexOf('}');
+    if (start >= 0 && end > start) {
+      try {
+        return JSON.parse(candidate.slice(start, end + 1));
+      } catch {
+        // Fall through to the clearer error below.
+      }
+    }
+    throw new Error(`${label} did not return parseable JSON: ${error.message}`);
+  }
+}
+
+function weightedScore(task, criterionScores) {
+  let weighted = 0;
+  let total = 0;
+  for (const criterion of task.rubric || []) {
+    const score = Number(criterionScores?.[criterion.id]);
+    if (!Number.isFinite(score)) continue;
+    weighted += score * criterion.weight;
+    total += criterion.weight;
+  }
+  return total ? weighted / total : 0;
+}
+
+function coerceScoreRecord(task, record) {
+  const criterionScores = {};
+  for (const criterion of task.rubric || []) {
+    const underscoredId = criterion.id.replaceAll('-', '_');
+    const rawValue = record?.criterionScores?.[criterion.id] ?? record?.criterionScores?.[underscoredId] ?? record?.[criterion.id] ?? record?.[underscoredId];
+    const value = rawValue && typeof rawValue === 'object' ? rawValue.score : rawValue;
+    const score = Number(value);
+    criterionScores[criterion.id] = Number.isFinite(score) ? score : 0;
+  }
+  const score = Number.isFinite(Number(record?.score)) ? Number(record.score) : weightedScore(task, criterionScores);
+  return {
+    score,
+    criterionScores,
+    criticalFailures: Array.isArray(record?.criticalFailures) ? record.criticalFailures : [],
+    rationale: record?.rationale || '',
+  };
+}
+
+function coerceJudgment(task, judgmentJson) {
+  const a = coerceScoreRecord(task, judgmentJson.a || judgmentJson.A || judgmentJson.answer_a || judgmentJson.answerA || judgmentJson.AnswerA || judgmentJson['Answer A']);
+  const b = coerceScoreRecord(task, judgmentJson.b || judgmentJson.B || judgmentJson.answer_b || judgmentJson.answerB || judgmentJson.AnswerB || judgmentJson['Answer B']);
+  let winner = typeof judgmentJson.winner === 'string' ? judgmentJson.winner.toLowerCase() : null;
+  if (!['a', 'b', 'tie'].includes(winner)) {
+    if (a.score > b.score) winner = 'a';
+    else if (b.score > a.score) winner = 'b';
+    else winner = 'tie';
+  }
+  return { a, b, winner };
 }
 
 function normalizeRecord(record, outputFile, apiCall) {
@@ -218,6 +297,7 @@ function normalizeRecord(record, outputFile, apiCall) {
 }
 
 function preferenceFromWinner(winner, order) {
+  winner = typeof winner === 'string' ? winner.toLowerCase() : winner;
   if (winner === 'tie') return 'tie';
   return order[winner] === 'skillLoaded' ? 'skill' : 'baseline';
 }
@@ -303,14 +383,17 @@ async function main() {
         aOutput: order.a === 'skillLoaded' ? skillLoaded.text : baseline.text,
         bOutput: order.b === 'skillLoaded' ? skillLoaded.text : baseline.text,
       }),
-      maxOutputTokens: 1600,
+      maxOutputTokens: Math.max(4000, args.maxOutputTokens),
       temperature: 0,
       textFormat: judgmentSchema(task),
       metadata: { runId: args.runId, taskId: task.id, condition: 'judge' },
     });
-    const judgmentJson = JSON.parse(judgment.text);
-    const baselineJudgment = order.a === 'baseline' ? judgmentJson.a : judgmentJson.b;
-    const skillJudgment = order.a === 'skillLoaded' ? judgmentJson.a : judgmentJson.b;
+    const judgeFile = await writeOutput(args.outputDir, task.id, 'judge-raw', judgment.text);
+    const judgmentJson = coerceJudgment(task, parseModelJson(judgment.text, 'judge'));
+    const judgmentA = judgmentJson.a;
+    const judgmentB = judgmentJson.b;
+    const baselineJudgment = order.a === 'baseline' ? judgmentA : judgmentB;
+    const skillJudgment = order.a === 'skillLoaded' ? judgmentA : judgmentB;
 
     samples.push({
       taskId: task.id,
@@ -319,6 +402,8 @@ async function main() {
       skillLoaded: normalizeRecord(skillJudgment, skillFile, skillLoaded),
       preference: preferenceFromWinner(judgmentJson.winner, order),
       blindOrder: { a: 'hidden', b: 'hidden' },
+      judgeOutputRef: outputRef(judgeFile),
+      judgeOutputSha256: sha256(judgment.text),
       judgeLatencyMs: judgment.latencyMs,
       judgeUsage: judgment.response.usage || null,
     });
@@ -330,12 +415,12 @@ async function main() {
           baseUrl: args.baseUrl,
           model: args.judgeModel,
           input: triggerPrompt({ task, skillDescription, prompt }),
-          maxOutputTokens: 300,
+          maxOutputTokens: 600,
           temperature: 0,
           textFormat: triggerSchema(),
           metadata: { runId: args.runId, taskId: task.id, condition: `trigger-${promptType}` },
         });
-        const parsed = JSON.parse(check.text);
+        const parsed = parseModelJson(check.text, `trigger ${promptType}`);
         triggerChecks.push({
           taskId: task.id,
           promptType,
