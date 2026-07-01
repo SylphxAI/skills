@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Risk Exception Review"
+  short_description: "Govern release risk exceptions"
+  default_prompt: "Use $release-risk-exception-review to review a release risk exception."

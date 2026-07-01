@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Subject Request Ops Review"
+  short_description: "Operate data subject requests"
+  default_prompt: "Use $data-subject-request-ops-review to design data subject request operations."
