@@ -252,7 +252,8 @@ function claimAssessment({ rows, allRows = rows, triggerChecks, avgDelta, skillW
   const useful = sampleDepthOk && winRateOk && deltaOk && criticalOk && triggerOk;
   const suiteDepth = suiteDepthStats(rows);
   const requiredModelOverlap = Math.min(20, uniqueTaskIds.size);
-  const modelOverlap = modelOverlapStats(allRows, requiredModelOverlap);
+  const cleanCompleteRows = allRows.filter((row) => row.sourceDirty === false && row.runnerPartial !== true);
+  const modelOverlap = modelOverlapStats(cleanCompleteRows, requiredModelOverlap);
   const confidenceOk = Boolean(ci && ci.low > 0);
   const sotaCandidate = useful && suiteDepth.ok && modelOverlap.ok && confidenceOk && triggerOk;
 
@@ -308,6 +309,7 @@ async function main() {
         completedAt: result.runner?.completedAt || null,
         sourceHead: source.head || null,
         sourceDirty: typeof source.dirty === 'boolean' ? source.dirty : null,
+        runnerPartial: result.runner?.partial === true,
         taskId: sample.taskId,
         skill: sample.skill,
         baselineScore: sample.baseline.score,
@@ -396,7 +398,7 @@ async function main() {
   console.log(`- Claim tier supported by this data: ${assessment.tier}`);
   console.log(`- Claim depth scope: ${assessment.sampleDepthScope}`);
   console.log(`- Useful-claim gates: sampleDepth=${assessment.checks.sampleDepthOk ? 'pass' : 'fail'}, winRate=${assessment.checks.winRateOk ? 'pass' : 'fail'}, avgDelta=${assessment.checks.deltaOk ? 'pass' : 'fail'}, criticalFailures=${assessment.checks.criticalOk ? 'pass' : 'fail'}, overTrigger=${assessment.checks.triggerOk ? 'pass' : 'fail'}`);
-  console.log(`- SOTA-candidate gates: useful=${assessment.sotaChecks.usefulOk ? 'pass' : 'fail'}, suiteDepth=${assessment.sotaChecks.multiSuiteDepthOk ? 'pass' : `fail(${assessment.suiteDepth.qualifyingSuiteCount}/2 suites >=${assessment.suiteDepth.minRowsPerSuite})`}, modelOverlap=${assessment.sotaChecks.multiModelOverlapOk ? 'pass' : `fail(${assessment.modelOverlap.bestOverlap}/${assessment.modelOverlap.requiredOverlap} shared tasks)`}, ciLowerAboveZero=${assessment.sotaChecks.confidenceOk ? 'pass' : 'fail'}, overTrigger=${assessment.sotaChecks.triggerOk ? 'pass' : 'fail'}`);
+  console.log(`- SOTA-candidate gates: useful=${assessment.sotaChecks.usefulOk ? 'pass' : 'fail'}, suiteDepth=${assessment.sotaChecks.multiSuiteDepthOk ? 'pass' : `fail(${assessment.suiteDepth.qualifyingSuiteCount}/2 suites >=${assessment.suiteDepth.minRowsPerSuite})`}, modelOverlap=${assessment.sotaChecks.multiModelOverlapOk ? 'pass' : `fail(${assessment.modelOverlap.bestOverlap}/${assessment.modelOverlap.requiredOverlap} clean shared tasks)`}, ciLowerAboveZero=${assessment.sotaChecks.confidenceOk ? 'pass' : 'fail'}, overTrigger=${assessment.sotaChecks.triggerOk ? 'pass' : 'fail'}`);
   console.log('');
   console.log('| Task | Skill | Baseline | Skill-loaded | Delta | Preference |');
   console.log('| --- | --- | ---: | ---: | ---: | --- |');
