@@ -14,4 +14,10 @@ A valid result file must include:
 - judge identity and whether judging was blind.
 - trigger checks when over-trigger rate is claimed.
 
+Generated results should be produced by a reproducible runner, for example:
+
+```bash
+OPENAI_API_KEY=... npm run benchmark:run:openai -- benchmarks/skill-behavior/tasks/core-product-v0.json --out benchmarks/skill-behavior/results/<run-id>.json --output-dir benchmarks/skill-behavior/results/<run-id>-outputs --run-id <run-id>
+```
+
 Structural validation and install verification are not behavioral proof. If this directory is empty, the repository has no public benchmark data yet.

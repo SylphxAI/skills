@@ -251,7 +251,7 @@ Project identity and delivery boundary are recorded in
 
 ## Behavioral benchmark
 
-Installability is not the same as usefulness. The repository now includes a paired baseline-vs-skill benchmark framework in [`benchmarks/skill-behavior/`](./benchmarks/skill-behavior/) and the methodology in [`docs/skill-benchmark-methodology.md`](./docs/skill-benchmark-methodology.md).
+Installability is not the same as usefulness. The repository now includes a paired baseline-vs-skill benchmark framework in [`benchmarks/skill-behavior/`](./benchmarks/skill-behavior/), an optional OpenAI Responses API runner, and the methodology in [`docs/skill-benchmark-methodology.md`](./docs/skill-benchmark-methodology.md).
 
 Current public status: skills are schema-validated and install-verified, but behavioral usefulness should be claimed only after a public result file shows skill-loaded outputs beating baseline outputs on the benchmark rubric.
 

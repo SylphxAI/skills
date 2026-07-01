@@ -42,14 +42,23 @@ Before that, call the skill **Preview / unproven** even if it passes repository 
 - `tasks/*.json` — task prompts, skill names, expected artifacts, and scoring rubrics.
 - `results/*.json` — scored paired runs from a model and judge.
 - `scripts/create-benchmark-jobs.mjs` — exports provider-neutral JSONL jobs for baseline, skill-loaded, and negative-control runs.
+- `scripts/run-benchmark-openai.mjs` — optional OpenAI Responses API runner that generates raw outputs, blind judge scores, and result JSON.
 - `scripts/validate-benchmarks.mjs` — validates task/result file shape and skill references.
-- `scripts/summarize-benchmark-results.mjs` — computes score deltas and win rates from result files.
+- `scripts/summarize-benchmark-results.mjs` — computes score deltas, win rates, trigger rates, and supported claim tier from result files.
 
 Prepare a run pack:
 
 ```bash
 npm run benchmark:prepare -- benchmarks/skill-behavior/tasks/core-product-v0.json --out /tmp/core-product-v0.jobs.jsonl --run-id <run-id>
 ```
+
+Run a scored OpenAI Responses API benchmark:
+
+```bash
+OPENAI_API_KEY=... npm run benchmark:run:openai -- benchmarks/skill-behavior/tasks/core-product-v0.json --out /tmp/core-product-v0.result.json --run-id <run-id>
+```
+
+Use `--dry-run` first to confirm task count, model, judge model, output path, and expected API calls without sending data to the API.
 
 ## Result evidence requirements
 
@@ -60,3 +69,5 @@ A result file is accepted only when it includes:
 - matching `skill` names for each task;
 - baseline and skill-loaded `score`, `criterionScores`, `criticalFailures`, and an output reference (`outputRef`, `outputPath`, or `outputSha256`);
 - optional `triggerChecks` for positive and negative-control prompts so over-trigger rate can be reported.
+
+Do not commit a generated result unless raw outputs or output hashes are reviewable and the run configuration is reproducible.
