@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Onboarding Migration Runbook Review"
+  short_description: "Plan customer migrations"
+  default_prompt: "Use $customer-onboarding-migration-runbook-review to design a customer onboarding migration runbook."

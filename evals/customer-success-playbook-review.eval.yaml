@@ -1,0 +1,10 @@
+skill: customer-success-playbook-review
+positive_prompts:
+  - "Design customer success playbooks for enterprise SaaS covering onboarding, adoption, health scoring, QBRs, renewal risk, expansion, champion change, support escalations, and product feedback loops."
+  - "Audit a CS motion where CSMs improvise, health scores are noisy, QBRs lack value evidence, renewal saves start late, and product blockers never route back."
+negative_prompts:
+  - "Review API version deprecation policy."
+expected_behavior:
+  - "Defines lifecycle stage, segment, triggers, entry/exit criteria, touchpoints, assets, owners, escalations, and metrics for repeatable customer outcomes."
+  - "Separates onboarding, adoption, risk recovery, QBR, renewal, expansion, champion-change, and escalation playbooks."
+  - "Flags CSM heroics, generic high-touch coverage, noisy health scores, QBRs without value proof, late renewal saves, and product blockers with no owner."

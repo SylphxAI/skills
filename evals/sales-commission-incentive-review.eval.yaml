@@ -1,0 +1,10 @@
+skill: sales-commission-incentive-review
+positive_prompts:
+  - "Review a sales commission plan for enterprise SaaS with new-logo quota, expansion credit, renewal ownership, accelerators, clawbacks, discount guardrails, partner conflict, and multi-year usage commits."
+  - "Audit incentives that reward bad-fit deals, heavy discounts, unsupported contract terms, channel fights, and customers who churn shortly after payout."
+negative_prompts:
+  - "Design a data deletion erasure workflow."
+expected_behavior:
+  - "Defines commissionable event, source of truth, eligible roles, deal types, payout timing, quota credit, exception approval, disputes, clawbacks, and finance reconciliation."
+  - "Includes guardrails for discounting, margin, customer fit, contract exceptions, payment terms, support burden, early churn, and channel conflict."
+  - "Flags incentives that reward bad-fit customers, inflated commits, unsupported terms, spreadsheet payout truth, and short-term behavior over retention."

@@ -1,0 +1,10 @@
+skill: api-versioning-deprecation-review
+positive_prompts:
+  - "Design API versioning and deprecation for a public SaaS API changing schemas, webhooks, SDKs, rate limits, docs, changelog, migration guides, customer notifications, and sunset timelines."
+  - "Audit an API deprecation where usage analytics are missing, docs and SDKs disagree, customers were not notified, and exceptions have no expiry."
+negative_prompts:
+  - "Review marketplace quality scoring."
+expected_behavior:
+  - "Classifies additive, behavior, breaking schema, auth/rate-limit, webhook, SDK, deprecated field, endpoint sunset, and emergency security changes."
+  - "Includes compatibility tests, schemas/OpenAPI, SDKs, docs, changelog, migration guide, usage analytics, notifications, exceptions, support runbook, and sunset monitoring."
+  - "Flags behavior breaks mislabeled as additive, surprise sunsets, inconsistent docs/SDKs, permanent exceptions, and missing customer migration proof."

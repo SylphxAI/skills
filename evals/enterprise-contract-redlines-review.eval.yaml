@@ -1,0 +1,10 @@
+skill: enterprise-contract-redlines-review
+positive_prompts:
+  - "Review enterprise contract redlines requesting higher liability, custom SLA credits, data residency, subprocessor notice, security audit rights, AI data-use limits, and non-standard renewal terms."
+  - "Audit a contracting process where sales accepts redlines that create hidden support, security, finance, and product obligations no team tracks."
+negative_prompts:
+  - "Prioritize feature requests from support tickets."
+expected_behavior:
+  - "Classifies redlines by clause type, risk, owner, standard fallback, required evidence, approval path, accepted obligation, and renewal review."
+  - "Includes legal, commercial, finance, privacy/security, support/SLA, product capability, and operational impacts without giving legal advice."
+  - "Flags hidden obligations, roadmap promises, false security/data commitments, unbounded liability, unsupported support terms, and missing obligation tracking."

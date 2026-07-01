@@ -1,0 +1,10 @@
+skill: marketplace-quality-scoring-review
+positive_prompts:
+  - "Design marketplace quality scoring for an AI skill marketplace with listing completeness, eval results, reviews, installs, support burden, freshness, moderation, ranking boosts, badges, appeals, and anti-gaming controls."
+  - "Audit a marketplace ranking score that rewards volume and revenue while hiding low quality, disputes, review manipulation, and new creator disadvantage."
+negative_prompts:
+  - "Review API versioning deprecation."
+expected_behavior:
+  - "Defines quality dimensions, scoring inputs, thresholds, confidence, eligibility/ranking/badge actions, anti-gaming controls, explanations, appeals, fairness, and monitoring."
+  - "Includes reviews, usage success, refunds/disputes, support burden, moderation, freshness, expert audit, cold-start, and category normalization."
+  - "Flags opaque punishment, engagement/revenue over quality, incumbent lock-in, biased signals, review manipulation, and no appeal path."
