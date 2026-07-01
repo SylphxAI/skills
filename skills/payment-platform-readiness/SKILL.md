@@ -14,7 +14,10 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 3. Map catalog, checkout, receipt/webhook processing, idempotent ledger ingestion, entitlement projection, refund/revoke/dispute handling, support corrections, settlement, and reconciliation.
 4. Define provider-specific precedence for Apple IAP, Google Play Billing, Stripe/web checkout, wallets, promo/admin grants, restore purchases, renewals, refunds, chargebacks, and delayed events.
 5. Check platform-specific constraints, sandbox/live separation, fallback paths, customer messaging, finance close, and operational rollback.
-6. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability dashboards, rollback controls, and launch checklist.
+6. For outages or backlogs, define explicit ingestion states: paused, quarantined, deduplicated, ordered by provider effective time, replaying, projector-repaired, finance-reconciled, and resumed.
+7. For invoice/tax/finance-close launches, model invoice, tax, coupon, credit note, refund, dispute, fee, settlement, revenue export, entitlement, dunning, and manual adjustment as separate events with owners and exception queues.
+8. For finance close, name numeric tolerances, cadence, owner, source systems, exception queue, and close blocker for every money/tax/settlement/revenue check.
+9. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability dashboards, rollback controls, and launch checklist.
 
 ## Guardrails
 
@@ -26,6 +29,7 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 - Do not let support agents change provider truth. Support corrections must be role-gated, reason-coded, expiring where appropriate, and auditable.
 - Do not ship payments without fee, tax, settlement, invoice, refund, dispute, and entitlement reconciliation evidence.
 - Do not call release gates complete unless every gate names the fixture, dashboard/alert, rollback or kill-switch path, owner, and approval evidence.
+- Do not describe webhook replay as a generic queue drain; every replay state needs required evidence, ordering/idempotency rule, exit gate, dead-letter handling, customer/support impact, and incident-review artifact.
 
 ## Output format
 
@@ -50,9 +54,15 @@ Provider precedence rules:
 
 Reconciliation and finance close:
 - <money/settlement/tax/fee/entitlement check> -> <source, cadence, owner, exception action>
+- Close control table -> check, source systems, cadence, numeric tolerance, owner, exception queue, close blocker
+- Explicit close events -> invoice_created / tax_calculated / coupon_applied / credit_note_issued / payment_succeeded_or_failed / refund_or_dispute / fee_recorded / settlement_received / revenue_exported / entitlement_granted_or_revoked / dunning_started_or_exhausted / manual_adjustment
 
 Support-safe correction flow:
-- <case> -> <lookup evidence, allowed action, approval, ledger event, customer message>
+- <case> -> lookup keys (account_id, user_id, invoice_id, payment_intent/charge, subscription, entitlement_id, tax document, support_case_id), evidence, allowed action, approval, ledger event, customer message
+
+Webhook outage replay flow:
+- Use a table: state, owner, required evidence, ordering/idempotency rule, dead-letter handling, exit gate, customer/support impact
+- Include incident review: provider timeline, retry/dead-letter metrics, projector diff, false-revoke/over-grant disposition, finance exceptions, control fix, approval artifact
 
 Blockers:
 - <blocker>
