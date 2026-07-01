@@ -13,13 +13,16 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 2. Read `references/marketplace-payout-systems.md`.
 3. Map buyer payment, platform fee, seller earnings, pending balance, holds, refunds, disputes, adjustments, payout, and reconciliation.
 4. Separate ledger truth, displayed balances, provider state, policy decisions, and support evidence.
-5. Produce payout state machine, fee table, risk controls, support views, and reconciliation checks.
+5. Define reserve/hold governance: reason codes, release criteria, SLA, owner, evidence, escalation, and appeal path.
+6. Cover tax forms, withholding, sanctions screening, country eligibility, payout provider constraints, failed transfers, and negative balances.
+7. Produce formal payout state machine, fee table, risk controls, support views, audit invariants, and reconciliation checks.
 
 ## Guardrails
 
 - Do not treat displayed balance as ledger truth.
 - Do not pay out funds that remain within a refund, fraud, chargeback, or delivery-risk window unless risk is explicitly accepted.
 - Do not make opaque holds or clawbacks without reason, evidence, and appeal/support path.
+- Do not approve global payouts without tax/compliance handoff, provider eligibility constraints, and creator-visible support status.
 
 ## Output format
 
@@ -30,11 +33,23 @@ Fee and risk model:
 Payout flow:
 - <state> -> owner, evidence, user message
 
+Formal state machine:
+- <from_state> -> <event> -> <to_state>, ledger effect, audit invariant
+
 Decision table:
 - <scenario> -> balance action, payout action, support action
 
+Reserve/hold governance:
+- <hold/reserve type> -> trigger, scope, release criteria, SLA, owner, appeal/support path
+
+Compliance/provider readiness:
+- <tax/sanctions/country/provider constraint> -> product state, evidence, support message, qualified-review owner
+
 Ledger/events:
 - <event> with properties
+
+Audit invariants:
+- <invariant that must always hold across ledger, balances, provider state, and support evidence>
 
 Open risks:
 - <risk> -> mitigation
