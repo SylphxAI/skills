@@ -30,6 +30,9 @@
 - `notify-15` — Guardrail metrics must include delivery, retention, opt-in, opt-out, unsubscribe, complaint/spam, support contacts, and notification-attributed churn.
 - `notify-16` — Frequency caps must be explicit at global, category, lifecycle-event, and channel levels; vague "avoid spam" guidance is not enough.
 - `notify-17` — Suppression decisions should be deterministic and explainable: priority, dedupe key, cooldown, quiet hours, digest eligibility, conversion/support stop condition, and emergency override reason.
+- `notify-18` — Fatigue incidents need cohort/channel/event readback before new campaigns: opt-out, unsubscribe, complaint/spam, uninstall, support-contact, conversion, and retention signals by lifecycle event.
+- `notify-19` — Emergency overrides are only for security, safety, service continuity, or explicit user-requested critical alerts; marketing and habit nudges must never bypass caps or quiet hours.
+- `notify-20` — Permission recovery after denial must be user-initiated or value-led through in-product education and preference centers; do not repeatedly trigger platform prompts or nag users into settings.
 
 ## Lifecycle matrix
 
@@ -115,6 +118,32 @@ Suppression rules:
 - Apply quiet hours by user timezone except for user-requested or critical transactional/security messages.
 - Escalate channels only when value decays with time and the user has granted that channel.
 - Record `frequency_budget_id`, `cap_type`, `cap_remaining`, and `suppression_decision_version` for auditability.
+
+## Permission and preference recovery
+
+| Consent/preference state | Allowed action | Recovery path | Prohibited action |
+| --- | --- | --- | --- |
+| unknown / not asked | Explain concrete value in-product; ask only at a useful moment | preference preview, soft ask, user-triggered settings entry | generic first-launch prompt |
+| soft asked / not now | Respect cooldown and continue in-app education only when relevant | show value example after user action | immediate repeat prompt |
+| platform denied | Use in-app/email fallback and preference center | user-initiated instructions to OS/browser settings | repeated platform prompts or nag banners |
+| granted but category off | Respect category preference | preference center with per-category examples | send through another category |
+| unsubscribed / complaint | Stop marketing/lifecycle sends in that scope | confirmation and resubscribe only if user initiates | win-back through a different channel |
+
+## Fatigue incident readback
+
+When opt-outs, complaints, uninstalls, spam reports, or support contacts rise, pause new sends for the noisy cohort and read back:
+
+| Dimension | Required split |
+| --- | --- |
+| Cohort | new users, trial users, paying users, dormant users, power users, region/timezone |
+| Channel | push, email, in-app, SMS, desktop/browser, support outreach |
+| Lifecycle event | onboarding, trial, renewal, failed payment, workflow recovery, digest, promotion, game/live event, security |
+| Consent/preference state | unknown, soft asked, granted, denied, unsubscribed, complaint, bounced |
+| Frequency bucket | global cap, category cap, lifecycle-event cap, cooldown, quiet-hours deferral, digest candidate, emergency override |
+| Harm signal | opt-out, unsubscribe, complaint/spam, uninstall, support contact, muted category, negative review, notification-attributed churn |
+| Decision | continue, pause, digest, reduce cap, change channel, change copy, suppress cohort, or emergency-only |
+
+Use measurable guardrails such as `+Xpp opt-out vs holdout`, `>Yx complaint baseline`, `support contacts above budget`, and `retention below control`.
 
 ## Event schema
 

@@ -14,8 +14,10 @@ Use this skill to make notifications useful enough to deserve attention.
 3. Classify messages by utility, urgency, consent, lifecycle trigger, frequency, fallback channel, and failure risk.
 4. Build lifecycle, consent/region, and suppression matrices before proposing campaigns.
 5. Define an explicit frequency budget: global cap, category cap, lifecycle-event cap, quiet-hours behavior, cooldown, digest threshold, and emergency override rule.
-6. Design permission timing, preferences, fallback, measurement, support recovery, and experiment guardrails.
-7. Produce a notification taxonomy, lifecycle journey map, channel/frequency policy, suppression rules, consent/preference model, event schema, and trust metrics.
+6. Define deterministic cross-channel dedupe with `dedupe_key`, channel priority, success stop condition, support/billing stop condition, stale-event expiry, and suppression reason.
+7. If notifications are already causing fatigue, complaints, opt-outs, or support contacts, produce an incident readback before adding sends: cohort × channel × lifecycle event × consent state × frequency bucket × complaint/unsubscribe/support signal.
+8. Design permission timing, preferences, fallback, measurement, support recovery, and experiment guardrails.
+9. Produce a notification taxonomy, lifecycle journey map, channel/frequency policy, suppression rules, consent/preference model, incident/readback plan, event schema, and trust metrics.
 
 ## Guardrails
 
@@ -24,8 +26,11 @@ Use this skill to make notifications useful enough to deserve attention.
 - Give users controls, quiet hours, and clear unsubscribe paths.
 - Do not send duplicate push/email/in-app messages for the same lifecycle event unless escalation value is explicit.
 - Do not ask platform push permission before the user has seen a concrete notification value moment.
+- Do not repeatedly ask after denial; use in-product education, preference-center recovery, and a user-initiated path back to OS/browser settings.
 - Do not optimize opens/clicks without delivery, opt-out, unsubscribe, complaint, retention, and long-term trust guardrails.
 - Do not describe fatigue management as "cap frequency" without naming concrete global, category, lifecycle-event, cooldown, and digest rules.
+- Do not use emergency override for marketing, habit nudges, or win-back. Reserve it for security, safety, service continuity, or explicit user-requested critical alerts, and log the override reason.
+- Do not continue a sequence after the user converts, cancels, pays, resolves the workflow, contacts support, unsubscribes, or complains.
 
 ## Output format
 
@@ -51,6 +56,18 @@ Frequency and suppression budget:
 - Cooldowns:
 - Digest/quiet-hours rules:
 - Emergency override:
+
+Cross-channel dedupe and stop rules:
+| Lifecycle event | Dedupe key | Priority order | Stop condition | Suppression reason | Owner |
+| --- | --- | --- | --- | --- | --- |
+
+Preference and recovery model:
+| Consent/preference state | Allowed action | Recovery path | Prohibited action | Evidence |
+| --- | --- | --- | --- | --- |
+
+Fatigue/incident readback, when applicable:
+| Cohort | Channel | Lifecycle event | Frequency bucket | Harm signal | Decision | Owner |
+| --- | --- | --- | --- | --- | --- | --- |
 
 Risks and guardrails:
 - <risk> -> <guardrail>

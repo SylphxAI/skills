@@ -211,6 +211,159 @@
       ]
     },
     {
+      "id": "notification-cross-channel-dedupe-incident-001",
+      "skill": "notification-strategy-review",
+      "category": "lifecycle-growth",
+      "prompt": "Audit a subscription app notification incident where trial-ending, renewal-reminder, failed-payment, and win-back messages are being sent through push, email, in-app, and SMS for the same users. Users complain about duplicates, some already paid or contacted support, quiet hours are ignored in several time zones, and marketing wants to keep the campaign because clicks are high. Produce the recovery decision and future policy.",
+      "negativeControlPrompt": "Design a subscription price-increase rollback plan for grandfathered, education, and enterprise-contract customers after refund complaints.",
+      "expectedArtifacts": [
+        "incident readback by cohort/channel/event",
+        "cross-channel dedupe and stop rules",
+        "frequency and quiet-hours policy",
+        "trust and retention measurement plan"
+      ],
+      "failureModes": [
+        "optimizes clicks despite complaints",
+        "no dedupe key or stop condition",
+        "continues messages after payment or support contact",
+        "ignores quiet hours and time zones"
+      ],
+      "rubric": [
+        {
+          "id": "incident-readback",
+          "weight": 2,
+          "required": true,
+          "description": "Breaks down complaints, unsubscribes, support contacts, payment state, lifecycle event, channel, cohort, and timezone before recommending more sends."
+        },
+        {
+          "id": "dedupe-stop-rules",
+          "weight": 2,
+          "required": true,
+          "description": "Defines durable dedupe keys, channel priority, success/support/cancel/unsubscribe stop conditions, stale-event expiry, and suppression reasons."
+        },
+        {
+          "id": "frequency-quiet-hours",
+          "weight": 2,
+          "required": true,
+          "description": "Sets global, category, lifecycle-event, cooldown, digest, quiet-hours, and escalation rules with no marketing override."
+        },
+        {
+          "id": "commercial-trust",
+          "weight": 1,
+          "required": true,
+          "description": "Handles trial, renewal, failed payment, and win-back recovery without deceptive urgency or channel hopping after opt-out."
+        },
+        {
+          "id": "measurement",
+          "weight": 1,
+          "required": false,
+          "description": "Measures delivery, conversion, retained revenue, opt-out, unsubscribe, complaint, support load, retention, and notification-attributed churn."
+        }
+      ]
+    },
+    {
+      "id": "notification-game-liveops-fatigue-001",
+      "skill": "notification-strategy-review",
+      "category": "lifecycle-growth",
+      "prompt": "Design notification strategy for a mobile game with energy-full reminders, daily reward streaks, guild raid invites, limited-time event ending alerts, friend gifts, IAP promotions, refund/support messages, and reactivation campaigns. The game operates globally with quiet hours, minors in the audience, churn risk from spam, and event revenue goals. Produce a policy that protects retention and trust.",
+      "negativeControlPrompt": "Audit Steam store page demo promises, controller support, cloud saves, regional pricing, and first-week community moderation.",
+      "expectedArtifacts": [
+        "game notification taxonomy",
+        "event and reward frequency budget",
+        "minor-safe consent and quiet-hours controls",
+        "retention, revenue, and fatigue guardrails"
+      ],
+      "failureModes": [
+        "treats every game event as urgent",
+        "uses IAP promotions to bypass caps",
+        "ignores minors, quiet hours, and global time zones",
+        "no stop rules after reward claim or event expiry"
+      ],
+      "rubric": [
+        {
+          "id": "game-taxonomy",
+          "weight": 2,
+          "required": true,
+          "description": "Separates utility, social, reward, live-event, promotion, support/refund, and reactivation notifications by user value and urgency."
+        },
+        {
+          "id": "frequency-event-controls",
+          "weight": 2,
+          "required": true,
+          "description": "Defines caps, cooldowns, quiet hours, digesting, event expiry, reward-claimed stop rules, and no marketing emergency override."
+        },
+        {
+          "id": "consent-safety",
+          "weight": 1,
+          "required": true,
+          "description": "Handles minors, region/timezone sensitivity, opt-outs, permission denial, preference controls, and safe support/refund messages."
+        },
+        {
+          "id": "commercial-balance",
+          "weight": 1,
+          "required": true,
+          "description": "Balances event revenue, IAP promotions, retention, churn, complaints, and long-term player trust."
+        },
+        {
+          "id": "measurement",
+          "weight": 1,
+          "required": false,
+          "description": "Tracks event participation, reward claims, revenue, opt-outs, complaints, uninstalls, support contacts, retention, and cohort lift versus holdout."
+        }
+      ]
+    },
+    {
+      "id": "notification-critical-utility-preferences-001",
+      "skill": "notification-strategy-review",
+      "category": "lifecycle-growth",
+      "prompt": "Create a notification policy for a developer utility that sends build finished, deployment failed, backup complete, storage quota warning, security login alert, maintenance incident, product education, and upgrade promotion messages across desktop, browser push, email, and in-app surfaces. Users need critical alerts but complain about noisy marketing and unclear preferences. Produce the taxonomy, preference model, and emergency override rules.",
+      "negativeControlPrompt": "Review marketplace payout reserves, tax holds, provider outages, appeals, and creator-facing payout release communication.",
+      "expectedArtifacts": [
+        "critical versus marketing taxonomy",
+        "preference and consent model",
+        "emergency override and quiet-hours policy",
+        "event schema and trust metrics"
+      ],
+      "failureModes": [
+        "mixes security/operational alerts with promotions",
+        "lets marketing bypass quiet hours",
+        "no per-category preference controls",
+        "no audit trail for emergency overrides"
+      ],
+      "rubric": [
+        {
+          "id": "taxonomy-separation",
+          "weight": 2,
+          "required": true,
+          "description": "Clearly separates security, transactional/operational, utility, product education, and marketing messages with different consent and control rules."
+        },
+        {
+          "id": "preference-consent",
+          "weight": 2,
+          "required": true,
+          "description": "Defines channel/category preferences, unsubscribe scope, denied-permission fallback, browser/desktop settings recovery, and regional consent evidence."
+        },
+        {
+          "id": "emergency-override",
+          "weight": 2,
+          "required": true,
+          "description": "Restricts emergency override to security/service continuity, logs override reason, respects marketing caps, and defines quiet-hours behavior."
+        },
+        {
+          "id": "suppression-dedupe",
+          "weight": 1,
+          "required": true,
+          "description": "Includes dedupe keys, stale-event expiry, success stop conditions, digesting, and suppression reasons across desktop, browser, email, and in-app."
+        },
+        {
+          "id": "trust-metrics",
+          "weight": 1,
+          "required": false,
+          "description": "Tracks delivery, incident acknowledgement, failed alert rate, opt-out/unsubscribe, complaints, support contacts, retained utility value, and marketing harm."
+        }
+      ]
+    },
+    {
       "id": "steam-demo-refund-review-risk-001",
       "skill": "steam-launch-readiness",
       "category": "game-distribution",
