@@ -313,6 +313,159 @@
       ]
     },
     {
+      "id": "subscription-price-store-consent-no-action-001",
+      "skill": "subscription-price-increase-retention-review",
+      "category": "pricing-retention",
+      "prompt": "Audit a mobile subscription price increase that affects direct web billing, App Store subscribers, and Google Play subscribers across several countries. The team is unsure which store cohorts require consent, what happens when users take no action, how receipt/server notifications prove renewal at the old or new price, how refunds should be routed, and whether renewal-week users should be included. Produce a launch decision plan.",
+      "negativeControlPrompt": "Review a creator marketplace payout hold caused by missing tax forms and provider risk review.",
+      "expectedArtifacts": [
+        "channel rule verification matrix",
+        "no-action and renewal state plan",
+        "refund and support routing plan",
+        "launch block and sequencing decision"
+      ],
+      "failureModes": [
+        "assumes App Store and Google Play behave the same",
+        "launches store cohorts without verifying no-action outcomes",
+        "ignores renewal-week and just-renewed users",
+        "routes store refunds through the wrong support path"
+      ],
+      "rubric": [
+        {
+          "id": "channel-verification",
+          "weight": 2,
+          "required": true,
+          "description": "Separates direct, App Store, and Google Play rules and requires current console/API or receipt/server-notification evidence before rollout."
+        },
+        {
+          "id": "state-coverage",
+          "weight": 2,
+          "required": true,
+          "description": "Handles consent required/not required, accepted, declined, no response, renewal at old/new price, cancellation, payment failure, refund, and support states."
+        },
+        {
+          "id": "renewal-window-control",
+          "weight": 1,
+          "required": true,
+          "description": "Segments T-90/T-60/T-30/T-7, renewal-week, and just-renewed users with delay or mitigation decisions for high-surprise windows."
+        },
+        {
+          "id": "support-refund-routing",
+          "weight": 1,
+          "required": true,
+          "description": "Defines store-managed versus direct refund routes, plain-language support macros, escalation owners, and evidence needed to answer disputes."
+        },
+        {
+          "id": "launch-blockers",
+          "weight": 1,
+          "required": false,
+          "description": "Blocks unverifiable store behavior and defines the minimum evidence needed to unblock each channel."
+        }
+      ]
+    },
+    {
+      "id": "subscription-price-annual-save-offer-001",
+      "skill": "subscription-price-increase-retention-review",
+      "category": "pricing-retention",
+      "prompt": "Design a price-increase retention program for a prosumer SaaS moving monthly users from $12 to $18 while encouraging annual migration. Cohorts include power users, low-usage users, students/nonprofits, existing coupon users, users with recent cancellation intent, and users who recently contacted support. The CEO wants save offers, but finance worries about margin leakage and training users to threaten churn. Produce the decision framework.",
+      "negativeControlPrompt": "Plan first-week Steam community moderation, crash triage, streamer keys, and review-risk operations.",
+      "expectedArtifacts": [
+        "cohort and offer eligibility matrix",
+        "annual migration and grandfathering policy",
+        "save-offer experiment plan",
+        "margin, churn, and fairness guardrails"
+      ],
+      "failureModes": [
+        "offers blanket discounts to everyone",
+        "ignores low-usage and hardship cohorts",
+        "no holdout or net revenue measurement",
+        "creates unfair or abusable save-offer rules"
+      ],
+      "rubric": [
+        {
+          "id": "cohort-offer-fit",
+          "weight": 2,
+          "required": true,
+          "description": "Maps power, low-usage, hardship, coupon, cancellation-intent, and support-history cohorts to different treatments."
+        },
+        {
+          "id": "annual-migration",
+          "weight": 1,
+          "required": true,
+          "description": "Defines annual migration, phased increase, grandfathering, downgrade, pause, or cancellation options without coercion."
+        },
+        {
+          "id": "offer-governance",
+          "weight": 2,
+          "required": true,
+          "description": "Specifies eligibility, exclusions, expiry, frequency caps, approval owners, abuse/fairness controls, and margin floors for save offers."
+        },
+        {
+          "id": "experiment-readback",
+          "weight": 1,
+          "required": true,
+          "description": "Uses holdouts or matched cohorts and measures retained revenue, churn, refunds, support load, offer cost, and later churn."
+        },
+        {
+          "id": "trust-comms",
+          "weight": 1,
+          "required": false,
+          "description": "Provides transparent value narrative, notice timing, accessible cancellation, and support language."
+        }
+      ]
+    },
+    {
+      "id": "subscription-price-regional-rollout-incident-001",
+      "skill": "subscription-price-increase-retention-review",
+      "category": "pricing-retention",
+      "prompt": "A global design-tool subscription is rolling out regional price harmonization, packaging changes, and tax-inclusive pricing updates. After the first country tranche, cancellations, refund requests, social complaints, and sales escalations rise among grandfathered, discounted, education, and enterprise-contract customers. Decide whether to continue, pause, rollback, or change the rollout, and define the recovery plan.",
+      "negativeControlPrompt": "Review notification quiet hours, digest frequency, opt-out recovery, and lifecycle push suppression for a productivity app.",
+      "expectedArtifacts": [
+        "incident readback by cohort and region",
+        "pause/rollback decision table",
+        "grandfathering and exception recovery plan",
+        "support, sales, and net-revenue monitoring plan"
+      ],
+      "failureModes": [
+        "keeps rollout going because headline ARR is higher",
+        "blends grandfathered, education, and enterprise-contract users",
+        "no rollback or mitigation trigger",
+        "ignores complaint, refund, and support evidence"
+      ],
+      "rubric": [
+        {
+          "id": "cohort-incident-readback",
+          "weight": 2,
+          "required": true,
+          "description": "Breaks down churn, refunds, complaints, support load, and sales escalations by region, channel, plan, discount, grandfathered, education, and enterprise-contract cohorts."
+        },
+        {
+          "id": "decision-table",
+          "weight": 2,
+          "required": true,
+          "description": "Defines continue, pause, rollback, extend grandfathering, adjust packaging, or rerun notice decisions with thresholds and owners."
+        },
+        {
+          "id": "recovery-actions",
+          "weight": 1,
+          "required": true,
+          "description": "Includes support macros, sales/legal exception handling, refund/goodwill policy, corrected notice, and customer-facing clarification."
+        },
+        {
+          "id": "net-revenue-trust",
+          "weight": 1,
+          "required": true,
+          "description": "Evaluates net revenue after churn, refunds, credits, support load, sales concessions, trust damage, and long-term LTV."
+        },
+        {
+          "id": "learning-loop",
+          "weight": 1,
+          "required": false,
+          "description": "Captures policy, packaging, communication, localization, and instrumentation changes before the next tranche."
+        }
+      ]
+    },
+    {
       "id": "marketplace-payout-provider-outage-001",
       "skill": "marketplace-payouts-review",
       "category": "marketplace-ops",
