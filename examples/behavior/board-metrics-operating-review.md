@@ -22,6 +22,8 @@ A strong answer after loading the skill should:
 - Defines metric dictionary, source-of-truth map, reconciliation boundaries, owner signoff, cohort/segment cuts, variance narrative, forecast bridge, board asks, and action register.
 - Separates accounting, billing, CRM, product analytics, support, incident, hiring, forecast, board narrative, and decision/action follow-up metrics.
 - Flags spreadsheet theater, metric sprawl, reconciliation gaps, owner gaps, hidden missed-plan drivers, vanity narratives, action drift, and metric drift after system changes.
+- Includes a current-period board snapshot with actual, plan, prior, variance, status, owner, signoff, confidence, and decision implication for board-critical metrics.
+- Shows owner signoff as a release artifact and avoids inventing missing period values by using value_required markers and data-request actions.
 
 It should also produce the artifact shape requested by `skills/board-metrics-operating-review/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -36,3 +38,5 @@ The skill should not load for this prompt unless the user adds an explicit board
 - Defines metric dictionary, source-of-truth map, reconciliation boundaries, owner signoff, cohort/segment cuts, variance narrative, forecast bridge, board asks, and action register.
 - Separates accounting, billing, CRM, product analytics, support, incident, hiring, forecast, board narrative, and decision/action follow-up metrics.
 - Flags spreadsheet theater, metric sprawl, reconciliation gaps, owner gaps, hidden missed-plan drivers, vanity narratives, action drift, and metric drift after system changes.
+- Includes a current-period board snapshot with actual, plan, prior, variance, status, owner, signoff, confidence, and decision implication for board-critical metrics.
+- Shows owner signoff as a release artifact and avoids inventing missing period values by using value_required markers and data-request actions.

@@ -12,8 +12,8 @@ Use this skill to convert board metrics, board pack, investor reporting, operati
 1. Identify board audience, decision calendar, metric definitions, data sources, owner signoff, reporting cadence, historical baselines, forecast assumptions, segment/cohort cuts, narrative risks, and action register.
 2. Read `references/board-metrics-operating-patterns.md`.
 3. Classify the situation as monthly operating review, quarterly board pack, financing prep, missed-plan review, metric definition cleanup, investor update, budget review, or strategic pivot discussion.
-4. Define metric dictionary, source-of-truth map, data-quality checks, owner signoff, variance narrative, forecast bridge, risk register, board asks, and follow-up actions.
-5. Produce board metrics operating review, state machine, decision table, event schema, metric pack checklist, owner signoff plan, and board action register.
+4. Define metric dictionary, current-period metric snapshot, source-of-truth map, data-quality checks, owner signoff ledger, variance narrative, forecast bridge, risk register, board asks, and follow-up actions.
+5. Produce board metrics operating review, state machine, decision table, event schema, metric pack checklist, signed metric-release plan, board decision memo, and board action register.
 
 ## Guardrails
 
@@ -21,6 +21,9 @@ Use this skill to convert board metrics, board pack, investor reporting, operati
 - Do not mix GAAP/accounting, billing, product analytics, CRM, support, and finance metrics without clear reconciliation boundaries.
 - Do not hide missed-plan drivers behind vanity growth narratives.
 - Do not end board reporting without explicit decisions, asks, owners, and follow-up dates.
+- Do not publish a board pack without a current-period snapshot: actual, plan, prior period, variance, owner, signoff status, confidence, and decision implication for each board-critical metric.
+- Do not invent period values when the user has not supplied data. Use `value_required` markers and a data-request register; mark illustrative numbers as illustrative only.
+- Do not accept owner signoff as a vague plan. Show the signoff artifact: metric owner, source owner, finance/data reviewer, lock time, confidence status, unresolved caveat, and release decision.
 
 ## Output format
 
@@ -28,10 +31,31 @@ Use this skill to convert board metrics, board pack, investor reporting, operati
 Board metrics context:
 Audience / source of truth / risk boundary:
 
+Current-period board snapshot:
+| Metric | Actual | Plan | Prior | Variance | Status | Owner | Signoff | Confidence | Decision implication |
+| --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- | --- |
+
 Operating metrics plan:
 | Area | Decision | Evidence | Risk | Owner |
 | --- | --- | --- | --- | --- |
 
+Metric dictionary and reconciliation map:
+- <metric> -> <formula, source, cadence, segment, caveat, owner>
+
+Variance narrative:
+- <driver> -> <plan delta, evidence, operating implication, owner action>
+
+Owner signoff ledger:
+| Metric pack | Metric owner | Source owner | Reviewer | Signed/blocked | Caveat | Release decision |
+| --- | --- | --- | --- | --- | --- | --- |
+
+Board decisions and asks:
+- <decision required> -> <options, recommendation, metric evidence, risk, owner, follow-up>
+
 Definitions, sources, owners, variance narrative, board asks, risks, and follow-up actions:
 - <trigger> -> <policy, metric, edge case, support note>
+
+Action register:
+| Action | Owner | Due | Evidence needed | Status | Next review |
+| --- | --- | --- | --- | --- | --- |
 ```
