@@ -101,6 +101,7 @@ Save offers protect net revenue only when they are bounded. Use an explicit offe
 ### Live rollout incident readback
 
 When a price change is already live and noisy, the first artifact is not a new campaign plan; it is an evidence readback and go/no-go decision.
+Do not invent named regions, tax outcomes, or threshold values when the prompt does not supply them. Use placeholders such as `launched country/territory`, `country A`, `+Xpp vs holdout`, `>Yx baseline`, and `threshold to set` until telemetry or policy evidence exists.
 
 | Dimension | Required split |
 | --- | --- |
@@ -114,14 +115,14 @@ When a price change is already live and noisy, the first artifact is not a new c
 
 Use a decision table with explicit owners:
 
-| Condition | Decision | Owner |
-| --- | --- | --- |
-| Contract or sales-exception breach risk | Stop automation; account-owner/legal review before any new notice | Sales/Legal |
-| Grandfathered or education trust breach | Pause cohort; extend protected period or restore prior price while policy is corrected | Pricing council + Support |
-| Country/localization complaint spike | Pause that region; correct tax-inclusive display, language, and effective date | Product/Growth |
-| Refund/dispute/support spike above threshold | Freeze affected channel; activate refund/goodwill macro and support escalation queue | Support/Billing |
-| Net revenue below control after churn/refunds/credits/support/sales concessions | Roll back or redesign price/packaging before scaling | Finance/Pricing |
-| Metrics recover and no blocker remains | Resume next tranche from T-90/T-60 cohorts only | Rollout owner |
+| Condition | Decision | Owner | Measurement placeholder |
+| --- | --- | --- | --- |
+| Contract or sales-exception breach risk | Stop automation; account-owner/legal review before any new notice | Sales/Legal | any unapproved contract/exception touched |
+| Grandfathered or education trust breach | Pause cohort; extend protected period or restore prior price while policy is corrected | Pricing council + Support | complaint/refund rate `>Yx baseline` or `+Xpp vs holdout` |
+| Country/localization complaint spike | Pause that launched country/territory; correct tax display, language, and effective date using verified evidence | Product/Growth | localized complaint rate `>Yx baseline` |
+| Refund/dispute/support spike above threshold | Freeze affected channel; activate refund/goodwill macro and support escalation queue | Support/Billing | refund/dispute/support `>Yx baseline` |
+| Net revenue below control after churn/refunds/credits/support/sales concessions | Roll back or redesign price/packaging before scaling | Finance/Pricing | net revenue or projected LTV/NRR below holdout/control |
+| Metrics recover and no blocker remains | Resume next tranche from T-90/T-60 cohorts only | Rollout owner | all blocking thresholds clear for `N` days |
 
 ## Decision table
 
