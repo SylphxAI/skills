@@ -28,11 +28,12 @@
 - Who each plan is for.
 - Monthly and annual price, including discount clarity.
 - Trial length and renewal behavior.
-- Usage limits and overage behavior.
+- Usage limits and overage behavior, including explicit metered rate, volume tier, cap, alert threshold, and throttle/degrade behavior.
 - Cancellation and downgrade consequences.
 - Data export and retention after cancellation.
 - Support level by plan.
 - Security/compliance route for enterprise.
+- Sales/support enablement: approved objection handling, save offers, discount authority, escalation path, and procurement checklist.
 
 ## Rollout and migration plan
 
@@ -94,3 +95,13 @@ pricing_migration_completed
 ```
 
 Evaluate pricing by activation, conversion, retention, expansion, support load, refund rate, and long-term revenue.
+
+## B2B analytics defaults
+
+Use concrete numbers only as placeholders to be validated, but do not omit the mechanics:
+
+- Seat expansion: include base seats per plan and an incremental seat price or sales-assist trigger.
+- Usage overages: price the value metric in tiers, for example events, rows scanned, reports, or seats, with 80/90/100% alerts and a hard cap or throttled degrade mode.
+- Unit economics: state gross margin target, cost driver, CAC payback target, NRR target, and support-cost guardrail.
+- Enterprise route: require SSO/SAML, audit logs, DPA/MSA, PO/invoice support, security review, SLA, admin controls, and named support escalation.
+- Enablement: give sales/support the main objections, approved concessions, refund/credit boundary, and when to escalate to finance/legal.
