@@ -14,7 +14,8 @@ Use this skill to turn a Steam release into a coordinated product, store, commun
 3. Audit store page promise, wishlist funnel, demo/playtest plan, build quality, community readiness, pricing, and support.
 4. Separate pre-launch, launch-day, first-week, and post-launch operations.
 5. Convert vague launch advice into decision gates: technical release gates, commercial policy gates, community response gates, and first-week learning gates with numeric or pre-agreed thresholds.
-6. Produce a readiness matrix with blockers, assets, telemetry, and review-risk mitigations.
+6. Verify store promise details against build proof: capsule, short description, tags, trailer, screenshots, achievements, cloud saves, controller support, settings, localization, system requirements, demo scope, and DLC wording.
+7. Produce a readiness matrix with blockers, assets, telemetry, and review-risk mitigations.
 
 ## Guardrails
 
@@ -39,6 +40,7 @@ Readiness matrix:
 - Build/platform:
 - Community/support:
 - Launch operations:
+- Creator/press readiness:
 
 Technical gates:
 - <gate> -> metric/threshold, owner, proof
@@ -51,6 +53,7 @@ P0 blockers:
 
 Commercial policy:
 - <pricing/discount/DLC/refund risk decision> -> rationale, evidence, rollback/communication path
+- Creator keys / embargo / press kit -> build version, known-issues note, support owner, embargo time, content guidance
 
 Wishlist/review/learning plan:
 - <action> -> metric, timing

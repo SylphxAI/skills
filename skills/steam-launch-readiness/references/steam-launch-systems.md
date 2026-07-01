@@ -18,6 +18,8 @@ A Steam launch is a funnel from first impression to wishlist to purchase to firs
 - `steam-12` — Pricing, discount, DLC, embargo, creator-key, refund, and review-response decisions need a verified policy matrix; do not invent platform policy or make unsupported promises.
 - `steam-13` — First-week learning must produce decisions: hotfix now, rollback, change store copy, pin known issue, adjust regional price, retarget creators, or defer to roadmap.
 - `steam-14` — First-week operating metrics need numeric or pre-agreed thresholds. If studio-specific targets are missing, provide starter tripwires labeled as internal defaults to replace before launch.
+- `steam-15` — Store promise audits must explicitly verify capsule, short description, tags, trailer, screenshots, achievements, settings, controller support, cloud saves, localization, system requirements, demo scope, and DLC wording against the shipped build.
+- `steam-16` — Creator keys and embargo plans need a press kit, locked build version, known-issues note, content guidance, support owner, review/coverage monitoring, and fallback if the build or policy changes before embargo lift.
 
 ## Readiness decision table
 
@@ -31,6 +33,7 @@ A Steam launch is a funnel from first impression to wishlist to purchase to firs
 | Support/community | Bug report and moderation flow exists | No owner for launch-week traffic | macros, triage board, response SLA |
 | Pricing | Price matches value and region expectations | Discount trains immediate waiting | pricing rationale and launch discount rule |
 | Commercial policy | Price/discount/DLC/key/embargo/refund posture is documented | Unsupported policy claims or bait-and-switch roadmap | policy matrix, owner approval, communication draft |
+| Creator/press readiness | Press kit, known-issues note, key list, embargo timing, build version, and support coverage are aligned | Unstable keys, unclear embargo, no support owner, or missing known-issues context | press kit, creator key register, embargo note, support macro |
 
 ## State machine
 
