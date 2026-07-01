@@ -42,6 +42,19 @@
       ]
     },
     {
+      "name": "account-based-marketing-review",
+      "description": "Design and audit account-based marketing motions covering target account selection, buying committee personas, account tiers, intent signals, personalization, ads, events, sales alignment, SDR plays, content offers, attribution, privacy, suppression, pipeline influence, and measurement. Use when B2B growth needs focused account programs instead of broad demand-gen tactics.",
+      "status": "preview",
+      "path": "skills/account-based-marketing-review",
+      "references": [
+        "account-based-marketing-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "account-recovery-identity-review",
       "description": "Design and audit account recovery, password reset, MFA reset, passkey recovery, SSO fallback, device change, email/phone change, account ownership proof, support escalation, anti-takeover controls, lockouts, notifications, and recovery analytics. Use when users can lose access or attackers can exploit recovery to take over an account.",
       "status": "preview",
@@ -61,6 +74,19 @@
       "path": "skills/ad-monetization-review",
       "references": [
         "ad-monetization-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "admin-audit-log-review",
+      "description": "Design and audit admin audit logs covering privileged actions, configuration changes, user/role management, billing/admin settings, data export/delete, API tokens, integrations, security events, retention, tamper evidence, customer access, filters, exports, SIEM, alerting, privacy, and enterprise evidence. Use when customers or operators need trustworthy administrative traceability.",
+      "status": "preview",
+      "path": "skills/admin-audit-log-review",
+      "references": [
+        "admin-audit-log-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -380,6 +406,19 @@
       ]
     },
     {
+      "name": "customer-community-events-review",
+      "description": "Design and audit customer community event programs covering audience, purpose, event formats, advisory sessions, workshops, office hours, webinars, champions, local meetups, moderation, accessibility, localization, content reuse, follow-up, product feedback, pipeline influence, community health, and trust. Use when events should create learning and loyalty instead of vanity attendance.",
+      "status": "preview",
+      "path": "skills/customer-community-events-review",
+      "references": [
+        "customer-community-events-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "customer-feedback-intake-review",
       "description": "Design and audit customer feedback intake across support tickets, sales calls, app reviews, surveys, NPS, communities, cancellation reasons, feature requests, bug reports, and product analytics. Use when teams need to turn noisy feedback into evidence, prioritization input, roadmap decisions, and customer follow-up without overreacting to anecdotes.",
       "status": "preview",
@@ -490,6 +529,19 @@
       "path": "skills/data-import-migration-review",
       "references": [
         "data-import-migration-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "data-lineage-impact-review",
+      "description": "Design and audit data lineage impact reviews covering source systems, transformations, events, warehouse models, metrics, dashboards, ML/AI datasets, exports, privacy, retention, owners, schema changes, backfills, downstream consumers, incident blast radius, and change approvals. Use when a data, event, schema, or pipeline change could break decisions or compliance evidence.",
+      "status": "preview",
+      "path": "skills/data-lineage-impact-review",
+      "references": [
+        "data-lineage-impact-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -633,6 +685,19 @@
       "path": "skills/enterprise-readiness-review",
       "references": [
         "enterprise-readiness-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "enterprise-security-exception-review",
+      "description": "Design and audit enterprise security exception workflows covering customer security requirements, compensating controls, risk acceptance, expiry, evidence, owner approval, contract commitments, product gaps, supportability, escalation, renewal impact, and remediation tracking. Use when an enterprise buyer asks for a security exception or deviation from standard controls.",
+      "status": "preview",
+      "path": "skills/enterprise-security-exception-review",
+      "references": [
+        "enterprise-security-exception-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -965,6 +1030,19 @@
       ]
     },
     {
+      "name": "marketplace-trust-safety-economics-review",
+      "description": "Design and audit marketplace trust and safety economics covering buyer/seller incentives, fraud, abuse, moderation cost, dispute handling, refunds, chargebacks, ratings, ranking incentives, creator payouts, quality gates, take rate, liquidity, supply quality, false positives, appeals, enforcement ladders, and unit economics. Use when a marketplace must grow without rewarding harmful behavior.",
+      "status": "preview",
+      "path": "skills/marketplace-trust-safety-economics-review",
+      "references": [
+        "marketplace-trust-safety-economics-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "microsoft-store-readiness",
       "description": "Prepare Microsoft Store release readiness for Windows apps, desktop utilities, games, PWAs, and packaged software including package identity, MSIX/AppX packaging, Store listing, screenshots, age ratings, privacy, capabilities, in-app purchases, subscriptions, updates, certification, installer behavior, Windows integration, telemetry, crash quality, support links, and release rollout. Use when submitting or auditing products for Microsoft Store.",
       "status": "preview",
@@ -1266,6 +1344,19 @@
       ]
     },
     {
+      "name": "product-led-sales-routing-review",
+      "description": "Design and audit product-led sales routing for signups, trials, freemium workspaces, PQLs, expansion signals, enterprise intent, account matching, owner assignment, sales capacity, suppression, lifecycle messages, CRM sync, handoff, experiments, and conversion-quality guardrails. Use when product usage should trigger the right human or automated sales motion.",
+      "status": "preview",
+      "path": "skills/product-led-sales-routing-review",
+      "references": [
+        "product-led-sales-routing-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "product-lifecycle-architect",
       "description": "Plan and review products end to end across strategy, market research, product design, UI, monetization, distribution, operations, promotion, customer support, and lifecycle management. Use when designing a new app, SaaS, game, utility, web product, desktop product, product roadmap, launch plan, or full product operating system.",
       "status": "preview",
@@ -1415,6 +1506,19 @@
       "path": "skills/revenue-recognition-policy-review",
       "references": [
         "revenue-recognition-policy-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "revops-crm-governance-review",
+      "description": "Design and audit Revenue Operations CRM governance covering account/contact/opportunity objects, lifecycle stages, source attribution, owner routing, required fields, forecast hygiene, pipeline stages, handoffs, duplicate management, integrations, permissions, automation, reporting, data quality, and change control. Use when revenue teams need one trustworthy operating system instead of spreadsheet truth.",
+      "status": "preview",
+      "path": "skills/revops-crm-governance-review",
+      "references": [
+        "revops-crm-governance-patterns.md"
       ],
       "scripts": [],
       "agents": [

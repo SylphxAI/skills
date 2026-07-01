@@ -1,0 +1,10 @@
+skill: revops-crm-governance-review
+positive_prompts:
+  - "Design RevOps CRM governance for a SaaS company with lead routing, lifecycle stages, opportunity hygiene, attribution, required fields, dashboards, integrations, dedupe, permissions, and forecast reporting."
+  - "Audit CRM chaos where sales uses spreadsheets, marketing attribution conflicts with pipeline reports, stages are stale, owners are missing, and automations overwrite fields."
+negative_prompts:
+  - "Plan a customer community event calendar."
+expected_behavior:
+  - "Defines CRM object ownership, lifecycle stages, stage criteria, routing, required fields, attribution, permissions, integrations, reporting contracts, and change control."
+  - "Includes data-quality checks for stale stages, missing owners, duplicates, invalid sources, forecast risk, integration drift, and report certification."
+  - "Flags undefined fields, stage sprawl, spreadsheet truth, automation side effects, unreconciled systems, and low-value rep admin burden."

@@ -1,0 +1,10 @@
+skill: product-led-sales-routing-review
+positive_prompts:
+  - "Design product-led sales routing for a freemium SaaS with activation signals, PQL scoring, enterprise domains, expansion signals, CRM ownership, sales capacity, lifecycle messages, suppression, and conversion-quality guardrails."
+  - "Audit routing where every signup creates SDR tasks, account matching is wrong, sales contacts users in support pain, and product/CRM lifecycle states disagree."
+negative_prompts:
+  - "Review marketplace payout risk and dispute economics."
+expected_behavior:
+  - "Defines product signals, PQL/PQA scoring, account matching, owner rules, routing thresholds, sales capacity, suppression, CRM sync, message playbooks, and outcome feedback."
+  - "Separates self-serve, nurture, sales-assist, enterprise AE, CS expansion, partner, support-assist, disqualified, and suppress states."
+  - "Flags routing every signal to sales, consent/support suppression gaps, product/CRM owner mismatch, meeting-only optimization, and low-quality sales tasks."

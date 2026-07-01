@@ -1,0 +1,10 @@
+skill: customer-community-events-review
+positive_prompts:
+  - "Design a customer community event program for SaaS with onboarding workshops, office hours, champion roundtables, roadmap feedback, accessibility, moderation, consent, follow-up, and product learning loops."
+  - "Audit events that have high attendance but no adoption lift, no feedback routing, surprise sales pitches, weak moderation, and no consent for recordings or quotes."
+negative_prompts:
+  - "Audit data lineage for analytics events."
+expected_behavior:
+  - "Defines event purpose, audience, format, agenda, moderation, accessibility/localization, consent, product/support owners, feedback capture, content reuse, follow-up, and metrics."
+  - "Separates onboarding workshops, office hours, webinars, roundtables, meetups, roadmap feedback, support remediation, launch education, and advisory sessions."
+  - "Flags attendance vanity, surprise sales pitches, unapproved roadmap promises, recording consent gaps, exclusion risks, and events masking product problems."

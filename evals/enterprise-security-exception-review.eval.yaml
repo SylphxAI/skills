@@ -1,0 +1,10 @@
+skill: enterprise-security-exception-review
+positive_prompts:
+  - "Review an enterprise buyer security exception asking for custom retention, broader audit logs, regional processing limits, SSO enforcement, encryption evidence, and a contractual SLA before signature."
+  - "Audit a security exception process where sales promises roadmap controls, exceptions never expire, and no one tracks compensating controls."
+negative_prompts:
+  - "Design product-led sales routing for trial users."
+expected_behavior:
+  - "Maps customer asks to controls, policies, product capabilities, data classes, contracts, evidence, compensating controls, owners, expiry, and remediation."
+  - "Separates standard-met, documentation gap, configurable control, compensating control, roadmap request, contract redline, and unacceptable-risk states."
+  - "Flags indefinite exceptions, sales security promises, cross-tenant risk, roadmap-as-control, missing evidence, and no renewal review."

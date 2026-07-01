@@ -1,0 +1,10 @@
+skill: admin-audit-log-review
+positive_prompts:
+  - "Design admin audit logs for enterprise SaaS covering role changes, SSO settings, API tokens, billing admins, data exports, support impersonation, retention, SIEM export, alerting, and tamper evidence."
+  - "Audit an admin console where critical changes happen without actor/target context, logs can be deleted by admins, and customers cannot export SIEM events."
+negative_prompts:
+  - "Plan an account-based marketing campaign."
+expected_behavior:
+  - "Defines privileged event coverage, event contract, actor/target/context, redaction, retention, tamper evidence, customer UI/API/SIEM export, alerting, and release-gate tests."
+  - "Covers identity, roles, billing, security, integrations, API tokens, data export/delete, configuration, support access, and system changes."
+  - "Flags secret logging, mutable evidence, incomplete coverage claims, missing actor/target/result context, and unusable customer audit exports."

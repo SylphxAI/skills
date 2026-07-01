@@ -1,0 +1,10 @@
+skill: data-lineage-impact-review
+positive_prompts:
+  - "Review data lineage impact for changing a SaaS activation event schema used by warehouse models, dashboards, experiments, customer exports, AI datasets, and revenue reports."
+  - "Audit a data pipeline migration where downstream dashboard owners, privacy review, backfill impact, and metric definition changes were not mapped."
+negative_prompts:
+  - "Design product-led sales routing for trial users."
+expected_behavior:
+  - "Maps source systems, events, tables, transformations, models, metrics, dashboards, exports, reverse ETL, AI datasets, owners, and consumers."
+  - "Includes compatibility, semantic/privacy/SLA/cost impact, tests, owner approvals, backfill plan, communication, rollback, and monitoring."
+  - "Flags tribal lineage, silent semantic change, risk-free additive assumptions, uncontrolled backfills/deletions, PII drift, and AI dataset regressions."
