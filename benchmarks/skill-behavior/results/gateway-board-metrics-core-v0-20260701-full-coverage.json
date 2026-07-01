@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-board-metrics-core-v0-20260701-full-coverage",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "board-metrics-operating-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "d2371ed2ec85c4ce1ef567b5055c89da3130e14f",
+      "branch": "codex/improve-board-metrics-benchmark",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T19:34:05.944Z",
+    "completedAt": "2026-07-01T19:34:55.272Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "board-metrics-operating-001",
+      "skill": "board-metrics-operating-review",
+      "promptSha256": "06272ec9dc07a3b79130ac0be0dd152954d487dd50534622f11303aa694d2df4",
+      "skillContextSha256": "54640f763548ff3a8bc5c8a0cbaa7cd96b28d6cbf6e66f1018f946b2085fff3f",
+      "skillBodySha256": "d25faa11f20ef8e077b3da843475e85cfa8acb972b38fbc7a85e31994e665c80",
+      "skillReferenceSha256": [
+        {
+          "path": "references/board-metrics-operating-patterns.md",
+          "sha256": "2036c73c4a96414d17bbb9cfccc845df75b1cabecfe0639eb168e81e7043f1fb"
+        }
+      ],
+      "skillLoadedPromptSha256": "9e60f288e4595a9a962a735c113e34c414a8f1ba4d5c2e8f880ba14a01b6fe05",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "metric-definitions": 2,
+          "reconciliation": 2,
+          "variance": 2,
+          "decisions": 4,
+          "data-quality": 1
+        },
+        "criticalFailures": [],
+        "rationale": "Strong board-pack template with asks, signoff, and action follow-up. However, it lacks a real metric dictionary, formula detail, source-of-truth map, robust reconciliation, and driver-based variance analysis. Data-quality caveats are minimal.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-board-metrics-core-v0-20260701-full-coverage-outputs/board-metrics-operating-001-baseline.md",
+        "outputSha256": "68cc6c82b0e3c05291db11d8f88a0fb374295f24b097fb7305be3ef1d27f20fc",
+        "latencyMs": 16093,
+        "usage": {
+          "input_tokens": 267,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1435,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1702
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "metric-definitions": 4,
+          "reconciliation": 5,
+          "variance": 5,
+          "decisions": 5,
+          "data-quality": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive operating review with definitions, owners, sources, reconciliation, driver-based variance, board asks, and action register. It appropriately blocks release pending source-tied values and signoff. Minor weakness: cadence and some formulas could be more precise.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-board-metrics-core-v0-20260701-full-coverage-outputs/board-metrics-operating-001-skill-loaded.md",
+        "outputSha256": "a4a314187d2dafb9c984361d0665303decd35fea03b2f2a01d7388537f770bbf",
+        "latencyMs": 16769,
+        "usage": {
+          "input_tokens": 3545,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 2039,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5584
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-board-metrics-core-v0-20260701-full-coverage-outputs/board-metrics-operating-001-judge-raw.md",
+      "judgeOutputSha256": "3cd6f3e878aee52de8c7b308855fa0cb001811213c2cee0c26f17e5129214854",
+      "judgeLatencyMs": 12311,
+      "judgeUsage": {
+        "input_tokens": 3729,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 777,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4506
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "board-metrics-operating-001",
+      "promptType": "positive",
+      "expectedSkill": "board-metrics-operating-review",
+      "triggeredSkills": [
+        "board-metrics-operating-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1667,
+      "usage": {
+        "input_tokens": 207,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 35,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 242
+      }
+    },
+    {
+      "taskId": "board-metrics-operating-001",
+      "promptType": "negative-control",
+      "expectedSkill": "board-metrics-operating-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2479,
+      "usage": {
+        "input_tokens": 157,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 36,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 193
+      }
+    }
+  ]
+}
