@@ -8,3 +8,4 @@ expected_behavior:
   - "Separates ledger truth, displayed balances, provider states, holds, refunds, chargebacks, and payouts."
   - "Defines risk windows, reason-coded holds, payout failure recovery, and seller support evidence."
   - "Flags compliance-sensitive payout decisions for qualified review while preserving product state design."
+  - "Covers reserves, hold release criteria, tax forms, withholding, sanctions/KYC state, country/provider eligibility, failed transfers, and negative balances for global marketplaces."

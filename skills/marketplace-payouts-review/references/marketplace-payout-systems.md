@@ -14,6 +14,8 @@ Payouts are a trust system. Creators/sellers need predictable earnings, buyers n
 - `payout-8` — Manual adjustments require role, reason, approval, audit log, and seller-visible explanation when material.
 - `payout-9` — Support should see transaction, buyer payment, seller earning, fee, hold, payout, refund, and dispute lineage without spreadsheet archaeology.
 - `payout-10` — Compliance-sensitive identity, tax, sanctions, or money-transmission questions require qualified review outside the skill; the product should still route the state and evidence.
+- `payout-11` — Reserves and holds need explicit trigger, affected scope, release criteria, SLA, owner, creator-visible status, and appeal/escalation path.
+- `payout-12` — Global payouts need country eligibility, payout-provider constraints, tax form status, withholding state, sanctions/KYC screening state, failed-transfer recovery, and reporting handoff before funds become payable.
 
 ## Decision table
 
@@ -25,6 +27,10 @@ Payouts are a trust system. Creators/sellers need predictable earnings, buyers n
 | Fraud suspicion | Move amount to held | Pause payout for affected earnings | Provide reason code and review SLA |
 | Creator changes payout method | Verify new destination | Delay or confirm next payout | Notify creator and log change |
 | Currency conversion | Rate and round at policy-defined point | Pay destination currency | Show rate, fees, and source amount |
+| Missing tax form | Keep earnings accrued but not payable, or apply withholding where required | Block or reduce payout per qualified policy | Show required form, status, and support route |
+| Sanctions/KYC potential match | Move affected funds to compliance-held state | Block payout until qualified review resolves | Provide non-sensitive compliance-review message |
+| Failed bank transfer | Return funds to available or held based on failure reason | Do not retry invalid destinations indefinitely | Show provider reason, remediation, and trace ID |
+| Negative balance | Offset future earnings before new payouts | Block payout until non-negative unless exception approved | Show itemized reversal lineage and cure path |
 
 ## State machine
 
@@ -49,6 +55,10 @@ Recommended events:
 - `payout_batch_created`: batch_id, seller_count, total_amount, currency, schedule.
 - `payout_result`: payout_id, seller_id, amount, destination_type, result, failure_reason.
 - `payout_hold_created`: seller_id, amount, reason_code, review_owner, expected_review_at.
+- `payout_hold_released`: hold_id, seller_id, amount, release_reason, reviewer_or_job_id.
+- `tax_compliance_status_changed`: seller_id, jurisdiction, form_status, withholding_rate, effective_at.
+- `sanctions_screening_result`: seller_id, screening_status, match_confidence, compliance_case_id.
+- `seller_negative_balance_changed`: seller_id, amount, source_event_id, recovery_status.
 
 ## Review checklist
 
@@ -57,3 +67,5 @@ Recommended events:
 - Risk windows and manual adjustment approvals are explicit.
 - Creator/seller dashboard shows pending, available, held, paid, and disputed amounts.
 - Support and finance can reconcile orders, fees, earnings, refunds, and payouts end to end.
+- Global payout readiness includes tax forms, withholding, country eligibility, sanctions/KYC review, provider constraints, minimum thresholds, failed payout recovery, and negative-balance handling.
+- Reserve policies state percent/amount, duration, scope, review cadence, release criteria, and creator-visible status.
