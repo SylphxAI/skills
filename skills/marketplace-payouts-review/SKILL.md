@@ -19,6 +19,7 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 8. Produce formal payout state machine, fee table, risk controls, compliance readiness matrix, seller dashboard/support workflow, trust metrics, audit invariants, and reconciliation checks.
 9. For provider outages, partial payout files, webhook replays, or manual finance workarounds, name operational states explicitly: queued, paused, provider-pending, partially-submitted, failed, retry-blocked, reconciled, released, reversed, and manual-review.
 10. For incident states, attach owner, entry evidence, exit gate, provider/status-page signal, support message, and audit invariant; recovery learning must include provider SLA evidence, monitoring, post-incident control fixes, and future resilience work.
+11. For abuse holds, segment signals from conclusions: distinguish refund spikes, self-purchases, review manipulation, linked accounts, payout-threshold farming, legitimate launch winners, false positives, buyer-protection exposure, clawback/negative-balance paths, partial reserves, release criteria, appeal evidence, and reviewer QA.
 
 ## Guardrails
 
@@ -51,6 +52,7 @@ Seller dashboard and support workflow:
 
 Reserve/hold governance:
 - <hold/reserve type> -> trigger, scope, release criteria, SLA, owner, appeal/support path
+- Abuse holds -> signal, affected earnings, reserve percent/duration, buyer-protection exposure, clawback/negative-balance rule, false-positive release criteria, appeal evidence, reviewer QA
 
 Compliance/provider readiness:
 - <tax form / withholding / statutory reporting / sanctions / country / provider constraint> -> product state, payout effect, evidence, support message, qualified-review owner

@@ -167,6 +167,22 @@ Support/admin tooling should include:
 
 Track creator trust and marketplace health with payout latency, held-balance age, failed-transfer rate, dispute win rate, reversal loss, negative-balance recovery, creator payout ticket rate, creator payout CSAT, and reconciliation mismatch rate.
 
+## Abuse hold and appeal model
+
+Abuse-related payout holds should be scoped to risk and reversible on evidence. A refund spike, self-purchase signal, linked account, review burst, or payout-threshold farming pattern is an investigation signal, not an automatic final decision.
+
+| Signal | Initial payout action | Evidence packet | Release or clawback path | False-positive guardrail |
+| --- | --- | --- | --- | --- |
+| Refund spike | Partial rolling reserve on affected earnings; do not freeze all historical balance by default | refund ratio vs cohort, buyer complaints, dispute status, delivery evidence | release reserve after cohort-normal refund window; claw back only tied reversed earnings | compare with legitimate launch cohort and marketing campaign |
+| Self-purchase suspicion | Hold affected earnings and block payout of linked suspicious orders | buyer/seller link graph, payment fingerprint, device/IP, order timing, KYC/payment method match | reverse affected earnings or release if independent buyer proof clears | require reviewer confirmation before account-level action |
+| Review manipulation | Hold earnings tied to manipulated listings or suspicious buyer set | review graph, buyer eligibility, purchase proof, moderation case, listing IDs | release clean orders; reverse only orders tied to confirmed manipulation | separate organic launch surge from coordinated fake reviews |
+| Cross-account payment methods | Destination/KYC verification hold | account links, destination owner, KYC state, provider verification, support evidence | release after destination verified; negative balance only for paid-out reversed orders | provide safe verification path without exposing detection thresholds |
+| Payout-threshold farming | Delay or reserve threshold-adjacent payouts while reviewing velocity | payout threshold history, destination changes, order quality, refund/dispute lag | release when order quality and refund window clear; adjust threshold policy if needed | avoid punishing small legitimate creators for normal threshold timing |
+
+Abuse support macros should say what status is visible, what evidence the seller can provide, the review SLA, and the appeal path. They must not leak fraud thresholds, model weights, buyer identities, or sanctions/tax conclusions.
+
+Reviewer QA should sample both holds and releases. Track false-hold rate, appeal overturn rate, held-balance age, buyer loss, reversal loss, legitimate-launch release time, creator payout CSAT, and support ticket rate.
+
 ## Review checklist
 
 - Ledger entries, displayed balances, payout provider states, and support cases are not conflated.
