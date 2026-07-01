@@ -1,10 +1,13 @@
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { execFile } from 'node:child_process';
 import crypto from 'node:crypto';
 import path from 'node:path';
+import { promisify } from 'node:util';
 
 const repoRoot = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
 const defaultBaseUrl = 'https://api.openai.com/v1';
+const execFileAsync = promisify(execFile);
 
 function usage() {
   console.error(`Usage: node scripts/run-benchmark-openai.mjs <tasks.json> --out <result.json> [options]\n\nOptions:\n  --run-id <id>              Stable run identifier. Defaults to timestamp.\n  --model <model>            Answer model. Defaults to OPENAI_MODEL or gpt-5.5.\n  --judge-model <model>      Judge/trigger model. Defaults to BENCHMARK_JUDGE_MODEL or --model.\n  --base-url <url>           OpenAI-compatible API base URL. Defaults to https://api.openai.com/v1.\n  --output-dir <dir>         Directory for raw outputs. Defaults to /tmp/skill-benchmark-<run-id>.\n  --temperature <number>     Answer temperature. Defaults to 0.2.\n  --max-output-tokens <n>    Answer token cap. Defaults to 3500.\n  --answer-word-limit <n>    Add the same concise-answer budget to baseline and skill prompts.\n  --max-attempts <n>         API attempts per model call. Defaults to 5.\n  --retry-base-ms <n>        Base retry delay in milliseconds. Defaults to 1500.\n  --request-timeout-ms <n>   Per-attempt HTTP timeout. Defaults to 90000.\n  --start <n>                Zero-based task offset after optional task-id filtering. Defaults to 0.\n  --limit <n>                Run only n selected tasks. Useful for smoke tests and shards.\n  --task-id <id>             Run a specific task id. Repeat or comma-separate for multiple tasks.\n  --no-references            Do not include skill reference files in skill-loaded prompts.\n  --skip-trigger-checks      Do not run positive/negative trigger classifier checks.\n  --resume                   Reuse an existing result file and skip completed samples.\n  --dry-run                  Validate inputs and print planned calls without contacting the API.\n`);
@@ -121,6 +124,13 @@ function skillLoadedPrompt({ task, skillMarkdown, references, answerWordLimit })
   return `Use the following skill context to answer the user task. Do not mention the benchmark setup.\n\n## Skill: ${task.skill}\n\n${skillMarkdown}\n\n## Skill references\n${referenceBlock}\n\n## User task\n\n${userTaskPrompt(task, answerWordLimit)}`;
 }
 
+function skillContextText({ skillMarkdown, references }) {
+  return JSON.stringify({
+    skillMarkdown,
+    references: references.map((ref) => ({ path: ref.path, content: ref.content })),
+  });
+}
+
 function outputText(response) {
   if (typeof response.output_text === 'string') return response.output_text;
   const parts = [];
@@ -134,6 +144,32 @@ function outputText(response) {
 
 function sha256(text) {
   return crypto.createHash('sha256').update(text).digest('hex');
+}
+
+async function gitText(args) {
+  const { stdout } = await execFileAsync('git', args, { cwd: repoRoot });
+  return stdout.trim();
+}
+
+async function sourceMetadata() {
+  try {
+    const [head, branch, status] = await Promise.all([
+      gitText(['rev-parse', 'HEAD']),
+      gitText(['rev-parse', '--abbrev-ref', 'HEAD']),
+      gitText(['status', '--porcelain']),
+    ]);
+    return {
+      type: 'git',
+      head,
+      branch,
+      dirty: status.length > 0,
+    };
+  } catch (error) {
+    return {
+      type: 'unknown',
+      error: error.message,
+    };
+  }
 }
 
 function outputRef(file) {
@@ -403,6 +439,7 @@ function makeResult({ suite, args, startedAt, completedAt, samples, triggerCheck
       includeReferences: args.includeReferences,
       selectedTaskIds,
       partial,
+      source: args.sourceMetadata,
       startedAt,
       completedAt,
     },
@@ -436,6 +473,7 @@ async function writeResultCheckpoint({ suite, args, startedAt, samples, triggerC
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  args.sourceMetadata = await sourceMetadata();
   const taskPath = path.resolve(repoRoot, args.taskFile);
   const suite = JSON.parse(await readFile(taskPath, 'utf8'));
   const tasks = selectTasks(suite.tasks || [], args);
@@ -460,6 +498,7 @@ async function main() {
     maxAttempts: args.maxAttempts,
     retryBaseMs: args.retryBaseMs,
     requestTimeoutMs: args.requestTimeoutMs,
+    source: args.sourceMetadata,
     outputDir: args.outputDir,
     out: args.out,
   };
@@ -486,12 +525,14 @@ async function main() {
     if (!skillMarkdown) throw new Error(`Missing SKILL.md for ${task.skill}`);
     const references = args.includeReferences ? await readReferenceFiles(skillDir) : [];
     const skillDescription = extractSkillDescription(skillMarkdown);
+    const baselineInput = userTaskPrompt(task, args.answerWordLimit);
+    const skillInput = skillLoadedPrompt({ task, skillMarkdown, references, answerWordLimit: args.answerWordLimit });
 
     const baseline = await callResponses({
       apiKey,
       baseUrl: args.baseUrl,
       model: args.model,
-      input: userTaskPrompt(task, args.answerWordLimit),
+      input: baselineInput,
       maxOutputTokens: args.maxOutputTokens,
       temperature: args.temperature,
       metadata: { runId: args.runId, taskId: task.id, condition: 'baseline' },
@@ -503,7 +544,7 @@ async function main() {
       apiKey,
       baseUrl: args.baseUrl,
       model: args.model,
-      input: skillLoadedPrompt({ task, skillMarkdown, references, answerWordLimit: args.answerWordLimit }),
+      input: skillInput,
       maxOutputTokens: args.maxOutputTokens,
       temperature: args.temperature,
       metadata: { runId: args.runId, taskId: task.id, condition: 'skill-loaded' },
@@ -544,6 +585,11 @@ async function main() {
     samples.push({
       taskId: task.id,
       skill: task.skill,
+      promptSha256: sha256(baselineInput),
+      skillContextSha256: sha256(skillContextText({ skillMarkdown, references })),
+      skillBodySha256: sha256(skillMarkdown),
+      skillReferenceSha256: references.map((ref) => ({ path: ref.path, sha256: sha256(ref.content) })),
+      skillLoadedPromptSha256: sha256(skillInput),
       baseline: normalizeRecord(baselineJudgment, baselineFile, baseline),
       skillLoaded: normalizeRecord(skillJudgment, skillFile, skillLoaded),
       preference: preferenceFromWinner(judgmentJson.winner, order),
