@@ -5,8 +5,8 @@
 | Type | Examples | Consent/control |
 | --- | --- | --- |
 | Security | login alert, password change | Mandatory where legally/product necessary; no marketing content |
-| Transactional | receipt, refund, backup complete | Necessary for service operation; keep factual |
-| Utility | reminder, task due, build finished | User-configurable frequency and channel |
+| Transactional | receipt, refund, backup complete | Necessary for service operation; keep factual and privacy-minimized |
+| Utility | reminder, task due, build finished | User-configurable frequency and channel; redact sensitive payloads |
 | Lifecycle | onboarding nudge, trial ending | Consent-aware, limited cadence |
 | Marketing | promotion, win-back, launch | Explicit opt-out and campaign caps |
 | Social/game | friend invite, guild event, energy full | Strong preference controls and quiet hours |
@@ -33,6 +33,10 @@
 - `notify-18` — Fatigue incidents need cohort/channel/event readback before new campaigns: opt-out, unsubscribe, complaint/spam, uninstall, support-contact, conversion, and retention signals by lifecycle event.
 - `notify-19` — Emergency overrides are only for security, safety, service continuity, or explicit user-requested critical alerts; marketing and habit nudges must never bypass caps or quiet hours.
 - `notify-20` — Permission recovery after denial must be user-initiated or value-led through in-product education and preference centers; do not repeatedly trigger platform prompts or nag users into settings.
+- `notify-21` — Sensitive notifications need privacy-minimized payloads: no secrets, health/finance details, precise location, private content, or account-risk specifics in lock-screen previews, SMS bodies, or email subjects.
+- `notify-22` — Sensitive details should be behind auth-gated deep links with short-lived tokens or server-side lookup; push/SMS/email should carry only enough context to be useful.
+- `notify-23` — Channel mechanics must be explicit where relevant: SMS STOP/HELP, email List-Unsubscribe, push token invalidation, browser/desktop permission recovery, bounce handling, and category/channel unsubscribe scope.
+- `notify-24` — Role and severity routing matters for operational tools: admin, owner, member, on-call, support, and end-user audiences should not receive the same alert or escalation path.
 
 ## Lifecycle matrix
 
@@ -119,6 +123,33 @@ Suppression rules:
 - Escalate channels only when value decays with time and the user has granted that channel.
 - Record `frequency_budget_id`, `cap_type`, `cap_remaining`, and `suppression_decision_version` for auditability.
 
+## Privacy, redaction, and channel mechanics
+
+| Content class | What can be shown outside the app | What must be hidden | Required deep-link behavior |
+| --- | --- | --- | --- |
+| Security/account risk | Generic alert and action needed | IP, precise location, token, session details, exploit specifics | Auth-gated session review; no token in URL |
+| Billing/refund/support | Receipt/refund/support status summary | full card, bank, tax ID, private dispute details, support transcript | Auth-gated billing/support record |
+| Health/family/location/private content | Generic "new update" or user-configured title | diagnosis, minor details, exact location, message body | Auth-gated detail view and user preview controls |
+| Developer/ops incident | Service/build/deploy identifier if safe | secrets, env vars, stack trace with credentials, customer data | Auth-gated incident/build page |
+| Marketing/promotion | Offer title when opted-in | sensitive inferred trait or private usage reason | Normal landing page; no emergency override |
+
+Channel mechanics:
+
+- SMS must support STOP/HELP and record `sms_opted_in`, `sms_unsubscribed`, and suppression scope.
+- Email marketing/lifecycle messages should carry List-Unsubscribe or equivalent unsubscribe evidence; transactional email must not bundle promotion.
+- Push/browser/desktop tokens need invalid-token cleanup, device scope, and denied-permission fallback.
+- Lock-screen preview defaults should be conservative for shared devices; let users opt into richer previews per category.
+- Support-facing evidence should show message version, consent state, delivery status, and suppression reason without exposing unnecessary payload content.
+
+## Role and severity routing
+
+| Severity | Examples | Audience | Channels | Override rule |
+| --- | --- | --- | --- | --- |
+| P0 security/safety/service continuity | active account compromise, customer-impacting outage, writes failing | owner/admin/on-call or affected user | reliable channel stack; may bypass quiet hours if evidence-backed | owner/audit required; expires quickly |
+| P1 operational action needed | deployment failed, backup failed, quota critical | relevant admin/on-call/member who owns resource | desktop/browser/email/in-app by role preference | no marketing; quiet-hours bypass only if user opted into critical alerts |
+| P2 utility/task reminder | build complete, task due, energy full, event reminder | user who requested or benefits | preferred utility channel or digest | no emergency override |
+| P3 education/marketing | feature tip, plan upgrade, win-back, IAP offer | opted-in segment only | in-app/email; push only if explicitly opted in and low fatigue | never bypass caps/quiet hours |
+
 ## Permission and preference recovery
 
 | Consent/preference state | Allowed action | Recovery path | Prohibited action |
@@ -143,7 +174,7 @@ When opt-outs, complaints, uninstalls, spam reports, or support contacts rise, p
 | Harm signal | opt-out, unsubscribe, complaint/spam, uninstall, support contact, muted category, negative review, notification-attributed churn |
 | Decision | continue, pause, digest, reduce cap, change channel, change copy, suppress cohort, or emergency-only |
 
-Use measurable guardrails such as `+Xpp opt-out vs holdout`, `>Yx complaint baseline`, `support contacts above budget`, and `retention below control`.
+Use measurable guardrails such as `+Xpp opt-out vs holdout`, `>Yx complaint baseline`, `support contacts above budget`, `failed critical alert rate above threshold`, and `retention below control`.
 
 ## Event schema
 

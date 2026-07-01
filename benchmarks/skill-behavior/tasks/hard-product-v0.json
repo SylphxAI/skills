@@ -317,7 +317,7 @@
       "skill": "notification-strategy-review",
       "category": "lifecycle-growth",
       "prompt": "Create a notification policy for a developer utility that sends build finished, deployment failed, backup complete, storage quota warning, security login alert, maintenance incident, product education, and upgrade promotion messages across desktop, browser push, email, and in-app surfaces. Users need critical alerts but complain about noisy marketing and unclear preferences. Produce the taxonomy, preference model, and emergency override rules.",
-      "negativeControlPrompt": "Review marketplace payout reserves, tax holds, provider outages, appeals, and creator-facing payout release communication.",
+      "negativeControlPrompt": "Review marketplace payout reserves, tax holds, provider outages, appeals, ledger reconciliation, and payout release blockers.",
       "expectedArtifacts": [
         "critical versus marketing taxonomy",
         "preference and consent model",
@@ -360,6 +360,57 @@
           "weight": 1,
           "required": false,
           "description": "Tracks delivery, incident acknowledgement, failed alert rate, opt-out/unsubscribe, complaints, support contacts, retained utility value, and marketing harm."
+        }
+      ]
+    },
+    {
+      "id": "notification-sensitive-transactional-privacy-001",
+      "skill": "notification-strategy-review",
+      "category": "lifecycle-growth",
+      "prompt": "Design notification policy for a fintech-family subscription app that sends login/security alerts, refund and support updates, billing reminders, family member activity, location-adjacent safety updates, product education, and promotional offers across push, email, SMS, and in-app. Users share devices, some recipients are minors, and support needs evidence without exposing sensitive data. Produce the taxonomy, privacy/redaction policy, consent model, and trust metrics.",
+      "negativeControlPrompt": "Design backup and restore architecture for a desktop file app with local snapshots, cloud sync, corruption recovery, and customer data export.",
+      "expectedArtifacts": [
+        "sensitive notification taxonomy",
+        "privacy and redaction policy",
+        "channel consent and unsubscribe model",
+        "event schema and trust metrics"
+      ],
+      "failureModes": [
+        "puts sensitive data in lock-screen previews or SMS",
+        "mixes transactional/security with marketing consent",
+        "missing auth-gated deep links and payload minimization",
+        "no minor/shared-device safeguards"
+      ],
+      "rubric": [
+        {
+          "id": "privacy-redaction",
+          "weight": 2,
+          "required": true,
+          "description": "Defines lock-screen, SMS, email subject, push payload, private-content, shared-device, minor, and auth-gated deep-link redaction rules."
+        },
+        {
+          "id": "taxonomy-consent",
+          "weight": 2,
+          "required": true,
+          "description": "Separates security, transactional, family/safety, support, education, and marketing categories with channel-specific consent and unsubscribe/STOP scope."
+        },
+        {
+          "id": "channel-mechanics",
+          "weight": 1,
+          "required": true,
+          "description": "Handles push/email/SMS/in-app mechanics including List-Unsubscribe, SMS STOP/HELP, denied-permission fallback, token/bounce cleanup, and regional evidence."
+        },
+        {
+          "id": "support-evidence",
+          "weight": 1,
+          "required": true,
+          "description": "Gives support enough delivery, consent, message-version, and suppression evidence without exposing unnecessary sensitive payload data."
+        },
+        {
+          "id": "trust-metrics",
+          "weight": 1,
+          "required": false,
+          "description": "Tracks delivery, failed critical alerts, opt-outs, complaints, support contacts, privacy incidents, conversion, retention, and notification-attributed churn."
         }
       ]
     },

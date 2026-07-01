@@ -9,10 +9,10 @@ Use this skill to make notifications useful enough to deserve attention.
 
 ## Workflow
 
-1. Identify channel, user lifecycle stage, product promise, message objective, user intent, region, consent state, preference state, and fatigue risk.
+1. Identify channel, user lifecycle stage, product promise, message objective, user intent, region, consent state, preference state, content sensitivity, audience role, and fatigue risk.
 2. Read `references/notification-strategy-patterns.md`.
 3. Classify messages by utility, urgency, consent, lifecycle trigger, frequency, fallback channel, and failure risk.
-4. Build lifecycle, consent/region, and suppression matrices before proposing campaigns.
+4. Build lifecycle, consent/region, privacy/redaction, role/severity, and suppression matrices before proposing campaigns.
 5. Define an explicit frequency budget: global cap, category cap, lifecycle-event cap, quiet-hours behavior, cooldown, digest threshold, and emergency override rule.
 6. Define deterministic cross-channel dedupe with `dedupe_key`, channel priority, success stop condition, support/billing stop condition, stale-event expiry, and suppression reason.
 7. If notifications are already causing fatigue, complaints, opt-outs, or support contacts, produce an incident readback before adding sends: cohort × channel × lifecycle event × consent state × frequency bucket × complaint/unsubscribe/support signal.
@@ -29,8 +29,10 @@ Use this skill to make notifications useful enough to deserve attention.
 - Do not repeatedly ask after denial; use in-product education, preference-center recovery, and a user-initiated path back to OS/browser settings.
 - Do not optimize opens/clicks without delivery, opt-out, unsubscribe, complaint, retention, and long-term trust guardrails.
 - Do not describe fatigue management as "cap frequency" without naming concrete global, category, lifecycle-event, cooldown, and digest rules.
-- Do not use emergency override for marketing, habit nudges, or win-back. Reserve it for security, safety, service continuity, or explicit user-requested critical alerts, and log the override reason.
+- Do not use emergency override for marketing, habit nudges, win-back, IAP promotions, daily rewards, energy reminders, leaderboard resets, or live-event urgency. Reserve it for security, safety, service continuity, or explicit user-requested exact reminders, and log the override reason.
 - Do not continue a sequence after the user converts, cancels, pays, resolves the workflow, contacts support, unsubscribes, or complains.
+- Do not expose secrets, health/finance details, precise location, private message content, or sensitive account state in lock-screen previews, push payloads, SMS bodies, or email subjects; use auth-gated deep links for details.
+- Do not infer consent across channels or categories; email, SMS, push, in-app, desktop/browser, transactional, and marketing controls must stay separate.
 
 ## Output format
 
@@ -45,6 +47,14 @@ Lifecycle matrix:
 Consent and regional control matrix:
 | Channel/region | Permission timing | Required consent/preference | Unsubscribe/opt-out | Fallback if denied | Evidence |
 | --- | --- | --- | --- | --- | --- |
+
+Privacy/redaction and deep-link policy:
+| Content type | Sensitive fields to exclude | Lock-screen/subject/SMS copy | Deep-link auth | Support-safe evidence |
+| --- | --- | --- | --- | --- |
+
+Role/severity routing:
+| Audience role | Severity | Allowed channels | Escalation | Audit/owner |
+| --- | --- | --- | --- | --- |
 
 Taxonomy and channel policy:
 - <message type> -> trigger, user value, channel, priority, frequency, control, suppression/dedupe rule
