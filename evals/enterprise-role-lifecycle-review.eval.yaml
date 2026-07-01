@@ -1,0 +1,10 @@
+skill: enterprise-role-lifecycle-review
+positive_prompts:
+  - "Audit enterprise role lifecycle controls for a SaaS product with SSO, SCIM groups, custom admin roles, contractors, privileged support access, break-glass accounts, stale access reviews, audit logs, owner transfer, and customer admin UX."
+  - "Design joiner-mover-leaver, privileged access, break-glass, support override, and stale-role review policies where IdP groups, in-app roles, and customer support permissions are drifting apart."
+negative_prompts:
+  - "Review store price change communication."
+expected_behavior:
+  - "Defines role taxonomy, entitlement source of truth, lifecycle events, privileged access gates, break-glass controls, support overrides, stale access review cadence, and audit evidence."
+  - "Separates joiner, mover, leaver, suspension, reactivation, owner transfer, contractor, service account, SCIM, IdP, in-app role, and support access states."
+  - "Flags competing entitlement sources, unbounded privileged access, undefined break-glass/offboarding paths, stale access, shadow support permissions, and missing customer-admin explanations."

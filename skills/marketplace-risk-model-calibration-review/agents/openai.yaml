@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketplace Risk Model Calibration Review"
+  short_description: "Calibrate marketplace risk models"
+  default_prompt: "Use $marketplace-risk-model-calibration-review to calibrate marketplace risk models."

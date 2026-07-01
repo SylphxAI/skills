@@ -393,6 +393,19 @@
       ]
     },
     {
+      "name": "contract-obligation-renewal-audit-review",
+      "description": "Design and audit contract obligation renewal reviews covering order forms, MSAs, DPAs, SLAs, security addenda, pricing exceptions, usage minimums, notice windows, auto-renewal, deliverables, support commitments, product promises, evidence owners, remediation, and renewal negotiation handoff. Use when commercial teams need obligation truth before renewal or expansion.",
+      "status": "preview",
+      "path": "skills/contract-obligation-renewal-audit-review",
+      "references": [
+        "contract-obligation-renewal-audit-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "cost-margin-unit-economics-review",
       "description": "Design and audit product cost structure, gross margin, COGS, cloud/AI inference cost, payment fees, app-store commissions, marketplace payouts, refunds, support cost, usage-based margin, CAC/LTV, payback, cohort profitability, free-tier economics, and pricing sustainability. Use when deciding whether SaaS, app, game, API, AI, marketplace, or subscription monetization can profitably scale.",
       "status": "preview",
@@ -731,6 +744,19 @@
       ]
     },
     {
+      "name": "developer-sandbox-abuse-prevention-review",
+      "description": "Design and audit developer sandbox abuse prevention for API, plugin, app, and marketplace products covering signup friction, environment isolation, synthetic data, quotas, token issuance, webhooks, email/SMS sending, compute/storage limits, fraud signals, graduated trust, review queues, appeals, and developer experience. Use when sandboxes must stay open without becoming abuse infrastructure.",
+      "status": "preview",
+      "path": "skills/developer-sandbox-abuse-prevention-review",
+      "references": [
+        "developer-sandbox-abuse-prevention-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "developer-tool-product-design",
       "description": "Design and audit developer tools, APIs, SDKs, CLIs, libraries, platforms, dashboards, docs, examples, onboarding, quickstarts, pricing, usage limits, telemetry, changelogs, support, and community growth. Use when building developer-facing products, improving developer experience, launching APIs/SDKs, or reviewing docs-to-activation funnels.",
       "status": "preview",
@@ -848,6 +874,19 @@
       ]
     },
     {
+      "name": "enterprise-role-lifecycle-review",
+      "description": "Design and audit enterprise role lifecycle controls covering role taxonomy, RBAC/ABAC, joiner-mover-leaver events, SCIM/SSO sync, privileged access, approvals, break-glass accounts, separation of duties, audit logs, stale access review, customer admin UX, and support escalations. Use when enterprise products need role lifecycle governance instead of ad hoc permissions.",
+      "status": "preview",
+      "path": "skills/enterprise-role-lifecycle-review",
+      "references": [
+        "enterprise-role-lifecycle-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "enterprise-security-exception-review",
       "description": "Design and audit enterprise security exception workflows covering customer security requirements, compensating controls, risk acceptance, expiry, evidence, owner approval, contract commitments, product gaps, supportability, escalation, renewal impact, and remediation tracking. Use when an enterprise buyer asks for a security exception or deviation from standard controls.",
       "status": "preview",
@@ -867,6 +906,19 @@
       "path": "skills/execution-simplification",
       "references": [
         "simplification-method.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "executive-business-review-operating-system-review",
+      "description": "Design and audit executive business review operating systems for strategic accounts covering account tiering, cadence, executive sponsors, agenda, value realization, product adoption, ROI evidence, risk register, roadmap requests, renewal and expansion signals, action owners, follow-up, and customer-facing narrative. Use when EBR or QBR programs need operating rigor instead of slideware.",
+      "status": "preview",
+      "path": "skills/executive-business-review-operating-system-review",
+      "references": [
+        "executive-business-review-operating-system-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1264,6 +1316,19 @@
       ]
     },
     {
+      "name": "marketplace-risk-model-calibration-review",
+      "description": "Design and audit marketplace risk model calibration for fraud, trust, abuse, quality, payout, listing, buyer, and seller risk covering labels, ground truth, thresholds, reviewer queues, false positives, false negatives, fairness, drift, appeals, policy feedback, model monitoring, and business guardrails. Use when risk scores influence marketplace actions or review priority.",
+      "status": "preview",
+      "path": "skills/marketplace-risk-model-calibration-review",
+      "references": [
+        "marketplace-risk-model-calibration-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "marketplace-seller-performance-review",
       "description": "Design and audit marketplace seller performance systems covering fulfillment, quality, response time, refunds, disputes, cancellations, policy violations, customer satisfaction, support burden, fraud signals, ranking impact, badges, warnings, coaching, suspension, appeals, fairness, and seller lifecycle. Use when marketplaces need reliable supply incentives without unfair punishment.",
       "status": "preview",
@@ -1467,6 +1532,19 @@
       "path": "skills/partner-implementation-quality-review",
       "references": [
         "partner-implementation-quality-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "partner-incentive-payout-governance-review",
+      "description": "Design and audit partner incentive payout governance for referral, reseller, implementation, marketplace, affiliate, MDF, rebate, bounty, and SPIF programs covering eligibility, attribution, quality gates, payout calculation, approval, invoicing, tax, clawbacks, disputes, fraud controls, partner communication, and ROI. Use when incentives can drive growth, channel conflict, or payout abuse.",
+      "status": "preview",
+      "path": "skills/partner-incentive-payout-governance-review",
+      "references": [
+        "partner-incentive-payout-governance-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1753,6 +1831,19 @@
       "path": "skills/release-health-dashboard-review",
       "references": [
         "release-health-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "release-readiness-exception-board-review",
+      "description": "Design and audit release readiness exception boards covering unmet launch gates, risk acceptance, customer scope, mitigation owners, feature flags, rollback triggers, monitoring, support readiness, communication, approval authority, expiry, and post-release review. Use when a release is not fully ready and teams need a controlled exception instead of hidden risk.",
+      "status": "preview",
+      "path": "skills/release-readiness-exception-board-review",
+      "references": [
+        "release-readiness-exception-board-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -2106,6 +2197,19 @@
       "path": "skills/store-listing-optimization",
       "references": [
         "store-listing-optimization-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "store-price-change-communication-review",
+      "description": "Design and audit App Store, Google Play, Steam, Microsoft Store, and direct subscription price-change communication covering affected products, regions, consent requirements, renewal timing, grandfathering, paywall copy, store metadata, notifications, email/in-app messaging, support macros, refund/cancel paths, analytics, and post-change monitoring. Use when pricing changes can affect trust, churn, or platform compliance.",
+      "status": "preview",
+      "path": "skills/store-price-change-communication-review",
+      "references": [
+        "store-price-change-communication-patterns.md"
       ],
       "scripts": [],
       "agents": [

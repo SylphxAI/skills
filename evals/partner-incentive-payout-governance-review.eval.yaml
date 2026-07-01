@@ -1,0 +1,10 @@
+skill: partner-incentive-payout-governance-review
+positive_prompts:
+  - "Review partner incentive payout governance for referral commissions, reseller rebates, implementation bonuses, marketplace bounties, affiliate payouts, MDF, SPIFs, attribution conflicts, payout formulas, tax/invoice requirements, clawbacks, disputes, fraud controls, and ROI."
+  - "Design a channel incentive program that rewards quality pipeline and customer outcomes without creating duplicate payouts, fake leads, channel conflict, support burden, or margin leakage."
+negative_prompts:
+  - "Run a release readiness exception board."
+expected_behavior:
+  - "Defines incentive objective, eligible partners/actions/accounts, attribution source, payout formula, approval path, evidence, quality gates, invoice/tax requirements, clawbacks, disputes, fraud controls, communication, and ROI review."
+  - "Separates referral, reseller, implementation, marketplace, affiliate, MDF, rebate, SPIF, renewal incentive, and disputed payout paths."
+  - "Flags spreadsheet truth, duplicate claims, channel conflict, low-quality incentives, hidden clawbacks, tax/invoice gaps, payout abuse, margin leakage, and revenue-only optimization."

@@ -1,0 +1,10 @@
+skill: marketplace-risk-model-calibration-review
+positive_prompts:
+  - "Calibrate a marketplace risk model for fraud, payout holds, fake listings, buyer abuse, seller scams, low-quality submissions, review priority, false positives, appeals, fairness, drift, reviewer QA, and policy feedback."
+  - "Audit a trust-and-safety score where thresholds were tuned to reduce losses but creator complaints, appeal reversals, queue backlog, and market liquidity problems are rising."
+negative_prompts:
+  - "Review enterprise role lifecycle."
+expected_behavior:
+  - "Defines affected actions, label sources, ground truth, thresholds, queue routing, human review, appeals, fairness checks, drift monitoring, reviewer QA, policy feedback, and safe rollout plan."
+  - "Separates fraud, abuse, quality, payout, listing, buyer, seller, ranking, dispute, account takeover, and policy-violation risk signals."
+  - "Flags automated final decisions, loss-only optimization, threshold leakage, label noise, queue overload, fairness blind spots, appeal gaps, reviewer drift, and calibration drift."

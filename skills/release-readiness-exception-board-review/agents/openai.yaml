@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Readiness Exception Board Review"
+  short_description: "Govern release exceptions"
+  default_prompt: "Use $release-readiness-exception-board-review to run a release readiness exception board."

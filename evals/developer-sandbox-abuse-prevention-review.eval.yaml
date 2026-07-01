@@ -1,0 +1,10 @@
+skill: developer-sandbox-abuse-prevention-review
+positive_prompts:
+  - "Review developer sandbox abuse prevention for an API marketplace with open signup, API keys, OAuth scopes, webhooks, email testing, synthetic data, quotas, token churn, fake apps, certification, production promotion, manual review, and developer appeals."
+  - "Design a graduated trust model that lets legitimate developers test quickly while stopping sandbox abuse through identity checks, capability gates, quotas, risk signals, review queues, and false-positive monitoring."
+negative_prompts:
+  - "Audit contract renewal obligations."
+expected_behavior:
+  - "Defines sandbox entry points, environment isolation, synthetic data, risky capabilities, quota ladder, trust tiers, abuse signals, review queues, appeals, developer messaging, and production promotion gates."
+  - "Separates activation friction, identity verification, API quotas, capability gating, data isolation, deliverability risk, marketplace certification, manual review, and false-positive monitoring."
+  - "Flags production data leakage, sandbox credentials touching customers, threshold leakage, signup-friction overcorrection, automated final decisions, weak appeals, and unmeasured developer harm."
