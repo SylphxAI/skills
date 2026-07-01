@@ -22,6 +22,8 @@ A strong answer after loading the skill should:
 - Classifies data types and durability needs.
 - Defines RPO/RTO, restore states, conflicts, export, and support tooling.
 - Treats restore drills as required, not optional.
+- For E2EE systems, prevents support/admin plaintext access or unilateral key unwrap while preserving client-side recovery.
+- Includes procedural restore runbook, manifest/checksum verification, evidence retention, owner/alerting, and cost/capacity guardrails.
 
 It should also produce the artifact shape requested by `skills/backup-restore-design/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -36,3 +38,5 @@ The skill should not load for this prompt unless the user adds an explicit backu
 - Classifies data types and durability needs.
 - Defines RPO/RTO, restore states, conflicts, export, and support tooling.
 - Treats restore drills as required, not optional.
+- For E2EE systems, prevents support/admin plaintext access or unilateral key unwrap while preserving client-side recovery.
+- Includes procedural restore runbook, manifest/checksum verification, evidence retention, owner/alerting, and cost/capacity guardrails.
