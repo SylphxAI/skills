@@ -1,40 +1,40 @@
 
 > benchmark:summarize:current
-> node scripts/summarize-benchmark-results.mjs --current-suite benchmarks/skill-behavior/results/gateway-calibration-interface-craft-20260701.json benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-desktop-os-improved.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-entitlement-improved.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-marketplace-payout-guidance.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-refund-guidance.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved.json benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payouts-audit.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-refund-budgeted.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust.json
+> node scripts/summarize-benchmark-results.mjs --current-suite benchmarks/skill-behavior/results/gateway-calibration-interface-craft-20260701.json benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-desktop-os-improved.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-entitlement-improved.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-marketplace-payout-guidance.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-guidance.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-overlap-marketplace-ops.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-refund-guidance.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-growth-ui-openai-judge.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema.json benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved.json benchmarks/skill-behavior/results/gateway-rerun-hard-product-v0-20260701-marketplace-payouts-audit.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-lifecycle-retention.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-platform-analytics.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-refund-budgeted.json benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-revenue-trust.json
 
 # Skill Behavior Benchmark Summary
 
 - Selection mode: current-suite
 - Selection rule: prefer clean git provenance, then newest runner completion time, then run/file lexical order
-- Superseded samples excluded: 31
-- Superseded task IDs: app-store-launch-readiness-001, board-metrics-operating-001, desktop-os-integration-release-001, developer-quota-credit-abuse-001, interface-craft-checkout-review-001, marketplace-payout-tax-hold-001, marketplace-payouts-creator-001, mobile-first-permission-onboarding-001, notification-lifecycle-growth-001, payment-platform-webhook-ledger-001, promotion-campaign-subscription-001, refund-entitlement-support-001, release-freeze-control-001, skill-marketplace-creator-001, subscription-entitlement-cross-platform-001, subscription-price-increase-retention-001, subscription-pricing-saas-001
+- Superseded samples excluded: 36
+- Superseded task IDs: app-store-launch-readiness-001, backup-restore-customer-data-001, board-metrics-operating-001, daily-reward-streak-economy-001, desktop-os-integration-release-001, developer-quota-credit-abuse-001, interface-craft-checkout-review-001, marketplace-payout-tax-hold-001, marketplace-payouts-creator-001, mobile-first-permission-onboarding-001, notification-lifecycle-growth-001, payment-platform-webhook-ledger-001, product-analytics-revenue-funnel-001, promotion-campaign-subscription-001, refund-entitlement-support-001, release-freeze-control-001, skill-marketplace-creator-001, steam-launch-commercial-readiness-001, subscription-entitlement-cross-platform-001, subscription-price-increase-retention-001, subscription-pricing-saas-001
 - Samples: 25
 - Unique task coverage: 25
-- Average baseline score: 3.80
-- Average skill-loaded score: 4.69
-- Average delta: 0.89 (95% bootstrap CI 0.68 to 1.11)
-- Skill win rate: 96.0%
-- Non-regression rate: 100.0%
-- Critical failure delta: 19 (21 baseline vs 2 skill-loaded)
+- Average baseline score: 3.73
+- Average skill-loaded score: 4.62
+- Average delta: 0.89 (95% bootstrap CI 0.65 to 1.13)
+- Skill win rate: 92.0%
+- Non-regression rate: 96.0%
+- Critical failure delta: 21 (23 baseline vs 2 skill-loaded)
 - Positive trigger recall: 100.0%
 - Negative-control over-trigger rate: 0.0%
-- Answer input tokens: baseline avg 220, skill-loaded avg 1429, added 1209 (25/25 samples)
-- Answer output tokens: baseline avg 1682, skill-loaded avg 1414, delta -268 (25/25 samples)
-- Answer total tokens: baseline avg 1903, skill-loaded avg 2843, delta 941 (25/25 samples)
-- Quality efficiency: 0.74 score delta per 1k added input tokens
-- Answer latency: baseline avg 31.45s, skill-loaded avg 26.73s, delta -4.72s (25/25 samples)
-- Claim tier supported by this data: Useful
+- Answer input tokens: baseline avg 252, skill-loaded avg 1462, added 1209 (25/25 samples)
+- Answer output tokens: baseline avg 1652, skill-loaded avg 1356, delta -296 (25/25 samples)
+- Answer total tokens: baseline avg 1905, skill-loaded avg 2818, delta 913 (25/25 samples)
+- Quality efficiency: 0.73 score delta per 1k added input tokens
+- Answer latency: baseline avg 28.35s, skill-loaded avg 25.27s, delta -3.08s (25/25 samples)
+- Claim tier supported by this data: SOTA candidate
 - Claim depth scope: suite
 - Useful-claim gates: sampleDepth=pass, winRate=pass, avgDelta=pass, criticalFailures=pass, overTrigger=pass
-- SOTA-candidate gates: useful=pass, suiteDepth=pass, modelOverlap=fail(15/20 shared tasks), ciLowerAboveZero=pass, overTrigger=pass
+- SOTA-candidate gates: useful=pass, suiteDepth=pass, modelOverlap=pass, ciLowerAboveZero=pass, overTrigger=pass
 
 | Task | Skill | Baseline | Skill-loaded | Delta | Preference |
 | --- | --- | ---: | ---: | ---: | --- |
 | app-store-launch-readiness-001 | app-store-distribution-readiness | 3.00 | 4.00 | 1.00 | skill |
-| backup-restore-customer-data-001 | backup-restore-design | 4.20 | 5.00 | 0.80 | skill |
+| backup-restore-customer-data-001 | backup-restore-design | 4.50 | 4.10 | -0.40 | baseline |
 | board-metrics-operating-001 | board-metrics-operating-review | 3.00 | 4.00 | 1.00 | skill |
-| daily-reward-streak-economy-001 | daily-reward-and-streak-review | 3.90 | 4.90 | 1.00 | skill |
-| desktop-os-integration-release-001 | desktop-os-integration | 4.10 | 5.00 | 0.90 | skill |
+| daily-reward-streak-economy-001 | daily-reward-and-streak-review | 3.60 | 4.40 | 0.80 | skill |
+| desktop-os-integration-release-001 | desktop-os-integration | 4.00 | 5.00 | 1.00 | skill |
 | developer-quota-credit-abuse-001 | developer-quota-credit-abuse-review | 2.00 | 4.00 | 2.00 | skill |
 | interface-craft-checkout-review-001 | interface-craft | 3.00 | 5.00 | 2.00 | skill |
 | marketplace-payout-tax-hold-001 | marketplace-payouts-review | 4.50 | 4.64 | 0.14 | skill |
@@ -44,13 +44,13 @@
 | notification-permission-fatigue-recovery-001 | notification-strategy-review | 4.50 | 4.80 | 0.30 | skill |
 | payment-platform-webhook-ledger-001 | payment-platform-readiness | 4.00 | 5.00 | 1.00 | skill |
 | payment-webhook-entitlement-race-001 | payment-platform-readiness | 4.70 | 5.00 | 0.30 | skill |
-| product-analytics-revenue-funnel-001 | product-analytics-instrumentation-review | 4.19 | 4.74 | 0.55 | skill |
+| product-analytics-revenue-funnel-001 | product-analytics-instrumentation-review | 4.00 | 5.00 | 1.00 | skill |
 | promotion-campaign-subscription-001 | promotion-campaign-review | 4.00 | 5.00 | 1.00 | skill |
 | refund-entitlement-support-001 | refund-and-support-flow-review | 3.00 | 4.00 | 1.00 | skill |
 | release-freeze-control-001 | release-freeze-change-control-review | 4.00 | 5.00 | 1.00 | skill |
 | skill-marketplace-creator-001 | skill-marketplace-creator | 4.00 | 5.00 | 1.00 | skill |
 | steam-demo-refund-review-risk-001 | steam-launch-readiness | 4.43 | 4.93 | 0.50 | skill |
-| steam-launch-commercial-readiness-001 | steam-launch-readiness | 4.44 | 4.69 | 0.25 | skill |
+| steam-launch-commercial-readiness-001 | steam-launch-readiness | 3.00 | 4.00 | 1.00 | skill |
 | subscription-entitlement-cross-platform-001 | subscription-entitlement-review | 3.10 | 4.80 | 1.70 | skill |
 | subscription-price-increase-grandfathering-001 | subscription-price-increase-retention-review | 4.30 | 4.84 | 0.54 | skill |
 | subscription-price-increase-retention-001 | subscription-price-increase-retention-review | 4.00 | 4.00 | 0.00 | skill |

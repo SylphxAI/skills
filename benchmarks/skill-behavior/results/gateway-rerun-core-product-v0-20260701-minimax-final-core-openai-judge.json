@@ -1,0 +1,675 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "daily-reward-streak-economy-001",
+      "backup-restore-customer-data-001",
+      "steam-launch-commercial-readiness-001",
+      "desktop-os-integration-release-001",
+      "product-analytics-revenue-funnel-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "b41f5ab4c3aa1a174890340d4d3514540e4cd33a",
+      "branch": "codex/minimax-overlap-smoke",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T16:59:57.282Z",
+    "completedAt": "2026-07-01T17:06:27.517Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "daily-reward-streak-economy-001",
+      "skill": "daily-reward-and-streak-review",
+      "promptSha256": "32d0baff68dbe831708015c94361580a1f365d54988df902cbd3eb025cfd0543",
+      "skillContextSha256": "b0c44b4e067949d7f29542414dfc682dad924337e9996b3e25201b668ebee792",
+      "skillBodySha256": "8feb7871f868eb2528d11b7fbd0585852bfd50a57f7c412f987ab9a439bab62f",
+      "skillReferenceSha256": [
+        {
+          "path": "references/daily-reward-streak-systems.md",
+          "sha256": "ec62d750fda9a6321887dacb1f7f3d66e811960f0de8a7797158f608cc99a88a"
+        }
+      ],
+      "skillLoadedPromptSha256": "a391bb64567477fe3aeb6f55ed7cf7ecc3fc3ecd89020eeb44d935b1a40998ea",
+      "baseline": {
+        "score": 3.6,
+        "criterionScores": {
+          "retention-ethics": 4,
+          "state-rules": 3,
+          "economy-balance": 4,
+          "abuse-prevention": 3,
+          "measurement": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Strong ethics, trust guardrails, notifications, VIP limits, and metrics. However, it lacks a true streak state machine, gives imprecise offline rules, misses multi-accounting, and includes unsupported benchmark claims.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/daily-reward-streak-economy-001-baseline.md",
+        "outputSha256": "7f65e6313368447ccde7363e79998de62e62609c5b764f5f85e7e3cd0a9be003",
+        "latencyMs": 43486,
+        "usage": {
+          "input_tokens": 264,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 2442,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2706
+        }
+      },
+      "skillLoaded": {
+        "score": 4.4,
+        "criterionScores": {
+          "retention-ethics": 4,
+          "state-rules": 5,
+          "economy-balance": 4,
+          "abuse-prevention": 4,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "More complete artifact set: calendar policy, explicit state model, recovery rules, timezone/offline handling, economy controls, trust metrics, and abuse detection. Minor gaps include limited multi-account coverage and a paid repair path that could pressure users.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/daily-reward-streak-economy-001-skill-loaded.md",
+        "outputSha256": "0fa7074792cb3f1af6abb28a4835fa4761a0b6b7b054d3f9cdf6430ad26ca2ca",
+        "latencyMs": 35879,
+        "usage": {
+          "input_tokens": 1355,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 1189,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2544
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/daily-reward-streak-economy-001-judge-raw.md",
+      "judgeOutputSha256": "bb5d073fbb397684b2fe7947f668321c8716019ff49d887549985a7de52e0e4c",
+      "judgeLatencyMs": 11723,
+      "judgeUsage": {
+        "input_tokens": 4192,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 719,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4911
+      }
+    },
+    {
+      "taskId": "backup-restore-customer-data-001",
+      "skill": "backup-restore-design",
+      "promptSha256": "882d9ce4c32e306bf6f9892caa8ddfbe56263feeb28da0a9cd18b4b518157a6f",
+      "skillContextSha256": "f647948d42c33d51de3c79c571707f158f13cb273cba03cbdcddb20cf6e510fa",
+      "skillBodySha256": "1c0ad09e8f417b5582a62adfc0e119701ad140f31f8a2734fca4cb7b4b543de2",
+      "skillReferenceSha256": [
+        {
+          "path": "references/backup-restore-patterns.md",
+          "sha256": "773a34e3ff643d18a0fbeded29a75ad1ab5d94888d87eefd0fc80fdbed6b29dc"
+        }
+      ],
+      "skillLoadedPromptSha256": "7c82459e9eaeda29a06f34cd57ad2261110acd44bddd6e5a08211b413d36c28a",
+      "baseline": {
+        "score": 4.5,
+        "criterionScores": {
+          "recovery-objectives": 4.5,
+          "restore-proof": 4.5,
+          "corruption-deletion": 5,
+          "security-privacy": 4.5,
+          "operations": 3.5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive scope, retention, RPO/RTO, restore paths, immutable backups, point-in-time recovery, E2EE, regional storage, export, and restore drills. Minor gaps: restore runbook is scenario-based not procedural, evidence retention and ops roles/cost controls are thin.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/backup-restore-customer-data-001-baseline.md",
+        "outputSha256": "8cf8aaf1ced56d65cf2fb40fd0522504130321f50fd6ba2b3e9fde737eb8ab28",
+        "latencyMs": 27976,
+        "usage": {
+          "input_tokens": 260,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 1205,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1465
+        }
+      },
+      "skillLoaded": {
+        "score": 4.1,
+        "criterionScores": {
+          "recovery-objectives": 4.5,
+          "restore-proof": 4,
+          "corruption-deletion": 4.5,
+          "security-privacy": 3.5,
+          "operations": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Strong objectives, retention, snapshots, ransomware handling, user restore, drills, and support tooling. Security is weakened by unclear org/HSM recovery-key access under E2EE, export is under-specified, and restore evidence retention/checksum detail is lighter.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/backup-restore-customer-data-001-skill-loaded.md",
+        "outputSha256": "985accb389890c9a86519d47f04444c0f8047ee4b4cab9c1f51027964b517f03",
+        "latencyMs": 19608,
+        "usage": {
+          "input_tokens": 917,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1095,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2012
+        }
+      },
+      "preference": "baseline",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/backup-restore-customer-data-001-judge-raw.md",
+      "judgeOutputSha256": "9b550729311ad504871c314ec97dbfed54d819fc0a2f973b49065bbf21c828cd",
+      "judgeLatencyMs": 14618,
+      "judgeUsage": {
+        "input_tokens": 2845,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 814,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3659
+      }
+    },
+    {
+      "taskId": "steam-launch-commercial-readiness-001",
+      "skill": "steam-launch-readiness",
+      "promptSha256": "9ac8c2667aa3204e8d7a19f5abe62e46a5a60f3700fa2a8e2630586522852a40",
+      "skillContextSha256": "b9f21cea7627251667bca3deae3d51ed45a3adea326be99195acfe9bb6af6a13",
+      "skillBodySha256": "28ebda07e4bb3244d6778fb107c686b626348cd5a38507e981b3c373517fcf6c",
+      "skillReferenceSha256": [
+        {
+          "path": "references/steam-launch-systems.md",
+          "sha256": "1137f4a3b04f175542a377eb1c8424b85f446cd46040b683ddc7dbbeffbea2f8"
+        }
+      ],
+      "skillLoadedPromptSha256": "ef053f4429a1c18265fe6852041465b83cfd48215e0f7ca392d7d701f2769806",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "store-conversion": 3,
+          "technical-readiness": 4,
+          "commercial-policy": 4,
+          "community-ops": 4,
+          "post-launch-learning": 2
+        },
+        "criticalFailures": [
+          "Incomplete store readiness checklist",
+          "Weak post-launch learning metrics"
+        ],
+        "rationale": "Good domain matrix and covers anti-cheat, refunds, moderation, regional pricing, embargo, and cadence. Store conversion omits trailer/tags details. Post-launch learning lacks cohort retention, wishlist conversion, review analysis, patch outcome tracking, and explicit crash reporting.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/steam-launch-commercial-readiness-001-baseline.md",
+        "outputSha256": "37e5f4e4ee9a729c3a02944348af037df2593ef7aa1ba8731ec9192a2231105a",
+        "latencyMs": 29963,
+        "usage": {
+          "input_tokens": 262,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 1441,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1703
+        }
+      },
+      "skillLoaded": {
+        "score": 4,
+        "criterionScores": {
+          "store-conversion": 5,
+          "technical-readiness": 4,
+          "commercial-policy": 4,
+          "community-ops": 5,
+          "post-launch-learning": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Strong artifact coverage with checklist, pricing, moderation, gates, cadence, wishlist/review plan. Covers refund and review risks. Technical section misses explicit crash reporting, and some pricing/DLC specifics are unsupported or slightly questionable.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/steam-launch-commercial-readiness-001-skill-loaded.md",
+        "outputSha256": "329c9346011e599e68236bbe20bb19690d5354903c7b84fbb44bed7e5f219d82",
+        "latencyMs": 29105,
+        "usage": {
+          "input_tokens": 1468,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1290,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2758
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/steam-launch-commercial-readiness-001-judge-raw.md",
+      "judgeOutputSha256": "fce5bcd74e33ed6d357a996b7c8592a8a72f5287a541748492a6d17037dec1f5",
+      "judgeLatencyMs": 14548,
+      "judgeUsage": {
+        "input_tokens": 3230,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 800,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4030
+      }
+    },
+    {
+      "taskId": "desktop-os-integration-release-001",
+      "skill": "desktop-os-integration",
+      "promptSha256": "6842892a97437da94ac4a4f207430132ce63dc27ceed8b62db0730436d3daa9f",
+      "skillContextSha256": "0917bcea2c07950cf272fa9b771628d9949d7910baf3417a4b71ac658ac9f338",
+      "skillBodySha256": "fd6ad857a015dba0632540a3bc83e5b7b536a13f454760b68ccd96435645a9d6",
+      "skillReferenceSha256": [
+        {
+          "path": "references/desktop-os-integration-matrix.md",
+          "sha256": "fd8c87aefb440042e32f0d898a14e8200261403507354108cf668f081092427c"
+        }
+      ],
+      "skillLoadedPromptSha256": "6735429c897d7967b2665b845d83b98ffd736c2cb54a68959c0d11c78db3c3e9",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "platform-native-fit": 5,
+          "trust-permissions": 4,
+          "release-integrity": 4,
+          "enterprise-readiness": 4,
+          "testability": 1
+        },
+        "criticalFailures": [
+          "Missing regression test plan"
+        ],
+        "rationale": "Strong OS integration matrix and good signing, notarization, update, and enterprise coverage. Permission UX is addressed. However, it lacks the required regression test plan and has limited compatibility/update/permission reset testing detail.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/desktop-os-integration-release-001-baseline.md",
+        "outputSha256": "69047c4a06aa019c327481f7b970d18a844051f60adb99235e686e8306186861",
+        "latencyMs": 23076,
+        "usage": {
+          "input_tokens": 265,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1433,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1698
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "platform-native-fit": 5,
+          "trust-permissions": 5,
+          "release-integrity": 5,
+          "enterprise-readiness": 5,
+          "testability": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Complete artifacts: integration matrix, permission prompts, signing/update gates, enterprise notes, diagnostics, rollback, and detailed regression tests. Handles macOS and Windows conventions with user trust, managed environments, and compatibility coverage.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/desktop-os-integration-release-001-skill-loaded.md",
+        "outputSha256": "3b19014775d2ee209e9bdf8dd54d3038330245a2a4db3ff9925fdbfd8c4298c0",
+        "latencyMs": 21751,
+        "usage": {
+          "input_tokens": 1402,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1405,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2807
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/desktop-os-integration-release-001-judge-raw.md",
+      "judgeOutputSha256": "00da028d2d222581bc0e342cb10620a92f1c7e68a1557b1a3a0a166cac2b86e1",
+      "judgeLatencyMs": 11999,
+      "judgeUsage": {
+        "input_tokens": 3341,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 780,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4121
+      }
+    },
+    {
+      "taskId": "product-analytics-revenue-funnel-001",
+      "skill": "product-analytics-instrumentation-review",
+      "promptSha256": "acf64c7ea3a71997be2e04e6aabea0097d2c0b61d06e58c0f68b1501a8d9f36c",
+      "skillContextSha256": "1f3273cd126abe21b1212a85ecb81c401d26e48ecc3ecd2cf0f5eebb9ab80e9c",
+      "skillBodySha256": "b570547f72968b8d1a419150c62dafd1e86efe2a6b7c68e82dc01b60e4dc21b6",
+      "skillReferenceSha256": [
+        {
+          "path": "references/product-analytics-instrumentation-patterns.md",
+          "sha256": "a5e0bf4ee0e5b22c4232da7946d66e566ad3b6a860090bfb8db55bf16fa4681a"
+        }
+      ],
+      "skillLoadedPromptSha256": "5ee56d52d6e460cd317aa1fa45c51865275d87f55c13e2642556ec3d3d265758",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "decision-orientation": 4,
+          "taxonomy-quality": 4,
+          "identity-attribution": 4,
+          "dashboard-readiness": 4,
+          "data-quality": 3
+        },
+        "criticalFailures": [],
+        "rationale": "Strong audit with required artifacts, revenue/refund/cancel coverage, consent and identity gaps, and dashboard deliverables. Some findings are unsupported assumptions, and data-quality controls lack duplicate detection, backfill policy, schema drift checks, and anomaly alerts.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/product-analytics-revenue-funnel-001-baseline.md",
+        "outputSha256": "0433e34dbd09f0a3da6a8c24fa853f24fb64f34563f8aaa486902b8d93fe7a6d",
+        "latencyMs": 20895,
+        "usage": {
+          "input_tokens": 262,
+          "input_tokens_details": {
+            "cached_tokens": 171
+          },
+          "output_tokens": 1355,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1617
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "decision-orientation": 5,
+          "taxonomy-quality": 5,
+          "identity-attribution": 4,
+          "dashboard-readiness": 4,
+          "data-quality": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive, decision-oriented plan with event contracts, owners, revenue/refund/cancel events, consent controls, identity merge rules, attribution, QA gates, alerts, and dashboard ownership. Cross-device stitching and specific dashboard suite are less explicit but mostly covered.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/product-analytics-revenue-funnel-001-skill-loaded.md",
+        "outputSha256": "b4e63955554ce10837e133dc824edfa6e730bc8757144a27a5eeb634fccf6b78",
+        "latencyMs": 21165,
+        "usage": {
+          "input_tokens": 1361,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1275,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2636
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-final-core-openai-judge-outputs/product-analytics-revenue-funnel-001-judge-raw.md",
+      "judgeOutputSha256": "08a613c75ad071aeca5247003449bd8127f63ff5a15a76ba51849af7d18bc61e",
+      "judgeLatencyMs": 9426,
+      "judgeUsage": {
+        "input_tokens": 3137,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 584,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3721
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "daily-reward-streak-economy-001",
+      "promptType": "positive",
+      "expectedSkill": "daily-reward-and-streak-review",
+      "triggeredSkills": [
+        "daily-reward-and-streak-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1756,
+      "usage": {
+        "input_tokens": 199,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 38,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 237
+      }
+    },
+    {
+      "taskId": "daily-reward-streak-economy-001",
+      "promptType": "negative-control",
+      "expectedSkill": "daily-reward-and-streak-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2873,
+      "usage": {
+        "input_tokens": 148,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 46,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 194
+      }
+    },
+    {
+      "taskId": "backup-restore-customer-data-001",
+      "promptType": "positive",
+      "expectedSkill": "backup-restore-design",
+      "triggeredSkills": [
+        "backup-restore-design"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1639,
+      "usage": {
+        "input_tokens": 180,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 35,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 215
+      }
+    },
+    {
+      "taskId": "backup-restore-customer-data-001",
+      "promptType": "negative-control",
+      "expectedSkill": "backup-restore-design",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1433,
+      "usage": {
+        "input_tokens": 135,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 30,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 165
+      }
+    },
+    {
+      "taskId": "steam-launch-commercial-readiness-001",
+      "promptType": "positive",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [
+        "steam-launch-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2199,
+      "usage": {
+        "input_tokens": 190,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 42,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 232
+      }
+    },
+    {
+      "taskId": "steam-launch-commercial-readiness-001",
+      "promptType": "negative-control",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2407,
+      "usage": {
+        "input_tokens": 145,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 39,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 184
+      }
+    },
+    {
+      "taskId": "desktop-os-integration-release-001",
+      "promptType": "positive",
+      "expectedSkill": "desktop-os-integration",
+      "triggeredSkills": [
+        "desktop-os-integration"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 4336,
+      "usage": {
+        "input_tokens": 194,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 42,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 236
+      }
+    },
+    {
+      "taskId": "desktop-os-integration-release-001",
+      "promptType": "negative-control",
+      "expectedSkill": "desktop-os-integration",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1868,
+      "usage": {
+        "input_tokens": 149,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 43,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 192
+      }
+    },
+    {
+      "taskId": "product-analytics-revenue-funnel-001",
+      "promptType": "positive",
+      "expectedSkill": "product-analytics-instrumentation-review",
+      "triggeredSkills": [
+        "product-analytics-instrumentation-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2016,
+      "usage": {
+        "input_tokens": 187,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 54,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 241
+      }
+    },
+    {
+      "taskId": "product-analytics-revenue-funnel-001",
+      "promptType": "negative-control",
+      "expectedSkill": "product-analytics-instrumentation-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1941,
+      "usage": {
+        "input_tokens": 142,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 40,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 182
+      }
+    }
+  ]
+}
