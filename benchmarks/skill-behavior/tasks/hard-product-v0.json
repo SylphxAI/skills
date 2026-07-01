@@ -417,6 +417,165 @@
           "description": "Tracks loss rate, false positives, appeal overturns, creator trust, liquidity, support load, buyer harm, and policy feedback loops."
         }
       ]
+    },
+    {
+      "id": "payment-platform-store-refund-revoke-001",
+      "skill": "payment-platform-readiness",
+      "category": "payments-risk",
+      "prompt": "Audit a mobile app subscription platform where App Store Server Notifications, Google Play RTDN, Stripe web checkout, restore purchases, billing retry, grace period, partial refunds, family sharing, chargebacks, and manual support credits can all affect premium access. A customer received a refund on Apple but still has access on web, another restored a Google purchase before the webhook arrived, and support wants to manually re-enable access. Define provider precedence, entitlement projection, support-safe correction, reconciliation, customer messaging, and release gates.",
+      "negativeControlPrompt": "Review the spacing, icon weight, and hover behavior of a desktop settings sidebar.",
+      "expectedArtifacts": [
+        "provider precedence table",
+        "entitlement projection state machine",
+        "refund/revoke/support correction flow",
+        "cross-platform reconciliation checks",
+        "release gates and observability"
+      ],
+      "failureModes": [
+        "treating restore purchases or client callbacks as money truth",
+        "collapsing refund, revocation, chargeback, grace, and support credit into one state",
+        "support mutates entitlement directly without ledger evidence",
+        "no cross-platform reconciliation or stale-access detection",
+        "false revocations harm legitimate customers without grace or clear messaging"
+      ],
+      "rubric": [
+        {
+          "id": "provider-precedence",
+          "weight": 2,
+          "required": true,
+          "description": "Separates Apple, Google, Stripe, restore, promo, support credit, refund, chargeback, billing retry, grace, family sharing, and manual correction authority with effective timestamps and idempotency keys."
+        },
+        {
+          "id": "entitlement-projection",
+          "weight": 2,
+          "required": true,
+          "description": "Defines append-only ledger events and replayable entitlement projection states for grant, renew, grace, pause, revoke, restore lookup, refund, chargeback, and support adjustment."
+        },
+        {
+          "id": "support-safe-correction",
+          "weight": 2,
+          "required": true,
+          "description": "Provides lookup evidence, approval, temporary access policy, manual correction ledger event, customer-visible reason, expiry, and audit trail without direct entitlement mutation."
+        },
+        {
+          "id": "reconciliation-observability",
+          "weight": 1,
+          "required": true,
+          "description": "Covers provider polling/backfill, stale entitlement detection, cross-device/account mismatch, settlement/refund close, dashboards, alerts, and dead-letter replay."
+        },
+        {
+          "id": "release-gates",
+          "weight": 1,
+          "required": false,
+          "description": "Names concrete sandbox/live fixtures, rollback/kill switches, replay-from-zero tests, support macros, and owner approvals before launch."
+        }
+      ]
+    },
+    {
+      "id": "payment-platform-webhook-outage-replay-001",
+      "skill": "payment-platform-readiness",
+      "category": "payments-risk",
+      "prompt": "Design the incident runbook for a payment platform after a webhook outage causes a four-hour backlog from Stripe, Apple, and Google. Some events are duplicates, some are out of order, one settlement file has arrived, refunds were issued during the outage, and the entitlement projector may have granted access from client success callbacks. Define the replay strategy, idempotency, ledger repair, entitlement correction, finance reconciliation, customer/support communications, and recovery gates.",
+      "negativeControlPrompt": "Create a homepage hero-section copy critique for a design agency.",
+      "expectedArtifacts": [
+        "webhook outage state machine",
+        "safe replay/idempotency plan",
+        "ledger and entitlement repair flow",
+        "finance reconciliation and settlement close",
+        "customer/support communications and recovery gates"
+      ],
+      "failureModes": [
+        "blindly replaying events without ordering or idempotency",
+        "trusting client success callbacks as grant truth",
+        "repairing entitlements by mutable database patches",
+        "ignoring settlement/tax/fee/refund reconciliation",
+        "no customer-safe grace, support messaging, or rollback control"
+      ],
+      "rubric": [
+        {
+          "id": "replay-state-machine",
+          "weight": 2,
+          "required": true,
+          "description": "Defines paused, quarantined, deduplicated, ordered, replaying, repaired, reconciled, and resumed states with owners, evidence, and exit gates."
+        },
+        {
+          "id": "idempotent-ledger-repair",
+          "weight": 2,
+          "required": true,
+          "description": "Uses provider event IDs, lineage IDs, effective time, raw payload hashes, append-only repair events, dead-letter queues, and projector replay instead of mutable patches."
+        },
+        {
+          "id": "entitlement-safety",
+          "weight": 2,
+          "required": true,
+          "description": "Handles client-callback grants, temporary access, revocation risk, refund/chargeback access effects, support-safe remediation, and false-revocation prevention."
+        },
+        {
+          "id": "finance-reconciliation",
+          "weight": 1,
+          "required": true,
+          "description": "Reconciles settlement, invoices, taxes, fees, refunds, disputes, processor/store balances, and close exceptions after replay."
+        },
+        {
+          "id": "comms-recovery",
+          "weight": 1,
+          "required": false,
+          "description": "Provides customer/support communications, dashboards, alert thresholds, kill switches, incident review, and recovery proof."
+        }
+      ]
+    },
+    {
+      "id": "payment-platform-invoice-tax-close-001",
+      "skill": "payment-platform-readiness",
+      "category": "payments-finance",
+      "prompt": "Review launch readiness for a B2B SaaS billing stack using Stripe invoices, card payments, bank transfers, tax/VAT calculation, coupons, upgrades/downgrades, proration, failed payment dunning, credit notes, refunds, disputes, revenue recognition export, and customer support invoice corrections. The finance team is worried that entitlements, invoices, taxes, and settlement will not reconcile at month close. Define the launch gates, ledger events, reconciliation schedule, support correction controls, observability, and rollback plan.",
+      "negativeControlPrompt": "Plan a notification permission primer for a meditation app onboarding flow.",
+      "expectedArtifacts": [
+        "invoice and payment ledger model",
+        "tax/fee/settlement reconciliation plan",
+        "entitlement and dunning contract",
+        "support correction controls",
+        "month-close launch gates"
+      ],
+      "failureModes": [
+        "treating invoice status as equivalent to entitlement access",
+        "missing tax, fee, settlement, credit note, or refund reconciliation",
+        "support edits invoices or entitlements without audit ledger events",
+        "no month-close owner/cadence/exception workflow",
+        "no rollback or kill switch for billing launch defects"
+      ],
+      "rubric": [
+        {
+          "id": "ledger-model",
+          "weight": 2,
+          "required": true,
+          "description": "Models invoice_created, payment_succeeded/failed, tax_calculated, coupon_applied, credit_note, refund, dispute, settlement, entitlement_grant/revoke, and manual_adjustment as auditable events."
+        },
+        {
+          "id": "finance-close",
+          "weight": 2,
+          "required": true,
+          "description": "Defines reconciliation cadence, owner, sources, tolerances, exceptions, tax/VAT, fees, settlement, refunds, disputes, credit notes, and revenue export checks."
+        },
+        {
+          "id": "entitlement-dunning",
+          "weight": 2,
+          "required": true,
+          "description": "Separates invoice/payment/dunning states from entitlement access, grace, suspension, downgrade, upgrade, proration, and customer messaging."
+        },
+        {
+          "id": "support-controls",
+          "weight": 1,
+          "required": true,
+          "description": "Provides invoice lookup, correction approvals, credit/refund policy, manual adjustment ledger events, customer-visible explanations, and audit evidence."
+        },
+        {
+          "id": "launch-rollback",
+          "weight": 1,
+          "required": false,
+          "description": "Names test fixtures, sandbox/live separation, dashboards, alerts, rollback/kill switches, go-live approvals, and month-close proof."
+        }
+      ]
     }
   ]
 }
