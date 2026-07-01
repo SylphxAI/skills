@@ -18,6 +18,8 @@ Payouts are a trust system. Creators/sellers need predictable earnings, buyers n
 - `payout-12` — Global payouts need country eligibility, payout-provider constraints, tax form status, withholding state, sanctions/KYC screening state, failed-transfer recovery, and reporting handoff before funds become payable.
 - `payout-13` — Payout schedules must name cadence, clearing delay, reserve percent/duration, minimum payout threshold, supported currencies, provider fees, conversion policy, and who pays each fee.
 - `payout-14` — Seller support needs dashboard states, evidence collection, appeal/dispute workflow, admin approval controls, SLA, escalation path, and metrics for creator trust and support load.
+- `payout-15` — Tax readiness needs product states for form not started, submitted, invalid, expired, verified, withholding required, reportable threshold reached, report generated, correction requested, and payout blocked; qualified tax owners decide the policy.
+- `payout-16` — Statutory reporting and withholding must be modeled as evidence and handoff states, not hidden back-office work: jurisdiction, form type/status, withholding rate/source, report period, filing/export status, correction workflow, and seller-visible message.
 
 ## Decision table
 
@@ -30,6 +32,8 @@ Payouts are a trust system. Creators/sellers need predictable earnings, buyers n
 | Creator changes payout method | Verify new destination | Delay or confirm next payout | Notify creator and log change |
 | Currency conversion | Rate and round at policy-defined point | Pay destination currency | Show rate, fees, and source amount |
 | Missing tax form | Keep earnings accrued but not payable, or apply withholding where required | Block or reduce payout per qualified policy | Show required form, status, and support route |
+| Tax form invalid or expired | Move payable amount to tax-blocked or withholding-required state | Exclude from payout until corrected, or apply approved withholding | Show form issue, correction steps, deadline, and qualified support route |
+| Reporting threshold reached | Mark seller/reporting period as reportable | Continue payout only if required form/reporting evidence is complete | Show that tax reporting is being prepared without giving tax advice |
 | Sanctions/KYC potential match | Move affected funds to compliance-held state | Block payout until qualified review resolves | Provide non-sensitive compliance-review message |
 | Failed bank transfer | Return funds to available or held based on failure reason | Do not retry invalid destinations indefinitely | Show provider reason, remediation, and trace ID |
 | Negative balance | Offset future earnings before new payouts | Block payout until non-negative unless exception approved | Show itemized reversal lineage and cure path |
@@ -48,6 +52,18 @@ Define these values before launch. Use placeholders only when a business owner s
 | Fees | Platform fee, provider transfer fee, FX fee, chargeback fee, tax withholding, who pays each fee. |
 | Destination changes | Verification delay, fraud review trigger, notification, and audit trail. |
 | Exceptions | Who can approve early payout, reserve override, negative-balance exception, or goodwill credit. |
+
+## Compliance readiness matrix
+
+Define product state and evidence without making legal, tax, or sanctions determinations:
+
+| Area | Product states | Required evidence | Payout effect | Support message |
+| --- | --- | --- | --- | --- |
+| Tax form lifecycle | not_started, submitted, invalid, expired, verified, correction_requested | seller profile, form type, jurisdiction, validation result, policy version, qualified owner | accrue earnings; block payout, apply approved withholding, or release only after verified | Explain required form/correction and route to tax support; do not give tax advice |
+| Withholding | not_required, pending_policy, required, applied, refunded_or_adjusted | jurisdiction, withholding rate/source, transaction/period basis, approval record | reduce payable amount and itemize ledger movement | Show withholding line item and qualified-review route |
+| Statutory reporting | not_reportable, threshold_monitoring, reportable, export_generated, filed_or_handed_off, correction_needed | reporting period, threshold evidence, seller identity status, export ID, filing/handoff owner | block only when required evidence is missing; otherwise preserve report lineage | State that reporting is prepared/updated; avoid legal conclusions |
+| Country/provider eligibility | eligible, unsupported_country, unsupported_currency, provider_restricted, destination_invalid | provider capability, country/currency, payout method, failure code | block destination or payout batch until remediated | Show supported alternatives and provider trace ID |
+| Sanctions/KYC | not_screened, clear, potential_match, confirmed_blocked, false_positive_released | screening result, case ID, reviewer, non-sensitive reason code | compliance hold until qualified resolution | Use non-sensitive review language and appeal/escalation path |
 
 ## State machine
 
