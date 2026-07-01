@@ -5,7 +5,7 @@
   "scripts": {
     "validate": "node scripts/validate-skills.mjs",
     "registry": "node scripts/generate-registry.mjs",
-    "check": "node scripts/generate-registry.mjs && node scripts/generate-catalog.mjs && node scripts/validate-skills.mjs --check-registry && node scripts/validate-evals.mjs && node scripts/validate-catalog.mjs && node scripts/validate-reference-quality.mjs && node scripts/validate-behavior-examples.mjs && node scripts/validate-launch-kit.mjs && node scripts/validate-benchmarks.mjs && node scripts/validate-benchmark-output-safety.mjs && node scripts/validate-benchmark-claims.mjs && node scripts/generate-catalog.mjs --check",
+    "check": "node scripts/generate-registry.mjs && node scripts/generate-catalog.mjs && node scripts/validate-skills.mjs --check-registry && node scripts/validate-evals.mjs && node scripts/validate-catalog.mjs && node scripts/validate-reference-quality.mjs && node scripts/validate-behavior-examples.mjs && node scripts/validate-launch-kit.mjs && node scripts/validate-benchmarks.mjs && node scripts/validate-benchmark-output-safety.mjs && node scripts/validate-benchmark-claims.mjs && node scripts/validate-sota-evidence.mjs && node scripts/generate-catalog.mjs --check",
     "validate:evals": "node scripts/validate-evals.mjs",
     "validate:catalog": "node scripts/validate-catalog.mjs",
     "validate:references": "node scripts/validate-reference-quality.mjs",
@@ -22,6 +22,7 @@
     "benchmark:merge": "node scripts/merge-benchmark-results.mjs",
     "validate:benchmark-claims": "node scripts/validate-benchmark-claims.mjs",
     "validate:benchmark-outputs": "node scripts/validate-benchmark-output-safety.mjs",
-    "sanitize:benchmark-outputs": "node scripts/sanitize-benchmark-outputs.mjs"
+    "sanitize:benchmark-outputs": "node scripts/sanitize-benchmark-outputs.mjs",
+    "validate:sota-evidence": "node scripts/validate-sota-evidence.mjs"
   }
 }
