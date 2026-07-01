@@ -19,6 +19,36 @@ increase_scoped -> cohorts_segmented -> value_message_prepared -> notice_deliver
 - `price-retention-6` — Prepare cancellation recovery flows that are transparent, reversible, accessible, and measurable without dark patterns.
 - `price-retention-7` — Instrument notice delivered, consent accepted, renewal success, cancellation intent, save offer shown, save accepted, refund, support contact, complaint, churn, and expansion.
 - `price-retention-8` — Run post-change readback by cohort and channel, then update pricing, packaging, support, and lifecycle messaging based on evidence.
+- `price-retention-9` — Treat renewal-date windows as a first-class rollout dimension: T-90/T-60/T-30/T-7 notice states, renewal cutoff, grace period, failed payment, and post-renewal refund window.
+- `price-retention-10` — Keep App Store and Google Play behavior in a verification matrix instead of assuming one consent model; record current console/API rule, country exception, receipt/RTDN signal, and user no-action outcome.
+
+## Mandatory matrices
+
+### Cohort matrix dimensions
+
+Use these fields before choosing grandfathering or save offers:
+
+| Dimension | Required split | Why it matters |
+| --- | --- | --- |
+| Plan and packaging | legacy, current, annual, monthly, trial, usage overage | Prevents accidental entitlement or overage repricing surprises. |
+| Tenure and loyalty | new, 3-12 months, 1-2 years, 2+ years, enterprise contract | Separates fairness/loyalty treatment from pure ARPU. |
+| Usage/adoption | low usage, core user, power user, seat expansion, dormant | Avoids charging more before value is realized. |
+| Billing channel | direct, App Store, Google Play, reseller/enterprise | Drives notice, consent, renewal, refund, and support route. |
+| Region | tax/regulatory region, language, local notice law | Prevents one global notice from becoming a compliance gap. |
+| Renewal window | T-90/T-60/T-30/T-7, renewal week, grace, just-renewed | Controls sequencing and refund exposure. |
+| Churn risk | cancellation intent, downgrade history, support sentiment, payment failures | Protects net revenue instead of headline uplift. |
+
+### Channel rule matrix
+
+Do not rely on generic platform memory. Fill this matrix with current store-console/API evidence before launch:
+
+| Channel | Verify | User states to handle | Support/refund route |
+| --- | --- | --- | --- |
+| Direct billing | Contract/ToS notice, email/in-app delivery, explicit consent if required, renewal invoice timing, payment retry behavior | notice sent, consent pending, accepted, declined, no response, renewal succeeded, payment failed, cancellation requested | internal billing policy, prorated/goodwill refund rules, chargeback escalation |
+| App Store | Current Apple price-change flow, territory behavior, subscription-group settings, receipt/server-notification signal, user no-action outcome | platform notice shown, consent required/not required, accepted, declined, no response, store cancellation, renewal at old/new price as verified | Apple refund route, support macro explaining store-managed billing |
+| Google Play | Current Play price-migration/price-change flow, base plan/offer setup, region timing, RTDN signal, user no-action outcome | platform notice shown, accepted, declined, no response, renewal/cancel state, grace/account-hold state | Google refund route, support macro explaining Play-managed billing |
+
+If the current platform rule is unknown, write `verify before rollout` and make launch blocked for that channel.
 
 ## Decision table
 
@@ -27,6 +57,8 @@ increase_scoped -> cohorts_segmented -> value_message_prepared -> notice_deliver
 | High-tenure cohort | Consider phased increase | LTV and loyalty analysis | Trust breach |
 | Low-usage cohort | Improve value or save | Usage and churn risk | Churn spike |
 | Store-billed users | Check platform consent | Channel rule matrix | Compliance issue |
+| Renewal within 30 days | Delay or issue urgent verified notice | Renewal-window matrix | Surprise charge/refund spike |
+| No consent response | Define channel-specific no-action outcome | Store-console/API evidence | Wrong cancellation/renewal assumption |
 | Save offer | Gate eligibility | Offer experiment | Margin leakage |
 | Support spike | Activate macros | Issue taxonomy | Refund confusion |
 
