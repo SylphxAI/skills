@@ -253,7 +253,7 @@ Project identity and delivery boundary are recorded in
 
 Installability is not the same as usefulness. The repository now includes a paired baseline-vs-skill benchmark framework in [`benchmarks/skill-behavior/`](./benchmarks/skill-behavior/), an optional OpenAI Responses API runner, and the methodology in [`docs/skill-benchmark-methodology.md`](./docs/skill-benchmark-methodology.md).
 
-Current public status: skills are schema-validated, install-verified, and the current `core-product-v0` benchmark suite supports a repository-level **Useful** claim: 20 current task samples, +0.65 average skill uplift, 90.0% skill win rate, 100.0% non-regression rate, and 0.0% negative-control over-trigger rate. This is not a SOTA claim, and it does not prove every individual skill useful without per-skill sample depth.
+Current public status: skills are schema-validated, install-verified, and the current `core-product-v0` benchmark suite supports a repository-level **Useful** claim: 20 current task samples, +0.65 average skill uplift, 90.0% skill win rate, 100.0% non-regression rate, and 0.0% negative-control over-trigger rate. The current suite also reports answer token/latency overhead so quality gains can be weighed against added context cost. This is not a SOTA claim, and it does not prove every individual skill useful without per-skill sample depth.
 
 ## Quality bar
 

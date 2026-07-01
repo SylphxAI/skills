@@ -14,6 +14,11 @@
 - Critical failure delta: 13 (13 baseline vs 0 skill-loaded)
 - Positive trigger recall: 100.0%
 - Negative-control over-trigger rate: 0.0%
+- Answer input tokens: baseline avg 97, skill-loaded avg 1202, added 1105 (20/20 samples)
+- Answer output tokens: baseline avg 1842, skill-loaded avg 1643, delta -199 (20/20 samples)
+- Answer total tokens: baseline avg 1939, skill-loaded avg 2845, delta 906 (20/20 samples)
+- Quality efficiency: 0.59 score delta per 1k added input tokens
+- Answer latency: baseline avg 43.40s, skill-loaded avg 33.77s, delta -9.63s (20/20 samples)
 - Claim tier supported by this data: Useful
 - Claim depth scope: suite
 - Useful-claim gates: sampleDepth=pass, winRate=pass, avgDelta=pass, criticalFailures=pass, overTrigger=pass

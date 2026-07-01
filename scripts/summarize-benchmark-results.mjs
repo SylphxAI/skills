@@ -12,6 +12,18 @@ function round(value) {
   return Number(value).toFixed(2);
 }
 
+function roundInteger(value) {
+  return Math.round(Number(value)).toString();
+}
+
+function seconds(ms) {
+  return `${round(ms / 1000)}s`;
+}
+
+function finite(value) {
+  return typeof value === 'number' && Number.isFinite(value);
+}
+
 function makeRng(seed = 123456789) {
   let state = seed >>> 0;
   return () => {
@@ -104,6 +116,61 @@ function selectCurrentSuite(rows, triggerChecks) {
   };
 }
 
+function pairedAverage(rows, baselineGetter, skillGetter) {
+  const pairs = [];
+  for (const row of rows) {
+    const baselineValue = baselineGetter(row);
+    const skillValue = skillGetter(row);
+    if (finite(baselineValue) && finite(skillValue)) {
+      pairs.push({ baselineValue, skillValue, delta: skillValue - baselineValue });
+    }
+  }
+
+  return {
+    count: pairs.length,
+    baselineAvg: mean(pairs.map((pair) => pair.baselineValue)),
+    skillAvg: mean(pairs.map((pair) => pair.skillValue)),
+    deltaAvg: mean(pairs.map((pair) => pair.delta)),
+  };
+}
+
+function usageValue(usage, key) {
+  return finite(usage?.[key]) ? usage[key] : null;
+}
+
+function overheadStats(rows, avgDelta) {
+  const input = pairedAverage(
+    rows,
+    (row) => usageValue(row.baselineUsage, 'input_tokens'),
+    (row) => usageValue(row.skillUsage, 'input_tokens'),
+  );
+  const output = pairedAverage(
+    rows,
+    (row) => usageValue(row.baselineUsage, 'output_tokens'),
+    (row) => usageValue(row.skillUsage, 'output_tokens'),
+  );
+  const total = pairedAverage(
+    rows,
+    (row) => usageValue(row.baselineUsage, 'total_tokens'),
+    (row) => usageValue(row.skillUsage, 'total_tokens'),
+  );
+  const latency = pairedAverage(
+    rows,
+    (row) => row.baselineLatencyMs,
+    (row) => row.skillLatencyMs,
+  );
+
+  const scorePer1kInputTokens = input.count && input.deltaAvg > 0 ? avgDelta / (input.deltaAvg / 1000) : null;
+
+  return {
+    input,
+    output,
+    total,
+    latency,
+    scorePer1kInputTokens,
+  };
+}
+
 function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci, duplicateIds }) {
   const skillCounts = new Map();
   const skillTaskIds = new Map();
@@ -187,6 +254,10 @@ async function main() {
         preference: sample.preference,
         baselineCriticalFailures: (sample.baseline.criticalFailures || []).length,
         skillCriticalFailures: (loaded.criticalFailures || []).length,
+        baselineLatencyMs: sample.baseline.latencyMs,
+        skillLatencyMs: loaded.latencyMs,
+        baselineUsage: sample.baseline.usage || null,
+        skillUsage: loaded.usage || null,
       });
     }
     for (const check of result.triggerChecks || []) {
@@ -224,6 +295,7 @@ async function main() {
   const nonRegressionRate = nonRegressions / rows.length;
   const criticalDelta = baselineCritical - skillCritical;
   const assessment = claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci, duplicateIds: duplicates });
+  const overhead = overheadStats(rows, avgDelta);
 
   console.log('# Skill Behavior Benchmark Summary');
   console.log('');
@@ -245,6 +317,19 @@ async function main() {
   console.log(`- Critical failure delta: ${criticalDelta} (${baselineCritical} baseline vs ${skillCritical} skill-loaded)`);
   console.log(`- Positive trigger recall: ${assessment.positiveRecall === null ? 'not reported' : pct(assessment.positiveRecall)}`);
   console.log(`- Negative-control over-trigger rate: ${assessment.overTriggerRate === null ? 'not reported' : pct(assessment.overTriggerRate)}`);
+  if (overhead.input.count) {
+    console.log(`- Answer input tokens: baseline avg ${roundInteger(overhead.input.baselineAvg)}, skill-loaded avg ${roundInteger(overhead.input.skillAvg)}, added ${roundInteger(overhead.input.deltaAvg)} (${overhead.input.count}/${rows.length} samples)`);
+    console.log(`- Answer output tokens: baseline avg ${roundInteger(overhead.output.baselineAvg)}, skill-loaded avg ${roundInteger(overhead.output.skillAvg)}, delta ${roundInteger(overhead.output.deltaAvg)} (${overhead.output.count}/${rows.length} samples)`);
+    console.log(`- Answer total tokens: baseline avg ${roundInteger(overhead.total.baselineAvg)}, skill-loaded avg ${roundInteger(overhead.total.skillAvg)}, delta ${roundInteger(overhead.total.deltaAvg)} (${overhead.total.count}/${rows.length} samples)`);
+    if (overhead.scorePer1kInputTokens !== null) console.log(`- Quality efficiency: ${round(overhead.scorePer1kInputTokens)} score delta per 1k added input tokens`);
+  } else {
+    console.log('- Answer token overhead: not reported');
+  }
+  if (overhead.latency.count) {
+    console.log(`- Answer latency: baseline avg ${seconds(overhead.latency.baselineAvg)}, skill-loaded avg ${seconds(overhead.latency.skillAvg)}, delta ${seconds(overhead.latency.deltaAvg)} (${overhead.latency.count}/${rows.length} samples)`);
+  } else {
+    console.log('- Answer latency overhead: not reported');
+  }
   console.log(`- Claim tier supported by this data: ${assessment.tier}`);
   console.log(`- Claim depth scope: ${assessment.sampleDepthScope}`);
   console.log(`- Useful-claim gates: sampleDepth=${assessment.checks.sampleDepthOk ? 'pass' : 'fail'}, winRate=${assessment.checks.winRateOk ? 'pass' : 'fail'}, avgDelta=${assessment.checks.deltaOk ? 'pass' : 'fail'}, criticalFailures=${assessment.checks.criticalOk ? 'pass' : 'fail'}, overTrigger=${assessment.checks.triggerOk ? 'pass' : 'fail'}`);
