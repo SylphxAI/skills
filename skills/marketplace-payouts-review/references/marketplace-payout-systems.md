@@ -57,11 +57,15 @@ Define these values before launch. Use placeholders only when a business owner s
 
 Define product state and evidence without making legal, tax, or sanctions determinations:
 
+Use named form/report examples to make the product state concrete, then require qualified verification.
+Common examples to route, not interpret: W-9, W-8BEN, W-8BEN-E, 1099-K, 1042-S, VAT/GST tax ID or invoice data,
+local tax ID, local withholding certificate, and payout-provider tax profile.
+
 | Area | Product states | Required evidence | Payout effect | Support message |
 | --- | --- | --- | --- | --- |
-| Tax form lifecycle | not_started, submitted, invalid, expired, verified, correction_requested | seller profile, form type, jurisdiction, validation result, policy version, qualified owner | accrue earnings; block payout, apply approved withholding, or release only after verified | Explain required form/correction and route to tax support; do not give tax advice |
+| Tax form lifecycle | not_started, submitted, invalid, expired, verified, correction_requested | seller profile, form type (for example W-9, W-8BEN, W-8BEN-E, VAT/GST tax ID, local equivalent), jurisdiction, validation result, policy version, qualified owner | accrue earnings; block payout, apply approved withholding, or release only after verified | Explain required form/correction and route to tax support; do not give tax advice |
 | Withholding | not_required, pending_policy, required, applied, refunded_or_adjusted | jurisdiction, withholding rate/source, transaction/period basis, approval record | reduce payable amount and itemize ledger movement | Show withholding line item and qualified-review route |
-| Statutory reporting | not_reportable, threshold_monitoring, reportable, export_generated, filed_or_handed_off, correction_needed | reporting period, threshold evidence, seller identity status, export ID, filing/handoff owner | block only when required evidence is missing; otherwise preserve report lineage | State that reporting is prepared/updated; avoid legal conclusions |
+| Statutory reporting | not_reportable, threshold_monitoring, reportable, export_generated, filed_or_handed_off, correction_needed | reporting period, threshold evidence, seller identity status, report/export type (for example 1099-K, 1042-S, VAT/GST report, local equivalent), export ID, filing/handoff owner | block only when required evidence is missing; otherwise preserve report lineage | State that reporting is prepared/updated; avoid legal conclusions |
 | Country/provider eligibility | eligible, unsupported_country, unsupported_currency, provider_restricted, destination_invalid | provider capability, country/currency, payout method, failure code | block destination or payout batch until remediated | Show supported alternatives and provider trace ID |
 | Sanctions/KYC | not_screened, clear, potential_match, confirmed_blocked, false_positive_released | screening result, case ID, reviewer, non-sensitive reason code | compliance hold until qualified resolution | Use non-sensitive review language and appeal/escalation path |
 

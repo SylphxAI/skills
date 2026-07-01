@@ -14,7 +14,7 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 3. Map buyer payment, platform fee, seller earnings, pending balance, holds, refunds, disputes, adjustments, payout, and reconciliation.
 4. Separate ledger truth, displayed balances, provider state, policy decisions, and support evidence.
 5. Define reserve/hold governance: reason codes, release criteria, SLA, owner, evidence, escalation, and appeal path.
-6. Cover tax forms, tax-form lifecycle states, withholding, statutory reporting handoff, sanctions screening, country eligibility, payout provider constraints, failed transfers, and negative balances.
+6. Cover tax forms, named form/status examples when relevant, tax-form lifecycle states, withholding, statutory reporting handoff, sanctions screening, country eligibility, payout provider constraints, failed transfers, and negative balances.
 7. Make payout policy concrete: clearing delay, reserve percent/duration, payout cadence, minimum threshold, supported currencies, provider fees, conversion policy, and fee responsibility.
 8. Produce formal payout state machine, fee table, risk controls, compliance readiness matrix, seller dashboard/support workflow, trust metrics, audit invariants, and reconciliation checks.
 
@@ -51,6 +51,7 @@ Reserve/hold governance:
 
 Compliance/provider readiness:
 - <tax form / withholding / statutory reporting / sanctions / country / provider constraint> -> product state, payout effect, evidence, support message, qualified-review owner
+- Named examples to verify, not legal advice: W-9, W-8BEN, W-8BEN-E, 1099-K, 1042-S, VAT/GST tax ID or local equivalent
 
 Ledger/events:
 - <event> with properties

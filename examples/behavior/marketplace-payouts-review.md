@@ -24,6 +24,7 @@ A strong answer after loading the skill should:
 - Flags compliance-sensitive payout decisions for qualified review while preserving product state design.
 - Covers reserves, hold release criteria, tax forms, withholding, sanctions/KYC state, country/provider eligibility, failed transfers, and negative balances for global marketplaces.
 - Models tax form lifecycle, withholding, statutory reporting handoff, country/provider eligibility, and sanctions/KYC as product states with evidence, payout effect, seller message, and qualified-review owner.
+- Names common form/report examples such as W-9, W-8BEN, W-8BEN-E, 1099-K, 1042-S, VAT/GST tax ID, and local equivalents only as qualified-review routing examples.
 - Provides formal payout states including reversed earnings and negative balances plus audit invariants tying ledger, displayed balances, provider state, and support evidence together.
 - Names payout cadence, clearing delay, reserve percent/duration, minimum thresholds, supported currencies, provider fees, and fee responsibility.
 - Includes seller dashboard/support workflow, dispute evidence, admin approval controls, SLAs, and creator trust/support-load metrics.
@@ -43,6 +44,7 @@ The skill should not load for this prompt unless the user adds an explicit marke
 - Flags compliance-sensitive payout decisions for qualified review while preserving product state design.
 - Covers reserves, hold release criteria, tax forms, withholding, sanctions/KYC state, country/provider eligibility, failed transfers, and negative balances for global marketplaces.
 - Models tax form lifecycle, withholding, statutory reporting handoff, country/provider eligibility, and sanctions/KYC as product states with evidence, payout effect, seller message, and qualified-review owner.
+- Names common form/report examples such as W-9, W-8BEN, W-8BEN-E, 1099-K, 1042-S, VAT/GST tax ID, and local equivalents only as qualified-review routing examples.
 - Provides formal payout states including reversed earnings and negative balances plus audit invariants tying ledger, displayed balances, provider state, and support evidence together.
 - Names payout cadence, clearing delay, reserve percent/duration, minimum thresholds, supported currencies, provider fees, and fee responsibility.
 - Includes seller dashboard/support workflow, dispute evidence, admin approval controls, SLAs, and creator trust/support-load metrics.
