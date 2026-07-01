@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-payment-hard-v0-20260701-observability-rollback",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "payment-webhook-entitlement-race-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "a2687dd2ad870f6397e3755abbc0bd83ca8726b2",
+      "branch": "codex/improve-payment-race-evidence",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T19:49:36.272Z",
+    "completedAt": "2026-07-01T19:50:39.940Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "payment-webhook-entitlement-race-001",
+      "skill": "payment-platform-readiness",
+      "promptSha256": "4f6ee3f3059be3d469f3ed267d9409a01927a4ce551464f923148207b73b63c0",
+      "skillContextSha256": "830eff111509926273d49d0c3ee2eff1a5226ec88cccd6b79f4b7f1b0b76b1e9",
+      "skillBodySha256": "f8cf8acbd0ef2937fd81bb1e8e86e456c6b5554e02f566395d731a63d7e54446",
+      "skillReferenceSha256": [
+        {
+          "path": "references/payment-platform-patterns.md",
+          "sha256": "958d0e077715074d9678efe2b525f91e4e32240fac419228f767957819bee1c5"
+        }
+      ],
+      "skillLoadedPromptSha256": "4833563406b22ba90cac38eac8e75b02baf43c1da2a83f94281568bd9a773ded",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "ledger-authority": 4,
+          "platform-precedence": 3,
+          "reconciliation": 3,
+          "release-gates": 4,
+          "customer-trust": 2
+        },
+        "criticalFailures": [
+          "Missing explicit webhook retry/backfill and provider polling plan",
+          "Refund and chargeback handling is overly blunt and customer-hostile",
+          "Limited Apple/Google/Stripe-specific precedence semantics"
+        ],
+        "rationale": "Strong event-sourced ledger and useful release plan, but reconciliation lacks polling/backfill and webhook retry detail. Platform semantics are not sufficiently separated, delayed renewal/grace cases are thin, and auto-revocation/quarantine risks false customer harm.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-payment-hard-v0-20260701-observability-rollback-outputs/payment-webhook-entitlement-race-001-baseline.md",
+        "outputSha256": "3304a88d89cd3232c2b1d4582551bed0840279c247e31543d584e14e6d9fecce",
+        "latencyMs": 16397,
+        "usage": {
+          "input_tokens": 267,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1391,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1658
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "ledger-authority": 5,
+          "platform-precedence": 5,
+          "reconciliation": 5,
+          "release-gates": 5,
+          "customer-trust": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive server-side append-only ledger, provider-specific precedence, out-of-order/idempotent handling, reconciliation, support-safe corrections, concrete launch blockers, observability, rollback drills, and customer-protective grace/manual review policies.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-payment-hard-v0-20260701-observability-rollback-outputs/payment-webhook-entitlement-race-001-skill-loaded.md",
+        "outputSha256": "a3685a5739811e495dc28a92a260520025c7032b9a686b628b99bace8e256a2e",
+        "latencyMs": 21575,
+        "usage": {
+          "input_tokens": 3789,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1730,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5519
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-payment-hard-v0-20260701-observability-rollback-outputs/payment-webhook-entitlement-race-001-judge-raw.md",
+      "judgeOutputSha256": "a87cbda9e38b6ccb5a80be1eb36f95299c4d9150391944d114a660d6f5415004",
+      "judgeLatencyMs": 21438,
+      "judgeUsage": {
+        "input_tokens": 3287,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 767,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4054
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "payment-webhook-entitlement-race-001",
+      "promptType": "positive",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [
+        "payment-platform-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1310,
+      "usage": {
+        "input_tokens": 194,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 10,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 204
+      }
+    },
+    {
+      "taskId": "payment-webhook-entitlement-race-001",
+      "promptType": "negative-control",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2935,
+      "usage": {
+        "input_tokens": 147,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 41,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 188
+      }
+    }
+  ]
+}
