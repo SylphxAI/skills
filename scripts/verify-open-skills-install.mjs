@@ -26,6 +26,10 @@ function run(command, args, options) {
   };
 }
 
+function stripAnsi(text) {
+  return text.replace(/\x1b\[[0-9;?]*[ -/]*[@-~]/g, '');
+}
+
 async function main() {
   const registry = JSON.parse(await readFile(registryPath, 'utf8'));
   const expectedSkills = registry.skills.map((skill) => skill.name).sort();
@@ -64,7 +68,8 @@ async function main() {
   const listStep = run('npx', ['--yes', 'skills', 'add', skillSource, '--list'], { cwd: project, env });
   proof.steps.push({ name: 'list', ...listStep, stdoutSample: listStep.stdout.slice(0, 4000) });
   if (listStep.exitCode !== 0) throw new Error(`list command failed with ${listStep.exitCode}`);
-  const foundCountMatch = listStep.stdout.match(/Found\s+(\d+)\s+skills/i);
+  const normalizedListStdout = stripAnsi(listStep.stdout);
+  const foundCountMatch = normalizedListStdout.match(/Found\s+(\d+)\s+skills/i);
   const listedSkillCount = foundCountMatch ? Number(foundCountMatch[1]) : null;
   proof.listedSkillCount = listedSkillCount;
   if (listedSkillCount !== expectedSkills.length) {
