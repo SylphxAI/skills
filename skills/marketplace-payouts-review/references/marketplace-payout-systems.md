@@ -16,6 +16,8 @@ Payouts are a trust system. Creators/sellers need predictable earnings, buyers n
 - `payout-10` — Compliance-sensitive identity, tax, sanctions, or money-transmission questions require qualified review outside the skill; the product should still route the state and evidence.
 - `payout-11` — Reserves and holds need explicit trigger, affected scope, release criteria, SLA, owner, creator-visible status, and appeal/escalation path.
 - `payout-12` — Global payouts need country eligibility, payout-provider constraints, tax form status, withholding state, sanctions/KYC screening state, failed-transfer recovery, and reporting handoff before funds become payable.
+- `payout-13` — Payout schedules must name cadence, clearing delay, reserve percent/duration, minimum payout threshold, supported currencies, provider fees, conversion policy, and who pays each fee.
+- `payout-14` — Seller support needs dashboard states, evidence collection, appeal/dispute workflow, admin approval controls, SLA, escalation path, and metrics for creator trust and support load.
 
 ## Decision table
 
@@ -31,6 +33,21 @@ Payouts are a trust system. Creators/sellers need predictable earnings, buyers n
 | Sanctions/KYC potential match | Move affected funds to compliance-held state | Block payout until qualified review resolves | Provide non-sensitive compliance-review message |
 | Failed bank transfer | Return funds to available or held based on failure reason | Do not retry invalid destinations indefinitely | Show provider reason, remediation, and trace ID |
 | Negative balance | Offset future earnings before new payouts | Block payout until non-negative unless exception approved | Show itemized reversal lineage and cure path |
+
+## Payout policy table
+
+Define these values before launch. Use placeholders only when a business owner still needs to approve them:
+
+| Policy | Required decision |
+| --- | --- |
+| Clearing delay | How long earnings stay pending after buyer payment or delivery confirmation. |
+| Rolling reserve | Percent or amount, duration, seller cohort, review cadence, release criteria. |
+| Cadence | Weekly, biweekly, monthly, or manual; cutoff time and holiday handling. |
+| Minimum threshold | Minimum payout amount by currency and what happens below threshold. |
+| Supported currencies | Settlement currency, destination currency, exchange-rate source, rounding policy. |
+| Fees | Platform fee, provider transfer fee, FX fee, chargeback fee, tax withholding, who pays each fee. |
+| Destination changes | Verification delay, fraud review trigger, notification, and audit trail. |
+| Exceptions | Who can approve early payout, reserve override, negative-balance exception, or goodwill credit. |
 
 ## State machine
 
@@ -75,6 +92,24 @@ Audit fields to include where applicable: idempotency_key, source_event_id, ledg
 - Reversed earnings and negative balances must preserve lineage to original order, payout, refund, dispute, or manual adjustment.
 - Provider payout state cannot mark funds paid unless ledger state and reconciliation agree.
 - Support can explain status and collect evidence but cannot silently override fraud, tax, sanctions, or compliance holds without an approved ledger adjustment.
+
+## Seller dashboard and support workflow
+
+Seller-facing payout UI should show:
+
+- pending, available, held, disputed, paid, reversed, failed, and negative-balance amounts;
+- next payout date, minimum threshold progress, reserve release date, and destination status;
+- itemized fees, refunds, chargebacks, withholding, currency conversion rate, and provider trace IDs;
+- reason-coded holds with expected review time, evidence needed, appeal route, and support case link.
+
+Support/admin tooling should include:
+
+- transaction lineage across order, payment, fee, earning, hold, refund, dispute, adjustment, payout, and provider event;
+- evidence checklist for disputes and creator appeals;
+- dual approval for manual adjustments, early payout, hold release, negative-balance forgiveness, or large goodwill credits;
+- safe message templates that explain status without making unqualified legal, tax, sanctions, or fraud determinations.
+
+Track creator trust and marketplace health with payout latency, held-balance age, failed-transfer rate, dispute win rate, reversal loss, negative-balance recovery, creator payout ticket rate, creator payout CSAT, and reconciliation mismatch rate.
 
 ## Review checklist
 

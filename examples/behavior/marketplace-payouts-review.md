@@ -24,6 +24,8 @@ A strong answer after loading the skill should:
 - Flags compliance-sensitive payout decisions for qualified review while preserving product state design.
 - Covers reserves, hold release criteria, tax forms, withholding, sanctions/KYC state, country/provider eligibility, failed transfers, and negative balances for global marketplaces.
 - Provides formal payout states including reversed earnings and negative balances plus audit invariants tying ledger, displayed balances, provider state, and support evidence together.
+- Names payout cadence, clearing delay, reserve percent/duration, minimum thresholds, supported currencies, provider fees, and fee responsibility.
+- Includes seller dashboard/support workflow, dispute evidence, admin approval controls, SLAs, and creator trust/support-load metrics.
 
 It should also produce the artifact shape requested by `skills/marketplace-payouts-review/SKILL.md`, such as a readiness matrix, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -40,3 +42,5 @@ The skill should not load for this prompt unless the user adds an explicit marke
 - Flags compliance-sensitive payout decisions for qualified review while preserving product state design.
 - Covers reserves, hold release criteria, tax forms, withholding, sanctions/KYC state, country/provider eligibility, failed transfers, and negative balances for global marketplaces.
 - Provides formal payout states including reversed earnings and negative balances plus audit invariants tying ledger, displayed balances, provider state, and support evidence together.
+- Names payout cadence, clearing delay, reserve percent/duration, minimum thresholds, supported currencies, provider fees, and fee responsibility.
+- Includes seller dashboard/support workflow, dispute evidence, admin approval controls, SLAs, and creator trust/support-load metrics.
