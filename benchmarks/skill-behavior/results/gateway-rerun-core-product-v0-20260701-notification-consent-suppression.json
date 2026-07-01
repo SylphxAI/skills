@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-notification-consent-suppression",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "notification-lifecycle-growth-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "17cfac3cd9da5f34ef51501542b70ae6ec3bce0a",
+      "branch": "codex/improve-notification-strategy",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T17:45:45.576Z",
+    "completedAt": "2026-07-01T17:46:42.623Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "notification-lifecycle-growth-001",
+      "skill": "notification-strategy-review",
+      "promptSha256": "ef1451aeb0bd6caf51f6f0224bfc1e425572abe6ef0c08cd3519b5558d2fd3fa",
+      "skillContextSha256": "87a07f93d419875226513ec66fa26750568e74174c389ab8b0473290c64468d3",
+      "skillBodySha256": "5925460f7866e41d682a195ce2f1fff9ddd4a84f0a318dada870860f25010387",
+      "skillReferenceSha256": [
+        {
+          "path": "references/notification-strategy-patterns.md",
+          "sha256": "d3e632cbcc86e850d5a6c4c09a461f2324ee9a21c2bbd513d9322a8f0d4f7340"
+        }
+      ],
+      "skillLoadedPromptSha256": "6f1ed1806a1384a91b126c1e025cb0b380ab3445d7d245d5e62495f57b6e08e4",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "user-value": 3,
+          "permission-consent": 3,
+          "frequency-policy": 3,
+          "lifecycle-targeting": 5,
+          "measurement": 2
+        },
+        "criticalFailures": [],
+        "rationale": "Covers major journeys, caps, quiet hours, localization, and preferences, but user value is thin, email default-on is risky for regional consent, cross-channel dedupe is missing, and measurement omits complaints, deliverability, trust, and churn harms.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-notification-consent-suppression-outputs/notification-lifecycle-growth-001-baseline.md",
+        "outputSha256": "6b0e84b00f535dc79d46b59aa532744fa1ac40e408691b588901343d73c83644",
+        "latencyMs": 24450,
+        "usage": {
+          "input_tokens": 262,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 1653,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1915
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "user-value": 5,
+          "permission-consent": 5,
+          "frequency-policy": 5,
+          "lifecycle-targeting": 5,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive strategy with taxonomy, lifecycle triggers, channel policy, consent/preference controls, quiet hours, dedupe, regional handling, suppression, and trust metrics. Clearly separates transactional from marketing and ties sends to user value.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-notification-consent-suppression-outputs/notification-lifecycle-growth-001-skill-loaded.md",
+        "outputSha256": "2ebaf5dd6db1ffbde93410419a0b315f2d648725c498c63e11e1823c8ab5056d",
+        "latencyMs": 15318,
+        "usage": {
+          "input_tokens": 2333,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1560,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3893
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-notification-consent-suppression-outputs/notification-lifecycle-growth-001-judge-raw.md",
+      "judgeOutputSha256": "6fb425603acb0e32cc205128cdf0baacc694d674cfa8465272337007026a6c1d",
+      "judgeLatencyMs": 13423,
+      "judgeUsage": {
+        "input_tokens": 3736,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 777,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4513
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "notification-lifecycle-growth-001",
+      "promptType": "positive",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [
+        "notification-strategy-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2064,
+      "usage": {
+        "input_tokens": 184,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 31,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 215
+      }
+    },
+    {
+      "taskId": "notification-lifecycle-growth-001",
+      "promptType": "negative-control",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1782,
+      "usage": {
+        "input_tokens": 141,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 38,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 179
+      }
+    }
+  ]
+}

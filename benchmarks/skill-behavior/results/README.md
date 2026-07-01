@@ -29,7 +29,7 @@ calibration shard:
 
 | Artifact | Purpose | Current readback |
 | --- | --- | --- |
-| [`current-suite-20260701-summary.md`](./current-suite-20260701-summary.md) | One selected current sample per task across `core-product-v0` and `hard-product-v0`. | SOTA candidate; 25 samples; +0.99 average delta; 100.0% skill win rate; 0.0% over-trigger. |
+| [`current-suite-20260701-summary.md`](./current-suite-20260701-summary.md) | One selected current sample per task across `core-product-v0` and `hard-product-v0`. | SOTA candidate; 25 samples; +1.07 average delta; 100.0% skill win rate; 0.0% over-trigger. |
 
 Run `npm run validate:benchmark-claims` before changing public benchmark wording. The gate recomputes this
 summary from result JSON and rejects stale or broader-than-evidence claims.
