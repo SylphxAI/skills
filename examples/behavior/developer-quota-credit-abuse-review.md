@@ -23,6 +23,7 @@ A strong answer after loading the skill should:
 - Separates trial credits, promo credits, API quotas, AI token usage, compute/storage, expensive endpoints, multi-accounting, manual review, legitimate scale-up, and appeal paths.
 - Defines explicit activation, conversion, cost, abuse-loss, false-positive, appeal, support-load, exception-health, and developer-retention metrics.
 - Flags ledger gaps, exposed thresholds, activation-killing friction, automated final actions, promo cycling, cost runaway, false positives, weak appeals, and unmeasured developer harm.
+- Avoids inventing or revealing exact abuse thresholds, risk cutoffs, cluster counts, spend caps, percentage triggers, and SLA-hour targets unless supplied by an authorized internal source.
 
 It should also produce the artifact shape requested by `skills/developer-quota-credit-abuse-review/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -38,3 +39,4 @@ The skill should not load for this prompt unless the user adds an explicit devel
 - Separates trial credits, promo credits, API quotas, AI token usage, compute/storage, expensive endpoints, multi-accounting, manual review, legitimate scale-up, and appeal paths.
 - Defines explicit activation, conversion, cost, abuse-loss, false-positive, appeal, support-load, exception-health, and developer-retention metrics.
 - Flags ledger gaps, exposed thresholds, activation-killing friction, automated final actions, promo cycling, cost runaway, false positives, weak appeals, and unmeasured developer harm.
+- Avoids inventing or revealing exact abuse thresholds, risk cutoffs, cluster counts, spend caps, percentage triggers, and SLA-hour targets unless supplied by an authorized internal source.

@@ -12,31 +12,33 @@ Use this skill to convert developer quota, API credit, free trial, promo credit,
 1. Identify credit sources, quota units, costly operations, developer identity, account linking signals, promo mechanics, trust tiers, abuse signals, support/appeal routes, cost exposure, and activation metrics.
 2. Read `references/developer-quota-credit-abuse-patterns.md`.
 3. Classify the situation as free trial program, promo-credit campaign, API quota launch, AI token credit, compute/storage sandbox, suspected multi-accounting, expensive endpoint abuse, or legitimate scale-up request.
-4. Define quota ladder, credit ledger, trust-tier gating, fraud controls, throttling policy, reviewer queue, appeal path, cost monitoring, developer messaging, and upgrade/graduation path.
+4. Define quota ladder, credit ledger, trust-tier gating, fraud controls, throttling policy, reviewer queue, appeal path, cost monitoring, developer messaging, and upgrade/graduation path as public-safe policy bands, not invented numeric thresholds.
 5. Define an explicit measurement matrix before final recommendations: cost, activation, conversion, abuse loss, false positives, support load, appeal outcomes, exception usage, and developer retention.
-6. Produce quota and credit abuse review, state machine, decision table, event schema, control checklist, support policy, and cost/activation monitoring plan.
+6. Produce quota and credit abuse review, state machine, decision table, event schema, control checklist, support policy, cost/activation monitoring plan, and threshold-disclosure note.
 
 ## Guardrails
 
 - Do not stop abuse by making legitimate developer activation impossible.
-- Do not expose exact abuse signals, account-linking logic, or thresholds in developer-facing copy.
+- Do not expose exact abuse signals, account-linking logic, risk-score cutoffs, cluster counts, velocity caps, spend caps, percentage triggers, SLA-hour targets, or ban/reversal thresholds in externally shareable output.
 - Do not issue credits without a ledger that supports reversals, expiry, attribution, and cost reporting.
 - Do not let automated throttles become final high-impact decisions without review and appeal.
 - Do not optimize abuse loss alone; quota controls must preserve legitimate activation, conversion, and developer retention.
 - Do not report cost guardrails without false-positive, appeal, support, and graduation metrics.
+- Do not invent numeric limits when the user has not supplied an internal source of truth; use qualitative bands and named internal policy parameters instead.
 
 ## Output format
 
 ```text
 Developer quota/credit context:
 Audience / source of truth / risk boundary:
+Threshold disclosure policy: <public-safe, internal-only parameters, values redacted unless source-provided>
 
 Quota abuse control plan:
 | Area | Decision | Evidence | Risk | Owner |
 | --- | --- | --- | --- | --- |
 
 Credits, quota tiers, costly operations, trust signals, throttles, reviews, appeals, and cost guardrails:
-- <trigger> -> <policy, metric, edge case, support note>
+- <trigger> -> <policy band, metric, edge case, support note; redact exact threshold/cutoff values>
 
 Metrics and guardrails:
 | Metric family | What to measure | Guardrail / decision |
@@ -47,4 +49,7 @@ Metrics and guardrails:
 | False positives / appeals |  |  |
 | Support load |  |  |
 | Developer retention |  |  |
+
+Threshold/evasion safety:
+- <which values are internal-only, how developer/support copy explains decisions without exposing evasion thresholds>
 ```
