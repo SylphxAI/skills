@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-hard-subscription-price-depth-20260701-minimax",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 8000,
+    "answerWordLimit": 850,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "subscription-price-store-consent-no-action-001",
+      "subscription-price-annual-save-offer-001",
+      "subscription-price-regional-rollout-incident-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "b44e812cc15c42b4643c084dd267e4dd4b8416d2",
+      "branch": "codex/subscription-price-individual-evidence",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T22:23:34.412Z",
+    "completedAt": "2026-07-01T22:26:55.943Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "subscription-price-store-consent-no-action-001",
+      "skill": "subscription-price-increase-retention-review",
+      "promptSha256": "8256ddbb3a5c01273ce6cf529b9222d028e40886b3d25fcf7fad6b01d94cc2fc",
+      "skillContextSha256": "f306b0013a0164920b0b4ceb8263678fd39dc86db846ecf197c8001aad78842a",
+      "skillBodySha256": "5894824eb24b394f15fdc7fd77bd84a036d9afd98891444d60787b16bdb27738",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-price-increase-retention-patterns.md",
+          "sha256": "8936e8788333c7935fccbdee44aa4e9d046c543aa78d4c42b40616816321e2d7"
+        }
+      ],
+      "skillLoadedPromptSha256": "e5c5671a6154b5411f1cec4f18b2b4b2d315c03b3b886b45916f239c9136cc18",
+      "baseline": {
+        "score": 1,
+        "criterionScores": {
+          "channel-verification": 1,
+          "state-coverage": 2,
+          "renewal-window-control": 0,
+          "support-refund-routing": 2,
+          "launch-blockers": 1
+        },
+        "criticalFailures": [
+          "Assumes App Store and Google Play behavior without requiring current verification",
+          "Launches platform cohorts after review approval without verifying no-action outcomes",
+          "Includes renewal-week users without delay or mitigation"
+        ],
+        "rationale": "Provides matrices and evidence ideas, but makes broad unsupported store-policy claims, lacks required renewal-window segmentation, omits just-renewed mitigation, and does not block unverifiable store behavior before rollout.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-subscription-price-depth-20260701-minimax-outputs/subscription-price-store-consent-no-action-001-baseline.md",
+        "outputSha256": "b63d3ac11ea41430f0fc24ad982527b1711824dd29c20a4e17dcccc3d0e09fb9",
+        "latencyMs": 20203,
+        "usage": {
+          "input_tokens": 283,
+          "input_tokens_details": {
+            "cached_tokens": 282
+          },
+          "output_tokens": 2583,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2866
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "channel-verification": 5,
+          "state-coverage": 4,
+          "renewal-window-control": 5,
+          "support-refund-routing": 4,
+          "launch-blockers": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong launch plan: separates channels, blocks stores pending console/API evidence, covers key consent/no-action/renewal states, delays renewal-week and just-renewed cohorts, and routes refunds/support appropriately with escalation triggers.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-subscription-price-depth-20260701-minimax-outputs/subscription-price-store-consent-no-action-001-skill-loaded.md",
+        "outputSha256": "3c7aeab39a061591092c503bd4b9b480f7afcc4914907819d7158334ab390174",
+        "latencyMs": 25875,
+        "usage": {
+          "input_tokens": 5475,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 2519,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 7994
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-subscription-price-depth-20260701-minimax-outputs/subscription-price-store-consent-no-action-001-judge-raw.md",
+      "judgeOutputSha256": "725318ebc56d43269ebb3dab7ab0c33fc5231bc23b9b23a9348aac0c85dc4703",
+      "judgeLatencyMs": 13666,
+      "judgeUsage": {
+        "input_tokens": 4085,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 715,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4800
+      }
+    },
+    {
+      "taskId": "subscription-price-annual-save-offer-001",
+      "skill": "subscription-price-increase-retention-review",
+      "promptSha256": "3be5e5f2c24a837cf2ad408741213db826f8f3e2370de40b4081792a71fb890f",
+      "skillContextSha256": "f306b0013a0164920b0b4ceb8263678fd39dc86db846ecf197c8001aad78842a",
+      "skillBodySha256": "5894824eb24b394f15fdc7fd77bd84a036d9afd98891444d60787b16bdb27738",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-price-increase-retention-patterns.md",
+          "sha256": "8936e8788333c7935fccbdee44aa4e9d046c543aa78d4c42b40616816321e2d7"
+        }
+      ],
+      "skillLoadedPromptSha256": "6862e9d3e2a375bc6d0d2b9050a59895dd9db006e5da72cff5ad1771192a1de9",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "cohort-offer-fit": 4,
+          "annual-migration": 3,
+          "offer-governance": 4,
+          "experiment-readback": 1,
+          "trust-comms": 2
+        },
+        "criticalFailures": [
+          "No holdout or matched-cohort experiment plan",
+          "Missing net revenue readback across churn, refunds, offer cost, support load, and later churn"
+        ],
+        "rationale": "Good cohort matrix and margin-protected save ladder, but experimentation is mostly absent. Annual migration language risks coercion, cancellation accessibility is missing, and trust communications are thin.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-subscription-price-depth-20260701-minimax-outputs/subscription-price-annual-save-offer-001-baseline.md",
+        "outputSha256": "26718fd81fc7a02725a9e0490efa085f0508d6d8db6ac15b6adfb87fdba7f6af",
+        "latencyMs": 18528,
+        "usage": {
+          "input_tokens": 290,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1618,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1908
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "cohort-offer-fit": 5,
+          "annual-migration": 5,
+          "offer-governance": 5,
+          "experiment-readback": 5,
+          "trust-comms": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Complete decision framework with cohort-specific treatments, annual migration, grandfathering, downgrade/pause/cancel options, strong offer governance, holdouts, net revenue readback, margin/fairness guardrails, and transparent support communications.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-subscription-price-depth-20260701-minimax-outputs/subscription-price-annual-save-offer-001-skill-loaded.md",
+        "outputSha256": "ab83a98223ed3101fec8d68b0166671f450407a08291e8cef11d7a28f719c301",
+        "latencyMs": 21551,
+        "usage": {
+          "input_tokens": 5482,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1770,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 7252
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-subscription-price-depth-20260701-minimax-outputs/subscription-price-annual-save-offer-001-judge-raw.md",
+      "judgeOutputSha256": "9fe410f5ef1ac3c4bd1228751ce35a4f59a602289f4e4c9aa1dc9e9f08d33cfe",
+      "judgeLatencyMs": 11834,
+      "judgeUsage": {
+        "input_tokens": 3578,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 760,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4338
+      }
+    },
+    {
+      "taskId": "subscription-price-regional-rollout-incident-001",
+      "skill": "subscription-price-increase-retention-review",
+      "promptSha256": "eb8edc3339359791997316f00efb34a6329709c638fd7b82570a82424fbbcb29",
+      "skillContextSha256": "f306b0013a0164920b0b4ceb8263678fd39dc86db846ecf197c8001aad78842a",
+      "skillBodySha256": "5894824eb24b394f15fdc7fd77bd84a036d9afd98891444d60787b16bdb27738",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-price-increase-retention-patterns.md",
+          "sha256": "8936e8788333c7935fccbdee44aa4e9d046c543aa78d4c42b40616816321e2d7"
+        }
+      ],
+      "skillLoadedPromptSha256": "cc99f7cb1e2386362ae703bf8273fe7dc774b95b71617ed97fc21fa5e5fb2854",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "cohort-incident-readback": 2,
+          "decision-table": 3,
+          "recovery-actions": 4,
+          "net-revenue-trust": 3,
+          "learning-loop": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong pause-and-repair recommendation with useful recovery steps and learning loop. However, incident readback is high-level, lacks full region/channel/plan breakdown, and decision criteria are not organized as a complete owner-threshold decision table.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-subscription-price-depth-20260701-minimax-outputs/subscription-price-regional-rollout-incident-001-baseline.md",
+        "outputSha256": "a08dea0c2ce6a74c503d06563bd289f3ae5b60b2104c07b1e2b65a2564a1a966",
+        "latencyMs": 27563,
+        "usage": {
+          "input_tokens": 281,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1606,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1887
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "cohort-incident-readback": 5,
+          "decision-table": 5,
+          "recovery-actions": 5,
+          "net-revenue-trust": 5,
+          "learning-loop": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive cohort, channel, region, plan, discount, contract, and tax readback; clear pause/block/rollback triggers with owners; detailed recovery scripts and exception handling; explicit net revenue/LTV trust accounting; and strong instrumentation and localization learning loop.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-subscription-price-depth-20260701-minimax-outputs/subscription-price-regional-rollout-incident-001-skill-loaded.md",
+        "outputSha256": "ef0cc76093a524b121a41fad5fd1cad0bc0f48500da8b36bf14faad4c418c806",
+        "latencyMs": 35541,
+        "usage": {
+          "input_tokens": 5473,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 3008,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 8481
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-subscription-price-depth-20260701-minimax-outputs/subscription-price-regional-rollout-incident-001-judge-raw.md",
+      "judgeOutputSha256": "c51ccd2a8f3a4b4d5416b3d8da60eeecd6c4fe6c602f2109b4c0a58774f1396d",
+      "judgeLatencyMs": 14508,
+      "judgeUsage": {
+        "input_tokens": 4715,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 720,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 5435
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "subscription-price-store-consent-no-action-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [
+        "subscription-price-increase-retention-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1866,
+      "usage": {
+        "input_tokens": 220,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 49,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 269
+      }
+    },
+    {
+      "taskId": "subscription-price-store-consent-no-action-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1824,
+      "usage": {
+        "input_tokens": 160,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 48,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 208
+      }
+    },
+    {
+      "taskId": "subscription-price-annual-save-offer-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [
+        "subscription-price-increase-retention-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2865,
+      "usage": {
+        "input_tokens": 227,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 112,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 339
+      }
+    },
+    {
+      "taskId": "subscription-price-annual-save-offer-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2204,
+      "usage": {
+        "input_tokens": 163,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 50,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 213
+      }
+    },
+    {
+      "taskId": "subscription-price-regional-rollout-incident-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [
+        "subscription-price-increase-retention-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1514,
+      "usage": {
+        "input_tokens": 218,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 36,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 254
+      }
+    },
+    {
+      "taskId": "subscription-price-regional-rollout-incident-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1959,
+      "usage": {
+        "input_tokens": 165,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 53,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 218
+      }
+    }
+  ]
+}
