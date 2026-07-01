@@ -93,3 +93,5 @@ Do not commit a generated result unless raw outputs or output hashes are reviewa
 ## Current suite coverage
 
 `core-product-v0` contains 20 paired tasks, meeting the suite-size threshold for a repository-level usefulness claim if future public results also pass the win-rate, average-delta, critical-failure, and over-trigger gates. It does not prove any individual skill useful unless that skill has enough task depth on its own.
+
+When summarizing mixed result files, per-skill depth is not allowed to upgrade the aggregate repository claim. A mixed summary needs 20+ suite samples; a 5+ sample Useful claim applies only when the summarized rows all target the same skill.
