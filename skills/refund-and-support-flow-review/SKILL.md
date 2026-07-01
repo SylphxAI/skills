@@ -11,10 +11,10 @@ Use this skill to handle refunds without damaging trust or letting abuse break t
 
 1. Identify purchase type, provider/store, entitlement type, refund authority, and support ownership.
 2. Read `references/refund-support-flow-patterns.md`.
-3. Map provider-specific signals, refund detection, entitlement source of truth, entitlement adjustment, user messaging, support triage, appeal, and abuse review.
-4. Separate ordinary refunds, goodwill refunds, fraud, chargebacks, and repeated abuse.
+3. Map provider-specific signals, refund detection, cancellation, restore purchase, entitlement source of truth, entitlement adjustment, user messaging, support triage, appeal, and abuse review.
+4. Separate cancellations, ordinary refunds, goodwill refunds, fraud, chargebacks, disputes, and repeated abuse.
 5. Define abuse scoring, false-positive controls, support dashboards, metrics, and approval thresholds before account restrictions.
-6. Produce a provider table, state machine, decision table, support macros, event schema, and risk ladder.
+6. Produce a provider table, refund/cancellation/restore state machine, decision table, support macros, event schema with required properties, and risk ladder.
 
 ## Guardrails
 
@@ -22,6 +22,7 @@ Use this skill to handle refunds without damaging trust or letting abuse break t
 - Do not coerce repurchase with threats.
 - Keep immutable ledger evidence for support and audit.
 - Do not collapse Apple, Google, Stripe, chargebacks, and internal goodwill into one policy.
+- Do not collapse cancellation into refund. A user may cancel renewal and keep paid access until period end without receiving money back.
 - Do not revoke durable access without a server-side entitlement truth source and reversible audit trail.
 
 ## Output format
@@ -35,6 +36,7 @@ Provider table:
 
 Entitlement state machine:
 - <from_state> -> <event> -> <to_state>, grace/hold timing, audit evidence
+- Include cancellation, restore purchase, refund, chargeback, goodwill, appeal, and repurchase paths separately.
 
 Decision table:
 - <scenario> -> entitlement action, account action, support action
@@ -43,7 +45,7 @@ Abuse and trust ladder:
 - <score/tier> -> evidence, action, approval, appeal path, false-positive guard
 
 Support macros/events:
-- <macro or event>
+- <macro or event> with provider, purchase id, refund id, entitlement id, state transition, actor, reason code, support case id
 
 Metrics/dashboard:
 - <metric/event> -> owner, decision it supports
