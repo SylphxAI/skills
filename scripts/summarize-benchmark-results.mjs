@@ -171,7 +171,54 @@ function overheadStats(rows, avgDelta) {
   };
 }
 
-function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci, duplicateIds }) {
+function suiteDepthStats(rows, minRowsPerSuite = 5) {
+  const counts = new Map();
+  for (const row of rows) {
+    if (row.suite) counts.set(row.suite, (counts.get(row.suite) || 0) + 1);
+  }
+  const qualifyingSuiteCount = [...counts.values()].filter((count) => count >= minRowsPerSuite).length;
+  return {
+    suiteCount: counts.size,
+    qualifyingSuiteCount,
+    minRowsPerSuite,
+    ok: qualifyingSuiteCount >= 2,
+  };
+}
+
+function intersectionSize(left, right) {
+  let count = 0;
+  const [smaller, larger] = left.size <= right.size ? [left, right] : [right, left];
+  for (const value of smaller) {
+    if (larger.has(value)) count += 1;
+  }
+  return count;
+}
+
+function modelOverlapStats(rows, requiredOverlap) {
+  const modelTaskIds = new Map();
+  for (const row of rows) {
+    if (!row.model) continue;
+    if (!modelTaskIds.has(row.model)) modelTaskIds.set(row.model, new Set());
+    modelTaskIds.get(row.model).add(row.taskId);
+  }
+
+  let bestOverlap = 0;
+  const models = [...modelTaskIds.entries()];
+  for (let i = 0; i < models.length; i += 1) {
+    for (let j = i + 1; j < models.length; j += 1) {
+      bestOverlap = Math.max(bestOverlap, intersectionSize(models[i][1], models[j][1]));
+    }
+  }
+
+  return {
+    modelCount: modelTaskIds.size,
+    bestOverlap,
+    requiredOverlap,
+    ok: bestOverlap >= requiredOverlap,
+  };
+}
+
+function claimAssessment({ rows, allRows = rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci, duplicateIds }) {
   const skillCounts = new Map();
   const skillTaskIds = new Map();
   const suiteNames = new Set();
@@ -203,10 +250,11 @@ function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baseline
   const criticalOk = skillCritical <= baselineCritical;
   const triggerOk = overTriggerRate !== null && overTriggerRate < 0.05;
   const useful = sampleDepthOk && winRateOk && deltaOk && criticalOk && triggerOk;
-  const multiSuiteOk = suiteNames.size >= 2;
-  const multiModelOk = modelNames.size >= 2;
+  const suiteDepth = suiteDepthStats(rows);
+  const requiredModelOverlap = Math.min(20, uniqueTaskIds.size);
+  const modelOverlap = modelOverlapStats(allRows, requiredModelOverlap);
   const confidenceOk = Boolean(ci && ci.low > 0);
-  const sotaCandidate = useful && multiSuiteOk && multiModelOk && confidenceOk && triggerOk;
+  const sotaCandidate = useful && suiteDepth.ok && modelOverlap.ok && confidenceOk && triggerOk;
 
   return {
     tier: sotaCandidate ? 'SOTA candidate' : useful ? 'Useful' : 'Benchmarked',
@@ -215,6 +263,8 @@ function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baseline
     duplicateTaskIds: duplicateIds,
     suiteCount: suiteNames.size,
     modelCount: modelNames.size,
+    suiteDepth,
+    modelOverlap,
     checks: {
       sampleDepthOk,
       winRateOk,
@@ -224,8 +274,8 @@ function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baseline
     },
     sotaChecks: {
       usefulOk: useful,
-      multiSuiteOk,
-      multiModelOk,
+      multiSuiteDepthOk: suiteDepth.ok,
+      multiModelOverlapOk: modelOverlap.ok,
       confidenceOk,
       triggerOk,
     },
@@ -288,6 +338,7 @@ async function main() {
     process.exit(1);
   }
 
+  const allRows = [...rows];
   let selection = null;
   if (args.currentSuite) {
     selection = selectCurrentSuite(rows, triggerChecks);
@@ -306,7 +357,7 @@ async function main() {
   const skillWinRate = skillWins / rows.length;
   const nonRegressionRate = nonRegressions / rows.length;
   const criticalDelta = baselineCritical - skillCritical;
-  const assessment = claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci, duplicateIds: duplicates });
+  const assessment = claimAssessment({ rows, allRows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci, duplicateIds: duplicates });
   const overhead = overheadStats(rows, avgDelta);
 
   console.log('# Skill Behavior Benchmark Summary');
@@ -345,7 +396,7 @@ async function main() {
   console.log(`- Claim tier supported by this data: ${assessment.tier}`);
   console.log(`- Claim depth scope: ${assessment.sampleDepthScope}`);
   console.log(`- Useful-claim gates: sampleDepth=${assessment.checks.sampleDepthOk ? 'pass' : 'fail'}, winRate=${assessment.checks.winRateOk ? 'pass' : 'fail'}, avgDelta=${assessment.checks.deltaOk ? 'pass' : 'fail'}, criticalFailures=${assessment.checks.criticalOk ? 'pass' : 'fail'}, overTrigger=${assessment.checks.triggerOk ? 'pass' : 'fail'}`);
-  console.log(`- SOTA-candidate gates: useful=${assessment.sotaChecks.usefulOk ? 'pass' : 'fail'}, multiSuite=${assessment.sotaChecks.multiSuiteOk ? 'pass' : `fail(${assessment.suiteCount}/2)`}, multiModel=${assessment.sotaChecks.multiModelOk ? 'pass' : `fail(${assessment.modelCount}/2)`}, ciLowerAboveZero=${assessment.sotaChecks.confidenceOk ? 'pass' : 'fail'}, overTrigger=${assessment.sotaChecks.triggerOk ? 'pass' : 'fail'}`);
+  console.log(`- SOTA-candidate gates: useful=${assessment.sotaChecks.usefulOk ? 'pass' : 'fail'}, suiteDepth=${assessment.sotaChecks.multiSuiteDepthOk ? 'pass' : `fail(${assessment.suiteDepth.qualifyingSuiteCount}/2 suites >=${assessment.suiteDepth.minRowsPerSuite})`}, modelOverlap=${assessment.sotaChecks.multiModelOverlapOk ? 'pass' : `fail(${assessment.modelOverlap.bestOverlap}/${assessment.modelOverlap.requiredOverlap} shared tasks)`}, ciLowerAboveZero=${assessment.sotaChecks.confidenceOk ? 'pass' : 'fail'}, overTrigger=${assessment.sotaChecks.triggerOk ? 'pass' : 'fail'}`);
   console.log('');
   console.log('| Task | Skill | Baseline | Skill-loaded | Delta | Preference |');
   console.log('| --- | --- | ---: | ---: | ---: | --- |');
