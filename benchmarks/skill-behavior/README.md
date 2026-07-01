@@ -76,6 +76,7 @@ OPENAI_API_KEY=... npm run benchmark:run:openai -- benchmarks/skill-behavior/tas
 ```
 
 Use `--dry-run` first to confirm task count, model, judge model, output path, and expected API calls without sending data to the API.
+For long-form tasks, use `--answer-word-limit <n>` to apply the same concise-answer budget to both baseline and skill-loaded prompts. The runner records the limit in result metadata, so budgeted runs stay reproducible and are not mixed silently with unbudgeted runs.
 
 ## Result evidence requirements
 
