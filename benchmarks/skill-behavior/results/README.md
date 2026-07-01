@@ -21,3 +21,15 @@ OPENAI_API_KEY=... npm run benchmark:run:openai -- benchmarks/skill-behavior/tas
 ```
 
 Structural validation and install verification are not behavioral proof. Treat small calibration files as pipeline evidence only; usefulness claims require the sample-depth and claim gates in `docs/skill-benchmark-methodology.md`.
+
+## Current suite evidence
+
+The repository-level public claim is anchored to the current-suite summary, not to any single rerun or
+calibration shard:
+
+| Artifact | Purpose | Current readback |
+| --- | --- | --- |
+| [`current-suite-20260701-summary.md`](./current-suite-20260701-summary.md) | One selected current sample per task across `core-product-v0` and `hard-product-v0`. | SOTA candidate; 25 samples; +0.94 average delta; 96.0% skill win rate; 0.0% over-trigger. |
+
+Run `npm run validate:benchmark-claims` before changing public benchmark wording. The gate recomputes this
+summary from result JSON and rejects stale or broader-than-evidence claims.

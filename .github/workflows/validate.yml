@@ -22,4 +22,6 @@ jobs:
       - run: node scripts/validate-reference-quality.mjs
       - run: node scripts/validate-behavior-examples.mjs
       - run: node scripts/validate-launch-kit.mjs
+      - run: node scripts/validate-benchmarks.mjs
+      - run: node scripts/validate-benchmark-claims.mjs
       - run: node scripts/generate-catalog.mjs --check

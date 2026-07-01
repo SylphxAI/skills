@@ -104,6 +104,15 @@ Validate task and result schema:
 npm run validate:benchmarks
 ```
 
+Validate that public benchmark claims still match the current result evidence:
+
+```bash
+npm run validate:benchmark-claims
+```
+
+This recomputes the current-suite summary, compares it with the committed current-suite summary, and blocks
+README/docs wording that claims a stronger tier than the data supports.
+
 Prepare provider-neutral JSONL jobs for a benchmark run:
 
 ```bash
