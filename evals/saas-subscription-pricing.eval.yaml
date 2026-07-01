@@ -8,3 +8,4 @@ expected_behavior:
   - "Identifies buyer, value metric, cost driver, and expansion path."
   - "Covers trial/freemium/tiers/usage/enterprise tradeoffs."
   - "Includes cancellation, downgrade, renewal, metrics, and trust concerns."
+  - "Includes experiment or staged rollout, grandfathering, customer communications, guardrails, and rollback triggers."
