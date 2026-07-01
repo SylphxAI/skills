@@ -22,6 +22,7 @@ metrics_scoped -> sources_reconciled -> owners_signed_off -> narrative_reviewed 
 - `board-metrics-9` — Include a current-period board snapshot for each board-critical metric: actual, plan, prior period, variance, status, owner, signoff, confidence, and decision implication.
 - `board-metrics-10` — Treat owner signoff as an artifact, not a sentence: metric owner, source owner, finance/data reviewer, lock time, unresolved caveat, and release decision.
 - `board-metrics-11` — When period values are missing, do not invent them. Use `value_required`, open a data-request action, and mark any sample figures as illustrative only.
+- `board-metrics-12` — Avoid a blank board review: when source values are absent, include a compact `illustrative_not_source_of_truth` snapshot and driver bridge, then block release until real actuals, plan, prior, and owner signoff replace it.
 
 ## Decision table
 
@@ -52,6 +53,15 @@ Every board pack needs a compact current-period view before the narrative. If va
 | Incidents | Sev1/2 count, MTTA/MTTR, SLO, customer/ARR impact, RCA closure | actual, plan/SLO, prior, repeat-cause count | reliability investment and risk acceptance |
 | Burn / runway | net burn, gross burn, cash, runway = unrestricted cash / average net burn | actual, plan, prior, downside scenario | hiring, fundraising, vendor commitments |
 | Forecast variance | plan to actual bridge by price, volume, mix, churn, expansion, cost, timing, one-time, data quality | amount, percent, owner, controllable/uncontrollable | reforecast, plan reset, board ask |
+
+## No-data response pattern
+
+If the prompt asks for a board review but supplies no actual period data, produce two clearly separated artifacts:
+
+1. Release-gated snapshot with `value_required` for actual, plan, prior, variance, signoff, and confidence.
+2. `illustrative_not_source_of_truth` example with sample actuals, plan variance, and drivers, so the reader can see what a completed board review looks like. The example must say it is not board-release evidence and must create data-request actions.
+
+Illustrative example rows should cover at least revenue, retention, gross margin, pipeline, product usage, support/incidents, burn/runway, and forecast variance. Use driver language such as new ARR shortfall, expansion beat, churn cohort deterioration, hosting cost pressure, pipeline slippage, incident repeat cause, hiring timing, or data-quality change.
 
 ## Owner signoff ledger
 
