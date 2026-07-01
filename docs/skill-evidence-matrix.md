@@ -7,10 +7,10 @@ This matrix prevents repository-level benchmark evidence from being over-read as
 ## Summary
 
 - Published skills: 195
-- Current benchmark tasks selected: 37
+- Current benchmark tasks selected: 41
 - Current benchmark suites represented: 2
 - Skills with current behavioral benchmark coverage: 20
-- Skills with individual-useful evidence: 4
+- Skills with individual-useful evidence: 5
 - Skills still structural-preview only: 175
 
 ## Status definitions
@@ -27,11 +27,11 @@ The repository-level SOTA-candidate claim is validated separately by the current
 
 | Skill | Evidence status | Current tasks | Avg delta | Win rate | Non-regression | Positive trigger recall | Negative over-trigger | Critical failures | Current task IDs | Note |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |
+| notification-strategy-review | individual-useful | 6 | 1.67 | 100.0% | 100.0% | 100.0% | 0.0% | 9→0 | notification-critical-utility-preferences-001, notification-cross-channel-dedupe-incident-001, notification-game-liveops-fatigue-001, notification-lifecycle-growth-001, notification-permission-fatigue-recovery-001, notification-sensitive-transactional-privacy-001 | Individual skill usefulness gates pass on current public benchmark tasks. |
 | marketplace-payouts-review | individual-useful | 5 | 1.20 | 100.0% | 100.0% | 100.0% | 0.0% | 3→0 | marketplace-payout-abuse-appeal-001, marketplace-payout-compliance-release-001, marketplace-payout-provider-outage-001, marketplace-payout-tax-hold-001, marketplace-payouts-creator-001 | Individual skill usefulness gates pass on current public benchmark tasks. |
 | payment-platform-readiness | individual-useful | 5 | 1.80 | 100.0% | 100.0% | 100.0% | 0.0% | 8→0 | payment-platform-invoice-tax-close-001, payment-platform-store-refund-revoke-001, payment-platform-webhook-ledger-001, payment-platform-webhook-outage-replay-001, payment-webhook-entitlement-race-001 | Individual skill usefulness gates pass on current public benchmark tasks. |
 | steam-launch-readiness | individual-useful | 5 | 1.80 | 100.0% | 100.0% | 100.0% | 0.0% | 11→0 | steam-demo-refund-review-risk-001, steam-launch-commercial-community-risk-001, steam-launch-commercial-readiness-001, steam-launch-multiplayer-incident-001, steam-launch-store-demo-mismatch-001 | Individual skill usefulness gates pass on current public benchmark tasks. |
 | subscription-price-increase-retention-review | individual-useful | 5 | 2.00 | 100.0% | 100.0% | 100.0% | 0.0% | 5→0 | subscription-price-annual-save-offer-001, subscription-price-increase-grandfathering-001, subscription-price-increase-retention-001, subscription-price-regional-rollout-incident-001, subscription-price-store-consent-no-action-001 | Individual skill usefulness gates pass on current public benchmark tasks. |
-| notification-strategy-review | benchmarked-suite-support | 2 | 1.50 | 100.0% | 100.0% | 100.0% | 0.0% | 0→0 | notification-lifecycle-growth-001, notification-permission-fatigue-recovery-001 | Supports repository-level suite evidence; needs 3 more current task(s) for an individual-useful claim. |
 | app-store-distribution-readiness | benchmarked-suite-support | 1 | 1.00 | 100.0% | 100.0% | 100.0% | 0.0% | 2→0 | app-store-launch-readiness-001 | Supports repository-level suite evidence; needs 4 more current task(s) for an individual-useful claim. |
 | backup-restore-design | benchmarked-suite-support | 1 | 1.00 | 100.0% | 100.0% | 100.0% | 0.0% | 0→0 | backup-restore-customer-data-001 | Supports repository-level suite evidence; needs 4 more current task(s) for an individual-useful claim. |
 | board-metrics-operating-review | benchmarked-suite-support | 1 | 2.00 | 100.0% | 100.0% | 100.0% | 0.0% | 0→0 | board-metrics-operating-001 | Supports repository-level suite evidence; needs 4 more current task(s) for an individual-useful claim. |
