@@ -1,0 +1,4 @@
+interface:
+  display_name: "Privacy Consent Preference Center Review"
+  short_description: "Review consent preference centers"
+  default_prompt: "Use $privacy-consent-preference-center-review to review a privacy consent preference center."

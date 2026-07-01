@@ -1,0 +1,10 @@
+skill: marketplace-seller-performance-review
+positive_prompts:
+  - "Review marketplace seller performance for an AI app marketplace with new sellers, quality scores, refunds, disputes, support burden, ranking demotions, badges, warnings, payout holds, appeals, fraud signals, and fairness monitoring."
+  - "Audit marketplace seller performance, creator quality, seller health, ranking impact, warnings, coaching, suspension, appeal, and marketplace incentive questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Design enterprise account governance."
+expected_behavior:
+  - "Defines seller categories, lifecycle stage, quality dimensions, signal freshness, thresholds, confidence, interventions, ranking impact, appeal path, and fairness metrics."
+  - "Includes cold-start handling, category normalization, coaching, warnings, demotion, payout holds, suspension, reinstatement, and policy feedback loops."
+  - "Flags opaque punishment, revenue bias, cold-start burying, leaked fraud signals, no appeal path, and volume rewarded despite buyer harm."

@@ -1,0 +1,10 @@
+skill: support-automation-governance-review
+positive_prompts:
+  - "Review support automation governance for an AI chatbot handling refunds, account access, incident questions, stale help-center sources, confidence thresholds, human escalation, QA sampling, privacy risk, and unresolved-contact metrics."
+  - "Audit support automation, chatbot, macro, AI copilot, deflection, routing, human escalation, support QA, and automation policy questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review enterprise account governance."
+expected_behavior:
+  - "Maps contact drivers, automation type, source grounding, allowed actions, confidence thresholds, escalation triggers, QA, analytics, and rollback."
+  - "Includes stricter controls for refunds, billing, account access, privacy, legal, abuse, incidents, and enterprise customers."
+  - "Flags deflection theater, unsafe account actions, stale uncited answers, hidden human escalation, and aggregate-only QA."

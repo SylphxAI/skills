@@ -1,0 +1,4 @@
+interface:
+  display_name: "Partner Implementation Quality Review"
+  short_description: "Assure partner implementations"
+  default_prompt: "Use $partner-implementation-quality-review to review partner implementation quality."
