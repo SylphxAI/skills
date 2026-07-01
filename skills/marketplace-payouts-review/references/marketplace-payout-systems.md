@@ -20,6 +20,8 @@ Payouts are a trust system. Creators/sellers need predictable earnings, buyers n
 - `payout-14` — Seller support needs dashboard states, evidence collection, appeal/dispute workflow, admin approval controls, SLA, escalation path, and metrics for creator trust and support load.
 - `payout-15` — Tax readiness needs product states for form not started, submitted, invalid, expired, verified, withholding required, reportable threshold reached, report generated, correction requested, and payout blocked; qualified tax owners decide the policy.
 - `payout-16` — Statutory reporting and withholding must be modeled as evidence and handoff states, not hidden back-office work: jurisdiction, form type/status, withholding rate/source, report period, filing/export status, correction workflow, and seller-visible message.
+- `payout-17` — Provider outages, webhook replays, partial payout files, and manual finance workarounds need an explicit incident state machine: queued, paused, provider-pending, partially-submitted, failed, retry-blocked, reconciled, released, reversed, and manual-review.
+- `payout-18` — Manual payout workarounds must be internal reconciliation artifacts unless they pass the same signed payout-batch, idempotency, dual-approval, provider-trace, and ledger-posting controls as the normal payout path.
 
 ## Decision table
 
@@ -37,6 +39,8 @@ Payouts are a trust system. Creators/sellers need predictable earnings, buyers n
 | Sanctions/KYC potential match | Move affected funds to compliance-held state | Block payout until qualified review resolves | Provide non-sensitive compliance-review message |
 | Failed bank transfer | Return funds to available or held based on failure reason | Do not retry invalid destinations indefinitely | Show provider reason, remediation, and trace ID |
 | Negative balance | Offset future earnings before new payouts | Block payout until non-negative unless exception approved | Show itemized reversal lineage and cure path |
+| Provider outage during payout release | Freeze affected payout queue and keep balances in queued, provider-pending, partially-submitted, failed, retry-blocked, or manual-review states until reconciled | Do not retry, export, or mark paid until idempotency and provider trace reconciliation pass | Show outage status, ETA review cadence, affected payout state, support case path, and no-action-needed message |
+| Duplicate webhook or partial payout file | Quarantine callbacks and reconcile per seller/row against ledger and provider trace IDs | Release only reconciled rows; reverse or retry-block mismatches with approval | Explain paid, pending, failed, or reversed status without exposing provider internals |
 
 ## Payout policy table
 
@@ -85,6 +89,18 @@ seller_earning_available -> payout_batch_created -> payout_submitted -> payout_p
 payout_submitted -> payout_failed -> payout_method_fix_required -> payout_resubmitted
 payout_paid -> chargeback_received -> negative_balance_or_clawback
 manual_adjustment_requested -> approved -> ledger_adjustment_posted
+
+outage branch:
+payout_queued -> provider_outage_detected -> payout_paused
+payout_paused -> submission_started -> payout_provider_pending
+payout_provider_pending -> partial_file_detected -> payout_partially_submitted
+payout_provider_pending -> provider_failure_callback -> payout_failed
+payout_partially_submitted -> duplicate_webhook_or_retry -> payout_retry_blocked
+payout_retry_blocked -> owner_assigned -> payout_manual_review
+payout_partially_submitted -> provider_trace_reconciled -> payout_reconciled
+payout_failed -> destination_or_provider_fixed -> payout_reconciled
+payout_reconciled -> release_gate_passed -> payout_released
+payout_reconciled -> reversal_required -> payout_reversed
 ```
 
 ## Event schema
@@ -97,6 +113,9 @@ Recommended events:
 - `seller_balance_changed`: seller_id, balance_type, delta_amount, reason, ledger_entry_id.
 - `payout_batch_created`: batch_id, seller_count, total_amount, currency, schedule.
 - `payout_result`: payout_id, seller_id, amount, destination_type, result, failure_reason.
+- `payout_incident_state_changed`: payout_id, batch_id, seller_id, incident_id, from_state, to_state, reason_code, owner, provider_trace_id.
+- `payout_webhook_quarantined`: provider_event_id, payout_id, batch_id, seller_id, idempotency_key, quarantine_reason, received_at.
+- `payout_reconciliation_completed`: incident_id, payout_id, seller_id, ledger_entry_ids, provider_trace_ids, result, mismatch_reason.
 - `payout_hold_created`: seller_id, amount, reason_code, review_owner, expected_review_at.
 - `payout_hold_released`: hold_id, seller_id, amount, release_reason, reviewer_or_job_id.
 - `tax_compliance_status_changed`: seller_id, jurisdiction, form_status, withholding_rate, effective_at.

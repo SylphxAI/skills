@@ -17,6 +17,7 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 6. Cover tax forms, named form/status examples when relevant, tax-form lifecycle states, withholding, statutory reporting handoff, sanctions screening, country eligibility, payout provider constraints, failed transfers, and negative balances.
 7. Make payout policy concrete: clearing delay, reserve percent/duration, payout cadence, minimum threshold, supported currencies, provider fees, conversion policy, and fee responsibility.
 8. Produce formal payout state machine, fee table, risk controls, compliance readiness matrix, seller dashboard/support workflow, trust metrics, audit invariants, and reconciliation checks.
+9. For provider outages, partial payout files, webhook replays, or manual finance workarounds, name operational states explicitly: queued, paused, provider-pending, partially-submitted, failed, retry-blocked, reconciled, released, reversed, and manual-review.
 
 ## Guardrails
 
@@ -39,6 +40,7 @@ Payout flow:
 
 Formal state machine:
 - <from_state> -> <event> -> <to_state>, ledger effect, audit invariant
+- Outage/retry branch when relevant: queued -> paused -> provider-pending/partially-submitted -> failed/retry-blocked/manual-review -> reconciled -> released or reversed
 
 Decision table:
 - <scenario> -> balance action, payout action, support action
