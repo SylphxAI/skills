@@ -21,7 +21,7 @@ If the user's intent is ambiguous, assume **Review** for existing code and **Bui
 2. Read `references/interface-craft-rules.md` and load only the relevant section(s).
 3. Apply the restraint gate before proposing any detail.
 4. In Build/Polish mode, implement the smallest consistent improvement across sibling surfaces.
-5. In Review mode, group findings by file and cite rule IDs.
+5. In Review mode, rank the few highest-impact findings, cover every requested state, then give the smallest implementation plan.
 
 ## Restraint gate
 
@@ -36,9 +36,14 @@ Skip a detail if any answer is no:
 ## Review output
 
 ```text
-path/to/File.tsx:42 — ic-form-1
-Label is visually present but not programmatically associated with the input.
+P0 — path/to/File.tsx:42 — ic-form-1
+Issue: Label is visually present but not programmatically associated with the input.
 Fix: connect label and input with htmlFor/id or wrap the input in the label.
+
+Implementation plan:
+1. Fix P0 accessibility and state blockers first.
+2. Add loading/error/success/focus/reduced-motion tests or stories.
+3. Apply the same pattern to sibling controls only after the first surface is verified.
 ```
 
-Keep review findings high-signal. Prefer 3 material fixes over 20 cosmetic notes.
+Keep review findings high-signal. Prefer 3 to 6 material fixes over 20 cosmetic notes. For checkout/payment surfaces, explicitly cover disabled, loading, duplicate-submit, error, success, focus, mobile touch target, and reduced-motion states when present in the prompt.

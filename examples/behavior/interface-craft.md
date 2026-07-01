@@ -21,7 +21,9 @@ A strong answer after loading the skill should:
 
 - Identifies concrete UI surfaces before suggesting details.
 - Prioritizes accessibility and reduced-motion constraints.
-- Uses rule IDs when reviewing.
+- Uses ranked findings with rule IDs when reviewing.
+- Covers disabled, loading, error, success, focus, mobile, reduced-motion, and duplicate-submit states when present.
+- Ends with the smallest consistent implementation plan.
 
 It should also produce the artifact shape requested by `skills/interface-craft/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -35,4 +37,6 @@ The skill should not load for this prompt unless the user adds an explicit inter
 
 - Identifies concrete UI surfaces before suggesting details.
 - Prioritizes accessibility and reduced-motion constraints.
-- Uses rule IDs when reviewing.
+- Uses ranked findings with rule IDs when reviewing.
+- Covers disabled, loading, error, success, focus, mobile, reduced-motion, and duplicate-submit states when present.
+- Ends with the smallest consistent implementation plan.

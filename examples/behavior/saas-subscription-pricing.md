@@ -21,6 +21,8 @@ A strong answer after loading the skill should:
 
 - Identifies buyer, value metric, cost driver, and expansion path.
 - Covers trial/freemium/tiers/usage/enterprise tradeoffs.
+- Defines exact limits, overage mechanics, caps, alert thresholds, margin targets, CAC payback, NRR, and cost controls.
+- Includes support/sales enablement, objection handling, procurement path, and escalation rules.
 - Includes cancellation, downgrade, renewal, metrics, and trust concerns.
 
 It should also produce the artifact shape requested by `skills/saas-subscription-pricing/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
@@ -35,4 +37,6 @@ The skill should not load for this prompt unless the user adds an explicit saas-
 
 - Identifies buyer, value metric, cost driver, and expansion path.
 - Covers trial/freemium/tiers/usage/enterprise tradeoffs.
+- Defines exact limits, overage mechanics, caps, alert thresholds, margin targets, CAC payback, NRR, and cost controls.
+- Includes support/sales enablement, objection handling, procurement path, and escalation rules.
 - Includes cancellation, downgrade, renewal, metrics, and trust concerns.
