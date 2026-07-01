@@ -1,0 +1,10 @@
+skill: release-readiness-exception-board-review
+positive_prompts:
+  - "Run a release readiness exception board for a SaaS launch with missing performance evidence, incomplete docs, feature flags, support macros, customer-limited rollout, rollback trigger, monitoring dashboard, approval authority, expiry, and post-release review."
+  - "Audit repeated launch gate waivers where teams bypass readiness checks, risk acceptance is unclear, feature flags are treated as magic, and old exceptions never get retired."
+negative_prompts:
+  - "Review partner incentive payouts."
+expected_behavior:
+  - "Defines exception intake, unmet gates, evidence gaps, customer scope, risk tier, approval authority, mitigation owners, rollout limits, rollback triggers, monitoring, support communication, expiry, and post-release review."
+  - "Separates gate waiver, risk acceptance, feature-flag mitigation, customer-specific exception, hotfix, migration, compliance-sensitive exception, and release-freeze override paths."
+  - "Flags hidden gate bypass, weak evidence, authority gaps, feature-flag theater, missing support/rollback/monitoring, zombie exceptions, and repeated process debt."

@@ -1,0 +1,10 @@
+skill: store-price-change-communication-review
+positive_prompts:
+  - "Plan store price change communication for iOS, Android, Steam, Microsoft Store, and direct subscribers across regions with price increases, FX adjustments, grandfathering, consent requirements, paywall copy, emails, in-app notices, support macros, refund/cancel routes, and churn monitoring."
+  - "Audit a subscription price increase where store metadata, screenshots, pricing pages, lifecycle emails, support scripts, and billing provider behavior may not match across cohorts and regions."
+negative_prompts:
+  - "Review developer sandbox abuse prevention."
+expected_behavior:
+  - "Defines affected products, channels, regions, cohorts, old/new prices, consent/notice rules, timeline, paywall/store metadata, messaging surfaces, support macros, refund/cancel paths, analytics, and post-change monitoring."
+  - "Separates price increase, decrease, FX adjustment, intro/trial transition, grandfathering sunset, package migration, store-mandated change, and direct-plus-store billing paths."
+  - "Flags vague price-increase communication, channel rule assumptions, paywall/metadata/support mismatch, missing cancellation/refund routes, cohort confusion, support spikes, and churn blind spots."

@@ -1,0 +1,10 @@
+skill: contract-obligation-renewal-audit-review
+positive_prompts:
+  - "Audit renewal obligations for an enterprise SaaS contract with MSA, DPA, SLA, security addendum, pricing exceptions, usage minimums, support commitments, auto-renew notice window, product promises, service credits, and expansion negotiation handoff."
+  - "Design a contract obligation register and renewal audit process where legal, sales, success, finance, product, security, and support currently track commitments in different places."
+negative_prompts:
+  - "Design motion transitions for mobile UI."
+expected_behavior:
+  - "Defines authoritative contract sources, obligation register, clause owners, notice windows, pricing exceptions, SLA/security/privacy/support/product commitments, evidence links, remediation owners, and renewal handoff."
+  - "Separates legal interpretation, commercial policy, billing configuration, product capability, support operations, customer communication, and negotiation decisions."
+  - "Flags hidden obligations, missed notice windows, weak evidence, owner gaps, expired exceptions, revenue leakage, unsupported product promises, and renewal handoff drift."

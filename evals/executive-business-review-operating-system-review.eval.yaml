@@ -1,0 +1,10 @@
+skill: executive-business-review-operating-system-review
+positive_prompts:
+  - "Design an executive business review operating system for enterprise SaaS accounts with account tiering, executive sponsors, value realization metrics, product adoption, support risks, roadmap asks, renewal timing, expansion signals, action owners, and follow-up cadence."
+  - "Audit a QBR program where decks look polished but action items drift, roadmap promises are unclear, renewal risks surprise the team, and customer executives do not consistently attend."
+negative_prompts:
+  - "Review marketplace fraud queues."
+expected_behavior:
+  - "Defines account tiering, cadence, executive sponsor map, customer outcomes, value proof, adoption metrics, risk register, roadmap ask routing, renewal/expansion signals, actions, owners, and follow-up rhythm."
+  - "Separates status reporting, value realization, executive decisions, roadmap asks, risk recovery, renewal readiness, and expansion planning."
+  - "Flags slideware-only reviews, vanity metrics, sponsor gaps, false roadmap promises, unresolved adoption/support risks, drifting actions, and renewal surprises."
