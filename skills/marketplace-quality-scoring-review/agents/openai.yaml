@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketplace Quality Scoring Review"
+  short_description: "Score marketplace quality"
+  default_prompt: "Use $marketplace-quality-scoring-review to design marketplace quality scoring."

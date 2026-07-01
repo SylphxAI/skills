@@ -1,0 +1,4 @@
+interface:
+  display_name: "API Versioning Deprecation Review"
+  short_description: "Manage API versioning"
+  default_prompt: "Use $api-versioning-deprecation-review to review API versioning and deprecation."

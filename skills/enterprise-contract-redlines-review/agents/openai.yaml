@@ -1,0 +1,4 @@
+interface:
+  display_name: "Enterprise Contract Redlines Review"
+  short_description: "Review contract redlines"
+  default_prompt: "Use $enterprise-contract-redlines-review to review enterprise contract redlines."

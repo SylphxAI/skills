@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feature Request Prioritization Review"
+  short_description: "Prioritize feature requests"
+  default_prompt: "Use $feature-request-prioritization-review to prioritize feature requests."

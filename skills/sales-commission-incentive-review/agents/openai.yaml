@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sales Commission Incentive Review"
+  short_description: "Review sales incentives"
+  default_prompt: "Use $sales-commission-incentive-review to review sales commission incentives."
