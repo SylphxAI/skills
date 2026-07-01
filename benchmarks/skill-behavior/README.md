@@ -52,6 +52,15 @@ Prepare a run pack:
 npm run benchmark:prepare -- benchmarks/skill-behavior/tasks/core-product-v0.json --out /tmp/core-product-v0.jobs.jsonl --run-id <run-id>
 ```
 
+Prepare or run a shard when the suite is too large for one sitting:
+
+```bash
+npm run benchmark:prepare -- benchmarks/skill-behavior/tasks/core-product-v0.json --out /tmp/core-product-v0-shard.jobs.jsonl --run-id <run-id> --start 0 --limit 5
+npm run benchmark:run:openai -- benchmarks/skill-behavior/tasks/core-product-v0.json --out /tmp/core-product-v0-shard.result.json --run-id <run-id> --start 0 --limit 5
+```
+
+Use repeated `--task-id` values, or a comma-separated `--task-id`, to rerun failed tasks without changing the suite.
+
 Run a scored OpenAI Responses API benchmark:
 
 ```bash
@@ -71,3 +80,7 @@ A result file is accepted only when it includes:
 - optional `triggerChecks` for positive and negative-control prompts so over-trigger rate can be reported.
 
 Do not commit a generated result unless raw outputs or output hashes are reviewable and the run configuration is reproducible.
+
+## Current suite coverage
+
+`core-product-v0` contains 20 paired tasks, meeting the suite-size threshold for a repository-level usefulness claim if future public results also pass the win-rate, average-delta, critical-failure, and over-trigger gates. It does not prove any individual skill useful unless that skill has enough task depth on its own.

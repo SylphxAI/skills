@@ -10,24 +10,41 @@ process.stdout.on('error', (error) => {
 });
 
 function usage() {
-  console.error('Usage: node scripts/create-benchmark-jobs.mjs benchmarks/skill-behavior/tasks/<suite>.json [--out <jobs.jsonl>] [--run-id <id>] [--no-references]');
+  console.error('Usage: node scripts/create-benchmark-jobs.mjs benchmarks/skill-behavior/tasks/<suite>.json [--out <jobs.jsonl>] [--run-id <id>] [--start <n>] [--limit <n>] [--task-id <id>] [--no-references]');
   process.exit(1);
 }
 
 function parseArgs(argv) {
-  const args = { includeReferences: true };
+  const args = { includeReferences: true, taskIds: [], start: 0 };
   const rest = [];
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === '--out') args.out = argv[++i];
     else if (arg === '--run-id') args.runId = argv[++i];
+    else if (arg === '--start') args.start = Number(argv[++i]);
+    else if (arg === '--limit') args.limit = Number(argv[++i]);
+    else if (arg === '--task-id') args.taskIds.push(...argv[++i].split(',').map((value) => value.trim()).filter(Boolean));
     else if (arg === '--no-references') args.includeReferences = false;
     else if (arg.startsWith('--')) usage();
     else rest.push(arg);
   }
   if (rest.length !== 1) usage();
+  if (!Number.isInteger(args.start) || args.start < 0) throw new Error('--start must be a non-negative integer');
+  if (args.limit !== undefined && (!Number.isInteger(args.limit) || args.limit < 1)) throw new Error('--limit must be a positive integer');
   args.taskFile = rest[0];
   return args;
+}
+
+function selectTasks(tasks, args) {
+  let selected = tasks;
+  if (args.taskIds.length) {
+    const wanted = new Set(args.taskIds);
+    selected = tasks.filter((task) => wanted.has(task.id));
+    const found = new Set(selected.map((task) => task.id));
+    const missing = [...wanted].filter((taskId) => !found.has(taskId));
+    if (missing.length) throw new Error(`Unknown task id(s): ${missing.join(', ')}`);
+  }
+  return selected.slice(args.start, args.limit ? args.start + args.limit : undefined);
 }
 
 async function readTextIfExists(file) {
@@ -60,7 +77,10 @@ async function main() {
   const suite = JSON.parse(await readFile(taskPath, 'utf8'));
   const jobs = [];
 
-  for (const task of suite.tasks || []) {
+  const tasks = selectTasks(suite.tasks || [], args);
+  if (!tasks.length) throw new Error('No benchmark tasks selected');
+
+  for (const task of tasks) {
     const skillDir = path.join(repoRoot, 'skills', task.skill);
     const skillMarkdown = await readTextIfExists(path.join(skillDir, 'SKILL.md'));
     if (!skillMarkdown) throw new Error(`Missing SKILL.md for ${task.skill}`);
