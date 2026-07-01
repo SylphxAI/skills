@@ -101,7 +101,7 @@ Save offers protect net revenue only when they are bounded. Use an explicit offe
 ### Live rollout incident readback
 
 When a price change is already live and noisy, the first artifact is not a new campaign plan; it is an evidence readback and go/no-go decision.
-Do not invent named regions, tax outcomes, or threshold values when the prompt does not supply them. Use placeholders such as `launched country/territory`, `country A`, `+Xpp vs holdout`, `>Yx baseline`, and `threshold to set` until telemetry or policy evidence exists.
+Do not invent named regions, tax outcomes, or threshold values when the prompt does not supply them. Use explicit unset values such as `launched country/territory`, `country A`, `+Xpp vs holdout`, `>Yx baseline`, and `threshold to set` until telemetry or policy evidence exists.
 
 | Dimension | Required split |
 | --- | --- |
@@ -115,7 +115,7 @@ Do not invent named regions, tax outcomes, or threshold values when the prompt d
 
 Use a decision table with explicit owners:
 
-| Condition | Decision | Owner | Measurement placeholder |
+| Condition | Decision | Owner | Measurement value |
 | --- | --- | --- | --- |
 | Contract or sales-exception breach risk | Stop automation; account-owner/legal review before any new notice | Sales/Legal | any unapproved contract/exception touched |
 | Grandfathered or education trust breach | Pause cohort; extend protected period or restore prior price while policy is corrected | Pricing council + Support | complaint/refund rate `>Yx baseline` or `+Xpp vs holdout` |

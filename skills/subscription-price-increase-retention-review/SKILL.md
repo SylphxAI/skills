@@ -31,8 +31,8 @@ Use this skill to convert subscription price increase, retention plan, grandfath
 - Do not launch a store-billed cohort when the current no-action outcome, refund route, receipt/server-notification signal, or country exception is unknown.
 - When a prompt says the team is unsure, do not fill gaps with platform memory. Put `verify before rollout` in the matrix and list the exact evidence needed to unblock.
 - Avoid words like `generally`, `usually`, or `in most regions` for consent, renewal, or refund behavior unless the current rollout evidence is supplied.
-- Do not invent countries, tax behavior, channel settings, thresholds, or policy facts that were not supplied. Use `launched country/territory`, `threshold to set`, or `verify before rollout` placeholders and name the evidence owner.
-- Make rollback/readback thresholds measurable: use `+Xpp vs holdout`, `>Yx baseline`, `above approved exception budget`, or an explicit threshold placeholder instead of qualitative "high" or "spike" only.
+- Do not invent countries, tax behavior, channel settings, thresholds, or policy facts that were not supplied. Use `launched country/territory`, `threshold to set`, or `verify before rollout` unset values and name the evidence owner.
+- Make rollback/readback thresholds measurable: use `+Xpp vs holdout`, `>Yx baseline`, `above approved exception budget`, or an explicit unset threshold value instead of qualitative "high" or "spike" only.
 - Do not skip renewal-date and no-action states; define what happens when notice is delivered, consent is pending, consent is accepted, consent is declined, no response is received, renewal succeeds, or renewal fails.
 - Do not treat discounted, sales-exception, grandfathered, usage-heavy, and enterprise-contract customers as one cohort.
 - Do not launch without pre-agreed mitigation triggers for churn, complaints, refund/support spikes, failed renewals, or sales escalations.
