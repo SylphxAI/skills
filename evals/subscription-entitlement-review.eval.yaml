@@ -8,4 +8,5 @@ expected_behavior:
   - "Separates commerce state, ledger events, and derived entitlement state."
   - "Includes state machine, event schema, support tooling, and user messaging."
   - "Includes explicit channel precedence and conflict resolution for web, App Store, Google Play, team invoice, family sharing, and support overrides."
+  - "Models paused, restored, restore-not-found, offline-active, and offline-expired states with entry/exit rules, access policy, TTL/effective dates, and support evidence."
   - "Handles idempotency, event ordering, restore purchase reconciliation, offline access, and auditability."
