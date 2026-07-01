@@ -1,0 +1,10 @@
+skill: privacy-consent-preference-center-review
+positive_prompts:
+  - "Review a privacy consent preference center covering cookies, marketing email, push, SMS, AI data use, sale/share opt-outs, regional defaults, consent proof, downstream sync, accessibility, localization, and audit evidence."
+  - "Audit privacy consent center, preference center, cookie category, communication opt-out, AI data-use preference, consent proof, and regional privacy choice questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Design a release rollback drill."
+expected_behavior:
+  - "Defines choice taxonomy, legal basis, region, defaults, copy, consent proof, downstream systems, sync SLA, revocation, accessibility, and audit evidence."
+  - "Separates transactional, security, marketing, product, analytics, cookie, sale/share, and AI data-use preferences."
+  - "Flags unenforceable consent, dark patterns, bundled choices, missing proof events, failed downstream sync, and region-inconsistent defaults."

@@ -1,0 +1,10 @@
+skill: partner-implementation-quality-review
+positive_prompts:
+  - "Review partner implementation quality for a systems integrator delivering SaaS onboarding with data migration, integrations, permissions, training, QA evidence, customer acceptance, support handoff, defects, scorecards, and certification renewal."
+  - "Audit partner implementation quality, systems integrator QA, migration partner review, onboarding partner acceptance, certification, partner scorecard, and customer handoff questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Monitor app store policy changes."
+expected_behavior:
+  - "Defines partner scope, deliverables, acceptance criteria, QA evidence, customer workflows, data/integration risks, support handoff, scorecards, and certification consequences."
+  - "Includes migration, integration, training, permissions, security, customer validation, defect triage, remediation, and product/support feedback loops."
+  - "Flags project-complete-only success, partner self-reporting, unvalidated customer workflows, hidden partner defects, and certification without revocation criteria."

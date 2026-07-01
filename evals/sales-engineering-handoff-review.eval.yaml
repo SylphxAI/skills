@@ -1,0 +1,10 @@
+skill: sales-engineering-handoff-review
+positive_prompts:
+  - "Design a sales engineering handoff for an enterprise SaaS deal with technical discovery, POC success criteria, integration scope, security commitments, demo caveats, CRM updates, implementation kickoff, and customer success ownership."
+  - "Audit sales engineering handoff, proof of concept, solution design, technical discovery, demo commitment, implementation handoff, and customer success transition questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review app store policy changes."
+expected_behavior:
+  - "Captures customer context, technical environment, success criteria, commitments, caveats, evidence, CRM source of truth, and owner map."
+  - "Separates demo, POC, integration, security, commercial, implementation, and customer success handoff work."
+  - "Flags hidden demo promises, unvalidated POC success, integration surprises, roadmap fiction, and handoff truth split across tools."

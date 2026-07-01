@@ -1,0 +1,4 @@
+interface:
+  display_name: "Support Automation Governance Review"
+  short_description: "Govern support automation"
+  default_prompt: "Use $support-automation-governance-review to review support automation governance."

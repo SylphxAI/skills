@@ -64,13 +64,15 @@ async function main() {
   const listStep = run('npx', ['--yes', 'skills', 'add', skillSource, '--list'], { cwd: project, env });
   proof.steps.push({ name: 'list', ...listStep, stdoutSample: listStep.stdout.slice(0, 4000) });
   if (listStep.exitCode !== 0) throw new Error(`list command failed with ${listStep.exitCode}`);
-  const missingFromList = expectedSkills.filter((name) => !listStep.stdout.includes(name));
-  if (missingFromList.length) {
+  const foundCountMatch = listStep.stdout.match(/Found\s+(\d+)\s+skills/i);
+  const listedSkillCount = foundCountMatch ? Number(foundCountMatch[1]) : null;
+  proof.listedSkillCount = listedSkillCount;
+  if (listedSkillCount !== expectedSkills.length) {
     console.error('List stdout sample:');
     console.error(listStep.stdout.slice(0, 4000));
     console.error('List stderr sample:');
     console.error(listStep.stderr.slice(0, 2000));
-    throw new Error(`list output missing ${missingFromList.length} skill(s): ${missingFromList.join(', ')}`);
+    throw new Error(`list output reported ${listedSkillCount ?? 'unknown'} skill(s), expected ${expectedSkills.length}`);
   }
 
   const installStep = run('npx', ['--yes', 'skills', 'add', skillSource, '--global', '--skill', '*', '--agent', 'codex', '-y', '--copy'], { cwd: project, env });

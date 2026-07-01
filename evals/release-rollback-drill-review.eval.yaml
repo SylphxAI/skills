@@ -1,0 +1,10 @@
+skill: release-rollback-drill-review
+positive_prompts:
+  - "Design a rollback drill for a SaaS release involving feature flags, backend deploys, database migrations, queues, mobile phased rollout, monitoring triggers, incident roles, customer communication, and recovery proof."
+  - "Audit release rollback drill, rollback rehearsal, deployment recovery, migration rollback, feature flag kill switch, app-store rollback, and incident-readiness questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review consent preference center."
+expected_behavior:
+  - "Classifies rollback surface, trigger, owners, environment, irreversible steps, data compatibility, communication, monitoring, and proof artifacts."
+  - "Includes drills for code, config, flags, migrations, mobile/store, desktop/updater, dependencies, and customer communication."
+  - "Flags untested stateful rollback, unsafe production mutation, health-check-only proof, mobile rollback limits, and lessons not turned into gates."

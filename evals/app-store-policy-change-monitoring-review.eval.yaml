@@ -1,0 +1,10 @@
+skill: app-store-policy-change-monitoring-review
+positive_prompts:
+  - "Design app store policy change monitoring for a mobile subscription app affected by Apple and Google privacy label updates, subscription rules, UGC policy, age ratings, deadlines, remediation owners, evidence packages, and release timing."
+  - "Audit app store policy monitoring, review guideline change, platform deadline, subscription policy, privacy label change, UGC policy, age rating, and remediation-planning questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review sales engineering handoff."
+expected_behavior:
+  - "Tracks store, source, policy area, effective date, affected products, commerce/privacy/content impact, owner, evidence, remediation, and release risk."
+  - "Includes store-specific triage, product-behavior proof, privacy labels, IAP setup, screenshots, reviewer notes, release sequencing, and enforcement monitoring."
+  - "Flags waiting for rejection, cross-store assumptions, unsupported metadata/privacy changes, single-person monitoring, and missed deadlines."

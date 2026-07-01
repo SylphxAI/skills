@@ -237,6 +237,19 @@
       ]
     },
     {
+      "name": "app-store-policy-change-monitoring-review",
+      "description": "Design and audit app store policy change monitoring for Apple App Store, Google Play, Steam, Microsoft Store, marketplace policies, privacy labels, payments, subscriptions, ads, user-generated content, age ratings, review guidelines, deadlines, impact triage, remediation owners, release timing, and evidence. Use when policy drift can block launches or revenue.",
+      "status": "preview",
+      "path": "skills/app-store-policy-change-monitoring-review",
+      "references": [
+        "app-store-policy-change-monitoring-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "backup-restore-design",
       "description": "Design backup, restore, sync, export, recovery, data durability, cloud/local storage, versioning, migration, deletion, and disaster recovery systems. Use when building or reviewing backup strategy for SaaS, mobile apps, desktop utilities, games, user-generated content, account data, or business-critical workflows.",
       "status": "preview",
@@ -731,6 +744,19 @@
       ]
     },
     {
+      "name": "enterprise-account-governance-review",
+      "description": "Design and audit enterprise account governance across tenants, workspaces, admins, roles, delegated administration, SSO, SCIM, domains, account ownership, billing ownership, support access, audit logs, data boundaries, merger or divestiture changes, and break-glass controls. Use when enterprise accounts need safe ownership and administrative control.",
+      "status": "preview",
+      "path": "skills/enterprise-account-governance-review",
+      "references": [
+        "enterprise-account-governance-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "enterprise-contract-redlines-review",
       "description": "Review enterprise contract redlines across liability, indemnity, privacy, data processing, security, SLA, support, uptime credits, payment terms, renewal, termination, audit rights, subprocessor, data residency, AI use, IP, confidentiality, order forms, and non-standard obligations. Use when commercial/legal changes could create product, finance, security, or operational commitments.",
       "status": "preview",
@@ -1186,6 +1212,19 @@
       ]
     },
     {
+      "name": "marketplace-seller-performance-review",
+      "description": "Design and audit marketplace seller performance systems covering fulfillment, quality, response time, refunds, disputes, cancellations, policy violations, customer satisfaction, support burden, fraud signals, ranking impact, badges, warnings, coaching, suspension, appeals, fairness, and seller lifecycle. Use when marketplaces need reliable supply incentives without unfair punishment.",
+      "status": "preview",
+      "path": "skills/marketplace-seller-performance-review",
+      "references": [
+        "marketplace-seller-performance-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "marketplace-trust-safety-economics-review",
       "description": "Design and audit marketplace trust and safety economics covering buyer/seller incentives, fraud, abuse, moderation cost, dispute handling, refunds, chargebacks, ratings, ranking incentives, creator payouts, quality gates, take rate, liquidity, supply quality, false positives, appeals, enforcement ladders, and unit economics. Use when a marketplace must grow without rewarding harmful behavior.",
       "status": "preview",
@@ -1370,6 +1409,19 @@
       ]
     },
     {
+      "name": "partner-implementation-quality-review",
+      "description": "Design and audit partner implementation quality across implementation partners, systems integrators, migration partners, onboarding partners, scopes of work, training, certification, customer acceptance, QA evidence, defects, support handoffs, security, data migration, integration quality, renewal impact, and partner scorecards. Use when partner-delivered work affects customer outcomes and product reputation.",
+      "status": "preview",
+      "path": "skills/partner-implementation-quality-review",
+      "references": [
+        "partner-implementation-quality-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "partner-integration-ecosystem-review",
       "description": "Design and audit partner integration ecosystems, APIs, app directories, OAuth flows, webhooks, SDKs, partner onboarding, certification, co-marketing, revenue share, support boundaries, abuse controls, and ecosystem health. Use when a product depends on third-party integrations, platform partners, developer apps, marketplace listings, or strategic distribution channels.",
       "status": "preview",
@@ -1454,6 +1506,19 @@
       "path": "skills/privacy-and-data-retention-review",
       "references": [
         "privacy-data-retention-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "privacy-consent-preference-center-review",
+      "description": "Design and audit privacy consent and preference centers covering consent categories, communication preferences, cookies, tracking, email, push, SMS, AI data use, regional rules, minors, opt-out signals, consent proof, synchronization, revocation, accessibility, localization, and audit evidence. Use when user privacy choices must be understandable, enforceable, and measurable.",
+      "status": "preview",
+      "path": "skills/privacy-consent-preference-center-review",
+      "references": [
+        "privacy-consent-preference-center-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1617,6 +1682,19 @@
       ]
     },
     {
+      "name": "release-rollback-drill-review",
+      "description": "Design and audit release rollback drills for web, mobile, desktop, backend, database, configuration, feature flags, migrations, third-party dependencies, app stores, customer communication, monitoring, incident roles, and recovery proof. Use when teams need to prove rollback works before a risky release or recurring launch cadence.",
+      "status": "preview",
+      "path": "skills/release-rollback-drill-review",
+      "references": [
+        "release-rollback-drill-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "release-train-change-management-review",
       "description": "Design and audit release trains, change management, release calendars, risk classification, freeze windows, release notes, staged rollout, owner approvals, dependency readiness, rollback, support/comms, incident handoff, and post-release review. Use when shipping many product changes across apps, SaaS, games, APIs, desktop, or platform surfaces.",
       "status": "preview",
@@ -1753,6 +1831,19 @@
       "path": "skills/sales-demo-script-review",
       "references": [
         "sales-demo-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "sales-engineering-handoff-review",
+      "description": "Design and audit sales engineering handoffs across discovery, demos, proof of concept, solution design, security answers, integration scope, success criteria, technical risks, mutual action plans, implementation notes, customer commitments, CRM fields, and post-sale ownership. Use when pre-sales technical work must become reliable delivery and customer success execution.",
+      "status": "preview",
+      "path": "skills/sales-engineering-handoff-review",
+      "references": [
+        "sales-engineering-handoff-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1950,6 +2041,19 @@
       "path": "skills/subscription-entitlement-review",
       "references": [
         "subscription-entitlement-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "support-automation-governance-review",
+      "description": "Design and audit support automation governance for chatbots, macros, AI copilots, routing, triage, deflection, knowledge retrieval, human escalation, confidence thresholds, source freshness, refund or account actions, QA, privacy, analytics, and customer trust. Use when automating support without trapping users or creating unsafe actions.",
+      "status": "preview",
+      "path": "skills/support-automation-governance-review",
+      "references": [
+        "support-automation-governance-patterns.md"
       ],
       "scripts": [],
       "agents": [

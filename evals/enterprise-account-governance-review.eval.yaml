@@ -1,0 +1,10 @@
+skill: enterprise-account-governance-review
+positive_prompts:
+  - "Review enterprise account governance for a SaaS customer with multiple workspaces, domain claims, SSO and SCIM, delegated admins, billing owners, support impersonation, audit logs, tenant split risk, and break-glass access."
+  - "Audit enterprise account governance, tenant ownership, admin role, delegated administration, SSO, SCIM, billing owner, and support-access questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Design a pricing experiment."
+expected_behavior:
+  - "Maps tenant hierarchy, ownership, roles, identity source, billing owner, domains, support access, audit events, data boundaries, and exceptions."
+  - "Includes source-of-truth ownership, approval gates, role mapping, revocation, customer communication, access review, and recovery paths."
+  - "Flags account takeover risk, tenant data leaks, sales/support ownership drift, stale admins, and SSO/SCIM false confidence."

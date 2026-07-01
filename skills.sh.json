@@ -74,7 +74,8 @@
         "trial-conversion-sales-assist-review",
         "account-based-marketing-review",
         "customer-community-events-review",
-        "product-led-sales-routing-review"
+        "product-led-sales-routing-review",
+        "sales-engineering-handoff-review"
       ]
     },
     {
@@ -141,7 +142,9 @@
         "reliability-incident-learning-review",
         "incident-status-page-ops-review",
         "release-risk-exception-review",
-        "app-review-response-ops-review"
+        "app-review-response-ops-review",
+        "release-rollback-drill-review",
+        "app-store-policy-change-monitoring-review"
       ]
     },
     {
@@ -184,7 +187,10 @@
         "data-deletion-erasure-review",
         "data-subject-request-ops-review",
         "partner-support-enablement-review",
-        "security-changelog-disclosure-review"
+        "security-changelog-disclosure-review",
+        "enterprise-account-governance-review",
+        "support-automation-governance-review",
+        "privacy-consent-preference-center-review"
       ]
     },
     {
@@ -206,7 +212,9 @@
         "marketplace-trust-safety-economics-review",
         "api-versioning-deprecation-review",
         "marketplace-quality-scoring-review",
-        "marketplace-dispute-resolution-review"
+        "marketplace-dispute-resolution-review",
+        "marketplace-seller-performance-review",
+        "partner-implementation-quality-review"
       ]
     },
     {

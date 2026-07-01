@@ -1,0 +1,4 @@
+interface:
+  display_name: "Enterprise Account Governance Review"
+  short_description: "Govern enterprise accounts"
+  default_prompt: "Use $enterprise-account-governance-review to review enterprise account governance."
