@@ -11,6 +11,9 @@ unknown -> trialing -> active -> grace -> past_due -> expired
                  |        |        |         |          |
                  v        v        v         v          v
               canceled  upgraded  downgraded refunded  revoked
+active -> paused -> active | expired
+unknown_or_expired -> restore_pending -> restored_active | restore_not_found
+active -> offline_active -> offline_expired | online_reconciled
 ```
 
 Support/fraud overlays should be separate: `manual_review`, `commerce_limited`, `account_suspended`.
@@ -29,6 +32,9 @@ Support/fraud overlays should be separate: `manual_review`, `commerce_limited`, 
 - `entitlement-10` — Entitlement calculations should be reproducible from ledger history for audit and support.
 - `entitlement-11` — Cross-channel systems need an explicit precedence table. Do not let a refund, family-share removal, or seat removal revoke unrelated active access from another channel.
 - `entitlement-12` — Provider notifications can be late, duplicated, replayed, or out of order. Dedupe by provider event ID plus source object ID, store provider effective time, and recompute entitlements from ordered ledger facts.
+- `entitlement-13` — Paused subscriptions are neither canceled nor expired. Preserve the provider's pause/resume semantics, effective dates, access policy, and user copy.
+- `entitlement-14` — Restored purchases are a reconciliation state, not a new purchase. A restore can reactivate access only after verified provider truth matches an active entitlement.
+- `entitlement-15` — Offline mobile access needs a short TTL, signed entitlement snapshot, feature scope, last_verified_at, and mandatory online reconciliation before extension.
 
 ## Decision table
 
@@ -40,6 +46,20 @@ Support/fraud overlays should be separate: `manual_review`, `commerce_limited`, 
 | Refund confirmed | refunded | Revoke or adjust refunded entitlement | Refunded purchase no longer grants access |
 | Downgrade scheduled | pending change | Apply at effective date | Plan changes on date; data/limit impact explained |
 | Store restore | provider truth replayed | Reconcile existing entitlement | Purchases restored or no active purchase found |
+| Subscription paused | paused | Apply pause policy: limited/read-only/keep access until provider effective date | Subscription paused; access resumes or expires on date |
+| Restore verified active | restored_active | Resume derived entitlement from existing ledger/source lineage | Purchase restored; no duplicate billing created |
+| Offline snapshot issued | offline_active | Allow scoped access until TTL | Offline access available until date; reconnect to refresh |
+
+## Paused, restored, and offline state semantics
+
+| State | Entry | Access policy | Exit | Support evidence |
+| --- | --- | --- | --- | --- |
+| `paused` | Provider pause event, team admin pause, or support-approved pause with effective_at | Provider-specific: keep paid access until pause date, then limit to read-only/export or free tier | `resume_effective_at`, cancellation, expiration, or support correction | pause source, effective_at, resume_at, message key |
+| `restore_pending` | User taps restore/resync on iOS/Android or signs in on new device | No new durable grant yet; show neutral "checking purchases" state | `restored_active`, `restore_not_found`, or `support_reviewable` | restore request ID, provider account hint, transaction/order lineage |
+| `restored_active` | Provider validation finds active original transaction/purchase token lineage | Resume entitlement from existing source lineage; do not create duplicate subscription | normal active/renewal/refund/expiration transitions | original transaction ID or purchase token, previous ledger link |
+| `restore_not_found` | Provider validation returns no active purchase | Keep current non-store access; show no active store purchase found | user buys, logs into correct store account, or support correction | provider response, app account, store account hint if available |
+| `offline_active` | Recently verified active entitlement snapshot signed for mobile offline use | Scoped access only; no plan upgrades, purchases, team admin, or export of sensitive data while offline | online reconciliation, TTL expiry, refund/revoke conflict | snapshot ID, signed_at, last_verified_at, ttl, feature scope |
+| `offline_expired` | Offline TTL expires before reconciliation | Graceful degradation to read-only/free tier with reconnect CTA | online reconciliation or support path | TTL expiry reason and user-facing message |
 
 ## Cross-channel precedence
 
@@ -105,6 +125,8 @@ renewal_failed
 grace_started
 grace_ended
 subscription_canceled
+subscription_paused
+subscription_resumed
 plan_changed
 refund_detected
 chargeback_opened
@@ -122,6 +144,7 @@ entitlement_revoked
 restore_purchase_started
 restore_purchase_completed
 restore_purchase_blocked
+restore_purchase_not_found
 support_adjustment_requested
 support_adjustment_applied
 support_adjustment_expired
@@ -130,3 +153,18 @@ reconciliation_corrected_state
 ```
 
 For each event, include: actor/system, source channel, source object ID, previous state, next state, effective time, user-facing message key, support-visible reason, and correlation/request ID.
+
+Additional required fields for paused/restored/offline states:
+
+```text
+pause_effective_at
+resume_effective_at
+restore_request_id
+original_transaction_id
+purchase_token_lineage
+offline_snapshot_id
+offline_scope
+last_verified_at
+offline_ttl_expires_at
+reconciliation_result
+```

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-subscription-entitlement-core-v0-20260701-restore-offline-states",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "subscription-entitlement-cross-platform-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "ea2eb9b474a68e6717cc2ae479d068dd93290a32",
+      "branch": "codex/improve-subscription-entitlement-benchmark",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T19:09:05.132Z",
+    "completedAt": "2026-07-01T19:09:59.421Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "skill": "subscription-entitlement-review",
+      "promptSha256": "e8c4f377eea213bf5c8afa15c3bf6c781a34b7c07020ffa8496c924c559d3b61",
+      "skillContextSha256": "075d3a0b5a91513c2e8e667099d79c7bdd46604d1cef98cf269e3c2b34e370f7",
+      "skillBodySha256": "0536f6283a68d30abebf7f4823c8f354957f62aa1e8ec1ccefdeb131363c4c02",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-entitlement-patterns.md",
+          "sha256": "f419b10f7d5b6455513f0f704e4fcdf5dbf5ac85d10477c0751ae4129e238cc2"
+        }
+      ],
+      "skillLoadedPromptSha256": "21157644d9355077f17641d948dcb03e8a3cf275cde53668e119454e026e1ee0",
+      "baseline": {
+        "score": 2,
+        "criterionScores": {
+          "source-of-truth": 2,
+          "channel-precedence": 1,
+          "state-transitions": 2,
+          "customer-support": 2,
+          "auditability": 3
+        },
+        "criticalFailures": [
+          "No explicit channel precedence; says no source is primary and uses most-recent qualifying event",
+          "Insufficient conflict resolution between individual and team access",
+          "Weak event ordering and anti-duplication rules"
+        ],
+        "rationale": "Includes validation, restore, offline tokens, refunds, chargebacks, and audit basics, but violates required precedence, relies on recency/union conflict handling, misses several required states, and makes unsupported assumptions about family sharing and web lookup.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-subscription-entitlement-core-v0-20260701-restore-offline-states-outputs/subscription-entitlement-cross-platform-001-baseline.md",
+        "outputSha256": "c783ca60019f32f865c8afb5220f03316d396186f12d39c93e9b51a7756ea6cc",
+        "latencyMs": 18722,
+        "usage": {
+          "input_tokens": 266,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1966,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2232
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "source-of-truth": 5,
+          "channel-precedence": 5,
+          "state-transitions": 5,
+          "customer-support": 5,
+          "auditability": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive design with ledger source-of-truth, validation, ordering, dedupe, explicit precedence, conflict rules, full lifecycle states, restore/offline behavior, support diagnostics, safe overrides, and detailed audit events.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-subscription-entitlement-core-v0-20260701-restore-offline-states-outputs/subscription-entitlement-cross-platform-001-skill-loaded.md",
+        "outputSha256": "2be76020d14c661dbd10d2077339ec9fbffca11200e296d9226d2c1235ab976f",
+        "latencyMs": 14713,
+        "usage": {
+          "input_tokens": 2944,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1635,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4579
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-subscription-entitlement-core-v0-20260701-restore-offline-states-outputs/subscription-entitlement-cross-platform-001-judge-raw.md",
+      "judgeOutputSha256": "00e951598a40084b46c71b99c90947581b20048be3e1c232923dfd08dfe420bf",
+      "judgeLatencyMs": 17912,
+      "judgeUsage": {
+        "input_tokens": 3045,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 758,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3803
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-entitlement-review",
+      "triggeredSkills": [
+        "subscription-entitlement-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1176,
+      "usage": {
+        "input_tokens": 200,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 10,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 210
+      }
+    },
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-entitlement-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1751,
+      "usage": {
+        "input_tokens": 151,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 32,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 183
+      }
+    }
+  ]
+}
