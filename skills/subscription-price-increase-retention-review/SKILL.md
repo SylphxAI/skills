@@ -16,7 +16,7 @@ Use this skill to convert subscription price increase, retention plan, grandfath
    - cohort matrix: plan, tenure, usage/adoption, billing channel, region, renewal window, churn risk, support/refund history, and price-change treatment;
    - discount/contract matrix: list price, current discount, contract term, sales exception, grandfathered status, usage overage exposure, renewal clause, and migration offer;
    - channel rule matrix: direct, App Store, and Google Play notice/consent, cancellation, renewal, refund, receipt/webhook, and fallback states.
-5. Define cohort strategy, value narrative, notice timeline, consent path, grandfathering/save-offer policy, cancellation recovery, support macros, refund handling, experiment/holdout plan, revenue/churn monitoring, and rollback/mitigation triggers.
+5. Define cohort strategy, value narrative, notice timeline, consent path, grandfathering/save-offer policy, cancellation recovery, support macros, sales exception thresholds, refund handling, experiment/holdout plan, revenue/churn monitoring, and rollback/mitigation triggers.
 6. Produce subscription price-increase retention review, state machine, decision table, event schema, cohort checklist, support plan, and net-revenue monitoring plan.
 
 ## Guardrails
@@ -47,6 +47,9 @@ Priority cohort matrix:
 Discount, contract, and exception matrix:
 | Segment | Current discount/contract | Price-change treatment | Migration/exception path | Approval owner |
 | --- | --- | --- | --- | --- |
+
+Support and sales scripts:
+- <scenario> -> <plain-language message, allowed concession, escalation owner, approval threshold>
 
 Retention and trust plan:
 | Area | Decision | Evidence | Risk | Owner |

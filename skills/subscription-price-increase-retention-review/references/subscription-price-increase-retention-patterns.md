@@ -91,6 +91,27 @@ Set thresholds before launch; do not invent them after backlash.
 | Net revenue after churn/refunds/save costs/support load is below control | Roll back cohort or change offer/price step before scaling. |
 | Store-billed no-action or consent behavior is unverifiable | Block that channel until console/API evidence is captured. |
 
+## Support and sales exception scripts
+
+Keep scripts plain-language, specific, and non-defensive. Define what each role can offer without ad hoc discounting.
+
+| Scenario | Message focus | Allowed action | Approval threshold |
+| --- | --- | --- | --- |
+| Legacy annual contract asks why price changed | Renewal date, contract term, value narrative, account-owner review | Keep current contract through term; discuss renewal migration | Account owner for any non-standard renewal price |
+| Monthly self-serve low-usage user threatens cancellation | Acknowledge fit concern, explain downgrade/pause/annual option | Downgrade path, one save offer if eligible, cancel without friction | Retention owner for repeated or high-discount offers |
+| Grandfathered plan sunset complaint | Explain sunset timeline, protected period, migration benefit, support path | Extend grandfathering only for approved protected cohort | Pricing council for extension beyond policy |
+| Usage-heavy overage bill shock | Separate base price from overage, review usage controls | Usage alert, plan migration, overage credit only if policy allows | Finance/Product for credits above threshold |
+| Enterprise or sales exception request | Route to account owner; do not promise price in support chat | Temporary hold on automated notice, contract review | Sales/Legal for contract amendment or exception |
+| Refund or support escalation after notice | Clarify notice version, effective date, cancellation/refund route | Goodwill or refund per policy; log reason code | Support lead for exceptions above published policy |
+
+Example threshold pattern:
+
+- Support can explain, downgrade, cancel, or apply a pre-approved one-time save offer.
+- Sales can propose renewal migration inside approved discount bands.
+- Pricing/Finance approves margin-impacting exceptions, hardship cohorts, or broad grandfathering extensions.
+- Legal/account owner approves contract amendments and enterprise exceptions.
+- Any exception must record `reason_code`, `approval_owner`, `expires_at`, `cohort_id`, and `net_revenue_impact`.
+
 ## Price-increase retention checklist
 
 - Owner, scope, audience, and decision impact are explicit.
