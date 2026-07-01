@@ -8,4 +8,6 @@ expected_behavior:
   - "Separates refund, entitlement, account action, support, and abuse review."
   - "Rejects automatic bans and coercive repurchase threats."
   - "Separates Apple, Google, Stripe, chargeback, and goodwill authority with provider signals, dedupe keys, and entitlement actions."
+  - "Separates cancellation without refund, paid-through access, restore purchase, refund, chargeback, repurchase, and appeal paths."
   - "Defines server-side entitlement states, abuse score bands, false-positive controls, approval thresholds, support dashboards, and metrics."
+  - "Provides an event schema with provider, purchase, refund/dispute, entitlement, support case, abuse tier, actor, source event, and policy version fields."

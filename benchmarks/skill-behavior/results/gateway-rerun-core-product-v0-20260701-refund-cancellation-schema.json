@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-refund-cancellation-schema",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "refund-entitlement-support-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "b74430ad707d127f3fa1bde21d726183088d1c6d",
+      "branch": "codex/improve-refund-entitlement-support",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T17:57:08.317Z",
+    "completedAt": "2026-07-01T17:57:57.909Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "refund-entitlement-support-001",
+      "skill": "refund-and-support-flow-review",
+      "promptSha256": "3da10d49c24fd17021798e29b3b2c4fe96cb57565c3ddf55b9e2c01303638c65",
+      "skillContextSha256": "be1a88424ae49b9444f74628977523db5a606fb7f61a437b2db843ef3c388204",
+      "skillBodySha256": "a2452397772f8e4b32aa526002b1765aa32449c4e11c73c52ad5675afd0c249c",
+      "skillReferenceSha256": [
+        {
+          "path": "references/refund-support-flow-patterns.md",
+          "sha256": "ae0c87e7c788478961a66ba857227bc9314013f2449ee82afb6c86e8af3675aa"
+        }
+      ],
+      "skillLoadedPromptSha256": "3ff97213695a03b42da57ab5ccd1f8bd330259b53dc13244d225356e1a53b431",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "channel-separation": 3,
+          "entitlements": 4,
+          "abuse-trust-balance": 3,
+          "support-readiness": 4,
+          "measurement": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Strong entitlement and abuse design with macros/events, but lacks a true channel-specific policy table/state machine. Some unsupported platform assumptions and harsh device blacklist/clawback language reduce trust balance.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-refund-cancellation-schema-outputs/refund-entitlement-support-001-baseline.md",
+        "outputSha256": "834376d81d058dab92de8ccd2994cb40ab44189dfc03759a5827e351de6e69cc",
+        "latencyMs": 21671,
+        "usage": {
+          "input_tokens": 261,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1308,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1569
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "channel-separation": 5,
+          "entitlements": 5,
+          "abuse-trust-balance": 5,
+          "support-readiness": 4,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive provider separation, entitlement ledger/state machine, balanced abuse ladder with appeals, clear macros, events, and metrics. Support taxonomy/escalation is present but could be slightly more operationally detailed.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-refund-cancellation-schema-outputs/refund-entitlement-support-001-skill-loaded.md",
+        "outputSha256": "a87f26a7283b84e0e2ffe6c479faf895aa9d885a4095e7f9af740ab31a737c5d",
+        "latencyMs": 11584,
+        "usage": {
+          "input_tokens": 2413,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1346,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3759
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-refund-cancellation-schema-outputs/refund-entitlement-support-001-judge-raw.md",
+      "judgeOutputSha256": "21b9017b07c11f9acdcb3f1dbdf45260e3ff5ae2f0a618aeb5c7d0663b4218ec",
+      "judgeLatencyMs": 12557,
+      "judgeUsage": {
+        "input_tokens": 3151,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 765,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3916
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "refund-entitlement-support-001",
+      "promptType": "positive",
+      "expectedSkill": "refund-and-support-flow-review",
+      "triggeredSkills": [
+        "refund-and-support-flow-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2117,
+      "usage": {
+        "input_tokens": 190,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 35,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 225
+      }
+    },
+    {
+      "taskId": "refund-entitlement-support-001",
+      "promptType": "negative-control",
+      "expectedSkill": "refund-and-support-flow-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1653,
+      "usage": {
+        "input_tokens": 141,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 37,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 178
+      }
+    }
+  ]
+}
