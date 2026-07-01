@@ -1,0 +1,10 @@
+skill: release-evidence-pack-review
+positive_prompts:
+  - "Assemble a release evidence pack for a SaaS launch with backend changes, feature flags, database migration, accessibility QA, security review, performance test, observability dashboard, rollback proof, support macros, release notes, known risks, and approval record."
+  - "Audit release evidence pack, launch gate proof, release readiness evidence, rollout proof, rollback proof, and release approval questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review partner renewal health."
+expected_behavior:
+  - "Defines release scope, changed surfaces, risk tier, required gates, durable proof links, owners, rollout guardrails, rollback proof, support/docs readiness, known risks, and approval record."
+  - "Separates CI, QA, migration, performance, security, privacy, accessibility, observability, support, docs, rollout, rollback, and post-release evidence."
+  - "Flags aggregate-only CI proof, missing rollback/support/observability evidence, ephemeral proof, unowned known risks, and deployment-success-only verification."

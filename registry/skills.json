@@ -458,6 +458,19 @@
       ]
     },
     {
+      "name": "customer-escalation-war-room-review",
+      "description": "Design and audit customer escalation war rooms across severity, account impact, executive stakeholders, incident or non-incident classification, owner roles, decision log, action tracker, customer communications, status cadence, engineering/support/customer-success handoffs, commercial risk, de-escalation criteria, and post-escalation learning. Use when an important customer issue needs coordinated response without chaos.",
+      "status": "preview",
+      "path": "skills/customer-escalation-war-room-review",
+      "references": [
+        "customer-escalation-war-room-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "customer-feedback-intake-review",
       "description": "Design and audit customer feedback intake across support tickets, sales calls, app reviews, surveys, NPS, communities, cancellation reasons, feature requests, bug reports, and product analytics. Use when teams need to turn noisy feedback into evidence, prioritization input, roadmap decisions, and customer follow-up without overreacting to anecdotes.",
       "status": "preview",
@@ -757,6 +770,19 @@
       ]
     },
     {
+      "name": "enterprise-admin-permission-review",
+      "description": "Design and audit enterprise admin permissions across RBAC, ABAC, custom roles, admin scopes, delegated administration, SSO/SCIM mappings, role requests, approval workflows, separation of duties, audit logs, break-glass access, support access, data export/delete powers, billing powers, and access reviews. Use when privileged controls can affect customer data, billing, security, or compliance.",
+      "status": "preview",
+      "path": "skills/enterprise-admin-permission-review",
+      "references": [
+        "enterprise-admin-permission-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "enterprise-contract-redlines-review",
       "description": "Review enterprise contract redlines across liability, indemnity, privacy, data processing, security, SLA, support, uptime credits, payment terms, renewal, termination, audit rights, subprocessor, data residency, AI use, IP, confidentiality, order forms, and non-standard obligations. Use when commercial/legal changes could create product, finance, security, or operational commitments.",
       "status": "preview",
@@ -1004,6 +1030,19 @@
       ]
     },
     {
+      "name": "integration-sandbox-certification-review",
+      "description": "Design and audit integration sandbox certification for APIs, SDKs, apps, plugins, marketplace integrations, OAuth scopes, webhooks, test tenants, synthetic data, rate limits, error handling, security review, privacy boundaries, version compatibility, support readiness, and certification badges. Use when partners or developers need a safe path from sandbox to production integration.",
+      "status": "preview",
+      "path": "skills/integration-sandbox-certification-review",
+      "references": [
+        "integration-sandbox-certification-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "interface-craft",
       "description": "Improve product interfaces with tasteful UI craft, micro-interactions, accessibility-preserving polish, and detail-oriented review. Use when building UI, reviewing components, improving perceived quality, making an interface feel better, or auditing forms, buttons, motion, typography, empty states, loading states, and navigation polish.",
       "status": "preview",
@@ -1166,6 +1205,19 @@
       "path": "skills/marketplace-dispute-resolution-review",
       "references": [
         "marketplace-dispute-resolution-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "marketplace-fraud-review-queue-review",
+      "description": "Design and audit marketplace fraud review queues across risk signals, seller/buyer behavior, payout holds, refund abuse, fake reviews, account takeover, collusion, chargebacks, listing scams, reviewer workflows, evidence packages, SLAs, queue prioritization, decision QA, appeals, fairness monitoring, and policy feedback. Use when marketplace trust decisions need consistent human review and measurable outcomes.",
+      "status": "preview",
+      "path": "skills/marketplace-fraud-review-queue-review",
+      "references": [
+        "marketplace-fraud-review-queue-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1435,6 +1487,19 @@
       ]
     },
     {
+      "name": "partner-renewal-health-review",
+      "description": "Design and audit partner renewal health across reseller, implementation, technology, marketplace, and channel partners covering revenue contribution, pipeline, customer outcomes, support quality, certification status, compliance, co-marketing execution, enablement usage, dispute history, contract terms, renewal risk, expansion opportunities, and exit plans. Use when partner programs need renewal decisions based on evidence rather than relationship inertia.",
+      "status": "preview",
+      "path": "skills/partner-renewal-health-review",
+      "references": [
+        "partner-renewal-health-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "partner-risk-due-diligence-review",
       "description": "Design and audit partner risk due diligence for integrations, resellers, agencies, affiliates, marketplace partners, creators, data-sharing partners, AI providers, and co-marketing. Covers strategic fit, security/privacy, legal, operational dependency, brand risk, support burden, incentives, exit plans, and monitoring. Use when committing to partner ecosystems or joint go-to-market.",
       "status": "preview",
@@ -1480,6 +1545,19 @@
       "path": "skills/platform-certification-program-review",
       "references": [
         "platform-certification-program-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "pricing-contract-exception-register-review",
+      "description": "Design and audit pricing and contract exception registers across custom discounts, non-standard price books, credits, minimum commits, ramp deals, usage caps, free periods, custom payment terms, renewal uplifts, grandfathering, contract clauses, approval owners, expiry dates, invoice mapping, revenue recognition, and renewal review. Use when commercial exceptions must be visible, controlled, and renewed intentionally.",
+      "status": "preview",
+      "path": "skills/pricing-contract-exception-register-review",
+      "references": [
+        "pricing-contract-exception-register-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1649,6 +1727,19 @@
       "path": "skills/refund-and-support-flow-review",
       "references": [
         "refund-support-flow-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "release-evidence-pack-review",
+      "description": "Design and audit release evidence packs covering scope, change list, tests, QA, accessibility, security, privacy, migrations, performance, observability, rollout plan, feature flags, rollback proof, support readiness, docs, known risks, approvals, and customer communication. Use when release decisions need durable proof instead of confidence theater.",
+      "status": "preview",
+      "path": "skills/release-evidence-pack-review",
+      "references": [
+        "release-evidence-pack-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -2028,6 +2119,19 @@
       "path": "skills/store-review-policy-risk",
       "references": [
         "store-review-policy-risk-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "store-subscription-policy-compliance-review",
+      "description": "Design and audit App Store, Google Play, Microsoft Store, and marketplace subscription policy compliance covering paywalls, pricing, trials, intro offers, renewal disclosures, cancellation, restore purchase, entitlement access, refunds, family sharing, screenshots, metadata, receipt validation, server notifications, price changes, grace periods, and review evidence. Use when mobile or store-distributed subscriptions risk rejection or customer harm.",
+      "status": "preview",
+      "path": "skills/store-subscription-policy-compliance-review",
+      "references": [
+        "store-subscription-policy-compliance-patterns.md"
       ],
       "scripts": [],
       "agents": [

@@ -1,0 +1,10 @@
+skill: pricing-contract-exception-register-review
+positive_prompts:
+  - "Review a pricing contract exception register for enterprise SaaS with custom discounts, credits, payment terms, ramp deals, usage-cap exceptions, grandfathered clauses, invoice mapping, revenue recognition, approvers, expiry dates, and renewal review."
+  - "Audit pricing exception, contract exception, discount register, custom payment term, grandfathering, renewal uplift, credit, and commercial approval questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review integration sandbox certification."
+expected_behavior:
+  - "Defines exception type, standard policy, deviation, approver, margin/revenue impact, contract clause, billing/invoice mapping, expiry, renewal trigger, and cleanup path."
+  - "Separates discounts, credits, free periods, ramps, payment terms, usage caps, minimum commits, price-book exceptions, and grandfathering."
+  - "Flags PDF-only exceptions, margin-blind approvals, perpetual commercial debt, invoice/entitlement/CRM divergence, and renewal surprises."

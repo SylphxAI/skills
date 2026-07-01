@@ -1,0 +1,10 @@
+skill: customer-escalation-war-room-review
+positive_prompts:
+  - "Run a customer escalation war room for an enterprise SaaS account with a broken integration, executive visibility, renewal risk, support and engineering owners, customer updates, decision log, workaround, de-escalation criteria, and learning review."
+  - "Audit customer escalation, war room, executive escalation, high-severity support, account risk, and cross-functional recovery questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review store subscription policy compliance."
+expected_behavior:
+  - "Classifies customer impact, product severity, commercial risk, issue class, stakeholders, owners, action log, communication cadence, and de-escalation criteria."
+  - "Includes decision authority, customer update template, support/engineering/CS roles, workaround tracking, escalation gates, and post-escalation prevention."
+  - "Flags ownerless war rooms, confused incident vs account severity, executive bypass of safety gates, action sprawl, missing customer communication, and premature closure."

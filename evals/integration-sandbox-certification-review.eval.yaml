@@ -1,0 +1,10 @@
+skill: integration-sandbox-certification-review
+positive_prompts:
+  - "Review integration sandbox certification for a marketplace app using OAuth scopes, webhooks, SDKs, synthetic tenants, rate limits, retries, error handling, data deletion/export behavior, security review, certification badge, and production promotion gate."
+  - "Audit integration sandbox, developer certification, partner integration test, OAuth scope, webhook test, sandbox data, and production-readiness questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review pricing contract exceptions."
+expected_behavior:
+  - "Defines integration type, sandbox environment, OAuth scopes, API/webhook surfaces, synthetic data, certification criteria, test evidence, production gate, support docs, and recertification cadence."
+  - "Includes happy path, error path, retries, idempotency, pagination, rate limits, auth expiry, webhook verification, security, privacy, and version compatibility tests."
+  - "Flags happy-path-only certification, real customer data in sandbox, overbroad scopes, production credentials before evidence, missing support readiness, and certification drift."

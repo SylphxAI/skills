@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketplace Fraud Review Queue Review"
+  short_description: "Govern marketplace fraud queues"
+  default_prompt: "Use $marketplace-fraud-review-queue-review to review a marketplace fraud queue."

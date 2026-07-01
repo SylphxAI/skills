@@ -75,7 +75,8 @@
         "account-based-marketing-review",
         "customer-community-events-review",
         "product-led-sales-routing-review",
-        "sales-engineering-handoff-review"
+        "sales-engineering-handoff-review",
+        "partner-renewal-health-review"
       ]
     },
     {
@@ -100,7 +101,8 @@
         "enterprise-contract-redlines-review",
         "sales-commission-incentive-review",
         "enterprise-plan-migration-review",
-        "lifecycle-pricing-experiment-review"
+        "lifecycle-pricing-experiment-review",
+        "pricing-contract-exception-register-review"
       ]
     },
     {
@@ -144,7 +146,9 @@
         "release-risk-exception-review",
         "app-review-response-ops-review",
         "release-rollback-drill-review",
-        "app-store-policy-change-monitoring-review"
+        "app-store-policy-change-monitoring-review",
+        "release-evidence-pack-review",
+        "store-subscription-policy-compliance-review"
       ]
     },
     {
@@ -190,7 +194,9 @@
         "security-changelog-disclosure-review",
         "enterprise-account-governance-review",
         "support-automation-governance-review",
-        "privacy-consent-preference-center-review"
+        "privacy-consent-preference-center-review",
+        "enterprise-admin-permission-review",
+        "customer-escalation-war-room-review"
       ]
     },
     {
@@ -214,7 +220,9 @@
         "marketplace-quality-scoring-review",
         "marketplace-dispute-resolution-review",
         "marketplace-seller-performance-review",
-        "partner-implementation-quality-review"
+        "partner-implementation-quality-review",
+        "integration-sandbox-certification-review",
+        "marketplace-fraud-review-queue-review"
       ]
     },
     {
