@@ -116,6 +116,15 @@ npm run benchmark:run:openai -- benchmarks/skill-behavior/tasks/core-product-v0.
 ```
 
 Use `--task-id <id>` to rerun a specific failed or suspicious task. Multiple task IDs can be repeated or comma-separated.
+Use `--resume` with the same output path to continue a shard after a transient provider or gateway failure. The runner writes a checkpoint after each completed task, so a failed full-suite run should not lose already-scored samples.
+
+Merge completed shards:
+
+```bash
+npm run benchmark:merge -- --out /tmp/core-product-v0.result.json /tmp/core-product-v0-shard-*.json
+```
+
+The merge tool rejects duplicate task IDs so a full-suite summary cannot accidentally double-count a rerun.
 
 Summarize one or more scored runs:
 
