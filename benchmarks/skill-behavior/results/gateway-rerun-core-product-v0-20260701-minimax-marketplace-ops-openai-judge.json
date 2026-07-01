@@ -1,0 +1,684 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "app-store-launch-readiness-001",
+      "marketplace-payouts-creator-001",
+      "skill-marketplace-creator-001",
+      "board-metrics-operating-001",
+      "developer-quota-credit-abuse-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "4a4ff5db8c695f37af9edf7bf5bbbf659e7e1439",
+      "branch": "codex/minimax-overlap-smoke",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T16:52:52.184Z",
+    "completedAt": "2026-07-01T16:59:05.080Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "skill": "app-store-distribution-readiness",
+      "promptSha256": "b1fb2cb75fa28c60277562411915b0d722c47e498d719136198b2715ddf8db58",
+      "skillContextSha256": "76ff0e2cc7bfd4046dafdd2ee8794da42f8bcb8dc5b2f1e9922723ecb9c92408",
+      "skillBodySha256": "df57240b966894dddfaa2ff905d841c83789c9897b02c282ac6cc1a4d9501d76",
+      "skillReferenceSha256": [
+        {
+          "path": "references/distribution-channel-matrix.md",
+          "sha256": "67c382bb18859d408093b9b77a15da0adccb89df96dc69e3ab99d842d547410a"
+        }
+      ],
+      "skillLoadedPromptSha256": "51b77d64a3d67bdd7fc2aa66a6460c9d707dc02cdf6182ad98126a9d47df3a9c",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "store-specificity": 4,
+          "monetization-compliance": 4,
+          "privacy-permissions": 4,
+          "launch-ops": 4,
+          "evidence": 2
+        },
+        "criticalFailures": [
+          "missing explicit blocker list",
+          "weak durable evidence and owners"
+        ],
+        "rationale": "Strong cross-store launch content covering IAP, restore/refund, privacy, testing, support, push, and rollout. However, it lacks an explicit blocker list, has limited reviewer notes for Google, and provides little durable evidence or ownership mapping.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/app-store-launch-readiness-001-baseline.md",
+        "outputSha256": "bf1acf9f0869232acd5536f10a9c22f780b71b43a33d6add78ed36b0d3f74f38",
+        "latencyMs": 21454,
+        "usage": {
+          "input_tokens": 251,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1348,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1599
+        }
+      },
+      "skillLoaded": {
+        "score": 4,
+        "criterionScores": {
+          "store-specificity": 5,
+          "monetization-compliance": 4,
+          "privacy-permissions": 4,
+          "launch-ops": 5,
+          "evidence": 4
+        },
+        "criticalFailures": [],
+        "rationale": "More complete store-separated plan with Apple/Google specifics, blockers with owners, rollout, rollback, support, privacy, testing, and review notes. Monetization is solid but subscription disclosure and refund handling could be more explicit and precise.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/app-store-launch-readiness-001-skill-loaded.md",
+        "outputSha256": "ae467ce7516e1e58b2e46be5f03fb3b0f305958b13407a8b5c44db7e502430ae",
+        "latencyMs": 21878,
+        "usage": {
+          "input_tokens": 969,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1362,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2331
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/app-store-launch-readiness-001-judge-raw.md",
+      "judgeOutputSha256": "493a1d48ce7737c23111f45061938c850846a962501ac7c94104a89b69500a2c",
+      "judgeLatencyMs": 22047,
+      "judgeUsage": {
+        "input_tokens": 3187,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 1301,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4488
+      }
+    },
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "skill": "marketplace-payouts-review",
+      "promptSha256": "c3517d04e81341c93a1953f5b1d209f4633310043121dae9a183e4eb8b5c4054",
+      "skillContextSha256": "fb770a23edd73c024313362dcfe8c8f2eb33edbea5654c7a7fc44f960f1224b0",
+      "skillBodySha256": "a229dca6317cfe5396360dc033c494603ce7d14cd8706e56ac2dde8aa20cde58",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-payout-systems.md",
+          "sha256": "7b25290e3149d7c13eacf48b4c90cfee4ed16bb0df5bf300656fb4de1a4f55bd"
+        }
+      ],
+      "skillLoadedPromptSha256": "b0ea7c869c9ca76ab6b3807819609b58a8499b03c7bcb53efdb1721c0b88404a",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "ledger-truth": 4,
+          "risk-controls": 5,
+          "seller-experience": 4,
+          "schedule-policy": 5,
+          "marketplace-health": 2
+        },
+        "criticalFailures": [],
+        "rationale": "Strong lifecycle, KYC/tax, holds, refunds, chargebacks, schedule, dashboard, and support. Ledger has audit/reconciliation but limited explicit event model and some source-of-truth ambiguity. Marketplace health metrics are mostly absent.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/marketplace-payouts-creator-001-baseline.md",
+        "outputSha256": "181ad5e29813e77c71e9e1eef92d054b851af1ae0e59ef3381c94846ee90fad3",
+        "latencyMs": 22890,
+        "usage": {
+          "input_tokens": 250,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1305,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1555
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "ledger-truth": 5,
+          "risk-controls": 5,
+          "seller-experience": 5,
+          "schedule-policy": 5,
+          "marketplace-health": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive design with lifecycle/state machine, ledger events, reversals, reconciliation invariants, KYC/tax, holds, fraud, refunds, chargebacks, disputes, seller dashboard, support/appeals, schedule details, exceptions, and explicit trust/loss/support/liquidity metrics.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/marketplace-payouts-creator-001-skill-loaded.md",
+        "outputSha256": "beae7c716b68cd9c3ab3261cd133fec85fc4a2155205b4017d3401ba4f36d783",
+        "latencyMs": 37039,
+        "usage": {
+          "input_tokens": 3021,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1626,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4647
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/marketplace-payouts-creator-001-judge-raw.md",
+      "judgeOutputSha256": "188d2803e590461893702589af95d5e0927c9df0f229db1beb9e75c385c88ffd",
+      "judgeLatencyMs": 9882,
+      "judgeUsage": {
+        "input_tokens": 3415,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 625,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4040
+      }
+    },
+    {
+      "taskId": "skill-marketplace-creator-001",
+      "skill": "skill-marketplace-creator",
+      "promptSha256": "34d62e6a8afcf75ae84f6250eeb2fa59b2bbbcf67e56530b44429cb04e351f8a",
+      "skillContextSha256": "8e91d5933d9b7321c9cc3207b816cfa696004c5137523e072d60ed7c74568188",
+      "skillBodySha256": "b2c8ede5094b2dd916c98c5467243982ab8957fc8931025ee6566fcedb610d77",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-playbook.md",
+          "sha256": "1dbbeca8e6b1c6ebdf3b7f42d48a7a384dcf8bc6fe19d952cba5437a3a34ecaf"
+        }
+      ],
+      "skillLoadedPromptSha256": "311a93ec4976237257928c3420303054264dc5eba1b4c3fdb700317e2a42bf1a",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "marketplace-architecture": 4,
+          "quality-gates": 5,
+          "behavior-proof": 4,
+          "community-value": 4,
+          "governance": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong quality gates, install commands, metadata, evals, benchmarks, and governance. Weaker on explicit repository architecture, registry layout, grouping, and contribution surfaces. Benchmark proof is solid but does not clearly compare output improvement against a no-skill baseline.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/skill-marketplace-creator-001-baseline.md",
+        "outputSha256": "2b99433cd02d50732df6d4e0e1bd727c02773414cee1314a6a61ce6f4b048dfe",
+        "latencyMs": 19289,
+        "usage": {
+          "input_tokens": 247,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 2177,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2424
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "marketplace-architecture": 5,
+          "quality-gates": 5,
+          "behavior-proof": 4,
+          "community-value": 4,
+          "governance": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Provides concrete repo layout, registry, packs, install paths, metadata schema, contribution gates, originality checks, freshness, evals, benchmarks, and roadmap governance. Behavior proof is strong but mostly measures pass/fail and trigger quality, not explicit no-skill output improvement.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/skill-marketplace-creator-001-skill-loaded.md",
+        "outputSha256": "b33823ecf8b809c8589f3dfb6d5a7e628473f08179dd136afd7999e70ec251c7",
+        "latencyMs": 24961,
+        "usage": {
+          "input_tokens": 1451,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 1230,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2681
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/skill-marketplace-creator-001-judge-raw.md",
+      "judgeOutputSha256": "66b9e46017c95aa38f467015652a6f72edfe526f1744bc6a883d6271aaaa2b28",
+      "judgeLatencyMs": 14883,
+      "judgeUsage": {
+        "input_tokens": 3963,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 792,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4755
+      }
+    },
+    {
+      "taskId": "board-metrics-operating-001",
+      "skill": "board-metrics-operating-review",
+      "promptSha256": "06272ec9dc07a3b79130ac0be0dd152954d487dd50534622f11303aa694d2df4",
+      "skillContextSha256": "c87aa31ee090da6b966f057807e0ff26a0f8d1353d298c58b6411094cf908e0d",
+      "skillBodySha256": "b253b834719cf20b8326806c3c664b3c5523fc1bbc189ec9a3404eefe2f817ac",
+      "skillReferenceSha256": [
+        {
+          "path": "references/board-metrics-operating-patterns.md",
+          "sha256": "406dea3eb6b0df289b45a4e82249e579ceb98ffadb0554cfff83577764509905"
+        }
+      ],
+      "skillLoadedPromptSha256": "82a26d2c7dc9e4ed52f8270846221183f183263d799642847400a8d402600c2c",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "metric-definitions": 2,
+          "reconciliation": 2,
+          "variance": 3,
+          "decisions": 5,
+          "data-quality": 1
+        },
+        "criticalFailures": [
+          "undefined metrics",
+          "incomplete source-of-truth map",
+          "weak data-quality controls"
+        ],
+        "rationale": "Strong board-style tables, owner signoff, asks, and action follow-up. However, it lacks a real metric dictionary with formulas/cadence/caveats, has only minimal reconciliation, and barely addresses definition drift, schema changes, or confidence gaps.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/board-metrics-operating-001-baseline.md",
+        "outputSha256": "034c041560697d4e5e841eb240456a8ddee07f9fdc6976569e3514ad89d87178",
+        "latencyMs": 45532,
+        "usage": {
+          "input_tokens": 267,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 3274,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3541
+        }
+      },
+      "skillLoaded": {
+        "score": 4,
+        "criterionScores": {
+          "metric-definitions": 4,
+          "reconciliation": 5,
+          "variance": 4,
+          "decisions": 3,
+          "data-quality": 5
+        },
+        "criticalFailures": [
+          "missing owner signoff",
+          "limited actual period metrics"
+        ],
+        "rationale": "Provides strong definitions, source-of-truth separation, driver-based variance framework, and data-quality risks. It is more operating-system than board review, with generic asks, no explicit owner signoff artifact, and few actual metric results.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/board-metrics-operating-001-skill-loaded.md",
+        "outputSha256": "91aee3ba1f1aef8a6a20cc4670bd60fa74895872069625c1601e4c1417a5a470",
+        "latencyMs": 27021,
+        "usage": {
+          "input_tokens": 1475,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1488,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2963
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/board-metrics-operating-001-judge-raw.md",
+      "judgeOutputSha256": "953b04020c378efad0c6082aa5ac25530add3ca0c80cd490a271a7fbeeaea92a",
+      "judgeLatencyMs": 18012,
+      "judgeUsage": {
+        "input_tokens": 5351,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 1193,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 6544
+      }
+    },
+    {
+      "taskId": "developer-quota-credit-abuse-001",
+      "skill": "developer-quota-credit-abuse-review",
+      "promptSha256": "0781b3547ebb78bc347728bcc73523e8a3aa4e02d61fb5f33f4277a1021ae60d",
+      "skillContextSha256": "df73a1681e6d3ef1386c13ecceae7708ce7bfad33f9577292c804fbee47dd0b3",
+      "skillBodySha256": "5baad71dd4abeb2b224ba6dfbfeac33a15062c0aa29814574ba0387a3c22f85d",
+      "skillReferenceSha256": [
+        {
+          "path": "references/developer-quota-credit-abuse-patterns.md",
+          "sha256": "03e9b111094bb7122735aa427a3d00485b033db14c225fc3878602309444d5a2"
+        }
+      ],
+      "skillLoadedPromptSha256": "008db51cd74f4fc0cee543a2d1c67e86063c0c5409cc34c7dbbba7e17d7df507",
+      "baseline": {
+        "score": 2,
+        "criterionScores": {
+          "quota-ledger": 1,
+          "trust-tiers": 3,
+          "abuse-detection": 2,
+          "appeals": 2,
+          "metrics": 4
+        },
+        "criticalFailures": [
+          "no credit ledger",
+          "exposes abuse thresholds",
+          "automated final actions"
+        ],
+        "rationale": "Covers many controls and KPIs, but lacks a real credit ledger with expiry, reversal, and attribution. It exposes detailed thresholds, uses automatic demotion/freezes, and offers a narrow final appeal process with harsh actions.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/developer-quota-credit-abuse-001-baseline.md",
+        "outputSha256": "50e9199aa1651b00d4c7185cd186bb1ddb3fb7ace9c879fa77df3fc9a3961070",
+        "latencyMs": 27621,
+        "usage": {
+          "input_tokens": 257,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1474,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1731
+        }
+      },
+      "skillLoaded": {
+        "score": 4,
+        "criterionScores": {
+          "quota-ledger": 5,
+          "trust-tiers": 5,
+          "abuse-detection": 5,
+          "appeals": 5,
+          "metrics": 2
+        },
+        "criticalFailures": [],
+        "rationale": "Strong quota ladder, atomic credit ledger, trust tiers, abuse signals, manual review, support messaging, and appeals. Avoids leaking thresholds. Main gap is weak explicit metrics for activation, conversion, abuse loss, support load, and retention.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/developer-quota-credit-abuse-001-skill-loaded.md",
+        "outputSha256": "ddbbca6c078ef00001d3326a7525bb6f2e7503e00b6ff42196be9458279b4b8d",
+        "latencyMs": 24412,
+        "usage": {
+          "input_tokens": 1522,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1154,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2676
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-marketplace-ops-openai-judge-outputs/developer-quota-credit-abuse-001-judge-raw.md",
+      "judgeOutputSha256": "6bfa98f8384b982a1498aa619152d395630414351106555e94a5f3144f91c6fd",
+      "judgeLatencyMs": 17108,
+      "judgeUsage": {
+        "input_tokens": 3133,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 1075,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4208
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "promptType": "positive",
+      "expectedSkill": "app-store-distribution-readiness",
+      "triggeredSkills": [
+        "app-store-distribution-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2002,
+      "usage": {
+        "input_tokens": 173,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 37,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 210
+      }
+    },
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "promptType": "negative-control",
+      "expectedSkill": "app-store-distribution-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1688,
+      "usage": {
+        "input_tokens": 136,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 39,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 175
+      }
+    },
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "promptType": "positive",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [
+        "marketplace-payouts-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2096,
+      "usage": {
+        "input_tokens": 193,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 35,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 228
+      }
+    },
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "promptType": "negative-control",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1785,
+      "usage": {
+        "input_tokens": 156,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 47,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 203
+      }
+    },
+    {
+      "taskId": "skill-marketplace-creator-001",
+      "promptType": "positive",
+      "expectedSkill": "skill-marketplace-creator",
+      "triggeredSkills": [
+        "skill-marketplace-creator"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2275,
+      "usage": {
+        "input_tokens": 168,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 45,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 213
+      }
+    },
+    {
+      "taskId": "skill-marketplace-creator-001",
+      "promptType": "negative-control",
+      "expectedSkill": "skill-marketplace-creator",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2463,
+      "usage": {
+        "input_tokens": 134,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 111,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 245
+      }
+    },
+    {
+      "taskId": "board-metrics-operating-001",
+      "promptType": "positive",
+      "expectedSkill": "board-metrics-operating-review",
+      "triggeredSkills": [
+        "board-metrics-operating-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1639,
+      "usage": {
+        "input_tokens": 207,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 29,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 236
+      }
+    },
+    {
+      "taskId": "board-metrics-operating-001",
+      "promptType": "negative-control",
+      "expectedSkill": "board-metrics-operating-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1224,
+      "usage": {
+        "input_tokens": 157,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 33,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 190
+      }
+    },
+    {
+      "taskId": "developer-quota-credit-abuse-001",
+      "promptType": "positive",
+      "expectedSkill": "developer-quota-credit-abuse-review",
+      "triggeredSkills": [
+        "developer-quota-credit-abuse-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1614,
+      "usage": {
+        "input_tokens": 196,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 10,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 206
+      }
+    },
+    {
+      "taskId": "developer-quota-credit-abuse-001",
+      "promptType": "negative-control",
+      "expectedSkill": "developer-quota-credit-abuse-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2051,
+      "usage": {
+        "input_tokens": 153,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 34,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 187
+      }
+    }
+  ]
+}
