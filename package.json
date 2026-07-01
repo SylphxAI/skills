@@ -16,6 +16,7 @@
     "verify:install": "node scripts/verify-open-skills-install.mjs",
     "validate:benchmarks": "node scripts/validate-benchmarks.mjs",
     "benchmark:summarize": "node scripts/summarize-benchmark-results.mjs",
-    "benchmark:prepare": "node scripts/create-benchmark-jobs.mjs"
+    "benchmark:prepare": "node scripts/create-benchmark-jobs.mjs",
+    "benchmark:run:openai": "node scripts/run-benchmark-openai.mjs"
   }
 }

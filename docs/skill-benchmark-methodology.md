@@ -114,7 +114,15 @@ Summarize one or more scored runs:
 npm run benchmark:summarize -- benchmarks/skill-behavior/results/*.json
 ```
 
-The summarizer expects scored result files. It does not generate model answers. A future runner can automate answer generation through an LLM provider, but raw outputs and judge scores should remain reviewable.
+Run a scored OpenAI Responses API benchmark when an API key is available:
+
+```bash
+OPENAI_API_KEY=... npm run benchmark:run:openai -- benchmarks/skill-behavior/tasks/core-product-v0.json --out /tmp/core-product-v0.result.json --run-id <run-id>
+```
+
+Use `--dry-run` before a paid run. The runner records raw baseline and skill-loaded outputs, blind structured judge scores, usage, latency, and optional trigger classifier checks.
+
+The summarizer expects scored result files. It reports the strongest public claim tier supported by the data; it does not upgrade a result to "Useful" unless sample depth, win rate, average delta, critical-failure, and over-trigger gates pass.
 
 Valid result files must be audit-grade: they need runner identity, model, blind-judge status, per-criterion scores, critical failures, and output references for both baseline and skill-loaded answers. A single aggregate score without raw-output traceability is not enough evidence for a usefulness claim.
 

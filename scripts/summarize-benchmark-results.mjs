@@ -42,6 +42,47 @@ function skillRecord(sample) {
   return sample.skillLoaded || sample.skill;
 }
 
+function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci }) {
+  const skillCounts = new Map();
+  const suiteNames = new Set();
+  const modelNames = new Set();
+  for (const row of rows) {
+    skillCounts.set(row.skill, (skillCounts.get(row.skill) || 0) + 1);
+    if (row.suite) suiteNames.add(row.suite);
+    if (row.model) modelNames.add(row.model);
+  }
+
+  const negativeChecks = triggerChecks.filter((check) => check.promptType === 'negative-control');
+  const overTriggers = negativeChecks.filter((check) => (check.triggeredSkills || []).includes(check.expectedSkill)).length;
+  const overTriggerRate = negativeChecks.length ? overTriggers / negativeChecks.length : null;
+  const positiveChecks = triggerChecks.filter((check) => check.promptType === 'positive');
+  const positiveHits = positiveChecks.filter((check) => (check.triggeredSkills || []).includes(check.expectedSkill)).length;
+  const positiveRecall = positiveChecks.length ? positiveHits / positiveChecks.length : null;
+
+  const hasPerSkillDepth = [...skillCounts.values()].some((count) => count >= 5);
+  const hasSuiteDepth = rows.length >= 20;
+  const sampleDepthOk = hasPerSkillDepth || hasSuiteDepth;
+  const winRateOk = skillWinRate >= 0.7;
+  const deltaOk = avgDelta >= 0.5;
+  const criticalOk = skillCritical <= baselineCritical;
+  const triggerOk = overTriggerRate !== null && overTriggerRate < 0.05;
+  const useful = sampleDepthOk && winRateOk && deltaOk && criticalOk && triggerOk;
+  const sotaCandidate = useful && suiteNames.size >= 2 && modelNames.size >= 2 && ci && ci.low > 0;
+
+  return {
+    tier: sotaCandidate ? 'SOTA candidate' : useful ? 'Useful' : 'Benchmarked',
+    checks: {
+      sampleDepthOk,
+      winRateOk,
+      deltaOk,
+      criticalOk,
+      triggerOk,
+    },
+    overTriggerRate,
+    positiveRecall,
+  };
+}
+
 async function main() {
   const files = process.argv.slice(2);
   if (!files.length) {
@@ -86,19 +127,25 @@ async function main() {
   const nonRegressions = rows.filter((row) => row.skillScore >= row.baselineScore).length;
   const baselineCritical = rows.reduce((sum, row) => sum + row.baselineCriticalFailures, 0);
   const skillCritical = rows.reduce((sum, row) => sum + row.skillCriticalFailures, 0);
-  const negativeTriggerChecks = triggerChecks.filter((check) => check.promptType === 'negative-control');
-  const overTriggers = negativeTriggerChecks.filter((check) => (check.triggeredSkills || []).includes(check.expectedSkill)).length;
+  const avgDelta = mean(deltas);
+  const skillWinRate = skillWins / rows.length;
+  const nonRegressionRate = nonRegressions / rows.length;
+  const criticalDelta = baselineCritical - skillCritical;
+  const assessment = claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci });
 
   console.log('# Skill Behavior Benchmark Summary');
   console.log('');
   console.log(`- Samples: ${rows.length}`);
   console.log(`- Average baseline score: ${round(mean(rows.map((row) => row.baselineScore)))}`);
   console.log(`- Average skill-loaded score: ${round(mean(rows.map((row) => row.skillScore)))}`);
-  console.log(`- Average delta: ${round(mean(deltas))}${ci ? ` (95% bootstrap CI ${round(ci.low)} to ${round(ci.high)})` : ''}`);
-  console.log(`- Skill win rate: ${pct(skillWins / rows.length)}`);
-  console.log(`- Non-regression rate: ${pct(nonRegressions / rows.length)}`);
-  console.log(`- Critical failure delta: ${baselineCritical - skillCritical} fewer failures with skill-loaded outputs (${baselineCritical} baseline vs ${skillCritical} skill)`);
-  console.log(`- Negative-control over-trigger rate: ${negativeTriggerChecks.length ? pct(overTriggers / negativeTriggerChecks.length) : 'not reported'}`);
+  console.log(`- Average delta: ${round(avgDelta)}${ci ? ` (95% bootstrap CI ${round(ci.low)} to ${round(ci.high)})` : ''}`);
+  console.log(`- Skill win rate: ${pct(skillWinRate)}`);
+  console.log(`- Non-regression rate: ${pct(nonRegressionRate)}`);
+  console.log(`- Critical failure delta: ${criticalDelta} (${baselineCritical} baseline vs ${skillCritical} skill-loaded)`);
+  console.log(`- Positive trigger recall: ${assessment.positiveRecall === null ? 'not reported' : pct(assessment.positiveRecall)}`);
+  console.log(`- Negative-control over-trigger rate: ${assessment.overTriggerRate === null ? 'not reported' : pct(assessment.overTriggerRate)}`);
+  console.log(`- Claim tier supported by this data: ${assessment.tier}`);
+  console.log(`- Useful-claim gates: sampleDepth=${assessment.checks.sampleDepthOk ? 'pass' : 'fail'}, winRate=${assessment.checks.winRateOk ? 'pass' : 'fail'}, avgDelta=${assessment.checks.deltaOk ? 'pass' : 'fail'}, criticalFailures=${assessment.checks.criticalOk ? 'pass' : 'fail'}, overTrigger=${assessment.checks.triggerOk ? 'pass' : 'fail'}`);
   console.log('');
   console.log('| Task | Skill | Baseline | Skill-loaded | Delta | Preference |');
   console.log('| --- | --- | ---: | ---: | ---: | --- |');
