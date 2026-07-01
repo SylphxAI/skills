@@ -17,6 +17,7 @@ A Steam launch is a funnel from first impression to wishlist to purchase to firs
 - `steam-11` — Crash reporting, performance telemetry, server health, and save integrity must be wired before public demo or launch traffic.
 - `steam-12` — Pricing, discount, DLC, embargo, creator-key, refund, and review-response decisions need a verified policy matrix; do not invent platform policy or make unsupported promises.
 - `steam-13` — First-week learning must produce decisions: hotfix now, rollback, change store copy, pin known issue, adjust regional price, retarget creators, or defer to roadmap.
+- `steam-14` — First-week operating metrics need numeric or pre-agreed thresholds. If studio-specific targets are missing, provide starter tripwires labeled as internal defaults to replace before launch.
 
 ## Readiness decision table
 
@@ -113,14 +114,17 @@ Run launch week as a decision system. Review these twice daily on days 0-3 and d
 
 | Signal | Segment | Decision threshold | Likely action |
 | --- | --- | --- | --- |
-| Crash-free sessions | build, hardware, scene | Drops below agreed launch bar or spikes after patch | hotfix, rollback, known issue |
-| Refund rate | playtime bucket, country, source | Exceeds target or clusters around a defect | fix defect, adjust store copy, support macro |
-| Negative review themes | build, language, feature claim | New repeated theme with proof | public response, patch, roadmap clarification |
-| Demo-to-wishlist | source, festival day, session length | Traffic high but conversion weak | improve end-card, store CTA, trailer promise |
-| Cohort retention | source, country, party/solo, tutorial complete | First-session success does not translate into D1/D7 return | onboarding, matchmaking, balance, roadmap priority |
-| Multiplayer health | region, match type, time of day | disconnect/latency causes churn | capacity, matchmaking, incident post |
-| Support tickets | theme, severity, duplicate count | Duplicate theme overwhelms queue | pinned post, FAQ, macro, patch priority |
-| Patch outcome | before/after metric | Hotfix fails or worsens a signal | rollback, pause promotion, explain next step |
+| Crash-free sessions | build, hardware, scene | Starter: below 99.5% demo / 99.0% launch or >0.5 pp drop after patch | hotfix, rollback, known issue |
+| Refund rate | playtime bucket, country, source | Starter: above plan by >25%, or defect cluster >20% of sampled refunds | fix defect, adjust store copy, support macro |
+| Negative review themes | build, language, feature claim | Starter: repeated theme reaches 10+ credible reviews or >15% of new negatives in 24h | public response, patch, roadmap clarification |
+| Demo-to-wishlist | source, festival day, session length | Starter: high-intent source converts below 8-12%, or end-card CTR below 20% | improve end-card, store CTA, trailer promise |
+| Demo completion | source, first-session outcome | Starter: tutorial/core-loop completion below 50%, or median session below intended loop proof | onboarding fix, difficulty/balance patch |
+| Cohort retention | source, country, party/solo, tutorial complete | Starter: D1 return below internal target by >20%, or tutorial completers do not outperform non-completers | onboarding, matchmaking, balance, roadmap priority |
+| Multiplayer health | region, match type, time of day | Starter: disconnects >2%, p95 matchmaking >120s, or latency complaint spike | capacity, matchmaking, incident post |
+| Support tickets | theme, severity, duplicate count | Starter: top duplicate theme >25% of tickets or first response SLA misses twice | pinned post, FAQ, macro, patch priority |
+| Patch outcome | before/after metric | Starter: hotfix fails to improve target within 24h or worsens crash/refund/review signal | rollback, pause promotion, explain next step |
+
+Starter thresholds are not platform policy and are not promises to players. Replace them with studio-specific targets before launch and keep threshold ownership in the launch room.
 
 ## Launch checklist
 

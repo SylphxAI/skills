@@ -25,6 +25,7 @@ A strong answer after loading the skill should:
 - Uses a verified commercial policy matrix for regional pricing, launch discount, DLC roadmap, creator keys, embargoes, refunds, and review response.
 - Includes a launch calendar, review-bombing incident playbook, cohort retention, and first-week server-health learning metrics.
 - Creates a pre-launch through first-week operations matrix.
+- Uses numeric or pre-agreed first-week tripwires for crash-free sessions, refunds, reviews, demo conversion, completion, multiplayer health, support load, and patch outcomes without treating them as platform policy.
 
 It should also produce the artifact shape requested by `skills/steam-launch-readiness/SKILL.md`, such as a readiness matrix, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -42,3 +43,4 @@ The skill should not load for this prompt unless the user adds an explicit steam
 - Uses a verified commercial policy matrix for regional pricing, launch discount, DLC roadmap, creator keys, embargoes, refunds, and review response.
 - Includes a launch calendar, review-bombing incident playbook, cohort retention, and first-week server-health learning metrics.
 - Creates a pre-launch through first-week operations matrix.
+- Uses numeric or pre-agreed first-week tripwires for crash-free sessions, refunds, reviews, demo conversion, completion, multiplayer health, support load, and patch outcomes without treating them as platform policy.
