@@ -185,6 +185,19 @@
       ]
     },
     {
+      "name": "api-versioning-deprecation-review",
+      "description": "Design and audit API versioning and deprecation programs covering breaking-change policy, semantic versions, compatibility, SDKs, docs, changelogs, migration guides, sunset timelines, usage analytics, customer notifications, exceptions, webhooks, schema changes, test fixtures, and support readiness. Use when public APIs or integrations need safe evolution.",
+      "status": "preview",
+      "path": "skills/api-versioning-deprecation-review",
+      "references": [
+        "api-versioning-deprecation-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "app-permission-ux-review",
       "description": "Design and audit permission request UX, consent moments, privacy rationale, denial recovery, settings paths, OS prompts, notification opt-ins, location/camera/microphone/photo/contact access, tracking prompts, and trust copy for mobile, desktop, web, and games. Use when products need sensitive access without hurting conversion, review approval, accessibility, or user trust.",
       "status": "preview",
@@ -432,6 +445,19 @@
       ]
     },
     {
+      "name": "customer-onboarding-migration-runbook-review",
+      "description": "Design and audit customer onboarding migration runbooks covering source assessment, data mapping, validation, sandbox rehearsals, cutover, rollback, downtime, customer communications, roles, permissions, integrations, training, support readiness, success criteria, and post-migration adoption. Use when customers must move from old tools or legacy data into a product safely.",
+      "status": "preview",
+      "path": "skills/customer-onboarding-migration-runbook-review",
+      "references": [
+        "customer-onboarding-migration-runbook-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "customer-reference-program-review",
       "description": "Design and audit customer reference programs covering reference eligibility, consent, legal approval, quote/case-study evidence, logo use, segment matching, sales requests, advocacy fatigue, confidentiality, incentives, renewal/health risk, win stories, analyst/procurement proof, and reference governance. Use when sales and marketing need credible customer proof without overusing or misrepresenting customers.",
       "status": "preview",
@@ -451,6 +477,19 @@
       "path": "skills/customer-success-health-review",
       "references": [
         "customer-health-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "customer-success-playbook-review",
+      "description": "Design and audit customer success playbooks for onboarding, adoption, health scoring, QBRs, renewals, expansion, risk recovery, executive alignment, champion changes, support escalations, product feedback, usage milestones, lifecycle triggers, account segmentation, and CS handoffs. Use when teams need repeatable customer outcomes rather than ad hoc CSM heroics.",
+      "status": "preview",
+      "path": "skills/customer-success-playbook-review",
+      "references": [
+        "customer-success-playbook-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -490,6 +529,19 @@
       "path": "skills/daily-reward-and-streak-review",
       "references": [
         "daily-reward-streak-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "data-deletion-erasure-review",
+      "description": "Design and audit data deletion and erasure workflows covering user/account deletion, DSAR/RTBF, retention schedules, backups, logs, analytics, billing records, legal holds, fraud/security exceptions, subprocessors, exports, audit proof, customer communication, and recovery limits. Use when personal or customer data must be removed safely and provably.",
+      "status": "preview",
+      "path": "skills/data-deletion-erasure-review",
+      "references": [
+        "data-deletion-erasure-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -653,6 +705,19 @@
       ]
     },
     {
+      "name": "enterprise-contract-redlines-review",
+      "description": "Review enterprise contract redlines across liability, indemnity, privacy, data processing, security, SLA, support, uptime credits, payment terms, renewal, termination, audit rights, subprocessor, data residency, AI use, IP, confidentiality, order forms, and non-standard obligations. Use when commercial/legal changes could create product, finance, security, or operational commitments.",
+      "status": "preview",
+      "path": "skills/enterprise-contract-redlines-review",
+      "references": [
+        "enterprise-contract-redlines-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "enterprise-expansion-health-review",
       "description": "Review enterprise account health and expansion readiness across adoption, value proof, champion strength, executive alignment, usage whitespace, renewal risk, support history, incidents, seat growth, product fit, procurement timing, pricing, QBRs, and handoff between customer success, sales, support, and product. Use when teams want expansion revenue without harming trust.",
       "status": "preview",
@@ -750,6 +815,19 @@
       "path": "skills/feature-flag-rollout-review",
       "references": [
         "feature-flag-rollout-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "feature-request-prioritization-review",
+      "description": "Design and audit feature request prioritization from support, sales, customer success, research, app reviews, community, analytics, and strategic accounts; covering evidence quality, segment fit, revenue risk, product strategy, effort, dependencies, fairness, duplicate clustering, communication, and close-the-loop decisions. Use when teams must decide what to build without overreacting to loud requests.",
+      "status": "preview",
+      "path": "skills/feature-request-prioritization-review",
+      "references": [
+        "feature-request-prioritization-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1023,6 +1101,19 @@
       "path": "skills/marketplace-product-ops",
       "references": [
         "marketplace-product-ops-systems.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "marketplace-quality-scoring-review",
+      "description": "Design and audit marketplace quality scoring for creators, sellers, listings, skills, apps, plugins, services, content, search ranking, recommendations, certification, trust badges, appeals, moderation, fraud, fairness, freshness, feedback loops, and score explainability. Use when a marketplace needs quality signals that improve discovery without unfairly burying good supply.",
+      "status": "preview",
+      "path": "skills/marketplace-quality-scoring-review",
+      "references": [
+        "marketplace-quality-scoring-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1545,6 +1636,19 @@
       "path": "skills/saas-subscription-pricing",
       "references": [
         "pricing-packaging-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "sales-commission-incentive-review",
+      "description": "Design and audit sales commission and incentive plans covering quota, attainment, accelerators, clawbacks, renewals, expansion credit, multi-year deals, discounting, channel conflict, services, usage commitments, churn risk, sales behavior, margin, customer quality, and RevOps/finance controls. Use when compensation could shape pipeline quality, pricing discipline, or customer trust.",
+      "status": "preview",
+      "path": "skills/sales-commission-incentive-review",
+      "references": [
+        "sales-commission-incentive-patterns.md"
       ],
       "scripts": [],
       "agents": [

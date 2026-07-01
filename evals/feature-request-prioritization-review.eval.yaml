@@ -1,0 +1,10 @@
+skill: feature-request-prioritization-review
+positive_prompts:
+  - "Prioritize feature requests from support tickets, enterprise sales, app reviews, research interviews, analytics drop-offs, and community posts for a SaaS roadmap."
+  - "Audit a roadmap process where biggest-logo requests override strategy, duplicate requests are unclustered, and customers get vague non-answers."
+negative_prompts:
+  - "Review sales commission accelerators."
+expected_behavior:
+  - "Normalizes requests into jobs/problems, clusters duplicates, scores evidence quality, segment fit, impact, confidence, effort, risk, dependencies, and strategy fit."
+  - "Separates bugs, UX confusion, compliance/security needs, integrations, package gaps, enhancements, and strategic bets."
+  - "Flags loud-customer bias, sales urgency as roadmap, unapproved commitments, undifferentiated request lists, and poor close-the-loop communication."

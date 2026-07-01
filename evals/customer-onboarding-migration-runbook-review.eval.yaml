@@ -1,0 +1,10 @@
+skill: customer-onboarding-migration-runbook-review
+positive_prompts:
+  - "Design a customer onboarding migration runbook for enterprise SaaS moving projects, users, permissions, comments, attachments, integrations, and historical data from a legacy tool."
+  - "Audit migrations where import jobs complete but customers find missing fields, broken permissions, unsupported workflows, no rollback, and weak post-migration adoption."
+negative_prompts:
+  - "Review sales commission clawback policy."
+expected_behavior:
+  - "Defines source assessment, data mapping, transformations, dry run, validation, signoff, cutover, rollback, communication, training, support readiness, and adoption handoff."
+  - "Covers self-serve, assisted, enterprise, phased, integration, backfill, and regulated migrations with workflow validation."
+  - "Flags migration without signoff, hidden data loss, unsupported fields, job-complete-only success, unowned scripts, and missing support/adoption plan."

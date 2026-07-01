@@ -1,0 +1,10 @@
+skill: data-deletion-erasure-review
+positive_prompts:
+  - "Design data deletion and erasure operations for SaaS covering user deletion, workspace deletion, DSAR/RTBF, retention, backups, logs, analytics, billing records, legal holds, subprocessors, and proof."
+  - "Audit a deletion workflow that removes primary records but misses search indexes, exports, AI datasets, support attachments, backups, and subprocessors."
+negative_prompts:
+  - "Design a customer success QBR playbook."
+expected_behavior:
+  - "Maps data subjects, systems, data classes, derived stores, exports, logs, backups, billing/legal records, subprocessors, and deletion methods."
+  - "Includes authority checks, shared-scope risk, retention/legal holds, fraud/security exceptions, execution order, retries, proof, customer communication, and audit drills."
+  - "Flags false backup deletion promises, unauthorized irreversible deletes, unmapped derived data, missing subprocessor workflow, and deletion without ownership checks."

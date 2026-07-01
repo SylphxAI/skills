@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Deletion Erasure Review"
+  short_description: "Review data erasure flows"
+  default_prompt: "Use $data-deletion-erasure-review to design data deletion and erasure operations."

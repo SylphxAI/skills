@@ -26,7 +26,9 @@
         "user-research-repository-review",
         "sales-qualification-discovery-review",
         "ai-safety-red-team-review",
-        "product-analytics-instrumentation-review"
+        "product-analytics-instrumentation-review",
+        "feature-request-prioritization-review",
+        "customer-onboarding-migration-runbook-review"
       ]
     },
     {
@@ -93,7 +95,9 @@
         "contract-lifecycle-renewal-review",
         "usage-metering-accuracy-review",
         "revenue-recognition-policy-review",
-        "procurement-pricing-packaging-review"
+        "procurement-pricing-packaging-review",
+        "enterprise-contract-redlines-review",
+        "sales-commission-incentive-review"
       ]
     },
     {
@@ -171,7 +175,9 @@
         "revops-crm-governance-review",
         "enterprise-security-exception-review",
         "admin-audit-log-review",
-        "data-lineage-impact-review"
+        "data-lineage-impact-review",
+        "customer-success-playbook-review",
+        "data-deletion-erasure-review"
       ]
     },
     {
@@ -190,7 +196,9 @@
         "platform-certification-program-review",
         "community-governance-review",
         "partner-risk-due-diligence-review",
-        "marketplace-trust-safety-economics-review"
+        "marketplace-trust-safety-economics-review",
+        "api-versioning-deprecation-review",
+        "marketplace-quality-scoring-review"
       ]
     },
     {
