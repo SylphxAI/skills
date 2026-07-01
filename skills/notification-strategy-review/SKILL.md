@@ -13,8 +13,9 @@ Use this skill to make notifications useful enough to deserve attention.
 2. Read `references/notification-strategy-patterns.md`.
 3. Classify messages by utility, urgency, consent, lifecycle trigger, frequency, fallback channel, and failure risk.
 4. Build lifecycle, consent/region, and suppression matrices before proposing campaigns.
-5. Design permission timing, preferences, fallback, measurement, support recovery, and experiment guardrails.
-6. Produce a notification taxonomy, lifecycle journey map, channel/frequency policy, suppression rules, consent/preference model, event schema, and trust metrics.
+5. Define an explicit frequency budget: global cap, category cap, lifecycle-event cap, quiet-hours behavior, cooldown, digest threshold, and emergency override rule.
+6. Design permission timing, preferences, fallback, measurement, support recovery, and experiment guardrails.
+7. Produce a notification taxonomy, lifecycle journey map, channel/frequency policy, suppression rules, consent/preference model, event schema, and trust metrics.
 
 ## Guardrails
 
@@ -24,6 +25,7 @@ Use this skill to make notifications useful enough to deserve attention.
 - Do not send duplicate push/email/in-app messages for the same lifecycle event unless escalation value is explicit.
 - Do not ask platform push permission before the user has seen a concrete notification value moment.
 - Do not optimize opens/clicks without delivery, opt-out, unsubscribe, complaint, retention, and long-term trust guardrails.
+- Do not describe fatigue management as "cap frequency" without naming concrete global, category, lifecycle-event, cooldown, and digest rules.
 
 ## Output format
 
@@ -41,6 +43,14 @@ Consent and regional control matrix:
 
 Taxonomy and channel policy:
 - <message type> -> trigger, user value, channel, priority, frequency, control, suppression/dedupe rule
+
+Frequency and suppression budget:
+- Global cap:
+- Category caps:
+- Lifecycle-event cap:
+- Cooldowns:
+- Digest/quiet-hours rules:
+- Emergency override:
 
 Risks and guardrails:
 - <risk> -> <guardrail>
