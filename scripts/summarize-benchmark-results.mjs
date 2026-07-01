@@ -42,12 +42,23 @@ function skillRecord(sample) {
   return sample.skillLoaded || sample.skill;
 }
 
-function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci }) {
+function duplicateTaskIds(rows) {
+  const counts = new Map();
+  for (const row of rows) counts.set(row.taskId, (counts.get(row.taskId) || 0) + 1);
+  return [...counts.entries()].filter(([, count]) => count > 1).map(([taskId]) => taskId).sort();
+}
+
+function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci, duplicateIds }) {
   const skillCounts = new Map();
+  const skillTaskIds = new Map();
   const suiteNames = new Set();
   const modelNames = new Set();
+  const uniqueTaskIds = new Set();
   for (const row of rows) {
     skillCounts.set(row.skill, (skillCounts.get(row.skill) || 0) + 1);
+    if (!skillTaskIds.has(row.skill)) skillTaskIds.set(row.skill, new Set());
+    skillTaskIds.get(row.skill).add(row.taskId);
+    uniqueTaskIds.add(row.taskId);
     if (row.suite) suiteNames.add(row.suite);
     if (row.model) modelNames.add(row.model);
   }
@@ -60,9 +71,10 @@ function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baseline
   const positiveRecall = positiveChecks.length ? positiveHits / positiveChecks.length : null;
 
   const singleSkill = skillCounts.size === 1 ? [...skillCounts.keys()][0] : null;
-  const hasPerSkillDepth = singleSkill && rows.length >= 5;
-  const hasSuiteDepth = rows.length >= 20;
-  const sampleDepthOk = hasPerSkillDepth || hasSuiteDepth;
+  const hasDuplicates = duplicateIds.length > 0;
+  const hasPerSkillDepth = singleSkill && skillTaskIds.get(singleSkill).size >= 5;
+  const hasSuiteDepth = uniqueTaskIds.size >= 20;
+  const sampleDepthOk = !hasDuplicates && (hasPerSkillDepth || hasSuiteDepth);
   const winRateOk = skillWinRate >= 0.7;
   const deltaOk = avgDelta >= 0.5;
   const criticalOk = skillCritical <= baselineCritical;
@@ -72,7 +84,9 @@ function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baseline
 
   return {
     tier: sotaCandidate ? 'SOTA candidate' : useful ? 'Useful' : 'Benchmarked',
-    sampleDepthScope: hasSuiteDepth ? 'suite' : hasPerSkillDepth ? `single-skill:${singleSkill}` : 'insufficient',
+    sampleDepthScope: hasDuplicates ? 'duplicate-tasks' : hasSuiteDepth ? 'suite' : hasPerSkillDepth ? `single-skill:${singleSkill}` : 'insufficient',
+    uniqueTaskCount: uniqueTaskIds.size,
+    duplicateTaskIds: duplicateIds,
     checks: {
       sampleDepthOk,
       winRateOk,
@@ -124,6 +138,7 @@ async function main() {
   }
 
   const deltas = rows.map((row) => row.delta);
+  const duplicates = duplicateTaskIds(rows);
   const ci = bootstrapMeanDelta(deltas);
   const skillWins = rows.filter((row) => row.skillScore > row.baselineScore).length;
   const nonRegressions = rows.filter((row) => row.skillScore >= row.baselineScore).length;
@@ -133,11 +148,13 @@ async function main() {
   const skillWinRate = skillWins / rows.length;
   const nonRegressionRate = nonRegressions / rows.length;
   const criticalDelta = baselineCritical - skillCritical;
-  const assessment = claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci });
+  const assessment = claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baselineCritical, skillCritical, ci, duplicateIds: duplicates });
 
   console.log('# Skill Behavior Benchmark Summary');
   console.log('');
   console.log(`- Samples: ${rows.length}`);
+  console.log(`- Unique task coverage: ${assessment.uniqueTaskCount}`);
+  if (assessment.duplicateTaskIds.length) console.log(`- Duplicate task IDs: ${assessment.duplicateTaskIds.join(', ')}`);
   console.log(`- Average baseline score: ${round(mean(rows.map((row) => row.baselineScore)))}`);
   console.log(`- Average skill-loaded score: ${round(mean(rows.map((row) => row.skillScore)))}`);
   console.log(`- Average delta: ${round(avgDelta)}${ci ? ` (95% bootstrap CI ${round(ci.low)} to ${round(ci.high)})` : ''}`);

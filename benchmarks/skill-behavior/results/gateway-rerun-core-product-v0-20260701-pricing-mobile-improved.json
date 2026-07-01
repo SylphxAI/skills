@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-pricing-mobile-improved",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 2200,
+    "answerWordLimit": 900,
+    "maxAttempts": 3,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "subscription-pricing-saas-001",
+      "mobile-first-permission-onboarding-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "dd8896fed1af72ca0f414dce7417088cbb7cda1e",
+      "branch": "codex/rerun-pricing-mobile-after-improvements",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T11:19:32.351Z",
+    "completedAt": "2026-07-01T11:23:04.670Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "subscription-pricing-saas-001",
+      "skill": "saas-subscription-pricing",
+      "promptSha256": "34cfe29aea1cddf2bc9b4d8d7c85427ba94d8a6279964a8cd8d7cb5d9c7962ad",
+      "skillContextSha256": "586eef48d04990debb547caaaff7296029e26c850d55d57ea61d7931f1f723e8",
+      "skillBodySha256": "a09fffd417ecc566f5e04876b71ebbf3fd5c366a3ec485ecd4990a33e999fff3",
+      "skillReferenceSha256": [
+        {
+          "path": "references/pricing-packaging-patterns.md",
+          "sha256": "7dcda60882ff7a7c9a8397cc2ce9ccdb1cbcb30e62b58bfd9d0ed6261f672345"
+        }
+      ],
+      "skillLoadedPromptSha256": "8bc4ab3ce1cfd0b1483d8ee8c372d7ec33dc4933d31ecd09bed018ccd1100ceb",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "buyer-fit": 4.4,
+          "packaging": 4.5,
+          "economics": 4.4,
+          "migration": 1,
+          "support-sales": 4.3
+        },
+        "criticalFailures": [
+          "Missing experiment/rollout plan",
+          "Missing migration, grandfathering, and customer communications plan"
+        ],
+        "rationale": "Strong tiering, procurement path, usage metrics, support tiers, and economics guardrails. However, it omits the required rollout/experiment and migration artifacts, with no grandfathering, comms, or pricing test plan.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/subscription-pricing-saas-001-baseline.md",
+        "outputSha256": "509d058e3c194a59a2c9d46de2449c4f0d570d53406e2e0aca4fda8b4265fdf9",
+        "latencyMs": 39660,
+        "usage": {
+          "input_tokens": 94,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 2059,
+          "output_tokens_details": {
+            "reasoning_tokens": 19
+          },
+          "total_tokens": 2153
+        }
+      },
+      "skillLoaded": {
+        "score": 4.7,
+        "criterionScores": {
+          "buyer-fit": 4.8,
+          "packaging": 4.8,
+          "economics": 4.5,
+          "migration": 4.8,
+          "support-sales": 4.5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive architecture with buyer segments, procurement gates, tier limits, overages, support, economics guardrails, and rollout/migration plan. Minor weakness: some price points and thresholds are plausible but not deeply justified by quantitative cost modeling.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/subscription-pricing-saas-001-skill-loaded.md",
+        "outputSha256": "8af3fbc26d559b86b32e052cae1cb94ed40967573f808a42829225698975d5aa",
+        "latencyMs": 36725,
+        "usage": {
+          "input_tokens": 1155,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1966,
+          "output_tokens_details": {
+            "reasoning_tokens": 36
+          },
+          "total_tokens": 3121
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/subscription-pricing-saas-001-judge-raw.md",
+      "judgeOutputSha256": "10ad69048643589a36a75c6127cc6176e62a910563bbd185711a287689ea8591",
+      "judgeLatencyMs": 11479,
+      "judgeUsage": {
+        "input_tokens": 4658,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 475,
+        "output_tokens_details": {
+          "reasoning_tokens": 244
+        },
+        "total_tokens": 5133
+      }
+    },
+    {
+      "taskId": "mobile-first-permission-onboarding-001",
+      "skill": "mobile-first-ui-review",
+      "promptSha256": "3ca6b51e7e466674c90970ec0e97881dec8cc66325570eef3e4572b4da13401c",
+      "skillContextSha256": "4deac456960bfe81f35bf9f8821f71ce5f0341082cb25bd5f238597467f1243e",
+      "skillBodySha256": "80e3535cd96a5e6efe2c55b1bc879615286ba75245bfab1796ca67e75692ef89",
+      "skillReferenceSha256": [
+        {
+          "path": "references/mobile-ui-rules.md",
+          "sha256": "55e22f6d3d2bc268f483443cd025048d85bb6f4fde9c3712902f80ced0e5051e"
+        }
+      ],
+      "skillLoadedPromptSha256": "50c4d5eda349731a89180803afdb07ea2e9b2fbd2560527aebead7faf4173c08",
+      "baseline": {
+        "score": 3.7,
+        "criterionScores": {
+          "mobile-ergonomics": 3.5,
+          "permission-timing": 4.8,
+          "activation": 4.7,
+          "accessibility": 0.5,
+          "measurement": 4
+        },
+        "criticalFailures": [
+          "Missing required accessibility guidance for screen readers, focus, text size, and motion."
+        ],
+        "rationale": "Strong value-led journey, contextual permissions, activation sequencing, recovery alternatives, and funnel metrics. Mobile ergonomics are useful but light on safe areas, touch targets, keyboard, and viewport constraints. Accessibility is essentially absent.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/mobile-first-permission-onboarding-001-baseline.md",
+        "outputSha256": "5553b9b074c0b592aa7c431669cc778aa3016b28f385d976b48fa35bb6eb3a65",
+        "latencyMs": 47911,
+        "usage": {
+          "input_tokens": 87,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1931,
+          "output_tokens_details": {
+            "reasoning_tokens": 62
+          },
+          "total_tokens": 2018
+        }
+      },
+      "skillLoaded": {
+        "score": 4.6,
+        "criterionScores": {
+          "mobile-ergonomics": 4.5,
+          "permission-timing": 5,
+          "activation": 4.6,
+          "accessibility": 5,
+          "measurement": 3.6
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive mobile-first review with contextual permission timing, denial recovery, safe-area/keyboard/viewport fixes, activation-preserving sequencing, and detailed accessibility checks. Measurement lists events but is weaker on explicit funnel rates and guardrail metrics.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/mobile-first-permission-onboarding-001-skill-loaded.md",
+        "outputSha256": "62068ac0c655972fba4d5342429c0d6fcb182838813b732daa606a0968941d02",
+        "latencyMs": 32065,
+        "usage": {
+          "input_tokens": 1332,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1717,
+          "output_tokens_details": {
+            "reasoning_tokens": 38
+          },
+          "total_tokens": 3049
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-pricing-mobile-improved-outputs/mobile-first-permission-onboarding-001-judge-raw.md",
+      "judgeOutputSha256": "1dfb0249cc3ccb551d1dcf3ee6b1591ab1f60e388186cbbc7c1eaf41bc0bf14f",
+      "judgeLatencyMs": 14797,
+      "judgeUsage": {
+        "input_tokens": 4228,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 746,
+        "output_tokens_details": {
+          "reasoning_tokens": 516
+        },
+        "total_tokens": 4974
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "subscription-pricing-saas-001",
+      "promptType": "positive",
+      "expectedSkill": "saas-subscription-pricing",
+      "triggeredSkills": [
+        "saas-subscription-pricing"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to create SaaS subscription pricing for a B2B analytics product, including free trial, plan tiers, seat limits, usage-based overages, annual discounts, procurement requirements, support tiers, expansion path, and unit economics—all core elements covered by the saas-subscription-pricing skill.",
+      "latencyMs": 21307,
+      "usage": {
+        "input_tokens": 209,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 81,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 290
+      }
+    },
+    {
+      "taskId": "subscription-pricing-saas-001",
+      "promptType": "negative-control",
+      "expectedSkill": "saas-subscription-pricing",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about reviewing marketplace policy model feedback loops, which relates to marketplace governance or systems dynamics rather than SaaS/subscription pricing, packaging, billing, trials, or monetization strategy.",
+      "latencyMs": 3150,
+      "usage": {
+        "input_tokens": 169,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 103,
+        "output_tokens_details": {
+          "reasoning_tokens": 44
+        },
+        "total_tokens": 272
+      }
+    },
+    {
+      "taskId": "mobile-first-permission-onboarding-001",
+      "promptType": "positive",
+      "expectedSkill": "mobile-first-ui-review",
+      "triggeredSkills": [
+        "mobile-first-ui-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to review and improve a mobile onboarding flow involving permissions, account creation, subscription trial, drop-off, and mobile-first UI/interaction fixes, which matches the skill's scope.",
+      "latencyMs": 2857,
+      "usage": {
+        "input_tokens": 212,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 58,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 270
+      }
+    },
+    {
+      "taskId": "mobile-first-permission-onboarding-001",
+      "promptType": "negative-control",
+      "expectedSkill": "mobile-first-ui-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks to design contract amendment approvals, which is primarily a workflow/business process or product feature design task. It does not directly mention mobile UI, responsive phone views, touch ergonomics, onboarding, purchase flows, or mobile-specific interface concerns.",
+      "latencyMs": 2356,
+      "usage": {
+        "input_tokens": 177,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 68,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 245
+      }
+    }
+  ]
+}

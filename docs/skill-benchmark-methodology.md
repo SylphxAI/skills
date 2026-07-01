@@ -127,6 +127,7 @@ npm run benchmark:merge -- --out /tmp/core-product-v0.result.json /tmp/core-prod
 ```
 
 The merge tool rejects duplicate task IDs so a full-suite summary cannot accidentally double-count a rerun.
+The summarizer also reports duplicate task IDs and treats duplicate-containing summaries as claim-blocked. Reruns can prove before/after improvement, but they do not increase sample-depth coverage.
 
 Summarize one or more scored runs:
 
