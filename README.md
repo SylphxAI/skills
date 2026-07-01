@@ -261,7 +261,9 @@ across `core-product-v0` plus `hard-product-v0` supports the repository-level **
 26 current task samples, +1.43 average skill uplift, 100.0% skill win rate, 100.0% non-regression rate,
 0.0% negative-control over-trigger rate, positive confidence interval, and passing shared-task multi-model
 overlap. The current suite also reports answer token/latency overhead so quality gains can be weighed
-against added context cost. See the
+against added context cost. The `validate:sota-evidence` gate additionally requires every current
+benchmark task to have clean provenance, 5.00 skill-loaded score, no regressions, no skill-loaded
+critical failures, and no negative-control over-trigger. See the
 [`current-suite-20260701` summary](./benchmarks/skill-behavior/results/current-suite-20260701-summary.md).
 This is still a bounded benchmark claim, not an unqualified claim that every individual skill is SOTA in
 every downstream product context.
