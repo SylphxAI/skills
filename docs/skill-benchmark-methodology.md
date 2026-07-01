@@ -11,7 +11,7 @@ The repository currently has strong **structural proof**:
 - `npm run check` validates schema, catalog, eval, reference, launch-kit, and benchmark-fixture coverage;
 - `npm run verify:install` proves the public install surface.
 
-This is not the same as behavioral proof. A calibration result under `benchmarks/skill-behavior/results/` proves the benchmark pipeline can produce paired behavioral evidence, but it does not prove repository-level usefulness. Until complete suite or per-skill results pass the claim gates, the honest public claim is: **the skills are preview skills with benchmark fixtures and calibration evidence, not proven SOTA skills**.
+This is not the same as behavioral proof. Current public results under `benchmarks/skill-behavior/results/` support a repository-level **Useful** claim across the current `core-product-v0` and `hard-product-v0` samples. They do **not** support a SOTA-candidate claim yet because shared-task multi-model evidence is still missing, and they do not prove every individual skill useful without per-skill sample depth.
 
 ## Scientific benchmark design
 
@@ -158,7 +158,7 @@ The summary prints SOTA-candidate gates separately from Useful gates. A SOTA-can
 
 Valid result files must be audit-grade: they need runner identity, model, blind-judge status, per-criterion scores, critical failures, and output references for both baseline and skill-loaded answers. New runner output also records source metadata plus prompt and skill-context hashes so historical results remain interpretable after a skill changes. A single aggregate score without raw-output traceability is not enough evidence for a usefulness claim.
 
-`core-product-v0` has 20 tasks, so a complete suite result can support a repository-level "Useful" claim only if all other gates pass. It does not prove every individual skill useful; individual skill claims still need at least 5 positive tasks for that skill.
+`core-product-v0` has 20 broad tasks and `hard-product-v0` adds 5 harder edge-case tasks. A current-suite summary can support a repository-level "Useful" claim only if sample depth, win rate, average delta, critical-failure, and over-trigger gates pass. It does not prove every individual skill useful; individual skill claims still need at least 5 positive tasks for that skill.
 
 ## What this changes in repository strategy
 

@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "description": "Hard edge-case benchmark suite for commercially sensitive product skills where generic answers often miss state precedence, trust boundaries, platform policy, and operational recovery.",
+  "tasks": [
+    {
+      "id": "payment-webhook-entitlement-race-001",
+      "skill": "payment-platform-readiness",
+      "category": "payments-risk",
+      "prompt": "Audit a cross-platform subscription payment system where Apple IAP, Google Play, Stripe Checkout, promo codes, restore purchases, refund webhooks, chargebacks, delayed renewals, and backend entitlement grants can arrive out of order. Define the safest ledger, reconciliation, support, and release-readiness plan.",
+      "negativeControlPrompt": "Review the animation pacing and responsive spacing of a mobile onboarding carousel.",
+      "expectedArtifacts": [
+        "payment and entitlement state model",
+        "webhook and receipt precedence rules",
+        "reconciliation and support tooling plan",
+        "release readiness gates"
+      ],
+      "failureModes": [
+        "client-only entitlement truth",
+        "missing idempotency or out-of-order event handling",
+        "refund and chargeback treated as the same event",
+        "no support or reconciliation path"
+      ],
+      "rubric": [
+        {
+          "id": "ledger-authority",
+          "weight": 2,
+          "required": true,
+          "description": "Defines a server-side payment/entitlement ledger with idempotency, event ordering, and immutable audit evidence."
+        },
+        {
+          "id": "platform-precedence",
+          "weight": 2,
+          "required": true,
+          "description": "Separates Apple, Google, Stripe, promo, restore, renewal, refund, and chargeback semantics without collapsing them into one policy."
+        },
+        {
+          "id": "reconciliation",
+          "weight": 2,
+          "required": true,
+          "description": "Includes polling/backfill, webhook retry, stale entitlement detection, manual review, and support-safe correction flows."
+        },
+        {
+          "id": "release-gates",
+          "weight": 1,
+          "required": true,
+          "description": "Names concrete launch blockers, test fixtures, rollback controls, and observability checks for payment correctness."
+        },
+        {
+          "id": "customer-trust",
+          "weight": 1,
+          "required": false,
+          "description": "Protects legitimate customers from false revocation while still addressing abuse and chargeback risk."
+        }
+      ]
+    },
+    {
+      "id": "marketplace-payout-tax-hold-001",
+      "skill": "marketplace-payouts-review",
+      "category": "marketplace-ops",
+      "prompt": "Design payout operations for a global AI-skill marketplace with creator balances, refunds, buyer disputes, fraud review, tax forms, sanctions screening, payout holds, minimum thresholds, failed bank transfers, negative balances, and creator support tickets.",
+      "negativeControlPrompt": "Create a desktop tray icon checklist for a local note-taking utility.",
+      "expectedArtifacts": [
+        "payout state machine",
+        "hold and reserve policy",
+        "tax and compliance checklist",
+        "creator support and dispute flow"
+      ],
+      "failureModes": [
+        "payouts treated as a simple scheduled transfer",
+        "missing negative balance and refund clawback handling",
+        "no tax or sanctions readiness",
+        "no creator-facing support evidence"
+      ],
+      "rubric": [
+        {
+          "id": "balance-state-model",
+          "weight": 2,
+          "required": true,
+          "description": "Defines pending, available, held, paid, failed, reversed, negative, and disputed balance states with clear transitions."
+        },
+        {
+          "id": "risk-controls",
+          "weight": 2,
+          "required": true,
+          "description": "Covers fraud review, reserves, payout holds, sanctions screening, chargeback exposure, and appeal/release criteria."
+        },
+        {
+          "id": "compliance-readiness",
+          "weight": 1,
+          "required": true,
+          "description": "Includes tax forms, country eligibility, payout provider constraints, audit logs, and reporting obligations."
+        },
+        {
+          "id": "creator-support",
+          "weight": 1,
+          "required": true,
+          "description": "Provides creator-facing status, support macros, evidence needed for disputes, and failed payout recovery steps."
+        },
+        {
+          "id": "marketplace-incentives",
+          "weight": 1,
+          "required": false,
+          "description": "Balances creator trust, buyer protection, marketplace cash risk, and operational workload."
+        }
+      ]
+    },
+    {
+      "id": "notification-permission-fatigue-recovery-001",
+      "skill": "notification-strategy-review",
+      "category": "lifecycle-growth",
+      "prompt": "Review notification strategy for a subscription productivity app with onboarding permission ask, trial expiry reminders, renewal reminders, failed payment recovery, win-back campaigns, quiet hours, digest mode, notification fatigue, opt-out recovery, and platform permission denial handling.",
+      "negativeControlPrompt": "Design a payout reserve policy for a global creator marketplace.",
+      "expectedArtifacts": [
+        "notification lifecycle matrix",
+        "permission ask and recovery plan",
+        "fatigue and suppression rules",
+        "measurement and guardrail metrics"
+      ],
+      "failureModes": [
+        "growth spam without lifecycle intent",
+        "permission prompt asked before value is clear",
+        "missing suppression and quiet hours",
+        "no denied-permission recovery or opt-out respect"
+      ],
+      "rubric": [
+        {
+          "id": "lifecycle-intent",
+          "weight": 2,
+          "required": true,
+          "description": "Maps each notification to user intent and lifecycle state rather than generic engagement nudges."
+        },
+        {
+          "id": "permission-trust",
+          "weight": 2,
+          "required": true,
+          "description": "Defines contextual permission asks, denied-state recovery, opt-out handling, and platform respectful behavior."
+        },
+        {
+          "id": "suppression-fatigue",
+          "weight": 2,
+          "required": true,
+          "description": "Includes quiet hours, caps, digesting, priority, cooldowns, and cross-channel suppression rules."
+        },
+        {
+          "id": "commercial-recovery",
+          "weight": 1,
+          "required": false,
+          "description": "Handles trial expiry, renewal, failed payment, and win-back messaging without coercion or deceptive urgency."
+        },
+        {
+          "id": "measurement",
+          "weight": 1,
+          "required": true,
+          "description": "Defines delivery, opt-in, opt-out, conversion, complaint, retention, and unsubscribe guardrail metrics."
+        }
+      ]
+    },
+    {
+      "id": "steam-demo-refund-review-risk-001",
+      "skill": "steam-launch-readiness",
+      "category": "game-distribution",
+      "prompt": "Audit a Steam launch plan for an indie game entering Next Fest with a public demo, wishlists, regional pricing, DLC roadmap, cloud saves, controller support, early reviews, refund risk, community moderation, streamer keys, build rollback, and first-week live operations.",
+      "negativeControlPrompt": "Review a SaaS failed-payment email sequence for subscription recovery.",
+      "expectedArtifacts": [
+        "Steam launch readiness matrix",
+        "demo and store-page risk review",
+        "refund and review-risk controls",
+        "first-week operations plan"
+      ],
+      "failureModes": [
+        "store marketing without build readiness",
+        "missing refund and review-risk handling",
+        "no demo-to-wishlist measurement",
+        "no launch rollback or community ops plan"
+      ],
+      "rubric": [
+        {
+          "id": "store-demo-fit",
+          "weight": 2,
+          "required": true,
+          "description": "Connects store page promises, demo scope, wishlist conversion, tags, capsule assets, and player expectation setting."
+        },
+        {
+          "id": "build-readiness",
+          "weight": 2,
+          "required": true,
+          "description": "Covers save compatibility, controller support, crash telemetry, rollback, cloud saves, and release build gates."
+        },
+        {
+          "id": "commercial-risk",
+          "weight": 1,
+          "required": true,
+          "description": "Addresses regional pricing, refunds, DLC promises, streamer keys, discounts, and review score protection."
+        },
+        {
+          "id": "community-ops",
+          "weight": 1,
+          "required": true,
+          "description": "Includes moderation, bug triage, announcements, support escalation, and first-week operating rhythm."
+        },
+        {
+          "id": "measurement",
+          "weight": 1,
+          "required": false,
+          "description": "Defines wishlist, demo, review, refund, crash, support, and community metrics tied to decisions."
+        }
+      ]
+    },
+    {
+      "id": "subscription-price-increase-grandfathering-001",
+      "skill": "subscription-price-increase-retention-review",
+      "category": "pricing-retention",
+      "prompt": "Plan a subscription price increase for a B2B SaaS with legacy annual contracts, monthly self-serve users, enterprise customers, grandfathered plans, usage overages, cancellation risk, migration offers, notification timing, support scripts, sales exceptions, and revenue-retention reporting.",
+      "negativeControlPrompt": "Audit a Steam demo page for wishlist conversion before a festival event.",
+      "expectedArtifacts": [
+        "price-increase segmentation plan",
+        "grandfathering and migration policy",
+        "communications and support plan",
+        "retention and revenue measurement"
+      ],
+      "failureModes": [
+        "one announcement for all customer types",
+        "missing contract and renewal constraints",
+        "no support or sales exception path",
+        "optimizes revenue without churn and trust guardrails"
+      ],
+      "rubric": [
+        {
+          "id": "segmentation",
+          "weight": 2,
+          "required": true,
+          "description": "Separates legacy, monthly, annual, enterprise, usage-heavy, discount, and grandfathered customer segments."
+        },
+        {
+          "id": "policy-mechanics",
+          "weight": 2,
+          "required": true,
+          "description": "Defines effective dates, renewal timing, migration offers, exceptions, grandfathering, and overage treatment."
+        },
+        {
+          "id": "trust-communications",
+          "weight": 2,
+          "required": true,
+          "description": "Includes notification timing, clear value narrative, cancellation/downgrade paths, support scripts, and sales enablement."
+        },
+        {
+          "id": "measurement",
+          "weight": 1,
+          "required": true,
+          "description": "Tracks ARR, NRR, logo churn, downgrade, support load, expansion, cohort behavior, and complaint signals."
+        },
+        {
+          "id": "risk-controls",
+          "weight": 1,
+          "required": false,
+          "description": "Defines rollback or mitigation triggers when churn, complaints, or sales escalations exceed guardrails."
+        }
+      ]
+    }
+  ]
+}

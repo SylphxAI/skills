@@ -104,6 +104,6 @@ When available, usage and latency fields are summarized as answer-generation ove
 
 ## Current suite coverage
 
-`core-product-v0` contains 20 paired tasks, meeting the suite-size threshold for a repository-level usefulness claim if future public results also pass the win-rate, average-delta, critical-failure, and over-trigger gates. It does not prove any individual skill useful unless that skill has enough task depth on its own.
+`core-product-v0` contains 20 broad paired tasks. `hard-product-v0` adds 5 edge-case tasks for lower-delta, commercially sensitive product workflows. Together, current public results can support a repository-level usefulness claim only when the current-suite summary passes win-rate, average-delta, critical-failure, and over-trigger gates. They do not prove any individual skill useful unless that skill has enough task depth on its own.
 
 When summarizing mixed result files, per-skill depth is not allowed to upgrade the aggregate repository claim. A mixed summary needs 20+ suite samples; a 5+ sample Useful claim applies only when the summarized rows all target the same skill.
