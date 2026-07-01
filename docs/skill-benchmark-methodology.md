@@ -94,6 +94,8 @@ A useful benchmark for the whole repository needs at least:
 - separate results by skill category;
 - a public statement of which skills are unproven.
 
+Do not mix these depth rules. A 5+ sample result can support a single-skill claim only when every summarized row targets that skill. Mixed repository summaries need the 20+ suite threshold before the aggregate claim can move beyond Benchmarked.
+
 ## How to run the current benchmark fixtures
 
 Validate task and result schema:

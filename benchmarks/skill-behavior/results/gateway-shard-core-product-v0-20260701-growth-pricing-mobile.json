@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-shard-core-product-v0-20260701-growth-pricing-mobile",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 2200,
+    "answerWordLimit": 900,
+    "maxAttempts": 3,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "promotion-campaign-subscription-001",
+      "subscription-pricing-saas-001",
+      "mobile-first-permission-onboarding-001",
+      "app-store-launch-readiness-001"
+    ],
+    "partial": false,
+    "startedAt": "2026-07-01T10:59:32.820Z",
+    "completedAt": "2026-07-01T11:05:50.663Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "promotion-campaign-subscription-001",
+      "skill": "promotion-campaign-review",
+      "baseline": {
+        "score": 3.75,
+        "criterionScores": {
+          "offer-logic": 3.8,
+          "segmentation": 3.2,
+          "channel-sequencing": 4.2,
+          "risk-controls": 3.6,
+          "measurement": 4
+        },
+        "criticalFailures": [
+          "Missing explicit high-risk audience segment",
+          "Limited support-confusion and refund-pressure guardrails"
+        ],
+        "rationale": "Solid structure, channels, calendar, affiliate controls, and metrics. Weaker on eligibility depth, active/monthly subscriber handling, high-risk segmentation, support guardrails, abuse rejection visibility, margin thresholds, and full lifecycle suppression/rollback rules.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/promotion-campaign-subscription-001-baseline.md",
+        "outputSha256": "cd8db8d9c5f557004d2d9d67f47cd7159bc056aee0b95a200f9ea143cdb87267",
+        "latencyMs": 40026,
+        "usage": {
+          "input_tokens": 89,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1970,
+          "output_tokens_details": {
+            "reasoning_tokens": 70
+          },
+          "total_tokens": 2059
+        }
+      },
+      "skillLoaded": {
+        "score": 4.95,
+        "criterionScores": {
+          "offer-logic": 5,
+          "segmentation": 4.8,
+          "channel-sequencing": 5,
+          "risk-controls": 5,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive campaign with precise eligibility, discount rules, caps, renewal economics, sequencing, support/fraud controls, rollback thresholds, calendar, experiments, and guardrail metrics. Minor gap: general new-user segment is mostly embedded in creator/free traffic.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/promotion-campaign-subscription-001-skill-loaded.md",
+        "outputSha256": "daf4a4155236bcb0daef7e1a7ef90147ac9c666c4ba3e1f4708ad4fe2490af78",
+        "latencyMs": 36184,
+        "usage": {
+          "input_tokens": 859,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1931,
+          "output_tokens_details": {
+            "reasoning_tokens": 18
+          },
+          "total_tokens": 2790
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/promotion-campaign-subscription-001-judge-raw.md",
+      "judgeOutputSha256": "49449a6207e5aa9d36336adc6b92a59527b80d8cc1f355b68a73f3fb7b04ab61",
+      "judgeLatencyMs": 18403,
+      "judgeUsage": {
+        "input_tokens": 4513,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 698,
+        "output_tokens_details": {
+          "reasoning_tokens": 463
+        },
+        "total_tokens": 5211
+      }
+    },
+    {
+      "taskId": "subscription-pricing-saas-001",
+      "skill": "saas-subscription-pricing",
+      "baseline": {
+        "score": 3.9,
+        "criterionScores": {
+          "buyer-fit": 4.2,
+          "packaging": 4.4,
+          "economics": 4.3,
+          "migration": 1.5,
+          "support-sales": 4
+        },
+        "criticalFailures": [
+          "Missing explicit experiment/rollout plan with grandfathering and communications."
+        ],
+        "rationale": "Clear pricing tables, procurement guardrails, support tiers, expansion path, and margin targets. Less nuanced packaging logic than A and essentially omits migration, rollout, and experimentation artifacts.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/subscription-pricing-saas-001-baseline.md",
+        "outputSha256": "e83bbcb623c1eb24e3b2a9e8ebfe485c7a3cf54df9da5ad8572cf3b6aff6443d",
+        "latencyMs": 34235,
+        "usage": {
+          "input_tokens": 94,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1846,
+          "output_tokens_details": {
+            "reasoning_tokens": 87
+          },
+          "total_tokens": 1940
+        }
+      },
+      "skillLoaded": {
+        "score": 4.1,
+        "criterionScores": {
+          "buyer-fit": 4.5,
+          "packaging": 4.7,
+          "economics": 4,
+          "migration": 2.5,
+          "support-sales": 3.8
+        },
+        "criticalFailures": [
+          "Missing explicit experiment/rollout plan with grandfathering and communications."
+        ],
+        "rationale": "Strong architecture, tier logic, procurement gates, overage controls, expansion triggers, and unit-economics risks. Weaker on quantitative margin modeling and lacks a real rollout/experiment plan.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/subscription-pricing-saas-001-skill-loaded.md",
+        "outputSha256": "7a5787363bef773491fa26fe04af4faf0ab0fddf169874709988f1c97dbe6b53",
+        "latencyMs": 37261,
+        "usage": {
+          "input_tokens": 799,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1623,
+          "output_tokens_details": {
+            "reasoning_tokens": 22
+          },
+          "total_tokens": 2422
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/subscription-pricing-saas-001-judge-raw.md",
+      "judgeOutputSha256": "ae7a61288e4dcb82d2db7bdf16970541c9ef7a84dbc57992496e0d67c9ddb3cc",
+      "judgeLatencyMs": 15373,
+      "judgeUsage": {
+        "input_tokens": 4048,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 693,
+        "output_tokens_details": {
+          "reasoning_tokens": 472
+        },
+        "total_tokens": 4741
+      }
+    },
+    {
+      "taskId": "mobile-first-permission-onboarding-001",
+      "skill": "mobile-first-ui-review",
+      "baseline": {
+        "score": 3.6,
+        "criterionScores": {
+          "mobile-ergonomics": 3,
+          "permission-timing": 5,
+          "activation": 5,
+          "accessibility": 0,
+          "measurement": 4
+        },
+        "criticalFailures": [
+          "Missing accessibility guidance.",
+          "Mobile ergonomics omit safe-area, keyboard, and viewport constraints."
+        ],
+        "rationale": "Excellent value-first sequencing, permission timing, recovery paths, activation, and funnel metrics. However, required accessibility coverage is absent and mobile ergonomics miss safe-area, keyboard, and viewport details.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/mobile-first-permission-onboarding-001-baseline.md",
+        "outputSha256": "acd45fcbb5c738ebead059812d7dd004aa16d74813ef3457ec707b07588709ec",
+        "latencyMs": 33487,
+        "usage": {
+          "input_tokens": 87,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1782,
+          "output_tokens_details": {
+            "reasoning_tokens": 54
+          },
+          "total_tokens": 1869
+        }
+      },
+      "skillLoaded": {
+        "score": 3.9,
+        "criterionScores": {
+          "mobile-ergonomics": 4.5,
+          "permission-timing": 5,
+          "activation": 5,
+          "accessibility": 0.5,
+          "measurement": 3
+        },
+        "criticalFailures": [
+          "Missing explicit accessibility guidance for screen readers, focus order, text sizing, and reduced motion."
+        ],
+        "rationale": "Strong mobile-first journey with safe-area, keyboard, viewport, permission recovery, and activation sequencing. Measurement is mostly event-based, not full funnel/guardrails. Accessibility is largely absent.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/mobile-first-permission-onboarding-001-skill-loaded.md",
+        "outputSha256": "595e0048244dd4236da3d96d99457242f94e0302dfc3871c8042473ffd7f3514",
+        "latencyMs": 27092,
+        "usage": {
+          "input_tokens": 950,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1410,
+          "output_tokens_details": {
+            "reasoning_tokens": 18
+          },
+          "total_tokens": 2360
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/mobile-first-permission-onboarding-001-judge-raw.md",
+      "judgeOutputSha256": "bee60c69667fd3046a89483590ba563fb79249ad582a2c3000d9963f3f02ac46",
+      "judgeLatencyMs": 14196,
+      "judgeUsage": {
+        "input_tokens": 3800,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 719,
+        "output_tokens_details": {
+          "reasoning_tokens": 494
+        },
+        "total_tokens": 4519
+      }
+    },
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "skill": "app-store-distribution-readiness",
+      "baseline": {
+        "score": 4.5,
+        "criterionScores": {
+          "store-specificity": 4.5,
+          "monetization-compliance": 4.5,
+          "privacy-permissions": 4.5,
+          "launch-ops": 4.5,
+          "evidence": 3.5
+        },
+        "criticalFailures": [],
+        "rationale": "Very strong checklist with store-specific IAP, privacy, review templates, testing, support, refunds, push, and rollout. Weaker on explicit blocker list and ownership/evidence mapping; minor overbroad refund wording and iOS rollout precision issues.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/app-store-launch-readiness-001-baseline.md",
+        "outputSha256": "b1d647d46adc5b2245d2ab169ee7d964d506cbe8582ce590985ddb1464a72651",
+        "latencyMs": 44161,
+        "usage": {
+          "input_tokens": 91,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 2378,
+          "output_tokens_details": {
+            "reasoning_tokens": 65
+          },
+          "total_tokens": 2469
+        }
+      },
+      "skillLoaded": {
+        "score": 4.9,
+        "criterionScores": {
+          "store-specificity": 5,
+          "monetization-compliance": 5,
+          "privacy-permissions": 5,
+          "launch-ops": 5,
+          "evidence": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive cross-store plan with Apple/Google distinctions, IAP, privacy, review notes, testing, support, rollout, and explicit blockers with owners. Evidence artifacts are implied rather than fully linked to durable records.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/app-store-launch-readiness-001-skill-loaded.md",
+        "outputSha256": "9b19769891d79df0a95756f1215a130249342e287c626749c7010a858265fd43",
+        "latencyMs": 33440,
+        "usage": {
+          "input_tokens": 811,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1766,
+          "output_tokens_details": {
+            "reasoning_tokens": 26
+          },
+          "total_tokens": 2577
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-growth-pricing-mobile-outputs/app-store-launch-readiness-001-judge-raw.md",
+      "judgeOutputSha256": "a07d871ca5069e8bc6991a55c621f2b33ad852df986d17b2b829ab28bd252d91",
+      "judgeLatencyMs": 14574,
+      "judgeUsage": {
+        "input_tokens": 4764,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 738,
+        "output_tokens_details": {
+          "reasoning_tokens": 516
+        },
+        "total_tokens": 5502
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "promotion-campaign-subscription-001",
+      "promptType": "positive",
+      "expectedSkill": "promotion-campaign-review",
+      "triggeredSkills": [
+        "promotion-campaign-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to design a promotion campaign involving discounts, win-back segments, affiliate codes, in-app paywall, email, push notifications, fraud risk, campaign calendar, and success metrics, which matches the skill’s scope of campaign design/audit across offers, lifecycle, placements, messaging, measurement, fraud controls, and revenue/retention goals.",
+      "latencyMs": 3388,
+      "usage": {
+        "input_tokens": 202,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 90,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 292
+      }
+    },
+    {
+      "taskId": "promotion-campaign-subscription-001",
+      "promptType": "negative-control",
+      "expectedSkill": "promotion-campaign-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks to audit board metrics definitions, which is a general metrics/governance task and does not directly involve promotion campaigns, offers, discounts, lifecycle campaigns, or related campaign planning/auditing.",
+      "latencyMs": 4984,
+      "usage": {
+        "input_tokens": 165,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 100,
+        "output_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "total_tokens": 265
+      }
+    },
+    {
+      "taskId": "subscription-pricing-saas-001",
+      "promptType": "positive",
+      "expectedSkill": "saas-subscription-pricing",
+      "triggeredSkills": [
+        "saas-subscription-pricing"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to create SaaS subscription pricing for a B2B analytics product, including trial, plans, seat limits, usage-based overages, annual discounts, procurement requirements, support tiers, expansion path, and unit economics—all core elements covered by the SaaS subscription pricing skill.",
+      "latencyMs": 2672,
+      "usage": {
+        "input_tokens": 209,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 77,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 286
+      }
+    },
+    {
+      "taskId": "subscription-pricing-saas-001",
+      "promptType": "negative-control",
+      "expectedSkill": "saas-subscription-pricing",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about reviewing marketplace policy model feedback loops, which relates more to marketplace governance, policy systems, or model evaluation than SaaS subscription pricing, packaging, billing, or monetization strategy.",
+      "latencyMs": 3509,
+      "usage": {
+        "input_tokens": 169,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 122,
+        "output_tokens_details": {
+          "reasoning_tokens": 62
+        },
+        "total_tokens": 291
+      }
+    },
+    {
+      "taskId": "mobile-first-permission-onboarding-001",
+      "promptType": "positive",
+      "expectedSkill": "mobile-first-ui-review",
+      "triggeredSkills": [
+        "mobile-first-ui-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to review and improve a mobile onboarding flow involving permissions, account creation, subscription trial, drop-off, and mobile-first UI/interaction fixes, which is exactly within the skill's scope.",
+      "latencyMs": 2876,
+      "usage": {
+        "input_tokens": 212,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 60,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 272
+      }
+    },
+    {
+      "taskId": "mobile-first-permission-onboarding-001",
+      "promptType": "negative-control",
+      "expectedSkill": "mobile-first-ui-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks to design contract amendment approvals, which is primarily a workflow/process or product feature design task. It does not specifically mention mobile UI, responsive phone views, touch ergonomics, or related mobile-first interface concerns.",
+      "latencyMs": 4533,
+      "usage": {
+        "input_tokens": 177,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 63,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 240
+      }
+    },
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "promptType": "positive",
+      "expectedSkill": "app-store-distribution-readiness",
+      "triggeredSkills": [
+        "app-store-distribution-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to prepare an iOS and Android subscription app for launch, including IAP setup, privacy labels, screenshots, review notes, TestFlight/internal testing, support contact, refund/restore flow, push notification permission, and staged rollout—all core app store distribution readiness activities covered by the skill.",
+      "latencyMs": 4564,
+      "usage": {
+        "input_tokens": 205,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 80,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 285
+      }
+    },
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "promptType": "negative-control",
+      "expectedSkill": "app-store-distribution-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks for a board-level metrics operating review, which is a general business/operations reporting task and does not directly involve app store distribution, launch readiness, store metadata, privacy disclosures, payments, review processes, or release operations.",
+      "latencyMs": 2867,
+      "usage": {
+        "input_tokens": 168,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 105,
+        "output_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "total_tokens": 273
+      }
+    }
+  ]
+}

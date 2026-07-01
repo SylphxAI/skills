@@ -59,7 +59,8 @@ function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baseline
   const positiveHits = positiveChecks.filter((check) => (check.triggeredSkills || []).includes(check.expectedSkill)).length;
   const positiveRecall = positiveChecks.length ? positiveHits / positiveChecks.length : null;
 
-  const hasPerSkillDepth = [...skillCounts.values()].some((count) => count >= 5);
+  const singleSkill = skillCounts.size === 1 ? [...skillCounts.keys()][0] : null;
+  const hasPerSkillDepth = singleSkill && rows.length >= 5;
   const hasSuiteDepth = rows.length >= 20;
   const sampleDepthOk = hasPerSkillDepth || hasSuiteDepth;
   const winRateOk = skillWinRate >= 0.7;
@@ -71,6 +72,7 @@ function claimAssessment({ rows, triggerChecks, avgDelta, skillWinRate, baseline
 
   return {
     tier: sotaCandidate ? 'SOTA candidate' : useful ? 'Useful' : 'Benchmarked',
+    sampleDepthScope: hasSuiteDepth ? 'suite' : hasPerSkillDepth ? `single-skill:${singleSkill}` : 'insufficient',
     checks: {
       sampleDepthOk,
       winRateOk,
@@ -145,6 +147,7 @@ async function main() {
   console.log(`- Positive trigger recall: ${assessment.positiveRecall === null ? 'not reported' : pct(assessment.positiveRecall)}`);
   console.log(`- Negative-control over-trigger rate: ${assessment.overTriggerRate === null ? 'not reported' : pct(assessment.overTriggerRate)}`);
   console.log(`- Claim tier supported by this data: ${assessment.tier}`);
+  console.log(`- Claim depth scope: ${assessment.sampleDepthScope}`);
   console.log(`- Useful-claim gates: sampleDepth=${assessment.checks.sampleDepthOk ? 'pass' : 'fail'}, winRate=${assessment.checks.winRateOk ? 'pass' : 'fail'}, avgDelta=${assessment.checks.deltaOk ? 'pass' : 'fail'}, criticalFailures=${assessment.checks.criticalOk ? 'pass' : 'fail'}, overTrigger=${assessment.checks.triggerOk ? 'pass' : 'fail'}`);
   console.log('');
   console.log('| Task | Skill | Baseline | Skill-loaded | Delta | Preference |');
