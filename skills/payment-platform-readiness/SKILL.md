@@ -29,6 +29,7 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 - Do not let support agents change provider truth. Support corrections must be role-gated, reason-coded, expiring where appropriate, and auditable.
 - Do not ship payments without fee, tax, settlement, invoice, refund, dispute, and entitlement reconciliation evidence.
 - Do not call release gates complete unless every gate names the fixture, dashboard/alert, rollback or kill-switch path, owner, and approval evidence.
+- Do not describe webhook replay as a generic queue drain; every replay state needs required evidence, ordering/idempotency rule, exit gate, dead-letter handling, customer/support impact, and incident-review artifact.
 
 ## Output format
 
@@ -60,7 +61,8 @@ Support-safe correction flow:
 - <case> -> <lookup evidence, allowed action, approval, ledger event, customer message>
 
 Webhook outage replay flow:
-- <state> -> owner, evidence, ordering/idempotency rule, exit gate, customer/support impact
+- Use a table: state, owner, required evidence, ordering/idempotency rule, dead-letter handling, exit gate, customer/support impact
+- Include incident review: provider timeline, retry/dead-letter metrics, projector diff, false-revoke/over-grant disposition, finance exceptions, control fix, approval artifact
 
 Blockers:
 - <blocker>

@@ -140,6 +140,8 @@ Use this when provider notifications, webhooks, RTDN, settlement files, or clien
 
 Customer trust during replay: keep policy-approved temporary access for verified payers when provider truth is delayed; message "payment is being verified" rather than "payment failed" until provider evidence supports failure. Support can issue expiring access only through a correction ledger event with reason, approval, expiry, and customer-visible note.
 
+Replay runbooks should also name dead-letter handling for each provider: quarantine reason, retry budget, poison event owner, payload hash, source provider ticket when needed, replay decision, and final disposition. The incident review is incomplete unless it records provider timeline, retry/dead-letter metrics, projector before/after diff, false-revoke/over-grant account list, finance exception list, customer/support themes, permanent control fix, and approval artifact.
+
 ## Invoice, tax, and finance-close event model
 
 Invoice and tax launches need ledger events that finance can close without spreadsheet inference:
