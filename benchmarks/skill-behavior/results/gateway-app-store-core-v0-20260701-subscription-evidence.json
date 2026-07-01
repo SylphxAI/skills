@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-app-store-core-v0-20260701-subscription-evidence",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "app-store-launch-readiness-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "9bc3098734d30327dacfb16c206243ff938e4d98",
+      "branch": "codex/improve-app-store-launch-benchmark",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T19:02:38.237Z",
+    "completedAt": "2026-07-01T19:03:43.285Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "skill": "app-store-distribution-readiness",
+      "promptSha256": "b1fb2cb75fa28c60277562411915b0d722c47e498d719136198b2715ddf8db58",
+      "skillContextSha256": "e36bf3b620b0bd260d66e34858b0acf092e3cf63257fec13e20cc0696741f900",
+      "skillBodySha256": "de67835a77f9dbe7efae3f28120fb188d8d7cd7d983c9231d23163097434d492",
+      "skillReferenceSha256": [
+        {
+          "path": "references/distribution-channel-matrix.md",
+          "sha256": "08ab041321f5b0f1d81974bad383587cb3240b64e547cf204e8916b59030b1f3"
+        }
+      ],
+      "skillLoadedPromptSha256": "b6488e0a1d50e633a5862717a6abe0a42baadddefbc425ad61075ef440d73033",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "store-specificity": 4,
+          "monetization-compliance": 4,
+          "privacy-permissions": 4,
+          "launch-ops": 4,
+          "evidence": 2
+        },
+        "criticalFailures": [
+          "No explicit blocker list",
+          "Readiness items mostly lack owners and durable evidence"
+        ],
+        "rationale": "Strong practical checklist with cross-store coverage, testing, screenshots, support, refunds, restore, push, and rollout. Weaker on evidence/owners, blocker artifacts, and some refund/policy statements are oversimplified or unsupported.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-app-store-core-v0-20260701-subscription-evidence-outputs/app-store-launch-readiness-001-baseline.md",
+        "outputSha256": "4c6e2b09142939e5b0b32893c9851d6d03e5185c569b1af2f23896ff6402996a",
+        "latencyMs": 36399,
+        "usage": {
+          "input_tokens": 251,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 1348,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1599
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "store-specificity": 5,
+          "monetization-compliance": 5,
+          "privacy-permissions": 5,
+          "launch-ops": 5,
+          "evidence": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive, store-specific launch plan with Apple/Google differences, IAP/refund/restore/server-ledger handling, privacy and permissions, review packages, rollout gates, blockers, owners, and durable evidence.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-app-store-core-v0-20260701-subscription-evidence-outputs/app-store-launch-readiness-001-skill-loaded.md",
+        "outputSha256": "15c708bd7d1253c3dc9661fd5ce1a269550b021eec51159cf9a1e245fb05c7df",
+        "latencyMs": 10596,
+        "usage": {
+          "input_tokens": 2247,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1058,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3305
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-app-store-core-v0-20260701-subscription-evidence-outputs/app-store-launch-readiness-001-judge-raw.md",
+      "judgeOutputSha256": "7661c347871e7c953d17abb1f62aca24badb77c3427e80b4dda0c8dba2033f95",
+      "judgeLatencyMs": 12941,
+      "judgeUsage": {
+        "input_tokens": 2631,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 643,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3274
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "promptType": "positive",
+      "expectedSkill": "app-store-distribution-readiness",
+      "triggeredSkills": [
+        "app-store-distribution-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2656,
+      "usage": {
+        "input_tokens": 173,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 46,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 219
+      }
+    },
+    {
+      "taskId": "app-store-launch-readiness-001",
+      "promptType": "negative-control",
+      "expectedSkill": "app-store-distribution-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2448,
+      "usage": {
+        "input_tokens": 136,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 64,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 200
+      }
+    }
+  ]
+}
