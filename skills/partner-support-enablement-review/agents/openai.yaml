@@ -1,0 +1,4 @@
+interface:
+  display_name: "Partner Support Enablement Review"
+  short_description: "Enable partner support motions"
+  default_prompt: "Use $partner-support-enablement-review to design partner support enablement."

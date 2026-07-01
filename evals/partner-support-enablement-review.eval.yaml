@@ -1,0 +1,10 @@
+skill: partner-support-enablement-review
+positive_prompts:
+  - "Design partner support enablement for implementation partners and resellers who need training, sandbox access, support boundaries, escalation paths, certification, release updates, customer handoffs, and quality metrics."
+  - "Audit partner support enablement, implementation partner, reseller support, co-sell handoff, partner training, escalation, certification, and partner runbook questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review a release exception."
+expected_behavior:
+  - "Defines partner type, support scope, allowed promises, access model, training, certification, escalation owners, and customer handoff rules."
+  - "Includes least-privilege access, audit logs, runbooks, diagnostics, support macros, release update cadence, quality metrics, and revocation paths."
+  - "Flags unsupported promises, bypassed support ownership, unchecked customer-impacting access, certification without evidence, and missing product feedback loops."

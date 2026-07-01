@@ -1,0 +1,10 @@
+skill: data-subject-request-ops-review
+positive_prompts:
+  - "Design DSAR operations for a SaaS product handling access, export, correction, deletion, consent withdrawal, workspace data, identity verification, legal holds, subprocessors, backups, logs, analytics, and SLA evidence."
+  - "Audit DSAR, access, export, correction, deletion, consent withdrawal, identity verification, legal hold, subprocessor, and privacy SLA questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Design lifecycle pricing experiments."
+expected_behavior:
+  - "Classifies request type, jurisdiction, authority, identity, scope, systems, exceptions, subprocessors, SLA deadline, and response obligations."
+  - "Includes execution order, evidence tracking, response wording, audit trails, retries, legal holds, and privacy architecture feedback."
+  - "Flags irreversible action without authority, wrong-subject disclosure, unmapped systems, false deletion promises, and ticket-only status tracking."

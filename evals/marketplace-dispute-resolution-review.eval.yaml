@@ -1,0 +1,10 @@
+skill: marketplace-dispute-resolution-review
+positive_prompts:
+  - "Design marketplace dispute resolution for an AI skill marketplace handling buyer refund claims, creator payout holds, quality mismatch evidence, chargebacks, appeals, reviewer independence, fraud risk, and fairness monitoring."
+  - "Audit marketplace dispute, refund claim, payout hold, buyer seller conflict, creator appeal, quality claim, chargeback, evidence package, and dispute policy questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Plan security changelog disclosure."
+expected_behavior:
+  - "Classifies dispute type, parties, listing or transaction, policy claim, evidence, financial exposure, temporary action, reviewer role, appeal path, and fraud risk."
+  - "Includes payout/refund rules, communication templates, reviewer independence, sensitive-signal protection, fairness metrics, and policy feedback loops."
+  - "Flags biased dispute economics, enforcement without evidence, exposed fraud signals, missing appeals, and unresolved patterns outside quality/ranking improvements."

@@ -97,7 +97,9 @@
         "revenue-recognition-policy-review",
         "procurement-pricing-packaging-review",
         "enterprise-contract-redlines-review",
-        "sales-commission-incentive-review"
+        "sales-commission-incentive-review",
+        "enterprise-plan-migration-review",
+        "lifecycle-pricing-experiment-review"
       ]
     },
     {
@@ -137,7 +139,9 @@
         "release-train-change-management-review",
         "service-level-slo-review",
         "reliability-incident-learning-review",
-        "incident-status-page-ops-review"
+        "incident-status-page-ops-review",
+        "release-risk-exception-review",
+        "app-review-response-ops-review"
       ]
     },
     {
@@ -177,7 +181,10 @@
         "admin-audit-log-review",
         "data-lineage-impact-review",
         "customer-success-playbook-review",
-        "data-deletion-erasure-review"
+        "data-deletion-erasure-review",
+        "data-subject-request-ops-review",
+        "partner-support-enablement-review",
+        "security-changelog-disclosure-review"
       ]
     },
     {
@@ -198,7 +205,8 @@
         "partner-risk-due-diligence-review",
         "marketplace-trust-safety-economics-review",
         "api-versioning-deprecation-review",
-        "marketplace-quality-scoring-review"
+        "marketplace-quality-scoring-review",
+        "marketplace-dispute-resolution-review"
       ]
     },
     {

@@ -1,0 +1,10 @@
+skill: app-review-response-ops-review
+positive_prompts:
+  - "Handle an App Store rejection for a subscription app involving IAP metadata, screenshots, privacy labels, reviewer reproduction steps, appeal decision, launch timing, support messaging, and recurrence prevention."
+  - "Audit app review rejection, store policy notice, reviewer response, appeal, expedited review, metadata fix, privacy label, IAP subscription review, and launch-risk questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review enterprise plan migration."
+expected_behavior:
+  - "Classifies store, policy citation, rejected build, metadata, screenshots, privacy labels, commerce setup, release impact, evidence, response, appeal, and owner."
+  - "Includes reviewer response, reproduction evidence, build or metadata fix, expedited review or fallback sequencing, support/marketing communication, and process prevention."
+  - "Flags adversarial reviewer replies, speculative resubmissions, privacy/IAP mismatches, hidden launch delays, and one-off handling of recurring policy drift."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security Changelog Disclosure Review"
+  short_description: "Disclose security changes safely"
+  default_prompt: "Use $security-changelog-disclosure-review to plan a security changelog disclosure."

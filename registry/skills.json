@@ -211,6 +211,19 @@
       ]
     },
     {
+      "name": "app-review-response-ops-review",
+      "description": "Design and audit app review response operations for App Store, Google Play, Steam, Microsoft Store, and marketplace review notices covering policy classification, evidence packages, reviewer communication, metadata fixes, screenshots, privacy labels, IAP/subscription issues, appeals, expedited review, release sequencing, user communication, and recurrence prevention. Use when a store review rejection or warning threatens launch or revenue.",
+      "status": "preview",
+      "path": "skills/app-review-response-ops-review",
+      "references": [
+        "app-review-response-ops-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "app-store-distribution-readiness",
       "description": "Prepare mobile apps, desktop software, games, and utilities for distribution through App Store, Google Play, Steam, Microsoft Store, web, or direct download. Use when planning launch readiness, store metadata, screenshots, privacy disclosures, payments, subscriptions, store review, OS integration, updates, or release operations.",
       "status": "preview",
@@ -627,6 +640,19 @@
       ]
     },
     {
+      "name": "data-subject-request-ops-review",
+      "description": "Design and audit data subject request operations for access, export, correction, deletion, restriction, objection, consent withdrawal, identity verification, authorized agents, minors, workspace data, legal holds, retention exceptions, subprocessors, SLAs, proof packages, and audit trails. Use when privacy requests need reliable operational handling across product systems.",
+      "status": "preview",
+      "path": "skills/data-subject-request-ops-review",
+      "references": [
+        "data-subject-request-ops-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "data-warehouse-metrics-layer-review",
       "description": "Design and audit data warehouse metrics layers, semantic models, KPI definitions, source lineage, grain, dimensions, ownership, freshness, quality tests, backfills, access, dashboards, finance/product reconciliation, and metric change control. Use when teams need trusted metrics instead of duplicated BI formulas.",
       "status": "preview",
@@ -737,6 +763,19 @@
       "path": "skills/enterprise-onboarding-implementation-review",
       "references": [
         "enterprise-onboarding-implementation-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "enterprise-plan-migration-review",
+      "description": "Design and audit enterprise plan migrations across legacy plans, grandfathering, entitlements, feature gates, seats, usage caps, discounts, contracts, invoices, revenue recognition, migration cohorts, customer communication, support readiness, rollback, and renewal impact. Use when moving customers between plans or packaging without breaking trust, access, or revenue.",
+      "status": "preview",
+      "path": "skills/enterprise-plan-migration-review",
+      "references": [
+        "enterprise-plan-migration-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1017,6 +1056,19 @@
       ]
     },
     {
+      "name": "lifecycle-pricing-experiment-review",
+      "description": "Design and audit lifecycle pricing experiments across trials, coupons, intro offers, upgrade prompts, expansion nudges, renewal discounts, winback offers, annual conversion, regional pricing, usage thresholds, grandfathering, holdouts, guardrails, revenue measurement, and customer trust. Use when testing monetization changes without corrupting retention or brand trust.",
+      "status": "preview",
+      "path": "skills/lifecycle-pricing-experiment-review",
+      "references": [
+        "lifecycle-pricing-experiment-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "live-event-ops-review",
       "description": "Design and audit live event operations for mobile games, PC games, apps, SaaS communities, marketplaces, launches, seasonal campaigns, limited-time offers, reward calendars, challenges, tournaments, content drops, promotions, and lifecycle events. Use when planning event calendars, segmentation, eligibility, economy impact, rollout, observability, support, compensation, rollback, or post-event learning.",
       "status": "preview",
@@ -1075,6 +1127,19 @@
       "path": "skills/market-research-synthesis",
       "references": [
         "research-synthesis-method.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "marketplace-dispute-resolution-review",
+      "description": "Design and audit marketplace dispute resolution for buyers, sellers, creators, developers, partners, listings, skills, apps, services, payouts, refunds, chargebacks, quality claims, delivery failures, policy violations, appeals, evidence packages, timelines, payout holds, fraud review, communication, and fairness monitoring. Use when marketplace conflicts need consistent resolution without harming trust or incentives.",
+      "status": "preview",
+      "path": "skills/marketplace-dispute-resolution-review",
+      "references": [
+        "marketplace-dispute-resolution-patterns.md"
       ],
       "scripts": [],
       "agents": [
@@ -1331,6 +1396,19 @@
       ]
     },
     {
+      "name": "partner-support-enablement-review",
+      "description": "Design and audit partner support enablement across partner tiers, implementation roles, support access, escalation paths, training, certification, runbooks, knowledge bases, customer handoffs, co-sell motions, SLAs, sandbox environments, release updates, feedback loops, and quality metrics. Use when partners need to support customers without creating hidden operational risk.",
+      "status": "preview",
+      "path": "skills/partner-support-enablement-review",
+      "references": [
+        "partner-support-enablement-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "payment-platform-readiness",
       "description": "Prepare payment platform integration for Apple Pay, Google Pay, Google Play Billing, App Store IAP, web checkout, subscriptions, one-time purchases, refunds, restore purchases, receipts, tax, entitlement grants, and support traces. Use when designing or auditing payment flows for apps, games, SaaS, desktop utilities, stores, or marketplaces.",
       "status": "preview",
@@ -1526,6 +1604,19 @@
       ]
     },
     {
+      "name": "release-risk-exception-review",
+      "description": "Design and audit release risk exceptions across launch gates, test failures, security findings, compliance gaps, performance regressions, rollout flags, customer impact, owner signoff, expiry, compensating controls, observability, rollback, incident readiness, and post-release review. Use when shipping despite an unresolved risk requires explicit governance.",
+      "status": "preview",
+      "path": "skills/release-risk-exception-review",
+      "references": [
+        "release-risk-exception-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
       "name": "release-train-change-management-review",
       "description": "Design and audit release trains, change management, release calendars, risk classification, freeze windows, release notes, staged rollout, owner approvals, dependency readiness, rollback, support/comms, incident handoff, and post-release review. Use when shipping many product changes across apps, SaaS, games, APIs, desktop, or platform surfaces.",
       "status": "preview",
@@ -1701,6 +1792,19 @@
       "path": "skills/search-discovery-relevance-review",
       "references": [
         "search-discovery-relevance-patterns.md"
+      ],
+      "scripts": [],
+      "agents": [
+        "openai.yaml"
+      ]
+    },
+    {
+      "name": "security-changelog-disclosure-review",
+      "description": "Design and audit security changelog and disclosure operations covering vulnerability severity, exploitability, affected versions, remediation status, customer impact, trust center updates, release notes, CVE or advisory decisions, embargoes, legal review, support macros, detection guidance, timelines, and post-disclosure monitoring. Use when security-relevant changes need transparency without creating avoidable risk.",
+      "status": "preview",
+      "path": "skills/security-changelog-disclosure-review",
+      "references": [
+        "security-changelog-disclosure-patterns.md"
       ],
       "scripts": [],
       "agents": [
