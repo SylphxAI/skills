@@ -1,0 +1,680 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-hard-product-v0-20260701",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "payment-webhook-entitlement-race-001",
+      "marketplace-payout-tax-hold-001",
+      "notification-permission-fatigue-recovery-001",
+      "steam-demo-refund-review-risk-001",
+      "subscription-price-increase-grandfathering-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "eebd86ff20adb89ae8b200b2c06e92900778dec3",
+      "branch": "codex/hard-product-suite-v0",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T12:59:14.559Z",
+    "completedAt": "2026-07-01T13:06:14.732Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "payment-webhook-entitlement-race-001",
+      "skill": "payment-platform-readiness",
+      "promptSha256": "4f6ee3f3059be3d469f3ed267d9409a01927a4ce551464f923148207b73b63c0",
+      "skillContextSha256": "7edc551f3bc5d619afb4816d892a1b0277637a414ad20b8473b405feeae7a2a3",
+      "skillBodySha256": "032b60d1bb3ee18d120214570322f3520e68b266edaf23953cee22c4e0a1d0c8",
+      "skillReferenceSha256": [
+        {
+          "path": "references/payment-platform-patterns.md",
+          "sha256": "63fe574aa4cca6d312a43414d078aa4198a16f0e6c5673e3710576bc06446b00"
+        }
+      ],
+      "skillLoadedPromptSha256": "23fc1ee2237c27a5f7a2be4180c13e0dad586ebe9507f307df31955fa46d5b31",
+      "baseline": {
+        "score": 4.7,
+        "criterionScores": {
+          "ledger-authority": 5,
+          "platform-precedence": 4.3,
+          "reconciliation": 5,
+          "release-gates": 5,
+          "customer-trust": 4.1
+        },
+        "criticalFailures": [],
+        "rationale": "Strong ledger, replay, support, reconciliation, and release gates. Slightly weaker because refund, revoke, and chargeback policies are sometimes collapsed into immediate revocation, with less nuanced customer-protection handling than Answer A.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/payment-webhook-entitlement-race-001-baseline.md",
+        "outputSha256": "5c8676dab041a04516a87a4e197223375ad10b2b7aec19c02ce874d3260b17d3",
+        "latencyMs": 34031,
+        "usage": {
+          "input_tokens": 107,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1786,
+          "output_tokens_details": {
+            "reasoning_tokens": 54
+          },
+          "total_tokens": 1893
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "ledger-authority": 5,
+          "platform-precedence": 5,
+          "reconciliation": 5,
+          "release-gates": 5,
+          "customer-trust": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive server-side append-only ledger with idempotency, deterministic replay, provider-specific semantics, reconciliation/support tooling, launch blockers, tests, observability, and customer-safe handling of grace, restores, partial refunds, disputes, and manual grants.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/payment-webhook-entitlement-race-001-skill-loaded.md",
+        "outputSha256": "5ee5eaab5417bb8b464786cab6a4979c6395cf4d82b542967005a60e944cb77f",
+        "latencyMs": 29078,
+        "usage": {
+          "input_tokens": 949,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1557,
+          "output_tokens_details": {
+            "reasoning_tokens": 35
+          },
+          "total_tokens": 2506
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/payment-webhook-entitlement-race-001-judge-raw.md",
+      "judgeOutputSha256": "f3d9f0b0b36e96a391ea18d985eec977c45d3066542fafe2407a0bbff8356e83",
+      "judgeLatencyMs": 9118,
+      "judgeUsage": {
+        "input_tokens": 4021,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 436,
+        "output_tokens_details": {
+          "reasoning_tokens": 226
+        },
+        "total_tokens": 4457
+      }
+    },
+    {
+      "taskId": "marketplace-payout-tax-hold-001",
+      "skill": "marketplace-payouts-review",
+      "promptSha256": "370bc5690c28a5cb7f905599cb200c2b61f862c96f6a3640bc2ef49ee80379d7",
+      "skillContextSha256": "90cf1911f86a9865845515079389cb76c648febb51f5be0ab95ca39463ddf37d",
+      "skillBodySha256": "eee2981bca3338db2d78c52e91abc9932fcecdeaff2c7aa31b31f6bbe1effe83",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-payout-systems.md",
+          "sha256": "f7a5bce85695015a72ae1da41779a233a5bb3a75d2f287b9576e289c1f46f8e6"
+        }
+      ],
+      "skillLoadedPromptSha256": "0441431373f96705ec19db0a557a5530cf51b3a7cb8971230fbb8bd328660368",
+      "baseline": {
+        "score": 4.7,
+        "criterionScores": {
+          "balance-state-model": 4.5,
+          "risk-controls": 5,
+          "compliance-readiness": 5,
+          "creator-support": 4.5,
+          "marketplace-incentives": 4.5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive ledger-first design with holds, sanctions, tax, failed payouts, refunds, disputes, negative balances, support queues, and audit controls. Slightly less explicit on disputed/reversed as formal states and support macros.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/marketplace-payout-tax-hold-001-baseline.md",
+        "outputSha256": "e305892fc9b5df52676e63c5f432dd9e77df1fa08b7929f4700fe634287ec23c",
+        "latencyMs": 49364,
+        "usage": {
+          "input_tokens": 93,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1966,
+          "output_tokens_details": {
+            "reasoning_tokens": 35
+          },
+          "total_tokens": 2059
+        }
+      },
+      "skillLoaded": {
+        "score": 4.1,
+        "criterionScores": {
+          "balance-state-model": 4.2,
+          "risk-controls": 4,
+          "compliance-readiness": 3.7,
+          "creator-support": 4.2,
+          "marketplace-incentives": 4.3
+        },
+        "criticalFailures": [],
+        "rationale": "Strong event flow, creator messages, negative balance handling, failed payout recovery, and dispute logic. Weaker than A on explicit reserve policy, compliance reporting/country eligibility/provider constraints, and formal hold release governance.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/marketplace-payout-tax-hold-001-skill-loaded.md",
+        "outputSha256": "2d211b1c3836b8d0be40b4ba15d2e829721ba81f4487febb8c33e3d52eca1f9d",
+        "latencyMs": 29153,
+        "usage": {
+          "input_tokens": 1405,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1530,
+          "output_tokens_details": {
+            "reasoning_tokens": 42
+          },
+          "total_tokens": 2935
+        }
+      },
+      "preference": "baseline",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/marketplace-payout-tax-hold-001-judge-raw.md",
+      "judgeOutputSha256": "5edec8817f8b7d99b681c7cb3cc243f10daced3056e471beb189cfb9b92ebeb7",
+      "judgeLatencyMs": 14911,
+      "judgeUsage": {
+        "input_tokens": 4164,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 580,
+        "output_tokens_details": {
+          "reasoning_tokens": 361
+        },
+        "total_tokens": 4744
+      }
+    },
+    {
+      "taskId": "notification-permission-fatigue-recovery-001",
+      "skill": "notification-strategy-review",
+      "promptSha256": "4f496ae00de6e1ac113daa70b4bc8ce196f5156c63532e45c5a272d2f2d0e865",
+      "skillContextSha256": "051c0dd48e9c457142e1a8ece348e5f70322e64fabbe55e8d8af762eaf34e46f",
+      "skillBodySha256": "7db14b8c65a82d80568a8436b4ba9e29d0f3a7da90bccc596ec02cde54b91ce9",
+      "skillReferenceSha256": [
+        {
+          "path": "references/notification-strategy-patterns.md",
+          "sha256": "a51b79cb4bf888b11132336d1758e6422526a318484495364a0e455e28f9bb77"
+        }
+      ],
+      "skillLoadedPromptSha256": "991320d10e36c36e0627e645c7ffc7b82fd523f83dfe572196aab3c28dd5807f",
+      "baseline": {
+        "score": 4.5,
+        "criterionScores": {
+          "lifecycle-intent": 4.3,
+          "permission-trust": 4.7,
+          "suppression-fatigue": 4.7,
+          "commercial-recovery": 4.7,
+          "measurement": 3.8
+        },
+        "criticalFailures": [],
+        "rationale": "Strong practical strategy with contextual permission ask, denial handling, quiet hours, digest, caps, and commercial flows. However, lifecycle matrix is less complete, and measurement misses some required guardrails such as delivery, retention, and unsubscribe specificity.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/notification-permission-fatigue-recovery-001-baseline.md",
+        "outputSha256": "e11db6abe0728b115151e230d0afaf03118656b573f8d763b8d48a0b52ec1827",
+        "latencyMs": 32464,
+        "usage": {
+          "input_tokens": 750,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1015,
+          "output_tokens_details": {
+            "reasoning_tokens": 39
+          },
+          "total_tokens": 1765
+        }
+      },
+      "skillLoaded": {
+        "score": 4.8,
+        "criterionScores": {
+          "lifecycle-intent": 5,
+          "permission-trust": 5,
+          "suppression-fatigue": 4.5,
+          "commercial-recovery": 5,
+          "measurement": 4.5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive lifecycle taxonomy maps triggers, value, channels, frequency, and controls. Strong permission, denial, opt-out, billing, win-back, suppression, and experimentation coverage. Measurement is robust, though retention/delivery guardrails could be slightly more explicit.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/notification-permission-fatigue-recovery-001-skill-loaded.md",
+        "outputSha256": "479dd81a276e2379675381984cb3fee5fcdf6ff767fb163e7284e9813a230956",
+        "latencyMs": 30914,
+        "usage": {
+          "input_tokens": 878,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1369,
+          "output_tokens_details": {
+            "reasoning_tokens": 25
+          },
+          "total_tokens": 2247
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/notification-permission-fatigue-recovery-001-judge-raw.md",
+      "judgeOutputSha256": "d34220b56bc71a384a358d9b8cad75042df0342fc3820485c8301c5e2b31d4d1",
+      "judgeLatencyMs": 11492,
+      "judgeUsage": {
+        "input_tokens": 3719,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 560,
+        "output_tokens_details": {
+          "reasoning_tokens": 331
+        },
+        "total_tokens": 4279
+      }
+    },
+    {
+      "taskId": "steam-demo-refund-review-risk-001",
+      "skill": "steam-launch-readiness",
+      "promptSha256": "524a3b7350bf4994dde7ab05cc94a53edfe843b345a13d53e9624eae041ef304",
+      "skillContextSha256": "b9f21cea7627251667bca3deae3d51ed45a3adea326be99195acfe9bb6af6a13",
+      "skillBodySha256": "28ebda07e4bb3244d6778fb107c686b626348cd5a38507e981b3c373517fcf6c",
+      "skillReferenceSha256": [
+        {
+          "path": "references/steam-launch-systems.md",
+          "sha256": "1137f4a3b04f175542a377eb1c8424b85f446cd46040b683ddc7dbbeffbea2f8"
+        }
+      ],
+      "skillLoadedPromptSha256": "b69b1b474073478f3b46f7b2bd4f25a57b5e70d0e45a43dbb725f22584414b2f",
+      "baseline": {
+        "score": 4.43,
+        "criterionScores": {
+          "store-demo-fit": 4.5,
+          "build-readiness": 4.5,
+          "commercial-risk": 4.5,
+          "community-ops": 4.5,
+          "measurement": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Very solid audit covering all required areas, including pricing, DLC, cloud saves, controller support, refunds, moderation, rollback, and live ops. Slightly less integrated as a readiness matrix and measurement is less decision-linked.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/steam-demo-refund-review-risk-001-baseline.md",
+        "outputSha256": "445de0ca6a2ba9d25ed98ddee582113f9e4fc39f865d75327df6b6491e82a49f",
+        "latencyMs": 37820,
+        "usage": {
+          "input_tokens": 100,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1797,
+          "output_tokens_details": {
+            "reasoning_tokens": 44
+          },
+          "total_tokens": 1897
+        }
+      },
+      "skillLoaded": {
+        "score": 4.93,
+        "criterionScores": {
+          "store-demo-fit": 5,
+          "build-readiness": 5,
+          "commercial-risk": 4.5,
+          "community-ops": 5,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive readiness matrix with explicit blockers, evidence, rollback, community ops, refund/review controls, and demo-to-wishlist measurement. Strongly ties store claims, demo scope, build gates, and first-week decisions.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/steam-demo-refund-review-risk-001-skill-loaded.md",
+        "outputSha256": "0b7c605299865c684e97b5f4c37e8c6070cc6a306a4ea8242b82fe724533ee50",
+        "latencyMs": 23695,
+        "usage": {
+          "input_tokens": 1294,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1206,
+          "output_tokens_details": {
+            "reasoning_tokens": 42
+          },
+          "total_tokens": 2500
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/steam-demo-refund-review-risk-001-judge-raw.md",
+      "judgeOutputSha256": "a175899a6b5ce26624ab3bfb435320fb9db7d9e590b32763a33f300f36ee513d",
+      "judgeLatencyMs": 9259,
+      "judgeUsage": {
+        "input_tokens": 3662,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 444,
+        "output_tokens_details": {
+          "reasoning_tokens": 235
+        },
+        "total_tokens": 4106
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-grandfathering-001",
+      "skill": "subscription-price-increase-retention-review",
+      "promptSha256": "1b85c1ab7f5bbecefab67531975cdcfc2bf00792682453319c975abd27f17e4a",
+      "skillContextSha256": "3a52f5a88cbee91f2c93c6fd11a3aea56986663053ec4868a50bd97b9d4d90c0",
+      "skillBodySha256": "9685115e1fe1574d678428e7bd47341a069696f88a40f931c935cf3f6f597b73",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-price-increase-retention-patterns.md",
+          "sha256": "d446add3af54afcce120ad7eff4636a9b7d47183bd3aa6515bcef3e64994716f"
+        }
+      ],
+      "skillLoadedPromptSha256": "bb8c0f9f28b32398bdd1bc7cc72524cf42befb47e8bb13b9a9317e7ba0e9c9df",
+      "baseline": {
+        "score": 4.3,
+        "criterionScores": {
+          "segmentation": 4.3,
+          "policy-mechanics": 4.6,
+          "trust-communications": 4.6,
+          "measurement": 4.2,
+          "risk-controls": 3.2
+        },
+        "criticalFailures": [],
+        "rationale": "Strong practical plan covering renewals, grandfathering, overages, scripts, exceptions, and retention reporting. Weaker on explicit discount segmentation, complaint/cohort signals, and lacks concrete rollback or mitigation triggers tied to guardrail breaches.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/subscription-price-increase-grandfathering-001-baseline.md",
+        "outputSha256": "d4983d348a3cfb8c967b101fbac94d11c7e21b829603df059ef607e506912f03",
+        "latencyMs": 34071,
+        "usage": {
+          "input_tokens": 102,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1690,
+          "output_tokens_details": {
+            "reasoning_tokens": 42
+          },
+          "total_tokens": 1792
+        }
+      },
+      "skillLoaded": {
+        "score": 4.84,
+        "criterionScores": {
+          "segmentation": 4.8,
+          "policy-mechanics": 4.9,
+          "trust-communications": 5,
+          "measurement": 4.8,
+          "risk-controls": 4.5
+        },
+        "criticalFailures": [],
+        "rationale": "Highly complete plan with differentiated cohorts, contract constraints, migration/grandfathering, support and sales paths, event schema, and reporting. Minor gaps: discount-customer segmentation and rollback thresholds are not fully explicit.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/subscription-price-increase-grandfathering-001-skill-loaded.md",
+        "outputSha256": "28dd8d56b8ebb6b316d7c25e1b9fe49661a535069bf64096c0036ff4f01a9339",
+        "latencyMs": 36037,
+        "usage": {
+          "input_tokens": 1373,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1714,
+          "output_tokens_details": {
+            "reasoning_tokens": 18
+          },
+          "total_tokens": 3087
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-product-v0-20260701-outputs/subscription-price-increase-grandfathering-001-judge-raw.md",
+      "judgeOutputSha256": "4c9d9da8545fc91b17f60af77e6ffff41625a6cceacfcf08146b7c976203f421",
+      "judgeLatencyMs": 12658,
+      "judgeUsage": {
+        "input_tokens": 4094,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 611,
+        "output_tokens_details": {
+          "reasoning_tokens": 396
+        },
+        "total_tokens": 4705
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "payment-webhook-entitlement-race-001",
+      "promptType": "positive",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [
+        "payment-platform-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to audit a cross-platform subscription payment system involving Apple IAP, Google Play, Stripe Checkout, promo codes, restore purchases, refund webhooks, chargebacks, delayed renewals, and backend entitlement grants, and to define ledger, reconciliation, support, and release-readiness plans—all core areas covered by the payment-platform-readiness skill.",
+      "latencyMs": 2671,
+      "usage": {
+        "input_tokens": 226,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 90,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 316
+      }
+    },
+    {
+      "taskId": "payment-webhook-entitlement-race-001",
+      "promptType": "negative-control",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about reviewing animation pacing and responsive spacing for a mobile onboarding carousel, which is a UI/UX design task. It does not involve payment flows, purchases, subscriptions, refunds, receipts, tax, entitlements, or payment platform integration.",
+      "latencyMs": 2446,
+      "usage": {
+        "input_tokens": 179,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 69,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 248
+      }
+    },
+    {
+      "taskId": "marketplace-payout-tax-hold-001",
+      "promptType": "positive",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [
+        "marketplace-payouts-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to design payout operations for a global marketplace, including creator balances, refunds, disputes, fraud review, tax forms, sanctions screening, payout holds, thresholds, failed transfers, negative balances, and support tickets—all core areas covered by the marketplace-payouts-review skill.",
+      "latencyMs": 2615,
+      "usage": {
+        "input_tokens": 228,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 76,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 304
+      }
+    },
+    {
+      "taskId": "marketplace-payout-tax-hold-001",
+      "promptType": "negative-control",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks for a desktop tray icon checklist for a local note-taking utility, which concerns UI/desktop app functionality rather than marketplace payouts, seller balances, fees, refunds, or money movement.",
+      "latencyMs": 2348,
+      "usage": {
+        "input_tokens": 195,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 58,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 253
+      }
+    },
+    {
+      "taskId": "notification-permission-fatigue-recovery-001",
+      "promptType": "positive",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [
+        "notification-strategy-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to review a notification strategy for a subscription productivity app and includes core elements covered by the skill: onboarding permission prompts, trial/renewal reminders, failed payment recovery, win-back campaigns, quiet hours, digest mode, notification fatigue, opt-out recovery, and platform permission denial handling.",
+      "latencyMs": 2692,
+      "usage": {
+        "input_tokens": 209,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 79,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 288
+      }
+    },
+    {
+      "taskId": "notification-permission-fatigue-recovery-001",
+      "promptType": "negative-control",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about designing a payout reserve policy for a global creator marketplace, which concerns payments, risk, compliance, and marketplace operations rather than notification strategy, messaging channels, permission prompts, lifecycle communications, or notification fatigue.",
+      "latencyMs": 2268,
+      "usage": {
+        "input_tokens": 173,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 63,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 236
+      }
+    },
+    {
+      "taskId": "steam-demo-refund-review-risk-001",
+      "promptType": "positive",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [
+        "steam-launch-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt explicitly asks to audit a Steam launch plan for an indie game entering Next Fest and mentions multiple areas covered by the skill, including public demo, wishlists, regional pricing, cloud saves, controller support, reviews, refund risk, community moderation, streamer keys, build rollback, and first-week live operations.",
+      "latencyMs": 3180,
+      "usage": {
+        "input_tokens": 221,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 81,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 302
+      }
+    },
+    {
+      "taskId": "steam-demo-refund-review-risk-001",
+      "promptType": "negative-control",
+      "expectedSkill": "steam-launch-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about reviewing a SaaS failed-payment email sequence for subscription recovery, which is unrelated to preparing or improving a PC game launch on Steam.",
+      "latencyMs": 3026,
+      "usage": {
+        "input_tokens": 180,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 76,
+        "output_tokens_details": {
+          "reasoning_tokens": 25
+        },
+        "total_tokens": 256
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-grandfathering-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [
+        "subscription-price-increase-retention-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is directly about planning a B2B SaaS subscription price increase with legacy contracts, self-serve and enterprise cohorts, grandfathered plans, overages, cancellation risk, migration offers, notification timing, support scripts, sales exceptions, and revenue-retention reporting—all core elements covered by the skill description.",
+      "latencyMs": 2355,
+      "usage": {
+        "input_tokens": 231,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 81,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 312
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-grandfathering-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about auditing a Steam demo page for wishlist conversion before an event, which is game store page optimization and conversion, not subscription price-increase retention, cancellation recovery, or pricing-change trust/revenue management.",
+      "latencyMs": 2490,
+      "usage": {
+        "input_tokens": 189,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 62,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 251
+      }
+    }
+  ]
+}
