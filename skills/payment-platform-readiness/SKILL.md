@@ -5,36 +5,57 @@ description: Prepare payment platform integration for Apple Pay, Google Pay, Goo
 
 # Payment Platform Readiness
 
-Use this skill to make payments reliable, compliant, supportable, and product-friendly.
+Use this skill to make payments reliable, compliant, supportable, replayable, and product-friendly across app stores, web checkout, wallets, subscriptions, refunds, disputes, promos, and entitlement systems.
 
 ## Workflow
 
-1. Identify payment channel, product type, billing model, and entitlement semantics.
+1. Identify payment channel, product type, billing model, provider identifiers, catalog mapping, entitlement semantics, refund/dispute policy, settlement/fee model, support surfaces, and reconciliation owner.
 2. Read `references/payment-platform-patterns.md`.
-3. Map catalog, checkout, receipt/webhook processing, entitlement grant, refund/revoke, support, and reconciliation.
-4. Check platform-specific constraints and fallback paths.
-5. Produce blockers, event contract, and launch checklist.
+3. Map catalog, checkout, receipt/webhook processing, idempotent ledger ingestion, entitlement projection, refund/revoke/dispute handling, support corrections, settlement, and reconciliation.
+4. Define provider-specific precedence for Apple IAP, Google Play Billing, Stripe/web checkout, wallets, promo/admin grants, restore purchases, renewals, refunds, chargebacks, and delayed events.
+5. Check platform-specific constraints, sandbox/live separation, fallback paths, customer messaging, finance close, and operational rollback.
+6. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability, and launch checklist.
 
 ## Guardrails
 
 - Do not grant durable value from client-only confirmation.
 - Keep payment records, entitlement state, and support cases reconcilable.
 - Do not use payment confusion as retention.
+- Do not collapse refund, cancellation, revocation, dispute, chargeback, grace, billing retry, restore, promo, and manual adjustment into one generic state.
+- Do not silently edit entitlements; append corrective ledger events and replay the projector.
+- Do not let support agents change provider truth. Support corrections must be role-gated, reason-coded, expiring where appropriate, and auditable.
+- Do not ship payments without fee, tax, settlement, invoice, refund, dispute, and entitlement reconciliation evidence.
 
 ## Output format
 
 ```text
 Payment surfaces:
 Billing model:
+Authority boundary:
 
 Readiness matrix:
 - Catalog:
 - Checkout:
-- Confirmation:
-- Entitlement:
-- Refund/revoke:
+- Confirmation and ledger:
+- Entitlement projection:
+- Refund/revoke/dispute:
 - Support/reconciliation:
+
+Payment and entitlement state model:
+- <state> -> <provider evidence, internal projection, customer access, support note>
+
+Provider precedence rules:
+- <Apple/Google/Stripe/promo/admin/restore event> -> <idempotency key, effective timestamp, ledger event, entitlement effect>
+
+Reconciliation and finance close:
+- <money/settlement/tax/fee/entitlement check> -> <source, cadence, owner, exception action>
+
+Support-safe correction flow:
+- <case> -> <lookup evidence, allowed action, approval, ledger event, customer message>
 
 Blockers:
 - <blocker>
+
+Release gates:
+- <gate> -> <test fixture, observability, rollback, owner approval>
 ```
