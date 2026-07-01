@@ -69,6 +69,12 @@ function hasOutputReference(record) {
   return ['outputRef', 'outputPath', 'outputSha256'].some((field) => typeof record[field] === 'string' && record[field].trim().length > 0);
 }
 
+function validateExistingReference(reference, prefix, errors) {
+  if (typeof reference !== 'string' || !reference.trim()) return;
+  const file = path.isAbsolute(reference) ? reference : path.join(repoRoot, reference);
+  if (!existsSync(file)) errors.push(`${prefix}: referenced output file does not exist: ${reference}`);
+}
+
 function validateScoredRecord(record, condition, prefix, task, errors) {
   if (!record || typeof record !== 'object') {
     errors.push(`${prefix}: missing ${condition} record`);
@@ -86,6 +92,8 @@ function validateScoredRecord(record, condition, prefix, task, errors) {
   }
   if (!Array.isArray(record.criticalFailures)) errors.push(`${recordPrefix}: criticalFailures must be an array`);
   if (!hasOutputReference(record)) errors.push(`${recordPrefix}: outputRef, outputPath, or outputSha256 is required for auditability`);
+  validateExistingReference(record.outputRef, `${recordPrefix}.outputRef`, errors);
+  validateExistingReference(record.outputPath, `${recordPrefix}.outputPath`, errors);
 }
 
 function validateResult(result, file, taskIndex, errors) {
@@ -110,6 +118,7 @@ function validateResult(result, file, taskIndex, errors) {
     if (sample.skill !== task.skill) errors.push(`${prefix}: skill must be ${task.skill}`);
     validateScoredRecord(sample.baseline, 'baseline', prefix, task, errors);
     validateScoredRecord(sample.skillLoaded || sample.skill, 'skillLoaded', prefix, task, errors);
+    validateExistingReference(sample.judgeOutputRef, `${prefix}.judgeOutputRef`, errors);
     if (!['skill', 'baseline', 'tie'].includes(sample.preference)) errors.push(`${prefix}: preference must be skill, baseline, or tie`);
   }
 

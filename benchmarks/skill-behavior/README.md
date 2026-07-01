@@ -43,6 +43,7 @@ Before that, call the skill **Preview / unproven** even if it passes repository 
 - `results/*.json` — scored paired runs from a model and judge.
 - `scripts/create-benchmark-jobs.mjs` — exports provider-neutral JSONL jobs for baseline, skill-loaded, and negative-control runs.
 - `scripts/run-benchmark-openai.mjs` — optional OpenAI Responses API runner that generates raw outputs, blind judge scores, and result JSON.
+- `scripts/merge-benchmark-results.mjs` — merges non-overlapping shard result files into a full-suite result.
 - `scripts/validate-benchmarks.mjs` — validates task/result file shape and skill references.
 - `scripts/summarize-benchmark-results.mjs` — computes score deltas, win rates, trigger rates, and supported claim tier from result files.
 
@@ -60,6 +61,13 @@ npm run benchmark:run:openai -- benchmarks/skill-behavior/tasks/core-product-v0.
 ```
 
 Use repeated `--task-id` values, or a comma-separated `--task-id`, to rerun failed tasks without changing the suite.
+Use `--resume` with the same `--out` path to skip already-scored tasks and continue after a transient gateway failure. The runner checkpoints the result file after every completed task.
+
+Merge completed shards:
+
+```bash
+npm run benchmark:merge -- --out /tmp/core-product-v0.result.json /tmp/core-product-v0-shard-*.json
+```
 
 Run a scored OpenAI Responses API benchmark:
 

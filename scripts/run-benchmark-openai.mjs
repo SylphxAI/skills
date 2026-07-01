@@ -7,7 +7,7 @@ const repoRoot = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
 const defaultBaseUrl = 'https://api.openai.com/v1';
 
 function usage() {
-  console.error(`Usage: node scripts/run-benchmark-openai.mjs <tasks.json> --out <result.json> [options]\n\nOptions:\n  --run-id <id>              Stable run identifier. Defaults to timestamp.\n  --model <model>            Answer model. Defaults to OPENAI_MODEL or gpt-5.5.\n  --judge-model <model>      Judge/trigger model. Defaults to BENCHMARK_JUDGE_MODEL or --model.\n  --base-url <url>           OpenAI-compatible API base URL. Defaults to https://api.openai.com/v1.\n  --output-dir <dir>         Directory for raw outputs. Defaults to /tmp/skill-benchmark-<run-id>.\n  --temperature <number>     Answer temperature. Defaults to 0.2.\n  --max-output-tokens <n>    Answer token cap. Defaults to 3500.\n  --start <n>                Zero-based task offset after optional task-id filtering. Defaults to 0.\n  --limit <n>                Run only n selected tasks. Useful for smoke tests and shards.\n  --task-id <id>             Run a specific task id. Repeat or comma-separate for multiple tasks.\n  --no-references            Do not include skill reference files in skill-loaded prompts.\n  --skip-trigger-checks      Do not run positive/negative trigger classifier checks.\n  --dry-run                  Validate inputs and print planned calls without contacting the API.\n`);
+  console.error(`Usage: node scripts/run-benchmark-openai.mjs <tasks.json> --out <result.json> [options]\n\nOptions:\n  --run-id <id>              Stable run identifier. Defaults to timestamp.\n  --model <model>            Answer model. Defaults to OPENAI_MODEL or gpt-5.5.\n  --judge-model <model>      Judge/trigger model. Defaults to BENCHMARK_JUDGE_MODEL or --model.\n  --base-url <url>           OpenAI-compatible API base URL. Defaults to https://api.openai.com/v1.\n  --output-dir <dir>         Directory for raw outputs. Defaults to /tmp/skill-benchmark-<run-id>.\n  --temperature <number>     Answer temperature. Defaults to 0.2.\n  --max-output-tokens <n>    Answer token cap. Defaults to 3500.\n  --start <n>                Zero-based task offset after optional task-id filtering. Defaults to 0.\n  --limit <n>                Run only n selected tasks. Useful for smoke tests and shards.\n  --task-id <id>             Run a specific task id. Repeat or comma-separate for multiple tasks.\n  --no-references            Do not include skill reference files in skill-loaded prompts.\n  --skip-trigger-checks      Do not run positive/negative trigger classifier checks.\n  --resume                   Reuse an existing result file and skip completed samples.\n  --dry-run                  Validate inputs and print planned calls without contacting the API.\n`);
   process.exit(1);
 }
 
@@ -22,6 +22,7 @@ function parseArgs(argv) {
     triggerChecks: true,
     taskIds: [],
     start: 0,
+    resume: false,
     dryRun: false,
   };
   const positional = [];
@@ -40,6 +41,7 @@ function parseArgs(argv) {
     else if (arg === '--task-id') args.taskIds.push(...argv[++i].split(',').map((value) => value.trim()).filter(Boolean));
     else if (arg === '--no-references') args.includeReferences = false;
     else if (arg === '--skip-trigger-checks') args.triggerChecks = false;
+    else if (arg === '--resume') args.resume = true;
     else if (arg === '--dry-run') args.dryRun = true;
     else if (arg.startsWith('--')) usage();
     else positional.push(arg);
@@ -326,6 +328,59 @@ async function writeOutput(outDir, taskId, condition, text) {
   return file;
 }
 
+
+async function readExistingResult(file) {
+  if (!existsSync(file)) return null;
+  return JSON.parse(await readFile(file, 'utf8'));
+}
+
+function makeResult({ suite, args, startedAt, completedAt, samples, triggerChecks, selectedTaskIds, partial }) {
+  return {
+    schemaVersion: 1,
+    benchmark: 'skill-behavior',
+    suite: suite.suite,
+    runId: args.runId,
+    model: args.model,
+    runner: {
+      name: 'openai-responses',
+      version: 1,
+      baseUrl: args.baseUrl,
+      temperature: args.temperature,
+      maxOutputTokens: args.maxOutputTokens,
+      includeReferences: args.includeReferences,
+      selectedTaskIds,
+      partial,
+      startedAt,
+      completedAt,
+    },
+    judge: {
+      name: 'openai-responses-structured-judge',
+      model: args.judgeModel,
+      blinded: true,
+      structuredOutput: true,
+    },
+    samples,
+    triggerChecks,
+  };
+}
+
+async function writeResultCheckpoint({ suite, args, startedAt, samples, triggerChecks, selectedTaskIds, partial }) {
+  const result = makeResult({
+    suite,
+    args,
+    startedAt,
+    completedAt: new Date().toISOString(),
+    samples,
+    triggerChecks,
+    selectedTaskIds,
+    partial,
+  });
+  await mkdir(path.dirname(args.out), { recursive: true });
+  await writeFile(args.out, `${JSON.stringify(result, null, 2)}
+`);
+  return result;
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const taskPath = path.resolve(repoRoot, args.taskFile);
@@ -357,11 +412,18 @@ async function main() {
     return;
   }
 
-  const samples = [];
-  const triggerChecks = [];
-  const startedAt = new Date().toISOString();
+  const existing = args.resume ? await readExistingResult(args.out) : null;
+  const samples = existing?.samples ? [...existing.samples] : [];
+  const triggerChecks = existing?.triggerChecks ? [...existing.triggerChecks] : [];
+  const completedTaskIds = new Set(samples.map((sample) => sample.taskId));
+  const startedAt = existing?.runner?.startedAt || new Date().toISOString();
+  const selectedTaskIds = tasks.map((task) => task.id);
 
   for (const task of tasks) {
+    if (completedTaskIds.has(task.id)) {
+      console.log(`Skipping completed task ${task.id}`);
+      continue;
+    }
     const skillDir = path.join(repoRoot, 'skills', task.skill);
     const skillMarkdown = await readTextIfExists(path.join(skillDir, 'SKILL.md'));
     if (!skillMarkdown) throw new Error(`Missing SKILL.md for ${task.skill}`);
@@ -451,38 +513,15 @@ async function main() {
         });
       }
     }
+
+    completedTaskIds.add(task.id);
+    await writeResultCheckpoint({ suite, args, startedAt, samples, triggerChecks, selectedTaskIds, partial: true });
+    console.log(`Checkpointed ${samples.length}/${tasks.length} selected sample(s) to ${args.out}`);
   }
 
-  const completedAt = new Date().toISOString();
-  const result = {
-    schemaVersion: 1,
-    benchmark: 'skill-behavior',
-    suite: suite.suite,
-    runId: args.runId,
-    model: args.model,
-    runner: {
-      name: 'openai-responses',
-      version: 1,
-      baseUrl: args.baseUrl,
-      temperature: args.temperature,
-      maxOutputTokens: args.maxOutputTokens,
-      includeReferences: args.includeReferences,
-      startedAt,
-      completedAt,
-    },
-    judge: {
-      name: 'openai-responses-structured-judge',
-      model: args.judgeModel,
-      blinded: true,
-      structuredOutput: true,
-    },
-    samples,
-    triggerChecks,
-  };
+  const result = await writeResultCheckpoint({ suite, args, startedAt, samples, triggerChecks, selectedTaskIds, partial: false });
+  console.log(`Wrote benchmark result with ${result.samples.length} sample(s) to ${args.out}`);
 
-  await mkdir(path.dirname(path.resolve(repoRoot, args.out)), { recursive: true });
-  await writeFile(path.resolve(repoRoot, args.out), `${JSON.stringify(result, null, 2)}\n`);
-  console.log(`Wrote benchmark result with ${samples.length} sample(s) to ${args.out}`);
 }
 
 main().catch((error) => {
