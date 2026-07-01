@@ -13,7 +13,7 @@ Use this skill to design pricing that matches customer value, supports growth, a
 2. Read `references/pricing-packaging-patterns.md`.
 3. Decide the packaging model: free trial, freemium, usage-based, seat-based, tiered, hybrid, or enterprise.
 4. Design plan boundaries, limits, upgrade moments, downgrade/cancel states, and support paths.
-5. Define metrics and experiments before proposing discounts.
+5. Define unit economics, margin guardrails, rollout experiments, grandfathering, and customer communications before proposing discounts.
 
 ## Output format
 
@@ -29,5 +29,10 @@ Plan architecture:
 Upgrade moments:
 Cancellation/downgrade:
 Metrics:
+Experiment/rollout plan:
+- Test design:
+- Grandfathering/migration:
+- Customer communications:
+- Guardrails:
 Risks:
 ```

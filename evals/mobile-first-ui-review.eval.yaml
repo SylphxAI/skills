@@ -7,3 +7,4 @@ negative_prompts:
 expected_behavior:
   - "Audits reachability, safe areas, inputs, loading, offline, settings, and permission timing."
   - "Uses rule IDs and separates blockers from polish."
+  - "Includes accessibility checks for screen readers, focus order, text scaling, and reduced motion."
