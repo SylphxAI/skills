@@ -7,4 +7,6 @@ negative_prompts:
 expected_behavior:
   - "Identifies target distribution channels first."
   - "Covers metadata, privacy, payments, testing, review, release, and support."
+  - "For subscription apps, maps disclosure parity, restore/refund/revoke handling, server entitlement truth, reviewer packages, and support ownership."
+  - "Separates Apple and Google testing, review notes, privacy forms, IAP products, notification permission timing, staged rollout gates, and durable evidence."
   - "Includes OS integration details and launch blockers."

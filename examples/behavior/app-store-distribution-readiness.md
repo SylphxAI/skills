@@ -21,6 +21,8 @@ A strong answer after loading the skill should:
 
 - Identifies target distribution channels first.
 - Covers metadata, privacy, payments, testing, review, release, and support.
+- For subscription apps, maps disclosure parity, restore/refund/revoke handling, server entitlement truth, reviewer packages, and support ownership.
+- Separates Apple and Google testing, review notes, privacy forms, IAP products, notification permission timing, staged rollout gates, and durable evidence.
 - Includes OS integration details and launch blockers.
 
 It should also produce the artifact shape requested by `skills/app-store-distribution-readiness/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
@@ -35,4 +37,6 @@ The skill should not load for this prompt unless the user adds an explicit app-s
 
 - Identifies target distribution channels first.
 - Covers metadata, privacy, payments, testing, review, release, and support.
+- For subscription apps, maps disclosure parity, restore/refund/revoke handling, server entitlement truth, reviewer packages, and support ownership.
+- Separates Apple and Google testing, review notes, privacy forms, IAP products, notification permission timing, staged rollout gates, and durable evidence.
 - Includes OS integration details and launch blockers.
