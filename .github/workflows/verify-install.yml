@@ -2,6 +2,8 @@ name: Verify open skills install
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
 
 jobs:
   verify-install:
