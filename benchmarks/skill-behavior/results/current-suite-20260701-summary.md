@@ -4,21 +4,21 @@
 - Selection rule: prefer clean git provenance, then newest runner completion time, then run/file lexical order
 - Superseded samples excluded: 57
 - Superseded task IDs: app-store-launch-readiness-001, backup-restore-customer-data-001, board-metrics-operating-001, daily-reward-streak-economy-001, desktop-os-integration-release-001, developer-quota-credit-abuse-001, interface-craft-checkout-review-001, marketplace-payout-tax-hold-001, marketplace-payouts-creator-001, mobile-first-permission-onboarding-001, notification-lifecycle-growth-001, notification-permission-fatigue-recovery-001, payment-platform-webhook-ledger-001, payment-webhook-entitlement-race-001, product-analytics-revenue-funnel-001, promotion-campaign-subscription-001, refund-entitlement-support-001, release-freeze-control-001, skill-marketplace-creator-001, steam-demo-refund-review-risk-001, steam-launch-commercial-readiness-001, subscription-entitlement-cross-platform-001, subscription-price-increase-grandfathering-001, subscription-price-increase-retention-001, subscription-pricing-saas-001
-- Samples: 26
-- Unique task coverage: 26
+- Samples: 28
+- Unique task coverage: 28
 - Average baseline score: 3.54
 - Average skill-loaded score: 5.00
-- Average delta: 1.46 (95% bootstrap CI 1.23 to 1.69)
+- Average delta: 1.46 (95% bootstrap CI 1.25 to 1.68)
 - Skill win rate: 100.0%
 - Non-regression rate: 100.0%
-- Critical failure delta: 26 (26 baseline vs 0 skill-loaded)
+- Critical failure delta: 29 (29 baseline vs 0 skill-loaded)
 - Positive trigger recall: 100.0%
 - Negative-control over-trigger rate: 0.0%
-- Answer input tokens: baseline avg 260, skill-loaded avg 2473, added 2213 (26/26 samples)
-- Answer output tokens: baseline avg 1508, skill-loaded avg 1430, delta -79 (26/26 samples)
-- Answer total tokens: baseline avg 1768, skill-loaded avg 3902, delta 2134 (26/26 samples)
-- Quality efficiency: 0.66 score delta per 1k added input tokens
-- Answer latency: baseline avg 24.70s, skill-loaded avg 19.34s, delta -5.35s (26/26 samples)
+- Answer input tokens: baseline avg 262, skill-loaded avg 2685, added 2423 (28/28 samples)
+- Answer output tokens: baseline avg 1493, skill-loaded avg 1443, delta -50 (28/28 samples)
+- Answer total tokens: baseline avg 1755, skill-loaded avg 4128, delta 2373 (28/28 samples)
+- Quality efficiency: 0.60 score delta per 1k added input tokens
+- Answer latency: baseline avg 24.05s, skill-loaded avg 19.25s, delta -4.79s (28/28 samples)
 - Claim tier supported by this data: SOTA candidate
 - Claim depth scope: suite
 - Useful-claim gates: sampleDepth=pass, winRate=pass, avgDelta=pass, criticalFailures=pass, overTrigger=pass
@@ -33,7 +33,9 @@
 | desktop-os-integration-release-001 | desktop-os-integration | 4.00 | 5.00 | 1.00 | skill |
 | developer-quota-credit-abuse-001 | developer-quota-credit-abuse-review | 3.00 | 5.00 | 2.00 | skill |
 | interface-craft-checkout-review-001 | interface-craft | 3.00 | 5.00 | 2.00 | skill |
+| marketplace-payout-abuse-appeal-001 | marketplace-payouts-review | 3.00 | 5.00 | 2.00 | skill |
 | marketplace-payout-compliance-release-001 | marketplace-payouts-review | 4.00 | 5.00 | 1.00 | skill |
+| marketplace-payout-provider-outage-001 | marketplace-payouts-review | 4.00 | 5.00 | 1.00 | skill |
 | marketplace-payout-tax-hold-001 | marketplace-payouts-review | 4.00 | 5.00 | 1.00 | skill |
 | marketplace-payouts-creator-001 | marketplace-payouts-review | 4.00 | 5.00 | 1.00 | skill |
 | mobile-first-permission-onboarding-001 | mobile-first-ui-review | 3.00 | 5.00 | 2.00 | skill |
