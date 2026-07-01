@@ -14,13 +14,16 @@ Use this skill to keep money movement, product access, and support truth aligned
 3. Map subscription states, entitlement derivation, ledger events, support views, and user messaging.
 4. Build an explicit channel precedence table for web, App Store, Google Play, team invoice, family sharing, and manual support overrides.
 5. Check upgrades, downgrades, trials, grace, cancellation, refund, restore, offline access, duplicate events, and renewal failure paths.
-6. Produce a state machine, audit events, risks, and acceptance checks.
+6. Model paused, restored, and offline entitlements as explicit states with entry/exit criteria, TTL/effective dates, user copy, and reconciliation behavior.
+7. Produce a state machine, audit events, risks, and acceptance checks.
 
 ## Guardrails
 
 - Do not treat client UI state as the source of truth for durable access.
 - Do not mix cancellation, refund, failed renewal, and fraud into one state.
 - Preserve user trust with clear access consequences and support traceability.
+- Do not leave paused, restored, or offline access as vague events; name whether each grants, limits, resumes, or expires access.
+- Do not let a restore action create access until provider truth is verified and reconciled against existing ledger facts.
 
 ## Output format
 
@@ -31,6 +34,11 @@ Entitlement surfaces:
 
 State model:
 - <state> -> <meaning and transition>
+
+Paused/restored/offline states:
+- paused:
+- restored:
+- offline_access:
 
 Channel precedence:
 | Source | Grants | Conflicts | Resolution |
