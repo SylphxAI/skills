@@ -11,7 +11,7 @@ Use this skill to make mobile experiences feel native, fast, and easy to operate
 
 1. Identify the primary mobile job, screen type, and device constraints.
 2. Read `references/mobile-ui-rules.md`.
-3. Review the UI through hierarchy, reachability, input, feedback, platform chrome, and failure states.
+3. Review the UI through hierarchy, reachability, input, feedback, platform chrome, accessibility, and failure states.
 4. Separate critical blockers from polish opportunities.
 5. Produce a concrete patch plan or review findings with rule IDs.
 
@@ -32,6 +32,12 @@ Critical issues:
 
 Polish opportunities:
 - <rule id> <detail> -> <fix>
+
+Accessibility checks:
+- Screen reader:
+- Focus order:
+- Dynamic type / text scaling:
+- Motion and animation:
 
 Mobile acceptance checks:
 - <check>
