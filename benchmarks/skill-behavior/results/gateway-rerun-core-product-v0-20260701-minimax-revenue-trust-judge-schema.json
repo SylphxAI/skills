@@ -1,0 +1,673 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "release-freeze-control-001",
+      "subscription-price-increase-retention-001",
+      "payment-platform-webhook-ledger-001",
+      "subscription-entitlement-cross-platform-001",
+      "notification-lifecycle-growth-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "6cb61167fd46ea8ab42b517bffc5f992385bab2a",
+      "branch": "codex/minimax-overlap-smoke",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T16:40:24.307Z",
+    "completedAt": "2026-07-01T16:46:01.288Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "release-freeze-control-001",
+      "skill": "release-freeze-change-control-review",
+      "promptSha256": "43802360e0e914fd0682de584bf967e5d3782947d77649dc77a168a2d21a4322",
+      "skillContextSha256": "fd2a6b01f9d0b57e91357bdebf8fdb405b46a7346e4a200d60fedd361ae8543b",
+      "skillBodySha256": "0f09b708ef1be55e23a6a4abafbe9dcb9745afc41f4bb58525146ef35d0c7f81",
+      "skillReferenceSha256": [
+        {
+          "path": "references/release-freeze-change-control-patterns.md",
+          "sha256": "0038505178df01e7e82babe02c8e2ec9aae65d9dfa9c4007c699b55eee7ea68b"
+        }
+      ],
+      "skillLoadedPromptSha256": "9073fa76bb98b637373bd35a91b68c026bacb730ca45320cf4d9d0fb9c0be27f",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "freeze-scope": 4,
+          "severity-authority": 4,
+          "evidence": 5,
+          "retirement": 3,
+          "learning": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Good approval matrix, rollback, monitoring, support comms, and review package. Scope lacks a clear protected-systems inventory, compliance classification is missing, and exception expiry/retirement and debt backlog handling are less explicit.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/release-freeze-control-001-baseline.md",
+        "outputSha256": "3d16d5154451b1848747e2a0f4cd249a84077b9ef2a1313a8af3e766de575ae4",
+        "latencyMs": 35099,
+        "usage": {
+          "input_tokens": 254,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1578,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1832
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "freeze-scope": 5,
+          "severity-authority": 4,
+          "evidence": 5,
+          "retirement": 5,
+          "learning": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong scope, protected systems, windows, comms, approvals, rollback, monitoring, exception register events, expiry, retirement, and learning loop. Slight gap: compliance changes are not explicitly classified in the severity ladder.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/release-freeze-control-001-skill-loaded.md",
+        "outputSha256": "4c7fa33db0f590f7fd2c221e1c2277b216c07d8aef0fd600d464e19683fad0b4",
+        "latencyMs": 31076,
+        "usage": {
+          "input_tokens": 1454,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 1277,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2731
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/release-freeze-control-001-judge-raw.md",
+      "judgeOutputSha256": "241a79046b680810423777f6ac5c43973a515c1704d6df3ee928c3db4fad5291",
+      "judgeLatencyMs": 11571,
+      "judgeUsage": {
+        "input_tokens": 3370,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 696,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4066
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-retention-001",
+      "skill": "subscription-price-increase-retention-review",
+      "promptSha256": "99fcad2d4fa5bb84e9b80831f77355d03ff57af346be61a4e1223bb60afbb034",
+      "skillContextSha256": "3a52f5a88cbee91f2c93c6fd11a3aea56986663053ec4868a50bd97b9d4d90c0",
+      "skillBodySha256": "9685115e1fe1574d678428e7bd47341a069696f88a40f931c935cf3f6f597b73",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-price-increase-retention-patterns.md",
+          "sha256": "d446add3af54afcce120ad7eff4636a9b7d47183bd3aa6515bcef3e64994716f"
+        }
+      ],
+      "skillLoadedPromptSha256": "42621d09fdf7be3e6cd51adec72a569d9e5516ec66f3a7ce1025e4eea67ffa75",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "cohorts": 3,
+          "platform-rules": 3,
+          "retention-policy": 5,
+          "support-trust": 4,
+          "net-revenue": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong retention mechanics, offers, refunds, dashboards, and net revenue gates. Cohorts miss explicit region, renewal-date, billing-channel segmentation. Some platform details are vague or assumed, and cancellation “wall” wording risks dark-pattern perception.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-price-increase-retention-001-baseline.md",
+        "outputSha256": "9f9c393913757734520b5d0fa3d6b440e60631a943d49b129e5a9f9be9646925",
+        "latencyMs": 25701,
+        "usage": {
+          "input_tokens": 262,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 1360,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1622
+        }
+      },
+      "skillLoaded": {
+        "score": 4,
+        "criterionScores": {
+          "cohorts": 4,
+          "platform-rules": 4,
+          "retention-policy": 5,
+          "support-trust": 5,
+          "net-revenue": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive plan with cohorts, notices, value narrative, support/refunds, cancellation transparency, experimentation, and cohort readbacks. Minor gaps: renewal-date segmentation is less explicit, churn-risk segmentation is mostly embedded, and some consent behavior may overgeneralize platform rules.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-price-increase-retention-001-skill-loaded.md",
+        "outputSha256": "61e4d2bb03768278ebd4d9ae733593637c688430576db95641ab2473adbc296d",
+        "latencyMs": 26628,
+        "usage": {
+          "input_tokens": 1536,
+          "input_tokens_details": {
+            "cached_tokens": 1408
+          },
+          "output_tokens": 1564,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3100
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-price-increase-retention-001-judge-raw.md",
+      "judgeOutputSha256": "859a3af65f7911bc10241db1e4e1506066f28ca52a8b769ad382f6c3c0afbc5e",
+      "judgeLatencyMs": 12953,
+      "judgeUsage": {
+        "input_tokens": 3481,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 759,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4240
+      }
+    },
+    {
+      "taskId": "payment-platform-webhook-ledger-001",
+      "skill": "payment-platform-readiness",
+      "promptSha256": "d02f611df4f61b0b6398c8d47f5c516cf43e1902614bed64300ff7a1a9a402cf",
+      "skillContextSha256": "7edc551f3bc5d619afb4816d892a1b0277637a414ad20b8473b405feeae7a2a3",
+      "skillBodySha256": "032b60d1bb3ee18d120214570322f3520e68b266edaf23953cee22c4e0a1d0c8",
+      "skillReferenceSha256": [
+        {
+          "path": "references/payment-platform-patterns.md",
+          "sha256": "63fe574aa4cca6d312a43414d078aa4198a16f0e6c5673e3710576bc06446b00"
+        }
+      ],
+      "skillLoadedPromptSha256": "334f8dd6823443014086ad25750ad5500c47a8307c8af90baf620735aa36a142",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "payment-truth": 4,
+          "ledger-reconciliation": 4,
+          "entitlement-contract": 4,
+          "launch-gates": 4,
+          "customer-trust": 3
+        },
+        "criticalFailures": [],
+        "rationale": "Strong webhook idempotency, entitlement, refunds/disputes, reconciliation, and gates. Missing explicit payment state model, limited fee detail, weaker sandbox/live separation and test-card specificity, and customer communications are less complete.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/payment-platform-webhook-ledger-001-baseline.md",
+        "outputSha256": "b53ed1a97110f083770b636c9896a03bab7137cac0b7410b6ef4ab97206d0c52",
+        "latencyMs": 40887,
+        "usage": {
+          "input_tokens": 264,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 2114,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2378
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "payment-truth": 5,
+          "ledger-reconciliation": 4,
+          "entitlement-contract": 5,
+          "launch-gates": 5,
+          "customer-trust": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive readiness review with server-side webhook truth, replay/idempotency, entitlement states, launch gates, rollback, support, disclosure, and failed-payment recovery. Ledger coverage is strong but fees are only implicit via Stripe reports/payouts.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/payment-platform-webhook-ledger-001-skill-loaded.md",
+        "outputSha256": "b4a2af5a108f4d246599fd1549bab30c9a45c8b0e7715e420aaccd07fb428a95",
+        "latencyMs": 16493,
+        "usage": {
+          "input_tokens": 1103,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1386,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2489
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/payment-platform-webhook-ledger-001-judge-raw.md",
+      "judgeOutputSha256": "47e229e3305d6a49b1b23622673c37a47cda118be6a8dafdf706ba90810d79f6",
+      "judgeLatencyMs": 13427,
+      "judgeUsage": {
+        "input_tokens": 4042,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 781,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4823
+      }
+    },
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "skill": "subscription-entitlement-review",
+      "promptSha256": "e8c4f377eea213bf5c8afa15c3bf6c781a34b7c07020ffa8496c924c559d3b61",
+      "skillContextSha256": "af4782b4d68e7e2ebff4aaa0827550d6bdc151e07b098f58efa49a108e230e3c",
+      "skillBodySha256": "1d99622c1ef853f9bcb78d703f4918790b2d49767d7b635de7809c5e6410c794",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-entitlement-patterns.md",
+          "sha256": "9ffb73fc7b0c6e58a1d2366de363425f5b3614d36ceb781ed292f03e77fb2c28"
+        }
+      ],
+      "skillLoadedPromptSha256": "b9f90198c8172dab37be3b811fcfe4d032dca8ca9b973370839a6122c9947954",
+      "baseline": {
+        "score": 3.1,
+        "criterionScores": {
+          "source-of-truth": 3,
+          "channel-precedence": 4,
+          "state-transitions": 3,
+          "customer-support": 1,
+          "auditability": 4
+        },
+        "criticalFailures": [
+          "Missing safe manual correction path and meaningful support diagnostics",
+          "No explicit anti-duplication or event ordering rules"
+        ],
+        "rationale": "Good server-side model, validation matrix, precedence, offline, and audit ledger. However support artifacts are sparse, state model misses trial/paused/restored detail, and deduplication/event ordering are not sufficiently specified.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-entitlement-cross-platform-001-baseline.md",
+        "outputSha256": "26b41dfc9aab81936c80f8f6572ef957d829966471163e9f2b4408bedb97873f",
+        "latencyMs": 16018,
+        "usage": {
+          "input_tokens": 266,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1370,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1636
+        }
+      },
+      "skillLoaded": {
+        "score": 4.8,
+        "criterionScores": {
+          "source-of-truth": 5,
+          "channel-precedence": 5,
+          "state-transitions": 4,
+          "customer-support": 5,
+          "auditability": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive design with server-led ledger, validation, idempotency, precedence, per-source conflict handling, support workflows, audit events, and reconciliation. Minor gaps: paused/restored/offline are more events or overlays than fully modeled states.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-entitlement-cross-platform-001-skill-loaded.md",
+        "outputSha256": "4ede4b99cc56f7cdc681215e4ce1a8f6a52ead2570d021d3cbd5099c7480389d",
+        "latencyMs": 24035,
+        "usage": {
+          "input_tokens": 2162,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1417,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3579
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/subscription-entitlement-cross-platform-001-judge-raw.md",
+      "judgeOutputSha256": "70d5d987138573a952973449efb408526fc00ca44e622fa8c12af46e281bfd11",
+      "judgeLatencyMs": 18141,
+      "judgeUsage": {
+        "input_tokens": 3318,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 1052,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4370
+      }
+    },
+    {
+      "taskId": "notification-lifecycle-growth-001",
+      "skill": "notification-strategy-review",
+      "promptSha256": "ef1451aeb0bd6caf51f6f0224bfc1e425572abe6ef0c08cd3519b5558d2fd3fa",
+      "skillContextSha256": "051c0dd48e9c457142e1a8ece348e5f70322e64fabbe55e8d8af762eaf34e46f",
+      "skillBodySha256": "7db14b8c65a82d80568a8436b4ba9e29d0f3a7da90bccc596ec02cde54b91ce9",
+      "skillReferenceSha256": [
+        {
+          "path": "references/notification-strategy-patterns.md",
+          "sha256": "a51b79cb4bf888b11132336d1758e6422526a318484495364a0e455e28f9bb77"
+        }
+      ],
+      "skillLoadedPromptSha256": "ddf67617671793ccd5b96252fde127bf13f0dd9791ab91e01dc455b261130418",
+      "baseline": {
+        "score": 4.2,
+        "criterionScores": {
+          "user-value": 4,
+          "permission-consent": 4,
+          "frequency-policy": 5,
+          "lifecycle-targeting": 5,
+          "measurement": 3
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive caps, targeting, quiet hours, localization, and preferences. Weaker on explicit user value per notification, measurement omits retention, complaints, deliverability, and trust. Push cannot-disables for transactional/security are overbroad.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/notification-lifecycle-growth-001-baseline.md",
+        "outputSha256": "9266ad9f1714ad4e8180136c4e77dcb23f7fdb5069e7e61dd3237a4a493ae084",
+        "latencyMs": 12910,
+        "usage": {
+          "input_tokens": 262,
+          "input_tokens_details": {
+            "cached_tokens": 261
+          },
+          "output_tokens": 1157,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1419
+        }
+      },
+      "skillLoaded": {
+        "score": 4.4,
+        "criterionScores": {
+          "user-value": 5,
+          "permission-consent": 4,
+          "frequency-policy": 4,
+          "lifecycle-targeting": 5,
+          "measurement": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Strong taxonomy, lifecycle triggers, user-value framing, caps, quiet hours, preferences, and measurement events. Minor gaps: regional consent is not explicit, and cross-channel deduplication is implied more than fully specified.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/notification-lifecycle-growth-001-skill-loaded.md",
+        "outputSha256": "07748f9f4da23e26e4dd2bc13b6c7f33b54b98a2d8a1e305d7bd875d4547cc3f",
+        "latencyMs": 15239,
+        "usage": {
+          "input_tokens": 1049,
+          "input_tokens_details": {
+            "cached_tokens": 1024
+          },
+          "output_tokens": 1389,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2438
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-minimax-revenue-trust-judge-schema-outputs/notification-lifecycle-growth-001-judge-raw.md",
+      "judgeOutputSha256": "39404ab595f7ff0c2be1519e3d2a45ac8a9621d966a9682db1cd47ef7ea77a5c",
+      "judgeLatencyMs": 15789,
+      "judgeUsage": {
+        "input_tokens": 3068,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 940,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4008
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "release-freeze-control-001",
+      "promptType": "positive",
+      "expectedSkill": "release-freeze-change-control-review",
+      "triggeredSkills": [
+        "release-freeze-change-control-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 6092,
+      "usage": {
+        "input_tokens": 186,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 36,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 222
+      }
+    },
+    {
+      "taskId": "release-freeze-control-001",
+      "promptType": "negative-control",
+      "expectedSkill": "release-freeze-change-control-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1689,
+      "usage": {
+        "input_tokens": 145,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 45,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 190
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-retention-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [
+        "subscription-price-increase-retention-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1185,
+      "usage": {
+        "input_tokens": 199,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 10,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 209
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-retention-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1512,
+      "usage": {
+        "input_tokens": 151,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 39,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 190
+      }
+    },
+    {
+      "taskId": "payment-platform-webhook-ledger-001",
+      "promptType": "positive",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [
+        "payment-platform-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1759,
+      "usage": {
+        "input_tokens": 191,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 37,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 228
+      }
+    },
+    {
+      "taskId": "payment-platform-webhook-ledger-001",
+      "promptType": "negative-control",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1499,
+      "usage": {
+        "input_tokens": 146,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 36,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 182
+      }
+    },
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-entitlement-review",
+      "triggeredSkills": [
+        "subscription-entitlement-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1494,
+      "usage": {
+        "input_tokens": 200,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 42,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 242
+      }
+    },
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-entitlement-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1550,
+      "usage": {
+        "input_tokens": 151,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 36,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 187
+      }
+    },
+    {
+      "taskId": "notification-lifecycle-growth-001",
+      "promptType": "positive",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [
+        "notification-strategy-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1681,
+      "usage": {
+        "input_tokens": 184,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 31,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 215
+      }
+    },
+    {
+      "taskId": "notification-lifecycle-growth-001",
+      "promptType": "negative-control",
+      "expectedSkill": "notification-strategy-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2526,
+      "usage": {
+        "input_tokens": 141,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 43,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 184
+      }
+    }
+  ]
+}
