@@ -1,0 +1,556 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-shard-core-product-v0-20260701-marketplace-ops",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "marketplace-payouts-creator-001",
+      "skill-marketplace-creator-001",
+      "board-metrics-operating-001",
+      "developer-quota-credit-abuse-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "cd99f36a0d5e334f5a8adfeb0096d55b3a4727bf",
+      "branch": "codex/benchmark-marketplace-ops-shard",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T11:42:26.818Z",
+    "completedAt": "2026-07-01T11:48:42.830Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "skill": "marketplace-payouts-review",
+      "promptSha256": "c3517d04e81341c93a1953f5b1d209f4633310043121dae9a183e4eb8b5c4054",
+      "skillContextSha256": "90cf1911f86a9865845515079389cb76c648febb51f5be0ab95ca39463ddf37d",
+      "skillBodySha256": "eee2981bca3338db2d78c52e91abc9932fcecdeaff2c7aa31b31f6bbe1effe83",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-payout-systems.md",
+          "sha256": "f7a5bce85695015a72ae1da41779a233a5bb3a75d2f287b9576e289c1f46f8e6"
+        }
+      ],
+      "skillLoadedPromptSha256": "b00ffa0d0a982813eaffc1162172ac593cf3504cdddc5e5d858f66932cca34a8",
+      "baseline": {
+        "score": 4.8,
+        "criterionScores": {
+          "ledger-truth": 5,
+          "risk-controls": 5,
+          "seller-experience": 5,
+          "schedule-policy": 4.5,
+          "marketplace-health": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive design with double-entry ledger, compensating entries, compliance, holds, fraud, refunds, chargebacks, appeals, support tooling, and reconciliation. Schedule is clear, though currency/fee exceptions and marketplace-health measurement are somewhat lighter.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/marketplace-payouts-creator-001-baseline.md",
+        "outputSha256": "ee7d04af9435090e2ae7d77fc0e1e4abd60b6c92f362902bf163b2f04b9488dc",
+        "latencyMs": 33766,
+        "usage": {
+          "input_tokens": 90,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1790,
+          "output_tokens_details": {
+            "reasoning_tokens": 30
+          },
+          "total_tokens": 1880
+        }
+      },
+      "skillLoaded": {
+        "score": 4.8,
+        "criterionScores": {
+          "ledger-truth": 5,
+          "risk-controls": 5,
+          "seller-experience": 5,
+          "schedule-policy": 4.5,
+          "marketplace-health": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Excellent lifecycle, ledger events, reversals, holds, KYC/tax, refunds, chargebacks, dashboard, support, and reconciliation. Schedule covers timing/thresholds/currency but less explicit on liquidity and marketplace-health metrics.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/marketplace-payouts-creator-001-skill-loaded.md",
+        "outputSha256": "aa99cb865b295b0b4ce5e48a4f7dd7c7e87f4ecb0967cfc76496d042c2bdf569",
+        "latencyMs": 42218,
+        "usage": {
+          "input_tokens": 1402,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1755,
+          "output_tokens_details": {
+            "reasoning_tokens": 17
+          },
+          "total_tokens": 3157
+        }
+      },
+      "preference": "tie",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/marketplace-payouts-creator-001-judge-raw.md",
+      "judgeOutputSha256": "9929c895db863ba553e7c5d20f61ccbae84aa5982dbe5f8f980401cd5b455b89",
+      "judgeLatencyMs": 7957,
+      "judgeUsage": {
+        "input_tokens": 4200,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 385,
+        "output_tokens_details": {
+          "reasoning_tokens": 174
+        },
+        "total_tokens": 4585
+      }
+    },
+    {
+      "taskId": "skill-marketplace-creator-001",
+      "skill": "skill-marketplace-creator",
+      "promptSha256": "34d62e6a8afcf75ae84f6250eeb2fa59b2bbbcf67e56530b44429cb04e351f8a",
+      "skillContextSha256": "8e91d5933d9b7321c9cc3207b816cfa696004c5137523e072d60ed7c74568188",
+      "skillBodySha256": "b2c8ede5094b2dd916c98c5467243982ab8957fc8931025ee6566fcedb610d77",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-playbook.md",
+          "sha256": "1dbbeca8e6b1c6ebdf3b7f42d48a7a384dcf8bc6fe19d952cba5437a3a34ecaf"
+        }
+      ],
+      "skillLoadedPromptSha256": "311a93ec4976237257928c3420303054264dc5eba1b4c3fdb700317e2a42bf1a",
+      "baseline": {
+        "score": 4.5,
+        "criterionScores": {
+          "marketplace-architecture": 4,
+          "quality-gates": 5,
+          "behavior-proof": 5,
+          "community-value": 4.5,
+          "governance": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Strong quality bar, install contract, metadata, evals, reproducible benchmark requirements, and governance. Slightly weaker on concrete repository architecture and registry/catalog file layout than A, but behavior-proof methodology is excellent.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/skill-marketplace-creator-001-baseline.md",
+        "outputSha256": "d2feea8f5b7a350d4c0faf3c43d4ae48332816c2f21a650df48bcc509f116ce0",
+        "latencyMs": 35957,
+        "usage": {
+          "input_tokens": 87,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1791,
+          "output_tokens_details": {
+            "reasoning_tokens": 78
+          },
+          "total_tokens": 1878
+        }
+      },
+      "skillLoaded": {
+        "score": 4.75,
+        "criterionScores": {
+          "marketplace-architecture": 5,
+          "quality-gates": 5,
+          "behavior-proof": 4.5,
+          "community-value": 4.5,
+          "governance": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive repository tree, registry/catalog/install surfaces, PR workflow, quality gates, anti-spam rules, evals, benchmark artifacts, and roadmap governance. Benchmark proof is strong, though it could more explicitly require baseline output-improvement comparisons.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/skill-marketplace-creator-001-skill-loaded.md",
+        "outputSha256": "686b6e0a3a5083d1b5c155babece6bf7bf7971fb62f262f72c0a2028d0536057",
+        "latencyMs": 37782,
+        "usage": {
+          "input_tokens": 1304,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1971,
+          "output_tokens_details": {
+            "reasoning_tokens": 35
+          },
+          "total_tokens": 3275
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/skill-marketplace-creator-001-judge-raw.md",
+      "judgeOutputSha256": "052b2da8c10ab8308171242147b2e17284074a3be8f33796bd2bec3331306b3b",
+      "judgeLatencyMs": 9647,
+      "judgeUsage": {
+        "input_tokens": 4348,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 436,
+        "output_tokens_details": {
+          "reasoning_tokens": 225
+        },
+        "total_tokens": 4784
+      }
+    },
+    {
+      "taskId": "board-metrics-operating-001",
+      "skill": "board-metrics-operating-review",
+      "promptSha256": "06272ec9dc07a3b79130ac0be0dd152954d487dd50534622f11303aa694d2df4",
+      "skillContextSha256": "c87aa31ee090da6b966f057807e0ff26a0f8d1353d298c58b6411094cf908e0d",
+      "skillBodySha256": "b253b834719cf20b8326806c3c664b3c5523fc1bbc189ec9a3404eefe2f817ac",
+      "skillReferenceSha256": [
+        {
+          "path": "references/board-metrics-operating-patterns.md",
+          "sha256": "406dea3eb6b0df289b45a4e82249e579ceb98ffadb0554cfff83577764509905"
+        }
+      ],
+      "skillLoadedPromptSha256": "82a26d2c7dc9e4ed52f8270846221183f183263d799642847400a8d402600c2c",
+      "baseline": {
+        "score": 2,
+        "criterionScores": {
+          "metric-definitions": 2,
+          "reconciliation": 1.5,
+          "variance": 2.5,
+          "decisions": 3.5,
+          "data-quality": 0.5
+        },
+        "criticalFailures": [
+          "Undefined metric formulas and caveats",
+          "Missing source-of-truth map",
+          "No meaningful data-quality controls"
+        ],
+        "rationale": "Useful board-pack template with owner signoff, asks, and action follow-up, but largely placeholder-driven. It lacks formulas, source mapping, reconciliation rules, and data-quality checks, risking spreadsheet theater.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/board-metrics-operating-001-baseline.md",
+        "outputSha256": "474de13f49498acc8a2565747c0fc11197e22090081a82f0602e61f10b92467e",
+        "latencyMs": 38137,
+        "usage": {
+          "input_tokens": 107,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 2069,
+          "output_tokens_details": {
+            "reasoning_tokens": 28
+          },
+          "total_tokens": 2176
+        }
+      },
+      "skillLoaded": {
+        "score": 4.4,
+        "criterionScores": {
+          "metric-definitions": 4.5,
+          "reconciliation": 4.5,
+          "variance": 4.5,
+          "decisions": 4.5,
+          "data-quality": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Strong operating review design with definitions, owners, sources, cadence, reconciliation boundaries, variance drivers, board decisions, and action register. Minor gaps include some missing explicit formulas for metrics like runway and gross margin.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/board-metrics-operating-001-skill-loaded.md",
+        "outputSha256": "47e806318cd72bebc222d0a0ae0f647b45c0ce5f0778621d4e9eaa8be717660f",
+        "latencyMs": 31033,
+        "usage": {
+          "input_tokens": 1319,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1650,
+          "output_tokens_details": {
+            "reasoning_tokens": 62
+          },
+          "total_tokens": 2969
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/board-metrics-operating-001-judge-raw.md",
+      "judgeOutputSha256": "5974acffdd47fe89f4d11ab974c712281478acc60a3f4ed669b38997f6220ca0",
+      "judgeLatencyMs": 13744,
+      "judgeUsage": {
+        "input_tokens": 4335,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 690,
+        "output_tokens_details": {
+          "reasoning_tokens": 468
+        },
+        "total_tokens": 5025
+      }
+    },
+    {
+      "taskId": "developer-quota-credit-abuse-001",
+      "skill": "developer-quota-credit-abuse-review",
+      "promptSha256": "0781b3547ebb78bc347728bcc73523e8a3aa4e02d61fb5f33f4277a1021ae60d",
+      "skillContextSha256": "df73a1681e6d3ef1386c13ecceae7708ce7bfad33f9577292c804fbee47dd0b3",
+      "skillBodySha256": "5baad71dd4abeb2b224ba6dfbfeac33a15062c0aa29814574ba0387a3c22f85d",
+      "skillReferenceSha256": [
+        {
+          "path": "references/developer-quota-credit-abuse-patterns.md",
+          "sha256": "03e9b111094bb7122735aa427a3d00485b033db14c225fc3878602309444d5a2"
+        }
+      ],
+      "skillLoadedPromptSha256": "008db51cd74f4fc0cee543a2d1c67e86063c0c5409cc34c7dbbba7e17d7df507",
+      "baseline": {
+        "score": 4.3,
+        "criterionScores": {
+          "quota-ledger": 3.5,
+          "trust-tiers": 5,
+          "abuse-detection": 4.5,
+          "appeals": 4.5,
+          "metrics": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Strong quota/trust/abuse plan with support messages and appeals. Weaker on explicit credit ledger mechanics: source-of-truth, reversals, and attribution are scattered rather than defined. Some automated suspension language risks over-enforcement.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/developer-quota-credit-abuse-001-baseline.md",
+        "outputSha256": "f2d0f43f24be999a92e774c20f1a1c2e76cf1aec68ec8dd9ccc866717aa118da",
+        "latencyMs": 33416,
+        "usage": {
+          "input_tokens": 97,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1702,
+          "output_tokens_details": {
+            "reasoning_tokens": 51
+          },
+          "total_tokens": 1799
+        }
+      },
+      "skillLoaded": {
+        "score": 4.8,
+        "criterionScores": {
+          "quota-ledger": 4.7,
+          "trust-tiers": 4.8,
+          "abuse-detection": 5,
+          "appeals": 5,
+          "metrics": 4.8
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive artifact set: ledger, quota units, trust tiers, abuse controls, review/appeals, events, and metrics. Avoids threshold leakage and preserves activation. Minor gap: lacks concrete quota ladder amounts or example credit values.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/developer-quota-credit-abuse-001-skill-loaded.md",
+        "outputSha256": "d84ebdd6d95ca8efa110d868855b9a02b9f25f85e7aacde9dba881c6502bf035",
+        "latencyMs": 31915,
+        "usage": {
+          "input_tokens": 1351,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1690,
+          "output_tokens_details": {
+            "reasoning_tokens": 27
+          },
+          "total_tokens": 3041
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-shard-core-product-v0-20260701-marketplace-ops-outputs/developer-quota-credit-abuse-001-judge-raw.md",
+      "judgeOutputSha256": "c4199b61e12eaa619403d39d31cf8dc1205f2f6745783dda8ec27792cf60bb46",
+      "judgeLatencyMs": 14913,
+      "judgeUsage": {
+        "input_tokens": 4029,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 735,
+        "output_tokens_details": {
+          "reasoning_tokens": 516
+        },
+        "total_tokens": 4764
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "promptType": "positive",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [
+        "marketplace-payouts-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to design marketplace payouts for an AI template marketplace, including creator onboarding, KYC/tax, revenue share, refunds, chargebacks, payout holds, fraud review, payout schedule, seller dashboard, disputes, and support operations—all core areas covered by the marketplace-payouts-review skill.",
+      "latencyMs": 2669,
+      "usage": {
+        "input_tokens": 225,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 80,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 305
+      }
+    },
+    {
+      "taskId": "marketplace-payouts-creator-001",
+      "promptType": "negative-control",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks to review mobile UI permission timing, which concerns mobile UX/permissions rather than marketplace payouts, seller earnings, fees, refunds, chargebacks, ledgers, or related money movement flows.",
+      "latencyMs": 2726,
+      "usage": {
+        "input_tokens": 188,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 59,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 247
+      }
+    },
+    {
+      "taskId": "skill-marketplace-creator-001",
+      "promptType": "positive",
+      "expectedSkill": "skill-marketplace-creator",
+      "triggeredSkills": [
+        "skill-marketplace-creator"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to design a public skill marketplace repository for AI agents, including quality gates, contribution review, install surface, catalog metadata, evals, benchmark proof, and governance—all core tasks covered by the skill-marketplace-creator description.",
+      "latencyMs": 2573,
+      "usage": {
+        "input_tokens": 200,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 68,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 268
+      }
+    },
+    {
+      "taskId": "skill-marketplace-creator-001",
+      "promptType": "negative-control",
+      "expectedSkill": "skill-marketplace-creator",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about reviewing readiness for an app store launch, not creating, curating, validating, or operating a marketplace/repository for reusable AI agent skills.",
+      "latencyMs": 23757,
+      "usage": {
+        "input_tokens": 166,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 101,
+        "output_tokens_details": {
+          "reasoning_tokens": 48
+        },
+        "total_tokens": 267
+      }
+    },
+    {
+      "taskId": "board-metrics-operating-001",
+      "promptType": "positive",
+      "expectedSkill": "board-metrics-operating-review",
+      "triggeredSkills": [
+        "board-metrics-operating-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt explicitly asks to prepare a board metrics operating review for a SaaS company and lists metrics and governance elements (ARR/MRR, NRR/GRR, churn cohorts, CAC, gross margin, pipeline, usage, support, incidents, burn/runway, forecast variance, owner signoff, board asks, and action follow-up) that directly match the skill description.",
+      "latencyMs": 4276,
+      "usage": {
+        "input_tokens": 239,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 94,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 333
+      }
+    },
+    {
+      "taskId": "board-metrics-operating-001",
+      "promptType": "negative-control",
+      "expectedSkill": "board-metrics-operating-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks for a checkout form UI review for accessibility and polish, which is a UX/accessibility task. The board-metrics-operating-review skill is focused on SaaS/marketplace/app/game board metrics operating systems, metric definitions, cohort views, ARR/MRR, retention, board narratives, and related executive reporting, so it is not directly relevant.",
+      "latencyMs": 3850,
+      "usage": {
+        "input_tokens": 189,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 91,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 280
+      }
+    },
+    {
+      "taskId": "developer-quota-credit-abuse-001",
+      "promptType": "positive",
+      "expectedSkill": "developer-quota-credit-abuse-review",
+      "triggeredSkills": [
+        "developer-quota-credit-abuse-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to review developer quota and credit abuse controls for an API/AI platform, explicitly covering free trial credits, promo codes, token usage, expensive endpoints, multi-accounting, trust tiers, throttling, manual review, appeals, support messaging, and cost guardrails, which matches the skill description.",
+      "latencyMs": 2885,
+      "usage": {
+        "input_tokens": 228,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 82,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 310
+      }
+    },
+    {
+      "taskId": "developer-quota-credit-abuse-001",
+      "promptType": "negative-control",
+      "expectedSkill": "developer-quota-credit-abuse-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt asks for a subscription pricing page narrative, which is about marketing/pricing copy. It does not directly involve developer quota, credit abuse controls, free trial abuse, fraud signals, throttling, or cost guardrails.",
+      "latencyMs": 2771,
+      "usage": {
+        "input_tokens": 185,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 64,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 249
+      }
+    }
+  ]
+}
