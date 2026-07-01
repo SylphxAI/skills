@@ -7,10 +7,10 @@ This matrix prevents repository-level benchmark evidence from being over-read as
 ## Summary
 
 - Published skills: 195
-- Current benchmark tasks selected: 26
+- Current benchmark tasks selected: 28
 - Current benchmark suites represented: 2
 - Skills with current behavioral benchmark coverage: 20
-- Skills with individual-useful evidence: 0
+- Skills with individual-useful evidence: 1
 - Skills still structural-preview only: 175
 
 ## Status definitions
@@ -27,7 +27,7 @@ The repository-level SOTA-candidate claim is validated separately by the current
 
 | Skill | Evidence status | Current tasks | Avg delta | Win rate | Non-regression | Positive trigger recall | Negative over-trigger | Critical failures | Current task IDs | Note |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| marketplace-payouts-review | benchmarked-suite-support | 3 | 1.00 | 100.0% | 100.0% | 100.0% | 0.0% | 0→0 | marketplace-payout-compliance-release-001, marketplace-payout-tax-hold-001, marketplace-payouts-creator-001 | Supports repository-level suite evidence; needs 2 more current task(s) for an individual-useful claim. |
+| marketplace-payouts-review | individual-useful | 5 | 1.20 | 100.0% | 100.0% | 100.0% | 0.0% | 3→0 | marketplace-payout-abuse-appeal-001, marketplace-payout-compliance-release-001, marketplace-payout-provider-outage-001, marketplace-payout-tax-hold-001, marketplace-payouts-creator-001 | Individual skill usefulness gates pass on current public benchmark tasks. |
 | notification-strategy-review | benchmarked-suite-support | 2 | 1.50 | 100.0% | 100.0% | 100.0% | 0.0% | 0→0 | notification-lifecycle-growth-001, notification-permission-fatigue-recovery-001 | Supports repository-level suite evidence; needs 3 more current task(s) for an individual-useful claim. |
 | payment-platform-readiness | benchmarked-suite-support | 2 | 1.50 | 100.0% | 100.0% | 100.0% | 0.0% | 3→0 | payment-platform-webhook-ledger-001, payment-webhook-entitlement-race-001 | Supports repository-level suite evidence; needs 3 more current task(s) for an individual-useful claim. |
 | steam-launch-readiness | benchmarked-suite-support | 2 | 2.00 | 100.0% | 100.0% | 100.0% | 0.0% | 5→0 | steam-demo-refund-review-risk-001, steam-launch-commercial-readiness-001 | Supports repository-level suite evidence; needs 3 more current task(s) for an individual-useful claim. |

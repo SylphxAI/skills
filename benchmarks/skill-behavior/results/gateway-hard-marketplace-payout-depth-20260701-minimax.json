@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-hard-marketplace-payout-depth-20260701-minimax",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "marketplace-payout-provider-outage-001",
+      "marketplace-payout-abuse-appeal-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "87ad9d94d8dab4be8624f14ec3a818b836fc0c48",
+      "branch": "codex/marketplace-payout-individual-evidence",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T21:10:25.022Z",
+    "completedAt": "2026-07-01T21:12:24.553Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "marketplace-payout-provider-outage-001",
+      "skill": "marketplace-payouts-review",
+      "promptSha256": "0e8bc47e8b959c0350a1f5b2b4a9815538a4234f5ec350e1b09027c0b564bacd",
+      "skillContextSha256": "b95ffc6739fedcde5e5f9caae3043bdeb032083c9522764d4e3e7c3468e77b68",
+      "skillBodySha256": "b1570a662f8ade972a9bc22142ef97c6d1714a033b3d996a026830e4947f65ed",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-payout-systems.md",
+          "sha256": "6e470e90e32d80a2caed96cae42b6cc0d2e0343bd3f2e79ba6ad0123f8d108e8"
+        }
+      ],
+      "skillLoadedPromptSha256": "f1b1726c10ca8b9f46f7c1d18e62a27e9580acc2eab5223bd68bc2bafc14ba02",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "incident-state-machine": 2,
+          "idempotency-controls": 4,
+          "reconciliation-runbook": 4,
+          "creator-communications": 5,
+          "recovery-learning": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Good operational runbook, communications, reconciliation checks, and recovery gates. FSM omits several required incident states and owners. Idempotency is strong, but attempt_no in the key and limited immutable-ledger detail create residual double-pay risk.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-marketplace-payout-depth-20260701-minimax-outputs/marketplace-payout-provider-outage-001-baseline.md",
+        "outputSha256": "714cf50fc77a0f1ff21ffc292fb5391d2cab32168748c0e98bb7b147ab336b8b",
+        "latencyMs": 19076,
+        "usage": {
+          "input_tokens": 302,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1357,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1659
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "incident-state-machine": 5,
+          "idempotency-controls": 5,
+          "reconciliation-runbook": 4,
+          "creator-communications": 5,
+          "recovery-learning": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Strong incident-specific FSM with required states, owners, transitions, duplicate controls, ledger events, CSV guardrails, creator messaging, and metrics. Reconciliation is solid but bank-return timing and formal postmortem/SLA evidence are less explicit.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-marketplace-payout-depth-20260701-minimax-outputs/marketplace-payout-provider-outage-001-skill-loaded.md",
+        "outputSha256": "eeac11f106e72067ec2955f879786c16f88c7b775f824b3876d5a189af8703cb",
+        "latencyMs": 11831,
+        "usage": {
+          "input_tokens": 5454,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1255,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 6709
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-marketplace-payout-depth-20260701-minimax-outputs/marketplace-payout-provider-outage-001-judge-raw.md",
+      "judgeOutputSha256": "a2b10ff76f223b9a83ecdb48ee5a0dd7d520923350932cbc9aea55b4b30a3b53",
+      "judgeLatencyMs": 17828,
+      "judgeUsage": {
+        "input_tokens": 2838,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 801,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3639
+      }
+    },
+    {
+      "taskId": "marketplace-payout-abuse-appeal-001",
+      "skill": "marketplace-payouts-review",
+      "promptSha256": "1042aaeacd6f615f8db0c0fcecb514ea706eb26e3c4664876e27ac9f9cdbcdc8",
+      "skillContextSha256": "b95ffc6739fedcde5e5f9caae3043bdeb032083c9522764d4e3e7c3468e77b68",
+      "skillBodySha256": "b1570a662f8ade972a9bc22142ef97c6d1714a033b3d996a026830e4947f65ed",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-payout-systems.md",
+          "sha256": "6e470e90e32d80a2caed96cae42b6cc0d2e0343bd3f2e79ba6ad0123f8d108e8"
+        }
+      ],
+      "skillLoadedPromptSha256": "652695d22c2fe21772d26f7412e608d788b40c4ba503b0fc33aaacd04b5f8b9b",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "risk-segmentation": 4,
+          "hold-reserve-policy": 2,
+          "evidence-and-review": 4,
+          "appeal-communications": 4,
+          "marketplace-health": 3
+        },
+        "criticalFailures": [
+          "No clear negative-balance or buyer-protection exposure handling",
+          "Overblocking via broad auto-holds and account-level freezes",
+          "Unsupported reinvestment requirement for release"
+        ],
+        "rationale": "Covers many required artifacts, but reserve policy is punitive and partly unsupported, lacks negative balance and buyer-protection mechanics, and risks overblocking legitimate sellers. Metrics and appeals are useful but less complete.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-marketplace-payout-depth-20260701-minimax-outputs/marketplace-payout-abuse-appeal-001-baseline.md",
+        "outputSha256": "626bf3e80b2601db7653f549a108ce68dde611263d4759aca44cdf512a53da58",
+        "latencyMs": 12113,
+        "usage": {
+          "input_tokens": 286,
+          "input_tokens_details": {
+            "cached_tokens": 285
+          },
+          "output_tokens": 1234,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1520
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "risk-segmentation": 5,
+          "hold-reserve-policy": 5,
+          "evidence-and-review": 5,
+          "appeal-communications": 5,
+          "marketplace-health": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive, abuse-aware policy with scoped holds, reserve math, release criteria, evidence packets, QA, appeals, safe messaging, and trust/liquidity metrics. Strongly handles false positives and legitimate launch winners without overblocking.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-marketplace-payout-depth-20260701-minimax-outputs/marketplace-payout-abuse-appeal-001-skill-loaded.md",
+        "outputSha256": "c13cf467f2198e21d06b29df2996fdbe5bf43f08f471d3aa2e6254c1f1920d13",
+        "latencyMs": 24384,
+        "usage": {
+          "input_tokens": 5438,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1984,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 7422
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-marketplace-payout-depth-20260701-minimax-outputs/marketplace-payout-abuse-appeal-001-judge-raw.md",
+      "judgeOutputSha256": "3a52232f282c1beea4062d667ac9c51bae8dae9a685001d7a1ff752755da80b1",
+      "judgeLatencyMs": 15401,
+      "judgeUsage": {
+        "input_tokens": 3576,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 758,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4334
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "marketplace-payout-provider-outage-001",
+      "promptType": "positive",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [
+        "marketplace-payouts-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2951,
+      "usage": {
+        "input_tokens": 245,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 42,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 287
+      }
+    },
+    {
+      "taskId": "marketplace-payout-provider-outage-001",
+      "promptType": "negative-control",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 3130,
+      "usage": {
+        "input_tokens": 169,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 33,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 202
+      }
+    },
+    {
+      "taskId": "marketplace-payout-abuse-appeal-001",
+      "promptType": "positive",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [
+        "marketplace-payouts-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2385,
+      "usage": {
+        "input_tokens": 228,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 32,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 260
+      }
+    },
+    {
+      "taskId": "marketplace-payout-abuse-appeal-001",
+      "promptType": "negative-control",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2301,
+      "usage": {
+        "input_tokens": 164,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 42,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 206
+      }
+    }
+  ]
+}
