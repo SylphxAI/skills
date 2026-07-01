@@ -21,6 +21,9 @@ A strong answer after loading the skill should:
 
 - Builds a taxonomy by channel, consent, frequency, and user value.
 - Includes quiet hours, preferences, event schema, and negative-signal metrics.
+- Defines lifecycle journey states, contextual permission asks, denied-permission recovery, regional consent routing, and channel-specific unsubscribe/opt-out handling.
+- Adds cross-channel dedupe, suppression, digesting, cooldowns, priority rules, and stop conditions for conversion, cancellation, support contact, unsubscribe, complaint, or stale triggers.
+- Measures delivery, opt-in, opt-out, unsubscribe, complaint/spam, retention, support contacts, and notification-attributed churn against holdouts.
 
 It should also produce the artifact shape requested by `skills/notification-strategy-review/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -34,3 +37,6 @@ The skill should not load for this prompt unless the user adds an explicit notif
 
 - Builds a taxonomy by channel, consent, frequency, and user value.
 - Includes quiet hours, preferences, event schema, and negative-signal metrics.
+- Defines lifecycle journey states, contextual permission asks, denied-permission recovery, regional consent routing, and channel-specific unsubscribe/opt-out handling.
+- Adds cross-channel dedupe, suppression, digesting, cooldowns, priority rules, and stop conditions for conversion, cancellation, support contact, unsubscribe, complaint, or stale triggers.
+- Measures delivery, opt-in, opt-out, unsubscribe, complaint/spam, retention, support contacts, and notification-attributed churn against holdouts.
