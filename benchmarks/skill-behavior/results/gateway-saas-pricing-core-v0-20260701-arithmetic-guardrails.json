@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-saas-pricing-core-v0-20260701-arithmetic-guardrails",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "subscription-pricing-saas-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "4c9aed68367514a2c8e38deb98c419bd3148e47b",
+      "branch": "codex/improve-saas-pricing-benchmark",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T18:47:25.554Z",
+    "completedAt": "2026-07-01T18:48:11.056Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "subscription-pricing-saas-001",
+      "skill": "saas-subscription-pricing",
+      "promptSha256": "eb91bfc5273f04153a9df28046ba5aeec54e7c30bc57a81180cadd555da7e460",
+      "skillContextSha256": "27631ce4b1b58e512bf9538acb439dc7939391164f8bb23a45fa236643354bf7",
+      "skillBodySha256": "803b9e92a14e43eb330236879411f8a904f3cbe5f7fed29f2afaa9a019a8a14e",
+      "skillReferenceSha256": [
+        {
+          "path": "references/pricing-packaging-patterns.md",
+          "sha256": "8deeca895c50ab7f0e02b067f38dc0e93dcf5066b6d8423a6438341373575127"
+        }
+      ],
+      "skillLoadedPromptSha256": "acbc7e1490dbff20514549bbb9b25d2b3ceef12f3dc7408daa43235329052d61",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "buyer-fit": 4,
+          "packaging": 5,
+          "economics": 3,
+          "migration": 0,
+          "support-sales": 4
+        },
+        "criticalFailures": [
+          "Missing rollout, migration, grandfathering, communications, and experiment plan.",
+          "Unit economics include unsupported or internally inconsistent margin/churn assumptions."
+        ],
+        "rationale": "Strong tier table, limits, overages, support, procurement, and expansion paths. However, economics are not tied to marginal costs and contain inconsistencies, and the required experiment/rollout and migration plan is absent.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-saas-pricing-core-v0-20260701-arithmetic-guardrails-outputs/subscription-pricing-saas-001-baseline.md",
+        "outputSha256": "d077fb43a54a11ac5e4208aa7ab1cfcf4a54dc06cbc1a761a4cd43ee3cab131e",
+        "latencyMs": 16162,
+        "usage": {
+          "input_tokens": 254,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1188,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1442
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "buyer-fit": 5,
+          "packaging": 5,
+          "economics": 5,
+          "migration": 5,
+          "support-sales": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive hybrid architecture with clear tiers, buyer/procurement gates, limits, overage controls, annual terms, unit economics, abuse protections, rollout experiments, grandfathering, communications, and sales/support enablement.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-saas-pricing-core-v0-20260701-arithmetic-guardrails-outputs/subscription-pricing-saas-001-skill-loaded.md",
+        "outputSha256": "b8c5700ba09603fbad0543aff594724c5da8a5258b404e4392c84933d01a584a",
+        "latencyMs": 13313,
+        "usage": {
+          "input_tokens": 2463,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1336,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3799
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-saas-pricing-core-v0-20260701-arithmetic-guardrails-outputs/subscription-pricing-saas-001-judge-raw.md",
+      "judgeOutputSha256": "365698927c52bf6fbd5b296b9d604c8dac0de4683440beb40bbed9ad35fc36c3",
+      "judgeLatencyMs": 11919,
+      "judgeUsage": {
+        "input_tokens": 2726,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 620,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3346
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "subscription-pricing-saas-001",
+      "promptType": "positive",
+      "expectedSkill": "saas-subscription-pricing",
+      "triggeredSkills": [
+        "saas-subscription-pricing"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1972,
+      "usage": {
+        "input_tokens": 177,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 29,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 206
+      }
+    },
+    {
+      "taskId": "subscription-pricing-saas-001",
+      "promptType": "negative-control",
+      "expectedSkill": "saas-subscription-pricing",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2126,
+      "usage": {
+        "input_tokens": 137,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 66,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 203
+      }
+    }
+  ]
+}
