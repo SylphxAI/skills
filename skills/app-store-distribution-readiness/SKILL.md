@@ -13,7 +13,15 @@ Use this skill to prepare software for real-world distribution channels, not jus
 2. Read `references/distribution-channel-matrix.md`.
 3. Build channel-specific readiness: metadata, screenshots, payments, privacy, testing, review, release, support.
 4. Identify OS integration requirements: permissions, notifications, storage, backup, update, file associations, startup behavior.
-5. Produce launch blockers, review risks, and release checklist.
+5. For subscription apps, map subscription disclosures, restore/refund/revoke states, server entitlement truth, reviewer evidence, and support ownership before submission.
+6. Produce launch blockers, review risks, release checklist, and owner/evidence map.
+
+## Guardrails
+
+- Do not submit subscription apps without exact price, duration, renewal, trial end, cancellation, restore, and refund/support wording matched across app, store metadata, and screenshots.
+- Do not treat local client state as entitlement truth; subscription entitlement must reconcile with App Store / Play events and server validation.
+- Do not rely on store review notes alone; attach test accounts, sandbox products, reviewer steps, screenshots, support URLs, privacy evidence, and owner sign-off.
+- Do not roll out broadly until crash, purchase, restore, refund/revoke, notification permission, and support-contact telemetry are readable.
 
 ## Output format
 
@@ -26,6 +34,13 @@ Readiness matrix:
 
 OS/platform details:
 - <detail>
+
+Subscription and entitlement evidence:
+- <item> -> owner, proof link/artifact
+
+Review package:
+- Apple:
+- Google:
 
 Launch blockers:
 - <blocker and owner>
