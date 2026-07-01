@@ -1,0 +1,10 @@
+skill: enterprise-plan-migration-review
+positive_prompts:
+  - "Review an enterprise SaaS migration from legacy Pro and custom Enterprise plans into a new packaging model with changed seats, feature gates, usage caps, discounts, invoices, support tiers, and renewal exceptions."
+  - "Audit enterprise plan migration, packaging transition, entitlement change, grandfathering, and customer communication questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Design an App Store rejection appeal."
+expected_behavior:
+  - "Maps cohorts, contracts, entitlements, billing objects, discounts, invoices, notices, exceptions, and renewal triggers."
+  - "Includes rehearsal, customer communication, support readiness, rollback, post-migration access verification, and revenue checks."
+  - "Flags hidden grandfathering debt, silent feature loss, invoice disputes, spreadsheet entitlement truth, and access/billing mismatches."

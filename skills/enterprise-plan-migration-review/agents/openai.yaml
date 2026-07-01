@@ -1,0 +1,4 @@
+interface:
+  display_name: "Enterprise Plan Migration Review"
+  short_description: "Audit enterprise plan migrations"
+  default_prompt: "Use $enterprise-plan-migration-review to review an enterprise plan migration."

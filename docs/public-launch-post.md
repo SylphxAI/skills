@@ -25,7 +25,7 @@ Most AI-agent skill repos become prompt dumps. We wanted something closer to a p
 
 Current coverage:
 
-- 155 preview skills;
+- 163 preview skills;
 - product lifecycle, UI, growth, pricing, payments, mobile/game systems, distribution, desktop OS, backup, support, privacy, abuse/fraud, incidents, analytics, renewals, enterprise onboarding, AI model routing, metrics layers, localization QA, audit readiness, sales qualification, enterprise expansion, usage metering, AI red-team review, data residency, privacy assessment, partner channels, customer training, revenue recognition, legal terms, product analytics instrumentation, customer references, status page ops, support-engineering escalation, procurement packaging, trial conversion, ABM, RevOps CRM governance, security exceptions, admin audit logs, data lineage, community events, marketplace trust economics, product-led sales routing, contract redlines, customer success playbooks, sales commissions, feature prioritization, data erasure, API deprecation, marketplace quality scoring, onboarding migration runbooks, and skill marketplace operations;
 - generated registry and static catalog;
 - validation for schema, eval coverage, catalog coverage, reference structure, behavior examples, and catalog drift.

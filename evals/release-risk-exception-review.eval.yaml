@@ -1,0 +1,10 @@
+skill: release-risk-exception-review
+positive_prompts:
+  - "Review a release exception where a SaaS launch wants to ship with a failing non-critical test, a performance regression, incomplete rollback proof, feature flags, customer impact, monitoring, and remediation commitments."
+  - "Audit release risk exception, launch gate waiver, known issue acceptance, test failure, compliance gap, performance regression, and rollback-readiness questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Design partner support certification."
+expected_behavior:
+  - "Classifies the blocked gate, risk type, customer impact, authority, evidence, compensating controls, rollout guardrails, monitoring, rollback, expiry, and remediation owner."
+  - "Includes stricter treatment for security, privacy, data loss, payment, availability, compliance, and contractual risks."
+  - "Flags silent risk acceptance, generic approval, unobservable failures, missing rollback, unlimited exceptions, and stale remediation."

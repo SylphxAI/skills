@@ -1,0 +1,10 @@
+skill: security-changelog-disclosure-review
+positive_prompts:
+  - "Plan a security changelog disclosure for a dependency vulnerability fix affecting older self-hosted versions with severity triage, affected scope, customer mitigation, trust center update, support macros, embargo concerns, and monitoring."
+  - "Audit security changelog, vulnerability disclosure, advisory, release notes, trust center update, customer security notification, embargo, and remediation-timeline questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Design marketplace dispute resolution."
+expected_behavior:
+  - "Classifies severity, exploitability, affected versions, customer exposure, remediation state, disclosure type, embargo constraints, and customer action."
+  - "Includes approved wording, trust center and release-note updates, support/sales alignment, mitigation guidance, monitoring, and post-disclosure review."
+  - "Flags exploit-enabling detail, vague customer-impacting notes, overstated remediation, divergent messaging, and uncertain scope."

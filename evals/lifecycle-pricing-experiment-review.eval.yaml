@@ -1,0 +1,10 @@
+skill: lifecycle-pricing-experiment-review
+positive_prompts:
+  - "Design a lifecycle pricing experiment for a SaaS product testing annual upgrade discounts, renewal save offers, usage-threshold upgrade prompts, holdouts, billing QA, margin guardrails, and support handling."
+  - "Audit lifecycle pricing experiment, offer test, upgrade nudge, renewal discount, winback, annual conversion, and monetization guardrail questions where ownership, evidence, customer communication, metrics, and exception handling are unclear."
+negative_prompts:
+  - "Review a data deletion runbook."
+expected_behavior:
+  - "Defines lifecycle stage, hypothesis, eligibility, variants, holdouts, billing QA, revenue metrics, retention metrics, and stop conditions."
+  - "Includes invoice, tax, entitlement, proration, refund, support, customer messaging, and readout requirements."
+  - "Flags conversion-only optimization, unfair pricing exposure, unverifiable billing, cohort overrides, and trust-damaging offers."

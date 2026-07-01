@@ -7,7 +7,7 @@ This repository grows around high-demand job clusters, not random one-off prompt
 The repository foundation is production-ready:
 
 - public repo, CI, registry, catalog, and install verification exist;
-- 155 preview skills are present with evals, behavior examples, and references;
+- 163 preview skills are present with evals, behavior examples, and references;
 - quality bar and original-synthesis policy are explicit;
 - high-leverage product cells now cover strategy, opportunity scoring, agentic workflows, revenue, usage pricing, unit economics, payouts, mobile/game retention, live events, referrals, accessibility, store policy risk, Steam, Microsoft Store, macOS, Windows, developer tools, creator onboarding, skill evals, catalog automation, marketplace moderation, win-back, customer health, enterprise readiness, sales demos, data portability, data import/migration, release health, experiment design, permission UX, localization, admin settings IA, account recovery, security questionnaires, billing reconciliation, game soft launch, community launch ops, feature flags, partner ecosystems, tax/invoicing, user preferences, support QA, customer feedback, in-product education, offline sync, AI feature risk, creator ranking quality, brand trust, sunset/deprecation, API quotas, data quality observability, search/discovery relevance, SDK onboarding, release trains, risk governance, content-policy appeals, support deflection, partner co-marketing, trust centers, service levels, procurement security, customer advisory boards, AI eval regression ops, certification programs, revenue forecasting, community governance, compliance evidence rooms, reliability learning, lifecycle email, partner due diligence, data governance access, experimentation governance, observability cost governance, accessibility conformance, contract renewals, enterprise onboarding, model routing, research repositories, support workforce planning, metrics layers, localization QA, compliance audit readiness, sales qualification, enterprise expansion health, usage metering accuracy, AI safety red teams, data residency, privacy impact assessment, partner channel programs, customer training academies, revenue recognition, legal terms, product analytics instrumentation, customer reference programs, status page ops, support-engineering escalation, procurement packaging, trial conversion sales assist, ABM, RevOps CRM governance, enterprise security exceptions, admin audit logs, data lineage, customer community events, marketplace trust economics, product-led sales routing, contract redlines, customer success playbooks, sales commissions, feature prioritization, data erasure, API deprecation, marketplace quality scoring, customer onboarding migration runbooks, and marketplace ops.
 
@@ -107,6 +107,9 @@ The repository foundation is production-ready:
 - `lifecycle-email-system-review`
 - `localization-market-expansion-review`
 - `localization-quality-program-review`
+- `enterprise-plan-migration-review`
+- `lifecycle-pricing-experiment-review`
+
 
 ### 5. Marketing Design Pack
 
@@ -139,6 +142,9 @@ The repository foundation is production-ready:
 - `feature-sunset-deprecation-review`
 - `offline-sync-conflict-review`
 - `changelog-and-release-notes`
+- `release-risk-exception-review`
+- `app-review-response-ops-review`
+
 
 ### 7. Operations, Trust & Support Pack
 
@@ -170,6 +176,10 @@ The repository foundation is production-ready:
 - `help-center-architecture`
 - `support-deflection-knowledge-base-review`
 - `accessibility-product-review`
+- `data-subject-request-ops-review`
+- `partner-support-enablement-review`
+- `security-changelog-disclosure-review`
+
 
 ### 8. Developer, Marketplace & Skill Ops Pack
 
@@ -196,6 +206,8 @@ The repository foundation is production-ready:
 - `skill-eval-designer`
 - `ai-eval-regression-ops-review`
 - `skill-catalog-generator`
+- `marketplace-dispute-resolution-review`
+
 
 ## What will attract stars
 
