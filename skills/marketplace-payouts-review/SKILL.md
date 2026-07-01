@@ -15,7 +15,8 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 4. Separate ledger truth, displayed balances, provider state, policy decisions, and support evidence.
 5. Define reserve/hold governance: reason codes, release criteria, SLA, owner, evidence, escalation, and appeal path.
 6. Cover tax forms, withholding, sanctions screening, country eligibility, payout provider constraints, failed transfers, and negative balances.
-7. Produce formal payout state machine, fee table, risk controls, support views, audit invariants, and reconciliation checks.
+7. Make payout policy concrete: clearing delay, reserve percent/duration, payout cadence, minimum threshold, supported currencies, provider fees, conversion policy, and fee responsibility.
+8. Produce formal payout state machine, fee table, risk controls, seller dashboard/support workflow, trust metrics, audit invariants, and reconciliation checks.
 
 ## Guardrails
 
@@ -29,6 +30,8 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 ```text
 Marketplace/payout context:
 Fee and risk model:
+Payout policy:
+- Cadence / clearing delay / minimum threshold / currencies / provider fees:
 
 Payout flow:
 - <state> -> owner, evidence, user message
@@ -38,6 +41,9 @@ Formal state machine:
 
 Decision table:
 - <scenario> -> balance action, payout action, support action
+
+Seller dashboard and support workflow:
+- <seller-visible status> -> explanation, evidence, next action, SLA, support/admin control
 
 Reserve/hold governance:
 - <hold/reserve type> -> trigger, scope, release criteria, SLA, owner, appeal/support path
@@ -53,4 +59,7 @@ Audit invariants:
 
 Open risks:
 - <risk> -> mitigation
+
+Trust metrics:
+- <creator trust, support load, reversal loss, payout latency, reconciliation health metric>
 ```
