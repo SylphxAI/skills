@@ -27,7 +27,7 @@
 - `payment-14` — Refund, cancellation, revocation, dispute, chargeback, billing retry, grace, account hold, pause, and expiration have different customer-access and risk semantics.
 - `payment-15` — Reconciliation must cover provider state, internal ledger, entitlement projection, invoices, taxes, fees, settlement, refunds, disputes, and support overrides.
 - `payment-16` — Manual correction is a ledger event with actor, reason, evidence, approval, expiry, and customer-visible explanation; never mutate provider payloads or ledger history.
-- `payment-17` — Launch gates must include out-of-order events, duplicate webhooks, delayed renewals, restore-before-webhook, webhook-before-client, partial refund, chargeback, provider outage, dead-letter replay, and projector replay from zero.
+- `payment-17` — Launch gates must include out-of-order events, duplicate webhooks, delayed renewals, restore-before-webhook, webhook-before-client, partial refund, chargeback, provider outage, dead-letter replay, and projector replay from zero, each tied to a dashboard, alert, rollback/kill switch, owner, and approval artifact.
 - `payment-18` — Customer trust requires temporary access or grace only when policy permits, clear status messaging, fast restore/retry paths, and support-safe remediation for false revocations.
 
 ## State machine
@@ -142,6 +142,28 @@ Runbooks: missing purchase, duplicate charge, failed renewal, restore conflict, 
 - Refund/dispute support macro and ledger view ready.
 - Metrics cover checkout start, provider confirmation, grant latency, webhook lag, duplicate rate, dead-letter count, provider/entitlement mismatch, refund-to-revoke latency, dispute-to-review latency, restore failure, manual override count, support contact, settlement mismatch, tax/fee mismatch, and false revocation.
 
+## Observability and rollback controls
+
+Required launch dashboards and alerts:
+
+| Dashboard / alert | Signal | Starter threshold | Owner | Rollback or response |
+| --- | --- | --- | --- | --- |
+| Webhook ingestion | lag, retry count, duplicate rate, dead-letter count | lag above launch SLO, DLQ nonzero, duplicate spike | payments on-call | pause fulfillment for affected provider, replay queue, status message |
+| Entitlement projection | grant latency, provider/entitlement mismatch, projector errors | grant latency above SLO or mismatch above zero for paid confirmations | payments on-call | replay projector, disable risky grant path, temporary policy-approved grace |
+| Refund/dispute handling | refund-to-revoke latency, dispute-to-review latency, false revoke reports | latency above policy or support spike | payments + support | pause auto-revoke for affected lineage, route manual review |
+| Restore/account linking | restore failure, identity conflict, duplicate account grant | restore failure spike or conflict queue breach | support + payments | disable automatic transfer, require provider proof |
+| Finance close | settlement, fee, tax, invoice, refund, dispute mismatch | unreconciled close exception | finance | block finance signoff; no entitlement edit unless provider state changes |
+| Customer trust | missing-entitlement tickets, false revocation, payment-status confusion | duplicate support theme spike | support owner | pinned status, macro, temporary grace where allowed |
+
+Rollback controls:
+
+- Provider kill switch: pause new grants for one provider while preserving existing valid access where policy allows.
+- Projector rollback: pin previous projection version, replay from ledger after fix, compare before/after affected users.
+- Auto-revoke pause: route refund/dispute revokes to manual review for a provider/product while investigating false positives.
+- Promo kill switch: stop promo redemption without touching paid entitlements.
+- Support grace control: issue expiring temporary access with reason code and approval during provider outage.
+- Customer messaging: payment pending, restore in progress, refund processed, dispute review, and degraded-mode notices.
+
 ## Release gate fixtures
 
 Before launch, run and record:
@@ -158,3 +180,5 @@ Before launch, run and record:
 - Provider API outage and stale status handling.
 - Queue dead-letter, replay, and projector rebuild from zero.
 - Settlement, tax, fee, refund, and dispute finance reconciliation.
+- Observability dashboard drill: webhook lag, DLQ, mismatch, grant latency, refund-to-revoke, dispute-to-review, restore failure, support tickets.
+- Rollback drill: provider kill switch, projector rollback, auto-revoke pause, promo kill switch, support grace control, and customer message.

@@ -14,7 +14,7 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 3. Map catalog, checkout, receipt/webhook processing, idempotent ledger ingestion, entitlement projection, refund/revoke/dispute handling, support corrections, settlement, and reconciliation.
 4. Define provider-specific precedence for Apple IAP, Google Play Billing, Stripe/web checkout, wallets, promo/admin grants, restore purchases, renewals, refunds, chargebacks, and delayed events.
 5. Check platform-specific constraints, sandbox/live separation, fallback paths, customer messaging, finance close, and operational rollback.
-6. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability, and launch checklist.
+6. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability dashboards, rollback controls, and launch checklist.
 
 ## Guardrails
 
@@ -25,6 +25,7 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 - Do not silently edit entitlements; append corrective ledger events and replay the projector.
 - Do not let support agents change provider truth. Support corrections must be role-gated, reason-coded, expiring where appropriate, and auditable.
 - Do not ship payments without fee, tax, settlement, invoice, refund, dispute, and entitlement reconciliation evidence.
+- Do not call release gates complete unless every gate names the fixture, dashboard/alert, rollback or kill-switch path, owner, and approval evidence.
 
 ## Output format
 
@@ -56,6 +57,10 @@ Support-safe correction flow:
 Blockers:
 - <blocker>
 
+Observability and rollback controls:
+- <dashboard/alert> -> <signal, threshold, owner, runbook>
+- <rollback/kill switch> -> <scope, trigger, customer impact, recovery proof>
+
 Release gates:
-- <gate> -> <test fixture, observability, rollback, owner approval>
+- <gate> -> <test fixture, dashboard/alert, rollback or kill switch, owner approval>
 ```

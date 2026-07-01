@@ -26,6 +26,7 @@ A strong answer after loading the skill should:
 - Separates refund, cancellation, partial refund, revocation, chargeback, grace, billing retry, restore, promo, and support adjustments instead of collapsing them into one revoke policy.
 - Includes reconciliation across provider state, internal ledger, entitlements, invoices, taxes, fees, settlement, refunds, disputes, support overrides, and finance close.
 - Defines support-safe correction tooling, role-gated manual grants/revokes, customer messaging, launch fixtures, observability, dead-letter replay, and projector rebuild gates.
+- Defines observability dashboards, alerts, provider kill switches, projector rollback, auto-revoke pause, promo kill switch, support grace controls, customer messaging, and owner approval evidence for release gates.
 
 It should also produce the artifact shape requested by `skills/payment-platform-readiness/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -44,3 +45,4 @@ The skill should not load for this prompt unless the user adds an explicit payme
 - Separates refund, cancellation, partial refund, revocation, chargeback, grace, billing retry, restore, promo, and support adjustments instead of collapsing them into one revoke policy.
 - Includes reconciliation across provider state, internal ledger, entitlements, invoices, taxes, fees, settlement, refunds, disputes, support overrides, and finance close.
 - Defines support-safe correction tooling, role-gated manual grants/revokes, customer messaging, launch fixtures, observability, dead-letter replay, and projector rebuild gates.
+- Defines observability dashboards, alerts, provider kill switches, projector rollback, auto-revoke pause, promo kill switch, support grace controls, customer messaging, and owner approval evidence for release gates.
