@@ -253,7 +253,7 @@ Project identity and delivery boundary are recorded in
 
 Installability is not the same as usefulness. The repository now includes a paired baseline-vs-skill benchmark framework in [`benchmarks/skill-behavior/`](./benchmarks/skill-behavior/), an optional OpenAI Responses API runner, and the methodology in [`docs/skill-benchmark-methodology.md`](./docs/skill-benchmark-methodology.md).
 
-Current public status: skills are schema-validated, install-verified, and the current benchmark evidence across `core-product-v0` plus `hard-product-v0` supports a repository-level **Useful** claim: 25 current task samples, +0.59 average skill uplift, 92.0% skill win rate, 100.0% non-regression rate, and 0.0% negative-control over-trigger rate. The current suite also reports answer token/latency overhead so quality gains can be weighed against added context cost. This is not a SOTA claim: the remaining SOTA-candidate gap is shared-task multi-model evidence.
+Current public status: skills are schema-validated, install-verified, and the current benchmark evidence across `core-product-v0` plus `hard-product-v0` supports the repository-level **SOTA candidate** tier: 25 current task samples, +0.94 average skill uplift, 96.0% skill win rate, 100.0% non-regression rate, 0.0% negative-control over-trigger rate, positive confidence interval, and passing shared-task multi-model overlap. The current suite also reports answer token/latency overhead so quality gains can be weighed against added context cost. This is still a bounded benchmark claim, not an unqualified claim that every individual skill is SOTA in every downstream product context.
 
 ## Quality bar
 
