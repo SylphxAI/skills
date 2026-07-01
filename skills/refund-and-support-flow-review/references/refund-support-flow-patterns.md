@@ -11,6 +11,15 @@ platform_redirect   refund_rejected      review_required      appeal_opened
 
 Abuse review is an overlay, not the default path.
 
+For subscriptions, keep entitlement states explicit:
+
+```text
+active -> refund_confirmed -> pending_revoke -> grace_elapsed -> revoked
+active -> chargeback_opened -> disputed_hold -> dispute_won -> active
+disputed_hold -> dispute_lost -> revoked
+revoked -> repurchase_or_appeal_approved -> active
+```
+
 ## Rule IDs
 
 - `refund-flow-1` — Identify who controls the refund: app store, payment processor, marketplace, or internal support.
@@ -23,6 +32,10 @@ Abuse review is an overlay, not the default path.
 - `refund-flow-8` — Refund copy should be factual, non-accusatory, and specific about access consequences.
 - `refund-flow-9` — Appeals need evidence requirements, expected timeline, and a reversible hold state.
 - `refund-flow-10` — Refund data should feed product quality loops: accidental purchase, unclear pricing, support gaps, or policy mismatch.
+- `refund-flow-11` — Apple App Store, Google Play, Stripe, chargebacks, and internal goodwill refunds need separate authority, webhook/notification signal, dedupe key, entitlement action, and support route.
+- `refund-flow-12` — Entitlement changes must be driven by a server-side entitlement ledger/history, not client state or support notes.
+- `refund-flow-13` — Abuse enforcement needs score bands, evidence, false-positive review, approval thresholds for bans, and appeal timelines.
+- `refund-flow-14` — Support dashboards should expose refund source, order/transaction IDs, entitlement state, grace/revoke time, chargeback status, goodwill history, abuse tier, and prior cases.
 
 ## Decision table
 
@@ -33,6 +46,29 @@ Abuse review is an overlay, not the default path.
 | Consumable spent before refund | Reconcile ledger, avoid surprise debt by default | Risk score if repeated | Route repeated high-value cases to review |
 | Chargeback | Pause disputed entitlement | Commerce-limited pending review | Ask user to resolve dispute or contact support |
 | Repeated refund abuse | Revoke where possible | Commerce limit or manual review | Use evidence-based macro and appeal path |
+
+## Provider table
+
+| Provider/channel | Signal | Dedupe key | Entitlement action |
+| --- | --- | --- | --- |
+| Apple App Store | App Store Server Notifications such as revoke/refund events | original_transaction_id + notification id | Set pending_revoke or revoked according to product grace policy |
+| Google Play | Real-time developer notifications and voided purchases | purchase_token + notification id | Set pending_revoke/revoked and reconcile restore-purchase state |
+| Stripe refund | `charge.refunded` / refund webhook | charge/refund id | Apply refund policy and entitlement grace/revoke state |
+| Stripe chargeback | dispute opened/won/lost webhooks | dispute id | Move entitlement to disputed_hold, then restore or revoke after outcome |
+| Internal goodwill | support-approved adjustment | ticket id + approval id | Usually preserve entitlement or maintain until current period end |
+
+## Abuse score pattern
+
+Use explainable scoring rather than one-off judgment:
+
+- recent refund count and value;
+- refund timing after purchase;
+- usage/consumption after purchase;
+- repeated chargebacks;
+- linked devices/payment methods/accounts;
+- prior support and appeal outcomes.
+
+Example bands: low = inform only; medium = warning and skip future grace; high = commerce limit/manual review; severe = suspension only with approval and appeal route.
 
 ## Support macro pattern
 
@@ -45,3 +81,5 @@ We received confirmation that this purchase was refunded. The refunded premium a
 ## Event schema
 
 Track: `refund_requested`, `refund_redirect_shown`, `refund_detected`, `entitlement_adjusted_after_refund`, `refund_user_notified`, `refund_support_case_opened`, `commerce_limited`, `appeal_opened`, `appeal_resolved`.
+
+Dashboards should include refund rate by provider, entitlement revocation lag, chargeback open/win/loss, goodwill usage, abuse-tier transitions, support volume, appeal outcomes, churn after refund, and product quality reason codes.

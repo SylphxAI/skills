@@ -21,6 +21,8 @@ A strong answer after loading the skill should:
 
 - Separates refund, entitlement, account action, support, and abuse review.
 - Rejects automatic bans and coercive repurchase threats.
+- Separates Apple, Google, Stripe, chargeback, and goodwill authority with provider signals, dedupe keys, and entitlement actions.
+- Defines server-side entitlement states, abuse score bands, false-positive controls, approval thresholds, support dashboards, and metrics.
 
 It should also produce the artifact shape requested by `skills/refund-and-support-flow-review/SKILL.md`, such as a review, state model, decision table, event schema, checklist, or implementation-ready plan.
 
@@ -34,3 +36,5 @@ The skill should not load for this prompt unless the user adds an explicit refun
 
 - Separates refund, entitlement, account action, support, and abuse review.
 - Rejects automatic bans and coercive repurchase threats.
+- Separates Apple, Google, Stripe, chargeback, and goodwill authority with provider signals, dedupe keys, and entitlement actions.
+- Defines server-side entitlement states, abuse score bands, false-positive controls, approval thresholds, support dashboards, and metrics.
