@@ -14,7 +14,9 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 3. Map catalog, checkout, receipt/webhook processing, idempotent ledger ingestion, entitlement projection, refund/revoke/dispute handling, support corrections, settlement, and reconciliation.
 4. Define provider-specific precedence for Apple IAP, Google Play Billing, Stripe/web checkout, wallets, promo/admin grants, restore purchases, renewals, refunds, chargebacks, and delayed events.
 5. Check platform-specific constraints, sandbox/live separation, fallback paths, customer messaging, finance close, and operational rollback.
-6. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability dashboards, rollback controls, and launch checklist.
+6. For outages or backlogs, define explicit ingestion states: paused, quarantined, deduplicated, ordered by provider effective time, replaying, projector-repaired, finance-reconciled, and resumed.
+7. For invoice/tax/finance-close launches, model invoice, tax, coupon, credit note, refund, dispute, fee, settlement, revenue export, entitlement, dunning, and manual adjustment as separate events with owners and exception queues.
+8. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability dashboards, rollback controls, and launch checklist.
 
 ## Guardrails
 
@@ -50,9 +52,13 @@ Provider precedence rules:
 
 Reconciliation and finance close:
 - <money/settlement/tax/fee/entitlement check> -> <source, cadence, owner, exception action>
+- Explicit close events -> invoice_created / tax_calculated / coupon_applied / credit_note_issued / payment_succeeded_or_failed / refund_or_dispute / fee_recorded / settlement_received / revenue_exported / manual_adjustment
 
 Support-safe correction flow:
 - <case> -> <lookup evidence, allowed action, approval, ledger event, customer message>
+
+Webhook outage replay flow:
+- <state> -> owner, evidence, ordering/idempotency rule, exit gate, customer/support impact
 
 Blockers:
 - <blocker>
