@@ -29,6 +29,9 @@
 - `payment-16` — Manual correction is a ledger event with actor, reason, evidence, approval, expiry, and customer-visible explanation; never mutate provider payloads or ledger history.
 - `payment-17` — Launch gates must include out-of-order events, duplicate webhooks, delayed renewals, restore-before-webhook, webhook-before-client, partial refund, chargeback, provider outage, dead-letter replay, and projector replay from zero, each tied to a dashboard, alert, rollback/kill switch, owner, and approval artifact.
 - `payment-18` — Customer trust requires temporary access or grace only when policy permits, clear status messaging, fast restore/retry paths, and support-safe remediation for false revocations.
+- `payment-19` — Webhook outages and backlogs need explicit replay states: paused, quarantined, deduplicated, ordered by provider effective time, replaying, projector-repaired, finance-reconciled, and resumed; arrival order is evidence, not entitlement truth.
+- `payment-20` — Month-close readiness requires separate ledger events and owners for invoice, tax, coupon, credit note, payment, refund, dispute, fee, settlement, revenue export, entitlement, dunning, and manual adjustment; invoice status is not access truth.
+- `payment-21` — Finance-close gates need numeric tolerances, source systems, owner, exception queue, SLA, and close-blocking rule; vague "reconcile monthly" language is not launch-ready.
 
 ## State machine
 
@@ -69,6 +72,7 @@ Provider precedence:
 | Support/admin | role-gated internal adjustment | adjustment ID | temporary grant, revoke, correction, or note with actor/reason/expiry |
 
 Ordering rule: accept valid events in arrival order, store provider effective time, then recompute entitlement from lineage and policy. Never rely on "last webhook wins."
+For replay, sort projection by provider effective time within provider lineage after dedupe; preserve received_at for audit and SLA metrics.
 
 ## Refund, chargeback, and access semantics
 
@@ -119,11 +123,63 @@ Exception handling:
 | Account restore conflict | block automatic transfer, route support with provider proof |
 | Fee/tax/settlement mismatch | finance exception, no entitlement edit unless payment state changes |
 
+## Webhook outage replay state machine
+
+Use this when provider notifications, webhooks, RTDN, settlement files, or client callbacks drift:
+
+| State | Owner | Evidence | Ordering and idempotency rule | Exit gate |
+| --- | --- | --- | --- | --- |
+| ingestion_paused | payments incident commander | provider status, lag alert, freeze flag | stop side effects; continue durable capture where safe | affected providers and products identified |
+| events_quarantined | payments on-call | raw payload hash, provider event ID, received_at, account/product scope | store only; no entitlement mutation from client success callbacks | quarantine backlog complete |
+| events_deduplicated | payments engineer | provider event IDs, notification UUIDs, purchase tokens, invoice/payment IDs | duplicate events become no-op ledger evidence | duplicate and collision report reviewed |
+| events_ordered | payments engineer | provider lineage, effective_at, received_at, sequence/version when available | replay by provider effective time within lineage, never last-webhook-wins | ordering assumptions documented |
+| ledger_replaying | payments engineer | append-only ledger events and repair events | append compensating events; do not patch prior payloads or entitlements | replay completes without dead-letter errors |
+| projector_repaired | entitlement owner | projection version, before/after diff, affected account list | rebuild projection from zero and compare changed access | false-revoke and over-grant review complete |
+| finance_reconciled | finance owner | settlement, invoice, tax, fee, refund, dispute, revenue export checks | money close exceptions do not directly edit entitlement | exception queue has owner and SLA |
+| resumed | incident commander | dashboard green, support macros, customer notices, owner approval | resume side effects and provider-specific processing | post-incident review created |
+
+Customer trust during replay: keep policy-approved temporary access for verified payers when provider truth is delayed; message "payment is being verified" rather than "payment failed" until provider evidence supports failure. Support can issue expiring access only through a correction ledger event with reason, approval, expiry, and customer-visible note.
+
+Replay runbooks should also name dead-letter handling for each provider: quarantine reason, retry budget, poison event owner, payload hash, source provider ticket when needed, replay decision, and final disposition. The incident review is incomplete unless it records provider timeline, retry/dead-letter metrics, projector before/after diff, false-revoke/over-grant account list, finance exception list, customer/support themes, permanent control fix, and approval artifact.
+
+## Invoice, tax, and finance-close event model
+
+Invoice and tax launches need ledger events that finance can close without spreadsheet inference:
+
+| Event | Required fields | Owner | Close check |
+| --- | --- | --- | --- |
+| `invoice_created` | invoice_id, account_id, line_items, product_ids, period, currency, due_at | billing | invoice lines match catalog and entitlement periods |
+| `tax_calculated` | invoice_id, jurisdiction, tax_rate/source, taxable_amount, tax_amount, exemption evidence | finance/tax owner | tax report totals match invoices and provider export |
+| `coupon_applied` | coupon_id, discount_amount, eligibility, expiry, approver when manual | billing/growth owner | discount policy and revenue impact approved |
+| `credit_note_issued` | credit_note_id, invoice_id, amount, reason, approver, customer message | finance/support | credit note reconciles to invoice and revenue export |
+| `payment_succeeded` / `payment_failed` | payment_intent/charge, invoice_id, amount, method, failure_code | billing | payment state maps to dunning and entitlement policy |
+| `refund_issued` / `dispute_opened` | refund_id/dispute_id, invoice/charge, amount, reason, evidence | support/finance | refund/dispute maps to ledger, tax, fees, and access effect |
+| `fee_recorded` | provider fee, FX fee, chargeback fee, tax fee, settlement_id | finance | fees reconcile to provider settlement |
+| `settlement_received` | settlement_id, gross, fees, net, currency, deposit date | finance | settlement equals invoices minus refunds/disputes/fees within tolerance |
+| `revenue_exported` | export_id, accounting period, revenue lines, deferred/reversal flags | finance | revenue recognition export ties to ledger and exceptions |
+| `manual_adjustment` | actor, reason, approval, source_case_id, ledger effect, expiry, customer-visible reason | support/finance | adjustment has approval and is included in close exceptions |
+| `entitlement_granted` / `entitlement_revoked` | entitlement_id, account_id, source ledger event, access period, projection_version | entitlement owner | access state ties to paid/grace/dunning/revoke policy |
+| `dunning_started` / `dunning_exhausted` | invoice_id, retry schedule, grace end, suspension date, customer message | billing/support | dunning state matches entitlement and customer notices |
+
+Month-close exceptions need named owner, tolerance, SLA, customer impact, and resolution action. Examples: invoice-paid/no-entitlement, active-entitlement/unpaid-invoice, tax mismatch, provider fee mismatch, settlement shortfall, duplicate credit note, unresolved dispute, support adjustment without approval, and revenue export mismatch.
+
+Starter tolerance table:
+
+| Close check | Source systems | Cadence | Starter tolerance | Owner | Close blocker |
+| --- | --- | --- | --- | --- | --- |
+| Invoice to ledger | Stripe invoice export, internal ledger | daily and month-close | zero missing paid invoices | billing ops | any paid invoice missing ledger event |
+| Tax/VAT | tax engine, invoice lines, tax report | daily in launch, month-close | zero jurisdiction/rate mismatches unless tax owner approves | tax owner | unowned tax mismatch |
+| Fees and settlement | processor fees, settlement/payout report, bank deposit | daily | currency rounding only; no unexplained amount over approved threshold | finance/treasury | unexplained settlement shortfall |
+| Refunds, disputes, credit notes | provider refund/dispute report, credit note export, ledger | daily and close | zero unmatched money events | finance/support | unmatched refund/dispute/credit note |
+| Entitlement exposure | entitlement projection, invoices, dunning state | hourly launch, daily steady state | zero paid-without-access and zero unpaid-active outside policy grace | entitlement owner | stale access or false revoke without owner |
+| Revenue export | ledger, revenue schedule, accounting export | close | export total equals approved ledger total within accounting tolerance | controller | unapproved revenue export mismatch |
+
 ## Support tooling
 
 Support console must show:
 
 - user/account and entitlement state with "why";
+- invoice lookup by invoice ID, account ID, subscription ID, payment intent/charge ID, tax document/export ID, entitlement ID, support case, and customer email;
 - provider identifiers and latest verified provider status;
 - ledger timeline, raw payload hash, projection version, and replay button;
 - invoice, tax, fee, settlement, refund, dispute, and chargeback records;

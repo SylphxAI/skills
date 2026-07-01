@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-hard-payment-platform-depth-20260701-minimax",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "payment-platform-store-refund-revoke-001",
+      "payment-platform-webhook-outage-replay-001",
+      "payment-platform-invoice-tax-close-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "f595caac2cee97d7641eb493f72dba092f1aa7df",
+      "branch": "codex/payment-platform-individual-evidence",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T21:33:32.551Z",
+    "completedAt": "2026-07-01T21:36:01.476Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "payment-platform-store-refund-revoke-001",
+      "skill": "payment-platform-readiness",
+      "promptSha256": "e01d9e366339575582f9cfa7ee74d29135ca368575ea98bf6839eb3af4f878ed",
+      "skillContextSha256": "7130b62843a2416ae1bd8c2c485bc72db157601fa8014832315cc385d20f8c59",
+      "skillBodySha256": "d10e8831d29c176221ff5213f8c0b68c8992aaf9cc08763cecc7940f19ff03bc",
+      "skillReferenceSha256": [
+        {
+          "path": "references/payment-platform-patterns.md",
+          "sha256": "63b5a00721f618cf3ce3405d726fd8230317d5adfbec607699dbbb3489e35c15"
+        }
+      ],
+      "skillLoadedPromptSha256": "c8f859d97755c1616292e36e94a3e2b7673b4a56b64f4d9df98e482c0b965505",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "provider-precedence": 2,
+          "entitlement-projection": 2,
+          "support-safe-correction": 3,
+          "reconciliation-observability": 3,
+          "release-gates": 3
+        },
+        "criticalFailures": [
+          "Admin/support override is ranked as always winning authority.",
+          "Entitlement model uses a mutable single record instead of an append-only replayable ledger.",
+          "Immediate refund revocation and orphan auto-revoke risk false revocations."
+        ],
+        "rationale": "Covers many scenarios and has useful tests, messaging, and reconciliation. However, it misses promo/support credit nuance, effective timestamp/idempotency detail, append-only ledger design, settlement/DLQ observability, and safe non-destructive correction principles.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-payment-platform-depth-20260701-minimax-outputs/payment-platform-store-refund-revoke-001-baseline.md",
+        "outputSha256": "ae86a1b63100a5aebc49f75c76d925868aec10b3945b2172845531092002647c",
+        "latencyMs": 18741,
+        "usage": {
+          "input_tokens": 310,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1338,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1648
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "provider-precedence": 5,
+          "entitlement-projection": 5,
+          "support-safe-correction": 5,
+          "reconciliation-observability": 5,
+          "release-gates": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive authority boundaries, replayable ledger projection, safe support corrections, reconciliation/observability, customer messaging, and concrete release gates. Minor format issue: precedence is not a literal table, but content satisfies the artifact.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-payment-platform-depth-20260701-minimax-outputs/payment-platform-store-refund-revoke-001-skill-loaded.md",
+        "outputSha256": "2916e50b5c336d00306c6611d44cd86b935d2c9312d4131c2abe3ed7a4b6ff40",
+        "latencyMs": 14836,
+        "usage": {
+          "input_tokens": 5738,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1657,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 7395
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-payment-platform-depth-20260701-minimax-outputs/payment-platform-store-refund-revoke-001-judge-raw.md",
+      "judgeOutputSha256": "d3a66c7cafe94caf0565170623c41fff21d12a467eb7990160a4b06663fbc5a3",
+      "judgeLatencyMs": 16058,
+      "judgeUsage": {
+        "input_tokens": 3465,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 829,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4294
+      }
+    },
+    {
+      "taskId": "payment-platform-webhook-outage-replay-001",
+      "skill": "payment-platform-readiness",
+      "promptSha256": "8770c108bb82d35d0fcaf6b25846c73a78bccdc5fae40b6cd6c0d6dd6b7f0799",
+      "skillContextSha256": "7130b62843a2416ae1bd8c2c485bc72db157601fa8014832315cc385d20f8c59",
+      "skillBodySha256": "d10e8831d29c176221ff5213f8c0b68c8992aaf9cc08763cecc7940f19ff03bc",
+      "skillReferenceSha256": [
+        {
+          "path": "references/payment-platform-patterns.md",
+          "sha256": "63b5a00721f618cf3ce3405d726fd8230317d5adfbec607699dbbb3489e35c15"
+        }
+      ],
+      "skillLoadedPromptSha256": "c3316b06a7bce0951e0ac69b42cf96472bfc0dd9be89db80eee669870c85aba7",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "replay-state-machine": 2,
+          "idempotent-ledger-repair": 2,
+          "entitlement-safety": 3,
+          "finance-reconciliation": 3,
+          "comms-recovery": 3
+        },
+        "criticalFailures": [],
+        "rationale": "Covers major areas but lacks a real outage state machine with evidence/owners per state. Idempotency omits lineage IDs, effective time, raw hashes, DLQ handling. Entitlement and finance plans are reasonable but incomplete on grace, taxes, disputes, dashboards, and rollback controls.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-payment-platform-depth-20260701-minimax-outputs/payment-platform-webhook-outage-replay-001-baseline.md",
+        "outputSha256": "a2c738d1ab346fd33c3403b0d76794725269191d2970c2935aa5cd37c857c768",
+        "latencyMs": 17350,
+        "usage": {
+          "input_tokens": 296,
+          "input_tokens_details": {
+            "cached_tokens": 256
+          },
+          "output_tokens": 1314,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1610
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "replay-state-machine": 5,
+          "idempotent-ledger-repair": 5,
+          "entitlement-safety": 5,
+          "finance-reconciliation": 4,
+          "comms-recovery": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Provides a clear state machine, append-only idempotent ledger repair, raw payload hashes, effective times, DLQ/collision handling, projector rebuild, client-callback quarantine, refund/dispute access handling, support-safe grace, recovery gates, comms, dashboards, kill switches, and review artifacts.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-payment-platform-depth-20260701-minimax-outputs/payment-platform-webhook-outage-replay-001-skill-loaded.md",
+        "outputSha256": "46709d719f9bd72a5117d302b62e1f4e409d3d520bff99481559297b616c8b95",
+        "latencyMs": 11873,
+        "usage": {
+          "input_tokens": 5724,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1397,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 7121
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-payment-platform-depth-20260701-minimax-outputs/payment-platform-webhook-outage-replay-001-judge-raw.md",
+      "judgeOutputSha256": "9d45762675c93f58fc5002e7a5bacef9cc8e515914cfdc6a387eeb0b915c475f",
+      "judgeLatencyMs": 12836,
+      "judgeUsage": {
+        "input_tokens": 2984,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 753,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3737
+      }
+    },
+    {
+      "taskId": "payment-platform-invoice-tax-close-001",
+      "skill": "payment-platform-readiness",
+      "promptSha256": "d1d29d7117eb43f6a23e4f3e59245e1f49862fa9d93b4a6bd5f53e428f3c8d6b",
+      "skillContextSha256": "7130b62843a2416ae1bd8c2c485bc72db157601fa8014832315cc385d20f8c59",
+      "skillBodySha256": "d10e8831d29c176221ff5213f8c0b68c8992aaf9cc08763cecc7940f19ff03bc",
+      "skillReferenceSha256": [
+        {
+          "path": "references/payment-platform-patterns.md",
+          "sha256": "63b5a00721f618cf3ce3405d726fd8230317d5adfbec607699dbbb3489e35c15"
+        }
+      ],
+      "skillLoadedPromptSha256": "b01c3fc39a0093fa1a26decb3b7dd8527df866c77d68b820fcd38e33e9f2eb79",
+      "baseline": {
+        "score": 3,
+        "criterionScores": {
+          "ledger-model": 3,
+          "finance-close": 3,
+          "entitlement-dunning": 2,
+          "support-controls": 4,
+          "launch-rollback": 4
+        },
+        "criticalFailures": [
+          "Ledger omits explicit coupon_applied, settlement, fee, and manual_adjustment events.",
+          "Entitlement contract is underdefined and risks coupling access to billing outcomes."
+        ],
+        "rationale": "Strong gates, audit logging, observability, and rollback. However ledger coverage is incomplete, finance close lacks clear owners and full fee/settlement/refund/credit-note detail, and entitlement/dunning separation is too shallow for the stated reconciliation risk.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-payment-platform-depth-20260701-minimax-outputs/payment-platform-invoice-tax-close-001-baseline.md",
+        "outputSha256": "4d95ee341ef55cfd9e0d9af49766b30b69ee72617e47324eaa07c7d3df79226e",
+        "latencyMs": 18532,
+        "usage": {
+          "input_tokens": 308,
+          "input_tokens_details": {
+            "cached_tokens": 307
+          },
+          "output_tokens": 2430,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2738
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "ledger-model": 5,
+          "finance-close": 5,
+          "entitlement-dunning": 5,
+          "support-controls": 5,
+          "launch-rollback": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive ledger, reconciliation ownership, tolerances, close blockers, entitlement projection, dunning states, support controls, fixtures, dashboards, and kill switches. Minor gap: sandbox/live separation is noted as a blocker rather than fully operationalized.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-hard-payment-platform-depth-20260701-minimax-outputs/payment-platform-invoice-tax-close-001-skill-loaded.md",
+        "outputSha256": "f570d8e7c0f709a07b6739c53389c412c594613c280eb4481ba74234a1af47e8",
+        "latencyMs": 13647,
+        "usage": {
+          "input_tokens": 5736,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1532,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 7268
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-hard-payment-platform-depth-20260701-minimax-outputs/payment-platform-invoice-tax-close-001-judge-raw.md",
+      "judgeOutputSha256": "2105de15739ea3dfb913f83d7bbb4365a9f918802ccfe3f5fd073326276f3ecf",
+      "judgeLatencyMs": 14052,
+      "judgeUsage": {
+        "input_tokens": 3153,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 821,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3974
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "payment-platform-store-refund-revoke-001",
+      "promptType": "positive",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [
+        "payment-platform-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1698,
+      "usage": {
+        "input_tokens": 236,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 30,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 266
+      }
+    },
+    {
+      "taskId": "payment-platform-store-refund-revoke-001",
+      "promptType": "negative-control",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2083,
+      "usage": {
+        "input_tokens": 150,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 38,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 188
+      }
+    },
+    {
+      "taskId": "payment-platform-webhook-outage-replay-001",
+      "promptType": "positive",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [
+        "payment-platform-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2141,
+      "usage": {
+        "input_tokens": 223,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 41,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 264
+      }
+    },
+    {
+      "taskId": "payment-platform-webhook-outage-replay-001",
+      "promptType": "negative-control",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1674,
+      "usage": {
+        "input_tokens": 146,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 38,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 184
+      }
+    },
+    {
+      "taskId": "payment-platform-invoice-tax-close-001",
+      "promptType": "positive",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [
+        "payment-platform-readiness"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1877,
+      "usage": {
+        "input_tokens": 238,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 57,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 295
+      }
+    },
+    {
+      "taskId": "payment-platform-invoice-tax-close-001",
+      "promptType": "negative-control",
+      "expectedSkill": "payment-platform-readiness",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1503,
+      "usage": {
+        "input_tokens": 146,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 34,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 180
+      }
+    }
+  ]
+}
