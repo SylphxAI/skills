@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-lumen-refund-guidance",
+  "model": "sylphx/lumen",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 3400,
+    "answerWordLimit": 650,
+    "maxAttempts": 3,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 150000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "refund-entitlement-support-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "2029e6c55bc3b1007abd36967f94c062a8b860e9",
+      "branch": "codex/refund-provider-entitlement-guidance",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T13:59:27.510Z",
+    "completedAt": "2026-07-01T14:02:20.695Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "sylphx/lumen",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "refund-entitlement-support-001",
+      "skill": "refund-and-support-flow-review",
+      "promptSha256": "3da10d49c24fd17021798e29b3b2c4fe96cb57565c3ddf55b9e2c01303638c65",
+      "skillContextSha256": "a8979ae4270b06413025bcbc00b6ea50b9f65ed7c1f93415e61e694c4aed874a",
+      "skillBodySha256": "8a7d26c39cbd85ac7643394cba9e1ddb4d95c58f0c633e1ce2cf6972c321954e",
+      "skillReferenceSha256": [
+        {
+          "path": "references/refund-support-flow-patterns.md",
+          "sha256": "06f05815e9e794e5e9639a6161fdefd57d454b6d971bbe044762a0ad5c80b5b5"
+        }
+      ],
+      "skillLoadedPromptSha256": "d4624284e6844fec76a56d96f9e1a760cabb0590e17bb728eb5ca5456ff79970",
+      "baseline": {
+        "score": 4.625,
+        "criterionScores": {
+          "channel-separation": 5,
+          "entitlements": 5,
+          "abuse-trust-balance": 4,
+          "support-readiness": 4,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-refund-guidance-outputs/refund-entitlement-support-001-baseline.md",
+        "outputSha256": "6ac1a3a4789d263d8b685c285cb21dde74c99aba624acdc857c7f87c88b08e2b",
+        "latencyMs": 58155,
+        "usage": {
+          "input_tokens": 101,
+          "input_tokens_details": {
+            "cached_tokens": 64
+          },
+          "output_tokens": 2166,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 2267
+        }
+      },
+      "skillLoaded": {
+        "score": 4.875,
+        "criterionScores": {
+          "channel-separation": 5,
+          "entitlements": 5,
+          "abuse-trust-balance": 5,
+          "support-readiness": 4,
+          "measurement": 5
+        },
+        "criticalFailures": [],
+        "rationale": "",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-refund-guidance-outputs/refund-entitlement-support-001-skill-loaded.md",
+        "outputSha256": "ad63cecb36500790a7ddb11eea854b822c93dac63ce6022f7058db0c08eac253",
+        "latencyMs": 56541,
+        "usage": {
+          "input_tokens": 1731,
+          "input_tokens_details": {
+            "cached_tokens": 1728
+          },
+          "output_tokens": 2183,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3914
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-lumen-refund-guidance-outputs/refund-entitlement-support-001-judge-raw.md",
+      "judgeOutputSha256": "5bdf9c700a01dc99f5ed637548667cd94a08881f96da460c3dec814c7f237e38",
+      "judgeLatencyMs": 38492,
+      "judgeUsage": {
+        "input_tokens": 2092,
+        "input_tokens_details": {
+          "cached_tokens": 320
+        },
+        "output_tokens": 1517,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3609
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "refund-entitlement-support-001",
+      "promptType": "positive",
+      "expectedSkill": "refund-and-support-flow-review",
+      "triggeredSkills": [
+        "refund-and-support-flow-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 9045,
+      "usage": {
+        "input_tokens": 187,
+        "input_tokens_details": {
+          "cached_tokens": 128
+        },
+        "output_tokens": 151,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 338
+      }
+    },
+    {
+      "taskId": "refund-entitlement-support-001",
+      "promptType": "negative-control",
+      "expectedSkill": "refund-and-support-flow-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 10947,
+      "usage": {
+        "input_tokens": 139,
+        "input_tokens_details": {
+          "cached_tokens": 128
+        },
+        "output_tokens": 343,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 482
+      }
+    }
+  ]
+}
