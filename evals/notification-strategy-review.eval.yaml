@@ -8,5 +8,6 @@ expected_behavior:
   - "Builds a taxonomy by channel, consent, frequency, and user value."
   - "Includes quiet hours, preferences, event schema, and negative-signal metrics."
   - "Defines lifecycle journey states, contextual permission asks, denied-permission recovery, regional consent routing, and channel-specific unsubscribe/opt-out handling."
+  - "Defines explicit global, category, lifecycle-event, channel, cooldown, digest, quiet-hours, and emergency-override frequency budgets."
   - "Adds cross-channel dedupe, suppression, digesting, cooldowns, priority rules, and stop conditions for conversion, cancellation, support contact, unsubscribe, complaint, or stale triggers."
   - "Measures delivery, opt-in, opt-out, unsubscribe, complaint/spam, retention, support contacts, and notification-attributed churn against holdouts."
