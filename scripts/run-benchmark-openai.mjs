@@ -7,7 +7,7 @@ const repoRoot = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
 const defaultBaseUrl = 'https://api.openai.com/v1';
 
 function usage() {
-  console.error(`Usage: node scripts/run-benchmark-openai.mjs <tasks.json> --out <result.json> [options]\n\nOptions:\n  --run-id <id>              Stable run identifier. Defaults to timestamp.\n  --model <model>            Answer model. Defaults to OPENAI_MODEL or gpt-5.5.\n  --judge-model <model>      Judge/trigger model. Defaults to BENCHMARK_JUDGE_MODEL or --model.\n  --base-url <url>           OpenAI-compatible API base URL. Defaults to https://api.openai.com/v1.\n  --output-dir <dir>         Directory for raw outputs. Defaults to /tmp/skill-benchmark-<run-id>.\n  --temperature <number>     Answer temperature. Defaults to 0.2.\n  --max-output-tokens <n>    Answer token cap. Defaults to 3500.\n  --start <n>                Zero-based task offset after optional task-id filtering. Defaults to 0.\n  --limit <n>                Run only n selected tasks. Useful for smoke tests and shards.\n  --task-id <id>             Run a specific task id. Repeat or comma-separate for multiple tasks.\n  --no-references            Do not include skill reference files in skill-loaded prompts.\n  --skip-trigger-checks      Do not run positive/negative trigger classifier checks.\n  --resume                   Reuse an existing result file and skip completed samples.\n  --dry-run                  Validate inputs and print planned calls without contacting the API.\n`);
+  console.error(`Usage: node scripts/run-benchmark-openai.mjs <tasks.json> --out <result.json> [options]\n\nOptions:\n  --run-id <id>              Stable run identifier. Defaults to timestamp.\n  --model <model>            Answer model. Defaults to OPENAI_MODEL or gpt-5.5.\n  --judge-model <model>      Judge/trigger model. Defaults to BENCHMARK_JUDGE_MODEL or --model.\n  --base-url <url>           OpenAI-compatible API base URL. Defaults to https://api.openai.com/v1.\n  --output-dir <dir>         Directory for raw outputs. Defaults to /tmp/skill-benchmark-<run-id>.\n  --temperature <number>     Answer temperature. Defaults to 0.2.\n  --max-output-tokens <n>    Answer token cap. Defaults to 3500.\n  --answer-word-limit <n>    Add the same concise-answer budget to baseline and skill prompts.\n  --max-attempts <n>         API attempts per model call. Defaults to 5.\n  --retry-base-ms <n>        Base retry delay in milliseconds. Defaults to 1500.\n  --request-timeout-ms <n>   Per-attempt HTTP timeout. Defaults to 90000.\n  --start <n>                Zero-based task offset after optional task-id filtering. Defaults to 0.\n  --limit <n>                Run only n selected tasks. Useful for smoke tests and shards.\n  --task-id <id>             Run a specific task id. Repeat or comma-separate for multiple tasks.\n  --no-references            Do not include skill reference files in skill-loaded prompts.\n  --skip-trigger-checks      Do not run positive/negative trigger classifier checks.\n  --resume                   Reuse an existing result file and skip completed samples.\n  --dry-run                  Validate inputs and print planned calls without contacting the API.\n`);
   process.exit(1);
 }
 
@@ -18,6 +18,9 @@ function parseArgs(argv) {
     baseUrl: process.env.OPENAI_BASE_URL || defaultBaseUrl,
     temperature: 0.2,
     maxOutputTokens: 3500,
+    maxAttempts: 5,
+    retryBaseMs: 1500,
+    requestTimeoutMs: 90000,
     includeReferences: true,
     triggerChecks: true,
     taskIds: [],
@@ -36,6 +39,10 @@ function parseArgs(argv) {
     else if (arg === '--output-dir') args.outputDir = argv[++i];
     else if (arg === '--temperature') args.temperature = Number(argv[++i]);
     else if (arg === '--max-output-tokens') args.maxOutputTokens = Number(argv[++i]);
+    else if (arg === '--answer-word-limit') args.answerWordLimit = Number(argv[++i]);
+    else if (arg === '--max-attempts') args.maxAttempts = Number(argv[++i]);
+    else if (arg === '--retry-base-ms') args.retryBaseMs = Number(argv[++i]);
+    else if (arg === '--request-timeout-ms') args.requestTimeoutMs = Number(argv[++i]);
     else if (arg === '--start') args.start = Number(argv[++i]);
     else if (arg === '--limit') args.limit = Number(argv[++i]);
     else if (arg === '--task-id') args.taskIds.push(...argv[++i].split(',').map((value) => value.trim()).filter(Boolean));
@@ -49,6 +56,10 @@ function parseArgs(argv) {
   if (positional.length !== 1 || !args.out) usage();
   if (!Number.isFinite(args.temperature)) throw new Error('--temperature must be a number');
   if (!Number.isInteger(args.maxOutputTokens) || args.maxOutputTokens < 1) throw new Error('--max-output-tokens must be a positive integer');
+  if (args.answerWordLimit !== undefined && (!Number.isInteger(args.answerWordLimit) || args.answerWordLimit < 50)) throw new Error('--answer-word-limit must be an integer of at least 50');
+  if (!Number.isInteger(args.maxAttempts) || args.maxAttempts < 1) throw new Error('--max-attempts must be a positive integer');
+  if (!Number.isInteger(args.retryBaseMs) || args.retryBaseMs < 0) throw new Error('--retry-base-ms must be a non-negative integer');
+  if (!Number.isInteger(args.requestTimeoutMs) || args.requestTimeoutMs < 1000) throw new Error('--request-timeout-ms must be at least 1000');
   if (!Number.isInteger(args.start) || args.start < 0) throw new Error('--start must be a non-negative integer');
   if (args.limit !== undefined && (!Number.isInteger(args.limit) || args.limit < 1)) throw new Error('--limit must be a positive integer');
   args.taskFile = positional[0];
@@ -94,11 +105,20 @@ function extractSkillDescription(skillMarkdown) {
   return description ? description[1].replace(/^['"]|['"]$/g, '') : '';
 }
 
-function skillLoadedPrompt({ task, skillMarkdown, references }) {
+function answerBudgetInstruction(answerWordLimit) {
+  if (!answerWordLimit) return '';
+  return `\n\n## Answer budget\nKeep the answer concise and audit-friendly. Do not exceed ${answerWordLimit} words. Prioritize the requested artifacts and rubric-critical decisions over explanation.`;
+}
+
+function userTaskPrompt(task, answerWordLimit) {
+  return `${task.prompt}${answerBudgetInstruction(answerWordLimit)}`;
+}
+
+function skillLoadedPrompt({ task, skillMarkdown, references, answerWordLimit }) {
   const referenceBlock = references.length
     ? references.map((ref) => `\n### ${ref.path}\n\n${ref.content}`).join('\n')
     : '\nNo reference files included.';
-  return `Use the following skill context to answer the user task. Do not mention the benchmark setup.\n\n## Skill: ${task.skill}\n\n${skillMarkdown}\n\n## Skill references\n${referenceBlock}\n\n## User task\n\n${task.prompt}`;
+  return `Use the following skill context to answer the user task. Do not mention the benchmark setup.\n\n## Skill: ${task.skill}\n\n${skillMarkdown}\n\n## Skill references\n${referenceBlock}\n\n## User task\n\n${userTaskPrompt(task, answerWordLimit)}`;
 }
 
 function outputText(response) {
@@ -121,7 +141,15 @@ function outputRef(file) {
   return rel.startsWith('..') ? file : rel;
 }
 
-async function callResponses({ apiKey, baseUrl, model, input, maxOutputTokens, temperature, textFormat, metadata }) {
+function callLabel(metadata) {
+  return [metadata?.taskId, metadata?.condition].filter(Boolean).join(' ') || 'api-call';
+}
+
+function warnRetry({ metadata, attempt, maxAttempts, error, retryDelayMs }) {
+  console.warn(`[benchmark-runner] ${callLabel(metadata)} attempt ${attempt}/${maxAttempts} failed; retrying in ${retryDelayMs}ms: ${error.message}`);
+}
+
+async function callResponses({ apiKey, baseUrl, model, input, maxOutputTokens, temperature, textFormat, metadata, maxAttempts, retryBaseMs, requestTimeoutMs }) {
   const body = {
     model,
     input,
@@ -134,16 +162,35 @@ async function callResponses({ apiKey, baseUrl, model, input, maxOutputTokens, t
 
   const startedAt = Date.now();
   let lastError;
-  for (let attempt = 1; attempt <= 3; attempt += 1) {
-    const response = await fetch(`${baseUrl.replace(/\/$/, '')}/responses`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(body),
-    });
-    const raw = await response.text();
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), requestTimeoutMs);
+    let response;
+    let raw;
+    try {
+      response = await fetch(`${baseUrl.replace(/\/$/, '')}/responses`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(body),
+        signal: controller.signal,
+      });
+      raw = await response.text();
+    } catch (error) {
+      clearTimeout(timeout);
+      lastError = new Error(`OpenAI Responses API request failed (attempt ${attempt}/${maxAttempts}): ${error.name === 'AbortError' ? `timeout after ${requestTimeoutMs}ms` : error.message}`);
+      if (attempt < maxAttempts) {
+        const retryDelayMs = retryBaseMs * attempt;
+        warnRetry({ metadata, attempt, maxAttempts, error: lastError, retryDelayMs });
+        await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
+        continue;
+      }
+      throw lastError;
+    } finally {
+      clearTimeout(timeout);
+    }
     const latencyMs = Date.now() - startedAt;
     let parsed;
     try {
@@ -152,10 +199,12 @@ async function callResponses({ apiKey, baseUrl, model, input, maxOutputTokens, t
       parsed = { raw };
     }
     if (!response.ok) {
-      const message = parsed?.error?.message || raw;
-      lastError = new Error(`OpenAI Responses API failed (${response.status}, attempt ${attempt}/3): ${message}`);
-      if ((response.status === 429 || response.status >= 500) && attempt < 3) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+      const message = String(parsed?.error?.message || raw).slice(0, 800);
+      lastError = new Error(`OpenAI Responses API failed (${response.status}, attempt ${attempt}/${maxAttempts}): ${message}`);
+      if ((response.status === 429 || response.status >= 500) && attempt < maxAttempts) {
+        const retryDelayMs = retryBaseMs * attempt;
+        warnRetry({ metadata, attempt, maxAttempts, error: lastError, retryDelayMs });
+        await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
         continue;
       }
       throw lastError;
@@ -347,6 +396,10 @@ function makeResult({ suite, args, startedAt, completedAt, samples, triggerCheck
       baseUrl: args.baseUrl,
       temperature: args.temperature,
       maxOutputTokens: args.maxOutputTokens,
+      answerWordLimit: args.answerWordLimit || null,
+      maxAttempts: args.maxAttempts,
+      retryBaseMs: args.retryBaseMs,
+      requestTimeoutMs: args.requestTimeoutMs,
       includeReferences: args.includeReferences,
       selectedTaskIds,
       partial,
@@ -403,6 +456,10 @@ async function main() {
     answerCalls: tasks.length * 2,
     judgeCalls: tasks.length,
     triggerCheckCalls: args.triggerChecks ? tasks.length * 2 : 0,
+    answerWordLimit: args.answerWordLimit || null,
+    maxAttempts: args.maxAttempts,
+    retryBaseMs: args.retryBaseMs,
+    requestTimeoutMs: args.requestTimeoutMs,
     outputDir: args.outputDir,
     out: args.out,
   };
@@ -434,19 +491,25 @@ async function main() {
       apiKey,
       baseUrl: args.baseUrl,
       model: args.model,
-      input: task.prompt,
+      input: userTaskPrompt(task, args.answerWordLimit),
       maxOutputTokens: args.maxOutputTokens,
       temperature: args.temperature,
       metadata: { runId: args.runId, taskId: task.id, condition: 'baseline' },
+      maxAttempts: args.maxAttempts,
+      retryBaseMs: args.retryBaseMs,
+      requestTimeoutMs: args.requestTimeoutMs,
     });
     const skillLoaded = await callResponses({
       apiKey,
       baseUrl: args.baseUrl,
       model: args.model,
-      input: skillLoadedPrompt({ task, skillMarkdown, references }),
+      input: skillLoadedPrompt({ task, skillMarkdown, references, answerWordLimit: args.answerWordLimit }),
       maxOutputTokens: args.maxOutputTokens,
       temperature: args.temperature,
       metadata: { runId: args.runId, taskId: task.id, condition: 'skill-loaded' },
+      maxAttempts: args.maxAttempts,
+      retryBaseMs: args.retryBaseMs,
+      requestTimeoutMs: args.requestTimeoutMs,
     });
 
     const baselineFile = await writeOutput(args.outputDir, task.id, 'baseline', baseline.text);
@@ -467,6 +530,9 @@ async function main() {
       temperature: 0,
       textFormat: judgmentSchema(task),
       metadata: { runId: args.runId, taskId: task.id, condition: 'judge' },
+      maxAttempts: args.maxAttempts,
+      retryBaseMs: args.retryBaseMs,
+      requestTimeoutMs: args.requestTimeoutMs,
     });
     const judgeFile = await writeOutput(args.outputDir, task.id, 'judge-raw', judgment.text);
     const judgmentJson = coerceJudgment(task, parseModelJson(judgment.text, 'judge'));
@@ -499,6 +565,9 @@ async function main() {
           temperature: 0,
           textFormat: triggerSchema(),
           metadata: { runId: args.runId, taskId: task.id, condition: `trigger-${promptType}` },
+          maxAttempts: args.maxAttempts,
+          retryBaseMs: args.retryBaseMs,
+          requestTimeoutMs: args.requestTimeoutMs,
         });
         const parsed = parseModelJson(check.text, `trigger ${promptType}`);
         triggerChecks.push({
