@@ -9,11 +9,14 @@ Use this skill to convert subscription price increase, retention plan, grandfath
 
 ## Workflow
 
-1. Identify affected plans, cohorts, tenure, usage, willingness-to-pay, renewal timing, platform rules, consent/notice requirements, grandfathering choices, save offers, support paths, churn forecast, and guardrail metrics.
+1. Identify affected plans, cohorts, tenure, usage, willingness-to-pay, billing channel, region, renewal date, churn risk, platform rules, consent/notice requirements, grandfathering choices, save offers, support paths, churn forecast, and guardrail metrics.
 2. Read `references/subscription-price-increase-retention-patterns.md`.
 3. Classify the situation as broad price increase, cohort-specific increase, grandfathering sunset, annual-plan migration, packaging change, trial-to-paid price change, regional adjustment, or high-risk churn recovery.
-4. Define cohort strategy, value narrative, notice timeline, consent path, grandfathering/save-offer policy, cancellation recovery, support macros, refund handling, experiment/holdout plan, and revenue/churn monitoring.
-5. Produce subscription price-increase retention review, state machine, decision table, event schema, cohort checklist, support plan, and net-revenue monitoring plan.
+4. Build two explicit matrices before recommending offers:
+   - cohort matrix: plan, tenure, usage/adoption, billing channel, region, renewal window, churn risk, support/refund history, and price-change treatment;
+   - channel rule matrix: direct, App Store, and Google Play notice/consent, cancellation, renewal, refund, receipt/webhook, and fallback states.
+5. Define cohort strategy, value narrative, notice timeline, consent path, grandfathering/save-offer policy, cancellation recovery, support macros, refund handling, experiment/holdout plan, and revenue/churn monitoring.
+6. Produce subscription price-increase retention review, state machine, decision table, event schema, cohort checklist, support plan, and net-revenue monitoring plan.
 
 ## Guardrails
 
@@ -21,12 +24,22 @@ Use this skill to convert subscription price increase, retention plan, grandfath
 - Do not hide price increases in vague lifecycle messaging or make cancellation/recovery paths deceptive.
 - Do not use save offers that train customers to threaten churn unless eligibility, fairness, and measurement are explicit.
 - Do not assume store-billed and direct-billed subscriptions have identical consent, renewal, or cancellation behavior.
+- Do not state platform price-change rules as universal facts. Mark App Store and Google Play behavior as channel-specific, region-sensitive, and subject to current store-console/API verification.
+- Do not skip renewal-date and no-action states; define what happens when notice is delivered, consent is pending, consent is accepted, consent is declined, no response is received, renewal succeeds, or renewal fails.
 
 ## Output format
 
 ```text
 Subscription price-increase context:
 Audience / source of truth / risk boundary:
+
+Channel rule matrix:
+| Channel | Notice/consent | Renewal/no-action outcome | Cancellation/refund route | Evidence to verify |
+| --- | --- | --- | --- | --- |
+
+Priority cohort matrix:
+| Cohort | Channel/region/renewal window | Churn risk | Treatment | Guardrail |
+| --- | --- | --- | --- | --- |
 
 Retention and trust plan:
 | Area | Decision | Evidence | Risk | Owner |

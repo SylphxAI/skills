@@ -20,6 +20,7 @@ A weak generic answer would:
 A strong answer after loading the skill should:
 
 - Defines affected plans/cohorts, price sensitivity, billing channels, consent/notice timing, value narrative, grandfathering, save offers, cancellation recovery, support scripts, refund paths, experiments, and net-revenue/churn monitoring.
+- Builds explicit cohort and channel-rule matrices covering billing channel, region, renewal window, churn risk, direct billing, App Store, Google Play, consent/no-action states, cancellation, refunds, and verification evidence.
 - Separates broad increase, cohort-specific increase, grandfathering sunset, annual migration, packaging change, trial-to-paid change, regional adjustment, and churn recovery paths.
 - Flags headline-revenue bias, hidden price messaging, platform rule assumptions, dark-pattern cancellation, save-offer leakage, churn/support/refund blind spots, and missing cohort readback.
 
@@ -34,5 +35,6 @@ The skill should not load for this prompt unless the user adds an explicit subsc
 ## Expected behavior
 
 - Defines affected plans/cohorts, price sensitivity, billing channels, consent/notice timing, value narrative, grandfathering, save offers, cancellation recovery, support scripts, refund paths, experiments, and net-revenue/churn monitoring.
+- Builds explicit cohort and channel-rule matrices covering billing channel, region, renewal window, churn risk, direct billing, App Store, Google Play, consent/no-action states, cancellation, refunds, and verification evidence.
 - Separates broad increase, cohort-specific increase, grandfathering sunset, annual migration, packaging change, trial-to-paid change, regional adjustment, and churn recovery paths.
 - Flags headline-revenue bias, hidden price messaging, platform rule assumptions, dark-pattern cancellation, save-offer leakage, churn/support/refund blind spots, and missing cohort readback.
