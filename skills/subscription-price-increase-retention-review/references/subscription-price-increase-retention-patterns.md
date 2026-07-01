@@ -88,6 +88,31 @@ Save offers protect net revenue only when they are bounded. Use an explicit offe
 5. Observe consent, renewal, payment failure, cancellation intent, refund, complaint, and support load by cohort before opening the next tranche.
 6. Pause or roll back when guardrails breach; do not compensate with broader discounts unless the offer register and finance owner approve it.
 
+### Live rollout incident readback
+
+When a price change is already live and noisy, the first artifact is not a new campaign plan; it is an evidence readback and go/no-go decision.
+
+| Dimension | Required split |
+| --- | --- |
+| Region | launched country/territory, currency, tax display, language/localization, regional price delta |
+| Channel | direct, App Store, Google Play, reseller, enterprise invoice |
+| Plan/package | legacy plan, current plan, new package, annual, monthly, add-on/overage exposure |
+| Protected cohort | grandfathered, coupon/discount, education/nonprofit, hardship, sales exception, enterprise contract |
+| Renewal window | T-90/T-60/T-30/T-7, renewal week, grace/account-hold, just-renewed/refund window |
+| Signal breach | cancellation, downgrade, failed renewal, refund, dispute, complaint/social sentiment, support tickets, sales escalation |
+| Commercial readback | gross uplift, churn loss, refunds/credits, support cost, sales concessions, net revenue, projected LTV/NRR |
+
+Use a decision table with explicit owners:
+
+| Condition | Decision | Owner |
+| --- | --- | --- |
+| Contract or sales-exception breach risk | Stop automation; account-owner/legal review before any new notice | Sales/Legal |
+| Grandfathered or education trust breach | Pause cohort; extend protected period or restore prior price while policy is corrected | Pricing council + Support |
+| Country/localization complaint spike | Pause that region; correct tax-inclusive display, language, and effective date | Product/Growth |
+| Refund/dispute/support spike above threshold | Freeze affected channel; activate refund/goodwill macro and support escalation queue | Support/Billing |
+| Net revenue below control after churn/refunds/credits/support/sales concessions | Roll back or redesign price/packaging before scaling | Finance/Pricing |
+| Metrics recover and no blocker remains | Resume next tranche from T-90/T-60 cohorts only | Rollout owner |
+
 ## Decision table
 
 | Scenario | Primary decision | Required evidence | Failure mode |

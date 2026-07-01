@@ -16,9 +16,10 @@ Use this skill to convert subscription price increase, retention plan, grandfath
    - cohort matrix: plan, tenure, usage/adoption, billing channel, region, renewal window, churn risk, support/refund history, and price-change treatment;
    - discount/contract matrix: list price, current discount, contract term, sales exception, grandfathered status, usage overage exposure, renewal clause, and migration offer;
    - channel rule matrix: direct, App Store, and Google Play notice/consent, cancellation, renewal, refund, receipt/webhook, and fallback states.
-5. Decide launch sequence by renewal window: block unverifiable channels, delay cohorts too close to renewal unless notice is already valid, separate contract-governed accounts from self-serve automation, and pre-approve every exception owner.
-6. Define cohort strategy, value narrative, notice timeline, consent path, grandfathering/save-offer policy, cancellation recovery, support macros, sales exception thresholds, refund handling, experiment/holdout plan, revenue/churn monitoring, and rollback/mitigation triggers.
-7. Produce subscription price-increase retention review, state machine, decision table, event schema, cohort checklist, support plan, and net-revenue monitoring plan.
+5. If the rollout is already live or noisy, produce an incident readback matrix before recommending continuation: region × channel × plan/package × discount/grandfathering/education/enterprise-contract cohort × renewal window × churn/refund/complaint/support/sales-escalation signal.
+6. Decide launch sequence by renewal window: block unverifiable channels, delay cohorts too close to renewal unless notice is already valid, separate contract-governed accounts from self-serve automation, and pre-approve every exception owner.
+7. Define cohort strategy, value narrative, notice timeline, consent path, grandfathering/save-offer policy, cancellation recovery, support macros, sales exception thresholds, refund handling, experiment/holdout plan, revenue/churn/LTV monitoring, and rollback/mitigation triggers.
+8. Produce subscription price-increase retention review, state machine, decision table, event schema, cohort checklist, support plan, and net-revenue monitoring plan.
 
 ## Guardrails
 
@@ -46,6 +47,10 @@ Priority cohort matrix:
 | Cohort | Channel/region/renewal window | Churn risk | Treatment | Guardrail |
 | --- | --- | --- | --- | --- |
 
+Live rollout incident readback, when applicable:
+| Region | Channel | Plan/package | Discount/contract cohort | Signal breach | Decision | Owner |
+| --- | --- | --- | --- | --- | --- | --- |
+
 Discount, contract, and exception matrix:
 | Segment | Current discount/contract | Price-change treatment | Migration/exception path | Approval owner |
 | --- | --- | --- | --- | --- |
@@ -66,4 +71,7 @@ Rollback and mitigation triggers:
 
 Cohorts, value narrative, notices, save offers, cancellation recovery, support, refunds, metrics, and guardrails:
 - <trigger> -> <policy, metric, edge case, support note>
+
+Net revenue and LTV readback:
+- <cohort/channel> -> <gross uplift, churn, downgrades, refunds, credits/save cost, support cost, failed renewals, sales concessions, complaint/trust signal, projected LTV/NRR, decision>
 ```
