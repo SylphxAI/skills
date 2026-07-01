@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-entitlement-improved",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "subscription-entitlement-cross-platform-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "4eb73bd793e6f2f71e27c28373eee62465c6b02e",
+      "branch": "codex/rerun-entitlement-after-improvement",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T12:06:35.800Z",
+    "completedAt": "2026-07-01T12:08:07.713Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "skill": "subscription-entitlement-review",
+      "promptSha256": "e8c4f377eea213bf5c8afa15c3bf6c781a34b7c07020ffa8496c924c559d3b61",
+      "skillContextSha256": "af4782b4d68e7e2ebff4aaa0827550d6bdc151e07b098f58efa49a108e230e3c",
+      "skillBodySha256": "1d99622c1ef853f9bcb78d703f4918790b2d49767d7b635de7809c5e6410c794",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-entitlement-patterns.md",
+          "sha256": "9ffb73fc7b0c6e58a1d2366de363425f5b3614d36ceb781ed292f03e77fb2c28"
+        }
+      ],
+      "skillLoadedPromptSha256": "b9f90198c8172dab37be3b811fcfe4d032dca8ca9b973370839a6122c9947954",
+      "baseline": {
+        "score": 4.1,
+        "criterionScores": {
+          "source-of-truth": 4.3,
+          "channel-precedence": 4.2,
+          "state-transitions": 4,
+          "customer-support": 3.6,
+          "auditability": 3.8
+        },
+        "criticalFailures": [],
+        "rationale": "Strong overall design with server validation, restore, team seats, downgrades, refunds, and offline access. Less explicit event ordering, channel-specific precedence table, restored/offline state modeling, support diagnostics, admin visibility, and anomaly detection.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-entitlement-improved-outputs/subscription-entitlement-cross-platform-001-baseline.md",
+        "outputSha256": "a784991721f8937ec39be393394710e428734b84d8b0dadca40c9e75803fc64a",
+        "latencyMs": 33297,
+        "usage": {
+          "input_tokens": 107,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1734,
+          "output_tokens_details": {
+            "reasoning_tokens": 25
+          },
+          "total_tokens": 1841
+        }
+      },
+      "skillLoaded": {
+        "score": 4.9,
+        "criterionScores": {
+          "source-of-truth": 5,
+          "channel-precedence": 5,
+          "state-transitions": 4.7,
+          "customer-support": 5,
+          "auditability": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive ledger-based design with explicit channel precedence, conflict scoping, restore/offline rules, detailed audit events, and support diagnostics. Minor gap: paused/restored/offline are not all formal top-level states.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-entitlement-improved-outputs/subscription-entitlement-cross-platform-001-skill-loaded.md",
+        "outputSha256": "73b15cfebe0d34f18b79315c7f9d0d5b410783dd660002fdb616a39ca8d181a5",
+        "latencyMs": 30692,
+        "usage": {
+          "input_tokens": 2010,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1613,
+          "output_tokens_details": {
+            "reasoning_tokens": 17
+          },
+          "total_tokens": 3623
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-entitlement-improved-outputs/subscription-entitlement-cross-platform-001-judge-raw.md",
+      "judgeOutputSha256": "897961011d4302601bd97c3c18351971ec0fe831947fce22b360d5b272d26810",
+      "judgeLatencyMs": 21407,
+      "judgeUsage": {
+        "input_tokens": 4057,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 620,
+        "output_tokens_details": {
+          "reasoning_tokens": 404
+        },
+        "total_tokens": 4677
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-entitlement-review",
+      "triggeredSkills": [
+        "subscription-entitlement-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt directly asks to design subscription entitlement behavior across Stripe, App Store, Google Play, invoices, restore purchases, receipt validation, family sharing, team seats, downgrades, grace periods, refunds, chargebacks, and offline access—all core subscription and entitlement system concerns covered by the skill.",
+      "latencyMs": 2893,
+      "usage": {
+        "input_tokens": 232,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 78,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 310
+      }
+    },
+    {
+      "taskId": "subscription-entitlement-cross-platform-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-entitlement-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about planning a seasonal social media campaign for a consumer app, which is a marketing task. It does not directly involve subscription entitlements, billing, access states, trials, renewals, refunds, or related systems.",
+      "latencyMs": 3617,
+      "usage": {
+        "input_tokens": 183,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 65,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 248
+      }
+    }
+  ]
+}
