@@ -514,17 +514,60 @@ async function main() {
   const completedTaskIds = new Set(samples.map((sample) => sample.taskId));
   const startedAt = existing?.runner?.startedAt || new Date().toISOString();
   const selectedTaskIds = tasks.map((task) => task.id);
+  const triggerCheckKeys = new Set(triggerChecks.map((check) => `${check.taskId}\0${check.promptType}`));
+
+  async function checkpoint(partial = true) {
+    const result = await writeResultCheckpoint({ suite, args, startedAt, samples, triggerChecks, selectedTaskIds, partial });
+    if (partial) console.log(`Checkpointed ${samples.length}/${tasks.length} selected sample(s) to ${args.out}`);
+    return result;
+  }
+
+  async function runMissingTriggerChecks(task, skillDescription) {
+    if (!args.triggerChecks) return;
+    for (const [promptType, prompt] of [['positive', task.prompt], ['negative-control', task.negativeControlPrompt]]) {
+      const key = `${task.id}\0${promptType}`;
+      if (triggerCheckKeys.has(key)) continue;
+      const check = await callResponses({
+        apiKey,
+        baseUrl: args.baseUrl,
+        model: args.judgeModel,
+        input: triggerPrompt({ task, skillDescription, prompt }),
+        maxOutputTokens: 600,
+        temperature: 0,
+        textFormat: triggerSchema(),
+        metadata: { runId: args.runId, taskId: task.id, condition: `trigger-${promptType}` },
+        maxAttempts: args.maxAttempts,
+        retryBaseMs: args.retryBaseMs,
+        requestTimeoutMs: args.requestTimeoutMs,
+      });
+      const parsed = parseModelJson(check.text, `trigger ${promptType}`);
+      triggerChecks.push({
+        taskId: task.id,
+        promptType,
+        expectedSkill: task.skill,
+        triggeredSkills: parsed.shouldTrigger ? [task.skill] : [],
+        method: 'skill-description-binary-classifier',
+        rationale: parsed.rationale,
+        latencyMs: check.latencyMs,
+        usage: check.response.usage || null,
+      });
+      triggerCheckKeys.add(key);
+      await checkpoint(true);
+    }
+  }
 
   for (const task of tasks) {
-    if (completedTaskIds.has(task.id)) {
-      console.log(`Skipping completed task ${task.id}`);
-      continue;
-    }
     const skillDir = path.join(repoRoot, 'skills', task.skill);
     const skillMarkdown = await readTextIfExists(path.join(skillDir, 'SKILL.md'));
     if (!skillMarkdown) throw new Error(`Missing SKILL.md for ${task.skill}`);
-    const references = args.includeReferences ? await readReferenceFiles(skillDir) : [];
     const skillDescription = extractSkillDescription(skillMarkdown);
+
+    if (completedTaskIds.has(task.id)) {
+      console.log(`Skipping completed task ${task.id}`);
+      await runMissingTriggerChecks(task, skillDescription);
+      continue;
+    }
+    const references = args.includeReferences ? await readReferenceFiles(skillDir) : [];
     const baselineInput = userTaskPrompt(task, args.answerWordLimit);
     const skillInput = skillLoadedPrompt({ task, skillMarkdown, references, answerWordLimit: args.answerWordLimit });
 
@@ -599,42 +642,13 @@ async function main() {
       judgeLatencyMs: judgment.latencyMs,
       judgeUsage: judgment.response.usage || null,
     });
-
-    if (args.triggerChecks) {
-      for (const [promptType, prompt] of [['positive', task.prompt], ['negative-control', task.negativeControlPrompt]]) {
-        const check = await callResponses({
-          apiKey,
-          baseUrl: args.baseUrl,
-          model: args.judgeModel,
-          input: triggerPrompt({ task, skillDescription, prompt }),
-          maxOutputTokens: 600,
-          temperature: 0,
-          textFormat: triggerSchema(),
-          metadata: { runId: args.runId, taskId: task.id, condition: `trigger-${promptType}` },
-          maxAttempts: args.maxAttempts,
-          retryBaseMs: args.retryBaseMs,
-          requestTimeoutMs: args.requestTimeoutMs,
-        });
-        const parsed = parseModelJson(check.text, `trigger ${promptType}`);
-        triggerChecks.push({
-          taskId: task.id,
-          promptType,
-          expectedSkill: task.skill,
-          triggeredSkills: parsed.shouldTrigger ? [task.skill] : [],
-          method: 'skill-description-binary-classifier',
-          rationale: parsed.rationale,
-          latencyMs: check.latencyMs,
-          usage: check.response.usage || null,
-        });
-      }
-    }
-
     completedTaskIds.add(task.id);
-    await writeResultCheckpoint({ suite, args, startedAt, samples, triggerChecks, selectedTaskIds, partial: true });
-    console.log(`Checkpointed ${samples.length}/${tasks.length} selected sample(s) to ${args.out}`);
+    await checkpoint(true);
+
+    await runMissingTriggerChecks(task, skillDescription);
   }
 
-  const result = await writeResultCheckpoint({ suite, args, startedAt, samples, triggerChecks, selectedTaskIds, partial: false });
+  const result = await checkpoint(false);
   console.log(`Wrote benchmark result with ${result.samples.length} sample(s) to ${args.out}`);
 
 }
