@@ -45,7 +45,7 @@ Before that, call the skill **Preview / unproven** even if it passes repository 
 - `scripts/run-benchmark-openai.mjs` — optional OpenAI Responses API runner that generates raw outputs, blind judge scores, and result JSON.
 - `scripts/merge-benchmark-results.mjs` — merges non-overlapping shard result files into a full-suite result.
 - `scripts/validate-benchmarks.mjs` — validates task/result file shape and skill references.
-- `scripts/summarize-benchmark-results.mjs` — computes score deltas, win rates, trigger rates, and supported claim tier from result files.
+- `scripts/summarize-benchmark-results.mjs` — computes score deltas, win rates, trigger rates, answer token/latency overhead, and supported claim tier from result files.
 
 Prepare a run pack:
 
@@ -99,6 +99,7 @@ A result file is accepted only when it includes:
 
 Do not commit a generated result unless raw outputs or output hashes are reviewable and the run configuration is reproducible.
 New runner outputs also include `runner.source`, prompt hashes, and skill body/reference hashes so future skill edits do not blur which context produced a historical result.
+When available, usage and latency fields are summarized as answer-generation overhead. Judge and trigger-classifier overhead are audit costs, not skill-loaded answer overhead.
 
 ## Current suite coverage
 
