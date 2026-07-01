@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-desktop-os-improved",
+  "model": "openai/gpt-5.5@openai-codex",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 1800,
+    "answerWordLimit": 650,
+    "maxAttempts": 4,
+    "retryBaseMs": 2000,
+    "requestTimeoutMs": 90000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "desktop-os-integration-release-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "83b1b04bed8f7c6203e6b5fe2ac44e5372e5602e",
+      "branch": "codex/fix-desktop-os-benchmark-regression",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T12:36:26.973Z",
+    "completedAt": "2026-07-01T12:37:50.259Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5@openai-codex",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "desktop-os-integration-release-001",
+      "skill": "desktop-os-integration",
+      "promptSha256": "6842892a97437da94ac4a4f207430132ce63dc27ceed8b62db0730436d3daa9f",
+      "skillContextSha256": "0917bcea2c07950cf272fa9b771628d9949d7910baf3417a4b71ac658ac9f338",
+      "skillBodySha256": "fd6ad857a015dba0632540a3bc83e5b7b536a13f454760b68ccd96435645a9d6",
+      "skillReferenceSha256": [
+        {
+          "path": "references/desktop-os-integration-matrix.md",
+          "sha256": "fd8c87aefb440042e32f0d898a14e8200261403507354108cf668f081092427c"
+        }
+      ],
+      "skillLoadedPromptSha256": "6735429c897d7967b2665b845d83b98ffd736c2cb54a68959c0d11c78db3c3e9",
+      "baseline": {
+        "score": 4.1,
+        "criterionScores": {
+          "platform-native-fit": 4.5,
+          "trust-permissions": 4.5,
+          "release-integrity": 4.5,
+          "enterprise-readiness": 4.5,
+          "testability": 1.5
+        },
+        "criticalFailures": [
+          "Missing explicit regression test plan"
+        ],
+        "rationale": "Strong integration, trust, signing, and enterprise coverage, but mostly checklist/audit oriented. It lacks the required regression test plan with cross-OS, update, permission reset, and compatibility coverage.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-desktop-os-improved-outputs/desktop-os-integration-release-001-baseline.md",
+        "outputSha256": "ba1929266b1a492fe11b9efdab9b5e5a0ab772229842b3612b86adfdcbdc7504",
+        "latencyMs": 37973,
+        "usage": {
+          "input_tokens": 104,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1722,
+          "output_tokens_details": {
+            "reasoning_tokens": 47
+          },
+          "total_tokens": 1826
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "platform-native-fit": 5,
+          "trust-permissions": 5,
+          "release-integrity": 5,
+          "enterprise-readiness": 5,
+          "testability": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive desktop-native review covering macOS and Windows conventions, permissions, signing/notarization, updater rollback, crash reporting, enterprise deployment, diagnostics, and a detailed regression plan.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-desktop-os-improved-outputs/desktop-os-integration-release-001-skill-loaded.md",
+        "outputSha256": "a8f274a0e3ecf4a63037eead548c66a651ede4906d4873e228f1d904f886e68e",
+        "latencyMs": 29711,
+        "usage": {
+          "input_tokens": 1246,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 1584,
+          "output_tokens_details": {
+            "reasoning_tokens": 35
+          },
+          "total_tokens": 2830
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-desktop-os-improved-outputs/desktop-os-integration-release-001-judge-raw.md",
+      "judgeOutputSha256": "4bc5a2cf0b6d2c2f7575fc1bb27de526f02305367798eed167edc94f2660e0c2",
+      "judgeLatencyMs": 9839,
+      "judgeUsage": {
+        "input_tokens": 3972,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 474,
+        "output_tokens_details": {
+          "reasoning_tokens": 270
+        },
+        "total_tokens": 4446
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "desktop-os-integration-release-001",
+      "promptType": "positive",
+      "expectedSkill": "desktop-os-integration",
+      "triggeredSkills": [
+        "desktop-os-integration"
+      ],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt explicitly asks to review desktop OS integration for a macOS and Windows productivity app, covering auto-update, login items, file associations, drag-and-drop, notifications, tray/menu bar, deep links, sandbox/accessibility permissions, crash reporting, code signing, notarization, and enterprise install constraints—all directly within the skill description.",
+      "latencyMs": 3203,
+      "usage": {
+        "input_tokens": 226,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 85,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 311
+      }
+    },
+    {
+      "taskId": "desktop-os-integration-release-001",
+      "promptType": "negative-control",
+      "expectedSkill": "desktop-os-integration",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "rationale": "The prompt is about designing a daily login reward economy for a casual mobile game, which is game economy/retention design rather than desktop OS integration concerns like installers, tray/menu behavior, permissions, file associations, or OS-specific desktop settings.",
+      "latencyMs": 2555,
+      "usage": {
+        "input_tokens": 181,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 67,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 248
+      }
+    }
+  ]
+}
