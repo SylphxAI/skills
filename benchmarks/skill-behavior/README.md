@@ -62,6 +62,7 @@ npm run benchmark:run:openai -- benchmarks/skill-behavior/tasks/core-product-v0.
 
 Use repeated `--task-id` values, or a comma-separated `--task-id`, to rerun failed tasks without changing the suite.
 Use `--resume` with the same `--out` path to skip already-scored tasks and continue after a transient gateway failure. The runner checkpoints the result file after every completed task.
+Duplicate task reruns are useful for before/after analysis, but they do not increase repository-level sample depth. The summarizer reports duplicate task IDs and blocks claim upgrades for duplicate-containing summaries.
 
 Merge completed shards:
 
