@@ -7,4 +7,5 @@ negative_prompts:
 expected_behavior:
   - "Defines quota units, credit ledger, trust tiers, costly operations, abuse signals, throttling actions, review queues, appeals, developer messaging, upgrade path, cost monitoring, and feedback loops."
   - "Separates trial credits, promo credits, API quotas, AI token usage, compute/storage, expensive endpoints, multi-accounting, manual review, legitimate scale-up, and appeal paths."
+  - "Defines explicit activation, conversion, cost, abuse-loss, false-positive, appeal, support-load, exception-health, and developer-retention metrics."
   - "Flags ledger gaps, exposed thresholds, activation-killing friction, automated final actions, promo cycling, cost runaway, false positives, weak appeals, and unmeasured developer harm."

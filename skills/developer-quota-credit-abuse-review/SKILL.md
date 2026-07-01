@@ -13,7 +13,8 @@ Use this skill to convert developer quota, API credit, free trial, promo credit,
 2. Read `references/developer-quota-credit-abuse-patterns.md`.
 3. Classify the situation as free trial program, promo-credit campaign, API quota launch, AI token credit, compute/storage sandbox, suspected multi-accounting, expensive endpoint abuse, or legitimate scale-up request.
 4. Define quota ladder, credit ledger, trust-tier gating, fraud controls, throttling policy, reviewer queue, appeal path, cost monitoring, developer messaging, and upgrade/graduation path.
-5. Produce quota and credit abuse review, state machine, decision table, event schema, control checklist, support policy, and cost/activation monitoring plan.
+5. Define an explicit measurement matrix before final recommendations: cost, activation, conversion, abuse loss, false positives, support load, appeal outcomes, exception usage, and developer retention.
+6. Produce quota and credit abuse review, state machine, decision table, event schema, control checklist, support policy, and cost/activation monitoring plan.
 
 ## Guardrails
 
@@ -21,6 +22,8 @@ Use this skill to convert developer quota, API credit, free trial, promo credit,
 - Do not expose exact abuse signals, account-linking logic, or thresholds in developer-facing copy.
 - Do not issue credits without a ledger that supports reversals, expiry, attribution, and cost reporting.
 - Do not let automated throttles become final high-impact decisions without review and appeal.
+- Do not optimize abuse loss alone; quota controls must preserve legitimate activation, conversion, and developer retention.
+- Do not report cost guardrails without false-positive, appeal, support, and graduation metrics.
 
 ## Output format
 
@@ -34,4 +37,14 @@ Quota abuse control plan:
 
 Credits, quota tiers, costly operations, trust signals, throttles, reviews, appeals, and cost guardrails:
 - <trigger> -> <policy, metric, edge case, support note>
+
+Metrics and guardrails:
+| Metric family | What to measure | Guardrail / decision |
+| --- | --- | --- |
+| Activation |  |  |
+| Conversion |  |  |
+| Cost and abuse loss |  |  |
+| False positives / appeals |  |  |
+| Support load |  |  |
+| Developer retention |  |  |
 ```

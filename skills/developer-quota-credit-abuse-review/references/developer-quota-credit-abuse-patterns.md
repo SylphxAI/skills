@@ -19,6 +19,9 @@ credit_issued -> quota_applied -> usage_scored -> throttle_decided -> review_res
 - `quota-credit-abuse-6` — Protect legitimate scale-ups with clear upgrade path, usage forecasts, support route, appeal evidence, and temporary limit increases.
 - `quota-credit-abuse-7` — Monitor cost, activation, conversion, false positives, support tickets, abuse loss, quota exceptions, and developer retention together.
 - `quota-credit-abuse-8` — Feed confirmed abuse and appeal reversals back into quota tiers, promo mechanics, risk models, docs, and support macros.
+- `quota-credit-abuse-9` — Every throttle or credit-control change needs a paired success metric and harm metric; never ship only a cost-saving metric.
+- `quota-credit-abuse-10` — Manual review and appeals need quality metrics: time to decision, reversal rate, repeat harm after reversal, second-review coverage, and developer retention after appeal.
+- `quota-credit-abuse-11` — Graduation paths need measurable health: trial-to-paid conversion, verified-domain activation, payment verification completion, production app certification, committed-use upgrades, and exception-to-contract conversion.
 
 ## Decision table
 
@@ -39,8 +42,36 @@ credit_issued -> quota_applied -> usage_scored -> throttle_decided -> review_res
 - Metrics and event tracking prove whether the system is working.
 - Stale records, exceptions, and unresolved gaps have escalation paths.
 
+## Measurement matrix
+
+Treat quota controls as a product system, not only a fraud wall.
+
+| Metric family | Examples | Why it matters | Bad sign |
+| --- | --- | --- | --- |
+| Activation | first successful API call, first successful expensive endpoint after verification, time to first value, docs-to-key completion | Proves controls are not killing legitimate onboarding | credits saved but fewer developers reach first value |
+| Conversion | trial-to-paid conversion, payment verification completion, domain verification completion, app certification, committed-use upgrade, temporary lift to contract conversion | Shows whether graduation path works | high throttle rate with flat or falling paid conversion |
+| Cost | credit burn by source, cost per activated developer, cost per paid conversion, expensive endpoint spend, storage/bandwidth/GPU burn, cost anomaly MTTR | Keeps generosity commercially bounded | high free-credit cost with low activation quality |
+| Abuse loss | confirmed promo cycling value, blocked duplicate credit value, chargeback/credit reversal loss, repeated expensive endpoint abuse | Quantifies prevented loss without exposing thresholds | loss moves to a new campaign/source after control launch |
+| False positives | appeal reversal rate, manual-review overturn rate, support-restored credits, legitimate scale-up blocked, trusted developer throttle rate | Protects good developers from silent harm | low abuse loss but high reversal/support restore rate |
+| Support load | quota tickets per 1k active developers, appeal SLA, time to first response, macro deflection, second-review queue age | Ensures support path is real | throttles push load to support faster than Trust Ops can review |
+| Developer retention | D7/D30 retained developers by trust tier, churn after throttle, churn after denied appeal, return after successful appeal | Measures long-term trust | developers leave after controls even when not abusive |
+| Model/review quality | precision/recall on reviewed cases, reviewer disagreement, repeat harm after approved appeal, repeated false-positive feature | Improves controls over time | same false-positive cluster repeats across campaigns |
+| Exception health | temporary limit increases, exception expiry compliance, forecast accuracy, exception-to-paid conversion | Keeps legitimate scale-ups safe | many exceptions never expire or never convert |
+
+Minimum reporting slice:
+
+```text
+Before / after by trust tier:
+- activation: first_value_rate, time_to_first_value
+- conversion: trial_to_paid_rate, verification_completion_rate
+- cost: credit_burn_per_activated_developer, expensive_endpoint_cost
+- abuse: confirmed_abuse_loss, blocked_credit_value
+- harm: appeal_reversal_rate, legitimate_scaleup_blocked_rate, support_ticket_rate
+- retention: D30_retention_after_throttle, churn_after_denied_appeal
+```
+
 ## Event schema
 
-Track: `developer_credit_issued`, `developer_quota_applied`, `developer_usage_risk_scored`, `developer_quota_throttled`, `developer_credit_suspended`, `developer_quota_exception_granted`, `developer_quota_appeal_resolved`, `developer_credit_cost_reviewed`.
+Track: `developer_credit_issued`, `developer_quota_applied`, `developer_usage_risk_scored`, `developer_quota_throttled`, `developer_credit_suspended`, `developer_quota_exception_granted`, `developer_quota_appeal_resolved`, `developer_credit_cost_reviewed`, `developer_first_value_reached`, `developer_verification_completed`, `developer_trial_converted`, `developer_scaleup_requested`, `developer_scaleup_granted`, `developer_support_ticket_opened`, `developer_retained_after_throttle`.
 
-Recommended properties: `developer_id, account_id, app_id, credit_source, quota_unit, trust_tier, operation_type, cost_bucket, signal_type, action_type, reviewer_id, appeal_status, exception_status, ledger_status, decision`.
+Recommended properties: `developer_id, account_id, app_id, credit_source, quota_unit, trust_tier, operation_type, cost_bucket, signal_type, action_type, reviewer_id, appeal_status, exception_status, ledger_status, decision, activation_stage, conversion_stage, support_ticket_id, false_positive_reason, retention_cohort, cost_attribution_id`.
