@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "hard-product-v0",
+  "runId": "gateway-marketplace-hard-v0-20260701-compliance-release",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "marketplace-payout-compliance-release-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "aa093e2c2a11b24d2195c10d4f3964b405d1e3ce",
+      "branch": "codex/improve-marketplace-tax-hold-evidence",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T19:55:34.523Z",
+    "completedAt": "2026-07-01T19:56:27.273Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "marketplace-payout-compliance-release-001",
+      "skill": "marketplace-payouts-review",
+      "promptSha256": "bae12dd0a6af9886047465e62a9648691395341764b541583db1e4069809d047",
+      "skillContextSha256": "f7c57ed71d2b2abb1a5e3678ab31f0307b78e23bf41e55895998eafea0e81159",
+      "skillBodySha256": "844e1604de93e4412184f636312f888f4bf5ab2f5c4849e5ab3c51111291ea9c",
+      "skillReferenceSha256": [
+        {
+          "path": "references/marketplace-payout-systems.md",
+          "sha256": "11563a2c5327298406d8ce33a647bff4585d8a87e9ddb6e7ae94849b8023cd0b"
+        }
+      ],
+      "skillLoadedPromptSha256": "fd1e62a4ba767669c10257e70c78ebd608e23f1e7de3462ea63e6495c2fe52f5",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "tax-state-lifecycle": 3,
+          "sanctions-review": 4,
+          "negative-balance-ledger": 4,
+          "support-release-controls": 4,
+          "reconciliation-gates": 4
+        },
+        "criticalFailures": [],
+        "rationale": "Strong hard-block model and gates. Tax handling has unsupported W-8BEN details and weak reporting/withholding lifecycle. Sanctions and support controls are solid, though creator appeal/evidence visibility is limited. Ledger lineage is present but less complete.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-marketplace-hard-v0-20260701-compliance-release-outputs/marketplace-payout-compliance-release-001-baseline.md",
+        "outputSha256": "e88819025f526f2447e8282381b510dbe95e0fb54e1438ec1ee658c8e5b8d0b6",
+        "latencyMs": 16163,
+        "usage": {
+          "input_tokens": 298,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1279,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1577
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "tax-state-lifecycle": 5,
+          "sanctions-review": 5,
+          "negative-balance-ledger": 5,
+          "support-release-controls": 5,
+          "reconciliation-gates": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive state machine, evidence, qualified approvals, false-positive path, immutable ledger events, support controls, and reconciliation gates. Some invented marketplace assumptions and one tax gate phrase could be tighter, but required artifacts are fully covered.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-marketplace-hard-v0-20260701-compliance-release-outputs/marketplace-payout-compliance-release-001-skill-loaded.md",
+        "outputSha256": "c77a31ebc779d3e618a0e519a3a6d6c4cc9707ccdee6bc78ab4952990699b579",
+        "latencyMs": 19143,
+        "usage": {
+          "input_tokens": 3839,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 2102,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5941
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-marketplace-hard-v0-20260701-compliance-release-outputs/marketplace-payout-compliance-release-001-judge-raw.md",
+      "judgeOutputSha256": "eac901058fb58eeca7198f88ae8b7cd06e794b822f1b9862dd1996b0bab9dc7c",
+      "judgeLatencyMs": 13787,
+      "judgeUsage": {
+        "input_tokens": 3542,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 791,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4333
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "marketplace-payout-compliance-release-001",
+      "promptType": "positive",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [
+        "marketplace-payouts-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1800,
+      "usage": {
+        "input_tokens": 241,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 31,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 272
+      }
+    },
+    {
+      "taskId": "marketplace-payout-compliance-release-001",
+      "promptType": "negative-control",
+      "expectedSkill": "marketplace-payouts-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1846,
+      "usage": {
+        "input_tokens": 163,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 37,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 200
+      }
+    }
+  ]
+}

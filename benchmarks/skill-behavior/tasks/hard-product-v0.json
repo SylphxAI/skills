@@ -107,6 +107,59 @@
       ]
     },
     {
+      "id": "marketplace-payout-compliance-release-001",
+      "skill": "marketplace-payouts-review",
+      "category": "marketplace-ops",
+      "prompt": "Audit a creator marketplace payout release queue where a high-earning seller has an expired W-8BEN, a sanctions-screening potential match that may be a false positive, a failed bank transfer after a destination change, a buyer chargeback on already-paid earnings, a negative balance, and support pressure to release held funds before month-end. Define the safest state model, evidence requirements, compliance handoff, creator messaging, reconciliation, and release/rollback gates.",
+      "negativeControlPrompt": "Review keyboard shortcuts and tray-menu labels for a desktop timer app.",
+      "expectedArtifacts": [
+        "tax and sanctions state model",
+        "hold release and appeal criteria",
+        "negative balance and failed payout ledger flow",
+        "creator support messaging and evidence checklist",
+        "reconciliation and release gates"
+      ],
+      "failureModes": [
+        "treating compliance holds as an opaque manual note",
+        "releasing funds through tax or sanctions blockers without qualified review",
+        "missing false-positive appeal and creator-visible evidence requirements",
+        "no lineage for failed payout, chargeback, clawback, or negative balance",
+        "support can override holds without audited approval"
+      ],
+      "rubric": [
+        {
+          "id": "tax-state-lifecycle",
+          "weight": 2,
+          "required": true,
+          "description": "Defines tax form states, withholding/reporting handoff, payout effects, qualified owner review, and creator-safe correction messaging without giving tax advice."
+        },
+        {
+          "id": "sanctions-review",
+          "weight": 2,
+          "required": true,
+          "description": "Separates potential match, confirmed block, false-positive release, evidence retention, non-sensitive creator messaging, and qualified compliance approval."
+        },
+        {
+          "id": "negative-balance-ledger",
+          "weight": 2,
+          "required": true,
+          "description": "Tracks failed transfers, chargebacks after payout, clawbacks, reserves, offsets, reversals, and negative balances with immutable lineage."
+        },
+        {
+          "id": "support-release-controls",
+          "weight": 1,
+          "required": true,
+          "description": "Provides creator-facing statuses, evidence checklist, appeal path, SLA, dual approval, and safe support macros without silent override."
+        },
+        {
+          "id": "reconciliation-gates",
+          "weight": 1,
+          "required": false,
+          "description": "Defines payout release blockers, dashboard checks, provider trace reconciliation, rollback controls, and marketplace trust/risk metrics."
+        }
+      ]
+    },
+    {
       "id": "notification-permission-fatigue-recovery-001",
       "skill": "notification-strategy-review",
       "category": "lifecycle-growth",
