@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "skill-behavior",
+  "suite": "core-product-v0",
+  "runId": "gateway-rerun-core-product-v0-20260701-price-retention-channel-matrices",
+  "model": "minimax/minimax-m3",
+  "runner": {
+    "name": "openai-responses",
+    "version": 1,
+    "baseUrl": "https://api.sylphx.ai/v1",
+    "temperature": 0.2,
+    "maxOutputTokens": 6000,
+    "answerWordLimit": 650,
+    "maxAttempts": 5,
+    "retryBaseMs": 3000,
+    "requestTimeoutMs": 180000,
+    "includeReferences": true,
+    "selectedTaskIds": [
+      "subscription-price-increase-retention-001"
+    ],
+    "partial": false,
+    "source": {
+      "type": "git",
+      "head": "421cf900ebf9fc5071dafb00dfc88e43013086ba",
+      "branch": "codex/improve-price-retention-skill",
+      "dirty": false
+    },
+    "startedAt": "2026-07-01T17:29:31.443Z",
+    "completedAt": "2026-07-01T17:30:47.782Z"
+  },
+  "judge": {
+    "name": "openai-responses-structured-judge",
+    "model": "openai/gpt-5.5",
+    "blinded": true,
+    "structuredOutput": true
+  },
+  "samples": [
+    {
+      "taskId": "subscription-price-increase-retention-001",
+      "skill": "subscription-price-increase-retention-review",
+      "promptSha256": "99fcad2d4fa5bb84e9b80831f77355d03ff57af346be61a4e1223bb60afbb034",
+      "skillContextSha256": "915bbc6b7475d6a546fafe0120b81fbc87f11d562f48b18e5893d6d5ca121b82",
+      "skillBodySha256": "e35798d79bc0235eac5469a13f2d88852ba03db6e1315282cc995e4e7ae7d312",
+      "skillReferenceSha256": [
+        {
+          "path": "references/subscription-price-increase-retention-patterns.md",
+          "sha256": "b7d4e00f55a703fda1fa4c0d78dd82f70c7a5c5db79bdf9ff37f7e7b0eb1320e"
+        }
+      ],
+      "skillLoadedPromptSha256": "837ee69ad5528a9cf1d8d421e4a30f29b97017bacf9da2c2e21b8d9dce987b09",
+      "baseline": {
+        "score": 4,
+        "criterionScores": {
+          "cohorts": 3,
+          "platform-rules": 3,
+          "retention-policy": 4,
+          "support-trust": 4,
+          "net-revenue": 3
+        },
+        "criticalFailures": [],
+        "rationale": "Strong structure and many artifacts, but cohorts miss explicit region, billing channel, renewal-date, usage segmentation. Platform handling includes some broad assumptions. Net revenue lacks payment failures, support load, LTV, and explicit cohort readback.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-price-retention-channel-matrices-outputs/subscription-price-increase-retention-001-baseline.md",
+        "outputSha256": "53143041007dd3ed73d2e64b642d911c36b07554ffe18cd7594120645204fcb3",
+        "latencyMs": 22627,
+        "usage": {
+          "input_tokens": 262,
+          "input_tokens_details": {
+            "cached_tokens": 128
+          },
+          "output_tokens": 1415,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1677
+        }
+      },
+      "skillLoaded": {
+        "score": 5,
+        "criterionScores": {
+          "cohorts": 5,
+          "platform-rules": 5,
+          "retention-policy": 5,
+          "support-trust": 5,
+          "net-revenue": 5
+        },
+        "criticalFailures": [],
+        "rationale": "Comprehensive plan covering required artifacts, channel-specific notices/refunds/cancellation behavior, detailed cohort segmentation, transparent save and cancellation policies, support macros, churn monitoring, and net revenue readback with guardrails.",
+        "outputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-price-retention-channel-matrices-outputs/subscription-price-increase-retention-001-skill-loaded.md",
+        "outputSha256": "f629a5bb26b3f71ca9107ceae308d0e5344544d5a05033e8bcfdef9bc20e2a70",
+        "latencyMs": 38871,
+        "usage": {
+          "input_tokens": 2439,
+          "input_tokens_details": {
+            "cached_tokens": 114
+          },
+          "output_tokens": 1518,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 3957
+        }
+      },
+      "preference": "skill",
+      "blindOrder": {
+        "a": "hidden",
+        "b": "hidden"
+      },
+      "judgeOutputRef": "benchmarks/skill-behavior/results/gateway-rerun-core-product-v0-20260701-price-retention-channel-matrices-outputs/subscription-price-increase-retention-001-judge-raw.md",
+      "judgeOutputSha256": "25ead564b56dee6e42d96dc8fb19d781f15ad72975010f9fea93db975793ac57",
+      "judgeLatencyMs": 10930,
+      "judgeUsage": {
+        "input_tokens": 3482,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 590,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 4072
+      }
+    }
+  ],
+  "triggerChecks": [
+    {
+      "taskId": "subscription-price-increase-retention-001",
+      "promptType": "positive",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [
+        "subscription-price-increase-retention-review"
+      ],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 1738,
+      "usage": {
+        "input_tokens": 199,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 37,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 236
+      }
+    },
+    {
+      "taskId": "subscription-price-increase-retention-001",
+      "promptType": "negative-control",
+      "expectedSkill": "subscription-price-increase-retention-review",
+      "triggeredSkills": [],
+      "method": "skill-description-binary-classifier",
+      "latencyMs": 2166,
+      "usage": {
+        "input_tokens": 151,
+        "input_tokens_details": {
+          "cached_tokens": 0
+        },
+        "output_tokens": 52,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 203
+      }
+    }
+  ]
+}
