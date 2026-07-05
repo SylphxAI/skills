@@ -1,0 +1,4 @@
+interface:
+  display_name: "Source To Skill Distiller"
+  short_description: "Turn sources into skill packages"
+  default_prompt: "Use $source-to-skill-distiller to convert this source material into a validated skill package."
