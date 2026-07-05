@@ -1,31 +1,23 @@
 ---
 name: voice-preserving-editor
-description: Shape an AI agent's own replies and, when explicitly requested, edit drafts so the output sounds like a specific person, team, publication, or locale while preserving facts, claims, citations, technical terms, uncertainty, and judgment. Use when the user asks the agent to talk more humanly, stop sounding like AI or ChatGPT, answer in the user's voice or register, use Cantonese/Chinese/English/multilingual voice naturally, clean translationese, humanize a reply, remove AI tone from the agent's response, or revise an existing draft without flattening it.
+description: Shape agent-generated language so it reads like natural human speech or writing in the requested language, voice, register, locale, and surface while preserving facts, claims, citations, technical terms, uncertainty, and judgment. Use when the user asks for human, natural, non-AI, non-ChatGPT, conversational, Cantonese, Chinese, English, multilingual, localized, voice-preserving, translationese-free, or less templated output.
 ---
 
 # Voice-Preserving Editor
 
-Use this skill to shape the agent's own replies first, and to edit user-provided drafts only when the user explicitly asks for a rewrite.
+Use this skill as a language-quality layer over the current request. The content, tools, and evidence decide what belongs in the answer or artifact; this skill only shapes the generated words so they sound like a natural person writing or speaking in context.
 
-Default to answering the user's actual request in the adjusted voice. Do not rewrite or correct the user's own words unless they ask for a draft edit. Add diagnosis, rule IDs, or before/after notes only when the user asks for an audit, review, or explanation.
+Default to completing the current request normally, then applying this voice layer to the output. Do not announce the skill, turn style guidance into a separate response, or add diagnosis unless the user asks for an audit, review, or explanation.
 
 ## Workflow
 
-1. Identify the mode:
-   - `agent-response`: default when the user wants the agent to answer, explain, discuss, report status, or talk less like an AI.
-   - `draft-edit`: use only when the user supplies text and asks to rewrite, humanize, localize, or audit that text.
-   - `audit-only`: use when the user asks what sounds AI-like without requesting a rewrite.
-2. Lock protected content before shaping the output: user intent, task facts, numbers, names, dates, citations, quoted text, product/model names, code, commands, filenames, URLs, units, prices, benchmark conditions, legal/medical/financial caveats, author judgment, and uncertainty.
-3. Choose the edit mode:
-   - `agent-response`: write the agent's next reply in the target register without meta commentary.
-   - `audit-only`: list problems without rewriting.
-   - `patch`: remove local AI tells while keeping sentence and paragraph structure.
-   - `faithful-rewrite`: rewrite paragraphs while preserving every claim and the original argument order.
-   - `structural-rewrite`: reorganize only when the user explicitly allows broader rewriting.
-4. For long, multilingual, high-stakes, or voice-sensitive work, read `references/voice-preserving-rules.md`.
-5. In `agent-response` mode, infer the user's desired register from the request and current conversation. Match language, directness, density, and local idiom where appropriate, but do not parody the user or pretend to be them.
-6. Remove generic AI-writing shells from the agent's own reply or the draft: throat-clearing, binary contrast frames, vague authority, lecture setup, formulaic threes, chatbot artifacts, generic conclusions, manufactured punchlines, over-polished rhythm, and translationese.
-7. Match the intended voice and locale. Preserve code-switching, politeness level, register, punctuation norms, and culturally specific phrasing when they carry meaning.
+1. Derive the content from the user's request and available evidence. Voice is a delivery constraint, not a separate objective.
+2. Lock protected content before shaping language: facts, numbers, names, dates, citations, quoted text, product/model names, code, commands, filenames, URLs, units, prices, benchmark conditions, legal/medical/financial caveats, author judgment, and uncertainty.
+3. Identify the human-language surface: chat reply, technical explanation, status update, docs, release note, product copy, article, support message, translation/localization, or supplied text transformation.
+4. Infer voice constraints from the request and context: language, locale, register, directness, density, rhythm, politeness, code-switching, punctuation norms, and relationship to the reader.
+5. For long, multilingual, high-stakes, or voice-sensitive output, read `references/voice-preserving-rules.md`.
+6. Remove generic AI-writing shells: throat-clearing, binary contrast frames, vague authority, lecture setup, formulaic threes, chatbot artifacts, generic conclusions, manufactured punchlines, over-polished rhythm, and translationese.
+7. Preserve code-switching, technical vocabulary, dialect, useful roughness, and culturally specific phrasing when they carry meaning.
 8. Run the final preservation pass before responding.
 
 ## Guardrails
@@ -33,7 +25,7 @@ Default to answering the user's actual request in the adjusted voice. Do not rew
 - Do not help evade AI detectors, plagiarism checks, academic integrity rules, authorship disclosure, moderation, or platform enforcement.
 - Do not launder copied text, imitate a living private person's voice without permission, fabricate lived experience, invent citations, or hide that material facts are uncertain.
 - Do not add new examples, numbers, sources, product claims, credentials, testimonials, or personal experience unless the user supplied them.
-- Do not tell a human user that their own voice needs to be made human. Treat "humanize this conversation" as an instruction for the agent's reply unless the user explicitly provides a draft to edit.
+- Do not imply that a human user's conversational input can or should be altered. "Humanize this conversation" means shape the agent's generated language unless the surrounding request already asks for a supplied text transformation.
 - Do not turn technical, legal, medical, financial, or policy text into casual prose when precision is the human voice for that surface.
 - Do not overcorrect by removing useful structure, domain terms, local idiom, dialect, or roughness that belongs to the author.
 
@@ -41,26 +33,22 @@ If the request is detector evasion or fake authorship, refuse that part and offe
 
 ## Output Formats
 
-### Agent response default
+### Default
 
-Return the answer itself in the adjusted voice. Do not include an audit wrapper unless asked.
-
-### Default rewrite
-
-Return only the revised draft.
+Return the requested answer or artifact itself in the adjusted voice. Do not include an audit wrapper unless asked.
 
 ### Audit requested
 
 ```text
-Edit mode:
-Language/register:
+Surface:
+Language/locale/register:
 Protected content:
 - <fact, quote, term, citation, caveat>
 
-AI-flavor fixes:
+Language-quality fixes:
 - <rule id> <quoted issue> -> <fix direction>
 
-Revised draft:
+Generated output:
 <text>
 ```
 
@@ -69,5 +57,5 @@ Revised draft:
 ```text
 I can't help hide authorship, bypass detectors, or launder copied work.
 
-I can edit the draft for clarity, attribution, factual accuracy, natural rhythm, and a voice that matches the provided author sample.
+I can help produce clearer, attributed, fact-preserving language with a natural rhythm and an appropriate voice.
 ```
