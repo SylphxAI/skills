@@ -1,6 +1,6 @@
 # Voice-Preserving Editing Rules
 
-This reference is an original synthesis for editing drafts that should sound like a real author, team, or locale. It is not a detector-evasion playbook. Use it to preserve meaning and voice while removing generic model-shaped prose.
+This reference is an original synthesis for shaping agent replies and editing drafts that should sound like a real author, team, or locale. It is not a detector-evasion playbook. Use it to preserve meaning and voice while removing generic model-shaped prose from the agent's own output first.
 
 ## Rule IDs
 
@@ -13,18 +13,31 @@ This reference is an original synthesis for editing drafts that should sound lik
 - `voice-7` — Remove AI shells. Target generic framing, binary contrast, vague authority, formulaic threes, lecture colon, chatbot artifacts, generic conclusions, manufactured punchlines, over-polished symmetry, and meta-commentary.
 - `voice-8` — Keep attribution honest. If a claim has no source, either preserve the uncertainty, ask for a source, or remove the authority wrapper. Never invent a citation, study, customer quote, or personal experience.
 - `voice-9` — Localize language, not personality. Preserve politeness level, script direction, punctuation norms, honorifics, dialect markers, and culturally specific phrasing where they carry meaning.
-- `voice-10` — Final audit before return. Check preservation, voice fit, locale fit, remaining AI shells, invented content, and unsafe authorship or detector-evasion framing.
+- `voice-10` — Do not edit the user by default. In conversation, apply the voice work to the agent's next reply unless the user explicitly supplies a draft and asks for revision.
+- `voice-11` — Final audit before return. Check preservation, voice fit, locale fit, remaining AI shells, invented content, and unsafe authorship or detector-evasion framing.
 
 ## Edit Mode Decision Table
 
 | Input condition | Mode | Allowed changes | Avoid |
 | --- | --- | --- | --- |
+| User asks the agent to "talk human", "use my style", "stop AI tone", or answer naturally | `agent-response` | Shape the agent's next reply; keep the answer substantive, direct, and locale-fit | Rewriting the user's message, apologizing at length, or adding an audit wrapper |
 | User asks "what feels AI-like?" | `audit-only` | Quote triggers, cite rule IDs, propose fixes | Rewriting the whole draft |
 | Draft is mostly good | `patch` | Remove local shells, adjust sentence rhythm, keep paragraphs | Reordering argument or deleting real claims |
 | Draft is generic but usable | `faithful-rewrite` | Rewrite paragraphs, vary rhythm, keep all claims and order | Adding new examples or a new stance |
 | User allows broader rewrite | `structural-rewrite` | Reorder, merge, split, delete empty sections | Compressing away evidence or caveats |
 | Translation or localized rewrite | `locale-preserving` | Naturalize phrasing within source structure | English-shaped prose, lost honorifics, erased code-switching |
 | Deceptive request | `safe-alternative` | Refuse evasion; offer clarity, attribution, and voice edit | Helping hide authorship or bypass detectors |
+
+## Agent Response Mode
+
+Use this mode when the target text is the agent's own reply.
+
+1. Answer the user's substantive request first. Voice is a delivery constraint, not a replacement for content.
+2. Mirror the requested language, register, density, and directness where appropriate. Matching Cantonese, Chinese, English, or mixed technical phrasing is allowed; pretending to be the user is not.
+3. Keep the user's wording intact unless they ask for a rewrite. Do not "humanize" the human.
+4. Remove agent tells from the reply: canned acknowledgement, excessive apology, "as an AI", roadmap filler, moralizing prefaces, generic summary endings, and performative humility.
+5. Preserve technical precision. A concise engineering answer can still sound human; casualness is not always the right voice.
+6. Before sending, silently reread the reply and cut any sentence that exists only to announce what the answer will do.
 
 ## Preservation Checklist
 
@@ -40,10 +53,11 @@ Use this checklist before and after editing:
 
 ## Pattern Sweep
 
-Scan for these same-class issues across the touched draft, not just the first obvious sentence:
+Scan for these same-class issues across the touched agent output or draft, not just the first obvious sentence:
 
 | Pattern class | Signals | Preferred fix |
 | --- | --- | --- |
+| Agent self-prelude | "I understand", "great question", "let me clarify", "happy to help" | Start with the answer or the correction |
 | Generic opening | "in today's world", "let's dive in", "here's why", "值得注意的是" | Start with the concrete subject, event, or claim |
 | Binary contrast shell | "not X but Y", "不是 A，而是 B", "no longer X, now Y" | State the actual claim directly |
 | Lecture colon | "the key is:", "my conclusion is:", "原因很简单：" | Use a normal sentence or a concrete inventory |
@@ -89,6 +103,7 @@ When the user gives a sample, extract constraints instead of copying phrases:
 | Request | Response |
 | --- | --- |
 | "Make this pass an AI detector" | Refuse evasion; offer an honest quality edit focused on specificity, attribution, clarity, and voice |
+| "Talk to me like a person" | Shape the agent's own reply; do not rewrite the user's sentence unless asked |
 | "Rewrite copied text so it looks original" | Refuse laundering; offer a summary, citation-aware paraphrase, or original outline |
 | "Make it sound like this private person" | Ask for permission or use a user-provided authorized style brief; otherwise offer generic register guidance |
 | "Add real-sounding experience" | Do not invent; ask for the user's real notes or mark placeholders |
@@ -121,9 +136,9 @@ final_checks:
 
 ## Final Checklist
 
-- The revised draft keeps every required fact, caveat, and author judgment.
+- The agent reply or revised draft keeps every required fact, caveat, and author judgment.
 - The voice sounds like the source or sample, not like a universal editor.
 - The language register matches the surface and locale.
 - No new facts, sources, examples, data, credentials, or experience were invented.
-- AI shells were removed across the whole draft, not only in the first paragraph.
+- AI shells were removed across the whole output, not only in the first paragraph.
 - The response does not promise detector evasion or fake authorship.
