@@ -1,0 +1,4 @@
+interface:
+  display_name: "Voice-Preserving Editor"
+  short_description: "Humanize drafts without losing voice"
+  default_prompt: "Use $voice-preserving-editor to revise this draft so it sounds like the author while preserving facts and judgment."
