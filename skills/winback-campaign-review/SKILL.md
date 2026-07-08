@@ -15,6 +15,10 @@ Use this skill to turn a recurring product-operations problem into a concrete, r
 4. Design message, offer, timing, frequency caps, landing path, support handoff, and measurement.
 5. Produce a campaign matrix with guardrails, events, and stop criteria.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use dark patterns, fake scarcity, or punitive cancellation copy.

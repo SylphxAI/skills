@@ -15,6 +15,10 @@ Use this skill to convert a risk register governance, mitigations, control evide
 4. Define severity, likelihood, detectability, controls, mitigations, owner, trigger, review cadence, residual risk, and acceptance authority.
 5. Produce risk register, state machine, decision table, event schema, governance cadence, and escalation checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not label risk “accepted” without owner, rationale, expiry/review date, and residual impact.

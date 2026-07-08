@@ -15,6 +15,10 @@ Use this skill to convert sales qualification, discovery, opportunity fit, decis
 4. Define discovery questions, qualification evidence, red/yellow/green flags, mutual action plan, owner handoffs, CRM fields, and exit criteria.
 5. Produce qualification plan, state machine, decision table, event schema, discovery checklist, and follow-up plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not qualify on enthusiasm alone; require problem, impact, decision path, and next commitment evidence.

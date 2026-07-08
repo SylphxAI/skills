@@ -15,6 +15,10 @@ Use this skill to run live events as controlled product operations, not calendar
 4. Separate engagement goal, monetization goal, economy impact, fairness, operational risk, and trust risk.
 5. Produce an event runbook with go/no-go, metrics, rollback, support macros, and post-event review.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not launch an event without monitoring, support route, and rollback/compensation plan.

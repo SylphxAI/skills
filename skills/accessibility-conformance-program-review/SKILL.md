@@ -15,6 +15,10 @@ Use this skill to convert a accessibility conformance, WCAG targets, VPAT/ACR, a
 4. Define scope, standards, severity, test matrix, owners, remediation SLA, exceptions, release gates, documentation, and customer response.
 5. Produce conformance program plan, state machine, decision table, event schema, checklist, and remediation governance cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not claim WCAG conformance, VPAT status, or accessibility readiness without scoped evidence and known exceptions.

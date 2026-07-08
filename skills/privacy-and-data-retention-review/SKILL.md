@@ -15,6 +15,10 @@ Use this skill to make data behavior intentional, explainable, and supportable.
 4. Compare product behavior with user-facing privacy/store disclosures.
 5. Produce risks, retention schedule, and product changes.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - This is product/privacy design support, not legal advice.

@@ -16,6 +16,10 @@ Use this skill to optimize pages for citation in AI-generated answers, not just 
 5. Apply GEO methods with the highest evidence-backed lift.
 6. Produce a prioritized remediation plan with validation steps and refresh cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not recommend keyword stuffing; it reduces AI visibility.

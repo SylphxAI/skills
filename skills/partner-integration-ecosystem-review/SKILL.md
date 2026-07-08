@@ -15,6 +15,10 @@ Use this skill to convert a risky product, operations, trust, or marketplace que
 4. Separate product API readiness, business incentives, trust review, documentation, and operational ownership.
 5. Produce ecosystem strategy, partner tiers, integration checklist, risk register, and success metrics.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not expose user data to partners without clear authorization, scopes, logging, and revocation.

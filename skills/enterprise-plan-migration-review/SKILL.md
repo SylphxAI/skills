@@ -15,6 +15,10 @@ Use this skill to convert enterprise plan migration, packaging transition, entit
 4. Define eligibility, customer notice, entitlement mapping, invoice impact, discount handling, success metrics, exception approval, support macros, rollback, and post-migration audit.
 5. Produce plan migration brief, state machine, decision table, entitlement mapping checklist, event schema, customer-communication plan, and exception register.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not migrate plans without entitlement parity review, billing proof, customer-visible communication, and support readiness.

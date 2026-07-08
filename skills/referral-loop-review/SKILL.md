@@ -15,6 +15,10 @@ Use this skill to make referrals a trusted growth loop rather than a spam incent
 4. Separate product-led sharing, paid incentives, team collaboration, affiliate economics, and abuse controls.
 5. Produce loop design, incentive table, event schema, risk controls, and experiment plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not reward spam, misleading claims, fake scarcity, or coerced contact upload.

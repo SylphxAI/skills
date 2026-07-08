@@ -15,6 +15,10 @@ Use this skill to help creators publish high-quality supply without overwhelming
 4. Separate creator education, product tooling, policy enforcement, and marketplace quality controls.
 5. Produce onboarding flow, review states, support macros, metrics, and quality guardrails.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not open creator supply without submission quality gates and abuse controls.

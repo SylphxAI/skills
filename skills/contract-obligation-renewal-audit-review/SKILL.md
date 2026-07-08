@@ -15,6 +15,10 @@ Use this skill to convert contract obligation, renewal audit, auto-renewal, noti
 4. Define obligation register, evidence mapping, owner assignments, renewal calendar, remediation backlog, customer communication, exception expiry, and negotiation handoff.
 5. Produce contract obligation audit, state machine, decision table, event schema, renewal checklist, evidence matrix, and remediation/negotiation plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not provide legal advice or rewrite contract terms; route legal interpretation to qualified counsel.

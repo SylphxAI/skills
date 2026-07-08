@@ -15,6 +15,10 @@ Use this skill to convert usage-metering, billing accuracy, quota, credit, overa
 4. Define source-of-truth events, idempotency, dedupe, late-event policy, reconciliation, customer transparency, alerts, correction workflow, and audit trail.
 5. Produce metering accuracy plan, state machine, decision table, event schema, control checklist, and dispute/recovery path.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not invoice usage that cannot be traced from customer-visible billable event to rated invoice line.

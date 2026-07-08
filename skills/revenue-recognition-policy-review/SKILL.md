@@ -15,6 +15,10 @@ Use this skill to convert revenue recognition, pricing, billing, contract modifi
 4. Define recognition trigger, evidence source, accounting review, billing/revenue reconciliation, customer communication, exception approval, and control owner.
 5. Produce recognition-impact review, state machine, decision table, event schema, control checklist, and launch gate.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not treat invoice date, cash receipt, entitlement grant, and revenue recognition as automatically equivalent.

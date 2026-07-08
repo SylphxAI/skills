@@ -19,6 +19,10 @@ Use this skill to turn a Steam release into a coordinated product, store, commun
 8. Do not assert Steam discount/refund/review policy from memory. Use a policy-verification matrix and label numeric tripwires as internal starter thresholds unless the studio supplied approved targets.
 9. Produce a readiness matrix with blockers, assets, telemetry, and review-risk mitigations.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not ship a store promise the build cannot fulfill.

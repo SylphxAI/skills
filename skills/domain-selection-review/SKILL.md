@@ -16,6 +16,10 @@ Use this skill to choose a domain that supports positioning, recall, and long-te
 5. Compare TLD strategy, renewal cost, and registrar transfer risk.
 6. Recommend a primary domain, backup options, and defensive registrations if justified.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not claim trademark clearance; flag items for legal review.

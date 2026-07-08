@@ -15,6 +15,10 @@ Use this skill to convert marketplace policy, model feedback loop, enforcement m
 4. Define policy-model contract, label schema, reviewer QA, appeal feedback, drift monitoring, retraining criteria, policy change release gate, explanation policy, and marketplace health guardrails.
 5. Produce policy/model feedback-loop review, state machine, decision table, event schema, label checklist, release gate, and enforcement learning plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let model scores silently redefine marketplace policy.

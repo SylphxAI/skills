@@ -15,6 +15,10 @@ Use this skill to convert account-based marketing, target account, intent signal
 4. Define account selection, signal thresholds, personalized offer, channel plan, sales/SDR handoff, suppression rules, measurement model, and learning loop.
 5. Produce ABM plan, state machine, decision table, event schema, campaign checklist, and account action plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not call ordinary lead-gen ABM unless account selection, buying committee, personalization, and sales action are explicit.

@@ -15,6 +15,10 @@ Use this skill to convert a platform certification, partner/app/plugin quality g
 4. Define criteria, evidence, test harness, manual review, badge/display rules, directory effects, renewal, audit, appeal, revocation, and partner enablement.
 5. Produce certification program plan, state machine, decision table, event schema, review checklist, and governance cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not award badges whose meaning is unclear, untested, pay-to-win, or stale.

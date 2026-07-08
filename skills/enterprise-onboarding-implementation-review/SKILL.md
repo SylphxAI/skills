@@ -15,6 +15,10 @@ Use this skill to convert enterprise onboarding, implementation, integration, mi
 4. Define kickoff agenda, RACI, milestone plan, dependency register, go-live checklist, escalation path, training plan, and post-launch adoption handoff.
 5. Produce implementation plan, state machine, decision table, event schema, readiness checklist, and customer/internal comms cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not start implementation without clear success criteria, owner roles, timeline, and customer decision path.

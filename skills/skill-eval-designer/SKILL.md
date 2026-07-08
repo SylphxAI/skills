@@ -15,6 +15,10 @@ Use this skill to prove a skill changes agent behavior on realistic tasks.
 4. Add edge cases for over-triggering, under-triggering, unsafe advice, missing references, and generic output.
 5. Produce eval fixture, behavior example, and forward-test plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not evaluate only whether the skill name appears.

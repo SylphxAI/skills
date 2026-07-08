@@ -15,6 +15,10 @@ Use this skill to make Windows releases install cleanly, update safely, integrat
 4. Separate release blockers from enterprise/admin polish and support improvements.
 5. Produce a Windows readiness matrix with proof needed for each high-risk area.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not request admin rights unless the product needs machine-wide changes.

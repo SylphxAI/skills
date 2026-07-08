@@ -15,6 +15,10 @@ Use this skill to convert partner support enablement, implementation partner, re
 4. Define partner roles, support boundaries, escalation tiers, knowledge assets, training, certification, sandbox access, release update cadence, customer communication, and quality monitoring.
 5. Produce partner support enablement plan, state machine, decision table, event schema, readiness checklist, escalation map, and partner QA loop.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not give partners customer-impacting support access without permission boundaries, audit logs, training, and revocation paths.

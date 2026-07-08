@@ -15,6 +15,10 @@ Use this skill to convert a API quotas, rate limits, fair use, developer experie
 4. Define limit units, headers, error shape, retry/backoff, dashboards, alerts, upgrade path, support override, and migration policy.
 5. Produce quota model, state machine, endpoint decision table, event schema, and developer communication checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use a single global limit when endpoint cost, tenant size, and abuse risk differ materially.

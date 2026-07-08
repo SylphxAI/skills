@@ -15,6 +15,10 @@ Use this skill to convert a partner co-marketing, joint messaging, launch assets
 4. Define joint narrative, assets, approvals, UTM/attribution, lead routing, enablement, launch calendar, risk controls, and post-launch review.
 5. Produce co-marketing plan, state machine, decision table, event schema, asset checklist, and partner follow-up loop.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not claim partner endorsement, certification, customer logos, revenue impact, or roadmap commitment without approval and proof.

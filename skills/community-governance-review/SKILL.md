@@ -15,6 +15,10 @@ Use this skill to convert a community governance, norms, roles, moderation, esca
 4. Define governance model, roles, norms, moderation ladder, transparency, event cadence, incentives, feedback routing, safety practices, and succession plan.
 5. Produce governance plan, state machine, decision table, event schema, health checklist, and escalation policy.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not turn unpaid community leaders into hidden support staff without boundaries, recognition, and safety controls.

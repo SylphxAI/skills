@@ -15,6 +15,10 @@ Use this skill to convert app store policy monitoring, review guideline change, 
 4. Define monitoring cadence, impact triage, owner routing, remediation plan, release sequencing, evidence package, reviewer note, and executive/customer communication.
 5. Produce policy monitoring plan, state machine, decision table, event schema, impact checklist, remediation tracker, and review-readiness evidence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not wait for a rejection to discover a policy change that had a published deadline.

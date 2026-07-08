@@ -16,6 +16,10 @@ Use this skill to convert developer quota, API credit, free trial, promo credit,
 5. Define an explicit measurement matrix before final recommendations: cost, activation, conversion, abuse loss, false positives, support load, appeal outcomes, exception usage, and developer retention.
 6. Produce quota and credit abuse review, state machine, decision table, event schema, control checklist, support policy, cost/activation monitoring plan, and threshold-disclosure note.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not stop abuse by making legitimate developer activation impossible.

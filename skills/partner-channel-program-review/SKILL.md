@@ -15,6 +15,10 @@ Use this skill to convert partner channel, reseller, referral, co-sell, certific
 4. Define tiering, qualification, lead registration, deal protection, incentives, certification, enablement, customer handoff, support escalation, and governance.
 5. Produce channel program plan, state machine, decision table, event schema, partner checklist, and launch/operating cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not add partner incentives that reward low-quality leads, channel stuffing, customer confusion, or margin-negative discounts.

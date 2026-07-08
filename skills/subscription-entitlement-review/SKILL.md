@@ -17,6 +17,11 @@ Use this skill to keep money movement, product access, and support truth aligned
 6. Model paused, restored, and offline entitlements as explicit states with entry/exit criteria, TTL/effective dates, user copy, and reconciliation behavior.
 7. Produce a state machine, audit events, risks, and acceptance checks.
 
+## When not to use
+
+- Do not use when the job belongs to `saas-subscription-pricing` — Defer when the job matches saas-subscription-pricing instead.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not treat client UI state as the source of truth for durable access.

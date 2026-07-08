@@ -15,6 +15,10 @@ Use this skill to convert sales engineering handoff, proof of concept, solution 
 4. Define handoff artifact, accepted commitments, unresolved risks, validation evidence, CRM fields, implementation owner, success metrics, and customer communication.
 5. Produce SE handoff plan, state machine, decision table, event schema, technical checklist, commitment ledger, and post-sale owner map.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let demo promises become delivery commitments without owner, evidence, and scope.

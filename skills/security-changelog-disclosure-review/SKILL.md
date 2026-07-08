@@ -15,6 +15,10 @@ Use this skill to convert security changelog, vulnerability disclosure, advisory
 4. Define severity language, affected scope, mitigation, upgrade path, customer notice, release-note wording, support macro, trust center update, monitoring, and post-disclosure review.
 5. Produce security disclosure plan, state machine, decision table, event schema, disclosure checklist, customer message, and monitoring plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not publish exploit-enabling details before mitigation, customer notice, or coordinated disclosure readiness.

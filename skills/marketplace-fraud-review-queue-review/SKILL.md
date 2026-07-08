@@ -15,6 +15,10 @@ Use this skill to convert marketplace fraud review queue, trust queue, payout ho
 4. Define risk tiers, queue routing, evidence requirements, reviewer decisions, temporary actions, QA sampling, appeal path, metrics, and policy/model feedback loop.
 5. Produce fraud queue governance plan, state machine, decision table, event schema, reviewer checklist, QA plan, and appeal/fairness monitoring.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not expose fraud model features, abuse thresholds, or reviewer private notes in user-facing messages.

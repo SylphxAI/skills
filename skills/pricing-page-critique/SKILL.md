@@ -15,6 +15,10 @@ Use this skill to make pricing understandable, trustworthy, and commercially eff
 4. Check whether the pricing page supports the business model without confusing users.
 5. Produce prioritized fixes and experiments.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not hide renewal, limits, cancellation, or material restrictions.

@@ -15,6 +15,10 @@ Use this skill to convert a high-stakes product decision into a concrete, measur
 4. Separate product learning, monetization tuning, technical readiness, acquisition quality, and creative/listing tests.
 5. Produce soft-launch plan, gate matrix, live-ops calendar, instrumentation, and scale/iterate/kill decision record.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not scale paid acquisition from blended metrics that hide low-quality cohorts.

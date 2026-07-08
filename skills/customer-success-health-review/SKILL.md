@@ -15,6 +15,10 @@ Use this skill to turn a recurring product-operations problem into a concrete, r
 4. Design a health score that maps to actions, not just dashboard colors.
 5. Produce account states, playbooks, events, and review cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not treat raw usage volume as health without outcome context.

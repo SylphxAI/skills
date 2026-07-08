@@ -15,6 +15,10 @@ Use this skill to convert integration sandbox, developer certification, partner 
 4. Define sandbox setup, test cases, data boundaries, security checks, rate-limit behavior, error cases, support docs, badge criteria, and recertification cadence.
 5. Produce sandbox certification plan, state machine, decision table, event schema, test checklist, evidence package, and recertification policy.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not certify integrations that only pass happy-path API calls.

@@ -15,6 +15,10 @@ Use this skill to convert customer reference, case study, quote, logo, consent, 
 4. Define eligibility, consent, approval, matching, request intake, usage limits, incentives, renewal/health guardrails, refresh cadence, and retirement rules.
 5. Produce reference program plan, state machine, decision table, event schema, advocacy checklist, and sales enablement workflow.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use logos, quotes, metrics, recordings, or case studies without explicit approval and scope.

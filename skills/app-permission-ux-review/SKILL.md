@@ -15,6 +15,10 @@ Use this skill to convert a high-stakes product decision into a concrete, measur
 4. Separate necessary access, optional convenience, background access, tracking, and regulated/sensitive data.
 5. Produce permission matrix, UX flow, copy, event schema, and rejection-risk review.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not ask before the user understands the value moment.

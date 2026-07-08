@@ -21,6 +21,11 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 10. For incident states, attach owner, entry evidence, exit gate, provider/status-page signal, support message, and audit invariant; recovery learning must include provider SLA evidence, monitoring, post-incident control fixes, and future resilience work.
 11. For abuse holds, segment signals from conclusions: distinguish refund spikes, self-purchases, review manipulation, linked accounts, payout-threshold farming, legitimate launch winners, false positives, buyer-protection exposure, clawback/negative-balance paths, partial reserves, release criteria, appeal evidence, and reviewer QA.
 
+## When not to use
+
+- Do not use when the job belongs to `marketplace-dispute-resolution-review` — Defer when the job matches marketplace-dispute-resolution-review instead.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not treat displayed balance as ledger truth.

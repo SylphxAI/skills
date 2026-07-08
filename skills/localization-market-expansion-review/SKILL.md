@@ -15,6 +15,10 @@ Use this skill to convert a high-stakes product decision into a concrete, measur
 4. Define market-entry sequence: research, smoke test, localization depth, launch channel, support loop, and post-launch learning.
 5. Produce readiness matrix, localization scope, risk register, event plan, and rollout milestones.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not equate translation with market readiness.

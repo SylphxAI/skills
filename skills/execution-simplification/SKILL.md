@@ -15,6 +15,10 @@ Use this skill to cut through complexity without losing important constraints.
 4. Find the bottleneck, dependency chain, and highest-leverage next slice.
 5. Produce a sequenced plan with kill criteria and validation.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not simplify by ignoring legal, trust, data, money, or production risk.

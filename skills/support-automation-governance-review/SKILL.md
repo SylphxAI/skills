@@ -15,6 +15,11 @@ Use this skill to convert support automation, chatbot, macro, AI copilot, deflec
 4. Define allowed actions, source grounding, escalation triggers, confidence thresholds, QA sampling, rollback, analytics, customer messaging, and product feedback loop.
 5. Produce support automation governance plan, state machine, decision table, event schema, QA checklist, escalation ladder, and rollback plan.
 
+## When not to use
+
+- Do not use when the job belongs to `support-deflection-knowledge-base-review` — Defer when the job matches support-deflection-knowledge-base-review instead.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not optimize deflection while hiding unresolved contacts, churn, refunds, or safety issues.

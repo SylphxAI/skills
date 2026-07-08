@@ -15,6 +15,10 @@ Use this skill to make a launch understandable, credible, and worth sharing.
 4. Separate narrative, claims, evidence, demo assets, distribution channels, and support readiness.
 5. Produce a launch narrative with channel adaptations and claim-risk review.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not overclaim uniqueness, AI capability, revenue impact, security, privacy, or policy compliance.

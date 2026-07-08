@@ -15,6 +15,10 @@ Use this skill to convert support staffing, capacity, queue, SLA, coverage, esca
 4. Define forecast, coverage model, schedule assumptions, escalation lanes, QA sampling, macro/knowledge updates, deflection plan, and hiring/vendor triggers.
 5. Produce workforce plan, state machine, decision table, event schema, staffing checklist, and risk register.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not staff only from average ticket volume; account for arrival patterns, handle time, shrinkage, backlog, and severity mix.

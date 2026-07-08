@@ -15,6 +15,10 @@ Use this skill to turn a recurring product-operations problem into a concrete, r
 4. Set gates for preflight, canary/staged rollout, expansion, hold, rollback, and post-release learning.
 5. Produce dashboard spec, alert thresholds, owner rotation, and release decision table.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not rely on green deploy/build status as user health proof.

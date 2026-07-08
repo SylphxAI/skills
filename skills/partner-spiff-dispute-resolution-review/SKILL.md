@@ -15,6 +15,10 @@ Use this skill to convert partner SPIF dispute, channel incentive dispute, refer
 4. Define dispute intake, evidence requirements, source-of-truth order, reviewer/approver roles, calculation audit, partner communication, SLA, appeal route, clawback handling, fraud escalation, and program feedback.
 5. Produce SPIF dispute resolution review, state machine, decision table, event schema, evidence checklist, partner communication plan, and incentive-program learning loop.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not resolve disputes from relationship pressure instead of program terms, evidence, and independent approval.

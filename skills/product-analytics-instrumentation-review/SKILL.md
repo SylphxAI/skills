@@ -15,6 +15,10 @@ Use this skill to convert product analytics instrumentation, event taxonomy, ide
 4. Define event contract, property schema, identity rules, consent gating, QA plan, dashboard owner, release gate, and drift monitoring.
 5. Produce instrumentation plan, state machine, decision table, event schema, QA checklist, and rollout plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not instrument everything; track decision-relevant events with clear owners and retention/privacy constraints.

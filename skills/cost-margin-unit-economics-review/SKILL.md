@@ -15,6 +15,10 @@ Use this skill to convert a unit economics, gross margin, pricing sustainability
 4. Define revenue, variable cost, fixed allocation, gross margin, contribution margin, CAC payback, expansion, sensitivity, and guardrail metrics.
 5. Produce unit economics model, state machine, decision table, event schema, pricing-risk checklist, and experiments to validate assumptions.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not call a plan profitable without variable costs, fees, refunds, support, abuse, and platform commissions.

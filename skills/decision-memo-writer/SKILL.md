@@ -15,6 +15,10 @@ Use this skill to turn ambiguous product debate into a decision-ready memo.
 4. Compare options with evidence and second-order effects.
 5. Recommend one path, define success metrics, and specify review/rollback triggers.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not present a brainstorm as a decision memo.

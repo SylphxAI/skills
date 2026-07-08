@@ -15,6 +15,11 @@ Use this skill to convert a high-stakes product decision into a concrete, measur
 4. Define reconciliation keys, expected invariants, mismatch classes, retry/repair workflow, and audit evidence.
 5. Produce reconciliation matrix, state machine, exception queue, event schema, and support/admin view requirements.
 
+## When not to use
+
+- Do not use when the job belongs to `payment-platform-readiness` — Provider integration, webhooks, ledger truth. Reconciliation patterns belong as reference depth inside payment readiness.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use payment provider state as the only source of truth for product access without a derived entitlement model.

@@ -15,6 +15,10 @@ Use this skill to convert customer training academy, education, certification, c
 4. Define curriculum map, prerequisites, formats, labs/templates, assessment, certification, lifecycle triggers, localization, content ownership, and measurement.
 5. Produce academy plan, state machine, decision table, event schema, curriculum checklist, and content operations cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use training to compensate for broken onboarding, confusing IA, missing defaults, or poor product copy without product fixes.

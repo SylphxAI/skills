@@ -15,6 +15,10 @@ Use this skill to convert a high-stakes product decision into a concrete, measur
 4. Attach evidence, caveats, commitments, reviewer, expiry, and follow-up owner for every material answer.
 5. Produce response table, evidence pack, gap register, sales-safe summary, and escalation list.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not invent certifications, penetration tests, controls, SLAs, data residency, subprocessors, or compliance status.

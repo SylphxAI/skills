@@ -15,6 +15,10 @@ Use this skill to make product analytics answer decisions instead of generating 
 4. Remove vanity or duplicate events.
 5. Produce event taxonomy and validation plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not track sensitive data without purpose and privacy review.

@@ -15,6 +15,10 @@ Use this skill to convert customer success playbook, account health, adoption, Q
 4. Define triggers, entry/exit criteria, touchpoints, assets, owner roles, customer communication, product/support escalation, and success metrics.
 5. Produce CS playbook, state machine, decision table, event schema, checklist, and operating cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not make CSMs compensate forever for broken onboarding, product gaps, support defects, or unclear packaging.

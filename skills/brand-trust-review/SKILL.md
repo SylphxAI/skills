@@ -15,6 +15,10 @@ Use this skill to convert a brand trust, proof, claims, privacy promises, pricin
 4. Evaluate promise/proof fit, specificity, reversibility, human support, policy clarity, visual credibility, social proof quality, and failure recovery.
 5. Produce trust audit, claim/proof matrix, decision table, event schema, copy guidance, and risk checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not invent proof, customer logos, security claims, benchmarks, ratings, guarantees, or compliance status.

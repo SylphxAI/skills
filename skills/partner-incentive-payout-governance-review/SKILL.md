@@ -15,6 +15,10 @@ Use this skill to convert partner incentive, referral payout, reseller rebate, m
 4. Define eligibility rules, attribution model, calculation source, payout approval, evidence requirements, quality/retention gates, clawback policy, dispute workflow, fraud controls, partner communication, and performance review.
 5. Produce partner incentive governance review, state machine, decision table, event schema, payout checklist, dispute policy, and ROI monitoring plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not pay incentives for activity that creates low-quality customers, channel conflict, policy violations, or support burden.

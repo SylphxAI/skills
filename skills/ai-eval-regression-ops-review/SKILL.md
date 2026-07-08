@@ -15,6 +15,10 @@ Use this skill to convert a AI eval regression operations, datasets, rubrics, ju
 4. Define dataset governance, rubric versioning, judge calibration, release thresholds, failure triage, monitoring, rollback, and review cadence.
 5. Produce eval ops plan, state machine, decision table, event schema, regression checklist, and model-change policy.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not ship AI changes on aggregate score alone when critical slices regress.

@@ -15,6 +15,10 @@ Use this skill to convert privacy consent center, preference center, cookie cate
 4. Define choice taxonomy, UI copy, default state, proof event, downstream enforcement, sync SLA, exception handling, audit evidence, and user support path.
 5. Produce preference center review, state machine, decision table, event schema, consent checklist, downstream sync map, and audit plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not collect consent that downstream systems cannot enforce or prove.

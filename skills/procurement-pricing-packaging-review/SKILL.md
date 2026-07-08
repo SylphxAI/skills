@@ -15,6 +15,10 @@ Use this skill to convert enterprise procurement, pricing, packaging, SKU, disco
 4. Define procurement-ready packaging, approved discount/exception rules, value proof, quote/order handoff, billing/tax requirements, security/legal artifacts, and renewal/true-up path.
 5. Produce packaging review, state machine, decision table, event schema, procurement checklist, and deal-desk controls.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not create bespoke SKUs or discount exceptions without owner approval, billing support, margin impact, and renewal consequences.

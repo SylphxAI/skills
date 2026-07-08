@@ -15,6 +15,10 @@ Use this skill to convert a release trains, change calendars, risk classificatio
 4. Define calendar, freeze rules, readiness gates, rollout stages, comms, support brief, monitoring, rollback, and post-release review.
 5. Produce release train plan, state machine, decision table, event schema, checklist, and exception policy.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not put billing, auth, migration, or public API changes on an ordinary release train without special gates.

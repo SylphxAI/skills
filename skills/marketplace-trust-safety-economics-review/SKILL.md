@@ -15,6 +15,10 @@ Use this skill to convert marketplace trust-safety economics, incentives, abuse,
 4. Define incentive model, control ladder, review/appeal workflow, payout holds, quality metrics, ranking guardrails, cost model, and trust-health dashboard.
 5. Produce marketplace trust-economics plan, state machine, decision table, event schema, risk checklist, and experiment guardrails.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not optimize GMV, take rate, or supply growth while ignoring fraud, refunds, disputes, support cost, or buyer trust.

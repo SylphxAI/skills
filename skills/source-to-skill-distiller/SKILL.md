@@ -40,7 +40,7 @@ The source is evidence. The skill is the reusable control surface: trigger, deci
 - Separate source language from output language. A Cantonese source can produce an English public skill, but the evidence boundary should say what was translated, preserved, or normalized.
 - For RTL, CJK, locale-specific punctuation, pluralization, politeness level, or code-switching, move the detailed rules into a reference instead of crowding `SKILL.md`.
 
-## Output Protocols
+## Output format
 
 ### Source-To-Skill Brief
 
@@ -110,3 +110,7 @@ A finished conversion:
 - includes positive and negative eval prompts;
 - passes structural validation for the target repository;
 - reports skipped validation honestly.
+
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.

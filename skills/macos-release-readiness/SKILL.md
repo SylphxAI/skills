@@ -15,6 +15,10 @@ Use this skill to make macOS apps feel native, trustworthy, supportable, and saf
 4. Separate release blockers from product polish and support improvements.
 5. Produce a macOS readiness matrix with proof needed for each high-risk area.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not hide login items, launch agents, background helpers, screen recording, accessibility, file access, or network behavior.

@@ -15,6 +15,10 @@ Use this skill to convert AI model routing, provider selection, cost, quality, l
 4. Define routing inputs, route policy, quality checks, cost budgets, fallback behavior, cache rules, safety escalation, and experiment plan.
 5. Produce router design, state machine, decision table, event schema, eval matrix, cost-quality scorecard, and rollback gates.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not optimize token cost before defining task quality, failure severity, and user promise.

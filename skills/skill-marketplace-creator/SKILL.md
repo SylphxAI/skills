@@ -15,7 +15,7 @@ Use this skill to build a skill ecosystem that is useful, trustworthy, and distr
 4. Require validation before publication: schema, trigger quality, safety, license, examples, and evals.
 5. Produce concrete repo structure, governance, launch channels, and next 48-hour actions.
 
-## Marketplace principles
+## Guardrails
 
 - Start repository-first. GitHub is the first marketplace, trust surface, and contribution flow.
 - Curate before scaling. A small set of excellent skills beats a huge undifferentiated directory.
@@ -44,3 +44,7 @@ Risks:
 ```
 
 For repo validation scripts, inspect or run `scripts/check_skill_folder.py` if present.
+
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.

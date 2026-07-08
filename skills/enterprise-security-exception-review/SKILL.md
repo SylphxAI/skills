@@ -15,6 +15,10 @@ Use this skill to convert enterprise security exception, compensating control, c
 4. Define approval owner, evidence, compensating control, customer communication, expiry, renewal review, remediation plan, and support/runbook impact.
 5. Produce exception review, state machine, decision table, event schema, risk checklist, and customer response plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not grant indefinite customer-specific security exceptions without owner, expiry, and renewal review.

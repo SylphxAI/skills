@@ -15,6 +15,10 @@ Use this skill to make forms easier, safer, and more trustworthy without hiding 
 4. Separate friction that protects users from friction that only reflects internal data needs.
 5. Produce prioritized fixes with metrics and validation checks.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not remove fields needed for safety, legal, payment, privacy, or support without another control.

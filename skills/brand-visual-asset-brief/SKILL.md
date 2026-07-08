@@ -16,6 +16,10 @@ Use this skill to define visual direction before generating or commissioning bra
 5. Write generation or design prompts with style, metaphor, and anti-patterns.
 6. Produce a handoff brief with review criteria and export checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not invent trademarked or competitor-identical styles.

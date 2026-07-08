@@ -15,6 +15,10 @@ Use this skill to convert a search, discovery, relevance quality, filters, ranki
 4. Define quality evals, query logs, zero-result recovery, feedback signals, fairness checks, ranking-change rollout, and support/debug tools.
 5. Produce relevance audit, state machine, decision table, event schema, eval set, and launch checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not mix paid placement, editorial quality, eligibility, and organic ranking without labels and governance.

@@ -15,6 +15,10 @@ Use this skill to convert partner implementation quality, systems integrator QA,
 4. Define quality standards, evidence requirements, acceptance tests, customer signoff, defect triage, support handoff, scorecard metrics, remediation, and certification consequences.
 5. Produce partner implementation quality plan, state machine, decision table, event schema, QA checklist, customer acceptance plan, and partner scorecard.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let partner delivery quality be judged only by project completion or partner self-report.

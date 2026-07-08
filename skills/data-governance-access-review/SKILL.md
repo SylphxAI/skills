@@ -15,6 +15,10 @@ Use this skill to convert a data governance, classification, access controls, le
 4. Define access request workflow, approval policy, least privilege, expiration, review cadence, audit log, break-glass, and offboarding.
 5. Produce governance plan, state machine, decision table, event schema, access checklist, and exception review policy.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not grant permanent broad production data access for convenience.

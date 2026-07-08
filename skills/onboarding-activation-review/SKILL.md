@@ -15,6 +15,10 @@ Use this skill to move users from curiosity to first real value with minimal cer
 4. Remove non-essential friction before adding guidance.
 5. Produce activation flow, instrumentation, and experiment backlog.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not mistake completed onboarding screens for activated users.

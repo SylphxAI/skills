@@ -15,6 +15,10 @@ Use this skill to convert a customer advisory boards, design partners, roadmap s
 4. Define selection criteria, agenda, discussion prompts, evidence capture, commitment policy, follow-up, roadmap linkage, and member health checks.
 5. Produce CAB plan, state machine, decision table, event schema, facilitation checklist, and anti-bias guardrails.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let the loudest or highest-revenue customer become the whole market.

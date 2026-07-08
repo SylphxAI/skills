@@ -15,6 +15,10 @@ Use this skill to convert feature request prioritization, evidence quality, dupl
 4. Define evidence score, clustering, opportunity framing, impact/effort/risk, dependency map, decision owner, communication plan, and revisit trigger.
 5. Produce prioritization review, state machine, decision table, event schema, scoring checklist, and stakeholder response.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not rank by loudest customer, biggest logo, newest ticket, or sales urgency alone.

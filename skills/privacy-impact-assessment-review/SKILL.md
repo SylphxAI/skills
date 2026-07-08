@@ -15,6 +15,10 @@ Use this skill to convert privacy impact assessment, data processing, minimizati
 4. Define data map, minimization, notice/consent, access controls, retention/deletion, DSAR path, risk mitigations, launch gate, and record of decision.
 5. Produce PIA report, state machine, decision table, event schema, risk checklist, and mitigation plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not collect personal data because it is convenient; tie each field to purpose, retention, and user value.

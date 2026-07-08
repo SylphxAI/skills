@@ -15,6 +15,10 @@ Use this skill to convert API versioning, deprecation, breaking change, SDK, mig
 4. Define versioning policy, compatibility tests, docs/changelog, migration guide, usage segmentation, notification plan, exception path, and support runbook.
 5. Produce API change plan, state machine, decision table, event schema, deprecation checklist, and rollout timeline.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not call a breaking behavior change additive because the schema still validates.

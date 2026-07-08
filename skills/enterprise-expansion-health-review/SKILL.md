@@ -15,6 +15,10 @@ Use this skill to convert enterprise account health, expansion readiness, upsell
 4. Define health score evidence, expansion hypothesis, value proof, stakeholder plan, risk remediation, commercial owner, and customer communication path.
 5. Produce expansion health review, state machine, decision table, event schema, account checklist, and next action plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not push expansion into accounts with unresolved incidents, adoption failure, weak value proof, or open trust issues.

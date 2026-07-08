@@ -15,6 +15,10 @@ Use this skill to turn a recurring product-operations problem into a concrete, r
 4. Tailor the script to buyer role instead of giving a generic feature tour.
 5. Produce talk track, click path, timing, proof points, objections, and follow-up plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not invent customer logos, ROI, compliance, integrations, or roadmap commitments.

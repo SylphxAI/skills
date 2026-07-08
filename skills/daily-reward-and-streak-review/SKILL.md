@@ -16,6 +16,10 @@ Use this skill to make daily retention loops motivating, fair, and economy-safe.
 5. Treat paid repair, VIP multipliers, gacha currency, comeback bonuses, and notification copy as trust-sensitive monetization surfaces.
 6. Produce a complete but compact loop design with state model, reward table, metrics, and experiment guardrails. Prefer short bullets over long prose; never omit metrics.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not make the product depend on anxiety or loss aversion as the main value.

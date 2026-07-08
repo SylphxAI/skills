@@ -21,7 +21,11 @@ Use this skill to turn a product, page, funnel, or go-to-market idea into a prio
 4. Prioritize by expected impact, confidence, speed, and strategic fit.
 5. Produce a short action plan with owners, success metric, and fastest validation.
 
-## Rules
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
+## Guardrails
 
 - Prefer one sharp wedge over many generic channels.
 - Do not recommend spam, dark patterns, fake scarcity, deceptive testimonials, or manipulative UX.

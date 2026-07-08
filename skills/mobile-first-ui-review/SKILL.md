@@ -15,6 +15,10 @@ Use this skill to make mobile experiences feel native, fast, and easy to operate
 4. Separate critical blockers from polish opportunities.
 5. Produce a concrete patch plan or review findings with rule IDs.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not optimize only for screenshots; optimize the lived touch flow.

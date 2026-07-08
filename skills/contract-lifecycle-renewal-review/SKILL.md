@@ -15,6 +15,10 @@ Use this skill to convert contract lifecycle, renewal, expansion, cancellation, 
 4. Define renewal calendar, health signals, commercial approvals, quote/order/invoice handoff, entitlement change gate, customer communication, cancellation path, and exception policy.
 5. Produce renewal operating plan, state machine, decision table, event schema, risk checklist, and owner-by-date action list.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not rely on surprise auto-renewal, hidden cancellation windows, or dark-pattern retention to protect revenue.

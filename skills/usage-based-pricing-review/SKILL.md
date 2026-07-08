@@ -15,6 +15,10 @@ Use this skill to turn usage pricing into a trustworthy revenue system instead o
 4. Separate customer value, provider cost, predictability, abuse risk, and growth incentives.
 5. Produce pricing architecture, event contract, guardrails, and experiment plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not hide metering logic, renewal price, overage rules, or invoice timing.

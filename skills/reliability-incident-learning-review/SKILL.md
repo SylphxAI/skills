@@ -15,6 +15,10 @@ Use this skill to convert a incident learning, postmortems, contributing factors
 4. Define timeline, impact, contributing factors, detection gaps, comms review, action owners, due dates, recurrence guardrails, and learning distribution.
 5. Produce incident learning report, state machine, decision table, event schema, action checklist, and recurrence-review cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not reduce postmortems to one root cause when systems, process, monitoring, and decision factors interacted.

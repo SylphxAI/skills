@@ -15,6 +15,10 @@ Use this skill to convert a revenue forecasts, capacity planning, funnel assumpt
 4. Define assumptions, source data, leading indicators, cohort retention, conversion, churn, expansion, margin, capacity limits, scenarios, and review cadence.
 5. Produce forecast model review, state machine, decision table, event schema, scenario checklist, and governance loop.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not present a single optimistic forecast without base/downside scenarios and capacity constraints.

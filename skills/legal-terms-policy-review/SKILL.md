@@ -15,6 +15,10 @@ Use this skill to convert legal terms, policy surface, user obligation, billing 
 4. Define required disclosure, consent/acknowledgement, versioning, change notice, evidence capture, support macro, owner approval, and escalation path.
 5. Produce legal-terms review, state machine, decision table, event schema, policy checklist, and launch/readiness gates.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not invent legal language or treat the skill output as legal advice; route final wording to legal counsel or approved policy owners.

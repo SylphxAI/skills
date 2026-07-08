@@ -15,6 +15,10 @@ Use this skill to convert data deletion, erasure, DSAR, retention, backup, legal
 4. Define deletion map, eligibility check, approval, execution order, tombstone/anonymization, backup handling, evidence, customer notice, and exception path.
 5. Produce erasure plan, state machine, decision table, event schema, deletion checklist, and proof/communication plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not promise physical deletion from backups, logs, invoices, or legal records where policy requires retention or delayed purge.

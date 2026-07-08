@@ -18,6 +18,12 @@ Use this skill to handle refunds without damaging trust or letting abuse break t
 7. Define the support operating model: queue owner, SLA, escalation owner, agent override permissions, QA sampling, approval thresholds, and appeal timeline.
 8. Produce a provider table, refund/cancellation/restore state machine, decision table, support macros, event schema with required properties, evidence timeline, support operating model, and risk ladder.
 
+## When not to use
+
+- Do not use when the job belongs to `customer-support-operations` — Defer when the job matches customer-support-operations instead.
+- Do not use when the job belongs to `customer-support-operations` — Support ops design: channels, triage, macros, workforce — not provider refund authority.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not auto-ban after a normal refund.

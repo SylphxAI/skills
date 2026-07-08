@@ -15,6 +15,10 @@ Use this skill to convert executive business review, QBR/EBR cadence, strategic 
 4. Define review cadence, prep workflow, agenda, value evidence, adoption metrics, risk register, roadmap ask handling, action owners, follow-up rhythm, and renewal/expansion signal capture.
 5. Produce EBR operating system, state machine, decision table, event schema, agenda template, action register, sponsor map, and follow-up plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not make EBRs a generic status deck; tie every section to customer outcomes, decisions, risks, or executive action.

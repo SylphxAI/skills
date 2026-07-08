@@ -15,6 +15,10 @@ Use this skill to convert a risky product, operations, trust, or marketplace que
 4. Separate consumer receipts, B2B invoices, app-store receipts, marketplace seller documents, and tax/accounting evidence.
 5. Produce requirements matrix, document lifecycle, exception queue, and support/finance escalation plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not provide legal or tax advice; route jurisdiction-specific decisions to qualified owners.

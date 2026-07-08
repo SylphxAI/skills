@@ -15,6 +15,10 @@ Use this skill to make game economies sustainable, fair, and measurable.
 4. Check player trust, fairness, support recovery, and live-ops observability.
 5. Produce economy risks, tuning levers, and event schema.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not recommend exploitative dark patterns, hidden odds, or coercive spend pressure.

@@ -15,6 +15,10 @@ Use this skill to make ads a measured monetization system rather than an interru
 4. Define segmentation: new users, engaged users, payers, subscribers, lapsed users, children-sensitive contexts, and high-frustration states.
 5. Produce a revenue plan with caps, consent, analytics, suppression rules, support cases, and experiment guardrails.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not place interstitials during critical tasks, payment, onboarding trust-building, or error recovery.

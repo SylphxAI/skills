@@ -15,6 +15,10 @@ Use this skill to convert store price change, subscription price increase, regio
 4. Define cohort map, timeline, consent/notification requirements, user messaging, paywall/store metadata updates, support macros, refund/cancel routes, analytics, and monitoring plan.
 5. Produce price change communication plan, state machine, decision table, event schema, cohort checklist, support script, and compliance monitoring plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not hide price increases behind vague product-update language or rely only on store notifications for customer trust.

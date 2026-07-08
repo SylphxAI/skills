@@ -15,6 +15,10 @@ Use this skill to convert a lifecycle email, segmentation, consent, deliverabili
 4. Define audience, trigger, eligibility, suppression, cadence, content, deliverability checks, unsubscribe/preference behavior, event tracking, and support fallback.
 5. Produce lifecycle email plan, state machine, decision table, event schema, QA checklist, and fatigue-control policy.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not send marketing or winback emails without consent, suppression, unsubscribe, and preference handling.

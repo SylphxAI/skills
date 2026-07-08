@@ -15,6 +15,10 @@ Use this skill to convert DSAR, access, export, correction, deletion, consent wi
 4. Define verification, scope resolution, system inventory, execution order, exception handling, subprocessor workflow, response package, audit evidence, and SLA monitoring.
 5. Produce DSAR operating plan, state machine, decision table, event schema, request checklist, evidence package, and escalation map.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not fulfill irreversible requests without identity, authority, scope, and legal-hold checks.

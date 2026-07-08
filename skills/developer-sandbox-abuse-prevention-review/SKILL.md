@@ -15,6 +15,10 @@ Use this skill to convert developer sandbox, free trial, API key, plugin testing
 4. Define environment isolation, synthetic data policy, quota ladder, risky capability gates, abuse detection, graduated trust, manual review, appeal path, developer messaging, and production promotion gate.
 5. Produce sandbox abuse prevention review, state machine, decision table, event schema, control checklist, queue policy, and developer-safe mitigation plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not solve abuse only by adding signup friction that destroys legitimate developer activation.

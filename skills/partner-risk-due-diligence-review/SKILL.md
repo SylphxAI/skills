@@ -15,6 +15,10 @@ Use this skill to convert a partner risk due diligence, integrations, data shari
 4. Define risk review, evidence, data boundaries, contract terms, support model, monitoring, incentives, escalation, and termination/exit path.
 5. Produce partner due diligence plan, state machine, decision table, event schema, checklist, and ongoing review cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not integrate or co-market before data-sharing, support, brand, legal, privacy, and security responsibilities are explicit.

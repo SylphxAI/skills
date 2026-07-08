@@ -15,6 +15,10 @@ Use this skill to convert a enterprise procurement security, vendor-risk evidenc
 4. Define evidence source, approved answer, gap wording, exception path, access control, reviewer, expiry, and sales/legal/security handoff.
 5. Produce procurement review plan, state machine, decision table, event schema, evidence checklist, and gap-escalation policy.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not answer “yes” to controls that are planned, partial, customer-specific, or not evidenced.

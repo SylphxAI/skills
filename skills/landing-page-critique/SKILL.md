@@ -15,6 +15,10 @@ Use this skill to turn a landing page into a clear conversion argument.
 4. Separate positioning problems from UI polish problems.
 5. Produce prioritized copy/layout experiments.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not optimize persuasion by misleading users.

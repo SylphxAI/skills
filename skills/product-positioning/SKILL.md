@@ -15,6 +15,10 @@ Use this skill to turn a product from a list of features into a market argument.
 4. Stress-test against competitors, skeptical buyers, and wrong-fit users.
 5. Produce messaging hierarchy and landing/sales usage.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not claim uniqueness without a defensible difference.

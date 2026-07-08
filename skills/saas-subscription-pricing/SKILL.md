@@ -16,6 +16,12 @@ Use this skill to design pricing that matches customer value, supports growth, a
 5. Run a pricing arithmetic pass before publishing: seat minimums vs included seats, included usage vs overage rates, gross margin, annual discount, and procurement terms must be internally consistent.
 6. Define exact usage rates, unit economics, margin guardrails, rollout experiments, grandfathering, customer communications, sales enablement, and objection handling before proposing discounts.
 
+## When not to use
+
+- Do not use when the job belongs to `subscription-entitlement-review` — Access state after billing events, not packaging strategy.
+- Do not use when the job belongs to `subscription-price-increase-retention-review` — Price-change cohorts and retention, not initial packaging.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not mix "per seat" pricing with ambiguous "included base seats"; state either a minimum seat commitment or a bundled-seat package.

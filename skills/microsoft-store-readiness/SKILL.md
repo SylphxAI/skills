@@ -15,6 +15,10 @@ Use this skill to reduce Microsoft Store submission risk and make Windows distri
 4. Separate Store-specific requirements from general Windows release readiness.
 5. Produce a submission matrix, blockers, reviewer notes, telemetry plan, and support checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not claim Store features, device support, privacy behavior, or in-app purchase support that the build does not implement.

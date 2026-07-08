@@ -15,6 +15,10 @@ Use this skill to make accessibility a product-quality system, not a late checkl
 4. Separate blockers, high-impact usability issues, design-system fixes, and polish.
 5. Produce an accessibility risk matrix, fixes, validation plan, and regression checks.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not trade accessibility away for visual polish, animation, or conversion pressure.

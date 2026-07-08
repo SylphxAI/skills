@@ -15,6 +15,10 @@ Use this skill to convert a risky product, operations, trust, or marketplace que
 4. Define trigger, dismissal, persistence, personalization, accessibility, metrics, and support/help-center handoff.
 5. Produce education journey, content matrix, state flow, event schema, and cleanup plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use education as a bandage for broken IA or unclear product copy.

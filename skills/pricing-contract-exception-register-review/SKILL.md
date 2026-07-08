@@ -15,6 +15,10 @@ Use this skill to convert pricing exception, contract exception, discount regist
 4. Define approval policy, register fields, evidence, invoice mapping, revenue impact, owner, expiry, renewal review, support/sales visibility, and exception cleanup path.
 5. Produce contract exception register design, state machine, decision table, event schema, approval checklist, renewal audit plan, and cleanup backlog.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let contract exceptions live only in PDFs, CRM notes, or sales memory.

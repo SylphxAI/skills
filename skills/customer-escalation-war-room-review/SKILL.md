@@ -15,6 +15,10 @@ Use this skill to convert customer escalation, war room, executive escalation, h
 4. Define war-room roles, communication cadence, action log, decision log, evidence, customer update, internal escalation path, de-escalation criteria, and learning review.
 5. Produce escalation war-room plan, state machine, decision table, event schema, action checklist, customer update template, and post-escalation review.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not run a war room without a single accountable owner, decision log, and customer communication owner.

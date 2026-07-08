@@ -15,6 +15,10 @@ Use this skill to convert lifecycle pricing experiment, offer test, upgrade nudg
 4. Define hypothesis, eligibility, randomization, holdout, revenue and retention metrics, support/legal constraints, abuse controls, billing QA, and stop conditions.
 5. Produce pricing experiment brief, state machine, decision table, event schema, guardrail checklist, rollout plan, and readout template.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not optimize conversion while hiding churn, refund, support, downgrade, margin, or trust damage.

@@ -16,6 +16,10 @@ Use this skill to make desktop software feel trustworthy on the user's machine.
 5. Define release gates for signing, notarization, updater safety, crash reporting, rollback, and enterprise controls.
 6. Produce OS-specific readiness matrix, explicit regression test plan, and blockers.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not hide background behavior, startup persistence, or data retention.

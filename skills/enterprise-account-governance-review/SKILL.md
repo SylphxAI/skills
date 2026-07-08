@@ -15,6 +15,10 @@ Use this skill to convert enterprise account governance, tenant ownership, admin
 4. Define source of truth, role model, approval gates, audit events, support boundaries, recovery path, customer communication, and periodic access review.
 5. Produce account governance plan, state machine, decision table, event schema, admin checklist, support boundary, and exception register.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not grant enterprise admin or support access without source-of-truth ownership, auditability, expiry, and revocation.

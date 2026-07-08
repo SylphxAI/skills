@@ -15,6 +15,10 @@ Use this skill to improve checkout revenue without adding dark patterns, payment
 4. Separate trust, clarity, speed, payment reliability, recovery, and measurement issues.
 5. Produce a prioritized conversion plan with guardrails, instrumentation, and rollback criteria.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not hide price, renewal, tax, cancellation, or refund consequences.

@@ -15,6 +15,10 @@ Use this skill to convert a experimentation governance, A/B tests, holdouts, met
 4. Define eligibility, randomization, holdouts, metrics, guardrails, sample plan, conflict policy, ethics review, launch gate, and decision record.
 5. Produce governance plan, state machine, decision table, event schema, checklist, and experiment review cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not test pricing, ranking, safety, privacy, or accessibility changes without risk review and support/comms plan.

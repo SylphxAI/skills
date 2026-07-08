@@ -15,6 +15,10 @@ Use this skill to convert incident status page, public communication, subscriber
 4. Define component taxonomy, declaration threshold, update cadence, template, approval path, subscriber channels, support coordination, and history/postmortem linkage.
 5. Produce status-page ops plan, state machine, decision table, event schema, communication checklist, and incident drill plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not delay customer-visible incident acknowledgement until the root cause is fully known.

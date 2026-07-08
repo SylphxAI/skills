@@ -15,6 +15,10 @@ Use this skill to convert release evidence pack, launch gate proof, release read
 4. Define evidence checklist, proof links, owner attestations, rollout guardrails, rollback proof, support/docs readiness, known-risk register, and final decision record.
 5. Produce release evidence pack, state machine, decision table, event schema, readiness checklist, approval record, and post-release verification plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not accept green aggregate CI as sufficient evidence for broad customer-impacting releases.

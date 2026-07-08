@@ -15,6 +15,10 @@ Use this skill to convert a high-stakes product decision into a concrete, measur
 4. Choose experiment type: A/B, holdout, staged rollout, switchback, pre/post, qualitative pilot, or no-test decision.
 5. Produce experiment spec, instrumentation plan, decision rule, launch checklist, and learning review.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not call an experiment successful from vanity engagement alone.

@@ -15,6 +15,10 @@ Use this skill to convert a feature sunset, deprecation, migration alternatives,
 4. Define usage thresholds, notice timeline, migration tooling, exceptions, support playbook, kill switch, and cleanup verification.
 5. Produce deprecation plan, state machine, customer decision table, event schema, comms checklist, and rollback/extension criteria.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not remove a used capability without usage readback, impacted account list, migration path, and support owner.

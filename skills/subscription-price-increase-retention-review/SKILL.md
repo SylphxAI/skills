@@ -21,6 +21,11 @@ Use this skill to convert subscription price increase, retention plan, grandfath
 7. Define cohort strategy, value narrative, notice timeline, consent path, grandfathering/save-offer policy, cancellation recovery, support macros, sales exception thresholds, refund handling, experiment/holdout plan, revenue/churn/LTV monitoring, and rollback/mitigation triggers.
 8. Produce subscription price-increase retention review, state machine, decision table, event schema, cohort checklist, support plan, and net-revenue monitoring plan.
 
+## When not to use
+
+- Do not use when the job belongs to `saas-subscription-pricing` — Defer when the job matches saas-subscription-pricing instead.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not optimize headline revenue lift while ignoring churn, refunds, support load, trust, or long-term LTV.

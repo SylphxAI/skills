@@ -15,6 +15,11 @@ Use this skill to convert marketplace dispute, refund claim, payout hold, buyer 
 4. Define evidence requirements, triage SLA, reviewer independence, temporary actions, payout/refund rules, communication templates, appeal path, abuse controls, fairness metrics, and policy feedback.
 5. Produce dispute resolution plan, state machine, decision table, event schema, evidence checklist, communication ladder, and fairness review.
 
+## When not to use
+
+- Do not use when the job belongs to `marketplace-payouts-review` — Payout ledger and holds; disputes are adjacent but separate party conflict resolution.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not optimize dispute cost by silently favoring buyers, sellers, high-revenue creators, or platform margin.

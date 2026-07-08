@@ -15,6 +15,10 @@ Use this skill to convert a offline queues, sync state, conflict resolution, loc
 4. Define local storage, mutation log, idempotency, ordering, tombstones, merge policy, conflict UI, retry, and recovery telemetry.
 5. Produce sync state machine, conflict decision table, event schema, UX copy, and QA scenario checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use last-write-wins for money, permissions, legal records, inventory, or destructive actions without explicit product acceptance.

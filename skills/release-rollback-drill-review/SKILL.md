@@ -15,6 +15,10 @@ Use this skill to convert release rollback drill, rollback rehearsal, deployment
 4. Define drill scenario, preconditions, execution steps, success criteria, time target, monitoring, customer impact, owner roles, and lessons learned.
 5. Produce rollback drill plan, state machine, decision table, event schema, readiness checklist, runbook diff, and evidence package.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not assume rollback works for databases, mobile apps, desktop clients, queues, caches, or third-party state without rehearsal.

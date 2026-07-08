@@ -15,6 +15,10 @@ Use this skill to make non-happy-path UI feel intentional, useful, and fast.
 4. Separate product-state fixes from visual polish.
 5. Produce copy, layout, instrumentation, and acceptance checks.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use cute empty-state copy when the user has lost work, money, or access.

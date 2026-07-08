@@ -15,6 +15,10 @@ Use this skill to find review blockers before a store reviewer, player, or user 
 4. Separate hard blockers, clarification needs, reviewer-note improvements, and post-approval monitoring.
 5. Produce a risk register and submission readiness checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Verify current platform policy before submission; this skill is a risk-audit framework, not legal advice.

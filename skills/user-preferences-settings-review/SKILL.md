@@ -15,6 +15,10 @@ Use this skill to convert a risky product, operations, trust, or marketplace que
 4. Design settings IA, default behavior, disabled states, migration, export/delete behavior, and instrumentation.
 5. Produce preference matrix, state flow, UX copy, edge cases, and event schema.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not hide privacy consent or legal choices inside cosmetic preferences.

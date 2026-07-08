@@ -15,6 +15,12 @@ Use this skill to turn support from a reactive inbox into a product trust system
 4. Design macros and user messaging that solve without blame.
 5. Produce support metrics and product fixes.
 
+## Guardrails
+
+- Do not design support that blames users or hides refund, billing, or entitlement truth.
+- Do not collapse provider-specific refund authority into one generic macro.
+- Do not skip product feedback loops; recurring support themes must route to owners.
+
 ## Output format
 
 ```text
@@ -26,3 +32,10 @@ Macros/messages:
 Metrics:
 Product feedback loop:
 ```
+
+## When not to use
+
+- Do not use when the job belongs to `refund-and-support-flow-review` — Refund, chargeback, entitlement revocation, restore/repurchase state machines.
+- Do not use when the job belongs to `refund-and-support-flow-review` — Defer when the job matches refund-and-support-flow-review instead.
+- Do not use when the job belongs to `support-quality-qa-review` — QA sampling is a module of support ops, not a separate entry point.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.

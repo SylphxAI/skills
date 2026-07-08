@@ -15,6 +15,10 @@ Use this skill to convert marketplace risk model, fraud score, trust score, abus
 4. Define calibration dataset, threshold policy, queue routing, human review, appeal loop, fairness checks, drift monitoring, policy feedback, and safe rollout plan.
 5. Produce risk model calibration review, state machine, decision table, event schema, threshold matrix, monitoring checklist, and policy-feedback plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not make automated model scores the final decision for high-impact marketplace actions without review and appeal.

@@ -15,6 +15,10 @@ Use this skill to convert data residency, regional architecture, replication, su
 4. Define residency boundary, allowed transfers, regional services, access controls, replication, backup/restore, deletion, migration, monitoring, and evidence.
 5. Produce residency design, state machine, decision table, event schema, control checklist, and customer proof plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not promise residency unless storage, processing, backups, logs, analytics, support access, and subprocessors match the claim.

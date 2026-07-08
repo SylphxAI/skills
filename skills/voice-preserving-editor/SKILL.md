@@ -20,6 +20,10 @@ Default to completing the current request normally, then applying this voice lay
 7. Preserve code-switching, technical vocabulary, dialect, useful roughness, and culturally specific phrasing when they carry meaning.
 8. Run the final preservation pass before responding.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not help evade AI detectors, plagiarism checks, academic integrity rules, authorship disclosure, moderation, or platform enforcement.

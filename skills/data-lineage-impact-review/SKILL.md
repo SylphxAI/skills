@@ -15,6 +15,10 @@ Use this skill to convert data lineage, schema change, downstream impact, metric
 4. Define lineage map, impact radius, owner approvals, tests, communication, migration/backfill plan, rollback, and monitoring.
 5. Produce lineage impact review, state machine, decision table, event schema, impact checklist, and change rollout plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not change events, schemas, or model semantics without identifying downstream metrics, dashboards, exports, and AI datasets.

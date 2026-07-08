@@ -15,6 +15,10 @@ Use this skill to convert admin audit log, privileged action, security evidence,
 4. Define event contract, actor/target/context, retention, integrity controls, customer UI, export/API, alerting, privacy redaction, and support/audit workflow.
 5. Produce audit-log design, state machine, decision table, event schema, coverage checklist, and rollout/backfill plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not log secrets, raw sensitive content, tokens, or unnecessary PII in audit logs.

@@ -15,6 +15,10 @@ Use this skill to make developer products easy to understand, fast to try, safe 
 4. Audit docs, examples, SDK/API shape, error messages, limits, telemetry, changelog, and trust signals.
 5. Produce an activation plan with product changes, docs changes, instrumentation, and support readiness.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not optimize only for signups; optimize for first success and safe production adoption.

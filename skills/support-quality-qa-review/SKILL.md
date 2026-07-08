@@ -15,6 +15,11 @@ Use this skill to convert a risky product, operations, trust, or marketplace que
 4. Design sampling, calibration, coaching, macro improvement, automation review, and product feedback loops.
 5. Produce QA scorecard, review workflow, event schema, and improvement backlog.
 
+## When not to use
+
+- Do not use when the job belongs to `customer-support-operations` — Defer when the job matches customer-support-operations instead.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not score agents only on speed when correctness, fairness, or trust is at risk.

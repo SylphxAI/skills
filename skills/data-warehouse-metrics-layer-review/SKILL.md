@@ -15,6 +15,10 @@ Use this skill to convert warehouse metrics layer, semantic model, KPI definitio
 4. Define canonical metric contract, grain, dimensions, filters, owner, lineage, freshness SLA, quality tests, access rules, dashboard publishing, and change log.
 5. Produce metrics-layer design, state machine, decision table, event schema, quality checklist, and migration/deprecation plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let every dashboard redefine core metrics such as active user, conversion, churn, ARR, support SLA, or usage cost.

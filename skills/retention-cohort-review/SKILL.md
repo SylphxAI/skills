@@ -15,6 +15,10 @@ Use this skill to turn retention charts into product decisions instead of dashbo
 4. Separate measurement errors, segment mix, acquisition quality, onboarding gaps, value gaps, lifecycle messaging, and monetization effects.
 5. Produce a diagnosis, cohort cuts, event fixes, product hypotheses, and experiment plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not compare cohorts without controlling for acquisition source, platform, geography, version, seasonality, and activation state.

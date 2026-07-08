@@ -15,6 +15,11 @@ Use this skill to convert marketplace seller performance, creator quality, selle
 4. Define performance dimensions, thresholds, confidence, explanations, interventions, appeal evidence, fairness monitoring, ranking impact, and improvement loop.
 5. Produce seller performance plan, state machine, decision table, event schema, scoring checklist, intervention ladder, and fairness review.
 
+## When not to use
+
+- Do not use when the job belongs to `creator-ranking-quality-review` — Defer when the job matches creator-ranking-quality-review instead.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use opaque performance scores to punish sellers without explanations, evidence, and appeal.

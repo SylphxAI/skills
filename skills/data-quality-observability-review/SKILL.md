@@ -15,6 +15,10 @@ Use this skill to convert a data quality, freshness, completeness, schema drift,
 4. Define monitors, alert thresholds, owner routing, backfill policy, dashboard trust states, incident comms, and data contract changes.
 5. Produce quality map, state machine, decision table, event schema, alert policy, and backfill checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not treat a dashboard as trusted if upstream freshness, schema, and reconciliation are unowned.

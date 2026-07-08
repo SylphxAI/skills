@@ -15,6 +15,10 @@ Use this skill to convert trial conversion, product-qualified lead, sales-assist
 4. Define PQL scoring, routing rules, message triggers, upgrade offers, demo/CS handoff, trial extension policy, suppression, experiment metrics, and support path.
 5. Produce trial conversion plan, state machine, decision table, event schema, conversion checklist, and experiment/guardrail plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not route every trial to sales; protect sales capacity and user trust with fit and intent thresholds.

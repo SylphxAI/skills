@@ -15,6 +15,10 @@ Use this skill to turn a recurring product-operations problem into a concrete, r
 4. Separate launch blockers from sales-enablement evidence and premium-plan polish.
 5. Produce readiness matrix, risk register, sales proof pack, and rollout plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not promise certifications, compliance, SLAs, or data residency that do not exist.

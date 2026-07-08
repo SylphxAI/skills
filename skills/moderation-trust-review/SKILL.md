@@ -15,6 +15,10 @@ Use this skill to turn a recurring product-operations problem into a concrete, r
 4. Separate policy uncertainty, low-risk quality issues, abuse/fraud, illegal content, safety emergencies, and repeat offenders.
 5. Produce a moderation workflow, queue policy, enforcement ladder, transparency copy, and event schema.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not make irreversible account or creator decisions from low-confidence automation alone.

@@ -15,6 +15,10 @@ Use this skill to convert enterprise role lifecycle, role taxonomy, joiner-mover
 4. Define role taxonomy, entitlement source of truth, lifecycle state machine, joiner/mover/leaver checks, privileged access gates, break-glass controls, stale access review cadence, support workflow, and audit evidence.
 5. Produce role lifecycle review, state machine, decision table, event schema, access checklist, exception policy, and remediation plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not treat roles as UI labels; connect every role to permissions, data classes, tenancy, and audit evidence.

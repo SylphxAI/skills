@@ -23,7 +23,7 @@ If the user's intent is ambiguous, assume **Review** for existing code and **Bui
 4. In Build/Polish mode, implement the smallest consistent improvement across sibling surfaces.
 5. In Review mode, rank the few highest-impact findings, cover every requested state, then give the smallest implementation plan.
 
-## Restraint gate
+## Guardrails
 
 Skip a detail if any answer is no:
 
@@ -33,7 +33,7 @@ Skip a detail if any answer is no:
 - Is the effect quieter when the interaction is frequent?
 - Can the improvement be described in observable terms?
 
-## Review output
+## Output format
 
 ```text
 P0 — path/to/File.tsx:42 — ic-form-1
@@ -47,3 +47,7 @@ Implementation plan:
 ```
 
 Keep review findings high-signal. Prefer 3 to 6 material fixes over 20 cosmetic notes. For checkout/payment surfaces, explicitly cover disabled, loading, duplicate-submit, error, success, focus, mobile touch target, and reduced-motion states when present in the prompt.
+
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.

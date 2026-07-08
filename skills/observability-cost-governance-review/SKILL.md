@@ -15,6 +15,10 @@ Use this skill to convert a observability cost governance, logs, metrics, traces
 4. Define sampling, retention, aggregation, redaction, ownership, budgets, dashboard/alert policy, cost allocation, and deletion/exception rules.
 5. Produce observability governance plan, state machine, decision table, event schema, checklist, and cost-review cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not cut telemetry that is required for incident response, security audit, billing reconciliation, or customer support without replacement.

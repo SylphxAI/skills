@@ -15,6 +15,10 @@ Use this skill to convert a high-stakes product decision into a concrete, measur
 4. Map dangerous actions, defaults, role gates, confirmation, recovery, and audit logs.
 5. Produce IA map, permission matrix, state flow, empty/error states, and instrumentation plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not bury destructive or security-critical controls behind ambiguous labels.

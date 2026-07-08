@@ -15,6 +15,10 @@ Use this skill to decide whether launch is ready, risky, or blocked.
 4. Classify blockers as launch-blocking, launch-risk, or post-launch follow-up.
 5. Produce a readiness verdict and launch room checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not treat marketing readiness as product readiness.

@@ -16,6 +16,10 @@ Use this skill to collect public community signals and convert them into actiona
 5. Extract themes: language, objections, alternatives, delight moments, and unmet needs.
 6. Produce a synthesis with confidence level, blind spots, and recommended next actions.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Use public pages and search tools only; do not bypass authentication or rate limits aggressively.

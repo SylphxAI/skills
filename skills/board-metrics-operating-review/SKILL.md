@@ -16,6 +16,10 @@ Use this skill to convert board metrics, board pack, investor reporting, operati
 5. If the user supplies no period values, produce a non-release illustrative draft: fill the current-period snapshot with clearly prefixed `illustrative_not_source_of_truth` values, set signoff to blocked, and add data-request actions. Do not leave the board review as blank `value_required` tables unless the user specifically asks for a data-request checklist only.
 6. Produce board metrics operating review, state machine, decision table, event schema, metric pack checklist, signed metric-release plan, board decision memo, and board action register.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let board metrics be manually curated without source-of-truth definitions, owner signoff, and variance explanation.

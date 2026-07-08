@@ -19,6 +19,11 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 8. For finance close, name numeric tolerances, cadence, owner, source systems, exception queue, and close blocker for every money/tax/settlement/revenue check.
 9. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability dashboards, rollback controls, and launch checklist.
 
+## When not to use
+
+- Do not use when the job belongs to `billing-reconciliation-review` — Defer when the job matches billing-reconciliation-review instead.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not grant durable value from client-only confirmation.

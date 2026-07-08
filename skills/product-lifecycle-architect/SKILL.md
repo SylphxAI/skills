@@ -16,6 +16,16 @@ Use this skill to turn a product idea into a complete operating blueprint rather
 5. Identify missing state machines, edge cases, metrics, and support flows.
 6. Produce a phased roadmap with P0/P1/P2, but ensure every P0 item is production-shaped.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
+## Guardrails
+
+- Do not treat a feature list as an operating system; every P0 system needs states, owners, and metrics.
+- Do not invent market proof, revenue, or compliance claims without evidence boundaries.
+- Do not optimize launch speed by skipping payments, support, entitlement, or trust surfaces.
+
 ## Output format
 
 ```text

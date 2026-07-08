@@ -15,6 +15,10 @@ Use this skill to convert enterprise contract redlines, non-standard terms, lega
 4. Define evidence, fallback language, approval owner, implementation/control requirement, expiry/review point, and customer response.
 5. Produce redline review, state machine, decision table, event schema, approval checklist, and obligation handoff plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not accept contract language that promises controls, SLAs, data handling, support, or roadmap behavior the product cannot operate.

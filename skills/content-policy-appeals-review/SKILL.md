@@ -15,6 +15,10 @@ Use this skill to convert a content policy, enforcement, appeals, evidence, tran
 4. Define severity ladder, evidence package, notice copy, appeal SLA, reviewer independence, QA sampling, abuse controls, and restoration path.
 5. Produce policy operations plan, state machine, decision table, event schema, appeal checklist, and edge-case review cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not enforce vague policy without examples, severity ladder, notice, and appeal path.

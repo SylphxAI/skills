@@ -15,6 +15,10 @@ Use this skill to convert contract amendment, addendum, side letter, order form 
 4. Define intake form, risk tier, approval matrix, obligation update path, billing/provisioning mapping, customer communication, exception expiry, and post-signature verification.
 5. Produce contract amendment approval review, state machine, decision table, event schema, approval checklist, obligation-update plan, and renewal impact summary.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not provide legal advice or decide legal acceptability; route interpretation and drafting to qualified counsel.

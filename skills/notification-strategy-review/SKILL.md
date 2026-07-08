@@ -19,6 +19,10 @@ Use this skill to make notifications useful enough to deserve attention.
 8. Design permission timing, preferences, fallback, measurement, support recovery, and experiment guardrails.
 9. Produce a notification taxonomy, lifecycle journey map, channel/frequency policy, suppression rules, consent/preference model, incident/readback plan, event schema, and trust metrics.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use notifications to compensate for weak product value.

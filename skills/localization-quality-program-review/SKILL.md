@@ -15,6 +15,10 @@ Use this skill to convert localization quality, LQA, translation, in-context rev
 4. Define pseudo-localization, glossary/style guide, translation memory, in-context review, functional LQA, cultural/legal review, accessibility/RTL checks, and release gates.
 5. Produce localization QA plan, state machine, decision table, event schema, coverage checklist, and defect triage model.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not treat localization as string translation only; check layout, flows, market expectations, support, legal, and store assets.

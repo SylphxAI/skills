@@ -15,6 +15,10 @@ Use this skill to convert sales commission, incentive, quota, accelerator, clawb
 4. Define payout basis, eligibility, quality gates, margin guardrails, crediting rules, exception approval, dispute path, and reporting controls.
 5. Produce incentive review, state machine, decision table, event schema, compensation checklist, and risk controls.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not reward behavior that creates bad-fit customers, discount abuse, inflated commitments, unsupported terms, churn, or channel conflict.

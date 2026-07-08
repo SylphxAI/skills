@@ -15,6 +15,10 @@ Use this skill to make marketplaces trustworthy, discoverable, fair, and operabl
 4. Separate quality control, moderation, fraud, incentives, discovery, and creator success.
 5. Produce an operating model with policies, queues, metrics, and escalation paths.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not launch open submission without review, abuse handling, and takedown paths.

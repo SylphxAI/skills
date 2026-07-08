@@ -15,6 +15,10 @@ Use this skill to turn promotions into measurable product systems instead of ran
 4. Check whether the campaign protects margin, trust, and long-term retention.
 5. Produce launch checklist, experiment design, and rollback criteria.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not recommend fake scarcity, hidden terms, or coercive urgency.

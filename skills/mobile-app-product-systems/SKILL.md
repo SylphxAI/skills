@@ -33,7 +33,7 @@ Then read only the relevant references:
 5. Produce UX, events, edge cases, and policy/trust guardrails together.
 6. For refund or promotion work, include a decision table or state machine rather than generic advice.
 
-## Trust gate
+## Guardrails
 
 Do not propose a tactic unless it passes all checks:
 
@@ -62,3 +62,7 @@ Edge cases:
 Risks:
 - <policy/trust/product risk and mitigation>
 ```
+
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.

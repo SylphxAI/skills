@@ -15,6 +15,10 @@ Use this skill to make support knowledge easy to find, act on, and improve.
 4. Connect help content to product UI, support macros, and analytics.
 5. Produce taxonomy, article backlog, and quality checks.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use help content to hide product defects or unclear pricing.

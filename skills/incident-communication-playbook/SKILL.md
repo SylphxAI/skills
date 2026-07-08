@@ -15,6 +15,10 @@ Use this skill to communicate incidents clearly, quickly, and proportionately.
 4. Separate known facts, unknowns, actions, next update time, and user workaround.
 5. Produce a communication timeline and approval/risk gates.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not speculate beyond verified facts.

@@ -15,6 +15,10 @@ Use this skill to make store pages communicate product value before users instal
 4. Separate channel-specific constraints from universal conversion problems.
 5. Produce prioritized listing changes and measurement plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not overclaim features, privacy, rankings, or compatibility.

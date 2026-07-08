@@ -15,6 +15,10 @@ Use this skill to convert support escalation, engineering triage, bug intake, re
 4. Define intake requirements, severity, ownership, triage cadence, reproduction standard, workaround policy, customer update cadence, closure proof, and backlog feedback loop.
 5. Produce escalation operating model, state machine, decision table, event schema, triage checklist, and support/engineering RACI.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not escalate vague tickets without customer impact, reproduction detail, environment, logs, and expected/actual behavior when practical.

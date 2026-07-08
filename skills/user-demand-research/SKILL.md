@@ -16,6 +16,10 @@ Use this skill to turn noisy public user feedback into a ranked demand map with 
 5. Cluster duplicates, score frequency and intensity, and separate table stakes from differentiation.
 6. Produce a demand report with validation experiments and build/no-build recommendation.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Use only public, ethically accessible sources; do not scrape behind login walls or violate terms of service.

@@ -15,6 +15,10 @@ Use this skill to convert RevOps CRM governance, lifecycle stage, routing, forec
 4. Define object ownership, field definitions, stage exit criteria, automation rules, change approval, data-quality checks, and reporting contracts.
 5. Produce CRM governance plan, state machine, decision table, event schema, data-quality checklist, and rollout/backfill plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let reports, automations, routing, and compensation depend on undefined or manually inconsistent fields.

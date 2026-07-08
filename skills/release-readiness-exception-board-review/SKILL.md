@@ -15,6 +15,12 @@ Use this skill to convert release readiness exception, launch gate waiver, relea
 4. Define exception intake, evidence requirements, decision table, approval authority, mitigation owners, rollout limits, rollback triggers, monitoring signals, support comms, expiry, and post-release review.
 5. Produce exception board packet, state machine, decision table, event schema, exception register, readiness checklist, approval record, and post-release follow-up plan.
 
+## When not to use
+
+- Do not use when the job belongs to `release-freeze-change-control-review` — Defer when the job matches release-freeze-change-control-review instead.
+- Do not use when the job belongs to `release-freeze-change-control-review` — Calendar/freeze change intake, not general launch readiness.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let exceptions become a way to bypass normal release gates without evidence, owner, expiry, and review.

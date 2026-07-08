@@ -15,6 +15,10 @@ Use this skill to convert customer onboarding migration, data mapping, cutover, 
 4. Define source assessment, mapping, dry run, validation, customer signoff, cutover, rollback, communication, training, support coverage, and adoption handoff.
 5. Produce migration runbook, state machine, decision table, event schema, readiness checklist, and post-migration review.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not migrate customer data without mapping, sample validation, owner signoff, rollback/retry plan, and support visibility.

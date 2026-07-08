@@ -15,6 +15,10 @@ Use this skill to convert store subscription policy, app subscription compliance
 4. Define policy checklist, paywall requirements, entitlement tests, receipt validation, restore/cancel evidence, metadata alignment, reviewer notes, support readiness, and monitoring.
 5. Produce subscription compliance plan, state machine, decision table, event schema, store checklist, reviewer evidence pack, and support handoff.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not launch subscription paywalls with unclear price, billing period, trial, renewal, cancellation, or entitlement terms.

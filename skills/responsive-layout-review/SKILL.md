@@ -15,6 +15,10 @@ Use this skill to make layouts adapt by intent, not by arbitrary breakpoints.
 4. Check navigation, tables, forms, modals, media, and empty/error states.
 5. Produce breakpoint strategy, issues, and acceptance checks.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Breakpoints should follow content stress points, not only device names.

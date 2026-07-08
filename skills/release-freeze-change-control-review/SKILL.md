@@ -15,6 +15,12 @@ Use this skill to convert release freeze, change control, blackout window, holid
 4. Define freeze policy, intake fields, severity ladder, approval matrix, permitted changes, evidence requirements, rollout/rollback guardrails, comms, monitoring, exception register, and post-freeze review.
 5. Produce release freeze change-control review, state machine, decision table, event schema, freeze checklist, exception register, and post-freeze learning plan.
 
+## When not to use
+
+- Do not use when the job belongs to `release-readiness-exception-board-review` — Exception board for unmet launch gates. Absorbed `release-risk-exception-review` patterns.
+- Do not use when the job belongs to `release-readiness-exception-board-review` — Defer when the job matches release-readiness-exception-board-review instead.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not treat a freeze as a slogan; define protected systems, allowed changes, approvers, and evidence.

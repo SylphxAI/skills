@@ -15,6 +15,10 @@ Use this skill to create content briefs that satisfy search intent and advance t
 4. Define what original value the page adds beyond existing results.
 5. Produce a brief with measurement and refresh plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not create thin content that repeats search results.

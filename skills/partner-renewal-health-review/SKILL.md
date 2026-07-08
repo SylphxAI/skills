@@ -15,6 +15,10 @@ Use this skill to convert partner renewal health, channel partner renewal, resel
 4. Define health score, evidence sources, renewal criteria, remediation plan, expansion plan, contract changes, owner actions, customer communication, and post-renewal monitoring.
 5. Produce partner renewal health plan, state machine, decision table, event schema, scorecard checklist, remediation plan, and renewal decision memo.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not renew partners only because they are friendly, strategic-sounding, or historically important.

@@ -15,6 +15,10 @@ Use this skill to convert a high-stakes product decision into a concrete, measur
 4. Separate community, support, marketing, creator, and beta-test jobs so one channel does not become chaos.
 5. Produce launch ops plan, channel IA, moderation ladder, content calendar, and feedback loop.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not launch a community without active owner coverage and moderation policy.

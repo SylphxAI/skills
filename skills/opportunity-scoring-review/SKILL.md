@@ -15,6 +15,10 @@ Use this skill to prioritize opportunities without pretending a spreadsheet is o
 4. Score impact, confidence, effort, risk, urgency, revenue leverage, strategic fit, and learning value.
 5. Produce ranked recommendations plus sensitivity analysis and next validation step.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not score vague feature ideas before defining the opportunity and target outcome.

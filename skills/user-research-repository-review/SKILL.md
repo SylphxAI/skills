@@ -15,6 +15,10 @@ Use this skill to convert user research repository, insight taxonomy, evidence t
 4. Define capture workflow, redaction, tagging, confidence scoring, insight lifecycle, decision linkage, search/browse views, and stale-evidence review.
 5. Produce repository operating model, state machine, decision table, event schema, taxonomy checklist, and governance plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not store raw PII, recordings, or sensitive customer quotes without consent, access controls, and retention rules.

@@ -16,6 +16,10 @@ Use this skill to prepare software for real-world distribution channels, not jus
 5. For subscription apps, map subscription disclosures, restore/refund/revoke states, server entitlement truth, reviewer evidence, and support ownership before submission.
 6. Produce launch blockers, review risks, release checklist, and owner/evidence map.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not submit subscription apps without exact price, duration, renewal, trial end, cancellation, restore, and refund/support wording matched across app, store metadata, and screenshots.

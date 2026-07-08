@@ -15,6 +15,10 @@ Use this skill to design reliable agent workflows that produce auditable work in
 4. Define memory/context, failure recovery, observability, evals, and handoff artifacts.
 5. Produce a workflow spec with state machine, roles, tool contract, and validation plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not automate irreversible, payment, legal, secret, production, or customer-impacting actions without explicit approval gates.

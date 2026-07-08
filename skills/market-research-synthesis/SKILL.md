@@ -16,6 +16,12 @@ Use this skill to collect market truth and transform it into original strategy.
 5. Separate category table stakes from differentiation opportunities.
 6. Produce an original synthesis: what to copy as table stakes, what to avoid, what to improve, and what new wedge to own.
 
+## Guardrails
+
+- Do not copy competitor copy, screenshots, or proprietary materials into outputs.
+- Do not present scraped reviews or listings as verified facts without source boundaries.
+- Do not recommend dark-pattern monetization learned from low-trust competitors.
+
 ## Output format
 
 ```text
@@ -36,3 +42,7 @@ Original strategy:
 - Risks:
 - Validation plan:
 ```
+
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.

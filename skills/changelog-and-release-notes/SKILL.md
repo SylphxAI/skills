@@ -15,6 +15,10 @@ Use this skill to communicate product change clearly without dumping commits.
 4. Separate public notes, technical changelog, store notes, and internal support notes.
 5. Produce final notes and validation checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not hide breaking changes, migrations, data changes, or pricing/support impacts.

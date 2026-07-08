@@ -15,6 +15,10 @@ Use this skill to protect product integrity without punishing legitimate users u
 4. Separate prevention, detection, response, and learning.
 5. Produce risk matrix and control plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not recommend silent irreversible punishment without evidence and appeal path.

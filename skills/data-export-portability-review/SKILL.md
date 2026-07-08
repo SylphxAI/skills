@@ -15,6 +15,10 @@ Use this skill to turn a recurring product-operations problem into a concrete, r
 4. Separate user export, admin export, backup restore, migration, account deletion, and legal/privacy requests.
 5. Produce a portability flow, schema plan, support copy, risk controls, and event schema.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not export secrets, third-party private data, or other users’ data without authority.

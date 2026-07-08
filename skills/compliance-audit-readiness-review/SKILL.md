@@ -15,6 +15,10 @@ Use this skill to convert compliance audit readiness, controls, evidence, sampli
 4. Define control matrix, evidence calendar, owner accountability, request workflow, sampling response, gap register, remediation SLA, claim approval, and renewal cadence.
 5. Produce audit readiness plan, state machine, decision table, event schema, evidence checklist, and risk/escalation register.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not claim certifications, attestations, control operation, or compliance status without approved evidence and owner/legal review.

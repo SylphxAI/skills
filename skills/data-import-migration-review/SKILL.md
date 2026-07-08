@@ -15,6 +15,10 @@ Use this skill to convert a data import, migration, mapping, backfill, dry run, 
 4. Define schema mapping, validation, dedupe, idempotency, retry, progress, rollback, audit, and acceptance checks.
 5. Produce migration plan, state machine, decision table, event schema, support script, and reconciliation checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not mutate customer data at scale without dry-run results, backup/restore path, idempotency key, and rollback owner.

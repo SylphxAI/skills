@@ -15,6 +15,10 @@ Use this skill to convert a account recovery, identity proof, MFA reset, support
 4. Define proof requirements, friction ladder, rate limits, notifications, session invalidation, audit logs, and escalation boundaries.
 5. Produce recovery state machine, risk decision table, event schema, support policy, and abuse-monitoring checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let support override authentication without evidence, audit, and privilege boundaries.

@@ -15,6 +15,10 @@ Use this skill to convert app review rejection, store policy notice, reviewer re
 4. Define evidence package, reproduction steps, reviewer response, build or metadata fix, appeal path, release plan, customer communication, recurrence prevention, and monitoring.
 5. Produce app review response plan, state machine, decision table, event schema, policy checklist, reviewer-message draft, and recurrence-prevention log.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not argue with reviewers without mapping the cited policy to product behavior and evidence.

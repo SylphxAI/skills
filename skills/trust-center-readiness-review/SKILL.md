@@ -15,6 +15,10 @@ Use this skill to convert a trust centers, public security/privacy proof, compli
 4. Define claim-proof boundaries, policy library, evidence request workflow, owner cadence, update triggers, access controls, and sales/support handoffs.
 5. Produce trust center plan, state machine, decision table, event schema, evidence checklist, and stale-claim review loop.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not publish certifications, audits, SLAs, encryption claims, or subprocessors without current evidence and owner approval.

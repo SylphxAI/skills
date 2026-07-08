@@ -15,6 +15,10 @@ Use this skill to convert AI safety red-team, prompt injection, jailbreak, priva
 4. Define attack scenarios, fixtures, success criteria, mitigations, severity, owners, release gates, regression evals, and incident response triggers.
 5. Produce red-team plan, state machine, decision table, event schema, test matrix, and mitigation backlog.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not provide exploit instructions beyond what is necessary to define safe internal test scenarios and mitigations.

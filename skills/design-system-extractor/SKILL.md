@@ -15,6 +15,10 @@ Use this skill to turn scattered UI into a coherent design system an agent can r
 4. Normalize into canonical names and separate primitives from product-specific components.
 5. Produce a design-system map with gaps, duplicates, migration plan, and validation checks.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not invent a new system when the task is to extract the existing one.

@@ -15,6 +15,10 @@ Use this skill to convert a risky product, operations, trust, or marketplace que
 4. Define targeting, metrics, guardrails, rollout gates, support/comms, and cleanup deadline.
 5. Produce flag plan, rollout state machine, decision table, event schema, and cleanup checklist.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not use feature flags as permanent product architecture without ownership and cleanup.

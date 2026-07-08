@@ -15,6 +15,10 @@ Use this skill to convert admin delegation, delegated tenant admin, org hierarch
 4. Define delegation boundary, role/scope matrix, approval ladder, sensitive-action gates, inherited-access rules, support handoff, impersonation controls, audit events, drift review, and customer-admin UX.
 5. Produce delegated admin boundary review, state machine, decision table, event schema, scope matrix, escalation path, and remediation plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let delegated admin roles become hidden superuser roles without scope, expiry, or audit evidence.

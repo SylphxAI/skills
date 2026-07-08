@@ -15,6 +15,10 @@ Use this skill to convert a SDK onboarding, integration success, quickstarts, au
 4. Define docs IA, samples, environment setup, keys, mock/sandbox data, error taxonomy, observability, migration/versioning, and support handoff.
 5. Produce integration journey, state machine, decision table, event schema, quickstart checklist, and failure-mode fixes.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not optimize docs volume instead of time-to-first-success.

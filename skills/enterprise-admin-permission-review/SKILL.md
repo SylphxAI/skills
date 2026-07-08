@@ -15,6 +15,10 @@ Use this skill to convert enterprise admin permission, RBAC, custom role, delega
 4. Define permission taxonomy, role boundaries, approval gate, audit event, access review cadence, escalation path, UI copy, and rollback or revocation procedure.
 5. Produce permission governance plan, state machine, decision table, event schema, privileged-action checklist, access-review plan, and exception register.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not grant permissions whose blast radius, audit event, owner, and revocation path are unclear.

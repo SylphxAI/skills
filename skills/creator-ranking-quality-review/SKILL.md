@@ -15,6 +15,11 @@ Use this skill to convert a risky product, operations, trust, or marketplace que
 4. Define quality metrics, fairness checks, creator feedback, abuse controls, and experiment/rollback plan.
 5. Produce ranking scorecard, signal matrix, decision table, event schema, and governance cadence.
 
+## When not to use
+
+- Do not use when the job belongs to `marketplace-seller-performance-review` — Seller KPIs, interventions, appeals. Absorbed quality-scoring patterns.
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let revenue or paid promotion silently masquerade as organic quality.

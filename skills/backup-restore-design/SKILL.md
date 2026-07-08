@@ -17,6 +17,16 @@ Use this skill to design data durability as a product feature and operational sy
 6. For E2EE products, keep plaintext and master keys client-owned; support may verify encrypted snapshot integrity and guide recovery, but must not hold or unwrap user content keys unless the product explicitly has an enterprise escrow model.
 7. Produce event schema and failure modes.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
+## Guardrails
+
+- Do not promise durability without tested restore drills and checksum evidence.
+- Do not store secrets or master keys in backups unless encryption and access policy are explicit.
+- Do not design restore paths that bypass deletion, export, or privacy commitments.
+
 ## Output format
 
 ```text

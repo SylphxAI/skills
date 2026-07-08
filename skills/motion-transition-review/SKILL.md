@@ -15,6 +15,10 @@ Use this skill to make motion clarify state instead of showing off.
 4. Check accessibility, reduced motion, battery/performance, and input latency.
 5. Produce a motion spec or review findings with rule IDs.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Prefer no animation over confusing animation.

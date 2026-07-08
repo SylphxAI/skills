@@ -15,6 +15,10 @@ Use this skill to convert product-led sales routing, PQL, account matching, sale
 4. Define PQL/PQA scoring, account matching, ownership, thresholds, routing SLA, message playbook, suppression, CRM sync, experiment guardrails, and feedback loop.
 5. Produce routing design, state machine, decision table, event schema, routing checklist, and experiment plan.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not send every product signal to sales; route only when fit, intent, capacity, and user value justify intervention.

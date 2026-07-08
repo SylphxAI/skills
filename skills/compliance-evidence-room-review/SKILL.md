@@ -15,6 +15,10 @@ Use this skill to convert a compliance evidence rooms, gated documents, approval
 4. Define document metadata, access control, watermark/expiry policy, audit trail, update cadence, request handling, and sales/security handoff.
 5. Produce evidence room plan, state machine, decision table, event schema, access checklist, and stale-document escalation.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not share SOC reports, pentests, architecture diagrams, or customer evidence by email when gated access is required.

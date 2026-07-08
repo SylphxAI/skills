@@ -15,6 +15,10 @@ Use this skill to convert a SLOs, SLIs, SLAs, error budgets, uptime, latency, fr
 4. Define SLIs, windows, exclusions, error budget policy, alerting, status page behavior, maintenance windows, and customer communications.
 5. Produce service-level plan, state machine, decision table, event schema, reliability checklist, and promise-review cadence.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not promise an SLA if monitoring, incident response, support process, and credit/remedy policy cannot support it.

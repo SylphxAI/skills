@@ -15,6 +15,10 @@ Use this skill to convert a risky product, operations, trust, or marketplace que
 4. Separate assistive suggestions, generated content, classification, ranking, automation, and agentic actions.
 5. Produce risk matrix, eval plan, UI guardrails, rollout gates, and support/incident paths.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not hide uncertainty or present generated output as verified fact when it is not.

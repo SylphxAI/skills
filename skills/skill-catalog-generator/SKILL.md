@@ -15,6 +15,10 @@ Use this skill to turn a recurring product-operations problem into a concrete, r
 4. Score quality with observable evidence: trigger clarity, reference depth, eval coverage, behavior demo, installability, and freshness.
 5. Produce a catalog update, gap matrix, publish checklist, and automation hooks.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not fabricate quality signals; mark missing evidence as a gap.

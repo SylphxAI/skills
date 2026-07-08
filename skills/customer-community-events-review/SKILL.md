@@ -15,6 +15,10 @@ Use this skill to convert customer community event, workshop, webinar, office ho
 4. Define agenda, invite criteria, moderation, accessibility/localization, product feedback capture, sales/CS boundaries, content reuse, follow-up, and metrics.
 5. Produce community event plan, state machine, decision table, event schema, run-of-show checklist, and post-event loop.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not run events only for attendance vanity; tie each event to learning, adoption, retention, feedback, or community value.

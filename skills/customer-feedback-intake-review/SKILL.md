@@ -15,6 +15,10 @@ Use this skill to convert a customer feedback intake, dedupe, routing, prioritiz
 4. Define intake fields, taxonomy, dedupe, severity, evidence score, routing, prioritization handoff, and close-the-loop workflow.
 5. Produce feedback state machine, signal decision table, event schema, triage checklist, and anti-anecdote guardrails.
 
+## When not to use
+
+- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+
 ## Guardrails
 
 - Do not let loudness, logo size, or recency become the only priority signal.
