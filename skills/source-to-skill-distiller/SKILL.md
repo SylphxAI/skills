@@ -27,7 +27,7 @@ The source is evidence. The skill is the reusable control surface: trigger, deci
    - package build: user asks for files, repo changes, installability, or validation;
    - repair: existing skill fails, over-triggers, summarizes, or cannot validate.
 3. Extract mechanism cards from the source: trigger, user job, decision rule, procedure, output, quality signal, failure mode, and keep/merge/discard decision.
-4. Choose one package shape before writing: single procedural skill by default, one skill with modes when source tasks share a route, router or skill family only when independent intents require it.
+4. Choose one package shape before writing: single procedural skill by default, one skill with modes when source tasks share a route. Do not create meta skill routers. Put extra knowledge in `references/` or merge into an existing owner skill unless triggers and outputs are truly independent.
 5. Author the skill around action: trigger-rich frontmatter, concise workflow, output protocol, boundaries, and linked references. Put long examples, rubrics, language tables, and edge cases in references.
 6. Add deterministic helpers only when repeated mechanical work exists. Do not script judgment-heavy synthesis.
 7. Add eval and behavior examples: positive prompts, nearby negative prompts, expected behaviors, and artifact-shape assertions.
@@ -92,7 +92,8 @@ Residual risks:
 - Do not invent details from inaccessible documents, private repos, audio, video, screenshots, or links.
 - Do not copy source wording into a public skill except short attributed quotes when licensing and policy allow it.
 - Do not turn every chapter, anecdote, or example into a rule. Keep only mechanisms that change future agent behavior.
-- Do not create a router or family when one procedural skill with modes is enough.
+- Do not create a meta skill router or skill family when one procedural skill with modes or a `references/` section is enough.
+- Read `docs/skill-admission-model.md` and `docs/skill-collision-map.md` in the target repository before adding a new standalone skill.
 - Do not make a skill depend on private tools, credentials, or hidden chat context.
 - Do not publish, push, or claim benchmark quality without the target repository's validation and delivery gates.
 

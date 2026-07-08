@@ -1,4 +1,0 @@
-interface:
-  display_name: "Support Deflection Knowledge Base Review"
-  short_description: "Improve self-service support"
-  default_prompt: "Use $support-deflection-knowledge-base-review to design support deflection without trapping users."

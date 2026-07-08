@@ -1,6 +1,6 @@
 ---
 name: release-readiness-exception-board-review
-description: Design and audit release readiness exception boards covering unmet launch gates, risk acceptance, customer scope, mitigation owners, feature flags, rollback triggers, monitoring, support readiness, communication, approval authority, expiry, and post-release review. Use when a release is not fully ready and teams need a controlled exception instead of hidden risk.
+description: Design and audit release readiness exception boards covering unmet launch gates, blocked tests, risk acceptance, performance regressions, customer scope, mitigation owners, feature flags, rollback triggers, monitoring, support readiness, communication, approval authority, expiry, and post-release review. Use when a release is not fully ready and teams need a controlled exception instead of hidden risk. Do not use for routine release-train scheduling; use release-freeze-change-control-review instead.
 ---
 
 # Release Readiness Exception Board Review

@@ -1,6 +1,6 @@
 ---
 name: marketplace-seller-performance-review
-description: Design and audit marketplace seller performance systems covering fulfillment, quality, response time, refunds, disputes, cancellations, policy violations, customer satisfaction, support burden, fraud signals, ranking impact, badges, warnings, coaching, suspension, appeals, fairness, and seller lifecycle. Use when marketplaces need reliable supply incentives without unfair punishment.
+description: Design and audit marketplace seller performance and quality scoring systems covering fulfillment, listing quality, eval signals, response time, refunds, disputes, ranking impact, badges, warnings, coaching, suspension, appeals, anti-gaming controls, fairness, and seller lifecycle. Use when marketplaces need reliable supply incentives without unfair punishment. Do not use for payout ledger design; use marketplace-payouts-review instead.
 ---
 
 # Marketplace Seller Performance Review
