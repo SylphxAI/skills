@@ -1,4 +1,0 @@
-interface:
-  display_name: "AI Eval Regression Ops Review"
-  short_description: "Operate AI eval regressions"
-  default_prompt: "Use $ai-eval-regression-ops-review to design AI eval regression operations and release gates."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Partner Co-Marketing Launch Review"
-  short_description: "Plan partner launch campaigns"
-  default_prompt: "Use $partner-co-marketing-launch-review to plan a partner co-marketing launch with proof and attribution."

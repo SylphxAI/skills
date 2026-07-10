@@ -23,8 +23,13 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 
 ## When not to use
 
-- Do not use when the job belongs to `marketplace-dispute-resolution-review` — Defer when the job matches marketplace-dispute-resolution-review instead.
-- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+- Use `payment-platform-readiness` when the primary job is buyer checkout, payment ingestion, or product entitlement rather than seller earnings and payout.
+- Do not use for a content/listing dispute that does not change balances, holds, clawbacks, or payout authority.
+
+## Source verification
+
+- Verify current provider, tax-authority, sanctions, country-eligibility, and reporting requirements from authoritative sources at use.
+- Label jurisdiction, effective/access date, source owner, and unresolved qualified-review decision; never treat a named form or threshold in this skill as current legal advice.
 
 ## Guardrails
 

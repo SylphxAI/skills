@@ -1,4 +1,0 @@
-interface:
-  display_name: "Enterprise Onboarding Implementation Review"
-  short_description: "Plan enterprise onboarding"
-  default_prompt: "Use $enterprise-onboarding-implementation-review to plan an enterprise customer implementation."

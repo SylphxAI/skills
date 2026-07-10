@@ -1,4 +1,0 @@
-interface:
-  display_name: "Analytics Event Taxonomy"
-  short_description: "Design product analytics events"
-  default_prompt: "Use $analytics-event-taxonomy to handle a realistic product task in this domain."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Developer Sandbox Abuse Prevention Review"
-  short_description: "Prevent developer sandbox abuse"
-  default_prompt: "Use $developer-sandbox-abuse-prevention-review to harden developer sandbox abuse controls."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Compliance Evidence Room Review"
-  short_description: "Build compliance evidence rooms"
-  default_prompt: "Use $compliance-evidence-room-review to design a gated compliance evidence room."

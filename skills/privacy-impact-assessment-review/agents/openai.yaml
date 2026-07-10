@@ -1,4 +1,0 @@
-interface:
-  display_name: "Privacy Impact Assessment Review"
-  short_description: "Run privacy impact reviews"
-  default_prompt: "Use $privacy-impact-assessment-review to run a privacy impact assessment."

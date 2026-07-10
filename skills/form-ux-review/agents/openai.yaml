@@ -1,4 +1,0 @@
-interface:
-  display_name: "Form UX Review"
-  short_description: "Improve product form flows"
-  default_prompt: "Use $form-ux-review to audit this product form flow."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Experiment Design Review"
-  short_description: "Design product experiments with guardrails"
-  default_prompt: "Use $experiment-design-review to design a product experiment with hypothesis, metrics, guardrails, and rollout."

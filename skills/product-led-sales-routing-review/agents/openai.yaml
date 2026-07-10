@@ -1,4 +1,0 @@
-interface:
-  display_name: "Product Led Sales Routing Review"
-  short_description: "Route product-led sales"
-  default_prompt: "Use $product-led-sales-routing-review to design product-led sales routing."

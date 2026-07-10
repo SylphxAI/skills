@@ -1,4 +1,0 @@
-interface:
-  display_name: "Marketplace Policy Model Feedback Loop Review"
-  short_description: "Close marketplace policy loops"
-  default_prompt: "Use $marketplace-policy-model-feedback-loop-review to align marketplace policy and model feedback loops."

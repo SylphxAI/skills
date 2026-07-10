@@ -1,4 +1,0 @@
-interface:
-  display_name: "Community Launch Ops Review"
-  short_description: "Plan community launch and moderation ops"
-  default_prompt: "Use $community-launch-ops-review to design community launch operations, roles, content, moderation, and feedback loops."

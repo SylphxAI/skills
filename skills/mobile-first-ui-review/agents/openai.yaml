@@ -1,4 +1,0 @@
-interface:
-  display_name: "Mobile First UI Review"
-  short_description: "Review mobile UI, permissions, and accessibility"
-  default_prompt: "Use $mobile-first-ui-review to review mobile onboarding, checkout, permissions, safe areas, touch ergonomics, recovery states, and accessibility."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Admin Settings IA Review"
-  short_description: "Design admin settings information architecture"
-  default_prompt: "Use $admin-settings-ia-review to design admin settings IA, roles, defaults, and auditability."

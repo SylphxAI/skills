@@ -1,4 +1,0 @@
-interface:
-  display_name: "Billing Reconciliation Review"
-  short_description: "Audit billing reconciliation and revenue ops"
-  default_prompt: "Use $billing-reconciliation-review to design billing reconciliation across invoices, ledgers, payouts, refunds, and disputes."

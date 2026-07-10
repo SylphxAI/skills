@@ -1,4 +1,0 @@
-interface:
-  display_name: "Enterprise Admin Permission Review"
-  short_description: "Review enterprise admin permissions"
-  default_prompt: "Use $enterprise-admin-permission-review to review enterprise admin permissions."

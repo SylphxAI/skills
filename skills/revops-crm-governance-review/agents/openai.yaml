@@ -1,4 +1,0 @@
-interface:
-  display_name: "RevOps CRM Governance Review"
-  short_description: "Govern CRM revenue data"
-  default_prompt: "Use $revops-crm-governance-review to audit CRM and revenue operations governance."

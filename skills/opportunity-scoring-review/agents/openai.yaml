@@ -1,4 +1,0 @@
-interface:
-  display_name: "Opportunity Scoring Review"
-  short_description: "Prioritize opportunities well"
-  default_prompt: "Use $opportunity-scoring-review to score and prioritize these product opportunities."

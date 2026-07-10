@@ -1,4 +1,0 @@
-interface:
-  display_name: "Enterprise Security Exception Review"
-  short_description: "Govern security exceptions"
-  default_prompt: "Use $enterprise-security-exception-review to review enterprise security exceptions."

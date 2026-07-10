@@ -1,4 +1,0 @@
-interface:
-  display_name: "Store Subscription Policy Compliance Review"
-  short_description: "Check store subscription compliance"
-  default_prompt: "Use $store-subscription-policy-compliance-review to review store subscription policy compliance."

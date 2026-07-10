@@ -1,4 +1,0 @@
-interface:
-  display_name: "Incident Status Page Ops Review"
-  short_description: "Operate status pages"
-  default_prompt: "Use $incident-status-page-ops-review to design incident status-page operations."

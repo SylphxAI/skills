@@ -1,4 +1,0 @@
-interface:
-  display_name: "Customer Feedback Intake Review"
-  short_description: "Turn feedback into product signal"
-  default_prompt: "Use $customer-feedback-intake-review to design a feedback intake and roadmap signal loop."

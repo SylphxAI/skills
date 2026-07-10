@@ -1,4 +1,0 @@
-interface:
-  display_name: "Ad Monetization Review"
-  short_description: "Balance ad revenue and trust"
-  default_prompt: "Use $ad-monetization-review to review this app or game ad monetization design."

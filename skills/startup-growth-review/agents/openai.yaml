@@ -1,4 +1,0 @@
-interface:
-  display_name: "Startup Growth Review"
-  short_description: "Find practical growth leverage"
-  default_prompt: "Use $startup-growth-review to critique this product funnel and identify the highest-leverage growth moves."

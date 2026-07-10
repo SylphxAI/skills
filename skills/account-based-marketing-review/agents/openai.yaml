@@ -1,4 +1,0 @@
-interface:
-  display_name: "Account Based Marketing Review"
-  short_description: "Plan ABM motions"
-  default_prompt: "Use $account-based-marketing-review to design an account-based marketing motion."

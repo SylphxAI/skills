@@ -1,4 +1,0 @@
-interface:
-  display_name: "Marketplace Dispute Resolution Review"
-  short_description: "Resolve marketplace disputes"
-  default_prompt: "Use $marketplace-dispute-resolution-review to design marketplace dispute resolution."

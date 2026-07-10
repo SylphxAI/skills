@@ -1,4 +1,0 @@
-interface:
-  display_name: "Agentic Workflow Designer"
-  short_description: "Design reliable agentic workflows"
-  default_prompt: "Use $agentic-workflow-designer to design this agentic workflow and its handoffs."

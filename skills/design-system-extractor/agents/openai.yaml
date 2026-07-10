@@ -1,4 +1,0 @@
-interface:
-  display_name: "Design System Extractor"
-  short_description: "Extract coherent design systems"
-  default_prompt: "Use $design-system-extractor to extract a design system from this product UI."

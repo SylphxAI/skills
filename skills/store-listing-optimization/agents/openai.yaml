@@ -1,4 +1,0 @@
-interface:
-  display_name: "Store Listing Optimization"
-  short_description: "Optimize app and software store listings"
-  default_prompt: "Use $store-listing-optimization to handle a realistic product task in this domain."

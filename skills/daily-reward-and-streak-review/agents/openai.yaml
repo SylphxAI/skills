@@ -1,4 +1,0 @@
-interface:
-  display_name: "Daily Reward And Streak Review"
-  short_description: "Design healthy retention loops"
-  default_prompt: "Use $daily-reward-and-streak-review to review this daily reward, streak, or check-in system."

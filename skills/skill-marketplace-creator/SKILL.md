@@ -10,7 +10,7 @@ Use this skill to build a skill ecosystem that is useful, trustworthy, and distr
 ## Workflow
 
 1. Identify marketplace shape: repo-only, static catalog, API-backed registry, private enterprise registry, or full community marketplace.
-2. Read `references/marketplace-playbook.md` for architecture and quality gates.
+2. Read `references/marketplace-playbook.md` for architecture and quality gates; load `references/catalog-generation-patterns.md` only when implementing the derived catalog surface.
 3. Define the skill supply strategy: internal flagship skills, curated third-party skills, community submissions, or agent-generated drafts.
 4. Require validation before publication: schema, trigger quality, safety, license, examples, and evals.
 5. Produce concrete repo structure, governance, launch channels, and next 48-hour actions.
@@ -47,4 +47,6 @@ For repo validation scripts, inspect or run `scripts/check_skill_folder.py` if p
 
 ## When not to use
 
-- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+- Use `source-to-skill-distiller` to convert one bounded source into one skill package.
+- Use `skill-eval-designer` to design the evaluation for one skill or workflow.
+- Do not use this skill to build a runtime tool/MCP marketplace; executable capabilities and permissioned side effects need typed runtime contracts, not `SKILL.md` packages.

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Support Escalation Engineering Review"
-  short_description: "Route support to engineering"
-  default_prompt: "Use $support-escalation-engineering-review to design support-to-engineering escalation."

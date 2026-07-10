@@ -1,4 +1,0 @@
-interface:
-  display_name: "Sales Demo Script Review"
-  short_description: "Create buyer-specific sales demo scripts"
-  default_prompt: "Use $sales-demo-script-review to create a buyer-specific demo script with discovery, proof, and objections."

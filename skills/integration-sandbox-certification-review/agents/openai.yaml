@@ -1,4 +1,0 @@
-interface:
-  display_name: "Integration Sandbox Certification Review"
-  short_description: "Certify integration sandboxes"
-  default_prompt: "Use $integration-sandbox-certification-review to review integration sandbox certification."

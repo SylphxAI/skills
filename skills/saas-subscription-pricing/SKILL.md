@@ -18,9 +18,14 @@ Use this skill to design pricing that matches customer value, supports growth, a
 
 ## When not to use
 
-- Do not use when the job belongs to `subscription-entitlement-review` — Access state after billing events, not packaging strategy.
-- Do not use when the job belongs to `subscription-price-increase-retention-review` — Price-change cohorts and retention, not initial packaging.
-- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+- Do not use when the primary artifact is an access/entitlement state machine after billing events, rather than packaging strategy.
+- Do not use for an already-decided price increase whose main job is cohort migration, consent, grandfathering, and retention response.
+- Do not use as accounting, tax, competition-law, or jurisdiction-specific pricing advice.
+
+## Source verification
+
+- Research current competitor pricing, package boundaries, currencies, contract terms, and customer evidence at use; record source URL, access date, geography, and plan.
+- Obtain current internal cost, margin, usage, conversion, churn, and support data from the owning systems. Mark missing values as assumptions and make the recommendation a bounded experiment.
 
 ## Guardrails
 

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Release Evidence Pack Review"
-  short_description: "Assemble release evidence packs"
-  default_prompt: "Use $release-evidence-pack-review to assemble a release evidence pack."

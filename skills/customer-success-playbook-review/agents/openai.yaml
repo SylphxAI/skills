@@ -1,4 +1,0 @@
-interface:
-  display_name: "Customer Success Playbook Review"
-  short_description: "Design CS playbooks"
-  default_prompt: "Use $customer-success-playbook-review to design a customer success playbook."

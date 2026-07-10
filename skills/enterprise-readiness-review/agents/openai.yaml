@@ -1,4 +1,0 @@
-interface:
-  display_name: "Enterprise Readiness Review"
-  short_description: "Audit enterprise sales and security readiness"
-  default_prompt: "Use $enterprise-readiness-review to audit whether this product is ready for enterprise buyers."

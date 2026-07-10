@@ -1,4 +1,0 @@
-interface:
-  display_name: "Microsoft Store Readiness"
-  short_description: "Prepare Microsoft Store apps"
-  default_prompt: "Use $microsoft-store-readiness to prepare this Windows app for Microsoft Store release."

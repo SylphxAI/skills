@@ -1,4 +1,0 @@
-interface:
-  display_name: "Compliance Audit Readiness Review"
-  short_description: "Prepare compliance audits"
-  default_prompt: "Use $compliance-audit-readiness-review to prepare compliance audit evidence."

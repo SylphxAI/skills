@@ -1,4 +1,0 @@
-interface:
-  display_name: "Pricing Contract Exception Register Review"
-  short_description: "Track pricing contract exceptions"
-  default_prompt: "Use $pricing-contract-exception-register-review to review pricing contract exceptions."

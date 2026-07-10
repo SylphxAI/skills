@@ -1,4 +1,0 @@
-interface:
-  display_name: "Localization Market Expansion Review"
-  short_description: "Plan localization and market expansion"
-  default_prompt: "Use $localization-market-expansion-review to plan localization, market entry, and regional launch readiness."

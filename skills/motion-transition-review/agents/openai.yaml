@@ -1,4 +1,0 @@
-interface:
-  display_name: "Motion Transition Review"
-  short_description: "Motion Transition review"
-  default_prompt: "Use $motion-transition-review to handle a realistic product task in this domain."

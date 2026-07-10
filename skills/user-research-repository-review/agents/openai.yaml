@@ -1,4 +1,0 @@
-interface:
-  display_name: "User Research Repository Review"
-  short_description: "Organize research evidence"
-  default_prompt: "Use $user-research-repository-review to design a user research repository."

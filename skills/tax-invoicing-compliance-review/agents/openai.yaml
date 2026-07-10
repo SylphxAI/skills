@@ -1,4 +1,0 @@
-interface:
-  display_name: "Tax Invoicing Compliance Review"
-  short_description: "Review tax invoices and compliance flows"
-  default_prompt: "Use $tax-invoicing-compliance-review to audit tax, invoicing, receipts, and compliance flows."

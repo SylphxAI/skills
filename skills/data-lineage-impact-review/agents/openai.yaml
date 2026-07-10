@@ -1,4 +1,0 @@
-interface:
-  display_name: "Data Lineage Impact Review"
-  short_description: "Map data lineage impacts"
-  default_prompt: "Use $data-lineage-impact-review to assess data lineage impact for a change."

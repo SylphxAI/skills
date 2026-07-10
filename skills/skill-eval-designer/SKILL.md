@@ -17,7 +17,8 @@ Use this skill to prove a skill changes agent behavior on realistic tasks.
 
 ## When not to use
 
-- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+- Do not use to author the skill procedure itself, design a whole marketplace, or claim quality from static examples alone.
+- Do not create an eval when the behavior is fully deterministic and a unit, contract, property, or snapshot test is the stronger oracle.
 
 ## Guardrails
 

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Contract Obligation Renewal Audit Review"
-  short_description: "Audit renewal obligations"
-  default_prompt: "Use $contract-obligation-renewal-audit-review to audit renewal obligations before a contract renewal."

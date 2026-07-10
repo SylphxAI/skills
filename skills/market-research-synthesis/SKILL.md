@@ -16,6 +16,12 @@ Use this skill to collect market truth and transform it into original strategy.
 5. Separate category table stakes from differentiation opportunities.
 6. Produce an original synthesis: what to copy as table stakes, what to avoid, what to improve, and what new wedge to own.
 
+## Source verification
+
+- Research current primary surfaces at use: official product/pricing pages, stores, changelogs, documentation, and attributable user evidence.
+- Record URL, access date, geography, plan/currency, and whether each statement is observed fact, user report, inference, or judgment.
+- If browsing or source access is unavailable, produce a research plan and mark market claims unverified instead of filling gaps from memory.
+
 ## Guardrails
 
 - Do not copy competitor copy, screenshots, or proprietary materials into outputs.
@@ -45,4 +51,5 @@ Original strategy:
 
 ## When not to use
 
-- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+- Do not use when the job is only scoring an already-established option set, maintaining a research repository, or summarizing one supplied document.
+- Do not use competitor research as permission to copy expression, screenshots, proprietary workflows, or unsupported review anecdotes.

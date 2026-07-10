@@ -1,4 +1,0 @@
-interface:
-  display_name: "Executive Business Review OS Review"
-  short_description: "Run executive business reviews"
-  default_prompt: "Use $executive-business-review-operating-system-review to design an executive business review operating system."

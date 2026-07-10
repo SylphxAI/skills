@@ -1,4 +1,0 @@
-interface:
-  display_name: "Responsive Layout Review"
-  short_description: "Responsive Layout review"
-  default_prompt: "Use $responsive-layout-review to handle a realistic product task in this domain."

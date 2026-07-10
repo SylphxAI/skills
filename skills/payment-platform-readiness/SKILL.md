@@ -10,7 +10,7 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 ## Workflow
 
 1. Identify payment channel, product type, billing model, provider identifiers, catalog mapping, entitlement semantics, refund/dispute policy, settlement/fee model, support surfaces, and reconciliation owner.
-2. Read `references/payment-platform-patterns.md`.
+2. Read `references/payment-platform-patterns.md`; load `references/billing-reconciliation-patterns.md` when settlement, finance close, or cross-system reconciliation is in scope.
 3. Map catalog, checkout, receipt/webhook processing, idempotent ledger ingestion, entitlement projection, refund/revoke/dispute handling, support corrections, settlement, and reconciliation.
 4. Define provider-specific precedence for Apple IAP, Google Play Billing, Stripe/web checkout, wallets, promo/admin grants, restore purchases, renewals, refunds, chargebacks, and delayed events.
 5. Check platform-specific constraints, sandbox/live separation, fallback paths, customer messaging, finance close, and operational rollback.
@@ -21,8 +21,15 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 
 ## When not to use
 
-- Do not use when the job belongs to `billing-reconciliation-review` — Defer when the job matches billing-reconciliation-review instead.
-- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+- Use `saas-subscription-pricing` when the primary decision is packaging, price, value metric, or commercial experimentation.
+- Use `marketplace-payouts-review` when the primary authority is seller/creator earnings, holds, reserves, and payout.
+- Use `refund-and-support-flow-review` for a refund/chargeback/restore support state machine that does not require redesigning the payment platform.
+
+## Source verification
+
+- Verify current Apple, Google, wallet, processor, tax, invoice, settlement, and dispute requirements from official sources at use.
+- Record provider, API/policy version, jurisdiction, access date, and source URL for any requirement that can block money movement or customer access.
+- Treat remembered numeric thresholds, fee schedules, review rules, and platform policies as unverified until read back from the authority.
 
 ## Guardrails
 

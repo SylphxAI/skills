@@ -1,4 +1,0 @@
-interface:
-  display_name: "Execution Simplification"
-  short_description: "Execution Simplification"
-  default_prompt: "Use $execution-simplification to handle a realistic product task in this domain."

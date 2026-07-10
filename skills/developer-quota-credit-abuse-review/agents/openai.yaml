@@ -1,4 +1,0 @@
-interface:
-  display_name: "Developer Quota Credit Abuse Review"
-  short_description: "Prevent developer quota abuse"
-  default_prompt: "Use $developer-quota-credit-abuse-review to review developer quota and credit abuse controls."

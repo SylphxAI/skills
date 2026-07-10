@@ -1,4 +1,0 @@
-interface:
-  display_name: "Desktop OS Integration"
-  short_description: "Desktop OS Integration"
-  default_prompt: "Use $desktop-os-integration to handle a realistic product task in this domain."

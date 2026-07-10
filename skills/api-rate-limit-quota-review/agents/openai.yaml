@@ -1,4 +1,0 @@
-interface:
-  display_name: "API Rate Limit Quota Review"
-  short_description: "Design API limits and quotas"
-  default_prompt: "Use $api-rate-limit-quota-review to design developer-friendly API rate limits and quotas."

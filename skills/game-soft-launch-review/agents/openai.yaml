@@ -1,4 +1,0 @@
-interface:
-  display_name: "Game Soft Launch Review"
-  short_description: "Plan game soft launches and live metrics"
-  default_prompt: "Use $game-soft-launch-review to plan a game soft launch with cohorts, economy, ads, IAP, and live ops gates."

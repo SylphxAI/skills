@@ -1,4 +1,0 @@
-interface:
-  display_name: "Lifecycle Pricing Experiment Review"
-  short_description: "Design lifecycle pricing tests"
-  default_prompt: "Use $lifecycle-pricing-experiment-review to design a lifecycle pricing experiment."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Sales Qualification Discovery Review"
-  short_description: "Qualify sales opportunities"
-  default_prompt: "Use $sales-qualification-discovery-review to design a sales discovery and qualification process."

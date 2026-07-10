@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cost Margin Unit Economics Review"
-  short_description: "Model product unit economics"
-  default_prompt: "Use $cost-margin-unit-economics-review to evaluate pricing, costs, margin, and unit economics."

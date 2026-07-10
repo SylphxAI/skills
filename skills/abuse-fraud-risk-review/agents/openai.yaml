@@ -1,4 +1,0 @@
-interface:
-  display_name: "Abuse Fraud Risk Review"
-  short_description: "Review abuse and fraud risks"
-  default_prompt: "Use $abuse-fraud-risk-review to handle a realistic product task in this domain."

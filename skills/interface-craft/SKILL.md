@@ -50,4 +50,5 @@ Keep review findings high-signal. Prefer 3 to 6 material fixes over 20 cosmetic 
 
 ## When not to use
 
-- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+- Do not use to invent a brand identity, extract a whole design system, or certify formal accessibility conformance when the requested artifact is not an interface build/polish/review.
+- Do not issue file-level findings without seeing the relevant code, screenshots, or interaction states; state the evidence gap and give an inspection plan instead.

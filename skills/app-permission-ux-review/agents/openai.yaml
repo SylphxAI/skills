@@ -1,4 +1,0 @@
-interface:
-  display_name: "App Permission UX Review"
-  short_description: "Audit permission prompts and trust UX"
-  default_prompt: "Use $app-permission-ux-review to audit permission prompts, rationale, settings, and recovery paths."

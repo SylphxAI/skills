@@ -1,4 +1,0 @@
-interface:
-  display_name: "Feature Sunset Deprecation Review"
-  short_description: "Plan safe feature deprecations"
-  default_prompt: "Use $feature-sunset-deprecation-review to plan a feature sunset with migration and communication."

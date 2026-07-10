@@ -37,9 +37,9 @@ Turn a large rewrite into a repeatable assembly line of independently verifiable
 
 ## When not to use
 
-- Use `data-import-migration-review` for customer records, CSV/schema mapping, backfills, or data reconciliation between systems.
-- Use `feature-flag-rollout-review` when the job is only staged exposure of one already-implemented feature.
-- Use `execution-simplification` for a small single-boundary task that does not need parallel source/target implementations or a capability ledger.
+- Use a data-migration runbook for customer records, CSV/schema mapping, backfills, or data reconciliation between systems.
+- Use a feature-rollout plan when the job is only staged exposure of one already-implemented feature.
+- Use a normal implementation plan for a small single-boundary task that does not need parallel source/target implementations or a capability ledger.
 - Do not use this skill to justify a rewrite when deletion, a local refactor, or retaining the current runtime is the stronger option.
 
 ## Guardrails

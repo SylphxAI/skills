@@ -1,4 +1,0 @@
-interface:
-  display_name: "Legal Terms Policy Review"
-  short_description: "Review product legal terms"
-  default_prompt: "Use $legal-terms-policy-review to review product legal terms and policy surfaces."

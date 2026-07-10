@@ -1,4 +1,0 @@
-interface:
-  display_name: "Partner Incentive Payout Governance Review"
-  short_description: "Govern partner incentive payouts"
-  default_prompt: "Use $partner-incentive-payout-governance-review to govern partner incentive payouts."

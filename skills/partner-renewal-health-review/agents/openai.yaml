@@ -1,4 +1,0 @@
-interface:
-  display_name: "Partner Renewal Health Review"
-  short_description: "Review partner renewal health"
-  default_prompt: "Use $partner-renewal-health-review to review partner renewal health."

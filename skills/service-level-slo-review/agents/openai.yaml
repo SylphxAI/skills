@@ -1,4 +1,0 @@
-interface:
-  display_name: "Service Level SLO Review"
-  short_description: "Define product SLOs and SLAs"
-  default_prompt: "Use $service-level-slo-review to design service levels, SLOs, error budgets, and customer promises."

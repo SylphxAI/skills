@@ -1,4 +1,0 @@
-interface:
-  display_name: "Security Questionnaire Response Review"
-  short_description: "Prepare truthful security questionnaire answers"
-  default_prompt: "Use $security-questionnaire-response-review to prepare security questionnaire responses with evidence and gaps."

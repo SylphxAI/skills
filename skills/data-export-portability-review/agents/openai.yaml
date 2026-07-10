@@ -1,4 +1,0 @@
-interface:
-  display_name: "Data Export Portability Review"
-  short_description: "Design trusted data export and portability"
-  default_prompt: "Use $data-export-portability-review to design export, portability, deletion, and migration flows."

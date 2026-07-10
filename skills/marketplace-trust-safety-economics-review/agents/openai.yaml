@@ -1,4 +1,0 @@
-interface:
-  display_name: "Marketplace Trust Safety Economics Review"
-  short_description: "Balance marketplace safety economics"
-  default_prompt: "Use $marketplace-trust-safety-economics-review to review marketplace trust-safety economics."

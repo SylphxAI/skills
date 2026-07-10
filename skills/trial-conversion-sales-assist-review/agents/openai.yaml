@@ -1,4 +1,0 @@
-interface:
-  display_name: "Trial Conversion Sales Assist Review"
-  short_description: "Convert trials with sales"
-  default_prompt: "Use $trial-conversion-sales-assist-review to design sales-assisted trial conversion."

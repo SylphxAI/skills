@@ -1,4 +1,0 @@
-interface:
-  display_name: "Model Router Cost Quality Review"
-  short_description: "Tune model routing quality"
-  default_prompt: "Use $model-router-cost-quality-review to review AI model routing for cost and quality."

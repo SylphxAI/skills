@@ -1,4 +1,0 @@
-interface:
-  display_name: "Trust Center Readiness Review"
-  short_description: "Prepare a public trust center"
-  default_prompt: "Use $trust-center-readiness-review to prepare a credible public trust center."

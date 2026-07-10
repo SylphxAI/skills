@@ -17,7 +17,8 @@ Use this skill to turn ambiguous product debate into a decision-ready memo.
 
 ## When not to use
 
-- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+- Do not use for a status update, meeting summary, brainstorm, or implementation plan when no material choice and accountable decision owner exist.
+- Do not manufacture options merely to fill a template; if the decision is already made, record the decision and evidence boundary directly.
 
 ## Guardrails
 

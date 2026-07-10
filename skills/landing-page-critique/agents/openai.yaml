@@ -1,4 +1,0 @@
-interface:
-  display_name: "Landing Page Critique"
-  short_description: "Landing Page Critique"
-  default_prompt: "Use $landing-page-critique to handle a realistic product task in this domain."

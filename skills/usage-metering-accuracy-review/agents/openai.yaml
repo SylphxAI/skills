@@ -1,4 +1,0 @@
-interface:
-  display_name: "Usage Metering Accuracy Review"
-  short_description: "Audit usage metering"
-  default_prompt: "Use $usage-metering-accuracy-review to audit usage-based billing metering."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Data Warehouse Metrics Layer Review"
-  short_description: "Govern analytics metrics"
-  default_prompt: "Use $data-warehouse-metrics-layer-review to audit a warehouse metrics layer."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Localization Quality Program Review"
-  short_description: "Review localization quality"
-  default_prompt: "Use $localization-quality-program-review to plan localization QA for a product launch."

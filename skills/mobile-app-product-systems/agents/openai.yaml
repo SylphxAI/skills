@@ -1,4 +1,0 @@
-interface:
-  display_name: "Mobile App Product Systems"
-  short_description: "Design app monetization loops"
-  default_prompt: "Use $mobile-app-product-systems to design or review mobile app monetization, retention, refund, and notification systems."

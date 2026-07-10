@@ -1,4 +1,0 @@
-interface:
-  display_name: "Search Discovery Relevance Review"
-  short_description: "Improve search and discovery quality"
-  default_prompt: "Use $search-discovery-relevance-review to audit product search, discovery, and relevance quality."

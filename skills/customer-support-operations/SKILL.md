@@ -35,7 +35,6 @@ Product feedback loop:
 
 ## When not to use
 
-- Do not use when the job belongs to `refund-and-support-flow-review` — Refund, chargeback, entitlement revocation, restore/repurchase state machines.
-- Do not use when the job belongs to `refund-and-support-flow-review` — Defer when the job matches refund-and-support-flow-review instead.
-- Do not use when the job belongs to `support-quality-qa-review` — QA sampling is a module of support ops, not a separate entry point.
-- Do not use for generic advice the base model already handles without this skill's specific artifact contract.
+- Use `refund-and-support-flow-review` when the primary artifact is a provider-aware refund, chargeback, entitlement, restore, or repurchase state machine.
+- Do not redesign the whole support system for one ticket, one customer reply, or a narrow macro rewrite.
+- For a QA-only request, produce the sampling and scorecard module without inventing new queues, staffing, or escalation ownership.

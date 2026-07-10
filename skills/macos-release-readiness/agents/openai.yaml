@@ -1,4 +1,0 @@
-interface:
-  display_name: "macOS Release Readiness"
-  short_description: "Ship polished macOS releases"
-  default_prompt: "Use $macos-release-readiness to audit this macOS app release plan."

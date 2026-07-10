@@ -1,4 +1,0 @@
-interface:
-  display_name: "Release Rollback Drill Review"
-  short_description: "Drill release rollback paths"
-  default_prompt: "Use $release-rollback-drill-review to design a release rollback drill."

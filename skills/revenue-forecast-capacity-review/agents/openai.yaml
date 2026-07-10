@@ -1,4 +1,0 @@
-interface:
-  display_name: "Revenue Forecast Capacity Review"
-  short_description: "Forecast revenue and capacity"
-  default_prompt: "Use $revenue-forecast-capacity-review to review revenue forecast, capacity, and operating constraints."

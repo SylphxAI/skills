@@ -1,4 +1,0 @@
-interface:
-  display_name: "Customer Escalation War Room Review"
-  short_description: "Run customer escalation war rooms"
-  default_prompt: "Use $customer-escalation-war-room-review to run a customer escalation war room."

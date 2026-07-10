@@ -1,4 +1,0 @@
-interface:
-  display_name: "Voice-Preserving Editor"
-  short_description: "Shape agent replies without AI tone"
-  default_prompt: "Use $voice-preserving-editor to answer me in a natural voice while preserving facts and technical precision."

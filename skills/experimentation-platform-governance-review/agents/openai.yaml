@@ -1,4 +1,0 @@
-interface:
-  display_name: "Experimentation Platform Governance Review"
-  short_description: "Govern experiments safely"
-  default_prompt: "Use $experimentation-platform-governance-review to design experimentation platform governance."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Subscription Entitlement Review"
-  short_description: "Review cross-channel subscription entitlements"
-  default_prompt: "Use $subscription-entitlement-review to design cross-channel subscription entitlement truth, precedence, restore purchases, offline access, audit events, and support recovery."

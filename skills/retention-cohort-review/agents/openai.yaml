@@ -1,4 +1,0 @@
-interface:
-  display_name: "Retention Cohort Review"
-  short_description: "Read retention cohorts well"
-  default_prompt: "Use $retention-cohort-review to analyze this retention cohort problem and action plan."

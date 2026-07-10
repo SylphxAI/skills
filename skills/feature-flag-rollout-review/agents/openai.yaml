@@ -1,4 +1,0 @@
-interface:
-  display_name: "Feature Flag Rollout Review"
-  short_description: "Plan feature flags and rollout gates"
-  default_prompt: "Use $feature-flag-rollout-review to design a safe feature flag rollout with gates and rollback."

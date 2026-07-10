@@ -1,4 +1,0 @@
-interface:
-  display_name: "Usage Based Pricing Review"
-  short_description: "Design usage pricing safely"
-  default_prompt: "Use $usage-based-pricing-review to design or audit this usage-based pricing model."

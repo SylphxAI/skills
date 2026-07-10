@@ -1,4 +1,0 @@
-interface:
-  display_name: "Enterprise Expansion Health Review"
-  short_description: "Assess expansion readiness"
-  default_prompt: "Use $enterprise-expansion-health-review to assess account expansion readiness."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Checkout Conversion Review"
-  short_description: "Improve checkout revenue safely"
-  default_prompt: "Use $checkout-conversion-review to audit this checkout funnel for trustworthy conversion gains."

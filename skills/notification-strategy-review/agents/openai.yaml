@@ -1,4 +1,0 @@
-interface:
-  display_name: "Notification Strategy Review"
-  short_description: "Notification Strategy review"
-  default_prompt: "Use $notification-strategy-review to handle a realistic product task in this domain."

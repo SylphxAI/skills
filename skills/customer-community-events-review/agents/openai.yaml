@@ -1,4 +1,0 @@
-interface:
-  display_name: "Customer Community Events Review"
-  short_description: "Plan community events"
-  default_prompt: "Use $customer-community-events-review to design customer community events."

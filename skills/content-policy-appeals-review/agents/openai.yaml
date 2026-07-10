@@ -1,4 +1,0 @@
-interface:
-  display_name: "Content Policy Appeals Review"
-  short_description: "Design policy and appeals flows"
-  default_prompt: "Use $content-policy-appeals-review to design content policy enforcement and appeals."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Risk Register Governance Review"
-  short_description: "Run product risk governance"
-  default_prompt: "Use $risk-register-governance-review to create a product risk register with owners and mitigations."

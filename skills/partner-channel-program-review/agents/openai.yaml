@@ -1,4 +1,0 @@
-interface:
-  display_name: "Partner Channel Program Review"
-  short_description: "Design partner channels"
-  default_prompt: "Use $partner-channel-program-review to design a partner channel program."

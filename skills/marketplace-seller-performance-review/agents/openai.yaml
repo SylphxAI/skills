@@ -1,4 +1,0 @@
-interface:
-  display_name: "Marketplace Seller Performance Review"
-  short_description: "Score marketplace seller performance"
-  default_prompt: "Use $marketplace-seller-performance-review to review marketplace seller performance."
