@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fleet Migration Factory"
+  short_description: "Orchestrate verified fleet cutovers"
+  default_prompt: "Use $fleet-migration-factory to turn this multi-repo modernization into verified parallel cutover slices."
