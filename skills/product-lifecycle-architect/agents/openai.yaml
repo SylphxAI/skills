@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Lifecycle Architect"
+  short_description: "Compose product programs into delivered systems"
+  default_prompt: "Use $product-lifecycle-architect to compose this cross-domain product program into one build-to-scale Product Program Manifest with typed handoffs and delivery proof."

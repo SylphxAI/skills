@@ -1,94 +1,149 @@
-# Skill Marketplace Playbook
+# Private Skill Portfolio Playbook
 
-## Marketplace shapes
+## Contents
 
-### Repository-only
+- Physical lifecycle
+- Portfolio decision test
+- Admission and incubation
+- Owner-informed protection
+- Deletion diff and tombstones
+- Exact evidence
+- Agent-first governance
+- Private/public boundary
 
-Best first move. Use GitHub as the source of truth, contribution flow, trust signal, and SEO surface.
+## Physical lifecycle
 
-Minimum files:
+| State | Canonical surface | Required truth | Discoverable |
+| --- | --- | --- | --- |
+| Installable candidate | `skills/<name>/SKILL.md` | Admission, owner, eval boundary, source policy | Authenticated/local users |
+| Active investigation | `incubator/<name>/PROPOSAL.md` | Owner, expiry, independent job/artifact, promotion plan | No |
+| Retired | `retired/skills.json` | Disposition, reason, decision, evidence, date | No |
+
+Treat evidence as orthogonal to lifecycle. An installable route may still have
+unverified or stale routing/behavior evidence. An incubator proposal may contain
+valuable research without being installable.
+
+## Portfolio decision test
+
+Evaluate in order:
+
+1. **Independent job:** Would an operator intentionally request this work?
+2. **Independent artifact:** Can another agent accept its output without
+   reopening a broader sibling?
+3. **Knowledge delta:** Does it contain mechanisms the base agent will not
+   reliably reconstruct from the request?
+4. **Boundary:** Can realistic positive, negative, abstention, and compound
+   cases distinguish it?
+5. **Authority:** Are owner, sources, freshness, risk, and hard floors explicit?
+6. **Maintenance:** Is there an active reason to maintain it now?
+
+| Decision | Evidence required |
+| --- | --- |
+| Keep | All six tests pass |
+| Merge | Same job/artifact, canonical replacement, mechanism-level absorption map |
+| Retire without replacement | Base-model-generic, not a skill, or low-value shell; explicit reason and decision |
+| Investigate | Owner, expiry, falsifiable question, and exact next proof |
+
+Do not use folder age, line count, topic coverage, author effort, or authored
+examples as the decision.
+
+## Admission and incubation
+
+Require every installable route to declare:
+
+- recurring job and concrete artifact;
+- owner-backed demand or sponsorship without mislabeling adoption;
+- neighbouring routes and compound behavior;
+- risk class and source-freshness policy;
+- review/expiry date;
+- falsifiable routing and behavior plan.
+
+Use the incubator only for an active uncertainty. Expire or decide proposals;
+do not use it as a permanent archive of generated possibilities. Keep current
+law, prices, platform rules, credentials, and executable capabilities in typed
+retrieval/tools rather than static skill prose.
+
+## Owner-informed protection
+
+Maintain a protection record with:
 
 ```text
-README.md
-skills.sh.json
-skills/<skill-name>/SKILL.md
-registry/skills.json
-scripts/validate-skills.*
-docs/skill-quality-bar.md
-.github/workflows/validate.yml
+skill, owner, decision_ref, recurring_job, artifact, protected_mechanisms,
+dependency_closure, historical_public_commit, retirement_authority
 ```
 
-### Static catalog
+Protect mechanisms, not merely filenames. Preserve separate artifacts when
+their triggers, acceptance authority, or evidence differ. A replacement may be
+broader only when its contract explicitly owns the old job and the absorption
+map points to every retained rule, state machine, failure mode, and test.
 
-Generate pages from `registry/skills.json`. Add search, topics, install commands, creator pages, and validation badges.
+## Deletion diff and tombstones
 
-### API registry
+Compare the merge-base tree with the candidate tree for both
+`skills/*/SKILL.md` and `incubator/*/PROPOSAL.md`. Every missing name must appear
+in the retirement ledger.
 
-Expose search, ranking, installation metadata, and compatibility data. Use when external agents or products need programmatic access.
+A tombstone should carry:
 
-### Full marketplace
+```text
+name, disposition, replacement_when_required, reason, decisionRef,
+absorptionEvidence_when_required, retiredAt
+```
 
-Add accounts, submissions, reviews, analytics, verified creators, monetization, and abuse prevention.
+- Use `absorbed`, `duplicate`, or `superseded` only with an active replacement
+  and existing absorption evidence.
+- Use `not-a-skill` or `archived-low-value` without a false replacement.
+- Require an explicit owner decision before retiring protected knowledge.
+- Validate evidence paths and replacement existence.
+- Recompute derived inventory after the change; never hand-edit counts.
 
-## Skill schema
+Git history is audit evidence, not an active migration route. A deleted entry
+still needs a current tombstone so agents and operators can explain where it
+went.
 
-Required:
+## Exact evidence
 
-- `name`: lowercase kebab-case, under 64 characters, folder-matching.
-- `description`: clear trigger text with "Use when" or equivalent.
-- `SKILL.md`: concise method and routing.
+Keep these states separate:
 
-Recommended:
+- routing: complete-catalog prompt set, description/catalog digest, abstention,
+  compound exact set, per-skill metrics;
+- behavior: exact skill/reference bundle, hidden tasks, controls, raw outputs,
+  model/provider identity, judge policy, receipts, recomputed metrics;
+- authority: protected workflow, source commit, attestation, expiry;
+- demand/adoption: owner sponsorship, internal repeated use, external request;
+- source freshness and risk: current authority route, scope, review trigger.
 
-- `references/`: detailed domain knowledge.
-- `scripts/`: deterministic helpers.
-- `agents/openai.yaml`: UI metadata.
-- `evals/`: trigger and outcome checks.
+Any relevant byte change invalidates its dependent proof. Local runs diagnose;
+they do not self-attest current evidence.
 
-## Quality gates
+## Agent-first governance
 
-- Schema valid.
-- Description has specific triggers and avoids overbroad invocation.
-- No TODO placeholders.
-- No secrets or private data.
-- No unsafe shell commands unless tightly scoped and explained.
-- Links to local references resolve.
-- Content is original synthesis, not copied expression or close paraphrase. Direct quotes, third-party code/assets, or license-required excerpts have permission and attribution.
-- At least one realistic example prompt exists for complex skills.
+Use this state machine:
 
-## Agent factory
+```text
+observe -> inventory -> propose_disposition -> independent_validate
+-> exact_branch -> deterministic_gates -> merge_queue
+-> default_branch_readback -> isolated_install -> reconcile -> learn
+```
 
-Use agents to create drafts, not to publish automatically.
+Assign separate proposer, validator, promoter, and watchdog identities. Allow
+agents to perform all routine inventory, comparison, migration, generation,
+validation, and reconciliation. Keep owner decisions, legal authority, and
+protected-knowledge retirement outside self-granted model authority.
 
-1. Scout: find knowledge gaps and source material.
-2. Rights: decide whether any direct source material is being included. Prefer no direct inclusion; synthesize original guidance instead.
-3. Distill: extract reusable workflow, not prose.
-4. Author: create `SKILL.md`, references, and scripts.
-5. Eval: test trigger and output behavior.
-6. Security: inspect scripts and instruction risks.
-7. Curator: decide whether it belongs in the catalog.
+Construction capacity is elastic; routing attention and semantic clarity are
+not. Retire a route because it lacks an independent value contract, not because
+humans would find it expensive to maintain.
 
-## Distribution
+## Private/public boundary
 
-- Submit to open skill directories.
-- Publish weekly skill demos with before/after outputs.
-- Add install badges to README.
-- Create skill packs by job: design, growth, engineering, security, data.
-- Invite expert maintainers for verified categories.
-
-## Marketplace quality rule IDs
-
-- `marketplace-1` — Repository-only launch is the default first stage because it maximizes speed, GitHub trust, searchability, and contribution visibility.
-- `marketplace-2` — A skill is publishable only when trigger metadata, references, validation, evals, and install path are all present.
-- `marketplace-3` — Do not rank skills only by popularity; include quality gates, freshness, safety, originality, and eval coverage.
-- `marketplace-4` — Submissions need a rights/originality declaration before review, even when attribution is not required.
-- `marketplace-5` — Marketplace automation can draft and validate skills, but publishing requires review of usefulness, safety, and originality.
-
-## Marketplace stage decision table
-
-| Stage | Use when | Do not add yet |
-| --- | --- | --- |
-| Repository-only | Need reputation, SEO, installability, and fast iteration | Accounts, payments, complex ranking |
-| Static catalog | Need browsing, search, badges, and pack pages | User-generated submissions without review |
-| API registry | External tools need programmatic search/install metadata | Monetization before quality signals |
-| Full marketplace | There is enough supply, demand, moderation, and trust need | Dark ranking, unreviewed paid placement |
+- Verify repository visibility and anonymous behavior from live readback.
+- Support authenticated Git or a local path; pin commits/digests when
+  reproducibility matters.
+- Keep private repositories free of secrets and customer data; access control
+  is not a secret manager.
+- Preserve copyright notices and third-party attribution.
+- Treat historical public license grants as durable for already distributed
+  copies. Privacy controls future access, not past rights or copies.
+- Record public caches, indexes, forks, or mirrors as external state; do not
+  claim their removal without observed evidence.

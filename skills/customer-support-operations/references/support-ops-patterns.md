@@ -136,3 +136,48 @@ When the product fails:
 - avoid blaming the user;
 - preserve support traceability;
 - create a product fix if the same issue repeats.
+
+## Support deflection and knowledge-base subsystem
+
+Self-service is successful only when it resolves the user's job without hiding
+failure or blocking a safe escalation. Ticket avoidance alone is a harmful
+proxy.
+
+```text
+help_needed
+  -> query_or_context_captured
+  -> verified_answer_ranked
+  -> guided_action
+  -> resolution_verified | zero_results | unresolved | high_stakes_handoff
+  -> feedback_linked
+  -> article_or_product_fixed
+```
+
+Rules:
+
+- Separate education, troubleshooting, billing/refund, account access,
+  incident, policy, integration, bug, and safety intents; they do not share one
+  automation or escalation floor.
+- Every article declares audience, owner, product/version scope, prerequisites,
+  safe steps, expected result, last verification, expiry, and human/escalation
+  route.
+- Search owns synonyms, failed-query cohorts, zero-result recovery, ranking QA,
+  locale/accessibility, and protection against stale popularity dominating a
+  current verified answer.
+- Macros and AI answers bind to current source IDs and abstain when authority,
+  identity, money, deletion, safety, privacy, or incident state is uncertain.
+  They preserve diagnostic context on handoff.
+- Offer visible human/specialist escalation for high-stakes or repeatedly
+  unresolved cases. Never trap a user to improve a deflection metric.
+- Diagnostics collect only bounded safe context such as product version,
+  environment, trace/request ID, state, and attempted steps; never request
+  secrets or destructive repetition.
+- Split content defects from product defects. Repeated contact drivers create
+  owned product, onboarding, error-message, or policy work rather than endless
+  duplicate articles.
+
+Measure verified resolution, zero-result rate, time to answer, escalation,
+recontact, reopen, churn/refund, complaint, accessibility failure, source
+freshness, and product-defect closure by intent, locale, surface, and version.
+An experiment stops when apparent deflection rises while resolution falls or
+recontact, refunds, complaints, or abandonment increase.

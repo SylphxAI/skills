@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Analytics Instrumentation Review"
+  short_description: "Plan product analytics events"
+  default_prompt: "Use $product-analytics-instrumentation-review to design product analytics instrumentation."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Automation Blueprint"
+  short_description: "Design autonomous multi-channel marketing systems"
+  default_prompt: "Use $marketing-automation-blueprint to build a complete truth-bound global marketing control plane with bounded autonomous spend and causal measurement."

@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SylphxAI/skills/blob/main/schemas/product-artifact-envelope.schema.json",
+  "title": "Composable product skill artifact envelope",
+  "description": "A stable envelope for composing product, app, game, distribution, marketing, and specialist artifacts without copying their canonical facts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "artifactId",
+    "productId",
+    "artifactKind",
+    "ownerSkill",
+    "artifactVersion",
+    "artifactDigest",
+    "inputArtifacts",
+    "canonicalFactsOwned",
+    "handoffOutputs",
+    "assumptions",
+    "proofState",
+    "proofEvidence"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "artifactId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{2,127}$" },
+    "productId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{1,127}$" },
+    "artifactKind": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "ownerSkill": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "artifactVersion": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "artifactDigest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 of the canonical serialized complete artifact with the artifactDigest field omitted, preventing a recursive self-digest."
+    },
+    "inputArtifacts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/artifactRef" },
+      "uniqueItems": true
+    },
+    "canonicalFactsOwned": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 3 },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "handoffOutputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/handoff" },
+      "uniqueItems": true
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/assumption" },
+      "uniqueItems": true
+    },
+    "proofState": {
+      "enum": [
+        "hypothesis",
+        "design-validated",
+        "implementation-verified",
+        "scale-verified",
+        "production-proven"
+      ]
+    },
+    "proofEvidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/proofEvidence" },
+      "uniqueItems": true
+    },
+    "supersedes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/artifactRef" },
+      "uniqueItems": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "proofState": { "not": { "const": "hypothesis" } } },
+        "required": ["proofState"]
+      },
+      "then": { "properties": { "proofEvidence": { "minItems": 1 } } }
+    },
+    {
+      "if": {
+        "properties": { "proofState": { "const": "scale-verified" } },
+        "required": ["proofState"]
+      },
+      "then": {
+        "properties": {
+          "proofEvidence": {
+            "contains": {
+              "properties": {
+                "evidenceType": { "enum": ["scale-load", "scale-soak", "scale-chaos"] }
+              },
+              "required": ["evidenceType"]
+            },
+            "minContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "proofState": { "const": "production-proven" } },
+        "required": ["proofState"]
+      },
+      "then": {
+        "properties": {
+          "proofEvidence": {
+            "contains": {
+              "properties": {
+                "evidenceType": { "const": "live-readback" },
+                "liveReadback": { "const": true }
+              },
+              "required": ["evidenceType", "liveReadback"]
+            },
+            "minContains": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifactId", "artifactVersion", "artifactDigest", "relation"],
+      "properties": {
+        "artifactId": { "type": "string", "minLength": 3 },
+        "artifactVersion": { "type": "string", "minLength": 1 },
+        "artifactDigest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "Digest of the exact consumed artifact under its declared canonical serialization rule."
+        },
+        "relation": { "type": "string", "minLength": 3 }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["consumerSkill", "artifactKind", "contract", "acceptanceTests"],
+      "properties": {
+        "consumerSkill": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "artifactKind": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "contract": { "type": "string", "minLength": 10 },
+        "acceptanceTests": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/acceptanceTest" },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "acceptanceTest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["testId", "assertion"],
+      "properties": {
+        "testId": { "type": "string", "minLength": 2 },
+        "assertion": { "type": "string", "minLength": 10 },
+        "evidenceRef": { "type": "string", "minLength": 3 }
+      }
+    },
+    "proofEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceId",
+        "evidenceType",
+        "candidateId",
+        "environment",
+        "evidenceRef",
+        "observedAt",
+        "liveReadback"
+      ],
+      "properties": {
+        "evidenceId": { "type": "string", "minLength": 2 },
+        "evidenceType": {
+          "enum": [
+            "design-study",
+            "contract-test",
+            "implementation-test",
+            "scale-load",
+            "scale-soak",
+            "scale-chaos",
+            "release-receipt",
+            "live-readback",
+            "other"
+          ]
+        },
+        "candidateId": { "type": "string", "minLength": 2 },
+        "environment": { "type": "string", "minLength": 2 },
+        "evidenceRef": { "type": "string", "minLength": 3 },
+        "observedAt": { "type": "string", "format": "date-time" },
+        "liveReadback": { "type": "boolean" }
+      }
+    },
+    "assumption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assumptionId", "statement", "status"],
+      "properties": {
+        "assumptionId": { "type": "string", "minLength": 2 },
+        "statement": { "type": "string", "minLength": 5 },
+        "status": { "enum": ["unverified", "supported", "falsified", "expired"] },
+        "evidenceRef": { "type": "string", "minLength": 3 }
+      }
+    }
+  }
+}

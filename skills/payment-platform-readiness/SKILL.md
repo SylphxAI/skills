@@ -7,6 +7,16 @@ description: Prepare payment platform integration for Apple Pay, Google Pay, Goo
 
 Use this skill to make payments reliable, compliant, supportable, replayable, and product-friendly across app stores, web checkout, wallets, subscriptions, refunds, disputes, promos, and entitlement systems.
 
+## Composition contract
+
+Begin the Payment Platform Artifact with the
+[shared product artifact envelope](references/product-artifact-envelope.schema.json).
+Own provider authority, ingestion, money ledger, entitlement projection,
+settlement, reconciliation, and finance-close facts. Consume product, pricing,
+catalog, tax, and release artifacts by ID/version/digest; emit payment,
+entitlement, refund-authority, support, and finance handoffs without copying
+their canonical facts.
+
 ## Workflow
 
 1. Identify payment channel, product type, billing model, provider identifiers, catalog mapping, entitlement semantics, refund/dispute policy, settlement/fee model, support surfaces, and reconciliation owner.
@@ -46,6 +56,11 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 ## Output format
 
 ```text
+Artifact envelope:
+- schemaVersion / artifactId / productId / artifactKind / ownerSkill
+- artifactVersion / artifactDigest / inputArtifacts
+- canonicalFactsOwned / handoffOutputs / assumptions / proofState / proofEvidence
+
 Payment surfaces:
 Billing model:
 Authority boundary:

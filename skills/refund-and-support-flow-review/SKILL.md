@@ -7,6 +7,16 @@ description: Design and audit refund, cancellation, chargeback, dispute, entitle
 
 Use this skill to handle refunds without damaging trust or letting abuse break the product.
 
+## Composition contract
+
+Begin the Refund And Support Artifact with the
+[shared product artifact envelope](references/product-artifact-envelope.schema.json).
+Own provider refund/cancellation/chargeback evidence, entitlement consequence,
+grace/hold/recovery, account action, appeal, repayment, support, and product
+feedback states. Consume payment, entitlement, purchase, product, economy, and
+support artifacts by ID/version/digest and emit reversible audited handoffs to
+their owners.
+
 ## Workflow
 
 1. Identify purchase type, provider/store, entitlement type, refund authority, and support ownership.
@@ -48,6 +58,11 @@ Use this skill to handle refunds without damaging trust or letting abuse break t
 ## Output format
 
 ```text
+Artifact envelope:
+- schemaVersion / artifactId / productId / artifactKind / ownerSkill
+- artifactVersion / artifactDigest / inputArtifacts
+- canonicalFactsOwned / handoffOutputs / assumptions / proofState / proofEvidence
+
 Purchase/refund context:
 Authority:
 

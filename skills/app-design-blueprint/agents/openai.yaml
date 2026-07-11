@@ -1,0 +1,4 @@
+interface:
+  display_name: "App Design Blueprint"
+  short_description: "Design coherent scale-ready agent-built apps"
+  default_prompt: "Use $app-design-blueprint to turn this app concept into a complete build-to-scale App Design Blueprint with no artificial progression gates."

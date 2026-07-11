@@ -11,7 +11,7 @@ Turn a large rewrite into a repeatable assembly line of independently verifiable
 
 - Read `references/fleet-migration-patterns.md` before choosing slice boundaries, states, parity gates, concurrency, or cutover policy.
 - Use `scripts/validate_fleet_ledger.py` when the migration adopts the portable ledger shape in the reference. From this repository's root, run `python3 -m unittest -v skills/fleet-migration-factory/scripts/test_validate_fleet_ledger.py` after changing the validator; the same suite belongs in the repository check and CI gates. Prefer an existing repo-native schema and validator when one already owns this fact.
-- Load the target repositories' local architecture, delivery, and safety rules. This public skill does not replace them.
+- Load the target repositories' local architecture, delivery, and safety rules. This portfolio skill does not replace them.
 
 ## Workflow
 

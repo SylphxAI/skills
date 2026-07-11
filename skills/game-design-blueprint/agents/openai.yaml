@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Design Blueprint"
+  short_description: "Design scale-ready agent-built games"
+  default_prompt: "Use $game-design-blueprint to turn this game concept into a coherent, build-to-scale Agent-First Game Design Blueprint with automated exposure gates."
