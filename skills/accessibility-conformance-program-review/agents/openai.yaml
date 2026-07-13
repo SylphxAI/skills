@@ -1,0 +1,4 @@
+interface:
+  display_name: "Accessibility Conformance Program Review"
+  short_description: "Design evidence-backed conformance"
+  default_prompt: "Use $accessibility-conformance-program-review to design or audit an evidence-backed accessibility conformance program."

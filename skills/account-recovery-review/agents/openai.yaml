@@ -1,0 +1,4 @@
+interface:
+  display_name: "Account Recovery Review"
+  short_description: "Design secure humane account recovery"
+  default_prompt: "Use $account-recovery-review to design or audit this account recovery, proof, risk, fallback, support, appeal, and post-recovery protection protocol."

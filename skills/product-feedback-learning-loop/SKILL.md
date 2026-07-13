@@ -17,6 +17,27 @@ routing, authorized public-review ingestion and response, product action,
 metrics, and privacy tests. Retrieve current provider/API authority before
 ingesting or responding on an external platform.
 
+## Composition contract
+
+Begin a composed artifact with the
+[product artifact envelope](references/product-artifact-envelope.schema.json).
+Set `ownerSkill: product-feedback-learning-loop` and give the feedback/learning
+artifact its own `artifactId`, `artifactVersion`, `artifactRevision`, and
+`artifactState`. The top-level artifact never self-hashes.
+
+Every typed input names the exact producer contract through
+`fulfillsHandoffId`. A draft input carries identity/revision/state but no digest;
+a sealed input additionally requires `artifactDigest` and
+`digestRule: sha256-exact-bytes`. Never invent a digest or resolve a moving
+“latest” alias.
+
+For a combined private-feedback/public-review request, produce two sibling
+artifacts with distinct identities and stable producer-owned `handoffId`s.
+They may share exact upstream product and value-event inputs. Add a one-way
+input edge only when this loop truly consumes a contract emitted by Review
+Solicitation; public request eligibility can never consume private sentiment or
+learning state, and the graph must remain acyclic.
+
 ## Workflow
 
 1. Record the product scope, feedback and review sources, entry contexts,
@@ -44,8 +65,9 @@ ingesting or responding on an external platform.
    investigating, fixed, shipped, not planned, policy-limited, or
    support-resolved. Never promise an uncommitted feature or date.
 8. For a request that also asks when or how to solicit public reviews, invoke
-   `review-solicitation-policy` as a sibling. Return two independent artifacts;
-   never use feedback or inferred sentiment to gate its public request policy.
+   `review-solicitation-policy` as a sibling. Return two independent, versioned
+   artifacts with stable handoff IDs; never use feedback or inferred sentiment
+   to gate its public request policy.
 
 ## When not to use
 
@@ -72,6 +94,9 @@ ingesting or responding on an external platform.
   incident command, listing conversion, or store submission.
 
 ## Output
+
+Artifact envelope, exact inputs, proof state, stable handoff outputs, and
+assumptions:
 
 Scope, sources, authority, and evidence gaps:
 

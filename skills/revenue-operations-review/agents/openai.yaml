@@ -1,0 +1,4 @@
+interface:
+  display_name: "Revenue Operations Review"
+  short_description: "Design trustworthy revenue operating systems"
+  default_prompt: "Use $revenue-operations-review to design or audit CRM governance, qualification, routing, pipeline, forecast, technical handoffs, incentives, automation, and revenue evidence."

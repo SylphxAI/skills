@@ -14,8 +14,10 @@ unsupported market opinions.
 1. Define the decision, research question, target user/buyer, category,
    geography, time window, product form, and evidence that could change the
    decision.
-2. Read references/research-synthesis-method.md. Create the source ledger before
-   collecting conclusions.
+2. Read `references/research-synthesis-method.md`. Create the source ledger
+   before collecting conclusions. When the decision is product positioning,
+   also read `references/positioning-decision.md` and bind every positioning
+   component to that ledger.
 3. Select leaders, challengers, niche winners, substitutes, and relevant failed
    or low-trust examples. Explain why each belongs in the comparison.
 4. Prefer primary surfaces and independently corroborate material claims where
@@ -77,3 +79,7 @@ Table stakes, conventions, and differentiation:
 Counterevidence and unresolved conflicts:
 
 Recommendation, risks, confidence, and disconfirming test:
+
+Positioning decision when requested:
+- segment/job, alternative, category, differentiator/outcome, proof, fit boundary
+- positioning statement, message hierarchy, objections and channel handoff

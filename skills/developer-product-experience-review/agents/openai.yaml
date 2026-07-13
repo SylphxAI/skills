@@ -1,0 +1,4 @@
+interface:
+  display_name: "Developer Product Experience Review"
+  short_description: "Design end-to-end developer adoption systems"
+  default_prompt: "Use $developer-product-experience-review to design or audit this developer journey from discovery and sandbox success through production adoption, certification, support, and retained use."

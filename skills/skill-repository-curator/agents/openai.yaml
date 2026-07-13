@@ -1,4 +1,4 @@
 interface:
   display_name: "Skill Repository Curator"
-  short_description: "Curate a valuable skills repository"
-  default_prompt: "Use $skill-repository-curator to audit and improve this skills repository by strengthening useful skills, clarifying boundaries, consolidating true duplicates, and retiring low-value shells."
+  short_description: "Semantically curate an agent skill portfolio"
+  default_prompt: "Use $skill-repository-curator to recover hidden capabilities, rewrite weak packages, resolve owners, consolidate true duplicates, and keep this skills portfolio useful without relying on CI or owner memory."

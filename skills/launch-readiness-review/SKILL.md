@@ -20,14 +20,22 @@ artifacts. Missing required evidence is a blocker or explicit handoff, never an
 invented pass. Do not require an envelope for a standalone review with no such
 upstream contract.
 
+## Resource guide
+
+- Read `references/launch-readiness-patterns.md` for proportional domain gates,
+  decision classes, conditional-go exceptions, and recovery authority.
+- Read `references/release-health-watch.md` when the candidate needs a canary,
+  staged rollout, release-health dashboard, first-week operating thresholds, or
+  post-release closeout.
+
 ## Workflow
 
 1. Identify exact commit/build/content/config/model/policy/migration digests,
    launch type, audiences/age modes, channels/territories, blast radius,
    decision owner, change window, and irreversible harm boundaries.
-2. Read `references/launch-readiness-patterns.md`. Select only gates applicable
-   to the declared candidate, audience, channel, data, money, regulation, and
-   blast radius. Record why a domain is applicable or not applicable.
+2. Read the applicable references above. Select only gates applicable to the
+   declared candidate, audience, channel, data, money, regulation, and blast
+   radius. Record why a domain is applicable or not applicable.
 3. Classify each gate `pass`, `watch`, `blocked`, or `not-applicable-with-proof`.
    Separate construction, proof, exposure, and external authority. Do not turn
    an unknown into N/A.
@@ -37,7 +45,9 @@ upstream contract.
    recovery, and restoration drills.
 5. Define the smallest launch watch appropriate to the risk: telemetry and
    countermetrics, alert ownership, exposure caps where useful, pause/withdraw,
-   communications, and live readback.
+   communications, and live readback. For staged or high-change releases,
+   produce the release-health row schema, baseline/segment/sample rules,
+   expansion/hold/rollback predicates, and closeout evidence.
 6. Issue `go`, `conditional-go`, `hold`, or `no-go`. Every condition needs an
    owner, deadline, exact proof, and consequence; it is not a vague promise.
 
@@ -83,8 +93,9 @@ Return one typed Launch Admission Record with:
 3. blocker records with owner, exact proof, deadline, and automatic consequence;
 4. canary/staged exposure, migration, rollback/forward-fix, cache/derived-state,
    and restoration drill evidence;
-5. proportionate launch watch, pause/withdraw, communication, and live-readback
-   plan;
+5. proportionate launch watch, including any release-health dashboard rows,
+   baseline/segment/sample rules, pause/withdraw, communication, and
+   live-readback plan;
 6. `go | conditional-go | hold | no-go` verdict with machine-readable reasons;
 7. post-release live-readback and closeout evidence.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Search Discovery Quality Review"
+  short_description: "Audit trustworthy search and discovery quality"
+  default_prompt: "Use $search-discovery-quality-review to build an evidence-backed quality and release contract for this discovery surface."

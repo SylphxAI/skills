@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketplace Seller Performance Review"
+  short_description: "Govern seller quality and recovery"
+  default_prompt: "Use $marketplace-seller-performance-review to design or audit seller evidence, interventions, appeals, and recovery."

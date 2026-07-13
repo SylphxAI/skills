@@ -1,0 +1,4 @@
+interface:
+  display_name: "Retention Cohort Review"
+  short_description: "Diagnose retention cohorts"
+  default_prompt: "Use $retention-cohort-review to validate and diagnose this retention cohort, then design evidence-backed actions."

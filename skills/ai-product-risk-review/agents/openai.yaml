@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Product Risk Review"
+  short_description: "Bound AI behavior, autonomy, and launch risk"
+  default_prompt: "Use $ai-product-risk-review to design an evidence-bounded product-risk and launch contract for this AI feature."

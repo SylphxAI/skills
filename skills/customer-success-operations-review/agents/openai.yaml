@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Success Operations Review"
+  short_description: "Design outcome-led customer success operations"
+  default_prompt: "Use $customer-success-operations-review to design or audit customer onboarding, adoption, health, intervention, education, renewal, expansion, and learning operations."

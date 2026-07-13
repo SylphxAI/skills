@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security Assurance Operations Review"
+  short_description: "Operate truthful security claims and evidence"
+  default_prompt: "Use $security-assurance-operations-review to prepare a scoped, current, evidence-backed security assurance packet."

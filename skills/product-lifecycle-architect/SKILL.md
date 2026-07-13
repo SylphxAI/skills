@@ -1,6 +1,6 @@
 ---
 name: product-lifecycle-architect
-description: "Orchestrate a multi-artifact product program across experience design, commerce, distribution, globalization, SDKs, marketing, support, operations, delivery, and autonomous maintenance. Use when the primary artifact is the cross-domain dependency, handoff, validation, or delivery graph; when a product program spans at least three lifecycle domains; or when app/game, global platform release, marketing, and operations must converge on one build-to-scale target. Do not use as primary for whole-app design, whole-game design, a marketing operating system, one campaign/listing/refund, or store-submission readiness."
+description: "Orchestrate a multi-artifact product program across experience design, commerce, distribution, globalization, SDKs, marketing, support, operations, delivery, and autonomous maintenance. Use when the primary artifact is the cross-domain dependency, handoff, validation, or delivery graph; when a product program spans at least three lifecycle domains; when an ecosystem certification program must compose eligibility, tests, trust signals, renewal, appeals, and operations; or when app/game, global platform release, marketing, and operations must converge on one build-to-scale target. Do not use as primary for whole-app design, whole-game design, a marketing operating system, one campaign/listing/refund, or one product's store-submission readiness."
 ---
 
 # Product Lifecycle Architect
@@ -77,8 +77,15 @@ Use these principles to decide skill granularity:
 - Read `references/product-lifecycle-matrix.md` for the domain/artifact owner matrix and program manifest schema.
 - Read `references/product-distribution-and-release.md` for build-once platform adapters, HTML5, channel state machines, release evidence, and recovery.
 - Read `references/product-globalization-assets-and-sdks.md` for i18n, localized promotional material, YouTube/X exports, and vendor-neutral SDK integration.
+- Read `references/ecosystem-certification-program.md` when the product is the
+  platform program that certifies partners, integrations, apps, plugins,
+  agencies, creators, listings, templates, or developers.
 
 Read all references for an end-to-end program. For a narrower cross-domain program, load the touched references and name unassessed domains.
+
+For an ecosystem-certification request, the Product Program Manifest may be
+bounded to that program and its cross-domain artifacts; do not claim the host
+product's unrelated lifecycle was reviewed.
 
 ## Operating rules
 
@@ -164,7 +171,7 @@ Produce one **Product Program Manifest** containing:
 2. canonical fact and artifact-owner registry with IDs, versions/revisions, sealed digests where available, inputs, outputs, assumptions, proof, and supersession;
 3. complete lifecycle capability matrix with construction, proof, release/exposure, scale/failure, migration, recovery, and maintenance states;
 4. cross-domain dependency DAG, critical path, delivery order, collision boundaries, and handoff acceptance tests;
-5. platform/channel capability matrix and release-control state machines, including iOS, Android, HTML5/PWA, relevant stores/direct channels, and console authority gates;
+5. platform/channel capability matrix and release-control state machines, including iOS, Android, HTML5/PWA, relevant stores/direct channels, and console authority gates; when selected, include the ecosystem certification promise, criteria/test/badge, renewal, appeal, revocation, partner-enablement, and customer-impact graph;
 6. i18n/culturalization plan plus exact `product-asset-production` pack inputs,
    coverage, acceptance, rights/provenance, LQA, and downstream handoffs;
 7. vendor-neutral SDK adapter registry with consent/privacy/startup/dormant/replacement controls;

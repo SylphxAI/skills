@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketplace Trust Operations Review"
+  short_description: "Operate marketplace trust, appeals, and risk"
+  default_prompt: "Use $marketplace-trust-operations-review to design or audit marketplace policy, risk queues, disputes, enforcement, appeals, restoration, learning, and trust economics."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Enterprise Contract Operations Review"
+  short_description: "Operate enterprise contract obligations and renewals"
+  default_prompt: "Use $enterprise-contract-operations-review to design or audit contract intake, obligations, amendments, exceptions, renewals, billing and entitlement handoffs, evidence, and controls."

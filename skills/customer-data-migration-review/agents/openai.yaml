@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Data Migration Review"
+  short_description: "Design verifiable customer data migrations"
+  default_prompt: "Use $customer-data-migration-review to design or audit this import, onboarding migration, mapping, validation, cutover, rollback, reconciliation, and customer communication contract."

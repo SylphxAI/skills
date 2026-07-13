@@ -78,14 +78,14 @@ Current automation route: [Google Play Developer API](https://developers.google.
 
 ## Steam
 
-- capsule art, trailer, screenshots, tags, supported languages;
-- demo/wishlist strategy;
-- achievements, cloud saves, controller support;
-- early access communication if applicable;
-- refund expectation and save-state handling;
-- community hub and patch notes.
+- exact build, depot, branch, package, account, and territory identity;
+- build-to-claim parity for achievements, cloud saves, controller support, supported languages, system requirements, and any Early Access state;
+- demo, playtest, or Early Access build identity, availability, migration, and save-state compatibility evidence when applicable;
+- current price, DLC, refund, and support declarations only where they are release-facing facts that must match the shipped build;
 - SteamPipe/steamcmd build/depot/branch automation, build-account permissions, released-build confirmation and exact live branch readback;
 - Valve store-page/build review state and partner-only authority from [SteamPipe](https://partner.steamgames.com/doc/sdk/uploading) and [review process](https://partner.steamgames.com/doc/store/review_process).
+
+Keep ownership explicit: store-page metadata belongs to Store Listing Optimization, media production belongs to Product Asset Production, wishlist/creator/community activation belongs to Marketing Automation, and go/no-go plus first-week health belongs to Launch Readiness Review. Distribution owns the exact submission, approval, build, branch, rollout, and live-readback evidence exchanged with those owners.
 
 ## Xbox, PlayStation, and Nintendo Switch
 

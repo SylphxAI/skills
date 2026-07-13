@@ -1,6 +1,6 @@
 ---
 name: app-design-blueprint
-description: "Design or critically review a complete app as a coherent, agent-first App Design Blueprint: user job and promise, workflows and information architecture, first-use activation, capability portfolio, retention and durable ownership, commerce and social integration, feedback and review loops, responsive HTML5/mobile/desktop experience, offline and sync, accessibility, localization, low-end performance, privacy, safety, autonomous construction, and validation. Use for a new consumer or productivity app, whole-app redesign, cross-platform app system, or audit of whether product capabilities form one scalable experience. Use specialist procedures for one payment, refund, notification, review, campaign, store submission, or file-level interface artifact unless whole-app coherence is also being decided."
+description: "Design or critically review a complete app as a coherent, agent-first App Design Blueprint: user job and promise, workflows and information architecture, first-use activation, capability portfolio, retention and durable ownership, commerce and social integration, feedback and review loops, responsive HTML5/mobile/desktop experience, desktop OS integration semantics, offline and sync, accessibility, localization, low-end performance, privacy, safety, autonomous construction, and validation. Use for a new consumer or productivity app, whole-app redesign, cross-platform app system, a bounded macOS/Windows integration design that must remain consistent with app state, or an audit of whether product capabilities form one scalable experience. Use specialist procedures for one payment, refund, notification, review, campaign, store submission, exact release artifact, or file-level interface artifact unless whole-app coherence is also being decided."
 ---
 
 # App Design Blueprint
@@ -63,9 +63,16 @@ When orchestration supplies immutable planning Product Program Manifest revision
 - Read `references/app-thesis-and-experience.md` for success, user jobs, activation, workflows, durable investment, retention, and feedback.
 - Read `references/app-system-portfolio.md` for the complete capability sweep, contracts, state ownership, and specialist handoffs.
 - Read `references/app-quality-and-reach.md` for HTML5/PWA, mobile, desktop, startup, low-end, responsive inputs, offline/sync, accessibility, localization, privacy, and security.
+- Read `references/desktop-os-experience.md` for macOS/Windows startup,
+  tray/menu-bar, permissions, files/deep links, local data/credentials,
+  notifications, updates, uninstall, support diagnostics, and regression states.
 - Read `references/app-validation-and-automation.md` for evidence labels, metrics, experimentation, scale proof, autonomous maintenance, risk posture, and the complete template.
 
 Read all references for a whole-app program. For a bounded redesign, load only the touched references and state what remains unassessed.
+
+For a bounded desktop-integration request, return the Desktop OS Experience
+Contract and specialist handoffs only; do not imply that the rest of the app
+blueprint was reviewed.
 
 Capability lists in every reference are sweep candidates, not inclusion mandates. Apply the disposition invariant before any instruction to build, port, integrate, or hand off a primitive: only selected capabilities receive app-specific runtime work, `contract-ready` remains a tested zero-runtime boundary, and `not-applicable` creates no implementation or provider handoff.
 
@@ -111,7 +118,7 @@ Rules:
 8. Build durable investment from the user-created data, settings, collections, history, mastery, identity, relationships, or reputation selected by the app promise, with recovery, export, deletion, portability, versioning, and returning-user restoration. Never use loss threats or forced payment to retain that value.
 9. Treat selected notifications, rewards, reviews, ratings, cross-promotion, referrals, update benefits, personalization, and gamification as delivery or reinforcement systems. Each selected system needs an underlying user-value hypothesis, neutral controls, countermetrics, and a specialist contract.
 10. Define immediate feedback for every state-changing action: pending, optimistic, committed, failed, retryable, reconciled, undone, and externally authoritative. Optimistic UI may not falsely confirm money, entitlement, sharing, deletion, or irreversible work.
-11. Design every selected platform and reach capability—HTML5/PWA, mobile/tablet/desktop, keyboard, touch, pointer, controller where relevant, accessibility, i18n, offline/sync, and low-end tiers—in the initial semantic contracts, and disposition the rest. One stretched layout is not cross-platform design.
+11. Design every selected platform and reach capability—HTML5/PWA, mobile/tablet/desktop, keyboard, touch, pointer, controller where relevant, desktop OS integration, accessibility, i18n, offline/sync, and low-end tiers—in the initial semantic contracts, and disposition the rest. One stretched layout is not cross-platform design. For selected desktop targets, bind background, permission, file, credential, local-data, notification, update and uninstall behavior to the app state model, then hand exact package/release proof to Distribution Readiness.
 12. Produce an implementation handoff with canonical owners, an acyclic dependency order, collision boundaries, acceptance evidence, migrations, exposure/recovery behavior, and maintenance automation. Leave repository, CI, deployment, and runtime mechanics to their owning projects.
 13. Close continuous improvement as `observe -> diagnose -> hypothesize -> validate -> expose_boundedly -> observe -> keep_or_recover -> learn`. Preserve evidence lineage, declared authority, countermetrics, and safe recovery; do not let generated proposals certify themselves as observed results.
 14. Retrieve current platform, store, payment, review, notification, child, privacy, accessibility, advertising, and regulated-category authority for every selected or risk-relevant surface at execution. Static skill text is a route, never a current compliance verdict.
@@ -184,7 +191,7 @@ Produce one **App Design Blueprint** containing:
 5. complete capability portfolio with disposition and reason, complete selected target, build, availability, presentation, scale/failure, proof, dormant-state, migration, telemetry, and recovery states;
 6. selected recurring-value, durable-investment, identity/personalization, collaboration/social, and comeback decisions, including exact non-applicable dispositions;
 7. selected monetization value exchange plus app-side refund, rewards, update adoption, cross-promotion, review/feedback, and marketing integration contracts; otherwise the exact disposition and zero-cost boundary;
-8. selected platform/input/HTML5/PWA, offline/sync, accessibility, i18n, security/privacy, low-end quality, and experience-expression matrix, plus exact dispositions for unselected adapters;
+8. selected platform/input/HTML5/PWA, desktop OS experience/integration, offline/sync, accessibility, i18n, security/privacy, low-end quality, and experience-expression matrix, plus exact dispositions for unselected adapters;
 9. implementation and maintenance handoff with owners, dependency order, acceptance evidence, exposure/recovery behavior, and observed-state requirements;
 10. event/metric/experiment plan with selected value, quality, trust, fatigue, fairness, commercial, and support countermetrics;
 11. specialist handoff-request manifest with contract and acceptance tests; include digests only for already sealed inputs;

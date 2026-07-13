@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Experiment Review"
+  short_description: "Design decision-grade product experiments"
+  default_prompt: "Use $product-experiment-review to turn this product uncertainty into a sealed experiment and decision contract."

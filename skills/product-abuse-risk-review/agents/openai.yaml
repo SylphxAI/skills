@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Abuse Risk Review"
+  short_description: "Design adaptive product abuse and fraud controls"
+  default_prompt: "Use $product-abuse-risk-review to design or audit this product abuse threat model, control ladder, decision system, appeals, economics, automation, and evidence."

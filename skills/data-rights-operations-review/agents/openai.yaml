@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Rights Operations Review"
+  short_description: "Design auditable data-rights request operations"
+  default_prompt: "Use $data-rights-operations-review to design or audit this access, export, correction, deletion, restriction, objection, or appeal workflow."

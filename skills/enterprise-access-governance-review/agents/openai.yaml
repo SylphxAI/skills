@@ -1,0 +1,4 @@
+interface:
+  display_name: "Enterprise Access Governance Review"
+  short_description: "Govern enterprise tenant and admin access"
+  default_prompt: "Use $enterprise-access-governance-review to design or audit tenant ownership, admin authority, delegation, access lifecycle, privileged operations, audit evidence, and reconciliation."

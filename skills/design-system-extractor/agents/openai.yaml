@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design System Extractor"
+  short_description: "Extract evidence-backed design systems"
+  default_prompt: "Use $design-system-extractor to recover the as-is design system from these authorized product sources."

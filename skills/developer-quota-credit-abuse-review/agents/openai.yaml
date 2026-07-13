@@ -1,0 +1,4 @@
+interface:
+  display_name: "Developer Quota Credit Abuse Review"
+  short_description: "Balance developer credits and abuse"
+  default_prompt: "Use $developer-quota-credit-abuse-review to balance developer activation, quota economics, abuse controls, and scale-up."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Recovery Contract Review"
+  short_description: "Design product recovery contracts"
+  default_prompt: "Use $product-recovery-contract-review to design or audit the user-data durability and recovery contract plus its engineering handoff."

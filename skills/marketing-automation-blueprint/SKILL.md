@@ -57,6 +57,7 @@ input reference contains neither. Never invent them or resolve a moving
 
 - Read `references/marketing-thesis-and-portfolio.md` for objective hierarchy, audience, positioning translation, channel sweep, and system map.
 - Read `references/marketing-organic-lifecycle-and-reputation.md` for SEO/AEO, content, social, creators, community, lifecycle, cross-promotion, update adoption, ratings, and feedback integration.
+- Read `references/pc-store-launch-marketing.md` for a Steam or other PC-store wishlist/demo/festival, creator/press, community, launch-calendar, and first-week communication program.
 - Read `references/marketing-paid-and-creative-factory.md` for paid adapters, creative/localization supply, rights, fatigue, budgets, bids, and channel contracts.
 - Read `references/marketing-measurement-risk-and-economics.md` for causal measurement, attribution, risk-adjusted value, privacy, fraud, brand safety, and decision gates.
 - Read `references/marketing-autonomous-control-plane.md` for manifests, role separation, reconciliation, canaries, failure/recovery, proof, and official source routes.
@@ -96,6 +97,11 @@ Create intent/lifecycle states, eligibility/exclusions, age/territory/sensitive-
 ### 3. Build the selected channel and creative portfolio
 
 Evaluate the role and handoff for owned, earned, paid, store, creator, community, partner, referral, lifecycle, reputation, cross-promotion, update education, SEO/AEO, and launch. Select channels from product truth, audience mechanism, recipient value, authority, and program target; build every selected adapter plus its localized brief and production-request supply now, route exact files through `product-asset-production`, then choose activation from evidence and policy.
+
+For a PC-store launch, preserve the separation between Store Listing narrative,
+Product Asset Production files, Distribution build/store proof, Launch Admission
+health, and Marketing's wishlist, creator, press, community and communication
+program.
 
 ### 4. Define measurement and economics
 
@@ -153,7 +159,7 @@ Produce one **Marketing Automation Blueprint** containing:
 2. objective hierarchy, thesis, audience/intent/lifecycle/consent model, exclusions, non-goals, and ruin boundaries;
 3. full channel sweep plus selected capability portfolio, with inclusion/exclusion rationale, role, adapter authority, scale/spend/failure envelope, construction/proof/activation state, dormant contract, and handoffs;
 4. positioning/message translation and proof-backed claim registry references;
-5. organic/content/SEO/AEO/social/community/creator/PR/partner/store/lifecycle/referral/cross-promotion/update/reputation integration plan;
+5. organic/content/SEO/AEO/social/community/creator/PR/partner/store/lifecycle/referral/cross-promotion/update/reputation integration plan, including the PC-store launch calendar and communication program when selected;
 6. paid channel adapter and immutable bid/budget/spend envelope matrix;
 7. localized creative brief and production-request graph with message/variant
    lineage, provenance and rights requirements, accessibility, disclosures,

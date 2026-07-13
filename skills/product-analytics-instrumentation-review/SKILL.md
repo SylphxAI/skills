@@ -17,6 +17,14 @@ contracts, QA, dashboards, exposure measurement, backfill, and drift. Do not own
 product strategy, provider billing truth, marketing spend attribution control
 plane, experiment decisions, or feedback prioritization.
 
+Read `references/data-quality-and-metric-layer.md` when the request includes
+warehouse or semantic metrics, conflicting dashboards, dataset trust states,
+quality monitoring, backfill, certified metrics, access, or cross-source
+reconciliation. Product measurement quality belongs here; generic data
+platform access, pipeline engineering, AI dataset assurance, billing truth,
+and incident implementation remain with their canonical engineering, payment,
+and Doctrine owners.
+
 Use the shared artifact envelope only when composing with repository product
 artifacts. For a narrow audit, include only the contract surfaces needed by the
 declared decisions. A disabled SDK initializes nowhere, sends nothing, and
@@ -30,6 +38,8 @@ collects no identifier.
 2. Read `references/product-analytics-instrumentation-patterns.md`. Map the
    canonical journey and state transitions, including pending, committed,
    failed, recovered, suppressed, reverted, and support-corrected outcomes.
+   Load `references/data-quality-and-metric-layer.md` for warehouse, semantic
+   metric, quality, trust-state, reconciliation, or backfill work.
 3. Define an event namespace and semantic version; required/optional properties,
    types/enums/units, timestamps, IDs, causality, idempotency, actor/source,
    privacy class, retention, owner, and deprecation/migration.

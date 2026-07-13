@@ -51,9 +51,38 @@ Optimistic UI may show intent early, but it must distinguish pending from durabl
 
 ## Permission and education rules
 
-- Ask for permission at the value moment, not at launch merely because the platform permits it.
-- Separate required from optional access and show the real fallback before asking.
-- After denial, explain how to restore access without repeated nagging or a dead end.
+- Model the reachable state explicitly:
+  `feature-interest -> value-explained -> requested -> allowed | limited |
+  denied -> fallback | settings-recovery | skipped`. Reconcile permission
+  changes made outside the product; never assume the last in-app result remains
+  current.
+- Keep a permission inventory by platform, feature, permission/data class,
+  purpose, value moment, sensitivity, required/optional/background state,
+  fallback, settings path, privacy owner, and current distribution-review
+  handoff.
+- Ask at the value moment, not at cold start merely because a platform permits
+  it. A pre-prompt explains the concrete user benefit and actual data behavior;
+  it must not imitate the operating-system dialog or claim a grant before the
+  authoritative prompt returns.
+- Separate required access from optional enhancement and offer useful limited,
+  approximate, selected-item, foreground-only, manual-entry/upload, in-product,
+  or skip paths where the platform and product semantics permit them.
+- Treat background access, tracking, contacts, health, finance, child data,
+  precise location, microphone/camera, and persistent capture as elevated
+  privacy and trust surfaces. Copy must match the canonical collection,
+  retention, sharing, control, and disabled-state behavior.
+- After denial, restriction, parental/enterprise control, or a one-shot prompt,
+  explain the actual next choice and settings recovery without repeated
+  nagging, shame, a fake prompt loop, or a dead end. Do not deep-link to
+  settings when retrying in context is still authoritative.
+- Respect platform-specific capability states such as approximate location,
+  limited photo selection, notification channels, browser prompt states, and
+  desktop privacy controls; retrieve current platform behavior at execution.
+- Measure the permission journey only with approved privacy-safe events:
+  value moment, rationale, authoritative request/result, limited state,
+  fallback, settings open, externally changed state, and abandonment. Do not
+  fingerprint users or optimize grant rate without feature value and trust
+  countermetrics.
 - Use the lightest education that solves observed confusion: inline cue, example, contextual tip, walkthrough, or retained help.
 - Persist dismissal, completion, and snooze state. Expert users must be able to skip and later recover guidance.
 - Do not disguise upsells as education or use onboarding to compensate for broken information architecture.

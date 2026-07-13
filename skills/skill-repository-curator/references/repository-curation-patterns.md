@@ -1,23 +1,42 @@
 # Skill Repository Curation Patterns
 
-## The value test
+## The four separate verdicts
 
-Assess each skill in this order:
+Never compress these questions into one score or lifecycle label:
 
-1. **Recurring job** — Would a user intentionally ask for this work again?
-2. **Independent artifact** — Can the output be accepted without reopening a
-   broader sibling skill?
-3. **Knowledge delta** — Does the package contain decisions, checks, failure
-   modes, or procedures that a capable base agent would not reliably infer?
-4. **Routing boundary** — Can realistic positive, near-neighbour negative,
-   abstention, and compound prompts distinguish it?
-5. **Content quality** — Can an agent execute it without hidden context,
-   invented tools, or rereading the source material?
-6. **Maintenance reason** — Is there a present user, owner, or product reason
-   to keep the route accurate?
+1. **Job value** — Is this a recurring or strategically material job whose
+   mishandling loses product quality, revenue, retention, trust, safety, or
+   operating leverage?
+2. **Package value** — Does the current package contain non-derivable decisions,
+   state, checks, failure modes, or procedures, and can an agent execute it
+   without hidden context or invented capability?
+3. **Route value** — Would a user intentionally request this job, and can its
+   artifact be accepted independently from neighbouring skills?
+4. **Evidence state** — Is the route only authored or sponsored, or does exact
+   current routing, behavior, adoption, or authority evidence exist?
 
-A skill can be valuable before formal benchmarks exist, but its evidence state
-must remain honest. Presence in a repository is not adoption or behavior proof.
+A valuable job may have a weak generated package; rebuild it instead of
+publishing the shell or declaring the job worthless. A strong package may be a
+reference module rather than a separate route. A useful unproven candidate must
+remain labelled unproven. Presence is not adoption or behavior proof.
+
+## Responsibility model
+
+- **Owner** — supplies company strategy, protected experience, risk appetite,
+  and irreversible public or commercial decisions.
+- **Curator agent** — discovers the full corpus, understands meaning, researches
+  gaps, rewrites content, decides routine reversible dispositions, and delivers
+  the result without asking the owner to micromanage names.
+- **Repository** — keeps the canonical procedures, source lineage, decisions,
+  and history so future agents do not depend on chat memory.
+- **Validators** — check format, integrity, declared references, and delivery.
+  They do not understand semantic value and cannot prove absorption by path or
+  digest alone.
+
+For material batch changes, use a second agent as a loss reviewer. Give it raw
+hidden/rejected material and the proposed target, not the preferred conclusion.
+If the agents materially disagree, inspect sources or forward-test; preserve the
+uncertainty as a rewrite or investigation rather than forcing retirement.
 
 ## Content review
 
@@ -41,6 +60,12 @@ Common failure modes:
 - static volatile requirements presented as current authority;
 - a long SKILL.md that loads every edge case for every request;
 - references that repeat the entry point instead of adding depth.
+- a batch retirement reason that substitutes missing demand or proof for a
+  semantic review of the actual package;
+- a destination path or file hash presented as evidence that old mechanisms
+  are present;
+- default-branch-only inventory that silently loses closed unmerged proposals;
+- owner memory functioning as the only retrieval path for protected knowledge.
 
 ## Collision decisions
 
@@ -58,6 +83,21 @@ Use job and artifact—not topic—as the merge test.
 Before a merge, map every unique decision rule, state machine, failure mode,
 example, helper, and eval assertion to its destination. If that map is
 ambiguous, the merge is not ready.
+
+Use these dispositions precisely:
+
+| Finding | Disposition |
+| --- | --- |
+| Strong independent job, artifact, package, and boundary | Keep or publish as an honestly labelled candidate |
+| Valuable job, weak or generated current bytes | Rebuild lead |
+| Valuable mechanisms, same accepted artifact as a stronger owner | Absorb with mechanism-level mapping |
+| Valuable capability owned by another canonical project | Transfer; verify that owner covers it |
+| Plausible value or unresolved collision | Time-boxed investigation |
+| No non-derivable procedure after semantic inspection | Archive implementation |
+
+Retirement needs positive evidence for one of the last three rows. Missing
+usage, owner attention, or current benchmark proof is not positive evidence that
+the knowledge is generic.
 
 ## Repository shape
 
@@ -86,6 +126,11 @@ For each route, record:
 - content problems;
 - keep, rewrite, merge, retire, or investigate;
 - exact files and validation affected.
+
+Inventory active, incubating, retired, historical, and closed-unmerged sources.
+End with a false-negative section: valuable capability the proposed target may
+still hide, package quality versus topic value, reviewer disagreements, and the
+next source or forward test that would resolve them.
 
 End with a small collision map and an absorption map for actual merges. Keep
 delivery truth separate: content patched, checks passed, committed, merged,

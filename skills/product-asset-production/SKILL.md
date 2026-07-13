@@ -72,6 +72,10 @@ production state machine, asset-family matrix, deterministic capture method,
 localization/accessibility/rights controls, QA matrix, automation loop, and
 current-authority routes.
 
+Read `references/pc-store-launch-assets.md` when a Steam or other PC-store pack
+includes capsule/key art, screenshots, trailer, demo footage, creator/press
+materials, or platform/input/language claims that must match an exact build.
+
 ## Workflow
 
 1. Freeze the production or audit request: stable local request/artifact ID,

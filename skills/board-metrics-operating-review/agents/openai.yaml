@@ -1,0 +1,4 @@
+interface:
+  display_name: "Board Metrics Operating Review"
+  short_description: "Build evidence-backed board metrics"
+  default_prompt: "Use $board-metrics-operating-review to prepare or audit a source-backed board operating-metrics packet."

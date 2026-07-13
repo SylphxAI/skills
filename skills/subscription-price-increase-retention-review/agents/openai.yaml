@@ -1,0 +1,4 @@
+interface:
+  display_name: "Subscription Price Increase Retention Review"
+  short_description: "Protect retention through price changes"
+  default_prompt: "Use $subscription-price-increase-retention-review to plan or recover a retention-safe subscription price-change rollout."

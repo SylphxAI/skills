@@ -15,6 +15,26 @@ for the adapter record, eligibility rules, request state machine, current
 official platform findings, prohibited transitions, and tests. Refresh every
 platform rule from current first-party authority before execution.
 
+## Composition contract
+
+Begin a composed artifact with the
+[product artifact envelope](references/product-artifact-envelope.schema.json).
+Set `ownerSkill: review-solicitation-policy` and give the public request policy
+its own `artifactId`, `artifactVersion`, `artifactRevision`, and
+`artifactState`. The top-level artifact never self-hashes.
+
+Every typed input names the exact producer contract through
+`fulfillsHandoffId`. A draft input carries identity/revision/state but no digest;
+a sealed input additionally requires `artifactDigest` and
+`digestRule: sha256-exact-bytes`. Never invent a digest or resolve a moving
+“latest” alias.
+
+For a combined public-review/private-feedback request, produce two sibling
+artifacts with distinct identities and stable producer-owned `handoffId`s.
+They may share exact upstream product/value-event inputs. Add a one-way input
+edge only when one sibling truly consumes a contract emitted by the other;
+never create a cycle or merge their state machines.
+
 ## Workflow
 
 1. Record each platform, storefront, territory, audience, product surface,
@@ -41,7 +61,8 @@ platform rule from current first-party authority before execution.
    Analytics and store submission/rejection work to Distribution Readiness.
 7. For a combined public-review and private-feedback request, invoke
    `product-feedback-learning-loop` as a sibling and return two independently
-   accepted artifacts with explicit one-way evidence handoffs.
+   accepted, versioned artifacts with stable handoff IDs and explicit one-way
+   evidence handoffs where a real dependency exists.
 
 ## When not to use
 
@@ -69,6 +90,9 @@ platform rule from current first-party authority before execution.
   conversion, or platform submission.
 
 ## Output
+
+Artifact envelope, exact inputs, proof state, stable handoff outputs, and
+assumptions:
 
 Scope and current authority:
 

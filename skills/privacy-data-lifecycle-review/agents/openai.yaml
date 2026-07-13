@@ -1,0 +1,4 @@
+interface:
+  display_name: "Privacy Data Lifecycle Review"
+  short_description: "Design purpose-bound personal data lifecycle controls"
+  default_prompt: "Use $privacy-data-lifecycle-review to design or audit this product's personal-data purpose, collection, use, choice, sharing, retention, and change controls."
