@@ -1,4 +1,4 @@
 interface:
   display_name: "Interface Craft"
-  short_description: "Polish UI with craft details"
-  default_prompt: "Use $interface-craft to review this interface for tasteful, high-impact polish."
+  short_description: "Design, build, polish, and verify interfaces"
+  default_prompt: "Use $interface-craft to design or improve this bounded interface, implement requested changes, and verify its rendered states across responsive, input, accessibility, performance, and recovery conditions."

@@ -1,53 +1,78 @@
-# Interface Craft Rules
+# Interface Direction and Craft Rules
 
-Use these as candidate rules, not a checklist to force into every surface.
+Use this method to create a local visual language for one bounded interface or flow. Synthesize mature patterns; do not imitate a named product or manufacture a global brand system.
 
-## Forms
+## Start with meaning
 
-- `ic-form-1` — Programmatically connect every visible label to its input.
-- `ic-form-2` — Preserve IME composition; do not submit or transform text during composition events.
-- `ic-form-3` — Make Enter context-aware: submit single-field forms, add a line in multiline fields, select highlighted suggestions in comboboxes.
-- `ic-form-4` — Let long input remain editable; do not hide the caret or make overflow unrecoverable.
-- `ic-form-5` — Offer paste helpers only where paste is a frequent path, such as invite codes, URLs, tokens, or addresses.
+Before drawing or coding, record five facts:
 
-## Buttons and controls
+- **user and job** — who is here and what must become easier;
+- **surface job** — create, compare, configure, monitor, buy, recover, learn, play, or explore;
+- **density** — sparse focus, balanced product, dense workbench, or immersive media;
+- **trust posture** — calm, technical, friendly, clinical, playful, urgent, or premium;
+- **subject vocabulary** — the product’s real objects, materials, rituals, data, risks, and emotional stakes.
 
-- `ic-control-1` — Ensure the hit target is at least 44px where practical, even if the visual target is smaller.
-- `ic-control-2` — Guard irreversible or expensive actions against duplicate clicks.
-- `ic-control-3` — Use disabled states to explain the missing requirement, not just to block.
-- `ic-control-4` — Use pointer cursors for navigation and clickable controls consistently; do not rely on cursor alone.
+The product’s subject should shape the interface. If the same palette, layout, and hero could serve ten unrelated products unchanged, the direction is not resolved.
 
-## Motion
+## Direction decision table
 
-- `ic-motion-1` — Honor `prefers-reduced-motion` for non-essential animation.
-- `ic-motion-2` — Keep frequent interactions fast and quiet; reserve expressive motion for rare transitions.
-- `ic-motion-3` — Make animations interruptible; a user reversing an action should not wait for choreography.
-- `ic-motion-4` — Preserve spatial continuity: modals close toward origin, selected items move rather than teleport, shared elements keep identity.
-- `ic-motion-5` — Prevent font-weight or icon swaps from shifting layout.
+Choose one primary archetype and, only if useful, one modifier.
 
-## Typography and content
+| Archetype | Best fit | Design source of trust | Avoid |
+| --- | --- | --- | --- |
+| Precision product | settings, billing, operations, enterprise | alignment, labels, auditability, calm recovery | decorative gradients competing with tasks |
+| Expert workbench | code, AI, creation, logs, automation | dense scan paths, shortcuts, visible state | hiding commands behind spectacle |
+| Editorial authority | docs, reports, research, reading | typography, rhythm, figures, clear thesis | card grids that fracture reading |
+| Immersive interface | media, entertainment, game menus, launches | sensory focus, spatial continuity, decisive controls | sacrificing latency or legibility for mood |
+| Premium restraint | high-consideration, executive, luxury | proportion, space, narrow palette, precision | generic black-and-gold theatre |
+| Conversion clarity | onboarding, checkout, plans, booking | explicit value, proof, total, consequence, next step | hidden terms, fake urgency, competing CTAs |
+| Friendly utility | daily consumer, education, health, family | forgiving flows, warm clarity, useful empty states | childish tone or low contrast |
+| Data command center | analytics, finance, observability, admin | comparison, exceptions, filtering, drill-down | rainbow charts and metric wallpaper |
 
-- `ic-type-1` — Truncate paths and long identifiers from the middle when the start and end carry meaning.
-- `ic-type-2` — Keep brand names, product names, and user-provided capitalization exact.
-- `ic-type-3` — Match plural labels to the count.
-- `ic-type-4` — Prefer concrete action labels over vague labels such as "here" or "learn more".
+## Compact direction record
 
-## Feedback and status
+```text
+User / job / surface:
+Primary archetype + modifier:
+Design thesis:
+Hierarchy and content order:
+Density and layout grammar:
+Color roles:
+Type roles:
+Spacing / radius / elevation roles:
+Interaction and motion rhythm:
+One signature move and its meaning:
+Anti-patterns:
+Existing-system constraints:
+```
 
-- `ic-status-1` — Loading states should explain what is happening when wait time is noticeable.
-- `ic-status-2` — Success feedback should confirm the durable result, not merely disappear.
-- `ic-status-3` — Error text should say what failed, why if known, and what the user can do next.
-- `ic-status-4` — Use ambient status for background lifecycle changes; avoid modal interruptions for non-blocking updates.
+## Visual system rules
 
-## Navigation and browser shell
+- `ic-direction-1` — Put the surface’s primary job in the strongest position; group by user decision, not backend object.
+- `ic-direction-2` — Define semantic roles before exact values: canvas, surface, primary/secondary text, divider, action, focus, and status.
+- `ic-direction-3` — Create hierarchy with scale, weight, spacing, alignment, and content order before adding color, shadow, or animation.
+- `ic-direction-4` — Limit product UI to a coherent type set. Display may be expressive; body, forms, tables, and data remain fast to read.
+- `ic-direction-5` — Use whitespace to show relationships. Dense UI needs stronger alignment and scan paths; sparse UI needs precise proportion.
+- `ic-direction-6` — Give each semantic action one visual rank. Multiple primary buttons on one decision plane are a design conflict.
+- `ic-direction-7` — Choose one memorable detail tied to product meaning. A signature move may be a spatial model, data treatment, material, transition, or interaction—not random ornament.
+- `ic-direction-8` — Reuse existing tokens and components first. Add the smallest local role needed; do not fork a second global system inside one screen.
+- `ic-direction-9` — Use realistic content lengths, units, names, and values. Lorem ipsum and tidy fake data conceal hierarchy and overflow defects.
+- `ic-direction-10` — Remove any element that does not improve meaning, comprehension, trust, conversion, feedback, access, or identity.
 
-- `ic-shell-1` — Preserve meaningful UI state in the URL when it supports sharing, reload, back/forward, or support debugging.
-- `ic-shell-2` — Prevent accidental browser navigation only inside surfaces with intentional horizontal swipes.
-- `ic-shell-3` — Keep active navigation visible when content scrolls.
-- `ic-shell-4` — Align theme color, favicon, and app icon treatment with the active theme where the platform supports it.
+## Generic-default rejection checklist
 
-## Empty states and first-run
+Revise the direction when any answer is yes:
 
-- `ic-empty-1` — Empty states should tell the user what belongs here and offer the next useful action.
-- `ic-empty-2` — Use examples that match real user vocabulary; avoid lorem ipsum and fake metrics.
-- `ic-empty-3` — First-run guidance should be dismissible, recoverable, and not block expert users.
+- Is every section a rounded card because it was easy to generate?
+- Is the palette a familiar purple gradient, cream-and-terracotta set, black-and-neon scheme, or glass stack without product meaning?
+- Are blobs, gradients, numbered labels, sparkles, icons, or mock metrics doing the work of hierarchy?
+- Does the opening statement sound like a slogan that could describe any product?
+- Was motion added because it looks modern rather than because it explains change?
+- Was a famous interface copied instead of extracting density, navigation, hierarchy, or interaction principles?
+- Did local polish contradict the established product grammar without an explicit redesign decision?
+
+When using external references, write the extracted principle—such as “dense operational scan path” or “media-first spatial continuity”—and never copy proprietary colors, type, copy, imagery, layout, or identity.
+
+## Restraint gate
+
+Keep a craft detail only if it helps the user complete or understand the task, preserves every applicable input and accessibility path, fits the surface’s frequency and risk, stays inside performance budgets, and can be verified through an observable state. Frequent actions should be faster and quieter than rare milestones. High-risk surfaces should be clearer and calmer than celebratory ones.

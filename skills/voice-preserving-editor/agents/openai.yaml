@@ -1,0 +1,4 @@
+interface:
+  display_name: "Voice-Preserving Editor"
+  short_description: "Natural voice without changing the facts"
+  default_prompt: "Use $voice-preserving-editor to rewrite this in a natural voice while preserving every fact, citation, caveat, and technical term."
