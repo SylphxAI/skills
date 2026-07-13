@@ -14,12 +14,13 @@ the declared final game to a conventional MVP.
 Own cohort/market design, exposure stages, hypotheses, telemetry, economy/live
 ops test schedule, acquisition/creative cells, pass/watch/fail predicates,
 decision authority, and scale/hold/pause/withdraw evidence. Do not own the game
-design, channel submission, full marketing control plane, or provider payment
+   design, channel submission, full marketing operating system, or provider payment
 system.
 
-Use the [shared product artifact envelope](references/product-artifact-envelope.schema.json)
-and digest-pinned inputs from Game Design, Economy, Distribution, Marketing,
-Analytics, Payment, Refund, and Support owners.
+Use a draft artifact ID and explicit inputs from Game Design, Economy,
+Distribution, Marketing, Analytics, Payment, Refund, and Support owners. A
+deterministic delivery process may seal serialized versions and digests later;
+never invent a digest or treat a draft as proof.
 
 ## Agent-first invariant
 
@@ -32,8 +33,10 @@ through bounded gates. Unknown data never authorizes unbounded scale.
 
 ## Workflow
 
-1. Define game/version/artifact digests, genre/audience/age modes, target global
-   promise, regions/platforms, acquisition sources, monetization, cohort
+1. Define traceable game, build, content, economy, and policy identities—draft
+   IDs during design and observed exact values only during exposure—plus
+   genre/audience/age modes, target global promise, regions/platforms,
+   acquisition sources, monetization, cohort
    horizon, budget/spend caps, and irrecoverable harm boundaries.
 2. Read `references/game-soft-launch-patterns.md`. Write falsifiable hypotheses
    for comprehension, delight/mastery, FTUE, core/meta loops, progression,
@@ -73,7 +76,7 @@ global compliance or product-fit verdict.
 - Use `app-store-distribution-readiness` for submission assets, certification,
   reviewer access, staged release mechanics, and exact live-channel evidence.
 - Use `marketing-automation-blueprint` for the complete multi-channel creative,
-  organic, lifecycle, paid-spend, attribution, and shutdown control plane.
+  organic, lifecycle, paid-spend, attribution, and shutdown operating system.
 - Use `launch-readiness-review` for a cross-domain final admission verdict when
   the soft-launch learning program is already complete.
 

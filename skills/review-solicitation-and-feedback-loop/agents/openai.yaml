@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review Solicitation & Feedback Loop"
-  short_description: "Design authentic reviews and product learning"
-  default_prompt: "Use $review-solicitation-and-feedback-loop to design the platform-specific public review, universal private feedback, support, telemetry, and product-learning system."

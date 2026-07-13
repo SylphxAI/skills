@@ -5,7 +5,7 @@ description: "Design or critically review a complete autonomous marketing operat
 
 # Marketing Automation Blueprint
 
-Build the complete global marketing capability portfolio now, then let a bounded autonomous control plane decide what to publish, spend, scale, hold, pause, or retire from current product truth, consent, causal evidence, economics, platform authority, quality, and trust.
+Design the complete relevant global marketing capability portfolio now, then let a bounded autonomous control plane decide what to publish, spend, scale, hold, pause, or retire from current product truth, consent, causal evidence, economics, platform authority, quality, and trust.
 
 ## Objective
 
@@ -15,15 +15,15 @@ Followers, impressions, clicks, CTR, opens, installs, CPI, platform-attributed c
 
 ## Atomic boundary
 
-This skill owns one independently useful artifact: the **Marketing Automation Blueprint**, including the multi-channel desired-state and spend control plane. It consumes product promise, claims, prices, entitlements, offer/grant semantics, release state, and specialist campaign artifacts; it may translate them for a channel but cannot invent or overwrite them.
+This skill owns one independently useful artifact: the **Marketing Automation Blueprint**, including the multi-channel desired-state, creative briefs, and spend operating policy. It consumes product promise, claims, prices, entitlements, offer/grant semantics, a planning Product Program Manifest revision when present, and specialist campaign artifacts; it may translate them for a channel but cannot invent or overwrite them. Exact rendered product media belongs to `product-asset-production`.
 
 One campaign, listing, referral, notification system, review prompt, positioning decision, or public-signal research question remains with its specialist. Add a new skill only when a distinct recurring user trigger and independently acceptable artifact exists; use references for inseparable capability modules.
 
 ## Agent-first invariant
 
-Assume autonomous production capacity is elastic. Build all legitimate owned, earned, paid, lifecycle, creator, partner, store, referral, cross-promotion, measurement, creative/localization, fraud, privacy, and control-plane capabilities to a production-shaped scale target now. Human effort, missing users, unknown demand, or speculative ROI may not veto construction or leave later automation, localization, channel, SDK, hardening, or scale debt.
+Assume autonomous production capacity is elastic. Evaluate the full owned, earned, paid, lifecycle, creator, partner, store, referral, cross-promotion, measurement, creative/localization, fraud, privacy, and control-plane portfolio. Build every capability selected by the product, audience, channel mechanism, or explicit program target to a production-shaped scale target now; record why unselected channels are inapplicable. Human effort, missing users, unknown demand, or speculative ROI may not shrink the selected target or leave later automation, localization, SDK, hardening, or scale debt.
 
-Capability construction, campaign activation, and paid spend are different states. Every channel adapter can be complete and dormant. Unknown ROI does not block construction; stale or untrustworthy telemetry blocks unbounded spend. Each live channel starts inside a signed canary and can scale only within immutable authority, consent, claim, budget, causal-evidence, saturation, trust, and safety envelopes.
+Capability selection, construction, campaign activation, and paid spend are different decisions. Every selected channel adapter can be complete and dormant. Unknown ROI does not block construction of a selected capability; stale or untrustworthy telemetry blocks unbounded spend. Each live channel starts inside a bounded canary and can scale only within declared authority, consent, claim, budget, causal-evidence, saturation, trust, and safety envelopes.
 
 Use explicit shutdown states. `dormant-never-activated` means no token, API call, tracking, audience export, job, publish, bid, budget, spend, or undeclared data flow. `paused-or-withdrawing` permits only bounded reconciliation, revocation, billing/readback, correction, and evidence authority—never new audience, creative, delivery, bid, or spend. `withdrawn-verified` requires provider-observed zero delivery/spend and required data revocation before credentials and jobs can be removed and the adapter becomes dormant.
 
@@ -31,7 +31,27 @@ Build breadth is cheap; audience attention, trust, rights, platform accounts, ex
 
 ## Composition contract
 
-Begin with an envelope conforming to [`references/product-artifact-envelope.schema.json`](references/product-artifact-envelope.schema.json). Reference product truth, claim proof, offer, release, campaign, listing, referral, review/feedback, and measurement artifacts by exact ID/version/digest. A marketing candidate cannot silently fork those facts.
+When orchestrated, Marketing consumes an immutable planning revision and
+remains upstream of the observed-state Product Program Manifest revision:
+
+```text
+App/Game Design + commercial truth [+ Product Program Manifest planning revision N]
+-> Marketing Automation Blueprint and creative briefs
+-> Product Asset Production when exact rendered media is required
+-> channel execution
+-> Product Program Manifest observed-state revision N+1 when orchestrated
+```
+
+Consume exact product truth and, when orchestrated, a sealed planning manifest
+revision containing release targets and stable handoff IDs. Never consume the
+later observed-state revision that indexes Marketing. Follow the [`product
+artifact envelope`](references/product-artifact-envelope.schema.json):
+top-level artifacts use `artifactVersion`, `artifactRevision`, and
+`artifactState` and never self-hash; every input names the exact producer
+contract through `fulfillsHandoffId`; a sealed input reference additionally
+requires `artifactDigest` and `digestRule: sha256-exact-bytes`, while a draft
+input reference contains neither. Never invent them or resolve a moving
+“latest” revision.
 
 ## Resource guide
 
@@ -49,8 +69,12 @@ Read all references for a complete marketing system. For a bounded review, load 
 2. Label `given`, `observed`, `assumed`, `hypothesis`, and `decision`. Separate platform-reported attribution, observed correlation, controlled incrementality, modeled contribution, and strategic judgment.
 3. Define audience job/intent/lifecycle state, exclusions, consent, age/territory/sensitive-category policy, expected recipient value, message, channel role, and natural frequency before content generation or spend.
 4. Sweep website/landing, SEO/AEO, store, content, social, community, creator/influencer, PR, partner/affiliate, referral, cross-promotion, lifecycle CRM, reputation, launch, paid search/social/display/video, creative, experimentation, attribution, incrementality, MMM, fraud, brand safety, and operations.
-5. Give every capability a production-shaped target, API/portal authority record, numeric throughput/spend/failure envelope, verified slices, dormant-state proof, events/cost ledger, policy, canary, rollback/reconciliation, and maintenance loop.
-6. Treat every claim and creative as a versioned artifact with provenance, rights, locale, accessibility, product/release compatibility, AI/sponsorship disclosure, expiry, and live readback.
+5. Give every selected capability a production-shaped target, API/portal authority record, numeric throughput/spend/failure envelope, verified slices, dormant-state proof, events/cost ledger, policy, canary, rollback/reconciliation, and maintenance loop. Record a mechanism-based reason for each channel excluded after the full sweep.
+6. Treat every claim and creative brief as a versioned artifact with provenance,
+   rights requirements, locale, accessibility, product/release compatibility,
+   AI/sponsorship disclosure, expiry, and acceptance tests. Marketing owns the
+   campaign brief, concept, message, variant hypothesis, and selection intent;
+   `product-asset-production` owns exact captures and rendered files.
 7. Consume the product's Durable Investment Contract. Never threaten loss of creations, history, identity, relationships, earned value, portability, export, or account access to drive renewal, return, referral, review, share, or purchase—even when the underlying expiration/downgrade behavior is technically true. Communicate state neutrally and preserve the product's recovery/data-transition contract.
 8. Use product-native sharing, referrals, reputation, update education, and cross-promotion only when both sender and recipient receive real value. Raw shares, installs, messages, reviews, or opens are not success.
 9. Keep public review solicitation separate from private feedback and support. Platform review policy is adapter-specific; never sentiment-gate, star-steer, suppress unhappy users, reward ratings, or ask inside a platform that forbids it.
@@ -69,9 +93,9 @@ Capture product artifact IDs, user/job, category and alternatives, proof-backed 
 
 Create intent/lifecycle states, eligibility/exclusions, age/territory/sensitive-category treatment, first-party identity/consent, frequency/quiet-hour policy, suppression, deliverability, and recipient-value contract.
 
-### 3. Build complete channel and creative portfolio
+### 3. Build the selected channel and creative portfolio
 
-Map the role and handoff for owned, earned, paid, store, creator, community, partner, referral, lifecycle, reputation, cross-promotion, update education, SEO/AEO, and launch. Build vendor/channel adapters and localized creative factory now; choose activation from evidence and policy.
+Evaluate the role and handoff for owned, earned, paid, store, creator, community, partner, referral, lifecycle, reputation, cross-promotion, update education, SEO/AEO, and launch. Select channels from product truth, audience mechanism, recipient value, authority, and program target; build every selected adapter plus its localized brief and production-request supply now, route exact files through `product-asset-production`, then choose activation from evidence and policy.
 
 ### 4. Define measurement and economics
 
@@ -102,9 +126,12 @@ unbounded spend; it never justifies self-attested performance.
 
 Reject or redesign an output that:
 
-- cuts channel, creative, measurement, localization, fraud, or automation construction because there are no users, uncertain demand, conventional staffing cost, or speculative ROI;
+- cuts a selected channel, creative, measurement, localization, fraud, or automation capability because there are no users, uncertain demand, conventional staffing cost, or speculative ROI;
 - enables every channel or spends broadly merely because adapters are built;
 - invents product claims, prices, entitlement, offer, release, customer proof, endorsements, metrics, or availability;
+- invents a digest, consumes an observed-state Product Program Manifest revision
+  that indexes Marketing, omits stable handoff IDs, resolves “latest” aliases,
+  back-references a same-revision consumer, or creates a circular graph;
 - threatens loss of creations, history, identity, relationships, earned value, portability/export, or unrelated account access to drive renewal, return, referral, review, share, or purchase;
 - optimizes clicks, installs, opens, followers, CPI, or platform ROAS without incremental retained-value economics and countermetrics;
 - treats explicit platform prohibition, deceptive treatment, unlawful data, undisclosed sponsorship, fake review, spam, child targeting, or policy evasion as a priced grey-area canary;
@@ -122,13 +149,15 @@ Reject or redesign an output that:
 
 Produce one **Marketing Automation Blueprint** containing:
 
-1. typed artifact envelope and consumed product/claim/offer/release artifact registry;
+1. draft artifact identity or sealed envelope and consumed product/claim/offer/release registry, with digests only for sealed inputs;
 2. objective hierarchy, thesis, audience/intent/lifecycle/consent model, exclusions, non-goals, and ruin boundaries;
-3. complete channel capability portfolio with role, adapter authority, scale/spend/failure envelope, construction/proof/activation state, dormant contract, and handoffs;
+3. full channel sweep plus selected capability portfolio, with inclusion/exclusion rationale, role, adapter authority, scale/spend/failure envelope, construction/proof/activation state, dormant contract, and handoffs;
 4. positioning/message translation and proof-backed claim registry references;
 5. organic/content/SEO/AEO/social/community/creator/PR/partner/store/lifecycle/referral/cross-promotion/update/reputation integration plan;
 6. paid channel adapter and immutable bid/budget/spend envelope matrix;
-7. localized creative supply graph with provenance, rights, accessibility, disclosures, fatigue, variants, approval gates, upload and live readback;
+7. localized creative brief and production-request graph with message/variant
+   lineage, provenance and rights requirements, accessibility, disclosures,
+   fatigue, acceptance gates, and handoffs to `product-asset-production`;
 8. event/cost/identity/dedupe/attribution/experiment/incrementality/MMM/economics measurement plan;
 9. privacy/consent/age/territory/sensitive-category, fraud/IVT, brand safety, reputation, deliverability, complaint/refund/support guardrails;
 10. desired-state manifests, role/authority separation, canary/promotion/pause policy, reconciliation, incident and recovery model;
@@ -142,10 +171,21 @@ Produce one **Marketing Automation Blueprint** containing:
 - `promotion-campaign-review` owns one offer, event, update-reward, cross-promotion, or lifecycle campaign.
 - `referral-loop-review` owns qualification, attribution, pending grants, reversals, and referral fraud.
 - `store-listing-optimization` owns listing metadata/creative sequence/conversion; `app-store-distribution-readiness` owns submission/release evidence.
-- `review-solicitation-and-feedback-loop` owns public review eligibility, private feedback, support routing, review ingestion, and product close-loop.
+- `product-asset-production` owns deterministic product capture, localization,
+  exact rendered media, rights/provenance, accessibility variants, and file QA.
+- `review-solicitation-policy` owns platform-specific authentic public review
+  eligibility and request state; `product-feedback-learning-loop` owns universal
+  private feedback, review ingestion, support/product routing and close-loop.
 - `notification-strategy-review` owns notification channel/copy/frequency semantics; `promotion-campaign-review` owns one dormant-user recovery campaign; `market-research-synthesis` owns source-bounded voice-of-customer evidence.
 - `app-design-blueprint`/`game-design-blueprint` own product-side share, cross-promotion, notification, review, and lifecycle surfaces.
 
 ## Completion check
 
-The blueprint is executable only when every channel and creative capability can be built, tested, disabled at zero cost, activated through an exact signed state, reconciled to observed platform and cost truth, bounded by independent spend/consent/claim/safety gates, measured for incrementality and retained value, and automatically paused/recovered. It must remain impossible for marketing to invent product truth or approve its own authority.
+The blueprint is executable only when the full channel landscape has been
+assessed, every selected channel and creative brief has a complete target and
+stable production handoff, and channel operation can be disabled at zero cost,
+activated through exact versioned state, reconciled to observed platform/cost
+truth, bounded by spend/consent/claim/safety gates, measured for incrementality
+and retained value, and automatically paused/recovered. It must remain
+impossible for Marketing to invent product truth, render a competing product
+media source, or approve its own authority.

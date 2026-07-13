@@ -1,6 +1,6 @@
 ---
 name: promotion-campaign-review
-description: Design or audit one promotion system—offer, discount, update benefit, cross-promotion, win-back, lifecycle push, app/game event, referral push, launch or seasonal campaign—across objective, audience, deterministic eligibility, user+offer cooldowns, placement, transparent message, economics, authoritative fulfillment, reversal, fraud, support, experiments, automation, and shutdown. Use for one campaign artifact; use Marketing Automation for the whole channel/spend control plane.
+description: Design or audit one promotion system—offer, discount, update benefit, cross-promotion, win-back, lifecycle push, app/game event, referral push, launch or seasonal campaign—across objective, audience, deterministic eligibility, user+offer cooldowns, placement, transparent message, economics, authoritative fulfillment, reversal, fraud, support, experiments, automation, and shutdown. Use for one campaign artifact; use Marketing Automation for the whole channel and spend operating system.
 ---
 
 # Promotion Campaign Review
@@ -16,9 +16,10 @@ economics, fulfillment/reversal, channel handoffs, fraud, support, experiment,
 and shutdown. Do not own the whole marketing system, payment provider ledger,
 referral program, store listing, or game/app design.
 
-Begin with the [shared product artifact envelope](references/product-artifact-envelope.schema.json).
-Consume payment, refund, economy, referral, notification, analytics, marketing,
-and product artifacts by ID/version/digest.
+Use a draft artifact ID. Consume payment, refund, economy, referral,
+notification, analytics, marketing, and product decisions by owner and explicit
+contract. Let deterministic delivery tooling seal versions/digests later; never
+invent them during design.
 
 ## Agent-first invariant
 
@@ -60,13 +61,44 @@ campaigns perform zero sends, SDK work, grants, or data collection.
 Retrieve current store/payment/promotion, advertising, notification, consent,
 child/age, referral, review/rating, pricing, tax, territory, and channel policy
 for the exact campaign. Explicit prohibitions and missing authority are hard
-floors; ambiguous admissible risk may use capped reversible tests with expected
-loss/CVaR and kill switches.
+floors. Genuinely ambiguous but admissible behavior may use the bounded risk
+contract below; known policy violations, deception, consent bypass, child harm,
+or unlawful behavior are not “grey experiments.”
+
+## Bounded risk-reward contract
+
+Use arithmetic to compare admissible options without pretending fat-tail or
+irreversible harm is an ordinary average cost:
+
+```text
+expected_net_value
+= P(success) * incremental_retained_contribution
+- sum(P(loss_i) * direct_and_secondary_loss_i)
+- trust_and_reputation_cost
+- recovery_and_opportunity_cost
+
+constraints:
+maximum_loss <= declared_ruin_budget
+CVaR_at_selected_confidence <= declared_risk_budget
+exposure <= blast_radius_cap
+time_to_detect + time_to_contain <= recovery_window
+```
+
+Record probability ranges and sensitivity rather than false precision. Include
+platform/account action, customer remedy, refunds, support, reputation,
+cannibalization, reversibility, detection lag, rollback limits, and opportunity
+cost. Unknown material facts widen the loss range; they do not become zero.
+
+An experiment may proceed only when the behavior is not explicitly prohibited,
+the customer proposition is truthful, consent and remedies remain intact,
+exposure/spend are capped, stop signals are observable, and recovery has been
+tested. A small company’s ability to correct quickly lowers some recovery cost;
+it does not erase platform-account, legal, child-safety, privacy, or trust ruin.
 
 ## When not to use
 
 - Use `marketing-automation-blueprint` for the full organic/lifecycle/paid,
-  creative, attribution, spend, reputation, and shutdown control plane.
+  creative, attribution, spend, reputation, and shutdown operating system.
 - Use `referral-loop-review` for persistent inviter/invitee qualification,
   attribution, pending grants, reversals, fraud, and support.
 - Use `store-listing-optimization` when the artifact is one channel's metadata,
@@ -103,9 +135,11 @@ Return one typed Promotion Campaign Contract with:
 4. exposure and fulfillment/reversal/compensation state machines and ledger;
 5. fraud, refund/dispute, restore/migration, support, and reconciliation rules;
 6. event schema, causal experiment, economics and trust countermetrics;
-7. scale/hold/pause/withdraw, provider end/cap, kill switch, live readback, and
+7. expected-value/CVaR record where uncertainty is material, plus
+   scale/hold/pause/withdraw, provider end/cap, kill switch, live readback, and
    closeout evidence;
-8. digest-pinned specialist handoffs.
+8. specialist handoffs with draft IDs, owners, required inputs/outputs,
+   acceptance questions, and no fabricated proof.
 
 Complete only when every eligible/ineligible impression, qualification, grant,
 reversal, and withdrawal is explainable, bounded, replayable, and support-safe.

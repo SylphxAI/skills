@@ -18,7 +18,7 @@ hypothesis
 -> production-proven
 ```
 
-`design-validated` is not shipped code. `implementation-verified` is not scale proof. `scale-verified` requires exact-candidate measurement against the declared numeric envelope. `production-proven` requires deployed candidate identity and live readback.
+`design-validated` is not shipped code. `implementation-verified` is not scale proof. `scale-verified` requires representative measurement against the declared numeric envelope. `production-proven` requires released identity and observed live behavior.
 
 ## 2. KPI tree
 
@@ -34,6 +34,8 @@ Define one north-star outcome only if it represents user value, then use diagnos
 | Commercial | intent, purchase, fulfillment, retained net value | refund, chargeback, regret, concentration, support |
 | Quality | startup/input/sync/crash/offline/recovery | battery, thermal, data loss, low-end failure |
 | Trust | consent, export/delete, support resolution, appeal | complaints, opt-out, enforcement reversal |
+
+Use conditional branches only for selected capabilities. A narrow utility with commerce, collaboration, social spread, or notifications marked `not-applicable` does not acquire those systems to populate a KPI tree; value, quality, accessibility, privacy, safety, and recovery evidence still cover the selected app.
 
 Metric contracts need name, purpose, source, event/schema version, identity and consent behavior, numerator/denominator, exclusions, owner, freshness, tests, and response action. A dashboard without an action contract is observation, not automation.
 
@@ -64,34 +66,36 @@ RAV = E[incremental durable user value + contribution + option value]
 
 Record uncertainty and correlated portfolio blast radius. Platform account loss, credential compromise, child harm, unlawful data use, and irreversible user-data loss are not linear per-campaign costs.
 
-Human development effort and missing ROI evidence do not reduce construction scope. Real external spend, scarce runtime resources, user attention, authority, and ruin probability still constrain activation.
+Human staffing, calendar, implementation cost, missing users, uncertain demand, and speculative or missing ROI evidence do not reduce selected construction scope. They also do not select an irrelevant capability. Real external spend, scarce runtime resources, user attention, authority, and ruin probability still constrain activation.
 
-## 4. Autonomous build graph
+## 4. Implementation and validation handoff
 
 Produce:
 
-- product artifact envelope and canonical state owners;
-- full target architecture and versioned contracts;
-- dependency DAG, parallel lanes, disjoint file/schema/service ownership and collision points;
-- verified vertical slices with exact candidate identity;
-- migration/compatibility plan using expand/contract where needed;
-- contract/property/model/e2e/accessibility/localization/security/load/soak/chaos/recovery tests;
-- feature/capability states and dormant-state budget proof;
-- GitOps/merge-queue path, signed provenance, canary and live readback;
-- rollback for reversible code/config, compensating transitions for committed facts, and forward-fix for irreversible state.
+- draft artifact identity or sealed envelope, canonical state owners, and an acyclic dependency graph;
+- a complete sweep with one disposition and exact reason per capability;
+- complete target behavior, versioned interfaces, automation, and acceptance criteria for every `integrate-now` capability, plus exact integration and proof for `reuse-scale-ready`;
+- dependency order, collision points, and typed handoffs to the owning implementation skills or projects;
+- small end-to-end slices that verify the riskiest product assumptions without reducing selected final scope;
+- migration and compatibility constraints for existing users, data, integrations, and clients;
+- a proportionate validation matrix covering behavior, usability, accessibility, localization, privacy, security, performance, failure, and recovery;
+- selected-capability availability, contract-ready dormant behavior, degradation, and recovery expectations;
+- release-observation requirements and the user-visible rollback, compensation, or forward-fix behavior for failure.
 
-No agent may be sole proposer, validator, promoter, and watchdog. Use scoped short-lived authority; gates and hard floors remain outside candidate mutation authority.
+Never invent a digest for a draft or update an upstream blueprint solely to back-reference a downstream specialist. Specialists consume the blueprint directly. When shared orchestration context is required, they may also consume an immutable planning Product Program Manifest revision N; they never mutate or back-reference that revision. Observed-state Product Program Manifest revision N+1 may then index the specialist outputs and their immutable inputs. This revision direction preserves an acyclic graph.
+
+Do not present design intent or self-reported implementation status as observed proof. The handoff must name the evidence needed from the owning implementation and release surfaces, while leaving their CI, branch, deployment, and infrastructure mechanics to those owners.
 
 ## 5. Continuous product-learning loop
 
 ```text
-explicit feedback + support + public reviews + behavior + quality + commercial + safety
+selected and available feedback + support + reviews + behavior + quality + commercial + safety
 -> consent-aware normalization and privacy redaction
 -> taxonomy, dedupe, cohort/context enrichment and anomaly detection
 -> evidence cluster and causal hypothesis
 -> candidate issue/design/config/content/model change
 -> reproduce/simulate/adversarially test
--> independent validation and exact-candidate gates
+-> evidence review against declared acceptance gates
 -> bounded canary/holdout
 -> promote, hold, degrade, compensate, or rollback
 -> live readback and customer close-loop
@@ -104,7 +108,7 @@ Do not let a model optimize its own evaluation metric, rewrite consent/entitleme
 
 ## 6. App availability policy
 
-App availability is deterministic and authority-bounded, not an engagement manipulation controller.
+Only `integrate-now` and `reuse-scale-ready` capabilities enter the app availability controller. `contract-ready`, `not-applicable`, and `floor-blocked` remain absent from the user experience and runtime rather than masquerading as gated integrated features. Selected app availability is deterministic and authority-bounded, not an engagement manipulation controller.
 
 ```text
 immutable law/safety/consent/child floors
@@ -115,7 +119,7 @@ immutable law/safety/consent/child floors
 -> available or degraded
 ```
 
-Presentation may adapt to context, skill, device, and user choice, but cannot deny capability. Require monotonic policy versions, atomic snapshots, cross-device consistency, safe missing-signal defaults, last-known-good behavior, audit/replay, degradation, and a kill switch.
+Presentation may adapt to context, skill, device, and user choice, but cannot deny a selected capability through level, tenure, streak, churn risk, spend, arbitrary onboarding completion, or engagement score. Require monotonic policy versions, atomic snapshots, cross-device consistency, safe missing-signal defaults, last-known-good behavior, audit/replay, degradation, and a kill switch.
 
 ## 7. Validation stages
 
@@ -124,7 +128,7 @@ Presentation may adapt to context, skill, device, and user choice, but cannot de
 | Contract/model | state completeness, invariants, dangerous interactions | usability or value |
 | Prototype | workflow/comprehension hypothesis | production quality or retention |
 | Exact slice | real integration, migration and recovery | whole-product coherence |
-| Full candidate | cross-system behavior, platform quality, scale/failure envelope | market success |
+| Full candidate | selected cross-system behavior, platform quality, scale/failure envelope | market success |
 | User study/canary | comprehension, usefulness, trust, causal movement in cohort | universal transfer |
 | Production readback | live candidate behavior inside observed envelope | future conditions |
 
@@ -133,23 +137,25 @@ For every stage state hypothesis, artifact, cohort/fixture, pass/watch/fail pred
 ## 8. Complete blueprint template
 
 ```text
-1. Artifact envelope and evidence ledger
+1. Draft artifact identity or sealed envelope and evidence ledger
 2. User/job/context and falsifiable promise
 3. Product objects, state authorities, workflows and information architecture
 4. First-value beat map and friction budget
 5. Capability portfolio
-   - build / availability / presentation / proof
-   - scale/failure envelope and exact proof
-   - dormant-state budget, migrations, telemetry, recovery
-6. Recurring-value and Durable Investment Contract
-7. Collaboration/social/sharing and Cross-Promotion Placement Contract
-8. Commerce integration and Refund Consequence Contract
-9. Release Benefit, review, private feedback and continuous-learning handoffs
-10. HTML5/mobile/tablet/desktop/input/offline/sync matrix
-11. Accessibility, age modes, i18n/culturalization, security/privacy and SDK matrix
-12. Autonomous build DAG, role separation, exact gates and maintenance loop
+   - disposition and exact reason
+   - complete selected target / build / availability / presentation / proof
+   - scale/failure envelope and exact proof for selected capabilities
+   - zero-cost boundary, dormant state, migrations, telemetry, recovery as applicable
+6. Selected recurring-value, Durable Investment and Experience Expression contracts
+7. Collaboration/social/sharing disposition and, when selected, Cross-Promotion Placement Contract
+8. Monetization disposition and, when selected, Value Exchange, commerce integration and Refund Consequence contracts
+9. Release Benefit, review, private feedback and continuous-learning dispositions and conditional handoff requests
+10. Selected HTML5/mobile/tablet/desktop/input/offline/sync matrix and dispositions for unselected adapters
+11. Accessibility, applicable age modes, i18n/culturalization, security/privacy and selected-SDK matrix
+12. Implementation dependency DAG, typed handoffs, validation evidence and maintenance automation
 13. KPI/event/experiment contracts and countermetrics
-14. Specialist artifact manifest
+14. Specialist handoff-request manifest; exact inputs bind
+    `fulfillsHandoffId`, with digest fields only for sealed inputs
 15. Validation roadmap, hard blockers, unresolved hypotheses and next proofs
 ```
 
@@ -161,12 +167,12 @@ Score 0 missing/contradictory, 1 plausible/incomplete, 2 evidence-labelled/testa
 2. objects, workflows, IA and recovery;
 3. first value and friction;
 4. recurring value and durable investment;
-5. capability completeness and correct app availability semantics;
-6. commerce/social/feedback integration and specialist boundaries;
-7. HTML5/platform/input/offline quality;
-8. accessibility/i18n/privacy/age/low-end quality;
+5. exhaustive sweep, defensible dispositions, selected capability completeness and correct app availability semantics;
+6. selected commerce/social/feedback integration, exact non-applicable reasons and specialist boundaries;
+7. selected HTML5/platform/input/offline quality and defensible adapter dispositions;
+8. accessibility/i18n/privacy/applicable-age/low-end quality;
 9. metrics, evidence and causal validation;
-10. scale-ready autonomous build, maintenance, recovery and handoffs.
+10. scale-ready implementation, maintenance, recovery and handoffs.
 
 A forward-test candidate should reach at least 17/20 with no hard-gate failure. The rubric evaluates the blueprint, not whether the product will succeed.
 

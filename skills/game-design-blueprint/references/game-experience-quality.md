@@ -66,7 +66,7 @@ event class -> intensity -> colour/shape/motion -> animation timing -> camera
 
 ## 3. Cross-platform capability design
 
-Cross-platform readiness is a scale-ready capability architecture built in the initial program plus automated per-platform exposure. It is not one responsive canvas, and automatically staged public exposure must not be misread as permission to postpone requested platform adapters.
+Cross-platform readiness is shared game semantics plus complete adaptations for every selected platform. It is not one responsive canvas, and staged public exposure must not be misread as permission to postpone a requested adapter.
 
 Keep game semantics and durable state shared where possible; adapt presentation, input, packaging, lifecycle, commerce, social services, privacy, and certification through explicit platform capabilities.
 
@@ -80,7 +80,7 @@ Keep game semantics and durable state shared where possible; adapt presentation,
 | Commerce | IAP/ads/storefront rules | premium/DLC/MTX/market expectations | platform commerce and age controls | payment, tax, browser/store policy |
 | Social | contacts/privacy, mobile networks | invites, presence, anti-cheat, chat | platform friends/parties/cross-network policy | link sharing, identity, moderation |
 
-`platform-1` — Choose a lead platform as the experience and integration spine, then build every requested platform adapter, lifecycle, input/UI mode, service boundary, performance tier, and test path to scale now. Define parity and acceptable divergence; let versioned readiness, service-health, device, locale, and storefront gates control exposure automatically.
+`platform-1` — Choose a lead platform as the experience and integration spine, then build every requested/selected platform adapter, lifecycle, input/UI mode, service boundary, performance tier, and test path completely now. Evaluate other platforms explicitly as shared-primitive reuse, contract-ready, not applicable, or authority-blocked. Define parity, acceptable divergence, readiness and safe exposure.
 
 `platform-2` — Platform parity means the same promised value and fair durable state, not pixel-identical UI or identical business model.
 
@@ -141,7 +141,7 @@ Set budgets per target device and stage for:
 
 `startup-4` — Report percentiles and device/cohort distribution, not only a developer machine average.
 
-`startup-5` — Policy-disabled capabilities are non-reachable on the boot and play path. Do not download their assets, initialize their SDKs, request their permissions, start their jobs, reserve their memory, collect their telemetry, require their services, or expose their endpoints. Any correctness-critical exception is deny-by-default, resource-by-resource allowlisted, and continuously proved by bundle/startup/memory/network/permission/attack-surface regressions.
+`startup-5` — Disabled or contract-ready capabilities are non-reachable on the boot and play path. Do not download their assets, initialize their SDKs, request their permissions, start their jobs, reserve their memory, collect their telemetry, require their services, or expose their endpoints. Test representative bundles, startup, memory, network and permissions so dormant work remains dormant.
 
 ## 6. Low-end performance and quality tiers
 
@@ -163,7 +163,7 @@ Create low, medium, high, and optional ultra tiers from one semantic game state.
 
 `performance-2` — Quality adaptation must be deterministic enough for QA and fair enough for competitive play. Never hide threats or reveal extra competitive information by tier.
 
-Select and change tiers through the automated exposure controller using device capability, measured frame time, memory pressure, battery/thermal state, accessibility needs, and competitive rules. Apply hysteresis and graceful degradation; record every change for replay and regression analysis.
+Select and change tiers using device capability, measured frame time, memory pressure, battery/thermal state, accessibility needs, and competitive rules. Apply hysteresis and graceful degradation; record enough context for support and regression analysis.
 
 `performance-3` — Profile and optimize continuously from the first slice; test real low/mid/high devices, long sessions, temperature, low battery, memory pressure, background/resume, network impairment, and localized worst-case text/assets. Do not plan a later optimization or low-end port phase.
 
@@ -222,11 +222,11 @@ Internationalize in the initial contracts so no later content or platform branch
 - culturally review symbols, gestures, humour, historical/political/religious material, violence, chance mechanics, monetization, and age/rating expectations;
 - version live content and keep locale fallback explicit; do not silently show stale terms or price/odds copy.
 
-`locale-1` — Multilingual support is a product and autonomous-operations commitment. Build the requested locale/platform pipeline, fonts, input, fallback, safety, support, and test coverage now; versioned coverage, authority, quality, device, and moderation policies may control public exposure automatically.
+`locale-1` — Multilingual support is a product and operating commitment. Build the requested locale/platform pipeline, fonts, input, fallback, safety, support, and test coverage now; coverage, authority, quality, device, and moderation readiness may control public exposure.
 
 `locale-2` — A single machine-translation pass is not sufficient for purchase, odds, consent, safety, parental, legal, support, or culturally sensitive text. Require independent agent critique, terminology/authority retrieval, semantic and layout tests, adversarial cases, provenance, and safe fallback; target-user signals may add evidence without becoming a routine development gate.
 
-`locale-3` — Design share artifacts, player names, chat, filters, reports, and moderation for every requested script and language now. The policy engine may keep a locale's public exposure off until its authority, safety, quality, font/input, support, and moderation gates pass.
+`locale-3` — Design share artifacts, player names, chat, filters, reports, and moderation for every requested language/script now. Keep a locale's affected public surfaces off until authority, safety, quality, font/input, support, and moderation readiness pass.
 
 ## 10. Experience-quality matrix
 
@@ -245,9 +245,9 @@ Accessibility baseline and tested modes:
 Locales, fonts, input methods, subtitles/voice, cultural review:
 Commerce/social/platform-service adapters:
 Real-device and regression evidence:
-Declared platform scale/failure envelope and exact load/soak evidence:
-Off-state bundle/startup/memory/network/permission/attack-surface proof:
-Automated exposure policy, current state, unlock predicates, degradation, and rollback:
+Declared platform workload/failure assumptions and representative evidence:
+Dormant-state bundle/startup/memory/network/permission evidence:
+Current exposure, readiness predicates, degradation, and recovery:
 ```
 
 Hard fail when the design promises a platform or locale without an input, UI, lifecycle, performance, accessibility, state, support, and validation plan appropriate to it.

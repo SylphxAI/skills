@@ -97,7 +97,10 @@ Never reward a rating/review, permission, ad click, spend, forced referral/conta
 
 ## 6. Ratings, reviews, feedback, and reputation
 
-Consume `review-solicitation-and-feedback-loop` rather than inventing a universal prompt.
+Consume `review-solicitation-policy` for public request eligibility and
+`product-feedback-learning-loop` for private intake, authorized review
+ingestion, response evidence and product learning; never invent one universal
+cross-platform prompt.
 
 - Apple/Google may provide standardized native review requests with platform-controlled presentation/limits.
 - Steam states developers should not request reviews inside the application.

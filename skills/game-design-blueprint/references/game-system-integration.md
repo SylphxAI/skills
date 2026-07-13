@@ -1,491 +1,197 @@
-# Game System Integration
+# Game Capability Integration
 
 ## Contents
 
-1. Agent-first capability portfolio
-2. Growth and progression
-3. Quest system
-4. Economy and rewards
-5. IAP-led monetization and optional IAA
-6. Paid randomized rewards and gacha
-7. Retention and notifications
-8. Social, co-op, sharing, and virality
-9. UGC, community safety, and abuse
-10. Live operations
-11. Integration checklist
+1. Capability sweep
+2. Three independent states
+3. Capability record
+4. Cross-system interaction map
+5. Commercial hierarchy
+6. Retention and durable ownership
+7. Automated exposure
+8. Specialist handoffs
+9. Integration checklist
 
-## 1. Agent-first capability portfolio
+## 1. Capability sweep
 
-Do not use conventional studio scarcity or a subjective “not relevant” label to cut the system surface. In a whole-game program, the canonical portfolio is progression, quests, economy, IAP, IAA, gacha, streaks, notifications, multiplayer/co-op, friends, sharing, guilds, chat, UGC, referrals, live events, platform adapters, localization, accessibility, low-end tiers, telemetry, safety, and autonomous operations. Every item receives a complete production-shaped, scale-ready implementation in the initial architecture unless its behaviour is hard-floor-blocked. Add every requested capability beyond the canonical portfolio. Genre fit and player value govern configuration and exposure, not construction.
+Evaluate every row and every user-requested addition. A sweep prevents omission; it does not force a genre-incoherent feature into the game.
 
-Demand evidence is not a construction prerequisite, and later hardening is not the plan. Build the capability, scale architecture, automation, observability, state migration, operational control plane, and exposure policy together. Deliver small verified slices to parallelize work and contain faults, then finish the declared scale-ready target without leaving a follow-up phase. Live signals feed automated exposure and rollback; they do not trigger a future human project to finish the system.
-
-### Three-axis state model
-
-Never collapse construction, proof, and exposure into `include`, `defer`, or `exclude`:
-
-```text
-Build disposition:
-build-to-scale-now | queued-by-dependency | reuse-scale-ready | floor-blocked | retired
-
-Proof level:
-contracted | delivery-slices-verified | integrated | scale-verified | production-proven
-
-Exposure state:
-off | internal | progression-gated | population-gated | test-cohort | opt-in | default-on | degraded
-```
-
-- `build-to-scale-now` is the default for every canonical and additionally requested reversible capability. Its Definition of Done includes production structure, autonomous operations, declared and measured load/failure proof, policy-controlled exposure, and migration/recovery—not a prototype that needs later rebuilding.
-- `queued-by-dependency` names the exact prerequisite, owner, and unblock condition; it cannot mean “too much work.”
-- `floor-blocked` cites a trust, safety, legal, platform, authority, irreversibility, rights, or physical-resource floor. Build the legitimate compliant capability and controls, but make prohibited transitions such as hidden odds, vulnerability targeting, deceptive price/scarcity, consent bypass, or unsafe child communication unrepresentable; do not implement dormant abuse merely to keep its flag off.
-- `retired` requires evidence, migration, state disposition, and a reusable learning record.
-- Human effort, team size, calendar estimates, absent users, uncertain demand, and speculative ROI are forbidden blocker reasons.
-
-`scale-verified` requires measured exact-candidate proof against a declared numeric envelope. `production-proven` requires the deployed candidate identity plus runtime readback from the live environment. Architecture, simulation, authored fixtures, or CI alone cannot earn either label.
-
-An `off` capability must be modular and non-reachable: no asset download, SDK initialization, permission request, background job, telemetry collection, service dependency, memory reservation, startup work, or public attack surface. A correctness-critical exception is deny-by-default, resource-by-resource allowlisted, cannot initialize a third-party SDK, request permission, or expose a public endpoint, and needs automated bundle/startup/memory/network/attack-surface regression proof.
-
-### Capability record
-
-Complete this record for every capability:
-
-```text
-Capability:
-Player hypothesis, pillar, verb, and reusable primitive:
-Loop entry and exit:
-Canonical contract and state authority:
-Dependencies and collision boundary:
-Complete scale-ready target and explicit no-later debt:
-Verified delivery slices and integration order:
-Declared scale envelope: eligible/peak concurrent users, QPS/TPS, sessions/rooms/guilds/UGC/content cadence:
-Envelope evidence label and automatic recalibration policy; this is a capacity target, not a demand forecast:
-Data volume/retention, regions, consistency/residency, p50/p95/p99 SLOs, error budget, RPO/RTO:
-Compute/storage/network ceiling, abuse-amplification ceiling, headroom, overload/degradation behaviour:
-Exact load/soak/chaos candidate, method, and measured evidence:
-Build disposition and proof level:
-Flag/configuration and automated exposure matrix by progression/mode/cohort/platform/locale/territory/age:
-Automated tests, adversarial evals, simulation, and interaction tests:
-Telemetry, success metric, countermetrics, and failure signal:
-Runtime/device/network/server capacity, autoscaling, backpressure, and failure budget:
-Trust, safety, fairness, rights, and platform floors:
-Autonomous content, localization, moderation, support, anti-abuse, and incident operations:
-Kill switch, runtime rollback, compensating transition, forward-fix, state migration, and retirement:
-Specialist handoff:
-```
-
-### Real scarcity and execution graph
-
-Treat autonomous construction capacity as elastic. The remaining scarce resources are verification and integration complexity; CPU/GPU, memory, startup, storage, network, server, battery, and thermal budgets; player attention, cognitive load, session time, and screen space; trust, safety, privacy, law, ratings, and storefront constraints; content rights and localized/cultural correctness; autonomous operational control; and real-player evidence for claims about fun, vibe, retention, demand, or commercial success. Construction complexity changes the execution graph and verification plan; it does not veto a capability.
-
-Produce a dependency DAG with canonical contract owners, disjoint agent work packets, collision boundaries, parallel capability lanes, and serialized edits to shared state. The graph must converge on the full scale-ready target in the initial program rather than stop at an MVP. Assign gameplay-bot, economy-simulation, content, localization, moderation, support, performance, capacity, resilience, and live-operations agents where applicable. Require exact-candidate checks, dangerous-feature interaction matrices, property/model tests, load/soak/chaos tests, post-integration telemetry, rollback, and kill switches.
-
-### Automated exposure controller
-
-Maintain one canonical versioned policy source with the first capability portfolio, implemented through domain-scoped evaluators so it is not a runtime single point of failure. Enforce authority precedence:
-
-```text
-immutable trust, legal, safety, privacy, and consent floors
--> platform, territory, ratings, and age policy
--> entitlement, purchased-value, progression, and fairness invariants
--> reliability, capacity, device, and operational guardrails
--> product experiments and optimization
-```
-
-Lower layers cannot override higher layers. Models may score or propose only inside a pre-admitted action envelope; they cannot rewrite hard floors, eligibility, price, odds, spend limits, moderation severity, or their own evaluation gates. Use separate scoped identities and permissions for candidate proposal, independent validation, promotion/actuation, and an independent watchdog that can suppress the primary controller.
-
-Domain evaluators continuously apply deterministic rules and bounded models without routine human review:
-
-```text
-policy_id, version, authority, effective window, and rollback version:
-capability build/proof/config compatibility preconditions:
-player progression, mastery, account-state, and prerequisite predicates:
-eligible population, concurrency, matchmaking liquidity, and social-density gates:
-mode, platform, app version, device tier, network, locale, territory, age, and consent eligibility:
-service health, latency, error, capacity, economy, content, moderation, support, and safety guardrails:
-state transitions: off -> internal -> gated -> test-cohort/opt-in -> default-on | degraded -> surface-specific recovery
-hysteresis, minimum dwell time, cooldown, anti-flapping, maximum exposure step, and canary budget:
-pass action, watch action, fail action, degradation ladder, and automatic recovery mode:
-event/config/model inputs, freshness, missing-data defaults, drift checks, and fallback:
-shadow evaluation, policy-diff check, signed provenance, decision trace, player-visible explanation, audit, and replay:
-atomic policy snapshot, monotonic version, sticky assignment, propagation bound, and cross-device consistency:
-last-known-good cache, controller outage, split-brain detection, watchdog, and controller SLO:
-break-glass kill switch and machine-tested recovery:
-```
-
-Use player progression gates to reveal complexity when the individual is ready. Use eligible-population and liquidity gates to open multiplayer, guild, marketplace, or social layers when enough compatible players exist. Use device and service-health gates to select quality, topology, or degraded modes. Hard legal, safety, age, consent, and platform floors remain non-overridable. Missing or stale signals fail to a declared safe state; positive revenue or activity cannot lift a hard floor.
-
-`exposure-1` — Data is a machine input, not a meeting. No annual review, manual cohort promotion, or future implementation project may be the normal exposure path.
-
-`exposure-2` — Build pass, watch, fail, hysteresis, rollback, and player-state migration before the first exposure. An automation that can open but cannot safely close is incomplete.
-
-`exposure-3` — Plan for peak and failure from the start: canonical state ownership, partitioning/sharding, versioned schemas and compatibility, deterministic migration, capacity envelopes, autoscaling, queues/backpressure, caching, rate limits, idempotency, reconciliation, graceful degradation, regional failure, recovery objectives, load/soak/chaos tests, and compute/abuse guards belong to the capability contract.
-
-`exposure-4` — Safe fallback is surface-specific. Paid, stranger-social, UGC, privacy, and consent expansion fail closed. Purchased entitlements, earned progress, refunds, and ledger state fail preserving. Gameplay and services fail degraded or last-known-good. In-flight matches, parties, events, purchases, and reward claims drain or reconcile before closure. Never revoke purchased value, erase progress, strand groups, change committed odds, break assignment, or create cross-device inconsistency; define grandfathering, compensation, idempotent migration, and player-visible remediation.
-
-`exposure-5` — Use `runtime rollback` only for truly reversible runtime state. Use compensating transitions for committed ledger, purchase, entitlement, reward, or externally visible state, and forward-fix for irreversible schema/state mutations.
-
-### Autonomous maintenance loop
-
-Every capability ships with a bounded closed loop rather than a future maintenance queue:
-
-```text
-observe versioned telemetry, authority freshness, incidents, drift, and player-state outcomes
--> diagnose with reproducible evidence and candidate identity
--> propose code/config/content/economy/localization/moderation/capacity changes
--> simulate and adversarially test interactions, abuse, migration, load, and rollback
--> validate exact candidate against quality, safety, platform, and runtime floors
--> canary through the exposure controller
--> promote, degrade, or roll back automatically
--> record outcome, update models/policies, and preserve replay evidence
-```
-
-Every code, config, policy, model, content, economy, dependency, moderation, or infrastructure mutation is a versioned candidate with signed provenance. Agents use scoped, short-lived authority; the proposer cannot be the sole validator or promoter. Contract, safety, abuse, migration, interaction, load, recovery, and exact-candidate gates run before promotion. Repository and runtime changes follow GitOps, merge queue, canary, live readback, and automated recovery. Hard floors and the gates judging a candidate remain outside that candidate's mutation authority.
-
-Declare allowed mutations, budgets, schemas, policy source, escalation between agents, and non-overridable floors. Dependency/security updates, content generation, balance, localization, moderation, support, capacity, incident response, compensation, and deprecation follow the same loop. Break-glass control is for exceptional containment, never the normal release or maintenance path.
-
-`maintenance-1` — Automation is incomplete if it only detects or recommends. It must safely execute the bounded response, verify the resulting state, and roll back on failed readback.
-
-`maintenance-2` — Learned policy or model changes are new candidates: version, simulate, evaluate, canary, audit, and roll back them. Never allow self-modification to bypass hard floors or exact-candidate gates.
-
-`integration-1` — Build fully; expose automatically and coherently. A broad scale-ready capability portfolio is compatible with a focused game because unexposed capabilities remain independently verified and policy-disabled rather than competing for player attention.
-
-`integration-2` — No system may make the non-payer, returning player, new player, disabled player, low-end-device player, or child-safety path worse merely to increase a local metric.
-
-`integration-3` — Agent-first does not mean one giant branch, one monolithic state machine, or every flag on. Parallelize only across explicit contracts and serialize shared-authority changes.
-
-## 2. Growth and progression
-
-Growth is not one experience. Design a progression graph across the axes that fit:
-
-| Axis | Player value | Good unlock consequence | Failure mode |
-| --- | --- | --- | --- |
-| Skill/knowledge | mastery and competence | player sees or executes new possibilities | stat growth masks no learning |
-| Power/capability | efficacy and new strategy | changes viable decisions or challenge relationship | treadmill, power creep, pay-to-win |
-| Breadth | discovery and agency | new verbs, builds, routes, modes, or content | choice overload or dead options |
-| Collection/expression | identity and completion | visible ownership, customization, stories | clutter, duplicates, status pressure |
-| Narrative/world | curiosity and meaning | characters, places, consequences, perspective | exposition gates play |
-| Social status/contribution | belonging and recognition | role, shared achievement, mentorship | obligation, exclusion, purchased rank |
-
-Map every node with prerequisites, cost, choice, new possibility, content dependency, visibility, pacing hypothesis, catch-up, reset/season behavior, and irreversible consequences.
-
-`progression-1` — Use short, medium, and long goals without making every horizon a numerical power ladder.
-
-`progression-2` — Preserve meaningful choices. If every player must unlock the same nodes in the same order, explain why the line is teaching or narrative rather than pretending it is agency.
-
-`progression-3` — Provide returning-player reorientation and catch-up that restores participation without invalidating loyal play.
-
-`progression-4` — Model the content burn and maximum useful lifespan of each progression layer before launch.
-
-## 3. Quest system
-
-Quests should teach, reveal meaningful choices, deliver story, coordinate relationships, test mastery, or create a reason to explore. “Perform arbitrary taps for currency” is a chore, not a quest purpose.
-
-### Quest taxonomy
-
-| Type | Primary job | Guardrail |
+| Domain | Questions | Detailed owner |
 | --- | --- | --- |
-| Main/narrative | frame world and consequential progress | do not block core play behind exposition or missable state |
-| Side/discovery | reward curiosity, expression, or alternate play | avoid completion-list overload |
-| Teaching/mastery | introduce and remix a real verb | evaluate understanding, not only repetition count |
-| Daily/weekly | surface a varied return path | cap obligation; allow choice; do not punish healthy absence |
-| Seasonal/event | create shared novelty and cadence | state expiry, catch-up, compensation, and post-event conversion |
-| Social/co-op | coordinate roles or shared goals | avoid forcing strangers, spam invites, or free-rider conflict |
-| Comeback | reorient and reveal new value | do not teach players to churn for superior rewards |
+| Core play/content | Which verbs, encounters, challenge, content grammar and mastery create the promise? | Game Design |
+| Progression/quests | Which layers create choice, competence, expression and reachable goals? | `game-progression-and-quests.md` |
+| Economy/rewards | Which values flow, accumulate, convert, expire, refund and remain fair? | `game-economy-review` |
+| IAP/IAA/gacha | What value exchange fits the audience and platform, and what stays off? | Economy + Ad Monetization + Payment |
+| Return loops | What real value changes by session/day/week/season/comeback? | Game Design + Daily Reward/Streak |
+| Notifications | Which user-requested or stateful value deserves interruption? | Notification Strategy |
+| Friends/co-op/social | Which relationships, shared decisions, governance and safety create value? | `game-social-systems.md` |
+| Referral/cross-promotion | How does recipient-valued discovery qualify and attribute? | Referral + Promotion |
+| UGC/creators/community | What can players make, discover, share, own and moderate safely? | Social + Live Operations |
+| Live operations | How do seasons, events, passes, content and state end safely? | `game-live-operations.md` |
+| Platform/reach | How do input, lifecycle, services, commerce, performance and presentation adapt? | Experience Quality + Distribution |
+| Accessibility/localization | Can supported players understand, control, purchase, socialize and recover? | Experience Quality |
+| Analytics/feedback/support | What decisions need evidence and how do players recover or influence the product? | Analytics + Review/Feedback + Support |
 
-### Quest contract
-
-```text
-quest_id and version:
-purpose and player-facing premise:
-eligibility and prerequisites:
-objectives and acceptable variants:
-progress authority and attribution:
-visibility and feedback:
-difficulty and accessibility:
-party/offline/cross-device behavior:
-expiry, timezone, pause, abandon, retry, and compensation:
-reward and economy budget:
-localization and content dependencies:
-anti-abuse and support correction:
-events and success/guardrail metrics:
-```
-
-### State model
+### Disposition
 
 ```text
-locked -> eligible -> offered -> accepted -> active -> objective_complete -> reward_claimable -> claimed
-offered -> declined_or_expired
-active -> paused | abandoned | failed_recoverable | expired
-active -> service_incident -> compensated_or_extended
-objective_complete -> duplicate_event -> idempotent_noop
+integrate-now
+reuse-scale-ready
+contract-ready
+not-applicable
+floor-blocked
 ```
 
-`quest-1` — Define progress from authoritative gameplay events; retries, reconnects, duplicated messages, and party attribution must not double-grant or erase legitimate progress.
+- `integrate-now` is mandatory for requested and player-promise-essential capabilities. Complete it now; no future hardening or manual phase.
+- `reuse-scale-ready` consumes a complete shared primitive with a game-specific contract and proof.
+- `contract-ready` preserves an extension boundary but adds no runtime, SDK, permission, asset, telemetry, job, memory, network, or attack-surface cost.
+- `not-applicable` needs a semantic, player-value, business-model, platform, attention, safety, or physical reason. Human effort and speculative ROI are invalid.
+- `floor-blocked` cites the exact authority or harm boundary and still designs the safe alternative.
 
-`quest-2` — Give daily/weekly systems a choice set or reroll/skip path when variety and autonomy matter. Do not turn all available quests into a mandatory checklist.
+## 2. Three independent states
 
-`quest-3` — Budget quest rewards against economy sources and sinks. A quest layer must not become the dominant activity while the core game becomes a reward-delivery wrapper.
+Never compress these into one include/defer/exclude label:
 
-`quest-4` — Measure whether a quest improves comprehension, breadth, mastery, social play, or return quality—not claim rate alone.
+```text
+Design/build: absent | contract-ready | implementing | built | integrated | retired
+Evidence: hypothesis | design-tested | implementation-verified | live-observed
+Exposure: off | internal | progression-gated | population-gated | test-cohort | opt-in | default-on | degraded
+```
 
-## 4. Economy and rewards
+A system can be built and integrated while exposure remains off. A design test is not implementation proof; implementation proof is not evidence of player value; live exposure is not proof of causality.
 
-Maintain one versioned model of currencies, resources, items, and entitlements.
+## 3. Capability record
 
-| Resource | Earn/purchase sources | Sinks/converters | Cap/expiry | Transfer | Refund/support | Purpose | Abuse/inflation risk |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+Keep the whole-game record concise and send detailed tuning to the specialist:
 
-Model sources, pools, sinks, converters, trades, gates, and reinforcing/balancing feedback loops. Simulate plausible new, regular, skilled, returning, non-paying, typical-paying, and high-spend profiles over representative horizons.
+```text
+Capability and draft ID:
+Player value, pillar and verb:
+Disposition and reason:
+Canonical player/state semantics:
+Dependencies and collisions:
+Complete selected target; explicit no-later debt:
+Verified delivery slices:
+Exposure eligibility and safe missing-signal action:
+Experience, attention, platform, device and accessibility constraints:
+Trust, safety, age, consent, fairness and rights floors:
+Success measure, countermetrics and failure signal:
+Disable/degrade/recovery and durable-state treatment:
+Specialist owner, required input/output and acceptance questions:
+```
 
-Audit:
+Use draft IDs during design. A downstream deterministic process may seal serialized artifacts. Never fabricate digests or evidence.
 
-- inflation, hoarding, dead currencies, forced leftovers, confusing exchange rates;
-- dominant sources, sinks, builds, and conversions;
-- progression walls, content gating, power creep, and catch-up;
-- negative balances, refunds after spend, duplicate grants, rollback, and reconciliation;
-- multi-accounting, bots, clock/device manipulation, trading and referral abuse;
-- purchased-value nerfs, content sunset, server shutdown, and compensation.
+## 4. Cross-system interaction map
 
-`economy-1` — Every source needs a player purpose and a credible sink or ceiling. Every sink should express choice or progression, not tax basic enjoyment.
+Review at least these dangerous edges:
 
-`economy-2` — Prefer simple, legible value. Additional currencies must earn their cognitive and support cost; purchased value should show a local real-money equivalent wherever current authority or player clarity requires it.
-
-`economy-3` — Entitlement grants, reward claims, refunds, support adjustments, and ad rewards require idempotent ledger semantics and reconciliation appropriate to risk.
-
-`economy-4` — Economy tuning is a versioned change with cohort impact, rollback/compensation, and communication. Never silently reduce purchased value.
-
-## 5. IAP-led monetization and optional IAA
-
-IAP-led means the primary revenue hypothesis is player-chosen purchase of understandable value. It does not mean putting purchase pressure into every loop or making free play deliberately bad.
-
-### Offer ladder
-
-Build a scale-ready generic offer, entitlement, pricing, eligibility, fulfilment, refund, support, and policy engine capable of the full ladder; configure and expose only value exchanges that fit the game:
-
-| Offer | Value hypothesis | Key guardrail |
+| Edge | Required question | Typical failure |
 | --- | --- | --- |
-| Cosmetic/expression | identity, collection, social display | preview accurately; avoid status harassment |
-| Content/expansion | more authored or systemic play | explain scope, ownership, compatibility |
-| Horizontal variety | new style or options | avoid disguised competitive dominance |
-| Convenience | less repetition or administration | do not first create the pain being sold away |
-| Starter/curated bundle | clear value after the player understands the game | no launch ambush, fake anchor, or forced leftovers |
-| Season/battle pass | recurring goals, content, expression | disclose time, effort, expiry, catch-up, post-season state |
-| Subscription/membership | genuinely continuing service/value | renewal clarity, restore/cancel/support, ongoing value |
-| Paid randomness | collection surprise where approved | separate gacha gate below |
+| challenge ↔ progression | Does growth create new decisions while challenge remains legible? | stat inflation replaces mastery |
+| progression ↔ economy | Can every required goal be reached through understandable sources/sinks? | hidden wall or dead currency |
+| economy ↔ IAP/gacha | Is paid value clear, bounded and compatible with baseline access? | pay-to-win, regret, concentration |
+| IAA ↔ IAP | Does ad exposure add incremental value without damaging purchase trust? | payer surprise or cannibalization |
+| quests ↔ core play | Do quests teach, vary or deepen real play? | checklist wrapper replaces the game |
+| streak ↔ health/economy | Can ordinary absence recover without inflation or anxiety? | hostage continuity or dominant faucet |
+| notifications ↔ return value | Is there truthful time-sensitive value and a stop rule? | spam compensates for weak retention |
+| social ↔ progression | Can mixed-progression friends contribute meaningfully? | carrying, exclusion or forced grind |
+| sharing ↔ privacy/safety | Does the recipient receive value with user control? | spam, covert contacts or harassment |
+| live event ↔ durable state | Is expiry, conversion, compensation and late entry defined? | stranded purchases/rewards |
+| refund ↔ economy/entitlement | Is only affected value reconciled with appeal and support evidence? | surprise debt or unrelated ban |
+| low-end/accessibility ↔ effects | Are critical cues preserved when quality/effects change? | hidden threats or exclusion |
 
-For every offer define audience and exclusion, prerequisite value moment, contents and ownership overlap, price and real-money clarity, eligibility, purchase limits, cooldown, start/end, inventory/content sunset, entitlement state, restore, refund/revocation, support trace, experiment, and kill switch.
+Test pairwise edges for every selected high-risk capability and add higher-order tests where three systems combine, such as gacha + leaderboard + minors or referral + reward economy + multi-accounting.
 
-`monetization-1` — Optimize contribution LTV and trust, not gross revenue, ARPDAU, purchase count, or session time in isolation.
+## 5. Commercial hierarchy
 
-`monetization-2` — Monitor payer/non-payer enjoyment, payer retention, revenue concentration, refunds, chargebacks, fraud, complaints, spend regret, support cost, and competitive fairness.
+Choose the commercial archetype explicitly: premium, premium+DLC, IAP-led free-to-play, subscription, ad-supported, creator/marketplace, or hybrid.
 
-`monetization-3` — Ban fake scarcity, resetting countdowns represented as final, fabricated reference prices, disguised costs, shame, loss threats, accidental purchase paths, and offers personalized from distress or overspending propensity.
+When IAP-led revenue is a hard constraint:
 
-`monetization-4` — Develop store, consent, analytics, and ad adapters in parallel behind explicit boundaries where architecture and current platform rules permit; do not make them startup dependencies or default exposure before the value path works.
+1. make the core free path desirable and viable;
+2. sell understandable value: expression, content, breadth, convenience, service, or bounded collection surprise;
+3. define payer and non-payer promises before offer placement;
+4. use IAA as a measured supplement with payer/ad-free suppression and IAP-cannibalization analysis;
+5. measure net retained contribution after fees, refunds, fraud, support, content, infrastructure, churn and trust effects;
+6. prevent revenue concentration, paid-only catch-up, purchased dominance and deliberate frustration from becoming hidden dependencies.
 
-### Policy-gated advertising
+Gacha is not a default requirement. If selected, the economy specialist owns probabilities, cost distributions, pity, duplicates, guarantees, deterministic alternatives, spend/age/territory controls, ledgers, refunds and simulations. Ads are not a default requirement; the ad specialist owns placements, consent, caps, mediation, grants, suppression and shutdown.
 
-Build IAA as a canonical complete scale-ready portfolio lane with consent, age, privacy, mediation, failure, performance, grant, suppression, audit, and recovery controls. Player exposure remains an optional non-payer value exchange, not a tax required by “free-to-play.”
+## 6. Retention and durable ownership
 
-- Prefer player-initiated rewarded ads with reward, eligibility, limits, duration expectation, failure/no-fill behavior, and grant state clear before opt-in.
-- Place any approved interstitial only at a natural break after value; never at launch, first trust-building, active input, checkout, permission flow, or failure recovery.
-- Segment caps and suppression by new-player state, payer promise, recent frustration, age/consent, session context, and fatigue.
-- Make ad failure non-blocking. Reconcile verified completion and grant idempotently.
-- Measure incremental ad value against IAP cannibalization, retention, churn after impression, complaints, accidental taps, privacy, battery, startup, and low-end performance.
-- Provide per-placement kill switches plus automated current-authority freshness, policy, consent, and age gates.
+Design reasons to return before notifications:
 
-## 6. Paid randomized rewards and gacha
+| Horizon | Valuable return reason | Avoid |
+| --- | --- | --- |
+| Session | curiosity, mastery, variation, choice and closure | chores before value |
+| Next session/day | self-chosen goal, new possibility or friend response | punishment for absence |
+| Week/event | novelty, mastery and shared moments | mandatory checklist/FOMO |
+| Season/long term | identity, collection, expression, story and community | destructive durable reset |
+| Comeback | reorientation, repaired state and genuinely new value | teaching players to churn |
 
-Default exposure: off until the fantasy, collection depth, economy, audience, territory, platform, and trust gates pass. Build the canonical complete scale-ready transparent system now: parameterized economy simulation, banner lifecycle, pity, ledger, reconciliation, disclosure, audit, geo/age disable, spend controls, refunds, support, and deterministic alternatives behind policy gates. Connect paid value only in eligible exposure states. Platform odds disclosure is not proof that a mechanic is lawful, safe, or strategically sound.
-
-### Automated paid-exposure gate
-
-Require:
-
-- a player-value reason stronger than revenue or habit pressure;
-- current territory, storefront, ratings, age, and consumer-protection authority retrieved and checked by the policy pipeline;
-- a non-random or bounded acquisition path appropriate to the game;
-- payer/non-payer and competitive-fairness analysis;
-- exact cost-distribution and economy simulation, including the upper tail;
-- spend controls, history, support, refunds, minors policy, auditability, and geo-disable capability;
-- explicit comparison with direct purchase, crafting, earnable selection, season pass, and mixed models.
-
-### Banner contract
+Translate “sunk cost” into earned ownership and belonging:
 
 ```text
-banner_id, version, territory/platform eligibility, start/end:
-pool and item/rarity probabilities:
-featured split and guarantees:
-price and real-money equivalent:
-free/earned versus paid currency:
-pity/guarantee state, visibility, reset, and carry-over:
-duplicate prevention/conversion:
-deterministic alternatives:
-age/spend controls:
-RNG and probability-table authority:
-receipt, ledger, refund, audit, rollback, and support:
-localized disclosure and accessible presentation:
+identity + mastery + creation + collection + history + relationships
+-> meaningful next-session value
 ```
 
-### State model
+Use optional avatar/character expression, builds, collections, creations, housing, records, guild contribution, mentorship and relationship history where they serve the fantasy. Offer fast defaults and skip paths; do not make a long setup ritual a compulsory toll before play unless creation is the core fantasy.
+
+Never threaten deletion after inactivity, erase history to sell restoration, make a streak the authority for unrelated progress, or force payment to preserve player-created work.
+
+### Updates, cross-promotion, reviews and feedback
+
+- Reward verified activation or meaningful use of real update value, not installation, permission, review/rating, ad click, spend, forced share, or contact upload.
+- Cross-promotion must identify the other product, fit the current context, preserve dismissal, minimize consented attribution data, and measure retained target-product value and source-product cannibalization.
+- Public review solicitation and universal private feedback remain independent. Never sentiment-gate, star-steer, reward ratings, or import one platform's review behavior into another.
+- Feed feedback, reviews, behavior, quality, accessibility, refunds and support into source-preserving product learning without treating loudness, payer value, or star count as sole priority.
+
+## 7. Automated exposure
+
+Define the player-facing exposure rules:
 
 ```text
-eligible -> disclosure_viewed -> purchase_authorized -> draw_committed -> result_recorded -> grant_reconciled
-draw_committed -> timeout -> authoritative_readback -> grant_or_refund
-result_recorded -> pity_updated -> next_state_visible
-purchase_refunded -> remaining_value_reconciled -> support_or_abuse_ladder
+eligibility: progression, mastery, account state, mode, population/liquidity,
+             platform/version/device/network, locale/territory/age/consent
+guardrails: service quality, economy, content readiness, moderation/support and safety
+states: off -> internal/gated -> test/opt-in -> default-on | degraded/off
+stability: sticky assignment, safe missing signal, minimum dwell/cooldown, maximum step
+recovery: preserve purchases/earned state, drain or reconcile in-flight actions,
+          compensate or forward-fix irreversible commitments
 ```
 
-`gacha-1` — Disclose probabilities, pool, guarantees, pity, duplicate behavior, currency cost, and real-money meaning immediately before purchase in accessible localized form, subject to current authority.
+Game gates may use progression or population. Individual readiness gates reveal complexity; liquidity gates open matchmaking, guild, market or open-social surfaces only when a coherent experience exists. Device and service signals select quality or degraded behavior. Hard legal, safety, age, consent and platform floors are non-overridable.
 
-`gacha-2` — Never personalize odds by spend, failures, churn risk, social status, distress, age, or inferred vulnerability. Version and audit probability tables and all state transitions.
+Automation must be able to close safely, not only open. Paid, stranger-social, UGC, privacy and consent expansion fail closed. Purchased entitlements, earned progress and refund state fail preserving. Gameplay may use a tested degraded or last-known-good mode.
 
-`gacha-3` — Use a visible hard guarantee where the model proceeds; define carry-over and duplicate handling. Do not use misleading near-miss, false rarity, hidden pity, or outcome-dependent pressure to induce another pull.
+## 8. Specialist handoffs
 
-`gacha-4` — Paid random rewards for known or likely minors are a default stop. Any proposed exception needs explicit guardian controls and current legal/platform authority, not designer judgment alone.
-
-`gacha-5` — Validate deterministic pity transitions plus statistical conformance sized to the rarest disclosed outcomes and chosen confidence. Record the method; do not invent a universal sample count.
-
-## 7. Retention and notifications
-
-Retention starts with reasons to return:
-
-| Cadence | Return value | Candidate mechanism | Failure to avoid |
-| --- | --- | --- | --- |
-| Within session | curiosity, mastery, choice, closure | next encounter, build decision, story beat | cliffhanger without agency |
-| Next session/day | unfinished self-chosen goal, new possibility | saved plan, refreshed choice, friend response | punishment for healthy absence |
-| Week/event | novelty, mastery, relationship, shared moment | varied quests, event, co-op goal | chores or fear of missing essential value |
-| Season/long term | identity, collection, status, story, community | new content/systemic variation | reset that erases meaningful investment |
-| Comeback | reorientation and genuinely new value | catch-up, recap, returning path | superior rewards that teach churn |
-
-`retention-1` — Measure return because of value, not only return occurrence. Segment by acquisition, version, platform, market, skill, payer state, social state, and relevant accessibility/device cohorts.
-
-`retention-2` — Streaks celebrate continuity; they must not make sleep, health, travel, outages, or ordinary absence feel like irreversible loss. Define grace, pause, earned repair, soft reset, and incident compensation.
-
-### Durable investment and belonging
-
-Translate “sunk cost” into earned ownership, identity, mastery, creation, history, and relationships. The goal is that the next session remains valuable, not that leaving destroys prior value.
+For each detailed system emit:
 
 ```text
-player-owned or earned state:
-utility, authorship, identity, mastery, history or relationship meaning:
-canonical authority, sync, version and account-merge rules:
-recovery, portability/export where applicable, deletion and privacy:
-returning-player restoration/recap:
-visibility, sharing and harassment controls:
-purchase/entitlement, season rollover and shutdown treatment:
+Draft artifact ID:
+Owner skill:
+Whole-game facts supplied:
+Decision or contract required:
+Acceptance questions:
+Player-state and recovery constraints:
+Current authority to retrieve:
+Unresolved assumptions:
 ```
 
-Good surfaces include optional character/avatar expression, builds/loadouts, collections, creations/UGC, housing, records, mastery, guild contribution, relationships and mentor reputation. Use a fast default/skip and offer deeper creation after the first competence or fantasy moment; do not make a long avatar editor a compulsory toll before play unless character creation is the core fantasy.
+Do not duplicate price tables, gacha math, provider facts, notification caps, referral attribution, promotion eligibility, review platform policy, refund consequences, analytics schemas, or store submission rules in the blueprint.
 
-`retention-3` — Measure reuse, restoration, expression, perceived ownership, social contribution, mastery and trust. Do not target “time already spent” or difficulty leaving.
+## 9. Integration checklist
 
-`retention-4` — Never threaten deletion after inactivity, erase history to sell restoration, force payment solely to preserve player-created work, or use permanent streak/status loss as the primary return mechanism.
-
-### Release benefits, cross-promotion, reviews, and feedback
-
-- Update/release benefits require a verified signed-version value event, authoritative idempotent grant, cap, retry/offline/reversal, economy budget, fraud/support and rollback. Never condition them on rating, review, permission, ad click, spend, forced share/contact upload, referral or another-game install.
-- Cross-promotion uses a disclosed portfolio-fit edge, recipient value, age/territory/consent, frequency/dismissal, universal/app/web link and store fallback, attribution/holdout, cannibalization, support and any campaign/referral specialist artifact. It cannot obstruct cold start or critical play.
-- Public ratings/reviews and private feedback are separate state machines owned by `review-solicitation-and-feedback-loop`. Use platform-specific current authority and neutral meaningful-value eligibility where allowed; never sentiment-gate, star-steer, reward reviews or copy Apple/Google prompting into Steam.
-- Feed private feedback, reviews, support, refunds, behavior, quality, economy, safety and accessibility into the independently validated product-learning loop while preserving source, privacy, cohort and uncertainty.
-
-### Notification eligibility
-
-```text
-product_state_has_real_value
--> category_enabled_in_product
--> OS_permission_available
--> truthful_and_current_message
--> user_state_and_age_eligible
--> quiet_hours_and_frequency_pass
--> fatigue_and_recent_failure_pass
--> send_with_expiry_and_deep_link
--> measure_play plus opt_out/uninstall/complaint/retention countermetrics
-```
-
-Ask permission in context after value or an explicit reminder request. Separate transactional, social, event, reward, and promotional controls. Use truthful state, local time, expiry, localization, accessibility, deep-link recovery, rate limits, suppression, and holdout measurement. Ban guilt, shame, fake friend activity, fake urgency, and notification-only paid repair.
-
-## 8. Social, co-op, sharing, and virality
-
-Build every relationship model below and its scale/safety operations now. At runtime, expose the smallest coherent set for each player-progression, population/liquidity, age, locale, and safety state:
-
-| Pattern | Player/recipient value | Required design | Risk |
-| --- | --- | --- | --- |
-| Known-friend co-op | shared achievement and time | party, roles, skill gaps, reconnect, rewards | coordination failure, exclusion |
-| Asynchronous help/gifts | lightweight reciprocity | limits, useful item/action, expiry, abuse controls | spam, obligation, farming |
-| Challenges/ghosts/replays | skill comparison and story | comparable rules, privacy, share artifact | cheating, harassment |
-| Guild/clan | persistent belonging and goals | roles, governance, contribution, inactive recovery | labour, exclusion, leader abuse |
-| Spectating/streaming | learning and entertainment | readable state, privacy, delay/anti-cheat | sniping, consent, moderation |
-| UGC/creation | expression and content supply | tools, discovery, rights, safety, moderation | harmful content, IP, creator exploitation |
-| Friend discovery/chat | relationship formation | consent, age assurance, block/mute/report | grooming, PII, harassment |
-
-`social-1` — Co-op needs role complementarity or shared decisions, not merely parallel grinding. Specify join, leave, rejoin, host migration, latency, failure, rewards, skill disparity, and offline member behavior.
-
-`social-2` — Shares are user-initiated, previewable, editable, and valuable to the recipient. Prefer native share/deep-link or code flows; never auto-post or require contact upload.
-
-`social-3` — Instrument the complete funnel:
-
-```text
-shareable moment/invite created -> previewed -> sent -> opened -> accepted
--> recipient activated -> co-play/value reached -> recipient retained
-```
-
-Also track cancellation, block/report, spam complaints, failed joins, referral fraud, and retention of both sides. Raw share count and incentivized installs are not virality.
-
-`social-4` — Referral rewards should be bounded, single-level, tied to genuine recipient activation, useful to both sides, and protected from bot/multi-account abuse. Never reward positive reviews or misleading endorsements.
-
-## 9. UGC, community safety, and abuse
-
-The automated policy engine increases interaction exposure only when the already-built safety capability passes its gates:
-
-```text
-known-friend play
--> asynchronous/preset communication
--> managed groups and creation
--> open discovery/chat/trading only with mature controls
-```
-
-Define age and privacy defaults, identity exposure, personal-information prevention, content rules, proactive and reactive moderation, block/mute/report access, severity classes, response and escalation targets, evidence retention, appeals, repeat-offender policy, trusted-contact/support routes, anti-cheat, trading fraud, and moderator tooling.
-
-`safety-1` — For minors or likely-child audiences, default profiles and discovery to private, stranger communication off, behavioural ads off, and purchases/spend/social expansion behind appropriate guardian and current-authority controls.
-
-`safety-2` — Build and instrument autonomous proactive and reactive moderation, escalation, audit, appeal, and incident controls with the interaction capability. Keep open exposure off wherever language, age, locale, severity, recovery, or current-authority coverage fails. Shipping open chat and waiting for reports is not a safety system.
-
-`safety-3` — High-spend, repeated-failure, or long-session signals may trigger safety friction, breaks, budgets, or support; never more aggressive monetization.
-
-## 10. Live operations
-
-Live operations is a product and production system, not a calendar of offers.
-
-Every event requires:
-
-- player value, novelty, pillar, audience, eligibility, and return path;
-- start/end/timezone, version, locale, platform, and dependency compatibility;
-- content and economy budget, sources/sinks, catch-up, expiry, and post-event conversion;
-- agent-generated or sourced assets with provenance, localization, accessibility, moderation, automated QA, support, and store-review readiness;
-- remote configuration with schema, automated validation, policy-authorized promotion, staged rollout, kill switch, rollback, and audit;
-- outage, extension, compensation, duplicate-grant, and communication policy;
-- baseline/holdout, primary metric, guardrails, cannibalization, and learning record.
-
-`liveops-1` — Preserve a stable baseline long enough to learn. Constant overlapping events can lift activity while making the core product, economy, and experiments unreadable.
-
-`liveops-2` — Measure content throughput, defect/rollback rate, localization lead time, support/moderation load, economy impact, and event fatigue alongside revenue and retention.
-
-`liveops-3` — Every live event ends in a valid state. Define unclaimed rewards, temporary inventory, quests, leaderboards, purchases, and player compensation before start.
-
-## 11. Integration checklist
-
-- Every canonical and additionally requested system has a capability record, declared/measured scale envelope, complete target or exact hard-floor blocker, verified delivery slices, build disposition, proof level, exposure policy, zero-cost off contract, telemetry, migration, and recovery; none is blocked by genre fit, human effort, absent demand, or speculative ROI.
-- The agent-first build graph declares contracts, dependencies, disjoint work packets, collision boundaries, shared-state serialization, exact-candidate gates, interaction/load/failure tests, and autonomous operations, and converges now rather than in a later hardening phase.
-- One canonical policy SSOT with resilient domain evaluators automatically unlocks, promotes, suppresses, degrades, and recovers capabilities from progression, population/liquidity, device, platform/locale/age/territory, service-health, quality, safety, and operational gates without routine human approval.
-- Every capability owns a bounded observe-to-learn maintenance loop that executes, verifies, and safely recovers content, balance, localization, moderation, support, capacity, dependency, and incident changes without routine human queues.
-- Progression changes choices or meaning across appropriate growth axes.
-- Quests have precise state, recovery, authority, reward budget, and non-chore purpose.
-- Economy has one model, simulated profiles, idempotent value movement, refund/support, and inflation/abuse review.
-- IAP sells understandable value without worsening free play; requested IAA infrastructure is built to scale while exposure remains contextual, suppressible, and non-blocking.
-- A requested gacha capability is built to scale with simulation, ledger, reconciliation, disclosure, guarantee, audit, geo/age gates, spend controls, support, and rollback; automated paid/default exposure remains off unless every applicable gate passes.
-- Retention reasons exist without notifications; streak recovery and healthy stopping are designed.
-- Social systems create reciprocal/recipient value and own reconnect, privacy, moderation, child safety, spam, cheating, and fraud.
-- Virality is measured through retained recipient value, not sender actions alone.
-- Live operations has autonomous content, validation, localization, moderation, support, versioned configuration, rollback, compensation, and learning ownership.
-- Detailed economy, launch, mobile entitlement, notification, ad, safety, or payment tuning is handed to the owning specialist rather than duplicated.
+- Every requested and promise-essential capability is fully selected, not postponed for human scarcity.
+- Every swept capability has a defensible disposition; no feature exists merely because another successful game has it.
+- Core play remains satisfying without extrinsic reward pressure.
+- Progression, economy, monetization, retention, social and live operations have explicit interaction tests.
+- IAP/IAA/gacha choices preserve baseline value, fairness, trust and age/territory/platform authority.
+- Return systems create real value and healthy stopping points.
+- Social systems create reciprocal and recipient value with safety and low-population behavior.
+- Updates, cross-promotion, reviews and feedback remain truthful and causally measurable.
+- Exposure gates preserve committed player state and define safe close/degrade behavior.
+- Detailed facts have one specialist owner and no fabricated digest or proof.

@@ -17,17 +17,19 @@ inflation/concentration, simulations, tuning controls, and live observability.
 Do not own the complete core game, provider payment ledger, one daily loop, one
 campaign, or release/distribution program.
 
-Use the [shared typed artifact envelope](references/product-artifact-envelope.schema.json)
-and digest-pinned sibling handoffs.
+Use a draft artifact ID, named assumptions, and explicit sibling handoffs while
+designing. Let deterministic delivery tooling seal serialized versions and
+digests later; never invent a digest or proof state.
 
 ## Agent-first invariant
 
-Build the full versioned economy model, deterministic simulator, replayable
-ledger, admin/tuning plane, fraud controls, migrations, kill switches, and
-cohort readbacks now. Use verified slices and exposure gates for safety, not a
-thin launch economy followed by manual hardening. Autonomous tuning may propose
-bounded changes but cannot set prices, odds, pity, entitlement, sinks, grants,
-or promotion authority without a separate validated policy gate.
+For every selected economy capability, build the full versioned model,
+deterministic simulator, replayable value history, tuning bounds, fraud controls,
+migrations, kill switches, and cohort readbacks now. Use verified slices and
+exposure gates for safety, not a thin launch economy followed by manual
+hardening. Autonomous tuning may act only inside declared bounds; prices, odds,
+pity, entitlements, grants, and material value semantics require an independently
+validated candidate.
 
 ## Workflow
 
@@ -42,14 +44,16 @@ or promotion authority without a separate validated policy gate.
    and dead/mandatory currency.
 4. Model price/reward/pacing curves, upgrade/crafting/repair, duplicate items,
    caps, exchange, gacha odds/pity/guarantees, battle-pass reachability,
-   advertisements, offers, events, and comeback/catch-up.
+   advertisements, offers, events, and comeback/catch-up. Calculate
+   distributions and sensitivities using the equations and fixtures in the
+   reference rather than supplying one average path.
 5. Define append-only ledger and projections for grant, spend, transfer,
    reserve, expire, convert, refund/revoke, chargeback, rollback, restore,
    migration, compensation, and support correction with idempotency.
 6. Simulate day-0, day-30, year-1, late-joiner, returning, baseline/non-payer,
    payer, high-skill, low-population, concentrated-wealth, exploit, and content
    drought cohorts. Include stochastic uncertainty and sensitivity ranges.
-7. Set bounded tuning parameters, approval/promotion authority, anomaly/fraud
+7. Set bounded tuning parameters, independent validation, anomaly/fraud
    detection, canaries, pause/rollback/forward-fix, and live readback.
 
 ## Source verification
@@ -88,18 +92,19 @@ the affected exposure, not construction of the dormant adapter.
 
 Return one typed Game Economy Specification containing:
 
-1. economy thesis, loops, audiences, baseline reachability, horizons, and ruin
+1. draft artifact ID, economy thesis, loops, audiences, baseline reachability, horizons, and ruin
    boundaries;
 2. asset/currency/inventory authority map and ledger/projection state machine;
 3. sources/sinks/stock/velocity/concentration matrix by cohort and season;
 4. progression, price, reward, gacha/pity, battle-pass, ad, offer, event,
    catch-up, duplicate, expiry, and conversion tables;
 5. refund/revoke/chargeback/restore/migration/support rules;
-6. deterministic simulation fixtures, sensitivities, invariants, and results;
+6. deterministic simulation fixtures, equations, distribution/quantile results,
+   sensitivities, invariants, and limits;
 7. tuning/admin authority, anomaly/fraud controls, event schema, dashboards,
    canaries, rollback/forward-fix, and live readback;
-8. digest-pinned payment, campaign, daily loop, analytics, and game-blueprint
-   handoffs.
+8. payment, campaign, daily loop, analytics, and game-blueprint handoffs with
+   draft IDs, required inputs, acceptance questions, and no fabricated proof.
 
 Complete only when ledgers replay, simulated cohorts remain viable, every
 tuning parameter has bounds/authority, and the system can pause or recover

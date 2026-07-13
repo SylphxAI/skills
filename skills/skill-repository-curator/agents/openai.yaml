@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Repository Curator"
+  short_description: "Curate a valuable skills repository"
+  default_prompt: "Use $skill-repository-curator to audit and improve this skills repository by strengthening useful skills, clarifying boundaries, consolidating true duplicates, and retiring low-value shells."

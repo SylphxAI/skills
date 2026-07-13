@@ -22,14 +22,14 @@ validation/live-readback evidence bundle
 incident/recovery runbook
 ```
 
-All material artifacts are versioned, digest-addressed and provenance-linked. Desired state and observed provider state are separate.
+All material artifacts are versioned and provenance-linked. Top-level artifacts carry `artifactVersion`, `artifactRevision`, and `artifactState` but never self-hash. Only a reference to an already sealed input carries `artifactDigest` plus `digestRule: sha256-exact-bytes`. Desired state and observed provider state are separate.
 
 ## 2. Authority separation
 
 | Role | Can | Cannot |
 | --- | --- | --- |
 | Proposer | create strategy/campaign/budget candidates | publish, spend, validate itself, raise authority |
-| Creative agent | generate localized assets from truth/rights | publish, alter claims, spend |
+| Creative-brief agent | generate concepts, storyboards, channel briefs, variant hypotheses, and stable Product Asset requests | render or localize exact files, publish, alter claims, spend |
 | Validator | check truth, rights, consent, policy, economics, telemetry and recovery | promote or edit candidate |
 | Promoter/reconciler | apply exact signed candidate inside caps and reconcile | edit spec, raise caps, change claims |
 | Watchdog | independently observe and pause globally/surface-specifically | create campaigns or increase spend |

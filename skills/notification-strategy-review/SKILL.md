@@ -1,6 +1,6 @@
 ---
 name: notification-strategy-review
-description: Design or audit notification strategy across push, email, in-app messages, SMS, lifecycle messaging, reminders, games, SaaS, mobile apps, and desktop utilities. Use when planning permission prompts, notification taxonomy, user controls, retention campaigns, quiet hours, deliverability, fatigue, event triggers, or support-safe messaging.
+description: "Design or audit one cross-channel notification policy across push, email, in-app messages, SMS, browser, and desktop: permission and consent, preferences, taxonomy, trigger semantics, channel routing, frequency and fatigue, privacy, dedupe, deliverability, withdrawal, and observed zero-send. Use when those message-wide controls are the primary artifact. For one win-back, lifecycle-push, offer, event, or promotion campaign's objective, audience, eligibility, economics, fulfillment, and shutdown, use promotion-campaign-review."
 ---
 
 # Notification Strategy Review
@@ -15,8 +15,9 @@ suppression/dedupe, privacy/redaction, deliverability, event schema, incident
 readback, and measurement. Do not own the whole retention strategy, one offer,
 one daily loop, or provider implementation.
 
-Begin with the [shared product artifact envelope](references/product-artifact-envelope.schema.json)
-and consume sibling artifacts by ID/version/digest.
+Use a draft artifact ID and consume sibling decisions by owner and explicit
+contract. Let deterministic delivery tooling seal serialized versions and
+digests later; never invent them during design.
 
 ## Agent-first invariant
 
@@ -48,7 +49,7 @@ message. Unknown/stale authority disables the affected send.
 - Use `promotion-campaign-review` for one offer/event audience, economics,
   fulfillment, and rollback system.
 - Use `marketing-automation-blueprint` for the whole multi-channel acquisition,
-  lifecycle, creative, spend, attribution, and shutdown control plane.
+  lifecycle, creative, spend, attribution, and shutdown operating system.
 - Use `app-design-blueprint` or `game-design-blueprint` when notification
   semantics depend on unresolved whole-product value and progression.
 

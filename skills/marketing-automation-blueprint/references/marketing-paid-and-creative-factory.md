@@ -48,8 +48,9 @@ Independent controls:
 creative_id and canonical concept/storyboard:
 audience, job, message and claim-proof IDs:
 product/release/price/offer compatibility:
-source assets and generated transformations:
-rights, license, talent/music/voice/UGC and AI provenance:
+Product Asset Production Pack request/output IDs:
+marketing-owned concept, storyboard, source direction and variant hypotheses:
+rights/license/talent/music/voice/UGC/AI requirements and accepted pack evidence refs:
 locale, cultural/age suitability and disclosure:
 format/aspect/duration/safe-zone/caption/transcript/alt text:
 landing/deep-link/CTA and fallback:
@@ -58,17 +59,25 @@ variant family, experiment and fatigue lineage:
 output digest, upload receipt and observed live ID:
 ```
 
-Build a canonical capture/story system and derive website, store, YouTube, X, short video, social, display, creator brief, email and in-product variants. Platform transforms are generated outputs, not separately hand-maintained truth.
+Marketing owns the creative brief, concept/storyboard, message,
+campaign-specific source direction and variant hypothesis.
+`product-asset-production` owns deterministic product capture, exact rendered
+files, localization/accessibility variants, rights/provenance and file QA. Store
+Listing owns listing narrative, selection/order and channel metadata. Marketing
+requests website, YouTube, X, short-video, social, display, creator, email and
+in-product candidates through a stable handoff; it does not become the listing
+or product-media SSOT.
 
 ## 4. Creative automation loop
 
 ```text
 product/evidence/audience change
 -> generate concepts inside truth/rights constraints
--> adversarial claim, policy, cultural and accessibility lint
--> render/localize with provenance
--> visual/audio/OCR/link/landing QA
--> independent validation
+-> adversarial claim, policy, cultural and accessibility lint of the brief
+-> issue stable Product Asset Production request
+-> consume accepted exact rendered/localized pack with provenance
+-> independently validate creative-to-link/landing/product consistency
+-> independent campaign, economics, policy and exposure validation
 -> signed candidate and bounded exposure
 -> live creative/landing readback
 -> measure attention quality, comprehension, incrementality and fatigue

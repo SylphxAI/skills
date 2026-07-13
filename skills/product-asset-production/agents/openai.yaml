@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Asset Production"
+  short_description: "Produce exact localized product media packs"
+  default_prompt: "Use $product-asset-production to turn approved product and channel briefs into a reproducible, rights-safe, accessible asset pack."

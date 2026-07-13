@@ -8,9 +8,10 @@
 4. First-value experience
 5. Recurring-value loops
 6. Durable investment and belonging
-7. Feedback and interface state
-8. Review checklist
-9. Research routes
+7. Experience expression
+8. Feedback and interface state
+9. Review checklist
+10. Research routes
 
 ## 1. Success contract
 
@@ -25,7 +26,7 @@ Write success across six dimensions:
 | Retention | Did users return for recurring value rather than pressure? | reason-for-return, cohort depth, saved continuity, voluntary reactivation |
 | Commercial | Did value support sustainable payment or advertising? | incremental net value after fees, fraud, refunds, support, infra, acquisition |
 | Trust | Did the product preserve agency, privacy, fairness, and accurate expectations? | consent/opt-out, complaints, deletion/export, refund, appeal, trust research |
-| Operability | Can agents maintain quality and recover at the declared scale? | exact-candidate proof, autonomous gates, incident recovery, live readback |
+| Operability | Can the product maintain quality and recover at the declared scale? | representative proof, bounded exposure, recovery behavior, observed live state |
 
 Do not optimize one dimension below the hard floor of another. A retention lift accompanied by coerced use, review manipulation, inaccessible workflows, or increased refund regret is not success.
 
@@ -200,7 +201,24 @@ Hard prohibitions:
 
 `investment-2` — More setup time is not automatically more attachment. Test whether each investment improves later value enough to justify its activation cost.
 
-## 7. Feedback and interface state
+## 7. Experience expression
+
+Define an expression system that supports the promise rather than decorating it:
+
+```text
+experience adjectives and prohibited tones:
+visual hierarchy, density, color, type, icon and illustration language:
+motion, transition, celebration and reduced-motion behavior:
+sound, haptic and silent/assistive alternatives:
+light, dark, high-contrast and platform adaptation:
+design-token and component ownership:
+emotional intensity by onboarding, core work, success, error and recovery:
+performance, battery, accessibility and cultural constraints:
+```
+
+Use feedback intensity to clarify importance and create emotional contrast. Keep the product recognizable across platforms without forcing identical layouts or ignoring native expectations. Route file-level implementation and polish to `interface-craft`.
+
+## 8. Feedback and interface state
 
 Every material action needs a semantic response chain:
 
@@ -225,20 +243,26 @@ Specify for each action:
 
 `feedback-2` — Effects and audio create hierarchy and vibe. Constant maximum intensity lowers clarity, accessibility, battery life, and emotional contrast.
 
-`feedback-3` — Private feedback and public review solicitation are separate state machines owned by `review-solicitation-and-feedback-loop`. Negative sentiment may trigger support, but may not suppress a platform review route offered to otherwise eligible users.
+`feedback-3` — Private feedback and public review solicitation are separate
+artifacts. `review-solicitation-policy` owns neutral public eligibility and
+request state; `product-feedback-learning-loop` owns universal private intake,
+authorized review ingestion, evidence routing and close-loop. Negative
+sentiment may trigger support, but may not suppress a public route offered to
+otherwise eligible users.
 
-## 8. Review checklist
+## 9. Review checklist
 
 - The target user/job/context and promise are falsifiable.
 - First value arrives before unnecessary account, permission, profile, notification, or payment friction.
 - The recurring loop follows real value cadence rather than a forced daily metric.
 - Durable investment is recoverable, portable, privacy-controlled, and non-hostage.
+- Visual, motion, audio and haptic expression reinforces hierarchy and remains accessible, performant and culturally adaptable.
 - Every state-changing action has pending, commit, failure, retry, correction, undo, and support semantics.
 - Comparator mechanisms include tradeoffs and transfer proofs.
 - Retention, commercial, sharing, and review tactics have trust and fatigue countermetrics.
 - Presentation density remains coherent while legitimate capabilities stay discoverable and available.
 
-## 9. Research routes
+## 10. Research routes
 
 These sources informed this original synthesis and were reachable or source-verified on 2026-07-11. Retrieve living policies again for the exact product.
 

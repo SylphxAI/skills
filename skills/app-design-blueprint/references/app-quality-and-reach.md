@@ -69,7 +69,7 @@ Startup tactics:
 
 ## 4. Runtime quality envelopes
 
-Declare numeric assumptions and exact-candidate proof for:
+Declare numeric assumptions and the representative evidence required for:
 
 | Domain | Envelope |
 | --- | --- |
@@ -79,9 +79,9 @@ Declare numeric assumptions and exact-candidate proof for:
 | Data | consistency, conflict, retention, residency, backup, restore, RPO/RTO, migration duration |
 | Operations | alert/recovery time, queue age, moderation/support volume, dependency/API failure |
 
-Use bounded queues, backpressure, idempotency, deduplication, reconciliation, cache invalidation, partitioning, autoscaling, rate limits, circuit breakers, load shedding, graceful degradation, and regional recovery appropriate to the envelope.
+Define the required user-visible behavior under saturation, delay, duplication, disconnection, partial failure, and recovery. Record implementation constraints only where they protect that behavior; leave the owning engineering project free to choose and verify its mechanisms.
 
-`scale-1` — Architecture claims do not earn `scale-verified`; measured exact-candidate load, soak, migration, recovery, and chaos evidence does.
+`scale-1` — Architecture claims do not earn `scale-verified`; representative measurement of sustained workload, migration, degraded conditions, and recovery against the declared envelope does.
 
 ## 5. Offline, sync, and recovery
 
@@ -139,7 +139,9 @@ Machine translation and multi-model judging can scale coverage; neither proves n
 
 ## 8. Privacy, security, SDKs, and dormant state
 
-For each first- or third-party SDK record:
+The App Design Blueprint owns the semantic port: which product capability exists, what data/consent/startup behavior it permits, and how the app degrades. `product-lifecycle-architect` owns the cross-platform provider/version/disclosure/replacement and release registry. Do not maintain those provider facts in both artifacts.
+
+For each semantic first- or third-party SDK port record:
 
 ```text
 capability interface and provider/fallback:
@@ -152,7 +154,7 @@ version/license/SBOM/provenance/privacy manifest:
 conformance/replacement test and kill switch:
 ```
 
-Use typed ports for analytics, crash/diagnostics, consent, attribution, ads, commerce, auth/social, push, deep links, remote config, experimentation, AI, and support. Product semantics must not depend directly on one vendor.
+Use typed ports for analytics, crash/diagnostics, consent, attribution, ads, commerce, auth/social, push, deep links, remote config, experimentation, AI, and support. Product semantics must not depend directly on one vendor. Emit provider-registry requirements as Product Lifecycle handoffs rather than copying the chosen provider inventory here.
 
 Security sweep: threat model identity/session/recovery, secrets, local storage, APIs, webhooks, uploads, sharing, roles, admin/support tools, dependencies, supply chain, abuse, deletion, backup, logs/analytics, and incident response. Raw signing or production secrets never become general agent context.
 

@@ -80,7 +80,7 @@ For each audience edge define trigger, expected value, claim/message, channel, f
 | Retargeting where permitted | reconnect known intent | strict consent, exclusions, frequency, sensitive-data floor |
 | Marketing analytics | reconcile exposure, cost, outcome and incrementality | event/cost ledger, identity, dedupe, privacy |
 
-Build the adapters and operating capability for the full sweep. Activate only where product truth, audience value, consent, platform authority, measurement and economics pass.
+Use the full sweep to avoid blind spots, then select channels from product truth, audience mechanism, recipient value, authority, and the declared program target. Build every selected adapter and operating capability completely; do not build an irrelevant channel solely because it appears in the sweep. Activate only where consent, proof, platform authority, measurement, economics, and trust floors pass.
 
 ## 5. Portfolio states
 
@@ -92,23 +92,31 @@ Proof: hypothesis | implementation-verified | scale-verified | production-proven
 Activation: dormant | shadow | canary | active-bounded | scaled | held | paused | withdrawn
 ```
 
-Never use `not relevant` without a user/channel mechanism explanation. Never use an inactive campaign as evidence that adapter construction can be deferred.
+Never use `not relevant` without a user/channel mechanism explanation. Once a capability is selected, never use an inactive campaign as evidence that its production-shaped adapter can be deferred.
 
 ## 6. Handoffs
 
 - Product design supplies promise, claims, product surfaces, deep links, age/territory and release semantics.
-- Product lifecycle supplies platform/release/global asset/SDK evidence.
+- A sealed Product Program Manifest planning revision may supply release targets,
+  exact upstream references and stable handoff IDs. Marketing never consumes the
+  later observed-state revision that indexes Marketing.
+- Marketing supplies creative briefs, concepts, variant hypotheses and channel
+  requests. `product-asset-production` supplies exact localized media;
+  Distribution/runtime sources supply release and observed-state evidence.
 - Campaign specialist supplies one campaign/offer state machine.
 - Referral specialist supplies qualification/grant/reversal/fraud.
 - Review-feedback specialist supplies platform solicitation and feedback/reputation policy.
 - Distribution/listing specialists supply store eligibility, metadata and live evidence.
-- Marketing returns audience/message/channel/creative manifests, demand evidence, attribution/incrementality, and product feedback without overwriting upstream truth.
+- Marketing returns audience/message/channel/creative-brief manifests, demand
+  evidence, attribution/incrementality, and product feedback for a later
+  observed-state Product Program Manifest revision without overwriting upstream
+  truth or back-referencing the planning revision.
 
 ## 7. Review checklist
 
 - Every message traces to a claim-proof and release artifact.
 - Audience state includes consent, exclusions, fatigue and product eligibility.
-- Full capability construction is separate from activation and spend.
+- Full portfolio assessment is separate from selection; complete construction of selected capabilities is separate from activation and spend.
 - Channel roles are distinct enough to avoid duplicated reach and self-competition.
 - The objective is incremental retained value/contribution with trust and quality floors.
 - Specialist artifacts are referenced, not copied.

@@ -1,5 +1,14 @@
 # Support Operations Patterns
 
+## Contents
+
+1. Issue taxonomy and routing
+2. Ticket state machine
+3. Support tooling
+4. Metrics, quality, and automation
+5. Trust recovery
+6. Self-service and knowledge
+
 ## Issue taxonomy
 
 - account access;
@@ -167,8 +176,8 @@ Rules:
 - Macros and AI answers bind to current source IDs and abstain when authority,
   identity, money, deletion, safety, privacy, or incident state is uncertain.
   They preserve diagnostic context on handoff.
-- Offer visible human/specialist escalation for high-stakes or repeatedly
-  unresolved cases. Never trap a user to improve a deflection metric.
+- Offer visible specialist or owning-authority escalation for high-stakes or
+  repeatedly unresolved cases. Never trap a user to improve a deflection metric.
 - Diagnostics collect only bounded safe context such as product version,
   environment, trace/request ID, state, and attempted steps; never request
   secrets or destructive repetition.

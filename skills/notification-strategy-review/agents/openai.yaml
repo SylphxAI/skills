@@ -1,4 +1,4 @@
 interface:
   display_name: "Notification Strategy Review"
-  short_description: "Notification Strategy review"
-  default_prompt: "Use $notification-strategy-review to handle a realistic product task in this domain."
+  short_description: "Design useful notification policies"
+  default_prompt: "Use $notification-strategy-review to design or audit a notification policy with user value, trigger semantics, consent, fatigue controls, holdouts, measurement, and product-specific frequency hypotheses."

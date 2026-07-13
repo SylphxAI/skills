@@ -1,4 +1,0 @@
-interface:
-  display_name: "Decision Memo Writer"
-  short_description: "Write rigorous decision memos"
-  default_prompt: "Use $decision-memo-writer to write a decision memo for this product or strategy choice."

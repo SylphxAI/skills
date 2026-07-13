@@ -2,14 +2,15 @@
 
 ## 1. Capability record
 
-For every canonical primitive and requested capability produce:
+Evaluate every capability in the canonical sweep and every requested addition. Produce a proportionate record:
 
 ```text
 capability_id and owner:
-user value and app pillar:
+disposition and exact reason:
+user value and app pillar, or inapplicability/floor:
 canonical objects/state authority:
 dependencies and collision boundary:
-complete scale-ready target and verified slices:
+complete scale-ready selected target and verified slices:
 numeric workload/failure envelope and proof:
 build, availability, and presentation state:
 dormant/off-state contract:
@@ -17,12 +18,26 @@ events, metrics, countermetrics, and experiments:
 migration/version compatibility:
 degradation, rollback, compensation, and forward-fix:
 autonomous maintenance policy:
-specialist artifact IDs required:
+specialist handoff-request IDs, contracts, and acceptance tests where selected:
 ```
 
-Build, proof, availability, and presentation are independent. `built` does not mean integrated, available, prominent, scale-verified, or production-proven.
+Disposition, build, proof, availability, and presentation are independent. `built` does not mean integrated, available, prominent, scale-verified, or production-proven.
+
+Use exactly one disposition:
+
+- `integrate-now` — mandatory for a requested or user-promise-essential legitimate capability; complete its production-shaped, scale-ready target and automation now;
+- `reuse-scale-ready` — consume an already complete shared primitive and specify its exact app integration and proof now;
+- `contract-ready` — preserve a tested extension boundary with no runtime or user experience, not a deferred implementation phase;
+- `not-applicable` — cite an exact product-promise, product-type, audience, business-model, attention, semantic, platform, or physical reason;
+- `floor-blocked` — cite the exact law, platform, trust, safety, rights, consent, authority, or physical floor, make the prohibited transition unrepresentable, and define a safe alternative where possible.
+
+Staffing, calendar, implementation cost, missing users, uncertain demand, and speculative ROI may not justify `contract-ready` or `not-applicable` for a selected capability. A named exact dependency may queue build execution, but it is an orthogonal state with unblock proof, not a sixth disposition or a scope escape.
 
 ## 2. Canonical capability sweep
+
+Evaluate every category below. The sweep prevents omission; it does not require inclusion. Select only requested or user-promise-essential legitimate capabilities, reuse complete shared primitives where appropriate, preserve worthwhile zero-cost extension boundaries, and record exact reasons for `not-applicable` or `floor-blocked`. Do not instantiate social, community, collaboration, commerce, AI, or another system merely because it appears in this list.
+
+Accessibility, privacy, security, recovery, observability, localization, performance, migration, and other cross-cutting floors still attach wherever they govern a selected capability. Marking a user-facing system `not-applicable` does not waive the quality, trust, validation, or maintenance obligations of the capabilities that remain.
 
 ### Identity and account
 
@@ -98,6 +113,31 @@ The app blueprint owns only the intended product semantics. Provider transaction
 - autonomous content, localization, dependency, capacity, support, safety and recovery loops.
 
 ## 3. Integration contracts
+
+Instantiate an integration contract and specialist handoff only when its capability is `integrate-now` or `reuse-scale-ready`. For `contract-ready`, record and test only the zero-runtime extension boundary. For `not-applicable` or `floor-blocked`, record the exact reason and any safe alternative; do not create an unused provider, SDK, permission, telemetry, job, asset, network, or attack-surface dependency.
+
+### Monetization Value Exchange Contract
+
+The app blueprint owns the intended value exchange and priority between models. Pricing, provider transactions, advertising, and refund consequences remain specialist artifacts.
+
+```text
+buyer, payer and beneficiary:
+valuable capability/outcome being exchanged:
+primary model: one-time | subscription | usage | IAP | IAA | hybrid
+secondary model and why it does not undermine the primary:
+free/default utility and paid boundary:
+purchase/upgrade moment after value is understood:
+payer, non-payer, child, territory and platform treatment:
+retained-value, conversion, refund, regret, support and cannibalization measures:
+pricing/packaging, payment, advertising and refund handoff requests:
+```
+
+Rules:
+
+- When monetization is selected, state one primary commercial model; do not list every model as strategy. A free, public-interest, bundled, or otherwise non-commercial app may mark commerce `not-applicable` for an exact business-model reason and must then keep payment and advertising runtime truly absent.
+- Where the app creates honest durable or recurring paid value, evaluate purchase, IAP, or subscription as the primary exchange before relying on interruption-based IAA. Do not force paid mechanics where no credible paid value exists.
+- Ads are a contextual or supplementary model unless product evidence supports them as primary. Preserve useful core behavior, consent, age modes, payer/ad-free treatment, startup and low-end budgets.
+- Use `saas-subscription-pricing` when subscription/SaaS packaging is the independent decision, `payment-platform-readiness` for provider/ledger correctness, and `ad-monetization-review` for in-product advertising.
 
 ### Refund Consequence Contract
 
@@ -176,6 +216,8 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 
 | Artifact | Primary owner |
 | --- | --- |
+| App monetization model and value-exchange semantics | `app-design-blueprint` |
+| Subscription/SaaS price and package decision | `saas-subscription-pricing` |
 | Provider payment, ledger, settlement and entitlement projection | `payment-platform-readiness` |
 | Refund consequence, repurchase, restriction, support and appeal | `refund-and-support-flow-review` |
 | Subscription access state | `payment-platform-readiness` |
@@ -184,16 +226,19 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 | Daily rewards and streaks | `daily-reward-and-streak-review` |
 | Referral qualification, grant, reversal and fraud | `referral-loop-review` |
 | One promotion/update/cross-promotion campaign | `promotion-campaign-review` |
-| Public review plus private feedback close-loop | `review-solicitation-and-feedback-loop` |
+| Platform-specific authentic public review request policy | `review-solicitation-policy` |
+| Universal private feedback, review ingestion and product-learning close-loop | `product-feedback-learning-loop` |
 | Event/identity/metric instrumentation | `product-analytics-instrumentation-review` |
 | Offline/sync conflict | `offline-sync-conflict-review` |
 | Store/channel release evidence | `app-store-distribution-readiness` |
-| Localized experience and LQA | `product-lifecycle-architect` for the cross-channel program; this blueprint owns app semantics |
+| Localized experience semantics | `app-design-blueprint` |
+| Deterministic product capture, cross-channel asset transformation, localized production and LQA pack | `product-asset-production` |
 | Multi-channel marketing control plane | `marketing-automation-blueprint` |
+| Product Program Manifest composition/index of independently owned sibling artifacts | `product-lifecycle-architect` |
 
 ## 5. Dangerous interaction tests
 
-Test combinations, not only isolated systems:
+Test applicable combinations among selected capabilities, not only isolated systems. A `contract-ready` boundary also needs proof that its module remains dormant and zero-cost; an irrelevant capability does not create a runtime merely to satisfy a fixture.
 
 - refund after consumable/reward was spent, transferred, shared, or used competitively;
 - update benefit retried offline or reversed after rollback;
@@ -210,9 +255,11 @@ Test combinations, not only isolated systems:
 
 ## 6. Completion check
 
-- Every canonical primitive has a capability record or exact hard-floor blocker.
-- App availability and presentation never rely on arbitrary engagement progression.
-- State owners, specialist artifact IDs, and collision boundaries are explicit.
-- Refund, update, cross-promotion, and review contracts have idempotency, reversals, evidence, support, and abuse states.
-- Dangerous combinations have automated fixtures and recovery proof.
+- Every swept capability has one defensible disposition; every requested or user-promise-essential legitimate capability is fully selected as `integrate-now` or `reuse-scale-ready` unless an exact floor blocks it.
+- `not-applicable` rests on product fit, audience, business model, attention, semantics, platform, or physical reality—not staffing, cost, missing users, uncertain demand, or speculative ROI.
+- Selected app capabilities are available without arbitrary engagement progression; `contract-ready`, `not-applicable`, and `floor-blocked` are absent decisions rather than hidden integrated features.
+- State owners, conditional specialist artifact IDs, and collision boundaries are explicit.
+- Selected refund, update, cross-promotion, and review contracts have idempotency, reversals, evidence, support, and abuse states.
+- Selected dangerous combinations have automated fixtures and recovery proof.
 - No specialist live fact is copied into the app blueprint.
+- No narrow utility carries irrelevant social, community, commerce, or AI runtime merely to complete the sweep.

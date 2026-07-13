@@ -199,3 +199,8 @@ support contact rate, complaint/unsubscribe, fatigue, fairness, economy health,
 and long-term value. Define scale, hold, pause, rollback, and sunset thresholds
 before activation. A day-zero revenue win that increases churn, refunds, support,
 or trust loss is not a successful campaign.
+
+For genuinely ambiguous but admissible choices, attach the skill's bounded
+risk-reward record. Explicit platform prohibitions, deceptive scarcity/value,
+consent bypass, review manipulation, child harm, or unlawful behavior never enter
+an expected-value test as ordinary downside.

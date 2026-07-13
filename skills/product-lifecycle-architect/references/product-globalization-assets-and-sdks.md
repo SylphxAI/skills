@@ -17,29 +17,41 @@ Use [Unicode CLDR/LDML](https://unicode.org/reports/tr35/), BCP 47 and [W3C Inte
 
 Agent translation scale does not prove native nuance. Preserve linguistic/cultural uncertainty and gather target-user evidence; never call model agreement native proof.
 
-## 2. Localized asset factory
+## 2. Localized product-media handoff
 
-Create one canonical storyboard/capture manifest and derive channel/locale variants:
+`product-asset-production` owns the independently acceptable **Product Asset
+Production Pack**: deterministic capture, source scenes, finished screenshots,
+key/capsule art, trailers and channel variants, localization/accessibility,
+rights/provenance, exact-file digests, and QA. Product Lifecycle owns only the
+program coverage, dependency, and acceptance record for that pack.
+
+When orchestrated, the planning Product Program Manifest revision supplies
+release targets and stable handoff IDs. The selected Marketing branch and/or
+Store Listing branch supplies its exact brief/request revision. Product Asset
+Production consumes only those applicable revisions and returns accepted files
+when exact media is required. Only selected downstream branches consume the
+pack. Distribution owns upload, processing, submission, release, and live
+readback when publication is selected. The later observed-state Program
+Manifest revision indexes the applicable exact outputs without copying facts.
 
 ```text
-asset_id, purpose, audience and claim-proof IDs:
-source files, rights, licenses, music/voice/talent and AI provenance:
-exact app/game build, fixture account, seed/state and capture script:
-locale, territory, device, input, aspect, safe zones and accessibility:
-screenshots, feature graphics, capsules, icons, trailers, short/long video:
-captions, transcript, audio description, alt text and thumbnail:
-store, website, YouTube, X and social transformations:
-PII/secret/OCR, clipping, policy, age, claim and brand checks:
-output digest, upload receipt, live URL/readback and expiry:
+[planning manifest revision] + App/Game truth
++ selected Marketing and/or Listing brief/request
+-> Product Asset Production Pack when exact media is required
+-> selected listing and/or campaign revision
+-> Distribution Evidence Pack when publication is selected
+-> observed-state manifest revision when orchestrated
 ```
 
-Automate deterministic scene setup, capture, crop/reflow, rendering, codec/size adaptation, captions, localization, QA, upload, status polling and readback. Do not hand-edit derived variants without updating the source manifest.
-
-YouTube and X are first-class promotional outputs. Current APIs, access tiers, quotas, disclosure fields, moderation and synthetic-media rules are volatile; retrieve them live. Official routes: [YouTube videos.insert](https://developers.google.com/youtube/v3/docs/videos/insert), [X media upload](https://docs.x.com/x-api/media/upload-media), and [X create post](https://docs.x.com/x-api/posts/create-post).
+Reject any same-revision back-reference. A changed downstream request creates a
+new brief or pack revision. YouTube and X remain first-class requested outputs
+when selected; their current API, format, disclosure, moderation, and
+synthetic-media requirements are retrieved by the production/distribution
+owners at execution rather than copied into this program reference.
 
 ## 3. Vendor-neutral SDK adapter registry
 
-Define ports before providers:
+Consume semantic port, data, consent, startup and degradation requirements from the App/Game Design Blueprint. Product Lifecycle owns provider selection, versions, packaging, disclosure, conformance, replacement, and release evidence. Define ports before providers:
 
 ```text
 analytics | crash-diagnostics | consent | attribution | ads-mediation

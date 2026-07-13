@@ -16,9 +16,9 @@ frequency/fatigue, provider/mediation portfolio, economics, experiments, and
 shutdown. Do not own whole-app/game design, buyer payment ledgers, the broader
 game economy, one marketing campaign, or provider SDK implementation details.
 
-Begin with an envelope conforming to
-[`references/product-artifact-envelope.schema.json`](references/product-artifact-envelope.schema.json).
-Consume sibling artifacts by ID/version/digest.
+Use a draft artifact ID and consume sibling decisions by owner and explicit
+contract. Let deterministic delivery tooling seal serialized versions and
+digests later; never fabricate them in a design response.
 
 ## Agent-first invariant
 
@@ -55,7 +55,7 @@ call until its exact authority and exposure gate pass.
 8. Evaluate incremental retained contribution after provider/platform fees,
    IAP/subscription cannibalization, reward cost/inflation, churn, support,
    fraud, privacy risk, latency, battery, and low-end performance.
-9. Specify exact-candidate tests, capped canaries, scale/hold/pause/withdraw
+9. Specify candidate-specific tests, capped canaries, scale/hold/pause/withdraw
    predicates, automatic shutdown, and live readback.
 
 ## Source verification
@@ -108,7 +108,8 @@ Return one typed Ad Monetization Contract containing:
 7. event schema, reconciliation, fraud/brand-safety, and support evidence;
 8. experiment/canary plan with scale, hold, pause, withdraw, and live-readback
    predicates;
-9. specialist handoffs by artifact ID/version/digest.
+9. specialist handoffs by draft ID, owner, required input/output, and acceptance
+   questions, without fabricated proof.
 
 Complete only when another agent can implement every state, prove reward
 authority and low-end behavior, explain every impression/suppression/grant, and

@@ -7,21 +7,29 @@
 | Product promise, user experience, capability semantics | `app-design-blueprint` or `game-design-blueprint` |
 | App availability/presentation or game progression/population exposure | corresponding design blueprint |
 | Evergreen game-world fairness | `game-design-blueprint` |
-| Cross-domain dependency graph and declared Definition of Done | `product-lifecycle-architect` |
+| Cross-domain dependency graph, release targets, stable handoffs and declared Definition of Done | planning revision of `product-lifecycle-architect` |
 | Market evidence | `market-research-synthesis` |
-| Pricing/packaging decision | commercial decision owner and billing SSOT |
+| App monetization model and value-exchange semantics | `app-design-blueprint` |
+| Subscription/SaaS pricing and packaging decision | `saas-subscription-pricing` |
+| Other pricing/packaging decisions | declared commercial decision owner and billing SSOT |
 | Provider transaction, ledger and settlement integration | `payment-platform-readiness` |
 | Refund customer/account consequence and appeal | `refund-and-support-flow-review` |
 | Subscription entitlement semantics | `payment-platform-readiness` |
 | Analytics event/identity contract | `product-analytics-instrumentation-review` |
-| Public review/private feedback loop | `review-solicitation-and-feedback-loop` |
+| Platform-specific authentic public review request policy | `review-solicitation-policy` |
+| Universal private feedback, review ingestion and product-learning close-loop | `product-feedback-learning-loop` |
 | One promotion, update-reward or cross-promotion campaign | `promotion-campaign-review` |
 | Referral qualification, grant, reversal and fraud | `referral-loop-review` |
 | Marketing channel, budget and creative control plane | `marketing-automation-blueprint` |
 | Listing metadata/creative conversion design | `store-listing-optimization` |
 | Channel submission/certification/release evidence | `app-store-distribution-readiness` |
-| Localization QA and market expansion | localization specialist |
-| Actual source/build/release/runtime truth | Git, CI, artifact registry, store/partner and runtime systems |
+| Localized product meaning | corresponding App/Game Design Blueprint |
+| Exact localized product capture, media transformation, accessibility, rights/provenance and file QA | `product-asset-production` |
+| Campaign creative brief/concept and paid/organic variants | `marketing-automation-blueprint` |
+| Listing narrative, asset selection and channel metadata | `store-listing-optimization` |
+| SDK semantic ports and product behavior | corresponding App/Game Design Blueprint |
+| SDK provider/version/disclosure/replacement and release registry | `product-lifecycle-architect` |
+| Actual source/build/release/runtime truth | Owning source, build, artifact, store/partner and runtime systems; an observed-state manifest revision references their evidence |
 
 The program manifest references these artifacts. It never becomes a prose mirror of their live facts.
 
@@ -40,29 +48,30 @@ The program manifest references these artifacts. It never becomes a prose mirror
 | Distribution | Which exact artifact, signing/provenance, channel, submission, review/certification, rollout and recovery evidence exists? |
 | Marketing | Which truth/claims, audience/consent, channel, creative, spend, measurement and reputation artifacts exist? |
 | Trust/operations | Which security, privacy, child, moderation, support, observability, backup, incident, shutdown and appeal artifacts exist? |
-| Delivery | Which repo/branch/commit/artifact/environment is the candidate, which gates ran, and what live readback proves it? |
+| Delivery | Which versioned artifact and channel/environment state is observed, which acceptance evidence exists, and what live readback proves it? |
 
 Every row receives a complete target or exact hard-floor/non-applicability reason. “Later,” “too expensive,” “no users,” and “uncertain ROI” are invalid states.
 
 ## 3. Product Program Manifest record
 
 ```text
-program_id and product_id:
+program_id, product_id and manifest phase (planning | observed-state):
+superseded manifest revision when observed-state:
 objective, constraints, ruin boundaries and DoD:
-upstream design artifact ID/version/digest:
+upstream design input reference with artifactId/artifactVersion/artifactRevision/artifactState/fulfillsHandoffId, plus artifactDigest and digestRule only when sealed:
 
 artifact registry:
-| artifact ID | kind | owner skill/system | canonical facts | inputs | outputs | proof | release state |
+| artifact ID | kind | owner skill/system | artifactVersion/artifactRevision/artifactState | sealed-input digest reference if applicable | canonical facts | inputs | outputs | proof | release state |
 
 capability registry:
 | capability | owner artifact | construction | proof | exposure/release | scale envelope | migration/recovery |
 
 dependency DAG and critical path:
-parallel agent lanes and collision boundaries:
-serialized schemas/config/signing/release operations:
+delivery order and collision boundaries:
+shared-state and external-authority boundaries:
 handoff acceptance fixtures:
 external authority and partner gates:
-delivery targets and exact-candidate evidence:
+delivery targets and observed acceptance evidence:
 automated maintenance/recovery policies:
 blockers and next machine actions:
 ```
@@ -71,19 +80,29 @@ blockers and next machine actions:
 
 Producer:
 
-1. emits schema-conforming envelope and immutable version/digest;
+1. emits a draft or sealed envelope with `artifactVersion`,
+   `artifactRevision`, `artifactState`, and stable producer-owned `handoffId`
+   values, never a top-level self-digest;
 2. owns only declared canonical facts;
 3. labels assumptions and proof state;
 4. supplies contract fixtures and acceptance evidence;
-5. declares migration/supersession and notification rules.
+5. declares migration/supersession and notification rules;
+6. emits downstream handoff requirements but never back-references a future consumer.
 
 Consumer:
 
-1. verifies ID/version/digest and compatibility;
+1. verifies `artifactId`, `artifactVersion`, `artifactRevision`, `artifactState`, `fulfillsHandoffId`, and compatibility; a sealed input reference must also carry a reproducible `artifactDigest` and `digestRule`;
 2. references rather than copies canonical facts;
 3. rejects missing/expired/conflicting inputs with a typed blocker;
 4. records consumed version in its own envelope;
 5. revalidates when the producer supersedes a material contract.
+
+The observed-state Product Program Manifest is the only revision that indexes
+the complete sibling set. A specialist may consume an immutable planning
+revision, and the observed-state revision may later index that specialist's
+exact output. Reject any graph in which one revision both consumes and indexes
+the same artifact, two artifacts require each other's current revision, or a
+consumer resolves a moving alias such as “latest manifest.”
 
 ## 5. Collision tests
 
@@ -97,6 +116,8 @@ Consumer:
 - platform capability is marketed before certification/availability;
 - campaign deep link targets unavailable, unauthorized, refunded or region-blocked state;
 - rollback would erase committed purchases, grants, user work or cross-device consistency.
+- one manifest revision back-references a specialist that consumed that same
+  revision, or any handoff lacks a stable producer-owned ID.
 
 ## 6. Delivery truth ladder
 

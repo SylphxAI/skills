@@ -5,8 +5,8 @@ description: Produce or audit one cross-domain launch admission verdict for an a
 
 # Launch Readiness Review
 
-Produce a **Launch Admission Record** that makes a release decision from exact
-artifacts and machine-verifiable gates rather than a ceremonial checklist.
+Produce a **Launch Admission Record** that makes a proportional release decision
+from exact evidence rather than a ceremonial checklist.
 
 ## Atomic boundary
 
@@ -15,26 +15,19 @@ conditions, launch watch, authority, and recovery drill. Consume sibling facts
 by ID/version/digest; do not recreate product design, store submission, payment,
 marketing, security, or support artifacts.
 
-Use the [shared product artifact envelope](references/product-artifact-envelope.schema.json).
-Missing evidence becomes a typed handoff/blocker, never an invented pass.
-
-## Agent-first invariant
-
-Launch admission does not decide which production capabilities were worth
-building. The complete declared target and automated operating plane should
-already exist. Decide exposure of the exact candidate using current proof,
-bounded canaries, and recovery. Do not defer scale, localization, accessibility,
-low-end, support, observability, migrations, or rollback to “after launch.”
+Use the shared product artifact envelope when composing with repository product
+artifacts. Missing required evidence is a blocker or explicit handoff, never an
+invented pass. Do not require an envelope for a standalone review with no such
+upstream contract.
 
 ## Workflow
 
 1. Identify exact commit/build/content/config/model/policy/migration digests,
    launch type, audiences/age modes, channels/territories, blast radius,
    decision owner, change window, and irreversible harm boundaries.
-2. Read `references/launch-readiness-patterns.md`. Build a dependency DAG of
-   required design, implementation, scale, security/privacy, accessibility,
-   localization, performance, data/migration, payment/refund, distribution,
-   analytics, support/incident, marketing, authority, and recovery evidence.
+2. Read `references/launch-readiness-patterns.md`. Select only gates applicable
+   to the declared candidate, audience, channel, data, money, regulation, and
+   blast radius. Record why a domain is applicable or not applicable.
 3. Classify each gate `pass`, `watch`, `blocked`, or `not-applicable-with-proof`.
    Separate construction, proof, exposure, and external authority. Do not turn
    an unknown into N/A.
@@ -42,12 +35,11 @@ low-end, support, observability, migrations, or rollback to “after launch.”
    canary/staged rollout, data/backward compatibility, migrations/replay,
    feature/config kill switches, rollback/forward-fix, derived-state/cache
    recovery, and restoration drills.
-5. Define launch room automation: telemetry/SLOs, business/trust countermetrics,
-   support/safety routing, alert ownership, decision leases, spend/exposure caps,
-   pause/withdraw, communications, and live readback.
-6. Issue `go`, `conditional-go`, `hold`, or `no-go`. Conditions are executable
-   gates with owner, deadline, exact evidence, and automatic consequence—not a
-   promise to fix later.
+5. Define the smallest launch watch appropriate to the risk: telemetry and
+   countermetrics, alert ownership, exposure caps where useful, pause/withdraw,
+   communications, and live readback.
+6. Issue `go`, `conditional-go`, `hold`, or `no-go`. Every condition needs an
+   owner, deadline, exact proof, and consequence; it is not a vague promise.
 
 ## Source verification
 
@@ -78,8 +70,8 @@ explicit floor and may not be self-attested.
   recovery.
 - A green workflow exit is not live proof. Verify deployed/released identity and
   user-visible or telemetry readback.
-- Do not let the launch optimizer change its own gates, spend caps, rollback,
-  consent, entitlements, or evidence thresholds.
+- Do not add unrelated gates merely for checklist completeness; proportionality
+  must never erase a requirement that is actually applicable.
 
 ## Output contract
 
@@ -91,10 +83,10 @@ Return one typed Launch Admission Record with:
 3. blocker records with owner, exact proof, deadline, and automatic consequence;
 4. canary/staged exposure, migration, rollback/forward-fix, cache/derived-state,
    and restoration drill evidence;
-5. launch-room telemetry, business/trust/support/safety watch, leases, caps,
-   pause/withdraw, and communication plan;
+5. proportionate launch watch, pause/withdraw, communication, and live-readback
+   plan;
 6. `go | conditional-go | hold | no-go` verdict with machine-readable reasons;
 7. post-release live-readback and closeout evidence.
 
-Complete only when the exact candidate—not a nearby build—can be admitted,
-halted, recovered, and observed without a manual judgment gap.
+State unresolved external authority and manual decisions explicitly. Do not call
+the launch complete until the exact released candidate has live readback.

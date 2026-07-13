@@ -17,8 +17,9 @@ test fixtures. Do not own whole-app experience, server business rules, backup
 retention, or collaboration permissions except as consumed contracts.
 
 Begin with the [shared product artifact envelope](references/product-artifact-envelope.schema.json)
-and digest-pinned object, identity, permission, privacy, and server-authority
-inputs.
+and object, identity, permission, privacy, and server-authority inputs that each
+name the exact producer contract through `fulfillsHandoffId`; digest-pin only
+sealed inputs.
 
 ## Agent-first invariant
 

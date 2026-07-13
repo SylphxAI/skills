@@ -5,7 +5,7 @@ description: "Design or critically review a complete app as a coherent, agent-fi
 
 # App Design Blueprint
 
-Create one coherent application experience and a complete scale-ready capability architecture. Start from the recurring user job and fastest credible path to value; use autonomous agents to construct the full declared target in verified slices, then make every legitimate capability available to authorized users without artificial progression gates.
+Create one coherent application experience and a complete scale-ready architecture for its selected capabilities. Start from the recurring user job and fastest credible path to value; use autonomous agents to construct every requested or promise-essential selected target in verified slices, then make legitimate selected capabilities available to authorized users without artificial progression gates.
 
 ## Objective
 
@@ -21,9 +21,19 @@ Use a separate specialist when its artifact could be accepted or rejected withou
 
 ## Agent-first invariant
 
-Assume autonomous construction capacity is elastic. Human headcount, human-hours, calendar estimates, missing users, uncertain demand, or speculative pre-build ROI may not reject or postpone a reversible capability. Build the complete production-shaped target and autonomous operating plane now, using small exact-candidate slices for verification and parallelism rather than reduced final scope. Do not plan a later hardening, automation, i18n, accessibility, low-end, HTML5, migration, scale, observability, or replatform phase.
+Assume autonomous construction capacity is elastic. Human headcount, human-hours, calendar estimates, implementation cost, missing users, uncertain demand, or speculative pre-build ROI may not reject or postpone a requested or promise-essential reversible capability once selected.
 
-Every canonical primitive and every user-requested legitimate capability receives a scale-ready contract unless blocked by an exact legal, safety, consent, authority, physical, or dependency floor. Product fit controls its manifestation and placement, not whether the reusable primitive is robust.
+Run an exhaustive capability sweep, but do not force every possible system into every app. Give each capability one disposition:
+
+- `integrate-now` — requested or required by the user promise; build the complete production-shaped, scale-ready capability and its automation now;
+- `reuse-scale-ready` — consume an already complete shared primitive and design the exact app-specific integration and proof now;
+- `contract-ready` — preserve a tested extension boundary because future compatibility is valuable, while keeping the capability absent from the runtime and user experience;
+- `not-applicable` — cite an exact product-promise, product-type, audience, business-model, attention, semantic, platform, or physical reason; human effort, implementation cost, missing users, uncertain demand, and speculative ROI are invalid reasons;
+- `floor-blocked` — cite the exact legal, platform, trust, safety, rights, consent, authority, or physical floor, make the prohibited transition unrepresentable, and define the safe alternative where one exists.
+
+Requested or promise-essential legitimate capabilities must be `integrate-now` or `reuse-scale-ready` unless an exact floor blocks them. For every `integrate-now` capability, default to `build-to-scale-now`: define the complete target, operating behavior, and automation now, using small end-to-end slices to verify risk without reducing final scope. Do not plan a later hardening, automation, i18n, accessibility, low-end, HTML5, migration, scale, observability, or replatform phase. Unknown demand limits certainty and exposure; it neither defers a selected capability nor selects an irrelevant one.
+
+Product fit controls selection, manifestation, and placement. Cross-cutting quality and trust floors apply to every selected capability they govern; they are not optional feature rows.
 
 An unavailable module is truly dormant: no startup work, SDK initialization, permission request, data collection, network call, asset download, background job, memory reservation, public endpoint, or undeclared service dependency.
 
@@ -31,7 +41,22 @@ Agent-first is not permission to expose incoherent features, ignore physical bud
 
 ## Composition contract
 
-Begin the artifact with an envelope conforming to [`references/product-artifact-envelope.schema.json`](references/product-artifact-envelope.schema.json). Own user promise, experience semantics, app capability states, and app-side integration contracts. Reference specialist artifacts by ID/version/digest; do not restate their live facts. A missing sibling creates a typed handoff request.
+Treat the blueprint as an upstream design artifact. Start it with `schemaVersion`, `artifactId`, `productId`, `artifactKind`, `ownerSkill`, `artifactVersion`, `artifactRevision`, `artifactState`, `inputArtifacts`, `proofState`, assumptions, and handoff requests. A top-level artifact never carries `artifactDigest` because it cannot self-hash.
+
+Use [`references/product-artifact-envelope.schema.json`](references/product-artifact-envelope.schema.json) for a structured artifact. Every input reference names the producer contract through `fulfillsHandoffId`. A draft input reference uses `artifactId`, `artifactVersion`, `artifactRevision`, and `artifactState: draft`; a sealed input reference additionally requires `artifactDigest` and `digestRule: sha256-exact-bytes`. Never invent any field.
+
+The dependency direction is acyclic:
+
+```text
+App Design Blueprint
+-> specialist artifacts
+-> marketing artifacts when required
+-> Product Program Manifest as the downstream composition index
+```
+
+Emit specialist **handoff requests** with the required contract and acceptance tests. Do not revise the upstream blueprint merely to add the digest of a specialist that consumed it. The Product Program Manifest references both artifacts later.
+
+When orchestration supplies immutable planning Product Program Manifest revision N as context, treat N and observed-state revision N+1 as distinct graph nodes: `N -> specialist outputs -> N+1`. A specialist never mutates or back-references N and never consumes N+1 that it helps produce.
 
 ## Resource guide
 
@@ -42,12 +67,20 @@ Begin the artifact with an envelope conforming to [`references/product-artifact-
 
 Read all references for a whole-app program. For a bounded redesign, load only the touched references and state what remains unassessed.
 
+Capability lists in every reference are sweep candidates, not inclusion mandates. Apply the disposition invariant before any instruction to build, port, integrate, or hand off a primitive: only selected capabilities receive app-specific runtime work, `contract-ready` remains a tested zero-runtime boundary, and `not-applicable` creates no implementation or provider handoff.
+
 ## App availability model
 
-Do not copy game progression gates into an app. Track three orthogonal states:
+Do not copy game progression gates into an app. Choose disposition first, then track four orthogonal states for capabilities with design or runtime work:
 
 ```text
+Disposition: integrate-now | reuse-scale-ready | contract-ready | not-applicable
+| floor-blocked
+
 Build: build-to-scale-now | queued-by-exact-dependency | floor-blocked | retired
+
+Proof: hypothesis | design-validated | implementation-verified | scale-verified
+| production-proven
 
 Availability: available | permission-gated | role-gated | entitlement-gated
 | semantic-prerequisite-gated | age-or-territory-policy-gated | degraded
@@ -57,7 +90,9 @@ Presentation: primary | contextual | advanced-or-settings | searchable | admin-o
 
 Rules:
 
-- Every legitimate user-facing capability is discoverable and available to authorized and entitled users by default after validation.
+- Every `integrate-now` or `reuse-scale-ready` legitimate user-facing capability is discoverable and available to authorized and entitled users by default after validation.
+- `contract-ready`, `not-applicable`, and `floor-blocked` are explicit product decisions, not hidden integrated features. They add no user-facing reachability or undeclared runtime work.
+- `queued-by-exact-dependency` must name the blocking dependency and unblock proof. It is a build state for selected work, not a sixth disposition or permission to reduce the target.
 - Never deny core utility by usage level, tenure, streak, churn risk, spend, arbitrary onboarding completion, or an engagement score.
 - Progressive disclosure may manage cognitive load; it cannot secretly withhold functional entitlement.
 - A semantic prerequisite means required state exists, such as data before export or a collaborator before co-editing; it is not a retention trick.
@@ -71,15 +106,15 @@ Rules:
 3. Write one falsifiable promise: who reaches what outcome, through what distinctive mechanism, and what observable event proves first value.
 4. Benchmark three to five relevant products by mechanism and tradeoff: direct category, adjacent workflow, retention, collaboration, commerce, and technical reach leaders as applicable. Synthesize; do not cargo-cult.
 5. Map jobs to workflows, objects, state authorities, navigation, search, creation, decisions, errors, recovery, and feedback before styling screens.
-6. Give every capability a record: user value, owner, data/state contract, dependencies, scale/failure envelope, verified slices, availability/presentation state, telemetry, migration, dormant-state contract, degradation, rollback/compensation/forward-fix, and specialist handoff.
+6. Give every swept capability a proportionate record: disposition and exact reason; user value or inapplicability/floor; owner; state and dependency boundary; complete target and verified slices for selected capabilities; build/proof/availability/presentation; telemetry, migration, dormant state, degradation, recovery, and specialist handoff where applicable. Do not invent runtime architecture for `not-applicable` capabilities or use `contract-ready` to defer selected work.
 7. Preserve a fast path from cold start to useful interaction. Prefer guest, local-first, sample data, import, template, or demo paths where the product permits; ask for accounts, permissions, payment, tracking, or profile investment only when their value is clear.
-8. Build durable investment through user-created data, settings, collections, history, mastery, identity, relationships, and reputation with recovery, export, deletion, portability, versioning, and returning-user restoration. Never use loss threats or forced payment to retain that value.
-9. Treat notifications, rewards, reviews, ratings, cross-promotion, referrals, update benefits, personalization, and gamification as delivery or reinforcement systems. Each needs an underlying user-value hypothesis, neutral controls, countermetrics, and a specialist contract.
+8. Build durable investment from the user-created data, settings, collections, history, mastery, identity, relationships, or reputation selected by the app promise, with recovery, export, deletion, portability, versioning, and returning-user restoration. Never use loss threats or forced payment to retain that value.
+9. Treat selected notifications, rewards, reviews, ratings, cross-promotion, referrals, update benefits, personalization, and gamification as delivery or reinforcement systems. Each selected system needs an underlying user-value hypothesis, neutral controls, countermetrics, and a specialist contract.
 10. Define immediate feedback for every state-changing action: pending, optimistic, committed, failed, retryable, reconciled, undone, and externally authoritative. Optimistic UI may not falsely confirm money, entitlement, sharing, deletion, or irreversible work.
-11. Design HTML5/PWA, responsive mobile/tablet/desktop, keyboard, touch, pointer, controller where relevant, accessibility, i18n, offline/sync, and low-end tiers in the initial semantic contracts. One stretched layout is not cross-platform design.
-12. Produce an autonomous build graph with canonical owners, dependency DAG, disjoint agent packets, collision boundaries, exact-candidate validation, versioned migrations, canaries, live readback, and automated recovery.
-13. Close continuous improvement as `observe -> diagnose -> propose -> reproduce -> validate -> canary -> promote_or_rollback -> live_readback -> learn`. Separate proposer, validator, promoter, and watchdog authority.
-14. Retrieve current platform, store, payment, review, notification, child, privacy, accessibility, advertising, and regulated-category authority at execution. Static skill text is a route, never a current compliance verdict.
+11. Design every selected platform and reach capability—HTML5/PWA, mobile/tablet/desktop, keyboard, touch, pointer, controller where relevant, accessibility, i18n, offline/sync, and low-end tiers—in the initial semantic contracts, and disposition the rest. One stretched layout is not cross-platform design.
+12. Produce an implementation handoff with canonical owners, an acyclic dependency order, collision boundaries, acceptance evidence, migrations, exposure/recovery behavior, and maintenance automation. Leave repository, CI, deployment, and runtime mechanics to their owning projects.
+13. Close continuous improvement as `observe -> diagnose -> hypothesize -> validate -> expose_boundedly -> observe -> keep_or_recover -> learn`. Preserve evidence lineage, declared authority, countermetrics, and safe recovery; do not let generated proposals certify themselves as observed results.
+14. Retrieve current platform, store, payment, review, notification, child, privacy, accessibility, advertising, and regulated-category authority for every selected or risk-relevant surface at execution. Static skill text is a route, never a current compliance verdict.
 
 ## Workflow
 
@@ -97,29 +132,32 @@ Map cold launch through first rendered state, meaningful action, understood feed
 
 ### 4. Sweep the complete capability portfolio
 
-Cover identity, accounts, data lifecycle, creation/editing, offline/sync, collaboration, sharing, social/community, notifications/inbox, commerce, integrations, AI/automation, admin/support, feedback/reviews, analytics/experiments, cross-promotion, update adoption, safety, platform adapters, accessibility, localization, and low-end tiers. Add every requested capability. Build once; configure coherent manifestations.
+Evaluate identity, accounts, data lifecycle, creation/editing, offline/sync, collaboration, sharing, social/community, notifications/inbox, commerce, integrations, AI/automation, admin/support, feedback/reviews, analytics/experiments, cross-promotion, update adoption, safety, platform adapters, accessibility, localization, low-end tiers, and every requested addition. Assign every row a disposition and specialist handoff where applicable; fully specify every `integrate-now` item and exact `reuse-scale-ready` integration. A sweep prevents omission; it does not force an incoherent feature into a narrow utility.
 
 ### 5. Design retention and durable ownership
 
-Map recurring value loops, progress/continuity, saved work, customization, goals, collaboration, content, recognition, and comeback paths. Specify the Durable Investment, Release Benefit, Cross-Promotion Placement, Refund Consequence, and Review/Feedback handoff contracts where applicable.
+Map the recurring value loops, progress/continuity, saved work, customization, goals, collaboration, content, recognition, and comeback paths selected by the promise. Specify the Durable Investment, Release Benefit, Cross-Promotion Placement, Refund Consequence, and Review/Feedback handoff contracts where applicable; otherwise preserve the capability disposition.
 
-### 6. Engineer quality and reach
+### 6. Define quality and reach
 
-Set contextual startup, interaction, frame, memory, storage, network, battery, thermal, sync, error, accessibility, and localization budgets against representative devices/browsers. Design responsive/adaptive views and progressive enhancement.
+Set contextual startup, interaction, frame, memory, storage, network, battery, thermal, sync, error, accessibility, and localization budgets for selected capabilities against representative devices/browsers. Design responsive/adaptive views and progressive enhancement for every selected platform.
 
-### 7. Specify trust and autonomous operations
+### 7. Specify trust and operating behavior
 
-Threat-model authentication, account recovery, privacy, deletion/export, payments/refunds, collaboration, sharing, UGC, minors, AI, abuse, moderation, support, backups, incidents, migration, and shutdown. Make every enforcement action auditable and appealable.
+Threat-model selected and risk-relevant authentication, account recovery, privacy, deletion/export, payments/refunds, collaboration, sharing, UGC, minors, AI, abuse, moderation, support, backups, incidents, migration, and shutdown surfaces; verify that unselected modules remain absent. Make every enforcement action auditable and appealable.
 
-### 8. Build validation and delivery graph
+### 8. Define validation and implementation handoffs
 
-Sequence verified slices that converge on the full target. Give every stage an exact artifact, hypothesis, automated proof, user evidence needed, pass/watch/fail predicates, machine action, and recovery. Synthetic agents expand coverage but cannot prove comprehension, cultural meaning, trust, usefulness, or delight.
+Sequence verified slices that converge on the complete selected target. Give every stage an artifact identity, hypothesis, required automated and user evidence, pass/watch/fail predicates, next action, and recovery expectation. Synthetic agents expand coverage but cannot prove comprehension, cultural meaning, trust, usefulness, or delight.
 
 ## Hard gates
 
 Reject or redesign an output that:
 
-- proposes a conventional MVP, later hardening, manual operations, future port, or speculative-ROI scope cut;
+- defers a requested or promise-essential legitimate capability because of staffing, calendar, implementation cost, missing users, uncertain demand, or speculative ROI;
+- forces product-incoherent social, community, collaboration, commerce, AI, or other capability into an app without user value, or treats the capability sweep as a feature checklist;
+- uses `contract-ready` or `not-applicable` as a staging label for selected work;
+- proposes a conventional MVP, later hardening, manual operations, or future port/replatform phase for a selected capability, or cuts selected scope for speculative ROI;
 - copies game levels or streak gates into app utility, or hides a feature behind arbitrary tenure/spend/engagement;
 - overwhelms the primary workflow merely because every primitive exists;
 - makes profile creation, avatar customization, permissions, account signup, or notification consent a cold-start toll before value without a semantic need;
@@ -131,24 +169,25 @@ Reject or redesign an output that:
 - claims all-platform or all-age reach without HTML5/browser behavior, input adaptation, age modes, child privacy/safety, platform authority, and measured minimum-device evidence;
 - confirms writes, purchases, entitlements, deletion, or sharing before authoritative commitment without correction semantics;
 - omits offline/conflict, undo/recovery, export/delete, support/admin diagnostics, accessibility, i18n, privacy, telemetry, migrations, rollback, or autonomous maintenance where applicable;
-- claims `scale-verified` without a numeric envelope and exact-candidate load/soak/failure proof, or `production-proven` without deployed identity and live readback;
+- claims `scale-verified` without measured evidence against the declared workload and failure envelope, or `production-proven` without released identity and observed live behavior;
+- invents an artifact digest, makes an upstream blueprint depend on a downstream specialist, or creates a circular artifact graph;
 - allows an autonomous model to rewrite its own constraints, consent, prices, entitlements, enforcement severity, spend, evaluation gates, or promotion authority.
 
 ## Output contract
 
 Produce one **App Design Blueprint** containing:
 
-1. typed artifact envelope and evidence labels;
+1. draft artifact identity or sealed envelope, plus evidence labels;
 2. user/job/context, promise, wedge, business model, platforms, audience modes, non-goals, and success contract;
 3. object model, state-authority map, workflows, information architecture, error/undo/recovery model;
 4. first-value beat map and friction budget;
-5. complete capability portfolio with build, availability, presentation, scale/failure, proof, dormant-state, migration, telemetry, and recovery states;
-6. recurring-value, durable-investment, identity/personalization, collaboration/social, and comeback loops;
-7. app-side commerce, refund, rewards, update adoption, cross-promotion, review/feedback, and marketing integration contracts;
-8. responsive platform/input/HTML5/PWA, offline/sync, accessibility, i18n, security/privacy, and low-end quality matrix;
-9. autonomous build and maintenance graph with roles, gates, canaries, live readback, and incident recovery;
-10. event/metric/experiment plan with value, quality, trust, fatigue, fairness, commercial, and support countermetrics;
-11. specialist handoff manifest by artifact ID/version/digest;
+5. complete capability portfolio with disposition and reason, complete selected target, build, availability, presentation, scale/failure, proof, dormant-state, migration, telemetry, and recovery states;
+6. selected recurring-value, durable-investment, identity/personalization, collaboration/social, and comeback decisions, including exact non-applicable dispositions;
+7. selected monetization value exchange plus app-side refund, rewards, update adoption, cross-promotion, review/feedback, and marketing integration contracts; otherwise the exact disposition and zero-cost boundary;
+8. selected platform/input/HTML5/PWA, offline/sync, accessibility, i18n, security/privacy, low-end quality, and experience-expression matrix, plus exact dispositions for unselected adapters;
+9. implementation and maintenance handoff with owners, dependency order, acceptance evidence, exposure/recovery behavior, and observed-state requirements;
+10. event/metric/experiment plan with selected value, quality, trust, fatigue, fairness, commercial, and support countermetrics;
+11. specialist handoff-request manifest with contract and acceptance tests; include digests only for already sealed inputs;
 12. validation roadmap, hard blockers, unresolved hypotheses, and next proofs.
 
 ## Routing boundaries
@@ -157,10 +196,13 @@ Produce one **App Design Blueprint** containing:
 - `game-design-blueprint` owns a product whose primary promise is play, mastery, fantasy, and game progression; gamification does not automatically make an app a game.
 - `product-lifecycle-architect` owns a cross-domain product program dependency and delivery graph spanning at least three lifecycle domains.
 - `refund-and-support-flow-review` owns refund consequences, repurchase, appeal, restrictions, and support; `payment-platform-readiness` owns provider/ledger correctness.
-- `review-solicitation-and-feedback-loop` owns public review eligibility plus private feedback, telemetry, support routing, and close-loop behavior.
+- `review-solicitation-policy` owns platform-specific authentic public review
+  eligibility and request state; `product-feedback-learning-loop` owns universal
+  private feedback, authorized review ingestion, support/product routing, and
+  close-loop behavior.
 - Use `notification-strategy-review`, `daily-reward-and-streak-review`, `referral-loop-review`, `promotion-campaign-review`, `product-analytics-instrumentation-review`, `offline-sync-conflict-review`, and `ad-monetization-review` for their detailed artifacts.
 - `app-store-distribution-readiness` owns channel submission/release evidence; `marketing-automation-blueprint` owns the multi-channel marketing control plane.
 
 ## Completion check
 
-The blueprint is ready for agent execution only when another agent can identify what value the app creates, how every workflow and state behaves, which complete scale-ready primitives are built, which legitimate features are available without artificial gates, which exact specialist artifacts are required, how HTML5/mobile/desktop and global/age modes differ, what evidence earns each proof state, and how the system automatically degrades, recovers, and learns without leaving a future hardening or maintenance project.
+The blueprint is ready for composition and implementation only when another agent can identify what value the app creates, how every workflow and state behaves, why every swept capability is `integrate-now`, `reuse-scale-ready`, `contract-ready`, `not-applicable`, or `floor-blocked`, which selected capabilities have complete scale-ready targets, which selected legitimate features are available without artificial gates, which conditional specialist artifacts are required, how selected HTML5/mobile/desktop and global/age modes differ, what evidence earns each proof state, and how the product degrades, recovers, and learns without leaving a future hardening or maintenance project. No selected capability may be deferred for conventional human scarcity, and no irrelevant feature may substitute for app coherence.

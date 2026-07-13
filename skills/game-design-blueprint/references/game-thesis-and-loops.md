@@ -25,7 +25,7 @@ Define success as a constrained scorecard rather than one metric:
 | Commercial viability | Does the business model convert perceived value into sustainable contribution? | payer conversion, net LTV, margin, payer retention, purchase reasons | refunds, regret, concentration risk, acquisition payback failure |
 | Product quality | Is play responsive, stable, readable, accessible, and available on the target device? | startup, frame pacing, crash-free play, accessibility tests, device matrix | jank, heat, input lag, blocked players, lost progress |
 | Trust and safety | Can players understand cost and state, take healthy breaks, control contact, and recover from harm? | sentiment, opt-outs, reports, support outcomes, spend controls | deception, pressure, abuse, unresolved reports, child-safety breach |
-| Autonomous operability | Can the agent control plane sustain content, balance, support, moderation, experiments, scale, and incidents without a routine human gate? | verified throughput, coverage, error rate, capacity, rollback, recovery | manual queues, deferred automation, brittle scaling, unowned moderation |
+| Autonomous operability | Can bounded automation sustain content, balance, support, moderation, experiments and recovery without a routine human gate? | coverage, error rate, capacity, rollback and recovery outcomes | manual queues, deferred automation, brittle operations, unowned moderation |
 
 `thesis-1` — Choose metric semantics by commercial archetype. A premium narrative game may optimize completion, satisfaction, reviews, sequels, and referrals; a live-service collector may depend on cohort retention and recurring spend. Do not force one KPI tree onto both.
 
@@ -52,14 +52,14 @@ Observed mechanism:
 Source and date:
 Player job served:
 Dynamics it appears to create:
-Player-attention, runtime, verification, rights, safety, and autonomous-operability implications:
+Player-attention, runtime, evidence, rights, safety, and operating implications:
 Why it may transfer here:
 What experiment could disprove transfer:
-Capability plan: build-to-scale | reuse-scale-ready | floor-blocked
+Capability disposition: integrate-now | reuse-scale-ready | contract-ready | not-applicable | floor-blocked
 Automated exposure hypothesis:
 ```
 
-`thesis-4` — Research for differentiation, not blind default exposure. Build requested reversible capabilities to scale, but let the current game's promise and constraints determine their configuration, progression gate, mode, and automated exposure policy.
+`thesis-4` — Research for differentiation, not feature accumulation. Build requested and promise-essential reversible capabilities to scale, reuse shared primitives where appropriate, and let the game's promise and constraints determine which other systems are contract-ready, not applicable, blocked, progression-gated, or exposed.
 
 ## 3. Player promise, pillars, and anti-pillars
 
@@ -192,11 +192,11 @@ Define a content grammar rather than a list of levels:
 - authored versus systemic variation;
 - reuse that changes decisions rather than only presentation;
 - agent-generation compute, verification/QA surface, rights/provenance, localization coverage, and content burn;
-- scale-ready autonomous cadence, tooling, policy, rollback, and recovery needed from launch.
+- sustainable cadence, bounded automation, validation, rollback, and recovery needed from launch.
 
 Use a pacing map across the first five minutes, first session, first day, early mastery, mid-game, endgame, and returning-player path. Times are project-specific; the sequence must show tension, relief, novelty, choice, goal visibility, and clean exits.
 
-`content-1` — A live-service promise is also an autonomous content and operations contract. Build generation, provenance, localization, testing, moderation, capacity, rollback, and recovery to the declared scale now; let the policy engine automatically adjust exposed cadence when quality, safety, capacity, or freshness gates change.
+`content-1` — A live-service promise is also a content and operations contract. Build selected generation, provenance, localization, testing, moderation, capacity, rollback, and recovery capabilities now; bounded automation may adjust exposed cadence when quality, safety, capacity, or freshness gates change.
 
 `content-2` — “Vibe” is coherent authorship: fantasy, colour, shape, motion, sound, music, writing, reward ceremony, community language, and shareable moments reinforce the same promise.
 
@@ -213,5 +213,5 @@ Use a pacing map across the first five minutes, first session, first day, early 
 - FTUE reaches meaningful play before unnecessary account, permission, download, or monetization friction.
 - Content variety has a production and localization model.
 - The game has a coherent signature worth remembering or sharing.
-- Every canonical capability has a contextual numeric scale/failure envelope and exact-candidate proof plan; “scale-ready” is not architecture prose.
-- The smallest proof tests the highest-risk part of the thesis while the agent build graph still converges on the complete scale-ready target.
+- Every selected capability has contextual experience, workload, failure, recovery and evidence expectations; “scale-ready” is not architecture prose.
+- The smallest proof tests the highest-risk part of the thesis while verified slices still converge on the complete selected target.

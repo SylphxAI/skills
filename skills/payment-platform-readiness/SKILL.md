@@ -1,6 +1,6 @@
 ---
 name: payment-platform-readiness
-description: Prepare payment platform integration for Apple Pay, Google Pay, Google Play Billing, App Store IAP, web checkout, subscriptions, one-time purchases, refunds, restore purchases, receipts, tax, entitlement grants, and support traces. Use when designing or auditing payment flows for apps, games, SaaS, desktop utilities, stores, or marketplaces.
+description: Design or audit one buyer-payment authority system across Apple Pay, Google Pay, Google Play Billing, App Store IAP, web checkout, subscriptions, one-time purchases, provider-confirmed refunds/revocations, restore purchases, receipts, tax, money ledger, entitlement projection, settlement, reconciliation, finance close, and support traces. Use when provider ingestion and ledger correctness are the primary artifact; use Refund And Support for customer/account consequences after authoritative refund events.
 ---
 
 # Payment Platform Readiness
@@ -9,13 +9,21 @@ Use this skill to make payments reliable, compliant, supportable, replayable, an
 
 ## Composition contract
 
-Begin the Payment Platform Artifact with the
-[shared product artifact envelope](references/product-artifact-envelope.schema.json).
-Own provider authority, ingestion, money ledger, entitlement projection,
-settlement, reconciliation, and finance-close facts. Consume product, pricing,
-catalog, tax, and release artifacts by ID/version/digest; emit payment,
-entitlement, refund-authority, support, and finance handoffs without copying
-their canonical facts.
+Own provider authority/readback, ingestion, money ledger, entitlement
+projection, settlement, reconciliation, and finance-close facts. In particular,
+this artifact owns whether a provider-confirmed refund, revocation, dispute, or
+chargeback event occurred and how it projects into ledger/entitlement truth.
+`refund-and-support-flow-review` consumes that authority and owns customer
+messaging, grace, repayment, restrictions, appeal, and account consequences.
+
+For every artifact, record `artifactVersion`, `artifactRevision`, and
+`artifactState`; never put `artifactDigest` on the top-level artifact. Use the
+[shared product artifact envelope](references/product-artifact-envelope.schema.json)
+for structured drafts and sealed artifacts. Consume product, pricing, catalog,
+tax, and release inputs through input references. A sealed input additionally
+requires `artifactDigest` and `digestRule: sha256-exact-bytes`; every input
+requires `fulfillsHandoffId`, while a draft contains no digest fields. Emit payment, entitlement,
+refund-authority, support, and finance handoffs without copying sibling facts.
 
 ## Workflow
 
@@ -48,6 +56,7 @@ their canonical facts.
 - Do not use payment confusion as retention.
 - Do not collapse refund, cancellation, revocation, dispute, chargeback, grace, billing retry, restore, promo, and manual adjustment into one generic state.
 - Do not silently edit entitlements; append corrective ledger events and replay the projector.
+- Do not make customer punishment, grace, repayment, appeal, or commerce-restriction policy here. Emit authoritative refund/entitlement facts to `refund-and-support-flow-review`.
 - Do not let support agents change provider truth. Support corrections must be role-gated, reason-coded, expiring where appropriate, and auditable.
 - Do not ship payments without fee, tax, settlement, invoice, refund, dispute, and entitlement reconciliation evidence.
 - Do not call release gates complete unless every gate names the fixture, dashboard/alert, rollback or kill-switch path, owner, and approval evidence.
@@ -56,9 +65,10 @@ their canonical facts.
 ## Output format
 
 ```text
-Artifact envelope:
+Artifact identity:
 - schemaVersion / artifactId / productId / artifactKind / ownerSkill
-- artifactVersion / artifactDigest / inputArtifacts
+- artifactVersion / artifactRevision / artifactState / inputArtifacts
+- a sealed artifact does not self-hash; its exact-byte digest appears only in a downstream reference
 - canonicalFactsOwned / handoffOutputs / assumptions / proofState / proofEvidence
 
 Payment surfaces:

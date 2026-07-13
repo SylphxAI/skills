@@ -175,7 +175,7 @@ Policy actions inside immutable floors:
 - halt abusive transfers/markets or risky economy expansion;
 - never auto-open a permanent fresh economy, erase durable value, change committed odds, or let a revenue model rewrite fairness floors.
 
-Use shadow evaluation, simulation, canary, maximum step, hysteresis/cooldown, cohort stickiness, audit/replay, independent watchdog and surface-specific rollback/compensation.
+Use simulation, bounded cohort exposure, maximum change steps, hysteresis/cooldown, cohort stickiness, decision history and surface-specific rollback/compensation.
 
 ## 10. Required simulations and playtests
 

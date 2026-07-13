@@ -16,8 +16,9 @@ notification intent, abuse, support, and measurement. Do not own the whole game
 or app retention architecture, channel delivery, payment provider, or complete
 economy.
 
-Begin with the [shared product artifact envelope](references/product-artifact-envelope.schema.json)
-and reference sibling artifacts by ID/version/digest.
+Begin with a draft artifact ID and reference sibling artifacts by owner and
+required decision. Let deterministic delivery tooling seal exact versions and
+digests later; never invent them during design.
 
 ## Agent-first invariant
 

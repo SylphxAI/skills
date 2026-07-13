@@ -1,6 +1,6 @@
 ---
 name: refund-and-support-flow-review
-description: Design and audit refund, cancellation, chargeback, dispute, entitlement revocation, repurchase, appeal, and customer support flows for SaaS, mobile apps, games, utilities, marketplaces, and subscriptions. Use when handling refund policy, abuse ladders, support macros, account restrictions, trust recovery, or post-refund product access.
+description: "Design or audit one customer/account consequence flow after authoritative cancellation, refund, revocation, chargeback, or dispute events: entitlement outcome, grace, repayment, repurchase, commerce restriction, abuse ladder, appeal, support, trust recovery, and product feedback for SaaS, apps, games, utilities, marketplaces, and subscriptions. Use when post-event treatment is the primary artifact; use Payment Platform for provider ingestion, money ledger, settlement, and authoritative event projection."
 ---
 
 # Refund And Support Flow Review
@@ -9,19 +9,26 @@ Use this skill to handle refunds without damaging trust or letting abuse break t
 
 ## Composition contract
 
-Begin the Refund And Support Artifact with the
-[shared product artifact envelope](references/product-artifact-envelope.schema.json).
-Own provider refund/cancellation/chargeback evidence, entitlement consequence,
-grace/hold/recovery, account action, appeal, repayment, support, and product
-feedback states. Consume payment, entitlement, purchase, product, economy, and
-support artifacts by ID/version/digest and emit reversible audited handoffs to
-their owners.
+Own entitlement/customer consequence, grace/hold/recovery, account action,
+appeal, repayment, support, and product-feedback states. Do **not** own provider
+event ingestion, money truth, or the entitlement projector. Consume those
+authoritative facts from `payment-platform-readiness` or the owning provider/
+ledger system and preserve their evidence references.
+
+For every artifact, record `artifactVersion`, `artifactRevision`, and
+`artifactState`; never put `artifactDigest` on the top-level artifact. Use the
+[shared product artifact envelope](references/product-artifact-envelope.schema.json)
+for structured drafts and sealed artifacts. Consume payment, entitlement,
+purchase, product, economy, and support inputs through input references. A
+sealed input additionally requires `artifactDigest` and
+`digestRule: sha256-exact-bytes`; every input requires `fulfillsHandoffId`,
+while a draft contains no digest fields.
 
 ## Workflow
 
 1. Identify purchase type, provider/store, entitlement type, refund authority, and support ownership.
 2. Read `references/refund-support-flow-patterns.md`.
-3. Map provider-specific signals, refund detection, cancellation, restore purchase, entitlement source of truth, entitlement adjustment, user messaging, support triage, appeal, and abuse review.
+3. Map authoritative provider/ledger evidence references, cancellation, restore purchase, projected entitlement state, customer consequence, user messaging, support triage, appeal, and abuse review. If provider/ledger truth is missing or inconsistent, emit a typed blocker to Payment Platform rather than deciding it here.
 4. Separate cancellations, ordinary refunds, goodwill refunds, fraud, chargebacks, disputes, consumable reversals, non-consumable revocations, and repeated abuse.
 5. Build one timeline per account before taking action: purchase, grant, usage/spend, cancellation, refund request, provider confirmation, entitlement transition, support messages, chargeback/dispute, appeal, and repurchase.
 6. Define abuse scoring, false-positive controls, support dashboards, metrics, and approval thresholds before account restrictions.
@@ -48,6 +55,7 @@ their owners.
 - Do not collapse Apple, Google, Stripe, chargebacks, and internal goodwill into one policy.
 - Do not collapse cancellation into refund. A user may cancel renewal and keep paid access until period end without receiving money back.
 - Do not revoke durable access without a server-side entitlement truth source and reversible audit trail.
+- Do not re-ingest or reinterpret provider events as a competing money ledger. Reference the Payment Platform/provider authority and own only the downstream customer/account policy.
 - Do not let restore-purchase or client state re-grant access after a confirmed refund, chargeback loss, or manual revoke without ledger reconciliation.
 - Do not create surprise negative balances for spent consumables by default; use explicit policy, warnings, review, and appeal paths.
 - Do not use refund flows to punish product-quality, outage, billing-copy, or accidental-purchase issues; feed those reason codes back into product/support fixes.
@@ -58,16 +66,17 @@ their owners.
 ## Output format
 
 ```text
-Artifact envelope:
+Artifact identity:
 - schemaVersion / artifactId / productId / artifactKind / ownerSkill
-- artifactVersion / artifactDigest / inputArtifacts
+- artifactVersion / artifactRevision / artifactState / inputArtifacts
+- a sealed artifact does not self-hash; its exact-byte digest appears only in a downstream reference
 - canonicalFactsOwned / handoffOutputs / assumptions / proofState / proofEvidence
 
 Purchase/refund context:
 Authority:
 
-Provider table:
-- <provider/channel> -> signal, authority, dedupe key, refund state, entitlement action
+Provider/ledger evidence reference table:
+- <provider/channel> -> authority artifact/event ID, observed state, evidence, projected entitlement input, freshness/conflict blocker
 
 Evidence timeline:
 | Time | Source | Purchase/refund/dispute event | Entitlement state | Usage/spend | Support message | Actor | Evidence |

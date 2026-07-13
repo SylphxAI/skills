@@ -113,6 +113,8 @@ A finished conversion:
 
 ## When not to use
 
-- Use `skill-marketplace-creator` when the job is repository-wide publication, discovery, governance, or distribution rather than one bounded conversion.
+- Use `skill-repository-curator` when the job is repository-wide content
+  curation, collision resolution, consolidation, or retirement rather than one
+  bounded conversion.
 - Use `skill-eval-designer` when the package already exists and the primary deliverable is a falsifiable routing/behavior evaluation.
 - Do not use this workflow for a plain summary, translation, or knowledge-base note when no reusable procedure and independent trigger/output are required.

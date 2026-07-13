@@ -1,8 +1,10 @@
 # Product Distribution And Release
 
-## 1. One release intent, many channel adapters
+## 1. One planning revision, many channel adapters
 
-Use an immutable release manifest and a common adapter state machine:
+Distribution consumes an immutable Product Program Manifest planning revision
+with release targets and stable handoff IDs, then produces one Distribution
+Evidence Pack through a common adapter state machine:
 
 ```text
 prepare -> validate -> build -> attest -> sign
@@ -14,9 +16,10 @@ prepare -> validate -> build -> attest -> sign
 
 Each channel declares supported transitions and portal-only/external gates. Do not pretend every store offers rollback or complete API automation.
 
-### Release manifest
+### Distribution release record
 
 ```text
+planning manifest revision and handoff IDs:
 product/channel/release IDs:
 source commit and reproducible build inputs:
 version/build and artifact digest:

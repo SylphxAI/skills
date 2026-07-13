@@ -1,4 +1,4 @@
 interface:
   display_name: "Game Economy Review"
-  short_description: "Game Economy review"
-  default_prompt: "Use $game-economy-review to handle a realistic product task in this domain."
+  short_description: "Model and stress-test game economies"
+  default_prompt: "Use $game-economy-review to produce a quantitative game-economy specification with explicit sources, sinks, progression curves, monetization effects, abuse controls, cohort simulations, and sensitivity analysis."

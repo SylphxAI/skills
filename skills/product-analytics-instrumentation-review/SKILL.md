@@ -1,6 +1,6 @@
 ---
 name: product-analytics-instrumentation-review
-description: Design or audit one production product-analytics contract across decision questions, event/property schemas, semantic versions, client/server authority, identity and account merge, sessions, funnels/cohorts, experiments, attribution, billing/support joins, consent/privacy, SDK ports, offline delivery, data quality, backfills, metrics, dashboards, release gates, and drift monitoring. Use when trustworthy behavioral measurement is the independent artifact; use App/Product/Game Design for what to build.
+description: "Design or audit a product measurement contract: decision questions, event/property schemas, client/server authority, identity, consent, delivery, data quality, metric definitions, QA fixtures, dashboards, and drift. Use when trustworthy instrumentation is the independent artifact. Do not use for deciding product strategy, governing experiments, operating marketing attribution, or treating analytics as payment truth."
 ---
 
 # Product Analytics Instrumentation Review
@@ -13,21 +13,14 @@ client events into false authority.
 
 Own decision-to-signal mapping, event/property/metric semantics, identity/session,
 consent/privacy, SDK/server collection ports, delivery/quality, warehouse/join
-contracts, QA, dashboards, experiments, backfill, and drift. Do not own whole
+contracts, QA, dashboards, exposure measurement, backfill, and drift. Do not own whole
 product strategy, provider billing truth, marketing spend attribution control
-plane, or feedback prioritization.
+plane, experiment decisions, or feedback prioritization.
 
-Use the [shared artifact envelope](references/product-artifact-envelope.schema.json)
-and consume product, experiment, payment, support, privacy, and marketing
-contracts by ID/version/digest.
-
-## Agent-first invariant
-
-Build the complete versioned measurement plane, consent modes, provider-neutral
-ports, server validation, offline queue, schema registry, quality monitors,
-backfill/correction, lineage, replay, and automated release gates now. A dormant
-SDK initializes nowhere, sends nothing, and collects no identifier. Missing
-volume never justifies postponing correct semantics or quality automation.
+Use the shared artifact envelope only when composing with repository product
+artifacts. For a narrow audit, include only the contract surfaces needed by the
+declared decisions. A disabled SDK initializes nowhere, sends nothing, and
+collects no identifier.
 
 ## Workflow
 
@@ -49,12 +42,12 @@ volume never justifies postponing correct semantics or quality automation.
 6. Specify consent-aware SDK ports, lazy initialization, offline/batch/retry,
    sampling, late/out-of-order/duplicate handling, bot/internal traffic,
    clock/timezone, data residency, deletion/export, and zero-cost dormant state.
-7. Define experiment assignment/exposure, attribution windows/dedupe, billing
-   and support joins, metric SQL/semantic layer ownership, dashboard freshness,
-   dimensional completeness, and source lineage.
-8. Build fixtures for every event/version/platform/state; contract validation,
-   golden journeys, synthetic monitoring, anomaly/freshness/volume/null/enum
-   checks, backfill/correction, release blocking, and live readback.
+7. Define any consumed experiment exposure, attribution, billing, and support
+   joins without taking ownership of those domains; specify metric definition
+   ownership, dashboard freshness, dimensions, and source lineage.
+8. Build representative fixtures for material event/version/platform/state
+   combinations; add contract validation, golden journeys, quality checks,
+   correction/backfill policy, and release gates proportional to failure risk.
 
 ## Source verification
 
@@ -70,8 +63,11 @@ never the product's consent or retention policy.
   a cross-domain delivery program, not measurement implementation.
 - Use `marketing-automation-blueprint` for spend, channel attribution decisions,
   creative automation, and budget/shutdown control.
-- Use `review-solicitation-and-feedback-loop` for qualitative feedback/review
-  ingestion, evidence clusters, support routing, and product close-loop.
+- Use the owning product or experiment workflow to choose hypotheses, variants,
+  exposure, and promotion; analytics records the agreed assignment and outcome.
+- Use `product-feedback-learning-loop` for qualitative feedback/review
+  ingestion, evidence clusters, support routing, and product close-loop. Use
+  `review-solicitation-policy` for public review request eligibility and state.
 - Use `payment-platform-readiness` for payment/entitlement/settlement authority;
   analytics only consumes its signed/authoritative projection.
 
@@ -100,9 +96,10 @@ Return one typed Analytics Event, Identity, and Metric Contract with:
 5. consent/age/territory/platform modes, SDK ports, dormant/offline/retry,
    sampling, dedupe, and correction;
 6. canonical metric definitions and dashboard/consumer contracts;
-7. fixtures, golden journeys, data-quality SLOs, anomaly/backfill, release gate,
-   canary, and live-readback plan;
-8. digest-pinned sibling handoffs.
+7. fixtures, golden journeys, data-quality checks, correction/backfill, release
+   gate where warranted, and live-readback plan;
+8. explicit sibling handoffs where the measurement contract consumes another
+   domain's authority.
 
 Complete only when every metric traces to versioned events and authority, every
 event has a decision/owner/privacy lifecycle, and synthetic plus live journeys

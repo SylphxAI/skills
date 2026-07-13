@@ -14,16 +14,17 @@ scarcity, or unearned rewards.
 Own one persistent inviter/invitee or partner referral loop: value trigger,
 invitation/share, identity/deep link, attribution, qualification, pending grant,
 commit/reversal, caps, fraud, privacy, support, experiments, and shutdown. Do
-not own the whole marketing control plane, generic social/community design, one
+not own the whole marketing operating system, generic social/community design, one
 temporary promotion, or payment settlement.
 
-Begin with the [shared artifact envelope](references/product-artifact-envelope.schema.json)
-and consume product, identity, payment, promotion, analytics, notification,
-privacy, and support artifacts by ID/version/digest.
+Use a draft artifact ID and consume product, identity, payment, promotion,
+analytics, notification, privacy, and support decisions by owner and explicit
+contract. Let deterministic delivery tooling seal versions/digests later; never
+invent them during design.
 
 ## Agent-first invariant
 
-Build all invitation channels, link/deferred-deep-link states, identity merge,
+Build all selected invitation channels, link/deferred-deep-link states, identity merge,
 attribution, qualification, reward ledger, reversal, fraud, consent/privacy,
 support, observability, experiments, caps, and kill switches now. Population
 zero must still support useful known-friend invites/sharing where applicable.
@@ -110,7 +111,8 @@ Return one typed Referral and Invite Contract with:
 6. fraud/ring/false-positive evidence and correction ladder;
 7. event schema, incremental economics, experiment/holdout, scale/hold/pause/
    withdraw, kill switch, and live readback;
-8. digest-pinned sibling handoffs.
+8. sibling handoffs with draft IDs, owners, required inputs/outputs, acceptance
+   questions, and no fabricated proof.
 
 Complete only when each invitation and reward is consented, attributable,
 qualified, reversible, support-explainable, and safe under duplicate, merge,

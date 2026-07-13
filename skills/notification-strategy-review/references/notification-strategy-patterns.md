@@ -52,22 +52,25 @@
 
 ## Frequency budget matrix
 
-Use exact caps as starting defaults to review against product risk, region, user choice, and legal policy.
+The numbers below are **illustrative hypotheses**, not universal defaults or
+benchmarks. Replace them with product-specific caps derived from user-requested
+cadence, message value/decay, channel expectations, age/territory authority,
+holdouts, fatigue evidence, and support risk. Record the reason for every cap.
 
 | Category | Default cap | Cooldown | Digest rule | Override |
 | --- | --- | --- | --- | --- |
-| Security | No marketing cap; event-based only | Dedupe identical event for 10 minutes | Never digest critical security | Critical security/account safety |
-| Billing/failed payment | 1 per day per billing incident, 4 per incident before support review | Suppress 24h after open, payment update, cancel, or support ticket | Never digest imminent service loss; factual only | Grace ending or imminent access loss |
-| Trial/renewal lifecycle | 2-3 total per lifecycle window | 48h between non-urgent reminders | Include in account digest when urgency >72h away | Renewal/account-risk notice where required |
-| Utility reminders | User-configured; default max 2/day | Per task/reminder key after open/complete | Digest low-urgency reminders when >2 queued | User-requested exact-time reminder |
-| Digest | User-selected daily/weekly; default weekly | Skip if no meaningful content | Digest is the aggregation surface | None |
-| Win-back/marketing | Max 2/month and 3/90 days | 14-30 days after no engagement | Prefer email digest/roundup | None |
-| Opt-out recovery | In-app only after a new value moment; max 1/30 days | 30 days after dismissal | Never cross-channel | None |
+| Security | Event-based, no marketing use; example: dedupe identical state briefly | Until materially new state | Never digest critical security | Critical security/account safety |
+| Billing/failed payment | Per incident and remaining recovery window; example: one factual reminder per meaningful state change | Suppress after open, payment update, cancel, or support case | Do not digest imminent service loss | Required service-continuity notice |
+| Trial/renewal lifecycle | Small bounded sequence across the lifecycle window | Long enough to avoid repeated pressure | Digest while value decay is low | Exact required renewal/account notice |
+| Utility reminders | User-selected cadence; cap per task/reminder key | After open/complete or user snooze | Digest competing low-urgency reminders | User-requested exact-time reminder |
+| Digest | User-selected cadence; skip empty digests | One digest per selected period | Digest is the aggregation surface | None |
+| Win-back/marketing | Sparse bounded sequence with a long non-engagement cooldown | Stop after repeated non-response | Prefer an opted-in roundup | None |
+| Opt-out recovery | In-app only after a new value moment and long cooldown | After dismissal | Never cross-channel | None |
 
-Global defaults:
+Illustrative global-policy shapes to calibrate, not copy:
 
-- Max one non-transactional push per day and three non-transactional notifications per week unless the user requested reminders.
-- Max three total notifications per day across push/email/in-app/SMS, excluding security and required transactional messages.
+- A low non-transactional global cap plus stricter category/channel caps, except for exact user-requested reminders.
+- A cross-channel cap that prevents push, email, in-app and SMS from stacking for the same lifecycle value.
 - If multiple low-priority messages compete, send a digest and suppress individual sends.
 - Suppress all non-critical sends during quiet hours; queue at the next acceptable local time, not immediately at midnight.
 - If a user opens, converts, pays, cancels, unsubscribes, files support, or completes the task, suppress remaining messages for the same dedupe key.

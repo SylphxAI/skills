@@ -56,8 +56,8 @@ capability, or adoption/outcome telemetry.
 
 - Use `source-to-skill-distiller` to author or repair the procedure from source
   material before evaluation.
-- Use `skill-marketplace-creator` to decide portfolio admission, access,
-  provenance, lifecycle, retirement, and distribution across a repository.
+- Use `skill-repository-curator` to audit portfolio value, content quality,
+  collisions, consolidation, and retirement across a repository.
 - Use deterministic unit/contract/property/model tests directly when no model
   behavior or routing judgment is involved.
 - Do not use authored evals, self-installs, catalog presence, or historical

@@ -1,4 +1,4 @@
 interface:
   display_name: "Promotion Campaign Review"
   short_description: "Review growth promotions and offers"
-  default_prompt: "Use $promotion-campaign-review to handle a realistic product task in this domain."
+  default_prompt: "Use $promotion-campaign-review to design or audit one promotion campaign, including eligibility, economics, fulfillment, reversal, fraud, experiments, bounded risk-reward, automation, and shutdown rules."

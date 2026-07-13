@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Feedback Learning Loop"
+  short_description: "Turn feedback into truthful product learning"
+  default_prompt: "Use $product-feedback-learning-loop to design private feedback intake, evidence clustering, routing, product action, and truthful close-loop behavior."
