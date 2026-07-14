@@ -22,22 +22,24 @@ Requirements:
 
 ## 2. Social, community, creators, and partners
 
-For every publishing surface define:
+Marketing defines the selected channel's role and emits this handoff:
 
 ```text
-audience and product truth:
-content/creative manifest and rights:
-platform adapter/current policy:
-cadence/frequency and conversation purpose:
-reply/moderation/support escalation:
-sponsorship/affiliate/AI disclosure:
-recipient action and deep-link fallback:
-measurement, holdout and fatigue:
+official account/channel and audience intent:
+product truth, message hierarchy and claim IDs:
+campaign/organic brief and content/creative request:
+activation window, cadence envelope and conversation purpose:
+sponsorship/affiliate/AI disclosure requirements:
+support, feedback, trust, incident and legal owners:
+allocation, measurement, holdout and fatigue:
+Social Media Operating Model handoff ID and acceptance evidence:
 ```
+
+`social-media-operations-review` owns the official account, token/role authority, exact publishing and platform readback, listening, reply/moderation routing, rights/disclosure execution, crisis, impersonation/takeover, recovery, archive, and shutdown. Marketing must not build a second social adapter or infer live state from its own schedule. It consumes the operating model's observed publication and conversation evidence for portfolio and causal decisions.
 
 Creator/affiliate contracts need audience fit, deliverables, claims, disclosure, usage rights, brand safety, payment/commission source, fraud/quality controls, content retention, correction/termination, and incremental measurement.
 
-Community automation may classify, answer verified FAQs, route support, moderate and summarize. It must not invent users, astroturf, manufacture consensus, argue with criticism, or impersonate organic advocacy.
+The Social Media Operating Model may automate bounded classification, verified FAQ answers, routing, moderation execution and summarization under the owning policies. Marketing may use the resulting evidence but must not invent users, astroturf, manufacture consensus, argue with criticism, or impersonate organic advocacy.
 
 ## 3. Lifecycle orchestration
 

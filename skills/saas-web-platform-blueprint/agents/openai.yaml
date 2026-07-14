@@ -1,0 +1,4 @@
+interface:
+  display_name: "SaaS Web Platform Blueprint"
+  short_description: "Design a complete modern SaaS web platform blueprint"
+  default_prompt: "Use $saas-web-platform-blueprint to design or critically review the complete modern SaaS web platform."

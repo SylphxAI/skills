@@ -1,11 +1,11 @@
 ---
 name: marketing-automation-blueprint
-description: "Design or critically review a complete autonomous marketing operating system across truth-bound positioning, audiences and consent, owned/earned/paid channels, creative and content, SEO/AEO, stores, lifecycle messaging, referrals, cross-promotion, creators, community, partnerships, reputation, attribution, incrementality, budget allocation, experiments, and autonomous maintenance. Use when the primary artifact is a multi-channel marketing control plane or full go-to-market operating blueprint. For one campaign, referral, listing, notification, review/feedback loop, or distribution package, use the specialist procedure."
+description: "Design or critically review a complete autonomous marketing operating system across truth-bound positioning, audiences and consent, owned/earned/paid channels, creative and content, SEO/AEO, stores, lifecycle messaging, referrals, cross-promotion, creators, community, partnerships, reputation, attribution, incrementality, budget allocation, experiments, and autonomous maintenance. Use when the primary artifact is a multi-channel marketing control plane or full go-to-market operating blueprint. For one campaign, official social-account operating model, referral, listing, notification, review/feedback loop, or distribution package, use the specialist procedure."
 ---
 
 # Marketing Automation Blueprint
 
-Design the complete relevant global marketing capability portfolio now, then let a bounded autonomous control plane decide what to publish, spend, scale, hold, pause, or retire from current product truth, consent, causal evidence, economics, platform authority, quality, and trust.
+Design the complete relevant global marketing capability portfolio now, then let a bounded autonomous control plane decide which approved content or campaigns to activate, spend on, scale, hold, pause, or retire from current product truth, consent, causal evidence, economics, platform authority, quality, and trust. Delegate exact official social-account execution and live readback to `social-media-operations-review`.
 
 ## Objective
 
@@ -19,13 +19,15 @@ This skill owns one independently useful artifact: the **Marketing Automation Bl
 
 One campaign, listing, referral, notification system, review prompt, positioning decision, or public-signal research question remains with its specialist. Add a new skill only when a distinct recurring user trigger and independently acceptable artifact exists; use references for inseparable capability modules.
 
+For selected official social channels, Marketing owns channel role, audience, message hierarchy, campaign/organic brief, activation envelope, allocation, and causal measurement. `social-media-operations-review` is the unique operational adapter owner for account authority, publishing/readback, listening, reply/moderation routing, crisis, impersonation, recovery, and shutdown. Marketing consumes its observed evidence rather than maintaining a second social publisher or token ledger.
+
 ## Agent-first invariant
 
 Assume autonomous production capacity is elastic. Evaluate the full owned, earned, paid, lifecycle, creator, partner, store, referral, cross-promotion, measurement, creative/localization, fraud, privacy, and control-plane portfolio. Build every capability selected by the product, audience, channel mechanism, or explicit program target to a production-shaped scale target now; record why unselected channels are inapplicable. Human effort, missing users, unknown demand, or speculative ROI may not shrink the selected target or leave later automation, localization, SDK, hardening, or scale debt.
 
-Capability selection, construction, campaign activation, and paid spend are different decisions. Every selected channel adapter can be complete and dormant. Unknown ROI does not block construction of a selected capability; stale or untrustworthy telemetry blocks unbounded spend. Each live channel starts inside a bounded canary and can scale only within declared authority, consent, claim, budget, causal-evidence, saturation, trust, and safety envelopes.
+Capability selection, construction, campaign activation, and paid spend are different decisions. Every selected channel adapter or specialist operating contract can be complete and dormant. Unknown ROI does not block construction of a selected capability; stale or untrustworthy telemetry blocks unbounded spend. Each live channel starts inside a bounded canary and can scale only within declared authority, consent, claim, budget, causal-evidence, saturation, trust, and safety envelopes. Official social activation uses the Social Media Operating Model's exact-account readback and safety state.
 
-Use explicit shutdown states. `dormant-never-activated` means no token, API call, tracking, audience export, job, publish, bid, budget, spend, or undeclared data flow. `paused-or-withdrawing` permits only bounded reconciliation, revocation, billing/readback, correction, and evidence authority—never new audience, creative, delivery, bid, or spend. `withdrawn-verified` requires provider-observed zero delivery/spend and required data revocation before credentials and jobs can be removed and the adapter becomes dormant.
+Use explicit shutdown states. `dormant-never-activated` means no token, API call, tracking, audience export, job, publish, bid, budget, spend, or undeclared data flow. `paused-or-withdrawing` permits only bounded reconciliation, revocation, billing/readback, correction, and evidence authority—never new audience, creative, delivery, bid, or spend. `withdrawn-verified` requires provider-observed zero delivery/spend and required data revocation before credentials and jobs can be removed and the adapter becomes dormant. For official social, consume these states from the Social Media Operating Model rather than claiming them from Marketing intent.
 
 Build breadth is cheap; audience attention, trust, rights, platform accounts, external spend, and correlated reputation risk are scarce. Agent-first does not authorize spam, fabricated proof, policy evasion, covert endorsements, review manipulation, low-value scaled content, vulnerability targeting, self-approved spend, or unlawful data use.
 
@@ -56,7 +58,7 @@ input reference contains neither. Never invent them or resolve a moving
 ## Resource guide
 
 - Read `references/marketing-thesis-and-portfolio.md` for objective hierarchy, audience, positioning translation, channel sweep, and system map.
-- Read `references/marketing-organic-lifecycle-and-reputation.md` for SEO/AEO, content, social, creators, community, lifecycle, cross-promotion, update adoption, ratings, and feedback integration.
+- Read `references/marketing-organic-lifecycle-and-reputation.md` for SEO/AEO, content, social channel selection and briefs, creators, community, lifecycle, cross-promotion, update adoption, ratings, and feedback integration; official-account operation routes to `social-media-operations-review`.
 - Read `references/pc-store-launch-marketing.md` for a Steam or other PC-store wishlist/demo/festival, creator/press, community, launch-calendar, and first-week communication program.
 - Read `references/marketing-paid-and-creative-factory.md` for paid adapters, creative/localization supply, rights, fatigue, budgets, bids, and channel contracts.
 - Read `references/marketing-measurement-risk-and-economics.md` for causal measurement, attribution, risk-adjusted value, privacy, fraud, brand safety, and decision gates.
@@ -70,7 +72,7 @@ Read all references for a complete marketing system. For a bounded review, load 
 2. Label `given`, `observed`, `assumed`, `hypothesis`, and `decision`. Separate platform-reported attribution, observed correlation, controlled incrementality, modeled contribution, and strategic judgment.
 3. Define audience job/intent/lifecycle state, exclusions, consent, age/territory/sensitive-category policy, expected recipient value, message, channel role, and natural frequency before content generation or spend.
 4. Sweep website/landing, SEO/AEO, store, content, social, community, creator/influencer, PR, partner/affiliate, referral, cross-promotion, lifecycle CRM, reputation, launch, paid search/social/display/video, creative, experimentation, attribution, incrementality, MMM, fraud, brand safety, and operations.
-5. Give every selected capability a production-shaped target, API/portal authority record, numeric throughput/spend/failure envelope, verified slices, dormant-state proof, events/cost ledger, policy, canary, rollback/reconciliation, and maintenance loop. Record a mechanism-based reason for each channel excluded after the full sweep.
+5. Give every selected capability a production-shaped target or typed specialist operating contract, API/portal authority record, numeric throughput/spend/failure envelope, verified slices, dormant-state proof, events/cost ledger, policy, canary, rollback/reconciliation, and maintenance loop. Record a mechanism-based reason for each channel excluded after the full sweep. Do not build a competing official-social account, token, publishing, reply, or live-readback system.
 6. Treat every claim and creative brief as a versioned artifact with provenance,
    rights requirements, locale, accessibility, product/release compatibility,
    AI/sponsorship disclosure, expiry, and acceptance tests. Marketing owns the
@@ -96,7 +98,7 @@ Create intent/lifecycle states, eligibility/exclusions, age/territory/sensitive-
 
 ### 3. Build the selected channel and creative portfolio
 
-Evaluate the role and handoff for owned, earned, paid, store, creator, community, partner, referral, lifecycle, reputation, cross-promotion, update education, SEO/AEO, and launch. Select channels from product truth, audience mechanism, recipient value, authority, and program target; build every selected adapter plus its localized brief and production-request supply now, route exact files through `product-asset-production`, then choose activation from evidence and policy.
+Evaluate the role and handoff for owned, earned, paid, store, creator, community, partner, referral, lifecycle, reputation, cross-promotion, update education, SEO/AEO, and launch. Select channels from product truth, audience mechanism, recipient value, authority, and program target; build every selected adapter or specialist operating contract plus its localized brief and production-request supply now, route exact files through `product-asset-production`, and route official social account execution through `social-media-operations-review`, then choose activation from evidence and policy.
 
 For a PC-store launch, preserve the separation between Store Listing narrative,
 Product Asset Production files, Distribution build/store proof, Launch Admission
@@ -148,7 +150,7 @@ Reject or redesign an output that:
 - initializes tracking/export audiences without consent/eligibility, lets a dormant-never-activated channel create data/network/token/spend cost, or lets a paused/withdrawing adapter create new delivery/spend beyond reconciliation-only authority;
 - claims causal lift from attribution alone or ignores holdouts, interference, novelty, seasonality, selection, fraud, refunds, saturation, and support;
 - omits creative rights/provenance, accessibility, localization/cultural safety, AI/sponsorship disclosure, brand safety, inventory transparency, deep-link health, or release compatibility;
-- relies on a routine human operator to publish, bid, tune, reconcile, pause, refresh APIs, or recover incidents;
+- relies on a routine human operator rather than the owning automated adapter or specialist to publish, bid, tune, reconcile, pause, refresh APIs, or recover incidents;
 - claims production proof without exact candidate IDs, platform observed state, spend/cost reconciliation, live creative/landing readback, and downstream retained-value data.
 
 ## Output contract
@@ -159,7 +161,7 @@ Produce one **Marketing Automation Blueprint** containing:
 2. objective hierarchy, thesis, audience/intent/lifecycle/consent model, exclusions, non-goals, and ruin boundaries;
 3. full channel sweep plus selected capability portfolio, with inclusion/exclusion rationale, role, adapter authority, scale/spend/failure envelope, construction/proof/activation state, dormant contract, and handoffs;
 4. positioning/message translation and proof-backed claim registry references;
-5. organic/content/SEO/AEO/social/community/creator/PR/partner/store/lifecycle/referral/cross-promotion/update/reputation integration plan, including the PC-store launch calendar and communication program when selected;
+5. organic/content/SEO/AEO/social/community/creator/PR/partner/store/lifecycle/referral/cross-promotion/update/reputation integration plan, including typed Social Media Operating Model handoffs and the PC-store launch calendar and communication program when selected;
 6. paid channel adapter and immutable bid/budget/spend envelope matrix;
 7. localized creative brief and production-request graph with message/variant
    lineage, provenance and rights requirements, accessibility, disclosures,
@@ -173,6 +175,7 @@ Produce one **Marketing Automation Blueprint** containing:
 ## Routing boundaries
 
 - `marketing-automation-blueprint` owns the complete multi-channel marketing operating system and control plane.
+- `social-media-operations-review` owns recurring account, publishing/readback, listening, reply/moderation routing, crisis, impersonation, rights, recovery, and shutdown operations only after Marketing selects the official social channels, audience and message.
 - `market-research-synthesis` owns source-bounded market/positioning evidence; marketing consumes and channel-translates it.
 - `promotion-campaign-review` owns one offer, event, update-reward, cross-promotion, or lifecycle campaign.
 - `referral-loop-review` owns qualification, attribution, pending grants, reversals, and referral fraud.

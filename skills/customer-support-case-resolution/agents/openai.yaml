@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Support Case Resolution"
+  short_description: "Resolve one customer support case safely and humanely"
+  default_prompt: "Use $customer-support-case-resolution to resolve or audit this customer support case from facts through closure."

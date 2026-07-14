@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SylphxAI/skills/blob/main/schemas/product-artifact-envelope.schema.json",
+  "title": "Composable product skill artifact envelope",
+  "description": "A small envelope for composing product, app, game, distribution, marketing, and specialist artifacts without copying facts or inventing digests.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "artifactId",
+    "productId",
+    "artifactKind",
+    "ownerSkill",
+    "artifactVersion",
+    "artifactRevision",
+    "artifactState",
+    "inputArtifacts",
+    "canonicalFactsOwned",
+    "handoffOutputs",
+    "assumptions",
+    "proofState",
+    "proofEvidence"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 2 },
+    "artifactId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{2,127}$" },
+    "productId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{1,127}$" },
+    "artifactKind": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "ownerSkill": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "artifactVersion": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "artifactRevision": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "artifactState": {
+      "enum": ["draft", "sealed"],
+      "description": "Draft artifacts may change. Sealed artifacts are immutable exact bytes, but their digest is recorded only by a downstream reference or index so the artifact never self-hashes."
+    },
+    "inputArtifacts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/inputArtifactRef" },
+      "uniqueItems": true
+    },
+    "canonicalFactsOwned": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 3 },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "handoffOutputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/handoff" },
+      "uniqueItems": true
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/assumption" },
+      "uniqueItems": true
+    },
+    "proofState": {
+      "enum": [
+        "hypothesis",
+        "design-validated",
+        "implementation-verified",
+        "scale-verified",
+        "production-proven"
+      ]
+    },
+    "proofEvidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/proofEvidence" },
+      "uniqueItems": true
+    },
+    "supersedes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/supersessionArtifactRef" },
+      "uniqueItems": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "proofState": { "not": { "const": "hypothesis" } } },
+        "required": ["proofState"]
+      },
+      "then": { "properties": { "proofEvidence": { "type": "array", "minItems": 1 } } }
+    },
+    {
+      "if": {
+        "properties": { "proofState": { "const": "scale-verified" } },
+        "required": ["proofState"]
+      },
+      "then": {
+        "properties": {
+          "proofEvidence": {
+            "type": "array",
+            "contains": {
+              "type": "object",
+              "properties": {
+                "evidenceType": { "enum": ["scale-load", "scale-soak", "scale-chaos"] }
+              },
+              "required": ["evidenceType"]
+            },
+            "minContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "proofState": { "const": "production-proven" } },
+        "required": ["proofState"]
+      },
+      "then": {
+        "properties": {
+          "proofEvidence": {
+            "type": "array",
+            "contains": {
+              "type": "object",
+              "properties": {
+                "evidenceType": { "const": "live-readback" },
+                "liveReadback": { "const": true }
+              },
+              "required": ["evidenceType", "liveReadback"]
+            },
+            "minContains": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "inputArtifactRef": {
+      "allOf": [
+        { "$ref": "#/$defs/artifactRef" },
+        { "type": "object", "required": ["fulfillsHandoffId"] }
+      ]
+    },
+    "supersessionArtifactRef": {
+      "allOf": [
+        { "$ref": "#/$defs/artifactRef" },
+        {
+          "type": "object",
+          "not": { "type": "object", "required": ["fulfillsHandoffId"] }
+        }
+      ]
+    },
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifactId", "artifactVersion", "artifactRevision", "artifactState", "relation"],
+      "properties": {
+        "artifactId": { "type": "string", "minLength": 3 },
+        "artifactVersion": { "type": "string", "minLength": 1 },
+        "artifactRevision": { "type": "string", "minLength": 1 },
+        "artifactState": { "enum": ["draft", "sealed"] },
+        "fulfillsHandoffId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{2,127}$",
+          "description": "Exact producer-owned handoffId whose contract a downstream input fulfills. Required for inputArtifacts; absent for non-handoff relations such as supersession."
+        },
+        "artifactDigest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "SHA-256 of the exact immutable bytes of a sealed upstream artifact. Never invent this value for a prose draft."
+        },
+        "digestRule": { "const": "sha256-exact-bytes" },
+        "relation": { "type": "string", "minLength": 3 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "artifactState": { "const": "sealed" } },
+            "required": ["artifactState"]
+          },
+          "then": { "required": ["artifactDigest", "digestRule"] },
+          "else": {
+            "not": {
+              "anyOf": [
+                { "required": ["artifactDigest"] },
+                { "required": ["digestRule"] }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handoffId", "consumerSkill", "artifactKind", "contract", "acceptanceTests"],
+      "properties": {
+        "handoffId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{2,127}$",
+          "description": "Stable producer-owned identifier used to trace this handoff across downstream artifacts without relying on prose labels."
+        },
+        "consumerSkill": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "artifactKind": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "contract": { "type": "string", "minLength": 10 },
+        "acceptanceTests": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/acceptanceTest" },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "acceptanceTest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["testId", "assertion"],
+      "properties": {
+        "testId": { "type": "string", "minLength": 2 },
+        "assertion": { "type": "string", "minLength": 10 },
+        "evidenceRef": { "type": "string", "minLength": 3 }
+      }
+    },
+    "proofEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceId",
+        "evidenceType",
+        "candidateId",
+        "environment",
+        "evidenceRef",
+        "observedAt",
+        "liveReadback"
+      ],
+      "properties": {
+        "evidenceId": { "type": "string", "minLength": 2 },
+        "evidenceType": {
+          "enum": [
+            "design-study",
+            "contract-test",
+            "implementation-test",
+            "scale-load",
+            "scale-soak",
+            "scale-chaos",
+            "release-receipt",
+            "live-readback",
+            "other"
+          ]
+        },
+        "candidateId": { "type": "string", "minLength": 2 },
+        "environment": { "type": "string", "minLength": 2 },
+        "evidenceRef": { "type": "string", "minLength": 3 },
+        "observedAt": { "type": "string", "format": "date-time" },
+        "liveReadback": { "type": "boolean" }
+      }
+    },
+    "assumption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assumptionId", "statement", "status"],
+      "properties": {
+        "assumptionId": { "type": "string", "minLength": 2 },
+        "statement": { "type": "string", "minLength": 5 },
+        "status": { "enum": ["unverified", "supported", "falsified", "expired"] },
+        "evidenceRef": { "type": "string", "minLength": 3 }
+      }
+    }
+  }
+}

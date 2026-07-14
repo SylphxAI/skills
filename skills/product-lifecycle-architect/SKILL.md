@@ -182,7 +182,7 @@ Produce one **Product Program Manifest** containing:
 
 ## Routing boundaries
 
-- `app-design-blueprint` and `game-design-blueprint` own product promise, user experience, capability semantics, and app/game exposure policy.
+- `app-design-blueprint`, `game-design-blueprint`, and `saas-web-platform-blueprint` own their product promise, experience or public-to-service platform semantics; this skill only indexes their artifacts and cross-domain delivery dependencies.
 - `marketing-automation-blueprint` owns the complete marketing operating
   blueprint and creative briefs; `product-asset-production` owns exact rendered
   product media; `promotion-campaign-review`, `referral-loop-review`, and

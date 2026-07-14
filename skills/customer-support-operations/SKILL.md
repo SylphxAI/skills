@@ -65,6 +65,7 @@ Return one Support Operating Model containing:
 
 ## Routing boundaries
 
+- `customer-support-case-resolution` owns one specific customer's evidence, response, remedy recommendation, protected-action handoff, verification, appeal/reopen, and closure record; this skill owns the whole support system around it.
 - `refund-and-support-flow-review` owns refund, repayment, entitlement consequence, restriction, appeal, and repurchase policy.
 - `payment-platform-readiness` owns provider ingestion, money ledger, entitlement projection, settlement, and reconciliation truth.
 - `review-solicitation-policy` owns platform-specific public review request eligibility and state.

@@ -66,7 +66,7 @@ For each audience edge define trigger, expected value, claim/message, channel, f
 | SEO | capture declared search intent through useful content | canonical URLs, structured data, internal links, anti-spam |
 | AEO/AI discovery | machine-readable, citable product truth | claims/evidence, structured content, freshness |
 | Store/ASO | convert qualified store traffic | listing specialist, localized assets, release truth |
-| Organic social | distribute useful stories, proof, releases and community artifacts | platform adapters, provenance, replies, fatigue |
+| Organic social | distribute useful stories, proof, releases and community artifacts | channel role/message here; official account, publishing/readback, listening, replies and recovery in Social Media Operations |
 | Content/editorial/video | educate, demonstrate and build durable discovery | topic graph, rights, YouTube/web/social transforms |
 | Community | reciprocal support, identity and participation | moderation, escalation, product feedback, no fake activity |
 | Creator/influencer/affiliate | trusted audience translation | fit, disclosure, rights, fraud, incremental measurement |

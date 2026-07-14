@@ -38,6 +38,8 @@ All material artifacts are versioned and provenance-linked. Top-level artifacts 
 
 Use separate scoped short-lived identities. Platform tokens, audience export, spend, publishing and analytics access follow least privilege.
 
+For official social accounts, `social-media-operations-review` owns publishing and account tokens, exact post/reply state, reconciliation and recovery. Marketing supplies desired activation plus the approved brief and consumes observed evidence; its identities never become a second social publisher.
+
 ## 3. Candidate lifecycle
 
 ```text

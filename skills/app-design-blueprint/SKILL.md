@@ -200,6 +200,7 @@ Produce one **App Design Blueprint** containing:
 ## Routing boundaries
 
 - `app-design-blueprint` owns whole-app coherence and app-side capability semantics.
+- `saas-web-platform-blueprint` owns the whole public-acquisition-to-authenticated-service composition for a SaaS platform, including tenant, commercial and operational integration contracts; a compound SaaS app may compose both with one declared primary artifact.
 - `game-design-blueprint` owns a product whose primary promise is play, mastery, fantasy, and game progression; gamification does not automatically make an app a game.
 - `product-lifecycle-architect` owns a cross-domain product program dependency and delivery graph spanning at least three lifecycle domains.
 - `refund-and-support-flow-review` owns refund consequences, repurchase, appeal, restrictions, and support; `payment-platform-readiness` owns provider/ledger correctness.
