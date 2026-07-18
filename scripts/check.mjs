@@ -4,6 +4,8 @@ import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import Ajv2020 from 'ajv/dist/2020.js';
+import addFormats from 'ajv-formats';
 import { catalogBytes, parseFrontmatter, repositoryRoot } from './build-catalog.mjs';
 
 const NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -15,6 +17,43 @@ const SECRET_PATTERNS = [
   /\bxox[baprs]-[A-Za-z0-9-]{20,}\b/,
 ];
 const REMOVED_BOUNDARIES = ['admissions', 'benchmarks', 'catalog', 'evals', 'registry', 'retired'];
+const TECHNOLOGY_PROFILE_ORGANIZATIONS = ['Cubeage', 'EpiowAI', 'OzyrixLtd', 'SylphxAI', 'TseFamily', 'shtse8'];
+const TECHNOLOGY_PROFILE_LIFECYCLES = ['active', 'commercial', 'incubating', 'maintenance', 'production'];
+const TECHNOLOGY_PROFILE_TASK_SURFACES = ['language-boundary-audit', 'migration-completion', 'product-code', 'runtime-implementation'];
+const TECHNOLOGY_PROFILE_BACKEND_ROLES = [
+  'api',
+  'backend-service',
+  'background-job',
+  'controller',
+  'critical-path',
+  'gateway',
+  'queue-consumer',
+  'queue-producer',
+  'runtime',
+  'storage',
+  'worker',
+];
+const TECHNOLOGY_PROFILE_WEB_ROLES = ['browser', 'product-web', 'server-rendered-web', 'ui-orchestration'];
+const TECHNOLOGY_PROFILE_FORBIDDEN_WEB_EFFECTS = [
+  'backend-authorization-decision',
+  'backend-business-effect',
+  'backend-database-mutation',
+  'durable-queue-consume',
+  'durable-queue-publish',
+  'typescript-backend-fallback',
+];
+const TECHNOLOGY_PROFILE_EXCEPTION_FIELDS = [
+  'id',
+  'defaultKey',
+  'selector',
+  'rationale',
+  'owner',
+  'decisionRef',
+  'evidence',
+  'expiresOn',
+  'recovery',
+  'replacementCondition',
+];
 
 function walk(directory) {
   const files = [];
@@ -46,7 +85,139 @@ function stableJson(value) {
   return JSON.stringify(value);
 }
 
-function validateMachineProfile(folder, packageRoot, errors) {
+function sameMembers(actual, expected) {
+  return Array.isArray(actual)
+    && actual.length === expected.length
+    && actual.every((value) => expected.includes(value))
+    && new Set(actual).size === actual.length;
+}
+
+export function validateTechnologyStackProfile(document, errors, projectSchemaDocument = null) {
+  const location = 'skills/technology-stack-profile/references/profile.json';
+  if (document.profile?.lifecycle !== 'active'
+      || document.profile?.authorityClass !== 'governance-constraint') {
+    errors.push(`${location}: required technology profile must be active governance-constraint`);
+  }
+  const selectors = document.selector?.matchAll || [];
+  const selectorByFact = new Map(selectors.map((selector) => [selector.fact, selector]));
+  if (selectorByFact.size !== 3 || selectors.length !== 3) {
+    errors.push(`${location}: selector must contain exactly organization, repository.lifecycle, and task.surface`);
+  }
+  for (const [fact, expected] of [
+    ['organization', TECHNOLOGY_PROFILE_ORGANIZATIONS],
+    ['repository.lifecycle', TECHNOLOGY_PROFILE_LIFECYCLES],
+    ['task.surface', TECHNOLOGY_PROFILE_TASK_SURFACES],
+  ]) {
+    const selector = selectorByFact.get(fact);
+    if (selector?.operator !== 'one-of' || !sameMembers(selector?.values, expected)) {
+      errors.push(`${location}: ${fact} selector vocabulary drift`);
+    }
+  }
+  if (document.selector?.unknownFactPolicy !== 'fail-closed') {
+    errors.push(`${location}: unknown selector facts must fail closed`);
+  }
+
+  const defaults = new Map((document.defaults || []).map((item) => [item.key, item]));
+  const expectedDefaults = [
+    ['engineering.language.backend-required-technology', 'rust', TECHNOLOGY_PROFILE_BACKEND_ROLES],
+    ['engineering.language.web-required-technology', 'typescript-bun-next', TECHNOLOGY_PROFILE_WEB_ROLES],
+    ['engineering.language.completion-measure', 'service-role-and-effect-coverage', [...TECHNOLOGY_PROFILE_BACKEND_ROLES, ...TECHNOLOGY_PROFILE_WEB_ROLES]],
+  ];
+  if (defaults.size !== expectedDefaults.length || document.defaults?.length !== expectedDefaults.length) {
+    errors.push(`${location}: default selection set drift`);
+  }
+  for (const [key, value, roles] of expectedDefaults) {
+    const selection = defaults.get(key);
+    if (selection?.value !== value || !sameMembers(selection?.appliesToRoles, roles)) {
+      errors.push(`${location}: ${key} selection drift`);
+    }
+  }
+  if (!sameMembers(document.forbiddenEffectsForWeb, TECHNOLOGY_PROFILE_FORBIDDEN_WEB_EFFECTS)) {
+    errors.push(`${location}: forbidden web effect vocabulary drift`);
+  }
+  if (!sameMembers(document.exceptionPolicy?.exceptableDefaults, [])
+      || !sameMembers(document.exceptionPolicy?.forbiddenDefaults, expectedDefaults.map(([key]) => key))
+      || !sameMembers(document.exceptionPolicy?.requiredFields, TECHNOLOGY_PROFILE_EXCEPTION_FIELDS)) {
+    errors.push(`${location}: exception contract drift`);
+  }
+
+  const projectSchemaPath = path.join(
+    repositoryRoot,
+    'skills',
+    'project-manifest-standard',
+    'references',
+    'project-manifest.schema.json',
+  );
+  let projectSchema = projectSchemaDocument;
+  if (!projectSchema) {
+    try {
+      projectSchema = JSON.parse(readFileSync(projectSchemaPath, 'utf8'));
+    } catch (error) {
+      errors.push(`skills/project-manifest-standard/references/project-manifest.schema.json: ${error.message}`);
+      return;
+    }
+  }
+  const architecture = projectSchema.properties?.architecture;
+  const components = architecture?.properties?.components;
+  const profileBindings = architecture?.properties?.profileBindings;
+  const componentFact = projectSchema.$defs?.componentFact;
+  const profileBinding = projectSchema.$defs?.profileBinding;
+  const requiredFactFields = [
+    'role',
+    'implementation',
+    'backendOwner',
+    'ownedEffects',
+  ];
+  if (components?.minProperties !== 1
+      || components?.propertyNames?.$ref !== '#/$defs/id'
+      || components?.additionalProperties?.$ref !== '#/$defs/componentFact'
+      || profileBindings?.minProperties !== 1
+      || profileBindings?.propertyNames?.$ref !== '#/$defs/id'
+      || profileBindings?.additionalProperties?.$ref !== '#/$defs/profileBinding'
+      || componentFact?.additionalProperties !== false
+      || !sameMembers(componentFact?.required, requiredFactFields)) {
+    errors.push(`${location}: canonical project component facts or exact profile bindings are missing or incomplete`);
+  }
+  if (componentFact?.properties?.role?.$ref !== '#/$defs/id'
+      || componentFact?.properties?.implementation?.$ref !== '#/$defs/id'
+      || componentFact?.properties?.ownedEffects?.items?.$ref !== '#/$defs/id'
+      || !sameMembers(profileBinding?.required, ['revision', 'contentDigest'])) {
+    errors.push(`${location}: project facts must stay generic while exact profile identity stays bound`);
+  }
+
+  const manifestLifecycles = projectSchema.properties?.project?.properties?.lifecycle?.enum || [];
+  if (!TECHNOLOGY_PROFILE_LIFECYCLES.every((lifecycle) => manifestLifecycles.includes(lifecycle))) {
+    errors.push(`${location}: selector uses lifecycle values outside the canonical project manifest`);
+  }
+}
+
+export function validateProfileLifecycleMetadata(document, folder, errors, today = new Date().toISOString().slice(0, 10)) {
+  const lifecycle = document.profile?.lifecycle;
+  if (!['governance-constraint', 'selection-default'].includes(document.profile?.authorityClass)) {
+    errors.push(`skills/${folder}/references/profile.json: invalid authorityClass`);
+  }
+  if (lifecycle === 'active' && document.profile?.effectiveOn > today) {
+    errors.push(`skills/${folder}/references/profile.json: active profile is not effective yet`);
+  }
+  if (['candidate', 'active', 'deprecated'].includes(lifecycle) && document.profile?.reviewBy < today) {
+    errors.push(`skills/${folder}/references/profile.json: selectable profile review window expired`);
+  }
+  if (document.exceptionPolicy?.mode !== 'typed-expiring'
+      || document.exceptionPolicy?.expiryAction !== 'fail-closed') {
+    errors.push(`skills/${folder}/references/profile.json: exception lifecycle must fail closed`);
+  }
+  if (document.retirement?.retiredRevisionSelectable !== false) {
+    errors.push(`skills/${folder}/references/profile.json: retired revisions must never be selectable`);
+  }
+  if (lifecycle === 'active' && document.retirement?.successor !== null) {
+    errors.push(`skills/${folder}/references/profile.json: active profile cannot name an admitted successor`);
+  }
+  if (lifecycle === 'deprecated' && !document.retirement?.successor) {
+    errors.push(`skills/${folder}/references/profile.json: deprecated profile must name its successor`);
+  }
+}
+
+function validateMachineProfile(folder, packageRoot, errors, profiles) {
   const profilePath = path.join(packageRoot, 'references', 'profile.json');
   if (!existsSync(profilePath)) return;
   let document;
@@ -66,6 +237,7 @@ function validateMachineProfile(folder, packageRoot, errors) {
   if (document.profile?.contentDigestScope !== 'canonical-json-excluding:/profile/contentDigest') {
     errors.push(`skills/${folder}/references/profile.json: unsupported digest scope`);
   }
+  validateProfileLifecycleMetadata(document, folder, errors);
 
   const digestCandidate = structuredClone(document);
   delete digestCandidate.profile.contentDigest;
@@ -79,7 +251,15 @@ function validateMachineProfile(folder, packageRoot, errors) {
     errors.push(`skills/${folder}/references/profile.json: local $schema is missing`);
   } else {
     try {
-      JSON.parse(readFileSync(schemaPath, 'utf8'));
+      const schema = JSON.parse(readFileSync(schemaPath, 'utf8'));
+      const ajv = new Ajv2020({ allErrors: true, strict: true, allowUnionTypes: true });
+      addFormats(ajv);
+      const validate = ajv.compile(schema);
+      if (!validate(document)) {
+        for (const finding of validate.errors || []) {
+          errors.push(`skills/${folder}/references/profile.json${finding.instancePath || '/'}: ${finding.message}`);
+        }
+      }
     } catch (error) {
       errors.push(`${path.relative(repositoryRoot, schemaPath)}: ${error.message}`);
     }
@@ -105,9 +285,12 @@ function validateMachineProfile(folder, packageRoot, errors) {
       errors.push(`skills/${folder}/references/profile.json: ${key} must be exactly one of exceptable or forbidden`);
     }
   }
+
+  if (folder === 'technology-stack-profile') validateTechnologyStackProfile(document, errors);
+  profiles.push({ folder, document });
 }
 
-function validateSkill(folder, names, errors) {
+function validateSkill(folder, names, errors, profiles) {
   const packageRoot = path.join(repositoryRoot, 'skills', folder);
   const skillFile = path.join(packageRoot, 'SKILL.md');
   if (!existsSync(skillFile)) {
@@ -142,7 +325,7 @@ function validateSkill(folder, names, errors) {
     if (/\.(?:md|markdown)$/i.test(file)) validateLocalLinks(text, file, errors);
   }
 
-  validateMachineProfile(folder, packageRoot, errors);
+  validateMachineProfile(folder, packageRoot, errors, profiles);
 
   const openAiMetadata = path.join(packageRoot, 'agents', 'openai.yaml');
   if (existsSync(openAiMetadata)) {
@@ -151,49 +334,85 @@ function validateSkill(folder, names, errors) {
   }
 }
 
-const errors = [];
-for (const removed of REMOVED_BOUNDARIES) {
-  if (existsSync(path.join(repositoryRoot, removed))) errors.push(`${removed}/ is outside the Skills source boundary`);
+function selectorsMayOverlap(left, right) {
+  const leftByFact = new Map((left || []).map((selector) => [selector.fact, selector.values || []]));
+  const rightByFact = new Map((right || []).map((selector) => [selector.fact, selector.values || []]));
+  for (const fact of new Set([...leftByFact.keys(), ...rightByFact.keys()])) {
+    if (!leftByFact.has(fact) || !rightByFact.has(fact)) continue;
+    if (!leftByFact.get(fact).some((value) => rightByFact.get(fact).includes(value))) return false;
+  }
+  return true;
 }
 
-const skillFolders = readdirSync(path.join(repositoryRoot, 'skills'), { withFileTypes: true })
-  .filter((entry) => entry.isDirectory())
-  .map((entry) => entry.name)
-  .sort();
-const names = new Set();
-for (const folder of skillFolders) validateSkill(folder, names, errors);
-
-const rootSchema = path.join(repositoryRoot, 'schemas', 'product-artifact-envelope.schema.json');
-if (!existsSync(rootSchema)) errors.push('schemas/product-artifact-envelope.schema.json: missing');
-else {
-  const canonical = readFileSync(rootSchema, 'utf8');
-  for (const file of walk(path.join(repositoryRoot, 'skills')).filter((item) => item.endsWith('/product-artifact-envelope.schema.json'))) {
-    if (readFileSync(file, 'utf8') !== canonical) errors.push(`${path.relative(repositoryRoot, file)}: shared product envelope drift`);
+export function validateActiveProfileCollisions(profiles, errors) {
+  const active = profiles.filter(({ document }) => document.profile?.lifecycle === 'active');
+  for (let leftIndex = 0; leftIndex < active.length; leftIndex += 1) {
+    for (let rightIndex = leftIndex + 1; rightIndex < active.length; rightIndex += 1) {
+      const left = active[leftIndex];
+      const right = active[rightIndex];
+      const rightKeys = new Set((right.document.defaults || []).map((item) => item.key));
+      const sharedKeys = (left.document.defaults || []).map((item) => item.key).filter((key) => rightKeys.has(key));
+      if (!sharedKeys.length) continue;
+      if (selectorsMayOverlap(left.document.selector?.matchAll, right.document.selector?.matchAll)) {
+        errors.push(`skills/${left.folder} and skills/${right.folder}: active profile selector collision on ${sharedKeys.join(', ')}`);
+      }
+    }
   }
 }
 
-const catalogPath = path.join(repositoryRoot, 'catalog.json');
-if (!existsSync(catalogPath) || readFileSync(catalogPath, 'utf8') !== catalogBytes(repositoryRoot)) {
-  errors.push('catalog.json is stale; run npm run build:catalog');
+export function checkRepository() {
+  const errors = [];
+  for (const removed of REMOVED_BOUNDARIES) {
+    if (existsSync(path.join(repositoryRoot, removed))) errors.push(`${removed}/ is outside the Skills source boundary`);
+  }
+
+  const skillFolders = readdirSync(path.join(repositoryRoot, 'skills'), { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+  const names = new Set();
+  const profiles = [];
+  for (const folder of skillFolders) validateSkill(folder, names, errors, profiles);
+  validateActiveProfileCollisions(profiles, errors);
+
+  const rootSchema = path.join(repositoryRoot, 'schemas', 'product-artifact-envelope.schema.json');
+  if (!existsSync(rootSchema)) errors.push('schemas/product-artifact-envelope.schema.json: missing');
+  else {
+    const canonical = readFileSync(rootSchema, 'utf8');
+    for (const file of walk(path.join(repositoryRoot, 'skills')).filter((item) => item.endsWith('/product-artifact-envelope.schema.json'))) {
+      if (readFileSync(file, 'utf8') !== canonical) errors.push(`${path.relative(repositoryRoot, file)}: shared product envelope drift`);
+    }
+  }
+
+  const catalogPath = path.join(repositoryRoot, 'catalog.json');
+  if (!existsSync(catalogPath) || readFileSync(catalogPath, 'utf8') !== catalogBytes(repositoryRoot)) {
+    errors.push('catalog.json is stale; run npm run build:catalog');
+  }
+
+  for (const rootFile of [
+    'README.md',
+    'PROJECT.md',
+    'project.manifest.json',
+    'LICENSE',
+    'runtime/hooks.mjs',
+    'runtime/package-digest.mjs',
+    'runtime/reconcile.mjs',
+    'runtime/sylphx-skills.mjs',
+    'runtime/target-generation.mjs',
+  ]) {
+    const absolute = path.join(repositoryRoot, rootFile);
+    if (!existsSync(absolute) || !statSync(absolute).isFile()) errors.push(`${rootFile}: missing`);
+  }
+
+  return { errors, skillFolders, profiles };
 }
 
-for (const rootFile of [
-  'README.md',
-  'PROJECT.md',
-  'project.manifest.json',
-  'LICENSE',
-  'runtime/hooks.mjs',
-  'runtime/reconcile.mjs',
-  'runtime/sylphx-skills.mjs',
-]) {
-  const absolute = path.join(repositoryRoot, rootFile);
-  if (!existsSync(absolute) || !statSync(absolute).isFile()) errors.push(`${rootFile}: missing`);
+if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) {
+  const { errors, skillFolders } = checkRepository();
+  if (errors.length) {
+    console.error(`Skills integrity failed with ${errors.length} finding(s):`);
+    for (const error of errors) console.error(`- ${error}`);
+    process.exit(1);
+  }
+  console.log(`Skills integrity ok: ${skillFolders.length} canonical packages`);
 }
-
-if (errors.length) {
-  console.error(`Skills integrity failed with ${errors.length} finding(s):`);
-  for (const error of errors) console.error(`- ${error}`);
-  process.exit(1);
-}
-
-console.log(`Skills integrity ok: ${skillFolders.length} canonical packages`);

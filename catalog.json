@@ -367,7 +367,7 @@
       "name": "project-manifest-standard",
       "description": "Repository identity, lifecycle, capability and component ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use when creating, changing, or validating a repository's durable identity and boundaries.",
       "path": "skills/project-manifest-standard/SKILL.md",
-      "packageDigest": "sha256:ae4800bff77cdc88f939d1d09b30f2974cdc7530e8250efbe2aeb9342dacebda"
+      "packageDigest": "sha256:49d966a1c022bc386dea53107437fe32063755473c83c2cd53b8edacf74a9862"
     },
     {
       "name": "promotion-campaign-review",
@@ -511,7 +511,14 @@
       "name": "technology-stack-profile",
       "description": "Apply the required backend and web technology choices by component role and owned effects. Use when choosing, implementing, reviewing, or measuring production backend, API, gateway, worker, controller, runtime, storage, queue, background-job, browser, product-web, SSR, or TypeScript-to-Rust work.",
       "path": "skills/technology-stack-profile/SKILL.md",
-      "packageDigest": "sha256:fc227044714956df35b376fefe5351793d190f1617392d3912c6bc5c9d04573f"
+      "packageDigest": "sha256:e5ac9b66548d8a3e7cee38461d2eaba890139a2c14001e4879067d2868a2e1c4",
+      "profile": {
+        "id": "technology-stack-profile",
+        "revision": "2026-07-18.3",
+        "contentDigest": "sha256:2a5340e58ccd353e9a558ef87605b4f40abb529f78e57cfff00730559e131344",
+        "lifecycle": "active",
+        "authorityClass": "governance-constraint"
+      }
     },
     {
       "name": "voice-preserving-editor",

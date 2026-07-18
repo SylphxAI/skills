@@ -11,6 +11,7 @@
     "profile",
     "selector",
     "defaults",
+    "forbiddenEffectsForWeb",
     "exceptionPolicy",
     "review",
     "retirement"

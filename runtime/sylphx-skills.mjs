@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import {
-  cpSync,
   existsSync,
   mkdirSync,
   readFileSync,
@@ -17,8 +16,19 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { uninstallRuntimeHooks } from './hooks.mjs';
 import { packageDigest } from './package-digest.mjs';
-import { reconcile } from './reconcile.mjs';
+import { reconcile, withLifecycleLock, withReconcileLock } from './reconcile.mjs';
 import { installScheduler, parseIntervalMinutes, removeScheduler } from './scheduler.mjs';
+import {
+  clearTargetGeneration,
+  installTargetGeneration,
+  managedGenerationEstablished,
+  managedGenerationSkills,
+  managedOwnedPackagePath,
+  managedPackagePath,
+  managedTargetCurrent,
+  recoverTargetGeneration,
+  withTargetGenerationLock,
+} from './target-generation.mjs';
 
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceSkills = path.join(packageRoot, 'skills');
@@ -128,8 +138,7 @@ function manifestPath(target) {
   return path.join(target.path, '.sylphx-skills.json');
 }
 
-function readManifest(target) {
-  const file = manifestPath(target);
+function readManifestFile(file) {
   if (!existsSync(file)) return null;
   try {
     const manifest = JSON.parse(readFileSync(file, 'utf8'));
@@ -145,6 +154,24 @@ function readManifest(target) {
   } catch (error) {
     throw new Error(`Refusing to replace invalid ownership manifest ${file}: ${error.message}`);
   }
+}
+
+function readManifest(target) {
+  return readManifestFile(manifestPath(target));
+}
+
+function readPreviousManifest(target) {
+  if (managedGenerationEstablished(target.path)) {
+    try {
+      const internal = readManifestFile(managedOwnedPackagePath(target.path, '.sylphx-skills.json'));
+      if (internal) return internal;
+    } catch {
+      // The owned package set remains the deletion boundary when its manifest
+      // is locally corrupt; projected top-level files are not ownership proof.
+    }
+    return { skills: managedGenerationSkills(target.path) };
+  }
+  return readManifest(target);
 }
 
 function readJson(file) {
@@ -189,74 +216,44 @@ function recoverInterruptedTransactions(skillRoot) {
   }
 }
 
-function replaceDirectory(source, destination, expectedDigest) {
-  const skillRoot = path.dirname(destination);
-  mkdirSync(skillRoot, { recursive: true });
-  const suffix = `${process.pid}-${randomBytes(4).toString('hex')}`;
-  const transactionRoot = path.join(skillRoot, `${transactionPrefix}${path.basename(destination)}-${suffix}`);
-  const stage = path.join(transactionRoot, 'stage');
-  const backup = path.join(transactionRoot, 'backup');
-  mkdirSync(transactionRoot);
-  writeFileSync(path.join(transactionRoot, 'transaction.json'), `${JSON.stringify({
-    schemaVersion: 1,
-    owner: 'SylphxAI/skills',
-    package: path.basename(destination),
-  }, null, 2)}\n`, { mode: 0o600 });
-  cpSync(source, stage, { recursive: true, preserveTimestamps: true });
-  let movedExisting = false;
-  try {
-    if (packageDigest(stage) !== expectedDigest) {
-      throw new Error(`synchronized package digest mismatch: ${path.basename(destination)}`);
-    }
-    if (existsSync(destination)) {
-      renameSync(destination, backup);
-      movedExisting = true;
-    }
-    renameSync(stage, destination);
-    if (movedExisting) rmSync(backup, { recursive: true, force: true });
-    rmSync(transactionRoot, { recursive: true, force: true });
-  } catch (error) {
-    rmSync(stage, { recursive: true, force: true });
-    if (movedExisting && !existsSync(destination) && existsSync(backup)) renameSync(backup, destination);
-    if (existsSync(destination) || !existsSync(backup)) rmSync(transactionRoot, { recursive: true, force: true });
-    throw error;
-  }
-}
-
 function syncTarget(target) {
-  mkdirSync(target.path, { recursive: true });
-  recoverInterruptedTransactions(target.path);
-  const previous = readManifest(target);
-  const desired = catalog.skills.map((skill) => skill.name);
-  const desiredSet = new Set(desired);
-  const previousSkills = Array.isArray(previous?.skills) ? previous.skills : [];
+  return withTargetGenerationLock(target.path, (lockToken) => {
+    recoverTargetGeneration(target.path, lockToken);
+    mkdirSync(target.path, { recursive: true });
+    recoverInterruptedTransactions(target.path);
+    const previous = readPreviousManifest(target);
+    const desired = catalog.skills.map((skill) => skill.name);
+    const previousSkills = [...new Set([
+      ...(Array.isArray(previous?.skills) ? previous.skills : []),
+      ...managedGenerationSkills(target.path),
+    ])].sort();
 
-  for (const skill of catalog.skills) {
-    replaceDirectory(
-      path.join(sourceSkills, skill.name),
-      path.join(target.path, skill.name),
-      skill.packageDigest,
-    );
-  }
-  for (const name of previousSkills) {
-    if (!desiredSet.has(name)) rmSync(path.join(target.path, name), { recursive: true, force: true });
-  }
-
-  const manifest = {
-    schemaVersion: 1,
-    owner: 'SylphxAI/skills',
-    packageVersion: packageJson.version,
-    catalogDigest: `sha256:${catalogDigest}`,
-    sourceCommit: process.env.SYLPHX_SKILLS_COMMIT_SHA || null,
-    synchronizedAt: new Date().toISOString(),
-    runtime: target.runtime,
-    skills: desired,
-    packageDigests: Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])),
-  };
-  writeAtomic(manifestPath(target), `${JSON.stringify(manifest, null, 2)}\n`);
-  rmSync(path.join(target.path, 'skills-binding-install-manifest.json'), { force: true });
-  log(`synced ${desired.length} skills to ${target.runtime}: ${target.path}`);
-  return manifest;
+    const manifest = {
+      schemaVersion: 1,
+      owner: 'SylphxAI/skills',
+      packageVersion: packageJson.version,
+      catalogDigest: `sha256:${catalogDigest}`,
+      sourceCommit: process.env.SYLPHX_SKILLS_COMMIT_SHA || null,
+      synchronizedAt: new Date().toISOString(),
+      runtime: target.runtime,
+      skills: desired,
+      packageDigests: Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])),
+      profiles: catalog.skills
+        .filter((skill) => skill.profile)
+        .map((skill) => skill.profile),
+    };
+    installTargetGeneration({
+      targetPath: target.path,
+      sourceSkills,
+      catalog,
+      manifest,
+      previousSkills,
+      previousManifest: previous,
+      lockToken,
+    });
+    log(`synced ${desired.length} skills to ${target.runtime}: ${target.path}`);
+    return manifest;
+  });
 }
 
 function refreshAutoSyncInstallation() {
@@ -302,15 +299,40 @@ function sync() {
 
 function status() {
   const targets = resolveTargets();
-  const result = targets.map((target) => {
+  const result = targets.map((target) => withTargetGenerationLock(target.path, (lockToken) => {
+    recoverTargetGeneration(target.path, lockToken);
     const manifest = readManifest(target);
     const packageStates = catalog.skills.map((skill) => ({
       name: skill.name,
-      present: existsSync(path.join(target.path, skill.name, 'SKILL.md')),
-      current: packageDigest(path.join(target.path, skill.name)) === skill.packageDigest,
+      present: existsSync(path.join(managedPackagePath(target.path, skill.name), 'SKILL.md')),
+      current: packageDigest(managedPackagePath(target.path, skill.name)) === skill.packageDigest,
     }));
     const present = packageStates.filter((skill) => skill.present).length;
     const expectedDigests = Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest]));
+    const expectedProfiles = catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile);
+    const profilesCurrent = JSON.stringify(manifest?.profiles || []) === JSON.stringify(expectedProfiles);
+    const skillsCurrent = JSON.stringify(manifest?.skills || []) === JSON.stringify(
+      catalog.skills.map((skill) => skill.name),
+    );
+    const expectedSourceCommit = process.env.SYLPHX_SKILLS_COMMIT_SHA || null;
+    const sourceCommitCurrent = expectedSourceCommit === null || manifest?.sourceCommit === expectedSourceCommit;
+    const packageVersionCurrent = manifest?.packageVersion === packageJson.version;
+    const runtimeCurrent = manifest?.runtime === target.runtime;
+    const manifestShapeCurrent = JSON.stringify(Object.keys(manifest || {}).sort()) === JSON.stringify([
+      'catalogDigest',
+      'owner',
+      'packageDigests',
+      'packageVersion',
+      'profiles',
+      'runtime',
+      'schemaVersion',
+      'skills',
+      'sourceCommit',
+      'synchronizedAt',
+    ]);
+    const synchronizedAtCurrent = typeof manifest?.synchronizedAt === 'string'
+      && Number.isFinite(Date.parse(manifest.synchronizedAt))
+      && new Date(manifest.synchronizedAt).toISOString() === manifest.synchronizedAt;
     const packagesCurrent = packageStates.every((skill) => skill.current)
       && JSON.stringify(manifest?.packageDigests || {}) === JSON.stringify(expectedDigests);
     return {
@@ -320,11 +342,26 @@ function status() {
       expected: catalog.count,
       current: manifest?.catalogDigest === `sha256:${catalogDigest}`
         && present === catalog.count
-        && packagesCurrent,
+        && packagesCurrent
+        && profilesCurrent
+        && skillsCurrent
+        && managedTargetCurrent(target.path, catalog.skills.map((skill) => skill.name))
+        && sourceCommitCurrent
+        && packageVersionCurrent
+        && runtimeCurrent
+        && manifestShapeCurrent
+        && synchronizedAtCurrent,
       catalogDigest: manifest?.catalogDigest || null,
       packagesCurrent,
+      profilesCurrent,
+      skillsCurrent,
+      sourceCommitCurrent,
+      packageVersionCurrent,
+      runtimeCurrent,
+      manifestShapeCurrent,
+      synchronizedAtCurrent,
     };
-  });
+  }));
   if (jsonOutput) console.log(JSON.stringify({ command: 'status', targets: result }, null, 2));
   else for (const item of result) log(`${item.runtime}: ${item.current ? 'current' : 'outdated'} (${item.installed}/${item.expected}) ${item.path}`);
 }
@@ -333,27 +370,53 @@ function clear() {
   const targets = resolveTargets();
   const result = [];
   for (const target of targets) {
-    const previous = readManifest(target);
-    const names = new Set(previous?.skills || []);
-    let removed = 0;
-    for (const name of names) {
-      const destination = path.join(target.path, name);
-      if (!existsSync(destination)) continue;
-      rmSync(destination, { recursive: true, force: true });
-      removed += 1;
-    }
-    rmSync(manifestPath(target), { force: true });
-    result.push({ runtime: target.runtime, path: target.path, removed });
-    log(`cleared ${removed} Sylphx skills from ${target.runtime}: ${target.path}`);
+    withTargetGenerationLock(target.path, (lockToken) => {
+      recoverTargetGeneration(target.path, lockToken);
+      const previous = readPreviousManifest(target);
+      const names = new Set([
+        ...(previous?.skills || []),
+        ...managedGenerationSkills(target.path),
+      ]);
+      const removed = [...names].filter((name) => existsSync(path.join(target.path, name))).length;
+      clearTargetGeneration(target.path, [...names], lockToken);
+      result.push({ runtime: target.runtime, path: target.path, removed });
+      log(`cleared ${removed} Sylphx skills from ${target.runtime}: ${target.path}`);
+    });
   }
   if (jsonOutput) console.log(JSON.stringify({ command: 'clear', targets: result }, null, 2));
+}
+
+function testHoldEnableAfterReconcile() {
+  if (process.env.NODE_ENV !== 'test') return;
+  const duration = process.env.SYLPHX_SKILLS_TEST_HOLD_ENABLE_AFTER_RECONCILE_MS;
+  const release = process.env.SYLPHX_SKILLS_TEST_HOLD_ENABLE_AFTER_RECONCILE_RELEASE;
+  if (!duration && !release) return;
+  const marker = path.join(stateDirectory, '.test-enable-after-reconcile-ready');
+  writeFileSync(marker, 'ready\n');
+  try {
+    const waiter = new Int32Array(new SharedArrayBuffer(4));
+    if (release) {
+      const deadline = Date.now() + 60_000;
+      while (!existsSync(release)) {
+        if (Date.now() >= deadline) throw new Error('timed out waiting to release enable lifecycle test hold');
+        Atomics.wait(waiter, 0, 0, 20);
+      }
+    } else {
+      const milliseconds = Number(duration);
+      if (!Number.isFinite(milliseconds) || milliseconds < 0 || milliseconds > 5_000) {
+        throw new Error('invalid enable lifecycle test hold duration');
+      }
+      Atomics.wait(waiter, 0, 0, milliseconds);
+    }
+  } finally {
+    rmSync(marker, { force: true });
+    if (release) rmSync(release, { force: true });
+  }
 }
 
 function enableAutoSync() {
   if (argv.includes('--dest')) throw new Error('auto-sync uses native runtime roots; --dest is not supported');
   const intervalMinutes = parseIntervalMinutes(argv);
-  removeScheduler({ platform: schedulerPlatform, home });
-  mkdirSync(stateDirectory, { recursive: true });
   const agents = requestedAgents();
   const pathEnv = process.env.PATH || '/usr/local/bin:/usr/bin:/bin';
   const config = {
@@ -372,37 +435,58 @@ function enableAutoSync() {
     homes: runtimeHomes(),
     adapterVersion: packageJson.version,
   };
-  writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
-  writeAtomic(reconcilerScript, readFileSync(path.join(packageRoot, 'runtime', 'reconcile.mjs')), 0o755);
-  reconcile({ stateDirectory, force: true, strict: true });
-  // A pre-1.4 source may briefly refresh its old hooks during the first exact
-  // sync. Remove them after convergence so this command's scheduler is the only
-  // recurring owner.
-  uninstallRuntimeHooks({ agents: ['codex', 'claude', 'grok'], homes: runtimeHomes() });
-  writeAtomic(reconcilerScript, readFileSync(path.join(packageRoot, 'runtime', 'reconcile.mjs')), 0o755);
-  installScheduler({
-    platform: schedulerPlatform,
-    home,
-    nodePath: config.nodePath,
-    reconcilerPath: reconcilerScript,
-    pathEnv: config.pathEnv,
-    intervalMinutes,
+  const lifecycle = withLifecycleLock(stateDirectory, () => {
+    removeScheduler({ platform: schedulerPlatform, home });
+    mkdirSync(stateDirectory, { recursive: true });
+    const prepared = withReconcileLock(stateDirectory, () => {
+      writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
+      writeAtomic(reconcilerScript, readFileSync(path.join(packageRoot, 'runtime', 'reconcile.mjs')), 0o755);
+    });
+    if (!prepared.acquired) throw new Error('automatic synchronization is busy; retry enable');
+
+    const initial = reconcile({ stateDirectory, force: true, strict: true, bootstrap: true });
+    if (!['current', 'updated'].includes(initial.status)) {
+      throw new Error(`automatic synchronization did not converge: ${initial.status}`);
+    }
+    testHoldEnableAfterReconcile();
+
+    const activated = withReconcileLock(stateDirectory, () => {
+      // A pre-1.4 source may briefly refresh its old hooks during the first exact
+      // sync. Remove them after convergence so this command's scheduler is the only
+      // recurring owner.
+      uninstallRuntimeHooks({ agents: ['codex', 'claude', 'grok'], homes: runtimeHomes() });
+      installScheduler({
+        platform: schedulerPlatform,
+        home,
+        nodePath: config.nodePath,
+        reconcilerPath: reconcilerScript,
+        pathEnv: config.pathEnv,
+        intervalMinutes,
+      });
+      config.enabled = true;
+      writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
+      rmSync(legacyUpdaterScript, { force: true });
+    });
+    if (!activated.acquired) throw new Error('automatic synchronization is busy; retry enable');
   });
-  config.enabled = true;
-  writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
-  rmSync(legacyUpdaterScript, { force: true });
+  if (!lifecycle.acquired) throw new Error('automatic synchronization lifecycle is busy; retry enable');
   log(`enabled automatic sync every ${intervalMinutes} minute${intervalMinutes === 1 ? '' : 's'} for ${agents.join(', ')}`);
 }
 
 function disableAutoSync() {
-  const config = readJson(reconcilerConfig);
-  const agents = config?.agents || ['codex', 'claude', 'grok'];
-  const homes = config?.homes || runtimeHomes();
-  uninstallRuntimeHooks({ agents, homes });
-  removeScheduler({ platform: schedulerPlatform, home });
-  rmSync(path.join(stateDirectory, 'reconcile.lock'), { recursive: true, force: true });
-  rmSync(reconcilerScript, { force: true });
-  rmSync(reconcilerConfig, { force: true });
+  const lifecycle = withLifecycleLock(stateDirectory, () => {
+    const config = readJson(reconcilerConfig);
+    const agents = config?.agents || ['codex', 'claude', 'grok'];
+    const homes = config?.homes || runtimeHomes();
+    removeScheduler({ platform: schedulerPlatform, home });
+    const disabled = withReconcileLock(stateDirectory, () => {
+      uninstallRuntimeHooks({ agents, homes });
+      rmSync(reconcilerScript, { force: true });
+      rmSync(reconcilerConfig, { force: true });
+    });
+    if (!disabled.acquired) throw new Error('automatic synchronization is busy; retry disable');
+  });
+  if (!lifecycle.acquired) throw new Error('automatic synchronization lifecycle is busy; retry disable');
   log('disabled Sylphx Skills automatic sync');
 }
 

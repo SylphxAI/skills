@@ -6,7 +6,7 @@ owners:
 supersededBy: ADR-0003
 ---
 
-# ADR-0002: Reconcile Skills at agent consumption boundaries
+# ADR-0002: Reconcile Skills with a per-user interval scheduler
 
 This experiment was superseded by ADR-0003. Runtime hooks introduced approval,
 compatibility, and per-turn overhead without guaranteeing hot reload during
@@ -14,50 +14,53 @@ continuous model generation.
 
 ## Context
 
-An hourly scheduler is cheap but can leave a newly authored Skill unavailable
-for almost an hour. Session-start and prompt hooks reduce that delay but miss a
-single agent turn that continues through tools for several hours. A public Git
-repository cannot push directly into arbitrary clients without a subscribed
-service, and a service would add infrastructure, credentials, availability,
-and operating cost to a static public instruction source.
-
-The useful freshness boundary is not the Git push itself. It is the next point
-where an agent runtime can discover and consume changed instructions. A model
-that is already continuously generating cannot safely replace its active
-context until such a lifecycle boundary occurs.
+A public Git repository cannot push directly into arbitrary clients without a
+subscribed service, and a service would add infrastructure, credentials,
+availability, and operating cost to a static public instruction source.
+Runtime-specific hooks also create three separate integration surfaces and can
+run network work on an agent's critical path. One per-user operating-system
+scheduler provides a portable, inspectable owner with bounded freshness and no
+resident process. This decision supersedes the earlier consumption-boundary
+hook design previously recorded in this file.
 
 ## Decision
 
-1. Replace hourly OS schedulers with runtime-native hooks at session start or
-   resume, user prompt submission, sub-agent start, and the active tool loop.
-2. Use Claude Code's `PostToolBatch` event to reconcile once before the next
-   model step. Use Codex `PreToolUse`, which covers both eventually successful
-   and failed tool calls without installing duplicate pre/post hooks.
-3. Share freshness state and an atomic single-flight lock per user. Lifecycle
-   probes have a one-second maximum age; active-turn probes have a ten-second
-   maximum age. Most hook invocations therefore read one small local JSON file
-   and exit without network access.
-4. When a probe is due, query the fixed public Git remote for `main`. Fetch and
-   apply only when its commit identity changed. Keep an automatically managed
-   local checkout for incremental transfer; it is a cache and never a semantic
-   authoring source.
-5. Bind installed manifests to the applied source commit. Preserve unrelated
-   runtime hooks and settings, install idempotently, and remove only managed
-   hook entries on disable.
+1. Install one native per-user scheduler: launchd on macOS, a systemd user timer
+   on Linux, or Task Scheduler on Windows. Default to ten minutes and accept an
+   explicit whole-minute interval from one minute through 24 hours.
+2. Keep runtime hooks out of the recurring path. During upgrade and disable,
+   remove only legacy Sylphx-managed hook entries and preserve unrelated user
+   settings.
+3. Share freshness state and an atomic single-flight lock per user. Every tick
+   verifies the installed catalog, profile metadata, exact source commit, and
+   package digests before it can trust cached remote or applied state.
+4. When a remote probe is due, query the fixed public Git remote for `main`.
+   Fetch on a changed commit, or reuse the exact clean managed checkout to
+   repair installed drift when the remote and applied commit are equal. Keep
+   that checkout as an incremental-transfer cache, never a semantic authoring
+   source.
+5. Bind installed manifests to the applied source commit. Build and verify all
+   managed package updates, removals, profile metadata, and the manifest in a
+   sibling ownership-proven target-generation journal before atomically
+   switching one managed-generation pointer shared by every package and the
+   manifest. Fence recovery, status, synchronization, and clear under one
+   target-scoped writer lock. Keep the target root stable so unrelated runtime
+   Skills never enter the managed journal and are never copied, moved, or
+   deleted during a switch. Recovery deterministically completes or rolls back
+   the managed generation after a crash.
 6. On network failure, keep the last known-good Skills, record a bounded local
    error, and use exponential retry backoff. Auto-sync failure must not block
    unrelated agent work.
-7. Do not introduce a webhook relay, daemon, credential, Control Plane
-   dependency, or continuous polling while no supported agent is active.
+7. Do not introduce a webhook relay, resident daemon, credential, or Control
+   Plane dependency.
 
 ## Consequences
 
-- A long-running tool-using turn sees updates at its next active-loop boundary,
-  with at most ten seconds of probe staleness under normal operation.
-- Idle machines consume no polling resources. Concurrent local agents coalesce
-  to one remote probe or update.
-- A rare update may add a few seconds before the next model step; unchanged
-  hooks normally pay only a short local process and state read.
-- Fully continuous model generation without a prompt, sub-agent, or tool
-  boundary cannot hot-reload instructions; the next boundary is the honest
-  freshness limit.
+- Installed files converge within the configured interval; an already-running
+  agent may still wait for its normal reload boundary before consuming them.
+- Each configured user account performs at most one scheduled verification at
+  a time. There is no per-agent duplicate polling surface.
+- Unchanged ticks pay local byte verification plus one remote-head read when
+  due; changed or drifted targets pay exact-source synchronization.
+- Scheduler availability and user-session behavior remain operating-system
+  concerns, covered by the platform-specific scheduler tests and CI matrix.

@@ -4,8 +4,8 @@
   "kind": "EnterpriseProfile",
   "profile": {
     "id": "technology-stack-profile",
-    "revision": "2026-07-18.2",
-    "contentDigest": "sha256:9475765aa12f28b3ad1f45e919fc1a4403f4b3a56ff4953d8af352e58a4856b8",
+    "revision": "2026-07-18.3",
+    "contentDigest": "sha256:2a5340e58ccd353e9a558ef87605b4f40abb529f78e57cfff00730559e131344",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
     "decisionRef": "references/ADR-20260718-backend-web-technology-boundary.md",
@@ -87,7 +87,23 @@
     {
       "key": "engineering.language.completion-measure",
       "value": "service-role-and-effect-coverage",
-      "appliesToRoles": ["language-boundary-audit", "migration-completion"],
+      "appliesToRoles": [
+        "api",
+        "backend-service",
+        "background-job",
+        "browser",
+        "controller",
+        "critical-path",
+        "gateway",
+        "product-web",
+        "queue-consumer",
+        "queue-producer",
+        "runtime",
+        "server-rendered-web",
+        "storage",
+        "ui-orchestration",
+        "worker"
+      ],
       "rationale": "Completion is semantic coverage of declared service roles and effects, not a source-file statistic.",
       "constraints": [
         "Never use .ts file count, repository language totals, Bun process presence, or endpoint-shell parity as completion evidence.",
@@ -136,7 +152,7 @@
     ]
   },
   "retirement": {
-    "predecessor": "technology-stack-profile@2026-07-18.1",
+    "predecessor": "technology-stack-profile@2026-07-18.2",
     "successor": null,
     "terminal": "An admitted active successor revision covers this selector and all selection keys, Control Plane resolves selected repositories to that successor, all exceptions are closed, and this revision is marked retired.",
     "retiredRevisionSelectable": false
