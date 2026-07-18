@@ -20,13 +20,13 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawn, spawnSync } from 'node:child_process';
 import test from 'node:test';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { packageDigest } from '../runtime/package-digest.mjs';
 import { reconcile } from '../runtime/reconcile.mjs';
 import { parseIntervalMinutes, schedulerDefinition } from '../runtime/scheduler.mjs';
 import { targetGenerationTransactionNames } from '../runtime/target-generation.mjs';
 
-const root = path.resolve(new URL('..', import.meta.url).pathname);
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const cli = path.join(root, 'runtime', 'sylphx-skills.mjs');
 const catalog = JSON.parse(readFileSync(path.join(root, 'catalog.json'), 'utf8'));
 
@@ -793,9 +793,30 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
     assert.equal(git(config.repository, ['status', '--porcelain', '--untracked-files=all']), '');
     writeFileSync(path.join(remote, '.gitattributes'), '* text=auto eol=lf\n');
     const attributesSha = commit(remote, 'bind exact checkout line endings');
+    const interrupted = spawnSync(process.execPath, [config.reconcilerPath, '--force'], {
+      cwd: root,
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        NODE_ENV: 'test',
+        SYLPHX_SKILLS_STATE_DIR: stateDirectory,
+        SYLPHX_SKILLS_TEST_CRASH_AFTER_MATERIALIZED_FILES: '2',
+      },
+    });
+    assert.equal(interrupted.status, 86, interrupted.stderr || interrupted.stdout);
+    const materializationStage = path.join(stateDirectory, '.repository.sylphx-materialize');
+    assert.equal(existsSync(materializationStage), true, 'interrupted materialization must retain its owned journal');
+    assert.notEqual(
+      git(config.repository, ['status', '--porcelain', '--untracked-files=all']),
+      '',
+      'the fixture must interrupt after canonical bytes make the worktree look dirty',
+    );
+
     const attributesUpdate = reconcile({ stateDirectory, force: true, strict: true, now: 16_000 });
     assert.equal(attributesUpdate.status, 'updated');
     assert.equal(attributesUpdate.appliedSha, attributesSha);
+    assert.equal(existsSync(materializationStage), false, 'successful recovery must remove the owned journal');
+    assert.equal(git(config.repository, ['status', '--porcelain', '--untracked-files=all']), '');
     assert.equal(
       readFileSync(path.join(config.repository, 'content.txt'), 'utf8'),
       'one\n',

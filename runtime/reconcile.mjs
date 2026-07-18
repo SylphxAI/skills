@@ -384,34 +384,79 @@ function syncCandidate(run, config, candidate) {
   }
 }
 
-function materializeTrackedFiles(run, config) {
+function materializationStage(config) {
+  const repositoryRoot = path.resolve(config.repository);
+  return path.join(path.dirname(repositoryRoot), `.${path.basename(repositoryRoot)}.sylphx-materialize`);
+}
+
+function readMaterializationOwner(config, stage) {
+  const stageStat = lstatSync(stage);
+  const ownerFile = path.join(stage, 'owner.json');
+  if (!stageStat.isDirectory() || !lstatSync(ownerFile).isFile()) {
+    throw new Error(`Unowned exact-materialization journal: ${stage}`);
+  }
+  const owner = JSON.parse(readFileSync(ownerFile, 'utf8'));
+  const repositoryRoot = path.resolve(config.repository);
+  if (
+    owner?.schemaVersion !== 1
+    || owner?.owner !== 'SylphxAI/skills'
+    || owner?.repository !== repositoryRoot
+    || !/^[0-9a-f]{40,64}$/.test(owner?.candidate || '')
+  ) throw new Error(`Unowned exact-materialization journal: ${stage}`);
+  return owner;
+}
+
+function testCrashAfterMaterializedFile(count) {
+  if (process.env.NODE_ENV !== 'test') return;
+  const configured = Number(process.env.SYLPHX_SKILLS_TEST_CRASH_AFTER_MATERIALIZED_FILES || 0);
+  if (Number.isInteger(configured) && configured > 0 && count === configured) process.exit(86);
+}
+
+function materializeTrackedFiles(run, config, { recovery = false } = {}) {
   const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
-  const dirty = checked(run, 'git', [
-    '-C', config.repository, 'status', '--porcelain', '--untracked-files=all',
-  ], { env }).stdout;
-  if (dirty.trim()) throw new Error(`Managed repository changed before exact materialization: ${config.repository}`);
+  const repositoryRoot = path.resolve(config.repository);
+  const stage = materializationStage(config);
+  const candidate = checked(run, 'git', ['-C', config.repository, 'rev-parse', 'HEAD'], { env }).stdout.trim();
+  if (!/^[0-9a-f]{40,64}$/.test(candidate)) throw new Error('Candidate has an invalid commit identity');
+
+  if (recovery) {
+    const owner = readMaterializationOwner(config, stage);
+    if (owner.candidate !== candidate) {
+      throw new Error(`Exact-materialization journal candidate changed: ${stage}`);
+    }
+    const origin = checked(run, 'git', ['-C', config.repository, 'remote', 'get-url', 'origin'], { env }).stdout.trim();
+    if (origin !== config.remote) throw new Error(`Managed repository origin changed: ${origin}`);
+    checked(run, 'git', ['-C', config.repository, 'diff', '--cached', '--quiet', '--exit-code', 'HEAD'], { env });
+  } else {
+    const dirty = checked(run, 'git', [
+      '-C', config.repository, 'status', '--porcelain', '--untracked-files=all',
+    ], { env }).stdout;
+    if (dirty.trim()) throw new Error(`Managed repository changed before exact materialization: ${config.repository}`);
+    if (pathEntryExists(stage)) throw new Error(`Unrecovered exact-materialization journal: ${stage}`);
+    const preparing = `${stage}.prepare-${process.pid}-${randomBytes(4).toString('hex')}`;
+    mkdirSync(preparing, { mode: 0o700 });
+    writeFileSync(path.join(preparing, 'owner.json'), `${JSON.stringify({
+      schemaVersion: 1,
+      owner: 'SylphxAI/skills',
+      repository: repositoryRoot,
+      candidate,
+    })}\n`, { mode: 0o600 });
+    renameSync(preparing, stage);
+  }
 
   const tracked = checked(run, 'git', ['-C', config.repository, 'ls-files', '-z'], { env }).stdout
     .split('\0')
     .filter(Boolean);
   if (!tracked.length) throw new Error(`Managed repository has no tracked files: ${config.repository}`);
 
-  const repositoryRoot = path.resolve(config.repository);
-  const stage = path.join(
-    path.dirname(repositoryRoot),
-    `.${path.basename(repositoryRoot)}.sylphx-materialize-${process.pid}-${randomBytes(4).toString('hex')}`,
-  );
   const worktree = path.join(stage, 'worktree');
+  let completed = false;
+  rmSync(worktree, { recursive: true, force: true });
   mkdirSync(worktree, { recursive: true, mode: 0o700 });
-  writeFileSync(path.join(stage, 'owner.json'), `${JSON.stringify({
-    schemaVersion: 1,
-    owner: 'SylphxAI/skills',
-    repository: repositoryRoot,
-  })}\n`, { mode: 0o600 });
   try {
     const prefix = `${worktree.replaceAll('\\', '/')}/`;
     checked(run, 'git', ['-C', config.repository, 'checkout-index', '--all', '--force', `--prefix=${prefix}`], { env });
-    for (const relative of tracked) {
+    for (const [index, relative] of tracked.entries()) {
       const destination = path.resolve(repositoryRoot, relative);
       if (destination === repositoryRoot || !destination.startsWith(`${repositoryRoot}${path.sep}`)) {
         throw new Error(`Managed repository returned an unsafe tracked path: ${JSON.stringify(relative)}`);
@@ -421,6 +466,7 @@ function materializeTrackedFiles(run, config) {
         throw new Error(`Managed repository returned an unsupported tracked entry: ${JSON.stringify(relative)}`);
       }
       renameSync(source, destination);
+      testCrashAfterMaterializedFile(index + 1);
     }
     // Replacing an unchanged CRLF worktree file with the canonical LF bytes can
     // leave only the index stat cache looking dirty. Renormalization refreshes
@@ -434,14 +480,27 @@ function materializeTrackedFiles(run, config) {
       '-C', config.repository, 'status', '--porcelain', '--untracked-files=all',
     ], { env }).stdout;
     if (remaining.trim()) throw new Error(`Exact materialization left repository drift: ${config.repository}`);
+    completed = true;
   } finally {
-    rmSync(stage, { recursive: true, force: true });
+    if (completed) {
+      const retired = `${stage}.completed-${process.pid}-${randomBytes(4).toString('hex')}`;
+      renameSync(stage, retired);
+      rmSync(retired, { recursive: true, force: true });
+    }
   }
+}
+
+function recoverTrackedMaterialization(run, config) {
+  const stage = materializationStage(config);
+  if (!pathEntryExists(stage)) return false;
+  materializeTrackedFiles(run, config, { recovery: true });
+  return true;
 }
 
 function repairAppliedHead(run, config, expectedSha) {
   if (!existsSync(path.join(config.repository, '.git'))) return false;
   const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
+  recoverTrackedMaterialization(run, config);
   ensureCleanManagedRepository(run, config);
   const candidate = checked(run, 'git', ['-C', config.repository, 'rev-parse', 'HEAD'], { env }).stdout.trim();
   if (candidate !== expectedSha) return false;
@@ -452,6 +511,7 @@ function repairAppliedHead(run, config, expectedSha) {
 
 function applyRemoteHead(run, config, expectedRemoteHead) {
   const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
+  if (existsSync(path.join(config.repository, '.git'))) recoverTrackedMaterialization(run, config);
   const { created } = ensureCleanManagedRepository(run, config);
   let candidate;
   if (created) {
