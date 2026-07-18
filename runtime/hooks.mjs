@@ -36,8 +36,9 @@ function shellQuote(value) {
   return `'${String(value).replaceAll("'", "'\\''")}'`;
 }
 
-function hookCommand(nodePath, reconcilerPath, maxAgeMs) {
-  return `${shellQuote(nodePath)} ${shellQuote(reconcilerPath)} --quiet --max-age-ms ${maxAgeMs}`;
+function hookCommand(nodePath, reconcilerPath, maxAgeMs, skipIfGrokCompat = false) {
+  const compatibilityGuard = skipIfGrokCompat ? ' --skip-if-grok-compat' : '';
+  return `${shellQuote(nodePath)} ${shellQuote(reconcilerPath)} --quiet --max-age-ms ${maxAgeMs}${compatibilityGuard}`;
 }
 
 function isManagedGroup(group) {
@@ -57,8 +58,20 @@ function commandGroup(command, matcher) {
 }
 
 function eventDefinitions(runtime, nodePath, reconcilerPath) {
-  const boundary = hookCommand(nodePath, reconcilerPath, 1_000);
-  const activeTurn = hookCommand(nodePath, reconcilerPath, 10_000);
+  // Grok Build officially imports Claude hooks. Mark Claude-owned commands so
+  // that compatibility discovery becomes a cheap no-op when native Grok hooks
+  // own the same boundary.
+  const compatibilityGuard = runtime === 'claude';
+  const boundary = hookCommand(nodePath, reconcilerPath, 1_000, compatibilityGuard);
+  const activeTurn = hookCommand(nodePath, reconcilerPath, 10_000, compatibilityGuard);
+  if (runtime === 'grok') {
+    return {
+      SessionStart: commandGroup(boundary),
+      UserPromptSubmit: commandGroup(boundary),
+      SubagentStart: commandGroup(boundary),
+      PostToolUse: commandGroup(activeTurn),
+    };
+  }
   return {
     SessionStart: commandGroup(boundary, 'startup|resume|clear|compact'),
     UserPromptSubmit: commandGroup(boundary),
@@ -98,10 +111,11 @@ export function removeManagedHooks(document) {
   return result;
 }
 
-export function runtimeHookFiles({ codexHome, claudeHome }) {
+export function runtimeHookFiles({ codexHome, claudeHome, grokHome }) {
   return {
     codex: path.join(codexHome, 'hooks.json'),
     claude: path.join(claudeHome, 'settings.json'),
+    grok: path.join(grokHome, 'hooks', 'sylphx-skills.json'),
   };
 }
 

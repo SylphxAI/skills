@@ -9,9 +9,9 @@ Sylphx products—especially Sylphx Platform—easy for agents to discover and u
 
 ## Install or update
 
-No global package installation is required. The command detects Codex and
-Claude Code and synchronizes every canonical package into their native skill
-roots:
+No global package installation is required. The command detects Codex, Claude
+Code, and Grok Build and synchronizes every canonical package into their native
+skill roots:
 
 ```bash
 npx --yes github:SylphxAI/skills sync
@@ -28,6 +28,7 @@ Optional overrides remain available for automation and testing:
 ```bash
 npx --yes github:SylphxAI/skills sync --agent codex
 npx --yes github:SylphxAI/skills sync --agent claude
+npx --yes github:SylphxAI/skills sync --agent grok
 npx --yes github:SylphxAI/skills sync --agent all
 ```
 
@@ -42,8 +43,8 @@ npx --yes github:SylphxAI/skills auto-sync enable
 Updates then reconcile at the points where an agent can actually consume new
 instructions: session start/resume, prompt submission, sub-agent start, and the
 active tool loop. Codex checks before a tool call; Claude Code checks after a
-tool batch, immediately before its next model step. This also covers a turn
-that runs for hours without another user prompt.
+tool batch; Grok Build checks after a tool call and hot-reloads changed Skills.
+This also covers a turn that runs for hours without another user prompt.
 
 The common path is local and cheap. Lifecycle checks share a one-second cache;
 active-turn checks share a ten-second cache and a per-user single-flight lock.
@@ -51,6 +52,8 @@ Only an expired check performs one public `git ls-remote`, and only a changed
 commit performs an incremental fetch and atomic Skill sync. There is no hourly
 wait, background daemon, webhook relay, token, or Control Plane dependency.
 When offline, the last known-good packages remain active and retries back off.
+Grok uses its documented native global hook and Skill directories; its Claude
+hook compatibility is guarded so it cannot perform a duplicate network check.
 
 Each successful reconciliation converges the complete Sylphx-managed set:
 new packages appear, packages removed upstream are removed locally, and an
@@ -72,7 +75,7 @@ npx --yes github:SylphxAI/skills clear
 
 - `skills/<id>/` is the only writable semantic source for a package.
 - `catalog.json` is a deterministic index built from package frontmatter.
-- `runtime/` contains the small Codex/Claude sync adapter.
+- `runtime/` contains the small Codex/Claude/Grok sync adapter.
 - `scripts/` and `tests/` protect package and installer integrity only.
 - Live fleet state, work, effects, customer data, benchmark runs, and model
   evaluation results do not belong here.

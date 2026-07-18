@@ -53,14 +53,16 @@ function expand(input) {
 function runtimeHomes() {
   const codexHome = process.env.CODEX_HOME ? expand(process.env.CODEX_HOME) : path.join(home, '.codex');
   const claudeHome = process.env.CLAUDE_CONFIG_DIR ? expand(process.env.CLAUDE_CONFIG_DIR) : path.join(home, '.claude');
-  return { codexHome, claudeHome };
+  const grokHome = process.env.GROK_HOME ? expand(process.env.GROK_HOME) : path.join(home, '.grok');
+  return { codexHome, claudeHome, grokHome };
 }
 
 function runtimeDefinitions() {
-  const { codexHome, claudeHome } = runtimeHomes();
+  const { codexHome, claudeHome, grokHome } = runtimeHomes();
   return {
     codex: path.join(codexHome, 'skills'),
     claude: path.join(claudeHome, 'skills'),
+    grok: path.join(grokHome, 'skills'),
   };
 }
 
@@ -83,9 +85,9 @@ export function resolveTargets({ args = argv, homedir = home } = {}) {
       index += 1;
     }
   }
-  const expanded = requested.includes('all') ? ['codex', 'claude'] : requested;
+  const expanded = requested.includes('all') ? ['codex', 'claude', 'grok'] : requested;
   const invalid = expanded.filter((name) => !Object.hasOwn(definitions, name));
-  if (invalid.length) throw new Error(`Unsupported agent: ${invalid.join(', ')}. Supported: codex, claude, all.`);
+  if (invalid.length) throw new Error(`Unsupported agent: ${invalid.join(', ')}. Supported: codex, claude, grok, all.`);
 
   const selected = expanded.length
     ? [...new Set(expanded)]
@@ -96,7 +98,7 @@ export function resolveTargets({ args = argv, homedir = home } = {}) {
   // A fresh machine should not require a destination decision. Creating both
   // roots is harmless and lets whichever runtime is installed next discover
   // the same packages immediately.
-  const automatic = selected.length ? selected : ['codex', 'claude'];
+  const automatic = selected.length ? selected : ['codex', 'claude', 'grok'];
   return automatic.map((runtime) => ({ runtime, path: definitions[runtime] }));
 }
 
@@ -108,9 +110,9 @@ function requestedAgents(args = argv) {
       index += 1;
     }
   }
-  const expanded = names.includes('all') || !names.length ? ['codex', 'claude'] : names;
-  const invalid = expanded.filter((name) => !['codex', 'claude'].includes(name));
-  if (invalid.length) throw new Error(`Unsupported agent: ${invalid.join(', ')}. Supported: codex, claude, all.`);
+  const expanded = names.includes('all') || !names.length ? ['codex', 'claude', 'grok'] : names;
+  const invalid = expanded.filter((name) => !['codex', 'claude', 'grok'].includes(name));
+  if (invalid.length) throw new Error(`Unsupported agent: ${invalid.join(', ')}. Supported: codex, claude, grok, all.`);
   return [...new Set(expanded)];
 }
 
@@ -122,9 +124,18 @@ function readManifest(target) {
   const file = manifestPath(target);
   if (!existsSync(file)) return null;
   try {
-    return JSON.parse(readFileSync(file, 'utf8'));
-  } catch {
-    return null;
+    const manifest = JSON.parse(readFileSync(file, 'utf8'));
+    if (
+      manifest?.schemaVersion !== 1
+      || manifest?.owner !== 'SylphxAI/skills'
+      || !Array.isArray(manifest.skills)
+      || manifest.skills.some((name) => typeof name !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name))
+    ) {
+      throw new Error('invalid ownership manifest');
+    }
+    return manifest;
+  } catch (error) {
+    throw new Error(`Refusing to replace invalid ownership manifest ${file}: ${error.message}`);
   }
 }
 
@@ -236,9 +247,21 @@ function refreshAutoSyncInstallation() {
   // A manual sync from an arbitrary working tree updates Skills content but
   // must not silently turn uncommitted runtime code into the auto-sync owner.
   if (!process.env.SYLPHX_SKILLS_COMMIT_SHA || !config?.enabled || config.owner !== 'SylphxAI/skills') return;
+  const currentHomes = runtimeHomes();
+  const agents = [...new Set(config.agents || [])];
+  // Existing pre-Grok installations migrate themselves when Grok Build is
+  // present; no second installer or timer is required.
+  if (existsSync(currentHomes.grokHome) && !agents.includes('grok')) {
+    syncTarget({ runtime: 'grok', path: path.join(currentHomes.grokHome, 'skills') });
+    agents.push('grok');
+  }
+  config.agents = agents;
+  config.homes = { ...config.homes, ...currentHomes };
+  config.adapterVersion = packageJson.version;
+  writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
   writeAtomic(reconcilerScript, readFileSync(path.join(packageRoot, 'runtime', 'reconcile.mjs')), 0o755);
   installRuntimeHooks({
-    agents: config.agents,
+    agents,
     homes: config.homes,
     nodePath: config.nodePath,
     reconcilerPath: reconcilerScript,
@@ -275,7 +298,7 @@ function clear() {
   const result = [];
   for (const target of targets) {
     const previous = readManifest(target);
-    const names = new Set([...(previous?.skills || []), ...catalog.skills.map((skill) => skill.name)]);
+    const names = new Set(previous?.skills || []);
     let removed = 0;
     for (const name of names) {
       const destination = path.join(target.path, name);
@@ -351,7 +374,7 @@ function enableAutoSync() {
 
 function disableAutoSync() {
   const config = readJson(reconcilerConfig);
-  const agents = config?.agents || ['codex', 'claude'];
+  const agents = config?.agents || ['codex', 'claude', 'grok'];
   const homes = config?.homes || runtimeHomes();
   uninstallRuntimeHooks({ agents, homes });
   removeLegacyScheduler();
@@ -363,7 +386,7 @@ function disableAutoSync() {
 
 function autoSyncStatus() {
   const config = readJson(reconcilerConfig);
-  const agents = config?.agents || ['codex', 'claude'];
+  const agents = config?.agents || ['codex', 'claude', 'grok'];
   const homes = config?.homes || runtimeHomes();
   const hooks = runtimeHookStatus({ agents, homes });
   const result = {
@@ -379,7 +402,7 @@ function autoSyncStatus() {
 }
 
 function help() {
-  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills sync [--agent codex|claude|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills auto-sync enable|disable|status\n\nDefault behavior auto-detects Codex and Claude Code. Auto-sync reconciles at\nsession, prompt, sub-agent, and active tool-loop boundaries without a daemon.`);
+  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills sync [--agent codex|claude|grok|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills auto-sync enable|disable|status\n\nDefault behavior auto-detects Codex, Claude Code, and Grok Build. Auto-sync\nreconciles at session, prompt, sub-agent, and active tool-loop boundaries\nwithout a daemon.`);
 }
 
 function main() {
