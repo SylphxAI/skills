@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 86,
+  "count": 87,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -55,7 +55,7 @@
       "name": "autonomous-execution-standard",
       "description": "Autonomous scheduling: critical-path focus, parallelism budgets, delegated outcomes, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer or edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:10f0aaf08eaabf5b5ea582d6cb4c3fca44c4895e65eec75e1d6a90ca02d2b1fa"
+      "packageDigest": "sha256:d582b5542b70dc858c106aec5777d66cb0fcf30939fb5054cafea2aafcb9affd"
     },
     {
       "name": "board-metrics-operating-review",
@@ -226,6 +226,12 @@
       "packageDigest": "sha256:890f239a668d84d3e1c19195a962532dac9292d3cc35c63c4d54312eb310808f"
     },
     {
+      "name": "high-signal-communication",
+      "description": "Produce concise, decision-complete agent communication with high information density. Use when drafting, editing, reviewing, compressing, or handing off user replies, progress updates, reports, tool summaries, commits, pull requests, ADRs, specs, documentation, incident notes, or agent-to-agent records where verbosity, repetition, context cost, or slow comprehension matters.",
+      "path": "skills/high-signal-communication/SKILL.md",
+      "packageDigest": "sha256:1eeeb82ff5a8068adf672008b9c1285ebcea04764b719eb781ec540d221f8afa"
+    },
+    {
       "name": "incident-standard",
       "description": "Incident severity, automated detect-mitigate-verify loops, and machine-checkable postmortems. Use when responding to, designing for, or reviewing an operational incident. Do not use for an ordinary defect that has no active service or customer impact.",
       "path": "skills/incident-standard/SKILL.md",
@@ -373,7 +379,7 @@
       "name": "prompt-architecture",
       "description": "AGENTS.md projections, skill metadata, runtime constitutions, and instruction hierarchy without duplicating source instructions. Use when creating, reviewing, or restructuring durable agent instructions. Do not use for ordinary user-facing copy.",
       "path": "skills/prompt-architecture/SKILL.md",
-      "packageDigest": "sha256:ed389f2b04b34127315a409b206731b7071116c9a7b7e9652b6c8c39839e0ec2"
+      "packageDigest": "sha256:ee41d441e778c58db72c88fe4d8273bd262cc5db4d81785922a70278f91183f6"
     },
     {
       "name": "referral-loop-review",
@@ -511,7 +517,7 @@
       "name": "voice-preserving-editor",
       "description": "Apply a fact-preserving language-quality layer to agent replies or supplied drafts in the requested voice, register, locale, and surface. Use when the user explicitly asks for a natural, human, conversational, non-AI, non-ChatGPT, less-templated, or voice-preserving rewrite; locale-natural or dialect-aware rendering; translationese cleanup; authorized sample matching; or the same constraints in Cantonese, Chinese, English, or multilingual text, while keeping facts, citations, technical terms, uncertainty, and judgment intact. A language name or ordinary translation request alone is not a trigger.",
       "path": "skills/voice-preserving-editor/SKILL.md",
-      "packageDigest": "sha256:b716cadda1cfd35ab17afbd065e6143991296e997837c068f5f101a916095ad6"
+      "packageDigest": "sha256:91f609d466447978638dca6d5772c81880001a8eecd4a17f18008eff54138bf7"
     },
     {
       "name": "work-coordination-standard",
