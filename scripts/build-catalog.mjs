@@ -43,12 +43,24 @@ export function buildCatalog(root = repositoryRoot) {
     const absolutePath = path.join(root, relativePath);
     if (!existsSync(absolutePath)) throw new Error(`${relativePath}: missing`);
     const { values } = parseFrontmatter(readFileSync(absolutePath, 'utf8'), relativePath);
-    return {
+    const skill = {
       name: values.name,
       description: values.description,
       path: relativePath,
       packageDigest: packageDigest(path.join(root, 'skills', folder)),
     };
+    const profilePath = path.join(root, 'skills', folder, 'references', 'profile.json');
+    if (existsSync(profilePath)) {
+      const document = JSON.parse(readFileSync(profilePath, 'utf8'));
+      skill.profile = {
+        id: document.profile?.id,
+        revision: document.profile?.revision,
+        contentDigest: document.profile?.contentDigest,
+        lifecycle: document.profile?.lifecycle,
+        authorityClass: document.profile?.authorityClass,
+      };
+    }
+    return skill;
   });
 
   return {

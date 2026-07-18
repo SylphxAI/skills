@@ -505,7 +505,14 @@
       "name": "technology-stack-profile",
       "description": "Apply the required backend and web technology choices by component role and owned effects. Use when choosing, implementing, reviewing, or measuring production backend, API, gateway, worker, controller, runtime, storage, queue, background-job, browser, product-web, SSR, or TypeScript-to-Rust work.",
       "path": "skills/technology-stack-profile/SKILL.md",
-      "packageDigest": "sha256:fc227044714956df35b376fefe5351793d190f1617392d3912c6bc5c9d04573f"
+      "packageDigest": "sha256:ab0c09c1736c8237312cc4b4f52d424d5dac9f53ff7488b756e116a95e10f42c",
+      "profile": {
+        "id": "technology-stack-profile",
+        "revision": "2026-07-18.2",
+        "contentDigest": "sha256:ce4b7cd6071807f89754c885c071dee2e70b24c0dc370739da19fec3811cc88c",
+        "lifecycle": "active",
+        "authorityClass": "governance-constraint"
+      }
     },
     {
       "name": "voice-preserving-editor",

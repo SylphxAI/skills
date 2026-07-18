@@ -5,7 +5,7 @@
   "profile": {
     "id": "technology-stack-profile",
     "revision": "2026-07-18.2",
-    "contentDigest": "sha256:9475765aa12f28b3ad1f45e919fc1a4403f4b3a56ff4953d8af352e58a4856b8",
+    "contentDigest": "sha256:ce4b7cd6071807f89754c885c071dee2e70b24c0dc370739da19fec3811cc88c",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
     "decisionRef": "references/ADR-20260718-backend-web-technology-boundary.md",
@@ -87,7 +87,23 @@
     {
       "key": "engineering.language.completion-measure",
       "value": "service-role-and-effect-coverage",
-      "appliesToRoles": ["language-boundary-audit", "migration-completion"],
+      "appliesToRoles": [
+        "api",
+        "backend-service",
+        "background-job",
+        "browser",
+        "controller",
+        "critical-path",
+        "gateway",
+        "product-web",
+        "queue-consumer",
+        "queue-producer",
+        "runtime",
+        "server-rendered-web",
+        "storage",
+        "ui-orchestration",
+        "worker"
+      ],
       "rationale": "Completion is semantic coverage of declared service roles and effects, not a source-file statistic.",
       "constraints": [
         "Never use .ts file count, repository language totals, Bun process presence, or endpoint-shell parity as completion evidence.",

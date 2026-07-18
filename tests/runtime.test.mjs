@@ -66,6 +66,7 @@ test('sync, status, update, and clear own only the declared packages', () => {
     assert.equal(manifest.owner, 'SylphxAI/skills');
     assert.equal(manifest.skills.length, catalog.count);
     assert.deepEqual(manifest.packageDigests, Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])));
+    assert.deepEqual(manifest.profiles, catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile));
     assert.equal(existsSync(path.join(destination, 'engineering-standard', 'SKILL.md')), true);
     assert.equal(existsSync(path.join(destination, 'sylphx-platform-first', 'SKILL.md')), true);
 

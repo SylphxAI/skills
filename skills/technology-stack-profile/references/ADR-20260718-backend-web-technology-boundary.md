@@ -52,8 +52,9 @@ revision `2026-07-18.1`; retired revisions never reactivate.
 
 Revision `2026-07-18.2` supersedes the initial `2026-07-18.1` encoding without
 changing the decision: it aligns the selector with the canonical project
-lifecycle vocabulary and publishes the versioned local `serviceFacts` schema
-needed to evaluate the boundary without file-count inference.
+lifecycle vocabulary and publishes an exact-profile-bound, unique-component
+local `serviceFacts` schema needed to evaluate the boundary without file-count
+inference or repo-authored deployment truth.
 
 ## Consequences
 

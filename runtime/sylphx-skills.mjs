@@ -252,6 +252,9 @@ function syncTarget(target) {
     runtime: target.runtime,
     skills: desired,
     packageDigests: Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])),
+    profiles: catalog.skills
+      .filter((skill) => skill.profile)
+      .map((skill) => skill.profile),
   };
   writeAtomic(manifestPath(target), `${JSON.stringify(manifest, null, 2)}\n`);
   rmSync(path.join(target.path, 'skills-binding-install-manifest.json'), { force: true });
