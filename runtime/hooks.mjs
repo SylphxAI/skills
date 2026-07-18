@@ -147,12 +147,19 @@ export function runtimeHookStatus({ agents, homes }) {
   const files = runtimeHookFiles(homes);
   return agents.map((runtime) => {
     const file = files[runtime];
-    if (!file || !existsSync(file)) return { runtime, file, installed: false, events: [] };
+    const activation = {
+      codex: 'exact-definition-trust-required',
+      claude: 'automatic-unless-disabled-by-runtime-policy',
+      grok: 'global-user-hook-trusted',
+    }[runtime] || 'runtime-dependent';
+    if (!file || !existsSync(file)) {
+      return { runtime, file, installed: false, activation, events: [] };
+    }
     const document = readDocument(file);
     const events = Object.entries(document.hooks || {})
       .filter(([, groups]) => Array.isArray(groups) && groups.some(isManagedGroup))
       .map(([event]) => event)
       .sort();
-    return { runtime, file, installed: events.length > 0, events };
+    return { runtime, file, installed: events.length > 0, activation, events };
   });
 }

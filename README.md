@@ -34,11 +34,25 @@ npx --yes github:SylphxAI/skills sync --agent all
 
 ## Automatic updates
 
-Enable the per-user runtime hooks once:
+Install the per-user runtime hooks once:
 
 ```bash
 npx --yes github:SylphxAI/skills auto-sync enable
 ```
+
+Hook installation and runtime permission are separate. Activation follows each
+runtime's native security model:
+
+| Runtime | Activation after installation |
+| --- | --- |
+| Codex | Open `/hooks`, review the Sylphx command, and trust its exact definition once. Codex skips untrusted or changed definitions. Routine Skill-content updates do not change that hook definition. |
+| Claude Code | User hooks run from `~/.claude/settings.json` without a separate hook-approval step, unless hooks are disabled by safe/bare mode or managed policy. |
+| Grok Build | The installer uses Grok's native global user hook, which is trusted by the runtime. |
+
+The installer never bypasses runtime trust or permission controls. The
+`auto-sync status` command therefore reports **configured** separately from
+**effective**; only the runtime can prove that a hook was permitted and
+executed.
 
 Updates then reconcile at the points where an agent can actually consume new
 instructions: session start/resume, prompt submission, sub-agent start, and the

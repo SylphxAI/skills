@@ -369,7 +369,10 @@ function enableAutoSync() {
   config.enabled = true;
   writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
   installRuntimeHooks({ agents, homes: config.homes, nodePath: config.nodePath, reconcilerPath: reconcilerScript });
-  log(`enabled event-driven auto-sync for ${agents.join(', ')} (10s active-turn freshness)`);
+  log(`configured event-driven auto-sync for ${agents.join(', ')} (10s active-turn freshness)`);
+  if (agents.includes('codex')) {
+    log('Codex requires one activation step: open /hooks and trust the Sylphx hook definition.');
+  }
 }
 
 function disableAutoSync() {
@@ -391,14 +394,16 @@ function autoSyncStatus() {
   const hooks = runtimeHookStatus({ agents, homes });
   const result = {
     mode: 'consumption-boundary-reconciliation',
-    enabled: Boolean(config?.enabled) && hooks.every((item) => item.installed),
+    configured: Boolean(config?.enabled) && hooks.every((item) => item.installed),
+    effective: null,
+    effectiveReason: 'Hook execution is runtime-owned; inspect each runtime activation state.',
     remote: config?.remote || null,
     managedRepository: config?.repository || null,
     activeTurnMaxLagMs: 10_000,
     hooks,
   };
   if (jsonOutput) console.log(JSON.stringify(result, null, 2));
-  else log(`auto-sync: ${result.enabled ? 'enabled' : 'disabled'} (${result.mode})`);
+  else log(`auto-sync: ${result.configured ? 'configured' : 'not configured'} (${result.mode}; runtime activation applies)`);
 }
 
 function help() {

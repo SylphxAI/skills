@@ -299,9 +299,13 @@ test('auto-sync enable performs one exact-source install and disable removes onl
     assert.equal(readFileSync(path.join(staleGrokSkill, 'SKILL.md'), 'utf8').includes('stale Grok copy'), false);
     assert.equal(JSON.parse(readFileSync(path.join(grokHome, 'skills', '.sylphx-skills.json'), 'utf8')).sourceCommit, sourceSha);
     const status = JSON.parse(runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout);
-    assert.equal(status.enabled, true);
+    assert.equal(status.configured, true);
+    assert.equal(status.effective, null);
     assert.equal(status.mode, 'consumption-boundary-reconciliation');
     assert.equal(status.hooks.every((hook) => hook.installed), true);
+    assert.equal(status.hooks.find((hook) => hook.runtime === 'codex').activation, 'exact-definition-trust-required');
+    assert.equal(status.hooks.find((hook) => hook.runtime === 'claude').activation, 'automatic-unless-disabled-by-runtime-policy');
+    assert.equal(status.hooks.find((hook) => hook.runtime === 'grok').activation, 'global-user-hook-trusted');
 
     const unmanaged = path.join(codexHome, 'skills', 'third-party-skill');
     mkdirSync(unmanaged, { recursive: true });
