@@ -9,7 +9,8 @@ import { buildCatalog, parseFrontmatter, repositoryRoot } from '../scripts/build
 
 test('frontmatter parsing is identical for LF and CRLF checkouts', () => {
   const lf = '---\nname: example\ndescription: Use for a checkout portability test.\n---\n\n# Example\n';
-  assert.deepEqual(parseFrontmatter(lf.replaceAll('\n', '\r\n'), 'CRLF.md'), parseFrontmatter(lf, 'LF.md'));
+  const crlf = lf.replaceAll('\n', '\r\n');
+  assert.deepEqual(parseFrontmatter(crlf, 'CRLF.md'), parseFrontmatter(lf, 'LF.md'));
 });
 
 test('catalog is deterministic and covers every canonical package', () => {
