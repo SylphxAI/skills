@@ -722,6 +722,7 @@ test('target generation never moves a late unrelated write during the managed po
 test('an unrelated open file descriptor remains live across the managed generation switch', async () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-generation-open-fd-'));
   let descriptor;
+  let childExit;
   try {
     const { source, destination, fixtureCli } = createGenerationFixture(sandbox);
     const unrelated = path.join(destination, 'third-party-open-fd');
@@ -744,21 +745,28 @@ test('an unrelated open file descriptor remains live across the managed generati
     });
     let stderr = '';
     child.stderr.on('data', (chunk) => { stderr += chunk; });
-    const exit = new Promise((resolve) => child.once('exit', resolve));
-    const waiter = new Int32Array(new SharedArrayBuffer(4));
+    childExit = new Promise((resolve) => child.once('exit', resolve));
     const pointer = path.join(destination, '.sylphx-managed-current');
-    for (let attempt = 0; attempt < 250 && readlinkSync(pointer) === oldPointer; attempt += 1) {
-      Atomics.wait(waiter, 0, 0, 20);
+    let observedPointer = oldPointer;
+    for (let attempt = 0; attempt < 1_000 && observedPointer === oldPointer; attempt += 1) {
+      try {
+        observedPointer = readlinkSync(pointer);
+      } catch (error) {
+        if (error.code !== 'ENOENT') throw error;
+      }
+      if (observedPointer === oldPointer) await new Promise((resolve) => setTimeout(resolve, 20));
     }
-    assert.notEqual(readlinkSync(pointer), oldPointer, 'managed pointer did not switch');
+    assert.notEqual(observedPointer, oldPointer, 'managed pointer did not switch');
     writeSync(descriptor, 'after\n');
     closeSync(descriptor);
     descriptor = undefined;
-    assert.equal(await exit, 0, stderr);
+    assert.equal(await childExit, 0, stderr);
+    childExit = undefined;
     assert.equal(readFileSync(unrelatedFile, 'utf8'), 'before\nafter\n');
     assert.match(readFileSync(path.join(destination, 'alpha', 'SKILL.md'), 'utf8'), /generation-two/);
   } finally {
     if (descriptor !== undefined) closeSync(descriptor);
+    if (childExit) await childExit;
     rmSync(sandbox, { recursive: true, force: true });
   }
 });
@@ -1050,7 +1058,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     mkdirSync(source, { recursive: true });
     git(source, ['init', '--initial-branch=main']);
     for (const entry of ['runtime', 'skills']) cpSync(path.join(root, entry), path.join(source, entry), { recursive: true });
-    for (const entry of ['catalog.json', 'package.json']) cpSync(path.join(root, entry), path.join(source, entry));
+    for (const entry of ['.gitattributes', 'catalog.json', 'package.json']) cpSync(path.join(root, entry), path.join(source, entry));
     const remoteReconciler = path.join(source, 'runtime', 'reconcile.mjs');
     writeFileSync(remoteReconciler, `${readFileSync(remoteReconciler, 'utf8')}\n// exact remote candidate fixture\n`);
     const sourceSha = commit(source, 'fixture source');
@@ -1090,8 +1098,16 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     enabling.stderr.on('data', (chunk) => { enableStderr += chunk; });
     const enableExit = new Promise((resolve) => enabling.once('exit', resolve));
     const waiter = new Int32Array(new SharedArrayBuffer(4));
-    for (let attempt = 0; attempt < 250 && !existsSync(lifecycleReady); attempt += 1) Atomics.wait(waiter, 0, 0, 20);
-    assert.equal(existsSync(lifecycleReady), true, 'enable did not reach its post-reconcile lifecycle phase');
+    for (
+      let attempt = 0;
+      attempt < 3_000 && !existsSync(lifecycleReady) && enabling.exitCode === null;
+      attempt += 1
+    ) await new Promise((resolve) => setTimeout(resolve, 20));
+    assert.equal(
+      existsSync(lifecycleReady),
+      true,
+      `enable did not reach its post-reconcile lifecycle phase${enableStderr || enableStdout ? `: ${enableStderr || enableStdout}` : ''}`,
+    );
     const busyDisableDuringEnable = spawnSync(process.execPath, [cli, 'auto-sync', 'disable', '--quiet'], {
       cwd: root,
       encoding: 'utf8',
