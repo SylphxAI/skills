@@ -396,6 +396,7 @@ export function checkRepository() {
     'project.manifest.json',
     'LICENSE',
     'runtime/hooks.mjs',
+    'runtime/package-digest.mjs',
     'runtime/reconcile.mjs',
     'runtime/sylphx-skills.mjs',
   ]) {

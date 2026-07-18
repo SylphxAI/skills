@@ -232,11 +232,8 @@ function syncTarget(target) {
   const previousSkills = Array.isArray(previous?.skills) ? previous.skills : [];
 
   for (const skill of catalog.skills) {
-    replaceDirectory(
-      path.join(sourceSkills, skill.name),
-      path.join(target.path, skill.name),
-      skill.packageDigest,
-    );
+    const destination = path.join(target.path, skill.name);
+    replaceDirectory(path.join(sourceSkills, skill.name), destination, skill.packageDigest);
   }
   for (const name of previousSkills) {
     if (!desiredSet.has(name)) rmSync(path.join(target.path, name), { recursive: true, force: true });

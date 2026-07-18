@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { createServer } from 'node:net';
 import test from 'node:test';
 import { packageDigest } from '../runtime/package-digest.mjs';
 import { buildCatalog, parseFrontmatter, repositoryRoot } from '../scripts/build-catalog.mjs';
@@ -41,9 +42,39 @@ test('package digests preserve file boundaries and reject symbolic links', () =>
     writeFileSync(path.join(splitPackage, 'references', 'x.md'), 'reference');
     writeFileSync(path.join(embeddedPackage, 'SKILL.md'), Buffer.from('body\0references/x.md\0reference'));
     assert.notEqual(packageDigest(splitPackage), packageDigest(embeddedPackage));
+
     symlinkSync('SKILL.md', path.join(splitPackage, 'linked.md'));
     assert.throws(() => packageDigest(splitPackage), /unsupported symbolic link: linked\.md/);
   } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+test('catalog generation rejects symbolic links inside canonical packages', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-catalog-symlink-'));
+  const packageRoot = path.join(sandbox, 'skills', 'example');
+  try {
+    mkdirSync(packageRoot, { recursive: true });
+    writeFileSync(path.join(packageRoot, 'SKILL.md'), '---\nname: example\ndescription: Use for a test fixture.\n---\n');
+    symlinkSync('SKILL.md', path.join(packageRoot, 'linked.md'));
+    assert.throws(() => buildCatalog(sandbox), /unsupported symbolic link: linked\.md/);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('package digests reject non-regular filesystem entries', { skip: process.platform === 'win32' }, async () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-package-socket-'));
+  const socketPath = path.join(sandbox, 'entry.sock');
+  const server = createServer();
+  try {
+    writeFileSync(path.join(sandbox, 'SKILL.md'), 'body');
+    await new Promise((resolve, reject) => {
+      server.once('error', reject);
+      server.listen(socketPath, resolve);
+    });
+    assert.throws(() => packageDigest(sandbox), /unsupported non-regular entry: entry\.sock/);
+  } finally {
+    if (server.listening) await new Promise((resolve) => server.close(resolve));
     rmSync(sandbox, { recursive: true, force: true });
   }
 });
