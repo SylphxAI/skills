@@ -1,0 +1,4 @@
+interface:
+  display_name: "Critical Analysis"
+  short_description: "Test assumptions and competing explanations"
+  default_prompt: "Use $critical-analysis to challenge assumptions, compare credible explanations, and produce a calibrated conclusion."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Convergent Review"
+  short_description: "Run a complete review that reaches closure"
+  default_prompt: "Use $convergent-review to review this exact candidate and close against fixed acceptance criteria."
