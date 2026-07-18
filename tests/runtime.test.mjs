@@ -15,6 +15,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 import { pathToFileURL } from 'node:url';
+import { packageDigest } from '../runtime/package-digest.mjs';
 import { reconcile } from '../runtime/reconcile.mjs';
 import { parseIntervalMinutes, schedulerDefinition } from '../runtime/scheduler.mjs';
 
@@ -64,12 +65,20 @@ test('sync, status, update, and clear own only the declared packages', () => {
     const manifest = JSON.parse(readFileSync(path.join(destination, '.sylphx-skills.json'), 'utf8'));
     assert.equal(manifest.owner, 'SylphxAI/skills');
     assert.equal(manifest.skills.length, catalog.count);
+    assert.deepEqual(manifest.packageDigests, Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])));
     assert.equal(existsSync(path.join(destination, 'engineering-standard', 'SKILL.md')), true);
     assert.equal(existsSync(path.join(destination, 'sylphx-platform-first', 'SKILL.md')), true);
 
     const status = run(['status', '--dest', destination, '--json']);
     const parsed = JSON.parse(status.stdout);
     assert.equal(parsed.targets[0].current, true);
+
+    const installedSkill = path.join(destination, 'engineering-standard', 'SKILL.md');
+    writeFileSync(installedSkill, `${readFileSync(installedSkill, 'utf8')}\nmutated\n`);
+    const drifted = JSON.parse(run(['status', '--dest', destination, '--json']).stdout);
+    assert.equal(drifted.targets[0].current, false);
+    assert.equal(drifted.targets[0].packagesCurrent, false);
+    run(['sync', '--dest', destination, '--quiet']);
 
     const interruptedPackage = 'engineering-standard';
     const interruptedDestination = path.join(destination, interruptedPackage);
@@ -298,6 +307,9 @@ test('auto-sync enables a configurable scheduler, converges exactly, and removes
       .filter((skill) => skill.name !== removedSkill)
       .concat([{ name: addedSkill, description: addedDescription, path: `skills/${addedSkill}/SKILL.md` }])
       .sort((left, right) => left.name.localeCompare(right.name));
+    for (const skill of updatedCatalog.skills) {
+      skill.packageDigest = packageDigest(path.join(source, 'skills', skill.name));
+    }
     updatedCatalog.count = updatedCatalog.skills.length;
     writeFileSync(path.join(source, 'catalog.json'), `${JSON.stringify(updatedCatalog, null, 2)}\n`);
 
