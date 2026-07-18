@@ -1,64 +1,46 @@
 ---
 name: engineering-standard
-description: "Successor-candidate engineering standard package (not binding). Use when reviewing a Skills migration candidate for product-code predicates while Doctrine remains binding; use for parity-map gap checks only. Do not use as sole engineering authority or to supersede Doctrine before atomic cutover."
+description: "Binding engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating implementation, contracts, storage, concurrency, security boundaries, or delivery-critical runtime paths. Use for architecture, testing, observability, and module boundaries. Do not use for pure commercial packaging or live Work Graph operations."
 ---
-# Engineering Standard (successor-candidate)
+# Engineering Standard
 
-This is a **Standard Skill** (`packageKind: standard`) with
-**`authority: successor-candidate`**.
+**Authority: binding** (`packageKind: standard`).
 
-It is **not** binding law. It does **not** supersede Doctrine. It is a
-migration candidate toward a future atomic cutover.
+Canonical home: `skills/engineering-standard/` in `SylphxAI/skills`.  
+Full progressive-disclosure body: [references/full-standard.md](references/full-standard.md).  
+Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).
 
-## Current authority (single binding)
-
-Until cutover evidence exists:
-
-| Layer | Authority |
-| --- | --- |
-| Binding engineering standard | **Doctrine** `standards/engineering-standard.md` |
-| This package | Successor candidate + progressive disclosure draft |
-| Catalog routing | `candidate` / `autoRouteEligible=false` / unverified |
-
-See [references/doctrine-parity-delta.md](references/doctrine-parity-delta.md)
-for source digest pin and coverage gaps.
+Doctrine `standards/engineering-standard.md` is an **alias** after cutover — author here only.
 
 ## Method
 
-1. For binding decisions, load **Doctrine** engineering standard first.
-2. Optionally load this package as a short checklist / rule-ID aid.
-3. Read [references/binding-predicates.md](references/binding-predicates.md) as
-   candidate predicates only.
-4. Never claim Skills-only authority or `supersedes doctrine-engineering` until
-   an atomic cutover PR pair lands with consumer readback.
-5. Do not mass-author further Standard Skills until dual-SSOT is closed for this pilot.
+1. Load this package for durable engineering work on product code.
+2. Read [references/full-standard.md](references/full-standard.md) for the complete standard.
+3. Apply the strongest relevant subset; record tradeoffs in code, tests, or ADRs.
+4. Prefer schema, test, and ADR homes for durable facts over copying this body into product repos.
+5. Procedure Skills should declare a catalog dependency on `engineering-standard` rather than restating predicates.
 
 ## Boundaries
 
 - Does not grant deploy, credential, or MCP capabilities.
 - Does not replace product-local technical ADRs.
-- Does not auto-route as a stable proven procedure.
-- Does not override Doctrine while PROJECT.md / fleet policy name Doctrine as
-  instruction upstream.
+- Does not auto-route as a procedure; it is binding policy text with separate conformance evidence.
 
 ## When not to use
 
-- Any need for **binding** engineering law → Doctrine standard (current).
 - Commercial packaging alone → commercial-decision class packages.
-- Live Work Graph operations → Control Plane MCP tools.
+- Live Work Graph claim/lease/checkpoint → Control Plane MCP tools.
+- One-off scripts with no durable product surface and no shared contract impact.
 
 ## Output format
 
-When using this candidate package, produce:
-
-1. **Authority note** — Doctrine remains binding; this is candidate aid.
-2. **Predicates considered** — rule IDs from binding-predicates (candidate).
-3. **Parity gaps** — any Doctrine section still required (from parity map).
-4. **Evidence** — tests/schemas/ADRs; never Skills-only claims of cutover.
+1. **Applicability** — what changed and why this standard applies.
+2. **Predicates in scope** — rule IDs or sections from the full body.
+3. **Evidence** — tests, schemas, ADRs, benchmarks.
+4. **Gaps** — residual risk with owner and follow-up.
 
 ## Guardrails
 
 - Fail closed on secret material in source and logs.
 - Never treat health/readiness probes as product capability proof.
 - Prefer expand-contract migrations for shared state.
-- Refuse to present this package as sole SSOT.
