@@ -72,10 +72,27 @@ npx --yes github:SylphxAI/skills auto-sync status
 npx --yes github:SylphxAI/skills auto-sync disable
 ```
 
-Uses the OS user scheduler (launchd / systemd user timer / Task Scheduler).
-Each tick checks the public repo head; only a new commit is fetched and applied.
-Offline, last known-good packages remain. Unrelated hand-authored skills are
-never deleted.
+The command uses the operating system's built-in per-user scheduler: launchd on
+macOS, a systemd user timer on Linux, and Task Scheduler on Windows. Each tick
+verifies the installed catalog, profile metadata, source commit, and package
+bytes and checks the public remote head. Either a changed commit or local drift
+triggers an exact-source resync. There are no agent hooks, runtime
+approvals, resident daemons, webhook relays, tokens, or Control Plane
+dependencies. When offline, a verified last-known-good generation remains
+active and retries back off.
+
+Each successful reconciliation converges the complete Sylphx-managed set as one
+verified target generation: new packages, changed package bytes, removals, and
+the ownership manifest commit together through an ownership-proven recoverable
+journal under a fenced per-target writer lock. One managed-generation pointer
+switches every package and the manifest together, so a crash recovers to one
+complete old or new generation rather than mixed packages. The target root
+stays stable: unrelated third-party or hand-authored Skills never enter the
+managed journal and are never copied, moved, or deleted by the switch.
+
+An already-running agent may not reload a changed Skill until that runtime's
+next normal reload boundary. The files themselves converge within the selected
+interval.
 
 ### Inspect
 
