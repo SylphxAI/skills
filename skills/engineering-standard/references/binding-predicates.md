@@ -1,9 +1,12 @@
-# Binding engineering predicates
+# Candidate engineering predicates (not binding)
 
-Authoritative progressive-disclosure body for `engineering-standard`.
-Authored in-package — not generated from Doctrine prose or a second SSOT.
+Progressive-disclosure body for `engineering-standard` while authority is
+**successor-candidate**. These rule IDs are migration aids. Binding text remains
+Doctrine `standards/engineering-standard.md` until atomic cutover.
 
-## Modern technical bar
+Coverage vs Doctrine: [doctrine-parity-delta.md](doctrine-parity-delta.md).
+
+## Modern technical bar (compressed)
 
 Apply the relevant subset; verify rather than slogan. Prefer measurable proof
 over narrative status.
@@ -19,9 +22,7 @@ over narrative status.
   migration-safe, and rollback-safe;
 - near-native performance only when the domain genuinely requires it.
 
-## Rule IDs
-
-Use these IDs in reviews and evidence packs:
+## Rule IDs (candidate)
 
 | Rule ID | Predicate |
 | --- | --- |
@@ -44,14 +45,15 @@ Use these IDs in reviews and evidence packs:
 | Product or commercial impact | Commercial ADR | owner + metrics definition |
 | Shared migration | migration packet + expand-contract plan | dual-path proof or rollback drill |
 
-## Conformance checklist
+## Conformance checklist (candidate aid)
 
 - [ ] Applicable rule IDs listed for the change.
+- [ ] Doctrine binding sections still consulted for gaps in parity map.
 - [ ] Tests or schemas cover each selected rule ID.
 - [ ] No secret material introduced in source or log lines.
 - [ ] External calls declare timeout/retry/idempotency.
 - [ ] Migrations are expand-contract or explicitly non-applicable with rationale.
-- [ ] Module boundaries respect layer direction; no new god-responsibility surface.
+- [ ] Module boundaries respect layer direction.
 - [ ] Delivery claims separate local proof from trunk landing and production proof.
 
 ## State machine (change risk)
