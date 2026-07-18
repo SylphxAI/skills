@@ -3,17 +3,19 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { packageDigest } from '../runtime/package-digest.mjs';
 
 export const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 export function parseFrontmatter(markdown, file = 'SKILL.md') {
-  if (!markdown.startsWith('---\n')) throw new Error(`${file}: missing YAML frontmatter`);
-  const end = markdown.indexOf('\n---\n', 4);
+  const normalized = markdown.replaceAll('\r\n', '\n');
+  if (!normalized.startsWith('---\n')) throw new Error(`${file}: missing YAML frontmatter`);
+  const end = normalized.indexOf('\n---\n', 4);
   if (end < 0) throw new Error(`${file}: unterminated YAML frontmatter`);
 
   const values = {};
   const keys = [];
-  for (const line of markdown.slice(4, end).split('\n')) {
+  for (const line of normalized.slice(4, end).split('\n')) {
     if (!line.trim()) continue;
     const colon = line.indexOf(':');
     if (colon < 1) throw new Error(`${file}: invalid frontmatter line ${JSON.stringify(line)}`);
@@ -30,10 +32,11 @@ export function parseFrontmatter(markdown, file = 'SKILL.md') {
 
 export function buildCatalog(root = repositoryRoot) {
   const skillsRoot = path.join(root, 'skills');
-  const folders = readdirSync(skillsRoot, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .sort();
+  const entries = readdirSync(skillsRoot, { withFileTypes: true });
+  for (const entry of entries) {
+    if (!entry.isDirectory()) throw new Error(`skills/${entry.name}: skill packages must be regular directories`);
+  }
+  const folders = entries.map((entry) => entry.name).sort();
 
   const skills = folders.map((folder) => {
     const relativePath = `skills/${folder}/SKILL.md`;
@@ -44,6 +47,7 @@ export function buildCatalog(root = repositoryRoot) {
       name: values.name,
       description: values.description,
       path: relativePath,
+      packageDigest: packageDigest(path.join(root, 'skills', folder)),
     };
   });
 
@@ -76,4 +80,3 @@ function main() {
 }
 
 if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) main();
-

@@ -16,6 +16,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { uninstallRuntimeHooks } from './hooks.mjs';
+import { packageDigest } from './package-digest.mjs';
 import { reconcile } from './reconcile.mjs';
 import { installScheduler, parseIntervalMinutes, removeScheduler } from './scheduler.mjs';
 
@@ -188,7 +189,7 @@ function recoverInterruptedTransactions(skillRoot) {
   }
 }
 
-function replaceDirectory(source, destination) {
+function replaceDirectory(source, destination, expectedDigest) {
   const skillRoot = path.dirname(destination);
   mkdirSync(skillRoot, { recursive: true });
   const suffix = `${process.pid}-${randomBytes(4).toString('hex')}`;
@@ -204,6 +205,9 @@ function replaceDirectory(source, destination) {
   cpSync(source, stage, { recursive: true, preserveTimestamps: true });
   let movedExisting = false;
   try {
+    if (packageDigest(stage) !== expectedDigest) {
+      throw new Error(`synchronized package digest mismatch: ${path.basename(destination)}`);
+    }
     if (existsSync(destination)) {
       renameSync(destination, backup);
       movedExisting = true;
@@ -227,7 +231,13 @@ function syncTarget(target) {
   const desiredSet = new Set(desired);
   const previousSkills = Array.isArray(previous?.skills) ? previous.skills : [];
 
-  for (const name of desired) replaceDirectory(path.join(sourceSkills, name), path.join(target.path, name));
+  for (const skill of catalog.skills) {
+    replaceDirectory(
+      path.join(sourceSkills, skill.name),
+      path.join(target.path, skill.name),
+      skill.packageDigest,
+    );
+  }
   for (const name of previousSkills) {
     if (!desiredSet.has(name)) rmSync(path.join(target.path, name), { recursive: true, force: true });
   }
@@ -241,6 +251,7 @@ function syncTarget(target) {
     synchronizedAt: new Date().toISOString(),
     runtime: target.runtime,
     skills: desired,
+    packageDigests: Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])),
   };
   writeAtomic(manifestPath(target), `${JSON.stringify(manifest, null, 2)}\n`);
   rmSync(path.join(target.path, 'skills-binding-install-manifest.json'), { force: true });
@@ -293,14 +304,25 @@ function status() {
   const targets = resolveTargets();
   const result = targets.map((target) => {
     const manifest = readManifest(target);
-    const present = catalog.skills.filter((skill) => existsSync(path.join(target.path, skill.name, 'SKILL.md'))).length;
+    const packageStates = catalog.skills.map((skill) => ({
+      name: skill.name,
+      present: existsSync(path.join(target.path, skill.name, 'SKILL.md')),
+      current: packageDigest(path.join(target.path, skill.name)) === skill.packageDigest,
+    }));
+    const present = packageStates.filter((skill) => skill.present).length;
+    const expectedDigests = Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest]));
+    const packagesCurrent = packageStates.every((skill) => skill.current)
+      && JSON.stringify(manifest?.packageDigests || {}) === JSON.stringify(expectedDigests);
     return {
       runtime: target.runtime,
       path: target.path,
       installed: present,
       expected: catalog.count,
-      current: manifest?.catalogDigest === `sha256:${catalogDigest}` && present === catalog.count,
+      current: manifest?.catalogDigest === `sha256:${catalogDigest}`
+        && present === catalog.count
+        && packagesCurrent,
       catalogDigest: manifest?.catalogDigest || null,
+      packagesCurrent,
     };
   });
   if (jsonOutput) console.log(JSON.stringify({ command: 'status', targets: result }, null, 2));
