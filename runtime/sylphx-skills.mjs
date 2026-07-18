@@ -39,6 +39,16 @@ const managedRepository = path.join(stateDirectory, 'repository');
 const legacyUpdaterScript = path.join(stateDirectory, 'sync.sh');
 const transactionPrefix = '.sylphx-transaction-';
 
+function executableFromPath(name, pathEnv) {
+  const executable = process.platform === 'win32' ? `${name}.exe` : name;
+  for (const directory of String(pathEnv).split(path.delimiter)) {
+    if (!directory) continue;
+    const candidate = path.join(directory, executable);
+    if (existsSync(candidate)) return candidate;
+  }
+  return process.execPath;
+}
+
 function log(message) {
   if (!quiet && !jsonOutput) console.log(message);
 }
@@ -323,6 +333,7 @@ function enableAutoSync() {
   removeScheduler({ platform: schedulerPlatform, home });
   mkdirSync(stateDirectory, { recursive: true });
   const agents = requestedAgents();
+  const pathEnv = process.env.PATH || '/usr/local/bin:/usr/bin:/bin';
   const config = {
     schemaVersion: 1,
     owner: 'SylphxAI/skills',
@@ -331,8 +342,8 @@ function enableAutoSync() {
     branch: 'main',
     repository: managedRepository,
     reconcilerPath: reconcilerScript,
-    nodePath: process.execPath,
-    pathEnv: process.env.PATH || '/usr/local/bin:/usr/bin:/bin',
+    nodePath: executableFromPath('node', pathEnv),
+    pathEnv,
     mode: 'interval-scheduler',
     intervalMinutes,
     agents,
