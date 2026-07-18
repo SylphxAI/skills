@@ -384,12 +384,68 @@ function syncCandidate(run, config, candidate) {
   }
 }
 
+function materializeTrackedFiles(run, config) {
+  const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
+  const dirty = checked(run, 'git', [
+    '-C', config.repository, 'status', '--porcelain', '--untracked-files=all',
+  ], { env }).stdout;
+  if (dirty.trim()) throw new Error(`Managed repository changed before exact materialization: ${config.repository}`);
+
+  const tracked = checked(run, 'git', ['-C', config.repository, 'ls-files', '-z'], { env }).stdout
+    .split('\0')
+    .filter(Boolean);
+  if (!tracked.length) throw new Error(`Managed repository has no tracked files: ${config.repository}`);
+
+  const repositoryRoot = path.resolve(config.repository);
+  const stage = path.join(
+    path.dirname(repositoryRoot),
+    `.${path.basename(repositoryRoot)}.sylphx-materialize-${process.pid}-${randomBytes(4).toString('hex')}`,
+  );
+  const worktree = path.join(stage, 'worktree');
+  mkdirSync(worktree, { recursive: true, mode: 0o700 });
+  writeFileSync(path.join(stage, 'owner.json'), `${JSON.stringify({
+    schemaVersion: 1,
+    owner: 'SylphxAI/skills',
+    repository: repositoryRoot,
+  })}\n`, { mode: 0o600 });
+  try {
+    const prefix = `${worktree.replaceAll('\\', '/')}/`;
+    checked(run, 'git', ['-C', config.repository, 'checkout-index', '--all', '--force', `--prefix=${prefix}`], { env });
+    for (const relative of tracked) {
+      const destination = path.resolve(repositoryRoot, relative);
+      if (destination === repositoryRoot || !destination.startsWith(`${repositoryRoot}${path.sep}`)) {
+        throw new Error(`Managed repository returned an unsafe tracked path: ${JSON.stringify(relative)}`);
+      }
+      const source = path.resolve(worktree, relative);
+      if (source === worktree || !source.startsWith(`${worktree}${path.sep}`) || !lstatSync(source).isFile()) {
+        throw new Error(`Managed repository returned an unsupported tracked entry: ${JSON.stringify(relative)}`);
+      }
+      renameSync(source, destination);
+    }
+    // Replacing an unchanged CRLF worktree file with the canonical LF bytes can
+    // leave only the index stat cache looking dirty. Renormalization refreshes
+    // that cache under the candidate's attributes; it must not change HEAD.
+    checked(run, 'git', ['-C', config.repository, 'add', '--renormalize', '--', '.'], { env });
+    const staged = run('git', ['-C', config.repository, 'diff', '--cached', '--quiet', '--exit-code'], { env });
+    if (staged.status !== 0) {
+      throw new Error(`Exact materialization changed the candidate index: ${config.repository}`);
+    }
+    const remaining = checked(run, 'git', [
+      '-C', config.repository, 'status', '--porcelain', '--untracked-files=all',
+    ], { env }).stdout;
+    if (remaining.trim()) throw new Error(`Exact materialization left repository drift: ${config.repository}`);
+  } finally {
+    rmSync(stage, { recursive: true, force: true });
+  }
+}
+
 function repairAppliedHead(run, config, expectedSha) {
   if (!existsSync(path.join(config.repository, '.git'))) return false;
   const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
   ensureCleanManagedRepository(run, config);
   const candidate = checked(run, 'git', ['-C', config.repository, 'rev-parse', 'HEAD'], { env }).stdout.trim();
   if (candidate !== expectedSha) return false;
+  materializeTrackedFiles(run, config);
   syncCandidate(run, config, candidate);
   return true;
 }
@@ -408,6 +464,7 @@ function applyRemoteHead(run, config, expectedRemoteHead) {
     candidate = checked(run, 'git', ['-C', config.repository, 'rev-parse', 'FETCH_HEAD'], { env }).stdout.trim();
     checked(run, 'git', ['-C', config.repository, 'checkout', '--quiet', '--detach', '--force', candidate], { env });
   }
+  materializeTrackedFiles(run, config);
   // A new commit may land between ls-remote and fetch. Applying the fetched
   // branch head is fresher than retrying the older observation.
   syncCandidate(run, config, candidate);
