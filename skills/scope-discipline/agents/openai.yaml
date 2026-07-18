@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scope Discipline"
+  short_description: "Finish rigorously without expanding the task"
+  default_prompt: "Use $scope-discipline to keep this task rigorous, bounded, and finishable."
