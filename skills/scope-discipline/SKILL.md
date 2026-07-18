@@ -1,13 +1,13 @@
 ---
 name: scope-discipline
-description: "Keep planning, implementation, migration, architecture, and review work rigorous but finishable. Use when a task risks over-engineering, repeated review expansion, speculative threat modelling, new gates or infrastructure, recursive hardening, or a completion bar that keeps moving after the original objective is satisfied."
+description: "Keep planning, implementation, migration, architecture, and review work rigorous, agent-native, high-leverage, and finishable. Use when a task risks over-engineering, under-engineering, human-era cost assumptions, repeated review expansion, speculative hardening, missed future-proofing, or a completion bar that keeps moving."
 ---
 
 # Scope Discipline
 
-Finish the requested outcome with the fastest effective path and the smallest
-durable mechanism that satisfies its real correctness and risk floor. Time,
-compute, and attention are costs. Do not turn rigor into an expanding product.
+Finish the requested outcome with the fastest effective path and the strongest
+positive-net durable result. Time, compute, attention, future velocity, and
+option value all matter. Avoid both expanding ceremony and false economy.
 
 ## Method
 
@@ -53,6 +53,31 @@ contradictory.
 - Never convert an optional monitoring period into a blocker for already proven
   source, migration, or non-production work.
 
+### Reprice work for the agent-native cost model
+
+Treat historical human effort estimates as hypotheses, not constraints. Reprice
+each option using current agents, tools, automation, parallelism, and reusable
+artifacts before choosing an architecture or delivery path.
+
+Agent-native costs often make these comparatively cheap:
+
+- generating coherent modules, contracts, adapters, migrations, and tests;
+- exhaustive search, file-by-file review, and parallel semantic comparison;
+- maintaining explicit boundaries and mechanically consistent projections; and
+- exploring several candidates before selecting the strongest verified one.
+
+Real costs still include ambiguity, conflicting semantics, shared-write and
+integration bottlenecks, dependency propagation, slow proof, external effects,
+irreversible state, operational surfaces, and long-term maintenance. File count,
+typing effort, or human review hours alone are not valid reasons to choose a
+weaker architecture. Conversely, agent generation speed does not justify fake
+layers, unused abstractions, or a larger ongoing operational surface.
+
+Prefer a richer architecture when clear semantic boundaries, maintainability,
+parallel ownership, migration safety, future velocity, or option value exceed
+its agent-native lifecycle cost. Prefer the simpler design when extra structure
+adds no durable capability or makes future change harder.
+
 ### Compress calendar time with agent-native proof
 
 Do not estimate or sequence work from human typing, reading, or review capacity.
@@ -68,6 +93,10 @@ Replace passive calendar waiting with active proof where possible:
 - historical traffic or event replay;
 - accelerated simulation, synthetic load, fault injection, and virtual clocks;
 - shadow execution and short progressive exposure with automatic rollback.
+
+These are examples, not a closed checklist. Search the currently available
+agent, tool, analysis, synthesis, simulation, and execution frontier for a
+faster credible proof rather than replaying a historical human workflow.
 
 Distinguish **proof time** from **observation time**. More agents and compute can
 compress proof time dramatically. Require real wall-clock observation only when
@@ -143,18 +172,53 @@ Classify every proposed addition or review finding:
    existing correctness, security, or delivery floor. Fix it.
 2. **Same-cause defect** — the same root cause exists in the touched owner
    boundary and leaving it would make the fix false. Include the bounded fix.
-3. **Independent improvement** — useful hardening, cleanup, or future product
-   work that is not required for this terminal. Record it without blocking.
-4. **Speculative expansion** — depends on an undeclared adversary, scale,
-   infrastructure, product, or authority model. Reject it from the task.
+3. **Positive-net in-boundary improvement** — useful architecture, cleanup, automation, or
+   future-proofing inside the owner boundary. Evaluate it in the bounded SOTA
+   scan; implement it now when its durable benefit clearly exceeds its full
+   agent-native lifecycle cost.
+4. **Independent or speculative expansion** — has a different owner/lifecycle,
+   or depends on an undeclared adversary, scale, infrastructure, product, or
+   authority model. Defer or reject it from the task.
 
 A reviewer may fail a candidate only for categories 1 or 2 and must name the
 pre-existing acceptance criterion or floor that is violated. A newly imagined
 criterion cannot retroactively fail otherwise correct work.
 
 An executor applies the same classification before implementing anything not
-directly required by the task. "It may be useful later" is category 3, not
-permission to build it now.
+directly required by the task. "It may be useful later" is not enough; name the
+durable benefit, total lifecycle cost, evidence, and why now is the highest-value
+time to do it.
+
+### Run one bounded SOTA opportunity scan
+
+Passing the primary terminal proves the requested outcome; it does not forbid
+high-value improvement. Before final closure, run one bounded scan for adjacent
+opportunities inside the same owner boundary.
+
+Estimate net value as durable outcome, future velocity, and option value minus
+implementation, integration, verification, operational, maintenance, risk, and
+opportunity costs. Re-estimate every term using current agent capabilities.
+
+Implement an opportunity in the current slice when all are true:
+
+- it materially improves correctness, architecture, maintainability,
+  extensibility, performance, future velocity, or option value;
+- current agent-native implementation and verification cost is low relative to
+  that durable benefit;
+- it does not create a separate product, authority system, operational service,
+  or unbounded migration;
+- it can be verified now without an unjustified calendar wait; and
+- it preserves or strengthens the declared terminal.
+
+Use parallel agents for independent positive-net opportunities when integration
+capacity permits. Stop the scan after the relevant boundary is covered; do not
+recursively search the whole portfolio. Defer opportunities with weak evidence,
+diminishing returns, a different owner, a separate lifecycle, or a larger
+opportunity cost.
+
+SOTA means the strongest net-value result under the real objective and current
+capability frontier. It does not mean maximum layers, maximum safety mechanisms,
+maximum tests, or theoretical perfection.
 
 ## Guardrails
 
@@ -170,8 +234,8 @@ permission to build it now.
   protected. A small content or code change must not silently become a new
   authorization platform or operational service.
 - Do not create machinery whose lifecycle is larger than the problem it solves.
-- Treat optional future-proofing as non-blocking unless it preserves a named
-  invariant that the current change would otherwise destroy.
+- Include high-return future-proofing found by the bounded SOTA scan. Do not use
+  future-proofing as a label for speculative abstraction or unrelated scope.
 
 ### Bound review
 
@@ -188,13 +252,17 @@ look exhaustive.
 
 When the declared terminal conditions pass:
 
-1. stop expanding the task;
-2. report the delivered outcome and evidence;
-3. list only material non-blocking follow-ups; and
-4. mark the task complete.
+1. run the bounded SOTA opportunity scan once;
+2. implement and verify the selected positive-net improvements;
+3. stop when remaining ideas are lower-value, speculative, or outside boundary;
+4. report the delivered outcome, evidence, and deliberate exclusions; and
+5. mark the task complete.
 
 Never report `FAIL` solely because a stronger unrelated system could be built.
-The existence of further improvement does not make a completed task incomplete.
+Never stop merely because the minimum terminal passed when an obvious,
+high-return, in-boundary improvement is cheap to deliver now. Completion is the
+point where the requested outcome and selected positive-net improvements are
+verified, not the point where imagination runs out.
 
 ## When not to use
 
@@ -212,4 +280,5 @@ Return a compact closure note:
 - **Objective** — the bounded outcome.
 - **Terminal** — pass or the exact original blocker.
 - **Evidence** — checks that exercise the required claim.
+- **SOTA investments** — high-return adjacent improvements included now.
 - **Excluded expansion** — optional work deliberately kept outside scope.

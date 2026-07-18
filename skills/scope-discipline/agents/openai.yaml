@@ -1,4 +1,4 @@
 interface:
   display_name: "Scope Discipline"
-  short_description: "Finish rigorously without expanding the task"
-  default_prompt: "Use $scope-discipline to keep this task rigorous, bounded, and finishable."
+  short_description: "Maximize value without runaway scope"
+  default_prompt: "Use $scope-discipline to deliver the strongest agent-native result without over- or under-engineering."

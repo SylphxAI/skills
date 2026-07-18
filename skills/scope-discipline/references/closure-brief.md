@@ -7,12 +7,13 @@ outcome.
 Objective: <one observable outcome>
 Terminal: <the checks or delivered state that finish it>
 Required now: <only direct blockers and same-cause defects>
-Excluded: <independent hardening, new infrastructure, speculative threats>
+SOTA investments: <high-return in-boundary improvements worth doing now>
+Excluded: <low-return hardening, new infrastructure, speculative threats>
 Time-to-value: <shortest credible implementation and proof path>
 Calendar compression: <agent shards, replay, simulation, differential or property tests>
 Real-time need: <none, or exact hypothesis that cannot be accelerated>
 Lifecycle stage: <development | internal dogfood | internal beta with users | public production>
-Stop rule: when Terminal passes, report completion; do not expand the bar.
+Stop rule: after Terminal passes, run one bounded SOTA scan, ship selected positive-net improvements, then close.
 ```
 
 Example classification:
@@ -21,7 +22,8 @@ Example classification:
 | --- | --- | --- |
 | The changed parser fails its declared input contract | Terminal blocker | Fix now |
 | The same broken parser path exists in the touched module | Same-cause defect | Fix in the bounded slice |
-| A separate authorization service could provide stronger isolation | Independent improvement | Do not block; create follow-up only if valuable |
+| A capability-aligned module split makes future parallel changes cheaper at low current cost | Positive-net improvement | Implement and verify now |
+| A separate authorization service could provide stronger isolation | Independent improvement outside boundary | Do not block; create follow-up only if valuable |
 | A trusted internal content edit might be made by a hypothetical hostile platform administrator | Speculative expansion | Reject unless the task explicitly changes the threat model |
 
 For tests, choose the shortest test that can falsify the material claim. A
@@ -45,4 +47,7 @@ use the active proof instead of waiting.
 - [ ] Active proof options were exhausted before accepting a workaround or passive wait.
 - [ ] Evidence and rollout match the current lifecycle stage.
 - [ ] Development work is not blocked on nonexistent production traffic.
-- [ ] Passing the terminal ends the task.
+- [ ] Human-era effort assumptions were repriced using current agent capabilities.
+- [ ] One bounded SOTA scan captured obvious high-return in-boundary improvements.
+- [ ] Remaining ideas have lower net value, weaker evidence, or a different owner/lifecycle.
+- [ ] The task closes after selected improvements pass verification.
