@@ -247,14 +247,51 @@ test('auto-sync enable performs one exact-source install and disable removes onl
     assert.equal(status.mode, 'consumption-boundary-reconciliation');
     assert.equal(status.hooks.every((hook) => hook.installed), true);
 
-    writeFileSync(path.join(source, 'update-marker.txt'), 'changed\n');
-    const updatedSha = commit(source, 'updated fixture source');
+    const unmanaged = path.join(codexHome, 'skills', 'third-party-skill');
+    mkdirSync(unmanaged, { recursive: true });
+    writeFileSync(path.join(unmanaged, 'SKILL.md'), 'third party\n');
+
+    const removedSkill = 'voice-preserving-editor';
+    const removedFile = path.join(
+      codexHome,
+      'skills',
+      'engineering-standard',
+      'references',
+      'capability-first-examples.md',
+    );
+    rmSync(path.join(source, 'skills', removedSkill), { recursive: true, force: true });
+    rmSync(path.join(
+      source,
+      'skills',
+      'engineering-standard',
+      'references',
+      'capability-first-examples.md',
+    ));
+    const addedSkill = 'sync-fixture-added';
+    mkdirSync(path.join(source, 'skills', addedSkill), { recursive: true });
+    const addedDescription = 'Validate exact package-set synchronization. Use for this runtime fixture only.';
+    writeFileSync(path.join(source, 'skills', addedSkill, 'SKILL.md'), `---\nname: ${addedSkill}\ndescription: ${addedDescription}\n---\n\n# Fixture\n`);
+    const updatedCatalog = JSON.parse(readFileSync(path.join(source, 'catalog.json'), 'utf8'));
+    updatedCatalog.skills = updatedCatalog.skills
+      .filter((skill) => skill.name !== removedSkill)
+      .concat([{ name: addedSkill, description: addedDescription, path: `skills/${addedSkill}/SKILL.md` }])
+      .sort((left, right) => left.name.localeCompare(right.name));
+    updatedCatalog.count = updatedCatalog.skills.length;
+    writeFileSync(path.join(source, 'catalog.json'), `${JSON.stringify(updatedCatalog, null, 2)}\n`);
+
+    const updatedSha = commit(source, 'change exact fixture package set');
     const hookRun = spawnSync(process.execPath, [
       path.join(managedHome, '.sylphx-skills', 'reconcile.mjs'),
       '--force', '--strict', '--quiet',
     ], { encoding: 'utf8', env: { ...process.env, ...environment } });
     assert.equal(hookRun.status, 0, hookRun.stderr || hookRun.stdout);
-    assert.equal(readFileSync(installedManifest, 'utf8').includes(updatedSha), true);
+    const updatedManifest = JSON.parse(readFileSync(installedManifest, 'utf8'));
+    assert.equal(updatedManifest.sourceCommit, updatedSha);
+    assert.deepEqual(updatedManifest.skills, updatedCatalog.skills.map((skill) => skill.name));
+    assert.equal(existsSync(path.join(codexHome, 'skills', addedSkill, 'SKILL.md')), true);
+    assert.equal(existsSync(path.join(codexHome, 'skills', removedSkill)), false);
+    assert.equal(existsSync(removedFile), false);
+    assert.equal(existsSync(path.join(unmanaged, 'SKILL.md')), true);
 
     runWithEnvironment(['auto-sync', 'disable', '--quiet'], environment);
     const claude = JSON.parse(readFileSync(path.join(claudeHome, 'settings.json'), 'utf8'));

@@ -52,6 +52,12 @@ commit performs an incremental fetch and atomic Skill sync. There is no hourly
 wait, background daemon, webhook relay, token, or Control Plane dependency.
 When offline, the last known-good packages remain active and retries back off.
 
+Each successful reconciliation converges the complete Sylphx-managed set:
+new packages appear, packages removed upstream are removed locally, and an
+updated package directory is replaced whole so deleted files cannot linger.
+The ownership manifest limits deletion to packages previously installed by
+this tool; unrelated third-party or hand-authored Skills remain untouched.
+
 No tool can replace context while a model is continuously generating with no
 lifecycle boundary. The next prompt, sub-agent, or tool boundary is therefore
 the earliest safe and useful refresh point.
