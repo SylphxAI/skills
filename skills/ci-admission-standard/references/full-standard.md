@@ -1,11 +1,3 @@
-# ci-admission-standard (canonical body)
-
-**Authority:** binding Standard Skill package `ci-admission-standard` in `SylphxAI/skills` (`skills/ci-admission-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # CI Admission Standard
 
 No-human CI admission: presubmit vs postsubmit tiers, risk classification,
@@ -23,14 +15,14 @@ Composes with:
 - [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
   for reviewer-confidence backstops.
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for production verification.
-- [`roleless-speculative-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/roleless-speculative-development-standard/references/full-standard.md)
+- [`parallel-change-integration-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/parallel-change-integration-standard/references/full-standard.md)
   for candidate deduplication, cumulative snapshot verification, scoped green
-  watermarks, and roleless recovery under its successor profile.
+  watermarks, and parallel recovery under its successor profile.
 
 ## CI Pipeline Architecture — Reviewer + Serializer
 
 The PR/merge-queue topology below is the compatibility adapter, not the
-only permitted implementation of no-human proof. Under the roleless speculative
+only permitted implementation of no-human proof. Under the parallel-change
 adapter, when selected by the active profile, remote CI evaluates selected immutable trunk snapshots and advances
 scoped green watermarks; it does not run once per speculative attempt or imply
 deployment from every default-branch commit. Required proof depth, affected-set
@@ -45,7 +37,7 @@ pipeline do both:
 - **The integration serializer** — every change queues behind it; its latency
   *is* development velocity. Wants to be **fast**.
 
-The SOTA answer is to **split them into two tiers** and put an autonomous
+The strongest practical design is to **split them into two tiers** and put an autonomous
 admission control plane in front of them: fast deterministic admission for the
 exact merge candidate, complete postsubmit proof, and machine-selected recovery.
 The active delivery profile supplies forge-specific context names and
@@ -233,19 +225,19 @@ culprit attribution, and queue telemetry.
   built). Owner defaults from the matching `boundaries.owns[].name` in the
   project manifest (mapping a test to its bounded context is a judgment
   call today), with expiry defaults from the active policy —
-  and un-quarantine follows the same clock once the fix lands. At fleet
+  and un-quarantine follows the same clock once the fix lands. At organization
   scale even a small flake rate is a daily stream of these decisions, so
   the adjudicator is a mechanism, not a review meeting; an agent may act
   ahead of it for one crossing, but must never become a standing gate other
   work has to wait on. Until the automation ships, the agent observing the
   crossing performs the same adjudication by hand inside the same 24-hour
   clock. Sustained quarantine growth is telemetry that the suite, not the
-  fleet, is wrong.
+  test portfolio, is wrong.
 
 ### Throughput and batch escalation
 
 Per-repo merge throughput is bounded arithmetic — ceiling ≈ batch size ×
-86400 / validation-cycle seconds — and fleet throughput comes from sharding
+86400 / validation-cycle seconds — and portfolio throughput comes from sharding
 across repos, not from one heroic queue; the model, worked numbers, and the
 escalation ladder (raise batch size → HEADGREEN → split the repo →
 speculative scheduling, each with a trigger and prerequisite) are decided in
@@ -328,7 +320,7 @@ while the real objective regresses. Design gates assuming this:
   environment, trace), never author-asserted. An author agent's "tests pass"
   is data, not a control.
 
-### Fleet backpressure and guarding the gates
+### CI backpressure and guarding the gates
 
 - **Cap concurrent open PRs per agent/author.** Unbounded agent PR creation
   starves shared CI/runner capacity; cap at the source (complements

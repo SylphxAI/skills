@@ -5,7 +5,8 @@ description: "Use when creating or evolving a Sylphx project or adding backend, 
 
 # Sylphx Platform First
 
-**Authority: binding** (`packageKind: standard`).
+**Requirement:** use this selection rule for company-owned projects when the
+requested capability falls within its scope.
 
 Use Sylphx Platform as the first candidate for platform and commodity backend
 capabilities. Read [the full standard](references/full-standard.md) before

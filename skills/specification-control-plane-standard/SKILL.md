@@ -1,20 +1,19 @@
 ---
 name: specification-control-plane-standard
-description: "Spec lifecycle, work packets, eval manifests, telemetry contracts, and exception records. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations."
+description: "Specification lifecycle, work packets, evaluation manifests, telemetry contracts, and exception records. Use when a material capability needs an executable specification and traceable implementation contract. Do not use for a trivial change whose behavior is already unambiguous."
 ---
 # Specification Control Plane Standard
 
-**Authority: binding** (`packageKind: standard`).
+**Requirement:** apply this standard when the task matches its scope.
 
-Canonical home: `skills/specification-control-plane-standard/` in `SylphxAI/skills`.  
-Full body: [references/full-standard.md](references/full-standard.md).  
+Read [references/full-standard.md](references/full-standard.md) for the full
+method and predicates.
 
 ## Method
 
-1. Load this package when the task domain matches this standard.
-2. Read [references/full-standard.md](references/full-standard.md) for binding method and predicates.
-3. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
-4. Prefer schema/test/ADR homes over copying this body into product repos.
+1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
+2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
+3. Prefer schema/test/ADR homes over copying this body into product repos.
 
 
 ## Output format
@@ -28,7 +27,6 @@ Full body: [references/full-standard.md](references/full-standard.md).
 
 - Does not grant deploy, credential, or MCP capabilities.
 - Does not replace product-local ADRs where those own decisions.
-- Control Plane owns live work/fleet/effects — not this static standard text.
 
 ## When not to use
 

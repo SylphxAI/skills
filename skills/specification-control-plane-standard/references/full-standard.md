@@ -1,11 +1,3 @@
-# specification-control-plane-standard (canonical body)
-
-**Authority:** binding Standard Skill package `specification-control-plane-standard` in `SylphxAI/skills` (`skills/specification-control-plane-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Specification Control Plane Standard
 
 ## Purpose
@@ -61,7 +53,7 @@ drift waiting to happen.
 
 Prose specs are allowed only as **temporary execution contracts** before the
 canonical homes exist. They are useful because parallel agents do not share
-perfect memory and SOTA models still need a durable boundary before fanning out.
+perfect memory and high-capability models still need a durable boundary before fanning out.
 
 Required fields for a prose spec:
 

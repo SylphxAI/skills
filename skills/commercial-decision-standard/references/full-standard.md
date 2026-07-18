@@ -1,11 +1,3 @@
-# commercial-decision-standard (canonical body)
-
-**Authority:** binding Standard Skill package `commercial-decision-standard` in `SylphxAI/skills` (`skills/commercial-decision-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Commercial Decision Standard
 
 ## Purpose
@@ -29,7 +21,7 @@ This standard composes with:
   proof;
 - [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for no-human gates, risk lanes, and recovery.
-- [`sota-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/sota-execution-standard/references/full-standard.md) for the canonical
+- [`decision-quality-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/decision-quality-standard/references/full-standard.md) for the canonical
   decision precedence, risk, reversibility, evidence, and option-value kernel.
 
 ## Canonical Homes
@@ -124,8 +116,8 @@ re-asking.
   and review triggers. Adopt it via a Commercial ADR (or a repo ADR for a
   single-product company) so the decision history stays durable.
 - **Computation duty.** Agents produce the posture with research and numbers
-  under the canonical decision kernel in
-  [`sota-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/sota-execution-standard/references/full-standard.md), with
+  under the Decision Quality method in
+  [`decision-quality-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/decision-quality-standard/references/full-standard.md), with
   [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md)
   supplying execution authority and escalation mechanics. Dominated options
   never survive to ratification and ruin-level options are screened before

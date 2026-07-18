@@ -1,11 +1,3 @@
-# agent-first-development-standard (canonical body)
-
-**Authority:** binding Standard Skill package `agent-first-development-standard` in `SylphxAI/skills` (`skills/agent-first-development-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Agent-First Development Standard
 
 ## Purpose
@@ -40,7 +32,7 @@ This standard composes with:
   adoption surfaces and conformance entrypoints.
 - [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-runner-capacity-standard/references/full-standard.md) for CI
   compute ownership, runner profiles, and queue capacity diagnosis.
-- [`roleless-speculative-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/roleless-speculative-development-standard/references/full-standard.md)
+- [`parallel-change-integration-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/parallel-change-integration-standard/references/full-standard.md)
   for the candidate successor architecture when universal-agent arrival exceeds
   PR, merge-queue, CI, preview, or deployment admission capacity.
 - [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
@@ -50,20 +42,20 @@ This standard composes with:
   binding no-human and delivery-adapter selections.
 - [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for collision-resistant ADR identity.
 
-## Ultimate Target: Mission Control With Profile-Selected Delivery
+## Ultimate Target: Work Coordination With Profile-Selected Delivery
 
 Resolve the active digest-bound delivery profile before applying adapter
 mechanics. The compatibility adapter uses pull requests and configured
-serialization; the roleless speculative adapter uses immutable bounded
+serialization; the parallel-change adapter uses immutable bounded
 attempts, deterministic selection, Git compare-and-swap landing, scoped green
-watermarks, roleless recovery, and verified-only promotion. Do not infer the
+watermarks, parallel recovery, and verified-only promotion. Do not infer the
 active choice from aspirational prose or mix adapters as undocumented policy.
 
-The SOTA target is a self-feeding autonomous engineering system:
+The strongest target is a self-feeding autonomous engineering system:
 
 ```text
 Production / CI / security / customer / delivery-adapter signals
-  -> Mission Control Work Ledger as the internal work-state source
+  -> Control Plane Work Ledger as the internal work-state source
   -> typed work items classify scope, role, tenant, risk, proof, and next action
   -> agents claim scoped work through leases and checkpoint events
   -> source candidates execute the change through the active delivery profile
@@ -79,10 +71,10 @@ small, semantically atomic, verified source candidates.
 
 Control-plane responsibilities:
 
-- **Mission Control coordinates internal work-state**: Work Items, claims,
+- **Work Coordination coordinates internal work-state**: Work Items, claims,
   checkpoints, blockers, proof-chain links, stale-session recovery, cost/ETA,
   and cross-runtime handoff live in the Work Ledger defined by
-  [`mission-control-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/mission-control-standard/references/full-standard.md). Hidden chat
+  [`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md). Hidden chat
   state is not ownership.
 - **The active delivery profile delivers and proves repository work**: it owns
   the current forge, candidate, required-check, serialization, release, and
@@ -106,7 +98,7 @@ Control-plane responsibilities:
   checks, AI review, security/migration gates, and production proofs are checks
   or machine-actionable artifacts, not advisory comments.
 - **The active serializer integrates**: compatibility queues must prove their
-  merge-group candidate; roleless landing must use its selected-candidate CAS
+  merge-group candidate; parallel-change landing must use its selected-candidate CAS
   and scoped-proof contract.
 - **Production feeds the loop**: CI failures, queue failures, deploy signals,
   logs, metrics, traces, regressions, and security findings become issues, PRs,
@@ -144,14 +136,14 @@ this section are adapter vocabulary, not constitutional requirements.
 If multiple agents share one GitHub machine account, the GitHub username is not
 sufficient audit. Every meaningful action must carry structured responsibility:
 
-- Work Item id and claim/checkpoint events in Mission Control once the tool is
+- Work Item id and claim/checkpoint events in Work Coordination once the tool is
   available;
 - branch prefix and PR title role;
 - PR body metadata: `Agent-Author` (see below), role, linked Work Item or issue,
   linked ADR/spec, risk, affected area, verification, rollback/deploy notes;
 - labels for `role:*`, `state:*`, `type:*`, `area:*`, `risk:*`, `priority:*`,
   drawn from the shared taxonomy in
-  [`mission-control-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/mission-control-standard/references/full-standard.md) rather than a
+  [`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md) rather than a
   per-repo dialect;
 - `AGENT-CLAIM` and `AGENT-CHECKPOINT` comments only when the GitHub issue
   thread is the chosen public or repo-local coordination surface;
@@ -209,7 +201,7 @@ Repository Admission; this section owns the field contract that
 policy-review verifier parses.
 
 Presence follows the active coordination surface — see
-[`mission-control-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/mission-control-standard/references/full-standard.md) for ledger vs
+[`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md) for ledger vs
 issue claim freshness. Do not create a third presence store.
 
 ### Minimal Complete Loop
@@ -443,7 +435,7 @@ for these gates when a repository does not already have an equivalent:
 - **GitOps and reconciliation**: PRINCIPLES.md's `P-DECLARATIVE` principle
   owns this — cited, not restated.
 - **Delivery flow**: short-lived candidate streams and profile-selected
-  serialization; compatibility uses short branches/merge queue, while roleless
+  serialization; compatibility uses short branches/merge queue, while parallel-change
   uses immutable attempts/CAS. Branch by abstraction and use feature flags for
   large changes; long-running mutable state is stale coordination state.
 - **Feature flags**: an OpenFeature-compatible abstraction (or repo-local

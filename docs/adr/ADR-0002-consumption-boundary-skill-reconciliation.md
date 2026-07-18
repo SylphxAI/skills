@@ -1,11 +1,16 @@
 ---
-status: accepted
+status: superseded
 date: 2026-07-18
 owners:
   - SylphxAI
+supersededBy: ADR-0003
 ---
 
 # ADR-0002: Reconcile Skills at agent consumption boundaries
+
+This experiment was superseded by ADR-0003. Runtime hooks introduced approval,
+compatibility, and per-turn overhead without guaranteeing hot reload during
+continuous model generation.
 
 ## Context
 

@@ -1,11 +1,9 @@
 # Instruction Evolution Standard
 
-**Authority:** binding Standard Skill package `instruction-evolution-standard`
-in `SylphxAI/skills`. Historical predecessor records are lineage only.
 
 ## Purpose
 
-Keep the fleet on one current generation of static instructions and code
+Keep selected repositories on one current generation of static instructions and code
 architecture without long-lived old/new methods, semantic forks, or migrations
 that stop after documentation.
 
@@ -95,5 +93,5 @@ the objective. It does not turn a bounded change into an endless programme.
 
 A generation is converged only when every selected durable repository is on the
 current destination or has a valid typed expiring exception, and the predecessor
-steady state is retired. Source landing, fleet convergence, deployment, and
+steady state is retired. Source landing, migration completion, deployment, and
 production proof are separate claims and are reported separately.

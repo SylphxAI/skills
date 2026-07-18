@@ -1,11 +1,3 @@
-# delivery-standard (canonical body)
-
-**Authority:** binding Standard Skill package `delivery-standard` in `SylphxAI/skills` (`skills/delivery-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Delivery Standard
 
 This standard owns delivery outcomes and proof. The active delivery profile
@@ -17,13 +9,13 @@ requirement of delivery itself.
 source candidate, semantic atomicity, checkpoint, commit/worktree projection,
 and workspace-reconciliation contract consumed by every delivery profile.
 
-The roleless speculative path separates landing from promotion: a raw
+The parallel-change integration path separates landing from promotion: a raw
 default-branch commit is not deployable evidence. Release and deployment consume
 only immutable snapshots covered by the relevant scoped green watermark and
 complete proof bundle.
 
-**Lane-aware delivery:** When live fleet policy selects
-roleless direct-trunk for a repository class, ordinary reversible work lands by
+**Lane-aware delivery:** When live organization-wide policy selects
+parallel-change direct-trunk for a repository class, ordinary reversible work lands by
 ordinary fast-forward under integrity fences (deletion + non-fast-forward),
 with local/narrowest verification and verified-only promotion for effects. PRs
 and merge queues remain the **compatibility adapter for fenced classes**

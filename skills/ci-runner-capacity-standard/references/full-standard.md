@@ -1,11 +1,3 @@
-# ci-runner-capacity-standard (canonical body)
-
-**Authority:** binding Standard Skill package `ci-runner-capacity-standard` in `SylphxAI/skills` (`skills/ci-runner-capacity-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # CI Runner Capacity Standard
 
 ## Purpose
@@ -27,11 +19,11 @@ This standard composes with:
 - [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for autonomous admission, risk lanes, preview policy, and merge queue;
 - [`enterprise-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/enterprise-control-plane-standard/references/full-standard.md)
-  for GitHub checks, Sylphx Platform runners, status publishers, and fleet
+  for GitHub checks, Sylphx Platform runners, status publishers, and portfolio
   reconciliation;
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for truthful done states;
 - [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) for
-  fleet migrations and ratchets.
+  multi-repository migrations and ratchets.
 
 ## Control-Plane Contract
 
@@ -261,7 +253,7 @@ Classification is fail closed on causality:
   branch invalidates discovery instead of silently becoming an empty or partial
   target set. In a multi-organization sweep, one organization error discards
   the complete inferred target set; no surviving organization may be audited
-  as though the fleet sweep were complete;
+  as though the repository sweep were complete;
 - explicit `--repo` targets derive their organization runner-inventory scope.
   When `--org` is also supplied, its set must exactly match the explicit repo
   owners; default or unrelated organization inventory cannot be substituted;

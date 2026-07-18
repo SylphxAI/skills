@@ -1,8 +1,5 @@
 # Enterprise Profile Standard
 
-**Authority:** binding Standard Skill package `enterprise-profile-standard` in
-`SylphxAI/skills`. Historical predecessor records are lineage only.
-
 ## Purpose
 
 Profiles hold current, changeable enterprise selections—language versions,
@@ -11,7 +8,7 @@ generations—without mixing dated choices into timeless engineering standards.
 
 Standards own durable outcomes and predicates. Profiles choose current defaults.
 Repository manifests bind the selections that apply locally. Control Plane owns
-resolved live fleet state and adoption progress.
+resolved live adoption state and adoption progress.
 
 ## Profile contract
 
@@ -26,7 +23,7 @@ Every profile declares:
 
 - stable id, immutable revision/content digest, owner, and decision reference;
 - lifecycle: `candidate`, `active`, `deprecated`, `retired`, or `withdrawn`;
-- typed selector over explicit fleet facts;
+- typed selector over explicit portfolio facts;
 - authority class: governance constraint or selection default;
 - concrete defaults and why they were selected;
 - effective/review dates and evidence-based review triggers;
@@ -91,6 +88,6 @@ readback. Keep these layers distinct:
 - Skills source/profile admitted;
 - repository manifest resolved;
 - migration delivered;
-- Control Plane live fleet convergence observed.
+- Control Plane live migration completion observed.
 
 No layer may manufacture the next one from prose or an authored `complete` flag.

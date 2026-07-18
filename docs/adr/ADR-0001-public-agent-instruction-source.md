@@ -10,7 +10,7 @@ owners:
 ## Context
 
 The repository accumulated private-portfolio admission, hidden benchmark,
-model-evidence, trust-root, fleet, and retired-history machinery around a much
+model-evidence, trust-root, organization-wide state, and retired-history machinery around a much
 smaller durable responsibility: publish the static instructions used by
 agents. That machinery increased cost and obscured the product boundary.
 
@@ -35,10 +35,10 @@ content must be vendor-neutral or that MIT text remains commercially exclusive.
    history. The complete predecessor source is recoverable from the private
    `SylphxAI/skills-history-archive` repository and the pre-cutover bundle.
 
-Decision 4's initial hourly OS scheduler is superseded by
-[ADR-0002](ADR-0002-consumption-boundary-skill-reconciliation.md). The boundary
-remains a repository-owned adapter with no hosted service, token, or Control
-Plane dependency.
+Decision 4's initial hourly schedule and the later hook experiment are
+superseded by [ADR-0003](ADR-0003-configurable-scheduled-synchronization.md).
+The boundary remains a repository-owned adapter with no hosted service, token,
+or Control Plane dependency.
 
 ## Consequences
 

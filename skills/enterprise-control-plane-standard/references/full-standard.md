@@ -1,11 +1,3 @@
-# enterprise-control-plane-standard (canonical body)
-
-**Authority:** binding Standard Skill package `enterprise-control-plane-standard` in `SylphxAI/skills` (`skills/enterprise-control-plane-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Enterprise Control Plane Standard
 
 ## Purpose
@@ -14,14 +6,14 @@ Use this standard when deciding how development process, CI, previews, release,
 scorecards, migrations, or instruction adoption should apply across many
 repositories.
 
-This standard owns fleet control-plane boundaries and outcomes. The active
+This standard owns organization-wide control-plane boundaries and outcomes. The active
 engineering and delivery profiles own current platforms, forge, runner, and
 tool selections. Named systems below are the binding current profile projection
 and must be replaced through a successor profile rather than promoted into a
 constitutional invariant.
 
 The goal is to avoid bespoke per-repo development pipelines. Binding Skills
-packages own the static process contract; Control Plane owns live fleet
+packages own the static process contract; Control Plane owns live portfolio
 selection and reconciliation. Repositories own their local facts, code,
 compact constitution projections, and unavoidable transport adapters.
 
@@ -30,7 +22,7 @@ This standard composes with:
 - [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md) for repo
   identity, lifecycle, boundaries, and rollout packets;
 - [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) for
-  static instruction updates and fleet migration contracts;
+  static instruction updates and multi-repository migration contracts;
 - [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for no-human gates, CI admission, merge queue, preview policy, runners, and
   package-release controls;
@@ -47,10 +39,10 @@ Use the layer that owns the fact or mechanism:
 | Layer | Owns | Must not own |
 | --- | --- | --- |
 | Active delivery-forge enforcement (currently GitHub) | issues, change candidates, merge serialization, rulesets, branch protection, checks/statuses, workload identities, selector properties | product intent, hidden workflow state, dashboard-only governance |
-| Skills | static standards, procedures, profiles, schemas, and reusable templates | live work/fleet state, repo-local facts, product runtime behavior |
+| Skills | static standards, procedures, profiles, schemas, and reusable templates | live work/organization-wide adoption state, repo-local facts, product runtime behavior |
 | Control Plane | live selectors, Work Ledger, adoption, migration, repository ingestion, effects, and conformance projections | static instruction prose or repo-local product decisions |
 | Repo-local facts | `PROJECT.md`, `project.manifest.json`, root runtime constitution, thin caller workflows | copied enterprise process, sibling-repo internals |
-| Active execution platform (currently Sylphx Platform) | CI compute, preview/deploy orchestration, status publication, reconciliation, fleet dashboards, portal projection | merge authority outside the selected delivery forge, project facts guessed centrally |
+| Active execution platform (currently Sylphx Platform) | CI compute, preview/deploy orchestration, status publication, reconciliation, portfolio dashboards, portal projection | merge authority outside the selected delivery forge, project facts guessed centrally |
 | Portal/catalog projection | searchable catalog, scorecards, scaffolding UI, ownership views, maturity summaries | source-of-truth state not backed by forge/Skills/manifests/telemetry |
 
 If two layers can express a fact, choose the one that can enforce or generate it
@@ -155,7 +147,7 @@ names are implementation details.
 For repositories whose active profile requires PR/merge-queue admission, every
 required context must have an active producer on PR and `merge_group` events.
 Path-skipped required checks, inactive producers, and missing merge-group
-triggers are control-plane drift. Roleless candidates instead publish their
+triggers are control-plane drift. Parallel-change candidates instead publish their
 profile-selected exact-snapshot proof and scoped watermark; do not manufacture
 PR contexts where no PR admission exists.
 
@@ -209,7 +201,7 @@ Sylphx Platform or the status publisher, not in target repositories.
 
 ### Queue governor
 
-Sylphx Platform is the fleet execution controller, not just a pool of runners.
+Sylphx Platform is the organization-wide execution controller, not just a pool of runners.
 It must consume queue depth, pickup SLO, runner profile inventory, lane
 classification, merge-queue state, and postsubmit/release load, then choose the
 least disruptive control action:
@@ -321,7 +313,7 @@ Every control-plane change must use the `instruction-evolution-standard` classes
   conformance.
 - `breaking`: new ADR plus expand/contract and recovery plan.
 
-Do not make a new rule blocking across the fleet until its producer exists,
+Do not make a new rule blocking across selected repositories until its producer exists,
 its selector is explicit, and recovery is documented.
 
 ## Validation

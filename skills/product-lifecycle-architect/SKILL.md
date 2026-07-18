@@ -136,7 +136,7 @@ Find missing state machines, incompatible assumptions, duplicate SSOTs, provider
 
 Produce the artifact dependency DAG, delivery order, collision boundaries, handoff acceptance criteria, migrations, scale/failure expectations, external-authority gates, and evidence required to show that all declared product outcomes converge.
 
-### 5. Define global production factory
+### 5. Define the multi-channel production system
 
 Specify channel adapters, HTML5/PWA path, iOS/Android lanes,
 package/signing/provenance, i18n/LQA, Product Asset Production handoffs, store

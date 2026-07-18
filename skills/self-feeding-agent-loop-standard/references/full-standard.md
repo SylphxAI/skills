@@ -1,11 +1,3 @@
-# self-feeding-agent-loop-standard (canonical body)
-
-**Authority:** binding Standard Skill package `self-feeding-agent-loop-standard` in `SylphxAI/skills` (`skills/self-feeding-agent-loop-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Self-Feeding Agent Loop Standard
 
 ## Purpose
