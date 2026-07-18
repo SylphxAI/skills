@@ -6,6 +6,7 @@ import {
   mkdtempSync,
   readdirSync,
   readFileSync,
+  renameSync,
   rmSync,
   writeFileSync,
 } from 'node:fs';
@@ -67,7 +68,22 @@ test('sync, status, update, and clear own only the declared packages', () => {
     const parsed = JSON.parse(status.stdout);
     assert.equal(parsed.targets[0].current, true);
 
+    const interruptedPackage = 'engineering-standard';
+    const interruptedDestination = path.join(destination, interruptedPackage);
+    const interruptedTransaction = path.join(destination, '.sylphx-transaction-test-recovery');
+    mkdirSync(interruptedTransaction);
+    writeFileSync(path.join(interruptedTransaction, 'transaction.json'), `${JSON.stringify({
+      schemaVersion: 1,
+      owner: 'SylphxAI/skills',
+      package: interruptedPackage,
+    }, null, 2)}\n`);
+    cpSync(interruptedDestination, path.join(interruptedTransaction, 'stage'), { recursive: true });
+    renameSync(interruptedDestination, path.join(interruptedTransaction, 'backup'));
+
     run(['sync', '--dest', destination, '--quiet']);
+    assert.equal(existsSync(interruptedDestination), true);
+    assert.equal(existsSync(interruptedTransaction), false);
+    assert.deepEqual(readdirSync(destination).filter((name) => name.startsWith('.sylphx-transaction-')), []);
     run(['clear', '--dest', destination, '--quiet']);
     assert.equal(existsSync(path.join(destination, 'engineering-standard')), false);
     assert.equal(existsSync(path.join(destination, '.sylphx-skills.json')), false);
@@ -292,6 +308,10 @@ test('auto-sync enable performs one exact-source install and disable removes onl
     assert.equal(existsSync(path.join(codexHome, 'skills', removedSkill)), false);
     assert.equal(existsSync(removedFile), false);
     assert.equal(existsSync(path.join(unmanaged, 'SKILL.md')), true);
+    assert.deepEqual(
+      readdirSync(path.join(codexHome, 'skills')).filter((name) => name.startsWith('.sylphx-transaction-')),
+      [],
+    );
 
     runWithEnvironment(['auto-sync', 'disable', '--quiet'], environment);
     const claude = JSON.parse(readFileSync(path.join(claudeHome, 'settings.json'), 'utf8'));

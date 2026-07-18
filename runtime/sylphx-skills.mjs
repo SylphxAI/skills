@@ -5,6 +5,7 @@ import {
   existsSync,
   mkdirSync,
   readFileSync,
+  readdirSync,
   realpathSync,
   renameSync,
   rmSync,
@@ -39,6 +40,7 @@ const reconcilerScript = path.join(stateDirectory, 'reconcile.mjs');
 const reconcilerConfig = path.join(stateDirectory, 'config.json');
 const managedRepository = path.join(stateDirectory, 'repository');
 const legacyUpdaterScript = path.join(stateDirectory, 'sync.sh');
+const transactionPrefix = '.sylphx-transaction-';
 
 function log(message) {
   if (!quiet && !jsonOutput) console.log(message);
@@ -142,11 +144,45 @@ function writeAtomic(file, bytes, mode) {
   renameSync(temp, file);
 }
 
+function recoverInterruptedTransactions(skillRoot) {
+  if (!existsSync(skillRoot)) return;
+  for (const entry of readdirSync(skillRoot, { withFileTypes: true })) {
+    if (!entry.isDirectory() || !entry.name.startsWith(transactionPrefix)) continue;
+    const transactionRoot = path.join(skillRoot, entry.name);
+    const metadataPath = path.join(transactionRoot, 'transaction.json');
+    let metadata;
+    try {
+      metadata = JSON.parse(readFileSync(metadataPath, 'utf8'));
+    } catch {
+      throw new Error(`Refusing to remove an unrecognized transaction directory: ${transactionRoot}`);
+    }
+    if (
+      metadata?.owner !== 'SylphxAI/skills'
+      || typeof metadata.package !== 'string'
+      || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(metadata.package)
+    ) {
+      throw new Error(`Refusing to recover an invalid transaction directory: ${transactionRoot}`);
+    }
+    const destination = path.join(skillRoot, metadata.package);
+    const backup = path.join(transactionRoot, 'backup');
+    if (!existsSync(destination) && existsSync(backup)) renameSync(backup, destination);
+    rmSync(transactionRoot, { recursive: true, force: true });
+  }
+}
+
 function replaceDirectory(source, destination) {
-  mkdirSync(path.dirname(destination), { recursive: true });
+  const skillRoot = path.dirname(destination);
+  mkdirSync(skillRoot, { recursive: true });
   const suffix = `${process.pid}-${randomBytes(4).toString('hex')}`;
-  const stage = `${destination}.sylphx-stage-${suffix}`;
-  const backup = `${destination}.sylphx-backup-${suffix}`;
+  const transactionRoot = path.join(skillRoot, `${transactionPrefix}${path.basename(destination)}-${suffix}`);
+  const stage = path.join(transactionRoot, 'stage');
+  const backup = path.join(transactionRoot, 'backup');
+  mkdirSync(transactionRoot);
+  writeFileSync(path.join(transactionRoot, 'transaction.json'), `${JSON.stringify({
+    schemaVersion: 1,
+    owner: 'SylphxAI/skills',
+    package: path.basename(destination),
+  }, null, 2)}\n`, { mode: 0o600 });
   cpSync(source, stage, { recursive: true, preserveTimestamps: true });
   let movedExisting = false;
   try {
@@ -156,24 +192,27 @@ function replaceDirectory(source, destination) {
     }
     renameSync(stage, destination);
     if (movedExisting) rmSync(backup, { recursive: true, force: true });
+    rmSync(transactionRoot, { recursive: true, force: true });
   } catch (error) {
     rmSync(stage, { recursive: true, force: true });
     if (movedExisting && !existsSync(destination) && existsSync(backup)) renameSync(backup, destination);
+    if (existsSync(destination) || !existsSync(backup)) rmSync(transactionRoot, { recursive: true, force: true });
     throw error;
   }
 }
 
 function syncTarget(target) {
   mkdirSync(target.path, { recursive: true });
+  recoverInterruptedTransactions(target.path);
   const previous = readManifest(target);
   const desired = catalog.skills.map((skill) => skill.name);
   const desiredSet = new Set(desired);
   const previousSkills = Array.isArray(previous?.skills) ? previous.skills : [];
 
+  for (const name of desired) replaceDirectory(path.join(sourceSkills, name), path.join(target.path, name));
   for (const name of previousSkills) {
     if (!desiredSet.has(name)) rmSync(path.join(target.path, name), { recursive: true, force: true });
   }
-  for (const name of desired) replaceDirectory(path.join(sourceSkills, name), path.join(target.path, name));
 
   const manifest = {
     schemaVersion: 1,
