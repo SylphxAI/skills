@@ -1,6 +1,6 @@
 {
   "name": "sylphx-skills",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Public SylphxAI Agent Skills with automatic Codex and Claude Code synchronization",
   "license": "MIT",
   "type": "module",
@@ -24,4 +24,3 @@
     "node": ">=20"
   }
 }
-

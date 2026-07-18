@@ -177,7 +177,15 @@ if (!existsSync(catalogPath) || readFileSync(catalogPath, 'utf8') !== catalogByt
   errors.push('catalog.json is stale; run npm run build:catalog');
 }
 
-for (const rootFile of ['README.md', 'PROJECT.md', 'project.manifest.json', 'LICENSE', 'runtime/sylphx-skills.mjs']) {
+for (const rootFile of [
+  'README.md',
+  'PROJECT.md',
+  'project.manifest.json',
+  'LICENSE',
+  'runtime/hooks.mjs',
+  'runtime/reconcile.mjs',
+  'runtime/sylphx-skills.mjs',
+]) {
   const absolute = path.join(repositoryRoot, rootFile);
   if (!existsSync(absolute) || !statSync(absolute).isFile()) errors.push(`${rootFile}: missing`);
 }

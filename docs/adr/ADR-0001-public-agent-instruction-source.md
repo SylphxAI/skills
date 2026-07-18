@@ -35,6 +35,11 @@ content must be vendor-neutral or that MIT text remains commercially exclusive.
    history. The complete predecessor source is recoverable from the private
    `SylphxAI/skills-history-archive` repository and the pre-cutover bundle.
 
+Decision 4's initial hourly OS scheduler is superseded by
+[ADR-0002](ADR-0002-consumption-boundary-skill-reconciliation.md). The boundary
+remains a repository-owned adapter with no hosted service, token, or Control
+Plane dependency.
+
 ## Consequences
 
 - Public users can inspect, install, and reuse Sylphx working methods.
@@ -45,4 +50,3 @@ content must be vendor-neutral or that MIT text remains commercially exclusive.
   enterprise/private packages, integrations, verification, and support.
 - Historical private-portfolio and benchmark systems are not steady-state
   dependencies of the instruction source.
-

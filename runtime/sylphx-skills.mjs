@@ -5,7 +5,6 @@ import {
   existsSync,
   mkdirSync,
   readFileSync,
-  readdirSync,
   realpathSync,
   renameSync,
   rmSync,
@@ -16,12 +15,18 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import {
+  installRuntimeHooks,
+  runtimeHookStatus,
+  uninstallRuntimeHooks,
+} from './hooks.mjs';
+import { reconcile } from './reconcile.mjs';
 
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceSkills = path.join(packageRoot, 'skills');
 const catalogPath = path.join(packageRoot, 'catalog.json');
 const packageJsonPath = path.join(packageRoot, 'package.json');
-const home = os.homedir();
+const home = path.resolve((process.env.SYLPHX_SKILLS_HOME || os.homedir()).replace(/^~(?=\/|$)/, os.homedir()));
 const argv = process.argv.slice(2);
 const quiet = argv.includes('--quiet');
 const jsonOutput = argv.includes('--json');
@@ -30,30 +35,27 @@ const catalogBytes = readFileSync(catalogPath);
 const catalog = JSON.parse(catalogBytes);
 const catalogDigest = createHash('sha256').update(catalogBytes).digest('hex');
 const stateDirectory = path.join(home, '.sylphx-skills');
-const updaterScript = path.join(stateDirectory, 'sync.sh');
+const reconcilerScript = path.join(stateDirectory, 'reconcile.mjs');
+const reconcilerConfig = path.join(stateDirectory, 'config.json');
+const managedRepository = path.join(stateDirectory, 'repository');
+const legacyUpdaterScript = path.join(stateDirectory, 'sync.sh');
 
 function log(message) {
   if (!quiet && !jsonOutput) console.log(message);
-}
-
-function values(flag) {
-  const found = [];
-  for (let index = 0; index < argv.length; index += 1) {
-    if (argv[index] === flag && argv[index + 1]) {
-      found.push(argv[index + 1]);
-      index += 1;
-    }
-  }
-  return found;
 }
 
 function expand(input) {
   return path.resolve(input.replace(/^~(?=\/|$)/, home));
 }
 
-function runtimeDefinitions() {
+function runtimeHomes() {
   const codexHome = process.env.CODEX_HOME ? expand(process.env.CODEX_HOME) : path.join(home, '.codex');
   const claudeHome = process.env.CLAUDE_CONFIG_DIR ? expand(process.env.CLAUDE_CONFIG_DIR) : path.join(home, '.claude');
+  return { codexHome, claudeHome };
+}
+
+function runtimeDefinitions() {
+  const { codexHome, claudeHome } = runtimeHomes();
   return {
     codex: path.join(codexHome, 'skills'),
     claude: path.join(claudeHome, 'skills'),
@@ -96,6 +98,20 @@ export function resolveTargets({ args = argv, homedir = home } = {}) {
   return automatic.map((runtime) => ({ runtime, path: definitions[runtime] }));
 }
 
+function requestedAgents(args = argv) {
+  const names = [];
+  for (let index = 0; index < args.length; index += 1) {
+    if (args[index] === '--agent' && args[index + 1]) {
+      names.push(...args[index + 1].split(',').map((item) => item.trim().toLowerCase()).filter(Boolean));
+      index += 1;
+    }
+  }
+  const expanded = names.includes('all') || !names.length ? ['codex', 'claude'] : names;
+  const invalid = expanded.filter((name) => !['codex', 'claude'].includes(name));
+  if (invalid.length) throw new Error(`Unsupported agent: ${invalid.join(', ')}. Supported: codex, claude, all.`);
+  return [...new Set(expanded)];
+}
+
 function manifestPath(target) {
   return path.join(target.path, '.sylphx-skills.json');
 }
@@ -107,6 +123,15 @@ function readManifest(target) {
     return JSON.parse(readFileSync(file, 'utf8'));
   } catch {
     return null;
+  }
+}
+
+function readJson(file) {
+  if (!existsSync(file)) return null;
+  try {
+    return JSON.parse(readFileSync(file, 'utf8'));
+  } catch (error) {
+    throw new Error(`Invalid JSON at ${file}: ${error.message}`);
   }
 }
 
@@ -155,6 +180,7 @@ function syncTarget(target) {
     owner: 'SylphxAI/skills',
     packageVersion: packageJson.version,
     catalogDigest: `sha256:${catalogDigest}`,
+    sourceCommit: process.env.SYLPHX_SKILLS_COMMIT_SHA || null,
     synchronizedAt: new Date().toISOString(),
     runtime: target.runtime,
     skills: desired,
@@ -165,9 +191,25 @@ function syncTarget(target) {
   return manifest;
 }
 
+function refreshAutoSyncInstallation() {
+  const config = readJson(reconcilerConfig);
+  // Only the exact-commit reconciler may replace the persistent hook adapter.
+  // A manual sync from an arbitrary working tree updates Skills content but
+  // must not silently turn uncommitted runtime code into the auto-sync owner.
+  if (!process.env.SYLPHX_SKILLS_COMMIT_SHA || !config?.enabled || config.owner !== 'SylphxAI/skills') return;
+  writeAtomic(reconcilerScript, readFileSync(path.join(packageRoot, 'runtime', 'reconcile.mjs')), 0o755);
+  installRuntimeHooks({
+    agents: config.agents,
+    homes: config.homes,
+    nodePath: config.nodePath,
+    reconcilerPath: reconcilerScript,
+  });
+}
+
 function sync() {
   const targets = resolveTargets();
   const result = targets.map((target) => ({ target, manifest: syncTarget(target) }));
+  refreshAutoSyncInstallation();
   if (jsonOutput) console.log(JSON.stringify({ command: 'sync', catalogDigest: `sha256:${catalogDigest}`, targets: result }, null, 2));
 }
 
@@ -209,95 +251,96 @@ function clear() {
   if (jsonOutput) console.log(JSON.stringify({ command: 'clear', targets: result }, null, 2));
 }
 
-function updaterSource() {
-  const source = process.env.SYLPHX_SKILLS_SOURCE || 'github:SylphxAI/skills';
-  if (!/^[A-Za-z0-9@/:._-]+$/.test(source)) throw new Error('SYLPHX_SKILLS_SOURCE contains unsupported characters');
-  return source;
-}
-
-function writeUpdaterScript() {
-  mkdirSync(stateDirectory, { recursive: true });
-  const safePath = String(process.env.PATH || '/usr/local/bin:/usr/bin:/bin').replace(/'/g, "'\\''");
-  const script = `#!/bin/sh\nexport PATH='${safePath}'\nexec npx --yes ${updaterSource()} sync --quiet\n`;
-  writeAtomic(updaterScript, script, 0o755);
-}
-
-function run(command, args, { tolerateFailure = false } = {}) {
-  const result = spawnSync(command, args, { encoding: 'utf8', stdio: quiet ? 'ignore' : 'pipe' });
+function run(command, args, { tolerateFailure = false, env = process.env, timeout = 30_000 } = {}) {
+  const result = spawnSync(command, args, {
+    encoding: 'utf8',
+    env,
+    timeout,
+    stdio: quiet ? 'ignore' : 'pipe',
+  });
   if (result.status !== 0 && !tolerateFailure) {
-    throw new Error(`${command} ${args.join(' ')} failed: ${(result.stderr || result.stdout || '').trim()}`);
+    throw new Error(`${command} ${args.join(' ')} failed: ${(result.stderr || result.stdout || result.error?.message || '').trim()}`);
   }
   return result;
 }
 
-function xmlEscape(value) {
-  return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-}
-
-function enableAutoSync() {
-  writeUpdaterScript();
-  if (process.platform === 'darwin') {
-    const launchAgents = path.join(home, 'Library', 'LaunchAgents');
-    const plist = path.join(launchAgents, 'ai.sylphx.skills-sync.plist');
-    mkdirSync(launchAgents, { recursive: true });
-    const body = `<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0"><dict>\n<key>Label</key><string>ai.sylphx.skills-sync</string>\n<key>ProgramArguments</key><array><string>/bin/sh</string><string>${xmlEscape(updaterScript)}</string></array>\n<key>RunAtLoad</key><true/>\n<key>StartInterval</key><integer>3600</integer>\n<key>StandardOutPath</key><string>${xmlEscape(path.join(stateDirectory, 'sync.log'))}</string>\n<key>StandardErrorPath</key><string>${xmlEscape(path.join(stateDirectory, 'sync-error.log'))}</string>\n</dict></plist>\n`;
-    writeAtomic(plist, body);
-    const domain = `gui/${process.getuid()}`;
-    run('launchctl', ['bootout', domain, plist], { tolerateFailure: true });
-    run('launchctl', ['bootstrap', domain, plist]);
-    log(`enabled hourly auto-sync: ${plist}`);
-    return;
-  }
-  if (process.platform === 'linux') {
-    const units = path.join(home, '.config', 'systemd', 'user');
-    const service = path.join(units, 'sylphx-skills-sync.service');
-    const timer = path.join(units, 'sylphx-skills-sync.timer');
-    mkdirSync(units, { recursive: true });
-    writeAtomic(service, `[Unit]\nDescription=Synchronize Sylphx Agent Skills\n\n[Service]\nType=oneshot\nExecStart=/bin/sh ${updaterScript}\n`);
-    writeAtomic(timer, '[Unit]\nDescription=Synchronize Sylphx Agent Skills hourly\n\n[Timer]\nOnBootSec=5m\nOnUnitActiveSec=1h\nPersistent=true\n\n[Install]\nWantedBy=timers.target\n');
-    run('systemctl', ['--user', 'daemon-reload']);
-    run('systemctl', ['--user', 'enable', '--now', 'sylphx-skills-sync.timer']);
-    log(`enabled hourly auto-sync: ${timer}`);
-    return;
-  }
-  if (process.platform === 'win32') {
-    run('schtasks', ['/Create', '/SC', 'HOURLY', '/TN', 'SylphxSkillsSync', '/TR', `cmd /c "${updaterScript}"`, '/F']);
-    log('enabled hourly auto-sync: Windows Task Scheduler / SylphxSkillsSync');
-    return;
-  }
-  throw new Error(`Auto-sync is not supported on ${process.platform}`);
-}
-
-function disableAutoSync() {
+function removeLegacyScheduler() {
   if (process.platform === 'darwin') {
     const plist = path.join(home, 'Library', 'LaunchAgents', 'ai.sylphx.skills-sync.plist');
-    run('launchctl', ['bootout', `gui/${process.getuid()}`, plist], { tolerateFailure: true });
+    if (existsSync(plist)) run('launchctl', ['bootout', `gui/${process.getuid()}`, plist], { tolerateFailure: true });
     rmSync(plist, { force: true });
   } else if (process.platform === 'linux') {
-    run('systemctl', ['--user', 'disable', '--now', 'sylphx-skills-sync.timer'], { tolerateFailure: true });
-    rmSync(path.join(home, '.config', 'systemd', 'user', 'sylphx-skills-sync.service'), { force: true });
-    rmSync(path.join(home, '.config', 'systemd', 'user', 'sylphx-skills-sync.timer'), { force: true });
-    run('systemctl', ['--user', 'daemon-reload'], { tolerateFailure: true });
+    const units = path.join(home, '.config', 'systemd', 'user');
+    const timer = path.join(units, 'sylphx-skills-sync.timer');
+    if (existsSync(timer)) run('systemctl', ['--user', 'disable', '--now', 'sylphx-skills-sync.timer'], { tolerateFailure: true });
+    rmSync(path.join(units, 'sylphx-skills-sync.service'), { force: true });
+    rmSync(timer, { force: true });
+    if (existsSync(units)) run('systemctl', ['--user', 'daemon-reload'], { tolerateFailure: true });
   } else if (process.platform === 'win32') {
     run('schtasks', ['/Delete', '/TN', 'SylphxSkillsSync', '/F'], { tolerateFailure: true });
   }
-  rmSync(updaterScript, { force: true });
-  log('disabled Sylphx Skills auto-sync');
+  rmSync(legacyUpdaterScript, { force: true });
+}
+
+function enableAutoSync() {
+  if (argv.includes('--dest')) throw new Error('auto-sync uses native runtime roots; --dest is not supported');
+  removeLegacyScheduler();
+  mkdirSync(stateDirectory, { recursive: true });
+  const agents = requestedAgents();
+  const config = {
+    schemaVersion: 1,
+    owner: 'SylphxAI/skills',
+    enabled: false,
+    remote: process.env.SYLPHX_SKILLS_REMOTE || 'https://github.com/SylphxAI/skills.git',
+    branch: 'main',
+    repository: managedRepository,
+    reconcilerPath: reconcilerScript,
+    nodePath: process.execPath,
+    pathEnv: process.env.PATH || '/usr/local/bin:/usr/bin:/bin',
+    agents,
+    homes: runtimeHomes(),
+    adapterVersion: packageJson.version,
+  };
+  writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
+  writeAtomic(reconcilerScript, readFileSync(path.join(packageRoot, 'runtime', 'reconcile.mjs')), 0o755);
+  reconcile({ stateDirectory, force: true, strict: true });
+  config.enabled = true;
+  writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
+  installRuntimeHooks({ agents, homes: config.homes, nodePath: config.nodePath, reconcilerPath: reconcilerScript });
+  log(`enabled event-driven auto-sync for ${agents.join(', ')} (10s active-turn freshness)`);
+}
+
+function disableAutoSync() {
+  const config = readJson(reconcilerConfig);
+  const agents = config?.agents || ['codex', 'claude'];
+  const homes = config?.homes || runtimeHomes();
+  uninstallRuntimeHooks({ agents, homes });
+  removeLegacyScheduler();
+  rmSync(path.join(stateDirectory, 'reconcile.lock'), { recursive: true, force: true });
+  rmSync(reconcilerScript, { force: true });
+  rmSync(reconcilerConfig, { force: true });
+  log('disabled Sylphx Skills event-driven auto-sync');
 }
 
 function autoSyncStatus() {
-  const scheduler = process.platform === 'darwin'
-    ? path.join(home, 'Library', 'LaunchAgents', 'ai.sylphx.skills-sync.plist')
-    : process.platform === 'linux'
-      ? path.join(home, '.config', 'systemd', 'user', 'sylphx-skills-sync.timer')
-      : null;
-  const result = { platform: process.platform, enabled: scheduler ? existsSync(scheduler) : null, scheduler, updaterScript };
+  const config = readJson(reconcilerConfig);
+  const agents = config?.agents || ['codex', 'claude'];
+  const homes = config?.homes || runtimeHomes();
+  const hooks = runtimeHookStatus({ agents, homes });
+  const result = {
+    mode: 'consumption-boundary-reconciliation',
+    enabled: Boolean(config?.enabled) && hooks.every((item) => item.installed),
+    remote: config?.remote || null,
+    managedRepository: config?.repository || null,
+    activeTurnMaxLagMs: 10_000,
+    hooks,
+  };
   if (jsonOutput) console.log(JSON.stringify(result, null, 2));
-  else log(`auto-sync: ${result.enabled ? 'enabled' : 'disabled'}${scheduler ? ` (${scheduler})` : ''}`);
+  else log(`auto-sync: ${result.enabled ? 'enabled' : 'disabled'} (${result.mode})`);
 }
 
 function help() {
-  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills sync [--agent codex|claude|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills auto-sync enable|disable|status\n\nDefault behavior auto-detects Codex and Claude Code. On a fresh machine it\nprepares both roots so no destination choice is required.`);
+  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills sync [--agent codex|claude|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills auto-sync enable|disable|status\n\nDefault behavior auto-detects Codex and Claude Code. Auto-sync reconciles at\nsession, prompt, sub-agent, and active tool-loop boundaries without a daemon.`);
 }
 
 function main() {

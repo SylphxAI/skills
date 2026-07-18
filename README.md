@@ -33,15 +33,28 @@ npx --yes github:SylphxAI/skills sync --agent all
 
 ## Automatic updates
 
-Install the per-user native scheduler once:
+Enable the per-user runtime hooks once:
 
 ```bash
 npx --yes github:SylphxAI/skills auto-sync enable
 ```
 
-It refreshes from this public repository every hour using the operating
-system's normal user scheduler. No Control Plane, token, daemon, or manually
-maintained clone is required.
+Updates then reconcile at the points where an agent can actually consume new
+instructions: session start/resume, prompt submission, sub-agent start, and the
+active tool loop. Codex checks before a tool call; Claude Code checks after a
+tool batch, immediately before its next model step. This also covers a turn
+that runs for hours without another user prompt.
+
+The common path is local and cheap. Lifecycle checks share a one-second cache;
+active-turn checks share a ten-second cache and a per-user single-flight lock.
+Only an expired check performs one public `git ls-remote`, and only a changed
+commit performs an incremental fetch and atomic Skill sync. There is no hourly
+wait, background daemon, webhook relay, token, or Control Plane dependency.
+When offline, the last known-good packages remain active and retries back off.
+
+No tool can replace context while a model is continuously generating with no
+lifecycle boundary. The next prompt, sub-agent, or tool boundary is therefore
+the earliest safe and useful refresh point.
 
 ```bash
 npx --yes github:SylphxAI/skills status
@@ -79,4 +92,3 @@ small:
 ```bash
 npm test
 ```
-
