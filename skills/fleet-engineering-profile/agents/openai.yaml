@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fleet Engineering Profile"
+  short_description: "Binding Rust backend and TypeScript web boundary"
+  default_prompt: "Use $fleet-engineering-profile to classify this service by role and effects, then apply the binding Rust backend and TypeScript web boundary."

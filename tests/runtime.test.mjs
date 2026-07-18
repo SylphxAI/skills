@@ -7,6 +7,7 @@ import test from 'node:test';
 
 const root = path.resolve(new URL('..', import.meta.url).pathname);
 const cli = path.join(root, 'runtime', 'sylphx-skills.mjs');
+const catalog = JSON.parse(readFileSync(path.join(root, 'catalog.json'), 'utf8'));
 
 function run(args) {
   const result = spawnSync(process.execPath, [cli, ...args], { cwd: root, encoding: 'utf8' });
@@ -21,7 +22,7 @@ test('sync, status, update, and clear own only the declared packages', () => {
     run(['sync', '--dest', destination, '--quiet']);
     const manifest = JSON.parse(readFileSync(path.join(destination, '.sylphx-skills.json'), 'utf8'));
     assert.equal(manifest.owner, 'SylphxAI/skills');
-    assert.equal(manifest.skills.length, 82);
+    assert.equal(manifest.skills.length, catalog.count);
     assert.equal(existsSync(path.join(destination, 'engineering-standard', 'SKILL.md')), true);
     assert.equal(existsSync(path.join(destination, 'sylphx-platform-first', 'SKILL.md')), true);
 
@@ -50,4 +51,3 @@ test('agent override targets Codex and Claude without upstream tooling', () => {
     rmSync(sandbox, { recursive: true, force: true });
   }
 });
-

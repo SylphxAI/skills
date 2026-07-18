@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -37,6 +38,75 @@ function validateLocalLinks(markdown, file, errors) {
   }
 }
 
+function stableJson(value) {
+  if (Array.isArray(value)) return `[${value.map(stableJson).join(',')}]`;
+  if (value && typeof value === 'object') {
+    return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableJson(value[key])}`).join(',')}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function validateMachineProfile(folder, packageRoot, errors) {
+  const profilePath = path.join(packageRoot, 'references', 'profile.json');
+  if (!existsSync(profilePath)) return;
+  let document;
+  try {
+    document = JSON.parse(readFileSync(profilePath, 'utf8'));
+  } catch (error) {
+    errors.push(`skills/${folder}/references/profile.json: ${error.message}`);
+    return;
+  }
+
+  if (document.schemaVersion !== 1 || document.kind !== 'EnterpriseProfile') {
+    errors.push(`skills/${folder}/references/profile.json: unsupported profile contract`);
+    return;
+  }
+  if (document.profile?.id !== folder) errors.push(`skills/${folder}/references/profile.json: profile.id must match folder`);
+  if (document.profile?.owner !== 'SylphxAI/skills') errors.push(`skills/${folder}/references/profile.json: owner must be SylphxAI/skills`);
+  if (document.profile?.contentDigestScope !== 'canonical-json-excluding:/profile/contentDigest') {
+    errors.push(`skills/${folder}/references/profile.json: unsupported digest scope`);
+  }
+
+  const digestCandidate = structuredClone(document);
+  delete digestCandidate.profile.contentDigest;
+  const expectedDigest = `sha256:${createHash('sha256').update(stableJson(digestCandidate)).digest('hex')}`;
+  if (document.profile?.contentDigest !== expectedDigest) {
+    errors.push(`skills/${folder}/references/profile.json: contentDigest mismatch; expected ${expectedDigest}`);
+  }
+
+  const schemaPath = path.resolve(path.dirname(profilePath), document.$schema || '');
+  if (!document.$schema?.startsWith('./') || !existsSync(schemaPath)) {
+    errors.push(`skills/${folder}/references/profile.json: local $schema is missing`);
+  } else {
+    try {
+      JSON.parse(readFileSync(schemaPath, 'utf8'));
+    } catch (error) {
+      errors.push(`${path.relative(repositoryRoot, schemaPath)}: ${error.message}`);
+    }
+  }
+
+  const decisionPath = path.resolve(packageRoot, document.profile?.decisionRef || '');
+  if (!document.profile?.decisionRef?.startsWith('references/ADR-') || !existsSync(decisionPath)) {
+    errors.push(`skills/${folder}/references/profile.json: local accepted decision is missing`);
+  } else {
+    const decision = readFileSync(decisionPath, 'utf8');
+    if (!/^status:\s*accepted\s*$/m.test(decision) || !/^\s*- SylphxAI\/skills\s*$/m.test(decision)) {
+      errors.push(`${path.relative(repositoryRoot, decisionPath)}: decision must be accepted and Skills-owned`);
+    }
+  }
+
+  const defaults = document.defaults || [];
+  const keys = defaults.map((item) => item.key);
+  if (new Set(keys).size !== keys.length) errors.push(`skills/${folder}/references/profile.json: duplicate default key`);
+  const exceptable = new Set(document.exceptionPolicy?.exceptableDefaults || []);
+  const forbidden = new Set(document.exceptionPolicy?.forbiddenDefaults || []);
+  for (const key of keys) {
+    if (exceptable.has(key) === forbidden.has(key)) {
+      errors.push(`skills/${folder}/references/profile.json: ${key} must be exactly one of exceptable or forbidden`);
+    }
+  }
+}
+
 function validateSkill(folder, names, errors) {
   const packageRoot = path.join(repositoryRoot, 'skills', folder);
   const skillFile = path.join(packageRoot, 'SKILL.md');
@@ -71,6 +141,8 @@ function validateSkill(folder, names, errors) {
     if (/\b(?:TODO|PLACEHOLDER)\s*:/i.test(text)) errors.push(`${relative}: unresolved TODO/PLACEHOLDER marker`);
     if (/\.(?:md|markdown)$/i.test(file)) validateLocalLinks(text, file, errors);
   }
+
+  validateMachineProfile(folder, packageRoot, errors);
 
   const openAiMetadata = path.join(packageRoot, 'agents', 'openai.yaml');
   if (existsSync(openAiMetadata)) {

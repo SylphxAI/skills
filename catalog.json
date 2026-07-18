@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 82,
+  "count": 83,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -147,6 +147,11 @@
       "name": "enterprise-profile-standard",
       "description": "Versioned binding enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static fleet selections and their lifecycle; Control Plane owns resolved live state.",
       "path": "skills/enterprise-profile-standard/SKILL.md"
+    },
+    {
+      "name": "fleet-engineering-profile",
+      "description": "Apply the binding Sylphx fleet language and effect boundary. Use when choosing, implementing, reviewing, or measuring production backend, API, gateway, worker, controller, runtime, storage, queue, background-job, browser, product-web, SSR, or TypeScript-to-Rust work.",
+      "path": "skills/fleet-engineering-profile/SKILL.md"
     },
     {
       "name": "fleet-migration-factory",
