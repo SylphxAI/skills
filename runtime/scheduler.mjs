@@ -53,6 +53,7 @@ export function schedulerDefinition({
   reconcilerPath,
   pathEnv,
   intervalMinutes,
+  uid = typeof process.getuid === 'function' ? process.getuid() : 0,
 }) {
   if (platform === 'darwin') {
     const file = path.join(home, 'Library', 'LaunchAgents', `${LABEL}.plist`);
@@ -82,8 +83,8 @@ export function schedulerDefinition({
 `,
       }],
       activate: [
-        ['launchctl', ['bootout', `gui/${process.getuid()}`, file], true],
-        ['launchctl', ['bootstrap', `gui/${process.getuid()}`, file], false],
+        ['launchctl', ['bootout', `gui/${uid}`, file], true],
+        ['launchctl', ['bootstrap', `gui/${uid}`, file], false],
       ],
     };
   }
