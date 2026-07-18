@@ -65,12 +65,27 @@ test('sync, status, update, and clear own only the declared packages', () => {
     assert.equal(manifest.owner, 'SylphxAI/skills');
     assert.equal(manifest.skills.length, catalog.count);
     assert.deepEqual(manifest.profiles, catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile));
+    assert.deepEqual(manifest.packageDigests, Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])));
     assert.equal(existsSync(path.join(destination, 'engineering-standard', 'SKILL.md')), true);
     assert.equal(existsSync(path.join(destination, 'sylphx-platform-first', 'SKILL.md')), true);
 
     const status = run(['status', '--dest', destination, '--json']);
     const parsed = JSON.parse(status.stdout);
     assert.equal(parsed.targets[0].current, true);
+
+    const installedProfilePath = path.join(destination, 'fleet-engineering-profile', 'references', 'profile.json');
+    const installedProfile = JSON.parse(readFileSync(installedProfilePath, 'utf8'));
+    installedProfile.profile.lifecycle = 'candidate';
+    writeFileSync(installedProfilePath, `${JSON.stringify(installedProfile, null, 2)}\n`);
+    const driftedProfile = JSON.parse(run(['status', '--dest', destination, '--json']).stdout);
+    assert.equal(driftedProfile.targets[0].current, false);
+    assert.equal(driftedProfile.targets[0].packagesCurrent, false);
+
+    run(['sync', '--dest', destination, '--quiet']);
+    const installedSkillPath = path.join(destination, 'fleet-engineering-profile', 'SKILL.md');
+    writeFileSync(installedSkillPath, `${readFileSync(installedSkillPath, 'utf8')}\nmutated\n`);
+    const driftedSkill = JSON.parse(run(['status', '--dest', destination, '--json']).stdout);
+    assert.equal(driftedSkill.targets[0].current, false);
 
     const interruptedPackage = 'engineering-standard';
     const interruptedDestination = path.join(destination, interruptedPackage);

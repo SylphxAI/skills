@@ -219,6 +219,27 @@ function replaceDirectory(source, destination) {
   }
 }
 
+function installedPackageDigest(packageRoot) {
+  if (!existsSync(packageRoot)) return null;
+  const files = [];
+  const visit = (directory) => {
+    for (const entry of readdirSync(directory, { withFileTypes: true })) {
+      const absolute = path.join(directory, entry.name);
+      if (entry.isDirectory()) visit(absolute);
+      else if (entry.isFile()) files.push(absolute);
+    }
+  };
+  visit(packageRoot);
+  const hash = createHash('sha256');
+  for (const file of files.sort()) {
+    hash.update(path.relative(packageRoot, file));
+    hash.update('\0');
+    hash.update(readFileSync(file));
+    hash.update('\0');
+  }
+  return `sha256:${hash.digest('hex')}`;
+}
+
 function syncTarget(target) {
   mkdirSync(target.path, { recursive: true });
   recoverInterruptedTransactions(target.path);
@@ -227,7 +248,13 @@ function syncTarget(target) {
   const desiredSet = new Set(desired);
   const previousSkills = Array.isArray(previous?.skills) ? previous.skills : [];
 
-  for (const name of desired) replaceDirectory(path.join(sourceSkills, name), path.join(target.path, name));
+  for (const skill of catalog.skills) {
+    const destination = path.join(target.path, skill.name);
+    replaceDirectory(path.join(sourceSkills, skill.name), destination);
+    if (installedPackageDigest(destination) !== skill.packageDigest) {
+      throw new Error(`synchronized package digest mismatch: ${skill.name}`);
+    }
+  }
   for (const name of previousSkills) {
     if (!desiredSet.has(name)) rmSync(path.join(target.path, name), { recursive: true, force: true });
   }
@@ -241,6 +268,7 @@ function syncTarget(target) {
     synchronizedAt: new Date().toISOString(),
     runtime: target.runtime,
     skills: desired,
+    packageDigests: Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])),
     profiles: catalog.skills
       .filter((skill) => skill.profile)
       .map((skill) => skill.profile),
@@ -296,14 +324,30 @@ function status() {
   const targets = resolveTargets();
   const result = targets.map((target) => {
     const manifest = readManifest(target);
-    const present = catalog.skills.filter((skill) => existsSync(path.join(target.path, skill.name, 'SKILL.md'))).length;
+    const packageStates = catalog.skills.map((skill) => ({
+      name: skill.name,
+      present: existsSync(path.join(target.path, skill.name, 'SKILL.md')),
+      current: installedPackageDigest(path.join(target.path, skill.name)) === skill.packageDigest,
+    }));
+    const present = packageStates.filter((skill) => skill.present).length;
+    const expectedProfiles = catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile);
+    const profilesCurrent = JSON.stringify(manifest?.profiles || []) === JSON.stringify(expectedProfiles);
+    const packagesCurrent = packageStates.every((skill) => skill.current)
+      && JSON.stringify(manifest?.packageDigests || {}) === JSON.stringify(
+        Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])),
+      );
     return {
       runtime: target.runtime,
       path: target.path,
       installed: present,
       expected: catalog.count,
-      current: manifest?.catalogDigest === `sha256:${catalogDigest}` && present === catalog.count,
+      current: manifest?.catalogDigest === `sha256:${catalogDigest}`
+        && present === catalog.count
+        && packagesCurrent
+        && profilesCurrent,
       catalogDigest: manifest?.catalogDigest || null,
+      packagesCurrent,
+      profilesCurrent,
     };
   });
   if (jsonOutput) console.log(JSON.stringify({ command: 'status', targets: result }, null, 2));

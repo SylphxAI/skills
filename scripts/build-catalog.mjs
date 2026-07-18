@@ -1,10 +1,31 @@
 #!/usr/bin/env node
 
+import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+function packageDigest(packageRoot) {
+  const files = [];
+  const visit = (directory) => {
+    for (const entry of readdirSync(directory, { withFileTypes: true })) {
+      const absolute = path.join(directory, entry.name);
+      if (entry.isDirectory()) visit(absolute);
+      else if (entry.isFile()) files.push(absolute);
+    }
+  };
+  visit(packageRoot);
+  const hash = createHash('sha256');
+  for (const file of files.sort()) {
+    hash.update(path.relative(packageRoot, file));
+    hash.update('\0');
+    hash.update(readFileSync(file));
+    hash.update('\0');
+  }
+  return `sha256:${hash.digest('hex')}`;
+}
 
 export function parseFrontmatter(markdown, file = 'SKILL.md') {
   if (!markdown.startsWith('---\n')) throw new Error(`${file}: missing YAML frontmatter`);
@@ -44,6 +65,7 @@ export function buildCatalog(root = repositoryRoot) {
       name: values.name,
       description: values.description,
       path: relativePath,
+      packageDigest: packageDigest(path.join(root, 'skills', folder)),
     };
     const profilePath = path.join(root, 'skills', folder, 'references', 'profile.json');
     if (existsSync(profilePath)) {

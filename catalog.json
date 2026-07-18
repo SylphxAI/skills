@@ -6,152 +6,182 @@
     {
       "name": "accessibility-conformance-program-review",
       "description": "Design or audit a product accessibility conformance program spanning target standards, representative workflows, manual and assistive-technology testing, issue governance, release evidence, VPAT/ACR inputs, remediation, and exceptions. Use when the requested artifact is a durable conformance program, claim-evidence review, or release/procurement decision. Do not use for a single UI critique, a code-level accessibility fix, generic QA planning, or legal advice.",
-      "path": "skills/accessibility-conformance-program-review/SKILL.md"
+      "path": "skills/accessibility-conformance-program-review/SKILL.md",
+      "packageDigest": "sha256:f3a9d0de10327d7541bbf64d2e3ef99f6319d75364421452916975b588968cec"
     },
     {
       "name": "account-recovery-review",
       "description": "Design or audit a secure, humane account-access recovery protocol for lost credentials, passkeys, MFA devices, recovery codes, email or phone access, social login, enterprise SSO, compromised accounts, locked users, ownership disputes, and support-assisted recovery. Use when the primary artifact is recovery eligibility, proof, risk, channel, state, authority, containment, communication, appeal, and post-recovery protection. Use enterprise-access-governance-review for tenant/admin role lifecycle and product-abuse-risk-review for cross-product abuse controls.",
-      "path": "skills/account-recovery-review/SKILL.md"
+      "path": "skills/account-recovery-review/SKILL.md",
+      "packageDigest": "sha256:0e2f8cdafdee8f4b64d67299837e89c659c56ab3ce73319e4c865a717911ad2e"
     },
     {
       "name": "ad-monetization-review",
       "description": "Design or audit one complete in-product advertising system for apps, games, web, and content products: rewarded ads, interstitials, banners/native placements, offerwalls, mediation, payer suppression, reward authority, consent, age/territory modes, frequency and fatigue budgets, IAP/IAA cannibalization, fraud, experiments, and shutdown. Use when deciding ad formats, placements, rewards, provider portfolio, or ad economics; combine with an App or Game Blueprint only when whole-product coherence is also unresolved.",
-      "path": "skills/ad-monetization-review/SKILL.md"
+      "path": "skills/ad-monetization-review/SKILL.md",
+      "packageDigest": "sha256:c1fdd057b76b1e7c6428a199cd8d71cbfe4a94ad2307fafc4ac9dc8d413caf30"
     },
     {
       "name": "agent-first-development-standard",
       "description": "No-human parallel development packets, Agent-Author fields, collision scopes, and machine-verifiable acceptance. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/agent-first-development-standard/SKILL.md"
+      "path": "skills/agent-first-development-standard/SKILL.md",
+      "packageDigest": "sha256:0c025eee081028676c02eec02d4fb1dd60a3928262bc286d63f9e7ad963f3037"
     },
     {
       "name": "agent-native-standard",
       "description": "Typed agent-native products: queryable state, schema-derived tools, delegation briefs, and durable context handoff. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/agent-native-standard/SKILL.md"
+      "path": "skills/agent-native-standard/SKILL.md",
+      "packageDigest": "sha256:d77b534fcc1e024425001382f3203cd85d24e98789f8475ccaf78d35e8a5f04d"
     },
     {
       "name": "ai-product-risk-review",
       "description": "Design or audit one AI product behavior and launch contract covering the user job, AI necessity, model role, autonomy and action rights, data use, affected parties, failure and abuse, UX disclosure, fallback, cost and latency, support, evidence dependencies, and release boundaries. Use when an assistant, copilot, generator, classifier, recommender, or agent needs a product-risk dossier. Do not use for eval implementation, adversarial red teaming, security threat modeling, provider selection, a whole-product blueprint, or incident response.",
-      "path": "skills/ai-product-risk-review/SKILL.md"
+      "path": "skills/ai-product-risk-review/SKILL.md",
+      "packageDigest": "sha256:6c363d4240e348279ddaa9b94ad2419afe1506683aee1aa49d72034f7987d4f2"
     },
     {
       "name": "app-design-blueprint",
       "description": "Design or critically review a complete app as a coherent, agent-first App Design Blueprint: user job and promise, workflows and information architecture, first-use activation, capability portfolio, retention and durable ownership, commerce and social integration, feedback and review loops, responsive HTML5/mobile/desktop experience, desktop OS integration semantics, offline and sync, accessibility, localization, low-end performance, privacy, safety, autonomous construction, and validation. Use for a new consumer or productivity app, whole-app redesign, cross-platform app system, a bounded macOS/Windows integration design that must remain consistent with app state, or an audit of whether product capabilities form one scalable experience. Use specialist procedures for one payment, refund, notification, review, campaign, store submission, exact release artifact, or file-level interface artifact unless whole-app coherence is also being decided.",
-      "path": "skills/app-design-blueprint/SKILL.md"
+      "path": "skills/app-design-blueprint/SKILL.md",
+      "packageDigest": "sha256:859a9d0f042f95237112b3ad4ce25f7b1c86ace9508bea6acc18651da3c1c0e7"
     },
     {
       "name": "app-store-distribution-readiness",
       "description": "Prepare or audit exact-artifact release evidence and release communication for selected app, game, web, desktop, PC-store, or console distribution channels. Use when an already-designed product needs channel eligibility, package/signing, declarations, desktop or PC-store release proof, testing, submission or certification, changelog or release-note variants, rollout, withdrawal, and live readback. Do not use for whole-product design, listing conversion strategy, asset creation, or a cross-domain launch verdict.",
-      "path": "skills/app-store-distribution-readiness/SKILL.md"
+      "path": "skills/app-store-distribution-readiness/SKILL.md",
+      "packageDigest": "sha256:e1e51f4ad603cde45c1e62659c2ce72243827525d1c89dc0194ed77e60dd68e1"
     },
     {
       "name": "autonomous-execution-standard",
       "description": "Autonomous scheduling: critical-path focus, parallelism budgets, subagent briefs, and honest evidence layers. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/autonomous-execution-standard/SKILL.md"
+      "path": "skills/autonomous-execution-standard/SKILL.md",
+      "packageDigest": "sha256:a98570690daa030b0ecec9120d5a2e05aafe45989594634d709c2a93c2f86818"
     },
     {
       "name": "board-metrics-operating-review",
       "description": "Prepare or audit the operating-metrics evidence packet behind a board or executive review: metric definitions, source reconciliation, period snapshots, cohort and segment cuts, variance bridges, forecast confidence, owner signoff, decisions, and action closure. Use when leadership needs board-ready operating truth. Do not use to invent company numbers, produce audited financial statements, design product analytics instrumentation, analyze one retention chart, or write investor persuasion detached from evidence.",
-      "path": "skills/board-metrics-operating-review/SKILL.md"
+      "path": "skills/board-metrics-operating-review/SKILL.md",
+      "packageDigest": "sha256:c9fbc5153ac08df805494523624438f6f7e62a4c415a6f0b2ae9a81f3c00c8ca"
     },
     {
       "name": "ci-admission-standard",
       "description": "CI admission tiers, affected selection, required checks, flake control, and preview environment policy. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/ci-admission-standard/SKILL.md"
+      "path": "skills/ci-admission-standard/SKILL.md",
+      "packageDigest": "sha256:a86d3d0689ccfe6cf60de2f87cbc935f214e9ec993cfa8f74d23bae613c754ae"
     },
     {
       "name": "ci-runner-capacity-standard",
       "description": "Runner capacity, queue latency, hermetic vs product profiles, and merge-queue backpressure diagnosis. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/ci-runner-capacity-standard/SKILL.md"
+      "path": "skills/ci-runner-capacity-standard/SKILL.md",
+      "packageDigest": "sha256:393122cbdb6d31fa269b7ef97278e4faa544f59bb9a1bdb42b85bef9bf2f6ae6"
     },
     {
       "name": "commercial-decision-standard",
       "description": "Pricing, packaging, entitlements, commercial ADRs, and market-positioning evidence discipline. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/commercial-decision-standard/SKILL.md"
+      "path": "skills/commercial-decision-standard/SKILL.md",
+      "packageDigest": "sha256:26ebc5c68e3bd12ccfb6017f7f84eaf47798bec45025dfea8691ff8ee226566b"
     },
     {
       "name": "customer-data-migration-review",
       "description": "Design or audit one customer-facing data import, onboarding migration, tenant move, system replacement, or bulk cutover from source discovery through mapping, transformation, validation, rehearsal, execution, reconciliation, rollback/forward-fix, customer communication, and acceptance. Use when the primary artifact is a repeatable migration contract for customer data and service continuity. Use fleet-migration-factory for a multi-repository code rewrite, product-recovery-contract-review for same-product backup and restore, and customer-success-operations-review for the ongoing post-migration value program.",
-      "path": "skills/customer-data-migration-review/SKILL.md"
+      "path": "skills/customer-data-migration-review/SKILL.md",
+      "packageDigest": "sha256:b7a6a73c6d6a1cdf661dbf45a55d303a1b4c1d3e7426fcd22f16d8374ef89fd2"
     },
     {
       "name": "customer-success-operations-review",
       "description": "Design or audit an outcome-led customer success operating system across segmentation, onboarding after technical migration, activation, adoption, health, risk intervention, education, business reviews, renewal and expansion signals, champion or stakeholder change, playbooks, automation, and product-learning handoffs. Use when the primary artifact is the recurring post-sale customer-value system for B2B SaaS, developer tools, platforms, or enterprise products. Use customer-data-migration-review for import/cutover execution, customer-support-operations for reactive support queues, and enterprise-contract-operations-review for contractual obligations and renewal mechanics.",
-      "path": "skills/customer-success-operations-review/SKILL.md"
+      "path": "skills/customer-success-operations-review/SKILL.md",
+      "packageDigest": "sha256:54467f635c317116e83eadbb297d0b78014b9ac7cd663a0ded36b40626eec80e"
     },
     {
       "name": "customer-support-case-resolution",
       "description": "Resolve or audit one customer-support case from verified facts through a humane response, remedy or compensation, protected-action handoff, legal or abuse escalation, follow-up, and closure evidence. Use when the independent artifact is one Customer Case Resolution Record containing a customer-ready reply when needed, including for a complaint, billing or refund request, trial request, goodwill or gift request, abusive contact, or legal threat. Use Customer Support Operations for the whole support system and Refund And Support Flow for the governing refund consequence state machine.",
-      "path": "skills/customer-support-case-resolution/SKILL.md"
+      "path": "skills/customer-support-case-resolution/SKILL.md",
+      "packageDigest": "sha256:5a1de08feaaa5306a0ceaec2bc38e21f997fd94fd0dcae348b7a73292232a5e4"
     },
     {
       "name": "customer-support-operations",
       "description": "Design or audit one end-to-end customer-support operating system across self-service, intake, identity-safe diagnostics, taxonomy, queues, severity, routing, SLAs, grounded responses, autonomous resolution, specialist and incident handoffs, quality calibration, appeals, trust recovery, knowledge freshness, product feedback, metrics, and continuous improvement. Use when the whole support model is the independent artifact; use Refund And Support for one refund consequence state machine and do not invoke for one reply or a fixed QA rubric.",
-      "path": "skills/customer-support-operations/SKILL.md"
+      "path": "skills/customer-support-operations/SKILL.md",
+      "packageDigest": "sha256:8218b662684d9e01ef4c10753b95518958be547a8a6353dc447a1be64fecb794"
     },
     {
       "name": "daily-reward-and-streak-review",
       "description": "Design or audit one daily reward, check-in, streak, calendar, mission, repair, comeback, or return-ritual system for apps and games, including time semantics, progression gates, reward economy, notifications, paid repair/VIP/gacha interaction, abuse, fairness, recovery, experiments, and support. Use when the recurring artifact is a return-loop state machine; use Game/App Design for whole-product retention and Notification Strategy for channel delivery.",
-      "path": "skills/daily-reward-and-streak-review/SKILL.md"
+      "path": "skills/daily-reward-and-streak-review/SKILL.md",
+      "packageDigest": "sha256:a115e73d2e4b0db388153516b1573d8d2eb64cff1c4d8699466d23bb8c04d63d"
     },
     {
       "name": "data-rights-operations-review",
       "description": "Design or audit an auditable operating system for individual or account data-rights requests: access, export/portability, correction, deletion/erasure, restriction, objection or opt-out, consent withdrawal, appeal, identity and authority checks, shared-account scope, legal/security exceptions, subprocessors, deadlines, communication, and proof. Use when the primary artifact is the end-to-end request case protocol. Use privacy-data-lifecycle-review for proactive product data design and retention policy; do not use this skill as jurisdiction-specific legal advice.",
-      "path": "skills/data-rights-operations-review/SKILL.md"
+      "path": "skills/data-rights-operations-review/SKILL.md",
+      "packageDigest": "sha256:384e47b146b27d79bdd066cdaf7d732af6ca92030f03833e59518cb79e8469db"
     },
     {
       "name": "delivery-standard",
       "description": "Lane-aware shipped-state proof: trunk landing, deploy digests, rollback, and production verification honesty. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/delivery-standard/SKILL.md"
+      "path": "skills/delivery-standard/SKILL.md",
+      "packageDigest": "sha256:1f6c8666c7b596a31ccf367be91127eae1cbd12d7d15bc2520232b4f01024a3c"
     },
     {
       "name": "design-system-extractor",
       "description": "Extract and reconcile an existing product design system from authorized screenshots, design files, tokens, stylesheets, components, and shipped flows, preserving provenance, confidence, states, responsive rules, accessibility, exceptions, and migration impact. Use when the deliverable is an evidence-backed as-is system map or consolidation plan. Do not use to invent a greenfield visual direction, critique one flow, implement a supplied design, or imitate a third-party product.",
-      "path": "skills/design-system-extractor/SKILL.md"
+      "path": "skills/design-system-extractor/SKILL.md",
+      "packageDigest": "sha256:b400654a152c4b879f425751a1a11de0c4a26568071cb0dc3e5c6e24ee0e5a8c"
     },
     {
       "name": "developer-product-experience-review",
       "description": "Design or audit the end-user developer journey for an API, SDK, CLI, plugin, app integration, or developer platform across discovery, docs, installation, credentials, sandbox, first success, production readiness, diagnostics, support, certification, recertification, and retained use. Use when the primary artifact is a Developer Adoption Contract joining those surfaces into one measurable experience. Do not use for API or SDK implementation, API versioning policy alone, infrastructure capacity, developer quota or credit abuse policy, generic product abuse, or product analytics instrumentation alone.",
-      "path": "skills/developer-product-experience-review/SKILL.md"
+      "path": "skills/developer-product-experience-review/SKILL.md",
+      "packageDigest": "sha256:538a964bf03cd4df466532b40e923a53262dd2cc25f6dab74b101e7f618f2396"
     },
     {
       "name": "developer-quota-credit-abuse-review",
       "description": "Design or audit the reusable product policy for developer quotas, free or promotional credits, costly-operation access, trust-tier graduation, abuse-resistant ledgers, adaptive friction, throttling, review, appeals, cost controls, and legitimate production scale-up. Use when generosity, activation, and abuse economics must be balanced across a developer platform. Do not use for one account's 429 debugging or limit-increase ticket, low-level rate-limiter implementation, infrastructure capacity planning, DDoS response, package pricing, payment settlement, or a fraud investigation alone.",
-      "path": "skills/developer-quota-credit-abuse-review/SKILL.md"
+      "path": "skills/developer-quota-credit-abuse-review/SKILL.md",
+      "packageDigest": "sha256:92bf4688a75448b1cce6a7ffae84e32a9d076d07bf7adda89bd13218eafe0e21"
     },
     {
       "name": "documentation-standard",
       "description": "Documentation altitude, minimal sufficient docs, generated references, and freshness without prose drift. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/documentation-standard/SKILL.md"
+      "path": "skills/documentation-standard/SKILL.md",
+      "packageDigest": "sha256:d06806bd6ac9ae1f9ebd5c3d45bcb6d5ebd5b97cf9a10fd386a37bb25d7f5c34"
     },
     {
       "name": "engineering-standard",
       "description": "Binding engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating code architecture and architecture decisions, capabilities, features, DDD domain models, Clean/Hexagonal boundaries, functional cores, modules, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths.",
-      "path": "skills/engineering-standard/SKILL.md"
+      "path": "skills/engineering-standard/SKILL.md",
+      "packageDigest": "sha256:9443359f9d70186fb1f155cda074e82efb4ef76eb9d444a99e6834deb0532aa3"
     },
     {
       "name": "enterprise-access-governance-review",
       "description": "Design or audit enterprise tenant and administrator governance across ownership, organization hierarchy, domains, roles, permissions, delegated administration, SSO/SCIM authority boundaries, joiner-mover-leaver lifecycle, temporary elevation, support access, break-glass, privileged-action gates, customer-visible audit evidence, access reviews, tenant split/merge, and access exceptions. Use when the primary artifact is an Enterprise Access Governance Contract. Do not use for authentication or SSO/SCIM implementation, end-user account recovery, a generic authorization library, security certification, or a customer security questionnaire alone.",
-      "path": "skills/enterprise-access-governance-review/SKILL.md"
+      "path": "skills/enterprise-access-governance-review/SKILL.md",
+      "packageDigest": "sha256:d64747c17be26071b66d6d545aec903585f046150eab9cf4b3e039b8f6b43abb"
     },
     {
       "name": "enterprise-contract-operations-review",
       "description": "Design or audit an enterprise contract operating system across authoritative document intake, versions and precedence, clause and obligation extraction, redlines/deviations, approvals, commitments, amendments, notice windows, renewals, true-ups, cancellations, expiries, exceptions, evidence, and handoffs to pricing, billing, entitlements, security, privacy, support, product, finance, sales, and customer success. Use when the primary artifact is the executable contract and obligation lifecycle. This skill does not provide legal advice or approve terms.",
-      "path": "skills/enterprise-contract-operations-review/SKILL.md"
+      "path": "skills/enterprise-contract-operations-review/SKILL.md",
+      "packageDigest": "sha256:66265896da3d89fe1ac798cfe97fffdf2e764739fd1194d5784f692ee80e19ff"
     },
     {
       "name": "enterprise-control-plane-standard",
       "description": "Enterprise manifests, rulesets, selectors, reconcilers, audits, and fleet status publishers. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/enterprise-control-plane-standard/SKILL.md"
+      "path": "skills/enterprise-control-plane-standard/SKILL.md",
+      "packageDigest": "sha256:f48d4be251fe4cb13128210fef574013a12d6c5222d5f9a366c56aaca366ddcb"
     },
     {
       "name": "enterprise-profile-standard",
       "description": "Versioned binding enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static fleet selections and their lifecycle; Control Plane owns resolved live state.",
-      "path": "skills/enterprise-profile-standard/SKILL.md"
+      "path": "skills/enterprise-profile-standard/SKILL.md",
+      "packageDigest": "sha256:98f7d806562842737b1dcab70033fb6f0c31889d11087489d7a058adf173d2d9"
     },
     {
       "name": "fleet-engineering-profile",
       "description": "Apply the binding Sylphx fleet language and effect boundary. Use when choosing, implementing, reviewing, or measuring production backend, API, gateway, worker, controller, runtime, storage, queue, background-job, browser, product-web, SSR, or TypeScript-to-Rust work.",
       "path": "skills/fleet-engineering-profile/SKILL.md",
+      "packageDigest": "sha256:dc6f252229808143ae6ce66c0db6cc627d5e2920db03422677f1a009559ab759",
       "profile": {
         "id": "fleet-engineering-profile",
         "revision": "2026-07-18.2",
@@ -163,267 +193,320 @@
     {
       "name": "fleet-migration-factory",
       "description": "Plan, execute, and audit high-throughput software or canonical-architecture migration across repositories. Use for fleet-wide Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or mandatory generation cutovers. Inventory capabilities plus behaviors/contracts/surfaces, refactor real code, prove exact-candidate semantics, select one-step versus expand-contract from lifecycle risk, retire legacy structure, and invalidate stale proof.",
-      "path": "skills/fleet-migration-factory/SKILL.md"
+      "path": "skills/fleet-migration-factory/SKILL.md",
+      "packageDigest": "sha256:d737ec9cb81af53c0ee73e046eb09eb43c2e82b0fdc0b8208c65ff241abad7ac"
     },
     {
       "name": "frontier-verification-standard",
       "description": "Eval gates, replay oracles, canary backstops, and flaky-check control for nondeterministic systems. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/frontier-verification-standard/SKILL.md"
+      "path": "skills/frontier-verification-standard/SKILL.md",
+      "packageDigest": "sha256:e7db417c1fee85d3e4050dd0fe2aaa9be240e6a0bfbd0dbfa51e0d29f83c94c6"
     },
     {
       "name": "game-design-blueprint",
       "description": "Design or critically review a complete, agent-first game as one coherent player experience: player promise, verbs and loops, challenge, progression and quests, content, economy and monetization, retention, social play and virality, first-time experience, game feel, evergreen late-entry fairness, platforms, accessibility, localization, performance, live operations, automation, and validation. Use for new games, whole-game redesigns, game design documents, persistent or seasonal world strategy, or audits where several gameplay and commercial systems must work together. Use a specialist when one economy, ad system, return loop, notification policy, referral, campaign, soft launch, payment, refund, review, analytics, or release artifact is the primary job.",
-      "path": "skills/game-design-blueprint/SKILL.md"
+      "path": "skills/game-design-blueprint/SKILL.md",
+      "packageDigest": "sha256:ed79f58c55441b465282830158c44534c0aad1f2caa25ba353498e077c3a70cc"
     },
     {
       "name": "game-economy-review",
       "description": "Design or audit one complete game economy artifact for mobile, PC, console, web, casual, premium, or live-service games: currencies, inventory, sources/sinks, progression pacing, rewards, gacha/pity, battle passes, IAP/ads, events, refunds/revocation, inflation, concentration, anti-abuse, newcomer/veteran fairness, simulations, and live tuning. Use for economy ownership and balance; use Game Design for whole-game coherence and Payment Readiness for provider transactions.",
-      "path": "skills/game-economy-review/SKILL.md"
+      "path": "skills/game-economy-review/SKILL.md",
+      "packageDigest": "sha256:796fb6b5a32f71ab22608dd348dfc50c9c92aa2cc997881dad377fe26cc37b62"
     },
     {
       "name": "game-soft-launch-review",
       "description": "Design or audit a game soft-launch learning and exposure program across regions, cohorts, acquisition sources, FTUE, core/meta loops, retention, economy, IAP/IAA, live events, store creative, crashes/performance, support/community, global-transfer risk, and automated scale/hold/pause/withdraw gates. Use when a production-shaped game is entering bounded real-player exposure; use Game Design for the game itself and Distribution Readiness for store submission/certification.",
-      "path": "skills/game-soft-launch-review/SKILL.md"
+      "path": "skills/game-soft-launch-review/SKILL.md",
+      "packageDigest": "sha256:a7479e60b5804d8184f29cad1e0378344d953bf325737205f40f61083a7ba266"
     },
     {
       "name": "incident-standard",
       "description": "Incident severity, no-human detect-mitigate-verify loop, and machine-checkable postmortems. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/incident-standard/SKILL.md"
+      "path": "skills/incident-standard/SKILL.md",
+      "packageDigest": "sha256:dfac1d0fc15c78d8fd06e170ea9417a11d913b82364a450d2f1931f01973581a"
     },
     {
       "name": "instruction-evolution-standard",
       "description": "Evolution of canonical Skills, runtime constitutions, binding profiles, and architecture generations: single authority, migration, reconciliation, and retirement. Use for durable instruction changes, not live Work Graph operations.",
-      "path": "skills/instruction-evolution-standard/SKILL.md"
+      "path": "skills/instruction-evolution-standard/SKILL.md",
+      "packageDigest": "sha256:9b7ea960f581d72bbf13b032b0c7a9febb55d6f77fa79b8e627a94bf34f50ff1"
     },
     {
       "name": "interface-craft",
       "description": "Design, build, reshape, polish, or review one bounded product interface or coherent user flow with distinctive visual direction, production-quality interaction states, responsive mobile/desktop behavior, keyboard/touch/pointer/controller input, baseline accessibility, purposeful motion, UX writing, low-end performance, and rendered verification. Use when the primary artifact is a screen, component family, shell, HUD, form, onboarding or checkout flow, dashboard, settings surface, or frontend implementation—not a whole App/Game blueprint, brand identity, extracted design system, formal accessibility certification, marketing strategy, or pricing decision.",
-      "path": "skills/interface-craft/SKILL.md"
+      "path": "skills/interface-craft/SKILL.md",
+      "packageDigest": "sha256:22bf279828a5c88ad7157c036ba8e21b946c4d7bcda592e53e2d1b13e48a4bdc"
     },
     {
       "name": "launch-readiness-review",
       "description": "Produce or audit one cross-domain launch admission verdict for an app, game, SaaS, desktop product, developer tool, marketplace, major release, beta, or campaign. Integrate exact product, quality, performance, security/privacy, payments, distribution, analytics, support, marketing, legal/authority, rollback, and post-launch evidence into go, conditional-go, hold, or no-go gates. Use when launch-day decision ownership is the artifact; use specialist skills to create missing domain evidence.",
-      "path": "skills/launch-readiness-review/SKILL.md"
+      "path": "skills/launch-readiness-review/SKILL.md",
+      "packageDigest": "sha256:a5469e1d6f5f03aabeb4c07b2eceab6f20705f258f740ea42c7c5ea9aebd4129"
     },
     {
       "name": "market-research-synthesis",
       "description": "Produce a source-bounded market synthesis for a product, positioning, category, competitor, pricing, or demand decision. Use when current external evidence must be collected, triangulated, challenged with counterevidence, and converted into an original recommendation. Do not use for summarizing one supplied source, maintaining a research repository, or executing a decision already made.",
-      "path": "skills/market-research-synthesis/SKILL.md"
+      "path": "skills/market-research-synthesis/SKILL.md",
+      "packageDigest": "sha256:86e19e6e64243aba8a8b23cabc29f093af8c681f088a3f5a5e545655c81febc3"
     },
     {
       "name": "marketing-automation-blueprint",
       "description": "Design or critically review a complete autonomous marketing operating system across truth-bound positioning, audiences and consent, owned/earned/paid channels, creative and content, SEO/AEO, stores, lifecycle messaging, referrals, cross-promotion, creators, community, partnerships, reputation, attribution, incrementality, budget allocation, experiments, and autonomous maintenance. Use when the primary artifact is a multi-channel marketing control plane or full go-to-market operating blueprint. For one campaign, official social-account operating model, referral, listing, notification, review/feedback loop, or distribution package, use the specialist procedure.",
-      "path": "skills/marketing-automation-blueprint/SKILL.md"
+      "path": "skills/marketing-automation-blueprint/SKILL.md",
+      "packageDigest": "sha256:de7b855d5348aca5f5bc1b9ad6fd327db731314f8add16008d633de7ec417ea3"
     },
     {
       "name": "marketplace-payouts-review",
       "description": "Design and audit marketplace payout, earnings, fee, revenue share, seller balance, creator payout, refund, chargeback, hold, clawback, split payment, ledger, tax/compliance handoff, payout support, and dispute flows for creator marketplaces, app/plugin stores, gig marketplaces, game marketplaces, affiliate programs, and two-sided platforms. Use when money moves from buyers through the platform to sellers or creators.",
-      "path": "skills/marketplace-payouts-review/SKILL.md"
+      "path": "skills/marketplace-payouts-review/SKILL.md",
+      "packageDigest": "sha256:3fc8f6350380c9ae554b216a6f3e7ae906f12922b93cd15e814938d926d7d634"
     },
     {
       "name": "marketplace-seller-performance-review",
       "description": "Design or audit a marketplace seller-performance system covering opportunity-normalized quality evidence, confidence, cold start, category baselines, explanations, coaching, badges, ranking inputs, enforcement referrals, appeals, recovery, anti-gaming, fairness, buyer harm, and marketplace health. Use when the primary artifact is recurring seller assessment and performance-intervention governance. Do not use for one seller's content-policy, moderation, fraud, or dispute case; payout-ledger design; a general search-ranking algorithm; or transaction refund operations.",
-      "path": "skills/marketplace-seller-performance-review/SKILL.md"
+      "path": "skills/marketplace-seller-performance-review/SKILL.md",
+      "packageDigest": "sha256:1cbec2ecebff05d84aaab4b1a95b87bf405a5840172e89986be6a46c7a6b8348"
     },
     {
       "name": "marketplace-trust-operations-review",
       "description": "Design or audit a two-sided marketplace trust operating system across participant and listing policy, content or commerce risk, moderation and fraud-review queues, temporary controls, disputes, evidence, enforcement ladders, notices, appeals, restoration, policy/model learning, fairness, trust economics, and marketplace health. Use when the primary artifact is a Marketplace Trust Operating Contract joining those decisions across buyers and sellers, creators, developers, or partners. Do not use for payout-ledger mechanics, generic product abuse outside a marketplace, seller performance coaching, or a general search/recommendation ranking algorithm alone.",
-      "path": "skills/marketplace-trust-operations-review/SKILL.md"
+      "path": "skills/marketplace-trust-operations-review/SKILL.md",
+      "packageDigest": "sha256:b091ff5930e730a85864600032654d29e5a71e9f6847ceb198d5ac92cb9bd555"
     },
     {
       "name": "mission-control-standard",
       "description": "Work ledger claims, handoff, proof chains, stale-claim recovery, privacy, and fleet activity. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/mission-control-standard/SKILL.md"
+      "path": "skills/mission-control-standard/SKILL.md",
+      "packageDigest": "sha256:089b95a17bcde562f1253e4fb93da47300a2029bce8d60a44406973680291d16"
     },
     {
       "name": "notification-strategy-review",
       "description": "Design or audit one cross-channel notification policy across push, email, in-app messages, SMS, browser, and desktop: permission and consent, preferences, taxonomy, trigger semantics, channel routing, frequency and fatigue, privacy, dedupe, deliverability, withdrawal, and observed zero-send. Use when those message-wide controls are the primary artifact. For one win-back, lifecycle-push, offer, event, or promotion campaign's objective, audience, eligibility, economics, fulfillment, and shutdown, use promotion-campaign-review.",
-      "path": "skills/notification-strategy-review/SKILL.md"
+      "path": "skills/notification-strategy-review/SKILL.md",
+      "packageDigest": "sha256:b0e3a5befa214db32c671072ef49b876fdc974edaae65822b30793000c31dc34"
     },
     {
       "name": "offline-sync-conflict-review",
       "description": "Design or audit one offline/local-first synchronization and conflict protocol: local storage, queued mutations, idempotency, causality/order, reconnect, tombstones, optimistic states, multi-device/collaborative merges, attachments, auth expiry, encryption, schema migration, data-loss recovery, UX, support, observability, and chaos tests. Use when unreliable connectivity or concurrent edits need an independently acceptable sync artifact; use App Design for whole-product workflows.",
-      "path": "skills/offline-sync-conflict-review/SKILL.md"
+      "path": "skills/offline-sync-conflict-review/SKILL.md",
+      "packageDigest": "sha256:3ccb2fbb2a8b7fb9a00f7521d83572df9afd6ac314d88d220c2ef8233f53852e"
     },
     {
       "name": "payment-platform-readiness",
       "description": "Design or audit one buyer-payment authority system across Apple Pay, Google Pay, Google Play Billing, App Store IAP, web checkout, subscriptions, one-time purchases, provider-confirmed refunds/revocations, restore purchases, receipts, tax, money ledger, entitlement projection, settlement, reconciliation, finance close, and support traces. Use when provider ingestion and ledger correctness are the primary artifact; use Refund And Support for customer/account consequences after authoritative refund events.",
-      "path": "skills/payment-platform-readiness/SKILL.md"
+      "path": "skills/payment-platform-readiness/SKILL.md",
+      "packageDigest": "sha256:ff998875fd8d294f3e78f2109942af40e4023b7869abf0430f303140ace713ef"
     },
     {
       "name": "privacy-data-lifecycle-review",
       "description": "Design or audit a product's proactive personal-data lifecycle: purposes, data inventory, minimization, notice and choice, consent or other authority, permissions, vendors and subprocessors, regional handling, retention, deletion dependencies, AI or analytics reuse, and change governance. Use for privacy-by-design reviews, privacy impact assessments, consent or preference-center architecture, data retention design, vendor data-flow review, or a material feature change involving personal data. Use data-rights-operations-review for one request workflow; use product-analytics-instrumentation-review for event and metric implementation after the privacy contract is decided.",
-      "path": "skills/privacy-data-lifecycle-review/SKILL.md"
+      "path": "skills/privacy-data-lifecycle-review/SKILL.md",
+      "packageDigest": "sha256:1a7689031f9f7fbadb9fefdadc0595c9e74cae110922eaa0cddf5d059672a15c"
     },
     {
       "name": "product-abuse-risk-review",
       "description": "Design or audit a product-level abuse and fraud control system across identities, automation, promotions, referrals, trials, credits, purchases, refunds, content, inventory, scraping, collusion, account farming, evasion, and support exploitation. Use when the primary artifact is an adaptive abuse threat, decision, control, appeal, economics, and evidence contract spanning a product surface. Use account-recovery-review for legitimate recovery, developer-quota-credit-abuse-review for developer quota and credit policy, marketplace-trust-operations-review for marketplace participant policy/enforcement, and payment-platform-readiness for payment and ledger correctness.",
-      "path": "skills/product-abuse-risk-review/SKILL.md"
+      "path": "skills/product-abuse-risk-review/SKILL.md",
+      "packageDigest": "sha256:5f25142db28a9626c874b7ea876ea6960da4cc223f631ee38a1cac81d674d24f"
     },
     {
       "name": "product-analytics-instrumentation-review",
       "description": "Design or audit a product measurement contract: decision questions, event/property schemas, client/server authority, identity, consent, delivery, data quality, metric definitions, QA fixtures, dashboards, and drift. Use when trustworthy instrumentation is the independent artifact. Do not use for deciding product strategy, governing experiments, operating marketing attribution, or treating analytics as payment truth.",
-      "path": "skills/product-analytics-instrumentation-review/SKILL.md"
+      "path": "skills/product-analytics-instrumentation-review/SKILL.md",
+      "packageDigest": "sha256:7a5201f8213e0b2f1ad6620f2f8657ff4d6da6ffea1cd87363ebdb4b308cc6d1"
     },
     {
       "name": "product-asset-production",
       "description": "Create or audit one exact, localized, accessible, rights-safe Product Asset Production Pack for apps and games: deterministic product captures, screenshots, icons/key/capsule art, feature graphics, trailers, demos, short/long video, captions, audio description, alt text, and store, website, YouTube, X, social, PC, console, mobile, and HTML5 variants. Use when approved product truth and Marketing or Store Listing briefs must become finished media files with provenance and QA. Marketing owns message and campaign briefs; Store Listing owns narrative, selection, order, and metadata; Distribution owns upload, certification, release, and live evidence.",
-      "path": "skills/product-asset-production/SKILL.md"
+      "path": "skills/product-asset-production/SKILL.md",
+      "packageDigest": "sha256:68274b0f60638accdc0c2dcfe2a9ed3981c50e8f9503520682bc23e0908756ba"
     },
     {
       "name": "product-experiment-review",
       "description": "Design or audit one decision-grade product experiment protocol and learning memo covering the decision, mechanism, estimand, eligibility, assignment, exposure, interference, metrics, maturity, sample plan, guardrails, stopping, analysis, and action rule. Use for A/B tests, holdouts, switchbacks, cluster or staged experiments in product, growth, pricing, lifecycle, marketplace, game, and AI surfaces. Do not use for feature-flag engineering, instrumentation implementation, rollout without a causal question, or choosing the underlying product strategy.",
-      "path": "skills/product-experiment-review/SKILL.md"
+      "path": "skills/product-experiment-review/SKILL.md",
+      "packageDigest": "sha256:f74b93d31a4465016c2bbf1dad0905a41cf8fb9774ed070f1536cb237a80e3bd"
     },
     {
       "name": "product-feedback-learning-loop",
       "description": "Design or audit universal private product feedback intake and the learning loop that ingests authorized private feedback and public reviews, preserves source evidence, clusters underlying problems, routes support and safety cases, links product actions, validates outcomes, publishes policy-safe review responses, and closes the loop truthfully. Use for apps, games, web products, services, and platforms when the requested artifact is feedback capture, review ingestion/response, qualitative evidence synthesis, product-learning operations, or customer status updates. Do not use for public rating or review request eligibility, prompt timing, native solicitation surfaces, or cooldowns; compose review-solicitation-policy only when public solicitation is also requested.",
-      "path": "skills/product-feedback-learning-loop/SKILL.md"
+      "path": "skills/product-feedback-learning-loop/SKILL.md",
+      "packageDigest": "sha256:ab5e205c04063b6f1d1351d039c3ad58ee87977a73124a045fd5e3d64a86582b"
     },
     {
       "name": "product-lifecycle-architect",
       "description": "Orchestrate a multi-artifact product program across experience design, commerce, distribution, globalization, SDKs, marketing, support, operations, delivery, and autonomous maintenance. Use when the primary artifact is the cross-domain dependency, handoff, validation, or delivery graph; when a product program spans at least three lifecycle domains; when an ecosystem certification program must compose eligibility, tests, trust signals, renewal, appeals, and operations; or when app/game, global platform release, marketing, and operations must converge on one build-to-scale target. Do not use as primary for whole-app design, whole-game design, a marketing operating system, one campaign/listing/refund, or one product's store-submission readiness.",
-      "path": "skills/product-lifecycle-architect/SKILL.md"
+      "path": "skills/product-lifecycle-architect/SKILL.md",
+      "packageDigest": "sha256:fab22ee4b03ca1e894ec284a41e51a4394d14f68d9f8b95c1a095bdfd7127b0c"
     },
     {
       "name": "product-recovery-contract-review",
       "description": "Design or audit a product-level user-data durability and recovery contract spanning backup, restore, same-product export/re-import, device replacement, version compatibility, entitlement recovery, deletion, and support-assisted recovery. Use when the independently accepted artifact is a user-facing recovery model plus requirements for downstream engineering. Do not use for infrastructure disaster recovery, database replication, deployment rollout, incident command, sync-conflict algorithms alone, account-authentication recovery, or customer data import and cutover from a different product.",
-      "path": "skills/product-recovery-contract-review/SKILL.md"
+      "path": "skills/product-recovery-contract-review/SKILL.md",
+      "packageDigest": "sha256:a76e8e064358b827255e7c503a339c21e928fc4533ff8d4b834e42df8b33495b"
     },
     {
       "name": "project-manifest-standard",
       "description": "Repository identity, lifecycle, capability ownership, local service-role and effect facts, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use for durable project facts, not live Work Graph operations.",
-      "path": "skills/project-manifest-standard/SKILL.md"
+      "path": "skills/project-manifest-standard/SKILL.md",
+      "packageDigest": "sha256:b73a6af887418968f5e1fd42b607cbb639495b833b71e55f72af8cf24e4bbdbd"
     },
     {
       "name": "promotion-campaign-review",
       "description": "Design or audit one promotion system—offer, discount, update benefit, cross-promotion, win-back, lifecycle push, app/game event, referral push, launch or seasonal campaign—across objective, audience, deterministic eligibility, user+offer cooldowns, placement, transparent message, economics, authoritative fulfillment, reversal, fraud, support, experiments, automation, and shutdown. Use for one campaign artifact; use Marketing Automation for the whole channel and spend operating system.",
-      "path": "skills/promotion-campaign-review/SKILL.md"
+      "path": "skills/promotion-campaign-review/SKILL.md",
+      "packageDigest": "sha256:ddca36beaec02a37e3a89fbc8a476723a2f9fe938fe603bb1c69645a784dd1f0"
     },
     {
       "name": "prompt-architecture",
       "description": "AGENTS.md projections, skill metadata, runtime constitutions, and instruction hierarchy without forking canonical instruction law. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/prompt-architecture/SKILL.md"
+      "path": "skills/prompt-architecture/SKILL.md",
+      "packageDigest": "sha256:867f10ce2de9b6b030017e1e4dca388dc1ed616679b5960427ddbf0b097efd8e"
     },
     {
       "name": "referral-loop-review",
       "description": "Design or audit one referral, invite, friend/team sharing, affiliate, ambassador, creator, waitlist, or viral loop across value moment, inviter/invitee states, consented channels, deep links, deterministic attribution, qualification, pending grants, caps, reversals, fraud/self-referral, privacy/contact handling, social interaction, support, experiments, and shutdown. Use when the independent artifact is a persistent referral state machine; use Marketing Automation for the full channel portfolio.",
-      "path": "skills/referral-loop-review/SKILL.md"
+      "path": "skills/referral-loop-review/SKILL.md",
+      "packageDigest": "sha256:e6d432a63a74dfca92842d689be99f19db19e86db9fe5231cbbdbcee5398f2c6"
     },
     {
       "name": "refund-and-support-flow-review",
       "description": "Design or audit one customer/account consequence flow after authoritative cancellation, refund, revocation, chargeback, or dispute events: entitlement outcome, grace, repayment, repurchase, commerce restriction, abuse ladder, appeal, support, trust recovery, and product feedback for SaaS, apps, games, utilities, marketplaces, and subscriptions. Use when post-event treatment is the primary artifact; use Payment Platform for provider ingestion, money ledger, settlement, and authoritative event projection.",
-      "path": "skills/refund-and-support-flow-review/SKILL.md"
+      "path": "skills/refund-and-support-flow-review/SKILL.md",
+      "packageDigest": "sha256:2e6d08d3e4385703ef25fb27f5d0b0addeae05e4b1b1b0b32472e1e9718c07f9"
     },
     {
       "name": "repo-adoption-standard",
       "description": "Minimum canonical-standard adoption surfaces: constitution projection, manifest, integrity fences, conformance entrypoints. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/repo-adoption-standard/SKILL.md"
+      "path": "skills/repo-adoption-standard/SKILL.md",
+      "packageDigest": "sha256:60b211bfc9953a9fdbe64088c835253d1317654d112242642916dc683058a26f"
     },
     {
       "name": "retention-cohort-review",
       "description": "Diagnose a general product retention cohort or curve and turn it into decisions by validating cohort eligibility, value events, observation windows, metric type, censoring, identity, segment mix, uncertainty, lifecycle mechanisms, monetization, and experiment evidence. Use when cohort analysis itself is the independent artifact and no approved price-change migration owns the causal program. Do not use for a live subscription price-increase cohort or renewal readback, event instrumentation implementation, notification design alone, pricing architecture, broad board reporting, or a full product blueprint.",
-      "path": "skills/retention-cohort-review/SKILL.md"
+      "path": "skills/retention-cohort-review/SKILL.md",
+      "packageDigest": "sha256:d1d4514a4ee8274c579b15573675b94bd43738feb53f5e0a70c0ba5d5914647b"
     },
     {
       "name": "revenue-operations-review",
       "description": "Design or audit a trustworthy revenue operating system across account/contact/opportunity data, lifecycle and pipeline stages, source attribution, qualification and discovery, owner/agent routing, technical-sales handoffs, forecast and capacity, required evidence, automation, incentives or commissions, reporting, data quality, permissions, and change governance. Use when the primary artifact is the end-to-end go-to-market revenue truth and decision system. Use marketing-automation-blueprint for demand generation, enterprise-contract-operations-review for contract obligations, customer-success-operations-review for post-sale value, and saas-subscription-pricing for packaging and price.",
-      "path": "skills/revenue-operations-review/SKILL.md"
+      "path": "skills/revenue-operations-review/SKILL.md",
+      "packageDigest": "sha256:69ce343f0ef456f20a25d4410c5f81f099585b20c65149c1bb5c2a802cf16c74"
     },
     {
       "name": "review-solicitation-policy",
       "description": "Design or audit platform-specific public rating and review request eligibility, native request surfaces, cooldowns, policy-required audience exclusions, no-display behavior, and request-state evidence for apps, games, web products, and storefronts. Use when the requested artifact is an authentic public review solicitation policy or request state machine, including an audit of sentiment gating, star steering, review rewards, suppression, or retaliation. For private feedback intake, review ingestion or response, evidence clustering, support routing, product action, or close-loop learning, use product-feedback-learning-loop; compose both only when the request asks for both artifacts.",
-      "path": "skills/review-solicitation-policy/SKILL.md"
+      "path": "skills/review-solicitation-policy/SKILL.md",
+      "packageDigest": "sha256:4c3b80a2bdd20118b043c494b8dc55fca9fcac7d0426f785bf76cb2f64d47e44"
     },
     {
       "name": "roleless-speculative-development-standard",
       "description": "Roleless speculation: CAS trunk landing, bounded duplicates, watermarks, and verified-only promotion. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/roleless-speculative-development-standard/SKILL.md"
+      "path": "skills/roleless-speculative-development-standard/SKILL.md",
+      "packageDigest": "sha256:f2d3c7377debacdba93d525d5cbca73575bce2f1510d2740724c50a5448b9d79"
     },
     {
       "name": "saas-subscription-pricing",
       "description": "Make or audit a SaaS subscription pricing and packaging decision: buyer, value metric, tiers, limits, trials, seats or usage, enterprise path, unit economics, trust constraints, and validation. Use when the primary artifact is what to charge and package. Do not use for billing implementation, entitlement state, listing/interface copy, broad market research, or an already-approved price migration.",
-      "path": "skills/saas-subscription-pricing/SKILL.md"
+      "path": "skills/saas-subscription-pricing/SKILL.md",
+      "packageDigest": "sha256:acdf4bc763725ccce269e327dabb90f3b81948f51a5b0c0926e1f9aa13db1322"
     },
     {
       "name": "saas-web-platform-blueprint",
       "description": "Design or critically review one complete modern SaaS web platform joining public acquisition surfaces and an authenticated product across value proposition, onboarding, UI/UX, web performance, SEO, PWA disposition, identity, organizations, billing and entitlements, notifications, support, security, privacy, analytics, operations, and global scale. Use when the whole SaaS platform blueprint is the independent artifact; use specialists for one interface, price, payment, refund, notification, identity, marketing, or release job.",
-      "path": "skills/saas-web-platform-blueprint/SKILL.md"
+      "path": "skills/saas-web-platform-blueprint/SKILL.md",
+      "packageDigest": "sha256:96f1fc76ea5c34c0465faec7525a34855bbeb75eb6cbc8ffca41720e8c2ad9b5"
     },
     {
       "name": "scope-discipline",
       "description": "Keep planning, implementation, migration, architecture, and review work rigorous, agent-native, high-leverage, and finishable. Use when a task risks over-engineering, under-engineering, human-era cost assumptions, repeated review expansion, speculative hardening, missed future-proofing, or a completion bar that keeps moving.",
-      "path": "skills/scope-discipline/SKILL.md"
+      "path": "skills/scope-discipline/SKILL.md",
+      "packageDigest": "sha256:f6702fadbff6e46b617c5a32711f19f9a20ef6c5fcb7e2abc442d706507749cd"
     },
     {
       "name": "search-discovery-quality-review",
       "description": "Design or audit one search, browse, recommendation, or marketplace-discovery quality contract covering corpus and intent, retrieval and eligibility boundaries, ranking evidence, query/result slices, zero and low-confidence recovery, freshness, cold start, personalization, sponsored/editorial separation, abuse, fairness, diagnostics, and release decisions. Use when the primary artifact is a discovery-quality scorecard and improvement plan. Do not use for search implementation, SEO, seller enforcement, analytics instrumentation, or campaign merchandising alone.",
-      "path": "skills/search-discovery-quality-review/SKILL.md"
+      "path": "skills/search-discovery-quality-review/SKILL.md",
+      "packageDigest": "sha256:3addc2c051205c4524e8b13c9f38d2d92a1d548f2015cb665f9f11fdffac29aa"
     },
     {
       "name": "security-assurance-operations-review",
       "description": "Prepare or audit one truthful customer security-assurance packet and its claim-evidence operating loop across questionnaires, procurement responses, trust-center content, gated reports, control mappings, gaps, exceptions, commitments, freshness, access, and revocation. Use when the primary artifact is what the company may say and prove about current security. Do not use for security implementation, threat modeling, penetration testing, vulnerability remediation, incident response, compliance audit execution, or contract redlining.",
-      "path": "skills/security-assurance-operations-review/SKILL.md"
+      "path": "skills/security-assurance-operations-review/SKILL.md",
+      "packageDigest": "sha256:dd7b3075d1d05cb8115386e98e076bb53a7a7d077a4e9e70045c2afaaae6567b"
     },
     {
       "name": "self-feeding-agent-loop-standard",
       "description": "Coordinator-Reviewer-Builder ticks, GitHub issues/PRs, and machine-verifiable loop gates. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/self-feeding-agent-loop-standard/SKILL.md"
+      "path": "skills/self-feeding-agent-loop-standard/SKILL.md",
+      "packageDigest": "sha256:1afa504ef8786060a32ed3298c0b13b4d453dae19a663f05a81966c917b5bdb7"
     },
     {
       "name": "skill-eval-designer",
       "description": "Design or audit a falsifiable, exact-candidate routing and behavior evaluation for one Agent Skill or a complete skill catalog: positive/near-neighbour/abstention/compound routing, hidden tasks, base and length-matched controls, public competitor, multiple answer/judge families, deterministic artifact and safety checks, digests, provider receipts, uncertainty, replay, attestation, expiry, and forward-test regressions. Use when proving incremental behavior—not when authoring the skill or inferring adoption from fixtures.",
-      "path": "skills/skill-eval-designer/SKILL.md"
+      "path": "skills/skill-eval-designer/SKILL.md",
+      "packageDigest": "sha256:170d6b545c29e02eb680009fcc94cc5519f74e0909d13007419865ffb5d94805"
     },
     {
       "name": "skill-repository-curator",
       "description": "Semantically curate a public or private Agent Skills portfolio by recovering hidden work, judging recurring jobs and artifacts, rewriting weak packages, resolving ownership, merging complete mechanism sets, and retiring only proven generic or fully absorbed implementations. Use when agents must create, clean up, consolidate, recover, or continuously manage a skills repository without relying on folder counts, lifecycle labels, CI scores, or owner memory. Do not use to author one skill from one source, evaluate one skill experimentally, or build a runtime marketplace.",
-      "path": "skills/skill-repository-curator/SKILL.md"
+      "path": "skills/skill-repository-curator/SKILL.md",
+      "packageDigest": "sha256:3ef280d76bf6980c1da1dee5c2f7fea4da41354ba10d5d16c36093f332ba9f6e"
     },
     {
       "name": "social-media-operations-review",
       "description": "Design or audit one recurring operating model for already-selected official social-media and community channels across account authority, publishing and platform readback, listening, replies, moderation routing, rights and disclosures, crisis correction, impersonation or takeover response, automation, measurement, archive, recovery, and shutdown. Use when the independent artifact is a Social Media Operating Model. Use Marketing Automation for channel strategy, audience, message, campaigns, spend, and incrementality; use specialists for one post, media pack, support case, review-learning loop, or product-wide trust policy.",
-      "path": "skills/social-media-operations-review/SKILL.md"
+      "path": "skills/social-media-operations-review/SKILL.md",
+      "packageDigest": "sha256:5872b5ed7c14ec0a3644b7799c8327e7a061a73feb6f36e734dd07339dc15df9"
     },
     {
       "name": "sota-execution-standard",
       "description": "SOTA decision kernel, competitor synthesis limits, minimal surfaces, and verified slices. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/sota-execution-standard/SKILL.md"
+      "path": "skills/sota-execution-standard/SKILL.md",
+      "packageDigest": "sha256:340ab093a334b1c85b8ce442e9f12451757bf59a8384515a041e8be9791ee149"
     },
     {
       "name": "source-authoring-standard",
       "description": "Commits, exact source candidates, semantic atomicity, worktrees, and durable checkpoints. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/source-authoring-standard/SKILL.md"
+      "path": "skills/source-authoring-standard/SKILL.md",
+      "packageDigest": "sha256:9d5af7bb9108eac8dca02449c9856faddaa6ee79b79ab0915da3ae18bdc551e6"
     },
     {
       "name": "source-to-skill-distiller",
       "description": "Convert source material into reusable Agent Skill packages by extracting evidence boundaries, mechanisms, workflows, output contracts, multilingual handling, references, evals, and validation gates. Use when users provide notes, documents, PDFs, transcripts, videos, courses, repositories, workflows, chat logs, codebases, or rough methods and ask to create, distill, audit, repair, localize, or package a SKILL.md or installable skill in English, Cantonese, Chinese, Japanese, Korean, Spanish, French, German, Portuguese, Arabic, RTL, or mixed-language sources.",
-      "path": "skills/source-to-skill-distiller/SKILL.md"
+      "path": "skills/source-to-skill-distiller/SKILL.md",
+      "packageDigest": "sha256:34a9352c242e7e786362e44c0b9de9bc8329388227fe2420f9415c6931fc9613"
     },
     {
       "name": "specification-control-plane-standard",
       "description": "Spec lifecycle, work packets, eval manifests, telemetry contracts, and exception records. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/specification-control-plane-standard/SKILL.md"
+      "path": "skills/specification-control-plane-standard/SKILL.md",
+      "packageDigest": "sha256:6a79f01d15254cda304faf22646d7106bf5bba9f3e227088177e624f8723cd85"
     },
     {
       "name": "store-listing-optimization",
       "description": "Design or audit one channel listing and creative-conversion artifact for App Store, Google Play, Steam, console/PC stores, Microsoft Store, browser extensions, or direct download: positioning, title/subtitle/description, screenshots, capsule/icon/key art, trailer, proof, pricing/disclosures, privacy/compatibility claims, localization, accessibility, experiments, review/reputation context, and exact asset QA. Use for listing conversion; use Distribution Readiness for submission/certification and Marketing Automation for the full channel portfolio.",
-      "path": "skills/store-listing-optimization/SKILL.md"
+      "path": "skills/store-listing-optimization/SKILL.md",
+      "packageDigest": "sha256:c3dae10caf1e44c261137cb1aaa1419ecd6048ea0733589f1433c3655c47c958"
     },
     {
       "name": "subscription-price-increase-retention-review",
       "description": "Plan, audit, diagnose, or recover the retention-safe rollout of an already proposed subscription price change across cohorts, contracts, discounts, billing channels, regions, renewal windows, notices, consent, grandfathering, offers, cancellation, refunds, support, experiments, and net revenue. Use when the price-change program owns sequencing, renewal-maturity cohort readback, or recovery. Do not use to choose the underlying price/package architecture, analyze retention unrelated to a price change, operate refunds alone, or create a general notification strategy.",
-      "path": "skills/subscription-price-increase-retention-review/SKILL.md"
+      "path": "skills/subscription-price-increase-retention-review/SKILL.md",
+      "packageDigest": "sha256:a8702e64771e7f17be326a7eeb73bbbc2fd8e071e498f49fef4f840e3e7d8820"
     },
     {
       "name": "sylphx-platform-first",
       "description": "Use when creating or evolving a Sylphx project or adding backend, deployment, data, auth, storage, messaging, build, or infrastructure capabilities; discover and prefer Sylphx Platform public PaaS/BaaS contracts before building replacements or choosing external services.",
-      "path": "skills/sylphx-platform-first/SKILL.md"
+      "path": "skills/sylphx-platform-first/SKILL.md",
+      "packageDigest": "sha256:0054d5f4ee1d0b31547248449f17d318d2256e53232bd1dd00dd8d932980b241"
     },
     {
       "name": "voice-preserving-editor",
       "description": "Apply a fact-preserving language-quality layer to agent replies or supplied drafts in the requested voice, register, locale, and surface. Use when the user explicitly asks for a natural, human, conversational, non-AI, non-ChatGPT, less-templated, or voice-preserving rewrite; locale-natural or dialect-aware rendering; translationese cleanup; authorized sample matching; or the same constraints in Cantonese, Chinese, English, or multilingual text, while keeping facts, citations, technical terms, uncertainty, and judgment intact. A language name or ordinary translation request alone is not a trigger.",
-      "path": "skills/voice-preserving-editor/SKILL.md"
+      "path": "skills/voice-preserving-editor/SKILL.md",
+      "packageDigest": "sha256:c524af124652600be5c0059dcbdf686aa50d08ced13a54ec76f9f57c588dd106"
     }
   ]
 }

@@ -94,6 +94,10 @@ function sameMembers(actual, expected) {
 
 export function validateFleetEngineeringProfile(document, errors, projectSchemaDocument = null) {
   const location = 'skills/fleet-engineering-profile/references/profile.json';
+  if (document.profile?.lifecycle !== 'active'
+      || document.profile?.authorityClass !== 'governance-constraint') {
+    errors.push(`${location}: binding fleet profile must be active governance-constraint`);
+  }
   const selectors = document.selector?.matchAll || [];
   const selectorByFact = new Map(selectors.map((selector) => [selector.fact, selector]));
   if (selectorByFact.size !== 3 || selectors.length !== 3) {
@@ -188,26 +192,29 @@ export function validateFleetEngineeringProfile(document, errors, projectSchemaD
   }
 }
 
-export function validateActiveProfileMetadata(document, folder, errors, today = new Date().toISOString().slice(0, 10)) {
-  if (document.profile?.lifecycle !== 'active') {
-    errors.push(`skills/${folder}/references/profile.json: canonical profiles must be active`);
-  }
+export function validateProfileLifecycleMetadata(document, folder, errors, today = new Date().toISOString().slice(0, 10)) {
+  const lifecycle = document.profile?.lifecycle;
   if (!['governance-constraint', 'selection-default'].includes(document.profile?.authorityClass)) {
     errors.push(`skills/${folder}/references/profile.json: invalid authorityClass`);
   }
-  if (document.profile?.effectiveOn > today) {
+  if (lifecycle === 'active' && document.profile?.effectiveOn > today) {
     errors.push(`skills/${folder}/references/profile.json: active profile is not effective yet`);
   }
-  if (document.profile?.reviewBy < today) {
-    errors.push(`skills/${folder}/references/profile.json: active profile review window expired`);
+  if (['candidate', 'active', 'deprecated'].includes(lifecycle) && document.profile?.reviewBy < today) {
+    errors.push(`skills/${folder}/references/profile.json: selectable profile review window expired`);
   }
   if (document.exceptionPolicy?.mode !== 'typed-expiring'
       || document.exceptionPolicy?.expiryAction !== 'fail-closed') {
     errors.push(`skills/${folder}/references/profile.json: exception lifecycle must fail closed`);
   }
-  if (document.retirement?.retiredRevisionSelectable !== false
-      || document.retirement?.successor !== null) {
-    errors.push(`skills/${folder}/references/profile.json: active profile retirement state is invalid`);
+  if (document.retirement?.retiredRevisionSelectable !== false) {
+    errors.push(`skills/${folder}/references/profile.json: retired revisions must never be selectable`);
+  }
+  if (lifecycle === 'active' && document.retirement?.successor !== null) {
+    errors.push(`skills/${folder}/references/profile.json: active profile cannot name an admitted successor`);
+  }
+  if (lifecycle === 'deprecated' && !document.retirement?.successor) {
+    errors.push(`skills/${folder}/references/profile.json: deprecated profile must name its successor`);
   }
 }
 
@@ -231,7 +238,7 @@ function validateMachineProfile(folder, packageRoot, errors, profiles) {
   if (document.profile?.contentDigestScope !== 'canonical-json-excluding:/profile/contentDigest') {
     errors.push(`skills/${folder}/references/profile.json: unsupported digest scope`);
   }
-  validateActiveProfileMetadata(document, folder, errors);
+  validateProfileLifecycleMetadata(document, folder, errors);
 
   const digestCandidate = structuredClone(document);
   delete digestCandidate.profile.contentDigest;

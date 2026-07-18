@@ -6,8 +6,8 @@ import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import {
   validateActiveProfileCollisions,
-  validateActiveProfileMetadata,
   validateFleetEngineeringProfile,
+  validateProfileLifecycleMetadata,
 } from '../scripts/check.mjs';
 
 const profile = JSON.parse(readFileSync(new URL('../skills/fleet-engineering-profile/references/profile.json', import.meta.url), 'utf8'));
@@ -125,9 +125,12 @@ test('schema and active-profile admission reject authority-state mutations', () 
   const candidate = structuredClone(profile);
   candidate.profile.lifecycle = 'candidate';
   assert.equal(validate(candidate), true);
-  const admissionErrors = [];
-  validateActiveProfileMetadata(candidate, 'fleet-engineering-profile', admissionErrors, '2026-07-18');
-  assert.equal(admissionErrors.some((finding) => finding.includes('must be active')), true);
+  const lifecycleErrors = [];
+  validateProfileLifecycleMetadata(candidate, 'candidate-profile', lifecycleErrors, '2026-07-18');
+  assert.deepEqual(lifecycleErrors, []);
+  const bindingErrors = [];
+  validateFleetEngineeringProfile(candidate, bindingErrors, projectSchema);
+  assert.equal(bindingErrors.some((finding) => finding.includes('must be active')), true);
 });
 
 test('fleet profile structural gate and active-profile collision check fail closed', () => {
