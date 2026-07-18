@@ -14,6 +14,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
+import { pathToFileURL } from 'node:url';
 import {
   installRuntimeHooks,
   runtimeHookStatus,
@@ -284,7 +285,7 @@ test('auto-sync enable performs one exact-source install and disable removes onl
     writeFileSync(path.join(managedHome, '.sylphx-skills', 'sync.sh'), 'legacy\n');
     const environment = {
       SYLPHX_SKILLS_HOME: managedHome,
-      SYLPHX_SKILLS_REMOTE: source,
+      SYLPHX_SKILLS_REMOTE: pathToFileURL(source).href,
       CODEX_HOME: codexHome,
       CLAUDE_CONFIG_DIR: claudeHome,
       GROK_HOME: grokHome,
