@@ -1,0 +1,112 @@
+{
+  "$schema": "./skills/project-manifest-standard/references/project-manifest.schema.json",
+  "schemaVersion": 2,
+  "kind": "ProjectManifest",
+  "project": {
+    "id": "sylphx-skills",
+    "repository": "SylphxAI/skills",
+    "name": "Sylphx Skills",
+    "summary": "Public canonical static instructions and automatic Codex/Claude distribution.",
+    "lifecycle": "production",
+    "layer": "tooling",
+    "visibility": "public",
+    "policyPool": "agent-tool",
+    "links": [
+      {
+        "type": "repository",
+        "url": "https://github.com/SylphxAI/skills",
+        "title": "Public Skills repository"
+      }
+    ],
+    "tags": ["agent-skills", "standards", "procedures", "codex", "claude"]
+  },
+  "intent": {
+    "goals": [
+      "Own canonical static instructions under skills/<id>/.",
+      "Keep Codex and Claude Code synchronized without manual per-skill installation.",
+      "Publish Sylphx working methods and Platform guidance as useful public product surfaces."
+    ],
+    "nonGoals": [
+      "Own live fleet/work/effect state or customer data.",
+      "Operate a benchmark laboratory, admission authority, hosted marketplace, or Control Plane.",
+      "Preserve retired instruction copies outside Git history."
+    ]
+  },
+  "boundaries": {
+    "owns": [
+      {
+        "id": "static-instruction-packages",
+        "name": "Static instruction packages",
+        "description": "Public standards, procedures, profiles, adapters, and self-contained references."
+      },
+      {
+        "id": "runtime-sync",
+        "name": "Runtime synchronization",
+        "description": "Small install, update, status, clear, and auto-sync adapters for Codex and Claude Code."
+      }
+    ],
+    "doesNotOwn": [
+      "Live fleet adoption, work claims, effects, or operational customer state.",
+      "Product-local decisions, runtime implementation, or model benchmark results."
+    ],
+    "publicSurfaces": [
+      {"type": "instruction", "name": "Canonical Skills", "location": "skills/"},
+      {"type": "manifest", "name": "Deterministic catalog", "location": "catalog.json"},
+      {"type": "tooling", "name": "Runtime sync CLI", "location": "runtime/sylphx-skills.mjs"},
+      {"type": "documentation", "name": "Public entry point", "location": "README.md"}
+    ],
+    "allowedDependencies": [
+      {
+        "owner": "Node.js",
+        "surface": "Standard library and npx bootstrap",
+        "direction": "runtime-tool"
+      }
+    ],
+    "forbiddenCouplings": [
+      "No Control Plane, credential, customer-data, benchmark, or model-provider dependency.",
+      "No generated or secondary writable copy of Skill semantics."
+    ]
+  },
+  "architecture": {
+    "generationRef": "skills/engineering-standard/references/capability-first-architecture.md",
+    "standardPackages": [
+      "engineering-standard",
+      "instruction-evolution-standard",
+      "project-manifest-standard",
+      "prompt-architecture",
+      "scope-discipline"
+    ],
+    "capabilities": ["static-instruction-packages", "runtime-sync"],
+    "adoptionStatus": "adopted",
+    "gaps": []
+  },
+  "documentation": {
+    "adrs": {"location": "docs/adr/", "status": "present"},
+    "specs": {"location": "skills/", "status": "present"},
+    "catalog": {"location": "catalog.json", "status": "present"},
+    "runbooks": {"location": "README.md, CONTRIBUTING.md, PROJECT.md", "status": "present"},
+    "generatedReferences": {"location": "catalog.json", "status": "present"}
+  },
+  "delivery": {
+    "lane": "public-source",
+    "verificationCommands": ["npm test", "npm pack --dry-run"],
+    "terminalBoundary": "Exact default-branch tree passes the single package and installer integrity check.",
+    "recoveryClass": "source-revertable",
+    "deployable": false,
+    "runnerProfiles": {"check": "github-hosted-public-source"}
+  },
+  "commercial": {
+    "status": "commercial",
+    "decisionHome": "docs/adr/ADR-0001-public-agent-instruction-source.md",
+    "pricingSourceOfTruth": "Outside this source repository.",
+    "metricsSourceOfTruth": "Package and product telemetry only where separately authorized.",
+    "guardrails": [
+      "Do not represent MIT-licensed public text as exclusive.",
+      "Commercial services may include managed updates, private packages, profiles, integrations, verification, and support."
+    ]
+  },
+  "adoption": {
+    "status": "adopted",
+    "gaps": []
+  }
+}

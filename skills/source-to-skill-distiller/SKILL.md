@@ -93,7 +93,7 @@ Residual risks:
 - Do not copy source wording into a public skill except short attributed quotes when licensing and policy allow it.
 - Do not turn every chapter, anecdote, or example into a rule. Keep only mechanisms that change future agent behavior.
 - Do not create a meta skill router or skill family when one procedural skill with modes or a `references/` section is enough.
-- Read `docs/skill-admission-model.md` and `docs/skill-collision-map.md` in the target repository before adding a new standalone skill.
+- Read the target repository's contributing contract and existing package descriptions before adding a new standalone skill; preserve one clear semantic owner and avoid near-neighbour routing collisions.
 - Do not make a skill depend on private tools, credentials, or hidden chat context.
 - Do not publish, push, or claim benchmark quality without the target repository's validation and delivery gates.
 

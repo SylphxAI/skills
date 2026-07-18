@@ -1,0 +1,27 @@
+{
+  "name": "sylphx-skills",
+  "version": "1.0.0",
+  "description": "Public SylphxAI Agent Skills with automatic Codex and Claude Code synchronization",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "sylphx-skills": "runtime/sylphx-skills.mjs"
+  },
+  "files": [
+    "skills/",
+    "runtime/",
+    "catalog.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build:catalog": "node scripts/build-catalog.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "npm run check && node --test",
+    "sync": "node runtime/sylphx-skills.mjs sync"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
+
