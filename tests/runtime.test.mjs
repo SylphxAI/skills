@@ -501,11 +501,21 @@ test('sync and status accept only exact absolute forms of managed symlink target
     managedGenerationName(pointer);
     assert.deepEqual(targetGenerationTransactionNames(destination), []);
 
-    const outside = path.join(sandbox, 'outside-alpha');
+    writeFixtureCatalog(source, ['beta']);
+    result = spawnSync(process.execPath, [fixtureCli, 'sync', '--dest', destination, '--quiet'], {
+      cwd: source,
+      encoding: 'utf8',
+    });
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    assert.equal(existsSync(packageLink), false, 'an exact absolute managed link must be removable after catalog retirement');
+    assert.deepEqual(targetGenerationTransactionNames(destination), []);
+
+    const betaLink = path.join(destination, 'beta');
+    const outside = path.join(sandbox, 'outside-beta');
     mkdirSync(outside);
     writeFileSync(path.join(outside, 'KEEP'), 'unrelated user data\n');
-    rmSync(packageLink, { force: true });
-    symlinkSync(outside, packageLink, 'dir');
+    rmSync(betaLink, { force: true });
+    symlinkSync(outside, betaLink, 'dir');
     result = spawnSync(process.execPath, [fixtureCli, 'status', '--dest', destination, '--json'], {
       cwd: source,
       encoding: 'utf8',

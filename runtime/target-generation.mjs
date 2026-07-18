@@ -315,11 +315,11 @@ function existingCurrentGeneration(targetPath) {
   return generationName;
 }
 
-function exactSymlink(file, expectedTarget) {
+function exactSymlink(file, expectedTarget, expectedLocation = file) {
   if (!pathExists(file)) return false;
   const stat = lstatSync(file);
   return stat.isSymbolicLink()
-    && managedSymlinkTargetMatches(file, readlinkSync(file), expectedTarget);
+    && managedSymlinkTargetMatches(expectedLocation, readlinkSync(file), expectedTarget);
 }
 
 function validateStoreOwner(targetPath, store) {
@@ -560,7 +560,7 @@ function removeManagedLink(targetPath, transactionRoot, name) {
   mkdirSync(quarantineRoot, { recursive: true });
   const quarantine = path.join(quarantineRoot, name);
   renameSync(destination, quarantine);
-  if (!exactSymlink(quarantine, packageLinkTarget(name))) {
+  if (!exactSymlink(quarantine, packageLinkTarget(name), destination)) {
     if (!pathExists(destination)) renameSync(quarantine, destination);
     throw new Error(`refusing to remove changed unrelated target entry: ${destination}`);
   }
