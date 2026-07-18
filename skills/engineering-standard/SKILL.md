@@ -1,6 +1,6 @@
 ---
 name: engineering-standard
-description: "Binding engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating code architecture, capabilities, features, DDD domain models, Clean/Hexagonal boundaries, functional cores, modules, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths."
+description: "Binding engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating code architecture and architecture decisions, capabilities, features, DDD domain models, Clean/Hexagonal boundaries, functional cores, modules, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths."
 ---
 # Engineering Standard
 
@@ -22,9 +22,14 @@ For code structure or architecture migration, also read:
 
 1. Load this package for durable engineering work on product code.
 2. Read [references/full-standard.md](references/full-standard.md) for the complete standard.
-3. Apply the strongest relevant subset; record tradeoffs in code, tests, or ADRs.
-4. Prefer schema, test, and ADR homes for durable facts over copying this body into product repos.
-5. Procedure Skills should declare a catalog dependency on `engineering-standard` rather than restating predicates.
+3. Before broad implementation, create or update the owning repository ADR for
+   a material durable decision about architecture, ownership, public contracts,
+   persistence, security/privacy, delivery semantics, or an enterprise default.
+4. Keep ordinary implementation detail governed by an accepted decision in
+   code, schemas, and tests; do not create ceremonial ADRs.
+5. Apply the strongest relevant subset and prefer executable evidence over
+   copying this body into product repositories.
+6. Procedure Skills should declare a catalog dependency on `engineering-standard` rather than restating predicates.
 
 ## Boundaries
 

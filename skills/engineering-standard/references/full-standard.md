@@ -43,6 +43,27 @@ home: code comment for a local implementation choice, test/benchmark for a
 measurable behavior, ADR for material architecture or operational policy, and
 Commercial ADR for product/business impact.
 
+## Decision First, Contract And Code Second
+
+Before broad implementation, create or update the owning repository ADR when a
+material durable decision changes architecture, ownership, public contracts,
+persistence, security/privacy posture, delivery semantics, or an enterprise
+default. Record the context, alternatives, selected boundary, consequences,
+migration/recovery, and verification intent while the decision can still guide
+the implementation rather than explain drift afterward.
+
+An ADR records **why** and the durable boundary. Specs, schemas, tests, and
+executable policies define **what must be true**; source candidates implement
+it. Investigation, comparison, and bounded prototypes may precede the ADR when
+they are needed to make the decision, but broad implementation must not become
+the accidental authority before the decision is recorded.
+
+Do not create an ADR for ordinary implementation detail already governed by an
+accepted decision or testable contract. Keep local algorithm choices, refactors,
+and measurable behavior in code, comments, schemas, tests, or benchmarks at the
+smallest durable altitude. Raw chat and brainstorming are evidence inputs, not
+decision authority.
+
 The bar is language- and tool-independent. The active matching engineering
 profile selects current languages and tool classes; every selected stack proves
 the same obligations with its native compiler, static analysis, lint,

@@ -188,6 +188,8 @@ For every conditional heavy pattern, record the smallest durable decision:
 | Proof | Tests, simulation, benchmarks, security analysis, or recovery drill |
 | Exit trigger | Condition under which the mechanism should simplify or be replaced |
 
-The record may be a focused ADR for a material architecture choice or code/test
-evidence for a local implementation. Do not create one ADR per ordinary use
-case or one infrastructure product per pattern name.
+Use a focused owning-repository ADR before broad implementation when the
+selection is a material durable architecture choice. Use code/test evidence for
+a local implementation choice already governed by an accepted decision. Do not
+create one ADR per ordinary use case or one infrastructure product per pattern
+name.

@@ -20,6 +20,7 @@ Apply the relevant subset; verify rather than slogan.
 
 | Rule ID | Predicate |
 | --- | --- |
+| `eng-adr-01` | Before broad implementation, material durable architecture, ownership, public-contract, persistence, security/privacy, delivery-semantics, or enterprise-default decisions are recorded in the owning repository ADR; ordinary implementation details do not require an ADR. |
 | `eng-safety-01` | Fail closed on secrets in source, logs, and manifests. |
 | `eng-concur-01` | Shared mutable state is fenced (locks, CAS, leases) with explicit timeouts. |
 | `eng-sidefx-01` | External side effects are idempotent or exactly-once with recovery. |
@@ -74,6 +75,7 @@ Apply the relevant subset; verify rather than slogan.
 ## Conformance checklist
 
 - [ ] Applicable rule IDs listed.
+- [ ] Material durable decisions have an owning-repository ADR before broad implementation; ordinary details are not inflated into ADR ceremony.
 - [ ] Tests/schemas cover each selected rule ID.
 - [ ] No secret material in source or logs.
 - [ ] External calls declare timeout/retry/idempotency.
