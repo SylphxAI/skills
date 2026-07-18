@@ -53,6 +53,12 @@ must obey every dependency and ownership invariant immediately. It creates a
 domain event, repository port, adapter, or aggregate only when the corresponding
 domain concept or effect exists; invented placeholders add no architecture.
 
+Additional patterns are selected through the
+[architecture pattern applicability matrix](architecture-pattern-applicability.md).
+The matrix distinguishes universal architecture rules from predicates that
+make CQRS, Event Sourcing, Saga, workflow engines, actors, or data-oriented
+kernels necessary. Pattern vocabulary never authorizes unused infrastructure.
+
 ## Semantic hierarchy
 
 Use these terms consistently:

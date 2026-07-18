@@ -40,6 +40,15 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-ledger-01` | Conserved value uses an immutable append-only double-entry journal with balanced atomic postings, idempotency, reversal correction, rebuildable projections, and external reconciliation. |
 | `eng-di-01` | Composition roots bind stable ports to adapters with explicit scopes; domain code never locates dependencies through a container. |
 | `eng-provider-01` | Reactive providers are limited to time-varying projections/lifecycles and never become domain semantics or durable state authority. |
+| `eng-slice-01` | Consumer use cases are vertical slices inside the owning capability and preserve published boundaries. |
+| `eng-resilience-01` | External/distributed effects declare failure domains, timeout/cancellation, idempotency, retry budget, backpressure, overload, recovery, and proof proportionate to risk. |
+| `eng-security-01` | Trust, tenant, identity, data, and effect boundaries are secure by design with deny-by-default, least privilege, safe handling, and adversarial proof. |
+| `eng-cqrs-01` | Commands and queries with different responsibilities have separate contracts; physical read/write infrastructure splits only for demonstrated needs. |
+| `eng-eventsourcing-01` | Event Sourcing is used only when ordered events are domain state authority and replay, evolution, concurrency, privacy, and recovery contracts exist. |
+| `eng-saga-01` | Cross-authority long-running business outcomes use an explicit Saga/Process Manager state machine with correlation, idempotency, timeout, compensation or forward recovery, and terminal states. |
+| `eng-state-01` | Non-trivial lifecycles define explicit states, events, guards, actions, illegal transitions, and terminal outcomes independent of workflow frameworks. |
+| `eng-actor-01` | Actor use declares mailbox, ordering/delivery, backpressure, supervision, persistence/recovery, placement, and public-boundary semantics. |
+| `eng-dod-01` | Data-oriented layouts are activated by profiling and remain benchmarked, correctness-tested implementation details within capability boundaries. |
 | `eng-proof-01` | Health/readiness probes are never product capability proof. |
 | `eng-tool-01` | Language/tool selection follows the active engineering profile + SOTA kernel. |
 | `eng-repro-01` | Builds are pinned/locked; no floating `latest` for production graphs. |

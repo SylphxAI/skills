@@ -13,6 +13,7 @@ Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).
 For code structure or architecture migration, also read:
 
 - [Capability-first architecture](references/capability-first-architecture.md)
+- [Architecture pattern applicability](references/architecture-pattern-applicability.md)
 - [Language mappings](references/capability-first-language-mappings.md)
 - [Executable-shape examples](references/capability-first-examples.md)
 
