@@ -746,10 +746,20 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
     writeFileSync(path.join(stateDirectory, 'config.json'), `${JSON.stringify(config, null, 2)}\n`);
     cpSync(path.join(root, 'runtime', 'reconcile.mjs'), config.reconcilerPath);
 
-    const first = reconcile({ stateDirectory, force: true, strict: true, now: 1_000 });
+    const crlfCheckoutRun = (command, args, options) => {
+      const clone = command === 'git' && args[0] === 'clone';
+      const result = spawnSync(command, clone ? ['-c', 'core.autocrlf=true', ...args] : args, {
+        encoding: 'utf8',
+        ...options,
+      });
+      if (clone && result.status === 0) git(config.repository, ['config', 'core.autocrlf', 'true']);
+      return result;
+    };
+    const first = reconcile({ stateDirectory, force: true, strict: true, now: 1_000, run: crlfCheckoutRun });
     assert.equal(first.status, 'updated');
     assert.equal(first.appliedSha, firstSha);
     assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), firstSha);
+    assert.equal(readFileSync(path.join(config.repository, 'content.txt'), 'utf8'), 'one\r\n');
 
     let remoteChecks = 0;
     const countingRun = (command, args, options) => {
@@ -780,9 +790,21 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
     assert.equal(offlineRepaired.repaired, true);
     assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), firstSha);
 
+    assert.equal(git(config.repository, ['status', '--porcelain', '--untracked-files=all']), '');
+    writeFileSync(path.join(remote, '.gitattributes'), '* text=auto eol=lf\n');
+    const attributesSha = commit(remote, 'bind exact checkout line endings');
+    const attributesUpdate = reconcile({ stateDirectory, force: true, strict: true, now: 16_000 });
+    assert.equal(attributesUpdate.status, 'updated');
+    assert.equal(attributesUpdate.appliedSha, attributesSha);
+    assert.equal(
+      readFileSync(path.join(config.repository, 'content.txt'), 'utf8'),
+      'one\n',
+      'candidate application must rematerialize unchanged tracked files under new attributes',
+    );
+
     writeFileSync(path.join(remote, 'content.txt'), 'two\n');
     const secondSha = commit(remote, 'second');
-    const second = reconcile({ stateDirectory, maxAgeMs: 10_000, strict: true, now: 17_000 });
+    const second = reconcile({ stateDirectory, force: true, maxAgeMs: 10_000, strict: true, now: 17_000 });
     assert.equal(second.status, 'updated');
     assert.equal(second.appliedSha, secondSha);
     assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), secondSha);
