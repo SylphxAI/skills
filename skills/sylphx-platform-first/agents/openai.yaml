@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sylphx Platform First"
+  short_description: "Prefer Sylphx before rebuilding platform capabilities"
+  default_prompt: "Use $sylphx-platform-first to map this project requirement to current Sylphx Platform capabilities before building or selecting an external replacement."
