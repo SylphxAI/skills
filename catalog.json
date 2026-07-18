@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 83,
+  "count": 86,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -67,6 +67,16 @@
       "name": "commercial-decision-standard",
       "description": "Pricing, packaging, entitlements, commercial ADRs, and market-positioning evidence. Use when making a durable revenue, packaging, licensing, or route-to-market decision. Do not use for implementing an already-decided checkout or billing contract.",
       "path": "skills/commercial-decision-standard/SKILL.md"
+    },
+    {
+      "name": "convergent-review",
+      "description": "Finite, high-coverage review and audit that freezes acceptance, uses independent perspectives and executable oracles, batches repairs, and closes without moving the goalposts. Use for implementation, architecture, migration, policy, documentation, or cross-artifact reviews that must be thorough without endless review loops.",
+      "path": "skills/convergent-review/SKILL.md"
+    },
+    {
+      "name": "critical-analysis",
+      "description": "Structured analysis of uncertain material questions using competing hypotheses, assumption checks, disconfirming evidence, premortems, and calibrated conclusions. Use for root-cause diagnosis, architecture or policy analysis, ambiguous evidence, critical-thinking requests, and questions where the first plausible explanation may be wrong.",
+      "path": "skills/critical-analysis/SKILL.md"
     },
     {
       "name": "customer-data-migration-review",
@@ -152,6 +162,11 @@
       "name": "enterprise-profile-standard",
       "description": "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selections and their lifecycle; Control Plane owns resolved live state.",
       "path": "skills/enterprise-profile-standard/SKILL.md"
+    },
+    {
+      "name": "evidence-and-claims-standard",
+      "description": "Evidence-bound factual, status, completion, causality, and delivery claims. Use when reporting what happened, whether work is done, whether a check passed, whether a stated cause is proven, or whether source, merge, release, deploy, and live behavior are established. Use for audits and handoffs that must prevent hallucination or overclaim.",
+      "path": "skills/evidence-and-claims-standard/SKILL.md"
     },
     {
       "name": "frontier-verification-standard",

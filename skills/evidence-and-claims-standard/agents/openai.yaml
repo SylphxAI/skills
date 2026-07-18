@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence and Claims"
+  short_description: "Bind completion claims to current evidence"
+  default_prompt: "Use $evidence-and-claims-standard to assess whether this claim is supported by current evidence."
