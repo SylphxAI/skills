@@ -26,13 +26,13 @@ adapters; named systems below are the current profile projection.
 
 This standard composes with:
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for autonomous admission, risk lanes, preview policy, and merge queue;
-- [`enterprise-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/enterprise-control-plane-standard.md)
+- [`enterprise-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/enterprise-control-plane-standard/references/full-standard.md)
   for GitHub checks, Sylphx Platform runners, status publishers, and fleet
   reconciliation;
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for truthful done states;
-- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-evolution-standard.md) for
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for truthful done states;
+- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md) for
   fleet migrations and ratchets.
 
 ## Control-Plane Contract

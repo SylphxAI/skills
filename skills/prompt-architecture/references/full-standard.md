@@ -16,7 +16,7 @@ Prompts for agents are operating policy, not motivational prose. Optimize them
 for deterministic execution, conflict resolution, delegation, future sessions,
 and machine parsing. Human-facing output follows the human-first communication
 contract in
-[`autonomous-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/autonomous-execution-standard.md).
+[`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md).
 
 ## Minimum Effective Policy
 
@@ -24,10 +24,9 @@ Use the smallest prompt that reliably changes behavior.
 
 - Put always-on law in the tool's always-on instruction file (`AGENTS.md` /
   `CLAUDE.md`).
-- Put detailed Doctrine policy in this repository's `standards/` and generated
-  Doctrine projections under `.agents/skills/`.
-- Put independently useful, reusable cross-runtime job procedures in the
-  governed [`SylphxAI/skills`](https://github.com/SylphxAI/skills) portfolio.
+- Put detailed static standards and independently useful cross-runtime
+  procedures in the governed [`SylphxAI/skills`](https://github.com/SylphxAI/skills)
+  packages that own them.
 - Put only vendor/runtime-specific commands and wrappers in that tool's local
   skills, commands, plugin, or registry layer.
 - Put repo facts in the project's agent file (`AGENTS.md` / `CLAUDE.md`).
@@ -36,34 +35,29 @@ Use the smallest prompt that reliably changes behavior.
 Do not duplicate the same rule across layers. An always-on projection states
 the compact invariant and boundary; supported runtimes discover skill metadata
 and activate or load matching bodies through their own supported mechanism.
-Without Agent Skills, point to the owning Doctrine source on demand. Do not add a
-meta-router or require manual skill selection.
-Doctrine-owned Agent Skills are generated artifacts. Edit `PRINCIPLES.md`,
-`ADR.md`, `standards/*.md`, or `skills/registry.json`, then run
-`python3 scripts/generate-agent-skills.py`. Do not hand-edit generated
-`.agents/skills/*` files or copy them into a tool-specific fork.
+Without Agent Skills, point to the owning canonical package on demand. Do not
+add a meta-router or require manual skill selection. Runtime install bundles may
+be packaged from canonical Skills when wire formats differ, but package bodies
+and references are authored only under `skills/<id>/`.
 
-### Doctrine versus reusable Skills ownership
+### Instruction ownership
 
 Choose the repository by semantic ownership, not by the `SKILL.md` filename:
 
 | Surface | Canonical owner | Admission test |
 | --- | --- | --- |
-| Cross-task constitutional law, decision boundaries, and enterprise governance | `SylphxAI/doctrine` principles, standards, profiles, or ADRs | Must govern before skill loading or define binding policy |
-| Agent Skill projection of Doctrine policy | Generated `.agents/skills/` in `SylphxAI/doctrine` | Generated from an owning Doctrine source; never independently authored |
-| Independently useful reusable cross-runtime job procedure—engineering, product, design, business, operations, or otherwise—with its own trigger and artifact | [`SylphxAI/skills`](https://github.com/SylphxAI/skills) | Independent recurring job; passes that repository's admission, routing, evidence, risk, and lifecycle controls |
+| Compact rules required before on-demand loading | Canonical always-on constitution source and its runtime projection | Omission can break the first meaningful action or every task |
+| Detailed static standard or independently useful cross-runtime procedure | [`SylphxAI/skills`](https://github.com/SylphxAI/skills) | Admitted package with a clear trigger, boundary, predicates or artifact, and validation |
+| Historical decision, profile lineage, or migration alias | Its owning decision/history repository | Must not duplicate or override current Skills semantics |
 | Runtime-native command, permission, hook, MCP binding, or vendor integration | Owning runtime, plugin, or local configuration | Depends on a specific runtime capability and carries no shared policy |
 | Repository fact, command, hazard, or validation note | Owning repository's local instruction surface | True only for that repository or machine boundary |
 
-Never move a cross-task law into `SylphxAI/skills`, because it may not load
-before the decision it governs. Never place a reusable job skill in Doctrine,
-because that turns governance into a product-procedure catalog. A Doctrine
-generated skill is a transport projection of policy, not a portfolio candidate;
-a portfolio skill may depend on Doctrine but may not copy or redefine it.
-Skills provide method and artifacts, not runtime capability grants or current
-external authority. Install portfolio candidates intentionally under their own
-evidence state; do not bulk-install or auto-route an unproven catalog merely
-because a runtime can discover it.
+Project only the compact pre-loading subset into the always-on constitution;
+keep the owning detailed standard in Skills. Historical Doctrine aliases may
+preserve lineage but are not writable instruction authorities. Skills provide
+method and artifacts, not runtime capability grants or current external
+authority. Install and route packages according to their declared evidence
+state rather than treating repository presence as proof.
 
 ### Always-on promotion boundary
 
@@ -90,7 +84,7 @@ version or increasing prompt size by default.
 
 Agent role prompts are implementation adapters, not independent policy. The
 canonical role taxonomy and operating protocol live in
-[`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md);
+[`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md);
 role prompts must reference or be generated from that source.
 
 A role prompt should define only:
@@ -102,11 +96,11 @@ A role prompt should define only:
 - required artifacts: issue update, PR metadata, structured review, status check,
   ADR/spec, or production signal;
 - verification and handoff evidence;
-- delivery boundary from [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md).
+- delivery boundary from [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md).
 
-Do not paste a giant static playbook into every role. When doctrine changes,
-role prompts must be regenerated or patched from the doctrine source so the
-agent fleet does not fork the operating model.
+Do not paste a giant static playbook into every role. When canonical
+instructions change, affected role projections must be refreshed from their
+owning source so the agent fleet does not fork the operating model.
 
 ## Delegation Brief Granularity
 
@@ -138,35 +132,35 @@ roadmap, analysis, and replanning stay adaptive. Public interface shape and
 shared-write serialization are boundaries, not permission to dictate the
 child's whole roadmap.
 
-## Doctrine Runtime Constitution Contract
+## Runtime Constitution Contract
 
-Use this when creating or refactoring an agent/tool prompt from this doctrine.
+Use this when creating or refactoring an agent/tool prompt from the canonical
+instruction system.
 
 When the runtime supports Agent Skills, rely on native metadata discovery and
-its supported activation or loading mechanism for matching generated Doctrine
-skills. Otherwise load `AGENTS.md` and only the principles, ADRs, profiles, and
-standards touched by the target work. Project the canonical constitution
-through the runtime's supported instruction surface; do not fork Doctrine.
+its supported activation or loading mechanism for matching canonical Skills.
+Otherwise load the compact constitution and only the decisions, profiles, and
+standards touched by the target work. Project the same semantic constitution
+through the runtime's supported instruction surface; do not fork it.
 
 The adapted prompt must:
 
-- Link back to this repository as the upstream SSOT.
-- Preserve Doctrine decisions, vocabulary, boundaries, approval gates, and
-  on-demand policy discovery.
+- Link to each owning canonical source instead of a repository brand by default.
+- Preserve current decisions, vocabulary, boundaries, approval gates, and
+  on-demand package discovery.
 - Keep the always-on layer compact but behaviorally complete: project the
   canonical operating kernel directly, plus tool-native execution mapping,
   skill discovery, and on-demand loading rules. Compact never means
   pointer-only; a rule needed before skill loading must remain
-  explicit in the auto-loaded file. Do not cache detailed doctrine content.
+  explicit in the auto-loaded file. Do not cache detailed standard content.
 - Map into the target tool's supported instruction hierarchy, files, commands,
   permissions, memory, and subagent model.
 - Leave tool-specific skills, commands, permissions, and native wiring in the
   tool's own home.
-- Use generated Doctrine skills only for Doctrine-owned policy projections.
-  Put independently reusable cross-runtime job methods in `SylphxAI/skills`;
-  keep only runtime-native tooling, MCP bindings, and vendor wrappers in the
-  plugin or runtime registry layer.
-- Respect higher-priority host instructions instead of pretending doctrine can
+- Put static standards and independently reusable cross-runtime methods in
+  `SylphxAI/skills`; keep only runtime-native tooling, MCP bindings, and vendor
+  wrappers in the plugin or runtime registry layer.
+- Respect higher-priority host instructions instead of pretending company policy can
   override the tool's system or platform policy.
 
 The adapted prompt must not:
@@ -175,55 +169,36 @@ The adapted prompt must not:
 - Copy standards into a per-tool fork.
 - Add tool-specific frontmatter, permission grants, dynamic shell injection,
   hooks, model overrides, or runtime side effects to the portable
-  `.agents/skills` corpus.
+  portable Skills corpus.
 - Weaken autonomy, delivery, boundary, SSOT, or validation requirements.
 - Omit a supported on-demand path for detailed policy the tool may need.
 - Invent unsupported syntax, folders, frontmatter, or lifecycle hooks.
 
 Validation: a fresh agent reading the effective instruction surface should know
-where Doctrine lives, which law is always on, how detailed policy is discovered
-on demand, when to ask or act, how to update Doctrine, and what a local
-projection cannot change.
+which rules are always on, how detailed policy is discovered on demand, where
+to update its canonical package, when to ask or act, and what a local projection
+cannot change.
 
 ### One semantic kernel, not one literal system prompt
 
-Doctrine owns one semantic always-on kernel in the canonical constitution template
-([`templates/AGENTS.md`](https://github.com/SylphxAI/doctrine/blob/main/templates/AGENTS.md)). It is a compact,
-behaviorally complete always-on constitution: how to operate, where doctrine
-lives, and the compact projections that pass the promotion boundary above. It
-is not pointer-only. It does not restate detailed principle or standard
-procedures, carry a `Doctrine-Source` commit SHA, or replace progressive
-disclosure through the generated Agent Skills corpus.
+The canonical constitution source owns one semantic always-on kernel. It is a
+compact, behaviorally complete constitution: how to operate, where canonical
+instructions live, and the compact projections that pass the promotion boundary
+above. It is not pointer-only and does not restate detailed standard procedures
+or replace progressive disclosure through canonical Skills.
 
 One semantic kernel does **not** mean one literal cross-vendor system prompt.
 Host system and platform instructions remain higher authority. Each runtime
 projects the same kernel into its supported auto-loaded instruction file,
 import, plugin, or registry, while tool-specific permissions, memory, commands,
 and subagent wiring stay in that runtime's own layer. The filename and transport
-may differ; the Doctrine-owned behavioral meaning may not be weakened, renamed,
+may differ; the canonical behavioral meaning may not be weakened, renamed,
 or forked.
 
-The behavioral non-negotiables a runtime constitution must honor (link back to doctrine;
-never fork, weaken, or rename; SSOT; standards-on-demand; intentional startup;
-Evidence First; aggressive execution with conservative claims; current evidence and active resolution; P-EVOLUTION future-proof
-execution; root-cause closure; done-means-delivered; autonomy boundary; GitOps;
-boundary ownership; the no-human delivery model; adversarial decision review;
-work-conserving execution; bounded speculation before scarce proof and effects;
-outcome-owned delegation; human-first
-communication) are authored once in the
-canonical template.
-`tests/test_agent_template_invariants.py` verifies that one source — a
-doctrine-self-quality check, not a continuous conformance audit of N
-agent-authored runtime projections.
-
-Freshness remains Git: keep the local doctrine clone current with `git pull` or
-`scripts/doctrine-cache-freshness-audit.py`, rather than embedding a pinned SHA
-inside every projection. Correctness of a runtime projection rests on the agent's
-capability and the complete canonical template it consumes. An agent that cannot
-configure itself in its own runtime remains a defective tool, not a reason to
-restore a maintained per-tool policy cache. See
-[ADR-98](https://github.com/SylphxAI/doctrine/blob/main/docs/adr/ADR-98-agent-skills-corpus-and-adapters.md) and
-[ADR-160](https://github.com/SylphxAI/doctrine/blob/main/docs/adr/ADR-160-skills-first-adapter-model.md).
+The behavioral non-negotiables are authored once in the canonical constitution
+source and projected compactly. Freshness remains Git plus runtime readback;
+do not embed a second writable copy or mistake source availability for effective
+loading.
 
 ### Effective convergence claims
 
@@ -302,8 +277,8 @@ When migrating instructions from an existing tool's native instruction file, pro
 3. Convert values into behavior: "craftsmanship" becomes naming, tests, observability, root-cause closure, and delivery criteria.
 4. Convert broad rules into triggers and boundaries.
 5. Move details to standards or skills when they are not always needed.
-6. If the reusable procedure is Doctrine-owned, update the source standard or
-   `skills/registry.json` and regenerate `.agents/skills`.
+6. If the reusable procedure or standard is shared, update its canonical
+   `skills/<id>/` package and rebuild only derived catalogs or install bundles.
 7. Delete stale, duplicate, or conflicting rules.
 8. Commit the prompt change like code.
 
@@ -321,44 +296,35 @@ If the answer is no, rewrite it, move it, or delete it.
 
 ## Bootstrap Prompt Distribution
 
-A Doctrine-consuming agent either already has a Doctrine cache available or it
-does not. When it does not, the agent needs a **bootstrap prompt** it can
-execute or hand to a launcher, so that the Doctrine pointer pattern stops being
-a bootstrap problem.
+A managed agent either already has the canonical instruction packages available
+or it does not. When it does not, it needs a **bootstrap prompt** that installs
+or refreshes the compact constitution and the required Skills packages.
 
-Doctrine owns the bootstrap prompt contract through three artifacts:
-
-- `templates/install-agent.md` — install prompt source: clone or update the
-  Doctrine cache, optionally install generated Doctrine projections where the
-  runtime supports Agent Skills, and write or refresh a compact runtime-native
-  constitution projection.
-- `templates/update-agent.md` — update prompt source: idempotent re-render of
-  the install flow using whatever the cache already has.
-- `scripts/render-agent-bootstrap.py` — the only authority that materializes an
-  install or update prompt with auditable substitution, freshness, and
-  placeholder lint.
+The runtime bootstrap owner maintains its install/update templates and renderer.
+Those assets may live with the runtime or distribution system; they are not a
+second standard authoring source. Exact filenames are runtime facts and do not
+belong in this cross-runtime standard.
 
 Bootstrap prompts are prompt assets, not policy. (The repo bootstrap
 runbook, `templates/bootstrap-repo.md`, stands up a repository rather than an
 agent runtime and is outside this section's three-artifact contract.) They
 may:
 
-- reference the upstream Doctrine repository URL (`https://github.com/SylphxAI/doctrine`);
-- clone or `git pull` the cache into a path the operator chooses;
-- install or update generated Agent Skills when the runtime's installer
-  supports that convention;
+- reference canonical package sources;
+- clone or update an authenticated Skills checkout when required;
+- install or update canonical Skills through the runtime's supported mechanism;
 - write or rewrite a compact runtime-native instruction source that the runtime
   demonstrably auto-loads, such as `AGENTS.md`, a documented instruction import,
-  or a managed-policy surface, and point it back to the Doctrine cache. A skill
+  or a managed-policy surface, and point it back to canonical sources. A skill
   body or skill manifest is not an Always-On instruction source.
 
 Bootstrap prompts must not:
 
-- copy Doctrine standards, principles, or generated skills into the bootstrap
+- copy standards, principles, or installed skills into the bootstrap
   prompt body;
 - request elevated permissions, hooks, MCP servers, credential storage, dynamic
   shell injection, model overrides, third-party payload downloads, or anything
-  outside the cache, generated skills, and constitution projection surface;
+  outside the authenticated package install and constitution projection surface;
 - silently overwrite per-repo `PROJECT.md`, `.doctrine/project.json`, or
   production evidence;
 - invent unsupported tool syntax or tool-specific frontmatter for the portable
@@ -366,27 +332,22 @@ Bootstrap prompts must not:
 - weaken the autonomy, delivery, boundary, SSOT, or validation requirements
   of this standard or `agent-first-development-standard.md`.
 
-The renderer's `--check` mode is a freshness gate that fails CI when the
-installed templates, the canonical upstream URL, or the placeholder whitelist
-drift. `tests/test_agent_bootstrap.py` enforces the contract: every bootstrap
-prompt must reference upstream Doctrine, declare its placeholders, link back to
-this standard, and stay below the size budget that signals prompt-policy
-duplication. Hand-edited copies of the rendered output are drift and must be
-rejected in CI.
+The renderer's check mode should fail when templates, canonical sources, or the
+placeholder contract drift. Hand-edited copies of rendered output are drift.
 
 The bootstrap contract composes with this standard, `delivery-standard.md`,
 and the runtime-constitution projection pattern:
 
 1. A repo's compact `AGENTS.md`/`CLAUDE.md` directly carries the always-on law
-   and points at Doctrine for detailed policy.
+   and points at canonical Skills for detailed policy.
 2. A launcher or operator renders the install prompt and runs it on a fresh
    runtime to stand up the same surface without depending on a pre-existing
    cache or paste.
-3. After install, the runtime discovers matching generated Doctrine skills by
-   description and loads detailed standards only on demand.
+3. After install, the runtime discovers matching canonical Skills by
+description and loads detailed standards only on demand.
 
 The bootstrap mechanism is `new-default`/`optional-adoption`. Effective loading
 of the compact constitution is separately `required-future` under ADR-188:
 pointer-only legacy projections follow its declared compatibility window,
 migration selector, readback proof, and recovery contract. Future changes become
-required only through the Doctrine Evolution Standard, never by implication.
+required only through the owning instruction-evolution decision, never by implication.

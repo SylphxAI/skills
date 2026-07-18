@@ -16,16 +16,16 @@ hardening.
 
 Composes with:
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for parallel coordination, work packets, and repo adoption.
-- [`source-authoring-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/source-authoring-standard.md) for the exact
+- [`source-authoring-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/source-authoring-standard/references/full-standard.md) for the exact
   source candidate whose proof may be coalesced only before selection.
-- [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/ci-runner-capacity-standard.md) for CI
+- [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-runner-capacity-standard/references/full-standard.md) for CI
   compute ownership and queue diagnosis.
-- [`frontier-verification-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/frontier-verification-standard.md)
+- [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
   for reviewer-confidence backstops.
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for production verification.
-- [`roleless-speculative-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/roleless-speculative-development-standard.md)
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for production verification.
+- [`roleless-speculative-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/roleless-speculative-development-standard/references/full-standard.md)
   for candidate deduplication, cumulative snapshot verification, scoped green
   watermarks, and roleless recovery under its successor profile.
 - ADR-2, ADR-18, ADR-29 — cited throughout, not restated.
@@ -94,11 +94,11 @@ post-merge deployment lifecycle.
 
 ### CI compute ownership
 
-[`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/ci-runner-capacity-standard.md) owns CI
+[`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-runner-capacity-standard/references/full-standard.md) owns CI
 compute in full: default Sylphx compute plane, mandatory runner profiles,
 profile-ID contract, new-profile process, and pickup/backlog diagnosis —
 cited, not restated. A repo-level runner-class exception is an exception
-record (see [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md) "Policy And Exception Records") and does not change the
+record (see [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md) "Policy And Exception Records") and does not change the
 admission model.
 
 ADR-29 owns the admission manifest schema, the `L0`-`L5` risk-lane table,
@@ -276,7 +276,7 @@ deadlock:
   behavior for when the consumed product is down or slow: fail-open to a
   neutral, terminal conclusion within a bounded timeout, an advisory-first
   default, or a smaller deterministic gate set — documented to the
-  [`documentation-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/documentation-standard.md) runbook bar
+  [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) runbook bar
   (citing the commands, dashboards, logs, or health checks that prove it). A
   remote-backed or nondeterministic check is never the sole required safety
   gate.
@@ -289,7 +289,7 @@ deadlock:
 ### Reviewer-confidence layer (mandate by surface)
 
 Tests prove code runs; these prove it is correct enough to merge unseen.
-[`frontier-verification-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/frontier-verification-standard.md)
+[`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
 owns property/model tests, deterministic simulation testing, spec/eval
 gates, and automated canary analysis — selection rules, required fields,
 and adoption contracts, cited not restated. What it does not cover, mandated
@@ -300,7 +300,7 @@ by blast radius here:
   Mutate only changed, covered lines, ≤1 mutant/line; full-repo mutation
   stays optional.
 - **Fuzz harness on untrusted-input boundaries** per the
-  [`engineering-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/engineering-standard.md) testing ladder; only
+  [`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineering-standard/references/full-standard.md) testing ladder; only
   a bounded seed-corpus regression is the admission gate.
 - **An LLM reviewer may be an *additional* confidence gate, never sole or
   hard-blocking.** Its non-determinism makes it the exact flaky-gate class

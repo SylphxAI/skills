@@ -23,15 +23,15 @@ be machine-readable enough for central audits and rulesets.
 
 This standard composes with:
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for no-human gates, work packets, and cross-repo coordination;
-- [`documentation-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/documentation-standard.md) for doc altitude
+- [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for doc altitude
   and freshness gates;
-- [`engineering-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/engineering-standard.md) for clean boundaries
+- [`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineering-standard/references/full-standard.md) for clean boundaries
   and published contracts;
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for merge, release, and
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for merge, release, and
   production proof;
-- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-evolution-standard.md) for the
+- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md) for the
   reconcile loop, change classes, and migration packets that consume manifest
   facts.
 
@@ -223,7 +223,7 @@ and no central system guessing local product intent.
 ## Rollout Model
 
 Rollout is the reconcile loop defined in
-[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-evolution-standard.md): central
+[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md): central
 audit reads every repo's manifest, agent entry point, branch/ruleset state, and
 required context producers; missing or invalid facts become claimable work
 packets, durable generated issues, and — once a repo has been inspected —

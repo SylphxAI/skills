@@ -26,7 +26,7 @@ superseded, or retired.
 
 An active profile is binding wherever its typed selector matches. It is not
 advisory. Its `authorityClass` determines where it enters the
-[SOTA decision kernel](https://github.com/SylphxAI/doctrine/blob/main/standards/sota-execution-standard.md):
+[SOTA decision kernel](https://github.com/SylphxAI/skills/blob/main/skills/sota-execution-standard/references/full-standard.md):
 
 - `mandatory-governance` carries a standing authority or operating constraint
   at precedence item 3, below higher authority, ruin constraints, and
@@ -274,14 +274,9 @@ fail-closed conformance error on the scope's
 
 ## Validation
 
-Run:
-
-```sh
-python3 scripts/doctrine-profile-audit.py
-python3 scripts/generate-agent-skills.py --check
-```
-
-The profile audit executes the Draft 2020-12 schema, content/revision identity,
+Run the owning profile repository's declared schema/conformance check and this
+repository's admission/catalog freshness check. The profile audit executes the
+Draft 2020-12 schema, content/revision identity,
 scope/profile content identity, selector and manifest resolution,
 effective/review dates, immutable history transitions, Cartesian replacement
 coverage, fail-closed registered evidence resolvers, selection-evidence replay,

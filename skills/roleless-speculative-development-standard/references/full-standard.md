@@ -24,17 +24,17 @@ verified-only promotion.
 
 It composes with:
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for the overall no-human engineering loop;
-- [`mission-control-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/mission-control-standard.md) for durable
+- [`mission-control-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/mission-control-standard/references/full-standard.md) for durable
   internal work state and proof-chain links;
-- [`ci-admission-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/ci-admission-standard.md) for verification,
+- [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md) for verification,
   affected selection, flakes, and recovery;
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for release, deployment, and
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for release, deployment, and
   production proof;
-- [`frontier-verification-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/frontier-verification-standard.md) for
+- [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md) for
   nondeterministic or adversarial oracles;
-- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-profile-standard.md) for binding
+- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-profile-standard/references/full-standard.md) for binding
   selection and compatibility; and
 - the introducing roleless-speculative-development ADR for why this replaces
   role/PR/merge-queue assumptions where its successor profile is active.
@@ -442,10 +442,11 @@ Adoption follows expand → reconcile → ratchet → contract:
 5. repositories emit selection evidence; and
 6. legacy PR/MQ-only fields and settings contract only after coverage proof.
 
-Doctrine does not directly mutate every organization from this repository. The
-platform control plane owns organization/repository GitHub and runtime mutations.
-Doctrine owns the policy, schemas, generated projections, desired-state plan,
-conformance findings, and migration evidence contract.
+This static standard does not directly mutate organizations. The platform
+control plane owns organization/repository GitHub and runtime effects. This
+Skills package owns the reusable policy predicates; schemas, desired state,
+conformance findings, and migration evidence remain with their declared
+operational owners.
 
 ## Required conformance tests
 

@@ -287,7 +287,7 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
   catch-all returning a default value without a typed decision, error-channel
   narrowing without exhaustive handling, and retries that discard the final
   failure. Treat test-assertion weakening as a policy-grade diff, not a fix —
-  [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+  [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   "Reward-hacking and execution-trace integrity" owns that rule (gate-weakening
   diffs ride the highest-scrutiny lane).
 - **Schema-derived surfaces**: derive validators, types, interface descriptions, clients,
@@ -304,7 +304,7 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
   network/storage model, and replayable seed corpus for distributed,
   concurrent, or irreversible workflows whose important bugs require fault
   ordering or long-running interleavings. Keep it targeted by blast radius; see
-  [`frontier-verification-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/frontier-verification-standard.md).
+  [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md).
 - **Idempotent, replayable jobs**: every queue worker, cron, migration helper,
   and external side-effect path should have idempotency keys, retry policy,
   timeout policy, and replay/debug evidence.
@@ -313,7 +313,7 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
   without weakening required checks. Affected selection is a presubmit *speed*
   optimization safe only with a postsubmit full-suite backstop and a complete
   dependency graph; it is never a correctness or security control. See
-  [`ci-admission-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/ci-admission-standard.md) for the two-tier model,
+  [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md) for the two-tier model,
   the never-skip global gate
   classes, and merge-queue flake/quarantine signal integrity.
 
@@ -560,7 +560,7 @@ for high-blast-radius distributed/concurrent/stateful behavior where ordinary
 property/model tests cannot explore enough interleavings. Keep them optional for
 CRUD/UI glue.
 Which rungs are blocking vs continuous follows the two-tier model in
-[`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md).
+[`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md).
 
 ## Naming
 

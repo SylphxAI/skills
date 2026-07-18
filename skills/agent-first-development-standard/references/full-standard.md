@@ -22,33 +22,33 @@ and durable written context.
 
 This standard composes with:
 
-- [`documentation-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/documentation-standard.md) for the doc/spec/ADR
+- [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for the doc/spec/ADR
   altitude map and freshness gates.
-- [`specification-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/specification-control-plane-standard.md)
+- [`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)
   for work packets, spec lifecycle records, eval manifests, telemetry contracts,
   exception records, and SDD-tool adapter boundaries.
-- [`agent-native-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-native-standard.md) for executable specs,
+- [`agent-native-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-native-standard/references/full-standard.md) for executable specs,
   schemas, tools, delegation, and durable context.
-- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/autonomous-execution-standard.md) for
+- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md) for
   execution graphs, subagents, latency hiding, and cross-project boundaries.
-- [`source-authoring-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/source-authoring-standard.md) for Work Item,
+- [`source-authoring-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/source-authoring-standard/references/full-standard.md) for Work Item,
   attempt, exact candidate, semantic atomicity, commit/worktree projections, and
   workspace reconciliation.
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for PR, merge, release, and
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for PR, merge, release, and
   production verification ownership.
-- [`ci-admission-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/ci-admission-standard.md) for no-human CI
+- [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md) for no-human CI
   admission tiers, preview policy, affected selection, and merge-queue integrity.
-- [`repo-adoption-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/repo-adoption-standard.md) for minimum repo
+- [`repo-adoption-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/repo-adoption-standard/references/full-standard.md) for minimum repo
   adoption surfaces and conformance entrypoints.
-- [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/ci-runner-capacity-standard.md) for CI
+- [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-runner-capacity-standard/references/full-standard.md) for CI
   compute ownership, runner profiles, and queue capacity diagnosis.
-- [`roleless-speculative-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/roleless-speculative-development-standard.md)
+- [`roleless-speculative-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/roleless-speculative-development-standard/references/full-standard.md)
   for the candidate successor architecture when universal-agent arrival exceeds
   PR, merge-queue, CI, preview, or deployment admission capacity.
-- [`frontier-verification-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/frontier-verification-standard.md)
+- [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
   for property/model tests, deterministic simulation, spec/eval gates, and
   canary analysis selection rules.
-- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-profile-standard.md) for the
+- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-profile-standard/references/full-standard.md) for the
   binding no-human and delivery-adapter selections.
 - [`../ADR.md`](https://github.com/SylphxAI/doctrine/blob/main/ADR.md) for race-free ADR numbering and artifact identity.
 
@@ -84,7 +84,7 @@ Control-plane responsibilities:
 - **Mission Control coordinates internal work-state**: Work Items, claims,
   checkpoints, blockers, proof-chain links, stale-session recovery, cost/ETA,
   and cross-runtime handoff live in the Work Ledger defined by
-  [`mission-control-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/mission-control-standard.md). Hidden chat
+  [`mission-control-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/mission-control-standard/references/full-standard.md). Hidden chat
   state is not ownership.
 - **The active delivery profile delivers and proves repository work**: it owns
   the current forge, candidate, required-check, serialization, release, and
@@ -153,7 +153,7 @@ sufficient audit. Every meaningful action must carry structured responsibility:
   linked ADR/spec, risk, affected area, verification, rollback/deploy notes;
 - labels for `role:*`, `state:*`, `type:*`, `area:*`, `risk:*`, `priority:*`,
   drawn from the shared taxonomy in
-  [`mission-control-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/mission-control-standard.md) rather than a
+  [`mission-control-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/mission-control-standard/references/full-standard.md) rather than a
   per-repo dialect;
 - `AGENT-CLAIM` and `AGENT-CHECKPOINT` comments only when the GitHub issue
   thread is the chosen public or repo-local coordination surface;
@@ -206,12 +206,12 @@ controlled workflow an independent admission authority. A shared login is
 labelled declared separation only. `scripts/policy-review-gate.py` is the
 canonical digest implementation.
 Policy-repository scope, credential modes, and required-status wiring live in
-[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-evolution-standard.md) §Policy
+[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md) §Policy
 Repository Admission; this section owns the field contract that
 `scripts/policy-review-gate.py` parses.
 
 Presence follows the active coordination surface — see
-[`mission-control-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/mission-control-standard.md) for ledger vs
+[`mission-control-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/mission-control-standard/references/full-standard.md) for ledger vs
 issue claim freshness. Do not create a third presence store.
 
 ### Minimal Complete Loop
@@ -337,7 +337,7 @@ behavior clear enough for the next agent.
 
 ## Agent Development Doc Tree
 
-[`documentation-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/documentation-standard.md)'s "One fact, one
+[`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md)'s "One fact, one
 home" table owns the altitude map — which artifact is the canonical home
 for which kind of fact — cited, not restated. A repo's `docs/adr/`,
 `docs/specs/`, `docs/runbooks/`, and `.github/workflows/` layout should
@@ -354,7 +354,7 @@ The repo-local project manifest (`.doctrine/project.json`) is the minimum input
 to that catalog. It states the repository's local identity, lifecycle, owned
 contexts, unowned contexts, public surfaces, forbidden coupling, delivery proof,
 and adoption gaps. See
-[`project-manifest-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/project-manifest-standard.md). Do not use
+[`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md). Do not use
 ADRs as the current-state project identity; ADRs explain decisions, while the
 manifest states the current boundary contract.
 
@@ -402,7 +402,7 @@ source, not a mechanism for overriding the runtime's authority model.
 
 ## Specification As Code
 
-[`documentation-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/documentation-standard.md)'s "Specification
+[`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md)'s "Specification
 is code-first" section owns this: prose specs are pre-implementation
 contracts only, migrating to schema/tests/ADR/catalog once shipped — cited,
 not restated.
@@ -429,7 +429,7 @@ for these gates when a repository does not already have an equivalent:
 `exception-policy`.
 
 - **Contract and artifact specification**:
-  [`specification-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/specification-control-plane-standard.md)'s
+  [`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)'s
   "Spec-as-code" section owns contract and event proof; the active engineering
   profile owns current tool and protocol selections.
 - **Policy as code**: encode merge, infrastructure, permission, dependency,
@@ -438,7 +438,7 @@ for these gates when a repository does not already have an equivalent:
 - **Supply chain**: generate SBOMs (CycloneDX/SPDX), vulnerability reports,
   provenance/attestations (SLSA/Sigstore), and OpenSSF-style health checks
   across trust boundaries.
-- **Package release control plane**: [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md)'s
+- **Package release control plane**: [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md)'s
   "Package Publication" section owns this in full — cited, not restated.
 - **Observability**: OpenTelemetry-compatible traces/metrics/structured
   logs; logs without correlation IDs or machine-queryable fields are not
@@ -463,7 +463,7 @@ for these gates when a repository does not already have an equivalent:
   general rule owns this — no self-assigned sequential number as primary
   identity — cited, not restated.
 - **Formal or model-based methods**:
-  [`frontier-verification-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/frontier-verification-standard.md)'s
+  [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)'s
   Core Rule matrix owns when property/model tests and deterministic
   simulation are required — cited, not restated.
 
@@ -485,7 +485,7 @@ Reject these as no-human governance:
 Every repo declares its active gate class(es) from the Industrial Mechanisms
 table above — machine-readable in the repo-local agent file, a manifest, or
 org config.
-[`specification-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/specification-control-plane-standard.md)'s
+[`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)'s
 "Exception records" section owns the required-fields list and the
 expiry-fails-CI rule for any exception to a required gate — cited, not
 restated. Exceptions without expiry are permanent policy changes and require
@@ -493,7 +493,7 @@ an ADR.
 
 ## Work Packets
 
-[`specification-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/specification-control-plane-standard.md)'s
+[`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)'s
 "Work packets" section owns the field list (id, role, goal/non-goals,
 affected surfaces, linked ADR/spec/schema, risk class, collision risks,
 claim/lease metadata) and the rule that hidden chat state is not ownership
@@ -557,7 +557,7 @@ outcomes.
 
 ## CI Pipeline Architecture — Reviewer + Serializer
 
-See [`ci-admission-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/ci-admission-standard.md).
+See [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md).
 
 ## Use Cases
 
@@ -573,4 +573,4 @@ See [`ci-admission-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/
 
 ## Minimum Repo Adoption
 
-See [`repo-adoption-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/repo-adoption-standard.md).
+See [`repo-adoption-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/repo-adoption-standard/references/full-standard.md).

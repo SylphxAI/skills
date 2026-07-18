@@ -23,10 +23,10 @@ gate can check, not a ceremony a human reads once and forgets.
 
 This standard composes with:
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for risk lanes and recovery semantics (source revert / runtime rollback /
   forward-fix) — cited here, not restated;
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for production
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for production
   verification signals used to prove a mitigation actually recovered;
 - [`ADR-136-security-floor`](https://github.com/SylphxAI/doctrine/blob/main/docs/adr/ADR-136-security-floor.md) for the
   fail-closed invariants whose breach is always at least S1;

@@ -21,16 +21,16 @@ implements ADR-66 (frontier verification backstops).
 
 This standard composes with:
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for risk lanes, admission manifests, the active delivery profile's integration
   serializer, postsubmit proof, and recovery;
-- [`engineering-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/engineering-standard.md) for pure cores,
+- [`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineering-standard/references/full-standard.md) for pure cores,
   Effect, testing ladder, observability, and state-machine correctness;
-- [`agent-native-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-native-standard.md) "AI Agents" for AI
+- [`agent-native-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-native-standard/references/full-standard.md) "AI Agents" for AI
   evals, tracing, and guardrails;
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for deploy proof and
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for deploy proof and
   production verification.
-- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-profile-standard.md) for current
+- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-profile-standard/references/full-standard.md) for current
   model/runtime and delivery-adapter selections and their review lifecycle.
 
 ## Core Rule
@@ -102,7 +102,7 @@ policy binding, dataset and contamination control, oracle, sampling,
 thresholds, cost/latency/privacy constraints, substitution margin,
 requalification triggers, canary/fallback, evidence, and owner/expiry for
 exceptions); see
-[`specification-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/specification-control-plane-standard.md)
+[`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)
 for the field walkthrough.
 
 An eval manifest with `authorityMode: spec-only` proves only that an immutable,

@@ -1,6 +1,6 @@
 ---
 name: repo-adoption-standard
-description: "Minimum doctrine-consuming surfaces: constitution projection, manifest, integrity fences, conformance entrypoints. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations."
+description: "Minimum canonical-standard adoption surfaces: constitution projection, manifest, integrity fences, conformance entrypoints. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations."
 ---
 # Repo Adoption Standard
 
@@ -10,7 +10,7 @@ Canonical home: `skills/repo-adoption-standard/` in `SylphxAI/skills`.
 Full body: [references/full-standard.md](references/full-standard.md).  
 Cutover map: [references/doctrine-parity-delta.md](references/doctrine-parity-delta.md).
 
-Doctrine `standards/repo-adoption-standard.md` is **alias-only** after cutover — author here only.
+The former source standard path is **alias-only** after cutover — author here only.
 
 ## Method
 

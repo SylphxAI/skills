@@ -15,7 +15,12 @@ Do not own provider payment truth, refund/account consequence policy, product ro
 
 ## Agent-first invariant
 
-Build the complete production-shaped support plane now: localized and accessible intake, knowledge retrieval, identity-safe diagnostics, classification, routing, grounded response generation, protected-action gates, case state, timers, dedupe, escalation, QA replay, observability, incident linkage, customer updates, and product feedback. Low ticket volume does not justify a shared inbox, manual triage, unversioned macros, or later automation.
+Build the complete declared support plane for actual contact reasons, risk,
+locales, service promises, and expected operating envelope. Use agents to avoid
+manual-first design, but do not create unused queues, integrations, or recurring
+operations merely because generation is cheap. Low volume may change topology;
+it does not justify unversioned answers, unsafe protected actions, missing case
+state, or an unowned manual gap.
 
 Routine operation is autonomous. A support agent may retrieve, classify, explain, collect bounded evidence, execute pre-authorized reversible actions, update status, and verify resolution. Money, durable entitlement, identity recovery, deletion, enforcement, safety, legal commitments, and destructive recovery remain with their owning authority and audit trail.
 

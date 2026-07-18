@@ -28,11 +28,11 @@ both halves operational.
 
 The cross-domain decision precedence, risk, reversibility, evidence, and
 option-value calculus is owned by
-[`sota-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/sota-execution-standard.md). This standard owns
+[`sota-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/sota-execution-standard/references/full-standard.md). This standard owns
 execution authority, graph construction, escalation mechanics, and completion
 discipline; it does not define a competing decision kernel.
 
-[`source-authoring-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/source-authoring-standard.md) owns Work Item,
+[`source-authoring-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/source-authoring-standard/references/full-standard.md) owns Work Item,
 attempt, checkpoint, exact source-candidate, commit, worktree, and workspace
 reconciliation semantics. This standard consumes those contracts for execution;
 it does not redefine them around a particular forge or delivery lane.
@@ -83,7 +83,7 @@ without waiting for the principal's voice: dominated strategies are
 eliminated by analysis, ruin-risk bets are rejected in the proposal stage by
 arithmetic, and frontier choices follow the recorded parameters. (Standing
 parameters live in a risk-posture record — see
-[`commercial-decision-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/commercial-decision-standard.md) "Risk
+[`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/commercial-decision-standard/references/full-standard.md) "Risk
 Posture And Delegation"; where no record exists yet, they are taken from the
 request or prior direction and re-confirmed when materially ambiguous.)
 Agents own means: execution,
@@ -112,7 +112,7 @@ make the split operational:
   agent-review in a separate adversarial context, evidence-first report. Escalation
   to the principal is by exception: a materiality threshold from the
   delegation envelope (defined in the risk-posture record —
-  [`commercial-decision-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/commercial-decision-standard.md)
+  [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/commercial-decision-standard/references/full-standard.md)
   "Risk Posture And Delegation"; where no record exists, use the existing
   ask-gates and ordinary judgment), genuine irreversibility, or a real ends
   question — and an open

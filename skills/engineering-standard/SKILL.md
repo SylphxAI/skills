@@ -10,7 +10,7 @@ Canonical home: `skills/engineering-standard/` in `SylphxAI/skills`.
 Full progressive-disclosure body: [references/full-standard.md](references/full-standard.md).  
 Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).
 
-Doctrine `standards/engineering-standard.md` is an **alias** after cutover — author here only.
+The former source standard path is **alias-only** after cutover — author here only.
 
 ## Method
 

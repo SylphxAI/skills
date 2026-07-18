@@ -15,14 +15,18 @@ Treat revenue, retention, reach, and virality as outcomes of player value. Never
 
 ## Agent-first invariant
 
-Assume autonomous construction capacity is elastic. Human headcount, conventional studio calendar, absent users, uncertain demand, or speculative pre-build ROI must not defer a requested or product-essential reversible capability.
+Assume autonomous construction capacity is elastic. Reprice implementation and
+verification using current agents. Select capabilities by player promise,
+expected durable value, option value, evidence, and full lifecycle cost; once
+selected, conventional studio staffing or typing cost alone may not justify
+structural debt or indefinite deferral.
 
 Run an exhaustive capability sweep, but do not force every possible system into every game. Give each capability one disposition:
 
-- `integrate-now` — requested or required by the player promise; build the complete production-shaped, scale-ready capability and its automation now;
+- `integrate-now` — requested or required by the player promise and positive-net after agent-native lifecycle repricing; build its complete production-shaped target and applicable automation now;
 - `reuse-scale-ready` — consume an already complete shared primitive and design the exact game-specific integration;
 - `contract-ready` — preserve a tested extension boundary because future compatibility is valuable, while keeping the capability absent from the runtime and player experience;
-- `not-applicable` — cite a player-promise, genre, business-model, platform, attention, safety, or physical reason; human effort and speculative ROI are invalid reasons;
+- `not-applicable` — cite a player-promise, genre, business-model, net-value, platform, attention, safety, or physical reason; historical human effort alone is invalid;
 - `floor-blocked` — cite the exact legal, platform, trust, safety, rights, consent, or physical floor and make the prohibited transition unrepresentable.
 
 For every `integrate-now` capability, default to `build-to-scale-now`: no MVP rewrite, manual operating phase, later hardening, deferred accessibility/localization/performance, or future replatform plan. Deliver through small verified slices for parallelism and learning, but do not shrink the declared final state.
@@ -104,7 +108,7 @@ Produce a dependency and learning sequence from paper model to graybox, verified
 
 Reject or redesign an output that:
 
-- defers a requested or essential reversible capability because of human staffing, calendar, absent users, or speculative ROI;
+- defers a selected essential reversible capability solely because of historical human staffing, typing, or calendar assumptions;
 - forces a genre-incoherent capability into a game without player value, or treats a feature checklist as design coherence;
 - proposes later hardening, automation, accessibility, localization, low-end optimization, migration, or replatforming for an integrated capability;
 - conflates designed, built, integrated, exposed, and production-proven;

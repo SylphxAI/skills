@@ -17,17 +17,17 @@ admission, landing, release, and deployment.
 
 Composes with:
 
-- [`mission-control-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/mission-control-standard.md) for Work Items,
+- [`mission-control-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/mission-control-standard/references/full-standard.md) for Work Items,
   claims, checkpoints, handoff, and proof-chain identity.
-- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/autonomous-execution-standard.md) for
+- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md) for
   execution graphs, delegation, collision cones, and evidence reporting.
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for parallel ownership and machine-enforced governance.
-- [`roleless-speculative-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/roleless-speculative-development-standard.md)
+- [`roleless-speculative-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/roleless-speculative-development-standard/references/full-standard.md)
   for immutable candidate selection and compare-and-swap landing when selected.
-- [`ci-admission-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/ci-admission-standard.md) for exact-candidate
+- [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md) for exact-candidate
   proof and scarce verification capacity.
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for the active lane's landing
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for the active lane's landing
   and terminal delivered-state proof.
 
 ## Canonical lifecycle and vocabulary

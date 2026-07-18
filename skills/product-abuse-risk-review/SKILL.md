@@ -36,7 +36,15 @@ Retrieve current platform, payment/provider, consumer-protection, privacy, ident
 7. Prefer the least harmful effective control: education/clarity, velocity or resource shaping, proof of possession, step-up verification, delayed settlement, scoped hold, reduced privilege, challenge, manual/specialist review, suspension, then termination. Match scope and duration to the threatened resource.
 8. Define fail-open, fail-closed, degrade, queue, or cap behavior per action and dependency. Missing signals or provider outage must not silently become universal approval, universal lockout, or irreversible punishment.
 9. Make legitimate recovery first-class: reason category, safe explanation, evidence review, accessible/multilingual appeal, SLA class, independent authority for severe actions, restoration, compensation/correction, and protection from retaliation. Track false positives by cohort and impact, not appeal win rate alone.
-10. Build complete scale-ready controls now: versioned policies/rules/models, real-time and batch paths, idempotent actions, ledgers, audit events, privacy/access boundaries, simulator/replay, shadow mode, canary, caps, kill switches, drift/adversary monitoring, incident routing, and rollback/reinstatement. Human-cost or absent abuse is not a reason for manual-first design.
+10. Build each selected control to the complete target justified by the modeled
+    resource, abuse path, exposure, reversibility, and operating envelope.
+    Version decisions and preserve idempotency, audit, privacy, recovery, and
+    safe disablement wherever applicable. Add real-time/batch dual paths,
+    simulators, shadowing, canaries, drift monitoring, or dedicated incident
+    machinery when they test or contain a material risk—not as a universal
+    checklist. Historical human cost alone is not a reason for manual-first
+    design; absent or immaterial abuse is not a reason to build unused control
+    infrastructure.
 11. Validate offline and online with known cases, synthetic variants, red-team scenarios, replay, shadow decisions, canaries, counterfactual samples, delayed outcomes, and holdouts where safe. Never train and evaluate on the same adjudication feedback without leakage controls.
 12. Optimize expected protected value subject to hard legal, rights, safety, privacy, platform, accessibility, and trust floors. A high loss estimate does not justify collective punishment, secret confiscation, inaccessible appeal, indefinite hold, or targeting vulnerable groups.
 
@@ -71,7 +79,7 @@ Reject or redesign an output that:
 - uses one score for unrelated irreversible actions or hides decision authority and evidence freshness;
 - confiscates unrelated value, indefinitely holds assets, traps accounts, or blocks appeal to improve economics;
 - leaks sensitive detection rules, collects unbounded identity/device data, or uses protected/proxy attributes without validated necessity and authority;
-- lacks idempotency, fail behavior, shadow/canary, caps, kill switch, audit, recovery, reinstatement, or incident routing;
+- lacks applicable idempotency, fail behavior, bounds, audit, recovery, reinstatement, or incident routing for the selected control and risk;
 - optimizes gross prevented loss while ignoring conversion, customer value, support cost, false positives, cohort harm, and attacker displacement;
 - claims fraud prevention, fairness, scale, or causality from invented labels, selected cases, static prose, or unobserved production behavior.
 

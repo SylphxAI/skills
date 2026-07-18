@@ -37,7 +37,7 @@ GitOps, executable contracts, or CI gates.
 ## Artifact altitude map
 
 Semantic authoring authorities per fact live in
-[`documentation-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/documentation-standard.md)'s "One semantic
+[`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md)'s "One semantic
 authority per fact" table; this standard owns the machine gate for each fact,
 and specifies its own artifact shapes (work packets, eval manifests, telemetry
 contracts, exception records) in the sections below.

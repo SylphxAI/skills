@@ -23,29 +23,28 @@ and how migration work is generated.
 
 This standard composes with:
 
-- [`project-manifest-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/project-manifest-standard.md) for repo
+- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md) for repo
   identity, boundaries, discovery adapters, and rollout packets;
-- [`documentation-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/documentation-standard.md) for ADR altitude
+- [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for ADR altitude
   and generated/freshness rules;
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for no-human gates, work packets, merge queues, and recovery;
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for shipped-state proof.
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for shipped-state proof.
 
 ## Core Rule
 
-Downstream repositories do not copy doctrine. They carry only:
+Downstream repositories do not copy shared standards. They carry only:
 
 - a root runtime constitution (`AGENTS.md`, `CLAUDE.md`, or equivalent) derived
-  from the canonical compact kernel and linked to `SylphxAI/doctrine`;
-- generated Agent Skills under `.agents/skills` when a repo or tool needs
-  portable agent-facing doctrine procedures;
+  from the canonical compact kernel and linked to its owning sources;
+- installed canonical Skills when the runtime supports Agent Skills;
 - `PROJECT.md` and `.doctrine/project.json` with repo-local facts;
 - thin repo-local workflows or settings only where GitHub/runtime mechanics
   require a local caller.
 
-Binding current enterprise choices live in versioned Doctrine profiles, not in
-principles or copied repo prose. Repositories record only their selected local
-stack, explicit exception, and migration state.
+Binding current enterprise choices live in versioned profiles, not in copied
+repo prose. Repositories record only their selected local stack, explicit
+exception, and migration state.
 
 Everything else is latest-read, generated, centrally audited, or reconciled by
 machine work. If a doctrine change requires a repo-local edit, the central
@@ -123,8 +122,8 @@ version would recreate the manual update problem.
 
 Use these versioning rules instead:
 
-- Latest Doctrine is the default operating model because root runtime
-  constitutions derive the compact kernel from and link to `SylphxAI/doctrine`.
+- The current admitted architecture generation and selected profiles are the
+  default operating model; repository age is not an exemption.
 - Repo manifests record local facts and adoption gaps, not copied doctrine
   content.
 - Stable contracts use names and IDs that can be audited: ADR numbers, schema
@@ -244,7 +243,7 @@ Requirements:
 - Policy-surface changes never ride the `L0` docs lane, whatever their diff
   shape: prose here is runtime behavior for agents. Classify them `L2` minimum
   under the risk lanes in
-  [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md).
+  [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md).
 - Each policy-surface PR carries an adversarial second-pass review artifact in the
   `AI-REVIEW` structured-comment shape defined by that standard's Structured
   Agent Audit (`Agent-Author` in the PR body; `head_sha`, `verdict`,
@@ -281,7 +280,7 @@ Requirements:
   `policy-review` job remains required defense in depth but must not be called
   independent admission authority.
 - Emergency policy changes follow the Emergency Fix use case in
-  [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md):
+  [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md):
   expedited adversarial review, with independent authority only when the
   separately controlled external authority exists, plus a timeboxed follow-up
   artifact — never gate removal.
@@ -305,7 +304,7 @@ letting it bloat:
   judgment call, never a per-instance ask-gate: the Autonomy Boundary's
   destructive/credentialed/irreversible triggers still apply to every
   occurrence until the amendment merges. Exception-record mechanics live in
-  [`specification-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/specification-control-plane-standard.md).
+  [`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md).
 - **Case before statute.** A decision made once is an ADR in the repo that
   made it — case law. Promotion into a doctrine standard — statute — requires
   recurrence evidence: the same rule independently needed by two or more
@@ -328,7 +327,7 @@ letting it bloat:
 - **Friction is the amendment signal.** Repeated exceptions, repeated
   escalations, and repeated confusion against the same rule are
   machine-visible evidence that the rule, not the fleet, is wrong —
-  [`specification-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/specification-control-plane-standard.md)'s
+  [`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)'s
   Exception records section owns the underlying rule (repeated exceptions
   mean the mechanism is wrong). The legislature's telemetry adds the counting
   mechanism: a periodic audit that tallies exception records per rule and
@@ -341,7 +340,8 @@ letting it bloat:
 
 ## Practical Defaults
 
-- Advisory/standard wording changes: merge in doctrine only; no fleet PRs.
+- Advisory/standard wording changes: edit the owning Skills package only; no
+  fleet PRs unless effective runtime projection must also change.
 - New repo bootstrap improvements: update templates; no fleet PRs unless the
   absence creates actual risk.
 - New manifest facts: add optional schema fields first; audit shape when
@@ -350,8 +350,8 @@ letting it bloat:
   branch protection only after producers exist; remove old contexts last.
 - Runtime-instruction changes: preserve the canonical compact constitution and
   update only its governed projection or local mappings; do not copy detailed
-  standards. Update `skills/registry.json` and
-  regenerate `.agents/skills` when the shared procedure surface changes.
+  standards. Update the owning Skills package and rebuild only derived catalogs
+  or runtime install bundles.
 - Emergency security/delivery changes: create a migration ADR, high-priority
   packet, and blocking conformance status with a narrow selector.
 

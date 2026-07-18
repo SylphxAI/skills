@@ -32,15 +32,15 @@ and stale-session recovery.
 
 This standard composes with:
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for PR, CI, merge-queue, separate-context adversarial review, and no-human gates.
-- [`specification-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/specification-control-plane-standard.md)
+- [`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)
   for work packets and schema-backed execution contracts.
-- [`documentation-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/documentation-standard.md) for one fact, one
+- [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for one fact, one
   home.
-- [`project-manifest-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/project-manifest-standard.md) and
+- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md) and
   GroundAtlas for repo/project identity and fleet adoption read models.
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for the definition-of-done
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for the definition-of-done
   ladder and production readback proof.
 
 ## Canonical Homes
@@ -245,14 +245,12 @@ design against the Work Ledger contract immediately.
 
 ## Validation
 
-- Validate `templates/mission-control-work-item.json`,
-  `templates/mission-control-event.json`, `templates/work-label-taxonomy.json`,
-  and `templates/work-checkpoint.json` with
-  `scripts/spec-control-plane-audit.py`.
-- Run `tests/test_spec_control_plane_audit.py` after changing these schemas or
-  templates.
-- Run `python3 scripts/generate-agent-skills.py --check` after updating this
-  standard or `skills/registry.json`.
+- Validate Mission Control schemas and templates in the product repository that
+  owns those executable contracts.
+- Run the owning product's schema, domain, API, and replay tests after changing
+  its runtime contracts.
+- Run this repository's admission and catalog freshness checks after changing
+  the static standard.
 
 
 ## Package checklist (Skills cutover)

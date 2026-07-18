@@ -23,15 +23,15 @@ decision records, configuration, experiments, gates, and follow-up work.
 
 This standard composes with:
 
-- [`documentation-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/documentation-standard.md) for ADR altitude
+- [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for ADR altitude
   and source-of-truth rules;
-- [`project-manifest-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/project-manifest-standard.md) for the
+- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md) for the
   repo-local current-state manifest;
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for release and production
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for release and production
   proof;
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for no-human gates, risk lanes, and recovery.
-- [`sota-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/sota-execution-standard.md) for the canonical
+- [`sota-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/sota-execution-standard/references/full-standard.md) for the canonical
   decision precedence, risk, reversibility, evidence, and option-value kernel.
 
 ## Canonical Homes
@@ -127,15 +127,15 @@ re-asking.
   single-product company) so the decision history stays durable.
 - **Computation duty.** Agents produce the posture with research and numbers
   under the canonical decision kernel in
-  [`sota-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/sota-execution-standard.md), with
-  [`autonomous-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/autonomous-execution-standard.md)
+  [`sota-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/sota-execution-standard/references/full-standard.md), with
+  [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md)
   supplying execution authority and escalation mechanics. Dominated options
   never survive to ratification and ruin-level options are screened before
   proposal. Where
   irreversibility times blast radius turns existential, the arithmetic
   itself yields floor items; route those through the heavier admission
   lanes — the security floor and
-  [`incident-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/incident-standard.md) supply the domain mechanism.
+  [`incident-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/incident-standard/references/full-standard.md) supply the domain mechanism.
 - **Ratification.** The principal ratifies the standing parameters and the
   first record once. Review triggers (stage-parameter thresholds, elapsed
   review date, friction telemetry) recompute the posture without the

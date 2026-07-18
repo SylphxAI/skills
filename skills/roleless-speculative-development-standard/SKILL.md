@@ -10,7 +10,7 @@ Canonical home: `skills/roleless-speculative-development-standard/` in `SylphxAI
 Full body: [references/full-standard.md](references/full-standard.md).  
 Cutover map: [references/doctrine-parity-delta.md](references/doctrine-parity-delta.md).
 
-Doctrine `standards/roleless-speculative-development-standard.md` is **alias-only** after cutover — author here only.
+The former source standard path is **alias-only** after cutover — author here only.
 
 ## Method
 

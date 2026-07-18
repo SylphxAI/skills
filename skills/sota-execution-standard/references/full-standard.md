@@ -23,21 +23,21 @@ constraints, then proving it with the right evidence.
 
 This standard composes with:
 
-- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/autonomous-execution-standard.md) for
+- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md) for
   execution graphs, latency hiding, subagents, and completion discipline;
-- [`engineering-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/engineering-standard.md) for architecture,
+- [`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineering-standard/references/full-standard.md) for architecture,
   SSOT, SoC, testing, performance, observability, security, and the Modern
   Technical Bar;
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for no-human gates, CI, merge queues, delivery slices, and recovery;
-- [`commercial-decision-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/commercial-decision-standard.md) for
+- [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/commercial-decision-standard/references/full-standard.md) for
   pricing, packaging, roadmap, positioning, and monetization decisions;
-- [`frontier-verification-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/frontier-verification-standard.md)
+- [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
   for deterministic simulation, eval-gated merge, automated canary analysis,
   and frontier verification backstops;
-- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-evolution-standard.md) for
+- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md) for
   fleet impact and migration when a SOTA decision changes central doctrine.
-- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-profile-standard.md) for binding
+- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-profile-standard/references/full-standard.md) for binding
   current selections whose validity depends on tooling or ecosystem conditions.
 
 ## Core Rule
@@ -274,7 +274,7 @@ SOTA judgment therefore optimizes verified throughput, never the speed or
 confidence of the story: the asserted certainty, scope, delivery state, safety,
 or frontier position may not exceed current authoritative evidence. Operational
 execution, checkpoint, and reporting mechanics are owned by
-[`autonomous-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/autonomous-execution-standard.md), not
+[`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md), not
 duplicated here.
 
 ## Evaluation Axes

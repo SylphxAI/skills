@@ -28,17 +28,17 @@ local facts, compact constitution projections, and unavoidable transport callers
 
 This standard composes with:
 
-- [`project-manifest-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/project-manifest-standard.md) for repo
+- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md) for repo
   identity, lifecycle, boundaries, and rollout packets;
-- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-evolution-standard.md) for
+- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md) for
   doctrine updates and fleet migration contracts;
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for no-human gates, CI admission, merge queue, preview policy, runners, and
   package-release controls;
-- [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/ci-runner-capacity-standard.md) for
+- [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-runner-capacity-standard/references/full-standard.md) for
   runner pickup SLOs, queue classification, and capacity/backpressure signals;
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for shipped-state proof;
-- [`commercial-decision-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/commercial-decision-standard.md) for
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for shipped-state proof;
+- [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/commercial-decision-standard/references/full-standard.md) for
   pricing, roadmap, and business-direction decisions.
 
 ## Control Plane Layers
@@ -74,7 +74,7 @@ New repositories start from doctrine defaults:
 ### Existing repositories
 
 Do not manually redesign every repository. Use the reconcile loop from
-[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-evolution-standard.md):
+[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md):
 
 ```text
 central audit
@@ -277,7 +277,7 @@ Only hard `DRIFT` artifact-identity findings should become generated packet
 issues by default; `REVIEW` findings (grandfathered ADR numbers,
 already-applied sequential migration filenames) follow the DRIFT/REVIEW
 handling in
-[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/doctrine-evolution-standard.md).
+[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md).
 
 ### Commercial decisions
 

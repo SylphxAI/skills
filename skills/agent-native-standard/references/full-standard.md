@@ -107,7 +107,7 @@ brief contract, child method and replanning autonomy, parent integration
 accountability, what never to delegate, and the separate-context
 adversarial-review requirement with its high-risk trigger list and
 durable-artifact rule — live in
-[`autonomous-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/autonomous-execution-standard.md)
+[`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md)
 "Subagent Use" and "Self-Review Loop".
 
 ## Durable Context
@@ -136,7 +136,7 @@ tool-using, safety-sensitive, or commercially material. Requalification is
 triggered by source changes and by upstream model/provider/runtime drift,
 deprecation, capability change, data-policy change, or breached cost, latency,
 quality, privacy, or safety budgets; see
-[`frontier-verification-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/frontier-verification-standard.md) for
+[`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md) for
 eval-gate requirements and the manifest schema.
 
 Use multi-agent architecture when evals or clear task decomposition justify
@@ -151,7 +151,7 @@ For long-running agents, use conversation/state compaction intentionally:
 preserve completed actions, active assumptions, IDs, tool outcomes, unresolved
 blockers, and the next concrete goal. SDK and runtime selection follows the
 active engineering profile; enduring adapter and evidence obligations live in
-[`engineering-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/engineering-standard.md).
+[`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineering-standard/references/full-standard.md).
 
 
 ## Package checklist (Skills cutover)

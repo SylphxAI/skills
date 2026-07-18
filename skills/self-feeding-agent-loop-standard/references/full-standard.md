@@ -29,16 +29,16 @@ delegation.
 
 This standard composes with:
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-first-development-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for GitHub-native coordination, issue/PR ownership, structured agent audit,
   collision handling, and machine gates;
-- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/autonomous-execution-standard.md) for
+- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md) for
   subagent use, execution graphs, and completion discipline;
-- [`prompt-architecture.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/prompt-architecture.md) for role-prompt
+- [`prompt-architecture.md`](https://github.com/SylphxAI/skills/blob/main/skills/prompt-architecture/references/full-standard.md) for role-prompt
   derivation and adapter boundaries;
-- [`specification-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/specification-control-plane-standard.md)
+- [`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)
   for work packets and high-risk eval/simulation/telemetry artifacts;
-- [`delivery-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/delivery-standard.md) for the done-state ladder.
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for the done-state ladder.
 
 ## Operating Model
 
@@ -66,12 +66,12 @@ broker or feed one child's private output into another child's prompt. Handoff
 state is only the target repository's Git/GitHub state: issues, comments, PRs,
 branches, commits, checks, labels, and deployment/readback evidence.
 
-## Doctrine Ownership
+## Ownership
 
-Doctrine owns the reusable process shape, launch envelope, role references,
-required readout fields, and improvement policy. Target repositories own their
-local project facts, issue contents, implementation, CI, deployment, and
-production proof.
+This Skills package owns the reusable process shape, launch envelope, role
+references, required readout fields, and improvement policy. Target
+repositories own their local project facts, issue contents, implementation,
+CI, deployment, and production proof.
 
 Do not fork this loop into repo-local prompts. A repo or runtime adapter may set
 assignment metadata, launch profile, tick count, and tool-specific spawn wiring,
@@ -84,7 +84,7 @@ Coordinator envelope before spawn. The default renderer does not embed the long
 Reviewer or Builder references. The Coordinator gives each qualified child an
 outcome-owned brief and source pointers; the child loads only the role material
 needed for its lane. Do not ask the Coordinator to reconstruct or copy a long
-prompt during the tick. The Doctrine-owned renderer is
+prompt during the tick. The owning runtime renderer is
 [`scripts/render-self-feeding-agent-loop.py`](https://github.com/SylphxAI/doctrine/blob/main/scripts/render-self-feeding-agent-loop.py).
 
 Every self-feeding loop launch must state:
@@ -325,7 +325,7 @@ owner-product-decision blocker.
 
 Recurring approval blockers must become machine policy gates — the gate
 classes in
-[`autonomous-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/autonomous-execution-standard.md).
+[`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md).
 
 ## Improvement Policy
 

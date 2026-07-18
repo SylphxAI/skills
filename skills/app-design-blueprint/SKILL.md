@@ -21,17 +21,28 @@ Use a separate specialist when its artifact could be accepted or rejected withou
 
 ## Agent-first invariant
 
-Assume autonomous construction capacity is elastic. Human headcount, human-hours, calendar estimates, implementation cost, missing users, uncertain demand, or speculative pre-build ROI may not reject or postpone a requested or promise-essential reversible capability once selected.
+Assume autonomous construction capacity is elastic. Reprice implementation and
+verification using current agents rather than historical human effort. Select
+capabilities by user promise, expected durable value, option value, evidence,
+and full lifecycle cost; once selected, human typing or staffing cost alone may
+not justify structural debt or indefinite deferral.
 
 Run an exhaustive capability sweep, but do not force every possible system into every app. Give each capability one disposition:
 
-- `integrate-now` — requested or required by the user promise; build the complete production-shaped, scale-ready capability and its automation now;
+- `integrate-now` — requested or required by the user promise and positive-net after agent-native lifecycle repricing; build the complete production-shaped target and its applicable automation now;
 - `reuse-scale-ready` — consume an already complete shared primitive and design the exact app-specific integration and proof now;
 - `contract-ready` — preserve a tested extension boundary because future compatibility is valuable, while keeping the capability absent from the runtime and user experience;
-- `not-applicable` — cite an exact product-promise, product-type, audience, business-model, attention, semantic, platform, or physical reason; human effort, implementation cost, missing users, uncertain demand, and speculative ROI are invalid reasons;
+- `not-applicable` — cite an exact product-promise, product-type, audience, business-model, net-value, attention, semantic, platform, or physical reason; historical human effort alone is invalid;
 - `floor-blocked` — cite the exact legal, platform, trust, safety, rights, consent, authority, or physical floor, make the prohibited transition unrepresentable, and define the safe alternative where one exists.
 
-Requested or promise-essential legitimate capabilities must be `integrate-now` or `reuse-scale-ready` unless an exact floor blocks them. For every `integrate-now` capability, default to `build-to-scale-now`: define the complete target, operating behavior, and automation now, using small end-to-end slices to verify risk without reducing final scope. Do not plan a later hardening, automation, i18n, accessibility, low-end, HTML5, migration, scale, observability, or replatform phase. Unknown demand limits certainty and exposure; it neither defers a selected capability nor selects an irrelevant one.
+Requested capabilities must still pass product-coherence and net-value
+selection; promise-essential legitimate capabilities default to
+`integrate-now` or `reuse-scale-ready` unless an exact floor blocks them. For
+every integrated capability, define the complete target, operating behavior,
+and applicable automation, then deliver it through verified slices. Do not use
+an MVP label to hide known correctness, accessibility, migration, recovery, or
+operability debt. Demand uncertainty may change selection and exposure; it does
+not excuse weak architecture after selection.
 
 Product fit controls selection, manifestation, and placement. Cross-cutting quality and trust floors apply to every selected capability they govern; they are not optional feature rows.
 
@@ -161,10 +172,10 @@ Sequence verified slices that converge on the complete selected target. Give eve
 
 Reject or redesign an output that:
 
-- defers a requested or promise-essential legitimate capability because of staffing, calendar, implementation cost, missing users, uncertain demand, or speculative ROI;
+- defers a selected promise-essential capability solely because of historical human staffing, typing, or calendar assumptions;
 - forces product-incoherent social, community, collaboration, commerce, AI, or other capability into an app without user value, or treats the capability sweep as a feature checklist;
 - uses `contract-ready` or `not-applicable` as a staging label for selected work;
-- proposes a conventional MVP, later hardening, manual operations, or future port/replatform phase for a selected capability, or cuts selected scope for speculative ROI;
+- uses an MVP label, routine manual operation, or an unspecified future phase to leave a selected capability below its declared correctness and lifecycle floor;
 - copies game levels or streak gates into app utility, or hides a feature behind arbitrary tenure/spend/engagement;
 - overwhelms the primary workflow merely because every primitive exists;
 - makes profile creation, avatar customization, permissions, account signup, or notification consent a cold-start toll before value without a semantic need;

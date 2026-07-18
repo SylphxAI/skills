@@ -14,12 +14,12 @@ How we write documentation, specification, and decisions so they never drift.
 This is the altitude map; it routes to the existing rules rather than
 restating them (`P-SIMPLICITY`). The other standards own the detail:
 specification content and the executable-over-prose rule live in
-[`agent-native-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/agent-native-standard.md) (*Documentation And
+[`agent-native-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-native-standard/references/full-standard.md) (*Documentation And
 Specification First*); the schema-is-SSOT and comment rules live in
-[`engineering-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/engineering-standard.md) (*Sources Of Truth*,
+[`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineering-standard/references/full-standard.md) (*Sources Of Truth*,
 *Comments And Code Documentation*); work packets, spec lifecycle records, eval
 manifests, telemetry contracts, and exception records live in
-[`specification-control-plane-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/specification-control-plane-standard.md);
+[`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md);
 decision numbering lives in [`../ADR.md`](https://github.com/SylphxAI/doctrine/blob/main/ADR.md).
 
 ## One semantic authority per fact
@@ -106,7 +106,7 @@ Commercial direction follows the same altitude rule. Pricing, packaging,
 roadmap, and market-positioning rationale live in ADRs; live prices live in the
 billing SSOT; entitlements live in code/schema/tests; metrics live in the
 declared analytics source. See
-[`commercial-decision-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/commercial-decision-standard.md).
+[`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/commercial-decision-standard/references/full-standard.md).
 
 ## Cross-cutting docs aggregate; they never become an authoring authority
 
@@ -154,11 +154,13 @@ is drift. Generator `--check` is side-effect-free: the audit snapshots and
 re-hashes the repository afterward and rejects any mutation. Stable routing
 pages may link to resolution mechanisms but never hand-list active digests.
 
-Generated Agent Skills are current only when
-`python3 scripts/generate-agent-skills.py --check` passes.
+Generated catalogs or runtime install bundles are current only when their
+declared package/catalog freshness check passes. Canonical Skill bodies are
+authored directly and are never validated by comparing them with a second prose
+source.
 
 Human-facing documentation follows the human-first communication contract in
-[`autonomous-execution-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/autonomous-execution-standard.md): lead
+[`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md): lead
 with the useful result, use progressive disclosure, and remove padding without
 dropping material facts or proof. This standard still owns durable-document
 altitude and freshness; it does not create a second prose-style authority.

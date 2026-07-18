@@ -15,7 +15,7 @@ owns the selected forge, transport, and release adapters; references to GitHub
 below are the current profile's binding implementation, not a timeless
 requirement of delivery itself.
 
-[`source-authoring-standard.md`](https://github.com/SylphxAI/doctrine/blob/main/standards/source-authoring-standard.md) owns the exact
+[`source-authoring-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/source-authoring-standard/references/full-standard.md) owns the exact
 source candidate, semantic atomicity, checkpoint, commit/worktree projection,
 and workspace-reconciliation contract consumed by every delivery profile.
 

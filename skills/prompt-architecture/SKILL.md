@@ -1,6 +1,6 @@
 ---
 name: prompt-architecture
-description: "AGENTS.md projections, skill metadata, runtime constitutions, and instruction hierarchy without forking Doctrine law. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations."
+description: "AGENTS.md projections, skill metadata, runtime constitutions, and instruction hierarchy without forking canonical instruction law. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations."
 ---
 # Prompt Architecture
 
@@ -10,7 +10,7 @@ Canonical home: `skills/prompt-architecture/` in `SylphxAI/skills`.
 Full body: [references/full-standard.md](references/full-standard.md).  
 Cutover map: [references/doctrine-parity-delta.md](references/doctrine-parity-delta.md).
 
-Doctrine `standards/prompt-architecture.md` is **alias-only** after cutover — author here only.
+The former source standard path is **alias-only** after cutover — author here only.
 
 ## Method
 

@@ -23,7 +23,13 @@ another skill owns the artifact, use that specialist directly.
 
 ## Agent-first invariant
 
-Assume autonomous construction capacity is elastic. Human staffing, calendar time, conventional studio cost, missing users, uncertain demand, or speculative pre-build ROI may not shrink the declared product target. Build complete production-shaped capabilities, adapters, automation, migrations, observability, low-end/global/platform support, and operating controls now through small verified slices.
+Assume autonomous construction capacity is elastic and reprice work using
+current agents. The declared target must be selected from product promise,
+expected durable value, option value, evidence, and full lifecycle cost—not
+historical staffing cost or a feature checklist. Build selected capabilities
+and applicable adapters, automation, migrations, observability, platform
+support, and operating controls to their complete declared target through small
+verified slices.
 
 Replace P0/P1/P2 feature deferral with independent state axes:
 
@@ -33,7 +39,10 @@ Proof: hypothesis | design-validated | implementation-verified | scale-verified 
 Exposure/release: unavailable | authority-gated | canary | staged | generally-available | degraded | withdrawn
 ```
 
-A verified slice reduces integration risk; it is not reduced final scope. Do not leave a known hardening, scale, automation, localization, accessibility, HTML5, SDK replacement, migration, port, or replatform project for later.
+A verified slice reduces integration risk; it is not permission to leave a
+selected capability below its declared correctness and lifecycle floor. Future
+options may remain contract-ready when they are not yet positive-net selected
+runtime capabilities.
 
 External review, partner access, certification, contracts, signing authority, law, safety, consent, and physical constraints remain real gates. Agents automate preparation, submission, polling, reconciliation, recovery, and evidence; they do not fabricate authority or approval.
 
@@ -145,7 +154,7 @@ For each artifact and channel distinguish prepared, implementation-verified, sca
 
 Reject or redesign a program that:
 
-- uses P0/P1/P2, MVP, human effort, missing users, demand, or speculative ROI to postpone reversible declared capabilities;
+- uses P0/P1/P2, MVP, or historical human effort to postpone a selected capability below its declared correctness and lifecycle floor;
 - makes this orchestrator the canonical home for app/game UX, prices,
   transactions, refund consequences, campaign semantics, localized strings,
   finished product media, or live platform policy;
