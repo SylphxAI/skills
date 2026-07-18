@@ -241,6 +241,9 @@ function syncTarget(target) {
     synchronizedAt: new Date().toISOString(),
     runtime: target.runtime,
     skills: desired,
+    profiles: catalog.skills
+      .filter((skill) => skill.profile)
+      .map((skill) => skill.profile),
   };
   writeAtomic(manifestPath(target), `${JSON.stringify(manifest, null, 2)}\n`);
   rmSync(path.join(target.path, 'skills-binding-install-manifest.json'), { force: true });

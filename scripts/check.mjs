@@ -4,6 +4,8 @@ import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import Ajv2020 from 'ajv/dist/2020.js';
+import addFormats from 'ajv-formats';
 import { catalogBytes, parseFrontmatter, repositoryRoot } from './build-catalog.mjs';
 
 const NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -90,7 +92,7 @@ function sameMembers(actual, expected) {
     && new Set(actual).size === actual.length;
 }
 
-function validateFleetEngineeringProfile(document, errors) {
+export function validateFleetEngineeringProfile(document, errors, projectSchemaDocument = null) {
   const location = 'skills/fleet-engineering-profile/references/profile.json';
   const selectors = document.selector?.matchAll || [];
   const selectorByFact = new Map(selectors.map((selector) => [selector.fact, selector]));
@@ -115,7 +117,7 @@ function validateFleetEngineeringProfile(document, errors) {
   const expectedDefaults = [
     ['engineering.language.backend-authority', 'rust', FLEET_BACKEND_ROLES],
     ['engineering.language.web-authority', 'typescript-bun-next', FLEET_WEB_ROLES],
-    ['engineering.language.completion-measure', 'service-role-and-effect-coverage', ['language-boundary-audit', 'migration-completion']],
+    ['engineering.language.completion-measure', 'service-role-and-effect-coverage', [...FLEET_BACKEND_ROLES, ...FLEET_WEB_ROLES]],
   ];
   if (defaults.size !== expectedDefaults.length || document.defaults?.length !== expectedDefaults.length) {
     errors.push(`${location}: default selection set drift`);
@@ -142,31 +144,41 @@ function validateFleetEngineeringProfile(document, errors) {
     'references',
     'project-manifest.schema.json',
   );
-  let projectSchema;
-  try {
-    projectSchema = JSON.parse(readFileSync(projectSchemaPath, 'utf8'));
-  } catch (error) {
-    errors.push(`skills/project-manifest-standard/references/project-manifest.schema.json: ${error.message}`);
-    return;
+  let projectSchema = projectSchemaDocument;
+  if (!projectSchema) {
+    try {
+      projectSchema = JSON.parse(readFileSync(projectSchemaPath, 'utf8'));
+    } catch (error) {
+      errors.push(`skills/project-manifest-standard/references/project-manifest.schema.json: ${error.message}`);
+      return;
+    }
   }
+  const serviceFacts = projectSchema.properties?.serviceFacts;
   const serviceFact = projectSchema.$defs?.serviceFact;
+  const profileBinding = projectSchema.$defs?.profileBinding;
+  const requiredEnvelopeFields = ['vocabularyVersion', 'profile', 'components'];
   const requiredFactFields = [
-    'boundaryVersion',
-    'componentId',
     'serviceRole',
     'implementation',
-    'production',
+    'declaredProductionAuthorityScope',
     'backendOwner',
     'ownedEffects',
   ];
-  if (projectSchema.properties?.serviceFacts?.items?.$ref !== '#/$defs/serviceFact'
+  if (serviceFacts?.additionalProperties !== false
+      || !sameMembers(serviceFacts?.required, requiredEnvelopeFields)
+      || serviceFacts?.properties?.vocabularyVersion?.const !== 1
+      || serviceFacts?.properties?.profile?.$ref !== '#/$defs/profileBinding'
+      || serviceFacts?.properties?.components?.minProperties !== 1
+      || serviceFacts?.properties?.components?.additionalProperties?.$ref !== '#/$defs/serviceFact'
       || serviceFact?.additionalProperties !== false
       || !sameMembers(serviceFact?.required, requiredFactFields)) {
     errors.push(`${location}: canonical project serviceFacts contract is missing or incomplete`);
   }
   if (!sameMembers(serviceFact?.properties?.serviceRole?.enum, [...FLEET_BACKEND_ROLES, ...FLEET_WEB_ROLES])
       || !sameMembers(serviceFact?.properties?.ownedEffects?.items?.enum, FLEET_FORBIDDEN_WEB_EFFECTS)
-      || !sameMembers(serviceFact?.properties?.implementation?.enum, ['other', 'rust', 'typescript-bun-next'])) {
+      || !sameMembers(serviceFact?.properties?.implementation?.enum, ['other', 'rust', 'typescript-bun-next'])
+      || !sameMembers(serviceFact?.properties?.declaredProductionAuthorityScope?.enum, ['in-scope', 'out-of-scope'])
+      || !sameMembers(profileBinding?.required, ['id', 'revision', 'contentDigest'])) {
     errors.push(`${location}: project serviceFacts vocabulary does not match the fleet profile`);
   }
 
@@ -176,7 +188,30 @@ function validateFleetEngineeringProfile(document, errors) {
   }
 }
 
-function validateMachineProfile(folder, packageRoot, errors) {
+export function validateActiveProfileMetadata(document, folder, errors, today = new Date().toISOString().slice(0, 10)) {
+  if (document.profile?.lifecycle !== 'active') {
+    errors.push(`skills/${folder}/references/profile.json: canonical profiles must be active`);
+  }
+  if (!['governance-constraint', 'selection-default'].includes(document.profile?.authorityClass)) {
+    errors.push(`skills/${folder}/references/profile.json: invalid authorityClass`);
+  }
+  if (document.profile?.effectiveOn > today) {
+    errors.push(`skills/${folder}/references/profile.json: active profile is not effective yet`);
+  }
+  if (document.profile?.reviewBy < today) {
+    errors.push(`skills/${folder}/references/profile.json: active profile review window expired`);
+  }
+  if (document.exceptionPolicy?.mode !== 'typed-expiring'
+      || document.exceptionPolicy?.expiryAction !== 'fail-closed') {
+    errors.push(`skills/${folder}/references/profile.json: exception lifecycle must fail closed`);
+  }
+  if (document.retirement?.retiredRevisionSelectable !== false
+      || document.retirement?.successor !== null) {
+    errors.push(`skills/${folder}/references/profile.json: active profile retirement state is invalid`);
+  }
+}
+
+function validateMachineProfile(folder, packageRoot, errors, profiles) {
   const profilePath = path.join(packageRoot, 'references', 'profile.json');
   if (!existsSync(profilePath)) return;
   let document;
@@ -196,6 +231,7 @@ function validateMachineProfile(folder, packageRoot, errors) {
   if (document.profile?.contentDigestScope !== 'canonical-json-excluding:/profile/contentDigest') {
     errors.push(`skills/${folder}/references/profile.json: unsupported digest scope`);
   }
+  validateActiveProfileMetadata(document, folder, errors);
 
   const digestCandidate = structuredClone(document);
   delete digestCandidate.profile.contentDigest;
@@ -209,7 +245,15 @@ function validateMachineProfile(folder, packageRoot, errors) {
     errors.push(`skills/${folder}/references/profile.json: local $schema is missing`);
   } else {
     try {
-      JSON.parse(readFileSync(schemaPath, 'utf8'));
+      const schema = JSON.parse(readFileSync(schemaPath, 'utf8'));
+      const ajv = new Ajv2020({ allErrors: true, strict: true, allowUnionTypes: true });
+      addFormats(ajv);
+      const validate = ajv.compile(schema);
+      if (!validate(document)) {
+        for (const finding of validate.errors || []) {
+          errors.push(`skills/${folder}/references/profile.json${finding.instancePath || '/'}: ${finding.message}`);
+        }
+      }
     } catch (error) {
       errors.push(`${path.relative(repositoryRoot, schemaPath)}: ${error.message}`);
     }
@@ -237,9 +281,10 @@ function validateMachineProfile(folder, packageRoot, errors) {
   }
 
   if (folder === 'fleet-engineering-profile') validateFleetEngineeringProfile(document, errors);
+  profiles.push({ folder, document });
 }
 
-function validateSkill(folder, names, errors) {
+function validateSkill(folder, names, errors, profiles) {
   const packageRoot = path.join(repositoryRoot, 'skills', folder);
   const skillFile = path.join(packageRoot, 'SKILL.md');
   if (!existsSync(skillFile)) {
@@ -274,7 +319,7 @@ function validateSkill(folder, names, errors) {
     if (/\.(?:md|markdown)$/i.test(file)) validateLocalLinks(text, file, errors);
   }
 
-  validateMachineProfile(folder, packageRoot, errors);
+  validateMachineProfile(folder, packageRoot, errors, profiles);
 
   const openAiMetadata = path.join(packageRoot, 'agents', 'openai.yaml');
   if (existsSync(openAiMetadata)) {
@@ -283,49 +328,83 @@ function validateSkill(folder, names, errors) {
   }
 }
 
-const errors = [];
-for (const removed of REMOVED_BOUNDARIES) {
-  if (existsSync(path.join(repositoryRoot, removed))) errors.push(`${removed}/ is outside the Skills source boundary`);
+function selectorsMayOverlap(left, right) {
+  const leftByFact = new Map((left || []).map((selector) => [selector.fact, selector.values || []]));
+  const rightByFact = new Map((right || []).map((selector) => [selector.fact, selector.values || []]));
+  for (const fact of new Set([...leftByFact.keys(), ...rightByFact.keys()])) {
+    if (!leftByFact.has(fact) || !rightByFact.has(fact)) continue;
+    if (!leftByFact.get(fact).some((value) => rightByFact.get(fact).includes(value))) return false;
+  }
+  return true;
 }
 
-const skillFolders = readdirSync(path.join(repositoryRoot, 'skills'), { withFileTypes: true })
-  .filter((entry) => entry.isDirectory())
-  .map((entry) => entry.name)
-  .sort();
-const names = new Set();
-for (const folder of skillFolders) validateSkill(folder, names, errors);
-
-const rootSchema = path.join(repositoryRoot, 'schemas', 'product-artifact-envelope.schema.json');
-if (!existsSync(rootSchema)) errors.push('schemas/product-artifact-envelope.schema.json: missing');
-else {
-  const canonical = readFileSync(rootSchema, 'utf8');
-  for (const file of walk(path.join(repositoryRoot, 'skills')).filter((item) => item.endsWith('/product-artifact-envelope.schema.json'))) {
-    if (readFileSync(file, 'utf8') !== canonical) errors.push(`${path.relative(repositoryRoot, file)}: shared product envelope drift`);
+export function validateActiveProfileCollisions(profiles, errors) {
+  const active = profiles.filter(({ document }) => document.profile?.lifecycle === 'active');
+  for (let leftIndex = 0; leftIndex < active.length; leftIndex += 1) {
+    for (let rightIndex = leftIndex + 1; rightIndex < active.length; rightIndex += 1) {
+      const left = active[leftIndex];
+      const right = active[rightIndex];
+      const rightKeys = new Set((right.document.defaults || []).map((item) => item.key));
+      const sharedKeys = (left.document.defaults || []).map((item) => item.key).filter((key) => rightKeys.has(key));
+      if (!sharedKeys.length) continue;
+      if (selectorsMayOverlap(left.document.selector?.matchAll, right.document.selector?.matchAll)) {
+        errors.push(`skills/${left.folder} and skills/${right.folder}: active profile selector collision on ${sharedKeys.join(', ')}`);
+      }
+    }
   }
 }
 
-const catalogPath = path.join(repositoryRoot, 'catalog.json');
-if (!existsSync(catalogPath) || readFileSync(catalogPath, 'utf8') !== catalogBytes(repositoryRoot)) {
-  errors.push('catalog.json is stale; run npm run build:catalog');
+export function checkRepository() {
+  const errors = [];
+  for (const removed of REMOVED_BOUNDARIES) {
+    if (existsSync(path.join(repositoryRoot, removed))) errors.push(`${removed}/ is outside the Skills source boundary`);
+  }
+
+  const skillFolders = readdirSync(path.join(repositoryRoot, 'skills'), { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+  const names = new Set();
+  const profiles = [];
+  for (const folder of skillFolders) validateSkill(folder, names, errors, profiles);
+  validateActiveProfileCollisions(profiles, errors);
+
+  const rootSchema = path.join(repositoryRoot, 'schemas', 'product-artifact-envelope.schema.json');
+  if (!existsSync(rootSchema)) errors.push('schemas/product-artifact-envelope.schema.json: missing');
+  else {
+    const canonical = readFileSync(rootSchema, 'utf8');
+    for (const file of walk(path.join(repositoryRoot, 'skills')).filter((item) => item.endsWith('/product-artifact-envelope.schema.json'))) {
+      if (readFileSync(file, 'utf8') !== canonical) errors.push(`${path.relative(repositoryRoot, file)}: shared product envelope drift`);
+    }
+  }
+
+  const catalogPath = path.join(repositoryRoot, 'catalog.json');
+  if (!existsSync(catalogPath) || readFileSync(catalogPath, 'utf8') !== catalogBytes(repositoryRoot)) {
+    errors.push('catalog.json is stale; run npm run build:catalog');
+  }
+
+  for (const rootFile of [
+    'README.md',
+    'PROJECT.md',
+    'project.manifest.json',
+    'LICENSE',
+    'runtime/hooks.mjs',
+    'runtime/reconcile.mjs',
+    'runtime/sylphx-skills.mjs',
+  ]) {
+    const absolute = path.join(repositoryRoot, rootFile);
+    if (!existsSync(absolute) || !statSync(absolute).isFile()) errors.push(`${rootFile}: missing`);
+  }
+
+  return { errors, skillFolders, profiles };
 }
 
-for (const rootFile of [
-  'README.md',
-  'PROJECT.md',
-  'project.manifest.json',
-  'LICENSE',
-  'runtime/hooks.mjs',
-  'runtime/reconcile.mjs',
-  'runtime/sylphx-skills.mjs',
-]) {
-  const absolute = path.join(repositoryRoot, rootFile);
-  if (!existsSync(absolute) || !statSync(absolute).isFile()) errors.push(`${rootFile}: missing`);
+if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) {
+  const { errors, skillFolders } = checkRepository();
+  if (errors.length) {
+    console.error(`Skills integrity failed with ${errors.length} finding(s):`);
+    for (const error of errors) console.error(`- ${error}`);
+    process.exit(1);
+  }
+  console.log(`Skills integrity ok: ${skillFolders.length} canonical packages`);
 }
-
-if (errors.length) {
-  console.error(`Skills integrity failed with ${errors.length} finding(s):`);
-  for (const error of errors) console.error(`- ${error}`);
-  process.exit(1);
-}
-
-console.log(`Skills integrity ok: ${skillFolders.length} canonical packages`);

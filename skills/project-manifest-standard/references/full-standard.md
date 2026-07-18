@@ -34,10 +34,10 @@ The machine manifest records, using controlled vocabulary where available:
   surfaces, allowed dependencies, and forbidden coupling;
 - **architecture** — canonical generation/profile references and typed adoption
   gaps without copying standard prose;
-- **service facts** — when applicable, deployable component ids, service roles,
-  implementation technologies, production status, backend owners, and owned
-  effects. These are observations about the repository, never a local copy of
-  fleet language policy;
+- **service facts** — when applicable, profile-bound component ids, service
+  roles, implementation technologies, declared production-authority scope,
+  backend-owner references, and owned effects. These are static repository
+  declarations, never a local copy of fleet policy or live deployment state;
 - **documentation** — homes for ADRs, specs, catalogs, generated references,
   and runbooks;
 - **delivery** — candidate model, verification command/status, terminal
@@ -51,12 +51,15 @@ Profiles and fleet selectors are referenced by stable identity and digest; the
 manifest does not copy their content. Current resolved fleet state belongs in
 Control Plane, not in hand-maintained repository prose.
 
-`serviceFacts` uses a versioned vocabulary so Control Plane can join product
-facts to the selected fleet Profile without guessing from file extensions or
-process names. Repositories report what exists; the active Profile decides
-whether those facts conform. An empty effect list is an explicit factual claim,
-not proof by omission, and `backendOwner: null` means no backend owner is being
-claimed for that component.
+`serviceFacts` is a profile-bound envelope with a versioned vocabulary and a
+component-id map. The map makes component identity unique by construction; the
+profile id, revision, and digest prevent stale facts from silently joining a
+new selection. Repositories declare intended production-authority scope;
+Control Plane compares that declaration with observed deployment and blocks a
+missing, unresolved, stale, or contradictory projection. A repository flag can
+never suppress a deployed component or override live readback. An empty effect
+list is an explicit factual claim, not proof by omission, and
+`backendOwner: null` means no backend owner is being claimed.
 
 ## Lifecycle contract
 
@@ -113,8 +116,9 @@ fleet-wide proof.
 - [ ] Every public surface and cross-repository dependency has a named owner.
 - [ ] Architecture/profile references identify current authority without
       copying its prose.
-- [ ] Applicable deployable components project versioned service-role, backend
-      owner, and owned-effect facts without restating fleet policy.
+- [ ] Applicable components project an exact profile-bound, non-empty,
+      unique-id service-fact map without restating fleet policy; Control Plane
+      blocks unresolved owners and declaration/readback disagreement.
 - [ ] Verification commands and terminal delivery boundary are executable.
 - [ ] Adoption and architecture gaps are typed, owned, and falsifiable.
 - [ ] `PROJECT.md` projects the manifest instead of becoming a second fact

@@ -29,11 +29,14 @@ contract disagree, resolution fails closed and the package must be corrected.
   deployment, exceptions, and convergence.
 
 Product repositories project those facts through the canonical optional
-`serviceFacts` field in `project.manifest.json`. Each fact names a versioned
-component id, service role, implementation, production status, backend owner,
-and explicit owned-effect list. Repositories do not copy the defaults or
-forbidden-effect policy: Control Plane joins their facts to this profile by its
-id, revision, and digest and fails unknown vocabulary closed.
+`serviceFacts` envelope in `project.manifest.json`. The envelope binds the exact
+profile id, revision, digest, and vocabulary version, then maps unique component
+ids to service role, implementation, declared production-authority scope,
+backend-owner reference, and explicit owned-effect list. Repositories do not
+copy the defaults or forbidden-effect policy. Control Plane fails missing,
+empty, stale, conflicting, or unresolved facts closed for applicable repos and
+compares the declaration with observed deployment; local scope never overrides
+live readback.
 
 ## Resolution table
 
@@ -74,6 +77,9 @@ production defect, parity gap, or missing capability remains a Rust work item.
 - Enumerate deployable components and their declared service roles.
 - Verify each applicable repository projects versioned `serviceFacts`; missing
   facts remain a Control Plane coverage gap rather than inferred compliance.
+- Verify the envelope binds this exact profile revision and digest, component
+  ids are unique, backend-owner references resolve, and declared scope agrees
+  with independent deployment observation.
 - Enumerate database, queue, authorization, external, and background effects.
 - Prove that Rust owns every backend or durable-effect role.
 - Prove that TypeScript/Bun/Next components are browser, product-web, SSR, or UI

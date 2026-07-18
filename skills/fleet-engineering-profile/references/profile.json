@@ -5,7 +5,7 @@
   "profile": {
     "id": "fleet-engineering-profile",
     "revision": "2026-07-18.2",
-    "contentDigest": "sha256:d5bb1ca138e71fc3b169e6e8f67984a46a3dba441dcdab34eab14c7a932a6dc1",
+    "contentDigest": "sha256:5aecef66e247ef87249dffd950e8b998139eac6bfb65ca7b48252bd9c1b9fec1",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
     "decisionRef": "references/ADR-20260718-fleet-language-boundary.md",
@@ -87,7 +87,23 @@
     {
       "key": "engineering.language.completion-measure",
       "value": "service-role-and-effect-coverage",
-      "appliesToRoles": ["language-boundary-audit", "migration-completion"],
+      "appliesToRoles": [
+        "api",
+        "backend-service",
+        "background-job",
+        "browser",
+        "controller",
+        "critical-path",
+        "gateway",
+        "product-web",
+        "queue-consumer",
+        "queue-producer",
+        "runtime",
+        "server-rendered-web",
+        "storage",
+        "ui-orchestration",
+        "worker"
+      ],
       "rationale": "Completion is semantic coverage of declared service roles and effects, not a source-file statistic.",
       "constraints": [
         "Never use .ts file count, repository language totals, Bun process presence, or endpoint-shell parity as completion evidence.",

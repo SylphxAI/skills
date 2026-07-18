@@ -112,9 +112,19 @@
       }
     },
     "serviceFacts": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": { "$ref": "#/$defs/serviceFact" }
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vocabularyVersion", "profile", "components"],
+      "properties": {
+        "vocabularyVersion": { "const": 1 },
+        "profile": { "$ref": "#/$defs/profileBinding" },
+        "components": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "$ref": "#/$defs/id" },
+          "additionalProperties": { "$ref": "#/$defs/serviceFact" }
+        }
+      }
     },
     "documentation": {
       "type": "object",
@@ -173,21 +183,27 @@
   },
   "$defs": {
     "id": { "type": "string", "pattern": "^[a-z0-9]+(?:[-_.][a-z0-9]+)*$" },
+    "profileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "revision", "contentDigest"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "revision": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}\\.[1-9][0-9]*$" },
+        "contentDigest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+      }
+    },
     "serviceFact": {
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "boundaryVersion",
-        "componentId",
         "serviceRole",
         "implementation",
-        "production",
+        "declaredProductionAuthorityScope",
         "backendOwner",
         "ownedEffects"
       ],
       "properties": {
-        "boundaryVersion": { "const": 1 },
-        "componentId": { "$ref": "#/$defs/id" },
         "serviceRole": {
           "enum": [
             "api",
@@ -210,10 +226,20 @@
         "implementation": {
           "enum": ["other", "rust", "typescript-bun-next"]
         },
-        "production": { "type": "boolean" },
+        "declaredProductionAuthorityScope": {
+          "enum": ["in-scope", "out-of-scope"]
+        },
         "backendOwner": {
           "anyOf": [
-            { "$ref": "#/$defs/id" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["repository", "componentId"],
+              "properties": {
+                "repository": { "type": "string", "minLength": 3 },
+                "componentId": { "$ref": "#/$defs/id" }
+              }
+            },
             { "type": "null" }
           ]
         },

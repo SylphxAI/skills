@@ -151,7 +151,14 @@
     {
       "name": "fleet-engineering-profile",
       "description": "Apply the binding Sylphx fleet language and effect boundary. Use when choosing, implementing, reviewing, or measuring production backend, API, gateway, worker, controller, runtime, storage, queue, background-job, browser, product-web, SSR, or TypeScript-to-Rust work.",
-      "path": "skills/fleet-engineering-profile/SKILL.md"
+      "path": "skills/fleet-engineering-profile/SKILL.md",
+      "profile": {
+        "id": "fleet-engineering-profile",
+        "revision": "2026-07-18.2",
+        "contentDigest": "sha256:5aecef66e247ef87249dffd950e8b998139eac6bfb65ca7b48252bd9c1b9fec1",
+        "lifecycle": "active",
+        "authorityClass": "governance-constraint"
+      }
     },
     {
       "name": "fleet-migration-factory",
