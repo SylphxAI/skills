@@ -81,6 +81,20 @@ test('sync, status, update, and clear own only the declared packages', () => {
     assert.equal(drifted.targets[0].packagesCurrent, false);
     run(['sync', '--dest', destination, '--quiet']);
 
+    const installedProfilePath = path.join(destination, 'technology-stack-profile', 'references', 'profile.json');
+    const installedProfile = JSON.parse(readFileSync(installedProfilePath, 'utf8'));
+    installedProfile.profile.lifecycle = 'candidate';
+    writeFileSync(installedProfilePath, `${JSON.stringify(installedProfile, null, 2)}\n`);
+    const driftedProfile = JSON.parse(run(['status', '--dest', destination, '--json']).stdout);
+    assert.equal(driftedProfile.targets[0].current, false);
+    assert.equal(driftedProfile.targets[0].packagesCurrent, false);
+
+    run(['sync', '--dest', destination, '--quiet']);
+    const installedSkillPath = path.join(destination, 'technology-stack-profile', 'SKILL.md');
+    writeFileSync(installedSkillPath, `${readFileSync(installedSkillPath, 'utf8')}\nmutated\n`);
+    const driftedSkill = JSON.parse(run(['status', '--dest', destination, '--json']).stdout);
+    assert.equal(driftedSkill.targets[0].current, false);
+
     const interruptedPackage = 'engineering-standard';
     const interruptedDestination = path.join(destination, interruptedPackage);
     const interruptedTransaction = path.join(destination, '.sylphx-transaction-test-recovery');

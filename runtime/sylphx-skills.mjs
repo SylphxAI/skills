@@ -314,6 +314,8 @@ function status() {
     }));
     const present = packageStates.filter((skill) => skill.present).length;
     const expectedDigests = Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest]));
+    const expectedProfiles = catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile);
+    const profilesCurrent = JSON.stringify(manifest?.profiles || []) === JSON.stringify(expectedProfiles);
     const packagesCurrent = packageStates.every((skill) => skill.current)
       && JSON.stringify(manifest?.packageDigests || {}) === JSON.stringify(expectedDigests);
     return {
@@ -323,9 +325,11 @@ function status() {
       expected: catalog.count,
       current: manifest?.catalogDigest === `sha256:${catalogDigest}`
         && present === catalog.count
-        && packagesCurrent,
+        && packagesCurrent
+        && profilesCurrent,
       catalogDigest: manifest?.catalogDigest || null,
       packagesCurrent,
+      profilesCurrent,
     };
   });
   if (jsonOutput) console.log(JSON.stringify({ command: 'status', targets: result }, null, 2));
