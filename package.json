@@ -1,7 +1,7 @@
 {
   "name": "sylphx-skills",
   "version": "1.4.1",
-  "description": "Public SylphxAI Agent Skills with automatic Codex, Claude Code, and Grok Build synchronization",
+  "description": "Public agent skills from SylphxAI — standards, product procedures, and multi-runtime sync for Codex, Claude Code, and Grok Build",
   "license": "MIT",
   "type": "module",
   "bin": {

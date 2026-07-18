@@ -1,0 +1,31 @@
+title: "[q] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask how to install, choose, or apply a skill. Prefer this over issues when nothing is broken.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent runtime
+      options:
+        - Codex
+        - Claude Code
+        - Grok Build
+        - Multiple / unsure
+        - None yet
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: What you already tried
+    validations:
+      required: false

@@ -2,9 +2,14 @@
 
 ## Purpose
 
-Own SylphxAI's public static Agent Skills: binding standards, reusable
+Own SylphxAI's **public** static Agent Skills: binding standards, reusable
 procedures, profiles, adapters, references, and the minimal distribution tool
-that keeps Codex and Claude Code synchronized.
+that keeps **Codex, Claude Code, and Grok Build** synchronized.
+
+Public marketing surfaces (README, Discussions, issue templates, repository
+About) must stay accurate, scannable, and honest about MIT reuse versus
+commercial maintenance value. Prefer human-first copy over internal portfolio
+jargon.
 
 ## Boundary
 
@@ -12,7 +17,8 @@ This repository owns:
 
 - canonical packages under `skills/<id>/`;
 - one deterministic public catalog;
-- package validation and Codex/Claude installation/update adapters.
+- package validation and Codex / Claude / Grok installation/update adapters;
+- public contribution and community entry points proportional to that scope.
 
 It does not own live work, fleet state, runtime effects, customer data,
 benchmark execution, model-provider evidence, or product-specific decisions.

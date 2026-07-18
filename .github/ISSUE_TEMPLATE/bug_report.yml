@@ -1,0 +1,53 @@
+name: Bug report
+description: Installer, sync, catalog, or package-shape problem
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. For “which skill should I use?” questions, prefer [Discussions](https://github.com/SylphxAI/skills/discussions).
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Installer / sync CLI (`runtime/`)
+        - Auto-sync (scheduler)
+        - Catalog / package shape
+        - Specific skill content
+        - CI / docs
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: Output of `npx --yes github:SylphxAI/skills status` or a git SHA
+    validations:
+      required: false
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Exact commands and what you expected vs observed
+      placeholder: |
+        $ npx --yes github:SylphxAI/skills sync
+        expected: ...
+        observed: ...
+    validations:
+      required: true
+  - type: dropdown
+    id: agents
+    attributes:
+      label: Agent runtime
+      options:
+        - Codex
+        - Claude Code
+        - Grok Build
+        - Multiple / all
+        - N/A
+      default: 3
+    validations:
+      required: true

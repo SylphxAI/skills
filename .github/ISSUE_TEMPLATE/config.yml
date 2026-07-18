@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions
+    url: https://github.com/SylphxAI/skills/discussions
+    about: Questions, ideas, and “which skill?” routing help
+  - name: Security advisory
+    url: https://github.com/SylphxAI/skills/security/advisories/new
+    about: Private vulnerability reports only
