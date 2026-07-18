@@ -29,13 +29,14 @@ contract disagree, resolution fails closed and the package must be corrected.
   deployment, exceptions, and completion.
 
 Product repositories project intended component topology through the optional
-`architecture.components` map in `project.manifest.json`. Each unique component
-id declares its role, implementation, backend-owner reference, and owned
-effects. The manifest schema owns the generic fact shape; this Profile owns the
-recognized role/effect meanings. Missing or unknown facts block a selected
-technology decision instead of being inferred from filenames. Live deployment
-and production status remain Control Plane observations, not repo-authored
-component fields.
+`architecture.components` map in `project.manifest.json` and bind this Profile
+under `architecture.profileBindings` using its exact revision and content
+digest. Each unique component id declares its role, implementation,
+backend-owner reference, and owned effects. The manifest schema owns only the
+generic fact shape; this Profile owns the recognized role/effect meanings.
+Missing, stale, or unknown bindings and facts block a selected technology
+decision instead of being inferred from filenames. Live deployment and
+production status remain Control Plane observations, not repo-authored fields.
 
 ## Resolution table
 
@@ -73,6 +74,8 @@ production defect, parity gap, or missing capability remains a Rust work item.
 ## Verification checklist
 
 - Record the exact profile id, revision, and content digest used.
+- Verify `architecture.profileBindings.technology-stack-profile` matches this
+  exact revision and digest; a missing or stale binding is a coverage gap.
 - Enumerate applicable `architecture.components` entries and their declared
   service roles; missing entries remain a gap.
 - Enumerate database, queue, authorization, external, and background effects.

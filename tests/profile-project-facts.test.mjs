@@ -12,8 +12,8 @@ const projectSchema = JSON.parse(readFileSync(
 ));
 
 test('technology profile lifecycle selector uses project manifest vocabulary', () => {
-  assert.equal(profile.profile.revision, '2026-07-18.2');
-  assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-18.1');
+  assert.equal(profile.profile.revision, '2026-07-18.3');
+  assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-18.2');
   const selector = profile.selector.matchAll.find((item) => item.fact === 'repository.lifecycle');
   const manifestValues = projectSchema.properties.project.properties.lifecycle.enum;
   assert.deepEqual(
@@ -34,4 +34,9 @@ test('project manifests expose generic component facts without copying profile p
   assert.equal(fact.properties.implementation.$ref, '#/$defs/id');
   assert.equal(fact.properties.ownedEffects.items.$ref, '#/$defs/id');
   assert.equal('production' in fact.properties, false);
+  const bindings = projectSchema.properties.architecture.properties.profileBindings;
+  assert.equal(bindings.minProperties, 1);
+  assert.equal(bindings.propertyNames.$ref, '#/$defs/id');
+  assert.equal(bindings.additionalProperties.$ref, '#/$defs/profileBinding');
+  assert.deepEqual(projectSchema.$defs.profileBinding.required, ['revision', 'contentDigest']);
 });

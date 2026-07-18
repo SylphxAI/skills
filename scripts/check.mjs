@@ -157,33 +157,32 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
       return;
     }
   }
-  const serviceFacts = projectSchema.properties?.serviceFacts;
-  const serviceFact = projectSchema.$defs?.serviceFact;
+  const architecture = projectSchema.properties?.architecture;
+  const components = architecture?.properties?.components;
+  const profileBindings = architecture?.properties?.profileBindings;
+  const componentFact = projectSchema.$defs?.componentFact;
   const profileBinding = projectSchema.$defs?.profileBinding;
-  const requiredEnvelopeFields = ['vocabularyVersion', 'profile', 'components'];
   const requiredFactFields = [
-    'serviceRole',
+    'role',
     'implementation',
-    'declaredProductionAuthorityScope',
     'backendOwner',
     'ownedEffects',
   ];
-  if (serviceFacts?.additionalProperties !== false
-      || !sameMembers(serviceFacts?.required, requiredEnvelopeFields)
-      || serviceFacts?.properties?.vocabularyVersion?.const !== 1
-      || serviceFacts?.properties?.profile?.$ref !== '#/$defs/profileBinding'
-      || serviceFacts?.properties?.components?.minProperties !== 1
-      || serviceFacts?.properties?.components?.additionalProperties?.$ref !== '#/$defs/serviceFact'
-      || serviceFact?.additionalProperties !== false
-      || !sameMembers(serviceFact?.required, requiredFactFields)) {
-    errors.push(`${location}: canonical project serviceFacts contract is missing or incomplete`);
+  if (components?.minProperties !== 1
+      || components?.propertyNames?.$ref !== '#/$defs/id'
+      || components?.additionalProperties?.$ref !== '#/$defs/componentFact'
+      || profileBindings?.minProperties !== 1
+      || profileBindings?.propertyNames?.$ref !== '#/$defs/id'
+      || profileBindings?.additionalProperties?.$ref !== '#/$defs/profileBinding'
+      || componentFact?.additionalProperties !== false
+      || !sameMembers(componentFact?.required, requiredFactFields)) {
+    errors.push(`${location}: canonical project component facts or exact profile bindings are missing or incomplete`);
   }
-  if (!sameMembers(serviceFact?.properties?.serviceRole?.enum, [...TECHNOLOGY_PROFILE_BACKEND_ROLES, ...TECHNOLOGY_PROFILE_WEB_ROLES])
-      || !sameMembers(serviceFact?.properties?.ownedEffects?.items?.enum, TECHNOLOGY_PROFILE_FORBIDDEN_WEB_EFFECTS)
-      || !sameMembers(serviceFact?.properties?.implementation?.enum, ['other', 'rust', 'typescript-bun-next'])
-      || !sameMembers(serviceFact?.properties?.declaredProductionAuthorityScope?.enum, ['in-scope', 'out-of-scope'])
-      || !sameMembers(profileBinding?.required, ['id', 'revision', 'contentDigest'])) {
-    errors.push(`${location}: project serviceFacts vocabulary does not match the technology profile`);
+  if (componentFact?.properties?.role?.$ref !== '#/$defs/id'
+      || componentFact?.properties?.implementation?.$ref !== '#/$defs/id'
+      || componentFact?.properties?.ownedEffects?.items?.$ref !== '#/$defs/id'
+      || !sameMembers(profileBinding?.required, ['revision', 'contentDigest'])) {
+    errors.push(`${location}: project facts must stay generic while exact profile identity stays bound`);
   }
 
   const manifestLifecycles = projectSchema.properties?.project?.properties?.lifecycle?.enum || [];

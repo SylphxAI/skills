@@ -49,9 +49,11 @@ Control Plane, not in hand-maintained repository prose.
 `architecture.components` records intended repository topology, not deployment
 claims. Its role, implementation, and effect values use generic ids so Profiles
 can define their meaning without the manifest schema copying policy vocabulary.
-Live presence, revision, health, traffic, and production ownership remain
-Control Plane observations. A selected Profile fails missing or unknown
-component facts closed rather than inferring them from filenames.
+`architecture.profileBindings` binds each applicable Profile id to its exact
+revision and content digest; it does not copy Profile policy. Live presence,
+revision, health, traffic, and production ownership remain Control Plane
+observations. A selected Profile fails missing, stale, or unknown component
+facts closed rather than inferring them from filenames.
 
 ## Lifecycle contract
 
@@ -108,7 +110,8 @@ organization-wide proof.
 - [ ] Every public surface and cross-repository dependency has a named owner.
 - [ ] Architecture/profile references identify current authority without
       copying its prose.
-- [ ] Profiles that depend on component roles or effects have complete
+- [ ] Profiles that depend on component roles or effects have an exact
+      `architecture.profileBindings` entry and complete
       `architecture.components` facts; live deployment state is not authored
       into the manifest.
 - [ ] Verification commands and terminal delivery boundary are executable.

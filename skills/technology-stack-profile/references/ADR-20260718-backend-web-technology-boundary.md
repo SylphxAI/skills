@@ -50,11 +50,11 @@ lifecycle values with the project manifest and defining the generic
 `architecture.components` fact projection used to evaluate it. It supersedes
 revision `2026-07-18.1`; retired revisions never reactivate.
 
-Revision `2026-07-18.2` supersedes the initial `2026-07-18.1` encoding without
-changing the decision: it aligns the selector with the canonical project
-lifecycle vocabulary and publishes an exact-profile-bound, unique-component
-local `serviceFacts` schema needed to evaluate the boundary without file-count
-inference or repo-authored deployment truth.
+Revision `2026-07-18.3` preserves the decision while making the repository
+projection join fail closed: one generic `architecture.components` fact map is
+paired with an exact `architecture.profileBindings` revision and digest. It
+supersedes revision `2026-07-18.2`; the manifest still does not copy Profile
+vocabulary or author live deployment truth.
 
 ## Consequences
 

@@ -37,9 +37,9 @@ function sorted(values) {
 }
 
 test('technology profile binds the canonical role and effect boundary', () => {
-  assert.equal(profile.profile.revision, '2026-07-18.2');
+  assert.equal(profile.profile.revision, '2026-07-18.3');
   assert.equal(profile.profile.predecessor, undefined);
-  assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-18.1');
+  assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-18.2');
   const defaults = new Map(profile.defaults.map((item) => [item.key, item]));
   assert.equal(defaults.get('engineering.language.backend-required-technology').value, 'rust');
   assert.deepEqual(sorted(defaults.get('engineering.language.backend-required-technology').appliesToRoles), sorted(backendRoles));
@@ -61,54 +61,62 @@ test('technology profile selector uses only canonical operational project lifecy
   assert.equal(selector.values.includes('deprecated'), false);
 });
 
-test('project service facts bind exact profile identity and unique component keys without copying policy', () => {
-  const envelope = projectSchema.properties.serviceFacts;
-  assert.equal(envelope.properties.vocabularyVersion.const, 1);
-  assert.equal(envelope.properties.profile.$ref, '#/$defs/profileBinding');
-  assert.equal(envelope.properties.components.minProperties, 1);
-  assert.equal(envelope.properties.components.additionalProperties.$ref, '#/$defs/serviceFact');
-  assert.deepEqual(sorted(projectSchema.$defs.profileBinding.required), sorted(['id', 'revision', 'contentDigest']));
-  const fact = projectSchema.$defs.serviceFact;
+test('project component facts bind exact profile identity without copying policy vocabulary', () => {
+  const architecture = projectSchema.properties.architecture;
+  const components = architecture.properties.components;
+  const bindings = architecture.properties.profileBindings;
+  assert.equal(components.minProperties, 1);
+  assert.equal(components.propertyNames.$ref, '#/$defs/id');
+  assert.equal(components.additionalProperties.$ref, '#/$defs/componentFact');
+  assert.equal(bindings.minProperties, 1);
+  assert.equal(bindings.propertyNames.$ref, '#/$defs/id');
+  assert.equal(bindings.additionalProperties.$ref, '#/$defs/profileBinding');
+  assert.deepEqual(sorted(projectSchema.$defs.profileBinding.required), sorted(['revision', 'contentDigest']));
+  const fact = projectSchema.$defs.componentFact;
   assert.equal(fact.additionalProperties, false);
-  assert.deepEqual(sorted(fact.properties.serviceRole.enum), sorted([...backendRoles, ...webRoles]));
-  assert.deepEqual(sorted(fact.properties.ownedEffects.items.enum), sorted(forbiddenEffects));
-  assert.deepEqual(sorted(fact.properties.implementation.enum), sorted(['other', 'rust', 'typescript-bun-next']));
-  assert.deepEqual(sorted(fact.properties.declaredProductionAuthorityScope.enum), sorted(['in-scope', 'out-of-scope']));
+  assert.deepEqual(fact.required, ['role', 'implementation', 'backendOwner', 'ownedEffects']);
+  assert.equal(fact.properties.role.$ref, '#/$defs/id');
+  assert.equal(fact.properties.implementation.$ref, '#/$defs/id');
+  assert.equal(fact.properties.ownedEffects.items.$ref, '#/$defs/id');
   assert.equal('production' in fact.properties, false);
   assert.equal('componentId' in fact.properties, false);
   assert.equal('forbiddenEffectsForWeb' in fact.properties, false);
   assert.equal('authorityPolicy' in fact.properties, false);
 });
 
-test('service fact envelope rejects missing, empty, and stale-unbound projections', () => {
+test('profile binding and component maps reject empty or unbound projections', () => {
   const ajv = new Ajv2020({ allErrors: true, strict: true, allowUnionTypes: true });
-  const validate = ajv.compile({
+  const validateBindings = ajv.compile({
     $schema: 'https://json-schema.org/draft/2020-12/schema',
     $defs: projectSchema.$defs,
-    ...projectSchema.properties.serviceFacts,
+    ...projectSchema.properties.architecture.properties.profileBindings,
   });
-  const valid = {
-    vocabularyVersion: 1,
-    profile: {
-      id: profile.profile.id,
+  const validBindings = {
+    [profile.profile.id]: {
       revision: profile.profile.revision,
       contentDigest: profile.profile.contentDigest,
     },
-    components: {
-      'product-web': {
-        serviceRole: 'product-web',
-        implementation: 'typescript-bun-next',
-        declaredProductionAuthorityScope: 'in-scope',
-        backendOwner: { repository: 'SylphxAI/platform', componentId: 'api' },
-        ownedEffects: [],
-      },
-    },
   };
-  assert.equal(validate(valid), true, JSON.stringify(validate.errors));
-  assert.equal(validate({ ...valid, components: {} }), false);
-  const unbound = structuredClone(valid);
-  delete unbound.profile;
-  assert.equal(validate(unbound), false);
+  assert.equal(validateBindings(validBindings), true, JSON.stringify(validateBindings.errors));
+  assert.equal(validateBindings({}), false);
+  const staleUnbound = structuredClone(validBindings);
+  delete staleUnbound[profile.profile.id].contentDigest;
+  assert.equal(validateBindings(staleUnbound), false);
+
+  const validateComponents = ajv.compile({
+    $schema: 'https://json-schema.org/draft/2020-12/schema',
+    $defs: projectSchema.$defs,
+    ...projectSchema.properties.architecture.properties.components,
+  });
+  assert.equal(validateComponents({
+    'product-web': {
+      role: 'product-web',
+      implementation: 'typescript-bun-next',
+      backendOwner: { repository: 'SylphxAI/platform', componentId: 'api' },
+      ownedEffects: [],
+    },
+  }), true, JSON.stringify(validateComponents.errors));
+  assert.equal(validateComponents({}), false);
 });
 
 test('schema and active-profile admission reject authority-state mutations', () => {
