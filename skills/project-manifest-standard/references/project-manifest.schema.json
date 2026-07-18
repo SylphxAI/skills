@@ -111,6 +111,11 @@
         "gaps": { "$ref": "#/$defs/gaps" }
       }
     },
+    "serviceFacts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/serviceFact" }
+    },
     "documentation": {
       "type": "object",
       "additionalProperties": false,
@@ -168,6 +173,66 @@
   },
   "$defs": {
     "id": { "type": "string", "pattern": "^[a-z0-9]+(?:[-_.][a-z0-9]+)*$" },
+    "serviceFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "boundaryVersion",
+        "componentId",
+        "serviceRole",
+        "implementation",
+        "production",
+        "backendOwner",
+        "ownedEffects"
+      ],
+      "properties": {
+        "boundaryVersion": { "const": 1 },
+        "componentId": { "$ref": "#/$defs/id" },
+        "serviceRole": {
+          "enum": [
+            "api",
+            "backend-service",
+            "background-job",
+            "browser",
+            "controller",
+            "critical-path",
+            "gateway",
+            "product-web",
+            "queue-consumer",
+            "queue-producer",
+            "runtime",
+            "server-rendered-web",
+            "storage",
+            "ui-orchestration",
+            "worker"
+          ]
+        },
+        "implementation": {
+          "enum": ["other", "rust", "typescript-bun-next"]
+        },
+        "production": { "type": "boolean" },
+        "backendOwner": {
+          "anyOf": [
+            { "$ref": "#/$defs/id" },
+            { "type": "null" }
+          ]
+        },
+        "ownedEffects": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "backend-authorization-decision",
+              "backend-business-effect",
+              "backend-database-mutation",
+              "durable-queue-consume",
+              "durable-queue-publish",
+              "typescript-backend-fallback"
+            ]
+          }
+        }
+      }
+    },
     "adoptionStatus": { "enum": ["not-applicable", "not-started", "migrating", "adopted", "gapped"] },
     "nonEmptyStrings": {
       "type": "array",

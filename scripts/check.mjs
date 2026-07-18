@@ -15,6 +15,43 @@ const SECRET_PATTERNS = [
   /\bxox[baprs]-[A-Za-z0-9-]{20,}\b/,
 ];
 const REMOVED_BOUNDARIES = ['admissions', 'benchmarks', 'catalog', 'evals', 'registry', 'retired'];
+const FLEET_ORGANIZATIONS = ['Cubeage', 'EpiowAI', 'OzyrixLtd', 'SylphxAI', 'TseFamily', 'shtse8'];
+const FLEET_LIFECYCLES = ['active', 'commercial', 'incubating', 'maintenance', 'production'];
+const FLEET_TASK_SURFACES = ['language-boundary-audit', 'migration-completion', 'product-code', 'runtime-implementation'];
+const FLEET_BACKEND_ROLES = [
+  'api',
+  'backend-service',
+  'background-job',
+  'controller',
+  'critical-path',
+  'gateway',
+  'queue-consumer',
+  'queue-producer',
+  'runtime',
+  'storage',
+  'worker',
+];
+const FLEET_WEB_ROLES = ['browser', 'product-web', 'server-rendered-web', 'ui-orchestration'];
+const FLEET_FORBIDDEN_WEB_EFFECTS = [
+  'backend-authorization-decision',
+  'backend-business-effect',
+  'backend-database-mutation',
+  'durable-queue-consume',
+  'durable-queue-publish',
+  'typescript-backend-fallback',
+];
+const FLEET_EXCEPTION_FIELDS = [
+  'id',
+  'defaultKey',
+  'selector',
+  'rationale',
+  'owner',
+  'decisionRef',
+  'evidence',
+  'expiresOn',
+  'recovery',
+  'replacementCondition',
+];
 
 function walk(directory) {
   const files = [];
@@ -44,6 +81,99 @@ function stableJson(value) {
     return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableJson(value[key])}`).join(',')}}`;
   }
   return JSON.stringify(value);
+}
+
+function sameMembers(actual, expected) {
+  return Array.isArray(actual)
+    && actual.length === expected.length
+    && actual.every((value) => expected.includes(value))
+    && new Set(actual).size === actual.length;
+}
+
+function validateFleetEngineeringProfile(document, errors) {
+  const location = 'skills/fleet-engineering-profile/references/profile.json';
+  const selectors = document.selector?.matchAll || [];
+  const selectorByFact = new Map(selectors.map((selector) => [selector.fact, selector]));
+  if (selectorByFact.size !== 3 || selectors.length !== 3) {
+    errors.push(`${location}: selector must contain exactly organization, repository.lifecycle, and task.surface`);
+  }
+  for (const [fact, expected] of [
+    ['organization', FLEET_ORGANIZATIONS],
+    ['repository.lifecycle', FLEET_LIFECYCLES],
+    ['task.surface', FLEET_TASK_SURFACES],
+  ]) {
+    const selector = selectorByFact.get(fact);
+    if (selector?.operator !== 'one-of' || !sameMembers(selector?.values, expected)) {
+      errors.push(`${location}: ${fact} selector vocabulary drift`);
+    }
+  }
+  if (document.selector?.unknownFactPolicy !== 'fail-closed') {
+    errors.push(`${location}: unknown selector facts must fail closed`);
+  }
+
+  const defaults = new Map((document.defaults || []).map((item) => [item.key, item]));
+  const expectedDefaults = [
+    ['engineering.language.backend-authority', 'rust', FLEET_BACKEND_ROLES],
+    ['engineering.language.web-authority', 'typescript-bun-next', FLEET_WEB_ROLES],
+    ['engineering.language.completion-measure', 'service-role-and-effect-coverage', ['language-boundary-audit', 'migration-completion']],
+  ];
+  if (defaults.size !== expectedDefaults.length || document.defaults?.length !== expectedDefaults.length) {
+    errors.push(`${location}: default selection set drift`);
+  }
+  for (const [key, value, roles] of expectedDefaults) {
+    const selection = defaults.get(key);
+    if (selection?.value !== value || !sameMembers(selection?.appliesToRoles, roles)) {
+      errors.push(`${location}: ${key} selection drift`);
+    }
+  }
+  if (!sameMembers(document.forbiddenEffectsForWeb, FLEET_FORBIDDEN_WEB_EFFECTS)) {
+    errors.push(`${location}: forbidden web effect vocabulary drift`);
+  }
+  if (!sameMembers(document.exceptionPolicy?.exceptableDefaults, [])
+      || !sameMembers(document.exceptionPolicy?.forbiddenDefaults, expectedDefaults.map(([key]) => key))
+      || !sameMembers(document.exceptionPolicy?.requiredFields, FLEET_EXCEPTION_FIELDS)) {
+    errors.push(`${location}: exception contract drift`);
+  }
+
+  const projectSchemaPath = path.join(
+    repositoryRoot,
+    'skills',
+    'project-manifest-standard',
+    'references',
+    'project-manifest.schema.json',
+  );
+  let projectSchema;
+  try {
+    projectSchema = JSON.parse(readFileSync(projectSchemaPath, 'utf8'));
+  } catch (error) {
+    errors.push(`skills/project-manifest-standard/references/project-manifest.schema.json: ${error.message}`);
+    return;
+  }
+  const serviceFact = projectSchema.$defs?.serviceFact;
+  const requiredFactFields = [
+    'boundaryVersion',
+    'componentId',
+    'serviceRole',
+    'implementation',
+    'production',
+    'backendOwner',
+    'ownedEffects',
+  ];
+  if (projectSchema.properties?.serviceFacts?.items?.$ref !== '#/$defs/serviceFact'
+      || serviceFact?.additionalProperties !== false
+      || !sameMembers(serviceFact?.required, requiredFactFields)) {
+    errors.push(`${location}: canonical project serviceFacts contract is missing or incomplete`);
+  }
+  if (!sameMembers(serviceFact?.properties?.serviceRole?.enum, [...FLEET_BACKEND_ROLES, ...FLEET_WEB_ROLES])
+      || !sameMembers(serviceFact?.properties?.ownedEffects?.items?.enum, FLEET_FORBIDDEN_WEB_EFFECTS)
+      || !sameMembers(serviceFact?.properties?.implementation?.enum, ['other', 'rust', 'typescript-bun-next'])) {
+    errors.push(`${location}: project serviceFacts vocabulary does not match the fleet profile`);
+  }
+
+  const manifestLifecycles = projectSchema.properties?.project?.properties?.lifecycle?.enum || [];
+  if (!FLEET_LIFECYCLES.every((lifecycle) => manifestLifecycles.includes(lifecycle))) {
+    errors.push(`${location}: selector uses lifecycle values outside the canonical project manifest`);
+  }
 }
 
 function validateMachineProfile(folder, packageRoot, errors) {
@@ -105,6 +235,8 @@ function validateMachineProfile(folder, packageRoot, errors) {
       errors.push(`skills/${folder}/references/profile.json: ${key} must be exactly one of exceptable or forbidden`);
     }
   }
+
+  if (folder === 'fleet-engineering-profile') validateFleetEngineeringProfile(document, errors);
 }
 
 function validateSkill(folder, names, errors) {

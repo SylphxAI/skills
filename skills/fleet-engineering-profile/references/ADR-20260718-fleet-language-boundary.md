@@ -49,6 +49,11 @@ This decision has no active predecessor. Any changed selection is a new
 immutable profile revision with its own digest and decision. Retired revisions
 never reactivate.
 
+Revision `2026-07-18.2` supersedes the initial `2026-07-18.1` encoding without
+changing the decision: it aligns the selector with the canonical project
+lifecycle vocabulary and publishes the versioned local `serviceFacts` schema
+needed to evaluate the boundary without file-count inference.
+
 ## Consequences
 
 - A Rust backend plus TypeScript web repository can be fully conforming.

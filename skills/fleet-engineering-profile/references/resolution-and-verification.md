@@ -28,6 +28,13 @@ contract disagree, resolution fails closed and the package must be corrected.
   project local component facts; Control Plane owns resolved live adoption,
   deployment, exceptions, and convergence.
 
+Product repositories project those facts through the canonical optional
+`serviceFacts` field in `project.manifest.json`. Each fact names a versioned
+component id, service role, implementation, production status, backend owner,
+and explicit owned-effect list. Repositories do not copy the defaults or
+forbidden-effect policy: Control Plane joins their facts to this profile by its
+id, revision, and digest and fails unknown vocabulary closed.
+
 ## Resolution table
 
 | Observed component | Role/effect classification | Binding result |
@@ -65,6 +72,8 @@ production defect, parity gap, or missing capability remains a Rust work item.
 
 - Record the exact profile id, revision, and content digest used.
 - Enumerate deployable components and their declared service roles.
+- Verify each applicable repository projects versioned `serviceFacts`; missing
+  facts remain a Control Plane coverage gap rather than inferred compliance.
 - Enumerate database, queue, authorization, external, and background effects.
 - Prove that Rust owns every backend or durable-effect role.
 - Prove that TypeScript/Bun/Next components are browser, product-web, SSR, or UI

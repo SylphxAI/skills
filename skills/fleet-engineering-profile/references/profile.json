@@ -4,8 +4,8 @@
   "kind": "EnterpriseProfile",
   "profile": {
     "id": "fleet-engineering-profile",
-    "revision": "2026-07-18.1",
-    "contentDigest": "sha256:fb26a0fb6287789a237841ed6d464873fcf366533d9f84590b855436972180fb",
+    "revision": "2026-07-18.2",
+    "contentDigest": "sha256:d5bb1ca138e71fc3b169e6e8f67984a46a3dba441dcdab34eab14c7a932a6dc1",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
     "decisionRef": "references/ADR-20260718-fleet-language-boundary.md",
@@ -31,7 +31,7 @@
       {
         "fact": "repository.lifecycle",
         "operator": "one-of",
-        "values": ["active-development", "incubating", "production"]
+        "values": ["active", "commercial", "incubating", "maintenance", "production"]
       },
       {
         "fact": "task.surface",
@@ -136,7 +136,7 @@
     ]
   },
   "retirement": {
-    "predecessor": null,
+    "predecessor": "fleet-engineering-profile@2026-07-18.1",
     "successor": null,
     "terminal": "An admitted active successor revision covers this selector and all selection keys, Control Plane resolves selected repositories to that successor, all exceptions are closed, and this revision is marked retired.",
     "retiredRevisionSelectable": false

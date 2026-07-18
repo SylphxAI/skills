@@ -1,6 +1,6 @@
 ---
 name: project-manifest-standard
-description: "Repository identity, lifecycle, capability ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use for durable project facts, not live Work Graph operations."
+description: "Repository identity, lifecycle, capability ownership, local service-role and effect facts, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use for durable project facts, not live Work Graph operations."
 ---
 # Project Manifest Standard
 
