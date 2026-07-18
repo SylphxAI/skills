@@ -1,31 +1,11 @@
 #!/usr/bin/env node
 
-import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { packageDigest } from '../runtime/package-digest.mjs';
 
 export const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-
-function packageDigest(packageRoot) {
-  const files = [];
-  const visit = (directory) => {
-    for (const entry of readdirSync(directory, { withFileTypes: true })) {
-      const absolute = path.join(directory, entry.name);
-      if (entry.isDirectory()) visit(absolute);
-      else if (entry.isFile()) files.push(absolute);
-    }
-  };
-  visit(packageRoot);
-  const hash = createHash('sha256');
-  for (const file of files.sort()) {
-    hash.update(path.relative(packageRoot, file));
-    hash.update('\0');
-    hash.update(readFileSync(file));
-    hash.update('\0');
-  }
-  return `sha256:${hash.digest('hex')}`;
-}
 
 export function parseFrontmatter(markdown, file = 'SKILL.md') {
   if (!markdown.startsWith('---\n')) throw new Error(`${file}: missing YAML frontmatter`);
@@ -51,10 +31,11 @@ export function parseFrontmatter(markdown, file = 'SKILL.md') {
 
 export function buildCatalog(root = repositoryRoot) {
   const skillsRoot = path.join(root, 'skills');
-  const folders = readdirSync(skillsRoot, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .sort();
+  const entries = readdirSync(skillsRoot, { withFileTypes: true });
+  for (const entry of entries) {
+    if (!entry.isDirectory()) throw new Error(`skills/${entry.name}: skill packages must be regular directories`);
+  }
+  const folders = entries.map((entry) => entry.name).sort();
 
   const skills = folders.map((folder) => {
     const relativePath = `skills/${folder}/SKILL.md`;

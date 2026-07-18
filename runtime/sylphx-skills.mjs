@@ -16,6 +16,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { uninstallRuntimeHooks } from './hooks.mjs';
+import { packageDigest } from './package-digest.mjs';
 import { reconcile } from './reconcile.mjs';
 import { installScheduler, parseIntervalMinutes, removeScheduler } from './scheduler.mjs';
 
@@ -188,7 +189,7 @@ function recoverInterruptedTransactions(skillRoot) {
   }
 }
 
-function replaceDirectory(source, destination) {
+function replaceDirectory(source, destination, expectedDigest) {
   const skillRoot = path.dirname(destination);
   mkdirSync(skillRoot, { recursive: true });
   const suffix = `${process.pid}-${randomBytes(4).toString('hex')}`;
@@ -204,6 +205,9 @@ function replaceDirectory(source, destination) {
   cpSync(source, stage, { recursive: true, preserveTimestamps: true });
   let movedExisting = false;
   try {
+    if (packageDigest(stage) !== expectedDigest) {
+      throw new Error(`synchronized package digest mismatch: ${path.basename(destination)}`);
+    }
     if (existsSync(destination)) {
       renameSync(destination, backup);
       movedExisting = true;
@@ -219,27 +223,6 @@ function replaceDirectory(source, destination) {
   }
 }
 
-function installedPackageDigest(packageRoot) {
-  if (!existsSync(packageRoot)) return null;
-  const files = [];
-  const visit = (directory) => {
-    for (const entry of readdirSync(directory, { withFileTypes: true })) {
-      const absolute = path.join(directory, entry.name);
-      if (entry.isDirectory()) visit(absolute);
-      else if (entry.isFile()) files.push(absolute);
-    }
-  };
-  visit(packageRoot);
-  const hash = createHash('sha256');
-  for (const file of files.sort()) {
-    hash.update(path.relative(packageRoot, file));
-    hash.update('\0');
-    hash.update(readFileSync(file));
-    hash.update('\0');
-  }
-  return `sha256:${hash.digest('hex')}`;
-}
-
 function syncTarget(target) {
   mkdirSync(target.path, { recursive: true });
   recoverInterruptedTransactions(target.path);
@@ -250,10 +233,7 @@ function syncTarget(target) {
 
   for (const skill of catalog.skills) {
     const destination = path.join(target.path, skill.name);
-    replaceDirectory(path.join(sourceSkills, skill.name), destination);
-    if (installedPackageDigest(destination) !== skill.packageDigest) {
-      throw new Error(`synchronized package digest mismatch: ${skill.name}`);
-    }
+    replaceDirectory(path.join(sourceSkills, skill.name), destination, skill.packageDigest);
   }
   for (const name of previousSkills) {
     if (!desiredSet.has(name)) rmSync(path.join(target.path, name), { recursive: true, force: true });
@@ -327,7 +307,7 @@ function status() {
     const packageStates = catalog.skills.map((skill) => ({
       name: skill.name,
       present: existsSync(path.join(target.path, skill.name, 'SKILL.md')),
-      current: installedPackageDigest(path.join(target.path, skill.name)) === skill.packageDigest,
+      current: packageDigest(path.join(target.path, skill.name)) === skill.packageDigest,
     }));
     const present = packageStates.filter((skill) => skill.present).length;
     const expectedProfiles = catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile);
