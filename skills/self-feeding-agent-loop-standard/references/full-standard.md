@@ -84,8 +84,8 @@ Coordinator envelope before spawn. The default renderer does not embed the long
 Reviewer or Builder references. The Coordinator gives each qualified child an
 outcome-owned brief and source pointers; the child loads only the role material
 needed for its lane. Do not ask the Coordinator to reconstruct or copy a long
-prompt during the tick. The owning runtime renderer is
-[`scripts/render-self-feeding-agent-loop.py`](https://github.com/SylphxAI/doctrine/blob/main/scripts/render-self-feeding-agent-loop.py).
+prompt during the tick. The selected runtime adapter owns rendering; this
+standard owns only the semantic envelope.
 
 Every self-feeding loop launch must state:
 
@@ -155,8 +155,8 @@ The tick report must include:
 
 ## Launch Template And Role References
 
-The canonical compact Coordinator envelope lives at
-[`templates/self-feeding-agent-loop.md`](https://github.com/SylphxAI/doctrine/blob/main/templates/self-feeding-agent-loop.md).
+The canonical compact Coordinator envelope is packaged with the selected
+runtime adapter.
 Reviewer and Builder files under `templates/self-feeding/` are progressively
 loaded role references, not child prompts embedded into every Coordinator
 launch and not a mandatory per-task roadmap.

@@ -1,7 +1,7 @@
-# Doctrine → Skills cutover map: `doctrine-evolution-standard`
+# Historical cutover map: `instruction-evolution-standard`
 
 **Status:** cutover complete.  
-**Binding authority:** `SylphxAI/skills` `skills/doctrine-evolution-standard/`.  
+**Binding authority:** `SylphxAI/skills` `skills/instruction-evolution-standard/`.
 **Doctrine file:** alias only.
 
 ## Source pin
@@ -9,7 +9,7 @@
 | Field | Value |
 | --- | --- |
 | sourceRepo | SylphxAI/doctrine |
-| sourcePath | standards/doctrine-evolution-standard.md |
+| sourcePath | exact predecessor path recorded in `admissions/skills.json` |
 | sourceRef | `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7` |
 | sourceDigest | `sha256:d96b5eedf2e0b8b273a6e7b59d7cb3e381d096da5d326b3cad8c49c26ad23f54` |
 
@@ -31,7 +31,7 @@
 
 ## Authoring
 
-Author only under `skills/doctrine-evolution-standard/`. No dual-publish with Doctrine.
+Author only under `skills/instruction-evolution-standard/`. The predecessor is historical lineage, not a current brand or authority.
 
 ## Conformance checklist
 

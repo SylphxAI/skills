@@ -35,9 +35,9 @@ This standard composes with:
 - [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
   for deterministic simulation, eval-gated merge, automated canary analysis,
   and frontier verification backstops;
-- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md) for
+- [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) for
   fleet impact and migration when a SOTA decision changes central doctrine.
-- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-profile-standard/references/full-standard.md) for binding
+- [`enterprise-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/enterprise-profile-standard/references/full-standard.md) for binding
   current selections whose validity depends on tooling or ecosystem conditions.
 
 ## Core Rule
@@ -73,7 +73,7 @@ Before comparing solutions, establish:
 - higher-authority host, legal, safety, contractual, and rights constraints;
 - current source/runtime truth and the quality, age, and uncertainty of the
   available evidence;
-- active Doctrine profiles whose selectors match;
+- active binding enterprise profiles whose selectors match;
 - blast radius, reversibility, migration cost, recovery path, and opportunity
   cost of delay.
 
@@ -321,9 +321,9 @@ because it is uncomfortable or outside the first implementation idea.
    data, security, operational, fleet, or public-contract decisions require an
    ADR or amendment before broad implementation. Behavior contracts should
    become schemas, tests, generated clients, evals, or policy checks.
-8. **Ship verified slices.** Use the doctrine's delivery model: small complete
-   slices, exact-candidate CI, merge queue, postsubmit/deploy proof, and
-   runtime or source recovery appropriate to the change.
+8. **Ship verified slices.** Use the active delivery profile: small complete
+   slices, exact-candidate verification, and runtime or source recovery
+   appropriate to the repository's selected lane and change.
 
 ## Cross-Project Rule
 
@@ -348,7 +348,8 @@ Use the smallest durable artifact that changes future behavior:
 | Material architecture, public contract, data, AI workflow, security, operations, or doctrine decision | ADR |
 | Pricing, packaging, roadmap, positioning, monetization, or commercial experiment | Commercial ADR |
 | Project goal, lifecycle, boundary, public surfaces, delivery proof, or adoption state | `PROJECT.md` plus `.doctrine/project.json` |
-| Reusable cross-repo rule, migration, status, schema, template, or workflow | Doctrine standard, schema/template, migration packet, conformance check |
+| Reusable static cross-repo rule/profile/procedure | Binding Skills package and its schemas/evals |
+| Live fleet migration, status, adoption, or work | Control Plane record plus owning repository evidence |
 | AI behavior correctness | Versioned eval manifest, thresholds, traces, failure examples |
 | High-blast-radius concurrency or irreversible workflow | Property/model test, deterministic simulation harness, replay artifact |
 | Runtime rollout risk | Feature flag, canary analysis contract, SLO/error-budget gate, rollback/forward-fix plan |

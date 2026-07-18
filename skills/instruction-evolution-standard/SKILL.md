@@ -1,14 +1,14 @@
 ---
-name: doctrine-profile-standard
-description: "Versioned binding profiles: selectors, defaults, exceptions, replacement, and expand-contract migration. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations."
+name: instruction-evolution-standard
+description: "Evolution of canonical Skills, runtime constitutions, binding profiles, and architecture generations: single authority, migration, reconciliation, and retirement. Use for durable instruction changes, not live Work Graph operations."
 ---
-# Doctrine Profile Standard
+# Instruction Evolution Standard
 
 **Authority: binding** (`packageKind: standard`).
 
-Canonical home: `skills/doctrine-profile-standard/` in `SylphxAI/skills`.  
+Canonical home: `skills/instruction-evolution-standard/` in `SylphxAI/skills`.
 Full body: [references/full-standard.md](references/full-standard.md).  
-Cutover map: [references/doctrine-parity-delta.md](references/doctrine-parity-delta.md).
+Historical cutover map: [references/historical-cutover-map.md](references/historical-cutover-map.md).
 
 The former source standard path is **alias-only** after cutover — author here only.
 

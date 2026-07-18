@@ -22,16 +22,17 @@ tool selections. Named systems below are the binding current profile projection
 and must be replaced through a successor profile rather than promoted into a
 constitutional invariant.
 
-The goal is to avoid bespoke per-repo development pipelines. Central doctrine
-owns the process shape and enforcement contracts. Repositories own only their
-local facts, compact constitution projections, and unavoidable transport callers.
+The goal is to avoid bespoke per-repo development pipelines. Binding Skills
+packages own the static process contract; Control Plane owns live fleet
+selection and reconciliation. Repositories own their local facts, code,
+compact constitution projections, and unavoidable transport adapters.
 
 This standard composes with:
 
 - [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md) for repo
   identity, lifecycle, boundaries, and rollout packets;
-- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md) for
-  doctrine updates and fleet migration contracts;
+- [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) for
+  static instruction updates and fleet migration contracts;
 - [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for no-human gates, CI admission, merge queue, preview policy, runners, and
   package-release controls;
@@ -74,7 +75,7 @@ New repositories start from doctrine defaults:
 ### Existing repositories
 
 Do not manually redesign every repository. Use the reconcile loop from
-[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md):
+[`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md):
 
 ```text
 central audit
@@ -277,7 +278,7 @@ Only hard `DRIFT` artifact-identity findings should become generated packet
 issues by default; `REVIEW` findings (grandfathered ADR numbers,
 already-applied sequential migration filenames) follow the DRIFT/REVIEW
 handling in
-[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md).
+[`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md).
 
 ### Commercial decisions
 

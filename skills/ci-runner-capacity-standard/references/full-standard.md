@@ -32,7 +32,7 @@ This standard composes with:
   for GitHub checks, Sylphx Platform runners, status publishers, and fleet
   reconciliation;
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for truthful done states;
-- [`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md) for
+- [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) for
   fleet migrations and ratchets.
 
 ## Control-Plane Contract
@@ -83,7 +83,7 @@ inference is diagnostic only and must not lower admission risk.
 | `sylphx-linux-xlarge` | Large monorepo builds, high-memory integration, container build bursts | p95 <= 300s for blocking lanes that explicitly select the profile | Sylphx Platform execution plane |
 | `sylphx-linux-2xlarge` | Reserved-memory SDK/mobile/game/release builds where smaller profiles are not equivalent | p95 <= 300s unless the owning release ADR sets a stricter SLO | Sylphx Platform execution plane |
 | `sylphx-macos-*` | macOS-specific CI, signing, package validation, and Apple-platform builds where Linux is not equivalent | p95 <= 300s for blocking macOS lanes | Sylphx Platform execution plane |
-| `github-hosted-hermetic-policy` | **Hermetic policy / instruction-admission only**: deterministic schema, SSOT-model, catalog integrity, and policy-review gates that must not wait on Platform runner inventory. Backing label today: GitHub-hosted `ubuntu-latest` (or pinned `ubuntu-24.04`). **Not** product build/test/deploy. | Pickup is GitHub-hosted scheduler latency (not Sylphx profile SLO); capacity owner is GitHub Actions for the label, doctrine owns profile eligibility | Doctrine (profile eligibility) + GitHub (compute) |
+| `github-hosted-hermetic-policy` | **Hermetic policy / instruction-admission only**: deterministic schema, SSOT-model, catalog integrity, and policy-review gates that must not wait on Platform runner inventory. Backing label today: GitHub-hosted `ubuntu-latest` (or pinned `ubuntu-24.04`). **Not** product build/test/deploy. | Pickup is GitHub-hosted scheduler latency (not Sylphx profile SLO); Skills owns static profile eligibility and GitHub owns compute | Skills (profile eligibility) + GitHub (compute) |
 
 ### Hermetic policy profile (canonical, not a repo-local escape)
 

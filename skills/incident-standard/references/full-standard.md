@@ -28,18 +28,16 @@ This standard composes with:
   forward-fix) — cited here, not restated;
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for production
   verification signals used to prove a mitigation actually recovered;
-- [`ADR-136-security-floor`](https://github.com/SylphxAI/doctrine/blob/main/docs/adr/ADR-136-security-floor.md) for the
-  fail-closed invariants whose breach is always at least S1;
-- [ADR.md](https://github.com/SylphxAI/doctrine/blob/main/ADR.md)'s general rule for source-controlled artifact identity,
-  which the postmortem record's `id` follows.
+- the binding security profile for fail-closed invariants whose breach is
+  always at least S1;
+- `documentation-standard` for collision-resistant postmortem identity.
 
 ## Scope and Trigger
 
 This standard applies by selector, not by exemption prose. A repository is in
 scope when `.doctrine/project.json` states `project.lifecycle` is
 `production` or `commercial` **and** `delivery.deployable` is `true` (or the
-projected `sylphx_deployable` custom property, per
-[`ADR-81`](https://github.com/SylphxAI/doctrine/blob/main/docs/adr/ADR-81-fleet-policy-sync-selectors.md)). A library,
+projected deployable fleet property). A library,
 CLI-only tool, or research repo with no deployed or operated surface never
 satisfies that selector, so it is out of scope by construction — it does not
 need exemption language, and it does not need to adopt a postmortem process
@@ -95,8 +93,8 @@ customer-facing trigger, not a different decision tree.
 
 ## Postmortem Is a Machine Artifact
 
-A postmortem is a `postmortem-record` matching
-[`schemas/postmortem-record.schema.json`](https://github.com/SylphxAI/doctrine/blob/main/schemas/postmortem-record.schema.json),
+A postmortem is a `postmortem-record` matching the active schema selected by
+the binding profile,
 not a prose document a human reads once. Shape, at a glance:
 
 | Field | Content |

@@ -1,6 +1,6 @@
 ---
 name: engineering-standard
-description: "Binding engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating implementation, contracts, storage, concurrency, security boundaries, or delivery-critical runtime paths. Use for architecture, testing, observability, and module boundaries. Do not use for pure commercial packaging or live Work Graph operations."
+description: "Binding engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating code architecture, capabilities, features, DDD domain models, Clean/Hexagonal boundaries, functional cores, modules, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths."
 ---
 # Engineering Standard
 
@@ -9,6 +9,12 @@ description: "Binding engineering standard for durable product code. Use when de
 Canonical home: `skills/engineering-standard/` in `SylphxAI/skills`.  
 Full progressive-disclosure body: [references/full-standard.md](references/full-standard.md).  
 Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).
+
+For code structure or architecture migration, also read:
+
+- [Capability-first architecture](references/capability-first-architecture.md)
+- [Language mappings](references/capability-first-language-mappings.md)
+- [Executable-shape examples](references/capability-first-examples.md)
 
 The former source standard path is **alias-only** after cutover — author here only.
 
@@ -44,3 +50,5 @@ The former source standard path is **alias-only** after cutover — author here 
 - Fail closed on secret material in source and logs.
 - Never treat health/readiness probes as product capability proof.
 - Prefer expand-contract migrations for shared state.
+- Apply the canonical Capability-first architecture from the first durable
+  product commit; project size and migration cost are not exemptions.

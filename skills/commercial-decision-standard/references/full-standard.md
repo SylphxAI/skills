@@ -118,8 +118,8 @@ Risk posture is a computed decision, not a preference. Agents draft it, the
 principal ratifies its inputs, and downstream decisions read it instead of
 re-asking.
 
-- **The record.** A risk-posture record conforms to
-  [`../schemas/risk-posture.schema.json`](https://github.com/SylphxAI/doctrine/blob/main/schemas/risk-posture.schema.json):
+- **The record.** A risk-posture record conforms to the active schema selected
+  by the repository's binding profile:
   the principal's standing parameters (time horizon, ruin boundary,
   non-negotiables, cross-portfolio tradeoffs), current stage parameters,
   per-domain acceptance with rationale and evidence, delegation envelopes,

@@ -34,7 +34,7 @@ It composes with:
   production proof;
 - [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md) for
   nondeterministic or adversarial oracles;
-- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-profile-standard/references/full-standard.md) for binding
+- [`enterprise-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/enterprise-profile-standard/references/full-standard.md) for binding
   selection and compatibility; and
 - the introducing roleless-speculative-development ADR for why this replaces
   role/PR/merge-queue assumptions where its successor profile is active.

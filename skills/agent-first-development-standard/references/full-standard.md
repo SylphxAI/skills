@@ -48,9 +48,9 @@ This standard composes with:
 - [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
   for property/model tests, deterministic simulation, spec/eval gates, and
   canary analysis selection rules.
-- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-profile-standard/references/full-standard.md) for the
+- [`enterprise-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/enterprise-profile-standard/references/full-standard.md) for the
   binding no-human and delivery-adapter selections.
-- [`../ADR.md`](https://github.com/SylphxAI/doctrine/blob/main/ADR.md) for race-free ADR numbering and artifact identity.
+- [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for collision-resistant ADR identity.
 
 ## Ultimate Target: Mission Control With Profile-Selected Delivery
 
@@ -206,7 +206,7 @@ controlled workflow an independent admission authority. A shared login is
 labelled declared separation only. `scripts/policy-review-gate.py` is the
 canonical digest implementation.
 Policy-repository scope, credential modes, and required-status wiring live in
-[`doctrine-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-evolution-standard/references/full-standard.md) §Policy
+[`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) §Policy
 Repository Admission; this section owns the field contract that
 `scripts/policy-review-gate.py` parses.
 
@@ -459,9 +459,8 @@ for these gates when a repository does not already have an equivalent:
 - **Build graph and affected checks**: dependency graphs, affected-task
   detection, caching, and remote execution so CI stays fast enough for
   merge queues and parallel agents.
-- **Collision-resistant artifact identity**: [`../ADR.md`](https://github.com/SylphxAI/doctrine/blob/main/ADR.md)'s
-  general rule owns this — no self-assigned sequential number as primary
-  identity — cited, not restated.
+- **Collision-resistant artifact identity**: use the documentation standard's
+  rule—no race-prone self-assigned sequential number as primary identity.
 - **Formal or model-based methods**:
   [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)'s
   Core Rule matrix owns when property/model tests and deterministic
@@ -533,8 +532,8 @@ Parallelism is safe only when ownership and contracts are explicit.
 ## Collision Classes
 
 Collisions from self-assigned sequential numbers (ADRs, numbered source
-artifacts) are the general case [`../ADR.md`](https://github.com/SylphxAI/doctrine/blob/main/ADR.md)'s identity rule
-already prevents — cited there, not restated as rows below.
+artifacts) are prevented by the documentation standard's artifact-identity
+rule and are not restated as rows below.
 
 | Collision | Prevention | Resolution |
 | --- | --- | --- |

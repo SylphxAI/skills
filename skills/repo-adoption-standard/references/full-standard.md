@@ -1,71 +1,90 @@
-# repo-adoption-standard (canonical body)
-
-**Authority:** binding Standard Skill package `repo-adoption-standard` in `SylphxAI/skills` (`skills/repo-adoption-standard/`).
-
-**Cutover:** migrated from Doctrine `standards/repo-adoption-standard.md` at digest `sha256:303e531daeb327f3d547a8e23318ff992d3d1cd5df4f88764f6672dcc61843bd` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Repo Adoption Standard
 
-Minimum surfaces a repository must expose to consume Sylphx Doctrine as a paying
-customer would — not a product-specific runtime checklist.
+**Authority:** binding Standard Skill package `repo-adoption-standard` in
+`SylphxAI/skills`. Historical predecessor text is lineage only.
 
-Composes with:
+## Purpose
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
-  for parallel coordination and work packets.
-- [`source-authoring-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/source-authoring-standard/references/full-standard.md) for source
-  candidates, workspace admission, checkpoints, and reconciliation.
-- [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md) for admission tiers and
-  required-check wiring.
-- [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-runner-capacity-standard/references/full-standard.md) for runner
-  profiles and queue diagnosis.
-- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md) for
-  `PROJECT.md` and `.doctrine/project.json`.
-- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for production verification.
+Define the smallest complete surface that lets an agent understand, change,
+verify, and deliver a durable repository without inventing local policy.
+Adoption is not the addition of metadata around unchanged architecture: the
+repository must also satisfy the applicable engineering and delivery standards.
 
 ## Required surfaces
 
-A doctrine-consuming repo should have:
+Rule IDs:
 
-- a repo-local `AGENTS.md`, `CLAUDE.md`, or runtime-equivalent always-on
-  constitution derived from the canonical template, not a pointer-only file or
-  standards fork (must be **lane-aware**: ordinary direct-trunk vs fenced
-  ADR/policy compatibility when live fleet policy selects roleless direct-trunk);
-- `PROJECT.md` plus `.doctrine/project.json` per project-manifest standard;
-- default-branch integrity (deletion + non-fast-forward) under direct-trunk, or
-  protected `main` with required CI, auto-merge, and merge queue when the
-  compatibility lane / CI still exists for that repository class;
-- a machine-checkable gate-class declaration and exception mechanism;
-- an active-profile candidate admission mechanism: stable fan-in contexts such
-  as `trunk-admission/pass` for compatibility PR/merge-group candidates, or the
-  selected roleless exact-candidate/CAS proof contract;
-- preview-required/preview-skipped classification wired into the admission
-  manifest and status producer, with docs/control-plane-only candidates
-  resolving preview contexts without allocating runtime capacity;
-- Sylphx CI compute runner profiles for CI jobs, or a machine-readable,
-  owner/expiry-bound exception where Sylphx does not yet support the required
-  runner class;
-- risk-control enforcement for expand/contract migrations, feature flags,
-  idempotent side effects, kill switches, and progressive/canary rollout where
-  the lane requires them;
-- exhaustive affected postsubmit proof plus scheduled/full selector-audit proof;
-- automated recovery classification covering runtime rollback, selective source
-  revert, and forward-only recovery;
-- `doctor` or equivalent conformance status for repo-agnostic doctrine rules;
-- ADR convention checks or a plan to adopt them;
-- contract checks for APIs, tools, env/config, DB migrations, and generated
-  clients where applicable;
-- doc/catalog freshness checks for any current-state documentation;
-- a validation ladder in the repo-local agent file;
-- a clear release/deploy verification path.
+- `repo-entry-01` — runtime entrypoint resolves Skills, local facts, and Control Plane roles.
+- `repo-architecture-01` — real product code satisfies the canonical engineering architecture.
+- `repo-verify-01` — one proportional exact-candidate verification entrypoint exists.
+- `repo-delivery-01` — the repository declares and proves its terminal delivery boundary.
+- `repo-adoption-01` — adoption status is derived from facts, never authored around gaps.
+
+Every active durable repository exposes:
+
+1. **Runtime constitution** — `AGENTS.md`, `CLAUDE.md`, or runtime equivalent.
+   It projects the compact Skills + Control Plane topology and contains only
+   repo-local commands, hazards, and authority additions. It must not copy or
+   fork detailed standards.
+2. **Project identity** — `PROJECT.md` plus the canonical machine-readable
+   project manifest selected by `project-manifest-standard`.
+3. **Canonical code architecture** — real product code conforms to
+   `engineering-standard`, including Capability-first Modular DDD,
+   Clean/Hexagonal boundaries, and FCIS. Docs, manifests, folder names,
+   re-exports, or generated reports alone cannot satisfy this surface.
+4. **Source integrity** — the repository's selected delivery lane prevents
+   unowned destructive history changes and identifies its exact candidate.
+5. **Verification entrypoint** — one documented command runs the smallest
+   complete deterministic checks for a candidate. Extra gates require a
+   distinct material risk; do not accumulate ceremonial checks.
+6. **Delivery boundary** — the repo declares whether terminal delivery is
+   source landing, package release, deployment, store publication, or another
+   product-specific boundary, plus proportional proof and recovery.
+7. **Contracts and documentation** — public APIs, events, schemas, CLI/config,
+   database changes, generated clients, ADRs, specs, and runbooks have explicit
+   authoritative homes where applicable.
+8. **Adoption truth** — current gaps are typed and owned. `complete` or
+   `converged` must be derived from facts and verification, never authored as a
+   substitute for unresolved code or delivery work.
+
+## Authority topology
+
+- `SylphxAI/skills` owns static standards, procedures, and binding profiles.
+- The runtime constitution owns compact always-on law and local operating facts.
+- The product repository owns its code, contracts, ADRs, specs, and delivery.
+- Control Plane owns live fleet, work, ingestion, and effect state.
+- Archived Doctrine and GroundAtlas repositories are historical lineage, not
+  writable instruction or live-state authorities.
+
+## Proportional adoption
+
+The architecture and semantic boundaries are mandatory from the first durable
+commit. Physical artifacts are demand-driven: create a port, adapter, aggregate,
+event, migration, or runbook when the corresponding concept or effect exists,
+not as an empty placeholder.
+
+Verification scales with actual risk and lifecycle stage. Development-only
+structural changes require exact-source tests and architecture evidence, not a
+fabricated production soak. A live irreversible data or public-contract change
+requires stronger recovery and runtime proof. Optional hardening is backlog,
+not a reason to hold a proven terminal indefinitely.
+
+## Migration terminal
+
+A legacy repository is adopted only when all applicable surfaces above are
+true on the delivered candidate. In particular:
+
+- required code and dependency boundaries have actually changed;
+- superseded architecture and duplicate instruction authorities are retired;
+- behavior and public contracts remain verified or intentionally changed;
+- remaining gaps are either outside the declared objective or typed, expiring
+  exceptions permitted by the owning standard.
+
+Never call a docs-only, metadata-only, audit-only, or mechanical file split a
+canonical architecture migration.
 
 ## Validation
 
-Run `scripts/project-control-plane-audit.py --local <repo> --fail-on-drift` for
-manifest and instruction surfaces. Run admission and merge-queue conformance audits
-when org `gh` access is available — those are fleet/platform scope, not doctrine
-self-gates.
+Run the repository's declared verification entrypoint, then verify the active
+delivery boundary. Fleet-wide status is Control Plane readback; it is not a
+repo-local completion claim.

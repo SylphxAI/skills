@@ -18,12 +18,13 @@ No single industry term covers the complete method. Use the combination that des
 | Canary / progressive delivery | Move a bounded cohort while guardrails decide promote, pause, or roll back | Increasing traffic without explicit metrics and decision thresholds |
 | Migration factory | Standardize inventory, slicing, work packets, gates, evidence, and waves across a portfolio | Maximizing open work and PR count instead of completed verified throughput |
 | Fan-out / fan-in orchestration | Run independent slices concurrently and reconcile their proof centrally | Parallelizing shared choke points or accepting narrative completion reports |
+| One-step architecture cutover | Refactor a development-stage candidate, prove semantics, and remove predecessor structure in one landing | Treating Git reversibility as permission to skip tests or using a live dual-run where no live hypothesis exists |
 
 Useful public orientation: Martin Fowler's descriptions of [Strangler Fig Application](https://martinfowler.com/bliki/StranglerFigApplication.html) and [Branch by Abstraction](https://martinfowler.com/bliki/BranchByAbstraction.html), plus AWS Prescriptive Guidance on [migration-factory operating models](https://docs.aws.amazon.com/prescriptive-guidance/latest/application-portfolio-assessment-guide/migration-factory.html). This reference is an original synthesis, not a restatement of those sources.
 
 ## Rule IDs
 
-- `fleet-migration-1` — Freeze a capability denominator before reporting progress. Count observable capabilities, not files, repositories, commits, or lines.
+- `fleet-migration-1` — Freeze a semantic denominator before reporting progress: capabilities plus important behaviors, invariants, contracts, scenarios, surfaces, and effects—not files, repositories, commits, or lines.
 - `fleet-migration-2` — Make each slice vertically complete: boundary, target implementation, proof, delivery, authority switch, and recovery.
 - `fleet-migration-3` — Establish one contract source of truth before parallel work. Generated projections are outputs, never coordination surfaces.
 - `fleet-migration-4` — Separate source authority, target availability, target authority, and source retirement. None implies the next.
@@ -34,7 +35,7 @@ Useful public orientation: Martin Fowler's descriptions of [Strangler Fig Applic
 - `fleet-migration-9` — Keep one write authority. Shadow decisions or use isolated replay for irreversible effects.
 - `fleet-migration-10` — Parallelize disjoint slices; serialize contracts, migrations, registries, configuration schemas, and delivery workflows.
 - `fleet-migration-11` — Validate the exact integration candidate and deployed artifact, not an earlier branch head or local build.
-- `fleet-migration-12` — Retire the source only after live readback and recovery criteria pass; then gate against source reintroduction.
+- `fleet-migration-12` — Retire the source after the stage-appropriate target-authority and recovery criteria pass; live readback is required only for a live runtime claim.
 - `fleet-migration-13` — Regress a slice to `stale` rather than preserving optimistic status after source drift.
 - `fleet-migration-14` — Separate documented target, implemented code, merged state, deployed state, runtime authority, and retired source in every report.
 - `fleet-migration-15` — Cap work in progress by verification and merge capacity. More open slices are not more throughput.
@@ -50,6 +51,12 @@ Useful public orientation: Martin Fowler's descriptions of [Strangler Fig Applic
 | Rewrite 10,000 lines | No | Size is not an observable capability or cutover boundary |
 | Replace the entire monolith | No | Too large to compare, deploy, or roll back independently |
 | Introduce the shared contract used by many later slices | Foundation slice | Serialize and land first; do not claim product cutover |
+
+For a canonical architecture migration, a qualified slice also maps the
+capability definition to domain/application/ports/adapters/interfaces, names
+god-responsibility and dependency-direction gaps, and includes real code
+movement plus semantic tests. Adding FCCP metadata, empty folders, re-exports,
+or a narrative audit is not a migrated slice.
 
 A slice is ready for fan-out only when these answers are explicit:
 
@@ -224,6 +231,18 @@ Normalize only declared nondeterminism such as timestamps, generated IDs, trace 
 | Runtime guardrail breached | — | Stop exposure | Roll back authority or forward-fix by policy |
 | Probe skipped, missing, or exercises only health | — | Keep current authority | Do not count proof |
 | Target authoritative and recovery window complete | Retire source | — | — |
+
+### Lifecycle-stage selection
+
+| Stage | Default migration strategy |
+| --- | --- |
+| Development | One exact-candidate code cutover; exhaustive tests/replay; delete old structure immediately |
+| Internal dogfood without external users | One-step where state/effects are reversible; otherwise a short synthetic/shadow boundary check |
+| Internal beta with real users | Expand-contract only for affected compatibility/data/effect paths; bounded exposure and automatic rollback |
+| Public production | Risk-proportionate progressive authority switch and live readback after full pre-production proof |
+
+No fixed-day soak is implied. Any calendar wait must name a time-dependent
+hypothesis that active proof cannot credibly test.
 
 ## Fleet event schema
 

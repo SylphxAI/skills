@@ -216,8 +216,8 @@ This contract is consistent with Git's definition of a commit as indexed
 content plus a message, Git's recommendation to publish small logical changes
 while allowing private history cleanup, Git worktree's documented shared-repo
 model, Google's one-self-contained-change guidance without a line limit, and
-DORA's small-batch/trunk outcomes. Those sources inform mechanics; Doctrine's
-agent-first authority, exact-candidate evidence, and no-human effect boundaries
+DORA's small-batch/trunk outcomes. Those sources inform mechanics; the binding
+Skills standards, exact-candidate evidence, and no-human effect boundaries
 remain the governing requirements.
 
 Primary references:

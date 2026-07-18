@@ -30,7 +30,7 @@ This standard composes with:
   evals, tracing, and guardrails;
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for deploy proof and
   production verification.
-- [`doctrine-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/doctrine-profile-standard/references/full-standard.md) for current
+- [`enterprise-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/enterprise-profile-standard/references/full-standard.md) for current
   model/runtime and delivery-adapter selections and their review lifecycle.
 
 ## Core Rule
@@ -95,8 +95,8 @@ For contracts, require:
 - candidate SHA or provenance binding;
 - clear failure examples.
 
-For AI behavior, require an eval manifest conforming to
-[`../schemas/eval-manifest.schema.json`](https://github.com/SylphxAI/doctrine/blob/main/schemas/eval-manifest.schema.json)
+For AI behavior, require an eval manifest conforming to the active schema
+selected by the binding profile
 (required capabilities, incumbent baseline, exact candidate/provider/runtime/
 policy binding, dataset and contamination control, oracle, sampling,
 thresholds, cost/latency/privacy constraints, substitution margin,
@@ -107,8 +107,7 @@ for the field walkthrough.
 
 An eval manifest with `authorityMode: spec-only` proves only that an immutable,
 digest-resolved test can be replayed. It is never a green admission result;
-schema v2 has no blocking mode. The
-[`eval-result`](https://github.com/SylphxAI/doctrine/blob/main/schemas/eval-result.schema.json) shape binds future result
+schema v2 has no blocking mode. The active eval-result shape binds future result
 records and supports mechanical comparator checks, but a self-authored result or
 status is not truth. Blocking authority requires per-scenario and
 per-negative-control observations, an immutable evaluator/harness, and a
@@ -153,9 +152,8 @@ Every canary-required candidate must declare:
 
 Do not promote based on a green Kubernetes rollout alone. Promotion requires
 the analysis verdict or an explicit signed exception with expiry.
-When no repo-local telemetry/canary contract schema exists, use
-[`../schemas/telemetry-contract.schema.json`](https://github.com/SylphxAI/doctrine/blob/main/schemas/telemetry-contract.schema.json)
-and [`../schemas/exception-policy.schema.json`](https://github.com/SylphxAI/doctrine/blob/main/schemas/exception-policy.schema.json).
+When no repo-local telemetry/canary contract schema exists, resolve the active
+telemetry-contract and exception-policy schemas through the binding profile.
 
 ## Change-Centric VCS Watch Policy
 

@@ -1,14 +1,14 @@
 ---
-name: doctrine-evolution-standard
-description: "Doctrine migration packets, fleet constitution rollout, compatibility windows, and central reconcilers. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations."
+name: enterprise-profile-standard
+description: "Versioned binding enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static fleet selections and their lifecycle; Control Plane owns resolved live state."
 ---
-# Doctrine Evolution Standard
+# Enterprise Profile Standard
 
 **Authority: binding** (`packageKind: standard`).
 
-Canonical home: `skills/doctrine-evolution-standard/` in `SylphxAI/skills`.  
+Canonical home: `skills/enterprise-profile-standard/` in `SylphxAI/skills`.
 Full body: [references/full-standard.md](references/full-standard.md).  
-Cutover map: [references/doctrine-parity-delta.md](references/doctrine-parity-delta.md).
+Historical cutover map: [references/historical-cutover-map.md](references/historical-cutover-map.md).
 
 The former source standard path is **alias-only** after cutover — author here only.
 

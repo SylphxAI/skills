@@ -187,15 +187,35 @@ explicit exposure cap, kill condition, owner, expiry, and recovery.
 
 ## Architecture
 
-Use cohesive modules with dependency direction toward stable domain policy.
-Domain decisions do not depend on framework, transport, persistence, or UI
-implementation. Application code orchestrates use cases; infrastructure adapts
-external systems; UI renders workflows. Cross-module access uses published
-contracts rather than internals.
+All durable product code uses the canonical
+[Capability-first architecture](capability-first-architecture.md) from its first
+generation. The architecture combines Strategic DDD, Tactical DDD,
+Clean/Hexagonal dependency boundaries, Feature-first vertical slices inside
+capabilities, and Functional Core, Imperative Shell (FCIS). Functional-
+programming principles shape the core; they do not require every language or
+effectful orchestration path to pretend to be purely functional. Small project size,
+file count, or historical human implementation cost is not an exemption.
 
-Published contracts include schemas, application ports, domain events, API clients, and documented package exports. Do not import another feature's domain internals, infrastructure internals, private UI components, or database helpers.
+Use cohesive capability modules with dependency direction toward stable domain
+policy. Domain decisions do not depend on framework, transport, persistence,
+provider SDKs, or UI implementation. Application code orchestrates use cases;
+ports publish required effects; adapters implement those ports; interfaces
+translate external inputs and outputs. Cross-capability access uses published
+contracts, application ports, or domain events rather than internals.
 
-Keep modules cohesive, explicit, and replaceable. Add abstractions only when they remove real complexity, protect a boundary, or encode a stable domain concept. Remove duplication on the second occurrence.
+Published contracts include schemas, application ports, domain events, API
+clients, and documented package exports. Do not import another capability's
+domain internals, adapter internals, private UI components, or database helpers.
+
+Keep modules cohesive, explicit, and replaceable. No size-based exemption may
+hide a god responsibility at file, module, package, crate, service, or bounded-
+context level. Split on a new responsibility, invariant, contract, adapter,
+claim, proof, or ownership boundary—not mechanically on every behavior or an
+arbitrary line count. Module semantics outrank physical filename count.
+
+Use [language mappings](capability-first-language-mappings.md) for idiomatic
+Rust, TypeScript, Python, and Dart shapes and
+[examples](capability-first-examples.md) for the shared reference model.
 
 Keep authoritative state explicit and horizontally scalable when the boundary
 requires it. Process-local caches or coordination state must never masquerade
@@ -274,7 +294,7 @@ claiming a repo's parallel-authored artifact identity surface is clean.
 No-human development rewards designs that are easy for tools to understand,
 split, verify, and recover. Prefer these patterns when they fit the repo:
 
-- **Pure core, effectful shell**: keep domain decisions as pure functions and
+- **Functional Core, Imperative Shell**: keep domain decisions as pure functions and
   move IO, clocks, randomness, secrets, network calls, and database access to
   infrastructure adapters or typed effect runtimes at the boundary.
 - **Typed failure algebra**: model expected failures as tagged errors and make
@@ -320,10 +340,11 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
 ## Active engineering profile
 
 Current fleet language, typed-effect, contract/transport, database-change, and
-AI-runtime selections live in the active engineering profile under
-[`profiles/`](https://github.com/SylphxAI/doctrine/tree/main/profiles). This standard owns the bar and proof obligations;
-the profile owns the replaceable selection. Repositories record only their
-local selected stack and exceptions, not a copy of the fleet profile.
+AI-runtime selections resolve from the binding profile packages in
+`SylphxAI/skills` plus current Control Plane fleet state. This standard owns the
+bar and proof obligations; the selected profile owns replaceable choices.
+Repositories record only their local selected stack and exceptions, not a copy
+of the fleet profile.
 
 ## Frontend
 

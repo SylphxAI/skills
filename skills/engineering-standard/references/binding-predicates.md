@@ -26,7 +26,20 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-timeout-01` | Every network/RPC path has timeout, cancellation, and retry budget. |
 | `eng-migrate-01` | Shared schema/state uses expand-contract with rollback path. |
 | `eng-layer-01` | Dependency direction is domain → application → infrastructure. |
+| `eng-capability-01` | Durable code is organized by capability/bounded context; features are vertical slices inside the owning capability. |
+| `eng-ddd-01` | Strategic and Tactical DDD concepts carry domain language, invariants, aggregates, value objects, services, events, and repository ports. |
+| `eng-hex-01` | Clean/Hexagonal boundaries isolate domain/application policy from interfaces, frameworks, persistence, and provider adapters. |
+| `eng-functional-01` | Domain decisions form a deterministic functional core; external effects remain in an explicit imperative shell behind ports. |
+| `eng-modularity-01` | No file/module/package/crate/service/context may accumulate god responsibility; split by semantic boundary, not line count or every behavior. |
+| `eng-detail-01` | Important detail is attached to a capability as a sub-capability, behavior, invariant, contract, scenario, or surface rather than disappearing into Work or code. |
 | `eng-observe-01` | Critical paths emit privacy-preserving, correlatable telemetry. |
+| `eng-observe-02` | Telemetry names semantic capability/use-case outcomes and effects; domain/application code does not depend on observability SDKs. |
+| `eng-frp-01` | Time-varying/event-stream domains may use pure reactive reducers while subscriptions, clocks, frameworks, and backpressure remain in the imperative shell. |
+| `eng-event-01` | Cross-capability events are versioned published contracts with ordering, causation, delivery, idempotency, replay, and failure semantics. |
+| `eng-reconcile-01` | Convergent asynchronous systems treat events as wake-ups and recompute from authoritative desired/observed state through an idempotent reconciliation loop. |
+| `eng-ledger-01` | Conserved value uses an immutable append-only double-entry journal with balanced atomic postings, idempotency, reversal correction, rebuildable projections, and external reconciliation. |
+| `eng-di-01` | Composition roots bind stable ports to adapters with explicit scopes; domain code never locates dependencies through a container. |
+| `eng-provider-01` | Reactive providers are limited to time-varying projections/lifecycles and never become domain semantics or durable state authority. |
 | `eng-proof-01` | Health/readiness probes are never product capability proof. |
 | `eng-tool-01` | Language/tool selection follows the active engineering profile + SOTA kernel. |
 | `eng-repro-01` | Builds are pinned/locked; no floating `latest` for production graphs. |

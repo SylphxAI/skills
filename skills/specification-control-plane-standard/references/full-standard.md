@@ -30,7 +30,7 @@ constraint either:
 - a delivery/proof artifact that shows **what happened in reality**.
 
 Spec-driven tools such as Spec Kit and OpenSpec are useful references for
-artifact-guided agent workflow. They are not the doctrine's source of truth and
+artifact-guided agent workflow. They are not independent sources of truth and
 their default `design.md` / phase-document model must not replace ADRs,
 GitOps, executable contracts, or CI gates.
 
@@ -162,8 +162,8 @@ An eval manifest must name:
 - sampling policy, seed, retries, and allowed variance;
 - thresholds plus cost, latency, privacy, and safety constraints;
 - digest-bound replay plan and failure examples;
-- a result shape conforming to
-  [`../schemas/eval-result.schema.json`](https://github.com/SylphxAI/doctrine/blob/main/schemas/eval-result.schema.json) and
+- a result shape conforming to the active eval-result schema selected by the
+  binding profile and
   mechanically recomputable finite numeric/exact scalar comparisons. This is
   not a v2 promotion proof. Blocking authority requires per-scenario and
   per-negative-control source observations, an immutable evaluator/harness, and
@@ -221,9 +221,7 @@ remain forbidden to older versions. `$dynamicRef`, `$dynamicAnchor`, and
 their dynamic-scope identity semantics. Nested `$id` resource scopes are also
 forbidden until that projection models URI-base changes rather than assuming
 one document-local root. Per-version schema contract identity and
-every JSON semantic/claim digest use the portable RFC 8785 JCS
-contract in
-[`../docs/specs/canonical-json-identity.md`](https://github.com/SylphxAI/doctrine/blob/main/docs/specs/canonical-json-identity.md),
+every JSON semantic/claim digest use the portable RFC 8785 JCS contract,
 not a runtime-specific JSON serializer. Selected
 CI passes the merge base through `--base-ref`. A provider or
 model change can trigger requalification even when no source commit changed,
@@ -278,7 +276,7 @@ platform capability.
 This standard is `new-default` for new repos and new high-risk surfaces. Existing
 repos migrate by selector:
 
-1. Add schema/template support in doctrine.
+1. Add schema/template support in the owning Skills package or product repo.
 2. Audit for drift without blocking.
 3. Open generated issues/PRs for selected repos.
 4. Ratchet to required status only after the gate producer exists and default

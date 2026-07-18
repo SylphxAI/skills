@@ -1,6 +1,6 @@
 ---
 name: project-manifest-standard
-description: "PROJECT.md and .doctrine/project.json identity, lifecycle, boundaries, and adoption gaps. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations."
+description: "Repository identity, lifecycle, capability ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use for durable project facts, not live Work Graph operations."
 ---
 # Project Manifest Standard
 
