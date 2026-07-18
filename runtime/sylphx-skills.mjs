@@ -387,17 +387,30 @@ function clear() {
 }
 
 function testHoldEnableAfterReconcile() {
-  if (process.env.NODE_ENV !== 'test' || !process.env.SYLPHX_SKILLS_TEST_HOLD_ENABLE_AFTER_RECONCILE_MS) return;
-  const milliseconds = Number(process.env.SYLPHX_SKILLS_TEST_HOLD_ENABLE_AFTER_RECONCILE_MS);
-  if (!Number.isFinite(milliseconds) || milliseconds < 0 || milliseconds > 5_000) {
-    throw new Error('invalid enable lifecycle test hold duration');
-  }
+  if (process.env.NODE_ENV !== 'test') return;
+  const duration = process.env.SYLPHX_SKILLS_TEST_HOLD_ENABLE_AFTER_RECONCILE_MS;
+  const release = process.env.SYLPHX_SKILLS_TEST_HOLD_ENABLE_AFTER_RECONCILE_RELEASE;
+  if (!duration && !release) return;
   const marker = path.join(stateDirectory, '.test-enable-after-reconcile-ready');
   writeFileSync(marker, 'ready\n');
   try {
-    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
+    const waiter = new Int32Array(new SharedArrayBuffer(4));
+    if (release) {
+      const deadline = Date.now() + 60_000;
+      while (!existsSync(release)) {
+        if (Date.now() >= deadline) throw new Error('timed out waiting to release enable lifecycle test hold');
+        Atomics.wait(waiter, 0, 0, 20);
+      }
+    } else {
+      const milliseconds = Number(duration);
+      if (!Number.isFinite(milliseconds) || milliseconds < 0 || milliseconds > 5_000) {
+        throw new Error('invalid enable lifecycle test hold duration');
+      }
+      Atomics.wait(waiter, 0, 0, milliseconds);
+    }
   } finally {
     rmSync(marker, { force: true });
+    if (release) rmSync(release, { force: true });
   }
 }
 

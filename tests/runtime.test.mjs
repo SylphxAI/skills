@@ -1061,6 +1061,8 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
   const codexHome = path.join(managedHome, '.codex');
   const claudeHome = path.join(managedHome, '.claude');
   const grokHome = path.join(managedHome, '.grok');
+  let lifecycleRelease;
+  let enableExit;
   try {
     mkdirSync(source, { recursive: true });
     git(source, ['init', '--initial-branch=main']);
@@ -1089,13 +1091,14 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     };
 
     const lifecycleReady = path.join(managedHome, '.sylphx-skills', '.test-enable-after-reconcile-ready');
+    lifecycleRelease = path.join(managedHome, '.sylphx-skills', '.test-enable-after-reconcile-release');
     const enabling = spawn(process.execPath, [cli, 'auto-sync', 'enable', '--interval', '7m', '--quiet'], {
       cwd: root,
       env: {
         ...process.env,
         ...environment,
         NODE_ENV: 'test',
-        SYLPHX_SKILLS_TEST_HOLD_ENABLE_AFTER_RECONCILE_MS: '1000',
+        SYLPHX_SKILLS_TEST_HOLD_ENABLE_AFTER_RECONCILE_RELEASE: lifecycleRelease,
       },
       stdio: ['ignore', 'pipe', 'pipe'],
     });
@@ -1103,7 +1106,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     let enableStderr = '';
     enabling.stdout.on('data', (chunk) => { enableStdout += chunk; });
     enabling.stderr.on('data', (chunk) => { enableStderr += chunk; });
-    const enableExit = new Promise((resolve) => enabling.once('exit', resolve));
+    enableExit = new Promise((resolve) => enabling.once('exit', resolve));
     const waiter = new Int32Array(new SharedArrayBuffer(4));
     for (
       let attempt = 0;
@@ -1133,7 +1136,9 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     });
     assert.equal(tickBetweenEnablePhases.status, 0, tickBetweenEnablePhases.stderr || tickBetweenEnablePhases.stdout);
     assert.equal(JSON.parse(tickBetweenEnablePhases.stdout).status, 'disabled');
+    writeFileSync(lifecycleRelease, 'release\n');
     assert.equal(await enableExit, 0, enableStderr || enableStdout);
+    enableExit = undefined;
 
     assert.equal(existsSync(path.join(managedHome, '.sylphx-skills', 'sync.sh')), false);
     assert.equal(
@@ -1354,6 +1359,11 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     assert.equal(existsSync(path.join(managedHome, '.sylphx-skills', 'repository')), true);
     assert.equal(existsSync(path.join(managedHome, '.sylphx-skills', 'config.json')), false);
   } finally {
+    if (lifecycleRelease) {
+      mkdirSync(path.dirname(lifecycleRelease), { recursive: true });
+      writeFileSync(lifecycleRelease, 'release\n');
+    }
+    if (enableExit) await enableExit;
     rmSync(sandbox, { recursive: true, force: true });
   }
 });
