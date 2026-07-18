@@ -53,6 +53,16 @@ profile successor, not a permanent repo-local fork.
 
 ## Lifecycle
 
+The lifecycle state machine is:
+
+```text
+candidate -> active -> deprecated -> retired
+     \-----------> withdrawn <-----/
+```
+
+Only `active` participates in default selection. A withdrawn or retired
+revision cannot reactivate; a changed choice is a new immutable revision.
+
 Use expand/reconcile/ratchet/contract only where compatibility risk actually
 requires overlap:
 

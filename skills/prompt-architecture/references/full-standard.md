@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `prompt-architecture` in `SylphxAI/skills` (`skills/prompt-architecture/`).
 
-**Cutover:** migrated from Doctrine `standards/prompt-architecture.md` at digest `sha256:48af049edfd91c4c3d50ca20692000416426ebb5273f37579733eda01f02d010` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -53,7 +51,7 @@ Choose the repository by semantic ownership, not by the `SKILL.md` filename:
 | Repository fact, command, hazard, or validation note | Owning repository's local instruction surface | True only for that repository or machine boundary |
 
 Project only the compact pre-loading subset into the always-on constitution;
-keep the owning detailed standard in Skills. Historical Doctrine aliases may
+keep the owning detailed standard in Skills. Historical instruction aliases may
 preserve lineage but are not writable instruction authorities. Skills provide
 method and artifacts, not runtime capability grants or current external
 authority. Install and route packages according to their declared evidence
@@ -212,7 +210,7 @@ authority conflict. A target without authoritative readback is `unverified`, not
 implicitly converged.
 
 This is migration and adoption evidence, not a return to continuous N-projection
-auditing. ADR-160's default remains: no embedded source SHA, no maintained
+auditing. The default remains: no embedded source SHA, no maintained
 per-tool policy cache, and no permanent completeness scan of agent-owned
 projections. Re-run proportionate readback only when making a convergence claim
 after a kernel, runtime mapping, bootstrap path, migration selector, or observed
@@ -325,7 +323,7 @@ Bootstrap prompts must not:
 - request elevated permissions, hooks, MCP servers, credential storage, dynamic
   shell injection, model overrides, third-party payload downloads, or anything
   outside the authenticated package install and constitution projection surface;
-- silently overwrite per-repo `PROJECT.md`, `.doctrine/project.json`, or
+- silently overwrite per-repo `PROJECT.md`, `project.manifest.json`, or
   production evidence;
 - invent unsupported tool syntax or tool-specific frontmatter for the portable
   corpus;
@@ -347,7 +345,8 @@ and the runtime-constitution projection pattern:
 description and loads detailed standards only on demand.
 
 The bootstrap mechanism is `new-default`/`optional-adoption`. Effective loading
-of the compact constitution is separately `required-future` under ADR-188:
+of the compact constitution is separately `required-future` under the owning
+instruction-evolution decision:
 pointer-only legacy projections follow its declared compatibility window,
 migration selector, readback proof, and recovery contract. Future changes become
 required only through the owning instruction-evolution decision, never by implication.

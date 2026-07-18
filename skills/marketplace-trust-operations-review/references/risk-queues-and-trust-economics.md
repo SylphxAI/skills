@@ -138,8 +138,9 @@ For a material policy/rule/model/queue change, define:
 10. incident routing and post-release delayed-outcome review.
 
 Do not copy internal engineering eval procedures into this skill; define the
-product evidence obligation and hand implementation to current Doctrine frontier
-verification, engineering, delivery, and incident owners.
+product evidence obligation and hand implementation to the applicable
+`frontier-verification-standard`, `engineering-standard`, `delivery-standard`,
+and `incident-standard` owners.
 
 ## Trust economics
 

@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `enterprise-control-plane-standard` in `SylphxAI/skills` (`skills/enterprise-control-plane-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/enterprise-control-plane-standard.md` at digest `sha256:c52bd17242aa5ef28c288a6f071e447f1239cd4fbcb31a31eb0cecfe83ace35a` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -13,7 +11,7 @@ Author here; do not maintain a second prose SSOT.
 ## Purpose
 
 Use this standard when deciding how development process, CI, previews, release,
-scorecards, migrations, or doctrine adoption should apply across many
+scorecards, migrations, or instruction adoption should apply across many
 repositories.
 
 This standard owns fleet control-plane boundaries and outcomes. The active
@@ -49,10 +47,11 @@ Use the layer that owns the fact or mechanism:
 | Layer | Owns | Must not own |
 | --- | --- | --- |
 | Active delivery-forge enforcement (currently GitHub) | issues, change candidates, merge serialization, rulesets, branch protection, checks/statuses, workload identities, selector properties | product intent, hidden workflow state, dashboard-only governance |
-| Doctrine | standards, ADRs, schemas, templates, migration packets, stable context names, conformance scripts | repo-local project facts, product runtime behavior |
-| Repo-local facts | `PROJECT.md`, `.doctrine/project.json`, root runtime constitution, thin caller workflows | copied enterprise process, sibling-repo internals |
+| Skills | static standards, procedures, profiles, schemas, and reusable templates | live work/fleet state, repo-local facts, product runtime behavior |
+| Control Plane | live selectors, Work Ledger, adoption, migration, repository ingestion, effects, and conformance projections | static instruction prose or repo-local product decisions |
+| Repo-local facts | `PROJECT.md`, `project.manifest.json`, root runtime constitution, thin caller workflows | copied enterprise process, sibling-repo internals |
 | Active execution platform (currently Sylphx Platform) | CI compute, preview/deploy orchestration, status publication, reconciliation, fleet dashboards, portal projection | merge authority outside the selected delivery forge, project facts guessed centrally |
-| Portal/catalog projection | searchable catalog, scorecards, scaffolding UI, ownership views, maturity summaries | source-of-truth state not backed by GitHub/doctrine/manifests/telemetry |
+| Portal/catalog projection | searchable catalog, scorecards, scaffolding UI, ownership views, maturity summaries | source-of-truth state not backed by forge/Skills/manifests/telemetry |
 
 If two layers can express a fact, choose the one that can enforce or generate it
 without drift. Prose dashboards are never enforcement.
@@ -61,10 +60,10 @@ without drift. Prose dashboards are never enforcement.
 
 ### New repositories
 
-New repositories start from doctrine defaults:
+New repositories start from binding Skills and enterprise-profile defaults:
 
-- root runtime constitution from `templates/AGENTS.md` or runtime equivalent;
-- `PROJECT.md` and `.doctrine/project.json`;
+- compact runtime constitution installed from the binding instruction source;
+- `PROJECT.md` and `project.manifest.json`;
 - organization Renovate preset or relay;
 - baseline ruleset and branch protection from the owning organization;
 - thin workflow caller only when GitHub Actions, a status publisher, or a
@@ -101,7 +100,7 @@ The platform reconciler may project manifest facts into GitHub custom
 properties, but it must not make GitHub custom properties the only home for
 project purpose, lifecycle, boundary, deploy path, or commercial posture.
 
-The doctrine-owned selector baseline is:
+The active enterprise profile owns the selector baseline:
 
 | GitHub custom property | Type | Purpose |
 | --- | --- | --- |
@@ -121,23 +120,23 @@ manifest facts and then letting the reconciler update GitHub custom properties.
 Do not hardcode WebPool membership in workflow YAML, runner labels, or sibling
 projects.
 
-Use `scripts/repo-selector-conformance-audit.py` to read the live GitHub custom
-property schema and per-repo selector values. Missing selector schema is
+Use the current Control Plane selector-conformance surface to read the live
+forge custom-property schema and per-repo selector values. Missing selector schema is
 control-plane drift. Missing selector values are migration work, not a reason
 for the central platform to guess a repository's purpose.
 
-Use `scripts/repo-selector-schema-provision.py` to provision or repair the
-selector schema. Schema provisioning is an expand-phase operation: the
+Use the current Control Plane effect adapter to provision or repair the selector
+schema. Schema provisioning is an expand-phase operation: the
 properties are created with `required=false` and
 `require_explicit_values=false`. A later ratchet may make values required only
 after the Sylphx Platform/GitHub App projection job has populated in-scope
 repositories and default-branch readback proves coverage.
-Use `scripts/repo-selector-value-projection.py` to project repo-local manifest
-facts into GitHub custom-property values. It applies only complete selector facts
+Use the current Control Plane projection capability to project repo-local manifest
+facts into forge custom-property values. It applies only complete selector facts
 and reports missing `project.policyPool` or `delivery.deployable` as repo-local
 manifest work rather than guessing centrally.
-Use `scripts/repo-selector-manifest-rollout-plan.py` to batch incomplete
-selector facts into claimable repo-local migration packets. Packet batching is
+Use the Control Plane Work Ledger to batch incomplete selector facts into
+claimable repo-local migration packets. Packet batching is
 the default; do not create one issue per repository for selector fact adoption.
 
 ### CI and status checks
@@ -176,7 +175,7 @@ containing `self-hosted` plus the scalar profile ID where the caller needs to be
 explicit about GitHub's self-hosted runner class. The legacy tuples
 `[self-hosted, sylphx, linux, standard]` and `[self-hosted, sylphx, macos,
 standard]` are migration aliases, not second policy spellings, and must not be
-introduced into new workflows. Any additional profile needs a doctrine-owned
+introduced into new workflows. Any additional profile needs an enterprise-profile-owned
 name, capability description, selector, capacity owner, pickup SLO, queue
 diagnostic signal, and conformance signal before repositories depend on it. A
 required context queued on a profile with no online matching runner is
@@ -195,7 +194,7 @@ Default lane-to-profile selection:
 The classifier selects a lane; the lane policy selects a profile; the platform
 scheduler places the job. Target repositories should not encode ChatLink,
 HeavyLink, or other informal pool names as runner labels. If such names exist
-as product UI terms, they must map to doctrine-owned lanes/profiles through
+as product UI terms, they must map to enterprise-profile-owned lanes/profiles through
 Sylphx Platform configuration.
 
 Runner choice does not change branch protection. The same stable contexts must
@@ -204,8 +203,8 @@ be published regardless of compute backend.
 Queue/capacity visibility is part of the control plane. The execution plane must
 publish or expose enough data to distinguish `within-slo`, `capacity-saturated`,
 `no-online-runner`, `unknown-profile`, `blocked-or-waiting`, and
-`inventory-unknown` states for queued/running jobs. The read-only doctrine audit
-is `scripts/runner-queue-capacity-audit.py`; continuous enforcement belongs in
+`inventory-unknown` states for queued/running jobs. Read-only audit is exposed
+through the current Control Plane conformance surface; continuous enforcement belongs in
 Sylphx Platform or the status publisher, not in target repositories.
 
 ### Queue governor
@@ -235,9 +234,9 @@ turn those facts into fast, safe delivery.
 
 Preview is admission evidence, not a universal tax.
 
-- Require preview for runtime, user-visible, API/event/tool/SDK, auth, billing,
-  security, migration, deploy, infra, feature-flag, or cross-repo contract
-  changes.
+- Require preview only when a changed runtime, user-visible, API/event/tool/SDK,
+  auth, billing, security, migration, deploy, infra, flag, or cross-repo surface
+  has a material claim that faster exact-candidate proof cannot resolve.
 - Skip preview for docs/control-plane-only candidates and publish successful
   no-op preview/build contexts without allocating build or runtime capacity.
 - Allow optional preview only when the classifier can prove the change cannot
@@ -248,7 +247,7 @@ Production deploy proof remains separate from PR preview proof.
 
 ### Package release
 
-Package producers follow ADR-59. JavaScript/TypeScript packages use Changesets
+Package producers follow `delivery-standard`. JavaScript/TypeScript packages use Changesets
 unless a repo-local ADR proves an equivalent. Release/version PRs must be opened
 by a dedicated least-privilege GitHub App or bot identity so CI triggers
 normally and release commits have stable audit identity. Each org designates
@@ -256,23 +255,22 @@ one release App identity in org-level configuration; the control-plane task is
 to certify its permissions, installation scope, and status context behavior,
 not to create a duplicate bot.
 
-Package release adoption is centrally audited by
-`scripts/package-release-conformance-audit.py`. Repositories that publish or
+Package release adoption is centrally audited through the Control Plane
+package-release conformance projection. Repositories that publish or
 appear to publish packages must expose `delivery.packageRelease` facts; the
 audit then checks release intent, bot-owned version PR evidence, release gates,
 publish identity, OIDC/token fallback posture, provenance, and registry
 readback. Findings become migration issues or generated PRs, not manual
 dashboard review.
 
-Collision-resistant artifact identity is centrally audited by
-`scripts/artifact-identity-conformance-audit.py`. Repositories should not create
-branch-local sequential ADR drafts, migration filenames, doctrine/rollout
+Collision-resistant artifact identity is centrally audited through the Control
+Plane artifact-identity conformance projection. Repositories should not create
+branch-local sequential ADR drafts, migration filenames, instruction/rollout
 packet IDs, generated issue markers, or generated registry rows. The audit is a
-read-only selector for ADR-71 migration work and future ratchets; legacy
+read-only selector for artifact-identity migration work and future ratchets; legacy
 sequence-like artifacts are reviewed, not renumbered blindly.
-`scripts/artifact-identity-rollout-plan.py` turns audit output into claimable
-work packets, and `scripts/sync-rollout-issues.py` reconciles those packets into
-doctrine issues without editing target repositories.
+The Control Plane reconciler turns audit output into claimable Work Items
+without editing target repositories directly.
 
 Only hard `DRIFT` artifact-identity findings should become generated packet
 issues by default; `REVIEW` findings (grandfathered ADR numbers,
@@ -283,7 +281,7 @@ handling in
 ### Commercial decisions
 
 Pricing, packaging, roadmap, paid entitlements, commercial experiments, and
-market positioning follow ADR-62. They are research-backed Commercial ADRs, not
+market positioning follow `commercial-decision-standard`. They are research-backed Commercial ADRs, not
 repo-local preferences or hidden chat decisions.
 
 ## Portal And Scorecard Rules
@@ -293,7 +291,7 @@ It is not governance by itself.
 
 Allowed:
 
-- read-only catalog projections from `.doctrine/project.json`, GitHub, CI,
+- read-only catalog projections from `project.manifest.json`, GitHub, CI,
   release systems, billing SSOT, metrics SSOT, and telemetry;
 - scaffolding flows that create typed Work Items and source candidates through
   the active adapter;
@@ -313,7 +311,7 @@ Forbidden:
 
 ## Migration Classes
 
-Every control-plane change must use the doctrine-evolution classes:
+Every control-plane change must use the `instruction-evolution-standard` classes:
 
 - `advisory`: references, examples, wording, no migration.
 - `new-default`: templates/defaults for new repos.
@@ -328,40 +326,16 @@ its selector is explicit, and recovery is documented.
 
 ## Validation
 
-For a doctrine change:
-
-```bash
-python3 scripts/project-control-plane-audit.py --local . --fail-on-drift --json
-python3 scripts/runner-profile-conformance-audit.py --local . --fail-on-drift --json
-python3 scripts/runner-queue-capacity-audit.py --repo SylphxAI/doctrine --json
-python3 scripts/artifact-identity-conformance-audit.py --local . --local-repo SylphxAI/doctrine --fail-on-drift --json
-python3 scripts/package-release-conformance-audit.py --local . --local-repo SylphxAI/doctrine --json
-python3 scripts/repo-selector-conformance-audit.py --org SylphxAI --json
-git diff --check
-```
-
-For a target repository:
-
-```bash
-python3 <doctrine>/scripts/project-control-plane-audit.py \
-  --repo <owner/repo> \
-  --ref <branch> \
-  --fail-on-drift \
-  --json
-
-python3 <doctrine>/scripts/runner-profile-conformance-audit.py \
-  --repo <owner/repo> \
-  --ref <branch> \
-  --check-live-runners \
-  --fail-on-drift \
-  --json
-```
-
-A control-plane claim is not complete until the default branch or required
-status readback proves the repo is actually in the desired state.
+Validate the exact Skills/profile identities, project-manifest schema, selector
+resolution, desired/observed reconciliation, and target repository's declared
+verification entrypoint. Read current queue, runner, ruleset, package-release,
+artifact-identity, and selector conformance through Control Plane or the owning
+external system's live adapter. A control-plane claim is not complete until the
+default branch, owning external system, or required status readback proves the
+repository is actually in the desired state.
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

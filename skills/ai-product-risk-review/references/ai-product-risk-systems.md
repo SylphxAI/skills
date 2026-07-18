@@ -185,12 +185,12 @@ unknown state into approval.
 
 | Need | Canonical owner output consumed here |
 | --- | --- |
-| Eval, judge, replay, simulation, adversarial verification | current Doctrine frontier-verification artifact |
+| Eval, judge, replay, simulation, adversarial verification | `frontier-verification-standard` artifact |
 | Threat model, prompt/tool security, vulnerability work | security owner artifact |
 | Data rights, privacy, retention, deletion | privacy/data lifecycle authority |
 | Tool schemas, permissions, implementation, observability | owning engineering project |
 | Event and identity pipeline | `product-analytics-instrumentation-review` artifact |
-| Release, rollout, recovery, production proof | current Doctrine delivery artifact |
+| Release, rollout, recovery, production proof | `delivery-standard` artifact |
 | Support taxonomy and customer recovery | `customer-support-operations` artifact |
 | Whole-product product/commercial design | app/game/product/pricing specialist artifact |
 

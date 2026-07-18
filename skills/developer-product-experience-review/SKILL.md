@@ -23,7 +23,8 @@ their canonical owners; do not redesign those systems here.
 
 - Do not use for API/SDK implementation, compatibility architecture, low-level
   rate limiting, infrastructure capacity, or release engineering; hand the
-  experience requirement to current Doctrine engineering/delivery owners.
+  experience requirement to the owning engineering project under
+  `engineering-standard` and `delivery-standard`.
 - Do not use for developer quota/free-credit abuse policy or generic product
   abuse; use `developer-quota-credit-abuse-review` or
   `product-abuse-risk-review` respectively.
@@ -126,7 +127,8 @@ claiming production performance before measurement exists.
 ## Owner handoffs
 
 - Hand API/SDK schema, compatibility, deprecation implementation, and reliability
-  engineering to the current Doctrine engineering and specification owners.
+  engineering to the owning project under `engineering-standard` and
+  `specification-control-plane-standard`.
 - Use `developer-quota-credit-abuse-review` for developer quota, free-credit,
   costly-operation, trust-graduation, and abuse-economics policy.
 - Use `product-abuse-risk-review` for cross-product abuse controls and case
@@ -137,8 +139,8 @@ claiming production performance before measurement exists.
   price, payment, ledger, or entitlement authority.
 - Use `app-design-blueprint` when the whole application experience, rather than
   the developer integration journey, is the independent artifact.
-- Use current Doctrine delivery, incident, security, and privacy procedures for
-  shipped-state proof, live incidents, engineering controls, or internal policy.
+- Use `delivery-standard`, `incident-standard`, `engineering-standard`, and
+  `privacy-data-lifecycle-review` for shipped proof, incidents, controls, and privacy.
 
 ## Hard gates
 

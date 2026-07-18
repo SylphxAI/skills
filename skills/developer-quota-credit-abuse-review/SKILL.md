@@ -42,8 +42,8 @@ look indistinguishable from abuse.
 - For package and price architecture, use `saas-subscription-pricing`.
 - For payment authorization, settlement, refunds, or chargebacks, use
   `payment-platform-readiness`; consume its canonical money state.
-- For DDoS or active security incidents, use the current Doctrine incident and
-  security procedures.
+- For DDoS or active security incidents, use `incident-standard` and the owning
+  security engineering boundary under `engineering-standard`.
 - For a specific fraud case, preserve evidence and authorized review; this
   skill designs the reusable product controls, not the case verdict.
 - For one developer account or app's diagnostics, support case, or bounded

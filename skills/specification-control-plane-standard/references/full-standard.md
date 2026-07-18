@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `specification-control-plane-standard` in `SylphxAI/skills` (`skills/specification-control-plane-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/specification-control-plane-standard.md` at digest `sha256:0f2d4d45cc333290a7bc97002ff16959a13dceeae3846957dc9b6c924ca27126` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -137,7 +135,7 @@ AI behavior, agent workflows, provider routing, prompt/tool policies, and
 model-dependent product behavior need eval manifests when correctness cannot be
 fully expressed as deterministic unit tests.
 
-An eval manifest must name:
+An eval manifest must name the smallest complete replay contract:
 
 - required capabilities, known failure modes, and incumbent baseline evidence;
 - dataset/scenario suite version, repository-relative location, and content
@@ -149,83 +147,39 @@ An eval manifest must name:
 - exact runtime, tool-catalog, prompt/policy, and data-policy revisions plus
   content digests;
 - contamination or benchmark-leakage controls;
-- `spec-only` authority and a content digest over immutable eval intent; schema
-  v2 is replayable specification, never release authority;
+- authority class and a content digest over immutable eval intent; a replayable
+  specification is not by itself release authority;
 - digest-bound deterministic checker, golden-output, or property-oracle
   implementation, plus negative-control corpus and executable entrypoint;
-- optional LLM-judge output only as external, non-authoritative research. Schema
-  v2 does not govern it, and it cannot be the v2 blocking oracle because
-  self-declared family labels/aliases do not prove
-  independent lineage. A future blocking form requires a trusted,
-  content-addressed identity registry and attestation producer in a new schema
-  version;
+- any LLM-judge identity, prompt, rubric, calibration, independence, and
+  variance contract. A judge is non-blocking unless its lineage and error
+  characteristics are independently qualified for the decision;
 - sampling policy, seed, retries, and allowed variance;
 - thresholds plus cost, latency, privacy, and safety constraints;
 - digest-bound replay plan and failure examples;
 - a result shape conforming to the active eval-result schema selected by the
-  binding profile and
-  mechanically recomputable finite numeric/exact scalar comparisons. This is
-  not a v2 promotion proof. Blocking authority requires per-scenario and
-  per-negative-control source observations, an immutable evaluator/harness, and
-  a registered attested producer in a future semantic schema version plus
-  staged ratchet;
+  binding profile, with mechanically recomputable comparisons and source
+  observations sufficient to reproduce the verdict;
 - substitution margin, shadow/canary comparison, fallback and recovery;
 - scheduled and drift-triggered requalification conditions;
 - owner and scheduled requalification date.
 
-Schema v2 owns this substitution contract. The machine policy in
-`profiles/artifact-schema-policy.json` rejects new v1 artifacts from its staged
-future activation date and
-ratchets selected legacy artifacts after its declared compatibility date;
-`scripts/spec-control-plane-audit.py --base-ref <sha>` treats added, copied,
-modified, and renamed artifacts as new admissions, preventing legacy paths from
-laundering new content. Every canonical `schemas/*.schema.json` path has
-exactly one policy classification; a newly discovered unclassified schema fails
-admission regardless of where it declares `schemaVersion`. Each policy has an
-ordered, append-only ratchet for every supported version above its baseline.
-Each ratchet
-binds its own accepted, non-superseded ADR metadata, future new-artifact
-activation date, legacy window, selected-artifact required date, and at least
-30 days of declared reconciliation. The policy registry is itself a selected
-governed artifact:
-its own ratchet is applied to `profiles/artifact-schema-policy.json`, so an
-explicit semantic branch and ratchet can stage a successor but the registry
-cannot remain on an expired predecessor after `minimumRequiredFrom`. A newly
-supported version also needs an explicit semantic schema branch.
-Candidate-vs-base audit forbids removing policy/ratchet history
-or changing any admitted date or duration in either direction; emergency
-acceleration is a separate decision path. Ordered ratchets cannot overlap. The
-immutable initial version and retained ratchet history allow the contract phase
-to remove retired old versions from the live schema enum while the historical
-ratchet head prevents downgrade of the latest version. Expansion and
-contraction are separate admissions: one candidate may not both add a successor
-and remove a predecessor, and a predecessor may be removed only after its
-successor's `minimumRequiredFrom` floor is active. Per-version schema
-contracts are closed `#/$defs/versionN` modules selected by a root `oneOf`;
-vNext adds a sibling module and may not rewrite an admitted predecessor.
-Contract projection resolves the complete reachable local-reference graph with
-RFC 6901 pointer decoding, including array-index traversal. It prunes only a
-mechanically proved exact root `oneOf` version dispatcher; ambiguous
-conditionals and all other combinators remain in every affected version
-identity. Runtime selection likewise replaces only that proved dispatcher with
-the selected branch while preserving every other root constraint, and falls
-back to full-schema validation when the dispatcher is ambiguous. A nested child object's own
-`schemaVersion` dispatcher remains part of its outer contract; escaped or
-nested references cannot evade identity, while unreachable root vNext
-definitions cannot rewrite v1. Schema-keyword audits traverse actual schema
-positions, not instance property names or JSON data that merely resemble
-keywords. Validators select the declared branch for
-field-level diagnostics, and executable fixtures must prove vNext-only fields
-remain forbidden to older versions. `$dynamicRef`, `$dynamicAnchor`, and
-`$anchor` are forbidden until a successor projection contract and ADR define
-their dynamic-scope identity semantics. Nested `$id` resource scopes are also
-forbidden until that projection models URI-base changes rather than assuming
-one document-local root. Per-version schema contract identity and
-every JSON semantic/claim digest use the portable RFC 8785 JCS contract,
-not a runtime-specific JSON serializer. Selected
-CI passes the merge base through `--base-ref`. A provider or
-model change can trigger requalification even when no source commit changed,
-and an expired requalification date is a gate failure.
+Schema evolution has one declared policy authority. Every governed artifact
+kind maps to an admitted schema version; unclassified or unknown versions fail
+closed. An admitted version is immutable, closed where practical, and selected
+explicitly. A successor adds a separate semantic branch and positive/negative
+fixtures rather than silently rewriting its predecessor. Contract identity
+uses a declared portable canonicalization algorithm, and projection traverses
+the complete reachable reference graph rather than hashing one convenient
+file.
+
+Version ratchets retain immutable history and declare activation, consumer
+selection, compatibility, retirement, and recovery predicates. In development
+or when no live consumer/state compatibility exists, verification may justify
+one-step replacement. Live consumers or shared state require expand/contract
+until readback proves convergence. No fixed number of days is evidence by
+itself. A model/provider/runtime change can trigger requalification without a
+source commit; an expired evidence contract fails admission.
 
 High-risk state machines, queues, ledgers, permissions, schedulers, migrations,
 and distributed workflows should prefer property/model tests or deterministic
@@ -254,7 +208,7 @@ consumes it.
 
 ## Exception records
 
-Any temporary bypass of a doctrine rule, security control, delivery gate,
+Any temporary bypass of a binding instruction, security control, delivery gate,
 freshness gate, eval threshold, telemetry requirement, or generated artifact
 must be a machine-readable exception, not a comment.
 
@@ -286,7 +240,7 @@ Do not blanket-block old repos before the corresponding status publisher,
 doctor check, generator, or reconciler exists.
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

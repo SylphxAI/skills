@@ -26,8 +26,8 @@ implements it.
 6. Define privacy and key-custody boundaries. For end-to-end encryption, keep
    plaintext and recovery authority consistent with the advertised trust model.
 7. Emit a downstream engineering handoff containing requirements and acceptance
-   evidence only. Load the applicable Doctrine engineering, delivery, incident,
-   and reliability standards for infrastructure DR, rollout, drills, and SLOs.
+   evidence only. Load `engineering-standard`, `delivery-standard`, and
+   `incident-standard` for infrastructure DR, rollout, drills, and SLOs.
 8. Produce the product contract, data-class matrix, restore state model,
    support boundary, telemetry contract, acceptance scenarios, and open risks.
 
@@ -43,7 +43,8 @@ implements it.
 - For onboarding, mapping, rehearsal, cutover, reconciliation, and acceptance of
   data arriving from a different product, use `customer-data-migration-review`.
 - For engineering DR, provide the product RPO/RTO, data classes, invariants, and
-  acceptance tests, then defer implementation and operational proof to Doctrine.
+  acceptance tests, then defer implementation and operational proof to the
+  owning engineering project under the applicable binding Skills.
 
 ## Guardrails
 

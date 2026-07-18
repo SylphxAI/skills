@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `ci-runner-capacity-standard` in `SylphxAI/skills` (`skills/ci-runner-capacity-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/ci-runner-capacity-standard.md` at digest `sha256:d750e428ab872fffe22052dc66c7d76b9152fcc575069b10e3d50bca13726592` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -69,7 +67,7 @@ The central control plane must be able to list queued and running jobs by:
 - provider observation capabilities, including whether runnable time exists;
 - SLO breach state and breach reason.
 
-Exact L0-L5 risk lane comes from the ADR-29 admission manifest. Until every
+The exact risk lane comes from the active admission manifest. Until every
 required producer exposes the manifest to the status publisher, queue audits may
 emit a conservative lane inference from workflow and job names, but that
 inference is diagnostic only and must not lower admission risk.
@@ -110,10 +108,6 @@ lanes, or inventing `ubuntu-latest` in a product workflow without the profile
 declaration and selectors above. Capacity backlog on `sylphx-linux-*` is still
 fixed centrally — not by converting product CI to GitHub-hosted.
 
-**Evidence lineage:** Doctrine ADR admitting this profile; ADR-213 dogfood on
-`SylphxAI/doctrine` policy-admission; Skills policy-admission after profile
-admission.
-
 Closed pickup latency is measured from GitHub job `created_at` until
 `started_at`, or from a stronger provider-backed `runnable_at` signal until
 runner assignment/start when that signal exists. For an unstarted job,
@@ -130,9 +124,9 @@ plane should compute the rolling p95. An unstarted queue-age breach without
 runnable evidence is reported as unattributed and must not be promoted to
 `capacity-saturated`.
 
-Profile choice is selected by doctrine-owned lane policy. Target repositories
+Profile choice is selected by the active enterprise profile and lane policy. Target repositories
 request a stable profile; they do not invent raw runner labels to escape queue
-pressure. New profiles require a doctrine-owned name, capability description,
+pressure. New profiles require an enterprise-profile-owned name, capability description,
 selector, expected workload, capacity owner, pickup SLO, conformance signal, and
 recovery path before branch protection or merge queues depend on them.
 
@@ -300,30 +294,17 @@ Classification is fail closed on causality:
 
 ## Validation
 
-Use the live queue audit for org or repo status:
-
-```bash
-python3 scripts/runner-queue-capacity-audit.py --repo SylphxAI/doctrine --json
-python3 scripts/runner-queue-capacity-audit.py --org SylphxAI --json
-python3 scripts/runner-queue-capacity-audit.py --json --fail-on-breach
-```
-
-Use runner-profile conformance for workflow label drift:
-
-```bash
-python3 scripts/runner-profile-conformance-audit.py \
-  --repo <owner/repo> \
-  --ref <branch> \
-  --check-live-runners \
-  --json
-```
+Use the current Control Plane queue-capacity and runner-profile conformance
+surfaces for organization or repository status. Bind every observation to the
+queried repo/ref, provider run/job identities, observation time, inventory
+completeness, and active profile revision.
 
 A queue audit proves current runner/control-plane state. It does not prove a
 repository's code correctness. Code correctness remains the job of the selected
 CI lane and stable admission contexts.
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `agent-native-standard` in `SylphxAI/skills` (`skills/agent-native-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/agent-native-standard.md` at digest `sha256:fdbd6d802576ac1b2bb564942943b77cde9225bf7131d694f41e746c66609624` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -154,7 +152,7 @@ active engineering profile; enduring adapter and evidence obligations live in
 [`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineering-standard/references/full-standard.md).
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

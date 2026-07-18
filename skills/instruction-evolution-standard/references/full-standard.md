@@ -68,6 +68,17 @@ the floor.
 
 ## Reconcile and retire
 
+The generation state machine is:
+
+```text
+proposed -> admitted -> selected -> converged -> predecessor-retired
+                     \-> gapped -> remediated -/
+```
+
+`gapped` preserves the destination and names missing evidence; it is not a
+parallel steady state. A superseded or rejected generation never becomes the
+implicit fallback.
+
 For every selected repository:
 
 1. resolve the exact current generation and local baseline;

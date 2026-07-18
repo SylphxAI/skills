@@ -23,7 +23,7 @@ quality monitoring, backfill, certified metrics, access, or cross-source
 reconciliation. Product measurement quality belongs here; generic data
 platform access, pipeline engineering, AI dataset assurance, billing truth,
 and incident implementation remain with their canonical engineering, payment,
-and Doctrine owners.
+and applicable binding Skills owners.
 
 Use the shared artifact envelope only when composing with repository product
 artifacts. For a narrow audit, include only the contract surfaces needed by the

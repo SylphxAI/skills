@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `sota-execution-standard` in `SylphxAI/skills` (`skills/sota-execution-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/sota-execution-standard.md` at digest `sha256:3cc0203bd2728a05a9b4b4b547ad6ec0e39470b38a79a62dde4be4684ed2d8a3` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -36,7 +34,7 @@ This standard composes with:
   for deterministic simulation, eval-gated merge, automated canary analysis,
   and frontier verification backstops;
 - [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) for
-  fleet impact and migration when a SOTA decision changes central doctrine.
+  fleet impact and migration when a SOTA decision changes canonical instructions.
 - [`enterprise-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/enterprise-profile-standard/references/full-standard.md) for binding
   current selections whose validity depends on tooling or ecosystem conditions.
 
@@ -197,7 +195,8 @@ contract and a profile amendment rather than silent repo-local drift.
 
 ### Frontier target before fleet adoption
 
-Central Doctrine selects the target from the global feasible frontier, not by
+The owning binding Skills package or enterprise profile selects the target from
+the global feasible frontier, not by
 polling current repositories or preserving the most common installed tool.
 Selection evidence comes from current primary specifications and release
 contracts, compiler and analyzer guarantees, security and supply-chain
@@ -296,7 +295,7 @@ because it is uncomfortable or outside the first implementation idea.
 ## Execution Loop
 
 1. **Frame the real goal.** Read the repo's `PROJECT.md`,
-   `.doctrine/project.json`, nearest agent instructions, and relevant standards.
+   `project.manifest.json`, nearest agent instructions, and relevant standards.
    Identify lifecycle, layer, owner, public surfaces, dependency direction, and
    what success would prove.
 2. **Establish current truth.** Inspect current code, docs, ADRs, tests,
@@ -345,9 +344,9 @@ Use the smallest durable artifact that changes future behavior:
 | Situation | Artifact |
 | --- | --- |
 | Local reversible implementation detail | Code, tests, final validation note |
-| Material architecture, public contract, data, AI workflow, security, operations, or doctrine decision | ADR |
+| Material architecture, public contract, data, AI workflow, security, operations, or instruction decision | ADR |
 | Pricing, packaging, roadmap, positioning, monetization, or commercial experiment | Commercial ADR |
-| Project goal, lifecycle, boundary, public surfaces, delivery proof, or adoption state | `PROJECT.md` plus `.doctrine/project.json` |
+| Project goal, lifecycle, boundary, public surfaces, delivery proof, or adoption state | `PROJECT.md` plus `project.manifest.json` |
 | Reusable static cross-repo rule/profile/procedure | Binding Skills package and its schemas/evals |
 | Live fleet migration, status, adoption, or work | Control Plane record plus owning repository evidence |
 | AI behavior correctness | Versioned eval manifest, thresholds, traces, failure examples |

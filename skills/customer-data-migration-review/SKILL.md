@@ -13,7 +13,9 @@ Own one repeatable customer-data migration or import program: discovery, authori
 
 ## When not to use
 
-- Use `fleet-migration-factory` or the owning engineering/Doctrine procedure for a multi-repository code rewrite, infrastructure migration, or generic data-platform implementation.
+- Use `fleet-migration-factory` or the owning project under `engineering-standard`
+  for a multi-repository code rewrite, infrastructure migration, or generic
+  data-platform implementation.
 - Use the product backup/restore investigation, `customer-success-operations-review`, `product-lifecycle-architect`, or `data-rights-operations-review` when the primary artifact is backup recovery, ongoing customer value, a whole-product program, or one rights request.
 
 ## Resource routing

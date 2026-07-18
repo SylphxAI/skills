@@ -53,7 +53,7 @@ Every active durable repository exposes:
 - The runtime constitution owns compact always-on law and local operating facts.
 - The product repository owns its code, contracts, ADRs, specs, and delivery.
 - Control Plane owns live fleet, work, ingestion, and effect state.
-- Archived Doctrine and GroundAtlas repositories are historical lineage, not
+- Retired repositories are historical lineage, not
   writable instruction or live-state authorities.
 
 ## Proportional adoption
@@ -68,6 +68,17 @@ structural changes require exact-source tests and architecture evidence, not a
 fabricated production soak. A live irreversible data or public-contract change
 requires stronger recovery and runtime proof. Optional hardening is backlog,
 not a reason to hold a proven terminal indefinitely.
+
+## Adoption evidence matrix
+
+| Surface | Minimum authoritative evidence |
+| --- | --- |
+| Runtime entry | Installed constitution readback plus valid local links |
+| Project identity | Schema-valid `project.manifest.json` and matching concise projection |
+| Code architecture | Dependency/module analysis plus domain/use-case/adapter tests |
+| Verification | Exact-candidate command and results |
+| Delivery | Proof at the repository's declared terminal boundary |
+| Fleet adoption | Control Plane selector/conformance readback |
 
 ## Migration terminal
 

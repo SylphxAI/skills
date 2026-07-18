@@ -8,11 +8,12 @@
 4. Dependency and ownership rules
 5. Capability governance mapping
 6. Physical modularity
-7. Observability and reactive systems
-8. Event-driven reconciliation
-9. Immutable ledgers for conserved value
-10. Dependency injection and reactive providers
-11. Migration terminal
+7. Deployment topology
+8. Observability and reactive systems
+9. Event-driven reconciliation
+10. Immutable ledgers for conserved value
+11. Dependency injection and reactive providers
+12. Migration terminal
 
 ## Canonical synthesis
 
@@ -218,6 +219,33 @@ Brownfield work has no permanent exemption. Every durable project converges to
 the current architecture generation. During an explicitly staged migration,
 touched code may not worsen structural concentration, dependency direction, or
 contract duplication; the destination remains full convergence.
+
+## Deployment topology
+
+Logical architecture and deployment topology are separate decisions. Start
+every durable product as a **modular monolith** unless a deployment boundary is
+already proven: all capability/bounded-context modules, ports, contracts, and
+ownership rules exist, but one build/deployment/process may host them. This is
+not permission for a layered monolith or shared internal model; module
+boundaries remain independently testable and extraction-ready.
+
+Extract a capability into a separately deployed service only when at least one
+material boundary is demonstrated:
+
+- independent scale, latency, availability, or failure containment;
+- tenant/security/isolation or regulated-data authority;
+- independent persistence/consistency ownership;
+- genuinely independent release or operational ownership;
+- incompatible runtime/technology needs with measured benefit; or
+- geographic/edge placement that cannot be met coherently in one deployment.
+
+Service extraction must preserve the same application contract and add the
+distributed-system contracts it creates: network failure, timeout,
+idempotency, versioning, consistency, observability, rollout, and recovery.
+Cheap agent-generated files, adapters, or services do not make runtime
+coordination, state distribution, latency, or operational ownership free.
+Conversely, do not delay a proven split because writing the adapters and tests
+would have been expensive for a human team.
 
 ## Observability and reactive systems
 

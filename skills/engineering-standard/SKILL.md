@@ -17,7 +17,6 @@ For code structure or architecture migration, also read:
 - [Language mappings](references/capability-first-language-mappings.md)
 - [Executable-shape examples](references/capability-first-examples.md)
 
-The former source standard path is **alias-only** after cutover — author here only.
 
 ## Method
 
@@ -50,6 +49,8 @@ The former source standard path is **alias-only** after cutover — author here 
 
 - Fail closed on secret material in source and logs.
 - Never treat health/readiness probes as product capability proof.
-- Prefer expand-contract migrations for shared state.
+- In development or without live compatibility/state risk, prefer a verified
+  one-step cutover. Use expand-contract only when a demonstrated live data,
+  compatibility, availability, or external-effect boundary requires it.
 - Apply the canonical Capability-first architecture from the first durable
   product commit; project size and migration cost are not exemptions.

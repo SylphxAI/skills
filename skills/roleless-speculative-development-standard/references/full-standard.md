@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `roleless-speculative-development-standard` in `SylphxAI/skills` (`skills/roleless-speculative-development-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/roleless-speculative-development-standard.md` at digest `sha256:f46bb48bf8a12c92384d451401bd73ea3ef8430229972afc6b04c70a3f6602aa` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -122,44 +120,28 @@ audit, security, or a declared retention contract.
 No attempt receives remote CI, preview infrastructure, release work, or external
 effects merely because it exists.
 
-The canonical machine contract is
-`schemas/roleless-speculative-artifact.schema.json`. It is one closed, atomic
-version and policy-lifecycle family containing `work-envelope`, `work-attempt`,
-`work-attempt-event`, `work-candidate`, `work-selection-evidence`,
-`green-watermark`, and `effect-authorization` kinds. The templates under
-`templates/` form one content-addressed example proof chain. Identity is the
-RFC 8785 digest of the complete artifact with only its own identity field
-removed; mutable status never enters immutable attempt or candidate material.
-Every family member advances the same policy ratchet. If one kind needs an
-independent lifecycle, it must first split into a new schema family.
+Control Plane owns the live Work/attempt/candidate/effect schemas and their
+current projections. Those contracts distinguish work envelopes, immutable
+attempts, append-only attempt events, candidates, selection evidence, green
+watermarks, and effect authorization. Identity is the digest of the complete
+immutable artifact under the selected canonicalization contract, excluding
+only its own identity field; mutable status never enters immutable attempt or
+candidate material. A schema example or package-local fixture cannot authorize
+a live effect.
 
-`scripts/roleless-speculative-artifact-audit.py` validates the local templates:
-closed schemas, local content identities, bounded and replayable selection,
-example cross-ID links, all-pass green semantics, release artifact presence,
-monotonic expiry, fence generation, and exact template-byte links. It does not
-produce live fleet completeness or runtime authority. In schema v1,
-`green-watermark`, `effect-authorization`, `adr-locator-allocation`, and
-`adr-locator-landing-attempt` are
-`authorityMode: spec-only`; they are contract examples and cannot authorize
-promotion, deployment, or another effect. Live use requires a separately
-registered issuer/attestation authority, protected capture producer, exact-byte
-resolver, effect-owner readback, and the corresponding successor profile.
-
-The identity rule is machine-owned by
-`profiles/roleless-artifact-identity-policy.json`, which maps every artifact
-kind to its self-identity field and the canonicalization contract consumed by
-the audit. ADR numeric reservation and CAS provenance are different artifacts:
+The active profile declares the identity field, canonicalization, issuer,
+capture producer, resolver, and effect-owner readback for each authority-bearing
+kind. ADR locator allocation and CAS provenance remain different artifacts:
 one idempotent `adr-locator-allocation` survives replay; every
 `adr-locator-landing-attempt` immutably binds one candidate, policy generation,
 observed head, and CAS result. Repository cutover fences PR-number allocation
 for new ADRs before the successor allocator becomes authoritative.
 
-`scripts/roleless-throughput-simulator.py` is the deterministic reference model
-for bounded rendezvous eligibility, duplicate collapse, frozen-set selection,
-exact-head CAS, scoped latest-pending coalescing, and parallel build/proof
-fan-in. Its 10,000-arrival scenario is a correctness and stress model, not a
-capacity forecast or activation proof; measured pilot telemetry remains
-required for profile selection.
+Deterministic simulation should prove bounded rendezvous eligibility, duplicate
+collapse, frozen-set selection, exact-head CAS, scoped latest-pending
+coalescing, and parallel build/proof fan-in. Scenario volume follows the state
+space and operational envelope; a large round-number run is neither a capacity
+forecast nor activation proof.
 
 ## Deterministic bounded selection
 
@@ -313,7 +295,7 @@ already-started irreversible obligations survive supersession.
 
 ## Platform control-plane contract
 
-Company Doctrine decides the invariant, selector, risk lane, proof floor,
+Binding Skills packages and enterprise profiles decide the invariant, selector, risk lane, proof floor,
 authority boundary, red budget, and promotion policy. Platform owns the reusable
 mechanism:
 
@@ -415,7 +397,7 @@ selection, or scope errors own the backlog.
 
 A repository selecting the successor profile must expose machine-readable:
 
-- Doctrine and profile resolution with exact digests;
+- Skills and profile resolution with exact digests;
 - project lifecycle, layer, policy pool, capabilities, and task surfaces;
 - boundary, dependency, compatibility, write, and effect scopes;
 - deterministic local verification and affected-scope entrypoints;
@@ -432,7 +414,7 @@ They are adoption gaps, not permission to invent local defaults.
 
 Adoption follows expand → reconcile → ratchet → contract:
 
-1. central Doctrine publishes candidate contracts and read-only desired-state
+1. canonical Skills packages publish candidate contracts and Control Plane publishes read-only desired-state
    audits;
 2. the enterprise control plane inventories and reconciles repositories through
    their owning project boundaries;
@@ -484,7 +466,7 @@ Never report “main is green” without naming the exact immutable snapshot, sc
 proof bundle, policy digest, and staleness.
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

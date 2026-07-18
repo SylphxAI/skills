@@ -10,6 +10,7 @@ top-level architecture or generating infrastructure without a domain need.
 
 | Pattern | Obligation | Activation predicate | Explicit non-requirement |
 | --- | --- | --- | --- |
+| Modular Monolith + evidence-driven service extraction | Mandatory deployment default | Every durable product; extract only on a proven deployment boundary | No microservices because modules/files are cheap to generate |
 | Dependency Injection + Composition Root | Mandatory when effects/adapters exist | A port has one or more runtime implementations | No global service locator or DI framework requirement |
 | Vertical Slice Architecture | Mandatory | Every consumer use case/feature | No repository-wide feature folders outside capability ownership |
 | Resilience Engineering | Mandatory, risk-proportionate | External effect, concurrency, distribution, load, or recovery risk | No circuit breaker/retry/canary without a failure mode it controls |
@@ -21,6 +22,20 @@ top-level architecture or generating infrastructure without a domain need.
 | Workflow Orchestration | Conditional | Durable long-running execution, timers, retries, external waits, recovery, or visibility exceed local state-machine/process lifetime | Engine is an adapter, never domain authority |
 | Actor Model | Conditional | Isolated mutable state, single-writer ownership, mailbox ordering, supervision, or massive independent concurrency materially simplify correctness | No actor-per-object or distributed actor runtime by default |
 | Data-Oriented Design | Conditional | Profiling proves layout, locality, batching, allocation, vectorization, or throughput dominates the hot path | No replacement of ubiquitous language or capability ownership |
+
+## Modular monolith and service extraction
+
+Implement the full capability, domain, port, adapter, and contract graph from
+the first durable commit, but keep one deployable modular monolith until an
+independent scale, failure, security, data-authority, release, technology, or
+placement boundary is demonstrated. A module is a semantic boundary; a service
+is an operational and distributed-systems commitment.
+
+When extraction is justified, preserve the capability contract and add proof
+for network failure, consistency, latency, versioning, rollout, recovery, and
+observability. Agent-native generation removes much of the authoring cost; it
+does not remove the permanent coordination cost of distributed state and
+operations.
 
 ## Dependency Injection and Composition Root
 

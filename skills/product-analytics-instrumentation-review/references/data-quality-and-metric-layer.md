@@ -17,7 +17,7 @@ Classify each dataset and metric before choosing controls:
 | Executive or board | canonical product KPI | certified definition, reconciliation, change history |
 | Customer-facing | usage or outcome shown to a customer | access, correction, and communication path |
 | Billing, entitlement, or finance | invoice, balance, revenue | external owner; reconcile, never self-certify |
-| AI, safety, or compliance | training, eval, regulated record | Doctrine or domain owner and elevated assurance |
+| AI, safety, or compliance | training, eval, regulated record | domain owner plus applicable binding Skills and elevated assurance |
 
 ## Quality state machine
 

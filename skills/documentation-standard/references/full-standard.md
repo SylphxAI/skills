@@ -94,3 +94,13 @@ because code exists. Prefer:
 Check links, generated freshness, schema/examples, ownership, supersession, and
 duplicate semantic authorities. Documentation presence alone never proves code
 architecture, delivery, or fleet convergence.
+
+### Authority checklist
+
+- [ ] Each material fact has one named writable source.
+- [ ] Projections identify source and freshness or say non-authoritative.
+- [ ] ADRs contain decisions and tradeoffs, not current mutable status.
+- [ ] Enumerated API/schema/CLI facts are generated or freshness-checked.
+- [ ] Raw discussion is linked as evidence only after its durable outcome is
+      promoted to the correct authority.
+- [ ] Archived material is historical evidence, never an active fallback.

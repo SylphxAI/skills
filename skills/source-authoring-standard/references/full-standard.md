@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `source-authoring-standard` in `SylphxAI/skills` (`skills/source-authoring-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/source-authoring-standard.md` at digest `sha256:488ac649392a40cacc98a457ca52867e5917bb8c7369cbaab08a8e54c15a6192` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -125,7 +123,7 @@ Commit subjects state the durable result in imperative or outcome form. Add a
 body only for non-obvious rationale, invariant, compatibility, risk, or recovery.
 Do not encode live status, chat history, secrets, personal data, model identity,
 or speculative claims. Add trailers only when an active machine policy consumes
-them. Doctrine does not mandate Conventional Commits, a fixed subject length,
+them. This standard does not mandate Conventional Commits, a fixed subject length,
 an agent signature trailer, or a commit-count target fleet-wide.
 
 ## Workspace admission and collision safety
@@ -236,7 +234,7 @@ Primary references:
 - [Gerrit change model](https://gerrit-review.googlesource.com/Documentation/concept-changes.html).
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

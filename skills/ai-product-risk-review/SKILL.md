@@ -25,8 +25,9 @@ implementation or launch outruns the product's evidence and recovery capacity.
 6. Design product controls: narrower scope or deterministic path, disclosure and
    provenance, editable draft, confirmation, permission, preview, bounded action,
    fallback, undo, appeal/reporting, support trace, and safe degraded state.
-7. Specify the evidence obligations and hand them to the current Doctrine
-   frontier-verification, security, engineering, privacy, and delivery owners.
+7. Specify the evidence obligations and hand them to the applicable
+   `frontier-verification-standard`, `engineering-standard`, privacy, and
+   `delivery-standard` owners.
    Consume their exact evidence; do not recreate eval or red-team standards here.
 8. Define machine-readable launch states and predeclared hold, narrow, resume,
    withdraw, and model/provider-change decisions. Automate safe state transitions
@@ -44,7 +45,7 @@ provider, policy, tool, or production authority.
 
 ## Routing boundaries
 
-- Use Doctrine frontier verification for eval design, judges, replay, simulation,
+- Use `frontier-verification-standard` for eval design, judges, replay, simulation,
   red-team execution, and nondeterministic release proof.
 - Use the security owner for threat models, prompt-injection defenses, tool
   security, vulnerability remediation, and incident response.

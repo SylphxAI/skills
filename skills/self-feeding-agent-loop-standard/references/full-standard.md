@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `self-feeding-agent-loop-standard` in `SylphxAI/skills` (`skills/self-feeding-agent-loop-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/self-feeding-agent-loop-standard.md` at digest `sha256:3133b018bb40c84437fd993ba7bd99bf737244ade3a366e619312874afa8f649` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -23,7 +21,7 @@ mechanics, not constitutional invariants.
 
 The loop is a program system, not a motivational prompt. Its launch envelope and
 role references are versioned, it runs with a bounded tick/readout contract, and
-it improves only through ADR-linked doctrine changes. Source-controlled wording
+it improves only through decision-linked changes to this package. Source-controlled wording
 does not make an entire runtime prompt exact or override outcome-owned
 delegation.
 
@@ -150,16 +148,15 @@ The tick report must include:
 - stale/suspected stale claims;
 - stalled/suspected stalled PRs;
 - new agents started and agents intentionally not replaced;
-- prompt or workflow issues needing doctrine/user attention;
+- prompt or workflow issues needing Skills-package or owner attention;
 - exact blockers and next safe action.
 
 ## Launch Template And Role References
 
-The canonical compact Coordinator envelope is packaged with the selected
-runtime adapter.
-Reviewer and Builder files under `templates/self-feeding/` are progressively
-loaded role references, not child prompts embedded into every Coordinator
-launch and not a mandatory per-task roadmap.
+The canonical compact Coordinator envelope and progressively loaded Reviewer
+and Builder references are owned by the selected runtime adapter. They are not
+child prompts embedded into every Coordinator launch and not a mandatory
+per-task roadmap.
 
 The default mode is `operational-outcome-owned`. An `evaluation-exact` mode is
 unavailable unless the launch names a separate schema-valid `eval-manifest` v2,
@@ -213,10 +210,11 @@ The Coordinator may:
 - scale within declared soft limits;
 - recover suspected stale claims and stalled PRs through the documented process;
 - record prompt or workflow defects in the tick report;
-- ask the parent/process owner for an owner-product decision or doctrine change.
+- ask the parent/process owner for an owner-product or binding-instruction decision.
 
 The Coordinator must not silently mutate child prompts. If the prompt is wrong,
-the correct action is a tick-report finding and a doctrine PR/ADR, not an
+the correct action is a tick-report finding and a Skills change with its owning
+decision record, not an
 in-place one-off fix.
 
 The Coordinator must not serialize the loop as Reviewer-output-then-Builder
@@ -338,7 +336,7 @@ must state:
 - exact template/standard/schema/gate changed;
 - validation that proves the new loop is more observable, safer, faster, or more
   correct;
-- migration/adoption class under the Doctrine Evolution Standard.
+- migration/adoption class under `instruction-evolution-standard`.
 
 Small typo fixes that do not change behavior may share the ADR for the owning
 prompt-change PR, but behavior changes must not be silently batched without a
@@ -366,10 +364,10 @@ A pilot is successful only when the parent can prove, without hidden context:
   proof states.
 
 If these are not true, the result is a prompt/process finding, not a failed
-agent. Fix the doctrine loop and rerun the pilot.
+agent. Fix the owning loop package and rerun the pilot.
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

@@ -11,7 +11,7 @@
 
 ## Ownership split
 
-| This product artifact owns | Downstream Doctrine-governed engineering owns |
+| This product artifact owns | Downstream engineering owns under binding Skills |
 | --- | --- |
 | recovery jobs and user promise | storage topology and replication |
 | data-class authority and restore semantics | backup job implementation and capacity |
@@ -20,7 +20,7 @@
 | product RPO/RTO and acceptance scenarios | infrastructure SLOs, drills, alerts, live proof |
 | telemetry/evidence required by the product | exact observability and evidence implementation |
 
-Do not copy engineering doctrine into this skill. Emit stable handoff
+Do not copy the engineering standard into this skill. Emit stable handoff
 requirements, then load the current upstream standards in the owning project.
 
 ## Data-class contract

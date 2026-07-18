@@ -3,9 +3,6 @@
 **Authority:** binding Standard Skill package `engineering-standard` in
 `SylphxAI/skills` (`skills/engineering-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/engineering-standard.md` at
-digest `sha256:99d8e8c9f795a0834a7dda06b506b1a2a7cd21cad889570323a79c9857f18f2c` (doctrine `70f1207a81c6faf30571da37f964809ae2375128`). Doctrine file is alias-only after cutover.
-
 This file is progressive-disclosure detail for the package. Author here; do not
 maintain a second prose SSOT.
 
@@ -261,7 +258,7 @@ unless the task includes a migration.
 ## Source-Controlled Artifact Identity
 
 Parallel-authored artifacts must not use self-assigned sequential numbers as
-primary identity. This applies to ADRs, migrations, doctrine migration packets,
+primary identity. This applies to ADRs, migrations, instruction migration packets,
 generated issue markers, catalogs, registries, package version edits, route or
 tool registries, env/config keys, queue/event names, and any other artifact that
 multiple branches or agents may create concurrently.
@@ -285,9 +282,9 @@ multi-region merge, or long-lived integration contracts unless the domain
 explicitly accepts allocator-local identity. Use globally stable IDs when data
 must move between allocators or survive environment merges.
 
-Use `scripts/artifact-identity-conformance-audit.py` for read-only local,
-target-repository, or fleet readback of high-signal ADR-71 drift before
-claiming a repo's parallel-authored artifact identity surface is clean.
+Use the repository's declared artifact-identity conformance entrypoint for
+read-only local, target-repository, or fleet readback before claiming a repo's
+parallel-authored artifact identity surface is clean.
 
 ## No-Human Engineering Patterns
 
@@ -442,8 +439,11 @@ versions and requalification triggers through the eval contract in the
 Frontier Verification Standard.
 
 For persistence work, declare one schema and migration authority. Migration
-identity is collision-resistant; changes are replay-tested, compatible during
-expand/contract, and carry recovery proof. Every static relational query is
+identity is collision-resistant and changes are replay-tested. In development
+or without live compatibility/state risk, use an exact-candidate one-step
+cutover with recovery evidence. When demonstrated live data, availability,
+compatibility, or external-effect risk exists, use expand/contract and prove
+the compatibility and recovery path. Every static relational query is
 compile-time or admission-time checked against the exact migration-derived
 schema, database dialect, and relevant server version. Inputs and outputs carry
 exact native or generated types for nullability, domains/enums, and row shape;

@@ -49,7 +49,7 @@ bounded investigation plan rather than asserting current quality or behavior.
 ## Routing boundaries
 
 - Search/index/retrieval/ranker implementation, model tuning, serving, latency,
-  and rollback belong to the owning engineering project and Doctrine delivery.
+  and rollback belong to the owning engineering project and `delivery-standard`.
 - `product-analytics-instrumentation-review` owns event, identity, query-log,
   outcome-pipeline, and data-QA implementation.
 - `product-experiment-review` owns online causal experiment design.

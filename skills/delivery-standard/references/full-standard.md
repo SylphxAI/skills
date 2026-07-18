@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `delivery-standard` in `SylphxAI/skills` (`skills/delivery-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/delivery-standard.md` at digest `sha256:934c57e18a193516be2fdd321826ac9a45491232b89cf76e370a0ba0bf21d8e1` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -29,7 +27,7 @@ roleless direct-trunk for a repository class, ordinary reversible work lands by
 ordinary fast-forward under integrity fences (deletion + non-fast-forward),
 with local/narrowest verification and verified-only promotion for effects. PRs
 and merge queues remain the **compatibility adapter for fenced classes**
-(ADR authoring, Doctrine/policy authority, credentials, security, migrations,
+(ADR authoring, Skills/policy authority, credentials, security, migrations,
 public contracts, irreversible effects) until a successor PR-less ADR locator
 authority is admitted with evidence. Conversely, do not project direct-trunk as
 active where the resolved profile still selects compatibility admission.
@@ -37,7 +35,7 @@ active where the resolved profile still selects compatibility admission.
 ## Ownership
 
 Do not treat research, a workspace artifact, a local diff, a commit, or an opened
-PR as done when the user's goal implies changed software, changed doctrine, or
+PR as done when the user's goal implies changed software, changed instructions, or
 shipped behavior. Own the path to the repository's durable delivery boundary and,
 when applicable, to production verification.
 
@@ -124,7 +122,7 @@ authentication and should use OIDC/provenance when the registry and package
 scope support it. A long-lived registry token is a bounded fallback only: it
 needs least privilege, owner, reason, expiry, rotation path, and readback proof.
 
-Use `scripts/package-release-conformance-audit.py` to find package producers,
+Use the current package-release conformance capability to find package producers,
 manifest gaps, unsafe version-PR identity, missing release/provenance gates,
 token-only npm publishing, and missing registry readback before claiming a
 package-release repository is adopted.
@@ -159,7 +157,7 @@ compares baseline and candidate cohorts against declared metrics, SLOs,
 thresholds, analysis windows, and automatic rollback or pause policy.
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

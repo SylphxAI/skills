@@ -14,7 +14,10 @@ Own the product-wide abuse model, protected resources, actor/action graph, loss 
 ## When not to use
 
 - Use `account-recovery-review`, `marketplace-trust-operations-review`, or `payment-platform-readiness` when the primary artifact is rightful access recovery, marketplace participant enforcement, or payment/ledger correctness.
-- Use the developer quota/credit specialist or Doctrine frontier/security procedures when the primary artifact is developer resource policy, AI red-team evaluation, DDoS/security engineering, or an incident response implementation.
+- Use the developer quota/credit specialist, `frontier-verification-standard`,
+  `incident-standard`, or the owning security boundary under
+  `engineering-standard` when the primary artifact is developer resource
+  policy, AI red-team evaluation, DDoS/security engineering, or incident response.
 
 ## Resource routing
 

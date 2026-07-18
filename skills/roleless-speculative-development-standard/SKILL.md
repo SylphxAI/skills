@@ -8,9 +8,6 @@ description: "Roleless speculation: CAS trunk landing, bounded duplicates, water
 
 Canonical home: `skills/roleless-speculative-development-standard/` in `SylphxAI/skills`.  
 Full body: [references/full-standard.md](references/full-standard.md).  
-Cutover map: [references/doctrine-parity-delta.md](references/doctrine-parity-delta.md).
-
-The former source standard path is **alias-only** after cutover — author here only.
 
 ## Method
 

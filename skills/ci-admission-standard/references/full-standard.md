@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `ci-admission-standard` in `SylphxAI/skills` (`skills/ci-admission-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/ci-admission-standard.md` at digest `sha256:732bc0f590886a0c75cb418623a9bb671a010ba7444907474bcf0113a48a2011` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -28,7 +26,6 @@ Composes with:
 - [`roleless-speculative-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/roleless-speculative-development-standard/references/full-standard.md)
   for candidate deduplication, cumulative snapshot verification, scoped green
   watermarks, and roleless recovery under its successor profile.
-- ADR-2, ADR-18, ADR-29 — cited throughout, not restated.
 
 ## CI Pipeline Architecture — Reviewer + Serializer
 
@@ -51,17 +48,15 @@ pipeline do both:
 The SOTA answer is to **split them into two tiers** and put an autonomous
 admission control plane in front of them: fast deterministic admission for the
 exact merge candidate, complete postsubmit proof, and machine-selected recovery.
-This composes with ADR-2 (merge-queue governance), ADR-18 (no-human industrial
-gates), and ADR-29 (Autonomous CI Admission And Recovery); it does not fork
-them.
+The active delivery profile supplies forge-specific context names and
+serialization mechanics; this standard owns the portable admission semantics.
 
 ### Autonomous admission control plane
 
-ADR-29 owns the admission contract in full: the four stable fan-in contexts
-(`risk-classification/pass`, `trunk-admission/pass`, `postsubmit-proof/pass`,
-`recovery-decision/pass`), the single-context fallback, and when embedded
-status publication beats a standalone fan-in job — cited, not restated.
-Branch protection requires these stable contexts, never raw per-job checks.
+The active profile declares a small stable fan-in surface for risk
+classification, exact-candidate admission, postsubmit proof, and recovery
+decision. It may collapse these into one context when that is clearer. Branch
+protection consumes stable fan-in contexts, never an unbounded list of raw jobs.
 
 ### Preview admission policy
 
@@ -69,15 +64,16 @@ Preview environments are runtime evidence, not a universal CI tax. The
 admission manifest MUST classify whether a candidate preview is required, skipped, or
 optional from trusted changed-surface data.
 
-Require a candidate preview when the candidate changes any runtime, user-visible, or
-externally integrated surface: UI rendering, route behavior, API or event
-contracts, auth, billing, security policy, deployment/runtime configuration,
-infrastructure, migrations, feature-flag defaults, SDK/CLI behavior consumed by
-users, or cross-repo contracts. These candidates may still use affected service
-selection, but the preview/build capacity decision is explicit and bounded.
+Require a candidate preview when changed runtime, user-visible, or externally
+integrated behavior has a material claim that cannot be proved adequately by
+faster exact-candidate tests, rendering, replay, simulation, or an ephemeral
+integration environment. High-risk auth, billing, security, migration,
+infrastructure, and public-contract changes normally meet that bar. A routine
+development-stage behavior change does not require a hosted preview merely
+because users could eventually see it.
 
 Skip PR preview for docs/control-plane-only candidates that cannot affect a
-running service: prose docs, ADRs, PROJECT/AGENTS files, `.doctrine/**`
+running service: prose docs, ADRs, PROJECT/AGENTS files, project manifests,
 manifests, repo metadata, comments, typo fixes, link fixes, and other
 non-runtime policy/catalog updates. The preview status producer MUST publish
 successful `sylphx/preview` and `sylphx/build/preview/<service>` contexts for
@@ -101,11 +97,11 @@ cited, not restated. A repo-level runner-class exception is an exception
 record (see [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md) "Policy And Exception Records") and does not change the
 admission model.
 
-ADR-29 owns the admission manifest schema, the `L0`-`L5` risk-lane table,
-and the per-lane mandatory controls (expand/contract, idempotency,
-progressive rollout, contract compatibility, release provenance, workflow
-sanity) — cited, not restated. Risk classification is a router; a missing
-control fails `risk-classification/pass` regardless of label or assertion.
+The active profile owns the admission-manifest schema and risk-lane vocabulary.
+Each lane binds its material controls, such as compatibility, idempotency,
+recovery, provenance, workflow integrity, and progressive exposure when a live
+risk requires it. Risk classification is a router; a missing required control
+fails admission regardless of label or assertion.
 
 ### Two-tier pipeline (presubmit fast, postsubmit complete)
 
@@ -121,9 +117,9 @@ control fails `risk-classification/pass` regardless of label or assertion.
 - A presubmit miss is acceptable **only because the postsubmit tier is the
   backstop**: a slipped regression is caught minutes-to-hours after merge by
   exhaustive affected postsubmit + automated culprit-finding/bisection + runtime
-  rollback, selective source revert, or forward-fix — never permanently.
-  Google's TAP runs an affected subset at presubmit (accepting a ~5% miss) and
-  **all** affected tests post-submit; this is the reference model.
+  rollback, selective source revert, or forward-fix — never permanently. The
+  reference model is a fast soundly selected presubmit plus complete affected
+  postsubmit and periodic full audits, not a vendor-specific miss budget.
 - Do not pay the heavy suite twice. The merge-queue candidate is the state that
   actually lands (Not-Rocket-Science Rule) and is the authoritative full
   presubmit run; the PR run exists for fast author feedback.
@@ -194,12 +190,14 @@ safety conditions:
 
 ### Recovery semantics (source revert is only one path)
 
-ADR-29's "Recovery Semantics" section owns the three-path decision (source
-revert / runtime rollback / forward-fix), when auto-revert is forbidden,
-migration/side-effect forward-only rules, and the `trunk-admission/pass`
-recovery mode — cited, not restated here.
+Every failure chooses among source revert, runtime rollback, and forward fix.
+Source revert is appropriate only when effects, migrations, public contracts,
+and later dependent work remain reversible. Runtime rollback restores the last
+verified artifact without pretending source has changed. Forward fix is
+required when committed external state or compatibility makes rollback unsafe.
+The decision and exact recovery proof are machine-visible.
 
-One rule ADR-29 does not spell out: runtime rollback must also roll back
+Runtime rollback must also roll back
 **derived runtime state**. Semantic caches, prompt/result caches, and
 memoized outputs keyed only on inputs will keep serving the reverted
 version's outputs after the artifact flips back ("ghost-serving"). Key such
@@ -209,19 +207,15 @@ completed rollback.
 
 ### Merge-queue signal integrity (flaky tests are the #1 no-human hazard)
 
-A flaky required check is the highest-severity failure in this model: it
-stalls the queue with no human to re-run, and speculative queues *amplify*
-flakes. At Google scale **~16% of tests show some flakiness and 84% of
-pass→fail transitions are flake, not breakage** — a naive "red = block" gate
-is wrong most of the time. ADR-29's "Flakes And Queue Health" section owns
-the baseline requirement list (deterministic required checks, timeout,
-capped retries, flake scoring, quarantine with owner/expiry/budget,
-innocent-never-blamed attribution, queue telemetry) — cited, not restated.
-What that list does not spell out:
+A flaky required check is a high-severity signal-integrity failure: it can
+stall serialization with no human retry path, and speculative queues amplify
+the damage. Required checks therefore need deterministic inputs, explicit
+timeouts, capped retries, flake scoring, quarantine with owner/expiry/budget,
+culprit attribution, and queue telemetry.
 
-- **Treat red as probabilistic, not binary.** A pass proves no-regression; a
-  single failure is a hint. The quarantine threshold is configurable, not
-  hard-coded.
+- **Classify red from evidence.** A single failure may be product breakage,
+  infrastructure failure, or a flake. Reproduce and attribute it; do not blindly
+  convert red into either merge permission or permanent blockage.
 - **Blanket retry-until-green is forbidden.** Cap per-test retries (~3) with
   a hard ceiling and a whole-suite circuit breaker; every pass-after-retry is
   a tracked metric. **A 25%-broken test still passes ~99.6% of the time
@@ -238,7 +232,7 @@ What that list does not spell out:
   crossing precisely, so noticing starts the clock (disclosed, not yet
   built). Owner defaults from the matching `boundaries.owns[].name` in the
   project manifest (mapping a test to its bounded context is a judgment
-  call today), expiry defaults by policy — the record fields are ADR-29's —
+  call today), with expiry defaults from the active policy —
   and un-quarantine follows the same clock once the fix lands. At fleet
   scale even a small flake rate is a daily stream of these decisions, so
   the adjudicator is a mechanism, not a review meeting; an agent may act
@@ -309,7 +303,7 @@ by blast radius here:
   evidence bound to head SHA, deterministic config, PR text as data never
   instructions, and the same flake/quarantine discipline as any check.
 
-These methods strengthen the evidence ADR-29 collects; they do not replace
+These methods strengthen admission evidence; they do not replace
 branch protection, merge queue, postsubmit proof, or recovery.
 
 ### Reward-hacking and execution-trace integrity (agents optimize the visible metric)
@@ -345,7 +339,7 @@ while the real objective regresses. Design gates assuming this:
   system.
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

@@ -8,9 +8,7 @@ description: "Incident severity, no-human detect-mitigate-verify loop, and machi
 
 Canonical home: `skills/incident-standard/` in `SylphxAI/skills`.  
 Full body: [references/full-standard.md](references/full-standard.md).  
-Cutover map: [references/doctrine-parity-delta.md](references/doctrine-parity-delta.md).
-
-The former source standard path is **alias-only** after cutover — author here only.
+Record schema: [references/postmortem-record.schema.json](references/postmortem-record.schema.json).
 
 ## Method
 

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SylphxAI/skills/blob/main/skills/incident-standard/references/postmortem-record.schema.json",
+  "title": "Postmortem record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "severity",
+    "summary",
+    "timeline",
+    "impact",
+    "rootCause",
+    "mechanisms",
+    "links"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "minLength": 3 },
+    "severity": { "enum": ["S1", "S2", "S3", "S4"] },
+    "summary": { "type": "string", "minLength": 20 },
+    "timeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["detectedAt", "mitigatedAt", "resolvedAt"],
+      "properties": {
+        "detectedAt": { "type": "string", "format": "date-time" },
+        "mitigatedAt": { "type": "string", "format": "date-time" },
+        "resolvedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "impact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["customer", "blastRadius", "dataOrSecurityImpact"],
+      "properties": {
+        "customer": { "type": "string", "minLength": 1 },
+        "blastRadius": { "type": "string", "minLength": 1 },
+        "dataOrSecurityImpact": { "type": "string", "minLength": 1 }
+      }
+    },
+    "rootCause": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mechanism", "evidence"],
+      "properties": {
+        "mechanism": { "type": "string", "minLength": 20 },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/evidence" }
+        }
+      }
+    },
+    "contributingFactors": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "mechanisms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "owner", "status", "evidence"],
+        "properties": {
+          "type": { "enum": ["regression-test", "ci-gate", "alert", "reconciler", "policy", "runbook"] },
+          "owner": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["landed", "verified", "open"] },
+          "evidence": { "$ref": "#/$defs/evidence" }
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "ref"],
+        "properties": {
+          "type": { "enum": ["work", "incident", "source", "deploy", "telemetry", "external"] },
+          "ref": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ref", "observedAt"],
+      "properties": {
+        "kind": { "type": "string", "minLength": 1 },
+        "ref": { "type": "string", "minLength": 1 },
+        "observedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

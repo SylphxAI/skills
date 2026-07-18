@@ -8,9 +8,6 @@ description: "CI admission tiers, affected selection, required checks, flake con
 
 Canonical home: `skills/ci-admission-standard/` in `SylphxAI/skills`.  
 Full body: [references/full-standard.md](references/full-standard.md).  
-Cutover map: [references/doctrine-parity-delta.md](references/doctrine-parity-delta.md).
-
-The former source standard path is **alias-only** after cutover — author here only.
 
 ## Method
 

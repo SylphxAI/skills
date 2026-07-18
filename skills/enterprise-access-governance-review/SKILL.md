@@ -136,7 +136,7 @@ and gaps without claiming runtime enforcement from design artifacts alone.
 
 - Hand authentication ceremony, session/token handling, SAML/OIDC/SCIM connector
   code, and authorization enforcement implementation to their engineering owners
-  under current Doctrine engineering and specification procedures.
+  under `engineering-standard` and `specification-control-plane-standard`.
 - Use `account-recovery-review` for a legitimate user who lost authenticators,
   channels, sessions, or personal account access; consume this skill's tenant and
   admin authority when enterprise recovery needs it.
@@ -147,8 +147,8 @@ and gaps without claiming runtime enforcement from design artifacts alone.
   exceptions.
 - Use `customer-support-operations` for the whole support operating model; this
   skill only defines support authority and privileged evidence.
-- Use current Doctrine incident, security, privacy, delivery, and engineering
-  procedures for incidents, internal controls, implementation, and shipped proof.
+- Use `incident-standard`, `engineering-standard`, `privacy-data-lifecycle-review`,
+  and `delivery-standard` for incidents, controls, implementation, privacy, and shipped proof.
 
 ## Hard gates
 

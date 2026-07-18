@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `frontier-verification-standard` in `SylphxAI/skills` (`skills/frontier-verification-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/frontier-verification-standard.md` at digest `sha256:cd1e0427ec947891bbc4f0bf1131649db9834c891724dafcfc837da931945d20` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -15,9 +13,8 @@ Author here; do not maintain a second prose SSOT.
 Use this standard when selecting advanced verification methods for high-risk
 correctness, AI behavior, runtime rollout, or VCS authoring experiments.
 
-The goal is to strengthen the existing ADR-29 admission/recovery control plane
-without making every PR pay for every expensive method. This standard
-implements ADR-66 (frontier verification backstops).
+The goal is to strengthen admission and recovery without making every
+candidate pay for every expensive method.
 
 This standard composes with:
 
@@ -46,7 +43,7 @@ Use this selection matrix:
 | Distributed protocols, queues, locks, ledgers, billing, permissions, durable agent runtimes, irreversible workflows | Property/model tests first; deterministic simulation testing when interleavings, faults, or long-running behavior dominate risk |
 | Public API/tool/event/package contracts, generated clients, schema-derived surfaces | Spec/contract gate from the schema source of truth, generated artifact freshness, compatibility proof |
 | AI product behavior, model/provider routing, agent workflows, prompt/tool policies | Versioned capability/substitution eval manifest, thresholded status, traces, drift budgets, safety/privacy checks, failure examples, requalification and recovery |
-| Runtime/user-visible behavior, infra/config, feature flags, auth/billing/security behavior | Automated canary or progressive analysis with SLO/error-budget guardrails and automatic promote/pause/rollback |
+| Runtime behavior with material residual uncertainty that cannot be reproduced credibly before exposure | Short automated canary or progressive analysis with declared hypothesis, SLO/error-budget guardrails, and automatic promote/pause/rollback |
 | Local branch/stack/conflict authoring | Optional change-centric VCS experiment; final delivery conforms to the active delivery profile |
 
 ## Deterministic Simulation Testing
@@ -131,8 +128,8 @@ content-addressed dataset. A future schema may make an LLM judge blocking only
 after a trusted content-addressed model-lineage registry and attestation
 producer exist; it must arrive through an explicit semantic schema branch and
 staged ratchet, not a prose claim or self-attested manifest field.
-Repos may carry a local eval manifest schema; the doctrine schema above is the
-default.
+Repos may carry a local eval manifest schema; the schema selected by the
+binding profile is the default.
 
 ## Automated Canary Analysis
 
@@ -166,7 +163,7 @@ Under the current GitHub delivery profile, examples of allowed experiments are:
 
 - local Jujutsu authoring for stacked diffs or conflict management;
 - local branch/stack manipulation that exports ordinary Git branches and PRs;
-- prototype tooling that improves ADR-58 stack metadata.
+- prototype tooling that improves the active profile's stack metadata.
 
 Forbidden without a successor delivery profile and migration ADR:
 
@@ -182,7 +179,7 @@ Forbidden without a successor delivery profile and migration ADR:
 
 Adoption is by selector, not blanket policy.
 
-Use `required-future` doctrine migration packets only after:
+Use `required-future` instruction migration packets only after:
 
 - the harness or controller exists;
 - the status context producer exists for PR, merge-group, postsubmit, or deploy
@@ -194,7 +191,7 @@ Use `required-future` doctrine migration packets only after:
 Until then, these methods are `new-default` or `optional-adoption`.
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

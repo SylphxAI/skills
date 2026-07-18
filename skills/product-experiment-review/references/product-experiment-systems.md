@@ -211,8 +211,8 @@ turn a staged rollout into causal evidence.
 | Treatment content and policy | exact domain-specialist decision |
 | Events, identity, metric computation, QA | `product-analytics-instrumentation-review` |
 | Assignment service, flags, exposure logs | owning engineering project |
-| Deployment, rollback, health, live readback | current Doctrine delivery artifact |
-| High-risk rights/safety/privacy/AI review | current domain and Doctrine evidence |
+| Deployment, rollback, health, live readback | `delivery-standard` artifact |
+| High-risk rights/safety/privacy/AI review | current domain evidence plus applicable binding Skills |
 | Price/package architecture | `saas-subscription-pricing` |
 | Notification policy | `notification-strategy-review` |
 | Marketplace seller intervention | `marketplace-seller-performance-review` when published |

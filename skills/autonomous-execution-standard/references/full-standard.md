@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `autonomous-execution-standard` in `SylphxAI/skills` (`skills/autonomous-execution-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/autonomous-execution-standard.md` at digest `sha256:1662b12da8c1a0c7d6590aa6f99a147d8c0bea9484363d66a8c5bca74cd796b8` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -42,7 +40,7 @@ it does not redefine them around a particular forge or delivery lane.
 Before editing, delegating, or launching long-running work, create an
 intentional starting state.
 
-- Load the smallest relevant doctrine and repo-local source of truth before
+- Load the smallest relevant binding Skills packages and repo-local source of truth before
   making durable decisions.
 - Set or update the active goal when the runtime exposes a goal system. The goal
   must state the objective, owning boundary, success criteria, Definition of
@@ -647,7 +645,7 @@ Before final response, check:
   next concrete action.
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

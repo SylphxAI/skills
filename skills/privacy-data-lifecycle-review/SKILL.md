@@ -20,7 +20,10 @@ A combined brief composes those owners. Keep one canonical fact home and pass ex
 ## When not to use
 
 - Use `data-rights-operations-review` when the primary artifact is fulfillment of an individual access, export, correction, deletion, restriction, objection, or appeal request.
-- Use `product-analytics-instrumentation-review`, `interface-craft`, or the owning security/Doctrine procedure when the primary job is event implementation, permission-surface craft, or security architecture rather than the proactive privacy lifecycle.
+- Use `product-analytics-instrumentation-review`, `interface-craft`, or the owning
+  security engineering boundary under `engineering-standard` when the primary
+  job is event implementation, permission-surface craft, or security architecture
+  rather than the proactive privacy lifecycle.
 
 ## Resource routing
 

@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `agent-first-development-standard` in `SylphxAI/skills` (`skills/agent-first-development-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/agent-first-development-standard.md` at digest `sha256:89f35a81446153406a2d01a33fd95e0b336f688835402966fa64f47fa92caef3` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -203,12 +201,12 @@ artifact_digest: <sha256 of canonical head/change/verdict/reviewer/findings payl
 not proof of independence. A distinct authenticated comment author proves
 reviewer attribution within the comment layer; it does not make a candidate-
 controlled workflow an independent admission authority. A shared login is
-labelled declared separation only. `scripts/policy-review-gate.py` is the
+labelled declared separation only. The active admission adapter's policy-review verifier is the
 canonical digest implementation.
 Policy-repository scope, credential modes, and required-status wiring live in
 [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) §Policy
 Repository Admission; this section owns the field contract that
-`scripts/policy-review-gate.py` parses.
+policy-review verifier parses.
 
 Presence follows the active coordination surface — see
 [`mission-control-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/mission-control-standard/references/full-standard.md) for ledger vs
@@ -230,10 +228,9 @@ repos.
 
 ### Stacked Diffs For Dependent Slices
 
-ADR-58 owns the full stacked-diff contract: manifest schema, slice contract,
-per-slice ADR-29 admission, root-first merge-queue semantics, restack
-controller, depth/shape limits, and dependency-aware recovery — cited, not
-restated.
+The active source-authoring profile owns the stacked-diff contract: manifest
+schema, slice contract, per-slice admission, root-first serialization, restack
+controller, depth/shape limits, and dependency-aware recovery.
 
 Compatibility-adapter rule: when a change naturally decomposes into ordered
 slices (data layer → API → UI; migration expand → writer compatibility →
@@ -242,8 +239,8 @@ serial wait chain. Stacking is an authoring model, not a branch-protection
 bypass — every slice still needs its own admission manifest and trunk
 admission for the exact queue candidate. Do not use stacks to batch
 unrelated cleanup or hide a large non-revertable feature across many PRs;
-independent work belongs in separate PRs or stacks, where ADR-54 queue
-sharding runs validation in parallel. Other active profiles use the generic
+independent work belongs in separate PRs or stacks, where queue sharding runs
+validation in parallel. Other active profiles use the generic
 candidate DAG and valid-prefix rules in the source-authoring standard.
 
 ### Roadmap Items To Preserve
@@ -261,15 +258,15 @@ The full target includes these unimplemented capabilities:
   restack automation, queue-prefix policy, and dependency-aware recovery;
 - per-repo `PROJECT_BOUNDARY.md`, `AGENT_GUIDE.md`, local ADR/spec pointers,
   merge queue, `merge_group` workflow support, and branch rulesets;
-- repo-local `PROJECT.md` and `.doctrine/project.json` manifests carrying
+- repo-local `PROJECT.md` and `project.manifest.json` manifests carrying
   project goal, lifecycle, zero-knowledge boundaries, public surfaces, delivery
   proof, and adoption gaps;
 - signal ingestion from CI failures, merge queue failures, deployments, logs,
   metrics, traces, regressions, security findings, and customer-facing incidents
   into GitHub issues;
 - serializer health, stale claims, candidate risk distribution, CI flake,
-  production regression, security posture, and doctrine adoption dashboards;
-- role prompts or agent definitions derived from doctrine instead of copied into
+  production regression, security posture, and instruction-adoption dashboards;
+- role prompts or agent definitions derived from binding Skills packages instead of copied into
   independent prompt forks.
 
 ## No-Human Operating Assumption
@@ -342,7 +339,7 @@ home" table owns the altitude map — which artifact is the canonical home
 for which kind of fact — cited, not restated. A repo's `docs/adr/`,
 `docs/specs/`, `docs/runbooks/`, and `.github/workflows/` layout should
 mirror it; runtime-native agent files (`AGENTS.md`, `CLAUDE.md`) point to
-this doctrine plus repo-local facts, never a competing policy fork.
+the matching binding Skills packages plus repo-local facts, never a competing policy fork.
 
 ## Ownership Catalog
 
@@ -350,7 +347,7 @@ For multi-repo or product-portfolio work, every repo should expose a generated
 or CI-validated ownership catalog. The catalog is the machine-checkable answer
 to "which project owns this gap?"
 
-The repo-local project manifest (`.doctrine/project.json`) is the minimum input
+The repo-local project manifest (`project.manifest.json`) is the minimum input
 to that catalog. It states the repository's local identity, lifecycle, owned
 contexts, unowned contexts, public surfaces, forbidden coupling, delivery proof,
 and adoption gaps. See
@@ -378,26 +375,26 @@ must identify the temporary source of truth and the adoption plan.
 
 Different agent runtimes may need different native prompt files, commands,
 skills, tools, permissions, memory, and delegation models. Those are transport
-mappings, not policy forks. Agent-first products may consume this doctrine
+mappings, not policy forks. Agent-first products may consume binding Skills packages
 for their own repo and internal agents, but that does not make the product
 itself a runtime instruction projection or weaken its provider/customer boundary.
 
 Each runtime instruction projection must:
 
-- link back to this doctrine as the upstream source of truth;
+- link back to the canonical Skills packages as the upstream source of truth;
 - load the compact constitution through a real always-on surface before skill
-  activation, then load only the principles, ADRs, profiles, and standards
+  activation, then load only the standards, profiles, and procedures
   triggered by the task alongside repo-local facts and runtime-native commands;
-- map doctrine rules into the runtime's supported mechanisms;
+- map package predicates into the runtime's supported mechanisms;
 - keep runtime-specific command syntax, skills, and tool wiring local to that
   runtime;
 - preserve shared vocabulary for boundaries, contracts, work packets, ADRs,
   validation, delivery, and collision handling.
 
-Runtime projections must not rename doctrine concepts, copy standards into a private fork,
+Runtime projections must not rename canonical concepts, copy standards into a private fork,
 or weaken autonomy, boundary, active-profile admission/serialization, CI, or
 validation rules because the runtime has a different prompt format. They must also respect higher-priority
-host, system, platform, and tool instructions; doctrine is an upstream policy
+host, system, platform, and tool instructions; Skills is an upstream instruction
 source, not a mechanism for overriding the runtime's authority model.
 
 ## Specification As Code
@@ -543,14 +540,14 @@ rule and are not restated as rows below.
 | Two agents change shared package exports | Contract candidate first | Land contract, re-identify consumers, run compatibility tests |
 | Candidate conflicts with current frontier | Active serializer validates integration | Recompute from the fresh frontier, fix semantic conflict, re-prove |
 | Docs disagree with code | Docs link or generate from SSOT | Fix generator/guard; code/schema wins current-state claims |
-| Agent/runtime instruction drifts | Doctrine constitution contract | Update Doctrine or its projection; never fork standards locally |
+| Agent/runtime instruction drifts | Skills package plus compact constitution contract | Update the owning package or its projection; never fork standards locally |
 
 ## Candidate Admission, Serialization, And Automatic Integration
 
 Every substantive change lands through the active delivery profile's candidate
 and serialized-integration path; there are no human reviewers in the normal
-path. The current profile binds that path to ADR-2's pull-request, branch
-protection, required-check, and merge-queue contract. Adapters may not weaken
+path. A compatibility profile may bind that path to pull requests, branch
+protection, required checks, and a merge queue. Adapters may not weaken
 the admission, exact-candidate, serialization, recovery, or provenance
 outcomes.
 

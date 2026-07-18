@@ -218,7 +218,7 @@ contract/public claim without authority.
 | Evidence stale, absent, or conflicting | block and request exact source | control/product owner |
 | Buyer asks for unsupported commitment | state gap; no promise | enterprise contract owner |
 | Question requires privacy interpretation | supply current facts only | `privacy-data-lifecycle-review` |
-| Question requires security design or remediation | no implementation claim | security engineering/Doctrine |
+| Question requires security design or remediation | no implementation claim | owning security engineering boundary + `engineering-standard` |
 | Incident/vulnerability wording requested | consume approved statement only | incident/security/legal owner |
 | Trust-center content needs update | derive from approved current claims | trust content implementation owner |
 | Evidence has been superseded | revoke and trace affected responses | evidence owner and assurance reconciler |

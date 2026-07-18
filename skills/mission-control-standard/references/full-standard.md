@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `mission-control-standard` in `SylphxAI/skills` (`skills/mission-control-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/mission-control-standard.md` at digest `sha256:91daa6b4dec63d56fd39c0ea56888c2aea24499c4fc89d0ec1501e55fc4efcef` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -16,12 +14,12 @@ Use this standard when agent work needs to survive a runtime switch, session
 loss, public/private boundary, cross-repo handoff, review gate, release gate, or
 production proof readback.
 
-Mission Control now has two layers:
+Mission Control has two layers:
 
 1. **Work Ledger layer** - the internal, typed, append-only work-state source of
-   truth defined by the Agent-First Mission Control Work Ledger ADR.
+   truth implemented by Control Plane.
 2. **Delivery-forge adapter layer** - under the active `github-delivery`
-   profile, the ADR-154 conventions for public/repo-local Issues, PRs, labels,
+   profile, conventions for public/repo-local Issues, PRs, labels,
    checkpoint comments, and recurring issue automation.
 
 Under the active delivery profile, GitHub remains the semantic authority for
@@ -39,7 +37,7 @@ This standard composes with:
 - [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for one fact, one
   home.
 - [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md) and
-  GroundAtlas for repo/project identity and fleet adoption read models.
+  Control Plane repository ingestion for repo/project identity and fleet read models.
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for the definition-of-done
   ladder and production readback proof.
 
@@ -55,7 +53,8 @@ fact to its owner:
 | Public user issue or community discussion | GitHub Issue/Discussion |
 | PR, checks, merge queue, release run, commit SHA | GitHub |
 | Deploy, smoke, health, logs, metrics, traces | Deploy/telemetry system |
-| Repo identity, boundary, adoption, fleet scorecard | Project manifests and GroundAtlas |
+| Repo identity and boundary | `project.manifest.json` in the owning repository |
+| Current adoption and fleet scorecard | Control Plane ingestion and live projections |
 | Internal agent task state, claim, checkpoint, handoff, next action, cost, ETA | Mission Control Work Ledger |
 | Dashboard, OpenWiki-style summary, portfolio board | Projection/read model |
 
@@ -64,14 +63,10 @@ allows writing a fact, it writes through to the owner.
 
 ## Work Ledger Contract
 
-`schemas/mission-control-work-item.schema.json` and
-`templates/mission-control-work-item.json` define the portable current-state
-projection of one work item. `schemas/mission-control-event.schema.json` and
-`templates/mission-control-event.json` define one append-only ledger event.
-
-These schemas are the doctrine-level contract for agents, MCP tools, CLIs,
-dashboards, and the future implementation repo. They are not a hand-edited PM
-board.
+Control Plane's versioned domain/API schemas are the executable authority for
+Work Items and append-only ledger events. This standard owns their portable
+semantic obligations; it does not duplicate runtime schemas or create a
+hand-edited PM board.
 
 Every Work Item must carry:
 
@@ -168,13 +163,12 @@ safe action, linked proof, blocker, claim freshness, and continuation commands.
 
 ## GitHub Adapter Conventions
 
-ADR-154 remains valid for repos or public interactions that need GitHub-native
-coordination.
+Use the active forge adapter for repos or public interactions that need
+GitHub-native coordination.
 
 ### Work-label taxonomy
 
-`schemas/work-label-taxonomy.schema.json` and
-`templates/work-label-taxonomy.json` are the canonical GitHub label vocabulary:
+The active forge adapter projects the following GitHub label vocabulary:
 
 | Category | Values | Purpose |
 | --- | --- | --- |
@@ -188,12 +182,12 @@ coordination.
 | `signal:escalation` | flag | Approval or security escalation required. |
 
 Only `area:*` may take repo-local values. Other categories are closed unless
-Doctrine changes the schema/template.
+the owning adapter contract changes.
 
 ### Checkpoint-as-issue-comment
 
-`schemas/work-checkpoint.schema.json` and `templates/work-checkpoint.json`
-define the public/repo-local `AGENT-CHECKPOINT` comment. Use it when the issue
+The active adapter defines the public/repo-local `AGENT-CHECKPOINT` comment.
+Use it when the issue
 thread is the chosen coordination surface. Prefer the Work Ledger for internal
 agent handoff once the service exists.
 
@@ -221,9 +215,8 @@ snapshot-delete-replay-diff gate for any persistent projection.
 
 ## Deployment Boundary
 
-Doctrine defines the policy and contract. The Mission Control product must live
-in its owning repo and deploy through the Sylphx serverless platform after the
-contract slice is validated.
+Skills defines the static policy; Control Plane owns the Work Ledger product,
+its versioned schemas, APIs, storage, adapters, and delivery.
 
 The product repo must link to the Sylphx platform capability catalog for
 functions, storage, events/queues, secrets, auth, domains, observability,
@@ -232,16 +225,11 @@ platform feature facts in this standard.
 
 ## Adoption
 
-Fleet impact is `required-future`.
-
-Existing GitHub issue/PR workflows remain accepted during expansion. Ratchet to
-required Work Item links only after the Mission Control API/MCP implementation
-has shipped, been dogfooded on at least one private repo and one public repo,
-and has default-branch proof that agents can start, claim, checkpoint, link PRs,
-complete, and recover stale work.
-
-New agent-first products and new long-running multi-agent workflows should
-design against the Work Ledger contract immediately.
+Fleet adoption resolves from the current Control Plane selector/profile. A
+selected workflow uses the Work Ledger as its sole internal task queue and
+links external forge artifacts as observations; it must not keep a second
+internal queue. Adoption proof exercises start, claim, checkpoint, external
+link, completion, and stale-claim recovery against the live selected API.
 
 ## Validation
 
@@ -253,7 +241,7 @@ design against the Work Ledger contract immediately.
   the static standard.
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

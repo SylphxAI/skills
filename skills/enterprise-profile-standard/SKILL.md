@@ -8,9 +8,6 @@ description: "Versioned binding enterprise profiles: selectors, current defaults
 
 Canonical home: `skills/enterprise-profile-standard/` in `SylphxAI/skills`.
 Full body: [references/full-standard.md](references/full-standard.md).  
-Historical cutover map: [references/historical-cutover-map.md](references/historical-cutover-map.md).
-
-The former source standard path is **alias-only** after cutover — author here only.
 
 ## Method
 

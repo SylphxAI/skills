@@ -2,8 +2,6 @@
 
 **Authority:** binding Standard Skill package `commercial-decision-standard` in `SylphxAI/skills` (`skills/commercial-decision-standard/`).
 
-**Cutover:** migrated from Doctrine `standards/commercial-decision-standard.md` at digest `sha256:4c9ba4112d86162d1ef7bc4b6a59269b9542575b889a88da43b007b70f60efe9` (doctrine `f7b1eb91cacf7b2495baf19ac5cd7e23941dc7d7`). Doctrine file is alias-only after cutover.
-
 Author here; do not maintain a second prose SSOT.
 
 ---
@@ -41,7 +39,7 @@ One semantic authority per fact:
 | Fact | Canonical home |
 | --- | --- |
 | Why a pricing, packaging, roadmap, ICP, or market-position decision was made | `docs/adr/` Commercial ADR |
-| Current project commercial posture and where to find decisions | `.doctrine/project.json` optional `commercial` section |
+| Current project commercial posture and where to find decisions | `project.manifest.json` optional `commercial` section |
 | Live billable prices, products, coupons, and subscriptions | Stripe or the repo's declared billing SSOT |
 | Entitlement rules and product capability gates | Code/schema/tests in the owning product |
 | Metrics, cohorts, funnels, revenue, churn, CAC, and margin evidence | Analytics/warehouse/dashboard declared by the repo |
@@ -188,11 +186,11 @@ assumption came from.
 
   Which relationship applies to a given product pair is a per-portfolio,
   per-pair fact recorded in the consuming or producing product's own ADR —
-  doctrine states the rule and the two rows; it never lists product names.
+  this standard states the rule and the two rows; it never lists product names.
 - **Validation.** No conformance audit ships with this section: no schema
   field yet records a product pair's settlement row, and nothing compares
   declared settlement against actual metering or ledger records. A
-  `.doctrine/project.json` fact for this and a matching audit are follow-up
+  `project.manifest.json` fact for this and a matching audit are follow-up
   mechanisms; until they land, the decision remains explicitly advisory rather
   than pretending to be an enforced ledger fact.
 
@@ -242,10 +240,10 @@ not rely on a human account, long-lived personal access token, or repository
 Use separate identities for separate risk boundaries:
 
 - the org's designated release bot for package version PRs, Changesets
-  releases, release statuses, and provenance evidence (see ADR-59); package
+  releases, release statuses, and provenance evidence; package
   registry publishing should use the protected workflow's
   OIDC/trusted-publishing identity where the ecosystem supports it;
-- the org's automation bot or an equivalent platform app for doctrine/policy
+- the org's automation bot or an equivalent platform app for instruction/policy
   sync, generated commercial config PRs, and conformance remediation;
 - Renovate/Dependabot remain dependency-update identities, not release or
   pricing authorities.
@@ -326,7 +324,7 @@ Tradeoffs and rejected alternatives.
 ```
 
 
-## Package checklist (Skills cutover)
+## Package checklist
 
 | Rule ID | Check |
 | --- | --- |

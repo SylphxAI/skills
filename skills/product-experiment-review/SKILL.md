@@ -47,7 +47,7 @@ evidence for this experiment.
 
 ## Routing boundaries
 
-- Engineering and current Doctrine delivery own feature flags, assignment
+- The owning engineering project and `delivery-standard` own feature flags, assignment
   services, exposure infrastructure, deployment, rollback, and production proof.
 - `product-analytics-instrumentation-review` owns event, identity, warehouse,
   metric-pipeline, and QA implementation; this skill states measurement needs.

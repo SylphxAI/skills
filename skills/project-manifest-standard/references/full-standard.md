@@ -14,18 +14,15 @@ shared meaning; Control Plane may ingest and project them as live fleet state.
 
 ```text
 PROJECT.md                 concise orientation for agents and owners
-.doctrine/project.json     machine-readable manifest (legacy-compatible path)
+project.manifest.json      machine-readable fact authority
 AGENTS.md / CLAUDE.md      compact runtime constitution plus local operations
 ```
 
-The `.doctrine/` directory name is retained only as a compatibility filename in
-the current fleet. It does not make the archived Doctrine repository an
-authority. A future filename change must be a single-generation migration, not
-a permanent second manifest path.
-
 `PROJECT.md` is a readable projection. The JSON manifest is the repo-local fact
 authority. Runtime constitutions link to both and do not copy detailed Skills
-standards. Do not create competing identity files.
+standards. Do not create competing identity files or maintain a legacy manifest
+alongside it. The canonical schema is
+[project-manifest.schema.json](project-manifest.schema.json).
 
 ## Required manifest facts
 
@@ -98,3 +95,14 @@ Validate the manifest against the active schema, check projection freshness,
 and run the repository's declared conformance entrypoint. Fleet adoption is
 confirmed through Control Plane readback; a local manifest alone is not
 fleet-wide proof.
+
+### Manifest readiness checklist
+
+- [ ] Purpose, goals, non-goals, lifecycle, and ownership are unambiguous.
+- [ ] Every public surface and cross-repository dependency has a named owner.
+- [ ] Architecture/profile references identify current authority without
+      copying its prose.
+- [ ] Verification commands and terminal delivery boundary are executable.
+- [ ] Adoption and architecture gaps are typed, owned, and falsifiable.
+- [ ] `PROJECT.md` projects the manifest instead of becoming a second fact
+      authority.

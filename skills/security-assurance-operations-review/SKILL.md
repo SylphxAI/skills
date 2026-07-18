@@ -47,9 +47,9 @@ memory are not evidence.
 
 ## Routing boundaries
 
-- Security engineering and current Doctrine own control design, implementation,
+- The owning engineering/security boundary and `engineering-standard` own control design, implementation,
   threat modeling, testing, vulnerability remediation, and production proof.
-- Current Doctrine incident/security/legal owners govern incident response,
+- `incident-standard` plus the current security/legal owners govern incident response,
   coordinated disclosure, customer notification, and exploit-sensitive wording.
 - Auditors and certification authorities own independent assurance conclusions;
   this skill records their exact scope and status without interpreting beyond them.

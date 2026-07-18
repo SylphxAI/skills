@@ -24,13 +24,14 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-concur-01` | Shared mutable state is fenced (locks, CAS, leases) with explicit timeouts. |
 | `eng-sidefx-01` | External side effects are idempotent or exactly-once with recovery. |
 | `eng-timeout-01` | Every network/RPC path has timeout, cancellation, and retry budget. |
-| `eng-migrate-01` | Shared schema/state uses expand-contract with rollback path. |
+| `eng-migrate-01` | Development/no-live-risk migrations use verified one-step cutover; demonstrated live compatibility/state/effect risk uses expand-contract with recovery. |
 | `eng-layer-01` | Dependency direction is domain → application → infrastructure. |
 | `eng-capability-01` | Durable code is organized by capability/bounded context; features are vertical slices inside the owning capability. |
 | `eng-ddd-01` | Strategic and Tactical DDD concepts carry domain language, invariants, aggregates, value objects, services, events, and repository ports. |
 | `eng-hex-01` | Clean/Hexagonal boundaries isolate domain/application policy from interfaces, frameworks, persistence, and provider adapters. |
 | `eng-functional-01` | Domain decisions form a deterministic functional core; external effects remain in an explicit imperative shell behind ports. |
 | `eng-modularity-01` | No file/module/package/crate/service/context may accumulate god responsibility; split by semantic boundary, not line count or every behavior. |
+| `eng-deploy-01` | Logical capability boundaries exist from the first durable commit; physical services split only for demonstrated independent scale, failure, security, data-authority, release, or technology boundaries. |
 | `eng-detail-01` | Important detail is attached to a capability as a sub-capability, behavior, invariant, contract, scenario, or surface rather than disappearing into Work or code. |
 | `eng-observe-01` | Critical paths emit privacy-preserving, correlatable telemetry. |
 | `eng-observe-02` | Telemetry names semantic capability/use-case outcomes and effects; domain/application code does not depend on observability SDKs. |
@@ -67,7 +68,8 @@ Apply the relevant subset; verify rather than slogan.
 | Measurable behavior | benchmark or load test | threshold + head SHA |
 | Material architecture/ops | ADR | accepted ADR + conformance |
 | Product/commercial impact | Commercial ADR | owner + metrics |
-| Shared migration | migration packet + expand-contract | dual-path or rollback drill |
+| Development/no-live-risk migration | focused change record or migration packet | exact-candidate equivalence + one-step replacement/readback |
+| Live shared-state/compatibility migration | migration packet + expand-contract | dual-path, recovery, or rollback drill |
 
 ## Conformance checklist
 
@@ -75,6 +77,7 @@ Apply the relevant subset; verify rather than slogan.
 - [ ] Tests/schemas cover each selected rule ID.
 - [ ] No secret material in source or logs.
 - [ ] External calls declare timeout/retry/idempotency.
-- [ ] Migrations expand-contract or N/A with rationale.
+- [ ] Migration strategy matches lifecycle and demonstrated live risk; no
+      calendar delay or dual path without a named compatibility/state/effect need.
 - [ ] Layer direction respected.
 - [ ] Delivery claims separate local / trunk / production proof.
