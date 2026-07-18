@@ -5,7 +5,13 @@ import path from 'node:path';
 import { createServer } from 'node:net';
 import test from 'node:test';
 import { packageDigest } from '../runtime/package-digest.mjs';
-import { buildCatalog, repositoryRoot } from '../scripts/build-catalog.mjs';
+import { buildCatalog, parseFrontmatter, repositoryRoot } from '../scripts/build-catalog.mjs';
+
+test('frontmatter parsing is identical for LF and CRLF checkouts', () => {
+  const lf = '---\nname: example\ndescription: Use for a checkout portability test.\n---\n\n# Example\n';
+  const crlf = lf.replaceAll('\n', '\r\n');
+  assert.deepEqual(parseFrontmatter(crlf, 'CRLF.md'), parseFrontmatter(lf, 'LF.md'));
+});
 
 test('catalog is deterministic and covers every canonical package', () => {
   const catalog = buildCatalog(repositoryRoot);
