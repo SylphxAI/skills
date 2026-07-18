@@ -283,44 +283,19 @@ are running:
 
 ## Progress Checkpoints
 
-For longer work, report progress roughly every 30 seconds or after material
-state changes. A checkpoint should include:
+For longer work, report after material state changes and at any cadence required
+by the active runtime. Each checkpoint carries only the delta needed to keep the
+consumer oriented: strongest current delivery state, new evidence, blocker, or
+next action. Add running work or an ETA only when it changes a decision or the
+user asks. Do not replay completed history or emit an acceleration checklist.
 
-- Overview: current objective and critical path.
-- Done: completed work since the last checkpoint.
-- Running: foreground work, background jobs, subagents, CI, deploys, or checks.
-- Remaining: unresolved tasks, blockers, and validation still needed.
-- Delivery state: proposed, local, validated, PR-delivered, merged,
-  released/deployed, or production-verified—whichever current evidence proves.
-- ETA: best current estimate, or why it cannot be estimated yet.
-- Acceleration check: whether any work can be parallelized, backgrounded,
-  delegated, narrowed, skipped as non-critical, or replaced with a faster proof.
+### High-signal communication
 
-Do not turn checkpoints into passive narration. Each checkpoint should either
-show progress, revise the execution map, or identify the next faster route.
-
-### Human-first communication
-
-Optimize human-facing output for minimum comprehension time, not minimum word
-count. Human attention is a constrained interface budget:
-
-- Lead with the answer, decision, or strongest truthful delivery state.
-- Use progressive disclosure: first the result and material caveats, then only
-  the evidence or detail needed to act. Offer or add depth when the user asks or
-  correctness requires it.
-- Preserve every material risk, uncertainty, blocker, decision, evidence link,
-  and next action. Brevity never licenses omission or overclaim.
-- Remove narration of internal planning, routine tool use, repeated context,
-  ceremony, raw logs, and unrequested detail unless they change the decision or
-  establish required proof.
-- Prefer a short paragraph for one conclusion, a list for actionable peers, and
-  a table only when repeated fields or comparisons materially reduce reading
-  time. Do not turn a simple answer into a report template.
-- Keep machine-facing contracts exact and structured; render their human-facing
-  explanation in plain, natural language.
-
-The quality target is the shortest scannable output that remains truthful and
-materially complete for its audience. Word count alone is not a quality gate.
+Apply
+[`high-signal-communication`](https://github.com/SylphxAI/skills/blob/main/skills/high-signal-communication/SKILL.md)
+to checkpoints, handoffs, evidence reports, and final output. This standard
+owns the execution-specific facts; the communication Skill owns compression,
+ordering, and progressive disclosure.
 
 ## Evidence-First Reporting
 

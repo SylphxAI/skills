@@ -1,0 +1,4 @@
+interface:
+  display_name: "High-Signal Communication"
+  short_description: "Concise, complete agent communication"
+  default_prompt: "Use $high-signal-communication to compress this output without losing decisions, evidence, risks, or next actions."

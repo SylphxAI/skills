@@ -4,9 +4,8 @@
 
 Prompts for agents are operating policy, not motivational prose. Optimize them
 for deterministic execution, conflict resolution, delegation, future sessions,
-and machine parsing. Human-facing output follows the human-first communication
-contract in
-[`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md).
+and machine parsing. Human- and agent-facing output follows
+[`high-signal-communication`](https://github.com/SylphxAI/skills/blob/main/skills/high-signal-communication/SKILL.md).
 
 ## Minimum Effective Policy
 
@@ -69,6 +68,11 @@ the rule's authority and stop boundaries, keep it on demand and strengthen its
 skill description or on-demand reference instead. When a projection is promoted,
 consolidate or replace weaker always-on wording rather than appending a second
 version or increasing prompt size by default.
+
+The compact communication projection qualifies for the always-on kernel: lead
+with the answer or strongest truthful state; omit repetition, routine process,
+and raw logs; preserve material decisions, evidence, risk, uncertainty, and
+next action. Keep the full compression method in `high-signal-communication`.
 
 ## Role Prompt Derivation
 

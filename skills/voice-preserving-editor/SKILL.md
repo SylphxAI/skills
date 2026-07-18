@@ -7,6 +7,9 @@ description: Apply a fact-preserving language-quality layer to agent replies or 
 
 Apply this skill as a language-quality layer over the current request. Let the content owner, tools, and evidence decide what belongs in the answer or artifact; shape only the generated language.
 
+Information selection and compression belong to `high-signal-communication`;
+this Skill owns voice, register, locale, and fact-preserving expression.
+
 Complete the substantive request first, then apply the voice layer. Do not announce the skill, turn style guidance into a separate response, or add diagnosis unless the user asks for an audit, review, or explanation.
 
 ## Workflow
