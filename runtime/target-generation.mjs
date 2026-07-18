@@ -568,10 +568,31 @@ function removeManagedLink(targetPath, transactionRoot, name) {
 }
 
 function switchCurrent(targetPath, transactionRoot, generationName) {
+  const current = currentPath(targetPath);
+  if (process.platform === 'win32') {
+    // Windows resolves directory symlink targets at creation time and cannot
+    // atomically replace the existing link with rename(). Publish a fixed,
+    // transaction-recoverable sibling so its resolved target is anchored to
+    // the final directory, then remove only a validated managed current link.
+    const temporary = path.join(targetPath, `${CURRENT}.next`);
+    if (pathExists(temporary)) {
+      if (!exactSymlink(temporary, currentTarget(generationName), current)) {
+        throw new Error(`unowned managed generation successor: ${temporary}`);
+      }
+    } else {
+      symlinkSync(currentTarget(generationName), temporary, 'dir');
+    }
+    if (pathExists(current)) {
+      existingCurrentGeneration(targetPath);
+      rmSync(current, { force: true });
+    }
+    renameSync(temporary, current);
+    return;
+  }
   const temporary = path.join(transactionRoot, 'current-link');
   rmSync(temporary, { force: true });
   symlinkSync(currentTarget(generationName), temporary, 'dir');
-  renameSync(temporary, currentPath(targetPath));
+  renameSync(temporary, current);
 }
 
 function finalizeCommitted(targetPath, transactionRoot, metadata) {
