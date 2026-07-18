@@ -222,10 +222,6 @@ export function reconcile({
 
 function directMain() {
   const args = process.argv.slice(2);
-  // Grok Build loads Claude-compatible hooks as well as native hooks. Native
-  // Sylphx hooks own Grok reconciliation; imported Claude hooks exit before
-  // reading state or touching the network.
-  if (args.includes('--skip-if-grok-compat') && process.env.GROK_HOOK_EVENT) return;
   const maxAgeIndex = args.indexOf('--max-age-ms');
   const maxAgeMs = maxAgeIndex >= 0 ? Number(args[maxAgeIndex + 1]) : 10_000;
   if (!Number.isFinite(maxAgeMs) || maxAgeMs < 0) throw new Error('--max-age-ms must be a non-negative number');

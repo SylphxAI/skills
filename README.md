@@ -34,40 +34,27 @@ npx --yes github:SylphxAI/skills sync --agent all
 
 ## Automatic updates
 
-Install the per-user runtime hooks once:
+Enable automatic synchronization once:
 
 ```bash
 npx --yes github:SylphxAI/skills auto-sync enable
 ```
 
-Hook installation and runtime permission are separate. Activation follows each
-runtime's native security model:
+The default interval is 10 minutes. Set another whole-minute interval when
+needed:
 
-| Runtime | Activation after installation |
-| --- | --- |
-| Codex | Open `/hooks`, review the Sylphx command, and trust its exact definition once. Codex skips untrusted or changed definitions. Routine Skill-content updates do not change that hook definition. |
-| Claude Code | User hooks run from `~/.claude/settings.json` without a separate hook-approval step, unless hooks are disabled by safe/bare mode or managed policy. |
-| Grok Build | The installer uses Grok's native global user hook, which is trusted by the runtime. |
+```bash
+npx --yes github:SylphxAI/skills auto-sync enable --interval 5m
+npx --yes github:SylphxAI/skills auto-sync enable --interval 30m
+npx --yes github:SylphxAI/skills auto-sync enable --interval 1h
+```
 
-The installer never bypasses runtime trust or permission controls. The
-`auto-sync status` command therefore reports **configured** separately from
-**effective**; only the runtime can prove that a hook was permitted and
-executed.
-
-Updates then reconcile at the points where an agent can actually consume new
-instructions: session start/resume, prompt submission, sub-agent start, and the
-active tool loop. Codex checks before a tool call; Claude Code checks after a
-tool batch; Grok Build checks after a tool call and hot-reloads changed Skills.
-This also covers a turn that runs for hours without another user prompt.
-
-The common path is local and cheap. Lifecycle checks share a one-second cache;
-active-turn checks share a ten-second cache and a per-user single-flight lock.
-Only an expired check performs one public `git ls-remote`, and only a changed
-commit performs an incremental fetch and atomic Skill sync. There is no hourly
-wait, background daemon, webhook relay, token, or Control Plane dependency.
-When offline, the last known-good packages remain active and retries back off.
-Grok uses its documented native global hook and Skill directories; its Claude
-hook compatibility is guarded so it cannot perform a duplicate network check.
+The command uses the operating system's built-in per-user scheduler: launchd on
+macOS, a systemd user timer on Linux, and Task Scheduler on Windows. Each tick
+performs one public remote-head check. Only a changed commit is fetched and
+applied. There are no agent hooks, runtime approvals, resident daemons, webhook
+relays, tokens, or Control Plane dependencies. When offline, the last known-good
+packages remain active and retries back off.
 
 Each successful reconciliation converges the complete Sylphx-managed set:
 new packages appear, packages removed upstream are removed locally, and an
@@ -75,12 +62,13 @@ updated package directory is replaced whole so deleted files cannot linger.
 The ownership manifest limits deletion to packages previously installed by
 this tool; unrelated third-party or hand-authored Skills remain untouched.
 
-No tool can replace context while a model is continuously generating with no
-lifecycle boundary. The next prompt, sub-agent, or tool boundary is therefore
-the earliest safe and useful refresh point.
+An already-running agent may not reload a changed Skill until that runtime's
+next normal reload boundary. The files themselves converge within the selected
+interval.
 
 ```bash
 npx --yes github:SylphxAI/skills status
+npx --yes github:SylphxAI/skills auto-sync status
 npx --yes github:SylphxAI/skills auto-sync disable
 npx --yes github:SylphxAI/skills clear
 ```

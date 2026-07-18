@@ -15,12 +15,8 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 import { pathToFileURL } from 'node:url';
-import {
-  installRuntimeHooks,
-  runtimeHookStatus,
-  uninstallRuntimeHooks,
-} from '../runtime/hooks.mjs';
 import { reconcile } from '../runtime/reconcile.mjs';
+import { parseIntervalMinutes, schedulerDefinition } from '../runtime/scheduler.mjs';
 
 const root = path.resolve(new URL('..', import.meta.url).pathname);
 const cli = path.join(root, 'runtime', 'sylphx-skills.mjs');
@@ -119,69 +115,29 @@ test('agent override targets Codex, Claude, and Grok without upstream tooling', 
   }
 });
 
-test('runtime hooks preserve user configuration and cover long turns without duplicates', () => {
-  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-hooks-'));
-  const homes = {
-    codexHome: path.join(sandbox, '.codex'),
-    claudeHome: path.join(sandbox, '.claude'),
-    grokHome: path.join(sandbox, '.grok'),
+test('scheduler supports one configurable interval across macOS, Linux, and Windows', () => {
+  assert.equal(parseIntervalMinutes([]), 10);
+  assert.equal(parseIntervalMinutes(['--interval', '5m']), 5);
+  assert.equal(parseIntervalMinutes(['--interval', '2h']), 120);
+  assert.equal(parseIntervalMinutes(['--interval', '30']), 30);
+  assert.throws(() => parseIntervalMinutes(['--interval', '10s']), /whole minutes/);
+
+  const options = {
+    home: '/home/sylphx',
+    nodePath: '/runtime/node',
+    reconcilerPath: '/home/sylphx/.sylphx-skills/reconcile.mjs',
+    pathEnv: '/usr/local/bin:/usr/bin:/bin',
+    intervalMinutes: 10,
   };
-  const reconcilerPath = path.join(sandbox, '.sylphx-skills', 'reconcile.mjs');
-  try {
-    mkdirSync(homes.codexHome, { recursive: true });
-    mkdirSync(homes.claudeHome, { recursive: true });
-    mkdirSync(homes.grokHome, { recursive: true });
-    writeFileSync(path.join(homes.codexHome, 'hooks.json'), `${JSON.stringify({
-      description: 'keep me',
-      hooks: { PostToolUse: [{ matcher: 'Bash', hooks: [{ type: 'command', command: 'existing-check' }] }] },
-    }, null, 2)}\n`);
-    writeFileSync(path.join(homes.claudeHome, 'settings.json'), `${JSON.stringify({ language: 'en' }, null, 2)}\n`);
-
-    const options = {
-      agents: ['codex', 'claude', 'grok'],
-      homes,
-      nodePath: process.execPath,
-      reconcilerPath,
-    };
-    installRuntimeHooks(options);
-    installRuntimeHooks(options);
-
-    const codex = JSON.parse(readFileSync(path.join(homes.codexHome, 'hooks.json'), 'utf8'));
-    const claude = JSON.parse(readFileSync(path.join(homes.claudeHome, 'settings.json'), 'utf8'));
-    const grok = JSON.parse(readFileSync(path.join(homes.grokHome, 'hooks', 'sylphx-skills.json'), 'utf8'));
-    assert.equal(codex.description, 'keep me');
-    assert.equal(codex.hooks.PostToolUse.length, 1);
-    assert.equal(codex.hooks.PreToolUse.filter((group) => group.hooks.some((hook) => hook.command.includes(reconcilerPath))).length, 1);
-    assert.equal(claude.language, 'en');
-    assert.equal(Array.isArray(claude.hooks.PostToolBatch), true);
-    assert.equal(Object.hasOwn(claude.hooks, 'PostToolUse'), false);
-    assert.equal(claude.hooks.UserPromptSubmit[0].hooks[0].command.includes('--skip-if-grok-compat'), true);
-    assert.equal(Array.isArray(grok.hooks.PostToolUse), true);
-    assert.equal(Object.hasOwn(grok.hooks.SessionStart[0], 'matcher'), false);
-    assert.deepEqual(runtimeHookStatus(options).map((item) => item.installed), [true, true, true]);
-    const importedClaudeHook = spawnSync(process.execPath, [
-      path.join(root, 'runtime', 'reconcile.mjs'),
-      '--skip-if-grok-compat',
-      '--strict',
-    ], {
-      cwd: root,
-      encoding: 'utf8',
-      env: { ...process.env, GROK_HOOK_EVENT: 'user_prompt_submit', SYLPHX_SKILLS_STATE_DIR: path.join(sandbox, 'missing') },
-    });
-    assert.equal(importedClaudeHook.status, 0, importedClaudeHook.stderr || importedClaudeHook.stdout);
-
-    uninstallRuntimeHooks(options);
-    const cleanedCodex = JSON.parse(readFileSync(path.join(homes.codexHome, 'hooks.json'), 'utf8'));
-    const cleanedClaude = JSON.parse(readFileSync(path.join(homes.claudeHome, 'settings.json'), 'utf8'));
-    const cleanedGrok = JSON.parse(readFileSync(path.join(homes.grokHome, 'hooks', 'sylphx-skills.json'), 'utf8'));
-    assert.equal(cleanedCodex.description, 'keep me');
-    assert.equal(cleanedCodex.hooks.PostToolUse.length, 1);
-    assert.equal(cleanedClaude.language, 'en');
-    assert.equal(Object.hasOwn(cleanedClaude, 'hooks'), false);
-    assert.equal(Object.hasOwn(cleanedGrok, 'hooks'), false);
-  } finally {
-    rmSync(sandbox, { recursive: true, force: true });
-  }
+  const mac = schedulerDefinition({ ...options, platform: 'darwin' });
+  const linux = schedulerDefinition({ ...options, platform: 'linux' });
+  const windows = schedulerDefinition({ ...options, platform: 'win32' });
+  assert.equal(mac.kind, 'launchd');
+  assert.match(mac.files[0].contents, /<key>StartInterval<\/key><integer>600<\/integer>/);
+  assert.equal(linux.kind, 'systemd-user');
+  assert.match(linux.files[1].contents, /OnUnitActiveSec=10min/);
+  assert.equal(windows.kind, 'windows-task-scheduler');
+  assert.deepEqual(windows.activate[0][1].slice(-3), ['/MO', '10', '/F']);
 });
 
 test('reconciler fetches only changed commits, honors TTL, and single-flights active agents', () => {
@@ -262,7 +218,7 @@ test('reconciler fetches only changed commits, honors TTL, and single-flights ac
   }
 });
 
-test('auto-sync enable performs one exact-source install and disable removes only managed hooks', () => {
+test('auto-sync enables a configurable scheduler, converges exactly, and removes legacy hooks', () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-auto-sync-'));
   const source = path.join(sandbox, 'source');
   const managedHome = path.join(sandbox, 'home');
@@ -276,8 +232,12 @@ test('auto-sync enable performs one exact-source install and disable removes onl
     for (const entry of ['catalog.json', 'package.json']) cpSync(path.join(root, entry), path.join(source, entry));
     const sourceSha = commit(source, 'fixture source');
 
+    const legacyCommand = `'${process.execPath}' '${path.join(managedHome, '.sylphx-skills', 'reconcile.mjs')}' --quiet`;
+    const legacyHooks = { UserPromptSubmit: [{ hooks: [{ type: 'command', command: legacyCommand }] }] };
     mkdirSync(claudeHome, { recursive: true });
-    writeFileSync(path.join(claudeHome, 'settings.json'), `${JSON.stringify({ language: 'en' }, null, 2)}\n`);
+    writeFileSync(path.join(claudeHome, 'settings.json'), `${JSON.stringify({ language: 'en', hooks: legacyHooks }, null, 2)}\n`);
+    mkdirSync(path.join(grokHome, 'hooks'), { recursive: true });
+    writeFileSync(path.join(grokHome, 'hooks', 'sylphx-skills.json'), `${JSON.stringify({ hooks: legacyHooks }, null, 2)}\n`);
     const staleGrokSkill = path.join(grokHome, 'skills', 'engineering-standard');
     mkdirSync(staleGrokSkill, { recursive: true });
     writeFileSync(path.join(staleGrokSkill, 'SKILL.md'), 'stale Grok copy\n');
@@ -289,9 +249,11 @@ test('auto-sync enable performs one exact-source install and disable removes onl
       CODEX_HOME: codexHome,
       CLAUDE_CONFIG_DIR: claudeHome,
       GROK_HOME: grokHome,
+      SYLPHX_SKILLS_TEST_SKIP_SCHEDULER_ACTIVATION: '1',
+      SYLPHX_SKILLS_TEST_PLATFORM: 'darwin',
     };
 
-    runWithEnvironment(['auto-sync', 'enable', '--quiet'], environment);
+    runWithEnvironment(['auto-sync', 'enable', '--interval', '7m', '--quiet'], environment);
     assert.equal(existsSync(path.join(managedHome, '.sylphx-skills', 'sync.sh')), false);
     const installedManifest = path.join(codexHome, 'skills', '.sylphx-skills.json');
     assert.equal(existsSync(installedManifest), true, `installed paths: ${readdirSync(managedHome, { recursive: true }).join(', ')}`);
@@ -299,13 +261,13 @@ test('auto-sync enable performs one exact-source install and disable removes onl
     assert.equal(readFileSync(path.join(staleGrokSkill, 'SKILL.md'), 'utf8').includes('stale Grok copy'), false);
     assert.equal(JSON.parse(readFileSync(path.join(grokHome, 'skills', '.sylphx-skills.json'), 'utf8')).sourceCommit, sourceSha);
     const status = JSON.parse(runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout);
-    assert.equal(status.configured, true);
-    assert.equal(status.effective, null);
-    assert.equal(status.mode, 'consumption-boundary-reconciliation');
-    assert.equal(status.hooks.every((hook) => hook.installed), true);
-    assert.equal(status.hooks.find((hook) => hook.runtime === 'codex').activation, 'exact-definition-trust-required');
-    assert.equal(status.hooks.find((hook) => hook.runtime === 'claude').activation, 'automatic-unless-disabled-by-runtime-policy');
-    assert.equal(status.hooks.find((hook) => hook.runtime === 'grok').activation, 'global-user-hook-trusted');
+    assert.equal(status.enabled, true);
+    assert.equal(status.intervalMinutes, 7);
+    assert.equal(status.mode, 'interval-scheduler');
+    const plist = path.join(managedHome, 'Library', 'LaunchAgents', 'ai.sylphx.skills-sync.plist');
+    assert.match(readFileSync(plist, 'utf8'), /<key>StartInterval<\/key><integer>420<\/integer>/);
+    assert.equal(Object.hasOwn(JSON.parse(readFileSync(path.join(claudeHome, 'settings.json'), 'utf8')), 'hooks'), false);
+    assert.equal(Object.hasOwn(JSON.parse(readFileSync(path.join(grokHome, 'hooks', 'sylphx-skills.json'), 'utf8')), 'hooks'), false);
 
     const unmanaged = path.join(codexHome, 'skills', 'third-party-skill');
     mkdirSync(unmanaged, { recursive: true });
@@ -340,11 +302,11 @@ test('auto-sync enable performs one exact-source install and disable removes onl
     writeFileSync(path.join(source, 'catalog.json'), `${JSON.stringify(updatedCatalog, null, 2)}\n`);
 
     const updatedSha = commit(source, 'change exact fixture package set');
-    const hookRun = spawnSync(process.execPath, [
+    const scheduledRun = spawnSync(process.execPath, [
       path.join(managedHome, '.sylphx-skills', 'reconcile.mjs'),
       '--force', '--strict', '--quiet',
     ], { encoding: 'utf8', env: { ...process.env, ...environment } });
-    assert.equal(hookRun.status, 0, hookRun.stderr || hookRun.stdout);
+    assert.equal(scheduledRun.status, 0, scheduledRun.stderr || scheduledRun.stdout);
     const updatedManifest = JSON.parse(readFileSync(installedManifest, 'utf8'));
     assert.equal(updatedManifest.sourceCommit, updatedSha);
     assert.deepEqual(updatedManifest.skills, updatedCatalog.skills.map((skill) => skill.name));
@@ -365,6 +327,7 @@ test('auto-sync enable performs one exact-source install and disable removes onl
     assert.equal(claude.language, 'en');
     assert.equal(Object.hasOwn(claude, 'hooks'), false);
     assert.equal(Object.hasOwn(grok, 'hooks'), false);
+    assert.equal(existsSync(plist), false);
     assert.equal(existsSync(path.join(managedHome, '.sylphx-skills', 'repository')), true);
     assert.equal(existsSync(path.join(managedHome, '.sylphx-skills', 'config.json')), false);
   } finally {

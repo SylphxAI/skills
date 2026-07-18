@@ -14,14 +14,10 @@ import {
 import { createHash, randomBytes } from 'node:crypto';
 import os from 'node:os';
 import path from 'node:path';
-import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import {
-  installRuntimeHooks,
-  runtimeHookStatus,
-  uninstallRuntimeHooks,
-} from './hooks.mjs';
+import { uninstallRuntimeHooks } from './hooks.mjs';
 import { reconcile } from './reconcile.mjs';
+import { installScheduler, parseIntervalMinutes, removeScheduler } from './scheduler.mjs';
 
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceSkills = path.join(packageRoot, 'skills');
@@ -36,6 +32,7 @@ const catalogBytes = readFileSync(catalogPath);
 const catalog = JSON.parse(catalogBytes);
 const catalogDigest = createHash('sha256').update(catalogBytes).digest('hex');
 const stateDirectory = path.join(home, '.sylphx-skills');
+const schedulerPlatform = process.env.SYLPHX_SKILLS_TEST_PLATFORM || process.platform;
 const reconcilerScript = path.join(stateDirectory, 'reconcile.mjs');
 const reconcilerConfig = path.join(stateDirectory, 'config.json');
 const managedRepository = path.join(stateDirectory, 'repository');
@@ -243,29 +240,36 @@ function syncTarget(target) {
 
 function refreshAutoSyncInstallation() {
   const config = readJson(reconcilerConfig);
-  // Only the exact-commit reconciler may replace the persistent hook adapter.
+  // Only the exact-commit reconciler may replace the persistent sync adapter.
   // A manual sync from an arbitrary working tree updates Skills content but
   // must not silently turn uncommitted runtime code into the auto-sync owner.
   if (!process.env.SYLPHX_SKILLS_COMMIT_SHA || !config?.enabled || config.owner !== 'SylphxAI/skills') return;
   const currentHomes = runtimeHomes();
   const agents = [...new Set(config.agents || [])];
-  // Existing pre-Grok installations migrate themselves when Grok Build is
-  // present; no second installer or timer is required.
+  // Existing installations add newly detected runtimes without a second CLI.
   if (existsSync(currentHomes.grokHome) && !agents.includes('grok')) {
     syncTarget({ runtime: 'grok', path: path.join(currentHomes.grokHome, 'skills') });
     agents.push('grok');
   }
   config.agents = agents;
   config.homes = { ...config.homes, ...currentHomes };
+  const needsSchedulerMigration = config.mode !== 'interval-scheduler';
+  config.mode = 'interval-scheduler';
+  config.intervalMinutes = Number(config.intervalMinutes) || 10;
   config.adapterVersion = packageJson.version;
   writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
   writeAtomic(reconcilerScript, readFileSync(path.join(packageRoot, 'runtime', 'reconcile.mjs')), 0o755);
-  installRuntimeHooks({
-    agents,
-    homes: config.homes,
-    nodePath: config.nodePath,
-    reconcilerPath: reconcilerScript,
-  });
+  if (needsSchedulerMigration) {
+    uninstallRuntimeHooks({ agents, homes: config.homes });
+    installScheduler({
+      platform: schedulerPlatform,
+      home,
+      nodePath: config.nodePath,
+      reconcilerPath: reconcilerScript,
+      pathEnv: config.pathEnv,
+      intervalMinutes: config.intervalMinutes,
+    });
+  }
 }
 
 function sync() {
@@ -313,40 +317,10 @@ function clear() {
   if (jsonOutput) console.log(JSON.stringify({ command: 'clear', targets: result }, null, 2));
 }
 
-function run(command, args, { tolerateFailure = false, env = process.env, timeout = 30_000 } = {}) {
-  const result = spawnSync(command, args, {
-    encoding: 'utf8',
-    env,
-    timeout,
-    stdio: quiet ? 'ignore' : 'pipe',
-  });
-  if (result.status !== 0 && !tolerateFailure) {
-    throw new Error(`${command} ${args.join(' ')} failed: ${(result.stderr || result.stdout || result.error?.message || '').trim()}`);
-  }
-  return result;
-}
-
-function removeLegacyScheduler() {
-  if (process.platform === 'darwin') {
-    const plist = path.join(home, 'Library', 'LaunchAgents', 'ai.sylphx.skills-sync.plist');
-    if (existsSync(plist)) run('launchctl', ['bootout', `gui/${process.getuid()}`, plist], { tolerateFailure: true });
-    rmSync(plist, { force: true });
-  } else if (process.platform === 'linux') {
-    const units = path.join(home, '.config', 'systemd', 'user');
-    const timer = path.join(units, 'sylphx-skills-sync.timer');
-    if (existsSync(timer)) run('systemctl', ['--user', 'disable', '--now', 'sylphx-skills-sync.timer'], { tolerateFailure: true });
-    rmSync(path.join(units, 'sylphx-skills-sync.service'), { force: true });
-    rmSync(timer, { force: true });
-    if (existsSync(units)) run('systemctl', ['--user', 'daemon-reload'], { tolerateFailure: true });
-  } else if (process.platform === 'win32') {
-    run('schtasks', ['/Delete', '/TN', 'SylphxSkillsSync', '/F'], { tolerateFailure: true });
-  }
-  rmSync(legacyUpdaterScript, { force: true });
-}
-
 function enableAutoSync() {
   if (argv.includes('--dest')) throw new Error('auto-sync uses native runtime roots; --dest is not supported');
-  removeLegacyScheduler();
+  const intervalMinutes = parseIntervalMinutes(argv);
+  removeScheduler({ platform: schedulerPlatform, home });
   mkdirSync(stateDirectory, { recursive: true });
   const agents = requestedAgents();
   const config = {
@@ -359,6 +333,8 @@ function enableAutoSync() {
     reconcilerPath: reconcilerScript,
     nodePath: process.execPath,
     pathEnv: process.env.PATH || '/usr/local/bin:/usr/bin:/bin',
+    mode: 'interval-scheduler',
+    intervalMinutes,
     agents,
     homes: runtimeHomes(),
     adapterVersion: packageJson.version,
@@ -366,13 +342,23 @@ function enableAutoSync() {
   writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
   writeAtomic(reconcilerScript, readFileSync(path.join(packageRoot, 'runtime', 'reconcile.mjs')), 0o755);
   reconcile({ stateDirectory, force: true, strict: true });
+  // A pre-1.4 source may briefly refresh its old hooks during the first exact
+  // sync. Remove them after convergence so this command's scheduler is the only
+  // recurring owner.
+  uninstallRuntimeHooks({ agents: ['codex', 'claude', 'grok'], homes: runtimeHomes() });
+  writeAtomic(reconcilerScript, readFileSync(path.join(packageRoot, 'runtime', 'reconcile.mjs')), 0o755);
+  installScheduler({
+    platform: schedulerPlatform,
+    home,
+    nodePath: config.nodePath,
+    reconcilerPath: reconcilerScript,
+    pathEnv: config.pathEnv,
+    intervalMinutes,
+  });
   config.enabled = true;
   writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
-  installRuntimeHooks({ agents, homes: config.homes, nodePath: config.nodePath, reconcilerPath: reconcilerScript });
-  log(`configured event-driven auto-sync for ${agents.join(', ')} (10s active-turn freshness)`);
-  if (agents.includes('codex')) {
-    log('Codex requires one activation step: open /hooks and trust the Sylphx hook definition.');
-  }
+  rmSync(legacyUpdaterScript, { force: true });
+  log(`enabled automatic sync every ${intervalMinutes} minute${intervalMinutes === 1 ? '' : 's'} for ${agents.join(', ')}`);
 }
 
 function disableAutoSync() {
@@ -380,34 +366,28 @@ function disableAutoSync() {
   const agents = config?.agents || ['codex', 'claude', 'grok'];
   const homes = config?.homes || runtimeHomes();
   uninstallRuntimeHooks({ agents, homes });
-  removeLegacyScheduler();
+  removeScheduler({ platform: schedulerPlatform, home });
   rmSync(path.join(stateDirectory, 'reconcile.lock'), { recursive: true, force: true });
   rmSync(reconcilerScript, { force: true });
   rmSync(reconcilerConfig, { force: true });
-  log('disabled Sylphx Skills event-driven auto-sync');
+  log('disabled Sylphx Skills automatic sync');
 }
 
 function autoSyncStatus() {
   const config = readJson(reconcilerConfig);
-  const agents = config?.agents || ['codex', 'claude', 'grok'];
-  const homes = config?.homes || runtimeHomes();
-  const hooks = runtimeHookStatus({ agents, homes });
   const result = {
-    mode: 'consumption-boundary-reconciliation',
-    configured: Boolean(config?.enabled) && hooks.every((item) => item.installed),
-    effective: null,
-    effectiveReason: 'Hook execution is runtime-owned; inspect each runtime activation state.',
+    mode: config?.mode || null,
+    enabled: Boolean(config?.enabled) && config?.mode === 'interval-scheduler',
+    intervalMinutes: config?.intervalMinutes || null,
     remote: config?.remote || null,
     managedRepository: config?.repository || null,
-    activeTurnMaxLagMs: 10_000,
-    hooks,
   };
   if (jsonOutput) console.log(JSON.stringify(result, null, 2));
-  else log(`auto-sync: ${result.configured ? 'configured' : 'not configured'} (${result.mode}; runtime activation applies)`);
+  else log(`auto-sync: ${result.enabled ? `every ${result.intervalMinutes} minutes` : 'disabled'}`);
 }
 
 function help() {
-  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills sync [--agent codex|claude|grok|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills auto-sync enable|disable|status\n\nDefault behavior auto-detects Codex, Claude Code, and Grok Build. Auto-sync\nreconciles at session, prompt, sub-agent, and active tool-loop boundaries\nwithout a daemon.`);
+  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills sync [--agent codex|claude|grok|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills auto-sync enable [--interval 10m]\n  sylphx-skills auto-sync disable|status\n\nDefault behavior auto-detects Codex, Claude Code, and Grok Build. Automatic\nsynchronization uses the operating system scheduler every 10 minutes by default.`);
 }
 
 function main() {
