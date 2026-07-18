@@ -399,6 +399,7 @@ export function checkRepository() {
     'runtime/package-digest.mjs',
     'runtime/reconcile.mjs',
     'runtime/sylphx-skills.mjs',
+    'runtime/target-generation.mjs',
   ]) {
     const absolute = path.join(repositoryRoot, rootFile);
     if (!existsSync(absolute) || !statSync(absolute).isFile()) errors.push(`${rootFile}: missing`);
