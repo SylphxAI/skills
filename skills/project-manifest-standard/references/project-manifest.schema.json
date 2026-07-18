@@ -107,6 +107,12 @@
           "uniqueItems": true,
           "items": { "$ref": "#/$defs/id" }
         },
+        "components": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "$ref": "#/$defs/id" },
+          "additionalProperties": { "$ref": "#/$defs/componentFact" }
+        },
         "adoptionStatus": { "$ref": "#/$defs/adoptionStatus" },
         "gaps": { "$ref": "#/$defs/gaps" }
       }
@@ -168,6 +174,35 @@
   },
   "$defs": {
     "id": { "type": "string", "pattern": "^[a-z0-9]+(?:[-_.][a-z0-9]+)*$" },
+    "componentFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "implementation", "backendOwner", "ownedEffects"],
+      "properties": {
+        "role": { "$ref": "#/$defs/id" },
+        "implementation": { "$ref": "#/$defs/id" },
+        "backendOwner": {
+          "anyOf": [
+            { "$ref": "#/$defs/componentRef" },
+            { "type": "null" }
+          ]
+        },
+        "ownedEffects": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        }
+      }
+    },
+    "componentRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "componentId"],
+      "properties": {
+        "repository": { "type": "string", "minLength": 3 },
+        "componentId": { "$ref": "#/$defs/id" }
+      }
+    },
     "adoptionStatus": { "enum": ["not-applicable", "not-started", "migrating", "adopted", "gapped"] },
     "nonEmptyStrings": {
       "type": "array",

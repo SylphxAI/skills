@@ -30,7 +30,9 @@ The machine manifest records, using controlled vocabulary where available:
 - **boundaries** — owned and unowned capabilities/bounded contexts, public
   surfaces, allowed dependencies, and forbidden coupling;
 - **architecture** — canonical generation/profile references and typed adoption
-  gaps without copying standard prose;
+  gaps without copying standard prose; when a profile needs component-level
+  facts, a map of unique component ids to roles, implementations, backend-owner
+  references, and owned effects;
 - **documentation** — homes for ADRs, specs, catalogs, generated references,
   and runbooks;
 - **delivery** — candidate model, verification command/status, terminal
@@ -43,6 +45,13 @@ The machine manifest records, using controlled vocabulary where available:
 Profiles and portfolio selectors are referenced by stable identity and digest; the
 manifest does not copy their content. Current resolved organization-wide adoption state belongs in
 Control Plane, not in hand-maintained repository prose.
+
+`architecture.components` records intended repository topology, not deployment
+claims. Its role, implementation, and effect values use generic ids so Profiles
+can define their meaning without the manifest schema copying policy vocabulary.
+Live presence, revision, health, traffic, and production ownership remain
+Control Plane observations. A selected Profile fails missing or unknown
+component facts closed rather than inferring them from filenames.
 
 ## Lifecycle contract
 
@@ -99,6 +108,9 @@ organization-wide proof.
 - [ ] Every public surface and cross-repository dependency has a named owner.
 - [ ] Architecture/profile references identify current authority without
       copying its prose.
+- [ ] Profiles that depend on component roles or effects have complete
+      `architecture.components` facts; live deployment state is not authored
+      into the manifest.
 - [ ] Verification commands and terminal delivery boundary are executable.
 - [ ] Adoption and architecture gaps are typed, owned, and falsifiable.
 - [ ] `PROJECT.md` projects the manifest instead of becoming a second fact
