@@ -284,23 +284,42 @@ function packageLinkTarget(name) {
   return `${CURRENT}/${name}`;
 }
 
+function managedSymlinkTargetMatches(file, actualTarget, expectedTarget) {
+  if (
+    typeof actualTarget !== 'string'
+    || actualTarget.length === 0
+    || /[\\/]$/.test(actualTarget)
+    || actualTarget.split(/[\\/]+/).some((segment) => segment === '.' || segment === '..')
+  ) return false;
+  const actual = path.normalize(actualTarget);
+  const relative = path.normalize(expectedTarget);
+  if (actual === relative) return true;
+  if (!path.isAbsolute(actual)) return false;
+  const absolute = path.resolve(path.dirname(file), relative);
+  return actual === absolute || actual === path.toNamespacedPath(absolute);
+}
+
 function existingCurrentGeneration(targetPath) {
   const current = currentPath(targetPath);
   if (!pathExists(current)) return null;
   const stat = lstatSync(current);
   if (!stat.isSymbolicLink()) throw new Error(`managed generation pointer is not a symbolic link: ${current}`);
   const target = readlinkSync(current);
-  const prefix = `${STORE}/`;
-  if (!target.startsWith(prefix) || !GENERATION_NAME.test(target.slice(prefix.length))) {
+  const generationName = path.basename(path.normalize(target));
+  if (
+    !GENERATION_NAME.test(generationName)
+    || !managedSymlinkTargetMatches(current, target, currentTarget(generationName))
+  ) {
     throw new Error(`managed generation pointer has an invalid target: ${current}`);
   }
-  return target.slice(prefix.length);
+  return generationName;
 }
 
 function exactSymlink(file, expectedTarget) {
   if (!pathExists(file)) return false;
   const stat = lstatSync(file);
-  return stat.isSymbolicLink() && readlinkSync(file) === expectedTarget;
+  return stat.isSymbolicLink()
+    && managedSymlinkTargetMatches(file, readlinkSync(file), expectedTarget);
 }
 
 function validateStoreOwner(targetPath, store) {
@@ -771,7 +790,7 @@ export function managedGenerationSkills(targetPath) {
     .map((entry) => entry.name);
   for (const entry of readdirSync(targetPath, { withFileTypes: true })) {
     if (!entry.isSymbolicLink() || !PACKAGE_NAME.test(entry.name)) continue;
-    if (readlinkSync(path.join(targetPath, entry.name)) === packageLinkTarget(entry.name)) names.push(entry.name);
+    if (exactSymlink(path.join(targetPath, entry.name), packageLinkTarget(entry.name))) names.push(entry.name);
   }
   return [...new Set(names)].sort();
 }

@@ -468,14 +468,37 @@ function materializeTrackedFiles(run, config, { recovery = false } = {}) {
       renameSync(source, destination);
       testCrashAfterMaterializedFile(index + 1);
     }
-    // Replacing an unchanged CRLF worktree file with the canonical LF bytes can
-    // leave only the index stat cache looking dirty. Renormalization refreshes
-    // that cache under the candidate's attributes; it must not change HEAD.
-    checked(run, 'git', ['-C', config.repository, 'add', '--renormalize', '--', '.'], { env });
-    const staged = run('git', ['-C', config.repository, 'diff', '--cached', '--quiet', '--exit-code'], { env });
-    if (staged.status !== 0) {
-      throw new Error(`Exact materialization changed the candidate index: ${config.repository}`);
+    // Validate and refresh through a private index. The real candidate index is
+    // never exposed to a partially completed `git add`, and replacing it is one
+    // atomic rename only after the temporary tree is proven equal to HEAD.
+    const gitDirectory = checked(run, 'git', ['-C', config.repository, 'rev-parse', '--absolute-git-dir'], { env }).stdout.trim();
+    const indexFile = path.join(gitDirectory, 'index');
+    const indexLock = `${indexFile}.lock`;
+    if (pathEntryExists(indexLock)) throw new Error(`Managed repository index is busy: ${indexLock}`);
+    const temporaryIndex = path.join(stage, 'candidate.index');
+    rmSync(temporaryIndex, { force: true });
+    rmSync(`${temporaryIndex}.lock`, { force: true });
+    cpSync(indexFile, temporaryIndex);
+    const temporaryIndexEnv = { ...env, GIT_INDEX_FILE: temporaryIndex };
+    checked(run, 'git', ['-C', config.repository, 'add', '--renormalize', '--', '.'], { env: temporaryIndexEnv });
+    if (process.env.NODE_ENV === 'test' && process.env.SYLPHX_SKILLS_TEST_CRASH_AFTER_TEMP_INDEX === '1') {
+      writeFileSync(`${temporaryIndex}.lock`, 'interrupted owned temporary index\n', { mode: 0o600 });
+      process.exit(87);
     }
+    const staged = run('git', ['-C', config.repository, 'diff', '--cached', '--quiet', '--exit-code', 'HEAD'], {
+      env: temporaryIndexEnv,
+    });
+    if (staged.status !== 0) {
+      const remaining = checked(run, 'git', [
+        '-C', config.repository, 'status', '--porcelain', '--untracked-files=all',
+      ], { env }).stdout;
+      if (remaining.trim()) {
+        throw new Error(`Rejected candidate also left unexpected worktree drift: ${config.repository}`);
+      }
+      completed = true;
+      throw new Error(`Candidate files do not normalize to the committed tree: ${config.repository}`);
+    }
+    renameSync(temporaryIndex, indexFile);
     const remaining = checked(run, 'git', [
       '-C', config.repository, 'status', '--porcelain', '--untracked-files=all',
     ], { env }).stdout;

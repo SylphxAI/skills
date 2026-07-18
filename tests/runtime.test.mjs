@@ -223,6 +223,28 @@ function createGenerationFixture(sandbox) {
   return { source, destination, fixtureCli };
 }
 
+function managedGenerationName(pointer) {
+  assert.equal(lstatSync(pointer).isSymbolicLink(), true);
+  const target = readlinkSync(pointer);
+  const generationName = path.basename(path.normalize(target));
+  assert.match(generationName, /^generation-[0-9a-f]{16}$/);
+  const actual = path.isAbsolute(target)
+    ? path.normalize(target)
+    : path.resolve(path.dirname(pointer), target);
+  const expected = path.join(path.dirname(pointer), '.sylphx-managed-generations', generationName);
+  assert.ok(
+    actual === expected || actual === path.toNamespacedPath(expected),
+    `managed generation pointer escaped its store: ${target}`,
+  );
+  return generationName;
+}
+
+function replaceManagedLinkWithAbsoluteTarget(file, type) {
+  const absoluteTarget = path.resolve(path.dirname(file), readlinkSync(file));
+  rmSync(file, { force: true });
+  symlinkSync(absoluteTarget, file, type);
+}
+
 for (const scenario of [
   { boundary: 'after-package:alpha', beforeStatus: 'old', statusCurrent: false },
   { boundary: 'after-removal:beta', beforeStatus: 'old', statusCurrent: false },
@@ -397,8 +419,7 @@ test('sync repairs an owned managed-current control path replaced by a regular f
       encoding: 'utf8',
     });
     assert.equal(result.status, 0, result.stderr || result.stdout);
-    assert.equal(lstatSync(pointer).isSymbolicLink(), true);
-    assert.match(readlinkSync(pointer), /^\.sylphx-managed-generations\/generation-[0-9a-f]{16}$/);
+    managedGenerationName(pointer);
     assert.match(readFileSync(path.join(destination, 'alpha', 'SKILL.md'), 'utf8'), /generation-one/);
     assert.deepEqual(targetGenerationTransactionNames(destination), []);
   } finally {
@@ -418,8 +439,7 @@ test('sync restores a missing managed-current pointer from exactly one owned gen
       encoding: 'utf8',
     });
     assert.equal(result.status, 0, result.stderr || result.stdout);
-    assert.equal(lstatSync(pointer).isSymbolicLink(), true);
-    assert.match(readlinkSync(pointer), /^\.sylphx-managed-generations\/generation-[0-9a-f]{16}$/);
+    managedGenerationName(pointer);
     assert.match(readFileSync(path.join(destination, 'alpha', 'SKILL.md'), 'utf8'), /generation-one/);
     assert.deepEqual(targetGenerationTransactionNames(destination), []);
   } finally {
@@ -440,10 +460,63 @@ test('sync repairs a valid-shaped managed-current pointer to a nonexistent gener
       encoding: 'utf8',
     });
     assert.equal(result.status, 0, result.stderr || result.stdout);
-    assert.equal(lstatSync(pointer).isSymbolicLink(), true);
-    assert.notEqual(readlinkSync(pointer), '.sylphx-managed-generations/generation-0000000000000000');
+    assert.notEqual(managedGenerationName(pointer), 'generation-0000000000000000');
     assert.match(readFileSync(path.join(destination, 'alpha', 'SKILL.md'), 'utf8'), /generation-one/);
     assert.deepEqual(targetGenerationTransactionNames(destination), []);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('sync and status accept only exact absolute forms of managed symlink targets', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-generation-absolute-targets-'));
+  try {
+    const { source, destination, fixtureCli } = createGenerationFixture(sandbox);
+    const pointer = path.join(destination, '.sylphx-managed-current');
+    const manifest = path.join(destination, '.sylphx-skills.json');
+    const packageLink = path.join(destination, 'alpha');
+    replaceManagedLinkWithAbsoluteTarget(pointer, 'dir');
+    replaceManagedLinkWithAbsoluteTarget(manifest, 'file');
+    replaceManagedLinkWithAbsoluteTarget(packageLink, 'dir');
+
+    let result = spawnSync(process.execPath, [fixtureCli, 'status', '--dest', destination, '--json'], {
+      cwd: source,
+      encoding: 'utf8',
+    });
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    assert.equal(JSON.parse(result.stdout).targets[0].current, true);
+
+    result = spawnSync(process.execPath, [fixtureCli, 'sync', '--dest', destination, '--quiet'], {
+      cwd: source,
+      encoding: 'utf8',
+    });
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    managedGenerationName(pointer);
+    assert.deepEqual(targetGenerationTransactionNames(destination), []);
+
+    const outside = path.join(sandbox, 'outside-alpha');
+    mkdirSync(outside);
+    writeFileSync(path.join(outside, 'KEEP'), 'unrelated user data\n');
+    rmSync(packageLink, { force: true });
+    symlinkSync(outside, packageLink, 'dir');
+    result = spawnSync(process.execPath, [fixtureCli, 'status', '--dest', destination, '--json'], {
+      cwd: source,
+      encoding: 'utf8',
+    });
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    assert.equal(JSON.parse(result.stdout).targets[0].current, false);
+    result = spawnSync(process.execPath, [fixtureCli, 'sync', '--dest', destination, '--quiet'], {
+      cwd: source,
+      encoding: 'utf8',
+    });
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    result = spawnSync(process.execPath, [fixtureCli, 'status', '--dest', destination, '--json'], {
+      cwd: source,
+      encoding: 'utf8',
+    });
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    assert.equal(JSON.parse(result.stdout).targets[0].current, true);
+    assert.equal(readFileSync(path.join(outside, 'KEEP'), 'utf8'), 'unrelated user data\n');
   } finally {
     rmSync(sandbox, { recursive: true, force: true });
   }
@@ -816,6 +889,45 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
       'candidate application must rematerialize unchanged tracked files under new attributes',
     );
 
+    writeFileSync(path.join(remote, 'content.txt'), 'temporary index recovery\n');
+    const temporaryIndexSha = commit(remote, 'exercise temporary index recovery');
+    const interruptedIndex = spawnSync(process.execPath, [config.reconcilerPath, '--force'], {
+      cwd: root,
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        NODE_ENV: 'test',
+        SYLPHX_SKILLS_STATE_DIR: stateDirectory,
+        SYLPHX_SKILLS_TEST_CRASH_AFTER_TEMP_INDEX: '1',
+      },
+    });
+    assert.equal(interruptedIndex.status, 87, interruptedIndex.stderr || interruptedIndex.stdout);
+    assert.equal(existsSync(path.join(materializationStage, 'candidate.index.lock')), true);
+    const recoveredIndex = reconcile({ stateDirectory, force: true, strict: true, now: 16_125 });
+    assert.equal(recoveredIndex.status, 'updated');
+    assert.equal(recoveredIndex.appliedSha, temporaryIndexSha);
+    assert.equal(existsSync(materializationStage), false);
+    assert.equal(git(config.repository, ['status', '--porcelain', '--untracked-files=all']), '');
+
+    writeFileSync(path.join(remote, 'content.txt'), 'invalid candidate\r\n');
+    const invalidBlob = git(remote, ['hash-object', '-w', '--no-filters', 'content.txt']);
+    git(remote, ['update-index', '--cacheinfo', `100644,${invalidBlob},content.txt`]);
+    git(remote, ['-c', 'user.name=Sylphx Test', '-c', 'user.email=test@sylphx.invalid', 'commit', '-m', 'noncanonical candidate']);
+    const invalidSha = git(remote, ['rev-parse', 'HEAD']);
+    const rejected = reconcile({ stateDirectory, force: true, now: 16_250 });
+    assert.equal(rejected.status, 'unavailable');
+    assert.match(rejected.error, /do not normalize to the committed tree/);
+    assert.equal(git(config.repository, ['rev-parse', 'HEAD']), invalidSha);
+    assert.equal(git(config.repository, ['status', '--porcelain', '--untracked-files=all']), '');
+    assert.equal(existsSync(materializationStage), false, 'deterministically rejected candidate must not trap recovery');
+
+    writeFileSync(path.join(remote, 'content.txt'), 'fixed candidate\n');
+    const fixedSha = commit(remote, 'fix candidate normalization');
+    const fixed = reconcile({ stateDirectory, force: true, strict: true, now: 16_500 });
+    assert.equal(fixed.status, 'updated');
+    assert.equal(fixed.appliedSha, fixedSha);
+    assert.equal(git(config.repository, ['status', '--porcelain', '--untracked-files=all']), '');
+
     writeFileSync(path.join(remote, 'content.txt'), 'two\n');
     const secondSha = commit(remote, 'second');
     const second = reconcile({ stateDirectory, force: true, maxAgeMs: 10_000, strict: true, now: 17_000 });
@@ -1057,8 +1169,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     ], { encoding: 'utf8', env: { ...process.env, ...environment } });
     assert.equal(repairedCurrent.status, 0, repairedCurrent.stderr || repairedCurrent.stdout);
     assert.equal(JSON.parse(repairedCurrent.stdout).repaired, true);
-    assert.equal(lstatSync(managedCurrent).isSymbolicLink(), true);
-    assert.match(readlinkSync(managedCurrent), /^\.sylphx-managed-generations\/generation-[0-9a-f]{16}$/);
+    managedGenerationName(managedCurrent);
     assert.equal(JSON.parse(readFileSync(installedManifest, 'utf8')).sourceCommit, sourceSha);
 
     const residualSkill = path.join(codexHome, 'skills', '.sylphx-managed-current', 'residual-owned-skill');
