@@ -95,10 +95,10 @@ machine index and [`skills/`](./skills/) for sources):
 
 ### Standards & profiles
 
-How we run engineering at fleet scale — delivery, CI admission, incidents,
+How we run engineering across projects — delivery, CI admission, incidents,
 agent-first development, enterprise control planes, profiles, and more.
 
-Examples: `engineering-standard` · `delivery-standard` · `agent-first-development-standard` · `mission-control-standard` · `fleet-engineering-profile`
+Examples: `engineering-standard` · `delivery-standard` · `agent-first-development-standard` · `work-coordination-standard` · `technology-stack-profile`
 
 ### Product procedures
 
@@ -110,7 +110,7 @@ Examples: `payment-platform-readiness` · `privacy-data-lifecycle-review` · `sa
 ### Blueprints & craft
 
 Whole-product and craft surfaces: app/game/SaaS blueprints, interface craft,
-prompt architecture, fleet migration, skill authoring.
+prompt architecture, multi-repository migration, skill authoring.
 
 Examples: `app-design-blueprint` · `saas-web-platform-blueprint` · `interface-craft` · `prompt-architecture` · `sylphx-platform-first`
 
@@ -149,7 +149,7 @@ Authority notes: [docs/adr/ADR-0001-public-agent-instruction-source.md](./docs/a
 | `scripts/` · `tests/` | Integrity gates only |
 | `docs/adr/` | Repository-level decisions |
 
-Not in this repo: live fleet state, customer data, benchmark laboratories,
+Not in this repo: live work or organization-wide adoption state, customer data, benchmark laboratories,
 admission services, or model-provider evidence runs.
 
 ---

@@ -7,13 +7,13 @@ outcome.
 Objective: <one observable outcome>
 Terminal: <the checks or delivered state that finish it>
 Required now: <only direct blockers and same-cause defects>
-SOTA investments: <high-return in-boundary improvements worth doing now>
+Selected investments: <high-return in-boundary improvements worth doing now>
 Excluded: <low-return hardening, new infrastructure, speculative threats>
 Time-to-value: <shortest credible implementation and proof path>
 Calendar compression: <agent shards, replay, simulation, differential or property tests>
 Real-time need: <none, or exact hypothesis that cannot be accelerated>
 Lifecycle stage: <development | internal dogfood | internal beta with users | public production>
-Stop rule: after Terminal passes, run one bounded SOTA scan, ship selected positive-net improvements, then close.
+Stop rule: after Terminal passes, run one bounded high-value scan, ship selected positive-net improvements, then close.
 ```
 
 Example classification:
@@ -48,6 +48,6 @@ use the active proof instead of waiting.
 - [ ] Evidence and rollout match the current lifecycle stage.
 - [ ] Development work is not blocked on nonexistent production traffic.
 - [ ] Human-era effort assumptions were repriced using current agent capabilities.
-- [ ] One bounded SOTA scan captured obvious high-return in-boundary improvements.
+- [ ] One bounded high-value scan captured obvious high-return in-boundary improvements.
 - [ ] Remaining ideas have lower net value, weaker evidence, or a different owner/lifecycle.
 - [ ] The task closes after selected improvements pass verification.

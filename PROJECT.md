@@ -20,7 +20,7 @@ This repository owns:
 - package validation and Codex / Claude / Grok installation/update adapters;
 - public contribution and community entry points proportional to that scope.
 
-It does not own live work, fleet state, runtime effects, customer data,
+It does not own live work, organization-wide adoption state, runtime effects, customer data,
 benchmark execution, model-provider evidence, or product-specific decisions.
 Those stay in their operational or product owners.
 
@@ -36,4 +36,3 @@ calendar soak.
 Canonical packages are MIT licensed and intentionally public. Sylphx may sell
 managed updates, enterprise/private packages, integrations, verification,
 support, and related services without representing public text as exclusive.
-

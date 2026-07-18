@@ -1,0 +1,4 @@
+interface:
+  display_name: "Multi-Repository Migration"
+  short_description: "Orchestrate verified repository cutovers"
+  default_prompt: "Use $multi-repository-migration to turn this multi-repo modernization into verified parallel cutover slices."

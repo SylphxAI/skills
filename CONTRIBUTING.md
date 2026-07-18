@@ -1,6 +1,6 @@
 # Contributing
 
-Sylphx Skills are **instruction packages for agents**, not blog posts.
+These Skills are **instruction packages for agents**, not blog posts.
 
 Public contributions are welcome when they improve a real, recurring job.
 Drive-by skill dumps and generic “be a better developer” prompts are not.
@@ -24,7 +24,10 @@ Drive-by skill dumps and generic “be a better developer” prompts are not.
 6. Use **original synthesis**. Do not copy third-party prose, customer data,
    credentials, private incident detail, or inaccessible proprietary process.
 7. Update related packages only when their **contract** truly changes.
-8. Rebuild the catalog and run the full local check:
+8. Use concrete professional language. Avoid branded metaphors, slogans, and
+   vague scale words when the actual subject is repositories, services, agents,
+   or work items.
+9. Rebuild the catalog and run the full local check:
 
 ```bash
 npm run build:catalog
@@ -37,7 +40,7 @@ Do **not** introduce:
 
 - a second authoring root (for example generated skill bodies from prose trees)
 - a meta-router that competes with native agent skill loading
-- benchmark laboratories, admission services, or live fleet/work state
+- benchmark laboratories, admission services, or live work/adoption state
 - secrets or private customer material
 
 Repository decisions that change public contract go in `docs/adr/`.

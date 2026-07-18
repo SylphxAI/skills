@@ -1,11 +1,3 @@
-# agent-native-standard (canonical body)
-
-**Authority:** binding Standard Skill package `agent-native-standard` in `SylphxAI/skills` (`skills/agent-native-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Agent-Native Standard
 
 ## Product Design
@@ -29,7 +21,7 @@ Design systems as if agents are primary operators.
 Design agent systems as though internal model recall were an unversioned cache,
 not a current-state database. Recall, prior chat, and summaries may seed a query
 or hypothesis; material drift-prone facts come from the canonical evidence
-surface defined by the SOTA decision kernel.
+surface defined by the Decision Quality method.
 
 Agent-facing tools and state surfaces should:
 

@@ -1,11 +1,3 @@
-# source-authoring-standard (canonical body)
-
-**Authority:** binding Standard Skill package `source-authoring-standard` in `SylphxAI/skills` (`skills/source-authoring-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Source Authoring Standard
 
 Agent-first source authoring for high-concurrency, sessionless development.
@@ -15,13 +7,13 @@ admission, landing, release, and deployment.
 
 Composes with:
 
-- [`mission-control-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/mission-control-standard/references/full-standard.md) for Work Items,
+- [`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md) for Work Items,
   claims, checkpoints, handoff, and proof-chain identity.
 - [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md) for
   execution graphs, delegation, collision cones, and evidence reporting.
 - [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for parallel ownership and machine-enforced governance.
-- [`roleless-speculative-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/roleless-speculative-development-standard/references/full-standard.md)
+- [`parallel-change-integration-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/parallel-change-integration-standard/references/full-standard.md)
   for immutable candidate selection and compare-and-swap landing when selected.
 - [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md) for exact-candidate
   proof and scarce verification capacity.
@@ -124,7 +116,7 @@ body only for non-obvious rationale, invariant, compatibility, risk, or recovery
 Do not encode live status, chat history, secrets, personal data, model identity,
 or speculative claims. Add trailers only when an active machine policy consumes
 them. This standard does not mandate Conventional Commits, a fixed subject length,
-an agent signature trailer, or a commit-count target fleet-wide.
+an agent signature trailer, or a commit-count target organization-wide.
 
 ## Workspace admission and collision safety
 
@@ -195,8 +187,8 @@ digests, risk/effect class, validation/proof bindings, landing result, and recov
 candidate, admitted, landed, released/deployed, and live states separately.
 
 The active adapter MUST serialize this evidence in a machine-readable candidate
-record rather than prose alone. Roleless delivery uses the immutable
-attempt/candidate artifacts owned by the roleless speculative standard;
+record rather than prose alone. Parallel-change delivery uses the immutable
+attempt/candidate artifacts owned by the parallel-change integration standard;
 compatibility delivery uses the admission manifest plus exact PR-head and, when
 present, merge-group provenance. This standard defines their shared semantics,
 not a competing universal storage schema.

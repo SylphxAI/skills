@@ -1,12 +1,11 @@
 ---
 name: engineering-standard
-description: "Binding engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating code architecture and architecture decisions, capabilities, features, DDD domain models, Clean/Hexagonal boundaries, functional cores, modules, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths."
+description: "Engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating code architecture and architecture decisions, capabilities, features, DDD domain models, Clean/Hexagonal boundaries, functional cores, modules, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths."
 ---
 # Engineering Standard
 
-**Authority: binding** (`packageKind: standard`).
+**Requirement:** apply this standard when the task matches its scope.
 
-Canonical home: `skills/engineering-standard/` in `SylphxAI/skills`.  
 Full progressive-disclosure body: [references/full-standard.md](references/full-standard.md).  
 Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).
 

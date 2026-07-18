@@ -1,21 +1,21 @@
 ---
 name: project-manifest-standard
-description: "Repository identity, lifecycle, capability ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use for durable project facts, not live Work Graph operations."
+description: "Repository identity, lifecycle, capability ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use when creating, changing, or validating a repository's durable identity and boundaries."
 ---
 # Project Manifest Standard
 
-**Authority: binding** (`packageKind: standard`).
+**Requirement:** apply this standard when the task matches its scope.
 
-Canonical home: `skills/project-manifest-standard/` in `SylphxAI/skills`.  
-Full body: [references/full-standard.md](references/full-standard.md).  
+Read [references/full-standard.md](references/full-standard.md) for the full
+method and predicates.
+
 Schema: [references/project-manifest.schema.json](references/project-manifest.schema.json).
 
 ## Method
 
-1. Load this package when the task domain matches this standard.
-2. Read [references/full-standard.md](references/full-standard.md) for binding method and predicates.
-3. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
-4. Prefer schema/test/ADR homes over copying this body into product repos.
+1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
+2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
+3. Prefer schema/test/ADR homes over copying this body into product repos.
 
 
 ## Output format
@@ -29,7 +29,6 @@ Schema: [references/project-manifest.schema.json](references/project-manifest.sc
 
 - Does not grant deploy, credential, or MCP capabilities.
 - Does not replace product-local ADRs where those own decisions.
-- Control Plane owns live work/fleet/effects — not this static standard text.
 
 ## When not to use
 

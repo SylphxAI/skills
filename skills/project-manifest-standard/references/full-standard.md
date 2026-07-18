@@ -1,14 +1,11 @@
 # Project Manifest Standard
 
-**Authority:** binding Standard Skill package `project-manifest-standard` in
-`SylphxAI/skills`. Historical predecessor text is lineage only.
-
 ## Purpose
 
 An agent entering a repository must be able to resolve its purpose, lifecycle,
 ownership, public surfaces, dependencies, delivery boundary, and known adoption
 gaps without guessing. The repository owns these facts; Skills owns their
-shared meaning; Control Plane may ingest and project them as live fleet state.
+shared meaning; Control Plane may ingest and project them as live adoption state.
 
 ## Canonical local surfaces
 
@@ -43,8 +40,8 @@ The machine manifest records, using controlled vocabulary where available:
 - **adoption truth** — machine-derived status or typed gaps. Never author
   `complete` to override missing evidence.
 
-Profiles and fleet selectors are referenced by stable identity and digest; the
-manifest does not copy their content. Current resolved fleet state belongs in
+Profiles and portfolio selectors are referenced by stable identity and digest; the
+manifest does not copy their content. Current resolved organization-wide adoption state belongs in
 Control Plane, not in hand-maintained repository prose.
 
 ## Lifecycle contract
@@ -73,7 +70,7 @@ Control Plane, not in hand-maintained repository prose.
 
 Skills owns the manifest vocabulary and static predicates. Each repository owns
 its local facts, code, ADRs, and delivery truth. Control Plane ingests those
-facts, evaluates fleet selectors, and owns current work/adoption state; it must
+facts, evaluates portfolio selectors, and owns current work/adoption state; it must
 not invent missing project intent. GitHub/GitLab metadata is an adapter
 projection, not a second manifest authority.
 
@@ -92,9 +89,9 @@ Do not restate static standards already owned by Skills.
 ## Validation
 
 Validate the manifest against the active schema, check projection freshness,
-and run the repository's declared conformance entrypoint. Fleet adoption is
+and run the repository's declared conformance entrypoint. Selected-repository adoption is
 confirmed through Control Plane readback; a local manifest alone is not
-fleet-wide proof.
+organization-wide proof.
 
 ### Manifest readiness checklist
 

@@ -20,12 +20,12 @@
     },
     {
       "name": "agent-first-development-standard",
-      "description": "No-human parallel development packets, Agent-Author fields, collision scopes, and machine-verifiable acceptance. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "No-human parallel development packets, change attribution, collision scopes, and machine-verifiable acceptance. Use when defining or running multi-agent software delivery without a human review dependency. Do not use for a small local edit or live Work Graph operations.",
       "path": "skills/agent-first-development-standard/SKILL.md"
     },
     {
       "name": "agent-native-standard",
-      "description": "Typed agent-native products: queryable state, schema-derived tools, delegation briefs, and durable context handoff. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Typed agent-native products: queryable state, schema-derived tools, delegation briefs, and durable context handoff. Use when designing a product, API, or workflow that agents must operate directly and recoverably. Do not use for ordinary automation with no agent-facing contract.",
       "path": "skills/agent-native-standard/SKILL.md"
     },
     {
@@ -45,7 +45,7 @@
     },
     {
       "name": "autonomous-execution-standard",
-      "description": "Autonomous scheduling: critical-path focus, parallelism budgets, subagent briefs, and honest evidence layers. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Autonomous scheduling: critical-path focus, parallelism budgets, delegated outcomes, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer or edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md"
     },
     {
@@ -55,22 +55,22 @@
     },
     {
       "name": "ci-admission-standard",
-      "description": "CI admission tiers, affected selection, required checks, flake control, and preview environment policy. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "CI admission tiers, affected-test selection, required checks, flake control, and preview policy. Use when designing or changing the checks that decide whether a candidate may merge. Do not use for debugging one unrelated test failure.",
       "path": "skills/ci-admission-standard/SKILL.md"
     },
     {
       "name": "ci-runner-capacity-standard",
-      "description": "Runner capacity, queue latency, hermetic vs product profiles, and merge-queue backpressure diagnosis. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Runner capacity, queue latency, hermetic versus product profiles, and merge-queue backpressure. Use when CI jobs wait, runners disappear, queues saturate, or capacity policy must change. Do not use for a candidate failure caused by product code.",
       "path": "skills/ci-runner-capacity-standard/SKILL.md"
     },
     {
       "name": "commercial-decision-standard",
-      "description": "Pricing, packaging, entitlements, commercial ADRs, and market-positioning evidence discipline. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Pricing, packaging, entitlements, commercial ADRs, and market-positioning evidence. Use when making a durable revenue, packaging, licensing, or route-to-market decision. Do not use for implementing an already-decided checkout or billing contract.",
       "path": "skills/commercial-decision-standard/SKILL.md"
     },
     {
       "name": "customer-data-migration-review",
-      "description": "Design or audit one customer-facing data import, onboarding migration, tenant move, system replacement, or bulk cutover from source discovery through mapping, transformation, validation, rehearsal, execution, reconciliation, rollback/forward-fix, customer communication, and acceptance. Use when the primary artifact is a repeatable migration contract for customer data and service continuity. Use fleet-migration-factory for a multi-repository code rewrite, product-recovery-contract-review for same-product backup and restore, and customer-success-operations-review for the ongoing post-migration value program.",
+      "description": "Design or audit one customer-facing data import, onboarding migration, tenant move, system replacement, or bulk cutover from source discovery through mapping, transformation, validation, rehearsal, execution, reconciliation, rollback/forward-fix, customer communication, and acceptance. Use when the primary artifact is a repeatable migration contract for customer data and service continuity. Use multi-repository-migration for a multi-repository code rewrite, product-recovery-contract-review for same-product backup and restore, and customer-success-operations-review for the ongoing post-migration value program.",
       "path": "skills/customer-data-migration-review/SKILL.md"
     },
     {
@@ -99,8 +99,13 @@
       "path": "skills/data-rights-operations-review/SKILL.md"
     },
     {
+      "name": "decision-quality-standard",
+      "description": "Evidence-based option selection, competitor synthesis limits, minimal durable surfaces, and verified delivery slices. Use for material technical, product, or operating decisions where local optimization could preserve the wrong end state. Do not use for trivial reversible edits.",
+      "path": "skills/decision-quality-standard/SKILL.md"
+    },
+    {
       "name": "delivery-standard",
-      "description": "Lane-aware shipped-state proof: trunk landing, deploy digests, rollback, and production verification honesty. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Shipped-state proof across source landing, artifacts, deployment, rollback, and production readback. Use when delivering a change or deciding whether it is truly released or live. Do not use when only local implementation is in scope.",
       "path": "skills/delivery-standard/SKILL.md"
     },
     {
@@ -120,12 +125,12 @@
     },
     {
       "name": "documentation-standard",
-      "description": "Documentation altitude, minimal sufficient docs, generated references, and freshness without prose drift. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Documentation scope, minimal sufficient docs, generated references, and freshness without prose drift. Use when deciding what durable documentation to create, update, generate, or retire. Do not use for changing product behavior without documentation ownership questions.",
       "path": "skills/documentation-standard/SKILL.md"
     },
     {
       "name": "engineering-standard",
-      "description": "Binding engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating code architecture and architecture decisions, capabilities, features, DDD domain models, Clean/Hexagonal boundaries, functional cores, modules, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths.",
+      "description": "Engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating code architecture and architecture decisions, capabilities, features, DDD domain models, Clean/Hexagonal boundaries, functional cores, modules, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths.",
       "path": "skills/engineering-standard/SKILL.md"
     },
     {
@@ -140,27 +145,17 @@
     },
     {
       "name": "enterprise-control-plane-standard",
-      "description": "Enterprise manifests, rulesets, selectors, reconcilers, audits, and fleet status publishers. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Organization-wide manifests, rulesets, selectors, reconcilers, audits, and status projections. Use when one policy or adoption decision must apply consistently across many repositories. Do not use for a product-local setting with no cross-repository owner.",
       "path": "skills/enterprise-control-plane-standard/SKILL.md"
     },
     {
       "name": "enterprise-profile-standard",
-      "description": "Versioned binding enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static fleet selections and their lifecycle; Control Plane owns resolved live state.",
+      "description": "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selections and their lifecycle; Control Plane owns resolved live state.",
       "path": "skills/enterprise-profile-standard/SKILL.md"
     },
     {
-      "name": "fleet-engineering-profile",
-      "description": "Apply the binding Sylphx fleet language and effect boundary. Use when choosing, implementing, reviewing, or measuring production backend, API, gateway, worker, controller, runtime, storage, queue, background-job, browser, product-web, SSR, or TypeScript-to-Rust work.",
-      "path": "skills/fleet-engineering-profile/SKILL.md"
-    },
-    {
-      "name": "fleet-migration-factory",
-      "description": "Plan, execute, and audit high-throughput software or canonical-architecture migration across repositories. Use for fleet-wide Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or mandatory generation cutovers. Inventory capabilities plus behaviors/contracts/surfaces, refactor real code, prove exact-candidate semantics, select one-step versus expand-contract from lifecycle risk, retire legacy structure, and invalidate stale proof.",
-      "path": "skills/fleet-migration-factory/SKILL.md"
-    },
-    {
       "name": "frontier-verification-standard",
-      "description": "Eval gates, replay oracles, canary backstops, and flaky-check control for nondeterministic systems. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Evaluation gates, replay oracles, canary backstops, and flaky-check control for nondeterministic systems. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, or time-dependent behavior. Do not add these mechanisms to an ordinary deterministic code path.",
       "path": "skills/frontier-verification-standard/SKILL.md"
     },
     {
@@ -180,12 +175,12 @@
     },
     {
       "name": "incident-standard",
-      "description": "Incident severity, no-human detect-mitigate-verify loop, and machine-checkable postmortems. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Incident severity, automated detect-mitigate-verify loops, and machine-checkable postmortems. Use when responding to, designing for, or reviewing an operational incident. Do not use for an ordinary defect that has no active service or customer impact.",
       "path": "skills/incident-standard/SKILL.md"
     },
     {
       "name": "instruction-evolution-standard",
-      "description": "Evolution of canonical Skills, runtime constitutions, binding profiles, and architecture generations: single authority, migration, reconciliation, and retirement. Use for durable instruction changes, not live Work Graph operations.",
+      "description": "Evolution of Skills, runtime constitutions, required profiles, and architecture generations with one writable owner, migration, reconciliation, and retirement. Use for durable instruction or profile changes, not live Work Graph operations.",
       "path": "skills/instruction-evolution-standard/SKILL.md"
     },
     {
@@ -224,9 +219,9 @@
       "path": "skills/marketplace-trust-operations-review/SKILL.md"
     },
     {
-      "name": "mission-control-standard",
-      "description": "Work ledger claims, handoff, proof chains, stale-claim recovery, privacy, and fleet activity. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/mission-control-standard/SKILL.md"
+      "name": "multi-repository-migration",
+      "description": "Plan, execute, and audit a software or architecture migration across multiple repositories. Use for organization-wide Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or required architecture cutovers. Inventory capabilities plus behaviors/contracts/surfaces, refactor real code, prove exact-candidate semantics, choose one-step versus expand-contract from lifecycle risk, retire legacy structure, and invalidate stale proof.",
+      "path": "skills/multi-repository-migration/SKILL.md"
     },
     {
       "name": "notification-strategy-review",
@@ -237,6 +232,11 @@
       "name": "offline-sync-conflict-review",
       "description": "Design or audit one offline/local-first synchronization and conflict protocol: local storage, queued mutations, idempotency, causality/order, reconnect, tombstones, optimistic states, multi-device/collaborative merges, attachments, auth expiry, encryption, schema migration, data-loss recovery, UX, support, observability, and chaos tests. Use when unreliable connectivity or concurrent edits need an independently acceptable sync artifact; use App Design for whole-product workflows.",
       "path": "skills/offline-sync-conflict-review/SKILL.md"
+    },
+    {
+      "name": "parallel-change-integration-standard",
+      "description": "Parallel agent change integration with compare-and-swap landing, bounded duplicate attempts, verification watermarks, and verified-only promotion. Use when candidate generation can outpace shared verification or deployment capacity. Do not use for ordinary low-contention edits.",
+      "path": "skills/parallel-change-integration-standard/SKILL.md"
     },
     {
       "name": "payment-platform-readiness",
@@ -285,7 +285,7 @@
     },
     {
       "name": "project-manifest-standard",
-      "description": "Repository identity, lifecycle, capability ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use for durable project facts, not live Work Graph operations.",
+      "description": "Repository identity, lifecycle, capability ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use when creating, changing, or validating a repository's durable identity and boundaries.",
       "path": "skills/project-manifest-standard/SKILL.md"
     },
     {
@@ -295,7 +295,7 @@
     },
     {
       "name": "prompt-architecture",
-      "description": "AGENTS.md projections, skill metadata, runtime constitutions, and instruction hierarchy without forking canonical instruction law. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "AGENTS.md projections, skill metadata, runtime constitutions, and instruction hierarchy without duplicating source instructions. Use when creating, reviewing, or restructuring durable agent instructions. Do not use for ordinary user-facing copy.",
       "path": "skills/prompt-architecture/SKILL.md"
     },
     {
@@ -310,7 +310,7 @@
     },
     {
       "name": "repo-adoption-standard",
-      "description": "Minimum canonical-standard adoption surfaces: constitution projection, manifest, integrity fences, conformance entrypoints. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Minimum standards-adoption surfaces: runtime constitution, project manifest, integrity fences, and conformance entrypoints. Use when onboarding or migrating a repository to the current engineering standards. Do not use as proof that product code already conforms.",
       "path": "skills/repo-adoption-standard/SKILL.md"
     },
     {
@@ -327,11 +327,6 @@
       "name": "review-solicitation-policy",
       "description": "Design or audit platform-specific public rating and review request eligibility, native request surfaces, cooldowns, policy-required audience exclusions, no-display behavior, and request-state evidence for apps, games, web products, and storefronts. Use when the requested artifact is an authentic public review solicitation policy or request state machine, including an audit of sentiment gating, star steering, review rewards, suppression, or retaliation. For private feedback intake, review ingestion or response, evidence clustering, support routing, product action, or close-loop learning, use product-feedback-learning-loop; compose both only when the request asks for both artifacts.",
       "path": "skills/review-solicitation-policy/SKILL.md"
-    },
-    {
-      "name": "roleless-speculative-development-standard",
-      "description": "Roleless speculation: CAS trunk landing, bounded duplicates, watermarks, and verified-only promotion. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/roleless-speculative-development-standard/SKILL.md"
     },
     {
       "name": "saas-subscription-pricing",
@@ -360,7 +355,7 @@
     },
     {
       "name": "self-feeding-agent-loop-standard",
-      "description": "Coordinator-Reviewer-Builder ticks, GitHub issues/PRs, and machine-verifiable loop gates. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Recurring autonomous work loops with issue intake, implementation, review, delivery, and machine-verifiable continuation gates. Use when a durable agent process should find and complete new work repeatedly. Do not use for one bounded task.",
       "path": "skills/self-feeding-agent-loop-standard/SKILL.md"
     },
     {
@@ -379,13 +374,8 @@
       "path": "skills/social-media-operations-review/SKILL.md"
     },
     {
-      "name": "sota-execution-standard",
-      "description": "SOTA decision kernel, competitor synthesis limits, minimal surfaces, and verified slices. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
-      "path": "skills/sota-execution-standard/SKILL.md"
-    },
-    {
       "name": "source-authoring-standard",
-      "description": "Commits, exact source candidates, semantic atomicity, worktrees, and durable checkpoints. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Commits, exact source candidates, semantic atomicity, worktrees, and durable checkpoints. Use when authoring or integrating repository changes where source identity, recovery, or concurrent edits matter. Do not use for read-only analysis.",
       "path": "skills/source-authoring-standard/SKILL.md"
     },
     {
@@ -395,7 +385,7 @@
     },
     {
       "name": "specification-control-plane-standard",
-      "description": "Spec lifecycle, work packets, eval manifests, telemetry contracts, and exception records. Use when the task domain matches; use for durable method and predicates. Do not use as a one-off checklist procedure or live Work Graph operations.",
+      "description": "Specification lifecycle, work packets, evaluation manifests, telemetry contracts, and exception records. Use when a material capability needs an executable specification and traceable implementation contract. Do not use for a trivial change whose behavior is already unambiguous.",
       "path": "skills/specification-control-plane-standard/SKILL.md"
     },
     {
@@ -414,9 +404,19 @@
       "path": "skills/sylphx-platform-first/SKILL.md"
     },
     {
+      "name": "technology-stack-profile",
+      "description": "Apply the required backend and web technology choices by component role and owned effects. Use when choosing, implementing, reviewing, or measuring production backend, API, gateway, worker, controller, runtime, storage, queue, background-job, browser, product-web, SSR, or TypeScript-to-Rust work.",
+      "path": "skills/technology-stack-profile/SKILL.md"
+    },
+    {
       "name": "voice-preserving-editor",
       "description": "Apply a fact-preserving language-quality layer to agent replies or supplied drafts in the requested voice, register, locale, and surface. Use when the user explicitly asks for a natural, human, conversational, non-AI, non-ChatGPT, less-templated, or voice-preserving rewrite; locale-natural or dialect-aware rendering; translationese cleanup; authorized sample matching; or the same constraints in Cantonese, Chinese, English, or multilingual text, while keeping facts, citations, technical terms, uncertainty, and judgment intact. A language name or ordinary translation request alone is not a trigger.",
       "path": "skills/voice-preserving-editor/SKILL.md"
+    },
+    {
+      "name": "work-coordination-standard",
+      "description": "Work ledger claims, handoff, proof chains, stale-claim recovery, privacy, and cross-project activity. Use when designing durable agent work coordination. Do not use as a one-off checklist or as a substitute for live Work Graph operations.",
+      "path": "skills/work-coordination-standard/SKILL.md"
     }
   ]
 }

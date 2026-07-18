@@ -1,8 +1,5 @@
 # Repo Adoption Standard
 
-**Authority:** binding Standard Skill package `repo-adoption-standard` in
-`SylphxAI/skills`. Historical predecessor text is lineage only.
-
 ## Purpose
 
 Define the smallest complete surface that lets an agent understand, change,
@@ -52,7 +49,7 @@ Every active durable repository exposes:
 - `SylphxAI/skills` owns static standards, procedures, and binding profiles.
 - The runtime constitution owns compact always-on law and local operating facts.
 - The product repository owns its code, contracts, ADRs, specs, and delivery.
-- Control Plane owns live fleet, work, ingestion, and effect state.
+- Control Plane owns live adoption, work, ingestion, and effect state.
 - Retired repositories are historical lineage, not
   writable instruction or live-state authorities.
 
@@ -78,7 +75,7 @@ not a reason to hold a proven terminal indefinitely.
 | Code architecture | Dependency/module analysis plus domain/use-case/adapter tests |
 | Verification | Exact-candidate command and results |
 | Delivery | Proof at the repository's declared terminal boundary |
-| Fleet adoption | Control Plane selector/conformance readback |
+| Selected-repository adoption | Control Plane selector/conformance readback |
 
 ## Migration terminal
 
@@ -97,5 +94,5 @@ canonical architecture migration.
 ## Validation
 
 Run the repository's declared verification entrypoint, then verify the active
-delivery boundary. Fleet-wide status is Control Plane readback; it is not a
+delivery boundary. Organization-wide status is Control Plane readback; it is not a
 repo-local completion claim.

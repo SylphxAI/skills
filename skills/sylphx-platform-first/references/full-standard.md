@@ -1,9 +1,6 @@
 # Sylphx Platform-first Standard
 
-**Authority:** binding Standard Skill package `sylphx-platform-first` in
-`SylphxAI/skills`.
-
-This package owns the agent-facing selection and consumption rule. Sylphx
+This package defines the agent-facing selection and consumption rule. Sylphx
 Platform owns its public API, SDK, CLI, manifest schema, runtime behavior, and
 capability inventory. Customer repositories own their product domain and
 `sylphx.toml` intent. Do not copy Platform's full contract into this package.

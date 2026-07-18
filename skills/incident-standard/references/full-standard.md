@@ -1,16 +1,8 @@
-# incident-standard (canonical body)
-
-**Authority:** binding Standard Skill package `incident-standard` in `SylphxAI/skills` (`skills/incident-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Incident and Postmortem Standard
 
 ## Purpose
 
-The fleet has a rich incident history and no shared home for how an incident
+The organization has a rich incident history and no shared home for how an incident
 is detected, mitigated, or written up. Absent a standard, every repository
 improvises its own severity language, its own "who do we page," and its own
 postmortem template — usually a prose document nobody re-derives a mechanism
@@ -35,7 +27,7 @@ This standard composes with:
 This standard applies by selector, not by exemption prose. A repository is in
 scope when `project.manifest.json` states `project.lifecycle` is
 `production` or `commercial` **and** `delivery.deployable` is `true` (or the
-projected deployable fleet property). A library,
+projected deployable deployed-service property). A library,
 CLI-only tool, or research repo with no deployed or operated surface never
 satisfies that selector, so it is out of scope by construction — it does not
 need exemption language, and it does not need to adopt a postmortem process
@@ -128,7 +120,7 @@ The canonical record schema ships with this package at
 [`postmortem-record.schema.json`](postmortem-record.schema.json). Each selected
 repository validates its records against that exact schema and checks that
 every closed S1/S2 incident links a valid record with at least one durable
-mechanism. Control Plane may reconcile fleet coverage from repository facts and
+mechanism. Control Plane may reconcile portfolio coverage from repository facts and
 incident adapters; it does not re-author the record.
 
 Alert/SLO-triggered issue creation is an adapter capability, not a condition for

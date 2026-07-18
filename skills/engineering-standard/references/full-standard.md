@@ -1,13 +1,3 @@
-# Engineering Standard (canonical body)
-
-**Authority:** binding Standard Skill package `engineering-standard` in
-`SylphxAI/skills` (`skills/engineering-standard/`).
-
-This file is progressive-disclosure detail for the package. Author here; do not
-maintain a second prose SSOT.
-
----
-
 # Engineering Standard
 
 ## Modern Technical Bar
@@ -72,7 +62,7 @@ dependency, test, contract, security, and runtime evidence.
 ## Language and tool selection
 
 Load the active profile before choosing a language, framework, protocol, SDK,
-database tool, or migration engine. Selection follows the canonical SOTA
+database tool, or migration engine. Selection follows the Decision Quality
 decision kernel: capability fit, ecosystem maturity, safety, interoperability,
 portability, delivery cost, operational proof, and migration surface precede a
 default. A deviation uses the profile's exception contract and repo ADR; a
@@ -304,7 +294,7 @@ explicitly accepts allocator-local identity. Use globally stable IDs when data
 must move between allocators or survive environment merges.
 
 Use the repository's declared artifact-identity conformance entrypoint for
-read-only local, target-repository, or fleet readback before claiming a repo's
+read-only local, target-repository, or portfolio readback before claiming a repo's
 parallel-authored artifact identity surface is clean.
 
 ## No-Human Engineering Patterns
@@ -357,12 +347,12 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
 
 ## Active engineering profile
 
-Current fleet language, typed-effect, contract/transport, database-change, and
+Current technology, typed-effect, contract/transport, database-change, and
 AI-runtime selections resolve from the binding profile packages in
-`SylphxAI/skills` plus current Control Plane fleet state. This standard owns the
+`SylphxAI/skills` plus current Control Plane organization-wide adoption state. This standard owns the
 bar and proof obligations; the selected profile owns replaceable choices.
 Repositories record only their local selected stack and exceptions, not a copy
-of the fleet profile.
+of the technology stack profile.
 
 ## Frontend
 
@@ -439,7 +429,7 @@ owned there, but payload fields are not re-authored. Their linters and semantic
 breaking checks compose with—rather than substitute for—the canonical contract
 gate. A single-language private boundary may use a repo-local authority until
 publication or another runtime justifies extraction. The active engineering
-profile owns the current fleet contract and transport selections.
+profile owns the current technology contract and transport selections.
 
 Validation coverage is recorded per generated language and constraint class.
 A constraint annotation is not universal proof merely because one runtime can

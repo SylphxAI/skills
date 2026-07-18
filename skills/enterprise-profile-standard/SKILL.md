@@ -1,20 +1,19 @@
 ---
 name: enterprise-profile-standard
-description: "Versioned binding enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static fleet selections and their lifecycle; Control Plane owns resolved live state."
+description: "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selections and their lifecycle; Control Plane owns resolved live state."
 ---
 # Enterprise Profile Standard
 
-**Authority: binding** (`packageKind: standard`).
+**Requirement:** apply this standard when the task matches its scope.
 
-Canonical home: `skills/enterprise-profile-standard/` in `SylphxAI/skills`.
-Full body: [references/full-standard.md](references/full-standard.md).  
+Read [references/full-standard.md](references/full-standard.md) for the full
+method and predicates.
 
 ## Method
 
-1. Load this package when the task domain matches this standard.
-2. Read [references/full-standard.md](references/full-standard.md) for binding method and predicates.
-3. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
-4. Prefer schema/test/ADR homes over copying this body into product repos.
+1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
+2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
+3. Prefer schema/test/ADR homes over copying this body into product repos.
 
 
 ## Output format
@@ -28,7 +27,6 @@ Full body: [references/full-standard.md](references/full-standard.md).
 
 - Does not grant deploy, credential, or MCP capabilities.
 - Does not replace product-local ADRs where those own decisions.
-- Control Plane owns live work/fleet/effects — not this static standard text.
 
 ## When not to use
 

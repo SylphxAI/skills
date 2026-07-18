@@ -1,11 +1,3 @@
-# frontier-verification-standard (canonical body)
-
-**Authority:** binding Standard Skill package `frontier-verification-standard` in `SylphxAI/skills` (`skills/frontier-verification-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Frontier Verification Standard
 
 ## Purpose

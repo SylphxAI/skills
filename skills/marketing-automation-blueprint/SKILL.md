@@ -60,7 +60,7 @@ input reference contains neither. Never invent them or resolve a moving
 - Read `references/marketing-thesis-and-portfolio.md` for objective hierarchy, audience, positioning translation, channel sweep, and system map.
 - Read `references/marketing-organic-lifecycle-and-reputation.md` for SEO/AEO, content, social channel selection and briefs, creators, community, lifecycle, cross-promotion, update adoption, ratings, and feedback integration; official-account operation routes to `social-media-operations-review`.
 - Read `references/pc-store-launch-marketing.md` for a Steam or other PC-store wishlist/demo/festival, creator/press, community, launch-calendar, and first-week communication program.
-- Read `references/marketing-paid-and-creative-factory.md` for paid adapters, creative/localization supply, rights, fatigue, budgets, bids, and channel contracts.
+- Read `references/marketing-paid-and-creative-production.md` for paid adapters, creative/localization supply, rights, fatigue, budgets, bids, and channel contracts.
 - Read `references/marketing-measurement-risk-and-economics.md` for causal measurement, attribution, risk-adjusted value, privacy, fraud, brand safety, and decision gates.
 - Read `references/marketing-autonomous-control-plane.md` for manifests, role separation, reconciliation, canaries, failure/recovery, proof, and official source routes.
 

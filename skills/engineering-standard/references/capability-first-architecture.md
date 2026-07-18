@@ -263,7 +263,7 @@ expected failure, unexpected failure, latency/cost, and recovery signals.
 Functional Reactive Programming (FRP) is an applicable specialized pattern for
 time-varying values and event-driven projections such as UI state, progress
 timelines, streaming analytics, or collaborative state. It is not a mandatory
-fleet-wide top-level architecture. In an FRP slice, pure event-to-state or
+organization-wide top-level architecture. In an FRP slice, pure event-to-state or
 event-to-view transformations form the functional core; subscriptions, clocks,
 sockets, queues, UI frameworks, backpressure, and cancellation remain in the
 imperative shell. Do not let a framework stream become domain truth or force

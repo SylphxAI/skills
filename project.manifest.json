@@ -27,7 +27,7 @@
       "Publish Sylphx working methods and Platform guidance as useful public product surfaces."
     ],
     "nonGoals": [
-      "Own live fleet/work/effect state or customer data.",
+      "Own live work, organization-wide adoption, effect state, or customer data.",
       "Operate a benchmark laboratory, admission authority, hosted marketplace, or Control Plane.",
       "Preserve retired instruction copies outside Git history."
     ]
@@ -46,7 +46,7 @@
       }
     ],
     "doesNotOwn": [
-      "Live fleet adoption, work claims, effects, or operational customer state.",
+      "Live selected-repository adoption, work claims, effects, or operational customer state.",
       "Product-local decisions, runtime implementation, or model benchmark results."
     ],
     "publicSurfaces": [

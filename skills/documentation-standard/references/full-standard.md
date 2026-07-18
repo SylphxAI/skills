@@ -1,8 +1,5 @@
 # Documentation Standard
 
-**Authority:** binding Standard Skill package `documentation-standard` in
-`SylphxAI/skills`. Historical predecessor text is lineage only.
-
 ## Purpose
 
 Documentation preserves intent and helps agents resolve authority; it must not
@@ -19,7 +16,7 @@ drift.
 | What behavior/contract must implementation satisfy? | Spec, schema, test, or executable policy |
 | How is an operation performed or recovered? | Runbook |
 | What public capability exists? | Capability catalog derived from contracts/code where possible |
-| What is the current work/fleet/incident state? | Control Plane live record, linked from docs if useful |
+| What is the current work/adoption/incident state? | Control Plane live record, linked from docs if useful |
 | What static method applies across repositories? | Binding Skills package |
 | What does an API/schema/CLI expose now? | Generated reference from the authoritative source |
 
@@ -93,7 +90,7 @@ because code exists. Prefer:
 
 Check links, generated freshness, schema/examples, ownership, supersession, and
 duplicate semantic authorities. Documentation presence alone never proves code
-architecture, delivery, or fleet convergence.
+architecture, delivery, or migration completion.
 
 ### Authority checklist
 

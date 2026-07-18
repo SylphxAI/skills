@@ -1,17 +1,9 @@
-# autonomous-execution-standard (canonical body)
-
-**Authority:** binding Standard Skill package `autonomous-execution-standard` in `SylphxAI/skills` (`skills/autonomous-execution-standard/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Autonomous Execution Standard
 
 ## Purpose
 
 Use this standard when the task benefits from high autonomy, parallel work,
-deep research, latency hiding, subagents, self-review, or one-shot SOTA
+deep research, latency hiding, subagents, self-review, or one-shot deep improvement
 execution.
 
 The goal is to use agent advantages: no-human handoff latency in the normal
@@ -26,7 +18,7 @@ both halves operational.
 
 The cross-domain decision precedence, risk, reversibility, evidence, and
 option-value calculus is owned by
-[`sota-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/sota-execution-standard/references/full-standard.md). This standard owns
+[`decision-quality-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/decision-quality-standard/references/full-standard.md). This standard owns
 execution authority, graph construction, escalation mechanics, and completion
 discipline; it does not define a competing decision kernel.
 
@@ -75,7 +67,7 @@ optimization can derive: time horizon, the ruin boundary (which losses are
 absorbing — company, portfolio, or personal), non-negotiable constraints, and
 cross-portfolio tradeoffs. Everything downstream — risk posture, objective
 weighting, bet sizing, delegation envelopes — is computed by agents through the
-canonical SOTA decision kernel from those parameters plus evidence, and
+Decision Quality method from those parameters plus evidence, and
 recomputed when stage triggers fire,
 without waiting for the principal's voice: dominated strategies are
 eliminated by analysis, ruin-risk bets are rejected in the proposal stage by
@@ -200,7 +192,7 @@ scope or they block correct completion of the current task.
 
 ## Active Resolution Mechanics
 
-The SOTA Execution Standard owns the evidence and decision semantics. This
+The Decision Quality Standard owns the evidence and decision semantics. This
 standard makes its five resolution states operational. At each checkpoint or
 return, every unresolved means lane is in `acquire-current-evidence`,
 `safe-reversible-action`, `bounded-experiment`, `qualified-stop`, or
@@ -240,7 +232,7 @@ only when it contributes to the declared outcome, is in scope and authorized,
 is dependency-ready and evidence-bound, remains above every floor, has positive
 net value after coordination, integration, downstream, and opportunity costs,
 and fits the current capability, collision, capacity, WIP, quota, and
-backpressure envelope. The SOTA Execution Standard's canonical decision kernel
+backpressure envelope. The Decision Quality Standard’s decision method
 owns ranking; this scheduler does not invent another priority order.
 
 A blocker affects only its declared dependency or collision cone; it never
@@ -273,7 +265,7 @@ global stop.
 `qualifiedWait` is the structured result of that scheduler checkpoint, not a
 sixth per-lane epistemic state. It contains the affected lanes, exclusions, and
 re-entry evidence; every unresolved lane still retains exactly one of the five
-resolution states owned by the SOTA decision kernel.
+resolution states owned by the Decision Quality method.
 
 Apply the same scheduler contract to work that can run in the background.
 
@@ -462,7 +454,7 @@ a successor fixture and evaluator.
 A synthetic trace proves only that the declared policy has a non-vacuous,
 machine-checked interpretation. It is not an observation of host scheduling,
 model behavior, child launches, or successful integration and it cannot become
-release or fleet-behavior authority. Those claims require runtime-captured
+release or deployed-system behavior evidence. Those claims require runtime-captured
 observations bound to the parent brief, instruction/model/tool revisions,
 capacity state, child launch/return and replan events, integration result, and
 task outcome through the Specification Control Plane.
@@ -607,7 +599,7 @@ Minimum loop:
 - Fix actionable issues in touched paths and material same-class issues found by
   the bounded pattern sweep.
 - Run the narrowest meaningful validation again.
-- Before a high-impact `GO`, SOTA, root-cause, safety, recovery, or completion
+- Before a high-impact `GO`, decision-quality, root-cause, safety, recovery, or completion
   claim, search for the strongest credible counterexample and state what
   evidence would falsify the conclusion.
 - Do one final pass for accidental scope creep, stale comments, dead code,

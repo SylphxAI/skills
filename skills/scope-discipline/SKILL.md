@@ -173,7 +173,7 @@ Classify every proposed addition or review finding:
 2. **Same-cause defect** — the same root cause exists in the touched owner
    boundary and leaving it would make the fix false. Include the bounded fix.
 3. **Positive-net in-boundary improvement** — useful architecture, cleanup, automation, or
-   future-proofing inside the owner boundary. Evaluate it in the bounded SOTA
+   future-proofing inside the owner boundary. Evaluate it in the bounded high-value
    scan; implement it now when its durable benefit clearly exceeds its full
    agent-native lifecycle cost.
 4. **Independent or speculative expansion** — has a different owner/lifecycle,
@@ -189,7 +189,7 @@ directly required by the task. "It may be useful later" is not enough; name the
 durable benefit, total lifecycle cost, evidence, and why now is the highest-value
 time to do it.
 
-### Run one bounded SOTA opportunity scan
+### Run one bounded high-value opportunity scan
 
 Passing the primary terminal proves the requested outcome; it does not forbid
 high-value improvement. Before final closure, run one bounded scan for adjacent
@@ -216,7 +216,7 @@ recursively search the whole portfolio. Defer opportunities with weak evidence,
 diminishing returns, a different owner, a separate lifecycle, or a larger
 opportunity cost.
 
-SOTA means the strongest net-value result under the real objective and current
+The target is the strongest net-value result under the real objective and current
 capability frontier. It does not mean maximum layers, maximum safety mechanisms,
 maximum tests, or theoretical perfection.
 
@@ -234,7 +234,7 @@ maximum tests, or theoretical perfection.
   protected. A small content or code change must not silently become a new
   authorization platform or operational service.
 - Do not create machinery whose lifecycle is larger than the problem it solves.
-- Include high-return future-proofing found by the bounded SOTA scan. Do not use
+- Include high-return future-proofing found by the bounded high-value scan. Do not use
   future-proofing as a label for speculative abstraction or unrelated scope.
 
 ### Bound review
@@ -252,7 +252,7 @@ look exhaustive.
 
 When the declared terminal conditions pass:
 
-1. run the bounded SOTA opportunity scan once;
+1. run the bounded high-value opportunity scan once;
 2. implement and verify the selected positive-net improvements;
 3. stop when remaining ideas are lower-value, speculative, or outside boundary;
 4. report the delivered outcome, evidence, and deliberate exclusions; and
@@ -280,5 +280,5 @@ Return a compact closure note:
 - **Objective** — the bounded outcome.
 - **Terminal** — pass or the exact original blocker.
 - **Evidence** — checks that exercise the required claim.
-- **SOTA investments** — high-return adjacent improvements included now.
+- **Selected investments** — high-return adjacent improvements included now.
 - **Excluded expansion** — optional work deliberately kept outside scope.

@@ -1,11 +1,3 @@
-# prompt-architecture (canonical body)
-
-**Authority:** binding Standard Skill package `prompt-architecture` in `SylphxAI/skills` (`skills/prompt-architecture/`).
-
-Author here; do not maintain a second prose SSOT.
-
----
-
 # Prompt Architecture Standard
 
 ## Purpose
@@ -98,7 +90,7 @@ A role prompt should define only:
 
 Do not paste a giant static playbook into every role. When canonical
 instructions change, affected role projections must be refreshed from their
-owning source so the agent fleet does not fork the operating model.
+owning source so the agent population does not fork the operating model.
 
 ## Delegation Brief Granularity
 
@@ -201,7 +193,7 @@ loading.
 ### Effective convergence claims
 
 A merged template, fresh generated corpus, working bootstrap renderer, or local
-projection proves source availability, not that a runtime or fleet is applying the
+projection proves source availability, not that the intended runtimes are applying the
 kernel. Before claiming effective convergence, declare the adoption unit and
 migration class, then obtain current readback for the in-scope runtime targets
 that binds the expected kernel and skill-catalog identity to the effective
@@ -243,7 +235,7 @@ Good prompt rules are:
 - Composable: "Read the relevant standard only when the task touches that domain."
 
 For current-state and autonomy rules, encode a decision boundary rather than a
-personality request. Route material drift-prone claims to the SOTA decision
+personality request. Route material drift-prone claims to the Decision Quality Standard
 kernel and require one of its typed resolution states. A useful compact rule
 says which facts need current authority, what reversible evidence action is
 allowed, and makes a stop depend on a bounded opportunity scan rather than a
