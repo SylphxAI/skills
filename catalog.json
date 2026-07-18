@@ -84,12 +84,14 @@
     {
       "name": "convergent-review",
       "description": "Finite, high-coverage review and audit that freezes acceptance, uses independent perspectives and executable oracles, batches repairs, and closes without moving the goalposts. Use for implementation, architecture, migration, policy, documentation, or cross-artifact reviews that must be thorough without endless review loops.",
-      "path": "skills/convergent-review/SKILL.md"
+      "path": "skills/convergent-review/SKILL.md",
+      "packageDigest": "sha256:67e9ea9d87836053739fb8ce0efa9798b2de2673f94faded378179a247a93177"
     },
     {
       "name": "critical-analysis",
       "description": "Structured analysis of uncertain material questions using competing hypotheses, assumption checks, disconfirming evidence, premortems, and calibrated conclusions. Use for root-cause diagnosis, architecture or policy analysis, ambiguous evidence, critical-thinking requests, and questions where the first plausible explanation may be wrong.",
-      "path": "skills/critical-analysis/SKILL.md"
+      "path": "skills/critical-analysis/SKILL.md",
+      "packageDigest": "sha256:080256994e23b7232bf35f24eb84a361400cd68a06ebd14284b5a258a4ee2116"
     },
     {
       "name": "customer-data-migration-review",
@@ -196,7 +198,8 @@
     {
       "name": "evidence-and-claims-standard",
       "description": "Evidence-bound factual, status, completion, causality, and delivery claims. Use when reporting what happened, whether work is done, whether a check passed, whether a stated cause is proven, or whether source, merge, release, deploy, and live behavior are established. Use for audits and handoffs that must prevent hallucination or overclaim.",
-      "path": "skills/evidence-and-claims-standard/SKILL.md"
+      "path": "skills/evidence-and-claims-standard/SKILL.md",
+      "packageDigest": "sha256:0128720fe4fea15e5fac108e861f6cabad277e5e154694c4b9798ebc485f9b52"
     },
     {
       "name": "frontier-verification-standard",
@@ -356,9 +359,9 @@
     },
     {
       "name": "project-manifest-standard",
-      "description": "Repository identity, lifecycle, capability ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use when creating, changing, or validating a repository's durable identity and boundaries.",
+      "description": "Repository identity, lifecycle, capability and component ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use when creating, changing, or validating a repository's durable identity and boundaries.",
       "path": "skills/project-manifest-standard/SKILL.md",
-      "packageDigest": "sha256:10936ecd8510348ea2d990cdbc2dd1150df4aea020d5cc9ab0643adaa14ca980"
+      "packageDigest": "sha256:ae4800bff77cdc88f939d1d09b30f2974cdc7530e8250efbe2aeb9342dacebda"
     },
     {
       "name": "promotion-campaign-review",
@@ -502,7 +505,7 @@
       "name": "technology-stack-profile",
       "description": "Apply the required backend and web technology choices by component role and owned effects. Use when choosing, implementing, reviewing, or measuring production backend, API, gateway, worker, controller, runtime, storage, queue, background-job, browser, product-web, SSR, or TypeScript-to-Rust work.",
       "path": "skills/technology-stack-profile/SKILL.md",
-      "packageDigest": "sha256:e214c23bd6e8ff0e042e6613e71de5d88e546dfac711d261ae5ac36d29c68880"
+      "packageDigest": "sha256:fc227044714956df35b376fefe5351793d190f1617392d3912c6bc5c9d04573f"
     },
     {
       "name": "voice-preserving-editor",

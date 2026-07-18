@@ -45,9 +45,10 @@ Admit `technology-stack-profile` as an active governance-constraint Profile:
    project only local service facts; Control Plane resolves live adoption,
    exceptions, deployment, and completion.
 
-This decision has no active predecessor. Any changed selection is a new
-immutable profile revision with its own digest and decision. Retired revisions
-never reactivate.
+Revision `2026-07-18.2` preserves the selection while aligning repository
+lifecycle values with the project manifest and defining the generic
+`architecture.components` fact projection used to evaluate it. It supersedes
+revision `2026-07-18.1`; retired revisions never reactivate.
 
 ## Consequences
 

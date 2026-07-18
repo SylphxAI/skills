@@ -4,8 +4,8 @@
   "kind": "EnterpriseProfile",
   "profile": {
     "id": "technology-stack-profile",
-    "revision": "2026-07-18.1",
-    "contentDigest": "sha256:5563a12e85c5eb14f5b6d5a2a745112f2fa0a5e6cbc0637d08fcba501f90b75d",
+    "revision": "2026-07-18.2",
+    "contentDigest": "sha256:9475765aa12f28b3ad1f45e919fc1a4403f4b3a56ff4953d8af352e58a4856b8",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
     "decisionRef": "references/ADR-20260718-backend-web-technology-boundary.md",
@@ -31,7 +31,7 @@
       {
         "fact": "repository.lifecycle",
         "operator": "one-of",
-        "values": ["active-development", "incubating", "production"]
+        "values": ["active", "commercial", "incubating", "maintenance", "production"]
       },
       {
         "fact": "task.surface",
@@ -136,7 +136,7 @@
     ]
   },
   "retirement": {
-    "predecessor": null,
+    "predecessor": "technology-stack-profile@2026-07-18.1",
     "successor": null,
     "terminal": "An admitted active successor revision covers this selector and all selection keys, Control Plane resolves selected repositories to that successor, all exceptions are closed, and this revision is marked retired.",
     "retiredRevisionSelectable": false

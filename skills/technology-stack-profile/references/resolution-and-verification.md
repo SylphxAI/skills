@@ -28,6 +28,15 @@ contract disagree, resolution fails closed and the package must be corrected.
   project local component facts; Control Plane owns resolved live adoption,
   deployment, exceptions, and completion.
 
+Product repositories project intended component topology through the optional
+`architecture.components` map in `project.manifest.json`. Each unique component
+id declares its role, implementation, backend-owner reference, and owned
+effects. The manifest schema owns the generic fact shape; this Profile owns the
+recognized role/effect meanings. Missing or unknown facts block a selected
+technology decision instead of being inferred from filenames. Live deployment
+and production status remain Control Plane observations, not repo-authored
+component fields.
+
 ## Resolution table
 
 | Observed component | Role/effect classification | Required result |
@@ -64,7 +73,8 @@ production defect, parity gap, or missing capability remains a Rust work item.
 ## Verification checklist
 
 - Record the exact profile id, revision, and content digest used.
-- Enumerate deployable components and their declared service roles.
+- Enumerate applicable `architecture.components` entries and their declared
+  service roles; missing entries remain a gap.
 - Enumerate database, queue, authorization, external, and background effects.
 - Prove that Rust owns every backend or durable-effect role.
 - Prove that TypeScript/Bun/Next components are browser, product-web, SSR, or UI

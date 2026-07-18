@@ -23,7 +23,8 @@ prose or runtime projection that disagrees with it is invalid.
    orchestration roles.
 4. Reject web ownership of backend database mutation, durable queues, business
    effects, backend authorization decisions, or a TypeScript backend fallback.
-5. Record repository-local role/effect facts in the owning product manifest;
+5. Record repository-local role/effect facts under
+   `architecture.components` in the owning product manifest;
    let Control Plane resolve live adoption, exceptions, deployment, and
    organization-wide completion without copying this profile into product repositories.
 
