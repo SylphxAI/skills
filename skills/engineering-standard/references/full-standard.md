@@ -322,9 +322,10 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
   fixtures, forms, and docs from the same schema source.
 - **Declarative policy**: express permissions, rollout rules, config, manifests,
   and deployment intent as data that can be linted, diffed, and reconciled.
-- **Architecture fitness functions**: add checks for dependency direction,
-  forbidden imports, public export shape, generated-client freshness, migration
-  replay, API compatibility, bundle/performance budgets, and catalog freshness.
+- **Architecture fitness functions**: enforce dependency direction, public
+  surface, generated freshness, migration safety, compatibility, and measured
+  budgets through the semantic enforcement hierarchy below. Do not turn source
+  spelling or file shape into a permanent product contract.
 - **Property and model-based tests**: use them for state machines, concurrency,
   queues, billing/ledger invariants, permissions, and parsers where examples
   alone miss interleavings.
@@ -558,6 +559,47 @@ names; keep the comment only for the remaining non-obvious intent.
 
 ## Testing
 
+### Semantic enforcement hierarchy
+
+An invariant is valuable; an arbitrary new gate is not. Express each invariant
+once at the lowest layer that understands its semantics:
+
+1. language compiler, type system, schema, module/crate/package visibility, or
+   generated contract;
+2. AST-aware lint, dependency/build graph, query analyzer, or package export
+   checker;
+3. executable behavior, contract, property, differential, integration, replay,
+   simulation, security, or performance proof; and
+4. CI execution and stable aggregation of the selected proof.
+
+Prefer strengthening code boundaries over observing violations from outside.
+For example, separate crates or package exports beat scanning Rust or
+TypeScript text; a dependency graph rule beats searching import strings; an
+executable route inventory beats requiring a handler name to appear in a file.
+
+Durable tests and gates MUST NOT read production source as plain text to require
+or forbid implementation tokens, symbol names, call order, comments, file
+placement, or import spelling. These change-detector tests produce false
+positives during valid refactors and false negatives through aliases,
+re-exports, macros, generation, or equivalent syntax. Source parsing is valid
+only when source syntax is the product contract, or as an expiring migration
+fence where no semantic tool can yet express the temporary condition.
+
+One material invariant has one proof owner. Before adding a lint, test, script,
+report, workflow, or required context, verify that existing compiler, static,
+contract, or behavior proof does not already cover the failure. A new mechanism
+must name the material defect it detects, why lower semantic layers cannot
+decide it, its false-positive/negative boundary, execution cost, and whether it
+is durable or temporary. Do not test a gate a second time in product CI merely
+to prove that the same gate exists; unit-test non-trivial analyzer logic in its
+own owner and execute one authoritative result.
+
+Temporary migration fences declare the active compatibility condition, owner,
+and exact retirement predicate. Once target authority is established and the
+old path is removed, delete source-parity checks, no-old-path scans, migration
+ledgers, rebind workflows, and fixtures that no longer protect live behavior.
+Keep durable product contracts and behavior tests.
+
 Default ladder (apply with each language's native test/type tools):
 
 1. Unit tests for pure logic.
@@ -574,12 +616,13 @@ Default ladder (apply with each language's native test/type tools):
     high-blast-radius behavior.
 11. SAST/security checks for sensitive surfaces.
 
-Select quality gates by changed risk, not by habit. Every behavior, contract,
+Select proof by changed risk, not by habit. Every material behavior, contract,
 data, auth, billing, security, concurrency, recovery, migration, or user-workflow
-change needs at least one automated gate that would fail if the important
-behavior regressed. Docs-only, generated-only, and tooling-only changes still
-need freshness, generation, or conformance checks that prove the claimed source
-of truth.
+change needs an automated oracle that would fail if the important behavior
+regressed; reuse or strengthen an existing oracle before creating another.
+Docs-only, generated-only, and tooling-only changes use the existing freshness,
+generation, or conformance owner when the claimed source of truth requires it;
+they do not automatically justify a new gate.
 
 Target the expensive rungs by blast radius rather than applying them everywhere.
 Mandate diff-scoped mutation testing (rung 6) on changed lines in high-blast

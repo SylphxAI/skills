@@ -166,14 +166,16 @@ Classify every approval gate:
   Stop only that decision and present the narrow choice plus consequences.
 - `out_of_model_stop`: the repo claims no-human operation but has no machine
   mechanism for a required gate. Report the missing mechanism and, where safe,
-  add the policy/check/spec/ADR needed to remove the stop next time.
+  repair the owning contract or existing mechanism. Add a new policy, check,
+  spec, or ADR only when no existing semantic owner can decide the material
+  condition.
 
 In a no-human repository, recurring, material, machine-decidable approval work
 should become the lowest-cost durable control whose lifecycle cost is below the
-expected loss it prevents. That may be a test, generated diff, policy check,
-ruleset, expiry-bound exception, or conformance audit. Repetition alone does
-not justify a new gate or service; one-off judgment may remain an evidence-bound
-agent artifact.
+expected loss it prevents, at the lowest capable semantic layer. Reuse the
+existing compiler, schema, policy, test, or admission owner. Repetition alone
+does not justify another branch rule, CI status, workflow, conformance audit,
+or service; one-off judgment may remain an evidence-bound agent artifact.
 
 ## Scope And Success Criteria
 
@@ -536,13 +538,13 @@ Rules:
 - Fix material same-class issues in the same slice when they share the same
   cause, are inside the same owning boundary, can be safely validated, and do
   not create unrelated scope creep.
-- Prefer one canonical fix, generator, schema, helper, contract, lint rule,
-  test, conformance audit, or CI gate over repeated manual patches.
+- Prefer one canonical owning fix plus the narrowest semantic regression oracle
+  over repeated manual patches. Do not translate every same-class finding into
+  a new lint, test, report, workflow, or CI gate.
 - If the pattern spans multiple projects, high-risk contracts, migrations,
   public APIs, production infrastructure, or too much surface for the current
   slice, stop the sweep at the safe boundary and create a durable work packet,
-  issue, ADR, generated diff, or failing gate with owner, scope, risk, and
-  cleanup path.
+  issue, ADR, or generated diff with owner, scope, risk, and cleanup path.
 - Do not use pattern sweep as a license for speculative repo-wide rewrites,
   style churn, framework swaps, or unrelated cleanup.
 
@@ -582,10 +584,11 @@ governance.
 
 If the reviewer finds material issues, fix them before final response unless
 blocked by a machine policy gate, credentials, external systems, or user
-direction. For a recurring material same-cause failure, add the lowest-cost
-durable prevention only when it can detect the relevant defect and its
-lifecycle cost is below the expected loss. Repetition does not automatically
-mandate a CI gate, policy service, or generator.
+direction. Repeated reviewer findings trigger root-cause analysis and
+strengthening of the single owning contract or lowest-cost semantic oracle only
+when it can detect the relevant defect and its lifecycle cost is below the
+expected loss. Repetition does not automatically mandate a new CI gate, policy
+service, generator, test, eval, or conformance check.
 
 ## Completion Discipline
 
@@ -598,7 +601,7 @@ Before final response, check:
 - Required tests/checks have passed, failed with diagnosis, or were skipped with
   stated residual risk.
 - The bounded pattern sweep is complete, or a larger same-class issue is recorded
-  in a durable work packet, issue, ADR, generated diff, or failing gate.
+  in a durable work packet, issue, ADR, or generated diff.
 - CI/deploy/release monitors are complete or blocked by an external event.
 - Docs, ADRs, release notes, changelogs, tests, or evals were updated if future
   agents/operators need them.

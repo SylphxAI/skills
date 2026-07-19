@@ -59,6 +59,8 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-artifact-01` | Source-controlled artifacts have stable identity and integrity. |
 | `eng-contract-01` | Boundary contracts are schema-derived with typed failure handling. |
 | `eng-test-01` | Automated tests cover selected rule IDs for the change. |
+| `eng-enforce-01` | Each material invariant has one proof owner at the lowest capable semantic layer: compiler/type/schema/visibility, AST or dependency/build graph, behavioral proof, then CI aggregation. Durable source-text implementation-token tests are forbidden. |
+| `eng-fence-01` | A temporary migration fence names its active condition and retirement predicate; completed cutover removes obsolete parity, no-old-path, ledger, rebind, and duplicate proof machinery. |
 | `eng-name-01` | Names match domain language; no misleading aliases at boundaries. |
 
 ## Decision table
@@ -82,4 +84,9 @@ Apply the relevant subset; verify rather than slogan.
 - [ ] Migration strategy matches lifecycle and demonstrated live risk; no
       calendar delay or dual path without a named compatibility/state/effect need.
 - [ ] Layer direction respected.
+- [ ] New or retained gates protect distinct material invariants at the lowest
+      capable semantic layer; no durable source-string change-detector test or
+      duplicate proof remains.
+- [ ] Temporary migration fences have an exact retirement predicate, and
+      completed migrations have retired their proof machinery.
 - [ ] Delivery claims separate local / trunk / production proof.

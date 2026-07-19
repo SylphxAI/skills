@@ -61,7 +61,7 @@ event, migration, or runbook when the corresponding concept or effect exists,
 not as an empty placeholder.
 
 Verification scales with actual risk and lifecycle stage. Development-only
-structural changes require exact-source tests and architecture evidence, not a
+structural changes require exact-candidate semantic analysis and architecture evidence, not a
 fabricated production soak. A live irreversible data or public-contract change
 requires stronger recovery and runtime proof. Optional hardening is backlog,
 not a reason to hold a proven terminal indefinitely.
@@ -72,7 +72,7 @@ not a reason to hold a proven terminal indefinitely.
 | --- | --- |
 | Runtime entry | Installed constitution readback plus valid local links |
 | Project identity | Schema-valid `project.manifest.json` and matching concise projection |
-| Code architecture | Dependency/module analysis plus domain/use-case/adapter tests |
+| Code architecture | Compiler/module visibility or semantic dependency analysis plus domain/use-case/adapter behavior tests; no source-string implementation-token tests |
 | Verification | Exact-candidate command and results |
 | Delivery | Proof at the repository's declared terminal boundary |
 | Selected-repository adoption | Control Plane selector/conformance readback |

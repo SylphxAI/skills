@@ -313,8 +313,10 @@ questions, but it must not decide them by itself. It records the narrow decision
 tradeoff, and evidence as a prompt/workflow issue, ADR draft, GitHub issue, or
 owner-product-decision blocker.
 
-Recurring approval blockers must become machine policy gates — the gate
-classes in
+Recurring material approval blockers must become machine-decidable through the
+existing owning contract and lowest capable semantic oracle. Recurrence alone
+does not justify another CI job, workflow, policy surface, or required context;
+use the approval classes in
 [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md).
 
 ## Improvement Policy

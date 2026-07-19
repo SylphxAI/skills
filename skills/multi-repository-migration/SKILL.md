@@ -12,7 +12,7 @@ advances on narrative status or stale proof.
 ## Resource guide
 
 - Read `references/multi-repository-migration-patterns.md` before choosing slice boundaries, states, parity gates, concurrency, or cutover policy.
-- Use `scripts/validate_migration_ledger.py` when the migration adopts the portable ledger shape in the reference. From this repository's root, run `python3 -m unittest -v skills/multi-repository-migration/scripts/test_validate_migration_ledger.py` after changing the validator; the same suite belongs in the repository check and CI gates. Prefer an existing repo-native schema and validator when one already owns this fact.
+- Use `scripts/validate_migration_ledger.py` when the migration adopts the portable ledger shape in the reference. From this repository's root, run `python3 -m unittest -v skills/multi-repository-migration/scripts/test_validate_migration_ledger.py` after changing the validator. Reuse the repository's existing proportional verification entrypoint when ledger validity is material; do not add a dedicated CI workflow merely because the portable validator exists. Prefer an existing repo-native schema and validator when one already owns this fact.
 - Load the target repositories' local architecture, delivery, and safety rules. This portfolio skill does not replace them.
 
 ## Workflow
@@ -38,7 +38,9 @@ advances on narrative status or stale proof.
    requires live traffic or elapsed time.
 10. Contract immediately after the selected proof establishes target authority.
    Remove source implementation, obsolete structure, compatibility switches,
-   and obsolete fixtures; do not create a permanent dual generation.
+   obsolete fixtures, source-parity/no-old-path gates, mutable migration ledgers,
+   and rebind workflows that no longer protect a live compatibility boundary;
+   do not create a permanent dual generation or permanent migration CI.
 11. Reconcile the migration ledger from merged and deployed evidence. Report implementation, merge, deployment, active implementation, and retirement as separate states.
 
 ## Validation integrity

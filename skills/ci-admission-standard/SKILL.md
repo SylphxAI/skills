@@ -1,6 +1,6 @@
 ---
 name: ci-admission-standard
-description: "CI admission tiers, affected-test selection, required checks, flake control, and preview policy. Use when designing or changing the checks that decide whether a candidate may merge. Do not use for debugging one unrelated test failure."
+description: "CI admission tiers, gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including custom lints and architecture tests. Do not use for debugging one unrelated test failure."
 ---
 # Ci Admission Standard
 
