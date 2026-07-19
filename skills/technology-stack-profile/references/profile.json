@@ -4,8 +4,8 @@
   "kind": "EnterpriseProfile",
   "profile": {
     "id": "technology-stack-profile",
-    "revision": "2026-07-19.2",
-    "contentDigest": "sha256:fdf01c1b2dd28fd27d40de9636063dafad1df8a65877432fae34a6407dbf9755",
+    "revision": "2026-07-19.3",
+    "contentDigest": "sha256:27aa67f1b73b04725bcb337db71c70d15e8c3dc2acddf8ac362b19a609a51d5a",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
     "decisionRef": "references/ADR-20260718-backend-web-technology-boundary.md",
@@ -17,21 +17,15 @@
   "selector": {
     "matchAll": [
       {
-        "fact": "organization",
-        "operator": "one-of",
-        "values": [
-          "Cubeage",
-          "EpiowAI",
-          "OzyrixLtd",
-          "SylphxAI",
-          "TseFamily",
-          "shtse8"
-        ]
-      },
-      {
         "fact": "repository.lifecycle",
         "operator": "one-of",
-        "values": ["active", "commercial", "incubating", "maintenance", "production"]
+        "values": [
+          "active",
+          "commercial",
+          "incubating",
+          "maintenance",
+          "production"
+        ]
       },
       {
         "fact": "task.surface",
@@ -49,7 +43,9 @@
   "defaults": [
     {
       "key": "engineering.language.backend-required-technology",
-      "assertionIds": ["backend-role-requirement"],
+      "assertionIds": [
+        "backend-role-requirement"
+      ],
       "rationale": "Rust is the required production technology for backend runtime and durable business effects.",
       "constraints": [
         "Repair missing or defective backend behavior in Rust.",
@@ -58,7 +54,9 @@
     },
     {
       "key": "engineering.language.web-required-technology",
-      "assertionIds": ["web-role-requirement"],
+      "assertionIds": [
+        "web-role-requirement"
+      ],
       "rationale": "TypeScript, Bun, and Next are intended production technologies for browser and server-rendered product web.",
       "constraints": [
         "Web may render, compose UI data, and orchestrate calls through backend contracts.",
@@ -67,7 +65,9 @@
     },
     {
       "key": "engineering.language.completion-measure",
-      "assertionIds": ["role-effect-completion"],
+      "assertionIds": [
+        "role-effect-completion"
+      ],
       "rationale": "Completion is semantic coverage of declared service roles and effects, not a source-file statistic.",
       "constraints": [
         "Never use .ts file count, repository language totals, Bun process presence, or endpoint-shell parity as completion evidence.",
@@ -88,7 +88,12 @@
         "id": "selector-resolution",
         "kind": "selector-outcome",
         "aggregation": "match-all",
-        "precedence": ["conflict", "unmatched", "unknown", "matched"],
+        "precedence": [
+          "conflict",
+          "unmatched",
+          "unknown",
+          "matched"
+        ],
         "outcomes": {
           "matched": "selected",
           "unmatched": "not-selected",
@@ -112,7 +117,9 @@
           },
           {
             "id": "typescript-backend-fallback",
-            "effects": ["typescript-backend-fallback"]
+            "effects": [
+              "typescript-backend-fallback"
+            ]
           }
         ],
         "noMatchDisposition": "unknown",
@@ -139,8 +146,14 @@
         "requiredImplementation": "rust",
         "effectClassificationId": "owned-effect-classification",
         "effectClassAllowances": [
-          {"effectClass": "backend-effect", "disposition": "allowed"},
-          {"effectClass": "typescript-backend-fallback", "disposition": "forbidden"}
+          {
+            "effectClass": "backend-effect",
+            "disposition": "allowed"
+          },
+          {
+            "effectClass": "typescript-backend-fallback",
+            "disposition": "forbidden"
+          }
         ],
         "implementationMismatchOutcome": "violation",
         "forbiddenEffectOutcome": "violation",
@@ -158,8 +171,14 @@
         "requiredImplementation": "typescript-bun-next",
         "effectClassificationId": "owned-effect-classification",
         "effectClassAllowances": [
-          {"effectClass": "backend-effect", "disposition": "forbidden"},
-          {"effectClass": "typescript-backend-fallback", "disposition": "forbidden"}
+          {
+            "effectClass": "backend-effect",
+            "disposition": "forbidden"
+          },
+          {
+            "effectClass": "typescript-backend-fallback",
+            "disposition": "forbidden"
+          }
         ],
         "implementationMismatchOutcome": "violation",
         "forbiddenEffectOutcome": "violation",
@@ -169,7 +188,10 @@
         "id": "role-effect-completion",
         "kind": "completion-denominator",
         "componentSet": "declared-components",
-        "denominator": ["declared-component-role", "declared-owned-effect"],
+        "denominator": [
+          "declared-component-role",
+          "declared-owned-effect"
+        ],
         "successCondition": "every-denominator-item-conforms",
         "successOutcome": "conforming",
         "emptyComponentSetOutcome": "blocked",

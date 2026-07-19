@@ -19,8 +19,9 @@ or hard-coded role lists.
 
 ## Method
 
-1. Resolve the profile selector against explicit organization, repository
-   lifecycle, and task-surface facts.
+1. Resolve the profile selector against explicit repository lifecycle and
+   task-surface facts. Organization/fleet membership is not a selector gate;
+   commercial and multi-tenant repositories match without a company allowlist.
 2. Classify each component by its service role and owned effects, not by file
    extension, package count, process name, or repository language totals.
 3. Resolve the matching role requirement from `assertions.rules`, compare the

@@ -12,7 +12,7 @@ const projectSchema = JSON.parse(readFileSync(
 ));
 
 test('technology profile lifecycle selector uses project manifest vocabulary', () => {
-  assert.equal(profile.profile.revision, '2026-07-19.2');
+  assert.equal(profile.profile.revision, '2026-07-19.3');
   assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-18.3');
   const selector = profile.selector.matchAll.find((item) => item.fact === 'repository.lifecycle');
   const manifestValues = projectSchema.properties.project.properties.lifecycle.enum;

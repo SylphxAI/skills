@@ -92,14 +92,13 @@ function permutations(values) {
 }
 
 const matchingFacts = {
-  organization: 'SylphxAI',
   'repository.lifecycle': 'production',
   'task.surface': 'product-code',
 };
 
 test('technology profile binds the canonical role and effect boundary', () => {
   assert.equal(profile.schemaVersion, 2);
-  assert.equal(profile.profile.revision, '2026-07-19.2');
+  assert.equal(profile.profile.revision, '2026-07-19.3');
   assert.equal(profile.profile.predecessor, undefined);
   assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-18.3');
   const defaults = new Map(profile.defaults.map((item) => [item.key, item]));
@@ -135,10 +134,11 @@ test('technology profile binds the canonical role and effect boundary', () => {
 
 test('digest-bound assertions execute selector, role, effect, and completion policy without prose or key dispatch', () => {
   assert.equal(selectorOutcome(matchingFacts), 'selected');
-  assert.equal(selectorOutcome({ ...matchingFacts, organization: 'unselected' }), 'not-selected');
-  const missingOrganization = structuredClone(matchingFacts);
-  delete missingOrganization.organization;
-  assert.equal(selectorOutcome(missingOrganization), 'blocked');
+  // Organization is not a selector gate for commercial multi-tenant applicability.
+  assert.equal(selectorOutcome({ ...matchingFacts, organization: 'any-customer' }), 'selected');
+  const missingLifecycle = structuredClone(matchingFacts);
+  delete missingLifecycle['repository.lifecycle'];
+  assert.equal(selectorOutcome(missingLifecycle), 'blocked');
   assert.equal(evaluateComponents(matchingFacts, {}), 'blocked');
 
   assert.equal(evaluateComponents(matchingFacts, {
@@ -194,12 +194,8 @@ test('match-all selector aggregation is order-independent for mixed unknown and 
 test('technology profile selector uses only canonical operational project lifecycles', () => {
   const selectors = new Map(profile.selector.matchAll.map((item) => [item.fact, item]));
   assert.deepEqual(sorted([...selectors.keys()]), sorted([
-    'organization',
     'repository.lifecycle',
     'task.surface',
-  ]));
-  assert.deepEqual(sorted(selectors.get('organization').values), sorted([
-    'Cubeage', 'EpiowAI', 'OzyrixLtd', 'SylphxAI', 'TseFamily', 'shtse8',
   ]));
   assert.deepEqual(sorted(selectors.get('task.surface').values), sorted([
     'language-boundary-audit', 'migration-completion', 'product-code', 'runtime-implementation',
@@ -350,7 +346,8 @@ test('technology profile structural gate and active-profile collision check fail
   ], collisionErrors);
   assert.equal(collisionErrors.length, 1);
 
-  overlap.selector.matchAll.find((item) => item.fact === 'organization').values = ['non-overlap'];
+  // Disjoint task.surface values mean active profiles no longer collide.
+  overlap.selector.matchAll.find((item) => item.fact === 'task.surface').values = ['docs-only-surface'];
   const disjointErrors = [];
   validateActiveProfileCollisions([
     { folder: 'technology-stack-profile', document: profile },
