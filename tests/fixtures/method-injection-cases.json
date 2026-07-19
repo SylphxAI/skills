@@ -1,0 +1,145 @@
+[
+  {
+    "id": "design-space-positive",
+    "kind": "positive",
+    "prompt": "Brainstorm materially different architectures for this offline synchronization problem before we choose one.",
+    "expectedSkills": ["design-space-exploration"],
+    "artifacts": [{"artifact": "Design Space Portfolio", "owner": "design-space-exploration"}]
+  },
+  {
+    "id": "deliberation-positive",
+    "kind": "positive",
+    "prompt": "Several experts disagree on this policy; elicit independent positions and map their objections before the owner decides.",
+    "expectedSkills": ["structured-deliberation"],
+    "artifacts": [{"artifact": "Deliberation Record", "owner": "structured-deliberation"}]
+  },
+  {
+    "id": "critical-analysis-positive",
+    "kind": "positive",
+    "prompt": "Determine why migrations repeatedly stop halfway by comparing credible causal explanations and disconfirming evidence.",
+    "expectedSkills": ["critical-analysis"],
+    "artifacts": [{"artifact": "Critical Analysis Brief", "owner": "critical-analysis"}]
+  },
+  {
+    "id": "forecast-positive",
+    "kind": "positive",
+    "prompt": "Forecast the probability that the dependency migration finishes by 30 September and define how the forecast resolves and is scored.",
+    "expectedSkills": ["probabilistic-forecasting"],
+    "artifacts": [{"artifact": "Probabilistic Forecast Record", "owner": "probabilistic-forecasting"}]
+  },
+  {
+    "id": "causal-neighbour-not-root-cause",
+    "kind": "near-neighbour",
+    "prompt": "Estimate whether enabling the intervention caused higher retention for eligible users using observational data and explicit assumptions.",
+    "expectedSkills": ["causal-inference-analysis"],
+    "artifacts": [{"artifact": "Causal Inference Record", "owner": "causal-inference-analysis"}]
+  },
+  {
+    "id": "system-dynamics-neighbour-not-static-map",
+    "kind": "near-neighbour",
+    "prompt": "Explain why queue backlog oscillates as capacity, delay, retry, and operator behavior feed back over time.",
+    "expectedSkills": ["system-dynamics-analysis"],
+    "artifacts": [{"artifact": "Dynamic System Model", "owner": "system-dynamics-analysis"}]
+  },
+  {
+    "id": "planning-neighbour-not-task-plan",
+    "kind": "near-neighbour",
+    "prompt": "Design the reusable bounded-search and replanning controller for autonomous agents, including verifier and stop semantics.",
+    "expectedSkills": ["agent-planning-system-review"],
+    "artifacts": [{"artifact": "Agent Planning and Control Contract", "owner": "agent-planning-system-review"}]
+  },
+  {
+    "id": "context-neighbour-not-prompt-copy",
+    "kind": "near-neighbour",
+    "prompt": "Design how long-running agents retrieve, compact, invalidate, delete, and hand off context and memory across sessions.",
+    "expectedSkills": ["agent-context-engineering"],
+    "artifacts": [{"artifact": "Context and Memory Contract", "owner": "agent-context-engineering"}]
+  },
+  {
+    "id": "threat-model-positive",
+    "kind": "positive",
+    "prompt": "Threat-model this new privileged integration and produce the trust-boundary, attack-path, control, verification, and residual-risk contract.",
+    "expectedSkills": ["security-threat-modeling"],
+    "artifacts": [{"artifact": "Threat Model and Security Design Contract", "owner": "security-threat-modeling"}]
+  },
+  {
+    "id": "evidence-synthesis-positive",
+    "kind": "positive",
+    "prompt": "Run a reproducible cross-domain evidence review with search protocol, screening, source quality, conflicting findings, and calibrated certainty.",
+    "expectedSkills": ["evidence-synthesis"],
+    "artifacts": [{"artifact": "Evidence Synthesis", "owner": "evidence-synthesis"}]
+  },
+  {
+    "id": "requirements-positive",
+    "kind": "positive",
+    "prompt": "Elicit and validate stakeholder needs, scenarios, quality attributes, constraints, acceptance boundaries, and traceability for this new service.",
+    "expectedSkills": ["requirements-engineering"],
+    "artifacts": [{"artifact": "Requirements Contract", "owner": "requirements-engineering"}]
+  },
+  {
+    "id": "user-research-positive",
+    "kind": "positive",
+    "prompt": "Plan qualitative user interviews and contextual inquiry to learn users' real workflow, barriers, language, and mental models before choosing a product flow.",
+    "expectedSkills": ["user-research-and-discovery"],
+    "artifacts": [{"artifact": "User Research Protocol and Findings", "owner": "user-research-and-discovery"}]
+  },
+  {
+    "id": "semantic-taxonomy-positive",
+    "kind": "positive",
+    "prompt": "Design a shared capability vocabulary with stable IDs, multilingual labels, facets, polyhierarchy, mappings, and deprecation semantics.",
+    "expectedSkills": ["semantic-taxonomy-design"],
+    "artifacts": [{"artifact": "Semantic Vocabulary Contract", "owner": "semantic-taxonomy-design"}]
+  },
+  {
+    "id": "decision-optimization-positive",
+    "kind": "positive",
+    "prompt": "Formulate and verify a constrained model that allocates agents and runner capacity across jobs under cost, deadline, and eligibility constraints.",
+    "expectedSkills": ["decision-optimization-modeling"],
+    "artifacts": [{"artifact": "Constrained Decision Model", "owner": "decision-optimization-modeling"}]
+  },
+  {
+    "id": "ordinary-edit-abstention",
+    "kind": "abstention",
+    "prompt": "Correct the misspelling in this README sentence and run the narrow documentation check.",
+    "expectedSkills": [],
+    "artifacts": []
+  },
+  {
+    "id": "status-question-abstention",
+    "kind": "abstention",
+    "prompt": "Tell me the current branch name and whether the working tree has uncommitted files.",
+    "expectedSkills": [],
+    "artifacts": []
+  },
+  {
+    "id": "explore-deliberate-decide-compound",
+    "kind": "compound",
+    "prompt": "Generate distinct architecture options, let independent experts challenge them, then select and record the best durable choice.",
+    "expectedSkills": ["design-space-exploration", "structured-deliberation", "decision-quality-standard"],
+    "artifacts": [
+      {"artifact": "Design Space Portfolio", "owner": "design-space-exploration"},
+      {"artifact": "Deliberation Record", "owner": "structured-deliberation"},
+      {"artifact": "Decision Record", "owner": "decision-quality-standard"}
+    ]
+  },
+  {
+    "id": "improve-objective-evaluate-compound",
+    "kind": "compound",
+    "prompt": "Fix a recurring agent failure, audit whether its completion score is being gamed, and evaluate the exact changed Skill before promotion.",
+    "expectedSkills": ["agent-system-improvement", "optimization-objective-review", "skill-eval-designer"],
+    "artifacts": [
+      {"artifact": "Learning Change Record", "owner": "agent-system-improvement"},
+      {"artifact": "Optimization Objective Contract", "owner": "optimization-objective-review"},
+      {"artifact": "Skill Evaluation Program", "owner": "skill-eval-designer"}
+    ]
+  },
+  {
+    "id": "objective-and-mathematical-optimizer-compound",
+    "kind": "compound",
+    "prompt": "Design an automated capacity allocator, guard its objective against Goodhart and gaming, and formulate the constrained optimization model.",
+    "expectedSkills": ["optimization-objective-review", "decision-optimization-modeling"],
+    "artifacts": [
+      {"artifact": "Constrained Decision Model with integrated objective contract", "owner": "decision-optimization-modeling"}
+    ]
+  }
+]

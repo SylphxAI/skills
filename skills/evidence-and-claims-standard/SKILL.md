@@ -1,6 +1,6 @@
 ---
 name: evidence-and-claims-standard
-description: "Evidence-bound factual, status, completion, causality, and delivery claims. Use when reporting what happened, whether work is done, whether a check passed, whether a stated cause is proven, or whether source, merge, release, deploy, and live behavior are established. Use for audits and handoffs that must prevent hallucination or overclaim."
+description: "Adjudicate a material or disputed factual, status, completion, causality, or delivery claim against current primary evidence. Use when deciding whether work is actually done, a check or stated cause is proven, or source, merge, release, deploy, and live behavior are established. Do not load merely because routine implementation reporting should remain truthful."
 ---
 
 # Evidence and Claims Standard
@@ -8,6 +8,10 @@ description: "Evidence-bound factual, status, completion, causality, and deliver
 Make the strongest claim current evidence supports, and no stronger. Read
 [references/claim-evidence-method.md](references/claim-evidence-method.md) before
 assessing a material or disputed claim.
+Use [references/claim-dependency-revision.md](references/claim-dependency-revision.md)
+when premises change over time, and
+[references/assurance-cases.md](references/assurance-cases.md) for a high-impact
+multi-layer claim.
 
 ## Method
 
@@ -40,7 +44,8 @@ Before saying `done`, `fixed`, `converged`, `shipped`, or an equivalent:
 
 ## Output
 
-Produce a **Claim-Evidence Record**:
+When claim adjudication is the requested job, produce a standalone
+**Claim-Evidence Record**:
 
 - **Claim** — one falsifiable statement.
 - **Verdict** — supported, refuted, partially supported, or unknown.
@@ -49,6 +54,10 @@ Produce a **Claim-Evidence Record**:
 - **Contradictions checked** — material disconfirming paths considered.
 - **Boundary** — nearby claims the evidence does not establish.
 - **Next evidence** — only if it could materially change the verdict.
+
+When this Skill supports another requested artifact, integrate the applicable
+verdict, evidence, boundary, and uncertainty into that artifact instead of
+emitting a second report.
 
 ## Boundaries
 

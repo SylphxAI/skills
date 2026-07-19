@@ -1,6 +1,6 @@
 ---
 name: skill-eval-designer
-description: "Design or audit a falsifiable, exact-candidate routing and behavior evaluation for one Agent Skill or a complete skill catalog: positive/near-neighbour/abstention/compound routing, hidden tasks, base and length-matched controls, public competitor, multiple answer/judge families, deterministic artifact and safety checks, digests, provider receipts, uncertainty, replay, attestation, expiry, and forward-test regressions. Use when proving incremental behavior—not when authoring the skill or inferring adoption from fixtures."
+description: "Design or audit a falsifiable, exact-candidate runtime auto-injection and behavior evaluation for one Agent Skill or a complete catalog: positive, near-neighbour, abstention, compound injection, hidden tasks, controls, independent model families, deterministic artifact and safety checks, provenance, uncertainty, replay, and regressions. Use when proving incremental behavior, not when authoring a skill or building a router."
 ---
 
 # Skill Eval Designer
@@ -20,16 +20,20 @@ capability, or adoption/outcome telemetry.
 ## Workflow
 
 1. Freeze the question: exact skill name/description/body/references/scripts,
-   intended job/artifact, nearest neighbours, risks, output budget, supported
+   intended jobs/artifacts, nearest neighbours, risks, output budget, supported
    runtimes/tools, and claim that the eval may falsify.
-2. Read `references/skill-eval-systems.md`. Compute a routing digest over
+2. Read `references/skill-eval-systems.md`. Compute an injection-contract digest over
    name+description and behavior digest over the complete ordered bundle. Bind
    candidate commit, catalog digest, task/rubric/runner/policy/model-registry
    digests, parameters, seed, tool availability, retries, and expiry.
-3. Build full-catalog routing cases: at least five realistic positives and five
+   For repeated or continuously monitored evaluations, also apply
+   `references/holdout-sequential-evaluation.md`.
+3. Build full-catalog runtime auto-injection cases: at least five realistic positives and five
    near-neighbour negatives per candidate, abstentions, multilingual/ambiguous
-   forms, and compound tasks with an exact expected set and primary artifact
-   owner. Do not evaluate descriptions in isolation.
+   forms, and compound tasks with an exact expected injected set, expected
+   artifacts, one semantic owner per artifact, supporting constraints, and
+   forbidden contradictions. Test the runtime's native mechanism; do not build
+   a meta-router or evaluate descriptions in isolation.
 4. Build unseen behavior tasks from real job shapes and adversarial failure
    modes. Expected behavior is observable assertions and deterministic artifact
    checks, not a leaked golden answer. Include unsafe shortcuts, prompt
@@ -44,7 +48,7 @@ capability, or adoption/outcome telemetry.
 7. Keep promotion holdouts hidden at inference through a one-use pre-run
    commitment; disclose after the attested protected run. Reject duplicate,
    leaked, authored-to-fit, or post-result-edited tasks.
-8. Report per-skill F1, primary-owner accuracy, abstention precision/recall,
+8. Report per-skill F1, artifact-owner accuracy, abstention precision/recall,
    exact-set and compound exact-set accuracy, win rates versus every control,
    paired/task-clustered confidence, critical failures, cost/latency, and
    family-specific effects. Aggregates may not hide one broken route.
@@ -82,7 +86,7 @@ capability, or adoption/outcome telemetry.
 Return one Skill Evaluation Program containing:
 
 1. falsifiable claim, exact candidate/catalog identities and all digests;
-2. routing dataset design with positive, neighbour, abstention, compound,
+2. runtime auto-injection dataset design with positive, neighbour, abstention, compound,
    multilingual, and injection cases;
 3. behavior tasks, assertions, deterministic artifacts, critical failures, and
    output budget;

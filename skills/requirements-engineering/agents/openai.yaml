@@ -1,0 +1,4 @@
+interface:
+  display_name: "Requirements Engineering"
+  short_description: "Elicit and validate traceable system requirements"
+  default_prompt: "Use $requirements-engineering to produce a traceable Requirements Contract for this system."

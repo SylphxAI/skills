@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security Threat Modeling"
+  short_description: "Model threats and define security design controls"
+  default_prompt: "Use $security-threat-modeling to produce a Threat Model and Security Design Contract for this system."

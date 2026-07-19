@@ -239,10 +239,12 @@ maximum tests, or theoretical perfection.
 
 ### Bound review
 
-Perform one primary implementation review and, for genuinely high-risk changes,
-one independent adversarial review. Integrate material findings, then re-run the
-declared checks. Do not recursively create new review systems to defend against
-the reviewer, the gate, or the agent itself.
+Perform one bounded review contract with finite, risk-matched independent
+perspectives. A low-risk change may need only the primary implementation
+review; materially different high-risk failure models may justify several
+independent perspectives within the same contract. Integrate material findings,
+then re-run the declared checks. Do not recursively create new review systems
+to defend against the reviewer, the gate, or the agent itself.
 
 When a review discovers an independent concern, preserve it as a short follow-up
 item only if it has concrete value. Do not implement it merely to make the report

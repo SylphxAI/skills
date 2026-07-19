@@ -1,6 +1,6 @@
 ---
 name: work-coordination-standard
-description: "Work ledger claims, handoff, proof chains, stale-claim recovery, privacy, and cross-project activity. Use when designing durable agent work coordination. Do not use as a one-off checklist or as a substitute for live Work Graph operations."
+description: "Portable work-ledger semantics for claims, attempts, checkpoints, handoff, proof links, stale-claim recovery, privacy, and cross-project coordination. Use when designing or auditing durable agent work coordination that must survive sessions, runtimes, or provider boundaries. Do not use as a one-off checklist, a product-specific API guide, or a substitute for operating the selected live coordination system."
 ---
 # Work Coordination Standard
 
@@ -9,6 +9,9 @@ description: "Work ledger claims, handoff, proof chains, stale-claim recovery, p
 Read [references/full-standard.md](references/full-standard.md) for the full
 method and predicates.
 
+For allocation and shared-state patterns, also read
+[references/coordination-protocols.md](references/coordination-protocols.md).
+
 ## Method
 
 1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
@@ -16,12 +19,16 @@ method and predicates.
 3. Prefer schema/test/ADR homes over copying this body into product repos.
 
 
-## Output format
+## Composition and output
 
-1. **Applicability** — why this standard applies to the change.
-2. **Predicates in scope** — material obligations from the full body.
-3. **Evidence** — tests, schemas, ADRs, or gates that verify them.
-4. **Gaps** — residual risk with owner and follow-up.
+Apply this standard as constraints on the artifact requested by the user or
+owned by the primary procedure. Do not emit a separate per-standard compliance
+report merely because this Skill was injected.
+
+Integrate only material obligations, deviations, evidence, and gaps into the
+primary artifact or final status. When conformance assessment is itself the
+requested job, produce one standalone domain conformance record from this
+standard.
 
 ## Boundaries
 
@@ -30,5 +37,6 @@ method and predicates.
 
 ## When not to use
 
-- Live Work Graph claim/lease/checkpoint → Control Plane MCP tools.
+- Product-specific live operations → the matching coordination adapter Skill
+  and that product's current API or tool schema.
 - Unrelated commercial packaging alone → commercial-decision-standard when in scope.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "System Dynamics Analysis"
+  short_description: "Model feedback, delays, and system behavior"
+  default_prompt: "Use $system-dynamics-analysis to explain dynamic behavior and identify robust interventions."

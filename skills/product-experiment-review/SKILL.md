@@ -18,6 +18,8 @@ over an experiment that cannot change a decision or support its causal claim.
    overlapping tests, release calendar, policy constraints, and domain-owner
    approvals. Mark missing inputs; do not invent sample sizes or thresholds.
 3. Read `references/product-experiment-systems.md`.
+   For logged-policy or counterfactual evaluation, also read
+   `references/counterfactual-evaluation.md`.
 4. Define the estimand and unit: eligible population, assignment unit, exposure,
    analysis unit, comparison, outcome window, noncompliance handling, and whether
    spillover, network effects, carryover, or shared inventory violate independence.

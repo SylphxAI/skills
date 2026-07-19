@@ -71,6 +71,9 @@ learning state, and the graph must remain acyclic.
 
 ## When not to use
 
+- For generative interviews, observation, contextual inquiry, concept
+  evaluation, or usability discovery before or beyond recurring feedback
+  operations, use `user-research-and-discovery`.
 - For public review request eligibility, prompt timing, native solicitation,
   cooldown, or platform request policy, use `review-solicitation-policy`.
 - For end-to-end support, refund, incident, analytics implementation, listing

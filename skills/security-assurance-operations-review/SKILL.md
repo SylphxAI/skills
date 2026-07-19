@@ -47,8 +47,9 @@ memory are not evidence.
 
 ## Routing boundaries
 
-- The owning engineering/security boundary and `engineering-standard` own control design, implementation,
-  threat modeling, testing, vulnerability remediation, and production proof.
+- `security-threat-modeling` owns threat and security-design contracts. The
+  owning engineering boundary and `engineering-standard` own implementation,
+  testing, vulnerability remediation, and production proof.
 - `incident-standard` plus the current security/legal owners govern incident response,
   coordinated disclosure, customer notification, and exploit-sensitive wording.
 - Auditors and certification authorities own independent assurance conclusions;

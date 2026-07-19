@@ -18,12 +18,16 @@ Record schema: [references/postmortem-record.schema.json](references/postmortem-
 3. Prefer schema/test/ADR homes over copying this body into product repos.
 
 
-## Output format
+## Composition and output
 
-1. **Applicability** — why this standard applies to the change.
-2. **Predicates in scope** — material obligations from the full body.
-3. **Evidence** — tests, schemas, ADRs, or gates that verify them.
-4. **Gaps** — residual risk with owner and follow-up.
+Apply this standard as constraints on the artifact requested by the user or
+owned by the primary procedure. Do not emit a separate per-standard compliance
+report merely because this Skill was injected.
+
+Integrate only material obligations, deviations, evidence, and gaps into the
+primary artifact or final status. When conformance assessment is itself the
+requested job, produce one standalone domain conformance record from this
+standard.
 
 ## Boundaries
 
@@ -32,5 +36,6 @@ Record schema: [references/postmortem-record.schema.json](references/postmortem-
 
 ## When not to use
 
-- Live Work Graph claim/lease/checkpoint → Control Plane MCP tools.
+- Product-specific live coordination operations → the matching adapter Skill
+  and that product's current API or tool schema.
 - Unrelated commercial packaging alone → commercial-decision-standard when in scope.

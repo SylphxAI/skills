@@ -55,7 +55,7 @@ The strongest target is a self-feeding autonomous engineering system:
 
 ```text
 Production / CI / security / customer / delivery-adapter signals
-  -> Control Plane Work Ledger as the internal work-state source
+  -> profile-selected canonical Work Ledger as the internal work-state source
   -> typed work items classify scope, role, tenant, risk, proof, and next action
   -> agents claim scoped work through leases and checkpoint events
   -> source candidates execute the change through the active delivery profile
@@ -69,11 +69,11 @@ This target is intentionally larger than the first implementation slice. Keep it
 visible so MVP delivery does not erase the north star, but implement it through
 small, semantically atomic, verified source candidates.
 
-Control-plane responsibilities:
+Responsibility split:
 
-- **Work Coordination coordinates internal work-state**: Work Items, claims,
-  checkpoints, blockers, proof-chain links, stale-session recovery, cost/ETA,
-  and cross-runtime handoff live in the Work Ledger defined by
+- **The selected coordination system owns internal work-state**: Work Items, claims,
+  checkpoints, blockers, proof-chain links, stale-session recovery, and
+  cross-runtime handoff follow the portable semantics defined by
   [`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md). Hidden chat
   state is not ownership.
 - **The active delivery profile delivers and proves repository work**: it owns
@@ -104,28 +104,20 @@ Control-plane responsibilities:
   logs, metrics, traces, regressions, and security findings become issues, PRs,
   ADRs, specs, or failing gates.
 
-### Role Topology
+### Capability And Review Perspectives
 
-Start with role-based agents that span repositories; do not assign agents by
-project. Repos, labels, work packets, and PR metadata define scope.
+Allocate agents by the capability, artifact, evidence, and write boundary needed
+for the current outcome—not by a permanent simulated organization chart. A
+single agent may cover several perspectives; high-impact work may assign
+independent perspectives to separate contexts when the expected information
+gain exceeds coordination cost.
 
-Phase 1 roles:
-
-1. Signal / Triage
-2. ADR / Spec Research
-3. ADR / Spec Implementation
-4. Engineering Quality / Performance Polish
-5. Product Surface / UX / Copy Polish
-6. PR Review / Merge Gate
-
-Phase 2 roles:
-
-7. Production / CI / Release Intelligence
-8. Security / Dependency / Supply Chain
-
-Future specializations may split out migration/data safety, observability, repo
-adoption, prompt/agent-definition maintenance, cost/performance intelligence, or
-doc/spec freshness, but only after the base loop is stable.
+Common perspectives include signal triage, research and specification,
+implementation, engineering quality, product/interface quality, adversarial
+review, production/delivery, and security/supply chain. They are a planning
+vocabulary, not required roles, phases, labels, queues, or long-lived agents.
+Add a specialization only when its distinct evidence or capability changes the
+result; remove it when it becomes ceremony.
 
 ### Structured Agent Audit
 
@@ -141,10 +133,8 @@ sufficient audit. Every meaningful action must carry structured responsibility:
 - branch prefix and PR title role;
 - PR body metadata: `Agent-Author` (see below), role, linked Work Item or issue,
   linked ADR/spec, risk, affected area, verification, rollback/deploy notes;
-- labels for `role:*`, `state:*`, `type:*`, `area:*`, `risk:*`, `priority:*`,
-  drawn from the shared taxonomy in
-  [`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md) rather than a
-  per-repo dialect;
+- labels or equivalent structured fields defined by the active forge/delivery
+  adapter rather than an invented per-repo dialect;
 - `AGENT-CLAIM` and `AGENT-CHECKPOINT` comments only when the GitHub issue
   thread is the chosen public or repo-local coordination surface;
 - `AGENT-WORK-COMPLETE` comments when handing off or finishing a work item;
@@ -200,9 +190,9 @@ Policy-repository scope, credential modes, and required-status wiring live in
 Repository Admission; this section owns the field contract that
 policy-review verifier parses.
 
-Presence follows the active coordination surface — see
-[`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md) for ledger vs
-issue claim freshness. Do not create a third presence store.
+Presence and freshness follow the selected coordination product and forge
+adapter. The portable standard defines claim/recovery obligations but not one
+provider's issue convention. Do not create a third presence store.
 
 ### Minimal Complete Loop
 
@@ -235,9 +225,12 @@ independent work belongs in separate PRs or stacks, where queue sharding runs
 validation in parallel. Other active profiles use the generic
 candidate DAG and valid-prefix rules in the source-authoring standard.
 
-### Roadmap Items To Preserve
+### Optional Mechanism Portfolio
 
-The full target includes these unimplemented capabilities:
+The following are reusable patterns, not a universal roadmap or completion
+checklist. Select one only when the active repository's risk, scale, or delivery
+profile demonstrates the need and its lifecycle cost is lower than the expected
+loss it controls:
 
 - organization `.github`/governance repo with labels, issue forms, PR templates,
   reusable workflows, ruleset examples, validators, and structured-comment
@@ -263,8 +256,10 @@ The full target includes these unimplemented capabilities:
 
 ## No-Human Operating Assumption
 
-No-human does not mean low-quality, unreviewed, or unaudited. It means every
-normal human coordination or review function must have a mechanical replacement.
+No-human does not mean low-quality, unreviewed, or unaudited. It means recurring
+material coordination and review obligations need an agent-executable owner and
+checkable evidence. It does not require mechanizing every conventional ceremony
+or creating a permanent gate for every possible mistake.
 
 | Human function in a conventional team | No-human mechanism |
 | --- | --- |
@@ -277,9 +272,11 @@ normal human coordination or review function must have a mechanical replacement.
 | Operational diagnosis | OpenTelemetry traces/metrics/logs, structured errors, runbooks, replayable jobs |
 | Compliance/audit | SBOM, provenance, signed artifacts, immutable logs, conformance audits |
 
-Advisory-only comments, dashboards, and reports are not governance. If a finding
-matters, encode it as a failing check, generated diff, policy decision, alert,
-or issue that an agent is expected to act on.
+Advisory-only comments, dashboards, and reports are not enforcement. When a
+recurring material finding is machine-decidable and the control has positive
+expected value, encode the lowest-cost effective check, generated diff, policy
+decision, alert, or work item. Otherwise resolve the bounded case directly and
+retain proportionate evidence; repetition alone does not justify a new gate.
 
 Two additional invariants of the no-human operating model:
 

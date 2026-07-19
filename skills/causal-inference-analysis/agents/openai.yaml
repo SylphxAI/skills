@@ -1,0 +1,4 @@
+interface:
+  display_name: "Causal Inference Analysis"
+  short_description: "Estimate causal effects with explicit assumptions"
+  default_prompt: "Use $causal-inference-analysis to define and evaluate the causal effect of this intervention."

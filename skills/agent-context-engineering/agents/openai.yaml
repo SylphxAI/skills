@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Context Engineering"
+  short_description: "Design reliable agent context and memory contracts"
+  default_prompt: "Use $agent-context-engineering to design or audit a Context and Memory Contract."
