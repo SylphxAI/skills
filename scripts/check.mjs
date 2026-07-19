@@ -392,6 +392,31 @@ export function validateActiveProfileCollisions(profiles, errors) {
   }
 }
 
+
+export function validateAdrLocators(errors) {
+  const adrRoot = path.join(repositoryRoot, 'docs', 'adr');
+  if (!existsSync(adrRoot)) {
+    errors.push('docs/adr/: missing');
+    return;
+  }
+  const files = readdirSync(adrRoot)
+    .filter((name) => name.endsWith('.md'))
+    .sort();
+  const shortLocators = new Map();
+  for (const name of files) {
+    const match = name.match(/^(ADR-\d{4})(?:-|$)/);
+    if (!match) continue;
+    const locator = match[1];
+    if (!shortLocators.has(locator)) shortLocators.set(locator, []);
+    shortLocators.get(locator).push(name);
+  }
+  for (const [locator, names] of shortLocators.entries()) {
+    if (names.length > 1) {
+      errors.push(`docs/adr/: locator ${locator} is used by ${names.join(', ')}`);
+    }
+  }
+}
+
 export function checkRepository() {
   const errors = [];
   for (const removed of REMOVED_BOUNDARIES) {
@@ -406,6 +431,7 @@ export function checkRepository() {
   const profiles = [];
   for (const folder of skillFolders) validateSkill(folder, names, errors, profiles);
   validateActiveProfileCollisions(profiles, errors);
+  validateAdrLocators(errors);
 
   const rootSchema = path.join(repositoryRoot, 'schemas', 'product-artifact-envelope.schema.json');
   if (!existsSync(rootSchema)) errors.push('schemas/product-artifact-envelope.schema.json: missing');

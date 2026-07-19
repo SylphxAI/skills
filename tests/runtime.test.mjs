@@ -74,12 +74,28 @@ test('sync, status, update, and clear own only the declared packages', () => {
     const status = run(['status', '--dest', destination, '--json']);
     const parsed = JSON.parse(status.stdout);
     assert.equal(parsed.targets[0].current, true);
+    assert.equal(parsed.targets[0].sourceCommit, null);
+    assert.equal(typeof parsed.targets[0].packageVersion, 'string');
+    assert.match(parsed.targets[0].generation, /^generation-[0-9a-f]{16}$/);
+    assert.deepEqual(parsed.targets[0].driftedPackages, []);
+
+    const committed = runWithEnvironment(['sync', '--dest', destination, '--quiet'], {
+      SYLPHX_SKILLS_COMMIT_SHA: 'abc123deadbeef',
+    });
+    assert.equal(committed.status ?? 0, 0);
+    const committedStatus = JSON.parse(runWithEnvironment(['status', '--dest', destination, '--json'], {
+      SYLPHX_SKILLS_COMMIT_SHA: 'abc123deadbeef',
+    }).stdout);
+    assert.equal(committedStatus.targets[0].current, true);
+    assert.equal(committedStatus.targets[0].sourceCommit, 'abc123deadbeef');
+    assert.equal(committedStatus.targets[0].sourceCommitCurrent, true);
 
     const installedSkill = path.join(destination, 'engineering-standard', 'SKILL.md');
     writeFileSync(installedSkill, `${readFileSync(installedSkill, 'utf8')}\nmutated\n`);
     const drifted = JSON.parse(run(['status', '--dest', destination, '--json']).stdout);
     assert.equal(drifted.targets[0].current, false);
     assert.equal(drifted.targets[0].packagesCurrent, false);
+    assert.ok(drifted.targets[0].driftedPackages.includes('engineering-standard'));
     run(['sync', '--dest', destination, '--quiet']);
 
     writeFileSync(path.join(destination, '.sylphx-skills.json'), `${JSON.stringify({ ...manifest, skills: [] }, null, 2)}\n`);
