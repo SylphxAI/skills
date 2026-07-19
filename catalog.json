@@ -121,7 +121,7 @@
       "name": "critical-analysis",
       "description": "Analyze an uncertain material question while multiple credible hypotheses or explanations remain, using assumptions, disconfirming evidence, base rates, Bayesian updates, and calibrated conclusions. Use for root-cause, architecture, policy, or ambiguous-evidence analysis. Do not use for fixed-predicate candidate acceptance or as the final owner of a durable option decision.",
       "path": "skills/critical-analysis/SKILL.md",
-      "packageDigest": "sha256:272e9406bc73ace9e6959413832d28e7ea533f1e89a3dc9b658dea69a767d03c"
+      "packageDigest": "sha256:39aa235b3514c4d3639548597e39a1f26707d9a5bb7550246627d370846b3d88"
     },
     {
       "name": "customer-data-migration-review",

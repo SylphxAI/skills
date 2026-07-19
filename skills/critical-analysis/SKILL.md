@@ -17,9 +17,10 @@ semi-quantitatively.
 
 1. Frame the exact question, decision relevance, boundary, and deadline.
 2. Separate observations, inferences, assumptions, and unknowns.
-3. Generate the smallest complete set of materially distinct hypotheses or
-   contributing explanations, including the status quo and a credible opposing
-   explanation.
+3. Generate the smallest decision-relevant bounded set of materially distinct
+   hypotheses or contributing explanations, including the status quo and a
+   credible opposing explanation; retain missing-hypothesis risk as residual
+   uncertainty.
 4. Identify evidence expected under each hypothesis and prioritize evidence
    that discriminates between them.
 5. Search for disconfirmation, missing causes, base rates, incentives,
