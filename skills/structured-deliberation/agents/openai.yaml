@@ -1,0 +1,4 @@
+interface:
+  display_name: "Structured Deliberation"
+  short_description: "Structure independent views and resolve disagreement"
+  default_prompt: "Use $structured-deliberation to gather independent positions, map arguments, and produce a Deliberation Record."

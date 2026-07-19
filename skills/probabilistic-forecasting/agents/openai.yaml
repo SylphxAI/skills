@@ -1,0 +1,4 @@
+interface:
+  display_name: "Probabilistic Forecasting"
+  short_description: "Create resolvable calibrated probability forecasts"
+  default_prompt: "Use $probabilistic-forecasting to produce and maintain a scored forecast for this uncertain event."

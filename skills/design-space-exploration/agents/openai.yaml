@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Space Exploration"
+  short_description: "Explore diverse solution spaces before selection"
+  default_prompt: "Use $design-space-exploration to generate and map materially different solutions before choosing one."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Optimization Objective Review"
+  short_description: "Design robust metrics, rewards, and evaluators"
+  default_prompt: "Use $optimization-objective-review to audit this metric or reward and produce an Optimization Objective Contract."

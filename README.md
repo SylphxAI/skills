@@ -3,7 +3,7 @@
 [![CI](https://github.com/SylphxAI/skills/actions/workflows/check.yml/badge.svg)](https://github.com/SylphxAI/skills/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](./package.json)
-[![Agent Skills](https://img.shields.io/badge/agent%20skills-83%20packages-111827.svg)](./catalog.json)
+[![Agent Skills](https://img.shields.io/badge/agent%20skills-104%20packages-111827.svg)](./catalog.json)
 
 **Working methods for AI agents — published so they can install them.**
 
@@ -107,7 +107,7 @@ npx --yes github:SylphxAI/skills help
 
 ## What you get
 
-**83 packages** in three families (see [`catalog.json`](./catalog.json) for the
+**104 packages** in four families (see [`catalog.json`](./catalog.json) for the
 machine index and [`skills/`](./skills/) for sources):
 
 ### Standards & profiles
@@ -116,6 +116,17 @@ How we run engineering across projects — delivery, CI admission, incidents,
 agent-first development, enterprise control planes, profiles, and more.
 
 Examples: `engineering-standard` · `delivery-standard` · `agent-first-development-standard` · `work-coordination-standard` · `technology-stack-profile`
+
+### Analysis, decision & agent-system methods
+
+Independent methods with precise native-injection triggers and concrete
+artifacts: critical analysis, design-space exploration, structured
+deliberation, evidence synthesis, requirements, user research, decision quality
+and optimization, probabilistic forecasting, causal inference, system dynamics,
+agent planning/context, semantic taxonomy, threat modeling, objective review,
+provenance, and finite review closure.
+
+Examples: `critical-analysis` · `structured-deliberation` · `evidence-synthesis` · `requirements-engineering` · `security-threat-modeling`
 
 ### Product procedures
 
@@ -148,6 +159,10 @@ skills/<id>/
 
 - **One semantic owner** per package — no dual authoring roots.
 - **Description** states when to use and when not to.
+- **Native injection** selects relevant packages from runtime metadata; there is
+  no meta-router or manual skill-selection workflow.
+- **Compound tasks** may load several useful Skills. One owner produces each
+  requested artifact while standards constrain it without duplicate reports.
 - **Runtime tools** (browse, execute, MCP, credentials) stay with the agent;
   skills teach method and expected artifacts.
 

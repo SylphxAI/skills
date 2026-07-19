@@ -71,6 +71,11 @@ If an input that changes the ends is genuinely unknown, escalate only that
 input. Uncertainty about means is handled by evidence, a reversible choice, or
 a bounded experiment.
 
+When deciding whether more evidence is worth acquiring, apply
+[`value-of-information.md`](value-of-information.md). More research is not
+automatically better; acquire it when it can change the decision enough to
+justify its full cost and delay.
+
 ### Current evidence and active resolution
 
 Parametric model knowledge, prior conversation, memory, aliases, cached

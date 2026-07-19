@@ -47,8 +47,9 @@ provider, policy, tool, or production authority.
 
 - Use `frontier-verification-standard` for eval design, judges, replay, simulation,
   red-team execution, and nondeterministic release proof.
-- Use the security owner for threat models, prompt-injection defenses, tool
-  security, vulnerability remediation, and incident response.
+- Use `security-threat-modeling` for threat and security-design contracts;
+  engineering owns implementation and vulnerability remediation, while
+  `incident-standard` owns active incident response.
 - Use `product-analytics-instrumentation-review` for event/identity pipeline
   implementation after this dossier states the required product signals.
 - Use `app-design-blueprint` or `game-design-blueprint` when the primary artifact

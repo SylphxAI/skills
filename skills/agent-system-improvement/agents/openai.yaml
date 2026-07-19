@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent System Improvement"
+  short_description: "Turn recurring agent failures into proven improvements"
+  default_prompt: "Use $agent-system-improvement to diagnose a recurring agent-system failure and produce a Learning Change Record."

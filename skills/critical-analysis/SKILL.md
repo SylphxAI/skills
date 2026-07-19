@@ -1,6 +1,6 @@
 ---
 name: critical-analysis
-description: "Structured analysis of uncertain material questions using competing hypotheses, assumption checks, disconfirming evidence, premortems, and calibrated conclusions. Use for root-cause diagnosis, architecture or policy analysis, ambiguous evidence, critical-thinking requests, and questions where the first plausible explanation may be wrong."
+description: "Analyze an uncertain material question while multiple credible hypotheses or explanations remain, using assumptions, disconfirming evidence, base rates, Bayesian updates, and calibrated conclusions. Use for root-cause, architecture, policy, or ambiguous-evidence analysis. Do not use for fixed-predicate candidate acceptance or as the final owner of a durable option decision."
 ---
 
 # Critical Analysis
@@ -9,13 +9,18 @@ Investigate uncertainty without confusing fluency, consensus, or exhaustive
 prose with truth. Read
 [references/critical-analysis-method.md](references/critical-analysis-method.md)
 for the method and templates.
+Read [references/bayesian-evidence-updates.md](references/bayesian-evidence-updates.md)
+when evidence should update ranked hypotheses quantitatively or
+semi-quantitatively.
 
 ## Method
 
 1. Frame the exact question, decision relevance, boundary, and deadline.
 2. Separate observations, inferences, assumptions, and unknowns.
-3. Generate the smallest complete set of materially distinct hypotheses or
-   options, including the status quo and a credible opposing explanation.
+3. Generate the smallest decision-relevant bounded set of materially distinct
+   hypotheses or contributing explanations, including the status quo and a
+   credible opposing explanation; retain missing-hypothesis risk as residual
+   uncertainty.
 4. Identify evidence expected under each hypothesis and prioritize evidence
    that discriminates between them.
 5. Search for disconfirmation, missing causes, base rates, incentives,
@@ -34,7 +39,7 @@ Produce a **Critical Analysis Brief**:
 
 - **Question and stakes**
 - **Observed facts and evidence quality**
-- **Competing hypotheses or options**
+- **Competing hypotheses or explanations**
 - **Discriminating evidence**
 - **Strongest case for and against the leading conclusion**
 - **Assumptions and failure paths**
@@ -45,6 +50,8 @@ Produce a **Critical Analysis Brief**:
 
 - This skill diagnoses and challenges; `decision-quality-standard` owns final
   material option selection and durable decision tradeoffs.
+- Use `design-space-exploration` to generate materially different solution
+  options before selection.
 - Use `evidence-and-claims-standard` to adjudicate whether an individual claim
   is supportable.
 - Use a domain skill for technical, commercial, security, legal, or product

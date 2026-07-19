@@ -32,8 +32,10 @@ it does not redefine them around a particular forge or delivery lane.
 Before editing, delegating, or launching long-running work, create an
 intentional starting state.
 
-- Load the smallest relevant binding Skills packages and repo-local source of truth before
-  making durable decisions.
+- Let the runtime auto-inject relevant Skills from their metadata, then read
+  every injected package and its required references before applying it. Do
+  not scan the catalog to build a manual router or silently discard a useful
+  injected method. Load repo-local truth for the affected boundary.
 - Set or update the active goal when the runtime exposes a goal system. The goal
   must state the objective, owning boundary, success criteria, Definition of
   Done, validation gates, delivery target, and evidence expected at completion.
@@ -119,6 +121,10 @@ make the split operational:
 
 For non-trivial work, build a compact execution graph before implementation.
 
+When graph progress depends on tools or changing external state, apply
+[`tool-grounded-execution.md`](tool-grounded-execution.md) and checkpoint the
+resulting action-observation trace.
+
 - `critical_path`: actions that directly gate completion.
 - `parallel_tracks`: independent research, code, validation, docs, release, or
   review tracks.
@@ -162,14 +168,20 @@ Classify every approval gate:
   mechanism for a required gate. Report the missing mechanism and, where safe,
   add the policy/check/spec/ADR needed to remove the stop next time.
 
-In a no-human repository, recurring approval gates must become machine policy
-gates: branch protections, required CI statuses, policy-as-code, signed
-exception files with expiry, environment rules, generated diffs, or conformance
-audits. If the same gate requires chat approval twice, the mechanism is missing.
+In a no-human repository, recurring, material, machine-decidable approval work
+should become the lowest-cost durable control whose lifecycle cost is below the
+expected loss it prevents. That may be a test, generated diff, policy check,
+ruleset, expiry-bound exception, or conformance audit. Repetition alone does
+not justify a new gate or service; one-off judgment may remain an evidence-bound
+agent artifact.
 
 ## Scope And Success Criteria
 
 Before implementation, convert vague requests into verifiable outcomes.
+
+Use `scope-discipline` for the canonical terminal, same-cause, positive-net,
+and speculative-expansion classification. This section supplies execution-graph
+inputs; it does not define a second scope algorithm.
 
 - State assumptions that materially affect scope, product direction, public
   contracts, persistence, infrastructure, cost, or user workflows.
@@ -299,39 +311,12 @@ ordering, and progressive disclosure.
 
 ## Evidence-First Reporting
 
-Every factual claim in a checkpoint, review, handoff, issue, PR description, or
-final report carries its evidence. The claim class determines the proof
-obligation:
-
-| Claim | Required evidence |
-| --- | --- |
-| "I did X" (action taken) | The artifact: diff, commit SHA, PR/issue link, command run with its output. |
-| "X is done / works" (completion) | Verification output: test/CI results, typecheck/lint output, deploy readback, DB rows, pod state, observed runtime behavior. |
-| "X is broken / the bug is Y" (problem) | The reproduction: failing test, error log, stack trace, request/response pair, metric. |
-| "The root cause is Z" | The traced mechanism: reproduction → cause traced through the actual code/config path → fix → the original reproduction re-verified passing. |
-
-Rules:
-
-- Evidence is checkable by the reader: a command plus its output, a link, an
-  identifier, a `file:line` — not narrative. "I ran the tests" without the
-  result is a claim, not evidence.
-- Verify content, not exit codes: a green command that does not exercise the
-  claimed behavior proves nothing.
-- A root cause is proven only when the mechanism is traced end-to-end and the
-  fix makes the original reproduction pass. A plausible explanation that
-  pattern-matches a known failure mode is a hypothesis, not a diagnosis.
-- Label epistemic state explicitly: verified fact, inference, or hypothesis.
-  Never present an unverified inference as a verified outcome.
-- Bind delivery state explicitly. A plan is not implementation; implementation
-  is not validation; an open or green PR is not merge; merge is not deployment;
-  deployment is not behavioral or SLO proof.
-- Match evidence scope to claim scope: the proof must exercise the same
-  revision, environment, boundary, population, and failure mode the conclusion
-  covers. Narrow evidence cannot establish a broad claim.
-- Negative results are evidence too: report what failed, what was skipped, and
-  what is temporarily bridged, with the same citation discipline.
-- When evidence cannot be obtained (no access, blocked gate, missing telemetry),
-  say so, and state what evidence would prove the claim and how to obtain it.
+Execution checkpoints supply exact state and evidence locators: current
+candidate or live subject, completed actions, running lanes, blockers, and
+validation or delivery observations. `evidence-and-claims-standard` owns the
+support verdict and lifecycle boundaries for material action, problem,
+causality, completion, and delivery claims. Integrate its result into the
+checkpoint or final status instead of emitting a second evidence report.
 
 ## Subagent Use
 
@@ -476,6 +461,10 @@ pause only for that narrow decision and keep all independent tracks moving.
 Use research swarms for important architecture, AI, security, scaling,
 dependency, product, or ecosystem choices.
 
+Use `critical-analysis` for competing hypotheses, disconfirmation, and
+calibration; use `decision-quality-standard` for the final option choice. This
+section owns when and how to schedule independent research lanes.
+
 Deep research must synthesize, not collect links:
 
 - Start from primary sources: official docs, specs, source code, changelogs,
@@ -580,7 +569,10 @@ Minimum loop:
 - Do one final pass for accidental scope creep, stale comments, dead code,
   unresolved sessions, and unreported residual risk.
 
-Use a separate-context adversarial reviewer subagent when available and permitted. For changes
+Use a lightweight local self-check for ordinary work. When exact-candidate
+formal review is required, use `convergent-review` for perspective selection,
+repair, and closure. Use a separate-context adversarial reviewer subagent when
+available and permitted. For changes
 touching public contracts, persistence, auth, billing, security, infrastructure,
 deploy/release behavior, cross-repo boundaries, migrations, high-risk
 concurrency, or agent/tool schemas, produce a durable review artifact: PR body
@@ -590,8 +582,10 @@ governance.
 
 If the reviewer finds material issues, fix them before final response unless
 blocked by a machine policy gate, credentials, external systems, or user
-direction. Repeated reviewer findings must become CI gates, policy rules,
-generators, tests, evals, or conformance checks.
+direction. For a recurring material same-cause failure, add the lowest-cost
+durable prevention only when it can detect the relevant defect and its
+lifecycle cost is below the expected loss. Repetition does not automatically
+mandate a CI gate, policy service, or generator.
 
 ## Completion Discipline
 

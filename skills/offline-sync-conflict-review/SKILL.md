@@ -37,6 +37,9 @@ disabled sync domain queues nothing and reserves no background/network work.
 2. Read `references/offline-sync-conflict-patterns.md`. Classify each operation
    as append-only, commutative, single-author editable, collaborative, ordered,
    destructive, permissioned, financial/legal, inventory, or attachment.
+   When a CRDT is a candidate, also read
+   `../engineering-standard/references/crdt-convergence.md` and prove its merge
+   algebra rather than selecting it by name.
 3. Specify local database/encryption, cache vs durable state, mutation/outbox
    record, stable IDs, idempotency, causal/base version, clocks, sequence,
    batching, compression, quotas, eviction, and backpressure.

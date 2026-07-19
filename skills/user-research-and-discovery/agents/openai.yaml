@@ -1,0 +1,4 @@
+interface:
+  display_name: "User Research and Discovery"
+  short_description: "Plan and synthesize rigorous user research"
+  default_prompt: "Use $user-research-and-discovery to plan and synthesize this user research study."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Semantic Taxonomy Design"
+  short_description: "Design scalable governed concept vocabularies"
+  default_prompt: "Use $semantic-taxonomy-design to design this shared semantic vocabulary."

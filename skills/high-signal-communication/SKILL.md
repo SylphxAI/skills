@@ -35,6 +35,14 @@ tokens proving diligence, narrating routine work, or repeating shared context.
    stable terms, no ceremonial opening or closing.
 6. Run the signal test again and stop.
 
+## Composition
+
+When other injected Skills own the artifact schema, required fields, evidence
+floor, or domain semantics, preserve those contracts. This Skill owns ordering,
+deduplication, compression, and progressive disclosure only. In supporting
+mode it produces no second artifact and never removes required content merely
+to make the result shorter.
+
 Use progressive disclosure. A short primary payload may point to detailed
 evidence that remains available on demand. Do not preload every possible
 question into the primary output.

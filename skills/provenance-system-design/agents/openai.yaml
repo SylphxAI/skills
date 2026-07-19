@@ -1,0 +1,4 @@
+interface:
+  display_name: "Provenance System Design"
+  short_description: "Design traceable lineage and chain-of-custody systems"
+  default_prompt: "Use $provenance-system-design to design or audit a machine-verifiable Provenance Contract."

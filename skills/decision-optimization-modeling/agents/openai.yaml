@@ -1,0 +1,4 @@
+interface:
+  display_name: "Decision Optimization Modeling"
+  short_description: "Model constrained operational decisions"
+  default_prompt: "Use $decision-optimization-modeling to formulate and validate this constrained decision model."

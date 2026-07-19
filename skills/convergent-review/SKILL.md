@@ -1,6 +1,6 @@
 ---
 name: convergent-review
-description: "Finite, high-coverage review and audit that freezes acceptance, uses independent perspectives and executable oracles, batches repairs, and closes without moving the goalposts. Use for implementation, architecture, migration, policy, documentation, or cross-artifact reviews that must be thorough without endless review loops."
+description: "Run a finite, high-coverage formal review of an exact candidate against a frozen acceptance contract, using independent perspectives and executable oracles, batching repairs, and closing without moving the goalposts. Use when review convergence itself is the job. Do not use for open-ended exploration, root-cause hypothesis generation, option selection, or one quick opinion."
 ---
 
 # Convergent Review
@@ -34,16 +34,10 @@ for an executable oracle.
 
 ### Classify and repair once
 
-Classify every finding:
-
-1. acceptance blocker;
-2. same-cause defect inside the touched owner boundary;
-3. positive-net in-boundary improvement; or
-4. independent or speculative expansion.
-
-Only categories 1 and 2 fail the candidate. Batch their repairs. Include
-category 3 only through the bounded value scan in `scope-discipline`; category
-4 does not extend this review.
+Apply the canonical finding and expansion classification from
+`scope-discipline`. Batch terminal blockers and material same-cause repairs;
+include positive-net improvements only through its bounded value scan, and do
+not let independent or speculative expansion extend this review.
 
 ### Close on the delta
 

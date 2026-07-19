@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence Synthesis"
+  short_description: "Synthesize cross-domain evidence reproducibly"
+  default_prompt: "Use $evidence-synthesis to produce a reproducible Evidence Synthesis for this question."

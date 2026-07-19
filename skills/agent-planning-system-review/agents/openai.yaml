@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Planning System Review"
+  short_description: "Design and audit adaptive agent planning controls"
+  default_prompt: "Use $agent-planning-system-review to design or audit an Agent Planning and Control Contract."

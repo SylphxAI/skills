@@ -46,6 +46,9 @@ unsupported market opinions.
 
 ## When not to use
 
+- Use `evidence-synthesis` for a reproducible cross-domain systematic, rapid,
+  scoping, or structured evidence review whose artifact is not a market
+  recommendation.
 - Use source-to-skill-distiller when one bounded document or corpus must become
   a reusable procedure.
 - Use saas-subscription-pricing when current market evidence already exists and

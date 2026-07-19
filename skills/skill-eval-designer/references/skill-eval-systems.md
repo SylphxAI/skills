@@ -5,9 +5,9 @@
 | Layer | Question | Evidence | Cannot prove |
 | --- | --- | --- | --- |
 | Static | Is the package structurally valid? | schema, links, secrets, scripts, generated freshness | better agent behavior |
-| Routing fixture | Is the intended boundary coherent? | authored positives/negatives/compound cases | generalization |
+| Injection fixture | Is the intended native auto-injection boundary coherent? | authored positives/negatives/compound cases | generalization |
 | Forward test | Does a fresh agent use it on realistic work? | raw prompt/artifact/output and independent review | catalog-wide or model-family effects |
-| Routing benchmark | Does the full catalog select the right smallest set? | one-use hidden catalog suite and exact-set metrics | behavior quality |
+| Injection benchmark | Does the runtime inject every useful and no contradictory Skill? | one-use hidden catalog suite and exact-set/composition metrics | behavior quality |
 | Behavior benchmark | Does the exact bundle beat controls? | unseen tasks, controls, deterministic checks, blind judges | demand or production outcome |
 | Live use | Does it improve real work? | task receipts, accepted artifacts, outcome/cost/readback | general causal effect without design |
 
@@ -31,21 +31,29 @@ Bind candidate Git SHA, complete catalog digest, dataset/task/rubric/runner/
 policy/model-registry digests, tool/runtime contract, parameters, seed, output
 budget, provider receipts, raw artifacts, result digest, attestation, and expiry.
 
-## Full-catalog routing matrix
+## Full-catalog auto-injection matrix
 
 Include:
 
 - five or more varied positive prompts per skill;
 - five or more near-neighbour negative prompts per skill;
 - explicit abstentions with no material skill value;
-- compound tasks with exact expected skill sets and one primary artifact owner;
+- compound tasks with exact expected Skill sets, expected artifacts, one
+  semantic owner per artifact, supporting constraints, and forbidden
+  contradictions;
 - multilingual, short/long, ambiguous, colloquial, and correction forms;
 - adversarial prompt injection and misleading keyword cases;
 - per-cluster reporting for dense collision areas.
 
-Promotion metrics include macro/per-skill F1, primary-owner accuracy, abstention
-precision/recall, exact-set accuracy, and compound exact-set accuracy. A single
-aggregate cannot hide one unusable skill.
+Assert that injection order does not change obligations, all required fields
+can coexist, supporting Skills do not demand duplicate compliance reports, and
+no Skill weakens another Skill's floor. Multiple useful Skills in one compound
+task are expected composition, not false positives.
+
+Promotion metrics include macro/per-skill F1, artifact-owner accuracy,
+abstention precision/recall, exact-set accuracy, compound exact-set accuracy,
+and contradiction-free composition. A single aggregate cannot hide one
+unusable skill.
 
 ## Behavior experiment
 

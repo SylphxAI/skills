@@ -1,6 +1,6 @@
 ---
 name: decision-quality-standard
-description: "Evidence-based option selection, competitor synthesis limits, minimal durable surfaces, and verified delivery slices. Use for material technical, product, or operating decisions where local optimization could preserve the wrong end state. Do not use for trivial reversible edits."
+description: "Select among materially distinct technical, product, commercial, or operating options and record the commitment, trade-offs, reversibility, and decision evidence. Use after credible options are formed and one durable choice is required. Do not use for unknown-cause diagnosis, exact-candidate pass/fail review, trivial reversible edits, or execution of an already selected option."
 ---
 # Decision Quality Standard
 
@@ -16,19 +16,27 @@ method and predicates.
 3. Prefer schema/test/ADR homes over copying this body into product repos.
 
 
-## Output format
+## Composition and output
 
-1. **Applicability** — why this standard applies to the change.
-2. **Predicates in scope** — material obligations from the full body.
-3. **Evidence** — tests, schemas, ADRs, or gates that verify them.
-4. **Gaps** — residual risk with owner and follow-up.
+Apply this standard as constraints on the artifact requested by the user or
+owned by the primary procedure. Do not emit a separate per-standard compliance
+report merely because this Skill was injected.
+
+Integrate only material obligations, deviations, evidence, and gaps into the
+primary artifact or final status. When conformance assessment is itself the
+requested job, produce one standalone domain conformance record from this
+standard.
 
 ## Boundaries
 
 - Does not grant deploy, credential, or MCP capabilities.
 - Does not replace product-local ADRs where those own decisions.
+- Use `decision-optimization-modeling` when allocation, routing, scheduling,
+  capacity, inventory, or resource policy requires an explicit constrained
+  mathematical model rather than qualitative option selection.
 
 ## When not to use
 
-- Live Work Graph claim/lease/checkpoint → Control Plane MCP tools.
+- Product-specific live coordination operations → the matching adapter Skill
+  and that product's current API or tool schema.
 - Unrelated commercial packaging alone → commercial-decision-standard when in scope.

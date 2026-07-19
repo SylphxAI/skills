@@ -16,6 +16,32 @@ For code structure or architecture migration, also read:
 - [Language mappings](references/capability-first-language-mappings.md)
 - [Executable-shape examples](references/capability-first-examples.md)
 
+When invariants span a broad generated state or input space, read
+[Generative verification](references/generative-verification.md).
+
+When exact expected outputs are unavailable but relations or independent
+implementations can falsify behavior, read
+[Oracle-free verification](references/oracle-free-verification.md).
+
+When a test, gate, alert, validator, or recovery control claims to catch a
+failure, read
+[Control-effectiveness verification](references/control-effectiveness.md).
+
+For critical concurrency, distributed coordination, authorization, or
+irreversible-effect state spaces, read
+[Formal modelling and model checking](references/formal-modeling.md).
+
+When concurrent or offline replicated state needs an algebraic merge, read
+[CRDT convergence](references/crdt-convergence.md).
+
+For a large shared capability catalog, concept scheme, faceted vocabulary, or
+cross-domain taxonomy, use `semantic-taxonomy-design`; do not force identity,
+hierarchy, and mutable labels into one tree path.
+
+For a new or materially changed trust boundary, privileged action, data flow,
+integration, or deployment exposure, use `security-threat-modeling` to produce
+the security-design contract before or alongside implementation.
+
 
 ## Method
 
@@ -39,15 +65,20 @@ For code structure or architecture migration, also read:
 ## When not to use
 
 - Commercial packaging alone → commercial-decision class packages.
-- Live Work Graph claim/lease/checkpoint → Control Plane MCP tools.
+- Product-specific live coordination operations → the matching adapter Skill
+  and that product's current API or tool schema.
 - One-off scripts with no durable product surface and no shared contract impact.
 
-## Output format
+## Composition and output
 
-1. **Applicability** — what changed and why this standard applies.
-2. **Predicates in scope** — rule IDs or sections from the full body.
-3. **Evidence** — tests, schemas, ADRs, benchmarks.
-4. **Gaps** — residual risk with owner and follow-up.
+Apply this standard as constraints on the artifact requested by the user or
+owned by the primary procedure. Do not emit a separate per-standard compliance
+report merely because this Skill was injected.
+
+Integrate only material obligations, deviations, evidence, and gaps into the
+primary artifact or final status. When conformance assessment is itself the
+requested job, produce one standalone domain conformance record from this
+standard.
 
 ## Guardrails
 
