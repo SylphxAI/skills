@@ -36,7 +36,10 @@ fact paths, rule kinds, outcomes, and cross-references from defaults. Runtime
 consumers interpret that contract directly; they must not infer behavior from
 selection-key suffixes, rationale prose, or a separately hard-coded copy of
 role and effect vocabulary. Structural validation proves unique assertion ids,
-closed references, unambiguous coverage, and fail-closed unknown outcomes.
+closed references, order-independent aggregation, unambiguous role and effect
+coverage, and fail-closed unknown outcomes. Every declared effect must resolve
+to exactly one typed class and one role-specific allowance; zero or multiple
+matches block evaluation.
 
 A selector match is deterministic. Two active profiles may not claim the same
 selection key for overlapping selectors. Unknown or conflicting resolution

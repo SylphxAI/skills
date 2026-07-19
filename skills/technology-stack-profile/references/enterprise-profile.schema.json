@@ -140,10 +140,11 @@
         },
         "rules": {
           "type": "array",
-          "minItems": 4,
+          "minItems": 5,
           "items": {
             "oneOf": [
               { "$ref": "#/$defs/selectorOutcomeAssertion" },
+              { "$ref": "#/$defs/effectClassificationAssertion" },
               { "$ref": "#/$defs/roleRequirementAssertion" },
               { "$ref": "#/$defs/completionAssertion" }
             ]
@@ -154,10 +155,24 @@
     "selectorOutcomeAssertion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "kind", "outcomes"],
+      "required": ["id", "kind", "aggregation", "precedence", "outcomes"],
       "properties": {
         "id": { "$ref": "#/$defs/kebab" },
         "kind": { "const": "selector-outcome" },
+        "aggregation": { "const": "match-all" },
+        "precedence": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "prefixItems": [
+            { "const": "conflict" },
+            { "const": "unmatched" },
+            { "const": "unknown" },
+            { "const": "matched" }
+          ],
+          "items": false
+        },
         "outcomes": {
           "type": "object",
           "additionalProperties": false,
@@ -171,6 +186,45 @@
         }
       }
     },
+    "effectClassificationAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "classes",
+        "noMatchDisposition",
+        "multipleMatchDisposition",
+        "unknownOutcome",
+        "ambiguousOutcome"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/kebab" },
+        "kind": { "const": "effect-classification" },
+        "classes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "effects"],
+            "properties": {
+              "id": { "$ref": "#/$defs/kebab" },
+              "effects": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": { "$ref": "#/$defs/kebab" }
+              }
+            }
+          }
+        },
+        "noMatchDisposition": { "const": "unknown" },
+        "multipleMatchDisposition": { "const": "ambiguous" },
+        "unknownOutcome": { "const": "blocked" },
+        "ambiguousOutcome": { "const": "blocked" }
+      }
+    },
     "roleRequirementAssertion": {
       "type": "object",
       "additionalProperties": false,
@@ -179,9 +233,11 @@
         "kind",
         "roles",
         "requiredImplementation",
-        "forbiddenEffects",
+        "effectClassificationId",
+        "effectClassAllowances",
         "implementationMismatchOutcome",
-        "forbiddenEffectOutcome"
+        "forbiddenEffectOutcome",
+        "unmappedEffectClassOutcome"
       ],
       "properties": {
         "id": { "$ref": "#/$defs/kebab" },
@@ -193,13 +249,23 @@
           "items": { "$ref": "#/$defs/kebab" }
         },
         "requiredImplementation": { "$ref": "#/$defs/kebab" },
-        "forbiddenEffects": {
+        "effectClassificationId": { "$ref": "#/$defs/kebab" },
+        "effectClassAllowances": {
           "type": "array",
-          "uniqueItems": true,
-          "items": { "$ref": "#/$defs/kebab" }
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["effectClass", "disposition"],
+            "properties": {
+              "effectClass": { "$ref": "#/$defs/kebab" },
+              "disposition": { "enum": ["allowed", "forbidden"] }
+            }
+          }
         },
         "implementationMismatchOutcome": { "const": "violation" },
-        "forbiddenEffectOutcome": { "const": "violation" }
+        "forbiddenEffectOutcome": { "const": "violation" },
+        "unmappedEffectClassOutcome": { "const": "blocked" }
       }
     },
     "completionAssertion": {
@@ -261,9 +327,23 @@
         },
         "requiredFields": {
           "type": "array",
-          "minItems": 8,
+          "minItems": 10,
+          "maxItems": 10,
           "uniqueItems": true,
-          "items": { "type": "string", "minLength": 1 }
+          "items": {
+            "enum": [
+              "id",
+              "defaultKey",
+              "selector",
+              "rationale",
+              "owner",
+              "decisionRef",
+              "evidence",
+              "expiresOn",
+              "recovery",
+              "replacementCondition"
+            ]
+          }
         },
         "expiryAction": { "const": "fail-closed" }
       }

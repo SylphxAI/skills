@@ -4,8 +4,8 @@
   "kind": "EnterpriseProfile",
   "profile": {
     "id": "technology-stack-profile",
-    "revision": "2026-07-19.1",
-    "contentDigest": "sha256:aa6a8abc127520785e39f6424e790a98712d3c6a3da815ea171c31a43632cd95",
+    "revision": "2026-07-19.2",
+    "contentDigest": "sha256:fdf01c1b2dd28fd27d40de9636063dafad1df8a65877432fae34a6407dbf9755",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
     "decisionRef": "references/ADR-20260718-backend-web-technology-boundary.md",
@@ -87,12 +87,38 @@
       {
         "id": "selector-resolution",
         "kind": "selector-outcome",
+        "aggregation": "match-all",
+        "precedence": ["conflict", "unmatched", "unknown", "matched"],
         "outcomes": {
           "matched": "selected",
           "unmatched": "not-selected",
           "unknown": "blocked",
           "conflict": "blocked"
         }
+      },
+      {
+        "id": "owned-effect-classification",
+        "kind": "effect-classification",
+        "classes": [
+          {
+            "id": "backend-effect",
+            "effects": [
+              "backend-authorization-decision",
+              "backend-business-effect",
+              "backend-database-mutation",
+              "durable-queue-consume",
+              "durable-queue-publish"
+            ]
+          },
+          {
+            "id": "typescript-backend-fallback",
+            "effects": ["typescript-backend-fallback"]
+          }
+        ],
+        "noMatchDisposition": "unknown",
+        "multipleMatchDisposition": "ambiguous",
+        "unknownOutcome": "blocked",
+        "ambiguousOutcome": "blocked"
       },
       {
         "id": "backend-role-requirement",
@@ -111,9 +137,14 @@
           "worker"
         ],
         "requiredImplementation": "rust",
-        "forbiddenEffects": ["typescript-backend-fallback"],
+        "effectClassificationId": "owned-effect-classification",
+        "effectClassAllowances": [
+          {"effectClass": "backend-effect", "disposition": "allowed"},
+          {"effectClass": "typescript-backend-fallback", "disposition": "forbidden"}
+        ],
         "implementationMismatchOutcome": "violation",
-        "forbiddenEffectOutcome": "violation"
+        "forbiddenEffectOutcome": "violation",
+        "unmappedEffectClassOutcome": "blocked"
       },
       {
         "id": "web-role-requirement",
@@ -125,16 +156,14 @@
           "ui-orchestration"
         ],
         "requiredImplementation": "typescript-bun-next",
-        "forbiddenEffects": [
-          "backend-authorization-decision",
-          "backend-business-effect",
-          "backend-database-mutation",
-          "durable-queue-consume",
-          "durable-queue-publish",
-          "typescript-backend-fallback"
+        "effectClassificationId": "owned-effect-classification",
+        "effectClassAllowances": [
+          {"effectClass": "backend-effect", "disposition": "forbidden"},
+          {"effectClass": "typescript-backend-fallback", "disposition": "forbidden"}
         ],
         "implementationMismatchOutcome": "violation",
-        "forbiddenEffectOutcome": "violation"
+        "forbiddenEffectOutcome": "violation",
+        "unmappedEffectClassOutcome": "blocked"
       },
       {
         "id": "role-effect-completion",

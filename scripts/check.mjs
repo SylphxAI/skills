@@ -75,17 +75,49 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
     errors.push(`${location}: assertion ids must be unique`);
   }
   const selectorRules = rules.filter((rule) => rule.kind === 'selector-outcome');
+  const effectClassificationRules = rules.filter((rule) => rule.kind === 'effect-classification');
   const roleRules = rules.filter((rule) => rule.kind === 'role-requirement');
   const completionRules = rules.filter((rule) => rule.kind === 'completion-denominator');
-  if (selectorRules.length !== 1 || roleRules.length < 1 || completionRules.length !== 1) {
-    errors.push(`${location}: assertions require one selector outcome, one or more role requirements, and one completion denominator`);
+  if (selectorRules.length !== 1
+      || effectClassificationRules.length !== 1
+      || roleRules.length < 1
+      || completionRules.length !== 1) {
+    errors.push(`${location}: assertions require one selector outcome, one effect classification, one or more role requirements, and one completion denominator`);
   }
-  const selectorOutcomes = selectorRules[0]?.outcomes;
+  const selectorRule = selectorRules[0] || {};
+  const selectorOutcomes = selectorRule.outcomes;
   if (selectorOutcomes?.matched !== 'selected'
       || selectorOutcomes?.unmatched !== 'not-selected'
       || selectorOutcomes?.unknown !== 'blocked'
       || selectorOutcomes?.conflict !== 'blocked') {
     errors.push(`${location}: selector outcome assertion must fail closed`);
+  }
+  if (selectorRule.aggregation !== 'match-all'
+      || !sameMembers(selectorRule.precedence, Object.keys(selectorOutcomes || {}))) {
+    errors.push(`${location}: selector aggregation must declare total deterministic precedence`);
+  }
+
+  const effectClassification = effectClassificationRules[0] || {};
+  const effectClasses = effectClassification.classes || [];
+  const effectClassById = new Map(effectClasses.map((effectClass) => [effectClass.id, effectClass]));
+  if (effectClassById.size !== effectClasses.length) {
+    errors.push(`${location}: effect classification ids must be unique`);
+  }
+  const effectOwners = new Map();
+  for (const effectClass of effectClasses) {
+    for (const effect of effectClass.effects || []) {
+      if (effectOwners.has(effect)) {
+        errors.push(`${location}: effect ${effect} is claimed by more than one effect classification`);
+      } else {
+        effectOwners.set(effect, effectClass.id);
+      }
+    }
+  }
+  if (effectClassification.noMatchDisposition !== 'unknown'
+      || effectClassification.multipleMatchDisposition !== 'ambiguous'
+      || effectClassification.unknownOutcome !== 'blocked'
+      || effectClassification.ambiguousOutcome !== 'blocked') {
+    errors.push(`${location}: unknown or ambiguous effects must fail closed`);
   }
 
   const roleOwners = new Map();
@@ -96,6 +128,15 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
       } else {
         roleOwners.set(role, rule.id);
       }
+    }
+    const classifier = ruleById.get(rule.effectClassificationId);
+    if (classifier?.kind !== 'effect-classification') {
+      errors.push(`${location}: role requirement ${rule.id} references an unknown effect classification`);
+    }
+    const allowances = rule.effectClassAllowances || [];
+    const allowanceClassIds = allowances.map((allowance) => allowance.effectClass);
+    if (!sameMembers(allowanceClassIds, [...effectClassById.keys()])) {
+      errors.push(`${location}: role requirement ${rule.id} must classify every effect class exactly once`);
     }
   }
 
@@ -193,6 +234,18 @@ export function validateProfileLifecycleMetadata(document, folder, errors, today
   }
 }
 
+export function validateExceptionRequiredFields(document, schema, folder, errors) {
+  const requiredFieldsSchema = schema.$defs?.exceptionPolicy?.properties?.requiredFields;
+  const requiredFieldVocabulary = requiredFieldsSchema?.items?.enum || [];
+  if (!requiredFieldVocabulary.length
+      || requiredFieldsSchema?.minItems !== requiredFieldVocabulary.length
+      || requiredFieldsSchema?.maxItems !== requiredFieldVocabulary.length
+      || requiredFieldsSchema?.uniqueItems !== true
+      || !sameMembers(document.exceptionPolicy?.requiredFields, requiredFieldVocabulary)) {
+    errors.push(`skills/${folder}/references/profile.json: exception required-field vocabulary is incomplete`);
+  }
+}
+
 function validateMachineProfile(folder, packageRoot, errors, profiles) {
   const profilePath = path.join(packageRoot, 'references', 'profile.json');
   if (!existsSync(profilePath)) return;
@@ -238,6 +291,7 @@ function validateMachineProfile(folder, packageRoot, errors, profiles) {
           errors.push(`skills/${folder}/references/profile.json${finding.instancePath || '/'}: ${finding.message}`);
         }
       }
+      validateExceptionRequiredFields(document, schema, folder, errors);
     } catch (error) {
       errors.push(`${path.relative(repositoryRoot, schemaPath)}: ${error.message}`);
     }

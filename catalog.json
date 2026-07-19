@@ -235,7 +235,7 @@
       "name": "enterprise-profile-standard",
       "description": "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selections and their lifecycle; Control Plane owns resolved live state.",
       "path": "skills/enterprise-profile-standard/SKILL.md",
-      "packageDigest": "sha256:0b0738b5338215e27b81f80c9bcd78bd37c2493b8252ff231a82a356ccc4b013"
+      "packageDigest": "sha256:e9b64791093310191dd2ba18e26d6b22d10b37914b14897d187ab9693b4e7acc"
     },
     {
       "name": "evidence-and-claims-standard",
@@ -607,11 +607,11 @@
       "name": "technology-stack-profile",
       "description": "Apply the required backend and web technology choices by component role and owned effects. Use when choosing, implementing, reviewing, or measuring production backend, API, gateway, worker, controller, runtime, storage, queue, background-job, browser, product-web, SSR, or TypeScript-to-Rust work.",
       "path": "skills/technology-stack-profile/SKILL.md",
-      "packageDigest": "sha256:bbe5a4a06aced6fb72b7f3f9aec952ef91249e233a6037e484ba38566f0a0507",
+      "packageDigest": "sha256:a251c5b700898c48b9186aa2b987d925c47267303aea540bc5613ef53d9afca4",
       "profile": {
         "id": "technology-stack-profile",
-        "revision": "2026-07-19.1",
-        "contentDigest": "sha256:aa6a8abc127520785e39f6424e790a98712d3c6a3da815ea171c31a43632cd95",
+        "revision": "2026-07-19.2",
+        "contentDigest": "sha256:fdf01c1b2dd28fd27d40de9636063dafad1df8a65877432fae34a6407dbf9755",
         "lifecycle": "active",
         "authorityClass": "governance-constraint"
       }

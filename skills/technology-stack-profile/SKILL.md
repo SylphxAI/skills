@@ -23,10 +23,12 @@ or hard-coded role lists.
    lifecycle, and task-surface facts.
 2. Classify each component by its service role and owned effects, not by file
    extension, package count, process name, or repository language totals.
-3. Resolve the matching role requirement from `assertions.rules`, then compare
-   the declared implementation and owned effects with that rule.
+3. Resolve the matching role requirement from `assertions.rules`, compare the
+   declared implementation, then resolve every owned effect through the
+   referenced effect-classification rule and the role's class allowance.
 4. Resolve completion only through the declared completion-denominator rule;
-   missing facts, an unknown role, or overlapping role rules block evaluation.
+   missing facts, unknown or overlapping roles, and zero or multiple effect
+   classifications block evaluation.
 5. Record repository-local role/effect facts under
    `architecture.components` in the owning product manifest;
    let Control Plane resolve live adoption, exceptions, deployment, and
@@ -40,7 +42,7 @@ or hard-coded role lists.
   profile violation even when its API contract matches Rust.
 - Fix an incomplete or defective backend in Rust. Do not restore TypeScript as
   fallback, dual-run implementation, shadow production, recovery, or delay tactic.
-- Count completion by declared roles and observed effects. A repository is not
+- Count completion by declared component roles and owned effects. A repository is not
   complete because a source-language count reaches a target.
 - Do not silently invent a new role for an ambiguous component. Unknown or
   conflicting resolution fails closed and triggers profile review.

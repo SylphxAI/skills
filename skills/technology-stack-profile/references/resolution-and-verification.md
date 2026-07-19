@@ -13,14 +13,19 @@ instructions.
 
 ## Machine resolution
 
-1. Resolve every condition under `selector.matchAll`. Emit the exact outcome
-   from the single `selector-outcome` rule. Unknown or conflicting input must
-   therefore block instead of selecting a policy implicitly.
+1. Resolve every condition under `selector.matchAll`, then aggregate all
+   condition states using the single `selector-outcome` rule's declared
+   precedence. The current match-all contract makes an explicit unmatched fact
+   decisive over an unrelated unknown fact; permutations produce the same
+   outcome. Unknown-only or conflicting input blocks.
 2. Read component facts through `assertions.factModel`. For every declared
    component, select exactly one `role-requirement` whose `roles` contains the
    component role. Zero or multiple matches block evaluation.
-3. Compare the component implementation with `requiredImplementation` and
-   reject any owned effect listed under that rule's `forbiddenEffects`.
+3. Compare the component implementation with `requiredImplementation`. Resolve
+   every declared owned effect through the referenced `effect-classification`
+   rule, requiring exactly one class match, then apply the role rule's explicit
+   class allowance. A zero match is unknown and multiple matches are ambiguous;
+   both block instead of being treated as allowed.
 4. Build completion from the single `completion-denominator` rule. Each
    declared component role and each declared owned effect is one denominator
    item; all items must conform. Missing facts or ambiguous role resolution
@@ -83,6 +88,9 @@ production defect, parity gap, or missing capability remains a Rust work item.
 - Enumerate applicable `architecture.components` entries and their declared
   service roles; missing entries remain a gap.
 - Enumerate database, queue, authorization, external, and background effects.
+- Prove each declared effect has exactly one profile classification and one
+  allowance for its resolved role; an application-specific unclassified effect
+  remains blocked until classified.
 - Prove that Rust owns every backend or durable-effect role.
 - Prove that TypeScript/Bun/Next components are browser, product-web, SSR, or UI
   orchestration only.
