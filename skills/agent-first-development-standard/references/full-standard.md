@@ -102,7 +102,7 @@ Responsibility split:
   and scoped-proof contract.
 - **Production feeds the loop**: CI failures, queue failures, deploy signals,
   logs, metrics, traces, regressions, and security findings become issues, PRs,
-  ADRs, specs, or failing gates.
+  ADRs, specs, or repairs to the owning contract and semantic oracle.
 
 ### Capability And Review Perspectives
 
@@ -265,8 +265,8 @@ or creating a permanent gate for every possible mistake.
 | --- | --- |
 | Work assignment | Canonical Work Ledger or repo-declared tracker, typed claims/leases, and linked adapter observations |
 | Design alignment | Boundary contracts, ADRs, generated clients, compatibility tests |
-| Code review | Required CI, lint/type/test gates, contract checks, digest-bound adversarial agent review; authenticated attribution additionally requires a distinct authenticated identity, while independent authority requires a separately controlled integration |
-| Architecture review | Architecture fitness functions, forbidden-dependency checks, catalog freshness |
+| Code review | Risk-selected compiler/lint/test evidence, contract checks, and digest-bound adversarial agent review; authenticated attribution additionally requires a distinct authenticated identity, while independent authority requires a separately controlled integration |
+| Architecture review | Compiler/module boundaries, semantic dependency analysis, public-surface contracts, and catalog freshness |
 | Security review | Policy-as-code, secret scanning, dependency alerts, SAST, supply-chain gates |
 | Release judgment | Active-profile admission/serialization, GitOps reconciliation, smoke checks, SLO/error-budget gates |
 | Operational diagnosis | OpenTelemetry traces/metrics/logs, structured errors, runbooks, replayable jobs |
@@ -274,9 +274,10 @@ or creating a permanent gate for every possible mistake.
 
 Advisory-only comments, dashboards, and reports are not enforcement. When a
 recurring material finding is machine-decidable and the control has positive
-expected value, encode the lowest-cost effective check, generated diff, policy
-decision, alert, or work item. Otherwise resolve the bounded case directly and
-retain proportionate evidence; repetition alone does not justify a new gate.
+expected value, repair its owning contract and use the lowest capable semantic
+oracle, or record a generated diff, policy decision, alert, or work item.
+Otherwise resolve the bounded case directly and retain proportionate evidence;
+repetition alone does not justify a new gate.
 
 Two additional invariants of the no-human operating model:
 
@@ -438,10 +439,11 @@ for these gates when a repository does not already have an equivalent:
 - **Feature flags**: an OpenFeature-compatible abstraction (or repo-local
   equivalent) with owner, expiry, telemetry, and cleanup gates when release
   must decouple from deploy.
-- **Architecture fitness functions**: forbidden imports, dependency
-  direction, generated-client freshness, bundle/SLO budgets, migration
-  replay, API compatibility, and doc/catalog freshness as checks, not
-  review judgment.
+- **Architecture fitness functions**: compiler/module visibility, AST or
+  dependency/build graph rules, behavioral contracts, generated-client
+  freshness, measured budgets, migration replay, API compatibility, and
+  doc/catalog freshness. CI executes the selected semantic evidence; source
+  spelling and duplicated checks are not architecture contracts.
 - **Build graph and affected checks**: dependency graphs, affected-task
   detection, caching, and remote execution so CI stays fast enough for
   merge queues and parallel agents.
@@ -467,9 +469,10 @@ Reject these as no-human governance:
 
 ## Policy And Exception Records
 
-Every repo declares its active gate class(es) from the Industrial Mechanisms
-table above — machine-readable in the repo-local agent file, a manifest, or
-org config.
+Every repo declares its active admission class from the Industrial Mechanisms
+table above in the existing repo manifest or organization profile. Do not add a
+second declaration or standalone workflow when the active profile already owns
+the fact.
 [`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)'s
 "Exception records" section owns the required-fields list and the
 expiry-fails-CI rule for any exception to a required gate — cited, not

@@ -84,7 +84,8 @@ For every selected repository:
 3. verify the exact delivered candidate;
 4. publish current adoption facts to Control Plane;
 5. remove superseded code, aliases, projections, and methods once the declared
-   compatibility need ends.
+   compatibility need ends; retire migration-only gates, mutable ledgers,
+   rebind workflows, and duplicate proof artifacts at the same terminal.
 
 Residual work becomes typed, claimable work only when it is genuinely inside
 the objective. It does not turn a bounded change into an endless programme.

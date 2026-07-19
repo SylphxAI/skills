@@ -43,6 +43,36 @@ exact merge candidate, complete postsubmit proof, and machine-selected recovery.
 The active delivery profile supplies forge-specific context names and
 serialization mechanics; this standard owns the portable admission semantics.
 
+### Gate portfolio discipline
+
+CI executes evidence; it must not become a collection of independently invented
+semantic authorities. One material invariant has one proof owner and, where
+blocking, one stable fan-in result. Reuse or strengthen that owner before adding
+another job, script, report, test, or required context.
+
+A custom gate is justified only when all are true:
+
+- it detects a named material failure inside the declared risk floor;
+- existing compiler, type, schema, semantic static analysis, dependency graph,
+  and behavior/contract proof do not already detect that failure;
+- its input is semantic and authoritative rather than implementation spelling,
+  copied reports, or author-asserted status;
+- it is deterministic, bounded, low-noise, reproducible on the exact candidate,
+  and its marginal risk reduction exceeds CI, maintenance, and coordination cost;
+- its owner and durable or temporary lifecycle are explicit.
+
+Do not use unit-test frameworks to scan production source text for required or
+forbidden tokens, imports, call order, file placement, or named helpers. Use
+compiler/module visibility, AST-aware restricted imports, dependency/build
+graphs, package exports, or executable behavior/public-surface contracts.
+
+Migration-only gates additionally declare an exact retirement predicate. Once
+the old authority is removed and target behavior is proven, retire parity
+workflows, no-old-path scans, migration ledgers, rebind jobs, and duplicated
+fixtures. Preserve durable compatibility, migration-safety, and product
+behavior proof. Do not add a meta-lint or service to police gate count; bounded
+portfolio review and direct deletion own cleanup.
+
 ### Autonomous admission control plane
 
 The active profile declares a small stable fan-in surface for risk
@@ -325,10 +355,10 @@ while the real objective regresses. Design gates assuming this:
 - **Cap concurrent open PRs per agent/author.** Unbounded agent PR creation
   starves shared CI/runner capacity; cap at the source (complements
   cluster-level batch admission), auto-labeling/closing excess.
-- **Guard the gates.** CI workflow files are production code: lint them
-  (actionlint / workflow-sanity / a workflow-security scanner) as their own
-  required check. A broken or injectable gate is the biggest risk in a no-human
-  system.
+- **Guard the gates.** CI workflow files are production code. Validate them
+  through the existing workflow parser/security owner and stable fan-in rather
+  than adding one repo-specific meta-check per workflow or incident. A broken
+  or injectable gate is material; duplicate gate-policing machinery is not.
 
 
 ## Package checklist

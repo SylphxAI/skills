@@ -103,7 +103,7 @@ State entry conditions:
 | `parity_proven` | Differential artifact bound to revisions and digests |
 | `cutover_ready` | Runtime probe, guardrails, authority switch, and recovery path |
 | `authority_target` | Deployed artifact readback and target-authority observation |
-| `source_retired` | Source absence proof, cleanup evidence, and reintroduction gate |
+| `source_retired` | Source absence proved by package/build/module authority, cleanup evidence, and retirement of migration-only parity/ledger/rebind machinery; no durable source-string scan |
 | `stale` | Previous advanced state, drift reason/ref/time, contract, target globs, and last valid proof retained for audit only |
 
 ## Portable capability ledger
