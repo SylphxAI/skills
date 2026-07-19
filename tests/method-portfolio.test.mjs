@@ -13,6 +13,7 @@ const METHOD_PACKAGES = [
   'agent-system-improvement',
   'causal-inference-analysis',
   'decision-optimization-modeling',
+  'dependency-version-selection',
   'design-space-exploration',
   'evidence-synthesis',
   'optimization-objective-review',
@@ -110,4 +111,14 @@ test('portable work semantics and the Control Plane adapter stay separate', () =
   assert.doesNotMatch(portable, /Control Plane|Sylphx|work\.start|fleet\.activity/);
   assert.match(adapter, /Control Plane/);
   assert.match(adapter, /work-coordination-standard/);
+});
+
+test('dependency-selection routing cases use natural requests and a bounded neighbour', () => {
+  const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('dependency-version-selection-'));
+  assert.ok(cases.length >= 3);
+  assert.ok(cases.some(({ expectedSkills }) => expectedSkills.includes('dependency-version-selection')));
+  assert.ok(cases.some(({ expectedSkills }) => !expectedSkills.includes('dependency-version-selection')));
+  for (const fixture of cases) {
+    assert.doesNotMatch(fixture.prompt, /model memory|live npm registry|dependency-version-selection/i);
+  }
 });

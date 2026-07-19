@@ -16,6 +16,11 @@ For code structure or architecture migration, also read:
 - [Language mappings](references/capability-first-language-mappings.md)
 - [Executable-shape examples](references/capability-first-examples.md)
 
+When creating a project, adding a package, or upgrading a runtime, framework,
+SDK, generator, plugin, or library, use `dependency-version-selection`. Query
+the authoritative live release source; never select a version from model
+memory, a stale template, or an old example.
+
 When invariants span a broad generated state or input space, read
 [Generative verification](references/generative-verification.md).
 

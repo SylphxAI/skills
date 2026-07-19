@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 104,
+  "count": 105,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -178,6 +178,12 @@
       "packageDigest": "sha256:8d3c3ea9257ecda13c7ec8388b5e0a383fca46920ef766916fa1a661169f8ac3"
     },
     {
+      "name": "dependency-version-selection",
+      "description": "Resolve and migrate runtimes, frameworks, SDKs, generators, plugins, and libraries from their authoritative current release sources. Use when creating or scaffolding a project, adding, replacing, or upgrading dependency declarations, regenerating a lock graph after dependency changes, modernizing an existing project, or reviewing dependency currency. Query live sources instead of model memory. Do not use for package metadata or script-only edits, lockfile recovery that must preserve the selected graph, choosing between fundamentally different technologies, floating mutable production versions, or selecting preview releases without an explicit experiment.",
+      "path": "skills/dependency-version-selection/SKILL.md",
+      "packageDigest": "sha256:6de7cbdf110d2859f1bb091a76749ddb1907829287b88417000e9f6fe16303a7"
+    },
+    {
       "name": "design-space-exploration",
       "description": "Generate and structure materially diverse solution concepts before selection. Use when asked to brainstorm, explore alternatives, map a design space, avoid premature convergence, or find unconventional architecture, product, policy, research, or operating approaches. Produce a Design Space Portfolio. Do not use to select the final option, diagnose which factual hypothesis is true, facilitate a stakeholder debate, or implement an already chosen design.",
       "path": "skills/design-space-exploration/SKILL.md",
@@ -211,7 +217,7 @@
       "name": "engineering-standard",
       "description": "Engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating code architecture and architecture decisions, capabilities, features, DDD domain models, Clean/Hexagonal boundaries, functional cores, modules, contracts, storage, concurrency, security, tests, lints, architecture fitness functions, observability, or delivery-critical runtime paths.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:f8bed2db40051a3de3ebbb8706d73c6cdefa1062098f76abbc1c2e124e90f115"
+      "packageDigest": "sha256:4c066e2e887796d1a52c1b6ec0d9d1d33f6fddd7937484cf9093eb4a2fd217ce"
     },
     {
       "name": "enterprise-access-governance-review",

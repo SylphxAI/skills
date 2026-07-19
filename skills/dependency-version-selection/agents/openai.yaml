@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dependency Version Selection"
+  short_description: "Resolve current stable dependencies from live sources"
+  default_prompt: "Use $dependency-version-selection to resolve and migrate this project to current stable dependency versions."
