@@ -162,5 +162,29 @@
     "artifacts": [
       {"artifact": "Constrained Decision Model with integrated objective contract", "owner": "decision-optimization-modeling"}
     ]
+  },
+  {
+    "id": "architecture-migration-positive",
+    "kind": "positive",
+    "prompt": "Migrate this repository completely to the current canonical code architecture.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [{"artifact": "Capability-first architecture migration", "owner": "engineering-standard"}]
+  },
+  {
+    "id": "architecture-migration-multi-repo",
+    "kind": "compound",
+    "prompt": "Upgrade every service repository in this organization to Capability-first Modular DDD with Clean/Hexagonal boundaries and Functional Core, Imperative Shell, including real code movement and semantic proof.",
+    "expectedSkills": ["multi-repository-migration", "engineering-standard"],
+    "artifacts": [
+      {"artifact": "Multi-repository architecture migration plan and proof", "owner": "multi-repository-migration"},
+      {"artifact": "Canonical architecture terminal", "owner": "engineering-standard"}
+    ]
+  },
+  {
+    "id": "architecture-neighbour-docs-only",
+    "kind": "near-neighbour",
+    "prompt": "Only rewrite the architecture narrative and folder README files; leave application code, contracts, and tests unchanged.",
+    "expectedSkills": ["documentation-standard"],
+    "artifacts": [{"artifact": "Documentation update", "owner": "documentation-standard"}]
   }
 ]

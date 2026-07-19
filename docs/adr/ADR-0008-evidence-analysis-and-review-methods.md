@@ -5,7 +5,7 @@ owners:
   - SylphxAI
 ---
 
-# ADR-0005: Separate claim assurance, critical analysis, and review closure
+# ADR-0008: Separate claim assurance, critical analysis, and review closure
 
 ## Context
 
@@ -40,3 +40,9 @@ is not evidence; independent methods and external observations provide value.
 - Formal reviews may be high coverage while remaining finite.
 - Existing packages continue to own decisions, scope, delivery, engineering,
   and nondeterministic verification.
+
+## Locator note
+
+This decision was originally drafted under a colliding `ADR-0005` filename.
+The stable locator is `ADR-0008`. `ADR-0005` exclusively identifies package-digest
+and whole-target synchronization integrity.

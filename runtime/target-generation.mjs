@@ -803,6 +803,15 @@ export function managedGenerationEstablished(targetPath) {
   }
 }
 
+export function managedCurrentGeneration(targetPath) {
+  try {
+    if (!managedGenerationEstablished(targetPath)) return null;
+    return recoverableCurrentGeneration(targetPath) || null;
+  } catch {
+    return null;
+  }
+}
+
 export function managedGenerationSkills(targetPath) {
   if (!managedGenerationEstablished(targetPath)) return [];
   const generation = recoverableCurrentGeneration(targetPath);

@@ -122,3 +122,25 @@ test('dependency-selection routing cases use natural requests and a bounded neig
     assert.doesNotMatch(fixture.prompt, /model memory|live npm registry|dependency-version-selection/i);
   }
 });
+
+test('architecture routing cases keep one owner and reject docs-only terminals', () => {
+  const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('architecture-'));
+  assert.ok(cases.length >= 3);
+  const positive = cases.find(({ id }) => id === 'architecture-migration-positive');
+  assert.deepEqual(positive.expectedSkills, ['engineering-standard']);
+  const multi = cases.find(({ id }) => id === 'architecture-migration-multi-repo');
+  assert.ok(multi.expectedSkills.includes('multi-repository-migration'));
+  assert.ok(multi.expectedSkills.includes('engineering-standard'));
+  const docsOnly = cases.find(({ id }) => id === 'architecture-neighbour-docs-only');
+  assert.ok(!docsOnly.expectedSkills.includes('engineering-standard'));
+  assert.ok(!docsOnly.expectedSkills.includes('multi-repository-migration'));
+  for (const fixture of cases) {
+    assert.doesNotMatch(fixture.prompt, /engineering-standard|multi-repository-migration/i);
+  }
+  const architecture = readFileSync(
+    new URL('../skills/engineering-standard/references/capability-first-architecture.md', import.meta.url),
+    'utf8',
+  );
+  assert.match(architecture, /Migration terminal/i);
+  assert.match(architecture, /docs-only|Metadata-only/i);
+});

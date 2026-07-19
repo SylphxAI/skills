@@ -21,6 +21,7 @@ import { installScheduler, parseIntervalMinutes, removeScheduler } from './sched
 import {
   clearTargetGeneration,
   installTargetGeneration,
+  managedCurrentGeneration,
   managedGenerationEstablished,
   managedGenerationSkills,
   managedOwnedPackagePath,
@@ -335,6 +336,9 @@ function status() {
       && new Date(manifest.synchronizedAt).toISOString() === manifest.synchronizedAt;
     const packagesCurrent = packageStates.every((skill) => skill.current)
       && JSON.stringify(manifest?.packageDigests || {}) === JSON.stringify(expectedDigests);
+    const driftedPackages = packageStates
+      .filter((skill) => !skill.current)
+      .map((skill) => skill.name);
     return {
       runtime: target.runtime,
       path: target.path,
@@ -352,6 +356,9 @@ function status() {
         && manifestShapeCurrent
         && synchronizedAtCurrent,
       catalogDigest: manifest?.catalogDigest || null,
+      sourceCommit: manifest?.sourceCommit ?? null,
+      packageVersion: manifest?.packageVersion || null,
+      generation: managedCurrentGeneration(target.path),
       packagesCurrent,
       profilesCurrent,
       skillsCurrent,
@@ -360,6 +367,7 @@ function status() {
       runtimeCurrent,
       manifestShapeCurrent,
       synchronizedAtCurrent,
+      driftedPackages,
     };
   }));
   if (jsonOutput) console.log(JSON.stringify({ command: 'status', targets: result }, null, 2));
