@@ -23,8 +23,8 @@ test('catalog is deterministic and covers every canonical package', () => {
   const technologyProfile = catalog.skills.find((skill) => skill.name === 'technology-stack-profile').profile;
   assert.deepEqual(technologyProfile, {
     id: 'technology-stack-profile',
-    revision: '2026-07-18.3',
-    contentDigest: 'sha256:2a5340e58ccd353e9a558ef87605b4f40abb529f78e57cfff00730559e131344',
+    revision: '2026-07-19.2',
+    contentDigest: 'sha256:fdf01c1b2dd28fd27d40de9636063dafad1df8a65877432fae34a6407dbf9755',
     lifecycle: 'active',
     authorityClass: 'governance-constraint',
   });

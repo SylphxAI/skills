@@ -5,28 +5,36 @@ how an agent or control-plane adapter resolves and verifies that contract. It
 does not create a second selection source. If this method and the machine
 contract disagree, resolution fails closed and the package must be corrected.
 
-## Rule set
+`assertions.rules` is the executable rule table and is covered by the profile
+content digest. A consumer interprets the schema-defined `kind` values and
+their fields. Default keys remain selection and collision identities only;
+their spelling, suffixes, rationale, and constraints are never evaluator
+instructions.
 
-- `technology-profile-selector-01` — resolve only when every selector fact is known
-  and one of the declared values matches. Unknown organization, lifecycle, or
-  task surface is not permission to improvise.
-- `technology-profile-role-01` — classify components by runtime role and effect
-  ownership before considering source files, framework names, or process
-  boundaries.
-- `technology-profile-backend-01` — production backend, API, gateway, worker,
-  controller, runtime, storage, queue, background-job, and critical-path roles
-  select Rust.
-- `technology-profile-web-01` — browser, product-web, server-rendered web, and UI
-  orchestration roles select TypeScript with Bun and Next where applicable.
-- `technology-profile-effect-01` — web cannot own backend database mutation, durable
-  queue publication or consumption, backend business effects, backend
-  authorization decisions, or a TypeScript backend fallback.
-- `technology-profile-completion-01` — completion is measured across the declared
-  service-role and effect denominator. File extension and language totals are
-  never completion evidence.
-- `technology-profile-state-01` — Skills owns this static selection; product repos
-  project local component facts; Control Plane owns resolved live adoption,
-  deployment, exceptions, and completion.
+## Machine resolution
+
+1. Resolve every condition under `selector.matchAll`, then aggregate all
+   condition states using the single `selector-outcome` rule's declared
+   precedence. The current match-all contract makes an explicit unmatched fact
+   decisive over an unrelated unknown fact; permutations produce the same
+   outcome. Unknown-only or conflicting input blocks.
+2. Read component facts through `assertions.factModel`. For every declared
+   component, select exactly one `role-requirement` whose `roles` contains the
+   component role. Zero or multiple matches block evaluation.
+3. Compare the component implementation with `requiredImplementation`. Resolve
+   every declared owned effect through the referenced `effect-classification`
+   rule, requiring exactly one class match, then apply the role rule's explicit
+   class allowance. A zero match is unknown and multiple matches are ambiguous;
+   both block instead of being treated as allowed.
+4. Build completion from the single `completion-denominator` rule. Each
+   declared component role and each declared owned effect is one denominator
+   item; all items must conform. Missing facts or ambiguous role resolution
+   emit the rule's blocked outcome.
+
+The current rule table requires Rust for backend roles and
+TypeScript/Bun/Next for web roles. It forbids backend-effect ownership by web
+roles and TypeScript backend fallback. Those values are read from the profile,
+not duplicated in an adapter.
 
 Product repositories project intended component topology through the optional
 `architecture.components` map in `project.manifest.json` and bind this Profile
@@ -73,19 +81,23 @@ production defect, parity gap, or missing capability remains a Rust work item.
 
 ## Verification checklist
 
-- Record the exact profile id, revision, and content digest used.
+- Record the exact profile id, revision, content digest, and applied assertion
+  ids.
 - Verify `architecture.profileBindings.technology-stack-profile` matches this
   exact revision and digest; a missing or stale binding is a coverage gap.
 - Enumerate applicable `architecture.components` entries and their declared
   service roles; missing entries remain a gap.
 - Enumerate database, queue, authorization, external, and background effects.
+- Prove each declared effect has exactly one profile classification and one
+  allowance for its resolved role; an application-specific unclassified effect
+  remains blocked until classified.
 - Prove that Rust owns every backend or durable-effect role.
 - Prove that TypeScript/Bun/Next components are browser, product-web, SSR, or UI
   orchestration only.
 - Search for TypeScript backend fallback, dual-run, shadow, recovery, and
   business-effect paths.
-- Compute completion from the role/effect denominator and name unresolved
-  domains explicitly.
+- Compute completion from the machine-declared role/effect denominator and name
+  unresolved domains explicitly.
 - Keep source admission, product-manifest resolution, deployment, and live
   production proof as separate evidence layers.
 - Fail stale or conflicting selectors rather than borrowing a historical

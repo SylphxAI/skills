@@ -17,44 +17,6 @@ const SECRET_PATTERNS = [
   /\bxox[baprs]-[A-Za-z0-9-]{20,}\b/,
 ];
 const REMOVED_BOUNDARIES = ['admissions', 'benchmarks', 'catalog', 'evals', 'registry', 'retired'];
-const TECHNOLOGY_PROFILE_ORGANIZATIONS = ['Cubeage', 'EpiowAI', 'OzyrixLtd', 'SylphxAI', 'TseFamily', 'shtse8'];
-const TECHNOLOGY_PROFILE_LIFECYCLES = ['active', 'commercial', 'incubating', 'maintenance', 'production'];
-const TECHNOLOGY_PROFILE_TASK_SURFACES = ['language-boundary-audit', 'migration-completion', 'product-code', 'runtime-implementation'];
-const TECHNOLOGY_PROFILE_BACKEND_ROLES = [
-  'api',
-  'backend-service',
-  'background-job',
-  'controller',
-  'critical-path',
-  'gateway',
-  'queue-consumer',
-  'queue-producer',
-  'runtime',
-  'storage',
-  'worker',
-];
-const TECHNOLOGY_PROFILE_WEB_ROLES = ['browser', 'product-web', 'server-rendered-web', 'ui-orchestration'];
-const TECHNOLOGY_PROFILE_FORBIDDEN_WEB_EFFECTS = [
-  'backend-authorization-decision',
-  'backend-business-effect',
-  'backend-database-mutation',
-  'durable-queue-consume',
-  'durable-queue-publish',
-  'typescript-backend-fallback',
-];
-const TECHNOLOGY_PROFILE_EXCEPTION_FIELDS = [
-  'id',
-  'defaultKey',
-  'selector',
-  'rationale',
-  'owner',
-  'decisionRef',
-  'evidence',
-  'expiresOn',
-  'recovery',
-  'replacementCondition',
-];
-
 function walk(directory) {
   const files = [];
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
@@ -100,45 +62,98 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
   }
   const selectors = document.selector?.matchAll || [];
   const selectorByFact = new Map(selectors.map((selector) => [selector.fact, selector]));
-  if (selectorByFact.size !== 3 || selectors.length !== 3) {
-    errors.push(`${location}: selector must contain exactly organization, repository.lifecycle, and task.surface`);
-  }
-  for (const [fact, expected] of [
-    ['organization', TECHNOLOGY_PROFILE_ORGANIZATIONS],
-    ['repository.lifecycle', TECHNOLOGY_PROFILE_LIFECYCLES],
-    ['task.surface', TECHNOLOGY_PROFILE_TASK_SURFACES],
-  ]) {
-    const selector = selectorByFact.get(fact);
-    if (selector?.operator !== 'one-of' || !sameMembers(selector?.values, expected)) {
-      errors.push(`${location}: ${fact} selector vocabulary drift`);
-    }
+  if (selectorByFact.size !== selectors.length) {
+    errors.push(`${location}: selector facts must be unique`);
   }
   if (document.selector?.unknownFactPolicy !== 'fail-closed') {
     errors.push(`${location}: unknown selector facts must fail closed`);
   }
 
-  const defaults = new Map((document.defaults || []).map((item) => [item.key, item]));
-  const expectedDefaults = [
-    ['engineering.language.backend-required-technology', 'rust', TECHNOLOGY_PROFILE_BACKEND_ROLES],
-    ['engineering.language.web-required-technology', 'typescript-bun-next', TECHNOLOGY_PROFILE_WEB_ROLES],
-    ['engineering.language.completion-measure', 'service-role-and-effect-coverage', [...TECHNOLOGY_PROFILE_BACKEND_ROLES, ...TECHNOLOGY_PROFILE_WEB_ROLES]],
-  ];
-  if (defaults.size !== expectedDefaults.length || document.defaults?.length !== expectedDefaults.length) {
-    errors.push(`${location}: default selection set drift`);
+  const rules = document.assertions?.rules || [];
+  const ruleById = new Map(rules.map((rule) => [rule.id, rule]));
+  if (ruleById.size !== rules.length) {
+    errors.push(`${location}: assertion ids must be unique`);
   }
-  for (const [key, value, roles] of expectedDefaults) {
-    const selection = defaults.get(key);
-    if (selection?.value !== value || !sameMembers(selection?.appliesToRoles, roles)) {
-      errors.push(`${location}: ${key} selection drift`);
+  const selectorRules = rules.filter((rule) => rule.kind === 'selector-outcome');
+  const effectClassificationRules = rules.filter((rule) => rule.kind === 'effect-classification');
+  const roleRules = rules.filter((rule) => rule.kind === 'role-requirement');
+  const completionRules = rules.filter((rule) => rule.kind === 'completion-denominator');
+  if (selectorRules.length !== 1
+      || effectClassificationRules.length !== 1
+      || roleRules.length < 1
+      || completionRules.length !== 1) {
+    errors.push(`${location}: assertions require one selector outcome, one effect classification, one or more role requirements, and one completion denominator`);
+  }
+  const selectorRule = selectorRules[0] || {};
+  const selectorOutcomes = selectorRule.outcomes;
+  if (selectorOutcomes?.matched !== 'selected'
+      || selectorOutcomes?.unmatched !== 'not-selected'
+      || selectorOutcomes?.unknown !== 'blocked'
+      || selectorOutcomes?.conflict !== 'blocked') {
+    errors.push(`${location}: selector outcome assertion must fail closed`);
+  }
+  if (selectorRule.aggregation !== 'match-all'
+      || !sameMembers(selectorRule.precedence, Object.keys(selectorOutcomes || {}))) {
+    errors.push(`${location}: selector aggregation must declare total deterministic precedence`);
+  }
+
+  const effectClassification = effectClassificationRules[0] || {};
+  const effectClasses = effectClassification.classes || [];
+  const effectClassById = new Map(effectClasses.map((effectClass) => [effectClass.id, effectClass]));
+  if (effectClassById.size !== effectClasses.length) {
+    errors.push(`${location}: effect classification ids must be unique`);
+  }
+  const effectOwners = new Map();
+  for (const effectClass of effectClasses) {
+    for (const effect of effectClass.effects || []) {
+      if (effectOwners.has(effect)) {
+        errors.push(`${location}: effect ${effect} is claimed by more than one effect classification`);
+      } else {
+        effectOwners.set(effect, effectClass.id);
+      }
     }
   }
-  if (!sameMembers(document.forbiddenEffectsForWeb, TECHNOLOGY_PROFILE_FORBIDDEN_WEB_EFFECTS)) {
-    errors.push(`${location}: forbidden web effect vocabulary drift`);
+  if (effectClassification.noMatchDisposition !== 'unknown'
+      || effectClassification.multipleMatchDisposition !== 'ambiguous'
+      || effectClassification.unknownOutcome !== 'blocked'
+      || effectClassification.ambiguousOutcome !== 'blocked') {
+    errors.push(`${location}: unknown or ambiguous effects must fail closed`);
+  }
+
+  const roleOwners = new Map();
+  for (const rule of roleRules) {
+    for (const role of rule.roles || []) {
+      if (roleOwners.has(role)) {
+        errors.push(`${location}: role ${role} is claimed by more than one role requirement`);
+      } else {
+        roleOwners.set(role, rule.id);
+      }
+    }
+    const classifier = ruleById.get(rule.effectClassificationId);
+    if (classifier?.kind !== 'effect-classification') {
+      errors.push(`${location}: role requirement ${rule.id} references an unknown effect classification`);
+    }
+    const allowances = rule.effectClassAllowances || [];
+    const allowanceClassIds = allowances.map((allowance) => allowance.effectClass);
+    if (!sameMembers(allowanceClassIds, [...effectClassById.keys()])) {
+      errors.push(`${location}: role requirement ${rule.id} must classify every effect class exactly once`);
+    }
+  }
+
+  const defaultKeys = (document.defaults || []).map((item) => item.key);
+  const defaultAssertionIds = (document.defaults || []).flatMap((item) => item.assertionIds || []);
+  for (const assertionId of defaultAssertionIds) {
+    if (!ruleById.has(assertionId)) {
+      errors.push(`${location}: default references unknown assertion ${assertionId}`);
+    }
+  }
+  const selectableRuleIds = [...roleRules, ...completionRules].map((rule) => rule.id);
+  if (!sameMembers(defaultAssertionIds, selectableRuleIds)) {
+    errors.push(`${location}: every role and completion assertion must be referenced exactly once by a default`);
   }
   if (!sameMembers(document.exceptionPolicy?.exceptableDefaults, [])
-      || !sameMembers(document.exceptionPolicy?.forbiddenDefaults, expectedDefaults.map(([key]) => key))
-      || !sameMembers(document.exceptionPolicy?.requiredFields, TECHNOLOGY_PROFILE_EXCEPTION_FIELDS)) {
-    errors.push(`${location}: exception contract drift`);
+      || !sameMembers(document.exceptionPolicy?.forbiddenDefaults, defaultKeys)) {
+    errors.push(`${location}: every technology default must be non-exceptable`);
   }
 
   const projectSchemaPath = path.join(
@@ -162,11 +177,11 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
   const profileBindings = architecture?.properties?.profileBindings;
   const componentFact = projectSchema.$defs?.componentFact;
   const profileBinding = projectSchema.$defs?.profileBinding;
-  const requiredFactFields = [
-    'role',
-    'implementation',
-    'backendOwner',
-    'ownedEffects',
+  const factModel = document.assertions?.factModel || {};
+  const requiredProfileFactFields = [
+    factModel.roleField,
+    factModel.implementationField,
+    factModel.ownedEffectsField,
   ];
   if (components?.minProperties !== 1
       || components?.propertyNames?.$ref !== '#/$defs/id'
@@ -175,18 +190,20 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
       || profileBindings?.propertyNames?.$ref !== '#/$defs/id'
       || profileBindings?.additionalProperties?.$ref !== '#/$defs/profileBinding'
       || componentFact?.additionalProperties !== false
-      || !sameMembers(componentFact?.required, requiredFactFields)) {
+      || !requiredProfileFactFields.every((field) => componentFact?.required?.includes(field))) {
     errors.push(`${location}: canonical project component facts or exact profile bindings are missing or incomplete`);
   }
-  if (componentFact?.properties?.role?.$ref !== '#/$defs/id'
-      || componentFact?.properties?.implementation?.$ref !== '#/$defs/id'
-      || componentFact?.properties?.ownedEffects?.items?.$ref !== '#/$defs/id'
+  if (factModel.componentCollectionPointer !== '/architecture/components'
+      || componentFact?.properties?.[factModel.roleField]?.$ref !== '#/$defs/id'
+      || componentFact?.properties?.[factModel.implementationField]?.$ref !== '#/$defs/id'
+      || componentFact?.properties?.[factModel.ownedEffectsField]?.items?.$ref !== '#/$defs/id'
       || !sameMembers(profileBinding?.required, ['revision', 'contentDigest'])) {
     errors.push(`${location}: project facts must stay generic while exact profile identity stays bound`);
   }
 
   const manifestLifecycles = projectSchema.properties?.project?.properties?.lifecycle?.enum || [];
-  if (!TECHNOLOGY_PROFILE_LIFECYCLES.every((lifecycle) => manifestLifecycles.includes(lifecycle))) {
+  const selectedLifecycles = selectorByFact.get('repository.lifecycle')?.values || [];
+  if (!selectedLifecycles.every((lifecycle) => manifestLifecycles.includes(lifecycle))) {
     errors.push(`${location}: selector uses lifecycle values outside the canonical project manifest`);
   }
 }
@@ -217,6 +234,18 @@ export function validateProfileLifecycleMetadata(document, folder, errors, today
   }
 }
 
+export function validateExceptionRequiredFields(document, schema, folder, errors) {
+  const requiredFieldsSchema = schema.$defs?.exceptionPolicy?.properties?.requiredFields;
+  const requiredFieldVocabulary = requiredFieldsSchema?.items?.enum || [];
+  if (!requiredFieldVocabulary.length
+      || requiredFieldsSchema?.minItems !== requiredFieldVocabulary.length
+      || requiredFieldsSchema?.maxItems !== requiredFieldVocabulary.length
+      || requiredFieldsSchema?.uniqueItems !== true
+      || !sameMembers(document.exceptionPolicy?.requiredFields, requiredFieldVocabulary)) {
+    errors.push(`skills/${folder}/references/profile.json: exception required-field vocabulary is incomplete`);
+  }
+}
+
 function validateMachineProfile(folder, packageRoot, errors, profiles) {
   const profilePath = path.join(packageRoot, 'references', 'profile.json');
   if (!existsSync(profilePath)) return;
@@ -228,7 +257,9 @@ function validateMachineProfile(folder, packageRoot, errors, profiles) {
     return;
   }
 
-  if (document.schemaVersion !== 1 || document.kind !== 'EnterpriseProfile') {
+  if (!Number.isSafeInteger(document.schemaVersion)
+      || document.schemaVersion < 1
+      || document.kind !== 'EnterpriseProfile') {
     errors.push(`skills/${folder}/references/profile.json: unsupported profile contract`);
     return;
   }
@@ -260,6 +291,7 @@ function validateMachineProfile(folder, packageRoot, errors, profiles) {
           errors.push(`skills/${folder}/references/profile.json${finding.instancePath || '/'}: ${finding.message}`);
         }
       }
+      validateExceptionRequiredFields(document, schema, folder, errors);
     } catch (error) {
       errors.push(`${path.relative(repositoryRoot, schemaPath)}: ${error.message}`);
     }

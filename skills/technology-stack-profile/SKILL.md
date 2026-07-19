@@ -12,17 +12,23 @@ Read the normative [machine profile](references/profile.json) and the
 technology or completion decision. The JSON contract owns the selection; a
 prose or runtime projection that disagrees with it is invalid.
 
+The profile's digest-bound `assertions.rules` table is the only executable
+policy vocabulary. Consumers dispatch on each rule's `kind` and fields; they
+must not infer policy from default-key suffixes, rationale text, package names,
+or hard-coded role lists.
+
 ## Method
 
 1. Resolve the profile selector against explicit organization, repository
    lifecycle, and task-surface facts.
 2. Classify each component by its service role and owned effects, not by file
    extension, package count, process name, or repository language totals.
-3. Require Rust for production backend and durable-effect roles. Require
-   TypeScript/Bun/Next for browser, product-web, SSR, and UI
-   orchestration roles.
-4. Reject web ownership of backend database mutation, durable queues, business
-   effects, backend authorization decisions, or a TypeScript backend fallback.
+3. Resolve the matching role requirement from `assertions.rules`, compare the
+   declared implementation, then resolve every owned effect through the
+   referenced effect-classification rule and the role's class allowance.
+4. Resolve completion only through the declared completion-denominator rule;
+   missing facts, unknown or overlapping roles, and zero or multiple effect
+   classifications block evaluation.
 5. Record repository-local role/effect facts under
    `architecture.components` in the owning product manifest;
    let Control Plane resolve live adoption, exceptions, deployment, and
@@ -36,7 +42,7 @@ prose or runtime projection that disagrees with it is invalid.
   profile violation even when its API contract matches Rust.
 - Fix an incomplete or defective backend in Rust. Do not restore TypeScript as
   fallback, dual-run implementation, shadow production, recovery, or delay tactic.
-- Count completion by declared roles and observed effects. A repository is not
+- Count completion by declared component roles and owned effects. A repository is not
   complete because a source-language count reaches a target.
 - Do not silently invent a new role for an ambiguous component. Unknown or
   conflicting resolution fails closed and triggers profile review.
@@ -56,8 +62,8 @@ prose or runtime projection that disagrees with it is invalid.
 
 Report:
 
-1. matched selector facts and profile revision/digest;
-2. component roles and effect ownership;
+1. matched selector facts, typed selector outcome, and profile revision/digest;
+2. applied assertion ids, component roles, and effect ownership;
 3. required Rust or TypeScript/Bun/Next selection;
 4. any forbidden backend effect or fallback;
 5. role/effect-based completion evidence and unresolved live-state gaps.

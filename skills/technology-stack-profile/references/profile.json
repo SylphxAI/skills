@@ -1,17 +1,17 @@
 {
   "$schema": "./enterprise-profile.schema.json",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "kind": "EnterpriseProfile",
   "profile": {
     "id": "technology-stack-profile",
-    "revision": "2026-07-18.3",
-    "contentDigest": "sha256:2a5340e58ccd353e9a558ef87605b4f40abb529f78e57cfff00730559e131344",
+    "revision": "2026-07-19.2",
+    "contentDigest": "sha256:fdf01c1b2dd28fd27d40de9636063dafad1df8a65877432fae34a6407dbf9755",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
     "decisionRef": "references/ADR-20260718-backend-web-technology-boundary.md",
     "lifecycle": "active",
     "authorityClass": "governance-constraint",
-    "effectiveOn": "2026-07-18",
+    "effectiveOn": "2026-07-19",
     "reviewBy": "2026-10-15"
   },
   "selector": {
@@ -49,20 +49,7 @@
   "defaults": [
     {
       "key": "engineering.language.backend-required-technology",
-      "value": "rust",
-      "appliesToRoles": [
-        "api",
-        "backend-service",
-        "background-job",
-        "controller",
-        "critical-path",
-        "gateway",
-        "queue-consumer",
-        "queue-producer",
-        "runtime",
-        "storage",
-        "worker"
-      ],
+      "assertionIds": ["backend-role-requirement"],
       "rationale": "Rust is the required production technology for backend runtime and durable business effects.",
       "constraints": [
         "Repair missing or defective backend behavior in Rust.",
@@ -71,13 +58,7 @@
     },
     {
       "key": "engineering.language.web-required-technology",
-      "value": "typescript-bun-next",
-      "appliesToRoles": [
-        "browser",
-        "product-web",
-        "server-rendered-web",
-        "ui-orchestration"
-      ],
+      "assertionIds": ["web-role-requirement"],
       "rationale": "TypeScript, Bun, and Next are intended production technologies for browser and server-rendered product web.",
       "constraints": [
         "Web may render, compose UI data, and orchestrate calls through backend contracts.",
@@ -86,24 +67,7 @@
     },
     {
       "key": "engineering.language.completion-measure",
-      "value": "service-role-and-effect-coverage",
-      "appliesToRoles": [
-        "api",
-        "backend-service",
-        "background-job",
-        "browser",
-        "controller",
-        "critical-path",
-        "gateway",
-        "product-web",
-        "queue-consumer",
-        "queue-producer",
-        "runtime",
-        "server-rendered-web",
-        "storage",
-        "ui-orchestration",
-        "worker"
-      ],
+      "assertionIds": ["role-effect-completion"],
       "rationale": "Completion is semantic coverage of declared service roles and effects, not a source-file statistic.",
       "constraints": [
         "Never use .ts file count, repository language totals, Bun process presence, or endpoint-shell parity as completion evidence.",
@@ -111,14 +75,109 @@
       ]
     }
   ],
-  "forbiddenEffectsForWeb": [
-    "backend-authorization-decision",
-    "backend-business-effect",
-    "backend-database-mutation",
-    "durable-queue-consume",
-    "durable-queue-publish",
-    "typescript-backend-fallback"
-  ],
+  "assertions": {
+    "digestBinding": "profile-content-digest",
+    "factModel": {
+      "componentCollectionPointer": "/architecture/components",
+      "roleField": "role",
+      "implementationField": "implementation",
+      "ownedEffectsField": "ownedEffects"
+    },
+    "rules": [
+      {
+        "id": "selector-resolution",
+        "kind": "selector-outcome",
+        "aggregation": "match-all",
+        "precedence": ["conflict", "unmatched", "unknown", "matched"],
+        "outcomes": {
+          "matched": "selected",
+          "unmatched": "not-selected",
+          "unknown": "blocked",
+          "conflict": "blocked"
+        }
+      },
+      {
+        "id": "owned-effect-classification",
+        "kind": "effect-classification",
+        "classes": [
+          {
+            "id": "backend-effect",
+            "effects": [
+              "backend-authorization-decision",
+              "backend-business-effect",
+              "backend-database-mutation",
+              "durable-queue-consume",
+              "durable-queue-publish"
+            ]
+          },
+          {
+            "id": "typescript-backend-fallback",
+            "effects": ["typescript-backend-fallback"]
+          }
+        ],
+        "noMatchDisposition": "unknown",
+        "multipleMatchDisposition": "ambiguous",
+        "unknownOutcome": "blocked",
+        "ambiguousOutcome": "blocked"
+      },
+      {
+        "id": "backend-role-requirement",
+        "kind": "role-requirement",
+        "roles": [
+          "api",
+          "backend-service",
+          "background-job",
+          "controller",
+          "critical-path",
+          "gateway",
+          "queue-consumer",
+          "queue-producer",
+          "runtime",
+          "storage",
+          "worker"
+        ],
+        "requiredImplementation": "rust",
+        "effectClassificationId": "owned-effect-classification",
+        "effectClassAllowances": [
+          {"effectClass": "backend-effect", "disposition": "allowed"},
+          {"effectClass": "typescript-backend-fallback", "disposition": "forbidden"}
+        ],
+        "implementationMismatchOutcome": "violation",
+        "forbiddenEffectOutcome": "violation",
+        "unmappedEffectClassOutcome": "blocked"
+      },
+      {
+        "id": "web-role-requirement",
+        "kind": "role-requirement",
+        "roles": [
+          "browser",
+          "product-web",
+          "server-rendered-web",
+          "ui-orchestration"
+        ],
+        "requiredImplementation": "typescript-bun-next",
+        "effectClassificationId": "owned-effect-classification",
+        "effectClassAllowances": [
+          {"effectClass": "backend-effect", "disposition": "forbidden"},
+          {"effectClass": "typescript-backend-fallback", "disposition": "forbidden"}
+        ],
+        "implementationMismatchOutcome": "violation",
+        "forbiddenEffectOutcome": "violation",
+        "unmappedEffectClassOutcome": "blocked"
+      },
+      {
+        "id": "role-effect-completion",
+        "kind": "completion-denominator",
+        "componentSet": "declared-components",
+        "denominator": ["declared-component-role", "declared-owned-effect"],
+        "successCondition": "every-denominator-item-conforms",
+        "successOutcome": "conforming",
+        "emptyComponentSetOutcome": "blocked",
+        "missingFactOutcome": "blocked",
+        "ambiguousRuleOutcome": "blocked"
+      }
+    ]
+  },
   "exceptionPolicy": {
     "mode": "typed-expiring",
     "exceptableDefaults": [],
@@ -152,7 +211,7 @@
     ]
   },
   "retirement": {
-    "predecessor": "technology-stack-profile@2026-07-18.2",
+    "predecessor": "technology-stack-profile@2026-07-18.3",
     "successor": null,
     "terminal": "An admitted active successor revision covers this selector and all selection keys, Control Plane resolves selected repositories to that successor, all exceptions are closed, and this revision is marked retired.",
     "retiredRevisionSelectable": false

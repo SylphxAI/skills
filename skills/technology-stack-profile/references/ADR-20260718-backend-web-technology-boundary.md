@@ -56,6 +56,16 @@ paired with an exact `architecture.profileBindings` revision and digest. It
 supersedes revision `2026-07-18.2`; the manifest still does not copy Profile
 vocabulary or author live deployment truth.
 
+Revision `2026-07-19.2` preserves the same technology selection while making it
+directly executable from the digest-bound profile. A typed assertion table now
+owns order-independent selector aggregation and outcomes,
+role-to-implementation requirements, exact effect classification and per-role
+allowances, and the declared role/effect completion denominator. Unknown and
+multiply classified effects fail closed. Defaults reference assertion ids
+instead of repeating role lists and implementations. Consumers interpret
+schema-defined assertion kinds; they must not dispatch on default-key suffixes
+or prose. It supersedes revision `2026-07-18.3`.
+
 ## Consequences
 
 - A Rust backend plus TypeScript web repository can be fully conforming.
