@@ -36,24 +36,117 @@ function sorted(values) {
   return [...values].sort();
 }
 
+function rulesByKind(kind) {
+  return profile.assertions.rules.filter((rule) => rule.kind === kind);
+}
+
+function selectorOutcome(facts) {
+  const assertion = rulesByKind('selector-outcome')[0];
+  for (const condition of profile.selector.matchAll) {
+    if (!(condition.fact in facts)) return assertion.outcomes.unknown;
+    if (!condition.values.includes(facts[condition.fact])) return assertion.outcomes.unmatched;
+  }
+  return assertion.outcomes.matched;
+}
+
+function evaluateComponents(facts, components) {
+  const selected = selectorOutcome(facts);
+  if (selected !== 'selected') return selected;
+  const completion = rulesByKind('completion-denominator')[0];
+  assert.deepEqual(sorted(completion.denominator), sorted([
+    'declared-component-role',
+    'declared-owned-effect',
+  ]));
+  if (Object.keys(components).length === 0) return completion.emptyComponentSetOutcome;
+  for (const component of Object.values(components)) {
+    if (!component.role || !component.implementation || !Array.isArray(component.ownedEffects)) {
+      return completion.missingFactOutcome;
+    }
+    const matching = rulesByKind('role-requirement')
+      .filter((rule) => rule.roles.includes(component.role));
+    if (matching.length !== 1) return completion.ambiguousRuleOutcome;
+    const rule = matching[0];
+    if (component.implementation !== rule.requiredImplementation) return rule.implementationMismatchOutcome;
+    if (component.ownedEffects.some((effect) => rule.forbiddenEffects.includes(effect))) {
+      return rule.forbiddenEffectOutcome;
+    }
+  }
+  return completion.successOutcome;
+}
+
+const matchingFacts = {
+  organization: 'SylphxAI',
+  'repository.lifecycle': 'production',
+  'task.surface': 'product-code',
+};
+
 test('technology profile binds the canonical role and effect boundary', () => {
-  assert.equal(profile.profile.revision, '2026-07-18.3');
+  assert.equal(profile.schemaVersion, 2);
+  assert.equal(profile.profile.revision, '2026-07-19.1');
   assert.equal(profile.profile.predecessor, undefined);
-  assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-18.2');
+  assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-18.3');
   const defaults = new Map(profile.defaults.map((item) => [item.key, item]));
-  assert.equal(defaults.get('engineering.language.backend-required-technology').value, 'rust');
-  assert.deepEqual(sorted(defaults.get('engineering.language.backend-required-technology').appliesToRoles), sorted(backendRoles));
-  assert.equal(defaults.get('engineering.language.web-required-technology').value, 'typescript-bun-next');
-  assert.deepEqual(sorted(defaults.get('engineering.language.web-required-technology').appliesToRoles), sorted(webRoles));
-  assert.equal(defaults.get('engineering.language.completion-measure').value, 'service-role-and-effect-coverage');
-  assert.deepEqual(sorted(defaults.get('engineering.language.completion-measure').appliesToRoles), sorted([...backendRoles, ...webRoles]));
-  assert.deepEqual(sorted(profile.forbiddenEffectsForWeb), sorted(forbiddenEffects));
+  assert.deepEqual(defaults.get('engineering.language.backend-required-technology').assertionIds, ['backend-role-requirement']);
+  assert.deepEqual(defaults.get('engineering.language.web-required-technology').assertionIds, ['web-role-requirement']);
+  assert.deepEqual(defaults.get('engineering.language.completion-measure').assertionIds, ['role-effect-completion']);
+  const [backendRule] = rulesByKind('role-requirement').filter((rule) => rule.requiredImplementation === 'rust');
+  const [webRule] = rulesByKind('role-requirement').filter((rule) => rule.requiredImplementation === 'typescript-bun-next');
+  assert.deepEqual(sorted(backendRule.roles), sorted(backendRoles));
+  assert.deepEqual(backendRule.forbiddenEffects, ['typescript-backend-fallback']);
+  assert.deepEqual(sorted(webRule.roles), sorted(webRoles));
+  assert.deepEqual(sorted(webRule.forbiddenEffects), sorted(forbiddenEffects));
   assert.deepEqual(profile.exceptionPolicy.exceptableDefaults, []);
   assert.equal(profile.selector.unknownFactPolicy, 'fail-closed');
+  assert.equal(profile.assertions.digestBinding, 'profile-content-digest');
+  assert.deepEqual(profile.assertions.factModel, {
+    componentCollectionPointer: '/architecture/components',
+    roleField: 'role',
+    implementationField: 'implementation',
+    ownedEffectsField: 'ownedEffects',
+  });
+});
+
+test('digest-bound assertions execute selector, role, effect, and completion policy without prose or key dispatch', () => {
+  assert.equal(selectorOutcome(matchingFacts), 'selected');
+  assert.equal(selectorOutcome({ ...matchingFacts, organization: 'unselected' }), 'not-selected');
+  const missingOrganization = structuredClone(matchingFacts);
+  delete missingOrganization.organization;
+  assert.equal(selectorOutcome(missingOrganization), 'blocked');
+  assert.equal(evaluateComponents(matchingFacts, {}), 'blocked');
+
+  assert.equal(evaluateComponents(matchingFacts, {
+    api: { role: 'api', implementation: 'rust', ownedEffects: ['backend-database-mutation'] },
+    web: { role: 'product-web', implementation: 'typescript-bun-next', ownedEffects: [] },
+  }), 'conforming');
+  assert.equal(evaluateComponents(matchingFacts, {
+    api: { role: 'api', implementation: 'typescript-bun-next', ownedEffects: [] },
+  }), 'violation');
+  assert.equal(evaluateComponents(matchingFacts, {
+    web: {
+      role: 'server-rendered-web',
+      implementation: 'typescript-bun-next',
+      ownedEffects: ['backend-authorization-decision'],
+    },
+  }), 'violation');
+  assert.equal(evaluateComponents(matchingFacts, {
+    unknown: { role: 'unclassified-service', implementation: 'rust', ownedEffects: [] },
+  }), 'blocked');
 });
 
 test('technology profile selector uses only canonical operational project lifecycles', () => {
-  const selector = profile.selector.matchAll.find((item) => item.fact === 'repository.lifecycle');
+  const selectors = new Map(profile.selector.matchAll.map((item) => [item.fact, item]));
+  assert.deepEqual(sorted([...selectors.keys()]), sorted([
+    'organization',
+    'repository.lifecycle',
+    'task.surface',
+  ]));
+  assert.deepEqual(sorted(selectors.get('organization').values), sorted([
+    'Cubeage', 'EpiowAI', 'OzyrixLtd', 'SylphxAI', 'TseFamily', 'shtse8',
+  ]));
+  assert.deepEqual(sorted(selectors.get('task.surface').values), sorted([
+    'language-boundary-audit', 'migration-completion', 'product-code', 'runtime-implementation',
+  ]));
+  const selector = selectors.get('repository.lifecycle');
   const canonical = projectSchema.properties.project.properties.lifecycle.enum;
   assert.deepEqual(sorted(selector.values), sorted(['active', 'commercial', 'incubating', 'maintenance', 'production']));
   assert.equal(selector.values.every((value) => canonical.includes(value)), true);
@@ -124,9 +217,12 @@ test('schema and active-profile admission reject authority-state mutations', () 
   addFormats(ajv);
   const validate = ajv.compile(profileSchema);
   assert.equal(validate(profile), true, JSON.stringify(validate.errors));
-  const missingEffects = structuredClone(profile);
-  delete missingEffects.forbiddenEffectsForWeb;
-  assert.equal(validate(missingEffects), false);
+  const missingAssertions = structuredClone(profile);
+  delete missingAssertions.assertions;
+  assert.equal(validate(missingAssertions), false);
+  const permissiveUnknown = structuredClone(profile);
+  permissiveUnknown.assertions.rules.find((rule) => rule.kind === 'selector-outcome').outcomes.unknown = 'selected';
+  assert.equal(validate(permissiveUnknown), false);
   const illegalAuthority = structuredClone(profile);
   illegalAuthority.profile.authorityClass = 'local-policy-fork';
   assert.equal(validate(illegalAuthority), false);
@@ -145,6 +241,18 @@ test('technology profile structural gate and active-profile collision check fail
   const structuralErrors = [];
   validateTechnologyStackProfile(profile, structuralErrors, projectSchema);
   assert.deepEqual(structuralErrors, []);
+
+  const overlappingRole = structuredClone(profile);
+  overlappingRole.assertions.rules.find((rule) => rule.id === 'web-role-requirement').roles.push('api');
+  const overlappingRoleErrors = [];
+  validateTechnologyStackProfile(overlappingRole, overlappingRoleErrors, projectSchema);
+  assert.equal(overlappingRoleErrors.some((finding) => finding.includes('more than one role requirement')), true);
+
+  const missingReference = structuredClone(profile);
+  missingReference.defaults[0].assertionIds = ['missing-rule'];
+  const missingReferenceErrors = [];
+  validateTechnologyStackProfile(missingReference, missingReferenceErrors, projectSchema);
+  assert.equal(missingReferenceErrors.some((finding) => finding.includes('unknown assertion')), true);
 
   const overlap = structuredClone(profile);
   overlap.profile.id = 'overlapping-profile';

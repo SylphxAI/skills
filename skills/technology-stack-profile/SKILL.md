@@ -12,17 +12,21 @@ Read the normative [machine profile](references/profile.json) and the
 technology or completion decision. The JSON contract owns the selection; a
 prose or runtime projection that disagrees with it is invalid.
 
+The profile's digest-bound `assertions.rules` table is the only executable
+policy vocabulary. Consumers dispatch on each rule's `kind` and fields; they
+must not infer policy from default-key suffixes, rationale text, package names,
+or hard-coded role lists.
+
 ## Method
 
 1. Resolve the profile selector against explicit organization, repository
    lifecycle, and task-surface facts.
 2. Classify each component by its service role and owned effects, not by file
    extension, package count, process name, or repository language totals.
-3. Require Rust for production backend and durable-effect roles. Require
-   TypeScript/Bun/Next for browser, product-web, SSR, and UI
-   orchestration roles.
-4. Reject web ownership of backend database mutation, durable queues, business
-   effects, backend authorization decisions, or a TypeScript backend fallback.
+3. Resolve the matching role requirement from `assertions.rules`, then compare
+   the declared implementation and owned effects with that rule.
+4. Resolve completion only through the declared completion-denominator rule;
+   missing facts, an unknown role, or overlapping role rules block evaluation.
 5. Record repository-local role/effect facts under
    `architecture.components` in the owning product manifest;
    let Control Plane resolve live adoption, exceptions, deployment, and
@@ -56,8 +60,8 @@ prose or runtime projection that disagrees with it is invalid.
 
 Report:
 
-1. matched selector facts and profile revision/digest;
-2. component roles and effect ownership;
+1. matched selector facts, typed selector outcome, and profile revision/digest;
+2. applied assertion ids, component roles, and effect ownership;
 3. required Rust or TypeScript/Bun/Next selection;
 4. any forbidden backend effect or fallback;
 5. role/effect-based completion evidence and unresolved live-state gaps.

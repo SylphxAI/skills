@@ -11,14 +11,14 @@
     "profile",
     "selector",
     "defaults",
-    "forbiddenEffectsForWeb",
+    "assertions",
     "exceptionPolicy",
     "review",
     "retirement"
   ],
   "properties": {
     "$schema": { "type": "string" },
-    "schemaVersion": { "const": 1 },
+    "schemaVersion": { "const": 2 },
     "kind": { "const": "EnterpriseProfile" },
     "profile": { "$ref": "#/$defs/profileMetadata" },
     "selector": { "$ref": "#/$defs/selector" },
@@ -27,11 +27,7 @@
       "minItems": 1,
       "items": { "$ref": "#/$defs/default" }
     },
-    "forbiddenEffectsForWeb": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": { "$ref": "#/$defs/kebab" }
-    },
+    "assertions": { "$ref": "#/$defs/assertionSet" },
     "exceptionPolicy": { "$ref": "#/$defs/exceptionPolicy" },
     "review": { "$ref": "#/$defs/review" },
     "retirement": { "$ref": "#/$defs/retirement" }
@@ -103,11 +99,10 @@
     "default": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["key", "value", "appliesToRoles", "rationale", "constraints"],
+      "required": ["key", "assertionIds", "rationale", "constraints"],
       "properties": {
         "key": { "type": "string", "pattern": "^[a-z][a-z0-9.-]*$" },
-        "value": { "type": "string", "minLength": 1 },
-        "appliesToRoles": {
+        "assertionIds": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
@@ -119,6 +114,126 @@
           "minItems": 1,
           "items": { "type": "string", "minLength": 20 }
         }
+      }
+    },
+    "assertionSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["digestBinding", "factModel", "rules"],
+      "properties": {
+        "digestBinding": { "const": "profile-content-digest" },
+        "factModel": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "componentCollectionPointer",
+            "roleField",
+            "implementationField",
+            "ownedEffectsField"
+          ],
+          "properties": {
+            "componentCollectionPointer": { "const": "/architecture/components" },
+            "roleField": { "const": "role" },
+            "implementationField": { "const": "implementation" },
+            "ownedEffectsField": { "const": "ownedEffects" }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "oneOf": [
+              { "$ref": "#/$defs/selectorOutcomeAssertion" },
+              { "$ref": "#/$defs/roleRequirementAssertion" },
+              { "$ref": "#/$defs/completionAssertion" }
+            ]
+          }
+        }
+      }
+    },
+    "selectorOutcomeAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "outcomes"],
+      "properties": {
+        "id": { "$ref": "#/$defs/kebab" },
+        "kind": { "const": "selector-outcome" },
+        "outcomes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["matched", "unmatched", "unknown", "conflict"],
+          "properties": {
+            "matched": { "const": "selected" },
+            "unmatched": { "const": "not-selected" },
+            "unknown": { "const": "blocked" },
+            "conflict": { "const": "blocked" }
+          }
+        }
+      }
+    },
+    "roleRequirementAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "roles",
+        "requiredImplementation",
+        "forbiddenEffects",
+        "implementationMismatchOutcome",
+        "forbiddenEffectOutcome"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/kebab" },
+        "kind": { "const": "role-requirement" },
+        "roles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/kebab" }
+        },
+        "requiredImplementation": { "$ref": "#/$defs/kebab" },
+        "forbiddenEffects": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/kebab" }
+        },
+        "implementationMismatchOutcome": { "const": "violation" },
+        "forbiddenEffectOutcome": { "const": "violation" }
+      }
+    },
+    "completionAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "componentSet",
+        "denominator",
+        "successCondition",
+        "successOutcome",
+        "emptyComponentSetOutcome",
+        "missingFactOutcome",
+        "ambiguousRuleOutcome"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/kebab" },
+        "kind": { "const": "completion-denominator" },
+        "componentSet": { "const": "declared-components" },
+        "denominator": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["declared-component-role", "declared-owned-effect"]
+          }
+        },
+        "successCondition": { "const": "every-denominator-item-conforms" },
+        "successOutcome": { "const": "conforming" },
+        "emptyComponentSetOutcome": { "const": "blocked" },
+        "missingFactOutcome": { "const": "blocked" },
+        "ambiguousRuleOutcome": { "const": "blocked" }
       }
     },
     "exceptionPolicy": {
