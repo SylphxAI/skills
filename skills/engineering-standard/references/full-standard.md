@@ -80,66 +80,28 @@ All selected stacks prove:
 
 ### Version currency and reproducibility
 
-New projects start on the newest eligible production releases available at
-bootstrap time; a static template catalog must not make a newly created project
-obsolete on day one. An admitted bootstrap or dependency resolver queries the
-selected toolchain's canonical release source under a declared freshness
-budget, records the observation time and source identity, and resolves every
-direct toolchain, runtime, framework, SDK, generator, plugin, and application
-package to the latest supported release in the centrally selected channel that
-satisfies the active profile and the project's declared platform and contract
-constraints. Once that resolver and its evidence contract are active,
-admission rejects a new project or newly introduced dependency whose recorded
-direct version was already behind that eligible release at resolution time.
+Use `dependency-version-selection` whenever a project is created or a runtime,
+framework, SDK, generator, plugin, or library is added or upgraded. Query the
+authoritative live release source during the task and target the newest eligible
+stable production release. Model memory, static templates, existing manifest
+ranges, installed prevalence, and migration effort are not version-selection
+evidence. Existing projects cross major versions and migrate by default rather
+than stopping at the newest release allowed by an obsolete range.
 
-"Use latest" is a selection rule, not a floating-build mechanism. Toolchains,
-application builds, tests, generators, release resolution, and deployed
-artifacts may not depend on mutable `latest` tags, unbounded ranges, an unpinned
-toolchain channel, or registry state that can change the same source revision's
-result. Exact resolved versions, content or integrity digests where the
-ecosystem supports them, immutable lock graphs, frozen/install-locked mode,
-hermetic generation, and clean-lock regeneration checks reproduce the selected
-latest graph. A published library may expose schema-validated bounded
-dependency or peer ranges as its consumer compatibility contract; its own
-build and release graph remains locked, and CI proves the declared lower bound,
-newest eligible versions, and other risk-selected compatibility points.
+"Use latest" is a selection rule, not a floating-build mechanism. Commit exact
+resolved versions and integrity-bearing lock graphs and verify frozen or locked
+installation. Published libraries may expose intentional bounded consumer and
+peer ranges, but their own development graph stays locked and their promised
+lower and newest eligible compatibility points are tested.
 
-Transitive packages converge toward the newest versions admitted by the direct
-constraints and solver. Every retained older transitive version carries a
-machine-visible constraint; when a newer resolution becomes available it opens
-an exact upgrade candidate rather than mutating or invalidating the current
-locked build. A successful candidate removes the older resolution. A failed
-candidate becomes a typed expiring version gap and the repository may not claim
-full currency while it remains.
-
-Stable production, long-term-support, and preview/nightly are distinct release
-channels. Only an active profile default, or a separately admitted typed
-channel authority explicitly incorporated by that active profile, defines
-which channel is production-eligible; selection evidence may inform a profile
-candidate but cannot bind a repository by itself. A repository cannot silently
-choose a slower channel. Within the admitted channel, the newest supported
-release is the currency target. A preview, beta, release candidate, nightly, or
-experimental tool never becomes the production default merely because its
-version or publication time is newer. It requires an explicit active-profile
-selection or a bounded experiment with an exact pin, compatibility corpus,
-correctness backstop, exposure cap, kill condition, expiry, recovery, and
-stable replacement path.
-
-Existing projects continuously re-resolve currency from canonical release and
-security sources. A newly published eligible release creates a separate
-automated exact-version requalification candidate immediately. That candidate
-runs the affected compile, static, contract, test, migration, security,
-performance, and recovery gates selected by changed risk, plus every applicable
-never-skip global gate; a successful candidate promotes without a human wait.
-The current locked graph remains reproducible while proof is pending. A failed
-candidate does not silently redefine the old version as current: it creates a
-typed, machine-readable version gap that binds the blocked version,
-incompatibility evidence, owner, expiry, recheck trigger, and forward-fix or
-replacement condition. Gap expiry blocks further promotion unless a renewed
-exception is admitted. Unsupported, end-of-life, revoked, or known-exploitable
-versions are ineligible and may be fenced immediately according to their
-security or support policy regardless of lockfile history. Repository
-familiarity and installed prevalence never justify version lag.
+Stable, long-term-support, and preview channels are different choices. Stable
+is the default unless the active profile selects another production channel;
+preview, beta, release-candidate, nightly, and canary releases require an
+explicit bounded experiment. A retained older direct version requires exact
+blocking evidence, owner, expiry, recheck trigger, and forward replacement
+condition and may not be described as current. Yanked, retracted, deprecated,
+end-of-life, revoked, or known-exploitable versions are ineligible even when an
+old lockfile still resolves.
 
 ### Static verification floor
 

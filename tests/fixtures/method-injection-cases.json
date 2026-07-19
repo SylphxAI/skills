@@ -98,6 +98,27 @@
     "artifacts": [{"artifact": "Constrained Decision Model", "owner": "decision-optimization-modeling"}]
   },
   {
+    "id": "dependency-version-selection-bootstrap",
+    "kind": "compound",
+    "prompt": "Create a production Next.js application from scratch.",
+    "expectedSkills": ["dependency-version-selection", "engineering-standard"],
+    "artifacts": [{"artifact": "Current reproducible dependency graph", "owner": "dependency-version-selection"}]
+  },
+  {
+    "id": "dependency-version-selection-upgrade",
+    "kind": "compound",
+    "prompt": "Modernize this existing application to the current production framework and library releases, including required code migrations.",
+    "expectedSkills": ["dependency-version-selection", "engineering-standard"],
+    "artifacts": [{"artifact": "Current reproducible dependency graph and migration", "owner": "dependency-version-selection"}]
+  },
+  {
+    "id": "dependency-version-selection-neighbour-metadata-edit",
+    "kind": "near-neighbour",
+    "prompt": "Change only the package description and npm scripts; preserve every dependency declaration and the exact lock graph.",
+    "expectedSkills": ["source-authoring-standard"],
+    "artifacts": []
+  },
+  {
     "id": "ordinary-edit-abstention",
     "kind": "abstention",
     "prompt": "Correct the misspelling in this README sentence and run the narrow documentation check.",

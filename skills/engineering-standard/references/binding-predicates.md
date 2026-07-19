@@ -53,6 +53,7 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-dod-01` | Data-oriented layouts are activated by profiling and remain benchmarked, correctness-tested implementation details within capability boundaries. |
 | `eng-proof-01` | Health/readiness probes are never product capability proof. |
 | `eng-tool-01` | Language/tool selection follows the active engineering profile + Decision Quality method. |
+| `eng-currency-01` | Project bootstrap, dependency addition, and dependency migration query authoritative live release sources and target the newest eligible stable production release; model memory, templates, existing ranges, and installed prevalence are not version-selection evidence. |
 | `eng-repro-01` | Builds are pinned/locked; no floating `latest` for production graphs. |
 | `eng-static-01` | Defects preferred at compile/static/test time over production discovery. |
 | `eng-ssot-01` | One semantic authority per fact; projections have lineage. |
