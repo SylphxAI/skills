@@ -24,13 +24,16 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { packageDigest } from '../runtime/package-digest.mjs';
 import {
   configureControlPlaneMcp,
+  DEFAULT_CONTROL_PLANE_MCP_URL,
   discoverControlPlaneMcp,
   enrollmentCommand,
   normalizeControlPlaneMcpUrl,
   protectedResourceMetadataUrl,
   REQUIRED_CONTROL_PLANE_SCOPES,
+  resolveControlPlaneMcpUrl,
   validateProtectedResourceMetadata,
 } from '../runtime/control-plane-mcp.mjs';
+import { mergeAutoSyncAgents } from '../runtime/sylphx-skills.mjs';
 import {
   applyConstitutionPlan,
   CONSTITUTION_END,
@@ -599,7 +602,20 @@ function validControlPlaneMetadata(endpoint = 'https://cp.example/api/mcp') {
   };
 }
 
-test('Control Plane MCP discovery requires an explicit safe canonical endpoint', async () => {
+test('Control Plane MCP discovery defaults to the safe canonical Sylphx SaaS endpoint', async () => {
+  assert.equal(resolveControlPlaneMcpUrl(''), DEFAULT_CONTROL_PLANE_MCP_URL);
+  const canonical = await discoverControlPlaneMcp({
+    endpoint: '',
+    fetchImpl: async (url) => {
+      assert.equal(url, 'https://cp.sylphx.com/.well-known/oauth-protected-resource');
+      return new Response(JSON.stringify(validControlPlaneMetadata(DEFAULT_CONTROL_PLANE_MCP_URL)), {
+        status: 200,
+        headers: { 'content-type': 'application/json' },
+      });
+    },
+  });
+  assert.equal(canonical.endpointSource, 'canonical_sylphx_saas');
+  assert.equal(canonical.endpoint, DEFAULT_CONTROL_PLANE_MCP_URL);
   assert.equal(normalizeControlPlaneMcpUrl('https://cp.example/api/mcp'), 'https://cp.example/api/mcp');
   assert.equal(
     protectedResourceMetadataUrl('https://cp.example/api/mcp'),
@@ -625,12 +641,6 @@ test('Control Plane MCP discovery requires an explicit safe canonical endpoint',
     normalizeControlPlaneMcpUrl('http://127.0.0.1:8787/api/mcp'),
     'http://127.0.0.1:8787/api/mcp',
   );
-
-  assert.deepEqual(await discoverControlPlaneMcp({ endpoint: '' }), {
-    disposition: 'not_applicable',
-    declaration: 'SYLPHX_CONTROL_PLANE_MCP_URL',
-    reason: 'no_explicit_control_plane_mcp_endpoint',
-  });
 });
 
 test('Control Plane MCP discovery binds RFC 9728 metadata before enrollment', async () => {
@@ -651,6 +661,7 @@ test('Control Plane MCP discovery binds RFC 9728 metadata before enrollment', as
   assert.equal(request.options.redirect, 'error');
   assert.deepEqual(request.options.headers, { accept: 'application/json' });
   assert.equal(discovered.disposition, 'ready_for_enrollment');
+  assert.equal(discovered.endpointSource, 'controlled_override');
   assert.equal(discovered.endpoint, endpoint);
   assert.deepEqual(discovered.authorizationServers, ['https://identity.example/oauth']);
   assert.deepEqual(discovered.protocolRevisionsSupported, ['2024-11-05', '2025-03-26']);
@@ -879,24 +890,20 @@ test('Control Plane MCP enrollment uses runtime-native remote transports without
   );
 });
 
-test('integration discovery is read-only and reports not applicable without deployment declaration', () => {
-  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-integration-discovery-'));
-  try {
-    const result = runWithEnvironment(['integration', 'discover', '--json'], {
-      SYLPHX_SKILLS_HOME: sandbox,
-      SYLPHX_CONTROL_PLANE_MCP_URL: '',
-      CODEX_HOME: path.join(sandbox, '.codex'),
-    });
-    assert.deepEqual(JSON.parse(result.stdout), {
-      disposition: 'not_applicable',
-      declaration: 'SYLPHX_CONTROL_PLANE_MCP_URL',
-      reason: 'no_explicit_control_plane_mcp_endpoint',
-    });
-    assert.equal(existsSync(path.join(sandbox, '.codex')), false);
-    assert.equal(existsSync(path.join(sandbox, '.sylphx-skills')), false);
-  } finally {
-    rmSync(sandbox, { recursive: true, force: true });
-  }
+test('mandatory AutoSync adds a receiving runtime without dropping prior selection', () => {
+  assert.deepEqual(mergeAutoSyncAgents(null, ['codex']), ['codex']);
+  assert.deepEqual(
+    mergeAutoSyncAgents({ enabled: true, agents: ['codex'] }, ['claude']),
+    ['codex', 'claude'],
+  );
+  assert.deepEqual(
+    mergeAutoSyncAgents({ enabled: true, agents: null }, ['codex']),
+    ['codex', 'claude', 'grok'],
+  );
+  assert.throws(
+    () => mergeAutoSyncAgents({ enabled: true, agents: ['unknown'] }, ['codex']),
+    /Invalid existing AutoSync runtime selection/,
+  );
 });
 
 test('sync rejects symbolic links before replacing the affected installed package', () => {

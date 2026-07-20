@@ -13,12 +13,13 @@ the receiving runtime unless the user explicitly names additional runtimes.
 ## Required outcome
 
 Install or update the complete Sylphx-managed Skill catalog and compact runtime
-constitution for the agent runtime receiving this request. When the environment
-explicitly declares a Sylphx Control Plane remote MCP deployment, validate and
-enroll that integration through the runtime's native HTTPS/OAuth surface.
-Configure other supported runtimes only when the user explicitly asks for them.
-Preserve unrelated instructions, Skills, configuration, and data. Finish with
-effective readback, not a folder-count claim.
+constitution for the agent runtime receiving this request. Enable managed
+AutoSync for that runtime and validate and enroll the canonical Sylphx Control
+Plane SaaS resource `https://cp.sylphx.com/api/mcp` through the runtime's native
+HTTPS/OAuth surface. Configure other supported runtimes only when the user
+explicitly asks for them. Preserve unrelated instructions, Skills,
+configuration, and data. Finish with effective readback, not a folder-count
+claim.
 
 ## Procedure
 
@@ -73,11 +74,19 @@ effective readback, not a folder-count claim.
    work, claim work rather than files, resolve the active delivery lane, and
    separate source, admission, landing, deployment, and live proof. An active
    context that predates installation is not evidence.
-7. Resolve the optional live integration separately from static installation:
-   - Treat an existing remote MCP entry or `SYLPHX_CONTROL_PLANE_MCP_URL` as a
-     deployment declaration. The URL is not a credential. Do not infer a URL
-     from a repository name, retired stdio adapter, historical hostname, tenant,
-     or company default.
+7. Enable the repository-owned OS-scheduled AutoSync for the receiving runtime
+   at the default ten-minute interval. If AutoSync already manages other
+   explicitly selected runtimes, preserve that set and add the receiving
+   runtime; never shrink or silently expand the selection from runtime
+   discovery. Verify scheduler status and perform one exact-source
+   reconciliation. A static one-shot copy is a partial Sylphx installation.
+8. Resolve the live integration separately from static installation:
+   - The canonical Sylphx SaaS MCP resource is
+     `https://cp.sylphx.com/api/mcp`. This stable public product hostname is
+     service metadata, not a credential, and is the default for every
+     installation. `SYLPHX_CONTROL_PLANE_MCP_URL` or an explicit URL may
+     override it only for controlled staging or isolated evaluation; they do
+     not define an alternative self-hosted production topology.
    - Validate the endpoint with the repository adapter's `integration discover`
      operation. It must use HTTPS (except loopback evaluation), expose RFC 9728
      protected-resource metadata, bind the exact `/api/mcp` resource, advertise
@@ -96,11 +105,9 @@ effective readback, not a folder-count claim.
    - Verify the integration in a new context: the server initializes over
      remote HTTPS, its instructions load, authenticated `tools/list` succeeds,
      and the expected Work tools are visible. Do not mutate Work merely to prove
-     connectivity. A declared integration that cannot authenticate is `partial`.
-     If the runtime has no safe OAuth capability, report that capability gap
-     instead of persisting a bearer token. With no deployment declaration, the
-     integration disposition is `not_applicable` and static installation may
-     still be complete.
+     connectivity. An integration that cannot authenticate is `partial`. If the
+     runtime has no safe OAuth capability, report that capability gap instead
+     of persisting a bearer token.
 
 ## Boundaries
 
@@ -109,15 +116,14 @@ effective readback, not a folder-count claim.
   authorization or report that capability as blocked. Do not offer a shell
   command as the completion path.
 - Do not use or repair package-manager caches with privileged commands.
-- Do not enable scheduled synchronization unless the request includes managed
-  updates or the existing environment already selected it. A one-time install
-  remains complete for the exact installed candidate.
-- Do not copy, request, mint, print, or persist credentials; infer deployment
-  endpoints; configure deployment access, hooks, or model overrides; or embed a
-  company/customer hostname in this public repository. An explicitly declared
-  remote MCP URL may be metadata-validated and registered through the runtime's
-  native configuration. OAuth consent and credentials remain owned by the
-  runtime and identity provider.
+- Do not leave AutoSync disabled after a Sylphx installation. AutoSync uses the
+  operating system's per-user scheduler, applies only exact canonical
+  generations, and preserves the last known-good generation while offline.
+- Do not copy, request, mint, print, or persist credentials; infer tenant
+  identity; configure deployment access, hooks, or model overrides. The
+  canonical public MCP hostname may be embedded and registered because it is
+  Sylphx SaaS service identity, not authorization. OAuth consent and credentials
+  remain owned by the runtime and identity provider.
 - Do not load Doctrine, Mission Control, generated projections, or any retired
   repository as current instruction authority. A bounded installer migration
   may read the exact retired Doctrine projection solely to preserve local notes
@@ -127,8 +133,8 @@ effective readback, not a folder-count claim.
 ## Completion response
 
 Return `complete`, `partial`, or `blocked`; the exact repository commit; each
-runtime's catalog and constitution readback; fresh-context verification; the
-Control Plane integration disposition (`not_applicable`, authenticated, or a
+runtime's catalog, constitution, and AutoSync readback; fresh-context
+verification; the Control Plane integration disposition (authenticated or a
 typed gap); and any capability or authorization gap. Keep internal commands and
 routine logs out of the user-facing response unless they are necessary to
 diagnose a typed failure. Never end by offering installation commands to the

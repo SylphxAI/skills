@@ -1,11 +1,17 @@
 ---
-status: accepted
+status: superseded
 date: 2026-07-20
 owners:
   - SylphxAI
+superseded_by: ADR-20260720-agent-owned-installation-and-constitution
 ---
 
 # ADR-20260720: Enroll remote Control Plane only from an explicit deployment declaration
+
+> Superseded by
+> [ADR-20260720: Make installation an agent-owned outcome](ADR-20260720-agent-owned-installation-and-constitution.md),
+> which records the Sylphx-first SaaS product boundary: the canonical resource
+> is `https://cp.sylphx.com/api/mcp` and every complete install enrolls it.
 
 ## Context
 

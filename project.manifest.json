@@ -6,7 +6,7 @@
     "id": "sylphx-skills",
     "repository": "SylphxAI/skills",
     "name": "Sylphx Skills",
-    "summary": "Public static instructions, compact runtime constitution, and agent-owned Codex, Claude, and Grok installation with explicit remote integration enrollment.",
+    "summary": "Public static instructions, compact runtime constitution, mandatory AutoSync, and agent-owned Codex, Claude, and Grok enrollment into the canonical Sylphx Control Plane SaaS.",
     "lifecycle": "production",
     "layer": "tooling",
     "visibility": "public",
@@ -25,7 +25,7 @@
       "Own canonical static instructions under skills/<id>/.",
       "Let a user install or update Codex, Claude Code, and Grok Build by giving the repository to an agent.",
       "Converge the complete Skill generation and compact persistent constitution without replacing unrelated user state.",
-      "Enroll an explicitly declared Control Plane remote MCP endpoint through validated OAuth metadata and runtime-native configuration.",
+      "Enroll the canonical https://cp.sylphx.com/api/mcp SaaS resource through validated OAuth metadata and runtime-native configuration.",
       "Publish Sylphx working methods and Platform guidance as useful public product surfaces."
     ],
     "nonGoals": [
@@ -54,7 +54,7 @@
       {
         "id": "remote-integration-enrollment",
         "name": "Remote integration enrollment",
-        "description": "Credential-free discovery validation and runtime-native registration for an explicitly declared Control Plane MCP deployment."
+        "description": "Credential-free discovery validation and runtime-native OAuth registration for the canonical Sylphx Control Plane SaaS resource."
       }
     ],
     "doesNotOwn": [
@@ -79,7 +79,7 @@
       }
     ],
     "forbiddenCouplings": [
-      "No hard-coded Control Plane deployment, credential, customer-data, benchmark, or model-provider dependency.",
+      "No hard-coded credential, tenant grant, customer-data, benchmark, or model-provider dependency; the canonical Sylphx SaaS hostname is product identity.",
       "No generated or secondary writable copy of Skill semantics."
     ]
   },
