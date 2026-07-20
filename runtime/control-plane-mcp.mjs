@@ -347,6 +347,31 @@ export function configureControlPlaneMcp(runtime, discovery, {
   });
   if (result.error) throw new Error(`Unable to run ${command.executable}: ${result.error.message}`);
   if (result.status !== 0) {
+    // Some native clients persist a valid MCP entry before returning a non-zero
+    // status from a later bootstrap/login phase. Treat the command exit as an
+    // observation, then read the actual effect back. Only the exact safe entry
+    // can converge; missing, conflicting, credential-bearing, or different
+    // endpoints remain failures.
+    const afterFailure = inspectRuntimeMcp(runtime, serverName, { run, pathEnv });
+    if (afterFailure.state === 'existing') {
+      let normalizedAfterFailure;
+      try {
+        normalizedAfterFailure = normalizeControlPlaneMcpUrl(afterFailure.endpoint);
+      } catch {
+        normalizedAfterFailure = null;
+      }
+      if (normalizedAfterFailure === discovery.endpoint) {
+        return {
+          disposition: 'configured_authentication_required',
+          runtime,
+          serverName,
+          endpoint: discovery.endpoint,
+          metadataUrl: discovery.metadataUrl,
+          configuration: 'created_after_nonzero_readback',
+          oauth: command.oauth,
+        };
+      }
+    }
     throw new Error(`${command.executable} MCP enrollment failed with exit code ${result.status}`);
   }
   return {
