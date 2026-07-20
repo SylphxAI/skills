@@ -15,13 +15,19 @@ build, verify, deliver, operate, and grow software. It supports
 
 Give this to your agent:
 
-> Install this: https://github.com/SylphxAI/skills
+> Install this development environment: https://github.com/SylphxAI/skills
 
 That is the complete user procedure. The agent reads [`INSTALL.md`](./INSTALL.md),
 detects its environment, installs the exact Skill catalog and compact runtime
 constitution, preserves unrelated configuration, and verifies the result in a
 fresh context. The repository never asks the user to translate that outcome
 into shell commands.
+
+“Development environment” is deliberate intent, not ceremony. Some clients
+route a bare “install this” request for a repository named `skills` into a
+generic per-Skill copier. Folder copying alone omits the managed source
+manifest, compact constitution, idempotent reconciliation, and fresh-context
+proof, so it is not a successful installation of this repository.
 
 Updates also converge installations that still point at the retired Doctrine
 runtime. Only the exact per-user Sylphx legacy projection is eligible: the
@@ -56,7 +62,7 @@ secret.
 
 Installation is intentionally prompt-native:
 
-> Install this: https://github.com/SylphxAI/skills
+> Install this development environment: https://github.com/SylphxAI/skills
 
 For a later exact-source update:
 

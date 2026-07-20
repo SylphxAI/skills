@@ -22,10 +22,12 @@ or product state. Those capabilities have separate authenticated owners.
 
 ## Decision
 
-1. The public installation interface is the repository locator plus a short
-   intent such as `install this`. The receiving agent owns environment
-   discovery, execution, recovery, and verification. It must not turn internal
-   commands into user work.
+1. The public installation interface is the repository locator plus the short,
+   explicit intent `install this development environment`. The environment
+   qualifier distinguishes the repository-level outcome from a generic
+   per-Skill copy operation in clients that pre-route install requests. The
+   receiving agent owns environment discovery, execution, recovery, and
+   verification. It must not turn internal commands into user work.
 2. `INSTALL.md` is the portable installation contract. The repository-owned
    Node adapter remains the preferred deterministic mechanism, not the user
    interface. Native runtime installation may be used only when it proves the
@@ -67,11 +69,15 @@ or product state. Those capabilities have separate authenticated owners.
    historical lineage. They cannot be inferred or selected as current static or
    live authority merely because old files, imports, aliases, or memories remain
    reachable during convergence.
+10. A generic installer result containing every `SKILL.md` but no managed
+    source manifest and current compact constitution is a typed partial, never
+    completion. External clean-runtime evaluation must include the exact public
+    prompt because deterministic adapter tests cannot prove client routing.
 
 ## Consequences
 
 - The shortest supported user experience is one prompt containing the public
-  repository URL.
+  repository URL and the two-word object “development environment.”
 - Runtime-specific complexity stays discoverable by agents and deterministic
   automation rather than becoming human ceremony.
 - Existing developer machines cannot prove cold-start adoption; exact-source
