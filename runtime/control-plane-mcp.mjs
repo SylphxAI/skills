@@ -5,6 +5,7 @@ import { existsSync, realpathSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 export const CONTROL_PLANE_MCP_ENV = 'SYLPHX_CONTROL_PLANE_MCP_URL';
+export const DEFAULT_CONTROL_PLANE_MCP_URL = 'https://cp.sylphx.com/api/mcp';
 export const CONTROL_PLANE_SERVER_NAME = 'sylphx-control-plane';
 export const REQUIRED_CONTROL_PLANE_SCOPES = Object.freeze([
   'cp.observe',
@@ -43,6 +44,10 @@ export function normalizeControlPlaneMcpUrl(input) {
     requireMcpPath: true,
   });
   return parsed.toString();
+}
+
+export function resolveControlPlaneMcpUrl(input = process.env[CONTROL_PLANE_MCP_ENV]) {
+  return normalizeControlPlaneMcpUrl(String(input || '').trim() || DEFAULT_CONTROL_PLANE_MCP_URL);
 }
 
 export function protectedResourceMetadataUrl(endpoint) {
@@ -139,15 +144,9 @@ export async function discoverControlPlaneMcp({
   fetchImpl = globalThis.fetch,
   timeoutMs = 5_000,
 } = {}) {
-  if (!endpoint || !String(endpoint).trim()) {
-    return {
-      disposition: 'not_applicable',
-      declaration: CONTROL_PLANE_MCP_ENV,
-      reason: 'no_explicit_control_plane_mcp_endpoint',
-    };
-  }
   if (typeof fetchImpl !== 'function') throw new Error('This Node runtime does not provide fetch');
-  const normalizedEndpoint = normalizeControlPlaneMcpUrl(endpoint);
+  const endpointSource = String(endpoint || '').trim() ? 'controlled_override' : 'canonical_sylphx_saas';
+  const normalizedEndpoint = resolveControlPlaneMcpUrl(endpoint);
   const metadataUrl = protectedResourceMetadataUrl(normalizedEndpoint);
   const response = await fetchImpl(metadataUrl, {
     method: 'GET',
@@ -161,7 +160,7 @@ export async function discoverControlPlaneMcp({
   const metadata = await boundedJson(response);
   return {
     disposition: 'ready_for_enrollment',
-    declaration: CONTROL_PLANE_MCP_ENV,
+    endpointSource,
     ...validateProtectedResourceMetadata(metadata, normalizedEndpoint),
   };
 }
@@ -367,7 +366,7 @@ function option(name, args) {
 }
 
 function help() {
-  console.log(`Sylphx Control Plane MCP integration\n\nUsage:\n  control-plane-mcp discover [--url HTTPS_URL] [--json]\n  control-plane-mcp enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n\nThe URL is a non-secret deployment declaration. Discovery validates RFC 9728\nmetadata before any runtime configuration is changed. OAuth credentials are\nnever copied or stored by this adapter.`);
+  console.log(`Sylphx Control Plane MCP integration\n\nUsage:\n  control-plane-mcp discover [--url HTTPS_URL] [--json]\n  control-plane-mcp enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n\nThe default resource is the canonical Sylphx SaaS endpoint\n${DEFAULT_CONTROL_PLANE_MCP_URL}. --url or ${CONTROL_PLANE_MCP_ENV} may override\nit only for controlled staging or isolated evaluation. Discovery validates RFC\n9728 metadata before any runtime configuration is changed. OAuth credentials\nare never copied or stored by this adapter.`);
 }
 
 async function main(args = process.argv.slice(2)) {
@@ -379,9 +378,6 @@ async function main(args = process.argv.slice(2)) {
   if (action === 'enroll') {
     const runtime = option('--agent', args);
     if (!runtime) throw new Error('enroll requires --agent codex, claude, or grok');
-    if (discovery.disposition === 'not_applicable') {
-      throw new Error(`enroll requires --url or ${CONTROL_PLANE_MCP_ENV}`);
-    }
     result = configureControlPlaneMcp(runtime, discovery);
   } else if (action !== 'discover') {
     throw new Error(`Unknown command: ${action}`);

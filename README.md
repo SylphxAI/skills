@@ -19,9 +19,10 @@ Give this to your agent:
 
 That is the complete user procedure. The agent reads [`INSTALL.md`](./INSTALL.md),
 detects its environment, installs the exact Skill catalog and compact runtime
-constitution, preserves unrelated configuration, and verifies the result in a
-fresh context. The repository never asks the user to translate that outcome
-into shell commands.
+constitution, enables managed AutoSync, enrolls the canonical Sylphx Control
+Plane SaaS endpoint through native OAuth, preserves unrelated configuration,
+and verifies the result in a fresh context. The repository never asks the user
+to translate that outcome into shell commands.
 
 The root [`SKILL.md`](./SKILL.md) is a discovery bootstrap for clients that
 pre-route repository installation through a generic Skill installer. It sends
@@ -51,7 +52,7 @@ playbooks. This repository is different:
 | **Multi-runtime** | Codex · Claude Code · Grok Build from one source |
 | **Converging sync** | New skills appear; removed skills leave; third-party skills stay |
 | **Agent-owned adoption** | Install, update, integration enrollment, and readback are outcomes owned by the receiving agent |
-| **OS auto-update** | Optional launchd / systemd / Task Scheduler — no daemon we host |
+| **OS auto-update** | Standard launchd / systemd / Task Scheduler enrollment — no daemon we host |
 
 Commercial Sylphx value is continuous maintenance, private customer packages,
 Platform integrations, and support — **not** pretending public Markdown is
@@ -69,7 +70,7 @@ For a later exact-source update:
 
 > Update my Sylphx Skills from https://github.com/SylphxAI/skills and verify them in a fresh context.
 
-For managed updates:
+To repair or re-enable managed updates explicitly:
 
 > Keep my Sylphx Skills current from https://github.com/SylphxAI/skills.
 
@@ -111,22 +112,18 @@ The deterministic adapter exposes install, status, clear, and scheduled-sync
 operations to agents and automation. Those operations are implementation
 mechanisms, not a user installation interface.
 
-### Optional Control Plane integration
+### Sylphx Control Plane integration
 
-Static Skills and live coordination remain separate authorities. If the agent's
-environment explicitly declares a Sylphx Control Plane MCP URL, the receiving
-agent validates its public OAuth protected-resource metadata before registering
-the remote HTTPS server through Codex, Claude Code, or Grok Build's native MCP
-configuration. Codex and Claude use their native OAuth login command; Grok
-starts its native browser flow when the server connects. A runtime without safe
-OAuth support would be reported as partial rather than receiving a copied
-bearer token. No Control Plane hostname, tenant, credential, or live work state
-is embedded in this public repository.
-
-With no explicit deployment declaration, Control Plane enrollment is simply
-`not_applicable`; it does not make the static catalog installation incomplete.
-See [`INSTALL.md`](./INSTALL.md) and
-[`ADR-20260720`](./docs/adr/ADR-20260720-explicit-remote-mcp-enrollment.md).
+Static Skills and live coordination remain separate authorities. Every
+installation validates and registers the stable Sylphx SaaS MCP resource
+`https://cp.sylphx.com/api/mcp` through Codex, Claude Code, or Grok Build's
+native MCP configuration. The hostname is public product identity, not a
+credential or tenant grant. Codex and Claude use their native OAuth login
+command; Grok starts its native browser flow when the server connects. OAuth
+account, tenant, scopes, expiry, and revocation determine access. A runtime
+without safe OAuth support is partial rather than receiving a copied bearer
+token. See [`INSTALL.md`](./INSTALL.md) and
+[`ADR-20260720`](./docs/adr/ADR-20260720-agent-owned-installation-and-constitution.md).
 
 ---
 

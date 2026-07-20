@@ -27,6 +27,7 @@ import { packageDigest } from './package-digest.mjs';
 import {
   configureControlPlaneMcp,
   CONTROL_PLANE_MCP_ENV,
+  DEFAULT_CONTROL_PLANE_MCP_URL,
   discoverControlPlaneMcp,
 } from './control-plane-mcp.mjs';
 import { reconcile, withLifecycleLock, withReconcileLock } from './reconcile.mjs';
@@ -153,6 +154,19 @@ function requestedAgents(args = argv, { required = false } = {}) {
   const invalid = expanded.filter((name) => !['codex', 'claude', 'grok'].includes(name));
   if (invalid.length) throw new Error(`Unsupported agent: ${invalid.join(', ')}. Supported: codex, claude, grok, all.`);
   return [...new Set(expanded)];
+}
+
+export function mergeAutoSyncAgents(existing, requested) {
+  const supported = new Set(['codex', 'claude', 'grok']);
+  const prior = existing?.enabled
+    ? (Array.isArray(existing.agents) && existing.agents.length
+      ? existing.agents
+      : ['codex', 'claude', 'grok'])
+    : [];
+  const merged = [...new Set([...prior, ...requested])];
+  const invalid = merged.filter((runtime) => !supported.has(runtime));
+  if (invalid.length) throw new Error(`Invalid existing AutoSync runtime selection: ${invalid.join(', ')}`);
+  return merged;
 }
 
 function manifestPath(target) {
@@ -547,7 +561,9 @@ function testHoldEnableAfterReconcile() {
 function enableAutoSync() {
   if (argv.includes('--dest')) throw new Error('auto-sync uses native runtime roots; --dest is not supported');
   const intervalMinutes = parseIntervalMinutes(argv);
-  const agents = requestedAgents(argv, { required: true });
+  const requested = requestedAgents(argv, { required: true });
+  const existing = readJson(reconcilerConfig);
+  const agents = mergeAutoSyncAgents(existing, requested);
   const pathEnv = process.env.PATH || '/usr/local/bin:/usr/bin:/bin';
   const config = {
     schemaVersion: 1,
@@ -650,9 +666,6 @@ async function integration() {
     if (!runtime || runtime.includes(',') || runtime === 'all') {
       throw new Error('integration enroll requires one --agent codex, claude, or grok');
     }
-    if (discovery.disposition === 'not_applicable') {
-      throw new Error(`integration enroll requires --url or ${CONTROL_PLANE_MCP_ENV}`);
-    }
     result = configureControlPlaneMcp(runtime, discovery);
   } else if (action !== 'discover') {
     throw new Error(`Unknown integration action: ${action}`);
@@ -662,7 +675,7 @@ async function integration() {
 }
 
 function help() {
-  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills install --agent codex|claude|grok|all\n  sylphx-skills sync (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills status [--agent codex|claude|grok|all | --dest PATH] [--json]\n  sylphx-skills clear (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills integration discover [--url HTTPS_URL] [--json]\n  sylphx-skills integration enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n  sylphx-skills auto-sync enable --agent codex|claude|grok|all [--interval 10m]\n  sylphx-skills auto-sync disable|status\n\nInstall is the agent-facing operation and requires an explicit native runtime.\nEvery mutating native operation requires an explicit runtime selection; no\ndetected runtime is mutated by default. Native targets receive both the complete\nSkill catalog and compact constitution. Control Plane MCP enrollment is optional\nand requires an explicit non-secret deployment URL.`);
+  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills install --agent codex|claude|grok|all\n  sylphx-skills sync (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills status [--agent codex|claude|grok|all | --dest PATH] [--json]\n  sylphx-skills clear (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills integration discover [--url HTTPS_URL] [--json]\n  sylphx-skills integration enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n  sylphx-skills auto-sync enable --agent codex|claude|grok|all [--interval 10m]\n  sylphx-skills auto-sync disable|status\n\nInstall is the agent-facing static reconciliation operation and requires an\nexplicit native runtime. The complete repository installation contract also\nenables AutoSync and enrolls ${DEFAULT_CONTROL_PLANE_MCP_URL} for that receiving\nruntime. Every mutating native operation requires an explicit runtime selection;\ndetecting another runtime never grants permission to change it. OAuth remains\nruntime-native.`);
 }
 
 async function main() {

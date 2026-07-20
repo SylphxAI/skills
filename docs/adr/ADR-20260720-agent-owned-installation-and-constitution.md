@@ -52,15 +52,22 @@ or product state. Those capabilities have separate authenticated owners.
    second reconciliation, and a fresh-context behavior check. A context loaded
    before installation is not evidence. Source availability, bytes on disk,
    runtime loading, and workflow behavior are separate claims.
-6. Scheduled updates remain opt-in. A one-time install is complete for its
-   exact source candidate; it does not silently create hooks or background
-   work.
-7. This public repository does not copy, request, mint, or persist credentials,
-   infer deployment endpoints, or configure deployment access, model overrides,
-   or product hooks. An explicitly declared remote MCP URL may be validated and
-   registered through a runtime's native configuration under
-   [ADR-20260720](ADR-20260720-explicit-remote-mcp-enrollment.md). OAuth consent
-   and credentials remain owned by the runtime and identity provider.
+6. AutoSync is a required installation surface. The receiving runtime is added
+   to a ten-minute OS-scheduled reconciliation set backed by the canonical
+   public repository. Existing explicitly selected runtimes remain selected;
+   runtime discovery never expands or shrinks that set. Offline clients keep a
+   verified last-known-good generation. A one-shot static copy is partial, not
+   a complete Sylphx installation.
+7. The canonical Control Plane MCP resource is the stable Sylphx SaaS endpoint
+   `https://cp.sylphx.com/api/mcp`. The public hostname is product identity and
+   service discovery, not a credential, tenant grant, or authorization secret.
+   Every installation validates its RFC 9728 metadata and registers it through
+   the receiving runtime's native remote-MCP configuration. An override exists
+   only for controlled staging and isolated evaluation; there is no alternative
+   self-hosted production topology. OAuth account, tenant, scopes, expiry, and
+   revocation remain owned by the runtime, identity provider, and Control Plane.
+   The repository never copies, requests, mints, prints, or persists a bearer
+   token or client secret.
 8. Behavioral evaluation uses a clean runtime home with no prior Skills,
    constitution, memory, checkout, or user configuration. Authentication uses
    an isolated test identity or runtime-native short-lived/device flow. A
@@ -98,8 +105,11 @@ or product state. Those capabilities have separate authenticated owners.
 - Existing developer machines cannot prove cold-start adoption; exact-source
   isolated evaluations remain external evidence and do not add model outputs
   or credentials to this repository.
-- MCP and OAuth onboarding can evolve independently without turning a public
-  instruction repository into an authorization authority.
+- Public distribution remains the Sylphx product client rather than becoming a
+  vendor-neutral framework: every user reaches the same SaaS resource, while
+  OAuth remains the authorization boundary.
+- Every completed install has a bounded-freshness update path; instruction
+  drift is not deferred to a later manual prompt.
 - Existing Sylphx developer homes converge away from the retired Doctrine
   runtime without granting the installer generic symlink-following authority.
 - An agent cannot accidentally update another runtime merely because that
@@ -107,7 +117,8 @@ or product state. Those capabilities have separate authenticated owners.
 
 ## Verification
 
-- Unit-test install, update, idempotency, malformed ownership, unrelated-file
+- Unit-test install, required AutoSync, additive runtime selection, update,
+  idempotency, malformed ownership, unrelated-file
   preservation, status, clear behavior, bounded retired-projection migration,
   arbitrary-link rejection, and concurrent-target-change fencing for every
   supported target.
@@ -115,5 +126,6 @@ or product state. Those capabilities have separate authenticated owners.
 - Package the public artifact and prove that `INSTALL.md`, the adapter, the
   constitution, and all Skills are present.
 - Run fresh-context black-box installation and workflow-adoption checks for
-  each authenticated supported runtime. Report unavailable authentication as a
-  typed gap rather than borrowing hidden local state.
+  each authenticated supported runtime. Verify the canonical MCP resource and
+  AutoSync readback. Report unavailable authentication as a typed gap rather
+  than borrowing hidden local state.
