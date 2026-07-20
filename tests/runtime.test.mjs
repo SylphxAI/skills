@@ -222,9 +222,12 @@ test('public install intent cannot be mistaken for generic Skill copying', () =>
   const install = readFileSync(path.join(root, 'INSTALL.md'), 'utf8');
   assert.match(
     readme,
-    /> Install this development environment: https:\/\/github\.com\/SylphxAI\/skills/,
+    /> Install this into your current agent runtime: https:\/\/github\.com\/SylphxAI\/skills/,
   );
-  assert.match(install, /generic Skill installer that\s+only copies `skills\/\*` is not completion/);
+  assert.match(
+    install,
+    /generic Skill installer that only copies\s+`skills\/\*` is not completion; installing every detected runtime also exceeds\s+scope/,
+  );
   assert.match(
     install,
     /Presence of\s+all `SKILL\.md` files without the managed manifest and current constitution is\s+a typed partial installation, not success/,

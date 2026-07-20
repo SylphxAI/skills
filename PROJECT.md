@@ -18,8 +18,8 @@ This repository owns:
 
 - canonical packages under `skills/<id>/`;
 - one deterministic public catalog;
-- the agent-owned `install this development environment` contract and compact
-  runtime constitution;
+- the agent-owned `install this into your current agent runtime` contract and
+  compact runtime constitution;
 - package validation and Codex / Claude / Grok installation/update adapters;
 - public contribution and community entry points proportional to that scope.
 
