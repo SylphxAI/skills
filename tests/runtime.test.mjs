@@ -1738,8 +1738,23 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
   try {
     mkdirSync(source, { recursive: true });
     git(source, ['init', '--initial-branch=main']);
-    for (const entry of ['runtime', 'skills']) cpSync(path.join(root, entry), path.join(source, entry), { recursive: true });
-    for (const entry of ['.gitattributes', 'catalog.json', 'package.json']) cpSync(path.join(root, entry), path.join(source, entry));
+    cpSync(path.join(root, 'runtime'), path.join(source, 'runtime'), { recursive: true });
+    mkdirSync(path.join(source, 'skills'));
+    const fixtureSkillNames = [
+      'engineering-standard',
+      'technology-stack-profile',
+      'voice-preserving-editor',
+    ];
+    for (const name of fixtureSkillNames) {
+      cpSync(path.join(root, 'skills', name), path.join(source, 'skills', name), { recursive: true });
+    }
+    const fixtureCatalog = {
+      ...catalog,
+      count: fixtureSkillNames.length,
+      skills: catalog.skills.filter((skill) => fixtureSkillNames.includes(skill.name)),
+    };
+    writeFileSync(path.join(source, 'catalog.json'), `${JSON.stringify(fixtureCatalog, null, 2)}\n`);
+    for (const entry of ['.gitattributes', 'package.json']) cpSync(path.join(root, entry), path.join(source, entry));
     const remoteReconciler = path.join(source, 'runtime', 'reconcile.mjs');
     writeFileSync(remoteReconciler, `${readFileSync(remoteReconciler, 'utf8')}\n// exact remote candidate fixture\n`);
     const sourceSha = commit(source, 'fixture source');
@@ -1850,7 +1865,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     const repairedManifest = JSON.parse(readFileSync(installedManifest, 'utf8'));
     assert.notEqual(repairedManifest.catalogDigest, driftedManifest.catalogDigest);
     assert.equal(repairedManifest.profiles[0].lifecycle, 'active');
-    assert.deepEqual(repairedManifest.skills, catalog.skills.map((skill) => skill.name));
+    assert.deepEqual(repairedManifest.skills, fixtureCatalog.skills.map((skill) => skill.name));
     assert.equal(repairedManifest.sourceCommit, sourceSha);
     assert.equal(readFileSync(driftedSkill, 'utf8').includes('local drift'), false);
 
