@@ -1,8 +1,15 @@
 # Install for agents
 
 This file is addressed to the agent that received this repository with a short
-request such as **“install this.”** Own the installation outcome. Do not turn
-the repository's internal commands into work for the user.
+request such as **“install this development environment.”** Own the installation
+outcome. Do not turn the repository's internal commands into work for the user.
+
+The words “development environment” distinguish this repository-level outcome
+from installing one or more independent Skills. A generic Skill installer that
+only copies `skills/*` is not completion: it does not install the managed source
+manifest or compact constitution and cannot prove exact-source reconciliation,
+idempotency, or fresh-context adoption. Read and follow this contract even when
+the client initially routes the request through a built-in Skill installer.
 
 ## Required outcome
 
@@ -38,6 +45,9 @@ effective readback, not a folder-count claim.
    Owner and permission bits are also fenced where the operating system exposes
    authoritative POSIX metadata. Arbitrary links, imports, unsafe metadata, or
    content remain fail-closed.
+   Do not substitute a per-Skill download loop for this operation. Presence of
+   all `SKILL.md` files without the managed manifest and current constitution is
+   a typed partial installation, not success.
 4. If that adapter cannot execute, use the runtime's documented native Skill
    installation and persistent-instruction mechanisms to achieve the same
    result. Do not invent unsupported files, silently overwrite instructions,

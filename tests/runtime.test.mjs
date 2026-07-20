@@ -217,6 +217,20 @@ test('compact constitution explicitly retires predecessor authorities', () => {
   );
 });
 
+test('public install intent cannot be mistaken for generic Skill copying', () => {
+  const readme = readFileSync(path.join(root, 'README.md'), 'utf8');
+  const install = readFileSync(path.join(root, 'INSTALL.md'), 'utf8');
+  assert.match(
+    readme,
+    /> Install this development environment: https:\/\/github\.com\/SylphxAI\/skills/,
+  );
+  assert.match(install, /generic Skill installer that\s+only copies `skills\/\*` is not completion/);
+  assert.match(
+    install,
+    /Presence of\s+all `SKILL\.md` files without the managed manifest and current constitution is\s+a typed partial installation, not success/,
+  );
+});
+
 test('agent install converges native Skills and managed constitutions without owning user instructions', () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-agent-install-'));
   const codexHome = path.join(sandbox, '.codex');
