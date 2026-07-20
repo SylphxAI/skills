@@ -106,12 +106,6 @@
       "packageDigest": "sha256:bc4d40fee44d06ae543cce5c16bb30aaaaa2d77454722bd5608194d800ed6d5a"
     },
     {
-      "name": "control-plane-work-coordination",
-      "description": "Connect, operate, or audit agent work through the Sylphx Control Plane operating graph using explicit Tenant, Workspace, and optional Project identity; Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-provider observations. Use when implementing a Control Plane client or adapter, binding a repository or agent workflow to Control Plane, recovering a missing MCP work loop, or verifying Control Plane work provenance. Do not use for portable work-ledger design, ordinary Git operations, or static Skills authoring.",
-      "path": "skills/control-plane-work-coordination/SKILL.md",
-      "packageDigest": "sha256:29a6ee194e65165c9c8d3856bf11f35c0965956cda89ed62b8f71a43389248e1"
-    },
-    {
       "name": "convergent-review",
       "description": "Run a finite, high-coverage formal review of an exact candidate against a frozen acceptance contract, using independent perspectives and executable oracles, batching repairs, and closing without moving the goalposts. Use when review convergence itself is the job. Do not use for open-ended exploration, root-cause hypothesis generation, option selection, or one quick opinion.",
       "path": "skills/convergent-review/SKILL.md",
@@ -212,6 +206,12 @@
       "description": "Documentation scope, minimal sufficient docs, generated references, and freshness without prose drift. Use when deciding what durable documentation to create, update, generate, or retire. Do not use for changing product behavior without documentation ownership questions.",
       "path": "skills/documentation-standard/SKILL.md",
       "packageDigest": "sha256:3f99a1ee64baad48f255a1031b9a18d0770e7f84b929c8ea8d6a5e3937c4c508"
+    },
+    {
+      "name": "enact-work-coordination",
+      "description": "Connect, operate, or audit agent work through the Sylphx Enact operating graph using explicit Tenant, Workspace, and optional Project identity; Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-provider observations. Use when implementing an Enact client or adapter, binding a repository or agent workflow to Enact, recovering a missing MCP work loop, or verifying Enact work provenance. Do not use for portable work-ledger design, ordinary Git operations, or static Skills authoring.",
+      "path": "skills/enact-work-coordination/SKILL.md",
+      "packageDigest": "sha256:e87527f73ab9738596766274aa188799369f7df80788d0f28db20951ce09cab6"
     },
     {
       "name": "engineering-standard",

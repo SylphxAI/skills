@@ -6,7 +6,7 @@
     "id": "sylphx-skills",
     "repository": "SylphxAI/skills",
     "name": "Sylphx Skills",
-    "summary": "Public static instructions, compact runtime constitution, mandatory AutoSync, and agent-owned Codex, Claude, and Grok enrollment into the canonical Sylphx Control Plane SaaS.",
+    "summary": "Public static instructions, compact runtime constitution, mandatory AutoSync, and agent-owned Codex, Claude, and Grok enrollment into the canonical Sylphx Enact SaaS.",
     "lifecycle": "production",
     "layer": "tooling",
     "visibility": "public",
@@ -25,12 +25,12 @@
       "Own canonical static instructions under skills/<id>/.",
       "Let a user install or update Codex, Claude Code, and Grok Build by giving the repository to an agent.",
       "Converge the complete Skill generation and compact persistent constitution without replacing unrelated user state.",
-      "Enroll the canonical https://cp.sylphx.com/api/mcp SaaS resource through validated OAuth metadata and runtime-native configuration.",
+      "Enroll the canonical https://enact.sylphx.com/api/mcp SaaS resource through validated OAuth metadata and runtime-native configuration.",
       "Publish Sylphx working methods and Platform guidance as useful public product surfaces."
     ],
     "nonGoals": [
       "Own live work, organization-wide adoption, effect state, or customer data.",
-      "Operate a benchmark laboratory, admission authority, hosted marketplace, or Control Plane.",
+      "Operate a benchmark laboratory, admission authority, hosted marketplace, or Enact.",
       "Preserve retired instruction copies outside Git history."
     ]
   },
@@ -54,7 +54,7 @@
       {
         "id": "remote-integration-enrollment",
         "name": "Remote integration enrollment",
-        "description": "Credential-free discovery validation and runtime-native OAuth registration for the canonical Sylphx Control Plane SaaS resource."
+        "description": "Credential-free discovery validation and runtime-native OAuth registration for the canonical Sylphx Enact SaaS resource."
       }
     ],
     "doesNotOwn": [
@@ -68,7 +68,7 @@
       {"type": "instruction", "name": "Agent installation contract", "location": "INSTALL.md"},
       {"type": "instruction", "name": "Compact runtime constitution", "location": "runtime/constitution.md"},
       {"type": "tooling", "name": "Runtime sync CLI", "location": "runtime/sylphx-skills.mjs"},
-      {"type": "tooling", "name": "Control Plane MCP enrollment verifier", "location": "runtime/control-plane-mcp.mjs"},
+      {"type": "tooling", "name": "Enact MCP enrollment verifier", "location": "runtime/enact-mcp.mjs"},
       {"type": "documentation", "name": "Public entry point", "location": "README.md"}
     ],
     "allowedDependencies": [

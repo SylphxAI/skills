@@ -54,10 +54,17 @@ function retiredDoctrineInstructionPath(file) {
 
 function validateLegacyConstitution(content, target) {
   const markerIndexes = occurrences(content, LEGACY_LOCAL_NOTES_MARKER);
+  const liveAuthorityLine = [
+    '**Live fleet / work / ingestion / effects:** `SylphxAI/enact`',
+    // Bounded predecessor recognition only: this lets an exact retired Doctrine
+    // projection move directly to the current Enact constitution. It is not an
+    // accepted runtime identity or a second instruction authority.
+    '**Live fleet / work / ingestion / effects:** `SylphxAI/control-plane`',
+  ].some((line) => content.includes(line));
   if (
     !content.startsWith('# Sylphx Agent Runtime Constitution\n')
     || !content.includes('**Static instructions SSOT:** `SylphxAI/skills`')
-    || !content.includes('**Live fleet / work / ingestion / effects:** `SylphxAI/control-plane`')
+    || !liveAuthorityLine
     || markerIndexes.length !== 1
     || content.includes(CONSTITUTION_START)
     || content.includes(CONSTITUTION_END)

@@ -4,15 +4,15 @@ import { spawnSync } from 'node:child_process';
 import { existsSync, realpathSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-export const CONTROL_PLANE_MCP_ENV = 'SYLPHX_CONTROL_PLANE_MCP_URL';
-export const DEFAULT_CONTROL_PLANE_MCP_URL = 'https://cp.sylphx.com/api/mcp';
-export const CONTROL_PLANE_SERVER_NAME = 'sylphx-control-plane';
-export const REQUIRED_CONTROL_PLANE_SCOPES = Object.freeze([
-  'cp.observe',
-  'cp.propose',
-  'cp.claim',
-  'cp.checkpoint',
-  'cp.evidence',
+export const ENACT_MCP_ENV = 'SYLPHX_ENACT_MCP_URL';
+export const DEFAULT_ENACT_MCP_URL = 'https://enact.sylphx.com/api/mcp';
+export const ENACT_SERVER_NAME = 'sylphx-enact';
+export const REQUIRED_ENACT_SCOPES = Object.freeze([
+  'enact.observe',
+  'enact.propose',
+  'enact.claim',
+  'enact.checkpoint',
+  'enact.evidence',
 ]);
 const MAX_PROTECTED_RESOURCE_METADATA_BYTES = 64 * 1024;
 
@@ -39,29 +39,29 @@ function safeHttpsUrl(input, label, { requireMcpPath = false } = {}) {
   return parsed;
 }
 
-export function normalizeControlPlaneMcpUrl(input) {
-  const parsed = safeHttpsUrl(String(input || '').trim(), 'Control Plane MCP URL', {
+export function normalizeEnactMcpUrl(input) {
+  const parsed = safeHttpsUrl(String(input || '').trim(), 'Enact MCP URL', {
     requireMcpPath: true,
   });
   return parsed.toString();
 }
 
-export function resolveControlPlaneMcpUrl(input = process.env[CONTROL_PLANE_MCP_ENV]) {
-  return normalizeControlPlaneMcpUrl(String(input || '').trim() || DEFAULT_CONTROL_PLANE_MCP_URL);
+export function resolveEnactMcpUrl(input = process.env[ENACT_MCP_ENV]) {
+  return normalizeEnactMcpUrl(String(input || '').trim() || DEFAULT_ENACT_MCP_URL);
 }
 
 export function protectedResourceMetadataUrl(endpoint) {
-  const parsed = new URL(normalizeControlPlaneMcpUrl(endpoint));
+  const parsed = new URL(normalizeEnactMcpUrl(endpoint));
   parsed.pathname = '/.well-known/oauth-protected-resource';
   return parsed.toString();
 }
 
 export function validateProtectedResourceMetadata(metadata, endpoint) {
-  const normalizedEndpoint = normalizeControlPlaneMcpUrl(endpoint);
+  const normalizedEndpoint = normalizeEnactMcpUrl(endpoint);
   if (!metadata || typeof metadata !== 'object' || Array.isArray(metadata)) {
     throw new Error('OAuth protected-resource metadata must be a JSON object');
   }
-  const resource = normalizeControlPlaneMcpUrl(metadata.resource);
+  const resource = normalizeEnactMcpUrl(metadata.resource);
   if (resource !== normalizedEndpoint) {
     throw new Error(`OAuth protected-resource metadata resource does not match ${normalizedEndpoint}`);
   }
@@ -75,16 +75,16 @@ export function validateProtectedResourceMetadata(metadata, endpoint) {
     throw new Error('OAuth protected-resource metadata must declare scopes_supported');
   }
   const scopesSupported = [...new Set(metadata.scopes_supported.filter((scope) => typeof scope === 'string'))];
-  const missingScopes = REQUIRED_CONTROL_PLANE_SCOPES.filter((scope) => !scopesSupported.includes(scope));
+  const missingScopes = REQUIRED_ENACT_SCOPES.filter((scope) => !scopesSupported.includes(scope));
   if (missingScopes.length) {
     throw new Error(`OAuth protected-resource metadata is missing required scopes: ${missingScopes.join(', ')}`);
   }
   if (metadata.mcp?.transport !== 'streamable_http') {
-    throw new Error('Control Plane metadata must declare MCP streamable_http transport');
+    throw new Error('Enact metadata must declare MCP streamable_http transport');
   }
-  const advertisedEndpoint = normalizeControlPlaneMcpUrl(metadata.mcp?.endpoint);
+  const advertisedEndpoint = normalizeEnactMcpUrl(metadata.mcp?.endpoint);
   if (advertisedEndpoint !== normalizedEndpoint) {
-    throw new Error('Control Plane metadata MCP endpoint does not match the protected resource');
+    throw new Error('Enact metadata MCP endpoint does not match the protected resource');
   }
   return {
     endpoint: normalizedEndpoint,
@@ -139,14 +139,14 @@ async function boundedJson(response) {
   }
 }
 
-export async function discoverControlPlaneMcp({
-  endpoint = process.env[CONTROL_PLANE_MCP_ENV],
+export async function discoverEnactMcp({
+  endpoint = process.env[ENACT_MCP_ENV],
   fetchImpl = globalThis.fetch,
   timeoutMs = 5_000,
 } = {}) {
   if (typeof fetchImpl !== 'function') throw new Error('This Node runtime does not provide fetch');
   const endpointSource = String(endpoint || '').trim() ? 'controlled_override' : 'canonical_sylphx_saas';
-  const normalizedEndpoint = resolveControlPlaneMcpUrl(endpoint);
+  const normalizedEndpoint = resolveEnactMcpUrl(endpoint);
   const metadataUrl = protectedResourceMetadataUrl(normalizedEndpoint);
   const response = await fetchImpl(metadataUrl, {
     method: 'GET',
@@ -166,11 +166,11 @@ export async function discoverControlPlaneMcp({
 }
 
 export function enrollmentCommand(runtime, endpoint, {
-  serverName = CONTROL_PLANE_SERVER_NAME,
+  serverName = ENACT_SERVER_NAME,
 } = {}) {
-  const normalizedEndpoint = normalizeControlPlaneMcpUrl(endpoint);
+  const normalizedEndpoint = normalizeEnactMcpUrl(endpoint);
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(serverName)) {
-    throw new Error('Control Plane MCP server name must be lowercase kebab-case');
+    throw new Error('Enact MCP server name must be lowercase kebab-case');
   }
   if (runtime === 'codex') {
     return {
@@ -307,13 +307,13 @@ function inspectRuntimeMcp(runtime, serverName, { run, pathEnv }) {
   return { state: 'existing', endpoint: existing.url };
 }
 
-export function configureControlPlaneMcp(runtime, discovery, {
+export function configureEnactMcp(runtime, discovery, {
   run = spawnSync,
-  serverName = CONTROL_PLANE_SERVER_NAME,
+  serverName = ENACT_SERVER_NAME,
   pathEnv = process.env.PATH || '',
 } = {}) {
   if (discovery?.disposition !== 'ready_for_enrollment') {
-    throw new Error('Control Plane MCP enrollment requires verified protected-resource metadata');
+    throw new Error('Enact MCP enrollment requires verified protected-resource metadata');
   }
   const command = enrollmentCommand(runtime, discovery.endpoint, { serverName });
   const existing = inspectRuntimeMcp(runtime, serverName, { run, pathEnv });
@@ -323,7 +323,7 @@ export function configureControlPlaneMcp(runtime, discovery, {
   if (existing.state === 'existing') {
     let normalizedExisting;
     try {
-      normalizedExisting = normalizeControlPlaneMcpUrl(existing.endpoint);
+      normalizedExisting = normalizeEnactMcpUrl(existing.endpoint);
     } catch {
       throw new Error(`Refusing to replace incompatible existing MCP server ${serverName}`);
     }
@@ -356,7 +356,7 @@ export function configureControlPlaneMcp(runtime, discovery, {
     if (afterFailure.state === 'existing') {
       let normalizedAfterFailure;
       try {
-        normalizedAfterFailure = normalizeControlPlaneMcpUrl(afterFailure.endpoint);
+        normalizedAfterFailure = normalizeEnactMcpUrl(afterFailure.endpoint);
       } catch {
         normalizedAfterFailure = null;
       }
@@ -391,19 +391,19 @@ function option(name, args) {
 }
 
 function help() {
-  console.log(`Sylphx Control Plane MCP integration\n\nUsage:\n  control-plane-mcp discover [--url HTTPS_URL] [--json]\n  control-plane-mcp enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n\nThe default resource is the canonical Sylphx SaaS endpoint\n${DEFAULT_CONTROL_PLANE_MCP_URL}. --url or ${CONTROL_PLANE_MCP_ENV} may override\nit only for controlled staging or isolated evaluation. Discovery validates RFC\n9728 metadata before any runtime configuration is changed. OAuth credentials\nare never copied or stored by this adapter.`);
+  console.log(`Sylphx Enact MCP integration\n\nUsage:\n  enact-mcp discover [--url HTTPS_URL] [--json]\n  enact-mcp enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n\nThe default resource is the canonical Sylphx SaaS endpoint\n${DEFAULT_ENACT_MCP_URL}. --url or ${ENACT_MCP_ENV} may override\nit only for controlled staging or isolated evaluation. Discovery validates RFC\n9728 metadata before any runtime configuration is changed. OAuth credentials\nare never copied or stored by this adapter.`);
 }
 
 async function main(args = process.argv.slice(2)) {
   if (args.some((arg) => ['help', '--help', '-h'].includes(arg))) return help();
   const action = args.find((arg) => !arg.startsWith('-')) || 'discover';
-  const endpoint = option('--url', args) || process.env[CONTROL_PLANE_MCP_ENV];
-  const discovery = await discoverControlPlaneMcp({ endpoint });
+  const endpoint = option('--url', args) || process.env[ENACT_MCP_ENV];
+  const discovery = await discoverEnactMcp({ endpoint });
   let result = discovery;
   if (action === 'enroll') {
     const runtime = option('--agent', args);
     if (!runtime) throw new Error('enroll requires --agent codex, claude, or grok');
-    result = configureControlPlaneMcp(runtime, discovery);
+    result = configureEnactMcp(runtime, discovery);
   } else if (action !== 'discover') {
     throw new Error(`Unknown command: ${action}`);
   }
@@ -417,7 +417,7 @@ const invokedFile = process.argv[1] && existsSync(process.argv[1])
 
 if (invokedFile === fileURLToPath(import.meta.url)) {
   main().catch((error) => {
-    console.error(`control-plane-mcp: ${error.message}`);
+    console.error(`enact-mcp: ${error.message}`);
     process.exit(1);
   });
 }

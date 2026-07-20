@@ -15,7 +15,7 @@ the receiving runtime unless the user explicitly names additional runtimes.
 Install or update the complete Sylphx-managed Skill catalog and compact runtime
 constitution for the agent runtime receiving this request. Enable managed
 AutoSync for that runtime and validate and enroll the canonical Sylphx Control
-Plane SaaS resource `https://cp.sylphx.com/api/mcp` through the runtime's native
+Plane SaaS resource `https://enact.sylphx.com/api/mcp` through the runtime's native
 HTTPS/OAuth surface. Configure other supported runtimes only when the user
 explicitly asks for them. Preserve unrelated instructions, Skills,
 configuration, and data. Finish with effective readback, not a folder-count
@@ -70,7 +70,7 @@ claim.
    did not change. A missing or different `sourceCommit` is not complete.
 6. Verify behavior in a fresh context or the runtime's closest supported
    readback boundary. The new context must identify `SylphxAI/skills` as static
-   instruction source, distinguish product Git truth from Control Plane live
+   instruction source, distinguish product Git truth from Enact live
    work, claim work rather than files, resolve the active delivery lane, and
    separate source, admission, landing, deployment, and live proof. An active
    context that predates installation is not evidence.
@@ -82,15 +82,15 @@ claim.
    reconciliation. A static one-shot copy is a partial Sylphx installation.
 8. Resolve the live integration separately from static installation:
    - The canonical Sylphx SaaS MCP resource is
-     `https://cp.sylphx.com/api/mcp`. This stable public product hostname is
+     `https://enact.sylphx.com/api/mcp`. This stable public product hostname is
      service metadata, not a credential, and is the default for every
-     installation. `SYLPHX_CONTROL_PLANE_MCP_URL` or an explicit URL may
+     installation. `SYLPHX_ENACT_MCP_URL` or an explicit URL may
      override it only for controlled staging or isolated evaluation; they do
      not define an alternative self-hosted production topology.
    - Validate the endpoint with the repository adapter's `integration discover`
      operation. It must use HTTPS (except loopback evaluation), expose RFC 9728
      protected-resource metadata, bind the exact `/api/mcp` resource, advertise
-     the required Control Plane scopes, and declare streamable HTTP transport.
+     the required Enact scopes, and declare streamable HTTP transport.
      Discovery follows no redirects and sends no credential.
    - If discovery is `ready_for_enrollment`, use the adapter's `integration
      enroll` operation for the current runtime. It delegates configuration to
@@ -134,7 +134,7 @@ claim.
 
 Return `complete`, `partial`, or `blocked`; the exact repository commit; each
 runtime's catalog, constitution, and AutoSync readback; fresh-context
-verification; the Control Plane integration disposition (authenticated or a
+verification; the Enact integration disposition (authenticated or a
 typed gap); and any capability or authorization gap. Keep internal commands and
 routine logs out of the user-facing response unless they are necessary to
 diagnose a typed failure. Never end by offering installation commands to the

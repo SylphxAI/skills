@@ -1,0 +1,4 @@
+interface:
+  display_name: "Enact Work Coordination"
+  short_description: "Connect agent work to the Enact ledger"
+  default_prompt: "Use $enact-work-coordination to connect this workflow to Enact work, evidence, and provider observations."

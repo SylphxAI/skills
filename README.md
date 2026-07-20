@@ -91,7 +91,7 @@ macOS, a systemd user timer on Linux, and Task Scheduler on Windows. Each tick
 verifies the installed catalog, profile metadata, source commit, and package
 bytes and checks the public remote head. Either a changed commit or local drift
 triggers an exact-source resync. There are no agent hooks, runtime
-approvals, resident daemons, webhook relays, tokens, or Control Plane
+approvals, resident daemons, webhook relays, tokens, or Enact
 dependencies. When offline, a verified last-known-good generation remains
 active and retries back off.
 
@@ -112,11 +112,11 @@ The deterministic adapter exposes install, status, clear, and scheduled-sync
 operations to agents and automation. Those operations are implementation
 mechanisms, not a user installation interface.
 
-### Sylphx Control Plane integration
+### Sylphx Enact integration
 
 Static Skills and live coordination remain separate authorities. Every
 installation validates and registers the stable Sylphx SaaS MCP resource
-`https://cp.sylphx.com/api/mcp` through Codex, Claude Code, or Grok Build's
+`https://enact.sylphx.com/api/mcp` through Codex, Claude Code, or Grok Build's
 native MCP configuration. The hostname is public product identity, not a
 credential or tenant grant. Codex and Claude use their native OAuth login
 command; Grok starts its native browser flow when the server connects. OAuth

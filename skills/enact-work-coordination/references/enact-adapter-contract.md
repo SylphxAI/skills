@@ -1,8 +1,8 @@
-# Control Plane Work-Coordination Adapter Contract
+# Enact Work-Coordination Adapter Contract
 
 ## Resolve current product truth first
 
-Control Plane evolves independently from this public procedure. Before issuing
+Enact evolves independently from this public procedure. Before issuing
 commands or implementing a client:
 
 1. inspect the live MCP `tools/list` or versioned REST/OpenAPI/schema surface;
@@ -14,10 +14,10 @@ commands or implementing a client:
 
 Current product source locators for agents with repository access:
 
-- `SylphxAI/control-plane:PROJECT.md` — product identity and authority boundary;
-- `SylphxAI/control-plane:docs/runbooks/agent-work-loop.md` — agent operating
+- `SylphxAI/enact:PROJECT.md` — product identity and authority boundary;
+- `SylphxAI/enact:docs/runbooks/agent-work-loop.md` — agent operating
   loop and current MCP/REST mappings; and
-- `SylphxAI/control-plane:docs/adr/ADR-0007-agent-first-target-work-model.md` —
+- `SylphxAI/enact:docs/adr/ADR-0007-agent-first-target-work-model.md` —
   proposal, evidence, subscription, and effect successor model.
 
 The product repository may require authorized access. External clients use
@@ -67,7 +67,7 @@ the external effect occurred.
 The forge remains native owner of issue, pull request, commit, check, merge,
 release, and repository state. Store an observation with at least:
 
-- Control Plane Work id;
+- Enact Work id;
 - provider and canonical repository/project identity;
 - native object kind and external reference;
 - source revision or provider version;

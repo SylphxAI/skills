@@ -58,16 +58,17 @@ or product state. Those capabilities have separate authenticated owners.
    runtime discovery never expands or shrinks that set. Offline clients keep a
    verified last-known-good generation. A one-shot static copy is partial, not
    a complete Sylphx installation.
-7. The canonical Control Plane MCP resource is the stable Sylphx SaaS endpoint
-   `https://cp.sylphx.com/api/mcp`. The public hostname is product identity and
+7. The canonical Enact MCP resource is the stable Sylphx SaaS endpoint
+   `https://enact.sylphx.com/api/mcp`. The public hostname is product identity and
    service discovery, not a credential, tenant grant, or authorization secret.
    Every installation validates its RFC 9728 metadata and registers it through
    the receiving runtime's native remote-MCP configuration. An override exists
    only for controlled staging and isolated evaluation; there is no alternative
    self-hosted production topology. OAuth account, tenant, scopes, expiry, and
-   revocation remain owned by the runtime, identity provider, and Control Plane.
+   revocation remain owned by the runtime, identity provider, and Enact.
    The repository never copies, requests, mints, prints, or persists a bearer
-   token or client secret.
+   token or client secret. Product naming and endpoint identity follow
+   `SylphxAI/enact:docs/adr/ADR-0043-sylphx-enact-product-identity-cutover.md`.
 8. Behavioral evaluation uses a clean runtime home with no prior Skills,
    constitution, memory, checkout, or user configuration. Authentication uses
    an isolated test identity or runtime-native short-lived/device flow. A

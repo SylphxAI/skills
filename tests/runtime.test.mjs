@@ -23,16 +23,16 @@ import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { packageDigest } from '../runtime/package-digest.mjs';
 import {
-  configureControlPlaneMcp,
-  DEFAULT_CONTROL_PLANE_MCP_URL,
-  discoverControlPlaneMcp,
+  configureEnactMcp,
+  DEFAULT_ENACT_MCP_URL,
+  discoverEnactMcp,
   enrollmentCommand,
-  normalizeControlPlaneMcpUrl,
+  normalizeEnactMcpUrl,
   protectedResourceMetadataUrl,
-  REQUIRED_CONTROL_PLANE_SCOPES,
-  resolveControlPlaneMcpUrl,
+  REQUIRED_ENACT_SCOPES,
+  resolveEnactMcpUrl,
   validateProtectedResourceMetadata,
-} from '../runtime/control-plane-mcp.mjs';
+} from '../runtime/enact-mcp.mjs';
 import { mergeAutoSyncAgents } from '../runtime/sylphx-skills.mjs';
 import {
   applyConstitutionPlan,
@@ -90,7 +90,7 @@ function retiredDoctrineProjection(localNotes = '') {
     '',
     'Active topology:',
     '- **Static instructions SSOT:** `SylphxAI/skills`',
-    '- **Live fleet / work / ingestion / effects:** `SylphxAI/control-plane`',
+    '- **Live fleet / work / ingestion / effects:** `SylphxAI/enact`',
     '',
     '<!-- local runtime notes may follow this block -->',
     localNotes,
@@ -589,11 +589,11 @@ test('agent install fails closed when the native runtime home is a symbolic link
   }
 });
 
-function validControlPlaneMetadata(endpoint = 'https://cp.example/api/mcp') {
+function validEnactMetadata(endpoint = 'https://cp.example/api/mcp') {
   return {
     resource: endpoint,
     authorization_servers: ['https://identity.example/oauth'],
-    scopes_supported: [...REQUIRED_CONTROL_PLANE_SCOPES, 'cp.attest'],
+    scopes_supported: [...REQUIRED_ENACT_SCOPES, 'enact.attest'],
     mcp: {
       transport: 'streamable_http',
       endpoint,
@@ -602,58 +602,58 @@ function validControlPlaneMetadata(endpoint = 'https://cp.example/api/mcp') {
   };
 }
 
-test('Control Plane MCP discovery defaults to the safe canonical Sylphx SaaS endpoint', async () => {
-  assert.equal(resolveControlPlaneMcpUrl(''), DEFAULT_CONTROL_PLANE_MCP_URL);
-  const canonical = await discoverControlPlaneMcp({
+test('Enact MCP discovery defaults to the safe canonical Sylphx SaaS endpoint', async () => {
+  assert.equal(resolveEnactMcpUrl(''), DEFAULT_ENACT_MCP_URL);
+  const canonical = await discoverEnactMcp({
     endpoint: '',
     fetchImpl: async (url) => {
-      assert.equal(url, 'https://cp.sylphx.com/.well-known/oauth-protected-resource');
-      return new Response(JSON.stringify(validControlPlaneMetadata(DEFAULT_CONTROL_PLANE_MCP_URL)), {
+      assert.equal(url, 'https://enact.sylphx.com/.well-known/oauth-protected-resource');
+      return new Response(JSON.stringify(validEnactMetadata(DEFAULT_ENACT_MCP_URL)), {
         status: 200,
         headers: { 'content-type': 'application/json' },
       });
     },
   });
   assert.equal(canonical.endpointSource, 'canonical_sylphx_saas');
-  assert.equal(canonical.endpoint, DEFAULT_CONTROL_PLANE_MCP_URL);
-  assert.equal(normalizeControlPlaneMcpUrl('https://cp.example/api/mcp'), 'https://cp.example/api/mcp');
+  assert.equal(canonical.endpoint, DEFAULT_ENACT_MCP_URL);
+  assert.equal(normalizeEnactMcpUrl('https://cp.example/api/mcp'), 'https://cp.example/api/mcp');
   assert.equal(
     protectedResourceMetadataUrl('https://cp.example/api/mcp'),
     'https://cp.example/.well-known/oauth-protected-resource',
   );
   assert.throws(
-    () => normalizeControlPlaneMcpUrl('http://cp.example/api/mcp'),
+    () => normalizeEnactMcpUrl('http://cp.example/api/mcp'),
     /must use HTTPS/,
   );
   assert.throws(
-    () => normalizeControlPlaneMcpUrl('https://user:secret@cp.example/api/mcp'),
+    () => normalizeEnactMcpUrl('https://user:secret@cp.example/api/mcp'),
     /must not contain credentials/,
   );
   assert.throws(
-    () => normalizeControlPlaneMcpUrl('https://cp.example/api/mcp?token=secret'),
+    () => normalizeEnactMcpUrl('https://cp.example/api/mcp?token=secret'),
     /must not contain a query or fragment/,
   );
   assert.throws(
-    () => normalizeControlPlaneMcpUrl('https://cp.example/mcp'),
+    () => normalizeEnactMcpUrl('https://cp.example/mcp'),
     /canonical \/api\/mcp path/,
   );
   assert.equal(
-    normalizeControlPlaneMcpUrl('http://127.0.0.1:8787/api/mcp'),
+    normalizeEnactMcpUrl('http://127.0.0.1:8787/api/mcp'),
     'http://127.0.0.1:8787/api/mcp',
   );
 });
 
-test('Control Plane MCP discovery binds RFC 9728 metadata before enrollment', async () => {
+test('Enact MCP discovery binds RFC 9728 metadata before enrollment', async () => {
   const endpoint = 'https://cp.example/api/mcp';
   let request;
-  const discovered = await discoverControlPlaneMcp({
+  const discovered = await discoverEnactMcp({
     endpoint,
     fetchImpl: async (url, options) => {
       request = { url, options };
       return {
         ok: true,
         status: 200,
-        async json() { return validControlPlaneMetadata(endpoint); },
+        async json() { return validEnactMetadata(endpoint); },
       };
     },
   });
@@ -667,33 +667,33 @@ test('Control Plane MCP discovery binds RFC 9728 metadata before enrollment', as
   assert.deepEqual(discovered.protocolRevisionsSupported, ['2024-11-05', '2025-03-26']);
 
   assert.throws(
-    () => validateProtectedResourceMetadata(validControlPlaneMetadata('https://other.example/api/mcp'), endpoint),
+    () => validateProtectedResourceMetadata(validEnactMetadata('https://other.example/api/mcp'), endpoint),
     /resource does not match/,
   );
   assert.throws(
     () => validateProtectedResourceMetadata({
-      ...validControlPlaneMetadata(endpoint),
-      scopes_supported: ['cp.observe'],
+      ...validEnactMetadata(endpoint),
+      scopes_supported: ['enact.observe'],
     }, endpoint),
     /missing required scopes/,
   );
   assert.throws(
     () => validateProtectedResourceMetadata({
-      ...validControlPlaneMetadata(endpoint),
+      ...validEnactMetadata(endpoint),
       authorization_servers: ['http://identity.example/oauth'],
     }, endpoint),
     /must use HTTPS/,
   );
 
   await assert.rejects(
-    discoverControlPlaneMcp({
+    discoverEnactMcp({
       endpoint,
       fetchImpl: async () => ({ ok: false, status: 503 }),
     }),
     /failed with HTTP 503/,
   );
   await assert.rejects(
-    discoverControlPlaneMcp({
+    discoverEnactMcp({
       endpoint,
       fetchImpl: async () => ({
         ok: true,
@@ -704,7 +704,7 @@ test('Control Plane MCP discovery binds RFC 9728 metadata before enrollment', as
     /did not return JSON/,
   );
   await assert.rejects(
-    discoverControlPlaneMcp({
+    discoverEnactMcp({
       endpoint,
       fetchImpl: async () => new Response('x'.repeat((64 * 1024) + 1), {
         status: 200,
@@ -715,23 +715,23 @@ test('Control Plane MCP discovery binds RFC 9728 metadata before enrollment', as
   );
 });
 
-test('Control Plane MCP enrollment uses runtime-native remote transports without credentials', () => {
+test('Enact MCP enrollment uses runtime-native remote transports without credentials', () => {
   const endpoint = 'https://cp.example/api/mcp';
   const codex = enrollmentCommand('codex', endpoint);
   assert.deepEqual(codex, {
     executable: 'codex',
-    args: ['mcp', 'add', 'sylphx-control-plane', '--url', endpoint, '--oauth-resource', endpoint],
+    args: ['mcp', 'add', 'sylphx-enact', '--url', endpoint, '--oauth-resource', endpoint],
     oauth: {
       supported: true,
       initiation: 'native_login_command',
-      loginArgs: ['mcp', 'login', 'sylphx-control-plane'],
+      loginArgs: ['mcp', 'login', 'sylphx-enact'],
     },
   });
   assert.deepEqual(enrollmentCommand('claude', endpoint).args, [
-    'mcp', 'add', '--transport', 'http', '--scope', 'user', 'sylphx-control-plane', endpoint,
+    'mcp', 'add', '--transport', 'http', '--scope', 'user', 'sylphx-enact', endpoint,
   ]);
   assert.deepEqual(enrollmentCommand('grok', endpoint).args, [
-    'mcp', 'add', '--transport', 'http', '--scope', 'user', 'sylphx-control-plane', endpoint,
+    'mcp', 'add', '--transport', 'http', '--scope', 'user', 'sylphx-enact', endpoint,
   ]);
   assert.deepEqual(enrollmentCommand('grok', endpoint).oauth, {
     supported: true,
@@ -751,11 +751,11 @@ test('Control Plane MCP enrollment uses runtime-native remote transports without
     metadataUrl: 'https://cp.example/.well-known/oauth-protected-resource',
   };
   const invocations = [];
-  const configured = configureControlPlaneMcp('codex', discovery, {
+  const configured = configureEnactMcp('codex', discovery, {
     run(executable, args, options) {
       invocations.push({ executable, args, options });
       if (args[1] === 'get') {
-        return { status: 1, stdout: '', stderr: "No MCP server named 'sylphx-control-plane' found." };
+        return { status: 1, stdout: '', stderr: "No MCP server named 'sylphx-enact' found." };
       }
       return { status: 0, stdout: '', stderr: '' };
     },
@@ -769,12 +769,12 @@ test('Control Plane MCP enrollment uses runtime-native remote transports without
   assert.equal(configured.configuration, 'created');
 
   let readbacks = 0;
-  const committedDespiteNonzero = configureControlPlaneMcp('codex', discovery, {
+  const committedDespiteNonzero = configureEnactMcp('codex', discovery, {
     run: (_executable, args) => {
       if (args[1] === 'get') {
         readbacks += 1;
         if (readbacks === 1) {
-          return { status: 1, stdout: '', stderr: "No MCP server named 'sylphx-control-plane' found." };
+          return { status: 1, stdout: '', stderr: "No MCP server named 'sylphx-enact' found." };
         }
         return {
           status: 0,
@@ -797,7 +797,7 @@ test('Control Plane MCP enrollment uses runtime-native remote transports without
   assert.equal(committedDespiteNonzero.configuration, 'created_after_nonzero_readback');
   assert.equal(readbacks, 2);
 
-  const grok = configureControlPlaneMcp('grok', discovery, {
+  const grok = configureEnactMcp('grok', discovery, {
     run: (_executable, args) => (
       args[1] === 'list'
         ? { status: 0, stdout: '[]\n', stderr: '' }
@@ -807,16 +807,16 @@ test('Control Plane MCP enrollment uses runtime-native remote transports without
   assert.equal(grok.disposition, 'configured_authentication_required');
   assert.equal(grok.configuration, 'created');
 
-  const existingClaude = configureControlPlaneMcp('claude', discovery, {
+  const existingClaude = configureEnactMcp('claude', discovery, {
     run: () => ({
       status: 0,
-      stdout: `sylphx-control-plane:\n  Scope: User config (available in all your projects)\n  Status: Failed to connect\n  Type: http\n  URL: ${endpoint}\n`,
+      stdout: `sylphx-enact:\n  Scope: User config (available in all your projects)\n  Status: Failed to connect\n  Type: http\n  URL: ${endpoint}\n`,
       stderr: '',
     }),
   });
   assert.equal(existingClaude.configuration, 'existing');
   assert.equal(existingClaude.disposition, 'configured_authentication_required');
-  const existingCodex = configureControlPlaneMcp('codex', discovery, {
+  const existingCodex = configureEnactMcp('codex', discovery, {
     run: () => ({
       status: 0,
       stdout: JSON.stringify({
@@ -834,11 +834,11 @@ test('Control Plane MCP enrollment uses runtime-native remote transports without
   });
   assert.equal(existingCodex.configuration, 'existing');
   assert.equal(existingCodex.disposition, 'configured_authentication_required');
-  const existingGrok = configureControlPlaneMcp('grok', discovery, {
+  const existingGrok = configureEnactMcp('grok', discovery, {
     run: () => ({
       status: 0,
       stdout: JSON.stringify([{
-        name: 'sylphx-control-plane',
+        name: 'sylphx-enact',
         scope: 'user',
         enabled: true,
         url: endpoint,
@@ -849,7 +849,7 @@ test('Control Plane MCP enrollment uses runtime-native remote transports without
   assert.equal(existingGrok.configuration, 'existing');
   assert.equal(existingGrok.disposition, 'configured_authentication_required');
   assert.throws(
-    () => configureControlPlaneMcp('codex', discovery, {
+    () => configureEnactMcp('codex', discovery, {
       run: () => ({
         status: 0,
         stdout: JSON.stringify({
@@ -868,31 +868,31 @@ test('Control Plane MCP enrollment uses runtime-native remote transports without
     /incompatible existing MCP server/,
   );
   assert.throws(
-    () => configureControlPlaneMcp('claude', discovery, {
+    () => configureEnactMcp('claude', discovery, {
       run: () => ({
         status: 0,
-        stdout: `sylphx-control-plane:\n  Type: http\n  URL: ${endpoint}\n  Headers:\n    Authorization: redacted\n`,
+        stdout: `sylphx-enact:\n  Type: http\n  URL: ${endpoint}\n  Headers:\n    Authorization: redacted\n`,
         stderr: '',
       }),
     }),
     /incompatible existing MCP server/,
   );
   assert.throws(
-    () => configureControlPlaneMcp('claude', discovery, {
+    () => configureEnactMcp('claude', discovery, {
       run: () => ({
         status: 0,
-        stdout: 'sylphx-control-plane:\n  Scope: User config\n  Type: http\n  URL: https://other.example/api/mcp\n',
+        stdout: 'sylphx-enact:\n  Scope: User config\n  Type: http\n  URL: https://other.example/api/mcp\n',
         stderr: '',
       }),
     }),
     /different endpoint/,
   );
   assert.throws(
-    () => configureControlPlaneMcp('grok', discovery, {
+    () => configureEnactMcp('grok', discovery, {
       run: () => ({
         status: 0,
         stdout: JSON.stringify([{
-          name: 'sylphx-control-plane',
+          name: 'sylphx-enact',
           scope: 'user',
           enabled: true,
           url: endpoint,
@@ -904,14 +904,14 @@ test('Control Plane MCP enrollment uses runtime-native remote transports without
     /incompatible existing MCP server/,
   );
   assert.throws(
-    () => configureControlPlaneMcp('codex', { disposition: 'not_applicable' }),
+    () => configureEnactMcp('codex', { disposition: 'not_applicable' }),
     /requires verified protected-resource metadata/,
   );
   assert.throws(
-    () => configureControlPlaneMcp('codex', discovery, {
+    () => configureEnactMcp('codex', discovery, {
       run: (_executable, args) => (
         args[1] === 'get'
-          ? { status: 1, stdout: '', stderr: "No MCP server named 'sylphx-control-plane' found." }
+          ? { status: 1, stdout: '', stderr: "No MCP server named 'sylphx-enact' found." }
           : { status: 9, stdout: 'token=must-not-leak', stderr: 'secret=must-not-leak' }
       ),
     }),
