@@ -7,10 +7,12 @@ the repository's internal commands into work for the user.
 ## Required outcome
 
 Install or update the complete Sylphx-managed Skill catalog and compact runtime
-constitution for the agent runtime receiving this request. Configure other
-supported runtimes only when the user explicitly asks for them. Preserve
-unrelated instructions, Skills, configuration, and data. Finish with effective
-readback, not a folder-count claim.
+constitution for the agent runtime receiving this request. When the environment
+explicitly declares a Sylphx Control Plane remote MCP deployment, validate and
+enroll that integration through the runtime's native HTTPS/OAuth surface.
+Configure other supported runtimes only when the user explicitly asks for them.
+Preserve unrelated instructions, Skills, configuration, and data. Finish with
+effective readback, not a folder-count claim.
 
 ## Procedure
 
@@ -45,6 +47,34 @@ readback, not a folder-count claim.
    work, claim work rather than files, resolve the active delivery lane, and
    separate source, admission, landing, deployment, and live proof. An active
    context that predates installation is not evidence.
+7. Resolve the optional live integration separately from static installation:
+   - Treat an existing remote MCP entry or `SYLPHX_CONTROL_PLANE_MCP_URL` as a
+     deployment declaration. The URL is not a credential. Do not infer a URL
+     from a repository name, retired stdio adapter, historical hostname, tenant,
+     or company default.
+   - Validate the endpoint with the repository adapter's `integration discover`
+     operation. It must use HTTPS (except loopback evaluation), expose RFC 9728
+     protected-resource metadata, bind the exact `/api/mcp` resource, advertise
+     the required Control Plane scopes, and declare streamable HTTP transport.
+     Discovery follows no redirects and sends no credential.
+   - If discovery is `ready_for_enrollment`, use the adapter's `integration
+     enroll` operation for the current runtime. It delegates configuration to
+     the runtime's native MCP command and never writes an authorization header.
+     Preserve unrelated MCP entries and do not delete a legacy adapter unless
+     its ownership and replacement are both proven.
+   - Complete the runtime's native OAuth flow when it supports one. The agent
+     starts and owns the flow; the user may approve identity-provider consent
+     but must not be asked to type an installation command or paste a token.
+     Never substitute an MCP session id, Work claim, static header, or copied
+     bearer token for OAuth.
+   - Verify the integration in a new context: the server initializes over
+     remote HTTPS, its instructions load, authenticated `tools/list` succeeds,
+     and the expected Work tools are visible. Do not mutate Work merely to prove
+     connectivity. A declared integration that cannot authenticate is `partial`.
+     If the runtime has no safe OAuth capability, report that capability gap
+     instead of persisting a bearer token. With no deployment declaration, the
+     integration disposition is `not_applicable` and static installation may
+     still be complete.
 
 ## Boundaries
 
@@ -56,17 +86,21 @@ readback, not a folder-count claim.
 - Do not enable scheduled synchronization unless the request includes managed
   updates or the existing environment already selected it. A one-time install
   remains complete for the exact installed candidate.
-- Do not configure credentials, remote MCP servers, deployment access, hooks,
-  or model overrides from this public repository. Those are runtime or product
-  integrations with their own authenticated authority. Preserve and verify an
-  existing integration when available; otherwise report it separately.
+- Do not copy, request, mint, print, or persist credentials; infer deployment
+  endpoints; configure deployment access, hooks, or model overrides; or embed a
+  company/customer hostname in this public repository. An explicitly declared
+  remote MCP URL may be metadata-validated and registered through the runtime's
+  native configuration. OAuth consent and credentials remain owned by the
+  runtime and identity provider.
 - Do not load Doctrine, Mission Control, generated projections, or any retired
   repository as current instruction authority.
 
 ## Completion response
 
 Return `complete`, `partial`, or `blocked`; the exact repository commit; each
-runtime's catalog and constitution readback; fresh-context verification; and
-any capability or authorization gap. Keep internal commands and routine logs
-out of the user-facing response unless they are necessary to diagnose a typed
-failure. Never end by offering installation commands to the user.
+runtime's catalog and constitution readback; fresh-context verification; the
+Control Plane integration disposition (`not_applicable`, authenticated, or a
+typed gap); and any capability or authorization gap. Keep internal commands and
+routine logs out of the user-facing response unless they are necessary to
+diagnose a typed failure. Never end by offering installation commands to the
+user.

@@ -44,11 +44,12 @@ or product state. Those capabilities have separate authenticated owners.
 6. Scheduled updates remain opt-in. A one-time install is complete for its
    exact source candidate; it does not silently create hooks or background
    work.
-7. This public repository does not copy, request, mint, or configure
-   credentials, remote MCP servers, deployment access, model overrides, or
-   product hooks. Existing integrations may be preserved and verified.
-   Missing authenticated capabilities are reported separately and owned by the
-   runtime or product integration.
+7. This public repository does not copy, request, mint, or persist credentials,
+   infer deployment endpoints, or configure deployment access, model overrides,
+   or product hooks. An explicitly declared remote MCP URL may be validated and
+   registered through a runtime's native configuration under
+   [ADR-20260720](ADR-20260720-explicit-remote-mcp-enrollment.md). OAuth consent
+   and credentials remain owned by the runtime and identity provider.
 8. Behavioral evaluation uses a clean runtime home with no prior Skills,
    constitution, memory, checkout, or user configuration. Authentication uses
    an isolated test identity or runtime-native short-lived/device flow. A

@@ -24,6 +24,11 @@ import {
   runtimeInstructionPath,
 } from './constitution.mjs';
 import { packageDigest } from './package-digest.mjs';
+import {
+  configureControlPlaneMcp,
+  CONTROL_PLANE_MCP_ENV,
+  discoverControlPlaneMcp,
+} from './control-plane-mcp.mjs';
 import { reconcile, withLifecycleLock, withReconcileLock } from './reconcile.mjs';
 import { installScheduler, parseIntervalMinutes, removeScheduler } from './scheduler.mjs';
 import {
@@ -618,17 +623,45 @@ function autoSyncStatus() {
   else log(`auto-sync: ${result.enabled ? `every ${result.intervalMinutes} minutes` : 'disabled'}`);
 }
 
-function help() {
-  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills install --agent codex|claude|grok|all\n  sylphx-skills sync [--agent codex|claude|grok|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills auto-sync enable [--interval 10m]\n  sylphx-skills auto-sync disable|status\n\nInstall is the agent-facing operation and requires an explicit native runtime;\nsync remains a compatible low-level operation. Native runtime targets receive\nboth the complete Skill catalog and compact constitution.`);
+function argumentValue(name) {
+  const index = argv.indexOf(name);
+  return index >= 0 ? argv[index + 1] : undefined;
 }
 
-function main() {
+async function integration() {
+  const actionIndex = argv.indexOf('integration') + 1;
+  const action = argv[actionIndex] || 'discover';
+  const endpoint = argumentValue('--url') || process.env[CONTROL_PLANE_MCP_ENV];
+  const discovery = await discoverControlPlaneMcp({ endpoint });
+  let result = discovery;
+  if (action === 'enroll') {
+    const runtime = argumentValue('--agent');
+    if (!runtime || runtime.includes(',') || runtime === 'all') {
+      throw new Error('integration enroll requires one --agent codex, claude, or grok');
+    }
+    if (discovery.disposition === 'not_applicable') {
+      throw new Error(`integration enroll requires --url or ${CONTROL_PLANE_MCP_ENV}`);
+    }
+    result = configureControlPlaneMcp(runtime, discovery);
+  } else if (action !== 'discover') {
+    throw new Error(`Unknown integration action: ${action}`);
+  }
+  if (jsonOutput) console.log(JSON.stringify(result, null, 2));
+  else log(`${result.disposition}${result.endpoint ? ` ${result.endpoint}` : ''}`);
+}
+
+function help() {
+  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills install --agent codex|claude|grok|all\n  sylphx-skills sync [--agent codex|claude|grok|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills integration discover [--url HTTPS_URL] [--json]\n  sylphx-skills integration enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n  sylphx-skills auto-sync enable [--interval 10m]\n  sylphx-skills auto-sync disable|status\n\nInstall is the agent-facing operation and requires an explicit native runtime;\nsync remains a compatible low-level operation. Native runtime targets receive\nboth the complete Skill catalog and compact constitution. Control Plane MCP\nenrollment is optional and requires an explicit non-secret deployment URL.`);
+}
+
+async function main() {
   if (argv.some((item) => ['help', '--help', '-h'].includes(item))) return help();
   const command = argv.find((item) => !item.startsWith('-')) || 'sync';
   if (command === 'install') return install();
   if (command === 'sync') return sync();
   if (command === 'status') return status();
   if (command === 'clear') return clear();
+  if (command === 'integration') return integration();
   if (command === 'auto-sync') {
     const actionIndex = argv.indexOf('auto-sync') + 1;
     const action = argv[actionIndex] || 'status';
@@ -645,10 +678,8 @@ const invokedFile = process.argv[1] && existsSync(process.argv[1])
   : path.resolve(process.argv[1] || '');
 
 if (invokedFile === fileURLToPath(import.meta.url)) {
-  try {
-    main();
-  } catch (error) {
+  main().catch((error) => {
     console.error(`sylphx-skills: ${error.message}`);
     process.exit(1);
-  }
+  });
 }

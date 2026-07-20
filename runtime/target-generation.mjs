@@ -670,6 +670,24 @@ function testCrash(boundary) {
 
 function testHold(boundary) {
   if (process.env.NODE_ENV !== 'test' || process.env.SYLPHX_SKILLS_TEST_HOLD_AT !== boundary) return;
+  const ready = process.env.SYLPHX_SKILLS_TEST_HOLD_READY;
+  const release = process.env.SYLPHX_SKILLS_TEST_HOLD_RELEASE;
+  if (ready || release) {
+    if (!ready || !release) throw new Error('test hold barrier requires ready and release paths');
+    writeFileSync(ready, 'ready\n');
+    try {
+      const deadline = Date.now() + 60_000;
+      const waiter = new Int32Array(new SharedArrayBuffer(4));
+      while (!pathExists(release)) {
+        if (Date.now() >= deadline) throw new Error('timed out waiting to release target-generation test hold');
+        Atomics.wait(waiter, 0, 0, 20);
+      }
+    } finally {
+      rmSync(ready, { force: true });
+      rmSync(release, { force: true });
+    }
+    return;
+  }
   const milliseconds = Number(process.env.SYLPHX_SKILLS_TEST_HOLD_MS || 500);
   if (!Number.isFinite(milliseconds) || milliseconds < 0 || milliseconds > 5_000) {
     throw new Error('invalid test hold duration');

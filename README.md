@@ -36,7 +36,7 @@ playbooks. This repository is different:
 | **Agent-native packages** | Each skill has a clear job, load trigger, and bounded method |
 | **Multi-runtime** | Codex · Claude Code · Grok Build from one source |
 | **Converging sync** | New skills appear; removed skills leave; third-party skills stay |
-| **Agent-owned adoption** | Install, update, and readback are outcomes owned by the receiving agent |
+| **Agent-owned adoption** | Install, update, integration enrollment, and readback are outcomes owned by the receiving agent |
 | **OS auto-update** | Optional launchd / systemd / Task Scheduler — no daemon we host |
 
 Commercial Sylphx value is continuous maintenance, private customer packages,
@@ -96,6 +96,23 @@ interval.
 The deterministic adapter exposes install, status, clear, and scheduled-sync
 operations to agents and automation. Those operations are implementation
 mechanisms, not a user installation interface.
+
+### Optional Control Plane integration
+
+Static Skills and live coordination remain separate authorities. If the agent's
+environment explicitly declares a Sylphx Control Plane MCP URL, the receiving
+agent validates its public OAuth protected-resource metadata before registering
+the remote HTTPS server through Codex, Claude Code, or Grok Build's native MCP
+configuration. Codex and Claude use their native OAuth login command; Grok
+starts its native browser flow when the server connects. A runtime without safe
+OAuth support would be reported as partial rather than receiving a copied
+bearer token. No Control Plane hostname, tenant, credential, or live work state
+is embedded in this public repository.
+
+With no explicit deployment declaration, Control Plane enrollment is simply
+`not_applicable`; it does not make the static catalog installation incomplete.
+See [`INSTALL.md`](./INSTALL.md) and
+[`ADR-20260720`](./docs/adr/ADR-20260720-explicit-remote-mcp-enrollment.md).
 
 ---
 
@@ -171,7 +188,7 @@ Authority notes: [docs/adr/ADR-0001-public-agent-instruction-source.md](./docs/a
 | --- | --- |
 | `skills/<id>/` | **Only** writable semantic source for packages |
 | `catalog.json` | Deterministic index from frontmatter |
-| `runtime/` | Agent-facing install / sync / auto-sync adapter and compact constitution |
+| `runtime/` | Agent-facing install / sync / auto-sync / verified MCP enrollment adapters and compact constitution |
 | `INSTALL.md` | Environment-neutral installation contract for the receiving agent |
 | `scripts/` · `tests/` | Integrity gates only |
 | `docs/adr/` | Repository-level decisions |

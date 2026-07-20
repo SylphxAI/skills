@@ -23,6 +23,15 @@ import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { packageDigest } from '../runtime/package-digest.mjs';
 import {
+  configureControlPlaneMcp,
+  discoverControlPlaneMcp,
+  enrollmentCommand,
+  normalizeControlPlaneMcpUrl,
+  protectedResourceMetadataUrl,
+  REQUIRED_CONTROL_PLANE_SCOPES,
+  validateProtectedResourceMetadata,
+} from '../runtime/control-plane-mcp.mjs';
+import {
   CONSTITUTION_END,
   CONSTITUTION_START,
   inspectConstitution,
@@ -335,6 +344,319 @@ test('agent install fails closed when the native runtime home is a symbolic link
     assert.match(result.stderr, /non-regular runtime home/);
     assert.equal(existsSync(path.join(actualHome, 'AGENTS.md')), false);
     assert.equal(existsSync(path.join(actualHome, 'skills')), false);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+function validControlPlaneMetadata(endpoint = 'https://cp.example/api/mcp') {
+  return {
+    resource: endpoint,
+    authorization_servers: ['https://identity.example/oauth'],
+    scopes_supported: [...REQUIRED_CONTROL_PLANE_SCOPES, 'cp.attest'],
+    mcp: {
+      transport: 'streamable_http',
+      endpoint,
+      protocol_revisions_supported: ['2024-11-05', '2025-03-26'],
+    },
+  };
+}
+
+test('Control Plane MCP discovery requires an explicit safe canonical endpoint', async () => {
+  assert.equal(normalizeControlPlaneMcpUrl('https://cp.example/api/mcp'), 'https://cp.example/api/mcp');
+  assert.equal(
+    protectedResourceMetadataUrl('https://cp.example/api/mcp'),
+    'https://cp.example/.well-known/oauth-protected-resource',
+  );
+  assert.throws(
+    () => normalizeControlPlaneMcpUrl('http://cp.example/api/mcp'),
+    /must use HTTPS/,
+  );
+  assert.throws(
+    () => normalizeControlPlaneMcpUrl('https://user:secret@cp.example/api/mcp'),
+    /must not contain credentials/,
+  );
+  assert.throws(
+    () => normalizeControlPlaneMcpUrl('https://cp.example/api/mcp?token=secret'),
+    /must not contain a query or fragment/,
+  );
+  assert.throws(
+    () => normalizeControlPlaneMcpUrl('https://cp.example/mcp'),
+    /canonical \/api\/mcp path/,
+  );
+  assert.equal(
+    normalizeControlPlaneMcpUrl('http://127.0.0.1:8787/api/mcp'),
+    'http://127.0.0.1:8787/api/mcp',
+  );
+
+  assert.deepEqual(await discoverControlPlaneMcp({ endpoint: '' }), {
+    disposition: 'not_applicable',
+    declaration: 'SYLPHX_CONTROL_PLANE_MCP_URL',
+    reason: 'no_explicit_control_plane_mcp_endpoint',
+  });
+});
+
+test('Control Plane MCP discovery binds RFC 9728 metadata before enrollment', async () => {
+  const endpoint = 'https://cp.example/api/mcp';
+  let request;
+  const discovered = await discoverControlPlaneMcp({
+    endpoint,
+    fetchImpl: async (url, options) => {
+      request = { url, options };
+      return {
+        ok: true,
+        status: 200,
+        async json() { return validControlPlaneMetadata(endpoint); },
+      };
+    },
+  });
+  assert.equal(request.url, 'https://cp.example/.well-known/oauth-protected-resource');
+  assert.equal(request.options.redirect, 'error');
+  assert.deepEqual(request.options.headers, { accept: 'application/json' });
+  assert.equal(discovered.disposition, 'ready_for_enrollment');
+  assert.equal(discovered.endpoint, endpoint);
+  assert.deepEqual(discovered.authorizationServers, ['https://identity.example/oauth']);
+  assert.deepEqual(discovered.protocolRevisionsSupported, ['2024-11-05', '2025-03-26']);
+
+  assert.throws(
+    () => validateProtectedResourceMetadata(validControlPlaneMetadata('https://other.example/api/mcp'), endpoint),
+    /resource does not match/,
+  );
+  assert.throws(
+    () => validateProtectedResourceMetadata({
+      ...validControlPlaneMetadata(endpoint),
+      scopes_supported: ['cp.observe'],
+    }, endpoint),
+    /missing required scopes/,
+  );
+  assert.throws(
+    () => validateProtectedResourceMetadata({
+      ...validControlPlaneMetadata(endpoint),
+      authorization_servers: ['http://identity.example/oauth'],
+    }, endpoint),
+    /must use HTTPS/,
+  );
+
+  await assert.rejects(
+    discoverControlPlaneMcp({
+      endpoint,
+      fetchImpl: async () => ({ ok: false, status: 503 }),
+    }),
+    /failed with HTTP 503/,
+  );
+  await assert.rejects(
+    discoverControlPlaneMcp({
+      endpoint,
+      fetchImpl: async () => ({
+        ok: true,
+        status: 200,
+        async json() { throw new SyntaxError('fixture'); },
+      }),
+    }),
+    /did not return JSON/,
+  );
+  await assert.rejects(
+    discoverControlPlaneMcp({
+      endpoint,
+      fetchImpl: async () => new Response('x'.repeat((64 * 1024) + 1), {
+        status: 200,
+        headers: { 'content-type': 'application/json' },
+      }),
+    }),
+    /exceeds 64 KiB/,
+  );
+});
+
+test('Control Plane MCP enrollment uses runtime-native remote transports without credentials', () => {
+  const endpoint = 'https://cp.example/api/mcp';
+  const codex = enrollmentCommand('codex', endpoint);
+  assert.deepEqual(codex, {
+    executable: 'codex',
+    args: ['mcp', 'add', 'sylphx-control-plane', '--url', endpoint, '--oauth-resource', endpoint],
+    oauth: {
+      supported: true,
+      initiation: 'native_login_command',
+      loginArgs: ['mcp', 'login', 'sylphx-control-plane'],
+    },
+  });
+  assert.deepEqual(enrollmentCommand('claude', endpoint).args, [
+    'mcp', 'add', '--transport', 'http', '--scope', 'user', 'sylphx-control-plane', endpoint,
+  ]);
+  assert.deepEqual(enrollmentCommand('grok', endpoint).args, [
+    'mcp', 'add', '--transport', 'http', '--scope', 'user', 'sylphx-control-plane', endpoint,
+  ]);
+  assert.deepEqual(enrollmentCommand('grok', endpoint).oauth, {
+    supported: true,
+    initiation: 'automatic_on_connect',
+    loginArgs: null,
+  });
+  for (const runtime of ['codex', 'claude', 'grok']) {
+    const command = enrollmentCommand(runtime, endpoint);
+    assert.equal(JSON.stringify(command).includes('secret'), false);
+    assert.equal(JSON.stringify(command).includes('token'), false);
+    assert.equal(command.args.includes('--header'), false);
+  }
+
+  const discovery = {
+    disposition: 'ready_for_enrollment',
+    endpoint,
+    metadataUrl: 'https://cp.example/.well-known/oauth-protected-resource',
+  };
+  const invocations = [];
+  const configured = configureControlPlaneMcp('codex', discovery, {
+    run(executable, args, options) {
+      invocations.push({ executable, args, options });
+      if (args[1] === 'get') {
+        return { status: 1, stdout: '', stderr: "No MCP server named 'sylphx-control-plane' found." };
+      }
+      return { status: 0, stdout: '', stderr: '' };
+    },
+    pathEnv: '/fixture/bin',
+  });
+  assert.equal(invocations.length, 2);
+  assert.equal(invocations[1].executable, 'codex');
+  assert.deepEqual(invocations[1].args, codex.args);
+  assert.equal(invocations[1].options.env.PATH, '/fixture/bin');
+  assert.equal(configured.disposition, 'configured_authentication_required');
+  assert.equal(configured.configuration, 'created');
+
+  const grok = configureControlPlaneMcp('grok', discovery, {
+    run: (_executable, args) => (
+      args[1] === 'list'
+        ? { status: 0, stdout: '[]\n', stderr: '' }
+        : { status: 0, stdout: '', stderr: '' }
+    ),
+  });
+  assert.equal(grok.disposition, 'configured_authentication_required');
+  assert.equal(grok.configuration, 'created');
+
+  const existingClaude = configureControlPlaneMcp('claude', discovery, {
+    run: () => ({
+      status: 0,
+      stdout: `sylphx-control-plane:\n  Scope: User config (available in all your projects)\n  Status: Failed to connect\n  Type: http\n  URL: ${endpoint}\n`,
+      stderr: '',
+    }),
+  });
+  assert.equal(existingClaude.configuration, 'existing');
+  assert.equal(existingClaude.disposition, 'configured_authentication_required');
+  const existingCodex = configureControlPlaneMcp('codex', discovery, {
+    run: () => ({
+      status: 0,
+      stdout: JSON.stringify({
+        enabled: true,
+        transport: {
+          type: 'streamable_http',
+          url: endpoint,
+          bearer_token_env_var: null,
+          http_headers: null,
+          env_http_headers: null,
+        },
+      }),
+      stderr: '',
+    }),
+  });
+  assert.equal(existingCodex.configuration, 'existing');
+  assert.equal(existingCodex.disposition, 'configured_authentication_required');
+  const existingGrok = configureControlPlaneMcp('grok', discovery, {
+    run: () => ({
+      status: 0,
+      stdout: JSON.stringify([{
+        name: 'sylphx-control-plane',
+        scope: 'user',
+        enabled: true,
+        url: endpoint,
+      }]),
+      stderr: '',
+    }),
+  });
+  assert.equal(existingGrok.configuration, 'existing');
+  assert.equal(existingGrok.disposition, 'configured_authentication_required');
+  assert.throws(
+    () => configureControlPlaneMcp('codex', discovery, {
+      run: () => ({
+        status: 0,
+        stdout: JSON.stringify({
+          enabled: true,
+          transport: {
+            type: 'streamable_http',
+            url: endpoint,
+            bearer_token_env_var: 'LEGACY_TOKEN',
+            http_headers: null,
+            env_http_headers: null,
+          },
+        }),
+        stderr: '',
+      }),
+    }),
+    /incompatible existing MCP server/,
+  );
+  assert.throws(
+    () => configureControlPlaneMcp('claude', discovery, {
+      run: () => ({
+        status: 0,
+        stdout: `sylphx-control-plane:\n  Type: http\n  URL: ${endpoint}\n  Headers:\n    Authorization: redacted\n`,
+        stderr: '',
+      }),
+    }),
+    /incompatible existing MCP server/,
+  );
+  assert.throws(
+    () => configureControlPlaneMcp('claude', discovery, {
+      run: () => ({
+        status: 0,
+        stdout: 'sylphx-control-plane:\n  Scope: User config\n  Type: http\n  URL: https://other.example/api/mcp\n',
+        stderr: '',
+      }),
+    }),
+    /different endpoint/,
+  );
+  assert.throws(
+    () => configureControlPlaneMcp('grok', discovery, {
+      run: () => ({
+        status: 0,
+        stdout: JSON.stringify([{
+          name: 'sylphx-control-plane',
+          scope: 'user',
+          enabled: true,
+          url: endpoint,
+          headers: { Authorization: 'redacted' },
+        }]),
+        stderr: '',
+      }),
+    }),
+    /incompatible existing MCP server/,
+  );
+  assert.throws(
+    () => configureControlPlaneMcp('codex', { disposition: 'not_applicable' }),
+    /requires verified protected-resource metadata/,
+  );
+  assert.throws(
+    () => configureControlPlaneMcp('codex', discovery, {
+      run: (_executable, args) => (
+        args[1] === 'get'
+          ? { status: 1, stdout: '', stderr: "No MCP server named 'sylphx-control-plane' found." }
+          : { status: 9, stdout: 'token=must-not-leak', stderr: 'secret=must-not-leak' }
+      ),
+    }),
+    (error) => error.message === 'codex MCP enrollment failed with exit code 9',
+  );
+});
+
+test('integration discovery is read-only and reports not applicable without deployment declaration', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-integration-discovery-'));
+  try {
+    const result = runWithEnvironment(['integration', 'discover', '--json'], {
+      SYLPHX_SKILLS_HOME: sandbox,
+      SYLPHX_CONTROL_PLANE_MCP_URL: '',
+      CODEX_HOME: path.join(sandbox, '.codex'),
+    });
+    assert.deepEqual(JSON.parse(result.stdout), {
+      disposition: 'not_applicable',
+      declaration: 'SYLPHX_CONTROL_PLANE_MCP_URL',
+      reason: 'no_explicit_control_plane_mcp_endpoint',
+    });
+    assert.equal(existsSync(path.join(sandbox, '.codex')), false);
+    assert.equal(existsSync(path.join(sandbox, '.sylphx-skills')), false);
   } finally {
     rmSync(sandbox, { recursive: true, force: true });
   }
@@ -803,6 +1125,9 @@ test('clear ignores a spoofed projected manifest when an owned generation proves
 
 test('target generation rejects a concurrent writer without creating multiple journals', async () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-generation-concurrent-'));
+  const holdReady = path.join(sandbox, 'target-generation-hold-ready');
+  const holdRelease = path.join(sandbox, 'target-generation-hold-release');
+  let first = null;
   try {
     const { source, destination, fixtureCli } = createGenerationFixture(sandbox);
     writeFixtureSkill(source, 'alpha', 'generation-two');
@@ -811,9 +1136,10 @@ test('target generation rejects a concurrent writer without creating multiple jo
       ...process.env,
       NODE_ENV: 'test',
       SYLPHX_SKILLS_TEST_HOLD_AT: 'before-switch',
-      SYLPHX_SKILLS_TEST_HOLD_MS: '1000',
+      SYLPHX_SKILLS_TEST_HOLD_READY: holdReady,
+      SYLPHX_SKILLS_TEST_HOLD_RELEASE: holdRelease,
     };
-    const first = spawn(process.execPath, [fixtureCli, 'sync', '--dest', destination, '--quiet'], {
+    first = spawn(process.execPath, [fixtureCli, 'sync', '--dest', destination, '--quiet'], {
       cwd: source,
       env: environment,
       stdio: ['ignore', 'pipe', 'pipe'],
@@ -821,9 +1147,10 @@ test('target generation rejects a concurrent writer without creating multiple jo
     let firstError = '';
     first.stderr.on('data', (chunk) => { firstError += chunk; });
     const firstExit = new Promise((resolve) => first.once('exit', resolve));
-    const lock = path.join(path.dirname(destination), `.${path.basename(destination)}.sylphx-generation-lock`);
     const waiter = new Int32Array(new SharedArrayBuffer(4));
-    for (let attempt = 0; attempt < 250 && !existsSync(lock); attempt += 1) Atomics.wait(waiter, 0, 0, 20);
+    for (let attempt = 0; attempt < 250 && !existsSync(holdReady); attempt += 1) Atomics.wait(waiter, 0, 0, 20);
+    assert.equal(existsSync(holdReady), true, 'first writer did not reach the held switch boundary');
+    const lock = path.join(path.dirname(destination), `.${path.basename(destination)}.sylphx-generation-lock`);
     assert.equal(existsSync(lock), true, 'first writer did not acquire the target lock');
     const liveLock = JSON.parse(readFileSync(lock, 'utf8'));
     liveLock.createdAt = 1;
@@ -832,7 +1159,9 @@ test('target generation rejects a concurrent writer without creating multiple jo
     const second = spawnSync(process.execPath, [fixtureCli, 'sync', '--dest', destination, '--quiet'], {
       cwd: source,
       encoding: 'utf8',
+      timeout: 5_000,
     });
+    writeFileSync(holdRelease, 'release\n');
     assert.notEqual(second.status, 0, second.stderr || second.stdout);
     assert.match(second.stderr, /target generation is busy/);
     const firstCode = await firstExit;
@@ -841,6 +1170,11 @@ test('target generation rejects a concurrent writer without creating multiple jo
     assert.equal(existsSync(lock), false);
     assert.match(readFileSync(path.join(destination, 'alpha', 'SKILL.md'), 'utf8'), /generation-two/);
   } finally {
+    if (first?.exitCode === null) {
+      writeFileSync(holdRelease, 'release\n');
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+      if (first.exitCode === null) first.kill('SIGTERM');
+    }
     rmSync(sandbox, { recursive: true, force: true });
   }
 });
