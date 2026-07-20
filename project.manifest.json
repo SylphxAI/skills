@@ -63,6 +63,7 @@
     ],
     "publicSurfaces": [
       {"type": "instruction", "name": "Canonical Skills", "location": "skills/"},
+      {"type": "instruction", "name": "Repository installation bootstrap", "location": "SKILL.md"},
       {"type": "manifest", "name": "Deterministic catalog", "location": "catalog.json"},
       {"type": "instruction", "name": "Agent installation contract", "location": "INSTALL.md"},
       {"type": "instruction", "name": "Compact runtime constitution", "location": "runtime/constitution.md"},

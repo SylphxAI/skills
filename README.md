@@ -15,7 +15,7 @@ build, verify, deliver, operate, and grow software. It supports
 
 Give this to your agent:
 
-> Install this into your current agent runtime: https://github.com/SylphxAI/skills
+> Install this: https://github.com/SylphxAI/skills
 
 That is the complete user procedure. The agent reads [`INSTALL.md`](./INSTALL.md),
 detects its environment, installs the exact Skill catalog and compact runtime
@@ -23,12 +23,12 @@ constitution, preserves unrelated configuration, and verifies the result in a
 fresh context. The repository never asks the user to translate that outcome
 into shell commands.
 
-“Current agent runtime” is deliberate intent, not ceremony. It prevents clients
-from treating the repository as either a generic per-Skill copy operation or a
-request to configure every installed agent product. Folder copying alone omits
-the managed source manifest, compact constitution, idempotent reconciliation,
-and fresh-context proof; changing other runtimes without an explicit request
-exceeds the installation scope.
+The root [`SKILL.md`](./SKILL.md) is a discovery bootstrap for clients that
+pre-route repository installation through a generic Skill installer. It sends
+the agent to `INSTALL.md` before any leaf-package operation. Folder copying
+alone omits the managed source manifest, compact constitution, idempotent
+reconciliation, and fresh-context proof; changing other runtimes without an
+explicit request exceeds the installation scope.
 
 Updates also converge installations that still point at the retired Doctrine
 runtime. Only the exact per-user Sylphx legacy projection is eligible: the
@@ -63,7 +63,7 @@ secret.
 
 Installation is intentionally prompt-native:
 
-> Install this into your current agent runtime: https://github.com/SylphxAI/skills
+> Install this: https://github.com/SylphxAI/skills
 
 For a later exact-source update:
 
