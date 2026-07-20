@@ -1125,6 +1125,9 @@ test('clear ignores a spoofed projected manifest when an owned generation proves
 
 test('target generation rejects a concurrent writer without creating multiple journals', async () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-generation-concurrent-'));
+  const holdReady = path.join(sandbox, 'target-generation-hold-ready');
+  const holdRelease = path.join(sandbox, 'target-generation-hold-release');
+  let first = null;
   try {
     const { source, destination, fixtureCli } = createGenerationFixture(sandbox);
     writeFixtureSkill(source, 'alpha', 'generation-two');
@@ -1133,9 +1136,10 @@ test('target generation rejects a concurrent writer without creating multiple jo
       ...process.env,
       NODE_ENV: 'test',
       SYLPHX_SKILLS_TEST_HOLD_AT: 'before-switch',
-      SYLPHX_SKILLS_TEST_HOLD_MS: '1000',
+      SYLPHX_SKILLS_TEST_HOLD_READY: holdReady,
+      SYLPHX_SKILLS_TEST_HOLD_RELEASE: holdRelease,
     };
-    const first = spawn(process.execPath, [fixtureCli, 'sync', '--dest', destination, '--quiet'], {
+    first = spawn(process.execPath, [fixtureCli, 'sync', '--dest', destination, '--quiet'], {
       cwd: source,
       env: environment,
       stdio: ['ignore', 'pipe', 'pipe'],
@@ -1143,9 +1147,10 @@ test('target generation rejects a concurrent writer without creating multiple jo
     let firstError = '';
     first.stderr.on('data', (chunk) => { firstError += chunk; });
     const firstExit = new Promise((resolve) => first.once('exit', resolve));
-    const lock = path.join(path.dirname(destination), `.${path.basename(destination)}.sylphx-generation-lock`);
     const waiter = new Int32Array(new SharedArrayBuffer(4));
-    for (let attempt = 0; attempt < 250 && !existsSync(lock); attempt += 1) Atomics.wait(waiter, 0, 0, 20);
+    for (let attempt = 0; attempt < 250 && !existsSync(holdReady); attempt += 1) Atomics.wait(waiter, 0, 0, 20);
+    assert.equal(existsSync(holdReady), true, 'first writer did not reach the held switch boundary');
+    const lock = path.join(path.dirname(destination), `.${path.basename(destination)}.sylphx-generation-lock`);
     assert.equal(existsSync(lock), true, 'first writer did not acquire the target lock');
     const liveLock = JSON.parse(readFileSync(lock, 'utf8'));
     liveLock.createdAt = 1;
@@ -1154,7 +1159,9 @@ test('target generation rejects a concurrent writer without creating multiple jo
     const second = spawnSync(process.execPath, [fixtureCli, 'sync', '--dest', destination, '--quiet'], {
       cwd: source,
       encoding: 'utf8',
+      timeout: 5_000,
     });
+    writeFileSync(holdRelease, 'release\n');
     assert.notEqual(second.status, 0, second.stderr || second.stdout);
     assert.match(second.stderr, /target generation is busy/);
     const firstCode = await firstExit;
@@ -1163,6 +1170,11 @@ test('target generation rejects a concurrent writer without creating multiple jo
     assert.equal(existsSync(lock), false);
     assert.match(readFileSync(path.join(destination, 'alpha', 'SKILL.md'), 'utf8'), /generation-two/);
   } finally {
+    if (first?.exitCode === null) {
+      writeFileSync(holdRelease, 'release\n');
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+      if (first.exitCode === null) first.kill('SIGTERM');
+    }
     rmSync(sandbox, { recursive: true, force: true });
   }
 });
