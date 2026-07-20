@@ -38,8 +38,10 @@ or product state. Those capabilities have separate authenticated owners.
    fails closed on symbolic links, malformed ownership markers, concurrent
    changes, unsupported persistence, or unsafe permission repair. The sole
    symlink/import migration exception is an exact per-user retired Doctrine
-   projection whose path, legacy Sylphx constitution shape, owner, permissions,
-   size, and content snapshot all validate. The adapter replaces only the
+   projection whose path, legacy Sylphx constitution shape, size, and content
+   snapshot all validate. POSIX ownership and permission bits are additionally
+   fenced where the host exposes authoritative metadata; Windows ACLs are not
+   misclassified through synthetic POSIX mode bits. The adapter replaces only the
    runtime instruction entry with a regular managed file, preserves local
    notes, leaves the retired target untouched, and reports the pre-install
    state as `retired_doctrine_projection`. Unknown legacy shapes fail closed.

@@ -32,10 +32,12 @@ effective readback, not a folder-count claim.
    `SYLPHX_SKILLS_COMMIT_SHA` when the execution mechanism strips Git metadata.
    The user does not run it. An older Sylphx installation may still project its
    constitution from the retired Doctrine runtime. The adapter reports that as
-   a typed migration and replaces only an exact, same-owner, structurally
-   recognized legacy link or Claude import with a regular managed instruction
+   a typed migration and replaces only an exact, structurally recognized
+   per-user legacy link or Claude import with a regular managed instruction
    file. It preserves local notes and leaves the retired target untouched.
-   Arbitrary links, imports, owners, permissions, or content remain fail-closed.
+   Owner and permission bits are also fenced where the operating system exposes
+   authoritative POSIX metadata. Arbitrary links, imports, unsafe metadata, or
+   content remain fail-closed.
 4. If that adapter cannot execute, use the runtime's documented native Skill
    installation and persistent-instruction mechanisms to achieve the same
    result. Do not invent unsupported files, silently overwrite instructions,

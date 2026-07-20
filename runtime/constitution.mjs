@@ -75,7 +75,10 @@ function validateLegacyTarget(target, ownerStat) {
   if (targetStat.size > MAX_LEGACY_INSTRUCTION_BYTES) {
     throw new Error(`Refusing oversized retired Doctrine instruction target: ${target}`);
   }
-  if ((targetStat.mode & 0o022) !== 0) {
+  // Windows exposes synthetic POSIX mode bits (commonly 0666) rather than the
+  // file's ACL, so interpreting them as group/world-writable would reject every
+  // safe per-user target. On POSIX, retain the stronger ownership/mode fence.
+  if (process.platform !== 'win32' && (targetStat.mode & 0o022) !== 0) {
     throw new Error(`Refusing group/world-writable retired Doctrine instruction target: ${target}`);
   }
   if (ownerStat && ownerStat.uid !== targetStat.uid) {
