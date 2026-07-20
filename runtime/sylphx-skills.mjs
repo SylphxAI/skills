@@ -11,10 +11,18 @@ import {
   writeFileSync,
 } from 'node:fs';
 import { createHash, randomBytes } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { uninstallRuntimeHooks } from './hooks.mjs';
+import {
+  applyConstitutionPlan,
+  inspectConstitution,
+  planConstitutionInstall,
+  planConstitutionRemoval,
+  runtimeInstructionPath,
+} from './constitution.mjs';
 import { packageDigest } from './package-digest.mjs';
 import { reconcile, withLifecycleLock, withReconcileLock } from './reconcile.mjs';
 import { installScheduler, parseIntervalMinutes, removeScheduler } from './scheduler.mjs';
@@ -50,6 +58,8 @@ const reconcilerConfig = path.join(stateDirectory, 'config.json');
 const managedRepository = path.join(stateDirectory, 'repository');
 const legacyUpdaterScript = path.join(stateDirectory, 'sync.sh');
 const transactionPrefix = '.sylphx-transaction-';
+let sourceCommitResolved = false;
+let sourceCommitCache = null;
 
 function executableFromPath(name, pathEnv) {
   const executable = process.platform === 'win32' ? `${name}.exe` : name;
@@ -184,6 +194,76 @@ function readJson(file) {
   }
 }
 
+function resolvedSourceCommit() {
+  if (sourceCommitResolved) return sourceCommitCache;
+  const explicit = process.env.SYLPHX_SKILLS_COMMIT_SHA?.trim().toLowerCase();
+  if (explicit) {
+    if (!/^[0-9a-f]{7,64}$/.test(explicit)) {
+      throw new Error('SYLPHX_SKILLS_COMMIT_SHA must be a hexadecimal Git object id');
+    }
+    sourceCommitResolved = true;
+    sourceCommitCache = explicit;
+    return sourceCommitCache;
+  }
+  const status = spawnSync('git', ['-C', packageRoot, 'status', '--porcelain', '--untracked-files=normal'], {
+    encoding: 'utf8',
+    timeout: 2_000,
+  });
+  if (status.status !== 0 || status.stdout.trim()) {
+    sourceCommitResolved = true;
+    return sourceCommitCache;
+  }
+  const revision = spawnSync('git', ['-C', packageRoot, 'rev-parse', 'HEAD'], {
+    encoding: 'utf8',
+    timeout: 2_000,
+  });
+  const commit = revision.status === 0 ? revision.stdout.trim().toLowerCase() : '';
+  sourceCommitResolved = true;
+  sourceCommitCache = /^[0-9a-f]{7,64}$/.test(commit) ? commit : null;
+  return sourceCommitCache;
+}
+
+function expectedTargetState(target, manifest) {
+  if (!manifest) return false;
+  const expectedSkills = catalog.skills.map((skill) => skill.name);
+  const expectedDigests = Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest]));
+  const expectedProfiles = catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile);
+  const expectedSourceCommit = resolvedSourceCommit();
+  const expectedShape = [
+    'catalogDigest',
+    'owner',
+    'packageDigests',
+    'packageVersion',
+    'profiles',
+    'runtime',
+    'schemaVersion',
+    'skills',
+    'sourceCommit',
+    'synchronizedAt',
+  ];
+  try {
+    return manifest.schemaVersion === 1
+      && manifest.owner === 'SylphxAI/skills'
+      && manifest.catalogDigest === `sha256:${catalogDigest}`
+      && manifest.packageVersion === packageJson.version
+      && manifest.runtime === target.runtime
+      && (expectedSourceCommit === null || manifest.sourceCommit === expectedSourceCommit)
+      && JSON.stringify(manifest.skills) === JSON.stringify(expectedSkills)
+      && JSON.stringify(manifest.packageDigests) === JSON.stringify(expectedDigests)
+      && JSON.stringify(manifest.profiles) === JSON.stringify(expectedProfiles)
+      && JSON.stringify(Object.keys(manifest).sort()) === JSON.stringify(expectedShape)
+      && typeof manifest.synchronizedAt === 'string'
+      && Number.isFinite(Date.parse(manifest.synchronizedAt))
+      && new Date(manifest.synchronizedAt).toISOString() === manifest.synchronizedAt
+      && managedTargetCurrent(target.path, expectedSkills)
+      && catalog.skills.every((skill) => (
+        packageDigest(managedPackagePath(target.path, skill.name)) === skill.packageDigest
+      ));
+  } catch {
+    return false;
+  }
+}
+
 function writeAtomic(file, bytes, mode) {
   mkdirSync(path.dirname(file), { recursive: true });
   const temp = `${file}.tmp-${process.pid}-${randomBytes(4).toString('hex')}`;
@@ -219,11 +299,18 @@ function recoverInterruptedTransactions(skillRoot) {
 
 function syncTarget(target) {
   return withTargetGenerationLock(target.path, (lockToken) => {
+    const instructionFile = runtimeInstructionPath(target);
+    const constitutionPlan = instructionFile ? planConstitutionInstall(instructionFile) : null;
     recoverTargetGeneration(target.path, lockToken);
     mkdirSync(target.path, { recursive: true });
     recoverInterruptedTransactions(target.path);
     const previous = readPreviousManifest(target);
     const desired = catalog.skills.map((skill) => skill.name);
+    if (expectedTargetState(target, previous)) {
+      applyConstitutionPlan(constitutionPlan);
+      log(`current ${desired.length} skills at ${target.runtime}: ${target.path}`);
+      return previous;
+    }
     const previousSkills = [...new Set([
       ...(Array.isArray(previous?.skills) ? previous.skills : []),
       ...managedGenerationSkills(target.path),
@@ -234,7 +321,7 @@ function syncTarget(target) {
       owner: 'SylphxAI/skills',
       packageVersion: packageJson.version,
       catalogDigest: `sha256:${catalogDigest}`,
-      sourceCommit: process.env.SYLPHX_SKILLS_COMMIT_SHA || null,
+      sourceCommit: resolvedSourceCommit(),
       synchronizedAt: new Date().toISOString(),
       runtime: target.runtime,
       skills: desired,
@@ -252,6 +339,7 @@ function syncTarget(target) {
       previousManifest: previous,
       lockToken,
     });
+    applyConstitutionPlan(constitutionPlan);
     log(`synced ${desired.length} skills to ${target.runtime}: ${target.path}`);
     return manifest;
   });
@@ -298,6 +386,16 @@ function sync() {
   if (jsonOutput) console.log(JSON.stringify({ command: 'sync', catalogDigest: `sha256:${catalogDigest}`, targets: result }, null, 2));
 }
 
+function install() {
+  if (argv.includes('--dest')) {
+    throw new Error('install requires a native runtime; custom destinations support Skills sync only');
+  }
+  if (!argv.includes('--agent')) {
+    throw new Error('install requires --agent codex, claude, or grok');
+  }
+  return sync();
+}
+
 function status() {
   const targets = resolveTargets();
   const result = targets.map((target) => withTargetGenerationLock(target.path, (lockToken) => {
@@ -315,7 +413,7 @@ function status() {
     const skillsCurrent = JSON.stringify(manifest?.skills || []) === JSON.stringify(
       catalog.skills.map((skill) => skill.name),
     );
-    const expectedSourceCommit = process.env.SYLPHX_SKILLS_COMMIT_SHA || null;
+    const expectedSourceCommit = resolvedSourceCommit();
     const sourceCommitCurrent = expectedSourceCommit === null || manifest?.sourceCommit === expectedSourceCommit;
     const packageVersionCurrent = manifest?.packageVersion === packageJson.version;
     const runtimeCurrent = manifest?.runtime === target.runtime;
@@ -339,6 +437,10 @@ function status() {
     const driftedPackages = packageStates
       .filter((skill) => !skill.current)
       .map((skill) => skill.name);
+    const instructionFile = runtimeInstructionPath(target);
+    const constitution = instructionFile
+      ? inspectConstitution(instructionFile)
+      : { path: null, installed: null, current: true, contentDigest: null, error: null };
     return {
       runtime: target.runtime,
       path: target.path,
@@ -354,7 +456,8 @@ function status() {
         && packageVersionCurrent
         && runtimeCurrent
         && manifestShapeCurrent
-        && synchronizedAtCurrent,
+        && synchronizedAtCurrent
+        && constitution.current,
       catalogDigest: manifest?.catalogDigest || null,
       sourceCommit: manifest?.sourceCommit ?? null,
       packageVersion: manifest?.packageVersion || null,
@@ -368,6 +471,7 @@ function status() {
       manifestShapeCurrent,
       synchronizedAtCurrent,
       driftedPackages,
+      constitution,
     };
   }));
   if (jsonOutput) console.log(JSON.stringify({ command: 'status', targets: result }, null, 2));
@@ -379,6 +483,8 @@ function clear() {
   const result = [];
   for (const target of targets) {
     withTargetGenerationLock(target.path, (lockToken) => {
+      const instructionFile = runtimeInstructionPath(target);
+      const constitutionPlan = instructionFile ? planConstitutionRemoval(instructionFile) : null;
       recoverTargetGeneration(target.path, lockToken);
       const previous = readPreviousManifest(target);
       const names = new Set([
@@ -387,6 +493,7 @@ function clear() {
       ]);
       const removed = [...names].filter((name) => existsSync(path.join(target.path, name))).length;
       clearTargetGeneration(target.path, [...names], lockToken);
+      applyConstitutionPlan(constitutionPlan);
       result.push({ runtime: target.runtime, path: target.path, removed });
       log(`cleared ${removed} Sylphx skills from ${target.runtime}: ${target.path}`);
     });
@@ -512,11 +619,13 @@ function autoSyncStatus() {
 }
 
 function help() {
-  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills sync [--agent codex|claude|grok|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills auto-sync enable [--interval 10m]\n  sylphx-skills auto-sync disable|status\n\nDefault behavior auto-detects Codex, Claude Code, and Grok Build. Automatic\nsynchronization uses the operating system scheduler every 10 minutes by default.`);
+  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills install --agent codex|claude|grok|all\n  sylphx-skills sync [--agent codex|claude|grok|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills auto-sync enable [--interval 10m]\n  sylphx-skills auto-sync disable|status\n\nInstall is the agent-facing operation and requires an explicit native runtime;\nsync remains a compatible low-level operation. Native runtime targets receive\nboth the complete Skill catalog and compact constitution.`);
 }
 
 function main() {
+  if (argv.some((item) => ['help', '--help', '-h'].includes(item))) return help();
   const command = argv.find((item) => !item.startsWith('-')) || 'sync';
+  if (command === 'install') return install();
   if (command === 'sync') return sync();
   if (command === 'status') return status();
   if (command === 'clear') return clear();
@@ -528,7 +637,6 @@ function main() {
     if (action === 'status') return autoSyncStatus();
     throw new Error(`Unknown auto-sync action: ${action}`);
   }
-  if (['help', '--help', '-h'].includes(command)) return help();
   throw new Error(`Unknown command: ${command}`);
 }
 

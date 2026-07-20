@@ -8,12 +8,17 @@ templates, repository About) aligned with install reality and honest posture.
 - Keep each `SKILL.md` frontmatter to `name` and `description`.
 - Put detailed reusable knowledge in `references/` and optional deterministic
   helpers in the package's `scripts/`.
-- Supported install targets: Codex, Claude Code, and Grok Build via `runtime/`.
+- Supported install targets: Codex, Claude Code, and Grok Build. The public
+  interface is repository plus `install this`; `INSTALL.md` is the agent
+  contract and `runtime/` is its deterministic implementation mechanism.
+- Install both the complete managed Skill generation and the marker-owned
+  compact constitution. Preserve all unrelated user instructions and Skills.
 - Do not add benchmark runs, model outputs, admission systems, live work or
   organization-wide adoption
   state, credentials, customer data, generated skill bodies, or retired copies.
 - `catalog.json` is derived; rebuild it with `npm run build:catalog`.
-- Run `npm test` before landing a change.
+- Run `npm test` and `npm pack --dry-run` before landing an installation or
+  distribution change. Keep external clean-runtime model evidence out of Git.
 - Material repository decisions receive an ADR under `docs/adr/`; product-local
   decisions remain in their owning product repository.
 

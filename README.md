@@ -5,19 +5,23 @@
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](./package.json)
 [![Agent Skills](https://img.shields.io/badge/agent%20skills-105%20packages-111827.svg)](./catalog.json)
 
-**Working methods for AI agents — published so they can install them.**
+**Working methods for AI agents — installed by the agent that needs them.**
 
 Sylphx Skills is the public, MIT-licensed library of how Sylphx agents design,
-build, verify, deliver, operate, and grow software. One command installs the
-full set into [Codex](https://openai.com/codex),
+build, verify, deliver, operate, and grow software. It supports
+[Codex](https://openai.com/codex),
 [Claude Code](https://docs.anthropic.com/en/docs/claude-code), and
-[Grok Build](https://grok.x.ai/) skill roots — and keeps them current.
+[Grok Build](https://grok.x.ai/).
 
-```bash
-npx --yes github:SylphxAI/skills sync
-```
+Give this to your agent:
 
-That is the entire install. No global package. No account. No token.
+> Install this: https://github.com/SylphxAI/skills
+
+That is the complete user procedure. The agent reads [`INSTALL.md`](./INSTALL.md),
+detects its environment, installs the exact Skill catalog and compact runtime
+constitution, preserves unrelated configuration, and verifies the result in a
+fresh context. The repository never asks the user to translate that outcome
+into shell commands.
 
 ---
 
@@ -32,7 +36,8 @@ playbooks. This repository is different:
 | **Agent-native packages** | Each skill has a clear job, load trigger, and bounded method |
 | **Multi-runtime** | Codex · Claude Code · Grok Build from one source |
 | **Converging sync** | New skills appear; removed skills leave; third-party skills stay |
-| **OS auto-update** | Optional launchd / systemd / Task Scheduler — no daemons we host |
+| **Agent-owned adoption** | Install, update, and readback are outcomes owned by the receiving agent |
+| **OS auto-update** | Optional launchd / systemd / Task Scheduler — no daemon we host |
 
 Commercial Sylphx value is continuous maintenance, private customer packages,
 Platform integrations, and support — **not** pretending public Markdown is
@@ -40,37 +45,31 @@ secret.
 
 ---
 
-## Quick start
+## Install, update, or inspect
 
-### Install or update once
+Installation is intentionally prompt-native:
 
-```bash
-npx --yes github:SylphxAI/skills sync
-```
+> Install this: https://github.com/SylphxAI/skills
 
-When published on npm:
+For a later exact-source update:
 
-```bash
-npx --yes sylphx-skills sync
-```
+> Update my Sylphx Skills from https://github.com/SylphxAI/skills and verify them in a fresh context.
 
-Target one runtime:
+For managed updates:
 
-```bash
-npx --yes github:SylphxAI/skills sync --agent codex
-npx --yes github:SylphxAI/skills sync --agent claude
-npx --yes github:SylphxAI/skills sync --agent grok
-npx --yes github:SylphxAI/skills sync --agent all
-```
+> Keep my Sylphx Skills current from https://github.com/SylphxAI/skills.
 
-### Stay current automatically
+For readback without mutation:
 
-```bash
-npx --yes github:SylphxAI/skills auto-sync enable          # default: every 10m
-npx --yes github:SylphxAI/skills auto-sync enable --interval 30m
-npx --yes github:SylphxAI/skills auto-sync status
-npx --yes github:SylphxAI/skills auto-sync disable
-```
+> Verify my Sylphx Skills installation and report any drift without changing it.
+
+The agent uses the repository-owned adapter internally. Humans do not need to
+select a runtime, locate a home directory, invoke a package manager, or repair
+permissions. If the environment cannot safely persist a required surface, the
+agent reports a typed partial or blocked result instead of delegating repair to
+the user.
+
+### Managed update behavior
 
 The command uses the operating system's built-in per-user scheduler: launchd on
 macOS, a systemd user timer on Linux, and Task Scheduler on Windows. Each tick
@@ -94,14 +93,9 @@ An already-running agent may not reload a changed Skill until that runtime's
 next normal reload boundary. The files themselves converge within the selected
 interval.
 
-### Inspect
-
-```bash
-npx --yes github:SylphxAI/skills status
-npx --yes github:SylphxAI/skills status --json
-npx --yes github:SylphxAI/skills clear     # remove only Sylphx-managed skills
-npx --yes github:SylphxAI/skills help
-```
+The deterministic adapter exposes install, status, clear, and scheduled-sync
+operations to agents and automation. Those operations are implementation
+mechanisms, not a user installation interface.
 
 ---
 
@@ -177,7 +171,8 @@ Authority notes: [docs/adr/ADR-0001-public-agent-instruction-source.md](./docs/a
 | --- | --- |
 | `skills/<id>/` | **Only** writable semantic source for packages |
 | `catalog.json` | Deterministic index from frontmatter |
-| `runtime/` | Install / sync / auto-sync CLI for Codex · Claude · Grok |
+| `runtime/` | Agent-facing install / sync / auto-sync adapter and compact constitution |
+| `INSTALL.md` | Environment-neutral installation contract for the receiving agent |
 | `scripts/` · `tests/` | Integrity gates only |
 | `docs/adr/` | Repository-level decisions |
 
@@ -194,13 +189,9 @@ admission services, or model-provider evidence runs.
 - **Security** → [SECURITY.md](./SECURITY.md)
 
 We care about packages that encode a real, recurring job with an independent
-artifact — not skill-count inflation.
-
-```bash
-git clone https://github.com/SylphxAI/skills.git
-cd skills
-npm test
-```
+artifact — not skill-count inflation. Contributors can give the repository and
+their intended change to an agent; the repository instructions require that
+agent to run the complete integrity suite before delivery.
 
 ---
 
