@@ -1,6 +1,6 @@
 {
   "name": "sylphx-skills",
-  "version": "1.7.4",
+  "version": "1.8.0",
   "description": "Agent-installed Sylphx operating methods and runtime constitution for Codex, Claude Code, and Grok Build",
   "license": "MIT",
   "type": "module",
@@ -8,6 +8,8 @@
     "sylphx-skills": "runtime/sylphx-skills.mjs"
   },
   "files": [
+    "SKILL.md",
+    "agents/",
     "skills/",
     "runtime/",
     "catalog.json",

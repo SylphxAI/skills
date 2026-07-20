@@ -220,13 +220,17 @@ test('compact constitution explicitly retires predecessor authorities', () => {
 test('public install intent cannot be mistaken for generic Skill copying', () => {
   const readme = readFileSync(path.join(root, 'README.md'), 'utf8');
   const install = readFileSync(path.join(root, 'INSTALL.md'), 'utf8');
+  const bootstrap = readFileSync(path.join(root, 'SKILL.md'), 'utf8');
   assert.match(
     readme,
-    /> Install this into your current agent runtime: https:\/\/github\.com\/SylphxAI\/skills/,
+    /> Install this: https:\/\/github\.com\/SylphxAI\/skills/,
   );
+  assert.match(bootstrap, /^---\nname: skills\ndescription:/);
+  assert.match(bootstrap, /Read the sibling `INSTALL\.md` completely/);
+  assert.doesNotMatch(bootstrap, /node runtime\/|sylphx-skills\.mjs install/);
   assert.match(
     install,
-    /generic Skill installer that only copies\s+`skills\/\*` is not completion; installing every detected runtime also exceeds\s+scope/,
+    /generic Skill installer that only copies `skills\/\*` is not\s+completion; installing every detected runtime also exceeds scope/,
   );
   assert.match(
     install,

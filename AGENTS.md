@@ -4,7 +4,9 @@ This repository is the **public source** for the organization's static agent
 instructions (MIT). Keep public marketing (README, Discussions, issue
 templates, repository About) aligned with install reality and honest posture.
 
-- Author package semantics only under `skills/<id>/`.
+- Author managed package semantics only under `skills/<id>/`. Root `SKILL.md`
+  is the non-catalog installation bootstrap and may only point agents to
+  `INSTALL.md`; it must not fork that contract.
 - Keep each `SKILL.md` frontmatter to `name` and `description`.
 - Put detailed reusable knowledge in `references/` and optional deterministic
   helpers in the package's `scripts/`.

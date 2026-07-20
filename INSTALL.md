@@ -1,16 +1,14 @@
 # Install for agents
 
 This file is addressed to the agent that received this repository with a short
-request such as **“install this into your current agent runtime.”** Own the
-installation outcome. Do not turn the repository's internal commands into work
-for the user.
+request such as **“install this.”** Own the installation outcome. Do not turn
+the repository's internal commands into work for the user.
 
-The words “current agent runtime” distinguish this repository-level outcome
-from installing one or more independent Skills and explicitly fence the target
-to the receiving runtime. A generic Skill installer that only copies
-`skills/*` is not completion; installing every detected runtime also exceeds
-scope. Read and follow this contract even when the client initially routes the
-request through a built-in Skill installer.
+Root `SKILL.md` is a discovery bootstrap for clients that initially route the
+request through a built-in Skill installer. It points here before any leaf
+package operation. A generic Skill installer that only copies `skills/*` is not
+completion; installing every detected runtime also exceeds scope. The target is
+the receiving runtime unless the user explicitly names additional runtimes.
 
 ## Required outcome
 

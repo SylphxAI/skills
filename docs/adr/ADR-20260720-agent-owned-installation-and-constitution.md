@@ -22,13 +22,13 @@ or product state. Those capabilities have separate authenticated owners.
 
 ## Decision
 
-1. The public installation interface is the repository locator plus the short,
-   explicit intent `install this into your current agent runtime`. The target
-   qualifier distinguishes the repository-level outcome from a generic
-   per-Skill copy operation in clients that pre-route install requests and
-   prevents an agent from configuring other detected runtimes. The receiving
-   agent owns environment discovery, execution, recovery, and verification. It
-   must not turn internal commands into user work.
+1. The public installation interface is the repository locator plus the short
+   intent `install this`. Root `SKILL.md` is a non-catalog discovery bootstrap
+   for clients that pre-route repository installation through a generic Skill
+   installer. It points to `INSTALL.md` and carries no independent installation
+   semantics. The receiving agent owns runtime discovery, execution, recovery,
+   and verification, and may not configure another detected runtime unless the
+   user explicitly includes it.
 2. `INSTALL.md` is the portable installation contract. The repository-owned
    Node adapter remains the preferred deterministic mechanism, not the user
    interface. Native runtime installation may be used only when it proves the
@@ -74,11 +74,15 @@ or product state. Those capabilities have separate authenticated owners.
     source manifest and current compact constitution is a typed partial, never
     completion. External clean-runtime evaluation must include the exact public
     prompt because deterministic adapter tests cannot prove client routing.
+11. The root bootstrap is a packaging adapter, not a 106th managed Skill. It is
+    shipped in the public artifact, excluded from `catalog.json`, and forbidden
+    from duplicating the installation contract. Its only job is to make the
+    repository root self-describing to native Skill installers.
 
 ## Consequences
 
 - The shortest supported user experience is one prompt containing the public
-  repository URL and the explicit target “your current agent runtime.”
+  repository URL and the intent “install this.”
 - Runtime-specific complexity stays discoverable by agents and deterministic
   automation rather than becoming human ceremony.
 - Existing developer machines cannot prove cold-start adoption; exact-source
