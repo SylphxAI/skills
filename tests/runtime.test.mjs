@@ -215,6 +215,8 @@ test('compact constitution explicitly retires predecessor authorities', () => {
     constitution,
     /must not be\s+loaded, selected, written, or inferred as current instruction or live-state\s+authority\./,
   );
+  assert.match(constitution, /Cached, path-discovered, temporary, historical, or\s+previously managed executables are not mutation authority\./);
+  assert.match(constitution, /Detecting another installed agent runtime\s+is evidence only and never permission/);
 });
 
 test('public install intent cannot be mistaken for generic Skill copying', () => {
@@ -236,6 +238,9 @@ test('public install intent cannot be mistaken for generic Skill copying', () =>
     install,
     /Presence of\s+all `SKILL\.md` files without the managed manifest and current constitution is\s+a typed partial installation, not success/,
   );
+  assert.match(install, /Never substitute an executable discovered through `PATH`/);
+  assert.match(install, /Every mutating adapter operation must name the receiving runtime explicitly/);
+  assert.match(bootstrap, /Never execute an installer found through a cache, `PATH`, temporary checkout/);
 });
 
 test('agent install converges native Skills and managed constitutions without owning user instructions', () => {
@@ -472,6 +477,54 @@ test('help is read-only and never falls through to installation', () => {
     assert.match(result.stdout, /sylphx-skills install/);
     assert.equal(existsSync(path.join(sandbox, '.codex')), false);
     assert.equal(existsSync(path.join(sandbox, '.sylphx-skills')), false);
+
+    const bare = runWithEnvironment([], {
+      SYLPHX_SKILLS_HOME: sandbox,
+      CODEX_HOME: path.join(sandbox, '.codex'),
+    });
+    assert.match(bare.stdout, /Every mutating native operation requires an explicit runtime selection/);
+    assert.equal(existsSync(path.join(sandbox, '.codex')), false);
+    assert.equal(existsSync(path.join(sandbox, '.sylphx-skills')), false);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('mutating operations fail closed without one explicit target mode', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-mutation-scope-'));
+  const environment = {
+    ...process.env,
+    SYLPHX_SKILLS_HOME: sandbox,
+    CODEX_HOME: path.join(sandbox, '.codex'),
+    CLAUDE_CONFIG_DIR: path.join(sandbox, '.claude'),
+    GROK_HOME: path.join(sandbox, '.grok'),
+  };
+  try {
+    for (const args of [
+      ['sync'],
+      ['clear'],
+      ['auto-sync', 'enable'],
+      ['sync', '--agent'],
+      ['sync', '--dest'],
+      ['sync', '--agent', 'codex', '--dest', path.join(sandbox, 'custom')],
+    ]) {
+      const result = spawnSync(process.execPath, [cli, ...args], {
+        cwd: root,
+        encoding: 'utf8',
+        env: environment,
+      });
+      assert.equal(result.status, 1, `${args.join(' ')} unexpectedly succeeded`);
+    }
+    assert.equal(existsSync(path.join(sandbox, '.codex')), false);
+    assert.equal(existsSync(path.join(sandbox, '.claude')), false);
+    assert.equal(existsSync(path.join(sandbox, '.grok')), false);
+    assert.equal(existsSync(path.join(sandbox, '.sylphx-skills')), false);
+    assert.equal(existsSync(path.join(sandbox, 'custom')), false);
+
+    runWithEnvironment(['sync', '--agent', 'codex', '--quiet'], environment);
+    assert.equal(existsSync(path.join(sandbox, '.codex', 'skills', '.sylphx-skills.json')), true);
+    assert.equal(existsSync(path.join(sandbox, '.claude')), false);
+    assert.equal(existsSync(path.join(sandbox, '.grok')), false);
   } finally {
     rmSync(sandbox, { recursive: true, force: true });
   }
@@ -1809,7 +1862,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
 
     const lifecycleReady = path.join(managedHome, '.sylphx-skills', '.test-enable-after-reconcile-ready');
     lifecycleRelease = path.join(managedHome, '.sylphx-skills', '.test-enable-after-reconcile-release');
-    const enabling = spawn(process.execPath, [cli, 'auto-sync', 'enable', '--interval', '7m', '--quiet'], {
+    const enabling = spawn(process.execPath, [cli, 'auto-sync', 'enable', '--agent', 'codex,claude', '--interval', '7m', '--quiet'], {
       cwd: root,
       env: {
         ...process.env,
@@ -1866,15 +1919,19 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     const installedManifest = path.join(codexHome, 'skills', '.sylphx-skills.json');
     assert.equal(existsSync(installedManifest), true, `installed paths: ${readdirSync(managedHome, { recursive: true }).join(', ')}`);
     assert.equal(readFileSync(installedManifest, 'utf8').includes(sourceSha), true);
-    assert.equal(JSON.parse(readFileSync(path.join(grokHome, 'skills', '.sylphx-skills.json'), 'utf8')).sourceCommit, sourceSha);
+    assert.equal(existsSync(path.join(grokHome, 'skills', '.sylphx-skills.json')), false);
     const status = JSON.parse(runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout);
     assert.equal(status.enabled, true);
     assert.equal(status.intervalMinutes, 7);
     assert.equal(status.mode, 'interval-scheduler');
+    assert.deepEqual(status.agents, ['codex', 'claude']);
     const plist = path.join(managedHome, 'Library', 'LaunchAgents', 'ai.sylphx.skills-sync.plist');
     assert.match(readFileSync(plist, 'utf8'), /<key>StartInterval<\/key><integer>420<\/integer>/);
     assert.equal(Object.hasOwn(JSON.parse(readFileSync(path.join(claudeHome, 'settings.json'), 'utf8')), 'hooks'), false);
-    assert.equal(Object.hasOwn(JSON.parse(readFileSync(path.join(grokHome, 'hooks', 'sylphx-skills.json'), 'utf8')), 'hooks'), false);
+    assert.deepEqual(
+      JSON.parse(readFileSync(path.join(grokHome, 'hooks', 'sylphx-skills.json'), 'utf8')).hooks,
+      legacyHooks,
+    );
 
     const driftedManifest = JSON.parse(readFileSync(installedManifest, 'utf8'));
     driftedManifest.catalogDigest = `sha256:${'0'.repeat(64)}`;
@@ -2001,7 +2058,8 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     assert.equal(updatedManifest.sourceCommit, updatedSha);
     assert.deepEqual(updatedManifest.skills, updatedCatalog.skills.map((skill) => skill.name));
     assert.equal(existsSync(path.join(codexHome, 'skills', addedSkill, 'SKILL.md')), true);
-    assert.equal(existsSync(path.join(grokHome, 'skills', addedSkill, 'SKILL.md')), true);
+    assert.equal(existsSync(path.join(claudeHome, 'skills', addedSkill, 'SKILL.md')), true);
+    assert.equal(existsSync(path.join(grokHome, 'skills', addedSkill, 'SKILL.md')), false);
     assert.equal(existsSync(path.join(codexHome, 'skills', removedSkill)), false);
     assert.equal(existsSync(path.join(grokHome, 'skills', removedSkill)), false);
     assert.equal(existsSync(removedFile), false);
@@ -2071,7 +2129,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     const grok = JSON.parse(readFileSync(path.join(grokHome, 'hooks', 'sylphx-skills.json'), 'utf8'));
     assert.equal(claude.language, 'en');
     assert.equal(Object.hasOwn(claude, 'hooks'), false);
-    assert.equal(Object.hasOwn(grok, 'hooks'), false);
+    assert.deepEqual(grok.hooks, legacyHooks);
     assert.equal(existsSync(plist), false);
     assert.equal(existsSync(path.join(managedHome, '.sylphx-skills', 'repository')), true);
     assert.equal(existsSync(path.join(managedHome, '.sylphx-skills', 'config.json')), false);

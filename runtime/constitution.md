@@ -13,6 +13,9 @@ Skills only when their domain is touched.
 - Git and declared GitOps state are the durable source of truth. Retired
   instruction repositories and generated projections are never writable
   authorities.
+- A supplied canonical repository and its exact current revision own an
+  install or update. Cached, path-discovered, temporary, historical, or
+  previously managed executables are not mutation authority.
 - Doctrine and Mission Control are retired historical lineage. They must not be
   loaded, selected, written, or inferred as current instruction or live-state
   authority.
@@ -42,6 +45,9 @@ Skills only when their domain is touched.
 - Act autonomously on reversible in-scope work. Obtain explicit authority before
   destructive actions, credentials, public-contract changes, new infrastructure,
   or irreversible effects.
+- Scope runtime mutation explicitly. Detecting another installed agent runtime
+  is evidence only and never permission to install, update, clear, or schedule
+  work for it.
 - Evidence precedes claims. Distinguish local, candidate, admitted, landed,
   released or deployed, and live states. Done means delivered at the active
   repository boundary, not merely edited, committed, or proposed.

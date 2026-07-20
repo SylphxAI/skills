@@ -1,6 +1,6 @@
 {
   "name": "sylphx-skills",
-  "version": "1.8.0",
+  "version": "2.0.0",
   "description": "Agent-installed Sylphx operating methods and runtime constitution for Codex, Claude Code, and Grok Build",
   "license": "MIT",
   "type": "module",
@@ -20,8 +20,7 @@
   "scripts": {
     "build:catalog": "node scripts/build-catalog.mjs",
     "check": "node scripts/check.mjs",
-    "test": "npm run check && node --test",
-    "sync": "node runtime/sylphx-skills.mjs sync"
+    "test": "npm run check && node --test"
   },
   "engines": {
     "node": ">=20"

@@ -11,9 +11,9 @@ templates, repository About) aligned with install reality and honest posture.
 - Put detailed reusable knowledge in `references/` and optional deterministic
   helpers in the package's `scripts/`.
 - Supported install targets: Codex, Claude Code, and Grok Build. The public
-  interface is repository plus `install this into your current agent runtime`;
+  interface is repository plus `install this`;
   `INSTALL.md` is the agent contract and `runtime/` is its deterministic
-  implementation mechanism. The explicit environment intent prevents a
+  implementation mechanism. Exact supplied source and explicit runtime scope prevent a
   client-native generic Skill installer from falsely completing after folder
   copies alone or mutating every detected runtime.
 - Install both the complete managed Skill generation and the marker-owned
