@@ -6,7 +6,7 @@
     "id": "sylphx-skills",
     "repository": "SylphxAI/skills",
     "name": "Sylphx Skills",
-    "summary": "Public canonical static instructions and automatic Codex/Claude distribution.",
+    "summary": "Public static instructions, compact runtime constitution, and agent-owned Codex, Claude, and Grok installation.",
     "lifecycle": "production",
     "layer": "tooling",
     "visibility": "public",
@@ -18,12 +18,13 @@
         "title": "Public Skills repository"
       }
     ],
-    "tags": ["agent-skills", "standards", "procedures", "codex", "claude"]
+    "tags": ["agent-skills", "standards", "procedures", "codex", "claude", "grok", "agent-native"]
   },
   "intent": {
     "goals": [
       "Own canonical static instructions under skills/<id>/.",
-      "Keep Codex and Claude Code synchronized without manual per-skill installation.",
+      "Let a user install or update Codex, Claude Code, and Grok Build by giving the repository to an agent.",
+      "Converge the complete Skill generation and compact persistent constitution without replacing unrelated user state.",
       "Publish Sylphx working methods and Platform guidance as useful public product surfaces."
     ],
     "nonGoals": [
@@ -42,7 +43,12 @@
       {
         "id": "runtime-sync",
         "name": "Runtime synchronization",
-        "description": "Small install, update, status, clear, and auto-sync adapters for Codex and Claude Code."
+        "description": "Small install, update, status, clear, and auto-sync adapters for Codex, Claude Code, and Grok Build."
+      },
+      {
+        "id": "agent-owned-installation",
+        "name": "Agent-owned installation",
+        "description": "A repository-plus-intent contract, compact persistent constitution, exact readback, and fresh-context adoption boundary."
       }
     ],
     "doesNotOwn": [
@@ -52,6 +58,8 @@
     "publicSurfaces": [
       {"type": "instruction", "name": "Canonical Skills", "location": "skills/"},
       {"type": "manifest", "name": "Deterministic catalog", "location": "catalog.json"},
+      {"type": "instruction", "name": "Agent installation contract", "location": "INSTALL.md"},
+      {"type": "instruction", "name": "Compact runtime constitution", "location": "runtime/constitution.md"},
       {"type": "tooling", "name": "Runtime sync CLI", "location": "runtime/sylphx-skills.mjs"},
       {"type": "documentation", "name": "Public entry point", "location": "README.md"}
     ],
@@ -76,7 +84,7 @@
       "prompt-architecture",
       "scope-discipline"
     ],
-    "capabilities": ["static-instruction-packages", "runtime-sync"],
+    "capabilities": ["static-instruction-packages", "runtime-sync", "agent-owned-installation"],
     "adoptionStatus": "adopted",
     "gaps": []
   },
@@ -84,13 +92,13 @@
     "adrs": {"location": "docs/adr/", "status": "present"},
     "specs": {"location": "skills/", "status": "present"},
     "catalog": {"location": "catalog.json", "status": "present"},
-    "runbooks": {"location": "README.md, CONTRIBUTING.md, PROJECT.md", "status": "present"},
+    "runbooks": {"location": "README.md, INSTALL.md, CONTRIBUTING.md, PROJECT.md", "status": "present"},
     "generatedReferences": {"location": "catalog.json", "status": "present"}
   },
   "delivery": {
     "lane": "public-source",
-    "verificationCommands": ["npm test", "npm pack --dry-run"],
-    "terminalBoundary": "Exact default-branch tree passes the single package and installer integrity check.",
+    "verificationCommands": ["npm test", "npm pack --dry-run", "isolated runtime fresh-context evaluation when installation changes"],
+    "terminalBoundary": "Exact default-branch tree passes package and installer integrity, public package inspection, and any installation change has typed clean-runtime evidence for authenticated supported providers.",
     "recoveryClass": "source-revertable",
     "deployable": false,
     "runnerProfiles": {"check": "github-hosted-public-source"}

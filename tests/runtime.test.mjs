@@ -22,6 +22,12 @@ import { spawn, spawnSync } from 'node:child_process';
 import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { packageDigest } from '../runtime/package-digest.mjs';
+import {
+  CONSTITUTION_END,
+  CONSTITUTION_START,
+  inspectConstitution,
+  planConstitutionInstall,
+} from '../runtime/constitution.mjs';
 import { reconcile } from '../runtime/reconcile.mjs';
 import { parseIntervalMinutes, schedulerDefinition } from '../runtime/scheduler.mjs';
 import { targetGenerationTransactionNames } from '../runtime/target-generation.mjs';
@@ -58,6 +64,12 @@ function commit(cwd, message) {
   return git(cwd, ['rev-parse', 'HEAD']);
 }
 
+function exactLocalSourceCommit() {
+  return git(root, ['status', '--porcelain', '--untracked-files=normal'])
+    ? null
+    : git(root, ['rev-parse', 'HEAD']);
+}
+
 test('sync, status, update, and clear own only the declared packages', () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-skills-'));
   const destination = path.join(sandbox, 'skills');
@@ -74,7 +86,7 @@ test('sync, status, update, and clear own only the declared packages', () => {
     const status = run(['status', '--dest', destination, '--json']);
     const parsed = JSON.parse(status.stdout);
     assert.equal(parsed.targets[0].current, true);
-    assert.equal(parsed.targets[0].sourceCommit, null);
+    assert.equal(parsed.targets[0].sourceCommit, exactLocalSourceCommit());
     assert.equal(typeof parsed.targets[0].packageVersion, 'string');
     assert.match(parsed.targets[0].generation, /^generation-[0-9a-f]{16}$/);
     assert.deepEqual(parsed.targets[0].driftedPackages, []);
@@ -167,6 +179,162 @@ test('agent override targets Codex, Claude, and Grok without upstream tooling', 
     assert.equal(result.status, 0, result.stderr || result.stdout);
     const targets = JSON.parse(result.stdout);
     assert.deepEqual(targets.map((target) => target.runtime), ['codex', 'claude', 'grok']);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('agent install converges native Skills and managed constitutions without owning user instructions', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-agent-install-'));
+  const codexHome = path.join(sandbox, '.codex');
+  const claudeHome = path.join(sandbox, '.claude');
+  const grokHome = path.join(sandbox, '.grok');
+  const environment = {
+    SYLPHX_SKILLS_HOME: sandbox,
+    CODEX_HOME: codexHome,
+    CLAUDE_CONFIG_DIR: claudeHome,
+    GROK_HOME: grokHome,
+  };
+  const instructionFiles = [
+    path.join(codexHome, 'AGENTS.md'),
+    path.join(claudeHome, 'CLAUDE.md'),
+    path.join(grokHome, 'AGENTS.md'),
+  ];
+  try {
+    for (const [index, file] of instructionFiles.entries()) {
+      mkdirSync(path.dirname(file), { recursive: true });
+      writeFileSync(file, `# Local runtime note ${index + 1}\n\nPreserve this text.\n`);
+    }
+
+    runWithEnvironment(['install', '--agent', 'all', '--quiet'], environment);
+    const firstInstructions = instructionFiles.map((file) => readFileSync(file, 'utf8'));
+    for (const [index, file] of instructionFiles.entries()) {
+      const content = firstInstructions[index];
+      assert.match(content, new RegExp(`^# Local runtime note ${index + 1}`));
+      assert.equal(content.includes(CONSTITUTION_START), true);
+      assert.equal(content.includes(CONSTITUTION_END), true);
+      assert.equal(inspectConstitution(file).current, true);
+    }
+
+    const installed = JSON.parse(runWithEnvironment(['status', '--agent', 'all', '--json'], environment).stdout);
+    assert.deepEqual(installed.targets.map((target) => target.runtime), ['codex', 'claude', 'grok']);
+    assert.equal(installed.targets.every((target) => target.current), true);
+    assert.equal(installed.targets.every((target) => target.constitution.current), true);
+    assert.equal(installed.targets.every((target) => target.installed === catalog.count), true);
+    assert.equal(installed.targets.every((target) => target.sourceCommit === exactLocalSourceCommit()), true);
+    const firstManifests = installed.targets.map((target) => (
+      JSON.parse(readFileSync(path.join(target.path, '.sylphx-skills.json'), 'utf8'))
+    ));
+
+    runWithEnvironment(['install', '--agent', 'all', '--quiet'], environment);
+    assert.deepEqual(instructionFiles.map((file) => readFileSync(file, 'utf8')), firstInstructions);
+    const second = JSON.parse(runWithEnvironment(['status', '--agent', 'all', '--json'], environment).stdout);
+    assert.deepEqual(
+      second.targets.map(({ runtime, generation, sourceCommit }) => ({ runtime, generation, sourceCommit })),
+      installed.targets.map(({ runtime, generation, sourceCommit }) => ({ runtime, generation, sourceCommit })),
+    );
+    second.targets.forEach((target, index) => {
+      const manifest = JSON.parse(readFileSync(path.join(target.path, '.sylphx-skills.json'), 'utf8'));
+      assert.equal(manifest.synchronizedAt, firstManifests[index].synchronizedAt);
+    });
+
+    writeFileSync(
+      instructionFiles[0],
+      readFileSync(instructionFiles[0], 'utf8').replace(
+        '# Sylphx Agent Runtime Constitution',
+        '# Stale Sylphx Agent Runtime Constitution',
+      ),
+    );
+    const drifted = JSON.parse(runWithEnvironment(['status', '--agent', 'codex', '--json'], environment).stdout);
+    assert.equal(drifted.targets[0].current, false);
+    assert.equal(drifted.targets[0].constitution.current, false);
+    runWithEnvironment(['install', '--agent', 'codex', '--quiet'], environment);
+    assert.equal(inspectConstitution(instructionFiles[0]).current, true);
+    assert.match(readFileSync(instructionFiles[0], 'utf8'), /^# Local runtime note 1/);
+
+    writeFileSync(instructionFiles[1], `${readFileSync(instructionFiles[1], 'utf8')}\n${CONSTITUTION_START}\n`);
+    assert.throws(
+      () => planConstitutionInstall(instructionFiles[1]),
+      /malformed Sylphx constitution markers/,
+    );
+    writeFileSync(instructionFiles[1], firstInstructions[1]);
+
+    runWithEnvironment(['clear', '--agent', 'all', '--quiet'], environment);
+    for (const [index, file] of instructionFiles.entries()) {
+      assert.equal(readFileSync(file, 'utf8'), `# Local runtime note ${index + 1}\n\nPreserve this text.\n`);
+      assert.equal(existsSync(path.join(path.dirname(file), 'skills', 'engineering-standard')), false);
+    }
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('help is read-only and never falls through to installation', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-help-'));
+  try {
+    const result = runWithEnvironment(['--help'], {
+      SYLPHX_SKILLS_HOME: sandbox,
+      CODEX_HOME: path.join(sandbox, '.codex'),
+    });
+    assert.match(result.stdout, /sylphx-skills install/);
+    assert.equal(existsSync(path.join(sandbox, '.codex')), false);
+    assert.equal(existsSync(path.join(sandbox, '.sylphx-skills')), false);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('agent install requires one explicit native runtime and rejects custom destinations', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-install-target-'));
+  const environment = {
+    ...process.env,
+    SYLPHX_SKILLS_HOME: sandbox,
+    CODEX_HOME: path.join(sandbox, '.codex'),
+  };
+  try {
+    const implicit = spawnSync(process.execPath, [cli, 'install'], {
+      cwd: root,
+      encoding: 'utf8',
+      env: environment,
+    });
+    assert.equal(implicit.status, 1);
+    assert.match(implicit.stderr, /install requires --agent/);
+    assert.equal(existsSync(path.join(sandbox, '.claude')), false);
+    assert.equal(existsSync(path.join(sandbox, '.grok')), false);
+
+    const custom = spawnSync(process.execPath, [cli, 'install', '--dest', path.join(sandbox, 'custom')], {
+      cwd: root,
+      encoding: 'utf8',
+      env: environment,
+    });
+    assert.equal(custom.status, 1);
+    assert.match(custom.stderr, /custom destinations support Skills sync only/);
+    assert.equal(existsSync(path.join(sandbox, 'custom')), false);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('agent install fails closed when the native runtime home is a symbolic link', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-install-home-link-'));
+  const actualHome = path.join(sandbox, 'actual-codex-home');
+  const codexHome = path.join(sandbox, '.codex');
+  try {
+    mkdirSync(actualHome);
+    symlinkSync(actualHome, codexHome, 'dir');
+    const result = spawnSync(process.execPath, [cli, 'install', '--agent', 'codex'], {
+      cwd: root,
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        SYLPHX_SKILLS_HOME: sandbox,
+        CODEX_HOME: codexHome,
+      },
+    });
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /non-regular runtime home/);
+    assert.equal(existsSync(path.join(actualHome, 'AGENTS.md')), false);
+    assert.equal(existsSync(path.join(actualHome, 'skills')), false);
   } finally {
     rmSync(sandbox, { recursive: true, force: true });
   }

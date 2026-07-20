@@ -40,6 +40,11 @@ superseded by [ADR-0003](ADR-0003-configurable-scheduled-synchronization.md).
 The boundary remains a repository-owned adapter with no hosted service, token,
 or Control Plane dependency.
 
+The command-first user interface is superseded by
+[ADR-20260720](ADR-20260720-agent-owned-installation-and-constitution.md).
+The same adapter remains the deterministic implementation mechanism, while the
+receiving agent owns installation and fresh-context verification.
+
 ## Consequences
 
 - Public users can inspect, install, and reuse Sylphx working methods.
