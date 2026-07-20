@@ -30,7 +30,14 @@ effective readback, not a folder-count claim.
    unrelated instructions. Invoke its quiet `install` operation for the current
    runtime from the exact checkout. Bind the resolved commit through
    `SYLPHX_SKILLS_COMMIT_SHA` when the execution mechanism strips Git metadata.
-   The user does not run it.
+   The user does not run it. An older Sylphx installation may still project its
+   constitution from the retired Doctrine runtime. The adapter reports that as
+   a typed migration and replaces only an exact, structurally recognized
+   per-user legacy link or Claude import with a regular managed instruction
+   file. It preserves local notes and leaves the retired target untouched.
+   Owner and permission bits are also fenced where the operating system exposes
+   authoritative POSIX metadata. Arbitrary links, imports, unsafe metadata, or
+   content remain fail-closed.
 4. If that adapter cannot execute, use the runtime's documented native Skill
    installation and persistent-instruction mechanisms to achieve the same
    result. Do not invent unsupported files, silently overwrite instructions,
@@ -93,7 +100,10 @@ effective readback, not a folder-count claim.
   native configuration. OAuth consent and credentials remain owned by the
   runtime and identity provider.
 - Do not load Doctrine, Mission Control, generated projections, or any retired
-  repository as current instruction authority.
+  repository as current instruction authority. A bounded installer migration
+  may read the exact retired Doctrine projection solely to preserve local notes
+  and remove that runtime dependency; it does not admit Doctrine as an
+  authority.
 
 ## Completion response
 

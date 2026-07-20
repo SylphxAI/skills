@@ -36,7 +36,15 @@ or product state. Those capabilities have separate authenticated owners.
    marker-owned, and reconciled without replacing unrelated instructions.
 4. Installation preserves unrelated Skills, prompts, settings, and data. It
    fails closed on symbolic links, malformed ownership markers, concurrent
-   changes, unsupported persistence, or unsafe permission repair.
+   changes, unsupported persistence, or unsafe permission repair. The sole
+   symlink/import migration exception is an exact per-user retired Doctrine
+   projection whose path, legacy Sylphx constitution shape, size, and content
+   snapshot all validate. POSIX ownership and permission bits are additionally
+   fenced where the host exposes authoritative metadata; Windows ACLs are not
+   misclassified through synthetic POSIX mode bits. The adapter replaces only the
+   runtime instruction entry with a regular managed file, preserves local
+   notes, leaves the retired target untouched, and reports the pre-install
+   state as `retired_doctrine_projection`. Unknown legacy shapes fail closed.
 5. Completion requires machine-readable exact-candidate status, an idempotent
    second reconciliation, and a fresh-context behavior check. A context loaded
    before installation is not evidence. Source availability, bytes on disk,
@@ -67,11 +75,15 @@ or product state. Those capabilities have separate authenticated owners.
   or credentials to this repository.
 - MCP and OAuth onboarding can evolve independently without turning a public
   instruction repository into an authorization authority.
+- Existing Sylphx developer homes converge away from the retired Doctrine
+  runtime without granting the installer generic symlink-following authority.
 
 ## Verification
 
 - Unit-test install, update, idempotency, malformed ownership, unrelated-file
-  preservation, status, and clear behavior for every supported target.
+  preservation, status, clear behavior, bounded retired-projection migration,
+  arbitrary-link rejection, and concurrent-target-change fencing for every
+  supported target.
 - Validate catalog and package bytes with the repository integrity suite.
 - Package the public artifact and prove that `INSTALL.md`, the adapter, the
   constitution, and all Skills are present.
