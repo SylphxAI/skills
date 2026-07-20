@@ -63,6 +63,10 @@ or product state. Those capabilities have separate authenticated owners.
    an isolated test identity or runtime-native short-lived/device flow. A
    personal long-lived credential must not be baked into an image or exposed
    to the evaluated agent.
+9. The always-on constitution names Doctrine and Mission Control as retired
+   historical lineage. They cannot be inferred or selected as current static or
+   live authority merely because old files, imports, aliases, or memories remain
+   reachable during convergence.
 
 ## Consequences
 

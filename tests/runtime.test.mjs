@@ -208,6 +208,15 @@ test('agent override targets Codex, Claude, and Grok without upstream tooling', 
   }
 });
 
+test('compact constitution explicitly retires predecessor authorities', () => {
+  const constitution = readFileSync(path.join(root, 'runtime', 'constitution.md'), 'utf8');
+  assert.match(constitution, /Doctrine and Mission Control are retired historical lineage\./);
+  assert.match(
+    constitution,
+    /must not be\s+loaded, selected, written, or inferred as current instruction or live-state\s+authority\./,
+  );
+});
+
 test('agent install converges native Skills and managed constitutions without owning user instructions', () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-agent-install-'));
   const codexHome = path.join(sandbox, '.codex');
