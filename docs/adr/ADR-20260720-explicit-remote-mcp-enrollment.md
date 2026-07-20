@@ -6,12 +6,12 @@ owners:
 superseded_by: ADR-20260720-agent-owned-installation-and-constitution
 ---
 
-# ADR-20260720: Enroll remote Control Plane only from an explicit deployment declaration
+# ADR-20260720: Enroll remote Enact only from an explicit deployment declaration
 
 > Superseded by
 > [ADR-20260720: Make installation an agent-owned outcome](ADR-20260720-agent-owned-installation-and-constitution.md),
 > which records the Sylphx-first SaaS product boundary: the canonical resource
-> is `https://cp.sylphx.com/api/mcp` and every complete install enrolls it.
+> is `https://enact.sylphx.com/api/mcp` and every complete install enrolls it.
 
 ## Context
 
@@ -29,9 +29,9 @@ audience, scope, and revocation controls.
 
 ## Decision
 
-1. Control Plane integration is applicable only when the current environment
+1. Enact integration is applicable only when the current environment
    exposes an existing remote entry or the non-secret
-   `SYLPHX_CONTROL_PLANE_MCP_URL` declaration. Absence is `not_applicable`, not
+   `SYLPHX_ENACT_MCP_URL` declaration. Absence is `not_applicable`, not
    an instruction-installation failure.
 2. The canonical endpoint is remote HTTPS `/api/mcp`. HTTP is accepted only on
    loopback for isolated evaluation. Userinfo, query strings, fragments,
@@ -66,7 +66,7 @@ audience, scope, and revocation controls.
 - Dead or spoofed endpoints fail before runtime configuration is changed.
 - OAuth support differences stay visible instead of being hidden by insecure
   long-lived tokens.
-- A Control Plane deployment must publish correct protected-resource metadata
+- A Enact deployment must publish correct protected-resource metadata
   and inject or otherwise declare its public endpoint to managed agents.
 
 ## Verification
@@ -75,5 +75,5 @@ audience, scope, and revocation controls.
   transport, runtime-command, no-secret, and native-command failure boundaries.
 - Exercise enrollment against an isolated RFC 9728 fixture for every supported
   runtime.
-- Run authenticated fresh-context discovery against a deployed Control Plane
+- Run authenticated fresh-context discovery against a deployed Enact
   before claiming a specific deployment or organization is adopted.

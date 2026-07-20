@@ -11,11 +11,11 @@ const server = http.createServer((request, response) => {
       resource: `${base}/api/mcp`,
       authorization_servers: [base],
       scopes_supported: [
-        'cp.observe',
-        'cp.propose',
-        'cp.claim',
-        'cp.checkpoint',
-        'cp.evidence',
+        'enact.observe',
+        'enact.propose',
+        'enact.claim',
+        'enact.checkpoint',
+        'enact.evidence',
       ],
       mcp: {
         transport: 'streamable_http',
@@ -48,7 +48,7 @@ const server = http.createServer((request, response) => {
           id: payload.id,
           result: {
             protocolVersion: '2025-03-26',
-            serverInfo: { name: 'control-plane-fixture', version: '1.0.0' },
+            serverInfo: { name: 'enact-fixture', version: '1.0.0' },
             capabilities: { tools: {} },
             instructions: 'Fixture only: claims own work, not files.',
           },

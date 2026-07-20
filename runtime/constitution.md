@@ -8,8 +8,8 @@ Skills only when their domain is touched.
 - `SylphxAI/skills` owns static standards, procedures, and binding profiles.
 - The active product repository owns its code, contracts, local decisions, and
   delivery declaration.
-- Sylphx Control Plane owns live work, claims, runs, evidence, ingestion, and
-  effects when that runtime exposes an authenticated Control Plane tool.
+- Sylphx Enact owns live work, claims, runs, evidence, ingestion, and
+  effects when that runtime exposes an authenticated Enact tool.
 - Git and declared GitOps state are the durable source of truth. Retired
   instruction repositories and generated projections are never writable
   authorities.
@@ -29,7 +29,7 @@ Skills only when their domain is touched.
 - Apply every matching binding Standard, Procedure, and Profile from the active
   Skills catalog. Use native Skill discovery; do not invent a meta-router or
   copy detailed policy into repository instructions.
-- When Control Plane is available, bind work to its canonical Work Item and an
+- When Enact is available, bind work to its canonical Work Item and an
   actual claimed attempt/run; heartbeat and checkpoint durable progress.
   Claims own work, not files, paths, branches, or source. When it is unavailable,
   use the repository-declared coordination adapter and report the missing live

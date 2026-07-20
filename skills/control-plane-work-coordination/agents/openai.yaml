@@ -1,4 +1,0 @@
-interface:
-  display_name: "Control Plane Work Coordination"
-  short_description: "Connect agent work to the Control Plane ledger"
-  default_prompt: "Use $control-plane-work-coordination to connect this workflow to Control Plane work, evidence, and provider observations."

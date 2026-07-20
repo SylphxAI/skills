@@ -102,14 +102,14 @@ test('authored injection boundary cases name valid Skills and one owner per arti
   assert.deepEqual([...seenKinds].sort(), [...allowedKinds].sort());
 });
 
-test('portable work semantics and the Control Plane adapter stay separate', () => {
+test('portable work semantics and the Enact adapter stay separate', () => {
   const portable = readFileSync(
     new URL('../skills/work-coordination-standard/references/full-standard.md', import.meta.url),
     'utf8',
   );
-  const adapter = skill('control-plane-work-coordination');
-  assert.doesNotMatch(portable, /Control Plane|Sylphx|work\.start|fleet\.activity/);
-  assert.match(adapter, /Control Plane/);
+  const adapter = skill('enact-work-coordination');
+  assert.doesNotMatch(portable, /Enact|Sylphx|work\.start|fleet\.activity/);
+  assert.match(adapter, /Enact/);
   assert.match(adapter, /work-coordination-standard/);
 });
 

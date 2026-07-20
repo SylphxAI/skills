@@ -58,9 +58,9 @@ The portfolio adds these independently requested methods:
 - `probabilistic-forecasting`
 - `causal-inference-analysis`
 
-`control-plane-work-coordination` is a product adapter. Portable claim, lease,
+`enact-work-coordination` is a product adapter. Portable claim, lease,
 checkpoint, handoff, and recovery semantics remain in
-`work-coordination-standard`; Control Plane API and product vocabulary do not
+`work-coordination-standard`; Enact API and product vocabulary do not
 become universal method law.
 
 Research-backed subordinate methods—including Bayesian updating, value of
