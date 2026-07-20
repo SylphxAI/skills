@@ -100,10 +100,18 @@ function runtimeDefinitions() {
   };
 }
 
-export function resolveTargets({ args = argv, homedir = home } = {}) {
+export function resolveTargets({ args = argv, homedir = home, requireExplicit = false } = {}) {
+  const hasDestination = args.includes('--dest');
+  const hasAgent = args.includes('--agent');
+  if (hasDestination && hasAgent) {
+    throw new Error('Choose exactly one target mode: --agent for a native runtime or --dest for a custom path');
+  }
   const custom = [];
   for (let index = 0; index < args.length; index += 1) {
-    if (args[index] === '--dest' && args[index + 1]) {
+    if (args[index] === '--dest') {
+      if (!args[index + 1] || args[index + 1].startsWith('--')) {
+        throw new Error('--dest requires a path');
+      }
       const input = args[index + 1].replace(/^~(?=\/|$)/, homedir);
       custom.push({ runtime: 'custom', path: path.resolve(input) });
       index += 1;
@@ -112,16 +120,7 @@ export function resolveTargets({ args = argv, homedir = home } = {}) {
   if (custom.length) return custom;
 
   const definitions = runtimeDefinitions();
-  const requested = [];
-  for (let index = 0; index < args.length; index += 1) {
-    if (args[index] === '--agent' && args[index + 1]) {
-      requested.push(...args[index + 1].split(',').map((item) => item.trim().toLowerCase()).filter(Boolean));
-      index += 1;
-    }
-  }
-  const expanded = requested.includes('all') ? ['codex', 'claude', 'grok'] : requested;
-  const invalid = expanded.filter((name) => !Object.hasOwn(definitions, name));
-  if (invalid.length) throw new Error(`Unsupported agent: ${invalid.join(', ')}. Supported: codex, claude, grok, all.`);
+  const expanded = requestedAgents(args, { required: requireExplicit });
 
   const selected = expanded.length
     ? [...new Set(expanded)]
@@ -129,22 +128,28 @@ export function resolveTargets({ args = argv, homedir = home } = {}) {
       .filter(([, skillRoot]) => existsSync(path.dirname(skillRoot)))
       .map(([name]) => name);
 
-  // A fresh machine should not require a destination decision. Creating both
-  // roots is harmless and lets whichever runtime is installed next discover
-  // the same packages immediately.
+  // Read-only discovery may inspect existing runtimes and, when no runtime home
+  // exists yet, report all supported targets. Mutation callers always set
+  // requireExplicit and never reach this fallback.
   const automatic = selected.length ? selected : ['codex', 'claude', 'grok'];
   return automatic.map((runtime) => ({ runtime, path: definitions[runtime] }));
 }
 
-function requestedAgents(args = argv) {
+function requestedAgents(args = argv, { required = false } = {}) {
   const names = [];
   for (let index = 0; index < args.length; index += 1) {
-    if (args[index] === '--agent' && args[index + 1]) {
+    if (args[index] === '--agent') {
+      if (!args[index + 1] || args[index + 1].startsWith('--')) {
+        throw new Error('--agent requires codex, claude, grok, or all');
+      }
       names.push(...args[index + 1].split(',').map((item) => item.trim().toLowerCase()).filter(Boolean));
       index += 1;
     }
   }
-  const expanded = names.includes('all') || !names.length ? ['codex', 'claude', 'grok'] : names;
+  if (required && !names.length) {
+    throw new Error('Mutation requires --agent codex, claude, grok, or all (or an explicit --dest where supported)');
+  }
+  const expanded = names.includes('all') ? ['codex', 'claude', 'grok'] : names;
   const invalid = expanded.filter((name) => !['codex', 'claude', 'grok'].includes(name));
   if (invalid.length) throw new Error(`Unsupported agent: ${invalid.join(', ')}. Supported: codex, claude, grok, all.`);
   return [...new Set(expanded)];
@@ -357,14 +362,18 @@ function refreshAutoSyncInstallation() {
   // must not silently turn uncommitted runtime code into the auto-sync owner.
   if (!process.env.SYLPHX_SKILLS_COMMIT_SHA || !config?.enabled || config.owner !== 'SylphxAI/skills') return;
   const currentHomes = runtimeHomes();
-  const agents = [...new Set(config.agents || [])];
-  // Existing installations add newly detected runtimes without a second CLI.
-  if (existsSync(currentHomes.grokHome) && !agents.includes('grok')) {
-    syncTarget({ runtime: 'grok', path: path.join(currentHomes.grokHome, 'skills') });
-    agents.push('grok');
-  }
+  // Pre-selection configs historically meant all supported runtimes. Once a
+  // selection exists it is immutable unless an explicit enable command changes
+  // it; detecting another runtime must never expand mutation scope.
+  const agents = Array.isArray(config.agents) && config.agents.length
+    ? requestedAgents(['--agent', config.agents.join(',')], { required: true })
+    : ['codex', 'claude', 'grok'];
   config.agents = agents;
-  config.homes = { ...config.homes, ...currentHomes };
+  config.homes = {
+    codexHome: config.homes?.codexHome || currentHomes.codexHome,
+    claudeHome: config.homes?.claudeHome || currentHomes.claudeHome,
+    grokHome: config.homes?.grokHome || currentHomes.grokHome,
+  };
   const needsSchedulerMigration = config.mode !== 'interval-scheduler';
   config.mode = 'interval-scheduler';
   config.intervalMinutes = Number(config.intervalMinutes) || 10;
@@ -385,7 +394,7 @@ function refreshAutoSyncInstallation() {
 }
 
 function sync() {
-  const targets = resolveTargets();
+  const targets = resolveTargets({ requireExplicit: true });
   const result = targets.map((target) => ({ target, manifest: syncTarget(target) }));
   refreshAutoSyncInstallation();
   if (jsonOutput) console.log(JSON.stringify({ command: 'sync', catalogDigest: `sha256:${catalogDigest}`, targets: result }, null, 2));
@@ -485,7 +494,7 @@ function status() {
 }
 
 function clear() {
-  const targets = resolveTargets();
+  const targets = resolveTargets({ requireExplicit: true });
   const result = [];
   for (const target of targets) {
     withTargetGenerationLock(target.path, (lockToken) => {
@@ -538,7 +547,7 @@ function testHoldEnableAfterReconcile() {
 function enableAutoSync() {
   if (argv.includes('--dest')) throw new Error('auto-sync uses native runtime roots; --dest is not supported');
   const intervalMinutes = parseIntervalMinutes(argv);
-  const agents = requestedAgents();
+  const agents = requestedAgents(argv, { required: true });
   const pathEnv = process.env.PATH || '/usr/local/bin:/usr/bin:/bin';
   const config = {
     schemaVersion: 1,
@@ -575,7 +584,7 @@ function enableAutoSync() {
       // A pre-1.4 source may briefly refresh its old hooks during the first exact
       // sync. Remove them after convergence so this command's scheduler is the only
       // recurring owner.
-      uninstallRuntimeHooks({ agents: ['codex', 'claude', 'grok'], homes: runtimeHomes() });
+      uninstallRuntimeHooks({ agents, homes: runtimeHomes() });
       installScheduler({
         platform: schedulerPlatform,
         home,
@@ -617,11 +626,12 @@ function autoSyncStatus() {
     mode: config?.mode || null,
     enabled: Boolean(config?.enabled) && config?.mode === 'interval-scheduler',
     intervalMinutes: config?.intervalMinutes || null,
+    agents: Array.isArray(config?.agents) ? config.agents : null,
     remote: config?.remote || null,
     managedRepository: config?.repository || null,
   };
   if (jsonOutput) console.log(JSON.stringify(result, null, 2));
-  else log(`auto-sync: ${result.enabled ? `every ${result.intervalMinutes} minutes` : 'disabled'}`);
+  else log(`auto-sync: ${result.enabled ? `every ${result.intervalMinutes} minutes for ${(result.agents || []).join(', ') || 'legacy all-runtime selection'}` : 'disabled'}`);
 }
 
 function argumentValue(name) {
@@ -652,12 +662,13 @@ async function integration() {
 }
 
 function help() {
-  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills install --agent codex|claude|grok|all\n  sylphx-skills sync [--agent codex|claude|grok|all] [--dest PATH]\n  sylphx-skills status [--json]\n  sylphx-skills clear\n  sylphx-skills integration discover [--url HTTPS_URL] [--json]\n  sylphx-skills integration enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n  sylphx-skills auto-sync enable [--interval 10m]\n  sylphx-skills auto-sync disable|status\n\nInstall is the agent-facing operation and requires an explicit native runtime;\nsync remains a compatible low-level operation. Native runtime targets receive\nboth the complete Skill catalog and compact constitution. Control Plane MCP\nenrollment is optional and requires an explicit non-secret deployment URL.`);
+  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills install --agent codex|claude|grok|all\n  sylphx-skills sync (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills status [--agent codex|claude|grok|all | --dest PATH] [--json]\n  sylphx-skills clear (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills integration discover [--url HTTPS_URL] [--json]\n  sylphx-skills integration enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n  sylphx-skills auto-sync enable --agent codex|claude|grok|all [--interval 10m]\n  sylphx-skills auto-sync disable|status\n\nInstall is the agent-facing operation and requires an explicit native runtime.\nEvery mutating native operation requires an explicit runtime selection; no\ndetected runtime is mutated by default. Native targets receive both the complete\nSkill catalog and compact constitution. Control Plane MCP enrollment is optional\nand requires an explicit non-secret deployment URL.`);
 }
 
 async function main() {
   if (argv.some((item) => ['help', '--help', '-h'].includes(item))) return help();
-  const command = argv.find((item) => !item.startsWith('-')) || 'sync';
+  const command = argv.find((item) => !item.startsWith('-'));
+  if (!command) return help();
   if (command === 'install') return install();
   if (command === 'sync') return sync();
   if (command === 'status') return status();

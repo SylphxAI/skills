@@ -78,6 +78,16 @@ or product state. Those capabilities have separate authenticated owners.
     shipped in the public artifact, excluded from `catalog.json`, and forbidden
     from duplicating the installation contract. Its only job is to make the
     repository root self-describing to native Skill installers.
+12. Before mutation, the agent binds the supplied canonical repository to an
+    exact commit and executes only the adapter inside that checkout. A cached,
+    path-discovered, temporary, historical, previously managed, or unrelated
+    checkout is not a fallback authority. Native `install`, `sync`, `clear`,
+    and scheduled-update enablement require an explicit runtime selector;
+    custom sync and clear require an explicit destination. Runtime detection is
+    read-only evidence and never expands a persisted selection. The command
+    with no operation is read-only help. Runtime scope and default-command
+    behavior are executable fail-closed boundaries, not prompt-only guidance;
+    exact locator binding is additionally checked by source/readback evidence.
 
 ## Consequences
 
@@ -92,6 +102,8 @@ or product state. Those capabilities have separate authenticated owners.
   instruction repository into an authorization authority.
 - Existing Sylphx developer homes converge away from the retired Doctrine
   runtime without granting the installer generic symlink-following authority.
+- An agent cannot accidentally update another runtime merely because that
+  runtime is installed or because a stale checkout remains discoverable.
 
 ## Verification
 

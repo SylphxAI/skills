@@ -26,6 +26,12 @@ effective readback, not a folder-count claim.
    repository `https://github.com/SylphxAI/skills`. This file is the
    self-contained operational contract; consult other repository documents or
    runtime help only when needed to resolve a conflict or capability boundary.
+   Before any mutation, prove that the adapter being executed is inside that
+   exact checkout and that its Git remote resolves to the supplied canonical
+   repository. Never substitute an executable discovered through `PATH`, a
+   package-manager cache, an old managed repository, a temporary or historical
+   checkout, or an unrelated clone. If the supplied source cannot be resolved
+   and bound exactly, return a typed block without changing any runtime.
 2. Identify the current runtime and its native home. Honor its native home
    environment variable and `SYLPHX_SKILLS_HOME` when set. Do not scan or
    mutate unrelated users or runtime homes. Never infer success from another
@@ -44,6 +50,10 @@ effective readback, not a folder-count claim.
    Owner and permission bits are also fenced where the operating system exposes
    authoritative POSIX metadata. Arbitrary links, imports, unsafe metadata, or
    content remain fail-closed.
+   Every mutating adapter operation must name the receiving runtime explicitly;
+   discovery of other installed runtimes never grants permission to change
+   them. Use `all` only when the user explicitly requested every supported
+   runtime.
    Do not substitute a per-Skill download loop for this operation. Presence of
    all `SKILL.md` files without the managed manifest and current constitution is
    a typed partial installation, not success.
