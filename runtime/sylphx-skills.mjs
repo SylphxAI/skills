@@ -466,6 +466,7 @@ function status() {
       catalogDigest: manifest?.catalogDigest || null,
       sourceCommit: manifest?.sourceCommit ?? null,
       packageVersion: manifest?.packageVersion || null,
+      synchronizedAt: manifest?.synchronizedAt || null,
       generation: managedCurrentGeneration(target.path),
       packagesCurrent,
       profilesCurrent,

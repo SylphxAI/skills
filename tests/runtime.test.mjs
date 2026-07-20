@@ -231,6 +231,7 @@ test('agent install converges native Skills and managed constitutions without ow
     assert.equal(installed.targets.every((target) => target.constitution.current), true);
     assert.equal(installed.targets.every((target) => target.installed === catalog.count), true);
     assert.equal(installed.targets.every((target) => target.sourceCommit === exactLocalSourceCommit()), true);
+    assert.equal(installed.targets.every((target) => Number.isFinite(Date.parse(target.synchronizedAt))), true);
     const firstManifests = installed.targets.map((target) => (
       JSON.parse(readFileSync(path.join(target.path, '.sylphx-skills.json'), 'utf8'))
     ));
@@ -239,8 +240,18 @@ test('agent install converges native Skills and managed constitutions without ow
     assert.deepEqual(instructionFiles.map((file) => readFileSync(file, 'utf8')), firstInstructions);
     const second = JSON.parse(runWithEnvironment(['status', '--agent', 'all', '--json'], environment).stdout);
     assert.deepEqual(
-      second.targets.map(({ runtime, generation, sourceCommit }) => ({ runtime, generation, sourceCommit })),
-      installed.targets.map(({ runtime, generation, sourceCommit }) => ({ runtime, generation, sourceCommit })),
+      second.targets.map(({ runtime, generation, sourceCommit, synchronizedAt }) => ({
+        runtime,
+        generation,
+        sourceCommit,
+        synchronizedAt,
+      })),
+      installed.targets.map(({ runtime, generation, sourceCommit, synchronizedAt }) => ({
+        runtime,
+        generation,
+        sourceCommit,
+        synchronizedAt,
+      })),
     );
     second.targets.forEach((target, index) => {
       const manifest = JSON.parse(readFileSync(path.join(target.path, '.sylphx-skills.json'), 'utf8'));
