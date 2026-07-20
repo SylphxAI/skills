@@ -768,6 +768,35 @@ test('Control Plane MCP enrollment uses runtime-native remote transports without
   assert.equal(configured.disposition, 'configured_authentication_required');
   assert.equal(configured.configuration, 'created');
 
+  let readbacks = 0;
+  const committedDespiteNonzero = configureControlPlaneMcp('codex', discovery, {
+    run: (_executable, args) => {
+      if (args[1] === 'get') {
+        readbacks += 1;
+        if (readbacks === 1) {
+          return { status: 1, stdout: '', stderr: "No MCP server named 'sylphx-control-plane' found." };
+        }
+        return {
+          status: 0,
+          stdout: JSON.stringify({
+            enabled: true,
+            transport: {
+              type: 'streamable_http',
+              url: endpoint,
+              bearer_token_env_var: null,
+              http_headers: null,
+              env_http_headers: null,
+            },
+          }),
+          stderr: '',
+        };
+      }
+      return { status: 1, stdout: '', stderr: 'native login bootstrap pending' };
+    },
+  });
+  assert.equal(committedDespiteNonzero.configuration, 'created_after_nonzero_readback');
+  assert.equal(readbacks, 2);
+
   const grok = configureControlPlaneMcp('grok', discovery, {
     run: (_executable, args) => (
       args[1] === 'list'
