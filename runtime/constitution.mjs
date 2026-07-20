@@ -1,10 +1,11 @@
 import { createHash, randomBytes } from 'node:crypto';
 import {
-  existsSync,
   lstatSync,
   mkdirSync,
   readFileSync,
+  readlinkSync,
   renameSync,
+  rmSync,
   writeFileSync,
 } from 'node:fs';
 import path from 'node:path';
@@ -12,7 +13,11 @@ import { fileURLToPath } from 'node:url';
 
 export const CONSTITUTION_START = '<!-- sylphx-managed-constitution:start -->';
 export const CONSTITUTION_END = '<!-- sylphx-managed-constitution:end -->';
+export const RETIRED_DOCTRINE_MIGRATION = 'retired_doctrine_projection';
 export const constitutionSourcePath = fileURLToPath(new URL('./constitution.md', import.meta.url));
+
+const LEGACY_LOCAL_NOTES_MARKER = '<!-- local runtime notes may follow this block -->';
+const MAX_LEGACY_INSTRUCTION_BYTES = 8 * 1024;
 
 function occurrences(value, needle) {
   const indexes = [];
@@ -26,6 +31,162 @@ function occurrences(value, needle) {
   return indexes;
 }
 
+function lstatIfPresent(file) {
+  try {
+    return lstatSync(file);
+  } catch (error) {
+    if (error?.code === 'ENOENT') return null;
+    throw error;
+  }
+}
+
+function assertRegularRuntimeHome(file) {
+  const runtimeHome = path.dirname(file);
+  const homeStat = lstatIfPresent(runtimeHome);
+  if (homeStat && (!homeStat.isDirectory() || homeStat.isSymbolicLink())) {
+    throw new Error(`Refusing instruction file under non-regular runtime home: ${runtimeHome}`);
+  }
+}
+
+function retiredDoctrineInstructionPath(file) {
+  return path.join(path.dirname(path.dirname(file)), '.doctrine-runtime-current', 'templates', 'AGENTS.md');
+}
+
+function validateLegacyConstitution(content, target) {
+  const markerIndexes = occurrences(content, LEGACY_LOCAL_NOTES_MARKER);
+  if (
+    !content.startsWith('# Sylphx Agent Runtime Constitution\n')
+    || !content.includes('**Static instructions SSOT:** `SylphxAI/skills`')
+    || !content.includes('**Live fleet / work / ingestion / effects:** `SylphxAI/control-plane`')
+    || markerIndexes.length !== 1
+    || content.includes(CONSTITUTION_START)
+    || content.includes(CONSTITUTION_END)
+  ) {
+    throw new Error(`Refusing unrecognized retired Doctrine instruction projection: ${target}`);
+  }
+  return content.slice(markerIndexes[0] + LEGACY_LOCAL_NOTES_MARKER.length).trimStart();
+}
+
+function validateLegacyTarget(target, ownerStat) {
+  const targetStat = lstatIfPresent(target);
+  if (!targetStat || !targetStat.isFile() || targetStat.isSymbolicLink()) {
+    throw new Error(`Refusing non-regular retired Doctrine instruction target: ${target}`);
+  }
+  if (targetStat.size > MAX_LEGACY_INSTRUCTION_BYTES) {
+    throw new Error(`Refusing oversized retired Doctrine instruction target: ${target}`);
+  }
+  if ((targetStat.mode & 0o022) !== 0) {
+    throw new Error(`Refusing group/world-writable retired Doctrine instruction target: ${target}`);
+  }
+  if (ownerStat && ownerStat.uid !== targetStat.uid) {
+    throw new Error(`Refusing cross-owner retired Doctrine instruction target: ${target}`);
+  }
+  if (typeof process.getuid === 'function' && targetStat.uid !== process.getuid()) {
+    throw new Error(`Refusing retired Doctrine instruction target not owned by the current user: ${target}`);
+  }
+  const content = readFileSync(target, 'utf8');
+  const localNotes = validateLegacyConstitution(content, target);
+  return {
+    content,
+    localNotes,
+    snapshot: {
+      path: target,
+      dev: targetStat.dev,
+      ino: targetStat.ino,
+      uid: targetStat.uid,
+      mode: targetStat.mode,
+      size: targetStat.size,
+      contentDigest: constitutionDigest(content),
+    },
+  };
+}
+
+function legacyClaudeMapping(file, current, fileStat) {
+  if (path.basename(file) !== 'CLAUDE.md') return null;
+  const target = retiredDoctrineInstructionPath(file);
+  const prefix = `# Claude Code runtime mapping\n\n@${target}\n\n`;
+  if (!current.startsWith(prefix)) {
+    if (/(?:^|\n)@[^\n]*\.doctrine-runtime-current[\\/]/u.test(current)) {
+      throw new Error(`Refusing unrecognized retired Doctrine runtime mapping in ${file}`);
+    }
+    return null;
+  }
+  const legacy = validateLegacyTarget(target, fileStat);
+  return {
+    localNotes: current.slice(prefix.length),
+    migrationRequired: RETIRED_DOCTRINE_MIGRATION,
+    legacyTarget: legacy.snapshot,
+  };
+}
+
+function captureInstruction(file, { allowLegacySymlink = true } = {}) {
+  assertRegularRuntimeHome(file);
+  const stat = lstatIfPresent(file);
+  if (!stat) return { kind: 'missing', content: '', mode: 0o644 };
+  if (stat.isFile() && !stat.isSymbolicLink()) {
+    const content = readFileSync(file, 'utf8');
+    const mapping = legacyClaudeMapping(file, content, stat);
+    return {
+      kind: 'file',
+      content,
+      effectiveContent: mapping?.localNotes ?? content,
+      migrationRequired: mapping?.migrationRequired ?? null,
+      legacyTarget: mapping?.legacyTarget ?? null,
+      mode: stat.mode & 0o777,
+      dev: stat.dev,
+      ino: stat.ino,
+      uid: stat.uid,
+    };
+  }
+  if (stat.isSymbolicLink() && allowLegacySymlink) {
+    const expectedTarget = retiredDoctrineInstructionPath(file);
+    const linkTarget = readlinkSync(file);
+    const resolvedTarget = path.resolve(path.dirname(file), linkTarget);
+    if (resolvedTarget !== expectedTarget) {
+      throw new Error(`Refusing to modify non-regular instruction file: ${file}`);
+    }
+    const legacy = validateLegacyTarget(expectedTarget, stat);
+    return {
+      kind: 'legacy-symlink',
+      content: legacy.content,
+      effectiveContent: legacy.localNotes,
+      migrationRequired: RETIRED_DOCTRINE_MIGRATION,
+      legacyTarget: legacy.snapshot,
+      linkTarget,
+      mode: 0o644,
+      dev: stat.dev,
+      ino: stat.ino,
+      uid: stat.uid,
+    };
+  }
+  throw new Error(`Refusing to modify non-regular instruction file: ${file}`);
+}
+
+function sameSnapshot(expected, observed) {
+  if (expected.kind !== observed.kind) return false;
+  if (expected.kind === 'missing') return true;
+  if (
+    expected.content !== observed.content
+    || expected.dev !== observed.dev
+    || expected.ino !== observed.ino
+    || expected.uid !== observed.uid
+  ) return false;
+  if (expected.kind === 'legacy-symlink' && expected.linkTarget !== observed.linkTarget) return false;
+  const expectedLegacy = expected.legacyTarget;
+  const observedLegacy = observed.legacyTarget;
+  return (!expectedLegacy && !observedLegacy) || (
+    expectedLegacy
+    && observedLegacy
+    && expectedLegacy.path === observedLegacy.path
+    && expectedLegacy.dev === observedLegacy.dev
+    && expectedLegacy.ino === observedLegacy.ino
+    && expectedLegacy.uid === observedLegacy.uid
+    && expectedLegacy.mode === observedLegacy.mode
+    && expectedLegacy.size === observedLegacy.size
+    && expectedLegacy.contentDigest === observedLegacy.contentDigest
+  );
+}
+
 export function canonicalConstitution() {
   return readFileSync(constitutionSourcePath, 'utf8').trimEnd();
 }
@@ -37,27 +198,12 @@ export function constitutionDigest(source = canonicalConstitution()) {
 export function managedConstitutionBlock(source = canonicalConstitution()) {
   return [
     CONSTITUTION_START,
-    `source: https://github.com/SylphxAI/skills/blob/main/runtime/constitution.md`,
+    'source: https://github.com/SylphxAI/skills/blob/main/runtime/constitution.md',
     `content-digest: ${constitutionDigest(source)}`,
     '',
     source,
     CONSTITUTION_END,
   ].join('\n');
-}
-
-function assertRegularInstructionFile(file) {
-  const runtimeHome = path.dirname(file);
-  if (existsSync(runtimeHome)) {
-    const homeStat = lstatSync(runtimeHome);
-    if (!homeStat.isDirectory() || homeStat.isSymbolicLink()) {
-      throw new Error(`Refusing instruction file under non-regular runtime home: ${runtimeHome}`);
-    }
-  }
-  if (!existsSync(file)) return;
-  const stat = lstatSync(file);
-  if (!stat.isFile() || stat.isSymbolicLink()) {
-    throw new Error(`Refusing to modify non-regular instruction file: ${file}`);
-  }
 }
 
 function splitManagedBlock(current, file) {
@@ -79,55 +225,76 @@ function appendBlock(current, block) {
 }
 
 export function planConstitutionInstall(file, source = canonicalConstitution()) {
-  assertRegularInstructionFile(file);
-  const current = existsSync(file) ? readFileSync(file, 'utf8') : '';
-  const range = splitManagedBlock(current, file);
+  const snapshot = captureInstruction(file);
+  const active = snapshot.effectiveContent ?? snapshot.content;
+  const range = splitManagedBlock(active, file);
   const block = managedConstitutionBlock(source);
   const next = range
-    ? `${current.slice(0, range.start)}${block}${current.slice(range.end)}`
-    : appendBlock(current, block);
-  return { file, current, next, changed: current !== next };
+    ? `${active.slice(0, range.start)}${block}${active.slice(range.end)}`
+    : appendBlock(active, block);
+  return {
+    file,
+    current: snapshot.content,
+    next,
+    changed: snapshot.content !== next || snapshot.migrationRequired !== null,
+    migrationRequired: snapshot.migrationRequired ?? null,
+    snapshot,
+  };
 }
 
 export function planConstitutionRemoval(file) {
-  assertRegularInstructionFile(file);
-  const current = existsSync(file) ? readFileSync(file, 'utf8') : '';
+  const snapshot = captureInstruction(file);
+  if (snapshot.kind === 'legacy-symlink') {
+    return { file, current: snapshot.content, next: snapshot.content, changed: false, snapshot };
+  }
+  const current = snapshot.content;
   const range = splitManagedBlock(current, file);
-  if (!range) return { file, current, next: current, changed: false };
+  if (!range) return { file, current, next: current, changed: false, snapshot };
   const before = current.slice(0, range.start).trimEnd();
   const after = current.slice(range.end).trimStart();
   const next = before && after ? `${before}\n\n${after}` : `${before}${after}`;
-  return { file, current, next: next ? `${next.trimEnd()}\n` : '', changed: true };
+  return { file, current, next: next ? `${next.trimEnd()}\n` : '', changed: true, snapshot };
 }
 
 export function applyConstitutionPlan(plan) {
   if (!plan?.changed) return;
-  const observed = existsSync(plan.file) ? readFileSync(plan.file, 'utf8') : '';
-  if (observed !== plan.current) {
+  const observed = captureInstruction(plan.file);
+  if (!sameSnapshot(plan.snapshot, observed)) {
     throw new Error(`Instruction file changed during Sylphx constitution update: ${plan.file}`);
   }
   mkdirSync(path.dirname(plan.file), { recursive: true });
-  const mode = existsSync(plan.file) ? lstatSync(plan.file).mode & 0o777 : 0o644;
   const temporary = `${plan.file}.sylphx-${process.pid}-${randomBytes(4).toString('hex')}`;
-  writeFileSync(temporary, plan.next, { mode });
-  renameSync(temporary, plan.file);
+  try {
+    writeFileSync(temporary, plan.next, { mode: plan.snapshot.mode ?? 0o644 });
+    renameSync(temporary, plan.file);
+  } finally {
+    rmSync(temporary, { force: true });
+  }
 }
 
 export function inspectConstitution(file, source = canonicalConstitution()) {
   try {
-    assertRegularInstructionFile(file);
-    if (!existsSync(file)) {
-      return { path: file, installed: false, current: false, contentDigest: constitutionDigest(source), error: null };
+    const snapshot = captureInstruction(file);
+    if (snapshot.kind === 'missing') {
+      return {
+        path: file,
+        installed: false,
+        current: false,
+        contentDigest: constitutionDigest(source),
+        migrationRequired: null,
+        error: null,
+      };
     }
-    const current = readFileSync(file, 'utf8');
-    const range = splitManagedBlock(current, file);
+    const active = snapshot.effectiveContent ?? snapshot.content;
+    const range = splitManagedBlock(active, file);
     const expected = managedConstitutionBlock(source);
-    const actual = range ? current.slice(range.start, range.end) : null;
+    const actual = range ? active.slice(range.start, range.end) : null;
     return {
       path: file,
       installed: Boolean(range),
-      current: actual === expected,
+      current: actual === expected && snapshot.migrationRequired === null,
       contentDigest: constitutionDigest(source),
+      migrationRequired: snapshot.migrationRequired ?? null,
       error: null,
     };
   } catch (error) {
@@ -136,6 +303,7 @@ export function inspectConstitution(file, source = canonicalConstitution()) {
       installed: false,
       current: false,
       contentDigest: constitutionDigest(source),
+      migrationRequired: null,
       error: error.message,
     };
   }

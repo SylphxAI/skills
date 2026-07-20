@@ -23,6 +23,12 @@ constitution, preserves unrelated configuration, and verifies the result in a
 fresh context. The repository never asks the user to translate that outcome
 into shell commands.
 
+Updates also converge installations that still point at the retired Doctrine
+runtime. Only the exact same-user Sylphx legacy projection is eligible: the
+adapter preserves local notes, installs a regular digest-bound constitution,
+and does not alter the retired target. Unknown links and imports remain
+fail-closed.
+
 ---
 
 ## Why this exists
