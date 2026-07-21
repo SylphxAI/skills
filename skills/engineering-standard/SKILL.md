@@ -1,6 +1,6 @@
 ---
 name: engineering-standard
-description: "Engineering standard for durable product code. Use when designing, reviewing, refactoring, or migrating code architecture and architecture decisions, capabilities, features, DDD domain models, Clean/Hexagonal boundaries, functional cores, modules, contracts, storage, concurrency, security, tests, lints, architecture fitness functions, observability, or delivery-critical runtime paths."
+description: "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, functional cores, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary."
 ---
 # Engineering Standard
 
@@ -59,7 +59,10 @@ the security-design contract before or alongside implementation.
    code, schemas, and tests; do not create ceremonial ADRs.
 5. Apply the strongest relevant subset and prefer executable evidence over
    copying this body into product repositories.
-6. Procedure Skills should declare a catalog dependency on `engineering-standard` rather than restating predicates.
+6. Procedure Skills should name this standard as a composition handoff when
+   durable product code or runtime behavior changes. Native runtimes select
+   matching Skills from metadata; the catalog has no dependency primitive, so
+   do not invent one or restate these predicates in every procedure.
 
 ## Boundaries
 

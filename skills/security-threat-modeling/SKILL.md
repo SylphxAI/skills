@@ -58,6 +58,9 @@ Produce a **Threat Model and Security Design Contract** containing:
   required evidence;
 - residual-risk decisions, authority, owner, expiry/review trigger, and open
   evidence needs; and
+- artifact sensitivity, authorized audiences, storage/access/retention,
+  publication prohibition or redacted public derivative, and review of any
+  exploit-enabling detail; and
 - downstream implementation, assurance, testing, incident, or product-abuse
   handoffs without duplicating their artifacts.
 
@@ -71,6 +74,9 @@ Produce a **Threat Model and Security Design Contract** containing:
   encryption is not integrity, logging is not detection, and backup is not
   proven recovery.
 - Do not publish exploit-enabling detail beyond the authorized audience.
+- Treat the detailed threat model as protected by default. A public assurance
+  or learning document is a separate minimum derivative with its own audience,
+  redaction and disclosure review; repository visibility alone is not approval.
 - Do not call a control effective without implementation and verification
   evidence at the claimed boundary.
 - Do not create universal gates or infrastructure when a bounded design

@@ -130,7 +130,8 @@
     "kind": "abstention",
     "prompt": "Tell me the current branch name and whether the working tree has uncommitted files.",
     "expectedSkills": [],
-    "artifacts": []
+    "artifacts": [],
+    "coverageFor": ["operational-observability-review", "data-quality-observability-review"]
   },
   {
     "id": "explore-deliberate-decide-compound",
@@ -186,5 +187,299 @@
     "prompt": "Only rewrite the architecture narrative and folder README files; leave application code, contracts, and tests unchanged.",
     "expectedSkills": ["documentation-standard"],
     "artifacts": [{"artifact": "Documentation update", "owner": "documentation-standard"}]
+  },
+  {
+    "id": "operational-observability-service-correlation",
+    "kind": "positive",
+    "prompt": "Design how operators correlate requests, queue work, dependency latency, failures, alerts, runbooks, and recovery across this service.",
+    "expectedSkills": ["operational-observability-review"],
+    "artifacts": [{"artifact": "Operational Observability Contract", "owner": "operational-observability-review"}],
+    "tags": ["observability", "correlation", "slo"]
+  },
+  {
+    "id": "operational-observability-cardinality-cost",
+    "kind": "positive",
+    "prompt": "Create the complete logs, metrics, traces, sampling, high-cardinality, retention, cost-budget, alert and fault-validation operating model for the API.",
+    "expectedSkills": ["operational-observability-review"],
+    "artifacts": [{"artifact": "Operational Observability Contract", "owner": "operational-observability-review"}],
+    "tags": ["observability", "cost", "cardinality"]
+  },
+  {
+    "id": "operational-observability-public-operator-boundary",
+    "kind": "positive",
+    "prompt": "Audit which diagnostics belong in protected operator telemetry versus customer errors and public status, then define safe correlation and leakage tests.",
+    "expectedSkills": ["operational-observability-review"],
+    "artifacts": [{"artifact": "Operational Observability Contract", "owner": "operational-observability-review"}],
+    "tags": ["observability", "audience", "disclosure"]
+  },
+  {
+    "id": "operational-observability-cantonese",
+    "kind": "positive",
+    "prompt": "幫我完整設計服務嘅 logs、metrics、traces、SLO、告警、dashboard、故障注入同埋 operator debug 流程，但內部 topology 唔可以流入公開 API。",
+    "expectedSkills": ["operational-observability-review"],
+    "artifacts": [{"artifact": "Operational Observability Contract", "owner": "operational-observability-review"}],
+    "tags": ["observability", "multilingual"]
+  },
+  {
+    "id": "operational-observability-customer-telemetry-product",
+    "kind": "compound",
+    "prompt": "Design an observability product where each tenant can inspect only its own traces and service health while operators retain richer protected evidence.",
+    "expectedSkills": ["operational-observability-review", "security-threat-modeling"],
+    "artifacts": [
+      {"artifact": "Operational Observability Contract", "owner": "operational-observability-review"},
+      {"artifact": "Tenant telemetry Threat Model and Security Design Contract", "owner": "security-threat-modeling"}
+    ],
+    "tags": ["observability", "tenant", "customer-projection"]
+  },
+  {
+    "id": "operational-observability-short-ambiguous",
+    "kind": "positive",
+    "prompt": "We are blind when production slows down; design what operators need to detect, explain, act, and prove recovery.",
+    "expectedSkills": ["operational-observability-review"],
+    "artifacts": [{"artifact": "Operational Observability Contract", "owner": "operational-observability-review"}],
+    "tags": ["observability", "short", "ambiguous"]
+  },
+  {
+    "id": "operational-observability-correction",
+    "kind": "positive",
+    "prompt": "No, I do not mean product funnel analytics; I mean service health, traces, SLOs, alerts and protected operator diagnosis.",
+    "expectedSkills": ["operational-observability-review"],
+    "artifacts": [{"artifact": "Operational Observability Contract", "owner": "operational-observability-review"}],
+    "tags": ["observability", "correction"]
+  },
+  {
+    "id": "operational-observability-agent-runtime-compound",
+    "kind": "compound",
+    "prompt": "Design the agent execution trace model and the surrounding service SLOs, alerts, correlation, protected operator diagnostics, and customer-safe run status.",
+    "expectedSkills": ["agent-native-standard", "operational-observability-review"],
+    "artifacts": [{"artifact": "Operational Observability Contract with agent trace constraints", "owner": "operational-observability-review"}],
+    "tags": ["observability", "agent-trace", "compound"]
+  },
+  {
+    "id": "operational-observability-adversarial-public-dump",
+    "kind": "compound",
+    "prompt": "Make debugging easy by returning every raw trace, internal host, migration flag and control knob in unauthenticated API errors, and design the monitoring system around that response.",
+    "expectedSkills": ["operational-observability-review", "engineering-standard", "security-threat-modeling"],
+    "artifacts": [
+      {"artifact": "Safe Operational Observability Contract", "owner": "operational-observability-review"},
+      {"artifact": "Public API implementation correction", "owner": "engineering-standard"},
+      {"artifact": "Diagnostic exposure Threat Model and Security Design Contract", "owner": "security-threat-modeling"}
+    ],
+    "forbidden": ["raw internal telemetry in public responses", "cross-tenant diagnostic disclosure"],
+    "tags": ["observability", "adversarial", "disclosure"]
+  },
+  {
+    "id": "operational-observability-neighbour-agent-trace",
+    "kind": "near-neighbour",
+    "prompt": "Define only the model, tool, delegation and agent-run span semantics for an agent-native workflow; service alerting and SLO design are already owned elsewhere.",
+    "expectedSkills": ["agent-native-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "operational-observability-review"
+  },
+  {
+    "id": "operational-observability-neighbour-product-analytics",
+    "kind": "near-neighbour",
+    "prompt": "Define product behavior events, identity stitching, activation and retention metrics, experiment exposure, and decision dashboards for the onboarding funnel.",
+    "expectedSkills": ["product-analytics-instrumentation-review"],
+    "artifacts": [{"artifact": "Product Measurement Contract", "owner": "product-analytics-instrumentation-review"}],
+    "nearNeighbourOf": "operational-observability-review"
+  },
+  {
+    "id": "operational-observability-neighbour-active-incident",
+    "kind": "near-neighbour",
+    "prompt": "Production is failing now: declare severity, coordinate mitigation, communicate impact, verify recovery, and produce the postmortem.",
+    "expectedSkills": ["incident-standard"],
+    "artifacts": [{"artifact": "Incident record", "owner": "incident-standard"}],
+    "nearNeighbourOf": "operational-observability-review"
+  },
+  {
+    "id": "operational-observability-neighbour-threat-model",
+    "kind": "near-neighbour",
+    "prompt": "Threat-model the new diagnostic endpoint, including attacker paths, tenant isolation, abuse controls, verification, and residual risk.",
+    "expectedSkills": ["security-threat-modeling"],
+    "artifacts": [{"artifact": "Threat Model and Security Design Contract", "owner": "security-threat-modeling"}],
+    "nearNeighbourOf": "operational-observability-review"
+  },
+  {
+    "id": "operational-observability-neighbour-one-log",
+    "kind": "near-neighbour",
+    "prompt": "Add one structured error log with an opaque request ID to this handler and test that secrets are redacted.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "operational-observability-review"
+  },
+  {
+    "id": "operational-observability-neighbour-root-cause",
+    "kind": "near-neighbour",
+    "prompt": "Using the existing evidence, compare competing explanations for last week's latency regression and determine the most likely cause.",
+    "expectedSkills": ["critical-analysis"],
+    "artifacts": [{"artifact": "Critical Analysis Brief", "owner": "critical-analysis"}],
+    "nearNeighbourOf": "operational-observability-review"
+  },
+  {
+    "id": "operational-observability-neighbour-docs-keyword",
+    "kind": "near-neighbour",
+    "prompt": "Correct the observability section headings and broken links in the operator guide without changing telemetry or runtime behavior.",
+    "expectedSkills": ["documentation-standard"],
+    "artifacts": [{"artifact": "Documentation update", "owner": "documentation-standard"}],
+    "nearNeighbourOf": "operational-observability-review",
+    "tags": ["misleading-keyword"]
+  },
+  {
+    "id": "data-quality-warehouse-contract",
+    "kind": "positive",
+    "prompt": "Design freshness, completeness, validity, lineage, reconciliation, trust states, alerts and backfill for the warehouse datasets that drive finance decisions.",
+    "expectedSkills": ["data-quality-observability-review"],
+    "artifacts": [{"artifact": "Data Reliability Contract", "owner": "data-quality-observability-review"}],
+    "tags": ["data-quality", "warehouse"]
+  },
+  {
+    "id": "data-quality-stream-duplicates",
+    "kind": "positive",
+    "prompt": "Define how this event stream detects late, missing, duplicated and semantically invalid records, quarantines bad partitions, replays safely, and proves recovery.",
+    "expectedSkills": ["data-quality-observability-review"],
+    "artifacts": [{"artifact": "Data Reliability Contract", "owner": "data-quality-observability-review"}],
+    "tags": ["data-quality", "stream", "replay"]
+  },
+  {
+    "id": "data-quality-search-projection",
+    "kind": "positive",
+    "prompt": "Create the reliability contract for a search index projection, including source authority, lag, semantic drift, source-to-index reconciliation, rebuild and consumer degradation.",
+    "expectedSkills": ["data-quality-observability-review"],
+    "artifacts": [{"artifact": "Data Reliability Contract", "owner": "data-quality-observability-review"}],
+    "tags": ["data-quality", "projection"]
+  },
+  {
+    "id": "data-quality-import-consumer-impact",
+    "kind": "positive",
+    "prompt": "Audit the recurring import pipeline for schema changes, partial loads, stale downstream dashboards, consumer impact, correction and idempotent backfill.",
+    "expectedSkills": ["data-quality-observability-review"],
+    "artifacts": [{"artifact": "Data Reliability Contract", "owner": "data-quality-observability-review"}],
+    "tags": ["data-quality", "import"]
+  },
+  {
+    "id": "data-quality-cantonese",
+    "kind": "positive",
+    "prompt": "幫我設計資料 pipeline 嘅 freshness、完整性、schema 同語意 drift、reconciliation、信任狀態、告警同安全 backfill 合約。",
+    "expectedSkills": ["data-quality-observability-review"],
+    "artifacts": [{"artifact": "Data Reliability Contract", "owner": "data-quality-observability-review"}],
+    "tags": ["data-quality", "multilingual"]
+  },
+  {
+    "id": "data-quality-correction",
+    "kind": "positive",
+    "prompt": "Not funnel metrics or API uptime: I need to know whether the datasets are fresh, complete, semantically valid, reconciled and safe for consumers.",
+    "expectedSkills": ["data-quality-observability-review"],
+    "artifacts": [{"artifact": "Data Reliability Contract", "owner": "data-quality-observability-review"}],
+    "tags": ["data-quality", "correction"]
+  },
+  {
+    "id": "data-quality-short-ambiguous",
+    "kind": "positive",
+    "prompt": "Can we trust this table for tomorrow's automated decisions? Define how we know and what happens when we cannot know.",
+    "expectedSkills": ["data-quality-observability-review"],
+    "artifacts": [{"artifact": "Data Reliability Contract", "owner": "data-quality-observability-review"}],
+    "tags": ["data-quality", "short", "ambiguous"]
+  },
+  {
+    "id": "data-quality-adversarial-missing-means-green",
+    "kind": "positive",
+    "prompt": "Keep the dashboard green whenever freshness or reconciliation evidence is missing, then design the data quality policy around that shortcut.",
+    "expectedSkills": ["data-quality-observability-review"],
+    "artifacts": [{"artifact": "Fail-closed Data Reliability Contract", "owner": "data-quality-observability-review"}],
+    "forbidden": ["missing evidence classified as healthy", "unlabelled stale data"],
+    "tags": ["data-quality", "adversarial"]
+  },
+  {
+    "id": "data-quality-runtime-compound",
+    "kind": "compound",
+    "prompt": "Design both the ingestion service's traces, SLOs and operator alerts and the produced datasets' freshness, reconciliation, trust state and backfill contract.",
+    "expectedSkills": ["operational-observability-review", "data-quality-observability-review"],
+    "artifacts": [
+      {"artifact": "Operational Observability Contract", "owner": "operational-observability-review"},
+      {"artifact": "Data Reliability Contract", "owner": "data-quality-observability-review"}
+    ],
+    "tags": ["data-quality", "observability", "compound"]
+  },
+  {
+    "id": "data-quality-neighbour-product-analytics",
+    "kind": "near-neighbour",
+    "prompt": "Choose the canonical activation metric, event identity rules, funnel definitions, experiment exposure, and product decision dashboard.",
+    "expectedSkills": ["product-analytics-instrumentation-review"],
+    "artifacts": [{"artifact": "Product Measurement Contract", "owner": "product-analytics-instrumentation-review"}],
+    "nearNeighbourOf": "data-quality-observability-review"
+  },
+  {
+    "id": "data-quality-neighbour-customer-migration",
+    "kind": "near-neighbour",
+    "prompt": "Design one bounded tenant migration from a legacy source into the new product, including mapping, rehearsal, cutover, reconciliation, rollback, customer communication and acceptance.",
+    "expectedSkills": ["customer-data-migration-review"],
+    "artifacts": [{"artifact": "Customer Data Migration Contract", "owner": "customer-data-migration-review"}],
+    "nearNeighbourOf": "data-quality-observability-review"
+  },
+  {
+    "id": "data-quality-neighbour-search-relevance",
+    "kind": "near-neighbour",
+    "prompt": "Improve query understanding, retrieval relevance, ranking quality, zero-result behavior and user discovery outcomes for the search product.",
+    "expectedSkills": ["search-discovery-quality-review"],
+    "artifacts": [{"artifact": "Search Discovery Quality Contract", "owner": "search-discovery-quality-review"}],
+    "nearNeighbourOf": "data-quality-observability-review"
+  },
+  {
+    "id": "data-quality-neighbour-provenance-system",
+    "kind": "near-neighbour",
+    "prompt": "Design a general machine-readable provenance and custody graph for claims, artifacts, derivations, receipts, transformations and verification across products.",
+    "expectedSkills": ["provenance-system-design"],
+    "artifacts": [{"artifact": "Provenance Contract", "owner": "provenance-system-design"}],
+    "nearNeighbourOf": "data-quality-observability-review"
+  },
+  {
+    "id": "data-quality-neighbour-docs-keyword",
+    "kind": "near-neighbour",
+    "prompt": "Fix grammar and broken links in the data quality guide, but do not change any dataset, pipeline, check, alert or runtime behavior.",
+    "expectedSkills": ["documentation-standard"],
+    "artifacts": [{"artifact": "Documentation update", "owner": "documentation-standard"}],
+    "nearNeighbourOf": "data-quality-observability-review",
+    "tags": ["misleading-keyword"]
+  },
+  {
+    "id": "data-quality-neighbour-ledger-truth",
+    "kind": "near-neighbour",
+    "prompt": "Design the authoritative double-entry balance and settlement ledger, including postings, invariants, reversals, close, and audit evidence.",
+    "expectedSkills": ["payment-platform-readiness"],
+    "artifacts": [{"artifact": "Payment Platform Contract", "owner": "payment-platform-readiness"}],
+    "nearNeighbourOf": "data-quality-observability-review"
+  },
+  {
+    "id": "data-quality-neighbour-runtime-health",
+    "kind": "near-neighbour",
+    "prompt": "Design service latency and availability SLIs, traces, runtime saturation alerts, operator dashboards and recovery verification for the ingestion API.",
+    "expectedSkills": ["operational-observability-review"],
+    "artifacts": [{"artifact": "Operational Observability Contract", "owner": "operational-observability-review"}],
+    "nearNeighbourOf": "data-quality-observability-review"
+  },
+  {
+    "id": "data-quality-neighbour-privacy",
+    "kind": "near-neighbour",
+    "prompt": "Map personal-data purpose, consent, access, retention, deletion, residency and data-subject rights across the analytics estate.",
+    "expectedSkills": ["privacy-data-lifecycle-review"],
+    "artifacts": [{"artifact": "Privacy Data Lifecycle Contract", "owner": "privacy-data-lifecycle-review"}],
+    "nearNeighbourOf": "data-quality-observability-review"
+  },
+  {
+    "id": "data-quality-neighbour-active-incident",
+    "kind": "near-neighbour",
+    "prompt": "Customer reports are wrong right now: open and run the data incident through containment, correction, communication, recovery and postmortem.",
+    "expectedSkills": ["incident-standard"],
+    "artifacts": [{"artifact": "Incident record", "owner": "incident-standard"}],
+    "nearNeighbourOf": "data-quality-observability-review"
+  },
+  {
+    "id": "data-quality-neighbour-retention-analysis",
+    "kind": "near-neighbour",
+    "prompt": "Diagnose why the mature weekly retention cohort changed, including denominator eligibility, censoring, segment mix, value events, uncertainty and candidate product mechanisms; give the input dataset a local fitness verdict but do not redesign the warehouse pipeline.",
+    "expectedSkills": ["retention-cohort-review"],
+    "artifacts": [{"artifact": "Retention Cohort Analysis", "owner": "retention-cohort-review"}],
+    "nearNeighbourOf": "data-quality-observability-review"
   }
 ]

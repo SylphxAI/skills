@@ -1,6 +1,6 @@
 ---
 name: ci-runner-capacity-standard
-description: "Runner capacity, queue latency, hermetic versus product profiles, and merge-queue backpressure. Use when CI jobs wait, runners disappear, queues saturate, or capacity policy must change. Do not use for a candidate failure caused by product code."
+description: "Design or diagnose CI runner capacity, queue/pickup latency, execution profiles, merge-queue backpressure, inventory uncertainty, and critical-path isolation. Use when CI jobs wait, runners disappear, queues saturate, or capacity policy must change. Do not use for a candidate failure caused by product code."
 ---
 # Ci Runner Capacity Standard
 

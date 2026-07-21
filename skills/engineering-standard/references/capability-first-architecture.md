@@ -184,7 +184,7 @@ FCCP and code architecture are related but distinct:
 - FCCP governs capability identity, definition, relationships, claims,
   contracts, surfaces, gaps, and proof.
 - This standard governs how implementation code expresses those capabilities.
-- Control Plane governs Work and live execution state.
+- Sylphx Enact governs Work and live execution state.
 
 The mapping is many-to-many, never `one capability = one file`:
 

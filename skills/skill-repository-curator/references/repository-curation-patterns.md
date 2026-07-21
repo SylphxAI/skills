@@ -67,6 +67,39 @@ Common failure modes:
 - default-branch-only inventory that silently loses closed unmerged proposals;
 - owner memory functioning as the only retrieval path for protected knowledge.
 
+## Native discovery and thickness
+
+Portable package discovery starts from `name` and `description`. Current Codex
+and Claude document metadata-first semantic selection, may shorten or omit
+descriptions under their listing/context budgets, and load `SKILL.md` only
+after selection; other runtimes require their own documented verification.
+Treat keyword examples as semantic anchors, not as a deterministic router
+contract. On a metadata-selecting runtime, a correct body cannot rescue a
+package whose description never gives enough evidence to select it.
+
+For every material route, inspect:
+
+- concrete user jobs and accepted artifact, expressed in natural language;
+- positive, near-neighbour, compound, abstention, multilingual, ambiguous,
+  correction, and misleading-keyword prompts;
+- false negatives caused by vague or late trigger language;
+- false positives caused by topic words without a job boundary; and
+- behavior when the runtime shortens or omits descriptions under catalog
+  pressure.
+
+Keep the metadata compact because it competes for initial context. Keep the
+entry procedure focused enough to load safely, but use references for rich
+methods, matrices, examples, and volatile detail. Thickness is not a defect by
+itself: split only when the extracted work is independently requested and has
+an independent acceptance artifact. Do not split by file type, telemetry
+medium, implementation layer, or noun alone.
+
+Official current behavior must be verified against the supported runtime, not
+remembered from an earlier release. Relevant authorities include the
+[Agent Skills specification](https://agentskills.io/specification),
+[OpenAI Skills documentation](https://learn.chatgpt.com/docs/build-skills), and
+[Claude Code Skills documentation](https://code.claude.com/docs/en/skills).
+
 ## Collision decisions
 
 Use job and artifact—not topic—as the merge test.

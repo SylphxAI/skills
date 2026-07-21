@@ -20,7 +20,7 @@ service that still owns durable backend effects.
 The stable engineering standard supplies language mappings but intentionally
 does not select a current organization-wide default. An enterprise Profile is the
 correct owner for the current, replaceable language boundary. Product
-repositories own local component facts and Control Plane owns their live
+repositories own local component facts and Sylphx Enact owns their live
 resolution and adoption state.
 
 ## Decision
@@ -42,7 +42,7 @@ Admit `technology-stack-profile` as an active governance-constraint Profile:
    counts, repository language totals, Bun process presence, and endpoint-shell
    parity are not completion metrics.
 6. The machine-readable profile is the source of truth for this selection. Product repos
-   project only local service facts; Control Plane resolves live adoption,
+   project only local service facts; Sylphx Enact resolves live adoption,
    exceptions, deployment, and completion.
 
 Revision `2026-07-18.2` preserves the selection while aligning repository
@@ -89,4 +89,4 @@ or prose. It supersedes revision `2026-07-18.3`.
 - Generate the active catalog and prove the admitted active Profile is required
   and installable without routing or behavior tournament proof.
 - Keep downstream manifest resolution, deployment, and production readback as
-  separate Control Plane evidence.
+  separate Sylphx Enact evidence.

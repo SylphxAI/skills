@@ -113,7 +113,7 @@ audit, security, or a declared retention contract.
 No attempt receives remote CI, preview infrastructure, release work, or external
 effects merely because it exists.
 
-Control Plane owns the live Work/attempt/candidate/effect schemas and their
+Sylphx Enact owns the live Work/attempt/candidate/effect schemas and their
 current projections. Those contracts distinguish work envelopes, immutable
 attempts, append-only attempt events, candidates, selection evidence, green
 watermarks, and effect authorization. Identity is the digest of the complete
@@ -407,7 +407,7 @@ They are adoption gaps, not permission to invent local defaults.
 
 Adoption follows expand → reconcile → ratchet → contract:
 
-1. canonical Skills packages publish candidate contracts and Control Plane publishes read-only desired-state
+1. canonical Skills packages publish candidate contracts and Sylphx Enact publishes read-only desired-state
    audits;
 2. the enterprise control plane inventories and reconciles repositories through
    their owning project boundaries;
@@ -417,9 +417,11 @@ Adoption follows expand → reconcile → ratchet → contract:
 5. repositories emit selection evidence; and
 6. legacy PR/MQ-only fields and settings contract only after coverage proof.
 
-This static standard does not directly mutate organizations. The platform
-control plane owns organization/repository GitHub and runtime effects. This
-Skills package owns the reusable policy predicates; schemas, desired state,
+This static standard does not directly mutate organizations. Sylphx Enact owns
+live work/effect coordination when its authenticated runtime is available; the
+selected product/provider adapter executes authorized organization,
+repository, and runtime effects within that product boundary. This Skills
+package owns the reusable policy predicates; schemas, desired state,
 conformance findings, and migration evidence remain with their declared
 operational owners.
 

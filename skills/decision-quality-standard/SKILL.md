@@ -7,7 +7,10 @@ description: "Select among materially distinct technical, product, commercial, o
 **Requirement:** apply this standard when the task matches its scope.
 
 Read [references/full-standard.md](references/full-standard.md) for the full
-method and predicates.
+method and predicates. Read
+[references/value-of-information.md](references/value-of-information.md) when
+the decision turns on whether another investigation or experiment is worth its
+cost and delay.
 
 ## Method
 

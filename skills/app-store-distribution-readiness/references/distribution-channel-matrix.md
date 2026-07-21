@@ -127,7 +127,14 @@ Do not copy partner-confidential rules into a reusable skill or claim readiness 
 
 ## Channel sweep completion
 
-For every declared product, evaluate Apple, Google, HTML5/web, Huawei, Samsung, Amazon, Microsoft/direct desktop, macOS/direct, Linux/direct, Steam/other PC storefronts, and console channels. `not applicable` requires a product-format, authority, audience, safety, or semantic reason—not human effort or speculative ROI. iOS and Android evidence is mandatory for a declared mobile product; HTML5/PWA is first-class when applicable.
+Verify every declared target channel for the product. Perform the full Apple,
+Google, HTML5/web, Huawei, Samsung, Amazon, Microsoft/direct desktop,
+macOS/direct, Linux/direct, Steam/other PC storefront, and console sweep only
+when channel-portfolio selection is itself part of the request. For a bounded
+release-readiness task, undeclared channels are outside scope rather than rows
+that require invented `not applicable` evidence. iOS and Android evidence is
+mandatory for the corresponding declared mobile targets; HTML5/PWA remains a
+first-class target when selected.
 
 ## OS detail checklist
 

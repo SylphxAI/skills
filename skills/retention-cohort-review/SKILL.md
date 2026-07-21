@@ -37,9 +37,12 @@ should change. Do not optimize a chart whose denominator or value event is wrong
 
 ## When not to use
 
-- For event taxonomy, identity implementation, consent, warehouse contracts, or
-  data QA, use `product-analytics-instrumentation-review` after specifying the
-  retention measurement requirement.
+- For product event taxonomy, identity, consent, and metric semantics, use
+  `product-analytics-instrumentation-review` after specifying the retention
+  measurement requirement. For recurring dataset/pipeline/warehouse freshness,
+  completeness, reconciliation, trust state, or repair, use
+  `data-quality-observability-review`; this Skill retains the local
+  input-quality verdict needed to interpret the cohort.
 - For notification channel, permission, cadence, quiet hours, and message policy,
   use `notification-strategy-review`; consume the cohort hypothesis here.
 - For pricing/package architecture, use `saas-subscription-pricing`.

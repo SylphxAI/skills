@@ -46,6 +46,22 @@ revoked -> repurchase_or_appeal_approved -> active
 - `refund-flow-20` — Chargebacks/disputes should move commerce and entitlement into explicit hold states, then restore, revoke, or limit only after dispute outcome and appeal evidence.
 - `refund-flow-21` — Goodwill and product-quality refunds need budgets, approval owners, reason codes, and a product/support feedback loop; do not treat them as abuse by default.
 
+## Audience and disclosure contract
+
+The evidence timeline, event properties, abuse signals, and support dashboards
+below are authenticated, least-privilege operator evidence scoped to the exact
+tenant/account and case. Log access and retention according to sensitivity.
+They must not become a public API, OAuth error, status page, customer response,
+or analytics export merely because an implementation already has the fields.
+
+A customer-facing projection contains only the minimum consequence, effective
+time, next action, appeal/support path, and an opaque case reference needed by
+that customer. It excludes raw provider events, transaction/order identifiers,
+internal user or actor identifiers, linked-account/device/payment signals,
+abuse scores/tiers, reviewer identities, internal hypotheses, and other cases
+or tenants. A legal or contractual disclosure remains a separately authorized,
+purpose-scoped projection.
+
 ## Evidence timeline
 
 Support and automated policy should read from one timeline rather than scattered notes:
@@ -190,6 +206,12 @@ We received confirmation that this purchase was refunded. The refunded premium a
 
 Track: `refund_requested`, `refund_redirect_shown`, `refund_detected`, `cancellation_detected`, `restore_purchase_requested`, `restore_purchase_resolved`, `entitlement_state_changed`, `entitlement_adjusted_after_refund`, `refund_user_notified`, `refund_support_case_opened`, `commerce_limited`, `chargeback_dispute_opened`, `chargeback_dispute_resolved`, `abuse_tier_changed`, `appeal_opened`, `appeal_resolved`, `repurchase_completed`, `goodwill_refund_approved`, `product_quality_reason_recorded`.
 
-Required properties: `provider`, `provider_event_id`, `purchase_id`, `original_transaction_id_or_purchase_token`, `refund_id`, `chargeback_or_dispute_id`, `subscription_id`, `entitlement_id`, `user_id`, `previous_entitlement_state`, `next_entitlement_state`, `paid_through_at`, `grace_until`, `revoke_at`, `reason_code`, `abuse_tier`, `support_case_id`, `actor`, `source_event_id`, `policy_version`, `decision`.
+Required protected operator properties: `provider`, `provider_event_id`,
+`purchase_id`, `original_transaction_id_or_purchase_token`, `refund_id`,
+`chargeback_or_dispute_id`, `subscription_id`, `entitlement_id`, `user_id`,
+`previous_entitlement_state`, `next_entitlement_state`, `paid_through_at`,
+`grace_until`, `revoke_at`, `reason_code`, `abuse_tier`, `support_case_id`,
+`actor`, `source_event_id`, `policy_version`, `decision`. External projections
+follow the allowlist above rather than copying this schema.
 
 Dashboards should include refund rate by provider, refund detection lag, restore failure rate, entitlement revocation lag, chargeback open/win/loss, goodwill usage and variance by agent/cohort, support load and SLA, support QA variance, false-positive and appeal reversal rate, abuse-tier transitions, repurchase after fix, churn after refund, and product quality reason-code trends.

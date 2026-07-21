@@ -7,7 +7,10 @@ description: "Autonomous scheduling: critical-path focus, parallelism budgets, d
 **Requirement:** apply this standard when the task matches its scope.
 
 Read [references/full-standard.md](references/full-standard.md) for the full
-method and predicates.
+method and predicates. Read
+[references/tool-grounded-execution.md](references/tool-grounded-execution.md)
+when the task needs tool-grounded iteration, checkpoint, recovery, or
+termination semantics.
 
 ## Method
 

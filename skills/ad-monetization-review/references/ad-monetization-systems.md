@@ -36,7 +36,12 @@ reward_pending -> callback_delayed -> reward_reconciled
 placement_eligible -> suppressed_by_user_state
 ```
 
-## Event schema
+## Ad measurement requirements
+
+The ad domain owns the meanings and required fields below. The shared event
+identity, envelope, schema revision, collection, consent filtering, and product
+metric contract are owned by `product-analytics-instrumentation-review`; do not
+fork them here.
 
 Required events:
 

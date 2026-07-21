@@ -14,8 +14,8 @@ the receiving runtime unless the user explicitly names additional runtimes.
 
 Install or update the complete Sylphx-managed Skill catalog and compact runtime
 constitution for the agent runtime receiving this request. Enable managed
-AutoSync for that runtime and validate and enroll the canonical Sylphx Control
-Plane SaaS resource `https://enact.sylphx.com/api/mcp` through the runtime's native
+AutoSync for that runtime and validate and enroll the canonical Sylphx Enact
+SaaS resource `https://enact.sylphx.com/api/mcp` through the runtime's native
 HTTPS/OAuth surface. Configure other supported runtimes only when the user
 explicitly asks for them. Preserve unrelated instructions, Skills,
 configuration, and data. Finish with effective readback, not a folder-count
@@ -50,7 +50,13 @@ claim.
    file. It preserves local notes and leaves the retired target untouched.
    Owner and permission bits are also fenced where the operating system exposes
    authoritative POSIX metadata. Arbitrary links, imports, unsafe metadata, or
-   content remain fail-closed.
+   content remain fail-closed. For Codex, the adapter also checks the shared
+   `~/.agents/skills` discovery root for the one exact historical Sylphx
+   projection. It archives only packages proven by the known manifest, source
+   commit, package set, and package digests, resumes an interrupted verified
+   move, and preserves every unrelated shared Skill. Unknown, modified,
+   symlinked, or lookalike projections fail closed; status and clear cannot
+   report success while one remains active.
    Every mutating adapter operation must name the receiving runtime explicitly;
    discovery of other installed runtimes never grants permission to change
    them. Use `all` only when the user explicitly requested every supported
@@ -73,7 +79,12 @@ claim.
    instruction source, distinguish product Git truth from Enact live
    work, claim work rather than files, resolve the active delivery lane, and
    separate source, admission, landing, deployment, and live proof. An active
-   context that predates installation is not evidence.
+   context that predates installation is not evidence. Complete package bytes
+   are availability evidence only: native metadata budgets may shorten or omit
+   descriptions, and semantic selection may still miss or over-trigger a
+   package. Do not claim catalog-wide injection from install status or from the
+   model saying it followed a Skill; use exact native runtime evidence where
+   the claim matters.
 7. Enable the repository-owned OS-scheduled AutoSync for the receiving runtime
    at the default ten-minute interval. If AutoSync already manages other
    explicitly selected runtimes, preserve that set and add the receiving

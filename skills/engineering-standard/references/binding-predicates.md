@@ -36,6 +36,8 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-detail-01` | Important detail is attached to a capability as a sub-capability, behavior, invariant, contract, scenario, or surface rather than disappearing into Work or code. |
 | `eng-observe-01` | Critical paths emit privacy-preserving, correlatable telemetry. |
 | `eng-observe-02` | Telemetry names semantic capability/use-case outcomes and effects; domain/application code does not depend on observability SDKs. |
+| `eng-observe-03` | Raw internal/operator telemetry, topology, migration/process state, implementation details, and unrestricted diagnostics remain protected evidence. Tenant-authorized customer-owned telemetry intentionally exposed by an observability product is customer product data, not operator leakage. |
+| `eng-observe-04` | Public or customer-visible operational facts have an intentional purpose, audience and authorization scope, allowlisted minimum schema, stable semantics, opaque correlation where needed, and negative leakage tests. |
 | `eng-frp-01` | Time-varying/event-stream domains may use pure reactive reducers while subscriptions, clocks, frameworks, and backpressure remain in the imperative shell. |
 | `eng-event-01` | Cross-capability events are versioned published contracts with ordering, causation, delivery, idempotency, replay, and failure semantics. |
 | `eng-reconcile-01` | Convergent asynchronous systems treat events as wake-ups and recompute from authoritative desired/observed state through an idempotent reconciliation loop. |

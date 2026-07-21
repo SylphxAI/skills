@@ -21,11 +21,13 @@ digests later; never invent them during design.
 
 ## Agent-first invariant
 
-Construct all provider adapters, preference states, region/age modes, templates,
-dedupe, caps, quiet hours, deliverability, observability, support, and kill
-switches now. Separate construction from send authority. A dormant channel
-initializes no SDK, requests no permission, collects no identifier, and sends no
-message. Unknown/stale authority disables the affected send.
+Construct the complete policy and the provider adapters, preference states,
+region/age modes, templates, dedupe, caps, quiet hours, deliverability,
+observability, support, and kill switches for every selected/applicable channel
+now. Do not build adapters for undeclared channels or providers. Separate
+construction from send authority. A dormant channel initializes no SDK,
+requests no permission, collects no identifier, and sends no message.
+Unknown/stale authority disables the affected send.
 
 ## Workflow
 

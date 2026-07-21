@@ -16,7 +16,7 @@ drift.
 | What behavior/contract must implementation satisfy? | Spec, schema, test, or executable policy |
 | How is an operation performed or recovered? | Runbook |
 | What public capability exists? | Capability catalog derived from contracts/code where possible |
-| What is the current work/adoption/incident state? | Control Plane live record, linked from docs if useful |
+| What is the current work/adoption/incident state? | Sylphx Enact live record, linked from docs if useful |
 | What static method applies across repositories? | Binding Skills package |
 | What does an API/schema/CLI expose now? | Generated reference from the authoritative source |
 
@@ -33,8 +33,33 @@ state, or capability status manually in two places.
 
 Static cross-repo instructions are authored under `skills/<id>/`. Product code,
 contracts, ADRs, specs, and runbooks live with the owning product repository.
-Control Plane owns live work/adoption/incident/discussion state. Archived
+Sylphx Enact owns live work/adoption/incident/discussion state. Archived
 repositories may be linked as historical evidence but never as current law.
+
+## Publication and diagnostic boundaries
+
+Public repositories, documentation sites, issue/PR bodies, release notes,
+status pages, examples, support replies, and generated references are disclosure
+sinks. Publication must be intentional; a useful internal evidence artifact is
+not automatically a safe public document.
+
+- Keep raw internal logs/traces, private topology, environment-specific runtime
+  configuration, observed internal migration/cutover state, private
+  identifiers/control knobs, security hypotheses, customer data, and
+  unrestricted diagnostic attachments in the authorized operator/evidence
+  boundary. Public OSS configuration, migration definitions/guides, and stable
+  customer-selectable settings remain publishable when they are intentionally
+  documented contracts and contain no private runtime values.
+- Publish a separate minimum projection for the intended audience. It states
+  purpose, audience, authority/source, allowlisted fields, redaction, freshness,
+  and compatibility or correction semantics.
+- Public API/protocol references document only deliberate stable fields. They
+  do not mirror an internal struct merely because generation is convenient.
+- Prefer opaque correlation identifiers that authorized operators can resolve
+  to protected evidence. Never use public prose or attachments as a substitute
+  for protected observability storage.
+- Test examples, generated docs, errors, and status payloads with sentinel
+  internal/secret/cross-tenant fields so projections fail on leakage.
 
 ## ADR rules
 
@@ -100,4 +125,6 @@ architecture, delivery, or migration completion.
 - [ ] Enumerated API/schema/CLI facts are generated or freshness-checked.
 - [ ] Raw discussion is linked as evidence only after its durable outcome is
       promoted to the correct authority.
+- [ ] Every public/customer artifact is an intentional minimum projection, not
+      raw internal evidence or an internal object serialized by convenience.
 - [ ] Archived material is historical evidence, never an active fallback.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Quality Observability Review"
+  short_description: "Design or audit data reliability and trust"
+  default_prompt: "Use $data-quality-observability-review to design a data reliability contract."

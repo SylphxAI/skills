@@ -55,6 +55,17 @@ Branch names, commit subjects, pull requests, chat sessions, and worktree paths
 MUST NOT become competing work ledgers. They carry portable locators back to the
 canonical Work Item and exact evidence where the active adapter requires them.
 
+Source-control and forge surfaces may be public. Candidate, checkpoint, review,
+and evidence records therefore carry only the minimum metadata needed for
+coordination and verification. Raw internal logs/traces, private topology,
+environment-specific runtime configuration, observed internal migration state,
+control knobs, customer data, secrets, and unrestricted diagnostic attachments
+remain in an authorized evidence store; commits, PRs, issues, and public
+artifacts link to a redacted or opaque evidence identity. Public OSS
+configuration and migration definitions/guides remain legitimate source when
+they are intentional contracts rather than observed private runtime state.
+Evidence durability never authorizes disclosure.
+
 ## Semantic atomicity
 
 An admitted candidate MUST be semantically atomic:

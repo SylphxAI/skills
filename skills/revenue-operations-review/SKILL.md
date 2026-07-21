@@ -38,7 +38,21 @@ Retrieve current CRM/provider capabilities, source schemas, employment/commissio
 9. Design incentives and commissions from desired customer/business outcomes plus gaming analysis. Separate eligibility, credit allocation, splits, attainment, approval, adjustment, dispute, payout, clawback, and audit; retrieve current legal/employment authority and never let compensation fields redefine finance truth.
 10. Automate reversible routine work now: capture, enrichment with provenance, dedupe, routing, evidence checks, next-action drafts, stale-state detection, forecast recomputation, handoff packets, reconciliation, and quality repair. Do not create low-value human or agent data-entry merely to feed reports.
 11. Gate autonomous external actions by consent, approved claims, account/channel policy, authority, frequency, and risk. An agent may prepare evidence and execute bounded workflows; it may not invent customer intent, pricing, roadmap, legal/security claims, discounts, or binding commitments.
-12. Validate changes through shadow calculations, replay, migration/backfill, downstream impact, cohort fairness, workload/capacity, forecast calibration, incentive gaming, duplicate/conflict cases, provider failure, audit, rollback, and live readback. Never optimize field completeness at the expense of truth.
+12. Select validation and recovery controls from the affected truth, downstream
+    effect, reversibility, blast radius, and risk. A local presentation-only
+    field change may need schema/consumer tests, narrow readback, and revert;
+    material state, attribution, forecast, routing, capacity, incentive, or
+    authority changes require the applicable shadow calculations, replay,
+    migration/backfill, downstream impact, fairness, calibration, gaming,
+    duplicate/conflict, provider-failure, audit, rollback, and live readback.
+    Never optimize field completeness at the expense of truth or perform every
+    control merely to complete a checklist.
+13. Treat customer records, seller/agent assertions, forecasts, capacity,
+    incentives, commissions, routing, and internal quality/abuse signals as
+    protected operating evidence. A customer, partner, board, or public view is
+    a separate purpose-bound, audience-named, minimum allowlisted projection
+    with tenant/account authorization where applicable and negative leakage
+    tests; it never inherits the internal CRM schema wholesale.
 
 ## Workflow
 
@@ -60,7 +74,10 @@ Define forecast taxonomy and horizons, amount/date/scenario uncertainty, calibra
 
 ### 5. Automate, migrate, and assure
 
-Create automation authority, event/reconciliation contracts, migration/backfill, shadow/canary, alerting, change approvals, dashboards with definitions, data-quality repair, audit, incident and rollback paths, and observed outcome review. Retire unused fields, stages, reports, and automations.
+Create the automation authority, event/reconciliation contracts, and
+risk-selected migration/backfill, shadow/canary, alerting, change approval,
+dashboard, data-quality repair, audit, incident, rollback, and observed-outcome
+controls. Retire unused fields, stages, reports, and automations.
 
 ## Hard gates
 
@@ -72,20 +89,29 @@ Reject or redesign an output that:
 - lets CRM notes create product, security, legal, pricing, contract, billing, or customer-success truth;
 - publishes one forecast without scenarios, calibration, staleness, amount/date confidence, capacity, and change history;
 - automates external outreach or commitments without source, consent, frequency, claim, privacy, and authority controls;
-- changes fields/stages/routing/incentives without migration, downstream impact, replay/shadow, rollback, training or agent-contract update, and reconciliation;
+- changes fields, stages, routing, or incentives without classifying affected
+  truth, downstream effect, reversibility, and risk, then applying the
+  corresponding migration, downstream, replay/shadow, rollback,
+  training/agent-contract, and reconciliation controls;
 - claims forecast accuracy, attribution causality, pipeline health, capacity, or revenue outcome from invented or selectively cleaned data.
 
 ## Output contract
 
 Produce one **Revenue Operations Contract** containing:
 
-1. artifact ID, scope, evidence labels, revenue motion, segments, actors/agents, canonical systems, authorities, decisions, definitions, and ruin boundaries;
+1. artifact ID, scope, evidence labels, revenue motion, segments, actors/agents,
+   canonical systems, authorities, decisions, definitions, ruin boundaries,
+   audience/sensitivity, and authorized external projection contracts;
 2. canonical object/relationship/field registry with writers, sources, quality, sensitivity, history, retention, and downstream consumers;
 3. identity/account, attribution, lifecycle, pipeline, routing, dedupe/merge, stale/unknown, and terminal-reason state machines;
 4. qualification/discovery evidence contract, disqualifiers, solution proof/POC, commitment controls, and typed handoff records;
 5. forecast taxonomy, snapshots, scenarios, calibration, amount/date uncertainty, pipeline/capacity model, and decision rules;
 6. incentive/commission eligibility, credit/split, attainment, approval, adjustment, dispute, payout boundary, gaming, and audit controls where applicable;
-7. automation authority, privacy/consent, reconciliation, dashboards/metrics, data-quality, migration/backfill, change governance, incidents, and rollback;
-8. validation/evidence plan with replay, shadow/canary, downstream tests, cohort and gaming review, live readback, and specialist handoffs.
+7. automation authority, privacy/consent, reconciliation, dashboards/metrics,
+   data-quality, change-risk classification, applicable migration/backfill,
+   change governance, incidents, and rollback;
+8. validation/evidence plan with the applicable replay, shadow/canary,
+   downstream tests, cohort and gaming review, live readback, explicit
+   non-applicable dispositions, and specialist handoffs.
 
 The contract is complete when every commercial state and prediction can be traced to evidence, no downstream system is forced to treat CRM opinion as fact, and automation can operate without inventing authority.

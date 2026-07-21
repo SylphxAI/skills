@@ -3,7 +3,7 @@
 [![CI](https://github.com/SylphxAI/skills/actions/workflows/check.yml/badge.svg)](https://github.com/SylphxAI/skills/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](./package.json)
-[![Agent Skills](https://img.shields.io/badge/agent%20skills-105%20packages-111827.svg)](./catalog.json)
+[![Agent Skills](https://img.shields.io/badge/agent%20skills-107%20packages-111827.svg)](./catalog.json)
 
 **Working methods for AI agents — installed by the agent that needs them.**
 
@@ -19,8 +19,8 @@ Give this to your agent:
 
 That is the complete user procedure. The agent reads [`INSTALL.md`](./INSTALL.md),
 detects its environment, installs the exact Skill catalog and compact runtime
-constitution, enables managed AutoSync, enrolls the canonical Sylphx Control
-Plane SaaS endpoint through native OAuth, preserves unrelated configuration,
+constitution, enables managed AutoSync, enrolls the canonical Sylphx Enact
+SaaS endpoint through native OAuth, preserves unrelated configuration,
 and verifies the result in a fresh context. The repository never asks the user
 to translate that outcome into shell commands.
 
@@ -37,6 +37,14 @@ adapter preserves local notes, installs a regular digest-bound constitution,
 and does not alter the retired target. It also validates POSIX ownership and
 permissions where those metadata are authoritative. Unknown links and imports
 remain fail-closed.
+
+Codex also discovers the shared `~/.agents/skills` root. An earlier installer
+placed a second Sylphx catalog there, including retired packages. The adapter
+recognizes only its exact historical manifest, source commit, package set, and
+package digests, then archives those packages outside native discovery while
+preserving unrelated shared Skills. Status is not current, and clear is not
+complete, while a recognized, interrupted, or invalid legacy projection
+remains. Unknown, modified, or lookalike projections fail closed.
 
 ---
 
@@ -129,7 +137,7 @@ token. See [`INSTALL.md`](./INSTALL.md) and
 
 ## What you get
 
-**105 packages** in four families (see [`catalog.json`](./catalog.json) for the
+**107 packages** in four families (see [`catalog.json`](./catalog.json) for the
 machine index and [`skills/`](./skills/) for sources):
 
 ### Standards & profiles
@@ -180,16 +188,28 @@ skills/<id>/
 ```
 
 - **One semantic owner** per package — no dual authoring roots.
-- **Description** states when to use and when not to.
-- **Native injection** selects relevant packages from runtime metadata; there is
-  no meta-router or manual skill-selection workflow.
+- **Description** front-loads the concrete job, artifact, nearby contexts, and
+  exclusions. Codex and Claude document semantic selection over metadata;
+  trigger words are anchors, not a literal keyword router. Other runtimes keep
+  their own documented invocation/discovery semantics.
+- **Native injection** in metadata-selecting runtimes such as Codex and Claude
+  starts from `name` and `description`, then loads the body and references after
+  selection. Their context/listing budgets may shorten descriptions or omit
+  entries, so installation proves available bytes—not that every package was
+  visible or selected for a given task. Material routes need fresh evidence
+  from each supported native runtime.
+- There is no repository meta-router, dependency graph, or manual selection
+  ceremony. Several relevant packages may compose, but each requested artifact
+  still has one semantic owner.
 - **Compound tasks** may load several useful Skills. One owner produces each
   requested artifact while standards constrain it without duplicate reports.
 - **Runtime tools** (browse, execute, MCP, credentials) stay with the agent;
   skills teach method and expected artifacts.
 
 Authority notes: [docs/adr/ADR-0001-public-agent-instruction-source.md](./docs/adr/ADR-0001-public-agent-instruction-source.md) ·
-[docs/adr/ADR-0002-consumption-boundary-skill-reconciliation.md](./docs/adr/ADR-0002-consumption-boundary-skill-reconciliation.md)
+[docs/adr/ADR-0002-consumption-boundary-skill-reconciliation.md](./docs/adr/ADR-0002-consumption-boundary-skill-reconciliation.md) ·
+[docs/adr/ADR-0009-native-skill-discovery-and-package-boundaries.md](./docs/adr/ADR-0009-native-skill-discovery-and-package-boundaries.md) ·
+[docs/adr/ADR-0010-observability-audience-boundaries.md](./docs/adr/ADR-0010-observability-audience-boundaries.md)
 
 ---
 

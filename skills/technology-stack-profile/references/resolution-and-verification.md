@@ -44,7 +44,7 @@ backend-owner reference, and owned effects. The manifest schema owns only the
 generic fact shape; this Profile owns the recognized role/effect meanings.
 Missing, stale, or unknown bindings and facts block a selected technology
 decision instead of being inferred from filenames. Live deployment and
-production status remain Control Plane observations, not repo-authored fields.
+production status remain Sylphx Enact observations, not repo-authored fields.
 
 ## Resolution table
 

@@ -1,6 +1,6 @@
 ---
 name: frontier-verification-standard
-description: "Evaluation gates, replay oracles, canary backstops, and flaky-check control for nondeterministic systems. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, or time-dependent behavior. Do not add these mechanisms to an ordinary deterministic code path."
+description: "Evaluation gates, replay oracles, and canary backstops for nondeterministic systems. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, or time-dependent behavior. Use CI Admission for flaky-check attribution or quarantine; do not add frontier mechanisms to an ordinary deterministic code path."
 ---
 # Frontier Verification Standard
 

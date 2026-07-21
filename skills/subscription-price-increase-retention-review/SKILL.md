@@ -80,6 +80,11 @@ price change moves through real contracts and billing channels.
   source, then block scale until approved values exist.
 - Never resume a paused channel from aggregate recovery while its affected
   cohort or no-action state remains unresolved.
+- Keep cohort membership, signed contract/discount terms, consent/payment
+  state, support history, offer eligibility, unit economics, and net-revenue
+  matrices in protected operator evidence. Customer and channel notices are
+  separately rendered minimum projections containing only that recipient's
+  authorized plan, exact change, timing, rights, actions, and support route.
 
 ## Output
 
@@ -104,4 +109,8 @@ Experiment and rollout:
 
 Net retained value readout:
 - receipts / churn-contraction / refunds-credits / failed payment / support / LTV-NRR / decision
+
+Audience split:
+- Protected operator evidence: cohort/contract/discount/payment/offer/economics matrices and source locators
+- Customer/channel projection: recipient-authorized change, effective date, rights/actions, and support route only
 ```

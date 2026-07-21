@@ -13,7 +13,8 @@ accumulation, late joiners, refunds, and low population.
 
 Own currency/inventory authority, sources/sinks, price/reward tables, pacing,
 chance/pity guarantees, purchase/ad/event projections, refund adjustment,
-inflation/concentration, simulations, tuning controls, and live observability.
+inflation/concentration, simulations, applicable tuning controls, and economy
+observability selected for the actual authority and business model.
 Do not own the complete core game, provider payment ledger, one daily loop, one
 campaign, or release/distribution program.
 
@@ -24,12 +25,18 @@ digests later; never invent a digest or proof state.
 ## Agent-first invariant
 
 For every selected economy capability, build the full versioned model,
-deterministic simulator, replayable value history, tuning bounds, fraud controls,
-migrations, kill switches, and cohort readbacks now. Use verified slices and
+deterministic simulator, authority-appropriate value history, migration and
+recovery contract, and bounded controls now. A locally authoritative offline
+premium game may satisfy this with deterministic local history, save migration,
+backup/restore, and corruption recovery. Purchased, shared, remote-authoritative,
+tradable, or live-tuned value additionally requires an append-only server
+ledger, fraud/abuse controls, kill switches, canaries, and cohort readback. Mark
+non-applicable machinery with the exact authority/business-model reason; do not
+invent a service merely to complete a checklist. Use verified slices and
 exposure gates for safety, not a thin launch economy followed by manual
 hardening. Autonomous tuning may act only inside declared bounds; prices, odds,
-pity, entitlements, grants, and material value semantics require an independently
-validated candidate.
+pity, entitlements, grants, and material value semantics require an
+independently validated candidate.
 
 ## Workflow
 
@@ -47,14 +54,19 @@ validated candidate.
    advertisements, offers, events, and comeback/catch-up. Calculate
    distributions and sensitivities using the equations and fixtures in the
    reference rather than supplying one average path.
-5. Define append-only ledger and projections for grant, spend, transfer,
-   reserve, expire, convert, refund/revoke, chargeback, rollback, restore,
-   migration, compensation, and support correction with idempotency.
+5. Define the value-history authority and projections for every applicable
+   grant, spend, transfer, reserve, expire, convert, refund/revoke, chargeback,
+   rollback, restore, migration, compensation, and support correction. Use an
+   append-only server ledger with idempotency for purchased, shared,
+   remote-authoritative, or tradable value; use deterministic local save/history
+   and migration/recovery invariants for a strictly offline local economy.
 6. Simulate day-0, day-30, year-1, late-joiner, returning, baseline/non-payer,
    payer, high-skill, low-population, concentrated-wealth, exploit, and content
    drought cohorts. Include stochastic uncertainty and sensitivity ranges.
-7. Set bounded tuning parameters, independent validation, anomaly/fraud
-   detection, canaries, pause/rollback/forward-fix, and live readback.
+7. Set bounded tuning parameters and independent validation. Add anomaly/fraud
+   detection, canaries, pause/rollback/forward-fix, and live readback wherever
+   remote, purchased, shared, or live-authoritative effects make them
+   applicable; otherwise define deterministic local validation and recovery.
 
 ## Source verification
 
@@ -94,18 +106,23 @@ Return one typed Game Economy Specification containing:
 
 1. draft artifact ID, economy thesis, loops, audiences, baseline reachability, horizons, and ruin
    boundaries;
-2. asset/currency/inventory authority map and ledger/projection state machine;
+2. asset/currency/inventory authority map and value-history/projection state
+   machine, using a server ledger only where the authority model requires it;
 3. sources/sinks/stock/velocity/concentration matrix by cohort and season;
 4. progression, price, reward, gacha/pity, battle-pass, ad, offer, event,
    catch-up, duplicate, expiry, and conversion tables;
 5. refund/revoke/chargeback/restore/migration/support rules;
 6. deterministic simulation fixtures, equations, distribution/quantile results,
    sensitivities, invariants, and limits;
-7. tuning/admin authority, anomaly/fraud controls, event schema, dashboards,
-   canaries, rollback/forward-fix, and live readback;
+7. tuning/admin authority and the applicable anomaly/fraud controls, event
+   schema, dashboards, canaries, rollback/forward-fix, live readback, or
+   deterministic local validation/recovery, with explicit non-applicable
+   dispositions;
 8. payment, campaign, daily loop, analytics, and game-blueprint handoffs with
    draft IDs, required inputs, acceptance questions, and no fabricated proof.
 
-Complete only when ledgers replay, simulated cohorts remain viable, every
-tuning parameter has bounds/authority, and the system can pause or recover
-without corrupting durable player value.
+Complete only when the selected value history can be deterministically replayed
+or reconstructed at its declared authority, simulated cohorts remain viable,
+every tuning parameter has bounds/authority, and the system can pause or
+recover without corrupting durable player value. Server-ledger and live-cohort
+proof are mandatory only for the economy classes that require those surfaces.

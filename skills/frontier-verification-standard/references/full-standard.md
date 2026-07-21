@@ -144,28 +144,9 @@ the analysis verdict or an explicit signed exception with expiry.
 When no repo-local telemetry/canary contract schema exists, resolve the active
 telemetry-contract and exception-policy schemas through the binding profile.
 
-## Change-Centric VCS Watch Policy
-
-The active delivery profile owns the enterprise source and audit adapter.
-Change-centric authoring tools are allowed only when they export an ordinary
-candidate into that profile and preserve exact-candidate admission, provenance,
-serialization, and recovery.
-
-Under the current GitHub delivery profile, examples of allowed experiments are:
-
-- local Jujutsu authoring for stacked diffs or conflict management;
-- local branch/stack manipulation that exports ordinary Git branches and PRs;
-- prototype tooling that improves the active profile's stack metadata.
-
-Forbidden without a successor delivery profile and migration ADR:
-
-- bypassing or replacing the active profile's change-admission surface or
-  integration serializer;
-- treating an identity outside the active profile's provenance contract as
-  release provenance;
-- requiring downstream repositories to adopt a new VCS;
-- hiding conflicts from the active profile's required admission status or
-  integration serializer.
+Source-authoring experiments and VCS adapters remain owned by the Source
+Authoring and Parallel Change Integration standards. This verification
+standard consumes their exact candidate; it does not select or govern a VCS.
 
 ## Adoption
 

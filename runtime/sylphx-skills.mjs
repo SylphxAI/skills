@@ -25,6 +25,11 @@ import {
 } from './constitution.mjs';
 import { packageDigest } from './package-digest.mjs';
 import {
+  inspectLegacyAgentsProjection,
+  legacyAgentsProjectionReadback,
+  retireLegacyAgentsProjection,
+} from './legacy-agents-projection.mjs';
+import {
   configureEnactMcp,
   ENACT_MCP_ENV,
   DEFAULT_ENACT_MCP_URL,
@@ -409,9 +414,21 @@ function refreshAutoSyncInstallation() {
 
 function sync() {
   const targets = resolveTargets({ requireExplicit: true });
+  // Codex discovers the shared ~/.agents/skills root as well as its own
+  // runtime root. Retire only a byte-for-byte known predecessor projection;
+  // a filename or claimed owner alone never grants deletion authority.
+  const legacyProjection = targets.some((target) => target.runtime === 'codex')
+    ? inspectLegacyAgentsProjection({ home })
+    : null;
   const result = targets.map((target) => ({ target, manifest: syncTarget(target) }));
+  const retiredLegacyProjection = retireLegacyAgentsProjection(legacyProjection);
   refreshAutoSyncInstallation();
-  if (jsonOutput) console.log(JSON.stringify({ command: 'sync', catalogDigest: `sha256:${catalogDigest}`, targets: result }, null, 2));
+  if (jsonOutput) console.log(JSON.stringify({
+    command: 'sync',
+    catalogDigest: `sha256:${catalogDigest}`,
+    targets: result,
+    retiredLegacyProjection,
+  }, null, 2));
 }
 
 function install() {
@@ -426,6 +443,10 @@ function install() {
 
 function status() {
   const targets = resolveTargets();
+  const catalogNames = new Set(catalog.skills.map((skill) => skill.name));
+  const legacyReadback = targets.some((target) => target.runtime === 'codex')
+    ? legacyAgentsProjectionReadback({ home })
+    : null;
   const result = targets.map((target) => withTargetGenerationLock(target.path, (lockToken) => {
     recoverTargetGeneration(target.path, lockToken);
     const manifest = readManifest(target);
@@ -469,6 +490,13 @@ function status() {
     const constitution = instructionFile
       ? inspectConstitution(instructionFile)
       : { path: null, installed: null, current: true, contentDigest: null, error: null };
+    const legacyNativeProjection = target.runtime === 'codex' && legacyReadback
+      ? {
+        ...legacyReadback,
+        duplicateNames: legacyReadback.skills.filter((name) => catalogNames.has(name)),
+        retiredNames: legacyReadback.skills.filter((name) => !catalogNames.has(name)),
+      }
+      : null;
     return {
       runtime: target.runtime,
       path: target.path,
@@ -485,7 +513,10 @@ function status() {
         && runtimeCurrent
         && manifestShapeCurrent
         && synchronizedAtCurrent
-        && constitution.current,
+        && constitution.current
+        && legacyNativeProjection?.state !== 'recognized'
+        && legacyNativeProjection?.state !== 'retirement-interrupted'
+        && legacyNativeProjection?.state !== 'invalid',
       catalogDigest: manifest?.catalogDigest || null,
       sourceCommit: manifest?.sourceCommit ?? null,
       packageVersion: manifest?.packageVersion || null,
@@ -501,6 +532,7 @@ function status() {
       synchronizedAtCurrent,
       driftedPackages,
       constitution,
+      legacyNativeProjection,
     };
   }));
   if (jsonOutput) console.log(JSON.stringify({ command: 'status', targets: result }, null, 2));
@@ -509,6 +541,9 @@ function status() {
 
 function clear() {
   const targets = resolveTargets({ requireExplicit: true });
+  const legacyProjection = targets.some((target) => target.runtime === 'codex')
+    ? inspectLegacyAgentsProjection({ home })
+    : null;
   const result = [];
   for (const target of targets) {
     withTargetGenerationLock(target.path, (lockToken) => {
@@ -527,7 +562,8 @@ function clear() {
       log(`cleared ${removed} Sylphx skills from ${target.runtime}: ${target.path}`);
     });
   }
-  if (jsonOutput) console.log(JSON.stringify({ command: 'clear', targets: result }, null, 2));
+  const retiredLegacyProjection = retireLegacyAgentsProjection(legacyProjection);
+  if (jsonOutput) console.log(JSON.stringify({ command: 'clear', targets: result, retiredLegacyProjection }, null, 2));
 }
 
 function testHoldEnableAfterReconcile() {

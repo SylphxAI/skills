@@ -12,8 +12,8 @@ unreconciled rewards.
 ## Atomic boundary
 
 Own one campaign/offer's objective, audience, eligibility, placement, message,
-economics, fulfillment/reversal, channel handoffs, fraud, support, experiment,
-and shutdown. Do not own the whole marketing system, payment provider ledger,
+economics, applicable benefit fulfillment/reversal, channel handoffs, fraud,
+support, experiment, and shutdown. Do not own the whole marketing system, payment provider ledger,
 referral program, store listing, or game/app design.
 
 Use a draft artifact ID. Consume payment, refund, economy, referral,
@@ -23,22 +23,28 @@ invent them during design.
 
 ## Agent-first invariant
 
-Construct every campaign state, eligibility policy, ledger/grant adapter,
-channel asset, provider authority, experiment, fraud/support path, telemetry,
-cap, expiry, kill switch, and reconciliation before activation. Low volume or
-unknown ROI never justifies manual fulfillment or later hardening. Separate
-construction, exposure, qualification, spend, and grant authority; dormant
-campaigns perform zero sends, SDK work, grants, or data collection.
+Construct every applicable campaign state, eligibility policy, channel asset,
+provider authority, experiment, fraud/support path, telemetry, cap, expiry,
+kill switch, and reconciliation before activation. Build ledger/grant/reversal
+adapters only for a discount, reward, credit, entitlement, or other fulfilled
+benefit; informational/lifecycle campaigns record that mode as non-applicable.
+Low volume or unknown ROI never justifies manual fulfillment or later
+hardening. Separate construction, exposure, qualification, spend, and any grant
+authority; dormant campaigns perform zero sends, SDK work, grants, or data collection.
 
 ## Workflow
 
 1. Define exact objective and incremental-value hypothesis, audience/cohorts,
    platforms/territories/age modes, baseline, budget/reward/margin caps, time
    horizon, owner, and ruin boundaries.
-2. Read `references/promotion-campaign-patterns.md`. Select offer type and state
-   the normal alternative; model loyal/active, new, lapsed, payer/non-payer,
+2. Read `references/promotion-campaign-patterns.md`. Select campaign/benefit
+   mode (`informational`, `discount`, `reward`, `credit`, `entitlement`, or
+   another explicit type), state the normal alternative, and mark
+   fulfillment/reversal branches applicable or not applicable. Model
+   loyal/active, new, lapsed, payer/non-payer,
    ownership, refund/dispute, consent, region, platform, and abuse states.
-3. Define deterministic view/redeem/qualify/grant eligibility with reason codes,
+3. Define deterministic view and exposure eligibility, plus redeem/qualify/grant
+   eligibility only when the selected benefit requires it, with reason codes,
    user+offer cooldowns, conflict/stacking, caps, expiry, ownership overlap,
    baseline path, and support explanation.
 4. Place only at a value/intent transition. Specify cross-channel dedupe,
@@ -46,7 +52,8 @@ campaigns perform zero sends, SDK work, grants, or data collection.
    deep link, and notification/store/referral handoffs.
 5. Write transparent benefit, condition, duration, renewal/normal state, limits,
    expiry, reversal, and support route. Localize meaning, not just strings.
-6. Model exposure and authoritative fulfillment separately, including no-op,
+6. Model exposure and, when applicable, authoritative fulfillment separately,
+   including no-op,
    failure, duplicate/out-of-order, refund/chargeback, fraud, rollback,
    compensation, restore, migration, support correction, and live readback.
 7. Compute incremental retained contribution after discount/reward, fees,
@@ -128,12 +135,13 @@ Return one typed Promotion Campaign Contract with:
 
 1. objective, audience/cohort, baseline, exact offer, economics, authority,
    budgets/caps, horizon, assumptions, and ruin boundaries;
-2. view/redeem/qualify/grant eligibility, reason, conflict/stacking, user+offer
+2. view/exposure and applicable redeem/qualify/grant eligibility, reason, conflict/stacking, user+offer
    cooldown, ownership, expiry, and support matrix;
 3. placement/message/localization, channel dedupe/suppression, consent,
    preference, privacy, and deep-link contract;
-4. exposure and fulfillment/reversal/compensation state machines and ledger;
-5. fraud, refund/dispute, restore/migration, support, and reconciliation rules;
+4. exposure state machine plus applicable fulfillment/reversal/compensation
+   state machines and ledger, or an explicit non-benefit disposition;
+5. applicable fraud, refund/dispute, restore/migration, support, and reconciliation rules;
 6. event schema, causal experiment, economics and trust countermetrics;
 7. expected-value/CVaR record where uncertainty is material, plus
    scale/hold/pause/withdraw, provider end/cap, kill switch, live readback, and
@@ -141,5 +149,6 @@ Return one typed Promotion Campaign Contract with:
 8. specialist handoffs with draft IDs, owners, required inputs/outputs,
    acceptance questions, and no fabricated proof.
 
-Complete only when every eligible/ineligible impression, qualification, grant,
-reversal, and withdrawal is explainable, bounded, replayable, and support-safe.
+Complete only when every eligible/ineligible impression, applicable
+qualification/grant/reversal, and withdrawal is explainable, bounded,
+replayable where applicable, and support-safe.

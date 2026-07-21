@@ -141,10 +141,41 @@
       "required": ["lane", "verificationCommands", "terminalBoundary", "recoveryClass", "deployable"],
       "properties": {
         "lane": { "type": "string", "minLength": 3 },
+        "ciModel": { "$ref": "#/$defs/id" },
         "verificationCommands": { "$ref": "#/$defs/nonEmptyStrings" },
         "terminalBoundary": { "type": "string", "minLength": 20 },
         "recoveryClass": { "$ref": "#/$defs/id" },
         "deployable": { "type": "boolean" },
+        "packageRelease": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["producer", "strategy"],
+          "properties": {
+            "producer": { "type": "boolean" },
+            "strategy": { "$ref": "#/$defs/id" },
+            "artifactKinds": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/id" }
+            },
+            "registryRefs": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "type": "string", "minLength": 3 }
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "required": ["producer"],
+                "properties": { "producer": { "const": true } }
+              },
+              "then": { "required": ["artifactKinds", "registryRefs"] }
+            }
+          ]
+        },
         "runnerProfiles": {
           "type": "object",
           "additionalProperties": {

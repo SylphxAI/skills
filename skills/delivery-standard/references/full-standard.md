@@ -39,7 +39,7 @@ Use the strongest done state that matches the task **and active delivery lane**:
 | --- | --- | --- |
 | Research / analysis only | Durable artifact, issue, ADR draft, or explicit summary committed or otherwise stored in the agreed SSOT | Private notes, chat-only summary, uncommitted files |
 | Ordinary reversible repo change (direct-trunk active) | Ordinary fast-forward to the default branch with local/narrowest validation evidence | Local diff, unpushed commit, or PR-only when FF is the live path |
-| Ordinary reversible repo change (compatibility lane) | Branch pushed and PR opened/updated with validation evidence | Local diff, unpushed commit, workspace artifact |
+| PR preparation or submission explicitly requested (compatibility lane) | Branch pushed and PR opened/updated with validation evidence | Local diff, unpushed commit, workspace artifact |
 | Integrated repo change (compatibility / fenced class) | PR merged through branch protection, required checks, policy gates, and merge queue where required | PR open, queued, or failing checks |
 | Integrated repo change (direct-trunk ordinary) | Ordinary FF landed on default branch; deploy/release only via verified promotion | FF without required local proof, or treating raw push as deploy authority |
 | Versioned package release | Release intent landed through the active lane, package published by the repository workflow, and registry/provenance readback recorded | Manual publish, human-owned version bump, or publish proof based only on workflow exit code |
@@ -68,8 +68,10 @@ Default delivery path (resolve lane first):
   active — re-query live mode/generation/denyingScope).
 - Verify deployment with smoke checks, health checks, logs, metrics, or
   user-visible acceptance criteria.
-- Record durable release notes, changelog entries, ADRs, or memory when the
-  change affects future work.
+- Record the change in a product-owned changelog, release note, or ADR, or link
+  the corresponding Enact decision/evidence, when it affects future work.
+  Runtime memory may cache only a pointer or working context; it is not the
+  sole durable release or decision authority.
 - Reconcile the workspace without deleting unique or unattributed state.
 
 A PR is an intermediate artifact on the compatibility lane, not the finish line
@@ -126,7 +128,11 @@ does not undo external consumption.
 
 ## Release Notes
 
-Update changelog, release notes, ADRs, or memory when the change affects future development, operators, migration behavior, API contracts, user-facing workflows, or production support.
+Update a product-owned changelog, release note, or ADR, or link the
+corresponding Enact decision/evidence, when the change affects future
+development, operators, migration behavior, API contracts, user-facing
+workflows, or production support. Runtime memory may retain a pointer or
+working context, never the sole durable fact.
 
 ## Production Verification
 
@@ -140,6 +146,14 @@ Use the repository's documented release/deploy path. Verify with the narrowest m
 - Automated canary/SLO analysis verdicts
 - Synthetic checks
 - User-visible acceptance criteria
+
+Readback uses the audience intended for the claim. Operator logs, traces,
+topology, migration state, control knobs, and raw diagnostics stay in protected
+operator channels. Public/customer verification may use only an intentional
+versioned product, status, support, incident, audit, or protocol projection with
+the correct authorization scope and minimum allowlisted fields. A delivery test
+must not widen a public response contract merely to make internal evidence easy
+to scrape.
 
 If production verification is blocked, state the blocker, current deployment state, and exact next action.
 

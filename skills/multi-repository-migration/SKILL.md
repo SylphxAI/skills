@@ -1,6 +1,6 @@
 ---
 name: multi-repository-migration
-description: "Plan, execute, and audit a software or architecture migration across multiple repositories. Use for organization-wide Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or required architecture cutovers. Inventory capabilities plus behaviors/contracts/surfaces, refactor real code, prove exact-candidate semantics, choose one-step versus expand-contract from lifecycle risk, retire legacy structure, and invalidate stale proof."
+description: "Plan, execute, and audit a substantial software or architecture migration in one or many repositories. Use for Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or required architecture cutovers that need independently verifiable slices. Inventory behaviors/contracts/surfaces, refactor real code, prove exact-candidate semantics, choose lifecycle-appropriate cutover, retire legacy structure, and invalidate stale proof."
 ---
 
 # Multi-Repository Migration
@@ -22,7 +22,10 @@ advances on narrative status or stale proof.
    behaviors, invariants, contracts, scenarios, surfaces, state transitions, and
    external effects. Files and lines are implementation mappings, not the
    semantic denominator.
-3. Cut vertical slices. Each slice must have one observable job, a stable boundary, a target implementation, parity proof, an authority switch, a production probe, and a rollback or forward-recovery path.
+3. Cut vertical slices. Each slice must have one observable job, a stable
+   boundary, a target implementation, parity proof, an authority switch, a
+   verification probe at the declared lifecycle stage, and a rollback or
+   forward-recovery path.
 4. Establish the contract before parallel implementation. Use one executable schema or public interface as the source of truth; derive language bindings and fixtures instead of hand-maintaining mirrors.
 5. Build the execution graph. Serialize shared contracts, migrations, registries, configuration schemas, and CI workflows. Fan out slices with disjoint write sets and one accountable owner per slice.
 6. Select the shortest safe cutover from the real lifecycle stage. In
@@ -47,7 +50,10 @@ advances on narrative status or stale proof.
 
 - Treat a one-time golden baseline as characterization evidence, not permanent parity proof.
 - Do not accept skipped tests, missing fixtures, health-only probes, or successful compilation as behavioral equivalence.
-- Bind proof to source revision, target revision, target artifact digest, contract digest, behavior-spec digest, corpus digest, and deploy readback.
+- Bind proof to source revision, target revision, target artifact digest,
+  contract digest, behavior-spec digest, corpus digest, and verification
+  readback at the declared stage. Require deploy/live readback only when the
+  terminal includes deployed or live authority.
 - Fail on unclassified tracked migration changes. A dashboard, comment, or manually edited state is not a gate.
 - Measure progress by completed capabilities and weighted risk, never migrated line count or repo count alone.
 - A metadata/docs/folder-only migration cannot complete a code-architecture
@@ -90,7 +96,7 @@ Slice graph:
 | Slice | Observable job | Contract | Write set | Depends on | Parallel lane | Owner |
 
 Parity and cutover:
-| Slice | Differential corpus | State effects | Runtime probe | Guardrail | Rollback |
+| Slice | Differential corpus | State effects | Stage/probe | Guardrail | Rollback |
 
 Control-plane decisions:
 - Serialized choke points:
