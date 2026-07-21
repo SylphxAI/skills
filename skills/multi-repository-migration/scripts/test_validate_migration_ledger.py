@@ -154,9 +154,11 @@ class MigrationLedgerValidatorTests(unittest.TestCase):
                 "cutover": {
                     "mechanism": "router",
                     "rollback": "forward recovery",
-                    "prodProbe": "probe://orders",
+                    "verificationStage": "development",
+                    "verificationProbe": "probe://orders",
                 },
-                "runtimeReadback": {
+                "verificationReadback": {
+                    "verificationStage": "development",
                     "targetRef": "target-new",
                     "artifactDigest": DIGEST,
                     "probeArtifact": "probe://orders/run/1",
@@ -181,9 +183,11 @@ class MigrationLedgerValidatorTests(unittest.TestCase):
                 "cutover": {
                     "mechanism": "router",
                     "rollback": "route to source",
-                    "prodProbe": "probe://orders",
+                    "verificationStage": "public_production",
+                    "verificationProbe": "probe://orders",
                 },
-                "runtimeReadback": {
+                "verificationReadback": {
+                    "verificationStage": "public_production",
                     "targetRef": "target-new",
                     "artifactDigest": NEW_DIGEST,
                     "probeArtifact": "probe://orders/run/1",
@@ -193,6 +197,51 @@ class MigrationLedgerValidatorTests(unittest.TestCase):
         )
         errors = validator.validate_ledger(ledger)[0]
         self.assertTrue(any("artifactDigest must match" in error for error in errors))
+
+    def test_verification_readback_stage_must_match_cutover_stage(self) -> None:
+        ledger = base_ledger()
+        capability = ledger["repos"][0]["capabilities"][0]
+        capability.update(
+            {
+                "state": "authority_target",
+                "cutover": {
+                    "mechanism": "router",
+                    "rollback": "route to source",
+                    "verificationStage": "development",
+                    "verificationProbe": "probe://orders",
+                },
+                "verificationReadback": {
+                    "verificationStage": "public_production",
+                    "targetRef": "target-new",
+                    "artifactDigest": DIGEST,
+                    "probeArtifact": "probe://orders/run/1",
+                    "observedAt": "2026-07-10T12:00:00Z",
+                },
+            }
+        )
+        errors = validator.validate_ledger(ledger)[0]
+        self.assertTrue(any("readback stage must match" in error for error in errors), errors)
+
+    def test_legacy_production_readback_remains_compatible(self) -> None:
+        ledger = base_ledger()
+        capability = ledger["repos"][0]["capabilities"][0]
+        capability.update(
+            {
+                "state": "authority_target",
+                "cutover": {
+                    "mechanism": "router",
+                    "rollback": "route to source",
+                    "prodProbe": "probe://orders",
+                },
+                "runtimeReadback": {
+                    "targetRef": "target-new",
+                    "artifactDigest": DIGEST,
+                    "probeArtifact": "probe://orders/run/1",
+                    "observedAt": "2026-07-10T12:00:00Z",
+                },
+            }
+        )
+        self.assertEqual(validator.validate_ledger(ledger)[0], [])
 
 
 if __name__ == "__main__":

@@ -312,7 +312,7 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
 
 Current technology, typed-effect, contract/transport, database-change, and
 AI-runtime selections resolve from the binding profile packages in
-`SylphxAI/skills` plus current Control Plane organization-wide adoption state. This standard owns the
+`SylphxAI/skills` plus current Sylphx Enact organization-wide adoption state. This standard owns the
 bar and proof obligations; the selected profile owns replaceable choices.
 Repositories record only their local selected stack and exceptions, not a copy
 of the technology stack profile.
@@ -480,11 +480,33 @@ For no-human operations, observability is a contract:
   deletion or cryptographic-erasure behavior before collecting production
   evidence. Legal hold is explicit and scoped; “append-only” is not an excuse
   to retain protected payloads forever.
+- Treat raw internal/operator logs, traces, profiles, topology,
+  migration/cutover state, implementation identifiers, stack details, control
+  knobs, and unrestricted diagnostics as protected evidence. Authentication
+  alone does not grant operator visibility, and observability never authorizes
+  unrelated publication. Tenant-authorized customer-owned telemetry
+  intentionally exposed by an observability product is customer product data,
+  not operator leakage.
+- Customer or public operational state is a separate intentional product,
+  status, support, incident, audit, legal, or protocol contract. It requires a
+  named audience and purpose, subject/tenant authorization where applicable,
+  an allowlisted versioned minimum schema, stable semantics, and negative tests
+  for secrets, internal details, cross-tenant state, and exploit-enabling fields.
+- Preserve legitimate external diagnostics such as protocol-defined error
+  fields, retry guidance, documented rate limits, public incident state, and a
+  caller's own operation status. Link public errors to protected evidence with
+  an opaque occurrence identifier; do not expose raw telemetry or internal
+  process state as an ad hoc `debug`, `metadata`, or “honesty” object.
 - Metrics need stable names, units, labels with bounded cardinality, and owners.
 - Production-bound changes should state which traces, metrics, logs, SLOs,
   synthetic checks, or smoke checks prove the change.
 - Logs without trace correlation are acceptable only for local tooling or
   intentionally offline scripts.
+
+When the independently accepted artifact is a complete logs/metrics/traces,
+SLO, alert, diagnostic-access, and operator-action design, compose
+`operational-observability-review` rather than expanding this standard into a
+second observability report.
 
 Concurrency and worker correctness:
 

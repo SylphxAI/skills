@@ -1,0 +1,4 @@
+interface:
+  display_name: "Operational Observability Review"
+  short_description: "Design or audit service observability and diagnostics"
+  default_prompt: "Use $operational-observability-review to design a protected, actionable operational observability contract."

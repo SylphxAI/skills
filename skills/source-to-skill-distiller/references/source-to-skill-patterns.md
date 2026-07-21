@@ -6,8 +6,8 @@ Use this reference when source material is larger than a short pasted method, sp
 
 - `source-skill-1` — Evidence first. Record what was read, what was unavailable, and which claims are inferred before writing instructions.
 - `source-skill-2` — Mechanisms beat summaries. Keep decision rules, procedures, outputs, quality signals, and failure modes; discard prose that only explains the topic.
-- `source-skill-3` — The trigger is a contract. The frontmatter description must name concrete source types, user intents, and trigger phrases.
-- `source-skill-4` — Default to one skill. Add modes, routers, or families only when source tasks have independent triggers, outputs, or validation paths.
+- `source-skill-3` — Discovery metadata is a semantic contract. The frontmatter description must front-load the concrete job, artifact, material contexts, and nearby exclusions; trigger words are anchors, not a literal router.
+- `source-skill-4` — Default to one skill. Split only when source tasks are independently requestable and have distinct accepted artifacts and acceptance authorities; never add a meta-router.
 - `source-skill-5` — Progressive disclosure keeps the skill usable. Put long language notes, rubrics, examples, edge cases, and source inventories in references.
 - `source-skill-6` — Scripts are for deterministic repeat work. Do not script judgment, taste, or synthesis that an agent must reason through.
 - `source-skill-7` — Public skills require original synthesis. Do not copy source structure or close paraphrases into the package.
@@ -77,7 +77,7 @@ status: keep | merge | discard
 | One skill with modes | Same root job, different evidence depth or artifact targets | Modes hide unrelated triggers |
 | Skill plus reference | Rules or language matrices are useful but too long for `SKILL.md` | Reference is never linked or needed |
 | Skill plus script | Validation, extraction, or fixture comparison is mechanical | Synthesis is judgment-heavy |
-| Router plus subskills | Independent user intents need separate triggers and files | A simple mode table is enough |
+| Separate sibling skills | Independent user intents have distinct accepted artifacts and acceptance authorities | A shared job can use one Skill with modes or references |
 | Public repository package | User asks for open-source distribution or marketplace readiness | User only needs a local skill draft |
 
 ## Output Event Schema
@@ -109,6 +109,7 @@ source_to_skill_conversion:
 - Evidence boundary separates read evidence, user claims, inference, and unavailable material.
 - At least one mechanism card changes future agent behavior.
 - Frontmatter description includes concrete "Use when" trigger text.
+- Frontmatter does not rely on the body to explain the route or stuff a synonym list.
 - `SKILL.md` can run without the original source in context.
 - Every reference is linked directly from `SKILL.md`.
 - Multilingual source terms are preserved only when they affect triggering, examples, or locale behavior.

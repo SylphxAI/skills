@@ -345,7 +345,7 @@ Use the smallest durable artifact that changes future behavior:
 | Pricing, packaging, roadmap, positioning, monetization, or commercial experiment | Commercial ADR |
 | Project goal, lifecycle, boundary, public surfaces, delivery proof, or adoption state | `PROJECT.md` plus `project.manifest.json` |
 | Reusable static cross-repo rule/profile/procedure | Binding Skills package and its schemas/evals |
-| Live multi-repository migration, status, adoption, or work | Control Plane record plus owning repository evidence |
+| Live multi-repository migration, status, adoption, or work | Sylphx Enact record plus owning repository evidence |
 | AI behavior correctness | Versioned eval manifest, thresholds, traces, failure examples |
 | High-blast-radius concurrency or irreversible workflow | Property/model test, deterministic simulation harness, replay artifact |
 | Runtime rollout risk | Feature flag, canary analysis contract, SLO/error-budget gate, rollback/forward-fix plan |

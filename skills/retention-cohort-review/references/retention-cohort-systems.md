@@ -145,8 +145,11 @@ post-activation behavior. This catches Simpson's-paradox-like reversals.
    credible comparison, pretrend, exclusion, sensitivity, and falsification test.
 6. Specify interference risks for collaboration, marketplace, social, and game
    systems where one user's treatment affects another.
-7. Read through the full retention window and long-term guardrails; do not ship
-   from an early proxy alone.
+7. A final long-term causal or retention claim reads through the full retention
+   window and long-term guardrails. A bounded reversible rollout may proceed on
+   predeclared leading indicators plus harm guardrails, exact exposure,
+   rollback, and continued mature-window readback; never relabel an early proxy
+   as the final outcome.
 
 ## Events
 

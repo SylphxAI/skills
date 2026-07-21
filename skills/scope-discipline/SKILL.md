@@ -1,6 +1,6 @@
 ---
 name: scope-discipline
-description: "Keep planning, implementation, migration, architecture, and review work rigorous, agent-native, high-leverage, and finishable. Use when a task risks over-engineering, under-engineering, human-era cost assumptions, repeated review expansion, speculative hardening, missed future-proofing, or a completion bar that keeps moving."
+description: "Prevent over-engineering, under-engineering, and moving completion bars while keeping planning, implementation, migration, architecture, and review rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands through human-era cost assumptions, repeated review, speculative hardening, or unjustified waiting."
 ---
 
 # Scope Discipline
@@ -251,6 +251,10 @@ item only if it has concrete value. Do not implement it merely to make the repor
 look exhaustive.
 
 ### Close decisively
+
+For a reusable finite closeout checklist, read
+[references/closure-brief.md](references/closure-brief.md). It is a supporting
+checklist, not a second completion authority.
 
 When the declared terminal conditions pass:
 

@@ -11,7 +11,7 @@ repository must also satisfy the applicable engineering and delivery standards.
 
 Rule IDs:
 
-- `repo-entry-01` — runtime entrypoint resolves Skills, local facts, and Control Plane roles.
+- `repo-entry-01` — runtime entrypoint resolves Skills, local facts, and Sylphx Enact roles.
 - `repo-architecture-01` — real product code satisfies the canonical engineering architecture.
 - `repo-verify-01` — one proportional exact-candidate verification entrypoint exists.
 - `repo-delivery-01` — the repository declares and proves its terminal delivery boundary.
@@ -20,7 +20,7 @@ Rule IDs:
 Every active durable repository exposes:
 
 1. **Runtime constitution** — `AGENTS.md`, `CLAUDE.md`, or runtime equivalent.
-   It projects the compact Skills + Control Plane topology and contains only
+   It projects the compact Skills + Sylphx Enact topology and contains only
    repo-local commands, hazards, and authority additions. It must not copy or
    fork detailed standards.
 2. **Project identity** — `PROJECT.md` plus the canonical machine-readable
@@ -49,7 +49,7 @@ Every active durable repository exposes:
 - `SylphxAI/skills` owns static standards, procedures, and binding profiles.
 - The runtime constitution owns compact always-on law and local operating facts.
 - The product repository owns its code, contracts, ADRs, specs, and delivery.
-- Control Plane owns live adoption, work, ingestion, and effect state.
+- Sylphx Enact owns live adoption, work, ingestion, and effect state.
 - Retired repositories are historical lineage, not
   writable instruction or live-state authorities.
 
@@ -75,7 +75,7 @@ not a reason to hold a proven terminal indefinitely.
 | Code architecture | Compiler/module visibility or semantic dependency analysis plus domain/use-case/adapter behavior tests; no source-string implementation-token tests |
 | Verification | Exact-candidate command and results |
 | Delivery | Proof at the repository's declared terminal boundary |
-| Selected-repository adoption | Control Plane selector/conformance readback |
+| Selected-repository adoption | Sylphx Enact selector/conformance readback |
 
 ## Migration terminal
 
@@ -94,5 +94,5 @@ canonical architecture migration.
 ## Validation
 
 Run the repository's declared verification entrypoint, then verify the active
-delivery boundary. Organization-wide status is Control Plane readback; it is not a
-repo-local completion claim.
+delivery boundary. Organization-wide status is Sylphx Enact readback; it is not
+a repo-local completion claim.

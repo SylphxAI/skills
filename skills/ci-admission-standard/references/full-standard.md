@@ -248,21 +248,16 @@ culprit attribution, and queue telemetry.
   otherwise exonerate as tip-of-tree flake); eject-and-retest rather than
   head-of-line block; status-check timeout so a hung check fails-and-ejects
   instead of hanging forever.
-- **Adjudication has a clock, not a committee.** A test crossing the flake
-  threshold enters quarantine within 24 hours of the crossing being noticed
-  — no automated flake-scoring event log exists yet to timestamp the
-  crossing precisely, so noticing starts the clock (disclosed, not yet
-  built). Owner defaults from the matching `boundaries.owns[].name` in the
-  project manifest (mapping a test to its bounded context is a judgment
-  call today), with expiry defaults from the active policy —
-  and un-quarantine follows the same clock once the fix lands. At organization
-  scale even a small flake rate is a daily stream of these decisions, so
-  the adjudicator is a mechanism, not a review meeting; an agent may act
-  ahead of it for one crossing, but must never become a standing gate other
-  work has to wait on. Until the automation ships, the agent observing the
-  crossing performs the same adjudication by hand inside the same 24-hour
-  clock. Sustained quarantine growth is telemetry that the suite, not the
-  test portfolio, is wrong.
+- **Adjudication has a clock, not a committee.** A threshold crossing creates a
+  typed flake finding with observed time, test/candidate identity, evidence,
+  owner, policy-selected response deadline, quarantine budget/expiry, and
+  repair/un-quarantine predicate. Owner resolution uses the project manifest
+  and active policy; unresolved mapping is a typed residual, never invented.
+  The selected repository/runtime mechanism executes that contract. Missing
+  automation remains live work owned by the active coordination authority, not
+  timeless prose authorizing a permanent by-hand fallback. Sustained
+  quarantine growth is telemetry that the suite, not the test portfolio, is
+  wrong.
 
 ### Throughput and batch escalation
 

@@ -50,7 +50,8 @@ Produce a **Requirements Contract** containing:
 
 - artifact identity/version, subject and boundary, stakeholders/affected
   parties, contexts, outcomes, definitions, assumptions, constraints,
-  authorities, and non-goals;
+  authorities, non-goals, audience, sensitivity, authorized access, retention,
+  and any separately versioned public/customer projection;
 - stakeholder and user need register with source, rationale, evidence state,
   owner, conflicts, and disposition;
 - scenario and state model covering normal, alternate, failure, recovery,
@@ -80,6 +81,11 @@ Produce a **Requirements Contract** containing:
   outcome, environment, authority, or material risk justifies.
 - Do not treat priority labels, stakeholder seniority, generated prose, or
   internal consistency as validation evidence.
+- Do not publish raw stakeholder evidence, contract/security details, misuse
+  cases, internal process state, or diagnostic sources merely because a
+  Requirements Contract is committed. A public/customer derivative has a named
+  audience, purpose, minimum allowlist, authorization where applicable, and
+  negative leakage review; it points opaquely to protected evidence.
 - Keep requirements, architecture decisions, work items, tests, and observed
   delivery as linked artifacts with distinct owners.
 

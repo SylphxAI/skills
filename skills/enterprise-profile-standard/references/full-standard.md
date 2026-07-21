@@ -7,7 +7,7 @@ toolchains, providers, protocols, operating modes, and architecture
 generations—without mixing dated choices into timeless engineering standards.
 
 Standards own durable outcomes and predicates. Profiles choose current defaults.
-Repository manifests bind the selections that apply locally. Control Plane owns
+Repository manifests bind the selections that apply locally. Sylphx Enact owns
 resolved live adoption state and adoption progress.
 
 ## Profile contract
@@ -99,6 +99,6 @@ readback. Keep these layers distinct:
 - Skills source/profile admitted;
 - repository manifest resolved;
 - migration delivered;
-- Control Plane live migration completion observed.
+- Sylphx Enact live migration completion observed.
 
 No layer may manufacture the next one from prose or an authored `complete` flag.

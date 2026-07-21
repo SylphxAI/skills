@@ -100,9 +100,11 @@ Responsibility split:
 - **The active serializer integrates**: compatibility queues must prove their
   merge-group candidate; parallel-change landing must use its selected-candidate CAS
   and scoped-proof contract.
-- **Production feeds the loop**: CI failures, queue failures, deploy signals,
-  logs, metrics, traces, regressions, and security findings become issues, PRs,
-  ADRs, specs, or repairs to the owning contract and semantic oracle.
+- **Production feeds the loop**: CI/queue/deploy/telemetry/regression/security
+  signals create audience-safe findings and opaque protected-evidence
+  references, then become Work Items, source candidates, ADRs/specs, or repairs
+  to the owning contract and semantic oracle. Raw signals do not become public
+  issue or PR bodies merely because the forge is convenient.
 
 ### Capability And Review Perspectives
 
@@ -163,7 +165,8 @@ tooling. The gate accepts any token; neutrality is the writing rule.
 
 #### `AI-REVIEW` (PR comment)
 
-Adversarial second-pass review artifacts MUST be an unedited PR comment containing:
+When the active profile selects an adversarial second-pass review artifact, its
+canonical disclosure-safe structured PR projection contains:
 
 ```text
 AI-REVIEW
@@ -185,10 +188,21 @@ reviewer attribution within the comment layer; it does not make a candidate-
 controlled workflow an independent admission authority. A shared login is
 labelled declared separation only. The active admission adapter's policy-review verifier is the
 canonical digest implementation.
-Policy-repository scope, credential modes, and required-status wiring live in
-[`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) §Policy
-Repository Admission; this section owns the field contract that
-policy-review verifier parses.
+Sensitive findings and raw evidence stay behind authorized opaque locators; the
+public/forge projection carries only the minimum evidence statement needed to
+evaluate the candidate safely.
+Policy/instruction repositories use the active fenced delivery lane.
+[`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md)
+owns required-status and trusted-verifier wiring; the active delivery profile
+owns credential mode and merge authority. This section owns only the review
+field contract that the selected policy-review verifier parses.
+
+The deterministic verifier may hard-gate artifact presence, exact-head binding,
+digest integrity, attribution, schema, and freshness. The raw nondeterministic
+LLM verdict is additional confidence and must never be the sole or independently
+hard-blocking admission oracle; risk-selected deterministic tests, contracts,
+or policy evidence still own the material predicate. This preserves the CI
+Admission rule rather than creating a second gate policy here.
 
 Presence and freshness follow the selected coordination product and forge
 adapter. The portable standard defines claim/recovery obligations but not one
@@ -241,14 +255,15 @@ loss it controls:
   `recovery-decision/pass`, and deploy/rollback proof contexts;
 - stacked-diff controller or approved native stack provider with stack manifests,
   restack automation, queue-prefix policy, and dependency-aware recovery;
-- per-repo `PROJECT_BOUNDARY.md`, `AGENT_GUIDE.md`, local ADR/spec pointers,
-  merge queue, `merge_group` workflow support, and branch rulesets;
 - repo-local `PROJECT.md` and `project.manifest.json` manifests carrying
   project goal, lifecycle, zero-knowledge boundaries, public surfaces, delivery
-  proof, and adoption gaps;
-- signal ingestion from CI failures, merge queue failures, deployments, logs,
-  metrics, traces, regressions, security findings, and customer-facing incidents
-  into GitHub issues;
+  proof, and adoption gaps; legacy `PROJECT_BOUNDARY.md` or `AGENT_GUIDE.md`
+  files are migration inputs, not competing identity authorities;
+- signal ingestion from CI failures, merge queue failures, deployments,
+  regressions, sanitized security findings, and customer-facing incidents into
+  GitHub issues; raw logs, metrics, traces, topology, customer data, and
+  diagnostic evidence stay in protected stores and are linked through opaque or
+  audience-safe evidence references;
 - serializer health, stale claims, candidate risk distribution, CI flake,
   production regression, security posture, and instruction-adoption dashboards;
 - role prompts or agent definitions derived from binding Skills packages instead of copied into
@@ -430,8 +445,9 @@ for these gates when a repository does not already have an equivalent:
 - **Observability**: OpenTelemetry-compatible traces/metrics/structured
   logs; logs without correlation IDs or machine-queryable fields are not
   enough for no-human operations.
-- **GitOps and reconciliation**: PRINCIPLES.md's `P-DECLARATIVE` principle
-  owns this — cited, not restated.
+- **GitOps and reconciliation**: the Delivery Standard and the active
+  product-owned declared GitOps contract own desired state, reconciliation,
+  drift, recovery, and live readback; do not infer a retired principle file.
 - **Delivery flow**: short-lived candidate streams and profile-selected
   serialization; compatibility uses short branches/merge queue, while parallel-change
   uses immutable attempts/CAS. Branch by abstraction and use feature flags for

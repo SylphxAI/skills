@@ -13,7 +13,9 @@ choosing a protocol.
 ## Method
 
 1. Define the question, decision owner, participants, material constraints,
-   evidence boundary, deadline, and what the discussion may decide.
+   evidence boundary, deadline, what the discussion may decide, and the
+   visibility, access, attribution, retention, and publication rule for raw
+   positions, transcripts, evidence, and the final record.
 2. Elicit initial positions independently. Do not reveal a proposed consensus,
    majority, senior participant's answer, or other agents' drafts first.
 3. Normalize positions without erasing disagreement. Separate proposals,
@@ -40,7 +42,9 @@ Create a **Deliberation Record** with:
 - position changes and the evidence or argument that caused them;
 - agreements, unresolved objections, minority or dissenting views;
 - commitments, owners, and unresolved questions; and
-- handoff to a decision, experiment, investigation, or work item.
+- handoff to a decision, experiment, investigation, or work item; and
+- audience classification plus protected-source locators and an intentionally
+  shareable projection where one is authorized.
 
 ## Integrity rules
 
@@ -52,6 +56,10 @@ Create a **Deliberation Record** with:
   argument or source.
 - Preserve attributable commitments while allowing anonymous first-round
   positions when hierarchy or conformity pressure would distort the result.
+- Raw private positions, transcripts, internal hypotheses, customer facts, and
+  protected evidence stay in the authorized deliberation store. A public or
+  broadly shared record uses an audience-safe minimum summary and must not make
+  hidden participants or evidence reconstructable.
 - Do not keep deliberating after a decision owner has enough evidence to act;
   record residual dissent instead.
 

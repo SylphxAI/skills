@@ -57,6 +57,10 @@ Reject or redesign an operating model that:
 
 - creates channel strategy, audiences, campaign claims, offers, spend, or “viral” content without the owning Marketing artifact;
 - uses shared passwords, personal ownership, unscoped permanent tokens, unknown sessions, missing recovery, or credentials in prompts, tickets, code, logs, or artifacts;
+- exposes the protected account/security/operator register—token references,
+  role grants, sessions/devices, recovery paths, provider diagnostics, internal
+  queue state, or takeover evidence—through a public post, reply, profile,
+  status object, or customer-facing artifact;
 - calls an API response “published” without provider/live readback, or retries posts/replies without idempotency and duplicate control;
 - fabricates customers, testimonials, activity, consensus, trends or organic advocacy; astroturfs; buys fake engagement; or impersonates independent users;
 - auto-replies to every mention, argues with criticism, amplifies abuse, discloses private case facts, invents incident/legal state, or lets a model make irreversible enforcement decisions;
@@ -70,8 +74,10 @@ Reject or redesign an operating model that:
 
 Return one Social Media Operating Model containing:
 
-1. artifact identity/state, evidence labels, selected official accounts/channels, approved role, audiences/locales, upstream artifact refs, current-authority register, non-goals and ruin floors;
-2. account/handle/domain/business-container ownership, roles/scopes, credential/token references, MFA/recovery, vendor/agent access, API/app, rate/quota, session/device and audit matrix;
+1. artifact identity/state, evidence labels, selected official accounts/channels, approved role, audiences/locales, upstream artifact refs, non-goals, ruin floors, and an explicit protected-operator versus public-output split;
+2. protected account/handle/domain/business-container authority register:
+   ownership, roles/scopes, credential/token references, MFA/recovery,
+   vendor/agent access, API/app, rate/quota, session/device and audit matrix;
 3. content family, claim, asset, rights, disclosure, locale, accessibility, deep-link, cadence and platform-adaptation contracts;
 4. publishing, approval, scheduling, idempotency, submission, live-readback, edit/correction, retraction, expiry, archive and supersession state machines;
 5. authorized listening sources, provenance, query, dedupe, privacy, retention, language, sampling, spam and signal-quality contract;
@@ -79,6 +85,10 @@ Return one Social Media Operating Model containing:
 7. impersonation, takeover, compromised-token, platform outage, false-post, rights claim, misinformation, coordinated abuse and crisis freeze/recovery playbooks;
 8. agent roles and separation, queues, caps, canaries, anomaly rules, kill switches, dead letters, partial failure, reconciliation, archive, shutdown and observed readback;
 9. operational, conversation, trust, safety, support and marketing handoff metrics, evidence events, QA/replay, learning cadence and unresolved proofs.
+
+Public outputs contain only approved content, disclosures, safe status or
+correction facts, and opaque references needed by their audience; they never
+project the protected authority register or raw operator evidence.
 
 ## Routing boundaries
 

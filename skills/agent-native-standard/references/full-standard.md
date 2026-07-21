@@ -11,7 +11,10 @@ Design systems as if agents are primary operators.
   procedural knowledge rather than an executable tool contract. Keep shared
   skills portable; put client-specific invocation, permission, hook, model, or
   shell behavior in adapters.
-- Make state queryable: health, config, migrations, queues, jobs, traces, metrics, and domain events should be inspectable without tribal knowledge.
+- Make state queryable to the authorized subject or operator: health, config,
+  migrations, queues, jobs, traces, metrics, and domain events should be
+  inspectable without tribal knowledge, while raw internal state remains off
+  public/customer surfaces unless an intentional minimum projection owns it.
 - Prefer deterministic workflows: reproducible builds, replayable migrations, idempotent jobs, stable seeds, content-addressed artifacts, and structured logs.
 - Optimize for autonomous debugging: trace IDs, tagged errors, recovery paths, runbooks, and machine-readable failure details.
 - Do not preserve bad design solely to minimize human review effort; constrain by correctness, risk, and scope rather than diff size.
@@ -127,7 +130,8 @@ triggered by source changes and by upstream model/provider/runtime drift,
 deprecation, capability change, data-policy change, or breached cost, latency,
 quality, privacy, or safety budgets; see
 [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md) for
-eval-gate requirements and the manifest schema.
+eval-gate requirements and the versioned manifest field contract; the owning
+product/evaluation system supplies its executable schema.
 
 Use multi-agent architecture when evals or clear task decomposition justify
 it; multi-agent systems add nondeterminism and should not be added as

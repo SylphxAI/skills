@@ -1,6 +1,6 @@
 ---
 name: prompt-architecture
-description: "AGENTS.md projections, skill metadata, runtime constitutions, and instruction hierarchy without duplicating source instructions. Use when creating, reviewing, or restructuring durable agent instructions. Do not use for ordinary user-facing copy."
+description: "Design or audit durable agent instructions, runtime constitutions, Skill metadata, subagent/delegation briefs, bootstrap/install prompts, and instruction hierarchy without duplicating source policy. Use when creating, reviewing, projecting, or restructuring agent prompt architecture. Do not use for ordinary user-facing copy or one task's content brief alone."
 ---
 # Prompt Architecture
 

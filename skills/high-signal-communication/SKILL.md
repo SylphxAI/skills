@@ -1,6 +1,6 @@
 ---
 name: high-signal-communication
-description: "Produce concise, decision-complete agent communication with high information density. Use when drafting, editing, reviewing, compressing, or handing off user replies, progress updates, reports, tool summaries, commits, pull requests, ADRs, specs, documentation, incident notes, or agent-to-agent records where verbosity, repetition, context cost, or slow comprehension matters."
+description: "Compress or restructure an agent communication into a concise, decision-complete, high-signal artifact. Use when the user explicitly asks to shorten, de-duplicate, hand off, summarize progress, reduce context cost, or repair a verbose/slow-to-understand reply, report, commit, PR, ADR, spec, incident note, or agent record. Do not inject by default for every ordinary reply or document."
 ---
 
 # High-Signal Communication
@@ -54,8 +54,8 @@ question into the primary output.
   predicates over narrative descriptions.
 - Put important information at the beginning. Do not bury the decision or
   blocker in chronology.
-- Preserve raw logs, transcripts, and exploration in their owning artifact;
-  return only the relevant excerpt and locator.
+- Preserve raw logs, transcripts, and exploration in their owning protected
+  artifact; return only an audience-safe relevant excerpt and locator.
 - Use headings or bullets only when they expose distinct peers. Use a paragraph
   for one conclusion. Use tables only when repeated fields materially reduce
   tokens. Avoid diagrams and decorative formatting by default.

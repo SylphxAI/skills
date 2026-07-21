@@ -1,6 +1,6 @@
 ---
 name: incident-standard
-description: "Incident severity, automated detect-mitigate-verify loops, and machine-checkable postmortems. Use when responding to, designing for, or reviewing an operational incident. Do not use for an ordinary defect that has no active service or customer impact."
+description: "Apply the operational incident lifecycle: detection, severity, command state, mitigation, recovery verification, communication, and machine-checkable postmortem. Use when responding to or reviewing an active/recent service incident, or designing that incident lifecycle. Do not use for general proactive observability, resilience design, or an ordinary defect with no incident or customer/service impact."
 ---
 # Incident Standard
 

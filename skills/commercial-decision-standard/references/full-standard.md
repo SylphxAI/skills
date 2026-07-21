@@ -102,89 +102,40 @@ Do not choose a pricing posture by preference. Choose it by fit:
 An ADR may select a mixed strategy, but it must say which segment each part
 serves and what metric would invalidate it.
 
-## Risk Posture And Delegation
+## Commercial risk inputs
 
-Risk posture is a computed decision, not a preference. Agents draft it, the
-principal ratifies its inputs, and downstream decisions read it instead of
-re-asking.
+`decision-quality-standard` owns the general risk-posture, ruin-boundary,
+reversibility, evidence, and decision-precedence method;
+`autonomous-execution-standard` owns execution and escalation authority. This
+standard contributes only commercial inputs such as unit-economics downside,
+contractual commitments, pricing reversibility, market timing, customer trust,
+and opportunity cost. Record a commercial delegation envelope only when a
+pricing, discount, credit, packaging, or commitment limit is itself part of the
+commercial decision. Do not create a second general risk-posture authority here.
 
-- **The record.** A risk-posture record conforms to the active schema selected
-  by the repository's binding profile:
-  the principal's standing parameters (time horizon, ruin boundary,
-  non-negotiables, cross-portfolio tradeoffs), current stage parameters,
-  per-domain acceptance with rationale and evidence, delegation envelopes,
-  and review triggers. Adopt it via a Commercial ADR (or a repo ADR for a
-  single-product company) so the decision history stays durable.
-- **Computation duty.** Agents produce the posture with research and numbers
-  under the Decision Quality method in
-  [`decision-quality-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/decision-quality-standard/references/full-standard.md), with
-  [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md)
-  supplying execution authority and escalation mechanics. Dominated options
-  never survive to ratification and ruin-level options are screened before
-  proposal. Where
-  irreversibility times blast radius turns existential, the arithmetic
-  itself yields floor items; route those through the heavier admission
-  lanes — the security floor and
-  [`incident-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/incident-standard/references/full-standard.md) supply the domain mechanism.
-- **Ratification.** The principal ratifies the standing parameters and the
-  first record once. Review triggers (stage-parameter thresholds, elapsed
-  review date, friction telemetry) recompute the posture without the
-  principal's voice; re-ratification is needed only when a standing
-  parameter itself changes.
-- **Delegation envelopes are the materiality thresholds.** Each decision
-  class carries a limit and an escalation condition: decisions inside the
-  envelope proceed without the principal, decisions outside escalate the
-  narrow question. This is the artifact the execution standard's
-  escalation-by-exception rule reads.
-- **Validation.** No conformance audit ships with this section, and no
-  review-trigger type is automatically detected today: a posture record is
-  validated by schema shape only, and an agent must notice a stage-parameter
-  change, an elapsed review date, or accumulating exceptions and recompute by
-  hand. Trigger detection, floor-item admission-lane wiring, and
-  envelope-breach counting remain follow-up mechanisms owned by the relevant
-  policy and incident controls.
+## Internal settlement and margin topology
 
-## Internal Settlement And Margin Topology
+When products or business units consume each other through stable APIs, keep
+technical metering, cost attribution, managerial reporting, transfer pricing,
+cash settlement, and external customer pricing as distinct decisions. There is
+no universal `$0`, at-cost, or marked-up default: the correct treatment depends
+on legal entities and jurisdictions, tax/transfer-pricing authority, accounting
+policy, funding and performance model, product independence, and the objective
+of the analysis.
 
-Extends `P-PORTFOLIO`: when products consume
-each other through public APIs, that clause already requires paying-customer
-treatment (scoped keys, metered boundaries, no backdoors) but says nothing
-about money — whether metering settles as a real internal charge or stays
-  observability-only. Left unstated, the gap resolves badly: margin gets
-assumed implicitly in code, or compounds silently across layers as each
-consuming product marks up what it did not produce, and neither failure is
-visible until an external price looks wrong or someone asks where a margin
-assumption came from.
+For each material producer-consumer pair, record in the owning commercial ADR:
 
-- **Margin capture point.** Margin is captured once: at the boundary where
-  the portfolio sells to an external, paying customer. Internal-to-internal
-  consumption between products in the same portfolio passes through at cost
-  by default — no compounding, no per-layer markup. This follows from "one
-  engine, many storefronts": a storefront resells the engine; it does not
-  also buy low internally and sell high internally on top of the price the
-  external customer already pays.
-- **The one deliberate exception.** A product explicitly designated an
-  **independent profit center** may charge real margin on internal
-  consumption, because its economics are meant to stand on their own
-  regardless of who the customer is. This is an explicit architectural
-  decision recorded as an ADR in the owning product's own repo — never an
-  implicit default, and never invented unilaterally by a consuming product.
-- **When $0 settlement is acceptable vs. when a real charge is required.**
+- legal and economic relationship plus current authoritative policy;
+- usage and cost-allocation method, without making telemetry a ledger;
+- whether any journal entry, invoice, cash transfer, or margin is real;
+- external pricing impact and double-counting/compounding controls;
+- owner, review trigger, reconciliation source, and required finance/legal
+  approval where applicable.
 
-  | Relationship | Settlement |
-  | --- | --- |
-  | Both products are consolidated under one P&L — neither is funded, evaluated, or reported on independently. | **$0 settlement.** Usage is metered for cost attribution and capacity planning, not billed — the metering exists so `P-BOUNDARY` and observability hold, not to move money. |
-  | Either product is (or is being evaluated to become) independently sellable, fundable, or reportable on its own. | **Real transfer-priced settlement is required**, at the same metered-cost basis an external customer of that engine would pay (at cost, per the rule above, unless the producing product is itself the deliberate profit-center exception). Skipping this hides that product's true unit economics — the anonymous-paying-customer test applied to an internal customer instead of an external one. |
-
-  Which relationship applies to a given product pair is a per-portfolio,
-  per-pair fact recorded in the consuming or producing product's own ADR —
-  this standard states the rule and the two rows; it never lists product names.
-- **Validation.** No conformance audit ships with this section: no schema
-  field yet records a product pair's settlement row, and nothing compares
-  declared settlement against actual metering or ledger records. A
-  `project.manifest.json` fact for this and a matching audit are follow-up
-  mechanisms; until they land, the decision remains explicitly advisory rather
-  than pretending to be an enforced ledger fact.
+Use the simplest model that produces decision-useful unit economics and meets
+the governing obligations. Do not invent transfer prices, internal invoices, or
+profit-center status from a generic Skill, and do not encode one company's
+portfolio topology as portable law.
 
 ## Roadmap Decisions
 

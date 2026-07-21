@@ -12,8 +12,8 @@ scarcity, or unearned rewards.
 ## Atomic boundary
 
 Own one persistent inviter/invitee or partner referral loop: value trigger,
-invitation/share, identity/deep link, attribution, qualification, pending grant,
-commit/reversal, caps, fraud, privacy, support, experiments, and shutdown. Do
+invitation/share, identity/deep link, attribution, qualification, optional
+incentive grant/reversal, caps, fraud, privacy, support, experiments, and shutdown. Do
 not own the whole marketing operating system, generic social/community design, one
 temporary promotion, or payment settlement.
 
@@ -24,12 +24,14 @@ invent them during design.
 
 ## Agent-first invariant
 
-Build all selected invitation channels, link/deferred-deep-link states, identity merge,
-attribution, qualification, reward ledger, reversal, fraud, consent/privacy,
-support, observability, experiments, caps, and kill switches now. Population
+Build all selected invitation channels, link/deferred-deep-link states,
+identity merge, attribution, qualification, fraud, consent/privacy, support,
+observability, experiments, caps, and kill switches now. Population
 zero must still support useful known-friend invites/sharing where applicable.
 Separate construction, sharing, attribution, qualification, and grant. A
 dormant loop accesses no contacts, sends nothing, and grants nothing.
+Build reward ledger/grant/reversal machinery only when the declared mode is
+incentivized; organic sharing and team invites record it as non-applicable.
 
 ## Workflow
 
@@ -41,15 +43,17 @@ dormant loop accesses no contacts, sends nothing, and grants nothing.
    the user, team invite, friend/co-op request, creator/affiliate link, or
    waitlist. Do not scrape or auto-message contacts.
 3. Model `created -> shared -> opened -> identity_pending -> attributed ->
-   activated -> qualification_pending -> qualified -> grant_pending -> granted`
-   plus expired, duplicate, already-user, multi-touch, merge, rejected,
+   activated -> qualification_pending -> qualified`, with `grant_pending ->
+   granted` only for incentivized mode, plus expired, duplicate, already-user,
+   multi-touch, merge, rejected,
    cancelled, refunded, fraud-review, reversed, appealed, and corrected states.
 4. Define attribution priority/window, stable referral ID, first/last/explicit
    touch, cross-device/deferred deep link, app install/web fallback, identity
    merge, duplicate/self/referral rings, and deterministic reason codes.
 5. Define qualification from authoritative value—not install/click alone—and
-   pending duration, inviter/invitee rewards, caps, ownership overlap, currency/
-   entitlement authority, idempotency, refund/chargeback/reversal, and support.
+   pending duration, caps, ownership overlap, and support. For incentivized
+   mode, additionally define inviter/invitee reward, currency/entitlement
+   authority, idempotency, refund/chargeback/reversal, and ledger reconciliation.
 6. Design privacy/consent, minimal data exchange, contact redaction/retention,
    block/report, child/age modes, share preview, localization, accessibility,
    and user controls. Friendship, collaboration, or support cannot be contingent
@@ -101,11 +105,12 @@ Return one typed Referral and Invite Contract with:
 
 1. value hypothesis, roles/modes, channels, age/territory, economics, authority,
    caps, assumptions, and ruin boundaries;
-2. complete invite/open/deep-link/identity/attribution/qualification/grant/
-   reversal/appeal/support state machine;
+2. complete invite/open/deep-link/identity/attribution/qualification/appeal/
+   support state machine, plus grant/reversal states only when incentivized;
 3. attribution priority/window, identity merge, duplicate/already-user,
    cross-device and deferred-deep-link rules;
-4. qualification/reward/ledger/cap/expiry/refund/reversal matrix;
+4. qualification/cap/expiry matrix and, when incentivized, reward/ledger/
+   refund/reversal controls;
 5. consent/privacy/contact, block/report, child, localization/accessibility, and
    support controls;
 6. fraud/ring/false-positive evidence and correction ladder;
@@ -114,6 +119,6 @@ Return one typed Referral and Invite Contract with:
 8. sibling handoffs with draft IDs, owners, required inputs/outputs, acceptance
    questions, and no fabricated proof.
 
-Complete only when each invitation and reward is consented, attributable,
-qualified, reversible, support-explainable, and safe under duplicate, merge,
-fraud, refund, and cross-device tests.
+Complete only when each invitation and any applicable reward is consented,
+attributable, qualified, reversible where applicable, support-explainable, and
+safe under duplicate, merge, fraud, refund, and cross-device tests.

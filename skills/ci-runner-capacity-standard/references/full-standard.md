@@ -59,6 +59,16 @@ The central control plane must be able to list queued and running jobs by:
 - provider observation capabilities, including whether runnable time exists;
 - SLO breach state and breach reason.
 
+These inventory and topology fields are protected operator evidence. Public or
+customer status may expose only an intentional allowlisted projection such as
+affected logical service, delayed/available/unknown state, impact, observation
+time, and safe next action. It must not expose private provider runner names or
+IDs, internal labels/groups, capacity topology, internal workflows, provider
+control fields, or other raw inventory merely because the control plane can
+observe them. A stable customer-selectable runner/profile ID and its documented
+capability or availability may be public when it is an intentional product
+contract rather than a projection of private provider topology.
+
 The exact risk lane comes from the active admission manifest. Until every
 required producer exposes the manifest to the status publisher, queue audits may
 emit a conservative lane inference from workflow and job names, but that
@@ -286,7 +296,7 @@ Classification is fail closed on causality:
 
 ## Validation
 
-Use the current Control Plane queue-capacity and runner-profile conformance
+Use the current Sylphx Enact queue-capacity and runner-profile conformance
 surfaces for organization or repository status. Bind every observation to the
 queried repo/ref, provider run/job identities, observation time, inventory
 completeness, and active profile revision.

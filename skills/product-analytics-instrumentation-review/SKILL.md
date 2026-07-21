@@ -1,6 +1,6 @@
 ---
 name: product-analytics-instrumentation-review
-description: "Design or audit a product measurement contract: decision questions, event/property schemas, client/server authority, identity, consent, delivery, data quality, metric definitions, QA fixtures, dashboards, and drift. Use when trustworthy instrumentation is the independent artifact. Do not use for deciding product strategy, governing experiments, operating marketing attribution, or treating analytics as payment truth."
+description: "Design or audit a Product Analytics Event, Identity, and Metric Contract for decision questions, behavior events, identity, consent, delivery, product metrics, QA, dashboards, and drift. Use when trustworthy product measurement is the independent artifact. Do not use for service logs/traces/health/SLOs/alerts/operator diagnostics, generic data-pipeline reliability, active incidents, product strategy, or payment truth."
 ---
 
 # Product Analytics Instrumentation Review
@@ -16,6 +16,10 @@ consent/privacy, SDK/server collection ports, delivery/quality, warehouse/join
 contracts, QA, dashboards, exposure measurement, backfill, and drift. Do not own whole
 product strategy, provider billing truth, marketing spend attribution control
 plane, experiment decisions, or feedback prioritization.
+Service/runtime telemetry, health, SLOs, alerting, and operator diagnostics are
+operational observability, even when the same pipeline also carries product
+events. Keep their purposes, schemas, access, retention, and authorities
+separate.
 
 Read `references/data-quality-and-metric-layer.md` when the request includes
 warehouse or semantic metrics, conflicting dashboards, dataset trust states,
@@ -80,6 +84,10 @@ never the product's consent or retention policy.
   `review-solicitation-policy` for public review request eligibility and state.
 - Use `payment-platform-readiness` for payment/entitlement/settlement authority;
   analytics only consumes its signed/authoritative projection.
+- Use `operational-observability-review` for service logs, traces, health,
+  SLOs, alerts, runtime diagnostics, and operator action. Use
+  `data-quality-observability-review` when generic dataset or pipeline
+  reliability is the independently accepted artifact.
 
 ## Guardrails
 

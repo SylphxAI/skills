@@ -5,7 +5,14 @@ description: "Design or critically review a complete app as a coherent, agent-fi
 
 # App Design Blueprint
 
-Create one coherent application experience and a complete scale-ready architecture for its selected capabilities. Start from the recurring user job and fastest credible path to value; use autonomous agents to construct every requested or promise-essential selected target in verified slices, then make legitimate selected capabilities available to authorized users without artificial progression gates.
+Create one coherent application experience and a complete scale-ready
+architecture for its selected capabilities. Start from the recurring user job
+and fastest credible path to value. In a blueprint-only task, fully specify the
+selected targets, contracts, acceptance evidence, and handoffs without silently
+expanding into implementation. When the task also requests implementation, use
+autonomous agents to construct the selected targets in verified slices and make
+legitimate capabilities available to authorized users without artificial
+progression gates.
 
 ## Objective
 
@@ -29,7 +36,7 @@ not justify structural debt or indefinite deferral.
 
 Run an exhaustive capability sweep, but do not force every possible system into every app. Give each capability one disposition:
 
-- `integrate-now` — requested or required by the user promise and positive-net after agent-native lifecycle repricing; build the complete production-shaped target and its applicable automation now;
+- `integrate-now` — requested or required by the user promise and positive-net after agent-native lifecycle repricing; specify the complete production-shaped target, applicable automation, acceptance evidence, and implementation handoff now; implement it now only when implementation is also in task scope;
 - `reuse-scale-ready` — consume an already complete shared primitive and design the exact app-specific integration and proof now;
 - `contract-ready` — preserve a tested extension boundary because future compatibility is valuable, while keeping the capability absent from the runtime and user experience;
 - `not-applicable` — cite an exact product-promise, product-type, audience, business-model, net-value, attention, semantic, platform, or physical reason; historical human effort alone is invalid;
@@ -38,11 +45,12 @@ Run an exhaustive capability sweep, but do not force every possible system into 
 Requested capabilities must still pass product-coherence and net-value
 selection; promise-essential legitimate capabilities default to
 `integrate-now` or `reuse-scale-ready` unless an exact floor blocks them. For
-every integrated capability, define the complete target, operating behavior,
-and applicable automation, then deliver it through verified slices. Do not use
-an MVP label to hide known correctness, accessibility, migration, recovery, or
-operability debt. Demand uncertainty may change selection and exposure; it does
-not excuse weak architecture after selection.
+every `integrate-now` capability, define the complete target, operating
+behavior, applicable automation, acceptance evidence, and handoff. If
+implementation is also in task scope, deliver it through verified slices. Do
+not use an MVP label to hide known correctness, accessibility, migration,
+recovery, or operability debt. Demand uncertainty may change selection and
+exposure; it does not excuse weak architecture after selection.
 
 Product fit controls selection, manifestation, and placement. Cross-cutting quality and trust floors apply to every selected capability they govern; they are not optional feature rows.
 
@@ -124,7 +132,7 @@ Rules:
 3. Write one falsifiable promise: who reaches what outcome, through what distinctive mechanism, and what observable event proves first value.
 4. Benchmark three to five relevant products by mechanism and tradeoff: direct category, adjacent workflow, retention, collaboration, commerce, and technical reach leaders as applicable. Synthesize; do not cargo-cult.
 5. Map jobs to workflows, objects, state authorities, navigation, search, creation, decisions, errors, recovery, and feedback before styling screens.
-6. Give every swept capability a proportionate record: disposition and exact reason; user value or inapplicability/floor; owner; state and dependency boundary; complete target and verified slices for selected capabilities; build/proof/availability/presentation; telemetry, migration, dormant state, degradation, recovery, and specialist handoff where applicable. Do not invent runtime architecture for `not-applicable` capabilities or use `contract-ready` to defer selected work.
+6. Give every swept capability a proportionate record: disposition and exact reason; user value or inapplicability/floor; owner; state and dependency boundary; complete target and planned verified slices for selected capabilities; build/proof/availability/presentation; telemetry, migration, dormant state, degradation, recovery, and specialist handoff where applicable. If implementation is in scope, execute and evidence those slices; otherwise keep them as explicit downstream acceptance contracts. Do not invent runtime architecture for `not-applicable` capabilities or use `contract-ready` to defer selected work.
 7. Preserve a fast path from cold start to useful interaction. Prefer guest, local-first, sample data, import, template, or demo paths where the product permits; ask for accounts, permissions, payment, tracking, or profile investment only when their value is clear.
 8. Build durable investment from the user-created data, settings, collections, history, mastery, identity, relationships, or reputation selected by the app promise, with recovery, export, deletion, portability, versioning, and returning-user restoration. Never use loss threats or forced payment to retain that value.
 9. Treat selected notifications, rewards, reviews, ratings, cross-promotion, referrals, update benefits, personalization, and gamification as delivery or reinforcement systems. Each selected system needs an underlying user-value hypothesis, neutral controls, countermetrics, and a specialist contract.
@@ -166,7 +174,13 @@ Threat-model selected and risk-relevant authentication, account recovery, privac
 
 ### 8. Define validation and implementation handoffs
 
-Sequence verified slices that converge on the complete selected target. Give every stage an artifact identity, hypothesis, required automated and user evidence, pass/watch/fail predicates, next action, and recovery expectation. Synthetic agents expand coverage but cannot prove comprehension, cultural meaning, trust, usefulness, or delight.
+Sequence the verified slices that converge on the complete selected target.
+Execute them only when implementation is in task scope; otherwise emit their
+contracts and acceptance evidence as implementation handoffs. Give every stage
+an artifact identity, hypothesis, required automated and user evidence,
+pass/watch/fail predicates, next action, and recovery expectation. Synthetic
+agents expand coverage but cannot prove comprehension, cultural meaning, trust,
+usefulness, or delight.
 
 ## Hard gates
 
@@ -224,4 +238,4 @@ Produce one **App Design Blueprint** containing:
 
 ## Completion check
 
-The blueprint is ready for composition and implementation only when another agent can identify what value the app creates, how every workflow and state behaves, why every swept capability is `integrate-now`, `reuse-scale-ready`, `contract-ready`, `not-applicable`, or `floor-blocked`, which selected capabilities have complete scale-ready targets, which selected legitimate features are available without artificial gates, which conditional specialist artifacts are required, how selected HTML5/mobile/desktop and global/age modes differ, what evidence earns each proof state, and how the product degrades, recovers, and learns without leaving a future hardening or maintenance project. No selected capability may be deferred for conventional human scarcity, and no irrelevant feature may substitute for app coherence.
+The blueprint is ready for composition and implementation only when another agent can identify what value the app creates, how every workflow and state behaves, why every swept capability is `integrate-now`, `reuse-scale-ready`, `contract-ready`, `not-applicable`, or `floor-blocked`, which selected capabilities have complete scale-ready targets, which selected legitimate features will be available without artificial gates, which conditional specialist artifacts are required, how selected HTML5/mobile/desktop and global/age modes differ, what evidence earns each proof state, and how the product degrades, recovers, and learns without leaving a future hardening or maintenance project. No selected target may be reduced or deferred solely for conventional human scarcity, and no irrelevant feature may substitute for app coherence. Blueprint acceptance does not itself claim implementation, delivery, or live availability.

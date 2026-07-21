@@ -9,7 +9,7 @@ that stop after documentation.
 
 Skills owns canonical static standards, procedures, and profiles. Runtime
 constitutions are compact projections. Repositories own their code and local
-decisions. Control Plane owns live selection, work, adoption, and convergence.
+decisions. Sylphx Enact owns live selection, work, adoption, and convergence.
 
 ## Core invariants
 
@@ -43,7 +43,7 @@ A material generation change declares:
 - typed exceptions with owner, expiry, and replacement;
 - predecessor retirement condition.
 
-Static source and live adoption state remain separate. Control Plane may project
+Static source and live adoption state remain separate. Sylphx Enact may project
 Skills identities and track migration; it must not become a second authoring
 home for the standard text.
 
@@ -73,16 +73,19 @@ proposed -> admitted -> selected -> converged -> predecessor-retired
                      \-> gapped -> remediated -/
 ```
 
-`gapped` preserves the destination and names missing evidence; it is not a
-parallel steady state. A superseded or rejected generation never becomes the
-implicit fallback.
+`gapped` preserves the destination and names missing evidence or a typed
+expiring exception; it is not a parallel steady state. `converged` means every
+selected repository is on the successor with no open exception.
+`predecessor-retired` is the terminal after the old steady-state artifacts and
+methods have been removed. A superseded or rejected generation never becomes
+the implicit fallback.
 
 For every selected repository:
 
 1. resolve the exact current generation and local baseline;
 2. change the owning code, contracts, tests, and instruction projections;
 3. verify the exact delivered candidate;
-4. publish current adoption facts to Control Plane;
+4. publish current adoption facts to Sylphx Enact;
 5. remove superseded code, aliases, projections, and methods once the declared
    compatibility need ends; retire migration-only gates, mutable ledgers,
    rebind workflows, and duplicate proof artifacts at the same terminal.
@@ -93,6 +96,8 @@ the objective. It does not turn a bounded change into an endless programme.
 ## Completion
 
 A generation is converged only when every selected durable repository is on the
-current destination or has a valid typed expiring exception, and the predecessor
-steady state is retired. Source landing, migration completion, deployment, and
-production proof are separate claims and are reported separately.
+current destination and no typed exception remains open. It reaches terminal
+`predecessor-retired` only when the predecessor steady state, migration-only
+machinery, and duplicate projections are removed. Source landing, repository
+convergence, predecessor retirement, deployment, and production proof are
+separate claims and are reported separately.

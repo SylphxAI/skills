@@ -5,7 +5,7 @@
   "profile": {
     "id": "technology-stack-profile",
     "revision": "2026-07-19.3",
-    "contentDigest": "sha256:27aa67f1b73b04725bcb337db71c70d15e8c3dc2acddf8ac362b19a609a51d5a",
+    "contentDigest": "sha256:64b66c6cfaa7178b39e3c5adae9e28c7e7bbad1e63f99ba761fec28b4287524d",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
     "decisionRef": "references/ADR-20260718-backend-web-technology-boundary.md",
@@ -235,7 +235,7 @@
   "retirement": {
     "predecessor": "technology-stack-profile@2026-07-18.3",
     "successor": null,
-    "terminal": "An admitted active successor revision covers this selector and all selection keys, Control Plane resolves selected repositories to that successor, all exceptions are closed, and this revision is marked retired.",
+    "terminal": "An admitted active successor revision covers this selector and all selection keys, Sylphx Enact resolves selected repositories to that successor, all exceptions are closed, and this revision is marked retired.",
     "retiredRevisionSelectable": false
   }
 }

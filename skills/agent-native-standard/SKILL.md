@@ -1,6 +1,6 @@
 ---
 name: agent-native-standard
-description: "Typed agent-native products: queryable state, schema-derived tools, delegation briefs, and durable context handoff. Use when designing a product, API, or workflow that agents must operate directly and recoverably. Do not use for ordinary automation with no agent-facing contract."
+description: "Apply agent-native product constraints for queryable typed state, schema-derived tools, recoverable workflows, delegation, durable context, and model/tool/agent-run traces with protected operator diagnostics. Use when designing a product, API, or workflow that agents must operate directly and recoverably. Do not use for ordinary automation, generic service observability, or product analytics without an agent-facing contract."
 ---
 # Agent Native Standard
 

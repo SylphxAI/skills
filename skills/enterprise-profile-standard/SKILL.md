@@ -1,6 +1,6 @@
 ---
 name: enterprise-profile-standard
-description: "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selections and their lifecycle; Control Plane owns resolved live state."
+description: "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selections and their lifecycle; Sylphx Enact owns resolved live state."
 ---
 # Enterprise Profile Standard
 

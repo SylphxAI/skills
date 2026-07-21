@@ -101,8 +101,8 @@ State entry conditions:
 | `contracted` | Executable contract location and compatibility direction |
 | `target_implemented` | Target surfaces compile and run through the contract |
 | `parity_proven` | Differential artifact bound to revisions and digests |
-| `cutover_ready` | Runtime probe, guardrails, authority switch, and recovery path |
-| `authority_target` | Deployed artifact readback and target-authority observation |
+| `cutover_ready` | Declared-stage verification probe, guardrails, authority switch, and recovery path |
+| `authority_target` | Exact target-artifact readback at the declared lifecycle stage; live readback only for a live-authority terminal |
 | `source_retired` | Source absence proved by package/build/module authority, cleanup evidence, and retirement of migration-only parity/ledger/rebind machinery; no durable source-string scan |
 | `stale` | Previous advanced state, drift reason/ref/time, contract, target globs, and last valid proof retained for audit only |
 
@@ -150,7 +150,8 @@ Use an existing repository schema when one owns this state. Otherwise the bundle
           "cutover": {
             "mechanism": "flag:orders-rust-authority",
             "rollback": "disable flag and verify source probe",
-            "prodProbe": "probe://orders-list"
+            "verificationStage": "development",
+            "verificationProbe": "probe://orders-list"
           }
         }
       ]
@@ -158,6 +159,23 @@ Use an existing repository schema when one owns this state. Otherwise the bundle
   ]
 }
 ```
+
+For `authority_target` or `source_retired`, add an exact stage-bound readback:
+
+```json
+"verificationReadback": {
+  "verificationStage": "development",
+  "targetRef": "EXACT_TARGET_SHA",
+  "artifactDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "probeArtifact": "test://orders-list/exact-candidate",
+  "observedAt": "2026-07-21T00:00:00Z"
+}
+```
+
+Allowed stages are `development`, `internal_dogfood`, `internal_beta`, and
+`public_production`. The validator still accepts legacy `prodProbe` plus
+`runtimeReadback` records as production-stage compatibility input; new records
+use the stage-bound names above.
 
 Run structural validation:
 
@@ -260,7 +278,8 @@ migration_event:
   corpus_digest:
   artifact_digest:
   proof_artifact:
-  runtime_probe:
+  verification_stage:
+  verification_probe:
   actor_or_work_item:
   observed_at:
   decision: promote | pause | regress | retire
@@ -279,5 +298,7 @@ migration_event:
 - Source, target, contract, and dependency changes invalidate affected proof.
 - Unclassified tracked migration changes fail admission.
 - Merge, deploy, runtime authority, and retirement are reported separately.
-- Production probes verify product behavior and artifact identity.
+- Verification probes identify their lifecycle stage and bind behavior plus
+  artifact identity; production readback is required only for a production/live
+  authority claim.
 - Source deletion has passed and source reintroduction is blocked.

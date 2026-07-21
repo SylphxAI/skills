@@ -23,6 +23,11 @@ import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { packageDigest } from '../runtime/package-digest.mjs';
 import {
+  inspectLegacyAgentsProjection,
+  legacyAgentsProjectionReadback,
+  retireLegacyAgentsProjection,
+} from '../runtime/legacy-agents-projection.mjs';
+import {
   configureEnactMcp,
   DEFAULT_ENACT_MCP_URL,
   discoverEnactMcp,
@@ -96,6 +101,224 @@ function retiredDoctrineProjection(localNotes = '') {
     localNotes,
   ].filter((line, index, lines) => line || index < lines.length - 1).join('\n');
 }
+
+function writeLegacyAgentsProjection(home, {
+  sourceCommit = 'a'.repeat(40),
+  skills = [
+    'mission-control-standard',
+    'roleless-speculative-development-standard',
+    'sota-execution-standard',
+  ],
+  mutateManifest = (manifest) => manifest,
+} = {}) {
+  const root = path.join(home, '.agents', 'skills');
+  mkdirSync(root, { recursive: true });
+  const digests = {};
+  for (const name of skills) {
+    const packageRoot = path.join(root, name);
+    mkdirSync(packageRoot);
+    writeFileSync(path.join(packageRoot, 'SKILL.md'), `---\nname: ${name}\ndescription: fixture\n---\n`);
+    digests[name] = packageDigest(packageRoot);
+  }
+  const manifest = mutateManifest({
+    installed_at: '2026-07-18T15:34:19.308Z',
+    source: 'SylphxAI/skills',
+    source_commit: sourceCommit,
+    authority: 'binding',
+    package_kind: 'standard',
+    skills,
+    count: skills.length,
+    removed_retired_dual_discovery: 0,
+  });
+  writeFileSync(
+    path.join(root, 'skills-binding-install-manifest.json'),
+    `${JSON.stringify(manifest, null, 2)}\n`,
+  );
+  return { root, sourceCommit, skills, digests };
+}
+
+test('verified legacy ~/.agents projection is archived outside discovery without touching unrelated Skills', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-legacy-agents-'));
+  try {
+    const fixture = writeLegacyAgentsProjection(sandbox);
+    const unrelated = path.join(fixture.root, 'third-party-skill');
+    mkdirSync(unrelated);
+    writeFileSync(path.join(unrelated, 'SKILL.md'), 'third party\n');
+    writeFileSync(path.join(fixture.root, 'KEEP'), 'unrelated root file\n');
+
+    const plan = inspectLegacyAgentsProjection({
+      home: sandbox,
+      projections: { [fixture.sourceCommit]: fixture.digests },
+    });
+    assert.deepEqual(legacyAgentsProjectionReadback({
+      home: sandbox,
+      projections: { [fixture.sourceCommit]: fixture.digests },
+    }), {
+      state: 'recognized',
+      sourceCommit: fixture.sourceCommit,
+      skills: fixture.skills,
+      error: null,
+    });
+    const result = retireLegacyAgentsProjection(plan);
+
+    assert.deepEqual(result.removedFromDiscovery, fixture.skills);
+    assert.equal(existsSync(path.join(fixture.root, 'skills-binding-install-manifest.json')), false);
+    for (const name of fixture.skills) {
+      assert.equal(existsSync(path.join(fixture.root, name)), false, `${name} remained discoverable`);
+      assert.equal(packageDigest(path.join(result.archive, name)), fixture.digests[name]);
+    }
+    assert.equal(readFileSync(path.join(unrelated, 'SKILL.md'), 'utf8'), 'third party\n');
+    assert.equal(readFileSync(path.join(fixture.root, 'KEEP'), 'utf8'), 'unrelated root file\n');
+    assert.equal(existsSync(path.join(result.archive, 'skills-binding-install-manifest.json')), true);
+    assert.equal(existsSync(path.join(result.archive, 'retirement.json')), true);
+    assert.equal(legacyAgentsProjectionReadback({
+      home: sandbox,
+      projections: { [fixture.sourceCommit]: fixture.digests },
+    }).state, 'absent');
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('interrupted legacy projection retirement resumes from verified archived and native bytes', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-legacy-agents-resume-'));
+  try {
+    const fixture = writeLegacyAgentsProjection(sandbox);
+    const projections = { [fixture.sourceCommit]: fixture.digests };
+    const plan = inspectLegacyAgentsProjection({ home: sandbox, projections });
+    mkdirSync(plan.archiveRoot, { recursive: true });
+    mkdirSync(plan.transactionRoot);
+    writeFileSync(path.join(plan.transactionRoot, 'retirement.json'), `${JSON.stringify({
+      schemaVersion: 1,
+      owner: 'SylphxAI/skills',
+      sourceRoot: plan.nativeRoot,
+      sourceCommit: fixture.sourceCommit,
+      manifest: plan.manifest,
+      packageDigests: fixture.digests,
+    }, null, 2)}\n`);
+    renameSync(
+      path.join(fixture.root, fixture.skills[0]),
+      path.join(plan.transactionRoot, fixture.skills[0]),
+    );
+
+    const resumed = inspectLegacyAgentsProjection({ home: sandbox, projections });
+    assert.equal(resumed.resuming, true);
+    assert.equal(legacyAgentsProjectionReadback({ home: sandbox, projections }).state, 'retirement-interrupted');
+    const result = retireLegacyAgentsProjection(resumed);
+    for (const name of fixture.skills) {
+      assert.equal(existsSync(path.join(fixture.root, name)), false);
+      assert.equal(packageDigest(path.join(result.archive, name)), fixture.digests[name]);
+    }
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('legacy projection retirement rejects a symlinked native discovery root', { skip: process.platform === 'win32' }, () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-legacy-agents-link-'));
+  const external = mkdtempSync(path.join(os.tmpdir(), 'sylphx-legacy-agents-external-'));
+  try {
+    const fixture = writeLegacyAgentsProjection(external);
+    mkdirSync(path.join(sandbox, '.agents'), { recursive: true });
+    symlinkSync(fixture.root, path.join(sandbox, '.agents', 'skills'), 'dir');
+    assert.throws(
+      () => inspectLegacyAgentsProjection({
+        home: sandbox,
+        projections: { [fixture.sourceCommit]: fixture.digests },
+      }),
+      /legacy Agent Skills root is not a regular directory/,
+    );
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+    rmSync(external, { recursive: true, force: true });
+  }
+});
+
+test('legacy projection retirement fails closed on unknown, lookalike, and tampered ownership evidence', () => {
+  for (const attack of ['unknown-source', 'lookalike-manifest', 'tampered-package']) {
+    const sandbox = mkdtempSync(path.join(os.tmpdir(), `sylphx-legacy-agents-${attack}-`));
+    try {
+      const fixture = writeLegacyAgentsProjection(sandbox, {
+        mutateManifest: attack === 'lookalike-manifest'
+          ? (manifest) => ({ ...manifest, attackerControlled: true })
+          : (manifest) => manifest,
+      });
+      const projections = attack === 'unknown-source'
+        ? {}
+        : { [fixture.sourceCommit]: fixture.digests };
+      if (attack === 'tampered-package') {
+        writeFileSync(path.join(fixture.root, fixture.skills[0], 'SKILL.md'), 'tampered\n');
+      }
+
+      assert.throws(
+        () => inspectLegacyAgentsProjection({ home: sandbox, projections }),
+        attack === 'unknown-source'
+          ? /unknown legacy Sylphx Skills projection/
+          : attack === 'lookalike-manifest'
+            ? /unrecognized legacy ownership manifest/
+            : /legacy managed package digest mismatch/,
+      );
+      assert.equal(existsSync(path.join(fixture.root, 'skills-binding-install-manifest.json')), true);
+      assert.equal(existsSync(path.join(fixture.root, fixture.skills[0])), true);
+    } finally {
+      rmSync(sandbox, { recursive: true, force: true });
+    }
+  }
+});
+
+test('Codex install rejects an unknown legacy shared projection before mutating the receiving runtime', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-legacy-agents-cli-'));
+  const codexHome = path.join(sandbox, '.codex');
+  try {
+    const fixture = writeLegacyAgentsProjection(sandbox);
+    const result = spawnSync(process.execPath, [cli, 'install', '--agent', 'codex', '--quiet'], {
+      cwd: root,
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        SYLPHX_SKILLS_HOME: sandbox,
+        CODEX_HOME: codexHome,
+      },
+    });
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /unknown legacy Sylphx Skills projection/);
+    assert.equal(existsSync(path.join(codexHome, 'skills')), false);
+    assert.equal(existsSync(path.join(fixture.root, fixture.skills[0])), true);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('Codex status reports invalid legacy discovery and clear refuses a false-green result', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-legacy-agents-status-'));
+  const codexHome = path.join(sandbox, '.codex');
+  try {
+    const fixture = writeLegacyAgentsProjection(sandbox);
+    const environment = {
+      SYLPHX_SKILLS_HOME: sandbox,
+      CODEX_HOME: codexHome,
+    };
+    const status = JSON.parse(runWithEnvironment(['status', '--agent', 'codex', '--json'], environment).stdout);
+    assert.equal(status.targets[0].current, false);
+    assert.equal(status.targets[0].legacyNativeProjection.state, 'invalid');
+    assert.match(status.targets[0].legacyNativeProjection.error, /unknown legacy Sylphx Skills projection/);
+
+    const sentinel = path.join(codexHome, 'skills', 'unrelated');
+    mkdirSync(sentinel, { recursive: true });
+    writeFileSync(path.join(sentinel, 'KEEP'), 'preserve\n');
+    const clearing = spawnSync(process.execPath, [cli, 'clear', '--agent', 'codex', '--quiet'], {
+      cwd: root,
+      encoding: 'utf8',
+      env: { ...process.env, ...environment },
+    });
+    assert.equal(clearing.status, 1);
+    assert.match(clearing.stderr, /unknown legacy Sylphx Skills projection/);
+    assert.equal(readFileSync(path.join(sentinel, 'KEEP'), 'utf8'), 'preserve\n');
+    assert.equal(existsSync(path.join(fixture.root, fixture.skills[0])), true);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
 
 test('sync, status, update, and clear own only the declared packages', () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-skills-'));

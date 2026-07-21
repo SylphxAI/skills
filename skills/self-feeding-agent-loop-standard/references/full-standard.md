@@ -43,18 +43,22 @@ Parent evaluator / process owner
      -> Builder closes only after verification and delivery proof
 ```
 
-Under the current delivery profile, GitHub is the durable public coordination
-surface: issues are intake, PRs are execution, labels and structured comments
-are audit metadata, required checks are gates, and merge/deploy/readback
-evidence proves done state. Chat-only state is not ownership. A successor
-profile must preserve those functions and migrate their durable identities.
+Resolve the live work authority before launch. When an authenticated Enact
+runtime is exposed, its Work Item, claim, run, checkpoint, and evidence records
+are canonical coordination state. Otherwise use the repository-declared
+coordination adapter; under `github-delivery`, issues/comments may project
+intake and claims while PRs/checks/merge/deploy/readback carry source and
+delivery evidence. Git and GitHub do not become live work authority merely
+because they are durable. Chat-only state is not ownership.
 
 Child agents work as independent lanes. Reviewers and Builders must not read
 each other's private run logs, hidden prompts, final reports, scratch files, or
 parent chat context. The Coordinator must not act as a side-channel message
 broker or feed one child's private output into another child's prompt. Handoff
-state is only the target repository's Git/GitHub state: issues, comments, PRs,
-branches, commits, checks, labels, and deployment/readback evidence.
+state uses the resolved work authority plus the target repository's source and
+delivery evidence. Public forge projections contain only the intentional,
+audience-scoped minimum; sensitive prompts, diagnostics, customer data, raw
+telemetry, and internal process/topology evidence remain protected.
 
 ## Ownership
 
@@ -108,9 +112,9 @@ Default behavior is one bounded tick:
 1. validate runtime capabilities and assigned project context;
 2. emit an immediate capability report if the runtime, repository, or launch
    envelope is not usable;
-3. inspect enough Git/GitHub coordination state to identify bounded candidate
-   outcomes, active ownership/collisions, integration backlog, and required
-   capabilities;
+3. inspect enough resolved work-authority and repository/delivery state to
+   identify bounded candidate outcomes, active ownership/collisions,
+   integration backlog, and required capabilities;
 4. run the delegation-opportunity scan and launch only qualified lanes whose
    expected gain exceeds coordination and integration cost inside the aggregate
    capacity envelope;
@@ -118,7 +122,7 @@ Default behavior is one bounded tick:
 6. return a Coordinator Tick Report to the parent and stop.
 
 A bounded tick must have a parent-observable timebox. If the tick cannot inspect
-GitHub, start children, or receive child outputs before the timebox expires, the
+the resolved coordination adapter, start children, or receive child outputs before the timebox expires, the
 Coordinator returns a partial tick report with exact blockers and next safe
 action. It must not keep running silently past the timebox.
 
@@ -195,7 +199,7 @@ The Coordinator may:
   Reviewer or Builder lane;
 - start qualified Reviewer and Builder agents with outcome-owned briefs;
 - pass launch-envelope facts and source pointers needed for the lane;
-- inspect only the minimum GitHub coordination state needed for launch,
+- inspect only the minimum resolved coordination and repository/delivery state needed for launch,
   collision/staleness, and child-agent health;
 - compare child outputs after a bounded tick for parent health reporting, without
   passing those outputs to sibling agents;
@@ -211,7 +215,8 @@ in-place one-off fix.
 
 The Coordinator must not serialize the loop as Reviewer-output-then-Builder
 handoff. When child fan-out is allowed, Reviewer and Builder lanes should start
-from fresh contexts and independently inspect GitHub state. If a runtime cannot
+from fresh contexts and independently inspect the resolved work authority and
+repository/delivery state. If a runtime cannot
 isolate child contexts or would require sibling-output sharing, the Coordinator
 records a workflow blocker instead of weakening the test.
 
@@ -249,18 +254,21 @@ Reviewers discover evidence-backed issues and verify fixes they opened. They do
 not implement fixes. They should prefer high-signal production, demo,
 commercial, security, CI, observability, documentation, DX, and regression gaps.
 
-Reviewers coordinate only through Git/GitHub state. They must not inspect sibling
-agent outputs or ask Builders through private chat. In bounded pilots, a Reviewer
+Reviewers coordinate only through the resolved work authority and declared
+repository adapter. They must not inspect sibling agent outputs or ask Builders
+through private chat. In bounded pilots, a Reviewer
 emits a useful report before the timebox expires, chooses investigation depth
 from risk and evidence, and reports partial findings rather than timing out
 silently. Fixed tool-call, file-count, priority, or roadmap budgets are not
 binding unless a named digest-bound eval segment supplies them. Once evidence is
 sufficient, reporting becomes the next action.
 
-A Reviewer may open an issue only when it can provide a clear title, affected
-boundary, current behavior, expected behavior, reproduction or inspection
-evidence, impact, acceptance criteria, and duplicate check. If write permission
-is missing, it returns an issue draft in its tick output and marks the blocker.
+A Reviewer may propose a Work Item, or a forge issue when that adapter is
+selected, only when it can provide a clear title, affected boundary, current
+behavior, expected behavior, reproduction or inspection evidence, impact,
+acceptance criteria, and duplicate check. If write permission is missing, it
+returns a bounded draft in its tick output and marks the blocker. Public
+projections exclude protected evidence and link to authorized evidence instead.
 
 Major architecture, security, business-model, pricing, cross-project, or
 strategic findings require a critical-review subagent or a durable review
@@ -268,13 +276,15 @@ artifact before issue creation when the runtime permits it.
 
 ## Builder Rules
 
-Builders fix valid GitHub issues at the correct boundary. A Builder works on one
-claimed issue at a time unless blocked, checks for active claims before starting,
-posts claim/heartbeat metadata, and links a PR/branch when created.
+Builders fix valid claimed Work Items at the correct boundary. A Builder works
+on one claim at a time unless blocked, checks for active attempts before
+starting, checkpoints through the resolved adapter, and links the selected
+source/delivery candidate when created.
 
-Builders coordinate only through Git/GitHub state. They must not inspect sibling
-agent outputs, wait for Reviewer private reports, or assert who authored an
-issue/PR unless that provenance is independently verified from GitHub metadata.
+Builders coordinate only through the resolved work authority and declared
+repository adapter. They must not inspect sibling outputs, wait for Reviewer
+private reports, or assert authorship unless provenance is independently
+verified from authoritative identity and repository metadata.
 
 A Builder must reproduce or verify the reported problem when practical, identify
 root cause, update tests or gates, run the strongest practical validation, and
@@ -283,9 +293,9 @@ mark non-trivial issues ready for Reviewer verification before closure.
 The done ladder is:
 
 ```text
-issue triaged -> root cause found -> fix implemented -> validation green
-  -> ready for review -> original reproduction verified -> PR merged
-  -> deploy/release/readback where applicable -> issue closed
+work accepted -> root cause found -> fix implemented -> validation green
+  -> ready for review -> original reproduction verified -> source landed
+  -> deploy/release/readback where applicable -> work closed
 ```
 
 A local diff, issue comment, or green local test is not delivery done.
@@ -350,12 +360,13 @@ A pilot is successful only when the parent can prove, without hidden context:
   evidence, assigned project metadata, launch profile, and useful source
   pointers without freezing unbound method;
 - at least one bounded Coordinator Tick Report was returned;
-- any issue/PR action used GitHub-visible structured identity;
+- any work/source-delivery action used the resolved authority's structured
+  identity, with only an audience-safe projection on a public forge;
 - no duplicate Agent-ID was spawned;
 - no exact segment was claimed without a versioned eval identity and digest;
-- no claim/PR/issue was left without owner or next action;
-- any delivery claim was separated into issue, PR, merge, deploy, and behavior
-  proof states.
+- no claim/work item/source candidate was left without owner or next action;
+- any delivery claim separated work, source candidate, admission, landing,
+  deploy/release, and behavior-proof states.
 
 If these are not true, the result is a prompt/process finding, not a failed
 agent. Fix the owning loop package and rerun the pilot.

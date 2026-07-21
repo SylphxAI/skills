@@ -71,8 +71,10 @@ and coordination protocols—live as references under their natural owner.
 
 ## Consequences
 
-- Agents can receive the complete useful method set without having to know or
-  manually choose package names.
+- Agents can install the complete useful method set without having to know or
+  manually choose package names. Installation does not guarantee that every
+  description fits the runtime's initial listing budget or that every useful
+  package is selected; material routes need native-runtime evidence.
 - More than one package may correctly inject for a compound task; this is not a
   routing failure when artifact ownership and constraints compose.
 - Package count is not a quality metric. Value, trigger precision, artifact
@@ -80,6 +82,10 @@ and coordination protocols—live as references under their natural owner.
 - Adding a package still carries maintenance and collision cost. A method with
   no independent artifact stays a reference rather than becoming skill-count
   inflation.
+- Package metadata is the scarce discovery surface. Detailed mechanisms may be
+  thick through progressive disclosure; split only for an independently
+  requested job and independently accepted artifact, not for every topic or
+  implementation medium.
 
 ## Verification
 
@@ -91,3 +97,6 @@ and coordination protocols—live as references under their natural owner.
 - Prove behavioral injection separately against each supported runtime using
   `skill-eval-designer` when promotion or regression evidence requires it; do
   not build a repository-local router to test a router.
+
+Native discovery and package-boundary details are owned by
+[ADR-0009](ADR-0009-native-skill-discovery-and-package-boundaries.md).

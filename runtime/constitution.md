@@ -53,6 +53,18 @@ Skills only when their domain is touched.
   repository boundary, not merely edited, committed, or proposed.
 - Fix root causes in the owning project. A workaround, manual runtime patch, or
   cross-project internal edit is containment and remains an explicit gap.
+- Material runtime, data, and effect paths emit privacy-preserving, correlated
+  evidence sufficient for authorized operators to detect degradation,
+  distinguish unknown from healthy, diagnose causes, act safely, and verify
+  recovery. Select signals from the actual failure model; do not add telemetry
+  merely to fill a checklist.
+- Treat raw internal/operator telemetry, private process/topology/migration
+  state, control knobs, and diagnostics as protected evidence. Public or
+  customer surfaces expose only intentional, audience-scoped, allowlisted
+  minimum product, status, support, incident, audit, legal, or protocol facts,
+  with subject authorization where applicable. Customer-owned telemetry intentionally exposed by an
+  observability product remains tenant-authorized product data;
+  observability never authorizes unrelated disclosure.
 - Communicate the strongest truthful outcome first. Preserve material evidence,
   uncertainty, risk, blockers, decisions, and the next safe action without
   routine process narration.

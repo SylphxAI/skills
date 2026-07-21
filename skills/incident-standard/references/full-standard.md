@@ -18,20 +18,21 @@ This standard composes with:
   forward-fix) — cited here, not restated;
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for production
   verification signals used to prove a mitigation actually recovered;
-- the binding security profile for fail-closed invariants whose breach is
-  always at least S1;
+- applicable binding security constraints and the current product threat model
+  for fail-closed invariants whose breach is always at least S1;
 - `documentation-standard` for collision-resistant postmortem identity.
 
 ## Scope and Trigger
 
-This standard applies by selector, not by exemption prose. A repository is in
-scope when `project.manifest.json` states `project.lifecycle` is
-`production` or `commercial` **and** `delivery.deployable` is `true` (or the
-projected deployable deployed-service property). A library,
-CLI-only tool, or research repo with no deployed or operated surface never
-satisfies that selector, so it is out of scope by construction — it does not
-need exemption language, and it does not need to adopt a postmortem process
-it has no incidents to write.
+An explicit request to design or review an incident lifecycle may use this
+method before production. Operational adoption applies by selector, not by
+exemption prose: a repository is in scope when `project.manifest.json` states
+`project.lifecycle` is `production` or `commercial` **and**
+`delivery.deployable` is `true` (or the projected deployed/operated-surface
+property). A library, CLI-only tool, or research repo with no deployed or
+operated surface never satisfies the adoption selector, so it does not need to
+run an incident process it has no incidents to write. A pre-live S4 near-miss
+may still use the typed artifacts when a gate or floor almost failed.
 
 The canonical project-manifest schema requires both lifecycle and deployable
 state, so selector evaluation fails rather than guessing when either fact is
@@ -52,10 +53,11 @@ everywhere — see Validation:
 | S3 — Minor | Degraded but a workaround exists; no data or security exposure | Limited or non-critical surface | The responding agent opens a machine-actionable issue at the next reconcile cycle; scheduled fix; a postmortem-record is optional unless a mechanism gap is suspected. |
 | S4 — Near-miss | No customer-visible impact; a floor or gate almost failed, or failed with no live exposure window | Internal, detection-only | Tracked issue; a postmortem-record is required whenever the near-miss reveals a missing durable mechanism — capturing that signal before it becomes S1 is the entire point of S4. |
 
-A security-floor breach is S1 **regardless of blast radius** — a
-single-tenant isolation failure is a critical incident, never downgraded for
-narrow scope. Blast radius classifies everything else; it never overrides a
-floor breach.
+A confirmed breach of a protected security property is S1 **regardless of
+blast radius** — a single-tenant isolation failure is critical and is never
+downgraded for narrow scope. A pre-exposure gate/control failure that prevented
+any protected-property breach is an S4 near-miss. Blast radius classifies
+everything else; it never overrides a confirmed floor breach.
 
 ## The No-Human Incident Loop
 
@@ -64,7 +66,8 @@ disconnected steps a human bridges by memory:
 
 ```text
 alert / SLO gate (or manual report)
-  -> machine-actionable issue opens, severity label attached (table above)
+  -> active-incident-record opens, severity and command owner attached
+  -> machine-actionable issue/status adapters project from that record
   -> mitigate: source revert / runtime rollback / forward-fix,
      selected under delivery recovery semantics
   -> verify recovery with evidence (delivery-standard.md production
@@ -72,11 +75,31 @@ alert / SLO gate (or manual report)
   -> postmortem-record artifact (schema below), gate-checkable, not prose
 ```
 
+The canonical active record is a protected operator artifact matching
+[`active-incident-record.schema.json`](active-incident-record.schema.json). It
+owns current status, affected capability/scope, command owner, impact,
+mitigation state, actions, next decision, timestamps, and evidence references.
+Adapters may project a minimum safe public status update, but the issue, status
+page, or chat thread is never the command-state authority. Every state change
+updates the record before a public projection claims it.
+
 Mitigation choice is not a fresh decision per incident: it is the same
 source-revert / runtime-rollback / forward-fix classification
 `agent-first-development-standard.md`'s Recovery Semantics section already
 makes for postsubmit failure. An incident is a recovery decision with a
 customer-facing trigger, not a different decision tree.
+
+The incident record and raw response evidence are protected operational state.
+Public status updates, customer notices, and published post-incident reports
+are separate reviewed projections with a named audience, subject/tenant
+authorization where applicable, a versioned minimum allowlist, and negative
+leakage tests. That allowlist may include the affected logical capability,
+scope, impact, time, safe workaround or action, update cadence, correction path,
+and opaque incident reference. It excludes raw logs/traces, topology, control
+knobs, unconfirmed internal hypotheses, other tenants, and exploit-enabling
+detail. S4 near-misses remain internal unless a legal, contractual, or
+deliberate public-learning decision creates a separately authorized safe
+publication.
 
 ## Postmortem Is a Machine Artifact
 
@@ -116,11 +139,12 @@ attached to the incident.
 
 ## Validation
 
-The canonical record schema ships with this package at
+The canonical active-command and postmortem schemas ship with this package at
+[`active-incident-record.schema.json`](active-incident-record.schema.json) and
 [`postmortem-record.schema.json`](postmortem-record.schema.json). Each selected
-repository validates its records against that exact schema and checks that
+repository validates its records against the applicable exact schema and checks that
 every closed S1/S2 incident links a valid record with at least one durable
-mechanism. Control Plane may reconcile portfolio coverage from repository facts and
+mechanism. Sylphx Enact may reconcile portfolio coverage from repository facts and
 incident adapters; it does not re-author the record.
 
 Alert/SLO-triggered issue creation is an adapter capability, not a condition for

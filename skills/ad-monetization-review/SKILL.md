@@ -13,8 +13,11 @@ an interruption tax.
 
 Own ad-side placement semantics, eligible audiences, reward authority,
 frequency/fatigue, provider/mediation portfolio, economics, experiments, and
-shutdown. Do not own whole-app/game design, buyer payment ledgers, the broader
-game economy, one marketing campaign, or provider SDK implementation details.
+shutdown. Own the ad domain's required measurement meanings, but let
+`product-analytics-instrumentation-review` own the shared event identity,
+schema/versioning, collection, and product-metric contract. Do not own
+whole-app/game design, buyer payment ledgers, the broader game economy, one
+marketing campaign, or provider SDK implementation details.
 
 Use a draft artifact ID and consume sibling decisions by owner and explicit
 contract. Let deterministic delivery tooling seal serialized versions and
@@ -105,7 +108,8 @@ Return one typed Ad Monetization Contract containing:
 5. mediation/provider adapter, dormant-state, no-fill, timeout, and shutdown
    design;
 6. economics model with IAP/IAA cannibalization and long-term countermetrics;
-7. event schema, reconciliation, fraud/brand-safety, and support evidence;
+7. ad measurement requirements and the product-analytics handoff for event
+   schema, plus reconciliation, fraud/brand-safety, and support evidence;
 8. experiment/canary plan with scale, hold, pause, withdraw, and live-readback
    predicates;
 9. specialist handoffs by draft ID, owner, required input/output, and acceptance

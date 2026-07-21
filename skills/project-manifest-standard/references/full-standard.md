@@ -5,7 +5,7 @@
 An agent entering a repository must be able to resolve its purpose, lifecycle,
 ownership, public surfaces, dependencies, delivery boundary, and known adoption
 gaps without guessing. The repository owns these facts; Skills owns their
-shared meaning; Control Plane may ingest and project them as live adoption state.
+shared meaning; Sylphx Enact may ingest and project them as live adoption state.
 
 ## Canonical local surfaces
 
@@ -35,8 +35,9 @@ The machine manifest records, using controlled vocabulary where available:
   references, and owned effects;
 - **documentation** — homes for ADRs, specs, catalogs, generated references,
   and runbooks;
-- **delivery** — candidate model, verification command/status, terminal
-  delivery boundary, recovery class, and deploy/release facts where applicable;
+- **delivery** — candidate/CI model, verification command/status, terminal
+  delivery boundary, recovery class, deploy facts, and typed package-release
+  strategy/artifact/registry facts when the repository publishes packages;
 - **commercial facts** — only when pricing, packaging, entitlement, or public
   product commitments exist;
 - **adoption truth** — machine-derived status or typed gaps. Never author
@@ -44,16 +45,22 @@ The machine manifest records, using controlled vocabulary where available:
 
 Profiles and portfolio selectors are referenced by stable identity and digest; the
 manifest does not copy their content. Current resolved organization-wide adoption state belongs in
-Control Plane, not in hand-maintained repository prose.
+Sylphx Enact, not in hand-maintained repository prose.
 
 `architecture.components` records intended repository topology, not deployment
 claims. Its role, implementation, and effect values use generic ids so Profiles
 can define their meaning without the manifest schema copying policy vocabulary.
 `architecture.profileBindings` binds each applicable Profile id to its exact
 revision and content digest; it does not copy Profile policy. Live presence,
-revision, health, traffic, and production ownership remain Control Plane
+revision, health, traffic, and production ownership remain Sylphx Enact
 observations. A selected Profile fails missing, stale, or unknown component
 facts closed rather than inferring them from filenames.
+
+Committed `PROJECT.md` and manifest content is repo-audience-safe static intent
+and configuration. Protected observed runtime topology, migration/cutover
+detail, control knobs, raw diagnostics, customer data, and live process state
+stay in Sylphx Enact or another authorized evidence store and are referenced by
+an opaque locator when the static manifest needs a durable relationship.
 
 ## Lifecycle contract
 
@@ -80,7 +87,7 @@ facts closed rather than inferring them from filenames.
 ## Authority split
 
 Skills owns the manifest vocabulary and static predicates. Each repository owns
-its local facts, code, ADRs, and delivery truth. Control Plane ingests those
+its local facts, code, ADRs, and delivery truth. Sylphx Enact ingests those
 facts, evaluates portfolio selectors, and owns current work/adoption state; it must
 not invent missing project intent. GitHub/GitLab metadata is an adapter
 projection, not a second manifest authority.
@@ -101,7 +108,7 @@ Do not restate static standards already owned by Skills.
 
 Validate the manifest against the active schema, check projection freshness,
 and run the repository's declared conformance entrypoint. Selected-repository adoption is
-confirmed through Control Plane readback; a local manifest alone is not
+confirmed through Sylphx Enact readback; a local manifest alone is not
 organization-wide proof.
 
 ### Manifest readiness checklist

@@ -19,7 +19,9 @@ Use the smallest prompt that reliably changes behavior.
 - Put only vendor/runtime-specific commands and wrappers in that tool's local
   skills, commands, plugin, or registry layer.
 - Put repo facts in the project's agent file (`AGENTS.md` / `CLAUDE.md`).
-- Put task decisions in specs, ADRs, tests, evals, changelogs, or memory.
+- Put durable task decisions in product-owned specs, ADRs, tests, evals, and
+  changelogs, or in Sylphx Enact decision/evidence records when live work owns
+  them. Runtime memory is a cache or pointer, never the sole decision home.
 
 Do not duplicate the same rule across layers. An always-on projection states
 the compact invariant and boundary; supported runtimes discover skill metadata
@@ -299,10 +301,9 @@ Those assets may live with the runtime or distribution system; they are not a
 second standard authoring source. Exact filenames are runtime facts and do not
 belong in this cross-runtime standard.
 
-Bootstrap prompts are prompt assets, not policy. (The repo bootstrap
-runbook, `templates/bootstrap-repo.md`, stands up a repository rather than an
-agent runtime and is outside this section's three-artifact contract.) They
-may:
+Bootstrap prompts are prompt assets, not policy. Repository bootstrap belongs
+to the owning repository/adoption procedure rather than this runtime-install
+contract. Bootstrap prompts may:
 
 - reference canonical package sources;
 - clone or update an authenticated Skills checkout when required;

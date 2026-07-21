@@ -28,12 +28,22 @@ while a draft contains no digest fields.
 
 1. Identify purchase type, provider/store, entitlement type, refund authority, and support ownership.
 2. Read `references/refund-support-flow-patterns.md`.
-3. Map authoritative provider/ledger evidence references, cancellation, restore purchase, projected entitlement state, customer consequence, user messaging, support triage, appeal, and abuse review. If provider/ledger truth is missing or inconsistent, emit a typed blocker to Payment Platform rather than deciding it here.
-4. Separate cancellations, ordinary refunds, goodwill refunds, fraud, chargebacks, disputes, consumable reversals, non-consumable revocations, and repeated abuse.
+3. Map authoritative provider/ledger evidence references and classify which
+   event families actually apply. Always preserve entitlement consequence,
+   customer messaging, support, appeal, audit, and reconciliation floors; do
+   not instantiate unrelated commerce branches. If provider/ledger truth is
+   missing or inconsistent, emit a typed blocker to Payment Platform rather
+   than deciding it here.
+4. Separate only the applicable cancellation, ordinary/goodwill refund, fraud,
+   chargeback/dispute, consumable reversal, non-consumable revocation, restore,
+   repurchase, and repeated-abuse paths. Record a reasoned non-applicability
+   disposition for high-risk branches that could otherwise be confused.
 5. Build one timeline per account before taking action: purchase, grant, usage/spend, cancellation, refund request, provider confirmation, entitlement transition, support messages, chargeback/dispute, appeal, and repurchase.
 6. Define abuse scoring, false-positive controls, support dashboards, metrics, and approval thresholds before account restrictions.
 7. Define the support operating model: queue owner, SLA, escalation owner, agent override permissions, QA sampling, approval thresholds, and appeal timeline.
-8. Produce a provider table, refund/cancellation/restore state machine, decision table, support macros, event schema with required properties, evidence timeline, support operating model, and risk ladder.
+8. Produce the common authority/evidence, entitlement, support, appeal,
+   reconciliation, audit, and risk controls plus state-machine branches,
+   ledgers, macros, and event fields only for the selected applicable paths.
 
 ## When not to use
 
@@ -92,7 +102,8 @@ Reason-code taxonomy:
 
 Entitlement state machine:
 - <from_state> -> <event> -> <to_state>, grace/hold timing, audit evidence
-- Include cancellation, restore purchase, refund, chargeback, goodwill, appeal, and repurchase paths separately.
+- Include applicable cancellation, restore, refund, chargeback/dispute,
+  goodwill, appeal, and repurchase paths separately; list excluded branches and why.
 
 Decision table:
 - <scenario> -> entitlement action, account action, support action
@@ -101,6 +112,7 @@ Restore/repurchase/reconciliation:
 - <path> -> provider truth check, entitlement ledger check, abuse/dispute check, support/audit action
 
 Consumable ledger policy:
+- Include only when consumable value can be granted, spent, reversed, or restricted.
 - Fields: granted_amount, spent_amount, remaining_amount, refundable_unused_amount, consumed_value_amount, reversal_amount, event_reward_impact, negative_balance_policy_decision.
 - Formula/decision: <how balance or commerce limit is calculated without surprise debt>
 

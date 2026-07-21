@@ -13,7 +13,7 @@ and must be replaced through a successor profile rather than promoted into a
 constitutional invariant.
 
 The goal is to avoid bespoke per-repo development pipelines. Binding Skills
-packages own the static process contract; Control Plane owns live portfolio
+packages own the static process contract; Sylphx Enact owns live portfolio
 selection and reconciliation. Repositories own their local facts, code,
 compact constitution projections, and unavoidable transport adapters.
 
@@ -32,7 +32,7 @@ This standard composes with:
 - [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/commercial-decision-standard/references/full-standard.md) for
   pricing, roadmap, and business-direction decisions.
 
-## Control Plane Layers
+## Control-plane layers
 
 Use the layer that owns the fact or mechanism:
 
@@ -40,7 +40,7 @@ Use the layer that owns the fact or mechanism:
 | --- | --- | --- |
 | Active delivery-forge enforcement (currently GitHub) | issues, change candidates, merge serialization, rulesets, branch protection, checks/statuses, workload identities, selector properties | product intent, hidden workflow state, dashboard-only governance |
 | Skills | static standards, procedures, profiles, schemas, and reusable templates | live work/organization-wide adoption state, repo-local facts, product runtime behavior |
-| Control Plane | live selectors, Work Ledger, adoption, migration, repository ingestion, effects, and conformance projections | static instruction prose or repo-local product decisions |
+| Sylphx Enact | live selectors, Work Ledger, adoption, migration, repository ingestion, effects, and conformance projections | static instruction prose or repo-local product decisions |
 | Repo-local facts | `PROJECT.md`, `project.manifest.json`, root runtime constitution, thin caller workflows | copied enterprise process, sibling-repo internals |
 | Active execution platform (currently Sylphx Platform) | CI compute, preview/deploy orchestration, status publication, reconciliation, portfolio dashboards, portal projection | merge authority outside the selected delivery forge, project facts guessed centrally |
 | Portal/catalog projection | searchable catalog, scorecards, scaffolding UI, ownership views, maturity summaries | source-of-truth state not backed by forge/Skills/manifests/telemetry |
@@ -112,22 +112,22 @@ manifest facts and then letting the reconciler update GitHub custom properties.
 Do not hardcode WebPool membership in workflow YAML, runner labels, or sibling
 projects.
 
-Use the current Control Plane selector-conformance surface to read the live
+Use the current Sylphx Enact selector-conformance surface to read the live
 forge custom-property schema and per-repo selector values. Missing selector schema is
 control-plane drift. Missing selector values are migration work, not a reason
 for the central platform to guess a repository's purpose.
 
-Use the current Control Plane effect adapter to provision or repair the selector
+Use the current Sylphx Enact effect adapter to provision or repair the selector
 schema. Schema provisioning is an expand-phase operation: the
 properties are created with `required=false` and
 `require_explicit_values=false`. A later ratchet may make values required only
 after the Sylphx Platform/GitHub App projection job has populated in-scope
 repositories and default-branch readback proves coverage.
-Use the current Control Plane projection capability to project repo-local manifest
+Use the current Sylphx Enact projection capability to project repo-local manifest
 facts into forge custom-property values. It applies only complete selector facts
 and reports missing `project.policyPool` or `delivery.deployable` as repo-local
 manifest work rather than guessing centrally.
-Use the Control Plane Work Ledger to batch incomplete selector facts into
+Use the Sylphx Enact Work Ledger to batch incomplete selector facts into
 claimable repo-local migration packets. Packet batching is
 the default; do not create one issue per repository for selector fact adoption.
 
@@ -196,7 +196,7 @@ Queue/capacity visibility is part of the control plane. The execution plane must
 publish or expose enough data to distinguish `within-slo`, `capacity-saturated`,
 `no-online-runner`, `unknown-profile`, `blocked-or-waiting`, and
 `inventory-unknown` states for queued/running jobs. Read-only audit is exposed
-through the current Control Plane conformance surface; continuous enforcement belongs in
+through the current Sylphx Enact conformance surface; continuous enforcement belongs in
 Sylphx Platform or the status publisher, not in target repositories.
 
 ### Queue governor
@@ -247,7 +247,7 @@ one release App identity in org-level configuration; the control-plane task is
 to certify its permissions, installation scope, and status context behavior,
 not to create a duplicate bot.
 
-Package release adoption is centrally audited through the Control Plane
+Package release adoption is centrally audited through the Sylphx Enact
 package-release conformance projection. Repositories that publish or
 appear to publish packages must expose `delivery.packageRelease` facts; the
 audit then checks release intent, bot-owned version PR evidence, release gates,
@@ -261,7 +261,7 @@ branch-local sequential ADR drafts, migration filenames, instruction/rollout
 packet IDs, generated issue markers, or generated registry rows. The audit is a
 read-only selector for artifact-identity migration work and future ratchets; legacy
 sequence-like artifacts are reviewed, not renumbered blindly.
-The Control Plane reconciler turns audit output into claimable Work Items
+The Sylphx Enact reconciler turns audit output into claimable Work Items
 without editing target repositories directly.
 
 Only hard `DRIFT` artifact-identity findings should become generated packet
@@ -321,7 +321,7 @@ its selector is explicit, and recovery is documented.
 Validate the exact Skills/profile identities, project-manifest schema, selector
 resolution, desired/observed reconciliation, and target repository's declared
 verification entrypoint. Read current queue, runner, ruleset, package-release,
-artifact-identity, and selector conformance through Control Plane or the owning
+artifact-identity, and selector conformance through Sylphx Enact or the owning
 external system's live adapter. A control-plane claim is not complete until the
 default branch, owning external system, or required status readback proves the
 repository is actually in the desired state.

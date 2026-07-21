@@ -1,6 +1,6 @@
 ---
 name: voice-preserving-editor
-description: Apply a fact-preserving language-quality layer to agent replies or supplied drafts in the requested voice, register, locale, and surface. Use when the user explicitly asks for a natural, human, conversational, non-AI, non-ChatGPT, less-templated, or voice-preserving rewrite; locale-natural or dialect-aware rendering; translationese cleanup; authorized sample matching; or the same constraints in Cantonese, Chinese, English, or multilingual text, while keeping facts, citations, technical terms, uncertainty, and judgment intact. A language name or ordinary translation request alone is not a trigger.
+description: Preserve a requested natural human voice, locale, dialect, and non-AI style without changing facts. Use for explicit conversational, non-ChatGPT, less-templated, voice-preserving, locale-natural, dialect-aware, translationese-cleanup, or authorized sample-matching edits in Cantonese, Chinese, English, or multilingual text. Keep citations, technical terms, uncertainty, and judgment intact. A language name or ordinary translation request alone is not a trigger.
 ---
 
 # Voice-Preserving Editor

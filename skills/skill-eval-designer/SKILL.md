@@ -28,12 +28,14 @@ capability, or adoption/outcome telemetry.
    digests, parameters, seed, tool availability, retries, and expiry.
    For repeated or continuously monitored evaluations, also apply
    `references/holdout-sequential-evaluation.md`.
-3. Build full-catalog runtime auto-injection cases: at least five realistic positives and five
-   near-neighbour negatives per candidate, abstentions, multilingual/ambiguous
-   forms, and compound tasks with an exact expected injected set, expected
-   artifacts, one semantic owner per artifact, supporting constraints, and
-   forbidden contradictions. Test the runtime's native mechanism; do not build
-   a meta-router or evaluate descriptions in isolation.
+3. Build full-catalog runtime auto-injection cases: at least five realistic
+   positives and five near-neighbour negatives per candidate, abstentions,
+   multilingual/ambiguous/correction/misleading-keyword forms, and compound
+   tasks with an exact expected injected set, expected artifacts, one semantic
+   owner per artifact, supporting constraints, and forbidden contradictions.
+   Exercise realistic catalog size and the runtime's documented description
+   shortening/omission state. Test the native mechanism; do not build a
+   meta-router or evaluate descriptions in isolation.
 4. Build unseen behavior tasks from real job shapes and adversarial failure
    modes. Expected behavior is observable assertions and deterministic artifact
    checks, not a leaked golden answer. Include unsafe shortcuts, prompt
@@ -43,11 +45,17 @@ capability, or adoption/outcome telemetry.
    licensing permits. Use at least two answer-model and two independent judge
    families for promotable evidence.
 6. Separate deterministic oracles from blind judgment. Recompute metrics from
-   complete raw artifacts; retain per-case outputs, critical failures, costs,
-   latency, variance, model/provider identities, and hashed response receipts.
+   complete raw artifacts in a protected eval store with declared audience,
+   access, retention, and deletion. Retain per-case outputs, critical failures,
+   costs, latency, variance, model/provider identities, and hashed response
+   receipts there; a public/shareable report uses redacted aggregates, safe
+   excerpts, and opaque locators rather than copying protected prompts or data.
 7. Keep promotion holdouts hidden at inference through a one-use pre-run
-   commitment; disclose after the attested protected run. Reject duplicate,
-   leaked, authored-to-fit, or post-result-edited tasks.
+   commitment. Disclose their content after the attested run only when the
+   dataset was explicitly classified and authorized for that audience;
+   confidential tasks remain protected while commitments, receipts, aggregate
+   results, and safe excerpts support independent verification. Reject
+   duplicate, leaked, authored-to-fit, or post-result-edited tasks.
 8. Report per-skill F1, artifact-owner accuracy, abstention precision/recall,
    exact-set and compound exact-set accuracy, win rates versus every control,
    paired/task-clustered confidence, critical failures, cost/latency, and
@@ -76,8 +84,15 @@ capability, or adoption/outcome telemetry.
 - Never let the author agent self-attest provider/model identity, omit failed
   samples, rewrite raw outputs, relabel families, or average away critical
   regressions.
+- Do not publish raw customer context, private prompts, hidden holdouts,
+  credentials, internal topology/process state, provider secrets, or
+  reconstructable protected outputs merely to make an evaluation auditable.
 - A green score is invalid without exact candidate binding, complete artifacts,
   independent recomputation, provenance, and replay.
+- A model saying that it loaded or followed a Skill is not injection evidence.
+  Prefer runtime-native selection/load traces; where the runtime exposes none,
+  label the result a fresh-context behavior test and do not upgrade it to an
+  exact injection claim.
 - Separate behavior improvement from demand, business outcome, current
   authority, and production proof.
 
@@ -91,8 +106,8 @@ Return one Skill Evaluation Program containing:
 3. behavior tasks, assertions, deterministic artifacts, critical failures, and
    output budget;
 4. base/expert/skill/competitor and answer/judge/provider matrix;
-5. hidden holdout commitment/disclosure, receipts, provenance/attestation,
-   replay, raw artifact, and expiry contract;
+5. protected holdout/raw-artifact store, commitment and authorized disclosure
+   rule, receipts, provenance/attestation, replay, retention, and expiry;
 6. thresholds plus per-skill/per-case/per-family metrics, uncertainty, cost, and
    latency;
 7. failure triage, regression fixtures, proof invalidation, and next run.

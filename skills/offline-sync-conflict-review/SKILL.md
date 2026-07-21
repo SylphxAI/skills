@@ -1,6 +1,6 @@
 ---
 name: offline-sync-conflict-review
-description: "Design or audit one offline/local-first synchronization and conflict protocol: local storage, queued mutations, idempotency, causality/order, reconnect, tombstones, optimistic states, multi-device/collaborative merges, attachments, auth expiry, encryption, schema migration, data-loss recovery, UX, support, observability, and chaos tests. Use when unreliable connectivity or concurrent edits need an independently acceptable sync artifact; use App Design for whole-product workflows."
+description: "Design or audit one offline/local-first synchronization and conflict protocol: local storage, queued mutations, idempotency, causality/order, reconnect, tombstones, optimistic states, multi-device/collaborative merges, attachments, auth expiry, encryption, schema migration, data-loss recovery, UX, sync-domain evidence, and chaos tests. Use when unreliable connectivity or concurrent edits need an independently acceptable sync artifact; use App Design for whole-product workflows."
 ---
 
 # Offline Sync Conflict Review
@@ -12,9 +12,10 @@ collaboration, auth expiry, migrations, and partial failure.
 ## Atomic boundary
 
 Own local state, mutation log, sync protocol, ordering/causality, merge policy,
-tombstones/deletion, attachment transfer, UX states, recovery, telemetry, and
-test fixtures. Do not own whole-app experience, server business rules, backup
-retention, or collaboration permissions except as consumed contracts.
+tombstones/deletion, attachment transfer, UX states, recovery, sync-domain
+signal semantics and proof requirements, and test fixtures. Do not own the
+end-to-end telemetry pipeline, whole-app experience, server business rules,
+backup retention, or collaboration permissions except as consumed contracts.
 
 Begin with the [shared product artifact envelope](references/product-artifact-envelope.schema.json)
 and object, identity, permission, privacy, and server-authority inputs that each
@@ -24,10 +25,10 @@ sealed inputs.
 ## Agent-first invariant
 
 Build the complete protocol, migration/versioning, replay/chaos suite, conflict
-UI, support diagnostics, observability, backpressure, encryption, and recovery
-now. Offline capability may degrade by entity/operation, but “online first now,
-sync later” is not an acceptable architecture when offline is declared. A
-disabled sync domain queues nothing and reserves no background/network work.
+UI, support evidence requirements, backpressure, encryption, and recovery now.
+Offline capability may degrade by entity/operation, but “online first now, sync
+later” is not an acceptable architecture when offline is declared. A disabled
+sync domain queues nothing and reserves no background/network work.
 
 ## Workflow
 
@@ -75,8 +76,10 @@ the current contract and measured eviction behavior prove it.
   schema design, replication, or backup without a client sync protocol.
 - Use `payment-platform-readiness` for provider-authoritative purchases,
   entitlement reconciliation, and finance ledgers; never merge them locally.
-- Use `product-analytics-instrumentation-review` for telemetry event delivery;
-  analytics loss must not share the user-data sync authority.
+- Use `product-analytics-instrumentation-review` for product behavior events and
+  decision metrics. Use `operational-observability-review` for sync health,
+  queue/retry traces, diagnostics, SLOs, and alerts. Neither telemetry class may
+  share the user-data sync authority.
 
 ## Guardrails
 
@@ -88,7 +91,10 @@ the current contract and measured eviction behavior prove it.
   background work; expose quota and recovery instead of dropping writes.
 - Permission revocation and deletion must stop future sync and remove/lock local
   material according to the authoritative retention contract.
-- Telemetry and support logs must not leak synchronized content or credentials.
+- Raw sync telemetry and support evidence remain protected and must not leak
+  synchronized content, credentials, private process state, or cross-tenant
+  facts. Any customer/public sync status is a separate intentional allowlisted
+  projection, not a copy of the diagnostic record.
 
 ## Output contract
 
@@ -101,7 +107,8 @@ Return one typed Offline Sync and Conflict Protocol with:
    machine and per-entity merge table;
 4. user feedback, diff/choice/undo, accessibility/localization, and support UX;
 5. privacy, permission, account merge/logout/reinstall, and key semantics;
-6. event/metric/diagnostic contract and deterministic replay/chaos fixtures;
+6. sync-domain outcome/event semantics and proof requirements, plus
+   deterministic replay/chaos fixtures;
 7. rollout, compatibility, canary, rollback/forward-fix, and live readback.
 
 Complete only when no tested duplicate, reorder, outage, restart, conflict,

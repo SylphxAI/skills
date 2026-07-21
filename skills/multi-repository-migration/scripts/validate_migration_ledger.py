@@ -30,7 +30,13 @@ ORDERED_STATES = (
 ALLOWED_STATES = set(ORDERED_STATES) | {"stale"}
 PARITY_STATES = {"parity_proven", "cutover_ready", "authority_target"}
 CUTOVER_STATES = {"cutover_ready", "authority_target", "source_retired"}
-RUNTIME_STATES = {"authority_target", "source_retired"}
+READBACK_STATES = {"authority_target", "source_retired"}
+VERIFICATION_STAGES = {
+    "development",
+    "internal_dogfood",
+    "internal_beta",
+    "public_production",
+}
 DIGEST_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 
 
@@ -196,38 +202,72 @@ def validate_capability(
         else:
             require_strings(
                 cutover,
-                ("mechanism", "rollback", "prodProbe"),
+                ("mechanism", "rollback"),
                 f"{context}.cutover",
                 errors,
             )
+            stage = cutover.get("verificationStage")
+            probe = cutover.get("verificationProbe")
+            if stage is None and is_nonempty_string(cutover.get("prodProbe")):
+                # Backward-compatible interpretation of the old field.
+                stage = "public_production"
+                probe = cutover.get("prodProbe")
+            if stage not in VERIFICATION_STAGES:
+                errors.append(
+                    f"{context}.cutover: verificationStage must be one of "
+                    f"{sorted(VERIFICATION_STAGES)}"
+                )
+            if not is_nonempty_string(probe):
+                errors.append(f"{context}.cutover: missing verificationProbe")
 
-    if validation_state in RUNTIME_STATES:
-        readback = capability.get("runtimeReadback")
+    if validation_state in READBACK_STATES:
+        readback = capability.get("verificationReadback")
+        readback_context = f"{context}.verificationReadback"
+        if readback is None and isinstance(capability.get("runtimeReadback"), dict):
+            # Old runtimeReadback records are production-stage compatibility input.
+            readback = capability.get("runtimeReadback")
+            readback_context = f"{context}.runtimeReadback"
         if not isinstance(readback, dict):
-            errors.append(f"{context}: {state} requires runtimeReadback")
+            errors.append(f"{context}: {state} requires verificationReadback")
         else:
             require_strings(
                 readback,
                 ("targetRef", "probeArtifact"),
-                f"{context}.runtimeReadback",
+                readback_context,
                 errors,
             )
+            readback_stage = readback.get("verificationStage")
+            if readback_context.endswith(".runtimeReadback") and readback_stage is None:
+                readback_stage = "public_production"
+            if readback_stage not in VERIFICATION_STAGES:
+                errors.append(
+                    f"{readback_context}: verificationStage must be one of "
+                    f"{sorted(VERIFICATION_STAGES)}"
+                )
+            cutover = capability.get("cutover", {})
+            cutover_stage = cutover.get("verificationStage")
+            if cutover_stage is None and is_nonempty_string(cutover.get("prodProbe")):
+                cutover_stage = "public_production"
+            if readback_stage != cutover_stage:
+                errors.append(
+                    f"{context}: verification readback stage must match cutover stage"
+                )
             if not is_sha256_digest(readback.get("artifactDigest")):
                 errors.append(
-                    f"{context}.runtimeReadback: artifactDigest must be "
+                    f"{readback_context}: artifactDigest must be "
                     "sha256:<64 lowercase hex>"
                 )
             if not is_timestamp(readback.get("observedAt")):
                 errors.append(
-                    f"{context}.runtimeReadback: observedAt must be an ISO-8601 timestamp"
+                    f"{readback_context}: observedAt must be an ISO-8601 timestamp"
                 )
             if readback.get("targetRef") != proof.get("targetRef"):
                 errors.append(
-                    f"{context}: runtimeReadback.targetRef must match proof.targetRef"
+                    f"{context}: verification readback targetRef must match proof.targetRef"
                 )
             if readback.get("artifactDigest") != proof.get("targetArtifactDigest"):
                 errors.append(
-                    f"{context}: runtimeReadback.artifactDigest must match "
+                    f"{context}: verification readback artifactDigest must match "
                     "proof.targetArtifactDigest"
                 )
 
