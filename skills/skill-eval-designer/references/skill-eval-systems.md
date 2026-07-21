@@ -55,7 +55,8 @@ Include:
 Run the matrix at realistic installed catalog size. Record the runtime version,
 context window, configured listing budget, which names/descriptions were
 visible, which descriptions were shortened, which entries were omitted, and
-whether an explicit invocation path differs from implicit semantic selection.
+whether an explicit invocation path differs from implicit model-mediated
+selection.
 Test both the documented normal listing and the smallest supported or observed
 listing budget. A full installation is not proof that every description was in
 initial context.

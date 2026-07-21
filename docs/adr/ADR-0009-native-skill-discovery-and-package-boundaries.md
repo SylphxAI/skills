@@ -3,9 +3,15 @@ status: accepted
 date: 2026-07-21
 owners:
   - SylphxAI
+amendedBy: ADR-0011
 ---
 
 # ADR-0009: Native Skill discovery and package boundaries
+
+The runtime-mechanism account in this decision is amended by
+[ADR-0011](ADR-0011-source-verified-native-skill-discovery.md) using pinned
+Codex and Grok Build source. The package-boundary and effective-readback
+decisions below remain in force.
 
 ## Context
 

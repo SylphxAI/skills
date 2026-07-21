@@ -81,10 +81,10 @@ claim.
    separate source, admission, landing, deployment, and live proof. An active
    context that predates installation is not evidence. Complete package bytes
    are availability evidence only: native metadata budgets may shorten or omit
-   descriptions, and semantic selection may still miss or over-trigger a
-   package. Do not claim catalog-wide injection from install status or from the
-   model saying it followed a Skill; use exact native runtime evidence where
-   the claim matters.
+   descriptions, and model-mediated implicit selection may still miss or
+   over-trigger a package. Do not claim catalog-wide injection from install
+   status or from the model saying it followed a Skill; use exact native
+   runtime evidence where the claim matters.
 7. Enable the repository-owned OS-scheduled AutoSync for the receiving runtime
    at the default ten-minute interval. If AutoSync already manages other
    explicitly selected runtimes, preserve that set and add the receiving
