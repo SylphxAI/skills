@@ -445,6 +445,24 @@ test('compact constitution explicitly retires predecessor authorities', () => {
   assert.match(constitution, /Detecting another installed agent runtime\s+is evidence only and never permission/);
 });
 
+test('active public instruction surfaces use the Sylphx Enact product identity', () => {
+  const activeSurfaces = [
+    'PROJECT.md',
+    'INSTALL.md',
+    'README.md',
+    'SKILL.md',
+    'runtime/constitution.md',
+  ];
+  for (const relative of activeSurfaces) {
+    const content = readFileSync(path.join(root, relative), 'utf8');
+    assert.doesNotMatch(content, /SylphxAI\/control-plane|cp\.sylphx\.com/);
+  }
+
+  const project = readFileSync(path.join(root, 'PROJECT.md'), 'utf8');
+  assert.match(project, /canonical Sylphx Enact\s+SaaS enrollment/);
+  assert.doesNotMatch(project, /canonical Sylphx SaaS\s+Control Plane enrollment/);
+});
+
 test('public install intent cannot be mistaken for generic Skill copying', () => {
   const readme = readFileSync(path.join(root, 'README.md'), 'utf8');
   const install = readFileSync(path.join(root, 'INSTALL.md'), 'utf8');
