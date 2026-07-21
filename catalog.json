@@ -559,13 +559,13 @@
       "name": "skill-eval-designer",
       "description": "Design or audit a falsifiable, exact-candidate runtime auto-injection and behavior evaluation for one Agent Skill or a complete catalog: positive, near-neighbour, abstention, compound injection, hidden tasks, controls, independent model families, deterministic artifact and safety checks, provenance, uncertainty, replay, and regressions. Use when proving incremental behavior, not when authoring a skill or building a router.",
       "path": "skills/skill-eval-designer/SKILL.md",
-      "packageDigest": "sha256:a798c33f33f63b22f0590707cec21ed44fbeccb60910766ddca6e099ad719544"
+      "packageDigest": "sha256:608d1e6aca8a84043235e540c6063b89f1375ceb08809cc58a9497b9cbdaee3f"
     },
     {
       "name": "skill-repository-curator",
       "description": "Semantically curate an Agent Skills portfolio: audit native name/description triggers, false negatives and collisions, recurring jobs and artifacts, package boundaries, progressive-disclosure thickness, ownership, consolidation, recovery, and retirement. Use when creating, cleaning, splitting, merging, or reviewing a complete skills repository. Do not use to author one skill from one source, evaluate runtime behavior experimentally, or build a router or marketplace.",
       "path": "skills/skill-repository-curator/SKILL.md",
-      "packageDigest": "sha256:04e5c7faeb25981058eda8db63d3e24d4837abf8b2ef5256d9552ba81ecae1cf"
+      "packageDigest": "sha256:2b81c143c2725cf1590fdbcde00c8476ce3768091ffda9d8e83312c0ccb63134"
     },
     {
       "name": "social-media-operations-review",

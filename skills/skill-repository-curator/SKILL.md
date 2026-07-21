@@ -80,7 +80,7 @@ a folder, topic, governance mechanism, or generated catalog row.
   actual state and prove important routes in each supported native runtime.
 - Do not stuff synonyms into descriptions as a keyword list. Front-load the
   concrete job, artifact, material contexts, and nearby exclusions in natural
-  language so semantic selection has discriminating evidence.
+  language so model-mediated implicit selection has discriminating evidence.
 - A thick method is acceptable when progressive disclosure keeps the entry
   procedure focused and moves optional depth to references. Split only when a
   sub-job is independently requested and produces an independently accepted

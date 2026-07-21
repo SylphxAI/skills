@@ -38,13 +38,15 @@ and does not alter the retired target. It also validates POSIX ownership and
 permissions where those metadata are authoritative. Unknown links and imports
 remain fail-closed.
 
-Codex also discovers the shared `~/.agents/skills` root. An earlier installer
-placed a second Sylphx catalog there, including retired packages. The adapter
-recognizes only its exact historical manifest, source commit, package set, and
-package digests, then archives those packages outside native discovery while
-preserving unrelated shared Skills. Status is not current, and clear is not
-complete, while a recognized, interrupted, or invalid legacy projection
-remains. Unknown, modified, or lookalike projections fail closed.
+Codex also discovers the shared `~/.agents/skills` root, and current public
+source labels `$CODEX_HOME/skills` as deprecated user storage. Grok discovers
+the shared root too, so moving a Codex-targeted install there can also change
+Grok's effective catalog. The current adapter therefore keeps its existing
+runtime-scoped compatibility target while removing only one exactly proven
+historical duplicate from shared discovery. This is a bounded transition, not
+a claim that the shared root is obsolete. A shared-catalog cutover must first
+define cross-runtime scope and prove a lossless migration. Unknown, modified,
+or lookalike projections remain fail-closed.
 
 ---
 
@@ -189,18 +191,23 @@ skills/<id>/
 
 - **One semantic owner** per package — no dual authoring roots.
 - **Description** front-loads the concrete job, artifact, nearby contexts, and
-  exclusions. Codex and Claude document semantic selection over metadata;
-  trigger words are anchors, not a literal keyword router. Other runtimes keep
-  their own documented invocation/discovery semantics.
-- **Native injection** in metadata-selecting runtimes such as Codex and Claude
-  starts from `name` and `description`, then loads the body and references after
-  selection. Their context/listing budgets may shorten descriptions or omit
-  entries, so installation proves available bytes—not that every package was
-  visible or selected for a given task. Material routes need fresh evidence
-  from each supported native runtime.
-- There is no repository meta-router, dependency graph, or manual selection
-  ceremony. Several relevant packages may compose, but each requested artifact
-  still has one semantic owner.
+  exclusions. Current Codex and Grok expose metadata to the model, so implicit
+  matching is model-mediated rather than a deterministic keyword or embedding
+  verdict. Trigger phrases are selection evidence, not exact activation rules.
+- **Native discovery** starts from compact metadata. Current Codex gives the
+  model `name + description + locator`; current Grok gives it identity through
+  the locator plus `description + when-to-use`. A valid, enabled, unambiguous
+  explicit `$skill` or `/skill` invocation is host-resolved; ambiguous bare
+  names fail or require qualification. Implicit use depends on the model
+  choosing and loading the body. Listing budgets may shorten descriptions or
+  omit entries, so an installed package is not proof that it was visible or
+  selected for a task.
+  Material routes need fresh evidence from each supported native runtime.
+- There is no repository meta-router or dependency graph. Provider-specific
+  listing, visibility gates, explicit invocation, or shadow rankers remain
+  runtime behavior rather than a second semantic authority. Several relevant
+  packages may compose, but each requested artifact still has one semantic
+  owner.
 - **Compound tasks** may load several useful Skills. One owner produces each
   requested artifact while standards constrain it without duplicate reports.
 - **Runtime tools** (browse, execute, MCP, credentials) stay with the agent;
@@ -209,7 +216,8 @@ skills/<id>/
 Authority notes: [docs/adr/ADR-0001-public-agent-instruction-source.md](./docs/adr/ADR-0001-public-agent-instruction-source.md) ·
 [docs/adr/ADR-0002-consumption-boundary-skill-reconciliation.md](./docs/adr/ADR-0002-consumption-boundary-skill-reconciliation.md) ·
 [docs/adr/ADR-0009-native-skill-discovery-and-package-boundaries.md](./docs/adr/ADR-0009-native-skill-discovery-and-package-boundaries.md) ·
-[docs/adr/ADR-0010-observability-audience-boundaries.md](./docs/adr/ADR-0010-observability-audience-boundaries.md)
+[docs/adr/ADR-0010-observability-audience-boundaries.md](./docs/adr/ADR-0010-observability-audience-boundaries.md) ·
+[docs/adr/ADR-0011-source-verified-native-skill-discovery.md](./docs/adr/ADR-0011-source-verified-native-skill-discovery.md)
 
 ---
 

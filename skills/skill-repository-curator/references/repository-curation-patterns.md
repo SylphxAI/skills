@@ -69,13 +69,19 @@ Common failure modes:
 
 ## Native discovery and thickness
 
-Portable package discovery starts from `name` and `description`. Current Codex
-and Claude document metadata-first semantic selection, may shorten or omit
-descriptions under their listing/context budgets, and load `SKILL.md` only
-after selection; other runtimes require their own documented verification.
-Treat keyword examples as semantic anchors, not as a deterministic router
-contract. On a metadata-selecting runtime, a correct body cannot rescue a
-package whose description never gives enough evidence to select it.
+Portable package discovery starts from `name` and `description`. At pinned
+public-source revisions, Codex exposes `name + description + locator`; Grok
+exposes identity through the locator plus `description + when-to-use` to the
+model. Implicit use is therefore model-mediated. A valid, enabled, unambiguous
+explicit `$skill` or `/skill` invocation is host-resolved; ambiguous names fail
+or require qualification. Neither runtime exposes a production repository
+keyword table or deterministic semantic-classifier verdict. Codex's
+lexical/BM25/ngram
+selectors are shadow experiments, while Grok's `paths:` is a provider-specific
+visibility gate after a matching file touch. Treat trigger phrases as
+model-facing evidence, not an activation guarantee. A correct body cannot
+rescue a package whose visible metadata never gives enough evidence to select
+it.
 
 For every material route, inspect:
 
@@ -97,7 +103,8 @@ medium, implementation layer, or noun alone.
 Official current behavior must be verified against the supported runtime, not
 remembered from an earlier release. Relevant authorities include the
 [Agent Skills specification](https://agentskills.io/specification),
-[OpenAI Skills documentation](https://learn.chatgpt.com/docs/build-skills), and
+[OpenAI Codex source](https://github.com/openai/codex),
+[Grok Build source](https://github.com/xai-org/grok-build), and
 [Claude Code Skills documentation](https://code.claude.com/docs/en/skills).
 
 ## Collision decisions
