@@ -66,6 +66,11 @@ or product state. Those capabilities have separate authenticated owners.
    only for controlled staging and isolated evaluation; there is no alternative
    self-hosted production topology. OAuth account, tenant, scopes, expiry, and
    revocation remain owned by the runtime, identity provider, and Enact.
+   Public enrollment requests exactly `enact.observe`, `enact.propose`,
+   `enact.claim`, `enact.checkpoint`, `enact.evidence`, and `enact.attest`.
+   Where a runtime accepts explicit scopes, the adapter passes this exact set;
+   it must not derive a DCR request from the authorization server's wider
+   managed-client catalog or request any `enact.effect.*` scope.
    The repository never copies, requests, mints, prints, or persists a bearer
    token or client secret. Product naming and endpoint identity follow
    `SylphxAI/enact:docs/adr/ADR-0043-sylphx-enact-product-identity-cutover.md`.
@@ -128,5 +133,5 @@ or product state. Those capabilities have separate authenticated owners.
   constitution, and all Skills are present.
 - Run fresh-context black-box installation and workflow-adoption checks for
   each authenticated supported runtime. Verify the canonical MCP resource and
-  AutoSync readback. Report unavailable authentication as a typed gap rather
+  exact non-effect OAuth request, plus AutoSync readback. Report unavailable authentication as a typed gap rather
   than borrowing hidden local state.

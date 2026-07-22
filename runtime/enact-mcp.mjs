@@ -13,6 +13,7 @@ export const REQUIRED_ENACT_SCOPES = Object.freeze([
   'enact.claim',
   'enact.checkpoint',
   'enact.evidence',
+  'enact.attest',
 ]);
 const MAX_PROTECTED_RESOURCE_METADATA_BYTES = 64 * 1024;
 
@@ -78,6 +79,10 @@ export function validateProtectedResourceMetadata(metadata, endpoint) {
   const missingScopes = REQUIRED_ENACT_SCOPES.filter((scope) => !scopesSupported.includes(scope));
   if (missingScopes.length) {
     throw new Error(`OAuth protected-resource metadata is missing required scopes: ${missingScopes.join(', ')}`);
+  }
+  const unexpectedScopes = scopesSupported.filter((scope) => !REQUIRED_ENACT_SCOPES.includes(scope));
+  if (unexpectedScopes.length) {
+    throw new Error(`OAuth protected-resource metadata advertises non-public scopes: ${unexpectedScopes.join(', ')}`);
   }
   if (metadata.mcp?.transport !== 'streamable_http') {
     throw new Error('Enact metadata must declare MCP streamable_http transport');
@@ -183,7 +188,14 @@ export function enrollmentCommand(runtime, endpoint, {
       oauth: {
         supported: true,
         initiation: 'native_login_command',
-        loginArgs: ['mcp', 'login', serverName],
+        // Codex otherwise derives its DCR request from the authorization
+        // server's global catalog, which also contains managed-client effect
+        // scopes. Bind public enrollment to the exact RFC 9728 resource scope
+        // set so the installer cannot request privileged effects.
+        loginArgs: [
+          'mcp', 'login', serverName,
+          '--scopes', REQUIRED_ENACT_SCOPES.join(','),
+        ],
       },
     };
   }
