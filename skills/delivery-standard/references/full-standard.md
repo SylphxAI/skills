@@ -103,11 +103,14 @@ identity. Each org designates one release App/bot identity in org-level
 configuration; certify and reuse it instead of creating duplicate bot
 identities.
 
-JavaScript and TypeScript packages published to npm should use Changesets for
-release intent, versioning, and changelog generation. Other ecosystems may use
-native equivalents only when they preserve the same invariants: machine-readable
-intent, bot-owned version PR, generated release notes, least-privilege publish
-identity, provenance or attestation where applicable, and package-registry proof.
+JavaScript and TypeScript source products published to npm should use Changesets
+for release intent, versioning, and changelog generation. A generated npm/npx
+adapter for a native CLI instead derives its version and artifact mapping from
+the CLI release identity under `software-distribution-readiness`; it must not
+create a second release authority. Other ecosystems may use native equivalents
+only when they preserve the same invariants: machine-readable intent, bot-owned
+version PR, generated release notes, least-privilege publish identity,
+provenance or attestation where applicable, and package-registry proof.
 
 For npm publication, prefer trusted publishing through GitHub Actions OIDC over
 long-lived npm tokens. The GitHub App/bot identity owns generated version PRs
@@ -125,6 +128,12 @@ Do not publish packages manually from a workstation or from a human-owned token
 as the standard path. After an immutable package version is published, recovery
 is normally forward-fix, deprecate, or staged-channel halt; source revert alone
 does not undo external consumption.
+
+When the published product is a command-line executable, apply
+`software-distribution-readiness` for target artifacts, installers,
+package-manager selection, cross-channel identity, update/uninstall behavior,
+and consumer-side installation proof. This standard continues to own the
+generic publication and delivered-state ladder.
 
 ## Release Notes
 

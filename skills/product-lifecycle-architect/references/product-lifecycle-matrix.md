@@ -22,7 +22,7 @@
 | Referral qualification, grant, reversal and fraud | `referral-loop-review` |
 | Marketing channel, budget and creative control plane | `marketing-automation-blueprint` |
 | Listing metadata/creative conversion design | `store-listing-optimization` |
-| Channel submission/certification/release evidence | `app-store-distribution-readiness` |
+| Channel submission/certification/release evidence | `software-distribution-readiness` |
 | Localized product meaning | corresponding App/Game Design Blueprint |
 | Exact localized product capture, media transformation, accessibility, rights/provenance and file QA | `product-asset-production` |
 | Campaign creative brief/concept and paid/organic variants | `marketing-automation-blueprint` |

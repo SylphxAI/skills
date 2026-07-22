@@ -24,7 +24,9 @@ their canonical owners; do not redesign those systems here.
 - Do not use for API/SDK implementation, compatibility architecture, low-level
   rate limiting, infrastructure capacity, or release engineering; hand the
   experience requirement to the owning engineering project under
-  `engineering-standard` and `delivery-standard`.
+  `engineering-standard` and `delivery-standard`. Use
+  `software-distribution-readiness` when the independent job is selecting,
+  implementing, or verifying CLI install and update channels.
 - Do not use for developer quota/free-credit abuse policy or generic product
   abuse; use `developer-quota-credit-abuse-review` or
   `product-abuse-risk-review` respectively.
@@ -141,6 +143,9 @@ claiming production performance before measurement exists.
   the developer integration journey, is the independent artifact.
 - Use `delivery-standard`, `incident-standard`, `engineering-standard`, and
   `privacy-data-lifecycle-review` for shipped proof, incidents, controls, and privacy.
+- Use `software-distribution-readiness` for the executable artifact set, installers,
+  package-manager adapters, upgrades, uninstall, and publication readback of a
+  CLI named by this adoption journey.
 
 ## Hard gates
 

@@ -201,9 +201,12 @@ Produce one **Product Program Manifest** containing:
   request policy; `product-feedback-learning-loop` owns universal private
   feedback, authorized review ingestion, evidence clustering, routing, product
   action, and close-loop behavior.
-- `app-store-distribution-readiness` consumes a sealed planning revision and
-  owns channel eligibility, submission, certification, rollout, and live
-  evidence; a later observed-state manifest revision indexes that artifact.
+- `software-distribution-readiness` consumes a sealed planning revision and
+  owns the distribution contract and evidence pack for target artifacts,
+  installers, package-manager and store adapters, channel eligibility,
+  submission or certification, lifecycle behavior, rollout, recovery, and live
+  readback; the product repository and active delivery profile retain mutation
+  authority, and a later observed-state manifest revision indexes that pack.
 - App/Game blueprints own localized product semantics; this lifecycle architect owns the cross-channel globalization, asset, market-adapter, evidence, and release dependency graph.
 - `launch-readiness-review` independently evaluates evidence; it cannot self-certify a manifest it authored.
 

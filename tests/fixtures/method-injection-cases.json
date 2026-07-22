@@ -506,5 +506,53 @@
     "expectedSkills": ["retention-cohort-review"],
     "artifacts": [{"artifact": "Retention Cohort Analysis", "owner": "retention-cohort-review"}],
     "nearNeighbourOf": "data-quality-observability-review"
+  },
+  {
+    "id": "cli-distribution-rust-multichannel",
+    "kind": "positive",
+    "prompt": "Design how our Rust command-line product should ship through signed release assets, npm or npx, Homebrew, Windows package management, and one-command installers without rebuilding a different binary in every channel.",
+    "expectedSkills": ["software-distribution-readiness"],
+    "artifacts": [{"artifact": "Software Distribution Contract and Distribution Evidence Pack", "owner": "software-distribution-readiness"}],
+    "tags": ["cli", "rust", "distribution"]
+  },
+  {
+    "id": "cli-distribution-cantonese",
+    "kind": "positive",
+    "prompt": "我哋個 CLI 應該發佈去邊？請設計 macOS、Linux、Windows、Homebrew、npm 同一鍵安裝嘅 artifact、升級、解除安裝同 readback 合約。",
+    "expectedSkills": ["software-distribution-readiness"],
+    "artifacts": [{"artifact": "Software Distribution Contract and Distribution Evidence Pack", "owner": "software-distribution-readiness"}],
+    "tags": ["cli", "multilingual", "distribution"]
+  },
+  {
+    "id": "cli-distribution-release-compound",
+    "kind": "compound",
+    "prompt": "Implement and publish the cross-platform command-line release, keep the package-manager adapters on the exact tested artifacts, and prove the external registries can install the released version.",
+    "expectedSkills": ["software-distribution-readiness", "delivery-standard"],
+    "artifacts": [{"artifact": "Software Distribution Contract and Distribution Evidence Pack", "owner": "software-distribution-readiness"}],
+    "tags": ["cli", "distribution", "compound"]
+  },
+  {
+    "id": "cli-distribution-neighbour-npm-library",
+    "kind": "near-neighbour",
+    "prompt": "Publish this JavaScript library package to npm with version intent, provenance, registry readback, and release notes; it has no executable or command-line install journey.",
+    "expectedSkills": ["delivery-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "software-distribution-readiness"
+  },
+  {
+    "id": "cli-distribution-same-owner-desktop-store",
+    "kind": "positive",
+    "prompt": "Prepare the signed GUI desktop application for Microsoft Store and notarized macOS direct release, including listing evidence, staged rollout, withdrawal, and live readback.",
+    "expectedSkills": ["software-distribution-readiness"],
+    "artifacts": [{"artifact": "Software Distribution Contract and Distribution Evidence Pack", "owner": "software-distribution-readiness"}],
+    "tags": ["desktop-store", "distribution"]
+  },
+  {
+    "id": "cli-distribution-neighbour-command-refactor",
+    "kind": "near-neighbour",
+    "prompt": "Refactor the command parser and add tests for the new subcommand, but do not change packaging, installers, release channels, or publication.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "software-distribution-readiness"
   }
 ]

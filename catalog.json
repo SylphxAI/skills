@@ -61,13 +61,7 @@
       "name": "app-design-blueprint",
       "description": "Design or critically review a complete app as a coherent, agent-first App Design Blueprint: user job and promise, workflows and information architecture, first-use activation, capability portfolio, retention and durable ownership, commerce and social integration, feedback and review loops, responsive HTML5/mobile/desktop experience, desktop OS integration semantics, offline and sync, accessibility, localization, low-end performance, privacy, safety, autonomous construction, and validation. Use for a new consumer or productivity app, whole-app redesign, cross-platform app system, a bounded macOS/Windows integration design that must remain consistent with app state, or an audit of whether product capabilities form one scalable experience. Use specialist procedures for one payment, refund, notification, review, campaign, store submission, exact release artifact, or file-level interface artifact unless whole-app coherence is also being decided.",
       "path": "skills/app-design-blueprint/SKILL.md",
-      "packageDigest": "sha256:acbd3bb1c163a172fe035f5d99b8c208409b285f5ee92309bf1d93cddd8f5dc5"
-    },
-    {
-      "name": "app-store-distribution-readiness",
-      "description": "Prepare or audit exact-artifact release evidence and release communication for selected app, game, web, desktop, PC-store, or console distribution channels. Use when an already-designed product needs channel eligibility, package/signing, declarations, desktop or PC-store release proof, testing, submission or certification, changelog or release-note variants, rollout, withdrawal, and live readback. Do not use for whole-product design, listing conversion strategy, asset creation, or a cross-domain launch verdict.",
-      "path": "skills/app-store-distribution-readiness/SKILL.md",
-      "packageDigest": "sha256:b1934c1fabbb350c73b22f8c302370c938268ca560dc9c159372568bb874eeac"
+      "packageDigest": "sha256:ebf3b0eeb98a41fb386562cc118902a61887a5690ce8b3ae031bd38ad5319411"
     },
     {
       "name": "autonomous-execution-standard",
@@ -175,7 +169,7 @@
       "name": "delivery-standard",
       "description": "Shipped-state proof across source landing, artifacts, deployment, rollback, and production readback. Use when delivering a change or deciding whether it is truly released or live. Do not use when only local implementation is in scope.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:5ce9d730dd5b0e12316148e946b6f341641f9ba82bef5d54a20c942576844528"
+      "packageDigest": "sha256:aceee9d21d87be387da07abd4e2bca20f92f08817b086669ef3633547604ff3a"
     },
     {
       "name": "dependency-version-selection",
@@ -199,7 +193,7 @@
       "name": "developer-product-experience-review",
       "description": "Design or audit the end-user developer journey for an API, SDK, CLI, plugin, app integration, or developer platform across discovery, docs, installation, credentials, sandbox, first success, production readiness, diagnostics, support, certification, recertification, and retained use. Use when the primary artifact is a Developer Adoption Contract joining those surfaces into one measurable experience. Do not use for API or SDK implementation, API versioning policy alone, infrastructure capacity, developer quota or credit abuse policy, generic product abuse, or product analytics instrumentation alone.",
       "path": "skills/developer-product-experience-review/SKILL.md",
-      "packageDigest": "sha256:b893e4f9492a831fa9dbe6f8a4a023a3a1a4e72b0d814ef4211e7f9223344ce2"
+      "packageDigest": "sha256:ec5053465f7af7da25760644a495c59883c89c02894fb7d2a468172b176c07f6"
     },
     {
       "name": "developer-quota-credit-abuse-review",
@@ -283,7 +277,7 @@
       "name": "game-soft-launch-review",
       "description": "Design or audit a game soft-launch learning and exposure program across regions, cohorts, acquisition sources, FTUE, core/meta loops, retention, economy, IAP/IAA, live events, store creative, crashes/performance, support/community, global-transfer risk, and automated scale/hold/pause/withdraw gates. Use when a production-shaped game is entering bounded real-player exposure; use Game Design for the game itself and Distribution Readiness for store submission/certification.",
       "path": "skills/game-soft-launch-review/SKILL.md",
-      "packageDigest": "sha256:890f239a668d84d3e1c19195a962532dac9292d3cc35c63c4d54312eb310808f"
+      "packageDigest": "sha256:f915e1d04b4a73a12d1e4d67bf9c468eaa08c8920a5f657e6471305ec540bf19"
     },
     {
       "name": "high-signal-communication",
@@ -313,7 +307,7 @@
       "name": "launch-readiness-review",
       "description": "Produce or audit one cross-domain launch admission verdict for an app, game, SaaS, desktop product, developer tool, marketplace, major release, beta, or campaign. Integrate exact product, quality, performance, security/privacy, payments, distribution, analytics, support, marketing, legal/authority, rollback, and post-launch evidence into go, conditional-go, hold, or no-go gates. Use when launch-day decision ownership is the artifact; use specialist skills to create missing domain evidence.",
       "path": "skills/launch-readiness-review/SKILL.md",
-      "packageDigest": "sha256:9cebab69648f2895640c57194cc167c858ffca1bb24250d8a69f44b156293d56"
+      "packageDigest": "sha256:8fab33de5f1f4a01a5305822f0eb5bce0529c97a4fbecb2e2fbbee074ec63814"
     },
     {
       "name": "market-research-synthesis",
@@ -325,7 +319,7 @@
       "name": "marketing-automation-blueprint",
       "description": "Design or critically review a complete autonomous marketing operating system across truth-bound positioning, audiences and consent, owned/earned/paid channels, creative and content, SEO/AEO, stores, lifecycle messaging, referrals, cross-promotion, creators, community, partnerships, reputation, attribution, incrementality, budget allocation, experiments, and autonomous maintenance. Use when the primary artifact is a multi-channel marketing control plane or full go-to-market operating blueprint. For one campaign, official social-account operating model, referral, listing, notification, review/feedback loop, or distribution package, use the specialist procedure.",
       "path": "skills/marketing-automation-blueprint/SKILL.md",
-      "packageDigest": "sha256:078e6681b38aa2714daef7db280ca7ed567869ba63b0b2a87ca3b82b7e8964da"
+      "packageDigest": "sha256:84ae4e6fb788792a9d3bfe6580d3783c765f6cffdfd6f77cc32d355a9d49b8f9"
     },
     {
       "name": "marketplace-payouts-review",
@@ -415,7 +409,7 @@
       "name": "product-asset-production",
       "description": "Create or audit one exact, localized, accessible, rights-safe Product Asset Production Pack for apps and games: deterministic product captures, screenshots, icons/key/capsule art, feature graphics, trailers, demos, short/long video, captions, audio description, alt text, and store, website, YouTube, X, social, PC, console, mobile, and HTML5 variants. Use when approved product truth and Marketing or Store Listing briefs must become finished media files with provenance and QA. Marketing owns message and campaign briefs; Store Listing owns narrative, selection, order, and metadata; Distribution owns upload, certification, release, and live evidence.",
       "path": "skills/product-asset-production/SKILL.md",
-      "packageDigest": "sha256:ff18c21e344ca73fa399ed0cbe547ad7df5b51e76786f875d2c2441871f5880c"
+      "packageDigest": "sha256:fd0c780149a1c5900ea82ab002084d4bde1fa5a8812595af141a1cb26ab0dd4a"
     },
     {
       "name": "product-experiment-review",
@@ -433,7 +427,7 @@
       "name": "product-lifecycle-architect",
       "description": "Orchestrate a multi-artifact product program across experience design, commerce, distribution, globalization, SDKs, marketing, support, operations, delivery, and autonomous maintenance. Use when the primary artifact is the cross-domain dependency, handoff, validation, or delivery graph; when a product program spans at least three lifecycle domains; when an ecosystem certification program must compose eligibility, tests, trust signals, renewal, appeals, and operations; or when app/game, global platform release, marketing, and operations must converge on one build-to-scale target. Do not use as primary for whole-app design, whole-game design, a marketing operating system, one campaign/listing/refund, or one product's store-submission readiness.",
       "path": "skills/product-lifecycle-architect/SKILL.md",
-      "packageDigest": "sha256:8c76e8f94d204352f273ecfcbcb890ea121b91c412476bf2836b8617a1a8ed87"
+      "packageDigest": "sha256:644707fd8916e4c8745d7f45c76ae6644d20fbfdeaf631c8739e956b18afe648"
     },
     {
       "name": "product-recovery-contract-review",
@@ -517,7 +511,7 @@
       "name": "saas-web-platform-blueprint",
       "description": "Design or critically review one complete modern SaaS web platform joining public acquisition surfaces and an authenticated product across value proposition, onboarding, UI/UX, web performance, SEO, PWA disposition, identity, organizations, billing and entitlements, notifications, support, security, privacy, analytics, operations, and global scale. Use when the whole SaaS platform blueprint is the independent artifact; use specialists for one interface, price, payment, refund, notification, identity, marketing, or release job.",
       "path": "skills/saas-web-platform-blueprint/SKILL.md",
-      "packageDigest": "sha256:53ea5bd6515af55d76e932acb3ddd0c692747da1ea90dc19b92ced4b8660a4ca"
+      "packageDigest": "sha256:59ac1b14f8ed4ac05f516f266829942412da27bcb37735c5a35cf533eaf213d9"
     },
     {
       "name": "scope-discipline",
@@ -574,6 +568,12 @@
       "packageDigest": "sha256:1bbc2944722cf454adad0010a2ec20f3cd19cfb6c0e6d6b5f71d5412250e34ad"
     },
     {
+      "name": "software-distribution-readiness",
+      "description": "Design, prepare, or audit one exact-artifact Software Distribution Contract and Distribution Evidence Pack for command-line tools, apps, games, web, desktop, PC, console, direct downloads, package managers, registries, containers, and stores. Use when an already-designed software product needs channel selection, target packages, signing and provenance, install/update/uninstall behavior, submission or certification, rollout, recovery, publication, or live consumer readback. Do not use for whole-product design, a single library-registry publish with no distribution decision, listing conversion strategy, asset creation, or a cross-domain launch verdict.",
+      "path": "skills/software-distribution-readiness/SKILL.md",
+      "packageDigest": "sha256:d272faab4b224703f1b9117e65d6578b38ec92da94eab8380a8b5002265c31e6"
+    },
+    {
       "name": "source-authoring-standard",
       "description": "Commits, exact source candidates, semantic atomicity, worktrees, and durable checkpoints. Use when authoring or integrating repository changes where source identity, recovery, or concurrent edits matter. Do not use for read-only analysis.",
       "path": "skills/source-authoring-standard/SKILL.md",
@@ -595,7 +595,7 @@
       "name": "store-listing-optimization",
       "description": "Design or audit one channel listing and creative-conversion artifact for App Store, Google Play, Steam, console/PC stores, Microsoft Store, browser extensions, or direct download: positioning, title/subtitle/description, screenshots, capsule/icon/key art, trailer, proof, pricing/disclosures, privacy/compatibility claims, localization, accessibility, experiments, review/reputation context, and exact asset QA. Use for listing conversion; use Distribution Readiness for submission/certification and Marketing Automation for the full channel portfolio.",
       "path": "skills/store-listing-optimization/SKILL.md",
-      "packageDigest": "sha256:97877797396ac1e971e6411b0bdf169faacdae54ee4831d22b3af97b05b706d5"
+      "packageDigest": "sha256:e4ddb4a696daf51e81357b946e22c720136cfce1c57870ef65bc552bc8d769ca"
     },
     {
       "name": "structured-deliberation",

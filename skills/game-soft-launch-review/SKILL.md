@@ -73,7 +73,7 @@ global compliance or product-fit verdict.
 
 - Use `game-design-blueprint` when the primary job is designing or repairing
   core play, progression, content, social, feel, retention, or monetization.
-- Use `app-store-distribution-readiness` for submission assets, certification,
+- Use `software-distribution-readiness` for submission assets, certification,
   reviewer access, staged release mechanics, and exact live-channel evidence.
 - Use `marketing-automation-blueprint` for the complete multi-channel creative,
   organic, lifecycle, paid-spend, attribution, and shutdown operating system.
