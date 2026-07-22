@@ -1,0 +1,4 @@
+interface:
+  display_name: "Software Distribution Readiness"
+  short_description: "Prepare exact-artifact software release channels"
+  default_prompt: "Use $software-distribution-readiness to design or verify exact-artifact CLI, package-manager, direct-download, store, and container distribution with consumer-side readback."

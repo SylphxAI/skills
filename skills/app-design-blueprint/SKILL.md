@@ -234,7 +234,7 @@ Produce one **App Design Blueprint** containing:
   private feedback, authorized review ingestion, support/product routing, and
   close-loop behavior.
 - Use `notification-strategy-review`, `daily-reward-and-streak-review`, `referral-loop-review`, `promotion-campaign-review`, `product-analytics-instrumentation-review`, `offline-sync-conflict-review`, and `ad-monetization-review` for their detailed artifacts.
-- `app-store-distribution-readiness` owns channel submission/release evidence; `marketing-automation-blueprint` owns the multi-channel marketing control plane.
+- `software-distribution-readiness` owns channel submission/release evidence; `marketing-automation-blueprint` owns the multi-channel marketing control plane.
 
 ## Completion check
 

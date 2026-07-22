@@ -230,7 +230,7 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 | Universal private feedback, review ingestion and product-learning close-loop | `product-feedback-learning-loop` |
 | Event/identity/metric instrumentation | `product-analytics-instrumentation-review` |
 | Offline/sync conflict | `offline-sync-conflict-review` |
-| Store/channel release evidence | `app-store-distribution-readiness` |
+| Store/channel release evidence | `software-distribution-readiness` |
 | Localized experience semantics | `app-design-blueprint` |
 | Deterministic product capture, cross-channel asset transformation, localized production and LQA pack | `product-asset-production` |
 | Multi-channel marketing control plane | `marketing-automation-blueprint` |

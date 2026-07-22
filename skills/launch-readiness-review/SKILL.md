@@ -62,7 +62,7 @@ explicit floor and may not be self-attested.
 
 - Use `product-lifecycle-architect` to build the multi-domain program graph and
   produce the sibling artifacts, not merely decide one launch candidate.
-- Use `app-store-distribution-readiness` for channel submission, reviewer,
+- Use `software-distribution-readiness` for channel submission, reviewer,
   certification, rollout, and live-store evidence.
 - Use `game-soft-launch-review` for a multi-cohort game learning/exposure
   program rather than final cross-domain admission.

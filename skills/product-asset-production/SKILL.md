@@ -173,7 +173,7 @@ Use `artifactDigest` only on exact child files or sealed input references with
   concepts, creative briefs, spend, publication policy, and performance loop.
 - `store-listing-optimization` owns listing narrative, metadata, asset request,
   final selection/order, disclosures, and conversion experiment.
-- `app-store-distribution-readiness` owns upload/submission, certification,
+- `software-distribution-readiness` owns upload/submission, certification,
   rollout, withdrawal, and observed channel evidence.
 - `product-lifecycle-architect` owns planning and observed-state revisions of
   the cross-domain dependency graph and composition index, not this pack.

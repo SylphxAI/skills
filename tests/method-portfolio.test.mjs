@@ -179,6 +179,27 @@ test('dependency-selection routing cases use natural requests and a bounded neig
   }
 });
 
+test('software distribution routing owns CLI and app channels without absorbing libraries or source refactors', () => {
+  const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('cli-distribution-'));
+  assert.ok(cases.length >= 5);
+  assert.ok(cases.some(({ kind, expectedSkills }) =>
+    kind === 'positive' && expectedSkills.includes('software-distribution-readiness')));
+  assert.ok(cases.some(({ kind, expectedSkills }) =>
+    kind === 'compound'
+      && expectedSkills.includes('software-distribution-readiness')
+      && expectedSkills.includes('delivery-standard')));
+  assert.ok(cases.some(({ kind, expectedSkills, tags = [] }) =>
+    kind === 'positive'
+      && tags.includes('desktop-store')
+      && expectedSkills.includes('software-distribution-readiness')));
+  assert.ok(cases.some(({ nearNeighbourOf, expectedSkills }) =>
+    nearNeighbourOf === 'software-distribution-readiness'
+      && !expectedSkills.includes('software-distribution-readiness')));
+  for (const fixture of cases) {
+    assert.doesNotMatch(fixture.prompt, /software-distribution-readiness/i);
+  }
+});
+
 test('architecture routing cases keep one owner and reject docs-only terminals', () => {
   const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('architecture-'));
   assert.ok(cases.length >= 3);
