@@ -223,7 +223,7 @@
       "name": "engineering-standard",
       "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, functional cores, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:cf971983a33f0ebf0c3df071813fd8da1f70b8bf154eb179c14a34c44328d7bd"
+      "packageDigest": "sha256:4580032a69482e4e157d03e6925ddb8e91e8cdd09c44a7d8148d9411d3b37296"
     },
     {
       "name": "enterprise-access-governance-review",

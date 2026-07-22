@@ -200,3 +200,38 @@ test('architecture routing cases keep one owner and reject docs-only terminals',
   assert.match(architecture, /Migration terminal/i);
   assert.match(architecture, /docs-only|Metadata-only/i);
 });
+
+test('engineering defect repair requires faithful red-to-green causal evidence without universal unit-test ceremony', () => {
+  const skillEntry = skill('engineering-standard');
+  const method = readFileSync(
+    new URL('../skills/engineering-standard/references/reproduction-driven-engineering.md', import.meta.url),
+    'utf8',
+  );
+  const predicates = readFileSync(
+    new URL('../skills/engineering-standard/references/binding-predicates.md', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(skillEntry, /Reproduction-driven engineering/);
+  assert.match(method, /exact unmodified baseline/i);
+  assert.match(method, /same\s+oracle MUST pass/i);
+  assert.match(method, /Discriminate causes/i);
+  assert.match(method, /containment is not called a fix/i);
+  assert.match(method, /do not invent a unit test for ceremony/i);
+  assert.match(method, /oracle execution bundle/i);
+  assert.match(method, /two linked proofs/i);
+  assert.match(method, /counterfactual candidate/i);
+  assert.match(method, /Never retry until one convenient green sample/i);
+  assert.match(method, /authorized isolated\s+environment/i);
+  assert.match(method, /Unacceptable green results/i);
+  assert.match(predicates, /eng-debug-01/);
+  assert.match(predicates, /eng-regress-01/);
+
+  const routineFix = INJECTION_CASES.find(({ id }) => id === 'defect-repair-positive');
+  assert.deepEqual(routineFix.expectedSkills, ['engineering-standard']);
+  const activeIncident = INJECTION_CASES.find(({ id }) => id === 'defect-repair-active-incident-compound');
+  assert.deepEqual(activeIncident.expectedSkills, ['incident-standard', 'engineering-standard']);
+  const analysisOnly = INJECTION_CASES.find(({ id }) => id === 'defect-repair-neighbour-analysis-only');
+  assert.deepEqual(analysisOnly.expectedSkills, ['critical-analysis']);
+  assert.equal(analysisOnly.nearNeighbourOf, 'engineering-standard');
+});
