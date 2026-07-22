@@ -48,7 +48,7 @@ import {
   RETIRED_DOCTRINE_MIGRATION,
 } from '../runtime/constitution.mjs';
 import { reconcile } from '../runtime/reconcile.mjs';
-import { parseIntervalMinutes, schedulerDefinition } from '../runtime/scheduler.mjs';
+import { parseIntervalMinutes, schedulerDefinition, schedulerStatus } from '../runtime/scheduler.mjs';
 import { targetGenerationTransactionNames } from '../runtime/target-generation.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -1845,6 +1845,48 @@ test('scheduler supports one configurable interval across macOS, Linux, and Wind
   assert.deepEqual(windows.activate[0][1].slice(-3), ['/MO', '10', '/F']);
 });
 
+test('scheduler status rejects inert Linux timer files when the user manager is unavailable', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-scheduler-status-'));
+  try {
+    const options = {
+      platform: 'linux',
+      home: sandbox,
+      nodePath: '/runtime/node',
+      reconcilerPath: path.join(sandbox, '.sylphx-skills', 'reconcile.mjs'),
+      pathEnv: '/usr/local/bin:/usr/bin:/bin',
+      intervalMinutes: 10,
+    };
+    const definition = schedulerDefinition(options);
+    for (const file of definition.files) {
+      mkdirSync(path.dirname(file.path), { recursive: true });
+      writeFileSync(file.path, file.contents);
+    }
+    const unavailable = schedulerStatus(options, {
+      run(_command, args) {
+        if (args.includes('is-enabled')) return { status: 0, stdout: 'enabled\n', stderr: '' };
+        return { status: 1, stdout: 'inactive\n', stderr: 'Failed to connect to bus: No medium found\n' };
+      },
+    });
+    assert.equal(unavailable.configured, true);
+    assert.equal(unavailable.active, false);
+    assert.equal(unavailable.evidence, 'systemd-user-timer-inactive');
+    assert.match(unavailable.error, /No medium found/);
+
+    const live = schedulerStatus(options, {
+      run(_command, args) {
+        return args.includes('is-enabled')
+          ? { status: 0, stdout: 'enabled\n', stderr: '' }
+          : { status: 0, stdout: 'active\n', stderr: '' };
+      },
+    });
+    assert.equal(live.configured, true);
+    assert.equal(live.active, true);
+    assert.equal(live.error, null);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
 test('reconciler fetches only changed commits, honors TTL, and fences concurrent scheduler ticks', async () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-reconcile-'));
   const remote = path.join(sandbox, 'source');
@@ -2209,6 +2251,11 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     assert.equal(existsSync(path.join(grokHome, 'skills', '.sylphx-skills.json')), false);
     const status = JSON.parse(runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout);
     assert.equal(status.enabled, true);
+    assert.equal(status.current, true);
+    assert.equal(status.healthy, true);
+    assert.equal(status.scheduler.active, true);
+    assert.equal(status.source.managedHead, sourceSha);
+    assert.equal(status.source.remoteHead, sourceSha);
     assert.equal(status.intervalMinutes, 7);
     assert.equal(status.mode, 'interval-scheduler');
     assert.deepEqual(status.agents, ['codex', 'claude']);
@@ -2336,6 +2383,12 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     writeFileSync(path.join(source, 'catalog.json'), `${JSON.stringify(updatedCatalog, null, 2)}\n`);
 
     const updatedSha = commit(source, 'change exact fixture package set');
+    const staleReadback = JSON.parse(runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout);
+    assert.equal(staleReadback.enabled, true, 'scheduler capability remains live while source is stale');
+    assert.equal(staleReadback.current, false);
+    assert.equal(staleReadback.healthy, false);
+    assert.equal(staleReadback.source.managedHead, sourceSha);
+    assert.equal(staleReadback.source.remoteHead, updatedSha);
     const scheduledRun = spawnSync(process.execPath, [
       path.join(managedHome, '.sylphx-skills', 'reconcile.mjs'),
       '--force', '--strict', '--quiet',
@@ -2350,6 +2403,12 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     assert.equal(existsSync(path.join(codexHome, 'skills', removedSkill)), false);
     assert.equal(existsSync(path.join(grokHome, 'skills', removedSkill)), false);
     assert.equal(existsSync(removedFile), false);
+    const convergedReadback = JSON.parse(runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout);
+    assert.equal(convergedReadback.enabled, true);
+    assert.equal(convergedReadback.current, true);
+    assert.equal(convergedReadback.healthy, true);
+    assert.equal(convergedReadback.source.managedHead, updatedSha);
+    assert.equal(convergedReadback.source.remoteHead, updatedSha);
     assert.equal(existsSync(path.join(unmanaged, 'SKILL.md')), true);
     assert.deepEqual(
       readdirSync(path.join(codexHome, 'skills')).filter((name) => name.startsWith('.sylphx-transaction-')),

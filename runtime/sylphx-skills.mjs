@@ -36,7 +36,12 @@ import {
   discoverEnactMcp,
 } from './enact-mcp.mjs';
 import { reconcile, withLifecycleLock, withReconcileLock } from './reconcile.mjs';
-import { installScheduler, parseIntervalMinutes, removeScheduler } from './scheduler.mjs';
+import {
+  installScheduler,
+  parseIntervalMinutes,
+  removeScheduler,
+  schedulerStatus,
+} from './scheduler.mjs';
 import {
   clearTargetGeneration,
   installTargetGeneration,
@@ -672,18 +677,143 @@ function disableAutoSync() {
   log('disabled Sylphx Skills automatic sync');
 }
 
+function autoSyncSourceReadback(config, state) {
+  const unavailable = (error, fields = {}) => ({
+    current: false,
+    error,
+    managedHead: null,
+    remoteHead: null,
+    targetsCurrent: false,
+    adapterCurrent: false,
+    ...fields,
+  });
+  if (
+    !config?.repository
+    || !config?.remote
+    || !config?.branch
+    || !config?.nodePath
+    || !config?.reconcilerPath
+    || !Array.isArray(config?.agents)
+    || !config.agents.length
+    || !config?.homes
+  ) return unavailable('invalid_auto_sync_config');
+  const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
+  const runGit = (args, timeout = 10_000) => spawnSync('git', args, {
+    encoding: 'utf8',
+    timeout,
+    env,
+  });
+  const origin = runGit(['-C', config.repository, 'remote', 'get-url', 'origin']);
+  if (origin.status !== 0 || String(origin.stdout).trim() !== config.remote) {
+    return unavailable('managed_repository_origin_mismatch');
+  }
+  const dirty = runGit(['-C', config.repository, 'status', '--porcelain', '--untracked-files=all']);
+  if (dirty.status !== 0 || String(dirty.stdout).trim()) {
+    return unavailable('managed_repository_not_clean');
+  }
+  const head = runGit(['-C', config.repository, 'rev-parse', 'HEAD']);
+  const managedHead = head.status === 0 ? String(head.stdout).trim().toLowerCase() : '';
+  if (!/^[0-9a-f]{40,64}$/.test(managedHead)) {
+    return unavailable('managed_repository_head_unavailable');
+  }
+  const remote = runGit(['ls-remote', config.remote, `refs/heads/${config.branch}`]);
+  const remoteMatch = remote.status === 0
+    ? String(remote.stdout).trim().match(/^([0-9a-f]{40,64})\s+refs\/heads\//)
+    : null;
+  if (!remoteMatch) {
+    return unavailable('remote_head_unavailable', { managedHead });
+  }
+  const remoteHead = remoteMatch[1].toLowerCase();
+  const sourceCli = path.join(config.repository, 'runtime', 'sylphx-skills.mjs');
+  const sourceReconciler = path.join(config.repository, 'runtime', 'reconcile.mjs');
+  const adapterCurrent = existsSync(sourceCli)
+    && existsSync(sourceReconciler)
+    && existsSync(config.reconcilerPath)
+    && readFileSync(sourceReconciler).equals(readFileSync(config.reconcilerPath));
+  let targetsCurrent = false;
+  if (existsSync(sourceCli)) {
+    const status = spawnSync(config.nodePath, [
+      sourceCli,
+      'status',
+      '--agent',
+      config.agents.join(','),
+      '--json',
+      '--quiet',
+    ], {
+      encoding: 'utf8',
+      timeout: 120_000,
+      env: {
+        ...env,
+        CODEX_HOME: config.homes.codexHome,
+        CLAUDE_CONFIG_DIR: config.homes.claudeHome,
+        GROK_HOME: config.homes.grokHome,
+        SYLPHX_SKILLS_COMMIT_SHA: managedHead,
+      },
+    });
+    if (status.status === 0) {
+      try {
+        const parsed = JSON.parse(status.stdout);
+        const byRuntime = new Map((parsed.targets || []).map((target) => [target.runtime, target]));
+        targetsCurrent = config.agents.every((agent) => byRuntime.get(agent)?.current === true);
+      } catch {
+        targetsCurrent = false;
+      }
+    }
+  }
+  const appliedSha = typeof state?.appliedSha === 'string' ? state.appliedSha.toLowerCase() : null;
+  const current = managedHead === remoteHead
+    && appliedSha === remoteHead
+    && adapterCurrent
+    && targetsCurrent;
+  return {
+    current,
+    error: current ? null : 'source_or_targets_outdated',
+    managedHead,
+    remoteHead,
+    targetsCurrent,
+    adapterCurrent,
+  };
+}
+
 function autoSyncStatus() {
   const config = readJson(reconcilerConfig);
+  const configured = Boolean(config?.enabled)
+    && config?.mode === 'interval-scheduler'
+    && config?.owner === 'SylphxAI/skills'
+    && config?.schemaVersion === 1;
+  let scheduler = null;
+  if (configured) {
+    scheduler = schedulerStatus({
+      platform: schedulerPlatform,
+      home,
+      nodePath: config.nodePath,
+      reconcilerPath: config.reconcilerPath,
+      pathEnv: config.pathEnv,
+      intervalMinutes: config.intervalMinutes,
+    });
+  }
+  const state = readJson(path.join(stateDirectory, 'state.json'));
+  const source = configured ? autoSyncSourceReadback(config, state) : null;
   const result = {
     mode: config?.mode || null,
-    enabled: Boolean(config?.enabled) && config?.mode === 'interval-scheduler',
+    configured,
+    enabled: configured && scheduler?.active === true,
+    current: configured && source?.current === true,
+    healthy: configured && scheduler?.active === true && source?.current === true,
+    scheduler,
+    source,
     intervalMinutes: config?.intervalMinutes || null,
     agents: Array.isArray(config?.agents) ? config.agents : null,
     remote: config?.remote || null,
     managedRepository: config?.repository || null,
+    lastCheckedAt: Number.isFinite(Number(state?.lastCheckedAt))
+      ? new Date(Number(state.lastCheckedAt)).toISOString()
+      : null,
+    appliedSha: state?.appliedSha || null,
+    lastError: state?.lastError || null,
   };
   if (jsonOutput) console.log(JSON.stringify(result, null, 2));
-  else log(`auto-sync: ${result.enabled ? `every ${result.intervalMinutes} minutes for ${(result.agents || []).join(', ') || 'legacy all-runtime selection'}` : 'disabled'}`);
+  else log(`auto-sync: ${result.healthy ? `healthy every ${result.intervalMinutes} minutes for ${(result.agents || []).join(', ') || 'legacy all-runtime selection'}` : result.enabled ? 'active but outdated or unavailable' : configured ? 'configured but inactive' : 'disabled'}`);
 }
 
 function argumentValue(name) {
