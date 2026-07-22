@@ -105,6 +105,14 @@ approvals, resident daemons, webhook relays, tokens, or Enact
 dependencies. When offline, a verified last-known-good generation remains
 active and retries back off.
 
+AutoSync readback verifies scheduler liveness, the current public remote head,
+the clean managed checkout, the applied state, adapter bytes, and installed
+targets rather than trusting its config alone. A Linux container with no
+working user-systemd manager is therefore reported as
+configured but inactive instead of green. Its hosting runtime must supply a
+supervised native scheduler; file presence and detached processes are not
+durable scheduling evidence.
+
 Each successful reconciliation converges the complete Sylphx-managed set as one
 verified target generation: new packages, changed package bytes, removals, and
 the ownership manifest commit together through an ownership-proven recoverable

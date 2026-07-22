@@ -1,6 +1,7 @@
 import {
   existsSync,
   mkdirSync,
+  readFileSync,
   rmSync,
   writeFileSync,
 } from 'node:fs';
@@ -18,6 +19,15 @@ function execute(command, args, { tolerateFailure = false } = {}) {
     throw new Error(`${command} ${args.join(' ')} failed${detail ? `: ${detail}` : ''}`);
   }
   return result;
+}
+
+function fileCurrent(file) {
+  if (!existsSync(file.path)) return false;
+  try {
+    return readFileSync(file.path, 'utf8') === file.contents;
+  } catch {
+    return false;
+  }
 }
 
 function xml(value) {
@@ -137,7 +147,83 @@ export function installScheduler(options) {
       execute(command, args, { tolerateFailure });
     }
   }
+  const status = schedulerStatus(options);
+  if (!status.configured || !status.active) {
+    throw new Error(`Sylphx Skills scheduler did not become active (${status.kind}: ${status.error || 'inactive'})`);
+  }
   return definition;
+}
+
+export function schedulerStatus(options, { run = spawnSync } = {}) {
+  const definition = schedulerDefinition(options);
+  const configured = definition.files.every(fileCurrent);
+  if (process.env.SYLPHX_SKILLS_TEST_SKIP_SCHEDULER_ACTIVATION === '1') {
+    return {
+      kind: definition.kind,
+      configured,
+      active: configured,
+      evidence: 'test-activation-skipped',
+      error: configured ? null : 'scheduler definition files are missing or drifted',
+    };
+  }
+
+  const invoke = (command, args) => run(command, args, {
+    encoding: 'utf8',
+    timeout: 10_000,
+  });
+  try {
+    if (definition.kind === 'launchd') {
+      const uid = options.uid ?? (typeof process.getuid === 'function' ? process.getuid() : 0);
+      const observed = invoke('launchctl', ['print', `gui/${uid}/${LABEL}`]);
+      const active = observed.status === 0;
+      return {
+        kind: definition.kind,
+        configured,
+        active: configured && active,
+        evidence: active ? 'launchctl-loaded' : 'launchctl-not-loaded',
+        error: active ? null : String(observed.stderr || observed.stdout || observed.error?.message || '').trim() || 'launchd job is not loaded',
+      };
+    }
+    if (definition.kind === 'systemd-user') {
+      const enabled = invoke('systemctl', ['--user', 'is-enabled', 'sylphx-skills-sync.timer']);
+      const active = invoke('systemctl', ['--user', 'is-active', 'sylphx-skills-sync.timer']);
+      const unitEnabled = enabled.status === 0 && String(enabled.stdout).trim() === 'enabled';
+      const unitActive = active.status === 0 && String(active.stdout).trim() === 'active';
+      const detail = [enabled, active]
+        .flatMap((item) => [item.stderr, item.stdout, item.error?.message])
+        .map((item) => String(item || '').trim())
+        .filter(Boolean)
+        .join('; ');
+      return {
+        kind: definition.kind,
+        configured,
+        active: configured && unitEnabled && unitActive,
+        evidence: unitEnabled && unitActive ? 'systemd-user-timer-active' : 'systemd-user-timer-inactive',
+        error: unitEnabled && unitActive ? null : detail || 'systemd user timer is not enabled and active',
+      };
+    }
+    const observed = invoke('schtasks', ['/Query', '/TN', TASK_NAME, '/XML']);
+    const output = String(observed.stdout || '');
+    const identityCurrent = observed.status === 0
+      && output.includes(options.nodePath)
+      && output.includes(options.reconcilerPath)
+      && /<Enabled>true<\/Enabled>/i.test(output);
+    return {
+      kind: definition.kind,
+      configured: identityCurrent,
+      active: identityCurrent,
+      evidence: identityCurrent ? 'windows-task-enabled' : 'windows-task-missing-or-drifted',
+      error: identityCurrent ? null : String(observed.stderr || observed.error?.message || '').trim() || 'Windows scheduled task is missing, disabled, or drifted',
+    };
+  } catch (error) {
+    return {
+      kind: definition.kind,
+      configured,
+      active: false,
+      evidence: 'scheduler-inspection-failed',
+      error: error.message,
+    };
+  }
 }
 
 export function removeScheduler({ platform = process.platform, home = os.homedir() } = {}) {

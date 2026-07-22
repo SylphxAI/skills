@@ -71,7 +71,11 @@ claim.
    persist one of the required surfaces is `partial`, not complete.
 5. Run machine-readable status from the exact installed candidate. Every
    explicitly in-scope runtime must report the complete catalog current and its
-   managed constitution installed and current. Re-run installation once and
+   managed constitution installed and current. AutoSync status must separately
+   prove that its native scheduler is configured **and live**; config or timer
+   files alone are not activation evidence. Its source readback must also bind
+   the clean managed checkout, applied state, installed targets, adapter bytes,
+   and current canonical remote head to one commit. Re-run installation once and
    verify that generation identity, manifest timestamp, and instruction bytes
    did not change. A missing or different `sourceCommit` is not complete.
 6. Verify behavior in a fresh context or the runtime's closest supported
@@ -90,7 +94,12 @@ claim.
    explicitly selected runtimes, preserve that set and add the receiving
    runtime; never shrink or silently expand the selection from runtime
    discovery. Verify scheduler status and perform one exact-source
-   reconciliation. A static one-shot copy is a partial Sylphx installation.
+   reconciliation. A static one-shot copy is a partial Sylphx installation. A
+   container or remote agent host without a working per-user scheduler must
+   report `partial`; inert systemd unit files, an unavailable user bus, a
+   detached best-effort process, or an unstarted cron entry are not AutoSync.
+   The host owner must provide a supervised native scheduling boundary rather
+   than asking the user to keep a shell process alive.
 8. Resolve the live integration separately from static installation:
    - The canonical Sylphx SaaS MCP resource is
      `https://enact.sylphx.com/api/mcp`. This stable public product hostname is
