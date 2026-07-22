@@ -101,14 +101,17 @@ claim.
    - Validate the endpoint with the repository adapter's `integration discover`
      operation. It must use HTTPS (except loopback evaluation), expose RFC 9728
      protected-resource metadata, bind the exact `/api/mcp` resource, advertise
-     the required Enact scopes, and declare streamable HTTP transport.
+     exactly the public non-effect Enact scopes, and declare streamable HTTP transport.
      Discovery follows no redirects and sends no credential.
    - If discovery is `ready_for_enrollment`, use the adapter's `integration
      enroll` operation for the current runtime. It delegates configuration to
      the runtime's native MCP command and never writes an authorization header.
      Preserve unrelated MCP entries and do not delete a legacy adapter unless
      its ownership and replacement are both proven.
-   - Complete the runtime's native OAuth flow when it supports one. The agent
+   - Complete the runtime's native OAuth flow when it supports one. For clients
+     that accept an explicit OAuth scope set, pass the exact scopes discovered
+     from the protected resource instead of inheriting the authorization
+     server's broader managed-client catalog. The agent
      starts and owns the flow; the user may approve identity-provider consent
      but must not be asked to type an installation command or paste a token.
      Never substitute an MCP session id, Work claim, static header, or copied

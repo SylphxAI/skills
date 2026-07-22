@@ -834,7 +834,7 @@ function validEnactMetadata(endpoint = 'https://cp.example/api/mcp') {
   return {
     resource: endpoint,
     authorization_servers: ['https://identity.example/oauth'],
-    scopes_supported: [...REQUIRED_ENACT_SCOPES, 'enact.attest'],
+    scopes_supported: [...REQUIRED_ENACT_SCOPES],
     mcp: {
       transport: 'streamable_http',
       endpoint,
@@ -921,6 +921,13 @@ test('Enact MCP discovery binds RFC 9728 metadata before enrollment', async () =
   assert.throws(
     () => validateProtectedResourceMetadata({
       ...validEnactMetadata(endpoint),
+      scopes_supported: [...REQUIRED_ENACT_SCOPES, 'enact.effect.infrastructure_mutation'],
+    }, endpoint),
+    /advertises non-public scopes/,
+  );
+  assert.throws(
+    () => validateProtectedResourceMetadata({
+      ...validEnactMetadata(endpoint),
       authorization_servers: ['http://identity.example/oauth'],
     }, endpoint),
     /must use HTTPS/,
@@ -965,7 +972,10 @@ test('Enact MCP enrollment uses runtime-native remote transports without credent
     oauth: {
       supported: true,
       initiation: 'native_login_command',
-      loginArgs: ['mcp', 'login', 'sylphx-enact'],
+      loginArgs: [
+        'mcp', 'login', 'sylphx-enact',
+        '--scopes', REQUIRED_ENACT_SCOPES.join(','),
+      ],
     },
   });
   assert.deepEqual(enrollmentCommand('claude', endpoint).args, [
