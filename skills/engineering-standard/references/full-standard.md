@@ -277,9 +277,10 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
   catch-all returning a default value without a typed decision, error-channel
   narrowing without exhaustive handling, and retries that discard the final
   failure. Treat test-assertion weakening as a policy-grade diff, not a fix —
-  [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
-  "Reward-hacking and execution-trace integrity" owns that rule (gate-weakening
-  diffs ride the highest-scrutiny lane).
+  Engineering owns whether the repair evidence is valid, while
+  [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md)
+  "Reward-hacking and execution-trace integrity" owns candidate-trace review
+  and the heightened lane for gate-weakening diffs.
 - **Schema-derived surfaces**: derive validators, types, interface descriptions, clients,
   fixtures, forms, and docs from the same schema source.
 - **Declarative policy**: express permissions, rollout rules, config, manifests,
@@ -542,6 +543,30 @@ paragraph to explain a simple idea, first simplify the code or improve the
 names; keep the comment only for the remaining non-obvious intent.
 
 ## Testing
+
+### Reproduction-driven engineering
+
+Defect fixes and material behavior changes follow
+[Reproduction-driven engineering](reproduction-driven-engineering.md). A
+confirmed defect binds an exact unmodified baseline and a faithful semantic
+oracle that fails for the expected reason before the production repair. The
+owning-cause correction then makes that same oracle pass on the exact candidate,
+followed by risk-selected affected regression proof and broader proof when the
+dependency graph, blast radius, or uncertainty makes it informative. When a
+narrow causal oracle cannot reproduce the original contract symptom, retain a
+linked symptom-level regression oracle and pass both. A green
+test written only after the change, a weakened assertion, a mocked-away cause,
+or a retry/fallback that hides the symptom is not fix evidence.
+
+This is not a universal unit-test-first mandate. New behavior starts from an
+executable contract, example, or property where practical; refactors start
+from characterization, differential, or equivalence proof; compiler/schema
+failures may use their existing diagnostic as the oracle; and concurrent,
+distributed, time-dependent, or live-only defects may require replay,
+simulation, fault injection, integration, or bounded live evidence. Emergency
+containment may precede reproduction when harm is active, but containment is
+not closure and temporary controls are retired after the owning cause is
+proved and repaired.
 
 ### Semantic enforcement hierarchy
 

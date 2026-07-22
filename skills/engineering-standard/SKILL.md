@@ -32,6 +32,10 @@ When a test, gate, alert, validator, or recovery control claims to catch a
 failure, read
 [Control-effectiveness verification](references/control-effectiveness.md).
 
+When diagnosing or fixing a defect, changing observable behavior, or
+refactoring behavior whose current contract is not yet executable, read
+[Reproduction-driven engineering](references/reproduction-driven-engineering.md).
+
 For critical concurrency, distributed coordination, authorization, or
 irreversible-effect state spaces, read
 [Formal modelling and model checking](references/formal-modeling.md).

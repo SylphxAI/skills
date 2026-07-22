@@ -189,6 +189,31 @@
     "artifacts": [{"artifact": "Documentation update", "owner": "documentation-standard"}]
   },
   {
+    "id": "defect-repair-positive",
+    "kind": "positive",
+    "prompt": "Valid empty filters make this API return 500. Diagnose the cause, correct the owning code, and prevent the regression without weakening the contract.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [{"artifact": "Defect repair and regression proof", "owner": "engineering-standard"}]
+  },
+  {
+    "id": "defect-repair-active-incident-compound",
+    "kind": "compound",
+    "prompt": "The production worker is dropping accepted jobs now. Contain the impact, reproduce the failure, repair the root cause, and verify service recovery.",
+    "expectedSkills": ["incident-standard", "engineering-standard"],
+    "artifacts": [
+      {"artifact": "Active incident record and recovery proof", "owner": "incident-standard"},
+      {"artifact": "Owning-code repair and regression proof", "owner": "engineering-standard"}
+    ]
+  },
+  {
+    "id": "defect-repair-neighbour-analysis-only",
+    "kind": "near-neighbour",
+    "prompt": "Do not modify code yet. Compare the credible explanations for the sporadic timeout and identify which evidence would distinguish them.",
+    "expectedSkills": ["critical-analysis"],
+    "artifacts": [{"artifact": "Critical Analysis Brief", "owner": "critical-analysis"}],
+    "nearNeighbourOf": "engineering-standard"
+  },
+  {
     "id": "operational-observability-service-correlation",
     "kind": "positive",
     "prompt": "Design how operators correlate requests, queue work, dependency latency, failures, alerts, runbooks, and recovery across this service.",

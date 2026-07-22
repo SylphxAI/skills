@@ -58,6 +58,8 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-currency-01` | Project bootstrap, dependency addition, and dependency migration query authoritative live release sources and target the newest eligible stable production release; model memory, templates, existing ranges, and installed prevalence are not version-selection evidence. |
 | `eng-repro-01` | Builds are pinned/locked; no floating `latest` for production graphs. |
 | `eng-static-01` | Defects preferred at compile/static/test time over production discovery. |
+| `eng-debug-01` | Before a permanent repair is claimed, a confirmed defect binds authoritative expected behavior, its observed symptom or violated invariant, and the exact unmodified baseline to the lowest capable faithful semantic oracle or linked symptom-and-causal oracle set; material competing causes and candidate-change confounders are evidence-discriminated, and the unchanged oracle bundle fails for the expected reason on the baseline and passes on the exact candidate after an owning-boundary correction. Immediate harm containment may precede this proof and remains containment. |
+| `eng-regress-01` | The exact candidate passes risk-selected affected regression proof without weakening or mocking away the contract. Stochastic, distributed, or live proof uses the same predeclared failure model, harness, corpus or observation budget, and decision rule; reports uncertainty and the verified lifecycle layer; and removes superseded temporary diagnostics, workarounds, and containment. |
 | `eng-ssot-01` | One semantic authority per fact; projections have lineage. |
 | `eng-artifact-01` | Source-controlled artifacts have stable identity and integrity. |
 | `eng-contract-01` | Boundary contracts are schema-derived with typed failure handling. |
@@ -90,6 +92,10 @@ Apply the relevant subset; verify rather than slogan.
 - [ ] New or retained gates protect distinct material invariants at the lowest
       capable semantic layer; no durable source-string change-detector test or
       duplicate proof remains.
+- [ ] Defect fixes show a faithful pre-fix failure on the exact baseline, an
+      unchanged-oracle post-fix pass on the exact candidate, causal
+      discrimination, relevant regression proof, and cleanup of superseded
+      workarounds or containment.
 - [ ] Temporary migration fences have an exact retirement predicate, and
       completed migrations have retired their proof machinery.
 - [ ] Delivery claims separate local / trunk / production proof.
