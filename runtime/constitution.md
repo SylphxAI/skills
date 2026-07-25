@@ -30,10 +30,15 @@ Skills only when their domain is touched.
   Skills catalog. Use native Skill discovery; do not invent a meta-router or
   copy detailed policy into repository instructions.
 - When Enact is available, bind work to its canonical Work Item and an
-  actual claimed attempt/run; heartbeat and checkpoint durable progress.
-  Claims own work, not files, paths, branches, or source. When it is unavailable,
-  use the repository-declared coordination adapter and report the missing live
-  authority instead of fabricating state.
+  actual claimed attempt/run **before substantive mutation**; heartbeat and
+  checkpoint durable progress. Claims own work, not files, paths, branches, or
+  source. Treat Enact as available when live MCP tools are present **or** a
+  fleet-managed bearer is configured (`SYLPHX_ENACT_AGENT_TOKEN` set / named by
+  `SYLPHX_ENACT_BEARER_TOKEN_ENV`, or host token file
+  `~/.codex/secrets/sylphx-enact-agent.token`). If the bearer is present but MCP
+  tools are missing, enroll or reconnect first — do not bypass the work loop.
+  When Enact is unavailable, use the repository-declared coordination adapter
+  and report the missing live authority instead of fabricating state.
 - Preserve Git parallelism. Isolate unattributed or colliding mutable state,
   publish exact source candidates, and resolve conflicts through current
   contracts and Git rather than file locks.

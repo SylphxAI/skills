@@ -13,11 +13,20 @@ locators. Resolve exact fields from the live MCP schema or versioned product API
 
 ## Operating method
 
+0. **Availability gate.** If `SYLPHX_ENACT_AGENT_TOKEN` is set, or
+   `SYLPHX_ENACT_BEARER_TOKEN_ENV` names a non-empty env, or
+   `~/.codex/secrets/sylphx-enact-agent.token` exists, Enact is in-scope for
+   this session. Verify `work.propose_or_get` (or equivalent) is in the live
+   tool list. If tools are missing, run managed bearer enrollment / reconnect
+   before substantive edits. Do not open a PR or land source as a substitute
+   for the work loop while the bearer is present.
 1. Discover an explicit Tenant and Workspace, plus Project when relevant, with
    `operating.scopes`. Never infer identity from a repository name or label.
-2. Prefer `work.propose_or_get` for idempotent propose, admission, and eligible
-   claim. Use `work.start` plus `work.claim` only for the supported predecessor
-   path. Bind the claim to the actual agent run and compile its execution context.
+2. **Before substantive mutation**, call `work.propose_or_get` (idempotent
+   propose, admission, eligible claim). Use `work.start` plus `work.claim` only
+   for the supported predecessor path. Bind the claim to the actual agent run
+   and compile its execution context. Pure read-only answers may skip Work;
+   any follow-on implementation must open or join Work first.
 3. Treat a Work claim as responsibility for an attempt, not a repository path
    lock. Coordinate overlapping source candidates through their source and
    delivery mechanisms.
