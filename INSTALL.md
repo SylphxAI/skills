@@ -139,6 +139,10 @@ claim.
      and the expected Work tools are visible. Do not mutate Work merely to prove
      connectivity. An integration that cannot authenticate is `partial`. If the
      runtime has neither OAuth nor a fleet-managed bearer env, report that
+
+     When a fleet-managed bearer is present, agents must treat Enact as
+     available and call `work.propose_or_get` before substantive mutation
+     (see `enact-work-coordination` and the runtime constitution).
      capability gap instead of persisting a bearer token.
 
 ## Boundaries
