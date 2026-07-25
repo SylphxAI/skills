@@ -59,9 +59,19 @@ export function resolveEnactMcpUrl(input = process.env[ENACT_MCP_ENV]) {
  * Installer only persists the env *name* (Codex bearer_token_env_var), never the secret.
  * Interactive/public installs keep OAuth and must not set this.
  */
+export const DEFAULT_ENACT_AGENT_TOKEN_FILE = '.codex/secrets/sylphx-enact-agent.token';
+
 export function resolveManagedBearerTokenEnvName({
   env = process.env,
   explicit,
+  homedir = process.env.HOME || '',
+  fileExists = (path) => {
+    try {
+      return existsSync(path);
+    } catch {
+      return false;
+    }
+  },
 } = {}) {
   if (explicit !== undefined && explicit !== null) {
     const value = String(explicit).trim();
@@ -79,10 +89,16 @@ export function resolveManagedBearerTokenEnvName({
     }
     return configured;
   }
-  // Default fleet env name is only selected when the host already provides it.
-  // Public interactive installs without the token remain OAuth-only.
+  // Default fleet env name is selected when the host already provides the env
+  // value, or when the standard host secret file exists (loader injects env).
   if (String(env[DEFAULT_ENACT_BEARER_TOKEN_ENV] || '').trim()) {
     return DEFAULT_ENACT_BEARER_TOKEN_ENV;
+  }
+  if (homedir) {
+    const tokenFile = `${String(homedir).replace(/\/+$/, '')}/${DEFAULT_ENACT_AGENT_TOKEN_FILE}`;
+    if (fileExists(tokenFile)) {
+      return DEFAULT_ENACT_BEARER_TOKEN_ENV;
+    }
   }
   return null;
 }
@@ -384,17 +400,27 @@ export function configureEnactMcp(runtime, discovery, {
   serverName = ENACT_SERVER_NAME,
   pathEnv = process.env.PATH || '',
   env = process.env,
-  managedBearerEnv = resolveManagedBearerTokenEnvName({ env }),
+  homedir = process.env.HOME || '',
+  fileExists,
+  managedBearerEnv,
 } = {}) {
   if (discovery?.disposition !== 'ready_for_enrollment') {
     throw new Error('Enact MCP enrollment requires verified protected-resource metadata');
   }
-  if (managedBearerEnv && runtime !== 'codex') {
+  // Managed bearer is Codex-only. Resolve autodetect only for codex unless caller
+  // explicitly passed managedBearerEnv (including null to force OAuth).
+  let resolvedManagedBearerEnv = managedBearerEnv;
+  if (resolvedManagedBearerEnv === undefined) {
+    resolvedManagedBearerEnv = runtime === 'codex'
+      ? resolveManagedBearerTokenEnvName({ env, homedir, fileExists })
+      : null;
+  }
+  if (resolvedManagedBearerEnv && runtime !== 'codex') {
     throw new Error('Managed Enact bearer enrollment is currently supported for Codex only');
   }
   const command = enrollmentCommand(runtime, discovery.endpoint, {
     serverName,
-    managedBearerEnv: runtime === 'codex' ? managedBearerEnv : null,
+    managedBearerEnv: runtime === 'codex' ? resolvedManagedBearerEnv : null,
   });
   const existing = inspectRuntimeMcp(runtime, serverName, { run, pathEnv });
   if (existing.state === 'conflict') {
@@ -411,9 +437,9 @@ export function configureEnactMcp(runtime, discovery, {
       throw new Error(`Refusing to replace existing MCP server ${serverName} with a different endpoint`);
     }
     if (existing.state === 'existing_managed_bearer') {
-      if (managedBearerEnv && existing.managedBearerEnv !== managedBearerEnv) {
+      if (resolvedManagedBearerEnv && existing.managedBearerEnv !== resolvedManagedBearerEnv) {
         throw new Error(
-          `Refusing to replace managed bearer env ${existing.managedBearerEnv} with ${managedBearerEnv}`,
+          `Refusing to replace managed bearer env ${existing.managedBearerEnv} with ${resolvedManagedBearerEnv}`,
         );
       }
       return {
@@ -431,7 +457,7 @@ export function configureEnactMcp(runtime, discovery, {
         },
       };
     }
-    if (managedBearerEnv) {
+    if (resolvedManagedBearerEnv) {
       throw new Error(
         `Refusing to replace OAuth-only MCP server ${serverName} with managed bearer enrollment`,
       );
@@ -467,7 +493,7 @@ export function configureEnactMcp(runtime, discovery, {
         normalizedAfterFailure = null;
       }
       if (normalizedAfterFailure === discovery.endpoint) {
-        if (afterFailure.state === 'existing_managed_bearer' || managedBearerEnv) {
+        if (afterFailure.state === 'existing_managed_bearer' || resolvedManagedBearerEnv) {
           return {
             disposition: 'configured_managed_bearer',
             runtime,
@@ -491,7 +517,7 @@ export function configureEnactMcp(runtime, discovery, {
     }
     throw new Error(`${command.executable} MCP enrollment failed with exit code ${result.status}`);
   }
-  if (managedBearerEnv) {
+  if (resolvedManagedBearerEnv) {
     return {
       disposition: 'configured_managed_bearer',
       runtime,
