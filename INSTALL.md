@@ -117,20 +117,29 @@ claim.
      the runtime's native MCP command and never writes an authorization header.
      Preserve unrelated MCP entries and do not delete a legacy adapter unless
      its ownership and replacement are both proven.
-   - Complete the runtime's native OAuth flow when it supports one. For clients
-     that accept an explicit OAuth scope set, pass the exact scopes discovered
-     from the protected resource instead of inheriting the authorization
-     server's broader managed-client catalog. The agent
-     starts and owns the flow; the user may approve identity-provider consent
-     but must not be asked to type an installation command or paste a token.
-     Never substitute an MCP session id, Work claim, static header, or copied
-     bearer token for OAuth.
+   - Complete authentication without writing secret values into config:
+     - **Interactive hosts:** use the runtime's native OAuth flow when it
+       supports one. For clients that accept an explicit OAuth scope set, pass
+       the exact scopes discovered from the protected resource instead of
+       inheriting the authorization server's broader managed-client catalog.
+       The agent starts and owns the flow; the user may approve identity-provider
+       consent but must not be asked to type an installation command or paste a
+       token. Never substitute an MCP session id, Work claim, static header, or
+       copied bearer token for OAuth.
+     - **Fleet-managed headless hosts:** when the host already injects an Enact
+       agent principal via environment (default env name
+       `SYLPHX_ENACT_AGENT_TOKEN`, or the name in
+       `SYLPHX_ENACT_BEARER_TOKEN_ENV`), enroll Codex with
+       `--bearer-token-env-var` pointing at that env *name* only. The installer
+       must not mint, print, copy, or write the secret value. Static headers and
+       inlined tokens remain forbidden. Prefer short-lived or dens-rotated agent
+       principals over break-glass operator tokens.
    - Verify the integration in a new context: the server initializes over
      remote HTTPS, its instructions load, authenticated `tools/list` succeeds,
      and the expected Work tools are visible. Do not mutate Work merely to prove
      connectivity. An integration that cannot authenticate is `partial`. If the
-     runtime has no safe OAuth capability, report that capability gap instead
-     of persisting a bearer token.
+     runtime has neither OAuth nor a fleet-managed bearer env, report that
+     capability gap instead of persisting a bearer token.
 
 ## Boundaries
 

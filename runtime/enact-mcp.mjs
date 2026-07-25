@@ -15,6 +15,9 @@ export const REQUIRED_ENACT_SCOPES = Object.freeze([
   'enact.evidence',
   'enact.attest',
 ]);
+/** Env var *name* for fleet-managed agent bearer (secret never written by installer). */
+export const ENACT_BEARER_TOKEN_ENV_NAME = 'SYLPHX_ENACT_BEARER_TOKEN_ENV';
+export const DEFAULT_ENACT_BEARER_TOKEN_ENV = 'SYLPHX_ENACT_AGENT_TOKEN';
 const MAX_PROTECTED_RESOURCE_METADATA_BYTES = 64 * 1024;
 
 function isLoopback(hostname) {
@@ -49,6 +52,39 @@ export function normalizeEnactMcpUrl(input) {
 
 export function resolveEnactMcpUrl(input = process.env[ENACT_MCP_ENV]) {
   return normalizeEnactMcpUrl(String(input || '').trim() || DEFAULT_ENACT_MCP_URL);
+}
+
+/**
+ * Fleet-managed enrollment: hosts inject an Enact agent principal token via env.
+ * Installer only persists the env *name* (Codex bearer_token_env_var), never the secret.
+ * Interactive/public installs keep OAuth and must not set this.
+ */
+export function resolveManagedBearerTokenEnvName({
+  env = process.env,
+  explicit,
+} = {}) {
+  if (explicit !== undefined && explicit !== null) {
+    const value = String(explicit).trim();
+    if (!value) return null;
+    if (!/^[A-Z][A-Z0-9_]*$/.test(value)) {
+      throw new Error('Managed Enact bearer env name must be SCREAMING_SNAKE_CASE');
+    }
+    return value;
+  }
+  if (Object.prototype.hasOwnProperty.call(env, ENACT_BEARER_TOKEN_ENV_NAME)) {
+    const configured = String(env[ENACT_BEARER_TOKEN_ENV_NAME] || '').trim();
+    if (!configured) return null;
+    if (!/^[A-Z][A-Z0-9_]*$/.test(configured)) {
+      throw new Error('SYLPHX_ENACT_BEARER_TOKEN_ENV must name a SCREAMING_SNAKE_CASE env var');
+    }
+    return configured;
+  }
+  // Default fleet env name is only selected when the host already provides it.
+  // Public interactive installs without the token remain OAuth-only.
+  if (String(env[DEFAULT_ENACT_BEARER_TOKEN_ENV] || '').trim()) {
+    return DEFAULT_ENACT_BEARER_TOKEN_ENV;
+  }
+  return null;
 }
 
 export function protectedResourceMetadataUrl(endpoint) {
@@ -172,12 +208,29 @@ export async function discoverEnactMcp({
 
 export function enrollmentCommand(runtime, endpoint, {
   serverName = ENACT_SERVER_NAME,
+  managedBearerEnv = null,
 } = {}) {
   const normalizedEndpoint = normalizeEnactMcpUrl(endpoint);
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(serverName)) {
     throw new Error('Enact MCP server name must be lowercase kebab-case');
   }
   if (runtime === 'codex') {
+    if (managedBearerEnv) {
+      return {
+        executable: 'codex',
+        args: [
+          'mcp', 'add', serverName,
+          '--url', normalizedEndpoint,
+          '--bearer-token-env-var', managedBearerEnv,
+        ],
+        oauth: {
+          supported: false,
+          initiation: 'managed_bearer_env',
+          managedBearerEnv,
+          loginArgs: null,
+        },
+      };
+    }
     return {
       executable: 'codex',
       args: [
@@ -273,12 +326,19 @@ function inspectRuntimeMcp(runtime, serverName, { run, pathEnv }) {
     ) {
       return { state: 'conflict' };
     }
-    if (
-      parsed.transport.bearer_token_env_var
-      || parsed.transport.http_headers
-      || parsed.transport.env_http_headers
-    ) {
+    if (parsed.transport.http_headers || parsed.transport.env_http_headers) {
       return { state: 'conflict' };
+    }
+    if (parsed.transport.bearer_token_env_var) {
+      // Fleet-managed path: env *name* only. Secret is injected by host, not installer.
+      if (!/^[A-Z][A-Z0-9_]*$/.test(String(parsed.transport.bearer_token_env_var))) {
+        return { state: 'conflict' };
+      }
+      return {
+        state: 'existing_managed_bearer',
+        endpoint: parsed.transport.url,
+        managedBearerEnv: parsed.transport.bearer_token_env_var,
+      };
     }
     return { state: 'existing', endpoint: parsed.transport.url };
   }
@@ -323,16 +383,24 @@ export function configureEnactMcp(runtime, discovery, {
   run = spawnSync,
   serverName = ENACT_SERVER_NAME,
   pathEnv = process.env.PATH || '',
+  env = process.env,
+  managedBearerEnv = resolveManagedBearerTokenEnvName({ env }),
 } = {}) {
   if (discovery?.disposition !== 'ready_for_enrollment') {
     throw new Error('Enact MCP enrollment requires verified protected-resource metadata');
   }
-  const command = enrollmentCommand(runtime, discovery.endpoint, { serverName });
+  if (managedBearerEnv && runtime !== 'codex') {
+    throw new Error('Managed Enact bearer enrollment is currently supported for Codex only');
+  }
+  const command = enrollmentCommand(runtime, discovery.endpoint, {
+    serverName,
+    managedBearerEnv: runtime === 'codex' ? managedBearerEnv : null,
+  });
   const existing = inspectRuntimeMcp(runtime, serverName, { run, pathEnv });
   if (existing.state === 'conflict') {
     throw new Error(`Refusing to replace incompatible existing MCP server ${serverName}`);
   }
-  if (existing.state === 'existing') {
+  if (existing.state === 'existing' || existing.state === 'existing_managed_bearer') {
     let normalizedExisting;
     try {
       normalizedExisting = normalizeEnactMcpUrl(existing.endpoint);
@@ -341,6 +409,32 @@ export function configureEnactMcp(runtime, discovery, {
     }
     if (normalizedExisting !== discovery.endpoint) {
       throw new Error(`Refusing to replace existing MCP server ${serverName} with a different endpoint`);
+    }
+    if (existing.state === 'existing_managed_bearer') {
+      if (managedBearerEnv && existing.managedBearerEnv !== managedBearerEnv) {
+        throw new Error(
+          `Refusing to replace managed bearer env ${existing.managedBearerEnv} with ${managedBearerEnv}`,
+        );
+      }
+      return {
+        disposition: 'configured_managed_bearer',
+        runtime,
+        serverName,
+        endpoint: discovery.endpoint,
+        metadataUrl: discovery.metadataUrl,
+        configuration: 'existing_managed_bearer',
+        oauth: {
+          supported: false,
+          initiation: 'managed_bearer_env',
+          managedBearerEnv: existing.managedBearerEnv,
+          loginArgs: null,
+        },
+      };
+    }
+    if (managedBearerEnv) {
+      throw new Error(
+        `Refusing to replace OAuth-only MCP server ${serverName} with managed bearer enrollment`,
+      );
     }
     return {
       disposition: 'configured_authentication_required',
@@ -373,6 +467,17 @@ export function configureEnactMcp(runtime, discovery, {
         normalizedAfterFailure = null;
       }
       if (normalizedAfterFailure === discovery.endpoint) {
+        if (afterFailure.state === 'existing_managed_bearer' || managedBearerEnv) {
+          return {
+            disposition: 'configured_managed_bearer',
+            runtime,
+            serverName,
+            endpoint: discovery.endpoint,
+            metadataUrl: discovery.metadataUrl,
+            configuration: 'created_after_nonzero_readback',
+            oauth: command.oauth,
+          };
+        }
         return {
           disposition: 'configured_authentication_required',
           runtime,
@@ -385,6 +490,17 @@ export function configureEnactMcp(runtime, discovery, {
       }
     }
     throw new Error(`${command.executable} MCP enrollment failed with exit code ${result.status}`);
+  }
+  if (managedBearerEnv) {
+    return {
+      disposition: 'configured_managed_bearer',
+      runtime,
+      serverName,
+      endpoint: discovery.endpoint,
+      metadataUrl: discovery.metadataUrl,
+      configuration: 'created',
+      oauth: command.oauth,
+    };
   }
   return {
     disposition: 'configured_authentication_required',

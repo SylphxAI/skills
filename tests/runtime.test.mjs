@@ -1099,6 +1099,48 @@ test('Enact MCP enrollment uses runtime-native remote transports without credent
   });
   assert.equal(existingGrok.configuration, 'existing');
   assert.equal(existingGrok.disposition, 'configured_authentication_required');
+  // Fleet-managed bearer env name is allowed (secret not in config).
+  const managedExisting = configureEnactMcp('codex', discovery, {
+    managedBearerEnv: 'SYLPHX_ENACT_AGENT_TOKEN',
+    run: () => ({
+      status: 0,
+      stdout: JSON.stringify({
+        enabled: true,
+        transport: {
+          type: 'streamable_http',
+          url: endpoint,
+          bearer_token_env_var: 'SYLPHX_ENACT_AGENT_TOKEN',
+          http_headers: null,
+          env_http_headers: null,
+        },
+      }),
+      stderr: '',
+    }),
+  });
+  assert.equal(managedExisting.disposition, 'configured_managed_bearer');
+  assert.equal(managedExisting.configuration, 'existing_managed_bearer');
+  assert.equal(managedExisting.oauth.managedBearerEnv, 'SYLPHX_ENACT_AGENT_TOKEN');
+
+  // Creating managed enrollment uses --bearer-token-env-var, not OAuth login.
+  const managedCreateInvocations = [];
+  const managedCreated = configureEnactMcp('codex', discovery, {
+    managedBearerEnv: 'SYLPHX_ENACT_AGENT_TOKEN',
+    run(executable, args) {
+      managedCreateInvocations.push({ executable, args });
+      if (args[1] === 'get') {
+        return { status: 1, stdout: '', stderr: "No MCP server named 'sylphx-enact' found." };
+      }
+      return { status: 0, stdout: '', stderr: '' };
+    },
+  });
+  assert.equal(managedCreated.disposition, 'configured_managed_bearer');
+  assert.deepEqual(managedCreateInvocations[1].args, [
+    'mcp', 'add', 'sylphx-enact',
+    '--url', endpoint,
+    '--bearer-token-env-var', 'SYLPHX_ENACT_AGENT_TOKEN',
+  ]);
+
+  // Static Authorization headers remain forbidden.
   assert.throws(
     () => configureEnactMcp('codex', discovery, {
       run: () => ({
@@ -1108,8 +1150,8 @@ test('Enact MCP enrollment uses runtime-native remote transports without credent
           transport: {
             type: 'streamable_http',
             url: endpoint,
-            bearer_token_env_var: 'LEGACY_TOKEN',
-            http_headers: null,
+            bearer_token_env_var: null,
+            http_headers: { Authorization: 'secret' },
             env_http_headers: null,
           },
         }),
