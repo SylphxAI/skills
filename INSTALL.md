@@ -126,24 +126,27 @@ claim.
        consent but must not be asked to type an installation command or paste a
        token. Never substitute an MCP session id, Work claim, static header, or
        copied bearer token for OAuth.
-     - **Fleet-managed headless hosts:** when the host already injects an Enact
-       agent principal via environment (default env name
-       `SYLPHX_ENACT_AGENT_TOKEN`, or the name in
-       `SYLPHX_ENACT_BEARER_TOKEN_ENV`), enroll Codex with
-       `--bearer-token-env-var` pointing at that env *name* only. The installer
-       must not mint, print, copy, or write the secret value. Static headers and
-       inlined tokens remain forbidden. The standard host secret file `~/.codex/secrets/sylphx-enact-agent.token` (mode 600) with a loader that exports `SYLPHX_ENACT_AGENT_TOKEN` is sufficient for managed enrollment autodetect. Prefer short-lived or dens-rotated agent
-       principals over break-glass operator tokens.
+     - **Break-glass headless only:** ordinary installs use OAuth. Managed
+       bearer enrollment is opt-in when `SYLPHX_ENACT_BEARER_TOKEN_ENV` explicitly
+       names an env var that already holds a short-lived/dens-rotated agent
+       principal. The installer then enrolls Codex with
+       `--bearer-token-env-var` pointing at that env *name* only. It must not
+       mint, print, copy, or write the secret value; must not autodetect token
+       files; and must not shell-autoload or wrap vendor agent executables.
+       Static headers and inlined tokens remain forbidden. Prefer OAuth
+       discovery/login/refresh/revocation for all interactive and fleet hosts
+       that can complete MCP client OAuth.
    - Verify the integration in a new context: the server initializes over
      remote HTTPS, its instructions load, authenticated `tools/list` succeeds,
      and the expected Work tools are visible. Do not mutate Work merely to prove
      connectivity. An integration that cannot authenticate is `partial`. If the
      runtime has neither OAuth nor a fleet-managed bearer env, report that
 
-     When a fleet-managed bearer is present, agents must treat Enact as
-     available and call `work.propose_or_get` before substantive mutation
-     (see `enact-work-coordination` and the runtime constitution).
-     capability gap instead of persisting a bearer token.
+     When Enact MCP tools are available after OAuth (or rare break-glass
+     bearer enrollment), agents must call `work.propose_or_get` before
+     substantive mutation (see `enact-work-coordination` and the runtime
+     constitution). Report an auth capability gap instead of persisting a
+     bearer token or wrapping vendor executables.
 
 ## Boundaries
 
