@@ -1,0 +1,33 @@
+# ADR-4917 pattern — always-on Work lineage admission from base branch policy.
+# pull_request_target: check from default branch even if PR head is behind.
+# Metadata-only: does NOT checkout or execute untrusted PR code.
+name: Enact Work Lineage
+
+on:
+  pull_request_target:
+    types: [opened, edited, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  work-lineage:
+    name: enact-work-lineage/pass
+    runs-on: sylphx-linux-standard
+    timeout-minutes: 5
+    steps:
+      - name: Require wi_01… Work Item id
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+          corpus="${PR_TITLE}"$'\n'"${PR_BODY}"
+          if printf '%s' "$corpus" | grep -Eqo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}'; then
+            id=$(printf '%s' "$corpus" | grep -Eo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}' | head -1)
+            echo "pass: enact work lineage present ($id)"
+            exit 0
+          fi
+          echo "::error::missing Enact Work lineage — include Work: wi_01… in the PR title or body (work.propose_or_get before substantive mutation)"
+          exit 1
