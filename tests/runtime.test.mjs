@@ -37,6 +37,7 @@ import {
   REQUIRED_ENACT_SCOPES,
   resolveEnactMcpUrl,
   validateProtectedResourceMetadata,
+  resolveManagedBearerTokenEnvName,
 } from '../runtime/enact-mcp.mjs';
 import { mergeAutoSyncAgents } from '../runtime/sylphx-skills.mjs';
 import {
@@ -1003,6 +1004,8 @@ test('Enact MCP enrollment uses runtime-native remote transports without credent
   };
   const invocations = [];
   const configured = configureEnactMcp('codex', discovery, {
+    // Host token-file autodetect must not hijack pure OAuth enrollment tests.
+    managedBearerEnv: null,
     run(executable, args, options) {
       invocations.push({ executable, args, options });
       if (args[1] === 'get') {
@@ -1021,6 +1024,7 @@ test('Enact MCP enrollment uses runtime-native remote transports without credent
 
   let readbacks = 0;
   const committedDespiteNonzero = configureEnactMcp('codex', discovery, {
+    managedBearerEnv: null,
     run: (_executable, args) => {
       if (args[1] === 'get') {
         readbacks += 1;
@@ -1068,6 +1072,7 @@ test('Enact MCP enrollment uses runtime-native remote transports without credent
   assert.equal(existingClaude.configuration, 'existing');
   assert.equal(existingClaude.disposition, 'configured_authentication_required');
   const existingCodex = configureEnactMcp('codex', discovery, {
+    managedBearerEnv: null,
     run: () => ({
       status: 0,
       stdout: JSON.stringify({
@@ -1120,6 +1125,25 @@ test('Enact MCP enrollment uses runtime-native remote transports without credent
   assert.equal(managedExisting.disposition, 'configured_managed_bearer');
   assert.equal(managedExisting.configuration, 'existing_managed_bearer');
   assert.equal(managedExisting.oauth.managedBearerEnv, 'SYLPHX_ENACT_AGENT_TOKEN');
+
+  // Host secret file alone selects managed env name (loader injects value).
+  assert.equal(
+    resolveManagedBearerTokenEnvName({
+      env: {},
+      homedir: '/home/agent',
+      fileExists: (path) => path === '/home/agent/.codex/secrets/sylphx-enact-agent.token',
+    }),
+    'SYLPHX_ENACT_AGENT_TOKEN',
+  );
+  assert.equal(
+    resolveManagedBearerTokenEnvName({
+      env: {},
+      homedir: '/home/agent',
+      fileExists: () => false,
+    }),
+    null,
+  );
+
 
   // Creating managed enrollment uses --bearer-token-env-var, not OAuth login.
   const managedCreateInvocations = [];

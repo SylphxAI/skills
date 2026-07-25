@@ -132,7 +132,7 @@ claim.
        `SYLPHX_ENACT_BEARER_TOKEN_ENV`), enroll Codex with
        `--bearer-token-env-var` pointing at that env *name* only. The installer
        must not mint, print, copy, or write the secret value. Static headers and
-       inlined tokens remain forbidden. Prefer short-lived or dens-rotated agent
+       inlined tokens remain forbidden. The standard host secret file `~/.codex/secrets/sylphx-enact-agent.token` (mode 600) with a loader that exports `SYLPHX_ENACT_AGENT_TOKEN` is sufficient for managed enrollment autodetect. Prefer short-lived or dens-rotated agent
        principals over break-glass operator tokens.
    - Verify the integration in a new context: the server initializes over
      remote HTTPS, its instructions load, authenticated `tools/list` succeeds,
