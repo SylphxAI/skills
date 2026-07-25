@@ -55,23 +55,16 @@ export function resolveEnactMcpUrl(input = process.env[ENACT_MCP_ENV]) {
 }
 
 /**
- * Fleet-managed enrollment: hosts inject an Enact agent principal token via env.
- * Installer only persists the env *name* (Codex bearer_token_env_var), never the secret.
- * Interactive/public installs keep OAuth and must not set this.
+ * Break-glass managed bearer enrollment (Codex only).
+ * Installer persists the env *name* only (`bearer_token_env_var`), never the secret.
+ * OAuth is the default ordinary path. Token files and shell auto-loaders must not
+ * autodetect managed bearer enrollment.
  */
 export const DEFAULT_ENACT_AGENT_TOKEN_FILE = '.codex/secrets/sylphx-enact-agent.token';
 
 export function resolveManagedBearerTokenEnvName({
   env = process.env,
   explicit,
-  homedir = process.env.HOME || '',
-  fileExists = (path) => {
-    try {
-      return existsSync(path);
-    } catch {
-      return false;
-    }
-  },
 } = {}) {
   if (explicit !== undefined && explicit !== null) {
     const value = String(explicit).trim();
@@ -81,6 +74,8 @@ export function resolveManagedBearerTokenEnvName({
     }
     return value;
   }
+  // Explicit opt-in only: SYLPHX_ENACT_BEARER_TOKEN_ENV names the env holding a
+  // break-glass token. Do not autodetect token files or ambient agent tokens.
   if (Object.prototype.hasOwnProperty.call(env, ENACT_BEARER_TOKEN_ENV_NAME)) {
     const configured = String(env[ENACT_BEARER_TOKEN_ENV_NAME] || '').trim();
     if (!configured) return null;
@@ -88,17 +83,6 @@ export function resolveManagedBearerTokenEnvName({
       throw new Error('SYLPHX_ENACT_BEARER_TOKEN_ENV must name a SCREAMING_SNAKE_CASE env var');
     }
     return configured;
-  }
-  // Default fleet env name is selected when the host already provides the env
-  // value, or when the standard host secret file exists (loader injects env).
-  if (String(env[DEFAULT_ENACT_BEARER_TOKEN_ENV] || '').trim()) {
-    return DEFAULT_ENACT_BEARER_TOKEN_ENV;
-  }
-  if (homedir) {
-    const tokenFile = `${String(homedir).replace(/\/+$/, '')}/${DEFAULT_ENACT_AGENT_TOKEN_FILE}`;
-    if (fileExists(tokenFile)) {
-      return DEFAULT_ENACT_BEARER_TOKEN_ENV;
-    }
   }
   return null;
 }
@@ -407,12 +391,12 @@ export function configureEnactMcp(runtime, discovery, {
   if (discovery?.disposition !== 'ready_for_enrollment') {
     throw new Error('Enact MCP enrollment requires verified protected-resource metadata');
   }
-  // Managed bearer is Codex-only. Resolve autodetect only for codex unless caller
+  // Managed bearer is Codex-only. Resolve explicit managed-bearer opt-in for codex unless caller
   // explicitly passed managedBearerEnv (including null to force OAuth).
   let resolvedManagedBearerEnv = managedBearerEnv;
   if (resolvedManagedBearerEnv === undefined) {
     resolvedManagedBearerEnv = runtime === 'codex'
-      ? resolveManagedBearerTokenEnvName({ env, homedir, fileExists })
+      ? resolveManagedBearerTokenEnvName({ env, homedir, })
       : null;
   }
   if (resolvedManagedBearerEnv && runtime !== 'codex') {
@@ -437,40 +421,56 @@ export function configureEnactMcp(runtime, discovery, {
       throw new Error(`Refusing to replace existing MCP server ${serverName} with a different endpoint`);
     }
     if (existing.state === 'existing_managed_bearer') {
-      if (resolvedManagedBearerEnv && existing.managedBearerEnv !== resolvedManagedBearerEnv) {
+      if (resolvedManagedBearerEnv) {
+        if (existing.managedBearerEnv !== resolvedManagedBearerEnv) {
+          throw new Error(
+            `Refusing to replace managed bearer env ${existing.managedBearerEnv} with ${resolvedManagedBearerEnv}`,
+          );
+        }
+        return {
+          disposition: 'configured_managed_bearer',
+          runtime,
+          serverName,
+          endpoint: discovery.endpoint,
+          metadataUrl: discovery.metadataUrl,
+          configuration: 'existing_managed_bearer',
+          oauth: {
+            supported: false,
+            initiation: 'managed_bearer_env',
+            managedBearerEnv: existing.managedBearerEnv,
+            loginArgs: null,
+          },
+        };
+      }
+      // OAuth-first: migrate break-glass managed bearer → OAuth enrollment.
+      if (runtime !== 'codex') {
         throw new Error(
-          `Refusing to replace managed bearer env ${existing.managedBearerEnv} with ${resolvedManagedBearerEnv}`,
+          `Refusing to keep managed bearer MCP server ${serverName}; re-enroll with OAuth`,
+        );
+      }
+      const remove = run('codex', ['mcp', 'remove', serverName], {
+        encoding: 'utf8',
+        env: { ...process.env, PATH: pathEnv },
+        timeout: 30_000,
+      });
+      if (remove.error) throw new Error(`Unable to run codex: ${remove.error.message}`);
+      // Fall through to OAuth create below.
+    } else {
+      if (resolvedManagedBearerEnv) {
+        throw new Error(
+          `Refusing to replace OAuth-only MCP server ${serverName} with managed bearer enrollment`,
         );
       }
       return {
-        disposition: 'configured_managed_bearer',
+        disposition: 'configured_authentication_required',
         runtime,
         serverName,
         endpoint: discovery.endpoint,
         metadataUrl: discovery.metadataUrl,
-        configuration: 'existing_managed_bearer',
-        oauth: {
-          supported: false,
-          initiation: 'managed_bearer_env',
-          managedBearerEnv: existing.managedBearerEnv,
-          loginArgs: null,
-        },
+        configuration: 'existing',
+        oauth: command.oauth,
       };
     }
-    if (resolvedManagedBearerEnv) {
-      throw new Error(
-        `Refusing to replace OAuth-only MCP server ${serverName} with managed bearer enrollment`,
-      );
-    }
-    return {
-      disposition: 'configured_authentication_required',
-      runtime,
-      serverName,
-      endpoint: discovery.endpoint,
-      metadataUrl: discovery.metadataUrl,
-      configuration: 'existing',
-      oauth: command.oauth,
-    };
   }
   const result = run(command.executable, command.args, {
     encoding: 'utf8',

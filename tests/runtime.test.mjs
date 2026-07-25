@@ -1126,12 +1126,19 @@ test('Enact MCP enrollment uses runtime-native remote transports without credent
   assert.equal(managedExisting.configuration, 'existing_managed_bearer');
   assert.equal(managedExisting.oauth.managedBearerEnv, 'SYLPHX_ENACT_AGENT_TOKEN');
 
-  // Host secret file alone selects managed env name (loader injects value).
+  // Token file alone does NOT select managed bearer (OAuth-first; no autodetect).
   assert.equal(
     resolveManagedBearerTokenEnvName({
       env: {},
       homedir: '/home/agent',
       fileExists: (path) => path === '/home/agent/.codex/secrets/sylphx-enact-agent.token',
+    }),
+    null,
+  );
+  // Explicit opt-in via SYLPHX_ENACT_BEARER_TOKEN_ENV only.
+  assert.equal(
+    resolveManagedBearerTokenEnvName({
+      env: { SYLPHX_ENACT_BEARER_TOKEN_ENV: 'SYLPHX_ENACT_AGENT_TOKEN' },
     }),
     'SYLPHX_ENACT_AGENT_TOKEN',
   );
