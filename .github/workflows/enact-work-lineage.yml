@@ -69,8 +69,9 @@ jobs:
           resp=$(curl -sS --max-time 30 -X POST "$ENACT_MCP_URL" \
             -H "Authorization: Bearer ${ENACT_READ_TOKEN}" \
             -H "Content-Type: application/json" \
+            -H "Accept: application/json" \
             -d "$payload")
-          found=$(printf '%s' "$resp" | python3 -c 'import sys,json;d=json.load(sys.stdin);print("no") if d.get("error") else (lambda r: "yes" if (r.get("found") is True) or bool((r.get("work_item") or {}).get("id")) else "no")(d.get("result") or {})')
+          found=$(printf '%s' "$resp" | python3 -c 'import sys,json; d=json.load(sys.stdin); r=(d.get("result") or {}); print("yes" if (not d.get("error")) and (r.get("found") is True or bool((r.get("work_item") or {}).get("id"))) else "no")')
           if [ "$found" != "yes" ]; then
             echo "::error::Work id $id is not a live Enact Work Item (format-only / forged ids fail closed)."
             echo "$resp" | head -c 400
