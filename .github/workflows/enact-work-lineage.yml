@@ -1,6 +1,7 @@
-# ADR-4917 pattern — always-on Work lineage admission from base branch policy.
-# pull_request_target: check from default branch even if PR head is behind.
+# ADR-4917 — always-on Work lineage admission from base branch policy.
+# pull_request_target: policy from default branch even if PR head is behind.
 # Metadata-only: does NOT checkout or execute untrusted PR code.
+# Verifies Work id exists in Enact (format-only IDs fail closed).
 name: Enact Work Lineage
 
 on:
@@ -17,17 +18,33 @@ jobs:
     runs-on: sylphx-linux-standard
     timeout-minutes: 5
     steps:
-      - name: Require wi_01… Work Item id
+      - name: Require live Enact Work Item id
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_BODY: ${{ github.event.pull_request.body }}
+          ENACT_READ_TOKEN: ${{ secrets.ENACT_READ_TOKEN }}
+          ENACT_MCP_URL: https://enact.sylphx.com/api/mcp
         run: |
           set -euo pipefail
           corpus="${PR_TITLE}"$'\n'"${PR_BODY}"
-          if printf '%s' "$corpus" | grep -Eqo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}'; then
-            id=$(printf '%s' "$corpus" | grep -Eo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}' | head -1)
-            echo "pass: enact work lineage present ($id)"
-            exit 0
+          if ! printf '%s' "$corpus" | grep -Eqo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}'; then
+            echo "::error::missing Enact Work lineage — include Work: wi_01… in the PR title or body (work.propose_or_get before substantive mutation; ADR-4917)"
+            exit 1
           fi
-          echo "::error::missing Enact Work lineage — include Work: wi_01… in the PR title or body (work.propose_or_get before substantive mutation)"
-          exit 1
+          id=$(printf '%s' "$corpus" | grep -Eo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}' | head -1)
+          if [ -z "${ENACT_READ_TOKEN:-}" ]; then
+            echo "::error::ENACT_READ_TOKEN secret missing — cannot verify Work id $id against Enact"
+            exit 1
+          fi
+          payload=$(printf '%s' "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"work.get\",\"arguments\":{\"work_item_id\":\"$id\"}}}")
+          resp=$(curl -sS --max-time 30 -X POST "$ENACT_MCP_URL" \
+            -H "Authorization: Bearer ${ENACT_READ_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "$payload")
+          found=$(printf '%s' "$resp" | python3 -c 'import sys,json;d=json.load(sys.stdin);r=d.get("result") or {};print("yes" if (not d.get("error")) and ((r.get("found") is True) or bool((r.get("work_item") or {}).get("id"))) else "no")')
+          if [ "$found" != "yes" ]; then
+            echo "::error::Work id $id is not a live Enact Work Item (format-only / forged ids fail closed). Create via work.propose_or_get."
+            echo "$resp" | head -c 400
+            exit 1
+          fi
+          echo "pass: live enact work lineage present ($id)"
