@@ -1,4 +1,4 @@
-# ADR-4917 pattern — always-on Work lineage admission from base branch policy.
+# ADR-4917 — always-on Work lineage admission from base branch policy.
 # pull_request_target: policy from default branch even if PR head is behind.
 # Metadata-only: does NOT checkout or execute untrusted PR code.
 # Verifies Work id exists in Enact (format-only IDs fail closed).
@@ -28,7 +28,7 @@ jobs:
           set -euo pipefail
           corpus="${PR_TITLE}"$'\n'"${PR_BODY}"
           if ! printf '%s' "$corpus" | grep -Eqo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}'; then
-            echo "::error::missing Enact Work lineage — include Work: wi_01… in the PR title or body (work.propose_or_get before substantive mutation)"
+            echo "::error::missing Enact Work lineage — include Work: wi_01… in the PR title or body (work.propose_or_get before substantive mutation; ADR-4917)"
             exit 1
           fi
           id=$(printf '%s' "$corpus" | grep -Eo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}' | head -1)
@@ -41,12 +41,7 @@ jobs:
             -H "Authorization: Bearer ${ENACT_READ_TOKEN}" \
             -H "Content-Type: application/json" \
             -d "$payload")
-          found=$(printf '%s' "$resp" | python3 -c 'import sys,json
-d=json.load(sys.stdin)
-if d.get("error"):
-  print("no"); raise SystemExit(0)
-r=d.get("result") or {}
-print("yes" if (r.get("found") is True) or (r.get("work_item") or {}).get("id") else "no")')
+          found=$(printf '%s' "$resp" | python3 -c 'import sys,json;d=json.load(sys.stdin);r=d.get("result") or {};print("yes" if (not d.get("error")) and ((r.get("found") is True) or bool((r.get("work_item") or {}).get("id"))) else "no")')
           if [ "$found" != "yes" ]; then
             echo "::error::Work id $id is not a live Enact Work Item (format-only / forged ids fail closed). Create via work.propose_or_get."
             echo "$resp" | head -c 400
