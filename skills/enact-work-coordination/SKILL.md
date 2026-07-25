@@ -13,13 +13,17 @@ locators. Resolve exact fields from the live MCP schema or versioned product API
 
 ## Operating method
 
-0. **Availability gate.** If `SYLPHX_ENACT_AGENT_TOKEN` is set, or
-   `SYLPHX_ENACT_BEARER_TOKEN_ENV` names a non-empty env, or
-   `~/.codex/secrets/sylphx-enact-agent.token` exists, Enact is in-scope for
-   this session. Verify `work.propose_or_get` (or equivalent) is in the live
-   tool list. If tools are missing, run managed bearer enrollment / reconnect
-   before substantive edits. Do not open a PR or land source as a substitute
-   for the work loop while the bearer is present.
+0. **Availability gate (OAuth-first).** Enact is in-scope when the MCP client
+   can reach `https://enact.sylphx.com/api/mcp` and list tools after OAuth
+   against protected-resource metadata
+   (`/.well-known/oauth-protected-resource`). Verify `work.propose_or_get` (or
+   equivalent) is in the live tool list. If tools are missing, complete MCP
+   OAuth login/reconnect first — do not open a PR or land source as a substitute
+   for the work loop. Long-lived bearer tokens (`SYLPHX_ENACT_AGENT_TOKEN`,
+   `SYLPHX_ENACT_BEARER_TOKEN_ENV`, `~/.codex/secrets/sylphx-enact-agent.token`)
+   are **break-glass only**: do not shell-autoload them, do not wrap/replace
+   vendor agent binaries to inject them, and do not bypass OAuth
+   discovery/refresh/revocation for ordinary sessions.
 1. Discover an explicit Tenant and Workspace, plus Project when relevant, with
    `operating.scopes`. Never infer identity from a repository name or label.
 2. **Before substantive mutation**, call `work.propose_or_get` (idempotent
@@ -70,8 +74,11 @@ provider observation mapping, failure recovery, privacy, and conformance tests.
   the Enact product mapping.
 - MCP and REST are adapters over the same product command path. Do not create
   MCP-only effects or duplicate domain rules in clients.
-- Missing tools are a configuration or transport failure. Reconnect and verify
-  the live tool list; do not invent free-function calls or silently bypass the
-  work loop.
+- Missing tools are a configuration, transport, or OAuth enrollment failure.
+  Reconnect / complete MCP OAuth and verify the live tool list; do not invent
+  free-function calls or silently bypass the work loop.
+- Authentication is owned by the MCP client and authorization server. Do not
+  modify vendor-managed agent executables, npm symlinks, or shell startup to
+  inject credentials.
 - Never place tokens, private strategy, raw reasoning, or tenant-private state in
   public GitHub issues or committed adapter examples.

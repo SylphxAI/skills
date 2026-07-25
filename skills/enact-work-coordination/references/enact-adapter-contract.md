@@ -89,6 +89,19 @@ Provider references:
 - Model Context Protocol architecture and client/server boundaries:
   <https://modelcontextprotocol.io/specification/2025-06-18/architecture>
 
+
+## Authentication
+
+- Canonical remote MCP auth is OAuth 2.0 for the protected resource
+  `https://enact.sylphx.com/api/mcp` (RFC 9728 discovery on the Enact origin).
+- The MCP client owns OAuth discovery, login, refresh, and revocation with the
+  authorization server advertised by protected-resource metadata.
+- Long-lived static bearers are break-glass operators only. Adapters must not
+  require shell profile exports, process-wrapper injection, or replacement of
+  vendor agent executables to authenticate ordinary sessions.
+- MCP session identifiers are correlation only and never authorize Work
+  mutation.
+
 ## Failure and recovery
 
 - Missing MCP tools: diagnose installation, connection, authorization, and live
