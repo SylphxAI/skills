@@ -44,9 +44,10 @@ Skills only when their domain is touched.
 - Preserve Git parallelism. Isolate unattributed or colliding mutable state,
   publish exact source candidates, and resolve conflicts through current
   contracts and Git rather than file locks.
-- Resolve the active delivery lane before landing. Ordinary reversible work may
-  use direct-trunk only where the active profile selects it. Policy, instruction
-  authority, credentials, security, migrations, public contracts, and
+- Resolve the active delivery lane before landing. Ordinary reversible work uses
+  direct-trunk where the active profile or live admission signals select it; do
+  not open a compatibility PR as the default for ordinary reversible work. Policy,
+  instruction authority, credentials, security, migrations, public contracts, and
   irreversible effects remain fenced through the configured compatibility lane
   until an admitted successor exists.
 - Act autonomously on reversible in-scope work. Obtain explicit authority before

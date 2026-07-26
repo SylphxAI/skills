@@ -24,6 +24,33 @@ public contracts, irreversible effects) until a successor PR-less ADR locator
 authority is admitted with evidence. Conversely, do not project direct-trunk as
 active where the resolved profile still selects compatibility admission.
 
+### Lane resolution procedure (agent-native)
+
+Resolve the active lane **before** opening a PR. Do not default ordinary work to
+the compatibility lane "for safety" when direct-trunk is already selected.
+
+1. **Classify the candidate paths.**
+   - **Fenced / compatibility:** Skills/instruction/policy authority, credentials,
+     security, database migrations, public/persistent contracts, irreversible
+     external effects, or a repository that still requires PR/merge-queue admission.
+   - **Ordinary reversible:** docs/evidence-only, tests-only, narrow reversible code
+     that does not touch the fenced classes above, under integrity fences that
+     already forbid delete + non-fast-forward.
+2. **Read live admission signals.** Prefer direct-trunk when:
+   - org/repo rulesets do **not** require a PR for the default branch;
+   - claim/run lineage hard gates (or equivalent Work→Claim→Run proof) are live for
+     push admission; and
+   - the path set is ordinary reversible.
+3. **Select the lane.**
+   - Ordinary reversible + direct-trunk selected → **land by FF/CAS to the default
+     branch**. Opening a PR is the wrong ordinary path and must not be used merely
+     because a PR template exists or other agents are still using PRs.
+   - Any fenced class, missing delivery profile, or unresolved classification that
+     could be fenced → compatibility PR/merge-queue until classification is clear.
+4. **Bind Work first.** Direct-trunk and compatibility lands both require canonical
+   Work lineage and claim/run proof where hard gates require it. Claims own work,
+   not files.
+
 ## Ownership
 
 Do not treat research, a workspace artifact, a local diff, a commit, or an opened
