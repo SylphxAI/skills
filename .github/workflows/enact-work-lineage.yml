@@ -1,8 +1,6 @@
-# ADR-4917 — Work lineage admission from base-branch policy.
-# - pull_request_target: PR title/body (no untrusted checkout)
-# - push: commit subjects/bodies in the pushed range (enables direct-trunk FF
-#   after the same SHA is green on a branch tip)
-# Verifies Work id exists in Enact via work.get (format-only IDs fail closed).
+# ADR-4917 / ADR-0044 — Work lineage admission + OIDC observe residual.
+# pull_request_target: PR title/body only (no untrusted checkout).
+# push: commit subjects/bodies for direct-trunk ruleset.
 name: Enact Work Lineage
 
 on:
@@ -13,6 +11,7 @@ on:
 permissions:
   contents: read
   pull-requests: read
+  id-token: write
 
 jobs:
   work-lineage:
@@ -27,34 +26,63 @@ jobs:
           PR_BODY: ${{ github.event.pull_request.body }}
           BEFORE: ${{ github.event.before }}
           AFTER: ${{ github.event.after }}
+          ENACT_ACCESS_TOKEN: ${{ secrets.ENACT_ACCESS_TOKEN }}
           ENACT_READ_TOKEN: ${{ secrets.ENACT_READ_TOKEN }}
           ENACT_MCP_URL: https://enact.sylphx.com/api/mcp
+          ENACT_REQUIRE_ACTIVE_CLAIM: ${{ vars.ENACT_REQUIRE_ACTIVE_CLAIM }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
         run: |
           set -euo pipefail
-          if [ -z "${ENACT_READ_TOKEN:-}" ]; then
-            echo "::error::ENACT_READ_TOKEN secret missing — cannot verify Work id against Enact"
+
+          token=""
+          auth_class=""
+          if [ -n "${ENACT_ACCESS_TOKEN:-}" ]; then
+            token="${ENACT_ACCESS_TOKEN}"
+            auth_class="workload_or_short_lived"
+          elif [ -n "${ENACT_READ_TOKEN:-}" ]; then
+            token="${ENACT_READ_TOKEN}"
+            auth_class="static_break_glass"
+            echo "::warning::Using static ENACT_READ_TOKEN (break-glass). Preferred path is short-lived GitHub OIDC → Enact observe exchange (ADR-4917/ADR-0044 residual)."
+          else
+            echo "::error::No Enact observe credential — set short-lived ENACT_ACCESS_TOKEN or break-glass ENACT_READ_TOKEN"
             exit 1
+          fi
+
+          if [ -n "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ] && [ -n "${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}" ]; then
+            echo "github_oidc_request_endpoint=available"
+            access=$(python3 -c "import base64; exec(base64.b64decode('aW1wb3J0IGpzb24sIG9zLCB1cmxsaWIucmVxdWVzdAp1cmwgPSBvcy5lbnZpcm9uLmdldCgiQUNUSU9OU19JRF9UT0tFTl9SRVFVRVNUX1VSTCIpIG9yICIiCnRvayA9IG9zLmVudmlyb24uZ2V0KCJBQ1RJT05TX0lEX1RPS0VOX1JFUVVFU1RfVE9LRU4iKSBvciAiIgppZiBub3QgdXJsIG9yIG5vdCB0b2s6CiAgICByYWlzZSBTeXN0ZW1FeGl0KDApCmlmICJhdWRpZW5jZT0iIG5vdCBpbiB1cmw6CiAgICB1cmwgPSB1cmwgKyAoIiYiIGlmICI/IiBpbiB1cmwgZWxzZSAiPyIpICsgImF1ZGllbmNlPXN5bHBoeC1lbmFjdCIKcmVxID0gdXJsbGliLnJlcXVlc3QuUmVxdWVzdCh1cmwsIGhlYWRlcnM9eyJBdXRob3JpemF0aW9uIjogZiJCZWFyZXIge3Rva30iLCAiQWNjZXB0IjogImFwcGxpY2F0aW9uL2pzb24ifSkKdHJ5OgogICAgd2l0aCB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0zMCkgYXMgcjoKICAgICAgICBqd3QgPSAoanNvbi5sb2FkKHIpIG9yIHt9KS5nZXQoInZhbHVlIikgb3IgIiIKZXhjZXB0IEV4Y2VwdGlvbjoKICAgIHJhaXNlIFN5c3RlbUV4aXQoMCkKaWYgbm90IGp3dDoKICAgIHJhaXNlIFN5c3RlbUV4aXQoMCkKYm9keSA9IGpzb24uZHVtcHMoeyJnaXRodWJfb2lkY190b2tlbiI6IGp3dCwgInR0bF9zZWNzIjogOTAwfSkuZW5jb2RlKCkKcmVxMiA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoCiAgICAiaHR0cHM6Ly9lbmFjdC5zeWxwaHguY29tL2FwaS92MS9hdXRoL2dpdGh1Yi1hY3Rpb25zL3Rva2VuIiwKICAgIGRhdGE9Ym9keSwKICAgIGhlYWRlcnM9eyJDb250ZW50LVR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsICJBY2NlcHQiOiAiYXBwbGljYXRpb24vanNvbiJ9LAogICAgbWV0aG9kPSJQT1NUIiwKKQp0cnk6CiAgICB3aXRoIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxMiwgdGltZW91dD0zMCkgYXMgcjoKICAgICAgICBkID0ganNvbi5sb2FkKHIpCiAgICBwcmludChkLmdldCgiYWNjZXNzX3Rva2VuIikgb3IgIiIsIGVuZD0iIikKZXhjZXB0IEV4Y2VwdGlvbjoKICAgIHJhaXNlIFN5c3RlbUV4aXQoMCkK').decode())")
+            if [ -n "${access:-}" ]; then
+              token="$access"
+              auth_class="github_actions_oidc_observe"
+              echo "github_oidc_exchange=success auth_class=${auth_class}"
+            else
+              echo "github_oidc_exchange=failed_or_not_enabled"
+              if [ "$auth_class" = "static_break_glass" ]; then
+                echo "::warning::OIDC observe exchange unavailable; continuing with static ENACT_READ_TOKEN break-glass"
+              fi
+            fi
+          else
+            echo "github_oidc_request_endpoint=unavailable auth_class=${auth_class}"
           fi
 
           corpus=""
           if [ "${EVENT_NAME}" = "pull_request_target" ] || [ "${EVENT_NAME}" = "pull_request" ]; then
-            corpus="${PR_TITLE}"$'\n'"${PR_BODY}"
+            corpus="${PR_TITLE}"$'
+          '"${PR_BODY}"
           else
-            # push: collect subjects+bodies for commits in range (cap 20)
             if [ -n "${BEFORE:-}" ] && [ "${BEFORE}" != "0000000000000000000000000000000000000000" ] && [ -n "${AFTER:-}" ]; then
-              # need git history — shallow checkout of range only via gh api to avoid untrusted scripts
               commits=$(curl -sS --max-time 30 \
-                -H "Authorization: Bearer ${{ github.token }}" \
+                -H "Authorization: Bearer ${GH_TOKEN}" \
                 -H "Accept: application/vnd.github+json" \
-                "https://api.github.com/repos/${{ github.repository }}/compare/${BEFORE}...${AFTER}" \
+                "https://api.github.com/repos/${GH_REPOSITORY}/compare/${BEFORE}...${AFTER}" \
                 | python3 -c 'import sys,json; d=json.load(sys.stdin); print("\n\n".join((c.get("commit") or {}).get("message","") for c in (d.get("commits") or [])[-20:]))')
               corpus="${commits}"
             else
-              # new branch / empty before: use head commit message via API
               commits=$(curl -sS --max-time 30 \
-                -H "Authorization: Bearer ${{ github.token }}" \
+                -H "Authorization: Bearer ${GH_TOKEN}" \
                 -H "Accept: application/vnd.github+json" \
-                "https://api.github.com/repos/${{ github.repository }}/commits/${AFTER}" \
+                "https://api.github.com/repos/${GH_REPOSITORY}/commits/${AFTER}" \
                 | python3 -c 'import sys,json; d=json.load(sys.stdin); print((d.get("commit") or {}).get("message",""))')
               corpus="${commits}"
             fi
@@ -67,14 +95,58 @@ jobs:
           id=$(printf '%s' "$corpus" | grep -Eo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}' | head -1)
           payload=$(printf '%s' "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"work.get\",\"arguments\":{\"work_item_id\":\"$id\"}}}")
           resp=$(curl -sS --max-time 30 -X POST "$ENACT_MCP_URL" \
-            -H "Authorization: Bearer ${ENACT_READ_TOKEN}" \
+            -H "Authorization: Bearer ${token}" \
             -H "Content-Type: application/json" \
             -H "Accept: application/json" \
             -d "$payload")
-          found=$(printf '%s' "$resp" | python3 -c 'import sys,json; d=json.load(sys.stdin); r=(d.get("result") or {}); print("yes" if (not d.get("error")) and (r.get("found") is True or bool((r.get("work_item") or {}).get("id"))) else "no")')
-          if [ "$found" != "yes" ]; then
+
+          parse_out=$(RESP_JSON="$resp" python3 -c "import base64,os; exec(base64.b64decode('aW1wb3J0IGpzb24sIG9zLCByZQpyYXcgPSBvcy5lbnZpcm9uLmdldCgiUkVTUF9KU09OIiwgIiIpCnRyeToKICAgIGQgPSBqc29uLmxvYWRzKHJhdykKZXhjZXB0IEV4Y2VwdGlvbjoKICAgIHByaW50KCJGT1VORD1ubyIpCiAgICByYWlzZSBTeXN0ZW1FeGl0KDApCmlmIGQuZ2V0KCJlcnJvciIpOgogICAgcHJpbnQoIkZPVU5EPW5vIikKICAgIHJhaXNlIFN5c3RlbUV4aXQoMCkKciA9IGQuZ2V0KCJyZXN1bHQiKSBvciB7fQppZiBpc2luc3RhbmNlKHIsIGRpY3QpIGFuZCAiY29udGVudCIgaW4gciBhbmQgIndvcmtfaXRlbSIgbm90IGluIHI6CiAgICB0ZXh0cyA9IFtjLmdldCgidGV4dCIsICIiKSBmb3IgYyBpbiAoci5nZXQoImNvbnRlbnQiKSBvciBbXSkgaWYgYy5nZXQoInR5cGUiKSA9PSAidGV4dCJdCiAgICB0cnk6CiAgICAgICAgciA9IGpzb24ubG9hZHMoIlxuIi5qb2luKHRleHRzKSkKICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgcGFzcwp3aSA9IHIuZ2V0KCJ3b3JrX2l0ZW0iKSBpZiBpc2luc3RhbmNlKHIsIGRpY3QpIGVsc2UgTm9uZQpmb3VuZCA9IGlzaW5zdGFuY2UociwgZGljdCkgYW5kIChyLmdldCgiZm91bmQiKSBpcyBUcnVlIG9yIGJvb2woKHdpIG9yIHt9KS5nZXQoImlkIikpKQppZiBub3QgZm91bmQ6CiAgICBwcmludCgiRk9VTkQ9bm8iKQogICAgcmFpc2UgU3lzdGVtRXhpdCgwKQphYyA9ICh3aSBvciB7fSkuZ2V0KCJhY3RpdmVfY2xhaW0iKSBvciB7fQplc2MgPSBsYW1iZGEgdjogcmUuc3ViKHIiW1xyXG5dKyIsICIgIiwgc3RyKHYgb3IgIiIpKQpwcmludCgiRk9VTkQ9eWVzIikKcHJpbnQoIldPUktfU1RBVFVTPSIgKyBlc2MoKHdpIG9yIHt9KS5nZXQoInN0YXR1cyIpKSkKcHJpbnQoIkNMQUlNX0hPTERFUj0iICsgZXNjKGFjLmdldCgiaG9sZGVyIikpKQpwcmludCgiQ0xBSU1fSUQ9IiArIGVzYyhhYy5nZXQoImlkIikpKQpwcmludCgiQ0xBSU1fU1RBVFVTPSIgKyBlc2MoYWMuZ2V0KCJzdGF0dXMiKSkpCnByaW50KCJBR0VOVF9SVU5fSUQ9IiArIGVzYyhhYy5nZXQoImFnZW50X3J1bl9pZCIpKSkKcHJpbnQoIkxFQVNFX0VYUElSRVM9IiArIGVzYyhhYy5nZXQoImxlYXNlX2V4cGlyZXNfYXQiKSkpCnByaW50KCJIQVNfQUNUSVZFX0NMQUlNPSIgKyAoInllcyIgaWYgYWMuZ2V0KCJzdGF0dXMiKSA9PSAiYWN0aXZlIiBhbmQgYWMuZ2V0KCJpZCIpIGVsc2UgIm5vIikpCg==').decode())")
+          eval "$parse_out"
+
+          if [ "${FOUND:-}" != "yes" ]; then
             echo "::error::Work id $id is not a live Enact Work Item (format-only / forged ids fail closed)."
             echo "$resp" | head -c 400
             exit 1
           fi
-          echo "pass: live enact work lineage present ($id) event=${EVENT_NAME}"
+
+          echo "lineage.work_id=${id}"
+          echo "lineage.work_status=${WORK_STATUS:-}"
+          echo "lineage.auth_class=${auth_class}"
+          echo "lineage.claim_holder=${CLAIM_HOLDER:-}"
+          echo "lineage.claim_id=${CLAIM_ID:-}"
+          echo "lineage.claim_status=${CLAIM_STATUS:-}"
+          echo "lineage.agent_run_id=${AGENT_RUN_ID:-}"
+          echo "lineage.lease_expires_at=${LEASE_EXPIRES:-}"
+          echo "lineage.has_active_claim=${HAS_ACTIVE_CLAIM:-no}"
+          # Claim/Run loop proof (durable): active lease OR checkpoint/run/evidence.
+          # Existence-only Work stamps are the fleet adoption gap. Direct-trunk push requires proof.
+          linked_payload=$(printf '%s' "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/call\",\"params\":{\"name\":\"work.linked_status\",\"arguments\":{\"work_item_id\":\"$id\"}}}")
+          linked_resp=$(curl -sS --max-time 30 -X POST "$ENACT_MCP_URL" \
+            -H "Authorization: Bearer ${token}" \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/json" \
+            -d "$linked_payload" || true)
+          linked_parse=$(RESP_JSON="$linked_resp" python3 -c "import base64,os; exec(base64.b64decode('aW1wb3J0IGpzb24sIG9zLCByZQpyYXcgPSBvcy5lbnZpcm9uLmdldCgiUkVTUF9KU09OIiwgIiIpCmRlZiBlc2Modik6CiAgICByZXR1cm4gcmUuc3ViKHIiW1xyXG5dKyIsICIgIiwgc3RyKHYgb3IgIiIpKQp0cnk6CiAgICBkID0ganNvbi5sb2FkcyhyYXcpCmV4Y2VwdCBFeGNlcHRpb246CiAgICBwcmludCgiQ0xBSU1fTE9PUF9QUk9PRj1ubyIpCiAgICBwcmludCgiQ0hFQ0tQT0lOVF9SVU49IikKICAgIHByaW50KCJFVklERU5DRV9LSU5EUz0wIikKICAgIHByaW50KCJMSU5LRURfQ0xBSU1FRD1ubyIpCiAgICByYWlzZSBTeXN0ZW1FeGl0KDApCmlmIGQuZ2V0KCJlcnJvciIpOgogICAgcHJpbnQoIkNMQUlNX0xPT1BfUFJPT0Y9bm8iKQogICAgcHJpbnQoIkNIRUNLUE9JTlRfUlVOPSIpCiAgICBwcmludCgiRVZJREVOQ0VfS0lORFM9MCIpCiAgICBwcmludCgiTElOS0VEX0NMQUlNRUQ9bm8iKQogICAgcmFpc2UgU3lzdGVtRXhpdCgwKQpyID0gZC5nZXQoInJlc3VsdCIpIG9yIHt9CmlmIGlzaW5zdGFuY2UociwgZGljdCkgYW5kICJjb250ZW50IiBpbiByIGFuZCAibGlua2VkX3N0YXR1cyIgbm90IGluIHI6CiAgICB0ZXh0cyA9IFtjLmdldCgidGV4dCIsICIiKSBmb3IgYyBpbiAoci5nZXQoImNvbnRlbnQiKSBvciBbXSkgaWYgYy5nZXQoInR5cGUiKSA9PSAidGV4dCJdCiAgICB0cnk6CiAgICAgICAgciA9IGpzb24ubG9hZHMoIlxuIi5qb2luKHRleHRzKSkKICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgcGFzcwpscyA9IHIuZ2V0KCJsaW5rZWRfc3RhdHVzIikgaWYgaXNpbnN0YW5jZShyLCBkaWN0KSBlbHNlIE5vbmUKaWYgbm90IGlzaW5zdGFuY2UobHMsIGRpY3QpOgogICAgbHMgPSByIGlmIGlzaW5zdGFuY2UociwgZGljdCkgZWxzZSB7fQphYyA9IGxzLmdldCgiYWN0aXZlX2NsYWltIikgb3Ige30KY3AgPSBscy5nZXQoImxhdGVzdF9jaGVja3BvaW50Iikgb3Ige30Ka2luZHMgPSBscy5nZXQoImV2aWRlbmNlX2tpbmRzX3ByZXNlbnQiKSBvciBbXQpjcF9ydW4gPSBjcC5nZXQoImFnZW50X3J1bl9pZCIpIG9yICIiCmFjdGl2ZSA9IGJvb2woYWMuZ2V0KCJpZCIpIGFuZCAoYWMuZ2V0KCJzdGF0dXMiKSA9PSAiYWN0aXZlIiBvciBhYy5nZXQoImhvbGRlciIpKSkKcHJvb2YgPSBhY3RpdmUgb3IgYm9vbChjcF9ydW4pIG9yIChpc2luc3RhbmNlKGtpbmRzLCBsaXN0KSBhbmQgbGVuKGtpbmRzKSA+IDApCnByaW50KCJDTEFJTV9MT09QX1BST09GPSIgKyAoInllcyIgaWYgcHJvb2YgZWxzZSAibm8iKSkKcHJpbnQoIkNIRUNLUE9JTlRfUlVOPSIgKyBlc2MoY3BfcnVuKSkKcHJpbnQoIkVWSURFTkNFX0tJTkRTPSIgKyBzdHIobGVuKGtpbmRzKSBpZiBpc2luc3RhbmNlKGtpbmRzLCBsaXN0KSBlbHNlIDApKQpwcmludCgiTElOS0VEX0NMQUlNRUQ9IiArICgieWVzIiBpZiBscy5nZXQoImNsYWltZWQiKSBlbHNlICJubyIpKQo=').decode())")
+          eval "$linked_parse"
+          echo "lineage.claim_loop_proof=${CLAIM_LOOP_PROOF:-no}"
+          echo "lineage.checkpoint_run=${CHECKPOINT_RUN:-}"
+          echo "lineage.evidence_kinds=${EVIDENCE_KINDS:-0}"
+          echo "lineage.linked_claimed=${LINKED_CLAIMED:-no}"
+
+          require_active="${ENACT_REQUIRE_ACTIVE_CLAIM:-}"
+          # Direct-trunk push: require durable claim/run loop proof by default.
+          # PR lane: telemetry unless ENACT_REQUIRE_ACTIVE_CLAIM hard-enforces.
+          if [ "${HAS_ACTIVE_CLAIM:-no}" = "yes" ] || [ "${CLAIM_LOOP_PROOF:-no}" = "yes" ]; then
+            echo "pass: live enact work lineage + claim/run loop proof (${id} holder=${CLAIM_HOLDER:-none} run=${AGENT_RUN_ID:-${CHECKPOINT_RUN:-none}} evidence_kinds=${EVIDENCE_KINDS:-0}) event=${EVENT_NAME} auth=${auth_class}"
+          else
+            msg="Work ${id} exists but has no claim/run loop proof (no active Claim/Run, no checkpoint run, no evidence). Existence-only Work stamps do not satisfy agent-native adoption."
+            if [ "${require_active}" = "1" ] || [ "${require_active}" = "true" ] || [ "${EVENT_NAME}" = "push" ]; then
+              echo "::error::${msg}"
+              if [ "${EVENT_NAME}" = "push" ]; then
+                echo "::error::direct-trunk requires claim-before-mutation proof (active claim, checkpoint with agent_run_id, or published evidence on the Work)."
+              fi
+              exit 1
+            fi
+            echo "::notice::${msg}"
+            echo "pass: live enact work lineage present (${id}) without claim/run loop proof — PR telemetry only; event=${EVENT_NAME} auth=${auth_class}"
+          fi
