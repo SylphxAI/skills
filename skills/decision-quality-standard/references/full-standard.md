@@ -22,7 +22,7 @@ This standard composes with:
   for no-human gates, CI, merge queues, delivery slices, and recovery;
 - [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/commercial-decision-standard/references/full-standard.md) for
   pricing, packaging, roadmap, positioning, and monetization decisions;
-- [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
+- [`risk-matched-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/risk-matched-verification-standard/references/full-standard.md)
   for deterministic simulation, eval-gated merge, automated canary analysis,
   and frontier verification backstops;
 - [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) for

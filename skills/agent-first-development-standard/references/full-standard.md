@@ -35,7 +35,7 @@ This standard composes with:
 - [`parallel-change-integration-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/parallel-change-integration-standard/references/full-standard.md)
   for the candidate successor architecture when universal-agent arrival exceeds
   PR, merge-queue, CI, preview, or deployment admission capacity.
-- [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
+- [`risk-matched-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/risk-matched-verification-standard/references/full-standard.md)
   for property/model tests, deterministic simulation, spec/eval gates, and
   canary analysis selection rules.
 - [`enterprise-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/enterprise-profile-standard/references/full-standard.md) for the
@@ -466,7 +466,7 @@ for these gates when a repository does not already have an equivalent:
 - **Collision-resistant artifact identity**: use the documentation standard's
   rule—no race-prone self-assigned sequential number as primary identity.
 - **Formal or model-based methods**:
-  [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)'s
+  [`risk-matched-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/risk-matched-verification-standard/references/full-standard.md)'s
   Core Rule matrix owns when property/model tests and deterministic
   simulation are required — cited, not restated.
 
@@ -507,6 +507,15 @@ the contract is missing, fix the contract first.
 ## Parallel Agent Coordination
 
 Parallelism is safe only when ownership and contracts are explicit.
+
+`autonomous-execution-standard` owns whether delegation has positive net value.
+Apply that predicate before this coordination protocol: semantic task type and
+material complexity come before role assignment. A few file reads, one command,
+one endpoint check, a literal lookup, a short response, or a tightly coupled
+immediate step stay with the current agent. A bounded child task is
+presumptively a leaf unless it discovers a new independently useful,
+materially complex lane that passes the same predicate. Do not require global
+tree-depth knowledge or a central recursion counter.
 
 - Split work by bounded context, package, feature, service, or generated
   contract surface. Avoid assigning two agents to the same shared file unless

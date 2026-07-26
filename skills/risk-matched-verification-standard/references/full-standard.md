@@ -1,4 +1,4 @@
-# Frontier Verification Standard
+# Risk-Matched Verification Standard
 
 ## Purpose
 
@@ -24,9 +24,14 @@ This standard composes with:
 
 ## Core Rule
 
-Frontier verification is targeted by blast radius. It is not a universal
+Verification depth is targeted by failure model, residual uncertainty, and
+blast radius. It is not a universal
 presubmit tax and not a replacement for the active delivery profile's admission
 and integration controls, postsubmit proof, deploy proof, or recovery.
+
+“Risk-matched” describes evidence selection, not a maturity or market-rank
+claim. This standard never proves that a system is frontier, SOTA, best, or
+latest merely because it uses advanced verification methods.
 
 Use this selection matrix:
 
@@ -168,11 +173,11 @@ Until then, these methods are `new-default` or `optional-adoption`.
 
 | Rule ID | Check |
 | --- | --- |
-| `frontier-ver-01` | Strongest relevant subset applied |
-| `frontier-ver-02` | Facts in schema/test/ADR homes |
-| `frontier-ver-03` | Proof layers separated |
-| `frontier-ver-04` | Unknown authority fails closed |
-| `frontier-ver-05` | Tradeoffs owned |
+| `risk-ver-01` | Strongest relevant subset applied |
+| `risk-ver-02` | Facts in schema/test/ADR homes |
+| `risk-ver-03` | Proof layers separated |
+| `risk-ver-04` | Unknown authority fails closed |
+| `risk-ver-05` | Tradeoffs owned |
 
 - [ ] Full body obligations reviewed for applicability.
 - [ ] Residual gaps have owner and follow-up.

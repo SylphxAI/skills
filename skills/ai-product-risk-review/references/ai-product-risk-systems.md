@@ -185,7 +185,7 @@ unknown state into approval.
 
 | Need | Canonical owner output consumed here |
 | --- | --- |
-| Eval, judge, replay, simulation, adversarial verification | `frontier-verification-standard` artifact |
+| Eval, judge, replay, simulation, adversarial verification | `risk-matched-verification-standard` artifact |
 | Threat model, prompt/tool security, vulnerability work | security owner artifact |
 | Data rights, privacy, retention, deletion | privacy/data lifecycle authority |
 | Tool schemas, permissions, implementation, observability | owning engineering project |

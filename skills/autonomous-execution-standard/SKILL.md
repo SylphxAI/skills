@@ -1,6 +1,6 @@
 ---
 name: autonomous-execution-standard
-description: "Autonomous scheduling: critical-path focus, parallelism budgets, delegated outcomes, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer or edit."
+description: "Autonomous scheduling: critical-path focus, work-conserving progress, complexity-gated resource-safe delegation, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit."
 ---
 # Autonomous Execution Standard
 

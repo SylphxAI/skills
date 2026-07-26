@@ -296,7 +296,7 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
   network/storage model, and replayable seed corpus for distributed,
   concurrent, or irreversible workflows whose important bugs require fault
   ordering or long-running interleavings. Keep it targeted by blast radius; see
-  [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md).
+  [`risk-matched-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/risk-matched-verification-standard/references/full-standard.md).
 - **Idempotent, replayable jobs**: every queue worker, cron, migration helper,
   and external side-effect path should have idempotency keys, retry policy,
   timeout policy, and replay/debug evidence.
@@ -411,7 +411,7 @@ interoperability, data policy, runtime cost, and eval evidence. Framework
 schemas and async shapes stay in infrastructure adapters and do not become a
 second domain contract. Model/provider/runtime/policy choices bind exact
 versions and requalification triggers through the eval contract in the
-Frontier Verification Standard.
+Risk-Matched Verification Standard.
 
 For persistence work, declare one schema and migration authority. Migration
 identity is collision-resistant and changes are replay-tested. In development

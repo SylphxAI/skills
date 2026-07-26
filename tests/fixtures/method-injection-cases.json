@@ -166,20 +166,31 @@
   },
   {
     "id": "architecture-migration-positive",
-    "kind": "positive",
+    "kind": "compound",
     "prompt": "Migrate this repository completely to the current canonical code architecture.",
-    "expectedSkills": ["engineering-standard"],
-    "artifacts": [{"artifact": "Capability-first architecture migration", "owner": "engineering-standard"}]
+    "expectedSkills": ["architecture-convergence", "engineering-standard"],
+    "artifacts": [
+      {"artifact": "Architecture convergence delivery and retirement", "owner": "architecture-convergence"},
+      {"artifact": "Canonical architecture terminal", "owner": "engineering-standard"}
+    ]
   },
   {
     "id": "architecture-migration-multi-repo",
     "kind": "compound",
     "prompt": "Upgrade every service repository in this organization to Capability-first Modular DDD with Clean/Hexagonal boundaries and Functional Core, Imperative Shell, including real code movement and semantic proof.",
-    "expectedSkills": ["multi-repository-migration", "engineering-standard"],
+    "expectedSkills": ["architecture-convergence", "engineering-standard"],
     "artifacts": [
-      {"artifact": "Multi-repository architecture migration plan and proof", "owner": "multi-repository-migration"},
+      {"artifact": "Cross-repository architecture convergence and proof", "owner": "architecture-convergence"},
       {"artifact": "Canonical architecture terminal", "owner": "engineering-standard"}
     ]
+  },
+  {
+    "id": "architecture-neighbour-local-refactor",
+    "kind": "near-neighbour",
+    "prompt": "Extract this one validation function into a typed pure helper and keep all public behavior unchanged.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [{"artifact": "Local behavior-preserving refactor", "owner": "engineering-standard"}],
+    "nearNeighbourOf": "architecture-convergence"
   },
   {
     "id": "architecture-neighbour-docs-only",

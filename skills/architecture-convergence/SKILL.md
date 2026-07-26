@@ -1,18 +1,20 @@
 ---
-name: multi-repository-migration
-description: "Plan, execute, and audit a substantial software or architecture migration in one or many repositories. Use for Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or required architecture cutovers that need independently verifiable slices. Inventory behaviors/contracts/surfaces, refactor real code, prove exact-candidate semantics, choose lifecycle-appropriate cutover, retire legacy structure, and invalidate stale proof."
+name: architecture-convergence
+description: "Deliver a substantial code-architecture refactor or migration to one declared target across one or many repositories. Use for whole-repository Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or architecture cutovers that require real code movement, semantic proof, authority change, and predecessor retirement. Do not use for a small local refactor, a documentation-only architecture review, or customer-data migration."
 ---
 
-# Multi-Repository Migration
+# Architecture Convergence
 
-Turn a large rewrite into independently verifiable cutovers. Optimize for
-verified throughput: many disjoint slices may advance in parallel, but no slice
-advances on narrative status or stale proof.
+Turn a substantial architecture change into independently verifiable
+convergence slices. The same terminal applies whether the implementation spans
+one repository or many. Optimize for verified throughput: disjoint slices may
+advance in parallel when doing so has positive net value, but no slice advances
+on narrative status or stale proof.
 
 ## Resource guide
 
-- Read `references/multi-repository-migration-patterns.md` before choosing slice boundaries, states, parity gates, concurrency, or cutover policy.
-- Use `scripts/validate_migration_ledger.py` when the migration adopts the portable ledger shape in the reference. From this repository's root, run `python3 -m unittest -v skills/multi-repository-migration/scripts/test_validate_migration_ledger.py` after changing the validator. Reuse the repository's existing proportional verification entrypoint when ledger validity is material; do not add a dedicated CI workflow merely because the portable validator exists. Prefer an existing repo-native schema and validator when one already owns this fact.
+- Read `references/architecture-convergence-patterns.md` before choosing slice boundaries, states, parity gates, concurrency, or cutover policy.
+- Use `scripts/validate_migration_ledger.py` only when the convergence adopts the portable ledger shape in the reference. From this repository's root, run `python3 -m unittest -v skills/architecture-convergence/scripts/test_validate_migration_ledger.py` after changing the validator. A simple single-repository refactor does not need a ledger merely to use this Skill. Reuse the repository's existing proportional verification entrypoint when ledger validity is material; do not add a dedicated CI workflow merely because the portable validator exists. Prefer an existing repo-native schema and validator when one already owns this fact.
 - Load the target repositories' local architecture, delivery, and safety rules. This portfolio skill does not replace them.
 
 ## Workflow
@@ -27,7 +29,12 @@ advances on narrative status or stale proof.
    verification probe at the declared lifecycle stage, and a rollback or
    forward-recovery path.
 4. Establish the contract before parallel implementation. Use one executable schema or public interface as the source of truth; derive language bindings and fixtures instead of hand-maintaining mirrors.
-5. Build the execution graph. Serialize shared contracts, migrations, registries, configuration schemas, and CI workflows. Fan out slices with disjoint write sets and one accountable owner per slice.
+5. Build the execution graph. Serialize shared contracts, migrations,
+   registries, configuration schemas, and CI workflows. Parallelize only
+   materially complex, bounded, independently useful slices with disjoint
+   write sets when the expected speed or quality gain exceeds coordination,
+   resource, and integration cost. Atomic inspection and tightly coupled work
+   stay local.
 6. Select the shortest safe cutover from the real lifecycle stage. In
    development or internal dogfood without real-user state risk, migrate and
    delete the old structure in one verified candidate. Use expand-contract only
@@ -83,7 +90,7 @@ advances on narrative status or stale proof.
 ## Output format
 
 ```text
-Multi-Repository Migration Packet
+Architecture Convergence Packet
 
 Source / target / boundary:
 Industry pattern mix:

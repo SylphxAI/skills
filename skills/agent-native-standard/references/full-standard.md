@@ -129,7 +129,7 @@ tool-using, safety-sensitive, or commercially material. Requalification is
 triggered by source changes and by upstream model/provider/runtime drift,
 deprecation, capability change, data-policy change, or breached cost, latency,
 quality, privacy, or safety budgets; see
-[`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md) for
+[`risk-matched-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/risk-matched-verification-standard/references/full-standard.md) for
 eval-gate requirements and the versioned manifest field contract; the owning
 product/evaluation system supplies its executable schema.
 

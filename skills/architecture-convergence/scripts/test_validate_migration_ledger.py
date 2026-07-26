@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression tests for the portable migration ledger validator."""
+"""Regression tests for the portable architecture-convergence ledger validator."""
 
 from __future__ import annotations
 

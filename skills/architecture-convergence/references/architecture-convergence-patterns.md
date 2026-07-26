@@ -1,4 +1,4 @@
-# Multi-Repository Migration Patterns
+# Architecture Convergence Patterns
 
 Use these patterns to design a high-throughput modernization without confusing parallel activity with verified cutover.
 
@@ -24,21 +24,21 @@ Useful public orientation: Martin Fowler's descriptions of [Strangler Fig Applic
 
 ## Rule IDs
 
-- `multi-repo-migration-1` — Freeze a semantic denominator before reporting progress: capabilities plus important behaviors, invariants, contracts, scenarios, surfaces, and effects—not files, repositories, commits, or lines.
-- `multi-repo-migration-2` — Make each slice vertically complete: boundary, target implementation, proof, delivery, authority switch, and recovery.
-- `multi-repo-migration-3` — Establish one contract source of truth before parallel work. Generated projections are outputs, never coordination surfaces.
-- `multi-repo-migration-4` — Separate source authority, target availability, target authority, and source retirement. None implies the next.
-- `multi-repo-migration-5` — Bind parity proof to exact source and target revisions, target artifact digest, and contract, behavior, and corpus digests.
-- `multi-repo-migration-6` — Invalidate proof whenever a mapped source, target, contract, or dependency surface changes. Stale proof cannot authorize cutover.
-- `multi-repo-migration-7` — Fail on unclassified tracked migration changes. Classification gaps are control-plane defects.
-- `multi-repo-migration-8` — Compare full observable semantics: success, absence, errors, ordering, defaults, state effects, retries, concurrency, and operational envelopes.
-- `multi-repo-migration-9` — Keep one write authority. Shadow decisions or use isolated replay for irreversible effects.
-- `multi-repo-migration-10` — Parallelize disjoint slices; serialize contracts, migrations, registries, configuration schemas, and delivery workflows.
-- `multi-repo-migration-11` — Validate the exact integration candidate and deployed artifact, not an earlier branch head or local build.
-- `multi-repo-migration-12` — Retire the source after the stage-appropriate target-authority and recovery criteria pass; live readback is required only for a live runtime claim.
-- `multi-repo-migration-13` — Regress a slice to `stale` rather than preserving optimistic status after source drift.
-- `multi-repo-migration-14` — Separate documented target, implemented code, merged state, deployed state, runtime authority, and retired source in every report.
-- `multi-repo-migration-15` — Cap work in progress by verification and merge capacity. More open slices are not more throughput.
+- `architecture-convergence-1` — Freeze a semantic denominator before reporting progress: capabilities plus important behaviors, invariants, contracts, scenarios, surfaces, and effects—not files, repositories, commits, or lines.
+- `architecture-convergence-2` — Make each slice vertically complete: boundary, target implementation, proof, delivery, authority switch, and recovery.
+- `architecture-convergence-3` — Establish one contract source of truth before parallel work. Generated projections are outputs, never coordination surfaces.
+- `architecture-convergence-4` — Separate source authority, target availability, target authority, and source retirement. None implies the next.
+- `architecture-convergence-5` — Bind parity proof to exact source and target revisions, target artifact digest, and contract, behavior, and corpus digests.
+- `architecture-convergence-6` — Invalidate proof whenever a mapped source, target, contract, or dependency surface changes. Stale proof cannot authorize cutover.
+- `architecture-convergence-7` — Fail on unclassified tracked migration changes. Classification gaps are control-plane defects.
+- `architecture-convergence-8` — Compare full observable semantics: success, absence, errors, ordering, defaults, state effects, retries, concurrency, and operational envelopes.
+- `architecture-convergence-9` — Keep one write authority. Shadow decisions or use isolated replay for irreversible effects.
+- `architecture-convergence-10` — Parallelize disjoint slices only when each is materially complex and the feasible set has positive net value; serialize contracts, migrations, registries, configuration schemas, and delivery workflows.
+- `architecture-convergence-11` — Validate the exact integration candidate and deployed artifact, not an earlier branch head or local build.
+- `architecture-convergence-12` — Retire the source after the stage-appropriate target-authority and recovery criteria pass; live readback is required only for a live runtime claim.
+- `architecture-convergence-13` — Regress a slice to `stale` rather than preserving optimistic status after source drift.
+- `architecture-convergence-14` — Separate documented target, implemented code, merged state, deployed state, runtime authority, and retired source in every report.
+- `architecture-convergence-15` — Cap work in progress by local compute, verification, integration, and merge capacity. More agents or open slices are not more throughput.
 
 ## Slice qualification table
 
@@ -180,14 +180,14 @@ use the stage-bound names above.
 Run structural validation:
 
 ```bash
-python3 skills/multi-repository-migration/scripts/validate_migration_ledger.py migration-ledger.json
+python3 skills/architecture-convergence/scripts/validate_migration_ledger.py migration-ledger.json
 ```
 
 Run source-drift admission for one repository and exact candidate:
 
 ```bash
 git diff --name-only BASE_SHA HEAD_SHA > changed-files.txt
-python3 skills/multi-repository-migration/scripts/validate_migration_ledger.py migration-ledger.json \
+python3 skills/architecture-convergence/scripts/validate_migration_ledger.py migration-ledger.json \
   --repo example/service \
   --changed-files changed-files.txt \
   --candidate-source-ref SOURCE_HEAD_SHA \

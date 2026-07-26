@@ -1,6 +1,6 @@
 ---
 name: evidence-and-claims-standard
-description: "Adjudicate a material or disputed factual, status, completion, causality, or delivery claim against current primary evidence. Use when deciding whether work is actually done, a check or stated cause is proven, or source, merge, release, deploy, and live behavior are established. Do not load merely because routine implementation reporting should remain truthful."
+description: "Adjudicate a material or disputed factual, comparative, SOTA/frontier, status, completion, causality, or delivery claim against current primary evidence. Use when deciding whether work is actually done, a claimed improvement or leading position is supported, a stated cause is proven, or source, merge, release, deploy, and live behavior are established. Do not load merely because routine implementation reporting should remain truthful."
 ---
 
 # Evidence and Claims Standard
@@ -64,13 +64,14 @@ emitting a second report.
 - This skill governs what may be claimed; domain skills define what must be
   built or tested.
 - Use `delivery-standard` for delivery mechanics and
-  `frontier-verification-standard` for nondeterministic verification design.
+  `risk-matched-verification-standard` for nondeterministic verification design.
 - Use `critical-analysis` when several explanations remain credible.
 - Do not demand ceremonial evidence that cannot change the claim.
 
 ## Routing examples
 
 Use for “is this migration complete?”, “did this deploy reach production?”,
-“does the evidence prove this claimed cause?”, and “audit this executor report.” Do not route a
-request that merely asks to implement a known code change unless it also asks
-for a material status or completion judgment.
+“is this system really state of the art?”, “does the evidence prove this
+claimed cause?”, and “audit this executor report.” Do not route a request that
+merely asks to implement a known code change unless it also asks for a material
+status, comparative, or completion judgment.

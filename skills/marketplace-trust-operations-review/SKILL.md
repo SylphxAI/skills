@@ -149,7 +149,7 @@ outage, backlog, and cohort cases; do not claim production efficacy from design.
 - Use `product-abuse-risk-review` for adaptive abuse outside the marketplace or
   across unrelated product resources.
 - Use `incident-standard`, `privacy-data-lifecycle-review`,
-  `frontier-verification-standard`, `engineering-standard`, and
+  `risk-matched-verification-standard`, `engineering-standard`, and
   `delivery-standard` for live incidents, privacy, controls, model/eval
   engineering, implementation, and shipped-state proof.
 

@@ -1,0 +1,254 @@
+[
+  {
+    "id": "read-a-few-files-locally",
+    "facts": {
+      "workClass": "atomic",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": false,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": false,
+      "positiveNetBenefit": false,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": false,
+      "confidenceOnly": false,
+      "boundedChildTask": false,
+      "discoveredNewLane": false
+    },
+    "expected": "local"
+  },
+  {
+    "id": "one-command-locally",
+    "facts": {
+      "workClass": "atomic",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": false,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": false,
+      "positiveNetBenefit": false,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": false,
+      "confidenceOnly": false,
+      "boundedChildTask": false,
+      "discoveredNewLane": false
+    },
+    "expected": "local"
+  },
+  {
+    "id": "one-endpoint-check-locally",
+    "facts": {
+      "workClass": "atomic",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": false,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": false,
+      "positiveNetBenefit": false,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": false,
+      "confidenceOnly": false,
+      "boundedChildTask": false,
+      "discoveredNewLane": false
+    },
+    "expected": "local"
+  },
+  {
+    "id": "short-answer-locally",
+    "facts": {
+      "workClass": "atomic",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": false,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": false,
+      "positiveNetBenefit": false,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": false,
+      "confidenceOnly": false,
+      "boundedChildTask": false,
+      "discoveredNewLane": false
+    },
+    "expected": "local"
+  },
+  {
+    "id": "confidence-only-duplicate-stays-local",
+    "facts": {
+      "workClass": "material-independent",
+      "boundedOutcome": true,
+      "independentlyUseful": false,
+      "materiallyComplex": true,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": false,
+      "positiveNetBenefit": false,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": false,
+      "confidenceOnly": true,
+      "boundedChildTask": false,
+      "discoveredNewLane": false
+    },
+    "expected": "local"
+  },
+  {
+    "id": "bounded-child-is-presumptive-leaf",
+    "facts": {
+      "workClass": "material-independent",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": true,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": true,
+      "positiveNetBenefit": true,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": false,
+      "confidenceOnly": false,
+      "boundedChildTask": true,
+      "discoveredNewLane": false
+    },
+    "expected": "local"
+  },
+  {
+    "id": "child-may-delegate-new-material-lane",
+    "facts": {
+      "workClass": "material-independent",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": true,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": true,
+      "positiveNetBenefit": true,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": false,
+      "confidenceOnly": false,
+      "boundedChildTask": true,
+      "discoveredNewLane": true
+    },
+    "expected": "delegate"
+  },
+  {
+    "id": "independent-repository-audit-delegates",
+    "facts": {
+      "workClass": "material-independent",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": true,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": true,
+      "positiveNetBenefit": true,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": false,
+      "confidenceOnly": false,
+      "boundedChildTask": false,
+      "discoveredNewLane": false
+    },
+    "expected": "delegate"
+  },
+  {
+    "id": "resource-pressure-blocks-new-fanout",
+    "facts": {
+      "workClass": "material-independent",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": true,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": true,
+      "positiveNetBenefit": true,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": true,
+      "integrationBackpressure": false,
+      "confidenceOnly": false,
+      "boundedChildTask": false,
+      "discoveredNewLane": false
+    },
+    "expected": "local"
+  },
+  {
+    "id": "integration-backlog-blocks-new-fanout",
+    "facts": {
+      "workClass": "material-independent",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": true,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": true,
+      "positiveNetBenefit": true,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": true,
+      "confidenceOnly": false,
+      "boundedChildTask": false,
+      "discoveredNewLane": false
+    },
+    "expected": "local"
+  },
+  {
+    "id": "shared-write-collision-stays-local",
+    "facts": {
+      "workClass": "material-independent",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": true,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": true,
+      "positiveNetBenefit": true,
+      "collisionSafe": false,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": false,
+      "confidenceOnly": false,
+      "boundedChildTask": false,
+      "discoveredNewLane": false
+    },
+    "expected": "local"
+  },
+  {
+    "id": "multi-source-research-delegates",
+    "facts": {
+      "workClass": "material-independent",
+      "boundedOutcome": true,
+      "independentlyUseful": true,
+      "materiallyComplex": true,
+      "hiddenSiblingState": false,
+      "evidenceContract": true,
+      "materialAdvantage": true,
+      "positiveNetBenefit": true,
+      "collisionSafe": true,
+      "capacityAvailable": true,
+      "resourcePressure": false,
+      "integrationBackpressure": false,
+      "confidenceOnly": false,
+      "boundedChildTask": false,
+      "discoveredNewLane": false
+    },
+    "expected": "delegate"
+  }
+]
