@@ -119,7 +119,7 @@ jobs:
           echo "lineage.lease_expires_at=${LEASE_EXPIRES:-}"
           echo "lineage.has_active_claim=${HAS_ACTIVE_CLAIM:-no}"
           # Claim/Run loop proof (durable): active lease OR checkpoint/run/evidence.
-          # Existence-only Work stamps are the fleet adoption gap. Direct-trunk push requires proof.
+          # Existence-only Work stamps are the agent-native adoption gap. Direct-trunk push requires proof.
           linked_payload=$(printf '%s' "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/call\",\"params\":{\"name\":\"work.linked_status\",\"arguments\":{\"work_item_id\":\"$id\"}}}")
           linked_resp=$(curl -sS --max-time 30 -X POST "$ENACT_MCP_URL" \
             -H "Authorization: Bearer ${token}" \
