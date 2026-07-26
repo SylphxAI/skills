@@ -150,3 +150,20 @@ jobs:
             echo "::notice::${msg}"
             echo "pass: live enact work lineage present (${id}) without claim/run loop proof — PR telemetry only; event=${EVENT_NAME} auth=${auth_class}"
           fi
+      - name: Ordinary docs-only PRs must use direct-trunk
+        if: github.event_name == 'pull_request_target' || github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK: ${{ vars.ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK }}
+        run: |
+          set -euo pipefail
+          enforce="${ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK:-true}"
+          case "$enforce" in 0|false|FALSE|no|NO) enforce=false ;; *) enforce=true ;; esac
+          if [ -z "${PR_NUMBER:-}" ]; then echo "skip: no PR number"; exit 0; fi
+          files_json=$(curl -sS --max-time 30 \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GH_REPOSITORY}/pulls/${PR_NUMBER}/files?per_page=100")
+          ENFORCE="$enforce" FILES_JSON="$files_json" python3 -c "import base64,os; exec(base64.b64decode('aW1wb3J0IGpzb24sIG9zLCBzeXMKCmRlZiBmZW5jZWQocDogc3RyKSAtPiBib29sOgogICAgcCA9IHAucmVwbGFjZSgiXFwiLCAiLyIpCiAgICBpZiBwLnN0YXJ0c3dpdGgoKCJkb2NzL2Fkci8iLCAiLmdpdGh1Yi8iLCAiaW5mcmEvIiwgImNyYXRlcy8iLCAiYXBwcy8iLCAicGFja2FnZXMvIiwgInNjcmlwdHMvIikpOgogICAgICAgIHJldHVybiBUcnVlCiAgICBpZiAiL21pZ3JhdGlvbnMvIiBpbiBwOgogICAgICAgIHJldHVybiBUcnVlCiAgICBpZiBwID09ICJzeWxwaHgudG9tbCIgb3IgcC5lbmRzd2l0aCgicGxhdGZvcm0uZGVwbG95bWVudC5wcm9maWxlLnRvbWwiKToKICAgICAgICByZXR1cm4gVHJ1ZQogICAgcmV0dXJuIEZhbHNlCgpkZWYgb3JkaW5hcnkocDogc3RyKSAtPiBib29sOgogICAgcCA9IHAucmVwbGFjZSgiXFwiLCAiLyIpCiAgICBpZiBmZW5jZWQocCk6CiAgICAgICAgcmV0dXJuIEZhbHNlCiAgICBpZiBwLnN0YXJ0c3dpdGgoImRvY3MvZXZpZGVuY2UvIik6CiAgICAgICAgcmV0dXJuIFRydWUKICAgIGlmIHAuc3RhcnRzd2l0aCgiZG9jcy8iKSBhbmQgcC5lbmRzd2l0aCgoIi5tZCIsICIuanNvbiIsICIudHh0IikpOgogICAgICAgIHJldHVybiBUcnVlCiAgICBpZiBwLnN0YXJ0c3dpdGgoImV2aWRlbmNlLyIpIGFuZCBwLmVuZHN3aXRoKCgiLm1kIiwgIi5qc29uIikpOgogICAgICAgIHJldHVybiBUcnVlCiAgICByZXR1cm4gRmFsc2UKCmZpbGVzID0gW2YuZ2V0KCJmaWxlbmFtZSIsICIiKSBmb3IgZiBpbiBqc29uLmxvYWRzKG9zLmVudmlyb25bIkZJTEVTX0pTT04iXSkgaWYgZi5nZXQoImZpbGVuYW1lIildCmlmIG5vdCBmaWxlczoKICAgIHByaW50KCJza2lwOiBlbXB0eSBmaWxlIGxpc3QiKQogICAgcmFpc2UgU3lzdGVtRXhpdCgwKQphbGxfb3JkaW5hcnkgPSBhbGwob3JkaW5hcnkoZikgZm9yIGYgaW4gZmlsZXMpCnByaW50KGYiZmlsZXM9e2xlbihmaWxlcyl9IG9yZGluYXJ5X2RvY3Nfb25seT17YWxsX29yZGluYXJ5fSIpCmZvciBmIGluIGZpbGVzWzo0MF06CiAgICBwcmludChmIiAgLSB7Zn0iKQppZiBub3QgYWxsX29yZGluYXJ5OgogICAgcHJpbnQoInBhc3M6IGNvbXBhdGliaWxpdHkgbGFuZSBhbGxvd2VkIikKICAgIHJhaXNlIFN5c3RlbUV4aXQoMCkKbXNnID0gKAogICAgIk9yZGluYXJ5IHJldmVyc2libGUgZG9jcy9ldmlkZW5jZS1vbmx5IGNoYW5nZSBkZXRlY3RlZCBvbiBhIFB1bGwgUmVxdWVzdC4gIgogICAgIlVzZSBkaXJlY3QtdHJ1bmsgdW5kZXIgY2xhaW0vcnVuIGhhcmQgZ2F0ZXMgIgogICAgIih3YWl0IGVuYWN0LXdvcmstbGluZWFnZS9wYXNzIFNVQ0NFU1MsIHRoZW4gRkYgcHVzaCB0byBtYWluKS4gIgogICAgZiJGaWxlczogeycsICcuam9pbihmaWxlcyl9IgopCmlmIG9zLmVudmlyb24uZ2V0KCJFTkZPUkNFIikgIT0gInRydWUiOgogICAgcHJpbnQoZiI6Om5vdGljZTo6e21zZ30iKQogICAgcmFpc2UgU3lzdGVtRXhpdCgwKQpwcmludChmIjo6ZXJyb3I6Onttc2d9IikKcmFpc2UgU3lzdGVtRXhpdCgxKQo=').decode())"
