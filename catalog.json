@@ -169,7 +169,7 @@
       "name": "delivery-standard",
       "description": "Shipped-state proof across source landing, artifacts, deployment, rollback, and production readback. Use when delivering a change or deciding whether it is truly released or live. Do not use when only local implementation is in scope.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:aceee9d21d87be387da07abd4e2bca20f92f08817b086669ef3633547604ff3a"
+      "packageDigest": "sha256:cb5e5c5305851b6f1e52f0bface78ef1a8f120c709d86914877807da4d037ac3"
     },
     {
       "name": "dependency-version-selection",
