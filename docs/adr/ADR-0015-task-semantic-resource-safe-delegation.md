@@ -1,0 +1,71 @@
+---
+status: accepted
+date: 2026-07-26
+owners:
+  - SylphxAI
+issue: https://github.com/SylphxAI/skills/issues/48
+---
+
+# ADR-0015: Select delegation from task semantics and positive net value
+
+## Context
+
+Agent delegation can reduce latency and improve independent coverage, but a
+role-oriented “fan out whenever possible” instruction also makes atomic work
+look delegable. Reading a few files, running one command, or checking one
+endpoint can recursively become explorer, validator, and reviewer tasks. Each
+child may repeat the same decomposition because agents do not reliably know
+their global position in a delegation tree. The result consumes CPU, memory,
+context, supervision, and integration capacity while slowing the actual
+critical path.
+
+A fixed recursion depth or global agent quota is the wrong control. It assumes
+a central orchestrator and rejects cases where a child legitimately discovers a
+new independent, complex lane. It also says nothing about whether the first
+delegation was valuable.
+
+## Decision
+
+1. `autonomous-execution-standard` owns one local, task-semantic delegation
+   predicate. A lane is eligible only when it is materially complex, bounded,
+   independently useful, evidence-bound, collision-safe, capability-matched,
+   and expected to improve total verified throughput after startup, compute,
+   coordination, supervision, result-reading, and integration costs.
+2. Atomic observations and tightly coupled immediate work stay local. Examples
+   include one or a few file reads, one command, one endpoint check, a literal
+   lookup, a short answer, and a narrow step whose result is immediately needed
+   by the current agent.
+3. A bounded child task is presumptively an execution leaf. A child may delegate
+   only after discovering a new lane that independently passes the same full
+   predicate. Child status neither forbids nor authorizes delegation.
+4. Free slots and role names are not reasons to launch. “More confidence” alone
+   is not an independent outcome. The feasible launch set, rather than each
+   isolated lane, must have positive net value.
+5. Host resource pressure, active-child load, integration backlog, collision
+   risk, WIP, quota, and downstream capacity are part of eligibility. Under
+   pressure, agents drain or integrate work and continue safe local actions
+   before reconsidering fan-out.
+6. The always-on constitution carries the compact floor.
+   `agent-first-development-standard` consumes the predicate when coordinating
+   work that has already qualified.
+7. Repository contract cases cover positive and negative decisions. They prove
+   the instruction has a deterministic non-vacuous interpretation; they do not
+   claim runtime enforcement or observed agent behavior.
+
+## Consequences
+
+- Delegation remains available for genuinely valuable parallel research,
+  implementation, validation, and remote monitoring.
+- Recursive explosion is prevented by a rule every agent can apply locally,
+  without global-depth knowledge.
+- Small tasks avoid startup and integration overhead.
+- There is no universal agent count, recursion ban, resident orchestrator, or
+  new service.
+- Runtime behavior still requires observation; passing prose-contract tests is
+  not evidence that a host respected the resource envelope.
+
+## Verification
+
+- `tests/delegation-policy.test.mjs`
+- `tests/fixtures/delegation-policy-cases.json`
+- `npm test`

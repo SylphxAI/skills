@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Use this standard when the task benefits from high autonomy, parallel work,
-deep research, latency hiding, subagents, self-review, or one-shot deep improvement
-execution.
+Use this standard when a non-trivial task benefits from high autonomy,
+work-conserving scheduling, latency hiding, materially useful parallel work,
+self-review, or one-shot deep improvement execution.
 
 The goal is to use agent advantages: no-human handoff latency in the normal
 path, parallel exploration, background execution, fast synthesis, and relentless
@@ -80,9 +80,11 @@ Posture And Delegation"; where no record exists yet, they are taken from the
 request or prior direction and re-confirmed when materially ambiguous.)
 Agents own means: execution,
 architecture, method, quality, and the review loop itself. Adversarial reviews are
-performed by separate agent contexts, not by the principal — the principal
-states parameters once instead of reviewing outcomes one by one. Four rules
-make the split operational:
+owned by agents, not delegated back to the principal. Ordinary work uses a
+bounded local self-review; a separate reviewer context is eligible only when
+its independent-method benefit passes the same delegation predicate and current
+resource envelope. The principal states parameters once instead of reviewing
+outcomes one by one. Four rules make the split operational:
 
 - **Requests are evidence of intent, not specifications.** Examples in a
   request are samples of an underlying class. Reconstruct the intent and the
@@ -101,8 +103,9 @@ make the split operational:
   known-inferior instruction without surfacing the alternative is a failure
   equal to executing it wrong.
 - **Principal-blocking is a failure mode.** The default loop is agent-decide,
-  agent-review in a separate adversarial context, evidence-first report. Escalation
-  to the principal is by exception: a materiality threshold from the
+  proportionate self-review, evidence-first report; use a separate adversarial
+  context only when it independently qualifies under the delegation predicate.
+  Escalation to the principal is by exception: a materiality threshold from the
   delegation envelope (defined in the risk-posture record —
   [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/commercial-decision-standard/references/full-standard.md)
   "Risk Posture And Delegation"; where no record exists, use the existing
@@ -135,26 +138,47 @@ resulting action-observation trace.
   actions.
 
 Building the graph includes a **delegation opportunity scan**. The scan is
-mandatory for non-trivial work; fan-out is conditional. A track is a candidate
-when it has a bounded outcome, can proceed without hidden sibling state, has an
-evidence contract, and is expected to improve latency, coverage, or independent
-judgment more than it costs to coordinate and integrate. When a candidate and
-runtime capacity exist, launch it as soon as its boundary is clear instead of
-waiting for the parent to finish broad analysis first. Capacity is an aggregate
-launch envelope, not a free-slot boolean: account for the parent and active
-children, WIP limits, integration backlog, downstream quotas, and the work that
-must remain on the critical path. A child must also satisfy the track's required
-capabilities; an idle but unfit agent is not usable capacity. Under saturation
-or integration backpressure, stop new fan-out, integrate or advance the next
-safe local action, and re-run the scan when capacity, capability, or evidence
-changes. Keep the next integration-critical action moving locally while
-delegated tracks run.
+mandatory for non-trivial work; fan-out is conditional. Judge the current
+subproblem from its semantic work type and material complexity, not from an
+agent's apparent depth in a session tree, a global counter, role labels, free
+slots, or a desire to look thorough. No central orchestrator or agent needs to
+know the whole delegation tree.
 
-Do not create a subagent quota or performative fan-out. A compact serial task,
-a tightly coupled immediate edit, an unresolved source-of-truth decision, or a
-high-collision write set may correctly produce zero delegated tracks. The
-reason not to delegate must come from the execution graph, not habit or a
-default assumption that the parent should do everything itself.
+A lane is delegable only when all of these are true:
+
+- its outcome is bounded, independently useful, and materially complex;
+- it can proceed without hidden sibling state and has a clear evidence and
+  integration contract;
+- an eligible agent has a material latency, specialist-quality, coverage, or
+  genuinely independent-method advantage; and
+- that advantage exceeds startup, compute, memory, coordination, collision,
+  supervision, result-reading, and integration cost for the feasible launch
+  set—not merely for the lane in isolation.
+
+Atomic operations stay local: reading one or a few files, running one command,
+inspecting one endpoint, performing a literal lookup, writing a short answer,
+or advancing a tightly coupled immediate step. “More confidence” by itself does
+not qualify duplicate work. Batch adjacent small observations locally instead
+of assigning each one to a role-labelled child.
+
+A child that receives a bounded task should treat that task as an execution
+leaf by default. It may delegate only after discovering a new materially
+complex, bounded, independently useful lane that passes the same full predicate;
+being a child neither forbids nor justifies further delegation. This local rule
+prevents recursive fan-out without relying on unavailable global-depth state.
+
+Capacity is an aggregate launch envelope, not a free-slot boolean: account for
+the current agent, active children, host CPU and memory, WIP limits, integration
+backlog, downstream quotas, and critical-path work. Resource pressure,
+interface lag, or integration backpressure makes new delegation ineligible even
+when an isolated lane looks useful. Stop new fan-out, integrate or advance the
+next safe local action, and re-run the scan only when relevant state changes.
+
+Do not create a fixed subagent quota, hard recursion ban, or performative
+fan-out. A compact serial task, tightly coupled edit, unresolved
+source-of-truth decision, high-collision write set, or already-sufficient local
+context should produce zero delegated tracks. The reason comes from the current
+work semantics and net benefit, not habit in either direction.
 
 Classify every approval gate:
 
@@ -254,9 +278,9 @@ becomes a global stop while an independent lane remains eligible. While the
 eligible frontier is non-empty:
 
 - advance the highest-ranked parent-local or integration-critical action;
-- launch every qualified independent subagent or background lane that fits the
-  remaining measured envelope, so parent progress and child launches may occur
-  at the same checkpoint;
+- launch the highest-value feasible subset of qualified independent subagent
+  or background lanes that improves total verified throughput; do not equate
+  every individually positive lane with a jointly useful launch set;
 - under integration backpressure, consume or integrate returned work before new
   fan-out while continuing any safe local or background action; and
 - record evidence-backed exclusions and re-entry triggers for qualified lanes
@@ -322,23 +346,27 @@ checkpoint or final status instead of emitting a second evidence report.
 
 ## Subagent Use
 
-Use subagents proactively when the current task, user instruction, tool policy,
-and runtime permit them. For non-trivial splittable work, the parent does not
-wait for the user to request delegation. Treat a capable subagent as a reasoning
-peer with bounded outcome ownership, not as a deterministic executor of the
-parent's private plan.
+Use subagents proactively only after the delegation predicate above passes.
+The current agent does not wait for the user to request a genuinely beneficial
+delegation, but autonomy is not permission to spend unbounded host resources.
+Treat a capable child as a reasoning peer with bounded outcome ownership, not
+as a deterministic executor of the parent's private plan.
 
-Good subagent tracks:
+Role names never make a lane delegable. Material examples include:
 
-- `explorer`: map code, contracts, docs, current state, and likely impact.
-- `researcher`: inspect official docs, specs, examples, benchmarks, and
-  competing approaches.
-- `implementer`: make a bounded change in a disjoint write set.
-- `validator`: run checks, inspect failures, reproduce bugs, and verify
-  behavior.
-- `reviewer`: critique architecture, correctness, security, naming, tests,
-  performance, operability, and maintainability.
-- `release_watcher`: monitor CI/deploy, inspect logs, and prepare smoke checks.
+- a repository-scale contract and dependency audit that is independent of the
+  implementation write set;
+- research spanning several authoritative sources whose synthesis can proceed
+  independently of local code work;
+- a bounded implementation in a disjoint package with its own executable
+  acceptance contract;
+- faithful reproduction or validation requiring a separate harness, runtime,
+  or genuinely independent method; and
+- monitoring a long-running remote job while the current agent continues useful
+  local work.
+
+Reading a couple of files, running a narrow test, checking one status, or
+restating the same analysis from another context are not material tracks.
 
 ### Outcome-owned delegation contract
 
@@ -398,26 +426,13 @@ for new threads.
 
 ### Delegation policy verification boundary
 
-The repository's versioned delegation eval traces provide a deterministic,
-`spec-only` replay of this policy. Each admitted evaluator must cover aggregate
-capacity and integration backpressure, capability fit, collision control,
-changing evidence, bounded child replanning, and the exact-eval-segment rule.
-The separately versioned work-conserving execution evaluator composes the
-delegation v1 boundaries with scheduler checkpoints that can advance one parent
-action and a maximal feasible ordered set of child/background launches, reject
-both underfill and oversubscription, confine blockers to their declared
-dependency/collision cones, prefer integration under backpressure, and permit a
-`qualifiedWait` scheduler result only with complete exclusion and re-entry
-evidence. Admitted scenario and evaluator semantics are immutable;
-requalification may refresh observation digests only while the manifest
-identity and every predecessor output remain stable. Changed semantics require
-a successor fixture and evaluator.
-
-A synthetic trace proves only that the declared policy has a non-vacuous,
-machine-checked interpretation. It is not an observation of host scheduling,
-model behavior, child launches, or successful integration and it cannot become
-release or deployed-system behavior evidence. Those claims require runtime-captured
-observations bound to the parent brief, instruction/model/tool revisions,
+Repository contract cases exercise atomic local work, material independent
+lanes, child-leaf presumption, resource pressure, collisions, integration
+backpressure, and confidence-only duplication. They verify that this written
+policy has a non-vacuous deterministic interpretation; they do not prove that
+an agent runtime selected, launched, supervised, or integrated work correctly.
+Those behavior claims require runtime-captured observations bound to the parent
+brief, instruction/model/tool revisions,
 capacity state, child launch/return and replan events, integration result, and
 task outcome through the Specification Control Plane.
 
@@ -573,8 +588,9 @@ Minimum loop:
 
 Use a lightweight local self-check for ordinary work. When exact-candidate
 formal review is required, use `convergent-review` for perspective selection,
-repair, and closure. Use a separate-context adversarial reviewer subagent when
-available and permitted. For changes
+repair, and closure. Use a separate-context adversarial reviewer only when the
+risk-selected independent-review benefit passes the same delegation predicate
+and resources permit it. For changes
 touching public contracts, persistence, auth, billing, security, infrastructure,
 deploy/release behavior, cross-repo boundaries, migrations, high-risk
 concurrency, or agent/tool schemas, produce a durable review artifact: PR body

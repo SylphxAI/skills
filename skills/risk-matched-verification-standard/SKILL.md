@@ -1,8 +1,8 @@
 ---
-name: frontier-verification-standard
-description: "Evaluation gates, replay oracles, and canary backstops for nondeterministic systems. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, or time-dependent behavior. Use CI Admission for flaky-check attribution or quarantine; do not add frontier mechanisms to an ordinary deterministic code path."
+name: risk-matched-verification-standard
+description: "Select evaluation, replay, simulation, model, and canary evidence in proportion to the actual failure model and residual uncertainty. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, concurrent, or time-dependent behavior. Use CI Admission for flaky-check attribution or quarantine; do not add expensive verification machinery to an ordinary deterministic code path."
 ---
-# Frontier Verification Standard
+# Risk-Matched Verification Standard
 
 **Requirement:** apply this standard when the task matches its scope.
 

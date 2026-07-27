@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate a portable proof-bound multi-repository migration ledger.
+"""Validate a portable proof-bound architecture-convergence ledger.
 
 Structural mode checks state entry evidence. Changed-file mode also fails on
 unclassified migration changes, stale source/target proof, target artifact

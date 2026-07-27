@@ -1,0 +1,4 @@
+interface:
+  display_name: "Architecture Convergence"
+  short_description: "Deliver verified architecture convergence"
+  default_prompt: "Use $architecture-convergence to converge this codebase on its declared architecture and retire predecessor paths."

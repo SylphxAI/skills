@@ -31,13 +31,13 @@
       "name": "agent-first-development-standard",
       "description": "No-human parallel development packets, change attribution, collision scopes, and machine-verifiable acceptance. Use when defining or running multi-agent software delivery without a human review dependency. Do not use for a small local edit or live Work Graph operations.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:3df1d083ef88c4a5b8f8ed3f7e223e47b966efe9a1e0a8654d770c74f2bd2614"
+      "packageDigest": "sha256:baa7fea9fd27a327778cf3b6aec84e3189f3473f593e7fa3111de37209d8c496"
     },
     {
       "name": "agent-native-standard",
       "description": "Apply agent-native product constraints for queryable typed state, schema-derived tools, recoverable workflows, delegation, durable context, and model/tool/agent-run traces with protected operator diagnostics. Use when designing a product, API, or workflow that agents must operate directly and recoverably. Do not use for ordinary automation, generic service observability, or product analytics without an agent-facing contract.",
       "path": "skills/agent-native-standard/SKILL.md",
-      "packageDigest": "sha256:025eec0f08b51382267cb3741fb82e6e98682f88735fa3699eb25f881a3bc3ee"
+      "packageDigest": "sha256:fb0e26de0efb36a6bb7b239da67521cd63cad6bcaab15d8ba97442bcc8c81a27"
     },
     {
       "name": "agent-planning-system-review",
@@ -55,7 +55,7 @@
       "name": "ai-product-risk-review",
       "description": "Design or audit one AI product behavior and launch contract covering the user job, AI necessity, model role, autonomy and action rights, data use, affected parties, failure and abuse, UX disclosure, fallback, cost and latency, support, evidence dependencies, and release boundaries. Use when an assistant, copilot, generator, classifier, recommender, or agent needs a product-risk dossier. Do not use for eval implementation, adversarial red teaming, security threat modeling, provider selection, a whole-product blueprint, or incident response.",
       "path": "skills/ai-product-risk-review/SKILL.md",
-      "packageDigest": "sha256:a10e453a1960caf5d106be82df880ab9e547fa265d60769e2220083cbd7e05e0"
+      "packageDigest": "sha256:f3a8c47e7af2bc3017a2e8002348a76d548f945618019579f3cc81f93a3528a3"
     },
     {
       "name": "app-design-blueprint",
@@ -64,10 +64,16 @@
       "packageDigest": "sha256:ebf3b0eeb98a41fb386562cc118902a61887a5690ce8b3ae031bd38ad5319411"
     },
     {
+      "name": "architecture-convergence",
+      "description": "Deliver a substantial code-architecture refactor or migration to one declared target across one or many repositories. Use for whole-repository Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or architecture cutovers that require real code movement, semantic proof, authority change, and predecessor retirement. Do not use for a small local refactor, a documentation-only architecture review, or customer-data migration.",
+      "path": "skills/architecture-convergence/SKILL.md",
+      "packageDigest": "sha256:d2b049b89bc6c1df716a463179df0d019b92fec755f4f826c725637051602aea"
+    },
+    {
       "name": "autonomous-execution-standard",
-      "description": "Autonomous scheduling: critical-path focus, parallelism budgets, delegated outcomes, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer or edit.",
+      "description": "Autonomous scheduling: critical-path focus, work-conserving progress, complexity-gated resource-safe delegation, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:5a4501abdb990f55a463652d5137d1f741bf00a04af8ae7541271885090ace4b"
+      "packageDigest": "sha256:310b2a874fa2ed4e71ca13b095cb84f79b3aad5c2a3091bce7e081db9dadb552"
     },
     {
       "name": "board-metrics-operating-review",
@@ -85,7 +91,7 @@
       "name": "ci-admission-standard",
       "description": "CI admission tiers, gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including custom lints and architecture tests. Do not use for debugging one unrelated test failure.",
       "path": "skills/ci-admission-standard/SKILL.md",
-      "packageDigest": "sha256:660d645bc7628e2aae5a98f16acd7972ff51d7084082ca89b0bcc9b2f1051a88"
+      "packageDigest": "sha256:f58db1cdfd4491094f10ca83c868d1b5b8e8f49be17a22b0eecc28a96348f959"
     },
     {
       "name": "ci-runner-capacity-standard",
@@ -113,9 +119,9 @@
     },
     {
       "name": "customer-data-migration-review",
-      "description": "Design or audit one customer-facing data import, onboarding migration, tenant move, system replacement, or bulk cutover from source discovery through mapping, transformation, validation, rehearsal, execution, reconciliation, rollback/forward-fix, customer communication, and acceptance. Use when the primary artifact is a repeatable migration contract for customer data and service continuity. Use multi-repository-migration for a multi-repository code rewrite, product-recovery-contract-review for same-product backup and restore, and customer-success-operations-review for the ongoing post-migration value program.",
+      "description": "Design or audit one customer-facing data import, onboarding migration, tenant move, system replacement, or bulk cutover from source discovery through mapping, transformation, validation, rehearsal, execution, reconciliation, rollback/forward-fix, customer communication, and acceptance. Use when the primary artifact is a repeatable migration contract for customer data and service continuity. Use architecture-convergence for a substantial one-or-many-repository code-architecture rewrite, product-recovery-contract-review for same-product backup and restore, and customer-success-operations-review for the ongoing post-migration value program.",
       "path": "skills/customer-data-migration-review/SKILL.md",
-      "packageDigest": "sha256:a82e7e7b3aa552cc0175970544647c480815545f0306226096b1bc3a80a2c199"
+      "packageDigest": "sha256:d3760616205bfa85693081760b0863a2ce7fb3143947986ac510e282e8f8e626"
     },
     {
       "name": "customer-success-operations-review",
@@ -163,7 +169,7 @@
       "name": "decision-quality-standard",
       "description": "Select among materially distinct technical, product, commercial, or operating options and record the commitment, trade-offs, reversibility, and decision evidence. Use after credible options are formed and one durable choice is required. Do not use for unknown-cause diagnosis, exact-candidate pass/fail review, trivial reversible edits, or execution of an already selected option.",
       "path": "skills/decision-quality-standard/SKILL.md",
-      "packageDigest": "sha256:b664fbe4a06f22fcd0b8bcb3c421ded279efc8201e1d10fa5f6dc5033510d47f"
+      "packageDigest": "sha256:33e316d6aa970fbe3b463fdfdd6405f93a7ccf05b7f7c55fe976a1630dc7006d"
     },
     {
       "name": "delivery-standard",
@@ -217,7 +223,7 @@
       "name": "engineering-standard",
       "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, functional cores, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:4580032a69482e4e157d03e6925ddb8e91e8cdd09c44a7d8148d9411d3b37296"
+      "packageDigest": "sha256:ec81dbaa71b404b486d100d93c52aa439e6eebc91f35dffac0c2ac94ed51bd0b"
     },
     {
       "name": "enterprise-access-governance-review",
@@ -245,21 +251,15 @@
     },
     {
       "name": "evidence-and-claims-standard",
-      "description": "Adjudicate a material or disputed factual, status, completion, causality, or delivery claim against current primary evidence. Use when deciding whether work is actually done, a check or stated cause is proven, or source, merge, release, deploy, and live behavior are established. Do not load merely because routine implementation reporting should remain truthful.",
+      "description": "Adjudicate a material or disputed factual, comparative, SOTA/frontier, status, completion, causality, or delivery claim against current primary evidence. Use when deciding whether work is actually done, a claimed improvement or leading position is supported, a stated cause is proven, or source, merge, release, deploy, and live behavior are established. Do not load merely because routine implementation reporting should remain truthful.",
       "path": "skills/evidence-and-claims-standard/SKILL.md",
-      "packageDigest": "sha256:11160ef55b8882e7ff888bf80632cf63d15eb7122b6368fbd9560a1915cc7700"
+      "packageDigest": "sha256:5f51cec265c23800419353ff0be50e1036c5d7cf5712906c994dc9d9f9cb9c45"
     },
     {
       "name": "evidence-synthesis",
       "description": "Conduct a reproducible cross-domain review of multiple sources and produce an Evidence Synthesis with a protocol, search and screening record, evidence table, quality and applicability assessment, conflicts or heterogeneity, calibrated certainty, and claim boundaries. Use for systematic, rapid, scoping, or structured evidence reviews across research, policy, science, engineering, or operations. Do not use for market or competitor recommendations, summarizing one supplied source, root-cause hypothesis analysis, adjudicating one disputed claim, or collecting references without synthesis.",
       "path": "skills/evidence-synthesis/SKILL.md",
       "packageDigest": "sha256:78f63575f706720e559b5d5ff1cd9c284ea42cf611fd5eda5ba50442e64192e1"
-    },
-    {
-      "name": "frontier-verification-standard",
-      "description": "Evaluation gates, replay oracles, and canary backstops for nondeterministic systems. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, or time-dependent behavior. Use CI Admission for flaky-check attribution or quarantine; do not add frontier mechanisms to an ordinary deterministic code path.",
-      "path": "skills/frontier-verification-standard/SKILL.md",
-      "packageDigest": "sha256:8b1247fb66f0dd129119d4f76a426f2a0db662494ed8e142dd4c451151dd79da"
     },
     {
       "name": "game-design-blueprint",
@@ -337,13 +337,7 @@
       "name": "marketplace-trust-operations-review",
       "description": "Design or audit a two-sided marketplace trust operating system across participant and listing policy, content or commerce risk, moderation and fraud-review queues, temporary controls, disputes, evidence, enforcement ladders, notices, appeals, restoration, policy/model learning, fairness, trust economics, and marketplace health. Use when the primary artifact is a Marketplace Trust Operating Contract joining those decisions across buyers and sellers, creators, developers, or partners. Do not use for payout-ledger mechanics, generic product abuse outside a marketplace, seller performance coaching, or a general search/recommendation ranking algorithm alone.",
       "path": "skills/marketplace-trust-operations-review/SKILL.md",
-      "packageDigest": "sha256:e99bd8a7af76bac02d30c6a6b832135a28a6ce0d224b96cce2993eeb4d887c41"
-    },
-    {
-      "name": "multi-repository-migration",
-      "description": "Plan, execute, and audit a substantial software or architecture migration in one or many repositories. Use for Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or required architecture cutovers that need independently verifiable slices. Inventory behaviors/contracts/surfaces, refactor real code, prove exact-candidate semantics, choose lifecycle-appropriate cutover, retire legacy structure, and invalidate stale proof.",
-      "path": "skills/multi-repository-migration/SKILL.md",
-      "packageDigest": "sha256:f0163eb0ca465c4f2bba376426972d833c43f681260c55fc074fce1d0fe62012"
+      "packageDigest": "sha256:687db158930829e2f36c7f6d44f3f27f6c2dfb998143c49d990bb28fc46c5cbf"
     },
     {
       "name": "notification-strategy-review",
@@ -373,7 +367,7 @@
       "name": "parallel-change-integration-standard",
       "description": "Parallel agent change integration with compare-and-swap landing, bounded duplicate attempts, verification watermarks, and verified-only promotion. Use when candidate generation can outpace shared verification or deployment capacity. Do not use for ordinary low-contention edits.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
-      "packageDigest": "sha256:794b8d82ad4dbf0031c0794530ff193e2208431ee76ac0153a7f1bbb71b5cde3"
+      "packageDigest": "sha256:e5c6495a208f90e95483be4acfb9d50ed65c543e1ae3e8191d49889e47c0e3a2"
     },
     {
       "name": "payment-platform-readiness",
@@ -397,7 +391,7 @@
       "name": "product-abuse-risk-review",
       "description": "Design or audit a product-level abuse and fraud control system across identities, automation, promotions, referrals, trials, credits, purchases, refunds, content, inventory, scraping, collusion, account farming, evasion, and support exploitation. Use when the primary artifact is an adaptive abuse threat, decision, control, appeal, economics, and evidence contract spanning a product surface. Use account-recovery-review for legitimate recovery, developer-quota-credit-abuse-review for developer quota and credit policy, marketplace-trust-operations-review for marketplace participant policy/enforcement, and payment-platform-readiness for payment and ledger correctness.",
       "path": "skills/product-abuse-risk-review/SKILL.md",
-      "packageDigest": "sha256:6ecb63ed253148f3f0f5f83b36f440d75dbdda03340856ca20b8fd2ae38ff533"
+      "packageDigest": "sha256:cf67cf2adf5da1d80e852a9c5248d39a1b2ca7f99daaa504a569dff721d2c638"
     },
     {
       "name": "product-analytics-instrumentation-review",
@@ -500,6 +494,12 @@
       "description": "Design or audit platform-specific public rating and review request eligibility, native request surfaces, cooldowns, policy-required audience exclusions, no-display behavior, and request-state evidence for apps, games, web products, and storefronts. Use when the requested artifact is an authentic public review solicitation policy or request state machine, including an audit of sentiment gating, star steering, review rewards, suppression, or retaliation. For private feedback intake, review ingestion or response, evidence clustering, support routing, product action, or close-loop learning, use product-feedback-learning-loop; compose both only when the request asks for both artifacts.",
       "path": "skills/review-solicitation-policy/SKILL.md",
       "packageDigest": "sha256:500855bf54a02e11b118dc1aefbe9ef5a058706ea645868be0d851b7aecb8dad"
+    },
+    {
+      "name": "risk-matched-verification-standard",
+      "description": "Select evaluation, replay, simulation, model, and canary evidence in proportion to the actual failure model and residual uncertainty. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, concurrent, or time-dependent behavior. Use CI Admission for flaky-check attribution or quarantine; do not add expensive verification machinery to an ordinary deterministic code path.",
+      "path": "skills/risk-matched-verification-standard/SKILL.md",
+      "packageDigest": "sha256:37f4c66c84e184b68425c67966d6a82b98290dfebc740d26c032a256e5078285"
     },
     {
       "name": "saas-subscription-pricing",

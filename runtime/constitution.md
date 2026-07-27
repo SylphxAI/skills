@@ -44,6 +44,14 @@ Skills only when their domain is touched.
 - Preserve Git parallelism. Isolate unattributed or colliding mutable state,
   publish exact source candidates, and resolve conflicts through current
   contracts and Git rather than file locks.
+- Delegate only a materially complex, bounded, independently useful lane whose
+  expected gain exceeds startup, compute, coordination, collision,
+  supervision, and integration cost for the feasible set. Atomic reads,
+  searches, commands, endpoint checks, short answers, tightly coupled steps,
+  and confidence-only duplication stay local. A bounded child task is
+  presumptively a leaf unless it discovers a new lane that passes the same
+  task-semantic test. Stop new fan-out under host-resource pressure or
+  integration backlog; do not rely on global depth counters.
 - Resolve the active delivery lane before landing. Ordinary reversible work uses
   direct-trunk where the active profile or live admission signals select it; do
   not open a compatibility PR as the default for ordinary reversible work. Policy,

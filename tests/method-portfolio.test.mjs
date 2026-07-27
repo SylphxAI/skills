@@ -42,7 +42,7 @@ const COMPOSABLE_STANDARDS = [
   'engineering-standard',
   'enterprise-control-plane-standard',
   'enterprise-profile-standard',
-  'frontier-verification-standard',
+  'risk-matched-verification-standard',
   'incident-standard',
   'instruction-evolution-standard',
   'parallel-change-integration-standard',
@@ -202,17 +202,21 @@ test('software distribution routing owns CLI and app channels without absorbing 
 
 test('architecture routing cases keep one owner and reject docs-only terminals', () => {
   const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('architecture-'));
-  assert.ok(cases.length >= 3);
+  assert.ok(cases.length >= 4);
   const positive = cases.find(({ id }) => id === 'architecture-migration-positive');
-  assert.deepEqual(positive.expectedSkills, ['engineering-standard']);
+  assert.ok(positive.expectedSkills.includes('architecture-convergence'));
+  assert.ok(positive.expectedSkills.includes('engineering-standard'));
   const multi = cases.find(({ id }) => id === 'architecture-migration-multi-repo');
-  assert.ok(multi.expectedSkills.includes('multi-repository-migration'));
+  assert.ok(multi.expectedSkills.includes('architecture-convergence'));
   assert.ok(multi.expectedSkills.includes('engineering-standard'));
+  const local = cases.find(({ id }) => id === 'architecture-neighbour-local-refactor');
+  assert.deepEqual(local.expectedSkills, ['engineering-standard']);
+  assert.equal(local.nearNeighbourOf, 'architecture-convergence');
   const docsOnly = cases.find(({ id }) => id === 'architecture-neighbour-docs-only');
   assert.ok(!docsOnly.expectedSkills.includes('engineering-standard'));
-  assert.ok(!docsOnly.expectedSkills.includes('multi-repository-migration'));
+  assert.ok(!docsOnly.expectedSkills.includes('architecture-convergence'));
   for (const fixture of cases) {
-    assert.doesNotMatch(fixture.prompt, /engineering-standard|multi-repository-migration/i);
+    assert.doesNotMatch(fixture.prompt, /engineering-standard|architecture-convergence/i);
   }
   const architecture = readFileSync(
     new URL('../skills/engineering-standard/references/capability-first-architecture.md', import.meta.url),
@@ -220,6 +224,29 @@ test('architecture routing cases keep one owner and reject docs-only terminals',
   );
   assert.match(architecture, /Migration terminal/i);
   assert.match(architecture, /docs-only|Metadata-only/i);
+});
+
+test('package names separate architecture convergence, risk-matched proof, and comparative claims', () => {
+  const convergence = skill('architecture-convergence');
+  const verification = skill('risk-matched-verification-standard');
+  const claims = skill('evidence-and-claims-standard');
+  const claimMethod = readFileSync(
+    new URL('../skills/evidence-and-claims-standard/references/claim-evidence-method.md', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(convergence, /one or many repositories/i);
+  assert.match(convergence, /real code movement/i);
+  assert.match(convergence, /predecessor retirement/i);
+  assert.match(verification, /failure model and residual uncertainty/i);
+  assert.match(verification, /do not add expensive verification machinery/i);
+  assert.match(claims, /SOTA\/frontier/i);
+  assert.match(claimMethod, /Comparative, SOTA, and frontier claims/);
+  assert.match(claimMethod, /comparison set/i);
+  assert.match(claimMethod, /Never infer a global\s+rank/i);
+
+  assert.throws(() => skill('multi-repository-migration'));
+  assert.throws(() => skill('frontier-verification-standard'));
 });
 
 test('engineering defect repair requires faithful red-to-green causal evidence without universal unit-test ceremony', () => {

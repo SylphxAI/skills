@@ -12,7 +12,7 @@ Composes with:
   source candidate whose proof may be coalesced only before selection.
 - [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-runner-capacity-standard/references/full-standard.md) for CI
   compute ownership and queue diagnosis.
-- [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
+- [`risk-matched-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/risk-matched-verification-standard/references/full-standard.md)
   for reviewer-confidence backstops.
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for production verification.
 - [`parallel-change-integration-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/parallel-change-integration-standard/references/full-standard.md)
@@ -300,7 +300,7 @@ deadlock:
 ### Reviewer-confidence layer (mandate by surface)
 
 Tests prove code runs; these prove it is correct enough to merge unseen.
-[`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/frontier-verification-standard/references/full-standard.md)
+[`risk-matched-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/risk-matched-verification-standard/references/full-standard.md)
 owns property/model tests, deterministic simulation testing, spec/eval
 gates, and automated canary analysis — selection rules, required fields,
 and adoption contracts, cited not restated. What it does not cover, mandated
