@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 107,
+  "count": 109,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -262,6 +262,12 @@
       "packageDigest": "sha256:78f63575f706720e559b5d5ff1cd9c284ea42cf611fd5eda5ba50442e64192e1"
     },
     {
+      "name": "frontend-performance-remediation",
+      "description": "Reproduce, diagnose, repair, and verify a concrete web or app frontend runtime performance problem and produce a Frontend Runtime Performance Remediation Record. Use when the primary job is jank, long-task latency, animation or scrolling cost, offscreen work, memory or listener growth, idle CPU/GPU use, or degradation after repeated navigation. Do not use for general interface design, backend throughput or load testing, product-wide observability design, or speculative optimization without a reproducible frontend symptom or budget.",
+      "path": "skills/frontend-performance-remediation/SKILL.md",
+      "packageDigest": "sha256:ec6590487f9de68bcdb59c588c805a9956ffd959a88f339849d65c8b24c55533"
+    },
+    {
       "name": "game-design-blueprint",
       "description": "Design or critically review a complete, agent-first game as one coherent player experience: player promise, verbs and loops, challenge, progression and quests, content, economy and monetization, retention, social play and virality, first-time experience, game feel, evergreen late-entry fairness, platforms, accessibility, localization, performance, live operations, automation, and validation. Use for new games, whole-game redesigns, game design documents, persistent or seasonal world strategy, or audits where several gameplay and commercial systems must work together. Use a specialist when one economy, ad system, return loop, notification policy, referral, campaign, soft launch, payment, refund, review, analytics, or release artifact is the primary job.",
       "path": "skills/game-design-blueprint/SKILL.md",
@@ -452,6 +458,12 @@
       "description": "Design or audit machine-readable provenance, lineage, derivation, attribution, and chain-of-custody across data, artifacts, models, agent actions, decisions, builds, or transformations, producing a Provenance Contract. Use when a system must answer what was used, generated, changed, by whom or what, under which process, and how the result can be traced or reproduced. Do not use merely to judge whether one claim is true, summarize Git history, or coordinate live work.",
       "path": "skills/provenance-system-design/SKILL.md",
       "packageDigest": "sha256:2dd87bc2ab2c9a7f52258962983f555c154b513b7ad48753f8aecd5ca6c1d380"
+    },
+    {
+      "name": "reference-originality-review",
+      "description": "Review a current interface, website, application, campaign asset, or other designed artifact against supplied or declared references and produce an evidence-backed Reference Originality Review. Use when the job is to assess distinctive similarity in structure, wording, branding, imagery, motion, or historical evolution and identify the smallest redesign needed. Do not use for a legal infringement verdict, authorized extraction of the subject's own design system, general interface critique or implementation, or rights and provenance QA of an asset pack.",
+      "path": "skills/reference-originality-review/SKILL.md",
+      "packageDigest": "sha256:9c2f472f0dabc1930131c7eaf3674323b800423f1eb1b15c9f72ada76d236a2c"
     },
     {
       "name": "referral-loop-review",

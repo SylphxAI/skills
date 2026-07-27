@@ -17,10 +17,12 @@ const METHOD_PACKAGES = [
   'dependency-version-selection',
   'design-space-exploration',
   'evidence-synthesis',
+  'frontend-performance-remediation',
   'optimization-objective-review',
   'operational-observability-review',
   'probabilistic-forecasting',
   'provenance-system-design',
+  'reference-originality-review',
   'requirements-engineering',
   'security-threat-modeling',
   'semantic-taxonomy-design',
@@ -197,6 +199,48 @@ test('software distribution routing owns CLI and app channels without absorbing 
       && !expectedSkills.includes('software-distribution-readiness')));
   for (const fixture of cases) {
     assert.doesNotMatch(fixture.prompt, /software-distribution-readiness/i);
+  }
+});
+
+test('reference originality routing separates comparison evidence from extraction, implementation, and legal conclusions', () => {
+  const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('reference-originality-'));
+  assert.ok(cases.length >= 5);
+  assert.ok(cases.some(({ kind, expectedSkills }) =>
+    kind === 'positive' && expectedSkills.includes('reference-originality-review')));
+  assert.ok(cases.some(({ kind, expectedSkills, tags = [] }) =>
+    kind === 'positive'
+      && tags.includes('multilingual')
+      && expectedSkills.includes('reference-originality-review')));
+  assert.ok(cases.some(({ kind, expectedSkills }) =>
+    kind === 'compound'
+      && expectedSkills.includes('reference-originality-review')
+      && expectedSkills.includes('product-asset-production')));
+  assert.ok(cases.some(({ nearNeighbourOf, expectedSkills }) =>
+    nearNeighbourOf === 'reference-originality-review'
+      && !expectedSkills.includes('reference-originality-review')));
+  for (const fixture of cases) {
+    assert.doesNotMatch(fixture.prompt, /reference-originality-review/i);
+  }
+});
+
+test('frontend performance routing requires a runtime remediation job and preserves adjacent owners', () => {
+  const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('frontend-performance-'));
+  assert.ok(cases.length >= 5);
+  assert.ok(cases.some(({ kind, expectedSkills }) =>
+    kind === 'positive' && expectedSkills.includes('frontend-performance-remediation')));
+  assert.ok(cases.some(({ kind, expectedSkills, tags = [] }) =>
+    kind === 'positive'
+      && tags.includes('multilingual')
+      && expectedSkills.includes('frontend-performance-remediation')));
+  assert.ok(cases.some(({ kind, expectedSkills }) =>
+    kind === 'compound'
+      && expectedSkills.includes('frontend-performance-remediation')
+      && expectedSkills.includes('engineering-standard')));
+  assert.ok(cases.some(({ nearNeighbourOf, expectedSkills }) =>
+    nearNeighbourOf === 'frontend-performance-remediation'
+      && !expectedSkills.includes('frontend-performance-remediation')));
+  for (const fixture of cases) {
+    assert.doesNotMatch(fixture.prompt, /frontend-performance-remediation/i);
   }
 });
 

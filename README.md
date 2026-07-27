@@ -3,7 +3,7 @@
 [![CI](https://github.com/SylphxAI/skills/actions/workflows/check.yml/badge.svg)](https://github.com/SylphxAI/skills/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](./package.json)
-[![Agent Skills](https://img.shields.io/badge/agent%20skills-107%20packages-111827.svg)](./catalog.json)
+[![Agent Skills](https://img.shields.io/badge/agent%20skills-109%20packages-111827.svg)](./catalog.json)
 
 **Working methods for AI agents — installed by the agent that needs them.**
 
@@ -147,7 +147,7 @@ token. See [`INSTALL.md`](./INSTALL.md) and
 
 ## What you get
 
-**107 packages** in four families (see [`catalog.json`](./catalog.json) for the
+**109 packages** in four families (see [`catalog.json`](./catalog.json) for the
 machine index and [`skills/`](./skills/) for sources):
 
 ### Standards & profiles
@@ -164,9 +164,10 @@ artifacts: critical analysis, design-space exploration, structured
 deliberation, evidence synthesis, requirements, user research, decision quality
 and optimization, probabilistic forecasting, causal inference, system dynamics,
 agent planning/context, semantic taxonomy, threat modeling, objective review,
-provenance, and finite review closure.
+provenance, reference originality, frontend performance remediation, and finite
+review closure.
 
-Examples: `critical-analysis` · `structured-deliberation` · `evidence-synthesis` · `requirements-engineering` · `security-threat-modeling`
+Examples: `critical-analysis` · `structured-deliberation` · `reference-originality-review` · `frontend-performance-remediation` · `security-threat-modeling`
 
 ### Product procedures
 
@@ -178,7 +179,7 @@ Examples: `payment-platform-readiness` · `privacy-data-lifecycle-review` · `sa
 ### Blueprints & craft
 
 Whole-product and craft surfaces: app/game/SaaS blueprints, interface craft,
-prompt architecture, multi-repository migration, skill authoring.
+prompt architecture, architecture convergence, skill authoring.
 
 Examples: `app-design-blueprint` · `saas-web-platform-blueprint` · `interface-craft` · `prompt-architecture` · `sylphx-platform-first`
 
