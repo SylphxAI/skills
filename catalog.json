@@ -97,7 +97,7 @@
       "name": "ci-runner-capacity-standard",
       "description": "Design or diagnose CI runner capacity, queue/pickup latency, execution profiles, merge-queue backpressure, inventory uncertainty, and critical-path isolation. Use when CI jobs wait, runners disappear, queues saturate, or capacity policy must change. Do not use for a candidate failure caused by product code.",
       "path": "skills/ci-runner-capacity-standard/SKILL.md",
-      "packageDigest": "sha256:34481f4e5925266d056dc661026ebdae8d1f94a05abcc0b472724c0bd0f7ee08"
+      "packageDigest": "sha256:af6d3b78fb54ffe99984a266bf8779b47cd2a0bf8bedeb93a138afb8204d8dab"
     },
     {
       "name": "commercial-decision-standard",

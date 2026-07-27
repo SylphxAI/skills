@@ -28,6 +28,10 @@ function isOwnedRunnerProfile(value) {
     .map((label) => unquote(label).trim().toLowerCase());
   if (!labels) return false;
 
+  if (labels.length === 2 && labels[0] === 'self-hosted' && /^sylphx-linux-[a-z0-9-]+$/.test(labels[1])) {
+    return true;
+  }
+
   return labels.length === 4
     && labels[0] === 'self-hosted'
     && labels[1] === 'sylphx'
@@ -81,6 +85,7 @@ test('owned runner grammar accepts only the published static forms', () => {
   for (const value of [
     'sylphx-linux-standard',
     'sylphx-linux-2xlarge',
+    '[self-hosted, sylphx-linux-standard]',
     '[self-hosted, sylphx, macos, standard]',
     '["self-hosted", "sylphx", "macos", "large"]',
   ]) {

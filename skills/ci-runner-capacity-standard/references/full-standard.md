@@ -97,7 +97,9 @@ admitted against one exact owned profile before execution.
 
 The current owned-runner forms are:
 
-- Linux: one scalar `sylphx-linux-*` profile published by the execution plane.
+- Linux: one scalar `sylphx-linux-*` profile published by the execution plane,
+  or its literal `[self-hosted, sylphx-linux-*]` form where GitHub requires the
+  self-hosted class to be explicit.
 - macOS: one literal GitHub label array
   `[self-hosted, sylphx, macos, <size>]`, where `<size>` is a published macOS
   size. This is the static owned macOS profile contract, not a generic

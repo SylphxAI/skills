@@ -22,7 +22,8 @@ That does not require GitHub to provide the machines that execute company CI.
 
 1. Every company workflow job uses one explicit, static profile from the
    execution plane's owned-runner contract. Linux uses a scalar
-   `sylphx-linux-*` profile; macOS uses its literal
+   `sylphx-linux-*` profile (or its literal `[self-hosted, sylphx-linux-*]`
+   form when GitHub requires that class); macOS uses its literal
    `[self-hosted, sylphx, macos, <size>]` contract. GitHub-hosted labels and
    dynamic `runs-on` selection are forbidden. A generic `self-hosted` label is
    not an owned-runner fallback.
