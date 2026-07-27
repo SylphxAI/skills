@@ -1,0 +1,98 @@
+[
+  {
+    "id": "capable-peer-outcome-owned",
+    "facts": {
+      "outcome": true,
+      "scope": true,
+      "acceptanceEvidence": true,
+      "prescribesMethodOrSequence": false,
+      "methodIsCorrectnessBoundary": false,
+      "substitutesPromptForMissingCapability": false
+    },
+    "expected": "valid"
+  },
+  {
+    "id": "ordinary-refactor-step-by-step",
+    "facts": {
+      "outcome": true,
+      "scope": true,
+      "acceptanceEvidence": true,
+      "prescribesMethodOrSequence": true,
+      "methodIsCorrectnessBoundary": false,
+      "substitutesPromptForMissingCapability": false
+    },
+    "expected": "overprescribed"
+  },
+  {
+    "id": "preselected-debug-diagnosis",
+    "facts": {
+      "outcome": true,
+      "scope": true,
+      "acceptanceEvidence": true,
+      "prescribesMethodOrSequence": true,
+      "methodIsCorrectnessBoundary": false,
+      "substitutesPromptForMissingCapability": false
+    },
+    "expected": "overprescribed"
+  },
+  {
+    "id": "irreversible-migration-sequence",
+    "facts": {
+      "outcome": true,
+      "scope": true,
+      "acceptanceEvidence": true,
+      "prescribesMethodOrSequence": true,
+      "methodIsCorrectnessBoundary": true,
+      "substitutesPromptForMissingCapability": false
+    },
+    "expected": "valid"
+  },
+  {
+    "id": "machine-consumed-format",
+    "facts": {
+      "outcome": true,
+      "scope": true,
+      "acceptanceEvidence": true,
+      "prescribesMethodOrSequence": true,
+      "methodIsCorrectnessBoundary": true,
+      "substitutesPromptForMissingCapability": false
+    },
+    "expected": "valid"
+  },
+  {
+    "id": "vague-investigation",
+    "facts": {
+      "outcome": false,
+      "scope": false,
+      "acceptanceEvidence": false,
+      "prescribesMethodOrSequence": false,
+      "methodIsCorrectnessBoundary": false,
+      "substitutesPromptForMissingCapability": false
+    },
+    "expected": "underspecified"
+  },
+  {
+    "id": "missing-acceptance-contract",
+    "facts": {
+      "outcome": true,
+      "scope": true,
+      "acceptanceEvidence": false,
+      "prescribesMethodOrSequence": false,
+      "methodIsCorrectnessBoundary": false,
+      "substitutesPromptForMissingCapability": false
+    },
+    "expected": "underspecified"
+  },
+  {
+    "id": "prompt-pretends-to-grant-tool",
+    "facts": {
+      "outcome": true,
+      "scope": true,
+      "acceptanceEvidence": true,
+      "prescribesMethodOrSequence": false,
+      "methodIsCorrectnessBoundary": false,
+      "substitutesPromptForMissingCapability": true
+    },
+    "expected": "invalid-capability"
+  }
+]
