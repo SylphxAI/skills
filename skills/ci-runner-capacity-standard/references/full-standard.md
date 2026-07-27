@@ -33,8 +33,9 @@ repositories own only:
 - which stable status contexts they publish;
 - the minimal workflow caller files GitHub requires;
 - the runner profile selected for unavoidable local jobs;
-- a machine-readable exception when an equivalent Sylphx runner profile does
-  not exist.
+- a machine-readable platform-capability gap when an equivalent owned runner
+  profile does not exist. That gap blocks the affected job and routes work to
+  the execution plane; it is never permission to choose GitHub-hosted compute.
 
 Repositories must not solve capacity backlog by inventing new labels, moving to
 GitHub-hosted compute, weakening branch protection, duplicating admission
@@ -83,32 +84,22 @@ inference is diagnostic only and must not lower admission risk.
 | `sylphx-linux-xlarge` | Large monorepo builds, high-memory integration, container build bursts | p95 <= 300s for blocking lanes that explicitly select the profile | Sylphx Platform execution plane |
 | `sylphx-linux-2xlarge` | Reserved-memory SDK/mobile/game/release builds where smaller profiles are not equivalent | p95 <= 300s unless the owning release ADR sets a stricter SLO | Sylphx Platform execution plane |
 | `sylphx-macos-*` | macOS-specific CI, signing, package validation, and Apple-platform builds where Linux is not equivalent | p95 <= 300s for blocking macOS lanes | Sylphx Platform execution plane |
-| `github-hosted-hermetic-policy` | **Hermetic policy / instruction-admission only**: deterministic schema, SSOT-model, catalog integrity, and policy-review gates that must not wait on Platform runner inventory. Backing label today: GitHub-hosted `ubuntu-latest` (or pinned `ubuntu-24.04`). **Not** product build/test/deploy. | Pickup is GitHub-hosted scheduler latency (not Sylphx profile SLO); Skills owns static profile eligibility and GitHub owns compute | Skills (profile eligibility) + GitHub (compute) |
 
-### Hermetic policy profile (canonical, not a repo-local escape)
+### Owned-compute policy
 
-Profile ID: **`github-hosted-hermetic-policy`**.
+Every company workflow selects a stable `sylphx-*` runner profile. GitHub
+Actions may orchestrate workflows, publish checks, and host source, but it is
+not a compute fallback. GitHub-hosted labels such as `ubuntu-*`, `windows-*`,
+and `macos-*` are prohibited for every job, including hermetic policy and
+instruction-admission gates.
 
-**Why it exists:** Some admission jobs are pure policy machines (JSON Schema,
-deterministic validators, instruction-SSOT path gates). They must stay
-available when Platform runners are saturated or restarting. That is an
-**owned profile**, not permission for product CI to flee backlog onto
-GitHub-hosted compute.
-
-**Selectors (all required):**
-
-1. Workflow is named for policy/admission (`policy-admission`,
-   `instruction-ssot-model`, or an equivalent documented admission producer).
-2. Job publishes a **required** admission context (branch protection / ruleset).
-3. Job is hermetic: no product build matrix, no deploy, no secret-dependent
-   integration against live customer systems.
-4. Workflow or job declares the profile via comment or env
-   `SYLPHX_RUNNER_PROFILE: github-hosted-hermetic-policy`.
-
-**Forbidden:** using this profile for ordinary product `validate`/`test`/`build`
-lanes, or inventing `ubuntu-latest` in a product workflow without the profile
-declaration and selectors above. Capacity backlog on `sylphx-linux-*` is still
-fixed centrally — not by converting product CI to GitHub-hosted.
+Hermetic policy, schema, catalog-integrity, and instruction-admission gates use
+`sylphx-linux-standard` unless the execution plane publishes a more specific
+owned profile. The execution plane reserves and prioritizes that profile rather
+than moving a delayed gate to another provider. If an OS or capability has no
+available owned profile, report an explicit platform-capability gap and keep
+the affected proof blocked; do not silently reduce its scope or substitute a
+GitHub-hosted runner.
 
 Closed pickup latency is measured from GitHub job `created_at` until
 `started_at`, or from a stronger provider-backed `runnable_at` signal until
