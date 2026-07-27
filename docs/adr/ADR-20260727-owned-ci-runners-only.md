@@ -20,8 +20,12 @@ That does not require GitHub to provide the machines that execute company CI.
 
 ## Decision
 
-1. Every company workflow job uses an explicit, stable `sylphx-*` runner
-   profile. GitHub-hosted labels and dynamic `runs-on` selection are forbidden.
+1. Every company workflow job uses one explicit, static profile from the
+   execution plane's owned-runner contract. Linux uses a scalar
+   `sylphx-linux-*` profile; macOS uses its literal
+   `[self-hosted, sylphx, macos, <size>]` contract. GitHub-hosted labels and
+   dynamic `runs-on` selection are forbidden. A generic `self-hosted` label is
+   not an owned-runner fallback.
 2. Hermetic policy and instruction-admission checks are normal managed CI
    workloads. They use `sylphx-linux-standard` unless the execution plane
    publishes another owned profile with a documented capability and SLO.
@@ -31,8 +35,9 @@ That does not require GitHub to provide the machines that execute company CI.
 4. The Skills repository's package-integrity workflow runs on
    `sylphx-linux-standard`. Its former GitHub-hosted operating-system matrix is
    retired rather than misrepresented as owned-runner evidence. Cross-platform
-   runtime proof remains a separate, currently unavailable capability until
-   owned profiles are provided.
+   runtime proof remains a separate capability. macOS proof may use the
+   published owned macOS label array; Windows proof remains blocked until an
+   owned Windows profile is published and verified.
 5. Repositories add deterministic conformance checks so a future workflow
    cannot silently reintroduce a GitHub-hosted or dynamic runner selection.
 
@@ -42,8 +47,9 @@ That does not require GitHub to provide the machines that execute company CI.
   the Sylphx execution plane rather than a per-repository fallback decision.
 - CI pickup delays and runner failures must be classified separately from
   source/test failures.
-- No repository may claim fresh macOS or Windows execution proof until the
-  execution plane provides and verifies an owned profile for that platform.
+- No repository may claim fresh Windows execution proof until the execution
+  plane publishes and verifies an owned Windows profile. macOS proof must use
+  the published literal owned label array rather than GitHub-hosted macOS.
 - Migration is complete only when each repository's workflow source, CI job
   assignment, and post-merge execution evidence all show an owned profile.
 

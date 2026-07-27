@@ -19,6 +19,22 @@ function unquote(value) {
   return value.trim().replace(/^(?:"|')|(?:"|')$/g, '');
 }
 
+function isOwnedRunnerProfile(value) {
+  const normalized = unquote(value);
+  if (/^sylphx-linux-[a-z0-9-]+$/.test(normalized)) return true;
+
+  const labels = normalized.match(/^\[\s*(?<labels>[^\]]+)\s*\]$/)?.groups?.labels
+    ?.split(',')
+    .map((label) => unquote(label).trim().toLowerCase());
+  if (!labels) return false;
+
+  return labels.length === 4
+    && labels[0] === 'self-hosted'
+    && labels[1] === 'sylphx'
+    && labels[2] === 'macos'
+    && ['nano', 'small', 'standard', 'large', 'xlarge', '2xlarge'].includes(labels[3]);
+}
+
 test('repository workflows use explicit owned runner profiles only', () => {
   const workflows = workflowPaths();
   assert.ok(workflows.length > 0, 'expected repository workflows');
@@ -32,9 +48,9 @@ test('repository workflows use explicit owned runner profiles only', () => {
 
     for (const value of values) {
       assert.doesNotMatch(value, /\$\{\{/, `${workflow}: dynamic runs-on is forbidden`);
-      assert.match(
-        unquote(value),
-        /^sylphx-[a-z0-9-]+$/,
+      assert.equal(
+        isOwnedRunnerProfile(value),
+        true,
         `${workflow}: ${value.trim()} is not an owned runner profile`,
       );
     }
@@ -53,8 +69,32 @@ test('runner standard rejects GitHub-hosted compute for every CI lane', () => {
     'utf8',
   );
 
-  assert.match(standard, /Every company workflow selects a stable `sylphx-\*` runner profile\./);
-  assert.match(standard, /GitHub-hosted labels such as `ubuntu-\*`, `windows-\*`,\s+and `macos-\*` are prohibited/i);
+  assert.match(standard, /Every company workflow selects one static profile from the execution plane's\s+published owned-runner contract\./);
+  assert.match(standard, /GitHub-hosted labels such as `ubuntu-\*`, `windows-\*`,\s+and `macos-\*` are\s+prohibited/i);
+  assert.match(standard, /\[self-hosted, sylphx, macos, <size>\]/);
+  assert.match(standard, /Windows is not an active CI profile/i);
   assert.match(standard, /platform-capability gap/i);
   assert.doesNotMatch(standard, /github-hosted-hermetic-policy/i);
+});
+
+test('owned runner grammar accepts only the published static forms', () => {
+  for (const value of [
+    'sylphx-linux-standard',
+    'sylphx-linux-2xlarge',
+    '[self-hosted, sylphx, macos, standard]',
+    '["self-hosted", "sylphx", "macos", "large"]',
+  ]) {
+    assert.equal(isOwnedRunnerProfile(value), true, value);
+  }
+
+  for (const value of [
+    'ubuntu-latest',
+    'windows-latest',
+    'sylphx-windows-standard',
+    '[self-hosted, macos, standard]',
+    '[self-hosted, sylphx, linux, standard]',
+    '${{ matrix.runner }}',
+  ]) {
+    assert.equal(isOwnedRunnerProfile(value), false, value);
+  }
 });
