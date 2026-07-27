@@ -98,23 +98,35 @@ Do not paste a giant static playbook into every role. When canonical
 instructions change, affected role projections must be refreshed from their
 owning source so the agent population does not fork the operating model.
 
-## Delegation Brief Granularity
+## Agent-to-Agent Brief Granularity
 
-The `autonomous-execution-standard.md` "Subagent Use" section owns when to
-delegate and the outcome-owned brief contract. This standard owns prompt
-specificity: a per-task delegation brief is a transfer of bounded outcome
-ownership, not a miniature implementation plan or a copy of the parent's
-reasoning trace.
+This applies whenever one agent writes a task brief for another agent, including
+an executor, reviewer, specialist, or subagent. The
+`autonomous-execution-standard.md` "Subagent Use" section additionally owns when
+to delegate and the outcome-owned subagent contract. A task brief transfers
+bounded outcome ownership; it is not a miniature implementation plan or a copy
+of the author's reasoning trace.
+
+Treat a recipient with task-appropriate tools, access, and discoverable context
+as a capable reasoning peer by default: it can inspect sources, form and test
+hypotheses, choose methods, and replan. Calibrate extra detail to observed
+capability limits when material—not to a marketing label such as `SOTA` or to
+historical assumptions about human implementation cost. A longer prompt cannot
+grant a missing tool, permission, authority, source, or runtime capability;
+expose or resolve that gap instead of replacing it with instructions.
 
 Use progressive specificity. Start with outcome, boundary, binding constraints,
 acceptance evidence, and discoverability pointers. Add method or sequence only
 when omitting it would change correctness, safety, reproducibility, collision
-control, or a machine-consumed artifact. Separate mandatory constraints from
-optional context, hypotheses, examples, and suggestions so a capable subagent
-can challenge assumptions and replan as evidence changes.
+control, or a machine-consumed artifact. By default, omit step-by-step methods,
+fixed command sequences, exhaustive file lists, preselected diagnoses, and
+ordinary implementation choices the recipient can safely discover. Separate
+mandatory constraints from optional context, hypotheses, examples, and
+suggestions so the recipient can challenge assumptions and replan as evidence
+changes.
 
 Do not compensate for uncertainty by adding an exhaustive checklist. Excess
-detail can anchor the child to an unverified diagnosis, hide the actual goal,
+detail can anchor the recipient to an unverified diagnosis, hide the actual goal,
 and turn environmental change into a false blocker. Conversely, "investigate"
 without a bounded outcome, scope, or evidence contract is not autonomy; it is
 an incomplete brief.
@@ -126,7 +138,7 @@ contract. Mark that segment and reason; a long role prompt alone is not an
 exception. Outside it, runtime-tuned budgets, priority ordering, execution
 roadmap, analysis, and replanning stay adaptive. Public interface shape and
 shared-write serialization are boundaries, not permission to dictate the
-child's whole roadmap.
+recipient's whole roadmap.
 
 ## Runtime Constitution Contract
 

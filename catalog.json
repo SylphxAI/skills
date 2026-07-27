@@ -443,9 +443,9 @@
     },
     {
       "name": "prompt-architecture",
-      "description": "Design or audit durable agent instructions, runtime constitutions, Skill metadata, subagent/delegation briefs, bootstrap/install prompts, and instruction hierarchy without duplicating source policy. Use when creating, reviewing, projecting, or restructuring agent prompt architecture. Do not use for ordinary user-facing copy or one task's content brief alone.",
+      "description": "Design or audit durable agent instructions, runtime constitutions, Skill metadata, agent-to-agent and subagent briefs, bootstrap/install prompts, and instruction hierarchy without duplicating source policy. Use when creating, reviewing, projecting, or restructuring agent prompt architecture. Do not use for ordinary user-facing copy or one task's content brief alone.",
       "path": "skills/prompt-architecture/SKILL.md",
-      "packageDigest": "sha256:a414cfeebd1239619101bd125df4c9e5a6f7348c071f86969ddf94731685f5b2"
+      "packageDigest": "sha256:c16ec760949b48138ab7745696ed5180b29020a094f62c5776be3e596c257117"
     },
     {
       "name": "provenance-system-design",
