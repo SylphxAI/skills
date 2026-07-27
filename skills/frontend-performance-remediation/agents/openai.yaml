@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Performance Remediation"
+  short_description: "Diagnose and repair frontend runtime cost"
+  default_prompt: "Use $frontend-performance-remediation to reproduce, diagnose, repair, and verify this frontend runtime performance problem."

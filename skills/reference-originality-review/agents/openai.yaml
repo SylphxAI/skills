@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reference Originality Review"
+  short_description: "Evidence-backed originality risk review"
+  default_prompt: "Use $reference-originality-review to compare this work with its supplied references and produce an evidence-backed originality verdict."

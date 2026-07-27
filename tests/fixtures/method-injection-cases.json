@@ -565,5 +565,89 @@
     "expectedSkills": ["engineering-standard"],
     "artifacts": [],
     "nearNeighbourOf": "software-distribution-readiness"
+  },
+  {
+    "id": "reference-originality-interface-comparison",
+    "kind": "positive",
+    "prompt": "Compare this checkout experience with the three supplied product references, including wording, hierarchy, interaction, responsive states and motion, and give an evidence-backed originality risk verdict.",
+    "expectedSkills": ["reference-originality-review"],
+    "artifacts": [{"artifact": "Reference Originality Review", "owner": "reference-originality-review"}],
+    "tags": ["design", "evidence", "comparison"]
+  },
+  {
+    "id": "reference-originality-cantonese",
+    "kind": "positive",
+    "prompt": "幫我將而家個網站同我提供嘅參考網站逐項比較，包括歷史版本、文案、結構、圖片同動畫，分清通用做法同獨特抄襲風險，再俾有證據嘅結論。",
+    "expectedSkills": ["reference-originality-review"],
+    "artifacts": [{"artifact": "Reference Originality Review", "owner": "reference-originality-review"}],
+    "tags": ["multilingual", "design", "history"]
+  },
+  {
+    "id": "reference-originality-asset-production-compound",
+    "kind": "compound",
+    "prompt": "Create the approved launch screenshot and trailer pack, then independently compare the exact finished media with the supplied inspiration set and remove any distinctive dependency before acceptance.",
+    "expectedSkills": ["product-asset-production", "reference-originality-review"],
+    "artifacts": [
+      {"artifact": "Product Asset Production Pack", "owner": "product-asset-production"},
+      {"artifact": "Reference Originality Review", "owner": "reference-originality-review"}
+    ],
+    "tags": ["assets", "comparison", "compound"]
+  },
+  {
+    "id": "reference-originality-neighbour-own-system-extraction",
+    "kind": "near-neighbour",
+    "prompt": "Recover our own shipped product's existing tokens, components, variants, responsive rules and exceptions from authorized code, screenshots and design files.",
+    "expectedSkills": ["design-system-extractor"],
+    "artifacts": [{"artifact": "Extracted design system", "owner": "design-system-extractor"}],
+    "nearNeighbourOf": "reference-originality-review"
+  },
+  {
+    "id": "reference-originality-neighbour-legal-opinion",
+    "kind": "near-neighbour",
+    "prompt": "Issue a definitive legal opinion that this interface cannot infringe copyright or trademark in any jurisdiction.",
+    "expectedSkills": [],
+    "artifacts": [],
+    "nearNeighbourOf": "reference-originality-review",
+    "tags": ["legal", "authority"]
+  },
+  {
+    "id": "frontend-performance-runtime-jank",
+    "kind": "positive",
+    "prompt": "The dashboard becomes janky and consumes CPU after navigating between tabs several times. Reproduce it, identify the owning render or lifecycle mechanism, fix it and prove the exact before-and-after result.",
+    "expectedSkills": ["frontend-performance-remediation"],
+    "artifacts": [{"artifact": "Frontend Runtime Performance Remediation Record", "owner": "frontend-performance-remediation"}],
+    "tags": ["frontend", "runtime", "performance"]
+  },
+  {
+    "id": "frontend-performance-cantonese",
+    "kind": "positive",
+    "prompt": "呢個頁面 scroll 同動畫會窒，離開畫面之後 CPU 仲係高。請先重現，檢查 RAF、timer、observer、listener 同 cleanup，再修正根因同做相同場景嘅前後對照。",
+    "expectedSkills": ["frontend-performance-remediation"],
+    "artifacts": [{"artifact": "Frontend Runtime Performance Remediation Record", "owner": "frontend-performance-remediation"}],
+    "tags": ["multilingual", "frontend", "lifecycle"]
+  },
+  {
+    "id": "frontend-performance-code-repair-compound",
+    "kind": "compound",
+    "prompt": "Repair the memory and frame-time regression in this web application at the owning code boundary, preserve behavior and accessibility, and add regression proof for repeated route and visibility cycles.",
+    "expectedSkills": ["frontend-performance-remediation", "engineering-standard"],
+    "artifacts": [{"artifact": "Frontend Runtime Performance Remediation Record", "owner": "frontend-performance-remediation"}],
+    "tags": ["frontend", "repair", "compound"]
+  },
+  {
+    "id": "frontend-performance-neighbour-interface-build",
+    "kind": "near-neighbour",
+    "prompt": "Design and implement a new responsive checkout flow with complete states, keyboard and touch input, baseline accessibility, purposeful motion and rendered verification.",
+    "expectedSkills": ["interface-craft"],
+    "artifacts": [{"artifact": "Interface Craft Pack", "owner": "interface-craft"}],
+    "nearNeighbourOf": "frontend-performance-remediation"
+  },
+  {
+    "id": "frontend-performance-neighbour-service-observability",
+    "kind": "near-neighbour",
+    "prompt": "Design production latency and availability SLIs, traces, saturation metrics, alerts, dashboards and recovery verification for the server-side rendering service.",
+    "expectedSkills": ["operational-observability-review"],
+    "artifacts": [{"artifact": "Operational Observability Contract", "owner": "operational-observability-review"}],
+    "nearNeighbourOf": "frontend-performance-remediation"
   }
 ]
