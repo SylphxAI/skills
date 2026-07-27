@@ -215,12 +215,31 @@ The first implementation should prove the smallest complete closed loop:
 ```text
 work item -> claim/durable checkpoint -> exact source candidate
   -> profile-selected proof and adversarial review
-  -> configured serializer lands -> deploy/release signal -> next work item
+  -> configured serializer lands -> durable delivery subscription
+  -> release worker capacity -> next ready work item
+  -> delivery event re-enters this or another eligible agent
 ```
 
 Do not start by implementing every dashboard, role prompt, and repo template.
 First make one pilot loop work end-to-end, then expand the gates, roles, and
 repos.
+
+### Work granularity and worker availability
+
+One Work Item owns one independently terminal outcome. A large programme is a
+parent Work with a child outcome DAG; it is not one umbrella Work or Attempt
+that accumulates unrelated capabilities, fixes, commits, and delivery
+decisions. Each exact candidate binds the child Work that owns its semantic
+outcome.
+
+The Work lifecycle and worker lifecycle are separate. A Work may remain active
+until verified promotion, production behavior, recovery, or a declared
+observation window is proven, but the source agent must not remain occupied
+when only external state can advance it. Checkpoint, register a durable
+subscription, release EffectLeases and claim/Run capacity, and claim the next
+ready Work. Re-entry may be performed by the original agent or any eligible
+agent from the durable checkpoint. A long observation window is separate
+bounded Work or controller-owned monitoring.
 
 ### Stacked Diffs For Dependent Slices
 

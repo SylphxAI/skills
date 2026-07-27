@@ -300,6 +300,15 @@ evidence, and the poll or re-entry trigger. An empty frontier justifies waiting;
 it does not make the goal complete or turn a lane-local qualified stop into a
 global stop.
 
+If only an external CI, build, deploy, soak, approval, or dependency event can
+advance the durable Work, waiting is not active execution. Checkpoint the exact
+state, register an idempotent durable subscription, release EffectLeases and
+scarce capacity, hand off or release the Work claim, finish the current Run,
+and claim the next ready Work. The event may reactivate this agent or any other
+eligible agent. Do not preserve a session, claim, or worker slot merely to poll.
+Use a separate bounded observation Work or controller-owned monitor when an
+observation window is itself the outcome.
+
 `qualifiedWait` is the structured result of that scheduler checkpoint, not a
 sixth per-lane epistemic state. It contains the affected lanes, exclusions, and
 re-entry evidence; every unresolved lane still retains exactly one of the five
@@ -618,7 +627,9 @@ Before final response, check:
   stated residual risk.
 - The bounded pattern sweep is complete, or a larger same-class issue is recorded
   in a durable work packet, issue, ADR, or generated diff.
-- CI/deploy/release monitors are complete or blocked by an external event.
+- CI/deploy/release monitors are complete, or the Work has a durable
+  subscription and checkpoint with worker capacity, EffectLeases, claim, and
+  Run released. A parked polling session is not a valid completion dependency.
 - Docs, ADRs, release notes, changelogs, tests, or evals were updated if future
   agents/operators need them.
 - The final answer distinguishes implemented work, validation, blockers, and

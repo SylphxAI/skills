@@ -31,7 +31,7 @@
       "name": "agent-first-development-standard",
       "description": "No-human parallel development packets, change attribution, collision scopes, and machine-verifiable acceptance. Use when defining or running multi-agent software delivery without a human review dependency. Do not use for a small local edit or live Work Graph operations.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:baa7fea9fd27a327778cf3b6aec84e3189f3473f593e7fa3111de37209d8c496"
+      "packageDigest": "sha256:f9a029ee81b7b6a30cc93e046c06151609c9123baf172fb5f8dd4e83470f3440"
     },
     {
       "name": "agent-native-standard",
@@ -73,7 +73,7 @@
       "name": "autonomous-execution-standard",
       "description": "Autonomous scheduling: critical-path focus, work-conserving progress, complexity-gated resource-safe delegation, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:310b2a874fa2ed4e71ca13b095cb84f79b3aad5c2a3091bce7e081db9dadb552"
+      "packageDigest": "sha256:02d81dfced4b0075879851d0b596edae4bfb195da6248cbb4d15fc1d006555c4"
     },
     {
       "name": "board-metrics-operating-review",
@@ -91,7 +91,7 @@
       "name": "ci-admission-standard",
       "description": "CI admission tiers, gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including custom lints and architecture tests. Do not use for debugging one unrelated test failure.",
       "path": "skills/ci-admission-standard/SKILL.md",
-      "packageDigest": "sha256:f58db1cdfd4491094f10ca83c868d1b5b8e8f49be17a22b0eecc28a96348f959"
+      "packageDigest": "sha256:04bd6857fa6085d36edd7061e058a3cc4137395e179f2418712ea32f97974965"
     },
     {
       "name": "ci-runner-capacity-standard",
@@ -175,7 +175,7 @@
       "name": "delivery-standard",
       "description": "Shipped-state proof across source landing, artifacts, deployment, rollback, and production readback. Use when delivering a change or deciding whether it is truly released or live. Do not use when only local implementation is in scope.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:eaa745e6a4f68de6a0a9cd8d92f1dc7ae6265b2f100058099fe168ce0237a8ec"
+      "packageDigest": "sha256:6fd01322bb67e04bdc148aeb48718476d06676299f0cb11c99ee70efc81eaa42"
     },
     {
       "name": "dependency-version-selection",
@@ -217,7 +217,7 @@
       "name": "enact-work-coordination",
       "description": "Connect, operate, or audit agent work through the Sylphx Enact operating graph using explicit Tenant, Workspace, and optional Project identity; Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-provider observations. Use when implementing an Enact client or adapter, binding a repository or agent workflow to Enact, recovering a missing MCP work loop, or verifying Enact work provenance. Do not use for portable work-ledger design, ordinary Git operations, or static Skills authoring.",
       "path": "skills/enact-work-coordination/SKILL.md",
-      "packageDigest": "sha256:26317e3f2e28cec7d5df5ecd107b7151c0e0dc32d4b38ea3a20d121c3541a09e"
+      "packageDigest": "sha256:2546bc5cd0d99e0dd147e77b207809824c1ef4a6a686ebd6cbb93ca6054b3273"
     },
     {
       "name": "engineering-standard",
@@ -373,7 +373,7 @@
       "name": "parallel-change-integration-standard",
       "description": "Parallel agent change integration with compare-and-swap landing, bounded duplicate attempts, verification watermarks, and verified-only promotion. Use when candidate generation can outpace shared verification or deployment capacity. Do not use for ordinary low-contention edits.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
-      "packageDigest": "sha256:e5c6495a208f90e95483be4acfb9d50ed65c543e1ae3e8191d49889e47c0e3a2"
+      "packageDigest": "sha256:5ff49f59777dd16712d99caeaa02594b9f9e58b17b43d711b4f2a0382ac6702d"
     },
     {
       "name": "payment-platform-readiness",
@@ -553,7 +553,7 @@
       "name": "self-feeding-agent-loop-standard",
       "description": "Recurring autonomous work loops with issue intake, implementation, review, delivery, and machine-verifiable continuation gates. Use when a durable agent process should find and complete new work repeatedly. Do not use for one bounded task.",
       "path": "skills/self-feeding-agent-loop-standard/SKILL.md",
-      "packageDigest": "sha256:bfd1a13a0031d77639e93c6179549d62eecc6221c1838ef2b6577e18998fee75"
+      "packageDigest": "sha256:9a5ac7cd8757235b0f76735cdc073edb5c64f16e76ab58a62443bba5c45ce842"
     },
     {
       "name": "semantic-taxonomy-design",

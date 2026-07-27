@@ -105,6 +105,16 @@ Use the strongest done state that matches the task **and active delivery lane**:
 | Deployable behavior change | Landed change promoted through the documented release path and verified by smoke checks, health checks, logs, metrics, or user-visible acceptance criteria | Landed but undeployed, deployed without proof, or proof based only on exit codes |
 | GitOps / infrastructure change | Desired state committed, reconciled by the controller, and live state observed to match | Manual cluster mutation, unreconciled manifest, or unverified rollout |
 
+The table defines the durable Work's terminal evidence, not how long one agent
+must occupy a worker. For ordinary direct-trunk source work, the source agent
+may release capacity after the semantically atomic candidate is landed with
+the required local proof. If the Work also requires verified promotion or
+production evidence, leave it active with a durable delivery subscription and
+checkpoint; release EffectLeases, claim, and Run; and let the delivery
+controller or any eligible re-entry agent finish the stronger state. Incidents
+and irreversible effects retain their stronger bar, but passive external waits
+still use the same event-driven handoff.
+
 If the user asks for implementation, the default answer is not "done" until the
 change is committed, landed through the **active lane**, and advanced to the
 strongest reachable done state. If policy, permissions, failed checks,
@@ -122,11 +132,15 @@ Default delivery path (resolve lane first):
 - **Compatibility / fenced:** push a branch, open or update the PR, monitor CI,
   address actionable failures, and merge when branch protection, required checks,
   policy gates, and merge queue allow it.
-- Follow the documented release/deploy path; under direct-trunk, promote only
+- Start the documented release/deploy path; under direct-trunk, promote only
   immutable verified snapshots (raw push is not deploy authority when freeze is
-  active — re-query live mode/generation/denyingScope).
+  active — re-query live mode/generation/denyingScope). When only the external
+  delivery system can advance, subscribe and release worker capacity instead
+  of synchronously polling.
 - Verify deployment with smoke checks, health checks, logs, metrics, or
-  user-visible acceptance criteria.
+  user-visible acceptance criteria when the current Run owns an immediately
+  actionable delivery phase; otherwise bind those checks to the delivery event
+  or re-entry Run.
 - Record the change in a product-owned changelog, release note, or ADR, or link
   the corresponding Enact decision/evidence, when it affects future work.
   Runtime memory may cache only a pointer or working context; it is not the

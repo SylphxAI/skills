@@ -68,6 +68,13 @@ Skills only when their domain is touched.
 - Evidence precedes claims. Distinguish local, candidate, admitted, landed,
   released or deployed, and live states. Done means delivered at the active
   repository boundary, not merely edited, committed, or proposed.
+- Keep Work terminal state separate from worker occupancy. When only external
+  CI, build, promotion, deployment, soak, approval, or dependency state can
+  advance a Work, checkpoint it, register a durable wake-up subscription,
+  release effects and the active claim/Run, then claim other ready work. Any
+  eligible agent may re-enter from the checkpoint; do not keep a session alive
+  to poll, and model long observation as separate Work or controller-owned
+  monitoring.
 - Fix root causes in the owning project. A workaround, manual runtime patch, or
   cross-project internal edit is containment and remains an explicit gap.
 - Material runtime, data, and effect paths emit privacy-preserving, correlated

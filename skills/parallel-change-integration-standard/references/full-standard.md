@@ -286,6 +286,14 @@ pending coalescing, eligibility, singleflight, cache, and budget controls as
 verification. Non-cancelable audit, migration, provenance, security, and
 already-started irreversible obligations survive supersession.
 
+The steady-state envelope per repository and verification scope is one useful
+running snapshot plus the latest eligible pending snapshot. Superseding a
+pending snapshot is a metadata transition, not a failed build. If an already
+running task is safe to cancel, cancel it; otherwise let it complete without
+starting every intermediate successor. Artifact production consumes only the
+selected snapshot identity, so cancellation and coalescing never destroy the
+only deployable artifact obligation.
+
 ## Platform control-plane contract
 
 Binding Skills packages and enterprise profiles decide the invariant, selector, risk lane, proof floor,
