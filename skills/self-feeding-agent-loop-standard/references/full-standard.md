@@ -40,8 +40,16 @@ Parent evaluator / process owner
      -> Reviewer agents discover evidence-backed issues
      -> Builder agents triage, fix, test, and request verification
      -> Reviewer verifies original reproduction path
-     -> Builder closes only after verification and delivery proof
+     -> Delivery event closes or re-enters Work after verification proof
 ```
+
+Builders own active source actions, not passive delivery occupancy. After
+landing the selected candidate, a Builder checkpoints, subscribes to the
+required delivery outcome, releases effects/claim/Run capacity, and returns to
+the ready queue. The durable Work remains open until its declared verification
+or delivery predicate is met. The original Builder or any eligible agent may
+re-enter on the event; long observation is separate Work or controller-owned
+monitoring.
 
 Resolve the live work authority before launch. When an authenticated Enact
 runtime is exposed, its Work Item, claim, run, checkpoint, and evidence records

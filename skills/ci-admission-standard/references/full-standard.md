@@ -28,6 +28,20 @@ scoped green watermarks; it does not run once per speculative attempt or imply
 deployment from every default-branch commit. Required proof depth, affected-set
 soundness, global gates, flake control, backstops, and recovery remain binding.
 
+Source arrival, CI eligibility, complete verification, and artifact production
+are separate transitions. At high arrival rates, complete remote verification
+and artifact builds run only for control-plane-selected immutable snapshots,
+with at most the useful running snapshot and latest eligible pending snapshot
+per repository/scope except for declared non-cancelable obligations. A raw
+default-branch commit may publish lightweight candidate and revision facts; it
+does not require a complete CI/build instance solely because it arrived.
+
+An identity, lineage, or eligibility check that decides whether a candidate may
+consume CI must be produced outside the same scarce general runner pool it
+controls. Use an authenticated forge App/webhook check producer, Enact
+admission service, or equivalent runner-independent owner. Do not consume a
+general CI runner to decide whether the candidate is allowed to consume CI.
+
 When there are no human reviewers and everything ships to production, CI is doing
 two jobs that pull in opposite directions, and most CI pain comes from making one
 pipeline do both:
