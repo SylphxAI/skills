@@ -67,6 +67,9 @@ test('canonical instructions reject depth counters and role-driven atomic fanout
   assert.doesNotMatch(autonomous, /launch every qualified independent subagent/i);
   assert.doesNotMatch(autonomous, /Good subagent tracks:/i);
   assert.doesNotMatch(autonomous, /repository's versioned delegation eval traces/i);
+  assert.doesNotMatch(autonomous, /Adversarial reviews are\s+performed by separate agent contexts/i);
+  assert.doesNotMatch(autonomous, /default loop is agent-decide,\s+agent-review in a separate adversarial context/i);
+  assert.match(autonomous, /separate reviewer context is eligible only when\s+its independent-method benefit passes the same delegation predicate/i);
 
   assert.match(agentFirst, /semantic task type and\s+material complexity come before role assignment/i);
   assert.match(agentFirst, /presumptively a leaf/i);

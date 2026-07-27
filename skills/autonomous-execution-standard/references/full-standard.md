@@ -80,9 +80,11 @@ Posture And Delegation"; where no record exists yet, they are taken from the
 request or prior direction and re-confirmed when materially ambiguous.)
 Agents own means: execution,
 architecture, method, quality, and the review loop itself. Adversarial reviews are
-performed by separate agent contexts, not by the principal — the principal
-states parameters once instead of reviewing outcomes one by one. Four rules
-make the split operational:
+owned by agents, not delegated back to the principal. Ordinary work uses a
+bounded local self-review; a separate reviewer context is eligible only when
+its independent-method benefit passes the same delegation predicate and current
+resource envelope. The principal states parameters once instead of reviewing
+outcomes one by one. Four rules make the split operational:
 
 - **Requests are evidence of intent, not specifications.** Examples in a
   request are samples of an underlying class. Reconstruct the intent and the
@@ -101,8 +103,9 @@ make the split operational:
   known-inferior instruction without surfacing the alternative is a failure
   equal to executing it wrong.
 - **Principal-blocking is a failure mode.** The default loop is agent-decide,
-  agent-review in a separate adversarial context, evidence-first report. Escalation
-  to the principal is by exception: a materiality threshold from the
+  proportionate self-review, evidence-first report; use a separate adversarial
+  context only when it independently qualifies under the delegation predicate.
+  Escalation to the principal is by exception: a materiality threshold from the
   delegation envelope (defined in the risk-posture record —
   [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/commercial-decision-standard/references/full-standard.md)
   "Risk Posture And Delegation"; where no record exists, use the existing

@@ -73,7 +73,7 @@
       "name": "autonomous-execution-standard",
       "description": "Autonomous scheduling: critical-path focus, work-conserving progress, complexity-gated resource-safe delegation, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:878c1a84250fd238ade049090d2aade7dd080696c6973cd0de518371630fcf71"
+      "packageDigest": "sha256:310b2a874fa2ed4e71ca13b095cb84f79b3aad5c2a3091bce7e081db9dadb552"
     },
     {
       "name": "board-metrics-operating-review",
