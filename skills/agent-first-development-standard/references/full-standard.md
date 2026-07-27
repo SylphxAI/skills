@@ -56,10 +56,11 @@ The strongest target is a self-feeding autonomous engineering system:
 ```text
 Production / CI / security / customer / delivery-adapter signals
   -> profile-selected canonical Work Ledger as the internal work-state source
-  -> typed work items classify scope, role, tenant, risk, proof, and next action
-  -> agents claim scoped work through leases and checkpoint events
+  -> proposals are deduplicated and admitted without implicitly assigning their author
+  -> typed work items classify scope, perspective, tenant, risk, proof, and next action
+  -> eligible agents claim scoped work through leases and checkpoint events
   -> source candidates execute the change through the active delivery profile
-  -> profile-selected exact-candidate admission and adversarial review
+  -> profile-selected exact-candidate admission and risk-selected review
   -> configured landing serializer integrates the selected candidate
   -> deploy / release verification observes reality
   -> new signals create or update work items
@@ -76,6 +77,10 @@ Responsibility split:
   cross-runtime handoff follow the portable semantics defined by
   [`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md). Hidden chat
   state is not ownership.
+- **A session is not a work ledger**: owner chats, local task titles, private
+  steering messages, prompts, and transcripts are disposable execution
+  surfaces. Goals, priority, assignment, review state, blockers, and completion
+  must resolve through the selected coordination system.
 - **The active delivery profile delivers and proves repository work**: it owns
   the current forge, candidate, required-check, serialization, release, and
   public-status mechanisms. This standard owns the required outcomes.
@@ -113,6 +118,19 @@ for the current outcome—not by a permanent simulated organization chart. A
 single agent may cover several perspectives; high-impact work may assign
 independent perspectives to separate contexts when the expected information
 gain exceeds coordination cost.
+
+Proposer, Executor, Reviewer, and Delivery/Re-entry are perspectives on the
+Work graph, not permanent identities or one-to-one pairs. Proposal, admission,
+and claim are separate transitions. The proposer may claim only after normal
+deduplication and eligibility policy; an Advisor session has no implicit
+ownership or supervisory authority.
+
+Review is an obligation selected from the candidate's risk and proof contract.
+Run deterministic checks first. Create a distinct reviewer context only when
+independent judgment is required and useful. The reviewer reads the Work
+contract, exact candidate, and authorized durable evidence—not a sibling's
+private transcript—and records a typed verdict, finding, attestation, or
+correction Work through the coordination authority.
 
 Common perspectives include signal triage, research and specification,
 implementation, engineering quality, product/interface quality, adversarial
@@ -213,8 +231,8 @@ provider's issue convention. Do not create a third presence store.
 The first implementation should prove the smallest complete closed loop:
 
 ```text
-work item -> claim/durable checkpoint -> exact source candidate
-  -> profile-selected proof and adversarial review
+proposal -> deduplicate/admit -> eligible claim -> exact source candidate
+  -> profile-selected proof and risk-selected review obligation
   -> configured serializer lands -> durable delivery subscription
   -> release worker capacity -> next ready work item
   -> delivery event re-enters this or another eligible agent

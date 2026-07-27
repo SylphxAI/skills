@@ -50,6 +50,8 @@ semantics.
 
 - Tenant, Workspace, and Project identify the commercial/product scope.
 - Work identifies the durable objective and lifecycle.
+- Proposal describes a candidate objective. Admission may reuse, reject, or
+  create Work; it does not assign the proposer.
 - Attempt and Agent Run identify one execution history.
 - Claim leases responsibility and recovery authority for that Work/Attempt.
 - `write_scope` expresses the maximum intended change envelope and collision
@@ -61,6 +63,29 @@ semantics.
 Do not hold an EffectLease during ordinary source editing or passive waits. Do
 not treat a successful preflight, acquisition, or health response as proof that
 the external effect occurred.
+
+## Session and review authority
+
+A Codex, Claude, Grok, Spiron, or other agent session is an execution client. A
+session-local goal, title, transcript, private message, or parent/child relation
+must not become a second source of truth for Work priority, ownership, review,
+or completion. The client resolves or proposes canonical Work, claims an
+eligible Attempt, and compiles context from Enact before substantive mutation.
+
+Do not model an Advisor as a permanent supervisor of one Executor. Candidate
+review is a typed Work obligation selected by risk:
+
+1. bind the immutable candidate and evidence set to the owning Work/Attempt;
+2. run deterministic verification first;
+3. when independent judgment is required, create or resolve a review
+   obligation for an eligible reviewer that has not consumed private sibling
+   state;
+4. publish the typed verdict, findings, attestation, or correction Work; and
+5. release the reviewer after the verdict instead of retaining a watcher.
+
+The same general-purpose agent may propose, execute, or review different Work.
+It must not self-satisfy an independence requirement merely by changing its
+local role label.
 
 ## Durable external wait and worker release
 

@@ -31,7 +31,7 @@
       "name": "agent-first-development-standard",
       "description": "No-human parallel development packets, change attribution, collision scopes, and machine-verifiable acceptance. Use when defining or running multi-agent software delivery without a human review dependency. Do not use for a small local edit or live Work Graph operations.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:f9a029ee81b7b6a30cc93e046c06151609c9123baf172fb5f8dd4e83470f3440"
+      "packageDigest": "sha256:ebec0034ebb78b1e0550d687ee3636ec79038e8c3236f9a69e539fc9cba2b356"
     },
     {
       "name": "agent-native-standard",
@@ -217,7 +217,7 @@
       "name": "enact-work-coordination",
       "description": "Connect, operate, or audit agent work through the Sylphx Enact operating graph using explicit Tenant, Workspace, and optional Project identity; Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-provider observations. Use when implementing an Enact client or adapter, binding a repository or agent workflow to Enact, recovering a missing MCP work loop, or verifying Enact work provenance. Do not use for portable work-ledger design, ordinary Git operations, or static Skills authoring.",
       "path": "skills/enact-work-coordination/SKILL.md",
-      "packageDigest": "sha256:2546bc5cd0d99e0dd147e77b207809824c1ef4a6a686ebd6cbb93ca6054b3273"
+      "packageDigest": "sha256:ea60c5a5e0b2d2b4f951fd4e4119d32bfddf75c6a459d0c8d8b8bd472eb30b07"
     },
     {
       "name": "engineering-standard",
@@ -553,7 +553,7 @@
       "name": "self-feeding-agent-loop-standard",
       "description": "Recurring autonomous work loops with issue intake, implementation, review, delivery, and machine-verifiable continuation gates. Use when a durable agent process should find and complete new work repeatedly. Do not use for one bounded task.",
       "path": "skills/self-feeding-agent-loop-standard/SKILL.md",
-      "packageDigest": "sha256:9a5ac7cd8757235b0f76735cdc073edb5c64f16e76ab58a62443bba5c45ce842"
+      "packageDigest": "sha256:d9827a01373b905db7d30608bef0d5ff530a39e02f5390cd80673c0c81aa779c"
     },
     {
       "name": "semantic-taxonomy-design",
