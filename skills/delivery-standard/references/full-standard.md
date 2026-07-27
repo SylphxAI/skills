@@ -36,15 +36,23 @@ the compatibility lane "for safety" when direct-trunk is already selected.
    - **Ordinary reversible:** docs/evidence-only, tests-only, narrow reversible code
      that does not touch the fenced classes above, under integrity fences that
      already forbid delete + non-fast-forward.
-2. **Read live admission signals.** Prefer direct-trunk when:
-   - org/repo rulesets do **not** require a PR for the default branch;
-   - claim/run lineage hard gates (or equivalent Work→Claim→Run proof) are live for
-     push admission; and
+2. **Read live admission signals.** Prefer direct-trunk when **all** of these hold:
+   - org/repo rulesets do **not** require a PR for the default branch (only
+     integrity fences: no delete / no non-fast-forward is the expected baseline);
+   - claim/run lineage hard gates are live for push admission
+     (`enact-work-lineage/pass` required; `ENACT_REQUIRE_ACTIVE_CLAIM=true` where
+     configured);
+   - ordinary docs/evidence PR fail-closed is live when present
+     (`ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK=true` / ordinary-docs PR gate step), so a
+     docs-only PR is rejected toward direct-trunk; and
    - the path set is ordinary reversible.
 3. **Select the lane.**
    - Ordinary reversible + direct-trunk selected → **land by FF/CAS to the default
-     branch**. Opening a PR is the wrong ordinary path and must not be used merely
-     because a PR template exists or other agents are still using PRs.
+     branch** (two-phase branch proof → main is fine when rulesets require checks
+     before update). Opening a PR is the **wrong ordinary path** and must not be
+     used merely because a PR template exists, habit, or peer agents still use PRs.
+     When the ordinary-DT PR gate is live, opening an ordinary docs/evidence PR is
+     a process defect, not a safe default.
    - Any fenced class, missing delivery profile, or unresolved classification that
      could be fenced → compatibility PR/merge-queue until classification is clear.
 4. **Bind Work first.** Direct-trunk and compatibility lands both require canonical

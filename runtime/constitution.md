@@ -53,7 +53,8 @@ Skills only when their domain is touched.
   task-semantic test. Stop new fan-out under host-resource pressure or
   integration backlog; do not rely on global depth counters.
 - Resolve the active delivery lane before landing. Ordinary reversible work uses
-  direct-trunk where the active profile or live admission signals select it; do
+  direct-trunk where the active profile or live admission signals select it
+  (including lineage hard gates and ordinary-DT PR fail-closed where live); do
   not open a compatibility PR as the default for ordinary reversible work. Policy,
   instruction authority, credentials, security, migrations, public contracts, and
   irreversible effects remain fenced through the configured compatibility lane
