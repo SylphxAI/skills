@@ -87,11 +87,28 @@ inference is diagnostic only and must not lower admission risk.
 
 ### Owned-compute policy
 
-Every company workflow selects a stable `sylphx-*` runner profile. GitHub
-Actions may orchestrate workflows, publish checks, and host source, but it is
-not a compute fallback. GitHub-hosted labels such as `ubuntu-*`, `windows-*`,
-and `macos-*` are prohibited for every job, including hermetic policy and
-instruction-admission gates.
+Every company workflow selects one static profile from the execution plane's
+published owned-runner contract. GitHub Actions may orchestrate workflows,
+publish checks, and host source, but it is not a compute fallback.
+GitHub-hosted labels such as `ubuntu-*`, `windows-*`, and `macos-*` are
+prohibited for every job, including hermetic policy and instruction-admission
+gates. A dynamic `runs-on` expression is prohibited because it cannot be
+admitted against one exact owned profile before execution.
+
+The current owned-runner forms are:
+
+- Linux: one scalar `sylphx-linux-*` profile published by the execution plane,
+  or its literal `[self-hosted, sylphx-linux-*]` form where GitHub requires the
+  self-hosted class to be explicit.
+- macOS: one literal GitHub label array
+  `[self-hosted, sylphx, macos, <size>]`, where `<size>` is a published macOS
+  size. This is the static owned macOS profile contract, not a generic
+  `self-hosted` escape hatch.
+
+Windows is not an active CI profile in the current execution-plane contract.
+A Windows-required job is therefore a platform-capability gap: retain the
+required proof as blocked until an owned Windows profile is published and
+verified; do not invent a label or fall back to GitHub-hosted compute.
 
 Hermetic policy, schema, catalog-integrity, and instruction-admission gates use
 `sylphx-linux-standard` unless the execution plane publishes a more specific
