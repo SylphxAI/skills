@@ -1,0 +1,17 @@
+{
+  "schema": "ordinary-direct-trunk-admission/v1",
+  "positive_path_prefixes": [
+    "crates/",
+    "apps/",
+    "packages/",
+    "src/",
+    "scripts/",
+    "web/",
+    "lib/",
+    "services/",
+    "bin/",
+    "tools/"
+  ],
+  "positive_path_globs": []
+}
+
