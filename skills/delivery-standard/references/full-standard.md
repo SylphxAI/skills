@@ -42,16 +42,16 @@ the compatibility lane "for safety" when direct-trunk is already selected.
    - claim/run lineage hard gates are live for push admission
      (`enact-work-lineage/pass` required; `ENACT_REQUIRE_ACTIVE_CLAIM=true` where
      configured);
-   - ordinary docs/evidence PR fail-closed is live when present
-     (`ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK=true` / ordinary-docs PR gate step), so a
-     docs-only PR is rejected toward direct-trunk; and
+   - ordinary reversible PR fail-closed is live when present
+     (`ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK=true` / ordinary reversible PR gate step), so an
+     all-ordinary path-set PR is rejected toward direct-trunk; and
    - the path set is ordinary reversible.
 3. **Select the lane.**
    - Ordinary reversible + direct-trunk selected → **land by FF/CAS to the default
      branch** (two-phase branch proof → main is fine when rulesets require checks
      before update). Opening a PR is the **wrong ordinary path** and must not be
      used merely because a PR template exists, habit, or peer agents still use PRs.
-     When the ordinary-DT PR gate is live, opening an ordinary docs/evidence PR is
+     When the ordinary-DT PR gate is live, opening an ordinary reversible PR is
      a process defect, not a safe default.
    - Any fenced class, missing delivery profile, or unresolved classification that
      could be fenced → compatibility PR/merge-queue until classification is clear.
