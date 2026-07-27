@@ -59,6 +59,30 @@ the compatibility lane "for safety" when direct-trunk is already selected.
    Work lineage and claim/run proof where hard gates require it. Claims own work,
    not files.
 
+
+### Ordinary-DT hard gate (fail-closed positive admission)
+
+The repository `enact-work-lineage` ordinary-DT gate **must not** infer ordinary
+from the absence of a handwritten fenced-path list. Unknown, conflicting, or
+unclassified paths stay on the **compatibility PR lane**.
+
+Force-DT is allowed only when **every** changed path is positively admitted
+ordinary by:
+
+1. delivery-standard builtin ordinary classes (docs/evidence, non-ADR docs
+   prose/data, tests-only); and/or
+2. the base-branch repo manifest
+   `.github/ordinary-direct-trunk-admission.json`
+   (`schema = ordinary-direct-trunk-admission/v1`) listing exact
+   `positive_path_prefixes` / `positive_path_globs`.
+
+Hard-fenced classes (workflows, ADR, migrations, credentials/security/oauth,
+public contracts, delivery profiles, instruction authority) are never ordinary
+even if listed in a manifest. Agents still choose direct-trunk for ordinary
+reversible code under Skills/constitution even when the hard gate has not yet
+positively admitted that path class.
+
+
 ## Ownership
 
 Do not treat research, a workspace artifact, a local diff, a commit, or an opened
