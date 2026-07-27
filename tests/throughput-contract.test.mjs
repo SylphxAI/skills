@@ -29,6 +29,27 @@ test('work and delivery standards require bounded work and event-driven release'
   assert.match(enact, /must not\s+remain `scheduling=ready` with no active claim and no subscription/);
 });
 
+test('Enact owns work and review state instead of session-local pairs', () => {
+  const constitution = read('../runtime/constitution.md');
+  const agentFirst = read('../skills/agent-first-development-standard/references/full-standard.md');
+  const enact = read('../skills/enact-work-coordination/references/enact-adapter-contract.md');
+  const selfFeeding = read('../skills/self-feeding-agent-loop-standard/references/full-standard.md');
+  const adr = read('../docs/adr/ADR-0020-enact-authoritative-work-and-review-pools.md');
+
+  assert.match(constitution, /disposable execution context, not work authority/);
+  assert.match(constitution, /proposal, admission, and claim distinct/);
+  assert.match(constitution, /not permanent agent roles or\s+one-to-one pairs/);
+  assert.match(agentFirst, /A session is not a work ledger/);
+  assert.match(agentFirst, /Review is an obligation selected from the candidate's risk/);
+  assert.match(enact, /Do not model an Advisor as a permanent supervisor of one Executor/);
+  assert.match(enact, /publish the typed verdict, findings, attestation, or correction Work/);
+  assert.match(selfFeeding, /shared Work graph, not a set of permanent paired\s+agents/);
+  assert.match(selfFeeding, /Executor release boundary/);
+  assert.match(selfFeeding, /durable Work terminal is separate/);
+  assert.doesNotMatch(selfFeeding, /Reviewers discover evidence-backed issues and verify fixes they opened/);
+  assert.match(adr, /Provider-native truth remains federated/);
+});
+
 test('CI contract selects and coalesces snapshots without runner bootstrap', () => {
   const ci = read('../skills/ci-admission-standard/references/full-standard.md');
   const integration = read('../skills/parallel-change-integration-standard/references/full-standard.md');

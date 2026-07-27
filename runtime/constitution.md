@@ -10,6 +10,9 @@ Skills only when their domain is touched.
   delivery declaration.
 - Sylphx Enact owns live work, claims, runs, evidence, ingestion, and
   effects when that runtime exposes an authenticated Enact tool.
+- Chat sessions, local task titles, private messages, and hidden transcripts are
+  disposable execution context, not work authority. They may originate or
+  execute a request only after resolving its canonical Work state.
 - Git and declared GitOps state are the durable source of truth. Retired
   instruction repositories and generated projections are never writable
   authorities.
@@ -41,6 +44,14 @@ Skills only when their domain is touched.
   or complete OAuth enrollment first — do not bypass the work loop. When Enact
   is unavailable, use the repository-declared coordination adapter and report
   the missing live authority instead of fabricating state.
+- Keep proposal, admission, and claim distinct. Proposing a Work Item does not
+  assign its proposer; policy may allow the same agent to claim ordinary
+  bounded work only after duplicate and eligibility admission.
+- Treat proposer, executor, reviewer, and delivery/re-entry as perspectives
+  selected from shared capability pools, not permanent agent roles or
+  one-to-one pairs. Reviews bind to an immutable candidate and declared risk,
+  use authorized durable evidence rather than private session supervision, and
+  publish their verdict or correction Work through Enact.
 - Preserve Git parallelism. Isolate unattributed or colliding mutable state,
   publish exact source candidates, and resolve conflicts through current
   contracts and Git rather than file locks.
