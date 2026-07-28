@@ -39,7 +39,7 @@ Platform is the delivery authority and performs one central admission:
    - the path set is ordinary reversible.
 3. **Select the producer path (path-neutral admission).**
    - **Both PR and direct-trunk are valid** for ordinary reversible work
-     (ADR-01KYM9PATHN3VTRXADM1SS1001). CI must not fail solely because ordinary
+     (ADR-01KYM9PBWRK1DR3T1R3M3NT001). CI must not fail solely because ordinary
      work arrived as a PR.
    - **Prefer** FF/CAS direct-trunk for internal ordinary when rulesets allow
      (lower latency, less forge ceremony). Opening a PR for ordinary internal

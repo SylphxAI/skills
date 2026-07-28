@@ -21,7 +21,7 @@ Current product source locators for agents with repository access:
 - `SylphxAI/enact:docs/runbooks/agent-work-loop.md` — agent operating loop; and
 - `SylphxAI/platform:docs/adr/ADR-5127-platform-candidate-plane.md`,
   `ADR-01KYM9PBWRK1DR3T1R3M3NT001-public-work-id-retirement.md`, and
-  `ADR-01KYM9PATHN3VTRXADM1SS1001-path-neutral-admission.md` — private lineage
+  `ADR-01KYM9PBWRK1DR3T1R3M3NT001-path-neutral-admission.md` — private lineage
   and path-neutral PR/DT admission.
 
 ## Semantic surface
