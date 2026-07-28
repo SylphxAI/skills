@@ -31,7 +31,7 @@
       "name": "agent-first-development-standard",
       "description": "No-human parallel development packets, change attribution, collision scopes, and machine-verifiable acceptance. Use when defining or running multi-agent software delivery without a human review dependency. Do not use for a small local edit or live Work Graph operations.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:baa7fea9fd27a327778cf3b6aec84e3189f3473f593e7fa3111de37209d8c496"
+      "packageDigest": "sha256:ee6f5c714053002723fad262ff7064d1cbf1d40eddf8587615bab0129acd9848"
     },
     {
       "name": "agent-native-standard",
@@ -215,9 +215,9 @@
     },
     {
       "name": "enact-work-coordination",
-      "description": "Connect, operate, or audit agent work through the Sylphx Enact operating graph using explicit Tenant, Workspace, and optional Project identity; Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-provider observations. Use when implementing an Enact client or adapter, binding a repository or agent workflow to Enact, recovering a missing MCP work loop, or verifying Enact work provenance. Do not use for portable work-ledger design, ordinary Git operations, or static Skills authoring.",
+      "description": "Connect, operate, or audit agent work through the Sylphx Enact operating graph using explicit Organization and Project identity; Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-provider observations. Use when implementing an Enact client or adapter, binding a repository or agent workflow to Enact, recovering a missing MCP work loop, or verifying Enact work provenance. Do not use for portable work-ledger design, ordinary Git operations, or static Skills authoring.",
       "path": "skills/enact-work-coordination/SKILL.md",
-      "packageDigest": "sha256:26317e3f2e28cec7d5df5ecd107b7151c0e0dc32d4b38ea3a20d121c3541a09e"
+      "packageDigest": "sha256:c7dbcf0b3718dff28eb5c9c0b900e6956e20275dcd362fb15e49d94b2a31a3c1"
     },
     {
       "name": "engineering-standard",

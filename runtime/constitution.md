@@ -29,18 +29,23 @@ Skills only when their domain is touched.
 - Apply every matching binding Standard, Procedure, and Profile from the active
   Skills catalog. Use native Skill discovery; do not invent a meta-router or
   copy detailed policy into repository instructions.
-- When Enact is available, bind work to its canonical Work Item and an
-  actual claimed attempt/run **before substantive mutation**; heartbeat and
-  checkpoint durable progress. Claims own work, not files, paths, branches, or
-  source. Treat Enact as available when live MCP tools are present after the
-  MCP client completes OAuth against Enact protected-resource metadata (RFC
-  9728). Long-lived bearer env vars or host token files are break-glass only —
-  never auto-export them from shell profiles, never inject them by replacing
-  vendor agent executables/wrappers, and never treat them as a substitute for
-  OAuth discovery/login/refresh/revocation. If MCP tools are missing, reconnect
-  or complete OAuth enrollment first — do not bypass the work loop. When Enact
-  is unavailable, use the repository-declared coordination adapter and report
-  the missing live authority instead of fabricating state.
+- When Enact is available, bind **substantive multi-agent or long-running
+  objectives** to a canonical Work Item and claimed attempt/run **before that
+  objective's mutation**; heartbeat and checkpoint durable progress. Claims own
+  work objectives, not files, paths, branches, worktrees, or pull requests.
+  Treat Enact as available when live MCP tools are present after the MCP client
+  completes OAuth against Enact protected-resource metadata (RFC 9728).
+  Long-lived bearer env vars or host token files are break-glass only. If MCP
+  tools are missing, reconnect or complete OAuth enrollment first — do not
+  substitute a forge PR or commit trailer for the work loop. When Enact is
+  unavailable, use the repository-declared coordination adapter and report the
+  missing live authority instead of fabricating state.
+- **Do not require raw Work ids (`wi_…`) in public commits or PR bodies.**
+  Coordination lineage for source admission is a private Platform Candidate
+  binding (`source_revision → work_item_id`). Git is an optional connector and
+  durable **code** truth when the deliverable is source — not the work ledger.
+  Local commits may proceed without a forge-visible Work trailer; material
+  progress still checkpoints into Enact.
 - Preserve Git parallelism. Isolate unattributed or colliding mutable state,
   publish exact source candidates, and resolve conflicts through current
   contracts and Git rather than file locks.
