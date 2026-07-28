@@ -240,20 +240,23 @@ Production deploy proof remains separate from PR preview proof.
 ### Package release
 
 Package producers follow `delivery-standard`. JavaScript/TypeScript packages use Changesets
-unless a repo-local ADR proves an equivalent. Release/version PRs must be opened
-by a dedicated least-privilege GitHub App or bot identity so CI triggers
-normally and release commits have stable audit identity. Each org designates
-one release App identity in org-level configuration; the control-plane task is
-to certify its permissions, installation scope, and status context behavior,
-not to create a duplicate bot.
+unless a repo-local ADR proves an equivalent. Release intent enters the same
+immutable Candidate path as product source. When central admission selects a
+release/version PR compatibility envelope, it must be opened by a dedicated
+least-privilege GitHub App or bot so CI triggers normally and the exact
+Candidate has stable audit identity. Each org designates one release App
+identity in org-level configuration; the control-plane task is to certify its
+permissions, installation scope, Candidate binding, and status behavior, not
+to create a duplicate bot or make PR projection the steady-state workflow.
 
 Package release adoption is centrally audited through the Sylphx Enact
 package-release conformance projection. Repositories that publish or
 appear to publish packages must expose `delivery.packageRelease` facts; the
-audit then checks release intent, bot-owned version PR evidence, release gates,
+audit then checks release intent, Candidate and optional adapter-owned version
+projection evidence, release gates,
 publish identity, OIDC/token fallback posture, provenance, and registry
-readback. Findings become migration issues or generated PRs, not manual
-dashboard review.
+readback. Findings become Enact Work and immutable remediation Candidates, not
+manual dashboard review, ad hoc issues, or agent-opened PRs.
 
 Collision-resistant artifact identity is centrally audited through the Control
 Plane artifact-identity conformance projection. Repositories should not create

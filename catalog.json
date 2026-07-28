@@ -31,7 +31,7 @@
       "name": "agent-first-development-standard",
       "description": "No-human parallel development packets, change attribution, collision scopes, and machine-verifiable acceptance. Use when defining or running multi-agent software delivery without a human review dependency. Do not use for a small local edit or live Work Graph operations.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:b06b759373428f6d87702dd33b3b5c02428d58bd4597e1e86e9523f22eaaca9d"
+      "packageDigest": "sha256:37c418338b888c54c948f35803cbaa6d91438eb5b52b34f5550a57898587055b"
     },
     {
       "name": "agent-native-standard",
@@ -73,7 +73,7 @@
       "name": "autonomous-execution-standard",
       "description": "Autonomous scheduling: critical-path focus, work-conserving progress, complexity-gated resource-safe delegation, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:3528539f9afc3112132db1b2dfe2fa7f42d7c9858df7fa927fe866cd76b4481b"
+      "packageDigest": "sha256:846df3bb4dc65df8374598a843bd91992ad739dc82f4bc1c1ec0df437217bfbd"
     },
     {
       "name": "board-metrics-operating-review",
@@ -97,13 +97,13 @@
       "name": "ci-runner-capacity-standard",
       "description": "Design or diagnose CI runner capacity, queue/pickup latency, execution profiles, merge-queue backpressure, inventory uncertainty, and critical-path isolation. Use when CI jobs wait, runners disappear, queues saturate, or capacity policy must change. Do not use for a candidate failure caused by product code.",
       "path": "skills/ci-runner-capacity-standard/SKILL.md",
-      "packageDigest": "sha256:af6d3b78fb54ffe99984a266bf8779b47cd2a0bf8bedeb93a138afb8204d8dab"
+      "packageDigest": "sha256:0fd811ba20b6ba778ad4f7f13ec067c5a7460327a059a61b43f820337eb3cec5"
     },
     {
       "name": "commercial-decision-standard",
       "description": "Pricing, packaging, entitlements, commercial ADRs, and market-positioning evidence. Use when making a durable revenue, packaging, licensing, or route-to-market decision. Do not use for implementing an already-decided checkout or billing contract.",
       "path": "skills/commercial-decision-standard/SKILL.md",
-      "packageDigest": "sha256:b8cc2ca5fc63813b9f928688512b136af6ed9b26e46c4c24cced393c2017383b"
+      "packageDigest": "sha256:b6a9078055263296ac29b7ede50d08acb720bba174787b1d263aa230c3b70100"
     },
     {
       "name": "convergent-review",
@@ -175,7 +175,7 @@
       "name": "delivery-standard",
       "description": "Shipped-state proof across source landing, artifacts, deployment, rollback, and production readback. Use when delivering a change or deciding whether it is truly released or live. Do not use when only local implementation is in scope.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:9b04e763274c7354da1745096c651f5d37e32aaba3cbfab2db1053985df89bb8"
+      "packageDigest": "sha256:a526c5d300738192caabb020282cccddadc3f07c6bf1aae0ddfbffd1b87b7e12"
     },
     {
       "name": "dependency-version-selection",
@@ -241,7 +241,7 @@
       "name": "enterprise-control-plane-standard",
       "description": "Organization-wide manifests, rulesets, selectors, reconcilers, audits, and status projections. Use when one policy or adoption decision must apply consistently across many repositories. Do not use for a product-local setting with no cross-repository owner.",
       "path": "skills/enterprise-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:7850e6e80ca5dc7ba2b4919e6be2d69b0e6b08913ab34426afe07121b87800da"
+      "packageDigest": "sha256:11de5e7068f03a29bc909127e25d44f0a910ddabc29785fa74138077d8d4fdf7"
     },
     {
       "name": "enterprise-profile-standard",
@@ -553,7 +553,7 @@
       "name": "self-feeding-agent-loop-standard",
       "description": "Recurring autonomous work loops with issue intake, implementation, review, delivery, and machine-verifiable continuation gates. Use when a durable agent process should find and complete new work repeatedly. Do not use for one bounded task.",
       "path": "skills/self-feeding-agent-loop-standard/SKILL.md",
-      "packageDigest": "sha256:328756d574a34fd82d23531fdf3fc4e853ed8018d17daad3e0eb47325d891205"
+      "packageDigest": "sha256:806f40212b69e7bcd7bee594867fe55ba628ced15dc24041930388e0f1f653c5"
     },
     {
       "name": "semantic-taxonomy-design",

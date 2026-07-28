@@ -175,24 +175,28 @@ decision continues must feed a check, issue, alert, or scheduled review record.
 
 ## Automation Identity
 
-Generated commercial, release, pricing-config, and policy-sync PRs must use a
-dedicated GitHub App or bot identity where the PR must trigger ordinary CI. Do
-not rely on a human account, long-lived personal access token, or repository
-`GITHUB_TOKEN` as the normal path for PRs that need downstream workflow runs.
+Generated commercial, release, pricing-config, and policy-sync changes publish
+immutable Candidates; producers do not choose a PR. Where central admission
+selects a provider PR compatibility envelope and it must trigger ordinary CI,
+the projection uses a dedicated GitHub App or bot identity. Do not rely on a
+human account, long-lived personal access token, or repository `GITHUB_TOKEN`.
 
 Use separate identities for separate risk boundaries:
 
-- the org's designated release bot for package version PRs, Changesets
+- the org's designated release bot for adapter-owned package version
+  projections, Changesets
   releases, release statuses, and provenance evidence; package
   registry publishing should use the protected workflow's
   OIDC/trusted-publishing identity where the ecosystem supports it;
-- the org's automation bot or an equivalent platform app for instruction/policy
-  sync, generated commercial config PRs, and conformance remediation;
+- the org's automation bot or an equivalent platform app for adapter-owned
+  instruction/policy sync, commercial-config projections, and conformance
+  remediation;
 - Renovate/Dependabot remain dependency-update identities, not release or
   pricing authorities.
 
-The bot is not a reviewer. It is the auditable actor that creates generated
-diffs and emits statuses; branch protection and required gates still decide.
+The bot is not a reviewer or lane selector. It is the auditable actor for a
+centrally selected provider projection; Candidate obligations and required
+gates still decide.
 
 ## Approval Boundary
 

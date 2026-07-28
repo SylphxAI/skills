@@ -100,3 +100,26 @@ test('agents publish one Candidate while central admission selects the adapter',
   assert.match(integration, /Platform owns Candidate identity and readback, selection evidence, landing CAS/);
   assert.match(adr, /It is never an alternative\s+Work queue, review authority, completion state, or safety tier/);
 });
+
+test('generated source and queue waits do not reintroduce PR-first worker occupancy', () => {
+  const agentFirst = read('../skills/agent-first-development-standard/references/full-standard.md');
+  const delivery = read('../skills/delivery-standard/references/full-standard.md');
+  const enterprise = read('../skills/enterprise-control-plane-standard/references/full-standard.md');
+  const commercial = read('../skills/commercial-decision-standard/references/full-standard.md');
+  const autonomous = read('../skills/autonomous-execution-standard/references/full-standard.md');
+  const runner = read('../skills/ci-runner-capacity-standard/references/full-standard.md');
+  const selfFeeding = read('../skills/self-feeding-agent-loop-standard/references/full-standard.md');
+  const adr = read('../docs/adr/ADR-0020-enact-authoritative-work-and-review-pools.md');
+
+  assert.match(delivery, /Versioning, changelog, registry-index, policy\s+sync, and other generated-source updates are internal Candidates/);
+  assert.match(enterprise, /Findings become Enact Work and immutable remediation Candidates/);
+  assert.match(commercial, /producers do not choose a PR/);
+  assert.match(autonomous, /branch or PR shape is a centrally selected delivery-adapter\s+projection/);
+  assert.match(runner, /subscribe, release worker capacity, and let the next provider event re-enter/);
+  assert.match(adr, /System-generated source uses the same path/);
+  assert.doesNotMatch(agentFirst, /bot-owned version PR/);
+  assert.doesNotMatch(delivery, /normal path is release intent in source control, a generated version PR/);
+  assert.doesNotMatch(enterprise, /Findings become migration issues or generated PRs/);
+  assert.doesNotMatch(runner, /Keep polling/);
+  assert.doesNotMatch(selfFeeding, /prompt-change PR/);
+});

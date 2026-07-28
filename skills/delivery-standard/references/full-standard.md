@@ -154,39 +154,43 @@ path, or mutate shared infrastructure outside GitOps/IaC.
 ## Package Publication
 
 If a repository publishes versioned packages, publication is production delivery.
-The normal path is release intent in source control, a generated version PR owned
-by a GitHub App or bot, release preflight and supply-chain gates, merge through
-branch protection, workflow-owned publication, then registry readback.
+The normal path is machine-readable release intent published as the same
+immutable Candidate contract, centrally derived release and supply-chain
+obligations, adapter-selected CAS landing, workflow-owned publication, then
+registry and provenance readback. Versioning, changelog, registry-index, policy
+sync, and other generated-source updates are internal Candidates; their
+generator or bot never chooses a PR lane.
 
-Use a dedicated release GitHub App/bot token for generated version PRs. Do not
-use the repository `GITHUB_TOKEN` as the normal release PR author: GitHub
-suppresses many workflow-triggered events from `GITHUB_TOKEN`, and automation PR
-workflows may require human approval before running. A GitHub App installation
-token keeps the no-human path intact while preserving least privilege and audit
-identity. Each org designates one release App/bot identity in org-level
-configuration; certify and reuse it instead of creating duplicate bot
-identities.
+If central admission selects a provider version-PR compatibility envelope, a
+dedicated least-privilege GitHub App/bot owns that projection. Do not use the
+repository `GITHUB_TOKEN`: GitHub suppresses many downstream events from it,
+and automation PR workflows may require human approval before running. The
+envelope binds the exact Candidate and remains controller-owned until readback;
+it is not a second release workflow or permanent reason to retain PR-first.
+Each org designates one release App/bot identity for compatibility projections
+and certifies it instead of creating duplicate identities.
 
 JavaScript and TypeScript source products published to npm should use Changesets
 for release intent, versioning, and changelog generation. A generated npm/npx
 adapter for a native CLI instead derives its version and artifact mapping from
 the CLI release identity under `software-distribution-readiness`; it must not
 create a second release authority. Other ecosystems may use native equivalents
-only when they preserve the same invariants: machine-readable intent, bot-owned
-version PR, generated release notes, least-privilege publish identity,
+only when they preserve the same invariants: machine-readable intent,
+Candidate with an adapter-owned version projection where required, generated
+release notes, least-privilege publish identity,
 provenance or attestation where applicable, and package-registry proof.
 
 For npm publication, prefer trusted publishing through GitHub Actions OIDC over
-long-lived npm tokens. The GitHub App/bot identity owns generated version PRs
-and release statuses; the protected publish workflow owns registry
+long-lived npm tokens. The GitHub App/bot identity owns any adapter-selected
+version projection and release statuses; the protected publish workflow owns registry
 authentication and should use OIDC/provenance when the registry and package
 scope support it. A long-lived registry token is a bounded fallback only: it
 needs least privilege, owner, reason, expiry, rotation path, and readback proof.
 
-Use the current package-release conformance capability to find package producers,
-manifest gaps, unsafe version-PR identity, missing release/provenance gates,
-token-only npm publishing, and missing registry readback before claiming a
-package-release repository is adopted.
+Use the current package-release conformance capability to find package
+producers, manifest gaps, unbound or agent-authored version projections,
+missing release/provenance gates, token-only npm publishing, and missing
+registry readback before claiming a package-release repository is adopted.
 
 Do not publish packages manually from a workstation or from a human-owned token
 as the standard path. After an immutable package version is published, recovery
