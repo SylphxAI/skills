@@ -78,11 +78,10 @@ integrity fences. A provider pull request or merge queue is allowed only as:
 Unknown, conflicting, or unclassified paths default to **stronger obligations**
 (compatibility / review), not “ban PR”.
 
-Positive ordinary classes (docs/evidence, tests-only, and repo
-`.github/ordinary-direct-trunk-admission.json` prefixes when present) may use
-DT CAS when Platform selects it. Hard-fenced classes (workflows, ADR,
-migrations, credentials/security, public contracts, instruction authority) never
-become ordinary via a path list alone.
+Positive ordinary classes (docs/evidence, tests-only, and similar low-risk
+path classes Platform classifies as ordinary) may use DT CAS when Platform
+selects it. Hard-fenced classes (workflows, ADR, migrations, credentials/security,
+public contracts, instruction authority) never become ordinary via a path list alone.
 
 Do **not** implement CI fail-closed “ordinary PR → must use DT”. That gate was
 retired as a throughput and external-contributor defect.
