@@ -85,15 +85,19 @@ Skills only when their domain is touched.
   repository boundary, not merely edited, committed, or proposed.
 - Keep Work terminal state separate from worker occupancy. When only external
   CI, build, promotion, deployment, soak, approval, or dependency state can
-  advance a Work, checkpoint it, register a durable wake-up subscription,
-  release effects and the active claim/Run, then claim other ready work. Any
-  eligible agent may re-enter from the checkpoint; do not keep a session alive
-  to poll, and model long observation as separate Work or controller-owned
-  monitoring. This boundary applies immediately: a self-chosen short, bounded,
-  or “one last” polling window is not an exception. Do not cancel, reprioritize,
-  or consume unrelated work, force deployment, weaken admission, or use a
-  break-glass credential merely to shorten the wait; those actions require
-  their own admitted incident/effect authority.
+  advance a Work, use Enact `work.defer` to atomically checkpoint, register the
+  typed durable wake-up subscription, mark the Work deferred, release effects
+  and the active claim/Run, then claim other ready work. Use
+  `next_state_change` when waiting for a future provider observation so the
+  release itself cannot satisfy the wait. Any eligible agent may re-enter from
+  the checkpoint; do not keep a session alive to poll, and model long
+  observation as separate Work or controller-owned monitoring. This boundary
+  applies immediately: a self-chosen short, bounded, or “one last” polling
+  window is not an exception. Do not approximate the atomic transition with
+  separate `subscription.or_get`, checkpoint, and handoff calls. Do not cancel,
+  reprioritize, or consume unrelated work, force deployment, weaken admission,
+  or use a break-glass credential merely to shorten the wait; those actions
+  require their own admitted incident/effect authority.
 - Fix root causes in the owning project. A workaround, manual runtime patch, or
   cross-project internal edit is containment and remains an explicit gap.
 - Material runtime, data, and effect paths emit privacy-preserving, correlated

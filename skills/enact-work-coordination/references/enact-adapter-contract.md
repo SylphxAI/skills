@@ -39,7 +39,7 @@ schemas own current field shape.
 | Coordinate Candidate review | Live typed review surface, or the product-declared review Work/Evidence contract | Exact Platform Candidate subject; independent principal when required |
 | Read proof chain | `proof.readback` | Never invent a stronger delivery state |
 | Shared external effect | `effect.acquire/renew/narrow/release/read` | Short-lived, proof-bound, owner-enforced fencing |
-| Durable wait | `subscription.or_get/read/cancel` | Release capacity and effect leases while waiting |
+| Durable wait | `work.defer`, then `subscription.read/cancel` | Atomically defer Work and release capacity/effect leases until typed re-entry |
 | Dependency relation | `dependency.map` | Reject invalid self/cyclic relations as product contract requires |
 | Complete | `work.complete` | Required evidence and completion authority |
 
@@ -104,20 +104,25 @@ Work completion and worker occupancy are independent. When the next transition
 depends only on CI, build, promotion, deployment, soak, approval, another Work,
 or another external event:
 
-1. publish a checkpoint with the exact candidate/evidence, current delivery
-   state, remaining terminal predicate, and next safe action;
-2. call `subscription.or_get` for the typed success, failure, terminal, claim
-   release, or dependency event that can cause re-entry;
-3. release EffectLeases and other scarce capacity;
-4. hand off or release the active Work claim without inventing a next holder;
-5. finish the current Agent Run; and
-6. claim other ready Work.
+1. call `work.defer` with the exact candidate/evidence, current delivery state,
+   remaining terminal predicate, next safe action, and typed re-entry
+   condition;
+2. use `next_state_change` when the awaited fact is a future provider
+   observation, so the current subject cursor is captured atomically;
+3. verify the returned checkpoint disposition is `external_wait`, the Work is
+   `scheduling=deferred`, the resume subscription is pending, EffectLeases and
+   Claim are released, and the current Agent Run is finished; and
+4. claim other ready Work.
 
 The subscription dispatcher may wake the original agent or any eligible agent,
 which recompiles context from durable state. A Work that is waiting must not
 remain `scheduling=ready` with no active claim and no subscription. A client
 must not keep a session alive as the durable polling mechanism. Long soak and
 observation windows are separate bounded Work or controller-owned monitors.
+Do not approximate the transition with separate `subscription.or_get`,
+checkpoint, handoff, and run-finish calls: a state change caused by release can
+consume the subscription, and partial failure can strand a ready Work or live
+lease.
 Release at the first external-only boundary: “brief”, “bounded”, “until the
 last check”, and fixed-minute polling are still passive waits, not execution.
 An executor must not cancel or reprioritize unrelated CI, force a deployment,

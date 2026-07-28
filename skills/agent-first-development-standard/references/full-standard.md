@@ -278,9 +278,11 @@ outcome.
 The Work lifecycle and worker lifecycle are separate. A Work may remain active
 until verified promotion, production behavior, recovery, or a declared
 observation window is proven, but the source agent must not remain occupied
-when only external state can advance it. Checkpoint, register a durable
-subscription, release EffectLeases and claim/Run capacity, and claim the next
-ready Work. Re-entry may be performed by the original agent or any eligible
+when only external state can advance it. Use Enact `work.defer` to atomically
+checkpoint, register the typed durable subscription, mark scheduling deferred,
+release EffectLeases and claim/Run capacity, and finish the current Run; then
+claim the next ready Work. Use `next_state_change` for future provider
+observations. Re-entry may be performed by the original agent or any eligible
 agent from the durable checkpoint. A long observation window is separate
 bounded Work or controller-owned monitoring.
 

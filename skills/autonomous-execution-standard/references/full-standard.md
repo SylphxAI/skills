@@ -301,11 +301,14 @@ it does not make the goal complete or turn a lane-local qualified stop into a
 global stop.
 
 If only an external CI, build, deploy, soak, approval, or dependency event can
-advance the durable Work, waiting is not active execution. Checkpoint the exact
-state, register an idempotent durable subscription, release EffectLeases and
-scarce capacity, hand off or release the Work claim, finish the current Run,
-and claim the next ready Work. The event may reactivate this agent or any other
-eligible agent. Do not preserve a session, claim, or worker slot merely to poll.
+advance the durable Work, waiting is not active execution. Call `work.defer` to
+atomically checkpoint the exact state, register the typed idempotent durable
+subscription, mark Work deferred, release EffectLeases and scarce Claim/Run
+capacity, and finish the current Run; then claim the next ready Work. Use
+`next_state_change` for future provider observations. The event may reactivate
+this agent or any other eligible agent. Do not preserve a session, claim, or
+worker slot merely to poll, and do not emulate the atomic transition through
+separate subscription, checkpoint, and handoff calls.
 Use a separate bounded observation Work or controller-owned monitor when an
 observation window is itself the outcome.
 
