@@ -20,8 +20,8 @@ Current product source locators for agents with repository access:
   commercial spine (Organization → Project; no Workspace product surface);
 - `SylphxAI/enact:docs/runbooks/agent-work-loop.md` — agent operating loop; and
 - `SylphxAI/platform:docs/adr/ADR-5127-platform-candidate-plane.md` plus
-  `ADR-01KYM9PRIVATE-public-work-id-retirement.md` — private Candidate lineage
-  (no public `Work: wi_…` admission).
+  `ADR-01KYM9PBWRK1DR3T1R3M3NT001-public-work-id-retirement.md` — private
+  Candidate lineage (no public `Work: wi_…` admission).
 
 ## Semantic surface
 
