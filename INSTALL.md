@@ -75,7 +75,11 @@ claim.
    prove that its selected scheduler is configured **and live**; config, timer,
    or heartbeat files alone are not activation evidence. Its source readback must also bind
    the clean managed checkout, applied state, installed targets, adapter bytes,
-   and current canonical remote head to one commit. Re-run installation once and
+   current canonical remote head, and every selected runtime's configured home
+   to the receiving process's explicit runtime-home context. A current shadow
+   directory is not evidence for the runtime that will execute work. Intentional
+   non-default homes remain supported only when the same explicit runtime-home
+   environment is present at enable, reconciliation, and readback. Re-run installation once and
    verify that generation identity, manifest timestamp, and instruction bytes
    did not change. A missing or different `sourceCommit` is not complete.
 6. Verify behavior in a fresh context or the runtime's closest supported

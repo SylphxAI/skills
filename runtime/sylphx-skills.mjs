@@ -102,6 +102,50 @@ function runtimeHomes() {
   return { codexHome, claudeHome, grokHome };
 }
 
+function autoSyncRuntimeHomeReadback(config) {
+  const expected = runtimeHomes();
+  const homeKeyByRuntime = {
+    codex: 'codexHome',
+    claude: 'claudeHome',
+    grok: 'grokHome',
+  };
+  const configured = {};
+  const selected = {};
+  const mismatches = [];
+  for (const runtime of config.agents) {
+    const homeKey = homeKeyByRuntime[runtime];
+    if (!homeKey) {
+      mismatches.push({
+        runtime,
+        configured: null,
+        expected: null,
+        reason: 'unsupported_runtime',
+      });
+      continue;
+    }
+    const configuredHome = typeof config.homes?.[homeKey] === 'string'
+      ? path.resolve(config.homes[homeKey])
+      : null;
+    const expectedHome = expected[homeKey];
+    configured[runtime] = configuredHome;
+    selected[runtime] = expectedHome;
+    if (configuredHome !== expectedHome) {
+      mismatches.push({
+        runtime,
+        configured: configuredHome,
+        expected: expectedHome,
+        reason: configuredHome ? 'different_runtime_home' : 'missing_runtime_home',
+      });
+    }
+  }
+  return {
+    current: mismatches.length === 0,
+    configured,
+    expected: selected,
+    mismatches,
+  };
+}
+
 function runtimeDefinitions() {
   const { codexHome, claudeHome, grokHome } = runtimeHomes();
   return {
@@ -710,6 +754,7 @@ function autoSyncSourceReadback(config, state) {
     remoteHead: null,
     targetsCurrent: false,
     adapterCurrent: false,
+    runtimeHomes: null,
     ...fields,
   });
   if (
@@ -722,6 +767,12 @@ function autoSyncSourceReadback(config, state) {
     || !config.agents.length
     || !config?.homes
   ) return unavailable('invalid_auto_sync_config');
+  const runtimeHomeReadback = autoSyncRuntimeHomeReadback(config);
+  if (!runtimeHomeReadback.current) {
+    return unavailable('runtime_home_mismatch', {
+      runtimeHomes: runtimeHomeReadback,
+    });
+  }
   const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
   const runGit = (args, timeout = 10_000) => spawnSync('git', args, {
     encoding: 'utf8',
@@ -797,6 +848,7 @@ function autoSyncSourceReadback(config, state) {
     remoteHead,
     targetsCurrent,
     adapterCurrent,
+    runtimeHomes: runtimeHomeReadback,
   };
 }
 
