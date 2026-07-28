@@ -12,6 +12,8 @@ test('always-on runtime separates Work terminal state from worker occupancy', ()
   assert.match(constitution, /register a durable wake-up subscription/);
   assert.match(constitution, /release effects and the active claim\/Run/);
   assert.match(constitution, /do not keep a session alive\s+to poll/);
+  assert.match(constitution, /short, bounded,\s+or “one last” polling window is not an exception/);
+  assert.match(constitution, /Do not cancel, reprioritize,\s+or consume unrelated work, force deployment/);
 });
 
 test('work and delivery standards require bounded work and event-driven release', () => {
@@ -27,6 +29,8 @@ test('work and delivery standards require bounded work and event-driven release'
   assert.match(enact, /subscription\.or_get/);
   assert.match(enact, /finish the current Agent Run/);
   assert.match(enact, /must not\s+remain `scheduling=ready` with no active claim and no subscription/);
+  assert.match(enact, /fixed-minute polling are still passive waits/);
+  assert.match(agentFirst, /Candidate acceptance releases the producer/);
 });
 
 test('Enact owns work and review state instead of session-local pairs', () => {

@@ -89,7 +89,11 @@ Skills only when their domain is touched.
   release effects and the active claim/Run, then claim other ready work. Any
   eligible agent may re-enter from the checkpoint; do not keep a session alive
   to poll, and model long observation as separate Work or controller-owned
-  monitoring.
+  monitoring. This boundary applies immediately: a self-chosen short, bounded,
+  or “one last” polling window is not an exception. Do not cancel, reprioritize,
+  or consume unrelated work, force deployment, weaken admission, or use a
+  break-glass credential merely to shorten the wait; those actions require
+  their own admitted incident/effect authority.
 - Fix root causes in the owning project. A workaround, manual runtime patch, or
   cross-project internal edit is containment and remains an explicit gap.
 - Material runtime, data, and effect paths emit privacy-preserving, correlated

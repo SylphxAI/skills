@@ -43,8 +43,11 @@ locators. Resolve exact fields from the live MCP schema or versioned product API
    deploy, and release. Bind required proof, verify owning-provider readback,
    and release promptly.
 6. Use a durable subscription when execution releases capacity while awaiting a
-   dependency or outcome generation. Do not hold a shared-effect lease while
-   waiting for CI, deployment, or observation.
+   dependency or outcome generation. Release at the first external-only
+   boundary; a self-selected short or bounded polling window is not an
+   exception. Do not hold a shared-effect lease while waiting for CI,
+   deployment, or observation, and do not manipulate unrelated CI capacity or
+   delivery admission to make the wait shorter.
 7. Complete only when the declared terminal and required delivery evidence are
    accepted by Enact. Otherwise checkpoint, block with a re-entry path,
    or create a related follow-up/rework item.

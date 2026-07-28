@@ -118,6 +118,11 @@ which recompiles context from durable state. A Work that is waiting must not
 remain `scheduling=ready` with no active claim and no subscription. A client
 must not keep a session alive as the durable polling mechanism. Long soak and
 observation windows are separate bounded Work or controller-owned monitors.
+Release at the first external-only boundary: “brief”, “bounded”, “until the
+last check”, and fixed-minute polling are still passive waits, not execution.
+An executor must not cancel or reprioritize unrelated CI, force a deployment,
+weaken a watermark, or use a break-glass bearer to manufacture an earlier wake;
+each such effect requires separate admitted authority and provider readback.
 
 ## GitHub and other provider observations
 
