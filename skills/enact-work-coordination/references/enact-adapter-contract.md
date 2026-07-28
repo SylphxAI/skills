@@ -36,6 +36,7 @@ schemas own current field shape.
 | Record progress | `work.checkpoint`, `work.block` | Material delta and next safe action |
 | Publish evidence | `evidence.publish`, `evidence.get` | Content identity; evidence does not manufacture Work |
 | Link provider fact | `work.link_external` | Observation with provider identity and freshness |
+| Coordinate Candidate review | Live typed review surface, or the product-declared review Work/Evidence contract | Exact Platform Candidate subject; independent principal when required |
 | Read proof chain | `proof.readback` | Never invent a stronger delivery state |
 | Shared external effect | `effect.acquire/renew/narrow/release/read` | Short-lived, proof-bound, owner-enforced fencing |
 | Durable wait | `subscription.or_get/read/cancel` | Release capacity and effect leases while waiting |
@@ -56,9 +57,10 @@ semantics.
 - Claim leases responsibility and recovery authority for that Work/Attempt.
 - `write_scope` expresses the maximum intended change envelope and collision
   visibility; it does not lock files or repositories.
-- EffectLease protects a scarce mutation boundary such as landing, migration,
-  deployment, release, or provider effect. The actual owner adapter must enforce
-  fencing and record readback.
+- EffectLease protects an Enact-eligible scarce mutation boundary such as a
+  schema migration, credential mutation, infrastructure mutation, or external
+  provider mutation. Platform owns and fences source landing, promotion,
+  deployment, and release; Enact must not issue authority for those effects.
 
 Do not hold an EffectLease during ordinary source editing or passive waits. Do
 not treat a successful preflight, acquisition, or health response as proof that
@@ -72,10 +74,13 @@ must not become a second source of truth for Work priority, ownership, review,
 or completion. The client resolves or proposes canonical Work, claims an
 eligible Attempt, and compiles context from Enact before substantive mutation.
 
-Do not model an Advisor as a permanent supervisor of one Executor. Candidate
-review is a typed Work obligation selected by risk:
+Do not model an Advisor as a permanent supervisor of one Executor. The producer
+publishes one immutable Candidate to Platform and never chooses PR versus
+direct trunk. Platform derives whether independent review is required and
+projects that requirement into Enact as a typed Work obligation:
 
-1. bind the immutable candidate and evidence set to the owning Work/Attempt;
+1. bind the immutable Platform Candidate reference and evidence set to the
+   owning Work/Attempt without copying Candidate authority into Enact;
 2. run deterministic verification first;
 3. when independent judgment is required, create or resolve a review
    obligation for an eligible reviewer that has not consumed private sibling
@@ -86,6 +91,12 @@ review is a typed Work obligation selected by risk:
 The same general-purpose agent may propose, execute, or review different Work.
 It must not self-satisfy an independence requirement merely by changing its
 local role label.
+
+An external pull request is ingested by Platform as the same Candidate contract
+and linked to Enact as a provider observation. A temporary compatibility PR
+projection is controller-selected. Neither becomes a second Work queue, review
+ledger, or completion authority, and agents do not keep a session alive to
+supervise it.
 
 ## Durable external wait and worker release
 

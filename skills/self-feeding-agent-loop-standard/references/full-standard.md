@@ -6,16 +6,19 @@ Use this standard when agents are asked to find issues themselves and drive the
 fix loop through other agents. This is a branch of the agent-first development
 model: user-directed work remains the highest-priority lane, while the
 self-feeding lane continuously discovers evidence-backed work and moves accepted
-items through the active delivery profile's coordination, admission,
+items through the same immutable Candidate ingress, central admission,
 serialization, and verification controls as any other change. Forge-specific
-terms below describe the current `github-delivery` profile; they are adapter
-mechanics, not constitutional invariants.
+terms below describe provider projections; they are adapter mechanics, not
+constitutional invariants or an agent-selected lane.
 
 The loop is a program system, not a motivational prompt. Its launch envelope and
 role references are versioned, it runs with a bounded tick/readout contract, and
 it improves only through decision-linked changes to this package. Source-controlled wording
 does not make an entire runtime prompt exact or override outcome-owned
 delegation.
+
+Executors never choose PR versus direct trunk; they publish one immutable
+Candidate and return adapter selection to central admission.
 
 This standard composes with:
 
@@ -39,9 +42,9 @@ agents:
 Owner / production / CI / security / customer signals
   -> propose -> deduplicate -> admit and prioritize Work
   -> eligible Executor claims one bounded outcome
-  -> immutable candidate + deterministic proof
-  -> risk-selected review obligation, only when required
-  -> source landing -> async delivery subscription -> worker release
+  -> immutable Candidate + deterministic proof
+  -> central risk/collision/evidence/review/effect obligations
+  -> adapter-selected CAS landing -> async delivery subscription -> worker release
   -> delivery event completes or creates/re-enters correction Work
 
 Coordinator / scheduler
@@ -60,10 +63,10 @@ monitoring.
 Resolve the live work authority before launch. When an authenticated Enact
 runtime is exposed, its Work Item, claim, run, checkpoint, and evidence records
 are canonical coordination state. Otherwise use the repository-declared
-coordination adapter; under `github-delivery`, issues/comments may project
-intake and claims while PRs/checks/merge/deploy/readback carry source and
-delivery evidence. Git and GitHub do not become live work authority merely
-because they are durable. Chat-only state is not ownership.
+coordination adapter. GitHub issues, PRs, checks, merge, deploy, and readback may
+project provider facts, but every internal and imported external change enters
+the same Candidate contract. Git and GitHub do not become live Work or review
+authority merely because they are durable. Chat-only state is not ownership.
 
 Child agents work as independent lanes. Reviewers and Executors must not read
 each other's private run logs, hidden prompts, final reports, scratch files, or
@@ -102,9 +105,10 @@ Every self-feeding loop launch must state:
 - run mode: `bounded-tick` by default, or an explicitly named continuous mode;
 - maximum coordinator ticks for this invocation;
 - model/reasoning launch profile when the runtime supports model selection;
-- allowed mutation scope: issue-only, branch/PR, deploy, or read-only dry run;
-- delivery gate: local validation, PR only, merge queue, deploy/readback, or
-  explicit blocker reporting;
+- allowed mutation scope: proposal-only, Candidate publication, external
+  effect, or read-only dry run;
+- delivery boundary: Candidate submitted, source landed, verified snapshot,
+  deploy/readback, or explicit blocker reporting;
 - parent readout requirement.
 
 For subagents that start from a fresh context, keep that context clean for
@@ -157,7 +161,7 @@ The tick report must include:
 - active Attempts grouped by temporary perspective, with agent IDs where available;
 - Work queue counts and pending review-obligation counts;
 - stale/suspected stale claims;
-- stalled/suspected stalled PRs;
+- stalled/suspected stalled Candidates and provider projections;
 - new agents started and agents intentionally not replaced;
 - prompt or workflow issues needing Skills-package or owner attention;
 - exact blockers and next safe action.
@@ -219,7 +223,8 @@ The Coordinator may:
 - compare child outputs after a bounded tick for parent health reporting, without
   passing those outputs to sibling agents;
 - scale within declared soft limits;
-- recover suspected stale claims and stalled PRs through the documented process;
+- recover suspected stale claims and stalled Candidate/provider projections
+  through the documented process;
 - record prompt or workflow defects in the tick report;
 - ask the parent/process owner for an owner-product or binding-instruction decision.
 
@@ -252,7 +257,7 @@ produces no report, or the launch command is unclear, the Coordinator records a
 Coordinator Tick Report within the tick timebox.
 
 The Coordinator performs qualification before launch, but not deep child work.
-It may inspect queue summaries, candidate issue/PR identity, active claims,
+It may inspect queue summaries, Work/Candidate identity, active claims,
 collision state, downstream capacity, and the evidence needed to bound the
 lane. Code investigation, diagnosis, and implementation method belong to the
 child. If qualification cannot complete inside the tick, return
@@ -322,7 +327,7 @@ The Executor release boundary is:
 
 ```text
 work accepted -> root cause found -> fix implemented -> validation green
-  -> exact candidate submitted -> required source admission -> source landed
+  -> exact Candidate submitted -> central source admission -> source landed
   -> checkpoint + delivery subscription -> claim/Run released
 ```
 
@@ -348,8 +353,8 @@ Self-discovery must not flood the backlog or CI system.
 - Cap concurrent active source Attempts per repository by the declared soft limit.
 - Do not open vague improvement issues.
 - Group tightly related failures; split unrelated root causes.
-- Prefer the issue or PR closest to the canonical contract when duplicates
-  occur.
+- Prefer the canonical Work/Candidate closest to the owning contract when
+  duplicate issue or PR projections occur.
 - If CI/runner capacity, merge queue latency, or issue noise becomes the
   bottleneck, reduce scale rather than creating more work.
 

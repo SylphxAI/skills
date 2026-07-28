@@ -5,6 +5,9 @@ This standard owns the lifecycle from attributed mutable work to an immutable
 source candidate and reconciled workspace. Delivery profiles own transport,
 admission, landing, release, and deployment.
 
+The source author always publishes the same Candidate contract and never
+chooses PR versus direct trunk. Platform owns adapter selection.
+
 Composes with:
 
 - [`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md) for Work Items,
@@ -17,14 +20,14 @@ Composes with:
   for immutable candidate selection and compare-and-swap landing when selected.
 - [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md) for exact-candidate
   proof and scarce verification capacity.
-- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for the active lane's landing
-  and terminal delivered-state proof.
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for central Candidate admission,
+  adapter-selected landing, and terminal delivered-state proof.
 
 ## Canonical lifecycle and vocabulary
 
 ```text
 work -> attempt -> checkpoint -> exact source candidate
-     -> profile-selected landing -> proof -> workspace reconciliation
+     -> central obligation derivation -> CAS landing -> proof -> workspace reconciliation
 ```
 
 - **Work Item:** the canonical coordination identity: objective, owning
@@ -44,10 +47,11 @@ work -> attempt -> checkpoint -> exact source candidate
 - **Commit:** a Git snapshot and message. It may encode a private checkpoint, a
   whole candidate, or one coherent state in a candidate sequence. Its role must
   come from typed state and reachability, never message inference.
-- **Pull request:** a mutable compatibility-lane coordination and admission
-  envelope containing successive immutable candidate generations. It may
-  contain multiple commits and is not a candidate, canonical work identity, or
-  proof that its current head is the final integration snapshot.
+- **Pull request:** a mutable provider projection for an imported external
+  contribution or a typed, bounded compatibility obligation. Platform ingests
+  or generates it from immutable Candidate generations. It is not a Candidate,
+  canonical Work identity, review authority, safety tier, or proof that its
+  current head is the final integration snapshot.
 - **Worktree:** an ephemeral checkout/index isolation mechanism. It is not an
   identity, authority, tenancy, credential, hermeticity, or security boundary.
 
@@ -108,19 +112,13 @@ base, owned scope, validation state, remaining work, and next safe action.
 
 Private checkpoint commits MAY be imperfect, fail incomplete tests, or be
 reorganized while they remain explicitly fenced from nomination and external
-effects. Before candidate nomination, normalize the exact source state:
-
-- Under direct-trunk selection, land one coherent commit or preserve a sequence
-  in which every commit is coherent and valid. Landing is non-force
-  fast-forward/compare-and-swap; a rebase or moved frontier creates a new
-  candidate requiring affected reproof.
-- Under a compatibility lane, each published pull-request head identifies one
-  immutable candidate generation for feedback. If a merge queue synthesizes a
-  base+head or merge-group snapshot, that exact snapshot—not the mutable PR—is
-  the admission candidate and must run the required proof. Multiple commits are
-  allowed. If the merge strategy preserves commits, each preserved state must
-  be coherent; otherwise squash at admission. Bind the admitted head/tree or
-  merge-group tree to the landed artifact when the forge rewrites the SHA.
+effects. Before Candidate nomination, normalize one coherent commit or a
+sequence in which every preserved commit is coherent and valid. Platform
+selects the landing adapter and applies non-force expected-head CAS. A rebase or
+moved frontier creates a new Candidate identity requiring affected reproof. If
+a compatibility merge queue synthesizes base+head or a merge-group snapshot,
+that exact snapshot—not the mutable PR—is the admitted Candidate. Bind any
+forge-rewritten landed SHA back to the admitted tree.
 
 Commit subjects state the durable result in imperative or outcome form. Add a
 body only for non-obvious rationale, invariant, compatibility, risk, or recovery.
@@ -133,11 +131,12 @@ an agent signature trailer, or a commit-count target organization-wide.
 
 Before mutation, establish an **admissible workspace**:
 
-- repository, base/frontier, active delivery lane, Work Item, attempt, owning
+- repository, base/frontier, Candidate publication contract, Work Item, attempt, owning
   boundary, and Definition of Done are resolved;
 - every existing change and untracked artifact is attributed;
-- the attempt has exclusive mutable ownership of its declared files/semantic
-  boundary, and active claims/candidates do not collide;
+- claims own Work rather than files; the attempt declares its semantic write
+  and collision scopes, and overlapping Candidates remain legal for central
+  selection/CAS;
 - shared refs, caches, generated outputs, credentials, services, databases,
   ports, deploy targets, and other effects have compatible ownership or fences.
 
@@ -178,8 +177,9 @@ authorized retention policy.
 
 | Use case | Required behavior |
 | --- | --- |
-| Ordinary reversible direct-trunk work | One exact semantically atomic candidate; narrow proof; non-force CAS/FF landing; verified-only effects. |
-| Fenced ADR, policy, security, migration, credential, public-contract, or irreversible work | Compatibility-lane PR/admission envelope; exact-head checks; configured serialization and review. |
+| Internal repository work | Publish one exact semantically atomic Candidate; central obligations; non-force CAS landing; verified-only effects. |
+| External contributor PR | Ingest exact base/head as the same Candidate; derive the same obligations; retain PR only as the public collaboration projection. |
+| Fenced ADR, policy, security, migration, credential, public-contract, or irreversible work | Central admission derives stronger review/effect obligations; a temporary compatibility PR is adapter-owned until its successor is proven. |
 | Parallel agents in one repository | Separate claimed scopes and attempts; worktrees when mutable collision domains overlap; deterministic candidate selection. |
 | Dirty checkout with unknown work | Preserve it untouched; use a known-base workspace; record the ownership gap instead of auto-cleaning. |
 | Dependent stack | Explicit DAG, valid green prefixes, topological landing, descendant reproof after identity change. |
@@ -197,12 +197,11 @@ tree or diff digest, active policy/profile digest, changed boundary, dependency
 digests, risk/effect class, validation/proof bindings, landing result, and recovery contract. Report local,
 candidate, admitted, landed, released/deployed, and live states separately.
 
-The active adapter MUST serialize this evidence in a machine-readable candidate
-record rather than prose alone. Parallel-change delivery uses the immutable
-attempt/candidate artifacts owned by the parallel-change integration standard;
-compatibility delivery uses the admission manifest plus exact PR-head and, when
-present, merge-group provenance. This standard defines their shared semantics,
-not a competing universal storage schema.
+Platform MUST serialize this evidence in one machine-readable Candidate record
+rather than prose alone. An imported external PR adds exact head/base and, when
+present, merge-group provenance to the same record. A generated compatibility
+PR projects that record; it does not create a second schema. This standard
+defines authoring semantics, not a competing Platform storage authority.
 
 Optimize and alert on candidate lead time, selected-to-landed verified rate,
 proof latency, semantic risk/size distribution, CAS/rebase retries, collision

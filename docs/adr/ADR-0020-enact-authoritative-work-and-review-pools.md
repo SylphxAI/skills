@@ -48,7 +48,10 @@ promotion, deployment, and production observations.
    perspectives on different Work. No permanent Advisor shadows an Executor.
 4. **The Executor submits a candidate, not an unverifiable completion claim.**
    The active attempt binds its exact source candidate, local evidence, residual
-   risk, and next predicate to the Work. Once source is landed at the declared
+   risk, and next predicate to the Work. The Executor never chooses PR versus
+   direct-trunk landing. Platform derives the exact
+   verification, independent-review, collision, and effect obligations and
+   selects the configured landing adapter. Once source is landed at the declared
    boundary, the Executor checkpoints, subscribes to the external outcome,
    releases effects, claim, Run, and worker capacity, then claims other ready
    Work.
@@ -80,6 +83,12 @@ promotion, deployment, and production observations.
    related Work. The Executor either continues the claimed executable action or
    checkpoints and releases during external wait. Terminal or stale sessions
    are checkpointed and stopped, not relaunched for ceremony.
+10. **There is one agent-facing Candidate path.** An internal Candidate and an
+    imported external pull request enter the same immutable Candidate contract.
+    A pull request is only a provider projection for external collaboration or
+    a typed, expiring compatibility obligation. It is never an alternative
+    Work queue, review authority, completion state, or safety tier. Central
+    admission—not agent interpretation—fails closed on unknown classification.
 
 ## Consequences
 
@@ -95,6 +104,9 @@ promotion, deployment, and production observations.
   release, subscription dispatch, and fleet flow analytics.
 - Git and Platform remain independently auditable authorities rather than
   becoming opaque attachments inside Enact.
+- Removing the agent's lane choice removes policy drift without weakening
+  review: review strength is an explicit Candidate obligation and is therefore
+  identical whether the provider input arrived as a branch, commit, or PR.
 
 ## Verification
 
@@ -107,3 +119,7 @@ promotion, deployment, and production observations.
   from a shared pool, review is emitted as typed durable state, waiting agents
   release capacity, delivery events cause re-entry, and session loss does not
   lose the Work contract.
+- Migration acceptance additionally requires an internal Candidate and an
+  imported external PR with equivalent semantic change to receive the same
+  obligation set; ordinary agents must not open or wait on PRs, while typed
+  compatibility projections remain observable and bounded.

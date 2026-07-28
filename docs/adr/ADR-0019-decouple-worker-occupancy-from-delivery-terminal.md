@@ -50,9 +50,11 @@ verification still serializes or duplicates every intermediate snapshot.
    decisions do not share one umbrella attempt or one source lineage solely to
    avoid coordination. Every exact candidate binds the child Work that owns its
    outcome.
-4. **Ordinary source capacity releases at the source delivery boundary.** When
-   the active profile defines ordinary direct-trunk, an agent that has landed a
-   semantically atomic candidate with required local proof may release capacity.
+4. **Ordinary source capacity releases at the source delivery boundary.** An
+   agent publishes one semantically atomic immutable Candidate with required
+   local proof. The delivery authority, not the agent, derives its obligations
+   and landing adapter. After the Candidate has been accepted or landed at the
+   declared source boundary, the agent may release capacity.
    The Work can remain open for verified promotion or production evidence, and
    the delivery controller or a later correction Run owns those phases.
    Incidents, irreversible effects, and explicitly deployment-terminal Works
@@ -88,8 +90,10 @@ verification still serializes or duplicates every intermediate snapshot.
   lineage. It does not require the original author session to remain alive.
 - Enact requires durable subscription and dispatch semantics; Platform requires
   selected-snapshot coalescing and content-addressed build/promotion.
-- Compatibility PRs remain valid for policy, instruction, security,
-  credentials, migrations, public contracts, and irreversible effects.
+- A provider PR may remain as a bounded external-contribution or migration
+  adapter. Agents do not choose or supervise that envelope; the central
+  admission policy creates it only while an exact typed obligation still needs
+  the predecessor serializer.
 - A parked Work with no claim and no subscription is an operational defect, not
   a normal waiting state.
 

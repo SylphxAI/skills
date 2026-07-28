@@ -59,3 +59,36 @@ test('CI contract selects and coalesces snapshots without runner bootstrap', () 
   assert.match(integration, /one useful\s+running snapshot plus the latest eligible pending snapshot/);
   assert.match(integration, /Artifact production consumes only the\s+selected snapshot identity/);
 });
+
+test('agents publish one Candidate while central admission selects the adapter', () => {
+  const constitution = read('../runtime/constitution.md');
+  const agentFirst = read('../skills/agent-first-development-standard/references/full-standard.md');
+  const delivery = read('../skills/delivery-standard/references/full-standard.md');
+  const ci = read('../skills/ci-admission-standard/references/full-standard.md');
+  const integration = read('../skills/parallel-change-integration-standard/references/full-standard.md');
+  const enact = read('../skills/enact-work-coordination/references/enact-adapter-contract.md');
+  const sourceAuthoring = read('../skills/source-authoring-standard/references/full-standard.md');
+  const selfFeeding = read('../skills/self-feeding-agent-loop-standard/references/full-standard.md');
+  const adr = read('../docs/adr/ADR-0020-enact-authoritative-work-and-review-pools.md');
+
+  for (const source of [
+    constitution,
+    agentFirst,
+    delivery,
+    ci,
+    integration,
+    enact,
+    sourceAuthoring,
+    selfFeeding,
+    adr,
+  ]) {
+    assert.match(source, /immutable (?:source )?Candidate/i);
+    assert.match(source, /do(?:es)? not choose|never\s+choose(?:s)?|do not make the agent choose/i);
+  }
+  assert.match(delivery, /Platform is the delivery authority and performs one central admission/);
+  assert.match(delivery, /external-contributor collaboration projection/);
+  assert.match(delivery, /Semantically equivalent internal and external inputs must receive\s+the same obligations/);
+  assert.match(enact, /Platform owns and fences source landing, promotion,\s+deployment, and release/);
+  assert.match(integration, /Platform owns Candidate identity and readback, selection evidence, landing CAS/);
+  assert.match(adr, /It is never an alternative\s+Work queue, review authority, completion state, or safety tier/);
+});

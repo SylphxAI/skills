@@ -19,14 +19,19 @@ Composes with:
   for candidate deduplication, cumulative snapshot verification, scoped green
   watermarks, and parallel recovery under its successor profile.
 
-## CI Pipeline Architecture — Reviewer + Serializer
+## CI Pipeline Architecture — Candidate Admission + Cumulative Verification
 
-The PR/merge-queue topology below is the compatibility adapter, not the
-only permitted implementation of no-human proof. Under the parallel-change
-adapter, when selected by the active profile, remote CI evaluates selected immutable trunk snapshots and advances
-scoped green watermarks; it does not run once per speculative attempt or imply
-deployment from every default-branch commit. Required proof depth, affected-set
-soundness, global gates, flake control, backstops, and recovery remain binding.
+All internal and external producers enter through one immutable Candidate
+contract. Producing agents do not choose PR versus direct trunk. Central admission
+derives the Candidate's proof and independent-review obligations before the
+configured serializer lands it. A PR/merge-queue is only an external or bounded
+compatibility projection of that same Candidate.
+
+Remote CI evaluates control-plane-selected immutable trunk snapshots and
+advances scoped green watermarks; it does not run once per speculative attempt
+or imply deployment from every default-branch commit. Required proof depth,
+affected-set soundness, global gates, flake control, backstops, and recovery
+remain binding regardless of whether provider intake was a commit or PR.
 
 Source arrival, CI eligibility, complete verification, and artifact production
 are separate transitions. At high arrival rates, complete remote verification
@@ -51,11 +56,12 @@ pipeline do both:
 - **The integration serializer** — every change queues behind it; its latency
   *is* development velocity. Wants to be **fast**.
 
-The strongest practical design is to **split them into two tiers** and put an autonomous
-admission control plane in front of them: fast deterministic admission for the
-exact merge candidate, complete postsubmit proof, and machine-selected recovery.
-The active delivery profile supplies forge-specific context names and
-serialization mechanics; this standard owns the portable admission semantics.
+The strongest practical design is to **split them into two tiers** and put an
+autonomous admission control plane in front of them: fast deterministic
+admission for the exact Candidate, cumulative complete proof for selected trunk
+snapshots, and machine-selected recovery. The delivery authority supplies
+forge-specific context names and serialization mechanics; this standard owns
+the portable admission semantics.
 
 ### Gate portfolio discipline
 
