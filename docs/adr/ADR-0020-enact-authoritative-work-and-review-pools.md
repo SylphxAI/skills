@@ -52,9 +52,9 @@ promotion, deployment, and production observations.
    direct-trunk landing. Platform derives the exact
    verification, independent-review, collision, and effect obligations and
    selects the configured landing adapter. Once source is landed at the declared
-   boundary, the Executor checkpoints, subscribes to the external outcome,
-   releases effects, claim, Run, and worker capacity, then claims other ready
-   Work.
+   boundary, the Executor uses Enact `work.defer` to atomically checkpoint,
+   subscribe to the external outcome, mark scheduling deferred, release
+   effects, Claim, Run, and worker capacity, then claims other ready Work.
 5. **Review is a candidate-bound, risk-selected obligation.** Deterministic
    contracts, tests, policy, security, and admission checks run first. A
    separate reviewer context is created only when the risk policy requires
@@ -71,7 +71,9 @@ promotion, deployment, and production observations.
    selected immutable snapshots. Its observations are linked into Enact. A
    success event may satisfy Work terminal evidence; a failure or regression
    creates or reactivates correction Work that any eligible agent can claim.
-   The original Executor is not required to remain alive.
+   Future provider observations use `next_state_change`, which atomically
+   captures the current subject cursor so Claim release cannot satisfy its own
+   wake condition. The original Executor is not required to remain alive.
 8. **Provider-native truth remains federated.** Enact references and projects
    Git and Platform observations with provenance and freshness. It must not
    copy them into an untraceable replacement source of truth.
@@ -101,7 +103,7 @@ promotion, deployment, and production observations.
   next ready Work while delivery remains fail-closed.
 - Enact requires proposal/duplicate admission, eligible ready queues,
   candidate-linked review obligations and verdicts, atomic external-wait
-  release, subscription dispatch, and fleet flow analytics.
+  release via `work.defer`, subscription dispatch, and fleet flow analytics.
 - Git and Platform remain independently auditable authorities rather than
   becoming opaque attachments inside Enact.
 - Removing the agent's lane choice removes policy drift without weakening
@@ -113,7 +115,8 @@ promotion, deployment, and production observations.
 - Always-on and detailed Skills state that sessions and permanent
   Advisor/Executor pairs are not Work authority.
 - Contract tests prove proposal/claim separation, candidate-bound review,
-  provider-native truth boundaries, and external-wait release.
+  provider-native truth boundaries, atomic external-wait release, and
+  `next_state_change` re-entry without a read/subscription race.
 - Active legacy pairs publish Enact checkpoints and stop private supervision.
 - Product acceptance requires multi-session evidence that ready Work is claimed
   from a shared pool, review is emitted as typed durable state, waiting agents

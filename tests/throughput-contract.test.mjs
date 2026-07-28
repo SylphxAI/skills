@@ -9,9 +9,13 @@ function read(path) {
 test('always-on runtime separates Work terminal state from worker occupancy', () => {
   const constitution = read('../runtime/constitution.md');
   assert.match(constitution, /Keep Work terminal state separate from worker occupancy/);
-  assert.match(constitution, /register a durable wake-up subscription/);
-  assert.match(constitution, /release effects and the active claim\/Run/);
+  assert.match(constitution, /use Enact `work\.defer` to atomically checkpoint/);
+  assert.match(constitution, /`next_state_change` when waiting for a future provider observation/);
+  assert.match(constitution, /release effects\s+and the active claim\/Run/);
+  assert.match(constitution, /Do not approximate the atomic transition/);
   assert.match(constitution, /do not keep a session alive\s+to poll/);
+  assert.match(constitution, /short, bounded, or “one last” polling\s+window is not an exception/);
+  assert.match(constitution, /Do not cancel,\s+reprioritize, or consume unrelated work, force deployment/);
 });
 
 test('work and delivery standards require bounded work and event-driven release', () => {
@@ -24,9 +28,13 @@ test('work and delivery standards require bounded work and event-driven release'
   assert.match(agentFirst, /parent Work with a child outcome DAG/);
   assert.match(delivery, /durable Work's terminal evidence, not how long one agent/);
   assert.match(autonomous, /waiting is not active execution/);
-  assert.match(enact, /subscription\.or_get/);
-  assert.match(enact, /finish the current Agent Run/);
+  assert.match(enact, /call `work\.defer`/);
+  assert.match(enact, /checkpoint disposition is `external_wait`/);
+  assert.match(enact, /current Agent Run is finished/);
+  assert.match(enact, /Do not approximate the transition with separate `subscription\.or_get`/);
   assert.match(enact, /must not\s+remain `scheduling=ready` with no active claim and no subscription/);
+  assert.match(enact, /fixed-minute polling are still passive waits/);
+  assert.match(agentFirst, /Candidate acceptance releases the producer/);
 });
 
 test('Enact owns work and review state instead of session-local pairs', () => {
