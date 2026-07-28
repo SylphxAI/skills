@@ -37,9 +37,11 @@ locators. Resolve exact fields from the live MCP schema or versioned product API
 4. Publish material evidence and checkpoint progress, blockers, handoffs, and
    the next safe action. Store provider-native facts as linked observations with
    source identity, version, observation time, and freshness.
-5. Acquire an EffectLease only around a scarce external effect such as landing,
-   migration, deploy, release, credentialed action, or provider mutation. Bind
-   required proof, verify the owning provider readback, and release promptly.
+5. Acquire an EffectLease only around an Enact-eligible scarce effect such as a
+   schema migration, credential mutation, infrastructure mutation, or external
+   provider mutation. Platform independently owns and fences Candidate landing,
+   deploy, and release. Bind required proof, verify owning-provider readback,
+   and release promptly.
 6. Use a durable subscription when execution releases capacity while awaiting a
    dependency or outcome generation. Do not hold a shared-effect lease while
    waiting for CI, deployment, or observation.
@@ -53,6 +55,8 @@ locators. Resolve exact fields from the live MCP schema or versioned product API
   runs, checkpoints, decisions, incidents, threads, and linked observations.
 - Skills owns static standards, procedures, profiles, and adapters.
 - The product repository owns code, tests, code-coupled ADRs, and desired state.
+- Platform owns Candidate identity/admission, landing CAS, verification
+  watermarks, artifacts, promotion, deployment, rollback, and delivery readback.
 - GitHub or another forge owns commits, issues, pull requests, checks, releases,
   and their native states; deployment and telemetry providers own runtime facts.
 - Enact stores observations and projections of external facts, never a

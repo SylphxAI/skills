@@ -14,73 +14,63 @@ default-branch commit is not deployable evidence. Release and deployment consume
 only immutable snapshots covered by the relevant scoped green watermark and
 complete proof bundle.
 
-**Lane-aware delivery:** When live organization-wide policy selects
-parallel-change direct-trunk for a repository class, ordinary reversible work lands by
-ordinary fast-forward under integrity fences (deletion + non-fast-forward),
-with local/narrowest verification and verified-only promotion for effects. PRs
-and merge queues remain the **compatibility adapter for fenced classes**
-(ADR authoring, Skills/policy authority, credentials, security, migrations,
-public contracts, irreversible effects) until a successor PR-less ADR locator
-authority is admitted with evidence. Conversely, do not project direct-trunk as
-active where the resolved profile still selects compatibility admission.
+## Unified Candidate delivery
 
-### Lane resolution procedure (agent-native)
+The agent-facing delivery contract has one operation: publish one exact,
+immutable, semantically atomic Candidate bound to its Enact Work/Attempt and
+local evidence. The producer does **not** choose pull request versus direct
+trunk, does not self-select review strength, and does not wait on a provider
+merge envelope.
 
-Resolve the active lane **before** opening a PR. Do not default ordinary work to
-the compatibility lane "for safety" when direct-trunk is already selected.
+Platform is the delivery authority and performs one central admission:
 
-1. **Classify the candidate paths.**
-   - **Fenced / compatibility:** Skills/instruction/policy authority, credentials,
-     security, database migrations, public/persistent contracts, irreversible
-     external effects, or a repository that still requires PR/merge-queue admission.
-   - **Ordinary reversible:** docs/evidence-only, tests-only, narrow reversible code
-     that does not touch the fenced classes above, under integrity fences that
-     already forbid delete + non-fast-forward.
-2. **Read live admission signals.** Prefer direct-trunk when **all** of these hold:
-   - org/repo rulesets do **not** require a PR for the default branch (only
-     integrity fences: no delete / no non-fast-forward is the expected baseline);
-   - claim/run lineage hard gates are live for push admission
-     (`enact-work-lineage/pass` required; `ENACT_REQUIRE_ACTIVE_CLAIM=true` where
-     configured);
-   - ordinary reversible PR fail-closed is live when present
-     (`ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK=true` / ordinary reversible PR gate step), so an
-     all-ordinary path-set PR is rejected toward direct-trunk; and
-   - the path set is ordinary reversible.
-3. **Select the lane.**
-   - Ordinary reversible + direct-trunk selected → **land by FF/CAS to the default
-     branch** (two-phase branch proof → main is fine when rulesets require checks
-     before update). Opening a PR is the **wrong ordinary path** and must not be
-     used merely because a PR template exists, habit, or peer agents still use PRs.
-     When the ordinary-DT PR gate is live, opening an ordinary reversible PR is
-     a process defect, not a safe default.
-   - Any fenced class, missing delivery profile, or unresolved classification that
-     could be fenced → compatibility PR/merge-queue until classification is clear.
-4. **Bind Work first.** Direct-trunk and compatibility lands both require canonical
-   Work lineage and claim/run proof where hard gates require it. Claims own work,
-   not files.
+1. resolve the repository declaration, exact base/head/tree, Work lineage, and
+   policy generation;
+2. derive semantic collision scopes, risk, required deterministic proof,
+   independent-review, migration, public-contract, security, and effect
+   obligations;
+3. reject unknown or conflicting classification without converting it into
+   agent discretion;
+4. select, supersede, or coalesce the Candidate;
+5. execute expected-head compare-and-swap through the configured landing
+   adapter; and
+6. verify cumulative selected snapshots and promote exact artifacts only from a
+   complete green proof bundle.
 
+The normal internal adapter is direct CAS landing to the default branch under
+integrity fences. A provider pull request or merge queue is allowed only as:
 
-### Ordinary-DT hard gate (fail-closed positive admission)
+- an external-contributor collaboration projection that is ingested as the
+  same Candidate; or
+- a typed, bounded compatibility obligation while a predecessor serializer,
+  locator allocator, public-contract approval, or irreversible-effect control
+  has not yet been replaced.
 
-The repository `enact-work-lineage` ordinary-DT gate **must not** infer ordinary
-from the absence of a handwritten fenced-path list. Unknown, conflicting, or
-unclassified paths stay on the **compatibility PR lane**.
+The PR does not make the change safer. Safety comes from the Candidate's
+obligation set, trusted independent verdicts, exact-head CAS, and verified
+promotion. Semantically equivalent internal and external inputs must receive
+the same obligations. The adapter may add public discussion or provider
+mechanics, but it cannot weaken or strengthen policy merely because the input
+arrived as a PR.
 
-Force-DT is allowed only when **every** changed path is positively admitted
-ordinary by:
+### Migration and fail-closed behavior
 
-1. delivery-standard builtin ordinary classes (docs/evidence, non-ADR docs
-   prose/data, tests-only); and/or
-2. the base-branch repo manifest
-   `.github/ordinary-direct-trunk-admission.json`
-   (`schema = ordinary-direct-trunk-admission/v1`) listing exact
-   `positive_path_prefixes` / `positive_path_globs`.
+Repository adoption is explicit:
 
-Hard-fenced classes (workflows, ADR, migrations, credentials/security/oauth,
-public contracts, delivery profiles, instruction authority) are never ordinary
-even if listed in a manifest. Agents still choose direct-trunk for ordinary
-reversible code under Skills/constitution even when the hard gate has not yet
-positively admitted that path class.
+- **Successor live:** agents publish Candidates only; any PR projection is
+  controller-owned.
+- **Compatibility live:** agents follow the current profile's existing
+  provider adapter while recording the missing successor as a typed adoption
+  gap. This is a migration state, not permission to keep two permanent
+  workflows.
+- **Unknown:** central admission rejects mutation. Agents do not guess a lane,
+  force-push, disable a gate, or manually deploy.
+
+Existing ordinary-direct-trunk manifests and PR fail-closed checks remain
+migration inputs. The successor central obligation engine absorbs their
+positive path facts, proves equivalent or stronger behavior, then retires the
+agent-facing lane selector, ordinary-PR policing, and duplicated provider
+metadata together.
 
 
 ## Ownership
@@ -97,18 +87,17 @@ Use the strongest done state that matches the task **and active delivery lane**:
 | Task kind | Minimum truthful done state | Not done yet |
 | --- | --- | --- |
 | Research / analysis only | Durable artifact, issue, ADR draft, or explicit summary committed or otherwise stored in the agreed SSOT | Private notes, chat-only summary, uncommitted files |
-| Ordinary reversible repo change (direct-trunk active) | Ordinary fast-forward to the default branch with local/narrowest validation evidence | Local diff, unpushed commit, or PR-only when FF is the live path |
-| PR preparation or submission explicitly requested (compatibility lane) | Branch pushed and PR opened/updated with validation evidence | Local diff, unpushed commit, workspace artifact |
-| Integrated repo change (compatibility / fenced class) | PR merged through branch protection, required checks, policy gates, and merge queue where required | PR open, queued, or failing checks |
-| Integrated repo change (direct-trunk ordinary) | Ordinary FF landed on default branch; deploy/release only via verified promotion | FF without required local proof, or treating raw push as deploy authority |
+| Source Candidate submission | Immutable Candidate published with Work/Attempt lineage, exact source/tree identity, and local proof | Local diff, unpushed commit, handwritten lane choice, or PR-only state |
+| External contribution intake | Provider PR exact head/base ingested as the same Candidate contract and centrally admitted | Treating the PR, review comments, or merge button as an alternate Work/safety authority |
+| Integrated repository change | Central serializer landed the selected Candidate by expected-head CAS; any provider envelope is terminal and read back | Candidate merely published, PR open/queued, or raw branch push |
 | Versioned package release | Release intent landed through the active lane, package published by the repository workflow, and registry/provenance readback recorded | Manual publish, human-owned version bump, or publish proof based only on workflow exit code |
 | Deployable behavior change | Landed change promoted through the documented release path and verified by smoke checks, health checks, logs, metrics, or user-visible acceptance criteria | Landed but undeployed, deployed without proof, or proof based only on exit codes |
 | GitOps / infrastructure change | Desired state committed, reconciled by the controller, and live state observed to match | Manual cluster mutation, unreconciled manifest, or unverified rollout |
 
 The table defines the durable Work's terminal evidence, not how long one agent
-must occupy a worker. For ordinary direct-trunk source work, the source agent
-may release capacity after the semantically atomic candidate is landed with
-the required local proof. If the Work also requires verified promotion or
+must occupy a worker. The source agent may release capacity after its immutable
+Candidate is accepted or landed at the declared source boundary with required
+local proof. If the Work also requires verified promotion or
 production evidence, leave it active with a durable delivery subscription and
 checkpoint; release EffectLeases, claim, and Run; and let the delivery
 controller or any eligible re-entry agent finish the stronger state. Incidents
@@ -121,17 +110,19 @@ strongest reachable done state. If policy, permissions, failed checks,
 environment gates, or explicit user direction stop the path early, report the
 exact blocker and next action instead of calling the work complete.
 
-Default delivery path (resolve lane first):
+Default delivery path:
 
 - Implement the change.
 - Run risk-appropriate validation.
-- Nominate an exact semantically atomic source candidate; serialize it into
-  commits and required trailers according to the active adapter.
-- **Direct-trunk ordinary:** `git pull --rebase` then ordinary `git push`
-  `HEAD:main` (never force); rebase and re-evaluate on stale tip.
-- **Compatibility / fenced:** push a branch, open or update the PR, monitor CI,
-  address actionable failures, and merge when branch protection, required checks,
-  policy gates, and merge queue allow it.
+- Publish an exact semantically atomic Candidate with Work/Attempt lineage,
+  source/tree identity, declared semantic scopes, local proof, and residual
+  risk. Do not choose or manually open a delivery lane.
+- Platform derives obligations and selects the expected-head CAS adapter.
+  Internal direct landing, generated compatibility PR, imported external PR,
+  and merge-queue projection all consume the same Candidate.
+- If the repository has not yet activated the successor, use the currently
+  declared compatibility command only as migration behavior and record the
+  adoption gap; never claim this as the target steady state.
 - Start the documented release/deploy path; under direct-trunk, promote only
   immutable verified snapshots (raw push is not deploy authority when freeze is
   active — re-query live mode/generation/denyingScope). When only the external
@@ -147,8 +138,8 @@ Default delivery path (resolve lane first):
   sole durable release or decision authority.
 - Reconcile the workspace without deleting unique or unattributed state.
 
-A PR is an intermediate artifact on the compatibility lane, not the finish line
-for every task, and not the ordinary path when direct-trunk is selected. Stop
+A PR is an external or compatibility projection, not the finish line, review
+authority, or agent-selected safety tier. Stop
 early only when the active lane is blocked by a missing required status or policy
 decision, failed checks outside the task scope, protected-environment
 permissions, change windows, unclear production risk, or explicit user

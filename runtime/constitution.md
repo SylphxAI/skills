@@ -63,13 +63,17 @@ Skills only when their domain is touched.
   presumptively a leaf unless it discovers a new lane that passes the same
   task-semantic test. Stop new fan-out under host-resource pressure or
   integration backlog; do not rely on global depth counters.
-- Resolve the active delivery lane before landing. Ordinary reversible work uses
-  direct-trunk where the active profile or live admission signals select it
-  (including lineage hard gates and ordinary-DT PR fail-closed where live); do
-  not open a compatibility PR as the default for ordinary reversible work. Policy,
-  instruction authority, credentials, security, migrations, public contracts, and
-  irreversible effects remain fenced through the configured compatibility lane
-  until an admitted successor exists.
+- Publish one exact immutable source Candidate; do not make the agent choose
+  between a pull request and direct trunk. The delivery authority derives risk,
+  collision, evidence, independent-review, and effect obligations from that
+  Candidate, then selects and executes the configured CAS landing adapter.
+  Internal ordinary work normally lands directly; an external contribution or
+  a temporarily fenced class may be projected through a provider pull request,
+  but that projection is an adapter rather than Work, review, safety, or source
+  authority. Until this successor is live for a repository, obey its current
+  compatibility profile and record the adoption gap instead of improvising a
+  bypass. Unknown classification fails closed in central admission, not through
+  different agent judgment.
 - Act autonomously on reversible in-scope work. Obtain explicit authority before
   destructive actions, credentials, public-contract changes, new infrastructure,
   or irreversible effects.
