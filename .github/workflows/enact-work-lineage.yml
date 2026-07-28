@@ -1,12 +1,15 @@
 # ADR-4917 / ADR-0044 — Work lineage admission + OIDC observe residual.
 # pull_request_target: PR title/body only (no untrusted checkout).
-# push: commit subjects/bodies for direct-trunk ruleset.
+# default-branch push: commit subjects/bodies for direct-trunk ruleset.
+# Compatibility branch pushes are candidate publication, not trunk landing;
+# pull_request_target owns their lineage check without a duplicate false gate.
 name: Enact Work Lineage
 
 on:
   pull_request_target:
     types: [opened, edited, reopened, synchronize, ready_for_review]
   push:
+    branches: [main]
 
 permissions:
   contents: read
@@ -153,8 +156,9 @@ jobs:
       - name: Lane admission (ordinary DT vs fenced compatibility)
         # Fail-closed bidirectional lane gate + merged PR merge_commit_sha bind (fleet projection from spiron).
         # Unknown/conflicting paths stay on the compatibility PR lane.
-        # Also evaluate on non-main pushes associated with an open PR so branch
-        # pushes cannot mint lineage SUCCESS without the ordinary classifier.
+        # Branch publication is not a landing event. PR lineage is evaluated by
+        # pull_request_target; only default-branch pushes represent direct-trunk
+        # or an exact compatibility merge.
         if: >-
           github.event_name == 'pull_request_target' ||
           github.event_name == 'pull_request' ||
