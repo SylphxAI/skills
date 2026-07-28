@@ -175,7 +175,7 @@
       "name": "delivery-standard",
       "description": "Shipped-state proof across source landing, artifacts, deployment, rollback, and production readback. Use when delivering a change or deciding whether it is truly released or live. Do not use when only local implementation is in scope.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:9131b1b44d73a9641eb1ba69a4a57fa1c3ce0c27576d8adf33ed838ccb7af528"
+      "packageDigest": "sha256:0de64a1a5e9826e600581dc5b92e4634b4133eb535ae5d9315cc5ae4360b0f91"
     },
     {
       "name": "dependency-version-selection",
@@ -217,7 +217,7 @@
       "name": "enact-work-coordination",
       "description": "Connect, operate, or audit agent work through the Sylphx Enact operating graph using explicit Organization and Project identity; Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-provider observations. Use when implementing an Enact client or adapter, binding a repository or agent workflow to Enact, recovering a missing MCP work loop, or verifying Enact work provenance. Do not use for portable work-ledger design, ordinary Git operations, or static Skills authoring.",
       "path": "skills/enact-work-coordination/SKILL.md",
-      "packageDigest": "sha256:e4c3462f3fc6e90c6dbcc94a8adb402368acc673c41386087d9d6bf8e27bbd22"
+      "packageDigest": "sha256:b23503e2d481a426b7be2e59f742066f36a5870b3b8ef7382d0bb72e379af7ee"
     },
     {
       "name": "engineering-standard",

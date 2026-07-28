@@ -251,3 +251,9 @@ thresholds, analysis windows, and automatic rollback or pause policy.
 
 - [ ] Full body obligations reviewed for applicability.
 - [ ] Residual gaps have owner and follow-up.
+
+## Path-neutral central admission
+
+Platform is the delivery authority and performs one central admission over one
+immutable Candidate. An external pull request is an external-contributor collaboration projection into that same Candidate contract. Semantically equivalent internal and external inputs must receive the same obligations and landing rules; only the ingress adapter differs.
+

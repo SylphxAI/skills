@@ -67,7 +67,9 @@ must not become a second source of truth for Work priority, ownership, review,
 or completion. The client resolves or proposes canonical Work, claims an
 eligible Attempt, and compiles context from Enact before substantive mutation.
 
-Do not model an Advisor as a permanent supervisor of one Executor. The producer
+Do not model an Advisor as a permanent supervisor of one Executor. When
+independent judgment is required, publish the typed verdict, findings,
+attestation, or correction Work through Enact. The producer
 publishes one immutable Candidate to Platform and never chooses PR versus
 direct trunk as correctness. Platform derives whether independent review is
 required and projects that requirement into Enact as a typed Work obligation.
@@ -90,8 +92,24 @@ Work id in the PR body**. PR and direct-trunk are both valid ingresses.
 
 Work completion and worker occupancy are independent. When the next transition
 depends only on CI, build, promotion, deployment, soak, approval, another Work,
-or another external event, call `work.defer` with the typed condition, release
-capacity, and claim other ready Work. Do not keep a session alive to poll.
+or another external event:
+
+1. call `work.defer` with the exact candidate/evidence, current delivery state,
+   remaining terminal predicate, next safe action, and typed re-entry
+   condition;
+2. use `next_state_change` when the awaited fact is a future provider
+   observation, so the current subject cursor is captured atomically;
+3. verify the returned checkpoint disposition is `external_wait`, the Work is
+   `scheduling=deferred`, the resume subscription is pending, EffectLeases and
+   Claim are released, and the current Agent Run is finished; and
+4. claim other ready Work.
+
+The subscription dispatcher may wake the original agent or any eligible agent.
+A Work that is waiting must not remain `scheduling=ready` with no active claim
+and no subscription. Do not approximate the transition with separate `subscription.or_get`,
+checkpoint, handoff, and run-finish calls. Release at the
+first external-only boundary: “brief”, “bounded”, “until the last check”, and
+fixed-minute polling are still passive waits, not execution.
 
 ## GitHub and other provider observations
 
@@ -125,3 +143,7 @@ binding, checkpoint/handoff recovery, private Candidate lineage without public
 Work trailers, external PR intake without Work id in body, path-neutral PR and
 DT ingress, completion rejection without proof, provider outage, effect fencing
 excluding Platform delivery, cross-tenant rejection, and MCP/REST parity.
+
+A Work that is waiting must not remain `scheduling=ready` with no active claim and no subscription.
+
+When independent judgment is required, publish the typed verdict, findings, attestation, or correction Work.

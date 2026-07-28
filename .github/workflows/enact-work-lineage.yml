@@ -20,7 +20,7 @@ permissions:
 jobs:
   work-lineage:
     name: enact-work-lineage/pass
-    runs-on: ubuntu-latest
+    runs-on: sylphx-linux-standard
     timeout-minutes: 5
     steps:
       - name: Path-neutral lineage (no public wi_ scrape; no ordinary-PR hard fail)
