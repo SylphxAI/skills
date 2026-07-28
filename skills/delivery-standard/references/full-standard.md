@@ -36,51 +36,41 @@ the compatibility lane "for safety" when direct-trunk is already selected.
    - **Ordinary reversible:** docs/evidence-only, tests-only, narrow reversible code
      that does not touch the fenced classes above, under integrity fences that
      already forbid delete + non-fast-forward.
-2. **Read live admission signals.** Prefer direct-trunk when **all** of these hold:
+2. **Read live admission signals.** Prefer direct-trunk for **internal ordinary**
+   when **all** of these hold (guidance — not a CI reject of PRs):
    - org/repo rulesets do **not** require a PR for the default branch (only
      integrity fences: no delete / no non-fast-forward is the expected baseline);
-   - claim/run lineage hard gates are live for push admission
-     (`enact-work-lineage/pass` required; `ENACT_REQUIRE_ACTIVE_CLAIM=true` where
-     configured);
-   - ordinary reversible PR fail-closed is live when present
-     (`ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK=true` / ordinary reversible PR gate step), so an
-     all-ordinary path-set PR is rejected toward direct-trunk; and
+   - private coordination / claim lineage is available where policy requires it;
    - the path set is ordinary reversible.
-3. **Select the lane.**
-   - Ordinary reversible + direct-trunk selected → **land by FF/CAS to the default
-     branch** (two-phase branch proof → main is fine when rulesets require checks
-     before update). Opening a PR is the **wrong ordinary path** and must not be
-     used merely because a PR template exists, habit, or peer agents still use PRs.
-     When the ordinary-DT PR gate is live, opening an ordinary reversible PR is
-     a process defect, not a safe default.
+3. **Select the producer path (path-neutral admission).**
+   - **Both PR and direct-trunk are valid** for ordinary reversible work
+     (ADR-01KYM9PATHN3VTRXADM1SS1001). CI must not fail solely because ordinary
+     work arrived as a PR.
+   - **Prefer** FF/CAS direct-trunk for internal ordinary when rulesets allow
+     (lower latency, less forge ceremony). Opening a PR for ordinary internal
+     work is not a correctness defect; it is a latency/cost choice.
+   - **External contributors always use PRs** — first-class Candidate import.
    - Any fenced class, missing delivery profile, or unresolved classification that
-     could be fenced → compatibility PR/merge-queue until classification is clear.
-4. **Bind Work first.** Direct-trunk and compatibility lands both require canonical
-   Work lineage and claim/run proof where hard gates require it. Claims own work,
-   not files.
+     could be fenced → stronger obligations (often compatibility envelope /
+     merge-queue) until classification is clear. Platform selects the adapter.
+4. **Bind Work first** for multi-agent / long-running objectives. Direct-trunk and
+   PR lands both use private Candidate lineage where required — not public
+   `Work: wi_…` trailers. Claims own work, not files.
 
 
-### Ordinary-DT hard gate (fail-closed positive admission)
+### Ordinary vs fenced classification (not a PR ban)
 
-The repository `enact-work-lineage` ordinary-DT gate **must not** infer ordinary
-from the absence of a handwritten fenced-path list. Unknown, conflicting, or
-unclassified paths stay on the **compatibility PR lane**.
+Unknown, conflicting, or unclassified paths default to **stronger obligations**
+(compatibility / review), not “ban PR”.
 
-Force-DT is allowed only when **every** changed path is positively admitted
-ordinary by:
+Positive ordinary classes (docs/evidence, tests-only, and repo
+`.github/ordinary-direct-trunk-admission.json` prefixes when present) may use
+DT CAS when Platform selects it. Hard-fenced classes (workflows, ADR,
+migrations, credentials/security, public contracts, instruction authority) never
+become ordinary via a path list alone.
 
-1. delivery-standard builtin ordinary classes (docs/evidence, non-ADR docs
-   prose/data, tests-only); and/or
-2. the base-branch repo manifest
-   `.github/ordinary-direct-trunk-admission.json`
-   (`schema = ordinary-direct-trunk-admission/v1`) listing exact
-   `positive_path_prefixes` / `positive_path_globs`.
-
-Hard-fenced classes (workflows, ADR, migrations, credentials/security/oauth,
-public contracts, delivery profiles, instruction authority) are never ordinary
-even if listed in a manifest. Agents still choose direct-trunk for ordinary
-reversible code under Skills/constitution even when the hard gate has not yet
-positively admitted that path class.
+Do **not** implement CI fail-closed “ordinary PR → must use DT”. That gate was
+retired as a throughput and external-contributor defect.
 
 
 ## Ownership
@@ -97,7 +87,7 @@ Use the strongest done state that matches the task **and active delivery lane**:
 | Task kind | Minimum truthful done state | Not done yet |
 | --- | --- | --- |
 | Research / analysis only | Durable artifact, issue, ADR draft, or explicit summary committed or otherwise stored in the agreed SSOT | Private notes, chat-only summary, uncommitted files |
-| Ordinary reversible repo change (direct-trunk active) | Ordinary fast-forward to the default branch with local/narrowest validation evidence | Local diff, unpushed commit, or PR-only when FF is the live path |
+| Ordinary reversible repo change | Landed Candidate on default branch via **DT CAS or merged PR** with validation evidence (path-neutral) | Local diff or unpushed commit only |
 | PR preparation or submission explicitly requested (compatibility lane) | Branch pushed and PR opened/updated with validation evidence | Local diff, unpushed commit, workspace artifact |
 | Integrated repo change (compatibility / fenced class) | PR merged through branch protection, required checks, policy gates, and merge queue where required | PR open, queued, or failing checks |
 | Integrated repo change (direct-trunk ordinary) | Ordinary FF landed on default branch; deploy/release only via verified promotion | FF without required local proof, or treating raw push as deploy authority |
@@ -133,10 +123,11 @@ Default delivery path (resolve lane first):
   sole durable release or decision authority.
 - Reconcile the workspace without deleting unique or unattributed state.
 
-A PR is an intermediate artifact on the compatibility lane, not the finish line
-for every task, and not the ordinary path when direct-trunk is selected. Stop
-early only when the active lane is blocked by a missing required status or policy
-decision, failed checks outside the task scope, protected-environment
+A PR is a valid Candidate ingress (always for external; optional for internal)
+and a finish line only when it merges with required checks. Prefer DT for
+internal ordinary latency; never treat “opened a PR for ordinary work” as
+admission failure. Stop early only when blocked by a missing required status or
+policy decision, failed checks outside the task scope, protected-environment
 permissions, change windows, unclear production risk, or explicit user
 direction. If a regulated or external approval is required, it must appear as a
 required status, signed policy artifact, or documented environment gate; a person

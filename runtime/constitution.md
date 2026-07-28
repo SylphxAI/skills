@@ -57,13 +57,15 @@ Skills only when their domain is touched.
   presumptively a leaf unless it discovers a new lane that passes the same
   task-semantic test. Stop new fan-out under host-resource pressure or
   integration backlog; do not rely on global depth counters.
-- Resolve the active delivery lane before landing. Ordinary reversible work uses
-  direct-trunk where the active profile or live admission signals select it
-  (including lineage hard gates and ordinary-DT PR fail-closed where live); do
-  not open a compatibility PR as the default for ordinary reversible work. Policy,
-  instruction authority, credentials, security, migrations, public contracts, and
-  irreversible effects remain fenced through the configured compatibility lane
-  until an admitted successor exists.
+- Resolve delivery **obligations** before landing; do not invent a PR-vs-DT
+  correctness fork. Prefer direct-trunk for **internal ordinary** reversible work
+  when rulesets allow (latency/cost guidance). **Pull requests remain a valid
+  ingress** for ordinary and fenced work—especially external contributors—and CI
+  must not hard-fail solely because ordinary work arrived as a PR. Platform
+  selects the landing adapter from Candidate obligations. Policy, instruction
+  authority, credentials, security, migrations, public contracts, and irreversible
+  effects remain fenced through stronger obligations (often a compatibility
+  envelope) until an admitted successor exists.
 - Act autonomously on reversible in-scope work. Obtain explicit authority before
   destructive actions, credentials, public-contract changes, new infrastructure,
   or irreversible effects.
