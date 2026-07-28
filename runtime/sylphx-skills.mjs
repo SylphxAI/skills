@@ -398,8 +398,9 @@ function refreshAutoSyncInstallation() {
     claudeHome: config.homes?.claudeHome || currentHomes.claudeHome,
     grokHome: config.homes?.grokHome || currentHomes.grokHome,
   };
-  const needsSchedulerMigration = config.mode !== 'interval-scheduler';
-  config.mode = 'interval-scheduler';
+  const supportedMode = ['interval-scheduler', 'external-supervisor'].includes(config.mode);
+  const needsSchedulerMigration = !supportedMode;
+  if (needsSchedulerMigration) config.mode = 'interval-scheduler';
   config.intervalMinutes = Number(config.intervalMinutes) || 10;
   config.adapterVersion = packageJson.version;
   writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
@@ -605,6 +606,21 @@ function enableAutoSync() {
   const requested = requestedAgents(argv, { required: true });
   const existing = readJson(reconcilerConfig);
   const agents = mergeAutoSyncAgents(existing, requested);
+  const schedulerSelection = argumentValue('--scheduler') || 'native';
+  if (!['native', 'external'].includes(schedulerSelection)) {
+    throw new Error('--scheduler must be native or external');
+  }
+  const mode = schedulerSelection === 'external' ? 'external-supervisor' : 'interval-scheduler';
+  const externalSupervisorHeartbeat = mode === 'external-supervisor'
+    ? path.resolve(argumentValue('--supervisor-heartbeat') || path.join(stateDirectory, 'external-supervisor.json'))
+    : null;
+  if (
+    externalSupervisorHeartbeat
+    && externalSupervisorHeartbeat !== home
+    && !externalSupervisorHeartbeat.startsWith(`${home}${path.sep}`)
+  ) {
+    throw new Error('--supervisor-heartbeat must stay within the receiving runtime home');
+  }
   const pathEnv = process.env.PATH || '/usr/local/bin:/usr/bin:/bin';
   const config = {
     schemaVersion: 1,
@@ -616,11 +632,12 @@ function enableAutoSync() {
     reconcilerPath: reconcilerScript,
     nodePath: executableFromPath('node', pathEnv),
     pathEnv,
-    mode: 'interval-scheduler',
+    mode,
     intervalMinutes,
     agents,
     homes: runtimeHomes(),
     adapterVersion: packageJson.version,
+    externalSupervisorHeartbeat,
   };
   const lifecycle = withLifecycleLock(stateDirectory, () => {
     removeScheduler({ platform: schedulerPlatform, home });
@@ -642,14 +659,16 @@ function enableAutoSync() {
       // sync. Remove them after convergence so this command's scheduler is the only
       // recurring owner.
       uninstallRuntimeHooks({ agents, homes: runtimeHomes() });
-      installScheduler({
-        platform: schedulerPlatform,
-        home,
-        nodePath: config.nodePath,
-        reconcilerPath: reconcilerScript,
-        pathEnv: config.pathEnv,
-        intervalMinutes,
-      });
+      if (mode === 'interval-scheduler') {
+        installScheduler({
+          platform: schedulerPlatform,
+          home,
+          nodePath: config.nodePath,
+          reconcilerPath: reconcilerScript,
+          pathEnv: config.pathEnv,
+          intervalMinutes,
+        });
+      }
       config.enabled = true;
       writeAtomic(reconcilerConfig, `${JSON.stringify(config, null, 2)}\n`, 0o600);
       rmSync(legacyUpdaterScript, { force: true });
@@ -668,6 +687,12 @@ function disableAutoSync() {
     removeScheduler({ platform: schedulerPlatform, home });
     const disabled = withReconcileLock(stateDirectory, () => {
       uninstallRuntimeHooks({ agents, homes });
+      if (
+        config?.mode === 'external-supervisor'
+        && typeof config.externalSupervisorHeartbeat === 'string'
+      ) {
+        rmSync(config.externalSupervisorHeartbeat, { force: true });
+      }
       rmSync(reconcilerScript, { force: true });
       rmSync(reconcilerConfig, { force: true });
     });
@@ -775,22 +800,66 @@ function autoSyncSourceReadback(config, state) {
   };
 }
 
+function externalSupervisorStatus(config) {
+  const heartbeatPath = config?.externalSupervisorHeartbeat;
+  if (typeof heartbeatPath !== 'string' || !heartbeatPath) {
+    return {
+      kind: 'external-supervisor',
+      active: false,
+      error: 'external supervisor heartbeat path is missing',
+      heartbeatPath: null,
+      lastHeartbeatAt: null,
+    };
+  }
+  const heartbeat = readJson(heartbeatPath);
+  const lastHeartbeatAt = typeof heartbeat?.lastHeartbeatAt === 'string'
+    ? heartbeat.lastHeartbeatAt
+    : null;
+  const observedAt = lastHeartbeatAt ? Date.parse(lastHeartbeatAt) : Number.NaN;
+  const maxAgeMs = Math.max(Number(config.intervalMinutes) || 10, 1) * 120_000;
+  const fresh = Number.isFinite(observedAt)
+    && Date.now() - observedAt >= 0
+    && Date.now() - observedAt <= maxAgeMs;
+  const valid = heartbeat?.schemaVersion === 1
+    && heartbeat?.owner === 'SylphxAI/skills-external-supervisor'
+    && heartbeat?.status === 'running';
+  return {
+    kind: 'external-supervisor',
+    active: valid && fresh,
+    error: valid && fresh
+      ? null
+      : !heartbeat
+        ? 'external supervisor heartbeat is missing'
+        : !valid
+          ? 'external supervisor heartbeat is invalid'
+          : 'external supervisor heartbeat is stale',
+    heartbeatPath,
+    lastHeartbeatAt,
+    supervisor: typeof heartbeat?.supervisor === 'string' ? heartbeat.supervisor : null,
+    lastReconcileStatus: typeof heartbeat?.lastReconcileStatus === 'string'
+      ? heartbeat.lastReconcileStatus
+      : null,
+  };
+}
+
 function autoSyncStatus() {
   const config = readJson(reconcilerConfig);
   const configured = Boolean(config?.enabled)
-    && config?.mode === 'interval-scheduler'
+    && ['interval-scheduler', 'external-supervisor'].includes(config?.mode)
     && config?.owner === 'SylphxAI/skills'
     && config?.schemaVersion === 1;
   let scheduler = null;
   if (configured) {
-    scheduler = schedulerStatus({
-      platform: schedulerPlatform,
-      home,
-      nodePath: config.nodePath,
-      reconcilerPath: config.reconcilerPath,
-      pathEnv: config.pathEnv,
-      intervalMinutes: config.intervalMinutes,
-    });
+    scheduler = config.mode === 'external-supervisor'
+      ? externalSupervisorStatus(config)
+      : schedulerStatus({
+        platform: schedulerPlatform,
+        home,
+        nodePath: config.nodePath,
+        reconcilerPath: config.reconcilerPath,
+        pathEnv: config.pathEnv,
+        intervalMinutes: config.intervalMinutes,
+      });
   }
   const state = readJson(path.join(stateDirectory, 'state.json'));
   const source = configured ? autoSyncSourceReadback(config, state) : null;
@@ -841,7 +910,7 @@ async function integration() {
 }
 
 function help() {
-  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills install --agent codex|claude|grok|all\n  sylphx-skills sync (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills status [--agent codex|claude|grok|all | --dest PATH] [--json]\n  sylphx-skills clear (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills integration discover [--url HTTPS_URL] [--json]\n  sylphx-skills integration enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n  sylphx-skills auto-sync enable --agent codex|claude|grok|all [--interval 10m]\n  sylphx-skills auto-sync disable|status\n\nInstall is the agent-facing static reconciliation operation and requires an\nexplicit native runtime. The complete repository installation contract also\nenables AutoSync and enrolls ${DEFAULT_ENACT_MCP_URL} for that receiving\nruntime. Every mutating native operation requires an explicit runtime selection;\ndetecting another runtime never grants permission to change it. OAuth remains\nruntime-native.`);
+  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills install --agent codex|claude|grok|all\n  sylphx-skills sync (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills status [--agent codex|claude|grok|all | --dest PATH] [--json]\n  sylphx-skills clear (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills integration discover [--url HTTPS_URL] [--json]\n  sylphx-skills integration enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n  sylphx-skills auto-sync enable --agent codex|claude|grok|all [--interval 10m] [--scheduler native|external]\n  sylphx-skills auto-sync disable|status\n\nInstall is the agent-facing static reconciliation operation and requires an\nexplicit native runtime. The complete repository installation contract also\nenables AutoSync and enrolls ${DEFAULT_ENACT_MCP_URL} for that receiving\nruntime. Every mutating native operation requires an explicit runtime selection;\ndetecting another runtime never grants permission to change it. OAuth remains\nruntime-native.`);
 }
 
 async function main() {

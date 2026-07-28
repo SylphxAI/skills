@@ -62,7 +62,7 @@ playbooks. This repository is different:
 | **Multi-runtime** | Codex · Claude Code · Grok Build from one source |
 | **Converging sync** | New skills appear; removed skills leave; third-party skills stay |
 | **Agent-owned adoption** | Install, update, integration enrollment, and readback are outcomes owned by the receiving agent |
-| **OS auto-update** | Standard launchd / systemd / Task Scheduler enrollment — no daemon we host |
+| **Supervised auto-update** | Standard launchd / systemd / Task Scheduler, or an explicit hosting-runtime supervisor — no detached updater |
 
 Commercial Sylphx value is continuous maintenance, private customer packages,
 Platform integrations, and support — **not** pretending public Markdown is
@@ -96,22 +96,29 @@ the user.
 
 ### Managed update behavior
 
-The command uses the operating system's built-in per-user scheduler: launchd on
-macOS, a systemd user timer on Linux, and Task Scheduler on Windows. Each tick
-verifies the installed catalog, profile metadata, source commit, and package
-bytes and checks the public remote head. Either a changed commit or local drift
-triggers an exact-source resync. There are no agent hooks, runtime
-approvals, resident daemons, webhook relays, tokens, or Enact
+By default the command uses the operating system's built-in per-user scheduler:
+launchd on macOS, a systemd user timer on Linux, and Task Scheduler on Windows.
+A container or cloud-agent host without a usable user scheduler may instead
+select the explicit external-supervisor contract. In that mode the host owns
+the foreground lifecycle and freshness heartbeat while the exact Skills
+adapter continues to own source validation, locking, reconciliation, atomic
+runtime generations, drift repair, and backoff.
+
+Each tick verifies the installed catalog, profile metadata, source commit, and
+package bytes and checks the public remote head. Either a changed commit or
+local drift triggers an exact-source resync. There are no agent hooks, runtime
+approvals, unowned resident daemons, webhook relays, tokens, or Enact
 dependencies. When offline, a verified last-known-good generation remains
 active and retries back off.
 
 AutoSync readback verifies scheduler liveness, the current public remote head,
 the clean managed checkout, the applied state, adapter bytes, and installed
 targets rather than trusting its config alone. A Linux container with no
-working user-systemd manager is therefore reported as
-configured but inactive instead of green. Its hosting runtime must supply a
-supervised native scheduler; file presence and detached processes are not
-durable scheduling evidence.
+working user-systemd manager is therefore reported as configured but inactive
+instead of green unless its hosting runtime explicitly activates the
+external-supervisor mode. That mode becomes healthy only while its owned
+heartbeat is fresh and the exact source and all selected targets are current;
+file presence and detached processes are not durable scheduling evidence.
 
 Each successful reconciliation converges the complete Sylphx-managed set as one
 verified target generation: new packages, changed package bytes, removals, and

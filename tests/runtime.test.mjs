@@ -2561,3 +2561,141 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     rmSync(sandbox, { recursive: true, force: true });
   }
 });
+
+test('auto-sync supports a host-supervised scheduler with freshness-backed status', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-external-auto-sync-'));
+  const source = path.join(sandbox, 'source');
+  const managedHome = path.join(sandbox, 'home');
+  const codexHome = path.join(managedHome, '.codex');
+  try {
+    mkdirSync(source, { recursive: true });
+    git(source, ['init', '--initial-branch=main']);
+    cpSync(path.join(root, 'runtime'), path.join(source, 'runtime'), { recursive: true });
+    mkdirSync(path.join(source, 'skills'));
+    const fixtureName = 'engineering-standard';
+    cpSync(path.join(root, 'skills', fixtureName), path.join(source, 'skills', fixtureName), {
+      recursive: true,
+    });
+    const fixtureCatalog = {
+      ...catalog,
+      count: 1,
+      skills: catalog.skills.filter((skill) => skill.name === fixtureName),
+    };
+    writeFileSync(path.join(source, 'catalog.json'), `${JSON.stringify(fixtureCatalog, null, 2)}\n`);
+    for (const entry of ['.gitattributes', 'package.json']) {
+      cpSync(path.join(root, entry), path.join(source, entry));
+    }
+    const sourceSha = commit(source, 'external supervisor fixture');
+    const environment = {
+      SYLPHX_SKILLS_HOME: managedHome,
+      SYLPHX_SKILLS_REMOTE: pathToFileURL(source).href,
+      CODEX_HOME: codexHome,
+    };
+
+    const enabled = runWithEnvironment([
+      'auto-sync',
+      'enable',
+      '--agent',
+      'codex',
+      '--interval',
+      '1m',
+      '--scheduler',
+      'external',
+      '--quiet',
+    ], environment);
+    assert.equal(enabled.status, 0, enabled.stderr || enabled.stdout);
+    const config = JSON.parse(
+      readFileSync(path.join(managedHome, '.sylphx-skills', 'config.json'), 'utf8'),
+    );
+    assert.equal(config.mode, 'external-supervisor');
+    assert.equal(config.enabled, true);
+    assert.equal(config.externalSupervisorHeartbeat, path.join(
+      managedHome,
+      '.sylphx-skills',
+      'external-supervisor.json',
+    ));
+    assert.equal(
+      JSON.parse(readFileSync(path.join(codexHome, 'skills', '.sylphx-skills.json'), 'utf8'))
+        .sourceCommit,
+      sourceSha,
+    );
+
+    const awaitingSupervisor = JSON.parse(
+      runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout,
+    );
+    assert.equal(awaitingSupervisor.configured, true);
+    assert.equal(awaitingSupervisor.enabled, false);
+    assert.equal(awaitingSupervisor.current, true);
+    assert.equal(awaitingSupervisor.healthy, false);
+    assert.equal(awaitingSupervisor.scheduler.kind, 'external-supervisor');
+    assert.match(awaitingSupervisor.scheduler.error, /heartbeat is missing/);
+
+    const heartbeat = config.externalSupervisorHeartbeat;
+    writeFileSync(heartbeat, `${JSON.stringify({
+      schemaVersion: 1,
+      owner: 'SylphxAI/skills-external-supervisor',
+      supervisor: 'fixture',
+      status: 'running',
+      lastHeartbeatAt: new Date().toISOString(),
+      lastReconcileStatus: 'current',
+    })}\n`);
+    const live = JSON.parse(
+      runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout,
+    );
+    assert.equal(live.enabled, true);
+    assert.equal(live.current, true);
+    assert.equal(live.healthy, true);
+    assert.equal(live.scheduler.active, true);
+    assert.equal(live.scheduler.supervisor, 'fixture');
+
+    const tick = spawnSync(process.execPath, [
+      path.join(managedHome, '.sylphx-skills', 'reconcile.mjs'),
+      '--force',
+      '--strict',
+    ], {
+      cwd: root,
+      encoding: 'utf8',
+      env: { ...process.env, ...environment },
+    });
+    assert.equal(tick.status, 0, tick.stderr || tick.stdout);
+    assert.equal(JSON.parse(tick.stdout).appliedSha, sourceSha);
+
+    writeFileSync(heartbeat, `${JSON.stringify({
+      schemaVersion: 1,
+      owner: 'SylphxAI/skills-external-supervisor',
+      supervisor: 'fixture',
+      status: 'running',
+      lastHeartbeatAt: '2020-01-01T00:00:00.000Z',
+      lastReconcileStatus: 'current',
+    })}\n`);
+    const stale = JSON.parse(
+      runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout,
+    );
+    assert.equal(stale.enabled, false);
+    assert.equal(stale.healthy, false);
+    assert.match(stale.scheduler.error, /heartbeat is stale/);
+
+    runWithEnvironment(['auto-sync', 'disable', '--quiet'], environment);
+    assert.equal(existsSync(heartbeat), false);
+
+    const outsideHome = spawnSync(process.execPath, [cli,
+      'auto-sync',
+      'enable',
+      '--agent',
+      'codex',
+      '--scheduler',
+      'external',
+      '--supervisor-heartbeat',
+      path.join(sandbox, 'outside.json'),
+      '--quiet',
+    ], {
+      cwd: root,
+      encoding: 'utf8',
+      env: { ...process.env, ...environment },
+    });
+    assert.notEqual(outsideHome.status, 0);
+    assert.match(outsideHome.stderr, /must stay within the receiving runtime home/);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});

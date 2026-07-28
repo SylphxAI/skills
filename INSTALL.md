@@ -72,8 +72,8 @@ claim.
 5. Run machine-readable status from the exact installed candidate. Every
    explicitly in-scope runtime must report the complete catalog current and its
    managed constitution installed and current. AutoSync status must separately
-   prove that its native scheduler is configured **and live**; config or timer
-   files alone are not activation evidence. Its source readback must also bind
+   prove that its selected scheduler is configured **and live**; config, timer,
+   or heartbeat files alone are not activation evidence. Its source readback must also bind
    the clean managed checkout, applied state, installed targets, adapter bytes,
    and current canonical remote head to one commit. Re-run installation once and
    verify that generation identity, manifest timestamp, and instruction bytes
@@ -89,17 +89,20 @@ claim.
    over-trigger a package. Do not claim catalog-wide injection from install
    status or from the model saying it followed a Skill; use exact native
    runtime evidence where the claim matters.
-7. Enable the repository-owned OS-scheduled AutoSync for the receiving runtime
-   at the default ten-minute interval. If AutoSync already manages other
+7. Enable repository-owned AutoSync for the receiving runtime at the default
+   ten-minute interval. Prefer the operating system's native per-user scheduler.
+   A container or cloud-agent host without that facility may use the explicit
+   external-supervisor mode only when its hosting runtime owns a foreground
+   lifecycle, restart recovery, and the freshness heartbeat. If AutoSync already manages other
    explicitly selected runtimes, preserve that set and add the receiving
    runtime; never shrink or silently expand the selection from runtime
    discovery. Verify scheduler status and perform one exact-source
    reconciliation. A static one-shot copy is a partial Sylphx installation. A
-   container or remote agent host without a working per-user scheduler must
-   report `partial`; inert systemd unit files, an unavailable user bus, a
-   detached best-effort process, or an unstarted cron entry are not AutoSync.
-   The host owner must provide a supervised native scheduling boundary rather
-   than asking the user to keep a shell process alive.
+   container or remote agent host with neither a working per-user scheduler nor
+   a proven hosting-runtime supervisor must report `partial`; inert systemd
+   unit files, an unavailable user bus, a detached best-effort process, a stale
+   heartbeat, or an unstarted cron entry are not AutoSync. Never ask the user to
+   keep a shell process alive.
 8. Resolve the live integration separately from static installation:
    - The canonical Sylphx SaaS MCP resource is
      `https://enact.sylphx.com/api/mcp`. This stable public product hostname is
@@ -156,8 +159,9 @@ claim.
   command as the completion path.
 - Do not use or repair package-manager caches with privileged commands.
 - Do not leave AutoSync disabled after a Sylphx installation. AutoSync uses the
-  operating system's per-user scheduler, applies only exact canonical
-  generations, and preserves the last known-good generation while offline.
+  operating system's per-user scheduler or an explicitly proven
+  hosting-runtime supervisor, applies only exact canonical generations, and
+  preserves the last known-good generation while offline.
 - Do not copy, request, mint, print, or persist credentials; infer tenant
   identity; configure deployment access, hooks, or model overrides. The
   canonical public MCP hostname may be embedded and registered because it is
