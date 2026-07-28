@@ -3,6 +3,8 @@
 # default-branch push: commit subjects/bodies for direct-trunk ruleset.
 # Compatibility branch pushes are candidate publication, not trunk landing;
 # pull_request_target owns their lineage check without a duplicate false gate.
+# Until the central Candidate plane retires the residual producer, compatibility
+# commits retain their Work trailer so a stale branch-push observer fails safe.
 name: Enact Work Lineage
 
 on:
