@@ -1,22 +1,21 @@
-# ADR-4917 / ADR-0044 — Work lineage admission + OIDC observe residual.
-# pull_request_target: PR title/body only (no untrusted checkout).
-# default-branch push: commit subjects/bodies for direct-trunk ruleset.
-# Compatibility branch pushes are candidate publication, not trunk landing;
-# pull_request_target owns their lineage check without a duplicate false gate.
-# Until the central Candidate plane retires the residual producer, compatibility
-# commits retain their Work trailer so a stale branch-push observer fails safe.
+# Path-neutral coordination lineage (ADR-5127 / path-neutral admission).
+#
+# Does NOT scrape PR/commit text for Work: wi_….
+# Does NOT fail ordinary reversible PRs toward direct-trunk.
+# Optional: read Platform-posted status enact-work-lineage/pass when present.
+# Missing Platform status does not block (this repo may not dens private
+# Candidate binding yet). Platform status failure still fails closed.
 name: Enact Work Lineage
 
 on:
   pull_request_target:
     types: [opened, edited, reopened, synchronize, ready_for_review]
   push:
-    branches: [main]
 
 permissions:
   contents: read
   pull-requests: read
-  id-token: write
+  statuses: read
 
 jobs:
   work-lineage:
@@ -24,166 +23,87 @@ jobs:
     runs-on: sylphx-linux-standard
     timeout-minutes: 5
     steps:
-      - name: Require live Enact Work Item id
+      - name: Path-neutral lineage (no public wi_ scrape; no ordinary-PR hard fail)
         env:
           EVENT_NAME: ${{ github.event_name }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
-          PR_BODY: ${{ github.event.pull_request.body }}
-          BEFORE: ${{ github.event.before }}
-          AFTER: ${{ github.event.after }}
-          ENACT_ACCESS_TOKEN: ${{ secrets.ENACT_ACCESS_TOKEN }}
-          ENACT_READ_TOKEN: ${{ secrets.ENACT_READ_TOKEN }}
-          ENACT_MCP_URL: https://enact.sylphx.com/api/mcp
-          ENACT_REQUIRE_ACTIVE_CLAIM: ${{ vars.ENACT_REQUIRE_ACTIVE_CLAIM }}
           GH_TOKEN: ${{ github.token }}
           GH_REPOSITORY: ${{ github.repository }}
-        run: |
-          set -euo pipefail
-
-          token=""
-          auth_class=""
-          if [ -n "${ENACT_ACCESS_TOKEN:-}" ]; then
-            token="${ENACT_ACCESS_TOKEN}"
-            auth_class="workload_or_short_lived"
-          elif [ -n "${ENACT_READ_TOKEN:-}" ]; then
-            token="${ENACT_READ_TOKEN}"
-            auth_class="static_break_glass"
-            echo "::warning::Using static ENACT_READ_TOKEN (break-glass). Preferred path is short-lived GitHub OIDC → Enact observe exchange (ADR-4917/ADR-0044 residual)."
-          else
-            echo "::error::No Enact observe credential — set short-lived ENACT_ACCESS_TOKEN or break-glass ENACT_READ_TOKEN"
-            exit 1
-          fi
-
-          if [ -n "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ] && [ -n "${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}" ]; then
-            echo "github_oidc_request_endpoint=available"
-            access=$(python3 -c "import base64; exec(base64.b64decode('aW1wb3J0IGpzb24sIG9zLCB1cmxsaWIucmVxdWVzdAp1cmwgPSBvcy5lbnZpcm9uLmdldCgiQUNUSU9OU19JRF9UT0tFTl9SRVFVRVNUX1VSTCIpIG9yICIiCnRvayA9IG9zLmVudmlyb24uZ2V0KCJBQ1RJT05TX0lEX1RPS0VOX1JFUVVFU1RfVE9LRU4iKSBvciAiIgppZiBub3QgdXJsIG9yIG5vdCB0b2s6CiAgICByYWlzZSBTeXN0ZW1FeGl0KDApCmlmICJhdWRpZW5jZT0iIG5vdCBpbiB1cmw6CiAgICB1cmwgPSB1cmwgKyAoIiYiIGlmICI/IiBpbiB1cmwgZWxzZSAiPyIpICsgImF1ZGllbmNlPXN5bHBoeC1lbmFjdCIKcmVxID0gdXJsbGliLnJlcXVlc3QuUmVxdWVzdCh1cmwsIGhlYWRlcnM9eyJBdXRob3JpemF0aW9uIjogZiJCZWFyZXIge3Rva30iLCAiQWNjZXB0IjogImFwcGxpY2F0aW9uL2pzb24ifSkKdHJ5OgogICAgd2l0aCB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0zMCkgYXMgcjoKICAgICAgICBqd3QgPSAoanNvbi5sb2FkKHIpIG9yIHt9KS5nZXQoInZhbHVlIikgb3IgIiIKZXhjZXB0IEV4Y2VwdGlvbjoKICAgIHJhaXNlIFN5c3RlbUV4aXQoMCkKaWYgbm90IGp3dDoKICAgIHJhaXNlIFN5c3RlbUV4aXQoMCkKYm9keSA9IGpzb24uZHVtcHMoeyJnaXRodWJfb2lkY190b2tlbiI6IGp3dCwgInR0bF9zZWNzIjogOTAwfSkuZW5jb2RlKCkKcmVxMiA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoCiAgICAiaHR0cHM6Ly9lbmFjdC5zeWxwaHguY29tL2FwaS92MS9hdXRoL2dpdGh1Yi1hY3Rpb25zL3Rva2VuIiwKICAgIGRhdGE9Ym9keSwKICAgIGhlYWRlcnM9eyJDb250ZW50LVR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsICJBY2NlcHQiOiAiYXBwbGljYXRpb24vanNvbiJ9LAogICAgbWV0aG9kPSJQT1NUIiwKKQp0cnk6CiAgICB3aXRoIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxMiwgdGltZW91dD0zMCkgYXMgcjoKICAgICAgICBkID0ganNvbi5sb2FkKHIpCiAgICBwcmludChkLmdldCgiYWNjZXNzX3Rva2VuIikgb3IgIiIsIGVuZD0iIikKZXhjZXB0IEV4Y2VwdGlvbjoKICAgIHJhaXNlIFN5c3RlbUV4aXQoMCkK').decode())")
-            if [ -n "${access:-}" ]; then
-              token="$access"
-              auth_class="github_actions_oidc_observe"
-              echo "github_oidc_exchange=success auth_class=${auth_class}"
-            else
-              echo "github_oidc_exchange=failed_or_not_enabled"
-              if [ "$auth_class" = "static_break_glass" ]; then
-                echo "::warning::OIDC observe exchange unavailable; continuing with static ENACT_READ_TOKEN break-glass"
-              fi
-            fi
-          else
-            echo "github_oidc_request_endpoint=unavailable auth_class=${auth_class}"
-          fi
-
-          corpus=""
-          if [ "${EVENT_NAME}" = "pull_request_target" ] || [ "${EVENT_NAME}" = "pull_request" ]; then
-            corpus="${PR_TITLE}"$'
-          '"${PR_BODY}"
-          else
-            if [ -n "${BEFORE:-}" ] && [ "${BEFORE}" != "0000000000000000000000000000000000000000" ] && [ -n "${AFTER:-}" ]; then
-              commits=$(curl -sS --max-time 30 \
-                -H "Authorization: Bearer ${GH_TOKEN}" \
-                -H "Accept: application/vnd.github+json" \
-                "https://api.github.com/repos/${GH_REPOSITORY}/compare/${BEFORE}...${AFTER}" \
-                | python3 -c 'import sys,json; d=json.load(sys.stdin); print("\n\n".join((c.get("commit") or {}).get("message","") for c in (d.get("commits") or [])[-20:]))')
-              corpus="${commits}"
-            else
-              commits=$(curl -sS --max-time 30 \
-                -H "Authorization: Bearer ${GH_TOKEN}" \
-                -H "Accept: application/vnd.github+json" \
-                "https://api.github.com/repos/${GH_REPOSITORY}/commits/${AFTER}" \
-                | python3 -c 'import sys,json; d=json.load(sys.stdin); print((d.get("commit") or {}).get("message",""))')
-              corpus="${commits}"
-            fi
-          fi
-
-          if ! printf '%s' "$corpus" | grep -Eqo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}'; then
-            echo "::error::missing Enact Work lineage — include Work: wi_01… in the PR title/body (PR) or commit message (direct-trunk push)"
-            exit 1
-          fi
-          id=$(printf '%s' "$corpus" | grep -Eo 'wi_01[0-9A-HJKMNP-TV-Z]{22,}' | head -1)
-          payload=$(printf '%s' "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"work.get\",\"arguments\":{\"work_item_id\":\"$id\"}}}")
-          resp=$(curl -sS --max-time 30 -X POST "$ENACT_MCP_URL" \
-            -H "Authorization: Bearer ${token}" \
-            -H "Content-Type: application/json" \
-            -H "Accept: application/json" \
-            -d "$payload")
-
-          parse_out=$(RESP_JSON="$resp" python3 -c "import base64,os; exec(base64.b64decode('aW1wb3J0IGpzb24sIG9zLCByZQpyYXcgPSBvcy5lbnZpcm9uLmdldCgiUkVTUF9KU09OIiwgIiIpCnRyeToKICAgIGQgPSBqc29uLmxvYWRzKHJhdykKZXhjZXB0IEV4Y2VwdGlvbjoKICAgIHByaW50KCJGT1VORD1ubyIpCiAgICByYWlzZSBTeXN0ZW1FeGl0KDApCmlmIGQuZ2V0KCJlcnJvciIpOgogICAgcHJpbnQoIkZPVU5EPW5vIikKICAgIHJhaXNlIFN5c3RlbUV4aXQoMCkKciA9IGQuZ2V0KCJyZXN1bHQiKSBvciB7fQppZiBpc2luc3RhbmNlKHIsIGRpY3QpIGFuZCAiY29udGVudCIgaW4gciBhbmQgIndvcmtfaXRlbSIgbm90IGluIHI6CiAgICB0ZXh0cyA9IFtjLmdldCgidGV4dCIsICIiKSBmb3IgYyBpbiAoci5nZXQoImNvbnRlbnQiKSBvciBbXSkgaWYgYy5nZXQoInR5cGUiKSA9PSAidGV4dCJdCiAgICB0cnk6CiAgICAgICAgciA9IGpzb24ubG9hZHMoIlxuIi5qb2luKHRleHRzKSkKICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgcGFzcwp3aSA9IHIuZ2V0KCJ3b3JrX2l0ZW0iKSBpZiBpc2luc3RhbmNlKHIsIGRpY3QpIGVsc2UgTm9uZQpmb3VuZCA9IGlzaW5zdGFuY2UociwgZGljdCkgYW5kIChyLmdldCgiZm91bmQiKSBpcyBUcnVlIG9yIGJvb2woKHdpIG9yIHt9KS5nZXQoImlkIikpKQppZiBub3QgZm91bmQ6CiAgICBwcmludCgiRk9VTkQ9bm8iKQogICAgcmFpc2UgU3lzdGVtRXhpdCgwKQphYyA9ICh3aSBvciB7fSkuZ2V0KCJhY3RpdmVfY2xhaW0iKSBvciB7fQplc2MgPSBsYW1iZGEgdjogcmUuc3ViKHIiW1xyXG5dKyIsICIgIiwgc3RyKHYgb3IgIiIpKQpwcmludCgiRk9VTkQ9eWVzIikKcHJpbnQoIldPUktfU1RBVFVTPSIgKyBlc2MoKHdpIG9yIHt9KS5nZXQoInN0YXR1cyIpKSkKcHJpbnQoIkNMQUlNX0hPTERFUj0iICsgZXNjKGFjLmdldCgiaG9sZGVyIikpKQpwcmludCgiQ0xBSU1fSUQ9IiArIGVzYyhhYy5nZXQoImlkIikpKQpwcmludCgiQ0xBSU1fU1RBVFVTPSIgKyBlc2MoYWMuZ2V0KCJzdGF0dXMiKSkpCnByaW50KCJBR0VOVF9SVU5fSUQ9IiArIGVzYyhhYy5nZXQoImFnZW50X3J1bl9pZCIpKSkKcHJpbnQoIkxFQVNFX0VYUElSRVM9IiArIGVzYyhhYy5nZXQoImxlYXNlX2V4cGlyZXNfYXQiKSkpCnByaW50KCJIQVNfQUNUSVZFX0NMQUlNPSIgKyAoInllcyIgaWYgYWMuZ2V0KCJzdGF0dXMiKSA9PSAiYWN0aXZlIiBhbmQgYWMuZ2V0KCJpZCIpIGVsc2UgIm5vIikpCg==').decode())")
-          eval "$parse_out"
-
-          if [ "${FOUND:-}" != "yes" ]; then
-            echo "::error::Work id $id is not a live Enact Work Item (format-only / forged ids fail closed)."
-            echo "$resp" | head -c 400
-            exit 1
-          fi
-
-          echo "lineage.work_id=${id}"
-          echo "lineage.work_status=${WORK_STATUS:-}"
-          echo "lineage.auth_class=${auth_class}"
-          echo "lineage.claim_holder=${CLAIM_HOLDER:-}"
-          echo "lineage.claim_id=${CLAIM_ID:-}"
-          echo "lineage.claim_status=${CLAIM_STATUS:-}"
-          echo "lineage.agent_run_id=${AGENT_RUN_ID:-}"
-          echo "lineage.lease_expires_at=${LEASE_EXPIRES:-}"
-          echo "lineage.has_active_claim=${HAS_ACTIVE_CLAIM:-no}"
-          # Claim/Run loop proof (durable): active lease OR checkpoint/run/evidence.
-          # Existence-only Work stamps are the agent-native adoption gap. Direct-trunk push requires proof.
-          linked_payload=$(printf '%s' "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/call\",\"params\":{\"name\":\"work.linked_status\",\"arguments\":{\"work_item_id\":\"$id\"}}}")
-          linked_resp=$(curl -sS --max-time 30 -X POST "$ENACT_MCP_URL" \
-            -H "Authorization: Bearer ${token}" \
-            -H "Content-Type: application/json" \
-            -H "Accept: application/json" \
-            -d "$linked_payload" || true)
-          linked_parse=$(RESP_JSON="$linked_resp" python3 -c "import base64,os; exec(base64.b64decode('aW1wb3J0IGpzb24sIG9zLCByZQpyYXcgPSBvcy5lbnZpcm9uLmdldCgiUkVTUF9KU09OIiwgIiIpCmRlZiBlc2Modik6CiAgICByZXR1cm4gcmUuc3ViKHIiW1xyXG5dKyIsICIgIiwgc3RyKHYgb3IgIiIpKQp0cnk6CiAgICBkID0ganNvbi5sb2FkcyhyYXcpCmV4Y2VwdCBFeGNlcHRpb246CiAgICBwcmludCgiQ0xBSU1fTE9PUF9QUk9PRj1ubyIpCiAgICBwcmludCgiQ0hFQ0tQT0lOVF9SVU49IikKICAgIHByaW50KCJFVklERU5DRV9LSU5EUz0wIikKICAgIHByaW50KCJMSU5LRURfQ0xBSU1FRD1ubyIpCiAgICByYWlzZSBTeXN0ZW1FeGl0KDApCmlmIGQuZ2V0KCJlcnJvciIpOgogICAgcHJpbnQoIkNMQUlNX0xPT1BfUFJPT0Y9bm8iKQogICAgcHJpbnQoIkNIRUNLUE9JTlRfUlVOPSIpCiAgICBwcmludCgiRVZJREVOQ0VfS0lORFM9MCIpCiAgICBwcmludCgiTElOS0VEX0NMQUlNRUQ9bm8iKQogICAgcmFpc2UgU3lzdGVtRXhpdCgwKQpyID0gZC5nZXQoInJlc3VsdCIpIG9yIHt9CmlmIGlzaW5zdGFuY2UociwgZGljdCkgYW5kICJjb250ZW50IiBpbiByIGFuZCAibGlua2VkX3N0YXR1cyIgbm90IGluIHI6CiAgICB0ZXh0cyA9IFtjLmdldCgidGV4dCIsICIiKSBmb3IgYyBpbiAoci5nZXQoImNvbnRlbnQiKSBvciBbXSkgaWYgYy5nZXQoInR5cGUiKSA9PSAidGV4dCJdCiAgICB0cnk6CiAgICAgICAgciA9IGpzb24ubG9hZHMoIlxuIi5qb2luKHRleHRzKSkKICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgcGFzcwpscyA9IHIuZ2V0KCJsaW5rZWRfc3RhdHVzIikgaWYgaXNpbnN0YW5jZShyLCBkaWN0KSBlbHNlIE5vbmUKaWYgbm90IGlzaW5zdGFuY2UobHMsIGRpY3QpOgogICAgbHMgPSByIGlmIGlzaW5zdGFuY2UociwgZGljdCkgZWxzZSB7fQphYyA9IGxzLmdldCgiYWN0aXZlX2NsYWltIikgb3Ige30KY3AgPSBscy5nZXQoImxhdGVzdF9jaGVja3BvaW50Iikgb3Ige30Ka2luZHMgPSBscy5nZXQoImV2aWRlbmNlX2tpbmRzX3ByZXNlbnQiKSBvciBbXQpjcF9ydW4gPSBjcC5nZXQoImFnZW50X3J1bl9pZCIpIG9yICIiCmFjdGl2ZSA9IGJvb2woYWMuZ2V0KCJpZCIpIGFuZCAoYWMuZ2V0KCJzdGF0dXMiKSA9PSAiYWN0aXZlIiBvciBhYy5nZXQoImhvbGRlciIpKSkKcHJvb2YgPSBhY3RpdmUgb3IgYm9vbChjcF9ydW4pIG9yIChpc2luc3RhbmNlKGtpbmRzLCBsaXN0KSBhbmQgbGVuKGtpbmRzKSA+IDApCnByaW50KCJDTEFJTV9MT09QX1BST09GPSIgKyAoInllcyIgaWYgcHJvb2YgZWxzZSAibm8iKSkKcHJpbnQoIkNIRUNLUE9JTlRfUlVOPSIgKyBlc2MoY3BfcnVuKSkKcHJpbnQoIkVWSURFTkNFX0tJTkRTPSIgKyBzdHIobGVuKGtpbmRzKSBpZiBpc2luc3RhbmNlKGtpbmRzLCBsaXN0KSBlbHNlIDApKQpwcmludCgiTElOS0VEX0NMQUlNRUQ9IiArICgieWVzIiBpZiBscy5nZXQoImNsYWltZWQiKSBlbHNlICJubyIpKQo=').decode())")
-          eval "$linked_parse"
-          echo "lineage.claim_loop_proof=${CLAIM_LOOP_PROOF:-no}"
-          echo "lineage.checkpoint_run=${CHECKPOINT_RUN:-}"
-          echo "lineage.evidence_kinds=${EVIDENCE_KINDS:-0}"
-          echo "lineage.linked_claimed=${LINKED_CLAIMED:-no}"
-
-          require_active="${ENACT_REQUIRE_ACTIVE_CLAIM:-}"
-          # Direct-trunk push: require durable claim/run loop proof by default.
-          # PR lane: telemetry unless ENACT_REQUIRE_ACTIVE_CLAIM hard-enforces.
-          if [ "${HAS_ACTIVE_CLAIM:-no}" = "yes" ] || [ "${CLAIM_LOOP_PROOF:-no}" = "yes" ]; then
-            echo "pass: live enact work lineage + claim/run loop proof (${id} holder=${CLAIM_HOLDER:-none} run=${AGENT_RUN_ID:-${CHECKPOINT_RUN:-none}} evidence_kinds=${EVIDENCE_KINDS:-0}) event=${EVENT_NAME} auth=${auth_class}"
-          else
-            msg="Work ${id} exists but has no claim/run loop proof (no active Claim/Run, no checkpoint run, no evidence). Existence-only Work stamps do not satisfy agent-native adoption."
-            if [ "${require_active}" = "1" ] || [ "${require_active}" = "true" ] || [ "${EVENT_NAME}" = "push" ]; then
-              echo "::error::${msg}"
-              if [ "${EVENT_NAME}" = "push" ]; then
-                echo "::error::direct-trunk requires claim-before-mutation proof (active claim, checkpoint with agent_run_id, or published evidence on the Work)."
-              fi
-              exit 1
-            fi
-            echo "::notice::${msg}"
-            echo "pass: live enact work lineage present (${id}) without claim/run loop proof — PR telemetry only; event=${EVENT_NAME} auth=${auth_class}"
-          fi
-      - name: Lane admission (ordinary DT vs fenced compatibility)
-        # Fail-closed bidirectional lane gate + merged PR merge_commit_sha bind (fleet projection from spiron).
-        # Unknown/conflicting paths stay on the compatibility PR lane.
-        # Branch publication is not a landing event. PR lineage is evaluated by
-        # pull_request_target; only default-branch pushes represent direct-trunk
-        # or an exact compatibility merge.
-        if: >-
-          github.event_name == 'pull_request_target' ||
-          github.event_name == 'pull_request' ||
-          github.event_name == 'push'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPOSITORY: ${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-          ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK: ${{ vars.ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK }}
-          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          LINEAGE_CONTEXT: enact-work-lineage/pass
+          POLL_ATTEMPTS: '6'
+          POLL_SLEEP_SECS: '5'
         run: |
           set -euo pipefail
-          enforce="${ENACT_REQUIRE_ORDINARY_DIRECT_TRUNK:-true}"
-          case "$enforce" in 0|false|FALSE|no|NO) enforce=false ;; *) enforce=true ;; esac
-          files_json=""
-          if [ -n "${PR_NUMBER:-}" ]; then
-            files_json=$(curl -sS --max-time 30 \
+          sha="${HEAD_SHA:-}"
+          if [ -z "$sha" ]; then
+            echo "::notice::no head SHA — skip lineage readback"
+            exit 0
+          fi
+          if [ "${EVENT_NAME}" = "push" ]; then
+            ref="${{ github.ref }}"
+            default_branch="${{ github.event.repository.default_branch }}"
+            if [ "$ref" != "refs/heads/${default_branch}" ]; then
+              echo "non-default branch push — Candidate publication only; skip landing gate"
+              exit 0
+            fi
+          fi
+          echo "lineage_readback_sha=${sha}"
+          echo "NOTE: public PR/commit text is not used for Work identity."
+          echo "NOTE: ordinary work on a PR is valid (path-neutral admission)."
+
+          attempt=1
+          while [ "$attempt" -le "${POLL_ATTEMPTS}" ]; do
+            resp=$(curl -sS --max-time 20 \
               -H "Authorization: Bearer ${GH_TOKEN}" \
               -H "Accept: application/vnd.github+json" \
-              "https://api.github.com/repos/${GH_REPOSITORY}/pulls/${PR_NUMBER}/files?per_page=100" \
-              | python3 -c 'import sys,json; data=json.load(sys.stdin); print(json.dumps([{"filename": (f.get("filename") or "")} for f in data if isinstance(f, dict)]))')
-          fi
-          ENFORCE="$enforce" FILES_JSON="$files_json" PR_NUMBER="${PR_NUMBER:-}" HEAD_SHA="${HEAD_SHA:-}" DEFAULT_BRANCH="${DEFAULT_BRANCH:-main}" \
-            python3 -c "import base64,os; exec(base64.b64decode('ZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwppbXBvcnQganNvbiwgb3MsIHN5cywgdXJsbGliLnJlcXVlc3QsIGZubWF0Y2gsIHJlCgojIEZhaWwtY2xvc2VkIGJpZGlyZWN0aW9uYWwgbGFuZSBnYXRlICsgbWVyZ2VkIGNvbXBhdGliaWxpdHkgcHJvdmVuYW5jZSBiaW5kLgojIFBSIG9wZW46IHB1cmUgb3JkaW5hcnkg4oaSIGZvcmNlIERUOyBmZW5jZWQvdW5rbm93biDihpIgY29tcGF0aWJpbGl0eSBhbGxvd2VkLgojIERUIGNhbmRpZGF0ZSAobm8gUFIgYXNzb2NpYXRpb24pOiBwdXJlIG9yZGluYXJ5IOKGkiBhbGxvdzsgZWxzZSBmYWlsIGNsb3NlZC4KIyBEZWZhdWx0LWJyYW5jaCBwdXNoIGV4YWN0bHkgYm91bmQgdG8gbWVyZ2VkIFBSIChtZXJnZV9jb21taXRfc2hhIG1hdGNoICsKIyBiYXNlPWRlZmF1bHQgKyBtZXJnZWRfYXQgc2V0KSDihpIgY29tcGF0aWJpbGl0eV9tZXJnZWQgcHJvdmVuYW5jZSAoYWxsb3cpOwojIGRvIE5PVCBhY2NlcHQgYXJiaXRyYXJ5IGNsb3NlZC91bm1lcmdlZCBhc3NvY2lhdGlvbi4KCkJVSUxUSU5fT1JESU5BUllfUFJFRklYRVMgPSAoImRvY3MvZXZpZGVuY2UvIiwgImV2aWRlbmNlLyIpCkJVSUxUSU5fT1JESU5BUllfRVhBQ1QgPSB7CiAgICAiUkVBRE1FLm1kIiwgIlJFQURNRSIsICJDSEFOR0VMT0cubWQiLCAiQ0hBTkdFTE9HIiwgIkxJQ0VOU0UiLCAiTElDRU5TRS5tZCIsCn0KSEFSRF9GRU5DRV9QUkVGSVhFUyA9ICgKICAgICIuZ2l0aHViLyIsICJkb2NzL2Fkci8iLCAiaW5mcmEvIiwgImRlcGxveS8iLCAiY2hhcnRzLyIsICJoZWxtLyIsICJjb250cm9sLXBsYW5lLyIsCiAgICAicnVudGltZS9jb25zdGl0dXRpb24iLCAic3RhbmRhcmRzLyIsICJwcm9maWxlcy8iLAogICAgInNraWxscy9ydW50aW1lLyIsICJza2lsbHMvc3RhbmRhcmRzLyIsICJza2lsbHMvcHJvZmlsZXMvIiwKICAgICJza2lsbHMvZGVsaXZlcnktc3RhbmRhcmQvIiwgInNraWxscy9lbmdpbmVlcmluZy1zdGFuZGFyZC8iLAogICAgInNraWxscy9jaS1hZG1pc3Npb24tc3RhbmRhcmQvIiwgInNraWxscy9zb3VyY2UtYXV0aG9yaW5nLXN0YW5kYXJkLyIsCiAgICAic2tpbGxzL3JlcG8tYWRvcHRpb24tc3RhbmRhcmQvIiwgInNraWxscy9wcm9qZWN0LW1hbmlmZXN0LXN0YW5kYXJkLyIsCiAgICAic2tpbGxzL2Zyb250aWVyLXZlcmlmaWNhdGlvbi1zdGFuZGFyZC8iLCAic2tpbGxzL3NlbGYtZmVlZGluZy1hZ2VudC1sb29wLXN0YW5kYXJkLyIsCiAgICAic2tpbGxzL2FnZW50LW5hdGl2ZS1zdGFuZGFyZC8iLCAic2tpbGxzL2FnZW50LWZpcnN0LWRldmVsb3BtZW50LXN0YW5kYXJkLyIsCiAgICAic2tpbGxzL2F1dG9ub21vdXMtZXhlY3V0aW9uLXN0YW5kYXJkLyIsCikKSEFSRF9GRU5DRV9QQVJUUyA9ICgKICAgICIvbWlncmF0aW9ucy8iLCAiL21pZ3JhdGlvbi8iLCAiL3NlY3JldHMvIiwgIi9zZWNyZXQvIiwgIi9jcmVkZW50aWFscy8iLCAiL2NyZWRlbnRpYWwvIiwKICAgICIvb2F1dGgvIiwgIi9vaWRjLyIsICIvc2VjdXJpdHkvIiwgIi9jcnlwdG8vIiwgIi9hdXRoei8iLCAiL3JiYWMvIiwgIi9rbXMvIiwgIi92YXVsdC8iLAopCkhBUkRfRkVOQ0VfRVhBQ1QgPSB7CiAgICAic3lscGh4LnRvbWwiLCAiQUdFTlRTLm1kIiwgIkNMQVVERS5tZCIsICJwbGF0Zm9ybS5kZXBsb3ltZW50LnByb2ZpbGUudG9tbCIsCiAgICAiQ09ERU9XTkVSUyIsICJTRUNVUklUWS5tZCIsICIuZ2l0aHViL29yZGluYXJ5LWRpcmVjdC10cnVuay1hZG1pc3Npb24uanNvbiIsCn0KSEFSRF9GRU5DRV9TVUZGSVhFUyA9ICgKICAgICIuZGVwbG95bWVudC5wcm9maWxlLnRvbWwiLCAiZGVwbG95bWVudC5wcm9maWxlLnRvbWwiLAogICAgImJyYW5jaC1wcm90ZWN0aW9uLWNvbnRyYWN0Lmpzb24iLAogICAgIm9wZW5hcGkueWFtbCIsICJvcGVuYXBpLnltbCIsICJvcGVuYXBpLmpzb24iLCAic3dhZ2dlci55YW1sIiwgInN3YWdnZXIuanNvbiIsCikKSEFSRF9GRU5DRV9TVUJTVFIgPSAoIm9hdXRoIiwgIm9pZGMiLCAib3BlbmlkIiwgImNyZWRlbnRpYWwiLCAic2VjcmV0IiwgInNlY3VyaXR5LXBvbGljeSIpClNFTUFOVElDX0ZFTkNFX1NVQlNUUiA9ICgKICAgICJjYXBhYmlsaXR5LXNkayIsICJjYXBhYmlsaXR5X3NkayIsICJjYXBhYmlsaXRpZXNfZ2VuZXJhdGVkIiwKICAgICJwcm9ncmFtX3J1bl9leGVjdXRlIiwgInByb2dyYW1fcnVuX2NhcGFiaWxpdHkiLCAicHJpdmF0ZV9jYXBhYmlsaXR5X3RyYW5zcG9ydCIsCiAgICAiY2FwYWJpbGl0eS1maW5hbC1kaXNwb3NpdGlvbiIsICJjYXBhYmlsaXR5X2ZpbmFsX2Rpc3Bvc2l0aW9uIiwgImNhcGFiaWxpdHktdHJhbnNwb3J0IiwKICAgICJnYXRld2F5X2NyZWRlbnRpYWwiLCAiZ2F0ZXdheS1jcmVkZW50aWFsIiwgIm1lZGlhX3BvcnRzIiwgImltYWdlX2FuYWx5emUiLAogICAgInNhbmRib3hfaGFuZGxlIiwgInRyYW5zcG9ydF90b2tlbiIsICJ0cmFuc3BvcnQtdG9rZW4iLAopClNFTUFOVElDX0ZFTkNFX1BBVEhfUkUgPSByZS5jb21waWxlKAogICAgciIoP2kpKGNhcGFiaWxpdHktc2RrfHByb2dyYW1fcnVuX2V4ZWN1dGV8cHJvZ3JhbV9ydW5fY2FwYWJpbGl0eXwiCiAgICByInByaXZhdGUuP2NhcGFiaWxpdHl8Y2FwYWJpbGl0eS4/dHJhbnNwb3J0fGNhcGFiaWxpdHktZmluYWwtZGlzcG9zaXRpb258IgogICAgciJkb21haW5faGFuZGxlcnMvLiovKGltYWdlX3xtZWRpYV98Y3JlZGVudGlhbCl8bWVkaWFfcG9ydHN8IgogICAgciJnYXRld2F5LipjcmVkZW50aWFsfHJlZGlzLj90dGwuKnNhbmRib3h8c2FuZGJveC4qY3JlZGVudGlhbCkiCikKCmRlZiBub3JtKHA6IHN0cikgLT4gc3RyOgogICAgcCA9IChwIG9yICIiKS5yZXBsYWNlKCJcXCIsICIvIikKICAgIHdoaWxlIHAuc3RhcnRzd2l0aCgiLi8iKToKICAgICAgICBwID0gcFsyOl0KICAgIHJldHVybiBwCgpkZWYgYXBpX2pzb24odXJsOiBzdHIsIHRva2VuOiBzdHIsIGFjY2VwdDogc3RyID0gImFwcGxpY2F0aW9uL3ZuZC5naXRodWIranNvbiIpOgogICAgcmVxID0gdXJsbGliLnJlcXVlc3QuUmVxdWVzdCgKICAgICAgICB1cmwsCiAgICAgICAgaGVhZGVycz17CiAgICAgICAgICAgICJBdXRob3JpemF0aW9uIjogZiJCZWFyZXIge3Rva2VufSIsCiAgICAgICAgICAgICJBY2NlcHQiOiBhY2NlcHQsCiAgICAgICAgICAgICJVc2VyLUFnZW50IjogImVuYWN0LW9yZGluYXJ5LWRpcmVjdC10cnVuay1nYXRlIiwKICAgICAgICB9LAogICAgKQogICAgd2l0aCB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0zMCkgYXMgcmVzcDoKICAgICAgICByZXR1cm4ganNvbi5sb2FkKHJlc3ApCgpkZWYgaGFyZF9mZW5jZWQocGF0aDogc3RyKSAtPiBib29sOgogICAgcCA9IG5vcm0ocGF0aCkKICAgIGlmIG5vdCBwIG9yIHAgaW4gSEFSRF9GRU5DRV9FWEFDVDoKICAgICAgICByZXR1cm4gVHJ1ZQogICAgZm9yIHByZWYgaW4gSEFSRF9GRU5DRV9QUkVGSVhFUzoKICAgICAgICBpZiBwLnN0YXJ0c3dpdGgocHJlZik6CiAgICAgICAgICAgIHJldHVybiBUcnVlCiAgICB3cmFwcGVkID0gZiIve3B9LyIKICAgIGZvciBwYXJ0IGluIEhBUkRfRkVOQ0VfUEFSVFM6CiAgICAgICAgaWYgcGFydCBpbiB3cmFwcGVkOgogICAgICAgICAgICByZXR1cm4gVHJ1ZQogICAgZm9yIHN1ZiBpbiBIQVJEX0ZFTkNFX1NVRkZJWEVTOgogICAgICAgIGlmIHAuZW5kc3dpdGgoc3VmKToKICAgICAgICAgICAgcmV0dXJuIFRydWUKICAgIHBsID0gcC5sb3dlcigpCiAgICBmb3IgcGFydCBpbiBIQVJEX0ZFTkNFX1NVQlNUUjoKICAgICAgICBpZiBwYXJ0IGluIHBsOgogICAgICAgICAgICByZXR1cm4gVHJ1ZQogICAgaWYgIi9jb250cmFjdHMvIiBpbiB3cmFwcGVkIGFuZCBwLmVuZHN3aXRoKCgiLmpzb24iLCAiLnlhbWwiLCAiLnltbCIsICIucHJvdG8iKSk6CiAgICAgICAgcmV0dXJuIFRydWUKICAgIHJldHVybiBGYWxzZQoKZGVmIHNlbWFudGljX2ZlbmNlZChwYXRoOiBzdHIpIC0+IGJvb2w6CiAgICBwID0gbm9ybShwYXRoKQogICAgcGwgPSBwLmxvd2VyKCkKICAgIGlmIGhhcmRfZmVuY2VkKHApOgogICAgICAgIHJldHVybiBUcnVlCiAgICBpZiBTRU1BTlRJQ19GRU5DRV9QQVRIX1JFLnNlYXJjaChwbCk6CiAgICAgICAgcmV0dXJuIFRydWUKICAgIGZvciBzIGluIFNFTUFOVElDX0ZFTkNFX1NVQlNUUjoKICAgICAgICBpZiBzIGluIHBsOgogICAgICAgICAgICByZXR1cm4gVHJ1ZQogICAgaWYgImNhcGFiaWxpdHkiIGluIHBsIGFuZCBwLmVuZHN3aXRoKCgiLmpzb24iLCAiLnlhbWwiLCAiLnltbCIsICIubWQiLCAiLnJzIiwgIi50cyIsICIucHkiKSk6CiAgICAgICAgaWYgYW55KHggaW4gcGwgZm9yIHggaW4gKCJkaXNwb3NpdGlvbiIsICJpZGwiLCAic2RrIiwgInRyYW5zcG9ydCIsICJpbnZva2UiLCAiZXhlY3V0ZSIpKToKICAgICAgICAgICAgcmV0dXJuIFRydWUKICAgIHJldHVybiBGYWxzZQoKZGVmIGlzX3Rlc3RfcGF0aChwYXRoOiBzdHIpIC0+IGJvb2w6CiAgICBwID0gbm9ybShwYXRoKQogICAgcGwgPSBwLmxvd2VyKCkKICAgIHBhcnRzID0gcGwuc3BsaXQoIi8iKQogICAgaWYgYW55KHBhcnQgaW4geyJ0ZXN0IiwgInRlc3RzIiwgIl9fdGVzdHNfXyIsICJzcGVjIiwgInNwZWNzIn0gZm9yIHBhcnQgaW4gcGFydHNbOi0xXSk6CiAgICAgICAgcmV0dXJuIFRydWUKICAgIGJhc2UgPSBwYXJ0c1stMV0gaWYgcGFydHMgZWxzZSAiIgogICAgaWYgYmFzZS5lbmRzd2l0aCgoIi50ZXN0LnRzIiwgIi50ZXN0LnRzeCIsICIudGVzdC5qcyIsICIudGVzdC5qc3giLCAiLnRlc3QubWpzIiwgIi50ZXN0LmNqcyIsCiAgICAgICAgICAgICAgICAgICAgICAiLnNwZWMudHMiLCAiLnNwZWMudHN4IiwgIi5zcGVjLmpzIiwgIi5zcGVjLmpzeCIsCiAgICAgICAgICAgICAgICAgICAgICAiX3Rlc3QucnMiLCAiX3Rlc3QuZ28iLCAiX3Rlc3QucHkiLCAiLnRlc3QucHkiKSk6CiAgICAgICAgcmV0dXJuIFRydWUKICAgIGlmIGJhc2Uuc3RhcnRzd2l0aCgidGVzdF8iKSBhbmQgYmFzZS5lbmRzd2l0aCgoIi5weSIsICIucnMiLCAiLmdvIiwgIi50cyIsICIuanMiKSk6CiAgICAgICAgcmV0dXJuIFRydWUKICAgIGlmIGJhc2UgaW4geyJ0ZXN0LnJzIiwgInRlc3RzLnJzIn06CiAgICAgICAgcmV0dXJuIFRydWUKICAgIHJldHVybiBGYWxzZQoKZGVmIGJ1aWx0aW5fb3JkaW5hcnkocGF0aDogc3RyKSAtPiBib29sOgogICAgcCA9IG5vcm0ocGF0aCkKICAgIGlmIGhhcmRfZmVuY2VkKHApIG9yIHNlbWFudGljX2ZlbmNlZChwKToKICAgICAgICByZXR1cm4gRmFsc2UKICAgIGlmIHAgaW4gQlVJTFRJTl9PUkRJTkFSWV9FWEFDVDoKICAgICAgICByZXR1cm4gVHJ1ZQogICAgZm9yIHByZWYgaW4gQlVJTFRJTl9PUkRJTkFSWV9QUkVGSVhFUzoKICAgICAgICBpZiBwLnN0YXJ0c3dpdGgocHJlZik6CiAgICAgICAgICAgIHJldHVybiBUcnVlCiAgICBpZiBwLnN0YXJ0c3dpdGgoImRvY3MvIikgYW5kIHAuZW5kc3dpdGgoKCIubWQiLCAiLmpzb24iLCAiLnR4dCIsICIuanNvbmwiKSkgYW5kIG5vdCBwLnN0YXJ0c3dpdGgoImRvY3MvYWRyLyIpOgogICAgICAgIHJldHVybiBUcnVlCiAgICBpZiBpc190ZXN0X3BhdGgocCk6CiAgICAgICAgcmV0dXJuIFRydWUKICAgIHJldHVybiBGYWxzZQoKZGVmIGxvYWRfcmVwb19hZG1pc3Npb24odG9rZW46IHN0ciwgcmVwbzogc3RyLCByZWY6IHN0cikgLT4gZGljdDoKICAgIHJlZiA9IHJlZiBvciAibWFpbiIKICAgIHVybCA9IGYiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy97cmVwb30vY29udGVudHMvLmdpdGh1Yi9vcmRpbmFyeS1kaXJlY3QtdHJ1bmstYWRtaXNzaW9uLmpzb24/cmVmPXtyZWZ9IgogICAgdHJ5OgogICAgICAgIHJvdyA9IGFwaV9qc29uKHVybCwgdG9rZW4pCiAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgcHJpbnQoZiJyZXBvX2FkbWlzc2lvbj1hYnNlbnQgcmVmPXtyZWZ9IGVycj17dHlwZShlKS5fX25hbWVfX30iKQogICAgICAgIHJldHVybiB7fQogICAgaWYgbm90IGlzaW5zdGFuY2Uocm93LCBkaWN0KSBvciByb3cuZ2V0KCJlbmNvZGluZyIpICE9ICJiYXNlNjQiIG9yIG5vdCByb3cuZ2V0KCJjb250ZW50Iik6CiAgICAgICAgcHJpbnQoZiJyZXBvX2FkbWlzc2lvbj11bnJlYWRhYmxlIHJlZj17cmVmfSIpCiAgICAgICAgcmV0dXJuIHt9CiAgICBpbXBvcnQgYmFzZTY0CiAgICByYXcgPSBiYXNlNjQuYjY0ZGVjb2RlKHJvd1siY29udGVudCJdLnJlcGxhY2UoIlxuIiwgIiIpKS5kZWNvZGUoKQogICAgZGF0YSA9IGpzb24ubG9hZHMocmF3KQogICAgaWYgbm90IGlzaW5zdGFuY2UoZGF0YSwgZGljdCk6CiAgICAgICAgcHJpbnQoInJlcG9fYWRtaXNzaW9uPWludmFsaWRfb2JqZWN0IikKICAgICAgICByZXR1cm4ge30KICAgIHNjaGVtYSA9IGRhdGEuZ2V0KCJzY2hlbWEiKSBvciBkYXRhLmdldCgic2NoZW1hX3ZlcnNpb24iKSBvciAiIgogICAgaWYgc2NoZW1hIG5vdCBpbiAoIm9yZGluYXJ5LWRpcmVjdC10cnVuay1hZG1pc3Npb24vdjEiLCAiMSIsIDEsICJ2MSIpOgogICAgICAgIHByaW50KGYicmVwb19hZG1pc3Npb249dW5rbm93bl9zY2hlbWEgc2NoZW1hPXtzY2hlbWEhcn0iKQogICAgICAgIHJldHVybiB7fQogICAgcHJpbnQoZiJyZXBvX2FkbWlzc2lvbj1sb2FkZWQgcmVmPXtyZWZ9IHNjaGVtYT17c2NoZW1hfSIpCiAgICByZXR1cm4gZGF0YQoKZGVmIG1hbmlmZXN0X29yZGluYXJ5KHBhdGg6IHN0ciwgYWRtaXNzaW9uOiBkaWN0KSAtPiBib29sOgogICAgaWYgbm90IGFkbWlzc2lvbiBvciBoYXJkX2ZlbmNlZChwYXRoKSBvciBzZW1hbnRpY19mZW5jZWQocGF0aCk6CiAgICAgICAgcmV0dXJuIEZhbHNlCiAgICBwID0gbm9ybShwYXRoKQogICAgZm9yIHByZWYgaW4gYWRtaXNzaW9uLmdldCgicG9zaXRpdmVfcGF0aF9wcmVmaXhlcyIpIG9yIFtdOgogICAgICAgIGlmIGlzaW5zdGFuY2UocHJlZiwgc3RyKSBhbmQgcHJlZiBhbmQgcC5zdGFydHN3aXRoKHByZWYpOgogICAgICAgICAgICByZXR1cm4gVHJ1ZQogICAgZm9yIGdsb2IgaW4gYWRtaXNzaW9uLmdldCgicG9zaXRpdmVfcGF0aF9nbG9icyIpIG9yIFtdOgogICAgICAgIGlmIGlzaW5zdGFuY2UoZ2xvYiwgc3RyKSBhbmQgZ2xvYiBhbmQgZm5tYXRjaC5mbm1hdGNoKHAsIGdsb2IpOgogICAgICAgICAgICByZXR1cm4gVHJ1ZQogICAgcmV0dXJuIEZhbHNlCgpkZWYgcG9zaXRpdmVseV9hZG1pdHRlZF9vcmRpbmFyeShwYXRoOiBzdHIsIGFkbWlzc2lvbjogZGljdCkgLT4gYm9vbDoKICAgIHJldHVybiBidWlsdGluX29yZGluYXJ5KHBhdGgpIG9yIG1hbmlmZXN0X29yZGluYXJ5KHBhdGgsIGFkbWlzc2lvbikKCmRlZiBsaXN0X2Fzc29jaWF0ZWRfcHVsbHModG9rZW46IHN0ciwgcmVwbzogc3RyLCBzaGE6IHN0cikgLT4gbGlzdDoKICAgIGlmIG5vdCBzaGE6CiAgICAgICAgcmV0dXJuIFtdCiAgICB0cnk6CiAgICAgICAgcm93cyA9IGFwaV9qc29uKAogICAgICAgICAgICBmImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3Mve3JlcG99L2NvbW1pdHMve3NoYX0vcHVsbHMiLAogICAgICAgICAgICB0b2tlbiwKICAgICAgICAgICAgYWNjZXB0PSJhcHBsaWNhdGlvbi92bmQuZ2l0aHViLmdyb290LXByZXZpZXcranNvbiIsCiAgICAgICAgKQogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgIHByaW50KGYiYXNzb2NpYXRlZF9wdWxsc19lcnJvcj17dHlwZShlKS5fX25hbWVfX30iKQogICAgICAgIHJldHVybiBbXQogICAgcmV0dXJuIHJvd3MgaWYgaXNpbnN0YW5jZShyb3dzLCBsaXN0KSBlbHNlIFtdCgpkZWYgcmVzb2x2ZV9sYW5lKHRva2VuOiBzdHIsIHJlcG86IHN0ciwgZXhwbGljaXRfcHI6IHN0ciwgc2hhOiBzdHIsIGRlZmF1bHRfYnJhbmNoOiBzdHIpOgogICAgIiIiUmV0dXJuIChtb2RlLCBwcl9udW1iZXJfc3RyKS4KICAgIG1vZGVzOiBwdWxsX3JlcXVlc3QgfCBjb21wYXRpYmlsaXR5X21lcmdlZCB8IGRpcmVjdF90cnVua19jYW5kaWRhdGUKICAgICIiIgogICAgaWYgZXhwbGljaXRfcHI6CiAgICAgICAgcHJpbnQoZiJtb2RlX3NvdXJjZT1leHBsaWNpdF9wciBwcj17ZXhwbGljaXRfcHJ9IikKICAgICAgICByZXR1cm4gInB1bGxfcmVxdWVzdCIsIGV4cGxpY2l0X3ByCgogICAgcHVsbHMgPSBsaXN0X2Fzc29jaWF0ZWRfcHVsbHModG9rZW4sIHJlcG8sIHNoYSkKICAgIG9wZW5zID0gW3AgZm9yIHAgaW4gcHVsbHMgaWYgKHAgb3Ige30pLmdldCgic3RhdGUiKSA9PSAib3BlbiJdCiAgICBpZiBvcGVuczoKICAgICAgICBwciA9IG9wZW5zWzBdCiAgICAgICAgcHJpbnQoZiJtb2RlX3NvdXJjZT1vcGVuX3ByIHByPXtwci5nZXQoJ251bWJlcicpfSBjb3VudD17bGVuKG9wZW5zKX0iKQogICAgICAgIHJldHVybiAicHVsbF9yZXF1ZXN0Iiwgc3RyKHByLmdldCgibnVtYmVyIikgb3IgIiIpCgogICAgIyBTdHJvbmcgYmluZDogZXhhY3QgbWVyZ2UgY29tbWl0IG9mIGEgbWVyZ2VkIFBSIGludG8gZGVmYXVsdCBicmFuY2ggb25seS4KICAgICMgRG9lcyBub3QgYWNjZXB0IGNsb3NlZC11bm1lcmdlZCBvciBhcmJpdHJhcnkgaGlzdG9yaWNhbCBhc3NvY2lhdGlvbi4KICAgIGZvciBwIGluIHB1bGxzOgogICAgICAgIGlmIG5vdCAocCBvciB7fSkuZ2V0KCJtZXJnZWRfYXQiKToKICAgICAgICAgICAgY29udGludWUKICAgICAgICBiYXNlID0gKChwLmdldCgiYmFzZSIpIG9yIHt9KSBpZiBpc2luc3RhbmNlKHAuZ2V0KCJiYXNlIiksIGRpY3QpIGVsc2Uge30pCiAgICAgICAgYmFzZV9yZWYgPSBiYXNlLmdldCgicmVmIikgb3IgIiIKICAgICAgICBtZXJnZV9zaGEgPSAocC5nZXQoIm1lcmdlX2NvbW1pdF9zaGEiKSBvciAiIikgb3IgIiIKICAgICAgICBpZiBiYXNlX3JlZiAhPSBkZWZhdWx0X2JyYW5jaDoKICAgICAgICAgICAgcHJpbnQoZiJza2lwX21lcmdlZF9wcj17cC5nZXQoJ251bWJlcicpfSBiYXNlX3JlZj17YmFzZV9yZWZ9ICE9IGRlZmF1bHQ9e2RlZmF1bHRfYnJhbmNofSIpCiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgaWYgbWVyZ2Vfc2hhIGFuZCBtZXJnZV9zaGEgPT0gc2hhOgogICAgICAgICAgICBwcmludCgKICAgICAgICAgICAgICAgIGYibW9kZV9zb3VyY2U9bWVyZ2VkX3ByX2V4YWN0X21lcmdlX2NvbW1pdCBwcj17cC5nZXQoJ251bWJlcicpfSAiCiAgICAgICAgICAgICAgICBmIm1lcmdlX2NvbW1pdF9zaGE9e21lcmdlX3NoYVs6MTJdfSBiYXNlPXtiYXNlX3JlZn0iCiAgICAgICAgICAgICkKICAgICAgICAgICAgcmV0dXJuICJjb21wYXRpYmlsaXR5X21lcmdlZCIsIHN0cihwLmdldCgibnVtYmVyIikgb3IgIiIpCiAgICAgICAgIyBFeHBsaWNpdCBub24tYmluZCBsb2cgZm9yIGF1ZGl0IChjbG9zZWQgYXNzb2NpYXRpb24gd2l0aG91dCBleGFjdCBtZXJnZSBzaGEpCiAgICAgICAgcHJpbnQoCiAgICAgICAgICAgIGYic2tpcF9jbG9zZWRfYXNzb2NpYXRpb24gcHI9e3AuZ2V0KCdudW1iZXInKX0gc3RhdGU9e3AuZ2V0KCdzdGF0ZScpfSAiCiAgICAgICAgICAgIGYibWVyZ2VfY29tbWl0X3NoYT17KG1lcmdlX3NoYVs6MTJdIGlmIG1lcmdlX3NoYSBlbHNlIE5vbmUpfSBzaGE9e3NoYVs6MTJdfSIKICAgICAgICApCgogICAgcHJpbnQoIm1vZGVfc291cmNlPW5vX29wZW5fb3JfZXhhY3RfbWVyZ2VkX3ByIChkaXJlY3QtdHJ1bmsgY2FuZGlkYXRlKSIpCiAgICByZXR1cm4gImRpcmVjdF90cnVua19jYW5kaWRhdGUiLCAiIgoKZGVmIGxpc3RfcHJfZmlsZXModG9rZW46IHN0ciwgcmVwbzogc3RyLCBwcjogc3RyKSAtPiBsaXN0W3N0cl06CiAgICBmaWxlczogbGlzdFtzdHJdID0gW10KICAgIHJhdyA9IG9zLmVudmlyb24uZ2V0KCJGSUxFU19KU09OIikKICAgIGlmIHJhdzoKICAgICAgICBkYXRhID0ganNvbi5sb2FkcyhyYXcpCiAgICAgICAgZm9yIHJvdyBpbiBkYXRhOgogICAgICAgICAgICBuYW1lID0gKHJvdyBvciB7fSkuZ2V0KCJmaWxlbmFtZSIpIG9yICIiCiAgICAgICAgICAgIGlmIG5hbWU6CiAgICAgICAgICAgICAgICBmaWxlcy5hcHBlbmQobmFtZSkKICAgICAgICByZXR1cm4gZmlsZXMKICAgIHBhZ2UgPSAxCiAgICB3aGlsZSBwYWdlIDw9IDUwOgogICAgICAgIHJvd3MgPSBhcGlfanNvbigKICAgICAgICAgICAgZiJodHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL3tyZXBvfS9wdWxscy97cHJ9L2ZpbGVzP3Blcl9wYWdlPTEwMCZwYWdlPXtwYWdlfSIsCiAgICAgICAgICAgIHRva2VuLAogICAgICAgICkKICAgICAgICBpZiBub3Qgcm93czoKICAgICAgICAgICAgYnJlYWsKICAgICAgICBmb3Igcm93IGluIHJvd3M6CiAgICAgICAgICAgIG5hbWUgPSAocm93IG9yIHt9KS5nZXQoImZpbGVuYW1lIikgb3IgIiIKICAgICAgICAgICAgaWYgbmFtZToKICAgICAgICAgICAgICAgIGZpbGVzLmFwcGVuZChuYW1lKQogICAgICAgIGlmIGxlbihyb3dzKSA8IDEwMDoKICAgICAgICAgICAgYnJlYWsKICAgICAgICBwYWdlICs9IDEKICAgIGVsc2U6CiAgICAgICAgcmFpc2UgU3lzdGVtRXhpdCgiOjplcnJvcjo6UFIgZmlsZSBsaXN0IGV4Y2VlZGVkIHBhZ2luYXRpb24gc2FmZXR5IGNhcCIpCiAgICByZXR1cm4gZmlsZXMKCmRlZiBsaXN0X2NvbW1pdF9maWxlcyh0b2tlbjogc3RyLCByZXBvOiBzdHIsIHNoYTogc3RyKSAtPiBsaXN0W3N0cl06CiAgICBpZiBub3Qgc2hhOgogICAgICAgIHJldHVybiBbXQogICAgdHJ5OgogICAgICAgIGRldGFpbCA9IGFwaV9qc29uKGYiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy97cmVwb30vY29tbWl0cy97c2hhfSIsIHRva2VuKQogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgIHByaW50KGYiY29tbWl0X2ZpbGVzX2Vycm9yPXt0eXBlKGUpLl9fbmFtZV9ffSIpCiAgICAgICAgcmV0dXJuIFtdCiAgICBmaWxlcyA9IFtdCiAgICBmb3Igcm93IGluIChkZXRhaWwgb3Ige30pLmdldCgiZmlsZXMiKSBvciBbXToKICAgICAgICBuYW1lID0gKHJvdyBvciB7fSkuZ2V0KCJmaWxlbmFtZSIpIG9yICIiCiAgICAgICAgaWYgbmFtZToKICAgICAgICAgICAgZmlsZXMuYXBwZW5kKG5hbWUpCiAgICByZXR1cm4gZmlsZXMKCmRlZiBjbGFzc2lmeShmaWxlczogbGlzdFtzdHJdLCBhZG1pc3Npb246IGRpY3QpOgogICAgb3JkaW5hcnksIGZlbmNlZCwgdW5rbm93biA9IFtdLCBbXSwgW10KICAgIGZvciBmIGluIGZpbGVzOgogICAgICAgIGlmIHNlbWFudGljX2ZlbmNlZChmKSBvciBoYXJkX2ZlbmNlZChmKToKICAgICAgICAgICAgZmVuY2VkLmFwcGVuZChmKQogICAgICAgIGVsaWYgcG9zaXRpdmVseV9hZG1pdHRlZF9vcmRpbmFyeShmLCBhZG1pc3Npb24pOgogICAgICAgICAgICBvcmRpbmFyeS5hcHBlbmQoZikKICAgICAgICBlbHNlOgogICAgICAgICAgICB1bmtub3duLmFwcGVuZChmKQogICAgcmV0dXJuIG9yZGluYXJ5LCBmZW5jZWQsIHVua25vd24KCmRlZiBtYWluKCkgLT4gaW50OgogICAgZW5mb3JjZSA9IG9zLmVudmlyb24uZ2V0KCJFTkZPUkNFIiwgInRydWUiKQogICAgdG9rZW4gPSBvcy5lbnZpcm9uWyJHSF9UT0tFTiJdCiAgICByZXBvID0gb3MuZW52aXJvblsiR0hfUkVQT1NJVE9SWSJdCiAgICBzaGEgPSBvcy5lbnZpcm9uLmdldCgiSEVBRF9TSEEiKSBvciBvcy5lbnZpcm9uLmdldCgiR0lUSFVCX1NIQSIpIG9yICIiCiAgICBkZWZhdWx0X2JyYW5jaCA9IG9zLmVudmlyb24uZ2V0KCJERUZBVUxUX0JSQU5DSCIpIG9yICJtYWluIgogICAgbW9kZSwgcHIgPSByZXNvbHZlX2xhbmUoCiAgICAgICAgdG9rZW4sIHJlcG8sIG9zLmVudmlyb24uZ2V0KCJQUl9OVU1CRVIiLCAiIikuc3RyaXAoKSwgc2hhLCBkZWZhdWx0X2JyYW5jaAogICAgKQogICAgYWRtaXNzaW9uID0gbG9hZF9yZXBvX2FkbWlzc2lvbih0b2tlbiwgcmVwbywgZGVmYXVsdF9icmFuY2gpCgogICAgaWYgbW9kZSA9PSAicHVsbF9yZXF1ZXN0IiBhbmQgcHI6CiAgICAgICAgZmlsZXMgPSBsaXN0X3ByX2ZpbGVzKHRva2VuLCByZXBvLCBwcikKICAgIGVsc2U6CiAgICAgICAgZmlsZXMgPSBsaXN0X2NvbW1pdF9maWxlcyh0b2tlbiwgcmVwbywgc2hhKQoKICAgIGlmIG5vdCBmaWxlczoKICAgICAgICBwcmludChmInNraXA6IGVtcHR5IGZpbGUgbGlzdCBtb2RlPXttb2RlfSBzaGE9e3NoYVs6MTJdfSIpCiAgICAgICAgcmV0dXJuIDAKCiAgICBvcmRpbmFyeSwgZmVuY2VkLCB1bmtub3duID0gY2xhc3NpZnkoZmlsZXMsIGFkbWlzc2lvbikKICAgIGFsbF9vcmRpbmFyeSA9IGxlbihmZW5jZWQpID09IDAgYW5kIGxlbih1bmtub3duKSA9PSAwIGFuZCBsZW4ob3JkaW5hcnkpID09IGxlbihmaWxlcykKICAgIHByaW50KAogICAgICAgIGYibW9kZT17bW9kZX0gZmlsZXM9e2xlbihmaWxlcyl9IG9yZGluYXJ5PXtsZW4ob3JkaW5hcnkpfSAiCiAgICAgICAgZiJzZW1hbnRpY19vcl9oYXJkX2ZlbmNlZD17bGVuKGZlbmNlZCl9IHVua25vd249e2xlbih1bmtub3duKX0gYWxsX29yZGluYXJ5PXthbGxfb3JkaW5hcnl9IgogICAgKQogICAgZm9yIGYgaW4gZmlsZXNbOjUwXToKICAgICAgICBpZiBmIGluIGZlbmNlZDoKICAgICAgICAgICAga2luZCA9ICJmZW5jZWQiCiAgICAgICAgZWxpZiBmIGluIG9yZGluYXJ5OgogICAgICAgICAgICBraW5kID0gIm9yZGluYXJ5IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIGtpbmQgPSAiY29tcGF0aWJpbGl0eS91bmtub3duIgogICAgICAgIHByaW50KGYiICAtIFt7a2luZH1dIHtmfSIpCgogICAgIyBNZXJnZWQgY29tcGF0aWJpbGl0eSBwcm92ZW5hbmNlIG9uIGRlZmF1bHQgYnJhbmNoOiBhbHJlYWR5IGFkbWl0dGVkIHZpYSBQUiBsYW5lLgogICAgIyBSZXRhaW4gc3VjY2VzcyBmb3IgZmVuY2VkIG1lcmdlIGNvbW1pdHM7IGRvIG5vdCByZWNsYXNzaWZ5IGFzIERUIGNhbmRpZGF0ZS4KICAgIGlmIG1vZGUgPT0gImNvbXBhdGliaWxpdHlfbWVyZ2VkIjoKICAgICAgICBwcmludCgKICAgICAgICAgICAgZiJwYXNzOiBkZWZhdWx0LWJyYW5jaCBjb21taXQgZXhhY3RseSBib3VuZCB0byBtZXJnZWQgY29tcGF0aWJpbGl0eSBQUiAiCiAgICAgICAgICAgIGYicHI9e3ByfSBzaGE9e3NoYVs6MTJdfSAobm90IGEgcmF3IGRpcmVjdC10cnVuayBjYW5kaWRhdGUpIgogICAgICAgICkKICAgICAgICByZXR1cm4gMAoKICAgIGlmIG1vZGUgPT0gInB1bGxfcmVxdWVzdCI6CiAgICAgICAgaWYgbm90IGFsbF9vcmRpbmFyeToKICAgICAgICAgICAgcHJpbnQoInBhc3M6IGNvbXBhdGliaWxpdHkgbGFuZSBhbGxvd2VkIChjb250YWlucyBmZW5jZWQgb3Igbm90LXBvc2l0aXZlbHktYWRtaXR0ZWQgcGF0aCkiKQogICAgICAgICAgICByZXR1cm4gMAogICAgICAgIG1zZyA9ICgKICAgICAgICAgICAgIlBvc2l0aXZlbHkgYWRtaXR0ZWQgb3JkaW5hcnkgcmV2ZXJzaWJsZSBjaGFuZ2UgZGV0ZWN0ZWQgb24gYSBQdWxsIFJlcXVlc3QuICIKICAgICAgICAgICAgIlVzZSBkaXJlY3QtdHJ1bmsgdW5kZXIgY2xhaW0vcnVuIGhhcmQgZ2F0ZXMgIgogICAgICAgICAgICAiKHdhaXQgZW5hY3Qtd29yay1saW5lYWdlL3Bhc3MgU1VDQ0VTUywgdGhlbiBGRiBwdXNoIHRvIG1haW4pLiAiCiAgICAgICAgICAgIGYiRmlsZXM6IHsnLCAnLmpvaW4oZmlsZXNbOjgwXSl9IiArICgiIC4uLiIgaWYgbGVuKGZpbGVzKSA+IDgwIGVsc2UgIiIpCiAgICAgICAgKQogICAgICAgIGlmIGVuZm9yY2UgIT0gInRydWUiOgogICAgICAgICAgICBwcmludChmIjo6bm90aWNlOjp7bXNnfSIpCiAgICAgICAgICAgIHJldHVybiAwCiAgICAgICAgcHJpbnQoZiI6OmVycm9yOjp7bXNnfSIpCiAgICAgICAgcmV0dXJuIDEKCiAgICAjIGRpcmVjdF90cnVua19jYW5kaWRhdGUKICAgIGlmIGFsbF9vcmRpbmFyeToKICAgICAgICBwcmludCgicGFzczogZGlyZWN0LXRydW5rIGNhbmRpZGF0ZSBpcyBwdXJlIHBvc2l0aXZlbHkgYWRtaXR0ZWQgb3JkaW5hcnkiKQogICAgICAgIHJldHVybiAwCgogICAgcmVhc29ucyA9IFtdCiAgICBpZiBmZW5jZWQ6CiAgICAgICAgcmVhc29ucy5hcHBlbmQoZiJmZW5jZWQ9e2ZlbmNlZFs6MTJdfSIpCiAgICBpZiB1bmtub3duOgogICAgICAgIHJlYXNvbnMuYXBwZW5kKGYidW5rbm93bj17dW5rbm93bls6MTJdfSIpCiAgICBtc2cgPSAoCiAgICAgICAgIkZlbmNlZCBvciBub3QtcG9zaXRpdmVseS1hZG1pdHRlZCBjaGFuZ2Ugb24gYSBkaXJlY3QtdHJ1bmsgY2FuZGlkYXRlIChubyBvcGVuIFBSIGFuZCAiCiAgICAgICAgIm5vdCBhbiBleGFjdCBtZXJnZWQgY29tcGF0aWJpbGl0eSBtZXJnZV9jb21taXRfc2hhKS4gIgogICAgICAgICJTZWN1cml0eS9jYXBhYmlsaXR5L3B1YmxpYy1jb250cmFjdC9jcmVkZW50aWFsL2VmZmVjdC1wb2xpY3kgYW5kIHVua25vd24gcGF0aHMgcmVxdWlyZSAiCiAgICAgICAgInRoZSBjb21wYXRpYmlsaXR5IFBSIGxhbmUgKG9yIGFuIGFkbWl0dGVkIFBSLWxlc3MgZmVuY2VkIGF1dGhvcml0eSkuICIKICAgICAgICAiRG8gbm90IENBUy1sYW5kIHJhdyBtYWluIGJlZm9yZSBmZW5jZWQgYWRtaXNzaW9uIHByb29mLiAiCiAgICAgICAgZiJtb2RlPXttb2RlfSBzaGE9e3NoYVs6MTJdfSAiICsgIiAiLmpvaW4ocmVhc29ucykgKwogICAgICAgIGYiIGZpbGVzPXsnLCAnLmpvaW4oZmlsZXNbOjQwXSl9IgogICAgKQogICAgaWYgZW5mb3JjZSAhPSAidHJ1ZSI6CiAgICAgICAgcHJpbnQoZiI6Om5vdGljZTo6e21zZ30iKQogICAgICAgIHJldHVybiAwCiAgICBwcmludChmIjo6ZXJyb3I6Onttc2d9IikKICAgIHJldHVybiAxCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgcmFpc2UgU3lzdGVtRXhpdChtYWluKCkpCg==').decode())"
+              -H "User-Agent: sylphx-lineage-readback" \
+              "https://api.github.com/repos/${GH_REPOSITORY}/commits/${sha}/status" || true)
+            parse=$(RESP_JSON="$resp" CTX="$LINEAGE_CONTEXT" python3 - <<'PY'
+import json, os, re
+raw = os.environ.get("RESP_JSON", "")
+ctx = os.environ.get("CTX", "enact-work-lineage/pass")
+try:
+    d = json.loads(raw) if raw else {}
+except Exception:
+    print("STATE=error"); print("DESC=invalid_json"); raise SystemExit(0)
+statuses = d.get("statuses") or []
+hit = next((s for s in statuses if s.get("context") == ctx), None)
+if not hit:
+    print("STATE=missing"); print("DESC="); raise SystemExit(0)
+state = (hit.get("state") or "").lower()
+desc = re.sub(r"[\r\n]+", " ", str(hit.get("description") or ""))[:200]
+print(f"STATE={state}"); print(f"DESC={desc}")
+print("PUBLIC_WI_LEAK=yes" if "wi_" in desc.lower() else "PUBLIC_WI_LEAK=no")
+PY
+)
+            state=$(printf '%s\n' "$parse" | sed -n 's/^STATE=//p' | head -1)
+            desc=$(printf '%s\n' "$parse" | sed -n 's/^DESC=//p' | head -1)
+            leak=$(printf '%s\n' "$parse" | sed -n 's/^PUBLIC_WI_LEAK=//p' | head -1)
+            echo "attempt=${attempt} state=${state} desc=${desc}"
+            if [ "${leak:-no}" = "yes" ]; then
+              echo "::error::lineage status description projected raw Work id (wi_…)"
+              exit 1
+            fi
+            case "${state}" in
+              success)
+                echo "pass: Platform coordination lineage success"
+                exit 0
+                ;;
+              failure|error)
+                echo "::error::Platform coordination lineage failed: ${desc}"
+                exit 1
+                ;;
+              pending|missing|"")
+                if [ "$attempt" -ge "${POLL_ATTEMPTS}" ]; then
+                  echo "::notice::No Platform lineage status for ${sha:0:12} after poll — not blocking (path-neutral; no public wi_ required)."
+                  exit 0
+                fi
+                sleep "${POLL_SLEEP_SECS}"
+                attempt=$((attempt + 1))
+                ;;
+              *)
+                echo "::notice::unexpected state=${state} — not blocking"
+                exit 0
+                ;;
+            esac
+          done

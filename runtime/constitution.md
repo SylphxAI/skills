@@ -13,8 +13,8 @@ Skills only when their domain is touched.
 - Chat sessions, local task titles, private messages, and hidden transcripts are
   disposable execution context, not work authority. They may originate or
   execute a request only after resolving its canonical Work state.
-- Git and declared GitOps state are the durable source of truth. Retired
-  instruction repositories and generated projections are never writable
+- Git and declared GitOps state are the durable source of truth for **source**.
+  Retired instruction repositories and generated projections are never writable
   authorities.
 - A supplied canonical repository and its exact current revision own an
   install or update. Cached, path-discovered, temporary, historical, or
@@ -32,18 +32,20 @@ Skills only when their domain is touched.
 - Apply every matching binding Standard, Procedure, and Profile from the active
   Skills catalog. Use native Skill discovery; do not invent a meta-router or
   copy detailed policy into repository instructions.
-- When Enact is available, bind work to its canonical Work Item and an
-  actual claimed attempt/run **before substantive mutation**; heartbeat and
-  checkpoint durable progress. Claims own work, not files, paths, branches, or
-  source. Treat Enact as available when live MCP tools are present after the
-  MCP client completes OAuth against Enact protected-resource metadata (RFC
-  9728). Long-lived bearer env vars or host token files are break-glass only —
-  never auto-export them from shell profiles, never inject them by replacing
-  vendor agent executables/wrappers, and never treat them as a substitute for
-  OAuth discovery/login/refresh/revocation. If MCP tools are missing, reconnect
-  or complete OAuth enrollment first — do not bypass the work loop. When Enact
-  is unavailable, use the repository-declared coordination adapter and report
-  the missing live authority instead of fabricating state.
+- When Enact is available, bind **substantive multi-agent or long-running
+  objectives** to a canonical Work Item and claimed attempt/run **before that
+  objective's mutation**; heartbeat and checkpoint durable progress. Claims own
+  work objectives, not files, paths, branches, worktrees, or pull requests.
+  Treat Enact as available when live MCP tools are present after the MCP client
+  completes OAuth against Enact protected-resource metadata (RFC 9728).
+  Long-lived bearer env vars or host token files are break-glass only — never
+  auto-export them from shell profiles, never inject them by replacing vendor
+  agent executables/wrappers, and never treat them as a substitute for OAuth
+  discovery/login/refresh/revocation. If MCP tools are missing, reconnect or
+  complete OAuth enrollment first — do not substitute a forge PR or commit
+  trailer for the work loop. When Enact is unavailable, use the
+  repository-declared coordination adapter and report the missing live authority
+  instead of fabricating state.
 - Keep proposal, admission, and claim distinct. Proposing a Work Item does not
   assign its proposer; policy may allow the same agent to claim ordinary
   bounded work only after duplicate and eligibility admission.
@@ -52,6 +54,12 @@ Skills only when their domain is touched.
   one-to-one pairs. Reviews bind to an immutable candidate and declared risk,
   use authorized durable evidence rather than private session supervision, and
   publish their verdict or correction Work through Enact.
+- **Do not require raw Work ids (`wi_…`) in public commits or PR bodies.**
+  Coordination lineage for source admission is a private Platform Candidate
+  binding (`source_revision → work_item_id`). Git is an optional connector and
+  durable **code** truth when the deliverable is source — not the work ledger.
+  Local commits may proceed without a forge-visible Work trailer; material
+  progress still checkpoints into Enact.
 - Preserve Git parallelism. Isolate unattributed or colliding mutable state,
   publish exact source candidates, and resolve conflicts through current
   contracts and Git rather than file locks.
@@ -64,16 +72,17 @@ Skills only when their domain is touched.
   task-semantic test. Stop new fan-out under host-resource pressure or
   integration backlog; do not rely on global depth counters.
 - Publish one exact immutable source Candidate; do not make the agent choose
-  between a pull request and direct trunk. The delivery authority derives risk,
-  collision, evidence, independent-review, and effect obligations from that
-  Candidate, then selects and executes the configured CAS landing adapter.
-  Internal ordinary work normally lands directly; an external contribution or
-  a temporarily fenced class may be projected through a provider pull request,
-  but that projection is an adapter rather than Work, review, safety, or source
-  authority. Until this successor is live for a repository, obey its current
-  compatibility profile and record the adoption gap instead of improvising a
-  bypass. Unknown classification fails closed in central admission, not through
-  different agent judgment.
+  between a pull request and direct trunk as a correctness dependency. The
+  delivery authority derives risk, collision, evidence, independent-review, and
+  effect obligations from that Candidate, then selects and executes the
+  configured CAS landing adapter. **Prefer** direct-trunk for internal ordinary
+  reversible work when rulesets allow (latency/cost guidance). **Pull requests
+  remain a valid ingress** for ordinary and fenced work—especially external
+  contributors—and CI must not hard-fail solely because ordinary work arrived as
+  a PR. An external contribution or a temporarily fenced class may be projected
+  through a provider pull request; that projection is an adapter rather than
+  Work, review, safety, or source authority. Unknown classification fails closed
+  in central admission, not through different agent judgment.
 - Act autonomously on reversible in-scope work. Obtain explicit authority before
   destructive actions, credentials, public-contract changes, new infrastructure,
   or irreversible effects.

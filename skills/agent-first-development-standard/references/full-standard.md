@@ -172,11 +172,13 @@ sufficient audit. Every meaningful action must carry structured responsibility:
 - labels or equivalent structured fields defined by the active forge/delivery
   adapter rather than an invented per-repo dialect;
 - `AGENT-CLAIM` and `AGENT-CHECKPOINT` comments only when the GitHub issue
-  thread is the chosen public or repo-local coordination surface;
-- `AGENT-WORK-COMPLETE` comments when handing off or finishing a work item;
-- `AI-REVIEW` comments in the shape below;
-- commit trailers when useful: `Agent-Role`, `Work-Item`, `ADR`, `Spec`, `Risk`,
-  `Verification`;
+  thread is an intentionally chosen **public collaboration** surface — never
+  as a substitute for the Enact Work ledger;
+- `AGENT-WORK-COMPLETE` comments when handing off on that public surface;
+- `AI-REVIEW` comments in the shape below when the active profile requires them;
+- commit trailers when useful for **non-secret** machine policy: `Agent-Role`,
+  `ADR`, `Spec`, `Risk`, `Verification` — **do not** add public `Work-Item:` /
+  `Work: wi_…` trailers for admission (private Candidate binding only);
 - status checks derived from the structured metadata.
 
 Comments are not gates unless a check parses them. A structured review that no
@@ -595,11 +597,12 @@ tree-depth knowledge or a central recursion counter.
 - Never allocate a shared artifact identity by reading `main` and guessing the
   next number. A claim record may reserve work, but identity must still come
   from the approved allocator or generator for that artifact class.
-- Claim work early through the canonical Work Ledger or repo-declared tracker
-  when collision risk is real. Pull requests, issues, branches, and worktrees
-  are adapter observations linked to that Work Item, never higher-precedence
-  ownership. Hidden chat state is not ownership. Repo-local instructions must
-  name the canonical tracker and observation mapping.
+- Claim work early through the canonical Work Ledger (Enact) or
+  repo-declared tracker when collision risk is real. Pull requests, issues,
+  branches, and worktrees are adapter observations linked to that Work Item,
+  never higher-precedence ownership. Do not require raw Work ids in public
+  forge text for claim proof. Hidden chat state is not ownership. Repo-local
+  instructions must name the canonical tracker and observation mapping.
 - Before claiming ownership of a new P0, re-check live Work Items, selected and
   competing source candidates, the default branch, active serializer, specs,
   generated registries, and release state.

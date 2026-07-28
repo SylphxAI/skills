@@ -24,53 +24,50 @@ merge envelope.
 
 Platform is the delivery authority and performs one central admission:
 
-1. resolve the repository declaration, exact base/head/tree, Work lineage, and
-   policy generation;
-2. derive semantic collision scopes, risk, required deterministic proof,
-   independent-review, migration, public-contract, security, and effect
-   obligations;
-3. reject unknown or conflicting classification without converting it into
-   agent discretion;
-4. select, supersede, or coalesce the Candidate;
-5. execute expected-head compare-and-swap through the configured landing
-   adapter; and
-6. verify cumulative selected snapshots and promote exact artifacts only from a
-   complete green proof bundle.
+1. **Classify the candidate paths.**
+   - **Fenced / compatibility:** Skills/instruction/policy authority, credentials,
+     security, database migrations, public/persistent contracts, irreversible
+     external effects, or a repository that still requires PR/merge-queue admission.
+   - **Ordinary reversible:** docs/evidence-only, tests-only, narrow reversible code
+     that does not touch the fenced classes above, under integrity fences that
+     already forbid delete + non-fast-forward.
+2. **Read live admission signals.** Prefer direct-trunk for **internal ordinary**
+   when **all** of these hold (guidance — not a CI reject of PRs):
+   - org/repo rulesets do **not** require a PR for the default branch (only
+     integrity fences: no delete / no non-fast-forward is the expected baseline);
+   - private coordination / claim lineage is available where policy requires it;
+   - the path set is ordinary reversible.
+3. **Select the producer path (path-neutral admission).**
+   - **Both PR and direct-trunk are valid** for ordinary reversible work
+     (ADR-01KYM9PATHN3VTRXADM1SS1001). CI must not fail solely because ordinary
+     work arrived as a PR.
+   - **Prefer** FF/CAS direct-trunk for internal ordinary when rulesets allow
+     (lower latency, less forge ceremony). Opening a PR for ordinary internal
+     work is not a correctness defect; it is a latency/cost choice.
+   - **External contributors always use PRs** — first-class Candidate import.
+   - Any fenced class, missing delivery profile, or unresolved classification that
+     could be fenced → stronger obligations (often compatibility envelope /
+     merge-queue) until classification is clear. Platform selects the adapter.
+4. **Bind Work first** for multi-agent / long-running objectives. Direct-trunk and
+   PR lands both use private Candidate lineage where required — not public
+   `Work: wi_…` trailers. Claims own work, not files.
 
 The normal internal adapter is direct CAS landing to the default branch under
 integrity fences. A provider pull request or merge queue is allowed only as:
 
-- an external-contributor collaboration projection that is ingested as the
-  same Candidate; or
-- a typed, bounded compatibility obligation while a predecessor serializer,
-  locator allocator, public-contract approval, or irreversible-effect control
-  has not yet been replaced.
+### Ordinary vs fenced classification (not a PR ban)
 
-The PR does not make the change safer. Safety comes from the Candidate's
-obligation set, trusted independent verdicts, exact-head CAS, and verified
-promotion. Semantically equivalent internal and external inputs must receive
-the same obligations. The adapter may add public discussion or provider
-mechanics, but it cannot weaken or strengthen policy merely because the input
-arrived as a PR.
+Unknown, conflicting, or unclassified paths default to **stronger obligations**
+(compatibility / review), not “ban PR”.
 
-### Migration and fail-closed behavior
+Positive ordinary classes (docs/evidence, tests-only, and repo
+`.github/ordinary-direct-trunk-admission.json` prefixes when present) may use
+DT CAS when Platform selects it. Hard-fenced classes (workflows, ADR,
+migrations, credentials/security, public contracts, instruction authority) never
+become ordinary via a path list alone.
 
-Repository adoption is explicit:
-
-- **Successor live:** agents publish Candidates only; any PR projection is
-  controller-owned.
-- **Compatibility live:** agents follow the current profile's existing
-  provider adapter while recording the missing successor as a typed adoption
-  gap. This is a migration state, not permission to keep two permanent
-  workflows.
-- **Unknown:** central admission rejects mutation. Agents do not guess a lane,
-  force-push, disable a gate, or manually deploy.
-
-Existing ordinary-direct-trunk manifests and PR fail-closed checks remain
-migration inputs. The successor central obligation engine absorbs their
-positive path facts, proves equivalent or stronger behavior, then retires the
-agent-facing lane selector, ordinary-PR policing, and duplicated provider
-metadata together.
+Do **not** implement CI fail-closed “ordinary PR → must use DT”. That gate was
+retired as a throughput and external-contributor defect.
 
 
 ## Ownership
@@ -87,9 +84,10 @@ Use the strongest done state that matches the task **and active delivery lane**:
 | Task kind | Minimum truthful done state | Not done yet |
 | --- | --- | --- |
 | Research / analysis only | Durable artifact, issue, ADR draft, or explicit summary committed or otherwise stored in the agreed SSOT | Private notes, chat-only summary, uncommitted files |
-| Source Candidate submission | Immutable Candidate published with Work/Attempt lineage, exact source/tree identity, and local proof | Local diff, unpushed commit, handwritten lane choice, or PR-only state |
-| External contribution intake | Provider PR exact head/base ingested as the same Candidate contract and centrally admitted | Treating the PR, review comments, or merge button as an alternate Work/safety authority |
-| Integrated repository change | Central serializer landed the selected Candidate by expected-head CAS; any provider envelope is terminal and read back | Candidate merely published, PR open/queued, or raw branch push |
+| Ordinary reversible repo change | Landed Candidate on default branch via **DT CAS or merged PR** with validation evidence (path-neutral) | Local diff or unpushed commit only |
+| PR preparation or submission explicitly requested (compatibility lane) | Branch pushed and PR opened/updated with validation evidence | Local diff, unpushed commit, workspace artifact |
+| Integrated repo change (compatibility / fenced class) | PR merged through branch protection, required checks, policy gates, and merge queue where required | PR open, queued, or failing checks |
+| Integrated repo change (direct-trunk ordinary) | Ordinary FF landed on default branch; deploy/release only via verified promotion | FF without required local proof, or treating raw push as deploy authority |
 | Versioned package release | Release intent landed through the active lane, package published by the repository workflow, and registry/provenance readback recorded | Manual publish, human-owned version bump, or publish proof based only on workflow exit code |
 | Deployable behavior change | Landed change promoted through the documented release path and verified by smoke checks, health checks, logs, metrics, or user-visible acceptance criteria | Landed but undeployed, deployed without proof, or proof based only on exit codes |
 | GitOps / infrastructure change | Desired state committed, reconciled by the controller, and live state observed to match | Manual cluster mutation, unreconciled manifest, or unverified rollout |
@@ -138,10 +136,11 @@ Default delivery path:
   sole durable release or decision authority.
 - Reconcile the workspace without deleting unique or unattributed state.
 
-A PR is an external or compatibility projection, not the finish line, review
-authority, or agent-selected safety tier. Stop
-early only when the active lane is blocked by a missing required status or policy
-decision, failed checks outside the task scope, protected-environment
+A PR is a valid Candidate ingress (always for external; optional for internal)
+and a finish line only when it merges with required checks. Prefer DT for
+internal ordinary latency; never treat “opened a PR for ordinary work” as
+admission failure. Stop early only when blocked by a missing required status or
+policy decision, failed checks outside the task scope, protected-environment
 permissions, change windows, unclear production risk, or explicit user
 direction. If a regulated or external approval is required, it must appear as a
 required status, signed policy artifact, or documented environment gate; a person
@@ -252,3 +251,9 @@ thresholds, analysis windows, and automatic rollback or pause policy.
 
 - [ ] Full body obligations reviewed for applicability.
 - [ ] Residual gaps have owner and follow-up.
+
+## Path-neutral central admission
+
+Platform is the delivery authority and performs one central admission over one
+immutable Candidate. An external pull request is an external-contributor collaboration projection into that same Candidate contract. Semantically equivalent internal and external inputs must receive the same obligations and landing rules; only the ingress adapter differs.
+
