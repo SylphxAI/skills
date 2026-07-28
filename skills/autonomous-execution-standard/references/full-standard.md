@@ -51,8 +51,9 @@ intentional starting state.
   reset, clean, or delete unknown work.
 - Use a dedicated branch, worktree, or clone when it is the smallest safe way to
   establish exclusive mutable ownership. One exclusive mutable worktree should
-  serve one attempt/candidate stream; branch and PR shape follow the active
-  delivery profile.
+  serve one attempt/candidate stream. The producer publishes one immutable
+  Candidate; branch or PR shape is a centrally selected delivery-adapter
+  projection, not agent discretion.
 - Before claiming new high-priority work, re-check live state so the task does
   not duplicate an open PR, issue, merge-queue candidate, generated registry
   update, or release already in flight.

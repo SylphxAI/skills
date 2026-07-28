@@ -209,9 +209,9 @@ Classify every delayed job into one of these buckets:
 
 | Classification | Meaning | Normal action |
 | --- | --- | --- |
-| `within-slo` | The observed open queue age or closed pickup interval is still inside the profile/lane budget. | Keep polling; do not mutate repos. |
+| `within-slo` | The observed open queue age or closed pickup interval is still inside the profile/lane budget. | Record the external wait, subscribe, release worker capacity, and let the next provider event re-enter; do not poll or mutate repos. |
 | `capacity-saturated` | Provider-backed evidence says the open job is runnable, and complete inventory proves every online runner satisfying the job's exact required-label subset busy with zero idle at the same observation. | Add capacity, reduce heavy-lane concurrency, or move eligible work to postsubmit. |
-| `unknown-profile` | Job requested labels not mapped to an approved profile. | Run runner-profile conformance and open a repo-local migration PR if the workflow is wrong. |
+| `unknown-profile` | Job requested labels not mapped to an approved profile. | Run runner-profile conformance and publish a repo-local migration Candidate if the workflow is wrong. |
 | `inventory-unknown` | Runner inventory is unreadable, incompletely paginated, internally inconsistent, malformed, or has unknown busy state. | Retry or fix token/scope/provider data; do not treat partial counts as empty or idle. |
 | `blocked-or-waiting` | Job is waiting for environment, policy, concurrency, or GitHub scheduling rather than runner pickup. | Inspect policy/environment/concurrency gate. |
 | `unmeasured` | Required timing such as job `created_at` is missing, malformed, or chronologically invalid. | Repair provider telemetry; do not claim `within-slo`. |

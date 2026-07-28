@@ -91,6 +91,12 @@ promotion, deployment, and production observations.
     a typed, expiring compatibility obligation. It is never an alternative
     Work queue, review authority, completion state, or safety tier. Central
     admission—not agent interpretation—fails closed on unknown classification.
+11. **System-generated source uses the same path.** Release versions, ADR
+    registries, policy sync, dependency updates, and conformance remediations
+    publish immutable Candidates. A generator or bot never chooses or waits on
+    a pull request. If policy selects a provider envelope, the controller owns
+    that exact Candidate-bound projection and retires it with the compatibility
+    obligation.
 
 ## Consequences
 

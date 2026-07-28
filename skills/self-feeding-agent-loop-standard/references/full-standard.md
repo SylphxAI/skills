@@ -23,8 +23,8 @@ Candidate and return adapter selection to central admission.
 This standard composes with:
 
 - [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
-  for GitHub-native coordination, issue/PR ownership, structured agent audit,
-  collision handling, and machine gates;
+  for Enact Work/Attempt coordination, immutable Candidate ownership,
+  structured agent audit, collision handling, and machine gates;
 - [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md) for
   subagent use, execution graphs, and completion discipline;
 - [`prompt-architecture.md`](https://github.com/SylphxAI/skills/blob/main/skills/prompt-architecture/references/full-standard.md) for role-prompt
@@ -386,8 +386,8 @@ must state:
 - migration/adoption class under `instruction-evolution-standard`.
 
 Small typo fixes that do not change behavior may share the ADR for the owning
-prompt-change PR, but behavior changes must not be silently batched without a
-recorded rationale.
+instruction Candidate, but behavior changes must not be silently batched
+without a recorded rationale.
 
 ## Pilot Acceptance Criteria
 
