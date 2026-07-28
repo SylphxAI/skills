@@ -14,7 +14,7 @@ promotion, progressive delivery, and automatic promote/rollback on machine
 evidence—not tip-follows-main.
 
 Platform product decision (sibling): Platform
-`ADR-01KYEDEPLOYMODEL01`.
+`ADR-01KYEDEP0YAT0WHENGRN000001`.
 
 ## Decision
 
