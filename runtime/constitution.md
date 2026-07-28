@@ -60,6 +60,14 @@ Skills only when their domain is touched.
   durable **code** truth when the deliverable is source — not the work ledger.
   Local commits may proceed without a forge-visible Work trailer; material
   progress still checkpoints into Enact.
+- **Forge-agnostic coordination (ADR-0021).** Do not install or depend on
+  product-repo GitHub workflows, required checks, or commit statuses named for
+  Enact/work lineage. Coordination stays in Enact + Platform private planes;
+  forges host integrity fences and product CI only.
+- **Deploy is auto-when-green on selected verified snapshot (ADR-0022).** Env
+  `auto_deploy` permits automated pointer moves; production promote consumes
+  exact artifact digests covered by scoped green watermarks under selected-
+  snapshot coalesce — never raw main tip as deploy authority under enforce.
 - Preserve Git parallelism. Isolate unattributed or colliding mutable state,
   publish exact source candidates, and resolve conflicts through current
   contracts and Git rather than file locks.

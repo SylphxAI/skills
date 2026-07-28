@@ -14,6 +14,24 @@ default-branch commit is not deployable evidence. Release and deployment consume
 only immutable snapshots covered by the relevant scoped green watermark and
 complete proof bundle.
 
+### Canonical deploy model (ADR-0022)
+
+**Auto-deploy on verified selected snapshot** — not tip auto-deploy, not “PR
+check green equals production.”
+
+| Control | Default product contract |
+| --- | --- |
+| Environment `auto_deploy` | true → env may receive automated pointer updates |
+| `promotion_mode` | `auto_when_green` |
+| Production / pinned enforce | `require_green_watermark` + exact artifact digest match |
+| Verification under load | selected-snapshot coalesce (running + latest eligible pending) |
+| Rollback target | previous green-watermarked digest |
+
+Agents do not babysit deploy. After Candidate accept/land, checkpoint and
+`work.defer` when only external promote/soak can advance Work. Progressive
+canary analysis (when configured) is machine-verdict auto promote/rollback —
+not a human-in-the-loop gate.
+
 ## Unified Candidate delivery
 
 The agent-facing delivery contract has one operation: publish one exact,

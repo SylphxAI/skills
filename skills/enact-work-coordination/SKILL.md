@@ -85,6 +85,12 @@ the work ledger. Do **not** write `Work: wi_…` into public commits or PR bodie
 as an admission mechanism. Historical trailers may exist; new work must not add
 them.
 
+**Forge-agnostic (ADR-0021):** product repositories must not carry
+`enact-work-lineage` workflows or required forge checks for coordination.
+Private Candidate binding is evaluated only inside Platform admission/land.
+Missing Enact MCP is OAuth/config failure — reconnect; never substitute a
+GitHub lineage check for the work loop.
+
 - **Internal agent:** claim Work → implement → `candidates publish` with private
   Work/Attempt → checkpoint → release.
 - **External contributor:** ordinary PR, no Enact OAuth, no Work id in body →
