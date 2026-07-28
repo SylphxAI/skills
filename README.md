@@ -113,7 +113,11 @@ active and retries back off.
 
 AutoSync readback verifies scheduler liveness, the current public remote head,
 the clean managed checkout, the applied state, adapter bytes, and installed
-targets rather than trusting its config alone. A Linux container with no
+targets rather than trusting its config alone. It also requires each selected
+target home recorded at enablement to equal the current runtime-home context;
+an up-to-date shadow directory cannot make the active runtime green. Explicit
+non-default runtime homes are supported when the same environment is used for
+enablement, reconciliation, and status. A Linux container with no
 working user-systemd manager is therefore reported as configured but inactive
 instead of green unless its hosting runtime explicitly activates the
 external-supervisor mode. That mode becomes healthy only while its owned

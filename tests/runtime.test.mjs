@@ -2647,6 +2647,29 @@ test('auto-sync supports a host-supervised scheduler with freshness-backed statu
     assert.equal(live.healthy, true);
     assert.equal(live.scheduler.active, true);
     assert.equal(live.scheduler.supervisor, 'fixture');
+    assert.equal(live.source.runtimeHomes.current, true);
+    assert.deepEqual(live.source.runtimeHomes.configured, { codex: codexHome });
+    assert.deepEqual(live.source.runtimeHomes.expected, { codex: codexHome });
+
+    const shadowCodexHome = path.join(managedHome, 'shadow-codex');
+    const shadowContext = JSON.parse(
+      runWithEnvironment(['auto-sync', 'status', '--json'], {
+        ...environment,
+        CODEX_HOME: shadowCodexHome,
+      }).stdout,
+    );
+    assert.equal(shadowContext.configured, true);
+    assert.equal(shadowContext.enabled, true);
+    assert.equal(shadowContext.current, false);
+    assert.equal(shadowContext.healthy, false);
+    assert.equal(shadowContext.source.error, 'runtime_home_mismatch');
+    assert.equal(shadowContext.source.runtimeHomes.current, false);
+    assert.deepEqual(shadowContext.source.runtimeHomes.mismatches, [{
+      runtime: 'codex',
+      configured: codexHome,
+      expected: shadowCodexHome,
+      reason: 'different_runtime_home',
+    }]);
 
     const tick = spawnSync(process.execPath, [
       path.join(managedHome, '.sylphx-skills', 'reconcile.mjs'),
