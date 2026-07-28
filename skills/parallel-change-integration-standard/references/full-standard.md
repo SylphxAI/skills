@@ -37,6 +37,12 @@ It composes with:
 Agent count and candidate count are not delivery proof. Optimize the rate and
 cost of verified, recovered, deployed, and production-proven outcomes.
 
+There is one producer contract: publish an immutable Candidate. An agent never
+chooses PR versus direct trunk. Platform derives obligations and selects the
+landing adapter. External pull requests are imported Candidates; temporary
+provider PRs are compatibility projections. Both pass through the same
+selection, review, CAS, and cumulative-verification semantics.
+
 ## Interchangeable-agent execution
 
 Any eligible agent may observe, attempt, challenge, verify, integrate, or repair
@@ -113,14 +119,16 @@ audit, security, or a declared retention contract.
 No attempt receives remote CI, preview infrastructure, release work, or external
 effects merely because it exists.
 
-Sylphx Enact owns the live Work/attempt/candidate/effect schemas and their
-current projections. Those contracts distinguish work envelopes, immutable
-attempts, append-only attempt events, candidates, selection evidence, green
-watermarks, and effect authorization. Identity is the digest of the complete
-immutable artifact under the selected canonicalization contract, excluding
-only its own identity field; mutable status never enters immutable attempt or
-candidate material. A schema example or package-local fixture cannot authorize
-a live effect.
+Sylphx Enact owns live Work, Attempt, Claim/Run, checkpoint, review-obligation,
+review-verdict, subscription, and Enact-eligible EffectLease coordination.
+Platform owns Candidate identity and readback, selection evidence, landing CAS,
+green watermarks, artifact, promotion, deployment, and recovery delivery state.
+An Enact Attempt binds an immutable Platform Candidate reference and freshness;
+it does not copy or redefine Candidate authority. Identity is the digest of the
+complete immutable artifact under each owning system's selected
+canonicalization contract, excluding only its own identity field; mutable
+status never enters immutable material. A schema example, Work claim, or
+package-local fixture cannot authorize source landing or a live effect.
 
 The active profile declares the identity field, canonicalization, issuer,
 capture producer, resolver, and effect-owner readback for each authority-bearing
@@ -285,6 +293,14 @@ At high arrival rates, do not prebuild every commit. Apply the same latest-
 pending coalescing, eligibility, singleflight, cache, and budget controls as
 verification. Non-cancelable audit, migration, provenance, security, and
 already-started irreversible obligations survive supersession.
+
+The steady-state envelope per repository and verification scope is one useful
+running snapshot plus the latest eligible pending snapshot. Superseding a
+pending snapshot is a metadata transition, not a failed build. If an already
+running task is safe to cancel, cancel it; otherwise let it complete without
+starting every intermediate successor. Artifact production consumes only the
+selected snapshot identity, so cancellation and coalescing never destroy the
+only deployable artifact obligation.
 
 ## Platform control-plane contract
 

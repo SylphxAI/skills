@@ -57,7 +57,12 @@ or product state. Those capabilities have separate authenticated owners.
    public repository. Existing explicitly selected runtimes remain selected;
    runtime discovery never expands or shrinks that set. Offline clients keep a
    verified last-known-good generation. A one-shot static copy is partial, not
-   a complete Sylphx installation.
+   a complete Sylphx installation. AutoSync readback binds each selected
+   configured target home to the current receiving runtime-home context as well
+   as to the exact managed source. A current shadow target is fail-closed as
+   `runtime_home_mismatch`; an intentional non-default home is valid only when
+   the same explicit runtime-home environment is used for enablement,
+   reconciliation, and readback.
 7. The canonical Enact MCP resource is the stable Sylphx SaaS endpoint
    `https://enact.sylphx.com/api/mcp`. The public hostname is product identity and
    service discovery, not a credential, tenant grant, or authorization secret.
@@ -127,7 +132,9 @@ or product state. Those capabilities have separate authenticated owners.
   idempotency, malformed ownership, unrelated-file
   preservation, status, clear behavior, bounded retired-projection migration,
   arbitrary-link rejection, and concurrent-target-change fencing for every
-  supported target.
+  supported target. Prove status cannot report current or healthy when its
+  persisted selected target home differs from the receiving runtime context,
+  even if that persisted shadow target itself is current.
 - Validate catalog and package bytes with the repository integrity suite.
 - Package the public artifact and prove that `INSTALL.md`, the adapter, the
   constitution, and all Skills are present.

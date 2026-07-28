@@ -56,12 +56,19 @@ Organization
    the next safe action. Store provider-native facts as linked observations with
    source identity, version, observation time, and freshness.
 5. Acquire an EffectLease only around an **Enact-eligible** scarce mutation
-   (for example schema/credential/provider mutation that Enact itself fences).
-   **Do not** use EffectLease to authorize Platform candidate landing, deploy,
-   or release — Platform owns delivery authority; Enact only observes it.
-6. At the first external-only boundary, call `work.defer` with the typed
-   condition; release claim/run capacity. Do not poll CI in-session.
-7. Complete only when declared terminal evidence is accepted by Enact.
+   (schema, credential, infrastructure, or external provider mutation that
+   Enact fences). Platform independently owns Candidate landing, deploy, and
+   release — do not use EffectLease to authorize those. Bind required proof,
+   verify owning-provider readback, and release promptly.
+6. At the first external-only boundary, call `work.defer` with the exact typed
+   dependency or outcome condition. It atomically checkpoints, creates the
+   durable resume subscription, marks the Work deferred, releases EffectLeases
+   and Claim/Run capacity, and finishes the current Run. Use
+   `next_state_change` for a future provider observation. Do not poll CI
+   in-session or assemble defer from separate handoff calls.
+7. Complete only when declared terminal and required delivery evidence are
+   accepted by Enact. Otherwise checkpoint, block with a re-entry path, or
+   create a related follow-up/rework item.
 
 ## Work ↔ Git / Candidate (critical)
 
@@ -71,6 +78,7 @@ Organization
 | Local `git commit` / WIP / private checkpoint | **No Git gate** — checkpoint *to Enact* when material |
 | Publish Candidate / land source | **Yes private binding** — `work_item_id` + attempt via Candidate API |
 | Public PR body / commit trailer | **Must not require raw `wi_…`** |
+| Ingress via PR vs direct-trunk | **Both valid** — prefer DT for internal ordinary (guidance only) |
 
 **Direction of integration:** Enact/Platform **connect out** to Git. Git is not
 the work ledger. Do **not** write `Work: wi_…` into public commits or PR bodies
@@ -88,9 +96,12 @@ them.
   checkpoints, decisions, incidents, threads, and linked observations.
 - Skills owns static standards, procedures, profiles, and adapters.
 - The product repository owns code, tests, code-coupled ADRs, and desired state.
-- Platform owns Candidate identity, admission, landing CAS, and delivery
-  readback. Enact never duplicates Candidate identity.
-- Forges own commits, PRs, checks, releases, and their native states.
+- Platform owns Candidate identity/admission, landing CAS, verification
+  watermarks, artifacts, promotion, deployment, rollback, and delivery readback.
+- Forges own commits, issues, pull requests, checks, releases, and their native
+  states; deployment and telemetry providers own runtime facts.
+- Enact stores observations and projections of external facts, never a
+  competing native truth.
 
 ## Output and handoff
 

@@ -574,7 +574,13 @@ export function reconcile({
       if (strict) throw error;
       return { status: 'unconfigured', error: error.message };
     }
-    if (!bootstrap && (config.enabled !== true || config.mode !== 'interval-scheduler')) {
+    if (
+      !bootstrap
+      && (
+        config.enabled !== true
+        || !['interval-scheduler', 'external-supervisor'].includes(config.mode)
+      )
+    ) {
       const error = new Error('Sylphx Skills automatic synchronization is disabled');
       if (strict) throw error;
       return { status: 'disabled' };

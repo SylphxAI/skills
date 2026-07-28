@@ -42,25 +42,35 @@ This standard composes with:
   binding no-human and delivery-adapter selections.
 - [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for collision-resistant ADR identity.
 
-## Ultimate Target: Work Coordination With Profile-Selected Delivery
+## Ultimate Target: One Candidate Contract With Central Admission
 
-Resolve the active digest-bound delivery profile before applying adapter
-mechanics. The compatibility adapter uses pull requests and configured
-serialization; the parallel-change adapter uses immutable bounded
-attempts, deterministic selection, Git compare-and-swap landing, scoped green
-watermarks, parallel recovery, and verified-only promotion. Do not infer the
-active choice from aspirational prose or mix adapters as undocumented policy.
+Every agent and external contribution publishes the same provider-neutral,
+immutable Candidate contract. Agents do not classify their own work into a
+pull-request lane or a direct-trunk lane. The delivery authority reads the exact
+Candidate and repository declaration, derives collision, risk, evidence,
+independent-review, and effect obligations, then executes the selected
+compare-and-swap landing adapter.
+
+An internal ordinary Candidate normally has no pull-request ceremony. An
+external pull request is ingested as a Candidate and may remain as the public
+collaboration projection. A fenced provider pull request is a bounded
+compatibility implementation selected by policy during migration, not a second
+workflow or a stronger definition of safety. Until the unified Candidate path
+is live for a repository, its digest-bound compatibility profile remains
+enforced and the missing successor is recorded as an adoption gap; agents must
+not improvise a bypass.
 
 The strongest target is a self-feeding autonomous engineering system:
 
 ```text
 Production / CI / security / customer / delivery-adapter signals
   -> profile-selected canonical Work Ledger as the internal work-state source
-  -> typed work items classify scope, role, tenant, risk, proof, and next action
-  -> agents claim scoped work through leases and checkpoint events
-  -> source candidates execute the change through the active delivery profile
-  -> profile-selected exact-candidate admission and adversarial review
-  -> configured landing serializer integrates the selected candidate
+  -> proposals are deduplicated and admitted without implicitly assigning their author
+  -> typed work items classify scope, perspective, tenant, risk, proof, and next action
+  -> eligible agents claim scoped work through leases and checkpoint events
+  -> every producer publishes one immutable provider-neutral Candidate
+  -> central admission derives exact-candidate proof, review, collision, and effect obligations
+  -> the configured CAS landing adapter integrates the selected candidate
   -> deploy / release verification observes reality
   -> new signals create or update work items
 ```
@@ -76,9 +86,14 @@ Responsibility split:
   cross-runtime handoff follow the portable semantics defined by
   [`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md). Hidden chat
   state is not ownership.
-- **The active delivery profile delivers and proves repository work**: it owns
-  the current forge, candidate, required-check, serialization, release, and
-  public-status mechanisms. This standard owns the required outcomes.
+- **A session is not a work ledger**: owner chats, local task titles, private
+  steering messages, prompts, and transcripts are disposable execution
+  surfaces. Goals, priority, assignment, review state, blockers, and completion
+  must resolve through the selected coordination system.
+- **Platform delivery owns Candidate admission and delivery**: it owns Candidate
+  identity/readback, obligation derivation, selection, landing serialization,
+  verification, release, and public-status mechanisms. This standard owns the
+  required outcomes; Enact owns the linked Work and review coordination.
 - **Git/GitOps is the durable truth**: code, docs, specs, ADRs, policies,
   workflows, and desired infrastructure state live in Git. Manual runtime state
   is emergency-only and must become repo state afterward.
@@ -91,15 +106,22 @@ Responsibility split:
 - **ADRs/specs decide and constrain**: ADRs record why; executable specs,
   schemas, tests, catalogs, eval manifests, telemetry contracts, exception
   records, and generated artifacts define what must be true.
-- **Source candidates execute**: every meaningful repo change is nominated as
-  an exact semantically atomic candidate and integrated through the active
-  delivery path. A pull request is one compatibility-lane envelope.
+- **Source Candidates execute**: every meaningful repository change is
+  nominated as one exact semantically atomic Candidate. A pull request is an
+  external or temporary provider envelope generated or ingested by the adapter;
+  the agent does not select it.
+- **Candidate acceptance releases the producer**: once the immutable source
+  Candidate and its local evidence are durably accepted, the producer
+  checkpoints and releases. CI, review, landing, build, deployment, soak, and
+  production proof re-enter through durable events; a producer does not reserve
+  a worker for a fixed-minute or “one last check” polling window.
 - **Admission evidence gates**: candidate metadata, risk classification, tests, contract
   checks, AI review, security/migration gates, and production proofs are checks
   or machine-actionable artifacts, not advisory comments.
-- **The active serializer integrates**: compatibility queues must prove their
-  merge-group candidate; parallel-change landing must use its selected-candidate CAS
-  and scoped-proof contract.
+- **The central serializer integrates**: it chooses the provider mechanism from
+  admitted obligations. Compatibility queues must prove their merge-group
+  Candidate; direct landing must use selected-Candidate CAS and scoped proof.
+  Both paths consume the same Candidate identity and obligation result.
 - **Production feeds the loop**: CI/queue/deploy/telemetry/regression/security
   signals create audience-safe findings and opaque protected-evidence
   references, then become Work Items, source candidates, ADRs/specs, or repairs
@@ -113,6 +135,19 @@ for the current outcome—not by a permanent simulated organization chart. A
 single agent may cover several perspectives; high-impact work may assign
 independent perspectives to separate contexts when the expected information
 gain exceeds coordination cost.
+
+Proposer, Executor, Reviewer, and Delivery/Re-entry are perspectives on the
+Work graph, not permanent identities or one-to-one pairs. Proposal, admission,
+and claim are separate transitions. The proposer may claim only after normal
+deduplication and eligibility policy; an Advisor session has no implicit
+ownership or supervisory authority.
+
+Review is an obligation selected from the candidate's risk and proof contract.
+Run deterministic checks first. Create a distinct reviewer context only when
+independent judgment is required and useful. The reviewer reads the Work
+contract, exact candidate, and authorized durable evidence—not a sibling's
+private transcript—and records a typed verdict, finding, attestation, or
+correction Work through the coordination authority.
 
 Common perspectives include signal triage, research and specification,
 implementation, engineering quality, product/interface quality, adversarial
@@ -132,9 +167,8 @@ sufficient audit. Every meaningful action must carry structured responsibility:
 
 - Work Item id and claim/checkpoint events in Work Coordination once the tool is
   available;
-- branch prefix and PR title role;
-- PR body metadata: `Agent-Author` (see below), role, linked Work Item or issue,
-  linked ADR/spec, risk, affected area, verification, rollback/deploy notes;
+- immutable Candidate producer, Work/Attempt lineage, source/tree identity, and
+  local evidence;
 - labels or equivalent structured fields defined by the active forge/delivery
   adapter rather than an invented per-repo dialect;
 - `AGENT-CLAIM` and `AGENT-CHECKPOINT` comments only when the GitHub issue
@@ -150,10 +184,16 @@ sufficient audit. Every meaningful action must carry structured responsibility:
 Comments are not gates unless a check parses them. A structured review that no
 required status consumes is only a note.
 
+The adapter may project these facts into a branch, pull-request body, check, or
+comment for provider compatibility. That projection is generated or validated
+from the Candidate contract; agents must not maintain a second handwritten
+workflow record there.
+
 #### `Agent-Author` (PR body)
 
-Policy-surface PRs (and any PR whose admission check requires an adversarial
-second-pass audit) MUST declare in the PR body:
+While a provider PR compatibility projection is selected, policy-surface PRs
+(and any PR whose admission check requires an adversarial second-pass audit)
+MUST declare in the generated or validated PR body:
 
 ```text
 Agent-Author: <role-id>
@@ -193,7 +233,10 @@ canonical digest implementation.
 Sensitive findings and raw evidence stay behind authorized opaque locators; the
 public/forge projection carries only the minimum evidence statement needed to
 evaluate the candidate safely.
-Policy/instruction repositories use the active fenced delivery lane.
+Policy/instruction repositories use the active central obligation result. Until
+the successor CAS locator/landing authority is production-proven, that result
+may select the fenced PR adapter; the producing agent still submits only the
+Candidate.
 [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md)
 owns required-status and trusted-verifier wiring; the active delivery profile
 owns credential mode and merge authority. This section owns only the review
@@ -215,14 +258,35 @@ provider's issue convention. Do not create a third presence store.
 The first implementation should prove the smallest complete closed loop:
 
 ```text
-work item -> claim/durable checkpoint -> exact source candidate
-  -> profile-selected proof and adversarial review
-  -> configured serializer lands -> deploy/release signal -> next work item
+proposal -> deduplicate/admit -> eligible claim -> exact source candidate
+  -> central proof, collision, risk, review, and effect obligations
+  -> configured CAS adapter lands -> durable delivery subscription
+  -> release worker capacity -> next ready work item
+  -> delivery event re-enters this or another eligible agent
 ```
 
 Do not start by implementing every dashboard, role prompt, and repo template.
 First make one pilot loop work end-to-end, then expand the gates, roles, and
 repos.
+
+### Work granularity and worker availability
+
+One Work Item owns one independently terminal outcome. A large programme is a
+parent Work with a child outcome DAG; it is not one umbrella Work or Attempt
+that accumulates unrelated capabilities, fixes, commits, and delivery
+decisions. Each exact candidate binds the child Work that owns its semantic
+outcome.
+
+The Work lifecycle and worker lifecycle are separate. A Work may remain active
+until verified promotion, production behavior, recovery, or a declared
+observation window is proven, but the source agent must not remain occupied
+when only external state can advance it. Use Enact `work.defer` to atomically
+checkpoint, register the typed durable subscription, mark scheduling deferred,
+release EffectLeases and claim/Run capacity, and finish the current Run; then
+claim the next ready Work. Use `next_state_change` for future provider
+observations. Re-entry may be performed by the original agent or any eligible
+agent from the durable checkpoint. A long observation window is separate
+bounded Work or controller-owned monitoring.
 
 ### Stacked Diffs For Dependent Slices
 
@@ -230,16 +294,13 @@ The active source-authoring profile owns the stacked-diff contract: manifest
 schema, slice contract, per-slice admission, root-first serialization, restack
 controller, depth/shape limits, and dependency-aware recovery.
 
-Compatibility-adapter rule: when a change naturally decomposes into ordered
-slices (data layer → API → UI; migration expand → writer compatibility →
-reader rollout), open a stack of small PRs instead of one large PR or a
-serial wait chain. Stacking is an authoring model, not a branch-protection
-bypass — every slice still needs its own admission manifest and trunk
-admission for the exact queue candidate. Do not use stacks to batch
-unrelated cleanup or hide a large non-revertable feature across many PRs;
-independent work belongs in separate PRs or stacks, where queue sharding runs
-validation in parallel. Other active profiles use the generic
-candidate DAG and valid-prefix rules in the source-authoring standard.
+When a change naturally decomposes into ordered slices (data layer → API → UI;
+migration expand → writer compatibility → reader rollout), publish a Candidate
+DAG rather than a serial wait chain. Each slice has its own immutable identity,
+admission manifest, valid-prefix dependency, and terminal evidence. The
+delivery adapter may project that DAG as stacked PRs while compatibility
+requires them; agents do not choose or supervise the projection. Do not use a
+stack to batch unrelated cleanup or hide a non-revertible feature.
 
 ### Optional Mechanism Portfolio
 
@@ -423,7 +484,7 @@ Adopt by gate class:
 | --- | --- | --- | --- | --- |
 | Baseline repo | Any active repo | `AGENTS.md`/`CLAUDE.md` constitution, ADR convention, branch/ruleset policy, Renovate config | doctor/conformance status, required CI, actions pinned by full SHA, least `GITHUB_TOKEN` permissions | Advisory dashboards and unpinned workflows |
 | Contract producer | Public or cross-repo API/tool/event/package | Canonical executable schema, generated interfaces/clients, compatibility tests | contract diff, generated-client freshness, consumer tests where independent consumers exist | Hand-written specs that duplicate schemas |
-| Artifact producer | Published package, container, binary, SDK, or model artifact | SBOM, provenance/attestation, signature, release manifest; package producers also need release intent and a bot-owned version PR | `supply-chain:sbom`, `supply-chain:provenance`, `supply-chain:signature`, vuln/license policy, release-evidence gate | Unsigned releases, SBOMs generated after deploy, or manual package publishes |
+| Artifact producer | Published package, container, binary, SDK, or model artifact | SBOM, provenance/attestation, signature, release manifest; package producers also need Candidate-bound release intent and an adapter-owned version projection only where required | `supply-chain:sbom`, `supply-chain:provenance`, `supply-chain:signature`, vuln/license policy, release-evidence gate | Unsigned releases, agent-authored version PRs, SBOMs generated after deploy, or manual package publishes |
 | Production service | Deployed service, worker, cron, or platform capability | GitOps manifests, runbooks, telemetry contract, SLO/smoke checks | deploy admission, smoke/SLO gate, trace/log/metric proof, drift detection | Manual cluster state or logs without trace correlation |
 | High-risk correctness | Queues, locks, ledgers, billing, permissions, irreversible workflows | State-machine spec, property/model tests, TLA+/Alloy when justified | invariant tests, replay/fault-injection checks, migration replay | Time-based locks or examples-only tests for correctness |
 
@@ -450,10 +511,11 @@ for these gates when a repository does not already have an equivalent:
 - **GitOps and reconciliation**: the Delivery Standard and the active
   product-owned declared GitOps contract own desired state, reconciliation,
   drift, recovery, and live readback; do not infer a retired principle file.
-- **Delivery flow**: short-lived candidate streams and profile-selected
-  serialization; compatibility uses short branches/merge queue, while parallel-change
-  uses immutable attempts/CAS. Branch by abstraction and use feature flags for
-  large changes; long-running mutable state is stale coordination state.
+- **Delivery flow**: one immutable Candidate ingress and centrally selected
+  serialization. A provider adapter may use a short branch/merge queue during
+  bounded compatibility; the normal integration mechanism is immutable
+  attempt/CAS. Branch by abstraction and use feature flags for large changes;
+  long-running mutable state is stale coordination state.
 - **Feature flags**: an OpenFeature-compatible abstraction (or repo-local
   equivalent) with owner, expiry, telemetry, and cleanup gates when release
   must decouple from deploy.
@@ -520,10 +582,13 @@ materially complex lane that passes the same predicate. Do not require global
 tree-depth knowledge or a central recursion counter.
 
 - Split work by bounded context, package, feature, service, or generated
-  contract surface. Avoid assigning two agents to the same shared file unless
-  one owns the contract and the other consumes it.
-- Use disjoint write sets for subagents and branch workers. If write sets overlap,
-  serialize the contract edit first, then parallelize consumers.
+  contract surface. Claims own outcomes, never files. Overlapping source
+  candidates are legal; declared semantic collision scopes let the central
+  serializer integrate, rebase, reject, or supersede them safely.
+- Prefer disjoint semantic write scopes where decomposition is natural. If
+  candidates overlap on a contract, publish the contract dependency first or
+  let central admission serialize the collision; do not impose file locks or
+  block unrelated source authoring.
 - Generated files are not coordination surfaces. Edit the source, regenerate,
   and let CI fail if the generated output is stale.
 - Shared chokepoints require serialization: ADR files, migrations, package
@@ -564,12 +629,14 @@ rule and are not restated as rows below.
 
 ## Candidate Admission, Serialization, And Automatic Integration
 
-Every substantive change lands through the active delivery profile's candidate
-and serialized-integration path; there are no human reviewers in the normal
-path. A compatibility profile may bind that path to pull requests, branch
-protection, required checks, and a merge queue. Adapters may not weaken
-the admission, exact-candidate, serialization, recovery, or provenance
-outcomes.
+Every substantive change enters through one immutable Candidate contract; there
+are no human reviewers in the normal path and no agent-selected PR/direct-trunk
+fork. Central admission derives the obligation set and the serializer chooses
+the provider mechanism. A bounded compatibility result may project the same
+Candidate into a pull request, branch protection, required checks, and a merge
+queue. External contributor pull requests are ingested into the same contract.
+Adapters may not weaken admission, exact-Candidate binding, review
+independence, serialization, recovery, or provenance.
 
 ## CI Pipeline Architecture — Reviewer + Serializer
 

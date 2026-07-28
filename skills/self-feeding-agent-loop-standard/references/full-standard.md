@@ -6,10 +6,10 @@ Use this standard when agents are asked to find issues themselves and drive the
 fix loop through other agents. This is a branch of the agent-first development
 model: user-directed work remains the highest-priority lane, while the
 self-feeding lane continuously discovers evidence-backed work and moves accepted
-items through the active delivery profile's coordination, admission,
+items through the same immutable Candidate ingress, central admission,
 serialization, and verification controls as any other change. Forge-specific
-terms below describe the current `github-delivery` profile; they are adapter
-mechanics, not constitutional invariants.
+terms below describe provider projections; they are adapter mechanics, not
+constitutional invariants or an agent-selected lane.
 
 The loop is a program system, not a motivational prompt. Its launch envelope and
 role references are versioned, it runs with a bounded tick/readout contract, and
@@ -17,11 +17,14 @@ it improves only through decision-linked changes to this package. Source-control
 does not make an entire runtime prompt exact or override outcome-owned
 delegation.
 
+Executors never choose PR versus direct trunk; they publish one immutable
+Candidate and return adapter selection to central admission.
+
 This standard composes with:
 
 - [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
-  for GitHub-native coordination, issue/PR ownership, structured agent audit,
-  collision handling, and machine gates;
+  for Enact Work/Attempt coordination, immutable Candidate ownership,
+  structured agent audit, collision handling, and machine gates;
 - [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md) for
   subagent use, execution graphs, and completion discipline;
 - [`prompt-architecture.md`](https://github.com/SylphxAI/skills/blob/main/skills/prompt-architecture/references/full-standard.md) for role-prompt
@@ -32,26 +35,40 @@ This standard composes with:
 
 ## Operating Model
 
-The standard topology is:
+The standard topology is a shared Work graph, not a set of permanent paired
+agents:
 
 ```text
-Parent evaluator / process owner
-  -> Coordinator Agent
-     -> Reviewer agents discover evidence-backed issues
-     -> Builder agents triage, fix, test, and request verification
-     -> Reviewer verifies original reproduction path
-     -> Builder closes only after verification and delivery proof
+Owner / production / CI / security / customer signals
+  -> propose -> deduplicate -> admit and prioritize Work
+  -> eligible Executor claims one bounded outcome
+  -> immutable Candidate + deterministic proof
+  -> central risk/collision/evidence/review/effect obligations
+  -> adapter-selected CAS landing -> async delivery subscription -> worker release
+  -> delivery event completes or creates/re-enters correction Work
+
+Coordinator / scheduler
+  -> observes queue health, eligibility, capacity, stale claims, and dispatch
+  -> never becomes a private message broker or one-to-one supervisor
 ```
+
+Executors own active source actions, not passive delivery occupancy. After
+landing the selected candidate, an Executor checkpoints, subscribes to the
+required delivery outcome, releases effects/claim/Run capacity, and returns to
+the ready queue. The durable Work remains open until its declared verification
+or delivery predicate is met. The original Executor or any eligible agent may
+re-enter on the event; long observation is separate Work or controller-owned
+monitoring.
 
 Resolve the live work authority before launch. When an authenticated Enact
 runtime is exposed, its Work Item, claim, run, checkpoint, and evidence records
 are canonical coordination state. Otherwise use the repository-declared
-coordination adapter; under `github-delivery`, issues/comments may project
-intake and claims while PRs/checks/merge/deploy/readback carry source and
-delivery evidence. Git and GitHub do not become live work authority merely
-because they are durable. Chat-only state is not ownership.
+coordination adapter. GitHub issues, PRs, checks, merge, deploy, and readback may
+project provider facts, but every internal and imported external change enters
+the same Candidate contract. Git and GitHub do not become live Work or review
+authority merely because they are durable. Chat-only state is not ownership.
 
-Child agents work as independent lanes. Reviewers and Builders must not read
+Child agents work as independent lanes. Reviewers and Executors must not read
 each other's private run logs, hidden prompts, final reports, scratch files, or
 parent chat context. The Coordinator must not act as a side-channel message
 broker or feed one child's private output into another child's prompt. Handoff
@@ -67,16 +84,17 @@ references, required readout fields, and improvement policy. Target
 repositories own their local project facts, issue contents, implementation,
 CI, deployment, and production proof.
 
-Do not fork this loop into repo-local prompts. A repo or runtime adapter may set
+`Proposer`, `Executor`, and `Reviewer` are temporary perspectives on Work, not
+permanent identities. Do not fork this loop into repo-local prompts. A repo or runtime adapter may set
 assignment metadata, launch profile, tick count, and tool-specific spawn wiring,
 but reusable role behavior changes belong here and require an ADR.
 
 ## Launch Envelope
 
 The parent process, runtime adapter, or launcher script renders the compact
-Coordinator envelope before spawn. The default renderer does not embed the long
-Reviewer or Builder references. The Coordinator gives each qualified child an
-outcome-owned brief and source pointers; the child loads only the role material
+Coordinator envelope before spawn. The default renderer does not embed long
+perspective references. The Coordinator gives each qualified child an
+outcome-owned Work reference and source pointers; the child loads only the material
 needed for its lane. Do not ask the Coordinator to reconstruct or copy a long
 prompt during the tick. The selected runtime adapter owns rendering; this
 standard owns only the semantic envelope.
@@ -87,9 +105,10 @@ Every self-feeding loop launch must state:
 - run mode: `bounded-tick` by default, or an explicitly named continuous mode;
 - maximum coordinator ticks for this invocation;
 - model/reasoning launch profile when the runtime supports model selection;
-- allowed mutation scope: issue-only, branch/PR, deploy, or read-only dry run;
-- delivery gate: local validation, PR only, merge queue, deploy/readback, or
-  explicit blocker reporting;
+- allowed mutation scope: proposal-only, Candidate publication, external
+  effect, or read-only dry run;
+- delivery boundary: Candidate submitted, source landed, verified snapshot,
+  deploy/readback, or explicit blocker reporting;
 - parent readout requirement.
 
 For subagents that start from a fresh context, keep that context clean for
@@ -139,18 +158,18 @@ The tick report must include:
 
 - assigned project(s);
 - run mode and tick number;
-- active Reviewers and Builders, with agent IDs where available;
-- issue queue counts and ready-for-review counts;
+- active Attempts grouped by temporary perspective, with agent IDs where available;
+- Work queue counts and pending review-obligation counts;
 - stale/suspected stale claims;
-- stalled/suspected stalled PRs;
+- stalled/suspected stalled Candidates and provider projections;
 - new agents started and agents intentionally not replaced;
 - prompt or workflow issues needing Skills-package or owner attention;
 - exact blockers and next safe action.
 
 ## Launch Template And Role References
 
-The canonical compact Coordinator envelope and progressively loaded Reviewer
-and Builder references are owned by the selected runtime adapter. They are not
+The canonical compact Coordinator envelope and progressively loaded perspective
+references are owned by the selected runtime adapter. They are not
 child prompts embedded into every Coordinator launch and not a mandatory
 per-task roadmap.
 
@@ -168,7 +187,7 @@ general license to freeze a long role prompt. Structural role, mutation, and
 delivery boundaries remain binding; runtime budgets, priority ordering,
 roadmap, investigation, and replanning outside the evaluated segment remain
 adaptive. No current self-feeding runtime invocation binds the whole
-Coordinator, Reviewer, or Builder reference by digest.
+Coordinator, Reviewer, or Executor reference by digest.
 
 Allowed substitutions are limited to the placeholders declared by the template:
 
@@ -196,15 +215,16 @@ legal, or customer-policy decisions.
 The Coordinator may:
 
 - inspect the minimum coordination evidence needed to qualify a bounded
-  Reviewer or Builder lane;
-- start qualified Reviewer and Builder agents with outcome-owned briefs;
+  Work lane and temporary execution or review perspective;
+- start qualified agents with a canonical Work reference and outcome-owned brief;
 - pass launch-envelope facts and source pointers needed for the lane;
 - inspect only the minimum resolved coordination and repository/delivery state needed for launch,
   collision/staleness, and child-agent health;
 - compare child outputs after a bounded tick for parent health reporting, without
   passing those outputs to sibling agents;
 - scale within declared soft limits;
-- recover suspected stale claims and stalled PRs through the documented process;
+- recover suspected stale claims and stalled Candidate/provider projections
+  through the documented process;
 - record prompt or workflow defects in the tick report;
 - ask the parent/process owner for an owner-product or binding-instruction decision.
 
@@ -213,9 +233,10 @@ the correct action is a tick-report finding and a Skills change with its owning
 decision record, not an
 in-place one-off fix.
 
-The Coordinator must not serialize the loop as Reviewer-output-then-Builder
-handoff. When child fan-out is allowed, Reviewer and Builder lanes should start
-from fresh contexts and independently inspect the resolved work authority and
+The Coordinator must not create or preserve a one-to-one Advisor/Executor or
+Reviewer/Builder relationship. When child fan-out is allowed, execution and
+review lanes start only for independently eligible Work obligations, from fresh
+contexts, and independently inspect the resolved work authority and
 repository/delivery state. If a runtime cannot
 isolate child contexts or would require sibling-output sharing, the Coordinator
 records a workflow blocker instead of weakening the test.
@@ -236,7 +257,7 @@ produces no report, or the launch command is unclear, the Coordinator records a
 Coordinator Tick Report within the tick timebox.
 
 The Coordinator performs qualification before launch, but not deep child work.
-It may inspect queue summaries, candidate issue/PR identity, active claims,
+It may inspect queue summaries, Work/Candidate identity, active claims,
 collision state, downstream capacity, and the evidence needed to bound the
 lane. Code investigation, diagnosis, and implementation method belong to the
 child. If qualification cannot complete inside the tick, return
@@ -250,68 +271,90 @@ otherwise inability to materialize a long exact prompt is not a blocker.
 
 ## Reviewer Rules
 
-Reviewers discover evidence-backed issues and verify fixes they opened. They do
-not implement fixes. They should prefer high-signal production, demo,
-commercial, security, CI, observability, documentation, DX, and regression gaps.
+Reviewer is a temporary candidate-bound perspective, not a standing agent that
+shadows an Executor. Review begins only when a Work's risk and proof contract
+requires independent judgment, or when a discovery Work explicitly asks for an
+audit. Deterministic validation runs before model review where practical.
 
 Reviewers coordinate only through the resolved work authority and declared
-repository adapter. They must not inspect sibling agent outputs or ask Builders
-through private chat. In bounded pilots, a Reviewer
+repository adapter. They read the Work contract, immutable candidate, provider
+facts, and authorized durable evidence. They must not inspect sibling private
+outputs or ask Executors through private chat. In bounded pilots, a Reviewer
 emits a useful report before the timebox expires, chooses investigation depth
 from risk and evidence, and reports partial findings rather than timing out
 silently. Fixed tool-call, file-count, priority, or roadmap budgets are not
 binding unless a named digest-bound eval segment supplies them. Once evidence is
 sufficient, reporting becomes the next action.
 
-A Reviewer may propose a Work Item, or a forge issue when that adapter is
-selected, only when it can provide a clear title, affected boundary, current
-behavior, expected behavior, reproduction or inspection evidence, impact,
-acceptance criteria, and duplicate check. If write permission is missing, it
-returns a bounded draft in its tick output and marks the blocker. Public
-projections exclude protected evidence and link to authorized evidence instead.
+A Reviewer publishes a typed verdict, finding, attestation, or correction Work
+through the resolved work authority. It does not complete the Executor's Work
+through a private message or an advisory comment. A negative verdict names the
+failed contract and evidence; repair is separate executable Work or re-entry,
+claimable by any eligible Executor. After publishing the verdict, the Reviewer
+releases its claim and Run rather than waiting for the repair or deployment.
+
+For discovery/audit Work, a Reviewer may propose related Work only when it can
+provide a clear title, affected boundary, current behavior, expected behavior,
+reproduction or inspection evidence, impact, acceptance criteria, and duplicate
+check. Proposal does not assign the Reviewer or another specific agent. If
+write permission is missing, it returns a bounded draft in its checkpoint and
+marks the blocker. Public projections exclude protected evidence and link to
+authorized evidence instead.
 
 Major architecture, security, business-model, pricing, cross-project, or
 strategic findings require a critical-review subagent or a durable review
 artifact before issue creation when the runtime permits it.
 
-## Builder Rules
+## Executor / Builder Rules
 
-Builders fix valid claimed Work Items at the correct boundary. A Builder works
+Executors fix valid claimed Work Items at the correct boundary. An Executor works
 on one claim at a time unless blocked, checks for active attempts before
 starting, checkpoints through the resolved adapter, and links the selected
 source/delivery candidate when created.
 
-Builders coordinate only through the resolved work authority and declared
+Executors coordinate only through the resolved work authority and declared
 repository adapter. They must not inspect sibling outputs, wait for Reviewer
 private reports, or assert authorship unless provenance is independently
 verified from authoritative identity and repository metadata.
 
-A Builder must reproduce or verify the reported problem when practical, identify
+An Executor must reproduce or verify the reported problem when practical, identify
 root cause, update tests or gates, run the strongest practical validation, and
-mark non-trivial issues ready for Reviewer verification before closure.
+submit the exact candidate and evidence. It requests a Reviewer only when the
+Work's risk-selected contract requires that obligation; it never acquires a
+permanent paired Reviewer.
 
-The done ladder is:
+The Executor release boundary is:
 
 ```text
 work accepted -> root cause found -> fix implemented -> validation green
-  -> ready for review -> original reproduction verified -> source landed
-  -> deploy/release/readback where applicable -> work closed
+  -> exact Candidate submitted -> central source admission -> source landed
+  -> checkpoint + delivery subscription -> claim/Run released
 ```
 
-A local diff, issue comment, or green local test is not delivery done.
+The durable Work terminal is separate:
+
+```text
+candidate proof + any required typed review verdict
+  -> selected snapshot verification -> release/deploy/readback where applicable
+  -> Work completed, or correction Work created/re-entered
+```
+
+A local diff, issue comment, or green local test is not source delivery or Work
+terminal. Conversely, an Executor must not occupy a session merely because the
+durable Work has not yet reached its external terminal predicate.
 
 ## Issue Admission And Backpressure
 
 Self-discovery must not flood the backlog or CI system.
 
-- Start zero or more qualified lanes; never create a one-Reviewer/one-Builder
-  quota. Scale only from queue evidence, capability fit, aggregate WIP,
+- Start zero or more qualified lanes; never create a one-Advisor/one-Executor
+  pair or a Reviewer/Builder quota. Scale only from queue evidence, capability fit, aggregate WIP,
   integration capacity, and expected net value.
-- Cap concurrent active Builders per repository by the declared soft limit.
+- Cap concurrent active source Attempts per repository by the declared soft limit.
 - Do not open vague improvement issues.
 - Group tightly related failures; split unrelated root causes.
-- Prefer the issue or PR closest to the canonical contract when duplicates
-  occur.
+- Prefer the canonical Work/Candidate closest to the owning contract when
+  duplicate issue or PR projections occur.
 - If CI/runner capacity, merge queue latency, or issue noise becomes the
   bottleneck, reduce scale rather than creating more work.
 
@@ -343,8 +386,8 @@ must state:
 - migration/adoption class under `instruction-evolution-standard`.
 
 Small typo fixes that do not change behavior may share the ADR for the owning
-prompt-change PR, but behavior changes must not be silently batched without a
-recorded rationale.
+instruction Candidate, but behavior changes must not be silently batched
+without a recorded rationale.
 
 ## Pilot Acceptance Criteria
 

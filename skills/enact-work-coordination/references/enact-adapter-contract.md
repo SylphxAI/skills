@@ -19,9 +19,10 @@ Current product source locators for agents with repository access:
 - `SylphxAI/enact:docs/adr/ADR-0045-organization-project-commercial-spine.md` —
   commercial spine (Organization → Project; no Workspace product surface);
 - `SylphxAI/enact:docs/runbooks/agent-work-loop.md` — agent operating loop; and
-- `SylphxAI/platform:docs/adr/ADR-5127-platform-candidate-plane.md` plus
-  `ADR-01KYM9PBWRK1DR3T1R3M3NT001-public-work-id-retirement.md` — private
-  Candidate lineage (no public `Work: wi_…` admission).
+- `SylphxAI/platform:docs/adr/ADR-5127-platform-candidate-plane.md`,
+  `ADR-01KYM9PBWRK1DR3T1R3M3NT001-public-work-id-retirement.md`, and
+  `ADR-01KYM9PATHN3VTRXADM1SS1001-path-neutral-admission.md` — private lineage
+  and path-neutral PR/DT admission.
 
 ## Semantic surface
 
@@ -35,7 +36,11 @@ Current product source locators for agents with repository access:
 | Record progress | `work.checkpoint`, `work.block` | Material delta and next safe action |
 | Publish evidence | `evidence.publish`, `evidence.get` | Content identity; evidence does not manufacture Work |
 | Link provider fact | `work.link_external` / observations | Observation with provider identity and freshness |
-| Durable wait | `work.defer` | Atomically defer Work and release capacity |
+| Coordinate Candidate review | Live typed review surface, or the product-declared review Work/Evidence contract | Exact Platform Candidate subject; independent principal when required |
+| Read proof chain | `proof.readback` | Never invent a stronger delivery state |
+| Shared external effect | `effect.acquire/renew/narrow/release/read` | Enact-eligible scarce mutations only; not Platform deploy |
+| Durable wait | `work.defer`, then `subscription.read/cancel` | Atomically defer Work and release capacity/effect leases |
+| Dependency relation | `dependency.map` | Reject invalid self/cyclic relations as product contract requires |
 | Complete | `work.complete` | Required evidence and completion authority |
 
 ## Identity, claim, and effect separation
@@ -44,21 +49,32 @@ Current product source locators for agents with repository access:
 - Work identifies the durable objective and lifecycle.
 - Proposal describes a candidate objective. Admission may reuse, reject, or
   create Work; it does not assign the proposer.
-- Claim leases responsibility for that Work/Attempt — not files or PRs.
-- `write_scope` is the maximum intended change envelope, not a lock.
-- EffectLease protects Enact-eligible scarce mutations only. **Platform owns
-  source landing, promotion, deployment, and release.** Enact must not issue
-  authority for those effects.
+- Attempt and Agent Run identify one execution history.
+- Claim leases responsibility and recovery authority for that Work/Attempt —
+  not files or PRs.
+- `write_scope` expresses the maximum intended change envelope and collision
+  visibility; it does not lock files or repositories.
+- EffectLease protects an Enact-eligible scarce mutation boundary such as a
+  schema migration, credential mutation, infrastructure mutation, or external
+  provider mutation. Platform owns and fences source landing, promotion,
+  deployment, and release; Enact must not issue authority for those effects.
 
 ## Session and review authority
 
-A session is an execution client. Session-local goals must not become a second
-Work ledger. The producer publishes one immutable Candidate to Platform and
-never chooses PR versus direct trunk.
+A Codex, Claude, Grok, Spiron, or other agent session is an execution client. A
+session-local goal, title, transcript, private message, or parent/child relation
+must not become a second source of truth for Work priority, ownership, review,
+or completion. The client resolves or proposes canonical Work, claims an
+eligible Attempt, and compiles context from Enact before substantive mutation.
+
+Do not model an Advisor as a permanent supervisor of one Executor. The producer
+publishes one immutable Candidate to Platform and never chooses PR versus
+direct trunk as correctness. Platform derives whether independent review is
+required and projects that requirement into Enact as a typed Work obligation.
 
 An external pull request is ingested by Platform as the same Candidate contract
 and linked to Enact as a provider observation — **without requiring a public
-Work id in the PR body**.
+Work id in the PR body**. PR and direct-trunk are both valid ingresses.
 
 ## Private coordination lineage (not public forge text)
 
@@ -69,6 +85,13 @@ Work id in the PR body**.
 | Platform DB Candidate row | Yes (private) |
 | Public commit trailer / PR body | **No — not required; do not add for admission** |
 | GitHub status description | **No raw `wi_…`** — pass/fail only |
+
+## Durable external wait and worker release
+
+Work completion and worker occupancy are independent. When the next transition
+depends only on CI, build, promotion, deployment, soak, approval, another Work,
+or another external event, call `work.defer` with the typed condition, release
+capacity, and claim other ready Work. Do not keep a session alive to poll.
 
 ## GitHub and other provider observations
 
@@ -93,11 +116,12 @@ tenant-private reasoning and raw Work-id admission ceremony.
 - Provider unavailable: stale observation; Work Graph continues.
 - Missing public `wi_` in Git: **not an error**. Missing private Candidate
   Work binding when landing/admission requires lineage: fail closed at Platform.
+- Ordinary work on a PR: **not an error** (path-neutral admission).
 
 ## Adapter conformance cases
 
 Test Organization/Project scope selection, idempotent propose/reuse, claim-run
 binding, checkpoint/handoff recovery, private Candidate lineage without public
-Work trailers, external PR intake without Work id in body, completion rejection
-without proof, provider outage, effect fencing excluding Platform delivery,
-cross-tenant rejection, and MCP/REST parity.
+Work trailers, external PR intake without Work id in body, path-neutral PR and
+DT ingress, completion rejection without proof, provider outage, effect fencing
+excluding Platform delivery, cross-tenant rejection, and MCP/REST parity.

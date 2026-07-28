@@ -26,8 +26,10 @@ survive a host restart as a declared service boundary.
    freshness separately. Freshness binds the canonical remote head, clean
    managed checkout, applied state, adapter bytes, and selected installed
    runtime generations to one commit.
-2. `enabled` is true only when the selected native scheduler proves its managed
-   definition is current and its registered timer or task is enabled and live.
+2. `enabled` is true only when the selected scheduler proves liveness. A native
+   scheduler proves its managed timer or task is enabled and current. An
+   explicitly selected external supervisor proves a fresh, owned heartbeat
+   while the hosting runtime owns its foreground lifecycle.
 3. Scheduler installation fails closed unless the newly registered scheduler
    passes the same live readback.
 4. Linux systemd unit files without a reachable active user manager are
@@ -51,3 +53,18 @@ survive a host restart as a declared service boundary.
   complete installation; until then the last known-good generation remains
   usable and an explicit reconcile can update it, but that state is partial.
 - The no-hook, no-resident-installer-daemon boundary in ADR-0003 remains intact.
+
+## Amendment — 2026-07-28: Explicit external-supervisor mode
+
+Container and cloud-agent hosts may use
+`auto-sync enable --scheduler external` when their runtime supervisor, rather
+than the guest operating system, owns recurring process lifecycle. This is not
+automatic fallback: the host must select it explicitly, keep the heartbeat
+inside the receiving runtime home, supervise the reconciler as a foreground
+child, and recover it on host restart.
+
+Skills continues to own the exact-source managed checkout, reconciler bytes,
+locks, target generations, drift repair, backoff, and status calculation. The
+host may schedule reconciler ticks and publish the small liveness heartbeat; it
+must not reimplement target materialization. Status is healthy only when both
+the external heartbeat is fresh and source/target readback is current.

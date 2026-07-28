@@ -31,7 +31,7 @@
       "name": "agent-first-development-standard",
       "description": "No-human parallel development packets, change attribution, collision scopes, and machine-verifiable acceptance. Use when defining or running multi-agent software delivery without a human review dependency. Do not use for a small local edit or live Work Graph operations.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:ee6f5c714053002723fad262ff7064d1cbf1d40eddf8587615bab0129acd9848"
+      "packageDigest": "sha256:4dce9ee884abafe1c491edf0a149759f07d3fc0a152f3958d2332c0b7c3bae40"
     },
     {
       "name": "agent-native-standard",
@@ -73,7 +73,7 @@
       "name": "autonomous-execution-standard",
       "description": "Autonomous scheduling: critical-path focus, work-conserving progress, complexity-gated resource-safe delegation, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:310b2a874fa2ed4e71ca13b095cb84f79b3aad5c2a3091bce7e081db9dadb552"
+      "packageDigest": "sha256:846df3bb4dc65df8374598a843bd91992ad739dc82f4bc1c1ec0df437217bfbd"
     },
     {
       "name": "board-metrics-operating-review",
@@ -91,19 +91,19 @@
       "name": "ci-admission-standard",
       "description": "CI admission tiers, gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including custom lints and architecture tests. Do not use for debugging one unrelated test failure.",
       "path": "skills/ci-admission-standard/SKILL.md",
-      "packageDigest": "sha256:f58db1cdfd4491094f10ca83c868d1b5b8e8f49be17a22b0eecc28a96348f959"
+      "packageDigest": "sha256:fc521cbc55b82637a4d7a4d8883edf8e646788bced09d7b989a93e6a12f7ed51"
     },
     {
       "name": "ci-runner-capacity-standard",
       "description": "Design or diagnose CI runner capacity, queue/pickup latency, execution profiles, merge-queue backpressure, inventory uncertainty, and critical-path isolation. Use when CI jobs wait, runners disappear, queues saturate, or capacity policy must change. Do not use for a candidate failure caused by product code.",
       "path": "skills/ci-runner-capacity-standard/SKILL.md",
-      "packageDigest": "sha256:af6d3b78fb54ffe99984a266bf8779b47cd2a0bf8bedeb93a138afb8204d8dab"
+      "packageDigest": "sha256:0fd811ba20b6ba778ad4f7f13ec067c5a7460327a059a61b43f820337eb3cec5"
     },
     {
       "name": "commercial-decision-standard",
       "description": "Pricing, packaging, entitlements, commercial ADRs, and market-positioning evidence. Use when making a durable revenue, packaging, licensing, or route-to-market decision. Do not use for implementing an already-decided checkout or billing contract.",
       "path": "skills/commercial-decision-standard/SKILL.md",
-      "packageDigest": "sha256:b8cc2ca5fc63813b9f928688512b136af6ed9b26e46c4c24cced393c2017383b"
+      "packageDigest": "sha256:b6a9078055263296ac29b7ede50d08acb720bba174787b1d263aa230c3b70100"
     },
     {
       "name": "convergent-review",
@@ -175,7 +175,7 @@
       "name": "delivery-standard",
       "description": "Shipped-state proof across source landing, artifacts, deployment, rollback, and production readback. Use when delivering a change or deciding whether it is truly released or live. Do not use when only local implementation is in scope.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:4272ac54b5d2ef9b5c4e11fa151238ba2a04fdb8de87948bd8d94d41aa304c82"
+      "packageDigest": "sha256:9131b1b44d73a9641eb1ba69a4a57fa1c3ce0c27576d8adf33ed838ccb7af528"
     },
     {
       "name": "dependency-version-selection",
@@ -217,7 +217,7 @@
       "name": "enact-work-coordination",
       "description": "Connect, operate, or audit agent work through the Sylphx Enact operating graph using explicit Organization and Project identity; Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-provider observations. Use when implementing an Enact client or adapter, binding a repository or agent workflow to Enact, recovering a missing MCP work loop, or verifying Enact work provenance. Do not use for portable work-ledger design, ordinary Git operations, or static Skills authoring.",
       "path": "skills/enact-work-coordination/SKILL.md",
-      "packageDigest": "sha256:8b57011d70ab1b5460d7e6136365aaed7eaaf67199330ea827b16ccdf8b5dc47"
+      "packageDigest": "sha256:e4c3462f3fc6e90c6dbcc94a8adb402368acc673c41386087d9d6bf8e27bbd22"
     },
     {
       "name": "engineering-standard",
@@ -241,7 +241,7 @@
       "name": "enterprise-control-plane-standard",
       "description": "Organization-wide manifests, rulesets, selectors, reconcilers, audits, and status projections. Use when one policy or adoption decision must apply consistently across many repositories. Do not use for a product-local setting with no cross-repository owner.",
       "path": "skills/enterprise-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:7850e6e80ca5dc7ba2b4919e6be2d69b0e6b08913ab34426afe07121b87800da"
+      "packageDigest": "sha256:11de5e7068f03a29bc909127e25d44f0a910ddabc29785fa74138077d8d4fdf7"
     },
     {
       "name": "enterprise-profile-standard",
@@ -373,7 +373,7 @@
       "name": "parallel-change-integration-standard",
       "description": "Parallel agent change integration with compare-and-swap landing, bounded duplicate attempts, verification watermarks, and verified-only promotion. Use when candidate generation can outpace shared verification or deployment capacity. Do not use for ordinary low-contention edits.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
-      "packageDigest": "sha256:e5c6495a208f90e95483be4acfb9d50ed65c543e1ae3e8191d49889e47c0e3a2"
+      "packageDigest": "sha256:2f470ce2b1a4464af2dc7a5a571d41f1eb22a412fa83540690ee4442a6d2ad74"
     },
     {
       "name": "payment-platform-readiness",
@@ -553,7 +553,7 @@
       "name": "self-feeding-agent-loop-standard",
       "description": "Recurring autonomous work loops with issue intake, implementation, review, delivery, and machine-verifiable continuation gates. Use when a durable agent process should find and complete new work repeatedly. Do not use for one bounded task.",
       "path": "skills/self-feeding-agent-loop-standard/SKILL.md",
-      "packageDigest": "sha256:bfd1a13a0031d77639e93c6179549d62eecc6221c1838ef2b6577e18998fee75"
+      "packageDigest": "sha256:806f40212b69e7bcd7bee594867fe55ba628ced15dc24041930388e0f1f653c5"
     },
     {
       "name": "semantic-taxonomy-design",
@@ -589,7 +589,7 @@
       "name": "source-authoring-standard",
       "description": "Commits, exact source candidates, semantic atomicity, worktrees, and durable checkpoints. Use when authoring or integrating repository changes where source identity, recovery, or concurrent edits matter. Do not use for read-only analysis.",
       "path": "skills/source-authoring-standard/SKILL.md",
-      "packageDigest": "sha256:1e3de346a3147fd4e47f7fc32e1487db269ac4f53958a3883bb28917af1a92bc"
+      "packageDigest": "sha256:7c99ed45342fd0cf055cc963defb42c81bf466d5abd76aafa3d84b894ca2f4b3"
     },
     {
       "name": "source-to-skill-distiller",

@@ -14,20 +14,15 @@ default-branch commit is not deployable evidence. Release and deployment consume
 only immutable snapshots covered by the relevant scoped green watermark and
 complete proof bundle.
 
-**Lane-aware delivery:** When live organization-wide policy selects
-parallel-change direct-trunk for a repository class, ordinary reversible work lands by
-ordinary fast-forward under integrity fences (deletion + non-fast-forward),
-with local/narrowest verification and verified-only promotion for effects. PRs
-and merge queues remain the **compatibility adapter for fenced classes**
-(ADR authoring, Skills/policy authority, credentials, security, migrations,
-public contracts, irreversible effects) until a successor PR-less ADR locator
-authority is admitted with evidence. Conversely, do not project direct-trunk as
-active where the resolved profile still selects compatibility admission.
+## Unified Candidate delivery
 
-### Lane resolution procedure (agent-native)
+The agent-facing delivery contract has one operation: publish one exact,
+immutable, semantically atomic Candidate bound to its Enact Work/Attempt and
+local evidence. The producer does **not** choose pull request versus direct
+trunk, does not self-select review strength, and does not wait on a provider
+merge envelope.
 
-Resolve the active lane **before** opening a PR. Do not default ordinary work to
-the compatibility lane "for safety" when direct-trunk is already selected.
+Platform is the delivery authority and performs one central admission:
 
 1. **Classify the candidate paths.**
    - **Fenced / compatibility:** Skills/instruction/policy authority, credentials,
@@ -57,6 +52,8 @@ the compatibility lane "for safety" when direct-trunk is already selected.
    PR lands both use private Candidate lineage where required — not public
    `Work: wi_…` trailers. Claims own work, not files.
 
+The normal internal adapter is direct CAS landing to the default branch under
+integrity fences. A provider pull request or merge queue is allowed only as:
 
 ### Ordinary vs fenced classification (not a PR ban)
 
@@ -95,28 +92,44 @@ Use the strongest done state that matches the task **and active delivery lane**:
 | Deployable behavior change | Landed change promoted through the documented release path and verified by smoke checks, health checks, logs, metrics, or user-visible acceptance criteria | Landed but undeployed, deployed without proof, or proof based only on exit codes |
 | GitOps / infrastructure change | Desired state committed, reconciled by the controller, and live state observed to match | Manual cluster mutation, unreconciled manifest, or unverified rollout |
 
+The table defines the durable Work's terminal evidence, not how long one agent
+must occupy a worker. The source agent may release capacity after its immutable
+Candidate is accepted or landed at the declared source boundary with required
+local proof. If the Work also requires verified promotion or
+production evidence, leave it active with a durable delivery subscription and
+checkpoint; release EffectLeases, claim, and Run; and let the delivery
+controller or any eligible re-entry agent finish the stronger state. Incidents
+and irreversible effects retain their stronger bar, but passive external waits
+still use the same event-driven handoff.
+
 If the user asks for implementation, the default answer is not "done" until the
 change is committed, landed through the **active lane**, and advanced to the
 strongest reachable done state. If policy, permissions, failed checks,
 environment gates, or explicit user direction stop the path early, report the
 exact blocker and next action instead of calling the work complete.
 
-Default delivery path (resolve lane first):
+Default delivery path:
 
 - Implement the change.
 - Run risk-appropriate validation.
-- Nominate an exact semantically atomic source candidate; serialize it into
-  commits and required trailers according to the active adapter.
-- **Direct-trunk ordinary:** `git pull --rebase` then ordinary `git push`
-  `HEAD:main` (never force); rebase and re-evaluate on stale tip.
-- **Compatibility / fenced:** push a branch, open or update the PR, monitor CI,
-  address actionable failures, and merge when branch protection, required checks,
-  policy gates, and merge queue allow it.
-- Follow the documented release/deploy path; under direct-trunk, promote only
+- Publish an exact semantically atomic Candidate with Work/Attempt lineage,
+  source/tree identity, declared semantic scopes, local proof, and residual
+  risk. Do not choose or manually open a delivery lane.
+- Platform derives obligations and selects the expected-head CAS adapter.
+  Internal direct landing, generated compatibility PR, imported external PR,
+  and merge-queue projection all consume the same Candidate.
+- If the repository has not yet activated the successor, use the currently
+  declared compatibility command only as migration behavior and record the
+  adoption gap; never claim this as the target steady state.
+- Start the documented release/deploy path; under direct-trunk, promote only
   immutable verified snapshots (raw push is not deploy authority when freeze is
-  active — re-query live mode/generation/denyingScope).
+  active — re-query live mode/generation/denyingScope). When only the external
+  delivery system can advance, subscribe and release worker capacity instead
+  of synchronously polling.
 - Verify deployment with smoke checks, health checks, logs, metrics, or
-  user-visible acceptance criteria.
+  user-visible acceptance criteria when the current Run owns an immediately
+  actionable delivery phase; otherwise bind those checks to the delivery event
+  or re-entry Run.
 - Record the change in a product-owned changelog, release note, or ADR, or link
   the corresponding Enact decision/evidence, when it affects future work.
   Runtime memory may cache only a pointer or working context; it is not the
@@ -140,39 +153,43 @@ path, or mutate shared infrastructure outside GitOps/IaC.
 ## Package Publication
 
 If a repository publishes versioned packages, publication is production delivery.
-The normal path is release intent in source control, a generated version PR owned
-by a GitHub App or bot, release preflight and supply-chain gates, merge through
-branch protection, workflow-owned publication, then registry readback.
+The normal path is machine-readable release intent published as the same
+immutable Candidate contract, centrally derived release and supply-chain
+obligations, adapter-selected CAS landing, workflow-owned publication, then
+registry and provenance readback. Versioning, changelog, registry-index, policy
+sync, and other generated-source updates are internal Candidates; their
+generator or bot never chooses a PR lane.
 
-Use a dedicated release GitHub App/bot token for generated version PRs. Do not
-use the repository `GITHUB_TOKEN` as the normal release PR author: GitHub
-suppresses many workflow-triggered events from `GITHUB_TOKEN`, and automation PR
-workflows may require human approval before running. A GitHub App installation
-token keeps the no-human path intact while preserving least privilege and audit
-identity. Each org designates one release App/bot identity in org-level
-configuration; certify and reuse it instead of creating duplicate bot
-identities.
+If central admission selects a provider version-PR compatibility envelope, a
+dedicated least-privilege GitHub App/bot owns that projection. Do not use the
+repository `GITHUB_TOKEN`: GitHub suppresses many downstream events from it,
+and automation PR workflows may require human approval before running. The
+envelope binds the exact Candidate and remains controller-owned until readback;
+it is not a second release workflow or permanent reason to retain PR-first.
+Each org designates one release App/bot identity for compatibility projections
+and certifies it instead of creating duplicate identities.
 
 JavaScript and TypeScript source products published to npm should use Changesets
 for release intent, versioning, and changelog generation. A generated npm/npx
 adapter for a native CLI instead derives its version and artifact mapping from
 the CLI release identity under `software-distribution-readiness`; it must not
 create a second release authority. Other ecosystems may use native equivalents
-only when they preserve the same invariants: machine-readable intent, bot-owned
-version PR, generated release notes, least-privilege publish identity,
+only when they preserve the same invariants: machine-readable intent,
+Candidate with an adapter-owned version projection where required, generated
+release notes, least-privilege publish identity,
 provenance or attestation where applicable, and package-registry proof.
 
 For npm publication, prefer trusted publishing through GitHub Actions OIDC over
-long-lived npm tokens. The GitHub App/bot identity owns generated version PRs
-and release statuses; the protected publish workflow owns registry
+long-lived npm tokens. The GitHub App/bot identity owns any adapter-selected
+version projection and release statuses; the protected publish workflow owns registry
 authentication and should use OIDC/provenance when the registry and package
 scope support it. A long-lived registry token is a bounded fallback only: it
 needs least privilege, owner, reason, expiry, rotation path, and readback proof.
 
-Use the current package-release conformance capability to find package producers,
-manifest gaps, unsafe version-PR identity, missing release/provenance gates,
-token-only npm publishing, and missing registry readback before claiming a
-package-release repository is adopted.
+Use the current package-release conformance capability to find package
+producers, manifest gaps, unbound or agent-authored version projections,
+missing release/provenance gates, token-only npm publishing, and missing
+registry readback before claiming a package-release repository is adopted.
 
 Do not publish packages manually from a workstation or from a human-owned token
 as the standard path. After an immutable package version is published, recovery
