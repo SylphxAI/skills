@@ -18,6 +18,30 @@ test('always-on runtime separates Work terminal state from worker occupancy', ()
   assert.match(constitution, /Do not cancel,\s+reprioritize, or consume unrelated work, force deployment/);
 });
 
+test('objective continuity distinguishes checkpoints, shippable source, and the delivery terminal', () => {
+  const constitution = read('../runtime/constitution.md');
+  const autonomous = read('../skills/autonomous-execution-standard/references/full-standard.md');
+  const delivery = read('../skills/delivery-standard/references/full-standard.md');
+  const adr = read('../docs/adr/ADR-0025-objective-continuity-and-delivery-terminal.md');
+
+  assert.match(constitution, /plan, phase, local diff, commit, open pull request, or partial validation is\s+a checkpoint/i);
+  assert.match(constitution, /re-check the original objective and active delivery target/i);
+  assert.match(constitution, /while that terminal is unsatisfied, advance the highest-value safe\s+positive-net in-scope action/i);
+  assert.match(constitution, /residual list,\s+or one blocked lane as completion/i);
+  assert.match(autonomous, /The plan is disposable; the objective is not/);
+  assert.match(autonomous, /Before any done, wait, blocked, handoff, or final-response claim/);
+  assert.match(autonomous, /A residual is truthful status, not a scope waiver/);
+  assert.match(autonomous, /does not make the parent complete while\s+the parent still owns that outcome/);
+  assert.match(autonomous, /do not expand a satisfied\s+objective indefinitely/);
+  assert.match(delivery, /Shippable state is a property, not a universal terminal/);
+  assert.match(delivery, /Shippable does \*\*not\*\* mean shipped/);
+  assert.match(delivery, /A commit is a source checkpoint/);
+  assert.match(delivery, /A pull request is a\s+collaboration or landing adapter/);
+  assert.match(delivery, /do not force a deployment for a source-only terminal/);
+  assert.match(adr, /Independent\s+review remains risk-selected/);
+  assert.match(adr, /retired `sota-execution-standard` stays retired/);
+});
+
 test('work and delivery standards require bounded work and event-driven release', () => {
   const agentFirst = read('../skills/agent-first-development-standard/references/full-standard.md');
   const delivery = read('../skills/delivery-standard/references/full-standard.md');

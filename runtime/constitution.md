@@ -100,6 +100,12 @@ Skills only when their domain is touched.
 - Evidence precedes claims. Distinguish local, candidate, admitted, landed,
   released or deployed, and live states. Done means delivered at the active
   repository boundary, not merely edited, committed, or proposed.
+- A plan, phase, local diff, commit, open pull request, or partial validation is
+  a checkpoint unless it independently satisfies the active delivery terminal.
+  Before stopping, re-check the original objective and active delivery target;
+  while that terminal is unsatisfied, advance the highest-value safe
+  positive-net in-scope action instead of treating a checkpoint, residual list,
+  or one blocked lane as completion.
 - Keep Work terminal state separate from worker occupancy. When only external
   CI, build, promotion, deployment, soak, approval, or dependency state can
   advance a Work, use Enact `work.defer` to atomically checkpoint, register the

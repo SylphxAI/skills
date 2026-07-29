@@ -71,9 +71,9 @@
     },
     {
       "name": "autonomous-execution-standard",
-      "description": "Autonomous scheduling: critical-path focus, work-conserving progress, complexity-gated resource-safe delegation, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
+      "description": "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal, keep eligible lanes moving, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:846df3bb4dc65df8374598a843bd91992ad739dc82f4bc1c1ec0df437217bfbd"
+      "packageDigest": "sha256:0e1a8f2ea02ecfdb71a2c7cc3143700f3074f27f2ea2d4934b4740f8693b59f0"
     },
     {
       "name": "board-metrics-operating-review",
@@ -179,9 +179,9 @@
     },
     {
       "name": "delivery-standard",
-      "description": "Shipped-state proof across source landing, artifacts, deployment, rollback, and production readback. Use when delivering a change or deciding whether it is truly released or live. Do not use when only local implementation is in scope.",
+      "description": "Delivery-terminal and shipped-state proof across source landing, artifacts, publication, deployment, rollback, and live readback. Use when a change must move beyond a local diff, commit, or open PR; when defining its shippable state; or when deciding whether it is landed, released, deployed, or live. Do not use when the request explicitly ends at local implementation or analysis without a delivery claim.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:fff2974fd1e5c9434dc51567f9ebfc558e94c0421584e25c496219ae6497f41c"
+      "packageDigest": "sha256:5e599d7eec28686b6afe82682e59ea8ddb5a5b050830d51be97932d8f24b22e4"
     },
     {
       "name": "dependency-version-selection",

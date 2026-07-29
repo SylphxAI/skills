@@ -229,6 +229,52 @@ Avoid drive-by refactors, style churn, and speculative flexibility. Report
 unrelated issues instead of editing them unless the user explicitly expands
 scope or they block correct completion of the current task.
 
+## Objective Continuity And Checkpoint Semantics
+
+The real objective is the requested observable outcome together with its owning
+boundary, acceptance evidence, and active delivery terminal. Preserve that
+contract across phases, replans, context changes, handoffs, review cycles, and
+tool failures. The plan is disposable; the objective is not. A new phase or a
+more convenient intermediate artifact never silently becomes a smaller goal.
+
+A research result, phase completion, local diff, commit, immutable Candidate,
+open pull request, partial review, green subset, residual register, or status
+report is a **checkpoint** unless it independently satisfies the declared
+terminal. Checkpoints are valuable evidence and recovery points, but do not
+authorize a completion claim. A phase-complete report names the strongest
+proven lifecycle state and the remaining path; it does not ask the principal to
+prompt ordinary continuation.
+
+Before any done, wait, blocked, handoff, or final-response claim:
+
+1. Re-read the active goal, original request, owning boundary, and current
+   product delivery declaration.
+2. Name the strongest proven lifecycle state: workspace, locally verified,
+   Candidate, admitted, landed, released or deployed, and live-observed where
+   applicable.
+3. Compare that state with every material acceptance predicate and the active
+   delivery terminal. Do not replace missing evidence with confidence, effort,
+   elapsed time, or a list of completed phases.
+4. Run the bounded eligible-frontier and resolution-opportunity scans. While
+   the terminal is unsatisfied, advance the highest-ranked authorized,
+   dependency-ready, floor-safe, positive-net in-scope action or jointly useful
+   feasible set.
+5. If only external state can advance the Work, use the durable defer and
+   re-entry contract. If authority, a genuine ends decision, or external state
+   blocks the whole remaining frontier, issue a qualified stop with evidence
+   and a re-entry trigger rather than declaring completion.
+
+A residual is truthful status, not a scope waiver. Do not convert an actionable
+residual inside the accepted objective into follow-up work merely to close the
+current attempt. Separate follow-up Work is valid only for an independently
+terminal outcome, an explicitly excluded scope, or a dependency that cannot be
+advanced under current authority; it does not make the parent complete while
+the parent still owns that outcome. Conversely, do not expand a satisfied
+objective indefinitely because more hardening is imaginable: after reaching the
+terminal, use `scope-discipline` for one bounded positive-net scan, apply material
+same-cause corrections inside the owning boundary, and close when no eligible
+improvement changes the outcome enough to justify its cost.
+
 ## Active Resolution Mechanics
 
 The Decision Quality Standard owns the evidence and decision semantics. This
@@ -621,12 +667,15 @@ service, generator, test, eval, or conformance check.
 
 ## Completion Discipline
 
-Do not finish only because the local edit is done.
+Do not finish only because a phase or local edit is done.
 
 Before final response, check:
 
-- Required background sessions are complete or explicitly blocked.
-- The active goal, owning boundary, and completion evidence are still accurate.
+- The original objective, active goal, owning boundary, and delivery terminal
+  still match; no checkpoint or residual list has silently narrowed them.
+- The strongest proven lifecycle state actually satisfies the declared
+  terminal and every material acceptance predicate.
+- Required background work is complete, integrated, or explicitly blocked.
 - Required tests/checks have passed, failed with diagnosis, or were skipped with
   stated residual risk.
 - The bounded pattern sweep is complete, or a larger same-class issue is recorded
@@ -648,7 +697,7 @@ Before final response, check:
 | `autonomous-e-02` | Facts in schema/test/ADR homes |
 | `autonomous-e-03` | Proof layers separated |
 | `autonomous-e-04` | Unknown authority fails closed |
-| `autonomous-e-05` | Tradeoffs owned |
+| `autonomous-e-05` | Checkpoints do not replace the objective or delivery terminal |
 
 - [ ] Full body obligations reviewed for applicability.
 - [ ] Residual gaps have owner and follow-up.

@@ -766,5 +766,107 @@
     "artifacts": [],
     "coverageFor": ["composable-product-portfolio"],
     "tags": ["abstention", "small-edit"]
+  },
+  {
+    "id": "objective-continuity-multi-phase-cantonese",
+    "kind": "positive",
+    "prompt": "呢個 migration 唔好每做完一個 phase 就停低等我再叫；保留原本目標，主動完成所有仍然安全而且屬於範圍內嘅步驟，並且只喺真正終點有證據時先報完成。",
+    "expectedSkills": ["autonomous-execution-standard"],
+    "artifacts": [],
+    "tags": ["multilingual", "multi-phase", "continuation"]
+  },
+  {
+    "id": "objective-continuity-blocked-lane",
+    "kind": "positive",
+    "prompt": "Drive this non-trivial objective through all remaining eligible work. If one dependency or remote check is pending, advance independent implementation, integration, validation or documentation instead of stopping or polling.",
+    "expectedSkills": ["autonomous-execution-standard"],
+    "artifacts": [],
+    "tags": ["blocked-lane", "scheduling", "replanning"]
+  },
+  {
+    "id": "objective-continuity-no-residual-escape",
+    "kind": "positive",
+    "prompt": "Keep the accepted objective intact across replans and reviews. Do not turn an actionable in-scope gap into a follow-up merely to close the current phase, and do not claim completion from effort or a status report.",
+    "expectedSkills": ["autonomous-execution-standard"],
+    "artifacts": [],
+    "tags": ["residual", "completion", "adversarial"]
+  },
+  {
+    "id": "objective-continuity-correction-resume",
+    "kind": "positive",
+    "prompt": "You stopped after reporting phase one. Resume from the accepted goal, verify what remains against its actual terminal, and carry every eligible dependency-ready lane forward without waiting for another steering prompt.",
+    "expectedSkills": ["autonomous-execution-standard"],
+    "artifacts": [],
+    "tags": ["correction", "resume", "multi-phase"]
+  },
+  {
+    "id": "objective-continuity-ambiguous-finish-it",
+    "kind": "positive",
+    "prompt": "Carry this non-trivial repository job through properly. Keep checking the real outcome rather than the current checklist, replan when a route fails, and stop only at its evidence-backed endpoint.",
+    "expectedSkills": ["autonomous-execution-standard"],
+    "artifacts": [],
+    "tags": ["ambiguous", "objective", "replanning"]
+  },
+  {
+    "id": "objective-continuity-delivery-compound",
+    "kind": "compound",
+    "prompt": "Implement the repository change completely, make the exact source candidate self-contained and validated, then continue through the repository's declared landing or release terminal without treating a commit or open pull request as done.",
+    "expectedSkills": ["autonomous-execution-standard", "delivery-standard"],
+    "artifacts": [],
+    "tags": ["delivery", "shippable", "compound"]
+  },
+  {
+    "id": "objective-continuity-neighbour-explicit-pr-terminal",
+    "kind": "near-neighbour",
+    "prompt": "Prepare and validate the requested source change, push the branch, and open or update the pull request; the user explicitly limits this task to PR submission and does not request merge, release or runtime delivery.",
+    "expectedSkills": ["delivery-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "autonomous-execution-standard",
+    "tags": ["explicit-terminal", "pull-request"]
+  },
+  {
+    "id": "objective-continuity-neighbour-one-command",
+    "kind": "near-neighbour",
+    "prompt": "Run the existing unit-test command once and report only its exit result. Do not edit files, diagnose failures, or start another task.",
+    "expectedSkills": [],
+    "artifacts": [],
+    "nearNeighbourOf": "autonomous-execution-standard",
+    "tags": ["one-command", "bounded"]
+  },
+  {
+    "id": "objective-continuity-neighbour-misleading-keyword",
+    "kind": "near-neighbour",
+    "prompt": "In the README sentence “open the PR after phase one,” correct the punctuation only. Do not change the workflow or execute any phase.",
+    "expectedSkills": [],
+    "artifacts": [],
+    "nearNeighbourOf": "autonomous-execution-standard",
+    "tags": ["misleading-keyword", "small-edit"]
+  },
+  {
+    "id": "objective-continuity-neighbour-short-status",
+    "kind": "near-neighbour",
+    "prompt": "Tell me the current branch and whether its working tree has a local diff or unpushed commit. Make no changes.",
+    "expectedSkills": [],
+    "artifacts": [],
+    "nearNeighbourOf": "autonomous-execution-standard",
+    "tags": ["status", "short-answer"]
+  },
+  {
+    "id": "objective-continuity-neighbour-tight-local-edit",
+    "kind": "near-neighbour",
+    "prompt": "Rename one private variable in this function, preserve behavior, run its existing focused test, and leave the result as a local working-tree edit exactly as requested.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "autonomous-execution-standard",
+    "tags": ["tightly-coupled", "local-only"]
+  },
+  {
+    "id": "objective-continuity-abstain-short-read",
+    "kind": "abstention",
+    "prompt": "Read the package manifest and tell me its current version in one sentence. Do not change any files.",
+    "expectedSkills": [],
+    "artifacts": [],
+    "coverageFor": ["autonomous-execution-standard", "delivery-standard"],
+    "tags": ["abstention", "short-answer"]
   }
 ]

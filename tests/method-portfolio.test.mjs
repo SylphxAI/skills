@@ -229,6 +229,38 @@ test('composable product portfolio routing separates product topology from code,
   }
 });
 
+test('objective-continuity routing covers phase stops without absorbing bounded local work', () => {
+  const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('objective-continuity-'));
+  const positives = cases.filter(({ kind, expectedSkills }) =>
+    ['positive', 'compound'].includes(kind)
+      && expectedSkills.includes('autonomous-execution-standard'));
+  const negatives = cases.filter(({ nearNeighbourOf }) =>
+    nearNeighbourOf === 'autonomous-execution-standard');
+  assert.ok(cases.length >= 12);
+  assert.ok(positives.length >= 5);
+  assert.ok(negatives.length >= 5);
+  assert.ok(cases.some(({ kind, expectedSkills, tags = [] }) =>
+    kind === 'positive'
+      && tags.includes('multilingual')
+      && expectedSkills.includes('autonomous-execution-standard')));
+  assert.ok(cases.some(({ kind, expectedSkills }) =>
+    kind === 'compound'
+      && expectedSkills.includes('autonomous-execution-standard')
+      && expectedSkills.includes('delivery-standard')));
+  assert.ok(cases.some(({ nearNeighbourOf, expectedSkills }) =>
+    nearNeighbourOf === 'autonomous-execution-standard'
+      && expectedSkills.includes('delivery-standard')
+      && !expectedSkills.includes('autonomous-execution-standard')));
+  assert.ok(cases.some(({ kind, coverageFor = [] }) =>
+    kind === 'abstention' && coverageFor.includes('autonomous-execution-standard')));
+  for (const tag of ['multilingual', 'ambiguous', 'correction', 'adversarial', 'misleading-keyword']) {
+    assert.ok(cases.some(({ tags = [] }) => tags.includes(tag)), `objective continuity: missing ${tag}`);
+  }
+  for (const fixture of cases) {
+    assert.doesNotMatch(fixture.prompt, /autonomous-execution-standard|delivery-standard/i);
+  }
+});
+
 test('reference originality routing separates comparison evidence from extraction, implementation, and legal conclusions', () => {
   const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('reference-originality-'));
   assert.ok(cases.length >= 5);
