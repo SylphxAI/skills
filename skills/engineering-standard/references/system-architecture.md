@@ -39,22 +39,32 @@ Do not infer one boundary from another:
 
 | Boundary | Decides | Does not imply |
 | --- | --- | --- |
+| Commercial product unit | Standalone customer promise, adoption and product lifecycle | one Capability, repository, site, SKU, service, database or cell |
 | Capability / bounded context | Semantic outcome, language, invariant and data ownership | one file, crate, service, process, database, or cell |
 | Module / package / crate | Compile-time visibility, internal API, allowed dependency graph | independent deployment |
 | Contract | Typed behavior another owner may rely upon | shared implementation or state |
+| Connector | Translation and interaction across owned contracts | semantic, state or distributed-workflow authority |
+| Experience shell / bundle | Discovery, presentation, purchase or entitlement composition | ownership of the products being composed |
 | State authority | Who may decide and write truth, under which consistency model | one physical replica or process |
 | Process | Interchangeable compute replica or stateful execution owner | Capability identity |
 | Cell | Partition and failure blast radius | one Capability or microservice |
 | Service / deployment | Independent scale, release, placement, security, and operations | bounded-context correctness |
 | Trust boundary | Authentication, authorization, tenant/data isolation, and permitted effects | network hop alone |
 
-Mappings are many-to-many. A modular monolith may host several bounded contexts
-in one process. A cell may contain several services and Capabilities. One
-Capability may be deployed in every cell. A service may host several cohesive
-modules until an independent deployment predicate appears.
+Mappings are many-to-many. A product may own several Capabilities, share a
+repository or experience shell with peers, and run in one modular monolith. A
+cell may contain several services, products and Capabilities. One Capability
+may be deployed in every cell. A service may host several cohesive modules
+until an independent deployment predicate appears.
 
 Document the mapping where it materially affects ownership or operations. Never
 use folder names or deployment count as the semantic authority.
+
+Use `composable-product-portfolio` when the requested artifact is the
+portfolio-level decision about which Capabilities become independently
+valuable products and how products compose. This Engineering Standard owns the
+implementation boundaries after that decision; it does not decide pricing,
+SKU, profit-center or product-portfolio posture.
 
 ## Enforceable module graph
 
@@ -233,6 +243,25 @@ Use the
 for public, cross-runtime, cross-repository, and independently versioned
 boundaries. Generated DTOs and clients remain projections; domain types remain
 owned by their Capability.
+
+### Product connectors
+
+A connector is a replaceable adapter between explicitly owned contracts. It may
+translate schemas, authenticate, authorize, route, meter, retry and reconcile,
+but it cannot become the source of business policy, authoritative state or an
+implicit distributed workflow.
+
+Every cross-product connector declares producer, consumer, contract owner,
+identity and tenant propagation, version compatibility, idempotency, timeout,
+retry/backpressure, failure and stale-state behavior, privacy, protected
+observability, and replacement/retirement tests. Internal consumers use the
+same supported semantic contract as external consumers; private networking or
+service identity does not authorize direct database access, private imports or
+hidden product semantics.
+
+When a multi-product outcome needs durable progress, timers, retries or
+compensation, assign a process manager as the explicit workflow owner. Do not
+hide that authority in an API gateway, event broker or connector.
 
 ### Integration events
 

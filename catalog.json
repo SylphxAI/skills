@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 109,
+  "count": 110,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -103,7 +103,13 @@
       "name": "commercial-decision-standard",
       "description": "Pricing, packaging, entitlements, commercial ADRs, and market-positioning evidence. Use when making a durable revenue, packaging, licensing, or route-to-market decision. Do not use for implementing an already-decided checkout or billing contract.",
       "path": "skills/commercial-decision-standard/SKILL.md",
-      "packageDigest": "sha256:b6a9078055263296ac29b7ede50d08acb720bba174787b1d263aa230c3b70100"
+      "packageDigest": "sha256:54781a26a9a4d18a4c4c2a9962ccb2100798a450fb19ad5697aa038d55feb5fa"
+    },
+    {
+      "name": "composable-product-portfolio",
+      "description": "Design or refactor a growing platform, suite, or multi-product portfolio into independently valuable, independently operable product units connected through typed customer-grade contracts. Use when deciding whether capabilities should stay inside one product, become standalone products, share an experience shell, connect through APIs or events, dogfood one another, or form bundles. Produce a Composable Product Portfolio Contract. Do not use for code-only module decomposition, one product's lifecycle delivery graph, pricing alone, or runtime cell partitioning alone.",
+      "path": "skills/composable-product-portfolio/SKILL.md",
+      "packageDigest": "sha256:83e79119abfc8af542b80a6385424b69dca22759ef3c1960adf0f8b51ec72deb"
     },
     {
       "name": "convergent-review",
@@ -223,7 +229,7 @@
       "name": "engineering-standard",
       "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, state authorities, modules, control/data planes, cells, plugins, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or system/runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:42f904f04c3e847f073d828bb61d7562a9c2f4ece7a3bde12d93ced911ded3ad"
+      "packageDigest": "sha256:263c977bed7559ca1e48359362c54abd7dff9b5bf0108b2396da057b5e694eb6"
     },
     {
       "name": "enterprise-access-governance-review",
@@ -427,7 +433,7 @@
       "name": "product-lifecycle-architect",
       "description": "Orchestrate a multi-artifact product program across experience design, commerce, distribution, globalization, SDKs, marketing, support, operations, delivery, and autonomous maintenance. Use when the primary artifact is the cross-domain dependency, handoff, validation, or delivery graph; when a product program spans at least three lifecycle domains; when an ecosystem certification program must compose eligibility, tests, trust signals, renewal, appeals, and operations; or when app/game, global platform release, marketing, and operations must converge on one build-to-scale target. Do not use as primary for whole-app design, whole-game design, a marketing operating system, one campaign/listing/refund, or one product's store-submission readiness.",
       "path": "skills/product-lifecycle-architect/SKILL.md",
-      "packageDigest": "sha256:644707fd8916e4c8745d7f45c76ae6644d20fbfdeaf631c8739e956b18afe648"
+      "packageDigest": "sha256:76b3019d7f85f0457c38cfe326ae752ac3e74e5cbe5c8716917db806039e3993"
     },
     {
       "name": "product-recovery-contract-review",

@@ -12,6 +12,7 @@ const METHOD_PACKAGES = [
   'agent-planning-system-review',
   'agent-system-improvement',
   'causal-inference-analysis',
+  'composable-product-portfolio',
   'data-quality-observability-review',
   'decision-optimization-modeling',
   'dependency-version-selection',
@@ -199,6 +200,32 @@ test('software distribution routing owns CLI and app channels without absorbing 
       && !expectedSkills.includes('software-distribution-readiness')));
   for (const fixture of cases) {
     assert.doesNotMatch(fixture.prompt, /software-distribution-readiness/i);
+  }
+});
+
+test('composable product portfolio routing separates product topology from code, lifecycle, pricing, and runtime cells', () => {
+  const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('composable-portfolio-'));
+  assert.ok(cases.length >= 8);
+  assert.ok(cases.some(({ kind, expectedSkills, tags = [] }) =>
+    kind === 'positive'
+      && tags.includes('multilingual')
+      && expectedSkills.includes('composable-product-portfolio')));
+  assert.ok(cases.some(({ kind, expectedSkills }) =>
+    kind === 'compound'
+      && expectedSkills.includes('composable-product-portfolio')
+      && expectedSkills.includes('commercial-decision-standard')));
+  assert.ok(cases.some(({ nearNeighbourOf, expectedSkills }) =>
+    nearNeighbourOf === 'composable-product-portfolio'
+      && expectedSkills.includes('engineering-standard')
+      && !expectedSkills.includes('composable-product-portfolio')));
+  assert.ok(cases.some(({ nearNeighbourOf, expectedSkills }) =>
+    nearNeighbourOf === 'composable-product-portfolio'
+      && expectedSkills.includes('product-lifecycle-architect')
+      && !expectedSkills.includes('composable-product-portfolio')));
+  assert.ok(cases.some(({ kind, coverageFor = [] }) =>
+    kind === 'abstention' && coverageFor.includes('composable-product-portfolio')));
+  for (const fixture of cases) {
+    assert.doesNotMatch(fixture.prompt, /composable-product-portfolio/i);
   }
 });
 
