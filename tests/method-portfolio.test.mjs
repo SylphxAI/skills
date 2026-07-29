@@ -246,13 +246,19 @@ test('frontend performance routing requires a runtime remediation job and preser
 
 test('architecture routing cases keep one owner and reject docs-only terminals', () => {
   const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('architecture-'));
-  assert.ok(cases.length >= 4);
+  assert.ok(cases.length >= 7);
   const positive = cases.find(({ id }) => id === 'architecture-migration-positive');
   assert.ok(positive.expectedSkills.includes('architecture-convergence'));
   assert.ok(positive.expectedSkills.includes('engineering-standard'));
   const multi = cases.find(({ id }) => id === 'architecture-migration-multi-repo');
   assert.ok(multi.expectedSkills.includes('architecture-convergence'));
   assert.ok(multi.expectedSkills.includes('engineering-standard'));
+  const system = cases.find(({ id }) => id === 'architecture-system-state-and-availability');
+  assert.deepEqual(system.expectedSkills, ['engineering-standard']);
+  const plugin = cases.find(({ id }) => id === 'architecture-system-untrusted-cross-language-plugin');
+  assert.deepEqual(plugin.expectedSkills, ['engineering-standard']);
+  const completeSystemMigration = cases.find(({ id }) => id === 'architecture-migration-complete-system');
+  assert.deepEqual(completeSystemMigration.expectedSkills, ['architecture-convergence', 'engineering-standard']);
   const local = cases.find(({ id }) => id === 'architecture-neighbour-local-refactor');
   assert.deepEqual(local.expectedSkills, ['engineering-standard']);
   assert.equal(local.nearNeighbourOf, 'architecture-convergence');

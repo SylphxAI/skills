@@ -185,6 +185,37 @@
     ]
   },
   {
+    "id": "architecture-system-state-and-availability",
+    "kind": "positive",
+    "prompt": "Design the complete architecture for a multi-tenant system, including semantic ownership, module dependencies, state authorities, stateless compute, control/data-plane behavior, blast-radius isolation, contracts, telemetry, and extension boundaries.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [
+      {"artifact": "Complete code and system architecture", "owner": "engineering-standard"}
+    ],
+    "tags": ["system-architecture", "state", "availability"]
+  },
+  {
+    "id": "architecture-system-untrusted-cross-language-plugin",
+    "kind": "positive",
+    "prompt": "Define a typed, sandboxed extension boundary for customer-supplied plugins written in different languages, including capability grants, resource limits, lifecycle, compatibility, and rollback.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [
+      {"artifact": "Typed extension architecture", "owner": "engineering-standard"}
+    ],
+    "tags": ["system-architecture", "plugin", "trust"]
+  },
+  {
+    "id": "architecture-migration-complete-system",
+    "kind": "compound",
+    "prompt": "Refactor this repository to the current complete architecture and converge its code, state ownership, dependency graph, runtime failure boundaries, interoperability, and predecessor retirement with executable proof.",
+    "expectedSkills": ["architecture-convergence", "engineering-standard"],
+    "artifacts": [
+      {"artifact": "Complete-system architecture convergence and retirement", "owner": "architecture-convergence"},
+      {"artifact": "Canonical architecture terminal", "owner": "engineering-standard"}
+    ],
+    "tags": ["system-architecture", "migration", "convergence"]
+  },
+  {
     "id": "architecture-neighbour-local-refactor",
     "kind": "near-neighbour",
     "prompt": "Extract this one validation function into a typed pure helper and keep all public behavior unchanged.",

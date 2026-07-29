@@ -1,6 +1,6 @@
 ---
 name: architecture-convergence
-description: "Deliver a substantial code-architecture refactor or migration to one declared target across one or many repositories. Use for whole-repository Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or architecture cutovers that require real code movement, semantic proof, authority change, and predecessor retirement. Do not use for a small local refactor, a documentation-only architecture review, or customer-data migration."
+description: "Deliver a substantial code or system-architecture refactor to one declared target across one or many repositories. Use for whole-repository Capability-first DDD adoption, state/runtime boundary correction, language rewrites, monolith restructuring, drop-in replacements, or architecture cutovers that require real code movement, semantic proof, authority change, and predecessor retirement. Do not use for a small local refactor, a documentation-only architecture review, or customer-data migration."
 ---
 
 # Architecture Convergence
@@ -22,12 +22,15 @@ on narrative status or stale proof.
 1. Define the source and target boundaries. Name the repos, runtimes, customer-visible invariants, persistence surfaces, delivery paths, and evidence that would prove a completed cutover.
 2. Freeze the denominator as capabilities plus their important sub-capabilities,
    behaviors, invariants, contracts, scenarios, surfaces, state transitions, and
-   external effects. Files and lines are implementation mappings, not the
-   semantic denominator.
+   external effects. Include applicable module graph, state authorities,
+   process ownership, availability/cell topology, control/data-plane,
+   deployment, trust, interoperability, and extension boundaries. Files and
+   lines are implementation mappings, not the semantic denominator.
 3. Cut vertical slices. Each slice must have one observable job, a stable
    boundary, a target implementation, parity proof, an authority switch, a
    verification probe at the declared lifecycle stage, and a rollback or
-   forward-recovery path.
+   forward-recovery path. A system-boundary slice also names its state class,
+   failure domain, deployment/placement effect, and recovery authority.
 4. Establish the contract before parallel implementation. Use one executable schema or public interface as the source of truth; derive language bindings and fixtures instead of hand-maintaining mirrors.
 5. Build the execution graph. Serialize shared contracts, migrations,
    registries, configuration schemas, and CI workflows. Parallelize only
@@ -66,6 +69,9 @@ on narrative status or stale proof.
 - A metadata/docs/folder-only migration cannot complete a code-architecture
   slice. The candidate must change responsibility and dependency boundaries in
   real product code when the audit finds structural gaps.
+- A code-only module move cannot complete a full system-architecture terminal
+  when an applicable state, process, cell, control/data-plane, deployment,
+  trust, event/telemetry, or extension boundary remains implicit or violated.
 
 ## When not to use
 
@@ -95,9 +101,10 @@ Architecture Convergence Packet
 Source / target / boundary:
 Industry pattern mix:
 Acceptance invariants:
+Applicable system dimensions:
 
 Capability ledger:
-| Repo | Capability | State | Source proof | Target proof | Drift status | Next gate |
+| Repo | Capability | State/authority boundary | Source proof | Target proof | Drift status | Next gate |
 
 Slice graph:
 | Slice | Observable job | Contract | Write set | Depends on | Parallel lane | Owner |

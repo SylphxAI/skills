@@ -18,7 +18,7 @@
   ],
   "properties": {
     "$schema": { "type": "string" },
-    "schemaVersion": { "const": 3 },
+    "schemaVersion": { "const": 4 },
     "kind": { "const": "EnterpriseProfile" },
     "profile": { "$ref": "#/$defs/profileMetadata" },
     "selector": { "$ref": "#/$defs/selector" },
@@ -140,14 +140,15 @@
         },
         "rules": {
           "type": "array",
-          "minItems": 6,
+          "minItems": 7,
           "items": {
             "oneOf": [
               { "$ref": "#/$defs/selectorOutcomeAssertion" },
               { "$ref": "#/$defs/effectClassificationAssertion" },
               { "$ref": "#/$defs/roleRequirementAssertion" },
               { "$ref": "#/$defs/completionAssertion" },
-              { "$ref": "#/$defs/contractStackAssertion" }
+              { "$ref": "#/$defs/contractStackAssertion" },
+              { "$ref": "#/$defs/interoperabilityStackAssertion" }
             ]
           }
         }
@@ -395,6 +396,73 @@
           "items": { "$ref": "#/$defs/clientStack" }
         },
         "unknownClientOutcome": { "const": "blocked-until-profile-review" }
+      }
+    },
+    "interoperabilityStackAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "integrationEvents",
+        "telemetry"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/kebab" },
+        "kind": { "const": "interoperability-stack-requirement" },
+        "integrationEvents": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "appliesTo",
+            "envelope",
+            "versionPolicy",
+            "payloadAuthority",
+            "localDomainEventDisposition"
+          ],
+          "properties": {
+            "appliesTo": {
+              "type": "array",
+              "minItems": 4,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "cross-capability",
+                  "cross-process",
+                  "cross-runtime",
+                  "cross-repository",
+                  "external-consumer"
+                ]
+              }
+            },
+            "envelope": { "const": "cloudevents" },
+            "versionPolicy": { "const": "latest-stable" },
+            "payloadAuthority": { "const": "schema-first" },
+            "localDomainEventDisposition": {
+              "const": "native-typed-no-envelope-required"
+            }
+          }
+        },
+        "telemetry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "standard",
+            "semanticConventions",
+            "traceContext",
+            "sdkBoundary",
+            "operatorEvidence",
+            "publicProjection"
+          ],
+          "properties": {
+            "standard": { "const": "opentelemetry" },
+            "semanticConventions": { "const": "stable" },
+            "traceContext": { "const": "w3c-trace-context" },
+            "sdkBoundary": { "const": "adapters-and-bootstrap" },
+            "operatorEvidence": { "const": "protected-by-default" },
+            "publicProjection": { "const": "explicit-allowlist-only" }
+          }
+        }
       }
     },
     "clientStack": {

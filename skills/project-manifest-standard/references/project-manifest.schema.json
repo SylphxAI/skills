@@ -119,6 +119,24 @@
           "propertyNames": { "$ref": "#/$defs/id" },
           "additionalProperties": { "$ref": "#/$defs/profileBinding" }
         },
+        "moduleGraph": { "$ref": "#/$defs/moduleGraphFact" },
+        "stateAuthorities": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "$ref": "#/$defs/id" },
+          "additionalProperties": { "$ref": "#/$defs/stateAuthorityFact" }
+        },
+        "availability": { "$ref": "#/$defs/availabilityFact" },
+        "trustBoundaries": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/trustBoundaryFact" }
+        },
+        "extensions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/extensionBoundaryFact" }
+        },
         "adoptionStatus": { "$ref": "#/$defs/adoptionStatus" },
         "gaps": { "$ref": "#/$defs/gaps" }
       }
@@ -172,7 +190,13 @@
                 "required": ["producer"],
                 "properties": { "producer": { "const": true } }
               },
-              "then": { "required": ["artifactKinds", "registryRefs"] }
+              "then": {
+                "required": ["artifactKinds", "registryRefs"],
+                "properties": {
+                  "artifactKinds": true,
+                  "registryRefs": true
+                }
+              }
             }
           ]
         },
@@ -247,6 +271,151 @@
       "properties": {
         "repository": { "type": "string", "minLength": 3 },
         "componentId": { "$ref": "#/$defs/id" }
+      }
+    },
+    "moduleGraphFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cyclePolicy",
+        "internalAccessPolicy",
+        "allowedEdges",
+        "enforcementCommands"
+      ],
+      "properties": {
+        "cyclePolicy": { "const": "forbidden" },
+        "internalAccessPolicy": { "const": "public-api-only" },
+        "allowedEdges": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/architectureEdge" }
+        },
+        "enforcementCommands": { "$ref": "#/$defs/nonEmptyStrings" }
+      }
+    },
+    "architectureEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": {
+        "from": { "$ref": "#/$defs/id" },
+        "to": { "$ref": "#/$defs/id" }
+      }
+    },
+    "stateAuthorityFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "class",
+        "owner",
+        "writeAuthority",
+        "consistency",
+        "partitionKey",
+        "recovery",
+        "freshness",
+        "retention",
+        "trustBoundary"
+      ],
+      "properties": {
+        "class": {
+          "enum": [
+            "authoritative-durable",
+            "durable-workflow",
+            "derived-projection",
+            "ephemeral-process-cache",
+            "coordination-lease",
+            "client-session",
+            "configuration-secret"
+          ]
+        },
+        "owner": { "$ref": "#/$defs/id" },
+        "writeAuthority": { "type": "string", "minLength": 3 },
+        "consistency": { "type": "string", "minLength": 3 },
+        "partitionKey": {
+          "anyOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ]
+        },
+        "recovery": { "type": "string", "minLength": 3 },
+        "freshness": { "type": "string", "minLength": 3 },
+        "retention": { "type": "string", "minLength": 3 },
+        "trustBoundary": { "type": "string", "minLength": 3 }
+      }
+    },
+    "availabilityFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "partitionKey", "controlDataPlane", "decisionRef"],
+      "properties": {
+        "mode": {
+          "enum": ["single-deployment", "multi-zone", "cell-based", "other"]
+        },
+        "partitionKey": {
+          "anyOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ]
+        },
+        "controlDataPlane": {
+          "enum": ["not-applicable", "statically-stable", "gapped"]
+        },
+        "decisionRef": { "type": "string", "minLength": 3 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["mode"],
+            "properties": { "mode": { "const": "cell-based" } }
+          },
+          "then": {
+            "properties": {
+              "partitionKey": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      ]
+    },
+    "trustBoundaryFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "owner",
+        "subjects",
+        "protectedAssets",
+        "authorization",
+        "isolation",
+        "proof"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "owner": { "$ref": "#/$defs/id" },
+        "subjects": { "$ref": "#/$defs/nonEmptyStrings" },
+        "protectedAssets": { "$ref": "#/$defs/nonEmptyStrings" },
+        "authorization": { "type": "string", "minLength": 3 },
+        "isolation": { "type": "string", "minLength": 3 },
+        "proof": { "$ref": "#/$defs/nonEmptyStrings" }
+      }
+    },
+    "extensionBoundaryFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "mode", "contract", "trustClass", "decisionRef"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "mode": {
+          "enum": [
+            "static-module",
+            "deployment-selection",
+            "out-of-process",
+            "wasm-component",
+            "remote-api"
+          ]
+        },
+        "contract": { "type": "string", "minLength": 3 },
+        "trustClass": { "$ref": "#/$defs/id" },
+        "decisionRef": { "type": "string", "minLength": 3 }
       }
     },
     "adoptionStatus": { "enum": ["not-applicable", "not-started", "migrating", "adopted", "gapped"] },

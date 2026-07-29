@@ -65,9 +65,9 @@
     },
     {
       "name": "architecture-convergence",
-      "description": "Deliver a substantial code-architecture refactor or migration to one declared target across one or many repositories. Use for whole-repository Capability-first DDD adoption, language/runtime rewrites, monolith restructuring, drop-in replacements, or architecture cutovers that require real code movement, semantic proof, authority change, and predecessor retirement. Do not use for a small local refactor, a documentation-only architecture review, or customer-data migration.",
+      "description": "Deliver a substantial code or system-architecture refactor to one declared target across one or many repositories. Use for whole-repository Capability-first DDD adoption, state/runtime boundary correction, language rewrites, monolith restructuring, drop-in replacements, or architecture cutovers that require real code movement, semantic proof, authority change, and predecessor retirement. Do not use for a small local refactor, a documentation-only architecture review, or customer-data migration.",
       "path": "skills/architecture-convergence/SKILL.md",
-      "packageDigest": "sha256:d2b049b89bc6c1df716a463179df0d019b92fec755f4f826c725637051602aea"
+      "packageDigest": "sha256:bf44188f10368276006810989f7bb45ec686997b65e4b8953fa950f1b979fba2"
     },
     {
       "name": "autonomous-execution-standard",
@@ -221,9 +221,9 @@
     },
     {
       "name": "engineering-standard",
-      "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, functional cores, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
+      "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, state authorities, modules, control/data planes, cells, plugins, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or system/runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:a9a2b6cbf39dc83787138f95ab4f4b05c2f6624512a1c948f505007cd02b9296"
+      "packageDigest": "sha256:42f904f04c3e847f073d828bb61d7562a9c2f4ece7a3bde12d93ced911ded3ad"
     },
     {
       "name": "enterprise-access-governance-review",
@@ -437,9 +437,9 @@
     },
     {
       "name": "project-manifest-standard",
-      "description": "Repository identity, lifecycle, capability and component ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use when creating, changing, or validating a repository's durable identity and boundaries.",
+      "description": "Repository identity, lifecycle, capability/component ownership, module graph, state authorities, availability/control-data-plane intent, trust/extension boundaries, public surfaces, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use when creating, changing, or validating a repository's durable identity and architecture facts.",
       "path": "skills/project-manifest-standard/SKILL.md",
-      "packageDigest": "sha256:5c5a6dd390ba829ee63757464876408442fa98948011edac28c27c7d53811893"
+      "packageDigest": "sha256:a688eabdc55830862fae331997cbc9f0d05b75fae8dd1a7fce109a0ec569c65d"
     },
     {
       "name": "promotion-campaign-review",
@@ -635,13 +635,13 @@
     },
     {
       "name": "technology-stack-profile",
-      "description": "Apply the required backend, web, API-contract, generated-client, and cross-platform technology choices. Use when choosing, implementing, reviewing, or measuring Rust backend, TypeScript/React web, Protobuf or Connect APIs, SDK generation, Dart/Flutter, Swift/Apple, Kotlin/Android, Go, Python, Node, .NET, gateway, worker, storage, queue, SSR, or client/server state boundaries.",
+      "description": "Apply the required backend, web, API-contract, generated-client, event-envelope, telemetry, and cross-platform technology choices. Use when choosing, implementing, reviewing, or measuring Rust backend, TypeScript/React web, Protobuf/Connect APIs, CloudEvents, OpenTelemetry, SDK generation, Dart/Flutter, Swift/Apple, Kotlin/Android, Go, Python, Node, .NET, gateway, worker, storage, queue, SSR, or client/server state boundaries.",
       "path": "skills/technology-stack-profile/SKILL.md",
-      "packageDigest": "sha256:e93ef2b4b00f931454fb433d11cea8178650a564838305f920747f0ccd5a0255",
+      "packageDigest": "sha256:3153422f5dd41cd6867903a4f4580e91e7d671f692bdf8ed3d648e825a8d046a",
       "profile": {
         "id": "technology-stack-profile",
-        "revision": "2026-07-29.1",
-        "contentDigest": "sha256:3df97a1a87fc65abbc318d760af1b7cdc7dd6b54ff74c474a356cbd886e63041",
+        "revision": "2026-07-29.2",
+        "contentDigest": "sha256:6226c54e8502fd2c97419988a8b92dd42fc22e9da5abeace7afa1192bf08bd49",
         "lifecycle": "active",
         "authorityClass": "governance-constraint"
       }

@@ -32,7 +32,10 @@ The machine manifest records, using controlled vocabulary where available:
 - **architecture** — canonical generation/profile references and typed adoption
   gaps without copying standard prose; when a profile needs component-level
   facts, a map of unique component ids to roles, implementations, backend-owner
-  references, and owned effects;
+  references, and owned effects; when system boundaries are material,
+  machine-readable module-graph enforcement, state authorities, intended
+  availability/control-data-plane topology, trust boundaries, and extension
+  modes;
 - **documentation** — homes for ADRs, specs, catalogs, generated references,
   and runbooks;
 - **delivery** — candidate/CI model, verification command/status, terminal
@@ -55,6 +58,13 @@ revision and content digest; it does not copy Profile policy. Live presence,
 revision, health, traffic, and production ownership remain Sylphx Enact
 observations. A selected Profile fails missing, stale, or unknown component
 facts closed rather than inferring them from filenames.
+
+`architecture.moduleGraph`, `stateAuthorities`, `availability`,
+`trustBoundaries`, and `extensions` are stable intended architecture facts, not
+observed runtime claims. Use them when those dimensions apply. A Capability,
+module, state authority, process, cell, deployment, and trust boundary may map
+many-to-many; do not manufacture one-to-one records. Live replica count,
+placement, traffic, health, and incident state remain external observations.
 
 Committed `PROJECT.md` and manifest content is repo-audience-safe static intent
 and configuration. Protected observed runtime topology, migration/cutover
@@ -117,6 +127,9 @@ organization-wide proof.
 - [ ] Every public surface and cross-repository dependency has a named owner.
 - [ ] Architecture/profile references identify current authority without
       copying its prose.
+- [ ] Applicable module graph, state authority, availability/control-data-plane,
+      trust, and extension facts are declared without turning live topology
+      into repository-authored truth.
 - [ ] Profiles that depend on component roles or effects have an exact
       `architecture.profileBindings` entry and complete
       `architecture.components` facts; live deployment state is not authored

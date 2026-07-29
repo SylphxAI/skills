@@ -1,4 +1,4 @@
-# Backend and web technology resolution and verification
+# Backend, web, and interoperability technology resolution and verification
 
 The normative profile is [`profile.json`](profile.json). This reference defines
 how an agent or control-plane adapter resolves and verifies that contract. It
@@ -35,13 +35,21 @@ instructions.
    from that rule. A missing or duplicate platform, a client protocol not
    served by the server, or a server implementation that disagrees with the
    backend role requirement blocks resolution.
+6. For the single `interoperability-stack-requirement`, apply the declared
+   CloudEvents envelope only to the named cross-boundary integration-event
+   scopes, retain schema-first payload authority, and apply OpenTelemetry only
+   at the declared adapter/bootstrap telemetry boundary. Any other envelope,
+   payload authority, domain SDK dependency, or public evidence disposition is
+   a profile violation.
 
 The current rule table requires Rust for backend roles and
 TypeScript/Bun/Next for web roles. It forbids backend-effect ownership by web
 roles and TypeScript backend fallback. It also selects Protobuf Editions, Buf,
 Protovalidate, Connect Rust, the Connect/gRPC/gRPC-Web protocol family, and the
 native client matrix for web, Flutter, Apple, Android, Rust, Go, Python, Node,
-and .NET. Those values are read from the profile, not duplicated in an adapter.
+and .NET. It selects CloudEvents for cross-boundary integration-event context
+and OpenTelemetry for protected operational telemetry. Those values are read
+from the profile, not duplicated in an adapter.
 
 Product repositories project intended component topology through the optional
 `architecture.components` map in `project.manifest.json` and bind this Profile
@@ -67,6 +75,9 @@ production status remain Sylphx Enact observations, not repo-authored fields.
 | Rust backend called by React web and Flutter | cross-runtime API with two clients | one Protobuf/Buf service; Connect Rust server; generated Connect Web and Connect Dart clients |
 | iOS or Android application | selected native client | Connect Swift or Connect Kotlin plus its generated Protobuf runtime and native presentation-state tools |
 | .NET or an unlisted ecosystem | selected gRPC fallback or unknown client | .NET uses generated gRPC; any unlisted client blocks for Profile review instead of inventing a schema |
+| Integration event crossing Capability/process/runtime/repository ownership | cross-boundary event | CloudEvents envelope plus schema-first payload; delivery/idempotency/replay remain explicit |
+| In-process domain event | local domain fact | native typed event; no CloudEvents wrapper required |
+| Production operational signal | telemetry | OpenTelemetry at adapters/bootstrap; protected by default, explicit allowlist for public/customer projection |
 
 Transport shape does not decide implementation ownership. An HTTP or RPC boundary may exist on
 either side. Ownership follows the semantic role and effects behind the
@@ -107,6 +118,13 @@ production defect, parity gap, or missing capability remains a Rust work item.
 - For every applicable cross-platform boundary, record the contract-stack
   assertion and prove the selected Protobuf edition, Buf inputs, Rust server,
   served protocols, and client target come from the same profile revision.
+- For every cross-boundary integration-event surface, prove the CloudEvents
+  envelope does not duplicate payload semantics and that ordering, causation,
+  idempotency, delivery, replay, and failure contracts remain explicit.
+- Prove OpenTelemetry is bound at adapters/bootstrap, stable semantic
+  conventions and W3C Trace Context are used where applicable, raw operator
+  evidence remains protected, and public/customer projections are explicit
+  allowlists.
 - Regenerate, compile, package, and exercise every declared client against an
   ephemeral server with the shared positive/negative fixture corpus.
 - Prove remote cache, local presentation state, optional offline store, and

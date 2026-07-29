@@ -26,6 +26,9 @@ change filenames and packaging, not ownership or dependency direction.
   compulsory wrapper around ordinary use cases.
 - Cross-capability events are versioned contracts; convergent controllers pair
   event wake-ups with periodic level-triggered reconciliation.
+- The module graph is enforced through language/package visibility and
+  compiler/build dependency data: no cycles, internal cross-module imports,
+  undeclared edges, or accidental public surface.
 
 ## Rust
 
@@ -59,6 +62,10 @@ src/
   configuration outside the domain.
 - Expose a narrow `pub` surface from the capability root. Use `pub(crate)` or
   private modules for implementation details.
+- Treat module privacy as the first boundary and use separate crates only where
+  compile or ownership isolation is real. For cross-crate rules, verify the
+  resolved Cargo dependency graph (for example through `cargo metadata`) against
+  declared allowed edges; do not grep `use` statements.
 - Repository traits and other ports belong to the application/domain boundary;
   concrete SQL/HTTP implementations belong to adapters.
 - Avoid both a single `mod.rs` god module and a micro-file system where every
@@ -94,6 +101,10 @@ src/capabilities/work-progress/
 - Keep React/Vue/Svelte, HTTP framework, ORM, Effect runtime, and provider types
   in interfaces/adapters unless they are generated contract projections.
 - Export only the capability contract and intended application entrypoints.
+- Use package `exports`, TypeScript project/package boundaries, and the resolved
+  module dependency graph to reject internal imports, cycles, and undeclared
+  edges. An AST-aware boundary rule may fill gaps; path-string lint alone is not
+  the authority.
 - Avoid repository-wide `services/`, `models/`, `types/`, and `utils/` dumping
   grounds. A genuinely shared primitive needs a named stable contract.
 - Do not let framework schemas independently re-author a boundary contract.
@@ -132,6 +143,9 @@ src/product/capabilities/work_progress/
   domain values instead of using them as the domain authority.
 - Enforce dependency direction with import rules/static analysis and run strict
   type checking on durable paths.
+- Keep public package entrypoints explicit and evaluate the resolved import
+  graph for cycles, internal-package access, and allowed dependencies; do not
+  infer architecture from filename conventions.
 - Avoid generic `helpers.py`, `services.py`, or `models.py` files spanning
   multiple capabilities.
 - Async iterators or reactive libraries may carry streams at the edge; pure
@@ -169,6 +183,10 @@ lib/src/capabilities/work_progress/
   state transitions.
 - Split packages only for a genuine independently versioned/reused capability
   or platform boundary, not to simulate architecture through package count.
+- Use Dart library privacy, explicit package exports/imports, analyzer proof,
+  and a package dependency-graph check for allowed edges and cycles. An
+  underscore-private declaration is not a substitute for a coherent
+  Capability API.
 - Dart Streams and Flutter reactive state belong to the shell/interface;
   reducers and temporal rules remain framework-independent.
 - Platform push/stream events are interface facts mapped into domain or

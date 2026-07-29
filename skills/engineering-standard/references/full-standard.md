@@ -166,6 +166,13 @@ programming principles shape the core; they do not require every language or
 effectful orchestration path to pretend to be purely functional. Small project size,
 file count, or historical human implementation cost is not an exemption.
 
+Apply the
+[Complete System Architecture](system-architecture.md) when state, runtime,
+failure, deployment, interoperability, or extension boundaries exist. It keeps
+Capability/bounded context, module/package/crate, contract, state authority,
+process, cell, service/deployment, and trust boundaries as orthogonal
+dimensions. None is inferred one-to-one from another.
+
 Use cohesive capability modules with dependency direction toward stable domain
 policy. Domain decisions do not depend on framework, transport, persistence,
 provider SDKs, or UI implementation. Application code orchestrates use cases;
@@ -195,6 +202,27 @@ Keep authoritative state explicit and horizontally scalable when the boundary
 requires it. Process-local caches or coordination state must never masquerade
 as durable truth. Persistent state, queues, blobs, indexes, and replicated
 views declare ownership, consistency, recovery, and freshness.
+
+Classify non-trivial state as authoritative durable, durable workflow,
+derived/rebuildable projection, ephemeral process/cache, coordination/lease,
+client/session, or configuration/secret state. Each applicable set declares
+one semantic write authority, readers, consistency/transaction boundary,
+partition, durability, recovery/rebuild, freshness/reconciliation, retention,
+privacy, and failure behavior. Prefer interchangeable stateless compute; do not
+pretend intentionally stateful authorities are stateless.
+
+Where a real control/data-plane boundary exists and the availability contract
+requires it, established data-plane behavior remains statically stable through
+a bounded control-plane impairment using admitted last-known-good state. Cell
+topology is conditional on demonstrated multi-tenant or ultra-scale fault
+isolation; a cell is not a Capability or service synonym.
+
+Cross-boundary integration events use a schema-owned payload in a CloudEvents
+envelope. Operational telemetry uses OpenTelemetry at the adapter shell and
+remains protected evidence by default. Static composition is the extension
+default; a WebAssembly Component Model boundary is conditional on a proven
+cross-language or untrusted-plugin need and an explicit capability/resource
+grant.
 
 ## Implementation Shape
 
