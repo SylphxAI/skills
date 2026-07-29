@@ -135,7 +135,7 @@ claim.
        copied bearer token for OAuth.
      - **Break-glass headless only:** ordinary installs use OAuth. Managed
        bearer enrollment is opt-in when `SYLPHX_ENACT_BEARER_TOKEN_ENV` explicitly
-       names an env var that already holds a short-lived/dens-rotated agent
+       names an env var that already holds a short-lived/rotated agent
        principal. The installer then enrolls Codex with
        `--bearer-token-env-var` pointing at that env *name* only. It must not
        mint, print, copy, or write the secret value; must not autodetect token
