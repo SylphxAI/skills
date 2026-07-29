@@ -1,0 +1,4 @@
+interface:
+  display_name: "Composable Product Portfolio"
+  short_description: "Design independent products and connector graphs"
+  default_prompt: "Use $composable-product-portfolio to classify this portfolio, select coherent standalone product units, and design the typed connector and composition graph without unnecessary fragmentation."

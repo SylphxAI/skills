@@ -680,5 +680,91 @@
     "expectedSkills": ["operational-observability-review"],
     "artifacts": [{"artifact": "Operational Observability Contract", "owner": "operational-observability-review"}],
     "nearNeighbourOf": "frontend-performance-remediation"
+  },
+  {
+    "id": "composable-portfolio-platform-breakup-cantonese",
+    "kind": "positive",
+    "prompt": "我哋個平台愈加愈多功能。請判斷邊啲應該成為可獨立使用同營運嘅產品、邊啲只係內部 capability 或共享底座，並設計產品之間嘅 connector、bundle、統一入口同 dogfooding 邊界，唔好拆成一堆碎片。",
+    "expectedSkills": ["composable-product-portfolio"],
+    "artifacts": [{"artifact": "Composable Product Portfolio Contract", "owner": "composable-product-portfolio"}],
+    "tags": ["multilingual", "portfolio", "product-boundary"]
+  },
+  {
+    "id": "composable-portfolio-independent-units",
+    "kind": "positive",
+    "prompt": "Refactor this suite of twenty accumulated functions into the smallest coherent set of independently valuable products, shared substrate and typed connectors; preserve standalone adoption while allowing one composed customer experience.",
+    "expectedSkills": ["composable-product-portfolio"],
+    "artifacts": [{"artifact": "Composable Product Portfolio Contract", "owner": "composable-product-portfolio"}],
+    "tags": ["portfolio", "connectors", "anti-fragmentation"]
+  },
+  {
+    "id": "composable-portfolio-dogfood-contract",
+    "kind": "positive",
+    "prompt": "Design how our products consume one another through supported customer-grade APIs and events, including identity, entitlement, metering, failure and replacement, and prove no internal product reads a peer database or hidden endpoint.",
+    "expectedSkills": ["composable-product-portfolio"],
+    "artifacts": [{"artifact": "Composable Product Portfolio Contract", "owner": "composable-product-portfolio"}],
+    "tags": ["dogfooding", "contracts", "security"]
+  },
+  {
+    "id": "composable-portfolio-commercial-compound",
+    "kind": "compound",
+    "prompt": "Decide which capabilities should become standalone offers versus add-ons or a bundle, define the connector graph, and record the pricing, entitlement, unit-economics and internal-settlement decisions for the selected structure.",
+    "expectedSkills": ["composable-product-portfolio", "commercial-decision-standard"],
+    "artifacts": [{"artifact": "Composable Product Portfolio Contract", "owner": "composable-product-portfolio"}],
+    "tags": ["portfolio", "commercial", "compound"]
+  },
+  {
+    "id": "composable-portfolio-neighbour-code-modularity",
+    "kind": "near-neighbour",
+    "prompt": "Refactor this one backend into capability-first modules with explicit dependency direction, one composition root and architecture tests; do not change its product boundary, packaging or customer journey.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "composable-product-portfolio",
+    "tags": ["code", "architecture"]
+  },
+  {
+    "id": "composable-portfolio-neighbour-runtime-cells",
+    "kind": "near-neighbour",
+    "prompt": "Partition this existing multi-tenant service into workload cells by tenant so a poison request or deployment failure affects only one bounded customer set; the product portfolio stays unchanged.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "composable-product-portfolio",
+    "tags": ["runtime-cell", "availability"]
+  },
+  {
+    "id": "composable-portfolio-neighbour-one-product-lifecycle",
+    "kind": "near-neighbour",
+    "prompt": "The product boundary is already accepted. Compose its experience, commerce, assets, SDKs, distribution, support, launch and operating evidence into one build-to-run delivery graph.",
+    "expectedSkills": ["product-lifecycle-architect"],
+    "artifacts": [{"artifact": "Product Program Manifest", "owner": "product-lifecycle-architect"}],
+    "nearNeighbourOf": "composable-product-portfolio",
+    "tags": ["single-product", "lifecycle"]
+  },
+  {
+    "id": "composable-portfolio-neighbour-one-saas-blueprint",
+    "kind": "near-neighbour",
+    "prompt": "Design one complete SaaS product from public acquisition through onboarding, organizations, billing, authenticated workflows, support, analytics, operations and global scale; its product boundary is already settled.",
+    "expectedSkills": ["saas-web-platform-blueprint"],
+    "artifacts": [{"artifact": "SaaS Web Platform Blueprint", "owner": "saas-web-platform-blueprint"}],
+    "nearNeighbourOf": "composable-product-portfolio",
+    "tags": ["single-product", "saas"]
+  },
+  {
+    "id": "composable-portfolio-neighbour-pricing-only",
+    "kind": "near-neighbour",
+    "prompt": "The product boundaries and integrations are already fixed. Decide whether the existing two products should use separate subscriptions, an add-on, or one discounted bundle, with entitlement and unit-economics evidence.",
+    "expectedSkills": ["commercial-decision-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "composable-product-portfolio",
+    "tags": ["pricing", "packaging"]
+  },
+  {
+    "id": "composable-portfolio-abstain-single-copy",
+    "kind": "abstention",
+    "prompt": "Correct one typo in the settings page heading without changing behavior, product boundaries, modules, pricing or delivery.",
+    "expectedSkills": [],
+    "artifacts": [],
+    "coverageFor": ["composable-product-portfolio"],
+    "tags": ["abstention", "small-edit"]
   }
 ]

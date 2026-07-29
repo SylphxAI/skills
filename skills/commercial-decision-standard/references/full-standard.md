@@ -23,6 +23,10 @@ This standard composes with:
   for no-human gates, risk lanes, and recovery.
 - [`decision-quality-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/decision-quality-standard/references/full-standard.md) for the canonical
   decision precedence, risk, reversibility, evidence, and option-value kernel.
+- [`composable-product-portfolio`](https://github.com/SylphxAI/skills/blob/main/skills/composable-product-portfolio/SKILL.md)
+  when the requested artifact classifies a multi-product portfolio, selects
+  standalone product units, or defines connectors, shared substrate, bundles
+  and dogfooding boundaries.
 
 ## Canonical Homes
 
@@ -52,6 +56,8 @@ Create or amend a Commercial ADR before durable work when the change affects:
   cost;
 - billing or payment behavior;
 - package publishing or public artifact release posture;
+- creating, extracting, merging or retiring a standalone product unit or
+  customer-facing bundle;
 - designating a product an independent profit center, or classifying a
   product pair's internal settlement row (see "Internal Settlement And
   Margin Topology" below);
@@ -136,6 +142,13 @@ Use the simplest model that produces decision-useful unit economics and meets
 the governing obligations. Do not invent transfer prices, internal invoices, or
 profit-center status from a generic Skill, and do not encode one company's
 portfolio topology as portable law.
+
+Product, Capability, repository, public site, service, deployment, database and
+runtime cell are separate decisions. A standalone product requires an
+independent customer promise and lifecycle, but not automatically a separate
+SKU, price, P&L, repository or deployment. Use a Composable Product Portfolio
+Contract to resolve the structural topology; use the Commercial ADR to accept
+the pricing, packaging, entitlement, accounting and market consequences.
 
 ## Roadmap Decisions
 
