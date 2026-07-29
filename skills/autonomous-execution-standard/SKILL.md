@@ -1,6 +1,6 @@
 ---
 name: autonomous-execution-standard
-description: "Autonomous scheduling: critical-path focus, work-conserving progress, complexity-gated resource-safe delegation, replanning, and honest evidence layers. Use when a non-trivial task should continue through multiple independent work lanes without repeated user direction. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit."
+description: "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal, keep eligible lanes moving, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit."
 ---
 # Autonomous Execution Standard
 

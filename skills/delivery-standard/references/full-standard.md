@@ -94,6 +94,37 @@ PR as done when the user's goal implies changed software, changed instructions, 
 shipped behavior. Own the path to the repository's durable delivery boundary and,
 when applicable, to production verification.
 
+### Shippable state is a property, not a universal terminal
+
+An exact Candidate is **shippable** when the requested change is coherent and
+complete at its source boundary, carries risk-appropriate validation and
+delivery metadata, and can advance through the repository's normal delivery
+system without reconstructing hidden author state. In particular:
+
+- every required source, generated artifact, schema, migration, test, and
+  operator or user document is present in the immutable Candidate;
+- no required behavior depends on an untracked file, private workspace state,
+  temporary patch, disabled gate, undeclared manual implementation step, or
+  workaround presented as the final design;
+- known residuals, approvals, compatibility bounds, rollback needs, and
+  downstream dependencies are explicit and do not contradict the declared
+  terminal; and
+- the Candidate has one exact identity and enough evidence for the active
+  delivery authority to admit, land, release, deploy, reject, or request
+  correction without interpreting a private session.
+
+Shippable does **not** mean shipped. The active repository delivery declaration
+selects the terminal and its evidence:
+
+`workspace → locally verified source → immutable Candidate → admitted/landed → released or deployed → live-observed`
+
+A task may legitimately end at an earlier state only when that state is the
+declared terminal. A commit is a source checkpoint. A pull request is a
+collaboration or landing adapter. Neither is a universal completion state.
+Likewise, do not force a deployment for a source-only terminal, and do not stop
+at landed source when the requested outcome is a published package,
+production-visible behavior, reconciled infrastructure, or verified recovery.
+
 ### Definition of done ladder
 
 Use the strongest done state that matches the task **and active delivery lane**:
@@ -264,7 +295,7 @@ thresholds, analysis windows, and automatic rollback or pause policy.
 | `delivery-sta-02` | Facts in schema/test/ADR homes |
 | `delivery-sta-03` | Proof layers separated |
 | `delivery-sta-04` | Unknown authority fails closed |
-| `delivery-sta-05` | Tradeoffs owned |
+| `delivery-sta-05` | Shippable source is distinguished from the declared delivery terminal |
 
 - [ ] Full body obligations reviewed for applicability.
 - [ ] Residual gaps have owner and follow-up.
@@ -273,4 +304,3 @@ thresholds, analysis windows, and automatic rollback or pause policy.
 
 Platform is the delivery authority and performs one central admission over one
 immutable Candidate. An external pull request is an external-contributor collaboration projection into that same Candidate contract. Semantically equivalent internal and external inputs must receive the same obligations and landing rules; only the ingress adapter differs.
-
