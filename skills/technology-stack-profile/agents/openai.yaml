@@ -1,4 +1,4 @@
 interface:
-  display_name: "Backend and Web Technology Profile"
-  short_description: "Required Rust backend and TypeScript web boundary"
-  default_prompt: "Use $technology-stack-profile to classify this service by role and effects, then apply the required Rust backend and TypeScript web technologies."
+  display_name: "Backend, Web, and Client Technology Profile"
+  short_description: "Required Rust, web, contract, and client stack"
+  default_prompt: "Use $technology-stack-profile to classify roles and effects, then apply the required Rust backend, TypeScript web, Protobuf/Connect contract, and platform-native client technologies."

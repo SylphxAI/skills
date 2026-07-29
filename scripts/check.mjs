@@ -78,11 +78,13 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
   const effectClassificationRules = rules.filter((rule) => rule.kind === 'effect-classification');
   const roleRules = rules.filter((rule) => rule.kind === 'role-requirement');
   const completionRules = rules.filter((rule) => rule.kind === 'completion-denominator');
+  const contractStackRules = rules.filter((rule) => rule.kind === 'contract-stack-requirement');
   if (selectorRules.length !== 1
       || effectClassificationRules.length !== 1
       || roleRules.length < 1
-      || completionRules.length !== 1) {
-    errors.push(`${location}: assertions require one selector outcome, one effect classification, one or more role requirements, and one completion denominator`);
+      || completionRules.length !== 1
+      || contractStackRules.length !== 1) {
+    errors.push(`${location}: assertions require one selector outcome, one effect classification, one or more role requirements, one completion denominator, and one contract stack`);
   }
   const selectorRule = selectorRules[0] || {};
   const selectorOutcomes = selectorRule.outcomes;
@@ -140,6 +142,29 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
     }
   }
 
+  const contractStack = contractStackRules[0] || {};
+  const servedProtocols = contractStack.transport?.servedProtocols || [];
+  if (!servedProtocols.includes(contractStack.transport?.defaultProtocol)) {
+    errors.push(`${location}: contract default protocol must be one of the served protocols`);
+  }
+  const clientPlatforms = new Set();
+  for (const client of contractStack.clients || []) {
+    if (clientPlatforms.has(client.platform)) {
+      errors.push(`${location}: client platform ${client.platform} is selected more than once`);
+    }
+    clientPlatforms.add(client.platform);
+    if (!servedProtocols.includes(client.protocol)) {
+      errors.push(`${location}: client platform ${client.platform} selects an unserved protocol`);
+    }
+  }
+  const backendImplementations = new Set(roleRules
+    .filter((rule) => (rule.roles || []).some((role) => role === 'api' || role === 'backend-service'))
+    .map((rule) => rule.requiredImplementation));
+  if (backendImplementations.size !== 1
+      || !backendImplementations.has(contractStack.server?.implementation)) {
+    errors.push(`${location}: contract server implementation must match the backend role requirement`);
+  }
+
   const defaultKeys = (document.defaults || []).map((item) => item.key);
   const defaultAssertionIds = (document.defaults || []).flatMap((item) => item.assertionIds || []);
   for (const assertionId of defaultAssertionIds) {
@@ -147,7 +172,7 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
       errors.push(`${location}: default references unknown assertion ${assertionId}`);
     }
   }
-  const selectableRuleIds = [...roleRules, ...completionRules].map((rule) => rule.id);
+  const selectableRuleIds = [...roleRules, ...completionRules, ...contractStackRules].map((rule) => rule.id);
   if (!sameMembers(defaultAssertionIds, selectableRuleIds)) {
     errors.push(`${location}: every role and completion assertion must be referenced exactly once by a default`);
   }

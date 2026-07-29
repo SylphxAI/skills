@@ -15,6 +15,7 @@ For code structure or architecture migration, also read:
 - [Architecture pattern applicability](references/architecture-pattern-applicability.md)
 - [Language mappings](references/capability-first-language-mappings.md)
 - [Executable-shape examples](references/capability-first-examples.md)
+- [Cross-platform contract architecture](references/cross-platform-contract-architecture.md)
 
 When creating a project, adding a package, or upgrading a runtime, framework,
 SDK, generator, plugin, or library, use `dependency-version-selection`. Query

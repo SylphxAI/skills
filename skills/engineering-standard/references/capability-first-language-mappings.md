@@ -183,4 +183,7 @@ and versioned. Generate or mechanically validate Rust, TypeScript, Python, and
 Dart projections from the same authority. Each projection compiles and decodes
 the same positive/negative fixture corpus. Language-native facades may add
 ergonomics, cancellation, pagination, and typed failure mapping but may not
-copy or redefine payload semantics.
+copy or redefine payload semantics. Apply the complete
+[cross-platform contract architecture](cross-platform-contract-architecture.md)
+for backend, web, native applications, SDKs, transport selection, offline state,
+and the supported-language generation matrix.
