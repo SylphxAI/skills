@@ -175,7 +175,7 @@
       "name": "delivery-standard",
       "description": "Shipped-state proof across source landing, artifacts, deployment, rollback, and production readback. Use when delivering a change or deciding whether it is truly released or live. Do not use when only local implementation is in scope.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:7da010b02c0151198d076e7b80ddfd29d1d5e4eed39ec7bad364ad08f2958fb0"
+      "packageDigest": "sha256:fff2974fd1e5c9434dc51567f9ebfc558e94c0421584e25c496219ae6497f41c"
     },
     {
       "name": "dependency-version-selection",
@@ -223,7 +223,7 @@
       "name": "engineering-standard",
       "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, functional cores, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:ec81dbaa71b404b486d100d93c52aa439e6eebc91f35dffac0c2ac94ed51bd0b"
+      "packageDigest": "sha256:a9a2b6cbf39dc83787138f95ab4f4b05c2f6624512a1c948f505007cd02b9296"
     },
     {
       "name": "enterprise-access-governance-review",
@@ -601,7 +601,7 @@
       "name": "specification-control-plane-standard",
       "description": "Specification lifecycle, work packets, evaluation manifests, telemetry contracts, and exception records. Use when a material capability needs an executable specification and traceable implementation contract. Do not use for a trivial change whose behavior is already unambiguous.",
       "path": "skills/specification-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:9e26cdece8b657c1c4c622c485bf0ad58c14dc2a3a28c5d27d5d16023828fac8"
+      "packageDigest": "sha256:152980de5945492e168a3550a171dc56fe75ae3f77f431e491bdea3c07bbd58c"
     },
     {
       "name": "store-listing-optimization",
@@ -635,13 +635,13 @@
     },
     {
       "name": "technology-stack-profile",
-      "description": "Apply the required backend and web technology choices by component role and owned effects. Use when choosing, implementing, reviewing, or measuring production backend, API, gateway, worker, controller, runtime, storage, queue, background-job, browser, product-web, SSR, or TypeScript-to-Rust work.",
+      "description": "Apply the required backend, web, API-contract, generated-client, and cross-platform technology choices. Use when choosing, implementing, reviewing, or measuring Rust backend, TypeScript/React web, Protobuf or Connect APIs, SDK generation, Dart/Flutter, Swift/Apple, Kotlin/Android, Go, Python, Node, .NET, gateway, worker, storage, queue, SSR, or client/server state boundaries.",
       "path": "skills/technology-stack-profile/SKILL.md",
-      "packageDigest": "sha256:d152229328441297c6a0f0d1644c26bd2b8b59d74a21c3f708b43bd24171218c",
+      "packageDigest": "sha256:e93ef2b4b00f931454fb433d11cea8178650a564838305f920747f0ccd5a0255",
       "profile": {
         "id": "technology-stack-profile",
-        "revision": "2026-07-19.3",
-        "contentDigest": "sha256:64b66c6cfaa7178b39e3c5adae9e28c7e7bbad1e63f99ba761fec28b4287524d",
+        "revision": "2026-07-29.1",
+        "contentDigest": "sha256:3df97a1a87fc65abbc318d760af1b7cdc7dd6b54ff74c474a356cbd886e63041",
         "lifecycle": "active",
         "authorityClass": "governance-constraint"
       }

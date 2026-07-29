@@ -30,11 +30,18 @@ instructions.
    declared component role and each declared owned effect is one denominator
    item; all items must conform. Missing facts or ambiguous role resolution
    emit the rule's blocked outcome.
+5. For a boundary named by the single `contract-stack-requirement`, select the
+   contract, Rust server, transport family, and matching client entry directly
+   from that rule. A missing or duplicate platform, a client protocol not
+   served by the server, or a server implementation that disagrees with the
+   backend role requirement blocks resolution.
 
 The current rule table requires Rust for backend roles and
 TypeScript/Bun/Next for web roles. It forbids backend-effect ownership by web
-roles and TypeScript backend fallback. Those values are read from the profile,
-not duplicated in an adapter.
+roles and TypeScript backend fallback. It also selects Protobuf Editions, Buf,
+Protovalidate, Connect Rust, the Connect/gRPC/gRPC-Web protocol family, and the
+native client matrix for web, Flutter, Apple, Android, Rust, Go, Python, Node,
+and .NET. Those values are read from the profile, not duplicated in an adapter.
 
 Product repositories project intended component topology through the optional
 `architecture.components` map in `project.manifest.json` and bind this Profile
@@ -57,6 +64,9 @@ production status remain Sylphx Enact observations, not repo-authored fields.
 | Next or Bun handler that directly mutates backend storage or decides backend authorization | web process owning a forbidden backend effect | profile violation; move the effect to Rust |
 | TypeScript service retained as fallback for an incomplete Rust backend | backend fallback | forbidden; repair Rust |
 | Repository containing both Rust services and TypeScript web | multiple declared roles | valid when each role/effect follows its selection |
+| Rust backend called by React web and Flutter | cross-runtime API with two clients | one Protobuf/Buf service; Connect Rust server; generated Connect Web and Connect Dart clients |
+| iOS or Android application | selected native client | Connect Swift or Connect Kotlin plus its generated Protobuf runtime and native presentation-state tools |
+| .NET or an unlisted ecosystem | selected gRPC fallback or unknown client | .NET uses generated gRPC; any unlisted client blocks for Profile review instead of inventing a schema |
 
 Transport shape does not decide implementation ownership. An HTTP or RPC boundary may exist on
 either side. Ownership follows the semantic role and effects behind the
@@ -94,6 +104,13 @@ production defect, parity gap, or missing capability remains a Rust work item.
 - Prove that Rust owns every backend or durable-effect role.
 - Prove that TypeScript/Bun/Next components are browser, product-web, SSR, or UI
   orchestration only.
+- For every applicable cross-platform boundary, record the contract-stack
+  assertion and prove the selected Protobuf edition, Buf inputs, Rust server,
+  served protocols, and client target come from the same profile revision.
+- Regenerate, compile, package, and exercise every declared client against an
+  ephemeral server with the shared positive/negative fixture corpus.
+- Prove remote cache, local presentation state, optional offline store, and
+  backend business truth are not duplicated across state systems.
 - Search for TypeScript backend fallback, dual-run, shadow, recovery, and
   business-effect paths.
 - Compute completion from the machine-declared role/effect denominator and name

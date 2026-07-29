@@ -24,6 +24,10 @@ const forbiddenEffects = [
   'backend-authorization-decision', 'backend-business-effect', 'backend-database-mutation',
   'durable-queue-consume', 'durable-queue-publish', 'typescript-backend-fallback',
 ];
+const clientPlatforms = [
+  'dart-flutter', 'dotnet', 'go', 'kotlin-android', 'node-typescript',
+  'python', 'rust-native', 'swift-apple', 'web-react',
+];
 
 function stableJson(value) {
   if (Array.isArray(value)) return `[${value.map(stableJson).join(',')}]`;
@@ -97,14 +101,15 @@ const matchingFacts = {
 };
 
 test('technology profile binds the canonical role and effect boundary', () => {
-  assert.equal(profile.schemaVersion, 2);
-  assert.equal(profile.profile.revision, '2026-07-19.3');
+  assert.equal(profile.schemaVersion, 3);
+  assert.equal(profile.profile.revision, '2026-07-29.1');
   assert.equal(profile.profile.predecessor, undefined);
-  assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-18.3');
+  assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-19.3');
   const defaults = new Map(profile.defaults.map((item) => [item.key, item]));
   assert.deepEqual(defaults.get('engineering.language.backend-required-technology').assertionIds, ['backend-role-requirement']);
   assert.deepEqual(defaults.get('engineering.language.web-required-technology').assertionIds, ['web-role-requirement']);
   assert.deepEqual(defaults.get('engineering.language.completion-measure').assertionIds, ['role-effect-completion']);
+  assert.deepEqual(defaults.get('engineering.contract.cross-platform-required-stack').assertionIds, ['cross-platform-contract-stack']);
   const [backendRule] = rulesByKind('role-requirement').filter((rule) => rule.requiredImplementation === 'rust');
   const [webRule] = rulesByKind('role-requirement').filter((rule) => rule.requiredImplementation === 'typescript-bun-next');
   const [effectClassification] = rulesByKind('effect-classification');
@@ -130,6 +135,47 @@ test('technology profile binds the canonical role and effect boundary', () => {
     implementationField: 'implementation',
     ownedEffectsField: 'ownedEffects',
   });
+});
+
+test('technology profile selects one complete cross-platform contract stack', () => {
+  const [stack] = rulesByKind('contract-stack-requirement');
+  assert.deepEqual(stack.appliesTo, [
+    'cross-repository',
+    'cross-runtime',
+    'independently-versioned-sdk',
+    'public-api',
+  ]);
+  assert.deepEqual(stack.contract, {
+    schemaLanguage: 'protobuf-editions',
+    editionPolicy: 'latest-released-full-matrix',
+    toolchain: 'buf',
+    semanticValidation: 'protovalidate',
+    compatibility: 'buf-breaking',
+  });
+  assert.deepEqual(stack.server, {
+    implementation: 'rust',
+    messageRuntime: 'buffa',
+    rpcRuntime: 'connectrpc',
+    httpRuntime: 'axum+tower',
+  });
+  assert.deepEqual(stack.transport.servedProtocols, ['connect', 'grpc', 'grpc-web']);
+  assert.equal(stack.transport.defaultProtocol, 'connect');
+  assert.equal(stack.transport.nativeDefaultEncoding, 'protobuf-binary');
+  assert.equal(stack.transport.browserDefaultEncoding, 'protojson');
+  assert.deepEqual(sorted(stack.clients.map((client) => client.platform)), sorted(clientPlatforms));
+  const byPlatform = new Map(stack.clients.map((client) => [client.platform, client]));
+  assert.equal(byPlatform.get('web-react').messageRuntime, '@bufbuild/protobuf');
+  assert.equal(byPlatform.get('web-react').rpcRuntime, '@connectrpc/connect-web');
+  assert.deepEqual(byPlatform.get('web-react').applicationState, [
+    '@connectrpc/connect-query+@tanstack/react-query',
+    'react-state',
+    'zustand-only-for-cross-component-client-owned-state',
+  ]);
+  assert.equal(byPlatform.get('dart-flutter').rpcRuntime, 'connectrpc');
+  assert.equal(byPlatform.get('swift-apple').rpcRuntime, 'Connect');
+  assert.equal(byPlatform.get('kotlin-android').rpcRuntime, 'connect-kotlin');
+  assert.equal(byPlatform.get('dotnet').protocol, 'grpc');
+  assert.equal(stack.unknownClientOutcome, 'blocked-until-profile-review');
 });
 
 test('digest-bound assertions execute selector, role, effect, and completion policy without prose or key dispatch', () => {
@@ -336,6 +382,22 @@ test('technology profile structural gate and active-profile collision check fail
   const missingReferenceErrors = [];
   validateTechnologyStackProfile(missingReference, missingReferenceErrors, projectSchema);
   assert.equal(missingReferenceErrors.some((finding) => finding.includes('unknown assertion')), true);
+
+  const duplicateClient = structuredClone(profile);
+  duplicateClient.assertions.rules
+    .find((rule) => rule.kind === 'contract-stack-requirement')
+    .clients[1].platform = 'web-react';
+  const duplicateClientErrors = [];
+  validateTechnologyStackProfile(duplicateClient, duplicateClientErrors, projectSchema);
+  assert.equal(duplicateClientErrors.some((finding) => finding.includes('selected more than once')), true);
+
+  const unservedProtocol = structuredClone(profile);
+  unservedProtocol.assertions.rules
+    .find((rule) => rule.kind === 'contract-stack-requirement')
+    .clients[0].protocol = 'custom-rpc';
+  const unservedProtocolErrors = [];
+  validateTechnologyStackProfile(unservedProtocol, unservedProtocolErrors, projectSchema);
+  assert.equal(unservedProtocolErrors.some((finding) => finding.includes('unserved protocol')), true);
 
   const overlap = structuredClone(profile);
   overlap.profile.id = 'overlapping-profile';

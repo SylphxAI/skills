@@ -185,7 +185,11 @@ arbitrary line count. Module semantics outrank physical filename count.
 
 Use [language mappings](capability-first-language-mappings.md) for idiomatic
 Rust, TypeScript, Python, and Dart shapes and
-[examples](capability-first-examples.md) for the shared reference model.
+[examples](capability-first-examples.md) for the shared reference model. When
+more than one implementation language, application platform, or independently
+versioned SDK crosses a boundary, apply the
+[cross-platform contract architecture](cross-platform-contract-architecture.md)
+from the first contract revision.
 
 Keep authoritative state explicit and horizontally scalable when the boundary
 requires it. Process-local caches or coordination state must never masquerade
@@ -393,7 +397,8 @@ owned there, but payload fields are not re-authored. Their linters and semantic
 breaking checks compose with—rather than substitute for—the canonical contract
 gate. A single-language private boundary may use a repo-local authority until
 publication or another runtime justifies extraction. The active engineering
-profile owns the current technology contract and transport selections.
+profile owns the current technology contract, protocol, generator, runtime, and
+per-platform client selections.
 
 Validation coverage is recorded per generated language and constraint class.
 A constraint annotation is not universal proof merely because one runtime can
