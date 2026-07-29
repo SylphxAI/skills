@@ -79,12 +79,15 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
   const roleRules = rules.filter((rule) => rule.kind === 'role-requirement');
   const completionRules = rules.filter((rule) => rule.kind === 'completion-denominator');
   const contractStackRules = rules.filter((rule) => rule.kind === 'contract-stack-requirement');
+  const interoperabilityStackRules = rules
+    .filter((rule) => rule.kind === 'interoperability-stack-requirement');
   if (selectorRules.length !== 1
       || effectClassificationRules.length !== 1
       || roleRules.length < 1
       || completionRules.length !== 1
-      || contractStackRules.length !== 1) {
-    errors.push(`${location}: assertions require one selector outcome, one effect classification, one or more role requirements, one completion denominator, and one contract stack`);
+      || contractStackRules.length !== 1
+      || interoperabilityStackRules.length !== 1) {
+    errors.push(`${location}: assertions require one selector outcome, one effect classification, one or more role requirements, one completion denominator, one contract stack, and one interoperability stack`);
   }
   const selectorRule = selectorRules[0] || {};
   const selectorOutcomes = selectorRule.outcomes;
@@ -165,6 +168,31 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
     errors.push(`${location}: contract server implementation must match the backend role requirement`);
   }
 
+  const interoperabilityStack = interoperabilityStackRules[0] || {};
+  const integrationEvents = interoperabilityStack.integrationEvents || {};
+  const telemetry = interoperabilityStack.telemetry || {};
+  if (!sameMembers(integrationEvents.appliesTo, [
+    'cross-capability',
+    'cross-process',
+    'cross-runtime',
+    'cross-repository',
+    'external-consumer',
+  ])
+      || integrationEvents.envelope !== 'cloudevents'
+      || integrationEvents.versionPolicy !== 'latest-stable'
+      || integrationEvents.payloadAuthority !== 'schema-first'
+      || integrationEvents.localDomainEventDisposition !== 'native-typed-no-envelope-required') {
+    errors.push(`${location}: integration events must use CloudEvents around schema-first cross-boundary payloads without wrapping local domain events`);
+  }
+  if (telemetry.standard !== 'opentelemetry'
+      || telemetry.semanticConventions !== 'stable'
+      || telemetry.traceContext !== 'w3c-trace-context'
+      || telemetry.sdkBoundary !== 'adapters-and-bootstrap'
+      || telemetry.operatorEvidence !== 'protected-by-default'
+      || telemetry.publicProjection !== 'explicit-allowlist-only') {
+    errors.push(`${location}: telemetry must use protected OpenTelemetry at adapter/bootstrap boundaries`);
+  }
+
   const defaultKeys = (document.defaults || []).map((item) => item.key);
   const defaultAssertionIds = (document.defaults || []).flatMap((item) => item.assertionIds || []);
   for (const assertionId of defaultAssertionIds) {
@@ -172,9 +200,14 @@ export function validateTechnologyStackProfile(document, errors, projectSchemaDo
       errors.push(`${location}: default references unknown assertion ${assertionId}`);
     }
   }
-  const selectableRuleIds = [...roleRules, ...completionRules, ...contractStackRules].map((rule) => rule.id);
+  const selectableRuleIds = [
+    ...roleRules,
+    ...completionRules,
+    ...contractStackRules,
+    ...interoperabilityStackRules,
+  ].map((rule) => rule.id);
   if (!sameMembers(defaultAssertionIds, selectableRuleIds)) {
-    errors.push(`${location}: every role and completion assertion must be referenced exactly once by a default`);
+    errors.push(`${location}: every selectable assertion must be referenced exactly once by a default`);
   }
   if (!sameMembers(document.exceptionPolicy?.exceptableDefaults, [])
       || !sameMembers(document.exceptionPolicy?.forbiddenDefaults, defaultKeys)) {

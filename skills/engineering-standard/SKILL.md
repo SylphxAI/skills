@@ -1,6 +1,6 @@
 ---
 name: engineering-standard
-description: "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, functional cores, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary."
+description: "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, state authorities, modules, control/data planes, cells, plugins, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or system/runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary."
 ---
 # Engineering Standard
 
@@ -11,6 +11,7 @@ Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).
 
 For code structure or architecture migration, also read:
 
+- [Complete system architecture](references/system-architecture.md)
 - [Capability-first architecture](references/capability-first-architecture.md)
 - [Architecture pattern applicability](references/architecture-pattern-applicability.md)
 - [Language mappings](references/capability-first-language-mappings.md)

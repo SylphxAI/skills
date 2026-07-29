@@ -1,6 +1,6 @@
 ---
 name: project-manifest-standard
-description: "Repository identity, lifecycle, capability and component ownership, public boundaries, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use when creating, changing, or validating a repository's durable identity and boundaries."
+description: "Repository identity, lifecycle, capability/component ownership, module graph, state authorities, availability/control-data-plane intent, trust/extension boundaries, public surfaces, delivery facts, and adoption gaps through PROJECT.md and the machine project manifest. Use when creating, changing, or validating a repository's durable identity and architecture facts."
 ---
 # Project Manifest Standard
 

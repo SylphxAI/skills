@@ -22,6 +22,11 @@ top-level architecture or generating infrastructure without a domain need.
 | Workflow Orchestration | Conditional | Durable long-running execution, timers, retries, external waits, recovery, or visibility exceed local state-machine/process lifetime | Engine is an adapter, never domain authority |
 | Actor Model | Conditional | Isolated mutable state, single-writer ownership, mailbox ordering, supervision, or massive independent concurrency materially simplify correctness | No actor-per-object or distributed actor runtime by default |
 | Data-Oriented Design | Conditional | Profiling proves layout, locality, batching, allocation, vectorization, or throughput dominates the hot path | No replacement of ubiquitous language or capability ownership |
+| Declarative Reconciliation | Mandatory when convergence is a correctness property | Desired/observed drift, missed or reordered events, external state, or asynchronous convergence must repair itself | No controller loop around a local invariant one transaction can enforce |
+| Control/Data-plane Static Stability | Conditional | Established serving behavior needs a higher availability target than change/provisioning authority | No control-plane label for every admin API and no unsafe stale state |
+| Cell-based Architecture | Conditional | Critical multi-tenant or ultra-scale blast radius, RTO/RPO, isolation, or poison/deployment containment requires partitioned workload replicas | No cell-per-Capability, universal cells, or global mutable dependency on the cell path |
+| CloudEvents + OpenTelemetry | Mandatory at their respective cross-boundary event and production telemetry surfaces | An integration event crosses an ownership/runtime boundary; a production path requires operational evidence | No CloudEvents wrapper for local domain objects and no telemetry in public contracts |
+| WebAssembly Component Model | Conditional | A plugin is cross-language or untrusted and needs portable typed imports/exports, capability restriction, and composition | No conversion of internal modules to Wasm merely for modularity |
 
 ## Modular monolith and service extraction
 
@@ -174,6 +179,48 @@ Keep a translation boundary between domain-rich types and optimized internal
 layouts when their needs differ. DOD may shape an algorithm, simulation,
 rendering, analytics, codec, or inference kernel; it does not erase capability
 ownership, contracts, or domain language elsewhere.
+
+## Declarative reconciliation
+
+Use a pure desired/observed-to-plan function plus an idempotent imperative
+executor when correctness requires convergence or drift repair. Events wake the
+loop; authoritative state determines the plan; periodic or provider-driven
+resync repairs missed, delayed, duplicated, and reordered delivery. One
+transaction remains the simpler owner for a local synchronous invariant.
+
+## Control/data-plane static stability
+
+When change/provisioning authority and established serving behavior have
+different availability targets, keep the data plane working from admitted
+last-known-good state during a bounded control-plane impairment. Define stale
+safety, expiry, mutation behavior, recovery, and reconciliation. Do not make
+each customer request synchronously depend on the control plane or rely on the
+impaired plane to provision the recovery path.
+
+## Cell-based architecture
+
+Use cells to partition a critical workload's failure blast radius by a stable
+tenant/resource key. Each cell is independently operable and avoids shared
+mutable state on its critical path; a thin router maps requests to placement.
+Declare capacity, placement, migration, deployment, recovery, and cross-cell
+operations. A cell can contain several Capabilities and services, and one
+Capability can appear in many cells.
+
+## Event and telemetry interoperability
+
+Cross-boundary integration events use a CloudEvents envelope around the
+schema-owned event payload. OpenTelemetry owns operational signals and context
+at adapters. Neither becomes domain state, and telemetry remains protected from
+unintended public/customer exposure.
+
+## WebAssembly Component Model
+
+Select a WIT-defined Component Model boundary only when static or
+deployment-time composition cannot meet a proven cross-language or
+untrusted-plugin need. Declare host capabilities, resource limits, lifecycle,
+compatibility, failure isolation, upgrade/rollback, and observability.
+WebAssembly improves isolation and typeful composition but does not repair an
+over-permissioned host or unbounded resource grant.
 
 ## Selection record
 

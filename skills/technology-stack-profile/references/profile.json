@@ -1,14 +1,14 @@
 {
   "$schema": "./enterprise-profile.schema.json",
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "kind": "EnterpriseProfile",
   "profile": {
     "id": "technology-stack-profile",
-    "revision": "2026-07-29.1",
-    "contentDigest": "sha256:3df97a1a87fc65abbc318d760af1b7cdc7dd6b54ff74c474a356cbd886e63041",
+    "revision": "2026-07-29.2",
+    "contentDigest": "sha256:6226c54e8502fd2c97419988a8b92dd42fc22e9da5abeace7afa1192bf08bd49",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
-    "decisionRef": "references/ADR-20260729-cross-platform-contract-stack.md",
+    "decisionRef": "references/ADR-20260729-system-interoperability-stack.md",
     "lifecycle": "active",
     "authorityClass": "governance-constraint",
     "effectiveOn": "2026-07-29",
@@ -83,6 +83,17 @@
       "constraints": [
         "Use the selected contract, server, transport, and client libraries for every public, cross-runtime, cross-repository, or independently versioned RPC boundary.",
         "Do not create a second wire model, client-specific API, or framework-authored copy of generated message and method semantics."
+      ]
+    },
+    {
+      "key": "engineering.interoperability.event-and-telemetry",
+      "assertionIds": [
+        "interoperability-stack"
+      ],
+      "rationale": "CloudEvents standardizes cross-boundary event context while OpenTelemetry standardizes protected operational signals without creating another business contract.",
+      "constraints": [
+        "Use CloudEvents only as the outer envelope for cross-boundary integration events; the schema-first payload remains semantic authority and local domain events need no transport wrapper.",
+        "Bind OpenTelemetry at adapters and bootstrap, keep raw operator evidence protected, and expose public operational facts only through an explicit allowlisted product or protocol contract."
       ]
     }
   ],
@@ -339,6 +350,31 @@
           }
         ],
         "unknownClientOutcome": "blocked-until-profile-review"
+      },
+      {
+        "id": "interoperability-stack",
+        "kind": "interoperability-stack-requirement",
+        "integrationEvents": {
+          "appliesTo": [
+            "cross-capability",
+            "cross-process",
+            "cross-runtime",
+            "cross-repository",
+            "external-consumer"
+          ],
+          "envelope": "cloudevents",
+          "versionPolicy": "latest-stable",
+          "payloadAuthority": "schema-first",
+          "localDomainEventDisposition": "native-typed-no-envelope-required"
+        },
+        "telemetry": {
+          "standard": "opentelemetry",
+          "semanticConventions": "stable",
+          "traceContext": "w3c-trace-context",
+          "sdkBoundary": "adapters-and-bootstrap",
+          "operatorEvidence": "protected-by-default",
+          "publicProjection": "explicit-allowlist-only"
+        }
       }
     ]
   },
@@ -348,6 +384,7 @@
     "forbiddenDefaults": [
       "engineering.language.backend-required-technology",
       "engineering.contract.cross-platform-required-stack",
+      "engineering.interoperability.event-and-telemetry",
       "engineering.language.completion-measure",
       "engineering.language.web-required-technology"
     ],
@@ -372,13 +409,15 @@
       "A backend fallback, dual-run, shadow, or recovery path appears.",
       "A selected client cannot consume the selected Protobuf edition or pass the shared protocol and fixture matrix.",
       "A new public or cross-runtime client platform has no selected generated client path.",
+      "A cross-boundary integration event lacks a CloudEvents envelope or re-authors its payload semantics.",
+      "OpenTelemetry SDK types enter domain policy or raw operator telemetry appears in an unintended public/customer contract.",
       "Current evidence shows a selected technology is dominated on correctness, security, privacy, legal, or an explicit task requirement.",
       "Another active profile overlaps this selector and selection key.",
       "The reviewBy date is reached."
     ]
   },
   "retirement": {
-    "predecessor": "technology-stack-profile@2026-07-19.3",
+    "predecessor": "technology-stack-profile@2026-07-29.1",
     "successor": null,
     "terminal": "An admitted active successor revision covers this selector and all selection keys, Sylphx Enact resolves selected repositories to that successor, all exceptions are closed, and this revision is marked retired.",
     "retiredRevisionSelectable": false

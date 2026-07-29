@@ -1,9 +1,9 @@
 ---
 name: technology-stack-profile
-description: "Apply the required backend, web, API-contract, generated-client, and cross-platform technology choices. Use when choosing, implementing, reviewing, or measuring Rust backend, TypeScript/React web, Protobuf or Connect APIs, SDK generation, Dart/Flutter, Swift/Apple, Kotlin/Android, Go, Python, Node, .NET, gateway, worker, storage, queue, SSR, or client/server state boundaries."
+description: "Apply the required backend, web, API-contract, generated-client, event-envelope, telemetry, and cross-platform technology choices. Use when choosing, implementing, reviewing, or measuring Rust backend, TypeScript/React web, Protobuf/Connect APIs, CloudEvents, OpenTelemetry, SDK generation, Dart/Flutter, Swift/Apple, Kotlin/Android, Go, Python, Node, .NET, gateway, worker, storage, queue, SSR, or client/server state boundaries."
 ---
 
-# Backend, Web, and Cross-platform Technology Profile
+# Backend, Web, and Cross-platform Interoperability Profile
 
 **Requirement:** apply this profile when its selector matches the repository.
 
@@ -39,10 +39,14 @@ read the engineering standard's
    Protobuf/Buf contract, Rust server, protocol family, and exact platform
    client selection. An unlisted client platform blocks until this Profile is
    reviewed; it does not author a local stack.
-6. Resolve package versions at implementation time with
+6. Resolve the `interoperability-stack-requirement`: use CloudEvents around
+   schema-owned cross-boundary integration-event payloads and OpenTelemetry at
+   adapter/bootstrap telemetry boundaries. Keep local domain events native and
+   raw operator evidence protected.
+7. Resolve package versions at implementation time with
    `dependency-version-selection`; the Profile selects package families and
    responsibilities, not stale version numbers.
-7. Record repository-local role/effect facts under
+8. Record repository-local role/effect facts under
    `architecture.components` in the owning product manifest;
    let Sylphx Enact resolve live adoption, exceptions, deployment, and
    organization-wide completion without copying this profile into product repositories.
@@ -65,6 +69,10 @@ read the engineering standard's
   domain models, UI state objects, or persistence authorities.
 - Keep server state, local UI state, offline state, and backend business truth
   in their declared owners. A state-management library does not merge them.
+- Do not let a CloudEvents envelope re-author its schema-owned payload, wrap
+  every local domain event, or substitute for ordering/idempotency/replay.
+- Do not import OpenTelemetry SDK types into domain policy or expose protected
+  telemetry through an unintended public/customer response.
 
 ## When not to use
 
@@ -85,5 +93,7 @@ Report:
 2. applied assertion ids, component roles, and effect ownership;
 3. required Rust or TypeScript/Bun/Next selection;
 4. applied contract-stack assertion, selected protocol and client libraries;
-5. any forbidden backend effect, fallback, duplicated contract, or unlisted client;
-6. role/effect-based completion evidence and unresolved live-state gaps.
+5. applied event-envelope and telemetry assertion;
+6. any forbidden backend effect, fallback, duplicated contract, unlisted
+   client, event-payload fork, or telemetry-boundary violation;
+7. role/effect-based completion evidence and unresolved live-state gaps.

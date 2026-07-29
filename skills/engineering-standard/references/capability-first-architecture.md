@@ -60,6 +60,12 @@ The matrix distinguishes universal architecture rules from predicates that
 make CQRS, Event Sourcing, Saga, workflow engines, actors, or data-oriented
 kernels necessary. Pattern vocabulary never authorizes unused infrastructure.
 
+State, runtime, failure, deployment, interoperability, and extension concerns
+are defined by the
+[Complete System Architecture](system-architecture.md). Capability, module,
+contract, state authority, process, cell, service/deployment, and trust
+boundaries are intentionally not one-to-one.
+
 ## Semantic hierarchy
 
 Use these terms consistently:
@@ -215,6 +221,12 @@ retain a god module merely because its file is short. LOC, fan-in/out, cycle,
 public-surface, and concentration metrics are backstops; semantic ownership is
 the primary rule.
 
+Make the dependency graph executable. Prefer language privacy, package exports,
+separate compile units, and compiler/build-graph allowed-edge checks. Reject
+cycles, cross-module internal imports, undeclared dependencies, and accidental
+public API at the lowest semantic layer; do not preserve source-text import or
+folder-name scans as architecture authority.
+
 Brownfield work has no permanent exemption. Every durable project converges to
 the current architecture generation. During an explicitly staged migration,
 touched code may not worsen structural concentration, dependency direction, or
@@ -246,6 +258,12 @@ Cheap agent-generated files, adapters, or services do not make runtime
 coordination, state distribution, latency, or operational ownership free.
 Conversely, do not delay a proven split because writing the adapters and tests
 would have been expensive for a human team.
+
+Availability topology remains a separate dimension. A critical multi-tenant
+system may replicate several Capabilities inside each isolated cell; the same
+Capability may appear in every cell. A cell or control/data-plane split follows
+its failure and availability predicates in the complete system architecture,
+not the number of modules or services.
 
 ## Observability and reactive systems
 

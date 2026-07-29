@@ -32,8 +32,12 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-hex-01` | Clean/Hexagonal boundaries isolate domain/application policy from interfaces, frameworks, persistence, and provider adapters. |
 | `eng-functional-01` | Domain decisions form a deterministic functional core; external effects remain in an explicit imperative shell behind ports. |
 | `eng-modularity-01` | No file/module/package/crate/service/context may accumulate god responsibility; split by semantic boundary, not line count or every behavior. |
+| `eng-boundary-01` | Capability/context, module/package/crate, contract, state authority, process, cell, service/deployment, and trust boundaries are declared as orthogonal dimensions; one never silently implies another. |
+| `eng-modulegraph-01` | The compiler, package visibility, build/dependency graph, or AST-aware architecture proof rejects cycles, internal cross-module imports, undeclared edges, and accidental public surface without relying on source-text spelling. |
 | `eng-deploy-01` | Logical capability boundaries exist from the first durable commit; physical services split only for demonstrated independent scale, failure, security, data-authority, release, or technology boundaries. |
 | `eng-detail-01` | Important detail is attached to a capability as a sub-capability, behavior, invariant, contract, scenario, or surface rather than disappearing into Work or code. |
+| `eng-stateclass-01` | Every non-trivial state set is classified as authoritative durable, durable workflow, derived projection, ephemeral process/cache, coordination/lease, client/session, or configuration/secret and declares owner, write authority, consistency, partition, recovery, retention, freshness, privacy, and failure behavior where applicable. |
+| `eng-stateless-01` | Request/worker compute is interchangeable and stateless where possible; authoritative state, idempotency, durable progress, leases, and resumable cursors remain in explicit owned authorities rather than process memory. |
 | `eng-observe-01` | Critical paths emit privacy-preserving, correlatable telemetry. |
 | `eng-observe-02` | Telemetry names semantic capability/use-case outcomes and effects; domain/application code does not depend on observability SDKs. |
 | `eng-observe-03` | Raw internal/operator telemetry, topology, migration/process state, implementation details, and unrestricted diagnostics remain protected evidence. Tenant-authorized customer-owned telemetry intentionally exposed by an observability product is customer product data, not operator leakage. |
@@ -41,6 +45,10 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-frp-01` | Time-varying/event-stream domains may use pure reactive reducers while subscriptions, clocks, frameworks, and backpressure remain in the imperative shell. |
 | `eng-event-01` | Cross-capability events are versioned published contracts with ordering, causation, delivery, idempotency, replay, and failure semantics. |
 | `eng-reconcile-01` | Convergent asynchronous systems treat events as wake-ups and recompute from authoritative desired/observed state through an idempotent reconciliation loop. |
+| `eng-staticstability-01` | Where a real control/data-plane split and availability requirement exist, established data-plane behavior continues from admitted state through bounded control-plane impairment and safely reconciles afterward without a synchronous per-request control-plane dependency. |
+| `eng-cell-01` | Cell topology is used only for a demonstrated critical multi-tenant or ultra-scale fault-isolation predicate and declares partition/routing, no shared critical-path mutable state, capacity, migration, deployment, recovery, and blast-radius proof. |
+| `eng-interop-01` | Cross-boundary integration events use a CloudEvents envelope around the schema-owned payload, while operational telemetry uses OpenTelemetry in the adapter shell and remains protected from unintended public/customer disclosure. |
+| `eng-extension-01` | Static composition is the default; deployment selection, out-of-process isolation, WebAssembly Component Model, or remote extensions activate only from proven language, trust, failure, scale, or ownership predicates with typed contracts and bounded capabilities/resources. |
 | `eng-ledger-01` | Conserved value uses an immutable append-only double-entry journal with balanced atomic postings, idempotency, reversal correction, rebuildable projections, and external reconciliation. |
 | `eng-di-01` | Composition roots bind stable ports to adapters with explicit scopes; domain code never locates dependencies through a container. |
 | `eng-provider-01` | Reactive providers are limited to time-varying projections/lifecycles and never become domain semantics or durable state authority. |
@@ -89,6 +97,12 @@ Apply the relevant subset; verify rather than slogan.
 - [ ] Migration strategy matches lifecycle and demonstrated live risk; no
       calendar delay or dual path without a named compatibility/state/effect need.
 - [ ] Layer direction respected.
+- [ ] Applicable semantic, module, contract, state, process, cell, deployment,
+      and trust boundaries are explicit rather than inferred one-to-one.
+- [ ] Non-trivial state is classified and owned; process replacement cannot
+      lose authoritative outcomes.
+- [ ] Cell, control/data-plane, or runtime plugin mechanisms exist only when
+      their activation predicate and failure proof are present.
 - [ ] New or retained gates protect distinct material invariants at the lowest
       capable semantic layer; no durable source-string change-detector test or
       duplicate proof remains.

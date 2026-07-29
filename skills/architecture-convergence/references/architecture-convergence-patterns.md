@@ -24,7 +24,7 @@ Useful public orientation: Martin Fowler's descriptions of [Strangler Fig Applic
 
 ## Rule IDs
 
-- `architecture-convergence-1` — Freeze a semantic denominator before reporting progress: capabilities plus important behaviors, invariants, contracts, scenarios, surfaces, and effects—not files, repositories, commits, or lines.
+- `architecture-convergence-1` — Freeze a semantic denominator before reporting progress: capabilities plus important behaviors, invariants, contracts, scenarios, surfaces, effects, and applicable module, state, process, failure, deployment, trust, interoperability, and extension boundaries—not files, repositories, commits, or lines.
 - `architecture-convergence-2` — Make each slice vertically complete: boundary, target implementation, proof, delivery, authority switch, and recovery.
 - `architecture-convergence-3` — Establish one contract source of truth before parallel work. Generated projections are outputs, never coordination surfaces.
 - `architecture-convergence-4` — Separate source authority, target availability, target authority, and source retirement. None implies the next.
@@ -58,6 +58,13 @@ god-responsibility and dependency-direction gaps, and includes real code
 movement plus semantic tests. Adding FCCP metadata, empty folders, re-exports,
 or a narrative audit is not a migrated slice.
 
+For a complete system-architecture migration, map every applicable state set
+to its class and write authority, every process to interchangeable compute or a
+stateful execution owner, every availability boundary to its failure domain,
+and every cell/control-data-plane/extension mechanism to its activation
+predicate and recovery proof. These dimensions are orthogonal to Capability and
+service identity.
+
 A slice is ready for fan-out only when these answers are explicit:
 
 ```text
@@ -65,6 +72,10 @@ observable_job
 source_surfaces
 dependency_surfaces
 contract_owner
+state_class_and_write_authority
+process_and_failure_domain
+deployment_cell_or_control_data_plane
+trust_and_extension_boundary
 target_surfaces
 parity_oracle
 side_effect_policy
@@ -289,6 +300,8 @@ migration_event:
 ## Readiness checklist
 
 - Capability denominator is frozen and generated or validated.
+- Applicable module, state, process, failure, deployment, trust,
+  interoperability, and extension dimensions are classified.
 - Every slice has one owner, disjoint write set, dependencies, and recovery path.
 - Shared choke points are explicitly serialized.
 - Contracts and generated artifacts have freshness and compatibility gates.

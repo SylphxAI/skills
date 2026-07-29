@@ -101,15 +101,16 @@ const matchingFacts = {
 };
 
 test('technology profile binds the canonical role and effect boundary', () => {
-  assert.equal(profile.schemaVersion, 3);
-  assert.equal(profile.profile.revision, '2026-07-29.1');
+  assert.equal(profile.schemaVersion, 4);
+  assert.equal(profile.profile.revision, '2026-07-29.2');
   assert.equal(profile.profile.predecessor, undefined);
-  assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-19.3');
+  assert.equal(profile.retirement.predecessor, 'technology-stack-profile@2026-07-29.1');
   const defaults = new Map(profile.defaults.map((item) => [item.key, item]));
   assert.deepEqual(defaults.get('engineering.language.backend-required-technology').assertionIds, ['backend-role-requirement']);
   assert.deepEqual(defaults.get('engineering.language.web-required-technology').assertionIds, ['web-role-requirement']);
   assert.deepEqual(defaults.get('engineering.language.completion-measure').assertionIds, ['role-effect-completion']);
   assert.deepEqual(defaults.get('engineering.contract.cross-platform-required-stack').assertionIds, ['cross-platform-contract-stack']);
+  assert.deepEqual(defaults.get('engineering.interoperability.event-and-telemetry').assertionIds, ['interoperability-stack']);
   const [backendRule] = rulesByKind('role-requirement').filter((rule) => rule.requiredImplementation === 'rust');
   const [webRule] = rulesByKind('role-requirement').filter((rule) => rule.requiredImplementation === 'typescript-bun-next');
   const [effectClassification] = rulesByKind('effect-classification');
@@ -176,6 +177,31 @@ test('technology profile selects one complete cross-platform contract stack', ()
   assert.equal(byPlatform.get('kotlin-android').rpcRuntime, 'connect-kotlin');
   assert.equal(byPlatform.get('dotnet').protocol, 'grpc');
   assert.equal(stack.unknownClientOutcome, 'blocked-until-profile-review');
+});
+
+test('technology profile selects one event-envelope and telemetry stack', () => {
+  const [stack] = rulesByKind('interoperability-stack-requirement');
+  assert.deepEqual(stack.integrationEvents, {
+    appliesTo: [
+      'cross-capability',
+      'cross-process',
+      'cross-runtime',
+      'cross-repository',
+      'external-consumer',
+    ],
+    envelope: 'cloudevents',
+    versionPolicy: 'latest-stable',
+    payloadAuthority: 'schema-first',
+    localDomainEventDisposition: 'native-typed-no-envelope-required',
+  });
+  assert.deepEqual(stack.telemetry, {
+    standard: 'opentelemetry',
+    semanticConventions: 'stable',
+    traceContext: 'w3c-trace-context',
+    sdkBoundary: 'adapters-and-bootstrap',
+    operatorEvidence: 'protected-by-default',
+    publicProjection: 'explicit-allowlist-only',
+  });
 });
 
 test('digest-bound assertions execute selector, role, effect, and completion policy without prose or key dispatch', () => {
@@ -398,6 +424,22 @@ test('technology profile structural gate and active-profile collision check fail
   const unservedProtocolErrors = [];
   validateTechnologyStackProfile(unservedProtocol, unservedProtocolErrors, projectSchema);
   assert.equal(unservedProtocolErrors.some((finding) => finding.includes('unserved protocol')), true);
+
+  const wrongEventEnvelope = structuredClone(profile);
+  wrongEventEnvelope.assertions.rules
+    .find((rule) => rule.kind === 'interoperability-stack-requirement')
+    .integrationEvents.envelope = 'custom-envelope';
+  const wrongEventEnvelopeErrors = [];
+  validateTechnologyStackProfile(wrongEventEnvelope, wrongEventEnvelopeErrors, projectSchema);
+  assert.equal(wrongEventEnvelopeErrors.some((finding) => finding.includes('CloudEvents')), true);
+
+  const leakedTelemetry = structuredClone(profile);
+  leakedTelemetry.assertions.rules
+    .find((rule) => rule.kind === 'interoperability-stack-requirement')
+    .telemetry.publicProjection = 'raw-response';
+  const leakedTelemetryErrors = [];
+  validateTechnologyStackProfile(leakedTelemetry, leakedTelemetryErrors, projectSchema);
+  assert.equal(leakedTelemetryErrors.some((finding) => finding.includes('protected OpenTelemetry')), true);
 
   const overlap = structuredClone(profile);
   overlap.profile.id = 'overlapping-profile';

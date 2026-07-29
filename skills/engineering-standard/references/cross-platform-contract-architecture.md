@@ -65,6 +65,9 @@ Do not force unrelated protocols through RPC:
   from the canonical contract instead of copying models.
 - Integration events and durable command envelopes retain their own
   versioned event contract when their lifecycle differs from synchronous RPC.
+  Cross-boundary integration events use a CloudEvents envelope around the
+  schema-owned payload; local in-process domain events do not need that
+  transport envelope.
 
 ## Platform composition
 
@@ -122,6 +125,12 @@ map them into application ports. Never expose raw internal topology,
 diagnostics, feature flags, migration state, or operator telemetry in a public
 response merely because the RPC layer carries observability.
 
+Use OpenTelemetry at the server/client adapter and bootstrap boundaries for
+traces, metrics, logs, stable semantic conventions, and context propagation.
+The generated RPC/event contract remains business interoperability; telemetry
+remains protected operational evidence. A CloudEvent may carry trace context,
+but it is not itself a span or permission to expose telemetry.
+
 ## Generation and verification
 
 One generation manifest pins:
@@ -159,3 +168,5 @@ and external facts always remain server-authoritative.
 - [Connect protocol](https://connectrpc.com/docs/protocol/)
 - [Connect ecosystem](https://github.com/connectrpc)
 - [Protovalidate](https://protovalidate.com/)
+- [CloudEvents specification](https://github.com/cloudevents/spec)
+- [OpenTelemetry specification](https://opentelemetry.io/docs/specs/otel/)
