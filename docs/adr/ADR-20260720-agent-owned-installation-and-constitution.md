@@ -40,14 +40,14 @@ or product state. Those capabilities have separate authenticated owners.
 4. Installation preserves unrelated Skills, prompts, settings, and data. It
    fails closed on symbolic links, malformed ownership markers, concurrent
    changes, unsupported persistence, or unsafe permission repair. The sole
-   symlink/import migration exception is an exact per-user retired Doctrine
+   symlink/import migration exception is an exact per-user retired instruction
    projection whose path, legacy Sylphx constitution shape, size, and content
    snapshot all validate. POSIX ownership and permission bits are additionally
    fenced where the host exposes authoritative metadata; Windows ACLs are not
    misclassified through synthetic POSIX mode bits. The adapter replaces only the
    runtime instruction entry with a regular managed file, preserves local
    notes, leaves the retired target untouched, and reports the pre-install
-   state as `retired_doctrine_projection`. Unknown legacy shapes fail closed.
+   state as `retired_instruction_projection`. Unknown legacy shapes fail closed.
 5. Completion requires machine-readable exact-candidate status, an idempotent
    second reconciliation, and a fresh-context behavior check. A context loaded
    before installation is not evidence. Source availability, bytes on disk,
@@ -84,10 +84,11 @@ or product state. Those capabilities have separate authenticated owners.
    an isolated test identity or runtime-native short-lived/device flow. A
    personal long-lived credential must not be baked into an image or exposed
    to the evaluated agent.
-9. The always-on constitution names Doctrine and Mission Control as retired
-   historical lineage. They cannot be inferred or selected as current static or
-   live authority merely because old files, imports, aliases, or memories remain
-   reachable during convergence.
+9. The always-on constitution admits only `SylphxAI/skills` as static
+   instruction source and Enact (when available) as live work authority.
+   Retired instruction repositories and generated projections cannot be
+   inferred or selected as current static or live authority merely because old
+   files, imports, aliases, or memories remain reachable during convergence.
 10. A generic installer result containing every `SKILL.md` but no managed
     source manifest and current compact constitution is a typed partial, never
     completion. External clean-runtime evaluation must include the exact public
@@ -121,8 +122,9 @@ or product state. Those capabilities have separate authenticated owners.
   OAuth remains the authorization boundary.
 - Every completed install has a bounded-freshness update path; instruction
   drift is not deferred to a later manual prompt.
-- Existing Sylphx developer homes converge away from the retired Doctrine
-  runtime without granting the installer generic symlink-following authority.
+- Existing Sylphx developer homes converge away from retired instruction-
+  runtime layouts without granting the installer generic symlink-following
+  authority.
 - An agent cannot accidentally update another runtime merely because that
   runtime is installed or because a stale checkout remains discoverable.
 

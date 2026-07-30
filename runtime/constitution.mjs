@@ -13,8 +13,12 @@ import { fileURLToPath } from 'node:url';
 
 export const CONSTITUTION_START = '<!-- sylphx-managed-constitution:start -->';
 export const CONSTITUTION_END = '<!-- sylphx-managed-constitution:end -->';
-export const RETIRED_DOCTRINE_MIGRATION = 'retired_doctrine_projection';
+/** Typed migration for one exact historical instruction-projection layout. */
+export const RETIRED_INSTRUCTION_PROJECTION = 'retired_instruction_projection';
 export const constitutionSourcePath = fileURLToPath(new URL('./constitution.md', import.meta.url));
+
+// Historical on-disk layout only. Not an instruction brand or live authority.
+const LEGACY_INSTRUCTION_RUNTIME_DIR = '.doctrine-runtime-current';
 
 const LEGACY_LOCAL_NOTES_MARKER = '<!-- local runtime notes may follow this block -->';
 const MAX_LEGACY_INSTRUCTION_BYTES = 8 * 1024;
@@ -48,17 +52,21 @@ function assertRegularRuntimeHome(file) {
   }
 }
 
-function retiredDoctrineInstructionPath(file) {
-  return path.join(path.dirname(path.dirname(file)), '.doctrine-runtime-current', 'templates', 'AGENTS.md');
+function retiredInstructionProjectionPath(file) {
+  return path.join(
+    path.dirname(path.dirname(file)),
+    LEGACY_INSTRUCTION_RUNTIME_DIR,
+    'templates',
+    'AGENTS.md',
+  );
 }
 
 function validateLegacyConstitution(content, target) {
   const markerIndexes = occurrences(content, LEGACY_LOCAL_NOTES_MARKER);
   const liveAuthorityLine = [
     '**Live fleet / work / ingestion / effects:** `SylphxAI/enact`',
-    // Bounded predecessor recognition only: this lets an exact retired Doctrine
-    // projection move directly to the current Enact constitution. It is not an
-    // accepted runtime identity or a second instruction authority.
+    // Bounded predecessor recognition only: an exact retired projection may
+    // move to the current constitution. Not a live instruction authority.
     '**Live fleet / work / ingestion / effects:** `SylphxAI/control-plane`',
   ].some((line) => content.includes(line));
   if (
@@ -69,7 +77,7 @@ function validateLegacyConstitution(content, target) {
     || content.includes(CONSTITUTION_START)
     || content.includes(CONSTITUTION_END)
   ) {
-    throw new Error(`Refusing unrecognized retired Doctrine instruction projection: ${target}`);
+    throw new Error(`Refusing unrecognized retired instruction projection: ${target}`);
   }
   return content.slice(markerIndexes[0] + LEGACY_LOCAL_NOTES_MARKER.length).trimStart();
 }
@@ -77,22 +85,22 @@ function validateLegacyConstitution(content, target) {
 function validateLegacyTarget(target, ownerStat) {
   const targetStat = lstatIfPresent(target);
   if (!targetStat || !targetStat.isFile() || targetStat.isSymbolicLink()) {
-    throw new Error(`Refusing non-regular retired Doctrine instruction target: ${target}`);
+    throw new Error(`Refusing non-regular retired instruction target: ${target}`);
   }
   if (targetStat.size > MAX_LEGACY_INSTRUCTION_BYTES) {
-    throw new Error(`Refusing oversized retired Doctrine instruction target: ${target}`);
+    throw new Error(`Refusing oversized retired instruction target: ${target}`);
   }
   // Windows exposes synthetic POSIX mode bits (commonly 0666) rather than the
   // file's ACL, so interpreting them as group/world-writable would reject every
   // safe per-user target. On POSIX, retain the stronger ownership/mode fence.
   if (process.platform !== 'win32' && (targetStat.mode & 0o022) !== 0) {
-    throw new Error(`Refusing group/world-writable retired Doctrine instruction target: ${target}`);
+    throw new Error(`Refusing group/world-writable retired instruction target: ${target}`);
   }
   if (ownerStat && ownerStat.uid !== targetStat.uid) {
-    throw new Error(`Refusing cross-owner retired Doctrine instruction target: ${target}`);
+    throw new Error(`Refusing cross-owner retired instruction target: ${target}`);
   }
   if (typeof process.getuid === 'function' && targetStat.uid !== process.getuid()) {
-    throw new Error(`Refusing retired Doctrine instruction target not owned by the current user: ${target}`);
+    throw new Error(`Refusing retired instruction target not owned by the current user: ${target}`);
   }
   const content = readFileSync(target, 'utf8');
   const localNotes = validateLegacyConstitution(content, target);
@@ -113,18 +121,22 @@ function validateLegacyTarget(target, ownerStat) {
 
 function legacyClaudeMapping(file, current, fileStat) {
   if (path.basename(file) !== 'CLAUDE.md') return null;
-  const target = retiredDoctrineInstructionPath(file);
+  const target = retiredInstructionProjectionPath(file);
   const prefix = `# Claude Code runtime mapping\n\n@${target}\n\n`;
   if (!current.startsWith(prefix)) {
-    if (/(?:^|\n)@[^\n]*\.doctrine-runtime-current[\\/]/u.test(current)) {
-      throw new Error(`Refusing unrecognized retired Doctrine runtime mapping in ${file}`);
+    const legacyDirPattern = new RegExp(
+      `(?:^|\\n)@[^\\n]*${LEGACY_INSTRUCTION_RUNTIME_DIR.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\\\/]`,
+      'u',
+    );
+    if (legacyDirPattern.test(current)) {
+      throw new Error(`Refusing unrecognized retired instruction runtime mapping in ${file}`);
     }
     return null;
   }
   const legacy = validateLegacyTarget(target, fileStat);
   return {
     localNotes: current.slice(prefix.length),
-    migrationRequired: RETIRED_DOCTRINE_MIGRATION,
+    migrationRequired: RETIRED_INSTRUCTION_PROJECTION,
     legacyTarget: legacy.snapshot,
   };
 }
@@ -149,7 +161,7 @@ function captureInstruction(file, { allowLegacySymlink = true } = {}) {
     };
   }
   if (stat.isSymbolicLink() && allowLegacySymlink) {
-    const expectedTarget = retiredDoctrineInstructionPath(file);
+    const expectedTarget = retiredInstructionProjectionPath(file);
     const linkTarget = readlinkSync(file);
     const resolvedTarget = path.resolve(path.dirname(file), linkTarget);
     if (resolvedTarget !== expectedTarget) {
@@ -160,7 +172,7 @@ function captureInstruction(file, { allowLegacySymlink = true } = {}) {
       kind: 'legacy-symlink',
       content: legacy.content,
       effectiveContent: legacy.localNotes,
-      migrationRequired: RETIRED_DOCTRINE_MIGRATION,
+      migrationRequired: RETIRED_INSTRUCTION_PROJECTION,
       legacyTarget: legacy.snapshot,
       linkTarget,
       mode: 0o644,

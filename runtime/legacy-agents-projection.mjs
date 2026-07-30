@@ -20,7 +20,8 @@ const COMMIT = /^[0-9a-f]{40}$/;
 // arbitrary manifest carrying the old filename cannot prove deletion
 // authority. Recognize only exact historical projections whose bytes have
 // been independently captured, and extend this registry deliberately if
-// another genuine projection is found.
+// another genuine projection is found. Package ids below are frozen historical
+// directory names from that exact install only—not current catalog names.
 export const LEGACY_AGENTS_PROJECTIONS = Object.freeze({
   '8057d661583fd1ce6bb98ffe28915f3a732a6d65': Object.freeze({
     'agent-first-development-standard': 'sha256:380e807e8b62ea1b00bad3a331813791778997dcc297ba9454777814b131224f',
@@ -37,6 +38,7 @@ export const LEGACY_AGENTS_PROJECTIONS = Object.freeze({
     'frontier-verification-standard': 'sha256:b65d3e075b0fe2c419d6f3b71b9ec84700d2aa4c5dac222fa4220404e697f19a',
     'incident-standard': 'sha256:3dac89d78aabdedc7d24e55ebe007c972e681fafac00a3b7d6b1b91628bdec2f',
     'instruction-evolution-standard': 'sha256:e1a21c71dd76f16bb48d2b37d0c13f63e87e5a070b4009461fd3039e3cef89a4',
+    // historical package id in the captured 8057d661 projection only
     'mission-control-standard': 'sha256:139c07c5f65994c5e997efb8fb73844b75030c0b9b0e64f8c7bb5314722de41a',
     'project-manifest-standard': 'sha256:aebc136cc2873200bb3b848c0f85c1f200500e7501bd4c3b5d4e10aaffb158a8',
     'prompt-architecture': 'sha256:1c7d179542ea4105fb76808be4fbe734d5211b30a217112e4fbadff4896c31c8',

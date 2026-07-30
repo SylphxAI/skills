@@ -31,12 +31,12 @@ alone omits the managed source manifest, compact constitution, idempotent
 reconciliation, and fresh-context proof; changing other runtimes without an
 explicit request exceeds the installation scope.
 
-Updates also converge installations that still point at the retired Doctrine
-runtime. Only the exact per-user Sylphx legacy projection is eligible: the
-adapter preserves local notes, installs a regular digest-bound constitution,
-and does not alter the retired target. It also validates POSIX ownership and
-permissions where those metadata are authoritative. Unknown links and imports
-remain fail-closed.
+Updates also converge installations that still point at a retired instruction-
+runtime layout. Only the exact per-user Sylphx legacy projection is eligible:
+the adapter preserves local notes, installs a regular digest-bound
+constitution, and does not alter the retired target. It also validates POSIX
+ownership and permissions where those metadata are authoritative. Unknown
+links and imports remain fail-closed.
 
 Codex also discovers the shared `~/.agents/skills` root, and current public
 source labels `$CODEX_HOME/skills` as deprecated user storage. Grok discovers

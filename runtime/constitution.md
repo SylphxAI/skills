@@ -19,9 +19,6 @@ Skills only when their domain is touched.
 - A supplied canonical repository and its exact current revision own an
   install or update. Cached, path-discovered, temporary, historical, or
   previously managed executables are not mutation authority.
-- Doctrine and Mission Control are retired historical lineage. They must not be
-  loaded, selected, written, or inferred as current instruction or live-state
-  authority.
 
 ## Operating loop
 

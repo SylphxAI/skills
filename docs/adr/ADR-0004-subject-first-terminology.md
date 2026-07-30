@@ -10,7 +10,7 @@ owners:
 ## Context
 
 Repeated agent generation spread a small set of internal terms across unrelated
-packages. Words such as “fleet,” “mission control,” “factory,” “roleless,” and
+packages. Words such as “fleet,” “war-room,” “factory,” “roleless,” and
 “SOTA” became route names or boilerplate even when the subject was simply
 repositories, work coordination, technology selection, or decision quality.
 The result sounded branded and militarized, obscured package triggers, and made

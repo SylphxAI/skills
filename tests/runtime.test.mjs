@@ -46,7 +46,7 @@ import {
   CONSTITUTION_START,
   inspectConstitution,
   planConstitutionInstall,
-  RETIRED_DOCTRINE_MIGRATION,
+  RETIRED_INSTRUCTION_PROJECTION,
 } from '../runtime/constitution.mjs';
 import { reconcile } from '../runtime/reconcile.mjs';
 import { parseIntervalMinutes, schedulerDefinition, schedulerStatus } from '../runtime/scheduler.mjs';
@@ -90,7 +90,7 @@ function exactLocalSourceCommit() {
     : git(root, ['rev-parse', 'HEAD']);
 }
 
-function retiredDoctrineProjection(localNotes = '') {
+function retiredInstructionProjection(localNotes = '') {
   return [
     '# Sylphx Agent Runtime Constitution',
     '',
@@ -105,6 +105,7 @@ function retiredDoctrineProjection(localNotes = '') {
 
 function writeLegacyAgentsProjection(home, {
   sourceCommit = 'a'.repeat(40),
+  // historical package ids from the exact captured projection only
   skills = [
     'mission-control-standard',
     'roleless-speculative-development-standard',
@@ -531,15 +532,15 @@ test('agent install converges native Skills and managed constitutions without ow
   }
 });
 
-test('agent install safely retires recognized Doctrine instruction projections and preserves local notes', () => {
-  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-retired-doctrine-'));
+test('agent install safely retires recognized instruction projections and preserves local notes', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-retired-instruction-'));
   const codexHome = path.join(sandbox, '.codex');
   const claudeHome = path.join(sandbox, '.claude');
   const grokHome = path.join(sandbox, '.grok');
   const retiredTarget = path.join(sandbox, '.doctrine-runtime-current', 'templates', 'AGENTS.md');
   const codexInstructions = path.join(codexHome, 'AGENTS.md');
   const claudeInstructions = path.join(claudeHome, 'CLAUDE.md');
-  const targetContent = retiredDoctrineProjection('# Retained Codex note\n\nKeep this.\n');
+  const targetContent = retiredInstructionProjection('# Retained Codex note\n\nKeep this.\n');
   const claudeLocalNotes = [
     '- Preserve Claude worktree behavior.',
     '- Preserve denied-permission behavior.',
@@ -569,14 +570,14 @@ test('agent install safely retires recognized Doctrine instruction projections a
     assert.equal(beforeCodex.targets[0].constitution.error, null);
     assert.equal(
       beforeCodex.targets[0].constitution.migrationRequired,
-      RETIRED_DOCTRINE_MIGRATION,
+      RETIRED_INSTRUCTION_PROJECTION,
     );
     const beforeClaude = JSON.parse(
       runWithEnvironment(['status', '--agent', 'claude', '--json'], environment).stdout,
     );
     assert.equal(
       beforeClaude.targets[0].constitution.migrationRequired,
-      RETIRED_DOCTRINE_MIGRATION,
+      RETIRED_INSTRUCTION_PROJECTION,
     );
 
     runWithEnvironment(['install', '--agent', 'all', '--quiet'], environment);
@@ -620,27 +621,27 @@ test('agent install safely retires recognized Doctrine instruction projections a
 });
 
 test('retired projection migration keeps arbitrary links fail-closed and detects target races', () => {
-  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-retired-doctrine-fence-'));
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-retired-instruction-fence-'));
   const codexHome = path.join(sandbox, '.codex');
   const instructionFile = path.join(codexHome, 'AGENTS.md');
   const retiredTarget = path.join(sandbox, '.doctrine-runtime-current', 'templates', 'AGENTS.md');
   const unrelatedTarget = path.join(sandbox, 'unrelated.md');
   try {
     mkdirSync(codexHome);
-    writeFileSync(unrelatedTarget, retiredDoctrineProjection());
+    writeFileSync(unrelatedTarget, retiredInstructionProjection());
     symlinkSync(unrelatedTarget, instructionFile, 'file');
     assert.throws(
       () => planConstitutionInstall(instructionFile),
       /Refusing to modify non-regular instruction file/,
     );
-    assert.equal(readFileSync(unrelatedTarget, 'utf8'), retiredDoctrineProjection());
+    assert.equal(readFileSync(unrelatedTarget, 'utf8'), retiredInstructionProjection());
 
     rmSync(instructionFile);
     mkdirSync(path.dirname(retiredTarget), { recursive: true });
-    writeFileSync(retiredTarget, retiredDoctrineProjection(), { mode: 0o644 });
+    writeFileSync(retiredTarget, retiredInstructionProjection(), { mode: 0o644 });
     symlinkSync(retiredTarget, instructionFile, 'file');
     const plan = planConstitutionInstall(instructionFile);
-    writeFileSync(retiredTarget, retiredDoctrineProjection('# concurrent note\n'), { mode: 0o644 });
+    writeFileSync(retiredTarget, retiredInstructionProjection('# concurrent note\n'), { mode: 0o644 });
     assert.throws(
       () => applyConstitutionPlan(plan),
       /Instruction file changed during Sylphx constitution update/,
@@ -652,7 +653,7 @@ test('retired projection migration keeps arbitrary links fail-closed and detects
     symlinkSync(retiredTarget, instructionFile, 'file');
     assert.throws(
       () => planConstitutionInstall(instructionFile),
-      /unrecognized retired Doctrine instruction projection/,
+      /unrecognized retired instruction projection/,
     );
   } finally {
     rmSync(sandbox, { recursive: true, force: true });
