@@ -45,6 +45,11 @@ deduplication, compression, and progressive disclosure only. In supporting
 mode it produces no second artifact and never removes required content merely
 to make the result shorter.
 
+The runtime constitution's compact communication invariant applies to ordinary
+replies without loading this full method. Load this Skill when compression or
+restructuring is materially part of the requested artifact; do not turn it into
+an always-on style body.
+
 Use progressive disclosure. A short primary payload may point to detailed
 evidence that remains available on demand. Do not preload every possible
 question into the primary output.

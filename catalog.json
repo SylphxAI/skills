@@ -295,7 +295,7 @@
       "name": "high-signal-communication",
       "description": "Compress or restructure an agent communication into a concise, answer-first, decision-complete artifact. Use when the user asks for a brief, scannable, action-first, de-duplicated, ADHD-friendly, or less verbose reply, handoff, progress summary, report, commit, PR, ADR, spec, incident note, or agent record, or asks to reduce context cost. Do not inject by default for every ordinary reply or document.",
       "path": "skills/high-signal-communication/SKILL.md",
-      "packageDigest": "sha256:3c722367993f2697917f14d2494a6ad94f5ed5b918eb9157c92e74e7d9f4e165"
+      "packageDigest": "sha256:e4eaa919f5b7ec31521faf712e6cfaa0c665b150693582a58d5ed0e8709452ea"
     },
     {
       "name": "incident-standard",
@@ -535,7 +535,7 @@
       "name": "scope-discipline",
       "description": "Right-size planning, implementation, migration, architecture, and review: prevent over-engineering, under-engineering, workaround regression, unnecessary code, dependencies, files, abstractions, gates, or waiting while preserving the real correctness and delivery floor. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, complexity theatre, weak shortcuts, or a request for the simplest complete durable solution.",
       "path": "skills/scope-discipline/SKILL.md",
-      "packageDigest": "sha256:c59f0c92cee578d5ee279e63900c130b1617009f4f53cd2bb32c22ead749f473"
+      "packageDigest": "sha256:b4f8145b96122e858d84791105434268c4adabf2e1d2d07a7a6db45105d6cd2f"
     },
     {
       "name": "search-discovery-quality-review",

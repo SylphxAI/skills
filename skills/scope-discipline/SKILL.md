@@ -243,6 +243,20 @@ and verified without creating a separate operational system. It is speculative
 when it implements unrequested product behavior, an imagined threat, or a
 permanent runtime surface without such evidence.
 
+Calibration examples:
+
+- A native date input is the complete design when no custom calendar behavior
+  exists; a framework, picker dependency, feature-flag plane, and interaction
+  telemetry add lifecycle cost without a capability delta.
+- A multi-tenant upload boundary still needs tenant-derived storage authority,
+  streamed size enforcement, media validation, safe publication, and stable
+  failures. Removing those safeguards to reduce lines is under-engineering;
+  centralizing them behind one narrow owned primitive is simplification.
+- A typed contract at an already-known cross-language boundary can be
+  positive-net future-proofing when it prevents an expensive retrofit and is
+  generated and verified now. A runtime plugin platform for hypothetical
+  consumers is speculative machinery.
+
 ### Control expansion
 
 Classify every proposed addition or review finding:
