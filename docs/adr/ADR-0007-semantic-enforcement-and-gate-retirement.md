@@ -29,6 +29,9 @@ and lifecycle, not automation itself.
    implementation tokens, names, call order, file placement, or import strings.
    Such change-detector tests are allowed only as an expiring migration fence
    when no semantic mechanism can yet express the temporary condition.
+   Lexical scanning remains valid when the bytes themselves are the controlled
+   security, legal, or publication surface; it must not claim a non-lexical
+   architecture or runtime property.
 3. One material invariant has one proof owner. A new incident, reviewer
    finding, or migration slice does not automatically create a new lint, test,
    report, workflow, or required context.
@@ -42,6 +45,17 @@ and lifecycle, not automation itself.
    compatibility boundary. Durable product tests remain.
 6. No meta-service or meta-lint is introduced to police this rule. Standards,
    bounded review, and direct portfolio cleanup own convergence.
+7. PR prose is intent, not admission authority. Risk and affected-surface
+   classification come from the exact diff, contracts, dependency/ownership
+   graph, and typed project facts. A PR-body keyword may improve presentation;
+   it cannot grant, waive, or prove a control.
+8. Structured configuration is parsed and exercised. Token presence in a
+   Dockerfile, package manifest, or workflow does not prove the resolved
+   dependency, built artifact, executed job, or stable required context.
+9. Evidence is placed by expected decision value: fast deterministic material
+   proof in presubmit; expensive backstops in postsubmit, release, or scheduled
+   lanes; formatting, prose, and naming feedback in local/advisory tooling;
+   duplicate, self-authored, retired, and no-action controls deleted.
 
 ## Consequences
 
@@ -51,11 +65,13 @@ and lifecycle, not automation itself.
   behavior tests; others are deleted as duplicate or retired migration proof.
 - CI becomes smaller and more stable while preserving migration safety,
   schema/API compatibility, security, artifact integrity, and real behavior.
+- A green check can no longer be manufactured merely by mentioning the
+  expected script, status, file, or term.
 
 ## Verification
 
-- Skills validation and catalog freshness pass.
-- Representative guidance routes compiler/graph/AST/behavioral mechanisms
-  ahead of source-text scanning.
-- Portfolio cleanup records any remaining temporary fence with its exact
-  retirement predicate.
+- Skills catalog/schema and executable runtime behavior remain blocking.
+- Prose-presence, repository-wide vocabulary, duplicated policy, and
+  workflow-name meta tests are removed from the blocking Skills test suite.
+- Any remaining source scanner either owns an actual lexical surface or records
+  its exact migration-fence retirement predicate.

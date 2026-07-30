@@ -1,6 +1,6 @@
 ---
 name: ci-admission-standard
-description: "CI admission tiers, gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including custom lints and architecture tests. Do not use for debugging one unrelated test failure."
+description: "CI admission tiers, semantic-oracle and gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including slow CI, string or regex source scanners, PR-body classifiers, custom lints, meta-checks, and architecture tests. Do not use for debugging one unrelated test failure."
 ---
 # Ci Admission Standard
 
@@ -12,7 +12,9 @@ method and predicates.
 ## Method
 
 1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
-2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
+2. Apply the strongest relevant subset; record material tradeoffs only where
+   the owning contract, configuration, ADR, or executable proof requires them.
+   Do not add a prose-presence test to prove that this standard was followed.
 3. Prefer schema/test/ADR homes over copying this body into product repos.
 4. When a required check claims to detect a failure class, apply
    [control-effectiveness verification](../engineering-standard/references/control-effectiveness.md).

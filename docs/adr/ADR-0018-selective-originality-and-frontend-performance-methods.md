@@ -60,7 +60,10 @@ the second dedicated diagnostic and remediation record.
 
 ## Verification
 
-- `tests/method-portfolio.test.mjs`
-- `tests/fixtures/method-injection-cases.json`
-- `npm test`
-- `npm pack --dry-run`
+- `tests/fixtures/method-injection-cases.json` remains a non-blocking evaluation
+  corpus.
+- Exact Skills revision native-runtime evaluation is required before claiming actual
+  package injection or routing behavior.
+- `npm test` and `npm pack --dry-run` verify package/catalog integrity,
+  executable runtime behavior, and publication contents rather than the
+  authored routing answer.

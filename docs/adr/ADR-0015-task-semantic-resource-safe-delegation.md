@@ -48,9 +48,9 @@ delegation was valuable.
 6. The always-on constitution carries the compact floor.
    `agent-first-development-standard` consumes the predicate when coordinating
    work that has already qualified.
-7. Repository contract cases cover positive and negative decisions. They prove
-   the instruction has a deterministic non-vacuous interpretation; they do not
-   claim runtime enforcement or observed agent behavior.
+7. Authored positive and negative cases may remain as a non-blocking evaluation
+   corpus. They illustrate the decision boundary but do not prove routing,
+   runtime enforcement, or observed agent behavior.
 
 ## Consequences
 
@@ -61,11 +61,14 @@ delegation was valuable.
 - Small tasks avoid startup and integration overhead.
 - There is no universal agent count, recursion ban, resident orchestrator, or
   new service.
-- Runtime behavior still requires observation; passing prose-contract tests is
-  not evidence that a host respected the resource envelope.
+- Runtime behavior still requires observation; authored cases or policy-text
+  checks are not evidence that a host respected the resource envelope.
 
 ## Verification
 
-- `tests/delegation-policy.test.mjs`
-- `tests/fixtures/delegation-policy-cases.json`
-- `npm test`
+- `tests/fixtures/delegation-policy-cases.json` is a non-blocking evaluation
+  corpus.
+- A promotable behavior claim requires an exact Skills revision native-agent run with
+  host resource and delegation observations.
+- Repository CI verifies package/catalog and executable runtime behavior; it
+  does not manufacture a delegation verdict from the authored policy.

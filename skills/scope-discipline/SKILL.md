@@ -1,6 +1,6 @@
 ---
 name: scope-discipline
-description: "Prevent over-engineering, under-engineering, workaround-driven regression, and moving completion bars while keeping planning, implementation, migration, architecture, and review fast, rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, weak shortcuts, or unjustified waiting."
+description: "Prevent over-engineering, under-engineering, workaround-driven regression, custom mechanisms without proven advantage, and moving completion bars while keeping planning, implementation, migration, architecture, and review fast, rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, complexity theatre, weak shortcuts, or unjustified waiting."
 ---
 
 # Scope Discipline
@@ -270,6 +270,22 @@ maximum tests, or theoretical perfection.
 - Prefer an existing primitive, direct implementation, deletion, or one local
   check before adding a service, repository, control plane, generator, workflow,
   trust system, or recurring reconciler.
+- Adopt the simplest applicable published standard, ecosystem-native primitive,
+  or established reference design before inventing a custom mechanism. A custom
+  layer must name the unmet requirement and demonstrate an observable semantic
+  or quality improvement over that baseline.
+- Keep the baseline check proportional. An obvious local native primitive needs
+  no broad standards survey or decision document; durable shared or
+  cross-boundary machinery earns explicit comparison.
+- Do not interpret “learn from many standards” as “combine every pattern.”
+  Select one coherent baseline and only the smallest complementary mechanisms
+  that each satisfy a distinct requirement.
+- Treat explanation and ownership cost as real. If the owner cannot understand
+  which capability, guarantee, failure mode, or measured outcome an added layer
+  changes, it has not paid for its complexity.
+- Reuse standard industry vocabulary for standard behavior. A proprietary name
+  or diagram does not turn an existing sequence, state transition, queue, gate,
+  or pipeline into a new architecture.
 - Match the threat model to the declared environment. Do not design for hostile
   principals when the task assumes trusted internal agents unless security or
   authority isolation is itself the requested outcome.

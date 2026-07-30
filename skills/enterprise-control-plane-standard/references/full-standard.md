@@ -133,22 +133,27 @@ the default; do not create one issue per repository for selector fact adoption.
 
 ### CI and status checks
 
-Branch protection should require stable fan-in contexts:
+Branch protection should require the smallest stable fan-in surface that
+decides candidate admission—normally one context, or a few contexts only when
+the provider or repository has materially distinct admission authorities. The
+enterprise standard does not prescribe separate status names for risk
+classification, metadata, review roles, postsubmit proof, or recovery.
 
-- `risk-classification/pass`;
-- `trunk-admission/pass`;
-- `postsubmit-proof/pass` where release/deploy promotion depends on it;
-- `recovery-decision/pass` for recovery workflows.
+Risk classification is derived from the exact source revision and typed facts, then
+selects semantic controls behind the fan-in. Postsubmit, release, deployment,
+and recovery observations remain their own lifecycle facts and are consumed by
+their owning controller; they are not turned into branch-protection lights
+unless they genuinely must prevent that source revision from landing.
 
 The implementation may be a central reusable workflow, a thin repo wrapper, or
-a trusted Sylphx status publisher. The context name is the contract. Raw job
-names are implementation details.
+a trusted status publisher. The stable fan-in result is the provider contract;
+raw job names and internal stages are implementation details.
 
 For repositories whose active profile requires PR/merge-queue admission, every
 required context must have an active producer on PR and `merge_group` events.
 Path-skipped required checks, inactive producers, and missing merge-group
-triggers are control-plane drift. Parallel-change candidates instead publish their
-profile-selected exact-snapshot proof and scoped watermark; do not manufacture
+triggers are control-plane drift. Parallel-change candidates instead publish
+their profile-selected revision-bound verification result; do not manufacture
 PR contexts where no PR admission exists.
 
 ### CI compute

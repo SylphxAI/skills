@@ -691,10 +691,11 @@ risk-selected independent-review benefit passes the same delegation predicate
 and resources permit it. For changes
 touching public contracts, persistence, auth, billing, security, infrastructure,
 deploy/release behavior, cross-repo boundaries, migrations, high-risk
-concurrency, or agent/tool schemas, produce a durable review artifact: PR body
-section, committed review note, CI artifact, eval result, issue, or status
-summary. Chat-only review output is evidence for the lead agent, not durable
-governance.
+concurrency, or agent/tool schemas, produce a durable review artifact bound to
+the exact source revision: a typed coordination record, committed review note,
+provider-native authenticated review event, CI artifact, or eval result. PR
+title/body prose, a self-authored status summary, and chat-only review output
+are context for the lead agent, not durable admission authority.
 
 If the reviewer finds material issues, fix them before final response unless
 blocked by a machine policy gate, credentials, external systems, or user

@@ -30,8 +30,6 @@ test('catalog is deterministic and covers every canonical package', () => {
   });
   const stored = JSON.parse(readFileSync(new URL('../catalog.json', import.meta.url), 'utf8'));
   assert.deepEqual(stored, catalog);
-  const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8');
-  assert.match(readme, new RegExp(`agent%20skills-${catalog.count}%20packages-`));
 });
 
 test('package digests preserve file boundaries and reject symbolic links', () => {

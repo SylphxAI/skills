@@ -31,7 +31,7 @@
       "name": "agent-first-development-standard",
       "description": "No-human parallel development packets, change attribution, collision scopes, and machine-verifiable acceptance. Use when defining or running multi-agent software delivery without a human review dependency. Do not use for a small local edit or live Work Graph operations.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:cb1192d0f46ac7c4132833b297c3aaaedc48415f9bad36df9220e27901651197"
+      "packageDigest": "sha256:d20246ebdbe6b36741ca2d010a1e9b5cc27dc690245fcd27939e7d0ef0d6fe7b"
     },
     {
       "name": "agent-native-standard",
@@ -73,7 +73,7 @@
       "name": "autonomous-execution-standard",
       "description": "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:1f28c1fa2af065f5b2b2773b53bca540e30018316fa72cc007b70c8bfec018b4"
+      "packageDigest": "sha256:053b557397461eb703763fdf973d8bd280297bc0de487eaf57aee751d8b60eae"
     },
     {
       "name": "board-metrics-operating-review",
@@ -89,15 +89,15 @@
     },
     {
       "name": "ci-admission-standard",
-      "description": "CI admission tiers, gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including custom lints and architecture tests. Do not use for debugging one unrelated test failure.",
+      "description": "CI admission tiers, semantic-oracle and gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including slow CI, string or regex source scanners, PR-body classifiers, custom lints, meta-checks, and architecture tests. Do not use for debugging one unrelated test failure.",
       "path": "skills/ci-admission-standard/SKILL.md",
-      "packageDigest": "sha256:d7f34435dffb41e174f19b947563b36206f9d212d3fcf4a620b1500b405250bb"
+      "packageDigest": "sha256:2f3288944d8158a4d7b7e784684e28f6394df5efe3c6943c6e067e3363bbc509"
     },
     {
       "name": "ci-runner-capacity-standard",
       "description": "Design or diagnose CI runner capacity, queue/pickup latency, execution profiles, merge-queue backpressure, inventory uncertainty, and critical-path isolation. Use when CI jobs wait, runners disappear, queues saturate, or capacity policy must change. Do not use for a candidate failure caused by product code.",
       "path": "skills/ci-runner-capacity-standard/SKILL.md",
-      "packageDigest": "sha256:f180ee6d01b47c77b528d267c738bc48a1cca116b370c22f3b6b25f50ab50f1a"
+      "packageDigest": "sha256:5b6b863e0fe442e650d42142d744f1fbbc81a908f83d7f0e0f317ce920879bc1"
     },
     {
       "name": "commercial-decision-standard",
@@ -173,9 +173,9 @@
     },
     {
       "name": "decision-quality-standard",
-      "description": "Select among materially distinct technical, product, commercial, or operating options, reprice human-era effort through current agent capabilities, and record the commitment, trade-offs, reversibility, and decision evidence. Use after credible options are formed and one durable choice is required. Do not use for unknown-cause diagnosis, exact-candidate pass/fail review, trivial reversible edits, or execution of an already selected option.",
+      "description": "Select among materially distinct technical, product, commercial, or operating options—including an established standard versus a custom mechanism—reprice human-era effort through current agent capabilities, and record the commitment, trade-offs, reversibility, and decision evidence. Use after credible options are formed and one durable choice is required. Do not use for unknown-cause diagnosis, exact-candidate pass/fail review, trivial reversible edits, or execution of an already selected option.",
       "path": "skills/decision-quality-standard/SKILL.md",
-      "packageDigest": "sha256:7079571429880c6c5e79955d81d9708cad014ee1ec5e91c0558f741c0b95d2f6"
+      "packageDigest": "sha256:e2145a1c9bd100aa84b5c1daee505dafe55a2f2b603b15437f32bb6171f6ba3e"
     },
     {
       "name": "delivery-standard",
@@ -229,7 +229,7 @@
       "name": "engineering-standard",
       "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, state authorities, modules, control/data planes, cells, plugins, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or system/runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:263c977bed7559ca1e48359362c54abd7dff9b5bf0108b2396da057b5e694eb6"
+      "packageDigest": "sha256:73c3e012697d44a071f3765f9676befee1cdeeec09f539f70a069b5f23aece75"
     },
     {
       "name": "enterprise-access-governance-review",
@@ -247,7 +247,7 @@
       "name": "enterprise-control-plane-standard",
       "description": "Organization-wide manifests, rulesets, selectors, reconcilers, audits, and status projections. Use when one policy or adoption decision must apply consistently across many repositories. Do not use for a product-local setting with no cross-repository owner.",
       "path": "skills/enterprise-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:065cf199fc3443f8b24e03a3ea8bcf87fd72b35f74e6ea66976e001ef994761b"
+      "packageDigest": "sha256:0b5e9a8b48a6dc57b4c91f2c24ec2b010e3a575cea2a013a4682bcf71b7e47f1"
     },
     {
       "name": "enterprise-profile-standard",
@@ -307,7 +307,7 @@
       "name": "instruction-evolution-standard",
       "description": "Evolution of Skills, runtime constitutions, required profiles, and architecture generations with one writable owner, migration, reconciliation, and retirement. Use for durable instruction or profile changes, not live Work Graph operations.",
       "path": "skills/instruction-evolution-standard/SKILL.md",
-      "packageDigest": "sha256:a4f3c594e6ee8d7345aa5b5778ef8d93cf2f91b3cb5253554d0c4d66d169b080"
+      "packageDigest": "sha256:fb3c38fdff7f30d89f1dbc15ba3bfed35a746050d125ebdcb4345a345db9c5de"
     },
     {
       "name": "interface-craft",
@@ -379,7 +379,7 @@
       "name": "parallel-change-integration-standard",
       "description": "Repository-native integration for measured high-contention agent work: direct-trunk conflict recovery, short-lived PRs, optional merge queue, CI backpressure, and duplicate-work handling. Use only when concurrent source activity creates material collisions, stale-base failures, or verification backlog. Do not use for ordinary low-contention edits.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
-      "packageDigest": "sha256:fd87edfbc2e10efc43e175e20a3723d8d9df074573f71116e8d249e059a44e19"
+      "packageDigest": "sha256:af9a689b338a0c8bf299c68051fbc9706612e7c5cc84e9dcec77ffb408b3d4a4"
     },
     {
       "name": "payment-platform-readiness",
@@ -533,9 +533,9 @@
     },
     {
       "name": "scope-discipline",
-      "description": "Prevent over-engineering, under-engineering, workaround-driven regression, and moving completion bars while keeping planning, implementation, migration, architecture, and review fast, rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, weak shortcuts, or unjustified waiting.",
+      "description": "Prevent over-engineering, under-engineering, workaround-driven regression, custom mechanisms without proven advantage, and moving completion bars while keeping planning, implementation, migration, architecture, and review fast, rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, complexity theatre, weak shortcuts, or unjustified waiting.",
       "path": "skills/scope-discipline/SKILL.md",
-      "packageDigest": "sha256:9f4ead36c29e82dabef68485297d26701bd6ba92fe8c2e10118483c2e61cced5"
+      "packageDigest": "sha256:0a0ce7260a199f8bac99acf9d568c592b3843f05cb24efabfbc0487236872c3e"
     },
     {
       "name": "search-discovery-quality-review",
@@ -607,7 +607,7 @@
       "name": "specification-control-plane-standard",
       "description": "Specification lifecycle, work packets, evaluation manifests, telemetry contracts, and exception records. Use when a material capability needs an executable specification and traceable implementation contract. Do not use for a trivial change whose behavior is already unambiguous.",
       "path": "skills/specification-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:152980de5945492e168a3550a171dc56fe75ae3f77f431e491bdea3c07bbd58c"
+      "packageDigest": "sha256:6fa8adad2c44059bfcfc14c8ee8cc9a428fed06266f22bfea913bb4fef5a5e0a"
     },
     {
       "name": "store-listing-optimization",

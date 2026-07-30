@@ -55,7 +55,10 @@ SOTA/frontier claims and risk-proportionate verification are separate jobs.
 
 ## Verification
 
-- `tests/method-portfolio.test.mjs`
-- `tests/fixtures/method-injection-cases.json`
-- architecture convergence ledger unit tests
-- `npm test`
+- `tests/fixtures/method-injection-cases.json` retains non-blocking positive and
+  near-neighbour evaluation cases.
+- Architecture-convergence ledger validators retain their executable unit
+  proof.
+- A routing claim requires exact Skills revision native-runtime evaluation; repository
+  CI verifies package/catalog integrity and executable runtime behavior, not
+  the expected answer authored in the routing fixture.

@@ -125,6 +125,52 @@ extra structure creates no durable capability or makes future change harder.
 Never reject a stronger architecture merely because it contains more typed
 files, adapters, generated projections, or tests.
 
+### Adopt before invent
+
+For commodity engineering and operating mechanisms, start from the simplest
+applicable published standard, ecosystem-native primitive, or established
+reference design. Treat that baseline as the first credible option, not as an
+automatic winner: standards can be obsolete, inapplicable, or weaker than the
+declared requirement.
+
+Before selecting a custom concept, abstraction, framework, control plane,
+state machine, gate, queue, protocol, or vocabulary, establish:
+
+1. the concrete requirement the closest established baseline cannot meet;
+2. the closest credible prior art and the evidence-backed reason each option is
+   insufficient rather than merely unfamiliar;
+3. the semantic delta: the new capability, invariant, failure containment,
+   interoperability property, or operating guarantee that now exists;
+4. the measurable quality delta against the baseline, including latency,
+   throughput, reliability, recovery, security, usability, maintainability, or
+   lifecycle cost as applicable;
+5. the additional state, coupling, dependencies, failure modes, proof,
+   operations, migration, support, and explanation cost; and
+6. the standards-compatible boundary, exit, replacement, or simplification path.
+
+Scale the artifact to the commitment. A trivial reversible local choice can
+satisfy this comparison implicitly through clear code and a narrow test; do not
+run a broad industry survey or create an ADR when the native primitive plainly
+fits. A durable shared, cross-boundary, operational, or organization-wide custom
+mechanism requires the explicit comparison and evidence above.
+
+If the custom option produces materially equivalent behavior and guarantees,
+or performs worse after full lifecycle cost, select the simpler established
+baseline. A longer explanation, novel diagram, new label, extra status model,
+or internal implementation layer is not a semantic delta.
+
+Synthesis means selecting a coherent minimal set of complementary mechanisms,
+not combining every relevant pattern. Each added mechanism must own a distinct
+requirement that the selected baseline does not already satisfy. Prefer
+standard domain and industry vocabulary; introduce a new term only for a
+genuinely distinct concept, and publish its mapping to the closest established
+terms.
+
+This rule does not prohibit product or domain innovation. It places a higher
+burden on custom infrastructure and process machinery, where interoperability,
+operator comprehension, tooling, and proven failure behavior usually dominate
+novelty value.
+
 ### Current evidence and active resolution
 
 Parametric model knowledge, prior conversation, memory, aliases, cached
@@ -430,6 +476,12 @@ policy, or deployment decision consumes it.
 
 - Copying a long “best practice” prompt into every repository.
 - Treating quality as “add more features” or “add more abstraction”.
+- Renaming an established mechanism, pipeline, or state transition and claiming
+  architectural progress without a semantic or measurable quality delta.
+- Combining many individually credible patterns without proving that each owns
+  a distinct unmet requirement.
+- Making a custom mechanism prove itself only against its own terminology,
+  authored status, or internally chosen success criteria.
 - Treating a date, vendor, language, protocol, model, or forge as best without
   a current profile, evidence, and replacement trigger.
 - Shipping a local workaround that preserves a broken owner boundary.

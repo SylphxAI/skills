@@ -1,6 +1,6 @@
 ---
 name: decision-quality-standard
-description: "Select among materially distinct technical, product, commercial, or operating options, reprice human-era effort through current agent capabilities, and record the commitment, trade-offs, reversibility, and decision evidence. Use after credible options are formed and one durable choice is required. Do not use for unknown-cause diagnosis, exact-candidate pass/fail review, trivial reversible edits, or execution of an already selected option."
+description: "Select among materially distinct technical, product, commercial, or operating options—including an established standard versus a custom mechanism—reprice human-era effort through current agent capabilities, and record the commitment, trade-offs, reversibility, and decision evidence. Use after credible options are formed and one durable choice is required. Do not use for unknown-cause diagnosis, exact-candidate pass/fail review, trivial reversible edits, or execution of an already selected option."
 ---
 # Decision Quality Standard
 

@@ -12,7 +12,9 @@ method and predicates.
 ## Method
 
 1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
-2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
+2. Apply the strongest relevant subset; record material tradeoffs only where
+   the owning contract, configuration, ADR, or executable proof requires them.
+   Do not add a prose-presence test to prove that this standard was followed.
 3. Prefer schema/test/ADR homes over copying this body into product repos.
 4. Read [CRDT convergence](../engineering-standard/references/crdt-convergence.md) when
    concurrent shared state requires algebraic merge rather than CAS selection.

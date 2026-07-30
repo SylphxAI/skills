@@ -94,6 +94,11 @@ contract, not from whether it has a PR.
 
 Public PR review remains valid for external/community collaboration, but it is
 not Enact Work authority and does not require private Work ids.
+PR titles, bodies, comments, labels, and trailers are collaboration surfaces,
+not typed admission facts. Do not parse custom prose tokens from them to decide
+risk, work ownership, reviewer independence, completion, or required controls.
+An audience-safe projection may summarize an authoritative record, but it
+cannot create or waive that record.
 
 ## CI
 

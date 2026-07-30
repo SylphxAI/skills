@@ -98,6 +98,20 @@ Skills only when their domain is touched.
   compute and coordination as real costs. Investigate only plausible material
   uncertainty that can change the action or claim. Prefer a feasible
   owning-boundary fix and low-lifecycle-cost future-proofing over a workaround.
+- Adopt before invent. Start from the simplest applicable published standard,
+  ecosystem-native primitive, provider capability, or established reference
+  design. A custom mechanism or vocabulary requires a named unmet requirement
+  and an observable semantic or quality improvement over that baseline.
+  Pattern accumulation, renaming existing behavior, or complexity without a
+  material guarantee is regression.
+- CI proves material facts, not wording. A blocking gate observes authoritative
+  semantics for a named plausible failure that can change admission. PR prose,
+  repository-wide word bans, implementation-token presence, and checks that
+  merely confirm another script or job name appears in workflow source are not
+  architecture or delivery evidence. Parse structured contracts and exercise
+  builds, graphs, public surfaces, or behavior instead. Lexical scanning blocks
+  only when the bytes themselves are the governed security or publication
+  surface, or as an expiring migration fence with a retirement predicate.
 - Scope runtime mutation explicitly. Detecting another installed agent runtime
   is evidence only and never permission to install, update, clear, or schedule
   work for it.

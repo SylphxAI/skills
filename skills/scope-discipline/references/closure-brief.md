@@ -12,6 +12,8 @@ Excluded: <low-return hardening, new infrastructure, speculative threats>
 Time-to-value: <shortest credible implementation and proof path>
 Agent-native repricing: <cheap generated/mechanical work vs real semantic, integration, proof, operational and recovery cost>
 Durable progress: <terminal predicate closed and material predicates preserved>
+Established baseline: <closest applicable standard/native primitive/reference design>
+Custom delta: <none, or exact unmet requirement plus semantic/measurable improvement>
 Calendar compression: <agent shards, replay, simulation, differential or property tests>
 Real-time need: <none, or exact hypothesis that cannot be accelerated>
 Lifecycle stage: <development | internal dogfood | internal beta with users | public production>
@@ -52,6 +54,11 @@ use the active proof instead of waiting.
 - [ ] Human-era effort assumptions were repriced using current agent capabilities.
 - [ ] Progress closes a terminal predicate or selected investment without regressing an already proven material predicate.
 - [ ] No feasible owning-boundary fix was replaced by a workaround or weak intermediate target.
+- [ ] Any custom mechanism beats the simplest applicable established baseline
+      on a named requirement; equivalent behavior uses standard vocabulary and
+      the simpler mechanism.
+- [ ] Complementary patterns each own a distinct requirement; the design is not
+      a union assembled for apparent sophistication.
 - [ ] One bounded high-value scan captured obvious high-return in-boundary improvements.
 - [ ] Remaining ideas have lower net value, weaker evidence, or a different owner/lifecycle.
 - [ ] The task closes after selected improvements pass verification.

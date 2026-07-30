@@ -180,8 +180,8 @@ The execution plane must enforce lane priority and quota before a merge queue
 falls behind:
 
 1. recovery admission and rollback/forward-fix gates restore production first;
-2. `merge_group` and `trunk-admission/pass` for queued candidates get protected
-   admission capacity;
+2. `merge_group` and the repository's stable semantic admission fan-in for
+   queued candidates get protected admission capacity;
 3. PR branch feedback remains fast, but may yield to merge-group admission when
    the queue breaches pickup SLO;
 4. postsubmit, complete affected suites, heavy E2E, mutation, and deep

@@ -17,6 +17,14 @@ that it controls the failure it claims to control.
 5. Retain the minimal mutation/fault as a regression and record environments
    where the control was not exercised.
 
+The mutation must cross the claimed boundary. Changing a word, helper name,
+file location, PR description, or workflow spelling without changing the
+claimed architecture or behavior only proves that a lexical convention is
+being policed. Source-text presence is not evidence that a build, dependency
+boundary, deployment, recovery path, or public contract works. Use the
+compiler, structured parser, dependency graph, built artifact, provider run, or
+executed behavior that owns the claim.
+
 Prefer mutation testing for test-suite sensitivity and fault injection for
 runtime resilience. Production experiments require bounded blast radius and
 the active delivery authority; local verification cannot grant it.

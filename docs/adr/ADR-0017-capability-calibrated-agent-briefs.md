@@ -47,9 +47,9 @@ reviewers, specialists, and subagents.
 6. A prompt cannot grant a missing tool, permission, authority, source, or
    runtime capability. Expose or resolve the gap instead of replacing it with
    more prose.
-7. Deterministic fixtures protect this policy boundary but do not claim that
-   every runtime or model follows it. Runtime behavior needs separate
-   exact-candidate evaluation when such a claim is material.
+7. Authored fixtures illustrate this policy boundary but are not a blocking
+   oracle. Runtime behavior needs separate exact-candidate evaluation when such
+   a claim is material.
 
 ## Consequences
 
@@ -63,7 +63,10 @@ reviewers, specialists, and subagents.
 
 ## Verification
 
-- `tests/prompt-architecture.test.mjs`
-- `tests/fixtures/agent-brief-specificity-cases.json`
-- `tests/delegation-policy.test.mjs`
-- `npm test`
+- `tests/fixtures/agent-brief-specificity-cases.json` and
+  `tests/fixtures/delegation-policy-cases.json` remain non-blocking evaluation
+  corpora.
+- A promotable prompt or delegation behavior claim requires an exact Skills
+  revision native-agent evaluation.
+- Repository CI verifies package/catalog integrity and executable runtime
+  behavior; it does not compare policy prose with a duplicated expected answer.

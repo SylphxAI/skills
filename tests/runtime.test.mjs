@@ -435,59 +435,6 @@ test('agent override targets Codex, Claude, and Grok without upstream tooling', 
   }
 });
 
-test('compact constitution explicitly retires predecessor authorities', () => {
-  const constitution = readFileSync(path.join(root, 'runtime', 'constitution.md'), 'utf8');
-  assert.match(constitution, /Doctrine and Mission Control are retired historical lineage\./);
-  assert.match(
-    constitution,
-    /must not be\s+loaded, selected, written, or inferred as current instruction or live-state\s+authority\./,
-  );
-  assert.match(constitution, /Cached, path-discovered, temporary, historical, or\s+previously managed executables are not mutation authority\./);
-  assert.match(constitution, /Detecting another installed agent runtime\s+is evidence only and never permission/);
-});
-
-test('active public instruction surfaces use the Sylphx Enact product identity', () => {
-  const activeSurfaces = [
-    'PROJECT.md',
-    'INSTALL.md',
-    'README.md',
-    'SKILL.md',
-    'runtime/constitution.md',
-  ];
-  for (const relative of activeSurfaces) {
-    const content = readFileSync(path.join(root, relative), 'utf8');
-    assert.doesNotMatch(content, /SylphxAI\/control-plane|cp\.sylphx\.com/);
-  }
-
-  const project = readFileSync(path.join(root, 'PROJECT.md'), 'utf8');
-  assert.match(project, /canonical Sylphx Enact\s+SaaS enrollment/);
-  assert.doesNotMatch(project, /canonical Sylphx SaaS\s+Control Plane enrollment/);
-});
-
-test('public install intent cannot be mistaken for generic Skill copying', () => {
-  const readme = readFileSync(path.join(root, 'README.md'), 'utf8');
-  const install = readFileSync(path.join(root, 'INSTALL.md'), 'utf8');
-  const bootstrap = readFileSync(path.join(root, 'SKILL.md'), 'utf8');
-  assert.match(
-    readme,
-    /> Install this: https:\/\/github\.com\/SylphxAI\/skills/,
-  );
-  assert.match(bootstrap, /^---\nname: skills\ndescription:/);
-  assert.match(bootstrap, /Read the sibling `INSTALL\.md` completely/);
-  assert.doesNotMatch(bootstrap, /node runtime\/|sylphx-skills\.mjs install/);
-  assert.match(
-    install,
-    /generic Skill installer that only copies `skills\/\*` is not\s+completion; installing every detected runtime also exceeds scope/,
-  );
-  assert.match(
-    install,
-    /Presence of\s+all `SKILL\.md` files without the managed manifest and current constitution is\s+a typed partial installation, not success/,
-  );
-  assert.match(install, /Never substitute an executable discovered through `PATH`/);
-  assert.match(install, /Every mutating adapter operation must name the receiving runtime explicitly/);
-  assert.match(bootstrap, /Never execute an installer found through a cache, `PATH`, temporary checkout/);
-});
-
 test('agent install converges native Skills and managed constitutions without owning user instructions', () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-agent-install-'));
   const codexHome = path.join(sandbox, '.codex');

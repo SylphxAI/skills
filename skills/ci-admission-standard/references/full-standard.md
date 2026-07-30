@@ -72,6 +72,11 @@ The same underlying jobs should run for PR heads, default-branch commits, and
 merge-group SHAs wherever the evidence requirement is the same. Avoid separate
 implementations that drift.
 
+The aggregate verdict is a deterministic fan-in over the actual semantic
+checks. It preserves their individual outcomes for diagnosis; it does not turn
+stage progress, renamed statuses, or a dashboard sequence into additional
+evidence.
+
 ### Fast feedback and complete confidence
 
 1. Run formatting, static analysis, compilation/typechecking, schema/contract
@@ -113,6 +118,65 @@ Prefer compiler visibility, types, schemas, dependency graphs, AST-aware rules,
 package exports, and executable behavior tests over string scans of source
 files. Retire migration-only gates after the predecessor is removed and the new
 contract is proven.
+
+The admission question is not “can this be automated?” It is “must this
+candidate be prevented from landing when this evidence is red?” A blocking
+check belongs on the critical path only when:
+
+1. it owns a plausible material failure that changes admission;
+2. it reads the authoritative representation of that fact;
+3. its oracle separates the failure from harmless implementation changes;
+4. red has a clear repair, recovery, or rejection action; and
+5. no cheaper compiler, schema, graph, build, or behavior proof already owns
+   the same failure.
+
+Common textual proxies do not meet that bar:
+
+| Proxy | Why it is not authority | Prefer |
+| --- | --- | --- |
+| Repository-wide vocabulary ban | Matches comments, examples, and legitimate internal code while missing equivalent disclosure under another spelling | Test the published package, rendered UI, public response schema, or audience allowlist |
+| PR title/body string classification | Author-written prose can neither grant nor waive product risk | Derive changed surfaces from the exact diff, ownership graph, contract/schema changes, and typed repository facts |
+| Token presence in `Dockerfile`, `package.json`, or another manifest | Spelling does not prove dependency resolution, artifact content, provenance, or runtime use | Parse the manifest and lockfile; build once; inspect the resolved graph, artifact, SBOM, or behavior |
+| Requiring a script or job name to appear in workflow YAML | Can pass when the named control never executes and couples implementation names | Use a reusable workflow where appropriate, parse provider configuration structurally, and exercise an actual candidate or merge-group run |
+| Regex source scanner presented as architecture proof | Freezes spelling and layout without deciding visibility, ownership, dependency direction, or behavior | Compiler visibility, package exports, AST/dependency/build graphs, schema compatibility, and executable contracts |
+| Test asserting that standards prose contains a sentence | Lets policy validate itself without proving a consuming behavior | Review the standard as source; test the parser, schema, native routing behavior, or controlled outcome that consumes it |
+
+Lexical blocking is appropriate only when bytes are themselves the controlled
+surface—for example a known credential signature in publishable content, an
+exact legal/publication requirement, or an explicitly temporary migration
+fence. A lexical check must not claim a non-lexical property. A temporary fence
+has an owner, expiry, and retirement predicate.
+
+Place valid evidence at its least-cost decisive lane:
+
+| Lane | Evidence |
+| --- | --- |
+| Blocking presubmit | Compiler/type/build validity, schema and public-contract compatibility, deterministic affected behavior, migration safety, and narrow material security/integrity controls required before landing |
+| Postsubmit, release, or scheduled | Broad cross-platform suites, deep security analysis, mutation/fuzz exploration, performance distributions, expensive E2E, and other backstops whose delay exceeds their per-candidate admission value |
+| Local or advisory | Formatting, prose style, naming preference, documentation suggestions, and low-materiality consistency feedback |
+| Delete | Duplicate controls, self-authored status, no-action reports, retired migration fences, and meta-checks that only prove another check or phrase exists |
+
+Do not turn this classification into another registry, meta-lint, approval
+service, or required context. A normal compiler/build/test needs no gate
+dossier. Before adding a custom required gate, state the named failure,
+authoritative input, oracle, expected critical-path cost, failure action, and
+retirement condition when temporary.
+
+To reduce an existing thick pipeline:
+
+1. Read the provider's live required contexts, actual job graph, queue time,
+   and p50/p95 critical path; workflow source alone is not runtime truth.
+2. Group checks by the material invariant they claim. Keep the strongest
+   semantic owner and mark the others `replace`, `move`, or `delete`.
+3. Replace a textual proxy before removing it when a real uncovered failure
+   remains; delete it directly when it owns no material failure.
+4. Move valid expensive backstops off presubmit unless their failure must
+   prevent this candidate from landing.
+5. Update required contexts and their producers together, then exercise one
+   clean candidate and one representative failure through the provider path.
+6. Compare latency, compute, false positives, and detected failure coverage.
+   Stop when every remaining blocker owns a distinct material claim, not when
+   an arbitrary gate count is reached.
 
 Do not build CI whose primary purpose is to police whether an agent used PR or
 direct trunk, prove Enact lineage, or reproduce Platform deployment state.

@@ -9,6 +9,8 @@ import addFormats from 'ajv-formats';
 import { catalogBytes, parseFrontmatter, repositoryRoot } from './build-catalog.mjs';
 
 const NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+// This is a narrow lexical security control for publishable package bytes. It
+// does not claim to prove that every possible secret is absent.
 const SECRET_PATTERNS = [
   /-----BEGIN (?:RSA |OPENSSH |EC |DSA )?PRIVATE KEY-----/,
   /\bAKIA[0-9A-Z]{16}\b/,
@@ -16,7 +18,6 @@ const SECRET_PATTERNS = [
   /\bsk-[A-Za-z0-9_-]{20,}\b/,
   /\bxox[baprs]-[A-Za-z0-9-]{20,}\b/,
 ];
-const REMOVED_BOUNDARIES = ['admissions', 'benchmarks', 'catalog', 'evals', 'registry', 'retired'];
 function walk(directory) {
   const files = [];
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
@@ -357,12 +358,7 @@ function validateMachineProfile(folder, packageRoot, errors, profiles) {
 
   const decisionPath = path.resolve(packageRoot, document.profile?.decisionRef || '');
   if (!document.profile?.decisionRef?.startsWith('references/ADR-') || !existsSync(decisionPath)) {
-    errors.push(`skills/${folder}/references/profile.json: local accepted decision is missing`);
-  } else {
-    const decision = readFileSync(decisionPath, 'utf8');
-    if (!/^status:\s*accepted\s*$/m.test(decision) || !/^\s*- SylphxAI\/skills\s*$/m.test(decision)) {
-      errors.push(`${path.relative(repositoryRoot, decisionPath)}: decision must be accepted and Skills-owned`);
-    }
+    errors.push(`skills/${folder}/references/profile.json: local decision link is missing`);
   }
 
   const defaults = document.defaults || [];
@@ -403,7 +399,6 @@ function validateSkill(folder, names, errors, profiles) {
   if (names.has(values.name)) errors.push(`skills/${folder}/SKILL.md: duplicate name ${values.name}`);
   names.add(values.name);
   if (!values.description || values.description.length > 1024) errors.push(`skills/${folder}/SKILL.md: invalid description`);
-  if (!/\bUse (?:when|for)\b/i.test(values.description || '')) errors.push(`skills/${folder}/SKILL.md: description needs a Use when/for trigger`);
 
   for (const file of walk(packageRoot)) {
     const relative = path.relative(repositoryRoot, file);
@@ -411,17 +406,10 @@ function validateSkill(folder, names, errors, profiles) {
     for (const pattern of SECRET_PATTERNS) {
       if (pattern.test(text)) errors.push(`${relative}: looks like a credential`);
     }
-    if (/\b(?:TODO|PLACEHOLDER)\s*:/i.test(text)) errors.push(`${relative}: unresolved TODO/PLACEHOLDER marker`);
     if (/\.(?:md|markdown)$/i.test(file)) validateLocalLinks(text, file, errors);
   }
 
   validateMachineProfile(folder, packageRoot, errors, profiles);
-
-  const openAiMetadata = path.join(packageRoot, 'agents', 'openai.yaml');
-  if (existsSync(openAiMetadata)) {
-    const yaml = readFileSync(openAiMetadata, 'utf8');
-    if (!yaml.includes(`$${folder}`)) errors.push(`skills/${folder}/agents/openai.yaml: default prompt must reference $${folder}`);
-  }
 }
 
 function selectorsMayOverlap(left, right) {
@@ -477,9 +465,6 @@ export function validateAdrLocators(errors) {
 
 export function checkRepository() {
   const errors = [];
-  for (const removed of REMOVED_BOUNDARIES) {
-    if (existsSync(path.join(repositoryRoot, removed))) errors.push(`${removed}/ is outside the Skills source boundary`);
-  }
 
   const skillFolders = readdirSync(path.join(repositoryRoot, 'skills'), { withFileTypes: true })
     .filter((entry) => entry.isDirectory())

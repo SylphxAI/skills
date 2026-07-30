@@ -39,8 +39,9 @@ That does not require GitHub to provide the machines that execute company CI.
    runtime proof remains a separate capability. macOS proof may use the
    published owned macOS label array; Windows proof remains blocked until an
    owned Windows profile is published and verified.
-5. Repositories add deterministic conformance checks so a future workflow
-   cannot silently reintroduce a GitHub-hosted or dynamic runner selection.
+5. Runner selection is enforced and read back at the organization/provider
+   boundary that owns runner eligibility. Repositories do not add regex workflow
+   scanners or tests that merely restate allowed `runs-on` strings.
 
 ## Consequences
 
@@ -56,10 +57,10 @@ That does not require GitHub to provide the machines that execute company CI.
 
 ## Verification
 
-- `tests/ci-runner-profile.test.mjs` rejects dynamic and non-owned workflow
-  runner labels and asserts the runner-capacity standard has no GitHub-hosted
-  policy exception.
+- The provider/Platform observation for the exact workflow job proves its
+  requested and assigned runner profile. Workflow source alone is not runtime
+  assignment proof.
 - `npm run build:catalog`, `npm test`, and `npm pack --dry-run` validate the
-  packaged Skills source candidate.
+  packaged Skills source candidate but do not claim provider runner assignment.
 - Delivery records source, CI assignment, merge, and deployment/readback as
   separate evidence layers.

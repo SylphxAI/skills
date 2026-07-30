@@ -243,6 +243,40 @@ when they reduce state, clarify ownership, improve recovery, or lower
 operational cost for the repo boundary; do not force them into glue code where
 native primitives are clearer.
 
+### Established mechanisms before custom architecture
+
+Product and domain behavior may be novel. Commodity engineering machinery
+defaults to the simplest applicable published standard, language/runtime
+primitive, protocol, provider capability, or established reference design.
+Before introducing a custom framework, controller, gate, queue, status model,
+deployment stage, coordination service, or architecture term, compare it with
+that baseline and record:
+
+- the exact requirement the baseline cannot meet;
+- the semantic or measurable quality property added by the custom mechanism;
+- the extra state, coupling, dependencies, latency, failure modes, operations,
+  migration, support, and proof it creates; and
+- how standard clients, tools, operators, or a future replacement can cross its
+  boundary without learning private implementation vocabulary.
+
+This is proportional engineering, not a mandatory literature review. An
+obvious local use of a native primitive needs clear code and a narrow oracle;
+durable shared, cross-boundary, or operational custom machinery needs an ADR
+and explicit comparative evidence.
+
+If the input/output behavior, guarantees, failure handling, and measured
+quality are materially equivalent, use the established mechanism and its
+standard terminology. A wrapper, dashboard, status light, generated diagram,
+or renamed sequence is not an architecture improvement by itself. Delete or
+fold a custom layer that adds explanation and operating cost without a distinct
+capability or guarantee.
+
+Do not stack patterns for completeness. Select one coherent baseline, then add
+only complementary mechanisms whose activation predicates are independently
+satisfied. Architecture review compares observable outcomes and failure
+behavior against the baseline; a custom mechanism cannot validate itself only
+through its own authored statuses, vocabulary, or internal gates.
+
 ## Sources Of Truth
 
 One concept has one semantic authority. The project declares the authoritative

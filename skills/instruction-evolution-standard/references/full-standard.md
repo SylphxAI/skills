@@ -30,6 +30,10 @@ Rule IDs:
 5. No cost/size exemption permits god responsibility or obsolete architecture.
 6. Compatibility, waiting, and extra gates require demonstrated risk and
    positive expected value; optional hardening cannot extend a proven terminal.
+7. Shared instructions adopt applicable established standards and vocabulary
+   before inventing a custom mechanism. A custom term or architecture requires
+   an unmet requirement, closest-prior-art comparison, observable semantic or
+   quality delta, lifecycle cost, and replacement boundary.
 
 ## Change contract
 
@@ -39,6 +43,8 @@ A material generation change declares:
 - owning decision and exact static authority;
 - deterministic selector and denominator;
 - affected semantic contracts and replacement mapping;
+- applicable established baseline, and for every custom mechanism the unmet
+  requirement and observable delta over that baseline;
 - migration method, verification predicate, recovery, and terminal;
 - typed exceptions with owner, expiry, and replacement;
 - predecessor retirement condition.

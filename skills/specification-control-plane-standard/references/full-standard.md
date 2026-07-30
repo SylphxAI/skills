@@ -16,7 +16,8 @@ constraint either:
 - an ADR that records **why** a decision exists;
 - a schema, test, policy, eval, generated artifact, or telemetry contract that
   defines **what must be true**;
-- a GitHub issue/PR/work packet that coordinates **who is changing what**; or
+- a typed work packet in the selected coordination authority that coordinates
+  **who is changing what**; or
 - a delivery/proof artifact that shows **what happened in reality**.
 
 Spec-driven tools such as Spec Kit and OpenSpec are useful references for
@@ -34,11 +35,11 @@ contracts, exception records) in the sections below.
 
 | Fact | Machine gate |
 | --- | --- |
-| Why this architecture, public contract, persistence, migration, security, AI-workflow, commercial, or operational decision exists | ADR convention check, PR number binding, one new ADR per PR |
+| Why this architecture, public contract, persistence, migration, security, AI-workflow, commercial, or operational decision exists | ADR identity, ownership, status, and linkage appropriate to the decision |
 | What an API, SDK, CLI, tool, event, config, manifest, route, form, or package surface accepts/returns | contract diff, generated artifact freshness, compatibility tests |
 | What behavior must hold | test/eval/simulation status bound to candidate SHA |
-| What a non-trivial slice is trying to do before implementation | freshness/expiry and linked ADR/schema/test/PR check |
-| How agents coordinate parallel work | claim/lease/status checks and collision audit |
+| What a non-trivial slice is trying to do before implementation | typed work-packet freshness plus linked ADR/schema/test/exact-source evidence |
+| How agents coordinate parallel work | authoritative claim/lease/checkpoint state and collision audit |
 | What AI/model/agent behavior is acceptable | thresholded eval status, replay command, failure examples |
 | What production behavior proves success | deploy admission, canary/SLO verdict, trace/log/metric readback |
 | What temporary policy gap is tolerated | exception-expiry check; expired exceptions fail CI |
@@ -108,15 +109,22 @@ when the change touches any public, shared, persistent, generated, cross-repo,
 cross-runtime, operational, security, billing, migration, or high-risk AI
 surface.
 
-A work packet may be a GitHub issue, PR body metadata block, or JSON file. It
-must include:
+The authoritative work packet is a typed record in the selected coordination
+authority. A repository-declared JSON adapter may own it only when that live
+authority is unavailable. GitHub issues and pull requests may link to or project
+the packet for public collaboration, but their title/body prose cannot create,
+classify, complete, or waive the Work or its admission obligations.
+
+The packet includes:
 
 - stable id and owning repo;
 - role or agent lane;
 - goal and non-goals;
 - affected surfaces and write boundaries;
 - linked ADR/spec/schema/eval/test issue or PR;
-- risk class and required gates;
+- plausible risk hypotheses and expected evidence; the delivery authority
+  derives the binding risk class and required controls from the exact source
+  revision;
 - parallelization plan and collision risks;
 - validation, rollback/recovery, and delivery proof;
 - claim/lease metadata if multiple agents may work the same queue.

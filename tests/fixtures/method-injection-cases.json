@@ -792,6 +792,39 @@
     "tags": ["workaround", "regression", "objective-continuity"]
   },
   {
+    "id": "scope-discipline-complexity-theatre-cantonese",
+    "kind": "positive",
+    "prompt": "個 agent 將原本簡單嘅 CI、build、deploy 流程改咗一堆新名詞同狀態燈，但實際保証同結果冇增加、速度仲慢咗。請用最簡單業界基線比較，刪走冇 semantic delta 嘅 complexity theatre。",
+    "expectedSkills": ["scope-discipline"],
+    "artifacts": [],
+    "tags": ["multilingual", "complexity-theatre", "industry-baseline"]
+  },
+  {
+    "id": "scope-discipline-established-versus-custom",
+    "kind": "compound",
+    "prompt": "Choose between the ecosystem-native deployment pipeline and a proposed custom control layer. Compare prior art, the unmet requirement, observable semantic and quality delta, lifecycle cost and exit path; reject a renamed equivalent mechanism.",
+    "expectedSkills": ["decision-quality-standard", "scope-discipline"],
+    "artifacts": [{"artifact": "Decision Record", "owner": "decision-quality-standard"}],
+    "tags": ["prior-art", "custom-mechanism", "decision"]
+  },
+  {
+    "id": "ci-admission-semantic-gate-portfolio-cantonese",
+    "kind": "compound",
+    "prompt": "Audit 呢個愈來愈慢嘅 blocking CI：移除全庫字眼 ban、PR body 分類、manifest token presence、workflow script-name coupling 同用 regex 冒充 architecture proof 嘅 gates；保留或改造成真正由 compiler、schema、dependency graph、artifact 或 behavior 決定嘅 material admission evidence。",
+    "expectedSkills": ["ci-admission-standard", "scope-discipline"],
+    "artifacts": [{"artifact": "CI gate portfolio disposition", "owner": "ci-admission-standard"}],
+    "tags": ["multilingual", "ci", "semantic-oracle", "complexity-theatre"]
+  },
+  {
+    "id": "scope-discipline-neighbour-genuine-product-novelty",
+    "kind": "near-neighbour",
+    "prompt": "Explore a portfolio of genuinely unconventional product interaction concepts for a new creative tool before anyone selects the final design.",
+    "expectedSkills": ["design-space-exploration"],
+    "artifacts": [{"artifact": "Design Space Portfolio", "owner": "design-space-exploration"}],
+    "nearNeighbourOf": "scope-discipline",
+    "tags": ["product-innovation", "exploration"]
+  },
+  {
     "id": "scope-discipline-neighbour-high-risk-proof",
     "kind": "near-neighbour",
     "prompt": "Design the property, replay, fault-simulation and recovery evidence for an irreversible double-entry settlement workflow whose concurrency failure model is already declared.",
