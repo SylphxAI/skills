@@ -65,7 +65,9 @@ Skills only when their domain is touched.
   deploys the exact artifact for a tracked-branch SHA only after the
   repository-configured aggregate CI verdict for that same SHA succeeds.
   Build/artifact/SHA integrity remains an internal Platform invariant, not
-  additional project-quality green lights.
+  additional project-quality green lights. Platform builds the production
+  artifact once; repository CI may compile test-profile outputs but must not
+  build and discard the same release artifact for Platform to rebuild.
 - Preserve Git parallelism. Isolate unattributed or colliding mutable state,
   publish exact source revisions, and resolve conflicts through current
   contracts and Git rather than file locks.

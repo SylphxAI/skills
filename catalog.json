@@ -31,7 +31,7 @@
       "name": "agent-first-development-standard",
       "description": "No-human parallel development packets, change attribution, collision scopes, and machine-verifiable acceptance. Use when defining or running multi-agent software delivery without a human review dependency. Do not use for a small local edit or live Work Graph operations.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:d20246ebdbe6b36741ca2d010a1e9b5cc27dc690245fcd27939e7d0ef0d6fe7b"
+      "packageDigest": "sha256:4b0a7005a5da2c5f9dcdd44434e56b6af57dc43a08466c401980d67ae991b890"
     },
     {
       "name": "agent-native-standard",
@@ -91,7 +91,7 @@
       "name": "ci-admission-standard",
       "description": "CI admission tiers, semantic-oracle and gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including slow CI, string or regex source scanners, PR-body classifiers, custom lints, meta-checks, and architecture tests. Do not use for debugging one unrelated test failure.",
       "path": "skills/ci-admission-standard/SKILL.md",
-      "packageDigest": "sha256:2f3288944d8158a4d7b7e784684e28f6394df5efe3c6943c6e067e3363bbc509"
+      "packageDigest": "sha256:8f0d657fbabf9b5dcf2b916782fed68f8f1428451ddc39dec0eeac3fc2ccb90f"
     },
     {
       "name": "ci-runner-capacity-standard",
@@ -181,7 +181,7 @@
       "name": "delivery-standard",
       "description": "Delivery-terminal and shipped-state proof across source landing, artifacts, publication, deployment, rollback, and live readback. Use when a change must move beyond a local diff, commit, or open PR; when defining its shippable state; or when deciding whether it is landed, released, deployed, or live. Do not use when the request explicitly ends at local implementation or analysis without a delivery claim.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:9bee79bda01a7b60f0af8dbeffc154427bef08c914c54ae37f45a08a2bab7043"
+      "packageDigest": "sha256:a09dff019c67bdd124b05d2fb4c4a50a8cef88cb3f6ff7d0256ccfbbce42f6ef"
     },
     {
       "name": "dependency-version-selection",

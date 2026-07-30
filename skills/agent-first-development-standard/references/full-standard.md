@@ -116,6 +116,10 @@ Do not add CI to prove Enact lineage, reject PR versus direct trunk, or recreate
 Platform deployment state. Do not run the same heavy evidence twice without a
 specific integration failure it prevents.
 
+CI may compile test-profile code as a correctness oracle. Platform owns the
+single production artifact build. Agents do not wait for a disposable CI
+release build followed by a second Platform build.
+
 ## Delivery
 
 Platform exposes:
@@ -129,6 +133,11 @@ same source SHA as the built artifact. Build and CI may run in parallel. Exact
 SHA/digest identity, health, rollback, idempotency, and event recovery remain
 binding; selected snapshots, cumulative watermarks, and proof-bundle product
 semantics do not.
+
+Build once and deploy the same immutable artifact across environments. When
+frontend bytes necessarily contain environment-specific public configuration,
+declare and measure the narrower build-once-per-environment-profile contract
+instead of hiding rebuilds.
 
 Source landing releases the producer when only external CI, build, deploy,
 soak, or approval can advance the Work. Use Enact `work.defer` when available

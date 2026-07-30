@@ -39,6 +39,30 @@ These are contribution paths, not safety levels. A PR is useful for public
 discussion, external contribution, and pre-merge feedback. Correctness still
 comes from the code, review, exact-SHA checks, and effect policy.
 
+### Pull-request and default-branch evidence
+
+A pull-request check and a default-branch check are not automatically the same
+observation. A forge may test a synthetic merge commit, while squash or rebase
+landing creates a different commit SHA. Use the simplest repository-native
+choice:
+
+- internal direct-trunk work normally has one authoritative default-branch CI
+  run and no duplicate presubmit;
+- external or PR-required work runs the checks needed for safe pre-merge
+  feedback, then produces the configured aggregate verdict for the exact
+  landed SHA used by deployment;
+- when a forge can preserve or natively attest the exact validated landing
+  revision, reuse that provider fact; otherwise do not invent a tree-equivalence
+  ledger or Platform evidence-transfer service merely to avoid one PR-path
+  check; and
+- keep the external/PR path economical by running the same affected jobs,
+  caches, and reusable workflow rather than two divergent full suites.
+
+If duplicate PR/default-branch computation is material, first prefer direct
+trunk for authorized internal work, provider-native merge behavior, shared
+remote caches, and a smaller sound presubmit. A custom evidence-reuse system
+must name an integration failure it prevents and prove positive net value.
+
 ### Merge queue
 
 Do not enable merge queue by default. Enable it only for a PR-required branch
@@ -77,6 +101,26 @@ checks. It preserves their individual outcomes for diagnosis; it does not turn
 stage progress, renamed statuses, or a dashboard sequence into additional
 evidence.
 
+### CI is not the production artifact builder
+
+Repository CI proves source correctness. The declared release provider builds
+the immutable production artifact once and deploys that same digest. Do not run
+a disposable production/release build in CI and then rebuild equivalent bytes
+in Platform.
+
+CI may compile code, bundle test fixtures, or build a debug/test-profile binary
+when that is the cheapest semantic oracle. Those outputs are test evidence, not
+the production artifact. Release-profile, container, packaging, and
+artifact-specific smoke evidence should consume the exact provider-built
+artifact when the failure belongs to packaging or runtime assembly.
+
+If the exact production build is the only meaningful compile/package proof,
+let the release provider own that artifact-readiness result and omit the
+duplicate CI build, or run a cheaper test-profile compiler check in CI.
+`After Verification` still requires both CI success and artifact readiness;
+artifact readiness does not become another project-quality verdict. Do not
+build twice merely to make two dashboards green.
+
 ### Fast feedback and complete confidence
 
 1. Run formatting, static analysis, compilation/typechecking, schema/contract
@@ -102,6 +146,23 @@ security, or audit evidence.
 
 Cancellation is a CI concurrency optimization, not a selected-snapshot product
 or watermark system.
+
+Use provider-native concurrency keyed by the change stream that can supersede
+it—normally pull-request identity for PR updates and branch/ref for
+default-branch pushes. Grouping by the unique commit SHA cannot cancel older
+runs because every update creates a new group. Do not add a custom
+runner-canceller when the forge's native concurrency semantics are sufficient.
+
+For GitHub Actions, the ordinary shape is:
+
+```yaml
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+```
+
+Use a different key only when the repository has a named non-supersedable
+evidence stream.
 
 ## Gate portfolio discipline
 
@@ -234,6 +295,11 @@ prebuilt images, test sharding, incremental compilation, and runner capacity.
 Do not add another admission service when the bottleneck is ordinary compute,
 cache misses, or oversized suites.
 
+Track production-build amplification separately: the normal target is one
+production artifact build per deployed source revision. Also track worker time
+spent waiting on CI; an agent should checkpoint and release when only provider
+state can advance the outcome.
+
 ## Security and supply chain
 
 Apply least privilege, untrusted-input isolation, immutable action/tool pins,
@@ -267,6 +333,10 @@ quality checks.
 - Merge queue exists only where repository metrics justify it.
 - Required check p50/p95 latency, queue delay, cancellation, and flake rate are
   observable.
+- CI does not build and discard a production artifact that Platform rebuilds;
+  production-build amplification is observable and normally equals one.
+- Superseded PR/default-branch runs use provider-native change-stream
+  concurrency rather than unique-SHA grouping or a custom cancellation plane.
 - No ordinary CI path depends on Platform Candidate, selected-snapshot, or
   verification-watermark services.
 
@@ -276,4 +346,5 @@ quality checks.
 - [DORA: Working in small batches](https://dora.dev/capabilities/working-in-small-batches/)
 - [GitHub: Managing a merge queue](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
 - [GitHub: Protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
+- [GitHub Actions: Pull request events and merge commits](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request)
 - [GitHub Actions: Concurrency](https://docs.github.com/en/actions/using-jobs/using-concurrency)

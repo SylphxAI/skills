@@ -23,6 +23,7 @@ standard `On Commit / After Verification / Off` deployment model defined by
 | PR safety | Treated as a policy lane | Collaboration/pre-merge feedback envelope | Do not overclaim |
 | Merge queue | Compatibility serializer / broad default | Opt-in for measured contention on PR-required branches | Default off |
 | CI | Candidate admission plus cumulative watermarks | Exact-SHA jobs plus one aggregate verdict | Simplify |
+| Production build | Release build in CI plus Platform rebuild | Platform builds production artifact once; CI uses test-profile compilation | Delete duplicate build |
 | Build/artifact/SHA | Presented as multiple proofs | Internal deployment-record invariants | Demote from product proof |
 | Deploy | Selected verified snapshot | On Commit / After Verification / Off | Replace |
 | Supersede | Selected-snapshot coalescing | Cancel obsolete CI/deploy work where safe | Use provider concurrency |
@@ -69,16 +70,27 @@ exact tracked-branch SHA
 ```
 
 - Start build and CI concurrently.
+- Platform builds the production artifact once. CI may compile test-profile
+  outputs but must not build and discard the same release/container artifact.
 - Fail fast inside a run.
-- Cancel safely superseded runs.
+- Cancel safely superseded runs with provider-native PR/ref concurrency; a
+  unique-SHA group does not cancel previous revisions.
 - Use sound affected-test selection plus periodic full audits.
 - Store one exact-SHA verification observation for audit/replay.
 - Do not create a second cumulative watermark authority.
+
+For PR-required or external contributions, presubmit protects collaboration and
+the exact landed SHA remains deployment authority. Reuse a provider-native
+exact landing observation when the forge supplies one. Otherwise keep the
+external path affected, cached, and economical; do not create a custom
+tree-equivalence or evidence-transfer control plane just to remove one rerun.
 
 ## Safety retained
 
 - non-force Git integration;
 - exact source revision and immutable artifact digest;
+- build once and deploy the same immutable artifact, or once per explicitly
+  declared environment profile where bytes necessarily differ;
 - one sound aggregate CI verdict;
 - least-privilege CI and untrusted-contribution isolation;
 - idempotent/generation-fenced deployment pointer updates;
@@ -124,6 +136,8 @@ acceptance requires:
 3. no PR-vs-DT ingress rejection;
 4. exact-SHA positive and negative deploy tests;
 5. event-driven deploy dispatch with recovery-only reconciliation;
-6. live latency and rollback evidence; and
-7. predecessor retirement, not aliases that keep two authorities.
-
+6. one production build per source/environment profile, with the same digest
+   used for artifact smoke, deployment, promotion, and rollback;
+7. provider-native supersede/cancellation and measured CI/build amplification;
+8. live latency and rollback evidence; and
+9. predecessor retirement, not aliases that keep two authorities.

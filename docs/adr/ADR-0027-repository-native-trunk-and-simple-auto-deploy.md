@@ -108,6 +108,26 @@ source revision
 No separate Platform Candidate admission, verification watermark, or landing
 controller is required to express this model.
 
+PR checks and landed-main checks are not automatically interchangeable: a
+forge may verify a synthetic merge SHA, while squash or rebase creates another
+SHA. Internal direct-trunk work normally pays one default-branch CI run.
+External or PR-required work pays the presubmit needed for safe collaboration
+and still emits the configured verdict for the exact landed SHA. Reuse a
+provider-native exact landing fact when available; otherwise keep that
+compatibility path small and cached rather than inventing a Platform
+tree-equivalence/evidence-transfer authority.
+
+CI does not own the production artifact build. It may compile test-profile code
+or fixtures where compilation is a semantic check. Platform builds the
+production artifact once, and artifact/package smoke consumes that same digest.
+A disposable CI release/container build followed by a Platform rebuild is
+forbidden unless two genuinely different artifacts are named and required.
+
+Superseded work uses forge-native concurrency keyed by PR identity or
+branch/ref. A unique-SHA concurrency group cannot supersede an earlier SHA and
+must not be presented as cancellation. Do not build a custom runner-cancellation
+plane where native concurrency is sufficient.
+
 ### 5. Expose only three auto-deploy modes
 
 ```text
@@ -121,7 +141,7 @@ Auto Deploy:
 
 ```text
 tracked-branch SHA observed
-  ├─ build exact artifact
+  ├─ Platform builds exact production artifact once
   └─ await configured aggregate CI verdict for the same SHA
        -> both succeed
        -> deploy exact artifact
@@ -137,6 +157,12 @@ is not a cumulative watermark abstraction.
 The normal path is event-driven. A bounded reconciler may recover missed
 webhooks or interrupted transitions; polling and claim loops are not the happy
 path. Newer revisions may supersede obsolete undeployed revisions.
+
+The same immutable digest is promoted through environments and retained for
+rollback. Environment configuration belongs to release/run time when possible.
+If frontend public configuration is necessarily baked into the bytes, the
+declared contract is build once per environment profile rather than a false
+cross-environment build-once claim.
 
 ### 6. Keep review independent from the forge envelope
 
@@ -200,10 +226,15 @@ or reasons to block the simple path.
    exact-SHA CI failure blocks `After Verification`.
 6. Build and CI can run concurrently; verification success to deploy dispatch
    is event-driven and measured in seconds under a healthy control plane.
-7. Failed rollout health retains or restores the previous current deployment.
-8. Merge queue is absent by default and justified by repository-level
+7. CI does not build and discard a production artifact that Platform rebuilds;
+   the normal production-build amplification is one per source/environment
+   profile.
+8. Superseded CI uses provider-native PR/ref concurrency, not unique-SHA
+   grouping or an ordinary custom runner-canceller.
+9. Failed rollout health retains or restores the previous current deployment.
+10. Merge queue is absent by default and justified by repository-level
    contention evidence wherever enabled.
-9. Legacy Candidate/watermark/selected-snapshot write paths are retired, and
+11. Legacy Candidate/watermark/selected-snapshot write paths are retired, and
    no recovery controller recreates them.
 
 ## Primary references
@@ -211,10 +242,14 @@ or reasons to block the simple path.
 - [DORA: Trunk-based development](https://dora.dev/capabilities/trunk-based-development/)
 - [GitHub: Managing a merge queue](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
 - [GitHub: About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
+- [GitHub Actions: Pull request events and merge commits](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request)
+- [GitHub Actions: Concurrency](https://docs.github.com/en/actions/using-jobs/using-concurrency)
 - [Render: Deploys](https://render.com/docs/deploys)
 - [Railway: GitHub autodeploys and Wait for CI](https://docs.railway.com/deployments/github-autodeploys)
 - [Vercel: Git deployments](https://vercel.com/docs/deployments/git)
 - [Vercel: Deployment checks](https://vercel.com/docs/deployment-checks)
+- [The Twelve-Factor App: Build, release, run](https://12factor.net/build-release-run)
+- [AWS Prescriptive Guidance: Build once, deploy many](https://docs.aws.amazon.com/prescriptive-guidance/latest/choosing-git-branch-approach/build-once-deploy-many.html)
 
 ## Supersession
 

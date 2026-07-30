@@ -45,7 +45,7 @@ Environments expose exactly:
 
 ```text
 tracked-branch revision
-  ├─ build exact artifact
+  ├─ Platform builds exact production artifact once
   └─ await configured CI verdict for the same SHA
        -> both success
        -> deploy exact artifact
@@ -62,11 +62,35 @@ Normal transitions are event-driven. A low-frequency reconciler may recover a
 missed webhook or interrupted transition, but it is not the happy-path
 orchestrator. A newer revision may supersede obsolete undeployed revisions.
 
+## Build once, deploy the artifact
+
+The release provider is the sole production-artifact builder for a deployable
+revision:
+
+1. resolve immutable source and dependency inputs;
+2. build one content-addressed production artifact;
+3. run packaging/runtime smoke against that artifact;
+4. promote the same digest through environments; and
+5. retain the same digest for rollback and provenance.
+
+Repository CI may compile or bundle test-profile outputs as semantic checks. It
+must not create and discard a production/release artifact that Platform then
+rebuilds. A release-profile or container-specific test consumes the
+provider-built artifact instead of rebuilding equivalent source.
+
+Environment-specific configuration is attached at release/run time where the
+application contract permits. If public/client configuration is irreducibly
+baked into frontend bytes, state the honest boundary as **build once per
+declared environment profile**; do not claim one cross-environment artifact.
+Prefer runtime configuration when it removes unnecessary environment-specific
+rebuilds without weakening cache, security, or client behavior.
+
 ## Exact identity and rollback
 
 - Bind every deployment to the exact source revision and immutable artifact
   digest.
-- Build once and promote the same artifact across environments.
+- Build once and promote the same artifact across environments, or once per
+  explicitly declared environment profile when bytes necessarily differ.
 - Update desired/current pointers idempotently with compare-and-swap or
   generation fencing.
 - Run readiness/health checks before declaring current.
@@ -164,6 +188,9 @@ or PR bodies.
 - Verification failure never deploys under `After Verification`.
 - Build and verification can run in parallel.
 - Verification success to deploy dispatch is event-driven and measured.
+- The normal path creates one production artifact per source/environment
+  profile and deploys that exact digest; CI does not perform a second
+  disposable production build.
 - Failed health retains or restores previous current.
 - No ordinary path requires scoped watermarks, selected snapshots, proof
   bundles, policy epochs, or Platform-selected landing.
@@ -175,3 +202,5 @@ or PR bodies.
 - [Railway Wait for CI](https://docs.railway.com/deployments/github-autodeploys)
 - [Vercel Git deployments](https://vercel.com/docs/deployments/git)
 - [Vercel deployment checks](https://vercel.com/docs/deployment-checks)
+- [The Twelve-Factor App: Build, release, run](https://12factor.net/build-release-run)
+- [AWS Prescriptive Guidance: Build once, deploy many](https://docs.aws.amazon.com/prescriptive-guidance/latest/choosing-git-branch-approach/build-once-deploy-many.html)
