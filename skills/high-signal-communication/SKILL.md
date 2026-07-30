@@ -1,6 +1,6 @@
 ---
 name: high-signal-communication
-description: "Compress or restructure an agent communication into a concise, decision-complete, high-signal artifact. Use when the user explicitly asks to shorten, de-duplicate, hand off, summarize progress, reduce context cost, or repair a verbose/slow-to-understand reply, report, commit, PR, ADR, spec, incident note, or agent record. Do not inject by default for every ordinary reply or document."
+description: "Compress or restructure an agent communication into a concise, answer-first, decision-complete artifact. Use when the user asks for a brief, scannable, action-first, de-duplicated, ADHD-friendly, or less verbose reply, handoff, progress summary, report, commit, PR, ADR, spec, incident note, or agent record, or asks to reduce context cost. Do not inject by default for every ordinary reply or document."
 ---
 
 # High-Signal Communication
@@ -33,7 +33,9 @@ tokens proving diligence, narrating routine work, or repeating shared context.
    content or raw history.
 5. Compress language: direct verbs, one idea per sentence, concrete nouns,
    stable terms, no ceremonial opening or closing.
-6. Run the signal test again and stop.
+6. Perform agent-owned actions before reporting them. Do not turn an available
+   tool action into instructions for the user merely to shorten the response.
+7. Run the signal test again and stop.
 
 ## Composition
 
@@ -61,6 +63,9 @@ question into the primary output.
   tokens. Avoid diagrams and decorative formatting by default.
 - Use JSON, YAML, or another schema only when a machine contract requires it;
   structured-looking prose is not automatically clearer.
+- Use professional complete sentences by default. Telegraphic grammar, forced
+  slang, unexplained abbreviations, and artificial fragments can be shorter
+  while taking longer to understand.
 
 ## Surface contracts
 
@@ -68,13 +73,21 @@ question into the primary output.
 
 Lead with the answer. Add rationale only until the answer is actionable and
 correct. Do not restate the question, announce the response structure, or end
-with a summary of the summary.
+with a summary of the summary. Do not append a generic invitation, call to
+action, or next step when the request is already complete.
 
 ### Progress update
 
 Report the delta since the last update: changed state, new evidence, current
 blocker, or next action. Do not replay completed history. Include an ETA only
 when requested or decision-useful.
+
+### Failure or blocker
+
+State the failed operation or object, observed cause, impact on the requested
+terminal, and the smallest executable recovery or decision. Separate confirmed
+cause from hypothesis. Omit apology loops, emotional framing, and the
+investigation diary.
 
 ### Handoff or checkpoint
 
@@ -112,6 +125,9 @@ command output when a bounded extraction proves the claim.
 - Do not replace clear language with unexplained acronyms, dense fragments,
   vague pronouns, or private jargon.
 - Do not hide a missing decision behind polished brevity.
+- Do not force an arbitrary number of bullets, steps, sentences, or headings.
+  Number only real sequences; group peers only when the grouping improves
+  retrieval.
 - Preserve the user's requested language, register, and useful domain terms.
   Use `voice-preserving-editor` when voice or locale shaping is separately in
   scope.

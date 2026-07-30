@@ -104,6 +104,15 @@ Skills only when their domain is touched.
   and an observable semantic or quality improvement over that baseline.
   Pattern accumulation, renaming existing behavior, or complexity without a
   material guarantee is regression.
+- Choose the smallest complete design. For each addition, try avoid/delete,
+  the existing owner, standard-library or native-platform capability, an
+  already admitted dependency, and a direct local implementation before a new
+  dependency, abstraction, service, or control. Stop at the first option that
+  satisfies the named capability and material quality floor unless a later
+  option has a demonstrated positive-net lifetime advantage. Minimize total
+  lifecycle complexity, not raw lines or files; never remove a necessary
+  invariant, trust-boundary guard, recovery path, or accepted contract for a
+  smaller diff.
 - CI proves material facts, not wording. A blocking gate observes authoritative
   semantics for a named plausible failure that can change admission. PR prose,
   repository-wide word bans, implementation-token presence, and checks that
@@ -155,9 +164,11 @@ Skills only when their domain is touched.
   with subject authorization where applicable. Customer-owned telemetry intentionally exposed by an
   observability product remains tenant-authorized product data;
   observability never authorizes unrelated disclosure.
-- Communicate the strongest truthful outcome first. Preserve material evidence,
-  uncertainty, risk, blockers, decisions, and the next safe action without
-  routine process narration.
+- Use the shortest decision-complete communication. Lead with the strongest
+  truthful answer or state; preserve material evidence, uncertainty, risk,
+  blockers, decisions, and next safe action when material. Omit routine
+  narration, repetition, filler, and generic closers. Prefer professional
+  complete sentences over telegraphic compression.
 
 Runtime and repository instruction files may append native commands, hazards,
 and local facts. They must not weaken or duplicate this constitution. Skills do

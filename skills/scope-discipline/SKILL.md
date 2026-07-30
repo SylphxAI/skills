@@ -1,6 +1,6 @@
 ---
 name: scope-discipline
-description: "Prevent over-engineering, under-engineering, workaround-driven regression, custom mechanisms without proven advantage, and moving completion bars while keeping planning, implementation, migration, architecture, and review fast, rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, complexity theatre, weak shortcuts, or unjustified waiting."
+description: "Right-size planning, implementation, migration, architecture, and review: prevent over-engineering, under-engineering, workaround regression, unnecessary code, dependencies, files, abstractions, gates, or waiting while preserving the real correctness and delivery floor. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, complexity theatre, weak shortcuts, or a request for the simplest complete durable solution."
 ---
 
 # Scope Discipline
@@ -40,6 +40,40 @@ contradictory.
   but do not use "root cause" as permission to redesign unrelated systems.
 - If evidence disproves the current plan, replan directly. Do not preserve sunk
   work, ceremony, or a preferred mechanism.
+
+### Choose the smallest complete solution
+
+For each proposed code path, dependency, abstraction, service, process, or proof
+mechanism, evaluate this ladder in order:
+
+1. avoid, delete, or simplify it if the objective still passes;
+2. reuse or repair the existing owning path;
+3. use the language standard library or an ecosystem-, platform-, or
+   provider-native primitive;
+4. use an already admitted dependency or shared capability;
+5. add the smallest direct implementation inside the owning boundary; and
+6. add a new dependency, abstraction, service, or control only for a named
+   requirement that the earlier rungs cannot satisfy.
+
+Stop at the first rung that meets the declared capability, correctness,
+security, privacy, reliability, maintainability, performance, compatibility,
+and delivery floor, unless a later rung has a named positive-net lifetime
+advantage under the bounded high-value scan. Understand the end-to-end path
+before minimizing it. Minimize total lifecycle complexity, not raw lines,
+files, functions, or dependencies. More explicit code can be the smaller system
+when it protects a trust boundary, makes state or ownership visible, removes
+coupling, or avoids a permanent operational surface.
+
+Do not compress away validation, error handling for plausible failures,
+accessibility, recovery, data integrity, observability needed by the failure
+model, or an accepted public contract. Conversely, do not preserve a custom
+wrapper, helper, compatibility path, or abstraction merely because it already
+exists.
+
+Resolve discoverable facts from the current source and environment before
+questioning the user. Ask only when a material product, authority, destructive,
+or irreversible choice cannot be derived safely. A serial interview is an
+explicit deliberation mode, not the default execution path.
 
 ### Execute for time-to-value
 
@@ -294,6 +328,11 @@ maximum tests, or theoretical perfection.
 - Keep the proof surface smaller than, or proportionate to, the behavior being
   protected. A small content or code change must not silently become a new
   authorization platform or operational service.
+- Treat numeric limits on files, lines, dependencies, tools, questions, or
+  review rounds as real constraints only when they derive from an accepted
+  contract, resource budget, or measured failure. Otherwise use them as
+  diagnostic pressure, never as authority to omit a necessary invariant or
+  distort a coherent boundary.
 - Do not create machinery whose lifecycle is larger than the problem it solves.
 - Include high-return future-proofing found by the bounded high-value scan. Do not use
   future-proofing as a label for speculative abstraction or unrelated scope.
@@ -339,6 +378,11 @@ verified, not the point where imagination runs out.
   delivery procedures; use it alongside them to keep their application bounded.
 - Do not label necessary root-cause work as over-engineering merely because the
   direct fix is difficult.
+
+Read
+[references/right-sized-agent-engineering.md](references/right-sized-agent-engineering.md)
+only when evolving this method, auditing an external simplicity or workflow
+method, or evaluating claims about code, token, or process reduction.
 
 ## Output
 

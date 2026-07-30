@@ -952,5 +952,55 @@
     "artifacts": [],
     "coverageFor": ["autonomous-execution-standard", "delivery-standard"],
     "tags": ["abstention", "short-answer"]
+  },
+  {
+    "id": "scope-discipline-smallest-complete-solution",
+    "kind": "positive",
+    "prompt": "This implementation has grown into new helpers, wrappers and dependencies. Rework it into the simplest complete durable solution: reuse existing or native capabilities first, but do not remove real validation, recovery or delivery guarantees merely to reduce LOC.",
+    "expectedSkills": ["scope-discipline"],
+    "artifacts": [],
+    "tags": ["right-sizing", "reuse", "native", "safety-floor"]
+  },
+  {
+    "id": "scope-discipline-no-arbitrary-file-cap",
+    "kind": "positive",
+    "prompt": "Right-size this refactor. I care about low lifecycle complexity, not an arbitrary three-file or 100-line target; preserve coherent ownership and add new machinery only when it changes a named guarantee.",
+    "expectedSkills": ["scope-discipline"],
+    "artifacts": [],
+    "tags": ["right-sizing", "numeric-cap", "ownership"]
+  },
+  {
+    "id": "high-signal-communication-cantonese",
+    "kind": "positive",
+    "prompt": "將呢份長篇 status report 壓縮成簡潔、答案先行、容易掃讀但證據同風險完整嘅版本，唔好重複歷史或者加 generic 收尾。",
+    "expectedSkills": ["high-signal-communication"],
+    "artifacts": [],
+    "tags": ["multilingual", "concise", "status", "answer-first"]
+  },
+  {
+    "id": "high-signal-communication-adhd-friendly",
+    "kind": "positive",
+    "prompt": "Rewrite this incident update so it is ADHD-friendly and action-first without losing the confirmed cause, impact, evidence, recovery state or uncertainty. Use professional language, not telegraphic fragments.",
+    "expectedSkills": ["high-signal-communication"],
+    "artifacts": [],
+    "tags": ["concise", "adhd-friendly", "incident", "professional"]
+  },
+  {
+    "id": "high-signal-communication-neighbour-detailed-explanation",
+    "kind": "near-neighbour",
+    "prompt": "Teach me this unfamiliar consensus protocol carefully. I need a complete conceptual explanation with examples and trade-offs; I am not asking for a shortened summary.",
+    "expectedSkills": [],
+    "artifacts": [],
+    "nearNeighbourOf": "high-signal-communication",
+    "tags": ["detailed-explanation", "not-compression"]
+  },
+  {
+    "id": "high-signal-communication-abstain-short-fact",
+    "kind": "abstention",
+    "prompt": "What version is declared in this package manifest? Reply with the version only.",
+    "expectedSkills": [],
+    "artifacts": [],
+    "coverageFor": ["high-signal-communication"],
+    "tags": ["short-answer", "no-method-needed"]
   }
 ]

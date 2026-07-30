@@ -251,6 +251,9 @@ Good prompt rules are:
 - Bounded: "Ask before destructive VCS, database, or infrastructure changes."
 - Verifiable: "Report validation run and skipped checks."
 - Composable: "Read the relevant standard only when the task touches that domain."
+- Calibrated: "The package must remain below the accepted 50 kB distribution
+  budget." A numeric cap is binding only when an owned contract, measured
+  resource limit, or known failure justifies it.
 
 For current-state and autonomy rules, encode a decision boundary rather than a
 personality request. Route material drift-prone claims to the Decision Quality Standard
@@ -275,6 +278,9 @@ Avoid rules that are:
 - Freshness theatre: forcing every fact through a network lookup, or treating a
   failed lookup as proof that a thing is absent or current.
 - Overloaded: one prompt trying to be constitution, handbook, workflow, memory, and task brief.
+- Proxy-constrained: "touch at most three files" or "keep this under 100 lines"
+  without a real contract. Use such numbers as optional design pressure, never
+  as authority to hide coupling or omit a necessary invariant.
 
 ## Refactoring Existing Prompts
 

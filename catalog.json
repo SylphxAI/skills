@@ -293,9 +293,9 @@
     },
     {
       "name": "high-signal-communication",
-      "description": "Compress or restructure an agent communication into a concise, decision-complete, high-signal artifact. Use when the user explicitly asks to shorten, de-duplicate, hand off, summarize progress, reduce context cost, or repair a verbose/slow-to-understand reply, report, commit, PR, ADR, spec, incident note, or agent record. Do not inject by default for every ordinary reply or document.",
+      "description": "Compress or restructure an agent communication into a concise, answer-first, decision-complete artifact. Use when the user asks for a brief, scannable, action-first, de-duplicated, ADHD-friendly, or less verbose reply, handoff, progress summary, report, commit, PR, ADR, spec, incident note, or agent record, or asks to reduce context cost. Do not inject by default for every ordinary reply or document.",
       "path": "skills/high-signal-communication/SKILL.md",
-      "packageDigest": "sha256:cf1f4af3e935b6bd645b71b1e4e48b2fcd2046bbbb9c29d9164c9cf24ba9d916"
+      "packageDigest": "sha256:3c722367993f2697917f14d2494a6ad94f5ed5b918eb9157c92e74e7d9f4e165"
     },
     {
       "name": "incident-standard",
@@ -457,7 +457,7 @@
       "name": "prompt-architecture",
       "description": "Design or audit durable agent instructions, runtime constitutions, Skill metadata, agent-to-agent and subagent briefs, bootstrap/install prompts, and instruction hierarchy without duplicating source policy. Use when creating, reviewing, projecting, or restructuring agent prompt architecture. Do not use for ordinary user-facing copy or one task's content brief alone.",
       "path": "skills/prompt-architecture/SKILL.md",
-      "packageDigest": "sha256:c16ec760949b48138ab7745696ed5180b29020a094f62c5776be3e596c257117"
+      "packageDigest": "sha256:cdd7c8e5d6ad8b755c4ea492b206c746d702721c96e761e6efb126ad4e6805ed"
     },
     {
       "name": "provenance-system-design",
@@ -533,9 +533,9 @@
     },
     {
       "name": "scope-discipline",
-      "description": "Prevent over-engineering, under-engineering, workaround-driven regression, custom mechanisms without proven advantage, and moving completion bars while keeping planning, implementation, migration, architecture, and review fast, rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, complexity theatre, weak shortcuts, or unjustified waiting.",
+      "description": "Right-size planning, implementation, migration, architecture, and review: prevent over-engineering, under-engineering, workaround regression, unnecessary code, dependencies, files, abstractions, gates, or waiting while preserving the real correctness and delivery floor. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, complexity theatre, weak shortcuts, or a request for the simplest complete durable solution.",
       "path": "skills/scope-discipline/SKILL.md",
-      "packageDigest": "sha256:0a0ce7260a199f8bac99acf9d568c592b3843f05cb24efabfbc0487236872c3e"
+      "packageDigest": "sha256:c59f0c92cee578d5ee279e63900c130b1617009f4f53cd2bb32c22ead749f473"
     },
     {
       "name": "search-discovery-quality-review",
