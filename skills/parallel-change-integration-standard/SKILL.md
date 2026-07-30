@@ -1,6 +1,6 @@
 ---
 name: parallel-change-integration-standard
-description: "Parallel agent change integration with compare-and-swap landing, bounded duplicate attempts, verification watermarks, and verified-only promotion. Use when candidate generation can outpace shared verification or deployment capacity. Do not use for ordinary low-contention edits."
+description: "Repository-native integration for measured high-contention agent work: direct-trunk conflict recovery, short-lived PRs, optional merge queue, CI backpressure, and duplicate-work handling. Use only when concurrent source activity creates material collisions, stale-base failures, or verification backlog. Do not use for ordinary low-contention edits."
 ---
 # Parallel Change Integration Standard
 

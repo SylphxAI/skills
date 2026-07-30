@@ -2,658 +2,250 @@
 
 ## Purpose
 
-Use this standard when a repo or product is built by many autonomous agents,
-subagents, and tools working in parallel. Humans own direction, taste, funding,
-and exceptional approvals; they are not part of the normal review, merge,
-release, or coordination loop. Treat the ecosystem like a very large open-source
-project with thousands of contributors and no manager in the middle: order comes
-from contracts, ownership, profile-selected machine admission/serialization,
-and durable written context.
+Use this standard when autonomous agents perform most repository work. Optimize
+for small batches, clear authority, high useful throughput, reliable evidence,
+and low coordination cost—not imitation of a human organization.
 
-This standard composes with:
+## Authority
 
-- [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for the doc/spec/ADR
-  altitude map and freshness gates.
-- [`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)
-  for work packets, spec lifecycle records, eval manifests, telemetry contracts,
-  exception records, and SDD-tool adapter boundaries.
-- [`agent-native-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-native-standard/references/full-standard.md) for executable specs,
-  schemas, tools, delegation, and durable context.
-- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md) for
-  execution graphs, subagents, latency hiding, and cross-project boundaries.
-- [`source-authoring-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/source-authoring-standard/references/full-standard.md) for Work Item,
-  attempt, exact candidate, semantic atomicity, commit/worktree projections, and
-  workspace reconciliation.
-- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for PR, merge, release, and
-  production verification ownership.
-- [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md) for no-human CI
-  admission tiers, preview policy, affected selection, and merge-queue integrity.
-- [`repo-adoption-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/repo-adoption-standard/references/full-standard.md) for minimum repo
-  adoption surfaces and conformance entrypoints.
-- [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-runner-capacity-standard/references/full-standard.md) for CI
-  compute ownership, runner profiles, and queue capacity diagnosis.
-- [`parallel-change-integration-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/parallel-change-integration-standard/references/full-standard.md)
-  for the candidate successor architecture when universal-agent arrival exceeds
-  PR, merge-queue, CI, preview, or deployment admission capacity.
-- [`risk-matched-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/risk-matched-verification-standard/references/full-standard.md)
-  for property/model tests, deterministic simulation, spec/eval gates, and
-  canary analysis selection rules.
-- [`enterprise-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/enterprise-profile-standard/references/full-standard.md) for the
-  binding no-human and delivery-adapter selections.
-- [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for collision-resistant ADR identity.
+| Concern | Authority |
+| --- | --- |
+| Static method | `SylphxAI/skills` |
+| Work coordination | Enact when available; otherwise the declared adapter |
+| Source | Git repository and forge |
+| CI correctness | Repository-owned checks |
+| Build/deploy | Platform or declared release provider |
+| Live behavior | Runtime provider observations |
 
-## Ultimate Target: One Candidate Contract With Central Admission
+A session is not a work ledger. Prompts and transcripts are disposable
+execution context. Git is source truth, not Work truth. Enact is Work truth,
+not source or deploy truth.
 
-Every agent and external contribution publishes the same provider-neutral,
-immutable Candidate contract. Agents do not classify their own work into a
-pull-request lane or a direct-trunk lane. The delivery authority reads the exact
-Candidate and repository declaration, derives collision, risk, evidence,
-independent-review, and effect obligations, then executes the selected
-compare-and-swap landing adapter.
-
-An internal ordinary Candidate normally has no pull-request ceremony. An
-external pull request is ingested as a Candidate and may remain as the public
-collaboration projection. A fenced provider pull request is a bounded
-compatibility implementation selected by policy during migration, not a second
-workflow or a stronger definition of safety. Until the unified Candidate path
-is live for a repository, its digest-bound compatibility profile remains
-enforced and the missing successor is recorded as an adoption gap; agents must
-not improvise a bypass.
-
-The strongest target is a self-feeding autonomous engineering system:
+## Smallest complete loop
 
 ```text
-Production / CI / security / customer / delivery-adapter signals
-  -> profile-selected canonical Work Ledger as the internal work-state source
-  -> proposals are deduplicated and admitted without implicitly assigning their author
-  -> typed work items classify scope, perspective, tenant, risk, proof, and next action
-  -> eligible agents claim scoped work through leases and checkpoint events
-  -> every producer publishes one immutable provider-neutral Candidate
-  -> central admission derives exact-candidate proof, review, collision, and effect obligations
-  -> the configured CAS landing adapter integrates the selected candidate
-  -> deploy / release verification observes reality
-  -> new signals create or update work items
+signal or owner request
+  -> propose/deduplicate/admit Work when coordination is required
+  -> eligible agent claims one bounded outcome
+  -> implement one coherent exact Git revision
+  -> repository-native direct-trunk or PR integration
+  -> exact-SHA CI and any risk-selected review
+  -> worker release at external-only wait
+  -> build/deploy/readback event completes or creates correction Work
 ```
 
-This target is intentionally larger than the first implementation slice. Keep it
-visible so MVP delivery does not erase the north star, but implement it through
-small, semantically atomic, verified source candidates.
+Do not build a Platform Candidate/landing control plane around this loop.
 
-Responsibility split:
-
-- **The selected coordination system owns internal work-state**: Work Items, claims,
-  checkpoints, blockers, proof-chain links, stale-session recovery, and
-  cross-runtime handoff follow the portable semantics defined by
-  [`work-coordination-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/work-coordination-standard/references/full-standard.md). Hidden chat
-  state is not ownership.
-- **A session is not a work ledger**: owner chats, local task titles, private
-  steering messages, prompts, and transcripts are disposable execution
-  surfaces. Goals, priority, assignment, review state, blockers, and completion
-  must resolve through the selected coordination system.
-- **Platform delivery owns Candidate admission and delivery**: it owns Candidate
-  identity/readback, obligation derivation, selection, landing serialization,
-  verification, release, and public-status mechanisms. This standard owns the
-  required outcomes; Enact owns the linked Work and review coordination.
-- **Git/GitOps is the durable truth**: code, docs, specs, ADRs, policies,
-  workflows, and desired infrastructure state live in Git. Manual runtime state
-  is emergency-only and must become repo state afterward.
-- **Forge issues are an adapter, not the only queue**: public user reports and
-  repo-local issue workflows remain valid; internal agent progress, private
-  handoff, model/runtime identity, and cost telemetry belong in the ledger.
-- **Work packets are the coordination contract**: for risky or parallel work,
-  issue/PR metadata or JSON work packets declare goal, scope, write boundaries,
-  links, gates, validation, delivery proof, and collision risks.
-- **ADRs/specs decide and constrain**: ADRs record why; executable specs,
-  schemas, tests, catalogs, eval manifests, telemetry contracts, exception
-  records, and generated artifacts define what must be true.
-- **Source Candidates execute**: every meaningful repository change is
-  nominated as one exact semantically atomic Candidate. A pull request is an
-  external or temporary provider envelope generated or ingested by the adapter;
-  the agent does not select it.
-- **Candidate acceptance releases the producer**: once the immutable source
-  Candidate and its local evidence are durably accepted, the producer
-  checkpoints and releases. CI, review, landing, build, deployment, soak, and
-  production proof re-enter through durable events; a producer does not reserve
-  a worker for a fixed-minute or “one last check” polling window.
-- **Admission evidence gates**: candidate metadata, risk classification, tests, contract
-  checks, AI review, security/migration gates, and production proofs are checks
-  or machine-actionable artifacts, not advisory comments.
-- **The central serializer integrates**: it chooses the provider mechanism from
-  admitted obligations. Compatibility queues must prove their merge-group
-  Candidate; direct landing must use selected-Candidate CAS and scoped proof.
-  Both paths consume the same Candidate identity and obligation result.
-- **Production feeds the loop**: CI/queue/deploy/telemetry/regression/security
-  signals create audience-safe findings and opaque protected-evidence
-  references, then become Work Items, source candidates, ADRs/specs, or repairs
-  to the owning contract and semantic oracle. Raw signals do not become public
-  issue or PR bodies merely because the forge is convenient.
-
-### Capability And Review Perspectives
-
-Allocate agents by the capability, artifact, evidence, and write boundary needed
-for the current outcome—not by a permanent simulated organization chart. A
-single agent may cover several perspectives; high-impact work may assign
-independent perspectives to separate contexts when the expected information
-gain exceeds coordination cost.
-
-Proposer, Executor, Reviewer, and Delivery/Re-entry are perspectives on the
-Work graph, not permanent identities or one-to-one pairs. Proposal, admission,
-and claim are separate transitions. The proposer may claim only after normal
-deduplication and eligibility policy; an Advisor session has no implicit
-ownership or supervisory authority.
-
-Review is an obligation selected from the candidate's risk and proof contract.
-Run deterministic checks first. Create a distinct reviewer context only when
-independent judgment is required and useful. The reviewer reads the Work
-contract, exact candidate, and authorized durable evidence—not a sibling's
-private transcript—and records a typed verdict, finding, attestation, or
-correction Work through the coordination authority.
-
-Common perspectives include signal triage, research and specification,
-implementation, engineering quality, product/interface quality, adversarial
-review, production/delivery, and security/supply chain. They are a planning
-vocabulary, not required roles, phases, labels, queues, or long-lived agents.
-Add a specialization only when its distinct evidence or capability changes the
-result; remove it when it becomes ceremony.
-
-### Structured Agent Audit
-
-The current delivery profile maps the generic candidate, issue, status, and
-serialized-integration concepts below onto its forge. Forge-specific names in
-this section are adapter vocabulary, not constitutional requirements.
-
-If multiple agents share one GitHub machine account, the GitHub username is not
-sufficient audit. Every meaningful action must carry structured responsibility:
-
-- Work Item id and claim/checkpoint events in Work Coordination once the tool is
-  available;
-- immutable Candidate producer, Work/Attempt lineage, source/tree identity, and
-  local evidence;
-- labels or equivalent structured fields defined by the active forge/delivery
-  adapter rather than an invented per-repo dialect;
-- `AGENT-CLAIM` and `AGENT-CHECKPOINT` comments only when the GitHub issue
-  thread is an intentionally chosen **public collaboration** surface — never
-  as a substitute for the Enact Work ledger;
-- `AGENT-WORK-COMPLETE` comments when handing off on that public surface;
-- `AI-REVIEW` comments in the shape below when the active profile requires them;
-- commit trailers when useful for **non-secret** machine policy: `Agent-Role`,
-  `ADR`, `Spec`, `Risk`, `Verification` — **do not** add public `Work-Item:` /
-  `Work: wi_…` trailers for admission (private Candidate binding only);
-- status checks derived from the structured metadata.
-
-Comments are not gates unless a check parses them. A structured review that no
-required status consumes is only a note.
-
-The adapter may project these facts into a branch, pull-request body, check, or
-comment for provider compatibility. That projection is generated or validated
-from the Candidate contract; agents must not maintain a second handwritten
-workflow record there.
-
-#### `Agent-Author` (PR body)
-
-While a provider PR compatibility projection is selected, policy-surface PRs
-(and any PR whose admission check requires an adversarial second-pass audit)
-MUST declare in the generated or validated PR body:
-
-```text
-Agent-Author: <role-id>
-```
-
-`<role-id>` is a single token (`\S+`). Prefer **role-shaped, vendor-neutral**
-ids such as `implementer`, `builder`, `coordinator`, or
-`implementer-<short-session>` — not product, model, or company names. Public
-repos expose PR bodies; neutral ids keep the audit trail without advertising
-tooling. The gate accepts any token; neutrality is the writing rule.
-
-#### `AI-REVIEW` (PR comment)
-
-When the active profile selects an adversarial second-pass review artifact, its
-canonical disclosure-safe structured PR projection contains:
-
-```text
-AI-REVIEW
-head_sha: <exact 40-character current head sha>
-change_digest: <sha256 of canonical {base_sha,head_sha}>
-verdict: PASS
-agent_author: <exact Agent-Author token from PR body>
-pr_author_id: <stable authenticated GitHub user id>
-reviewer_id: <role-id different from Agent-Author>
-reviewer_login_id: <stable authenticated comment-author GitHub user id>
-findings:
-- <file:line> — <non-empty evidence>, or exactly `- none`
-artifact_digest: <sha256 of canonical head/change/verdict/reviewer/findings payload>
-```
-
-`reviewer_id` MUST differ from `Agent-Author`, but this declared difference is
-not proof of independence. A distinct authenticated comment author proves
-reviewer attribution within the comment layer; it does not make a candidate-
-controlled workflow an independent admission authority. A shared login is
-labelled declared separation only. The active admission adapter's policy-review verifier is the
-canonical digest implementation.
-Sensitive findings and raw evidence stay behind authorized opaque locators; the
-public/forge projection carries only the minimum evidence statement needed to
-evaluate the candidate safely.
-Policy/instruction repositories use the active central obligation result. Until
-the successor CAS locator/landing authority is production-proven, that result
-may select the fenced PR adapter; the producing agent still submits only the
-Candidate.
-[`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md)
-owns required-status and trusted-verifier wiring; the active delivery profile
-owns credential mode and merge authority. This section owns only the review
-field contract that the selected policy-review verifier parses.
-
-The deterministic verifier may hard-gate artifact presence, exact-head binding,
-digest integrity, attribution, schema, and freshness. The raw nondeterministic
-LLM verdict is additional confidence and must never be the sole or independently
-hard-blocking admission oracle; risk-selected deterministic tests, contracts,
-or policy evidence still own the material predicate. This preserves the CI
-Admission rule rather than creating a second gate policy here.
-
-Presence and freshness follow the selected coordination product and forge
-adapter. The portable standard defines claim/recovery obligations but not one
-provider's issue convention. Do not create a third presence store.
-
-### Minimal Complete Loop
-
-The first implementation should prove the smallest complete closed loop:
-
-```text
-proposal -> deduplicate/admit -> eligible claim -> exact source candidate
-  -> central proof, collision, risk, review, and effect obligations
-  -> configured CAS adapter lands -> durable delivery subscription
-  -> release worker capacity -> next ready work item
-  -> delivery event re-enters this or another eligible agent
-```
-
-Do not start by implementing every dashboard, role prompt, and repo template.
-First make one pilot loop work end-to-end, then expand the gates, roles, and
-repos.
-
-### Work granularity and worker availability
+## Work model
 
 One Work Item owns one independently terminal outcome. A large programme is a
-parent Work with a child outcome DAG; it is not one umbrella Work or Attempt
-that accumulates unrelated capabilities, fixes, commits, and delivery
-decisions. Each exact candidate binds the child Work that owns its semantic
-outcome.
+parent Work with a child outcome DAG. It is not one umbrella claim that
+accumulates unrelated changes and delivery decisions.
 
-The Work lifecycle and worker lifecycle are separate. A Work may remain active
-until verified promotion, production behavior, recovery, or a declared
-observation window is proven, but the source agent must not remain occupied
-when only external state can advance it. Use Enact `work.defer` to atomically
-checkpoint, register the typed durable subscription, mark scheduling deferred,
-release EffectLeases and claim/Run capacity, and finish the current Run; then
-claim the next ready Work. Use `next_state_change` for future provider
-observations. Re-entry may be performed by the original agent or any eligible
-agent from the durable checkpoint. A long observation window is separate
-bounded Work or controller-owned monitoring.
+Proposal, admission, and claim are distinct. The proposer does not implicitly
+own the Work. Claims own outcomes, not files, branches, PRs, or worktrees.
+Duplicate objectives are resolved in Enact when available; overlapping files
+remain legal and are reconciled through Git.
 
-### Stacked Diffs For Dependent Slices
+Proposer, Executor, Reviewer, and Delivery/Re-entry are temporary perspectives
+selected from a shared agent pool, not permanent roles or one-to-one pairs.
 
-The active source-authoring profile owns the stacked-diff contract: manifest
-schema, slice contract, per-slice admission, root-first serialization, restack
-controller, depth/shape limits, and dependency-aware recovery.
+## Delegation
 
-When a change naturally decomposes into ordered slices (data layer → API → UI;
-migration expand → writer compatibility → reader rollout), publish a Candidate
-DAG rather than a serial wait chain. Each slice has its own immutable identity,
-admission manifest, valid-prefix dependency, and terminal evidence. The
-delivery adapter may project that DAG as stacked PRs while compatibility
-requires them; agents do not choose or supervise the projection. Do not use a
-stack to batch unrelated cleanup or hide a non-revertible feature.
+Semantic task type and material complexity come before role assignment. Atomic
+reads, searches, commands, endpoint checks, and tightly coupled steps stay
+local. A bounded child task is presumptively a leaf unless it discovers a new,
+independently useful lane whose net benefit passes the same delegation test.
+Do not require global tree-depth knowledge or a role-based fan-out quota.
 
-### Optional Mechanism Portfolio
+## Source integration
 
-The following are reusable patterns, not a universal roadmap or completion
-checklist. Select one only when the active repository's risk, scale, or delivery
-profile demonstrates the need and its lifecycle cost is lower than the expected
-loss it controls:
+Follow the repository's declared policy:
 
-- organization `.github`/governance repo with labels, issue forms, PR templates,
-  reusable workflows, ruleset examples, validators, and structured-comment
-  parsers;
-- required checks such as `pr-metadata/pass`, `risk-classification/pass`,
-  `trunk-admission/pass`, `ai-review/pass`, `adr-spec-check/pass`,
-  `security-review/pass`, `migration-review/pass`, `postsubmit-proof/pass`,
-  `recovery-decision/pass`, and deploy/rollback proof contexts;
-- stacked-diff controller or approved native stack provider with stack manifests,
-  restack automation, queue-prefix policy, and dependency-aware recovery;
-- repo-local `PROJECT.md` and `project.manifest.json` manifests carrying
-  project goal, lifecycle, zero-knowledge boundaries, public surfaces, delivery
-  proof, and adoption gaps; legacy `PROJECT_BOUNDARY.md` or `AGENT_GUIDE.md`
-  files are migration inputs, not competing identity authorities;
-- signal ingestion from CI failures, merge queue failures, deployments,
-  regressions, sanitized security findings, and customer-facing incidents into
-  GitHub issues; raw logs, metrics, traces, topology, customer data, and
-  diagnostic evidence stay in protected stores and are linked through opaque or
-  audience-safe evidence references;
-- serializer health, stale claims, candidate risk distribution, CI flake,
-  production regression, security posture, and instruction-adoption dashboards;
-- role prompts or agent definitions derived from binding Skills packages instead of copied into
-  independent prompt forks.
+- internal authorized agents prefer small non-force direct-trunk commits when
+  allowed;
+- external contributors use ordinary pull requests;
+- a repository may require pull requests for all writers; and
+- merge queue is enabled only for measured contention on a PR-required branch.
 
-## No-Human Operating Assumption
+Both PR and direct trunk are valid source paths. CI must not reject a valid
+change solely because it used either supported path. Platform does not choose
+or execute the landing adapter.
 
-No-human does not mean low-quality, unreviewed, or unaudited. It means recurring
-material coordination and review obligations need an agent-executable owner and
-checkable evidence. It does not require mechanizing every conventional ceremony
-or creating a permanent gate for every possible mistake.
+Every landed change is semantically coherent: code, tests, schemas, migrations,
+docs, and generated artifacts needed for one objective land together. Atomic
+does not mean one file, one commit, or a fixed line count.
 
-| Human function in a conventional team | No-human mechanism |
-| --- | --- |
-| Work assignment | Canonical Work Ledger or repo-declared tracker, typed claims/leases, and linked adapter observations |
-| Design alignment | Boundary contracts, ADRs, generated clients, compatibility tests |
-| Code review | Risk-selected compiler/lint/test evidence, contract checks, and digest-bound adversarial agent review; authenticated attribution additionally requires a distinct authenticated identity, while independent authority requires a separately controlled integration |
-| Architecture review | Compiler/module boundaries, semantic dependency analysis, public-surface contracts, and catalog freshness |
-| Security review | Policy-as-code, secret scanning, dependency alerts, SAST, supply-chain gates |
-| Release judgment | Active-profile admission/serialization, GitOps reconciliation, smoke checks, SLO/error-budget gates |
-| Operational diagnosis | OpenTelemetry traces/metrics/logs, structured errors, runbooks, replayable jobs |
-| Compliance/audit | SBOM, provenance, signed artifacts, immutable logs, conformance audits |
+## Review
 
-Advisory-only comments, dashboards, and reports are not enforcement. When a
-recurring material finding is machine-decidable and the control has positive
-expected value, repair its owning contract and use the lowest capable semantic
-oracle, or record a generated diff, policy decision, alert, or work item.
-Otherwise resolve the bounded case directly and retain proportionate evidence;
-repetition alone does not justify a new gate.
+Review is an obligation selected from the exact revision's risk and evidence
+contract, not from whether it has a PR.
 
-Two additional invariants of the no-human operating model:
+- Run deterministic checks first.
+- Use a separate reviewer only when independent judgment adds more value than
+  its startup and coordination cost.
+- The reviewer reads the Work contract, exact revision, and authorized durable
+  evidence—not the Executor's private transcript.
+- Publish a typed verdict, finding, attestation, or correction Work.
+- A negative verdict identifies the failed contract and evidence; any eligible
+  Executor may claim repair.
+- Reviewer and Executor release after their active action. They do not wait on
+  each other in private sessions.
 
-- **Zero standing privileges for agents.** Production credentials held by
-  agents are short-lived, scoped to a declared task/plan, issued at action time
-  by a policy decision point, and discarded after use. A long-lived broad
-  credential in an agent's hands is a prompt-injection incident waiting to
-  happen. Agent identity is workload identity (same trust domain and issuance
-  mechanics as services), not a special account class.
-- **Privileged actions are transparency-logged.** Admission overrides,
-  break-glass access, and direct data/cluster mutations must be pre-authorized
-  by policy and recorded in an append-only, tamper-evident transparency log
-  with actor identity and justification reference. Break-glass requires an
-  separately controlled second approver (another agent in a different credential
-  and control domain),
-  is time-boxed, and auto-files a post-hoc review task. "We have no backdoor"
-  must be auditable and falsifiable, not asserted.
+Public PR review remains valid for external/community collaboration, but it is
+not Enact Work authority and does not require private Work ids.
 
-## Boundary Contract First
+## CI
 
-For parallel agent development, contracts are the coordination layer. Write the
-boundary contract before parallel implementation whenever a change touches a
-public, shared, persistent, generated, cross-repo, cross-runtime, or operational
-boundary:
+Repository CI owns what “pass” means. Use:
 
-- public APIs, SDKs, CLIs, MCP/tools, package exports, or generated clients;
-- database schema, migrations, queues, events, manifests, policies, or config;
-- auth, permissions, billing, metering, privacy, security, or customer policy;
-- platform/customer boundaries, cross-repo integration, or shared packages;
-- AI tool schemas, prompt/skill interfaces, eval outputs, or durable memory
-  records;
-- deploy, release, infrastructure, or operational behavior.
+- one exact-SHA aggregate verdict;
+- fast deterministic checks and sound affected tests;
+- parallel jobs and fail-fast fan-in;
+- periodic full runs to audit selector misses;
+- cancellation of safely superseded default-branch runs;
+- bounded flake quarantine with owner and expiry; and
+- least-privilege, untrusted-input-safe workflows.
 
-The contract's canonical home should be executable or generatable where
-possible: Effect Schema, typed tool contracts, database schema/migrations,
-OpenAPI generated from schemas, manifest schemas, event schemas, contract tests,
-eval fixtures, or CI guards. Prose may brief the implementation, but the shipped
-contract must not live only in prose.
+Do not add CI to prove Enact lineage, reject PR versus direct trunk, or recreate
+Platform deployment state. Do not run the same heavy evidence twice without a
+specific integration failure it prevents.
 
-Inside a private boundary, code-first is acceptable for small helpers, pure
-functions, local UI components, or internal refactors that do not affect a
-consumer. Even then, tests, names, comments, and invariants must make the
-behavior clear enough for the next agent.
+## Delivery
 
-## Agent Development Doc Tree
+Platform exposes:
 
-[`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md)'s "One fact, one
-home" table owns the altitude map — which artifact is the canonical home
-for which kind of fact — cited, not restated. A repo's `docs/adr/`,
-`docs/specs/`, `docs/runbooks/`, and `.github/workflows/` layout should
-mirror it; runtime-native agent files (`AGENTS.md`, `CLAUDE.md`) point to
-the matching binding Skills packages plus repo-local facts, never a competing policy fork.
+```text
+On Commit | After Verification | Off
+```
 
-## Ownership Catalog
+`After Verification` waits for the repository's aggregate CI verdict for the
+same source SHA as the built artifact. Build and CI may run in parallel. Exact
+SHA/digest identity, health, rollback, idempotency, and event recovery remain
+binding; selected snapshots, cumulative watermarks, and proof-bundle product
+semantics do not.
 
-For multi-repo or product-portfolio work, every repo should expose a generated
-or CI-validated ownership catalog. The catalog is the machine-checkable answer
-to "which project owns this gap?"
+Source landing releases the producer when only external CI, build, deploy,
+soak, or approval can advance the Work. Use Enact `work.defer` when available
+to checkpoint, subscribe, release effects/claim/Run, and re-enter on the next
+provider event. Waiting is not active execution.
 
-The repo-local project manifest (`project.manifest.json`) is the minimum input
-to that catalog. It states the repository's local identity, lifecycle, owned
-contexts, unowned contexts, public surfaces, forbidden coupling, delivery proof,
-and adoption gaps. See
-[`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md). Do not use
-ADRs as the current-state project identity; ADRs explain decisions, while the
-manifest states the current boundary contract.
+## Parallel coordination
 
-Minimum fields:
+Before parallel mutation, identify:
 
-- capability or bounded context name;
-- owning repo/product/team;
-- public API, SDK, CLI, package export, tool, event, or manifest surface;
-- dependency direction and forbidden import/internal access rules;
-- generated clients or consumers where known;
-- required external status contexts and owning status producer;
-- deploy/release path and production owner;
-- customer-specific behavior location, if any, as configuration rather than
-  platform hardcoding.
+- objective/semantic overlap;
+- working-tree and generated-output ownership;
+- shared Git refs;
+- caches, ports, services, databases, and fixtures;
+- credentials and rate-limited provider effects; and
+- migrations or deployment targets.
 
-CI should verify imports and generated clients against the catalog where
-practical. If a repo cannot generate the catalog yet, the repo-local agent file
-must identify the temporary source of truth and the adoption plan.
+Use worktrees only for mutable checkout isolation. They are not locks or
+external-effect fences. Preserve unknown work; never stash, reset, clean, or
+overwrite it to manufacture a clean state.
 
-## Runtime Instruction Projections
+Use Git's native non-fast-forward/conflict behavior:
 
-Different agent runtimes may need different native prompt files, commands,
-skills, tools, permissions, memory, and delegation models. Those are transport
-mappings, not policy forks. Agent-first products may consume binding Skills packages
-for their own repo and internal agents, but that does not make the product
-itself a runtime instruction projection or weaken its provider/customer boundary.
+1. refresh trunk;
+2. make a coherent revision;
+3. run affected validation;
+4. push without force or update the PR;
+5. on conflict/rejection, reconcile and re-prove.
 
-Each runtime instruction projection must:
+File locking is not an integration strategy. Effect leases are reserved for
+scarce external mutations, not source files.
 
-- link back to the canonical Skills packages as the upstream source of truth;
-- load the compact constitution through a real always-on surface before skill
-  activation, then load only the standards, profiles, and procedures
-  triggered by the task alongside repo-local facts and runtime-native commands;
-- map package predicates into the runtime's supported mechanisms;
-- keep runtime-specific command syntax, skills, and tool wiring local to that
-  runtime;
-- preserve shared vocabulary for boundaries, contracts, work packets, ADRs,
-  validation, delivery, and collision handling.
+## Dependent and cross-repository changes
 
-Runtime projections must not rename canonical concepts, copy standards into a private fork,
-or weaken autonomy, boundary, active-profile admission/serialization, CI, or
-validation rules because the runtime has a different prompt format. They must also respect higher-priority
-host, system, platform, and tool instructions; Skills is an upstream instruction
-source, not a mechanism for overriding the runtime's authority model.
+Use expand-contract and valid ordered revisions. Each landed prefix remains
+valid. Cross-repository work has one Work graph but each repository has its own
+source truth and independently valid landing. Do not simulate a distributed Git
+transaction or hold one large mutable branch until every consumer is ready.
 
-## Specification As Code
+## Generated source and automation
 
-[`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md)'s "Specification
-is code-first" section owns this: prose specs are pre-implementation
-contracts only, migrating to schema/tests/ADR/catalog once shipped — cited,
-not restated.
+Generators, dependency updaters, release tools, and policy sync follow the
+repository's ordinary direct-trunk or bot-PR policy. Use a dedicated
+least-privilege App/bot where provider automation needs an identity. The bot is
+not a reviewer and does not create a second source workflow.
 
-## Industrial Mechanisms
+Generated files are outputs, not coordination surfaces. Edit their source,
+regenerate, and verify freshness.
 
-Prefer mature industry mechanisms when they can become an SSOT, generated
-artifact, CI gate, or telemetry signal. Do not cargo-cult a standard just
-because it is famous.
+## Security and effects
 
-Adopt by gate class:
+Use types, schemas, compiler/module boundaries, executable contracts, migration
+replay, supply-chain provenance, least privilege, and risk-matched security
+tests. Do not confuse maximum gate count with safety.
 
-| Gate class | Required when | Canonical home | Gate | Avoid |
-| --- | --- | --- | --- | --- |
-| Baseline repo | Any active repo | `AGENTS.md`/`CLAUDE.md` constitution, ADR convention, branch/ruleset policy, Renovate config | doctor/conformance status, required CI, actions pinned by full SHA, least `GITHUB_TOKEN` permissions | Advisory dashboards and unpinned workflows |
-| Contract producer | Public or cross-repo API/tool/event/package | Canonical executable schema, generated interfaces/clients, compatibility tests | contract diff, generated-client freshness, consumer tests where independent consumers exist | Hand-written specs that duplicate schemas |
-| Artifact producer | Published package, container, binary, SDK, or model artifact | SBOM, provenance/attestation, signature, release manifest; package producers also need Candidate-bound release intent and an adapter-owned version projection only where required | `supply-chain:sbom`, `supply-chain:provenance`, `supply-chain:signature`, vuln/license policy, release-evidence gate | Unsigned releases, agent-authored version PRs, SBOMs generated after deploy, or manual package publishes |
-| Production service | Deployed service, worker, cron, or platform capability | GitOps manifests, runbooks, telemetry contract, SLO/smoke checks | deploy admission, smoke/SLO gate, trace/log/metric proof, drift detection | Manual cluster state or logs without trace correlation |
-| High-risk correctness | Queues, locks, ledgers, billing, permissions, irreversible workflows | State-machine spec, property/model tests, TLA+/Alloy when justified | invariant tests, replay/fault-injection checks, migration replay | Time-based locks or examples-only tests for correctness |
+Credentials, destructive operations, public contracts, migrations, and
+irreversible provider effects require explicit authority and appropriate
+fencing. Source integration alone never authorizes an external effect.
 
-The Specification Control Plane schemas are the default machine-readable shapes
-for these gates when a repository does not already have an equivalent:
-`spec-lifecycle`, `work-packet`, `eval-manifest`, `telemetry-contract`, and
-`exception-policy`.
+## Completion and recovery
 
-- **Contract and artifact specification**:
-  [`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)'s
-  "Spec-as-code" section owns contract and event proof; the active engineering
-  profile owns current tool and protocol selections.
-- **Policy as code**: encode merge, infrastructure, permission, dependency,
-  and deployment rules in Git-backed checks — OPA/Rego, Conftest, Kyverno,
-  GitHub rulesets, or repo-native scripts.
-- **Supply chain**: generate SBOMs (CycloneDX/SPDX), vulnerability reports,
-  provenance/attestations (SLSA/Sigstore), and OpenSSF-style health checks
-  across trust boundaries.
-- **Package release control plane**: [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md)'s
-  "Package Publication" section owns this in full — cited, not restated.
-- **Observability**: OpenTelemetry-compatible traces/metrics/structured
-  logs; logs without correlation IDs or machine-queryable fields are not
-  enough for no-human operations.
-- **GitOps and reconciliation**: the Delivery Standard and the active
-  product-owned declared GitOps contract own desired state, reconciliation,
-  drift, recovery, and live readback; do not infer a retired principle file.
-- **Delivery flow**: one immutable Candidate ingress and centrally selected
-  serialization. A provider adapter may use a short branch/merge queue during
-  bounded compatibility; the normal integration mechanism is immutable
-  attempt/CAS. Branch by abstraction and use feature flags for large changes;
-  long-running mutable state is stale coordination state.
-- **Feature flags**: an OpenFeature-compatible abstraction (or repo-local
-  equivalent) with owner, expiry, telemetry, and cleanup gates when release
-  must decouple from deploy.
-- **Architecture fitness functions**: compiler/module visibility, AST or
-  dependency/build graph rules, behavioral contracts, generated-client
-  freshness, measured budgets, migration replay, API compatibility, and
-  doc/catalog freshness. CI executes the selected semantic evidence; source
-  spelling and duplicated checks are not architecture contracts.
-- **Build graph and affected checks**: dependency graphs, affected-task
-  detection, caching, and remote execution so CI stays fast enough for
-  merge queues and parallel agents.
-- **Collision-resistant artifact identity**: use the documentation standard's
-  rule—no race-prone self-assigned sequential number as primary identity.
-- **Formal or model-based methods**:
-  [`risk-matched-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/risk-matched-verification-standard/references/full-standard.md)'s
-  Core Rule matrix owns when property/model tests and deterministic
-  simulation are required — cited, not restated.
+Report lifecycle states separately:
 
-Reject these as no-human governance:
+```text
+workspace -> locally verified -> exact revision -> landed
+          -> built/released/deployed -> live observed
+```
 
-- advisory PR bots, dashboard-only findings, or comments that no required check
-  consumes;
-- aggregate scorecards as hard gates without checking the specific failing
-  control;
-- manually written OpenAPI, AsyncAPI, or SBOM files when they can be derived;
-- long-lived mutable candidate streams instead of bounded attempts, the active
-  serializer, branch by abstraction, or typed feature flags;
-- feature flags without owner, expiry, telemetry, and cleanup checks;
-- blocking every CVE forever instead of severity, reachability, exploitability,
-  and expiry-bound exception policy.
+A diff, commit, open PR, partial green set, or deployment without readback is a
+checkpoint unless it satisfies the declared terminal. External-only waits use
+durable defer/re-entry rather than an occupied agent.
 
-## Policy And Exception Records
+A failure creates correction Work or re-entry from durable evidence. It does
+not require the original author session to remain alive.
 
-Every repo declares its active admission class from the Industrial Mechanisms
-table above in the existing repo manifest or organization profile. Do not add a
-second declaration or standalone workflow when the active profile already owns
-the fact.
-[`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)'s
-"Exception records" section owns the required-fields list and the
-expiry-fails-CI rule for any exception to a required gate — cited, not
-restated. Exceptions without expiry are permanent policy changes and require
-an ADR.
+## Metrics
 
-## Work Packets
+Measure:
 
-[`specification-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/specification-control-plane-standard/references/full-standard.md)'s
-"Work packets" section owns the field list (id, role, goal/non-goals,
-affected surfaces, linked ADR/spec/schema, risk class, collision risks,
-claim/lease metadata) and the rule that hidden chat state is not ownership
-when collision risk is real — cited, not restated. If a work packet reveals
-the contract is missing, fix the contract first.
+- ready-to-claim and active-action ratios;
+- source-to-trunk latency;
+- PR age and merge-queue wait where applicable;
+- conflict/retry rate;
+- CI pickup, execution, cache, fan-in, cancellation, and flake rate;
+- verification-success-to-deploy latency;
+- escaped defects and rollback/forward-fix rate; and
+- worker time spent waiting on external state.
 
-## Parallel Agent Coordination
+Commit count is a diagnostic, not a quality metric. The optimization target is
+verified outcome throughput and low recovery cost.
 
-Parallelism is safe only when ownership and contracts are explicit.
+## Minimum adoption
 
-`autonomous-execution-standard` owns whether delegation has positive net value.
-Apply that predicate before this coordination protocol: semantic task type and
-material complexity come before role assignment. A few file reads, one command,
-one endpoint check, a literal lookup, a short response, or a tightly coupled
-immediate step stay with the current agent. A bounded child task is
-presumptively a leaf unless it discovers a new independently useful,
-materially complex lane that passes the same predicate. Do not require global
-tree-depth knowledge or a central recursion counter.
+An agent-first repository declares:
 
-- Split work by bounded context, package, feature, service, or generated
-  contract surface. Claims own outcomes, never files. Overlapping source
-  candidates are legal; declared semantic collision scopes let the central
-  serializer integrate, rebase, reject, or supersede them safely.
-- Prefer disjoint semantic write scopes where decomposition is natural. If
-  candidates overlap on a contract, publish the contract dependency first or
-  let central admission serialize the collision; do not impose file locks or
-  block unrelated source authoring.
-- Generated files are not coordination surfaces. Edit the source, regenerate,
-  and let CI fail if the generated output is stale.
-- Shared chokepoints require serialization: ADR files, migrations, package
-  exports, route registries, env schemas, tool schemas, runtime instructions, and CI
-  workflows.
-- Never allocate a shared artifact identity by reading `main` and guessing the
-  next number. A claim record may reserve work, but identity must still come
-  from the approved allocator or generator for that artifact class.
-- Claim work early through the canonical Work Ledger (Enact) or
-  repo-declared tracker when collision risk is real. Pull requests, issues,
-  branches, and worktrees are adapter observations linked to that Work Item,
-  never higher-precedence ownership. Do not require raw Work ids in public
-  forge text for claim proof. Hidden chat state is not ownership. Repo-local
-  instructions must name the canonical tracker and observation mapping.
-- Before claiming ownership of a new P0, re-check live Work Items, selected and
-  competing source candidates, the default branch, active serializer, specs,
-  generated registries, and release state.
-- Duplicate work is resolved by the contract and main branch, not by whichever
-  agent wrote more code. Rebase onto fresh `main`, compare against the canonical
-  contract. Retire redundant work only after unique evidence, durable refs or
-  snapshots, claims, and effects satisfy source-authoring reconciliation.
+1. canonical source repository/default branch;
+2. internal contribution preference and external PR path;
+3. whether PRs are required;
+4. whether merge queue is enabled and the evidence justifying it;
+5. local validation commands and aggregate CI verdict;
+6. auto-deploy mode and tracked branch;
+7. package/deploy terminal where applicable; and
+8. coordination adapter when Enact is unavailable.
 
-## Collision Classes
+No product-repo workflow may require Enact Work ids or choose PR versus direct
+trunk as a correctness gate.
 
-Collisions from self-assigned sequential numbers (ADRs, numbered source
-artifacts) are prevented by the documentation standard's artifact-identity
-rule and are not restated as rows below.
+## Acceptance
 
-| Collision | Prevention | Resolution |
-| --- | --- | --- |
-| Two agents design different API/event/tool shapes | Boundary contract first | Merge or replace with one canonical schema, regenerate clients/tests |
-| Two agents edit generated indexes/registries | Generate after merge | Revert hand edits; update generator or source |
-| Two migrations race | Timestamp/hash-locked migrations plus replay tests | Rebase, regenerate/rename migration, replay from base |
-| Two agents change shared package exports | Contract candidate first | Land contract, re-identify consumers, run compatibility tests |
-| Candidate conflicts with current frontier | Active serializer validates integration | Recompute from the fresh frontier, fix semantic conflict, re-prove |
-| Docs disagree with code | Docs link or generate from SSOT | Fix generator/guard; code/schema wins current-state claims |
-| Agent/runtime instruction drifts | Skills package plus compact constitution contract | Update the owning package or its projection; never fork standards locally |
+- Multiple agents claim Work from a shared pool rather than permanent pairs.
+- Internal DT and external PR both work without ingress-only CI rejection.
+- External contributors need no Enact access.
+- Merge queue exists only where measured PR contention justifies it.
+- Source, CI, deployment, and Work authorities remain separate.
+- Waiting agents release capacity and provider events cause re-entry.
+- CI/deploy use exact SHA and artifact identity without Candidate/watermark
+  services.
 
-## Candidate Admission, Serialization, And Automatic Integration
+## Primary references
 
-Every substantive change enters through one immutable Candidate contract; there
-are no human reviewers in the normal path and no agent-selected PR/direct-trunk
-fork. Central admission derives the obligation set and the serializer chooses
-the provider mechanism. A bounded compatibility result may project the same
-Candidate into a pull request, branch protection, required checks, and a merge
-queue. External contributor pull requests are ingested into the same contract.
-Adapters may not weaken admission, exact-Candidate binding, review
-independence, serialization, recovery, or provenance.
-
-## CI Pipeline Architecture — Reviewer + Serializer
-
-See [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md).
-
-## Use Cases
-
-| Case | Rule |
-| --- | --- |
-| Single-agent private change | Code-first inside the boundary; narrowest checks; diff traceable to the goal. |
-| Parallel feature build | Contract + work packet first; split by producer/consumer/UI/tests/docs; contract lands first. |
-| Cross-repo platform/customer work | Identify owner and public surface first; consume like an ordinary customer, never reach into internals. |
-| Duplicate agents, same task | Publish immutable candidate generations; select deterministically against the canonical contract; land one winner and preserve only required losing evidence. |
-| Shared contract migration | Expand/contract: add compatibly, migrate consumers, validate both paths, remove old contract later. |
-| Documentation or spec drift | Failed mechanism, not a discipline lapse — generate/gate the fact, archive the stale spec. |
-| Emergency fix | Move fast without changing the active mechanism: exact candidate, targeted proof, configured serializer/effect fences, and production verification. |
-
-## Minimum Repo Adoption
-
-See [`repo-adoption-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/repo-adoption-standard/references/full-standard.md).
+- [DORA: Trunk-based development](https://dora.dev/capabilities/trunk-based-development/)
+- [DORA: Working in small batches](https://dora.dev/capabilities/working-in-small-batches/)
+- [Git workflows](https://git-scm.com/docs/gitworkflows)
+- [GitHub pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [GitHub merge queue](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)

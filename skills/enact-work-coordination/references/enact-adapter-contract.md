@@ -19,10 +19,8 @@ Current product source locators for agents with repository access:
 - `SylphxAI/enact:docs/adr/ADR-0045-organization-project-commercial-spine.md` —
   commercial spine (Organization → Project; no Workspace product surface);
 - `SylphxAI/enact:docs/runbooks/agent-work-loop.md` — agent operating loop; and
-- `SylphxAI/platform:docs/adr/ADR-5127-platform-candidate-plane.md`,
-  `ADR-01KYM9PBWRK1DR3T1R3M3NT001-public-work-id-retirement.md`, and
-  `ADR-01KYM9PATHN3VTRXADM1SS1001-path-neutral-admission.md` — private lineage
-  and path-neutral PR/DT admission.
+- `SylphxAI/skills:docs/adr/ADR-0027-repository-native-trunk-and-simple-auto-deploy.md`
+  — repository-native source integration and simple deployment boundary.
 
 ## Semantic surface
 
@@ -36,7 +34,7 @@ Current product source locators for agents with repository access:
 | Record progress | `work.checkpoint`, `work.block` | Material delta and next safe action |
 | Publish evidence | `evidence.publish`, `evidence.get` | Content identity; evidence does not manufacture Work |
 | Link provider fact | `work.link_external` / observations | Observation with provider identity and freshness |
-| Coordinate Candidate review | Live typed review surface, or the product-declared review Work/Evidence contract | Exact Platform Candidate subject; independent principal when required |
+| Coordinate source review | Live typed review surface, or the product-declared review Work/Evidence contract | Exact source revision; independent principal when required |
 | Read proof chain | `proof.readback` | Never invent a stronger delivery state |
 | Shared external effect | `effect.acquire/renew/narrow/release/read` | Enact-eligible scarce mutations only; not Platform deploy |
 | Durable wait | `work.defer`, then `subscription.read/cancel` | Atomically defer Work and release capacity/effect leases |
@@ -56,8 +54,9 @@ Current product source locators for agents with repository access:
   visibility; it does not lock files or repositories.
 - EffectLease protects an Enact-eligible scarce mutation boundary such as a
   schema migration, credential mutation, infrastructure mutation, or external
-  provider mutation. Platform owns and fences source landing, promotion,
-  deployment, and release; Enact must not issue authority for those effects.
+  provider mutation. The repository owns source landing; Platform owns
+  promotion, deployment, and release. Enact must not issue authority for those
+  effects.
 
 ## Session and review authority
 
@@ -69,22 +68,20 @@ eligible Attempt, and compiles context from Enact before substantive mutation.
 
 Do not model an Advisor as a permanent supervisor of one Executor. When
 independent judgment is required, publish the typed verdict, findings,
-attestation, or correction Work through Enact. The producer
-publishes one immutable Candidate to Platform and never chooses PR versus
-direct trunk as correctness. Platform derives whether independent review is
-required and projects that requirement into Enact as a typed Work obligation.
+attestation, or correction Work through Enact. The producer follows the
+repository's native source policy and links the exact source revision. Review
+policy may project an independent typed Work obligation.
 
-An external pull request is ingested by Platform as the same Candidate contract
-and linked to Enact as a provider observation — **without requiring a public
-Work id in the PR body**. PR and direct-trunk are both valid ingresses.
+An external pull request may be linked to Enact as a provider observation —
+**without requiring a public Work id in the PR body**. PR and direct-trunk are
+both valid repository ingresses.
 
 ## Private coordination lineage (not public forge text)
 
 | Surface | Work id allowed? |
 | --- | --- |
 | Enact MCP / API | Yes (native Work records) |
-| Candidate publish API (private) | Yes (`work_item_id` + `producer_attempt_id`) |
-| Platform DB Candidate row | Yes (private) |
+| Private source-revision link | Yes (`work_item_id` + exact provider revision) |
 | Public commit trailer / PR body | **No — not required; do not add for admission** |
 | GitHub status description | **No raw `wi_…`** — pass/fail only |
 
@@ -94,7 +91,7 @@ Work completion and worker occupancy are independent. When the next transition
 depends only on CI, build, promotion, deployment, soak, approval, another Work,
 or another external event:
 
-1. call `work.defer` with the exact candidate/evidence, current delivery state,
+1. call `work.defer` with the exact source/evidence, current delivery state,
    remaining terminal predicate, next safe action, and typed re-entry
    condition;
 2. use `next_state_change` when the awaited fact is a future provider
@@ -132,16 +129,17 @@ tenant-private reasoning and raw Work-id admission ceremony.
 - Duplicate proposal: reuse typed disposition.
 - Stale claim: recover through lease/fencing; preserve checkpoints.
 - Provider unavailable: stale observation; Work Graph continues.
-- Missing public `wi_` in Git: **not an error**. Missing private Candidate
-  Work binding when landing/admission requires lineage: fail closed at Platform.
+- Missing public `wi_` in Git: **not an error**. Missing a private source link
+  is a coordination gap only when an admitted Work explicitly requires it; it
+  does not invalidate Git source or an external contribution.
 - Ordinary work on a PR: **not an error** (path-neutral admission).
 
 ## Adapter conformance cases
 
 Test Organization/Project scope selection, idempotent propose/reuse, claim-run
-binding, checkpoint/handoff recovery, private Candidate lineage without public
-Work trailers, external PR intake without Work id in body, path-neutral PR and
-DT ingress, completion rejection without proof, provider outage, effect fencing
+binding, checkpoint/handoff recovery, private exact-revision linkage without
+public Work trailers, external PR intake without Work id in body, PR and DT
+ingress, completion rejection without proof, provider outage, effect fencing
 excluding Platform delivery, cross-tenant rejection, and MCP/REST parity.
 
 A Work that is waiting must not remain `scheduling=ready` with no active claim and no subscription.

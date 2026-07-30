@@ -1,10 +1,14 @@
 ---
-status: accepted
+status: superseded
 date: 2026-07-28
 owners: [SylphxAI]
 ---
 
 # ADR-0022: Auto-when-green on selected verified snapshot
+
+> **Superseded by ADR-0027.** The selected-snapshot, scoped-watermark, and
+> Platform-selected landing model below is retained as historical rationale,
+> not current instruction.
 
 ## Context
 

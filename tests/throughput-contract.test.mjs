@@ -36,8 +36,8 @@ test('objective continuity distinguishes checkpoints, shippable source, and the 
   assert.match(delivery, /Shippable state is a property, not a universal terminal/);
   assert.match(delivery, /Shippable does \*\*not\*\* mean shipped/);
   assert.match(delivery, /A commit is a source checkpoint/);
-  assert.match(delivery, /A pull request is a\s+collaboration or landing adapter/);
-  assert.match(delivery, /do not force a deployment for a source-only terminal/);
+  assert.match(delivery, /A pull request is a collaboration or landing\s+adapter/);
+  assert.match(delivery, /active repository delivery\s+declaration selects the terminal/);
   assert.match(adr, /Independent\s+review remains risk-selected/);
   assert.match(adr, /retired `sota-execution-standard` stays retired/);
 });
@@ -83,7 +83,7 @@ test('work and delivery standards require bounded work and event-driven release'
 
   assert.match(agentFirst, /One Work Item owns one independently terminal outcome/);
   assert.match(agentFirst, /parent Work with a child outcome DAG/);
-  assert.match(delivery, /durable Work's terminal evidence, not how long one agent/);
+  assert.match(delivery, /durable Work terminal is separate from worker occupancy/);
   assert.match(autonomous, /waiting is not active execution/);
   assert.match(enact, /call `work\.defer`/);
   assert.match(enact, /checkpoint disposition is `external_wait`/);
@@ -91,7 +91,7 @@ test('work and delivery standards require bounded work and event-driven release'
   assert.match(enact, /Do not approximate the transition with separate `subscription\.or_get`/);
   assert.match(enact, /must not\s+remain `scheduling=ready` with no active claim and no subscription/);
   assert.match(enact, /fixed-minute polling are still passive waits/);
-  assert.match(agentFirst, /Candidate acceptance releases the producer/);
+  assert.match(agentFirst, /Source landing releases the producer/);
 });
 
 test('Enact owns work and review state instead of session-local pairs', () => {
@@ -105,27 +105,29 @@ test('Enact owns work and review state instead of session-local pairs', () => {
   assert.match(constitution, /proposal, admission, and claim distinct/);
   assert.match(constitution, /not permanent agent roles or\s+one-to-one pairs/);
   assert.match(agentFirst, /A session is not a work ledger/);
-  assert.match(agentFirst, /Review is an obligation selected from the candidate's risk/);
+  assert.match(agentFirst, /Review is an obligation selected from the exact revision's risk/);
   assert.match(enact, /Do not model an Advisor as a permanent supervisor of one Executor/);
   assert.match(enact, /publish the typed verdict, findings, attestation, or correction Work/);
-  assert.match(selfFeeding, /shared Work graph, not a set of permanent paired\s+agents/);
-  assert.match(selfFeeding, /Executor release boundary/);
-  assert.match(selfFeeding, /durable Work terminal is separate/);
+  assert.match(selfFeeding, /temporary perspectives from\s+shared capability pools/);
+  assert.match(selfFeeding, /source release boundary/);
+  assert.match(selfFeeding, /Work terminal may remain/);
   assert.doesNotMatch(selfFeeding, /Reviewers discover evidence-backed issues and verify fixes they opened/);
   assert.match(adr, /Provider-native truth remains federated/);
 });
 
-test('CI contract selects and coalesces snapshots without runner bootstrap', () => {
+test('CI uses exact-SHA repository evidence without a candidate control plane', () => {
   const ci = read('../skills/ci-admission-standard/references/full-standard.md');
   const integration = read('../skills/parallel-change-integration-standard/references/full-standard.md');
 
-  assert.match(ci, /complete remote verification\s+and artifact builds run only for control-plane-selected immutable snapshots/);
-  assert.match(ci, /produced outside the same scarce general runner pool/);
-  assert.match(integration, /one useful\s+running snapshot plus the latest eligible pending snapshot/);
-  assert.match(integration, /Artifact production consumes only the\s+selected snapshot identity/);
+  assert.match(ci, /one stable aggregate verdict/);
+  assert.match(ci, /CI must not reject a valid change solely because it arrived through a pull\s+request or direct trunk/);
+  assert.match(ci, /newer default-branch SHA includes its ancestors/);
+  assert.match(ci, /not a selected-snapshot product\s+or watermark system/);
+  assert.match(integration, /fix runner capacity, caching, test selection, and sharding first/);
+  assert.match(integration, /Do not create Platform Candidate, landing-controller, selected-snapshot, or\s+verification-watermark authorities/);
 });
 
-test('agents publish one Candidate while central admission selects the adapter', () => {
+test('repository owns PR or direct-trunk while Platform owns simple deploy', () => {
   const constitution = read('../runtime/constitution.md');
   const agentFirst = read('../skills/agent-first-development-standard/references/full-standard.md');
   const delivery = read('../skills/delivery-standard/references/full-standard.md');
@@ -136,29 +138,20 @@ test('agents publish one Candidate while central admission selects the adapter',
   const selfFeeding = read('../skills/self-feeding-agent-loop-standard/references/full-standard.md');
   const adr = read('../docs/adr/ADR-0020-enact-authoritative-work-and-review-pools.md');
 
-  for (const source of [
-    constitution,
-    agentFirst,
-    delivery,
-    ci,
-    integration,
-    enact,
-    sourceAuthoring,
-    selfFeeding,
-    adr,
-  ]) {
-    assert.match(source, /immutable (?:source )?Candidate/i);
-    assert.match(source, /do(?:es)? not choose|never\s+choose(?:s)?|do not make the agent choose/i);
-  }
-  assert.match(delivery, /Platform is the delivery authority and performs one central admission/);
-  assert.match(delivery, /external-contributor collaboration projection/);
-  assert.match(delivery, /Semantically equivalent internal and external inputs must receive\s+the same obligations/);
-  assert.match(enact, /Platform owns and fences source landing, promotion,\s+deployment, and release/);
-  assert.match(integration, /Platform owns Candidate identity and readback, selection evidence, landing CAS/);
-  assert.match(adr, /It is never an alternative\s+Work queue, review authority, completion state, or safety tier/);
+  assert.match(constitution, /Follow the repository's native source-integration policy/);
+  assert.match(constitution, /CI must not hard-fail solely because a valid\s+change arrived through PR or direct trunk/);
+  assert.match(agentFirst, /Platform does not choose\s+or execute the landing adapter/);
+  assert.match(delivery, /Platform does not select or execute a PR\/direct-trunk landing adapter/);
+  assert.match(delivery, /`On Commit`, `After Verification`, and `Off`/);
+  assert.match(ci, /External contributors use pull requests/);
+  assert.match(integration, /Enable merge queue only when/);
+  assert.match(enact, /repository owns source landing; Platform owns\s+promotion, deployment, and release/);
+  assert.match(sourceAuthoring, /external contributors use pull requests/);
+  assert.match(selfFeeding, /Platform does not select the source adapter/);
+  assert.match(adr, /There is one source authority: Git/);
 });
 
-test('generated source and queue waits do not reintroduce PR-first worker occupancy', () => {
+test('generated source follows repository policy and queue waits release workers', () => {
   const agentFirst = read('../skills/agent-first-development-standard/references/full-standard.md');
   const delivery = read('../skills/delivery-standard/references/full-standard.md');
   const enterprise = read('../skills/enterprise-control-plane-standard/references/full-standard.md');
@@ -168,12 +161,12 @@ test('generated source and queue waits do not reintroduce PR-first worker occupa
   const selfFeeding = read('../skills/self-feeding-agent-loop-standard/references/full-standard.md');
   const adr = read('../docs/adr/ADR-0020-enact-authoritative-work-and-review-pools.md');
 
-  assert.match(delivery, /Versioning, changelog, registry-index, policy\s+sync, and other generated-source updates are internal Candidates/);
-  assert.match(enterprise, /Findings become Enact Work and immutable remediation Candidates/);
-  assert.match(commercial, /producers do not choose a PR/);
-  assert.match(autonomous, /branch or PR shape is a centrally selected delivery-adapter\s+projection/);
+  assert.match(delivery, /repository's native path: direct trunk or PR/);
+  assert.match(enterprise, /Release intent follows the\s+repository's declared source-integration path/);
+  assert.match(commercial, /Generated commercial, release, pricing-config, and policy-sync changes follow\s+the repository's declared direct-trunk or PR path/);
+  assert.match(autonomous, /repository's\s+declared direct-trunk or PR integration path/);
   assert.match(runner, /subscribe, release worker capacity, and let the next provider event re-enter/);
-  assert.match(adr, /System-generated source uses the same path/);
+  assert.match(adr, /System-generated source follows repository policy/);
   assert.doesNotMatch(agentFirst, /bot-owned version PR/);
   assert.doesNotMatch(delivery, /normal path is release intent in source control, a generated version PR/);
   assert.doesNotMatch(enterprise, /Findings become migration issues or generated PRs/);

@@ -49,16 +49,16 @@ Organization
    skip Work; any follow-on implementation of a shared/collision-prone
    objective must open or join Work first.
 3. Treat a Work claim as responsibility for an **objective/attempt**, not a
-   file, path, branch, worktree, or PR lock. Overlapping source candidates on
-   the same repo remain legal; Git/Platform resolve source collision, Enact
+   file, path, branch, worktree, or PR lock. Overlapping source changes in the
+   same repo remain legal; Git/repository policy resolves source collision, Enact
    prevents two agents claiming the **same Work**.
 4. Publish material evidence and checkpoint progress, blockers, handoffs, and
    the next safe action. Store provider-native facts as linked observations with
    source identity, version, observation time, and freshness.
 5. Acquire an EffectLease only around an **Enact-eligible** scarce mutation
    (schema, credential, infrastructure, or external provider mutation that
-   Enact fences). Platform independently owns Candidate landing, deploy, and
-   release — do not use EffectLease to authorize those. Bind required proof,
+   Enact fences). The repository owns source integration and Platform owns
+   deploy/release — do not use EffectLease to authorize those. Bind required proof,
    verify owning-provider readback, and release promptly.
 6. At the first external-only boundary, call `work.defer` with the exact typed
    dependency or outcome condition. It atomically checkpoints, creates the
@@ -70,31 +70,32 @@ Organization
    accepted by Enact. Otherwise checkpoint, block with a re-entry path, or
    create a related follow-up/rework item.
 
-## Work ↔ Git / Candidate (critical)
+## Work ↔ Git (critical)
 
 | Action | Work required? |
 | --- | --- |
 | Start substantive agent objective (multi-agent risk) | **Yes** — propose/claim in Enact |
 | Local `git commit` / WIP / private checkpoint | **No Git gate** — checkpoint *to Enact* when material |
-| Publish Candidate / land source | **Yes private binding** — `work_item_id` + attempt via Candidate API |
+| Land source | Git works independently; privately link the exact revision to Work when a Work exists |
 | Public PR body / commit trailer | **Must not require raw `wi_…`** |
 | Ingress via PR vs direct-trunk | **Both valid** — prefer DT for internal ordinary (guidance only) |
 
-**Direction of integration:** Enact/Platform **connect out** to Git. Git is not
+**Direction of integration:** Enact and Platform **connect out** to Git. Git is not
 the work ledger. Do **not** write `Work: wi_…` into public commits or PR bodies
 as an admission mechanism. Historical trailers may exist; new work must not add
 them.
 
 **Forge-agnostic (ADR-0021):** product repositories must not carry
 `enact-work-lineage` workflows or required forge checks for coordination.
-Private Candidate binding is evaluated only inside Platform admission/land.
-Missing Enact MCP is OAuth/config failure — reconnect; never substitute a
-GitHub lineage check for the work loop.
+Missing Enact MCP is OAuth/config failure for Enact-coordinated work — reconnect;
+never substitute a GitHub lineage check. Git and external contribution remain
+independently operable.
 
-- **Internal agent:** claim Work → implement → `candidates publish` with private
-  Work/Attempt → checkpoint → release.
-- **External contributor:** ordinary PR, no Enact OAuth, no Work id in body →
-  Platform webhook intake creates private Work/Candidate mapping.
+- **Internal agent:** claim Work when required → implement → land through the
+  repository's native direct-trunk or PR path → privately link exact revision →
+  checkpoint/release.
+- **External contributor:** ordinary PR, no Enact OAuth and no Work id in body.
+  A connector may later link the resulting provider fact.
 
 ## Fact ownership
 
@@ -102,8 +103,8 @@ GitHub lineage check for the work loop.
   checkpoints, decisions, incidents, threads, and linked observations.
 - Skills owns static standards, procedures, profiles, and adapters.
 - The product repository owns code, tests, code-coupled ADRs, and desired state.
-- Platform owns Candidate identity/admission, landing CAS, verification
-  watermarks, artifacts, promotion, deployment, rollback, and delivery readback.
+- The repository/forge owns source integration. Platform owns artifacts,
+  deployment policy, promotion, rollback, and delivery readback.
 - Forges own commits, issues, pull requests, checks, releases, and their native
   states; deployment and telemetry providers own runtime facts.
 - Enact stores observations and projections of external facts, never a

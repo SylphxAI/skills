@@ -51,25 +51,26 @@ Skills only when their domain is touched.
   bounded work only after duplicate and eligibility admission.
 - Treat proposer, executor, reviewer, and delivery/re-entry as perspectives
   selected from shared capability pools, not permanent agent roles or
-  one-to-one pairs. Reviews bind to an immutable candidate and declared risk,
+  one-to-one pairs. Reviews bind to an exact source revision and declared risk,
   use authorized durable evidence rather than private session supervision, and
   publish their verdict or correction Work through Enact.
 - **Do not require raw Work ids (`wi_…`) in public commits or PR bodies.**
-  Coordination lineage for source admission is a private Platform Candidate
-  binding (`source_revision → work_item_id`). Git is an optional connector and
-  durable **code** truth when the deliverable is source — not the work ledger.
+  Enact may privately link exact source revisions to Work. Git is an optional
+  connector and durable **code** truth when the deliverable is source — not the work ledger.
   Local commits may proceed without a forge-visible Work trailer; material
   progress still checkpoints into Enact.
 - **Forge-agnostic coordination (ADR-0021).** Do not install or depend on
   product-repo GitHub workflows, required checks, or commit statuses named for
   Enact/work lineage. Coordination stays in Enact + Platform private planes;
   forges host integrity fences and product CI only.
-- **Deploy is auto-when-green on selected verified snapshot (ADR-0022).** Env
-  `auto_deploy` permits automated pointer moves; production promote consumes
-  exact artifact digests covered by scoped green watermarks under selected-
-  snapshot coalesce — never raw main tip as deploy authority under enforce.
+- **Deploy uses the simple repository-native model (ADR-0027).** Environments
+  expose `On Commit`, `After Verification`, or `Off`. `After Verification`
+  deploys the exact artifact for a tracked-branch SHA only after the
+  repository-configured aggregate CI verdict for that same SHA succeeds.
+  Build/artifact/SHA integrity remains an internal Platform invariant, not
+  additional project-quality green lights.
 - Preserve Git parallelism. Isolate unattributed or colliding mutable state,
-  publish exact source candidates, and resolve conflicts through current
+  publish exact source revisions, and resolve conflicts through current
   contracts and Git rather than file locks.
 - Delegate only a materially complex, bounded, independently useful lane whose
   expected gain exceeds startup, compute, coordination, collision,
@@ -79,18 +80,14 @@ Skills only when their domain is touched.
   presumptively a leaf unless it discovers a new lane that passes the same
   task-semantic test. Stop new fan-out under host-resource pressure or
   integration backlog; do not rely on global depth counters.
-- Publish one exact immutable source Candidate; do not make the agent choose
-  between a pull request and direct trunk as a correctness dependency. The
-  delivery authority derives risk, collision, evidence, independent-review, and
-  effect obligations from that Candidate, then selects and executes the
-  configured CAS landing adapter. **Prefer** direct-trunk for internal ordinary
-  reversible work when rulesets allow (latency/cost guidance). **Pull requests
-  remain a valid ingress** for ordinary and fenced work—especially external
-  contributors—and CI must not hard-fail solely because ordinary work arrived as
-  a PR. An external contribution or a temporarily fenced class may be projected
-  through a provider pull request; that projection is an adapter rather than
-  Work, review, safety, or source authority. Unknown classification fails closed
-  in central admission, not through different agent judgment.
+- Follow the repository's native source-integration policy. **Prefer**
+  non-force direct trunk for internal work when write authority and repository
+  rules allow (latency/cost guidance). **Pull requests remain valid** for
+  internal work and are the normal path for external contributors or
+  repositories that require them. CI must not hard-fail solely because a valid
+  change arrived through PR or direct trunk. Merge queue is repository-level,
+  opt-in, and justified only by measured PR contention; Platform does not
+  choose or execute a landing adapter.
 - Act autonomously on reversible in-scope work. Obtain explicit authority before
   destructive actions, credentials, public-contract changes, new infrastructure,
   or irreversible effects.
@@ -104,7 +101,7 @@ Skills only when their domain is touched.
 - Scope runtime mutation explicitly. Detecting another installed agent runtime
   is evidence only and never permission to install, update, clear, or schedule
   work for it.
-- Evidence precedes claims. Distinguish local, candidate, admitted, landed,
+- Evidence precedes claims. Distinguish local, source revision, landed,
   released or deployed, and live states. Done means delivered at the active
   repository boundary, not merely edited, committed, or proposed.
 - A plan, phase, local diff, commit, open pull request, or partial validation is

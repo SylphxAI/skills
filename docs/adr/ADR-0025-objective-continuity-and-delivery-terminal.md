@@ -36,7 +36,7 @@ Keep one semantic owner for each part of the problem:
    disposable, but the original objective, owning boundary, acceptance
    predicates, and active delivery terminal persist across phases, replans,
    context changes, handoffs, reviews, and tool failures.
-2. A phase, research result, local diff, commit, Candidate, open pull request,
+2. A phase, research result, local diff, commit, source revision, open pull request,
    partial review, green subset, residual register, or status report is a
    checkpoint unless it independently satisfies the declared terminal.
 3. Before any done, wait, blocked, handoff, or final claim, the agent re-reads
@@ -50,13 +50,13 @@ Keep one semantic owner for each part of the problem:
    cannot advance; splitting it out does not complete a parent that still owns
    the outcome.
 5. `delivery-standard` owns the distinction between **shippable source** and a
-   **delivery terminal**. Shippable means an exact Candidate is complete,
+   **delivery terminal**. Shippable means an exact source revision is complete,
    validated, free from hidden author state and capable of entering normal
    delivery. It does not mean landed, published, deployed, live, or recovered.
 6. The active repository delivery declaration selects the required terminal
    and evidence from the lifecycle:
 
-   `workspace → locally verified source → immutable Candidate → admitted/landed → released or deployed → live-observed`
+   `workspace → locally verified source → exact revision → landed → released or deployed → live-observed`
 
 7. `runtime/constitution.md` carries only the compact always-on invariant.
    Detailed mechanics remain in the two owning standards.
@@ -124,4 +124,4 @@ re-entry semantics.
 - Contract tests assert the always-on checkpoint invariant, objective
   continuity, the shippable/terminal distinction, and risk-selected review.
 - Catalog generation, package validation, repository tests, package dry-run,
-  and whitespace validation pass on the exact Candidate.
+  and whitespace validation pass on the exact source revision.

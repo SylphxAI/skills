@@ -240,14 +240,14 @@ Production deploy proof remains separate from PR preview proof.
 ### Package release
 
 Package producers follow `delivery-standard`. JavaScript/TypeScript packages use Changesets
-unless a repo-local ADR proves an equivalent. Release intent enters the same
-immutable Candidate path as product source. When central admission selects a
-release/version PR compatibility envelope, it must be opened by a dedicated
-least-privilege GitHub App or bot so CI triggers normally and the exact
-Candidate has stable audit identity. Each org designates one release App
-identity in org-level configuration; the control-plane task is to certify its
-permissions, installation scope, Candidate binding, and status behavior, not
-to create a duplicate bot or make PR projection the steady-state workflow.
+unless a repo-local ADR proves an equivalent. Release intent follows the
+repository's declared source-integration path. When that path uses a
+release/version PR, it must be opened by a dedicated least-privilege GitHub App
+or bot so CI triggers normally and the exact source revision has stable audit
+identity. Each org designates one release App identity in org-level
+configuration; the control-plane task is to certify its permissions,
+installation scope, source binding, and status behavior, not to create
+duplicate bots.
 
 Package release adoption is centrally audited through the Sylphx Enact
 package-release conformance projection. Repositories that publish or

@@ -1,306 +1,177 @@
 # Delivery Standard
 
-This standard owns delivery outcomes and proof. The active delivery profile
-owns the selected forge, transport, and release adapters; references to GitHub
-below are the current profile's binding implementation, not a timeless
-requirement of delivery itself.
+Delivery proves the requested outcome beyond a local diff. Keep source
+integration, project correctness, and deployment as separate owning
+boundaries.
 
-[`source-authoring-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/source-authoring-standard/references/full-standard.md) owns the exact
-source candidate, semantic atomicity, checkpoint, commit/worktree projection,
-and workspace-reconciliation contract consumed by every delivery profile.
+## Authority
 
-The parallel-change integration path separates landing from promotion: a raw
-default-branch commit is not deployable evidence. Release and deployment consume
-only immutable snapshots covered by the relevant scoped green watermark and
-complete proof bundle.
-
-### Canonical deploy model (ADR-0022)
-
-**Auto-deploy on verified selected snapshot** — not tip auto-deploy, not “PR
-check green equals production.”
-
-| Control | Default product contract |
+| Boundary | Authority |
 | --- | --- |
-| Environment `auto_deploy` | true → env may receive automated pointer updates |
-| `promotion_mode` | `auto_when_green` |
-| Production / pinned enforce | `require_green_watermark` + exact artifact digest match |
-| Verification under load | selected-snapshot coalesce (running + latest eligible pending) |
-| Rollback target | previous green-watermarked digest |
+| Work | Enact when available; otherwise the declared coordination adapter |
+| Source | Git repository and its contribution rules |
+| Correctness | Repository-owned tests, review, and aggregate CI verdict |
+| Artifact and deployment | Platform or the declared release provider |
+| Live behavior | Runtime observations at the requested terminal |
 
-Agents do not babysit deploy. After Candidate accept/land, checkpoint and
-`work.defer` when only external promote/soak can advance Work. Progressive
-canary analysis (when configured) is machine-verdict auto promote/rollback —
-not a human-in-the-loop gate.
+A pull request, direct-trunk push, CI check, build, deployment, and Work record
+are related facts, not interchangeable authorities.
 
-## Unified Candidate delivery
+## Source integration
 
-The agent-facing delivery contract has one operation: publish one exact,
-immutable, semantically atomic Candidate bound to its Enact Work/Attempt and
-local evidence. The producer does **not** choose pull request versus direct
-trunk, does not self-select review strength, and does not wait on a provider
-merge envelope.
+Follow the repository:
 
-Platform is the delivery authority and performs one central admission:
+- prefer non-force direct trunk for internal work when authorized and allowed;
+- use pull requests for external contributors and repositories that require
+  them; and
+- never fail a valid ordinary change solely because it used the other supported
+  path.
 
-1. **Classify the candidate paths.**
-   - **Fenced / compatibility:** Skills/instruction/policy authority, credentials,
-     security, database migrations, public/persistent contracts, irreversible
-     external effects, or a repository that still requires PR/merge-queue admission.
-   - **Ordinary reversible:** docs/evidence-only, tests-only, narrow reversible code
-     that does not touch the fenced classes above, under integrity fences that
-     already forbid delete + non-fast-forward.
-2. **Read live admission signals.** Prefer direct-trunk for **internal ordinary**
-   when **all** of these hold (guidance — not a CI reject of PRs):
-   - org/repo rulesets do **not** require a PR for the default branch (only
-     integrity fences: no delete / no non-fast-forward is the expected baseline);
-   - private coordination / claim lineage is available where policy requires it;
-   - the path set is ordinary reversible.
-3. **Select the producer path (path-neutral admission).**
-   - **Both PR and direct-trunk are valid** for ordinary reversible work
-     (ADR-01KYM9PATHN3VTRXADM1SS1001). CI must not fail solely because ordinary
-     work arrived as a PR.
-   - **Prefer** FF/CAS direct-trunk for internal ordinary when rulesets allow
-     (lower latency, less forge ceremony). Opening a PR for ordinary internal
-     work is not a correctness defect; it is a latency/cost choice.
-   - **External contributors always use PRs** — first-class Candidate import.
-   - Any fenced class, missing delivery profile, or unresolved classification that
-     could be fenced → stronger obligations (often compatibility envelope /
-     merge-queue) until classification is clear. Platform selects the adapter.
-4. **Bind Work first** for multi-agent / long-running objectives. Direct-trunk and
-   PR lands both use private Candidate lineage where required — not public
-   `Work: wi_…` trailers. Claims own work, not files.
+Platform does not select or execute a PR/direct-trunk landing adapter. Merge
+queue is an optional forge mechanism for measured PR contention, not a delivery
+requirement.
 
-The normal internal adapter is direct CAS landing to the default branch under
-integrity fences. A provider pull request or merge queue is allowed only as:
+## Simple auto-deploy model
 
-### Ordinary vs fenced classification (not a PR ban)
+Environments expose exactly:
 
-Unknown, conflicting, or unclassified paths default to **stronger obligations**
-(compatibility / review), not “ban PR”.
-
-Positive ordinary classes (docs/evidence, tests-only, and similar low-risk
-path classes Platform classifies as ordinary) may use DT CAS when Platform
-selects it. Hard-fenced classes (workflows, ADR, migrations, credentials/security,
-public contracts, instruction authority) never become ordinary via a path list alone.
-
-Do **not** implement CI fail-closed “ordinary PR → must use DT”. That gate was
-retired as a throughput and external-contributor defect.
-
-
-## Ownership
-
-Do not treat research, a workspace artifact, a local diff, a commit, or an opened
-PR as done when the user's goal implies changed software, changed instructions, or
-shipped behavior. Own the path to the repository's durable delivery boundary and,
-when applicable, to production verification.
-
-### Shippable state is a property, not a universal terminal
-
-An exact Candidate is **shippable** when the requested change is coherent and
-complete at its source boundary, carries risk-appropriate validation and
-delivery metadata, and can advance through the repository's normal delivery
-system without reconstructing hidden author state. In particular:
-
-- every required source, generated artifact, schema, migration, test, and
-  operator or user document is present in the immutable Candidate;
-- no required behavior depends on an untracked file, private workspace state,
-  temporary patch, disabled gate, undeclared manual implementation step, or
-  workaround presented as the final design;
-- known residuals, approvals, compatibility bounds, rollback needs, and
-  downstream dependencies are explicit and do not contradict the declared
-  terminal; and
-- the Candidate has one exact identity and enough evidence for the active
-  delivery authority to admit, land, release, deploy, reject, or request
-  correction without interpreting a private session.
-
-Shippable does **not** mean shipped. The active repository delivery declaration
-selects the terminal and its evidence:
-
-`workspace → locally verified source → immutable Candidate → admitted/landed → released or deployed → live-observed`
-
-A task may legitimately end at an earlier state only when that state is the
-declared terminal. A commit is a source checkpoint. A pull request is a
-collaboration or landing adapter. Neither is a universal completion state.
-Likewise, do not force a deployment for a source-only terminal, and do not stop
-at landed source when the requested outcome is a published package,
-production-visible behavior, reconciled infrastructure, or verified recovery.
-
-### Definition of done ladder
-
-Use the strongest done state that matches the task **and active delivery lane**:
-
-| Task kind | Minimum truthful done state | Not done yet |
-| --- | --- | --- |
-| Research / analysis only | Durable artifact, issue, ADR draft, or explicit summary committed or otherwise stored in the agreed SSOT | Private notes, chat-only summary, uncommitted files |
-| Ordinary reversible repo change | Landed Candidate on default branch via **DT CAS or merged PR** with validation evidence (path-neutral) | Local diff or unpushed commit only |
-| PR preparation or submission explicitly requested (compatibility lane) | Branch pushed and PR opened/updated with validation evidence | Local diff, unpushed commit, workspace artifact |
-| Integrated repo change (compatibility / fenced class) | PR merged through branch protection, required checks, policy gates, and merge queue where required | PR open, queued, or failing checks |
-| Integrated repo change (direct-trunk ordinary) | Ordinary FF landed on default branch; deploy/release only via verified promotion | FF without required local proof, or treating raw push as deploy authority |
-| Versioned package release | Release intent landed through the active lane, package published by the repository workflow, and registry/provenance readback recorded | Manual publish, human-owned version bump, or publish proof based only on workflow exit code |
-| Deployable behavior change | Landed change promoted through the documented release path and verified by smoke checks, health checks, logs, metrics, or user-visible acceptance criteria | Landed but undeployed, deployed without proof, or proof based only on exit codes |
-| GitOps / infrastructure change | Desired state committed, reconciled by the controller, and live state observed to match | Manual cluster mutation, unreconciled manifest, or unverified rollout |
-
-The table defines the durable Work's terminal evidence, not how long one agent
-must occupy a worker. The source agent may release capacity after its immutable
-Candidate is accepted or landed at the declared source boundary with required
-local proof. If the Work also requires verified promotion or
-production evidence, leave it active with a durable delivery subscription and
-checkpoint; release EffectLeases, claim, and Run; and let the delivery
-controller or any eligible re-entry agent finish the stronger state. Incidents
-and irreversible effects retain their stronger bar, but passive external waits
-still use the same event-driven handoff.
-
-If the user asks for implementation, the default answer is not "done" until the
-change is committed, landed through the **active lane**, and advanced to the
-strongest reachable done state. If policy, permissions, failed checks,
-environment gates, or explicit user direction stop the path early, report the
-exact blocker and next action instead of calling the work complete.
-
-Default delivery path:
-
-- Implement the change.
-- Run risk-appropriate validation.
-- Publish an exact semantically atomic Candidate with Work/Attempt lineage,
-  source/tree identity, declared semantic scopes, local proof, and residual
-  risk. Do not choose or manually open a delivery lane.
-- Platform derives obligations and selects the expected-head CAS adapter.
-  Internal direct landing, generated compatibility PR, imported external PR,
-  and merge-queue projection all consume the same Candidate.
-- If the repository has not yet activated the successor, use the currently
-  declared compatibility command only as migration behavior and record the
-  adoption gap; never claim this as the target steady state.
-- Start the documented release/deploy path; under direct-trunk, promote only
-  immutable verified snapshots (raw push is not deploy authority when freeze is
-  active — re-query live mode/generation/denyingScope). When only the external
-  delivery system can advance, subscribe and release worker capacity instead
-  of synchronously polling.
-- Verify deployment with smoke checks, health checks, logs, metrics, or
-  user-visible acceptance criteria when the current Run owns an immediately
-  actionable delivery phase; otherwise bind those checks to the delivery event
-  or re-entry Run.
-- Record the change in a product-owned changelog, release note, or ADR, or link
-  the corresponding Enact decision/evidence, when it affects future work.
-  Runtime memory may cache only a pointer or working context; it is not the
-  sole durable release or decision authority.
-- Reconcile the workspace without deleting unique or unattributed state.
-
-A PR is a valid Candidate ingress (always for external; optional for internal)
-and a finish line only when it merges with required checks. Prefer DT for
-internal ordinary latency; never treat “opened a PR for ordinary work” as
-admission failure. Stop early only when blocked by a missing required status or
-policy decision, failed checks outside the task scope, protected-environment
-permissions, change windows, unclear production risk, or explicit user
-direction. If a regulated or external approval is required, it must appear as a
-required status, signed policy artifact, or documented environment gate; a person
-reading a comment is not a delivery mechanism.
-
-Never disable integrity fences, force-push protected branches, forge or
-self-attest an external approval, deploy to production without a clear documented
-path, or mutate shared infrastructure outside GitOps/IaC.
-
-## Package Publication
-
-If a repository publishes versioned packages, publication is production delivery.
-The normal path is machine-readable release intent published as the same
-immutable Candidate contract, centrally derived release and supply-chain
-obligations, adapter-selected CAS landing, workflow-owned publication, then
-registry and provenance readback. Versioning, changelog, registry-index, policy
-sync, and other generated-source updates are internal Candidates; their
-generator or bot never chooses a PR lane.
-
-If central admission selects a provider version-PR compatibility envelope, a
-dedicated least-privilege GitHub App/bot owns that projection. Do not use the
-repository `GITHUB_TOKEN`: GitHub suppresses many downstream events from it,
-and automation PR workflows may require human approval before running. The
-envelope binds the exact Candidate and remains controller-owned until readback;
-it is not a second release workflow or permanent reason to retain PR-first.
-Each org designates one release App/bot identity for compatibility projections
-and certifies it instead of creating duplicate identities.
-
-JavaScript and TypeScript source products published to npm should use Changesets
-for release intent, versioning, and changelog generation. A generated npm/npx
-adapter for a native CLI instead derives its version and artifact mapping from
-the CLI release identity under `software-distribution-readiness`; it must not
-create a second release authority. Other ecosystems may use native equivalents
-only when they preserve the same invariants: machine-readable intent,
-Candidate with an adapter-owned version projection where required, generated
-release notes, least-privilege publish identity,
-provenance or attestation where applicable, and package-registry proof.
-
-For npm publication, prefer trusted publishing through GitHub Actions OIDC over
-long-lived npm tokens. The GitHub App/bot identity owns any adapter-selected
-version projection and release statuses; the protected publish workflow owns registry
-authentication and should use OIDC/provenance when the registry and package
-scope support it. A long-lived registry token is a bounded fallback only: it
-needs least privilege, owner, reason, expiry, rotation path, and readback proof.
-
-Use the current package-release conformance capability to find package
-producers, manifest gaps, unbound or agent-authored version projections,
-missing release/provenance gates, token-only npm publishing, and missing
-registry readback before claiming a package-release repository is adopted.
-
-Do not publish packages manually from a workstation or from a human-owned token
-as the standard path. After an immutable package version is published, recovery
-is normally forward-fix, deprecate, or staged-channel halt; source revert alone
-does not undo external consumption.
-
-When the published product is a command-line executable, apply
-`software-distribution-readiness` for target artifacts, installers,
-package-manager selection, cross-channel identity, update/uninstall behavior,
-and consumer-side installation proof. This standard continues to own the
-generic publication and delivered-state ladder.
-
-## Release Notes
-
-Update a product-owned changelog, release note, or ADR, or link the
-corresponding Enact decision/evidence, when the change affects future
-development, operators, migration behavior, API contracts, user-facing
-workflows, or production support. Runtime memory may retain a pointer or
-working context, never the sole durable fact.
-
-## Production Verification
-
-Use the repository's documented release/deploy path. Verify with the narrowest meaningful production signal:
-
-- Smoke checks
-- Health checks
-- Logs and traces
-- Metrics
-- Error dashboards
-- Automated canary/SLO analysis verdicts
-- Synthetic checks
-- User-visible acceptance criteria
-
-Readback uses the audience intended for the claim. Operator logs, traces,
-topology, migration state, control knobs, and raw diagnostics stay in protected
-operator channels. Public/customer verification may use only an intentional
-versioned product, status, support, incident, audit, or protocol projection with
-the correct authorization scope and minimum allowlisted fields. A delivery test
-must not widen a public response contract merely to make internal evidence easy
-to scrape.
-
-If production verification is blocked, state the blocker, current deployment state, and exact next action.
-
-For canary or progressive rollout, a green rollout object is not enough by
-itself. Promotion should be backed by a machine-readable analysis verdict that
-compares baseline and candidate cohorts against declared metrics, SLOs,
-thresholds, analysis windows, and automatic rollback or pause policy.
-
-
-## Package checklist
-
-| Rule ID | Check |
+| Mode | Behavior |
 | --- | --- |
-| `delivery-sta-01` | Strongest relevant subset applied |
-| `delivery-sta-02` | Facts in schema/test/ADR homes |
-| `delivery-sta-03` | Proof layers separated |
-| `delivery-sta-04` | Unknown authority fails closed |
-| `delivery-sta-05` | Shippable source is distinguished from the declared delivery terminal |
+| `On Commit` | Build and deploy an admitted tracked-branch revision without waiting for external CI |
+| `After Verification` | Build may start immediately; deploy only after the configured exact-SHA aggregate CI verdict succeeds |
+| `Off` | No automatic deployment; use the declared manual/API/release path |
 
-- [ ] Full body obligations reviewed for applicability.
-- [ ] Residual gaps have owner and follow-up.
+`After Verification` is the ordinary industry `Wait for CI` capability:
 
-## Path-neutral central admission
+```text
+tracked-branch revision
+  ├─ build exact artifact
+  └─ await configured CI verdict for the same SHA
+       -> both success
+       -> deploy exact artifact
+       -> health/readiness
+       -> current, or retain/restore previous current
+```
 
-Platform is the delivery authority and performs one central admission over one
-immutable Candidate. An external pull request is an external-contributor collaboration projection into that same Candidate contract. Semantically equivalent internal and external inputs must receive the same obligations and landing rules; only the ingress adapter differs.
+Build success, artifact existence, and SHA/tree/digest binding are internal
+deployment-record invariants. They are not separate project-quality green
+lights. One durable CI verdict is sufficient when it represents the complete
+configured verification set.
+
+Normal transitions are event-driven. A low-frequency reconciler may recover a
+missed webhook or interrupted transition, but it is not the happy-path
+orchestrator. A newer revision may supersede obsolete undeployed revisions.
+
+## Exact identity and rollback
+
+- Bind every deployment to the exact source revision and immutable artifact
+  digest.
+- Build once and promote the same artifact across environments.
+- Update desired/current pointers idempotently with compare-and-swap or
+  generation fencing.
+- Run readiness/health checks before declaring current.
+- Preserve the previous successful deployment and automatically retain or
+  restore it on failed rollout health.
+- Do not use a mutable tag, raw branch name, or unverified manual patch as
+  production identity.
+
+These are implementation safety properties, not a customer-visible proof
+bundle.
+
+## Shippable state and terminal state
+
+Shippable state is a property, not a universal terminal. Source is shippable
+when:
+
+- the change is coherent and semantically complete;
+- required source, generated artifacts, schemas, migrations, tests, and docs
+  are present;
+- risk-appropriate local validation has run;
+- no outcome depends on untracked author state or a hidden manual step; and
+- exact source identity, known risk, and remaining delivery requirements are
+  recorded.
+
+Shippable does **not** mean shipped.
+
+```text
+workspace
+  -> locally verified source
+  -> exact source revision
+  -> landed
+  -> built/published/deployed
+  -> live observed
+```
+
+A commit is a source checkpoint. A pull request is a collaboration or landing
+adapter. Neither is a universal done state. The active repository delivery
+declaration selects the terminal.
+
+| Task kind | Minimum truthful done state |
+| --- | --- |
+| Analysis only | Durable requested artifact or self-contained answer |
+| Source change | Validated exact revision landed on the default branch, unless the user explicitly requested only a branch/PR |
+| Package release | Exact version/artifact published with registry/provenance readback |
+| Deployable behavior | Exact artifact deployed and risk-appropriate live behavior observed |
+| GitOps/infrastructure | Desired state landed, controller reconciled, live state read back |
+
+## Worker release and event-driven re-entry
+
+The durable Work terminal is separate from worker occupancy. When only external
+CI, build, deployment, soak, or approval can advance a Work, checkpoint and use
+Enact `work.defer` when available to register the typed wake-up, release effects
+and the active claim/Run, and continue other ready work. Do not keep an agent
+session alive to poll.
+
+This rule avoids idle workers; it does not lower the declared terminal.
+
+## Delivery procedure
+
+1. Read the repository delivery declaration and current source state.
+2. Attribute existing changes and avoid overwriting unrelated work.
+3. Implement one coherent change and run risk-appropriate local checks.
+4. Integrate through the repository's native path: direct trunk or PR.
+5. Read exact landed SHA; do not infer it from branch intent.
+6. Let repository CI and Platform advance through events.
+7. If active work remains but only an external event can advance it, defer and
+   release worker capacity.
+8. For a deployment-terminal task, verify exact source, digest, rollout, health,
+   behavior, and rollback/recovery as applicable.
+9. Report the strongest proven lifecycle state and any residual separately.
+
+Do not force deploy, weaken checks, patch a cluster, create a second authority,
+or use break-glass credentials merely to shorten a normal wait.
+
+## Reviewability
+
+Delivery evidence should allow another authorized agent to verify:
+
+- exact source revision;
+- repository integration event;
+- aggregate CI verdict and configured check name;
+- artifact digest and provenance;
+- deployment record and environment;
+- desired/current/previous identities;
+- rollout health and user-visible behavior; and
+- recovery or rollback result when exercised.
+
+Enact may link these facts privately. Do not require Work ids in public commits
+or PR bodies.
+
+## Acceptance
+
+- Product surfaces use `On Commit`, `After Verification`, and `Off`.
+- PR and direct-trunk landings feed the same exact-SHA build/deploy contract.
+- Verification failure never deploys under `After Verification`.
+- Build and verification can run in parallel.
+- Verification success to deploy dispatch is event-driven and measured.
+- Failed health retains or restores previous current.
+- No ordinary path requires scoped watermarks, selected snapshots, proof
+  bundles, policy epochs, or Platform-selected landing.
+- A source agent can release while external delivery continues.
+
+## Industry references
+
+- [Render deploy modes](https://render.com/docs/deploys)
+- [Railway Wait for CI](https://docs.railway.com/deployments/github-autodeploys)
+- [Vercel Git deployments](https://vercel.com/docs/deployments/git)
+- [Vercel deployment checks](https://vercel.com/docs/deployment-checks)

@@ -7,6 +7,10 @@ owners:
 
 # ADR-0019: Decouple worker occupancy from delivery terminal state
 
+> **Amended by ADR-0027.** Worker release and event-driven re-entry remain
+> binding. Platform Candidate selection, scoped watermarks, and selected
+> snapshots do not.
+
 ## Context
 
 Direct-trunk removes pull-request and merge-queue serialization for admitted
@@ -51,33 +55,28 @@ verification still serializes or duplicates every intermediate snapshot.
    avoid coordination. Every exact candidate binds the child Work that owns its
    outcome.
 4. **Ordinary source capacity releases at the source delivery boundary.** An
-   agent publishes one semantically atomic immutable Candidate with required
-   local proof. The delivery authority, not the agent, derives its obligations
-   and landing adapter. After the Candidate has been accepted or landed at the
-   declared source boundary, the agent may release capacity.
+   agent lands one semantically atomic exact source revision with required local
+   proof through repository-native direct trunk or PR. After source has landed
+   at the declared boundary, the agent may release capacity.
    The Work can remain open for verified promotion or production evidence, and
    the delivery controller or a later correction Run owns those phases.
    Incidents, irreversible effects, and explicitly deployment-terminal Works
    retain their stronger evidence bar, but they still use event-driven handoff
    during passive waits.
-5. **Remote verification is cumulative and coalesced.** Per repository and
-   verification scope, the control plane admits at most the useful running
-   snapshot and latest eligible pending snapshot, subject to non-cancelable
-   audit, migration, provenance, security, and effect obligations. Superseded
-   raw commits do not each require complete remote CI.
-6. **Build selection is separate from raw source arrival.** Content-addressed
-   artifacts are built once for a selected immutable snapshot. A repository
-   push may publish lightweight candidate proof and revision metadata; it does
-   not require a serving artifact for every intermediate SHA.
-7. **Admission cannot bootstrap through its own scarce lane.** A lineage or
-   eligibility decision that determines whether a candidate may consume CI
-   must be produced by a runner-independent authority, such as an authenticated
-   Enact/forge check producer or platform admission service. It must not require
-   the same general CI runner pool whose admission it controls.
+5. **Remote verification cancels safely superseded work.** CI may keep the
+   running/latest useful default-branch SHA when a newer revision includes its
+   predecessors, subject to non-cancelable audit, migration, provenance,
+   security, and release obligations.
+6. **Build and CI may run in parallel.** Build the exact tracked-branch
+   revision, deduplicate by content, and cancel obsolete undeployed work. This
+   does not require a selected-snapshot control plane.
+7. **CI must not bootstrap through its own scarce lane.** Repository eligibility
+   and required-check wiring must not depend on the same unavailable runner pool
+   they are intended to admit.
 8. **Measure flow, not ceremony.** Required operating measures include eligible
    source-to-land latency, worker active-action ratio, external-wait handoff
-   latency, coalescing ratio, verification queue age, selected-snapshot build
-   count, correction rate, and landed-to-verified/promotion latency. Commit
+   latency, superseded-run cancellation rate, verification queue age, build
+   count, correction rate, and landed-to-verified/deploy latency. Commit
    count alone is diagnostic, not an optimization target.
 
 ## Consequences
@@ -89,7 +88,7 @@ verification still serializes or duplicates every intermediate snapshot.
 - A delivery failure creates or reactivates correction Work from durable
   lineage. It does not require the original author session to remain alive.
 - Enact requires durable subscription and dispatch semantics; Platform requires
-  selected-snapshot coalescing and content-addressed build/promotion.
+  simple supersede/cancellation and content-addressed build/promotion.
 - A provider PR may remain as a bounded external-contribution or migration
   adapter. Agents do not choose or supervise that envelope; the central
   admission policy creates it only while an exact typed obligation still needs
@@ -100,8 +99,8 @@ verification still serializes or duplicates every intermediate snapshot.
 ## Verification
 
 - Instruction-package tests assert the worker-release, bounded-Work,
-  event-driven re-entry, runner-independent admission, and selected-snapshot
-  coalescing contracts.
+  event-driven re-entry, runner-independent required-check wiring, and safe
+  supersede/cancellation contracts.
 - Product acceptance requires live evidence that waiting Runs release worker
   capacity, subscriptions cause re-entry, and no more than the admitted
   running/latest-pending snapshots consume complete verification and build

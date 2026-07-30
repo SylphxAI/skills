@@ -28,7 +28,7 @@ execution authority, graph construction, escalation mechanics, and completion
 discipline; it does not define a competing decision kernel.
 
 [`source-authoring-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/source-authoring-standard/references/full-standard.md) owns Work Item,
-attempt, checkpoint, exact source-candidate, commit, worktree, and workspace
+attempt, checkpoint, exact source revision, commit, worktree, and workspace
 reconciliation semantics. This standard consumes those contracts for execution;
 it does not redefine them around a particular forge or delivery lane.
 
@@ -56,9 +56,8 @@ intentional starting state.
   reset, clean, or delete unknown work.
 - Use a dedicated branch, worktree, or clone when it is the smallest safe way to
   establish exclusive mutable ownership. One exclusive mutable worktree should
-  serve one attempt/candidate stream. The producer publishes one immutable
-  Candidate; branch or PR shape is a centrally selected delivery-adapter
-  projection, not agent discretion.
+  serve one attempt/source stream. The producer follows the repository's
+  declared direct-trunk or PR integration path; Platform does not select it.
 - Before claiming new high-priority work, re-check live state so the task does
   not duplicate an open PR, issue, merge-queue candidate, generated registry
   update, or release already in flight.
@@ -242,7 +241,7 @@ contract across phases, replans, context changes, handoffs, review cycles, and
 tool failures. The plan is disposable; the objective is not. A new phase or a
 more convenient intermediate artifact never silently becomes a smaller goal.
 
-A research result, phase completion, local diff, commit, immutable Candidate,
+A research result, phase completion, local diff, commit, exact source revision,
 open pull request, partial review, green subset, residual register, or status
 report is a **checkpoint** unless it independently satisfies the declared
 terminal. Checkpoints are valuable evidence and recovery points, but do not
@@ -255,7 +254,7 @@ Before any done, wait, blocked, handoff, or final-response claim:
 1. Re-read the active goal, original request, owning boundary, and current
    product delivery declaration.
 2. Name the strongest proven lifecycle state: workspace, locally verified,
-   Candidate, admitted, landed, released or deployed, and live-observed where
+   exact revision, landed, released or deployed, and live-observed where
    applicable.
 3. Compare that state with every material acceptance predicate and the active
    delivery terminal. Do not replace missing evidence with confidence, effort,
@@ -436,8 +435,8 @@ ordering, and progressive disclosure.
 
 ## Evidence-First Reporting
 
-Execution checkpoints supply exact state and evidence locators: current
-candidate or live subject, completed actions, running lanes, blockers, and
+Execution checkpoints supply exact state and evidence locators: current exact
+revision or live subject, completed actions, running lanes, blockers, and
 validation or delivery observations. `evidence-and-claims-standard` owns the
 support verdict and lifecycle boundaries for material action, problem,
 causality, completion, and delivery claims. Integrate its result into the
@@ -685,7 +684,7 @@ Minimum loop:
 - Do one final pass for accidental scope creep, stale comments, dead code,
   unresolved sessions, and unreported residual risk.
 
-Use a lightweight local self-check for ordinary work. When exact-candidate
+Use a lightweight local self-check for ordinary work. When exact-revision
 formal review is required, use `convergent-review` for perspective selection,
 repair, and closure. Use a separate-context adversarial reviewer only when the
 risk-selected independent-review benefit passes the same delegation predicate
