@@ -1,6 +1,6 @@
 ---
 name: scope-discipline
-description: "Prevent over-engineering, under-engineering, and moving completion bars while keeping planning, implementation, migration, architecture, and review rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands through human-era cost assumptions, repeated review, speculative hardening, or unjustified waiting."
+description: "Prevent over-engineering, under-engineering, workaround-driven regression, and moving completion bars while keeping planning, implementation, migration, architecture, and review fast, rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, weak shortcuts, or unjustified waiting."
 ---
 
 # Scope Discipline
@@ -8,6 +8,11 @@ description: "Prevent over-engineering, under-engineering, and moving completion
 Finish the requested outcome with the fastest effective path and the strongest
 positive-net durable result. Time, compute, attention, future velocity, and
 option value all matter. Avoid both expanding ceremony and false economy.
+
+The value-and-risk principle applies to every task, but the ceremony scales with
+the decision. A trivial reversible edit takes the direct fast path; a material
+irreversible decision earns deeper analysis. Do not turn this Skill into a
+mandatory report for ordinary work.
 
 ## Method
 
@@ -55,23 +60,28 @@ contradictory.
 
 ### Reprice work for the agent-native cost model
 
-Treat historical human effort estimates as hypotheses, not constraints. Reprice
-each option using current agents, tools, automation, parallelism, and reusable
-artifacts before choosing an architecture or delivery path.
+The Decision Quality Standard owns the cross-domain cost kernel. Apply it here
+before classifying work: treat historical human effort estimates as hypotheses,
+not constraints, and reprice each option using current agents, tools,
+automation, integration-safe parallelism, reusable artifacts, and machine
+verification.
 
 Agent-native costs often make these comparatively cheap:
 
 - generating coherent modules, contracts, adapters, migrations, and tests;
-- exhaustive search, file-by-file review, and parallel semantic comparison;
+- bounded-complete search, file-by-file review, and parallel semantic comparison;
 - maintaining explicit boundaries and mechanically consistent projections; and
 - exploring several candidates before selecting the strongest verified one.
 
-Real costs still include ambiguity, conflicting semantics, shared-write and
-integration bottlenecks, dependency propagation, slow proof, external effects,
-irreversible state, operational surfaces, and long-term maintenance. File count,
-typing effort, or human review hours alone are not valid reasons to choose a
-weaker architecture. Conversely, agent generation speed does not justify fake
-layers, unused abstractions, or a larger ongoing operational surface.
+Price critical-path elapsed time and durable lifecycle cost, not person-hours.
+Real costs still include ambiguity, conflicting semantics, weak oracles,
+shared-write and integration bottlenecks, dependency propagation, exact proof,
+external effects, irreversible state, operational surfaces, recovery, compute,
+coordination, and long-term maintenance. File count, typing effort, boilerplate,
+mechanical migration volume, or human review hours alone are not valid reasons
+to choose a weaker architecture. Conversely, agent generation speed does not
+justify fake layers, unused abstractions, recursive fan-out, or a larger ongoing
+operational surface.
 
 Prefer a richer architecture when clear semantic boundaries, maintainability,
 parallel ownership, migration safety, future velocity, or option value exceed
@@ -86,7 +96,7 @@ across as many agents as remain positive-value and integration-safe.
 
 Replace passive calendar waiting with active proof where possible:
 
-- exhaustive file, symbol, contract, and call-site review;
+- bounded-complete file, symbol, contract, and call-site review;
 - independent semantic cross-checks and candidate comparison;
 - static analysis, model checking, property and mutation testing;
 - differential tests against the old implementation;
@@ -120,28 +130,33 @@ Scale agents to remove real work, not to multiply ceremony. Stop adding agents
 when coordination, shared proof, integration, or external effects become the
 actual bottleneck; then optimize that bottleneck directly.
 
-### Exhaust active proof before waiting or working around
+### Select decisive active proof before waiting or working around
 
 Before accepting a workaround, calendar delay, or passive production wait,
-perform this proof-opportunity scan in order:
+select the least-cost method from the relevant proof ladder that can decide the
+material claim. Do not mechanically execute every level:
 
 1. inspect exact source, contracts, history, and current state;
-2. shard files, symbols, capabilities, and call paths for parallel semantic review;
+2. cover the declared material files, symbols, capabilities, and call paths,
+   using parallel semantic review only when its net value is positive;
 3. add or strengthen unit, contract, property, mutation, and differential tests;
 4. use static analysis, model checking, virtual clocks, replay, and simulation;
 5. use synthetic load, fault injection, shadow execution, or a reversible short canary;
 6. require real traffic or wall-clock time only for the residual hypothesis none
    of the earlier methods can test credibly.
 
-For every skipped level, name the concrete reason it cannot resolve the claim.
-"Safer to wait" and "production will tell us" are not evidence. Production
-smoke is a final boundary check, not a substitute for understanding and testing
-the code.
+Escalate only while the residual uncertainty is plausible, material,
+decision-changing, and worth more than its acquisition and delay cost. Stop
+when additional proof cannot change the action or claim, or a safe reversible
+action with faster feedback dominates it. "Safer to wait" and "production will
+tell us" are not evidence. Production smoke is a final boundary check, not a
+substitute for understanding and testing the code.
 
 A workaround is admissible only when the owning fix is currently impossible
 because of a demonstrated external constraint. Keep it bounded, visible, owned,
 expiring, and paired with the replacement path. Never use a workaround merely
-because active proof or root-cause work is inconvenient.
+because active proof or root-cause work is inconvenient. A workaround is
+containment, never evidence that the owning terminal is satisfied.
 
 ### Bind proof to the lifecycle stage
 
@@ -149,7 +164,7 @@ Identify the current stage before choosing evidence or rollout:
 
 | Stage | Default proof and delivery posture |
 | --- | --- |
-| Development | Exhaustive agent review, static analysis, tests, replay, simulation, and local/integration environments. Do not wait for nonexistent real traffic. |
+| Development | Risk-matched, boundary-complete agent review plus the decisive subset of static analysis, tests, replay, simulation, and local/integration proof. Do not wait for nonexistent real traffic. |
 | Internal dogfood without external users | Complete development proof, then short synthetic/live smoke with fast rollback. Calendar soak is non-blocking unless the behavior is inherently time-dependent. |
 | Internal beta with real users | Treat user safety and data as real production concerns; use bounded exposure, telemetry, rollback, and the shortest statistically or operationally meaningful window. |
 | Public production | Use risk-proportionate progressive delivery and live readback after pre-production proof. Long-term monitoring continues after delivery unless a named time-dependent hypothesis makes it terminal. |
@@ -163,6 +178,36 @@ uncertainty. Agents, replay, and simulation should close correctness first.
 Real-user A/B evidence is required only when the unresolved decision genuinely
 depends on human behavior, and its duration follows sample/information needs,
 not a conventional number of weeks.
+
+### Preserve durable forward progress
+
+Optimize for monotonic movement toward the declared terminal, not visible local
+activity. An accepted step is durable progress when it closes a remaining
+terminal predicate or a selected positive-net improvement while preserving
+already proven material predicates.
+
+- Prefer one owning-boundary fix, one semantic authority, and one regression
+  oracle over a locally fast patch that creates a second path or cleanup task.
+- Do not select a weak intermediate architecture merely because sequential
+  human implementation would have made the correct target expensive. In
+  development, cut directly to the complete target when current agents can
+  implement and verify it safely.
+- Preserve behavior, compatibility, data, security, and recovery invariants
+  explicitly across refactors and migrations. Delete the superseded path when
+  its demonstrated compatibility need ends.
+- When a candidate fails, restore the known-good state if recovery requires it,
+  learn from the falsifying evidence, and replan toward the same valid
+  destination. Rollback is recovery; silently making the obsolete method the
+  target again is regression.
+- Do not count a workaround, duplicate authority, phase label, partial
+  migration, or follow-up ticket as forward progress when the current objective
+  still owns the unresolved outcome.
+
+Future-proofing is positive-net when a known variation, expensive retrofit, or
+stable semantic boundary can be handled now at low agent-native lifecycle cost
+and verified without creating a separate operational system. It is speculative
+when it implements unrequested product behavior, an imagined threat, or a
+permanent runtime surface without such evidence.
 
 ### Control expansion
 

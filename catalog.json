@@ -61,19 +61,19 @@
       "name": "app-design-blueprint",
       "description": "Design or critically review a complete app as a coherent, agent-first App Design Blueprint: user job and promise, workflows and information architecture, first-use activation, capability portfolio, retention and durable ownership, commerce and social integration, feedback and review loops, responsive HTML5/mobile/desktop experience, desktop OS integration semantics, offline and sync, accessibility, localization, low-end performance, privacy, safety, autonomous construction, and validation. Use for a new consumer or productivity app, whole-app redesign, cross-platform app system, a bounded macOS/Windows integration design that must remain consistent with app state, or an audit of whether product capabilities form one scalable experience. Use specialist procedures for one payment, refund, notification, review, campaign, store submission, exact release artifact, or file-level interface artifact unless whole-app coherence is also being decided.",
       "path": "skills/app-design-blueprint/SKILL.md",
-      "packageDigest": "sha256:ebf3b0eeb98a41fb386562cc118902a61887a5690ce8b3ae031bd38ad5319411"
+      "packageDigest": "sha256:0060fd3003a002879624e23ef95e6d47e3b84bec6775c3b9f7e6a88181e5c147"
     },
     {
       "name": "architecture-convergence",
       "description": "Deliver a substantial code or system-architecture refactor to one declared target across one or many repositories. Use for whole-repository Capability-first DDD adoption, state/runtime boundary correction, language rewrites, monolith restructuring, drop-in replacements, or architecture cutovers that require real code movement, semantic proof, authority change, and predecessor retirement. Do not use for a small local refactor, a documentation-only architecture review, or customer-data migration.",
       "path": "skills/architecture-convergence/SKILL.md",
-      "packageDigest": "sha256:bf44188f10368276006810989f7bb45ec686997b65e4b8953fa950f1b979fba2"
+      "packageDigest": "sha256:8c5f9f2b8fe354aed50ca1818ae80f1e4978eb5d7b7fc0f377b1018d45eb3029"
     },
     {
       "name": "autonomous-execution-standard",
-      "description": "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal, keep eligible lanes moving, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
+      "description": "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:0e1a8f2ea02ecfdb71a2c7cc3143700f3074f27f2ea2d4934b4740f8693b59f0"
+      "packageDigest": "sha256:5e83e1e7916dcbf97557b1569b33b3ccafc80c3fa25d0b9d38e896a98b41e0ec"
     },
     {
       "name": "board-metrics-operating-review",
@@ -91,13 +91,13 @@
       "name": "ci-admission-standard",
       "description": "CI admission tiers, gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including custom lints and architecture tests. Do not use for debugging one unrelated test failure.",
       "path": "skills/ci-admission-standard/SKILL.md",
-      "packageDigest": "sha256:fc521cbc55b82637a4d7a4d8883edf8e646788bced09d7b989a93e6a12f7ed51"
+      "packageDigest": "sha256:3951fe659c88cfb1fbbb1b79fd23b75d2d2236e5fbecdf52d47dd4fea10db4ea"
     },
     {
       "name": "ci-runner-capacity-standard",
       "description": "Design or diagnose CI runner capacity, queue/pickup latency, execution profiles, merge-queue backpressure, inventory uncertainty, and critical-path isolation. Use when CI jobs wait, runners disappear, queues saturate, or capacity policy must change. Do not use for a candidate failure caused by product code.",
       "path": "skills/ci-runner-capacity-standard/SKILL.md",
-      "packageDigest": "sha256:0fd811ba20b6ba778ad4f7f13ec067c5a7460327a059a61b43f820337eb3cec5"
+      "packageDigest": "sha256:f180ee6d01b47c77b528d267c738bc48a1cca116b370c22f3b6b25f50ab50f1a"
     },
     {
       "name": "commercial-decision-standard",
@@ -173,9 +173,9 @@
     },
     {
       "name": "decision-quality-standard",
-      "description": "Select among materially distinct technical, product, commercial, or operating options and record the commitment, trade-offs, reversibility, and decision evidence. Use after credible options are formed and one durable choice is required. Do not use for unknown-cause diagnosis, exact-candidate pass/fail review, trivial reversible edits, or execution of an already selected option.",
+      "description": "Select among materially distinct technical, product, commercial, or operating options, reprice human-era effort through current agent capabilities, and record the commitment, trade-offs, reversibility, and decision evidence. Use after credible options are formed and one durable choice is required. Do not use for unknown-cause diagnosis, exact-candidate pass/fail review, trivial reversible edits, or execution of an already selected option.",
       "path": "skills/decision-quality-standard/SKILL.md",
-      "packageDigest": "sha256:33e316d6aa970fbe3b463fdfdd6405f93a7ccf05b7f7c55fe976a1630dc7006d"
+      "packageDigest": "sha256:7079571429880c6c5e79955d81d9708cad014ee1ec5e91c0558f741c0b95d2f6"
     },
     {
       "name": "delivery-standard",
@@ -253,7 +253,7 @@
       "name": "enterprise-profile-standard",
       "description": "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selections and their lifecycle; Sylphx Enact owns resolved live state.",
       "path": "skills/enterprise-profile-standard/SKILL.md",
-      "packageDigest": "sha256:44733184a3c75fa0e833795187eb393c80a92ac5cbf135ef50e6d2aa11abfa0b"
+      "packageDigest": "sha256:f1b43144c2808152a403e795a4337f9c34220deff2e517098b2437e79b5514d9"
     },
     {
       "name": "evidence-and-claims-standard",
@@ -277,7 +277,7 @@
       "name": "game-design-blueprint",
       "description": "Design or critically review a complete, agent-first game as one coherent player experience: player promise, verbs and loops, challenge, progression and quests, content, economy and monetization, retention, social play and virality, first-time experience, game feel, evergreen late-entry fairness, platforms, accessibility, localization, performance, live operations, automation, and validation. Use for new games, whole-game redesigns, game design documents, persistent or seasonal world strategy, or audits where several gameplay and commercial systems must work together. Use a specialist when one economy, ad system, return loop, notification policy, referral, campaign, soft launch, payment, refund, review, analytics, or release artifact is the primary job.",
       "path": "skills/game-design-blueprint/SKILL.md",
-      "packageDigest": "sha256:10897e124f45e41b1bbb5ad38e3dca69fdf0fa47170901f42cfc5a150494f93b"
+      "packageDigest": "sha256:a3adf9f3fdf56596d6f7ad3f2cd39c933f3c5d4355f9d09c29f766937de1668c"
     },
     {
       "name": "game-economy-review",
@@ -307,7 +307,7 @@
       "name": "instruction-evolution-standard",
       "description": "Evolution of Skills, runtime constitutions, required profiles, and architecture generations with one writable owner, migration, reconciliation, and retirement. Use for durable instruction or profile changes, not live Work Graph operations.",
       "path": "skills/instruction-evolution-standard/SKILL.md",
-      "packageDigest": "sha256:e7a4689b0f5cf75048a89aef5da34e4ce840870e8817d4b80536d281f6f957e1"
+      "packageDigest": "sha256:a4f3c594e6ee8d7345aa5b5778ef8d93cf2f91b3cb5253554d0c4d66d169b080"
     },
     {
       "name": "interface-craft",
@@ -517,7 +517,7 @@
       "name": "risk-matched-verification-standard",
       "description": "Select evaluation, replay, simulation, model, and canary evidence in proportion to the actual failure model and residual uncertainty. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, concurrent, or time-dependent behavior. Use CI Admission for flaky-check attribution or quarantine; do not add expensive verification machinery to an ordinary deterministic code path.",
       "path": "skills/risk-matched-verification-standard/SKILL.md",
-      "packageDigest": "sha256:37f4c66c84e184b68425c67966d6a82b98290dfebc740d26c032a256e5078285"
+      "packageDigest": "sha256:dc78022cf8130ae62aeef27a77e06f75fab1ad3fee4e67f887f92cb0f9f9adf5"
     },
     {
       "name": "saas-subscription-pricing",
@@ -533,9 +533,9 @@
     },
     {
       "name": "scope-discipline",
-      "description": "Prevent over-engineering, under-engineering, and moving completion bars while keeping planning, implementation, migration, architecture, and review rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands through human-era cost assumptions, repeated review, speculative hardening, or unjustified waiting.",
+      "description": "Prevent over-engineering, under-engineering, workaround-driven regression, and moving completion bars while keeping planning, implementation, migration, architecture, and review fast, rigorous, agent-native, high-leverage, future-proof, and finishable. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, weak shortcuts, or unjustified waiting.",
       "path": "skills/scope-discipline/SKILL.md",
-      "packageDigest": "sha256:71e78b1b4f4d0f42ebbfcc4d48d4a62e04cd9df11d69d8061fda15e8840e14c5"
+      "packageDigest": "sha256:9f4ead36c29e82dabef68485297d26701bd6ba92fe8c2e10118483c2e61cced5"
     },
     {
       "name": "search-discovery-quality-review",

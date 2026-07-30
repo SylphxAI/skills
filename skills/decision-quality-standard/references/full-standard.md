@@ -11,6 +11,11 @@ Decision quality is an execution obligation, not motivational wording. It means 
 the strongest, simplest, most robust, highest-leverage path under real
 constraints, then proving it with the right evidence.
 
+The decision kernel is universal; its ceremony is not. Apply the same
+value/risk/reversibility logic implicitly to a trivial reversible action and
+explicitly to a material commitment. Do not turn a universal principle into a
+universal planning document, review meeting, or evidence programme.
+
 This standard composes with:
 
 - [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md) for
@@ -64,6 +69,8 @@ Before comparing solutions, establish:
 - current source/runtime truth and the quality, age, and uncertainty of the
   available evidence;
 - active binding enterprise profiles whose selectors match;
+- current agent, tool, automation, reusable-artifact, parallelism, integration,
+  and verification capabilities;
 - blast radius, reversibility, migration cost, recovery path, and opportunity
   cost of delay.
 
@@ -75,6 +82,48 @@ When deciding whether more evidence is worth acquiring, apply
 [`value-of-information.md`](value-of-information.md). More research is not
 automatically better; acquire it when it can change the decision enough to
 justify its full cost and delay.
+
+### Agent-native cost repricing
+
+Treat historical human estimates as evidence about an old production function,
+not as current cost. Before comparing options, reprice them using the strongest
+available agents, tools, deterministic generation, automation, integration-safe
+parallelism, reusable artifacts, and machine verification.
+
+Human-era proxies that are not costs by themselves include:
+
+- typing volume, boilerplate, file count, model/type count, or the number of
+  coherent modules;
+- manual reading, repetitive edits, generated clients, routine migrations, and
+  mechanically consistent tests that current agents or tools can produce and
+  verify cheaply; and
+- calendar estimates derived mainly from sequential human implementation or
+  review capacity.
+
+Real agent-native lifecycle costs include:
+
+- ambiguous or conflicting semantics, unknown ends, and weak oracles;
+- shared-write, dependency-propagation, integration, and serialization
+  bottlenecks;
+- exact verification, compatibility, public/data migration, and recovery;
+- irreversible effects, blast radius, external systems, and wall-clock
+  behavior that cannot be simulated credibly;
+- permanent runtime, infrastructure, security, observability, support, and
+  maintenance surfaces; and
+- compute, memory, context, supervision, collision, result-reading, and
+  integration overhead from agents or tools.
+
+Estimate critical-path elapsed time and durable lifecycle cost rather than
+person-hours. Parallelizable work becomes cheap only while the jointly feasible
+launch set remains integration-safe and positive-net; generating the same wrong
+semantic decision many times is fast duplication, not leverage.
+
+Prefer richer code structure when agents can cheaply generate and verify it and
+it buys semantic clarity, future velocity, replaceability, or migration safety
+without a larger permanent operating surface. Prefer the simpler design when
+extra structure creates no durable capability or makes future change harder.
+Never reject a stronger architecture merely because it contains more typed
+files, adapters, generated projections, or tests.
 
 ### Current evidence and active resolution
 
@@ -174,14 +223,17 @@ For every material option:
 1. Eliminate violations of higher constraints and ruin/floor conditions.
 2. Compare the observable outcome against the objective; do not compare tools
    or feature counts in isolation.
-3. Classify reversibility, blast radius, migration surface, recovery class,
+3. Reprice implementation, proof, delay, and lifecycle cost through the current
+   agent-native capability frontier rather than human-effort proxies.
+4. Classify reversibility, blast radius, migration surface, recovery class,
    expected upside/downside, and cost of waiting.
-4. Price option value and expected regret. Prefer a path that learns cheaply
+5. Price option value and expected regret. Prefer a path that learns cheaply
    when evidence is weak; require stronger evidence as commitment becomes
    harder to reverse.
-5. Choose the smallest complete path that strengthens the target state without
-   hiding future migration cost.
-6. Record the selected option, rejected credible alternative, evidence
+6. Choose the smallest complete path that strengthens the target state without
+   hiding future migration cost, preserving a broken owner boundary, or
+   knowingly creating avoidable reversal work.
+7. Record the selected option, rejected credible alternative, evidence
    confidence, accepted tradeoff, proof, and review trigger in the smallest
    durable decision home.
 
@@ -248,6 +300,13 @@ lost.
 The default optimization target is maximum verified throughput with minimum
 durable overhead. Optimize for the shortest safe path from intent to production
 proof, not for the fewest checks, largest diff, or most optimistic story.
+
+Throughput is durable only when accepted progress preserves already proven
+material predicates and reduces the remaining distance to the declared
+terminal. A locally fast workaround, duplicate authority, compatibility path,
+or weak intermediate design that predictably requires reversal is negative
+progress unless a demonstrated external constraint makes it the lowest-regret
+bounded experiment or containment.
 
 Every non-trivial material decision should be able to answer:
 
@@ -376,6 +435,10 @@ policy, or deployment decision consumes it.
 - Shipping a local workaround that preserves a broken owner boundary.
 - Rejecting high-upside work because it is risky instead of pricing and
   containing the risk.
+- Pricing files, boilerplate, generated types, mechanical migrations, or human
+  review hours as if current agents and automation did not exist.
+- Calling a workaround fast while transferring a known owner-boundary repair
+  and cleanup cost to the next attempt.
 - Using research to delay a reversible decision.
 - Using a narrow test to claim a broad system is correct.
 - Making a dashboard or scorecard that expects a human to enforce the result.

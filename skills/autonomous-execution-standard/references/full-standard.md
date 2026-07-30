@@ -16,6 +16,11 @@ certainty, evidence scope, or delivery state. The execution graph, progress
 checkpoint, evidence-reporting, self-review, and completion rules below make
 both halves operational.
 
+Speed means reducing the verified distance to the delivery terminal while
+preserving already accepted material predicates. It does not mean maximizing
+local mutations, phase count, or temporary green states that create predictable
+rework.
+
 The cross-domain decision precedence, risk, reversibility, evidence, and
 option-value calculus is owned by
 [`decision-quality-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/decision-quality-standard/references/full-standard.md). This standard owns
@@ -274,6 +279,41 @@ objective indefinitely because more hardening is imaginable: after reaching the
 terminal, use `scope-discipline` for one bounded positive-net scan, apply material
 same-cause corrections inside the owning boundary, and close when no eligible
 improvement changes the outcome enough to justify its cost.
+
+## Durable Progress And Anti-Regression
+
+At every material checkpoint, name:
+
+- the terminal predicate or selected positive-net investment newly closed;
+- the already proven material behavior, contract, data, security, recovery, or
+  delivery predicates preserved; and
+- the shortest remaining critical path.
+
+An action is durable progress only when it advances the first item without
+silently weakening the second. A locally fast workaround, duplicate authority,
+weak intermediate architecture, compatibility path without a demonstrated
+consumer, or partial migration that the current objective still owns is not
+progress merely because code changed or one check turned green.
+
+Prefer the feasible owning-boundary fix and its narrow semantic regression
+oracle. In development, current agent capacity can make a complete one-step
+cutover cheaper than a human-era sequence of scaffolds, dual paths, staged
+migrations, and later cleanup; use that direct target when it remains
+integration-safe and verifiable.
+
+Exploration and failed candidates may discover evidence. Accepted source and
+delivery state should not oscillate between old and new targets without that
+evidence changing the valid destination. If a candidate violates a floor,
+rollback may restore the known-good state as recovery; then update the
+hypothesis or implementation and continue toward the valid terminal. Do not
+rebrand the predecessor as the destination or preserve both paths merely to
+avoid completing the owning repair.
+
+The Decision Quality Standard owns agent-native cost repricing. Do not reject a
+stronger durable implementation because it has more generated files, types,
+adapters, migrations, or tests. Do count semantic ambiguity, integration
+serialization, exact proof, irreversible exposure, permanent operational
+surface, recovery, compute, coordination, and context cost.
 
 ## Active Resolution Mechanics
 
@@ -675,6 +715,11 @@ Before final response, check:
   still match; no checkpoint or residual list has silently narrowed them.
 - The strongest proven lifecycle state actually satisfies the declared
   terminal and every material acceptance predicate.
+- The delivered step closes a terminal predicate or selected positive-net
+  investment without regressing an already proven material predicate.
+- No feasible owning-boundary fix was replaced by a workaround, duplicate
+  authority, or weak intermediate target that the same objective must later
+  undo.
 - Required background work is complete, integrated, or explicitly blocked.
 - Required tests/checks have passed, failed with diagnosis, or were skipped with
   stated residual risk.

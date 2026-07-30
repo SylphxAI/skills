@@ -45,10 +45,10 @@ on narrative status or stale proof.
    concurrent paths; preserve one write authority.
 7. Prove observable equivalence. Run the source and target against the same deterministic corpus and compare complete normalized outputs, errors, ordering, state effects, events, retries, and operational behavior at exact source and target revisions.
 8. Make proof expire. Route source, target, contract, shared-constant, config, schema, and migration changes to affected capabilities. Retain the last proof for audit, mark it stale, and block authority promotion until exact candidate revisions and artifact digest are compared again.
-9. Cut over with evidence appropriate to the stage. Prefer exhaustive semantic
-   review, differential/property tests, replay, simulation, and exact-candidate
-   integration proof. Add shadow/canary only when the residual claim genuinely
-   requires live traffic or elapsed time.
+9. Cut over with evidence appropriate to the stage. Prefer boundary-complete,
+   risk-matched semantic review, differential/property tests, replay,
+   simulation, and exact-candidate integration proof. Add shadow/canary only
+   when the residual claim genuinely requires live traffic or elapsed time.
 10. Contract immediately after the selected proof establishes target authority.
    Remove source implementation, obsolete structure, compatibility switches,
    obsolete fixtures, source-parity/no-old-path gates, mutable migration ledgers,

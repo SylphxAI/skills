@@ -10,6 +10,8 @@ Required now: <only direct blockers and same-cause defects>
 Selected investments: <high-return in-boundary improvements worth doing now>
 Excluded: <low-return hardening, new infrastructure, speculative threats>
 Time-to-value: <shortest credible implementation and proof path>
+Agent-native repricing: <cheap generated/mechanical work vs real semantic, integration, proof, operational and recovery cost>
+Durable progress: <terminal predicate closed and material predicates preserved>
 Calendar compression: <agent shards, replay, simulation, differential or property tests>
 Real-time need: <none, or exact hypothesis that cannot be accelerated>
 Lifecycle stage: <development | internal dogfood | internal beta with users | public production>
@@ -44,10 +46,12 @@ use the active proof instead of waiting.
 - [ ] Optional hardening and speculative threats do not block delivery.
 - [ ] Tests exercise the material claim with the shortest decisive proof.
 - [ ] Any wall-clock delay explains why agent parallelism or simulation cannot replace it.
-- [ ] Active proof options were exhausted before accepting a workaround or passive wait.
+- [ ] The least-cost decisive proof was selected; escalation stopped when more evidence became non-decision-changing.
 - [ ] Evidence and rollout match the current lifecycle stage.
 - [ ] Development work is not blocked on nonexistent production traffic.
 - [ ] Human-era effort assumptions were repriced using current agent capabilities.
+- [ ] Progress closes a terminal predicate or selected investment without regressing an already proven material predicate.
+- [ ] No feasible owning-boundary fix was replaced by a workaround or weak intermediate target.
 - [ ] One bounded high-value scan captured obvious high-return in-boundary improvements.
 - [ ] Remaining ideas have lower net value, weaker evidence, or a different owner/lifecycle.
 - [ ] The task closes after selected improvements pass verification.

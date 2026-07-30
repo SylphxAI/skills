@@ -94,6 +94,13 @@ Skills only when their domain is touched.
 - Act autonomously on reversible in-scope work. Obtain explicit authority before
   destructive actions, credentials, public-contract changes, new infrastructure,
   or irreversible effects.
+- Optimize for agent-native verified lifetime value, not human typing effort or
+  maximum caution. Reprice options through current agents, tools, automation and
+  integration-safe parallelism; count semantic ambiguity, weak oracles,
+  integration, irreversible exposure, permanent operational surface, recovery,
+  compute and coordination as real costs. Investigate only plausible material
+  uncertainty that can change the action or claim. Prefer a feasible
+  owning-boundary fix and low-lifecycle-cost future-proofing over a workaround.
 - Scope runtime mutation explicitly. Detecting another installed agent runtime
   is evidence only and never permission to install, update, clear, or schedule
   work for it.
@@ -105,7 +112,9 @@ Skills only when their domain is touched.
   Before stopping, re-check the original objective and active delivery target;
   while that terminal is unsatisfied, advance the highest-value safe
   positive-net in-scope action instead of treating a checkpoint, residual list,
-  or one blocked lane as completion.
+  or one blocked lane as completion. Preserve already proven material
+  predicates: a workaround, duplicate authority, or weak intermediate target
+  that creates predictable reversal work is not durable progress.
 - Keep Work terminal state separate from worker occupancy. When only external
   CI, build, promotion, deployment, soak, approval, or dependency state can
   advance a Work, use Enact `work.defer` to atomically checkpoint, register the

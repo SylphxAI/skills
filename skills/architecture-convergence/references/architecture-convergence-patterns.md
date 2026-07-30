@@ -265,7 +265,7 @@ Normalize only declared nondeterminism such as timestamps, generated IDs, trace 
 
 | Stage | Default migration strategy |
 | --- | --- |
-| Development | One exact-candidate code cutover; exhaustive tests/replay; delete old structure immediately |
+| Development | One exact-candidate code cutover; boundary-complete risk-matched tests/replay; delete old structure immediately |
 | Internal dogfood without external users | One-step where state/effects are reversible; otherwise a short synthetic/shadow boundary check |
 | Internal beta with real users | Expand-contract only for affected compatibility/data/effect paths; bounded exposure and automatic rollback |
 | Public production | Risk-proportionate progressive authority switch and live readback after full pre-production proof |

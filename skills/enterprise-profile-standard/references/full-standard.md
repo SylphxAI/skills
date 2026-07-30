@@ -80,8 +80,9 @@ requires overlap:
 4. retire the predecessor once machine-readable convergence is true.
 
 During development, when no live compatibility or irreversible state exists,
-prefer one-step cutover with exhaustive static/test evidence. Calendar waiting
-is not evidence. Permanent multi-profile steady state is forbidden.
+prefer one-step cutover with boundary-complete risk-matched static/test
+evidence. Calendar waiting is not evidence. Permanent multi-profile steady
+state is forbidden.
 
 ## Exceptions
 

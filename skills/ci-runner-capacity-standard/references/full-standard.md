@@ -184,7 +184,7 @@ falls behind:
    admission capacity;
 3. PR branch feedback remains fast, but may yield to merge-group admission when
    the queue breaches pickup SLO;
-4. postsubmit, exhaustive affected suites, heavy E2E, mutation, and deep
+4. postsubmit, complete affected suites, heavy E2E, mutation, and deep
    security backstops run on lower-priority or separate capacity unless they are
    actively gating release promotion;
 5. release, deploy, and artifact-promotion lanes use release-specific capacity

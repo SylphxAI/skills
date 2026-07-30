@@ -158,7 +158,7 @@ fails admission regardless of label or assertion.
   completeness, not latency.
 - A presubmit miss is acceptable **only because the postsubmit tier is the
   backstop**: a slipped regression is caught minutes-to-hours after merge by
-  exhaustive affected postsubmit + automated culprit-finding/bisection + runtime
+  complete affected postsubmit + automated culprit-finding/bisection + runtime
   rollback, selective source revert, or forward-fix — never permanently. The
   reference model is a fast soundly selected presubmit plus complete affected
   postsubmit and periodic full audits, not a vendor-specific miss budget.
@@ -203,7 +203,7 @@ safety conditions:
 - **Validate the selector periodically** against a full run (selected-only vs
   all). If the full run catches something selection missed, that is a graph or
   hermeticity defect to fix — selection accuracy is itself a monitored property.
-- **Postsubmit exhaustive affected is mandatory before selector trust.** The
+- **Postsubmit complete affected is mandatory before selector trust.** The
   postsubmit affected set must be a superset of presubmit's selected set and
   broad enough to support culprit finding. Scheduled full runs measure what the
   affected graph missed; they do not justify weakening the immediate backstop.

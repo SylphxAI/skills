@@ -768,6 +768,57 @@
     "tags": ["abstention", "small-edit"]
   },
   {
+    "id": "scope-discipline-overcaution-cantonese",
+    "kind": "positive",
+    "prompt": "呢個任務俾過分謹慎同無限驗證拖慢咗；請按真實風險、回報同可逆性收斂證據，保持誠實但盡快完成原本終點。",
+    "expectedSkills": ["scope-discipline"],
+    "artifacts": [],
+    "tags": ["multilingual", "excessive-caution", "time-to-value"]
+  },
+  {
+    "id": "scope-discipline-agent-native-repricing",
+    "kind": "compound",
+    "prompt": "Choose the durable architecture after repricing implementation, migration and review through current agent automation rather than person-days; include high-return future-proofing without adding speculative runtime machinery.",
+    "expectedSkills": ["decision-quality-standard", "scope-discipline"],
+    "artifacts": [{"artifact": "Decision Record", "owner": "decision-quality-standard"}],
+    "tags": ["agent-native", "future-proofing", "decision"]
+  },
+  {
+    "id": "scope-discipline-workaround-regression",
+    "kind": "compound",
+    "prompt": "Continue this multi-phase repair to its real terminal without another prompt. Stop alternating between a local workaround and the old design: fix the owning boundary, preserve proven predicates and avoid creating cleanup the same objective must later undo.",
+    "expectedSkills": ["autonomous-execution-standard", "scope-discipline"],
+    "artifacts": [],
+    "tags": ["workaround", "regression", "objective-continuity"]
+  },
+  {
+    "id": "scope-discipline-neighbour-high-risk-proof",
+    "kind": "near-neighbour",
+    "prompt": "Design the property, replay, fault-simulation and recovery evidence for an irreversible double-entry settlement workflow whose concurrency failure model is already declared.",
+    "expectedSkills": ["risk-matched-verification-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "scope-discipline",
+    "tags": ["high-risk", "verification"]
+  },
+  {
+    "id": "scope-discipline-neighbour-direct-small-edit",
+    "kind": "near-neighbour",
+    "prompt": "Correct this one spelling error and run the existing documentation check; do not broaden the task.",
+    "expectedSkills": [],
+    "artifacts": [],
+    "nearNeighbourOf": "scope-discipline",
+    "tags": ["small-edit", "fast-path"]
+  },
+  {
+    "id": "scope-discipline-abstain-status",
+    "kind": "abstention",
+    "prompt": "Report the current branch and working-tree status without changing anything.",
+    "expectedSkills": [],
+    "artifacts": [],
+    "coverageFor": ["scope-discipline"],
+    "tags": ["abstention", "status"]
+  },
+  {
     "id": "objective-continuity-multi-phase-cantonese",
     "kind": "positive",
     "prompt": "呢個 migration 唔好每做完一個 phase 就停低等我再叫；保留原本目標，主動完成所有仍然安全而且屬於範圍內嘅步驟，並且只喺真正終點有證據時先報完成。",

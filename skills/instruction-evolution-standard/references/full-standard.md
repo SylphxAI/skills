@@ -51,9 +51,9 @@ home for the standard text.
 
 Choose the fastest evidence-backed path:
 
-- **Development/no live compatibility:** one-step cutover, exhaustive agent
-  review, static analysis, tests, replay, simulation, or other proportional
-  pre-production evidence.
+- **Development/no live compatibility:** one-step cutover, boundary-complete
+  risk-matched agent review, static analysis, tests, replay, simulation, or
+  other proportional pre-production evidence.
 - **Live reversible boundary:** short expand-contract or canary only when a
   concrete compatibility or runtime uncertainty remains.
 - **Irreversible/public/data boundary:** stronger recovery and observation

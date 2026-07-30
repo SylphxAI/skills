@@ -29,6 +29,13 @@ blast radius. It is not a universal
 presubmit tax and not a replacement for the active delivery profile's admission
 and integration controls, postsubmit proof, deploy proof, or recovery.
 
+Do not attempt to eliminate every logically imaginable failure. A failure mode
+enters the blocking proof plan only when it is plausible under the declared
+environment, material to the claim or floor, and capable of changing the
+action, terminal verdict, or risk treatment. Claims remain conservative, but
+evidence acquisition stops when more information is non-decision-changing or a
+safe reversible action with faster feedback dominates it.
+
 “Risk-matched” describes evidence selection, not a maturity or market-rank
 claim. This standard never proves that a system is frontier, SOTA, best, or
 latest merely because it uses advanced verification methods.
@@ -37,11 +44,18 @@ Use this selection matrix:
 
 | Surface | Required evidence |
 | --- | --- |
+| Ordinary deterministic local behavior with low blast radius and a reversible change | Narrow unit or integration proof that exercises the changed claim; no simulation, canary, independent review, or broad evidence programme by default |
 | Distributed protocols, queues, locks, ledgers, billing, permissions, durable agent runtimes, irreversible workflows | Property/model tests first; deterministic simulation testing when interleavings, faults, or long-running behavior dominate risk |
 | Public API/tool/event/package contracts, generated clients, schema-derived surfaces | Spec/contract gate from the schema source of truth, generated artifact freshness, compatibility proof |
 | AI product behavior, model/provider routing, agent workflows, prompt/tool policies | Versioned capability/substitution eval manifest, thresholded status, traces, drift budgets, safety/privacy checks, failure examples, requalification and recovery |
 | Runtime behavior with material residual uncertainty that cannot be reproduced credibly before exposure | Short automated canary or progressive analysis with declared hypothesis, SLO/error-budget guardrails, and automatic promote/pause/rollback |
 | Local branch/stack/conflict authoring | Optional change-centric VCS experiment; final delivery conforms to the active delivery profile |
+
+Start with the least-cost decisive evidence for the declared failure model.
+Escalate only while a material residual remains unresolved and the next method's
+expected risk reduction exceeds its delay, compute, integration, and
+opportunity cost. Advanced verification is a targeted instrument, not a maturity
+ritual.
 
 ## Deterministic Simulation Testing
 

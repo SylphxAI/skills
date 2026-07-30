@@ -21,7 +21,8 @@ expected durable value, option value, evidence, and full lifecycle cost; once
 selected, conventional studio staffing or typing cost alone may not justify
 structural debt or indefinite deferral.
 
-Run an exhaustive capability sweep, but do not force every possible system into every game. Give each capability one disposition:
+Run a boundary-complete capability sweep, but do not force every possible
+system into every game. Give each capability one disposition:
 
 - `integrate-now` — requested or required by the player promise and positive-net after agent-native lifecycle repricing; build its complete production-shaped target and applicable automation now;
 - `reuse-scale-ready` — consume an already complete shared primitive and design the exact game-specific integration;

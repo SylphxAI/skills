@@ -167,7 +167,7 @@ Score 0 missing/contradictory, 1 plausible/incomplete, 2 evidence-labelled/testa
 2. objects, workflows, IA and recovery;
 3. first value and friction;
 4. recurring value and durable investment;
-5. exhaustive sweep, defensible dispositions, selected capability completeness and correct app availability semantics;
+5. boundary-complete sweep, defensible dispositions, selected capability completeness and correct app availability semantics;
 6. selected commerce/social/feedback integration, exact non-applicable reasons and specialist boundaries;
 7. selected HTML5/platform/input/offline quality and defensible adapter dispositions;
 8. accessibility/i18n/privacy/applicable-age/low-end quality;

@@ -42,6 +42,39 @@ test('objective continuity distinguishes checkpoints, shippable source, and the 
   assert.match(adr, /retired `sota-execution-standard` stays retired/);
 });
 
+test('agent-native economics produce durable progress without maximum-caution proof', () => {
+  const constitution = read('../runtime/constitution.md');
+  const scope = read('../skills/scope-discipline/SKILL.md');
+  const autonomous = read('../skills/autonomous-execution-standard/references/full-standard.md');
+  const decision = read('../skills/decision-quality-standard/references/full-standard.md');
+  const verification = read('../skills/risk-matched-verification-standard/references/full-standard.md');
+  const adr = read('../docs/adr/ADR-0026-agent-native-durable-progress.md');
+
+  assert.match(constitution, /agent-native verified lifetime value/);
+  assert.match(constitution, /Investigate only plausible material\s+uncertainty that can change the action or claim/);
+  assert.match(constitution, /workaround, duplicate authority, or weak intermediate target\s+that creates predictable reversal work is not durable progress/);
+
+  assert.match(decision, /### Agent-native cost repricing/);
+  assert.match(decision, /Estimate critical-path elapsed time and durable lifecycle cost rather than\s+person-hours/);
+  assert.match(decision, /Never reject a stronger architecture merely because it contains more typed\s+files, adapters, generated projections, or tests/);
+
+  assert.match(scope, /The value-and-risk principle applies to every task, but the ceremony scales/);
+  assert.match(scope, /### Preserve durable forward progress/);
+  assert.match(scope, /A workaround is\s+containment, never evidence that the owning terminal is satisfied/);
+  assert.doesNotMatch(scope, /exhaustive (?:search|file|agent review)/i);
+
+  assert.match(autonomous, /## Durable Progress And Anti-Regression/);
+  assert.match(autonomous, /rollback may restore the known-good state as recovery/);
+  assert.match(autonomous, /Do not\s+rebrand the predecessor as the destination/);
+
+  assert.match(verification, /Do not attempt to eliminate every logically imaginable failure/);
+  assert.match(verification, /Ordinary deterministic local behavior with low blast radius/);
+  assert.match(verification, /Start with the least-cost decisive evidence/);
+
+  assert.match(adr, /Adding a generic\s+“work faster”, “work attitude”, or “SOTA execution” Skill would collide/);
+  assert.match(adr, /decision kernel is universal but its artifact ceremony is\s+not/);
+});
+
 test('work and delivery standards require bounded work and event-driven release', () => {
   const agentFirst = read('../skills/agent-first-development-standard/references/full-standard.md');
   const delivery = read('../skills/delivery-standard/references/full-standard.md');

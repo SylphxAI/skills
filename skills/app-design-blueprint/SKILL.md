@@ -34,7 +34,8 @@ capabilities by user promise, expected durable value, option value, evidence,
 and full lifecycle cost; once selected, human typing or staffing cost alone may
 not justify structural debt or indefinite deferral.
 
-Run an exhaustive capability sweep, but do not force every possible system into every app. Give each capability one disposition:
+Run a boundary-complete capability sweep, but do not force every possible
+system into every app. Give each capability one disposition:
 
 - `integrate-now` — requested or required by the user promise and positive-net after agent-native lifecycle repricing; specify the complete production-shaped target, applicable automation, acceptance evidence, and implementation handoff now; implement it now only when implementation is also in task scope;
 - `reuse-scale-ready` — consume an already complete shared primitive and design the exact app-specific integration and proof now;

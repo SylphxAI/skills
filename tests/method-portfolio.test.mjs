@@ -229,6 +229,35 @@ test('composable product portfolio routing separates product topology from code,
   }
 });
 
+test('scope-discipline routing catches overcaution and workaround regression without absorbing ordinary proof or edits', () => {
+  const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('scope-discipline-'));
+  assert.ok(cases.length >= 6);
+  assert.ok(cases.some(({ kind, expectedSkills, tags = [] }) =>
+    kind === 'positive'
+      && tags.includes('multilingual')
+      && expectedSkills.includes('scope-discipline')));
+  assert.ok(cases.some(({ kind, expectedSkills }) =>
+    kind === 'compound'
+      && expectedSkills.includes('scope-discipline')
+      && expectedSkills.includes('decision-quality-standard')));
+  assert.ok(cases.some(({ kind, expectedSkills }) =>
+    kind === 'compound'
+      && expectedSkills.includes('scope-discipline')
+      && expectedSkills.includes('autonomous-execution-standard')));
+  assert.ok(cases.some(({ nearNeighbourOf, expectedSkills }) =>
+    nearNeighbourOf === 'scope-discipline'
+      && expectedSkills.includes('risk-matched-verification-standard')
+      && !expectedSkills.includes('scope-discipline')));
+  assert.ok(cases.some(({ nearNeighbourOf, expectedSkills }) =>
+    nearNeighbourOf === 'scope-discipline'
+      && expectedSkills.length === 0));
+  assert.ok(cases.some(({ kind, coverageFor = [] }) =>
+    kind === 'abstention' && coverageFor.includes('scope-discipline')));
+  for (const fixture of cases) {
+    assert.doesNotMatch(fixture.prompt, /scope-discipline|decision-quality-standard|autonomous-execution-standard|risk-matched-verification-standard/i);
+  }
+});
+
 test('objective-continuity routing covers phase stops without absorbing bounded local work', () => {
   const cases = INJECTION_CASES.filter(({ id }) => id.startsWith('objective-continuity-'));
   const positives = cases.filter(({ kind, expectedSkills }) =>
