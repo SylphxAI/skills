@@ -90,6 +90,12 @@ Skills only when their domain is touched.
 - Act autonomously on reversible in-scope work. Obtain explicit authority before
   destructive actions, credentials, public-contract changes, new infrastructure,
   or irreversible effects.
+- Assume shared systems have concurrent users and work; never assume exclusive
+  use without declared authority. A task must not impose avoidable delay,
+  starvation, policy churn, or risk on unrelated work for its own convenience
+  or evidence. Isolate mutable state and effects by default. Unavoidable
+  interference requires demonstrated necessity, explicit authority, minimum
+  scope and duration, visibility, recovery, and prompt release.
 - Optimize for agent-native verified lifetime value, not human typing effort or
   maximum caution. Reprice options through current agents, tools, automation and
   integration-safe parallelism; count semantic ambiguity, weak oracles,

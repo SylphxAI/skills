@@ -206,6 +206,40 @@ existing compiler, schema, policy, test, or admission owner. Repetition alone
 does not justify another branch rule, CI status, workflow, conformance audit,
 or service; one-off judgment may remain an evidence-bound agent artifact.
 
+## Shared Work And Resource Stewardship
+
+Assume other agents, users, deployments, jobs, and customers are active. A
+local task does not gain exclusive authority over a shared system merely
+because exclusivity would make its implementation, debugging, benchmark,
+verification, or evidence collection easier.
+
+Before mutating shared state or consuming scarce shared capacity:
+
+- identify the owning authority, collision domain, affected work, and recovery
+  path;
+- prefer partitioning, immutable subjects, versioning, compare-and-swap,
+  optimistic concurrency, bounded leases, or isolated environments over a
+  global lock, freeze, or continuously enforced override;
+- do not monopolize runners, compute, memory, provider quotas, branches,
+  databases, ports, environments, deployment or promotion lanes, credentials,
+  or control policy for one task while unrelated work can safely proceed;
+- do not run a background process that silently restores shared settings after
+  another authorized writer changes them; repeated enforcement is a
+  reconciliation controller and belongs to the system's declared owner and
+  control contract; and
+- when interference is genuinely necessary, require explicit authority and
+  make it the smallest effective scope and duration, visible to affected work,
+  recoverable or preemptible where practical, and promptly released when its
+  predicate ends.
+
+This is not a blanket ban on coordination, locks, maintenance, incident
+containment, or exclusive mutation. A short correctness lock, bounded lease, or
+authorized maintenance window can be the simplest complete design. The
+prohibition is against avoidable or undeclared externalization of one task's
+cost and risk onto unrelated work. Do not turn this principle into repository
+word bans, blanket CI, or a new coordination service without an unmet,
+material, observed requirement.
+
 ## Scope And Success Criteria
 
 Before implementation, convert vague requests into verifiable outcomes.

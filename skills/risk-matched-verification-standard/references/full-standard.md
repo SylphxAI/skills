@@ -57,6 +57,33 @@ expected risk reduction exceeds its delay, compute, integration, and
 opportunity cost. Advanced verification is a targeted instrument, not a maturity
 ritual.
 
+## Verification non-interference
+
+A verification, soak, benchmark, or evidence-collection task does not acquire
+authority over unrelated delivery merely because a stable sample would be
+convenient.
+
+- Bind evidence to an exact immutable artifact, deployment, cohort, cell, or
+  replay corpus.
+- When time-dependent observation remains necessary, pin or isolate that subject
+  while normal delivery continues. Prefer a preview, canary, dedicated cell, or
+  recorded replay over freezing the shared production lane.
+- Treat a missing isolation or pinned-deployment capability as an owning product
+  gap. Do not hide it with a local daemon that repeatedly restores shared
+  configuration.
+- Long observation is read-only by default and belongs in durable monitoring or
+  a deferred Work subscription, not a resident agent session that mutates policy
+  to keep its sample alive.
+- If a newer deployment invalidates an unisolated sample, restart or mark that
+  sample incomplete; do not revert other owners' delivery state.
+
+A shared delivery hold is justified only when continued delivery itself creates
+a plausible material hazard that cannot be bounded by isolation. It requires
+explicit effect authority, the smallest affected project/environment/cell,
+owner-visible impact, a hard maximum expiry that does not renew by default,
+recovery or rollback, and an auditable release. Sample continuity, benchmark
+convenience, or one Work's completion never satisfies this predicate.
+
 ## Deterministic Simulation Testing
 
 Use deterministic simulation testing when ordinary tests cannot cover the

@@ -71,9 +71,9 @@
     },
     {
       "name": "autonomous-execution-standard",
-      "description": "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
+      "description": "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, coordinate shared resources without impeding unrelated work, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:053b557397461eb703763fdf973d8bd280297bc0de487eaf57aee751d8b60eae"
+      "packageDigest": "sha256:642786f7d4fb33d5a081b70b5a5c484e2e3515f5deed6e0f765f7309e7d62a3c"
     },
     {
       "name": "board-metrics-operating-review",
@@ -379,7 +379,7 @@
       "name": "parallel-change-integration-standard",
       "description": "Repository-native integration for measured high-contention agent work: direct-trunk conflict recovery, short-lived PRs, optional merge queue, CI backpressure, and duplicate-work handling. Use only when concurrent source activity creates material collisions, stale-base failures, or verification backlog. Do not use for ordinary low-contention edits.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
-      "packageDigest": "sha256:af9a689b338a0c8bf299c68051fbc9706612e7c5cc84e9dcec77ffb408b3d4a4"
+      "packageDigest": "sha256:d677d2c94a0d97be8657c1b86f1af4114d65836eed45cab7f4333b5d14dcba0b"
     },
     {
       "name": "payment-platform-readiness",
@@ -515,9 +515,9 @@
     },
     {
       "name": "risk-matched-verification-standard",
-      "description": "Select evaluation, replay, simulation, model, and canary evidence in proportion to the actual failure model and residual uncertainty. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, concurrent, or time-dependent behavior. Use CI Admission for flaky-check attribution or quarantine; do not add expensive verification machinery to an ordinary deterministic code path.",
+      "description": "Select evaluation, replay, simulation, model, canary, and long-observation evidence in proportion to the actual failure model and residual uncertainty without blocking unrelated delivery. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, concurrent, time-dependent, soak, or runtime behavior. Use CI Admission for flaky-check attribution or quarantine; do not add expensive verification machinery to an ordinary deterministic code path.",
       "path": "skills/risk-matched-verification-standard/SKILL.md",
-      "packageDigest": "sha256:dc78022cf8130ae62aeef27a77e06f75fab1ad3fee4e67f887f92cb0f9f9adf5"
+      "packageDigest": "sha256:d0f0626497f7613db7b30174dc40b859a6a8d8b7165a540460e6afdde5da680f"
     },
     {
       "name": "saas-subscription-pricing",
@@ -631,7 +631,7 @@
       "name": "sylphx-platform-first",
       "description": "Use when creating or evolving a Sylphx project or adding backend, deployment, data, auth, storage, messaging, build, or infrastructure capabilities; discover and prefer Sylphx Platform public PaaS/BaaS contracts before building replacements or choosing external services.",
       "path": "skills/sylphx-platform-first/SKILL.md",
-      "packageDigest": "sha256:b5516a92d97fac9146ff0ed842c4a88b301a9508a55a3a6c9b22d67d84eac007"
+      "packageDigest": "sha256:314e98ea93ff49ce709c1b9eaae6e3d591bed6670de97944aeaaac4b860ceea9"
     },
     {
       "name": "system-dynamics-analysis",

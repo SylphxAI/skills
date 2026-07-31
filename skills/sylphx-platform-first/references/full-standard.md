@@ -178,6 +178,10 @@ contracts, and documented limits are valid customer knowledge.
   when the matching managed Platform capability satisfies the requirement.
 - An agent uses raw `kubectl`, provider SDKs, cluster credentials, or direct
   Platform database writes to complete ordinary customer-project work.
+- A customer, agent-host, CI, or temporary background process continuously
+  rewrites Platform delivery or protection state instead of using a scoped
+  public control contract. Observation tooling remains read-only; persistent
+  reconciliation belongs to Platform's owning controller.
 - A repository copies a Platform controller, migration runner, auth service, or
   build pipeline because the public surface was not checked.
 - A project imports Platform internal packages or uses `.svc.cluster.local`,
@@ -198,7 +202,9 @@ Use the narrowest evidence that proves the selected surface:
 4. the application receives the documented public input and passes its
    contract/integration test;
 5. no direct provider or cluster bypass remains in steady state;
-6. destructive replacement resources are retired only after data, rollback,
+6. customer and agent identities cannot directly mutate Platform internal
+   control tables, including through a background script;
+7. destructive replacement resources are retired only after data, rollback,
    and live-readback obligations are satisfied.
 
 For a development or internal-dogfood migration, prefer a verified one-step

@@ -1,6 +1,6 @@
 ---
 name: risk-matched-verification-standard
-description: "Select evaluation, replay, simulation, model, and canary evidence in proportion to the actual failure model and residual uncertainty. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, concurrent, or time-dependent behavior. Use CI Admission for flaky-check attribution or quarantine; do not add expensive verification machinery to an ordinary deterministic code path."
+description: "Select evaluation, replay, simulation, model, canary, and long-observation evidence in proportion to the actual failure model and residual uncertainty without blocking unrelated delivery. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, concurrent, time-dependent, soak, or runtime behavior. Use CI Admission for flaky-check attribution or quarantine; do not add expensive verification machinery to an ordinary deterministic code path."
 ---
 # Risk-Matched Verification Standard
 
