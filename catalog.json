@@ -71,9 +71,9 @@
     },
     {
       "name": "autonomous-execution-standard",
-      "description": "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
+      "description": "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, coordinate shared resources without impeding unrelated work, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:053b557397461eb703763fdf973d8bd280297bc0de487eaf57aee751d8b60eae"
+      "packageDigest": "sha256:642786f7d4fb33d5a081b70b5a5c484e2e3515f5deed6e0f765f7309e7d62a3c"
     },
     {
       "name": "board-metrics-operating-review",

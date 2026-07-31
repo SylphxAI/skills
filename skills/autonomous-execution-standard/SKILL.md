@@ -1,6 +1,6 @@
 ---
 name: autonomous-execution-standard
-description: "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit."
+description: "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, coordinate shared resources without impeding unrelated work, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit."
 ---
 # Autonomous Execution Standard
 
