@@ -35,7 +35,7 @@ contracts, exception records) in the sections below.
 
 | Fact | Machine gate |
 | --- | --- |
-| Why this architecture, public contract, persistence, migration, security, AI-workflow, commercial, or operational decision exists | Lightweight ADR structural check (`scripts/adr-lifecycle.mjs`): identity, legal status, relation targets, cycles |
+| Why this architecture, public contract, persistence, migration, security, AI-workflow, commercial, or operational decision exists | Ordinary repository integrity for ADR markdown structure (identity, legal status, relation targets, cycles) |
 | What an API, SDK, CLI, tool, event, config, manifest, route, form, or package surface accepts/returns | contract diff, generated artifact freshness, compatibility tests |
 | What behavior must hold | test/eval/simulation status bound to candidate SHA |
 | What a non-trivial slice is trying to do before implementation | typed work-packet freshness plus linked ADR/schema/test/exact-source evidence |
@@ -61,9 +61,8 @@ This standard owns only the structural machine gate:
 - existing relation targets and no cycles;
 - `superseded` has a superseding ADR.
 
-Implementation reference: `scripts/adr-lifecycle.mjs` and
-`schemas/adr-record.schema.json`. There is no portfolio requirement for an
-ApplicableDecisionBundle resolver.
+Any ADR structure checks are ordinary repository integrity, not a shipped
+product surface. There is no portfolio requirement for an ADR resolver.
 
 ## Prose specs
 

@@ -7,7 +7,6 @@ import { fileURLToPath } from 'node:url';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import { catalogBytes, parseFrontmatter, repositoryRoot } from './build-catalog.mjs';
-import { checkAdrLifecycle } from './adr-lifecycle.mjs';
 
 const NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 // This is a narrow lexical security control for publishable package bytes. It
@@ -440,9 +439,112 @@ export function validateActiveProfileCollisions(profiles, errors) {
 }
 
 
+function parseAdrFrontmatterBlock(markdown, file) {
+  const normalized = markdown.replaceAll('\r\n', '\n');
+  if (!normalized.startsWith('---\n')) throw new Error(`${file}: missing YAML frontmatter`);
+  const end = normalized.indexOf('\n---\n', 4);
+  if (end < 0) throw new Error(`${file}: unterminated YAML frontmatter`);
+  const values = {};
+  let currentList = null;
+  for (const line of normalized.slice(4, end).split('\n')) {
+    if (!line.trim()) continue;
+    const listItem = line.match(/^\s+-\s+(.+)$/);
+    if (listItem && currentList) {
+      values[currentList].push(listItem[1].trim().replace(/^['"]|['"]$/g, ''));
+      continue;
+    }
+    const colon = line.indexOf(':');
+    if (colon < 1 || /^\s/.test(line)) throw new Error(`${file}: invalid frontmatter line ${JSON.stringify(line)}`);
+    const key = line.slice(0, colon).trim();
+    let value = line.slice(colon + 1).trim();
+    currentList = null;
+    if (value === '' || value === '[]') {
+      values[key] = [];
+      currentList = value === '[]' ? null : key;
+      if (value === '[]') values[key] = [];
+      else {
+        values[key] = [];
+        currentList = key;
+      }
+      continue;
+    }
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    values[key] = value;
+  }
+  return values;
+}
+
+/** Repo integrity only: keep docs/adr decision records well-formed. Not product tooling. */
 export function validateAdrLocators(errors) {
-  const { errors: adrErrors } = checkAdrLifecycle(repositoryRoot);
-  errors.push(...adrErrors);
+  const adrRoot = path.join(repositoryRoot, 'docs', 'adr');
+  if (!existsSync(adrRoot)) {
+    errors.push('docs/adr/: missing');
+    return;
+  }
+  const files = readdirSync(adrRoot).filter((name) => name.endsWith('.md')).sort();
+  const statuses = new Set(['proposed', 'accepted', 'rejected', 'superseded']);
+  const allowed = new Set(['id', 'status', 'date', 'decision_owner', 'supersedes', 'amends', 'scope']);
+  const byId = new Map();
+  const records = [];
+
+  for (const name of files) {
+    const rel = path.join('docs/adr', name);
+    const markdown = readFileSync(path.join(repositoryRoot, rel), 'utf8');
+    let values;
+    try {
+      values = parseAdrFrontmatterBlock(markdown, rel);
+    } catch (error) {
+      errors.push(error.message);
+      continue;
+    }
+    for (const key of Object.keys(values)) {
+      if (!allowed.has(key)) errors.push(`${rel}: unknown frontmatter field ${key}`);
+    }
+    const stem = name.replace(/\.md$/i, '');
+    const id = values.id != null ? String(values.id) : stem;
+    if (id !== stem) errors.push(`${rel}: id must equal filename stem`);
+    if (byId.has(id)) errors.push(`${rel}: duplicate id ${id}`);
+    else byId.set(id, rel);
+    const status = values.status != null ? String(values.status) : '';
+    if (!statuses.has(status)) errors.push(`${rel}: illegal status ${JSON.stringify(status)}`);
+    const supersedes = Array.isArray(values.supersedes) ? values.supersedes.map(String) : [];
+    const amends = Array.isArray(values.amends) ? values.amends.map(String) : [];
+    records.push({ id, file: rel, status, supersedes, amends });
+  }
+
+  for (const record of records) {
+    for (const target of [...record.supersedes, ...record.amends]) {
+      if (!byId.has(target)) errors.push(`${record.file}: dangling relation target ${target}`);
+    }
+  }
+  for (const record of records) {
+    if (record.status !== 'superseded') continue;
+    if (!records.some((other) => other.supersedes.includes(record.id))) {
+      errors.push(`${record.file}: status superseded requires another ADR that supersedes it`);
+    }
+  }
+
+  function detectCycles(field) {
+    const adj = new Map(records.map((record) => [record.id, record[field]]));
+    const visiting = new Set();
+    const visited = new Set();
+    function visit(id, stack) {
+      if (visiting.has(id)) {
+        errors.push(`${field} cycle: ${[...stack, id].join(' -> ')}`);
+        return;
+      }
+      if (visited.has(id)) return;
+      visiting.add(id);
+      for (const next of adj.get(id) || []) visit(next, [...stack, id]);
+      visiting.delete(id);
+      visited.add(id);
+    }
+    for (const id of adj.keys()) visit(id, []);
+  }
+  detectCycles('supersedes');
+  detectCycles('amends');
 }
 
 export function checkRepository() {
