@@ -1,49 +1,55 @@
 # ADR Lifecycle product adoption
 
-Portfolio law lives in Skills:
+This repository is public. The ADR Lifecycle and Retrieval Contract is portfolio
+law for Sylphx product repositories; it is not a private control plane.
+
+## Where the law lives
 
 - Semantics: `documentation-standard` → **ADR Lifecycle and Retrieval Contract**
-- Machine gate: `specification-control-plane-standard` + reference implementation
-  `scripts/adr-lifecycle.mjs` in this repository
+- Machine gate: `specification-control-plane-standard` plus the reference
+  implementation `scripts/adr-lifecycle.mjs` in this repository
 - Decision record: [ADR-0029](../adr/ADR-0029-adr-lifecycle-and-retrieval-contract.md)
 
 Product repositories **do not copy** the Skills standard body. They adopt with a
-local adapter.
+local adapter (parser, CI invocation, optional generated index).
 
 ## Done means (product repo)
 
-1. **Semantic bind** — local ADR governance (README / MEMORY rule) states that
-   Skills owns lifecycle/retrieval semantics; local adapter owns format and CI.
+1. **Semantic bind** — local ADR governance states that Skills owns
+   lifecycle/retrieval semantics; the product owns format and CI wiring only.
 2. **Normalized records** — every ADR has machine-readable:
    - authored `status`: `proposed | accepted | rejected`
    - `decision_owner`
    - `typed_scope` (selector; AND across facets, OR within facet)
    - outgoing `amends` / `supersedes` / `relates`
    - `decision_mode` (+ `decision_key` when exclusive)
-3. **Atomic cutover** — migrate existing ADRs in the same candidate as the
-   checker; do not land a resolver that marks the whole corpus unknown.
-4. **Admission** — new/semantic ADRs fail closed without normalized fields;
+3. **Atomic cutover** — migrate existing ADRs in the same change as the checker;
+   do not land a resolver that marks the whole corpus unknown.
+4. **Admission** — new or semantic ADRs fail closed without normalized fields;
    structural exclusive conflicts and dangling relations fail CI.
-5. **Retrieval** — agents use an ApplicableDecisionBundle (ordered source
-   refs + unresolved disposition), not read-all and not merged prose law.
-6. **Current behavior SSOT** — catalog/code/tests (or product equivalent), not
-   ADR bodies, for “what the system does now.”
+5. **Retrieval** — agents use an ApplicableDecisionBundle (ordered source refs +
+   unresolved disposition), not read-all and not merged prose as law.
+6. **Current behavior SSOT** — code, schemas, tests, and any product
+   current-state surface — not ADR bodies — for “what the system does now.”
 
 ## Default serialization
 
-Markdown + YAML frontmatter. Filename stem = stable `id` when collision-safe.
+Markdown + YAML frontmatter. Prefer a collision-safe stable `id` (this
+repository uses the ADR filename stem).
 
-## Platform adapter note
+## Local adapter examples (optional)
 
-Platform keeps:
+A product adapter may keep local elaborations without creating a second law, for
+example:
 
-- `docs/catalog/` as current-state SSOT
-- MEMORY rules for cross-cutting invariants
-- generated `docs/adr/REGISTRY.md` as a human/active projection
+- a generated Active/status index (human projection)
+- a current-state catalog or equivalent product surface
+- short local rules for cross-cutting invariants that are not material ADRs
 
-Those are local elaborations of the Skills contract, not a second law.
+Those stay product-owned. Skills still owns lifecycle semantics.
 
-## Out of scope for Skills completion
+## Intentionally out of Skills scope
 
-Per-product migrate of historical ADR bodies, fleet-wide agent wire-up, and
-Platform-only garden cadence remain product work.
+- Migrating another product’s historical ADR bodies
+- Product-specific CI workflows beyond the reference checker shape
+- Treating human garden cadence as portfolio law
