@@ -1,8 +1,21 @@
 ---
+id: ADR-0010-observability-audience-boundaries
 status: accepted
 date: 2026-07-21
-owners:
-  - SylphxAI
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - observability-disclosure
+  surface:
+    - api
+    - ops
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0010: Separate operational observability from public disclosure

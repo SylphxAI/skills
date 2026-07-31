@@ -1,9 +1,20 @@
 ---
+id: ADR-0016-architecture-and-verification-package-names
 status: accepted
 date: 2026-07-26
-owners:
-  - SylphxAI
-issue: https://github.com/SylphxAI/skills/issues/48
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - static-instruction-packages
+  surface:
+    - agent
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0016: Name architecture delivery and verification packages after their jobs

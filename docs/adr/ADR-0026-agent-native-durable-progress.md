@@ -1,8 +1,20 @@
 ---
+id: ADR-0026-agent-native-durable-progress
 status: accepted
 date: 2026-07-30
-owners:
-  - SylphxAI/skills
+decision_owner: SylphxAI/skills
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - durable-progress
+  surface:
+    - agent
+amends: []
+supersedes: []
+relates: []
 ---
 
 # Optimize for agent-native durable progress

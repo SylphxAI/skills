@@ -1,8 +1,20 @@
 ---
+id: ADR-0008-evidence-analysis-and-review-methods
 status: accepted
 date: 2026-07-19
-owners:
-  - SylphxAI
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - evidence-and-review
+  surface:
+    - agent
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0008: Separate claim assurance, critical analysis, and review closure

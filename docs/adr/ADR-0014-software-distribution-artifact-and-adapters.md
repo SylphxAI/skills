@@ -1,8 +1,21 @@
 ---
+id: ADR-0014-software-distribution-artifact-and-adapters
 status: accepted
 date: 2026-07-22
-owners:
-  - SylphxAI
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - software-distribution
+  surface:
+    - cli
+    - agent
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0014: Unify software distribution around one artifact owner

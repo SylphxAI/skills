@@ -1,7 +1,21 @@
 ---
+id: ADR-0021-forge-agnostic-coordination
 status: accepted
 date: 2026-07-28
-owners: [SylphxAI]
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - forge-coordination
+  surface:
+    - agent
+    - ops
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0021: Forge-agnostic coordination boundary

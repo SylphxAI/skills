@@ -1,8 +1,20 @@
 ---
+id: ADR-0004-subject-first-terminology
 status: accepted
 date: 2026-07-18
-owners:
-  - SylphxAI
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - static-instruction-packages
+  surface:
+    - agent
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0004: Name instruction packages after the work they perform

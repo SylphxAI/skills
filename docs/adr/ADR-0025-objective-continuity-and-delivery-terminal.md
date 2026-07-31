@@ -1,8 +1,20 @@
 ---
+id: ADR-0025-objective-continuity-and-delivery-terminal
 status: accepted
 date: 2026-07-29
-owners:
-  - SylphxAI/skills
+decision_owner: SylphxAI/skills
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - objective-continuity
+  surface:
+    - agent
+amends: []
+supersedes: []
+relates: []
 ---
 
 # Preserve the real objective through the declared delivery terminal

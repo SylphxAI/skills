@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sylphx.com/schemas/applicable-decision-bundle.schema.json",
+  "title": "ApplicableDecisionBundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_scope",
+    "base_sources",
+    "ordered_amendment_sources",
+    "applicable_decision_keys",
+    "supersession_edges",
+    "unresolved_sources",
+    "excluded_sources",
+    "provenance"
+  ],
+  "properties": {
+    "task_scope": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "base_sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceRef"
+      }
+    },
+    "ordered_amendment_sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceRef"
+      }
+    },
+    "applicable_decision_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supersession_edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "from",
+          "to",
+          "full"
+        ],
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decision_key": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "full": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "unresolved_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reason",
+          "disposition"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "file": {
+            "type": "string"
+          },
+          "contentDigest": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "disposition": {
+            "type": "string",
+            "enum": [
+              "block",
+              "warn",
+              "scoped-block"
+            ]
+          },
+          "details": {},
+          "decision_key": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "excluded_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "reason"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "contentDigest": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "details": {}
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_revision",
+        "resolver_id",
+        "resolver_version",
+        "input_digest",
+        "schema_digest",
+        "resolver_artifact_digest",
+        "corpus_digest"
+      ],
+      "properties": {
+        "source_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resolver_id": {
+          "type": "string"
+        },
+        "resolver_version": {
+          "type": "string"
+        },
+        "input_digest": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "schema_digest": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "resolver_artifact_digest": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "corpus_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "file",
+        "contentDigest"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contentDigest": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      }
+    }
+  }
+}

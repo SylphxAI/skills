@@ -1,10 +1,20 @@
 ---
+id: ADR-0017-capability-calibrated-agent-briefs
 status: accepted
 date: 2026-07-27
-owners:
-  - SylphxAI
-work: wi_01KYGS75KP8D954HGFDJYKXT94
-source: https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - agent-briefs
+  surface:
+    - agent
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0017: Calibrate agent briefs to capability without prescribing the implementation
