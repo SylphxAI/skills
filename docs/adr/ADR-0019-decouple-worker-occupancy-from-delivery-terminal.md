@@ -102,10 +102,9 @@ verification still serializes or duplicates every intermediate snapshot.
   lineage. It does not require the original author session to remain alive.
 - Enact requires durable subscription and dispatch semantics; Platform requires
   simple supersede/cancellation and content-addressed build/promotion.
-- A provider PR may remain as a bounded external-contribution or migration
-  adapter. Agents do not choose or supervise that envelope; the central
-  admission policy creates it only while an exact typed obligation still needs
-  the predecessor serializer.
+- A provider PR remains a normal external-contribution or repository-required
+  path. The repository/forge owns that envelope; Platform does not create it or
+  select it as a landing adapter.
 - A parked Work with no claim and no subscription is an operational defect, not
   a normal waiting state.
 
@@ -116,8 +115,9 @@ verification still serializes or duplicates every intermediate snapshot.
   supersede/cancellation contracts.
 - Product acceptance requires live evidence that waiting Runs release worker
   capacity, subscriptions cause re-entry, and no more than the admitted
-  running/latest-pending snapshots consume complete verification and build
+  running/latest-pending revisions consume complete verification and build
   capacity per scope.
-- Delivery acceptance remains exact source/tree, complete proof bundle,
-  immutable artifact digest, promotion, runtime digest readback, and
-  behavior/recovery evidence as declared by the Work.
+- Delivery acceptance remains exact source/tree, the configured exact-SHA
+  aggregate CI verdict under `After Verification`, immutable artifact digest,
+  deployment, runtime digest readback, and behavior/recovery evidence as
+  declared by the Work.

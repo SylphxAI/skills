@@ -444,7 +444,7 @@
       },
       "amends": [],
       "supersedes": [],
-      "contentDigest": "c08da4cb37a2f36ae7cebd0a5fd87e8ceb8ea1485b2846e3a7a13edefb8cc3da"
+      "contentDigest": "8c18de7a1f7b1b7cb45de8bb35d130c1392bf2e32bad31d858ca04f5568a420c"
     },
     {
       "id": "ADR-0020-enact-authoritative-work-and-review-pools",
