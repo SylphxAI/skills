@@ -1,6 +1,6 @@
 ---
 name: self-feeding-agent-loop-standard
-description: "Recurring autonomous work loops with issue intake, implementation, review, delivery, and machine-verifiable continuation gates. Use when a durable agent process should find and complete new work repeatedly. Do not use for one bounded task."
+description: "Continuous or recurring loop engineering for durable agent processes that repeatedly discover, deduplicate, claim, execute, review, deliver, and re-enter new Work with machine-verifiable continuation gates. Use when the operating system should keep finding and completing new bounded outcomes. Do not use to close one bounded objective; use autonomous-execution-standard for that task-level loop."
 ---
 # Self Feeding Agent Loop Standard
 

@@ -71,9 +71,9 @@
     },
     {
       "name": "autonomous-execution-standard",
-      "description": "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, coordinate shared resources without impeding unrelated work, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
+      "description": "Objective-continuous execution and bounded loop engineering for non-trivial or multi-phase work: preserve the original objective, full-scope acceptance map, proven predicates, and delivery terminal; research, execute, verify, repair, or replan without repeated prompts; keep eligible lanes moving; delegate only when net-positive; and make evidence-bounded completion claims. Use when work must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, a tightly coupled local edit, or a continuous process that repeatedly discovers new Work (use self-feeding-agent-loop-standard).",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:2b0db02d5eacadbd510b36e8379380d2eac2a1ed0bce2e43809ff469730b8fcf"
+      "packageDigest": "sha256:e045313676c81f6198f8a0aead3bc1fe56acce0cc1590886e999d7e4179c8198"
     },
     {
       "name": "board-metrics-operating-review",
@@ -557,9 +557,9 @@
     },
     {
       "name": "self-feeding-agent-loop-standard",
-      "description": "Recurring autonomous work loops with issue intake, implementation, review, delivery, and machine-verifiable continuation gates. Use when a durable agent process should find and complete new work repeatedly. Do not use for one bounded task.",
+      "description": "Continuous or recurring loop engineering for durable agent processes that repeatedly discover, deduplicate, claim, execute, review, deliver, and re-enter new Work with machine-verifiable continuation gates. Use when the operating system should keep finding and completing new bounded outcomes. Do not use to close one bounded objective; use autonomous-execution-standard for that task-level loop.",
       "path": "skills/self-feeding-agent-loop-standard/SKILL.md",
-      "packageDigest": "sha256:6193dcbd013686339f4315a38313f943d8a72f29cf34f4ba744b69bf513307a3"
+      "packageDigest": "sha256:62e8e50e89d3c31ff55dba60c412a8b4c441e6e616db0637612e56c9b19a9be4"
     },
     {
       "name": "semantic-taxonomy-design",

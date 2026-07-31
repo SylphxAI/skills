@@ -1,6 +1,6 @@
 ---
 name: autonomous-execution-standard
-description: "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, coordinate shared resources without impeding unrelated work, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit."
+description: "Objective-continuous execution and bounded loop engineering for non-trivial or multi-phase work: preserve the original objective, full-scope acceptance map, proven predicates, and delivery terminal; research, execute, verify, repair, or replan without repeated prompts; keep eligible lanes moving; delegate only when net-positive; and make evidence-bounded completion claims. Use when work must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, a tightly coupled local edit, or a continuous process that repeatedly discovers new Work (use self-feeding-agent-loop-standard)."
 ---
 # Autonomous Execution Standard
 
@@ -10,7 +10,10 @@ Read [references/full-standard.md](references/full-standard.md) for the full
 method and predicates. Read
 [references/tool-grounded-execution.md](references/tool-grounded-execution.md)
 when the task needs tool-grounded iteration, checkpoint, recovery, or
-termination semantics.
+termination semantics. Read
+[references/bounded-objective-closure-loop.md](references/bounded-objective-closure-loop.md)
+when the user explicitly asks for loop engineering, a full-scope autonomous
+closure loop, or repeated research-execute-audit transitions for one objective.
 
 ## Method
 

@@ -321,6 +321,17 @@ demonstrated live compatibility contract requires a one-way expiring adapter.
 Do not convert predecessor deletion into optional follow-up merely to complete
 the current phase.
 
+## Bounded Objective-Closure Loop
+
+When the user asks to drive one original objective through explicit
+frame-decide-execute-audit transitions, apply
+[`bounded-objective-closure-loop.md`](bounded-objective-closure-loop.md). That
+reference specializes this standard's existing objective continuity,
+scheduling, evidence, review, and completion rules; it does not create another
+semantic owner. It closes one accepted objective. Continuous discovery,
+intake, and scheduling of new Work remains owned by
+`self-feeding-agent-loop-standard`.
+
 ## Durable Progress And Anti-Regression
 
 At every material checkpoint, name:
@@ -788,6 +799,7 @@ Before final response, check:
 | `autonomous-e-03` | Proof layers separated |
 | `autonomous-e-04` | Unknown authority fails closed |
 | `autonomous-e-05` | Checkpoints do not replace the objective or delivery terminal |
+| `autonomous-e-06` | Bounded closure loops preserve the full denominator and transition from evidence |
 
 - [ ] Full body obligations reviewed for applicability.
 - [ ] Residual gaps have owner and follow-up.
