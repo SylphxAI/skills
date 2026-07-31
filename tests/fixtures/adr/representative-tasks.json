@@ -181,6 +181,28 @@
         "applicable_decision_keys": [],
         "unresolved_reasons": []
       }
+    },
+    {
+      "task": {
+        "id": "verification-non-interference",
+        "typed_scope": {
+          "capability_id": [
+            "verification-non-interference"
+          ],
+          "surface": [
+            "ops"
+          ]
+        }
+      },
+      "expect": {
+        "base_ids": [
+          "ADR-20260731-verification-non-interference-and-shared-effect-authority"
+        ],
+        "amendment_ids": [],
+        "full_superseded_ids": [],
+        "applicable_decision_keys": [],
+        "unresolved_reasons": []
+      }
     }
   ]
 }

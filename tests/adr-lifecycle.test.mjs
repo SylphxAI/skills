@@ -352,3 +352,101 @@ test('ADR-0001 body partial supersessions are machine relations on superseders',
   const one = byId.get('ADR-0001-public-agent-instruction-source');
   assert.deepEqual(one.relates, []);
 });
+
+
+test('divergent exclusive descendant branches collide (not same lineage)', () => {
+  const base = mkRecord({ id: 'ADR-BASE' });
+  const a = mkRecord({
+    id: 'ADR-A',
+    amends: [{ id: 'ADR-BASE', decision_key: null }],
+  });
+  const b = mkRecord({
+    id: 'ADR-B',
+    amends: [{ id: 'ADR-BASE', decision_key: null }],
+  });
+  const a2 = mkRecord({
+    id: 'ADR-A2',
+    decision_mode: 'exclusive',
+    decision_key: 'k',
+    amends: [{ id: 'ADR-A', decision_key: null }],
+  });
+  const b2 = mkRecord({
+    id: 'ADR-B2',
+    decision_mode: 'exclusive',
+    decision_key: 'k',
+    amends: [{ id: 'ADR-B', decision_key: null }],
+  });
+  const records = [base, a, b, a2, b2];
+  const { errors } = validateAdrCorpus(records, []);
+  assert.ok(
+    errors.some((error) => error.includes('exclusive decision_key k') || error.includes('sibling amendment conflict')),
+    errors.join('\n'),
+  );
+  const bundle = resolveApplicableDecisionBundle(
+    { typed_scope: { capability_id: ['x'], surface: ['agent'] } },
+    records,
+    { source_revision: 'unit' },
+  );
+  assert.ok(
+    bundle.unresolved_sources.some((item) => item.reason === 'exclusive_decision_key_conflict'),
+    JSON.stringify(bundle.unresolved_sources),
+  );
+});
+
+test('disjoint-scope full superseder does not hide target exclusive conflict', () => {
+  const x = mkRecord({
+    id: 'ADR-X',
+    decision_mode: 'exclusive',
+    decision_key: 'k',
+    typed_scope: {
+      repository: ['SylphxAI/skills'],
+      capability_id: ['alpha'],
+      surface: ['agent'],
+    },
+  });
+  const y = mkRecord({
+    id: 'ADR-Y',
+    decision_mode: 'exclusive',
+    decision_key: 'k',
+    typed_scope: {
+      repository: ['SylphxAI/skills'],
+      capability_id: ['alpha'],
+      surface: ['agent'],
+    },
+  });
+  const s = mkRecord({
+    id: 'ADR-S',
+    supersedes: [{ id: 'ADR-X', decision_key: null }],
+    typed_scope: {
+      repository: ['SylphxAI/skills'],
+      capability_id: ['beta'],
+      surface: ['agent'],
+    },
+  });
+  const { errors } = validateAdrCorpus([x, y, s], []);
+  assert.ok(
+    errors.some((error) => error.includes('exclusive decision_key k')),
+    `expected corpus fail, got: ${errors.join('\n')}`,
+  );
+  const bundle = resolveApplicableDecisionBundle(
+    { typed_scope: { capability_id: ['alpha'], surface: ['agent'] } },
+    [x, y, s],
+    { source_revision: 'unit' },
+  );
+  // X is not full-superseded for alpha task because S is beta-only
+  assert.ok(bundle.base_sources.some((ref) => ref.id === 'ADR-X' || ref.id === 'ADR-Y'));
+  assert.ok(bundle.unresolved_sources.some((item) => item.reason === 'exclusive_decision_key_conflict'));
+});
+
+test('provenance binds only singular exact source_revision (no plural list field)', () => {
+  const { records } = loadAdrRecords(repositoryRoot);
+  const task = { typed_scope: { capability_id: ['runtime-sync'], surface: ['cli'] } };
+  const a = resolveApplicableDecisionBundle(task, records, { source_revision: 'rev-1' });
+  const b = resolveApplicableDecisionBundle(task, records, { source_revision: 'rev-2' });
+  assert.equal(Object.prototype.hasOwnProperty.call(a.provenance, 'source_revisions'), false);
+  assert.equal(Object.prototype.hasOwnProperty.call(b.provenance, 'source_revisions'), false);
+  assert.notEqual(a.provenance.input_digest, b.provenance.input_digest);
+  assert.equal(a.provenance.source_revision, 'rev-1');
+  assert.equal(b.provenance.source_revision, 'rev-2');
+});
+

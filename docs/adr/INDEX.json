@@ -3,7 +3,7 @@
   "non_authoritative": true,
   "generated_by": "sylphx-skills-adr-lifecycle",
   "resolver_version": "1.1.0",
-  "count": 35,
+  "count": 36,
   "records": [
     {
       "id": "ADR-0001-public-agent-instruction-source",
@@ -826,6 +826,30 @@
       "amends": [],
       "supersedes": [],
       "contentDigest": "8147fb423332d8f1a4f32088299e87110950c53e2697e79732651d7da84203fe"
+    },
+    {
+      "id": "ADR-20260731-verification-non-interference-and-shared-effect-authority",
+      "file": "docs/adr/ADR-20260731-verification-non-interference-and-shared-effect-authority.md",
+      "status": "accepted",
+      "decision_owner": "SylphxAI/skills",
+      "decision_mode": "complementary",
+      "decision_key": null,
+      "typed_scope": {
+        "repository": [
+          "SylphxAI/skills"
+        ],
+        "capability_id": [
+          "shared-effect-authority",
+          "verification-non-interference"
+        ],
+        "surface": [
+          "agent",
+          "ops"
+        ]
+      },
+      "amends": [],
+      "supersedes": [],
+      "contentDigest": "ee5f7627c51bc54b3aca86bbcdc79c6ea864a4b9142147fecf5b064d5a501d74"
     }
   ]
 }

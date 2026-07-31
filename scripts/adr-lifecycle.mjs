@@ -281,55 +281,34 @@ function amendsParents(record) {
   return record.amends.map((item) => item.id);
 }
 
-function lineageRootIds(record, byId, seen = new Set()) {
-  if (seen.has(record.id)) return [];
-  seen.add(record.id);
-  if (!record.amends.length) return [record.id];
-  const roots = [];
-  for (const parentId of amendsParents(record)) {
-    const parent = byId.get(parentId);
-    if (!parent) continue;
-    roots.push(...lineageRootIds(parent, byId, seen));
-  }
-  return roots.length ? roots : [record.id];
+function reachesViaAmends(fromId, toId, byId, seen = new Set()) {
+  if (fromId === toId) return true;
+  if (seen.has(fromId)) return false;
+  seen.add(fromId);
+  const record = byId.get(fromId);
+  if (!record) return false;
+  return amendsParents(record).some((parent) => reachesViaAmends(parent, toId, byId, seen));
 }
 
+/** Same lineage only when one record is an amends ancestor/descendant of the other. */
 function sameLineage(a, b, byId) {
   if (a.id === b.id) return true;
-  if (a.amends.some((edge) => edge.id === b.id) || b.amends.some((edge) => edge.id === a.id)) {
-    return true;
-  }
-  const rootsA = new Set(lineageRootIds(a, byId));
-  const rootsB = new Set(lineageRootIds(b, byId));
-  for (const root of rootsA) {
-    if (rootsB.has(root)) return true;
-  }
-  // amendment of same base
-  const parentsA = new Set(amendsParents(a));
-  const parentsB = new Set(amendsParents(b));
-  for (const parent of parentsA) {
-    if (parentsB.has(parent)) {
-      // siblings - NOT same owner lineage for exclusive unless one amends the other
-      return false;
-    }
-  }
-  // if one is ancestor of the other via amends chain
-  function reaches(from, to, seen = new Set()) {
-    if (from === to) return true;
-    if (seen.has(from)) return false;
-    seen.add(from);
-    const rec = byId.get(from);
-    if (!rec) return false;
-    return amendsParents(rec).some((parent) => reaches(parent, to, seen));
-  }
-  return reaches(a.id, b.id) || reaches(b.id, a.id);
+  return reachesViaAmends(a.id, b.id, byId) || reachesViaAmends(b.id, a.id, byId);
 }
 
-function fullSupersedesTarget(records, targetId) {
+/**
+ * Full supersession hides a target from structural exclusive-owner admission
+ * only when an accepted superseder's selector may cover/overlap the target scope.
+ * A disjoint-scope superseder must not globally erase the target conflict surface.
+ */
+function fullSupersedesTarget(records, target, byId) {
+  const targetRecord = typeof target === 'string' ? byId.get(target) : target;
+  if (!targetRecord) return false;
   for (const record of records) {
     if (record.status !== 'accepted') continue;
     for (const edge of record.supersedes) {
-      if (edge.id === targetId && !edge.decision_key) return true;
+      if (edge.id !== targetRecord.id || edge.decision_key) continue;
+      if (scopesMayOverlap(record.typed_scope, targetRecord.typed_scope)) return true;
     }
   }
   return false;
@@ -416,7 +395,7 @@ export function validateAdrCorpus(records, parseErrors = []) {
     (record) => record.decision_mode === 'exclusive'
       && record.status === 'accepted'
       && record.decision_key
-      && !fullSupersedesTarget(records, record.id),
+      && !fullSupersedesTarget(records, record, byId),
   );
   for (let i = 0; i < exclusive.length; i += 1) {
     for (let j = i + 1; j < exclusive.length; j += 1) {
@@ -670,7 +649,6 @@ export function resolveApplicableDecisionBundle(task, records, options = {}) {
       excluded_sources: [],
       provenance: {
         source_revision: null,
-        source_revisions: [],
         resolver_id: RESOLVER_ID,
         resolver_version: RESOLVER_VERSION,
         input_digest: sha256Hex('missing_source_revision'),
@@ -910,7 +888,6 @@ export function resolveApplicableDecisionBundle(task, records, options = {}) {
     ...bundleCore,
     provenance: {
       source_revision: String(options.source_revision),
-      source_revisions: options.source_revisions || [String(options.source_revision)],
       resolver_id: RESOLVER_ID,
       resolver_version: RESOLVER_VERSION,
       input_digest,
