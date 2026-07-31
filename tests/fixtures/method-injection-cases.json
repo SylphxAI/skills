@@ -1027,5 +1027,57 @@
     "artifacts": [],
     "coverageFor": ["high-signal-communication"],
     "tags": ["short-answer", "no-method-needed"]
+  },
+  {
+    "id": "continuous-product-quality-positive",
+    "kind": "compound",
+    "prompt": "Design a durable autonomous quality loop for this SaaS that continuously discovers UI, accessibility, SEO, performance, correctness, security and live-behavior gaps, deduplicates evidence into qualified findings, creates bounded Work, and rechecks the delivered outcome without turning every check into merge-blocking CI.",
+    "expectedSkills": ["continuous-product-quality", "self-feeding-agent-loop-standard"],
+    "artifacts": [{"artifact": "Product Quality Loop Contract", "owner": "continuous-product-quality"}],
+    "tags": ["product-quality", "continuous-improvement", "finding", "work-loop"]
+  },
+  {
+    "id": "continuous-product-quality-cantonese",
+    "kind": "positive",
+    "prompt": "幫我將網站 UI、SEO、accessibility、performance、bug 同 live readback 做成全自動閉環：agents 要自己搵問題、去重、判斷值唔值得做、開 bounded Work、交付後重驗，冇正價值工作時先 idle。",
+    "expectedSkills": ["continuous-product-quality"],
+    "artifacts": [{"artifact": "Product Quality Loop Contract", "owner": "continuous-product-quality"}],
+    "tags": ["multilingual", "product-quality", "autonomous-loop"]
+  },
+  {
+    "id": "continuous-product-quality-neighbour-one-bug",
+    "kind": "near-neighbour",
+    "prompt": "Reproduce and fix the checkout button crash, add the focused regression test, and deliver the repair. Do not design a recurring quality program.",
+    "expectedSkills": ["engineering-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "continuous-product-quality",
+    "tags": ["single-bug", "not-operating-loop"]
+  },
+  {
+    "id": "continuous-product-quality-neighbour-feedback",
+    "kind": "near-neighbour",
+    "prompt": "Design private in-product feedback intake, ingest authorized public reviews, cluster user problems, route support cases, and close the loop with customers.",
+    "expectedSkills": ["product-feedback-learning-loop"],
+    "artifacts": [{"artifact": "Product feedback learning-loop artifact", "owner": "product-feedback-learning-loop"}],
+    "nearNeighbourOf": "continuous-product-quality",
+    "tags": ["customer-feedback", "not-cross-domain-quality"]
+  },
+  {
+    "id": "continuous-product-quality-neighbour-observability",
+    "kind": "near-neighbour",
+    "prompt": "Define protected logs, metrics, traces, SLOs, alerts and operator journeys for this service, including audience-safe public status projections.",
+    "expectedSkills": ["operational-observability-review"],
+    "artifacts": [{"artifact": "Operational Observability Contract", "owner": "operational-observability-review"}],
+    "nearNeighbourOf": "continuous-product-quality",
+    "tags": ["observability", "not-product-quality-loop"]
+  },
+  {
+    "id": "continuous-product-quality-neighbour-agent-learning",
+    "kind": "near-neighbour",
+    "prompt": "Agents repeatedly miss the same accessibility requirement even when it is present in the task. Diagnose the recurring agent-system cause, test one intervention, and define promotion and recurrence evidence.",
+    "expectedSkills": ["agent-system-improvement"],
+    "artifacts": [{"artifact": "Learning Change Record", "owner": "agent-system-improvement"}],
+    "nearNeighbourOf": "continuous-product-quality",
+    "tags": ["agent-learning", "not-product-finding"]
   }
 ]

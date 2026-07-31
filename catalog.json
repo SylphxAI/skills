@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 110,
+  "count": 111,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -110,6 +110,12 @@
       "description": "Design or refactor a growing platform, suite, or multi-product portfolio into independently valuable, independently operable product units connected through typed customer-grade contracts. Use when deciding whether capabilities should stay inside one product, become standalone products, share an experience shell, connect through APIs or events, dogfood one another, or form bundles. Produce a Composable Product Portfolio Contract. Do not use for code-only module decomposition, one product's lifecycle delivery graph, pricing alone, or runtime cell partitioning alone.",
       "path": "skills/composable-product-portfolio/SKILL.md",
       "packageDigest": "sha256:83e79119abfc8af542b80a6385424b69dca22759ef3c1960adf0f8b51ec72deb"
+    },
+    {
+      "name": "continuous-product-quality",
+      "description": "Design or audit a durable cross-domain product-quality operating loop and produce a Product Quality Loop Contract covering quality surfaces and objectives, scout triggers, evidence-bearing observations, finding admission and deduplication, bounded Work handoff, delivery readback, coverage freshness, value/risk/WIP budgets, and idle/wake conditions. Use when a product should autonomously discover and close recurring defects or improvement opportunities across correctness, UI/UX, accessibility, SEO/discovery, performance, reliability, security/privacy, content, or live behavior. Do not use for one known bug, one release review, customer-feedback intake alone, service observability alone, agent-system learning, or generic Work scheduling.",
+      "path": "skills/continuous-product-quality/SKILL.md",
+      "packageDigest": "sha256:3f4244fb96ea0f4b7507020e2868f38cf41036dff7cc0644f0d3d75aaeb81cc5"
     },
     {
       "name": "convergent-review",
@@ -559,7 +565,7 @@
       "name": "self-feeding-agent-loop-standard",
       "description": "Continuous or recurring loop engineering for durable agent processes that repeatedly discover, deduplicate, claim, execute, review, deliver, and re-enter new Work with machine-verifiable continuation gates. Use when the operating system should keep finding and completing new bounded outcomes. Do not use to close one bounded objective; use autonomous-execution-standard for that task-level loop.",
       "path": "skills/self-feeding-agent-loop-standard/SKILL.md",
-      "packageDigest": "sha256:62e8e50e89d3c31ff55dba60c412a8b4c441e6e616db0637612e56c9b19a9be4"
+      "packageDigest": "sha256:155df3589ecb8b61aeec2a26072f035366e171309f0f72bca05e65a305bcb842"
     },
     {
       "name": "semantic-taxonomy-design",
