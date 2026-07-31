@@ -229,7 +229,7 @@
       "name": "engineering-standard",
       "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, state authorities, modules, control/data planes, cells, plugins, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or system/runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:d91006eb7d6c177e3addf466dc7447c496ab4705ef9a333b777c7f40fbce8df4"
+      "packageDigest": "sha256:db234840ba4a4f43fdcaa77c0b87e5337bd066f20076c3253e83b2e63297fa20"
     },
     {
       "name": "enterprise-access-governance-review",
@@ -517,7 +517,7 @@
       "name": "risk-matched-verification-standard",
       "description": "Select evaluation, replay, simulation, model, canary, and long-observation evidence in proportion to the actual failure model and residual uncertainty without blocking unrelated delivery. Use when deterministic unit and integration tests cannot fully verify AI, probabilistic, distributed, concurrent, time-dependent, soak, or runtime behavior. Use CI Admission for flaky-check attribution or quarantine; do not add expensive verification machinery to an ordinary deterministic code path.",
       "path": "skills/risk-matched-verification-standard/SKILL.md",
-      "packageDigest": "sha256:d0f0626497f7613db7b30174dc40b859a6a8d8b7165a540460e6afdde5da680f"
+      "packageDigest": "sha256:a7246b269428257ea911073adee8d927634d46c1034a7dba6ff9300371ab2a28"
     },
     {
       "name": "saas-subscription-pricing",

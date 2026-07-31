@@ -11,6 +11,7 @@ method and predicates.
 
 Focused methods:
 
+- [Verification coverage model](../engineering-standard/references/verification-coverage-model.md)
 - [Oracle-free verification](../engineering-standard/references/oracle-free-verification.md)
 - [Control-effectiveness verification](../engineering-standard/references/control-effectiveness.md)
 

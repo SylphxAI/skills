@@ -38,6 +38,9 @@ When diagnosing or fixing a defect, changing observable behavior, or
 refactoring behavior whose current contract is not yet executable, read
 [Reproduction-driven engineering](references/reproduction-driven-engineering.md).
 
+When designing, reviewing, or closing automated test coverage, read
+[Verification coverage model](references/verification-coverage-model.md).
+
 For critical concurrency, distributed coordination, authorization, or
 irreversible-effect state spaces, read
 [Formal modelling and model checking](references/formal-modeling.md).

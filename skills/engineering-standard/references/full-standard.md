@@ -626,6 +626,20 @@ names; keep the comment only for the remaining non-obvious intent.
 
 ## Testing
 
+Test coverage is a multidimensional claim-to-oracle model, not one scalar
+percentage. Cover the material contracts and requirements, implementation
+decisions, oracle sensitivity, input and state spaces, compatibility boundaries,
+critical user journeys, failure and recovery behavior, and relevant
+non-functional properties selected by the actual failure model. Each material
+claim needs an automated semantic oracle capable of failing on regression, or
+an explicit residual. Structural coverage and complexity help locate risk; they
+do not prove correctness.
+
+Use [Verification coverage model](verification-coverage-model.md) to derive
+cases, select methods and lanes, preserve generated counterexamples, and decide
+when further testing no longer changes the delivery decision. Do not impose a
+universal coverage percentage, test pyramid, or tool checklist.
+
 ### Reproduction-driven engineering
 
 Defect fixes and material behavior changes follow
@@ -691,7 +705,8 @@ old path is removed, delete source-parity checks, no-old-path scans, migration
 ledgers, rebind workflows, and fixtures that no longer protect live behavior.
 Keep durable product contracts and behavior tests.
 
-Default ladder (apply with each language's native test/type tools):
+Default method ladder (select the relevant rungs with each language's native
+test/type tools; this is not a universal checklist):
 
 1. Unit tests for pure logic.
 2. Blocking type-level or static-analysis proof for every eligible contract and

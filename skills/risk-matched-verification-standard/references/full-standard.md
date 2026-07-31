@@ -14,7 +14,9 @@ This standard composes with:
   for risk lanes, admission manifests, the active delivery profile's integration
   serializer, postsubmit proof, and recovery;
 - [`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineering-standard/references/full-standard.md) for pure cores,
-  Effect, testing ladder, observability, and state-machine correctness;
+  Effect, testing ladder, observability, state-machine correctness, and the
+  multidimensional
+  [verification coverage model](../../engineering-standard/references/verification-coverage-model.md);
 - [`agent-native-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-native-standard/references/full-standard.md) "AI Agents" for AI
   evals, tracing, and guardrails;
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for deploy proof and
@@ -28,6 +30,11 @@ Verification depth is targeted by failure model, residual uncertainty, and
 blast radius. It is not a universal
 presubmit tax and not a replacement for the active delivery profile's admission
 and integration controls, postsubmit proof, deploy proof, or recovery.
+
+Start from the coverage model's material claims and uncovered failure classes.
+This standard selects advanced, expensive, probabilistic, or live-dependent
+evidence only where the ordinary deterministic suite leaves a plausible
+decision-changing residual. It does not create a second coverage authority.
 
 Do not attempt to eliminate every logically imaginable failure. A failure mode
 enters the blocking proof plan only when it is plausible under the declared
