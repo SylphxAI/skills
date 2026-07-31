@@ -48,12 +48,15 @@ mechanism, evaluate this ladder in order:
 
 1. avoid, delete, or simplify it if the objective still passes;
 2. reuse or repair the existing owning path;
-3. use the language standard library or an ecosystem-, platform-, or
-   provider-native primitive;
+3. use the language standard library or a platform- or provider-native
+   primitive;
 4. use an already admitted dependency or shared capability;
-5. add the smallest direct implementation inside the owning boundary; and
-6. add a new dependency, abstraction, service, or control only for a named
-   requirement that the earlier rungs cannot satisfy.
+5. for uncovered commodity functionality, compare an established, actively
+   maintained ecosystem library or reference implementation with the smallest
+   direct implementation inside the owning boundary, and choose the lower
+   total-lifecycle-cost option that meets the declared quality floor; and
+6. add a custom abstraction, service, or control only for a named requirement
+   that the earlier rungs cannot satisfy.
 
 Stop at the first rung that meets the declared capability, correctness,
 security, privacy, reliability, maintainability, performance, compatibility,
@@ -63,6 +66,15 @@ before minimizing it. Minimize total lifecycle complexity, not raw lines,
 files, functions, or dependencies. More explicit code can be the smaller system
 when it protects a trust boundary, makes state or ownership visible, removes
 coupling, or avoids a permanent operational surface.
+
+A dependency is not complexity merely because it is new, and local code is not
+simpler merely because it is short. Include maintenance and security response,
+API stability, interoperability, license, transitive supply-chain surface,
+runtime or bundle cost, edge-case ownership, and replacement cost in the
+comparison. Prefer an established library at standards-, protocol-, parser-,
+serialization-, or security-sensitive commodity boundaries. Prefer direct
+local code when the behavior is genuinely small and stable and the dependency
+would create the larger lifecycle surface.
 
 Do not compress away validation, error handling for plausible failures,
 accessibility, recovery, data integrity, observability needed by the failure
@@ -315,13 +327,15 @@ maximum tests, or theoretical perfection.
 
 ## Guardrails
 
-- Prefer an existing primitive, direct implementation, deletion, or one local
-  check before adding a service, repository, control plane, generator, workflow,
-  trust system, or recurring reconciler.
+- Prefer deletion, an existing primitive, an established well-maintained
+  library, a direct implementation, or one local check before adding a service,
+  repository, control plane, generator, workflow, trust system, or recurring
+  reconciler.
 - Adopt the simplest applicable published standard, ecosystem-native primitive,
-  or established reference design before inventing a custom mechanism. A custom
-  layer must name the unmet requirement and demonstrate an observable semantic
-  or quality improvement over that baseline.
+  well-maintained library or reference implementation, or established reference
+  design before inventing a custom mechanism. A custom layer must name the
+  unmet requirement and demonstrate an observable semantic or quality
+  improvement over that baseline.
 - Keep the baseline check proportional. An obvious local native primitive needs
   no broad standards survey or decision document; durable shared or
   cross-boundary machinery earns explicit comparison.
