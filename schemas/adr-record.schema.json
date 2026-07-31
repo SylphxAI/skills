@@ -1,93 +1,30 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://sylphx.com/schemas/adr-record.schema.json",
-  "title": "Normalized ADR record",
+  "title": "Lightweight ADR frontmatter",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "id",
-    "status",
-    "decision_owner",
-    "decision_mode",
-    "typed_scope",
-    "amends",
-    "supersedes",
-    "relates"
-  ],
+  "required": ["id", "status"],
   "properties": {
     "id": { "type": "string", "minLength": 1 },
-    "status": { "type": "string", "enum": ["proposed", "accepted", "rejected"] },
-    "date": { "type": "string" },
-    "decision_owner": { "type": "string", "minLength": 1 },
-    "contributors": {
-      "type": "array",
-      "items": { "type": "string" }
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "accepted", "rejected", "superseded"]
     },
-    "decision_mode": { "type": "string", "enum": ["complementary", "exclusive"] },
-    "decision_key": { "type": ["string", "null"] },
-    "typed_scope": {
-      "type": "object",
-      "minProperties": 1,
-      "propertyNames": {
-        "pattern": "^(repository|capability_id|component_id|surface|custom\\.[A-Za-z0-9._-]+)$"
-      },
-      "additionalProperties": {
-        "type": "array",
-        "items": { "type": "string", "minLength": 1 },
-        "minItems": 1
-      }
+    "date": { "type": "string" },
+    "decision_owner": { "type": "string" },
+    "supersedes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
     },
     "amends": {
       "type": "array",
-      "items": {
-        "oneOf": [
-          { "type": "string", "minLength": 1 },
-          {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["id"],
-            "properties": {
-              "id": { "type": "string", "minLength": 1 },
-              "decision_key": { "type": "string", "minLength": 1 }
-            }
-          }
-        ]
-      }
-    },
-    "supersedes": {
-      "type": "array",
-      "items": {
-        "oneOf": [
-          { "type": "string", "minLength": 1 },
-          {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["id"],
-            "properties": {
-              "id": { "type": "string", "minLength": 1 },
-              "decision_key": { "type": "string", "minLength": 1 }
-            }
-          }
-        ]
-      }
-    },
-    "relates": {
-      "type": "array",
       "items": { "type": "string", "minLength": 1 }
+    },
+    "scope": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Optional retrieval hints only; not a policy language."
     }
-  },
-  "allOf": [
-    {
-      "if": {
-        "properties": { "decision_mode": { "const": "exclusive" } },
-        "required": ["decision_mode"]
-      },
-      "then": {
-        "required": ["decision_key"],
-        "properties": {
-          "decision_key": { "type": "string", "minLength": 1 }
-        }
-      }
-    }
-  ]
+  }
 }

@@ -1,21 +1,12 @@
 ---
 id: ADR-20260720-explicit-remote-mcp-enrollment
-status: accepted
+status: superseded
 date: 2026-07-20
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - remote-integration-enrollment
-  surface:
-    - agent
-    - cli
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - remote-integration-enrollment
 ---
 
 # ADR-20260720: Enroll remote Enact only from an explicit deployment declaration

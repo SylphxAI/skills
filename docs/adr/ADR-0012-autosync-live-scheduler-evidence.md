@@ -3,20 +3,11 @@ id: ADR-0012-autosync-live-scheduler-evidence
 status: accepted
 date: 2026-07-22
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - runtime-sync
-  surface:
-    - cli
-    - agent
+supersedes: []
 amends:
   - ADR-0003-configurable-scheduled-synchronization
-supersedes: []
-relates: []
+scope:
+  - runtime-sync
 ---
 
 # ADR-0012: Require live scheduler evidence for AutoSync

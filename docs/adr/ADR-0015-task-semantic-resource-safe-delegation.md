@@ -3,18 +3,10 @@ id: ADR-0015-task-semantic-resource-safe-delegation
 status: accepted
 date: 2026-07-26
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - agent-delegation
-  surface:
-    - agent
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - agent-delegation
 ---
 
 # ADR-0015: Select delegation from task semantics and positive net value

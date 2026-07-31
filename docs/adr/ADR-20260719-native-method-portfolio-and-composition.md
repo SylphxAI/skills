@@ -3,18 +3,10 @@ id: ADR-20260719-native-method-portfolio-and-composition
 status: accepted
 date: 2026-07-19
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - method-portfolio
-  surface:
-    - agent
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - method-portfolio
 ---
 
 # ADR-20260719: Publish the useful method portfolio and compose native injection

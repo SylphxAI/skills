@@ -68,99 +68,50 @@ public contracts, persistence, security/privacy posture, delivery semantics, or
 a durable enterprise default. Do not create an ADR for ordinary implementation
 detail already governed by an accepted decision or testable contract.
 
-### Lifecycle and retrieval (ADR Lifecycle and Retrieval Contract)
+### Lightweight ADR governance
 
-Portfolio semantics for ADR lifecycle and retrieval are defined here. The
-machine gate (normalized record schema, ApplicableDecisionBundle, fixtures,
-reference checker) is owned by `specification-control-plane-standard`. Product
-repositories may supply legacy format parsers; new work uses Markdown + YAML
-frontmatter. Product adoption steps:
-`docs/reference/adr-lifecycle-product-adoption.md`.
+This repository is public. ADR governance stays small and industry-comparable
+(MADR / adr-tools class). It is **not** a retrieval control plane.
 
-**Writable authority.** Repo-owned ADR records are the only writable decision
-authority for why a durable choice exists. Derived graph, index, and merged
-summaries are rebuildable non-authoritative projections.
+**Keep:**
 
-**Authored status.** Source status is exactly `proposed`, `accepted`, or
-`rejected`. Effective `superseded` is derived from outgoing `supersedes`
-edges. Do not author `status: superseded`. Inverse relations are generated.
+- ADRs live in the owning repository and record **why** a durable choice exists.
+- Current behavior authority remains code, schemas, tests, and product
+  current-state surfaces—not ADR narrative status.
+- Generated projections are non-authoritative.
+- Minimal frontmatter: `id`, `status`, optional `date`, `decision_owner`,
+  `supersedes`, `amends`, and optional `scope` hints.
+- Status: `proposed | accepted | rejected | superseded`.
+- Material changes amend or supersede; do not silently rewrite accepted history.
+- Structural CI only: parseable YAML, stable identity, legal status, existing
+  relation targets, no relation cycles, and `superseded` has a superseding ADR.
 
-**Ownership fields.** Use singular `decision_owner` (accountable authority) and
-optional `contributors`. Do not use ambiguous multi-owner arrays as the
-authority field.
+**Do not require:**
 
-**Decision mode.** `decision_mode` is `complementary` or `exclusive`. Exclusive
-decisions require a top-level `decision_key`. Complementary ADRs may share typed
-scope without structural conflict.
+- ApplicableDecisionBundle as portfolio law
+- mandatory `decision_mode` / `decision_key` calculus
+- typed-scope AND/OR policy engines
+- unresolved disposition / provenance digest law
+- every product repository shipping a local resolver adapter
 
-**Typed scope.** `typed_scope` is a selector object:
+Agents retrieve ADRs with ordinary search/RAG over markdown at a known commit.
+Future knowledge systems may index ADRs as derived consumers; they own ranking
+and query provenance.
 
-- AND across declared facets;
-- OR within values of the same facet;
-- omitted facet on the selector means unconstrained;
-- if a task lacks a facet the selector declares, applicability is unresolved;
-- unknown `custom.*` namespaces required by a selector are unresolved and never
-  silently ignored.
-
-Canonical facets: `repository`, `capability_id`, `component_id`, `surface`, plus
-namespaced `custom.<ns>.*`. Prefer project-manifest capability/component ids.
-`decision_key` lives only at record top level.
-
-**Relations.** Canonical outgoing relations are `amends`, `supersedes`, and
-`relates`. Unqualified `supersedes` is full supersession within the
-superseder's applicable scope. Partial supersession requires a machine-readable
-`decision_key` (or typed partial selector). Prose that claims partial
-supersession without that machine selector is unresolved, not automatic full
-supersede. Supersession edges from accepted, scope-matching records do not
-disappear when the superseder is later superseded (targets must not resurrect).
-
-**Write path.**
-
-1. Classify whether the change is a material durable decision.
-2. If not, update executable authority (code/schema/tests) and any current-state
-   surface only.
-3. If yes, resolve the existing decision graph to `unchanged`, `amend`,
-   `supersede`, or `new`.
-4. Write the independently addressable decision record.
-5. Only then change implementation.
-
-Material semantic changes use a new record (amendment or supersession). In-place
-edits are limited to non-semantic fixes (typo, broken link, format).
-
-**Retrieval.** Agents compute an **ApplicableDecisionBundle** over an exact
-source revision: ordered base and amendment **source references**, supersession
-edges, unresolved and excluded sets, and provenance digests. Agents read those
-source files. The resolver must not mint authoritative merged decision prose.
-Lexicographic ids stabilize presentation order only; they do not award semantic
-precedence between conflicting sibling amendments—those require an explicit
-`amends` chain or become unresolved.
-
-**Unknown handling.** Unresolved items that may own the same exclusive
-`decision_key` or change the task's material action block that decision slice.
-Non-intersecting unresolved items warn only. Inability to decide intersection
-blocks that decision's applicability, not the entire repository.
-
-**Not ADR authority.** Implementation completeness, candidate/CI/artifact
-state, deployed/live behavior, and Work/claim/run state belong to
-code/schema/tests, Git/CI/artifacts, GitOps/runtime evidence, and Enact
-respectively. An accepted ADR never proves landed, deployed, or live.
-
-**Identity.** The owning repository defines collision-safe identity. In this
-repository the id is the ADR filename stem. Sequential numbers are acceptable
-only when allocation cannot race; portable stems remain preferred under parallel
-agents.
+Product adoption guidance: `docs/reference/adr-lifecycle-product-adoption.md`.
 
 An ADR contains:
 
-- stable collision-resistant identity and authored status;
-- `decision_owner`, `decision_mode`, typed scope, and relations;
+- stable collision-resistant identity and status;
 - context and forces;
 - decision and owned scope;
 - alternatives and material tradeoffs;
 - consequences, migration/recovery, and verification intent;
-- supersession/amendment links rather than rewritten history.
+- supersession links rather than rewritten history.
 
-Accepted ADR history is amended or superseded, not silently rewritten.
+The owning repository defines its collision-safe identity mechanism. Sequential
+numbers are acceptable only when allocation cannot race; portable slugs are
+preferable in parallel agent workflows.
 
 ## Specs, schemas, and generated references
 
@@ -202,7 +153,7 @@ architecture, delivery, or migration completion.
 - [ ] Each material fact has one named writable source.
 - [ ] Projections identify source and freshness or say non-authoritative.
 - [ ] ADRs contain decisions and tradeoffs, not current mutable status.
-- [ ] ADR retrieval uses ApplicableDecisionBundle over exact sources; projections are non-authoritative.
+- [ ] ADR frontmatter is structurally valid; projections remain non-authoritative.
 - [ ] Enumerated API/schema/CLI facts are generated or freshness-checked.
 - [ ] Raw discussion is linked as evidence only after its durable outcome is
       promoted to the correct authority.

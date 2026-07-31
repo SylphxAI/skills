@@ -3,19 +3,10 @@ id: ADR-0018-selective-originality-and-frontend-performance-methods
 status: accepted
 date: 2026-07-27
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - originality-frontend
-  surface:
-    - agent
-    - ui
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - originality-frontend
 ---
 
 # ADR-0018: Add only independently requested originality and frontend performance methods

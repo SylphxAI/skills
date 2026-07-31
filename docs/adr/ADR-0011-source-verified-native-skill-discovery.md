@@ -3,19 +3,11 @@ id: ADR-0011-source-verified-native-skill-discovery
 status: accepted
 date: 2026-07-21
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - static-instruction-packages
-  surface:
-    - agent
+supersedes: []
 amends:
   - ADR-0009-native-skill-discovery-and-package-boundaries
-supersedes: []
-relates: []
+scope:
+  - static-instruction-packages
 ---
 
 # ADR-0011: Source-verified native Skill discovery

@@ -3,19 +3,10 @@ id: ADR-0019-decouple-worker-occupancy-from-delivery-terminal
 status: accepted
 date: 2026-07-27
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - delivery-terminal
-  surface:
-    - agent
-    - ops
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - delivery-terminal
 ---
 
 # ADR-0019: Decouple worker occupancy from delivery terminal state

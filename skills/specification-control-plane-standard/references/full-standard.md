@@ -35,7 +35,7 @@ contracts, exception records) in the sections below.
 
 | Fact | Machine gate |
 | --- | --- |
-| Why this architecture, public contract, persistence, migration, security, AI-workflow, commercial, or operational decision exists | Normalized ADR record check + ApplicableDecisionBundle resolver predicates (`scripts/adr-lifecycle.mjs`); identity, `decision_owner`, authored status, typed_scope, outgoing relations, exclusive `decision_key`, structural conflicts |
+| Why this architecture, public contract, persistence, migration, security, AI-workflow, commercial, or operational decision exists | Lightweight ADR structural check (`scripts/adr-lifecycle.mjs`): identity, legal status, relation targets, cycles |
 | What an API, SDK, CLI, tool, event, config, manifest, route, form, or package surface accepts/returns | contract diff, generated artifact freshness, compatibility tests |
 | What behavior must hold | test/eval/simulation status bound to candidate SHA |
 | What a non-trivial slice is trying to do before implementation | typed work-packet freshness plus linked ADR/schema/test/exact-source evidence |
@@ -50,27 +50,20 @@ generate it from the canonical home or delete the repeated fact and link to the
 home. A prose file that agents treat as current truth without a freshness gate is
 drift waiting to happen.
 
-## ADR lifecycle machine gate
+## ADR structural gate
 
-Semantic rules live in `documentation-standard` (**ADR Lifecycle and Retrieval
-Contract**). This standard owns the executable gate:
+Semantic rules live in `documentation-standard` (lightweight ADR governance).
+This standard owns only the structural machine gate:
 
-- normalized ADR record fields (Markdown + YAML frontmatter default);
-- structural validation (identity, authored status, owners, scope, relations,
-  cycles, exclusive owners);
-- deterministic **ApplicableDecisionBundle** output (ordered source references,
-  unresolved/excluded sets, provenance digests);
-- representative task fixtures with exact expected source ids and reason codes;
-- integration through the repository's existing `npm test` / `scripts/check.mjs`
-  entrypoint (no additional CI workflow).
+- parseable frontmatter;
+- stable identity;
+- legal status;
+- existing relation targets and no cycles;
+- `superseded` has a superseding ADR.
 
-The bundle is an authoritative **computation** over exact ADR sources. It is not
-a second writable semantic home. Generated indexes and merged summaries are
-non-authoritative projections.
-
-Implementation reference: `scripts/adr-lifecycle.mjs`,
-`schemas/adr-record.schema.json`, `schemas/applicable-decision-bundle.schema.json`,
-`tests/adr-lifecycle.test.mjs`.
+Implementation reference: `scripts/adr-lifecycle.mjs` and
+`schemas/adr-record.schema.json`. There is no portfolio requirement for an
+ApplicableDecisionBundle resolver.
 
 ## Prose specs
 

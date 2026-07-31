@@ -3,18 +3,10 @@ id: ADR-0028-right-sized-agent-work-and-communication
 status: accepted
 date: 2026-07-30
 decision_owner: SylphxAI/skills
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - agent-communication
-  surface:
-    - agent
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - agent-communication
 ---
 
 # ADR-0028: Absorb right-sized work and concise communication without a workflow stack

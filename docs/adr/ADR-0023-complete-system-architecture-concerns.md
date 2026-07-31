@@ -3,18 +3,10 @@ id: ADR-0023-complete-system-architecture-concerns
 status: accepted
 date: 2026-07-29
 decision_owner: SylphxAI/skills
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - system-architecture
-  surface:
-    - agent
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - system-architecture
 ---
 
 # Complete code and system architecture without inventing another architecture brand

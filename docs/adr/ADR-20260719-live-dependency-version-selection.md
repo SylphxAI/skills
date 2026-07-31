@@ -3,19 +3,10 @@ id: ADR-20260719-live-dependency-version-selection
 status: accepted
 date: 2026-07-19
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - dependency-selection
-  surface:
-    - agent
-    - cli
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - dependency-selection
 ---
 
 # ADR-20260719: Select dependency versions from live authoritative sources

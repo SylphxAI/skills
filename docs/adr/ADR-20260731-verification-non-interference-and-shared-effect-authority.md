@@ -3,20 +3,11 @@ id: ADR-20260731-verification-non-interference-and-shared-effect-authority
 status: accepted
 date: 2026-07-31
 decision_owner: SylphxAI/skills
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - verification-non-interference
-    - shared-effect-authority
-  surface:
-    - agent
-    - ops
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - verification-non-interference
+  - shared-effect-authority
 ---
 
 # Shared work must not externalize local costs

@@ -3,19 +3,10 @@ id: ADR-0007-semantic-enforcement-and-gate-retirement
 status: accepted
 date: 2026-07-19
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - static-instruction-packages
-  surface:
-    - agent
-    - cli
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - static-instruction-packages
 ---
 
 # ADR-0007: Prefer semantic enforcement and retire temporary gates

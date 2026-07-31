@@ -3,18 +3,10 @@ id: ADR-0017-capability-calibrated-agent-briefs
 status: accepted
 date: 2026-07-27
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - agent-briefs
-  surface:
-    - agent
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - agent-briefs
 ---
 
 # ADR-0017: Calibrate agent briefs to capability without prescribing the implementation

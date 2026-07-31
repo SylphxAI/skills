@@ -3,18 +3,10 @@ id: ADR-0013-reproduction-driven-engineering
 status: accepted
 date: 2026-07-22
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - engineering-methods
-  surface:
-    - agent
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - engineering-methods
 ---
 
 # ADR-0013: Require reproduction-driven engineering for durable repairs
