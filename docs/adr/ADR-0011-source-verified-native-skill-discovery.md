@@ -105,6 +105,12 @@ switch can therefore change more than Codex and is not part of this decision.
    Until that decision lands with migration proof, this ADR neither redefines
    `--agent` scope nor treats a one-line installer path change as safe.
 
+
+> **Amended:** L0 membership, hard budget, catalog listing-budget product
+> constraint, and utilization claim discipline are specified by
+> [ADR-20260731-thin-dual-layer-progressive-instruction-system](ADR-20260731-thin-dual-layer-progressive-instruction-system.md).
+> Native discovery without a meta-router remains in force.
+
 ## Consequences
 
 - False negatives are fixed first in model-visible metadata or package

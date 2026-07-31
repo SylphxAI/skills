@@ -547,6 +547,56 @@ export function validateAdrLocators(errors) {
   detectCycles('amends');
 }
 
+
+function validateRuntimeConstitution(errors) {
+  const location = 'runtime/constitution.md';
+  const absolute = path.join(repositoryRoot, location);
+  if (!existsSync(absolute) || !statSync(absolute).isFile()) {
+    errors.push(`${location}: missing`);
+    return;
+  }
+  const text = readFileSync(absolute, 'utf8');
+  // Hard ceiling ~1500 tokens at chars/4 for miss-class-A floors only.
+  const L0_MAX_CHARS = 6000;
+  if (text.length > L0_MAX_CHARS) {
+    errors.push(`${location}: exceeds hard L0 ceiling ${L0_MAX_CHARS} chars (got ${text.length})`);
+  }
+  const required = [
+    'SylphxAI/skills',
+    'Evidence precedes claims',
+    'Done means delivered',
+    'meta-router',
+    'progressive disclosure',
+    'Skills do not grant tools',
+    'delivery terminal',
+  ];
+  for (const phrase of required) {
+    if (!text.includes(phrase)) errors.push(`${location}: missing required L0 phrase: ${phrase}`);
+  }
+  const forbidden = [
+    'work.defer',
+    'After Verification',
+    'forge-agnostic',
+    'RFC 9728',
+    'auto_when_green',
+  ];
+  for (const marker of forbidden) {
+    if (text.toLowerCase().includes(marker.toLowerCase())) {
+      errors.push(`${location}: demoted dense marker present: ${marker}`);
+    }
+  }
+  for (const doc of [
+    'docs/reference/catalog-listing-budget-policy.md',
+    'docs/reference/skill-utilization-eval-residual.md',
+    'docs/adr/ADR-20260731-thin-dual-layer-progressive-instruction-system.md',
+  ]) {
+    const docPath = path.join(repositoryRoot, doc);
+    if (!existsSync(docPath) || !statSync(docPath).isFile()) {
+      errors.push(`${doc}: missing thin dual-layer residual/policy artifact`);
+    }
+  }
+}
+
 export function checkRepository() {
   const errors = [];
 
@@ -559,6 +609,7 @@ export function checkRepository() {
   for (const folder of skillFolders) validateSkill(folder, names, errors, profiles);
   validateActiveProfileCollisions(profiles, errors);
   validateAdrLocators(errors);
+  validateRuntimeConstitution(errors);
 
   const rootSchema = path.join(repositoryRoot, 'schemas', 'product-artifact-envelope.schema.json');
   if (!existsSync(rootSchema)) errors.push('schemas/product-artifact-envelope.schema.json: missing');

@@ -70,6 +70,23 @@ secret.
 
 ---
 
+
+### Always-on floors vs Skills
+
+Sylphx uses a **thin dual-layer** model:
+
+- **Always-on constitution** — miss-class-A floors only (authority, evidence,
+  fail-closed honesty, native skill loading). Hard budget; not a full
+  operating manual.
+- **Skills** — portable domain methods loaded through host progressive
+  disclosure when relevant.
+- **Live systems** — Enact, CI, deploy, and RBAC remain real authority;
+  markdown does not grant tools or permissions.
+
+See [`ADR-20260731`](./docs/adr/ADR-20260731-thin-dual-layer-progressive-instruction-system.md),
+[`catalog listing-budget policy`](./docs/reference/catalog-listing-budget-policy.md),
+and the open [`utilization residual`](./docs/reference/skill-utilization-eval-residual.md).
+
 ## Install, update, or inspect
 
 Installation is intentionally prompt-native:

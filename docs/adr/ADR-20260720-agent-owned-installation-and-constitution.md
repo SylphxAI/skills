@@ -115,6 +115,13 @@ or product state. Those capabilities have separate authenticated owners.
     behavior are executable fail-closed boundaries, not prompt-only guidance;
     exact locator binding is additionally checked by source/readback evidence.
 
+
+> **L0 membership amendment:** always-on constitution *install/projection*
+> mechanics in this ADR remain in force. Membership and thickness of the
+> constitution body are governed by
+> [ADR-20260731-thin-dual-layer-progressive-instruction-system](ADR-20260731-thin-dual-layer-progressive-instruction-system.md)
+> (miss-class-A floors only; hard budget; fleet-conditional Enact line).
+
 ## Consequences
 
 - The shortest supported user experience is one prompt containing the public

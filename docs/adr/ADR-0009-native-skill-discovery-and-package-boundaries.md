@@ -88,6 +88,12 @@ ordering rule, or central router that this repository should emulate.
    unknown or modified shared content is preserved and fails closed. No status
    may claim current while duplicate or retired managed routes remain visible.
 
+
+> **Amended:** L0 membership, hard budget, catalog listing-budget product
+> constraint, and utilization claim discipline are specified by
+> [ADR-20260731-thin-dual-layer-progressive-instruction-system](ADR-20260731-thin-dual-layer-progressive-instruction-system.md).
+> Native discovery without a meta-router remains in force.
+
 ## Consequences
 
 - The catalog can remain broad without pretending that every runtime always

@@ -3,7 +3,7 @@
 ## Purpose
 
 Own SylphxAI's **public** static Agent Skills: binding standards, reusable
-procedures, profiles, adapters, references, compact runtime constitution, and
+procedures, profiles, adapters, references, thin dual-layer compact runtime constitution (miss-class-A floors only), and
 the minimal distribution mechanism that installs and keeps **Codex, Claude
 Code, and Grok Build** synchronized.
 
@@ -43,3 +43,11 @@ Skill does not require a model benchmark or calendar soak.
 Canonical packages are MIT licensed and intentionally public. Sylphx may sell
 managed updates, enterprise/private packages, integrations, verification,
 support, and related services without representing public text as exclusive.
+
+## Instruction layers
+
+- Always-on: `runtime/constitution.md` (L0 miss-class-A floors; hard budget).
+- Skills: progressive packages under `skills/`.
+- Listing budget: `docs/reference/catalog-listing-budget-policy.md`.
+- Utilization residual: `docs/reference/skill-utilization-eval-residual.md`.
+- Architecture ADR: `docs/adr/ADR-20260731-thin-dual-layer-progressive-instruction-system.md`.
