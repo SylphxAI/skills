@@ -294,6 +294,33 @@ client models by hand when generation or a single adapter can express them. If
 a repository already has a different explicit authority, use it consistently
 unless the task includes a migration.
 
+### Active source authority and predecessor retirement
+
+A successor-bearing change must leave one normal implementation and write
+authority. Target availability alone is not cutover: the same objective must
+dispose of every predecessor as deleted source, a narrowly justified one-way
+compatibility adapter, or immutable historical material isolated from ordinary
+implementation discovery. An active-looking old module, export, route, job,
+configuration path, generator input, or runtime registration is an authority
+defect even when current traffic is believed not to use it.
+
+Git history is the default recovery surface for deleted implementation. A
+compatibility adapter may remain only for demonstrated current consumers; it
+delegates to the current authority, owns no independent domain policy or
+authoritative writes, is unavailable to new consumers by default, exposes
+protected usage or contract-support evidence, and has an exact retirement
+predicate. Preserve immutable migrations, supported schema/protocol history,
+and required audit or legal records when their lifecycle requires them, but do
+not let historical artifacts re-enter mutable policy or runtime ownership.
+
+Enforce current ownership through compiler/module visibility, package exports,
+dependency/build graphs, generated-contract ownership, route/job registration,
+and semantic behavior proof. Do not infer it from source spelling or a folder
+named `legacy`. Apply the full
+[active-source authority and retirement contract](active-source-authority-and-retirement.md)
+whenever an implementation is replaced, migrated, deprecated, folded, or
+substantially refactored.
+
 ## Source-Controlled Artifact Identity
 
 Parallel-authored artifacts must not use self-assigned sequential numbers as

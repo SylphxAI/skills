@@ -53,7 +53,11 @@ on narrative status or stale proof.
    Remove source implementation, obsolete structure, compatibility switches,
    obsolete fixtures, source-parity/no-old-path gates, mutable migration ledgers,
    and rebind workflows that no longer protect a live compatibility boundary;
-   do not create a permanent dual generation or permanent migration CI.
+   do not create a permanent dual generation or permanent migration CI. A
+   retained compatibility adapter must serve named current consumers, delegate
+   one way to the target, own no domain policy or authoritative writes, be
+   unavailable to new consumers by default, expose protected usage or
+   contract-support evidence, and have an exact retirement predicate.
 11. Reconcile the migration ledger from merged and deployed evidence. Report implementation, merge, deployment, active implementation, and retirement as separate states.
 
 ## Validation integrity
@@ -85,6 +89,9 @@ on narrative status or stale proof.
 - Do not maintain multiple implementations as competing steady-state truth.
   A one-step development cutover is valid when exact-candidate proof and source
   control recovery cover the material risk.
+- Do not treat a deprecated comment, `legacy` folder, disabled route, or
+  currently unused registration as retirement while the predecessor remains in
+  the normal dependency, build, export, generation, or runtime graph.
 - Do not double-execute payments, notifications, destructive writes, or other irreversible side effects for parity testing.
 - Do not let two agents edit the same shared choke point concurrently; land or serialize the contract first.
 - Do not require production readback for a development-only structural claim.

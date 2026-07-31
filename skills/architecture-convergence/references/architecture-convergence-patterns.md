@@ -114,7 +114,7 @@ State entry conditions:
 | `parity_proven` | Differential artifact bound to revisions and digests |
 | `cutover_ready` | Declared-stage verification probe, guardrails, authority switch, and recovery path |
 | `authority_target` | Exact target-artifact readback at the declared lifecycle stage; live readback only for a live-authority terminal |
-| `source_retired` | Source absence proved by package/build/module authority, cleanup evidence, and retirement of migration-only parity/ledger/rebind machinery; no durable source-string scan |
+| `source_retired` | Source absence proved across package/module visibility, dependency/build graph, exports, generators, route/job registration and runtime composition; any retained legacy interface is a named one-way no-policy/no-write adapter with usage or contract-support evidence and an exact retirement predicate; migration-only parity/ledger/rebind machinery is retired; no durable source-string scan |
 | `stale` | Previous advanced state, drift reason/ref/time, contract, target globs, and last valid proof retained for audit only |
 
 ## Portable capability ledger
@@ -315,3 +315,6 @@ migration_event:
   artifact identity; production readback is required only for a production/live
   authority claim.
 - Source deletion has passed and source reintroduction is blocked.
+- Every predecessor is absent from the active source graph or reduced to a
+  demonstrated one-way compatibility adapter; a folder name, comment, flag, or
+  traffic assumption is not retirement proof.

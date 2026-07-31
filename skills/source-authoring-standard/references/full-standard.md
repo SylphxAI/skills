@@ -49,7 +49,10 @@ A landed source change is semantically atomic when it:
    required to keep the landed state valid;
 3. excludes unrelated work and unattributed state;
 4. declares dependencies and material recovery needs; and
-5. can be reverted safely or has a forward-recovery contract.
+5. can be reverted safely or has a forward-recovery contract; and
+6. when it establishes a successor implementation or source authority,
+   resolves predecessor disposition under the Engineering Standard instead of
+   leaving an active-looking old path as optional cleanup.
 
 Atomic does not mean one file, one commit, one PR, or a fixed line count.
 Dependent changes form a valid ordered stack; cross-repository changes use

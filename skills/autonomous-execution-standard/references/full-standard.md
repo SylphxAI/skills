@@ -313,6 +313,14 @@ terminal, use `scope-discipline` for one bounded positive-net scan, apply materi
 same-cause corrections inside the owning boundary, and close when no eligible
 improvement changes the outcome enough to justify its cost.
 
+When the objective establishes a successor implementation or source authority,
+predecessor disposition is part of that same terminal under the Engineering
+Standard. An old path that remains discoverable, importable, buildable,
+registered, generated, or executable is an actionable residual unless a
+demonstrated live compatibility contract requires a one-way expiring adapter.
+Do not convert predecessor deletion into optional follow-up merely to complete
+the current phase.
+
 ## Durable Progress And Anti-Regression
 
 At every material checkpoint, name:
@@ -754,6 +762,9 @@ Before final response, check:
 - No feasible owning-boundary fix was replaced by a workaround, duplicate
   authority, or weak intermediate target that the same objective must later
   undo.
+- Any successor-bearing change has resolved predecessor disposition; no
+  active-looking duplicate implementation is being relabelled as harmless
+  residual work.
 - Required background work is complete, integrated, or explicitly blocked.
 - Required tests/checks have passed, failed with diagnosis, or were skipped with
   stated residual risk.

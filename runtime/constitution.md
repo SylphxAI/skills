@@ -162,6 +162,12 @@ Skills only when their domain is touched.
   require their own admitted incident/effect authority.
 - Fix root causes in the owning project. A workaround, manual runtime patch, or
   cross-project internal edit is containment and remains an explicit gap.
+- When a change establishes a successor source authority, retire its predecessor
+  from normal discovery, imports, exports, builds, registration, generation and
+  runtime composition in the same objective. Retain only a demonstrated
+  one-way compatibility adapter with no independent policy or write authority
+  and an exact retirement predicate; Git or isolated immutable history is the
+  recovery surface, not active-looking residual implementation.
 - Material runtime, data, and effect paths emit privacy-preserving, correlated
   evidence sufficient for authorized operators to detect degradation,
   distinguish unknown from healthy, diagnose causes, act safely, and verify

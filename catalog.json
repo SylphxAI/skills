@@ -67,13 +67,13 @@
       "name": "architecture-convergence",
       "description": "Deliver a substantial code or system-architecture refactor to one declared target across one or many repositories. Use for whole-repository Capability-first DDD adoption, state/runtime boundary correction, language rewrites, monolith restructuring, drop-in replacements, or architecture cutovers that require real code movement, semantic proof, authority change, and predecessor retirement. Do not use for a small local refactor, a documentation-only architecture review, or customer-data migration.",
       "path": "skills/architecture-convergence/SKILL.md",
-      "packageDigest": "sha256:8c5f9f2b8fe354aed50ca1818ae80f1e4978eb5d7b7fc0f377b1018d45eb3029"
+      "packageDigest": "sha256:8d8efe20b13b9057be834a1038d19c669af3382df0dc553099f15dc08374b612"
     },
     {
       "name": "autonomous-execution-standard",
       "description": "Objective-continuous execution for non-trivial or multi-phase work: preserve the declared terminal and proven predicates, keep eligible lanes moving, coordinate shared resources without impeding unrelated work, prevent workaround/rework regression, replan around blockers, delegate only when net-positive, and make evidence-bounded claims. Use when work must continue without repeated prompts and must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, or a tightly coupled local edit.",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:642786f7d4fb33d5a081b70b5a5c484e2e3515f5deed6e0f765f7309e7d62a3c"
+      "packageDigest": "sha256:2b0db02d5eacadbd510b36e8379380d2eac2a1ed0bce2e43809ff469730b8fcf"
     },
     {
       "name": "board-metrics-operating-review",
@@ -229,7 +229,7 @@
       "name": "engineering-standard",
       "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, state authorities, modules, control/data planes, cells, plugins, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or system/runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:db234840ba4a4f43fdcaa77c0b87e5337bd066f20076c3253e83b2e63297fa20"
+      "packageDigest": "sha256:b607245453590ac7a77e7691021efd0179bfe7c883325ff4e4d9ccb2ea747fcb"
     },
     {
       "name": "enterprise-access-governance-review",
@@ -595,7 +595,7 @@
       "name": "source-authoring-standard",
       "description": "Commits, exact source candidates, semantic atomicity, worktrees, and durable checkpoints. Use when authoring or integrating repository changes where source identity, recovery, or concurrent edits matter. Do not use for read-only analysis.",
       "path": "skills/source-authoring-standard/SKILL.md",
-      "packageDigest": "sha256:b3fe8459e97771cc04ee02cbcfb90acd170939ac39aedf3ac66f9f4a8a7ff846"
+      "packageDigest": "sha256:088b5644586fd14b107d87df57d090a586c039f08cf2715da3ad8bacb0967a1a"
     },
     {
       "name": "source-to-skill-distiller",
