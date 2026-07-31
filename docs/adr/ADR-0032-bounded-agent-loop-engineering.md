@@ -85,18 +85,9 @@ boundary and stops when its observable predicates pass.
 
 ## Research basis
 
-- Addy Osmani, [Loop Engineering](https://addyosmani.com/blog/loop-engineering/),
-  describes the goal, work, checking, recording, and continuation system while
-  warning about cost and comprehension debt.
-- Anthropic, [Building effective agents](https://www.anthropic.com/research/building-effective-agents),
-  distinguishes composable evaluator-optimizer workflows from autonomous
-  agents and recommends matching complexity to the task.
-- ReAct grounds repeated reasoning in tool observations:
-  <https://arxiv.org/abs/2210.03629>.
-- Self-Refine and Reflexion demonstrate iterative feedback and retained
-  experience without establishing a universal software-delivery terminal:
-  <https://arxiv.org/abs/2303.17651> and
-  <https://arxiv.org/abs/2303.11366>.
+The maintained source comparison and dispositions live with the executable
+method in
+[`bounded-objective-closure-loop.md`](../../skills/autonomous-execution-standard/references/bounded-objective-closure-loop.md#research-basis).
 
 ## Consequences
 
