@@ -217,7 +217,7 @@
       "name": "documentation-standard",
       "description": "Documentation scope, minimal sufficient docs, generated references, and freshness without prose drift. Use when deciding what durable documentation to create, update, generate, or retire. Do not use for changing product behavior without documentation ownership questions.",
       "path": "skills/documentation-standard/SKILL.md",
-      "packageDigest": "sha256:2f0efe9425a34a5e8f7bb182b317d1dafa1af6936a23603f6a8d0dda8b2fee15"
+      "packageDigest": "sha256:3529530802af5879ae58a5d4bd65c0a875aaa44864cc28d96e46a27e178444ee"
     },
     {
       "name": "enact-work-coordination",
