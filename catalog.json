@@ -607,7 +607,7 @@
       "name": "specification-control-plane-standard",
       "description": "Specification lifecycle, work packets, evaluation manifests, telemetry contracts, and exception records. Use when a material capability needs an executable specification and traceable implementation contract. Do not use for a trivial change whose behavior is already unambiguous.",
       "path": "skills/specification-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:9c11cfe858eb275a9f196eac8730aae23bb770a13e470b91d5de081e978a9d0c"
+      "packageDigest": "sha256:9458b7cc64363b6479443503d83026e3c57f4e099ce6ee0fda226ccb8faea1f6"
     },
     {
       "name": "store-listing-optimization",

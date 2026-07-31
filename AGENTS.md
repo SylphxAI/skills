@@ -26,9 +26,9 @@ templates, repository About) aligned with install reality and honest posture.
   distribution change. Keep external clean-runtime model evidence out of Git.
 - Material repository decisions receive an ADR under `docs/adr/`; product-local
   decisions remain in their owning product repository.
-- ADR governance is lightweight (`documentation-standard`, ADR-0030). Structural
-  checks live in `scripts/adr-lifecycle.mjs`. See
-  `docs/reference/adr-lifecycle-product-adoption.md`.
+- ADR governance is lightweight (`documentation-standard`, ADR-0030). Decision
+  records live in `docs/adr/`; integrity is covered by ordinary repo `npm test`.
+  See `docs/reference/adr-lifecycle-product-adoption.md`.
 
 The single CI job protects package/install integrity. It is not a semantic
 judge, trust system, or Control Plane.

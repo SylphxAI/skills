@@ -53,8 +53,9 @@ honest about what agents actually run.
    at a known commit. Future knowledge/context systems may index ADRs as derived
    consumers; they own ranking and query provenance, not ADR authoring law.
 
-5. **Reference checker.** `scripts/adr-lifecycle.mjs` is a structural linter for
-   this repository only, not a distributed retrieval runtime.
+5. **Repo integrity only.** Any structural ADR checks belong inside ordinary
+   repository CI (for example this repository's `npm test`). There is no
+   separate ADR lifecycle product or installable checker.
 
 ## Consequences
 
@@ -66,6 +67,6 @@ honest about what agents actually run.
 
 ## Verification
 
-- Structural ADR check passes on this repository.
+- Ordinary repository integrity (`npm test`) accepts the ADR corpus.
 - Documentation-standard describes the lightweight contract only.
-- No committed requirement that product repos implement ApplicableDecisionBundle.
+- No separate ADR lifecycle script or product-repo resolver obligation.
