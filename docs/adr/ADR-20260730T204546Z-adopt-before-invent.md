@@ -3,18 +3,10 @@ id: ADR-20260730T204546Z-adopt-before-invent
 status: accepted
 date: 2026-07-30
 decision_owner: SylphxAI/skills
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - engineering-methods
-  surface:
-    - agent
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - engineering-methods
 ---
 
 # Adopt established mechanisms before custom invention

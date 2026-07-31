@@ -1,22 +1,12 @@
 ---
 id: ADR-0029-adr-lifecycle-and-retrieval-contract
-status: accepted
+status: superseded
 date: 2026-07-31
 decision_owner: SylphxAI
-contributors: []
-decision_mode: exclusive
-decision_key: adr-lifecycle-and-retrieval
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - documentation-authority
-  surface:
-    - agent
-    - cli
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - documentation-authority
 ---
 
 # ADR-0029: ADR Lifecycle and Retrieval Contract

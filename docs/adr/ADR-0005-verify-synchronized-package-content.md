@@ -3,19 +3,10 @@ id: ADR-0005-verify-synchronized-package-content
 status: accepted
 date: 2026-07-19
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - runtime-sync
-  surface:
-    - cli
-    - agent
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - runtime-sync
 ---
 
 # ADR-0005: Verify synchronized package content

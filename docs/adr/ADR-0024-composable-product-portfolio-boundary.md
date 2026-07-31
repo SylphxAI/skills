@@ -3,18 +3,10 @@ id: ADR-0024-composable-product-portfolio-boundary
 status: accepted
 date: 2026-07-29
 decision_owner: SylphxAI/skills
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - product-portfolio
-  surface:
-    - agent
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - product-portfolio
 ---
 
 # Separate product portfolio composition from code, commercial and runtime boundaries

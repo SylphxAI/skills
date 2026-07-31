@@ -3,27 +3,16 @@ id: ADR-0027-repository-native-trunk-and-simple-auto-deploy
 status: accepted
 date: 2026-07-30
 decision_owner: SylphxAI
-contributors: []
-decision_mode: exclusive
-decision_key: auto-deploy-model
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - auto-deploy
-    - delivery-terminal
-    - work-coordination
-    - forge-coordination
-  surface:
-    - ops
-    - agent
+supersedes:
+  - ADR-0022-auto-when-green-selected-snapshot
 amends:
   - ADR-0019-decouple-worker-occupancy-from-delivery-terminal
   - ADR-0020-enact-authoritative-work-and-review-pools
   - ADR-0021-forge-agnostic-coordination
-supersedes:
-  - ADR-0022-auto-when-green-selected-snapshot
-relates: []
+scope:
+  - auto-deploy
+  - delivery-terminal
+  - work-coordination
 ---
 
 # ADR-0027: Repository-native trunk integration and simple auto-deploy

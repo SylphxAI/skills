@@ -3,22 +3,12 @@ id: ADR-0003-configurable-scheduled-synchronization
 status: accepted
 date: 2026-07-18
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - runtime-sync
-  surface:
-    - agent
-    - cli
-amends: []
 supersedes:
-  - id: ADR-0002-consumption-boundary-skill-reconciliation
-  - id: ADR-0001-public-agent-instruction-source
-    decision_key: autosync-schedule-and-hooks
-relates: []
+  - ADR-0002-consumption-boundary-skill-reconciliation
+  - ADR-0001-public-agent-instruction-source
+amends: []
+scope:
+  - runtime-sync
 ---
 
 # ADR-0003: Use configurable OS-scheduled synchronization

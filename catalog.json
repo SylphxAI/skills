@@ -217,7 +217,7 @@
       "name": "documentation-standard",
       "description": "Documentation scope, minimal sufficient docs, generated references, and freshness without prose drift. Use when deciding what durable documentation to create, update, generate, or retire. Do not use for changing product behavior without documentation ownership questions.",
       "path": "skills/documentation-standard/SKILL.md",
-      "packageDigest": "sha256:3529530802af5879ae58a5d4bd65c0a875aaa44864cc28d96e46a27e178444ee"
+      "packageDigest": "sha256:1d11f5365ddc0ce7de1344abe191aa97227b8bee04c825d7af098c33e18af2f3"
     },
     {
       "name": "enact-work-coordination",
@@ -607,7 +607,7 @@
       "name": "specification-control-plane-standard",
       "description": "Specification lifecycle, work packets, evaluation manifests, telemetry contracts, and exception records. Use when a material capability needs an executable specification and traceable implementation contract. Do not use for a trivial change whose behavior is already unambiguous.",
       "path": "skills/specification-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:8ecfefcf9749eecee39729712b32e419ed5eda6404c7d0798301f2a363067cca"
+      "packageDigest": "sha256:9c11cfe858eb275a9f196eac8730aae23bb770a13e470b91d5de081e978a9d0c"
     },
     {
       "name": "store-listing-optimization",

@@ -3,18 +3,10 @@ id: ADR-0009-native-skill-discovery-and-package-boundaries
 status: accepted
 date: 2026-07-21
 decision_owner: SylphxAI
-contributors: []
-decision_mode: complementary
-typed_scope:
-  repository:
-    - SylphxAI/skills
-  capability_id:
-    - static-instruction-packages
-  surface:
-    - agent
-amends: []
 supersedes: []
-relates: []
+amends: []
+scope:
+  - static-instruction-packages
 ---
 
 # ADR-0009: Native Skill discovery and package boundaries
