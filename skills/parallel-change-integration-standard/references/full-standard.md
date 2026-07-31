@@ -64,6 +64,29 @@ Enact claims own Work, not files. Use a worktree/clone only when it is the
 smallest safe isolation for mutable state; never treat worktrees as locks or as
 isolation for external effects.
 
+### Shared external effects
+
+Parallel work must not turn a local process into a second controller for shared
+delivery, migration, protection, promotion, or environment policy.
+
+- Observation and evidence collection are non-mutating by default.
+- Isolate or pin the exact subject that needs stability instead of locking a
+  shared lane.
+- A client-side script may perform a bounded authorized mutation; it may not
+  continuously reconcile shared policy from a workstation, temporary directory,
+  CI job, or agent session.
+- Persistent reconciliation belongs to the owning product's versioned
+  controller and public or operator contract, with scoped authority, fencing,
+  expiry, audit, and recovery.
+- A task may not externalize its verification cost by blocking unrelated agents,
+  deployments, or customers. An unavoidable exclusive effect follows the
+  owning incident or migration policy and uses the smallest scope and duration.
+
+Do not enforce this boundary with repository-wide word bans or CI scans for
+`lock`, `hold`, or daemon names. Enforce it at the shared effect API, identity,
+lease, and storage-permission boundary, then verify those semantics with focused
+authorization, expiry, fencing, and concurrency tests.
+
 ## Duplicate work
 
 Resolve semantic duplicate Work through Enact when available. Git branches,

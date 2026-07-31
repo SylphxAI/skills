@@ -90,6 +90,12 @@ Skills only when their domain is touched.
 - Act autonomously on reversible in-scope work. Obtain explicit authority before
   destructive actions, credentials, public-contract changes, new infrastructure,
   or irreversible effects.
+- Do not preserve one task's evidence window by freezing, reverting, or
+  continuously rewriting shared delivery or control state. Pin or isolate the
+  exact observed subject while unrelated delivery continues. Any unavoidable
+  shared hold requires explicit effect authority, minimum scope, bounded
+  non-renewing expiry, recovery, and audit; evidence convenience alone never
+  qualifies.
 - Optimize for agent-native verified lifetime value, not human typing effort or
   maximum caution. Reprice options through current agents, tools, automation and
   integration-safe parallelism; count semantic ambiguity, weak oracles,
