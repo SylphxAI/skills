@@ -58,6 +58,12 @@ src/
 
 - Use enums and newtypes for domain states, identities, units, and expected
   failures.
+- At JSON, file, or persistence boundaries, decode into an explicit versioned
+  typed Serde DTO and map it through `TryFrom` or an equivalent validator into
+  domain values. Keep `serde_json::Value` or raw JSON inside an intentionally
+  opaque typed wrapper only; public or cross-runtime contracts use generated
+  Protobuf/Buffa types and ProtoJSON instead of a separately authored Rust JSON
+  schema.
 - Keep async, framework extractors, SQL clients, provider SDKs, and runtime
   configuration outside the domain.
 - Expose a narrow `pub` surface from the capability root. Use `pub(crate)` or

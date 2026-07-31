@@ -420,6 +420,21 @@ types, validators, fixtures, documentation, compatibility analysis, and
 transport bindings from it. Choose transport by consumer and operational needs;
 do not create a second API design per client.
 
+JSON is an encoding, not an application or domain state model. Decode external
+or persisted JSON into an explicit versioned typed DTO at the boundary, validate
+its presence, discriminator, and value semantics, then map it into domain values
+before applying policy. Raw or dynamic JSON may remain only when the payload is
+intentionally opaque, provider-owned, or pass-through; contain it in a typed
+wrapper with declared size, sensitivity, and access bounds, and do not branch
+domain policy on ad hoc keys. Public or cross-runtime boundaries use generated
+contract types and ProtoJSON instead of independently authored Rust JSON
+schemas.
+
+A durable snapshot DTO declares its schema version, subject identity, source or
+replay position, and migration or rebuild behavior. When an event stream or
+ledger is the semantic write authority, its snapshot is a rebuildable
+projection rather than a second authority.
+
 When a boundary supports more than one implementation language, its canonical
 representation is language-neutral. Rust structs, TypeScript or Effect schemas,
 Python models, Ruby classes, Dart classes, framework decorators, and
