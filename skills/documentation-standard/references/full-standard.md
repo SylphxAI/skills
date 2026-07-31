@@ -74,7 +74,8 @@ Portfolio semantics for ADR lifecycle and retrieval are defined here. The
 machine gate (normalized record schema, ApplicableDecisionBundle, fixtures,
 reference checker) is owned by `specification-control-plane-standard`. Product
 repositories may supply legacy format parsers; new work uses Markdown + YAML
-frontmatter.
+frontmatter. Product adoption steps:
+`docs/reference/adr-lifecycle-product-adoption.md`.
 
 **Writable authority.** Repo-owned ADR records are the only writable decision
 authority for why a durable choice exists. Derived graph, index, and merged

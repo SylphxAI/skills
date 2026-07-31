@@ -26,6 +26,9 @@ templates, repository About) aligned with install reality and honest posture.
   distribution change. Keep external clean-runtime model evidence out of Git.
 - Material repository decisions receive an ADR under `docs/adr/`; product-local
   decisions remain in their owning product repository.
+- ADR lifecycle/retrieval semantics are the Skills **ADR Lifecycle and Retrieval
+  Contract** (`documentation-standard`, ADR-0029). Product repos adopt via a local
+  adapter; see `docs/reference/adr-lifecycle-product-adoption.md`.
 
 The single CI job protects package/install integrity. It is not a semantic
 judge, trust system, or Control Plane.
