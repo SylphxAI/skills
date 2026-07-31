@@ -47,7 +47,7 @@ break legitimate protocols and customer experiences.
 5. Public correlation identifiers are opaque and resolve to protected evidence
    inside the operator boundary. Public health or status cannot become a dump
    of infrastructure inventory merely because tests can scrape it easily.
-6. The always-on constitution and binding engineering predicates carry the
+6. Miss-class-A always-on floors and binding engineering predicates may carry the
    minimum non-disclosure floor. `operational-observability-review` owns the
    independently requested end-to-end observability artifact. Specialist
    Skills retain product analytics, agent traces, data reliability, security,
@@ -56,6 +56,9 @@ break legitimate protocols and customer experiences.
    Contract for dataset and pipeline freshness, completeness, semantic drift,
    reconciliation, trust state, backfill, and consumer impact. Generic data
    quality must not be hidden inside product analytics or service telemetry.
+
+
+> **L0 membership:** always-on body membership and thickness are governed by [ADR-20260731-thin-dual-layer-progressive-instruction-system](ADR-20260731-thin-dual-layer-progressive-instruction-system.md) (miss-class-A floors only; hard budget). Domain procedures remain in Skills.
 
 ## Consequences
 

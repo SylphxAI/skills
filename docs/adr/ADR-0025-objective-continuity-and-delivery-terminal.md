@@ -62,7 +62,7 @@ Keep one semantic owner for each part of the problem:
 
    `workspace → locally verified source → exact revision → landed → released or deployed → live-observed`
 
-7. `runtime/constitution.md` carries only the compact always-on invariant.
+7. `runtime/constitution.md` carries only miss-class-A always-on floors under the thin dual-layer budget (ADR-20260731-thin-dual-layer-progressive-instruction-system). The checkpoint-versus-delivery terminal invariant remains always-on; detailed continuity methods stay in Skills.
    Detailed mechanics remain in the two owning standards.
 
 The standard preserves aggressive progress without unbounded execution.
@@ -106,6 +106,9 @@ designed to prevent.
 Rejected because worker occupancy is separate from Work terminal state.
 Eligible independent work continues; external-only waits use durable defer and
 re-entry semantics.
+
+
+> **L0 membership:** always-on body membership and thickness are governed by [ADR-20260731-thin-dual-layer-progressive-instruction-system](ADR-20260731-thin-dual-layer-progressive-instruction-system.md) (miss-class-A floors only; hard budget). Domain procedures remain in Skills.
 
 ## Consequences
 

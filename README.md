@@ -85,7 +85,7 @@ Sylphx uses a **thin dual-layer** model:
 
 See [`ADR-20260731`](./docs/adr/ADR-20260731-thin-dual-layer-progressive-instruction-system.md),
 [`catalog listing-budget policy`](./docs/reference/catalog-listing-budget-policy.md),
-and the open [`utilization residual`](./docs/reference/skill-utilization-eval-residual.md).
+the open [`utilization residual`](./docs/reference/skill-utilization-eval-residual.md), and the [`industry research summary`](./docs/reference/industry-skill-injection-and-always-on-decision.md).
 
 ## Install, update, or inspect
 

@@ -59,7 +59,7 @@ capital cost.
 7. Product and domain novelty remains encouraged. Custom infrastructure and
    process machinery carries the higher burden because interoperability,
    tooling, recovery, and operator comprehension normally dominate novelty.
-8. Compact invariants live in the runtime constitution. Decision Quality owns
+8. Compact miss-class-A invariants may live in the runtime constitution only under the thin dual-layer budget (ADR-20260731-thin-dual-layer-progressive-instruction-system). Decision Quality owns
    the comparison and burden of proof; Scope Discipline owns bounded
    application; Engineering owns code and runtime structure.
 

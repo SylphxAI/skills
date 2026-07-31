@@ -48,12 +48,15 @@ delegation was valuable.
    risk, WIP, quota, and downstream capacity are part of eligibility. Under
    pressure, agents drain or integrate work and continue safe local actions
    before reconsidering fan-out.
-6. The always-on constitution carries the compact floor.
+6. The always-on constitution may carry only a miss-class-A compact floor if it still passes the L0 admission test and hard budget (ADR-20260731-thin-dual-layer-progressive-instruction-system). Full delegation calculus stays in Skills.
    `agent-first-development-standard` consumes the predicate when coordinating
    work that has already qualified.
 7. Authored positive and negative cases may remain as a non-blocking evaluation
    corpus. They illustrate the decision boundary but do not prove routing,
    runtime enforcement, or observed agent behavior.
+
+
+> **L0 membership:** always-on body membership and thickness are governed by [ADR-20260731-thin-dual-layer-progressive-instruction-system](ADR-20260731-thin-dual-layer-progressive-instruction-system.md) (miss-class-A floors only; hard budget). Domain procedures remain in Skills.
 
 ## Consequences
 

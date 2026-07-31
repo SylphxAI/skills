@@ -74,7 +74,7 @@ Verification.
    machinery intended for high-blast-radius or irreducibly uncertain behavior.
 8. The compact agent-native cost, decision-changing evidence, owning-fix, and
    anti-regression invariants remain always active in
-   `runtime/constitution.md`. Detailed methods stay in their existing Skills.
+   `runtime/constitution.md` only when they pass the thin dual-layer L0 admission test and hard budget (ADR-20260731-thin-dual-layer-progressive-instruction-system). Detailed methods stay in their existing Skills.
 
 ## Rejected directions
 
@@ -104,6 +104,9 @@ not. Trivial reversible work uses the direct fast path.
 
 Rejected because it would duplicate existing semantic owners, worsen automatic
 Skill selection, and make contradictions more likely.
+
+
+> **L0 membership:** always-on body membership and thickness are governed by [ADR-20260731-thin-dual-layer-progressive-instruction-system](ADR-20260731-thin-dual-layer-progressive-instruction-system.md) (miss-class-A floors only; hard budget). Domain procedures remain in Skills.
 
 ## Consequences
 

@@ -53,12 +53,15 @@ source.
 6. Medicalized, caveman, absolute-mode, and anti-slop variants are not separate
    routes. Mechanical word/cadence bans and telegraphic grammar are optional
    editing techniques at most, never general writing or CI authority.
-7. The always-on constitution carries only two compact projections:
+7. The always-on constitution carries only miss-class-A floors under the thin dual-layer budget (see ADR-20260731-thin-dual-layer-progressive-instruction-system). Right-sizing and communication methods remain Skills; do not re-expand L0 with design/comms procedure. Historically this decision projected two compact reminders; membership is now L0-admission-gated:
    smallest-complete design and shortest decision-complete communication.
    Detailed comparative research stays in on-demand references.
 8. External packages are not vendored or copied. Useful mechanisms are
    synthesized into existing owners with exact source lineage and explicit
    limitations.
+
+
+> **L0 membership:** always-on body membership and thickness are governed by [ADR-20260731-thin-dual-layer-progressive-instruction-system](ADR-20260731-thin-dual-layer-progressive-instruction-system.md) (miss-class-A floors only; hard budget). Domain procedures remain in Skills.
 
 ## Consequences
 

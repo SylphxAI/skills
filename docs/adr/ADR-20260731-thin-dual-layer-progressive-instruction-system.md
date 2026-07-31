@@ -120,6 +120,8 @@ It does not invent a portable meta-router.
 - Release claims about utilization require behavior-oracle evidence.
 - Constitution growth requires explicit admission, not silent ADR absorption.
 
+Research summary (non-authoritative): `docs/reference/industry-skill-injection-and-always-on-decision.md`.
+
 ## Verification
 
 - Structural tests assert L0 size ceiling, required floor phrases, and

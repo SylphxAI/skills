@@ -51,11 +51,14 @@ requirements.
    demonstrated material hazard that isolation cannot contain and requires
    explicit effect authority, minimum scope and duration, owner-visible impact,
    recovery or preemption where practical, audit, and prompt release.
-7. This decision is absorbed by the existing runtime constitution,
+7. This decision is absorbed as a miss-class-A non-interference floor in the thin dual-layer constitution where it still fits the L0 admission test (ADR-20260731-thin-dual-layer-progressive-instruction-system). Detailed methods live in
    Autonomous Execution,
    Risk-Matched Verification, Parallel Change Integration, and Platform-first
    standards. It does not create a new Skill, CI word scanner, lock service, or
    control plane.
+
+
+> **L0 membership:** always-on body membership and thickness are governed by [ADR-20260731-thin-dual-layer-progressive-instruction-system](ADR-20260731-thin-dual-layer-progressive-instruction-system.md) (miss-class-A floors only; hard budget). Domain procedures remain in Skills.
 
 ## Consequences
 
