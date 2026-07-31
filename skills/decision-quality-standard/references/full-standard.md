@@ -128,10 +128,18 @@ files, adapters, generated projections, or tests.
 ### Adopt before invent
 
 For commodity engineering and operating mechanisms, start from the simplest
-applicable published standard, ecosystem-native primitive, or established
-reference design. Treat that baseline as the first credible option, not as an
-automatic winner: standards can be obsolete, inapplicable, or weaker than the
-declared requirement.
+applicable published standard, ecosystem-native primitive, actively maintained
+library or reference implementation, or established reference design. Treat
+that baseline as the first credible option, not as an automatic winner:
+standards and libraries can be obsolete, abandoned, inapplicable, or weaker
+than the declared requirement.
+
+For a build-versus-adopt choice, compare total lifecycle cost rather than raw
+dependency count, package popularity, or implementation size. The absence of an
+existing dependency does not make custom code cheaper; equally, a popular
+package does not justify its supply-chain, runtime, licensing, compatibility,
+or maintenance surface when a small stable direct implementation owns the
+whole requirement more cleanly.
 
 Before selecting a custom concept, abstraction, framework, control plane,
 state machine, gate, queue, protocol, or vocabulary, establish:

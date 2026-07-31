@@ -175,7 +175,7 @@
       "name": "decision-quality-standard",
       "description": "Select among materially distinct technical, product, commercial, or operating options—including an established standard versus a custom mechanism—reprice human-era effort through current agent capabilities, and record the commitment, trade-offs, reversibility, and decision evidence. Use after credible options are formed and one durable choice is required. Do not use for unknown-cause diagnosis, exact-candidate pass/fail review, trivial reversible edits, or execution of an already selected option.",
       "path": "skills/decision-quality-standard/SKILL.md",
-      "packageDigest": "sha256:e2145a1c9bd100aa84b5c1daee505dafe55a2f2b603b15437f32bb6171f6ba3e"
+      "packageDigest": "sha256:0f9f299e18d707ec316a6b708255785175640fc63a18f6e17a75874aa731c51c"
     },
     {
       "name": "delivery-standard",
@@ -185,9 +185,9 @@
     },
     {
       "name": "dependency-version-selection",
-      "description": "Resolve and migrate runtimes, frameworks, SDKs, generators, plugins, and libraries from their authoritative current release sources. Use when creating or scaffolding a project, adding, replacing, or upgrading dependency declarations, regenerating a lock graph after dependency changes, modernizing an existing project, or reviewing dependency currency. Query live sources instead of model memory. Do not use for package metadata or script-only edits, lockfile recovery that must preserve the selected graph, choosing between fundamentally different technologies, floating mutable production versions, or selecting preview releases without an explicit experiment.",
+      "description": "Resolve and migrate runtimes, frameworks, SDKs, generators, plugins, and libraries from their authoritative current release sources. Use when creating or scaffolding a project, adding, replacing, or upgrading dependency declarations, regenerating a lock graph after dependency changes, modernizing an existing project, or reviewing dependency currency. Query live sources instead of model memory. Do not use to decide build versus adopt, for package metadata or script-only edits, lockfile recovery that must preserve the selected graph, choosing between fundamentally different technologies, floating mutable production versions, or selecting preview releases without an explicit experiment.",
       "path": "skills/dependency-version-selection/SKILL.md",
-      "packageDigest": "sha256:6de7cbdf110d2859f1bb091a76749ddb1907829287b88417000e9f6fe16303a7"
+      "packageDigest": "sha256:31c7226298e4aea2a92e7faeeb263fa281e86c337229218ae57520a006e38b89"
     },
     {
       "name": "design-space-exploration",
@@ -229,7 +229,7 @@
       "name": "engineering-standard",
       "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, state authorities, modules, control/data planes, cells, plugins, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or system/runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:b607245453590ac7a77e7691021efd0179bfe7c883325ff4e4d9ccb2ea747fcb"
+      "packageDigest": "sha256:2232176478e09c194bde3f59b580cbab3682b938d26349116441a280cdf1b951"
     },
     {
       "name": "enterprise-access-governance-review",
@@ -535,7 +535,7 @@
       "name": "scope-discipline",
       "description": "Right-size planning, implementation, migration, architecture, and review: prevent over-engineering, under-engineering, workaround regression, unnecessary code, dependencies, files, abstractions, gates, or waiting while preserving the real correctness and delivery floor. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, complexity theatre, weak shortcuts, or a request for the simplest complete durable solution.",
       "path": "skills/scope-discipline/SKILL.md",
-      "packageDigest": "sha256:b4f8145b96122e858d84791105434268c4adabf2e1d2d07a7a6db45105d6cd2f"
+      "packageDigest": "sha256:cb9074a82acd1ecfec495329472fc5159ffb4683b95609486759873ad5c873ae"
     },
     {
       "name": "search-discovery-quality-review",

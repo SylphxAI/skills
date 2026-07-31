@@ -247,7 +247,8 @@ native primitives are clearer.
 
 Product and domain behavior may be novel. Commodity engineering machinery
 defaults to the simplest applicable published standard, language/runtime
-primitive, protocol, provider capability, or established reference design.
+primitive, protocol, provider capability, actively maintained ecosystem
+library or reference implementation, or established reference design.
 Before introducing a custom framework, controller, gate, queue, status model,
 deployment stage, coordination service, or architecture term, compare it with
 that baseline and record:
@@ -258,6 +259,18 @@ that baseline and record:
   migration, support, and proof it creates; and
 - how standard clients, tools, operators, or a future replacement can cross its
   boundary without learning private implementation vocabulary.
+
+For commodity code, make an explicit build-versus-adopt comparison rather than
+treating a new dependency as inherently worse than locally owned code. Search
+the existing codebase, standard library, platform/provider primitives, and
+mature ecosystem implementations. Compare maintenance and security response,
+API stability, interoperability, license, transitive supply-chain and runtime
+surface, performance, edge-case burden, and replacement cost. Prefer a mature
+library when it removes non-trivial protocol, parser, serialization, security,
+or compatibility ownership. Prefer direct local code when the behavior is
+genuinely small and stable and the dependency would create the larger lifecycle
+surface. The ability to build a component is not evidence that owning it is the
+better design.
 
 This is proportional engineering, not a mandatory literature review. An
 obvious local use of a native primitive needs clear code and a narrow oracle;
