@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "fixtures": [
+    {
+      "task": {
+        "id": "auto-deploy",
+        "typed_scope": {
+          "capability_id": [
+            "auto-deploy"
+          ],
+          "surface": [
+            "ops"
+          ]
+        }
+      },
+      "expect": {
+        "base_ids": [
+          "ADR-0027-repository-native-trunk-and-simple-auto-deploy"
+        ],
+        "amendment_ids": [],
+        "full_superseded_ids": [
+          "ADR-0022-auto-when-green-selected-snapshot"
+        ],
+        "applicable_decision_keys": [
+          "auto-deploy-model"
+        ],
+        "unresolved_reasons": []
+      }
+    },
+    {
+      "task": {
+        "id": "skill-discovery",
+        "typed_scope": {
+          "capability_id": [
+            "static-instruction-packages"
+          ],
+          "surface": [
+            "agent"
+          ]
+        }
+      },
+      "expect": {
+        "base_ids": [
+          "ADR-0001-public-agent-instruction-source",
+          "ADR-0004-subject-first-terminology",
+          "ADR-0007-semantic-enforcement-and-gate-retirement",
+          "ADR-0009-native-skill-discovery-and-package-boundaries",
+          "ADR-0016-architecture-and-verification-package-names"
+        ],
+        "amendment_ids": [
+          "ADR-0011-source-verified-native-skill-discovery"
+        ],
+        "full_superseded_ids": [],
+        "applicable_decision_keys": [],
+        "unresolved_reasons": []
+      }
+    },
+    {
+      "task": {
+        "id": "runtime-sync",
+        "typed_scope": {
+          "capability_id": [
+            "runtime-sync"
+          ],
+          "surface": [
+            "cli"
+          ]
+        }
+      },
+      "expect": {
+        "base_ids": [
+          "ADR-0001-public-agent-instruction-source",
+          "ADR-0003-configurable-scheduled-synchronization",
+          "ADR-0005-verify-synchronized-package-content"
+        ],
+        "amendment_ids": [
+          "ADR-0012-autosync-live-scheduler-evidence"
+        ],
+        "full_superseded_ids": [
+          "ADR-0002-consumption-boundary-skill-reconciliation"
+        ],
+        "applicable_decision_keys": [],
+        "unresolved_reasons": []
+      }
+    },
+    {
+      "task": {
+        "id": "agent-install",
+        "typed_scope": {
+          "capability_id": [
+            "agent-owned-installation"
+          ],
+          "surface": [
+            "cli"
+          ]
+        }
+      },
+      "expect": {
+        "base_ids": [
+          "ADR-20260720-agent-owned-installation-and-constitution"
+        ],
+        "amendment_ids": [],
+        "full_superseded_ids": [
+          "ADR-20260720-explicit-remote-mcp-enrollment"
+        ],
+        "applicable_decision_keys": [],
+        "unresolved_reasons": []
+      }
+    },
+    {
+      "task": {
+        "id": "delivery-terminal",
+        "typed_scope": {
+          "capability_id": [
+            "delivery-terminal"
+          ],
+          "surface": [
+            "ops"
+          ]
+        }
+      },
+      "expect": {
+        "base_ids": [
+          "ADR-0019-decouple-worker-occupancy-from-delivery-terminal"
+        ],
+        "amendment_ids": [
+          "ADR-0027-repository-native-trunk-and-simple-auto-deploy"
+        ],
+        "full_superseded_ids": [
+          "ADR-0022-auto-when-green-selected-snapshot"
+        ],
+        "applicable_decision_keys": [
+          "auto-deploy-model"
+        ],
+        "unresolved_reasons": []
+      }
+    },
+    {
+      "task": {
+        "id": "adr-lifecycle",
+        "typed_scope": {
+          "capability_id": [
+            "documentation-authority"
+          ],
+          "surface": [
+            "agent"
+          ]
+        }
+      },
+      "expect": {
+        "base_ids": [
+          "ADR-0029-adr-lifecycle-and-retrieval-contract"
+        ],
+        "amendment_ids": [],
+        "full_superseded_ids": [],
+        "applicable_decision_keys": [
+          "adr-lifecycle-and-retrieval"
+        ],
+        "unresolved_reasons": []
+      }
+    },
+    {
+      "task": {
+        "id": "cross-repo-noise",
+        "typed_scope": {
+          "repository": [
+            "Other/org"
+          ],
+          "capability_id": [
+            "auto-deploy"
+          ],
+          "surface": [
+            "ops"
+          ]
+        }
+      },
+      "expect": {
+        "base_ids": [],
+        "amendment_ids": [],
+        "full_superseded_ids": [],
+        "applicable_decision_keys": [],
+        "unresolved_reasons": []
+      }
+    }
+  ]
+}

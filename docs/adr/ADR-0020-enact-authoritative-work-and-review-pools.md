@@ -1,8 +1,21 @@
 ---
+id: ADR-0020-enact-authoritative-work-and-review-pools
 status: accepted
 date: 2026-07-28
-owners:
-  - SylphxAI
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - work-coordination
+  surface:
+    - agent
+    - api
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0020: Enact-authoritative work and review pools

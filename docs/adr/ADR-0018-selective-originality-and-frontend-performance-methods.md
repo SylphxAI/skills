@@ -1,10 +1,21 @@
 ---
+id: ADR-0018-selective-originality-and-frontend-performance-methods
 status: accepted
 date: 2026-07-27
-owners:
-  - SylphxAI
-work: wi_01KYGZ5K7XP7H68RBKTWNEYBW9
-source: https://github.com/MengTo/Skills/tree/21b278c62f49f3ce3d8c8ecbcc84cbcd534f3e49
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - originality-frontend
+  surface:
+    - agent
+    - ui
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0018: Add only independently requested originality and frontend performance methods

@@ -1,8 +1,23 @@
 ---
+id: ADR-20260720-agent-owned-installation-and-constitution
 status: accepted
 date: 2026-07-20
-owners:
-  - SylphxAI
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - agent-owned-installation
+    - remote-integration-enrollment
+  surface:
+    - agent
+    - cli
+amends: []
+supersedes:
+  - ADR-20260720-explicit-remote-mcp-enrollment
+relates: []
 ---
 
 # ADR-20260720: Make installation an agent-owned outcome

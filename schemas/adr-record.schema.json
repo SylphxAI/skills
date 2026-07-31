@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sylphx.com/schemas/adr-record.schema.json",
+  "title": "Normalized ADR record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "status",
+    "decision_owner",
+    "decision_mode",
+    "typed_scope",
+    "amends",
+    "supersedes",
+    "relates"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["proposed", "accepted", "rejected"] },
+    "date": { "type": "string" },
+    "decision_owner": { "type": "string", "minLength": 1 },
+    "contributors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "decision_mode": { "type": "string", "enum": ["complementary", "exclusive"] },
+    "decision_key": { "type": ["string", "null"] },
+    "typed_scope": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(repository|capability_id|component_id|surface|custom\\.[A-Za-z0-9._-]+)$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 },
+        "minItems": 1
+      }
+    },
+    "amends": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "supersedes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "relates": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "decision_mode": { "const": "exclusive" } }
+      },
+      "then": {
+        "required": ["decision_key"],
+        "properties": {
+          "decision_key": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  ]
+}

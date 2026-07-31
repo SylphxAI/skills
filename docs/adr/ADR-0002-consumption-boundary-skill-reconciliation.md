@@ -1,9 +1,21 @@
 ---
-status: superseded
+id: ADR-0002-consumption-boundary-skill-reconciliation
+status: accepted
 date: 2026-07-18
-owners:
-  - SylphxAI
-supersededBy: ADR-0003
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - runtime-sync
+  surface:
+    - agent
+    - cli
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0002: Reconcile Skills with a per-user interval scheduler

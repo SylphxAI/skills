@@ -1,8 +1,21 @@
 ---
+id: ADR-20260727-owned-ci-runners-only
 status: accepted
 date: 2026-07-27
-owners:
-  - SylphxAI
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - ci-runners
+  surface:
+    - ops
+    - agent
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-20260727: Use owned runners for all company CI compute

@@ -1,8 +1,23 @@
 ---
+id: ADR-0001-public-agent-instruction-source
 status: accepted
 date: 2026-07-18
-owners:
-  - SylphxAI
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - static-instruction-packages
+    - runtime-sync
+  surface:
+    - agent
+    - cli
+amends: []
+supersedes: []
+relates:
+  - ADR-0003-configurable-scheduled-synchronization
 ---
 
 # ADR-0001: Public agent instruction source with minimal distribution tooling

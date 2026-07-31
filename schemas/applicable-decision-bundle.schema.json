@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sylphx.com/schemas/applicable-decision-bundle.schema.json",
+  "title": "ApplicableDecisionBundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_scope",
+    "base_sources",
+    "ordered_amendment_sources",
+    "applicable_decision_keys",
+    "supersession_edges",
+    "unresolved_sources",
+    "excluded_sources",
+    "provenance"
+  ],
+  "properties": {
+    "task_scope": { "type": "object" },
+    "base_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "file", "contentDigest"],
+        "properties": {
+          "id": { "type": "string" },
+          "file": { "type": "string" },
+          "contentDigest": { "type": "string" }
+        }
+      }
+    },
+    "ordered_amendment_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "file", "contentDigest"],
+        "properties": {
+          "id": { "type": "string" },
+          "file": { "type": "string" },
+          "contentDigest": { "type": "string" }
+        }
+      }
+    },
+    "applicable_decision_keys": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "supersession_edges": { "type": "array" },
+    "unresolved_sources": { "type": "array" },
+    "excluded_sources": { "type": "array" },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "resolver_id",
+        "resolver_version",
+        "input_digest",
+        "schema_digest",
+        "resolver_artifact_digest"
+      ],
+      "properties": {
+        "source_revision": {},
+        "source_revisions": { "type": "array" },
+        "resolver_id": { "type": "string" },
+        "resolver_version": { "type": "string" },
+        "input_digest": { "type": "string" },
+        "schema_digest": { "type": "string" },
+        "resolver_artifact_digest": { "type": "string" },
+        "corpus_digest": { "type": "string" }
+      }
+    }
+  }
+}

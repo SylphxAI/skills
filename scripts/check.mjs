@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import { catalogBytes, parseFrontmatter, repositoryRoot } from './build-catalog.mjs';
+import { checkAdrLifecycle } from './adr-lifecycle.mjs';
 
 const NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 // This is a narrow lexical security control for publishable package bytes. It
@@ -440,27 +441,8 @@ export function validateActiveProfileCollisions(profiles, errors) {
 
 
 export function validateAdrLocators(errors) {
-  const adrRoot = path.join(repositoryRoot, 'docs', 'adr');
-  if (!existsSync(adrRoot)) {
-    errors.push('docs/adr/: missing');
-    return;
-  }
-  const files = readdirSync(adrRoot)
-    .filter((name) => name.endsWith('.md'))
-    .sort();
-  const shortLocators = new Map();
-  for (const name of files) {
-    const match = name.match(/^(ADR-\d{4})(?:-|$)/);
-    if (!match) continue;
-    const locator = match[1];
-    if (!shortLocators.has(locator)) shortLocators.set(locator, []);
-    shortLocators.get(locator).push(name);
-  }
-  for (const [locator, names] of shortLocators.entries()) {
-    if (names.length > 1) {
-      errors.push(`docs/adr/: locator ${locator} is used by ${names.join(', ')}`);
-    }
-  }
+  const { errors: adrErrors } = checkAdrLifecycle(repositoryRoot);
+  errors.push(...adrErrors);
 }
 
 export function checkRepository() {

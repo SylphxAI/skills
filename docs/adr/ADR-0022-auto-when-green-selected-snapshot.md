@@ -1,7 +1,22 @@
 ---
-status: superseded
+id: ADR-0022-auto-when-green-selected-snapshot
+status: accepted
 date: 2026-07-28
-owners: [SylphxAI]
+decision_owner: SylphxAI
+contributors: []
+decision_mode: exclusive
+decision_key: auto-deploy-model
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - auto-deploy
+  surface:
+    - ops
+    - agent
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0022: Auto-when-green on selected verified snapshot

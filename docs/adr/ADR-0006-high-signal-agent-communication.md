@@ -1,8 +1,20 @@
 ---
+id: ADR-0006-high-signal-agent-communication
 status: accepted
 date: 2026-07-19
-owners:
-  - SylphxAI
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - agent-communication
+  surface:
+    - agent
+amends: []
+supersedes: []
+relates: []
 ---
 
 # ADR-0006: Make agent communication high-signal by default
