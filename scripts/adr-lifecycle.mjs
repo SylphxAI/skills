@@ -297,9 +297,31 @@ function sameLineage(a, b, byId) {
 }
 
 /**
+ * Whether coverer's applicability region is a superset of covered's.
+ * Omitted facet on coverer = unconstrained (covers that facet).
+ * Extra facet only on coverer narrows coverer and does not fully cover.
+ * Shared facet values: coverer values must include every covered value.
+ */
+export function scopesFullyCovers(coverer, covered) {
+  const cover = coverer || {};
+  const target = covered || {};
+  for (const facet of Object.keys(cover)) {
+    if (!(facet in target)) return false;
+  }
+  for (const [facet, values] of Object.entries(target)) {
+    if (!(facet in cover)) continue;
+    const coverValues = new Set(cover[facet]);
+    for (const value of values) {
+      if (!coverValues.has(value)) return false;
+    }
+  }
+  return true;
+}
+
+/**
  * Full supersession hides a target from structural exclusive-owner admission
- * only when an accepted superseder's selector may cover/overlap the target scope.
- * A disjoint-scope superseder must not globally erase the target conflict surface.
+ * only when an accepted superseder's selector fully covers the target scope.
+ * Mere overlap must not globally erase residual collision surface.
  */
 function fullSupersedesTarget(records, target, byId) {
   const targetRecord = typeof target === 'string' ? byId.get(target) : target;
@@ -308,7 +330,7 @@ function fullSupersedesTarget(records, target, byId) {
     if (record.status !== 'accepted') continue;
     for (const edge of record.supersedes) {
       if (edge.id !== targetRecord.id || edge.decision_key) continue;
-      if (scopesMayOverlap(record.typed_scope, targetRecord.typed_scope)) return true;
+      if (scopesFullyCovers(record.typed_scope, targetRecord.typed_scope)) return true;
     }
   }
   return false;

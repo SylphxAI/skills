@@ -450,3 +450,53 @@ test('provenance binds only singular exact source_revision (no plural list field
   assert.equal(b.provenance.source_revision, 'rev-2');
 });
 
+test('partial-scope full superseder must not hide residual exclusive collision', () => {
+  // X covers alpha|beta; S only alpha-supersedes X; Y collides on beta.
+  const x = mkRecord({
+    id: 'ADR-X',
+    decision_mode: 'exclusive',
+    decision_key: 'k',
+    typed_scope: {
+      repository: ['SylphxAI/skills'],
+      capability_id: ['alpha', 'beta'],
+      surface: ['agent'],
+    },
+  });
+  const y = mkRecord({
+    id: 'ADR-Y',
+    decision_mode: 'exclusive',
+    decision_key: 'k',
+    typed_scope: {
+      repository: ['SylphxAI/skills'],
+      capability_id: ['beta'],
+      surface: ['agent'],
+    },
+  });
+  const s = mkRecord({
+    id: 'ADR-S',
+    supersedes: [{ id: 'ADR-X', decision_key: null }],
+    typed_scope: {
+      repository: ['SylphxAI/skills'],
+      capability_id: ['alpha'],
+      surface: ['agent'],
+    },
+  });
+  const { errors } = validateAdrCorpus([x, y, s], []);
+  assert.ok(
+    errors.some((error) => error.includes('exclusive decision_key k')),
+    `expected corpus fail, got: ${errors.join('\n') || '(none)'}`,
+  );
+  const bundle = resolveApplicableDecisionBundle(
+    { typed_scope: { capability_id: ['beta'], surface: ['agent'] } },
+    [x, y, s],
+    { source_revision: 'unit' },
+  );
+  const baseIds = bundle.base_sources.map((ref) => ref.id).sort();
+  assert.deepEqual(baseIds, ['ADR-X', 'ADR-Y']);
+  assert.ok(
+    bundle.unresolved_sources.some((item) => (
+      item.reason === 'exclusive_decision_key_conflict' && item.disposition === 'block'
+    )),
+    JSON.stringify(bundle.unresolved_sources),
+  );
+});
