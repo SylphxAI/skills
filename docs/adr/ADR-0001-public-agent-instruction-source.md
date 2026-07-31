@@ -16,8 +16,8 @@ typed_scope:
     - cli
 amends: []
 supersedes: []
-relates:
-  - ADR-0003-configurable-scheduled-synchronization
+relates: []
+
 ---
 
 # ADR-0001: Public agent instruction source with minimal distribution tooling

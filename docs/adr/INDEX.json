@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "non_authoritative": true,
   "generated_by": "sylphx-skills-adr-lifecycle",
-  "resolver_version": "1.0.0",
+  "resolver_version": "1.1.0",
   "count": 35,
   "records": [
     {
@@ -27,7 +27,7 @@
       },
       "amends": [],
       "supersedes": [],
-      "contentDigest": "534940e7479b45d5a121baa855fdc9d8408674043332fb3753b4bd50df8f3e8e"
+      "contentDigest": "60492300f37bcd9345a2a04cffdcc4ec1d9088ddd4b7fede473dd284ca1bd274"
     },
     {
       "id": "ADR-0002-consumption-boundary-skill-reconciliation",
@@ -74,11 +74,14 @@
       "amends": [],
       "supersedes": [
         {
-          "id": "ADR-0002-consumption-boundary-skill-reconciliation",
-          "decision_key": null
+          "id": "ADR-0002-consumption-boundary-skill-reconciliation"
+        },
+        {
+          "id": "ADR-0001-public-agent-instruction-source",
+          "decision_key": "autosync-schedule-and-hooks"
         }
       ],
-      "contentDigest": "e261a0e668ceaf58ea05eff4df66a7b7681175fd1ba2510747e0188650ef9740"
+      "contentDigest": "ee6a02a18bdaa0cf5784e5dac1b874464d23f64b9190070b39e70ad438c260e4"
     },
     {
       "id": "ADR-0004-subject-first-terminology",
@@ -629,8 +632,7 @@
       ],
       "supersedes": [
         {
-          "id": "ADR-0022-auto-when-green-selected-snapshot",
-          "decision_key": null
+          "id": "ADR-0022-auto-when-green-selected-snapshot"
         }
       ],
       "contentDigest": "ad8d6351e8dcef12c724385a1e9495fa89f45c87c55814c30fe084627a8378ac"
@@ -748,11 +750,14 @@
       "amends": [],
       "supersedes": [
         {
-          "id": "ADR-20260720-explicit-remote-mcp-enrollment",
-          "decision_key": null
+          "id": "ADR-20260720-explicit-remote-mcp-enrollment"
+        },
+        {
+          "id": "ADR-0001-public-agent-instruction-source",
+          "decision_key": "installation-ownership-and-command-first-ui"
         }
       ],
-      "contentDigest": "175586941105f9866e2a3dc7122a97e709b71ba4b91521504c667e9d9cbfc8e7"
+      "contentDigest": "762e3a7c60757f7044560d64b3ac3834e26bc8b6271992147f131643abd36c87"
     },
     {
       "id": "ADR-20260720-explicit-remote-mcp-enrollment",

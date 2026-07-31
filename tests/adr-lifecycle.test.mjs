@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, mkdirSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { fileURLToPath } from 'node:url';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import {
@@ -11,10 +11,37 @@ import {
   matchTypedScope,
   resolveApplicableDecisionBundle,
   repositoryRoot,
-  sha256Hex,
+  resolverArtifactDigest,
+  schemaDigest,
+  validateAdrCorpus,
 } from '../scripts/adr-lifecycle.mjs';
 
 const fixturesPath = path.join(repositoryRoot, 'tests/fixtures/adr/representative-tasks.json');
+
+function mkRecord(overrides) {
+  return {
+    file: `docs/adr/${overrides.id}.md`,
+    filename: `${overrides.id}.md`,
+    filenameId: overrides.id,
+    status: 'accepted',
+    decision_owner: 't',
+    contributors: [],
+    decision_mode: 'complementary',
+    decision_key: null,
+    typed_scope: {
+      repository: ['SylphxAI/skills'],
+      capability_id: ['x'],
+      surface: ['agent'],
+    },
+    amends: [],
+    supersedes: [],
+    relates: [],
+    contentDigest: overrides.id.padEnd(64, '0').slice(0, 64),
+    markdown: '',
+    date: '2026-07-31',
+    ...overrides,
+  };
+}
 
 test('ADR corpus is structurally valid', () => {
   const { errors, records } = checkAdrLifecycle(repositoryRoot);
@@ -38,87 +65,142 @@ test('typed_scope uses AND across facets and OR within facet', () => {
   );
   assert.equal(
     matchTypedScope(selector, {
-      repository: ['SylphxAI/skills'],
-      capability_id: ['runtime-sync'],
-      surface: ['ops'],
-    }).match,
-    false,
-  );
-  // same surface alone is not enough without repository/capability
-  assert.equal(
-    matchTypedScope(selector, {
       repository: ['Other/repo'],
       capability_id: ['auto-deploy'],
       surface: ['ops'],
     }).match,
     false,
   );
-  const missing = matchTypedScope(selector, {
-    capability_id: ['auto-deploy'],
-    surface: ['ops'],
-  });
-  assert.equal(missing.unresolved, true);
+  assert.equal(
+    matchTypedScope(selector, {
+      capability_id: ['auto-deploy'],
+      surface: ['ops'],
+    }).unresolved,
+    true,
+  );
 });
 
-test('sibling amendment lex order does not invent semantic winners', () => {
-  // Construct mini-corpus: base + two exclusive sibling amendments same key
-  const base = {
+test('unregistered custom facet is unresolved even when values match', () => {
+  const hit = matchTypedScope(
+    { repository: ['SylphxAI/skills'], 'custom.unregistered.foo': ['a'] },
+    { repository: ['SylphxAI/skills'], 'custom.unregistered.foo': ['a'] },
+  );
+  assert.equal(hit.match, false);
+  assert.equal(hit.unresolved, true);
+});
+
+test('provenance digests hash resolver and schema artifacts, not bundle body', () => {
+  const { records } = loadAdrRecords(repositoryRoot);
+  const a = resolveApplicableDecisionBundle(
+    { typed_scope: { capability_id: ['auto-deploy'], surface: ['ops'] } },
+    records,
+    { source_revision: 'rev-a' },
+  );
+  const b = resolveApplicableDecisionBundle(
+    { typed_scope: { capability_id: ['runtime-sync'], surface: ['cli'] } },
+    records,
+    { source_revision: 'rev-b' },
+  );
+  assert.equal(a.provenance.resolver_artifact_digest, resolverArtifactDigest(repositoryRoot));
+  assert.equal(b.provenance.resolver_artifact_digest, a.provenance.resolver_artifact_digest);
+  assert.equal(a.provenance.schema_digest, schemaDigest(repositoryRoot));
+  assert.equal(b.provenance.schema_digest, a.provenance.schema_digest);
+  assert.notEqual(a.provenance.input_digest, b.provenance.input_digest);
+});
+
+test('resolve without source_revision is blocked', () => {
+  const { records } = loadAdrRecords(repositoryRoot);
+  const bundle = resolveApplicableDecisionBundle(
+    { typed_scope: { capability_id: ['auto-deploy'], surface: ['ops'] } },
+    records,
+    {},
+  );
+  assert.equal(bundle.base_sources.length, 0);
+  assert.ok(bundle.unresolved_sources.some((item) => (
+    item.reason === 'missing_source_revision' && item.disposition === 'block'
+  )));
+});
+
+test('base plus exclusive amendment chain is one owner lineage', () => {
+  const base = mkRecord({
     id: 'ADR-BASE',
-    file: 'docs/adr/ADR-BASE.md',
-    filename: 'ADR-BASE.md',
-    status: 'accepted',
-    decision_owner: 't',
     decision_mode: 'exclusive',
     decision_key: 'k',
-    typed_scope: { repository: ['SylphxAI/skills'], capability_id: ['x'], surface: ['agent'] },
-    amends: [],
-    supersedes: [],
-    relates: [],
-    contentDigest: 'b',
-  };
-  const a = {
-    ...base,
-    id: 'ADR-A',
-    file: 'docs/adr/ADR-A.md',
+  });
+  const amendment = mkRecord({
+    id: 'ADR-AMEND',
+    decision_mode: 'exclusive',
     decision_key: 'k',
     amends: [{ id: 'ADR-BASE', decision_key: null }],
-    contentDigest: 'a',
-  };
-  const c = {
-    ...base,
-    id: 'ADR-C',
-    file: 'docs/adr/ADR-C.md',
-    decision_key: 'k',
-    amends: [{ id: 'ADR-BASE', decision_key: null }],
-    contentDigest: 'c',
-  };
+  });
+  const { errors } = validateAdrCorpus([base, amendment], []);
+  assert.equal(errors.length, 0, errors.join('\n'));
   const bundle = resolveApplicableDecisionBundle(
     { typed_scope: { capability_id: ['x'], surface: ['agent'] } },
-    [base, a, c],
+    [base, amendment],
     { source_revision: 'unit' },
   );
-  assert.ok(bundle.unresolved_sources.some((item) => item.reason === 'sibling_amendment_conflict_requires_explicit_chain'
-    || item.reason === 'exclusive_decision_key_conflict'));
+  assert.deepEqual(bundle.base_sources.map((s) => s.id), ['ADR-BASE']);
+  assert.deepEqual(bundle.ordered_amendment_sources.map((s) => s.id), ['ADR-AMEND']);
+  assert.equal(
+    bundle.unresolved_sources.some((item) => item.reason === 'exclusive_decision_key_conflict'),
+    false,
+  );
+});
+
+test('exclusive same key with disjoint scopes is not a global collision', () => {
+  const left = mkRecord({
+    id: 'ADR-LEFT',
+    decision_mode: 'exclusive',
+    decision_key: 'same',
+    typed_scope: {
+      repository: ['SylphxAI/skills'],
+      capability_id: ['alpha'],
+      surface: ['agent'],
+    },
+  });
+  const right = mkRecord({
+    id: 'ADR-RIGHT',
+    decision_mode: 'exclusive',
+    decision_key: 'same',
+    typed_scope: {
+      repository: ['SylphxAI/skills'],
+      capability_id: ['beta'],
+      surface: ['agent'],
+    },
+  });
+  const { errors } = validateAdrCorpus([left, right], []);
+  assert.equal(errors.length, 0, errors.join('\n'));
+});
+
+test('sibling exclusive amendments without chain fail corpus admission', () => {
+  const base = mkRecord({ id: 'ADR-BASE' });
+  const a = mkRecord({
+    id: 'ADR-A',
+    decision_mode: 'exclusive',
+    decision_key: 'k',
+    amends: [{ id: 'ADR-BASE', decision_key: null }],
+  });
+  const b = mkRecord({
+    id: 'ADR-B',
+    decision_mode: 'exclusive',
+    decision_key: 'k',
+    amends: [{ id: 'ADR-BASE', decision_key: null }],
+  });
+  const { errors } = validateAdrCorpus([base, a, b], []);
+  assert.ok(errors.some((error) => error.includes('sibling amendment conflict')), errors.join('\n'));
 });
 
 test('supersession does not resurrect earlier targets', () => {
-  const mk = (id, supersedes = [], scopeCap = 'x') => ({
-    id,
-    file: `docs/adr/${id}.md`,
-    filename: `${id}.md`,
-    status: 'accepted',
-    decision_owner: 't',
-    decision_mode: 'complementary',
-    decision_key: null,
-    typed_scope: { repository: ['SylphxAI/skills'], capability_id: [scopeCap], surface: ['agent'] },
-    amends: [],
-    supersedes: supersedes.map((target) => ({ id: target, decision_key: null })),
-    relates: [],
-    contentDigest: id,
+  const a = mkRecord({ id: 'ADR-A' });
+  const b = mkRecord({
+    id: 'ADR-B',
+    supersedes: [{ id: 'ADR-A', decision_key: null }],
   });
-  const a = mk('ADR-A');
-  const b = mk('ADR-B', ['ADR-A']);
-  const c = mk('ADR-C', ['ADR-B']);
+  const c = mkRecord({
+    id: 'ADR-C',
+    supersedes: [{ id: 'ADR-B', decision_key: null }],
+  });
   const bundle = resolveApplicableDecisionBundle(
     { typed_scope: { capability_id: ['x'], surface: ['agent'] } },
     [a, b, c],
@@ -129,6 +211,65 @@ test('supersession does not resurrect earlier targets', () => {
   assert.ok(bundle.excluded_sources.some((e) => e.id === 'ADR-B' && e.reason === 'full_superseded'));
 });
 
+test('unknown frontmatter fields fail closed at load', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'adr-unknown-'));
+  mkdirSync(path.join(dir, 'docs', 'adr'), { recursive: true });
+  mkdirSync(path.join(dir, 'schemas'), { recursive: true });
+  mkdirSync(path.join(dir, 'scripts'), { recursive: true });
+  writeFileSync(
+    path.join(dir, 'docs/adr/ADR-FAKE-unknown-field.md'),
+    `---
+id: ADR-FAKE-unknown-field
+status: accepted
+date: 2026-07-31
+decision_owner: SylphxAI
+contributors: []
+decision_mode: complementary
+unexpected_semantic_field: true
+typed_scope:
+  repository:
+    - SylphxAI/skills
+  capability_id:
+    - x
+  surface:
+    - agent
+amends: []
+supersedes: []
+relates: []
+---
+
+# Fake
+`,
+  );
+  // copy schemas + resolver for validator paths
+  writeFileSync(
+    path.join(dir, 'schemas/adr-record.schema.json'),
+    readFileSync(path.join(repositoryRoot, 'schemas/adr-record.schema.json')),
+  );
+  writeFileSync(
+    path.join(dir, 'schemas/applicable-decision-bundle.schema.json'),
+    readFileSync(path.join(repositoryRoot, 'schemas/applicable-decision-bundle.schema.json')),
+  );
+  writeFileSync(
+    path.join(dir, 'scripts/adr-lifecycle.mjs'),
+    readFileSync(path.join(repositoryRoot, 'scripts/adr-lifecycle.mjs')),
+  );
+  const { errors } = loadAdrRecords(dir);
+  assert.ok(errors.some((error) => error.includes('unexpected_semantic_field')), errors.join('\n'));
+});
+
+test('unresolved sources carry block|warn|scoped-block disposition', () => {
+  const { records } = loadAdrRecords(repositoryRoot);
+  const bundle = resolveApplicableDecisionBundle(
+    { typed_scope: { capability_id: ['auto-deploy'], surface: ['ops'] } },
+    records,
+    { source_revision: 'disp' },
+  );
+  for (const item of bundle.unresolved_sources) {
+    assert.ok(['block', 'warn', 'scoped-block'].includes(item.disposition), JSON.stringify(item));
+  }
+});
+
 test('representative task fixtures match exact source ids and reason codes', () => {
   const { records } = loadAdrRecords(repositoryRoot);
   const doc = JSON.parse(readFileSync(fixturesPath, 'utf8'));
@@ -136,11 +277,7 @@ test('representative task fixtures match exact source ids and reason codes', () 
     const bundle = resolveApplicableDecisionBundle(fixture.task, records, {
       source_revision: 'fixture-corpus',
     });
-    assert.deepEqual(
-      bundle.base_sources.map((s) => s.id),
-      fixture.expect.base_ids,
-      fixture.task.id,
-    );
+    assert.deepEqual(bundle.base_sources.map((s) => s.id), fixture.expect.base_ids, fixture.task.id);
     assert.deepEqual(
       bundle.ordered_amendment_sources.map((s) => s.id),
       fixture.expect.amendment_ids,
@@ -187,7 +324,9 @@ test('bundle and record schemas validate sample output', () => {
     decision_key: sample.decision_key,
     typed_scope: sample.typed_scope,
     amends: sample.amends.map((x) => x.id),
-    supersedes: sample.supersedes.map((x) => x.id),
+    supersedes: sample.supersedes.map((x) => (
+      x.decision_key ? { id: x.id, decision_key: x.decision_key } : x.id
+    )),
     relates: sample.relates.map((x) => x.id),
   }), true, JSON.stringify(validateRecord.errors));
   const bundle = resolveApplicableDecisionBundle(
@@ -196,4 +335,20 @@ test('bundle and record schemas validate sample output', () => {
     { source_revision: 'schema-check' },
   );
   assert.equal(validateBundle(bundle), true, JSON.stringify(validateBundle.errors));
+});
+
+test('ADR-0001 body partial supersessions are machine relations on superseders', () => {
+  const { records } = loadAdrRecords(repositoryRoot);
+  const byId = new Map(records.map((record) => [record.id, record]));
+  const three = byId.get('ADR-0003-configurable-scheduled-synchronization');
+  const install = byId.get('ADR-20260720-agent-owned-installation-and-constitution');
+  assert.ok(three.supersedes.some((edge) => (
+    edge.id === 'ADR-0001-public-agent-instruction-source' && edge.decision_key === 'autosync-schedule-and-hooks'
+  )));
+  assert.ok(install.supersedes.some((edge) => (
+    edge.id === 'ADR-0001-public-agent-instruction-source'
+    && edge.decision_key === 'installation-ownership-and-command-first-ui'
+  )));
+  const one = byId.get('ADR-0001-public-agent-instruction-source');
+  assert.deepEqual(one.relates, []);
 });

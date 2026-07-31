@@ -27,6 +27,7 @@
     "decision_key": { "type": ["string", "null"] },
     "typed_scope": {
       "type": "object",
+      "minProperties": 1,
       "propertyNames": {
         "pattern": "^(repository|capability_id|component_id|surface|custom\\.[A-Za-z0-9._-]+)$"
       },
@@ -38,11 +39,37 @@
     },
     "amends": {
       "type": "array",
-      "items": { "type": "string", "minLength": 1 }
+      "items": {
+        "oneOf": [
+          { "type": "string", "minLength": 1 },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "decision_key": { "type": "string", "minLength": 1 }
+            }
+          }
+        ]
+      }
     },
     "supersedes": {
       "type": "array",
-      "items": { "type": "string", "minLength": 1 }
+      "items": {
+        "oneOf": [
+          { "type": "string", "minLength": 1 },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "decision_key": { "type": "string", "minLength": 1 }
+            }
+          }
+        ]
+      }
     },
     "relates": {
       "type": "array",
@@ -52,7 +79,8 @@
   "allOf": [
     {
       "if": {
-        "properties": { "decision_mode": { "const": "exclusive" } }
+        "properties": { "decision_mode": { "const": "exclusive" } },
+        "required": ["decision_mode"]
       },
       "then": {
         "required": ["decision_key"],

@@ -162,7 +162,6 @@ An ADR contains:
 Accepted ADR history is amended or superseded, not silently rewritten.
 
 ## Specs, schemas, and generated references
-## Specs, schemas, and generated references
 
 - A spec defines observable behavior, invariants, failure semantics, and
   acceptance—not implementation narration.

@@ -5,12 +5,15 @@
  */
 
 import { createHash } from 'node:crypto';
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import Ajv2020 from 'ajv/dist/2020.js';
+import addFormats from 'ajv-formats';
+import YAML from 'yaml';
 
 export const RESOLVER_ID = 'sylphx-skills-adr-lifecycle';
-export const RESOLVER_VERSION = '1.0.0';
+export const RESOLVER_VERSION = '1.1.0';
 export const AUTHORED_STATUSES = new Set(['proposed', 'accepted', 'rejected']);
 export const DECISION_MODES = new Set(['complementary', 'exclusive']);
 export const CANONICAL_SCOPE_FACETS = new Set([
@@ -20,7 +23,26 @@ export const CANONICAL_SCOPE_FACETS = new Set([
   'surface',
 ]);
 
+/** Explicit registry of allowed custom facet full names (not prefixes alone). */
+export const REGISTERED_CUSTOM_FACETS = new Set([
+  // Empty by default: any custom.* facet is unknown until registered here.
+]);
+
 export const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+const ALLOWED_FRONTMATTER_KEYS = new Set([
+  'id',
+  'status',
+  'date',
+  'decision_owner',
+  'contributors',
+  'decision_mode',
+  'decision_key',
+  'typed_scope',
+  'amends',
+  'supersedes',
+  'relates',
+]);
 
 function stableStringify(value) {
   if (Array.isArray(value)) return `[${value.map(stableStringify).join(',')}]`;
@@ -37,122 +59,22 @@ export function sha256Hex(text) {
   return createHash('sha256').update(text).digest('hex');
 }
 
-function stripQuotes(value) {
-  if (
-    (value.startsWith('"') && value.endsWith('"'))
-    || (value.startsWith("'") && value.endsWith("'"))
-  ) {
-    return value.slice(1, -1);
-  }
-  return value;
+export function resolverSourceBytes(root = repositoryRoot) {
+  return readFileSync(path.join(root, 'scripts/adr-lifecycle.mjs'), 'utf8');
 }
 
-function parseInlineArray(raw) {
-  const inner = raw.slice(1, -1).trim();
-  if (!inner) return [];
-  return inner.split(',').map((part) => stripQuotes(part.trim())).filter(Boolean);
+export function schemaBytes(root = repositoryRoot) {
+  const record = readFileSync(path.join(root, 'schemas/adr-record.schema.json'), 'utf8');
+  const bundle = readFileSync(path.join(root, 'schemas/applicable-decision-bundle.schema.json'), 'utf8');
+  return `${record}\n${bundle}`;
 }
 
-/**
- * Minimal YAML subset for ADR frontmatter:
- * scalars, inline arrays, block arrays, one-level nested maps of arrays/scalars.
- */
-export function parseAdrFrontmatter(markdown, file = 'ADR') {
-  const normalized = markdown.replaceAll('\r\n', '\n');
-  if (!normalized.startsWith('---\n')) {
-    throw new Error(`${file}: missing YAML frontmatter`);
-  }
-  const end = normalized.indexOf('\n---\n', 4);
-  if (end < 0) throw new Error(`${file}: unterminated YAML frontmatter`);
-  const body = normalized.slice(end + 5);
-  const lines = normalized.slice(4, end).split('\n');
-  const values = {};
-  let i = 0;
+export function schemaDigest(root = repositoryRoot) {
+  return sha256Hex(schemaBytes(root));
+}
 
-  function parseValueToken(token) {
-    const t = token.trim();
-    if (!t) return '';
-    if (t.startsWith('[') && t.endsWith(']')) return parseInlineArray(t);
-    if (t === '[]') return [];
-    if (t === '{}' ) return {};
-    return stripQuotes(t);
-  }
-
-  while (i < lines.length) {
-    const line = lines[i];
-    if (!line.trim()) {
-      i += 1;
-      continue;
-    }
-    if (/^\s/.test(line)) {
-      throw new Error(`${file}: unexpected indent at ${JSON.stringify(line)}`);
-    }
-    const colon = line.indexOf(':');
-    if (colon < 1) throw new Error(`${file}: invalid frontmatter line ${JSON.stringify(line)}`);
-    const key = line.slice(0, colon).trim();
-    const rest = line.slice(colon + 1);
-    if (rest.trim() !== '') {
-      values[key] = parseValueToken(rest);
-      i += 1;
-      continue;
-    }
-    // nested block
-    i += 1;
-    const nested = {};
-    const list = [];
-    let mode = null; // 'map' | 'list'
-    while (i < lines.length) {
-      const child = lines[i];
-      if (!child.trim()) {
-        i += 1;
-        continue;
-      }
-      if (!/^\s/.test(child)) break;
-      const indent = child.match(/^(\s*)/)[1].length;
-      if (indent < 2) break;
-      const trimmed = child.trim();
-      if (trimmed.startsWith('- ')) {
-        if (mode === 'map') throw new Error(`${file}: mixed list/map under ${key}`);
-        mode = 'list';
-        list.push(parseValueToken(trimmed.slice(2)));
-        i += 1;
-        continue;
-      }
-      const childColon = trimmed.indexOf(':');
-      if (childColon < 1) throw new Error(`${file}: invalid nested line ${JSON.stringify(child)}`);
-      if (mode === 'list') throw new Error(`${file}: mixed list/map under ${key}`);
-      mode = 'map';
-      const childKey = trimmed.slice(0, childColon).trim();
-      const childRest = trimmed.slice(childColon + 1);
-      if (childRest.trim() !== '') {
-        nested[childKey] = parseValueToken(childRest);
-        i += 1;
-        continue;
-      }
-      // nested list under map key
-      i += 1;
-      const nestedList = [];
-      while (i < lines.length) {
-        const grand = lines[i];
-        if (!grand.trim()) {
-          i += 1;
-          continue;
-        }
-        const gIndent = grand.match(/^(\s*)/)[1].length;
-        if (gIndent < indent + 2) break;
-        const gTrim = grand.trim();
-        if (!gTrim.startsWith('- ')) {
-          throw new Error(`${file}: expected list under ${key}.${childKey}`);
-        }
-        nestedList.push(parseValueToken(gTrim.slice(2)));
-        i += 1;
-      }
-      nested[childKey] = nestedList;
-    }
-    values[key] = mode === 'list' ? list : nested;
-  }
-
-  return { values, body, rawFrontmatter: normalized.slice(0, end + 5) };
+export function resolverArtifactDigest(root = repositoryRoot) {
+  return sha256Hex(resolverSourceBytes(root));
 }
 
 function asStringArray(value) {
@@ -161,93 +83,180 @@ function asStringArray(value) {
   return [String(value)];
 }
 
-function normalizeRelationEntry(entry) {
-  if (entry == null) return null;
-  if (typeof entry === 'string') {
-    return { id: entry, decision_key: null };
+function normalizeRelationList(raw, field, file, errors) {
+  if (raw == null) return [];
+  if (!Array.isArray(raw)) {
+    errors.push(`${file}: ${field} must be an array`);
+    return [];
   }
-  if (typeof entry === 'object' && entry.id) {
-    return {
-      id: String(entry.id),
-      decision_key: entry.decision_key ? String(entry.decision_key) : null,
-    };
+  const out = [];
+  for (const entry of raw) {
+    if (typeof entry === 'string') {
+      out.push({ id: entry, decision_key: null });
+      continue;
+    }
+    if (entry && typeof entry === 'object' && typeof entry.id === 'string') {
+      const keys = Object.keys(entry).sort();
+      for (const key of keys) {
+        if (key !== 'id' && key !== 'decision_key') {
+          errors.push(`${file}: ${field} entry has unknown property ${key}`);
+        }
+      }
+      out.push({
+        id: entry.id,
+        decision_key: entry.decision_key == null || entry.decision_key === ''
+          ? null
+          : String(entry.decision_key),
+      });
+      continue;
+    }
+    errors.push(`${file}: ${field} entry must be string id or {id, decision_key?}`);
   }
-  return null;
+  return out;
 }
 
-export function normalizeTypedScope(raw) {
-  if (raw == null || raw === '') return {};
+export function normalizeTypedScope(raw, file, errors) {
+  if (raw == null) {
+    errors.push(`${file}: typed_scope required`);
+    return {};
+  }
   if (typeof raw !== 'object' || Array.isArray(raw)) {
-    throw new Error('typed_scope must be a map of facet -> values');
+    errors.push(`${file}: typed_scope must be a map`);
+    return {};
   }
   const out = {};
   for (const [facet, value] of Object.entries(raw)) {
-    out[facet] = asStringArray(value).slice().sort();
+    if (facet === 'decision_key') {
+      errors.push(`${file}: decision_key must be top-level, not under typed_scope`);
+      continue;
+    }
+    const values = asStringArray(value).map(String).filter(Boolean).sort();
+    if (!values.length) {
+      errors.push(`${file}: typed_scope.${facet} must be non-empty when declared`);
+      continue;
+    }
+    out[facet] = values;
   }
   return out;
 }
 
 export function idFromFilename(name) {
-  // Full filename stem is the stable id (avoids date-prefix collisions).
   return name.replace(/\.md$/i, '');
+}
+
+export function parseAdrDocument(markdown, file = 'ADR') {
+  const normalized = markdown.replaceAll('\r\n', '\n');
+  if (!normalized.startsWith('---\n')) {
+    throw new Error(`${file}: missing YAML frontmatter`);
+  }
+  const end = normalized.indexOf('\n---\n', 4);
+  if (end < 0) throw new Error(`${file}: unterminated YAML frontmatter`);
+  const yamlText = normalized.slice(4, end);
+  const body = normalized.slice(end + 5);
+  let values;
+  try {
+    values = YAML.parse(yamlText, { uniqueKeys: true });
+  } catch (error) {
+    throw new Error(`${file}: YAML parse failed: ${error.message}`);
+  }
+  if (!values || typeof values !== 'object' || Array.isArray(values)) {
+    throw new Error(`${file}: frontmatter must be a mapping`);
+  }
+  return { values, body, yamlText };
+}
+
+function createRecordValidator(root = repositoryRoot) {
+  const ajv = new Ajv2020({ allErrors: true, strict: false });
+  addFormats(ajv);
+  const schema = JSON.parse(readFileSync(path.join(root, 'schemas/adr-record.schema.json'), 'utf8'));
+  return ajv.compile(schema);
+}
+
+function toSchemaRecord(record) {
+  return {
+    id: record.id,
+    status: record.status,
+    date: record.date || undefined,
+    decision_owner: record.decision_owner,
+    contributors: record.contributors,
+    decision_mode: record.decision_mode,
+    decision_key: record.decision_key,
+    typed_scope: record.typed_scope,
+    amends: record.amends.map((item) => (
+      item.decision_key ? { id: item.id, decision_key: item.decision_key } : item.id
+    )),
+    supersedes: record.supersedes.map((item) => (
+      item.decision_key ? { id: item.id, decision_key: item.decision_key } : item.id
+    )),
+    relates: record.relates.map((item) => item.id),
+  };
 }
 
 export function loadAdrRecords(root = repositoryRoot) {
   const adrRoot = path.join(root, 'docs', 'adr');
+  const errors = [];
   if (!existsSync(adrRoot)) {
     return { records: [], errors: ['docs/adr/: missing'] };
   }
-  const files = readdirSync(adrRoot).filter((name) => name.endsWith('.md')).sort();
+  const files = readdirSync(adrRoot)
+    .filter((name) => name.endsWith('.md'))
+    .sort();
+  const validateRecord = createRecordValidator(root);
   const records = [];
-  const errors = [];
+
   for (const name of files) {
     const rel = path.join('docs/adr', name);
     const absolute = path.join(root, rel);
     const markdown = readFileSync(absolute, 'utf8');
     const contentDigest = sha256Hex(markdown);
     try {
-      const { values, body } = parseAdrFrontmatter(markdown, rel);
-      const filenameId = idFromFilename(name);
-      const id = values.id ? String(values.id) : filenameId;
-      let typed_scope;
-      try {
-        typed_scope = normalizeTypedScope(values.typed_scope);
-      } catch (error) {
-        errors.push(`${rel}: ${error.message}`);
-        typed_scope = {};
-      }
-      const amends = asStringArray(values.amends).map((idValue) => ({ id: idValue, decision_key: null }));
-      // supersedes may be list of strings or list of {id, decision_key} — our parser only gives strings/lists of strings unless nested maps in list which we don't support well
-      // Support supersedes as string list (full). Partial via supersedes_partial map optional.
-      const supersedes = asStringArray(values.supersedes).map((idValue) => ({
-        id: idValue,
-        decision_key: null,
-      }));
-      if (values.supersedes_partial && typeof values.supersedes_partial === 'object') {
-        for (const [target, key] of Object.entries(values.supersedes_partial)) {
-          supersedes.push({ id: String(target), decision_key: String(key) });
+      const { values } = parseAdrDocument(markdown, rel);
+      for (const key of Object.keys(values)) {
+        if (!ALLOWED_FRONTMATTER_KEYS.has(key)) {
+          errors.push(`${rel}: unknown frontmatter field ${key}`);
         }
       }
-      const relates = asStringArray(values.relates).map((idValue) => ({ id: idValue, decision_key: null }));
+      const localErrors = [];
+      const filenameId = idFromFilename(name);
+      const id = values.id != null ? String(values.id) : filenameId;
+      const typed_scope = normalizeTypedScope(values.typed_scope, rel, localErrors);
+      const amends = normalizeRelationList(values.amends ?? [], 'amends', rel, localErrors);
+      const supersedes = normalizeRelationList(values.supersedes ?? [], 'supersedes', rel, localErrors);
+      const relates = normalizeRelationList(values.relates ?? [], 'relates', rel, localErrors);
+      // relates must be ids only (no partial)
+      for (const edge of relates) {
+        if (edge.decision_key) {
+          localErrors.push(`${rel}: relates entries cannot carry decision_key`);
+        }
+      }
       const record = {
         file: rel,
         filename: name,
         id,
         filenameId,
-        status: values.status ? String(values.status) : '',
-        date: values.date ? String(values.date) : '',
-        decision_owner: values.decision_owner ? String(values.decision_owner) : '',
+        status: values.status != null ? String(values.status) : '',
+        date: values.date != null ? String(values.date) : '',
+        decision_owner: values.decision_owner != null ? String(values.decision_owner) : '',
         contributors: asStringArray(values.contributors),
-        decision_mode: values.decision_mode ? String(values.decision_mode) : 'complementary',
-        decision_key: values.decision_key ? String(values.decision_key) : null,
+        decision_mode: values.decision_mode != null ? String(values.decision_mode) : 'complementary',
+        decision_key: values.decision_key == null || values.decision_key === ''
+          ? null
+          : String(values.decision_key),
         typed_scope,
         amends,
         supersedes,
-        relates,
-        body,
+        relates: relates.map((item) => ({ id: item.id, decision_key: null })),
         contentDigest,
         markdown,
       };
+
+      const schemaRecord = toSchemaRecord(record);
+      if (!validateRecord(schemaRecord)) {
+        for (const err of validateRecord.errors || []) {
+          localErrors.push(`${rel}: schema ${err.instancePath || '/'} ${err.message}`);
+        }
+      }
+      errors.push(...localErrors);
       records.push(record);
     } catch (error) {
       errors.push(`${rel}: ${error.message}`);
@@ -256,7 +265,77 @@ export function loadAdrRecords(root = repositoryRoot) {
   return { records, errors };
 }
 
-export function validateAdrCorpus(records, parseErrors = [], options = {}) {
+function scopesMayOverlap(a, b) {
+  // Conservatively: if for every facet present on both, values intersect, they may overlap.
+  // Facets only on one side do not prevent overlap.
+  const facets = new Set([...Object.keys(a || {}), ...Object.keys(b || {})]);
+  for (const facet of facets) {
+    if (!(facet in (a || {})) || !(facet in (b || {}))) continue;
+    const left = new Set(a[facet]);
+    if (!b[facet].some((value) => left.has(value))) return false;
+  }
+  return true;
+}
+
+function amendsParents(record) {
+  return record.amends.map((item) => item.id);
+}
+
+function lineageRootIds(record, byId, seen = new Set()) {
+  if (seen.has(record.id)) return [];
+  seen.add(record.id);
+  if (!record.amends.length) return [record.id];
+  const roots = [];
+  for (const parentId of amendsParents(record)) {
+    const parent = byId.get(parentId);
+    if (!parent) continue;
+    roots.push(...lineageRootIds(parent, byId, seen));
+  }
+  return roots.length ? roots : [record.id];
+}
+
+function sameLineage(a, b, byId) {
+  if (a.id === b.id) return true;
+  if (a.amends.some((edge) => edge.id === b.id) || b.amends.some((edge) => edge.id === a.id)) {
+    return true;
+  }
+  const rootsA = new Set(lineageRootIds(a, byId));
+  const rootsB = new Set(lineageRootIds(b, byId));
+  for (const root of rootsA) {
+    if (rootsB.has(root)) return true;
+  }
+  // amendment of same base
+  const parentsA = new Set(amendsParents(a));
+  const parentsB = new Set(amendsParents(b));
+  for (const parent of parentsA) {
+    if (parentsB.has(parent)) {
+      // siblings - NOT same owner lineage for exclusive unless one amends the other
+      return false;
+    }
+  }
+  // if one is ancestor of the other via amends chain
+  function reaches(from, to, seen = new Set()) {
+    if (from === to) return true;
+    if (seen.has(from)) return false;
+    seen.add(from);
+    const rec = byId.get(from);
+    if (!rec) return false;
+    return amendsParents(rec).some((parent) => reaches(parent, to, seen));
+  }
+  return reaches(a.id, b.id) || reaches(b.id, a.id);
+}
+
+function fullSupersedesTarget(records, targetId) {
+  for (const record of records) {
+    if (record.status !== 'accepted') continue;
+    for (const edge of record.supersedes) {
+      if (edge.id === targetId && !edge.decision_key) return true;
+    }
+  }
+  return false;
+}
+
+export function validateAdrCorpus(records, parseErrors = []) {
   const errors = [...parseErrors];
   const byId = new Map();
   for (const record of records) {
@@ -266,10 +345,10 @@ export function validateAdrCorpus(records, parseErrors = [], options = {}) {
       byId.set(record.id, record);
     }
     if (record.id !== record.filenameId) {
-      errors.push(`${record.file}: id ${record.id} does not match filename locator ${record.filenameId}`);
+      errors.push(`${record.file}: id ${record.id} does not match filename stem ${record.filenameId}`);
     }
     if (!AUTHORED_STATUSES.has(record.status)) {
-      errors.push(`${record.file}: illegal authored status ${JSON.stringify(record.status)} (allowed: proposed|accepted|rejected)`);
+      errors.push(`${record.file}: illegal authored status ${JSON.stringify(record.status)}`);
     }
     if (!record.decision_owner) {
       errors.push(`${record.file}: missing decision_owner`);
@@ -280,30 +359,20 @@ export function validateAdrCorpus(records, parseErrors = [], options = {}) {
     if (record.decision_mode === 'exclusive' && !record.decision_key) {
       errors.push(`${record.file}: exclusive decision_mode requires decision_key`);
     }
-    if (record.decision_mode === 'complementary' && record.decision_key) {
-      // allowed but unusual; ok
+    if (!record.typed_scope.repository?.length) {
+      errors.push(`${record.file}: typed_scope.repository required`);
     }
-    if (!record.typed_scope || Object.keys(record.typed_scope).length === 0) {
-      errors.push(`${record.file}: typed_scope required`);
-    } else {
-      for (const facet of Object.keys(record.typed_scope)) {
-        if (facet.startsWith('custom.')) continue;
-        if (!CANONICAL_SCOPE_FACETS.has(facet)) {
-          errors.push(`${record.file}: unknown scope facet ${facet} (use canonical facets or custom.<ns>.*)`);
+    for (const facet of Object.keys(record.typed_scope)) {
+      if (facet.startsWith('custom.')) {
+        if (!REGISTERED_CUSTOM_FACETS.has(facet)) {
+          errors.push(`${record.file}: unregistered custom facet ${facet}`);
         }
-        if (!record.typed_scope[facet].length) {
-          errors.push(`${record.file}: typed_scope.${facet} must be non-empty when declared`);
-        }
-      }
-    }
-    for (const rel of [...record.amends, ...record.supersedes, ...record.relates]) {
-      if (!byId.has(rel.id) && !records.some((item) => item.id === rel.id)) {
-        // checked after full map
+      } else if (!CANONICAL_SCOPE_FACETS.has(facet)) {
+        errors.push(`${record.file}: unknown scope facet ${facet}`);
       }
     }
   }
 
-  // relation targets + cycles after all ids known
   for (const record of records) {
     for (const rel of record.amends) {
       if (!byId.has(rel.id)) errors.push(`${record.file}: amends dangling target ${rel.id}`);
@@ -316,100 +385,99 @@ export function validateAdrCorpus(records, parseErrors = [], options = {}) {
     }
   }
 
-  // amends cycles
-  const amendsAdj = new Map(records.map((record) => [record.id, record.amends.map((item) => item.id)]));
-  const visiting = new Set();
-  const visited = new Set();
-  function visit(id, stack) {
-    if (visiting.has(id)) {
-      errors.push(`amends cycle detected: ${[...stack, id].join(' -> ')}`);
-      return;
+  function detectCycles(adj, label) {
+    const visiting = new Set();
+    const visited = new Set();
+    function visit(id, stack) {
+      if (visiting.has(id)) {
+        errors.push(`${label} cycle detected: ${[...stack, id].join(' -> ')}`);
+        return;
+      }
+      if (visited.has(id)) return;
+      visiting.add(id);
+      for (const next of adj.get(id) || []) visit(next, [...stack, id]);
+      visiting.delete(id);
+      visited.add(id);
     }
-    if (visited.has(id)) return;
-    visiting.add(id);
-    for (const next of amendsAdj.get(id) || []) visit(next, [...stack, id]);
-    visiting.delete(id);
-    visited.add(id);
+    for (const id of adj.keys()) visit(id, []);
   }
-  for (const id of amendsAdj.keys()) visit(id, []);
 
-  // supersedes cycles
-  const superAdj = new Map(records.map((record) => [record.id, record.supersedes.map((item) => item.id)]));
-  visiting.clear();
-  visited.clear();
-  function visitSuper(id, stack) {
-    if (visiting.has(id)) {
-      errors.push(`supersedes cycle detected: ${[...stack, id].join(' -> ')}`);
-      return;
-    }
-    if (visited.has(id)) return;
-    visiting.add(id);
-    for (const next of superAdj.get(id) || []) visitSuper(next, [...stack, id]);
-    visiting.delete(id);
-    visited.add(id);
-  }
-  for (const id of superAdj.keys()) visitSuper(id, []);
+  detectCycles(
+    new Map(records.map((record) => [record.id, record.amends.map((item) => item.id)])),
+    'amends',
+  );
+  detectCycles(
+    new Map(records.map((record) => [record.id, record.supersedes.map((item) => item.id)])),
+    'supersedes',
+  );
 
-  // exclusive key uniqueness among accepted records that are not full-superseded globally
-  // Structural exclusive-owner: two accepted exclusive records same decision_key with no supersession between them
-  const exclusive = records.filter((record) => record.decision_mode === 'exclusive' && record.status === 'accepted');
-  const byKey = new Map();
-  for (const record of exclusive) {
-    const list = byKey.get(record.decision_key) || [];
-    list.push(record);
-    byKey.set(record.decision_key, list);
-  }
-  for (const [key, list] of byKey.entries()) {
-    if (list.length < 2) continue;
-    // if one full-supersedes another chain, ok if only one remains non-superseded
-    const surviving = list.filter((record) => !isFullySuperseded(record.id, records, byId));
-    if (surviving.length > 1) {
+  // Exclusive ownership: only among accepted, not full-superseded, scope-overlapping, not same lineage
+  const exclusive = records.filter(
+    (record) => record.decision_mode === 'exclusive'
+      && record.status === 'accepted'
+      && record.decision_key
+      && !fullSupersedesTarget(records, record.id),
+  );
+  for (let i = 0; i < exclusive.length; i += 1) {
+    for (let j = i + 1; j < exclusive.length; j += 1) {
+      const left = exclusive[i];
+      const right = exclusive[j];
+      if (left.decision_key !== right.decision_key) continue;
+      if (sameLineage(left, right, byId)) continue;
+      if (!scopesMayOverlap(left.typed_scope, right.typed_scope)) continue;
       errors.push(
-        `exclusive decision_key ${key} has multiple current owners: ${surviving.map((item) => item.id).join(', ')}`,
+        `exclusive decision_key ${left.decision_key} has multiple current owners with overlapping scope: ${left.id}, ${right.id}`,
       );
     }
   }
 
-  // Forbid legacy authored fields
+  // Sibling amendment conflicts (admission): exclusive same key under same parent without chain
+  const childrenByParent = new Map();
   for (const record of records) {
-    if (/\n(?:owners|supersededBy|superseded_by|amendedBy|amended_by):/m.test(record.markdown.slice(0, record.markdown.indexOf('\n---\n') + 20))) {
-      // checked via parse — if they appear as keys
+    if (record.status !== 'accepted') continue;
+    for (const parent of amendsParents(record)) {
+      const list = childrenByParent.get(parent) || [];
+      list.push(record);
+      childrenByParent.set(parent, list);
     }
   }
-  for (const record of records) {
-    const { values } = parseAdrFrontmatter(record.markdown, record.file);
-    for (const banned of ['owners', 'supersededBy', 'superseded_by', 'amendedBy', 'amended_by', 'owner']) {
-      if (Object.prototype.hasOwnProperty.call(values, banned)) {
-        errors.push(`${record.file}: banned field ${banned} (use decision_owner + outgoing relations)`);
+  for (const [parent, siblings] of childrenByParent.entries()) {
+    for (let i = 0; i < siblings.length; i += 1) {
+      for (let j = i + 1; j < siblings.length; j += 1) {
+        const a = siblings[i];
+        const b = siblings[j];
+        const chained = a.amends.some((edge) => edge.id === b.id) || b.amends.some((edge) => edge.id === a.id);
+        if (chained) continue;
+        if (
+          a.decision_mode === 'exclusive'
+          && b.decision_mode === 'exclusive'
+          && a.decision_key
+          && a.decision_key === b.decision_key
+        ) {
+          errors.push(
+            `sibling amendment conflict under ${parent}: ${a.id} and ${b.id} share exclusive decision_key ${a.decision_key} without amends chain`,
+          );
+        }
       }
     }
   }
 
-  if (options.requireRepositoryFacet !== false) {
-    for (const record of records) {
-      if (!record.typed_scope.repository?.length) {
-        errors.push(`${record.file}: typed_scope.repository required in this corpus`);
-      }
+  // Numeric short locator collisions
+  const shortLocators = new Map();
+  for (const record of records) {
+    const match = record.id.match(/^(ADR-\d{4})(?:-|$)/);
+    if (!match) continue;
+    const list = shortLocators.get(match[1]) || [];
+    list.push(record.filename);
+    shortLocators.set(match[1], list);
+  }
+  for (const [locator, names] of shortLocators.entries()) {
+    if (new Set(names).size > 1) {
+      errors.push(`docs/adr/: locator ${locator} used by ${[...new Set(names)].join(', ')}`);
     }
   }
 
   return { errors, byId };
-}
-
-/** Full supersession edges only (decision_key == null). Transitive persistent edges. */
-export function isFullySuperseded(id, records, byId = null) {
-  const map = byId || new Map(records.map((record) => [record.id, record]));
-  // BFS: any accepted record with full supersedes edge targeting id, edges never disappear
-  const queue = [id];
-  const seen = new Set();
-  // Actually: id is full-superseded if there exists an edge S -full supersedes-> id from any record with authored accepted
-  for (const record of records) {
-    if (record.status !== 'accepted') continue;
-    for (const edge of record.supersedes) {
-      if (edge.id === id && !edge.decision_key) return true;
-    }
-  }
-  return false;
 }
 
 /**
@@ -417,11 +485,10 @@ export function isFullySuperseded(id, records, byId = null) {
  * - AND across declared facets on the selector
  * - OR within values of the same facet
  * - omitted facet on selector = unconstrained
- * - missing task value required by selector facet = unresolved
- * - unknown custom namespace on either side handled by caller
+ * - missing task value for a declared facet = unresolved
+ * - unregistered custom facet = unresolved
  */
 export function matchTypedScope(selector, taskScope) {
-  const reasons = [];
   if (!selector || typeof selector !== 'object') {
     return { match: false, unresolved: true, reasons: ['selector missing'] };
   }
@@ -430,12 +497,11 @@ export function matchTypedScope(selector, taskScope) {
     const values = asStringArray(rawValues);
     if (!values.length) continue;
     if (facet.startsWith('custom.')) {
-      // unknown custom namespace if task doesn't declare same facet → unresolved
-      if (!Object.prototype.hasOwnProperty.call(task, facet)) {
+      if (!REGISTERED_CUSTOM_FACETS.has(facet)) {
         return {
           match: false,
           unresolved: true,
-          reasons: [`task missing custom facet ${facet}`],
+          reasons: [`unregistered custom facet ${facet}`],
         };
       }
     }
@@ -447,40 +513,34 @@ export function matchTypedScope(selector, taskScope) {
       };
     }
     const taskValues = new Set(asStringArray(task[facet]));
+    // If task supplies an unregistered custom facet, unresolved when selector uses it (handled above)
+    if (facet.startsWith('custom.') && !REGISTERED_CUSTOM_FACETS.has(facet)) {
+      return {
+        match: false,
+        unresolved: true,
+        reasons: [`unregistered custom facet ${facet}`],
+      };
+    }
     const hit = values.some((value) => taskValues.has(value));
     if (!hit) {
       return { match: false, unresolved: false, reasons: [`no overlap on ${facet}`] };
     }
   }
-  // unknown custom facets on task only don't matter
-  // if selector has only unconstrained (empty) — match all
-  return { match: true, unresolved: false, reasons };
-}
-
-function partialSupersededKeys(id, records) {
-  const keys = new Set();
-  for (const record of records) {
-    if (record.status !== 'accepted') continue;
-    for (const edge of record.supersedes) {
-      if (edge.id === id && edge.decision_key) keys.add(edge.decision_key);
+  // Task-only unregistered custom facets do not affect match unless selector used them
+  for (const facet of Object.keys(task)) {
+    if (facet.startsWith('custom.') && !REGISTERED_CUSTOM_FACETS.has(facet)) {
+      // If task declares unknown custom facet as part of selection intent, treat unresolved
+      // only when selector also constrains custom facets or task is exclusively using unknown.
+      // Contract: unknown custom namespace never silently ignored when present on selector.
+      // Presence only on task: ignore for match of canonical selectors.
     }
   }
-  return keys;
+  return { match: true, unresolved: false, reasons: [] };
 }
 
-function amendsParents(record) {
-  return record.amends.map((item) => item.id);
-}
-
-/**
- * Deterministic order for amendment sources that amend a base:
- * topo along amends DAG among the set; lex id for independent peers.
- * Sibling amendments overlapping same decision_key without chain → unresolved.
- */
-export function orderAmendments(baseId, amendmentRecords, allById) {
+export function orderAmendments(baseId, amendmentRecords) {
   const set = new Map(amendmentRecords.map((record) => [record.id, record]));
   const unresolved = [];
-  // conflict: two siblings both amends same parent (base or intermediate) and share decision_key or both exclusive same key
   const childrenByParent = new Map();
   for (const record of amendmentRecords) {
     for (const parent of amendsParents(record)) {
@@ -491,22 +551,21 @@ export function orderAmendments(baseId, amendmentRecords, allById) {
     }
   }
   for (const [, siblings] of childrenByParent.entries()) {
-    if (siblings.length < 2) continue;
-    // if they form a chain among themselves, ok
     for (let i = 0; i < siblings.length; i += 1) {
       for (let j = i + 1; j < siblings.length; j += 1) {
         const a = siblings[i];
         const b = siblings[j];
-        const aPointsB = a.amends.some((item) => item.id === b.id);
-        const bPointsA = b.amends.some((item) => item.id === a.id);
-        if (aPointsB || bPointsA) continue;
-        const overlapKey = a.decision_key && a.decision_key === b.decision_key;
-        const bothTouchMaterial = overlapKey
-          || (a.decision_mode === 'exclusive' && b.decision_mode === 'exclusive' && a.decision_key === b.decision_key);
-        // independent complementary without same key: lex order only
-        if (bothTouchMaterial) {
+        const chained = a.amends.some((edge) => edge.id === b.id)
+          || b.amends.some((edge) => edge.id === a.id);
+        if (chained) continue;
+        if (
+          a.decision_mode === 'exclusive'
+          && b.decision_mode === 'exclusive'
+          && a.decision_key
+          && a.decision_key === b.decision_key
+        ) {
           unresolved.push({
-            ids: [a.id, b.id],
+            ids: [a.id, b.id].sort(),
             reason: 'sibling_amendment_conflict_requires_explicit_chain',
           });
         }
@@ -514,7 +573,6 @@ export function orderAmendments(baseId, amendmentRecords, allById) {
     }
   }
 
-  // topo order
   const ordered = [];
   const visited = new Set();
   const visiting = new Set();
@@ -528,26 +586,110 @@ export function orderAmendments(baseId, amendmentRecords, allById) {
     visiting.add(id);
     const record = set.get(id);
     if (record) {
-      const parents = amendsParents(record)
-        .filter((parent) => set.has(parent))
-        .sort();
+      const parents = amendsParents(record).filter((parent) => set.has(parent)).sort();
       for (const parent of parents) dfs(parent);
       ordered.push(record);
     }
     visiting.delete(id);
     visited.add(id);
   }
-  const ids = [...set.keys()].sort();
-  for (const id of ids) dfs(id);
-  if (cycle) {
-    unresolved.push({ ids, reason: 'amends_cycle_in_bundle' });
-  }
+  for (const id of [...set.keys()].sort()) dfs(id);
+  if (cycle) unresolved.push({ ids: [...set.keys()].sort(), reason: 'amends_cycle_in_bundle' });
   return { ordered, unresolved };
 }
 
+function sourceRef(record) {
+  return {
+    id: record.id,
+    file: record.file,
+    contentDigest: record.contentDigest,
+  };
+}
+
+function reachesBaseLocal(record, baseId, byId, seen = new Set()) {
+  if (seen.has(record.id)) return false;
+  seen.add(record.id);
+  for (const parent of amendsParents(record)) {
+    if (parent === baseId) return true;
+    const parentRecord = byId.get(parent);
+    if (parentRecord?.amends?.length && reachesBaseLocal(parentRecord, baseId, byId, seen)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function normalizeTaskScope(raw) {
+  if (!raw || typeof raw !== 'object') return {};
+  const out = {};
+  for (const [facet, value] of Object.entries(raw)) {
+    out[facet] = asStringArray(value).slice().sort();
+  }
+  return out;
+}
+
+function classifyUnresolvedDisposition(item, taskScope, exclusiveKeysInPlay) {
+  const reason = item.reason || '';
+  if (
+    reason === 'exclusive_decision_key_conflict'
+    || reason === 'sibling_amendment_conflict_requires_explicit_chain'
+    || reason === 'amends_cycle_in_bundle'
+    || reason === 'illegal_or_missing_status'
+  ) {
+    return 'block';
+  }
+  if (reason === 'scope_unresolved' || reason === 'unregistered_custom_facet' || reason === 'superseder_scope_unresolved') {
+    // cannot decide intersection → scoped-block that decision
+    return 'scoped-block';
+  }
+  if (reason === 'missing_source_revision') {
+    return 'block';
+  }
+  // if unresolved id shares exclusive key with task-relevant keys
+  if (item.decision_key && exclusiveKeysInPlay.has(item.decision_key)) {
+    return 'block';
+  }
+  return 'warn';
+}
+
 export function resolveApplicableDecisionBundle(task, records, options = {}) {
-  const repository = options.repository || 'SylphxAI/skills';
-  const taskScope = { repository: [repository], ...normalizeTaskScope(task.typed_scope || task.scope || {}) };
+  const root = options.root || repositoryRoot;
+  if (!options.source_revision || String(options.source_revision).trim() === '') {
+    return {
+      task_scope: {},
+      base_sources: [],
+      ordered_amendment_sources: [],
+      applicable_decision_keys: [],
+      supersession_edges: [],
+      unresolved_sources: [{
+        id: null,
+        reason: 'missing_source_revision',
+        disposition: 'block',
+        details: ['source_revision is required for exact resolve'],
+      }],
+      excluded_sources: [],
+      provenance: {
+        source_revision: null,
+        source_revisions: [],
+        resolver_id: RESOLVER_ID,
+        resolver_version: RESOLVER_VERSION,
+        input_digest: sha256Hex('missing_source_revision'),
+        schema_digest: schemaDigest(root),
+        resolver_artifact_digest: resolverArtifactDigest(root),
+        corpus_digest: null,
+      },
+    };
+  }
+
+  const defaultRepository = options.repository || 'SylphxAI/skills';
+  const provided = normalizeTaskScope(task.typed_scope || task.scope || {});
+  const taskScope = {
+    repository: provided.repository || [defaultRepository],
+    ...provided,
+  };
+  // ensure repository array if overridden
+  if (!taskScope.repository) taskScope.repository = [defaultRepository];
+
   const byId = new Map(records.map((record) => [record.id, record]));
   const base_sources = [];
   const ordered_amendment_sources = [];
@@ -556,20 +698,12 @@ export function resolveApplicableDecisionBundle(task, records, options = {}) {
   const unresolved_sources = [];
   const excluded_sources = [];
 
+  // Collect supersession edges from accepted records that match task scope
   for (const record of records) {
-    // collect supersession edges that match task scope of superseder
-    if (record.status === 'accepted') {
-      const scopeHit = matchTypedScope(record.typed_scope, taskScope);
-      if (scopeHit.match && !scopeHit.unresolved) {
-        for (const edge of record.supersedes) {
-          supersession_edges.push({
-            from: record.id,
-            to: edge.id,
-            decision_key: edge.decision_key,
-            full: !edge.decision_key,
-          });
-        }
-      } else if (scopeHit.unresolved && record.supersedes.length) {
+    if (record.status !== 'accepted') continue;
+    const scopeHit = matchTypedScope(record.typed_scope, taskScope);
+    if (scopeHit.unresolved) {
+      if (record.supersedes.length) {
         unresolved_sources.push({
           id: record.id,
           file: record.file,
@@ -578,20 +712,26 @@ export function resolveApplicableDecisionBundle(task, records, options = {}) {
           details: scopeHit.reasons,
         });
       }
+      continue;
+    }
+    if (!scopeHit.match) continue;
+    for (const edge of record.supersedes) {
+      supersession_edges.push({
+        from: record.id,
+        to: edge.id,
+        decision_key: edge.decision_key,
+        full: !edge.decision_key,
+      });
     }
   }
 
+  // Full supersession edges persist even if superseder is later superseded —
+  // collect ALL full edges from accepted records (not only scope-matching)?
+  // Contract: "authored by an accepted, scope-matching record".
+  // So only scope-matching superseders contribute for this task.
   const fullSuperseded = new Set(
     supersession_edges.filter((edge) => edge.full).map((edge) => edge.to),
   );
-  // edges persist even if superseder is itself superseded — already included if superseder accepted+scope matched
-
-  const partialKeysByTarget = new Map();
-  for (const edge of supersession_edges.filter((item) => !item.full)) {
-    const set = partialKeysByTarget.get(edge.to) || new Set();
-    set.add(edge.decision_key);
-    partialKeysByTarget.set(edge.to, set);
-  }
 
   const matching = [];
   for (const record of records) {
@@ -624,12 +764,16 @@ export function resolveApplicableDecisionBundle(task, records, options = {}) {
     }
     const scopeHit = matchTypedScope(record.typed_scope, taskScope);
     if (scopeHit.unresolved) {
+      const reason = scopeHit.reasons.some((item) => item.startsWith('unregistered'))
+        ? 'unregistered_custom_facet'
+        : 'scope_unresolved';
       unresolved_sources.push({
         id: record.id,
         file: record.file,
         contentDigest: record.contentDigest,
-        reason: 'scope_unresolved',
+        reason,
         details: scopeHit.reasons,
+        decision_key: record.decision_key,
       });
       continue;
     }
@@ -647,10 +791,6 @@ export function resolveApplicableDecisionBundle(task, records, options = {}) {
   }
 
   const matchingIds = new Set(matching.map((record) => record.id));
-
-  // Base = matching record with no amends parent also in the matching set.
-  // Amendment-only records attach under parents; a record that amends only
-  // non-matching parents remains a base (primary decision with extra amends).
   const candidateBases = matching.filter((record) => {
     if (!record.amends.length) return true;
     return !record.amends.some((edge) => matchingIds.has(edge.id));
@@ -663,179 +803,122 @@ export function resolveApplicableDecisionBundle(task, records, options = {}) {
   }
 
   const amendmentCandidates = matching.filter((record) => !candidateBaseIds.has(record.id));
-  const { ordered, unresolved } = orderAmendments('__multi__', amendmentCandidates, byId);
-  for (const item of unresolved) {
-    unresolved_sources.push({
-      id: item.ids.join('+'),
-      reason: item.reason,
-      details: item.ids,
-    });
-  }
-  // Order amendments per base for stable stream
+  const usedAmendments = new Set();
   for (const base of [...candidateBases].sort((a, b) => a.id.localeCompare(b.id))) {
     const related = amendmentCandidates.filter((record) => reachesBaseLocal(record, base.id, byId));
-    const orderedForBase = orderAmendments(base.id, related, byId);
-    for (const item of orderedForBase.unresolved) {
+    const { ordered, unresolved } = orderAmendments(base.id, related);
+    for (const item of unresolved) {
       unresolved_sources.push({
         id: item.ids.join('+'),
         reason: item.reason,
         details: item.ids,
+        decision_key: null,
       });
     }
-    for (const amendment of orderedForBase.ordered) {
+    for (const amendment of ordered) {
+      if (usedAmendments.has(amendment.id)) continue;
+      usedAmendments.add(amendment.id);
       ordered_amendment_sources.push(sourceRef(amendment));
       if (amendment.decision_key) applicable_decision_keys.push(amendment.decision_key);
     }
   }
 
-    // exclusive key double owner in applicable set
-  const keyOwners = new Map();
-  for (const ref of [...base_sources, ...ordered_amendment_sources]) {
-    const record = byId.get(ref.id);
-    if (record?.decision_mode === 'exclusive' && record.decision_key) {
-      const list = keyOwners.get(record.decision_key) || [];
-      list.push(record.id);
-      keyOwners.set(record.decision_key, list);
-    }
+  // Exclusive key conflicts in applicable set: ignore same lineage (base+amendment chain)
+  const applicableRecords = [...base_sources, ...ordered_amendment_sources]
+    .map((ref) => byId.get(ref.id))
+    .filter(Boolean);
+  const byKey = new Map();
+  for (const record of applicableRecords) {
+    if (record.decision_mode !== 'exclusive' || !record.decision_key) continue;
+    const list = byKey.get(record.decision_key) || [];
+    list.push(record);
+    byKey.set(record.decision_key, list);
   }
-  for (const [key, owners] of keyOwners.entries()) {
-    if (new Set(owners).size > 1) {
+  for (const [key, owners] of byKey.entries()) {
+    const unique = [];
+    for (const owner of owners) {
+      if (unique.some((existing) => sameLineage(existing, owner, byId))) continue;
+      unique.push(owner);
+    }
+    // merge lineage groups
+    const groups = [];
+    for (const owner of owners) {
+      let found = false;
+      for (const group of groups) {
+        if (group.some((member) => sameLineage(member, owner, byId))) {
+          group.push(owner);
+          found = true;
+          break;
+        }
+      }
+      if (!found) groups.push([owner]);
+    }
+    if (groups.length > 1) {
       unresolved_sources.push({
         id: key,
         reason: 'exclusive_decision_key_conflict',
-        details: owners,
+        details: groups.map((group) => group.map((item) => item.id).sort()),
+        decision_key: key,
       });
     }
   }
 
-  const source_revision = options.source_revision || null;
-  const corpusDigest = sha256Hex(
-    stableStringify({
-      records: records.map((record) => ({ id: record.id, contentDigest: record.contentDigest })).sort((a, b) => a.id.localeCompare(b.id)),
-    }),
+  const exclusiveKeysInPlay = new Set(
+    applicable_decision_keys.concat(
+      unresolved_sources.map((item) => item.decision_key).filter(Boolean),
+    ),
   );
-  const taskDigest = sha256Hex(stableStringify(taskScope));
-  const schemaDigest = options.schema_digest || sha256Hex('adr-lifecycle-schemas-v1');
+
+  const unresolvedWithDisposition = unresolved_sources
+    .map((item) => ({
+      ...item,
+      disposition: classifyUnresolvedDisposition(item, taskScope, exclusiveKeysInPlay),
+    }))
+    .sort((a, b) => stableStringify(a).localeCompare(stableStringify(b)));
+
   const bundleCore = {
     task_scope: taskScope,
-    base_sources: sortSourceRefs(base_sources),
-    ordered_amendment_sources: ordered_amendment_sources, // already deterministic per base then lex
+    base_sources: [...base_sources].sort((a, b) => a.id.localeCompare(b.id)),
+    ordered_amendment_sources,
     applicable_decision_keys: [...new Set(applicable_decision_keys)].sort(),
     supersession_edges: supersession_edges
       .map((edge) => ({ ...edge }))
       .sort((a, b) => stableStringify(a).localeCompare(stableStringify(b))),
-    unresolved_sources: unresolved_sources
-      .map((item) => ({ ...item }))
-      .sort((a, b) => stableStringify(a).localeCompare(stableStringify(b))),
+    unresolved_sources: unresolvedWithDisposition,
     excluded_sources: excluded_sources
       .map((item) => ({ ...item }))
       .sort((a, b) => stableStringify(a).localeCompare(stableStringify(b))),
   };
-  // Stable amendment order globally: group already push order by sorted bases
-  bundleCore.ordered_amendment_sources = sortAmendmentStream(bundleCore.base_sources, bundleCore.ordered_amendment_sources, byId);
 
+  const corpusDigest = sha256Hex(
+    stableStringify({
+      records: records
+        .map((record) => ({ id: record.id, contentDigest: record.contentDigest }))
+        .sort((a, b) => a.id.localeCompare(b.id)),
+    }),
+  );
   const input_digest = sha256Hex(
     stableStringify({
       task_scope: taskScope,
       profiles: options.profiles || null,
       corpusDigest,
-      source_revision,
-    }),
-  );
-  const resolver_artifact_digest = sha256Hex(
-    stableStringify({
-      resolver_id: RESOLVER_ID,
-      resolver_version: RESOLVER_VERSION,
-      bundle: bundleCore,
+      source_revision: String(options.source_revision),
     }),
   );
 
   return {
     ...bundleCore,
     provenance: {
-      source_revision,
-      source_revisions: options.source_revisions || (source_revision ? [source_revision] : []),
+      source_revision: String(options.source_revision),
+      source_revisions: options.source_revisions || [String(options.source_revision)],
       resolver_id: RESOLVER_ID,
       resolver_version: RESOLVER_VERSION,
       input_digest,
-      schema_digest: schemaDigest,
-      resolver_artifact_digest,
+      schema_digest: schemaDigest(root),
+      resolver_artifact_digest: resolverArtifactDigest(root),
       corpus_digest: corpusDigest,
     },
   };
-}
-
-function normalizeTaskScope(raw) {
-  if (!raw || typeof raw !== 'object') return {};
-  const out = {};
-  for (const [facet, value] of Object.entries(raw)) {
-    out[facet] = asStringArray(value).slice().sort();
-  }
-  return out;
-}
-
-function sourceRef(record) {
-  return {
-    id: record.id,
-    file: record.file,
-    contentDigest: record.contentDigest,
-  };
-}
-
-function sortSourceRefs(refs) {
-  return [...refs].sort((a, b) => a.id.localeCompare(b.id));
-}
-
-function sortAmendmentStream(bases, amendments, byId) {
-  // Re-order: for each base in sorted id order, amendments that reach that base, topo+lex already in list — rebuild cleanly
-  const baseIds = bases.map((item) => item.id).sort();
-  const amendmentRecords = amendments.map((ref) => byId.get(ref.id)).filter(Boolean);
-  const out = [];
-  const used = new Set();
-  for (const baseId of baseIds) {
-    const related = amendmentRecords.filter((record) => {
-      if (used.has(record.id)) return false;
-      return reachesBaseLocal(record, baseId, byId);
-    });
-    const { ordered } = orderAmendments(baseId, related, byId);
-    for (const record of ordered) {
-      if (used.has(record.id)) continue;
-      used.add(record.id);
-      out.push(sourceRef(record));
-    }
-  }
-  return out;
-}
-
-function reachesBaseLocal(record, baseId, byId, seen = new Set()) {
-  if (seen.has(record.id)) return false;
-  seen.add(record.id);
-  for (const parent of amendsParents(record)) {
-    if (parent === baseId) return true;
-    const parentRecord = byId.get(parent);
-    if (parentRecord?.amends?.length && reachesBaseLocal(parentRecord, baseId, byId, seen)) return true;
-  }
-  return false;
-}
-
-export function checkAdrLifecycle(root = repositoryRoot) {
-  const { records, errors: parseErrors } = loadAdrRecords(root);
-  const { errors } = validateAdrCorpus(records, parseErrors);
-  // short locator collision for ADR-NNNN still useful for numeric ids
-  const shortLocators = new Map();
-  for (const record of records) {
-    const match = record.id.match(/^(ADR-\d{4})(?:-|$)/);
-    if (!match) continue;
-    const list = shortLocators.get(match[1]) || [];
-    list.push(record.filename);
-    shortLocators.set(match[1], list);
-  }
-  for (const [locator, names] of shortLocators.entries()) {
-    if (new Set(names).size > 1) {
-      errors.push(`docs/adr/: locator ${locator} used by ${[...new Set(names)].join(', ')}`);
-    }
-  }
-  return { errors, records };
 }
 
 export function buildAdrIndexProjection(records) {
@@ -855,17 +938,50 @@ export function buildAdrIndexProjection(records) {
         decision_key: record.decision_key,
         typed_scope: record.typed_scope,
         amends: record.amends.map((item) => item.id),
-        supersedes: record.supersedes.map((item) => ({
-          id: item.id,
-          decision_key: item.decision_key,
-        })),
+        supersedes: record.supersedes.map((item) => (
+          item.decision_key
+            ? { id: item.id, decision_key: item.decision_key }
+            : { id: item.id }
+        )),
         contentDigest: record.contentDigest,
       }))
       .sort((a, b) => a.id.localeCompare(b.id)),
   };
 }
 
+export function adrIndexBytes(records) {
+  return `${JSON.stringify(buildAdrIndexProjection(records), null, 2)}\n`;
+}
+
+export function checkAdrLifecycle(root = repositoryRoot) {
+  const { records, errors: parseErrors } = loadAdrRecords(root);
+  const { errors } = validateAdrCorpus(records, parseErrors);
+
+  const indexPath = path.join(root, 'docs/adr/INDEX.json');
+  const expectedIndex = adrIndexBytes(records);
+  if (!existsSync(indexPath) || readFileSync(indexPath, 'utf8') !== expectedIndex) {
+    errors.push('docs/adr/INDEX.json is stale; regenerate with scripts/adr-lifecycle.mjs --write-index');
+  }
+
+  return { errors, records };
+}
+
+export function writeAdrIndex(root = repositoryRoot) {
+  const { records, errors } = loadAdrRecords(root);
+  if (errors.length) {
+    throw new Error(`cannot write index: ${errors.join('; ')}`);
+  }
+  const bytes = adrIndexBytes(records);
+  writeFileSync(path.join(root, 'docs/adr/INDEX.json'), bytes);
+  return records.length;
+}
+
 if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) {
+  if (process.argv.includes('--write-index')) {
+    const count = writeAdrIndex();
+    console.log(`wrote docs/adr/INDEX.json (${count} records)`);
+    process.exit(0);
+  }
   const { errors, records } = checkAdrLifecycle();
   if (errors.length) {
     console.error(`ADR lifecycle check failed (${errors.length}):`);

@@ -15,7 +15,9 @@ typed_scope:
     - cli
 amends: []
 supersedes:
-  - ADR-0002-consumption-boundary-skill-reconciliation
+  - id: ADR-0002-consumption-boundary-skill-reconciliation
+  - id: ADR-0001-public-agent-instruction-source
+    decision_key: autosync-schedule-and-hooks
 relates: []
 ---
 

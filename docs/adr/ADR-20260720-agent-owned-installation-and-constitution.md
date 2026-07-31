@@ -16,7 +16,9 @@ typed_scope:
     - cli
 amends: []
 supersedes:
-  - ADR-20260720-explicit-remote-mcp-enrollment
+  - id: ADR-20260720-explicit-remote-mcp-enrollment
+  - id: ADR-0001-public-agent-instruction-source
+    decision_key: installation-ownership-and-command-first-ui
 relates: []
 ---
 
