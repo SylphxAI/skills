@@ -6,6 +6,12 @@ Use this standard when agents discover, propose, claim, execute, review, and
 recover work continuously. The loop is a bounded operating system, not an
 infinite prompt or a permanent Advisor/Executor hierarchy.
 
+This is the continuous-work form of loop engineering: after one bounded
+objective reaches its terminal, the operating loop may qualify and select the
+next Work Item. The bounded research-execute-audit loop that closes one already
+accepted objective belongs to `autonomous-execution-standard`; do not create a
+second queue, scheduler, or continuation authority inside that task.
+
 ## Authority
 
 - Enact owns Work, claims, Runs, checkpoints, review findings, subscriptions,

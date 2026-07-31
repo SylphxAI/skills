@@ -892,6 +892,31 @@
     "tags": ["ambiguous", "objective", "replanning"]
   },
   {
+    "id": "objective-continuity-full-scope-loop-engineering",
+    "kind": "compound",
+    "prompt": "Run a bounded loop engineering cycle for this original repository objective: preserve the complete acceptance denominator, research only decision-changing uncertainty, execute every required outcome, and have an independent formal reviewer audit the exact candidate against the original task until it is complete or genuinely blocked.",
+    "expectedSkills": ["autonomous-execution-standard", "convergent-review"],
+    "artifacts": [{"artifact": "Review Closure Record", "owner": "convergent-review"}],
+    "tags": ["loop-engineering", "full-scope", "independent-review", "compound"]
+  },
+  {
+    "id": "objective-continuity-loop-engineering-cantonese",
+    "kind": "positive",
+    "prompt": "用 loop engineering 將呢一個已定義任務由原始目標推到真正終點：唔好做到一個 phase 就停，方向被證據推翻先重新決策，驗證失敗就修正，完整通過先收工。",
+    "expectedSkills": ["autonomous-execution-standard"],
+    "artifacts": [],
+    "tags": ["multilingual", "loop-engineering", "objective-closure"]
+  },
+  {
+    "id": "objective-continuity-neighbour-continuous-loop-engineering",
+    "kind": "near-neighbour",
+    "prompt": "Design a continuous loop engineering worker that keeps discovering, deduplicating and claiming the next Work Item after each current item is delivered, with durable re-entry after external events.",
+    "expectedSkills": ["self-feeding-agent-loop-standard"],
+    "artifacts": [],
+    "nearNeighbourOf": "autonomous-execution-standard",
+    "tags": ["continuous-loop", "new-work", "boundary"]
+  },
+  {
     "id": "objective-continuity-delivery-compound",
     "kind": "compound",
     "prompt": "Implement the repository change completely, make the exact source candidate self-contained and validated, then continue through the repository's declared landing or release terminal without treating a commit or open pull request as done.",
