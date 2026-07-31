@@ -1,0 +1,4 @@
+interface:
+  display_name: "Continuous Product Quality"
+  short_description: "Operate evidence-driven product quality loops"
+  default_prompt: "Use $continuous-product-quality to design or audit an autonomous product-quality loop that discovers, qualifies, delivers, and verifies improvements."
