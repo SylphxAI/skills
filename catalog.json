@@ -91,7 +91,7 @@
       "name": "ci-admission-standard",
       "description": "CI admission tiers, semantic-oracle and gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including slow CI, string or regex source scanners, PR-body classifiers, custom lints, meta-checks, and architecture tests. Do not use for debugging one unrelated test failure.",
       "path": "skills/ci-admission-standard/SKILL.md",
-      "packageDigest": "sha256:8f0d657fbabf9b5dcf2b916782fed68f8f1428451ddc39dec0eeac3fc2ccb90f"
+      "packageDigest": "sha256:5214607d27ebbf2a456a8385807d8fa84299bea7ea24cf3f32da802bdea8658a"
     },
     {
       "name": "ci-runner-capacity-standard",

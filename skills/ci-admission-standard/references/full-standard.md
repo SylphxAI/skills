@@ -139,30 +139,37 @@ build twice merely to make two dashboards green.
 
 ### Superseding obsolete work
 
-A newer default-branch SHA includes its ancestors. CI may cancel obsolete runs
-and keep the running/latest useful SHA when that preserves the required
-evidence. Never cancel away non-reproducible migration, release, provenance,
-security, or audit evidence.
+A pull-request update may cancel its own stale feedback. A high-frequency
+default branch needs a progress guarantee: keep one active exact-SHA run to
+completion and retain at most the newest pending successor. New pushes may
+replace that pending successor, but must not cancel the active run merely
+because a newer SHA exists. Otherwise a continuous commit stream can starve
+every deployable verdict.
 
-Cancellation is a CI concurrency optimization, not a selected-snapshot product
-or watermark system.
+Cancellation is a provider-native CI concurrency optimization, not a
+selected-snapshot product or watermark system. Never cancel away
+non-reproducible migration, release, provenance, security, or audit evidence.
+Never use a forge CLI, API, Platform controller, or private polling loop to
+tip-chase or cancel active default-branch CI.
 
-Use provider-native concurrency keyed by the change stream that can supersede
-it—normally pull-request identity for PR updates and branch/ref for
-default-branch pushes. Grouping by the unique commit SHA cannot cancel older
-runs because every update creates a new group. Do not add a custom
-runner-canceller when the forge's native concurrency semantics are sufficient.
+Use provider-native concurrency keyed by the change stream—normally
+pull-request identity for PR updates and branch/ref for default-branch pushes.
+Grouping by the unique commit SHA cannot bound the branch backlog because every
+update creates a new group. Do not add a custom runner-canceller when the
+forge's native concurrency semantics are sufficient.
 
-For GitHub Actions, the ordinary shape is:
+For GitHub Actions, the ordinary high-throughput shape is:
 
 ```yaml
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 ```
 
-Use a different key only when the repository has a named non-supersedable
-evidence stream.
+GitHub keeps at most one running and one pending run for a concurrency group;
+with default-branch cancellation disabled, a newer push replaces only the
+pending run. Use a different key only when the repository has a named
+non-supersedable evidence stream.
 
 ## Gate portfolio discipline
 
@@ -336,7 +343,8 @@ quality checks.
 - CI does not build and discard a production artifact that Platform rebuilds;
   production-build amplification is observable and normally equals one.
 - Superseded PR/default-branch runs use provider-native change-stream
-  concurrency rather than unique-SHA grouping or a custom cancellation plane.
+  concurrency rather than unique-SHA grouping or a custom cancellation plane;
+  default-branch activity has a no-starvation progress guarantee.
 - No ordinary CI path depends on Platform Candidate, selected-snapshot, or
   verification-watermark services.
 

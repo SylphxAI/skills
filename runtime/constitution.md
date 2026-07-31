@@ -126,6 +126,11 @@ Skills only when their domain is touched.
   builds, graphs, public surfaces, or behavior instead. Lexical scanning blocks
   only when the bytes themselves are the governed security or publication
   surface, or as an expiring migration fence with a retirement predicate.
+- Preserve verification progress under continuous commits. A pull-request
+  update may supersede its own stale feedback, but never use a forge CLI, API,
+  controller, or private polling loop to cancel an active default-branch CI run
+  merely because a newer revision exists. Let repository-native concurrency
+  keep one active run to completion and at most the newest pending successor.
 - Scope runtime mutation explicitly. Detecting another installed agent runtime
   is evidence only and never permission to install, update, clear, or schedule
   work for it.
