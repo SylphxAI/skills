@@ -4,7 +4,7 @@
   "status": "design-contract-and-oracle-fixtures",
   "residualRef": "docs/reference/skill-utilization-eval-residual.md",
   "pinnedAtAuthoring": {
-    "skillsCommit": "7b3bb72d1c7998f1441b2fcce831ab0c23452025",
+    "skillsCommit": "943748f3a04ebe94ba2e1d30405474334e21e56a",
     "catalogCount": 112,
     "catalogDigestSha256OfCatalogJson": "sha256:2b6ef333f1df71f764a2290bd41d648ed4c9e114a224fa06556f52a3a83fa854",
     "note": "Re-pin at each eval run; authoring pin is not utilization proof."
