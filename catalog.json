@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 111,
+  "count": 112,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -59,9 +59,9 @@
     },
     {
       "name": "app-design-blueprint",
-      "description": "Design or critically review a complete app as a coherent, agent-first App Design Blueprint: user job and promise, workflows and information architecture, first-use activation, capability portfolio, retention and durable ownership, commerce and social integration, feedback and review loops, responsive HTML5/mobile/desktop experience, desktop OS integration semantics, offline and sync, accessibility, localization, low-end performance, privacy, safety, autonomous construction, and validation. Use for a new consumer or productivity app, whole-app redesign, cross-platform app system, a bounded macOS/Windows integration design that must remain consistent with app state, or an audit of whether product capabilities form one scalable experience. Use specialist procedures for one payment, refund, notification, review, campaign, store submission, exact release artifact, or file-level interface artifact unless whole-app coherence is also being decided.",
+      "description": "Design or critically review a complete app as a coherent, agent-first App Design Blueprint: user job and promise, workflows and information architecture, first-use activation, capability portfolio, retention and durable ownership, commerce and social integration, feedback and review loops, responsive HTML5/mobile/desktop experience, desktop OS integration semantics, offline and sync, accessibility, localization, low-end performance, privacy, safety, autonomous construction, and validation. Use for a new consumer or productivity app, whole-app redesign, cross-platform app system, a bounded macOS/Windows integration design that must remain consistent with app state, or an audit of whether product capabilities form one scalable experience. Use `product-finish` when the integrated app already exists and whole-product release-grade polish is the primary job; use other specialists for one payment, refund, notification, review, campaign, store submission, exact release artifact, or bounded interface artifact.",
       "path": "skills/app-design-blueprint/SKILL.md",
-      "packageDigest": "sha256:0060fd3003a002879624e23ef95e6d47e3b84bec6775c3b9f7e6a88181e5c147"
+      "packageDigest": "sha256:7b3aa460646431e83d7065a75db30e378424b48623cfdfb35d622eedb337dddf"
     },
     {
       "name": "architecture-convergence",
@@ -113,9 +113,9 @@
     },
     {
       "name": "continuous-product-quality",
-      "description": "Design or audit a durable cross-domain product-quality operating loop and produce a Product Quality Loop Contract covering quality surfaces and objectives, scout triggers, evidence-bearing observations, finding admission and deduplication, bounded Work handoff, delivery readback, coverage freshness, value/risk/WIP budgets, and idle/wake conditions. Use when a product should autonomously discover and close recurring defects or improvement opportunities across correctness, UI/UX, accessibility, SEO/discovery, performance, reliability, security/privacy, content, or live behavior. Do not use for one known bug, one release review, customer-feedback intake alone, service observability alone, agent-system learning, or generic Work scheduling.",
+      "description": "Design or audit a durable cross-domain product-quality operating loop and produce a Product Quality Loop Contract covering quality surfaces and objectives, scout triggers, evidence-bearing observations, finding admission and deduplication, bounded Work handoff, delivery readback, coverage freshness, value/risk/WIP budgets, and idle/wake conditions. Use when a product should autonomously discover and close recurring defects or improvement opportunities across correctness, UI/UX, accessibility, SEO/discovery, performance, reliability, security/privacy, content, or live behavior. Do not use for one known bug, one whole-product finish pass, one release review, customer-feedback intake alone, service observability alone, agent-system learning, or generic Work scheduling.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:3f4244fb96ea0f4b7507020e2868f38cf41036dff7cc0644f0d3d75aaeb81cc5"
+      "packageDigest": "sha256:3d278d70fb88f129f1abc3ff2ee84f2a4fcf2adc26ff9effe3e4359c71f8e257"
     },
     {
       "name": "convergent-review",
@@ -281,9 +281,9 @@
     },
     {
       "name": "game-design-blueprint",
-      "description": "Design or critically review a complete, agent-first game as one coherent player experience: player promise, verbs and loops, challenge, progression and quests, content, economy and monetization, retention, social play and virality, first-time experience, game feel, evergreen late-entry fairness, platforms, accessibility, localization, performance, live operations, automation, and validation. Use for new games, whole-game redesigns, game design documents, persistent or seasonal world strategy, or audits where several gameplay and commercial systems must work together. Use a specialist when one economy, ad system, return loop, notification policy, referral, campaign, soft launch, payment, refund, review, analytics, or release artifact is the primary job.",
+      "description": "Design or critically review a complete, agent-first game as one coherent player experience: player promise, verbs and loops, challenge, progression and quests, content, economy and monetization, retention, social play and virality, first-time experience, game feel, evergreen late-entry fairness, platforms, accessibility, localization, performance, live operations, automation, and validation. Use for new games, whole-game redesigns, game design documents, persistent or seasonal world strategy, or audits where several gameplay and commercial systems must work together. Use `product-finish` when an integrated playable game already exists and whole-game art, content, gameplay, sensory, numeric, and release-grade polish is the primary job; use other specialists when one economy, ad system, return loop, notification policy, referral, campaign, soft launch, payment, refund, review, analytics, or release artifact is primary.",
       "path": "skills/game-design-blueprint/SKILL.md",
-      "packageDigest": "sha256:a3adf9f3fdf56596d6f7ad3f2cd39c933f3c5d4355f9d09c29f766937de1668c"
+      "packageDigest": "sha256:9176e68f9d65a1691c102ec6a5bbe291c02a764d6429eb2a5f0edcdb61022eed"
     },
     {
       "name": "game-economy-review",
@@ -317,15 +317,15 @@
     },
     {
       "name": "interface-craft",
-      "description": "Design, build, reshape, polish, or review one bounded product interface or coherent user flow with distinctive visual direction, production-quality interaction states, responsive mobile/desktop behavior, keyboard/touch/pointer/controller input, baseline accessibility, purposeful motion, UX writing, low-end performance, and rendered verification. Use when the primary artifact is a screen, component family, shell, HUD, form, onboarding or checkout flow, dashboard, settings surface, or frontend implementation—not a whole App/Game blueprint, brand identity, extracted design system, formal accessibility certification, marketing strategy, or pricing decision.",
+      "description": "Design, build, reshape, polish, or review one bounded product interface or coherent user flow with distinctive visual direction, production-quality interaction states, responsive mobile/desktop behavior, keyboard/touch/pointer/controller input, baseline accessibility, purposeful motion, UX writing, low-end performance, and rendered verification. Use when the primary artifact is a screen, component family, shell, HUD, form, onboarding or checkout flow, dashboard, settings surface, or frontend implementation—not a whole App/Game blueprint, whole-product finish pass, brand identity, extracted design system, formal accessibility certification, marketing strategy, or pricing decision.",
       "path": "skills/interface-craft/SKILL.md",
-      "packageDigest": "sha256:048bb2cc547b2b2331ad6e18b37a63a39ed970d401a6046b0ff32a57ec15356d"
+      "packageDigest": "sha256:a04ee465a026f8584202d00d7c86d34cf342f3695ff4e2b11a8439c7463a46bb"
     },
     {
       "name": "launch-readiness-review",
       "description": "Produce or audit one cross-domain launch admission verdict for an app, game, SaaS, desktop product, developer tool, marketplace, major release, beta, or campaign. Integrate exact product, quality, performance, security/privacy, payments, distribution, analytics, support, marketing, legal/authority, rollback, and post-launch evidence into go, conditional-go, hold, or no-go gates. Use when launch-day decision ownership is the artifact; use specialist skills to create missing domain evidence.",
       "path": "skills/launch-readiness-review/SKILL.md",
-      "packageDigest": "sha256:8fab33de5f1f4a01a5305822f0eb5bce0529c97a4fbecb2e2fbbee074ec63814"
+      "packageDigest": "sha256:9b2c82b85f3d46e7c299d32daad46167c5dfa5bcbe3b8e7dafddfe554f905997"
     },
     {
       "name": "market-research-synthesis",
@@ -436,6 +436,12 @@
       "packageDigest": "sha256:6e7a0509a640e4fe7e8b648904866605f9c9829c748b7b736f265d9ffcad5a25"
     },
     {
+      "name": "product-finish",
+      "description": "Finish, polish, or audit an already defined whole product or release candidate across multiple customer- or player-facing surfaces and produce a Product Finish Pass covering visual or art-direction coherence, copy and content, interaction states, motion, audio and game feel where applicable, content fidelity, numeric semantics, accessibility, localization, performance, rendered or playthrough verification, and defect closure. Use when a functional app, SaaS, website, game, or interactive product is generic, placeholder-heavy, low-fidelity, inconsistent, rough, or not release-grade. Do not use for greenfield product strategy, one bounded interface, promotional asset production, launch admission, or a recurring quality operating loop.",
+      "path": "skills/product-finish/SKILL.md",
+      "packageDigest": "sha256:ffc44a8d38070ea164257ddc91df966eb526a54e3878cae4d15d4ff8235bde7a"
+    },
+    {
       "name": "product-lifecycle-architect",
       "description": "Orchestrate a multi-artifact product program across experience design, commerce, distribution, globalization, SDKs, marketing, support, operations, delivery, and autonomous maintenance. Use when the primary artifact is the cross-domain dependency, handoff, validation, or delivery graph; when a product program spans at least three lifecycle domains; when an ecosystem certification program must compose eligibility, tests, trust signals, renewal, appeals, and operations; or when app/game, global platform release, marketing, and operations must converge on one build-to-scale target. Do not use as primary for whole-app design, whole-game design, a marketing operating system, one campaign/listing/refund, or one product's store-submission readiness.",
       "path": "skills/product-lifecycle-architect/SKILL.md",
@@ -533,9 +539,9 @@
     },
     {
       "name": "saas-web-platform-blueprint",
-      "description": "Design or critically review one complete modern SaaS web platform joining public acquisition surfaces and an authenticated product across value proposition, onboarding, UI/UX, web performance, SEO, PWA disposition, identity, organizations, billing and entitlements, notifications, support, security, privacy, analytics, operations, and global scale. Use when the whole SaaS platform blueprint is the independent artifact; use specialists for one interface, price, payment, refund, notification, identity, marketing, or release job.",
+      "description": "Design or critically review one complete modern SaaS web platform joining public acquisition surfaces and an authenticated product across value proposition, onboarding, UI/UX, web performance, SEO, PWA disposition, identity, organizations, billing and entitlements, notifications, support, security, privacy, analytics, operations, and global scale. Use when the whole SaaS platform blueprint is the independent artifact. Use `product-finish` when the integrated public and authenticated product already exists and whole-product release-grade polish is primary; use other specialists for one interface, price, payment, refund, notification, identity, marketing, or release job.",
       "path": "skills/saas-web-platform-blueprint/SKILL.md",
-      "packageDigest": "sha256:59ac1b14f8ed4ac05f516f266829942412da27bcb37735c5a35cf533eaf213d9"
+      "packageDigest": "sha256:931c0d5d7fab70cca456e5dbb108f12274915cdb159bc96d89f104a12cab49c8"
     },
     {
       "name": "scope-discipline",

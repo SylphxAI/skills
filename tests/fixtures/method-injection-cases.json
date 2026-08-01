@@ -1029,6 +1029,58 @@
     "tags": ["short-answer", "no-method-needed"]
   },
   {
+    "id": "product-finish-whole-saas-positive",
+    "kind": "positive",
+    "prompt": "The SaaS is functional but still feels generated and unfinished. Finish the whole integrated product to release-grade quality across public pages, onboarding, workspace, billing, support, copy, visual identity, realistic data, all states, accessibility, localization, performance, and rendered evidence—not just the landing page.",
+    "expectedSkills": ["product-finish"],
+    "artifacts": [{"artifact": "Product Finish Pass", "owner": "product-finish"}],
+    "tags": ["whole-product", "saas", "finish", "release-grade"]
+  },
+  {
+    "id": "product-finish-game-cantonese",
+    "kind": "positive",
+    "prompt": "隻 3D game 已經玩到，但大廈、角色、動畫、音效、UI、關卡節奏同數值都仲係 placeholder 或者好求其。直接將成隻 integrated game 深度 polish 到一致、精緻、可發佈，做真實 playthrough 同效能證據，唔好淨係整靚一個畫面。",
+    "expectedSkills": ["product-finish"],
+    "artifacts": [{"artifact": "Product Finish Pass", "owner": "product-finish"}],
+    "tags": ["multilingual", "whole-game", "art", "gameplay", "numbers"]
+  },
+  {
+    "id": "product-finish-neighbour-bounded-interface",
+    "kind": "near-neighbour",
+    "prompt": "Polish only this existing checkout flow: improve hierarchy, form states, error recovery, mobile layout, keyboard access, motion, copy, and rendered verification. Do not review the rest of the product.",
+    "expectedSkills": ["interface-craft"],
+    "artifacts": [{"artifact": "Interface Craft Pack", "owner": "interface-craft"}],
+    "nearNeighbourOf": "product-finish",
+    "tags": ["bounded-interface", "not-whole-product"]
+  },
+  {
+    "id": "product-finish-neighbour-greenfield-game",
+    "kind": "near-neighbour",
+    "prompt": "Design a new game from first principles: player promise, core verbs and loops, challenge, progression, economy, content, social systems, platforms, and validation. There is no integrated game to polish yet.",
+    "expectedSkills": ["game-design-blueprint"],
+    "artifacts": [{"artifact": "Game Design Blueprint", "owner": "game-design-blueprint"}],
+    "nearNeighbourOf": "product-finish",
+    "tags": ["greenfield", "blueprint", "not-finish"]
+  },
+  {
+    "id": "product-finish-neighbour-continuous-loop",
+    "kind": "near-neighbour",
+    "prompt": "Design an ongoing autonomous system that repeatedly discovers product-quality issues, qualifies them into Work, verifies delivery, and wakes again on changes. Do not run one release finish pass now.",
+    "expectedSkills": ["continuous-product-quality"],
+    "artifacts": [{"artifact": "Product Quality Loop Contract", "owner": "continuous-product-quality"}],
+    "nearNeighbourOf": "product-finish",
+    "tags": ["continuous", "quality-loop", "not-one-pass"]
+  },
+  {
+    "id": "product-finish-neighbour-launch-admission",
+    "kind": "near-neighbour",
+    "prompt": "Review the exact release evidence across product, security, payments, support, distribution, rollback and live watch, then issue the launch go or hold verdict. Do not redesign or polish the product.",
+    "expectedSkills": ["launch-readiness-review"],
+    "artifacts": [{"artifact": "Launch Admission Record", "owner": "launch-readiness-review"}],
+    "nearNeighbourOf": "product-finish",
+    "tags": ["launch", "admission", "not-polish"]
+  },
+  {
     "id": "continuous-product-quality-positive",
     "kind": "compound",
     "prompt": "Design a durable autonomous quality loop for this SaaS that continuously discovers UI, accessibility, SEO, performance, correctness, security and live-behavior gaps, deduplicates evidence into qualified findings, creates bounded Work, and rechecks the delivered outcome without turning every check into merge-blocking CI.",

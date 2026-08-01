@@ -13,7 +13,8 @@ from exact evidence rather than a ceremonial checklist.
 Own the final cross-domain evidence graph, blocker classification, decision,
 conditions, launch watch, authority, and recovery drill. Consume sibling facts
 by ID/version/digest; do not recreate product design, store submission, payment,
-marketing, security, or support artifacts.
+marketing, security, support, or product-finish artifacts. A finish gap is
+evidence to hold or hand off, not something launch admission silently polishes.
 
 Use the shared product artifact envelope when composing with repository product
 artifacts. Missing required evidence is a blocker or explicit handoff, never an

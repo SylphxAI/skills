@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Finish"
+  short_description: "Finish a functional product to release-grade quality"
+  default_prompt: "Use $product-finish to turn this functional product into a coherent, deeply resolved, release-grade experience."
