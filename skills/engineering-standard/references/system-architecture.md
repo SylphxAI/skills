@@ -33,6 +33,38 @@ These are complementary concerns, not ten architectures to implement
 independently. A project creates no empty aggregate, workflow engine, event bus,
 cell, service, or plugin host merely to fill the table.
 
+## Simple surface, deep capability
+
+Prefer the smallest coherent mental model that preserves the complete product
+capability and quality floor. The primary path should be explainable with
+standard domain terms as:
+
+```text
+intent or input
+  -> owning Capability
+  -> decision and effects
+  -> observable outcome
+```
+
+This is a navigation path, not a second source of truth and not a requirement
+to pretend that a branching, asynchronous, or distributed system is linear.
+Reveal state authority, recovery, branches, contracts, failure modes, and
+implementation detail progressively from that path where they are material.
+
+Keep public interfaces and primary workflows simple. Put unavoidable domain,
+distributed-systems, security, and operational complexity behind narrow owned
+boundaries so each consumer does not need to understand or reproduce it. Every
+additional concept, layer, or named mechanism must own a distinct Capability,
+contract, state authority, failure or lifecycle boundary, or material measured
+quality improvement. If it only renames, wraps, or visualizes equivalent
+behavior, fold it into the existing owner or remove it.
+
+Simple does not mean untyped, stateless at all costs, one file, one service, no
+dependencies, or missing validation, observability, recovery, and security.
+Measure conceptual and lifecycle complexity rather than physical artifact
+count. The goal is deep capability behind a small stable surface, not a shallow
+system.
+
 ## Orthogonal boundaries
 
 Do not infer one boundary from another:

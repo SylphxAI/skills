@@ -235,7 +235,7 @@
       "name": "engineering-standard",
       "description": "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, state authorities, modules, control/data planes, cells, plugins, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or system/runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:2232176478e09c194bde3f59b580cbab3682b938d26349116441a280cdf1b951"
+      "packageDigest": "sha256:b99cdfdc46c5ccbb3bacc81eefc58c440f0821534ff340bebf80db657fa3f2e8"
     },
     {
       "name": "enterprise-access-governance-review",
@@ -301,7 +301,7 @@
       "name": "high-signal-communication",
       "description": "Compress or restructure an agent communication into a concise, answer-first, decision-complete artifact. Use when the user asks for a brief, scannable, action-first, de-duplicated, ADHD-friendly, or less verbose reply, handoff, progress summary, report, commit, PR, ADR, spec, incident note, or agent record, or asks to reduce context cost. Do not inject by default for every ordinary reply or document.",
       "path": "skills/high-signal-communication/SKILL.md",
-      "packageDigest": "sha256:e4eaa919f5b7ec31521faf712e6cfaa0c665b150693582a58d5ed0e8709452ea"
+      "packageDigest": "sha256:e44d7718e5620cb8226f5639469659fb3e52f68f67f91a05fc5730b6ec8e9c3b"
     },
     {
       "name": "incident-standard",
@@ -541,7 +541,7 @@
       "name": "scope-discipline",
       "description": "Right-size planning, implementation, migration, architecture, and review: prevent over-engineering, under-engineering, workaround regression, unnecessary code, dependencies, files, abstractions, gates, or waiting while preserving the real correctness and delivery floor. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, complexity theatre, weak shortcuts, or a request for the simplest complete durable solution.",
       "path": "skills/scope-discipline/SKILL.md",
-      "packageDigest": "sha256:cb9074a82acd1ecfec495329472fc5159ffb4683b95609486759873ad5c873ae"
+      "packageDigest": "sha256:b0f659dfd05ffc6ec7cf393c7d5bd151e6f33047ecbe86aa03ab12c3e836111d"
     },
     {
       "name": "search-discovery-quality-review",
