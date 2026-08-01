@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "Design or audit a durable cross-domain product-quality operating loop and produce a Product Quality Loop Contract covering quality surfaces and objectives, scout triggers, evidence-bearing observations, finding admission and deduplication, bounded Work handoff, delivery readback, coverage freshness, value/risk/WIP budgets, and idle/wake conditions. Use when a product should autonomously discover and close recurring defects or improvement opportunities across correctness, UI/UX, accessibility, SEO/discovery, performance, reliability, security/privacy, content, or live behavior. Do not use for one known bug, one whole-product finish pass, one release review, customer-feedback intake alone, service observability alone, agent-system learning, or generic Work scheduling."
+description: "Design a durable product-quality operating loop—scout triggers, evidence-bearing observations, finding admission/dedup, Work handoff, delivery readback, coverage freshness, and value/risk/WIP budgets—and produce a Product Quality Loop Contract. Use when a product should keep discovering and closing recurring defects/improvements across quality surfaces. Not one known bug, one product-finish pass, one release review, feedback intake alone, or generic work scheduling."
 ---
 
 # Continuous Product Quality

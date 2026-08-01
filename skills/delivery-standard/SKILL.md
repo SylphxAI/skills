@@ -1,6 +1,6 @@
 ---
 name: delivery-standard
-description: "Delivery-terminal and shipped-state proof across source landing, artifacts, publication, deployment, rollback, and live readback. Use when a change must move beyond a local diff, commit, or open PR; when defining its shippable state; or when deciding whether it is landed, released, deployed, or live. Do not use when the request explicitly ends at local implementation or analysis without a delivery claim."
+description: "Delivery-terminal and shipped-state proof across source landing, artifacts, publication, deployment, rollback, and live readback. Use when a change must move beyond a local diff, commit, or open PR; when defining its shippable state; or when deciding whether it is landed, released, deployed, or live. Not when the request explicitly ends at local implementation/analysis without a delivery claim."
 ---
 # Delivery Standard
 

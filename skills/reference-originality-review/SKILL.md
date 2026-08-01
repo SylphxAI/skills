@@ -1,6 +1,6 @@
 ---
 name: reference-originality-review
-description: "Review a current interface, website, application, campaign asset, or other designed artifact against supplied or declared references and produce an evidence-backed Reference Originality Review. Use when the job is to assess distinctive similarity in structure, wording, branding, imagery, motion, or historical evolution and identify the smallest redesign needed. Do not use for a legal infringement verdict, authorized extraction of the subject's own design system, general interface critique or implementation, or rights and provenance QA of an asset pack."
+description: "Review originality against references: influence, copying risk, transformation quality, and disclosure needs. Use for originality/reference reviews. Not formal legal opinions and not running plagiarism software alone."
 ---
 
 # Reference Originality Review

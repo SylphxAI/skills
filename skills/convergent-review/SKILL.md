@@ -1,6 +1,6 @@
 ---
 name: convergent-review
-description: "Run a finite, high-coverage formal review of an exact candidate against a frozen acceptance contract, using independent perspectives and executable oracles, batching repairs, and closing without moving the goalposts. Use when review convergence itself is the job. Do not use for open-ended exploration, root-cause hypothesis generation, option selection, or one quick opinion."
+description: "Run an independent, iterative, evidence-based review that forces alternatives, residual risks, unresolved disagreements, and exactly one Final Decision. Use for architecture or other high-stakes choices that need adversarial convergence. Not ordinary PR code review or a skill-routing eval."
 ---
 
 # Convergent Review

@@ -1,6 +1,6 @@
 ---
 name: agent-context-engineering
-description: "Design or audit how an agent system acquires, selects, compiles, remembers, invalidates, and hands off information, producing a Context and Memory Contract. Use for working-context assembly, episodic or semantic memory, procedural instructions, retrieval and ranking, long-session compaction, provenance and freshness, cross-agent handoff, memory privacy, or stale-context failures. Do not use for ordinary document retrieval, prompt wording alone, planning algorithms, or live work-ledger coordination."
+description: "Design how an agent system acquires, ranks, compiles, remembers, invalidates, and hands off information—working context, episodic/semantic memory, procedural instructions, long-session compaction, provenance, freshness, privacy—and produce a Context and Memory Contract. Not ordinary document retrieval, prompt wording alone, planning algorithms, or live work-ledger coordination."
 ---
 
 # Agent Context Engineering

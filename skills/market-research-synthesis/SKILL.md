@@ -1,6 +1,6 @@
 ---
 name: market-research-synthesis
-description: Produce a source-bounded market synthesis for a product, positioning, category, competitor, pricing, or demand decision. Use when current external evidence must be collected, triangulated, challenged with counterevidence, and converted into an original recommendation. Do not use for summarizing one supplied source, maintaining a research repository, or executing a decision already made.
+description: "Turn market and competitor sources into decision-ready findings with citations, uncertainty, and implications. Use for market research synthesis. Not user interviews alone and not pricing architecture decisions."
 ---
 
 # Market Research Synthesis

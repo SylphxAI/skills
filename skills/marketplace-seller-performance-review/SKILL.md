@@ -1,6 +1,6 @@
 ---
 name: marketplace-seller-performance-review
-description: Design or audit a marketplace seller-performance system covering opportunity-normalized quality evidence, confidence, cold start, category baselines, explanations, coaching, badges, ranking inputs, enforcement referrals, appeals, recovery, anti-gaming, fairness, buyer harm, and marketplace health. Use when the primary artifact is recurring seller assessment and performance-intervention governance. Do not use for one seller's content-policy, moderation, fraud, or dispute case; payout-ledger design; a general search-ranking algorithm; or transaction refund operations.
+description: "Design or audit marketplace seller-performance systems: opportunity-normalized quality evidence, confidence/cold start, category baselines, explanations, coaching, badges, ranking inputs, enforcement referrals, and appeals. Use for seller quality programs. Not payouts and not buyer support cases alone."
 ---
 
 # Marketplace Seller Performance Review

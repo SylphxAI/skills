@@ -1,6 +1,6 @@
 ---
 name: refund-and-support-flow-review
-description: "Design or audit one customer/account consequence flow after authoritative cancellation, refund, revocation, chargeback, or dispute events: entitlement outcome, grace, repayment, repurchase, commerce restriction, abuse ladder, appeal, support, trust recovery, and product feedback for SaaS, apps, games, utilities, marketplaces, and subscriptions. Use when post-event treatment is the primary artifact; use Payment Platform for provider ingestion, money ledger, settlement, and authoritative event projection."
+description: "Design or audit customer/account consequence flows after cancellation, refund, revocation, chargeback, or dispute: entitlement outcome, grace, repayment, repurchase, commerce restriction, abuse linkage, ledger effects, and customer communication. Use for refund/consequence-flow contracts. Not full payment-platform design or whole support/CS operating models."
 ---
 
 # Refund And Support Flow Review

@@ -1,6 +1,6 @@
 ---
 name: marketplace-trust-operations-review
-description: "Design or audit a two-sided marketplace trust operating system across participant and listing policy, content or commerce risk, moderation and fraud-review queues, temporary controls, disputes, evidence, enforcement ladders, notices, appeals, restoration, policy/model learning, fairness, trust economics, and marketplace health. Use when the primary artifact is a Marketplace Trust Operating Contract joining those decisions across buyers and sellers, creators, developers, or partners. Do not use for payout-ledger mechanics, generic product abuse outside a marketplace, seller performance coaching, or a general search/recommendation ranking algorithm alone."
+description: "Design or audit two-sided marketplace trust operations: participant/listing policy, content or commerce risk, moderation and fraud-review queues, temporary controls, disputes, evidence, enforcement ladders, and appeals. Use for marketplace trust/safety ops. Not non-marketplace content moderation alone and not payouts."
 ---
 
 # Marketplace Trust Operations Review

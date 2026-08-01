@@ -1,6 +1,6 @@
 ---
 name: subscription-price-increase-retention-review
-description: Plan, audit, diagnose, or recover the retention-safe rollout of an already proposed subscription price change across cohorts, contracts, discounts, billing channels, regions, renewal windows, notices, consent, grandfathering, offers, cancellation, refunds, support, experiments, and net revenue. Use when the price-change program owns sequencing, renewal-maturity cohort readback, or recovery. Do not use to choose the underlying price/package architecture, analyze retention unrelated to a price change, operate refunds alone, or create a general notification strategy.
+description: "Roll out an already-proposed subscription price increase without wrecking retention: cohorts, notices, grandfathering, offers, cancellations, refunds, support, experiments, and net revenue. Use when the price-change program owns sequencing and renewal-cohort readback. Not base pricing architecture, and not retention analysis unrelated to a price change."
 ---
 
 # Subscription Price Increase Retention Review

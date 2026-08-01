@@ -1,6 +1,6 @@
 ---
 name: self-feeding-agent-loop-standard
-description: "Continuous or recurring loop engineering for durable agent processes that repeatedly discover, deduplicate, claim, execute, review, deliver, and re-enter new Work with machine-verifiable continuation gates. Use when the operating system should keep finding and completing new bounded outcomes. Do not use to close one bounded objective; use autonomous-execution-standard for that task-level loop."
+description: "Standards for agent loops that keep generating next work from evidence without human prompt churn—admission, prioritization, idle/wake, and recurrence control. Use for durable self-feeding autonomous loop design. Not executing one bounded objective to terminal (autonomous-execution-standard) and not live Enact API calls alone."
 ---
 # Self Feeding Agent Loop Standard
 

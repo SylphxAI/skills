@@ -1,6 +1,6 @@
 ---
 name: optimization-objective-review
-description: "Design or audit a metric, KPI, score, reward, ranking, completion predicate, gate, evaluator, or automated optimization target for Goodhart effects, reward hacking, specification gaming, and harmful trade-offs, producing an Optimization Objective Contract. Use when agents, models, teams, or automation will actively optimize a measurable target. Do not use for ordinary analytics instrumentation, one product experiment, or a decision that has no optimization mechanism."
+description: "Design optimization objectives and constraints so metrics match real decisions and resist Goodhart failures. Use when objective design is primary. Not solving one math program and not dashboard cosmetics."
 ---
 
 # Optimization Objective Review

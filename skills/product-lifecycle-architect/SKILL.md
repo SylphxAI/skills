@@ -1,6 +1,6 @@
 ---
 name: product-lifecycle-architect
-description: "Orchestrate a multi-artifact product program across experience design, commerce, distribution, globalization, SDKs, marketing, support, operations, delivery, and autonomous maintenance. Use when the primary artifact is the cross-domain dependency, handoff, validation, or delivery graph; when a product program spans at least three lifecycle domains; when an ecosystem certification program must compose eligibility, tests, trust signals, renewal, appeals, and operations; or when app/game, global platform release, marketing, and operations must converge on one build-to-scale target. Do not use as primary for whole-app design, whole-game design, a marketing operating system, one campaign/listing/refund, or one product's store-submission readiness."
+description: "Orchestrate a multi-artifact product program across experience, commerce, distribution, globalization, SDKs, marketing, support, ops, delivery, and autonomous maintenance via dependency, handoff, validation, and delivery graphs. Use when roughly three or more lifecycle domains must converge, or for ecosystem certification programs. Not one app/game blueprint, one marketing OS, or one campaign/listing/refund."
 ---
 
 # Product Lifecycle Architect

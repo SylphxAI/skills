@@ -1,6 +1,6 @@
 ---
 name: provenance-system-design
-description: "Design or audit machine-readable provenance, lineage, derivation, attribution, and chain-of-custody across data, artifacts, models, agent actions, decisions, builds, or transformations, producing a Provenance Contract. Use when a system must answer what was used, generated, changed, by whom or what, under which process, and how the result can be traced or reproduced. Do not use merely to judge whether one claim is true, summarize Git history, or coordinate live work."
+description: "Design provenance for artifacts, claims, builds, or content—lineage, attestation, verification, and disclosure. Use when provenance is the product concern. Not generic logging and not a one-line changelog note."
 ---
 
 # Provenance System Design

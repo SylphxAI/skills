@@ -1,6 +1,6 @@
 ---
 name: decision-quality-standard
-description: "Select among materially distinct technical, product, commercial, or operating options—including an established standard versus a custom mechanism—reprice human-era effort through current agent capabilities, and record the commitment, trade-offs, reversibility, and decision evidence. Use after credible options are formed and one durable choice is required. Do not use for unknown-cause diagnosis, exact-candidate pass/fail review, trivial reversible edits, or execution of an already selected option."
+description: "Standards for high-quality decisions: framing, alternatives, information, values/tradeoffs, logic, commitment, and learning after the fact. Use for durable decision-process quality. Not building one optimization model or taking ordinary meeting notes."
 ---
 # Decision Quality Standard
 

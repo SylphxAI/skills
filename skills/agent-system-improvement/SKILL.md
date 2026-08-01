@@ -1,6 +1,6 @@
 ---
 name: agent-system-improvement
-description: "Improve a recurring agent-system failure through a causal Learning Change Record, controlled intervention, replay or holdout evidence, promotion criteria, and recurrence monitoring. Use when prompts, Skills, context assembly, tools, evals, coordination, or agent workflows repeatedly produce the same error, cost, delay, or weak outcome. Do not use for a one-off product-code bug, live incident response, ordinary task planning, or evaluation of one already-defined Skill candidate alone."
+description: "Improve a recurring agent-system failure with a causal Learning Change Record, controlled intervention, replay/holdout evidence, promotion criteria, and recurrence monitoring across prompts, Skills, context, tools, evals, or coordination. Not a one-off product bug, live incident response, ordinary task planning, or evaluating one already-defined Skill alone."
 ---
 
 # Agent System Improvement

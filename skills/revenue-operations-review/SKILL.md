@@ -1,6 +1,6 @@
 ---
 name: revenue-operations-review
-description: "Design or audit a trustworthy revenue operating system across account/contact/opportunity data, lifecycle and pipeline stages, source attribution, qualification and discovery, owner/agent routing, technical-sales handoffs, forecast and capacity, required evidence, automation, incentives or commissions, reporting, data quality, permissions, and change governance. Use when the primary artifact is the end-to-end go-to-market revenue truth and decision system. Use marketing-automation-blueprint for demand generation, enterprise-contract-operations-review for contract obligations, customer-success-operations-review for post-sale value, and saas-subscription-pricing for packaging and price."
+description: "Design revenue operations across marketing/sales/finance handoffs—pipeline, process, systems, forecasting rhythm, and controls. Use for RevOps models. Not product pricing architecture alone."
 ---
 
 # Revenue Operations Review

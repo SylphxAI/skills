@@ -1,6 +1,6 @@
 ---
 name: frontend-performance-remediation
-description: "Reproduce, diagnose, repair, and verify a concrete web or app frontend runtime performance problem and produce a Frontend Runtime Performance Remediation Record. Use when the primary job is jank, long-task latency, animation or scrolling cost, offscreen work, memory or listener growth, idle CPU/GPU use, or degradation after repeated navigation. Do not use for general interface design, backend throughput or load testing, product-wide observability design, or speculative optimization without a reproducible frontend symptom or budget."
+description: "Find and fix frontend performance problems with measurement, budgets, critical-path work, regression control, and verification. Use when UI performance outcomes are primary. Not backend capacity alone or pure visual design."
 ---
 
 # Frontend Performance Remediation

@@ -1,6 +1,6 @@
 ---
 name: customer-support-operations
-description: Design or audit one end-to-end customer-support operating system across self-service, intake, identity-safe diagnostics, taxonomy, queues, severity, routing, SLAs, grounded responses, autonomous resolution, specialist and incident handoffs, quality calibration, appeals, trust recovery, knowledge freshness, product feedback, metrics, and continuous improvement. Use when the whole support model is the independent artifact; use Refund And Support for one refund consequence state machine and do not invoke for one reply or a fixed QA rubric.
+description: "Design or audit an end-to-end customer-support operating system: self-service, intake, identity-safe diagnostics, taxonomy, queues, severity, routing, SLAs, grounded responses, escalation, tooling/knowledge, and quality. Use for support-org design. Not resolving one case and not broader customer-success outcomes."
 ---
 
 # Customer Support Operations

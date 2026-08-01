@@ -1,6 +1,6 @@
 ---
 name: architecture-convergence
-description: "Deliver a substantial code or system-architecture refactor to one declared target across one or many repositories. Use for whole-repository Capability-first DDD adoption, state/runtime boundary correction, language rewrites, monolith restructuring, drop-in replacements, or architecture cutovers that require real code movement, semantic proof, authority change, and predecessor retirement. Do not use for a small local refactor, a documentation-only architecture review, or customer-data migration."
+description: "Drive a substantial one-or-many-repository architecture rewrite onto shared invariants, a migration path, compatibility rules, and acceptance evidence. Use for real architecture convergence work. Not a local refactor, ordinary feature delivery, or pure process/delivery theater."
 ---
 
 # Architecture Convergence

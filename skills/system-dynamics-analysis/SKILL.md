@@ -1,6 +1,6 @@
 ---
 name: system-dynamics-analysis
-description: "Analyze persistent or surprising system behavior caused by feedback loops, delays, accumulations, nonlinear effects, constraints, incentives, and adaptation. Use for recurring oscillation, backlog, capacity, adoption, policy resistance, second-order effects, or fixes that make a problem return or worsen. Produce a Dynamic System Model. Do not use for an isolated implementation defect, a static dependency map, or estimating one identified causal effect from data."
+description: "Explain stubborn system behavior through feedback loops, delays, accumulations, nonlinear effects, constraints, incentives, and adaptation. Use for oscillation, backlog spirals, policy resistance, or fixes that rebound. Artifact: a Dynamic System Model. Not an isolated bug, a static dependency map, or estimating one causal effect from data."
 ---
 
 # System Dynamics Analysis

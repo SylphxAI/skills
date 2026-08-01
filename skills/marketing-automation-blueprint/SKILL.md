@@ -1,6 +1,6 @@
 ---
 name: marketing-automation-blueprint
-description: "Design or critically review a complete autonomous marketing operating system across truth-bound positioning, audiences and consent, owned/earned/paid channels, creative and content, SEO/AEO, stores, lifecycle messaging, referrals, cross-promotion, creators, community, partnerships, reputation, attribution, incrementality, budget allocation, experiments, and autonomous maintenance. Use when the primary artifact is a multi-channel marketing control plane or full go-to-market operating blueprint. For one campaign, official social-account operating model, referral, listing, notification, review/feedback loop, or distribution package, use the specialist procedure."
+description: "Design the marketing operating system: channels, audience, messaging, campaigns, automation, measurement, and incrementality. Use for full marketing OS work. Not one store listing, one social post, or pure brand-voice editing."
 ---
 
 # Marketing Automation Blueprint

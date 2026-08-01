@@ -1,6 +1,6 @@
 ---
 name: launch-readiness-review
-description: Produce or audit one cross-domain launch admission verdict for an app, game, SaaS, desktop product, developer tool, marketplace, major release, beta, or campaign. Integrate exact product, quality, performance, security/privacy, payments, distribution, analytics, support, marketing, legal/authority, rollback, and post-launch evidence into go, conditional-go, hold, or no-go gates. Use when launch-day decision ownership is the artifact; use specialist skills to create missing domain evidence.
+description: "Judge whether a launch is ready across product, ops, support, legal/risk, measurement, and rollback. Artifact: a Launch Readiness Record. Not one feature QA pass or store listing copy alone."
 ---
 
 # Launch Readiness Review

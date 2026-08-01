@@ -1,6 +1,6 @@
 ---
 name: product-abuse-risk-review
-description: "Design or audit a product-level abuse and fraud control system across identities, automation, promotions, referrals, trials, credits, purchases, refunds, content, inventory, scraping, collusion, account farming, evasion, and support exploitation. Use when the primary artifact is an adaptive abuse threat, decision, control, appeal, economics, and evidence contract spanning a product surface. Use account-recovery-review for legitimate recovery, developer-quota-credit-abuse-review for developer quota and credit policy, marketplace-trust-operations-review for marketplace participant policy/enforcement, and payment-platform-readiness for payment and ledger correctness."
+description: "Design product-wide abuse controls for fraud, spam, exploitation, enforcement, and appeals across users and features. Use for product abuse programs. Not developer quota/credit economics alone and not marketplace trust alone."
 ---
 
 # Product Abuse Risk Review

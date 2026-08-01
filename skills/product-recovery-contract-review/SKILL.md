@@ -1,6 +1,6 @@
 ---
 name: product-recovery-contract-review
-description: Design or audit a product-level user-data durability and recovery contract spanning backup, restore, same-product export/re-import, device replacement, version compatibility, entitlement recovery, deletion, and support-assisted recovery. Use when the independently accepted artifact is a user-facing recovery model plus requirements for downstream engineering. Do not use for infrastructure disaster recovery, database replication, deployment rollout, incident command, sync-conflict algorithms alone, account-authentication recovery, or customer data import and cutover from a different product.
+description: "Design product user-data durability and recovery: backup, restore, export/re-import, device replacement, entitlement recovery, deletion, and support-assisted recovery. Artifact: a user-facing recovery model plus engineering requirements. Not infra DR, account-auth recovery, or customer cutover from another product."
 ---
 
 # Product Recovery Contract Review

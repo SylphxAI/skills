@@ -1,6 +1,6 @@
 ---
 name: ai-product-risk-review
-description: "Design or audit one AI product behavior and launch contract covering the user job, AI necessity, model role, autonomy and action rights, data use, affected parties, failure and abuse, UX disclosure, fallback, cost and latency, support, evidence dependencies, and release boundaries. Use when an assistant, copilot, generator, classifier, recommender, or agent needs a product-risk dossier. Do not use for eval implementation, adversarial red teaming, security threat modeling, provider selection, a whole-product blueprint, or incident response."
+description: "Write or audit the AI product behavior and launch contract: user job, AI necessity, model role, autonomy/action rights, data use, failure/abuse, disclosure, fallback, cost/latency, support, and release boundaries. For assistants, copilots, generators, classifiers, recommenders, or agents. Not eval implementation, red teaming, threat modeling, provider selection, whole-product blueprints, or incident response."
 ---
 
 # AI Product Risk Review

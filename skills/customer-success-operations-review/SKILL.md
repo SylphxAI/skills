@@ -1,6 +1,6 @@
 ---
 name: customer-success-operations-review
-description: "Design or audit an outcome-led customer success operating system across segmentation, onboarding after technical migration, activation, adoption, health, risk intervention, education, business reviews, renewal and expansion signals, champion or stakeholder change, playbooks, automation, and product-learning handoffs. Use when the primary artifact is the recurring post-sale customer-value system for B2B SaaS, developer tools, platforms, or enterprise products. Use customer-data-migration-review for import/cutover execution, customer-support-operations for reactive support queues, and enterprise-contract-operations-review for contractual obligations and renewal mechanics."
+description: "Design or audit outcome-led customer success operations: segmentation, onboarding after technical migration, activation/adoption, health, risk intervention, education, business reviews, renewal/expansion, and outcome measurement. Use for CS operating models. Not frontline case handling or acquisition marketing."
 ---
 
 # Customer Success Operations Review

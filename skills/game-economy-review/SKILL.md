@@ -1,6 +1,6 @@
 ---
 name: game-economy-review
-description: "Design or audit one complete game economy artifact for mobile, PC, console, web, casual, premium, or live-service games: currencies, inventory, sources/sinks, progression pacing, rewards, gacha/pity, battle passes, IAP/ads, events, refunds/revocation, inflation, concentration, anti-abuse, newcomer/veteran fairness, simulations, and live tuning. Use for economy ownership and balance; use Game Design for whole-game coherence and Payment Readiness for provider transactions."
+description: "Design or audit game economy systems—sources/sinks, progression coupling, monetization interaction, inflation, fairness, and telemetry. Use when the economy is the main job. Not whole-game design and not ad placement alone."
 ---
 
 # Game Economy Review

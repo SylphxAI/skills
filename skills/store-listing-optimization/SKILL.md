@@ -1,6 +1,6 @@
 ---
 name: store-listing-optimization
-description: "Design or audit one channel listing and creative-conversion artifact for App Store, Google Play, Steam, console/PC stores, Microsoft Store, browser extensions, or direct download: positioning, title/subtitle/description, screenshots, capsule/icon/key art, trailer, proof, pricing/disclosures, privacy/compatibility claims, localization, accessibility, experiments, review/reputation context, and exact asset QA. Use for listing conversion; use Distribution Readiness for submission/certification and Marketing Automation for the full channel portfolio."
+description: "Optimize a store or download listing for conversion—positioning, title/subtitle/description, screenshots/key art, trailer, proof, pricing/disclosures, localization, accessibility, experiments, and asset QA. Use for listing conversion. Not submission/certification readiness (software-distribution-readiness) and not the full marketing channel portfolio."
 ---
 
 # Store Listing Optimization

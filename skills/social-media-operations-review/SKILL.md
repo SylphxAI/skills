@@ -1,6 +1,6 @@
 ---
 name: social-media-operations-review
-description: "Design or audit one recurring operating model for already-selected official social-media and community channels across account authority, publishing and platform readback, listening, replies, moderation routing, rights and disclosures, crisis correction, impersonation or takeover response, automation, measurement, archive, recovery, and shutdown. Use when the independent artifact is a Social Media Operating Model. Use Marketing Automation for channel strategy, audience, message, campaigns, spend, and incrementality; use specialists for one post, media pack, support case, review-learning loop, or product-wide trust policy."
+description: "Design the operating model for official social and community channels—account authority, publishing/readback, listening, replies, moderation routing, rights/disclosures, crisis correction, measurement, archive, and shutdown. Artifact: a Social Media Operating Model. Not channel strategy/campaigns (marketing-automation-blueprint) and not producing one post."
 ---
 
 # Social Media Operations Review

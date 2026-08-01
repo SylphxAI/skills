@@ -1,6 +1,6 @@
 ---
 name: privacy-data-lifecycle-review
-description: "Design or audit a product's proactive personal-data lifecycle: purposes, data inventory, minimization, notice and choice, consent or other authority, permissions, vendors and subprocessors, regional handling, retention, deletion dependencies, AI or analytics reuse, and change governance. Use for privacy-by-design reviews, privacy impact assessments, consent or preference-center architecture, data retention design, vendor data-flow review, or a material feature change involving personal data. Use data-rights-operations-review for one request workflow; use product-analytics-instrumentation-review for event and metric implementation after the privacy contract is decided."
+description: "Design the privacy data lifecycle—collection, purpose limits, retention, sharing, minimization, and deletion. Use for privacy lifecycle programs. Not a single DSAR ticket and not a security threat model session."
 ---
 
 # Privacy Data Lifecycle Review

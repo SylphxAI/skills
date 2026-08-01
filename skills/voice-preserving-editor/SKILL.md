@@ -1,6 +1,6 @@
 ---
 name: voice-preserving-editor
-description: Preserve a requested natural human voice, locale, dialect, and non-AI style without changing facts. Use for explicit conversational, non-ChatGPT, less-templated, voice-preserving, locale-natural, dialect-aware, translationese-cleanup, or authorized sample-matching edits in Cantonese, Chinese, English, or multilingual text. Keep citations, technical terms, uncertainty, and judgment intact. A language name or ordinary translation request alone is not a trigger.
+description: "Rewrite text so it keeps a requested human voice, locale, dialect, and non-AI texture without changing facts, citations, technical terms, or uncertainty. Use for explicit voice-preserving, dialect-aware, or sample-matching edits (including Cantonese/Chinese/English/multilingual cases). A bare language name or ordinary translation request alone is not enough to trigger this."
 ---
 
 # Voice-Preserving Editor

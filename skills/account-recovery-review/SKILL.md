@@ -1,6 +1,6 @@
 ---
 name: account-recovery-review
-description: "Design or audit a secure, humane account-access recovery protocol for lost credentials, passkeys, MFA devices, recovery codes, email or phone access, social login, enterprise SSO, compromised accounts, locked users, ownership disputes, and support-assisted recovery. Use when the primary artifact is recovery eligibility, proof, risk, channel, state, authority, containment, communication, appeal, and post-recovery protection. Use enterprise-access-governance-review for tenant/admin role lifecycle and product-abuse-risk-review for cross-product abuse controls."
+description: "Design end-to-end account recovery when users lose passwords, passkeys, MFA devices, or channel access, or hit locks, compromise, or ownership disputes—covering eligibility, proof, risk, authority, containment, appeals, and post-recovery hardening. Not tenant/admin access lifecycle or broad product-abuse programs."
 ---
 
 # Account Recovery Review

@@ -1,6 +1,6 @@
 ---
 name: board-metrics-operating-review
-description: "Prepare or audit the operating-metrics evidence packet behind a board or executive review: metric definitions, source reconciliation, period snapshots, cohort and segment cuts, variance bridges, forecast confidence, owner signoff, decisions, and action closure. Use when leadership needs board-ready operating truth. Do not use to invent company numbers, produce audited financial statements, design product analytics instrumentation, analyze one retention chart, or write investor persuasion detached from evidence."
+description: "Design the board/executive metrics operating model: metric definitions, lineage, decision use, reporting cadence, and trust. Use when leadership operating metrics are the artifact. Not product event instrumentation alone, one dashboard mock, or service observability."
 ---
 
 # Board Metrics Operating Review

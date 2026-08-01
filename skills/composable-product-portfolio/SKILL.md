@@ -1,6 +1,6 @@
 ---
 name: composable-product-portfolio
-description: "Design or refactor a growing platform, suite, or multi-product portfolio into independently valuable, independently operable product units connected through typed customer-grade contracts. Use when deciding whether capabilities should stay inside one product, become standalone products, share an experience shell, connect through APIs or events, dogfood one another, or form bundles. Produce a Composable Product Portfolio Contract. Do not use for code-only module decomposition, one product's lifecycle delivery graph, pricing alone, or runtime cell partitioning alone."
+description: "Set portfolio boundaries across multiple products: shared platforms vs product seams, what to reuse or isolate, and composition rules. Use when multi-product portfolio architecture is primary. Not a single-product blueprint or one repository layout."
 ---
 
 # Composable Product Portfolio

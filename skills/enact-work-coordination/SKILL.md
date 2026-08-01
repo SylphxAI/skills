@@ -1,6 +1,6 @@
 ---
 name: enact-work-coordination
-description: "Connect, operate, or audit agent work through the Sylphx Enact operating graph using explicit Organization and Project identity; Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-provider observations. Use when implementing an Enact client or adapter, binding a repository or agent workflow to Enact, recovering a missing MCP work loop, or verifying Enact work provenance. Do not use for portable work-ledger design, ordinary Git operations, or static Skills authoring."
+description: "Connect, operate, or audit agent work through authenticated Sylphx Enact: Organization/Project identity, Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-wait defer/wake. Use for live Enact coordination. Not inventing a portable ledger standard from scratch (work-coordination-standard) or offline planning with no Enact tools."
 ---
 
 # Enact Work Coordination

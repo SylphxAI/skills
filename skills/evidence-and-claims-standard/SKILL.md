@@ -1,6 +1,6 @@
 ---
 name: evidence-and-claims-standard
-description: "Adjudicate a material or disputed factual, comparative, SOTA/frontier, status, completion, causality, or delivery claim against current primary evidence. Use when deciding whether work is actually done, a claimed improvement or leading position is supported, a stated cause is proven, or source, merge, release, deploy, and live behavior are established. Do not load merely because routine implementation reporting should remain truthful."
+description: "How to grade claims by evidence class, provenance, strength, and promotion boundaries. Use whenever statements must stay honest under scrutiny. Not a literature dump without claim discipline."
 ---
 
 # Evidence and Claims Standard

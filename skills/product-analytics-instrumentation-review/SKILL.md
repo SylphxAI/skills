@@ -1,6 +1,6 @@
 ---
 name: product-analytics-instrumentation-review
-description: "Design or audit a Product Analytics Event, Identity, and Metric Contract for decision questions, behavior events, identity, consent, delivery, product metrics, QA, dashboards, and drift. Use when trustworthy product measurement is the independent artifact. Do not use for service logs/traces/health/SLOs/alerts/operator diagnostics, generic data-pipeline reliability, active incidents, product strategy, or payment truth."
+description: "Design product analytics instrumentation—events, identity, taxonomy, data quality, and how metrics support decisions. Use for instrumentation contracts. Not board metrics operating models and not one ad-hoc chart."
 ---
 
 # Product Analytics Instrumentation Review

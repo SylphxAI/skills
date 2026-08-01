@@ -1,6 +1,6 @@
 ---
 name: probabilistic-forecasting
-description: "Produce and maintain calibrated probability forecasts for resolvable future events. Use when asked for the likelihood of an outcome by a date, delivery or incident risk, demand or capacity scenarios, conditional futures, or a forecast that should be updated and scored. Produce a Probabilistic Forecast Record. Do not use for general confidence language, choosing an action under known probabilities, or an event that cannot be resolved from declared evidence."
+description: "Build or audit probabilistic forecasts with calibration, uncertainty communication, and decision use. Use when forecast distributions are the artifact. Not causal identification and not deterministic planning alone."
 ---
 
 # Probabilistic Forecasting

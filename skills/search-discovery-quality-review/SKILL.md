@@ -1,6 +1,6 @@
 ---
 name: search-discovery-quality-review
-description: "Design or audit one search, browse, recommendation, or marketplace-discovery quality contract covering corpus and intent, retrieval and eligibility boundaries, ranking evidence, query/result slices, zero and low-confidence recovery, freshness, cold start, personalization, sponsored/editorial separation, abuse, fairness, diagnostics, and release decisions. Use when the primary artifact is a discovery-quality scorecard and improvement plan. Do not use for search implementation, SEO, seller enforcement, analytics instrumentation, or campaign merchandising alone."
+description: "Improve search and discovery quality—relevance, ranking, evaluation, abuse resistance, and UX. Use when search quality is primary. Not general SEO content strategy alone."
 ---
 
 # Search Discovery Quality Review

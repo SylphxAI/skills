@@ -1,6 +1,6 @@
 ---
 name: customer-support-case-resolution
-description: "Resolve or audit one customer-support case from verified facts through a humane response, remedy or compensation, protected-action handoff, legal or abuse escalation, follow-up, and closure evidence. Use when the independent artifact is one Customer Case Resolution Record containing a customer-ready reply when needed, including for a complaint, billing or refund request, trial request, goodwill or gift request, abusive contact, or legal threat. Use Customer Support Operations for the whole support system and Refund And Support Flow for the governing refund consequence state machine."
+description: "Resolve or audit one customer-support case from verified facts through humane response, remedy/compensation, protected-action handoff, legal/abuse escalation, follow-up, and closure evidence. Use when the independent artifact is case resolution. Not designing the whole support operating system (customer-support-operations) or CS value programs."
 ---
 
 # Customer Support Case Resolution

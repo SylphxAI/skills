@@ -1,6 +1,6 @@
 ---
 name: autonomous-execution-standard
-description: "Objective-continuous execution and bounded loop engineering for non-trivial or multi-phase work: preserve the original objective, full-scope acceptance map, proven predicates, and delivery terminal; research, execute, verify, repair, or replan without repeated prompts; keep eligible lanes moving; delegate only when net-positive; and make evidence-bounded completion claims. Use when work must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Do not use for a short direct answer, a few file reads, one command, a tightly coupled local edit, or a continuous process that repeatedly discovers new Work (use self-feeding-agent-loop-standard)."
+description: "Objective-continuous execution for non-trivial or multi-phase work: preserve the original objective, full-scope acceptance map, proven predicates, and delivery terminal; research, execute, verify, repair, or replan without repeated prompts; keep eligible lanes moving; delegate only when net-positive; make evidence-bounded completion claims. Use when work must not stop at a phase, local diff, commit, open PR, partial validation, or one blocked lane. Not for a short answer, a few file reads, one command, a tightly coupled local edit, or a continuous process that keeps discovering new Work (self-feeding-agent-loop-standard)."
 ---
 # Autonomous Execution Standard
 

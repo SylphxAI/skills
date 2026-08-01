@@ -1,6 +1,6 @@
 ---
 name: causal-inference-analysis
-description: "Define and evaluate the causal effect of an intervention, exposure, policy, or treatment on an outcome using explicit estimands, causal assumptions, study design, identification, diagnostics, and sensitivity analysis. Use for questions such as whether X causes Y, what would happen if X changed, observational or quasi-experimental impact analysis, confounding, mediation, selection, or causal attribution. Produce a Causal Inference Record. Do not use for ordinary correlation reporting, isolated software root-cause debugging, generic system maps, or merely configuring an A/B test."
+description: "Estimate or audit causal effects with an explicit identification strategy, assumptions, estimators, robustness checks, and claim bounds. Use when causal inference itself is the deliverable. Not plain KPI reporting, forecasting without interventions, or unconstrained experiment brainstorming."
 ---
 
 # Causal Inference Analysis

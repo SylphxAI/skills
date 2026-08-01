@@ -1,6 +1,6 @@
 ---
 name: evidence-synthesis
-description: "Conduct a reproducible cross-domain review of multiple sources and produce an Evidence Synthesis with a protocol, search and screening record, evidence table, quality and applicability assessment, conflicts or heterogeneity, calibrated certainty, and claim boundaries. Use for systematic, rapid, scoping, or structured evidence reviews across research, policy, science, engineering, or operations. Do not use for market or competitor recommendations, summarizing one supplied source, root-cause hypothesis analysis, adjudicating one disputed claim, or collecting references without synthesis."
+description: "Run a reproducible multi-source evidence review into an Evidence Synthesis—protocol, screening, evidence table, quality/applicability, conflicts, calibrated certainty, and claim bounds. For systematic/rapid/scoping reviews across research, policy, science, engineering, or ops. Not market recommendations, summarizing one source, RCA, or un-synthesized reference lists."
 ---
 
 # Evidence Synthesis

@@ -1,6 +1,6 @@
 ---
 name: saas-web-platform-blueprint
-description: "Design or critically review one complete modern SaaS web platform joining public acquisition surfaces and an authenticated product across value proposition, onboarding, UI/UX, web performance, SEO, PWA disposition, identity, organizations, billing and entitlements, notifications, support, security, privacy, analytics, operations, and global scale. Use when the whole SaaS platform blueprint is the independent artifact. Use `product-finish` when the integrated public and authenticated product already exists and whole-product release-grade polish is primary; use other specialists for one interface, price, payment, refund, notification, identity, marketing, or release job."
+description: "Blueprint a SaaS web platform: multi-tenant shape, core surfaces, billing hooks, admin, and scale path. Use for whole SaaS platform design. Not a single feature and not a pure marketing site."
 ---
 
 # SaaS Web Platform Blueprint

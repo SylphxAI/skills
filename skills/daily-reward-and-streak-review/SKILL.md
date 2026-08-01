@@ -1,6 +1,6 @@
 ---
 name: daily-reward-and-streak-review
-description: Design or audit one daily reward, check-in, streak, calendar, mission, repair, comeback, or return-ritual system for apps and games, including time semantics, progression gates, reward economy, notifications, paid repair/VIP/gacha interaction, abuse, fairness, recovery, experiments, and support. Use when the recurring artifact is a return-loop state machine; use Game/App Design for whole-product retention and Notification Strategy for channel delivery.
+description: "Design daily rewards, streaks, and return loops with cadence, fairness, fatigue, economy coupling, abuse resistance, and measurement. Use when those retention mechanics are primary. Not full game economy design or a whole-game blueprint."
 ---
 
 # Daily Reward And Streak Review

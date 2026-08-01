@@ -1,6 +1,6 @@
 ---
 name: semantic-taxonomy-design
-description: Design, evolve, or audit a large shared semantic vocabulary, concept scheme, capability catalog, knowledge organization system, or cross-domain taxonomy. Use when stable concept identity must be separated from mutable labels and concepts need governed broader, narrower, related, faceted, polyhierarchical, mapped, versioned, or deprecated relationships. Produce a Semantic Vocabulary Contract. Do not use for a small domain-local enum or reason-code list, an API or database schema, a folder layout, or a component or architecture dependency tree.
+description: "Design semantic taxonomies or ontologies—terms, relations, governance, and migration—for product or knowledge systems. Use when taxonomy design is primary. Not an ungoverned tag list."
 ---
 
 # Semantic Taxonomy Design

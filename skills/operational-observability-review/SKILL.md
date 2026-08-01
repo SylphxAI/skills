@@ -1,6 +1,6 @@
 ---
 name: operational-observability-review
-description: "Design operational observability with protected operator evidence and intentional audience-safe customer/public projections. Use when an end-to-end service operating and diagnostic-access contract—logs, metrics, traces, health/readiness, SLOs, alerts, and actions—is the primary artifact. Do not use for product analytics, one feature instrumentation edit, an active incident, recurring data-product quality, or agent tracing alone."
+description: "Design operational observability for services/products: signals, SLOs, alerting, ownership, and on-call usefulness. Use for ops observability programs. Not product analytics funnels or warehouse data-quality alone."
 ---
 
 # Operational Observability Review

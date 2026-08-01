@@ -1,6 +1,6 @@
 ---
 name: critical-analysis
-description: "Analyze an uncertain material question while multiple credible hypotheses or explanations remain, using assumptions, disconfirming evidence, base rates, Bayesian updates, and calibrated conclusions. Use for root-cause, architecture, policy, or ambiguous-evidence analysis. Do not use for fixed-predicate candidate acceptance or as the final owner of a durable option decision."
+description: "Pressure-test a claim, plan, or design for hidden assumptions, weak links, and decision-critical failure modes. Produces a Critical Analysis. Not a neutral summary, status update, or final option-picking exercise by itself."
 ---
 
 # Critical Analysis

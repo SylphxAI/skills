@@ -1,6 +1,6 @@
 ---
 name: saas-subscription-pricing
-description: "Make or audit a SaaS subscription pricing and packaging decision: buyer, value metric, tiers, limits, trials, seats or usage, enterprise path, unit economics, trust constraints, and validation. Use when the primary artifact is what to charge and package. Do not use for billing implementation, entitlement state, listing/interface copy, broad market research, or an already-approved price migration."
+description: "Design SaaS subscription pricing and packaging—plans, value metrics, trials, upgrades/downgrades, and packaging evidence. Use for pricing architecture. Not checkout implementation and not operating one price-increase rollout."
 ---
 
 # SaaS Subscription Pricing

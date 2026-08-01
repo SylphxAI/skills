@@ -1,6 +1,6 @@
 ---
 name: product-asset-production
-description: "Create or audit one exact, localized, accessible, rights-safe Product Asset Production Pack for apps and games: deterministic product captures, screenshots, icons/key/capsule art, feature graphics, trailers, demos, short/long video, captions, audio description, alt text, and store, website, YouTube, X, social, PC, console, mobile, and HTML5 variants. Use when approved product truth and Marketing or Store Listing briefs must become finished media files with provenance and QA. Marketing owns message and campaign briefs; Store Listing owns narrative, selection, order, and metadata; Distribution owns upload, certification, release, and live evidence."
+description: "Produce product assets (copy, media, UI content, packaging inputs) against a brief with quality and rights constraints. Use when making the assets is the job. Not strategy, research, or full launch planning."
 ---
 
 # Product Asset Production

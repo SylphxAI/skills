@@ -1,6 +1,6 @@
 ---
 name: enterprise-contract-operations-review
-description: "Design or audit an enterprise contract operating system across authoritative document intake, versions and precedence, clause and obligation extraction, redlines/deviations, approvals, commitments, amendments, notice windows, renewals, true-ups, cancellations, expiries, exceptions, evidence, and handoffs to pricing, billing, entitlements, security, privacy, support, product, finance, sales, and customer success. Use when the primary artifact is the executable contract and obligation lifecycle. This skill does not provide legal advice or approve terms."
+description: "Run B2B contract operations—terms, entitlements, renewals, exceptions, and how fulfillment links to the contract. Use for enterprise contract ops. Not consumer checkout design or pure legal drafting in isolation."
 ---
 
 # Enterprise Contract Operations Review

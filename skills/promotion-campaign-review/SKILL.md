@@ -1,6 +1,6 @@
 ---
 name: promotion-campaign-review
-description: Design or audit one promotion system—offer, discount, update benefit, cross-promotion, win-back, lifecycle push, app/game event, referral push, launch or seasonal campaign—across objective, audience, deterministic eligibility, user+offer cooldowns, placement, transparent message, economics, authoritative fulfillment, reversal, fraud, support, experiments, automation, and shutdown. Use for one campaign artifact; use Marketing Automation for the whole channel and spend operating system.
+description: "Design or audit a promotion campaign—offer, eligibility, channels, fraud controls, measurement, and operational runbook. Use for campaign work. Not the full marketing OS and not everyday product notification policy."
 ---
 
 # Promotion Campaign Review

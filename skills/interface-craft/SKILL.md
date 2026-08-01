@@ -1,6 +1,6 @@
 ---
 name: interface-craft
-description: "Design, build, reshape, polish, or review one bounded product interface or coherent user flow with distinctive visual direction, production-quality interaction states, responsive mobile/desktop behavior, keyboard/touch/pointer/controller input, baseline accessibility, purposeful motion, UX writing, low-end performance, and rendered verification. Use when the primary artifact is a screen, component family, shell, HUD, form, onboarding or checkout flow, dashboard, settings surface, or frontend implementation—not a whole App/Game blueprint, whole-product finish pass, brand identity, extracted design system, formal accessibility certification, marketing strategy, or pricing decision."
+description: "Design, reshape, polish, or review one bounded product interface or coherent user flow with distinctive visual direction, production-quality interaction states, responsive behavior, and accessibility. Use when a single surface/flow is the job. Not whole-app or whole-game blueprints, design-system extraction, or a multi-surface product-finish pass."
 ---
 
 # Interface Craft

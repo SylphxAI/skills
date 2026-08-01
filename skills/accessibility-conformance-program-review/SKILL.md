@@ -1,6 +1,6 @@
 ---
 name: accessibility-conformance-program-review
-description: Design or audit a product accessibility conformance program spanning target standards, representative workflows, manual and assistive-technology testing, issue governance, release evidence, VPAT/ACR inputs, remediation, and exceptions. Use when the requested artifact is a durable conformance program, claim-evidence review, or release/procurement decision. Do not use for a single UI critique, a code-level accessibility fix, generic QA planning, or legal advice.
+description: "Build or audit a durable accessibility conformance program—target standards, assistive-tech testing, issue governance, release evidence, VPAT/ACR inputs, remediation, and exceptions. Use for claim-ready conformance or procurement evidence. Skip for a single UI critique, one code fix, generic QA planning, or legal advice."
 ---
 
 # Accessibility Conformance Program Review

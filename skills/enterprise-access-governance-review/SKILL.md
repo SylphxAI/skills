@@ -1,6 +1,6 @@
 ---
 name: enterprise-access-governance-review
-description: "Design or audit enterprise tenant and administrator governance across ownership, organization hierarchy, domains, roles, permissions, delegated administration, SSO/SCIM authority boundaries, joiner-mover-leaver lifecycle, temporary elevation, support access, break-glass, privileged-action gates, customer-visible audit evidence, access reviews, tenant split/merge, and access exceptions. Use when the primary artifact is an Enterprise Access Governance Contract. Do not use for authentication or SSO/SCIM implementation, end-user account recovery, a generic authorization library, security certification, or a customer security questionnaire alone."
+description: "Govern enterprise access across roles, joiner-mover-leaver, least privilege, access reviews, break-glass, and audit evidence. Use for tenant/admin access lifecycle. Not end-user account recovery or product-wide abuse economics."
 ---
 
 # Enterprise Access Governance Review

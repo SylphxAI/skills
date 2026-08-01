@@ -1,6 +1,6 @@
 ---
 name: software-distribution-readiness
-description: "Design, prepare, or audit one exact-artifact Software Distribution Contract and Distribution Evidence Pack for command-line tools, apps, games, web, desktop, PC, console, direct downloads, package managers, registries, containers, and stores. Use when an already-designed software product needs channel selection, target packages, signing and provenance, install/update/uninstall behavior, submission or certification, rollout, recovery, publication, or live consumer readback. Do not use for whole-product design, a single library-registry publish with no distribution decision, listing conversion strategy, asset creation, or a cross-domain launch verdict."
+description: "Check whether software can be distributed safely: artifacts, signing, channels, updates, rollback, and install verification. Use for distribution/release packaging readiness. Not store listing conversion copy alone."
 ---
 
 # Software Distribution Readiness

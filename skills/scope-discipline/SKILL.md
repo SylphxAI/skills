@@ -1,6 +1,6 @@
 ---
 name: scope-discipline
-description: "Right-size planning, implementation, migration, architecture, and review: prevent over-engineering, under-engineering, workaround regression, unnecessary code, dependencies, files, abstractions, gates, or waiting while preserving the real correctness and delivery floor. Use when work expands or stalls through human-era cost assumptions, excessive caution, repeated review, speculative hardening, complexity theatre, weak shortcuts, or a request for the simplest complete durable solution."
+description: "Keep work inside explicit in/out bounds, non-goals, and residual tracking so scope does not sprawl. Use when uncontrolled expansion is the risk. Not a full project-planning system."
 ---
 
 # Scope Discipline

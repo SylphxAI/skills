@@ -1,6 +1,6 @@
 ---
 name: referral-loop-review
-description: Design or audit one referral, invite, friend/team sharing, affiliate, ambassador, creator, waitlist, or viral loop across value moment, inviter/invitee states, consented channels, deep links, deterministic attribution, qualification, pending grants, caps, reversals, fraud/self-referral, privacy/contact handling, social interaction, support, experiments, and shutdown. Use when the independent artifact is a persistent referral state machine; use Marketing Automation for the full channel portfolio.
+description: "Design referral growth loops—incentives, fraud resistance, attribution, UX, and unit economics. Use when referral is primary. Not the full marketing OS and not base pricing architecture."
 ---
 
 # Referral Loop Review

@@ -1,6 +1,6 @@
 ---
 name: retention-cohort-review
-description: Diagnose a general product retention cohort or curve and turn it into decisions by validating cohort eligibility, value events, observation windows, metric type, censoring, identity, segment mix, uncertainty, lifecycle mechanisms, monetization, and experiment evidence. Use when cohort analysis itself is the independent artifact and no approved price-change migration owns the causal program. Do not use for a live subscription price-increase cohort or renewal readback, event instrumentation implementation, notification design alone, pricing architecture, broad board reporting, or a full product blueprint.
+description: "Turn retention cohorts and curves into decisions—eligibility, value events, windows, metric type, censoring, identity, segments, uncertainty, and mechanisms. Use when cohort analysis is the independent artifact. Not live subscription price-increase programs, event instrumentation implementation, or broad board reporting."
 ---
 
 # Retention Cohort Review

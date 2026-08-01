@@ -1,6 +1,6 @@
 ---
 name: security-threat-modeling
-description: "Model security threats for a new or materially changed system, architecture, trust boundary, data flow, integration, privileged action, or deployment, and produce a Threat Model and Security Design Contract. Use when security objectives, attack surfaces, abuse cases, controls, and residual risk must shape design before or during implementation. Do not use for product-wide fraud or incentive abuse, customer assurance claims, penetration-test execution, isolated vulnerability remediation, compliance attestation, or incident response."
+description: "Threat-model a system: assets, adversaries, entry points, misuse cases, mitigations, and residual risk. Use when a threat model is the artifact. Not continuous assurance ops and not privacy DSAR handling."
 ---
 
 # Security Threat Modeling

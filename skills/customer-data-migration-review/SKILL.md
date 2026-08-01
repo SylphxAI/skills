@@ -1,6 +1,6 @@
 ---
 name: customer-data-migration-review
-description: "Design or audit one customer-facing data import, onboarding migration, tenant move, system replacement, or bulk cutover from source discovery through mapping, transformation, validation, rehearsal, execution, reconciliation, rollback/forward-fix, customer communication, and acceptance. Use when the primary artifact is a repeatable migration contract for customer data and service continuity. Use architecture-convergence for a substantial one-or-many-repository code-architecture rewrite, product-recovery-contract-review for same-product backup and restore, and customer-success-operations-review for the ongoing post-migration value program."
+description: "Plan customer-facing data import, tenant move, system replacement, or bulk cutover—from discovery and mapping through validation, rehearsal, execution, reconciliation, rollback/forward-fix, and acceptance. Artifact: a repeatable customer-data migration contract. Not architecture rewrites, same-product backup/restore, or ongoing customer-success programs."
 ---
 
 # Customer Data Migration Review

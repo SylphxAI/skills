@@ -1,6 +1,6 @@
 ---
 name: source-to-skill-distiller
-description: "Create or repair one installable Agent Skill package from supplied source material. Use only when the requested output is a SKILL.md or Skill package and the job needs mechanism extraction, evidence/publication boundaries, workflow, output contract, references, multilingual handling, evals, or validation. Do not use for ordinary summarization, translation, documentation, repository review, or code work."
+description: "Turn supplied source material into one installable Skill package—mechanism extraction, boundaries, workflow, output contract, references, and validation. Use only when the requested output is a SKILL.md or skill package. Not ordinary summarization, translation, documentation, or code work."
 ---
 
 # Source To Skill Distiller

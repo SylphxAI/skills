@@ -1,6 +1,6 @@
 ---
 name: requirements-engineering
-description: "Elicit, analyze, negotiate, specify, validate, trace, and govern stakeholder and user needs for a new or materially changed product, system, service, capability, or integration, producing a Requirements Contract. Use when functional behavior, quality attributes, constraints, scenarios, interfaces, acceptance evidence, and change impact must be agreed before or alongside design. Do not use for open-ended product discovery, architecture selection, implementation decomposition after requirements are stable, a trivial unambiguous edit, or final delivery verification."
+description: "Elicit, structure, and validate requirements with acceptance criteria and traceability. Use when requirements quality is the job. Not implementation design and not pure user-research synthesis."
 ---
 
 # Requirements Engineering

@@ -1,6 +1,6 @@
 ---
 name: security-assurance-operations-review
-description: "Prepare or audit one truthful customer security-assurance packet and its claim-evidence operating loop across questionnaires, procurement responses, trust-center content, gated reports, control mappings, gaps, exceptions, commitments, freshness, access, and revocation. Use when the primary artifact is what the company may say and prove about current security. Do not use for security implementation, threat modeling, penetration testing, vulnerability remediation, incident response, compliance audit execution, or contract redlining."
+description: "Run continuous security assurance—controls testing, evidence, exceptions, and assurance operations. Use for security assurance programs. Not one threat-modeling workshop and not product-abuse policy alone."
 ---
 
 # Security Assurance Operations Review

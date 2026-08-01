@@ -1,6 +1,6 @@
 ---
 name: payment-platform-readiness
-description: Design or audit one buyer-payment authority system across Apple Pay, Google Pay, Google Play Billing, App Store IAP, web checkout, subscriptions, one-time purchases, provider-confirmed refunds/revocations, restore purchases, receipts, tax, money ledger, entitlement projection, settlement, reconciliation, finance close, and support traces. Use when provider ingestion and ledger correctness are the primary artifact; use Refund And Support for customer/account consequences after authoritative refund events.
+description: "Assess payments readiness across processors, rails, ledger, reconciliation, disputes, compliance hooks, and failure modes. Use for payment capability readiness. Not pricing strategy and not refunds policy alone."
 ---
 
 # Payment Platform Readiness

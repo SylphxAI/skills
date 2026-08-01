@@ -1,6 +1,6 @@
 ---
 name: data-quality-observability-review
-description: "Design or audit a recurring Data Reliability Contract for data products and pipelines—datasets, streams, imports, transformations, warehouses, and search/operational projections—across freshness, completeness, semantic drift, reconciliation, trust state, repair, and consumer impact. Use when ongoing data fitness is the primary artifact. Do not use for one bounded customer/tenant migration, search relevance/ranking quality, a general provenance/custody graph, product analytics metrics, ledger truth, privacy, or active incident response alone."
+description: "Stand up data-quality observability: contracts, anomaly detection, lineage, ownership, and remediation paths. Use for data reliability programs. Not product analytics event design alone or generic service monitoring."
 ---
 
 # Data Quality Observability Review

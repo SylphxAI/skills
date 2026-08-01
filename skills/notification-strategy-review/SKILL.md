@@ -1,6 +1,6 @@
 ---
 name: notification-strategy-review
-description: "Design or audit one cross-channel notification policy across push, email, in-app messages, SMS, browser, and desktop: permission and consent, preferences, taxonomy, trigger semantics, channel routing, frequency and fatigue, privacy, dedupe, deliverability, withdrawal, and observed zero-send. Use when those message-wide controls are the primary artifact. For one win-back, lifecycle-push, offer, event, or promotion campaign's objective, audience, eligibility, economics, fulfillment, and shutdown, use promotion-campaign-review."
+description: "Set product notification strategy across channels, eligibility, frequency caps, personalization, consent, and effectiveness. Use when notification policy is the job. Not one promotional blast and not the full CRM/marketing OS."
 ---
 
 # Notification Strategy Review

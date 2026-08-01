@@ -1,6 +1,6 @@
 ---
 name: developer-quota-credit-abuse-review
-description: Design or audit the reusable product policy for developer quotas, free or promotional credits, costly-operation access, trust-tier graduation, abuse-resistant ledgers, adaptive friction, throttling, review, appeals, cost controls, and legitimate production scale-up. Use when generosity, activation, and abuse economics must be balanced across a developer platform. Do not use for one account's 429 debugging or limit-increase ticket, low-level rate-limiter implementation, infrastructure capacity planning, DDoS response, package pricing, payment settlement, or a fraud investigation alone.
+description: "Balance developer free credits, quotas, and costly operations against abuse: trust tiers, ledgers, friction, throttling, review/appeals, and legitimate production scale-up. Use when developer generosity vs abuse economics is primary. Not general product-abuse programs or core payments billing alone."
 ---
 
 # Developer Quota Credit Abuse Review

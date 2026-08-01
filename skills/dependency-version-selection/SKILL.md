@@ -1,6 +1,6 @@
 ---
 name: dependency-version-selection
-description: "Resolve and migrate runtimes, frameworks, SDKs, generators, plugins, and libraries from their authoritative current release sources. Use when creating or scaffolding a project, adding, replacing, or upgrading dependency declarations, regenerating a lock graph after dependency changes, modernizing an existing project, or reviewing dependency currency. Query live sources instead of model memory. Do not use to decide build versus adopt, for package metadata or script-only edits, lockfile recovery that must preserve the selected graph, choosing between fundamentally different technologies, floating mutable production versions, or selecting preview releases without an explicit experiment."
+description: "Pick or audit dependency versions with compatibility, security, upgrade risk, pins, and policy evidence. Use for version selection and upgrade policy. Not inventing architecture and not generic package publishing."
 ---
 
 # Dependency Version Selection

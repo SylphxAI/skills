@@ -1,6 +1,6 @@
 ---
 name: marketplace-payouts-review
-description: Design and audit marketplace payout, earnings, fee, revenue share, seller balance, creator payout, refund, chargeback, hold, clawback, split payment, ledger, tax/compliance handoff, payout support, and dispute flows for creator marketplaces, app/plugin stores, gig marketplaces, game marketplaces, affiliate programs, and two-sided platforms. Use when money moves from buyers through the platform to sellers or creators.
+description: "Design or audit marketplace payout/earnings flows: fees, revenue share, seller balances, holds, clawbacks, split payments, ledger, tax/compliance handoff, payout support, and disputes. Use when marketplace payout operations are primary. Not seller-performance programs or trust/safety policy alone."
 ---
 
 # Marketplace Payouts Review

@@ -1,6 +1,6 @@
 ---
 name: offline-sync-conflict-review
-description: "Design or audit one offline/local-first synchronization and conflict protocol: local storage, queued mutations, idempotency, causality/order, reconnect, tombstones, optimistic states, multi-device/collaborative merges, attachments, auth expiry, encryption, schema migration, data-loss recovery, UX, sync-domain evidence, and chaos tests. Use when unreliable connectivity or concurrent edits need an independently acceptable sync artifact; use App Design for whole-product workflows."
+description: "Design offline sync and conflict resolution—data models, merge rules, UX, authority, and recovery. Use for offline-first sync contracts. Not general backup/restore or pure network reliability work."
 ---
 
 # Offline Sync Conflict Review

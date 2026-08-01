@@ -1,6 +1,6 @@
 ---
 name: product-experiment-review
-description: "Design or audit one decision-grade product experiment protocol and learning memo covering the decision, mechanism, estimand, eligibility, assignment, exposure, interference, metrics, maturity, sample plan, guardrails, stopping, analysis, and action rule. Use for A/B tests, holdouts, switchbacks, cluster or staged experiments in product, growth, pricing, lifecycle, marketplace, game, and AI surfaces. Do not use for feature-flag engineering, instrumentation implementation, rollout without a causal question, or choosing the underlying product strategy."
+description: "Design or audit product experiments: hypothesis, design, power, guardrails, analysis, and ship/hold decision rules. Use when experimentation is primary. Not observational causal studies alone and not shipping a feature with no experiment design."
 ---
 
 # Product Experiment Review

@@ -1,6 +1,6 @@
 ---
 name: high-signal-communication
-description: "Compress or restructure an agent communication into a concise, answer-first, decision-complete artifact. Use when the user asks for a brief, scannable, action-first, de-duplicated, ADHD-friendly, or less verbose reply, handoff, progress summary, report, commit, PR, ADR, spec, incident note, or agent record, or asks to reduce context cost. Do not inject by default for every ordinary reply or document."
+description: "Communicate so status is decision-useful: evidence, residuals, next action, and no false certainty or noise. Use for durable agent/human communication standards. Not brand voice or marketing copy style."
 ---
 
 # High-Signal Communication

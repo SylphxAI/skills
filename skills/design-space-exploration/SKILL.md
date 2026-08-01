@@ -1,6 +1,6 @@
 ---
 name: design-space-exploration
-description: "Generate and structure materially diverse solution concepts before selection. Use when asked to brainstorm, explore alternatives, map a design space, avoid premature convergence, or find unconventional architecture, product, policy, research, or operating approaches. Produce a Design Space Portfolio. Do not use to select the final option, diagnose which factual hypothesis is true, facilitate a stakeholder debate, or implement an already chosen design."
+description: "Explore solution options before locking a design: explicit alternatives, constraints, evaluation criteria, and tradeoff records. Use early when the shape is still open. Not final implementation work or pure visual polish."
 ---
 
 # Design Space Exploration

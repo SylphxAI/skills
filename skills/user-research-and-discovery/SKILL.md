@@ -1,6 +1,6 @@
 ---
 name: user-research-and-discovery
-description: Plan, conduct, synthesize, or audit generative and qualitative user research, including interviews, contextual inquiry, observation, diary studies, concept evaluation, and usability discovery. Use when a product or service decision needs direct evidence about users' goals, behavior, context, language, barriers, or mental models, and produce a User Research Protocol and Findings. Do not use for market sizing or competitor research, continuous post-use feedback operations, product analytics instrumentation, causal experiment design, or a quantitative prevalence claim.
+description: "Plan, run, and synthesize generative qualitative user research—interviews, contextual inquiry, diaries, concept tests, usability discovery—into a User Research Protocol and Findings. Use when decisions need direct evidence of goals, behavior, context, or barriers. Not market sizing, continuous feedback ops, analytics instrumentation, or causal experiments."
 ---
 
 # User Research and Discovery

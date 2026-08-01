@@ -1,6 +1,6 @@
 ---
 name: incident-standard
-description: "Apply the operational incident lifecycle: detection, severity, command state, mitigation, recovery verification, communication, and machine-checkable postmortem. Use when responding to or reviewing an active/recent service incident, or designing that incident lifecycle. Do not use for general proactive observability, resilience design, or an ordinary defect with no incident or customer/service impact."
+description: "Production incident practice: command, severity, mitigation, communication, evidence, and post-incident learning. Use for incident process. Not ordinary bugfix queues or planned maintenance only."
 ---
 # Incident Standard
 

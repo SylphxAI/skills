@@ -1,6 +1,6 @@
 ---
 name: data-rights-operations-review
-description: "Design or audit an auditable operating system for individual or account data-rights requests: access, export/portability, correction, deletion/erasure, restriction, objection or opt-out, consent withdrawal, appeal, identity and authority checks, shared-account scope, legal/security exceptions, subprocessors, deadlines, communication, and proof. Use when the primary artifact is the end-to-end request case protocol. Use privacy-data-lifecycle-review for proactive product data design and retention policy; do not use this skill as jurisdiction-specific legal advice."
+description: "Operate data-subject rights end to end—access, export, correction, deletion, retention, and proof of fulfillment. Use for privacy rights operations systems. Not writing the full privacy policy or doing security threat modeling."
 ---
 
 # Data Rights Operations Review

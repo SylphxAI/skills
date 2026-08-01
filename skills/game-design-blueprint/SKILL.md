@@ -1,6 +1,6 @@
 ---
 name: game-design-blueprint
-description: "Design or critically review a complete, agent-first game as one coherent player experience: player promise, verbs and loops, challenge, progression and quests, content, economy and monetization, retention, social play and virality, first-time experience, game feel, evergreen late-entry fairness, platforms, accessibility, localization, performance, live operations, automation, and validation. Use for new games, whole-game redesigns, game design documents, persistent or seasonal world strategy, or audits where several gameplay and commercial systems must work together. Use `product-finish` when an integrated playable game already exists and whole-game art, content, gameplay, sensory, numeric, and release-grade polish is the primary job; use other specialists when one economy, ad system, return loop, notification policy, referral, campaign, soft launch, payment, refund, review, analytics, or release artifact is primary."
+description: "Design or critically review a complete game as one coherent player experience: promise, verbs/loops, challenge, progression, content, economy/monetization, retention, social play, first-time experience, game feel, platforms, live ops, and validation. Use for new games, whole-game redesigns, GDDs, or multi-system audits. Use product-finish for polish of an already playable game; use specialists when only economy, ads, soft launch, payments, or one release artifact is primary."
 ---
 
 # Game Design Blueprint

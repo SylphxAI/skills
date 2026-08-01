@@ -1,6 +1,6 @@
 ---
 name: ci-admission-standard
-description: "CI admission tiers, semantic-oracle and gate-portfolio discipline, affected-test selection, required checks, flake control, and preview policy. Use when designing, adding, removing, consolidating, or auditing checks that decide whether a candidate may merge, including slow CI, string or regex source scanners, PR-body classifiers, custom lints, meta-checks, and architecture tests. Do not use for debugging one unrelated test failure."
+description: "CI admission tiers, required checks, semantic-oracle/gate-portfolio discipline, affected-test selection, flake control, and preview policy for what may land on a protected branch. Use when designing or auditing admission gates. Not runner capacity/queueing and not writing ordinary tests alone."
 ---
 # Ci Admission Standard
 

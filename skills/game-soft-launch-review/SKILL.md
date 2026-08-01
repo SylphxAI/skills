@@ -1,6 +1,6 @@
 ---
 name: game-soft-launch-review
-description: Design or audit a game soft-launch learning and exposure program across regions, cohorts, acquisition sources, FTUE, core/meta loops, retention, economy, IAP/IAA, live events, store creative, crashes/performance, support/community, global-transfer risk, and automated scale/hold/pause/withdraw gates. Use when a production-shaped game is entering bounded real-player exposure; use Game Design for the game itself and Distribution Readiness for store submission/certification.
+description: "Plan or audit a game soft launch: market choice, KPI gates, content readiness, live ops, and go/no-go. Use for soft-launch programs. Not writing the full GDD or optimizing store listing conversion alone."
 ---
 
 # Game Soft Launch Review

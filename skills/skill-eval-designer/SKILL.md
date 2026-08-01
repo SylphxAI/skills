@@ -1,6 +1,6 @@
 ---
 name: skill-eval-designer
-description: "Design or audit a falsifiable, exact-candidate runtime auto-injection and behavior evaluation for one Agent Skill or a complete catalog: positive, near-neighbour, abstention, compound injection, hidden tasks, controls, independent model families, deterministic artifact and safety checks, provenance, uncertainty, replay, and regressions. Use when proving incremental behavior, not when authoring a skill or building a router."
+description: "Design falsifiable evals for Skill auto-injection and behavior: positive, near-neighbour, abstention, compound, hidden tasks, controls, oracles, provenance, and regressions. Use to prove whether skills actually help. Not authoring a skill package and not building a skill router."
 ---
 
 # Skill Eval Designer

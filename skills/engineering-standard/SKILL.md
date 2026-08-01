@@ -1,6 +1,6 @@
 ---
 name: engineering-standard
-description: "Apply binding engineering constraints when implementing, fixing, debugging, designing, reviewing, refactoring, or migrating durable product code, APIs, handlers, workers, architecture, capabilities, DDD/Clean/Hexagonal boundaries, state authorities, modules, control/data planes, cells, plugins, contracts, storage, concurrency, security, tests, observability, or delivery-critical runtime paths. Use when code or system/runtime behavior is the artifact; use a specialist procedure when a whole observability, security, migration, or product contract is primary."
+description: "Default engineering method floor for design, implementation, verification, and change safety. Use as the baseline engineering standard. Not product strategy, pure research methods, or live incident command."
 ---
 # Engineering Standard
 

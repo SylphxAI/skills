@@ -1,6 +1,6 @@
 ---
 name: design-system-extractor
-description: Extract and reconcile an existing product design system from authorized screenshots, design files, tokens, stylesheets, components, and shipped flows, preserving provenance, confidence, states, responsive rules, accessibility, exceptions, and migration impact. Use when the deliverable is an evidence-backed as-is system map or consolidation plan. Do not use to invent a greenfield visual direction, critique one flow, implement a supplied design, or imitate a third-party product.
+description: "Extract a reusable design system from product UI—tokens, components, patterns, and usage rules. Use when the design system itself is the artifact. Not redesigning one screen or frontend performance remediation."
 ---
 
 # Design System Extractor
