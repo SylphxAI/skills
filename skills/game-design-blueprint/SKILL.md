@@ -1,6 +1,6 @@
 ---
 name: game-design-blueprint
-description: "Design or critically review a complete, agent-first game as one coherent player experience: player promise, verbs and loops, challenge, progression and quests, content, economy and monetization, retention, social play and virality, first-time experience, game feel, evergreen late-entry fairness, platforms, accessibility, localization, performance, live operations, automation, and validation. Use for new games, whole-game redesigns, game design documents, persistent or seasonal world strategy, or audits where several gameplay and commercial systems must work together. Use a specialist when one economy, ad system, return loop, notification policy, referral, campaign, soft launch, payment, refund, review, analytics, or release artifact is the primary job."
+description: "Design or critically review a complete, agent-first game as one coherent player experience: player promise, verbs and loops, challenge, progression and quests, content, economy and monetization, retention, social play and virality, first-time experience, game feel, evergreen late-entry fairness, platforms, accessibility, localization, performance, live operations, automation, and validation. Use for new games, whole-game redesigns, game design documents, persistent or seasonal world strategy, or audits where several gameplay and commercial systems must work together. Use `product-finish` when an integrated playable game already exists and whole-game art, content, gameplay, sensory, numeric, and release-grade polish is the primary job; use other specialists when one economy, ad system, return loop, notification policy, referral, campaign, soft launch, payment, refund, review, analytics, or release artifact is primary."
 ---
 
 # Game Design Blueprint
@@ -147,9 +147,13 @@ Use diagrams and tables only where they reduce ambiguity. Preserve uncertainty; 
 - `game-soft-launch-review` owns bounded real-player cohort learning and scale/hold/pause/withdraw decisions for an already-designed game.
 - `daily-reward-and-streak-review`, `ad-monetization-review`, `notification-strategy-review`, `referral-loop-review`, and `promotion-campaign-review` own their detailed state machines.
 - Payment, refund, review/feedback, analytics, distribution, listing, marketing, support, and engineering procedures own their independent artifacts.
+- `product-finish` owns the integrated whole-game finish pass after the player
+  promise, systems, and approved direction are defined. Graybox or low-poly
+  work is terminal only when that exact prototype fidelity or art direction is
+  declared; blueprint acceptance is not whole-game finish evidence.
 
 Compound work may use multiple procedures. Name one primary artifact owner, pass draft IDs while designing, and let deterministic delivery tooling seal exact versions and digests later.
 
 ## Completion check
 
-The blueprint is ready when another agent can explain the promised experience, why each selected system belongs, how loops and systems interact, what is fully built versus only contract-ready or exposed, how late and returning players reach meaningful participation, which evidence could falsify each major hypothesis, and where every specialist decision lives. No requested capability may be deferred for conventional human scarcity, and no genre-incoherent feature, implementation-control-plane boilerplate, fabricated digest, or invented proof may substitute for game design.
+The blueprint is ready when another agent can explain the promised experience, why each selected system belongs, how loops and systems interact, what is fully built versus only contract-ready or exposed, how late and returning players reach meaningful participation, which evidence could falsify each major hypothesis, and where every specialist decision lives. No requested capability may be deferred for conventional human scarcity, and no genre-incoherent feature, implementation-control-plane boilerplate, fabricated digest, or invented proof may substitute for game design. Blueprint acceptance does not itself claim implementation, whole-game finish, release, or live quality.

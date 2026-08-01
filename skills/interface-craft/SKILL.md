@@ -1,6 +1,6 @@
 ---
 name: interface-craft
-description: "Design, build, reshape, polish, or review one bounded product interface or coherent user flow with distinctive visual direction, production-quality interaction states, responsive mobile/desktop behavior, keyboard/touch/pointer/controller input, baseline accessibility, purposeful motion, UX writing, low-end performance, and rendered verification. Use when the primary artifact is a screen, component family, shell, HUD, form, onboarding or checkout flow, dashboard, settings surface, or frontend implementation—not a whole App/Game blueprint, brand identity, extracted design system, formal accessibility certification, marketing strategy, or pricing decision."
+description: "Design, build, reshape, polish, or review one bounded product interface or coherent user flow with distinctive visual direction, production-quality interaction states, responsive mobile/desktop behavior, keyboard/touch/pointer/controller input, baseline accessibility, purposeful motion, UX writing, low-end performance, and rendered verification. Use when the primary artifact is a screen, component family, shell, HUD, form, onboarding or checkout flow, dashboard, settings surface, or frontend implementation—not a whole App/Game blueprint, whole-product finish pass, brand identity, extracted design system, formal accessibility certification, marketing strategy, or pricing decision."
 ---
 
 # Interface Craft
@@ -111,6 +111,10 @@ Reject or revise work that:
 
 - Use `app-design-blueprint` when deciding a whole app’s promise, workflows, capability portfolio, retention, commerce, social systems, and cross-platform architecture.
 - Use `game-design-blueprint` when deciding a whole game’s player promise, mechanics, loops, progression, economy, challenge, social systems, and game feel. Use this skill for a bounded HUD, menu, store, inventory, onboarding, or control surface.
+- Use `product-finish` when an already integrated product needs one coherent
+  finish pass across multiple surfaces, content or asset families, copy,
+  numbers, sensory behavior, and product-wide consistency. This Skill remains
+  the implementation owner for a bounded interface handoff inside that pass.
 - Route design-system extraction/governance and formal accessibility certification to their owning specialist when available; this skill still implements baseline quality on its bounded surface.
 - Consume approved pricing and marketing decisions. Route unresolved tier/value/price decisions to `saas-subscription-pricing`, campaign/message strategy to `marketing-automation-blueprint`, and promotional captures/media to `product-asset-production`.
 

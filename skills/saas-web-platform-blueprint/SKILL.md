@@ -1,6 +1,6 @@
 ---
 name: saas-web-platform-blueprint
-description: "Design or critically review one complete modern SaaS web platform joining public acquisition surfaces and an authenticated product across value proposition, onboarding, UI/UX, web performance, SEO, PWA disposition, identity, organizations, billing and entitlements, notifications, support, security, privacy, analytics, operations, and global scale. Use when the whole SaaS platform blueprint is the independent artifact; use specialists for one interface, price, payment, refund, notification, identity, marketing, or release job."
+description: "Design or critically review one complete modern SaaS web platform joining public acquisition surfaces and an authenticated product across value proposition, onboarding, UI/UX, web performance, SEO, PWA disposition, identity, organizations, billing and entitlements, notifications, support, security, privacy, analytics, operations, and global scale. Use when the whole SaaS platform blueprint is the independent artifact. Use `product-finish` when the integrated public and authenticated product already exists and whole-product release-grade polish is primary; use other specialists for one interface, price, payment, refund, notification, identity, marketing, or release job."
 ---
 
 # SaaS Web Platform Blueprint
@@ -103,7 +103,11 @@ Return one SaaS Web Platform Blueprint containing:
 - Use `notification-strategy-review`, `account-recovery-review`, `enterprise-access-governance-review`, `privacy-data-lifecycle-review`, `product-analytics-instrumentation-review`, and `customer-support-operations` when one of those systems is the primary artifact.
 - Use `marketing-automation-blueprint` for the whole go-to-market control plane, `social-media-operations-review` for recurring social channel operations, and `software-distribution-readiness` for release-channel proof.
 - Use `product-lifecycle-architect` only when a separate cross-domain Product Program Manifest is required; it indexes the SaaS blueprint and specialist outputs without absorbing their semantics.
+- Use `product-finish` for the integrated public-to-authenticated finish pass
+  after product, commercial, policy, and experience direction are defined.
+  Blueprint acceptance is not evidence that copy, content, routes, states, and
+  the real rendered product meet the declared finish target.
 
 ## Completion check
 
-Complete only when another agent can trace every selected capability from user value through canonical state, interface, entitlement, failure, metric, authority, specialist owner, proof, availability, recovery, and shutdown—without inventing live facts or leaving a conventional later-hardening project.
+Complete only when another agent can trace every selected capability from user value through canonical state, interface, entitlement, failure, metric, authority, specialist owner, proof, availability, recovery, and shutdown—without inventing live facts or leaving a conventional later-hardening project. Blueprint completion does not claim implementation, whole-product finish, release, or live availability.

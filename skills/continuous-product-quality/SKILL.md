@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "Design or audit a durable cross-domain product-quality operating loop and produce a Product Quality Loop Contract covering quality surfaces and objectives, scout triggers, evidence-bearing observations, finding admission and deduplication, bounded Work handoff, delivery readback, coverage freshness, value/risk/WIP budgets, and idle/wake conditions. Use when a product should autonomously discover and close recurring defects or improvement opportunities across correctness, UI/UX, accessibility, SEO/discovery, performance, reliability, security/privacy, content, or live behavior. Do not use for one known bug, one release review, customer-feedback intake alone, service observability alone, agent-system learning, or generic Work scheduling."
+description: "Design or audit a durable cross-domain product-quality operating loop and produce a Product Quality Loop Contract covering quality surfaces and objectives, scout triggers, evidence-bearing observations, finding admission and deduplication, bounded Work handoff, delivery readback, coverage freshness, value/risk/WIP budgets, and idle/wake conditions. Use when a product should autonomously discover and close recurring defects or improvement opportunities across correctness, UI/UX, accessibility, SEO/discovery, performance, reliability, security/privacy, content, or live behavior. Do not use for one known bug, one whole-product finish pass, one release review, customer-feedback intake alone, service observability alone, agent-system learning, or generic Work scheduling."
 ---
 
 # Continuous Product Quality
@@ -56,6 +56,10 @@ before selecting dimensions, signals, admission policy, or stop conditions.
 - `self-feeding-agent-loop-standard` owns recurring Work selection and durable
   re-entry. This Skill owns what constitutes a product-quality signal, finding,
   admission decision, coverage state, and outcome readback.
+- `product-finish` owns a bounded pass that brings one integrated product or
+  candidate to a declared finish target. This recurring loop may discover later
+  finish defects, but it may not use future recurrence to excuse a rough initial
+  candidate or replace the Product Finish Pass.
 - Specialist Skills own their domain methods. Examples include interface,
   accessibility, performance, observability, security/privacy, feedback,
   architecture, and release review.
