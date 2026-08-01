@@ -2291,5 +2291,19 @@
     "prompt": "Only fix this one null pointer on the settings page and open a PR.",
     "expectedSkills": [],
     "artifacts": []
+  },
+  {
+    "id": "cpq-uncapped-goal-positive",
+    "kind": "positive",
+    "prompt": "Start continuous betterment for this product and bind an uncapped harness goal so if the session stops mid-loop the system recovers and continues the same betterment objective.",
+    "expectedSkills": [
+      "continuous-product-quality"
+    ],
+    "artifacts": [
+      {
+        "artifact": "Product Quality Loop Contract",
+        "owner": "continuous-product-quality"
+      }
+    ]
   }
 ]

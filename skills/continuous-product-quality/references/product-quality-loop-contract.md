@@ -280,6 +280,16 @@ the owning product process rather than silently moving the target.
 Rework is new related Work (`rework_of`, `follow_up_of`, or `reverts`) and does
 not rewrite completed history.
 
+## Harness goal binding
+
+When the executing harness exposes a Goal System, bind an uncapped recovery goal
+for the betterment engagement (omit token/time budget caps unless the product
+owner explicitly sets one). The goal objective must embed product identity,
+selected aspects, idle-frontier Definition of Done, and next safe action so an
+interrupted session resumes the same loop. Mark the goal complete only when the
+idle frontier predicate is truly met for the declared scope—not when a single
+finding closes. Details: [harness-goal-binding.md](harness-goal-binding.md).
+
 ## Idle, wake, and continuation
 
 Absolute perfection is not falsifiable. A healthy idle frontier requires:

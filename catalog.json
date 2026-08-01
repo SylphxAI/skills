@@ -113,9 +113,9 @@
     },
     {
       "name": "continuous-product-quality",
-      "description": "Operate continuous product betterment loop engineering across any aspect (UI/UX, performance, business model, game design, art/3D, reliability, content, etc.): quality matrix, scout, admit, deliver, verify, then idle without claiming perfection. Not one bug, one finish pass, one release review, or vague unbounded 'make it perfect' work.",
+      "description": "Operate continuous product betterment loop engineering across any aspect (UI/UX, performance, business model, game design, art/3D, reliability, content, etc.): bind uncapped harness goal for recovery, quality matrix, scout, admit, deliver, verify, idle without perfection. Not one bug, one finish pass, or vague 'make it perfect' work.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:0ad1620e587c1207df7c75af846f5ac0f88032a697c62a8030b711563a176135"
+      "packageDigest": "sha256:a1723bd3a9969b4a4971e4f249a7e885bebc0328263f217bd5a424037e3ed0e4"
     },
     {
       "name": "convergent-review",

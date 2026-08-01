@@ -876,6 +876,32 @@
         "skill_miss",
         "model_limit"
       ]
+    },
+    {
+      "id": "critical-cpq-uncapped-harness-goal",
+      "suite": "critical-skill",
+      "prompt": "Run continuous product betterment loop engineering for this app. Use the harness Goal System with no token budget cap so accidental stops auto-recover into the same loop until idle frontier.",
+      "expectedSkills": [
+        "continuous-product-quality"
+      ],
+      "nearNeighbours": [
+        "autonomous-execution-standard",
+        "self-feeding-agent-loop-standard",
+        "product-finish"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Creates or resumes a harness goal whose objective carries product/aspects/idle-frontier DoD and omits token_budget/budget cap; does not mark goal complete after one tick/Work; continues betterment loop semantics rather than one-shot finish.",
+        "mustNot": [
+          "Set a token_budget unless the user explicitly requested a cap",
+          "Mark the harness goal complete after a single improvement or PR",
+          "Treat product-finish as the sole primary owner of the standing loop"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
+        "tool_policy_gap",
+        "model_limit"
+      ]
     }
   ]
 }

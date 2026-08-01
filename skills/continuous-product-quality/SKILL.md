@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "Operate continuous product betterment loop engineering across any aspect (UI/UX, performance, business model, game design, art/3D, reliability, content, etc.): quality matrix, scout, admit, deliver, verify, then idle without claiming perfection. Not one bug, one finish pass, one release review, or vague unbounded 'make it perfect' work."
+description: "Operate continuous product betterment loop engineering across any aspect (UI/UX, performance, business model, game design, art/3D, reliability, content, etc.): bind uncapped harness goal for recovery, quality matrix, scout, admit, deliver, verify, idle without perfection. Not one bug, one finish pass, or vague 'make it perfect' work."
 ---
 
 # Continuous Product Quality
@@ -23,6 +23,9 @@ Read before operating:
 - [references/multi-aspect-betterment-loop.md](references/multi-aspect-betterment-loop.md)
   for multi-aspect loop engineering, specialist composition, and
   standards-vs-workflow boundaries
+- [references/harness-goal-binding.md](references/harness-goal-binding.md)
+  for uncapped harness Goal System create/resume/complete rules used to recover
+  interrupted betterment loops
 
 ## Non-negotiable loop laws
 
@@ -42,6 +45,13 @@ Read before operating:
    every Skill into context.
 6. **Bounded ticks.** Continuous betterment is durable state + re-entry, not an
    immortal chat session.
+7. **Bind the harness Goal System when present.** If the runtime exposes a goal
+   API (`create_goal` / `get_goal` / `update_goal` or equivalent), create or
+   resume an **uncapped** goal (omit `token_budget` / budget cap fields) whose
+   objective carries the full betterment contract: product, aspects, floors,
+   idle-frontier Definition of Done, validation/evidence, and next safe action.
+   This is how accidental session stops recover into the same loop. Do not mark
+   the goal complete after one tick or one Work item.
 
 ## Loop
 
@@ -61,10 +71,20 @@ bind product + aspects in scope
 
 ## Method
 
-1. **Bind the product.** Exact product/release, surfaces, journeys,
-   capabilities, owners, delivery boundary, hard floors, improvement
+1. **Bind the product and harness goal.** Exact product/release, surfaces,
+   journeys, capabilities, owners, delivery boundary, hard floors, improvement
    objectives, and explicit non-goals. Keep the versioned contract with product
-   source authority.
+   source authority. Then, if the harness has a Goal System:
+   - `get_goal` first; resume if an active betterment goal already matches;
+   - otherwise `create_goal` with a full objective string and **no budget cap**
+     (omit `token_budget`);
+   - keep the goal active across ticks so interrupted sessions auto-continue;
+   - `update_goal(complete)` only at an honest **idle frontier** for the declared
+     scope (or `blocked` only after the runtime's strict blocked audit);
+   - never complete the goal merely because one finding closed or the model
+     stopped talking.
+   If the harness has no Goal System, record that residual and rely on durable
+   contract state + wake triggers only.
 2. **Select aspects.** Build the matrix only for applicable betterment aspects
    (examples: functional journeys, UI/UX, interaction craft, accessibility,
    performance, reliability, security/privacy, content/brand, SEO/discovery,
@@ -133,6 +153,9 @@ Return:
    findings, admitted Work, verified outcomes, idle/wake status
 3. **Next safe action** for the highest-value eligible cell or a durable idle
    checkpoint
+4. **Harness goal binding** when available: goal objective text used/created,
+   whether budget was omitted (required), and whether status is active / idle-
+   complete / blocked / unavailable
 
 Complete a **design** only when every applicable cell has a usable oracle,
 non-applicable cells have reasons, and the loop can idle without losing state.

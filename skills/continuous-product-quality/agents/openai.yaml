@@ -1,4 +1,4 @@
 interface:
   display_name: "Continuous Product Betterment Loop"
-  short_description: "Loop-engineer multi-aspect product improvement without false perfection"
-  default_prompt: "Use $continuous-product-quality to run product betterment loop engineering: pick aspects (UI/UX, performance, business, game, art, etc.), scout, admit bounded Work, deliver, verify, and idle without claiming perfection."
+  short_description: "Loop-engineer multi-aspect product improvement with uncapped harness goal recovery"
+  default_prompt: "Use $continuous-product-quality to run product betterment loop engineering. First bind an uncapped harness goal (omit token_budget) for this product/aspects so interrupted sessions recover; then scout, admit bounded Work, deliver, verify with original oracles, and idle without claiming perfection."

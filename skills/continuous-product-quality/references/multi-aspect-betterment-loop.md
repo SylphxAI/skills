@@ -115,3 +115,14 @@ When authoring or auditing the loop contract, ensure:
 - specialist handoff language examples;
 - idle frontier predicate and wake catalog;
 - residual register (what is known-not-yet-worth-fixing).
+
+## Harness Goal System (recovery)
+
+If the agent harness provides a Goal System, betterment loops **must** bind an
+**uncapped** goal at start and resume it every tick so accidental stops recover
+into the same engagement. See
+[harness-goal-binding.md](harness-goal-binding.md).
+
+Goals do not replace product Work authority, delivery proof, or specialist
+methods. They only preserve the loop objective across harness interruptions.
+
