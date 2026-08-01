@@ -137,3 +137,9 @@ When adding or materially changing a skill, state in the PR:
 - nearest neighbours / exclusions
 - composed policy packs (if workflow/review)
 - whether `-standard` is justified (policy primary only)
+
+## Related residuals
+
+Class labels and composition docs do **not** close host utilization. See
+[skill-utilization-eval-residual.md](skill-utilization-eval-residual.md) —
+install/reclass green is not behavior-oracle proof.

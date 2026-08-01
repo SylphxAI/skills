@@ -3,3 +3,5 @@ node_modules/
 .DS_Store
 .sylphx-skills.json
 
+# Local description rewrite scratch (not source authority)
+.description-rewrite-work/

@@ -14,7 +14,7 @@ Legend:
 | --- | --- |
 | KEEP-policy | Primary class is binding predicates/profile; `-standard` OK |
 | RECLASS-workflow | Primary is multi-step job/loop; keep id for now; treat as workflow in docs/checklists |
-| ABSORB-candidate | Investigate merge under ADR-0009 coincidence rule; not auto-merge |
+| KEEP-separate | Investigated merge; rejected under ADR-0009 coincidence rule |
 | RETIRE-candidate | Only if superseded with preserved mechanism; none forced here |
 
 ## Inventory

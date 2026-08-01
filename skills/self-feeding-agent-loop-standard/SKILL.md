@@ -8,7 +8,7 @@ description: "Workflow: continuous work-selection OS that generates next Work fr
 **Primary class:** `workflow` (continuous work-selection OS with embedded
 predicates). **Package id** keeps the historical `*-standard` suffix for
 stability; do not treat this package as pure policy or always-on law. See
-[ADR-20260801](../../docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
+[ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
 
 **When matched:** run this workflow for continuous discovery → claim → tick
 behavior.

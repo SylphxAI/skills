@@ -14,7 +14,7 @@ native discovery; users may trigger it explicitly. It composes **policy packs**
 and other workflows (how execution, delivery, and coordination must behave) and
 **specialist Skills** (how a domain improves). Package classes are authoring
 labels only — see
-[ADR-20260801](../../docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
+[ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
 
 Primary artifact: a versioned **Product Quality Loop Contract** plus the
 operating loop that uses it.

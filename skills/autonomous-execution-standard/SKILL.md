@@ -6,7 +6,7 @@ description: "Workflow: drive one accepted multi-phase objective to the delivery
 # Autonomous Execution (workflow)
 
 **Primary class:** `workflow` (execution method with embedded binding predicates).  
-**Package id** keeps the historical `*-standard` suffix for stability; do not treat this package as pure policy or always-on law. See [ADR-20260801](../../docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
+**Package id** keeps the historical `*-standard` suffix for stability; do not treat this package as pure policy or always-on law. See [ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
 
 **When matched:** run this workflow for the active accepted objective.
 
