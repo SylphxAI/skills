@@ -14,6 +14,14 @@ Drive-by skill dumps and generic “be a better developer” prompts are not.
 
 ## Authoring rules
 
+0. Declare a **primary package class** in the PR notes (`workflow` | `review` |
+   `policy` | `adapter`). Classes are authoring labels only — see
+   [docs/reference/skill-package-classes-and-composition.md](docs/reference/skill-package-classes-and-composition.md)
+   and [ADR-20260801](docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
+   Do **not** add non-portable frontmatter fields beyond `name` and `description`.
+   Reserve `-standard` for true **policy** packages; do not use it as prestige
+   for procedures or loops.
+
 1. Add or update **exactly one** semantic owner under `skills/<id>/`.
 2. `SKILL.md` frontmatter is only `name` and `description`.
 3. The **description** must say when the skill **should** load and when it

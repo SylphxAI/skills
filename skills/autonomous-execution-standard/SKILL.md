@@ -1,6 +1,6 @@
 ---
 name: autonomous-execution-standard
-description: "Drive non-trivial multi-phase work to the delivery terminal without repeated prompts: preserve objective and acceptance map; research, execute, verify, repair, or replan; claim done only with evidence. Not short Q&A, one local edit, or continuous new-Work discovery (self-feeding-agent-loop-standard)."
+description: "Workflow: drive one accepted multi-phase objective to the delivery terminal without repeated prompts—preserve objective and acceptance map; research, execute, verify, repair, or replan; claim done only with evidence. Not short Q&A, one local edit, continuous new-Work discovery (self-feeding-agent-loop-standard), or multi-aspect product betterment (continuous-product-quality)."
 ---
 # Autonomous Execution Standard
 

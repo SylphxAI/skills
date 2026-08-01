@@ -71,9 +71,9 @@
     },
     {
       "name": "autonomous-execution-standard",
-      "description": "Drive non-trivial multi-phase work to the delivery terminal without repeated prompts: preserve objective and acceptance map; research, execute, verify, repair, or replan; claim done only with evidence. Not short Q&A, one local edit, or continuous new-Work discovery (self-feeding-agent-loop-standard).",
+      "description": "Workflow: drive one accepted multi-phase objective to the delivery terminal without repeated prompts—preserve objective and acceptance map; research, execute, verify, repair, or replan; claim done only with evidence. Not short Q&A, one local edit, continuous new-Work discovery (self-feeding-agent-loop-standard), or multi-aspect product betterment (continuous-product-quality).",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:c7e92336a23c5f7cf192b4b162f0bffba191e4d23b2dd1655116f65ea97af5e0"
+      "packageDigest": "sha256:6abda782abd4736a815da9f9629df36303b579b24facab7bbf84b10c69f3457b"
     },
     {
       "name": "board-metrics-operating-review",
@@ -569,9 +569,9 @@
     },
     {
       "name": "self-feeding-agent-loop-standard",
-      "description": "Standards for loops that keep generating next work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution-standard) or live Enact calls alone.",
+      "description": "Workflow: continuous work-selection OS that generates next Work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution-standard), multi-aspect product betterment alone (continuous-product-quality), or live Enact API ops alone (enact-work-coordination).",
       "path": "skills/self-feeding-agent-loop-standard/SKILL.md",
-      "packageDigest": "sha256:194b501ad17860bd3e0ef055901c11a02c6115b4b7ec191583e86e5490684c9f"
+      "packageDigest": "sha256:06cc818f274d5f8b52fefc2c33f4c5c717947fde6cf77745b3bf92af27a606a8"
     },
     {
       "name": "semantic-taxonomy-design",

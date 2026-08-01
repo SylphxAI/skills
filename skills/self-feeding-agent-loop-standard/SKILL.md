@@ -1,6 +1,6 @@
 ---
 name: self-feeding-agent-loop-standard
-description: "Standards for loops that keep generating next work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution-standard) or live Enact calls alone."
+description: "Workflow: continuous work-selection OS that generates next Work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution-standard), multi-aspect product betterment alone (continuous-product-quality), or live Enact API ops alone (enact-work-coordination)."
 ---
 # Self Feeding Agent Loop Standard
 
