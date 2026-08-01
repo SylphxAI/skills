@@ -345,6 +345,12 @@ maximum tests, or theoretical perfection.
 - Treat explanation and ownership cost as real. If the owner cannot understand
   which capability, guarantee, failure mode, or measured outcome an added layer
   changes, it has not paid for its complexity.
+- Minimize the consumer-visible concept set as well as implementation volume.
+  An added concept or layer must own a distinct capability, contract, state
+  authority, failure or lifecycle boundary, or material quality delta. If it
+  does not, fold it into the existing owner. Keep necessary complexity behind
+  a narrow boundary rather than removing the quality floor or teaching every
+  consumer the internals.
 - Reuse standard industry vocabulary for standard behavior. A proprietary name
   or diagram does not turn an existing sequence, state transition, queue, gate,
   or pipeline into a new architecture.

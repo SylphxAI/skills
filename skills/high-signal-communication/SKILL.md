@@ -81,6 +81,12 @@ correct. Do not restate the question, announce the response structure, or end
 with a summary of the summary. Do not append a generic invitation, call to
 action, or next step when the request is already complete.
 
+When explaining a system, begin with one accurate primary causal path through
+intent, owner, action or effect, and outcome. Reveal authority, state, recovery,
+branches, contracts, and implementation detail only as the consumer drills
+deeper. Do not flatten genuinely asynchronous or divergent behavior into a
+false linear story, and do not make the explanation a second source of truth.
+
 ### Progress update
 
 Report the delta since the last update: changed state, new evidence, current
