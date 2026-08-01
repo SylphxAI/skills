@@ -195,10 +195,10 @@ Examples: `engineering-standard` · `delivery-standard` · `work-coordination-st
 ### Workflows & loop engineering
 
 Multi-step jobs and operating loops: product betterment, whole-product finish,
-single-objective closure, continuous work selection. Some keep a historical
-`*-standard` id; primary class is still workflow.
+single-objective closure, continuous work selection. Job-named packages; not
+policy packs.
 
-Examples: `continuous-product-quality` · `product-finish` · `autonomous-execution-standard` · `self-feeding-agent-loop-standard`
+Examples: `continuous-product-quality` · `product-finish` · `autonomous-execution` · `self-feeding-agent-loop`
 
 ### Reviews, analysis & agent-system methods
 

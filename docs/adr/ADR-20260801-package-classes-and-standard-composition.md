@@ -154,8 +154,8 @@ material. Class labels alone do not fix utilization.
 | Loop layer | Primary class | Owner package | Terminal |
 | --- | --- | --- | --- |
 | Product betterment | workflow | `continuous-product-quality` | Idle frontier (not perfection) |
-| Single-objective closure | **workflow** (execution method; may embed predicates) | `autonomous-execution-standard` | Delivery terminal for one accepted objective |
-| Continuous work selection OS | **workflow** (work OS method; may embed predicates) | `self-feeding-agent-loop-standard` | Tick/report; continuous by design |
+| Single-objective closure | **workflow** (execution method; may embed predicates) | `autonomous-execution` | Delivery terminal for one accepted objective |
+| Continuous work selection OS | **workflow** (work OS method; may embed predicates) | `self-feeding-agent-loop` | Tick/report; continuous by design |
 | Portable coordination semantics | policy | `work-coordination-standard` | N/A (semantics) |
 | Live coordination ops | adapter | `enact-work-coordination` | Live Work effect/readback |
 | Harness recovery | adapter (tool surface) + workflow binding | host Goal System via CPQ / execution workflows | Resume uncapped goal |
@@ -163,14 +163,12 @@ material. Class labels alone do not fix utilization.
 Do **not** treat product betterment, single-objective closure, and continuous
 work selection as one package or one `-standard` prestige suffix.
 
-**Hybrid note:** `autonomous-execution-standard` and
-`self-feeding-agent-loop-standard` currently keep the `-standard` suffix for
-stability, but their **primary class is workflow** (loop/execution method with
-embedded binding predicates). Prefer reclass + description + composition
-wording before mass rename. If a pure predicate subset is needed later, extract
-it; do not file the whole method as pure policy solely to keep the suffix
-honest. Targeted renames require ADR-0009/0016 discipline, catalog integrity,
-and routing cases — not portfolio-wide purity renames.
+**Rename note:** `autonomous-execution` and `self-feeding-agent-loop` are
+job-named **workflow** packages (ADR-0016 hard rename; no discoverable
+`*-standard` alias). Their primary class is workflow (loop/execution method with
+embedded binding predicates). If a pure predicate subset is needed later,
+extract it into a separate policy pack — do not reintroduce a prestige
+`*-standard` suffix on the workflow package.
 
 ### 5. What "automation" is not
 
@@ -218,13 +216,13 @@ Runtime auto-loop requires Goal/Work/scheduler surfaces + an owning workflow
 ## Verification
 
 - Authoring guide exists and matches this ADR.
-- Reclass inventory lists current `*-standard` packages with KEEP-policy /
-  RECLASS-workflow / ABSORB-candidate / RETIRE-candidate.
+- Reclass inventory lists packages with KEEP-policy / RENAMED-workflow /
+  KEEP-separate / RETIRE-candidate, and records completed hard renames.
 - New/changed packages declare primary class in PR notes / CONTRIBUTING
   checklist (docs only — not frontmatter).
 - Descriptions for true policy packs use compose/not-workflow language.
-- `continuous-product-quality`, `autonomous-execution-standard`, and
-  `self-feeding-agent-loop-standard` descriptions exclude each other by layer.
+- `continuous-product-quality`, `autonomous-execution`, and
+  `self-feeding-agent-loop` descriptions exclude each other by layer.
 - No claim that Skills are an industry "standard package type" distinct from
   workflows; Skills *are* the on-demand specialized-package channel.
 - Industry claims distinguish public agentskills progressive disclosure from

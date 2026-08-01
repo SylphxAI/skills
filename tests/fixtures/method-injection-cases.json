@@ -1589,7 +1589,7 @@
     "kind": "compound",
     "prompt": "Continue this multi-phase repair to its real terminal without another prompt. Stop alternating between a local workaround and the old design: fix the owning boundary, preserve proven predicates and avoid creating cleanup the same objective must later undo.",
     "expectedSkills": [
-      "autonomous-execution-standard",
+      "autonomous-execution",
       "scope-discipline"
     ],
     "artifacts": [],
@@ -1718,7 +1718,7 @@
     "kind": "positive",
     "prompt": "呢個 migration 唔好每做完一個 phase 就停低等我再叫；保留原本目標，主動完成所有仍然安全而且屬於範圍內嘅步驟，並且只喺真正終點有證據時先報完成。",
     "expectedSkills": [
-      "autonomous-execution-standard"
+      "autonomous-execution"
     ],
     "artifacts": [],
     "tags": [
@@ -1732,7 +1732,7 @@
     "kind": "positive",
     "prompt": "Drive this non-trivial objective through all remaining eligible work. If one dependency or remote check is pending, advance independent implementation, integration, validation or documentation instead of stopping or polling.",
     "expectedSkills": [
-      "autonomous-execution-standard"
+      "autonomous-execution"
     ],
     "artifacts": [],
     "tags": [
@@ -1746,7 +1746,7 @@
     "kind": "positive",
     "prompt": "Keep the accepted objective intact across replans and reviews. Do not turn an actionable in-scope gap into a follow-up merely to close the current phase, and do not claim completion from effort or a status report.",
     "expectedSkills": [
-      "autonomous-execution-standard"
+      "autonomous-execution"
     ],
     "artifacts": [],
     "tags": [
@@ -1760,7 +1760,7 @@
     "kind": "positive",
     "prompt": "You stopped after reporting phase one. Resume from the accepted goal, verify what remains against its actual terminal, and carry every eligible dependency-ready lane forward without waiting for another steering prompt.",
     "expectedSkills": [
-      "autonomous-execution-standard"
+      "autonomous-execution"
     ],
     "artifacts": [],
     "tags": [
@@ -1774,7 +1774,7 @@
     "kind": "positive",
     "prompt": "Carry this non-trivial repository job through properly. Keep checking the real outcome rather than the current checklist, replan when a route fails, and stop only at its evidence-backed endpoint.",
     "expectedSkills": [
-      "autonomous-execution-standard"
+      "autonomous-execution"
     ],
     "artifacts": [],
     "tags": [
@@ -1788,7 +1788,7 @@
     "kind": "compound",
     "prompt": "Run a bounded loop engineering cycle for this original repository objective: preserve the complete acceptance denominator, research only decision-changing uncertainty, execute every required outcome, and have an independent formal reviewer audit the exact candidate against the original task until it is complete or genuinely blocked.",
     "expectedSkills": [
-      "autonomous-execution-standard",
+      "autonomous-execution",
       "convergent-review"
     ],
     "artifacts": [
@@ -1809,7 +1809,7 @@
     "kind": "positive",
     "prompt": "用 loop engineering 將呢一個已定義任務由原始目標推到真正終點：唔好做到一個 phase 就停，方向被證據推翻先重新決策，驗證失敗就修正，完整通過先收工。",
     "expectedSkills": [
-      "autonomous-execution-standard"
+      "autonomous-execution"
     ],
     "artifacts": [],
     "tags": [
@@ -1823,10 +1823,10 @@
     "kind": "near-neighbour",
     "prompt": "Design a continuous loop engineering worker that keeps discovering, deduplicating and claiming the next Work Item after each current item is delivered, with durable re-entry after external events.",
     "expectedSkills": [
-      "self-feeding-agent-loop-standard"
+      "self-feeding-agent-loop"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution-standard",
+    "nearNeighbourOf": "autonomous-execution",
     "tags": [
       "continuous-loop",
       "new-work",
@@ -1838,7 +1838,7 @@
     "kind": "compound",
     "prompt": "Implement the repository change completely, make the exact source candidate self-contained and validated, then continue through the repository's declared landing or release terminal without treating a commit or open pull request as done.",
     "expectedSkills": [
-      "autonomous-execution-standard",
+      "autonomous-execution",
       "delivery-standard"
     ],
     "artifacts": [],
@@ -1856,7 +1856,7 @@
       "delivery-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution-standard",
+    "nearNeighbourOf": "autonomous-execution",
     "tags": [
       "explicit-terminal",
       "pull-request"
@@ -1868,7 +1868,7 @@
     "prompt": "Run the existing unit-test command once and report only its exit result. Do not edit files, diagnose failures, or start another task.",
     "expectedSkills": [],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution-standard",
+    "nearNeighbourOf": "autonomous-execution",
     "tags": [
       "one-command",
       "bounded"
@@ -1880,7 +1880,7 @@
     "prompt": "In the README sentence “open the PR after phase one,” correct the punctuation only. Do not change the workflow or execute any phase.",
     "expectedSkills": [],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution-standard",
+    "nearNeighbourOf": "autonomous-execution",
     "tags": [
       "misleading-keyword",
       "small-edit"
@@ -1892,7 +1892,7 @@
     "prompt": "Tell me the current branch and whether its working tree has a local diff or unpushed commit. Make no changes.",
     "expectedSkills": [],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution-standard",
+    "nearNeighbourOf": "autonomous-execution",
     "tags": [
       "status",
       "short-answer"
@@ -1906,7 +1906,7 @@
       "engineering-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution-standard",
+    "nearNeighbourOf": "autonomous-execution",
     "tags": [
       "tightly-coupled",
       "local-only"
@@ -1919,7 +1919,7 @@
     "expectedSkills": [],
     "artifacts": [],
     "coverageFor": [
-      "autonomous-execution-standard",
+      "autonomous-execution",
       "delivery-standard"
     ],
     "tags": [
@@ -2138,7 +2138,7 @@
     "prompt": "Design a durable autonomous quality loop for this SaaS that continuously discovers UI, accessibility, SEO, performance, correctness, security and live-behavior gaps, deduplicates evidence into qualified findings, creates bounded Work, and rechecks the delivered outcome without turning every check into merge-blocking CI.",
     "expectedSkills": [
       "continuous-product-quality",
-      "self-feeding-agent-loop-standard"
+      "self-feeding-agent-loop"
     ],
     "artifacts": [
       {

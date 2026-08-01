@@ -1,12 +1,12 @@
 ---
-name: autonomous-execution-standard
-description: "Workflow: drive one accepted multi-phase objective to the delivery terminal without repeated prompts—preserve objective and acceptance map; research, execute, verify, repair, or replan; claim done only with evidence. Not short Q&A, one local edit, continuous new-Work discovery (self-feeding-agent-loop-standard), or multi-aspect product betterment (continuous-product-quality)."
+name: autonomous-execution
+description: "Workflow: drive one accepted multi-phase objective to the delivery terminal without repeated prompts—preserve objective and acceptance map; research, execute, verify, repair, or replan; claim done only with evidence. Not short Q&A, one local edit, continuous new-Work discovery (self-feeding-agent-loop), or multi-aspect product betterment (continuous-product-quality)."
 ---
 
 # Autonomous Execution (workflow)
 
 **Primary class:** `workflow` (execution method with embedded binding predicates).  
-**Package id** keeps the historical `*-standard` suffix for stability; do not treat this package as pure policy or always-on law. See [ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
+**Package id** is job-named (workflow). Do not treat this package as pure policy or always-on law. See [ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
 
 **When matched:** run this workflow for the active accepted objective.
 
@@ -54,7 +54,7 @@ compliance report merely because this package loaded.
 ## Boundaries
 
 - Does not grant deploy, credential, or MCP capabilities.
-- Does not own continuous next-Work discovery (`self-feeding-agent-loop-standard`).
+- Does not own continuous next-Work discovery (`self-feeding-agent-loop`).
 - Does not own multi-aspect product betterment loops (`continuous-product-quality`).
 - Does not replace product-local ADRs where those own decisions.
 

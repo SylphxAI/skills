@@ -25,8 +25,8 @@ them — do not assume hosts auto-load named packages:
 
 | Need | Open |
 | --- | --- |
-| One admitted betterment Work → delivery terminal | `autonomous-execution-standard` |
-| Continuous any-Work selection OS (not product matrix alone) | `self-feeding-agent-loop-standard` |
+| One admitted betterment Work → delivery terminal | `autonomous-execution` |
+| Continuous any-Work selection OS (not product matrix alone) | `self-feeding-agent-loop` |
 | Land/live proof | `delivery-standard` |
 | Claim grading | `evidence-and-claims-standard` |
 | Implementation method / stack defaults | `engineering-standard`, `technology-stack-profile` |
@@ -120,8 +120,8 @@ bind product + aspects in scope
 6. **Hand off with native discovery.** Write Work in the real domain language so
    the host loads the specialist Skill (for example interface, performance,
    game economy, payments, security). Use standards for execution/delivery
-   floors (`autonomous-execution-standard`, `delivery-standard`,
-   `self-feeding-agent-loop-standard` when continuous re-entry is needed).
+   floors (`autonomous-execution`, `delivery-standard`,
+   `self-feeding-agent-loop` when continuous re-entry is needed).
 7. **Deliver and verify.** Follow the repository delivery path. Re-run the
    **original oracle** on the exact delivered subject at the declared layer
    (source, candidate, artifact, or live). Close only on decisive readback;
@@ -135,7 +135,7 @@ bind product + aspects in scope
 | Kind | Examples | Role in this loop |
 | --- | --- | --- |
 | **This workflow** | `continuous-product-quality` | Owns product betterment matrix, scout/admission, coverage, idle/wake, outcome readback |
-| **Loop standards** | `self-feeding-agent-loop-standard`, `autonomous-execution-standard`, `work-coordination-standard` / `enact-work-coordination` | How continuous selection or one admitted Work executes and coordinates |
+| **Loop standards** | `self-feeding-agent-loop`, `autonomous-execution`, `work-coordination-standard` / `enact-work-coordination` | How continuous selection or one admitted Work executes and coordinates |
 | **Delivery/source standards** | `delivery-standard`, `source-authoring-standard`, `risk-matched-verification-standard` | What “landed/live/verified” means |
 | **Specialist workflows** | `interface-craft`, `frontend-performance-remediation`, `product-finish`, `game-design-blueprint`, `game-economy-review`, `saas-subscription-pricing`, `security-threat-modeling`, … | Domain method for one admitted finding/opportunity |
 | **One-shot finish** | `product-finish` | Bounded release-grade pass for an integrated product; not a substitute for the standing loop |

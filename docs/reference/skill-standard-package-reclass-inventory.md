@@ -13,7 +13,7 @@ Legend:
 | Action | Meaning |
 | --- | --- |
 | KEEP-policy | Primary class is binding predicates/profile; `-standard` OK |
-| RECLASS-workflow | Primary is multi-step job/loop; keep id for now; treat as workflow in docs/checklists |
+| RENAMED-workflow | Was mis-suffixed `*-standard`; hard-renamed to job noun (ADR-0016, no alias) |
 | KEEP-separate | Investigated merge; rejected under ADR-0009 coincidence rule |
 | RETIRE-candidate | Only if superseded with preserved mechanism; none forced here |
 
@@ -23,7 +23,7 @@ Legend:
 | --- | --- | --- | --- |
 | `agent-first-development-standard` | policy (+ workflow flavor for packets) | KEEP-policy | Constraints for no-human multi-agent delivery packets; not a continuous loop OS |
 | `agent-native-standard` | policy | KEEP-policy | Product operability constraints for agents |
-| `autonomous-execution-standard` | **workflow** | RECLASS-workflow | Single-objective closure method; suffix legacy; do not call pure policy |
+| `autonomous-execution` | **workflow** | RENAMED-workflow | Hard-renamed from `autonomous-execution-standard` |
 | `ci-admission-standard` | policy | KEEP-policy | CI admission design predicates |
 | `ci-runner-capacity-standard` | policy | KEEP-policy | Capacity design predicates |
 | `commercial-decision-standard` | policy | KEEP-policy | Durable commercial decision predicates |
@@ -40,7 +40,7 @@ Legend:
 | `project-manifest-standard` | policy | KEEP-policy | Project declaration predicates; distinct from org control plane |
 | `repo-adoption-standard` | policy (with onboarding procedure) | KEEP-policy | Prefer keep; if body is mostly procedure, consider workflow extract later |
 | `risk-matched-verification-standard` | policy | KEEP-policy | Verification depth predicates |
-| `self-feeding-agent-loop-standard` | **workflow** | RECLASS-workflow | Continuous work-selection OS method; suffix legacy |
+| `self-feeding-agent-loop` | **workflow** | RENAMED-workflow | Hard-renamed from `self-feeding-agent-loop-standard` |
 | `source-authoring-standard` | policy | KEEP-policy | Source identity/commit predicates |
 | `specification-control-plane-standard` | policy | KEEP-policy | Spec lifecycle; check overlap with project-manifest / enterprise later only if coincident |
 | `work-coordination-standard` | policy | KEEP-policy | Portable ledger semantics; pair with adapter `enact-work-coordination` |
@@ -78,9 +78,15 @@ They **compose** (control plane names profiles for selections) but do not share
 one job/artifact/acceptance/mechanism. Merging would re-bloat routing and hide
 profile lifecycle under control-plane prose.
 
-### Loop packages named `*-standard`
+### Loop packages formerly named `*-standard`
 
-`autonomous-execution-standard` and `self-feeding-agent-loop-standard` remain
-**RECLASS-workflow** with legacy ids. Bodies now declare primary class
-`workflow` and soft composition. Mass rename deferred until routing cases justify
-id churn.
+Hard-renamed (ADR-0016, no discoverable alias):
+
+| Predecessor | Current |
+| --- | --- |
+| `autonomous-execution-standard` | `autonomous-execution` |
+| `self-feeding-agent-loop-standard` | `self-feeding-agent-loop` |
+
+Bodies declare primary class `workflow` and soft composition. Historical
+`runtime/legacy-agents-projection.mjs` keeps predecessor ids as frozen install
+digests only (not current catalog discovery).

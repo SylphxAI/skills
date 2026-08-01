@@ -63,7 +63,7 @@ Verification.
    currently makes the owning fix impossible. It stays visible, owned,
    expiring, and paired with replacement; it never satisfies the owning
    terminal.
-6. `autonomous-execution-standard` owns durable progress. Every accepted
+6. `autonomous-execution` owns durable progress. Every accepted
    material step closes a terminal predicate or selected positive-net
    investment while preserving already proven material predicates. A rollback
    may restore known-good state after falsifying evidence, but it does not make

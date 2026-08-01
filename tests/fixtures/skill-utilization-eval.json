@@ -127,12 +127,12 @@
       "suite": "critical-skill",
       "prompt": "Take this multi-phase migration all the way to the repository delivery terminal without waiting for me between phases. Do not stop after the first PR.",
       "expectedSkills": [
-        "autonomous-execution-standard"
+        "autonomous-execution"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Preserves a full-scope acceptance/delivery map and continues research-execute-verify beyond intermediate checkpoints; does not stop at one phase/local diff as complete.",
         "mustNot": [
-          "Treat self-feeding-agent-loop-standard as the sole primary owner of this job",
+          "Treat self-feeding-agent-loop as the sole primary owner of this job",
           "Treat delivery-standard as the sole primary owner of this job",
           "Treat scope-discipline as the sole primary owner of this job"
         ]
@@ -142,7 +142,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "self-feeding-agent-loop-standard",
+        "self-feeding-agent-loop",
         "delivery-standard",
         "scope-discipline"
       ]
@@ -152,12 +152,12 @@
       "suite": "critical-skill",
       "prompt": "Design a loop that continuously discovers new product-quality work from evidence and re-enters the backlog without human prompt churn.",
       "expectedSkills": [
-        "self-feeding-agent-loop-standard"
+        "self-feeding-agent-loop"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Frames a continuous discovery/admission/idle-wake loop for new Work, not a single bounded objective pushed to one terminal.",
         "mustNot": [
-          "Treat autonomous-execution-standard as the sole primary owner of this job",
+          "Treat autonomous-execution as the sole primary owner of this job",
           "Treat continuous-product-quality as the sole primary owner of this job"
         ]
       },
@@ -166,7 +166,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "autonomous-execution-standard",
+        "autonomous-execution",
         "continuous-product-quality"
       ]
     },
@@ -371,7 +371,7 @@
         "mandatoryObservable": "Produces portable coordination semantics, not live Enact tool calls or a product-specific API tutorial alone.",
         "mustNot": [
           "Treat enact-work-coordination as the sole primary owner of this job",
-          "Treat autonomous-execution-standard as the sole primary owner of this job"
+          "Treat autonomous-execution as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -380,7 +380,7 @@
       ],
       "nearNeighbours": [
         "enact-work-coordination",
-        "autonomous-execution-standard"
+        "autonomous-execution"
       ]
     },
     {
@@ -643,12 +643,12 @@
       "suite": "near-neighbour",
       "prompt": "Finish this specific incident-hardening program through land and live proof without me re-prompting between phases.",
       "expectedSkills": [
-        "autonomous-execution-standard"
+        "autonomous-execution"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Pushes one bounded multi-phase objective to terminal rather than designing an infinite new-work discovery loop.",
         "mustNot": [
-          "Treat self-feeding-agent-loop-standard as the sole primary owner of this job",
+          "Treat self-feeding-agent-loop as the sole primary owner of this job",
           "Treat delivery-standard as the sole primary owner of this job"
         ]
       },
@@ -657,7 +657,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "self-feeding-agent-loop-standard",
+        "self-feeding-agent-loop",
         "delivery-standard"
       ]
     },
@@ -793,7 +793,7 @@
       "suite": "compound",
       "prompt": "Drive this multi-service change fully to production-ready delivery proof without stopping at the open PR, and keep using the correct done criteria.",
       "expectedSkills": [
-        "autonomous-execution-standard",
+        "autonomous-execution",
         "delivery-standard"
       ],
       "behaviorOracle": {
@@ -806,7 +806,7 @@
       ],
       "nearNeighbours": [
         "source-authoring-standard",
-        "self-feeding-agent-loop-standard"
+        "self-feeding-agent-loop"
       ]
     },
     {
@@ -838,8 +838,8 @@
       ],
       "nearNeighbours": [
         "product-finish",
-        "self-feeding-agent-loop-standard",
-        "autonomous-execution-standard"
+        "self-feeding-agent-loop",
+        "autonomous-execution"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Establishes or updates a multi-aspect quality matrix/loop contract, admits only bounded positive-net work, requires oracle readback, and treats idle as non-perfection rather than one finish pass or infinite vague improvement.",
@@ -885,8 +885,8 @@
         "continuous-product-quality"
       ],
       "nearNeighbours": [
-        "autonomous-execution-standard",
-        "self-feeding-agent-loop-standard",
+        "autonomous-execution",
+        "self-feeding-agent-loop",
         "product-finish"
       ],
       "behaviorOracle": {

@@ -64,7 +64,7 @@ Create an **Agent Planning and Control Contract** with:
 
 ## Boundaries
 
-- Use `autonomous-execution-standard` to run and reschedule the current task
+- Use `autonomous-execution` to run and reschedule the current task
   portfolio; this skill designs the reusable planning mechanism itself.
 - Use `work-coordination-standard` for portable claim, lease, handoff, and
   shared-ledger semantics; use the matching product adapter for live state.

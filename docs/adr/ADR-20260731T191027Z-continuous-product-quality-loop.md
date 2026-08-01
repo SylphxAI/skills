@@ -17,8 +17,8 @@ scope:
 ## Context
 
 The existing loop methods intentionally separate one bounded objective from a
-continuous operating system. `autonomous-execution-standard` closes one
-accepted Work Item. `self-feeding-agent-loop-standard` discovers, qualifies,
+continuous operating system. `autonomous-execution` closes one
+accepted Work Item. `self-feeding-agent-loop` discovers, qualifies,
 claims, executes, and re-enters recurring Work. Specialist Skills review one
 quality domain, while `agent-system-improvement` changes prompts, Skills,
 context, tools, evaluators, or workflow after a recurring agent-system failure.

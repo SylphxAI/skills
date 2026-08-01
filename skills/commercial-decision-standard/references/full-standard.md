@@ -112,7 +112,7 @@ serves and what metric would invalidate it.
 
 `decision-quality-standard` owns the general risk-posture, ruin-boundary,
 reversibility, evidence, and decision-precedence method;
-`autonomous-execution-standard` owns execution and escalation authority. This
+`autonomous-execution` owns execution and escalation authority. This
 standard contributes only commercial inputs such as unit-economics downside,
 contractual commitments, pricing reversibility, market timing, customer trust,
 and opportunity cost. Record a commercial delegation envelope only when a

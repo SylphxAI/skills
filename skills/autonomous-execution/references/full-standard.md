@@ -1,4 +1,4 @@
-# Autonomous Execution Standard
+# Autonomous Execution
 
 ## Purpose
 
@@ -330,7 +330,7 @@ reference specializes this standard's existing objective continuity,
 scheduling, evidence, review, and completion rules; it does not create another
 semantic owner. It closes one accepted objective. Continuous discovery,
 intake, and scheduling of new Work remains owned by
-`self-feeding-agent-loop-standard`.
+`self-feeding-agent-loop`.
 
 ## Durable Progress And Anti-Regression
 

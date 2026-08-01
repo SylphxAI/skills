@@ -14,7 +14,7 @@ FRAME -> DECIDE -> EXECUTE -> AUDIT -> COMPLETE
 ```
 
 This method closes one objective. It is not the continuous discovery, intake,
-and scheduling of new Work owned by `self-feeding-agent-loop-standard`.
+and scheduling of new Work owned by `self-feeding-agent-loop`.
 
 ## Frame
 

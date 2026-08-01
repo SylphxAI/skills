@@ -1,13 +1,13 @@
 ---
-name: self-feeding-agent-loop-standard
-description: "Workflow: continuous work-selection OS that generates next Work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution-standard), multi-aspect product betterment alone (continuous-product-quality), or live Enact API ops alone (enact-work-coordination)."
+name: self-feeding-agent-loop
+description: "Workflow: continuous work-selection OS that generates next Work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution), multi-aspect product betterment alone (continuous-product-quality), or live Enact API ops alone (enact-work-coordination)."
 ---
 
 # Self-Feeding Agent Loop (workflow)
 
 **Primary class:** `workflow` (continuous work-selection OS with embedded
-predicates). **Package id** keeps the historical `*-standard` suffix for
-stability; do not treat this package as pure policy or always-on law. See
+predicates). **Package id** is job-named (workflow). Do not treat this package as pure
+policy or always-on law. See
 [ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
 
 **When matched:** run this workflow for continuous discovery → claim → tick
@@ -24,7 +24,7 @@ Open composed packs when the tick touches their domain:
 
 - `work-coordination-standard` for portable ledger semantics
 - `enact-work-coordination` when authenticated Enact tools are present (live ops)
-- `autonomous-execution-standard` **inside** each claimed bounded Work (one
+- `autonomous-execution` **inside** each claimed bounded Work (one
   objective to terminal) — this package does not replace that closure loop
 - `delivery-standard` / `evidence-and-claims-standard` when ticks claim delivery
   outcomes
@@ -51,7 +51,7 @@ because this package loaded.
 
 - Does not grant deploy, credential, or MCP capabilities.
 - Does not drive one already-accepted objective to terminal by itself
-  (`autonomous-execution-standard`).
+  (`autonomous-execution`).
 - Does not replace product betterment matrix ownership
   (`continuous-product-quality`).
 - Does not replace portable semantics (`work-coordination-standard`) or live

@@ -37,13 +37,13 @@
       "name": "agent-native-standard",
       "description": "Constraints for agent-operable products: queryable typed state, schema-derived tools, recoverable workflows, delegation, durable context, and run traces. Not ordinary automation or analytics without an agent-facing contract.",
       "path": "skills/agent-native-standard/SKILL.md",
-      "packageDigest": "sha256:8e405149bd9a4d53e194e8cfbe82e8be30e324e173df890d20f13b6d036ad1de"
+      "packageDigest": "sha256:340713a2e5c36e2c78f5e3dab8db77fb42f1ffeaad9478dd1767462083cf363a"
     },
     {
       "name": "agent-planning-system-review",
       "description": "Design or audit agent planning/control machinery and produce an Agent Planning and Control Contract. Not planning one ordinary task, memory design, or finished-code review.",
       "path": "skills/agent-planning-system-review/SKILL.md",
-      "packageDigest": "sha256:45e04b1e026c881e840f8992a90bbb9c5e1d42f19368d939998419ccd53a470e"
+      "packageDigest": "sha256:24b01c537ffc293b0e1e31a4a52618abfefbc477cd4e7ba2ec6453fec8306b09"
     },
     {
       "name": "agent-system-improvement",
@@ -70,10 +70,10 @@
       "packageDigest": "sha256:c049a0b6fc265abb72dc256693acd5b5e6716b78647cd64768c88e4ee132c3ec"
     },
     {
-      "name": "autonomous-execution-standard",
-      "description": "Workflow: drive one accepted multi-phase objective to the delivery terminal without repeated prompts—preserve objective and acceptance map; research, execute, verify, repair, or replan; claim done only with evidence. Not short Q&A, one local edit, continuous new-Work discovery (self-feeding-agent-loop-standard), or multi-aspect product betterment (continuous-product-quality).",
-      "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:9d99fb27e6438433b3f1926118cbfbaab774d98ae358cea457cd32eeb7b83100"
+      "name": "autonomous-execution",
+      "description": "Workflow: drive one accepted multi-phase objective to the delivery terminal without repeated prompts—preserve objective and acceptance map; research, execute, verify, repair, or replan; claim done only with evidence. Not short Q&A, one local edit, continuous new-Work discovery (self-feeding-agent-loop), or multi-aspect product betterment (continuous-product-quality).",
+      "path": "skills/autonomous-execution/SKILL.md",
+      "packageDigest": "sha256:be953d59ea7980219ad6fbed66f8c1093c2ece33000cdbfba5311d8c61cc297f"
     },
     {
       "name": "board-metrics-operating-review",
@@ -103,7 +103,7 @@
       "name": "commercial-decision-standard",
       "description": "Pricing, packaging, entitlements, commercial ADRs, and market-positioning evidence. Use when making a durable revenue, packaging, licensing, or route-to-market decision. Do not use for implementing an already-decided checkout or billing contract.",
       "path": "skills/commercial-decision-standard/SKILL.md",
-      "packageDigest": "sha256:7489e7459bb93516d43952694c62c1242fac2abee513c51de26124fa041df75f"
+      "packageDigest": "sha256:51a37d1670aed3048f19064b3cd694132d979bf830b5e3056a7c0f3f44161c32"
     },
     {
       "name": "composable-product-portfolio",
@@ -115,7 +115,7 @@
       "name": "continuous-product-quality",
       "description": "Operate continuous product betterment loop engineering across any aspect (UI/UX, performance, business model, game design, art/3D, reliability, content, etc.): bind uncapped harness goal for recovery, quality matrix, scout, admit, deliver, verify, idle without perfection. Not one bug, one finish pass, or vague 'make it perfect' work.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:7dcaf4973a552e891da373de57cdc08265858a463b4f16a67f2825c4835847b7"
+      "packageDigest": "sha256:dc5c4d018449395829b55b9b524cc5807388af08839378be1b168afc22eb066c"
     },
     {
       "name": "convergent-review",
@@ -181,7 +181,7 @@
       "name": "decision-quality-standard",
       "description": "Standards for high-quality decisions: framing, alternatives, information, values/tradeoffs, logic, commitment, and learning after the fact. Use for durable decision-process quality. Not building one optimization model or taking ordinary meeting notes.",
       "path": "skills/decision-quality-standard/SKILL.md",
-      "packageDigest": "sha256:cd80cd290c2a63636dabb1e2ed5d721fbab9b750dd68d36386aad6b2128d8da2"
+      "packageDigest": "sha256:d002a39a9b798194800ff98fbcf366c6c9b4e0da4b828d9da79cae6ecbaa4cde"
     },
     {
       "name": "delivery-standard",
@@ -469,7 +469,7 @@
       "name": "prompt-architecture",
       "description": "Design durable agent instructions: constitutions, Skill metadata, hierarchy, briefs, and bootstrap/install prompts without duplicating source policy. Not ordinary user-facing copy or live work coordination.",
       "path": "skills/prompt-architecture/SKILL.md",
-      "packageDigest": "sha256:9c84cfda66ce10c89cc5a2b6accae67418609d048cc42421e503ccef2df5554d"
+      "packageDigest": "sha256:7d0b6e6894873f611ef9412e633e46ed694212e7936ae25dbb14cb65408223b6"
     },
     {
       "name": "provenance-system-design",
@@ -568,10 +568,10 @@
       "packageDigest": "sha256:fc009a1c768e0215f85ca526e7da846d547dd3a245e1ac429abc9ef02a922ca9"
     },
     {
-      "name": "self-feeding-agent-loop-standard",
-      "description": "Workflow: continuous work-selection OS that generates next Work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution-standard), multi-aspect product betterment alone (continuous-product-quality), or live Enact API ops alone (enact-work-coordination).",
-      "path": "skills/self-feeding-agent-loop-standard/SKILL.md",
-      "packageDigest": "sha256:cb61446bb961a9bd710e9dbc873dd7d7de4aef7923cf1203239e25f41d72db16"
+      "name": "self-feeding-agent-loop",
+      "description": "Workflow: continuous work-selection OS that generates next Work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution), multi-aspect product betterment alone (continuous-product-quality), or live Enact API ops alone (enact-work-coordination).",
+      "path": "skills/self-feeding-agent-loop/SKILL.md",
+      "packageDigest": "sha256:bc7d5825706cc110028d63ac112743dbea37518e5102db81e73ff39269dd7de9"
     },
     {
       "name": "semantic-taxonomy-design",

@@ -48,8 +48,8 @@ When authoring a workflow:
    - `evidence-and-claims-standard` when grading claims;
    - `work-coordination-standard` when designing portable ledgers;
    - `enact-work-coordination` when live Enact tools are present;
-   - `autonomous-execution-standard` when one accepted objective must reach terminal without prompt churn;
-   - `self-feeding-agent-loop-standard` when continuous work selection OS behavior is in scope.
+   - `autonomous-execution` when one accepted objective must reach terminal without prompt churn;
+   - `self-feeding-agent-loop` when continuous work selection OS behavior is in scope.
 3. Do **not** restate those packs' full predicates; name and apply them.
 4. Add **composition reliability** steps: first-step "open composed packages /
    references" for material obligations, and description co-triggers so hosts
@@ -110,8 +110,8 @@ Operate <system> with live tools/auth: <ops>. Not portable semantics-only design
 | Package | Layer | Not |
 | --- | --- | --- |
 | `continuous-product-quality` | Product betterment across aspects | One bug; one finish pass; pure Work OS |
-| `autonomous-execution-standard` | One accepted objective to delivery terminal | Continuous new-Work discovery; short Q&A |
-| `self-feeding-agent-loop-standard` | Continuous next-work selection OS | Driving one bounded objective alone |
+| `autonomous-execution` | One accepted objective to delivery terminal | Continuous new-Work discovery; short Q&A |
+| `self-feeding-agent-loop` | Continuous next-work selection OS | Driving one bounded objective alone |
 | `work-coordination-standard` | Portable ledger semantics | Live Enact API ops |
 | `enact-work-coordination` | Live Enact ops | Portable semantics-only design |
 

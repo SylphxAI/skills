@@ -18,7 +18,7 @@ universal planning document, review meeting, or evidence programme.
 
 This standard composes with:
 
-- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md) for
+- [`autonomous-execution.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution/references/full-standard.md) for
   execution graphs, latency hiding, subagents, and completion discipline;
 - [`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineering-standard/references/full-standard.md) for architecture,
   SSOT, SoC, testing, performance, observability, security, and the Modern
@@ -383,7 +383,7 @@ Decision quality therefore optimizes verified throughput, never the speed or
 confidence of the story: the asserted certainty, scope, delivery state, safety,
 or frontier position may not exceed current authoritative evidence. Operational
 execution, checkpoint, and reporting mechanics are owned by
-[`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution-standard/references/full-standard.md), not
+[`autonomous-execution.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution/references/full-standard.md), not
 duplicated here.
 
 ## Evaluation Axes

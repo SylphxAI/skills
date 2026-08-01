@@ -26,9 +26,9 @@ requirements exist.
 
 The requested full-scope loop is narrower. It closes one original objective
 through framing, material research and decision, execution, audit, repair, and
-an evidence-backed terminal. `autonomous-execution-standard` already owns that
+an evidence-backed terminal. `autonomous-execution` already owns that
 job and its completion claim. `convergent-review` owns formal exact-candidate
-review, while `self-feeding-agent-loop-standard` owns repeated discovery and
+review, while `self-feeding-agent-loop` owns repeated discovery and
 completion of new Work. A new generic `loop-engineering` package would duplicate
 those owners and make native Skill selection ambiguous.
 
@@ -36,7 +36,7 @@ those owners and make native Skill selection ambiguous.
 
 1. Do not create a separate `loop-engineering` Skill. Add bounded loop
    engineering as an explicit objective-closure mode of
-   `autonomous-execution-standard`.
+   `autonomous-execution`.
 2. The state machine is `FRAME -> DECIDE -> EXECUTE -> AUDIT`, with
    evidence-driven transitions back to Decide or Execute and terminal outcomes
    of complete or qualified blocked.
@@ -61,7 +61,7 @@ those owners and make native Skill selection ambiguous.
 8. The method adds no mandatory task manifest, scheduler, memory service,
    subagent hierarchy, policy system, or CI workflow. Continuous discovery of
    new Work remains a separate operating-system job owned by
-   `self-feeding-agent-loop-standard`.
+   `self-feeding-agent-loop`.
 
 ## Rejected directions
 
@@ -87,7 +87,7 @@ boundary and stops when its observable predicates pass.
 
 The maintained source comparison and dispositions live with the executable
 method in
-[`bounded-objective-closure-loop.md`](../../skills/autonomous-execution-standard/references/bounded-objective-closure-loop.md#research-basis).
+[`bounded-objective-closure-loop.md`](../../skills/autonomous-execution/references/bounded-objective-closure-loop.md#research-basis).
 
 ## Consequences
 

@@ -86,8 +86,8 @@ Idle means “no better move now,” not “product is perfect.”
 | Situation | Owner |
 | --- | --- |
 | Standing multi-aspect betterment | this Skill |
-| Continuous discovery/scheduling of any Work class | `self-feeding-agent-loop-standard` |
-| Drive one admitted betterment Work to delivery terminal | `autonomous-execution-standard` |
+| Continuous discovery/scheduling of any Work class | `self-feeding-agent-loop` |
+| Drive one admitted betterment Work to delivery terminal | `autonomous-execution` |
 
 ### Soft composition under native discovery
 

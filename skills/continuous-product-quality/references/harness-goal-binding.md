@@ -43,8 +43,8 @@ The goal `objective` must be self-contained for recovery. Include:
 6. **Authority floors:** no meta-router; no invented credentials/deploy; commercial/legal changes need owner authority
 7. **Current next safe action** (updated in durable contract state each tick)
 8. **Composition:** use `continuous-product-quality`; compose specialists by
-   native discovery; use `autonomous-execution-standard` for one admitted Work;
-   use `self-feeding-agent-loop-standard` only for continuous Work OS concerns
+   native discovery; use `autonomous-execution` for one admitted Work;
+   use `self-feeding-agent-loop` only for continuous Work OS concerns
 
 ### Template (adapt; keep compact but complete)
 

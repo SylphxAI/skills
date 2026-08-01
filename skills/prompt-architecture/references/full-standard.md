@@ -102,7 +102,7 @@ owning source so the agent population does not fork the operating model.
 
 This applies whenever one agent writes a task brief for another agent, including
 an executor, reviewer, specialist, or subagent. The
-`autonomous-execution-standard.md` "Subagent Use" section additionally owns when
+`autonomous-execution.md` "Subagent Use" section additionally owns when
 to delegate and the outcome-owned subagent contract. A task brief transfers
 bounded outcome ownership; it is not a miniature implementation plan or a copy
 of the author's reasoning trace.
