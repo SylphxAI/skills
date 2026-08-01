@@ -55,6 +55,33 @@ Every run records:
 - **Must not claim:** "utilization solved," "agents always load Skills," or
   catalog-wide automatic use without suite coverage and pins.
 
+## Progress at pinned authoring
+
+Documented fixtures now live at
+`tests/fixtures/skill-utilization-eval.json` with structural coverage for
+floor, critical-skill, near-neighbour, abstention, and compound suites, plus a
+failure taxonomy and host-runtime residual block. Structural tests in
+`tests/skill-utilization-eval.test.mjs` validate fixture integrity against the
+current catalog.
+
+This advances residual exit criterion 1 (documented fixtures/oracles). It does
+**not** close the residual: automated green behavior-oracle runs on each
+supported host class remain outstanding, and install/status green is still not
+utilization proof.
+
+## Failure taxonomy
+
+Fixture cases tag one or more of:
+
+- `l0_miss` — always-on floor violated
+- `skill_miss` — wrong/missing Skill selection or failure to follow method
+- `tool_policy_gap` — missing tools/credentials/policy, not cognition alone
+- `model_limit` — model capability/context limitation
+- `listing_truncation` — host listing budget shortened/omitted descriptions
+
+These codes satisfy residual exit criterion 3 as a documented taxonomy. Assigning
+a code in a real host run is still required for measured utilization claims.
+
 ## Exit criteria for closing this residual
 
 1. Documented fixture set with behavior oracles for floor, critical-skill, and
