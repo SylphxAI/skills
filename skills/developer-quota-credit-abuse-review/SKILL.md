@@ -1,6 +1,6 @@
 ---
 name: developer-quota-credit-abuse-review
-description: "Balance developer free credits, quotas, and costly operations against abuse: trust tiers, ledgers, friction, throttling, review/appeals, and legitimate production scale-up. Use when developer generosity vs abuse economics is primary. Not general product-abuse programs or core payments billing alone."
+description: "Balance developer free credits/quotas against abuse: trust tiers, ledgers, friction, throttling, appeals, and legitimate scale-up. Not general product-abuse programs or core payments billing alone."
 ---
 
 # Developer Quota Credit Abuse Review

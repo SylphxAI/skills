@@ -1,6 +1,6 @@
 ---
 name: convergent-review
-description: "Run an independent, iterative, evidence-based review that forces alternatives, residual risks, unresolved disagreements, and exactly one Final Decision. Use for architecture or other high-stakes choices that need adversarial convergence. Not ordinary PR code review or a skill-routing eval."
+description: "Run an independent iterative review to one Final Decision with alternatives, residual risks, and unresolved disagreements. Not ordinary PR code review or skill-routing eval."
 ---
 
 # Convergent Review

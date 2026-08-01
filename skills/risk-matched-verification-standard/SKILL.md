@@ -1,6 +1,6 @@
 ---
 name: risk-matched-verification-standard
-description: "Select evaluation, replay, simulation, model, canary, and long-observation evidence in proportion to the actual failure model and residual uncertainty, without blocking unrelated delivery. Use when deterministic unit/integration checks are not enough for the risk. Not writing one unit test and not generic QA script dumps."
+description: "Match verification depth to failure risk—evidence class, gates, and acceptable residuals—when unit/integration checks are not enough. Not writing one unit test or dumping generic QA scripts."
 ---
 # Risk-Matched Verification Standard
 

@@ -1,6 +1,6 @@
 ---
 name: accessibility-conformance-program-review
-description: "Build or audit a durable accessibility conformance program—target standards, assistive-tech testing, issue governance, release evidence, VPAT/ACR inputs, remediation, and exceptions. Use for claim-ready conformance or procurement evidence. Skip for a single UI critique, one code fix, generic QA planning, or legal advice."
+description: "Design an accessibility conformance program: standards, AT testing, issue governance, release evidence, VPAT/ACR, remediation, and exceptions. Not one UI critique, one code fix, or legal advice."
 ---
 
 # Accessibility Conformance Program Review

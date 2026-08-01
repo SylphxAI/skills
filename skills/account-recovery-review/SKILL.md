@@ -1,6 +1,6 @@
 ---
 name: account-recovery-review
-description: "Design end-to-end account recovery when users lose passwords, passkeys, MFA devices, or channel access, or hit locks, compromise, or ownership disputes—covering eligibility, proof, risk, authority, containment, appeals, and post-recovery hardening. Not tenant/admin access lifecycle or broad product-abuse programs."
+description: "Design end-to-end account recovery for lost credentials/MFA/channels, locks, compromise, or ownership disputes—eligibility, proof, risk, authority, and post-recovery hardening. Not tenant/admin JML or broad product-abuse policy."
 ---
 
 # Account Recovery Review

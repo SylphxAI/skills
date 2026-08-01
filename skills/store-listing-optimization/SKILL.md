@@ -1,6 +1,6 @@
 ---
 name: store-listing-optimization
-description: "Optimize a store or download listing for conversion—positioning, title/subtitle/description, screenshots/key art, trailer, proof, pricing/disclosures, localization, accessibility, experiments, and asset QA. Use for listing conversion. Not submission/certification readiness (software-distribution-readiness) and not the full marketing channel portfolio."
+description: "Optimize store/download listing conversion: positioning, copy, creatives, proof, localization, claims, experiments, and asset QA. Not submission/certification readiness or the full marketing OS."
 ---
 
 # Store Listing Optimization

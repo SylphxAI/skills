@@ -1,6 +1,6 @@
 ---
 name: developer-product-experience-review
-description: "Map the end-to-end developer journey for an API, SDK, CLI, plugin, or platform—discovery, docs, install, credentials, sandbox, first success, production readiness, diagnostics, support, and retained use. Artifact: a Developer Adoption Contract. Not implementing the API/SDK, quota-abuse policy alone, capacity planning, or product analytics alone."
+description: "Design the developer adoption journey for APIs/SDKs/CLIs/plugins into a Developer Adoption Contract: discovery, docs, first success, production readiness, and diagnostics. Not API implementation or quota-abuse policy alone."
 ---
 
 # Developer Product Experience Review

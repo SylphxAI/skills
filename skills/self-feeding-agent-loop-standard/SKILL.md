@@ -1,6 +1,6 @@
 ---
 name: self-feeding-agent-loop-standard
-description: "Standards for agent loops that keep generating next work from evidence without human prompt churn—admission, prioritization, idle/wake, and recurrence control. Use for durable self-feeding autonomous loop design. Not executing one bounded objective to terminal (autonomous-execution-standard) and not live Enact API calls alone."
+description: "Standards for loops that keep generating next work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution-standard) or live Enact calls alone."
 ---
 # Self Feeding Agent Loop Standard
 

@@ -1,6 +1,6 @@
 ---
 name: refund-and-support-flow-review
-description: "Design or audit customer/account consequence flows after cancellation, refund, revocation, chargeback, or dispute: entitlement outcome, grace, repayment, repurchase, commerce restriction, abuse linkage, ledger effects, and customer communication. Use for refund/consequence-flow contracts. Not full payment-platform design or whole support/CS operating models."
+description: "Design refund/cancellation/chargeback consequence flows: entitlement outcome, grace, ledger effects, restrictions, and customer communication. Not full payments platform design or whole support/CS operating models."
 ---
 
 # Refund And Support Flow Review

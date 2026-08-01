@@ -1,6 +1,6 @@
 ---
 name: game-design-blueprint
-description: "Design or critically review a complete game as one coherent player experience: promise, verbs/loops, challenge, progression, content, economy/monetization, retention, social play, first-time experience, game feel, platforms, live ops, and validation. Use for new games, whole-game redesigns, GDDs, or multi-system audits. Use product-finish for polish of an already playable game; use specialists when only economy, ads, soft launch, payments, or one release artifact is primary."
+description: "Design or audit a whole-game experience/GDD: promise, loops, progression, economy, retention, social play, FTE, platforms, live ops, and validation. For new games or whole-game redesigns. Use product-finish for playable-game polish; specialists for economy, ads, soft launch, or one release artifact."
 ---
 
 # Game Design Blueprint

@@ -1,6 +1,6 @@
 ---
 name: customer-success-operations-review
-description: "Design or audit outcome-led customer success operations: segmentation, onboarding after technical migration, activation/adoption, health, risk intervention, education, business reviews, renewal/expansion, and outcome measurement. Use for CS operating models. Not frontline case handling or acquisition marketing."
+description: "Design outcome-led customer success ops: activation, health, risk intervention, renewal/expansion, and outcome measurement. Not frontline case handling or acquisition marketing."
 ---
 
 # Customer Success Operations Review

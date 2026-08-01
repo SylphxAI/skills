@@ -1,6 +1,6 @@
 ---
 name: review-solicitation-policy
-description: "Design platform-specific public rating/review request eligibility, native request surfaces, cooldowns, required audience exclusions, no-display behavior, and request-state evidence—including audits of sentiment gating, star steering, review rewards, suppression, or retaliation. Use for authentic public review-solicitation policy. For private feedback intake, review response, clustering, or product learning, use product-feedback-learning-loop."
+description: "Design public rating/review request policy: eligibility, native surfaces, cooldowns, exclusions, and request-state evidence; audit star-steering or reward abuse. Not feedback learning loops or review-response ops."
 ---
 
 # Review Solicitation Policy

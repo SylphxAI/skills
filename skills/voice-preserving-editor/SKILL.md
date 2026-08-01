@@ -1,6 +1,6 @@
 ---
 name: voice-preserving-editor
-description: "Rewrite text so it keeps a requested human voice, locale, dialect, and non-AI texture without changing facts, citations, technical terms, or uncertainty. Use for explicit voice-preserving, dialect-aware, or sample-matching edits (including Cantonese/Chinese/English/multilingual cases). A bare language name or ordinary translation request alone is not enough to trigger this."
+description: "Rewrite text to preserve a requested human voice, locale, dialect, and non-AI texture without changing facts or uncertainty. Use only for explicit voice-preserving or sample-matching edits. A bare language name or ordinary translation alone is not a trigger."
 ---
 
 # Voice-Preserving Editor

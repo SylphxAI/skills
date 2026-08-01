@@ -1,6 +1,6 @@
 ---
 name: agent-native-standard
-description: "Constraints for products that agents operate directly: queryable typed state, schema-derived tools, recoverable workflows, delegation, durable context, and model/tool/run traces with protected operator diagnostics. Use when designing those agent-facing contracts. Not ordinary automation, generic service observability, or analytics without an agent contract."
+description: "Constraints for agent-operable products: queryable typed state, schema-derived tools, recoverable workflows, delegation, durable context, and run traces. Not ordinary automation or analytics without an agent-facing contract."
 ---
 # Agent Native Standard
 

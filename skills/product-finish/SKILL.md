@@ -1,6 +1,6 @@
 ---
 name: product-finish
-description: "Finish, polish, or audit an already-defined whole product/release candidate and produce a Product Finish Pass across visual/art direction, copy/content, interaction states, motion/audio/game feel where relevant, numeric semantics, accessibility, localization, performance, and rendered or playthrough verification. Use when a functional app, SaaS, site, game, or interactive product is still generic, placeholder-heavy, inconsistent, or not release-grade. Not greenfield strategy, one bounded interface (interface-craft), promo assets, launch admission, or the recurring continuous-product-quality loop."
+description: "Produce a Product Finish Pass on an already-integrated product: visual/content coherence, interaction states, feel/numerics, a11y/l10n, performance, and verification. Use when it works but is not release-grade. Not greenfield blueprints, one interface, promo assets, or continuous quality loops."
 ---
 
 # Product Finish

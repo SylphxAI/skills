@@ -1,6 +1,6 @@
 ---
 name: social-media-operations-review
-description: "Design the operating model for official social and community channels—account authority, publishing/readback, listening, replies, moderation routing, rights/disclosures, crisis correction, measurement, archive, and shutdown. Artifact: a Social Media Operating Model. Not channel strategy/campaigns (marketing-automation-blueprint) and not producing one post."
+description: "Design a Social Media Operating Model for official channels: authority, publishing, listening, moderation routing, crisis, measurement, and archive. Not channel strategy/campaigns or producing one post."
 ---
 
 # Social Media Operations Review

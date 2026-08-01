@@ -1,6 +1,6 @@
 ---
 name: ad-monetization-review
-description: "Shape or audit an in-product advertising system: rewarded ads, interstitials, banners/native, offerwalls, mediation, payer suppression, reward authority, consent, frequency/fatigue, fraud, experiments, and IAP/IAA tradeoffs. Use when ad formats, placements, or ad economics are the job. Combine with an app/game blueprint only if whole-product coherence is still open."
+description: "Design or audit an in-product ad system: formats, placements, mediation, rewards, consent, frequency, fraud, experiments, and IAP/IAA tradeoffs. Use when ad economics/placements are primary. Not whole-app/game blueprint alone."
 ---
 
 # Ad Monetization Review

@@ -1,6 +1,6 @@
 ---
 name: customer-support-case-resolution
-description: "Resolve or audit one customer-support case from verified facts through humane response, remedy/compensation, protected-action handoff, legal/abuse escalation, follow-up, and closure evidence. Use when the independent artifact is case resolution. Not designing the whole support operating system (customer-support-operations) or CS value programs."
+description: "Resolve or audit one support case from verified facts through response, remedy, escalation, follow-up, and closure evidence. Not support-org design or customer-success programs."
 ---
 
 # Customer Support Case Resolution

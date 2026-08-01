@@ -1,6 +1,6 @@
 ---
 name: technology-stack-profile
-description: "Apply the required technology profile for backend, web, API contracts, generated clients, event envelopes, telemetry, and cross-platform boundaries (including Rust/TS/React, Protobuf/Connect, CloudEvents, OpenTelemetry, and mobile/desktop stacks where in scope). Use when choosing, implementing, reviewing, or measuring against that profile. Not product strategy."
+description: "Apply the required stack profile for backend, web, API contracts, clients, events, telemetry, and cross-platform boundaries. Use when choosing, implementing, or reviewing that profile. Not product strategy."
 ---
 
 # Backend, Web, and Cross-platform Interoperability Profile

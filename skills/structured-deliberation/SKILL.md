@@ -1,6 +1,6 @@
 ---
 name: structured-deliberation
-description: "Structure a multi-participant dispute into independently formed positions, an argument graph, tested objections, and a decision-ready Deliberation Record. Use for contested proposals, expert elicitation, stakeholder conflict, or correlated agent answers. Not brainstorming, one-person RCA, final option selection alone, or ordinary status meetings."
+description: "Structure multi-party disputes into independent positions, an argument graph, tested objections, and a Deliberation Record. Not brainstorming, one-person RCA, or ordinary status meetings."
 ---
 
 # Structured Deliberation

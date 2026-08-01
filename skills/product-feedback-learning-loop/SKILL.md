@@ -1,6 +1,6 @@
 ---
 name: product-feedback-learning-loop
-description: "Design the learning loop that ingests authorized private feedback and public reviews, preserves source evidence, clusters problems, routes support/safety cases, links product actions, validates outcomes, publishes policy-safe review responses, and closes the loop truthfully. Use for feedback capture, review ingestion/response, qualitative evidence synthesis, or product-learning ops. Not public rating-request eligibility, prompt timing, native solicitation surfaces, or cooldowns (review-solicitation-policy)."
+description: "Turn private feedback and public reviews into preserved evidence, safe routing, product actions, validated outcomes, and truthful closure. Not public rating-request eligibility, timing, surfaces, or cooldowns (review-solicitation-policy)."
 ---
 
 # Product Feedback Learning Loop

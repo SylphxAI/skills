@@ -1,6 +1,6 @@
 ---
 name: subscription-price-increase-retention-review
-description: "Roll out an already-proposed subscription price increase without wrecking retention: cohorts, notices, grandfathering, offers, cancellations, refunds, support, experiments, and net revenue. Use when the price-change program owns sequencing and renewal-cohort readback. Not base pricing architecture, and not retention analysis unrelated to a price change."
+description: "Plan retention-safe rollout of an already-proposed subscription price increase: cohorts, notices, grandfathering, offers, cancellations, experiments, and net revenue. Not base pricing architecture or unrelated retention analysis."
 ---
 
 # Subscription Price Increase Retention Review

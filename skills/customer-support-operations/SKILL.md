@@ -1,6 +1,6 @@
 ---
 name: customer-support-operations
-description: "Design or audit an end-to-end customer-support operating system: self-service, intake, identity-safe diagnostics, taxonomy, queues, severity, routing, SLAs, grounded responses, escalation, tooling/knowledge, and quality. Use for support-org design. Not resolving one case and not broader customer-success outcomes."
+description: "Design the support operating system: channels, intake, routing, SLAs, tooling, knowledge, escalation, and quality. Not resolving one case or customer-success value programs."
 ---
 
 # Customer Support Operations

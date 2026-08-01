@@ -1,6 +1,6 @@
 ---
 name: retention-cohort-review
-description: "Turn retention cohorts and curves into decisions—eligibility, value events, windows, metric type, censoring, identity, segments, uncertainty, and mechanisms. Use when cohort analysis is the independent artifact. Not live subscription price-increase programs, event instrumentation implementation, or broad board reporting."
+description: "Turn retention cohorts/curves into decisions: eligibility, windows, censoring, segments, uncertainty, and mechanisms. Not price-increase retention programs or instrumentation implementation alone."
 ---
 
 # Retention Cohort Review

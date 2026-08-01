@@ -1,6 +1,6 @@
 ---
 name: product-recovery-contract-review
-description: "Design product user-data durability and recovery: backup, restore, export/re-import, device replacement, entitlement recovery, deletion, and support-assisted recovery. Artifact: a user-facing recovery model plus engineering requirements. Not infra DR, account-auth recovery, or customer cutover from another product."
+description: "Design product user-data recovery: backup/restore, export/re-import, device replacement, entitlement recovery, deletion, and support-assisted recovery. Not infra DR, account-auth recovery, or cross-product cutover."
 ---
 
 # Product Recovery Contract Review

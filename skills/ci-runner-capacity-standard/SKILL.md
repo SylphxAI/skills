@@ -1,6 +1,6 @@
 ---
 name: ci-runner-capacity-standard
-description: "Design or diagnose CI runner capacity, queue/pickup latency, execution profiles, merge-queue backpressure, inventory uncertainty, and critical-path isolation. Use when CI jobs wait, runners disappear, queues saturate, or capacity policy must change. Do not use for a candidate failure caused by product code."
+description: "Design CI runner capacity: pools, fairness, isolation, scaling, and admission under load. Not admission-gate content or product production capacity."
 ---
 # Ci Runner Capacity Standard
 

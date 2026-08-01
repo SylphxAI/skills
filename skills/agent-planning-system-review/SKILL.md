@@ -1,6 +1,6 @@
 ---
 name: agent-planning-system-review
-description: "Design or audit an agent’s planning/control mechanism (BDI, HTN, partial-order/causal-link planning, Plan-and-Execute, ReAct, receding-horizon control, replanning, monitoring, stop conditions) and produce an Agent Planning and Control Contract. Not planning one ordinary task, queue scheduling, memory design, or finished-code review."
+description: "Design or audit agent planning/control machinery and produce an Agent Planning and Control Contract. Not planning one ordinary task, memory design, or finished-code review."
 ---
 
 # Agent Planning System Review

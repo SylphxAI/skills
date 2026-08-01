@@ -1,6 +1,6 @@
 ---
 name: parallel-change-integration-standard
-description: "Repository-native integration for measured high-contention agent work: direct-trunk conflict recovery, short-lived PRs, optional merge queue, CI backpressure, and duplicate-work handling. Use only when concurrent source activity creates material collisions, stale-base failures, or verification backlog. Do not use for ordinary low-contention edits."
+description: "Safe expand/contract and parallel-change integration for migrations that need coexistence, dual-write/read, or staged cutover. Not big-bang rewrites without coexistence needs."
 ---
 # Parallel Change Integration Standard
 

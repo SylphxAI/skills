@@ -1,6 +1,6 @@
 ---
 name: marketplace-payouts-review
-description: "Design or audit marketplace payout/earnings flows: fees, revenue share, seller balances, holds, clawbacks, split payments, ledger, tax/compliance handoff, payout support, and disputes. Use when marketplace payout operations are primary. Not seller-performance programs or trust/safety policy alone."
+description: "Design marketplace payout/earnings flows: fees, balances, holds, clawbacks, ledger, tax handoff, and disputes. Not seller-performance programs or trust/safety policy alone."
 ---
 
 # Marketplace Payouts Review

@@ -1,6 +1,6 @@
 ---
 name: interface-craft
-description: "Design, reshape, polish, or review one bounded product interface or coherent user flow with distinctive visual direction, production-quality interaction states, responsive behavior, and accessibility. Use when a single surface/flow is the job. Not whole-app or whole-game blueprints, design-system extraction, or a multi-surface product-finish pass."
+description: "Design or polish one bounded product interface/flow: visual direction, interaction states, responsive behavior, and accessibility. Not whole-app/game blueprints, design-system extraction, or multi-surface product-finish."
 ---
 
 # Interface Craft

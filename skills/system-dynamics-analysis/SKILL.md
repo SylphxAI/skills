@@ -1,6 +1,6 @@
 ---
 name: system-dynamics-analysis
-description: "Explain stubborn system behavior through feedback loops, delays, accumulations, nonlinear effects, constraints, incentives, and adaptation. Use for oscillation, backlog spirals, policy resistance, or fixes that rebound. Artifact: a Dynamic System Model. Not an isolated bug, a static dependency map, or estimating one causal effect from data."
+description: "Analyze stubborn feedback-loop behavior (delays, accumulations, incentives, policy resistance) into a Dynamic System Model. Not isolated bugs, static dependency maps, or single causal estimates."
 ---
 
 # System Dynamics Analysis

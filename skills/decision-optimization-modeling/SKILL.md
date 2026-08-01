@@ -1,6 +1,6 @@
 ---
 name: decision-optimization-modeling
-description: "Formulate, solve, or audit a constrained mathematical decision model for allocation, scheduling, routing, capacity, inventory, or network planning, with variables, objectives, constraints, solver evidence, and sensitivity. Artifact: a Constrained Decision Model. Not qualitative option selection, agent planning architecture, pure forecasting, or ordinary implementation planning."
+description: "Formulate, solve, or audit a Constrained Decision Model for allocation, scheduling, routing, capacity, or inventory—with variables, objectives, constraints, solver evidence, and sensitivity. Not qualitative option choice, agent planning architecture, or pure forecasting."
 ---
 
 # Decision Optimization Modeling

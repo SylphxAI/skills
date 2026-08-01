@@ -1,6 +1,6 @@
 ---
 name: causal-inference-analysis
-description: "Estimate or audit causal effects with an explicit identification strategy, assumptions, estimators, robustness checks, and claim bounds. Use when causal inference itself is the deliverable. Not plain KPI reporting, forecasting without interventions, or unconstrained experiment brainstorming."
+description: "Estimate or audit causal effects with identification strategy, assumptions, estimators, robustness, and claim bounds. Not plain KPI reporting, pure forecasting, or unconstrained experiment brainstorming."
 ---
 
 # Causal Inference Analysis

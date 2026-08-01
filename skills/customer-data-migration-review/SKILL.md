@@ -1,6 +1,6 @@
 ---
 name: customer-data-migration-review
-description: "Plan customer-facing data import, tenant move, system replacement, or bulk cutover—from discovery and mapping through validation, rehearsal, execution, reconciliation, rollback/forward-fix, and acceptance. Artifact: a repeatable customer-data migration contract. Not architecture rewrites, same-product backup/restore, or ongoing customer-success programs."
+description: "Design a customer-data migration/cutover contract: discovery, mapping, validation, rehearsal, execution, reconciliation, and rollback/forward-fix. Not architecture rewrites, same-product backup/restore, or CS value programs."
 ---
 
 # Customer Data Migration Review

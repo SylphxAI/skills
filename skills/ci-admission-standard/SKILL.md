@@ -1,6 +1,6 @@
 ---
 name: ci-admission-standard
-description: "CI admission tiers, required checks, semantic-oracle/gate-portfolio discipline, affected-test selection, flake control, and preview policy for what may land on a protected branch. Use when designing or auditing admission gates. Not runner capacity/queueing and not writing ordinary tests alone."
+description: "Design CI admission for protected branches: required checks, risk-matched gates, flake control, and preview policy. Not runner capacity and not ordinary test writing alone."
 ---
 # Ci Admission Standard
 

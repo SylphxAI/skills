@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "Design a durable product-quality operating loop—scout triggers, evidence-bearing observations, finding admission/dedup, Work handoff, delivery readback, coverage freshness, and value/risk/WIP budgets—and produce a Product Quality Loop Contract. Use when a product should keep discovering and closing recurring defects/improvements across quality surfaces. Not one known bug, one product-finish pass, one release review, feedback intake alone, or generic work scheduling."
+description: "Design a standing Product Quality Loop Contract: scout triggers, evidence, finding admission, Work handoff, coverage freshness, and budgets. Not one bug, one finish pass, one release review, or generic scheduling."
 ---
 
 # Continuous Product Quality

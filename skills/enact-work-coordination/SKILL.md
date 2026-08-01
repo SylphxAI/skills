@@ -1,6 +1,6 @@
 ---
 name: enact-work-coordination
-description: "Connect, operate, or audit agent work through authenticated Sylphx Enact: Organization/Project identity, Work proposals, claims, runs, checkpoints, evidence, effects, subscriptions, and external-wait defer/wake. Use for live Enact coordination. Not inventing a portable ledger standard from scratch (work-coordination-standard) or offline planning with no Enact tools."
+description: "Operate live Sylphx Enact Work with authenticated tools: propose/claim/run, evidence, effects, and defer/wake. Use for real Enact coordination. Not portable ledger design (work-coordination-standard) or offline planning without Enact tools."
 ---
 
 # Enact Work Coordination

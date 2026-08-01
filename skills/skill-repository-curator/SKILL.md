@@ -1,6 +1,6 @@
 ---
 name: skill-repository-curator
-description: "Curate a whole Agent Skills repository—description triggers, false negatives/collisions, job/artifact boundaries, thickness, ownership, merge/split, recovery, and retirement. Use for portfolio-level skill cleanup or design. Not distilling one source into one skill, running behavior evals, or inventing a meta-router."
+description: "Curate a full Agent Skills portfolio: triggers, collisions, boundaries, thickness, merge/split, and retirement. Not one-source skill authoring, runtime evals, or meta-routers."
 ---
 
 # Skill Repository Curator
