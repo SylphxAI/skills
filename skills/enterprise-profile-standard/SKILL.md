@@ -1,13 +1,19 @@
 ---
 name: enterprise-profile-standard
-description: "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selections and their lifecycle; Sylphx Enact owns resolved live state."
+description: "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selection packages and their lifecycle; Enact owns resolved live state. Not org-wide control-plane layers (enterprise-control-plane-standard) or one product-local config."
 ---
 # Enterprise Profile Standard
+
+**Primary class:** `policy` (versioned selection/profile contract).
 
 **Requirement:** apply this standard when the task matches its scope.
 
 Read [references/full-standard.md](references/full-standard.md) for the full
-method and predicates.
+method and predicates. Keep separate from
+`enterprise-control-plane-standard` (org-wide control-plane layers and
+defaults across repos). Profiles are the **selection packages**; the control
+plane owns **where/how** org process is enforced. Do not merge the packages
+unless job, artifact, acceptance, and mechanism fully coincide (they do not).
 
 ## Method
 

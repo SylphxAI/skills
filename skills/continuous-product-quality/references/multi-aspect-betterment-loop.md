@@ -88,6 +88,14 @@ Idle means “no better move now,” not “product is perfect.”
 | Standing multi-aspect betterment | this Skill |
 | Continuous discovery/scheduling of any Work class | `self-feeding-agent-loop-standard` |
 | Drive one admitted betterment Work to delivery terminal | `autonomous-execution-standard` |
+
+### Soft composition under native discovery
+
+Naming another Skill does **not** host-enforce load order. For material
+obligations, the agent must open the composed package (or rely on co-selected
+descriptions). Class labels and cross-links are authoring contracts, not
+portable dependency injection.
+
 | One integrated product finish pass | `product-finish` |
 | Recurring agent/Skills failure | `agent-system-improvement` |
 

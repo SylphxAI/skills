@@ -175,41 +175,42 @@ token. See [`INSTALL.md`](./INSTALL.md) and
 
 ## What you get
 
-**111 packages** in four families (see [`catalog.json`](./catalog.json) for the
-machine index and [`skills/`](./skills/) for sources):
+**112 packages** as on-demand Agent Skills (see [`catalog.json`](./catalog.json)
+for the machine index and [`skills/`](./skills/) for sources). Hosts list
+`name`/`description` first and load bodies on selection — Skills are **not**
+always-on law. Authoring classes (`workflow` · `review` · `policy` · `adapter`)
+are documented in
+[ADR-20260801](./docs/adr/ADR-20260801-package-classes-and-standard-composition.md);
+they are not host Skill subtypes.
 
-### Standards & profiles
+### Policy packs & profiles (`*-standard` / profiles)
 
-How we run engineering across projects — delivery, CI admission, incidents,
-agent-first development, enterprise control planes, profiles, and more.
+Compose-on binding predicates for many jobs: delivery proof, engineering
+method, CI admission, incidents, portable work-ledger semantics, enterprise
+control plane, versioned profiles, and more. **Not** automatic loops by
+themselves.
 
-Examples: `engineering-standard` · `delivery-standard` · `agent-first-development-standard` · `work-coordination-standard` · `technology-stack-profile`
+Examples: `engineering-standard` · `delivery-standard` · `work-coordination-standard` · `technology-stack-profile` · `enterprise-control-plane-standard`
 
-### Analysis, decision & agent-system methods
+### Workflows & loop engineering
 
-Independent methods with precise native-injection triggers and concrete
-artifacts: critical analysis, design-space exploration, structured
-deliberation, evidence synthesis, requirements, user research, decision quality
-and optimization, probabilistic forecasting, causal inference, system dynamics,
-agent planning/context, semantic taxonomy, threat modeling, objective review,
-provenance, reference originality, frontend performance remediation, and finite
-review closure.
+Multi-step jobs and operating loops: product betterment, whole-product finish,
+single-objective closure, continuous work selection. Some keep a historical
+`*-standard` id; primary class is still workflow.
 
-Examples: `critical-analysis` · `structured-deliberation` · `reference-originality-review` · `frontend-performance-remediation` · `security-threat-modeling`
+Examples: `continuous-product-quality` · `product-finish` · `autonomous-execution-standard` · `self-feeding-agent-loop-standard`
 
-### Product procedures
+### Reviews, analysis & agent-system methods
 
-Bounded design/audit jobs with a concrete artifact: payments, privacy, growth
-loops, marketplace trust, support ops, launch readiness, game economy, …
+Assessment/design jobs and independent methods with concrete artifacts.
 
-Examples: `payment-platform-readiness` · `privacy-data-lifecycle-review` · `saas-subscription-pricing` · `launch-readiness-review`
+Examples: `critical-analysis` · `structured-deliberation` · `reference-originality-review` · `frontend-performance-remediation` · `security-threat-modeling` · `payment-platform-readiness` · `launch-readiness-review`
 
-### Blueprints & craft
+### Blueprints, craft & adapters
 
-Whole-product and craft surfaces: app/game/SaaS blueprints, interface craft,
-prompt architecture, architecture convergence, skill authoring.
+Whole-product craft surfaces plus live-system adapters (for example Enact).
 
-Examples: `app-design-blueprint` · `saas-web-platform-blueprint` · `interface-craft` · `prompt-architecture` · `sylphx-platform-first`
+Examples: `app-design-blueprint` · `saas-web-platform-blueprint` · `interface-craft` · `prompt-architecture` · `enact-work-coordination`
 
 Open any package: `skills/<id>/SKILL.md` is the contract; deeper material lives
 in `references/`.

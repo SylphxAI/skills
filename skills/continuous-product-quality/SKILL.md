@@ -9,12 +9,29 @@ Run **loop engineering for product betterment**: keep making a real product
 better across any applicable aspect, without pretending a perfect end state
 exists.
 
-This is a **workflow Skill**. Agents may load it by native discovery; users may
-trigger it explicitly. It composes **standards** (how execution, delivery, and
-coordination must behave) and **specialist Skills** (how a domain improves).
+This is a **workflow Skill** (primary class `workflow`). Agents may load it by
+native discovery; users may trigger it explicitly. It composes **policy packs**
+and other workflows (how execution, delivery, and coordination must behave) and
+**specialist Skills** (how a domain improves). Package classes are authoring
+labels only — see
+[ADR-20260801](../../docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
 
 Primary artifact: a versioned **Product Quality Loop Contract** plus the
 operating loop that uses it.
+
+**Soft composition (no Skill dependency graph):** after this body loads, open
+composed packages by native discovery and/or explicit read when the step needs
+them — do not assume hosts auto-load named packages:
+
+| Need | Open |
+| --- | --- |
+| One admitted betterment Work → delivery terminal | `autonomous-execution-standard` |
+| Continuous any-Work selection OS (not product matrix alone) | `self-feeding-agent-loop-standard` |
+| Land/live proof | `delivery-standard` |
+| Claim grading | `evidence-and-claims-standard` |
+| Implementation method / stack defaults | `engineering-standard`, `technology-stack-profile` |
+| Live Enact tools present | `enact-work-coordination` |
+| Domain aspect improvement | specialist review/workflow for that aspect |
 
 Read before operating:
 

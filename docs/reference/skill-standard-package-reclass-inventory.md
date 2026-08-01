@@ -31,8 +31,8 @@ Legend:
 | `delivery-standard` | policy | KEEP-policy | Delivery-terminal proof model; often compose-on |
 | `documentation-standard` | policy | KEEP-policy | Doc scope/freshness predicates |
 | `engineering-standard` | policy | KEEP-policy | Default engineering method floor / predicates |
-| `enterprise-control-plane-standard` | policy | KEEP-policy | Org-wide control-plane design; absorb target for profile if coincident |
-| `enterprise-profile-standard` | policy | ABSORB-candidate | Investigate into control-plane if same job/artifact/acceptance/mechanism |
+| `enterprise-control-plane-standard` | policy | KEEP-policy | Org-wide control-plane layers; composes profiles; not absorb target |
+| `enterprise-profile-standard` | policy | **KEEP-separate** (absorb rejected) | Distinct artifact: versioned selection/profile lifecycle vs org control-plane layers; compose, do not merge |
 | `evidence-and-claims-standard` | policy | KEEP-policy | Claim grading predicates |
 | `incident-standard` | policy | KEEP-policy | Incident process predicates (standalone process is OK) |
 | `instruction-evolution-standard` | policy | KEEP-policy | Instruction/profile evolution predicates |
@@ -60,3 +60,27 @@ Legend:
 - Mega-merge of `*-review` packages
 - Meta-router skill
 - Closing utilization residual without host behavior-oracle evidence
+
+## Absorb investigations
+
+### `enterprise-profile-standard` × `enterprise-control-plane-standard`
+
+**Decision (2026-08-01): KEEP separate — absorb rejected.**
+
+| Test (ADR-0009) | Profile | Control plane |
+| --- | --- | --- |
+| Primary artifact | Versioned selection package (selectors, defaults, exceptions, migration) | Org-wide control-plane **layers** and how process is enforced across repos |
+| Acceptance | Profile contract completeness / collision-safe selection | Cross-repo control-plane outcomes (rulesets, CI compute, previews, scorecards, …) |
+| Mechanism | Profile schema + lifecycle | Layer ownership table + defaults by surface |
+| Body size / shape | ~105-line profile contract | ~349-line multi-layer defaults |
+
+They **compose** (control plane names profiles for selections) but do not share
+one job/artifact/acceptance/mechanism. Merging would re-bloat routing and hide
+profile lifecycle under control-plane prose.
+
+### Loop packages named `*-standard`
+
+`autonomous-execution-standard` and `self-feeding-agent-loop-standard` remain
+**RECLASS-workflow** with legacy ids. Bodies now declare primary class
+`workflow` and soft composition. Mass rename deferred until routing cases justify
+id churn.

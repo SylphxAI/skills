@@ -73,7 +73,7 @@
       "name": "autonomous-execution-standard",
       "description": "Workflow: drive one accepted multi-phase objective to the delivery terminal without repeated prompts—preserve objective and acceptance map; research, execute, verify, repair, or replan; claim done only with evidence. Not short Q&A, one local edit, continuous new-Work discovery (self-feeding-agent-loop-standard), or multi-aspect product betterment (continuous-product-quality).",
       "path": "skills/autonomous-execution-standard/SKILL.md",
-      "packageDigest": "sha256:6abda782abd4736a815da9f9629df36303b579b24facab7bbf84b10c69f3457b"
+      "packageDigest": "sha256:32a543f276a96b342f5fb2beb09f282fd729680c3c43e3d84f2145a0116fc2df"
     },
     {
       "name": "board-metrics-operating-review",
@@ -115,7 +115,7 @@
       "name": "continuous-product-quality",
       "description": "Operate continuous product betterment loop engineering across any aspect (UI/UX, performance, business model, game design, art/3D, reliability, content, etc.): bind uncapped harness goal for recovery, quality matrix, scout, admit, deliver, verify, idle without perfection. Not one bug, one finish pass, or vague 'make it perfect' work.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:a1723bd3a9969b4a4971e4f249a7e885bebc0328263f217bd5a424037e3ed0e4"
+      "packageDigest": "sha256:6100f29b1d794db4e7c6b49551b67e93fd25033645a6fd3fd36016aa209b1a6b"
     },
     {
       "name": "convergent-review",
@@ -251,15 +251,15 @@
     },
     {
       "name": "enterprise-control-plane-standard",
-      "description": "Organization-wide manifests, rulesets, selectors, reconcilers, audits, and status projections. Use when one policy or adoption decision must apply consistently across many repositories. Do not use for a product-local setting with no cross-repository owner.",
+      "description": "Organization-wide control-plane layers: manifests, rulesets, reconcilers, audits, and status projections across many repositories. Not versioned selection/profile lifecycle alone (enterprise-profile-standard) or a product-local setting with no cross-repo owner.",
       "path": "skills/enterprise-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:0b5e9a8b48a6dc57b4c91f2c24ec2b010e3a575cea2a013a4682bcf71b7e47f1"
+      "packageDigest": "sha256:9037c0aab648de598a6d4194d3620dd3b88dffbc32cecc2c76058dcc71249672"
     },
     {
       "name": "enterprise-profile-standard",
-      "description": "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selections and their lifecycle; Sylphx Enact owns resolved live state.",
+      "description": "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selection packages and their lifecycle; Enact owns resolved live state. Not org-wide control-plane layers (enterprise-control-plane-standard) or one product-local config.",
       "path": "skills/enterprise-profile-standard/SKILL.md",
-      "packageDigest": "sha256:f1b43144c2808152a403e795a4337f9c34220deff2e517098b2437e79b5514d9"
+      "packageDigest": "sha256:3e043109987e3d8969dbf27989e22b1823a6bc906afe8a7f51f30a9193a42fc4"
     },
     {
       "name": "evidence-and-claims-standard",
@@ -571,7 +571,7 @@
       "name": "self-feeding-agent-loop-standard",
       "description": "Workflow: continuous work-selection OS that generates next Work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution-standard), multi-aspect product betterment alone (continuous-product-quality), or live Enact API ops alone (enact-work-coordination).",
       "path": "skills/self-feeding-agent-loop-standard/SKILL.md",
-      "packageDigest": "sha256:06cc818f274d5f8b52fefc2c33f4c5c717947fde6cf77745b3bf92af27a606a8"
+      "packageDigest": "sha256:b46ccef1ca11cbdc335e0563846530b47d342e5c17a48313c2a2c6be5b57794f"
     },
     {
       "name": "semantic-taxonomy-design",

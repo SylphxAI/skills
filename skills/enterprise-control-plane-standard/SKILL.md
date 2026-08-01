@@ -1,13 +1,17 @@
 ---
 name: enterprise-control-plane-standard
-description: "Organization-wide manifests, rulesets, selectors, reconcilers, audits, and status projections. Use when one policy or adoption decision must apply consistently across many repositories. Do not use for a product-local setting with no cross-repository owner."
+description: "Organization-wide control-plane layers: manifests, rulesets, reconcilers, audits, and status projections across many repositories. Not versioned selection/profile lifecycle alone (enterprise-profile-standard) or a product-local setting with no cross-repo owner."
 ---
 # Enterprise Control Plane Standard
+
+**Primary class:** `policy` (org-wide control-plane design predicates).
 
 **Requirement:** apply this standard when the task matches its scope.
 
 Read [references/full-standard.md](references/full-standard.md) for the full
-method and predicates.
+method and predicates. Compose `enterprise-profile-standard` when the job is
+the **profile selection package lifecycle** itself; do not absorb profiles into
+this package — layers vs selection contracts are different primary artifacts.
 
 ## Method
 
