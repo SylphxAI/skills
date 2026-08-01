@@ -1,4 +1,4 @@
 interface:
-  display_name: "Continuous Product Quality"
-  short_description: "Operate evidence-driven product quality loops"
-  default_prompt: "Use $continuous-product-quality to design or audit an autonomous product-quality loop that discovers, qualifies, delivers, and verifies improvements."
+  display_name: "Continuous Product Betterment Loop"
+  short_description: "Loop-engineer multi-aspect product improvement without false perfection"
+  default_prompt: "Use $continuous-product-quality to run product betterment loop engineering: pick aspects (UI/UX, performance, business, game, art, etc.), scout, admit bounded Work, deliver, verify, and idle without claiming perfection."

@@ -93,9 +93,17 @@ Common dimensions include:
 - reliability, resilience, saturation, and degraded operation;
 - security, privacy, tenancy, abuse resistance, and data lifecycle;
 - content accuracy, localization, brand consistency, and trust;
+- art direction, visual fidelity, motion/audio feel, 3D/asset quality where the
+  product ships creative or spatial assets;
+- game design quality: core loops, progression, economy coupling, fairness, and
+  first-time experience where the product is a game or game-like system;
 - operational diagnosability and audience-safe status projection;
 - architecture, maintainability, dependency health, and lifecycle complexity;
-- cost, commercial, support, and customer-outcome quality where applicable.
+- business-model and packaging quality, monetization integrity, and
+  customer-outcome quality where applicable;
+- growth, retention, referral, and notification-policy quality where those loops
+  are product-owned;
+- support, success, and recovery-path quality for customer-facing consequences.
 
 Do not require every dimension for every surface. Record `not_applicable` with a
 semantic reason. Do not collapse a failed accessibility floor into a higher

@@ -113,9 +113,9 @@
     },
     {
       "name": "continuous-product-quality",
-      "description": "Design a standing Product Quality Loop Contract: scout triggers, evidence, finding admission, Work handoff, coverage freshness, and budgets. Not one bug, one finish pass, one release review, or generic scheduling.",
+      "description": "Operate continuous product betterment loop engineering across any aspect (UI/UX, performance, business model, game design, art/3D, reliability, content, etc.): quality matrix, scout, admit, deliver, verify, then idle without claiming perfection. Not one bug, one finish pass, one release review, or vague unbounded 'make it perfect' work.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:4d2f47e830ea51209bd7c3070a22a14af39ab460f0681dc5a83c54eddc52f970"
+      "packageDigest": "sha256:0ad1620e587c1207df7c75af846f5ac0f88032a697c62a8030b711563a176135"
     },
     {
       "name": "convergent-review",

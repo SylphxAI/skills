@@ -828,6 +828,54 @@
         "continuous-product-quality",
         "interface-craft"
       ]
+    },
+    {
+      "id": "critical-continuous-betterment-loop",
+      "suite": "critical-skill",
+      "prompt": "Run product betterment loop engineering for this live app across UX, performance, and business packaging: maintain a quality matrix, scout, admit bounded work, verify with original oracles, and idle without claiming perfection.",
+      "expectedSkills": [
+        "continuous-product-quality"
+      ],
+      "nearNeighbours": [
+        "product-finish",
+        "self-feeding-agent-loop-standard",
+        "autonomous-execution-standard"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Establishes or updates a multi-aspect quality matrix/loop contract, admits only bounded positive-net work, requires oracle readback, and treats idle as non-perfection rather than one finish pass or infinite vague improvement.",
+        "mustNot": [
+          "Treat product-finish as the sole primary owner of this standing loop job",
+          "Claim the product is perfect",
+          "Create vague unbounded Work such as make everything better without cells/oracles"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
+        "model_limit"
+      ]
+    },
+    {
+      "id": "neighbour-betterment-loop-vs-finish",
+      "suite": "near-neighbour",
+      "prompt": "Do not do a one-time polish pass; install an ongoing betterment loop that keeps finding UI and performance opportunities after release.",
+      "expectedSkills": [
+        "continuous-product-quality"
+      ],
+      "nearNeighbours": [
+        "product-finish",
+        "interface-craft",
+        "frontend-performance-remediation"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Chooses standing multi-aspect betterment loop operation over a single Product Finish Pass as the primary artifact.",
+        "mustNot": [
+          "Treat product-finish as the sole primary owner of this job"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
+        "model_limit"
+      ]
     }
   ]
 }
