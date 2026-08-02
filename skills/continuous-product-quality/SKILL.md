@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "Operate high-leverage continuous product betterment: 5-cell research coverage card, admit all above-threshold B items, residual R, parallel-efficient execute, Work+cycle verify cadence, Stop-Audit idle, uncapped goal. Not micro-polish thrash, shallow research-as-done, serial busywork, freeze-all waterfall, or perfection."
+description: "Loop-engineer continuous product betterment: multi-cycle engagement (re-research after each B clear), 5-cell coverage card, admit all above-threshold B, residual R, parallel execute, verify cadence, Stop-Audit; uncapped goal stays active until re-scout finds no high-EV work. Not one-cycle-and-stop, micro-polish thrash, shallow research-as-done, or perfection."
 ---
 
 # Continuous Product Quality
@@ -11,24 +11,30 @@ Run **outcome-frontier product betterment**: close user/business-visible gaps wi
 **Primary class:** `workflow`.  
 See [ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
 
-Primary artifact: a versioned **Product Quality Loop Contract** plus one
-**betterment cycle** that clears a **committed backlog B** (or legally rejects
-items) under an uncapped harness goal when present.
+Primary artifact: a versioned **Product Quality Loop Contract** plus a
+**continuous betterment engagement** (uncapped harness goal when present) that
+runs **many cycles** until re-research finds no high-leverage Work.
+
+**Loop engineering means the outer engagement keeps cycling** — not “one B clear
+then goal complete.” Clearing B ends a **cycle**, not the **loop**.
 
 ## Unit of progress (normative)
 
 | Unit | Meaning |
 | --- | --- |
-| **Cycle** | Research → Candidate **C** → admit **B ⊆ C** → track residual **R** → execute **all of B** → outcome readback → **Stop-Audit** → idle or wake |
-| **Not a cycle** | Landing one micro-fix, one PR, or local green |
-| **B (committed backlog)** | All admitted **positive-leverage** Work for this engagement under capacity; **may be many items**; must clear or Stop-Audit-reject each |
-| **R (residual register)** | Known opportunities not in B, each with EV/leverage and blocker class |
-| **Program/engagement** | Same goal + contract identity across capacity splits; do not restart random scout after doing only Top-1 of B |
+| **Engagement (the loop)** | Continuous betterment for a product/outcome set under one uncapped goal. **Stays active across cycles.** Ends only at engagement idle. |
+| **Cycle (inner iteration)** | Coverage card → **C** → admit **B** + **R** → execute **all of B** → verify → **cycle Stop-Audit** → **immediately re-research for next cycle** (unless engagement idle) |
+| **Not a cycle** | One micro-fix, one PR, local green, or “improved a bit” |
+| **B** | All capacity-feasible above-threshold items this cycle (many OK); clear all |
+| **R** | Not-in-B opportunities with EV + blocker |
+| **Engagement idle** | After a cycle (or at start), **fresh re-research/coverage card** admits **B=∅** and R has no unblocked EV ≥ MinOutcomeDelta |
 
-**Do all high-value work in the cycle:** if nine candidates pass threshold, do not
-admit only one and re-loop. Admit the capacity-feasible high-leverage set into
-**B** and put the rest in **R** with reasons; **idle is illegal** while R holds
-unblocked EV ≥ MinOutcomeDelta items.
+**Do all high-value work in each cycle:** if nine candidates pass, admit them into
+**B** (not Top-1 only). Overflow → R with `capacity`, same engagement.
+
+**After B is cleared: loop again.** Re-run coverage card / scout → new C → new B.
+Do **not** `update_goal(complete)` merely because cycle N finished. Complete the
+goal only at **engagement idle** (re-scout found nothing worth doing).
 
 ## Soft composition
 
@@ -50,7 +56,9 @@ unblocked EV ≥ MinOutcomeDelta items.
 
 ## Non-negotiable laws
 
-1. **No perfect terminal.** Idle = no positive-leverage move under policy—not perfection.
+1. **No perfect terminal; yes continuous cycling.** Engagement loops until
+   re-research finds no high-leverage Work. Idle = no positive-leverage move
+   under policy—not perfection, and **not** “B just cleared once.”
 2. **Outcomes over activity.** Maximize Δ north-star / frontier gap per full cost. Commit count is not progress.
 3. **~70% then move (Type-2).** On reversible work, do not wait for perfect information. Stop research when VoI cannot change B/idle. Irreversible/public-contract still needs authority depth.
 4. **Minimal research coverage card before admit.** Five cells (contract). Each cell: evidence **or** `unknown`+reason. Decision-complete, not omniscient. Stop-Audit fails if card incomplete.
@@ -63,35 +71,42 @@ unblocked EV ≥ MinOutcomeDelta items.
 9. **Execution efficiency bar.** Independent B items default **parallel**; shared setup once; serial only with explicit dependency. Forbid serial-for-safety-only.
 10. **Verify cadence.** Per B item: original-oracle at terminal. Per cycle: one outcome/north-star readback on exact subjects. Not every-commit full suite; not PR-green-as-done.
 11. **Evidence before claims.** Local green ≠ betterment.
-12. **B then clear.** Completing one Work ≠ completing the cycle/goal.
+12. **B clear ≠ loop done.** Completing one Work ≠ cycle done. Completing one
+    cycle ≠ engagement/goal done. After cycle Stop-Audit of B, **start next cycle**
+    (re-research) unless engagement idle proves empty.
 13. **No freeze-all mega-E.** C → B + R + re-admission—not immutable waterfall.
-14. **Stop-Audit before idle/goal complete.** Falsifiable package; slogans invalid.
+14. **Two Stop-Audit levels.** (a) **Cycle:** B cleared + verify cadence. (b)
+    **Engagement idle:** plus **fresh** coverage card/re-scout with B=∅ and R
+    clean. Goal complete only at (b). Slogans invalid.
 15. **No continuous independent reviewers.** Exception: irreversible/public-contract, load-bearing SOTA, contested Stop-Audit.
-16. **Uncapped harness goal** when Goal API exists; complete only with Stop-Audit package at idle.
+16. **Uncapped harness goal** stays **active across cycles**; complete only at
+    engagement idle (not after first cycle).
 17. **No meta-router.** Native discovery only.
 
-## Cycle
+## Loop (engagement) and cycle
 
 ```text
-bind product + north-star outcomes + uncapped goal
-  -> research coverage card (5 cells) + VoI-limited deepen
-  -> Candidate C (+ claim-grade frontier only if SOTA language used)
-  -> admit ALL capacity-feasible passers into B; R for the rest
-  -> execute B with efficiency bar (parallel default)
-  -> re-admit R→B when capacity/evidence changes
-  -> verify cadence (per-Work oracle + cycle outcome)
-  -> Stop-Audit package
-  -> idle / goal complete OR continue same engagement
+bind product + north-stars + uncapped goal  (engagement START — goal stays active)
+  loop cycles k = 1, 2, 3, ... :
+      research coverage card (5 cells) + VoI deepen
+      Candidate C
+      admit ALL capacity-feasible passers -> B; else R
+      if B empty AND R has no unblocked high-EV:
+          engagement Stop-Audit -> goal complete -> IDLE  (loop ends)
+      else:
+          execute all of B (efficiency bar)
+          verify cadence
+          cycle Stop-Audit (B cleared)   # NOT goal complete
+          continue -> cycle k+1          # THIS IS THE LOOP
 ```
 
 ## Method (summary)
 
-1. **Outcome lock + uncapped goal.** 1–3 north-stars, non-goals, contract pointer.
-2. **Research coverage card (mandatory, thin).** Fill five cells fast; then expand only if VoI says ranking/idle would change. Produce Candidate **C**.
-3. **Score and admit.** All ≥ MinOutcomeDelta & positive L under capacity → **B**; rest → **R** with EV/blocker.
-4. **Execute efficiently.** Parallelize independent B items; one shared setup; dependency-serial only. Drive each with `autonomous-execution`.
-5. **Verify on cadence.** Oracle each terminal; one cycle outcome readback; then Stop-Audit.
-6. **Idle or continue same engagement.** Never goal-complete on one polish PR.
+1. **Outcome lock + uncapped goal (engagement).** Goal remains active for the whole loop.
+2. **Cycle body:** coverage card → C → B/R → if B non-empty execute all B (parallel default) → verify → cycle Stop-Audit.
+3. **Loop:** after cycle Stop-Audit, **immediately re-research** (new card/C/B). Do not park.
+4. **Engagement idle only when** a post-clear (or initial) re-research yields B=∅ and R has no unblocked EV ≥ MinOutcomeDelta — then Stop-Audit + `update_goal(complete)`.
+5. **Never** goal-complete on one PR, one cycle B-clear, or “improved a bit.”
 
 ## Anti-patterns
 

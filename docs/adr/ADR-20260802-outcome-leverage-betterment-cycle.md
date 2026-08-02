@@ -32,27 +32,27 @@ eligible mega-lists and continuous in-loop independent reviewers.
 
 ## Decision
 
-1. A betterment **cycle** advances **committed backlog B** of all
-   above-threshold leverage opportunities under capacity, tracks **residual R**,
-   re-admits when evidence/capacity change, then **Stop-Audits** before idle.
-2. Completing one Work is not completing the cycle or harness goal.
-3. Leverage `L = (Δoutcome_or_frontier_gap × weight × confidence) / full_cost`;
+1. A betterment **engagement** is multi-cycle **loop engineering**: after each
+   cycle clears **B**, re-research and open the next cycle. Goal stays active.
+2. A **cycle** advances committed backlog B (all above-threshold items under
+   capacity) + residual R, then cycle Stop-Audit — **not** goal complete.
+3. Completing one Work or one cycle is not completing the engagement/goal.
+   Goal complete only at engagement idle (fresh empty re-scout).
+4. Leverage `L = (Δoutcome_or_frontier_gap × weight × confidence) / full_cost`;
    difficulty alone does not disqualify; ease alone does not promote polish.
-4. MinOutcomeDelta rejects cosmetic non-floor work from B.
-5. Harness Goal (when present) is uncapped; objective carries idle DoD, EV
-   policy, and contract pointer; `complete` only with Stop-Audit package.
-6. No continuous independent reviewers in the operating loop; reviewers only for
-   irreversible/public-contract, load-bearing SOTA, or contested Stop-Audit.
-7. Research uses a mandatory thin 5-cell coverage card plus VoI stop; frontier/SOTA
-   language requires claim-grade fields.
-8. Execution efficiency bar: parallel default for independent B items; shared
-   setup once; serial only with dependency.
-9. Verify cadence: original-oracle per Work terminal; one cycle outcome
-   readback; no PR-green-as-done; no every-commit full-suite ceremony.
+5. MinOutcomeDelta rejects cosmetic non-floor work from B.
+6. Harness Goal is uncapped and **stays active across cycles**; `complete` only
+   at engagement idle (fresh empty re-scout + Stop-Audit)—not after one cycle.
+7. No continuous independent reviewers; exception paths only.
+8. Research: 5-cell coverage card each cycle + VoI stop; claim-grade frontier.
+9. Efficiency bar: parallel default; shared setup once; serial only with dependency.
+10. Verify cadence: original-oracle per Work; one cycle outcome readback.
 
 ## Consequences
 
-- Agents must clear multi-item high-value programs before idle.
+- Agents must **keep looping** (re-research after each B clear) until engagement idle.
+- One-cycle-and-stop is rejected as a false reading of loop engineering.
+- Agents must clear multi-item high-value programs each cycle before re-loop or idle.
 - Anti-lazy residual tests block fake idle; EV thresholds block infinite work.
 - Shallow research and serial busywork are explicit anti-patterns.
 - Goal recovery and termination align without reviewer ceremony by default.

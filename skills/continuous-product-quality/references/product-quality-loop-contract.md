@@ -24,21 +24,21 @@ product state. It maximizes **user/business-visible outcome leverage**, not
 commit count or micro-polish volume.
 
 ```text
-north-star outcomes + versioned contract
-  -> research coverage card (5 cells) + VoI-limited deepen + scouts
-  -> Candidate set C
-  -> admit committed backlog B + residual register R
-  -> execute all of B under efficiency bar (parallel default)
-  -> re-admit R→B when capacity/evidence changes
-  -> verify cadence (per-Work oracle + cycle outcome)
-  -> Stop-Audit → idle or continue same engagement
+north-star outcomes + versioned contract + uncapped engagement goal
+  loop:
+    research coverage card (5 cells) + VoI deepen + scouts
+    -> Candidate C -> admit B + residual R
+    -> if B empty and R clean: engagement Stop-Audit -> IDLE (goal complete)
+    -> else: execute all B (efficiency bar) -> verify cadence
+         -> cycle Stop-Audit -> loop again (re-research)
 ```
 
 Separate layers:
 
 | Layer | Unit | Terminal |
 | --- | --- | --- |
-| Betterment **cycle / engagement** | Program over backlog **B** + residual **R** | Stop-Audit idle or capacity-continued same id |
+| Betterment **engagement (loop)** | Multi-cycle continuous betterment under one goal | Engagement idle after empty re-scout |
+| Betterment **cycle** | One card→B→execute→verify pass | Cycle Stop-Audit then **next cycle** |
 | Work execution | One accepted Work Item / Workstream | Delivery terminal + original-oracle |
 | Agent-system learning | One recurring agent failure class | Intervention against frozen evidence |
 
@@ -289,7 +289,16 @@ scope shrink of the engagement.
 
 ## Stop-Audit, idle, wake, and goal complete
 
-### Stop-Audit package (required before idle / goal complete)
+### Cycle vs engagement (normative)
+
+| Boundary | When | Goal API |
+| --- | --- | --- |
+| **Cycle Stop-Audit** | B cleared + verify cadence for cycle k | **Keep goal active**; open cycle k+1 |
+| **Engagement Stop-Audit / idle** | Fresh coverage card/re-scout admits B=∅ and R has no unblocked high-EV | `update_goal(complete)` allowed |
+
+**Loop engineering rule:** after every non-empty cycle, **re-research**. One-cycle-and-stop is an anti-pattern.
+
+### Stop-Audit package (required at cycle end and before engagement idle)
 
 | Test | Fail (blocks idle / complete) |
 | --- | --- |
@@ -308,18 +317,19 @@ scope shrink of the engagement.
 Qualified blockers are concrete (authority ticket, external dependency, measured
 negative EV after new evidence)—not “maybe over-engineering” or “too hard.”
 
-### Idle predicate
+### Idle predicate (engagement only)
 
-All must hold:
+All must hold **after a fresh research coverage card / re-scout** (not merely
+after clearing the previous B):
 
 1. Hard floors fresh and decisive;  
-2. B empty or remaining items Stop-Audit rejected;  
+2. **This research pass** admits B=∅ (no passers);  
 3. R has no unblocked EV/L ≥ MinOutcomeDelta;  
-4. Stop-Audit package recorded;  
+4. Engagement Stop-Audit package recorded (includes the empty-pass card);  
 5. Wake catalog durable and explicit.
 
-**Not** idle conditions: product perfect; frontier gap “feels” closed without
-metrics; commit quota filled; agent fatigue.
+**Not** idle conditions: product perfect; “we finished cycle 1”; commit quota
+filled; agent fatigue; B cleared without re-research.
 
 ### Anti-lazy / anti-abuse
 

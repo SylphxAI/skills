@@ -12,18 +12,20 @@ binding control model is
 
 ## What “loop engineering” means here
 
+**Loop** = the **engagement** keeps running **cycle after cycle**.
+
 ```text
-outcomes + coverage card + VoI deepen
-  -> Candidate C
-  -> admit backlog B + residual R
-  -> execute all of B (efficiency bar)
-  -> re-admit as evidence/capacity changes
-  -> verify cadence + Stop-Audit
-  -> idle or wake
+engagement (uncapped goal, stays active)
+  cycle k:
+    coverage card + VoI deepen -> C -> B + R
+    if B empty and R clean: engagement idle -> goal complete
+    else: execute B -> verify -> cycle Stop-Audit -> cycle k+1  (loop)
 ```
 
-A **cycle** clears **B** (or legally rejects items) and proves residuals in **R**
-cannot justify more Work under policy. Completing one micro-fix is not a cycle.
+A **cycle** clears **B** for this research pass.  
+**Loop engineering** requires opening **cycle k+1** (re-research) after B clears,
+unless engagement idle is proven by a **fresh** empty re-scout.  
+Completing one micro-fix or one cycle is not ending the loop.
 
 It is **not**:
 
@@ -78,7 +80,7 @@ L = (expected_outcome_or_frontier_gap_delta × weight × confidence)
 - **Ease alone must not promote** micro-polish over higher-L harder bets.
 - Compose `decision-quality-standard` when ranking or stopping.
 
-## One cycle procedure
+## Multi-cycle engagement procedure
 
 1. Load current contract revision; lock 1–3 north-star outcomes and non-goals.
 2. Bind/resume **uncapped** harness goal (see harness-goal-binding).
@@ -92,20 +94,33 @@ L = (expected_outcome_or_frontier_gap_delta × weight × confidence)
 8. Re-admit R→B when capacity/evidence changes; do not abandon B for random polish.
 9. **Verify cadence:** original-oracle per Work terminal; one cycle outcome
    readback on exact subjects (not PR-green-as-done; not every-commit full suite).
-10. **Stop-Audit** package (includes research card + verify cadence checks).
-11. Emit: card, B outcomes, R, coverage deltas, idle/wake predicate.
+10. **Cycle Stop-Audit** (B cleared + verify cadence + card for this cycle).
+11. Emit: card, B outcomes, R, coverage deltas.
+12. **Loop:** immediately start next cycle at step 3 (new coverage card / re-scout).
+    Do **not** complete the harness goal here.
+13. **Engagement idle** only if step 5–6 yield B=∅ and R has no unblocked
+    high-EV after a **fresh** card — then engagement Stop-Audit + goal complete.
 
 ## Idle frontier (no perfection)
 
-Idle when **all** hold:
+**Cycle boundary ≠ engagement idle.**
 
-- hard floors have fresh decisive evidence;
-- B is empty or remaining B items are Stop-Audit rejected with falsifiable reasons;
-- R has no unblocked item with EV/L ≥ MinOutcomeDelta;
-- Stop-Audit tests pass (see contract);
-- wake triggers are durable and explicit.
+| Event | Action |
+| --- | --- |
+| B cleared this cycle | Cycle Stop-Audit → **re-research (next cycle)** |
+| Fresh re-research admits B=∅ and R clean | **Engagement idle** → goal may complete |
+| R still has unblocked high-EV | **Must not idle** — promote to B or execute |
 
-Idle means “no better move now under policy,” not “product is perfect.”
+Engagement idle when **all** hold **after a fresh coverage card/re-scout**:
+
+- hard floors fresh;
+- B empty (no passers this research pass);
+- R has no unblocked EV/L ≥ MinOutcomeDelta;
+- engagement Stop-Audit package complete;
+- wake triggers durable.
+
+Idle means “no better move now under policy,” not “product is perfect,” and
+**not** “we shipped one good cycle.”
 
 ## Reviewer policy
 
@@ -135,6 +150,7 @@ obligations, open the composed package (or rely on co-selected descriptions).
 - Collapsing UI, performance, and business model into one score
 - Micro-polish thrash (many commits, no user-visible Δ)
 - Treating one Work land as cycle/goal complete
+- Treating one cycle B-clear as loop/goal complete without re-research
 - Admitting only one high-L item while other unblocked high-L items sit ignored
 - Freeze-all mega-E waterfall
 - Ease-first ranking; difficulty-as-veto

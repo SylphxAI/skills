@@ -23,7 +23,7 @@ When the runtime provides goal APIs:
 | Start / resume | `get_goal`. If none or wrong objective, `create_goal` |
 | Budget | **Omit budget caps** (for Codex: omit `token_budget`) unless the user explicitly sets a budget |
 | Resume | Every cycle/tick begins with `get_goal` and continues the same engagement |
-| Complete | Only when **Stop-Audit package** satisfies **idle predicate** for declared scope |
+| Complete | Only at **engagement idle** (fresh re-scout B=∅ + R clean + Stop-Audit)—**not** after a single cycle B-clear |
 | Blocked | Only after the harness strict blocked audit (repeated hard impasse) |
 
 **Do not** attach a token/time budget “for safety” by default. A budget cap
@@ -38,52 +38,55 @@ The goal `objective` must be self-contained for recovery. Include:
 3. **North-star outcomes (1–3)** and explicit non-goals
 4. **Aspect set** / matrix families in scope
 5. **EV policy:** MinOutcomeDelta; leverage ranking (not ease-first)
-6. **Research:** 5-cell coverage card required before admit; VoI stop; ~70% on Type-2
-7. **Definition of Done / idle predicate:** floors fresh; B cleared or legally
-   rejected; R has no unblocked EV ≥ threshold; research card complete;
-   verify cadence met; Stop-Audit passed; wake durable—**not** product perfection
-8. **Validation gates:** per-Work original-oracle; one cycle outcome readback;
-   Stop-Audit package before complete
-9. **Contract pointer:** revision/id of Product Quality Loop Contract (B/R live
-   there—not the full backlog stuffed as sole SSOT in the goal string)
-10. **Authority floors:** no meta-router; no invented credentials/deploy;
-   commercial/legal/irreversible need owner authority
-11. **Efficiency:** parallel default for independent B items
-12. **Current next safe action**
-13. **Composition:** `continuous-product-quality`; `decision-quality-standard` +
-    `evidence-and-claims-standard` for rank/stop/claims; `autonomous-execution`
-    per Workstream; specialists via native discovery
+6. **Research:** 5-cell coverage card each cycle; VoI stop; ~70% on Type-2
+7. **Loop:** multi-cycle engagement; after each B-clear, re-research next cycle
+8. **Definition of Done / engagement idle:** floors fresh; **fresh** card shows
+   B=∅; R has no unblocked EV ≥ threshold; verify cadence met on last cycle;
+   engagement Stop-Audit passed; wake durable—**not** product perfection, **not**
+   “one cycle done”
+9. **Validation gates:** per-Work original-oracle; per-cycle outcome readback;
+   cycle Stop-Audit after B; engagement Stop-Audit only before goal complete
+10. **Contract pointer:** Product Quality Loop Contract revision (B/R live there)
+11. **Authority floors:** no meta-router; no invented credentials/deploy
+12. **Efficiency:** parallel default for independent B items
+13. **Current next safe action** (which cycle, what’s next)
+14. **Composition:** `continuous-product-quality`; decision-quality + evidence;
+    `autonomous-execution` per Workstream; specialists via native discovery
 
 ### Template (adapt; keep compact but complete)
 
 ```text
 Operate high-leverage continuous product betterment for <PRODUCT/REPO>.
 North-star outcomes: <O1..O3>. Aspects: <ASPECTS>. Non-goals: <...>.
-Maintain Product Quality Loop Contract <CONTRACT_ID/REV>: 5-cell research
-coverage card, Candidate C, backlog B (all above MinOutcomeDelta under capacity),
-residual R. Execute B with parallel efficiency bar; verify cadence (per-Work
-oracle + cycle outcome). Re-admit R when capacity/evidence changes. Idle only
-after Stop-Audit (card+verify+no unblocked high-EV R); not perfection; not one PR.
-No token budget cap. No continuous independent reviewers. Next: <ACTION>.
+Maintain Product Quality Loop Contract <CONTRACT_ID/REV>. Run continuous
+multi-cycle betterment: each cycle = coverage card → C → B/R → execute all B →
+verify → cycle Stop-Audit → RE-RESEARCH next cycle. Goal STAYS ACTIVE across
+cycles. Complete goal ONLY at engagement idle (fresh re-scout B empty + R clean).
+Not one-cycle-and-stop; not perfection; not one PR. No token budget. Next: <ACTION>.
 ```
 
 ## Lifecycle
 
 ```text
 get_goal
-  -> missing/mismatch -> create_goal(objective, NO budget)
-  -> active -> run betterment cycle work
-        -> B still open or R has unblocked high-EV -> leave goal active
-        -> Stop-Audit package passes idle predicate -> update_goal(complete)
+  -> missing/mismatch -> create_goal(objective, NO budget)  # engagement
+  -> active ->
+        run cycle k (card → B → execute → verify → cycle Stop-Audit)
+        -> if B was non-empty: leave goal ACTIVE, start cycle k+1 (re-research)
+        -> if fresh re-scout B empty and R clean: engagement Stop-Audit
+             -> update_goal(complete)
         -> true multi-turn impasse -> update_goal(blocked) only after audit
 ```
 
+**Critical:** `update_goal(complete)` is **illegal** after only clearing B once
+without a subsequent empty re-research pass.
+
 On a later wake (new signal, owner request, freshness miss):
 
-- if previous goal completed at idle, `create_goal` a new uncapped goal for the
-  new cycle with same product identity and updated outcomes/action;
+- if previous goal completed at engagement idle, `create_goal` a new uncapped
+  engagement for the same product with updated outcomes;
 - do not silently shrink the objective to the last patch;
-- capacity splits keep the **same engagement/goal** until B/R policy is satisfied.
+- capacity splits and multi-cycle work keep the **same engagement/goal**.
 
 ## Goal vs reviewer
 
@@ -106,7 +109,8 @@ On a later wake (new signal, owner request, freshness miss):
 ## Anti-patterns
 
 - Creating a goal with a token budget “just in case”
-- Completing the goal when one Work lands, CI is green, or “a few polishes shipped”
+- Completing the goal when one Work lands, CI is green, “a few polishes shipped”,
+  or **one cycle B-clear without re-research**
 - Objective that only says “improve the product” with no outcomes/idle/EV policy
 - Putting the entire frozen mega-list as sole SSOT in the goal with no contract pointer
 - Replacing Enact/Git/delivery authority with the harness goal
