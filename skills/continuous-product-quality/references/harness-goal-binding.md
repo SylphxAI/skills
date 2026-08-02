@@ -14,6 +14,16 @@ systems own deploy/live proof. The Goal API status write is **not** an automatic
 evidence verifier—the agent must attach a Stop-Audit package in durable
 contract/output.
 
+## Outer objective only
+
+The goal `objective` is the **outer engagement** (product outcomes / betterment
+north-stars). **Illegal:** setting or completing a goal whose sole meaning is
+“finish cycle 3” or “land B8–B10.” Cycle backlogs live in the contract log;
+the goal text stays outer until **engagement idle**.
+
+Goal API is a **recovery + terminal gate**, not the motor of the loop. If tools
+are missing, **self-loop anyway** until engagement idle.
+
 ## Rule: uncapped betterment goals
 
 When the runtime provides goal APIs:
@@ -78,8 +88,13 @@ get_goal
         -> true multi-turn impasse -> update_goal(blocked) only after audit
 ```
 
-**Critical:** `update_goal(complete)` is **illegal** after only clearing B once
-without a subsequent empty re-research pass.
+**Critical:**
+
+- `update_goal(complete)` is **illegal** after only clearing B once without a
+  subsequent empty re-research pass.
+- Emitting a **final user answer** after cycle k while engagement is not idle is
+  **illegal** control flow (use durable contract log; continue cycle k+1).
+- Do not wait for the harness to “kick” you — open the next cycle yourself.
 
 On a later wake (new signal, owner request, freshness miss):
 
@@ -103,7 +118,7 @@ On a later wake (new signal, owner request, freshness miss):
 | --- | --- |
 | Explicit Goal API (e.g. Codex `create_goal`/`get_goal`/`update_goal`) | Required when operating this Skill |
 | Goal API with optional budget field | Omit budget unless user explicitly requests one |
-| No Goal API | Residual: durable contract + scheduler/wake only; state the gap |
+| No Goal API | Residual noted once; **still multi-cycle self-loop** to engagement idle |
 | Enact Work Graph also present | Goal recovers the **loop engagement**; Enact owns individual Work items |
 
 ## Anti-patterns
@@ -118,6 +133,8 @@ On a later wake (new signal, owner request, freshness miss):
 - Skipping `get_goal` on resume and starting a narrower ad-hoc task
 - Treating Goal API success as proof without Stop-Audit package
 - Completing without research coverage card or verify cadence
+- Final user turn after each cycle (“Cycle N 報告，要繼續嗎？”) while not idle
+- Goal objective rewritten to the cycle backlog alone
 
 ## Minimum evidence in Skill output
 

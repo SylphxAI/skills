@@ -96,10 +96,16 @@ L = (expected_outcome_or_frontier_gap_delta × weight × confidence)
    readback on exact subjects (not PR-green-as-done; not every-commit full suite).
 10. **Cycle Stop-Audit** (B cleared + verify cadence + card for this cycle).
 11. Emit: card, B outcomes, R, coverage deltas.
-12. **Loop:** immediately start next cycle at step 3 (new coverage card / re-scout).
-    Do **not** complete the harness goal here.
+12. **Loop:** immediately start next cycle at step 3 (new coverage card / re-scout)
+    **without** ending the agent turn or asking the user to approve Cycle N+1.
+    Do **not** complete the harness goal here. Do **not** emit a final “Cycle N
+    報告 / WORK MAY STOP” while engagement is active.
 13. **Engagement idle** only if step 5–6 yield B=∅ and R has no unblocked
-    high-EV after a **fresh** card — then engagement Stop-Audit + goal complete.
+    high-EV after a **fresh** card — then engagement Stop-Audit + goal complete
+    (if API) + **then** user-facing final status.
+14. **Outer objective:** keep product/north-star engagement text; cycle B items
+    are checkpoints logged in the contract, not a replacement goal.
+15. **No Goal API:** still execute steps 12–13 in-process; note residual once.
 
 ## Idle frontier (no perfection)
 
@@ -151,6 +157,8 @@ obligations, open the composed package (or rely on co-selected descriptions).
 - Micro-polish thrash (many commits, no user-visible Δ)
 - Treating one Work land as cycle/goal complete
 - Treating one cycle B-clear as loop/goal complete without re-research
+- Final user response after each cycle while R/high-EV remains (“點 Cycle 4?”)
+- Replacing outer engagement goal with “finish this cycle”
 - Admitting only one high-L item while other unblocked high-L items sit ignored
 - Freeze-all mega-E waterfall
 - Ease-first ranking; difficulty-as-veto

@@ -296,7 +296,10 @@ scope shrink of the engagement.
 | **Cycle Stop-Audit** | B cleared + verify cadence for cycle k | **Keep goal active**; open cycle k+1 |
 | **Engagement Stop-Audit / idle** | Fresh coverage card/re-scout admits B=∅ and R has no unblocked high-EV | `update_goal(complete)` allowed |
 
-**Loop engineering rule:** after every non-empty cycle, **re-research**. One-cycle-and-stop is an anti-pattern.
+**Loop engineering rule:** after every non-empty cycle, **re-research in the
+same run**. One-cycle-and-stop is an anti-pattern. **Illegal:** end the agent
+turn with a cycle report and wait for the user (or Goal API) to start k+1 while
+engagement is not idle. Outer objective stays product outcomes, not “cycle N.”
 
 ### Stop-Audit package (required at cycle end and before engagement idle)
 

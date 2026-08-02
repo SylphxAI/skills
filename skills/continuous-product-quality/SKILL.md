@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "Loop-engineer continuous product betterment: multi-cycle engagement (re-research after each B clear), 5-cell coverage card, admit all above-threshold B, residual R, parallel execute, verify cadence, Stop-Audit; uncapped goal stays active until re-scout finds no high-EV work. Not one-cycle-and-stop, micro-polish thrash, shallow research-as-done, or perfection."
+description: "Loop-engineer continuous product betterment: outer engagement goal (product outcomes) multi-cycle; after each cycle silently re-research and continue without user final-response; self-loop even without Goal API; coverage card, full B, R, parallel execute, verify; stop only at engagement idle. Not cycle-as-goal, end-turn-after-cycle-report, one-cycle-and-stop, or polish thrash."
 ---
 
 # Continuous Product Quality
@@ -36,6 +36,40 @@ then goal complete.” Clearing B ends a **cycle**, not the **loop**.
 Do **not** `update_goal(complete)` merely because cycle N finished. Complete the
 goal only at **engagement idle** (re-scout found nothing worth doing).
 
+## Outer goal vs cycle (critical)
+
+| Layer | What it is | Stop? |
+| --- | --- | --- |
+| **Outer engagement objective** | Product/north-star betterment (e.g. vision plane works in dogfood) | Only at **engagement idle** |
+| **Inner cycle** | One research→B→execute→verify pass | **Never** the engagement terminal |
+
+**Do not redefine the goal as “finish cycle N” or “ship B8–B10”.** Those are
+inner checkpoints. The durable objective stays the **outer** product outcome.
+
+### Between cycles: continue, do not close the turn
+
+When cycle k Stop-Audit passes and engagement is **not** idle:
+
+1. **Immediately** start cycle k+1 (new coverage card / re-scout → new B).
+2. **Do not** end the agent turn with a user-facing “Cycle N 報告 / 你點下一步”.
+3. **Do not** ask the user whether to continue when R still has unblocked high-EV
+   or a fresh card would admit Work.
+4. Optional: short durable log in the contract (one line). Not a final answer.
+5. User-facing **final** status only at **engagement idle**, hard block, or
+   explicit user interrupt.
+
+Harness Goal API (when present) **recovers** the outer engagement after
+accidental stop. It does **not** replace self-loop: **even with no Goal API**,
+keep cycling in-process until engagement idle.
+
+### Anti-patterns (stop thrash)
+
+- Treating “Cycle 3 完成，要我開 Cycle 4 嗎？” as normal control flow  
+- `update_goal(complete)` or “WORK MAY STOP” after one cycle while R/high-EV remains  
+- Replacing outer objective text with the cycle backlog list alone  
+- Waiting for Goal System to “kick” the next cycle — **you** open k+1  
+
+## Soft composition
 ## Soft composition
 
 | Need | Open |
@@ -79,9 +113,13 @@ goal only at **engagement idle** (re-scout found nothing worth doing).
     **Engagement idle:** plus **fresh** coverage card/re-scout with B=∅ and R
     clean. Goal complete only at (b). Slogans invalid.
 15. **No continuous independent reviewers.** Exception: irreversible/public-contract, load-bearing SOTA, contested Stop-Audit.
-16. **Uncapped harness goal** stays **active across cycles**; complete only at
-    engagement idle (not after first cycle).
-17. **No meta-router.** Native discovery only.
+16. **Uncapped harness goal** encodes the **outer** product engagement; stays
+    **active across cycles**; complete only at engagement idle. Never rewrite
+    the goal to “complete cycle N” alone.
+17. **Self-loop without Goal API.** Missing `create_goal` is a residual note, not
+    a stop. Continue cycles in-process until engagement idle.
+18. **No final user turn between cycles** unless blocked/idle/user interrupt.
+19. **No meta-router.** Native discovery only.
 
 ## Loop (engagement) and cycle
 
@@ -104,9 +142,10 @@ bind product + north-stars + uncapped goal  (engagement START — goal stays act
 
 1. **Outcome lock + uncapped goal (engagement).** Goal remains active for the whole loop.
 2. **Cycle body:** coverage card → C → B/R → if B non-empty execute all B (parallel default) → verify → cycle Stop-Audit.
-3. **Loop:** after cycle Stop-Audit, **immediately re-research** (new card/C/B). Do not park.
-4. **Engagement idle only when** a post-clear (or initial) re-research yields B=∅ and R has no unblocked EV ≥ MinOutcomeDelta — then Stop-Audit + `update_goal(complete)`.
-5. **Never** goal-complete on one PR, one cycle B-clear, or “improved a bit.”
+3. **Loop:** after cycle Stop-Audit, **immediately re-research** (new card/C/B) **in the same turn/run**. Do not park; do not final-response the user.
+4. **Engagement idle only when** a post-clear (or initial) re-research yields B=∅ and R has no unblocked EV ≥ MinOutcomeDelta — then Stop-Audit + `update_goal(complete)` (if Goal API) + **then** user-facing final status.
+5. **Never** goal-complete or user-final on one PR, one cycle B-clear, cycle report, or “improved a bit.”
+6. **No Goal API residual:** still self-loop to engagement idle; record “goal API missing” once, do not use it as a reason to stop between cycles.
 
 ## Anti-patterns
 

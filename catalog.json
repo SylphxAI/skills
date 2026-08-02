@@ -113,9 +113,9 @@
     },
     {
       "name": "continuous-product-quality",
-      "description": "Loop-engineer continuous product betterment: multi-cycle engagement (re-research after each B clear), 5-cell coverage card, admit all above-threshold B, residual R, parallel execute, verify cadence, Stop-Audit; uncapped goal stays active until re-scout finds no high-EV work. Not one-cycle-and-stop, micro-polish thrash, shallow research-as-done, or perfection.",
+      "description": "Loop-engineer continuous product betterment: outer engagement goal (product outcomes) multi-cycle; after each cycle silently re-research and continue without user final-response; self-loop even without Goal API; coverage card, full B, R, parallel execute, verify; stop only at engagement idle. Not cycle-as-goal, end-turn-after-cycle-report, one-cycle-and-stop, or polish thrash.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:3a6624bee5e72da815245f2300098686854dce606bb3496cea833ca82e2a64f4"
+      "packageDigest": "sha256:d0a569b4a8210578d3bbd6d97e0832e1bd6cc7df214be8a3a6086b9e44d37ae4"
     },
     {
       "name": "convergent-review",
