@@ -5,46 +5,47 @@
 1. [Control model](#control-model)
 2. [Contract structure](#contract-structure)
 3. [Quality matrix](#quality-matrix)
-4. [Observation, finding, Work, and coverage](#observation-finding-work-and-coverage)
-5. [Scout triggers](#scout-triggers)
-6. [Finding qualification and admission](#finding-qualification-and-admission)
+4. [Observation, finding, Work, C/B/R, and coverage](#observation-finding-work-cbr-and-coverage)
+5. [Scout triggers and research-stop](#scout-triggers-and-research-stop)
+6. [Leverage, qualification, and admission](#leverage-qualification-and-admission)
 7. [Execution and delivery readback](#execution-and-delivery-readback)
-8. [Idle, wake, and continuation](#idle-wake-and-continuation)
+8. [Stop-Audit, idle, wake, and goal complete](#stop-audit-idle-wake-and-goal-complete)
 9. [Parallelism and backpressure](#parallelism-and-backpressure)
-10. [Loop observability](#loop-observability)
-11. [Implementation topology](#implementation-topology)
-12. [Worked task shapes](#worked-task-shapes)
-13. [Research basis](#research-basis)
+10. [Reviewer policy](#reviewer-policy)
+11. [Loop observability](#loop-observability)
+12. [Implementation topology](#implementation-topology)
+13. [Worked task shapes](#worked-task-shapes)
+14. [Research basis](#research-basis)
 
 ## Control model
 
 Continuous product quality is a closed-loop control system over changing
-product state. It is not a long checklist and not an instruction to keep one
-agent alive forever.
+product state. It maximizes **user/business-visible outcome leverage**, not
+commit count or micro-polish volume.
 
 ```text
-versioned product quality contract
-  -> scoped scouts and operating signals
-  -> immutable observations
-  -> normalized, deduplicated findings
-  -> policy admission and priority
-  -> bounded Work
-  -> source candidate and delivery
-  -> original-oracle readback
-  -> coverage update, correction, or idle
+north-star outcomes + versioned contract
+  -> deep research (VoI stop) + scouts
+  -> Candidate set C
+  -> admit committed backlog B + residual register R
+  -> execute all of B (parallel workstreams OK)
+  -> re-admit R→B when capacity/evidence changes
+  -> original-oracle + cycle outcome readback
+  -> Stop-Audit → idle or continue same engagement
 ```
 
-Separate three loops:
+Separate layers:
 
-| Loop | Unit | Terminal |
+| Layer | Unit | Terminal |
 | --- | --- | --- |
-| Product quality | one finding or opportunity | outcome verified, rejected, deferred, deduplicated, or retained residual |
-| Work execution | one accepted Work Item | repository/product delivery terminal satisfied or qualified blocked |
-| Agent-system learning | one recurring agent failure class | intervention promoted, revised, or reverted against frozen evidence |
+| Betterment **cycle / engagement** | Program over backlog **B** + residual **R** | Stop-Audit idle or capacity-continued same id |
+| Work execution | One accepted Work Item / Workstream | Delivery terminal + original-oracle |
+| Agent-system learning | One recurring agent failure class | Intervention against frozen evidence |
 
 A product defect does not automatically justify a Skill change. Repeated agent
-failure does not automatically justify product Work. Preserve the causal and
-authority boundary.
+failure does not automatically justify product Work.
+
+**Not the unit of product progress:** one finding, one cosmetic PR, local green.
 
 ## Contract structure
 
@@ -53,169 +54,155 @@ The Product Quality Loop Contract records:
 | Section | Required semantics |
 | --- | --- |
 | Subject | project, product release or source revision, environment, capability, surface, journey |
-| Quality intent | promise, hard floor, improvement objective, benchmark or retained residual |
-| Oracle | required subject layer, observation method, decisive result, uncertainty, replay inputs, freshness |
-| Signals | change, external event, live condition, scheduled refresh, owner request |
-| Finding policy | normalization, identity, deduplication, disposition, invalidation |
-| Admission | materiality, actionability, ownership, expected value, risk, authority, capacity |
-| Work handoff | goal, non-goals, acceptance, evidence, relation, delivery terminal |
-| Readback | exact delivered subject, original oracle, outcome comparison, correction transition |
-| Operation | WIP, compute/time/cost budgets, idle and wake predicates, metrics, recovery |
+| North-star outcomes | 1–3 measurable user/business outcomes; non-goals |
+| MinOutcomeDelta | Minimum non-floor user/business-visible delta for admission to B |
+| Quality intent | promise, hard floor, improvement objective, frontier target, residual |
+| Oracle | subject layer, method, decisive result, uncertainty, replay, freshness |
+| Signals | change, event, live, schedule, owner request |
+| Candidate C | inventory of scored opportunities this research pass |
+| Backlog B | admitted Work ordered by leverage under capacity |
+| Residual R | not-in-B items with EV/L, blocker class, freshness |
+| Finding policy | normalization, identity, dedupe, disposition, invalidation |
+| Admission | leverage L, MinOutcomeDelta, ownership, risk, authority, capacity |
+| Work handoff | goal, non-goals, acceptance, evidence, delivery terminal |
+| Readback | exact delivered subject, original oracle, outcome comparison |
+| Stop-Audit | checklist results bound to observation/finding IDs |
+| Operation | WIP, budgets, idle/wake, metrics, recovery, harness goal pointer |
 
-The product repository stores the versioned contract or a manifest reference to
-it. Operational records bind the exact contract revision instead of copying its
-prose into a second writable source. Advance one current operational contract
-head under predecessor CAS: historical revisions remain replayable, but stale
-findings cannot use retired policy or WIP limits to create new Work.
+The product repository stores the versioned contract or a manifest reference.
+Operational records bind the exact contract revision. Advance under predecessor
+CAS where applicable.
+
+**Do not** use a freeze-all immutable mega-list as the only plan: B and R update
+when evidence or capacity changes (re-admission). **Do** treat clearing B (or
+legal rejects) plus anti-lazy R as the cycle bar—not Top-1 only.
 
 ## Quality matrix
 
 Model quality as a matrix, not a scalar score:
 
 ```text
-capability or surface x applicable quality dimension
+capability or surface × applicable quality dimension
   -> promise or objective
   -> oracle + required subject layer
   -> latest decisive evidence
   -> freshness
-  -> residual or eligible finding
+  -> residual or eligible candidate
 ```
 
-Common dimensions include:
+Common dimensions include functional journeys; interaction/visual integrity;
+accessibility; SEO/discoverability; performance; compatibility; reliability;
+security/privacy; content/brand; art/3D; game systems; operability;
+architecture; business packaging; growth/retention; support recovery.
 
-- functional correctness and critical user journeys;
-- interaction, information architecture, visual integrity, responsive behavior,
-  and layout stability;
-- accessibility and input modality;
-- discoverability, metadata, crawlability, semantic structure, and public SEO;
-- latency, throughput, resource use, and user-perceived performance;
-- compatibility, API and data contracts, migration, and recovery;
-- reliability, resilience, saturation, and degraded operation;
-- security, privacy, tenancy, abuse resistance, and data lifecycle;
-- content accuracy, localization, brand consistency, and trust;
-- art direction, visual fidelity, motion/audio feel, 3D/asset quality where the
-  product ships creative or spatial assets;
-- game design quality: core loops, progression, economy coupling, fairness, and
-  first-time experience where the product is a game or game-like system;
-- operational diagnosability and audience-safe status projection;
-- architecture, maintainability, dependency health, and lifecycle complexity;
-- business-model and packaging quality, monetization integrity, and
-  customer-outcome quality where applicable;
-- growth, retention, referral, and notification-policy quality where those loops
-  are product-owned;
-- support, success, and recovery-path quality for customer-facing consequences.
-
-Do not require every dimension for every surface. Record `not_applicable` with a
-semantic reason. Do not collapse a failed accessibility floor into a higher
-average performance score.
+Record `not_applicable` with a semantic reason. Do not collapse a failed floor
+into an average score.
 
 Classify each selected cell:
 
-- **hard floor** — violation is unacceptable for the declared product state;
-- **objective** — a measurable target with positive product value;
-- **frontier opportunity** — better than the current target when expected value
-  remains positive.
+- **hard floor** — unacceptable if failed for declared product state;
+- **objective** — measurable north-star-linked target;
+- **frontier opportunity** — closes claim-grade gap when L ≥ threshold.
 
-A known uncertainty or retained gap is a `residual` finding and coverage state,
-not a fourth requirement class. An applicable cell still needs an oracle;
-`not_applicable` is the only oracle-free cell state and requires a semantic
-reason.
+Known uncertainty is a `residual`, not fake green. Applicable cells need oracles.
 
-## Observation, finding, Work, and coverage
+**Frontier / SOTA language** is forbidden without claim-grade fields: subject,
+comparison set, metrics, observation date, uncertainty, evidence. Prefer
+“meets target / best among evaluated / residual unknown.” Compose
+`evidence-and-claims-standard`.
 
-Keep four objects distinct.
+## Observation, finding, Work, C/B/R, and coverage
 
 ### Quality Observation
 
-An immutable evidence record containing:
-
-- producer and method;
-- exact subject identity: source revision, artifact digest, release, URL or
-  environment as appropriate;
-- capability, surface, journey, and dimension;
-- timestamp and validity/freshness window;
-- measurement, trace, screenshot, accessibility tree, failure, user signal, or
-  other evidence locator;
-- uncertainty, sampling and protected-data classification; and
-- the contract/oracle revision used.
-
-Successful tool execution is not automatically a healthy observation. Missing
-or corrupt evidence is `unknown`. Each contract cell declares whether its
-oracle covers a source revision, Candidate, artifact, or versioned live
-resource. Evidence from one layer cannot silently satisfy another.
+Immutable evidence: producer/method; exact subject identity; cell; timestamp;
+freshness; evidence locator; uncertainty; contract/oracle revision. Missing
+evidence is `unknown`. Layer mismatches do not silently satisfy another layer.
 
 ### Quality Finding
 
-A normalized interpretation of one or more observations:
+Normalized interpretation of one or more observations: stable id; dedupe key;
+consequence; floor/objective/opportunity; severity; confidence; ownership;
+proposed oracle and expected outcome delta; disposition; relations.
 
-- stable finding identity and semantic deduplication key;
-- affected subject, consequence, reach, and quality cell;
-- violated floor/objective or positive opportunity;
-- reproduction or measurement and disconfirming evidence;
-- severity, confidence, reversibility, urgency, and staleness;
-- owning capability and authority boundary;
-- proposed acceptance oracle and expected quality delta;
-- disposition: `open`, `admitted`, `deferred`, `residual`, `rejected`,
-  `duplicate`, or `resolved`, with reason; and
-- relations to source observations, predecessor findings, Work, incidents,
-  feedback, decisions, and delivery evidence.
-
-`Resolved` requires outcome readback. Closing a ticket or landing code is not
-resolution evidence. The decisive passing observation must be new relative to
-the admitted finding and backed by readback Evidence bound to that Work; an
-old pass or unrelated artifact is not closure.
+`Resolved` requires outcome readback bound to the Work—not ticket close alone.
 
 ### Work
 
-Work is an accepted action, not a signal. One Work Item owns one independently
-terminal outcome and includes exact goal, non-goals, acceptance, risk,
-evidence, delivery boundary, and relation to the finding. Several findings may
-share one Work only when one owning cause and one terminal resolve them.
+Work is an accepted action with exact goal, non-goals, acceptance, risk,
+evidence, delivery boundary, and relation to findings/candidates.
+
+- One Work owns one independently terminal **outcome story** (may cover multiple
+  findings when one owning cause or one coherent tranche).
+- Prefer packaging **high-leverage coherent changes** over atomized polish.
+- Several Work items may exist in **B** simultaneously (the cycle executes all).
+
+### Candidate C, backlog B, residual R
+
+| Set | Meaning |
+| --- | --- |
+| **C** | All scored opportunities from current research/scouts |
+| **B** | Admitted subset under leverage + MinOutcomeDelta + authority + capacity—**all** such items that fit the envelope, not only Top-1 |
+| **R** | C\B and later discoveries: each has L/EV, blocker class, freshness |
+
+Blocker classes for R (examples): `capacity`, `authority_pending`,
+`external_wait`, `below_min_delta`, `negative_ev`, `duplicate`,
+`unauthorized_irreversible`, `unverified_non_floor`.
+
+Re-admission: when capacity frees, evidence changes, or blockers clear, promote
+R→B without abandoning the engagement for a random micro-scout.
 
 ### Quality Coverage
 
-Coverage is a rebuildable projection containing the latest decisive observation
-and freshness for each selected matrix cell. It must expose `pass`, `fail`,
-`unknown`, `stale`, `not_applicable`, and explicit residuals. It is not a second
-contract or a writable verdict source.
+Rebuildable projection of latest decisive observation per selected cell:
+`pass`, `fail`, `unknown`, `stale`, `not_applicable`, residuals. Not a second
+writable verdict SSOT.
 
-## Scout triggers
+## Scout triggers and research-stop
 
-Use complementary trigger classes.
+### Triggers
 
-### Change-triggered
+- **Change-triggered** — affected fast checks on candidate/artifact change  
+- **Delivery-triggered** — minimum live readback after release  
+- **Event-triggered** — incidents, feedback clusters, advisories, owner signal  
+- **Scheduled** — slow-drift surfaces (a11y, SEO, perf budgets, content, …)
 
-Run affected, fast checks when a source candidate or artifact changes. Select
-by changed capability, contract, surface, dependency, or failure model rather
-than running every scout on every commit.
+### Deep research + VoI stop
 
-### Delivery-triggered
+Before large admission, run deep research sufficient to:
 
-After release or deployment, run the minimum live readback required for the
-changed promise: critical journey, public metadata, layout behavior, latency,
-compatibility, or recovery state. Delivery success and product outcome remain
-separate observations.
+1. grade top opportunities claim-sensibly against north-stars/frontier;
+2. cover hard floors;
+3. list residual unknowns with freshness.
 
-### Event-triggered
+**Stop research** when further investigation cannot change B ranking or idle
+verdict enough to justify delay (decision-quality value-of-information).
+Forbid open-ended “market SOTA essays” with no comparison set or admission
+impact.
 
-Ingest material service degradation, customer feedback, incident, security or
-dependency advisory, provider rejection, support cluster, product analytics
-change, or explicit owner signal through its authoritative connector.
+## Leverage, qualification, and admission
 
-### Scheduled
+### Leverage
 
-Refresh broad or slowly drifting surfaces such as accessibility, SEO,
-cross-device visual quality, content, dependency health, architecture,
-performance budgets, and stale coverage. Cadence follows volatility, exposure,
-risk, cost, and freshness—not an arbitrary universal interval.
+```text
+L = (expected_outcome_or_frontier_gap_delta × weight × confidence)
+    / full_lifecycle_cost
+```
 
-A scout should be stateless where practical. Durable cursor, deduplication,
-backoff, and observation state belong to the operating system, not process
-memory.
+Full cost: implementation, integration, verification, operation, collision,
+recovery. Historical human typing effort is not the default cost model.
 
-## Finding qualification and admission
+- Difficulty alone does **not** disqualify.
+- Ease alone must **not** promote polish over higher-L harder work.
+- Compose `decision-quality-standard` for ranking and stop decisions.
 
-Do not convert every warning into Work. A normal finding is eligible when:
+### MinOutcomeDelta
+
+The contract declares a minimum user/business-visible delta for **non-floor**
+Work. Below-threshold cosmetic work is residual/reject—not B. Hard floors
+bypass ordinary opportunity ranking but still obey authority/safety.
+
+### Admission eligibility
 
 ```text
 reproducible_or_measurable
@@ -224,204 +211,196 @@ and actionable
 and owned
 and novel_or_meaningfully_changed
 and has_a_decisive_oracle
-and expected_value_positive
-and integration_capacity_available
+and (hard_floor OR (L_positive AND expected_delta ≥ MinOutcomeDelta))
+and integration_capacity_available_for_this_item_or_split
 ```
 
-Hard-floor violations bypass ordinary opportunity ranking but still obey
-effect authority, safety, legal, data, and irreversible-change boundaries.
+**Batch rule:** Admit into B **every** candidate that meets the bar under the
+current capacity envelope (ordered by L). Do not admit a single easy polish
+while other unblocked high-L items remain only because they are harder.
 
-Expected value considers:
+If capacity cannot hold all passers: put overflow in R with `capacity` blocker;
+keep the **same engagement/goal**; clear B then promote—not “loop complete.”
 
-- user or customer impact, reach, frequency, severity, and strategic value;
-- confidence and expected quality delta;
-- cost of delay and recurrence;
-- agent-native implementation, verification, integration, operation, and
-  recovery cost;
-- collision and opportunity cost at current CI/deployment capacity;
-- reversibility and downside risk; and
-- whether a simpler existing mechanism owns the result.
-
-Historical human typing effort is not the default cost model. Cheap agent
-generation also does not erase lifecycle, review, state, operational, or
-integration cost.
-
-Use semantic idempotency keys over product, capability, surface, dimension,
-owning cause, and relevant subject revision. Preserve rejected, duplicate,
-deferred, and residual findings so unchanged evidence does not recreate them
-indefinitely. Re-open only when the subject, evidence, contract, severity, or
-disposition predicate materially changes.
+Semantic idempotency keys over product, capability, surface, dimension, owning
+cause, subject revision. Preserve rejected/duplicate/deferred/residual so
+unchanged evidence does not thrash forever.
 
 ## Execution and delivery readback
 
-Create narrowly scoped, domain-named Work. For example, request keyboard
-accessibility or checkout layout stability rather than instructing an agent to
-“use all quality Skills.” Native discovery can then select the specialist
-method without a repository-maintained router.
-
-The Work path is:
-
 ```text
-admitted finding
-  -> bounded Work and claim
+admitted B item
+  -> claim / autonomous-execution Workstream
   -> specialist diagnosis and implementation
-  -> repository-native source integration
+  -> repository-native integration (small commits OK)
   -> exact-candidate verification
-  -> build/release/deploy by the delivery owner
-  -> original-oracle readback on the exact delivered subject
-  -> resolve, correct, or retain residual
+  -> delivery owner path as required
+  -> original-oracle readback on exact delivered subject
+  -> resolve, correct, or residual
 ```
 
-Re-run the original oracle first. Additional evidence may strengthen the
-verdict but cannot replace the failed promise with an easier proxy. If the fix
-changes the intended promise or public contract, record the decision through
-the owning product process rather than silently moving the target.
+Word Work for native specialist discovery—not “use all quality Skills.”
 
-Rework is new related Work (`rework_of`, `follow_up_of`, or `reverts`) and does
-not rewrite completed history.
+**Engineering vs product batching:** DORA-style small commits are allowed.
+Product progress is measured at Work and cycle outcome oracles—not commit
+count. Cycle Stop-Audit requires outcome/frontier readback on exact subjects.
 
-## Harness goal binding
+Rework is related Work (`rework_of`, `follow_up_of`, `reverts`), not silent
+scope shrink of the engagement.
 
-When the executing harness exposes a Goal System, bind an uncapped recovery goal
-for the betterment engagement (omit token/time budget caps unless the product
-owner explicitly sets one). The goal objective must embed product identity,
-selected aspects, idle-frontier Definition of Done, and next safe action so an
-interrupted session resumes the same loop. Mark the goal complete only when the
-idle frontier predicate is truly met for the declared scope—not when a single
-finding closes. Details: [harness-goal-binding.md](harness-goal-binding.md).
+## Stop-Audit, idle, wake, and goal complete
 
-## Idle, wake, and continuation
+### Stop-Audit package (required before idle / goal complete)
 
-Absolute perfection is not falsifiable. A healthy idle frontier requires:
+| Test | Fail (blocks idle / complete) |
+| --- | --- |
+| Residual completeness | Applicable matrix cells stale/`unknown` without residual or floor evidence |
+| B clearance | Open B items without delivery proof or legal reject |
+| EV leftover | Any R item with EV/L ≥ MinOutcomeDelta and no **qualified** blocker |
+| Floor | Hard-floor fail/unknown without active mitigation Work |
+| Polish trap | Shipping only cosmetic while higher-L residual unaddressed |
+| Authority trap | High-L residual blocked only by owner ask never attempted |
+| Evidence class | Stop reasons lack observation/finding IDs (slogans) |
+| Competitor week (optional VoI) | Named high-L competitor-move candidates unblocked and ignored |
 
-- every current hard-floor cell has fresh decisive evidence;
-- no admitted critical or high-consequence finding remains without eligible
-  Work or a qualified external blocker;
-- selected coverage is fresh or explicitly residual;
-- current source/CI/review/deployment WIP is within capacity;
-- no remaining admissible opportunity has positive expected value under the
-  declared objective and budgets; and
-- the next wake triggers and recovery state are durable.
+Qualified blockers are concrete (authority ticket, external dependency, measured
+negative EV after new evidence)—not “maybe over-engineering” or “too hard.”
 
-Idle is not permanent completion. Wake on a declared source, delivery, event,
-freshness, contract, objective, or owner change. One bounded coordinator tick
-may qualify and launch work, checkpoint, and exit. A scheduler or event can
-later re-enter any eligible agent.
+### Idle predicate
+
+All must hold:
+
+1. Hard floors fresh and decisive;  
+2. B empty or remaining items Stop-Audit rejected;  
+3. R has no unblocked EV/L ≥ MinOutcomeDelta;  
+4. Stop-Audit package recorded;  
+5. Wake catalog durable and explicit.
+
+**Not** idle conditions: product perfect; frontier gap “feels” closed without
+metrics; commit quota filled; agent fatigue.
+
+### Anti-lazy / anti-abuse
+
+- Default = finish B.  
+- Reject/stop must be falsifiable.  
+- Cannot rebrand difficulty as no value.  
+- Cannot use over-engineering as sole reason when an oracle and Δ exist.  
+- Cannot idle by ignoring R.
+
+### Wake
+
+Wake on contract-declared signals: change, event, schedule, owner request,
+freshness miss, capacity restored, residual blocker cleared. New cycle gets
+new/updated research; same product identity; do not silently shrink to last
+patch.
+
+### Harness goal
+
+When a Goal API exists: uncapped bind/resume; objective carries idle DoD, EV
+policy, contract pointer, next action—not full B as sole SSOT.  
+`update_goal(complete)` only with Stop-Audit package. See
+[harness-goal-binding.md](harness-goal-binding.md).
 
 ## Parallelism and backpressure
 
-Parallelize only independent observations or Work whose expected gain exceeds
-startup, context, compute, coordination, collision, review, and integration
-cost. Bound active attempts by the scarcest downstream stage.
+- Parallel workstreams over independent surfaces/items in B are encouraged when
+  collision cost is acceptable.
+- When CI/review/deploy saturates: stop increasing source WIP; clear bottleneck;
+  capacity-split keeps engagement id; overflow stays in R with `capacity`.
+- Do not use backpressure as fake idle while high-L unblocked work exists.
 
-Do not recursively fan out agents merely because work is available. Prefer:
+## Reviewer policy
 
-- parallel scouts over independent surfaces or dimensions;
-- one Work per owning cause;
-- bounded specialist review where distinct judgment changes assurance;
-- shared immutable evidence rather than copied private transcripts; and
-- release of workers at every external-only wait.
+| Mode | When |
+| --- | --- |
+| **No continuous independent reviewers** | Ordinary cycle operation |
+| Always-on discipline | Oracles, B/R, Stop-Audit, goal complete gate |
+| Sparse independent review | Irreversible/public-contract; load-bearing SOTA; **contested** Stop-Audit |
 
-When CI, review, deploy, or outcome readback is saturated, stop creating source
-WIP and clear the bottleneck.
+Prefer machine-checkable evidence over reviewer ceremony.
 
 ## Loop observability
 
-Measure the loop without reducing quality to one score:
+Measure without reducing quality to one score:
 
-- matrix coverage and freshness by product/surface/dimension;
-- hard-floor pass/fail/unknown and open residuals;
-- observation-to-finding and finding-to-Work conversion;
-- duplicate, rejected, deferred, residual, stale, and false-positive rates;
-- discovery-to-admitted, admitted-to-landed, landed-to-live, and live-to-
-  verified latency;
-- escaped defect, recurrence, reopen, rollback, and correction rates;
-- verified quality delta and cost per resolved finding;
-- WIP and queue age by delivery stage; and
-- blind spots, unavailable scouts, and evidence integrity failures.
+- Δ north-star / frontier gap per cycle;
+- B size, clear rate, time-in-B;
+- R high-L leftover count (should be zero at idle);
+- polish vs high-L Work ratio;
+- observation→finding→B conversion;
+- original-oracle pass rate;
+- Stop-Audit fail reasons;
+- research VoI stop hits vs open-ended research time.
 
-Dashboards are projections for decisions. They do not become finding, Work,
-delivery, or product-quality authority. Never expose protected telemetry or
-internal process state through public product contracts merely to make a loop
-observable.
+Dashboards are projections, not admission authority.
 
 ## Implementation topology
 
-Prefer the existing modular product and operating-system boundaries:
-
-```text
-product repository: versioned quality intent and local oracles
-Enact: observations, findings, Work, claims, Runs, relations, subscriptions
-source provider: commit and collaboration facts
-CI: exact-candidate deterministic verdicts
-delivery platform: artifact, release, deploy, rollback, live delivery
-specialist tools: evidence producers and bounded actions
-```
-
-Do not add a new queue, microservice, graph database, scheduler, or deployment
-control plane when the existing owners can represent the contract. Add a
-first-class Finding model when multiple producers, deduplication, disposition,
-queries, and outcome lifecycle make it semantically distinct from Work; it may
-remain a module in a modular monolith.
+| Concern | Owner |
+| --- | --- |
+| Static method | this Skill + composed standards |
+| Contract / B / R | product source or durable store bound to revision |
+| Work/claims (if fleet) | Enact via `enact-work-coordination` |
+| Source | Git |
+| Engagement recovery | Harness Goal System |
+| Live proof | delivery/platform systems |
 
 ## Worked task shapes
 
-### Interface stability
+### High-leverage multi-item cycle
 
-```text
-Audit the signed-in dashboard at release R for layout shift, responsive
-overflow, focus loss, and destructive-action recovery. Emit reproducible
-findings with screenshots/interaction traces; admit only material distinct
-causes; re-run the same journeys after delivery.
-```
+Research → C with 8+ candidates → B admits all five above MinOutcomeDelta under
+capacity → R holds three capacity/authority items → execute five Workstreams →
+cycle readback → Stop-Audit → continue engagement to promote R or idle.
 
-### Accessibility
+### Interface stability campaign
 
-```text
-Refresh keyboard, semantics, contrast, zoom, and screen-reader coverage for
-checkout at revision R. Automated rules are observations; user-task impact and
-replayable acceptance determine findings and resolution.
-```
+Multiple related layout/journey findings share coherent Workstreams in B;
+reject pixel-nits below MinOutcomeDelta into R.
 
-### SEO and public discovery
+### Hard floor interrupt
 
-```text
-Crawl declared public pages, verify status/canonical/robots/metadata/structured
-data/rendered content and critical performance, then create bounded Work only
-for owned, material, reproducible gaps. Re-crawl the exact live release.
-```
+Accessibility floor fail enters B immediately even if polish residuals exist;
+polish does not outrank floors.
 
-### Runtime quality
+### False idle (forbidden)
 
-```text
-Detect a breached journey SLO from protected telemetry, correlate the exact
-release and trace evidence, route an incident when containment is urgent, and
-create follow-up product Work only after the owning cause is established.
-```
+Agent lands ten cosmetic commits, leaves unblocked checkout-conversion residual
+in R, completes goal—**invalid** Stop-Audit (EV leftover + polish trap).
 
 ## Research basis
 
-- IBM's autonomic-computing model separates monitor, analyze, plan, execute,
-  and shared knowledge in a closed control loop:
+- Product prioritization (RICE / WSJF / cost of delay): maximize value per unit
+  time/effort; not ease-first.  
+  <https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/>  
+  <https://www.scaledagileframework.com/wsjf/>
+- Kaizen vs kaikaku: continuous micro-improvement can plateau; breakthrough bets
+  remain necessary when activity no longer moves strategic metrics.
+- IBM autonomic MAPE-K closed loop with re-plan (not freeze-all waterfall):  
   <https://www.research.ibm.com/publications/an-architectural-blueprint-for-autonomic-computing>
-- The Deming Institute describes PDSA as prediction, evidence, learning, and
-  iteration rather than activity repetition:
+- Deming PDSA: prediction, evidence, learning—not activity repetition:  
   <https://deming.org/explore/pdsa/>
-- ISO/IEC 25010 defines a multidimensional product-quality model rather than one
-  universal score:
+- ISO/IEC 25010 multidimensional quality (not one score):  
   <https://www.iso.org/standard/78176.html>
-- Google SRE distinguishes monitoring signals, actionable alerting, toil, SLOs,
-  and recovery work:
+- Google SRE: monitoring vs actionable work; avoid toil-as-progress:  
   <https://sre.google/sre-book/monitoring-distributed-systems/>
-- DORA links small-batch continuous delivery, fast feedback, and stability:
+- DORA continuous delivery: small **engineering** batches and fast feedback—not
+  a ban on large product programs:  
   <https://dora.dev/capabilities/continuous-delivery/>
-- W3C accessibility conformance testing preserves rule applicability,
-  expectations, and outcomes:
-  <https://www.w3.org/WAI/standards-guidelines/act/>
-- Google documents Core Web Vitals as user-centered field and lab signals:
-  <https://web.dev/articles/vitals>
-- OWASP ASVS defines verifiable application-security requirements:
-  <https://owasp.org/www-project-application-security-verification-standard/>
-- OpenTelemetry defines vendor-neutral traces, metrics, logs, and context, while
-  product authority remains outside telemetry:
-  <https://opentelemetry.io/docs/specs/>
+- Claim-grade comparative/SOTA discipline: this repository’s
+  `evidence-and-claims-standard`.
+- W3C ACT, Core Web Vitals, OWASP ASVS, OpenTelemetry as dimension-specific
+  oracle families where applicable.
+
+## Anti-patterns (contract-level)
+
+- Micro-polish thrash; commit count as KPI  
+- One Work = one cycle  
+- Top-1 only while unblocked high-L items remain  
+- Freeze-all mega-E immutable program  
+- Idle with high-L residual unblocked  
+- Ease-first ranking; difficulty-as-veto  
+- Continuous reviewer ceremony  
+- Research without VoI stop  
+- Goal complete without Stop-Audit package  
+- SOTA claims without comparison set  
