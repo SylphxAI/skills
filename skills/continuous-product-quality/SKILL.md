@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "Operate high-leverage continuous product betterment cycles: deep research, candidate set, admit multi-item backlog B of all above-threshold opportunities, residual R, execute whole program, outcome/frontier readback, Stop-Audit before idle; bind uncapped harness goal. Not micro-polish thrash, one tiny fix per loop, freeze-all waterfall, or vague 'make it perfect'."
+description: "Operate high-leverage continuous product betterment: 5-cell research coverage card, admit all above-threshold B items, residual R, parallel-efficient execute, Work+cycle verify cadence, Stop-Audit idle, uncapped goal. Not micro-polish thrash, shallow research-as-done, serial busywork, freeze-all waterfall, or perfection."
 ---
 
 # Continuous Product Quality
@@ -52,50 +52,46 @@ unblocked EV ≥ MinOutcomeDelta items.
 
 1. **No perfect terminal.** Idle = no positive-leverage move under policy—not perfection.
 2. **Outcomes over activity.** Maximize Δ north-star / frontier gap per full cost. Commit count is not progress.
-3. **Leverage, not ease.**  
+3. **~70% then move (Type-2).** On reversible work, do not wait for perfect information. Stop research when VoI cannot change B/idle. Irreversible/public-contract still needs authority depth.
+4. **Minimal research coverage card before admit.** Five cells (contract). Each cell: evidence **or** `unknown`+reason. Decision-complete, not omniscient. Stop-Audit fails if card incomplete.
+5. **Leverage, not ease.**  
    `L = (expected_outcome_or_frontier_gap_delta × weight × confidence) / full_lifecycle_cost`  
    Difficulty alone does not disqualify. Ease alone must not promote polish.
-4. **MinOutcomeDelta.** Non-floor Work below contract threshold → residual/reject, not B.
-5. **Matrix serves outcomes.** Multi-aspect cells; never hide a failed floor in one score.
-6. **Evidence before claims.** Original-oracle readback on delivered subjects. Local green ≠ betterment.
-7. **B then clear.** Completing one Work ≠ completing the cycle/goal.
-8. **No freeze-all mega-E.** Use C → B + R + re-admission when evidence/capacity changes—not an immutable waterfall list.
-9. **Stop-Audit before idle/goal complete.** Falsifiable package required; slogans invalid.
-10. **No continuous independent reviewers** in the operating loop. Reviewers only for irreversible/public-contract authority, load-bearing SOTA claims, or **contested** Stop-Audit.
-11. **Uncapped harness goal** when Goal API exists; complete only with Stop-Audit package at idle.
-12. **No meta-router.** Native discovery only.
+6. **MinOutcomeDelta.** Non-floor Work below threshold → residual/reject, not B.
+7. **Matrix serves outcomes.** Multi-aspect cells; never hide a failed floor in one score.
+8. **All passers into B.** Admit every capacity-feasible above-threshold item (many OK)—not Top-1 only. Overflow → R with `capacity`, same engagement.
+9. **Execution efficiency bar.** Independent B items default **parallel**; shared setup once; serial only with explicit dependency. Forbid serial-for-safety-only.
+10. **Verify cadence.** Per B item: original-oracle at terminal. Per cycle: one outcome/north-star readback on exact subjects. Not every-commit full suite; not PR-green-as-done.
+11. **Evidence before claims.** Local green ≠ betterment.
+12. **B then clear.** Completing one Work ≠ completing the cycle/goal.
+13. **No freeze-all mega-E.** C → B + R + re-admission—not immutable waterfall.
+14. **Stop-Audit before idle/goal complete.** Falsifiable package; slogans invalid.
+15. **No continuous independent reviewers.** Exception: irreversible/public-contract, load-bearing SOTA, contested Stop-Audit.
+16. **Uncapped harness goal** when Goal API exists; complete only with Stop-Audit package at idle.
+17. **No meta-router.** Native discovery only.
 
 ## Cycle
 
 ```text
 bind product + north-star outcomes + uncapped goal
-  -> deep research (VoI stop)
-  -> Candidate set C + frontier map (claim-grade if SOTA language used)
-  -> admit B ⊆ C under leverage + capacity + WIP
-  -> residual R for the rest (EV + blocker)
-  -> execute all of B (parallel workstreams OK; small commits OK)
+  -> research coverage card (5 cells) + VoI-limited deepen
+  -> Candidate C (+ claim-grade frontier only if SOTA language used)
+  -> admit ALL capacity-feasible passers into B; R for the rest
+  -> execute B with efficiency bar (parallel default)
   -> re-admit R→B when capacity/evidence changes
-  -> original-oracle per Work + cycle outcome readback
+  -> verify cadence (per-Work oracle + cycle outcome)
   -> Stop-Audit package
   -> idle / goal complete OR continue same engagement
 ```
 
 ## Method (summary)
 
-1. **Outcome lock + goal.** 1–3 north-star outcomes, non-goals, contract.  
-   `get_goal` / `create_goal` uncapped per harness-goal-binding.
-2. **Research gate.** Build frontier/opportunity map until VoI no longer changes
-   B ranking or idle verdict enough to justify delay. Unknowns → R with freshness.
-3. **Score C; admit B.** All items ≥ MinOutcomeDelta and positive L under capacity
-   enter B (many OK). Hard floors outrank but still need authority/safety.
-4. **Execute program.** Drive each B item with `autonomous-execution` (or durable
-   Work). Small engineering commits allowed; product batch is B, not one padding fix.
-5. **Verify.** Original oracle per Work; cycle-level outcome/frontier readback on
-   exact delivered subjects before Stop-Audit.
-6. **Stop-Audit then idle.** See contract. Default is finish B; reject/idle needs
-   falsifiable reasons. Do not abuse “over-engineering” to quit high-L work.
-7. **Wake.** New signal → new or resumed engagement with updated contract; do not
-   silently shrink to last patch.
+1. **Outcome lock + uncapped goal.** 1–3 north-stars, non-goals, contract pointer.
+2. **Research coverage card (mandatory, thin).** Fill five cells fast; then expand only if VoI says ranking/idle would change. Produce Candidate **C**.
+3. **Score and admit.** All ≥ MinOutcomeDelta & positive L under capacity → **B**; rest → **R** with EV/blocker.
+4. **Execute efficiently.** Parallelize independent B items; one shared setup; dependency-serial only. Drive each with `autonomous-execution`.
+5. **Verify on cadence.** Oracle each terminal; one cycle outcome readback; then Stop-Audit.
+6. **Idle or continue same engagement.** Never goal-complete on one polish PR.
 
 ## Anti-patterns
 
@@ -109,6 +105,10 @@ bind product + north-star outcomes + uncapped goal
 - Continuous independent reviewer ceremony every tick
 - SOTA/frontier claims without claim-grade fields
 - Research essays with no admission impact (no VoI stop)
+- Shallow research-as-done (coverage card missing/skipped)
+- Serial busywork on independent B items without dependency
+- Full re-verify every commit as ceremony (unless risk demands)
+- Waiting for 90%+ information on reversible Type-2 work
 
 ## When not to use
 

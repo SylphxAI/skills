@@ -38,17 +38,19 @@ The goal `objective` must be self-contained for recovery. Include:
 3. **North-star outcomes (1–3)** and explicit non-goals
 4. **Aspect set** / matrix families in scope
 5. **EV policy:** MinOutcomeDelta; leverage ranking (not ease-first)
-6. **Definition of Done / idle predicate:** floors fresh; committed backlog B
-   cleared or legally rejected; residual R has no unblocked EV ≥ threshold;
-   Stop-Audit passed; wake durable—**not** product perfection
-7. **Validation gates:** original-oracle per Work; cycle outcome/frontier
-   readback; Stop-Audit package before complete
-8. **Contract pointer:** revision/id of Product Quality Loop Contract (B/R live
+6. **Research:** 5-cell coverage card required before admit; VoI stop; ~70% on Type-2
+7. **Definition of Done / idle predicate:** floors fresh; B cleared or legally
+   rejected; R has no unblocked EV ≥ threshold; research card complete;
+   verify cadence met; Stop-Audit passed; wake durable—**not** product perfection
+8. **Validation gates:** per-Work original-oracle; one cycle outcome readback;
+   Stop-Audit package before complete
+9. **Contract pointer:** revision/id of Product Quality Loop Contract (B/R live
    there—not the full backlog stuffed as sole SSOT in the goal string)
-9. **Authority floors:** no meta-router; no invented credentials/deploy;
+10. **Authority floors:** no meta-router; no invented credentials/deploy;
    commercial/legal/irreversible need owner authority
-10. **Current next safe action**
-11. **Composition:** `continuous-product-quality`; `decision-quality-standard` +
+11. **Efficiency:** parallel default for independent B items
+12. **Current next safe action**
+13. **Composition:** `continuous-product-quality`; `decision-quality-standard` +
     `evidence-and-claims-standard` for rank/stop/claims; `autonomous-execution`
     per Workstream; specialists via native discovery
 
@@ -57,12 +59,12 @@ The goal `objective` must be self-contained for recovery. Include:
 ```text
 Operate high-leverage continuous product betterment for <PRODUCT/REPO>.
 North-star outcomes: <O1..O3>. Aspects: <ASPECTS>. Non-goals: <...>.
-Maintain Product Quality Loop Contract <CONTRACT_ID/REV>: Candidate C,
-committed backlog B (all above MinOutcomeDelta under capacity—may be many),
-residual R with EV/blockers. Execute entire B with original-oracle readback;
-re-admit R when capacity/evidence changes. Idle only after Stop-Audit proves
-no unblocked residual EV ≥ MinOutcomeDelta; not perfection; not one PR.
-No token budget cap. No continuous independent reviewers. Next safe action: <ACTION>.
+Maintain Product Quality Loop Contract <CONTRACT_ID/REV>: 5-cell research
+coverage card, Candidate C, backlog B (all above MinOutcomeDelta under capacity),
+residual R. Execute B with parallel efficiency bar; verify cadence (per-Work
+oracle + cycle outcome). Re-admit R when capacity/evidence changes. Idle only
+after Stop-Audit (card+verify+no unblocked high-EV R); not perfection; not one PR.
+No token budget cap. No continuous independent reviewers. Next: <ACTION>.
 ```
 
 ## Lifecycle
@@ -111,6 +113,7 @@ On a later wake (new signal, owner request, freshness miss):
 - Using goal completion to claim the product is perfect or SOTA without claim-grade evidence
 - Skipping `get_goal` on resume and starting a narrower ad-hoc task
 - Treating Goal API success as proof without Stop-Audit package
+- Completing without research coverage card or verify cadence
 
 ## Minimum evidence in Skill output
 
@@ -119,6 +122,6 @@ When a Goal System exists, the operating output must state:
 - goal created vs resumed;
 - budget omitted (or user-explicit budget, if any);
 - active objective digest/summary;
-- whether B/R summary and Stop-Audit ran;
+- whether coverage card, B/R summary, verify cadence, and Stop-Audit ran;
 - whether the goal remains active, completed at idle frontier, blocked, or
   unavailable.

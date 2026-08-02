@@ -13,12 +13,12 @@ binding control model is
 ## What “loop engineering” means here
 
 ```text
-outcomes + frontier map
+outcomes + coverage card + VoI deepen
   -> Candidate C
   -> admit backlog B + residual R
-  -> execute all of B (parallel OK)
+  -> execute all of B (efficiency bar)
   -> re-admit as evidence/capacity changes
-  -> outcome readback + Stop-Audit
+  -> verify cadence + Stop-Audit
   -> idle or wake
 ```
 
@@ -82,21 +82,18 @@ L = (expected_outcome_or_frontier_gap_delta × weight × confidence)
 
 1. Load current contract revision; lock 1–3 north-star outcomes and non-goals.
 2. Bind/resume **uncapped** harness goal (see harness-goal-binding).
-3. Deep research with **VoI stop**: stop when more research will not change B
-   ranking or idle verdict enough to justify delay. Open
-   `evidence-and-claims-standard` for any SOTA/frontier language.
-4. Build Candidate set **C** (opportunity inventory + matrix signals).
-5. Score leverage; admit **B ⊆ C** = all items that pass MinOutcomeDelta, positive
-   L, authority, and capacity envelope (many items OK—do not admit only Top-1).
-6. Write residual **R** for the rest with EV/L and blocker class.
-7. Execute **all of B** (parallel workstreams OK; small engineering commits OK).
-   Use `autonomous-execution` per Workstream terminal.
-8. Re-admit R→B when capacity frees or evidence changes; do not abandon B for a
-   fresh random polish scout.
-9. Original-oracle readback per Work; cycle-level outcome/frontier readback on
-   exact delivered subjects.
-10. **Stop-Audit** package; only then idle / `update_goal(complete)`.
-11. Emit: B outcomes, R register, coverage deltas, idle/wake predicate.
+3. Fill **research coverage card** (5 cells). Deepen only under VoI. Prefer ~70%
+   info on Type-2 work. Open `evidence-and-claims-standard` if using SOTA language.
+4. Build Candidate set **C** (card + scouts + matrix signals).
+5. Score leverage; admit **B ⊆ C** = all passers under capacity (not Top-1 only).
+6. Write residual **R** with EV/L and blocker class.
+7. Execute **all of B** under **efficiency bar** (parallel default; shared setup
+   once; serial only with dependency). `autonomous-execution` per Workstream.
+8. Re-admit R→B when capacity/evidence changes; do not abandon B for random polish.
+9. **Verify cadence:** original-oracle per Work terminal; one cycle outcome
+   readback on exact subjects (not PR-green-as-done; not every-commit full suite).
+10. **Stop-Audit** package (includes research card + verify cadence checks).
+11. Emit: card, B outcomes, R, coverage deltas, idle/wake predicate.
 
 ## Idle frontier (no perfection)
 
@@ -143,13 +140,18 @@ obligations, open the composed package (or rely on co-selected descriptions).
 - Ease-first ranking; difficulty-as-veto
 - Idle while high-L residual lacks qualified blocker
 - Continuous reviewer ceremony
-- Research without VoI stop
+- Research without VoI stop or coverage card
+- Shallow research-as-done
+- Serial busywork on independent B items
 - Using DORA small-batch to forbid large product bets (small **commits**, large **B** OK)
+- Waiting for 90%+ information on reversible work
 - Replacing specialist methods with generic advice inside this Skill
 
 ## Minimal contract fields for multi-aspect betterment
 
 - north-star outcomes + non-goals + MinOutcomeDelta
+- research coverage card (5 cells)
+- efficiency bar + verify cadence
 - aspect selection rationale and `not_applicable` reasons
 - oracle + freshness per applicable cell
 - Candidate/B/R fields and re-admission rules

@@ -25,12 +25,12 @@ commit count or micro-polish volume.
 
 ```text
 north-star outcomes + versioned contract
-  -> deep research (VoI stop) + scouts
+  -> research coverage card (5 cells) + VoI-limited deepen + scouts
   -> Candidate set C
   -> admit committed backlog B + residual register R
-  -> execute all of B (parallel workstreams OK)
+  -> execute all of B under efficiency bar (parallel default)
   -> re-admit R→B when capacity/evidence changes
-  -> original-oracle + cycle outcome readback
+  -> verify cadence (per-Work oracle + cycle outcome)
   -> Stop-Audit → idle or continue same engagement
 ```
 
@@ -55,6 +55,7 @@ The Product Quality Loop Contract records:
 | --- | --- |
 | Subject | project, product release or source revision, environment, capability, surface, journey |
 | North-star outcomes | 1–3 measurable user/business outcomes; non-goals |
+| Research coverage card | Five cells: evidence or unknown+reason |
 | MinOutcomeDelta | Minimum non-floor user/business-visible delta for admission to B |
 | Quality intent | promise, hard floor, improvement objective, frontier target, residual |
 | Oracle | subject layer, method, decisive result, uncertainty, replay, freshness |
@@ -167,18 +168,33 @@ writable verdict SSOT.
 - **Event-triggered** — incidents, feedback clusters, advisories, owner signal  
 - **Scheduled** — slow-drift surfaces (a11y, SEO, perf budgets, content, …)
 
-### Deep research + VoI stop
+### Minimal research coverage card (mandatory, thin)
 
-Before large admission, run deep research sufficient to:
+Before admitting **B**, emit a coverage card. This is **decision-complete**
+coverage (enough to rank and admit), **not** universal omniscience.
 
-1. grade top opportunities claim-sensibly against north-stars/frontier;
-2. cover hard floors;
-3. list residual unknowns with freshness.
+| # | Cell | Required content |
+| --- | --- | --- |
+| 1 | North-star outcomes | 1–3 outcomes; how betterment moves them |
+| 2 | Primary journeys / surfaces | Critical user paths (or N/A + reason) |
+| 3 | Competitive / quality anchor | Comparison set **or** `unknown` + why not needed this cycle |
+| 4 | Hard floors | Applicable floors; evidence or `unknown` |
+| 5 | Highest known pains / bets | Top support/metrics/owner/code signals |
+
+Each cell: **evidence locator** or **`unknown` + reason + freshness**. Silent
+omission is invalid. Incomplete card → cannot admit B; Stop-Audit fails
+(`research_card_incomplete`).
+
+Optional deepen (full matrix, specialist reviews, claim-grade frontier) **only
+if** VoI says it can change B ranking or idle. Prefer acting at ~70% information
+on reversible (Type-2) work; do not wait for 90%+ essays.
+
+### VoI research-stop
 
 **Stop research** when further investigation cannot change B ranking or idle
-verdict enough to justify delay (decision-quality value-of-information).
-Forbid open-ended “market SOTA essays” with no comparison set or admission
-impact.
+verdict enough to justify delay. Forbid open-ended “market SOTA essays” with no
+comparison set or admission impact. Unknowns go to **R** with freshness—not
+fake completeness.
 
 ## Leverage, qualification, and admission
 
@@ -228,12 +244,35 @@ unchanged evidence does not thrash forever.
 
 ## Execution and delivery readback
 
+### Efficiency bar (mandatory, thin)
+
+While clearing **B**, maximize outcome throughput:
+
+1. **Parallel default.** Independent B items (no shared mutable conflict) run
+   as parallel workstreams unless a written dependency says otherwise.
+2. **Shared setup once.** Install, fixture, baseline capture, and env bootstrap
+   are done once per cycle and reused—not re-done per micro-item.
+3. **Serial only with dependency.** Serial-for-“safety” or “simpler context”
+   alone is invalid when items are independent.
+4. **L orders sequence, not exclusivity.** Highest L first among serial chains;
+   still finish all of B in the cycle.
+
+### Verify cadence (mandatory, thin)
+
+| When | Verify | Not |
+| --- | --- | --- |
+| Each B item terminal | **Original-oracle** on exact delivered subject | Skip oracle |
+| Cycle / Stop-Audit | **One** north-star / outcome (and frontier if claimed) readback | Proxy-only (PR green, local CI) as betterment proof |
+| Every commit | Optional risk-based checks only | Full product oracle suite as ceremony |
+
+### Path
+
 ```text
 admitted B item
   -> claim / autonomous-execution Workstream
   -> specialist diagnosis and implementation
   -> repository-native integration (small commits OK)
-  -> exact-candidate verification
+  -> exact-candidate verification as needed
   -> delivery owner path as required
   -> original-oracle readback on exact delivered subject
   -> resolve, correct, or residual
@@ -243,7 +282,7 @@ Word Work for native specialist discovery—not “use all quality Skills.”
 
 **Engineering vs product batching:** DORA-style small commits are allowed.
 Product progress is measured at Work and cycle outcome oracles—not commit
-count. Cycle Stop-Audit requires outcome/frontier readback on exact subjects.
+count.
 
 Rework is related Work (`rework_of`, `follow_up_of`, `reverts`), not silent
 scope shrink of the engagement.
@@ -254,6 +293,7 @@ scope shrink of the engagement.
 
 | Test | Fail (blocks idle / complete) |
 | --- | --- |
+| Research card | Coverage card incomplete or cells silently omitted |
 | Residual completeness | Applicable matrix cells stale/`unknown` without residual or floor evidence |
 | B clearance | Open B items without delivery proof or legal reject |
 | EV leftover | Any R item with EV/L ≥ MinOutcomeDelta and no **qualified** blocker |
@@ -261,6 +301,8 @@ scope shrink of the engagement.
 | Polish trap | Shipping only cosmetic while higher-L residual unaddressed |
 | Authority trap | High-L residual blocked only by owner ask never attempted |
 | Evidence class | Stop reasons lack observation/finding IDs (slogans) |
+| Verify cadence | Missing per-Work original-oracle or cycle outcome readback |
+| Efficiency note | (observability) independent B items run purely serial without dependency—flag thrash |
 | Competitor week (optional VoI) | Named high-L competitor-move candidates unblocked and ignored |
 
 Qualified blockers are concrete (authority ticket, external dependency, measured
@@ -330,7 +372,8 @@ Measure without reducing quality to one score:
 - observation→finding→B conversion;
 - original-oracle pass rate;
 - Stop-Audit fail reasons;
-- research VoI stop hits vs open-ended research time.
+- research card completeness; VoI stop hits vs open-ended research time;
+- parallel vs serial B item ratio (efficiency).
 
 Dashboards are projections, not admission authority.
 
@@ -404,3 +447,7 @@ in R, completes goal—**invalid** Stop-Audit (EV leftover + polish trap).
 - Research without VoI stop  
 - Goal complete without Stop-Audit package  
 - SOTA claims without comparison set  
+- Shallow research-as-done (no coverage card)  
+- Serial busywork on independent B items  
+- Full re-verify every commit as ceremony  
+- Waiting for 90%+ info on reversible Type-2 work  

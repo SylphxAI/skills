@@ -43,12 +43,18 @@ eligible mega-lists and continuous in-loop independent reviewers.
    policy, and contract pointer; `complete` only with Stop-Audit package.
 6. No continuous independent reviewers in the operating loop; reviewers only for
    irreversible/public-contract, load-bearing SOTA, or contested Stop-Audit.
-7. Research uses VoI stop; frontier/SOTA language requires claim-grade fields.
+7. Research uses a mandatory thin 5-cell coverage card plus VoI stop; frontier/SOTA
+   language requires claim-grade fields.
+8. Execution efficiency bar: parallel default for independent B items; shared
+   setup once; serial only with dependency.
+9. Verify cadence: original-oracle per Work terminal; one cycle outcome
+   readback; no PR-green-as-done; no every-commit full-suite ceremony.
 
 ## Consequences
 
 - Agents must clear multi-item high-value programs before idle.
 - Anti-lazy residual tests block fake idle; EV thresholds block infinite work.
+- Shallow research and serial busywork are explicit anti-patterns.
 - Goal recovery and termination align without reviewer ceremony by default.
 
 ## Verification
