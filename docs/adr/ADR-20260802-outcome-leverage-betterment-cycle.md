@@ -9,12 +9,13 @@ amends:
 scope:
   - static-instruction-packages
   - continuous-product-quality
-independent_review_note: indep_review_cpq_loop accept-with-amendments
 ---
 
 # Outcome-leverage betterment cycle
 
 ## Context
+
+Independent review task `indep_review_cpq_loop` returned accept-with-amendments.
 
 Operating `continuous-product-quality` produced long cycles of micro-polish,
 many commits, and little user-visible product change. Agents optimized for easy
