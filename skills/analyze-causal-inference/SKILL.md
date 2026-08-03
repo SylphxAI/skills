@@ -53,7 +53,7 @@ Produce a **Causal Inference Record**:
 
 ## Boundaries
 
-- Use `product-experiment-review` to design or audit a product A/B test,
+- Use `review-product-experiment` to design or audit a product A/B test,
   holdout, switchback, or staged experiment protocol.
 - Use `analyze-critically` for competing explanations or software root-cause
   diagnosis without a population-level intervention estimand.

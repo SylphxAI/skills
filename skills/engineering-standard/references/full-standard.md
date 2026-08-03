@@ -628,7 +628,7 @@ For no-human operations, observability is a contract:
 
 When the independently accepted artifact is a complete logs/metrics/traces,
 SLO, alert, diagnostic-access, and operator-action design, compose
-`operational-observability-review` rather than expanding this standard into a
+`review-operational-observability` rather than expanding this standard into a
 second observability report.
 
 Concurrency and worker correctness:

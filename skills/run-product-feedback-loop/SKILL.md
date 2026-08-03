@@ -82,7 +82,7 @@ learning state, and the graph must remain acyclic.
 
 ## Boundaries
 
-- `social-media-operations-review` owns recurring official-account publishing, platform readback, listening, reply routing, crisis, impersonation, rights, recovery, and shutdown; this skill owns authorized feedback/review ingestion, public response evidence, product action, and close-loop.
+- `review-social-media-operations` owns recurring official-account publishing, platform readback, listening, reply routing, crisis, impersonation, rights, recovery, and shutdown; this skill owns authorized feedback/review ingestion, public response evidence, product action, and close-loop.
 - `resolve-support-case` owns one private customer's facts, remedy, reply, protected-action handoff, verification, and closure. Link the case without exposing private facts in a public response.
 - Do not own public review eligibility, prompt timing, native request surfaces,
   cooldowns, or platform solicitation policy.

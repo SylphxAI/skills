@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Operational Observability Review"
+  short_description: "Review: Service observability: SLOs, telemetry, alerting, on-call diagnosability."
+  default_prompt: "Run Review Operational Observability Review for the active product/workspace."

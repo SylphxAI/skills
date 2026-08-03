@@ -91,8 +91,8 @@ Compose:
 
 - `operate-customer-support` for channels, taxonomy, queues, service objectives, knowledge, QA and product-feedback closure;
 - `resolve-support-case` for one customer's facts, reply, remedy, protected handoff and verified closure;
-- `revenue-operations-review` for lead/account/opportunity/renewal commercial workflow;
-- `customer-success-operations-review` when proactive adoption, health and renewal intervention is the independent system.
+- `review-revenue-operations` for lead/account/opportunity/renewal commercial workflow;
+- `review-customer-success-operations` when proactive adoption, health and renewal intervention is the independent system.
 
 Also route exact enterprise access, revenue/CRM, formal accessibility conformance, customer data migration, data residency, audit export, developer quota/credit abuse, and security assurance artifacts to their available specialists rather than hiding them inside the blueprint.
 

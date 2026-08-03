@@ -225,7 +225,7 @@ topology, internal process/migration state, implementation identifiers, and
 diagnostics are protected operator evidence. Customer/public state is a
 separate intentional allowlisted product, status, support, incident, audit, or
 protocol contract; it may not become a projection of the internal telemetry
-object. Use `operational-observability-review` when the full service
+object. Use `review-operational-observability` when the full service
 observability and diagnostic-access model is the independent artifact.
 
 A green deploy object only proves the controller rolled out. It does not prove

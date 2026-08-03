@@ -59,7 +59,7 @@ Produce a **Constrained Decision Model**:
 
 ## Boundaries
 
-- Use `optimization-objective-review` for the real outcome, proxy, Goodhart,
+- Use `review-optimization-objective` for the real outcome, proxy, Goodhart,
   gaming, and protected-floor contract when an automated optimizer will act on
   the model. This Skill consumes that contract and owns variables, constraints,
   solver evidence, and solution verification.
@@ -72,7 +72,7 @@ Produce a **Constrained Decision Model**:
   observes, and replans work.
 - Use `forecast-probabilistically` when the primary artifact is a calibrated
   prediction rather than a controllable decision.
-- Use `product-experiment-review` or `analyze-causal-inference` to estimate the
+- Use `review-product-experiment` or `analyze-causal-inference` to estimate the
   effect of an intervention. An optimizer may consume those estimates but does
   not identify them.
 - Do not treat solver success as model validity. Feasible nonsense remains

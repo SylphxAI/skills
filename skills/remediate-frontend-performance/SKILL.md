@@ -80,7 +80,7 @@ Produce one **Frontend Runtime Performance Remediation Record** containing:
 - `engineering-standard` supplies binding implementation and defect-repair
   invariants and composes into code-changing work without emitting a separate
   report.
-- `operational-observability-review` owns product-wide logs, metrics, traces,
+- `review-operational-observability` owns product-wide logs, metrics, traces,
   SLOs, alerts, operator workflows, and recovery evidence.
 - Backend latency, capacity, database, queue, and distributed load problems
   remain with their owning engineering or reliability work.

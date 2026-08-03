@@ -5,7 +5,7 @@ description: "Design marketing automation: lifecycle journeys, channels, measure
 
 # Design Marketing Automation
 
-Design the complete relevant global marketing capability portfolio now, then let a bounded autonomous control plane decide which approved content or campaigns to activate, spend on, scale, hold, pause, or retire from current product truth, consent, causal evidence, economics, platform authority, quality, and trust. Delegate exact official social-account execution and live readback to `social-media-operations-review`.
+Design the complete relevant global marketing capability portfolio now, then let a bounded autonomous control plane decide which approved content or campaigns to activate, spend on, scale, hold, pause, or retire from current product truth, consent, causal evidence, economics, platform authority, quality, and trust. Delegate exact official social-account execution and live readback to `review-social-media-operations`.
 
 ## Objective
 
@@ -19,7 +19,7 @@ This skill owns one independently useful artifact: the **Marketing Automation Bl
 
 One campaign, listing, referral, notification system, review prompt, positioning decision, or public-signal research question remains with its specialist. Add a new skill only when a distinct recurring user trigger and independently acceptable artifact exists; use references for inseparable capability modules.
 
-For selected official social channels, Marketing owns channel role, audience, message hierarchy, campaign/organic brief, activation envelope, allocation, and causal measurement. `social-media-operations-review` is the unique operational adapter owner for account authority, publishing/readback, listening, reply/moderation routing, crisis, impersonation, recovery, and shutdown. Marketing consumes its observed evidence rather than maintaining a second social publisher or token ledger.
+For selected official social channels, Marketing owns channel role, audience, message hierarchy, campaign/organic brief, activation envelope, allocation, and causal measurement. `review-social-media-operations` is the unique operational adapter owner for account authority, publishing/readback, listening, reply/moderation routing, crisis, impersonation, recovery, and shutdown. Marketing consumes its observed evidence rather than maintaining a second social publisher or token ledger.
 
 ## Agent-first invariant
 
@@ -58,7 +58,7 @@ input reference contains neither. Never invent them or resolve a moving
 ## Resource guide
 
 - Read `references/marketing-thesis-and-portfolio.md` for objective hierarchy, audience, positioning translation, channel sweep, and system map.
-- Read `references/marketing-organic-lifecycle-and-reputation.md` for SEO/AEO, content, social channel selection and briefs, creators, community, lifecycle, cross-promotion, update adoption, ratings, and feedback integration; official-account operation routes to `social-media-operations-review`.
+- Read `references/marketing-organic-lifecycle-and-reputation.md` for SEO/AEO, content, social channel selection and briefs, creators, community, lifecycle, cross-promotion, update adoption, ratings, and feedback integration; official-account operation routes to `review-social-media-operations`.
 - Read `references/pc-store-launch-marketing.md` for a Steam or other PC-store wishlist/demo/festival, creator/press, community, launch-calendar, and first-week communication program.
 - Read `references/marketing-paid-and-creative-production.md` for paid adapters, creative/localization supply, rights, fatigue, budgets, bids, and channel contracts.
 - Read `references/marketing-measurement-risk-and-economics.md` for causal measurement, attribution, risk-adjusted value, privacy, fraud, brand safety, and decision gates.
@@ -98,7 +98,7 @@ Create intent/lifecycle states, eligibility/exclusions, age/territory/sensitive-
 
 ### 3. Build the selected channel and creative portfolio
 
-Evaluate the role and handoff for owned, earned, paid, store, creator, community, partner, referral, lifecycle, reputation, cross-promotion, update education, SEO/AEO, and launch. Select channels from product truth, audience mechanism, recipient value, authority, and program target; build every selected adapter or specialist operating contract plus its localized brief and production-request supply now, route exact files through `produce-product-assets`, and route official social account execution through `social-media-operations-review`, then choose activation from evidence and policy.
+Evaluate the role and handoff for owned, earned, paid, store, creator, community, partner, referral, lifecycle, reputation, cross-promotion, update education, SEO/AEO, and launch. Select channels from product truth, audience mechanism, recipient value, authority, and program target; build every selected adapter or specialist operating contract plus its localized brief and production-request supply now, route exact files through `produce-product-assets`, and route official social account execution through `review-social-media-operations`, then choose activation from evidence and policy.
 
 For a PC-store launch, preserve the separation between Store Listing narrative,
 Product Asset Production files, Distribution build/store proof, Launch Admission
@@ -175,17 +175,17 @@ Produce one **Marketing Automation Blueprint** containing:
 ## Routing boundaries
 
 - `design-marketing-automation` owns the complete multi-channel marketing operating system and control plane.
-- `social-media-operations-review` owns recurring account, publishing/readback, listening, reply/moderation routing, crisis, impersonation, rights, recovery, and shutdown operations only after Marketing selects the official social channels, audience and message.
+- `review-social-media-operations` owns recurring account, publishing/readback, listening, reply/moderation routing, crisis, impersonation, rights, recovery, and shutdown operations only after Marketing selects the official social channels, audience and message.
 - `synthesize-market-research` owns source-bounded market/positioning evidence; marketing consumes and channel-translates it.
-- `promotion-campaign-review` owns one offer, event, update-reward, cross-promotion, or lifecycle campaign.
-- `referral-loop-review` owns qualification, attribution, pending grants, reversals, and referral fraud.
+- `review-promotion-campaign` owns one offer, event, update-reward, cross-promotion, or lifecycle campaign.
+- `review-referral-loop` owns qualification, attribution, pending grants, reversals, and referral fraud.
 - `optimize-store-listing` owns listing metadata/creative sequence/conversion; `ready-software-distribution` owns submission/release evidence.
 - `produce-product-assets` owns deterministic product capture, localization,
   exact rendered media, rights/provenance, accessibility variants, and file QA.
 - `review-solicitation-policy` owns platform-specific authentic public review
   eligibility and request state; `run-product-feedback-loop` owns universal
   private feedback, review ingestion, support/product routing and close-loop.
-- `notification-strategy-review` owns notification channel/copy/frequency semantics; `promotion-campaign-review` owns one dormant-user recovery campaign; `synthesize-market-research` owns source-bounded voice-of-customer evidence.
+- `review-notification-strategy` owns notification channel/copy/frequency semantics; `review-promotion-campaign` owns one dormant-user recovery campaign; `synthesize-market-research` owns source-bounded voice-of-customer evidence.
 - `design-app`/`design-game` own product-side share, cross-promotion, notification, review, and lifecycle surfaces.
 
 ## Completion check

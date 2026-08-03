@@ -48,11 +48,11 @@ break legitimate protocols and customer experiences.
    inside the operator boundary. Public health or status cannot become a dump
    of infrastructure inventory merely because tests can scrape it easily.
 6. Miss-class-A always-on floors and binding engineering predicates may carry the
-   minimum non-disclosure floor. `operational-observability-review` owns the
+   minimum non-disclosure floor. `review-operational-observability` owns the
    independently requested end-to-end observability artifact. Specialist
    Skills retain product analytics, agent traces, data reliability, security,
    privacy, and active incident ownership.
-7. `data-quality-observability-review` separately owns a Data Reliability
+7. `review-data-quality-observability` separately owns a Data Reliability
    Contract for dataset and pipeline freshness, completeness, semantic drift,
    reconciliation, trust state, backfill, and consumer impact. Generic data
    quality must not be hidden inside product analytics or service telemetry.

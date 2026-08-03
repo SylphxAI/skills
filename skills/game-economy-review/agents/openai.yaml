@@ -1,4 +1,0 @@
-interface:
-  display_name: "Game Economy Review"
-  short_description: "Model and stress-test game economies"
-  default_prompt: "Use $game-economy-review to produce a quantitative game-economy specification with explicit sources, sinks, progression curves, monetization effects, abuse controls, cohort simulations, and sensitivity analysis."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Product Analytics Instrumentation Review"
+  short_description: "Review: Product analytics instrumentation: events, properties, identity, data quality."
+  default_prompt: "Run Review Product Analytics Instrumentation Review for the active product/workspace."

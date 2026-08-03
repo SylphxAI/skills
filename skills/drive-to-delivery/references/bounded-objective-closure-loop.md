@@ -68,7 +68,7 @@ and scheduling of new Work owned by `select-next-work`.
 ## Audit and transition
 
 - Use the bounded self-review loop for ordinary work. When independent formal
-  closure is explicitly required or risk-selected, apply `convergent-review`
+  closure is explicitly required or risk-selected, apply `review-convergent`
   to the exact candidate against the original coverage map and current
   evidence. Audit the complete objective and interaction surface, then close
   repairs on the delta; do not review only the latest patch or restart all

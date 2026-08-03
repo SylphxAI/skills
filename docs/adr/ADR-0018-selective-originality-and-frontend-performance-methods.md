@@ -33,7 +33,7 @@ the second dedicated diagnostic and remediation record.
 
 ## Decision
 
-1. Add `reference-originality-review` as the single owner of a Reference
+1. Add `review-reference-originality` as the single owner of a Reference
    Originality Review. It evaluates design risk, not legal infringement.
 2. Add `remediate-frontend-performance` as the single owner of a Frontend
    Runtime Performance Remediation Record. It requires reproduction, causal

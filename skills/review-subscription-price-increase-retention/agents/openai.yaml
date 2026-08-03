@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Subscription Price Increase Retention Review"
+  short_description: "Review: Retention-safe subscription price-increase rollout: cohorts, notices, grandfathering, net revenue."
+  default_prompt: "Run Review Subscription Price Increase Retention Review for the active product/workspace."

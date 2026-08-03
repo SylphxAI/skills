@@ -13,13 +13,13 @@
 | Subscription/SaaS pricing and packaging decision | `price-saas-subscription` |
 | Other pricing/packaging decisions | declared commercial decision owner and billing SSOT |
 | Provider transaction, ledger and settlement integration | `ready-payment-platform` |
-| Refund customer/account consequence and appeal | `refund-and-support-flow-review` |
+| Refund customer/account consequence and appeal | `review-refund-and-support-flow` |
 | Subscription entitlement semantics | `ready-payment-platform` |
-| Analytics event/identity contract | `product-analytics-instrumentation-review` |
+| Analytics event/identity contract | `review-product-analytics-instrumentation` |
 | Platform-specific authentic public review request policy | `review-solicitation-policy` |
 | Universal private feedback, review ingestion and product-learning close-loop | `run-product-feedback-loop` |
-| One promotion, update-reward or cross-promotion campaign | `promotion-campaign-review` |
-| Referral qualification, grant, reversal and fraud | `referral-loop-review` |
+| One promotion, update-reward or cross-promotion campaign | `review-promotion-campaign` |
+| Referral qualification, grant, reversal and fraud | `review-referral-loop` |
 | Marketing channel, budget and creative control plane | `design-marketing-automation` |
 | Listing metadata/creative conversion design | `optimize-store-listing` |
 | Channel submission/certification/release evidence | `ready-software-distribution` |

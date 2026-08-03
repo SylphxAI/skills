@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Referral Loop Review"
+  short_description: "Review: Referral loops: incentives, fraud controls, viral mechanics, measurement."
+  default_prompt: "Run Review Referral Loop Review for the active product/workspace."

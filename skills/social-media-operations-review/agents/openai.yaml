@@ -1,4 +1,0 @@
-interface:
-  display_name: "Social Media Operations Review"
-  short_description: "Design a safe automated social media operating system"
-  default_prompt: "Use $social-media-operations-review to design or audit the recurring social media operating system."

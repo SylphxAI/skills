@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Board Metrics Operating Review"
+  short_description: "Review: Board/executive metrics operating model: definitions, lineage, decision use, reporting cadence, trust."
+  default_prompt: "Run Review Board Metrics Operating Review for the active product/workspace."

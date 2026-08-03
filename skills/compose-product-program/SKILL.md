@@ -199,9 +199,9 @@ Produce one **Product Program Manifest** containing:
 - `design-app`, `design-game`, and `design-saas-web-platform` own their product promise, experience or public-to-service platform semantics; this skill only indexes their artifacts and cross-domain delivery dependencies.
 - `design-marketing-automation` owns the complete marketing operating
   blueprint and creative briefs; `produce-product-assets` owns exact rendered
-  product media; `promotion-campaign-review`, `referral-loop-review`, and
+  product media; `review-promotion-campaign`, `review-referral-loop`, and
   `optimize-store-listing` own their narrow artifacts.
-- `ready-payment-platform` owns provider transaction/ledger integration; `refund-and-support-flow-review` owns refund customer/account consequences.
+- `ready-payment-platform` owns provider transaction/ledger integration; `review-refund-and-support-flow` owns refund customer/account consequences.
 - `review-solicitation-policy` owns platform-specific authentic public review
   request policy; `run-product-feedback-loop` owns universal private
   feedback, authorized review ingestion, evidence clustering, routing, product
@@ -213,7 +213,7 @@ Produce one **Product Program Manifest** containing:
   readback; the product repository and active delivery profile retain mutation
   authority, and a later observed-state manifest revision indexes that pack.
 - App/Game blueprints own localized product semantics; this lifecycle architect owns the cross-channel globalization, asset, market-adapter, evidence, and release dependency graph.
-- `launch-readiness-review` independently evaluates evidence; it cannot self-certify a manifest it authored.
+- `review-launch-readiness` independently evaluates evidence; it cannot self-certify a manifest it authored.
 
 ## Completion check
 

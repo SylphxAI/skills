@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Refund And Support Flow Review"
+  short_description: "Review: Refund and support money flows: policy, authority, ledger impact, customer path."
+  default_prompt: "Run Review Refund And Support Flow Review for the active product/workspace."

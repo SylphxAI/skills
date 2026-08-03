@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Daily Reward And Streak Review"
+  short_description: "Review: Daily rewards and streaks: incentives, fairness, abuse, retention coupling."
+  default_prompt: "Run Review Daily Reward And Streak Review for the active product/workspace."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Launch Readiness Review"
+  short_description: "Review: Launch readiness gates across product, ops, support, risk, and go/no-go evidence."
+  default_prompt: "Run Review Launch Readiness Review for the active product/workspace."

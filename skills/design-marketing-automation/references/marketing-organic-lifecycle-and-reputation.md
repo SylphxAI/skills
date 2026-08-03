@@ -35,7 +35,7 @@ allocation, measurement, holdout and fatigue:
 Social Media Operating Model handoff ID and acceptance evidence:
 ```
 
-`social-media-operations-review` owns the official account, token/role authority, exact publishing and platform readback, listening, reply/moderation routing, rights/disclosure execution, crisis, impersonation/takeover, recovery, archive, and shutdown. Marketing must not build a second social adapter or infer live state from its own schedule. It consumes the operating model's observed publication and conversation evidence for portfolio and causal decisions.
+`review-social-media-operations` owns the official account, token/role authority, exact publishing and platform readback, listening, reply/moderation routing, rights/disclosure execution, crisis, impersonation/takeover, recovery, archive, and shutdown. Marketing must not build a second social adapter or infer live state from its own schedule. It consumes the operating model's observed publication and conversation evidence for portfolio and causal decisions.
 
 Creator/affiliate contracts need audience fit, deliverables, claims, disclosure, usage rights, brand safety, payment/commission source, fraud/quality controls, content retention, correction/termination, and incremental measurement.
 

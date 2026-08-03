@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Social Media Operations Review"
+  short_description: "Review: Official social channel operating model: authority, publishing, listening, crisis."
+  default_prompt: "Run Review Social Media Operations Review for the active product/workspace."

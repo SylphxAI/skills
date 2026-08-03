@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Revenue Operations Review"
+  short_description: "Review: Revenue operations: pipeline hygiene, handoffs, forecast process, systems."
+  default_prompt: "Run Review Revenue Operations Review for the active product/workspace."

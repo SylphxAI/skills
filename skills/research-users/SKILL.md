@@ -59,9 +59,9 @@ without inventing the missing study phase.
   evidence from market sources.
 - Use `run-product-feedback-loop` for recurring post-use feedback intake,
   triage, prioritization, and closure.
-- Use `product-analytics-instrumentation-review` for event definitions,
+- Use `review-product-analytics-instrumentation` for event definitions,
   telemetry coverage, and quantitative behavioral measurement.
-- Use `product-experiment-review` for randomized, holdout, switchback, or staged
+- Use `review-product-experiment` for randomized, holdout, switchback, or staged
   product experiments; use `analyze-causal-inference` for causal effect claims.
 - Do not generalize prevalence from qualitative evidence. Hand a prevalence
   question to an appropriately sampled quantitative study.

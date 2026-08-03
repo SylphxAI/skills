@@ -738,7 +738,7 @@ Minimum loop:
   unresolved sessions, and unreported residual risk.
 
 Use a lightweight local self-check for ordinary work. When exact-revision
-formal review is required, use `convergent-review` for perspective selection,
+formal review is required, use `review-convergent` for perspective selection,
 repair, and closure. Use a separate-context adversarial reviewer only when the
 risk-selected independent-review benefit passes the same delegation predicate
 and resources permit it. For changes

@@ -27,7 +27,8 @@ tool manual.
 
 1. **Job method, not role title.** Name and voice = *what work to do*, not
    “Prototyper / Builder / who you are.” Prefer verb-led ids:
-   `prototype-product`, `author-skill`, `pursue-product-objective`.
+   `prototype-product`, `author-skill`, `pursue-product-objective`,
+   `review-launch-readiness` (reviews), `design-app` (blueprints).
 2. **Progressive disclosure.** Listing sees only `name` + `description`. Body
    loads after match. Keep description short and searchable; put depth in
    body/`references/`.

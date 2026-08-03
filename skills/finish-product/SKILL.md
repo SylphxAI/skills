@@ -101,7 +101,7 @@ Load both domain references only when the product genuinely spans both.
    defect remains and the next correction is positive-net.
 7. **Deliver honestly.** Validate the exact changed candidate through its
    repository delivery boundary. Separate local, candidate, landed, released,
-   and live claims. Hand launch admission to `launch-readiness-review` when a
+   and live claims. Hand launch admission to `review-launch-readiness` when a
    go/no-go decision is required.
 
 ## Product Finish Pass

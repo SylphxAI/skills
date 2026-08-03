@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Product Experiment Review"
+  short_description: "Review: Product experiment design and readout: hypothesis, assignment, metrics, decision rules."
+  default_prompt: "Run Review Product Experiment Review for the active product/workspace."

@@ -71,6 +71,6 @@ Create a **Deliberation Record** with:
   cause.
 - Use `decision-quality-standard` for final material option selection and its
   durable Decision Record or ADR.
-- Use `convergent-review` for pass/fail review of an exact candidate.
+- Use `review-convergent` for pass/fail review of an exact candidate.
 - Use a domain skill to supply technical, commercial, legal, security, or
   product-specific criteria.

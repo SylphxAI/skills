@@ -27,7 +27,7 @@ requirements exist.
 The requested full-scope loop is narrower. It closes one original objective
 through framing, material research and decision, execution, audit, repair, and
 an evidence-backed terminal. `drive-to-delivery` already owns that
-job and its completion claim. `convergent-review` owns formal exact-candidate
+job and its completion claim. `review-convergent` owns formal exact-candidate
 review, while `select-next-work` owns repeated discovery and
 completion of new Work. A new generic `loop-engineering` package would duplicate
 those owners and make native Skill selection ambiguous.

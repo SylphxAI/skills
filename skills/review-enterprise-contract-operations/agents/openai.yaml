@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Enterprise Contract Operations Review"
+  short_description: "Review: Enterprise contract operations: obligations, renewals, compliance hooks, negotiation artifacts."
+  default_prompt: "Run Review Enterprise Contract Operations Review for the active product/workspace."

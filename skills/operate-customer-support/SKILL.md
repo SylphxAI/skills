@@ -71,11 +71,11 @@ Return one Support Operating Model containing:
 ## Routing boundaries
 
 - `resolve-support-case` owns one specific customer's evidence, response, remedy recommendation, protected-action handoff, verification, appeal/reopen, and closure record; this skill owns the whole support system around it.
-- `refund-and-support-flow-review` owns refund, repayment, entitlement consequence, restriction, appeal, and repurchase policy.
+- `review-refund-and-support-flow` owns refund, repayment, entitlement consequence, restriction, appeal, and repurchase policy.
 - `ready-payment-platform` owns provider ingestion, money ledger, entitlement projection, settlement, and reconciliation truth.
 - `review-solicitation-policy` owns platform-specific public review request eligibility and state.
 - `run-product-feedback-loop` owns private feedback, authorized review ingestion and responses, evidence clusters, and product learning; support consumes routed cases.
-- App/Game Design owns product behavior; `product-analytics-instrumentation-review` owns event/identity implementation; incident and safety owners retain their authority.
+- App/Game Design owns product behavior; `review-product-analytics-instrumentation` owns event/identity implementation; incident and safety owners retain their authority.
 
 ## Completion check
 

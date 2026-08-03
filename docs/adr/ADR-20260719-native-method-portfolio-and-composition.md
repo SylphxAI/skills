@@ -53,7 +53,7 @@ The portfolio adds these independently requested methods:
 - `review-agent-planning-system`
 - `engineer-agent-context`
 - `improve-agent-system`
-- `optimization-objective-review`
+- `review-optimization-objective`
 - `model-decision-optimization`
 - `design-provenance-system`
 - `design-semantic-taxonomy`

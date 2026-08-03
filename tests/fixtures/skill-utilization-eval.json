@@ -206,7 +206,7 @@
         "mandatoryObservable": "Defines a standing quality loop contract with scout triggers, finding admission, Work handoff, and coverage freshness/budgets—not a one-off finish pass.",
         "mustNot": [
           "Treat finish-product as the sole primary owner of this job",
-          "Treat operational-observability-review as the sole primary owner of this job"
+          "Treat review-operational-observability as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -215,7 +215,7 @@
       ],
       "nearNeighbours": [
         "finish-product",
-        "operational-observability-review"
+        "review-operational-observability"
       ]
     },
     {
@@ -279,8 +279,8 @@
         "mandatoryObservable": "Treats a single case resolution path as the artifact; does not redesign the whole support organization.",
         "mustNot": [
           "Treat operate-customer-support as the sole primary owner of this job",
-          "Treat refund-and-support-flow-review as the sole primary owner of this job",
-          "Treat customer-success-operations-review as the sole primary owner of this job"
+          "Treat review-refund-and-support-flow as the sole primary owner of this job",
+          "Treat review-customer-success-operations as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -289,8 +289,8 @@
       ],
       "nearNeighbours": [
         "operate-customer-support",
-        "refund-and-support-flow-review",
-        "customer-success-operations-review"
+        "review-refund-and-support-flow",
+        "review-customer-success-operations"
       ]
     },
     {
@@ -304,7 +304,7 @@
         "mandatoryObservable": "Designs the support operating system, not the resolution of one case and not CS success/renewal outcomes alone.",
         "mustNot": [
           "Treat resolve-support-case as the sole primary owner of this job",
-          "Treat customer-success-operations-review as the sole primary owner of this job"
+          "Treat review-customer-success-operations as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -313,7 +313,7 @@
       ],
       "nearNeighbours": [
         "resolve-support-case",
-        "customer-success-operations-review"
+        "review-customer-success-operations"
       ]
     },
     {
@@ -453,13 +453,13 @@
       "suite": "critical-skill",
       "prompt": "Design marketplace seller payout flows including holds, clawbacks, ledger effects, tax handoff, and disputes.",
       "expectedSkills": [
-        "marketplace-payouts-review"
+        "review-marketplace-payouts"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Primary artifact is payout/settlement operations, not seller performance scoring or trust/safety moderation.",
         "mustNot": [
-          "Treat marketplace-seller-performance-review as the sole primary owner of this job",
-          "Treat marketplace-trust-operations-review as the sole primary owner of this job",
+          "Treat review-marketplace-seller-performance as the sole primary owner of this job",
+          "Treat review-marketplace-trust-operations as the sole primary owner of this job",
           "Treat ready-payment-platform as the sole primary owner of this job"
         ]
       },
@@ -468,8 +468,8 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "marketplace-seller-performance-review",
-        "marketplace-trust-operations-review",
+        "review-marketplace-seller-performance",
+        "review-marketplace-trust-operations",
         "ready-payment-platform"
       ]
     },
@@ -478,14 +478,14 @@
       "suite": "critical-skill",
       "prompt": "Design marketplace trust and safety operations for fraud, fakes, enforcement ladders, evidence, and appeals.",
       "expectedSkills": [
-        "marketplace-trust-operations-review"
+        "review-marketplace-trust-operations"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Primary artifact is trust/safety ops, not payouts or seller performance tiers alone.",
         "mustNot": [
-          "Treat marketplace-payouts-review as the sole primary owner of this job",
-          "Treat marketplace-seller-performance-review as the sole primary owner of this job",
-          "Treat product-abuse-risk-review as the sole primary owner of this job"
+          "Treat review-marketplace-payouts as the sole primary owner of this job",
+          "Treat review-marketplace-seller-performance as the sole primary owner of this job",
+          "Treat review-product-abuse-risk as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -493,9 +493,9 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "marketplace-payouts-review",
-        "marketplace-seller-performance-review",
-        "product-abuse-risk-review"
+        "review-marketplace-payouts",
+        "review-marketplace-seller-performance",
+        "review-product-abuse-risk"
       ]
     },
     {
@@ -605,7 +605,7 @@
         "mandatoryObservable": "Resolves one case rather than redesigning support channels/SLAs/org process.",
         "mustNot": [
           "Treat operate-customer-support as the sole primary owner of this job",
-          "Treat customer-success-operations-review as the sole primary owner of this job"
+          "Treat review-customer-success-operations as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -614,7 +614,7 @@
       ],
       "nearNeighbours": [
         "operate-customer-support",
-        "customer-success-operations-review"
+        "review-customer-success-operations"
       ]
     },
     {
@@ -708,13 +708,13 @@
       "suite": "near-neighbour",
       "prompt": "Sellers are not getting paid on time; redesign holds, settlement, clawbacks, and payout disputes.",
       "expectedSkills": [
-        "marketplace-payouts-review"
+        "review-marketplace-payouts"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Selects payouts/settlement rather than fraud/moderation trust ops.",
         "mustNot": [
-          "Treat marketplace-trust-operations-review as the sole primary owner of this job",
-          "Treat marketplace-seller-performance-review as the sole primary owner of this job"
+          "Treat review-marketplace-trust-operations as the sole primary owner of this job",
+          "Treat review-marketplace-seller-performance as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -722,8 +722,8 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "marketplace-trust-operations-review",
-        "marketplace-seller-performance-review"
+        "review-marketplace-trust-operations",
+        "review-marketplace-seller-performance"
       ]
     },
     {

@@ -143,9 +143,9 @@ Use diagrams and tables only where they reduce ambiguity. Preserve uncertainty; 
 ## Routing boundaries
 
 - `design-game` owns whole-game coherence.
-- `game-economy-review` owns currencies, sources/sinks, pacing, IAP/IAA economics, gacha math, refunds/economy adjustment, simulations, and tuning.
-- `game-soft-launch-review` owns bounded real-player cohort learning and scale/hold/pause/withdraw decisions for an already-designed game.
-- `daily-reward-and-streak-review`, `ad-monetization-review`, `notification-strategy-review`, `referral-loop-review`, and `promotion-campaign-review` own their detailed state machines.
+- `review-game-economy` owns currencies, sources/sinks, pacing, IAP/IAA economics, gacha math, refunds/economy adjustment, simulations, and tuning.
+- `review-game-soft-launch` owns bounded real-player cohort learning and scale/hold/pause/withdraw decisions for an already-designed game.
+- `review-daily-reward-and-streak`, `review-ad-monetization`, `review-notification-strategy`, `review-referral-loop`, and `review-promotion-campaign` own their detailed state machines.
 - Payment, refund, review/feedback, analytics, distribution, listing, marketing, support, and engineering procedures own their independent artifacts.
 - `finish-product` owns the integrated whole-game finish pass after the player
   promise, systems, and approved direction are defined. Graybox or low-poly

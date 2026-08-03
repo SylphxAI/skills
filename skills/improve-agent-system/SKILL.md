@@ -51,7 +51,7 @@ Produce one **Learning Change Record** containing:
 - Use `design-skill-evals` for a complete exact-candidate Skill evaluation;
   this skill owns why the agent system should change and whether the broader
   intervention solved the recurring problem.
-- Use `optimization-objective-review` when the objective, reward, KPI, or
+- Use `review-optimization-objective` when the objective, reward, KPI, or
   evaluator may be creating the behavior.
 - Use `incident-standard` to contain and recover a live incident. A post-incident
   recurring system change may then use this skill.

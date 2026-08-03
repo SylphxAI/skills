@@ -45,3 +45,8 @@ Apply while doing another job: `*-standard`, `technology-stack-profile`, `prefer
 | `design-saas-web-platform` | SaaS web platform blueprint |
 | `design-marketing-automation` | Marketing automation blueprint |
 
+## Reviews
+
+Domain review Skills use the `review-*` id prefix (e.g. `review-launch-readiness`,
+`review-ai-product-risk`). Descriptions start with `Review:` for retrieval.
+

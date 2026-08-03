@@ -57,7 +57,7 @@ it does not mean more features, decoration, prose, files, gates, or mechanisms.
 6. Keep authority boundaries: blueprints own product intent, `craft-interface`
    owns bounded interface work, domain systems own consequential facts and
    numbers, `better-product` owns recurring discovery, and
-   `launch-readiness-review` owns go/no-go admission.
+   `review-launch-readiness` owns go/no-go admission.
 7. Update the App, Game, SaaS, Interface, Continuous Quality, and Launch Skills
    only enough to make this handoff explicit. Use native Skill discovery and
    progressive disclosure; add no router, service, CI workflow, global score,

@@ -41,9 +41,9 @@ not separate semantic jobs.
 4. Select channels from intended user journeys and maintenance value. Do not
    require every package manager by checklist.
 5. Keep generic shipped-state proof in `delivery-standard`, the wider developer
-   journey in `developer-product-experience-review`, listing conversion in
+   journey in `review-developer-product-experience`, listing conversion in
    `optimize-store-listing`, and cross-domain launch admission in
-   `launch-readiness-review`.
+   `review-launch-readiness`.
 6. Keep all source, build, artifact, publication, rollout, credential, and
    rollback mutations in the active product repository and delivery profile.
    The distribution Skill defines and audits the contract and evidence pack; it

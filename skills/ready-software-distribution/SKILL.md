@@ -80,7 +80,7 @@ publish, rollout, rollback, credentials, and channel-adapter mutations.
 ladder. This Skill owns the distribution contract, channel selection,
 adapter-to-artifact requirements, install lifecycle requirements, and the
 evidence pack that audits observed channel states; it does not become a second
-release control plane. `developer-product-experience-review` owns the wider
+release control plane. `review-developer-product-experience` owns the wider
 developer adoption journey. A later product-program observed-state revision may
 index this pack but the pack must not consume that later revision or a moving
 “latest” alias.
@@ -97,11 +97,11 @@ adapters for channels outside the declared audience.
 - Use `delivery-standard` for one language library's ordinary registry publish
   when no channel portfolio, installer, executable lifecycle, submission, or
   certification decision exists.
-- Use `developer-product-experience-review` when the independent artifact is
+- Use `review-developer-product-experience` when the independent artifact is
   the full discovery-to-production developer journey.
 - Use `optimize-store-listing` for listing positioning, metadata, creative
   order, keywords/tags, asset requirements, and conversion experiments.
-- Use app/game design for product semantics and `launch-readiness-review` for an
+- Use app/game design for product semantics and `review-launch-readiness` for an
   independent whole-launch verdict.
 
 ## Guardrails

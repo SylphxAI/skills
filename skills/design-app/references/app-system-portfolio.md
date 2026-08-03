@@ -137,11 +137,11 @@ Rules:
 - When monetization is selected, state one primary commercial model; do not list every model as strategy. A free, public-interest, bundled, or otherwise non-commercial app may mark commerce `not-applicable` for an exact business-model reason and must then keep payment and advertising runtime truly absent.
 - Where the app creates honest durable or recurring paid value, evaluate purchase, IAP, or subscription as the primary exchange before relying on interruption-based IAA. Do not force paid mechanics where no credible paid value exists.
 - Ads are a contextual or supplementary model unless product evidence supports them as primary. Preserve useful core behavior, consent, age modes, payer/ad-free treatment, startup and low-end budgets.
-- Use `price-saas-subscription` when subscription/SaaS packaging is the independent decision, `ready-payment-platform` for provider/ledger correctness, and `ad-monetization-review` for in-product advertising.
+- Use `price-saas-subscription` when subscription/SaaS packaging is the independent decision, `ready-payment-platform` for provider/ledger correctness, and `review-ad-monetization` for in-product advertising.
 
 ### Refund Consequence Contract
 
-App/game design declares semantics; `ready-payment-platform` and `refund-and-support-flow-review` implement and adjudicate them.
+App/game design declares semantics; `ready-payment-platform` and `review-refund-and-support-flow` implement and adjudicate them.
 
 ```text
 purchase/entitlement/value type:
@@ -219,17 +219,17 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 | App monetization model and value-exchange semantics | `design-app` |
 | Subscription/SaaS price and package decision | `price-saas-subscription` |
 | Provider payment, ledger, settlement and entitlement projection | `ready-payment-platform` |
-| Refund consequence, repurchase, restriction, support and appeal | `refund-and-support-flow-review` |
+| Refund consequence, repurchase, restriction, support and appeal | `review-refund-and-support-flow` |
 | Subscription access state | `ready-payment-platform` |
-| Ad placement/monetization | `ad-monetization-review` |
-| Notification channel strategy | `notification-strategy-review` |
-| Daily rewards and streaks | `daily-reward-and-streak-review` |
-| Referral qualification, grant, reversal and fraud | `referral-loop-review` |
-| One promotion/update/cross-promotion campaign | `promotion-campaign-review` |
+| Ad placement/monetization | `review-ad-monetization` |
+| Notification channel strategy | `review-notification-strategy` |
+| Daily rewards and streaks | `review-daily-reward-and-streak` |
+| Referral qualification, grant, reversal and fraud | `review-referral-loop` |
+| One promotion/update/cross-promotion campaign | `review-promotion-campaign` |
 | Platform-specific authentic public review request policy | `review-solicitation-policy` |
 | Universal private feedback, review ingestion and product-learning close-loop | `run-product-feedback-loop` |
-| Event/identity/metric instrumentation | `product-analytics-instrumentation-review` |
-| Offline/sync conflict | `offline-sync-conflict-review` |
+| Event/identity/metric instrumentation | `review-product-analytics-instrumentation` |
+| Offline/sync conflict | `review-offline-sync-conflict` |
 | Store/channel release evidence | `ready-software-distribution` |
 | Localized experience semantics | `design-app` |
 | Deterministic product capture, cross-channel asset transformation, localized production and LQA pack | `produce-product-assets` |

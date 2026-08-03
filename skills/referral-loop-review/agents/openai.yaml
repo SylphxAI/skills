@@ -1,4 +1,0 @@
-interface:
-  display_name: "Referral Loop Review"
-  short_description: "Design trusted referral loops"
-  default_prompt: "Use $referral-loop-review to design or audit this referral program."

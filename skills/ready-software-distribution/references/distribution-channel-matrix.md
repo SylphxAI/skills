@@ -164,7 +164,7 @@ Use this for iOS and Android subscription apps before store submission.
 
 ## Entitlement and refund state model
 
-This section is a release-evidence taxonomy, not the canonical product consequence policy. Consume exact `ready-payment-platform` and `refund-and-support-flow-review` artifact IDs/versions/digests for provider normalization, spent/transferred value, account action, support, appeal and abuse semantics.
+This section is a release-evidence taxonomy, not the canonical product consequence policy. Consume exact `ready-payment-platform` and `review-refund-and-support-flow` artifact IDs/versions/digests for provider normalization, spent/transferred value, account action, support, appeal and abuse semantics.
 
 | Provider evidence class | Canonical release proof required |
 | --- | --- |
