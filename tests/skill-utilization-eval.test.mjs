@@ -230,3 +230,17 @@ test('prepare-utilization-host-run script is executable and emits pack files', (
   assert.match(out, /cases=/);
 });
 
+test('floor-suite constitution markers remain present in L0', () => {
+  // Structural L0 text support for floor oracles — not agent behavior-oracle proof.
+  const constitution = readFileSync(path.join(repositoryRoot, 'runtime', 'constitution.md'), 'utf8').replace(/\s+/g, ' ');
+  const markers = [
+    'Done means delivered at the active repository delivery boundary',
+    'Do not fabricate live coordination, deploy, or CI authority',
+    'Do not invent a meta-router, keyword engine, or skill dependency graph',
+    'Skills do not grant tools, credentials, MCP access, deployment authority, or permissions',
+  ];
+  for (const marker of markers) {
+    assert.ok(constitution.includes(marker), `missing L0 marker: ${marker}`);
+  }
+});
+
