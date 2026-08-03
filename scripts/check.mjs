@@ -588,6 +588,7 @@ function validateRuntimeConstitution(errors) {
   for (const doc of [
     'docs/reference/catalog-listing-budget-policy.md',
     'docs/reference/skill-utilization-eval-residual.md',
+    'docs/reference/skill-utilization-host-runbook.md',
     'docs/adr/ADR-20260731-thin-dual-layer-progressive-instruction-system.md',
   ]) {
     const docPath = path.join(repositoryRoot, doc);
