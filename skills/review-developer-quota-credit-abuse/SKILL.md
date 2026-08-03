@@ -42,7 +42,7 @@ look indistinguishable from abuse.
 - For package and price architecture, use `price-saas-subscription`.
 - For payment authorization, settlement, refunds, or chargebacks, use
   `build-payment-readiness`; consume its canonical money state.
-- For DDoS or active security incidents, use `incident-standard` and the owning
+- For DDoS or active security incidents, use `run-incident-response` and the owning
   security engineering boundary under `engineering-standard`.
 - For a specific fraud case, preserve evidence and authorized review; this
   skill designs the reusable product controls, not the case verdict.

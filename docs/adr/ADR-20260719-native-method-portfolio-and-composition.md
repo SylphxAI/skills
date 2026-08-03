@@ -47,14 +47,14 @@ The portfolio adds these independently requested methods:
 
 - `record-structured-deliberation`
 - `design-space-exploration`
-- `synthesize-evidence`
-- `engineer-requirements`
-- `research-users`
+- `synthesize-evidence-brief`
+- `engineer-testable-requirements`
+- `research-user-needs`
 - `review-agent-planning-system`
 - `engineer-agent-context`
 - `remediate-agent-harness`
 - `review-optimization-objective`
-- `model-decision-optimization`
+- `optimize-decision-model`
 - `design-provenance-system`
 - `design-semantic-taxonomy`
 - `model-security-threats`

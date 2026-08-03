@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/SylphxAI/skills/blob/main/skills/incident-standard/references/active-incident-record.schema.json",
+  "$id": "https://github.com/SylphxAI/skills/blob/main/skills/run-incident-response/references/active-incident-record.schema.json",
   "title": "Active incident command record",
   "type": "object",
   "additionalProperties": false,

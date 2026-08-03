@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/SylphxAI/skills/blob/main/skills/incident-standard/references/postmortem-record.schema.json",
+  "$id": "https://github.com/SylphxAI/skills/blob/main/skills/run-incident-response/references/postmortem-record.schema.json",
   "title": "Postmortem record",
   "type": "object",
   "additionalProperties": false,

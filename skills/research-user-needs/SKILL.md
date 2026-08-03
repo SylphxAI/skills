@@ -1,9 +1,9 @@
 ---
-name: research-users
-description: "User research: questions, methods, synthesis, decision-ready findings."
+name: research-user-needs
+description: "Research user needs: questions, methods, synthesis, decision-ready findings."
 ---
 
-# Research Users
+# Research User Needs
 
 Produce decision-relevant user evidence without turning a convenient sample,
 memorable quotation, or researcher's interpretation into a population claim.

@@ -34,7 +34,7 @@ standard.
 
 - Does not grant deploy or credential capabilities.
 - Does not replace product-local ADRs where those own decisions.
-- Use `model-decision-optimization` when allocation, routing, scheduling,
+- Use `optimize-decision-model` when allocation, routing, scheduling,
   capacity, inventory, or resource policy requires an explicit constrained
   mathematical model rather than qualitative option selection.
 

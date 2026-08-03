@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run Incident Response"
+  short_description: "Run production incident response: command, severity, mitigation, communications, learning/postmortem."
+  default_prompt: "Run Run Incident Response on the active incident or workspace."

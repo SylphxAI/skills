@@ -34,7 +34,7 @@ Legend:
 | `enterprise-control-plane-standard` | policy | KEEP-policy | Org-wide control-plane layers; composes profiles; not absorb target |
 | `enterprise-profile-standard` | policy | **KEEP-separate** (absorb rejected) | Distinct artifact: versioned selection/profile lifecycle vs org control-plane layers; compose, do not merge |
 | `evidence-and-claims-standard` | policy | KEEP-policy | Claim grading predicates |
-| `incident-standard` | policy | KEEP-policy | Incident process predicates (standalone process is OK) |
+| `run-incident-response` | policy | KEEP-policy | Incident process predicates (standalone process is OK) |
 | `instruction-evolution-standard` | policy | KEEP-policy | Instruction/profile evolution predicates |
 | `parallel-change-integration-standard` | policy | KEEP-policy | Expand/contract migration predicates |
 | `project-manifest-standard` | policy | KEEP-policy | Project declaration predicates; distinct from org control plane |

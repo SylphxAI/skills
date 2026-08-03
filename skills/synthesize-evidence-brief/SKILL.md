@@ -1,14 +1,20 @@
 ---
-name: synthesize-evidence
-description: "Synthesize multi-source evidence into one bounded synthesis with residuals."
+name: synthesize-evidence-brief
+description: "Synthesize multi-source evidence into one bounded brief with residuals (not claim-policy alone, not multi-review rollup)."
 ---
 
-# Synthesize Evidence
+# Synthesize Evidence Brief
 
 Produce one **Evidence Synthesis** whose coverage, exclusions, conflicts, and
 certainty can be audited and reproduced. Read
 [references/reproducible-evidence-synthesis.md](references/reproducible-evidence-synthesis.md)
 before defining the review protocol.
+
+## When not to use
+
+- Claim grading policy alone → `evidence-and-claims-standard`
+- Roll up formal multi-review findings → `review-multi-review-synthesis`
+- Pure adversarial critique without synthesis deliverable → `analyze-critically`
 
 ## Method
 

@@ -1,9 +1,9 @@
 ---
-name: engineer-requirements
-description: "Requirements → testable acceptance criteria with traceability."
+name: engineer-testable-requirements
+description: "Turn requirements into testable acceptance criteria with traceability."
 ---
 
-# Engineer Requirements
+# Engineer Testable Requirements
 
 Produce one **Requirements Contract** that states what outcome and observable
 behavior the system must provide without prematurely hiding a design choice
@@ -91,7 +91,7 @@ Produce a **Requirements Contract** containing:
 
 ## Boundaries
 
-- `research-users` and whole-product blueprint Skills own direct
+- `research-user-needs` and whole-product blueprint Skills own direct
   user evidence, opportunity, user promise, market fit, and capability
   selection before requirements stabilize.
 - `decision-quality-standard` owns material option selection; architecture and

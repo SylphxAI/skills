@@ -329,7 +329,7 @@
         "mandatoryObservable": "Owns feedback/learning operations from intake to action/closure; does not define public rating-request eligibility/cooldowns policy as the primary artifact.",
         "mustNot": [
           "Treat review-solicitation-policy as the sole primary owner of this job",
-          "Treat research-users as the sole primary owner of this job"
+          "Treat research-user-needs as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -338,7 +338,7 @@
       ],
       "nearNeighbours": [
         "review-solicitation-policy",
-        "research-users"
+        "research-user-needs"
       ]
     },
     {

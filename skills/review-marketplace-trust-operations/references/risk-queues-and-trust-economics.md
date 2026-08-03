@@ -140,7 +140,7 @@ For a material policy/rule/model/queue change, define:
 Do not copy internal engineering eval procedures into this skill; define the
 product evidence obligation and hand implementation to the applicable
 `risk-matched-verification-standard`, `engineering-standard`, `delivery-standard`,
-and `incident-standard` owners.
+and `run-incident-response` owners.
 
 ## Trust economics
 

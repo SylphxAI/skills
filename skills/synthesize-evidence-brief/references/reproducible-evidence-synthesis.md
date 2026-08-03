@@ -1,4 +1,4 @@
-# Reproducible synthesize-evidence method
+# Reproducible synthesize-evidence-brief method
 
 Use a review design proportionate to the question. A systematic review seeks a
 comprehensive, predeclared, reproducible answer. A rapid review narrows or

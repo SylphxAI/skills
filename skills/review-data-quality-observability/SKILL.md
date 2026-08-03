@@ -69,7 +69,7 @@ for quality states, check selection, reconciliation, and backfill patterns.
 - AI risk/evaluation owners retain training/eval dataset suitability and model
   assurance beyond generic pipeline reliability.
 - Privacy and security owners retain purpose, access, data lifecycle, and threat
-  decisions. `incident-standard` owns an active quality incident lifecycle.
+  decisions. `run-incident-response` owns an active quality incident lifecycle.
 
 ## Guardrails
 

@@ -147,7 +147,7 @@ and gaps without claiming runtime enforcement from design artifacts alone.
   exceptions.
 - Use `operate-customer-support` for the whole support operating model; this
   skill only defines support authority and privileged evidence.
-- Use `incident-standard`, `engineering-standard`, `review-privacy-data-lifecycle`,
+- Use `run-incident-response`, `engineering-standard`, `review-privacy-data-lifecycle`,
   and `delivery-standard` for incidents, controls, implementation, privacy, and shipped proof.
 
 ## Hard gates

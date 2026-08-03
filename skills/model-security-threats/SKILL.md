@@ -90,6 +90,6 @@ Produce a **Threat Model and Security Design Contract** containing:
   and shown to customers about current controls.
 - `engineering-standard` and the owning project implement and test controls;
   this Skill supplies the security design contract.
-- `incident-standard` owns active incident classification and response.
+- `run-incident-response` owns active incident classification and response.
 - Use privacy, AI-risk, identity, payment, or other domain Skills when their
   specialist contracts are independently required.

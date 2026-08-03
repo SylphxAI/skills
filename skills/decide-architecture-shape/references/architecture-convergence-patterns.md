@@ -24,21 +24,21 @@ Useful public orientation: Martin Fowler's descriptions of [Strangler Fig Applic
 
 ## Rule IDs
 
-- `converge-architecture-1` — Freeze a semantic denominator before reporting progress: capabilities plus important behaviors, invariants, contracts, scenarios, surfaces, effects, and applicable module, state, process, failure, deployment, trust, interoperability, and extension boundaries—not files, repositories, commits, or lines.
-- `converge-architecture-2` — Make each slice vertically complete: boundary, target implementation, proof, delivery, authority switch, and recovery.
-- `converge-architecture-3` — Establish one contract source of truth before parallel work. Generated projections are outputs, never coordination surfaces.
-- `converge-architecture-4` — Separate source authority, target availability, target authority, and source retirement. None implies the next.
-- `converge-architecture-5` — Bind parity proof to exact source and target revisions, target artifact digest, and contract, behavior, and corpus digests.
-- `converge-architecture-6` — Invalidate proof whenever a mapped source, target, contract, or dependency surface changes. Stale proof cannot authorize cutover.
-- `converge-architecture-7` — Fail on unclassified tracked migration changes. Classification gaps are control-plane defects.
-- `converge-architecture-8` — Compare full observable semantics: success, absence, errors, ordering, defaults, state effects, retries, concurrency, and operational envelopes.
-- `converge-architecture-9` — Keep one write authority. Shadow decisions or use isolated replay for irreversible effects.
-- `converge-architecture-10` — Parallelize disjoint slices only when each is materially complex and the feasible set has positive net value; serialize contracts, migrations, registries, configuration schemas, and delivery workflows.
-- `converge-architecture-11` — Validate the exact integration candidate and deployed artifact, not an earlier branch head or local build.
-- `converge-architecture-12` — Retire the source after the stage-appropriate target-authority and recovery criteria pass; live readback is required only for a live runtime claim.
-- `converge-architecture-13` — Regress a slice to `stale` rather than preserving optimistic status after source drift.
-- `converge-architecture-14` — Separate documented target, implemented code, merged state, deployed state, runtime authority, and retired source in every report.
-- `converge-architecture-15` — Cap work in progress by local compute, verification, integration, and merge capacity. More agents or open slices are not more throughput.
+- `decide-architecture-shape-1` — Freeze a semantic denominator before reporting progress: capabilities plus important behaviors, invariants, contracts, scenarios, surfaces, effects, and applicable module, state, process, failure, deployment, trust, interoperability, and extension boundaries—not files, repositories, commits, or lines.
+- `decide-architecture-shape-2` — Make each slice vertically complete: boundary, target implementation, proof, delivery, authority switch, and recovery.
+- `decide-architecture-shape-3` — Establish one contract source of truth before parallel work. Generated projections are outputs, never coordination surfaces.
+- `decide-architecture-shape-4` — Separate source authority, target availability, target authority, and source retirement. None implies the next.
+- `decide-architecture-shape-5` — Bind parity proof to exact source and target revisions, target artifact digest, and contract, behavior, and corpus digests.
+- `decide-architecture-shape-6` — Invalidate proof whenever a mapped source, target, contract, or dependency surface changes. Stale proof cannot authorize cutover.
+- `decide-architecture-shape-7` — Fail on unclassified tracked migration changes. Classification gaps are control-plane defects.
+- `decide-architecture-shape-8` — Compare full observable semantics: success, absence, errors, ordering, defaults, state effects, retries, concurrency, and operational envelopes.
+- `decide-architecture-shape-9` — Keep one write authority. Shadow decisions or use isolated replay for irreversible effects.
+- `decide-architecture-shape-10` — Parallelize disjoint slices only when each is materially complex and the feasible set has positive net value; serialize contracts, migrations, registries, configuration schemas, and delivery workflows.
+- `decide-architecture-shape-11` — Validate the exact integration candidate and deployed artifact, not an earlier branch head or local build.
+- `decide-architecture-shape-12` — Retire the source after the stage-appropriate target-authority and recovery criteria pass; live readback is required only for a live runtime claim.
+- `decide-architecture-shape-13` — Regress a slice to `stale` rather than preserving optimistic status after source drift.
+- `decide-architecture-shape-14` — Separate documented target, implemented code, merged state, deployed state, runtime authority, and retired source in every report.
+- `decide-architecture-shape-15` — Cap work in progress by local compute, verification, integration, and merge capacity. More agents or open slices are not more throughput.
 
 ## Slice qualification table
 
@@ -191,14 +191,14 @@ use the stage-bound names above.
 Run structural validation:
 
 ```bash
-python3 skills/converge-architecture/scripts/validate_migration_ledger.py migration-ledger.json
+python3 skills/decide-architecture-shape/scripts/validate_migration_ledger.py migration-ledger.json
 ```
 
 Run source-drift admission for one repository and exact candidate:
 
 ```bash
 git diff --name-only BASE_SHA HEAD_SHA > changed-files.txt
-python3 skills/converge-architecture/scripts/validate_migration_ledger.py migration-ledger.json \
+python3 skills/decide-architecture-shape/scripts/validate_migration_ledger.py migration-ledger.json \
   --repo example/service \
   --changed-files changed-files.txt \
   --candidate-source-ref SOURCE_HEAD_SHA \

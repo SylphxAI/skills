@@ -50,7 +50,7 @@ memory are not evidence.
 - `model-security-threats` owns threat and security-design contracts. The
   owning engineering boundary and `engineering-standard` own implementation,
   testing, vulnerability remediation, and production proof.
-- `incident-standard` plus the current security/legal owners govern incident response,
+- `run-incident-response` plus the current security/legal owners govern incident response,
   coordinated disclosure, customer notification, and exploit-sensitive wording.
 - Auditors and certification authorities own independent assurance conclusions;
   this skill records their exact scope and status without interpreting beyond them.

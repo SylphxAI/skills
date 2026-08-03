@@ -36,7 +36,7 @@ export const LEGACY_AGENTS_PROJECTIONS = Object.freeze({
     'enterprise-control-plane-standard': 'sha256:b3c7b1c13751354121b94a0cc43f43a4946f880fdd763d21a0b892bb64c6ff1b',
     'enterprise-profile-standard': 'sha256:dc5dc1e9a543af522cec2662e0d36ebc130c5906c24d1785c5b178d2ec142e50',
     'frontier-verification-standard': 'sha256:b65d3e075b0fe2c419d6f3b71b9ec84700d2aa4c5dac222fa4220404e697f19a',
-    'incident-standard': 'sha256:3dac89d78aabdedc7d24e55ebe007c972e681fafac00a3b7d6b1b91628bdec2f',
+    'run-incident-response': 'sha256:3dac89d78aabdedc7d24e55ebe007c972e681fafac00a3b7d6b1b91628bdec2f',
     'instruction-evolution-standard': 'sha256:e1a21c71dd76f16bb48d2b37d0c13f63e87e5a070b4009461fd3039e3cef89a4',
     // historical package id in the captured 8057d661 projection only
     'mission-control-standard': 'sha256:139c07c5f65994c5e997efb8fb73844b75030c0b9b0e64f8c7bb5314722de41a',

@@ -59,7 +59,7 @@ for signal, audience, SLO, alert, validation, and public-boundary patterns.
   product code and should compose when code, contracts, or runtime paths change.
 - `agent-native-standard` owns model/tool/delegation execution traces and
   agent-specific operator views.
-- `incident-standard` owns an active incident's severity, mitigation, recovery,
+- `run-incident-response` owns an active incident's severity, mitigation, recovery,
   communication, and postmortem lifecycle.
 - `review-product-analytics-instrumentation` owns product behavior events and
   decision metrics, not service health or operator diagnostics.

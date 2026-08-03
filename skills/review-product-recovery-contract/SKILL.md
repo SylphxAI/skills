@@ -27,7 +27,7 @@ implements it.
    plaintext and recovery authority consistent with the advertised trust model.
 7. Emit a downstream engineering handoff containing requirements and acceptance
    evidence only. Load `engineering-standard`, `delivery-standard`, and
-   `incident-standard` for infrastructure DR, rollout, drills, and SLOs.
+   `run-incident-response` for infrastructure DR, rollout, drills, and SLOs.
 8. Produce the product contract, data-class matrix, restore state model,
    support boundary, telemetry contract, acceptance scenarios, and open risks.
 

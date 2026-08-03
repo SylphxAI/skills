@@ -1,4 +1,0 @@
-interface:
-  display_name: "Research Users"
-  short_description: "User research: questions, methods, synthesis, decision-ready findings."
-  default_prompt: "Run Research Users for the active task/workspace."

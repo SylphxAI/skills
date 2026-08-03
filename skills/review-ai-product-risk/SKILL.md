@@ -49,7 +49,7 @@ provider, policy, tool, or production authority.
   red-team execution, and nondeterministic release proof.
 - Use `model-security-threats` for threat and security-design contracts;
   engineering owns implementation and vulnerability remediation, while
-  `incident-standard` owns active incident response.
+  `run-incident-response` owns active incident response.
 - Use `review-product-analytics-instrumentation` for event/identity pipeline
   implementation after this dossier states the required product signals.
 - Use `design-app` or `design-game` when the primary artifact

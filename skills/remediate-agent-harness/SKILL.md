@@ -53,7 +53,7 @@ Produce one **Learning Change Record** containing:
   intervention solved the recurring problem.
 - Use `review-optimization-objective` when the objective, reward, KPI, or
   evaluator may be creating the behavior.
-- Use `incident-standard` to contain and recover a live incident. A post-incident
+- Use `run-incident-response` to contain and recover a live incident. A post-incident
   recurring system change may then use this skill.
 - Do not keep a review or delivery task open merely to observe indefinite
   improvement. Promote against the frozen threshold and monitor afterward.

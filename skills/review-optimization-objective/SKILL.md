@@ -54,7 +54,7 @@ Produce one **Optimization Objective Contract** containing:
   routing or behavior evaluation.
 - Use `decision-quality-standard` to choose among material business or technical
   options after the objective supplies trustworthy evidence.
-- Use `model-decision-optimization` for decision variables, mathematical
+- Use `optimize-decision-model` for decision variables, mathematical
   constraints, solver execution, and independent solution verification. This
   Skill owns the real-outcome, proxy, Goodhart, gaming, and protected-floor
   contract that the decision model consumes.

@@ -13,7 +13,7 @@ Own one repeatable customer-data migration or import program: discovery, authori
 
 ## When not to use
 
-- Use `converge-architecture` or the owning project under `engineering-standard`
+- Use `decide-architecture-shape` or the owning project under `engineering-standard`
   for a multi-repository code rewrite, infrastructure migration, or generic
   data-platform implementation.
 - Use the product backup/restore investigation, `review-customer-success-operations`, `compose-product-program`, or `review-data-rights-operations` when the primary artifact is backup recovery, ongoing customer value, a whole-product program, or one rights request.

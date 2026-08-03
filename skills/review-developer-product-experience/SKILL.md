@@ -141,7 +141,7 @@ claiming production performance before measurement exists.
   price, payment, ledger, or entitlement authority.
 - Use `design-app` when the whole application experience, rather than
   the developer integration journey, is the independent artifact.
-- Use `delivery-standard`, `incident-standard`, `engineering-standard`, and
+- Use `delivery-standard`, `run-incident-response`, `engineering-standard`, and
   `review-privacy-data-lifecycle` for shipped proof, incidents, controls, and privacy.
 - Use `build-distribution-readiness` for the executable artifact set, installers,
   package-manager adapters, upgrades, uninstall, and publication readback of a

@@ -5,7 +5,7 @@ import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 
 const schema = JSON.parse(readFileSync(
-  new URL('../skills/incident-standard/references/active-incident-record.schema.json', import.meta.url),
+  new URL('../skills/run-incident-response/references/active-incident-record.schema.json', import.meta.url),
   'utf8',
 ));
 const ajv = new Ajv2020({ allErrors: true, strict: true });

@@ -126,16 +126,16 @@
     ]
   },
   {
-    "id": "synthesize-evidence-positive",
+    "id": "synthesize-evidence-brief-positive",
     "kind": "positive",
     "prompt": "Run a reproducible cross-domain evidence review with search protocol, screening, source quality, conflicting findings, and calibrated certainty.",
     "expectedSkills": [
-      "synthesize-evidence"
+      "synthesize-evidence-brief"
     ],
     "artifacts": [
       {
         "artifact": "Evidence Synthesis",
-        "owner": "synthesize-evidence"
+        "owner": "synthesize-evidence-brief"
       }
     ]
   },
@@ -144,12 +144,12 @@
     "kind": "positive",
     "prompt": "Elicit and validate stakeholder needs, scenarios, quality attributes, constraints, acceptance boundaries, and traceability for this new service.",
     "expectedSkills": [
-      "engineer-requirements"
+      "engineer-testable-requirements"
     ],
     "artifacts": [
       {
         "artifact": "Requirements Contract",
-        "owner": "engineer-requirements"
+        "owner": "engineer-testable-requirements"
       }
     ]
   },
@@ -158,12 +158,12 @@
     "kind": "positive",
     "prompt": "Plan qualitative user interviews and contextual inquiry to learn users' real workflow, barriers, language, and mental models before choosing a product flow.",
     "expectedSkills": [
-      "research-users"
+      "research-user-needs"
     ],
     "artifacts": [
       {
         "artifact": "User Research Protocol and Findings",
-        "owner": "research-users"
+        "owner": "research-user-needs"
       }
     ]
   },
@@ -186,12 +186,12 @@
     "kind": "positive",
     "prompt": "Formulate and verify a constrained model that allocates agents and runner capacity across jobs under cost, deadline, and eligibility constraints.",
     "expectedSkills": [
-      "model-decision-optimization"
+      "optimize-decision-model"
     ],
     "artifacts": [
       {
         "artifact": "Constrained Decision Model",
-        "owner": "model-decision-optimization"
+        "owner": "optimize-decision-model"
       }
     ]
   },
@@ -306,12 +306,12 @@
     "prompt": "Design an automated capacity allocator, guard its objective against Goodhart and gaming, and formulate the constrained optimization model.",
     "expectedSkills": [
       "review-optimization-objective",
-      "model-decision-optimization"
+      "optimize-decision-model"
     ],
     "artifacts": [
       {
         "artifact": "Constrained Decision Model with integrated objective contract",
-        "owner": "model-decision-optimization"
+        "owner": "optimize-decision-model"
       }
     ]
   },
@@ -320,13 +320,13 @@
     "kind": "compound",
     "prompt": "Migrate this repository completely to the current canonical code architecture.",
     "expectedSkills": [
-      "converge-architecture",
+      "decide-architecture-shape",
       "engineering-standard"
     ],
     "artifacts": [
       {
         "artifact": "Architecture convergence delivery and retirement",
-        "owner": "converge-architecture"
+        "owner": "decide-architecture-shape"
       },
       {
         "artifact": "Canonical architecture terminal",
@@ -339,13 +339,13 @@
     "kind": "compound",
     "prompt": "Upgrade every service repository in this organization to Capability-first Modular DDD with Clean/Hexagonal boundaries and Functional Core, Imperative Shell, including real code movement and semantic proof.",
     "expectedSkills": [
-      "converge-architecture",
+      "decide-architecture-shape",
       "engineering-standard"
     ],
     "artifacts": [
       {
         "artifact": "Cross-repository architecture convergence and proof",
-        "owner": "converge-architecture"
+        "owner": "decide-architecture-shape"
       },
       {
         "artifact": "Canonical architecture terminal",
@@ -396,13 +396,13 @@
     "kind": "compound",
     "prompt": "Refactor this repository to the current complete architecture and converge its code, state ownership, dependency graph, runtime failure boundaries, interoperability, and predecessor retirement with executable proof.",
     "expectedSkills": [
-      "converge-architecture",
+      "decide-architecture-shape",
       "engineering-standard"
     ],
     "artifacts": [
       {
         "artifact": "Complete-system architecture convergence and retirement",
-        "owner": "converge-architecture"
+        "owner": "decide-architecture-shape"
       },
       {
         "artifact": "Canonical architecture terminal",
@@ -428,7 +428,7 @@
         "owner": "engineering-standard"
       }
     ],
-    "nearNeighbourOf": "converge-architecture"
+    "nearNeighbourOf": "decide-architecture-shape"
   },
   {
     "id": "architecture-neighbour-docs-only",
@@ -463,13 +463,13 @@
     "kind": "compound",
     "prompt": "The production worker is dropping accepted jobs now. Contain the impact, reproduce the failure, repair the root cause, and verify service recovery.",
     "expectedSkills": [
-      "incident-standard",
+      "run-incident-response",
       "engineering-standard"
     ],
     "artifacts": [
       {
         "artifact": "Active incident record and recovery proof",
-        "owner": "incident-standard"
+        "owner": "run-incident-response"
       },
       {
         "artifact": "Owning-code repair and regression proof",
@@ -711,12 +711,12 @@
     "kind": "near-neighbour",
     "prompt": "Production is failing now: declare severity, coordinate mitigation, communicate impact, verify recovery, and produce the postmortem.",
     "expectedSkills": [
-      "incident-standard"
+      "run-incident-response"
     ],
     "artifacts": [
       {
         "artifact": "Incident record",
-        "owner": "incident-standard"
+        "owner": "run-incident-response"
       }
     ],
     "nearNeighbourOf": "review-operational-observability"
@@ -1081,12 +1081,12 @@
     "kind": "near-neighbour",
     "prompt": "Customer reports are wrong right now: open and run the data incident through containment, correction, communication, recovery and postmortem.",
     "expectedSkills": [
-      "incident-standard"
+      "run-incident-response"
     ],
     "artifacts": [
       {
         "artifact": "Incident record",
-        "owner": "incident-standard"
+        "owner": "run-incident-response"
       }
     ],
     "nearNeighbourOf": "review-data-quality-observability"

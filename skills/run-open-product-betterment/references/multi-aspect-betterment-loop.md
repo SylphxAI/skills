@@ -45,17 +45,17 @@ Pick only aspects that can change product value for this subject:
 
 | Aspect family | Example cells | Example specialist Skills |
 | --- | --- | --- |
-| Product definition | promise, IA, journeys, capability portfolio | `design-app`, `design-game`, `engineer-requirements` |
+| Product definition | promise, IA, journeys, capability portfolio | `design-app`, `design-game`, `engineer-testable-requirements` |
 | Interaction & craft | UI states, flows, visual hierarchy, feel | `craft-product-interface`, `finish-product` |
 | Accessibility | AT paths, semantics, exceptions | `review-accessibility-conformance-program` |
 | Performance | latency, jank, budgets, low-end | `remediate-frontend-performance`, `review-operational-observability` |
-| Reliability/ops | errors, recovery, SLOs, diagnosability | `review-operational-observability`, `incident-standard` |
+| Reliability/ops | errors, recovery, SLOs, diagnosability | `review-operational-observability`, `run-incident-response` |
 | Security/privacy | threats, abuse, data lifecycle | `model-security-threats`, `review-privacy-data-lifecycle`, `review-product-abuse-risk` |
 | Content/brand | accuracy, voice, localization | `documentation-standard` |
 | Growth/commerce | pricing packaging, retention, ads, referrals | `price-saas-subscription`, `review-retention-cohort`, `review-ad-monetization`, `review-referral-loop` |
 | Game systems | loops, economy, progression, soft launch | `design-game`, `review-game-economy`, `review-game-soft-launch`, `review-daily-reward-and-streak` |
 | Art/assets/3D | art direction, asset fidelity, packaging inputs | `produce-product-assets`, `finish-product` |
-| Architecture | seams, migrations, maintainability | `converge-architecture`, `engineering-standard` |
+| Architecture | seams, migrations, maintainability | `decide-architecture-shape`, `engineering-standard` |
 | Feedback | private/public signal learning | `run-product-feedback-loop` |
 
 If no specialist fits, keep the item under this loop with an explicit method

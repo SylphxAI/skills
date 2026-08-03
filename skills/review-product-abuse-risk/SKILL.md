@@ -15,7 +15,7 @@ Own the product-wide abuse model, protected resources, actor/action graph, loss 
 
 - Use `review-account-recovery`, `review-marketplace-trust-operations`, or `build-payment-readiness` when the primary artifact is rightful access recovery, marketplace participant enforcement, or payment/ledger correctness.
 - Use the developer quota/credit specialist, `risk-matched-verification-standard`,
-  `incident-standard`, or the owning security boundary under
+  `run-incident-response`, or the owning security boundary under
   `engineering-standard` when the primary artifact is developer resource
   policy, AI red-team evaluation, DDoS/security engineering, or incident response.
 

@@ -1,9 +1,9 @@
 ---
-name: model-decision-optimization
-description: "Model a decision for optimization: objective, constraints, sensitivity."
+name: optimize-decision-model
+description: "Model a decision for optimization: objective, constraints, sensitivity, recommendation (not deliberation record alone)."
 ---
 
-# Model Decision Optimization
+# Optimize Decision Model
 
 Translate an operational decision into a falsifiable mathematical model whose
 recommended solution can be independently checked. Read

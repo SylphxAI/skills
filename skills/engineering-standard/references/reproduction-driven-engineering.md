@@ -121,7 +121,7 @@ least-privilege negative or control test in an authorized isolated
 environment. Never require exploit replay against production or an
 unauthorized target. Detailed exploit inputs, traces, and hypotheses remain
 protected evidence; public regression tests encode only the safe invariant.
-Active exposure composes with `incident-standard`.
+Active exposure composes with `run-incident-response`.
 
 When many candidate causes or a large code surface exist, agents may explore
 hypotheses, generate cases, inspect files, or run differential experiments in
@@ -177,7 +177,7 @@ merely to satisfy this method.
 ## Composition boundaries
 
 - `engineering-standard` owns reproduction, repair, regression, and cleanup.
-- `incident-standard` owns command, mitigation, recovery, communication, and
+- `run-incident-response` owns command, mitigation, recovery, communication, and
   incident closure while service or customer harm is active.
 - `analyze-critically` owns a requested analysis artifact or a material
   investigation while multiple credible causes remain unresolved.

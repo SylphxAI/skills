@@ -1,4 +1,0 @@
-interface:
-  display_name: "Converge Architecture"
-  short_description: "Converge architecture options to one decided shape with tradeoffs and residuals."
-  default_prompt: "Converge architecture onto shared invariants with a migration path and acceptance evidence."

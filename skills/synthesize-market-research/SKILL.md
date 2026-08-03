@@ -46,7 +46,7 @@ unsupported market opinions.
 
 ## When not to use
 
-- Use `synthesize-evidence` for a reproducible cross-domain systematic, rapid,
+- Use `synthesize-evidence-brief` for a reproducible cross-domain systematic, rapid,
   scoping, or structured evidence review whose artifact is not a market
   recommendation.
 - Use distill-source-to-skill when one bounded document or corpus must become
