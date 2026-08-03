@@ -1,6 +1,6 @@
 ---
 name: deliberate-structured
-description: "Produce a multi-party deliberation record: positions, argument graph, tested objections."
+description: "Run a structured deliberation: options, criteria, decision record, next actions."
 ---
 
 # Deliberate Structured

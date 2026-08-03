@@ -1,4 +1,4 @@
 interface:
   display_name: "Produce Product Assets"
-  short_description: "Produce product art, 3D, or content assets to a brief with acceptance checks."
+  short_description: "Produce product assets (copy, media, UI content) to brief and brand constraints."
   default_prompt: "Run Produce Product Assets for the active task/workspace."

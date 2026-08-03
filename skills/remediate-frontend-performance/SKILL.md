@@ -1,6 +1,6 @@
 ---
 name: remediate-frontend-performance
-description: "Remediate frontend performance: measurement, budgets, critical path, regression control."
+description: "Remediate frontend jank: reproduce, find RAF/timer/listener leaks, fix, before/after same scene."
 ---
 
 # Remediate Frontend Performance

@@ -1,6 +1,6 @@
 ---
 name: design-marketing-automation
-description: "Design marketing automation: lifecycle journeys, channels, measurement, guardrails."
+description: "Design marketing automation: journeys, triggers, consent, measurement, brand-safe ops."
 ---
 
 # Design Marketing Automation

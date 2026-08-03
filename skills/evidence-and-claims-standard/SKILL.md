@@ -1,6 +1,6 @@
 ---
 name: evidence-and-claims-standard
-description: "Policy for claim grading: evidence class, provenance, strength, promotion boundaries. Apply when asserting done, SOTA, or live outcomes."
+description: "Policy: evidence before claims — local vs candidate vs landed vs live; no false green."
 ---
 
 # Evidence and Claims Standard

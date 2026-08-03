@@ -1,4 +1,4 @@
 interface:
   display_name: "Author Skill"
-  short_description: "Author or update a Sylphx Skill: job-shaped, progressive, portable."
+  short_description: "Author or revise a Skill package: job-shaped id, short description, method body, progressive disclosure, portable host rules."
   default_prompt: "Author or update a Skill package for the requested job using author-skill."

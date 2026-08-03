@@ -1,6 +1,6 @@
 ---
 name: ready-software-distribution
-description: "Assess software distribution readiness: artifacts, signing, channels, updates, rollback."
+description: "Design software distribution: artifacts, install/upgrade/uninstall, channels, readback."
 ---
 
 # Ready Software Distribution

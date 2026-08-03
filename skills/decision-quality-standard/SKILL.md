@@ -1,6 +1,6 @@
 ---
 name: decision-quality-standard
-description: "Policy for decision-process quality: framing, alternatives, information, tradeoffs, commitment, learning. Apply when making or reviewing material decisions."
+description: "Policy: decision quality — framing, alternatives, information, tradeoffs, commitment, learning."
 ---
 # Decision Quality Standard
 

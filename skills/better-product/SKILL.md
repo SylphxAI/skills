@@ -1,6 +1,6 @@
 ---
 name: better-product
-description: "Open-ended product betterment when jobs mix and there is no fixed objective: coverage card, admit all high-EV B, execute, verify; stop at empty high-EV frontier."
+description: "Open-ended product betterment (no fixed objective): coverage card, admit all high-EV B, execute, verify; stop at empty high-EV frontier. Prefer pursue-product-objective when outcome is fixed."
 ---
 
 # Better Product

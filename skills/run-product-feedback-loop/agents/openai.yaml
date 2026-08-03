@@ -1,4 +1,4 @@
 interface:
   display_name: "Run Product Feedback Loop"
-  short_description: "Run one product feedback loop: capture, cluster, decide, close the loop to users and roadmap."
+  short_description: "Run one product feedback loop: capture, cluster, decide, close loop to users/roadmap."
   default_prompt: "Run a product feedback loop cycle: capture, cluster, decide, close the loop."

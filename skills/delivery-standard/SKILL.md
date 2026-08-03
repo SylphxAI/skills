@@ -1,6 +1,6 @@
 ---
 name: delivery-standard
-description: "Policy for delivery-terminal proof: land, artifacts, publish, deploy, rollback, live readback. Apply when claiming delivery outcomes."
+description: "Policy: delivery terminal honesty — source vs artifact vs desired/current vs live proof."
 ---
 # Delivery Standard
 

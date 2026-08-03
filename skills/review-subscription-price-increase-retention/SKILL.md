@@ -1,6 +1,6 @@
 ---
 name: review-subscription-price-increase-retention
-description: "Review: Retention-safe subscription price-increase rollout: cohorts, notices, grandfathering, net revenue."
+description: "Review: Retention-safe subscription price increase — cohorts, notices, grandfathering."
 ---
 
 # Review Subscription Price Increase Retention Review

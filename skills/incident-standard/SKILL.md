@@ -1,6 +1,6 @@
 ---
 name: incident-standard
-description: "Policy/method for production incidents: command, severity, mitigation, communication, learning. Use when running or reviewing an incident."
+description: "Policy: production incidents — command, severity, mitigation, communication, learning."
 ---
 # Incident Standard
 

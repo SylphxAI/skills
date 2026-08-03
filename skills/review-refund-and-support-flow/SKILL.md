@@ -1,6 +1,6 @@
 ---
 name: review-refund-and-support-flow
-description: "Review: Refund and support money flows: policy, authority, ledger impact, customer path."
+description: "Review: Refund/support money flows — policy, authority, ledger, customer path."
 ---
 
 # Review Refund And Support Flow Review

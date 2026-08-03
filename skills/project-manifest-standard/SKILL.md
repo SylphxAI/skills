@@ -1,6 +1,6 @@
 ---
 name: project-manifest-standard
-description: "Policy for repo/project manifest shape: ownership, surfaces, delivery terminals, machine-readable facts. Apply when authoring project manifests."
+description: "Policy: project manifest shape — ownership, surfaces, delivery terminals, machine facts."
 ---
 # Project Manifest Standard
 

@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Optimization Objective Review"
-  short_description: "Review: Audit whether an optimization objective is well-posed, aligned, and measurable."
+  short_description: "Review: Whether an optimization objective is well-posed, aligned, and measurable."
   default_prompt: "Run Review Optimization Objective Review for the active product/workspace."

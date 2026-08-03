@@ -61,7 +61,7 @@ When authoring a workflow:
 
 `better-product` (workflow) composes:
 
-- workflows: drive-to-delivery (per admitted Work), self-feeding only if
+- workflows: drive-to-delivery (per admitted Work), select-next-work only if
   continuous Work OS selection is required
 - policy: delivery / evidence / engineering / stack when implementing
 - adapters: harness goal binding (uncapped), Enact when present

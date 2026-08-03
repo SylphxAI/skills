@@ -1,6 +1,6 @@
 ---
 name: review-revenue-operations
-description: "Review: Revenue operations: pipeline hygiene, handoffs, forecast process, systems."
+description: "Review: Revenue ops — pipeline hygiene, handoffs, forecast process, systems."
 ---
 
 # Review Revenue Operations Review

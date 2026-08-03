@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Product Abuse Risk Review"
-  short_description: "Review: Product abuse risks and controls: fraud, spam, exploitation, enforcement."
+  short_description: "Review: Product abuse risks — fraud, spam, exploitation, enforcement controls."
   default_prompt: "Run Review Product Abuse Risk Review for the active product/workspace."

@@ -1,4 +1,4 @@
 interface:
   display_name: "Deliberate Structured"
-  short_description: "Produce a multi-party deliberation record: positions, argument graph, tested objections."
+  short_description: "Run a structured deliberation: options, criteria, decision record, next actions."
   default_prompt: "Run Deliberate Structured for the active task/workspace."

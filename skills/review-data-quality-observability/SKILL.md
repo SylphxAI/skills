@@ -1,6 +1,6 @@
 ---
 name: review-data-quality-observability
-description: "Review: Data quality observability: contracts, monitors, incident paths, ownership."
+description: "Review: Data pipeline quality — freshness, completeness, drift, backfill safety."
 ---
 
 # Review Data Quality Observability Review

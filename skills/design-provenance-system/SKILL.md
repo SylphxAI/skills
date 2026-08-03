@@ -1,6 +1,6 @@
 ---
 name: design-provenance-system
-description: "Design a provenance system: lineage, attestations, verification paths, user-visible trust."
+description: "Design provenance: lineage, attestation, retention, consumer contracts."
 ---
 
 # Design Provenance System

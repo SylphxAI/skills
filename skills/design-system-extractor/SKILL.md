@@ -1,6 +1,6 @@
 ---
 name: design-system-extractor
-description: "Extract design system tokens/components/rules from live product UI."
+description: "Extract design-system tokens/components/rules from live product UI."
 ---
 
 # Design System Extractor

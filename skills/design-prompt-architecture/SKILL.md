@@ -1,6 +1,6 @@
 ---
 name: design-prompt-architecture
-description: "Design prompt and system-instruction architecture for agent or product surfaces."
+description: "Design a prompt/context architecture: layers, tools, memory, eval hooks."
 ---
 # Design Prompt Architecture
 

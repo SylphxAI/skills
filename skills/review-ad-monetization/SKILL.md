@@ -1,6 +1,6 @@
 ---
 name: review-ad-monetization
-description: "Review: In-product ad system: formats, mediation, rewards, consent, frequency caps, fraud, IAP/IAA tradeoffs."
+description: "Review: Ad monetization — inventory, UX harm, policy, measurement, net revenue."
 ---
 
 # Review Ad Monetization Review

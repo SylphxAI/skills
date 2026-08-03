@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Retention Cohort Review"
-  short_description: "Review: Retention cohorts: measurement, drivers, intervention design."
+  short_description: "Review: Retention cohorts — measurement, drivers, intervention design."
   default_prompt: "Run Review Retention Cohort Review for the active product/workspace."

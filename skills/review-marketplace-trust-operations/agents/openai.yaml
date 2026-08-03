@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Marketplace Trust Operations Review"
-  short_description: "Review: Marketplace trust and safety ops: detection, enforcement, appeals, evidence."
+  short_description: "Review: Marketplace trust ops — detection, enforcement, appeals, evidence."
   default_prompt: "Run Review Marketplace Trust Operations Review for the active product/workspace."

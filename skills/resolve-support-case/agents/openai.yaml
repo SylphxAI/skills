@@ -1,4 +1,4 @@
 interface:
   display_name: "Resolve Support Case"
-  short_description: "Resolve one support case to a durable outcome with evidence and customer-visible close."
+  short_description: "Resolve one support case to closure with correct authority and customer outcome."
   default_prompt: "Run Resolve Support Case for the active task/workspace."

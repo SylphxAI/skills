@@ -1,6 +1,6 @@
 ---
 name: run-product-feedback-loop
-description: "Run one product feedback loop: capture, cluster, decide, close the loop to users and roadmap."
+description: "Run one product feedback loop: capture, cluster, decide, close loop to users/roadmap."
 ---
 
 # Run Product Feedback Loop

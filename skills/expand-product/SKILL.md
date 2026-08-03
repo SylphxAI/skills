@@ -1,6 +1,6 @@
 ---
 name: expand-product
-description: "Scale a validated product core: pick a ×N bet, implement leverage, verify scale metric and core non-regression."
+description: "Scale a validated product core (×N): capacity, metrics, non-regression of the core path."
 ---
 
 # Expand Product

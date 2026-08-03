@@ -1,6 +1,6 @@
 ---
 name: produce-product-assets
-description: "Produce product art, 3D, or content assets to a brief with acceptance checks."
+description: "Produce product assets (copy, media, UI content) to brief and brand constraints."
 ---
 
 # Produce Product Assets

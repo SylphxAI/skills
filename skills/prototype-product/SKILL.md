@@ -1,6 +1,6 @@
 ---
 name: prototype-product
-description: "Validate a product hypothesis with the cheapest real slice: frame, probe, observe, go/kill/pivot."
+description: "Validate a product hypothesis with the cheapest real probe and a go/kill/pivot decision."
 ---
 
 # Prototype Product

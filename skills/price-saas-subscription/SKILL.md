@@ -1,6 +1,6 @@
 ---
 name: price-saas-subscription
-description: "Design SaaS subscription pricing and packaging with entitlements and tradeoffs."
+description: "Price a SaaS subscription: packaging, value metric, fences, migration, net revenue."
 ---
 
 # Price SaaS Subscription

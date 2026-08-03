@@ -1,4 +1,4 @@
 interface:
   display_name: "Design Prompt Architecture"
-  short_description: "Design prompt and system-instruction architecture for agent or product surfaces."
+  short_description: "Design a prompt/context architecture: layers, tools, memory, eval hooks."
   default_prompt: "Design the prompt and system-instruction architecture for this agent or product surface."

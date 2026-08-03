@@ -1,4 +1,4 @@
 interface:
   display_name: "Bound Task Scope"
-  short_description: "Right-size the current task: in/out, non-goals, cut lines."
+  short_description: "Bound this request: objective, in/out, non-goals, cut lines, right-sized ceremony."
   default_prompt: "Bound scope for the current request before expanding work."

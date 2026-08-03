@@ -1,6 +1,6 @@
 ---
 name: instruction-evolution-standard
-description: "Policy to evolve Skills, constitutions, and profiles: single owner, migration, reconciliation, retirement. Apply when changing instruction packages."
+description: "Policy: evolve Skills/constitutions/profiles — single owner, migration, reconciliation, retirement."
 ---
 # Instruction Evolution Standard
 

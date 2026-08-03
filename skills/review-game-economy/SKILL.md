@@ -1,6 +1,6 @@
 ---
 name: review-game-economy
-description: "Review: Game economy: sources/sinks, balance, progression coupling, abuse vectors."
+description: "Review: Game economy — sources/sinks, balance, progression coupling, abuse."
 ---
 
 # Review Game Economy Review

@@ -1,6 +1,6 @@
 ---
 name: review-board-metrics-operating
-description: "Review: Board/executive metrics operating model: definitions, lineage, decision use, reporting cadence, trust."
+description: "Review: Board/metrics operating rhythm — definitions, cadence, decision use."
 ---
 
 # Review Board Metrics Operating Review

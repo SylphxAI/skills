@@ -1,6 +1,6 @@
 ---
 name: research-users
-description: "Run qualitative user research protocol and capture findings: goals, behavior, context, barriers."
+description: "Research users: questions, methods, synthesis, decision-ready findings."
 ---
 
 # Research Users

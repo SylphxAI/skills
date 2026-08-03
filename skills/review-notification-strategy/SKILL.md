@@ -1,6 +1,6 @@
 ---
 name: review-notification-strategy
-description: "Review: Notification strategy: channels, cadence, consent, fatigue, measurement."
+description: "Review: Notifications — channels, cadence, consent, fatigue, measurement."
 ---
 
 # Review Notification Strategy Review

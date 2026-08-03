@@ -1,6 +1,6 @@
 ---
 name: coordinate-enact-work
-description: "Coordinate live Enact Work with authenticated tools: propose, claim, run, evidence, effects, defer/wake."
+description: "Operate live Enact Work: claim, attempt, evidence, handoff with authenticated tools."
 ---
 
 # Coordinate Enact Work

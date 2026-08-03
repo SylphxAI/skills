@@ -1,6 +1,6 @@
 ---
 name: review-customer-success-operations
-description: "Review: Customer success operating model: segments, plays, health scores, expansion, handoffs."
+description: "Review: Customer success ops — health, playbooks, escalation, expansion signals."
 ---
 
 # Review Customer Success Operations Review

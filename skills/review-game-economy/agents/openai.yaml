@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Game Economy Review"
-  short_description: "Review: Game economy: sources/sinks, balance, progression coupling, abuse vectors."
+  short_description: "Review: Game economy — sources/sinks, balance, progression coupling, abuse."
   default_prompt: "Run Review Game Economy Review for the active product/workspace."

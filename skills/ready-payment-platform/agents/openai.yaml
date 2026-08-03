@@ -1,4 +1,4 @@
 interface:
   display_name: "Ready Payment Platform"
-  short_description: "Assess payments capability readiness: processors, rails, ledger, disputes, compliance hooks."
+  short_description: "Make payments production-ready: providers, ledger, webhooks, refunds, support adjustments."
   default_prompt: "Run Ready Payment Platform for the active task/workspace."

@@ -96,3 +96,30 @@ test('utilization fixtures are distinct from install-status claims', () => {
   assert.ok(program.pinnedAtAuthoring?.skillsCommit);
   assert.ok(program.pinnedAtAuthoring?.catalogDigestSha256OfCatalogJson?.startsWith('sha256:'));
 });
+
+test('utilization fixtures cover core product job Skills', () => {
+  const program = JSON.parse(readFileSync(fixturePath, 'utf8'));
+  const catalog = buildCatalog(repositoryRoot);
+  const catalogNames = new Set(catalog.skills.map((skill) => skill.name));
+  const required = [
+    'prototype-product',
+    'build-product',
+    'maintain-product',
+    'expand-product',
+    'finish-product',
+    'pursue-product-objective',
+    'better-product',
+    'author-skill',
+    'drive-to-delivery',
+    'select-next-work',
+  ];
+  const expected = new Set();
+  for (const item of program.cases) {
+    for (const skill of item.expectedSkills || []) expected.add(skill);
+  }
+  for (const skill of required) {
+    assert.ok(catalogNames.has(skill), `catalog missing ${skill}`);
+    assert.ok(expected.has(skill), `utilization fixtures missing expectedSkills coverage for ${skill}`);
+  }
+});
+

@@ -1,6 +1,6 @@
 ---
 name: source-authoring-standard
-description: "Policy for source authoring: commits, exact candidates, worktrees, checkpoints, concurrent-edit safety. Apply when mutating shared source."
+description: "Policy: source authoring — commits, exact candidates, worktrees, concurrent-edit safety."
 ---
 # Source Authoring Standard
 

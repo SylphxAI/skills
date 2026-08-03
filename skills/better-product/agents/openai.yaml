@@ -1,4 +1,4 @@
 interface:
   display_name: "Better Product"
-  short_description: "Open-ended product betterment when jobs mix and there is no fixed objective: coverage card, admit all high-EV B, execute, verify; stop at em"
+  short_description: "Open-ended product betterment (no fixed objective): coverage card, admit all high-EV B, execute, verify; stop at empty high-EV frontier.…"
   default_prompt: "Run open-ended high-leverage product betterment on the active workspace (no single fixed objective)."

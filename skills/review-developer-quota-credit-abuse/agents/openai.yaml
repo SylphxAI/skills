@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Developer Quota Credit Abuse Review"
-  short_description: "Review: Developer quota and credit abuse: metering, limits, fraud patterns, enforcement."
+  short_description: "Review: Developer quota/credit systems — fairness, abuse, metering accuracy."
   default_prompt: "Run Review Developer Quota Credit Abuse Review for the active product/workspace."

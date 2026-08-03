@@ -1,6 +1,6 @@
 ---
 name: review-solicitation-policy
-description: "Policy for review solicitation: timing, channels, bias and abuse controls. Apply when designing how reviews are asked for."
+description: "Policy: review solicitation — timing, channels, bias and abuse controls."
 ---
 
 # Review Solicitation Policy

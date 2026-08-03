@@ -1,6 +1,6 @@
 ---
 name: improve-agent-system
-description: "Close recurring agent-system failures: learning record, controlled intervention, replay/holdout, promotion."
+description: "Improve an agent system: harness, tools, evals, failure modes, measured deltas."
 ---
 
 # Improve Agent System

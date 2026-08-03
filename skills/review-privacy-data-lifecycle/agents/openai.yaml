@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Privacy Data Lifecycle Review"
-  short_description: "Review: Privacy data lifecycle: collection, purpose limits, retention, deletion paths."
+  short_description: "Review: Privacy data lifecycle — collection, purpose limits, retention, deletion."
   default_prompt: "Run Review Privacy Data Lifecycle Review for the active product/workspace."

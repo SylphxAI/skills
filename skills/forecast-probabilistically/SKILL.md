@@ -1,6 +1,6 @@
 ---
 name: forecast-probabilistically
-description: "Produce probabilistic forecasts with uncertainty, calibration, and decision use."
+description: "Produce calibrated probabilistic forecasts with base rates and scoring rules."
 ---
 
 # Forecast Probabilistically

@@ -1,6 +1,6 @@
 ---
 name: finish-product
-description: "Finish/deburr an integrated product: inspect reality, fix coherence/states/feel/a11y/performance above threshold, recapture."
+description: "Finish/deburr an integrated product to release-grade across real surfaces with re-captured evidence."
 ---
 
 # Finish Product

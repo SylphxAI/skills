@@ -1,6 +1,6 @@
 ---
 name: pursue-product-objective
-description: "Pursue a declared product objective to evidence-backed completion: bind objective, betterment cycles (card, admit all B, execute, verify), stop only when the objective is met or honestly blocked."
+description: "Pursue a declared product objective via betterment cycles until evidence-backed completion or honest block (not open-ended betterment)."
 ---
 
 # Pursue Product Objective

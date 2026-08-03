@@ -1,6 +1,6 @@
 ---
 name: maintain-product
-description: "Reduce live product harm: reproduce, fix root cause on the owning layer, verify reliability oracles."
+description: "Reduce framed live/regression harm: reproduce, fix root cause, prove harm reduced."
 ---
 
 # Maintain Product

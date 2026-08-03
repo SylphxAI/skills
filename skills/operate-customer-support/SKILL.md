@@ -1,6 +1,6 @@
 ---
 name: operate-customer-support
-description: "Design or run support operations: queues, SLAs, escalation paths, tooling, quality sampling."
+description: "Operate customer support: triage, resolution path, escalation, quality loops."
 ---
 
 # Operate Customer Support

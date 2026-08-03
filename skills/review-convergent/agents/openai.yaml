@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Convergent Review"
-  short_description: "Review: Converge divergent analysis into one decision record with explicit residuals and commitments."
+  short_description: "Review: Convergent multi-review synthesis into ranked actions and residuals."
   default_prompt: "Run Review Convergent Review for the active product/workspace."

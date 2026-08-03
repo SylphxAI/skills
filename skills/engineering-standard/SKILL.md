@@ -1,6 +1,6 @@
 ---
 name: engineering-standard
-description: "Policy floor for engineering method: design, verification, change safety, reproduction-driven fixes. Apply while implementing or reviewing software changes."
+description: "Policy: engineering method — design, verification, change safety, reproduction-driven fixes."
 ---
 # Engineering Standard
 

@@ -1,6 +1,6 @@
 ---
 name: edit-preserving-voice
-description: "Rewrite text preserving a specified human voice, locale, and texture without changing facts."
+description: "Edit text while preserving voice, constraints, and factual claims."
 ---
 
 # Edit Preserving Voice

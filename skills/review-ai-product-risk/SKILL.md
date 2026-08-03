@@ -1,6 +1,6 @@
 ---
 name: review-ai-product-risk
-description: "Review: AI product behavior/launch contract: job, autonomy bounds, data use, failure/abuse, disclosure, fallback, cost."
+description: "Review: AI product risk — safety, abuse, evals, human oversight, residual claims."
 ---
 
 # Review AI Product Risk Review

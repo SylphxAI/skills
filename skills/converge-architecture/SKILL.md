@@ -1,6 +1,6 @@
 ---
 name: converge-architecture
-description: "Rewrite substantial architecture onto shared invariants with migration path and acceptance evidence."
+description: "Converge architecture options to one decided shape with tradeoffs and residuals."
 ---
 
 # Converge Architecture

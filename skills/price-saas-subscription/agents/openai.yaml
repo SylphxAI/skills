@@ -1,4 +1,4 @@
 interface:
   display_name: "Price SaaS Subscription"
-  short_description: "Design SaaS subscription pricing and packaging with entitlements and tradeoffs."
+  short_description: "Price a SaaS subscription: packaging, value metric, fences, migration, net revenue."
   default_prompt: "Run Price SaaS Subscription for the active task/workspace."

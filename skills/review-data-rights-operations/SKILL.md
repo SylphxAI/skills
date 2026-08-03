@@ -1,6 +1,6 @@
 ---
 name: review-data-rights-operations
-description: "Review: Data-rights operations: DSAR, retention, deletion, fulfillment proof."
+description: "Review: Data-rights ops — access, export, deletion, audit evidence."
 ---
 
 # Review Data Rights Operations Review

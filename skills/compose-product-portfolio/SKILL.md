@@ -1,6 +1,6 @@
 ---
 name: compose-product-portfolio
-description: "Decide multi-product portfolio seams: share vs isolate, composition contracts, extract/merge/retire units."
+description: "Compose a multi-product portfolio: product vs platform split, connectors, bundles, dogfooding boundaries."
 ---
 
 # Compose Product Portfolio

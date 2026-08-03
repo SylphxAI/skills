@@ -1,6 +1,6 @@
 ---
 name: build-product
-description: "Close shippable product capability gaps: frame the journey, implement on correct boundaries, verify with oracles."
+description: "Ship a missing product capability end-to-end on the correct ownership boundary; original-oracle verify."
 ---
 
 # Build Product

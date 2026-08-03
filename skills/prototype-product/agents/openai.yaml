@@ -1,4 +1,4 @@
 interface:
   display_name: "Prototype Product"
-  short_description: "Validate a product hypothesis with the cheapest real slice: frame, probe, observe, go/kill/pivot."
+  short_description: "Validate a product hypothesis with the cheapest real probe and a go/kill/pivot decision."
   default_prompt: "Run one Prototype Product cycle on the active product/workspace."

@@ -1,6 +1,6 @@
 ---
 name: review-privacy-data-lifecycle
-description: "Review: Privacy data lifecycle: collection, purpose limits, retention, deletion paths."
+description: "Review: Privacy data lifecycle — collection, purpose limits, retention, deletion."
 ---
 
 # Review Privacy Data Lifecycle Review

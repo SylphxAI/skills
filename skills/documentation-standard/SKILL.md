@@ -1,6 +1,6 @@
 ---
 name: documentation-standard
-description: "Policy for documentation create/generate/retire: minimal sufficient, freshness, low prose drift. Apply when writing or retiring docs."
+description: "Policy: docs create/generate/retire — minimal sufficient, freshness, low prose drift."
 ---
 # Documentation Standard
 

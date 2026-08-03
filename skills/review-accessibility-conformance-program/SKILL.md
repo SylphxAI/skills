@@ -1,6 +1,6 @@
 ---
 name: review-accessibility-conformance-program
-description: "Review: Accessibility conformance program: AT coverage, release evidence, VPAT/ACR, remediation ownership."
+description: "Review: Accessibility conformance program design, evidence, and residual risk."
 ---
 
 # Review Accessibility Conformance Program Review

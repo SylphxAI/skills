@@ -1,6 +1,6 @@
 ---
 name: design-game
-description: "Design a whole game/GDD: promise, core loops, progression, economy, FTE, live ops."
+description: "Design a whole game: thesis, loops, progression, economy, social, live-ops blueprint."
 ---
 
 # Design Game

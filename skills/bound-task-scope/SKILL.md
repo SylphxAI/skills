@@ -1,6 +1,6 @@
 ---
 name: bound-task-scope
-description: "Bound the current task: objective, in/out, non-goals, cut lines, and right-sized ceremony for this request."
+description: "Bound this request: objective, in/out, non-goals, cut lines, right-sized ceremony."
 ---
 
 # Bound Task Scope

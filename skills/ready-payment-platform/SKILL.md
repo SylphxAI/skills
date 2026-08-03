@@ -1,6 +1,6 @@
 ---
 name: ready-payment-platform
-description: "Assess payments capability readiness: processors, rails, ledger, disputes, compliance hooks."
+description: "Make payments production-ready: providers, ledger, webhooks, refunds, support adjustments."
 ---
 
 # Ready Payment Platform

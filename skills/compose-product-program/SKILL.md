@@ -1,6 +1,6 @@
 ---
 name: compose-product-program
-description: "Compose a cross-domain Product Program Manifest: inventory, dependency DAG, handoffs, delivery slices, completion evidence."
+description: "Compose a multi-work product program: phases, dependencies, milestones, kill/scale criteria."
 ---
 
 # Compose Product Program

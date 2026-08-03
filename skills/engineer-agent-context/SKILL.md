@@ -1,6 +1,6 @@
 ---
 name: engineer-agent-context
-description: "Design agent context/memory contracts: ranking, compaction, invalidation, provenance, freshness, privacy."
+description: "Engineer agent context packs: what to load, when, budgets, refresh rules."
 ---
 
 # Engineer Agent Context

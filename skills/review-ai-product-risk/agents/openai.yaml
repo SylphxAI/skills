@@ -1,4 +1,4 @@
 interface:
   display_name: "Review AI Product Risk Review"
-  short_description: "Review: AI product behavior/launch contract: job, autonomy bounds, data use, failure/abuse, disclosure, fallback, cost."
+  short_description: "Review: AI product risk — safety, abuse, evals, human oversight, residual claims."
   default_prompt: "Run Review AI Product Risk Review for the active product/workspace."

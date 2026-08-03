@@ -1,6 +1,6 @@
 ---
 name: commercial-decision-standard
-description: "Policy for durable commercial decisions: pricing, packaging, entitlements, licensing, route-to-market ADRs. Apply when recording commercial choices."
+description: "Policy: durable commercial decisions — pricing, packaging, entitlements, licensing, route-to-market."
 ---
 # Commercial Decision Standard
 

@@ -100,3 +100,10 @@ Pinned suite includes critical/neighbour cases for product job Skills:
 plus delivery/select-next-work neighbours. Fixtures alone are not utilization
 proof (see Goal above).
 
+## Related catalog pressure (not utilization proof)
+
+Description character budget is a separate listing-capacity concern
+(`docs/reference/catalog-listing-budget-policy.md`). Agent-facing description
+tightening reduces truncation risk; it does **not** close host behavior-oracle
+utilization.
+

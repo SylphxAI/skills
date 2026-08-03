@@ -1,6 +1,6 @@
 ---
 name: review-developer-product-experience
-description: "Review: Developer product experience: onboarding, APIs, docs, DX friction, time-to-first-success."
+description: "Review: Developer product experience — onboarding, APIs, docs, time-to-value."
 ---
 
 # Review Developer Product Experience Review

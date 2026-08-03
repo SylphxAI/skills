@@ -1,6 +1,6 @@
 ---
 name: ci-runner-capacity-standard
-description: "Policy for CI runner pools: fairness, isolation, scaling, queue pressure under load. Apply when changing runner capacity design."
+description: "Policy: CI runner pools — fairness, isolation, scaling, queue pressure."
 ---
 # Ci Runner Capacity Standard
 

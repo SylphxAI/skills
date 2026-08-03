@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Ad Monetization Review"
-  short_description: "Review: In-product ad system: formats, mediation, rewards, consent, frequency caps, fraud, IAP/IAA tradeoffs."
+  short_description: "Review: Ad monetization — inventory, UX harm, policy, measurement, net revenue."
   default_prompt: "Run Review Ad Monetization Review for the active product/workspace."

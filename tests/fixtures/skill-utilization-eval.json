@@ -5,9 +5,9 @@
   "residualRef": "docs/reference/skill-utilization-eval-residual.md",
   "pinnedAtAuthoring": {
     "skillsCommit": "943748f3a04ebe94ba2e1d30405474334e21e56a",
-    "catalogCount": 112,
+    "catalogCount": 118,
     "catalogDigestSha256OfCatalogJson": "sha256:2b6ef333f1df71f764a2290bd41d648ed4c9e114a224fa06556f52a3a83fa854",
-    "note": "Re-pin at each eval run; authoring pin is not utilization proof."
+    "note": "Product job Skills covered; description tighten is not live host proof."
   },
   "metricHierarchy": [
     "behaviorOracle",
@@ -100,7 +100,7 @@
     {
       "id": "critical-delivery-standard",
       "suite": "critical-skill",
-      "prompt": "Define what \u201cdone\u201d means for landing this API change from source through production, including rollback and live proof.",
+      "prompt": "Define what “done” means for landing this API change from source through production, including rollback and live proof.",
       "expectedSkills": [
         "delivery-standard"
       ],
@@ -198,12 +198,12 @@
     {
       "id": "critical-better-product",
       "suite": "critical-skill",
-      "prompt": "We need ongoing high-leverage product betterment across mixed UI, reliability, and growth gaps\u2014no single fixed outcome, just keep finding and admitting positive-EV work until the high-EV frontier is empty.",
+      "prompt": "We need ongoing high-leverage product betterment across mixed UI, reliability, and growth gaps—no single fixed outcome, just keep finding and admitting positive-EV work until the high-EV frontier is empty.",
       "expectedSkills": [
         "better-product"
       ],
       "behaviorOracle": {
-        "mandatoryObservable": "Defines a standing quality loop contract with scout triggers, finding admission, Work handoff, and coverage freshness/budgets\u2014not a one-off finish pass.",
+        "mandatoryObservable": "Defines a standing quality loop contract with scout triggers, finding admission, Work handoff, and coverage freshness/budgets—not a one-off finish pass.",
         "mustNot": [
           "Treat finish-product as the sole primary owner of this job",
           "Treat review-operational-observability as the sole primary owner of this job",
@@ -622,7 +622,7 @@
     {
       "id": "neighbour-feedback-vs-solicitation",
       "suite": "near-neighbour",
-      "prompt": "We need rules for when the app may show the native \u201crate us\u201d prompt, including cooldowns and no star-gating.",
+      "prompt": "We need rules for when the app may show the native “rate us” prompt, including cooldowns and no star-gating.",
       "expectedSkills": [
         "review-solicitation-policy"
       ],
@@ -731,7 +731,7 @@
     {
       "id": "abstain-spelling",
       "suite": "abstention",
-      "prompt": "Fix the typo in this sentence: \u201cRecieve the package.\u201d",
+      "prompt": "Fix the typo in this sentence: “Recieve the package.”",
       "expectedSkills": [],
       "behaviorOracle": {
         "mandatoryObservable": "Does not load a domain Skill; performs ordinary edit/answer without inventing authority or a method package.",
@@ -909,7 +909,7 @@
     {
       "id": "critical-prototype-product",
       "suite": "critical-skill",
-      "prompt": "We have a new game mechanic idea. Build the cheapest playable probe this week so we can go/kill/pivot\u2014not a production ship.",
+      "prompt": "We have a new game mechanic idea. Build the cheapest playable probe this week so we can go/kill/pivot—not a production ship.",
       "expectedSkills": [
         "prototype-product"
       ],
@@ -919,7 +919,7 @@
         "pursue-product-objective"
       ],
       "behaviorOracle": {
-        "mandatoryObservable": "Frames a hypothesis, builds a cheap probe, and ends with go/kill/pivot evidence\u2014not a durable ship path or standing betterment OS.",
+        "mandatoryObservable": "Frames a hypothesis, builds a cheap probe, and ends with go/kill/pivot evidence—not a durable ship path or standing betterment OS.",
         "mustNot": [
           "Treat build-product as the sole primary owner of this job",
           "Treat better-product as the sole primary owner of this job"
@@ -967,7 +967,7 @@
         "drive-to-delivery"
       ],
       "behaviorOracle": {
-        "mandatoryObservable": "Frames harm, reproduces, fixes cause, verifies with reliability/regression oracle\u2014not a greenfield feature build.",
+        "mandatoryObservable": "Frames harm, reproduces, fixes cause, verifies with reliability/regression oracle—not a greenfield feature build.",
         "mustNot": [
           "Treat expand-product as the sole primary owner of this job",
           "Treat finish-product as the sole primary owner of this job"
@@ -991,7 +991,7 @@
         "better-product"
       ],
       "behaviorOracle": {
-        "mandatoryObservable": "Scales a validated core with an explicit \u00d7N target and core non-regression check.",
+        "mandatoryObservable": "Scales a validated core with an explicit ×N target and core non-regression check.",
         "mustNot": [
           "Treat prototype-product as the sole primary owner of this job",
           "Treat finish-product as the sole primary owner of this job"
@@ -1005,7 +1005,7 @@
     {
       "id": "critical-pursue-product-objective",
       "suite": "critical-skill",
-      "prompt": "Objective is fixed: ship Trueform to production-commercial readiness on Keel with live Pages smoke. Keep working until that objective is evidenced complete\u2014not open-ended polish forever.",
+      "prompt": "Objective is fixed: ship Trueform to production-commercial readiness on Keel with live Pages smoke. Keep working until that objective is evidenced complete—not open-ended polish forever.",
       "expectedSkills": [
         "pursue-product-objective"
       ],
@@ -1015,7 +1015,7 @@
         "finish-product"
       ],
       "behaviorOracle": {
-        "mandatoryObservable": "Binds a durable declared product objective and runs high-leverage cycles until objective terminal evidence\u2014not a one-cycle finish-only pass and not open idle betterment without that objective.",
+        "mandatoryObservable": "Binds a durable declared product objective and runs high-leverage cycles until objective terminal evidence—not a one-cycle finish-only pass and not open idle betterment without that objective.",
         "mustNot": [
           "Treat better-product as the sole primary owner when a fixed objective is declared",
           "Mark complete after a single PR without objective-level evidence",
@@ -1077,7 +1077,7 @@
     {
       "id": "neighbour-prototype-vs-build",
       "suite": "near-neighbour",
-      "prompt": "We are not shipping yet\u2014only need the cheapest real probe to decide if the feature is worth building.",
+      "prompt": "We are not shipping yet—only need the cheapest real probe to decide if the feature is worth building.",
       "expectedSkills": [
         "prototype-product"
       ],

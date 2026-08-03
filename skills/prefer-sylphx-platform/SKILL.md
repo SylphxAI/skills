@@ -1,6 +1,6 @@
 ---
 name: prefer-sylphx-platform
-description: "Policy: prefer Sylphx Platform public PaaS/BaaS contracts before inventing backend, deploy, data, auth, or infra replacements."
+description: "Policy: prefer Sylphx platform capabilities before inventing parallel infrastructure."
 ---
 
 # Prefer Sylphx Platform

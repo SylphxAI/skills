@@ -1,4 +1,4 @@
 interface:
   display_name: "Design Game"
-  short_description: "Design a whole game/GDD: promise, core loops, progression, economy, FTE, live ops."
+  short_description: "Design a whole game: thesis, loops, progression, economy, social, live-ops blueprint."
   default_prompt: "Run Design Game for the active product/workspace."

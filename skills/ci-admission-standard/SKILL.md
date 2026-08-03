@@ -1,6 +1,6 @@
 ---
 name: ci-admission-standard
-description: "Policy for protected-branch CI admission: required checks, risk-matched gates, flake policy, preview gates. Apply when changing branch protection or CI gates."
+description: "Policy: protected-branch CI admission — required checks, risk-matched gates, flake and preview policy."
 ---
 # Ci Admission Standard
 

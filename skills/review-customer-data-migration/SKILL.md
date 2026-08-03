@@ -1,6 +1,6 @@
 ---
 name: review-customer-data-migration
-description: "Review: Customer data migration: mapping, dual-write/read, cutover, rollback, integrity proof."
+description: "Review: Customer data migration — correctness, downtime, rollback, proof."
 ---
 
 # Review Customer Data Migration Review

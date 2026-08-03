@@ -1,6 +1,6 @@
 ---
 name: risk-matched-verification-standard
-description: "Policy to scale verification depth to failure risk: evidence class, gates, acceptable residuals. Apply when choosing how hard to verify."
+description: "Policy: scale verification depth to failure risk — evidence class, gates, residuals."
 ---
 # Risk-Matched Verification Standard
 

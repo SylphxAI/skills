@@ -1,6 +1,6 @@
 ---
 name: parallel-change-integration-standard
-description: "Policy for expand/contract migrations with dual-write/read coexistence and cutover. Apply when migrating live contracts safely."
+description: "Policy: parallel change integration — branches, rebase, collision, exact-SHA evidence."
 ---
 # Parallel Change Integration Standard
 

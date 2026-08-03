@@ -1,4 +1,4 @@
 interface:
   display_name: "Design Skill Evals"
-  short_description: "Design falsifiable skill-selection and behavior evals: neighbours, abstention, oracles, regressions."
+  short_description: "Design falsifiable skill routing/behavior evals: suites, oracles, failure taxonomy."
   default_prompt: "Run Design Skill Evals for the active task/workspace."

@@ -1,4 +1,4 @@
 interface:
   display_name: "Edit Preserving Voice"
-  short_description: "Rewrite text preserving a specified human voice, locale, and texture without changing facts."
+  short_description: "Edit text while preserving voice, constraints, and factual claims."
   default_prompt: "Run Edit Preserving Voice for the active task/workspace."

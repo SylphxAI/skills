@@ -1,6 +1,6 @@
 ---
 name: author-skill
-description: "Author or update a Sylphx Skill package: job-shaped name, short description, one-cycle or job method, progressive disclosure, portable host rules."
+description: "Author or revise a Skill package: job-shaped id, short description, method body, progressive disclosure, portable host rules."
 ---
 
 # Author Skill
@@ -84,15 +84,15 @@ If you cannot name a single job, split or refuse a mega-Skill.
 | Primary output | Class | Name hint |
 | --- | --- | --- |
 | Steps to produce a job result | workflow | verb-led job |
-| Assessment / design record | review | `…-review` |
+| Assessment / design record | review | `review-…` |
 | Predicates reused by many jobs | policy | `…-standard` only if true policy |
 | Live system operations | adapter | host/ops-shaped |
 
-Description template (one or two sentences):
+Description template (one or two short sentences, agent-facing):
 
-> Does X. Use when Y. Prefer Z when …
+> <verb job / Policy: / Review:> <discriminating substance>. [Prefer neighbour-id when … only if needed.]
 
-Include trigger terms agents will search; exclude host-private API names.
+No textbook restatement of the title. Include only trigger terms that change retrieval; exclude host-private API names. Prefer shorter text under catalog listing pressure.
 
 ### 3. Draft `SKILL.md` body
 

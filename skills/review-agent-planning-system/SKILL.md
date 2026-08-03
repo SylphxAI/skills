@@ -1,6 +1,6 @@
 ---
 name: review-agent-planning-system
-description: "Review agent planning and control machinery into a Planning and Control Contract."
+description: "Review: Agent planning system — goals, tools, memory, evals, failure handling."
 ---
 
 # Review Agent Planning System

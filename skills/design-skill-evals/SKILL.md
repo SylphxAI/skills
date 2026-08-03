@@ -1,6 +1,6 @@
 ---
 name: design-skill-evals
-description: "Design falsifiable skill-selection and behavior evals: neighbours, abstention, oracles, regressions."
+description: "Design falsifiable skill routing/behavior evals: suites, oracles, failure taxonomy."
 ---
 
 # Design Skill Evals

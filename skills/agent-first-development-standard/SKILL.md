@@ -1,6 +1,6 @@
 ---
 name: agent-first-development-standard
-description: "Policy for no-human multi-agent delivery packets: change attribution, collision scopes, machine-verifiable acceptance. Apply when packaging multi-agent changes."
+description: "Policy: multi-agent delivery packets — attribution, collision scopes, machine-verifiable acceptance."
 ---
 # Agent First Development Standard
 
