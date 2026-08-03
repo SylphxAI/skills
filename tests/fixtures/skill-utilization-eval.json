@@ -158,7 +158,7 @@
         "mandatoryObservable": "Frames a continuous discovery/admission/idle-wake loop for new Work, not a single bounded objective pushed to one terminal.",
         "mustNot": [
           "Treat autonomous-execution as the sole primary owner of this job",
-          "Treat continuous-product-quality as the sole primary owner of this job"
+          "Treat better-product as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -167,7 +167,7 @@
       ],
       "nearNeighbours": [
         "autonomous-execution",
-        "continuous-product-quality"
+        "better-product"
       ]
     },
     {
@@ -182,7 +182,7 @@
         "mustNot": [
           "Treat app-design-blueprint as the sole primary owner of this job",
           "Treat interface-craft as the sole primary owner of this job",
-          "Treat continuous-product-quality as the sole primary owner of this job"
+          "Treat better-product as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -192,15 +192,15 @@
       "nearNeighbours": [
         "app-design-blueprint",
         "interface-craft",
-        "continuous-product-quality"
+        "better-product"
       ]
     },
     {
-      "id": "critical-continuous-product-quality",
+      "id": "critical-better-product",
       "suite": "critical-skill",
       "prompt": "We need an always-on operating loop that keeps finding and admitting product quality defects into Work with coverage freshness budgets.",
       "expectedSkills": [
-        "continuous-product-quality"
+        "better-product"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Defines a standing quality loop contract with scout triggers, finding admission, Work handoff, and coverage freshness/budgets—not a one-off finish pass.",
@@ -321,7 +321,7 @@
       "suite": "critical-skill",
       "prompt": "Build the learning loop that ingests private feedback and public reviews, clusters problems, routes safety cases, links product actions, and closes truthfully.",
       "expectedSkills": [
-        "product-feedback-learning-loop"
+        "run-product-feedback-loop"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Owns feedback/learning operations from intake to action/closure; does not define public rating-request eligibility/cooldowns policy as the primary artifact.",
@@ -349,7 +349,7 @@
       "behaviorOracle": {
         "mandatoryObservable": "Primary artifact is public solicitation policy/state machine, not private feedback learning or review-response operations.",
         "mustNot": [
-          "Treat product-feedback-learning-loop as the sole primary owner of this job"
+          "Treat run-product-feedback-loop as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -357,7 +357,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "product-feedback-learning-loop"
+        "run-product-feedback-loop"
       ]
     },
     {
@@ -499,17 +499,17 @@
       ]
     },
     {
-      "id": "critical-prompt-architecture",
+      "id": "critical-design-prompt-architecture",
       "suite": "critical-skill",
       "prompt": "Restructure our agent always-on constitution, Skill metadata, and subagent briefs without duplicating source policy into prompts.",
       "expectedSkills": [
-        "prompt-architecture"
+        "design-prompt-architecture"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Treats instruction hierarchy/metadata/architecture as the job, not ordinary marketing copy and not live work-ledger operations.",
         "mustNot": [
           "Treat instruction-evolution-standard as the sole primary owner of this job",
-          "Treat agent-context-engineering as the sole primary owner of this job",
+          "Treat engineer-agent-context as the sole primary owner of this job",
           "Treat skill-repository-curator as the sole primary owner of this job"
         ]
       },
@@ -519,7 +519,7 @@
       ],
       "nearNeighbours": [
         "instruction-evolution-standard",
-        "agent-context-engineering",
+        "engineer-agent-context",
         "skill-repository-curator"
       ]
     },
@@ -581,7 +581,7 @@
         "mustNot": [
           "Treat app-design-blueprint as the sole primary owner of this job",
           "Treat interface-craft as the sole primary owner of this job",
-          "Treat continuous-product-quality as the sole primary owner of this job"
+          "Treat better-product as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -591,7 +591,7 @@
       "nearNeighbours": [
         "app-design-blueprint",
         "interface-craft",
-        "continuous-product-quality"
+        "better-product"
       ]
     },
     {
@@ -627,7 +627,7 @@
       "behaviorOracle": {
         "mandatoryObservable": "Selects public solicitation policy, not the private feedback learning/response loop.",
         "mustNot": [
-          "Treat product-feedback-learning-loop as the sole primary owner of this job"
+          "Treat run-product-feedback-loop as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -635,7 +635,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "product-feedback-learning-loop"
+        "run-product-feedback-loop"
       ]
     },
     {
@@ -825,7 +825,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "continuous-product-quality",
+        "better-product",
         "interface-craft"
       ]
     },
@@ -834,7 +834,7 @@
       "suite": "critical-skill",
       "prompt": "Run product betterment loop engineering for this live app across UX, performance, and business packaging: maintain a quality matrix, scout, admit bounded work, verify with original oracles, and idle without claiming perfection.",
       "expectedSkills": [
-        "continuous-product-quality"
+        "better-product"
       ],
       "nearNeighbours": [
         "product-finish",
@@ -859,7 +859,7 @@
       "suite": "near-neighbour",
       "prompt": "Do not do a one-time polish pass; install an ongoing betterment loop that keeps finding UI and performance opportunities after release.",
       "expectedSkills": [
-        "continuous-product-quality"
+        "better-product"
       ],
       "nearNeighbours": [
         "product-finish",
@@ -882,7 +882,7 @@
       "suite": "critical-skill",
       "prompt": "Run continuous product betterment loop engineering for this app. Use the harness Goal System with no token budget cap so accidental stops auto-recover into the same loop until idle frontier.",
       "expectedSkills": [
-        "continuous-product-quality"
+        "better-product"
       ],
       "nearNeighbours": [
         "autonomous-execution",

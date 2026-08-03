@@ -1,6 +1,6 @@
 ---
 name: enterprise-control-plane-standard
-description: "Org-wide multi-repo control plane: rulesets, reconcilers, audits, status projections."
+description: "Policy for org-wide multi-repo control plane: rulesets, reconcilers, audits, status projections. Apply when designing fleet control-plane behavior."
 ---
 # Enterprise Control Plane Standard
 

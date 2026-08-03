@@ -59,7 +59,7 @@ When authoring a workflow:
 
 ### Example (product betterment)
 
-`continuous-product-quality` (workflow) composes:
+`better-product` (workflow) composes:
 
 - workflows: autonomous-execution (per admitted Work), self-feeding only if
   continuous Work OS selection is required
@@ -109,7 +109,7 @@ Operate <system> with live tools/auth: <ops>. Not portable semantics-only design
 
 | Package | Layer | Not |
 | --- | --- | --- |
-| `continuous-product-quality` | Product betterment across aspects | One bug; one finish pass; pure Work OS |
+| `better-product` | Product betterment across aspects | One bug; one finish pass; pure Work OS |
 | `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `product-finish` | One product-job cycle each | Other job kind; multi-agent staffing (not a Skill) |
 | `pursue-product-objective` | Drive declared product objective to evidence-backed completion | One-cycle job Skills; open betterment without fixed objective |
 

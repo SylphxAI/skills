@@ -245,7 +245,7 @@ Specify for each action:
 
 `feedback-3` — Private feedback and public review solicitation are separate
 artifacts. `review-solicitation-policy` owns neutral public eligibility and
-request state; `product-feedback-learning-loop` owns universal private intake,
+request state; `run-product-feedback-loop` owns universal private intake,
 authorized review ingestion, evidence routing and close-loop. Negative
 sentiment may trigger support, but may not suppress a public route offered to
 otherwise eligible users.

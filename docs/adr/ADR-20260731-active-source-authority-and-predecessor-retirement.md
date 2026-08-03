@@ -34,7 +34,7 @@ turning the migration seam into steady-state architecture.
 ## Decision
 
 1. `engineering-standard` owns active-source authority and predecessor
-   retirement for ordinary durable code changes. `architecture-convergence`
+   retirement for ordinary durable code changes. `converge-architecture`
    applies the same terminal to substantial architecture cutovers. No separate
    cleanup or residual-management Skill is created.
 2. Source that has been replaced has exactly one disposition:

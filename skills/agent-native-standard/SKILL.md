@@ -1,8 +1,10 @@
 ---
 name: agent-native-standard
-description: "Agent-operable products: queryable typed state, schema-derived tools, recoverable workflows, run traces."
+description: "Policy for agent-operable products: queryable typed state, schema-derived tools, recoverable workflows, run traces. Apply as constraints while designing/implementing agent surfaces."
 ---
 # Agent Native Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

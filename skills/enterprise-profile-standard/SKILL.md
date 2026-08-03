@@ -1,6 +1,6 @@
 ---
 name: enterprise-profile-standard
-description: "Versioned enterprise profiles: selectors, defaults, exceptions, replacement, migration."
+description: "Policy for versioned enterprise profiles: selectors, defaults, exceptions, replacement, migration. Apply when managing enterprise profile sets."
 ---
 # Enterprise Profile Standard
 

@@ -1,8 +1,10 @@
 ---
 name: ci-admission-standard
-description: "Protected-branch CI admission: required checks, risk-matched gates, flake policy, preview gates."
+description: "Policy for protected-branch CI admission: required checks, risk-matched gates, flake policy, preview gates. Apply when changing branch protection or CI gates."
 ---
 # Ci Admission Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

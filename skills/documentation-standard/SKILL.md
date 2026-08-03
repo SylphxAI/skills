@@ -1,8 +1,10 @@
 ---
 name: documentation-standard
-description: "Documentation create/generate/retire: minimal sufficient, freshness, low prose drift."
+description: "Policy for documentation create/generate/retire: minimal sufficient, freshness, low prose drift. Apply when writing or retiring docs."
 ---
 # Documentation Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

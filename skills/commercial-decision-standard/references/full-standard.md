@@ -23,7 +23,7 @@ This standard composes with:
   for no-human gates, risk lanes, and recovery.
 - [`decision-quality-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/decision-quality-standard/references/full-standard.md) for the canonical
   decision precedence, risk, reversibility, evidence, and option-value kernel.
-- [`composable-product-portfolio`](https://github.com/SylphxAI/skills/blob/main/skills/composable-product-portfolio/SKILL.md)
+- [`compose-product-portfolio`](https://github.com/SylphxAI/skills/blob/main/skills/compose-product-portfolio/SKILL.md)
   when the requested artifact classifies a multi-product portfolio, selects
   standalone product units, or defines connectors, shared substrate, bundles
   and dogfooding boundaries.

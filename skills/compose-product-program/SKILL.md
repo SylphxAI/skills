@@ -191,7 +191,7 @@ Produce one **Product Program Manifest** containing:
 
 ## Routing boundaries
 
-- `composable-product-portfolio` owns the topology of a multi-product
+- `compose-product-portfolio` owns the topology of a multi-product
   portfolio: which candidate units are standalone products, embedded
   Capabilities, shared substrate, connectors, composed experiences or bundles.
   This Skill owns the build-to-run program graph for one already selected
@@ -203,7 +203,7 @@ Produce one **Product Program Manifest** containing:
   `store-listing-optimization` own their narrow artifacts.
 - `payment-platform-readiness` owns provider transaction/ledger integration; `refund-and-support-flow-review` owns refund customer/account consequences.
 - `review-solicitation-policy` owns platform-specific authentic public review
-  request policy; `product-feedback-learning-loop` owns universal private
+  request policy; `run-product-feedback-loop` owns universal private
   feedback, authorized review ingestion, evidence clustering, routing, product
   action, and close-loop behavior.
 - `software-distribution-readiness` consumes a sealed planning revision and

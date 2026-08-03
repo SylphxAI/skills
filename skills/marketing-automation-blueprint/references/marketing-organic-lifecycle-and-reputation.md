@@ -100,7 +100,7 @@ Never reward a rating/review, permission, ad click, spend, forced referral/conta
 ## 6. Ratings, reviews, feedback, and reputation
 
 Consume `review-solicitation-policy` for public request eligibility and
-`product-feedback-learning-loop` for private intake, authorized review
+`run-product-feedback-loop` for private intake, authorized review
 ingestion, response evidence and product learning; never invent one universal
 cross-platform prompt.
 

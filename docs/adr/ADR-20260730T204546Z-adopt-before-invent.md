@@ -106,7 +106,7 @@ the smaller test count:
 | `ci-runner-profile.test.mjs` | Workflow label strings and runner-standard prose | Retired proxy. Provider scheduling is the runtime fact; exact prose is not CI authority. |
 | `delegation-policy.test.mjs` | A hand-authored classifier plus standards-text regexes | Retired self-proof. The cases remain non-blocking evaluation inputs; native selection is not claimed from them. |
 | `method-portfolio.test.mjs` | Authored routing answers, fixture shape, and extensive standards-text presence | Retired as blocking authority. Catalog/package integrity remains executable; runtime routing needs separate behavioral evaluation. |
-| `prompt-architecture.test.mjs` | A hand-authored specificity classifier plus prose presence | Retired self-proof. Its fixtures remain development inputs only. |
+| `design-prompt-architecture.test.mjs` | A hand-authored specificity classifier plus prose presence | Retired self-proof. Its fixtures remain development inputs only. |
 | `throughput-contract.test.mjs` | Cross-file regex assertions that selected sentences still exist | Retired prose coupling. It did not exercise work, delivery, CI, or Enact behavior. |
 | Removed blocks in `runtime.test.mjs`, `system-architecture-standard.test.mjs`, and `catalog.test.mjs` | Product names, documentation wording, standards prose, and badge text | Retired presentation checks. Executable install, sync, recovery, schema, profile, digest, and catalog tests remain. |
 

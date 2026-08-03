@@ -231,7 +231,7 @@ Produce one **App Design Blueprint** containing:
 - `compose-product-program` owns a cross-domain product program dependency and delivery graph spanning at least three lifecycle domains.
 - `refund-and-support-flow-review` owns refund consequences, repurchase, appeal, restrictions, and support; `payment-platform-readiness` owns provider/ledger correctness.
 - `review-solicitation-policy` owns platform-specific authentic public review
-  eligibility and request state; `product-feedback-learning-loop` owns universal
+  eligibility and request state; `run-product-feedback-loop` owns universal
   private feedback, authorized review ingestion, support/product routing, and
   close-loop behavior.
 - Use `notification-strategy-review`, `daily-reward-and-streak-review`, `referral-loop-review`, `promotion-campaign-review`, `product-analytics-instrumentation-review`, `offline-sync-conflict-review`, and `ad-monetization-review` for their detailed artifacts.

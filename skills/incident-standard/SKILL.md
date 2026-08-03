@@ -1,8 +1,10 @@
 ---
 name: incident-standard
-description: "Production incident practice: command, severity, mitigation, communication, learning."
+description: "Policy/method for production incidents: command, severity, mitigation, communication, learning. Use when running or reviewing an incident."
 ---
 # Incident Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

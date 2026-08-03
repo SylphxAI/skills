@@ -95,7 +95,7 @@ project the protected authority register or raw operator evidence.
 - `marketing-automation-blueprint` owns the full channel portfolio, audience, positioning/message hierarchy, campaign briefs, allocation/spend, causal measurement and incrementality. This skill operates only already-selected official social channels.
 - `promotion-campaign-review` owns one campaign/offer; `product-asset-production` owns exact media; `voice-preserving-editor` owns one fixed post/reply rewrite.
 - `customer-support-case-resolution` owns one private customer case; `customer-support-operations` owns the whole support system.
-- `product-feedback-learning-loop` owns authorized review/social feedback ingestion, public response evidence and product learning; this skill routes signals and operates the platform response surface.
+- `run-product-feedback-loop` owns authorized review/social feedback ingestion, public response evidence and product learning; this skill routes signals and operates the platform response surface.
 - Product Abuse, Marketplace Trust, Security, Incident and Legal owners define enforcement and authoritative high-risk decisions; this skill applies and routes them on official accounts.
 
 ## Completion check

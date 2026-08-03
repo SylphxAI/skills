@@ -8,7 +8,7 @@ amends:
   - ADR-20260731T191027Z-continuous-product-quality-loop
 scope:
   - static-instruction-packages
-  - continuous-product-quality
+  - better-product
 ---
 
 # Outcome-leverage betterment cycle
@@ -17,7 +17,7 @@ scope:
 
 Independent review task `indep_review_cpq_loop` returned accept-with-amendments.
 
-Operating `continuous-product-quality` produced long cycles of micro-polish,
+Operating `better-product` produced long cycles of micro-polish,
 many commits, and little user-visible product change. Agents optimized for easy
 findings and treated one Work land as loop completion.
 

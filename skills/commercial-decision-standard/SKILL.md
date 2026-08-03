@@ -1,8 +1,10 @@
 ---
 name: commercial-decision-standard
-description: "Durable commercial decisions: pricing, packaging, entitlements, licensing, route-to-market ADRs."
+description: "Policy for durable commercial decisions: pricing, packaging, entitlements, licensing, route-to-market ADRs. Apply when recording commercial choices."
 ---
 # Commercial Decision Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

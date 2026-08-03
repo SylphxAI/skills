@@ -88,12 +88,12 @@
     "kind": "near-neighbour",
     "prompt": "Design the reusable bounded-search and replanning controller for autonomous agents, including verifier and stop semantics.",
     "expectedSkills": [
-      "agent-planning-system-review"
+      "review-agent-planning-system"
     ],
     "artifacts": [
       {
         "artifact": "Agent Planning and Control Contract",
-        "owner": "agent-planning-system-review"
+        "owner": "review-agent-planning-system"
       }
     ]
   },
@@ -102,12 +102,12 @@
     "kind": "near-neighbour",
     "prompt": "Design how long-running agents retrieve, compact, invalidate, delete, and hand off context and memory across sessions.",
     "expectedSkills": [
-      "agent-context-engineering"
+      "engineer-agent-context"
     ],
     "artifacts": [
       {
         "artifact": "Context and Memory Contract",
-        "owner": "agent-context-engineering"
+        "owner": "engineer-agent-context"
       }
     ]
   },
@@ -281,14 +281,14 @@
     "kind": "compound",
     "prompt": "Fix a recurring agent failure, audit whether its completion score is being gamed, and evaluate the exact changed Skill before promotion.",
     "expectedSkills": [
-      "agent-system-improvement",
+      "improve-agent-system",
       "optimization-objective-review",
       "skill-eval-designer"
     ],
     "artifacts": [
       {
         "artifact": "Learning Change Record",
-        "owner": "agent-system-improvement"
+        "owner": "improve-agent-system"
       },
       {
         "artifact": "Optimization Objective Contract",
@@ -320,13 +320,13 @@
     "kind": "compound",
     "prompt": "Migrate this repository completely to the current canonical code architecture.",
     "expectedSkills": [
-      "architecture-convergence",
+      "converge-architecture",
       "engineering-standard"
     ],
     "artifacts": [
       {
         "artifact": "Architecture convergence delivery and retirement",
-        "owner": "architecture-convergence"
+        "owner": "converge-architecture"
       },
       {
         "artifact": "Canonical architecture terminal",
@@ -339,13 +339,13 @@
     "kind": "compound",
     "prompt": "Upgrade every service repository in this organization to Capability-first Modular DDD with Clean/Hexagonal boundaries and Functional Core, Imperative Shell, including real code movement and semantic proof.",
     "expectedSkills": [
-      "architecture-convergence",
+      "converge-architecture",
       "engineering-standard"
     ],
     "artifacts": [
       {
         "artifact": "Cross-repository architecture convergence and proof",
-        "owner": "architecture-convergence"
+        "owner": "converge-architecture"
       },
       {
         "artifact": "Canonical architecture terminal",
@@ -396,13 +396,13 @@
     "kind": "compound",
     "prompt": "Refactor this repository to the current complete architecture and converge its code, state ownership, dependency graph, runtime failure boundaries, interoperability, and predecessor retirement with executable proof.",
     "expectedSkills": [
-      "architecture-convergence",
+      "converge-architecture",
       "engineering-standard"
     ],
     "artifacts": [
       {
         "artifact": "Complete-system architecture convergence and retirement",
-        "owner": "architecture-convergence"
+        "owner": "converge-architecture"
       },
       {
         "artifact": "Canonical architecture terminal",
@@ -428,7 +428,7 @@
         "owner": "engineering-standard"
       }
     ],
-    "nearNeighbourOf": "architecture-convergence"
+    "nearNeighbourOf": "converge-architecture"
   },
   {
     "id": "architecture-neighbour-docs-only",
@@ -1384,12 +1384,12 @@
     "kind": "positive",
     "prompt": "我哋個平台愈加愈多功能。請判斷邊啲應該成為可獨立使用同營運嘅產品、邊啲只係內部 capability 或共享底座，並設計產品之間嘅 connector、bundle、統一入口同 dogfooding 邊界，唔好拆成一堆碎片。",
     "expectedSkills": [
-      "composable-product-portfolio"
+      "compose-product-portfolio"
     ],
     "artifacts": [
       {
         "artifact": "Composable Product Portfolio Contract",
-        "owner": "composable-product-portfolio"
+        "owner": "compose-product-portfolio"
       }
     ],
     "tags": [
@@ -1403,12 +1403,12 @@
     "kind": "positive",
     "prompt": "Refactor this suite of twenty accumulated functions into the smallest coherent set of independently valuable products, shared substrate and typed connectors; preserve standalone adoption while allowing one composed customer experience.",
     "expectedSkills": [
-      "composable-product-portfolio"
+      "compose-product-portfolio"
     ],
     "artifacts": [
       {
         "artifact": "Composable Product Portfolio Contract",
-        "owner": "composable-product-portfolio"
+        "owner": "compose-product-portfolio"
       }
     ],
     "tags": [
@@ -1422,12 +1422,12 @@
     "kind": "positive",
     "prompt": "Design how our products consume one another through supported customer-grade APIs and events, including identity, entitlement, metering, failure and replacement, and prove no internal product reads a peer database or hidden endpoint.",
     "expectedSkills": [
-      "composable-product-portfolio"
+      "compose-product-portfolio"
     ],
     "artifacts": [
       {
         "artifact": "Composable Product Portfolio Contract",
-        "owner": "composable-product-portfolio"
+        "owner": "compose-product-portfolio"
       }
     ],
     "tags": [
@@ -1441,13 +1441,13 @@
     "kind": "compound",
     "prompt": "Decide which capabilities should become standalone offers versus add-ons or a bundle, define the connector graph, and record the pricing, entitlement, unit-economics and internal-settlement decisions for the selected structure.",
     "expectedSkills": [
-      "composable-product-portfolio",
+      "compose-product-portfolio",
       "commercial-decision-standard"
     ],
     "artifacts": [
       {
         "artifact": "Composable Product Portfolio Contract",
-        "owner": "composable-product-portfolio"
+        "owner": "compose-product-portfolio"
       }
     ],
     "tags": [
@@ -1464,7 +1464,7 @@
       "engineering-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "composable-product-portfolio",
+    "nearNeighbourOf": "compose-product-portfolio",
     "tags": [
       "code",
       "architecture"
@@ -1478,7 +1478,7 @@
       "engineering-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "composable-product-portfolio",
+    "nearNeighbourOf": "compose-product-portfolio",
     "tags": [
       "runtime-cell",
       "availability"
@@ -1497,7 +1497,7 @@
         "owner": "compose-product-program"
       }
     ],
-    "nearNeighbourOf": "composable-product-portfolio",
+    "nearNeighbourOf": "compose-product-portfolio",
     "tags": [
       "single-product",
       "lifecycle"
@@ -1516,7 +1516,7 @@
         "owner": "saas-web-platform-blueprint"
       }
     ],
-    "nearNeighbourOf": "composable-product-portfolio",
+    "nearNeighbourOf": "compose-product-portfolio",
     "tags": [
       "single-product",
       "saas"
@@ -1530,7 +1530,7 @@
       "commercial-decision-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "composable-product-portfolio",
+    "nearNeighbourOf": "compose-product-portfolio",
     "tags": [
       "pricing",
       "packaging"
@@ -1543,7 +1543,7 @@
     "expectedSkills": [],
     "artifacts": [],
     "coverageFor": [
-      "composable-product-portfolio"
+      "compose-product-portfolio"
     ],
     "tags": [
       "abstention",
@@ -2097,12 +2097,12 @@
     "kind": "near-neighbour",
     "prompt": "Design an ongoing autonomous system that repeatedly discovers product-quality issues, qualifies them into Work, verifies delivery, and wakes again on changes. Do not run one release finish pass now.",
     "expectedSkills": [
-      "continuous-product-quality"
+      "better-product"
     ],
     "artifacts": [
       {
         "artifact": "Product Quality Loop Contract",
-        "owner": "continuous-product-quality"
+        "owner": "better-product"
       }
     ],
     "nearNeighbourOf": "product-finish",
@@ -2133,17 +2133,17 @@
     ]
   },
   {
-    "id": "continuous-product-quality-positive",
+    "id": "better-product-positive",
     "kind": "compound",
     "prompt": "Design a durable autonomous quality loop for this SaaS that continuously discovers UI, accessibility, SEO, performance, correctness, security and live-behavior gaps, deduplicates evidence into qualified findings, creates bounded Work, and rechecks the delivered outcome without turning every check into merge-blocking CI.",
     "expectedSkills": [
-      "continuous-product-quality",
+      "better-product",
       "select-next-work"
     ],
     "artifacts": [
       {
         "artifact": "Product Quality Loop Contract",
-        "owner": "continuous-product-quality"
+        "owner": "better-product"
       }
     ],
     "tags": [
@@ -2154,16 +2154,16 @@
     ]
   },
   {
-    "id": "continuous-product-quality-cantonese",
+    "id": "better-product-cantonese",
     "kind": "positive",
     "prompt": "幫我將網站 UI、SEO、accessibility、performance、bug 同 live readback 做成全自動閉環：agents 要自己搵問題、去重、判斷值唔值得做、開 bounded Work、交付後重驗，冇正價值工作時先 idle。",
     "expectedSkills": [
-      "continuous-product-quality"
+      "better-product"
     ],
     "artifacts": [
       {
         "artifact": "Product Quality Loop Contract",
-        "owner": "continuous-product-quality"
+        "owner": "better-product"
       }
     ],
     "tags": [
@@ -2173,40 +2173,40 @@
     ]
   },
   {
-    "id": "continuous-product-quality-neighbour-one-bug",
+    "id": "better-product-neighbour-one-bug",
     "kind": "near-neighbour",
     "prompt": "Reproduce and fix the checkout button crash, add the focused regression test, and deliver the repair. Do not design a recurring quality program.",
     "expectedSkills": [
       "engineering-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "continuous-product-quality",
+    "nearNeighbourOf": "better-product",
     "tags": [
       "single-bug",
       "not-operating-loop"
     ]
   },
   {
-    "id": "continuous-product-quality-neighbour-feedback",
+    "id": "better-product-neighbour-feedback",
     "kind": "near-neighbour",
     "prompt": "Design private in-product feedback intake, ingest authorized public reviews, cluster user problems, route support cases, and close the loop with customers.",
     "expectedSkills": [
-      "product-feedback-learning-loop"
+      "run-product-feedback-loop"
     ],
     "artifacts": [
       {
         "artifact": "Product feedback learning-loop artifact",
-        "owner": "product-feedback-learning-loop"
+        "owner": "run-product-feedback-loop"
       }
     ],
-    "nearNeighbourOf": "continuous-product-quality",
+    "nearNeighbourOf": "better-product",
     "tags": [
       "customer-feedback",
       "not-cross-domain-quality"
     ]
   },
   {
-    "id": "continuous-product-quality-neighbour-observability",
+    "id": "better-product-neighbour-observability",
     "kind": "near-neighbour",
     "prompt": "Define protected logs, metrics, traces, SLOs, alerts and operator journeys for this service, including audience-safe public status projections.",
     "expectedSkills": [
@@ -2218,26 +2218,26 @@
         "owner": "operational-observability-review"
       }
     ],
-    "nearNeighbourOf": "continuous-product-quality",
+    "nearNeighbourOf": "better-product",
     "tags": [
       "observability",
       "not-product-quality-loop"
     ]
   },
   {
-    "id": "continuous-product-quality-neighbour-agent-learning",
+    "id": "better-product-neighbour-agent-learning",
     "kind": "near-neighbour",
     "prompt": "Agents repeatedly miss the same accessibility requirement even when it is present in the task. Diagnose the recurring agent-system cause, test one intervention, and define promotion and recurrence evidence.",
     "expectedSkills": [
-      "agent-system-improvement"
+      "improve-agent-system"
     ],
     "artifacts": [
       {
         "artifact": "Learning Change Record",
-        "owner": "agent-system-improvement"
+        "owner": "improve-agent-system"
       }
     ],
-    "nearNeighbourOf": "continuous-product-quality",
+    "nearNeighbourOf": "better-product",
     "tags": [
       "agent-learning",
       "not-product-finding"
@@ -2248,12 +2248,12 @@
     "kind": "positive",
     "prompt": "Keep improving this product across UI/UX, performance, and retention with a standing loop: scout, admit work, deliver, verify, and idle without claiming perfection.",
     "expectedSkills": [
-      "continuous-product-quality"
+      "better-product"
     ],
     "artifacts": [
       {
         "artifact": "Product Quality Loop Contract",
-        "owner": "continuous-product-quality"
+        "owner": "better-product"
       }
     ]
   },
@@ -2262,12 +2262,12 @@
     "kind": "positive",
     "prompt": "Do loop engineering so art, 3D assets, and game feel get better over time with evidence and budgets, not one endless chat.",
     "expectedSkills": [
-      "continuous-product-quality"
+      "better-product"
     ],
     "artifacts": [
       {
         "artifact": "Product Quality Loop Contract",
-        "owner": "continuous-product-quality"
+        "owner": "better-product"
       }
     ]
   },
@@ -2276,12 +2276,12 @@
     "kind": "near-neighbour",
     "prompt": "We need an always-on betterment loop for many quality aspects after ship, not a single release-grade finish pass on the current build.",
     "expectedSkills": [
-      "continuous-product-quality"
+      "better-product"
     ],
     "artifacts": [
       {
         "artifact": "Product Quality Loop Contract",
-        "owner": "continuous-product-quality"
+        "owner": "better-product"
       }
     ]
   },
@@ -2297,12 +2297,12 @@
     "kind": "positive",
     "prompt": "Start continuous betterment for this product and bind an uncapped harness goal so if the session stops mid-loop the system recovers and continues the same betterment objective.",
     "expectedSkills": [
-      "continuous-product-quality"
+      "better-product"
     ],
     "artifacts": [
       {
         "artifact": "Product Quality Loop Contract",
-        "owner": "continuous-product-quality"
+        "owner": "better-product"
       }
     ]
   }

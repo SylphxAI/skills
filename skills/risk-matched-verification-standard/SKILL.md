@@ -1,8 +1,10 @@
 ---
 name: risk-matched-verification-standard
-description: "Scale verification depth to failure risk: evidence class, gates, acceptable residuals."
+description: "Policy to scale verification depth to failure risk: evidence class, gates, acceptable residuals. Apply when choosing how hard to verify."
 ---
 # Risk-Matched Verification Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

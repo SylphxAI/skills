@@ -1,9 +1,11 @@
 ---
 name: review-solicitation-policy
-description: "Review solicitation policy: timing, channels, bias and abuse controls."
+description: "Policy for review solicitation: timing, channels, bias and abuse controls. Apply when designing how reviews are asked for."
 ---
 
 # Review Solicitation Policy
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 Produce one platform-current public review request policy. Optimize for authentic
 participation and durable trust, never predicted star value.
@@ -57,10 +59,10 @@ never create a cycle or merge their state machines.
    affect public eligibility. Prove that review state cannot affect money,
    access, remedies, support, rewards, accounts, or product behavior.
 6. Hand authorized review ingestion, response, clustering, and product learning
-   to `product-feedback-learning-loop`. Hand event implementation to Product
+   to `run-product-feedback-loop`. Hand event implementation to Product
    Analytics and store submission/rejection work to Distribution Readiness.
 7. For a combined public-review and private-feedback request, invoke
-   `product-feedback-learning-loop` as a sibling and return two independently
+   `run-product-feedback-loop` as a sibling and return two independently
    accepted, versioned artifacts with stable handoff IDs and explicit one-way
    evidence handoffs where a real dependency exists.
 
@@ -68,7 +70,7 @@ never create a cycle or merge their state machines.
 
 - For private feedback intake, review ingestion or response, evidence
   clustering, product action, or customer close-loop state, use
-  `product-feedback-learning-loop`.
+  `run-product-feedback-loop`.
 - For listing conversion, analytics implementation, support operations, or
   store submission, use the corresponding specialist instead of expanding
   public review solicitation into those jobs.

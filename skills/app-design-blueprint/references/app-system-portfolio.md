@@ -227,7 +227,7 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 | Referral qualification, grant, reversal and fraud | `referral-loop-review` |
 | One promotion/update/cross-promotion campaign | `promotion-campaign-review` |
 | Platform-specific authentic public review request policy | `review-solicitation-policy` |
-| Universal private feedback, review ingestion and product-learning close-loop | `product-feedback-learning-loop` |
+| Universal private feedback, review ingestion and product-learning close-loop | `run-product-feedback-loop` |
 | Event/identity/metric instrumentation | `product-analytics-instrumentation-review` |
 | Offline/sync conflict | `offline-sync-conflict-review` |
 | Store/channel release evidence | `software-distribution-readiness` |

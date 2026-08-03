@@ -1,8 +1,10 @@
 ---
 name: engineering-standard
-description: "Engineering method floor: design, verification, change safety, reproduction-driven fixes."
+description: "Policy floor for engineering method: design, verification, change safety, reproduction-driven fixes. Apply while implementing or reviewing software changes."
 ---
 # Engineering Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

@@ -7,7 +7,7 @@ description: "Pursue a declared product objective to evidence-backed completion:
 
 When there is a **declared product objective** and you must **keep going until that objective is achieved** (not a one-off polish pass), use this workflow.
 
-**Default for “follow the goal until done” product work.** Prefer job Skills only for a pure single-job cycle; prefer `continuous-product-quality` only for open betterment with no fixed objective.
+**Default for “follow the goal until done” product work.** Prefer job Skills only for a pure single-job cycle; prefer `better-product` only for open betterment with no fixed objective.
 
 This is the goal-directed betterment job: same high-leverage cycle shape as open betterment, but the **terminal is the objective**, not “the product is perfect,” and not “one cycle felt productive.”
 
@@ -24,7 +24,7 @@ This is the goal-directed betterment job: same high-leverage cycle shape as open
 - Framed live harm only → `maintain-product`
 - Scale bet only → `expand-product`
 - Deburr integrated UX only → `product-finish`
-- Open-ended betterment with **no** fixed objective → `continuous-product-quality`
+- Open-ended betterment with **no** fixed objective → `better-product`
 - Generic multi-phase engineering objective (not product betterment framing) → `autonomous-execution`
 
 ## Host continuity (portable)

@@ -55,12 +55,12 @@ compliance report merely because this package loaded.
 
 - Does not grant deploy, credential, or MCP capabilities.
 - Does not own continuous next-Work discovery (`select-next-work`).
-- Does not own multi-aspect product betterment loops (`continuous-product-quality`).
+- Does not own multi-aspect product betterment loops (`better-product`).
 - Does not replace product-local ADRs where those own decisions.
 
 ## When not to use
 
 - Short Q&A or one local edit with no multi-phase terminal.
 - Continuous work-selection OS without a single accepted objective.
-- Product betterment across aspects as the primary job → `continuous-product-quality`.
+- Product betterment across aspects as the primary job → `better-product`.
 - Live Enact API design alone → `enact-work-coordination` / `work-coordination-standard`.

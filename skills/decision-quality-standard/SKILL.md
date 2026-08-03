@@ -1,8 +1,10 @@
 ---
 name: decision-quality-standard
-description: "Decision-process quality: framing, alternatives, information, tradeoffs, commitment, learning."
+description: "Policy for decision-process quality: framing, alternatives, information, tradeoffs, commitment, learning. Apply when making or reviewing material decisions."
 ---
 # Decision Quality Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

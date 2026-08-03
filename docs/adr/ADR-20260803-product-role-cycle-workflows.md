@@ -48,11 +48,11 @@ Each Skill: Frame → Research → Admit → Implement → Deliver/Verify → Cy
 Who runs the Skill (one agent or many) is a **host/runtime** choice. The Skill
 only answers: **given this job, how do you run one cycle?**
 
-### Relation to continuous-product-quality
+### Relation to better-product
 
 Use a job Skill when the work is clearly that job. Use
 `pursue-product-objective` when a fixed outcome must be pursued until met. Use
-`continuous-product-quality` when betterment mixes jobs with no fixed objective.
+`better-product` when betterment mixes jobs with no fixed objective.
 
 ## Consequences
 

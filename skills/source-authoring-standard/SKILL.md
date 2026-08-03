@@ -1,8 +1,10 @@
 ---
 name: source-authoring-standard
-description: "Source authoring: commits, exact candidates, worktrees, checkpoints, concurrent-edit safety."
+description: "Policy for source authoring: commits, exact candidates, worktrees, checkpoints, concurrent-edit safety. Apply when mutating shared source."
 ---
 # Source Authoring Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

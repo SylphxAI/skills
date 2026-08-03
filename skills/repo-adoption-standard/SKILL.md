@@ -1,8 +1,10 @@
 ---
 name: repo-adoption-standard
-description: "Adopt engineering standards in a repo: constitution, manifest, fences, conformance entrypoints."
+description: "Policy/method to adopt engineering standards in a repo: constitution, manifest, fences, conformance entrypoints. Use when onboarding a repository."
 ---
 # Repo Adoption Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Engineer Agent Context"
+  short_description: "Design agent context/memory contracts: ranking, compaction, invalidation, provenance, freshness, privacy."
+  default_prompt: "Engineer the agent context and memory contract for this surface."

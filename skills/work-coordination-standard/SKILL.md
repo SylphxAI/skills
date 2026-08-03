@@ -1,8 +1,10 @@
 ---
 name: work-coordination-standard
-description: "Portable work-ledger semantics: claims, attempts, checkpoints, handoff, stale recovery."
+description: "Policy for portable work-ledger semantics: claims, attempts, checkpoints, handoff, stale recovery. Apply when coordinating durable Work."
 ---
 # Work Coordination Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

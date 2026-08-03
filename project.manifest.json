@@ -89,7 +89,7 @@
       "engineering-standard",
       "instruction-evolution-standard",
       "project-manifest-standard",
-      "prompt-architecture",
+      "design-prompt-architecture",
       "bound-task-scope"
     ],
     "capabilities": ["static-instruction-packages", "runtime-sync", "agent-owned-installation", "remote-integration-enrollment"],

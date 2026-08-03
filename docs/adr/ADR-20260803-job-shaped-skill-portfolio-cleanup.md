@@ -22,7 +22,7 @@ scope:
 2. **Betterment routing (unique defaults):**
    - single product job → `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `product-finish`
    - declared outcome to completion → `pursue-product-objective`
-   - mixed open betterment, no fixed objective → `continuous-product-quality`
+   - mixed open betterment, no fixed objective → `better-product`
    - next Work from evidence/ledger (not product matrix) → `select-next-work`
    - multi-phase engineering delivery → `autonomous-execution`
 3. Mark `technology-stack-profile` and `sylphx-platform-first` as **policy/profile**, not product job Skills (ids kept for tooling pins).

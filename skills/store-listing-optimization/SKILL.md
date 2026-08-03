@@ -92,7 +92,7 @@ Unknown/stale channel authority blocks submission of that adapter.
 - Use `market-research-synthesis` when product positioning and audience demand
   are not yet evidence-bounded across the market.
 - Use `review-solicitation-policy` for public rating/review request eligibility
-  and `product-feedback-learning-loop` for private feedback, authorized review
+  and `run-product-feedback-loop` for private feedback, authorized review
   ingestion/responses, support routing, and product close-loop.
 
 ## Guardrails

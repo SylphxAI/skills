@@ -135,7 +135,7 @@ does not:
 Prompt/process defects become a Skills finding with exact evidence.
 
 When recurring Work originates from cross-domain product-quality scouting, use
-`continuous-product-quality` to define the product's quality matrix,
+`better-product` to define the product's quality matrix,
 observations, findings, admission policy, coverage, and outcome readback. This
 standard continues to own Work deduplication, claims, scheduling, durable waits,
 and re-entry; it does not absorb UI, SEO, accessibility, performance, security,

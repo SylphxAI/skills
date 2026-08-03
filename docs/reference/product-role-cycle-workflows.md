@@ -14,4 +14,4 @@ Separate **workflow** Skills for different product jobs. Each Skill describes
 
 Shared shape: Frame → Research → Admit → Implement → Deliver/Verify → Cycle-done.
 
-Mixed open betterment: `continuous-product-quality`. Fixed objective to the end: `pursue-product-objective`.
+Mixed open betterment: `better-product`. Fixed objective to the end: `pursue-product-objective`.

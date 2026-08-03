@@ -79,7 +79,7 @@ never the product's consent or retention policy.
   creative automation, and budget/shutdown control.
 - Use the owning product or experiment workflow to choose hypotheses, variants,
   exposure, and promotion; analytics records the agreed assignment and outcome.
-- Use `product-feedback-learning-loop` for qualitative feedback/review
+- Use `run-product-feedback-loop` for qualitative feedback/review
   ingestion, evidence clusters, support routing, and product close-loop. Use
   `review-solicitation-policy` for public review request eligibility and state.
 - Use `payment-platform-readiness` for payment/entitlement/settlement authority;

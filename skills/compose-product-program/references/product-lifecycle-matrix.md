@@ -17,7 +17,7 @@
 | Subscription entitlement semantics | `payment-platform-readiness` |
 | Analytics event/identity contract | `product-analytics-instrumentation-review` |
 | Platform-specific authentic public review request policy | `review-solicitation-policy` |
-| Universal private feedback, review ingestion and product-learning close-loop | `product-feedback-learning-loop` |
+| Universal private feedback, review ingestion and product-learning close-loop | `run-product-feedback-loop` |
 | One promotion, update-reward or cross-promotion campaign | `promotion-campaign-review` |
 | Referral qualification, grant, reversal and fraud | `referral-loop-review` |
 | Marketing channel, budget and creative control plane | `marketing-automation-blueprint` |

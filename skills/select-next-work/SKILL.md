@@ -12,7 +12,7 @@ policy or always-on law. See
 
 **When you need to:** pick and advance the **next** Work from evidence without the user naming the ticket.
 
-**Not for:** product betterment cycles (`continuous-product-quality` / job skills), or one declared product objective (`pursue-product-objective` / `autonomous-execution`).
+**Not for:** product betterment cycles (`better-product` / job skills), or one declared product objective (`pursue-product-objective` / `autonomous-execution`).
 
 ## Progressive disclosure
 
@@ -29,7 +29,7 @@ Open composed packs when the tick touches their domain:
   objective to terminal) — this package does not replace that closure loop
 - `delivery-standard` / `evidence-and-claims-standard` when ticks claim delivery
   outcomes
-- `continuous-product-quality` when the continuous selection is specifically product
+- `better-product` when the continuous selection is specifically product
   betterment across aspects (compose; do not merge packages)
 
 ## Method (summary)
@@ -54,7 +54,7 @@ because this package loaded.
 - Does not drive one already-accepted objective to terminal by itself
   (`autonomous-execution`).
 - Does not replace product betterment matrix ownership
-  (`continuous-product-quality`).
+  (`better-product`).
 - Does not replace portable semantics (`work-coordination-standard`) or live
   Enact schema (`enact-work-coordination`).
 - Skill text is not a runtime scheduler.
@@ -63,6 +63,6 @@ because this package loaded.
 
 - One bounded objective already accepted and only needs closure.
 - Multi-aspect product betterment as the primary product job without Work OS
-  selection concerns → `continuous-product-quality`.
+  selection concerns → `better-product`.
 - Portable ledger design without continuous OS → `work-coordination-standard`.
 - Live Enact tool calls alone → `enact-work-coordination`.

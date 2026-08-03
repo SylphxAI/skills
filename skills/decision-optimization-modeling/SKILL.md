@@ -68,7 +68,7 @@ Produce a **Constrained Decision Model**:
   Decision Model rather than emitting a second artifact.
 - Use `decision-quality-standard` when the job is evidence-based qualitative
   selection among materially distinct options without a mathematical program.
-- Use `agent-planning-system-review` for how an agent decomposes, sequences,
+- Use `review-agent-planning-system` for how an agent decomposes, sequences,
   observes, and replans work.
 - Use `probabilistic-forecasting` when the primary artifact is a calibrated
   prediction rather than a controllable decision.

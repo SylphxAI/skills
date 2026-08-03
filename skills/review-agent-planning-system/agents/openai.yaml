@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Agent Planning System"
+  short_description: "Review agent planning and control machinery into a Planning and Control Contract."
+  default_prompt: "Review the agent planning and control system and produce the contract."

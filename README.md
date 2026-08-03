@@ -198,7 +198,7 @@ Multi-step jobs and operating loops: product betterment, whole-product finish,
 single-objective closure, continuous work selection. Job-named packages; not
 policy packs.
 
-Examples: `continuous-product-quality` · `product-finish` · `autonomous-execution` · `select-next-work`
+Examples: `better-product` · `product-finish` · `autonomous-execution` · `select-next-work`
 
 ### Reviews, analysis & agent-system methods
 
@@ -210,7 +210,7 @@ Examples: `critical-analysis` · `structured-deliberation` · `reference-origina
 
 Whole-product craft surfaces plus live-system adapters (for example Enact).
 
-Examples: `app-design-blueprint` · `saas-web-platform-blueprint` · `interface-craft` · `prompt-architecture` · `enact-work-coordination`
+Examples: `app-design-blueprint` · `saas-web-platform-blueprint` · `interface-craft` · `design-prompt-architecture` · `enact-work-coordination`
 
 Open any package: `skills/<id>/SKILL.md` is the contract; deeper material lives
 in `references/`.

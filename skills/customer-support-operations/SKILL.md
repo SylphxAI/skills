@@ -74,7 +74,7 @@ Return one Support Operating Model containing:
 - `refund-and-support-flow-review` owns refund, repayment, entitlement consequence, restriction, appeal, and repurchase policy.
 - `payment-platform-readiness` owns provider ingestion, money ledger, entitlement projection, settlement, and reconciliation truth.
 - `review-solicitation-policy` owns platform-specific public review request eligibility and state.
-- `product-feedback-learning-loop` owns private feedback, authorized review ingestion and responses, evidence clusters, and product learning; support consumes routed cases.
+- `run-product-feedback-loop` owns private feedback, authorized review ingestion and responses, evidence clusters, and product learning; support consumes routed cases.
 - App/Game Design owns product behavior; `product-analytics-instrumentation-review` owns event/identity implementation; incident and safety owners retain their authority.
 
 ## Completion check

@@ -57,7 +57,7 @@ without inventing the missing study phase.
 
 - Use `market-research-synthesis` for category, competitor, pricing, or demand
   evidence from market sources.
-- Use `product-feedback-learning-loop` for recurring post-use feedback intake,
+- Use `run-product-feedback-loop` for recurring post-use feedback intake,
   triage, prioritization, and closure.
 - Use `product-analytics-instrumentation-review` for event definitions,
   telemetry coverage, and quantitative behavioral measurement.

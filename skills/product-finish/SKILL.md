@@ -21,7 +21,7 @@ subject. When the work is finishing / deburring an integrated product, load **th
 
 It does not invent product strategy, business truth, prices, policy, brand
 identity, game economy authority, or launch approval. It does not replace a
-bounded `interface-craft` job. For missing capability, live harm, scale, or hypothesis work, use `build-product`, `maintain-product`, `expand-product`, or `prototype-product`. For a declared outcome to pursue to completion, use `pursue-product-objective`. For mixed betterment without a single work kind, use `continuous-product-quality`.
+bounded `interface-craft` job. For missing capability, live harm, scale, or hypothesis work, use `build-product`, `maintain-product`, `expand-product`, or `prototype-product`. For a declared outcome to pursue to completion, use `pursue-product-objective`. For mixed betterment without a single work kind, use `better-product`.
 
 
 

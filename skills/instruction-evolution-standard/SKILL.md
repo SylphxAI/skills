@@ -1,8 +1,10 @@
 ---
 name: instruction-evolution-standard
-description: "Evolve Skills, constitutions, and profiles: single owner, migration, reconciliation, retirement."
+description: "Policy to evolve Skills, constitutions, and profiles: single owner, migration, reconciliation, retirement. Apply when changing instruction packages."
 ---
 # Instruction Evolution Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

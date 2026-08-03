@@ -56,7 +56,7 @@ it does not mean more features, decoration, prose, files, gates, or mechanisms.
    repository's declared delivery boundary. A report alone is not completion.
 6. Keep authority boundaries: blueprints own product intent, `interface-craft`
    owns bounded interface work, domain systems own consequential facts and
-   numbers, `continuous-product-quality` owns recurring discovery, and
+   numbers, `better-product` owns recurring discovery, and
    `launch-readiness-review` owns go/no-go admission.
 7. Update the App, Game, SaaS, Interface, Continuous Quality, and Launch Skills
    only enough to make this handoff explicit. Use native Skill discovery and

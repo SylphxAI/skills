@@ -1,8 +1,10 @@
 ---
 name: parallel-change-integration-standard
-description: "Expand/contract migrations with dual-write/read coexistence and cutover."
+description: "Policy for expand/contract migrations with dual-write/read coexistence and cutover. Apply when migrating live contracts safely."
 ---
 # Parallel Change Integration Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

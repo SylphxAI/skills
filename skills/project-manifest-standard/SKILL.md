@@ -1,8 +1,10 @@
 ---
 name: project-manifest-standard
-description: "Repo/project manifest: ownership, surfaces, delivery terminals, machine-readable facts."
+description: "Policy for repo/project manifest shape: ownership, surfaces, delivery terminals, machine-readable facts. Apply when authoring project manifests."
 ---
 # Project Manifest Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

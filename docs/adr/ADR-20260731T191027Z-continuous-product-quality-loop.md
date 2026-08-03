@@ -7,7 +7,7 @@ supersedes: []
 amends:
   - ADR-0032-bounded-agent-loop-engineering
 scope:
-  - continuous-product-quality
+  - better-product
   - product-improvement
   - agent-work-loops
 ---
@@ -20,7 +20,7 @@ The existing loop methods intentionally separate one bounded objective from a
 continuous operating system. `autonomous-execution` closes one
 accepted Work Item. `select-next-work` discovers, qualifies,
 claims, executes, and re-enters recurring Work. Specialist Skills review one
-quality domain, while `agent-system-improvement` changes prompts, Skills,
+quality domain, while `improve-agent-system` changes prompts, Skills,
 context, tools, evaluators, or workflow after a recurring agent-system failure.
 
 None of those owners defines the cross-domain product artifact that says which
@@ -34,7 +34,7 @@ warnings.
 
 ## Decision
 
-1. Add `continuous-product-quality` as the owner of one independently accepted
+1. Add `better-product` as the owner of one independently accepted
    **Product Quality Loop Contract**.
 2. Model quality as a surface-by-dimension matrix with explicit promises,
    hard floors or objectives, required source/Candidate/artifact/live subject

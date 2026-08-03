@@ -49,7 +49,7 @@ Legend:
 
 | Package | Class | Role |
 | --- | --- | --- |
-| `continuous-product-quality` | workflow | Multi-aspect product betterment loop |
+| `better-product` | workflow | Multi-aspect product betterment loop |
 | `product-finish` | workflow | Whole-product finish pass |
 | `enact-work-coordination` | adapter | Live Enact ops |
 | `technology-stack-profile` | policy | Stack defaults (profile naming, not `-standard`) |

@@ -50,9 +50,9 @@ The portfolio adds these independently requested methods:
 - `evidence-synthesis`
 - `requirements-engineering`
 - `user-research-and-discovery`
-- `agent-planning-system-review`
-- `agent-context-engineering`
-- `agent-system-improvement`
+- `review-agent-planning-system`
+- `engineer-agent-context`
+- `improve-agent-system`
 - `optimization-objective-review`
 - `decision-optimization-modeling`
 - `provenance-system-design`

@@ -1,8 +1,10 @@
 ---
 name: specification-control-plane-standard
-description: "Executable specification lifecycle: packets, eval manifests, telemetry contracts, exceptions."
+description: "Policy for executable specification lifecycle: packets, eval manifests, telemetry contracts, exceptions. Apply when governing executable specs."
 ---
 # Specification Control Plane Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

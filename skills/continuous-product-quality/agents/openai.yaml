@@ -1,4 +1,0 @@
-interface:
-  display_name: "Continuous Product Betterment Loop"
-  short_description: "High-leverage product betterment cycles under an uncapped Goal until no unblocked high-EV work remains."
-  default_prompt: "Run continuous product quality betterment on the active workspace."

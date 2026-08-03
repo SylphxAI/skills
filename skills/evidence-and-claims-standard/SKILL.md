@@ -1,9 +1,11 @@
 ---
 name: evidence-and-claims-standard
-description: "Claim grading: evidence class, provenance, strength, promotion boundaries."
+description: "Policy for claim grading: evidence class, provenance, strength, promotion boundaries. Apply when asserting done, SOTA, or live outcomes."
 ---
 
 # Evidence and Claims Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 Make the strongest claim current evidence supports, and no stronger. Read
 [references/claim-evidence-method.md](references/claim-evidence-method.md) before

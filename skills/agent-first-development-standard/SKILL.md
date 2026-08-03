@@ -1,8 +1,10 @@
 ---
 name: agent-first-development-standard
-description: "No-human multi-agent delivery packets: change attribution, collision scopes, machine-verifiable acceptance."
+description: "Policy for no-human multi-agent delivery packets: change attribution, collision scopes, machine-verifiable acceptance. Apply when packaging multi-agent changes."
 ---
 # Agent First Development Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

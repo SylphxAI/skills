@@ -183,7 +183,7 @@ Produce one **Marketing Automation Blueprint** containing:
 - `product-asset-production` owns deterministic product capture, localization,
   exact rendered media, rights/provenance, accessibility variants, and file QA.
 - `review-solicitation-policy` owns platform-specific authentic public review
-  eligibility and request state; `product-feedback-learning-loop` owns universal
+  eligibility and request state; `run-product-feedback-loop` owns universal
   private feedback, review ingestion, support/product routing and close-loop.
 - `notification-strategy-review` owns notification channel/copy/frequency semantics; `promotion-campaign-review` owns one dormant-user recovery campaign; `market-research-synthesis` owns source-bounded voice-of-customer evidence.
 - `app-design-blueprint`/`game-design-blueprint` own product-side share, cross-promotion, notification, review, and lifecycle surfaces.

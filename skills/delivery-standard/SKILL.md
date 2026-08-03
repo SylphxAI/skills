@@ -1,8 +1,10 @@
 ---
 name: delivery-standard
-description: "Delivery-terminal proof: land, artifacts, publish, deploy, rollback, live readback."
+description: "Policy for delivery-terminal proof: land, artifacts, publish, deploy, rollback, live readback. Apply when claiming delivery outcomes."
 ---
 # Delivery Standard
+
+**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
 
 **Requirement:** apply this standard when the task matches its scope.
 

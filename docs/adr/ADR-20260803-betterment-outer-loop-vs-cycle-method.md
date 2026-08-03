@@ -9,7 +9,7 @@ amends:
   - ADR-20260802-outcome-leverage-betterment-cycle
 scope:
   - static-instruction-packages
-  - continuous-product-quality
+  - better-product
   - agent-harness-boundary
 ---
 
@@ -17,7 +17,7 @@ scope:
 
 ## Context
 
-`continuous-product-quality` mixed cycle method with multi-turn continuity. A
+`better-product` mixed cycle method with multi-turn continuity. A
 later draft over-corrected by demoting the **Goal System** to “insurance only”
 and pushing **automation re-kick** as the default outer loop. That is a
 **UX regression** on Codex: operators already get multi-hour runs from one press
@@ -34,7 +34,7 @@ continuation can suppress the next auto-continue.
 
 | Concern | Owner |
 | --- | --- |
-| One betterment **cycle** method | Skill (`continuous-product-quality`) |
+| One betterment **cycle** method | Skill (`better-product`) |
 | **Multi-turn continuity on Codex** | **Uncapped Goal** (primary motor) |
 | Optional durable B/R notes | Product state/contract file |
 | Continuity when Goal API absent | In-process tool loop; then manual re-kick; automation last |

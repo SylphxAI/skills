@@ -41,7 +41,7 @@ commercial product is a runtime cell.
 
 ## Decision
 
-Add `composable-product-portfolio` as the single owner of a **Composable
+Add `compose-product-portfolio` as the single owner of a **Composable
 Product Portfolio Contract**.
 
 The Procedure:

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Converge Architecture"
+  short_description: "Rewrite substantial architecture onto shared invariants with migration path and acceptance evidence."
+  default_prompt: "Converge architecture onto shared invariants with a migration path and acceptance evidence."

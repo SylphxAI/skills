@@ -14,6 +14,7 @@ When you need to **learn** whether something is worth building, run **one** prot
 
 ## When not to use
 
+- Mixed open betterment with no fixed objective → `better-product`
 - Durable declared outcome to drive to completion → `pursue-product-objective`
 - Capability is decided and must ship → `build-product`
 - Live harm / regressions dominate → `maintain-product`
