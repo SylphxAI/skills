@@ -1,6 +1,6 @@
 ---
 name: security-assurance-operations-review
-description: "Run continuous security assurance—controls testing, evidence, exceptions, and assurance operations. Use for security assurance programs. Not one threat-modeling workshop and not product-abuse policy alone."
+description: "Ongoing security assurance ops: scanning, triage, SLAs, evidence—not a one-shot threat model."
 ---
 
 # Security Assurance Operations Review

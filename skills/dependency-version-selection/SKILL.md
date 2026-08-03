@@ -1,6 +1,6 @@
 ---
 name: dependency-version-selection
-description: "Pick or audit dependency versions with compatibility, security, upgrade risk, pins, and policy evidence. Use for version selection and upgrade policy. Not inventing architecture and not generic package publishing."
+description: "Pick dependency/runtime versions from live authoritative sources—not inventing versions from memory or stale templates."
 ---
 
 # Dependency Version Selection

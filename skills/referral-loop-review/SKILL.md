@@ -1,6 +1,6 @@
 ---
 name: referral-loop-review
-description: "Design referral growth loops—incentives, fraud resistance, attribution, UX, and unit economics. Use when referral is primary. Not the full marketing OS and not base pricing architecture."
+description: "Referral loops: incentives, fraud, viral mechanics—not general growth analytics."
 ---
 
 # Referral Loop Review

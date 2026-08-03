@@ -1,6 +1,6 @@
 ---
 name: marketing-automation-blueprint
-description: "Design the marketing operating system: channels, audience, messaging, campaigns, automation, measurement, and incrementality. Use for full marketing OS work. Not one store listing, one social post, or pure brand-voice editing."
+description: "Marketing automation system blueprint: triggers, journeys, governance—not one campaign brief."
 ---
 
 # Marketing Automation Blueprint

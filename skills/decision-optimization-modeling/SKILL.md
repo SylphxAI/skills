@@ -1,6 +1,6 @@
 ---
 name: decision-optimization-modeling
-description: "Formulate, solve, or audit a Constrained Decision Model for allocation, scheduling, routing, capacity, or inventory—with variables, objectives, constraints, solver evidence, and sensitivity. Not qualitative option choice, agent planning architecture, or pure forecasting."
+description: "Build/audit an optimization model: objective, constraints, solvers, sensitivity—not generic decision process quality."
 ---
 
 # Decision Optimization Modeling

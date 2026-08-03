@@ -1,6 +1,6 @@
 ---
 name: review-solicitation-policy
-description: "Design public rating/review request policy: eligibility, native surfaces, cooldowns, exclusions, and request-state evidence; audit star-steering or reward abuse. Not feedback learning loops or review-response ops."
+description: "When/how to solicit reviews without abuse or bias—not building the review UI."
 ---
 
 # Review Solicitation Policy

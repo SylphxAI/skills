@@ -1,6 +1,6 @@
 ---
 name: agent-context-engineering
-description: "Design a Context and Memory Contract for how agents acquire, rank, compile, remember, invalidate, and hand off information, including compaction, provenance, freshness, and privacy. Not ordinary doc retrieval, prompt wording alone, planning algorithms, or live work-ledger ops."
+description: "Agent context/memory contract: rank, compile, compact, invalidate, provenance, privacy—not plain retrieval, prompt wording, or planning algorithms."
 ---
 
 # Agent Context Engineering

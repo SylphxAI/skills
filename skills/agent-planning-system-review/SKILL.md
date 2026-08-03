@@ -1,6 +1,6 @@
 ---
 name: agent-planning-system-review
-description: "Design or audit agent planning/control machinery and produce an Agent Planning and Control Contract. Not planning one ordinary task, memory design, or finished-code review."
+description: "Agent planning/control machinery → Planning and Control Contract—not planning one ordinary task or memory design alone."
 ---
 
 # Agent Planning System Review

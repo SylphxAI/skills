@@ -1,6 +1,6 @@
 ---
 name: data-quality-observability-review
-description: "Stand up data-quality observability: contracts, anomaly detection, lineage, ownership, and remediation paths. Use for data reliability programs. Not product analytics event design alone or generic service monitoring."
+description: "Data quality observability: contracts, monitors, incidents, ownership—not product analytics event design alone."
 ---
 
 # Data Quality Observability Review

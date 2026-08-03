@@ -1,6 +1,6 @@
 ---
 name: store-listing-optimization
-description: "Optimize store/download listing conversion: positioning, copy, creatives, proof, localization, claims, experiments, and asset QA. Not submission/certification readiness or the full marketing OS."
+description: "Store/download listing conversion: positioning, creatives, proof, experiments—not cert submission readiness."
 ---
 
 # Store Listing Optimization

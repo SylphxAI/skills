@@ -1,6 +1,6 @@
 ---
 name: app-design-blueprint
-description: "Design or audit a whole App Design Blueprint: jobs, workflows/IA, activation, retention, multi-surface UX, offline/sync, a11y/l10n, performance, and validation. For new apps or whole-app redesigns. Use product-finish for existing-app polish; specialists for one payment, campaign, listing, or single UI."
+description: "Whole-app design blueprint (new app or full redesign)—not product-finish polish or one-screen interface craft."
 ---
 
 # App Design Blueprint

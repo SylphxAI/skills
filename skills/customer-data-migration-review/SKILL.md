@@ -1,6 +1,6 @@
 ---
 name: customer-data-migration-review
-description: "Design a customer-data migration/cutover contract: discovery, mapping, validation, rehearsal, execution, reconciliation, and rollback/forward-fix. Not architecture rewrites, same-product backup/restore, or CS value programs."
+description: "Customer data migration: mapping, dual-write/read, cutover, rollback, integrity proof—not schema-only refactors without customer data movement."
 ---
 
 # Customer Data Migration Review

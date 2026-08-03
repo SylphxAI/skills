@@ -1,6 +1,6 @@
 ---
 name: enterprise-control-plane-standard
-description: "Organization-wide control-plane layers: manifests, rulesets, reconcilers, audits, and status projections across many repositories. Not versioned selection/profile lifecycle alone (enterprise-profile-standard) or a product-local setting with no cross-repo owner."
+description: "Org-wide control-plane layers across many repos (rulesets, reconcilers, status)—not versioned profile lifecycle alone (enterprise-profile-standard)."
 ---
 # Enterprise Control Plane Standard
 

@@ -1,6 +1,6 @@
 ---
 name: enterprise-contract-operations-review
-description: "Run B2B contract operations—terms, entitlements, renewals, exceptions, and how fulfillment links to the contract. Use for enterprise contract ops. Not consumer checkout design or pure legal drafting in isolation."
+description: "Enterprise contract ops: negotiation artifacts, obligations, renewals, compliance hooks—not commercial pricing strategy alone."
 ---
 
 # Enterprise Contract Operations Review

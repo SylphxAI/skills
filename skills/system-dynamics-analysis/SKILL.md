@@ -1,6 +1,6 @@
 ---
 name: system-dynamics-analysis
-description: "Analyze stubborn feedback-loop behavior (delays, accumulations, incentives, policy resistance) into a Dynamic System Model. Not isolated bugs, static dependency maps, or single causal estimates."
+description: "Feedback-loop system dynamics model (delays, stocks, policy resistance)—not isolated bugs or single causal estimates."
 ---
 
 # System Dynamics Analysis

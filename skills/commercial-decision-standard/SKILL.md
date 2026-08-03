@@ -1,6 +1,6 @@
 ---
 name: commercial-decision-standard
-description: "Pricing, packaging, entitlements, commercial ADRs, and market-positioning evidence. Use when making a durable revenue, packaging, licensing, or route-to-market decision. Do not use for implementing an already-decided checkout or billing contract."
+description: "Durable commercial decision: pricing, packaging, entitlements, licensing, route-to-market—not implementing an already-decided checkout."
 ---
 # Commercial Decision Standard
 

@@ -1,6 +1,6 @@
 ---
 name: probabilistic-forecasting
-description: "Build or audit probabilistic forecasts with calibration, uncertainty communication, and decision use. Use when forecast distributions are the artifact. Not causal identification and not deterministic planning alone."
+description: "Probabilistic forecasts with calibration and decision use—not point KPI reporting or causal identification."
 ---
 
 # Probabilistic Forecasting

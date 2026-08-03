@@ -1,6 +1,6 @@
 ---
 name: evidence-synthesis
-description: "Produce a reproducible Evidence Synthesis: protocol, screening, evidence table, quality, conflicts, certainty, and claim bounds across multiple sources. Not market recommendations, one-source summary, RCA, or un-synthesized reference dumps."
+description: "Synthesize conflicting sources into an evidence-backed synthesis with residuals—not single-source summary or claim grading alone."
 ---
 
 # Evidence Synthesis

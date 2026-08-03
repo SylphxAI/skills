@@ -1,6 +1,6 @@
 ---
 name: product-abuse-risk-review
-description: "Design product-wide abuse controls for fraud, spam, exploitation, enforcement, and appeals across users and features. Use for product abuse programs. Not developer quota/credit economics alone and not marketplace trust alone."
+description: "Product abuse risks and controls (fraud, spam, exploitation)—not security threat models or developer quota abuse alone."
 ---
 
 # Product Abuse Risk Review

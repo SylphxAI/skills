@@ -1,6 +1,6 @@
 ---
 name: security-threat-modeling
-description: "Threat-model a system: assets, adversaries, entry points, misuse cases, mitigations, and residual risk. Use when a threat model is the artifact. Not continuous assurance ops and not privacy DSAR handling."
+description: "Threat model artifact: assets, adversaries, entry points, mitigations, residual risk—not continuous assurance ops or DSAR."
 ---
 
 # Security Threat Modeling

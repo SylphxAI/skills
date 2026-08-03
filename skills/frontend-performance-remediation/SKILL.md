@@ -1,6 +1,6 @@
 ---
 name: frontend-performance-remediation
-description: "Find and fix frontend performance problems with measurement, budgets, critical-path work, regression control, and verification. Use when UI performance outcomes are primary. Not backend capacity alone or pure visual design."
+description: "Frontend performance: measure, budgets, critical path, regression control—not backend capacity or pure visual design."
 ---
 
 # Frontend Performance Remediation

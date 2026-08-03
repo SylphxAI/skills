@@ -1,6 +1,6 @@
 ---
 name: convergent-review
-description: "Run an independent iterative review to one Final Decision with alternatives, residual risks, and unresolved disagreements. Not ordinary PR code review or skill-routing eval."
+description: "Force divergent analysis into one decision record with explicit residuals—not open brainstorming or status updates."
 ---
 
 # Convergent Review

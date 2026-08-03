@@ -1,6 +1,6 @@
 ---
 name: revenue-operations-review
-description: "Design revenue operations across marketing/sales/finance handoffs—pipeline, process, systems, forecasting rhythm, and controls. Use for RevOps models. Not product pricing architecture alone."
+description: "Revenue operations: pipeline, handoffs, forecasting hygiene, systems—not product pricing strategy alone."
 ---
 
 # Revenue Operations Review

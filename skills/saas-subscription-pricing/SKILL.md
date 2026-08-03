@@ -1,6 +1,6 @@
 ---
 name: saas-subscription-pricing
-description: "Design SaaS subscription pricing and packaging—plans, value metrics, trials, upgrades/downgrades, and packaging evidence. Use for pricing architecture. Not checkout implementation and not operating one price-increase rollout."
+description: "SaaS subscription pricing/packaging design—not implementing billing code or a one-off promo."
 ---
 
 # SaaS Subscription Pricing

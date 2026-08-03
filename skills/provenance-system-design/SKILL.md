@@ -1,6 +1,6 @@
 ---
 name: provenance-system-design
-description: "Design provenance for artifacts, claims, builds, or content—lineage, attestation, verification, and disclosure. Use when provenance is the product concern. Not generic logging and not a one-line changelog note."
+description: "Provenance system: lineage, attestations, verification UX—not generic logging or evidence-grade claims alone."
 ---
 
 # Provenance System Design

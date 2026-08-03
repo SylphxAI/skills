@@ -1,6 +1,6 @@
 ---
 name: reference-originality-review
-description: "Review originality against references: influence, copying risk, transformation quality, and disclosure needs. Use for originality/reference reviews. Not formal legal opinions and not running plagiarism software alone."
+description: "Reference originality and derivation risk for designs/content/code—not ordinary plagiarism tooling setup."
 ---
 
 # Reference Originality Review

@@ -1,6 +1,6 @@
 ---
 name: board-metrics-operating-review
-description: "Design the board/executive metrics operating model: metric definitions, lineage, decision use, reporting cadence, and trust. Use when leadership operating metrics are the artifact. Not product event instrumentation alone, one dashboard mock, or service observability."
+description: "Board/executive metrics operating model: definitions, lineage, decision use, cadence, trust—not event instrumentation or one dashboard mock."
 ---
 
 # Board Metrics Operating Review

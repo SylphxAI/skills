@@ -1,6 +1,6 @@
 ---
 name: accessibility-conformance-program-review
-description: "Design an accessibility conformance program: standards, AT testing, issue governance, release evidence, VPAT/ACR, remediation, and exceptions. Not one UI critique, one code fix, or legal advice."
+description: "Accessibility conformance program: AT coverage, release evidence, VPAT/ACR, remediation governance—not one UI critique or a single code fix."
 ---
 
 # Accessibility Conformance Program Review

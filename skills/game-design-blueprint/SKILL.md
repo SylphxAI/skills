@@ -1,6 +1,6 @@
 ---
 name: game-design-blueprint
-description: "Design or audit a whole-game experience/GDD: promise, loops, progression, economy, retention, social play, FTE, platforms, live ops, and validation. For new games or whole-game redesigns. Use product-finish for playable-game polish; specialists for economy, ads, soft launch, or one release artifact."
+description: "Whole-game design/GDD: promise, loops, progression, economy, FTE, live ops—not one economy subsystem or soft-launch checklist alone."
 ---
 
 # Game Design Blueprint

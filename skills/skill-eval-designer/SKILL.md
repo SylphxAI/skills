@@ -1,6 +1,6 @@
 ---
 name: skill-eval-designer
-description: "Design falsifiable evals for Skill auto-injection and behavior: positive, near-neighbour, abstention, compound, hidden tasks, controls, oracles, provenance, and regressions. Use to prove whether skills actually help. Not authoring a skill package and not building a skill router."
+description: "Falsifiable evals for skill selection/behavior (neighbours, abstention, oracles)—not authoring a skill or building a router."
 ---
 
 # Skill Eval Designer

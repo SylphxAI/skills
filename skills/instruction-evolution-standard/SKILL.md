@@ -1,6 +1,6 @@
 ---
 name: instruction-evolution-standard
-description: "Evolution of Skills, runtime constitutions, required profiles, and architecture generations with one writable owner, migration, reconciliation, and retirement. Use for durable instruction or profile changes, not live Work Graph operations."
+description: "Evolve Skills/constitutions/profiles with one owner, migration, retirement—not live Work ops or product code features."
 ---
 # Instruction Evolution Standard
 

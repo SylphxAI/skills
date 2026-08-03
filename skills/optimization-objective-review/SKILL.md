@@ -1,6 +1,6 @@
 ---
 name: optimization-objective-review
-description: "Design optimization objectives and constraints so metrics match real decisions and resist Goodhart failures. Use when objective design is primary. Not solving one math program and not dashboard cosmetics."
+description: "Whether an optimization objective is well-posed and aligned—not building the solver model itself."
 ---
 
 # Optimization Objective Review

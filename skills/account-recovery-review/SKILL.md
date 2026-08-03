@@ -1,6 +1,6 @@
 ---
 name: account-recovery-review
-description: "Design end-to-end account recovery for lost credentials/MFA/channels, locks, compromise, or ownership disputes—eligibility, proof, risk, authority, and post-recovery hardening. Not tenant/admin JML or broad product-abuse policy."
+description: "Account recovery for lost credentials/MFA/channels, locks, compromise, ownership disputes—not tenant JML or broad abuse policy."
 ---
 
 # Account Recovery Review

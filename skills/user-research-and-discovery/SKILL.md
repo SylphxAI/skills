@@ -1,6 +1,6 @@
 ---
 name: user-research-and-discovery
-description: "Plan, run, and synthesize qualitative user research into a User Research Protocol and Findings. Use for goals, behavior, context, and barriers evidence. Not market sizing, continuous feedback ops, analytics instrumentation, or causal experiments."
+description: "Qualitative user research protocol and findings—not market sizing, analytics instrumentation, or causal experiments."
 ---
 
 # User Research and Discovery

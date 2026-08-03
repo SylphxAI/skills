@@ -1,6 +1,6 @@
 ---
 name: documentation-standard
-description: "Documentation scope, minimal sufficient docs, generated references, and freshness without prose drift. Use when deciding what durable documentation to create, update, generate, or retire. Do not use for changing product behavior without documentation ownership questions."
+description: "What docs to create, generate, or retire—minimal, fresh, low drift—not product behavior change itself."
 ---
 # Documentation Standard
 

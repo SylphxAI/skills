@@ -1,6 +1,6 @@
 ---
 name: search-discovery-quality-review
-description: "Improve search and discovery quality—relevance, ranking, evaluation, abuse resistance, and UX. Use when search quality is primary. Not general SEO content strategy alone."
+description: "Search/discovery quality: relevance, ranking, eval, abuse, UX—not generic recommendations without search surface."
 ---
 
 # Search Discovery Quality Review

@@ -1,6 +1,6 @@
 ---
 name: repo-adoption-standard
-description: "Minimum standards-adoption surfaces: runtime constitution, project manifest, integrity fences, and conformance entrypoints. Use when onboarding or migrating a repository to the current engineering standards. Do not use as proof that product code already conforms."
+description: "Repo onboarding to engineering standards: constitution, manifest, fences, conformance entrypoints—not inventing new standards."
 ---
 # Repo Adoption Standard
 

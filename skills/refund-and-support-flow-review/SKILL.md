@@ -1,6 +1,6 @@
 ---
 name: refund-and-support-flow-review
-description: "Design refund/cancellation/chargeback consequence flows: entitlement outcome, grace, ledger effects, restrictions, and customer communication. Not full payments platform design or whole support/CS operating models."
+description: "Refund and support money flows: policy, authority, ledger impact—not payments processor readiness alone."
 ---
 
 # Refund And Support Flow Review

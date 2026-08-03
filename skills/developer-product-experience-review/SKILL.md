@@ -1,6 +1,6 @@
 ---
 name: developer-product-experience-review
-description: "Design the developer adoption journey for APIs/SDKs/CLIs/plugins into a Developer Adoption Contract: discovery, docs, first success, production readiness, and diagnostics. Not API implementation or quota-abuse policy alone."
+description: "Developer product experience: onboarding, APIs, docs, DX friction—not end-user consumer UX alone."
 ---
 
 # Developer Product Experience Review

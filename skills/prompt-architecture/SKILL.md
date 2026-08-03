@@ -1,6 +1,6 @@
 ---
 name: prompt-architecture
-description: "Design durable agent instructions: constitutions, Skill metadata, hierarchy, briefs, and bootstrap/install prompts without duplicating source policy. Not ordinary user-facing copy or live work coordination."
+description: "Prompt/system-instruction architecture for agents/products—not one-off prompt tweaks without structure."
 ---
 # Prompt Architecture
 

@@ -1,6 +1,6 @@
 ---
 name: enterprise-access-governance-review
-description: "Govern enterprise access across roles, joiner-mover-leaver, least privilege, access reviews, break-glass, and audit evidence. Use for tenant/admin access lifecycle. Not end-user account recovery or product-wide abuse economics."
+description: "Enterprise access governance: roles, joiner-mover-leaver, reviews, least privilege—not product auth feature UI alone."
 ---
 
 # Enterprise Access Governance Review

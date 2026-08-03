@@ -1,6 +1,6 @@
 ---
 name: marketplace-trust-operations-review
-description: "Design marketplace trust/safety ops: policy, fraud/moderation queues, temporary controls, enforcement, evidence, and appeals. Not payouts or non-marketplace content moderation alone."
+description: "Marketplace trust & safety ops: detection, enforcement, appeals—not payments or seller score design alone."
 ---
 
 # Marketplace Trust Operations Review

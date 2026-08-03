@@ -1,6 +1,6 @@
 ---
 name: agent-first-development-standard
-description: "No-human parallel development packets, change attribution, collision scopes, and machine-verifiable acceptance. Use when defining or running multi-agent software delivery without a human review dependency. Do not use for a small local edit or live Work Graph operations."
+description: "No-human multi-agent delivery packets: attribution, collision scopes, machine-verifiable acceptance—not a small local edit or live Work Graph ops."
 ---
 # Agent First Development Standard
 

@@ -1,6 +1,6 @@
 ---
 name: retention-cohort-review
-description: "Turn retention cohorts/curves into decisions: eligibility, windows, censoring, segments, uncertainty, and mechanisms. Not price-increase retention programs or instrumentation implementation alone."
+description: "Retention cohort analysis and intervention design—not acquisition campaigns or pricing increases alone."
 ---
 
 # Retention Cohort Review

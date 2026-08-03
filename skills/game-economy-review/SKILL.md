@@ -1,6 +1,6 @@
 ---
 name: game-economy-review
-description: "Design or audit game economy systems—sources/sinks, progression coupling, monetization interaction, inflation, fairness, and telemetry. Use when the economy is the main job. Not whole-game design and not ad placement alone."
+description: "Game economy: sinks/sources, balance, progression coupling, abuse—not whole GDD or soft-launch readiness."
 ---
 
 # Game Economy Review

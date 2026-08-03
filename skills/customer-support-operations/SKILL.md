@@ -1,6 +1,6 @@
 ---
 name: customer-support-operations
-description: "Design the support operating system: channels, intake, routing, SLAs, tooling, knowledge, escalation, and quality. Not resolving one case or customer-success value programs."
+description: "Support operations design: queues, SLAs, escalation, tooling, quality—not resolving one ticket."
 ---
 
 # Customer Support Operations

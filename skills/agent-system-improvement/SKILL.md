@@ -1,6 +1,6 @@
 ---
 name: agent-system-improvement
-description: "Fix recurring agent-system failures with a Learning Change Record, controlled intervention, replay/holdout evidence, promotion criteria, and recurrence monitoring. Not one-off product bugs, live incidents, or single-skill eval alone."
+description: "Recurring agent-system failure: Learning Change Record, controlled intervention, replay/holdout, promotion—not one-off product bugs or live incidents."
 ---
 
 # Agent System Improvement

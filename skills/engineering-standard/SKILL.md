@@ -1,6 +1,6 @@
 ---
 name: engineering-standard
-description: "Default engineering method floor for design, implementation, verification, and change safety. Use as the baseline engineering standard. Not product strategy, pure research methods, or live incident command."
+description: "Engineering method floor: design, verification, change safety—not product strategy, pure research, or incident command."
 ---
 # Engineering Standard
 

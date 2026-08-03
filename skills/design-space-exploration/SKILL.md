@@ -1,6 +1,6 @@
 ---
 name: design-space-exploration
-description: "Explore solution options before locking a design: explicit alternatives, constraints, evaluation criteria, and tradeoff records. Use early when the shape is still open. Not final implementation work or pure visual polish."
+description: "Map and rank a design space with explicit alternatives and kill criteria—not implementing the first idea or convergent decision closure alone."
 ---
 
 # Design Space Exploration

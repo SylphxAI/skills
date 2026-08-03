@@ -1,6 +1,6 @@
 ---
 name: ci-admission-standard
-description: "Design CI admission for protected branches: required checks, risk-matched gates, flake control, and preview policy. Not runner capacity and not ordinary test writing alone."
+description: "Protected-branch CI admission: required checks, risk-matched gates, flake, preview—not runner capacity or ordinary test writing."
 ---
 # Ci Admission Standard
 

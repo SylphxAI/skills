@@ -1,6 +1,6 @@
 ---
 name: product-experiment-review
-description: "Design or audit product experiments: hypothesis, design, power, guardrails, analysis, and ship/hold decision rules. Use when experimentation is primary. Not observational causal studies alone and not shipping a feature with no experiment design."
+description: "Experiment design/readout: hypothesis, assignment, metrics, decision rules—not causal ID from observational data alone."
 ---
 
 # Product Experiment Review

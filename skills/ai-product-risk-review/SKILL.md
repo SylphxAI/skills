@@ -1,6 +1,6 @@
 ---
 name: ai-product-risk-review
-description: "Write an AI product behavior/launch contract: job, AI necessity, autonomy/action rights, data use, failure/abuse, disclosure, fallback, cost/latency, support, and release bounds. Not eval impl, red teaming, threat modeling, or incident response."
+description: "AI product behavior/launch contract: job, autonomy, data, failure/abuse, disclosure, fallback, cost—not eval impl, red team, or incident response."
 ---
 
 # AI Product Risk Review

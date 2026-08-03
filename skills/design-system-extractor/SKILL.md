@@ -1,6 +1,6 @@
 ---
 name: design-system-extractor
-description: "Extract a reusable design system from product UI—tokens, components, patterns, and usage rules. Use when the design system itself is the artifact. Not redesigning one screen or frontend performance remediation."
+description: "Extract a design system from live product UI into tokens/components/rules—not inventing a greenfield brand system or one-screen craft."
 ---
 
 # Design System Extractor

@@ -1,6 +1,6 @@
 ---
 name: product-feedback-learning-loop
-description: "Turn private feedback and public reviews into preserved evidence, safe routing, product actions, validated outcomes, and truthful closure. Not public rating-request eligibility, timing, surfaces, or cooldowns (review-solicitation-policy)."
+description: "Product feedback learning loop: capture, cluster, decide, close the loop—not one support case or user research study alone."
 ---
 
 # Product Feedback Learning Loop

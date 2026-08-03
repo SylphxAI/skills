@@ -1,6 +1,6 @@
 ---
 name: developer-quota-credit-abuse-review
-description: "Balance developer free credits/quotas against abuse: trust tiers, ledgers, friction, throttling, appeals, and legitimate scale-up. Not general product-abuse programs or core payments billing alone."
+description: "Developer quota/credit abuse: metering, limits, fraud, enforcement—not general product abuse or pricing strategy."
 ---
 
 # Developer Quota Credit Abuse Review

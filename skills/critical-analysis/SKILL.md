@@ -1,6 +1,6 @@
 ---
 name: critical-analysis
-description: "Pressure-test a claim, plan, or design for hidden assumptions, weak links, and decision-critical failure modes. Produces a Critical Analysis. Not a neutral summary, status update, or final option-picking exercise by itself."
+description: "Adversarial critical analysis of a claim, plan, or design—not supportive brainstorming or ordinary code review."
 ---
 
 # Critical Analysis

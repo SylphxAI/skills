@@ -1,6 +1,6 @@
 ---
 name: evidence-and-claims-standard
-description: "How to grade claims by evidence class, provenance, strength, and promotion boundaries. Use whenever statements must stay honest under scrutiny. Not a literature dump without claim discipline."
+description: "Grade claims by evidence class, provenance, strength, promotion bounds—not an undisciplined literature dump."
 ---
 
 # Evidence and Claims Standard

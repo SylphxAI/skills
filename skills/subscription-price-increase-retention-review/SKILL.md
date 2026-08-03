@@ -1,6 +1,6 @@
 ---
 name: subscription-price-increase-retention-review
-description: "Plan retention-safe rollout of an already-proposed subscription price increase: cohorts, notices, grandfathering, offers, cancellations, experiments, and net revenue. Not base pricing architecture or unrelated retention analysis."
+description: "Retention-safe subscription price increase rollout—not base pricing architecture."
 ---
 
 # Subscription Price Increase Retention Review

@@ -1,6 +1,6 @@
 ---
 name: work-coordination-standard
-description: "Portable work-ledger semantics: claims, attempts, checkpoints, handoff, proof links, stale recovery, privacy, and cross-project coordination across sessions/runtimes. Use for durable coordination design. Not live Enact API ops (enact-work-coordination) or a one-off checklist."
+description: "Portable work-ledger semantics (claims, checkpoints, handoff, recovery)—not live Enact API ops."
 ---
 # Work Coordination Standard
 

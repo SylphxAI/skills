@@ -1,6 +1,6 @@
 ---
 name: semantic-taxonomy-design
-description: "Design semantic taxonomies or ontologies—terms, relations, governance, and migration—for product or knowledge systems. Use when taxonomy design is primary. Not an ungoverned tag list."
+description: "Governed taxonomy/ontology: terms, relations, migration—not an ungoverned tag list."
 ---
 
 # Semantic Taxonomy Design

@@ -1,6 +1,6 @@
 ---
 name: interface-craft
-description: "Design or polish one bounded product interface/flow: visual direction, interaction states, responsive behavior, and accessibility. Not whole-app/game blueprints, design-system extraction, or multi-surface product-finish."
+description: "One interface/flow: visual direction, states, responsive, a11y—not whole-app blueprint or product-finish pass."
 ---
 
 # Interface Craft

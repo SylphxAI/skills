@@ -1,6 +1,6 @@
 ---
 name: specification-control-plane-standard
-description: "Specification lifecycle, work packets, evaluation manifests, telemetry contracts, and exception records. Use when a material capability needs an executable specification and traceable implementation contract. Do not use for a trivial change whose behavior is already unambiguous."
+description: "Executable specification lifecycle, packets, eval manifests, exceptions—not trivial already-unambiguous changes."
 ---
 # Specification Control Plane Standard
 

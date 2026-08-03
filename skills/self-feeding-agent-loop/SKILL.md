@@ -1,6 +1,6 @@
 ---
 name: self-feeding-agent-loop
-description: "Workflow: continuous work-selection OS that generates next Work from evidence without human prompt churn. Not driving one bounded objective to terminal (autonomous-execution), multi-aspect product betterment alone (continuous-product-quality), or live Enact API ops alone (enact-work-coordination)."
+description: "Continuous work-selection OS from evidence without prompt churn—not autonomous-execution single-objective closure or product betterment loop alone."
 ---
 
 # Self-Feeding Agent Loop (workflow)

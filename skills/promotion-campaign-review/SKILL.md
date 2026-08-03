@@ -1,6 +1,6 @@
 ---
 name: promotion-campaign-review
-description: "Design or audit a promotion campaign—offer, eligibility, channels, fraud controls, measurement, and operational runbook. Use for campaign work. Not the full marketing OS and not everyday product notification policy."
+description: "Promotion campaign design: offer, eligibility, abuse, measurement—not base pricing architecture."
 ---
 
 # Promotion Campaign Review

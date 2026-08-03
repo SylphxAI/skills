@@ -1,6 +1,6 @@
 ---
 name: decision-quality-standard
-description: "Standards for high-quality decisions: framing, alternatives, information, values/tradeoffs, logic, commitment, and learning after the fact. Use for durable decision-process quality. Not building one optimization model or taking ordinary meeting notes."
+description: "Decision-process quality: framing, alternatives, information, tradeoffs, commitment, learning—not one optimization model or pure research methods."
 ---
 # Decision Quality Standard
 

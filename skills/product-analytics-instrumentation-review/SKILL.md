@@ -1,6 +1,6 @@
 ---
 name: product-analytics-instrumentation-review
-description: "Design product analytics instrumentation—events, identity, taxonomy, data quality, and how metrics support decisions. Use for instrumentation contracts. Not board metrics operating models and not one ad-hoc chart."
+description: "Product analytics instrumentation: events, properties, identity, quality—not board metrics ops or causal studies."
 ---
 
 # Product Analytics Instrumentation Review

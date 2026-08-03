@@ -1,6 +1,6 @@
 ---
 name: product-recovery-contract-review
-description: "Design product user-data recovery: backup/restore, export/re-import, device replacement, entitlement recovery, deletion, and support-assisted recovery. Not infra DR, account-auth recovery, or cross-product cutover."
+description: "Product recovery contracts after failure: user state, compensation, trust repair—not production incident command alone."
 ---
 
 # Product Recovery Contract Review

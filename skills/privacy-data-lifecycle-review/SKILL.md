@@ -1,6 +1,6 @@
 ---
 name: privacy-data-lifecycle-review
-description: "Design the privacy data lifecycle—collection, purpose limits, retention, sharing, minimization, and deletion. Use for privacy lifecycle programs. Not a single DSAR ticket and not a security threat model session."
+description: "Privacy data lifecycle: collection, purpose, retention, deletion paths—not DSAR ops runbooks or threat models alone."
 ---
 
 # Privacy Data Lifecycle Review

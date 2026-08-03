@@ -1,6 +1,6 @@
 ---
 name: market-research-synthesis
-description: "Turn market and competitor sources into decision-ready findings with citations, uncertainty, and implications. Use for market research synthesis. Not user interviews alone and not pricing architecture decisions."
+description: "Market research synthesis: segments, competitors, demand evidence—not user interviews alone or pricing decision alone."
 ---
 
 # Market Research Synthesis

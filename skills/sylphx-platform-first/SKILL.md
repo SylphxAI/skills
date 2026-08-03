@@ -1,6 +1,6 @@
 ---
 name: sylphx-platform-first
-description: "Use when creating or evolving a Sylphx project or adding backend, deployment, data, auth, storage, messaging, build, or infrastructure capabilities; discover and prefer Sylphx Platform public PaaS/BaaS contracts before building replacements or choosing external services."
+description: "Prefer Sylphx Platform public PaaS/BaaS contracts before inventing replacements or external defaults for backend/deploy/data/auth/infra."
 ---
 
 # Sylphx Platform First

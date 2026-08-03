@@ -1,6 +1,6 @@
 ---
 name: data-rights-operations-review
-description: "Operate data-subject rights end to end—access, export, correction, deletion, retention, and proof of fulfillment. Use for privacy rights operations systems. Not writing the full privacy policy or doing security threat modeling."
+description: "Data-rights ops: DSAR, retention, deletion, proof—not threat modeling or general privacy policy prose."
 ---
 
 # Data Rights Operations Review

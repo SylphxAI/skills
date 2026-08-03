@@ -1,6 +1,6 @@
 ---
 name: product-lifecycle-architect
-description: "Orchestrate multi-domain product programs via dependency, handoff, validation, and delivery graphs when ~3+ lifecycle domains must converge. Not one app/game blueprint, marketing OS, or single campaign."
+description: "Product lifecycle architecture across stages (build, grow, sunset)—not a single feature design."
 ---
 
 # Product Lifecycle Architect

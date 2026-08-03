@@ -1,6 +1,6 @@
 ---
 name: autonomous-execution
-description: "Workflow: drive one accepted multi-phase objective to the delivery terminal without repeated prompts—preserve objective and acceptance map; research, execute, verify, repair, or replan; claim done only with evidence. Not short Q&A, one local edit, continuous new-Work discovery (self-feeding-agent-loop), or multi-aspect product betterment (continuous-product-quality)."
+description: "Drive one accepted multi-phase objective to delivery terminal with evidence—not short Q&A, self-feeding work-selection, or continuous-product-quality betterment."
 ---
 
 # Autonomous Execution (workflow)

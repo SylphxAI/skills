@@ -1,6 +1,6 @@
 ---
 name: scope-discipline
-description: "Keep work inside explicit in/out bounds, non-goals, and residual tracking so scope does not sprawl. Use when uncontrolled expansion is the risk. Not a full project-planning system."
+description: "Keep scope honest: in/out, non-goals, cut lines—not prioritization scoring frameworks alone."
 ---
 
 # Scope Discipline

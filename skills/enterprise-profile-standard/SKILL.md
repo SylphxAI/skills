@@ -1,6 +1,6 @@
 ---
 name: enterprise-profile-standard
-description: "Versioned enterprise profiles: selectors, current defaults, exceptions, replacement, and migration. Use for static organization-wide selection packages and their lifecycle; Enact owns resolved live state. Not org-wide control-plane layers (enterprise-control-plane-standard) or one product-local config."
+description: "Versioned enterprise profiles: selectors, defaults, exceptions, migration—not org control-plane enforcement layers."
 ---
 # Enterprise Profile Standard
 

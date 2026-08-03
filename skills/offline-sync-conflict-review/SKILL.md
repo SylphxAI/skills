@@ -1,6 +1,6 @@
 ---
 name: offline-sync-conflict-review
-description: "Design offline sync and conflict resolution—data models, merge rules, UX, authority, and recovery. Use for offline-first sync contracts. Not general backup/restore or pure network reliability work."
+description: "Offline sync and conflict resolution design—not general CRDT theory without a product sync surface."
 ---
 
 # Offline Sync Conflict Review

@@ -1,6 +1,6 @@
 ---
 name: marketplace-seller-performance-review
-description: "Design seller-performance systems: quality evidence, tiers/badges, coaching, ranking inputs, enforcement referrals, and appeals. Not payouts or buyer support cases."
+description: "Seller performance: quality evidence, tiers, coaching, ranking inputs—not payouts or trust/safety ops alone."
 ---
 
 # Marketplace Seller Performance Review

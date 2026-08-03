@@ -1,6 +1,6 @@
 ---
 name: software-distribution-readiness
-description: "Check whether software can be distributed safely: artifacts, signing, channels, updates, rollback, and install verification. Use for distribution/release packaging readiness. Not store listing conversion copy alone."
+description: "Distribute software safely: artifacts, signing, channels, updates, rollback—not store listing conversion copy."
 ---
 
 # Software Distribution Readiness

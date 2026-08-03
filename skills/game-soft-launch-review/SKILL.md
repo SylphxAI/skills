@@ -1,6 +1,6 @@
 ---
 name: game-soft-launch-review
-description: "Plan or audit a game soft launch: market choice, KPI gates, content readiness, live ops, and go/no-go. Use for soft-launch programs. Not writing the full GDD or optimizing store listing conversion alone."
+description: "Game soft-launch readiness: markets, KPIs, kill/scale criteria, live ops—not full GDD authorship."
 ---
 
 # Game Soft Launch Review

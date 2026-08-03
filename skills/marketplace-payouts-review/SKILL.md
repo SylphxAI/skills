@@ -1,6 +1,6 @@
 ---
 name: marketplace-payouts-review
-description: "Design marketplace payout/earnings flows: fees, balances, holds, clawbacks, ledger, tax handoff, and disputes. Not seller-performance programs or trust/safety policy alone."
+description: "Marketplace seller payouts: eligibility, calculation, holds, tax/compliance hooks—not seller performance tiers alone."
 ---
 
 # Marketplace Payouts Review

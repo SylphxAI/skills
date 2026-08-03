@@ -1,6 +1,6 @@
 ---
 name: daily-reward-and-streak-review
-description: "Design daily rewards, streaks, and return loops with cadence, fairness, fatigue, economy coupling, abuse resistance, and measurement. Use when those retention mechanics are primary. Not full game economy design or a whole-game blueprint."
+description: "Daily reward and streak systems: incentives, fairness, abuse, retention coupling—not full game economy or soft-launch readiness."
 ---
 
 # Daily Reward And Streak Review

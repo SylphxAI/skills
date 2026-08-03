@@ -1,6 +1,6 @@
 ---
 name: risk-matched-verification-standard
-description: "Match verification depth to failure risk—evidence class, gates, and acceptable residuals—when unit/integration checks are not enough. Not writing one unit test or dumping generic QA scripts."
+description: "Match verification depth to failure risk beyond unit/integration defaults—not writing one unit test."
 ---
 # Risk-Matched Verification Standard
 

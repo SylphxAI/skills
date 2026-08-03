@@ -1,6 +1,6 @@
 ---
 name: operational-observability-review
-description: "Design operational observability for services/products: signals, SLOs, alerting, ownership, and on-call usefulness. Use for ops observability programs. Not product analytics funnels or warehouse data-quality alone."
+description: "Service/ops observability: SLOs, telemetry, alerting, diagnosability—not product analytics events or board metrics."
 ---
 
 # Operational Observability Review

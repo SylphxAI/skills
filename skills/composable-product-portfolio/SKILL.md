@@ -1,6 +1,6 @@
 ---
 name: composable-product-portfolio
-description: "Set portfolio boundaries across multiple products: shared platforms vs product seams, what to reuse or isolate, and composition rules. Use when multi-product portfolio architecture is primary. Not a single-product blueprint or one repository layout."
+description: "Multi-product portfolio seams: share vs isolate, composition rules—not a single-product blueprint or one-repo layout."
 ---
 
 # Composable Product Portfolio

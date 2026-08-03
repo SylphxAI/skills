@@ -1,6 +1,6 @@
 ---
 name: ad-monetization-review
-description: "Design or audit an in-product ad system: formats, placements, mediation, rewards, consent, frequency, fraud, experiments, and IAP/IAA tradeoffs. Use when ad economics/placements are primary. Not whole-app/game blueprint alone."
+description: "In-product ads: formats, mediation, rewards, consent, frequency, fraud, IAP/IAA tradeoffs—not a whole-app/game blueprint."
 ---
 
 # Ad Monetization Review

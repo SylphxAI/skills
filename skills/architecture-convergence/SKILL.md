@@ -1,6 +1,6 @@
 ---
 name: architecture-convergence
-description: "Drive a substantial one-or-many-repository architecture rewrite onto shared invariants, a migration path, compatibility rules, and acceptance evidence. Use for real architecture convergence work. Not a local refactor, ordinary feature delivery, or pure process/delivery theater."
+description: "Substantial architecture rewrite onto shared invariants with migration path and acceptance—not a local refactor or ordinary feature."
 ---
 
 # Architecture Convergence

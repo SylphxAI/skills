@@ -1,6 +1,6 @@
 ---
 name: delivery-standard
-description: "Define or audit delivery-terminal proof: source land, artifacts, publication, deploy, rollback, and live readback. Use when a change must go beyond local diff/commit/open PR. Not pure local implementation/analysis without a delivery claim."
+description: "Delivery-terminal proof: land, artifacts, publish, deploy, rollback, live readback—not local-only work without a delivery claim."
 ---
 # Delivery Standard
 

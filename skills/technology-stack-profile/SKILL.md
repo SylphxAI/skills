@@ -1,6 +1,6 @@
 ---
 name: technology-stack-profile
-description: "Apply the required stack profile for backend, web, API contracts, clients, events, telemetry, and cross-platform boundaries. Use when choosing, implementing, or reviewing that profile. Not product strategy."
+description: "Required stack profile across backend, web, APIs, clients, events, telemetry—not product strategy."
 ---
 
 # Backend, Web, and Cross-platform Interoperability Profile

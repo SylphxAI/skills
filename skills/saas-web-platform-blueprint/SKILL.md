@@ -1,6 +1,6 @@
 ---
 name: saas-web-platform-blueprint
-description: "Blueprint a SaaS web platform: multi-tenant shape, core surfaces, billing hooks, admin, and scale path. Use for whole SaaS platform design. Not a single feature and not a pure marketing site."
+description: "SaaS web platform blueprint: tenancy, core surfaces, billing hooks, admin, scale—not one feature or a marketing site."
 ---
 
 # SaaS Web Platform Blueprint

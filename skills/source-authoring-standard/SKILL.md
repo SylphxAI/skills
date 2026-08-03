@@ -1,6 +1,6 @@
 ---
 name: source-authoring-standard
-description: "Commits, exact source candidates, semantic atomicity, worktrees, and durable checkpoints. Use when authoring or integrating repository changes where source identity, recovery, or concurrent edits matter. Do not use for read-only analysis."
+description: "Source authoring: commits, exact candidates, worktrees, checkpoints, concurrent-edit safety—not read-only analysis."
 ---
 # Source Authoring Standard
 

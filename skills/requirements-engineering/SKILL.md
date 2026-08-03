@@ -1,6 +1,6 @@
 ---
 name: requirements-engineering
-description: "Elicit, structure, and validate requirements with acceptance criteria and traceability. Use when requirements quality is the job. Not implementation design and not pure user-research synthesis."
+description: "Requirements into testable acceptance and traceability—not freeform brainstorming or pure research synthesis."
 ---
 
 # Requirements Engineering

@@ -1,6 +1,6 @@
 ---
 name: notification-strategy-review
-description: "Set product notification strategy across channels, eligibility, frequency caps, personalization, consent, and effectiveness. Use when notification policy is the job. Not one promotional blast and not the full CRM/marketing OS."
+description: "Notification strategy: channels, cadence, consent, fatigue, measurement—not implementing one push template."
 ---
 
 # Notification Strategy Review

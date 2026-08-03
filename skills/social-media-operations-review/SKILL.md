@@ -1,6 +1,6 @@
 ---
 name: social-media-operations-review
-description: "Design a Social Media Operating Model for official channels: authority, publishing, listening, moderation routing, crisis, measurement, and archive. Not channel strategy/campaigns or producing one post."
+description: "Official social channel operating model: authority, publish, listen, crisis—not campaign strategy or one post."
 ---
 
 # Social Media Operations Review

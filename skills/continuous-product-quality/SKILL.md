@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "Loop-engineer continuous product betterment: outer engagement goal (product outcomes) multi-cycle; after each cycle silently re-research and continue without user final-response; self-loop even without Goal API; coverage card, full B, R, parallel execute, verify; stop only at engagement idle. Not cycle-as-goal, end-turn-after-cycle-report, one-cycle-and-stop, or polish thrash."
+description: "Multi-cycle product betterment to idle frontier (high-leverage outcomes)—not autonomous-execution closure or self-feeding work-selection."
 ---
 
 # Continuous Product Quality

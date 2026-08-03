@@ -1,6 +1,6 @@
 ---
 name: product-finish
-description: "Produce a Product Finish Pass on an already-integrated product: visual/content coherence, interaction states, feel/numerics, a11y/l10n, performance, and verification. Use when it works but is not release-grade. Not greenfield blueprints, one interface, promo assets, or continuous quality loops."
+description: "Release-grade finish pass on an already-integrated product—not greenfield blueprint, one screen, or continuous betterment loop."
 ---
 
 # Product Finish

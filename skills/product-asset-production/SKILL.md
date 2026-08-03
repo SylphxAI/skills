@@ -1,6 +1,6 @@
 ---
 name: product-asset-production
-description: "Produce product assets (copy, media, UI content, packaging inputs) against a brief with quality and rights constraints. Use when making the assets is the job. Not strategy, research, or full launch planning."
+description: "Produce product art/3D/content assets to a brief with acceptance—not whole game design or store listing copy."
 ---
 
 # Product Asset Production

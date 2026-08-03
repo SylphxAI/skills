@@ -1,6 +1,6 @@
 ---
 name: payment-platform-readiness
-description: "Assess payments readiness across processors, rails, ledger, reconciliation, disputes, compliance hooks, and failure modes. Use for payment capability readiness. Not pricing strategy and not refunds policy alone."
+description: "Payments capability readiness: processors, rails, ledger, disputes, compliance hooks—not pricing strategy or refunds policy alone."
 ---
 
 # Payment Platform Readiness

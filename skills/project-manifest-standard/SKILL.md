@@ -1,6 +1,6 @@
 ---
 name: project-manifest-standard
-description: "Project manifests that declare ownership, surfaces, delivery terminals, and other machine-readable project facts. Use for repository/project declaration standards. Not the org-wide enterprise control plane."
+description: "Project/repo manifest: ownership, surfaces, delivery terminals, machine-readable facts—not org-wide enterprise control plane."
 ---
 # Project Manifest Standard
 

@@ -1,6 +1,6 @@
 ---
 name: launch-readiness-review
-description: "Judge whether a launch is ready across product, ops, support, legal/risk, measurement, and rollback. Artifact: a Launch Readiness Record. Not one feature QA pass or store listing copy alone."
+description: "Launch readiness across product, ops, support, legal/risk gates—not a single feature QA pass."
 ---
 
 # Launch Readiness Review

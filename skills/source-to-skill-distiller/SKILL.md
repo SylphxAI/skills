@@ -1,6 +1,6 @@
 ---
 name: source-to-skill-distiller
-description: "Turn source material into one installable Skill package via mechanism extraction, boundaries, workflow, and validation. Only when the output is a SKILL.md/package. Not ordinary summarization, docs, or code work."
+description: "Distill sources into one installable Skill package—not ordinary summary/docs/code without SKILL.md output."
 ---
 
 # Source To Skill Distiller

@@ -1,6 +1,6 @@
 ---
 name: high-signal-communication
-description: "Communicate so status is decision-useful: evidence, residuals, next action, and no false certainty or noise. Use for durable agent/human communication standards. Not brand voice or marketing copy style."
+description: "High-signal stakeholder communication: decisions, risks, asks—not status theater or long narrative updates."
 ---
 
 # High-Signal Communication

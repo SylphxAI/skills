@@ -1,6 +1,6 @@
 ---
 name: enact-work-coordination
-description: "Operate live Sylphx Enact Work with authenticated tools: propose/claim/run, evidence, effects, and defer/wake. Use for real Enact coordination. Not portable ledger design (work-coordination-standard) or offline planning without Enact tools."
+description: "Live Enact Work ops with authenticated tools (claim/run/evidence/effects)—not portable ledger design (work-coordination-standard)."
 ---
 
 # Enact Work Coordination
