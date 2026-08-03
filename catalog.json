@@ -37,7 +37,7 @@
       "name": "author-skill",
       "description": "Author or update a Sylphx Skill package: job-shaped name, short description, one-cycle or job method, progressive disclosure, portable host rules.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:35fe5c54817beba41e481a8491808058ec2156ab743c2c11d73762f6e9b2f9b8"
+      "packageDigest": "sha256:102bab4040ccdc0591001381aba3a5247951e7bb938079747b4cd024dd53f1df"
     },
     {
       "name": "better-product",
