@@ -203,7 +203,7 @@
         "better-product"
       ],
       "behaviorOracle": {
-        "mandatoryObservable": "Defines a standing quality loop contract with scout triggers, finding admission, Work handoff, and coverage freshness/budgets—not a one-off finish pass.",
+        "mandatoryObservable": "Runs open betterment with no fixed objective: coverage card, admits all capacity-feasible items with EV ≥ MinOutcomeDelta (not Top-1 only), verifies with original oracles, and treats idle as empty high-EV frontier—not a one-off finish pass or fixed-objective pursuit.",
         "mustNot": [
           "Treat finish-product as the sole primary owner of this job",
           "Treat review-operational-observability as the sole primary owner of this job",
@@ -844,10 +844,11 @@
         "drive-to-delivery"
       ],
       "behaviorOracle": {
-        "mandatoryObservable": "Establishes or updates a multi-aspect quality matrix/loop contract, admits only bounded positive-net work, requires oracle readback, and treats idle as non-perfection rather than one finish pass or infinite vague improvement.",
+        "mandatoryObservable": "Establishes multi-aspect betterment cycles (coverage card → admit all high-EV B → execute → original-oracle verify), idles only at empty high-EV frontier without claiming perfection, and does not collapse into a single finish pass.",
         "mustNot": [
           "Treat finish-product as the sole primary owner of this standing loop job",
           "Claim the product is perfect",
+          "Admit only Top-1 when multiple capacity-feasible high-EV items are unblocked",
           "Create vague unbounded Work such as make everything better without cells/oracles"
         ]
       },
