@@ -109,3 +109,8 @@ Description character budget is a separate listing-capacity concern
 tightening reduces truncation risk; it does **not** close host behavior-oracle
 utilization.
 
+## Authoring progress (2026-08-03)
+
+- Product job Skills covered in fixtures; better-product oracles aligned to portable continuity and admit-all-B.
+- Host runbook added; live host behavior-oracle green runs still required to close residual.
+- All 118 packages ship `agents/openai.yaml` UI metadata.

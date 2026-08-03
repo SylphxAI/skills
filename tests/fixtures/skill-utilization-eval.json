@@ -4,10 +4,10 @@
   "status": "design-contract-and-oracle-fixtures",
   "residualRef": "docs/reference/skill-utilization-eval-residual.md",
   "pinnedAtAuthoring": {
-    "skillsCommit": "39d11e5352fc9230a26ec0c29a6210d1aebf448f",
+    "skillsCommit": "8f5cb7920b6ed9aaf4184450c638a4602379e733",
     "catalogCount": 118,
-    "catalogDigestSha256OfCatalogJson": "sha256:fea98c87f220cb2ed614fc2018099a24615228daeb617806d564600345c04e2a",
-    "note": "Authoring pin after drive/select entry rewrite; fixtures are not live host utilization proof."
+    "catalogDigestSha256OfCatalogJson": "sha256:9064e15e39c4bc1340c35663582c6605d9b0ebd4aae01d05e957ea920e09f892",
+    "note": "Authoring pin at full openai.yaml coverage tip; fixtures are not live host utilization proof."
   },
   "metricHierarchy": [
     "behaviorOracle",
@@ -148,7 +148,7 @@
       ]
     },
     {
-      "id": "critical-self-feeding-not-autonomous",
+      "id": "critical-select-next-work",
       "suite": "critical-skill",
       "prompt": "Design a loop that continuously discovers new product-quality work from evidence and re-enters the backlog without human prompt churn.",
       "expectedSkills": [
