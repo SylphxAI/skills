@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 116,
+  "count": 117,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -85,7 +85,7 @@
       "name": "build-product",
       "description": "Close shippable product capability gaps: frame the journey, implement on correct boundaries, verify with oracles.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:3963ef52978f089315f7528d91960ee258da225648fe7aea40a54e63ccaafb3e"
+      "packageDigest": "sha256:d76b15c519afcde37410eea6cfce41dd76324b318cb7505cee07d7c4129b7629"
     },
     {
       "name": "causal-inference-analysis",
@@ -121,7 +121,7 @@
       "name": "continuous-product-quality",
       "description": "High-leverage product betterment: coverage card, admit all B, execute, verify; continue until no unblocked high-EV work remains.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:1a4fe70cc14e745e091b7fdfb7b548c537fd973e18081c9aa6e3d75adaf1cd2a"
+      "packageDigest": "sha256:3d510b1ae12ce9d1a4c9086cd32fbaeebaa3d50f7e6b96cb4b8df3718eb08786"
     },
     {
       "name": "convergent-review",
@@ -283,7 +283,7 @@
       "name": "expand-product",
       "description": "Scale a validated product core: pick a ×N bet, implement leverage, verify scale metric and core non-regression.",
       "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:0624a1e57fd60ba8bafc91b09b6be057637a24896ddc2b3cd288570040e32f30"
+      "packageDigest": "sha256:63d390ae9c2c36f1937148b090d7ca6418e329125fe3c0cacc2ca21e557fb5fd"
     },
     {
       "name": "frontend-performance-remediation",
@@ -343,7 +343,7 @@
       "name": "maintain-product",
       "description": "Reduce live product harm: reproduce, fix root cause on the owning layer, verify reliability oracles.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:61236b013c0b9168ebafb037f7726df1dae2f049e694b46e590899018a3696df"
+      "packageDigest": "sha256:db9b7627f68a7995bd416a730d52ea95b4f37a9dac30763b426f783f09ce8df3"
     },
     {
       "name": "market-research-synthesis",
@@ -457,7 +457,7 @@
       "name": "product-finish",
       "description": "Finish/deburr an integrated product: inspect reality, fix coherence/states/feel/a11y/performance above threshold, recapture.",
       "path": "skills/product-finish/SKILL.md",
-      "packageDigest": "sha256:18d2f09b0827648006b357bdfa902012fd1de73feee2baf6c046abd45034f548"
+      "packageDigest": "sha256:1fa24b73ebc7ab977b05b5819d850a2a65c5beec9cae5bc9ea075e5f4cbe797c"
     },
     {
       "name": "product-lifecycle-architect",
@@ -493,13 +493,19 @@
       "name": "prototype-product",
       "description": "Validate a product hypothesis with the cheapest real slice: frame, probe, observe, go/kill/pivot.",
       "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:812ccb0a550e9f9aa8cd7362bda0d2e65cf3cffd5a86ca05278133e3b90a649e"
+      "packageDigest": "sha256:42acafa6ab8f4bc3702a39a364f8912ddb8807acec7be0ffaa745faa0658d9c2"
     },
     {
       "name": "provenance-system-design",
       "description": "Provenance system: lineage, attestations, verification paths, user-visible trust.",
       "path": "skills/provenance-system-design/SKILL.md",
       "packageDigest": "sha256:3ccb9e12bc84b8bbe05212359f1584ec21ba2d323fb2d2ccdd7b46c4d85d11e2"
+    },
+    {
+      "name": "pursue-product-objective",
+      "description": "Pursue a declared product objective to evidence-backed completion: bind objective, betterment cycles (card, admit all B, execute, verify), stop only when the objective is met or honestly blocked.",
+      "path": "skills/pursue-product-objective/SKILL.md",
+      "packageDigest": "sha256:9c60cb18b263629360f5b610ff32191b4b1182bf963bfef6f512025a3f588dde"
     },
     {
       "name": "reference-originality-review",

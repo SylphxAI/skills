@@ -14,6 +14,7 @@ When you need a **real capability** on a dogfood or market path, run **one** bui
 
 ## When not to use
 
+- Durable declared outcome to drive to completion → `pursue-product-objective`
 - Still validating the idea → `prototype-product`
 - Live reliability harm only → `maintain-product`
 - Scale ×N only → `expand-product`

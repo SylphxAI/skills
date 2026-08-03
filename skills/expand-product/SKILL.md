@@ -14,6 +14,7 @@ When the core already works and you need **reach, capacity, or leverage ×N**, r
 
 ## When not to use
 
+- Durable declared outcome to drive to completion → `pursue-product-objective`
 - Core still hypothetical → `prototype-product`
 - Core path missing → `build-product`
 - Outages/regressions dominate → `maintain-product`

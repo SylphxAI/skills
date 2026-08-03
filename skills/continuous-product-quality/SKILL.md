@@ -9,8 +9,9 @@ Improve the active product/workspace with **high-leverage** changes. Discover st
 
 When the work is clearly one kind of product job, prefer that Skill for the
 cycle: `prototype-product`, `build-product`, `maintain-product`,
-`expand-product`, `product-finish`. Use this Skill when betterment mixes those
-jobs or has no single job kind.
+`expand-product`, `product-finish`. When there is a **declared objective to
+reach and keep pursuing**, use `pursue-product-objective`. Use this Skill when
+betterment mixes jobs or has no single job kind and no fixed objective.
 
 
 ## Continuity (host-defined)

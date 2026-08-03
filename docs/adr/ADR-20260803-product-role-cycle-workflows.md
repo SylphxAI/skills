@@ -12,6 +12,7 @@ scope:
   - maintain-product
   - expand-product
   - product-finish
+  - pursue-product-objective
 ---
 
 # Product job-cycle workflows
@@ -34,6 +35,7 @@ Provide separate **workflow** Skills for distinct **job kinds**:
 | `maintain-product` | Reduce framed live/regression harm |
 | `expand-product` | Scale a validated core (×N) |
 | `product-finish` | Deburr/finish an integrated product |
+| `pursue-product-objective` | Pursue a declared product objective to evidence-backed completion |
 
 Each Skill: Frame → Research → Admit → Implement → Deliver/Verify → Cycle-done.
 
@@ -49,7 +51,8 @@ only answers: **given this job, how do you run one cycle?**
 ### Relation to continuous-product-quality
 
 Use a job Skill when the work is clearly that job. Use
-`continuous-product-quality` when betterment mixes jobs or has no single job kind.
+`pursue-product-objective` when a fixed outcome must be pursued until met. Use
+`continuous-product-quality` when betterment mixes jobs with no fixed objective.
 
 ## Consequences
 

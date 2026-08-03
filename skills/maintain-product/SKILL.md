@@ -14,6 +14,7 @@ When users or operators are **hurt** by failures or regressions, run **one** mai
 
 ## When not to use
 
+- Durable declared outcome to drive to completion → `pursue-product-objective`
 - Idea still unproven → `prototype-product`
 - Missing capability to ship → `build-product`
 - Pure growth ×N without harm → `expand-product`
