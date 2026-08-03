@@ -70,7 +70,6 @@ keep cycling in-process until engagement idle.
 - Waiting for Goal System to “kick” the next cycle — **you** open k+1  
 
 ## Soft composition
-## Soft composition
 
 | Need | Open |
 | --- | --- |
@@ -163,6 +162,10 @@ bind product + north-stars + uncapped goal  (engagement START — goal stays act
 - Serial busywork on independent B items without dependency
 - Full re-verify every commit as ceremony (unless risk demands)
 - Waiting for 90%+ information on reversible Type-2 work
+- **One-cycle-and-stop:** clearing B once then completing the goal without re-research
+- Calling “loop engineering” while refusing to open cycle k+1
+- End-turn cycle report + “要我開 Cycle N+1 嗎？” while engagement not idle
+- Redefining outer goal as the current cycle backlog
 
 ## When not to use
 
