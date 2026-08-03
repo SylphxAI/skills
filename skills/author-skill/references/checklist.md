@@ -1,4 +1,4 @@
-# Create-skill checklist
+# Author-skill checklist
 
 - [ ] Single job named in one sentence
 - [ ] `name` == folder; kebab-case

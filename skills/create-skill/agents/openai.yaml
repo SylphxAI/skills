@@ -1,4 +1,0 @@
-interface:
-  display_name: "Create Skill"
-  short_description: "Author or update a Sylphx Skill: job-shaped, progressive, portable."
-  default_prompt: "Create or update a Skill package for the requested job using create-skill."

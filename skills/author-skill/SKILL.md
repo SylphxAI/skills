@@ -1,9 +1,9 @@
 ---
-name: create-skill
-description: "Create or update a Sylphx Skill package: job-shaped name, short description, one-cycle or job method, progressive disclosure, portable host rules."
+name: author-skill
+description: "Author or update a Sylphx Skill package: job-shaped name, short description, one-cycle or job method, progressive disclosure, portable host rules."
 ---
 
-# Create Skill
+# Author Skill
 
 When you need to **add or revise a Skill** in this repository (or a compatible
 Agent Skills layout), run this workflow. Produce a package an agent can load

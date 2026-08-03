@@ -70,6 +70,12 @@
       "packageDigest": "sha256:278d9b4604d6e5c15e944e9fb57c0190a51b6412c116842a194f5ebadd33311c"
     },
     {
+      "name": "author-skill",
+      "description": "Author or update a Sylphx Skill package: job-shaped name, short description, one-cycle or job method, progressive disclosure, portable host rules.",
+      "path": "skills/author-skill/SKILL.md",
+      "packageDigest": "sha256:8c3894761841ebb36050df7582bafa26c8665a7a9f8363ce2259ad6d385958cf"
+    },
+    {
       "name": "autonomous-execution",
       "description": "Drive one accepted multi-phase objective through research, execute, verify, repair to delivery-terminal evidence.",
       "path": "skills/autonomous-execution/SKILL.md",
@@ -128,12 +134,6 @@
       "description": "Converge divergent analysis into one decision record with explicit residuals and commitments.",
       "path": "skills/convergent-review/SKILL.md",
       "packageDigest": "sha256:fb4453f255542a00e5f1c23ae20cdd0ae49603e8798ae85110b6ef385d0e5c05"
-    },
-    {
-      "name": "create-skill",
-      "description": "Create or update a Sylphx Skill package: job-shaped name, short description, one-cycle or job method, progressive disclosure, portable host rules.",
-      "path": "skills/create-skill/SKILL.md",
-      "packageDigest": "sha256:be309f65cd695f41d077996a3741607b94e4533805a8e78861ebe85301d9b0ba"
     },
     {
       "name": "critical-analysis",
