@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Prototyper"
+  short_description: "One prototype cycle: frame hypothesis, cheap research, build throwaway learning slice, decide go/kill/pivot."
+  default_prompt: "Run one Product Prototyper cycle on the active product/workspace."

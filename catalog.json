@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 112,
+  "count": 117,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -424,6 +424,18 @@
       "packageDigest": "sha256:b60af96544d53963a86f577786fdeeafe0b9bf2ef29d1ddde920cf8ed77a5d53"
     },
     {
+      "name": "product-builder",
+      "description": "One build cycle: close shippable capability gaps with research, implement on correct boundaries, verify delivery path.",
+      "path": "skills/product-builder/SKILL.md",
+      "packageDigest": "sha256:7b0a9feb8e638a10d90fbc9b9c007fb0e02b59e236ee679fafd7d994284bbd20"
+    },
+    {
+      "name": "product-expander",
+      "description": "One expand cycle: pick a leverage scale bet, research bottleneck, implement ×N change, verify scale and core non-regression.",
+      "path": "skills/product-expander/SKILL.md",
+      "packageDigest": "sha256:a2a503470ef8be0ed2fc9663da5bdd0af8db0e10ade2ba6bac95bbe72df6aca2"
+    },
+    {
       "name": "product-experiment-review",
       "description": "Product experiment design and readout: hypothesis, assignment, metrics, decision rules.",
       "path": "skills/product-experiment-review/SKILL.md",
@@ -442,10 +454,28 @@
       "packageDigest": "sha256:466d1017f721a015c553b12fc1c4334efe0c3a162ec6f597fff7999cf1c74e25"
     },
     {
+      "name": "product-finisher",
+      "description": "One finish cycle: inspect integrated product, admit above-threshold burrs, fix coherence/states/feel, verify finish bar.",
+      "path": "skills/product-finisher/SKILL.md",
+      "packageDigest": "sha256:ccc1463e9920a379fe9444dcf0947a04fe371e4d0bb627dd1b2ab81bde29de22"
+    },
+    {
       "name": "product-lifecycle-architect",
       "description": "Product lifecycle architecture across build, growth, and sunset stages.",
       "path": "skills/product-lifecycle-architect/SKILL.md",
       "packageDigest": "sha256:5c455fc92f26160c49a2a2c8bc84a5c35b183c63f5363138b1f4d2f7faf39103"
+    },
+    {
+      "name": "product-maintainer",
+      "description": "One maintain cycle: find live/regression harm, fix on correct boundaries, verify with reliability oracles.",
+      "path": "skills/product-maintainer/SKILL.md",
+      "packageDigest": "sha256:0c4d9a34eac70c55645f446aa0e3117ee5475be93b7f2dc101bab9e0a265c896"
+    },
+    {
+      "name": "product-prototyper",
+      "description": "One prototype cycle: frame hypothesis, cheap research, build throwaway learning slice, decide go/kill/pivot.",
+      "path": "skills/product-prototyper/SKILL.md",
+      "packageDigest": "sha256:cfbe3922967e48233fb790a1fe271af1935198d59f3a1916ecbcc7839e4b4baf"
     },
     {
       "name": "product-recovery-contract-review",
