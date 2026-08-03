@@ -79,7 +79,7 @@
       "name": "build-product",
       "description": "Close shippable product capability gaps: frame the journey, implement on correct boundaries, verify with oracles.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:d76b15c519afcde37410eea6cfce41dd76324b318cb7505cee07d7c4129b7629"
+      "packageDigest": "sha256:9e84d556f841a8d8db72f5c505c94e795589c5775edebebaac93b4c9d31ee766"
     },
     {
       "name": "causal-inference-analysis",
@@ -295,7 +295,7 @@
       "name": "expand-product",
       "description": "Scale a validated product core: pick a ×N bet, implement leverage, verify scale metric and core non-regression.",
       "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:63d390ae9c2c36f1937148b090d7ca6418e329125fe3c0cacc2ca21e557fb5fd"
+      "packageDigest": "sha256:a0fe76a853c874abef88536c7d3dc46883c8ee891fd66d64c472908406a6e266"
     },
     {
       "name": "frontend-performance-remediation",
@@ -361,7 +361,7 @@
       "name": "maintain-product",
       "description": "Reduce live product harm: reproduce, fix root cause on the owning layer, verify reliability oracles.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:db9b7627f68a7995bd416a730d52ea95b4f37a9dac30763b426f783f09ce8df3"
+      "packageDigest": "sha256:843e08aceb50b51ba9e4cce27d3773527fcc1f81348a1f6eead1f0b51aaa048f"
     },
     {
       "name": "market-research-synthesis",
@@ -493,7 +493,7 @@
       "name": "prototype-product",
       "description": "Validate a product hypothesis with the cheapest real slice: frame, probe, observe, go/kill/pivot.",
       "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:42acafa6ab8f4bc3702a39a364f8912ddb8807acec7be0ffaa745faa0658d9c2"
+      "packageDigest": "sha256:ac61c9b3baa2c9f0bdbcaaddd44ef84c5e24daffb8cb8bd0e30155dcfbadc84a"
     },
     {
       "name": "provenance-system-design",
