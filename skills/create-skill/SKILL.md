@@ -1,0 +1,173 @@
+---
+name: create-skill
+description: "Create or update a Sylphx Skill package: job-shaped name, short description, one-cycle or job method, progressive disclosure, portable host rules."
+---
+
+# Create Skill
+
+When you need to **add or revise a Skill** in this repository (or a compatible
+Agent Skills layout), run this workflow. Produce a package an agent can load
+to do a **specific job**, not an org chart, not always-on law, not a host
+tool manual.
+
+## When to use
+
+- New reusable agent method (workflow / review / policy / adapter)
+- Rewrite an existing Skill for clarity, boundaries, or portability
+- User asks to “make a skill for …”
+
+## When not to use
+
+- One-off task with no reuse → just do the task
+- Universal miss-class-A floors → `runtime/constitution.md` / host always-on, not a fat Skill
+- Repo-local commands and stack pins → product `AGENTS.md` / project docs
+- Designing multi-agent staffing → host/runtime, not Skill text
+
+## Authoring principles (non-negotiable)
+
+1. **Job method, not role title.** Name and voice = *what work to do*, not
+   “Prototyper / Builder / who you are.” Prefer verb-led ids:
+   `prototype-product`, `create-skill`, `pursue-product-objective`.
+2. **Progressive disclosure.** Listing sees only `name` + `description`. Body
+   loads after match. Keep description short and searchable; put depth in
+   body/`references/`.
+3. **Assume the model is strong.** Omit textbook filler (“backend is not
+   frontend”). Write steps the agent would otherwise miss.
+4. **One primary job.** Prefer one Skill per clear job. Do not fork two Skills
+   for the same intent (e.g. finisher + finish).
+5. **Portable.** No hard-coded host tool ids (`create_goal`, vendor-specific
+   goal APIs, etc.). Say “use the host’s continuity/objective APIs if present.”
+6. **No staffing OS.** Never specify how many agents to spawn or role casting.
+7. **Class correctly.** Primary output decides class:
+   - procedure / cycle / job artifact → `workflow`
+   - assessment record → `review`
+   - reusable predicates → `policy` (`*-standard` only for true policy)
+   - live tool I/O → `adapter`
+8. **Done criteria.** Every workflow Skill states when **this run/cycle** is
+   complete. Do not equate “product forever perfect” with Skill done unless
+   the job is explicitly pursue-to-objective.
+
+Read for class/composition detail:
+[skill-package-classes-and-composition.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/skill-package-classes-and-composition.md)
+and [ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
+
+## Package layout (this repo)
+
+```text
+skills/<skill-id>/
+  SKILL.md                 # required
+  agents/openai.yaml       # UI display_name / short_description / default_prompt
+  references/              # optional depth
+  scripts/                 # optional helpers
+  assets/                  # optional
+```
+
+- `skill-id`: `^[a-z0-9]+(?:-[a-z0-9]+)*$`
+- Frontmatter: `name` (same as folder), `description` (trigger string)
+- After change: `npm run build:catalog && npm test`, then install if needed:
+  `node runtime/sylphx-skills.mjs install --agent all`
+
+## One authoring cycle
+
+### 1. Frame the job
+
+- One sentence: **When you need to …, do …**
+- Primary artifact / outcome of one run
+- In scope / out of scope
+- Neighbour Skills (when not to use → point at ids)
+
+If you cannot name a single job, split or refuse a mega-Skill.
+
+### 2. Choose class and name
+
+| Primary output | Class | Name hint |
+| --- | --- | --- |
+| Steps to produce a job result | workflow | verb-led job |
+| Assessment / design record | review | `…-review` |
+| Predicates reused by many jobs | policy | `…-standard` only if true policy |
+| Live system operations | adapter | host/ops-shaped |
+
+Description template (one or two sentences):
+
+> Does X. Use when Y. Prefer Z when …
+
+Include trigger terms agents will search; exclude host-private API names.
+
+### 3. Draft `SKILL.md` body
+
+Recommended skeleton for **workflow**:
+
+```markdown
+# Title
+
+When you need to …, run one … cycle.   # or pursue until terminal
+
+## When to use
+## When not to use
+## Method
+### 1. Frame
+### 2. Research   # stop rule / VoI
+### 3. Admit work # In / Out
+### 4. Implement
+### 5. Deliver / verify
+## Cycle done   # or Objective terminal
+## Output
+```
+
+Rules of thumb:
+
+- **You / imperative** voice (“When you need…”, “Admit…”)
+- Research with an explicit **stop** condition
+- Admit **In/Out** so the wrong job does not smuggle in
+- Verify with **original oracles** when claims matter
+- Continuity: host-defined only; no tool ids
+- Long matrices → `references/`; keep entry thin
+
+### 4. Add `agents/openai.yaml`
+
+```yaml
+interface:
+  display_name: "Human Title"
+  short_description: "≤ ~140 chars, same job as description"
+  default_prompt: "Run … on the active workspace."
+```
+
+`display_name` may be title case; `name` stays kebab-id.
+
+### 5. Wire discovery (minimal)
+
+- Neighbour Skills’ **When not to use** / related lines if boundaries shifted
+- Optional one line in a relevant ADR/reference if portfolio-level
+- Do **not** invent a meta-router Skill
+
+### 6. Validate and land
+
+1. Frontmatter `name` == folder id  
+2. Local links resolve  
+3. `npm run build:catalog && npm test`  
+4. Commit with a message that states the job the Skill teaches  
+5. Install to agents when this environment expects sync  
+
+### 7. Smoke the trigger
+
+- Would an agent with only **name+description** load this for the right ask?
+- Would it load for the wrong ask? Tighten description / when-not.
+- Open body: can it execute without re-reading the whole catalog?
+
+## Anti-patterns
+
+- Role nouns as package ids (`product-prototyper`) when a verb job fits
+- Two packages for one intent
+- Always-on essays inside Skills
+- Host tool hardcoding; “create goal every message”
+- Multi-agent spawn counts inside Skill bodies
+- Prestige `*-standard` on pure workflows
+- Description essays that restate the title with no new retrieval signal
+- Loop-scheduler claims that fight the host turn model
+
+## Output
+
+- Path to new/updated package
+- Class + one-line job
+- Neighbours touched
+- Test/catalog result

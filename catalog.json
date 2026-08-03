@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 117,
+  "count": 118,
   "skills": [
     {
       "name": "accessibility-conformance-program-review",
@@ -128,6 +128,12 @@
       "description": "Converge divergent analysis into one decision record with explicit residuals and commitments.",
       "path": "skills/convergent-review/SKILL.md",
       "packageDigest": "sha256:fb4453f255542a00e5f1c23ae20cdd0ae49603e8798ae85110b6ef385d0e5c05"
+    },
+    {
+      "name": "create-skill",
+      "description": "Create or update a Sylphx Skill package: job-shaped name, short description, one-cycle or job method, progressive disclosure, portable host rules.",
+      "path": "skills/create-skill/SKILL.md",
+      "packageDigest": "sha256:be309f65cd695f41d077996a3741607b94e4533805a8e78861ebe85301d9b0ba"
     },
     {
       "name": "critical-analysis",
