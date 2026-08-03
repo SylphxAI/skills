@@ -113,9 +113,9 @@
     },
     {
       "name": "continuous-product-quality",
-      "description": "Multi-cycle product betterment engagement: high-leverage outcomes, backlog B, residual R, idle frontier.",
+      "description": "Multi-cycle product betterment engagement: high-leverage B slices, residual R, silent self-loop to idle frontier.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:3a25824bbb2f0ec74bd5c862433a903fd3f75ad1c2eaa2e3251d51ed49040f13"
+      "packageDigest": "sha256:0b464150db7799c9cb11329dc30f4e2b80db9f7a49f475a278f036a46ace5faa"
     },
     {
       "name": "convergent-review",

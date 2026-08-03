@@ -115,7 +115,8 @@ L = (expected_outcome_or_frontier_gap_delta × weight × confidence)
 | --- | --- |
 | B cleared this cycle | Cycle Stop-Audit → **re-research (next cycle)** |
 | Fresh re-research admits B=∅ and R clean | **Engagement idle** → goal may complete |
-| R still has unblocked high-EV | **Must not idle** — promote to B or execute |
+| R still has unblocked **or soft-only** high-EV | **Must not idle or end turn** — slice into B and execute |
+| Only remaining high-EV is qualified external/authority wait | Hard wait: engagement ACTIVE; no goal complete; no “start cycle?” |
 
 Engagement idle when **all** hold **after a fresh coverage card/re-scout**:
 
@@ -159,6 +160,8 @@ obligations, open the composed package (or rely on co-selected descriptions).
 - Treating one cycle B-clear as loop/goal complete without re-research
 - Final user response after each cycle while R/high-EV remains (“點 Cycle 4?”)
 - Replacing outer engagement goal with “finish this cycle”
+- Soft-parking engine/multi-day work in R then stopping
+- “Title-only B empty” as fake pause while outer goal incomplete
 - Admitting only one high-L item while other unblocked high-L items sit ignored
 - Freeze-all mega-E waterfall
 - Ease-first ranking; difficulty-as-veto

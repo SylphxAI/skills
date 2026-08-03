@@ -135,6 +135,7 @@ On a later wake (new signal, owner request, freshness miss):
 - Completing without research coverage card or verify cadence
 - Final user turn after each cycle (“Cycle N 報告，要繼續嗎？”) while not idle
 - Goal objective rewritten to the cycle backlog alone
+- Ending turn on soft-R parking (“B empty, residuals open”) without L0 B slices
 
 ## Minimum evidence in Skill output
 

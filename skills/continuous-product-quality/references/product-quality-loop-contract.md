@@ -146,12 +146,27 @@ evidence, delivery boundary, and relation to findings/candidates.
 | **B** | Admitted subset under leverage + MinOutcomeDelta + authority + capacity—**all** such items that fit the envelope, not only Top-1 |
 | **R** | C\B and later discoveries: each has L/EV, blocker class, freshness |
 
-Blocker classes for R (examples): `capacity`, `authority_pending`,
-`external_wait`, `below_min_delta`, `negative_ev`, `duplicate`,
-`unauthorized_irreversible`, `unverified_non_floor`.
+### Residual blockers (qualified vs soft)
+
+**Qualified** (may remain in R with evidence):
+
+| Class | Allowed only when |
+| --- | --- |
+| `external_wait` | Human/owner must produce an artifact or credential the agent cannot |
+| `authority_pending` | Required approval already requested; id/link recorded |
+| `capacity` | This cycle’s B is already full under hard WIP; overflow ranked |
+| `below_min_delta` / `negative_ev` / `duplicate` | Policy reject with reason |
+| `unauthorized_irreversible` | Would violate safety/legal without owner |
+
+**Soft (illegal sole blockers for high-EV):** “multi-day”, “large engine Port”,
+“expensive”, “not title-only”, “should be proper migration later”, “user might
+want polish later”. For these: **slice an L0/next shippable Work into B now**.
+
+**False B-empty:** Claiming B=∅ while R lists high-EV soft-only items is a
+Stop-Audit **fail** for engagement idle and a **continue** signal for cycle k+1.
 
 Re-admission: when capacity frees, evidence changes, or blockers clear, promote
-R→B without abandoning the engagement for a random micro-scout.
+R→B. Soft-blocked high-EV must not wait for a user “start next cycle” message.
 
 ### Quality Coverage
 
@@ -309,6 +324,8 @@ engagement is not idle. Outer objective stays product outcomes, not “cycle N.�
 | Residual completeness | Applicable matrix cells stale/`unknown` without residual or floor evidence |
 | B clearance | Open B items without delivery proof or legal reject |
 | EV leftover | Any R item with EV/L ≥ MinOutcomeDelta and no **qualified** blocker |
+| False B-empty | B=∅ claimed while soft-only high-EV sits in R |
+| Soft parking | multi-day/large/title-only used as sole R blocker without L0 B slice |
 | Floor | Hard-floor fail/unknown without active mitigation Work |
 | Polish trap | Shipping only cosmetic while higher-L residual unaddressed |
 | Authority trap | High-L residual blocked only by owner ask never attempted |
@@ -317,8 +334,9 @@ engagement is not idle. Outer objective stays product outcomes, not “cycle N.�
 | Efficiency note | (observability) independent B items run purely serial without dependency—flag thrash |
 | Competitor week (optional VoI) | Named high-L competitor-move candidates unblocked and ignored |
 
-Qualified blockers are concrete (authority ticket, external dependency, measured
-negative EV after new evidence)—not “maybe over-engineering” or “too hard.”
+Qualified blockers are concrete (authority ticket, human-only artifact,
+measured negative EV)—not “maybe over-engineering”, “too hard”, “multi-day”,
+or “engine work later”.
 
 ### Idle predicate (engagement only)
 

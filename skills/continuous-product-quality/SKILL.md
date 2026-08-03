@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "Multi-cycle product betterment engagement: high-leverage outcomes, backlog B, residual R, idle frontier."
+description: "Multi-cycle product betterment engagement: high-leverage B slices, residual R, silent self-loop to idle frontier."
 ---
 
 # Continuous Product Quality
@@ -50,13 +50,13 @@ inner checkpoints. The durable objective stays the **outer** product outcome.
 
 When cycle k Stop-Audit passes and engagement is **not** idle:
 
-1. **Immediately** start cycle k+1 (new coverage card / re-scout → new B).
-2. **Do not** end the agent turn with a user-facing “Cycle N 報告 / 你點下一步”.
-3. **Do not** ask the user whether to continue when R still has unblocked high-EV
-   or a fresh card would admit Work.
-4. Optional: short durable log in the contract (one line). Not a final answer.
-5. User-facing **final** status only at **engagement idle**, hard block, or
-   explicit user interrupt.
+1. **Immediately** start cycle k+1 in the **same turn** (new card → C → B).
+2. Promote soft-blocked high-EV R into **sliced B** (L0/next shippable).
+3. **Do not** end the agent turn with “Cycle N 報告” / residual essay / “點 Cycle N+1”.
+4. **Do not** declare “title-only B empty” while soft-only high-EV residuals remain.
+5. Optional: one-line durable contract log. Not a final answer.
+6. User-facing **final** status only at **engagement idle**, **qualified hard wait**
+   (all remaining high-EV truly external/authority-blocked), or user interrupt.
 
 Harness Goal API (when present) **recovers** the outer engagement after
 accidental stop. It does **not** replace self-loop: **even with no Goal API**,
@@ -68,6 +68,48 @@ keep cycling in-process until engagement idle.
 - `update_goal(complete)` or “WORK MAY STOP” after one cycle while R/high-EV remains  
 - Replacing outer objective text with the cycle backlog list alone  
 - Waiting for Goal System to “kick” the next cycle — **you** open k+1  
+
+
+## B empty, R, and soft blockers (critical)
+
+Agents fail the loop by writing **“title-only B empty, R still high-EV”** then
+**ending the turn** with a cycle report. That is **illegal** when any residual is
+only soft-blocked.
+
+### Qualified blockers (may keep item in R)
+
+Only these (with concrete evidence) may keep high-EV work out of B:
+
+| Class | Meaning | Example |
+| --- | --- | --- |
+| `external_wait` | Needs a human/owner artifact or credential **this agent cannot produce** | User must confirm visual OK in their browser; missing deploy credentials |
+| `authority_pending` | Explicit owner/legal approval required and already requested | Commercial default-on; public contract change awaiting owner |
+| `capacity` | Hard concurrency/CI envelope **after** B already has a full capacity load | Overflow while other high-L items are actively executing this cycle |
+| `duplicate` / `negative_ev` / `below_min_delta` | True policy rejects | Cosmetic below MinOutcomeDelta |
+
+### Soft blockers (illegal as sole reason to park high-EV in R and stop)
+
+**Never** treat these as engagement pause or B-empty:
+
+- “multi-day engine work” / “large” / “expensive” / “not title-only”
+- “needs a proper Port later” without opening an **L0 shippable slice** as B now
+- “wait for user visual” when **other** unblocked high-EV items still exist
+- “ROI of micro-polish is low” (correct for polish; **incorrect** for high-EV R)
+- “spawn_agent unavailable” (run serial; still execute B)
+- “no Goal API” (self-loop residual only)
+
+**Rule:** high-EV + only soft cost → **admit a capacity-sliced B item and execute**
+(e.g. skinned walk **L0**, not “whole engine Port or nothing”).
+
+### When the turn may end
+
+| Situation | Allowed end-of-turn? | Message shape |
+| --- | --- | --- |
+| More unblocked or soft-only high-EV work | **No** — continue cycle k+1 in-process | Durable contract log only |
+| **Every** remaining high-EV item has a **qualified** external/authority blocker and no other Work | **Yes** — hard wait | Engagement **ACTIVE**, blocked on \<ids\>; **not** idle; **not** “WORK MAY STOP”; **not** “要開 Cycle N 嗎？” |
+| Fresh re-scout B=∅ and R clean | **Yes** — engagement idle | Stop-Audit + goal complete if API |
+
+**Illegal message shape while engagement active:** long “Cycle N 報告” + residual table + “如果你要，下一句開 Cycle N+1”.
 
 ## Soft composition
 
@@ -117,8 +159,9 @@ keep cycling in-process until engagement idle.
     the goal to “complete cycle N” alone.
 17. **Self-loop without Goal API.** Missing `create_goal` is a residual note, not
     a stop. Continue cycles in-process until engagement idle.
-18. **No final user turn between cycles** unless blocked/idle/user interrupt.
-19. **No meta-router.** Native discovery only.
+18. **No final user turn between cycles** unless qualified hard wait, idle, or user interrupt.
+19. **Soft blockers ≠ stop.** Large/slow/high-cost high-EV work becomes sliced B, not R+essay.
+20. **No meta-router.** Native discovery only.
 
 ## Loop (engagement) and cycle
 
@@ -165,6 +208,8 @@ bind product + north-stars + uncapped goal  (engagement START — goal stays act
 - **One-cycle-and-stop:** clearing B once then completing the goal without re-research
 - Calling “loop engineering” while refusing to open cycle k+1
 - End-turn cycle report + “要我開 Cycle N+1 嗎？” while engagement not idle
+- “B empty / R open high-EV” then stop (soft parking)
+- “multi-day / engine Port / not title-only” as sole blocker without L0 B slice
 - Redefining outer goal as the current cycle backlog
 
 ## When not to use
