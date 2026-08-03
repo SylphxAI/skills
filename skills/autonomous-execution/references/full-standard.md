@@ -244,7 +244,7 @@ material, observed requirement.
 
 Before implementation, convert vague requests into verifiable outcomes.
 
-Use `scope-discipline` for the canonical terminal, same-cause, positive-net,
+Use `bound-task-scope` for the canonical terminal, same-cause, positive-net,
 and speculative-expansion classification. This section supplies execution-graph
 inputs; it does not define a second scope algorithm.
 
@@ -309,7 +309,7 @@ terminal outcome, an explicitly excluded scope, or a dependency that cannot be
 advanced under current authority; it does not make the parent complete while
 the parent still owns that outcome. Conversely, do not expand a satisfied
 objective indefinitely because more hardening is imaginable: after reaching the
-terminal, use `scope-discipline` for one bounded positive-net scan, apply material
+terminal, use `bound-task-scope` for one bounded positive-net scan, apply material
 same-cause corrections inside the owning boundary, and close when no eligible
 improvement changes the outcome enough to justify its cost.
 
@@ -330,7 +330,7 @@ reference specializes this standard's existing objective continuity,
 scheduling, evidence, review, and completion rules; it does not create another
 semantic owner. It closes one accepted objective. Continuous discovery,
 intake, and scheduling of new Work remains owned by
-`self-feeding-agent-loop`.
+`select-next-work`.
 
 ## Durable Progress And Anti-Regression
 

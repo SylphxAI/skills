@@ -102,7 +102,7 @@ Return one SaaS Web Platform Blueprint containing:
 - Use `saas-subscription-pricing`, `payment-platform-readiness`, and `refund-and-support-flow-review` for their detailed commercial artifacts.
 - Use `notification-strategy-review`, `account-recovery-review`, `enterprise-access-governance-review`, `privacy-data-lifecycle-review`, `product-analytics-instrumentation-review`, and `customer-support-operations` when one of those systems is the primary artifact.
 - Use `marketing-automation-blueprint` for the whole go-to-market control plane, `social-media-operations-review` for recurring social channel operations, and `software-distribution-readiness` for release-channel proof.
-- Use `product-lifecycle-architect` only when a separate cross-domain Product Program Manifest is required; it indexes the SaaS blueprint and specialist outputs without absorbing their semantics.
+- Use `compose-product-program` only when a separate cross-domain Product Program Manifest is required; it indexes the SaaS blueprint and specialist outputs without absorbing their semantics.
 - Use `product-finish` for the integrated public-to-authenticated finish pass
   after product, commercial, policy, and experience direction are defined.
   Blueprint acceptance is not evidence that copy, content, routes, states, and

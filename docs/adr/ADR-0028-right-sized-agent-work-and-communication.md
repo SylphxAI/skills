@@ -30,7 +30,7 @@ source.
 
 ## Decision
 
-1. `scope-discipline` remains the single owner of right-sized work. It gains an
+1. `bound-task-scope` remains the single owner of right-sized work. It gains an
    ordered smallest-complete solution ladder:
    avoid/delete, existing owner, standard-library or native capability, admitted
    dependency, direct local implementation, then justified new machinery.
@@ -110,7 +110,7 @@ adding a distinct contract.
 A read-only probe exercised installed packages from source revision
 `eb2b989dc709ca46fcaf6c08a7951d8dc344a1ce`:
 
-- `scope-discipline`
+- `bound-task-scope`
   `sha256:c59f0c92cee578d5ee279e63900c130b1617009f4f53cd2bb32c22ead749f473`;
 - `high-signal-communication`
   `sha256:3c722367993f2697917f14d2494a6ad94f5ed5b918eb9157c92e74e7d9f4e165`;
@@ -159,7 +159,7 @@ routing reliability or a general effect size.
 
 The complete source-by-source disposition and exact revisions are in:
 
-- [`scope-discipline/references/right-sized-agent-engineering.md`](../../skills/scope-discipline/references/right-sized-agent-engineering.md)
+- [`bound-task-scope/references/right-sized-agent-engineering.md`](../../skills/bound-task-scope/references/right-sized-agent-engineering.md)
 - [`high-signal-communication/references/research-basis.md`](../../skills/high-signal-communication/references/research-basis.md)
 
 Primary portable foundations:

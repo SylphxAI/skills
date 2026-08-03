@@ -1,9 +1,14 @@
 ---
 name: sylphx-platform-first
-description: "Prefer Sylphx Platform public PaaS/BaaS contracts before inventing backend, deploy, data, auth, or infra replacements."
+description: "Policy: prefer Sylphx Platform public PaaS/BaaS contracts before inventing backend, deploy, data, auth, or infra replacements."
 ---
 
 # Sylphx Platform First
+
+**Primary class:** `policy` (selection rule). **Not a product job Skill.**
+Apply when choosing platform/backend/infra approach for company-owned work.
+Do not treat this as a standalone betterment or build cycle.
+
 
 **Requirement:** use this selection rule for company-owned projects when the
 requested capability falls within its scope.

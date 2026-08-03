@@ -61,7 +61,7 @@ explicit floor and may not be self-attested.
 
 ## When not to use
 
-- Use `product-lifecycle-architect` to build the multi-domain program graph and
+- Use `compose-product-program` to build the multi-domain program graph and
   produce the sibling artifacts, not merely decide one launch candidate.
 - Use `software-distribution-readiness` for channel submission, reviewer,
   certification, rollout, and live-store evidence.

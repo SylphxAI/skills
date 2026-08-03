@@ -18,7 +18,7 @@ scope:
 [ADR-20260801-package-classes-and-standard-composition](ADR-20260801-package-classes-and-standard-composition.md)
 classifies single-objective closure and continuous work-selection as
 **workflow** packages. They were still installed under prestige `*-standard`
-ids (`autonomous-execution-standard`, `self-feeding-agent-loop-standard`), which
+ids (`autonomous-execution-standard`, `select-next-work-standard`), which
 falsely implies pure policy / always-on excellence law and collides with true
 policy packs in human and routing language.
 
@@ -30,7 +30,7 @@ leave historical install projection digests frozen.
 ## Decision
 
 1. Hard-rename `autonomous-execution-standard` → `autonomous-execution`.
-2. Hard-rename `self-feeding-agent-loop-standard` → `self-feeding-agent-loop`.
+2. Hard-rename `select-next-work-standard` → `select-next-work`.
 3. Do **not** keep discoverable aliases under the predecessor ids.
 4. Primary class remains `workflow` (execution / work-selection OS methods with
    embedded predicates). Do not reintroduce a pure-policy `*-standard` suffix

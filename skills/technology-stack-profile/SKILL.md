@@ -1,9 +1,14 @@
 ---
 name: technology-stack-profile
-description: "Required technology stack profile across backend, web, APIs, clients, events, telemetry."
+description: "Policy profile: required technology stack selection rules for matching repos (constraints on implementation, not a product job cycle)."
 ---
 
 # Backend, Web, and Cross-platform Interoperability Profile
+
+**Primary class:** `policy` / profile pin. **Not a product job Skill.**
+Apply when implementing or reviewing stack choices for a matching repository.
+Agents do not “run a cycle” of this package; they apply its constraints while doing another job.
+
 
 **Requirement:** apply this profile when its selector matches the repository.
 

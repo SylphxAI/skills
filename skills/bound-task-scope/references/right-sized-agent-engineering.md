@@ -16,7 +16,7 @@ Each method was assessed against four questions:
 4. Does it belong in an existing semantic owner, a conditional specialist
    procedure, an optional tool, or nowhere?
 
-The resulting design is one compact solution ladder in `scope-discipline`, with
+The resulting design is one compact solution ladder in `bound-task-scope`, with
 reproduction, evidence, review, prompt, dependency, and communication mechanics
 left in their existing owners.
 

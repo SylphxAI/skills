@@ -54,7 +54,7 @@ compliance report merely because this package loaded.
 ## Boundaries
 
 - Does not grant deploy, credential, or MCP capabilities.
-- Does not own continuous next-Work discovery (`self-feeding-agent-loop`).
+- Does not own continuous next-Work discovery (`select-next-work`).
 - Does not own multi-aspect product betterment loops (`continuous-product-quality`).
 - Does not replace product-local ADRs where those own decisions.
 

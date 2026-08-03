@@ -1,0 +1,4 @@
+interface:
+  display_name: "Compose Product Program"
+  short_description: "Cross-domain Product Program Manifest: graph, handoffs, delivery proof."
+  default_prompt: "Compose a Product Program Manifest for this cross-domain product program."

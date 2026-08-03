@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bound Task Scope"
+  short_description: "Right-size the current task: in/out, non-goals, cut lines."
+  default_prompt: "Bound scope for the current request before expanding work."

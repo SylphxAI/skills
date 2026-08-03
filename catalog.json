@@ -61,7 +61,7 @@
       "name": "app-design-blueprint",
       "description": "Whole-app design blueprint for new apps or full redesigns: jobs, IA, activation, retention, multi-surface.",
       "path": "skills/app-design-blueprint/SKILL.md",
-      "packageDigest": "sha256:ab602c2a27cd17423c8d507c7da10831e20562db7b869bbf33ef138ca417f17c"
+      "packageDigest": "sha256:be7b7efa8693da0f1ebc33de0105fafed76b0caaed2d8dde0fa7b96a48101e96"
     },
     {
       "name": "architecture-convergence",
@@ -79,13 +79,19 @@
       "name": "autonomous-execution",
       "description": "Drive one accepted multi-phase objective through research, execute, verify, repair to delivery-terminal evidence.",
       "path": "skills/autonomous-execution/SKILL.md",
-      "packageDigest": "sha256:3f1089b6c6c019219aeb88fb39a234a4620cb44d0be0eadc8dffd5ef875172a0"
+      "packageDigest": "sha256:7edd66ced3d8cce5a98af18e94ab3f9ef28b4c41e41aca8e9f5945d610640721"
     },
     {
       "name": "board-metrics-operating-review",
       "description": "Board/executive metrics operating model: definitions, lineage, decision use, reporting cadence, trust.",
       "path": "skills/board-metrics-operating-review/SKILL.md",
       "packageDigest": "sha256:ed71491ac0936a97e55e51d785315ab94e3b85b407d5e4200416c98bcef5d29a"
+    },
+    {
+      "name": "bound-task-scope",
+      "description": "Bound the current task: objective, in/out, non-goals, cut lines, and right-sized ceremony for this request.",
+      "path": "skills/bound-task-scope/SKILL.md",
+      "packageDigest": "sha256:1b4849f344759cf8bb0f68fb206ff16f41541b4f7caf672e50c9aa857c09f7fa"
     },
     {
       "name": "build-product",
@@ -121,19 +127,25 @@
       "name": "composable-product-portfolio",
       "description": "Multi-product portfolio seams: what to share vs isolate, composition rules across products.",
       "path": "skills/composable-product-portfolio/SKILL.md",
-      "packageDigest": "sha256:0631e8de00b8656959f7e440c029eb0e6719403fbdc9397fe2a6642ac9778f57"
+      "packageDigest": "sha256:bdbe1dd05bcb754ba4d52a440c9eaa93234fd6548463265d4d0e8993af1bb9ee"
+    },
+    {
+      "name": "compose-product-program",
+      "description": "Compose a cross-domain Product Program Manifest: inventory, dependency DAG, handoffs, delivery slices, completion evidence.",
+      "path": "skills/compose-product-program/SKILL.md",
+      "packageDigest": "sha256:2d5c1af42e6081a6bfb00936beeae51ececee785f3ce3b83d9f8cb9fd8f7ddeb"
     },
     {
       "name": "continuous-product-quality",
-      "description": "High-leverage product betterment: coverage card, admit all B, execute, verify; continue until no unblocked high-EV work remains.",
+      "description": "Open-ended product betterment when jobs mix and there is no fixed objective: coverage card, admit all high-EV B, execute, verify; stop at empty high-EV frontier.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:3d510b1ae12ce9d1a4c9086cd32fbaeebaa3d50f7e6b96cb4b8df3718eb08786"
+      "packageDigest": "sha256:59e4c12844abf2f1ee4f7f698a4d07a6a103f68f3a39457ba3dd2d8eeb4215f4"
     },
     {
       "name": "convergent-review",
       "description": "Converge divergent analysis into one decision record with explicit residuals and commitments.",
       "path": "skills/convergent-review/SKILL.md",
-      "packageDigest": "sha256:fb4453f255542a00e5f1c23ae20cdd0ae49603e8798ae85110b6ef385d0e5c05"
+      "packageDigest": "sha256:a22bd9c5e291b1ea6c26eb92cf21b28f3cbd3280c45bf4f40340bc6eabe3cf25"
     },
     {
       "name": "critical-analysis",
@@ -145,7 +157,7 @@
       "name": "customer-data-migration-review",
       "description": "Customer data migration: mapping, dual-write/read, cutover, rollback, integrity proof.",
       "path": "skills/customer-data-migration-review/SKILL.md",
-      "packageDigest": "sha256:721677bd034194c7168c3f9c5ca3d3c4038d5ec6efbfd9f36ee941616e5c4a84"
+      "packageDigest": "sha256:f5b684f11d277717fdd9818064707b076c211c80d525ca94d35893b9bd33e1e4"
     },
     {
       "name": "customer-success-operations-review",
@@ -205,7 +217,7 @@
       "name": "dependency-version-selection",
       "description": "Select dependency and runtime versions from live authoritative release sources.",
       "path": "skills/dependency-version-selection/SKILL.md",
-      "packageDigest": "sha256:fb3ba0564afeb475daba24a3e09e07f35945f2bb12e36b0ca3e442057736fa0a"
+      "packageDigest": "sha256:1cda811bb06f9f647752890baca332527b9c23774781dcc8d6f941cd99e980db"
     },
     {
       "name": "design-space-exploration",
@@ -343,7 +355,7 @@
       "name": "launch-readiness-review",
       "description": "Launch readiness gates across product, ops, support, risk, and go/no-go evidence.",
       "path": "skills/launch-readiness-review/SKILL.md",
-      "packageDigest": "sha256:d3875e92200e39d3502724e500cf3561a72950851d47872640bc23c42460d57f"
+      "packageDigest": "sha256:60e056804edeb43ce28ebbaa103419f208316d0b62a190982562628cdc45c5c4"
     },
     {
       "name": "maintain-product",
@@ -439,13 +451,13 @@
       "name": "product-analytics-instrumentation-review",
       "description": "Product analytics instrumentation: events, properties, identity, data quality.",
       "path": "skills/product-analytics-instrumentation-review/SKILL.md",
-      "packageDigest": "sha256:b2cd53df151fc902a4937ecc10c2aa3b5ce1c62dd89aca41f07e245ec0e65e61"
+      "packageDigest": "sha256:bc94694dd50946d7fd96a8019bba4bcd33e762a76d8bd2046e41048f0e5bb1e8"
     },
     {
       "name": "product-asset-production",
       "description": "Produce product art, 3D, or content assets to a brief with acceptance checks.",
       "path": "skills/product-asset-production/SKILL.md",
-      "packageDigest": "sha256:b60af96544d53963a86f577786fdeeafe0b9bf2ef29d1ddde920cf8ed77a5d53"
+      "packageDigest": "sha256:7b35f63359a3c5bdc0a3e61bf53ee4d84343f61fc08ad81a9fcdf27ed6b07f1f"
     },
     {
       "name": "product-experiment-review",
@@ -464,12 +476,6 @@
       "description": "Finish/deburr an integrated product: inspect reality, fix coherence/states/feel/a11y/performance above threshold, recapture.",
       "path": "skills/product-finish/SKILL.md",
       "packageDigest": "sha256:1fa24b73ebc7ab977b05b5819d850a2a65c5beec9cae5bc9ea075e5f4cbe797c"
-    },
-    {
-      "name": "product-lifecycle-architect",
-      "description": "Product lifecycle architecture across build, growth, and sunset stages.",
-      "path": "skills/product-lifecycle-architect/SKILL.md",
-      "packageDigest": "sha256:5c455fc92f26160c49a2a2c8bc84a5c35b183c63f5363138b1f4d2f7faf39103"
     },
     {
       "name": "product-recovery-contract-review",
@@ -511,7 +517,7 @@
       "name": "pursue-product-objective",
       "description": "Pursue a declared product objective to evidence-backed completion: bind objective, betterment cycles (card, admit all B, execute, verify), stop only when the objective is met or honestly blocked.",
       "path": "skills/pursue-product-objective/SKILL.md",
-      "packageDigest": "sha256:9c60cb18b263629360f5b610ff32191b4b1182bf963bfef6f512025a3f588dde"
+      "packageDigest": "sha256:266f7f769861a455f8d2c19650a8bddad631b9de57528cdb9fa904c0235ce949"
     },
     {
       "name": "reference-originality-review",
@@ -577,13 +583,7 @@
       "name": "saas-web-platform-blueprint",
       "description": "SaaS web platform blueprint: tenancy, core surfaces, billing hooks, admin, scale path.",
       "path": "skills/saas-web-platform-blueprint/SKILL.md",
-      "packageDigest": "sha256:fd31b41d475782fff6c0fd515c4f340c670badcb06fb518e5d8305c6712b9fa3"
-    },
-    {
-      "name": "scope-discipline",
-      "description": "Scope discipline: in/out bounds, non-goals, cut lines, honesty under pressure.",
-      "path": "skills/scope-discipline/SKILL.md",
-      "packageDigest": "sha256:269bb1d280de723a30ddb3d17ebaa0d5e316958127f2c79e256409938fcfc752"
+      "packageDigest": "sha256:ece2814ae64996dcab7bc8529c64c92943d66a9364cc18d152c8fd8c6aab3fac"
     },
     {
       "name": "search-discovery-quality-review",
@@ -604,10 +604,10 @@
       "packageDigest": "sha256:5eedf4265b9a859ef8785dee69d97fa5964e6c46203e669b349eb0ebf7f020c9"
     },
     {
-      "name": "self-feeding-agent-loop",
-      "description": "Continuous next-Work selection OS from evidence without human prompt churn.",
-      "path": "skills/self-feeding-agent-loop/SKILL.md",
-      "packageDigest": "sha256:c6a8790e794dc3ba1c60556188fec897d4491fb79ae4763a3799441c80c61721"
+      "name": "select-next-work",
+      "description": "Select and claim the next high-value Work from evidence: scout, rank, tick, backpressure; not product betterment or one fixed objective.",
+      "path": "skills/select-next-work/SKILL.md",
+      "packageDigest": "sha256:a3480823a9aa79e4c8efe46f9b064cdbb099d04d884dde358e4acaffcc1eed5f"
     },
     {
       "name": "semantic-taxonomy-design",
@@ -637,7 +637,7 @@
       "name": "software-distribution-readiness",
       "description": "Software distribution readiness: artifacts, signing, channels, updates, rollback.",
       "path": "skills/software-distribution-readiness/SKILL.md",
-      "packageDigest": "sha256:fa76c0112d82240a9b178aac5a4415d664c94c7c7dd87cc6d46ed96f330c4867"
+      "packageDigest": "sha256:d16ed5a447bebf52cfbfcb7639544ab2aea509b522ea5aee0e8f15c58b7ca63c"
     },
     {
       "name": "source-authoring-standard",
@@ -677,9 +677,9 @@
     },
     {
       "name": "sylphx-platform-first",
-      "description": "Prefer Sylphx Platform public PaaS/BaaS contracts before inventing backend, deploy, data, auth, or infra replacements.",
+      "description": "Policy: prefer Sylphx Platform public PaaS/BaaS contracts before inventing backend, deploy, data, auth, or infra replacements.",
       "path": "skills/sylphx-platform-first/SKILL.md",
-      "packageDigest": "sha256:df78bd21402c00cfa6484b361a577ed19f9aa4898fdb7dab0c5229fcc8a75ba5"
+      "packageDigest": "sha256:e20486b698091cf57780fa1e143dd579db98d02fe06798e974d60e8395fc16c0"
     },
     {
       "name": "system-dynamics-analysis",
@@ -689,9 +689,9 @@
     },
     {
       "name": "technology-stack-profile",
-      "description": "Required technology stack profile across backend, web, APIs, clients, events, telemetry.",
+      "description": "Policy profile: required technology stack selection rules for matching repos (constraints on implementation, not a product job cycle).",
       "path": "skills/technology-stack-profile/SKILL.md",
-      "packageDigest": "sha256:08c396cb4f8a95aa2232f3cf0a34f29d9caba3af2b18934f48e78fedaaba2396",
+      "packageDigest": "sha256:c428effd085c9403ac0484fb92da10cb35d1e77bbb1df421335f125a98e11ec8",
       "profile": {
         "id": "technology-stack-profile",
         "revision": "2026-07-29.2",

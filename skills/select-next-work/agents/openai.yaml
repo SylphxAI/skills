@@ -1,0 +1,4 @@
+interface:
+  display_name: "Select Next Work"
+  short_description: "Scout, rank, and tick the next high-value Work from evidence."
+  default_prompt: "Select and advance the next high-value Work from current evidence."

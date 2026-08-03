@@ -40,7 +40,7 @@ Legend:
 | `project-manifest-standard` | policy | KEEP-policy | Project declaration predicates; distinct from org control plane |
 | `repo-adoption-standard` | policy (with onboarding procedure) | KEEP-policy | Prefer keep; if body is mostly procedure, consider workflow extract later |
 | `risk-matched-verification-standard` | policy | KEEP-policy | Verification depth predicates |
-| `self-feeding-agent-loop` | **workflow** | RENAMED-workflow | Hard-renamed from `self-feeding-agent-loop-standard` |
+| `select-next-work` | **workflow** | RENAMED-workflow | Hard-renamed from `select-next-work-standard` |
 | `source-authoring-standard` | policy | KEEP-policy | Source identity/commit predicates |
 | `specification-control-plane-standard` | policy | KEEP-policy | Spec lifecycle; check overlap with project-manifest / enterprise later only if coincident |
 | `work-coordination-standard` | policy | KEEP-policy | Portable ledger semantics; pair with adapter `enact-work-coordination` |
@@ -85,7 +85,7 @@ Hard-renamed (ADR-0016, no discoverable alias):
 | Predecessor | Current |
 | --- | --- |
 | `autonomous-execution-standard` | `autonomous-execution` |
-| `self-feeding-agent-loop-standard` | `self-feeding-agent-loop` |
+| `select-next-work-standard` | `select-next-work` |
 
 Bodies declare primary class `workflow` and soft composition. Historical
 `runtime/legacy-agents-projection.mjs` keeps predecessor ids as frozen install

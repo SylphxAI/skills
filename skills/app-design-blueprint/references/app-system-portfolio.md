@@ -234,7 +234,7 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 | Localized experience semantics | `app-design-blueprint` |
 | Deterministic product capture, cross-channel asset transformation, localized production and LQA pack | `product-asset-production` |
 | Multi-channel marketing control plane | `marketing-automation-blueprint` |
-| Product Program Manifest composition/index of independently owned sibling artifacts | `product-lifecycle-architect` |
+| Product Program Manifest composition/index of independently owned sibling artifacts | `compose-product-program` |
 
 ## 5. Dangerous interaction tests
 

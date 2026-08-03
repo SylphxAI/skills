@@ -28,7 +28,7 @@ The requested full-scope loop is narrower. It closes one original objective
 through framing, material research and decision, execution, audit, repair, and
 an evidence-backed terminal. `autonomous-execution` already owns that
 job and its completion claim. `convergent-review` owns formal exact-candidate
-review, while `self-feeding-agent-loop` owns repeated discovery and
+review, while `select-next-work` owns repeated discovery and
 completion of new Work. A new generic `loop-engineering` package would duplicate
 those owners and make native Skill selection ambiguous.
 
@@ -61,7 +61,7 @@ those owners and make native Skill selection ambiguous.
 8. The method adds no mandatory task manifest, scheduler, memory service,
    subagent hierarchy, policy system, or CI workflow. Continuous discovery of
    new Work remains a separate operating-system job owned by
-   `self-feeding-agent-loop`.
+   `select-next-work`.
 
 ## Rejected directions
 

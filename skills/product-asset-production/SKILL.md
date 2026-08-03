@@ -175,7 +175,7 @@ Use `artifactDigest` only on exact child files or sealed input references with
   final selection/order, disclosures, and conversion experiment.
 - `software-distribution-readiness` owns upload/submission, certification,
   rollout, withdrawal, and observed channel evidence.
-- `product-lifecycle-architect` owns planning and observed-state revisions of
+- `compose-product-program` owns planning and observed-state revisions of
   the cross-domain dependency graph and composition index, not this pack.
 - `interface-craft` owns product-interface implementation and polish, not
   promotional capture or media production.

@@ -1,22 +1,23 @@
 ---
-name: self-feeding-agent-loop
-description: "Continuous next-Work selection OS from evidence without human prompt churn."
+name: select-next-work
+description: "Select and claim the next high-value Work from evidence: scout, rank, tick, backpressure; not product betterment or one fixed objective."
 ---
 
-# Self-Feeding Agent Loop (workflow)
+# Select Next Work
 
-**Primary class:** `workflow` (continuous work-selection OS with embedded
+**Primary class:** `workflow` (continuous next-Work selection method with embedded
 predicates). **Package id** is job-named (workflow). Do not treat this package as pure
 policy or always-on law. See
 [ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
 
-**When matched:** run this workflow for continuous discovery → claim → tick
-behavior.
+**When you need to:** pick and advance the **next** Work from evidence without the user naming the ticket.
+
+**Not for:** product betterment cycles (`continuous-product-quality` / job skills), or one declared product objective (`pursue-product-objective` / `autonomous-execution`).
 
 ## Progressive disclosure
 
 1. Read [references/full-standard.md](references/full-standard.md) for the full
-   continuous-work OS method, authority map, tick shape, and backpressure rules.
+   next-Work selection method, authority map, tick shape, and backpressure rules.
 
 ## Soft composition (native discovery has no dependency graph)
 
@@ -28,7 +29,7 @@ Open composed packs when the tick touches their domain:
   objective to terminal) — this package does not replace that closure loop
 - `delivery-standard` / `evidence-and-claims-standard` when ticks claim delivery
   outcomes
-- `continuous-product-quality` when the continuous OS is specifically product
+- `continuous-product-quality` when the continuous selection is specifically product
   betterment across aspects (compose; do not merge packages)
 
 ## Method (summary)

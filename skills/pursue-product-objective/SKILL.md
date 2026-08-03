@@ -7,6 +7,8 @@ description: "Pursue a declared product objective to evidence-backed completion:
 
 When there is a **declared product objective** and you must **keep going until that objective is achieved** (not a one-off polish pass), use this workflow.
 
+**Default for “follow the goal until done” product work.** Prefer job Skills only for a pure single-job cycle; prefer `continuous-product-quality` only for open betterment with no fixed objective.
+
 This is the goal-directed betterment job: same high-leverage cycle shape as open betterment, but the **terminal is the objective**, not “the product is perfect,” and not “one cycle felt productive.”
 
 ## When to use

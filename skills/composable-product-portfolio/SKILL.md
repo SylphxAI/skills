@@ -131,10 +131,10 @@ Reject or redesign a portfolio that:
   cell, deployment and trust architecture inside and between implementations.
 - `commercial-decision-standard` owns accepted pricing, packaging, SKU,
   entitlement, profit-center and internal-settlement decisions.
-- `product-lifecycle-architect` owns the cross-domain build-to-run delivery
+- `compose-product-program` owns the cross-domain build-to-run delivery
   graph for one selected product program, not the portfolio's product-unit
   topology.
-- `product-lifecycle-architect` may compose a selected bundle after this Skill
+- `compose-product-program` may compose a selected bundle after this Skill
   has resolved which products remain independently owned.
 - `saas-web-platform-blueprint`, app/game blueprints and other product
   procedures own each product's promise and experience.

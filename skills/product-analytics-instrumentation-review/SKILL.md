@@ -73,7 +73,7 @@ never the product's consent or retention policy.
 ## When not to use
 
 - Use `app-design-blueprint`, `game-design-blueprint`, or
-  `product-lifecycle-architect` when the primary artifact is product behavior or
+  `compose-product-program` when the primary artifact is product behavior or
   a cross-domain delivery program, not measurement implementation.
 - Use `marketing-automation-blueprint` for spend, channel attribution decisions,
   creative automation, and budget/shutdown control.

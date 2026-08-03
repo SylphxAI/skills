@@ -132,9 +132,9 @@
       "behaviorOracle": {
         "mandatoryObservable": "Preserves a full-scope acceptance/delivery map and continues research-execute-verify beyond intermediate checkpoints; does not stop at one phase/local diff as complete.",
         "mustNot": [
-          "Treat self-feeding-agent-loop as the sole primary owner of this job",
+          "Treat select-next-work as the sole primary owner of this job",
           "Treat delivery-standard as the sole primary owner of this job",
-          "Treat scope-discipline as the sole primary owner of this job"
+          "Treat bound-task-scope as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -142,9 +142,9 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "self-feeding-agent-loop",
+        "select-next-work",
         "delivery-standard",
-        "scope-discipline"
+        "bound-task-scope"
       ]
     },
     {
@@ -152,7 +152,7 @@
       "suite": "critical-skill",
       "prompt": "Design a loop that continuously discovers new product-quality work from evidence and re-enters the backlog without human prompt churn.",
       "expectedSkills": [
-        "self-feeding-agent-loop"
+        "select-next-work"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Frames a continuous discovery/admission/idle-wake loop for new Work, not a single bounded objective pushed to one terminal.",
@@ -255,7 +255,7 @@
         "mustNot": [
           "Treat product-finish as the sole primary owner of this job",
           "Treat interface-craft as the sole primary owner of this job",
-          "Treat product-lifecycle-architect as the sole primary owner of this job"
+          "Treat compose-product-program as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -265,7 +265,7 @@
       "nearNeighbours": [
         "product-finish",
         "interface-craft",
-        "product-lifecycle-architect"
+        "compose-product-program"
       ]
     },
     {
@@ -648,7 +648,7 @@
       "behaviorOracle": {
         "mandatoryObservable": "Pushes one bounded multi-phase objective to terminal rather than designing an infinite new-work discovery loop.",
         "mustNot": [
-          "Treat self-feeding-agent-loop as the sole primary owner of this job",
+          "Treat select-next-work as the sole primary owner of this job",
           "Treat delivery-standard as the sole primary owner of this job"
         ]
       },
@@ -657,7 +657,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "self-feeding-agent-loop",
+        "select-next-work",
         "delivery-standard"
       ]
     },
@@ -806,7 +806,7 @@
       ],
       "nearNeighbours": [
         "source-authoring-standard",
-        "self-feeding-agent-loop"
+        "select-next-work"
       ]
     },
     {
@@ -838,7 +838,7 @@
       ],
       "nearNeighbours": [
         "product-finish",
-        "self-feeding-agent-loop",
+        "select-next-work",
         "autonomous-execution"
       ],
       "behaviorOracle": {
@@ -886,7 +886,7 @@
       ],
       "nearNeighbours": [
         "autonomous-execution",
-        "self-feeding-agent-loop",
+        "select-next-work",
         "product-finish"
       ],
       "behaviorOracle": {

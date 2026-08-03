@@ -1,17 +1,23 @@
 ---
 name: continuous-product-quality
-description: "High-leverage product betterment: coverage card, admit all B, execute, verify; continue until no unblocked high-EV work remains."
+description: "Open-ended product betterment when jobs mix and there is no fixed objective: coverage card, admit all high-EV B, execute, verify; stop at empty high-EV frontier."
 ---
 
 # Continuous Product Quality
 
-Improve the active product/workspace with **high-leverage** changes. Discover state yourself.
+Improve the active product/workspace with **high-leverage** changes when work
+**mixes** product jobs and there is **no single fixed objective**. Discover state yourself.
 
-When the work is clearly one kind of product job, prefer that Skill for the
-cycle: `prototype-product`, `build-product`, `maintain-product`,
-`expand-product`, `product-finish`. When there is a **declared objective to
-reach and keep pursuing**, use `pursue-product-objective`. Use this Skill when
-betterment mixes jobs or has no single job kind and no fixed objective.
+**Prefer other Skills first:**
+
+| Situation | Skill |
+| --- | --- |
+| One job: learn / ship / harm / scale / finish | `prototype-product` · `build-product` · `maintain-product` · `expand-product` · `product-finish` |
+| Declared outcome to drive to completion | `pursue-product-objective` |
+| Multi-phase engineering delivery terminal | `autonomous-execution` |
+| Pick next Work from a ledger without a product matrix | `select-next-work` |
+| Mixed open betterment, no fixed objective | **this Skill** |
+
 
 
 ## Continuity (host-defined)

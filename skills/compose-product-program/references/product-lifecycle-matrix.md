@@ -7,7 +7,7 @@
 | Product promise, user experience, capability semantics | `app-design-blueprint` or `game-design-blueprint` |
 | App availability/presentation or game progression/population exposure | corresponding design blueprint |
 | Evergreen game-world fairness | `game-design-blueprint` |
-| Cross-domain dependency graph, release targets, stable handoffs and declared Definition of Done | planning revision of `product-lifecycle-architect` |
+| Cross-domain dependency graph, release targets, stable handoffs and declared Definition of Done | planning revision of `compose-product-program` |
 | Market evidence | `market-research-synthesis` |
 | App monetization model and value-exchange semantics | `app-design-blueprint` |
 | Subscription/SaaS pricing and packaging decision | `saas-subscription-pricing` |
@@ -28,7 +28,7 @@
 | Campaign creative brief/concept and paid/organic variants | `marketing-automation-blueprint` |
 | Listing narrative, asset selection and channel metadata | `store-listing-optimization` |
 | SDK semantic ports and product behavior | corresponding App/Game Design Blueprint |
-| SDK provider/version/disclosure/replacement and release registry | `product-lifecycle-architect` |
+| SDK provider/version/disclosure/replacement and release registry | `compose-product-program` |
 | Actual source/build/release/runtime truth | Owning source, build, artifact, store/partner and runtime systems; an observed-state manifest revision references their evidence |
 
 The program manifest references these artifacts. It never becomes a prose mirror of their live facts.

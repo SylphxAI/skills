@@ -44,7 +44,7 @@ export const LEGACY_AGENTS_PROJECTIONS = Object.freeze({
     'prompt-architecture': 'sha256:1c7d179542ea4105fb76808be4fbe734d5211b30a217112e4fbadff4896c31c8',
     'repo-adoption-standard': 'sha256:065d461ec0df4a581dc2dd253574b30c1f2833bbdb33067daf7dedc0bc09ed5b',
     'roleless-speculative-development-standard': 'sha256:4cb1ce32124692cd557bc65172929077f09e1e4421e546c9fdda0853decf2ce4',
-    'self-feeding-agent-loop-standard': 'sha256:53a29aa3410218a92c6cb8bbe97c4f258a9a57546eeb2b2c2e5c76c193836727',
+    'select-next-work-standard': 'sha256:53a29aa3410218a92c6cb8bbe97c4f258a9a57546eeb2b2c2e5c76c193836727',
     'sota-execution-standard': 'sha256:fa2e84c8821450cba399d9903e2b71f6414d453a0b8a814dd9433952c05262d6',
     'source-authoring-standard': 'sha256:d13e1a7b99ee6c72d4ed31589e7668206d88a9f69b25ec6e1beff71d0009e5ea',
     'specification-control-plane-standard': 'sha256:35f3b20f5d6cc57b228f737ffd7b7ba5c8bdb67e91efe1dd6b6624380e01fcac',

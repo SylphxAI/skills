@@ -1,15 +1,15 @@
 ---
-name: product-lifecycle-architect
-description: "Product lifecycle architecture across build, growth, and sunset stages."
+name: compose-product-program
+description: "Compose a cross-domain Product Program Manifest: inventory, dependency DAG, handoffs, delivery slices, completion evidence."
 ---
 
-# Product Lifecycle Architect
+# Compose Product Program
 
 Produce one versioned **Product Program Manifest** that composes independently owned artifacts into a complete, scale-ready, autonomously delivered product. Own the graph, not every domain fact. A planning revision directs work; a later observed-state revision indexes exact delivered evidence without rewriting sibling facts.
 
 ## Atomic boundary
 
-This skill owns:
+This Skill owns:
 
 - product-program objective, constraints, ruin boundaries, and Definition of Done;
 - artifact inventory and canonical owner for each fact;

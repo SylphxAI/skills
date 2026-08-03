@@ -1,9 +1,11 @@
 ---
-name: scope-discipline
-description: "Scope discipline: in/out bounds, non-goals, cut lines, honesty under pressure."
+name: bound-task-scope
+description: "Bound the current task: objective, in/out, non-goals, cut lines, and right-sized ceremony for this request."
 ---
 
-# Scope Discipline
+# Bound Task Scope
+
+When you need to **keep this request right-sized** (in/out, non-goals, cut lines) before or during work, use this method.
 
 Finish the requested outcome with the fastest effective path and the strongest
 positive-net durable result. Time, compute, attention, future velocity, and

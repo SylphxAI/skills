@@ -90,7 +90,7 @@
       "instruction-evolution-standard",
       "project-manifest-standard",
       "prompt-architecture",
-      "scope-discipline"
+      "bound-task-scope"
     ],
     "capabilities": ["static-instruction-packages", "runtime-sync", "agent-owned-installation", "remote-integration-enrollment"],
     "adoptionStatus": "adopted",

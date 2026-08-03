@@ -64,7 +64,7 @@ The new Procedure owns portfolio topology, not accepted product-local facts:
 - `engineering-standard` continues to own code and system architecture;
 - `commercial-decision-standard` owns pricing, SKU, entitlement, packaging,
   profit-center and internal-settlement decisions;
-- `product-lifecycle-architect` owns one selected product program's lifecycle
+- `compose-product-program` owns one selected product program's lifecycle
   graph;
 - product procedures own each product's promise and experience; and
 - delivery procedures own release and observed delivery evidence.

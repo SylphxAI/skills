@@ -155,7 +155,7 @@ material. Class labels alone do not fix utilization.
 | --- | --- | --- | --- |
 | Product betterment | workflow | `continuous-product-quality` | Idle frontier (not perfection) |
 | Single-objective closure | **workflow** (execution method; may embed predicates) | `autonomous-execution` | Delivery terminal for one accepted objective |
-| Continuous work selection OS | **workflow** (work OS method; may embed predicates) | `self-feeding-agent-loop` | Tick/report; continuous by design |
+| Continuous work selection OS | **workflow** (work OS method; may embed predicates) | `select-next-work` | Tick/report; continuous by design |
 | Portable coordination semantics | policy | `work-coordination-standard` | N/A (semantics) |
 | Live coordination ops | adapter | `enact-work-coordination` | Live Work effect/readback |
 | Harness recovery | adapter (tool surface) + workflow binding | host Goal System via CPQ / execution workflows | Resume uncapped goal |
@@ -163,7 +163,7 @@ material. Class labels alone do not fix utilization.
 Do **not** treat product betterment, single-objective closure, and continuous
 work selection as one package or one `-standard` prestige suffix.
 
-**Rename note:** `autonomous-execution` and `self-feeding-agent-loop` are
+**Rename note:** `autonomous-execution` and `select-next-work` are
 job-named **workflow** packages (ADR-0016 hard rename; no discoverable
 `*-standard` alias). Their primary class is workflow (loop/execution method with
 embedded binding predicates). If a pure predicate subset is needed later,
@@ -222,7 +222,7 @@ Runtime auto-loop requires Goal/Work/scheduler surfaces + an owning workflow
   checklist (docs only — not frontmatter).
 - Descriptions for true policy packs use compose/not-workflow language.
 - `continuous-product-quality`, `autonomous-execution`, and
-  `self-feeding-agent-loop` descriptions exclude each other by layer.
+  `select-next-work` descriptions exclude each other by layer.
 - No claim that Skills are an industry "standard package type" distinct from
   workflows; Skills *are* the on-demand specialized-package channel.
 - Industry claims distinguish public agentskills progressive disclosure from

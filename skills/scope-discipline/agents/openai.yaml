@@ -1,4 +1,0 @@
-interface:
-  display_name: "Scope Discipline"
-  short_description: "Move fast without shortcuts or runaway scope"
-  default_prompt: "Use $scope-discipline to deliver the strongest durable agent-native result quickly: adopt the simplest proven baseline, require observable value from custom complexity, and avoid over-engineering, under-engineering, workaround regression, or moving the terminal."

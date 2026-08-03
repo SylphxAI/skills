@@ -1489,12 +1489,12 @@
     "kind": "near-neighbour",
     "prompt": "The product boundary is already accepted. Compose its experience, commerce, assets, SDKs, distribution, support, launch and operating evidence into one build-to-run delivery graph.",
     "expectedSkills": [
-      "product-lifecycle-architect"
+      "compose-product-program"
     ],
     "artifacts": [
       {
         "artifact": "Product Program Manifest",
-        "owner": "product-lifecycle-architect"
+        "owner": "compose-product-program"
       }
     ],
     "nearNeighbourOf": "composable-product-portfolio",
@@ -1551,11 +1551,11 @@
     ]
   },
   {
-    "id": "scope-discipline-overcaution-cantonese",
+    "id": "bound-task-scope-overcaution-cantonese",
     "kind": "positive",
     "prompt": "呢個任務俾過分謹慎同無限驗證拖慢咗；請按真實風險、回報同可逆性收斂證據，保持誠實但盡快完成原本終點。",
     "expectedSkills": [
-      "scope-discipline"
+      "bound-task-scope"
     ],
     "artifacts": [],
     "tags": [
@@ -1565,12 +1565,12 @@
     ]
   },
   {
-    "id": "scope-discipline-agent-native-repricing",
+    "id": "bound-task-scope-agent-native-repricing",
     "kind": "compound",
     "prompt": "Choose the durable architecture after repricing implementation, migration and review through current agent automation rather than person-days; include high-return future-proofing without adding speculative runtime machinery.",
     "expectedSkills": [
       "decision-quality-standard",
-      "scope-discipline"
+      "bound-task-scope"
     ],
     "artifacts": [
       {
@@ -1585,12 +1585,12 @@
     ]
   },
   {
-    "id": "scope-discipline-workaround-regression",
+    "id": "bound-task-scope-workaround-regression",
     "kind": "compound",
     "prompt": "Continue this multi-phase repair to its real terminal without another prompt. Stop alternating between a local workaround and the old design: fix the owning boundary, preserve proven predicates and avoid creating cleanup the same objective must later undo.",
     "expectedSkills": [
       "autonomous-execution",
-      "scope-discipline"
+      "bound-task-scope"
     ],
     "artifacts": [],
     "tags": [
@@ -1600,11 +1600,11 @@
     ]
   },
   {
-    "id": "scope-discipline-complexity-theatre-cantonese",
+    "id": "bound-task-scope-complexity-theatre-cantonese",
     "kind": "positive",
     "prompt": "個 agent 將原本簡單嘅 CI、build、deploy 流程改咗一堆新名詞同狀態燈，但實際保証同結果冇增加、速度仲慢咗。請用最簡單業界基線比較，刪走冇 semantic delta 嘅 complexity theatre。",
     "expectedSkills": [
-      "scope-discipline"
+      "bound-task-scope"
     ],
     "artifacts": [],
     "tags": [
@@ -1614,12 +1614,12 @@
     ]
   },
   {
-    "id": "scope-discipline-established-versus-custom",
+    "id": "bound-task-scope-established-versus-custom",
     "kind": "compound",
     "prompt": "Choose between the ecosystem-native deployment pipeline and a proposed custom control layer. Compare prior art, the unmet requirement, observable semantic and quality delta, lifecycle cost and exit path; reject a renamed equivalent mechanism.",
     "expectedSkills": [
       "decision-quality-standard",
-      "scope-discipline"
+      "bound-task-scope"
     ],
     "artifacts": [
       {
@@ -1639,7 +1639,7 @@
     "prompt": "Audit 呢個愈來愈慢嘅 blocking CI：移除全庫字眼 ban、PR body 分類、manifest token presence、workflow script-name coupling 同用 regex 冒充 architecture proof 嘅 gates；保留或改造成真正由 compiler、schema、dependency graph、artifact 或 behavior 決定嘅 material admission evidence。",
     "expectedSkills": [
       "ci-admission-standard",
-      "scope-discipline"
+      "bound-task-scope"
     ],
     "artifacts": [
       {
@@ -1655,7 +1655,7 @@
     ]
   },
   {
-    "id": "scope-discipline-neighbour-genuine-product-novelty",
+    "id": "bound-task-scope-neighbour-genuine-product-novelty",
     "kind": "near-neighbour",
     "prompt": "Explore a portfolio of genuinely unconventional product interaction concepts for a new creative tool before anyone selects the final design.",
     "expectedSkills": [
@@ -1667,46 +1667,46 @@
         "owner": "design-space-exploration"
       }
     ],
-    "nearNeighbourOf": "scope-discipline",
+    "nearNeighbourOf": "bound-task-scope",
     "tags": [
       "product-innovation",
       "exploration"
     ]
   },
   {
-    "id": "scope-discipline-neighbour-high-risk-proof",
+    "id": "bound-task-scope-neighbour-high-risk-proof",
     "kind": "near-neighbour",
     "prompt": "Design the property, replay, fault-simulation and recovery evidence for an irreversible double-entry settlement workflow whose concurrency failure model is already declared.",
     "expectedSkills": [
       "risk-matched-verification-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "scope-discipline",
+    "nearNeighbourOf": "bound-task-scope",
     "tags": [
       "high-risk",
       "verification"
     ]
   },
   {
-    "id": "scope-discipline-neighbour-direct-small-edit",
+    "id": "bound-task-scope-neighbour-direct-small-edit",
     "kind": "near-neighbour",
     "prompt": "Correct this one spelling error and run the existing documentation check; do not broaden the task.",
     "expectedSkills": [],
     "artifacts": [],
-    "nearNeighbourOf": "scope-discipline",
+    "nearNeighbourOf": "bound-task-scope",
     "tags": [
       "small-edit",
       "fast-path"
     ]
   },
   {
-    "id": "scope-discipline-abstain-status",
+    "id": "bound-task-scope-abstain-status",
     "kind": "abstention",
     "prompt": "Report the current branch and working-tree status without changing anything.",
     "expectedSkills": [],
     "artifacts": [],
     "coverageFor": [
-      "scope-discipline"
+      "bound-task-scope"
     ],
     "tags": [
       "abstention",
@@ -1823,7 +1823,7 @@
     "kind": "near-neighbour",
     "prompt": "Design a continuous loop engineering worker that keeps discovering, deduplicating and claiming the next Work Item after each current item is delivered, with durable re-entry after external events.",
     "expectedSkills": [
-      "self-feeding-agent-loop"
+      "select-next-work"
     ],
     "artifacts": [],
     "nearNeighbourOf": "autonomous-execution",
@@ -1928,11 +1928,11 @@
     ]
   },
   {
-    "id": "scope-discipline-smallest-complete-solution",
+    "id": "bound-task-scope-smallest-complete-solution",
     "kind": "positive",
     "prompt": "This implementation has grown into new helpers, wrappers and dependencies. Rework it into the simplest complete durable solution: reuse existing or native capabilities first, but do not remove real validation, recovery or delivery guarantees merely to reduce LOC.",
     "expectedSkills": [
-      "scope-discipline"
+      "bound-task-scope"
     ],
     "artifacts": [],
     "tags": [
@@ -1943,11 +1943,11 @@
     ]
   },
   {
-    "id": "scope-discipline-no-arbitrary-file-cap",
+    "id": "bound-task-scope-no-arbitrary-file-cap",
     "kind": "positive",
     "prompt": "Right-size this refactor. I care about low lifecycle complexity, not an arbitrary three-file or 100-line target; preserve coherent ownership and add new machinery only when it changes a named guarantee.",
     "expectedSkills": [
-      "scope-discipline"
+      "bound-task-scope"
     ],
     "artifacts": [],
     "tags": [
@@ -2138,7 +2138,7 @@
     "prompt": "Design a durable autonomous quality loop for this SaaS that continuously discovers UI, accessibility, SEO, performance, correctness, security and live-behavior gaps, deduplicates evidence into qualified findings, creates bounded Work, and rechecks the delivered outcome without turning every check into merge-blocking CI.",
     "expectedSkills": [
       "continuous-product-quality",
-      "self-feeding-agent-loop"
+      "select-next-work"
     ],
     "artifacts": [
       {

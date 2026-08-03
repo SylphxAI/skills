@@ -92,7 +92,7 @@ adapters for channels outside the declared audience.
 
 ## When not to use
 
-- Use `product-lifecycle-architect` when the primary artifact is a cross-domain
+- Use `compose-product-program` when the primary artifact is a cross-domain
   product-program graph spanning at least three lifecycle domains.
 - Use `delivery-standard` for one language library's ordinary registry publish
   when no channel portfolio, installer, executable lifecycle, submission, or
