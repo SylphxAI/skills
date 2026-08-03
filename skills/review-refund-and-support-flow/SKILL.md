@@ -12,7 +12,7 @@ Use this skill to handle refunds without damaging trust or letting abuse break t
 Own entitlement/customer consequence, grace/hold/recovery, account action,
 appeal, repayment, support, and product-feedback states. Do **not** own provider
 event ingestion, money truth, or the entitlement projector. Consume those
-authoritative facts from `ready-payment-platform` or the owning provider/
+authoritative facts from `build-payment-readiness` or the owning provider/
 ledger system and preserve their evidence references.
 
 For every artifact, record `artifactVersion`, `artifactRevision`, and
@@ -48,7 +48,7 @@ while a draft contains no digest fields.
 ## When not to use
 
 - Use `operate-customer-support` when the primary artifact is the whole channel, queue, triage, staffing, QA, or escalation operating model rather than refund authority.
-- Use `ready-payment-platform` when checkout, ledger ingestion, settlement, finance close, and entitlement projection must be designed together.
+- Use `build-payment-readiness` when checkout, ledger ingestion, settlement, finance close, and entitlement projection must be designed together.
 - Do not invoke this full state-machine workflow to draft one customer reply when the governing refund and entitlement state is already known.
 
 ## Source verification

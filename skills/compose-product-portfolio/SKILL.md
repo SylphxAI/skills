@@ -138,7 +138,7 @@ Reject or redesign a portfolio that:
   has resolved which products remain independently owned.
 - `design-saas-web-platform`, app/game blueprints and other product
   procedures own each product's promise and experience.
-- `ready-software-distribution` and `delivery-standard` own release and
+- `build-distribution-readiness` and `delivery-standard` own release and
   externally observed delivery evidence.
 
 ## Completion check

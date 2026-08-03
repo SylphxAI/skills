@@ -173,11 +173,11 @@ Use `artifactDigest` only on exact child files or sealed input references with
   concepts, creative briefs, spend, publication policy, and performance loop.
 - `optimize-store-listing` owns listing narrative, metadata, asset request,
   final selection/order, disclosures, and conversion experiment.
-- `ready-software-distribution` owns upload/submission, certification,
+- `build-distribution-readiness` owns upload/submission, certification,
   rollout, withdrawal, and observed channel evidence.
 - `compose-product-program` owns planning and observed-state revisions of
   the cross-domain dependency graph and composition index, not this pack.
-- `craft-interface` owns product-interface implementation and polish, not
+- `craft-product-interface` owns product-interface implementation and polish, not
   promotional capture or media production.
 
 Complete only when the selected pack can be reproduced from owned sources,

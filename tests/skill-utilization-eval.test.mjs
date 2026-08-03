@@ -109,7 +109,7 @@ test('utilization fixtures cover core product job Skills', () => {
     'expand-product',
     'finish-product',
     'pursue-product-objective',
-    'better-product',
+    'run-open-product-betterment',
     'author-skill',
     'drive-to-delivery',
     'select-next-work',

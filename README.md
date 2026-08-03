@@ -83,7 +83,7 @@ When an agent needs to do product work, load the **job technique**, not a role t
 | Scale core | `expand-product` |
 | Finish / deburr | `finish-product` |
 | Follow a fixed outcome to done | `pursue-product-objective` |
-| Open betterment (mixed jobs) | `better-product` |
+| Open betterment (mixed jobs) | `run-open-product-betterment` |
 | Multi-phase delivery terminal | `drive-to-delivery` |
 | Next Work from evidence | `select-next-work` |
 | Author a Skill | `author-skill` |
@@ -206,19 +206,19 @@ Multi-step jobs and operating loops: product betterment, whole-product finish,
 single-objective closure, continuous work selection. Job-named packages; not
 policy packs.
 
-Examples: `better-product` · `finish-product` · `drive-to-delivery` · `select-next-work`
+Examples: `run-open-product-betterment` · `finish-product` · `drive-to-delivery` · `select-next-work`
 
 ### Reviews, analysis & agent-system methods
 
 Assessment/design jobs and independent methods with concrete artifacts.
 
-Examples: `analyze-critically` · `record-structured-deliberation` · `review-reference-originality` · `remediate-frontend-performance` · `model-security-threats` · `ready-payment-platform` · `review-launch-readiness`
+Examples: `analyze-critically` · `record-structured-deliberation` · `review-reference-originality` · `remediate-frontend-performance` · `model-security-threats` · `build-payment-readiness` · `review-launch-readiness`
 
 ### Blueprints, craft & adapters
 
 Whole-product craft surfaces and product-specific adapters.
 
-Examples: `design-app` · `design-saas-web-platform` · `craft-interface` · `design-prompt-architecture`
+Examples: `design-app` · `design-saas-web-platform` · `craft-product-interface` · `design-prompt-architecture`
 
 Open any package: `skills/<id>/SKILL.md` is the contract; deeper material lives
 in `references/`.

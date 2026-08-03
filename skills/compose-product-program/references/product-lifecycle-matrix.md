@@ -12,9 +12,9 @@
 | App monetization model and value-exchange semantics | `design-app` |
 | Subscription/SaaS pricing and packaging decision | `price-saas-subscription` |
 | Other pricing/packaging decisions | declared commercial decision owner and billing SSOT |
-| Provider transaction, ledger and settlement integration | `ready-payment-platform` |
+| Provider transaction, ledger and settlement integration | `build-payment-readiness` |
 | Refund customer/account consequence and appeal | `review-refund-and-support-flow` |
-| Subscription entitlement semantics | `ready-payment-platform` |
+| Subscription entitlement semantics | `build-payment-readiness` |
 | Analytics event/identity contract | `review-product-analytics-instrumentation` |
 | Platform-specific authentic public review request policy | `review-solicitation-policy` |
 | Universal private feedback, review ingestion and product-learning close-loop | `run-product-feedback-loop` |
@@ -22,7 +22,7 @@
 | Referral qualification, grant, reversal and fraud | `review-referral-loop` |
 | Marketing channel, budget and creative control plane | `design-marketing-automation` |
 | Listing metadata/creative conversion design | `optimize-store-listing` |
-| Channel submission/certification/release evidence | `ready-software-distribution` |
+| Channel submission/certification/release evidence | `build-distribution-readiness` |
 | Localized product meaning | corresponding App/Game Design Blueprint |
 | Exact localized product capture, media transformation, accessibility, rights/provenance and file QA | `produce-product-assets` |
 | Campaign creative brief/concept and paid/organic variants | `design-marketing-automation` |

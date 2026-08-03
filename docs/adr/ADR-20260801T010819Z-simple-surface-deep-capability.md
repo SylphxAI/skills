@@ -9,7 +9,7 @@ amends:
   - ADR-20260730T204546Z-adopt-before-invent
 scope:
   - engineering-architecture
-  - bound-task-scope
+  - bound-request-scope
   - agent-communication
 ---
 
@@ -51,7 +51,7 @@ full required capability and quality floor.
    semantic boundaries remain. The aim is to pay unavoidable complexity once
    inside its owner rather than expose it to every consumer.
 6. `engineering-standard` owns the architecture invariant,
-   `bound-task-scope` owns the selection test, and
+   `bound-request-scope` owns the selection test, and
    `write-high-signal-update` owns its explanatory projection. No new Skill,
    branded architecture, prose scanner, or CI gate is introduced.
 

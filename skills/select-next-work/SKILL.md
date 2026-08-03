@@ -17,7 +17,7 @@ naming the ticket, run **one tick** of this method.
 ## When not to use
 
 - One bounded objective already accepted → `drive-to-delivery` (or product jobs / `pursue-product-objective`)
-- Multi-aspect product betterment matrix as the primary job → `better-product`
+- Multi-aspect product betterment matrix as the primary job → `run-open-product-betterment`
 - Portable ledger **design** without continuous selection → `work-coordination-standard`
 
 ## Method (one tick)
@@ -38,7 +38,7 @@ naming the ticket, run **one tick** of this method.
 - `work-coordination-standard` — portable ledger semantics
 - `drive-to-delivery` — **inside** each claimed bounded Work (this package does not close that objective)
 - `delivery-standard` / `evidence-and-claims-standard` — when ticks claim delivery outcomes
-- `better-product` — only when the continuous job is specifically multi-aspect product betterment (compose; do not merge packages)
+- `run-open-product-betterment` — only when the continuous job is specifically multi-aspect product betterment (compose; do not merge packages)
 
 ## Output
 

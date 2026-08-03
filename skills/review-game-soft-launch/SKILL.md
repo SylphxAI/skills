@@ -73,7 +73,7 @@ global compliance or product-fit verdict.
 
 - Use `design-game` when the primary job is designing or repairing
   core play, progression, content, social, feel, retention, or monetization.
-- Use `ready-software-distribution` for submission assets, certification,
+- Use `build-distribution-readiness` for submission assets, certification,
   reviewer access, staged release mechanics, and exact live-channel evidence.
 - Use `design-marketing-automation` for the complete multi-channel creative,
   organic, lifecycle, paid-spend, attribution, and shutdown operating system.

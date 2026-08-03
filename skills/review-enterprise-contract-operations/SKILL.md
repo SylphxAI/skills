@@ -14,7 +14,7 @@ Own authoritative-source intake, document family/version/precedence, structured 
 ## When not to use
 
 - Use qualified legal authority when the primary job is interpretation, negotiation advice, approval, signature, or a jurisdiction-specific legal conclusion.
-- Use `review-revenue-operations`, `price-saas-subscription`, `ready-payment-platform`, or `review-customer-success-operations` for pipeline/forecast, price/package choice, payment/ledger operation, or recurring customer value.
+- Use `review-revenue-operations`, `price-saas-subscription`, `build-payment-readiness`, or `review-customer-success-operations` for pipeline/forecast, price/package choice, payment/ledger operation, or recurring customer value.
 
 ## Resource routing
 

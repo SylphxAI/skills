@@ -98,7 +98,7 @@ Host execution procedure: [skill-utilization-host-runbook.md](./skill-utilizatio
 
 Pinned suite includes critical/neighbour cases for product job Skills:
 `prototype-product`, `build-product`, `maintain-product`, `expand-product`,
-`finish-product`, `pursue-product-objective`, `better-product`, `author-skill`,
+`finish-product`, `pursue-product-objective`, `run-open-product-betterment`, `author-skill`,
 plus delivery/select-next-work neighbours. Fixtures alone are not utilization
 proof (see Goal above).
 
@@ -111,7 +111,7 @@ utilization.
 
 ## Authoring progress (2026-08-03)
 
-- Product job Skills covered in fixtures; better-product oracles aligned to portable continuity and admit-all-B.
+- Product job Skills covered in fixtures; run-open-product-betterment oracles aligned to portable continuity and admit-all-B.
 - Host runbook added; live host behavior-oracle green runs still required to close residual.
 - All 118 packages ship `agents/openai.yaml` UI metadata.
 

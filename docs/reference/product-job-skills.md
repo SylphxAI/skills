@@ -12,7 +12,7 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 | `expand-product` | Scale a validated core (×N) |
 | `finish-product` | Deburr/finish an integrated product |
 | `pursue-product-objective` | Follow a declared product objective to evidence-backed completion |
-| `better-product` | Open-ended betterment when jobs mix and there is no fixed objective |
+| `run-open-product-betterment` | Open-ended mixed-job betterment with no fixed objective |
 
 ## Execution / work selection
 
@@ -21,7 +21,7 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 | `drive-to-delivery` | Drive one multi-phase engineering objective to delivery-terminal evidence |
 | `select-next-work` | Pick and tick the next high-value Work from evidence/ledger |
 | `execute-hard-cutover` | Cut over predecessor → destination; hard-cut default; retire dual-paths |
-| `bound-task-scope` | Right-size in/out and non-goals for this request |
+| `bound-request-scope` | Right-size in/out and non-goals for this request |
 
 ## Skill portfolio
 
@@ -34,7 +34,7 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 
 ## Policy (not job cycles)
 
-Apply while doing another job: `*-standard`, `technology-stack-profile`, `prefer-sylphx-platform`, etc.
+Apply while doing another job: `*-standard`, `technology-stack-profile`, `sylphx-platform-first-policy`, etc.
 
 ## Design blueprints
 
@@ -54,7 +54,7 @@ Domain review Skills use the `review-*` id prefix (e.g. `review-launch-readiness
 
 | Intent | Skill id |
 | --- | --- |
-| Open betterment, mixed jobs | `better-product` |
+| Open betterment, mixed jobs | `run-open-product-betterment` |
 | Fixed product outcome until done | `pursue-product-objective` |
 | One multi-phase engineering terminal | `drive-to-delivery` |
 | Next Work from ledger/evidence | `select-next-work` |

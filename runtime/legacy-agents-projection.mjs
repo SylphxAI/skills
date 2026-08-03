@@ -48,7 +48,7 @@ export const LEGACY_AGENTS_PROJECTIONS = Object.freeze({
     'sota-execution-standard': 'sha256:fa2e84c8821450cba399d9903e2b71f6414d453a0b8a814dd9433952c05262d6',
     'source-authoring-standard': 'sha256:d13e1a7b99ee6c72d4ed31589e7668206d88a9f69b25ec6e1beff71d0009e5ea',
     'specification-control-plane-standard': 'sha256:35f3b20f5d6cc57b228f737ffd7b7ba5c8bdb67e91efe1dd6b6624380e01fcac',
-    'prefer-sylphx-platform': 'sha256:1f51a652daa4a690c8094547d6004f0240bd962612282921e2c87e233063f970',
+    'sylphx-platform-first-policy': 'sha256:1f51a652daa4a690c8094547d6004f0240bd962612282921e2c87e233063f970',
   }),
 });
 

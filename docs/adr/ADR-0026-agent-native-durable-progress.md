@@ -49,7 +49,7 @@ Verification.
    comparatively cheap. It still prices semantic error, integration,
    verification, irreversible exposure, permanent operations, recovery,
    compute, context, and coordination as real.
-3. `bound-task-scope` owns bounded application. Evidence covers the declared
+3. `bound-request-scope` owns bounded application. Evidence covers the declared
    material boundary and escalates only while residual uncertainty is
    plausible, decision-changing, and positive-value. It does not require a
    mechanical pass through every proof method or elimination of every logical

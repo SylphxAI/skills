@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run Open Product Betterment"
+  short_description: "Run open product betterment (no fixed objective): quality matrix, scout, all high-EV B, oracle verify; idle at empty high-EV frontier…"
+  default_prompt: "Run Run Open Product Betterment on the active workspace."

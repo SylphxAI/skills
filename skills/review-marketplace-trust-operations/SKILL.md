@@ -139,7 +139,7 @@ outage, backlog, and cohort cases; do not claim production efficacy from design.
   dispute referral; never mutate balances from this artifact.
 - Use `review-refund-and-support-flow` for customer/account consequences after an
   authoritative refund, cancellation, chargeback, or revocation event.
-- Use `ready-payment-platform` for buyer payment ingestion, money ledger,
+- Use `build-payment-readiness` for buyer payment ingestion, money ledger,
   settlement, provider events, and finance truth.
 - Use `review-marketplace-seller-performance` for opportunity-normalized seller
   quality, coaching, badges, and performance interventions.

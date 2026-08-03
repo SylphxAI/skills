@@ -322,7 +322,7 @@ test('sync, status, update, and clear own only the declared packages', () => {
     assert.deepEqual(manifest.packageDigests, Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])));
     assert.deepEqual(manifest.profiles, catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile));
     assert.equal(existsSync(path.join(destination, 'engineering-standard', 'SKILL.md')), true);
-    assert.equal(existsSync(path.join(destination, 'prefer-sylphx-platform', 'SKILL.md')), true);
+    assert.equal(existsSync(path.join(destination, 'sylphx-platform-first-policy', 'SKILL.md')), true);
 
     const status = run(['status', '--dest', destination, '--json']);
     const parsed = JSON.parse(status.stdout);

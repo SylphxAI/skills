@@ -134,7 +134,7 @@
         "mustNot": [
           "Treat select-next-work as the sole primary owner of this job",
           "Treat delivery-standard as the sole primary owner of this job",
-          "Treat bound-task-scope as the sole primary owner of this job"
+          "Treat bound-request-scope as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -144,7 +144,7 @@
       "nearNeighbours": [
         "select-next-work",
         "delivery-standard",
-        "bound-task-scope"
+        "bound-request-scope"
       ]
     },
     {
@@ -158,7 +158,7 @@
         "mandatoryObservable": "Frames a continuous discovery/admission/idle-wake loop for new Work, not a single bounded objective pushed to one terminal.",
         "mustNot": [
           "Treat drive-to-delivery as the sole primary owner of this job",
-          "Treat better-product as the sole primary owner of this job"
+          "Treat run-open-product-betterment as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -167,7 +167,7 @@
       ],
       "nearNeighbours": [
         "drive-to-delivery",
-        "better-product"
+        "run-open-product-betterment"
       ]
     },
     {
@@ -181,8 +181,8 @@
         "mandatoryObservable": "Produces or plans a Product Finish Pass over an already-integrated product (multi-surface polish/verification), not a greenfield blueprint and not a standing quality scout loop.",
         "mustNot": [
           "Treat design-app as the sole primary owner of this job",
-          "Treat craft-interface as the sole primary owner of this job",
-          "Treat better-product as the sole primary owner of this job"
+          "Treat craft-product-interface as the sole primary owner of this job",
+          "Treat run-open-product-betterment as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -191,16 +191,16 @@
       ],
       "nearNeighbours": [
         "design-app",
-        "craft-interface",
-        "better-product"
+        "craft-product-interface",
+        "run-open-product-betterment"
       ]
     },
     {
-      "id": "critical-better-product",
+      "id": "critical-run-open-product-betterment",
       "suite": "critical-skill",
       "prompt": "We need ongoing high-leverage product betterment across mixed UI, reliability, and growth gaps—no single fixed outcome, just keep finding and admitting positive-EV work until the high-EV frontier is empty.",
       "expectedSkills": [
-        "better-product"
+        "run-open-product-betterment"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Runs open betterment with no fixed objective: coverage card, admits all capacity-feasible items with EV ≥ MinOutcomeDelta (not Top-1 only), verifies with original oracles, and treats idle as empty high-EV frontier—not a one-off finish pass or fixed-objective pursuit.",
@@ -221,11 +221,11 @@
       ]
     },
     {
-      "id": "critical-craft-interface",
+      "id": "critical-craft-product-interface",
       "suite": "critical-skill",
       "prompt": "Polish only the checkout page flow: hierarchy, interaction states, responsive behavior, and accessibility.",
       "expectedSkills": [
-        "craft-interface"
+        "craft-product-interface"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Scopes work to one bounded interface/flow craft job rather than whole-app blueprint or multi-surface product finish.",
@@ -256,7 +256,7 @@
         "mandatoryObservable": "Targets a whole-app design blueprint for a new/redesigned product, not polish of an already-integrated app and not a single-screen craft job.",
         "mustNot": [
           "Treat finish-product as the sole primary owner of this job",
-          "Treat craft-interface as the sole primary owner of this job",
+          "Treat craft-product-interface as the sole primary owner of this job",
           "Treat compose-product-program as the sole primary owner of this job"
         ]
       },
@@ -266,7 +266,7 @@
       ],
       "nearNeighbours": [
         "finish-product",
-        "craft-interface",
+        "craft-product-interface",
         "compose-product-program"
       ]
     },
@@ -439,7 +439,7 @@
         "mustNot": [
           "Treat review-marketplace-seller-performance as the sole primary owner of this job",
           "Treat review-marketplace-trust-operations as the sole primary owner of this job",
-          "Treat ready-payment-platform as the sole primary owner of this job"
+          "Treat build-payment-readiness as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -449,7 +449,7 @@
       "nearNeighbours": [
         "review-marketplace-seller-performance",
         "review-marketplace-trust-operations",
-        "ready-payment-platform"
+        "build-payment-readiness"
       ]
     },
     {
@@ -559,8 +559,8 @@
         "mandatoryObservable": "Chooses finish of an integrated product over greenfield app blueprint design.",
         "mustNot": [
           "Treat design-app as the sole primary owner of this job",
-          "Treat craft-interface as the sole primary owner of this job",
-          "Treat better-product as the sole primary owner of this job"
+          "Treat craft-product-interface as the sole primary owner of this job",
+          "Treat run-open-product-betterment as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -569,8 +569,8 @@
       ],
       "nearNeighbours": [
         "design-app",
-        "craft-interface",
-        "better-product"
+        "craft-product-interface",
+        "run-open-product-betterment"
       ]
     },
     {
@@ -783,8 +783,8 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "better-product",
-        "craft-interface"
+        "run-open-product-betterment",
+        "craft-product-interface"
       ]
     },
     {
@@ -792,7 +792,7 @@
       "suite": "critical-skill",
       "prompt": "Run product betterment loop engineering for this live app across UX, performance, and business packaging: maintain a quality matrix, scout, admit bounded work, verify with original oracles, and idle without claiming perfection.",
       "expectedSkills": [
-        "better-product"
+        "run-open-product-betterment"
       ],
       "nearNeighbours": [
         "finish-product",
@@ -818,11 +818,11 @@
       "suite": "near-neighbour",
       "prompt": "Do not do a one-time polish pass; install an ongoing betterment loop that keeps finding UI and performance opportunities after release.",
       "expectedSkills": [
-        "better-product"
+        "run-open-product-betterment"
       ],
       "nearNeighbours": [
         "finish-product",
-        "craft-interface",
+        "craft-product-interface",
         "remediate-frontend-performance"
       ],
       "behaviorOracle": {
@@ -837,11 +837,11 @@
       ]
     },
     {
-      "id": "critical-better-product-uncapped-continuity",
+      "id": "critical-run-open-product-betterment-uncapped-continuity",
       "suite": "critical-skill",
       "prompt": "Run continuous product betterment loop engineering for this app. If this host has a persistent objective/goal/mission surface, use it without a token budget cap so accidental stops can resume the same betterment until the high-EV frontier is idle. If the host has no such surface, keep the loop in-session without inventing a goal store or tool names.",
       "expectedSkills": [
-        "better-product"
+        "run-open-product-betterment"
       ],
       "nearNeighbours": [
         "drive-to-delivery",
@@ -880,7 +880,7 @@
         "mandatoryObservable": "Frames a hypothesis, builds a cheap probe, and ends with go/kill/pivot evidence—not a durable ship path or standing betterment OS.",
         "mustNot": [
           "Treat build-product as the sole primary owner of this job",
-          "Treat better-product as the sole primary owner of this job"
+          "Treat run-open-product-betterment as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -921,7 +921,7 @@
       ],
       "nearNeighbours": [
         "build-product",
-        "better-product",
+        "run-open-product-betterment",
         "drive-to-delivery"
       ],
       "behaviorOracle": {
@@ -946,7 +946,7 @@
       "nearNeighbours": [
         "build-product",
         "maintain-product",
-        "better-product"
+        "run-open-product-betterment"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Scales a validated core with an explicit ×N target and core non-regression check.",
@@ -968,14 +968,14 @@
         "pursue-product-objective"
       ],
       "nearNeighbours": [
-        "better-product",
+        "run-open-product-betterment",
         "drive-to-delivery",
         "finish-product"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Binds a durable declared product objective and runs high-leverage cycles until objective terminal evidence—not a one-cycle finish-only pass and not open idle betterment without that objective.",
         "mustNot": [
-          "Treat better-product as the sole primary owner when a fixed objective is declared",
+          "Treat run-open-product-betterment as the sole primary owner when a fixed objective is declared",
           "Mark complete after a single PR without objective-level evidence",
           "Treat finish-product as the sole primary owner of the whole objective"
         ]
@@ -1017,14 +1017,14 @@
         "pursue-product-objective"
       ],
       "nearNeighbours": [
-        "better-product",
+        "run-open-product-betterment",
         "drive-to-delivery",
         "select-next-work"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Chooses fixed-objective pursuit over open mixed betterment as primary method.",
         "mustNot": [
-          "Treat better-product as the sole primary owner of this job"
+          "Treat run-open-product-betterment as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [

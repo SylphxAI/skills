@@ -74,7 +74,7 @@ Keep the record internal and proportionate. A low-risk, known-state case may use
 ## Routing boundaries
 
 - Use `operate-customer-support` for channels, taxonomy, queues, service objectives, knowledge, automation, QA, escalation architecture, staffing/capacity, and the whole feedback system.
-- Use `review-refund-and-support-flow` for the product-wide consequence state machine after refund, cancellation, revocation, dispute, or chargeback; use `ready-payment-platform` for provider, ledger, entitlement, settlement, and reconciliation truth.
+- Use `review-refund-and-support-flow` for the product-wide consequence state machine after refund, cancellation, revocation, dispute, or chargeback; use `build-payment-readiness` for provider, ledger, entitlement, settlement, and reconciliation truth.
 - Use `review-product-abuse-risk` for the product-wide abuse policy and enforcement ladder; this skill applies the approved policy to one case.
 - Use `review-account-recovery`, data-rights, incident, security, safety, marketplace, legal, sales, or customer-success owners for their protected decisions.
 - Use `edit-preserving-voice` when the facts and decision are fixed and the only job is language quality; use `review-solicitation-policy` for public review eligibility.

@@ -194,7 +194,7 @@ When authoring product methods, prefer these existing job Skills over new near-d
 | Scale validated core | `expand-product` |
 | Finish / deburr | `finish-product` |
 | Pursue fixed outcome to completion | `pursue-product-objective` |
-| Mixed open betterment | `better-product` |
+| Mixed open betterment | `run-open-product-betterment` |
 | Next Work from evidence/ledger | `select-next-work` |
 | Multi-phase delivery terminal | `drive-to-delivery` |
 | Author a Skill | `author-skill` |

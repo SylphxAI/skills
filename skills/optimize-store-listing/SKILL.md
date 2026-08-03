@@ -69,7 +69,7 @@ public page and claims no compatibility until authority and the exact pack pass.
    traffic identity, exposure/contamination, install/wishlist/purchase plus
    retention/refund/review/support countermetrics, confidence, and stop rules.
 8. When publication is selected, hand the exact final listing revision and
-   accepted asset pack when applicable to `ready-software-distribution`;
+   accepted asset pack when applicable to `build-distribution-readiness`;
    verify submitted/live metadata and assets, then archive/supersede the prior
    version.
 
@@ -82,7 +82,7 @@ Unknown/stale channel authority blocks submission of that adapter.
 
 ## When not to use
 
-- Use `ready-software-distribution` for eligibility, signing, submission,
+- Use `build-distribution-readiness` for eligibility, signing, submission,
   reviewer/certification, staged rollout, withdrawal, and live channel evidence.
 - Use `design-marketing-automation` for the whole SEO/creator/community/
   lifecycle/paid creative portfolio, spend, attribution, and shutdown.

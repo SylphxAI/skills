@@ -20,7 +20,7 @@ honestly blocked.
 
 - Short Q&A or one local edit with no multi-phase terminal
 - Continuous next-Work discovery without a single accepted objective → `select-next-work`
-- Mixed open product betterment → `better-product`
+- Mixed open product betterment → `run-open-product-betterment`
 - Declared **product** outcome betterment framing → `pursue-product-objective`
 
 ## Method
@@ -54,5 +54,5 @@ Progress on **one accepted objective at its delivery terminal**, with checkpoint
 
 - Does not grant deploy or credential capabilities.
 - Does not own continuous next-Work discovery (`select-next-work`).
-- Does not own multi-aspect product betterment (`better-product` / job skills).
+- Does not own multi-aspect product betterment (`run-open-product-betterment` / job skills).
 - Does not replace product-local ADRs.

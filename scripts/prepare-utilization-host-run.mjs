@@ -37,7 +37,7 @@ const productJobs = new Set([
   'expand-product',
   'finish-product',
   'pursue-product-objective',
-  'better-product',
+  'run-open-product-betterment',
   'author-skill',
 ]);
 

@@ -76,7 +76,7 @@ never a current compliance verdict. Unknown/stale authority disables exposure.
   spend, attribution, and lifecycle channel automation.
 - Use `design-app` or `design-game` when ads are only one
   component of a whole-product design.
-- Use `ready-payment-platform` for purchases, receipts, entitlements,
+- Use `build-payment-readiness` for purchases, receipts, entitlements,
   settlement, refunds, and finance-close authority.
 
 ## Guardrails

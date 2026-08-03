@@ -48,7 +48,7 @@ Legend:
 
 | Package | Class | Role |
 | --- | --- | --- |
-| `better-product` | workflow | Multi-aspect product betterment loop |
+| `run-open-product-betterment` | workflow | Multi-aspect product betterment loop |
 | `finish-product` | workflow | Whole-product finish pass |
 | `technology-stack-profile` | policy | Stack defaults (profile naming, not `-standard`) |
 

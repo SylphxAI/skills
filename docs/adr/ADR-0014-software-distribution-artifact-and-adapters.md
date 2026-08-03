@@ -27,7 +27,7 @@ not separate semantic jobs.
 ## Decision
 
 1. Rename and broaden `app-store-distribution-readiness` to
-   `ready-software-distribution`. Preserve one owner and one Software
+   `build-distribution-readiness`. Preserve one owner and one Software
    Distribution Contract and Distribution Evidence Pack across CLI, direct,
    package-manager, registry, container, app-store, desktop, PC, and console
    channels.
@@ -62,7 +62,7 @@ not separate semantic jobs.
 - No second CLI Skill or compatibility alias remains. Inbound owner references
   move to the broader package so native injection sees one owner.
 - Explicit invocations execute-hard-cutover from `$app-store-distribution-readiness` to
-  `$ready-software-distribution`; the retired identifier is not retained as
+  `$build-distribution-readiness`; the retired identifier is not retained as
   a second discoverable package.
 - The broadened Skill composes with Delivery Standard and does not emit a
   redundant delivery report.

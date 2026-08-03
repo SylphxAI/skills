@@ -7,7 +7,7 @@ supersedes: []
 amends:
   - ADR-0032-bounded-agent-loop-engineering
 scope:
-  - better-product
+  - run-open-product-betterment
   - product-improvement
   - agent-work-loops
 ---
@@ -34,7 +34,7 @@ warnings.
 
 ## Decision
 
-1. Add `better-product` as the owner of one independently accepted
+1. Add `run-open-product-betterment` as the owner of one independently accepted
    **Product Quality Loop Contract**.
 2. Model quality as a surface-by-dimension matrix with explicit promises,
    hard floors or objectives, required source/Candidate/artifact/live subject

@@ -25,9 +25,9 @@ Two jobs were not yet first-class routes:
 2. reproducing and repairing a frontend runtime performance failure with
    comparable source and runtime proof.
 
-`design-system-extractor`, `craft-interface`, and `produce-product-assets`
+`design-system-extractor`, `craft-product-interface`, and `produce-product-assets`
 contain adjacent rules but do not own the first artifact.
-`craft-interface` carries a baseline performance floor, while
+`craft-product-interface` carries a baseline performance floor, while
 `engineering-standard` owns general implementation quality; neither provides
 the second dedicated diagnostic and remediation record.
 

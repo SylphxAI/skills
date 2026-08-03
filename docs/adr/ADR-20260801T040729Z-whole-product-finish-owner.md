@@ -54,9 +54,9 @@ it does not mean more features, decoration, prose, files, gates, or mechanisms.
    final-fidelity reference slice when needed, repeat coherent passes, and
    verify through renders, playthroughs, measurements, regressions, and the
    repository's declared delivery boundary. A report alone is not completion.
-6. Keep authority boundaries: blueprints own product intent, `craft-interface`
+6. Keep authority boundaries: blueprints own product intent, `craft-product-interface`
    owns bounded interface work, domain systems own consequential facts and
-   numbers, `better-product` owns recurring discovery, and
+   numbers, `run-open-product-betterment` owns recurring discovery, and
    `review-launch-readiness` owns go/no-go admission.
 7. Update the App, Game, SaaS, Interface, Continuous Quality, and Launch Skills
    only enough to make this handoff explicit. Use native Skill discovery and

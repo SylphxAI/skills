@@ -14,7 +14,7 @@ When users or operators are **hurt** by failures or regressions, run **one** mai
 
 ## When not to use
 
-- Mixed open betterment with no fixed objective → `better-product`
+- Mixed open betterment with no fixed objective → `run-open-product-betterment`
 - Durable declared outcome to drive to completion → `pursue-product-objective`
 - Idea still unproven → `prototype-product`
 - Missing capability to ship → `build-product`

@@ -59,7 +59,7 @@ The portfolio adds these independently requested methods:
 - `design-semantic-taxonomy`
 - `model-security-threats`
 - `analyze-system-dynamics`
-- `forecast-probabilistically`
+- `forecast-with-calibration`
 - `analyze-causal-inference`
 
 `coordinate-enact-work` is a product adapter. Portable claim, lease,

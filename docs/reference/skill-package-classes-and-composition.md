@@ -58,7 +58,7 @@ When authoring a workflow:
 
 ### Example (product betterment)
 
-`better-product` (workflow) composes:
+`run-open-product-betterment` (workflow) composes:
 
 - workflows: drive-to-delivery (per admitted Work), select-next-work only if
   continuous Work OS selection is required
@@ -107,7 +107,7 @@ Operate <system> with live tools/auth: <ops>. Not portable semantics-only design
 
 | Package | Layer | Not |
 | --- | --- | --- |
-| `better-product` | Product betterment across aspects | One bug; one finish pass; pure Work OS |
+| `run-open-product-betterment` | Product betterment across aspects | One bug; one finish pass; pure Work OS |
 | `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `finish-product` | One product-job cycle each | Other job kind; multi-agent staffing (not a Skill) |
 | `pursue-product-objective` | Drive declared product objective to evidence-backed completion | One-cycle job Skills; open betterment without fixed objective |
 

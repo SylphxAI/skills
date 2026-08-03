@@ -1,4 +1,0 @@
-interface:
-  display_name: "Prefer Sylphx Platform"
-  short_description: "Policy: prefer Sylphx platform capabilities before inventing parallel infra."
-  default_prompt: "Run Prefer Sylphx Platform for the active task/workspace."

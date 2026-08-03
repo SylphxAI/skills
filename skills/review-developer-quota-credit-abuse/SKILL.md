@@ -41,7 +41,7 @@ look indistinguishable from abuse.
   emit the product policy and hand implementation to the engineering owner.
 - For package and price architecture, use `price-saas-subscription`.
 - For payment authorization, settlement, refunds, or chargebacks, use
-  `ready-payment-platform`; consume its canonical money state.
+  `build-payment-readiness`; consume its canonical money state.
 - For DDoS or active security incidents, use `incident-standard` and the owning
   security engineering boundary under `engineering-standard`.
 - For a specific fraud case, preserve evidence and authorized review; this

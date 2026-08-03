@@ -93,7 +93,7 @@ named primary):
 
 Naming guidance:
 
-- Prefer job nouns for workflows (`finish-product`, `better-product`).
+- Prefer job nouns for workflows (`finish-product`, `run-open-product-betterment`).
 - `-review` for assessment jobs.
 - `-standard` **only** for packages whose **primary** class is `policy`
   (binding predicates / profiles), not prestige for any important package.
@@ -153,7 +153,7 @@ material. Class labels alone do not fix utilization.
 
 | Loop layer | Primary class | Owner package | Terminal |
 | --- | --- | --- | --- |
-| Product betterment | workflow | `better-product` | Idle frontier (not perfection) |
+| Product betterment | workflow | `run-open-product-betterment` | Idle frontier (not perfection) |
 | Single-objective closure | **workflow** (execution method; may embed predicates) | `drive-to-delivery` | Delivery terminal for one accepted objective |
 | Continuous work selection OS | **workflow** (work OS method; may embed predicates) | `select-next-work` | Tick/report; continuous by design |
 | Portable coordination semantics | policy | `work-coordination-standard` | N/A (semantics) |
@@ -175,7 +175,7 @@ extract it into a separate policy pack — do not reintroduce a prestige
 A Skill named for automation or a policy about automation is **instruction
 text**. It does not start a scheduler, set a harness Goal, or claim Work.
 Runtime auto-loop requires Goal/Work/scheduler surfaces + an owning workflow
-(for example `better-product` binding uncapped harness goals).
+(for example `run-open-product-betterment` binding uncapped harness goals).
 
 ### 6. Catalog size and unify rules
 
@@ -221,7 +221,7 @@ Runtime auto-loop requires Goal/Work/scheduler surfaces + an owning workflow
 - New/changed packages declare primary class in PR notes / CONTRIBUTING
   checklist (docs only — not frontmatter).
 - Descriptions for true policy packs use compose/not-workflow language.
-- `better-product`, `drive-to-delivery`, and
+- `run-open-product-betterment`, `drive-to-delivery`, and
   `select-next-work` descriptions exclude each other by layer.
 - No claim that Skills are an industry "standard package type" distinct from
   workflows; Skills *are* the on-demand specialized-package channel.

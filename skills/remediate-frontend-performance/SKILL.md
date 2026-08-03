@@ -74,7 +74,7 @@ Produce one **Frontend Runtime Performance Remediation Record** containing:
 
 ## Routing boundaries
 
-- `craft-interface` owns baseline performance while designing, building, or
+- `craft-product-interface` owns baseline performance while designing, building, or
   polishing one interface. Use this Skill when performance diagnosis and
   remediation is itself the requested artifact.
 - `engineering-standard` supplies binding implementation and defect-repair

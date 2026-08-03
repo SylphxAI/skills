@@ -1,4 +1,0 @@
-interface:
-  display_name: "Craft Interface"
-  short_description: "Craft one interface/flow: direction, interaction states, responsive, a11y."
-  default_prompt: "Run Craft Interface for the active task/workspace."

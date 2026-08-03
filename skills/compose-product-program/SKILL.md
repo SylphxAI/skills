@@ -201,12 +201,12 @@ Produce one **Product Program Manifest** containing:
   blueprint and creative briefs; `produce-product-assets` owns exact rendered
   product media; `review-promotion-campaign`, `review-referral-loop`, and
   `optimize-store-listing` own their narrow artifacts.
-- `ready-payment-platform` owns provider transaction/ledger integration; `review-refund-and-support-flow` owns refund customer/account consequences.
+- `build-payment-readiness` owns provider transaction/ledger integration; `review-refund-and-support-flow` owns refund customer/account consequences.
 - `review-solicitation-policy` owns platform-specific authentic public review
   request policy; `run-product-feedback-loop` owns universal private
   feedback, authorized review ingestion, evidence clustering, routing, product
   action, and close-loop behavior.
-- `ready-software-distribution` consumes a sealed planning revision and
+- `build-distribution-readiness` consumes a sealed planning revision and
   owns the distribution contract and evidence pack for target artifacts,
   installers, package-manager and store adapters, channel eligibility,
   submission or certification, lifecycle behavior, rollout, recovery, and live

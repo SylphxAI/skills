@@ -1,4 +1,0 @@
-interface:
-  display_name: "Better Product"
-  short_description: "Open betterment loop (no fixed objective): quality matrix, scout, all high-EV B, oracle verify; idle at empty high-EV frontier (else…"
-  default_prompt: "Run open-ended high-leverage product betterment on the active workspace (no single fixed objective)."

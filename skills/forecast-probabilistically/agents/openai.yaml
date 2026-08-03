@@ -1,4 +1,0 @@
-interface:
-  display_name: "Forecast Probabilistically"
-  short_description: "Calibrated probabilistic forecasts with base rates and scoring rules."
-  default_prompt: "Run Forecast Probabilistically for the active task/workspace."

@@ -70,7 +70,7 @@ Produce a **Constrained Decision Model**:
   selection among materially distinct options without a mathematical program.
 - Use `review-agent-planning-system` for how an agent decomposes, sequences,
   observes, and replans work.
-- Use `forecast-probabilistically` when the primary artifact is a calibrated
+- Use `forecast-with-calibration` when the primary artifact is a calibrated
   prediction rather than a controllable decision.
 - Use `review-product-experiment` or `analyze-causal-inference` to estimate the
   effect of an intervention. An optimizer may consume those estimates but does

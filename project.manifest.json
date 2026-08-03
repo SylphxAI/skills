@@ -118,7 +118,7 @@
       "instruction-evolution-standard",
       "project-manifest-standard",
       "design-prompt-architecture",
-      "bound-task-scope"
+      "bound-request-scope"
     ],
     "capabilities": [
       "static-instruction-packages",
