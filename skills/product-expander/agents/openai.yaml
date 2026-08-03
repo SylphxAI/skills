@@ -1,4 +1,0 @@
-interface:
-  display_name: "Product Expander"
-  short_description: "One expand cycle: pick a leverage scale bet, research bottleneck, implement ×N change, verify scale and core non-regression."
-  default_prompt: "Run one Product Expander cycle on the active product/workspace."

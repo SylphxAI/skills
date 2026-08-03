@@ -1,4 +1,0 @@
-interface:
-  display_name: "Product Builder"
-  short_description: "One build cycle: close shippable capability gaps with research, implement on correct boundaries, verify delivery path."
-  default_prompt: "Run one Product Builder cycle on the active product/workspace."

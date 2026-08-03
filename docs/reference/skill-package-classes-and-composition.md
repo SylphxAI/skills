@@ -110,7 +110,7 @@ Operate <system> with live tools/auth: <ops>. Not portable semantics-only design
 | Package | Layer | Not |
 | --- | --- | --- |
 | `continuous-product-quality` | Product betterment across aspects | One bug; one finish pass; pure Work OS |
-| `product-prototyper` / `product-builder` / `product-maintainer` / `product-expander` / `product-finish` | One product-role cycle each (finish sole entry) | Other role’s cycle; multi-role orchestration OS |
+| `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `product-finish` | One product-job cycle each | Other job kind; multi-agent staffing (not a Skill) |
 
 | `autonomous-execution` | One accepted objective to delivery terminal | Continuous new-Work discovery; short Q&A |
 | `self-feeding-agent-loop` | Continuous next-work selection OS | Driving one bounded objective alone |

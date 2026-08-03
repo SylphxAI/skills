@@ -1,4 +1,0 @@
-interface:
-  display_name: "Product Maintainer"
-  short_description: "One maintain cycle: find live/regression harm, fix on correct boundaries, verify with reliability oracles."
-  default_prompt: "Run one Product Maintainer cycle on the active product/workspace."

@@ -17,26 +17,13 @@ corrections, rendered or playthrough evidence, and remaining blockers.
 
 This Skill owns whole-product **finish** work after the product promise and
 selected capabilities are defined: one finish pass / cycle over an integrated
-subject. When a normal agent decides “this needs finishing / deburring,” load
-**this Skill only**—there is no second finisher package.
+subject. When the work is finishing / deburring an integrated product, load **this Skill**.
 
 It does not invent product strategy, business truth, prices, policy, brand
 identity, game economy authority, or launch approval. It does not replace a
-bounded `interface-craft` job, role cycles for prototype/build/maintain/expand,
-or mixed betterment via `continuous-product-quality`.
+bounded `interface-craft` job. For missing capability, live harm, scale, or hypothesis work, use `build-product`, `maintain-product`, `expand-product`, or `prototype-product`. For mixed betterment without a single work kind, use `continuous-product-quality`.
 
 
-## Sibling product roles
-
-When the job is not finish:
-
-| Need | Skill |
-| --- | --- |
-| Learn / decide | `product-prototyper` |
-| Ship capability | `product-builder` |
-| Cut live harm | `product-maintainer` |
-| Scale validated core | `product-expander` |
-| Finish / deburr | **this Skill** (`product-finish`) |
 
 ## Finish invariant
 

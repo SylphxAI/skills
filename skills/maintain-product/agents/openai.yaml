@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maintain Product"
+  short_description: "Reduce live product harm: reproduce, fix root cause on the owning layer, verify reliability oracles."
+  default_prompt: "Run one Maintain Product cycle on the active product/workspace."

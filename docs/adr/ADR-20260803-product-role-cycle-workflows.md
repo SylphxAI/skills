@@ -7,57 +7,58 @@ supersedes: []
 amends: []
 scope:
   - static-instruction-packages
-  - product-prototyper
-  - product-builder
-  - product-maintainer
-  - product-expander
+  - prototype-product
+  - build-product
+  - maintain-product
+  - expand-product
   - product-finish
 ---
 
-# Five product-role cycle workflows
+# Product job-cycle workflows
 
 ## Context
 
-Products never finish in a single linear life story. Prototype, build, maintain,
-expand, and finish work coexist and feed each other. Encoding that as one
-meta-router or one forever OS skill confuses admit rules and stop conditions.
+Product work is not one method. Learning, shipping capability, cutting harm,
+scaling, and finishing need different admit rules and done criteria. Skills must
+describe **how to do that job for one cycle**, not how many agents to run or
+what “role” an agent plays.
 
 ## Decision
 
-Ship **five separate workflow Skills**, each owning **one cycle** for one role:
+Provide separate **workflow** Skills for distinct **job kinds**:
 
-| Skill | Role cycle |
+| Skill | Job this cycle |
 | --- | --- |
-| `product-prototyper` | Learn: hypothesis → cheap probe → go/kill/pivot |
-| `product-builder` | Ship capability: gap → correct boundary → oracle |
-| `product-maintainer` | Harm↓: symptom → cause → fix → reliability oracle |
-| `product-expander` | Scale: validated core ×N → metric + non-regression |
-| `product-finish` | Finish/deburr: inspect integrated product → above-threshold fixes → recapture (sole finisher entry) |
+| `prototype-product` | Validate a hypothesis with a cheap real probe |
+| `build-product` | Close a shippable capability gap |
+| `maintain-product` | Reduce framed live/regression harm |
+| `expand-product` | Scale a validated core (×N) |
+| `product-finish` | Deburr/finish an integrated product |
 
-Shared skeleton only: **Frame → Research → Admit → Implement → Deliver/Verify → Cycle-done**.
+Each Skill: Frame → Research → Admit → Implement → Deliver/Verify → Cycle-done.
 
-### Explicit non-goals
+### Non-goals of these Skills
 
-- Not a multi-cycle orchestration skill (no loop-engineering OS in these packages).
-- Not a stage waterfall (roles may run in parallel as separate agent engagements).
-- Not host tool names for goals/missions (portable method only).
-- Not a replacement for deep doctrine already in `product-finish` (finisher may compose it).
+- Multi-agent orchestration, spawn counts, or role casting
+- Multi-cycle “loop OS” / host goal tool names
+- A meta-router over the catalog
+
+Who runs the Skill (one agent or many) is a **host/runtime** choice. The Skill
+only answers: **given this job, how do you run one cycle?**
 
 ### Relation to continuous-product-quality
 
-`continuous-product-quality` remains a general betterment cycle. Prefer a
-**role skill** when the engagement has a clear identity (harm vs scale vs learn
-vs ship vs finish). Prefer CPQ when the work is mixed high-leverage betterment
-without a single role.
+Use a job Skill when the work is clearly that job. Use
+`continuous-product-quality` when betterment mixes jobs or has no single job kind.
 
 ## Consequences
 
-- Agents can specialize without one skill rewriting another’s terminal.
-- Parallel product agents can each load one role skill.
-- Catalog grows by five thin workflows; duplication of full OS prose is avoided.
+- Progressive disclosure stays job-shaped and portable
+- Agents load methods without being told staffing
+- Catalog avoids role-noun packages that read like org charts
 
 ## Verification
 
-- Five packages exist under `skills/product-{prototyper,builder,maintainer,expander,finisher}/`.
-- Each defines one-cycle steps and cycle-done criteria.
-- No host-specific goal tool identifiers in those Skill bodies.
+- Five job Skills exist with one-cycle methods
+- No spawn/role staffing instructions in those Skill bodies
+- `product-finish` remains the sole finish entry

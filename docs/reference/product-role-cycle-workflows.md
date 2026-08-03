@@ -1,17 +1,16 @@
-# Product role cycle workflows
+# Product job-cycle workflows
 
-Five independent **workflow** Skills. Each run is **one cycle**. Parallel roles
-are separate engagements, not one global stage lock.
+Separate **workflow** Skills for different product jobs. Each Skill describes
+**one cycle** of that job. Staffing (how many agents) is not part of the Skill.
 
-| Skill | Question this cycle answers |
+| Skill | Job |
 | --- | --- |
-| `product-prototyper` | What did we learn; go/kill/pivot? |
-| `product-builder` | Is this capability usable on a real path? |
-| `product-maintainer` | Did framed harm go down with evidence? |
-| `product-expander` | Did ×N move without breaking the core? |
-| `product-finish` | Did above-threshold burrs clear for the finish target? |
+| `prototype-product` | Learn: hypothesis → probe → go/kill/pivot |
+| `build-product` | Ship capability on a real path |
+| `maintain-product` | Cut framed harm with reliability oracles |
+| `expand-product` | Scale a validated core |
+| `product-finish` | Finish/deburr integrated product |
 
-Common steps: Frame → Research → Admit → Implement → Deliver/Verify → Cycle-done.
+Shared shape: Frame → Research → Admit → Implement → Deliver/Verify → Cycle-done.
 
-Deeper finish doctrine: `product-finish`. Mixed betterment without a single role:
-`continuous-product-quality`.
+Mixed betterment: `continuous-product-quality`.

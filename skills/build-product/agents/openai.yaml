@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Product"
+  short_description: "Close shippable product capability gaps: frame the journey, implement on correct boundaries, verify with oracles."
+  default_prompt: "Run one Build Product cycle on the active product/workspace."
