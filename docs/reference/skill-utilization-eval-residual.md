@@ -118,3 +118,11 @@ utilization.
 Result sheet drop: `tests/fixtures/skill-utilization-host-results/` (see README there).
 
 Pack generator: `node scripts/prepare-utilization-host-run.mjs` (printable minimum slice; not a green claim).
+
+## Authoring progress (continued)
+
+- Structural description discrimination guards for critical-skill and near-neighbour suites.
+- Host-run pack generator (`scripts/prepare-utilization-host-run.mjs`).
+- Non-promotable structural L0 floor-marker sheet under `tests/fixtures/skill-utilization-host-results/`.
+- **Still open:** green behavior-oracle runs on Codex/Claude/Grok hosts at a pinned SHA.
+
