@@ -91,3 +91,12 @@ a code in a real host run is still required for measured utilization claims.
 3. Failure taxonomy: L0 miss vs Skill miss vs tool/policy gap vs model limit.
 
 Until exit criteria land, utilization remains an honest open residual.
+
+## Corpus notes (2026-08-03)
+
+Pinned suite includes critical/neighbour cases for product job Skills:
+`prototype-product`, `build-product`, `maintain-product`, `expand-product`,
+`finish-product`, `pursue-product-objective`, `better-product`, `author-skill`,
+plus delivery/select-next-work neighbours. Fixtures alone are not utilization
+proof (see Goal above).
+

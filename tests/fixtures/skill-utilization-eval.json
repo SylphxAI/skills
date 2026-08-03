@@ -100,7 +100,7 @@
     {
       "id": "critical-delivery-standard",
       "suite": "critical-skill",
-      "prompt": "Define what “done” means for landing this API change from source through production, including rollback and live proof.",
+      "prompt": "Define what \u201cdone\u201d means for landing this API change from source through production, including rollback and live proof.",
       "expectedSkills": [
         "delivery-standard"
       ],
@@ -198,15 +198,16 @@
     {
       "id": "critical-better-product",
       "suite": "critical-skill",
-      "prompt": "We need an always-on operating loop that keeps finding and admitting product quality defects into Work with coverage freshness budgets.",
+      "prompt": "We need ongoing high-leverage product betterment across mixed UI, reliability, and growth gaps\u2014no single fixed outcome, just keep finding and admitting positive-EV work until the high-EV frontier is empty.",
       "expectedSkills": [
         "better-product"
       ],
       "behaviorOracle": {
-        "mandatoryObservable": "Defines a standing quality loop contract with scout triggers, finding admission, Work handoff, and coverage freshness/budgets—not a one-off finish pass.",
+        "mandatoryObservable": "Defines a standing quality loop contract with scout triggers, finding admission, Work handoff, and coverage freshness/budgets\u2014not a one-off finish pass.",
         "mustNot": [
           "Treat finish-product as the sole primary owner of this job",
-          "Treat review-operational-observability as the sole primary owner of this job"
+          "Treat review-operational-observability as the sole primary owner of this job",
+          "Treat pursue-product-objective as the sole primary owner when no fixed objective is declared"
         ]
       },
       "failureTaxonomy": [
@@ -215,7 +216,8 @@
       ],
       "nearNeighbours": [
         "finish-product",
-        "review-operational-observability"
+        "review-operational-observability",
+        "pursue-product-objective"
       ]
     },
     {
@@ -620,7 +622,7 @@
     {
       "id": "neighbour-feedback-vs-solicitation",
       "suite": "near-neighbour",
-      "prompt": "We need rules for when the app may show the native “rate us” prompt, including cooldowns and no star-gating.",
+      "prompt": "We need rules for when the app may show the native \u201crate us\u201d prompt, including cooldowns and no star-gating.",
       "expectedSkills": [
         "review-solicitation-policy"
       ],
@@ -729,7 +731,7 @@
     {
       "id": "abstain-spelling",
       "suite": "abstention",
-      "prompt": "Fix the typo in this sentence: “Recieve the package.”",
+      "prompt": "Fix the typo in this sentence: \u201cRecieve the package.\u201d",
       "expectedSkills": [],
       "behaviorOracle": {
         "mandatoryObservable": "Does not load a domain Skill; performs ordinary edit/answer without inventing authority or a method package.",
@@ -887,7 +889,8 @@
       "nearNeighbours": [
         "drive-to-delivery",
         "select-next-work",
-        "finish-product"
+        "finish-product",
+        "pursue-product-objective"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Creates or resumes a harness goal whose objective carries product/aspects/idle-frontier DoD and omits token_budget/budget cap; does not mark goal complete after one tick/Work; continues betterment loop semantics rather than one-shot finish.",
@@ -900,6 +903,197 @@
       "failureTaxonomy": [
         "skill_miss",
         "tool_policy_gap",
+        "model_limit"
+      ]
+    },
+    {
+      "id": "critical-prototype-product",
+      "suite": "critical-skill",
+      "prompt": "We have a new game mechanic idea. Build the cheapest playable probe this week so we can go/kill/pivot\u2014not a production ship.",
+      "expectedSkills": [
+        "prototype-product"
+      ],
+      "nearNeighbours": [
+        "build-product",
+        "design-game",
+        "pursue-product-objective"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Frames a hypothesis, builds a cheap probe, and ends with go/kill/pivot evidence\u2014not a durable ship path or standing betterment OS.",
+        "mustNot": [
+          "Treat build-product as the sole primary owner of this job",
+          "Treat better-product as the sole primary owner of this job"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
+        "model_limit"
+      ]
+    },
+    {
+      "id": "critical-build-product",
+      "suite": "critical-skill",
+      "prompt": "Direction is decided: wire the real checkout journey end-to-end on the correct engine vs title boundary so dogfood users can complete purchase.",
+      "expectedSkills": [
+        "build-product"
+      ],
+      "nearNeighbours": [
+        "prototype-product",
+        "finish-product",
+        "drive-to-delivery"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Closes a shippable capability gap with correct ownership boundary and original-oracle verification of the journey.",
+        "mustNot": [
+          "Treat prototype-product as the sole primary owner of this job",
+          "Treat finish-product as the sole primary owner of this job"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
+        "model_limit"
+      ]
+    },
+    {
+      "id": "critical-maintain-product",
+      "suite": "critical-skill",
+      "prompt": "Dogfood is throwing 500s on save after last deploy. Reproduce, fix the root cause on the owning layer, and prove the harm is gone.",
+      "expectedSkills": [
+        "maintain-product"
+      ],
+      "nearNeighbours": [
+        "build-product",
+        "better-product",
+        "drive-to-delivery"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Frames harm, reproduces, fixes cause, verifies with reliability/regression oracle\u2014not a greenfield feature build.",
+        "mustNot": [
+          "Treat expand-product as the sole primary owner of this job",
+          "Treat finish-product as the sole primary owner of this job"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
+        "model_limit"
+      ]
+    },
+    {
+      "id": "critical-expand-product",
+      "suite": "critical-skill",
+      "prompt": "Core multiplayer loop already works. Scale it to 10x concurrent rooms with metrics and without breaking the core journey.",
+      "expectedSkills": [
+        "expand-product"
+      ],
+      "nearNeighbours": [
+        "build-product",
+        "maintain-product",
+        "better-product"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Scales a validated core with an explicit \u00d7N target and core non-regression check.",
+        "mustNot": [
+          "Treat prototype-product as the sole primary owner of this job",
+          "Treat finish-product as the sole primary owner of this job"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
+        "model_limit"
+      ]
+    },
+    {
+      "id": "critical-pursue-product-objective",
+      "suite": "critical-skill",
+      "prompt": "Objective is fixed: ship Trueform to production-commercial readiness on Keel with live Pages smoke. Keep working until that objective is evidenced complete\u2014not open-ended polish forever.",
+      "expectedSkills": [
+        "pursue-product-objective"
+      ],
+      "nearNeighbours": [
+        "better-product",
+        "drive-to-delivery",
+        "finish-product"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Binds a durable declared product objective and runs high-leverage cycles until objective terminal evidence\u2014not a one-cycle finish-only pass and not open idle betterment without that objective.",
+        "mustNot": [
+          "Treat better-product as the sole primary owner when a fixed objective is declared",
+          "Mark complete after a single PR without objective-level evidence",
+          "Treat finish-product as the sole primary owner of the whole objective"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
+        "model_limit"
+      ]
+    },
+    {
+      "id": "critical-author-skill",
+      "suite": "critical-skill",
+      "prompt": "Create a new Sylphx Skill package for running database migrations safely: job-shaped name, short description, one-cycle method, no host tool hardcoding.",
+      "expectedSkills": [
+        "author-skill"
+      ],
+      "nearNeighbours": [
+        "distill-source-to-skill",
+        "curate-skill-repository",
+        "design-skill-evals"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Authors or plans an installable Skill package (SKILL.md layout, description, when/method/done) rather than only distilling prose without package discipline.",
+        "mustNot": [
+          "Treat curate-skill-repository as the sole primary owner of creating one new Skill",
+          "Hardcode host-specific goal tool ids as if universal"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
+        "model_limit"
+      ]
+    },
+    {
+      "id": "neighbour-pursue-vs-better",
+      "suite": "near-neighbour",
+      "prompt": "Do not run open-ended betterment. There is a fixed product outcome to reach and prove; keep going until that outcome is met.",
+      "expectedSkills": [
+        "pursue-product-objective"
+      ],
+      "nearNeighbours": [
+        "better-product",
+        "drive-to-delivery",
+        "select-next-work"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Chooses fixed-objective pursuit over open mixed betterment as primary method.",
+        "mustNot": [
+          "Treat better-product as the sole primary owner of this job"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
+        "model_limit"
+      ]
+    },
+    {
+      "id": "neighbour-prototype-vs-build",
+      "suite": "near-neighbour",
+      "prompt": "We are not shipping yet\u2014only need the cheapest real probe to decide if the feature is worth building.",
+      "expectedSkills": [
+        "prototype-product"
+      ],
+      "nearNeighbours": [
+        "build-product",
+        "design-app",
+        "pursue-product-objective"
+      ],
+      "behaviorOracle": {
+        "mandatoryObservable": "Chooses learning probe / go-kill-pivot over durable ship-capability construction as primary.",
+        "mustNot": [
+          "Treat build-product as the sole primary owner of this job"
+        ]
+      },
+      "failureTaxonomy": [
+        "skill_miss",
         "model_limit"
       ]
     }
