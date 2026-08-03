@@ -1,6 +1,6 @@
 ---
 name: pursue-product-objective
-description: "Pursue a declared product objective via betterment cycles to evidence completion or honest block."
+description: "Pursue a fixed declared product objective to evidence-backed completion—not open-ended betterment."
 ---
 
 # Pursue Product Objective

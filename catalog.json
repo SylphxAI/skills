@@ -41,9 +41,9 @@
     },
     {
       "name": "better-product",
-      "description": "Open betterment with no fixed objective: coverage card, all high-EV B, verify; stop at empty high-EV frontier (else pursue-product-objective).",
+      "description": "Open betterment loop (no fixed objective): quality matrix, scout, all high-EV B, oracle verify; idle at empty high-EV frontier (else pursue-product-objective).",
       "path": "skills/better-product/SKILL.md",
-      "packageDigest": "sha256:125f1870dd7d0fa88b607ddeb31cf1e0ac2192a2887709dce4d2603491c7fb49"
+      "packageDigest": "sha256:4fdb0396484a5040a3772bd621fa076e899bdb11e67171af25ae17a56cbc3f3b"
     },
     {
       "name": "bound-task-scope",
@@ -149,9 +149,9 @@
     },
     {
       "name": "design-prompt-architecture",
-      "description": "Prompt/context architecture: layers, tools, memory, eval hooks.",
+      "description": "Design prompt/context architecture: always-on constitution, Skill metadata, subagent briefs, layers without policy duplication.",
       "path": "skills/design-prompt-architecture/SKILL.md",
-      "packageDigest": "sha256:40306ebc9fa822aa49e705bab2fc37c3db824009b02372b096c1909b65e2209c"
+      "packageDigest": "sha256:92a0167ddbc3f1e1e9b649878882810543413e4445cb74a9320bbd01cde303bb"
     },
     {
       "name": "design-provenance-system",
@@ -353,9 +353,9 @@
     },
     {
       "name": "pursue-product-objective",
-      "description": "Pursue a declared product objective via betterment cycles to evidence completion or honest block.",
+      "description": "Pursue a fixed declared product objective to evidence-backed completion—not open-ended betterment.",
       "path": "skills/pursue-product-objective/SKILL.md",
-      "packageDigest": "sha256:2e2861d7450197b5353fd72a8fde0959e937335f100d4e2bc40b2917dcd8d1e1"
+      "packageDigest": "sha256:bec7ff31ac9d0163fbcf19a7019a5953aeb58d1c2a9b06e7190eb8d3b8576617"
     },
     {
       "name": "ready-payment-platform",
@@ -635,9 +635,9 @@
     },
     {
       "name": "review-solicitation-policy",
-      "description": "Policy: review solicitation—timing, channels, bias/abuse controls.",
+      "description": "Policy: public in-app review request—eligibility, native surfaces, cooldowns, anti star-steering.",
       "path": "skills/review-solicitation-policy/SKILL.md",
-      "packageDigest": "sha256:ace9be154db70cec4137baa74ff2f6662264cfc4a94fc95d359345432e040732"
+      "packageDigest": "sha256:c0d1fe7d51cf05713b611a70d5b6361b8e4e736845ba8995dea565678eb7ef86"
     },
     {
       "name": "review-subscription-price-increase-retention",
@@ -653,9 +653,9 @@
     },
     {
       "name": "run-product-feedback-loop",
-      "description": "One product feedback loop: capture, cluster, decide, close to users/roadmap.",
+      "description": "Run feedback learning loop: private feedback and public reviews, cluster, route, product actions, truthful close.",
       "path": "skills/run-product-feedback-loop/SKILL.md",
-      "packageDigest": "sha256:9dc03d4ce563b27fb84e7446bc130494d7b84d4f623877bca5fac19a3708c496"
+      "packageDigest": "sha256:4a724b514e5429654fd46492bf642c24a38768ba5bffc3c4441378cb9620e971"
     },
     {
       "name": "select-dependency-versions",

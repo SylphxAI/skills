@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Solicitation Policy"
-  short_description: "Policy: review solicitation—timing, channels, bias/abuse controls."
+  short_description: "Policy: public in-app review request—eligibility, native surfaces, cooldowns, anti star-steering."
   default_prompt: "Use $review-solicitation-policy to design a neutral, policy-current public review request state machine for this product."

@@ -175,7 +175,7 @@ test('critical-skill prompts discriminate expected skill descriptions structural
     if (rankOk) wins += 1;
   }
   assert.ok(
-    wins / critical.length >= 0.7,
-    `description discrimination too weak: ${wins}/${critical.length} critical singles ranked expected skill in top ~20% (structural only)`,
+    wins / critical.length >= 0.85,
+    `description discrimination too weak: ${wins}/${critical.length} critical singles ranked expected skill in top ~20% (structural only; not host utilization proof)`,
   );
 });

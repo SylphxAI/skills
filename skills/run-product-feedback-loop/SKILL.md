@@ -1,6 +1,6 @@
 ---
 name: run-product-feedback-loop
-description: "One product feedback loop: capture, cluster, decide, close to users/roadmap."
+description: "Run feedback learning loop: private feedback and public reviews, cluster, route, product actions, truthful close."
 ---
 
 # Run Product Feedback Loop

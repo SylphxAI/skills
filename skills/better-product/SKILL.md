@@ -1,6 +1,6 @@
 ---
 name: better-product
-description: "Open betterment with no fixed objective: coverage card, all high-EV B, verify; stop at empty high-EV frontier (else pursue-product-objective)."
+description: "Open betterment loop (no fixed objective): quality matrix, scout, all high-EV B, oracle verify; idle at empty high-EV frontier (else pursue-product-objective)."
 ---
 
 # Better Product

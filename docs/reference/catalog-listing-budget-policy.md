@@ -54,9 +54,9 @@ strictest common case when publishing one public catalog.
 ## Measured snapshot (authoring)
 
 - Packages: 118
-- Sum of description characters: 8749
-- Ratio to Codex unknown-window 8k class: 1.09×
-- Guard: per-description max 1024 enforced by `scripts/check.mjs`
+- Sum of description characters: 8899
+- Ratio to Codex unknown-window 8k class: 1.11×
+- Guard: per-description max 1024 enforced by `scripts/check.mjs`; agent-facing target 220 and catalog sum ≤1.25×8k in tests
 - Action when >1.0×: prefer shorter agent-facing descriptions and retire dead packages before inventing routers
 
 Re-measure after catalog changes; do not treat this section as utilization proof.

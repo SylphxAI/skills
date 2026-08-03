@@ -1,6 +1,6 @@
 ---
 name: design-prompt-architecture
-description: "Prompt/context architecture: layers, tools, memory, eval hooks."
+description: "Design prompt/context architecture: always-on constitution, Skill metadata, subagent briefs, layers without policy duplication."
 ---
 # Design Prompt Architecture
 

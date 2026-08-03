@@ -1,6 +1,6 @@
 ---
 name: review-solicitation-policy
-description: "Policy: review solicitation—timing, channels, bias/abuse controls."
+description: "Policy: public in-app review request—eligibility, native surfaces, cooldowns, anti star-steering."
 ---
 
 # Review Solicitation Policy
