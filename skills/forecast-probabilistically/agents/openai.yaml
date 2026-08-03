@@ -1,0 +1,4 @@
+interface:
+  display_name: "Forecast Probabilistically"
+  short_description: "Produce probabilistic forecasts with uncertainty, calibration, and decision use."
+  default_prompt: "Run Forecast Probabilistically for the active task/workspace."

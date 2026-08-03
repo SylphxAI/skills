@@ -47,8 +47,8 @@ Produce one **Learning Change Record** containing:
 
 ## Boundaries
 
-- Use `critical-analysis` when the primary job is diagnosing an uncertain cause.
-- Use `skill-eval-designer` for a complete exact-candidate Skill evaluation;
+- Use `analyze-critically` when the primary job is diagnosing an uncertain cause.
+- Use `design-skill-evals` for a complete exact-candidate Skill evaluation;
   this skill owns why the agent system should change and whether the broader
   intervention solved the recurring problem.
 - Use `optimization-objective-review` when the objective, reward, KPI, or

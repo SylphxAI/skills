@@ -23,7 +23,7 @@ Legend:
 | --- | --- | --- | --- |
 | `agent-first-development-standard` | policy (+ workflow flavor for packets) | KEEP-policy | Constraints for no-human multi-agent delivery packets; not a continuous loop OS |
 | `agent-native-standard` | policy | KEEP-policy | Product operability constraints for agents |
-| `autonomous-execution` | **workflow** | RENAMED-workflow | Hard-renamed from `autonomous-execution-standard` |
+| `drive-to-delivery` | **workflow** | RENAMED-workflow | Hard-renamed from `drive-to-delivery-standard` |
 | `ci-admission-standard` | policy | KEEP-policy | CI admission design predicates |
 | `ci-runner-capacity-standard` | policy | KEEP-policy | Capacity design predicates |
 | `commercial-decision-standard` | policy | KEEP-policy | Durable commercial decision predicates |
@@ -43,7 +43,7 @@ Legend:
 | `select-next-work` | **workflow** | RENAMED-workflow | Hard-renamed from `select-next-work-standard` |
 | `source-authoring-standard` | policy | KEEP-policy | Source identity/commit predicates |
 | `specification-control-plane-standard` | policy | KEEP-policy | Spec lifecycle; check overlap with project-manifest / enterprise later only if coincident |
-| `work-coordination-standard` | policy | KEEP-policy | Portable ledger semantics; pair with adapter `enact-work-coordination` |
+| `work-coordination-standard` | policy | KEEP-policy | Portable ledger semantics; pair with adapter `coordinate-enact-work` |
 
 ## Not `*-standard` but loop-critical (for exclusion discipline)
 
@@ -51,7 +51,7 @@ Legend:
 | --- | --- | --- |
 | `better-product` | workflow | Multi-aspect product betterment loop |
 | `product-finish` | workflow | Whole-product finish pass |
-| `enact-work-coordination` | adapter | Live Enact ops |
+| `coordinate-enact-work` | adapter | Live Enact ops |
 | `technology-stack-profile` | policy | Stack defaults (profile naming, not `-standard`) |
 
 ## Immediate non-goals
@@ -84,7 +84,7 @@ Hard-renamed (ADR-0016, no discoverable alias):
 
 | Predecessor | Current |
 | --- | --- |
-| `autonomous-execution-standard` | `autonomous-execution` |
+| `drive-to-delivery-standard` | `drive-to-delivery` |
 | `select-next-work-standard` | `select-next-work` |
 
 Bodies declare primary class `workflow` and soft composition. Historical

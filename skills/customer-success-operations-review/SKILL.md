@@ -13,8 +13,8 @@ Own the recurring post-sale operating model: segmentation, desired outcomes, onb
 
 ## When not to use
 
-- Use `customer-data-migration-review` or `customer-support-operations` when the primary artifact is a technical data cutover or the reactive support operating model.
-- Use `enterprise-contract-operations-review`, `product-analytics-instrumentation-review`, `marketing-automation-blueprint`, or `saas-subscription-pricing` for contract mechanics, measurement implementation, campaigns, or pricing decisions.
+- Use `customer-data-migration-review` or `operate-customer-support` when the primary artifact is a technical data cutover or the reactive support operating model.
+- Use `enterprise-contract-operations-review`, `product-analytics-instrumentation-review`, `marketing-automation-blueprint`, or `price-saas-subscription` for contract mechanics, measurement implementation, campaigns, or pricing decisions.
 
 ## Resource routing
 

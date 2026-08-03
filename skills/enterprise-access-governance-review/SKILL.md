@@ -145,7 +145,7 @@ and gaps without claiming runtime enforcement from design artifacts alone.
 - Use `security-assurance-operations-review` for customer security evidence,
   questionnaires, control claims, compliance readiness, and non-access security
   exceptions.
-- Use `customer-support-operations` for the whole support operating model; this
+- Use `operate-customer-support` for the whole support operating model; this
   skill only defines support authority and privileged evidence.
 - Use `incident-standard`, `engineering-standard`, `privacy-data-lifecycle-review`,
   and `delivery-standard` for incidents, controls, implementation, privacy, and shipped proof.

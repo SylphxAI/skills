@@ -26,7 +26,7 @@ export const LEGACY_AGENTS_PROJECTIONS = Object.freeze({
   '8057d661583fd1ce6bb98ffe28915f3a732a6d65': Object.freeze({
     'agent-first-development-standard': 'sha256:380e807e8b62ea1b00bad3a331813791778997dcc297ba9454777814b131224f',
     'agent-native-standard': 'sha256:77addcf9cc5811266bf436f609cbc5e14051030b40820308fb3f19d4d9fc5b22',
-    'autonomous-execution-standard': 'sha256:fc180fa56c2c3622e1aaecb0e8401fde4bdeb8749d1ad6d8ce2f7022c72148b0',
+    'drive-to-delivery-standard': 'sha256:fc180fa56c2c3622e1aaecb0e8401fde4bdeb8749d1ad6d8ce2f7022c72148b0',
     'ci-admission-standard': 'sha256:76f179360ef591a9b11c127f1d3563a7ad7138038fd9180824cb77f154957091',
     'ci-runner-capacity-standard': 'sha256:fd924d1dfc8bd9ab016aaac7c65a1647a72ad5909bf7d9f6c2804097defe4864',
     'commercial-decision-standard': 'sha256:ca40566a0e34c558690b81c899b5a0ac482ffccb912aa48118371957baa6e282',
@@ -48,7 +48,7 @@ export const LEGACY_AGENTS_PROJECTIONS = Object.freeze({
     'sota-execution-standard': 'sha256:fa2e84c8821450cba399d9903e2b71f6414d453a0b8a814dd9433952c05262d6',
     'source-authoring-standard': 'sha256:d13e1a7b99ee6c72d4ed31589e7668206d88a9f69b25ec6e1beff71d0009e5ea',
     'specification-control-plane-standard': 'sha256:35f3b20f5d6cc57b228f737ffd7b7ba5c8bdb67e91efe1dd6b6624380e01fcac',
-    'sylphx-platform-first': 'sha256:1f51a652daa4a690c8094547d6004f0240bd962612282921e2c87e233063f970',
+    'prefer-sylphx-platform': 'sha256:1f51a652daa4a690c8094547d6004f0240bd962612282921e2c87e233063f970',
   }),
 });
 

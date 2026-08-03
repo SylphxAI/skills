@@ -290,7 +290,7 @@ While clearing **B**, maximize outcome throughput:
 
 ```text
 admitted B item
-  -> claim / autonomous-execution Workstream
+  -> claim / drive-to-delivery Workstream
   -> specialist diagnosis and implementation
   -> repository-native integration (small commits OK)
   -> exact-candidate verification as needed
@@ -422,7 +422,7 @@ Dashboards are projections, not admission authority.
 | --- | --- |
 | Static method | this Skill + composed standards |
 | Contract / B / R | product source or durable store bound to revision |
-| Work/claims (if fleet) | Enact via `enact-work-coordination` |
+| Work/claims (if fleet) | Enact via `coordinate-enact-work` |
 | Source | Git |
 | Engagement recovery | Harness Goal System |
 | Live proof | delivery/platform systems |

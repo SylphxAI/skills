@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ready Payment Platform"
+  short_description: "Assess payments capability readiness: processors, rails, ledger, disputes, compliance hooks."
+  default_prompt: "Run Ready Payment Platform for the active task/workspace."

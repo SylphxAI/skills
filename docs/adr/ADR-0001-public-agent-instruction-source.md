@@ -53,7 +53,7 @@ receiving agent owns installation and fresh-context verification.
 ## Consequences
 
 - Public users can inspect, install, and reuse Sylphx working methods.
-- Sylphx-specific guidance such as `sylphx-platform-first` remains a legitimate
+- Sylphx-specific guidance such as `prefer-sylphx-platform` remains a legitimate
   public product surface.
 - Repository checks become proportional to static package integrity.
 - Commercial value moves to maintained releases, automatic distribution,

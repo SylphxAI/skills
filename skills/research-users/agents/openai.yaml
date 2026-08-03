@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Users"
+  short_description: "Run qualitative user research protocol and capture findings: goals, behavior, context, barriers."
+  default_prompt: "Run Research Users for the active task/workspace."

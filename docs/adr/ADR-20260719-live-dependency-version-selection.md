@@ -25,7 +25,7 @@ injection route for scaffolding, installation, and upgrade requests.
 
 ## Decision
 
-1. Add `dependency-version-selection` as the procedure owner for project
+1. Add `select-dependency-versions` as the procedure owner for project
    bootstrap, package addition, dependency migration, and currency review.
 2. Resolve versions during the task from the ecosystem's authoritative live
    release source. Model memory, templates, existing ranges, and installed

@@ -36,7 +36,7 @@ Skill selection.
 
 Keep one semantic owner for each part of the problem:
 
-1. `autonomous-execution` owns **objective continuity**. A plan is
+1. `drive-to-delivery` owns **objective continuity**. A plan is
    disposable, but the original objective, owning boundary, acceptance
    predicates, and active delivery terminal persist across phases, replans,
    context changes, handoffs, reviews, and tool failures.

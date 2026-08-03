@@ -152,7 +152,7 @@ claim.
 
      When Enact MCP tools are available after OAuth (or rare break-glass
      bearer enrollment), agents must call `work.propose_or_get` before
-     substantive mutation (see `enact-work-coordination` and the runtime
+     substantive mutation (see `coordinate-enact-work` and the runtime
      constitution). Report an auth capability gap instead of persisting a
      bearer token or wrapping vendor executables.
 

@@ -82,7 +82,7 @@ never the product's consent or retention policy.
 - Use `run-product-feedback-loop` for qualitative feedback/review
   ingestion, evidence clusters, support routing, and product close-loop. Use
   `review-solicitation-policy` for public review request eligibility and state.
-- Use `payment-platform-readiness` for payment/entitlement/settlement authority;
+- Use `ready-payment-platform` for payment/entitlement/settlement authority;
   analytics only consumes its signed/authoritative projection.
 - Use `operational-observability-review` for service logs, traces, health,
   SLOs, alerts, runtime diagnostics, and operator action. Use

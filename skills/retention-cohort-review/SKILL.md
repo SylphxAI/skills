@@ -45,7 +45,7 @@ should change. Do not optimize a chart whose denominator or value event is wrong
   input-quality verdict needed to interpret the cohort.
 - For notification channel, permission, cadence, quiet hours, and message policy,
   use `notification-strategy-review`; consume the cohort hypothesis here.
-- For pricing/package architecture, use `saas-subscription-pricing`.
+- For pricing/package architecture, use `price-saas-subscription`.
 - For broad game/app product architecture, use the relevant design blueprint;
   this skill owns the retention analysis slice only.
 - For a proposed, staged, or live subscription price increase, including its

@@ -49,7 +49,7 @@ read the engineering standard's
    adapter/bootstrap telemetry boundaries. Keep local domain events native and
    raw operator evidence protected.
 7. Resolve package versions at implementation time with
-   `dependency-version-selection`; the Profile selects package families and
+   `select-dependency-versions`; the Profile selects package families and
    responsibilities, not stale version numbers.
 8. Record repository-local role/effect facts under
    `architecture.components` in the owning product manifest;

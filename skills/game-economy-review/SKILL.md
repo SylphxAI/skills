@@ -81,7 +81,7 @@ the affected exposure, not construction of the dormant adapter.
   content, retention, feel, and platform experience must be designed together.
 - Use `daily-reward-and-streak-review` for one recurring calendar/streak state
   machine and its economy handoff.
-- Use `payment-platform-readiness` for checkout, receipts, provider events,
+- Use `ready-payment-platform` for checkout, receipts, provider events,
   settlement, entitlement projection, reconciliation, and finance close.
 - Use `promotion-campaign-review` for one time-bounded offer/event and its
   audience/placement/fulfillment experiment.

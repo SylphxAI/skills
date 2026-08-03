@@ -24,8 +24,8 @@ scope:
    - declared outcome to completion → `pursue-product-objective`
    - mixed open betterment, no fixed objective → `better-product`
    - next Work from evidence/ledger (not product matrix) → `select-next-work`
-   - multi-phase engineering delivery → `autonomous-execution`
-3. Mark `technology-stack-profile` and `sylphx-platform-first` as **policy/profile**, not product job Skills (ids kept for tooling pins).
+   - multi-phase engineering delivery → `drive-to-delivery`
+3. Mark `technology-stack-profile` and `prefer-sylphx-platform` as **policy/profile**, not product job Skills (ids kept for tooling pins).
 
 ## Non-goals
 

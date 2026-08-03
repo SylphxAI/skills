@@ -19,7 +19,7 @@ Agent translation scale does not prove native nuance. Preserve linguistic/cultur
 
 ## 2. Localized product-media handoff
 
-`product-asset-production` owns the independently acceptable **Product Asset
+`produce-product-assets` owns the independently acceptable **Product Asset
 Production Pack**: deterministic capture, source scenes, finished screenshots,
 key/capsule art, trailers and channel variants, localization/accessibility,
 rights/provenance, exact-file digests, and QA. Product Lifecycle owns only the

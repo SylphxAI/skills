@@ -18,26 +18,26 @@
     "kind": "positive",
     "prompt": "Several experts disagree on this policy; elicit independent positions and map their objections before the owner decides.",
     "expectedSkills": [
-      "structured-deliberation"
+      "deliberate-structured"
     ],
     "artifacts": [
       {
         "artifact": "Deliberation Record",
-        "owner": "structured-deliberation"
+        "owner": "deliberate-structured"
       }
     ]
   },
   {
-    "id": "critical-analysis-positive",
+    "id": "analyze-critically-positive",
     "kind": "positive",
     "prompt": "Determine why migrations repeatedly stop halfway by comparing credible causal explanations and disconfirming evidence.",
     "expectedSkills": [
-      "critical-analysis"
+      "analyze-critically"
     ],
     "artifacts": [
       {
         "artifact": "Critical Analysis Brief",
-        "owner": "critical-analysis"
+        "owner": "analyze-critically"
       }
     ]
   },
@@ -46,12 +46,12 @@
     "kind": "positive",
     "prompt": "Forecast the probability that the dependency migration finishes by 30 September and define how the forecast resolves and is scored.",
     "expectedSkills": [
-      "probabilistic-forecasting"
+      "forecast-probabilistically"
     ],
     "artifacts": [
       {
         "artifact": "Probabilistic Forecast Record",
-        "owner": "probabilistic-forecasting"
+        "owner": "forecast-probabilistically"
       }
     ]
   },
@@ -60,12 +60,12 @@
     "kind": "near-neighbour",
     "prompt": "Estimate whether enabling the intervention caused higher retention for eligible users using observational data and explicit assumptions.",
     "expectedSkills": [
-      "causal-inference-analysis"
+      "analyze-causal-inference"
     ],
     "artifacts": [
       {
         "artifact": "Causal Inference Record",
-        "owner": "causal-inference-analysis"
+        "owner": "analyze-causal-inference"
       }
     ]
   },
@@ -74,12 +74,12 @@
     "kind": "near-neighbour",
     "prompt": "Explain why queue backlog oscillates as capacity, delay, retry, and operator behavior feed back over time.",
     "expectedSkills": [
-      "system-dynamics-analysis"
+      "analyze-system-dynamics"
     ],
     "artifacts": [
       {
         "artifact": "Dynamic System Model",
-        "owner": "system-dynamics-analysis"
+        "owner": "analyze-system-dynamics"
       }
     ]
   },
@@ -116,26 +116,26 @@
     "kind": "positive",
     "prompt": "Threat-model this new privileged integration and produce the trust-boundary, attack-path, control, verification, and residual-risk contract.",
     "expectedSkills": [
-      "security-threat-modeling"
+      "model-security-threats"
     ],
     "artifacts": [
       {
         "artifact": "Threat Model and Security Design Contract",
-        "owner": "security-threat-modeling"
+        "owner": "model-security-threats"
       }
     ]
   },
   {
-    "id": "evidence-synthesis-positive",
+    "id": "synthesize-evidence-positive",
     "kind": "positive",
     "prompt": "Run a reproducible cross-domain evidence review with search protocol, screening, source quality, conflicting findings, and calibrated certainty.",
     "expectedSkills": [
-      "evidence-synthesis"
+      "synthesize-evidence"
     ],
     "artifacts": [
       {
         "artifact": "Evidence Synthesis",
-        "owner": "evidence-synthesis"
+        "owner": "synthesize-evidence"
       }
     ]
   },
@@ -144,12 +144,12 @@
     "kind": "positive",
     "prompt": "Elicit and validate stakeholder needs, scenarios, quality attributes, constraints, acceptance boundaries, and traceability for this new service.",
     "expectedSkills": [
-      "requirements-engineering"
+      "engineer-requirements"
     ],
     "artifacts": [
       {
         "artifact": "Requirements Contract",
-        "owner": "requirements-engineering"
+        "owner": "engineer-requirements"
       }
     ]
   },
@@ -158,12 +158,12 @@
     "kind": "positive",
     "prompt": "Plan qualitative user interviews and contextual inquiry to learn users' real workflow, barriers, language, and mental models before choosing a product flow.",
     "expectedSkills": [
-      "user-research-and-discovery"
+      "research-users"
     ],
     "artifacts": [
       {
         "artifact": "User Research Protocol and Findings",
-        "owner": "user-research-and-discovery"
+        "owner": "research-users"
       }
     ]
   },
@@ -172,12 +172,12 @@
     "kind": "positive",
     "prompt": "Design a shared capability vocabulary with stable IDs, multilingual labels, facets, polyhierarchy, mappings, and deprecation semantics.",
     "expectedSkills": [
-      "semantic-taxonomy-design"
+      "design-semantic-taxonomy"
     ],
     "artifacts": [
       {
         "artifact": "Semantic Vocabulary Contract",
-        "owner": "semantic-taxonomy-design"
+        "owner": "design-semantic-taxonomy"
       }
     ]
   },
@@ -186,47 +186,47 @@
     "kind": "positive",
     "prompt": "Formulate and verify a constrained model that allocates agents and runner capacity across jobs under cost, deadline, and eligibility constraints.",
     "expectedSkills": [
-      "decision-optimization-modeling"
+      "model-decision-optimization"
     ],
     "artifacts": [
       {
         "artifact": "Constrained Decision Model",
-        "owner": "decision-optimization-modeling"
+        "owner": "model-decision-optimization"
       }
     ]
   },
   {
-    "id": "dependency-version-selection-bootstrap",
+    "id": "select-dependency-versions-bootstrap",
     "kind": "compound",
     "prompt": "Create a production Next.js application from scratch.",
     "expectedSkills": [
-      "dependency-version-selection",
+      "select-dependency-versions",
       "engineering-standard"
     ],
     "artifacts": [
       {
         "artifact": "Current reproducible dependency graph",
-        "owner": "dependency-version-selection"
+        "owner": "select-dependency-versions"
       }
     ]
   },
   {
-    "id": "dependency-version-selection-upgrade",
+    "id": "select-dependency-versions-upgrade",
     "kind": "compound",
     "prompt": "Modernize this existing application to the current production framework and library releases, including required code migrations.",
     "expectedSkills": [
-      "dependency-version-selection",
+      "select-dependency-versions",
       "engineering-standard"
     ],
     "artifacts": [
       {
         "artifact": "Current reproducible dependency graph and migration",
-        "owner": "dependency-version-selection"
+        "owner": "select-dependency-versions"
       }
     ]
   },
   {
-    "id": "dependency-version-selection-neighbour-metadata-edit",
+    "id": "select-dependency-versions-neighbour-metadata-edit",
     "kind": "near-neighbour",
     "prompt": "Change only the package description and npm scripts; preserve every dependency declaration and the exact lock graph.",
     "expectedSkills": [
@@ -258,7 +258,7 @@
     "prompt": "Generate distinct architecture options, let independent experts challenge them, then select and record the best durable choice.",
     "expectedSkills": [
       "design-space-exploration",
-      "structured-deliberation",
+      "deliberate-structured",
       "decision-quality-standard"
     ],
     "artifacts": [
@@ -268,7 +268,7 @@
       },
       {
         "artifact": "Deliberation Record",
-        "owner": "structured-deliberation"
+        "owner": "deliberate-structured"
       },
       {
         "artifact": "Decision Record",
@@ -283,7 +283,7 @@
     "expectedSkills": [
       "improve-agent-system",
       "optimization-objective-review",
-      "skill-eval-designer"
+      "design-skill-evals"
     ],
     "artifacts": [
       {
@@ -296,7 +296,7 @@
       },
       {
         "artifact": "Skill Evaluation Program",
-        "owner": "skill-eval-designer"
+        "owner": "design-skill-evals"
       }
     ]
   },
@@ -306,12 +306,12 @@
     "prompt": "Design an automated capacity allocator, guard its objective against Goodhart and gaming, and formulate the constrained optimization model.",
     "expectedSkills": [
       "optimization-objective-review",
-      "decision-optimization-modeling"
+      "model-decision-optimization"
     ],
     "artifacts": [
       {
         "artifact": "Constrained Decision Model with integrated objective contract",
-        "owner": "decision-optimization-modeling"
+        "owner": "model-decision-optimization"
       }
     ]
   },
@@ -482,12 +482,12 @@
     "kind": "near-neighbour",
     "prompt": "Do not modify code yet. Compare the credible explanations for the sporadic timeout and identify which evidence would distinguish them.",
     "expectedSkills": [
-      "critical-analysis"
+      "analyze-critically"
     ],
     "artifacts": [
       {
         "artifact": "Critical Analysis Brief",
-        "owner": "critical-analysis"
+        "owner": "analyze-critically"
       }
     ],
     "nearNeighbourOf": "engineering-standard"
@@ -573,7 +573,7 @@
     "prompt": "Design an observability product where each tenant can inspect only its own traces and service health while operators retain richer protected evidence.",
     "expectedSkills": [
       "operational-observability-review",
-      "security-threat-modeling"
+      "model-security-threats"
     ],
     "artifacts": [
       {
@@ -582,7 +582,7 @@
       },
       {
         "artifact": "Tenant telemetry Threat Model and Security Design Contract",
-        "owner": "security-threat-modeling"
+        "owner": "model-security-threats"
       }
     ],
     "tags": [
@@ -655,7 +655,7 @@
     "expectedSkills": [
       "operational-observability-review",
       "engineering-standard",
-      "security-threat-modeling"
+      "model-security-threats"
     ],
     "artifacts": [
       {
@@ -668,7 +668,7 @@
       },
       {
         "artifact": "Diagnostic exposure Threat Model and Security Design Contract",
-        "owner": "security-threat-modeling"
+        "owner": "model-security-threats"
       }
     ],
     "forbidden": [
@@ -726,12 +726,12 @@
     "kind": "near-neighbour",
     "prompt": "Threat-model the new diagnostic endpoint, including attacker paths, tenant isolation, abuse controls, verification, and residual risk.",
     "expectedSkills": [
-      "security-threat-modeling"
+      "model-security-threats"
     ],
     "artifacts": [
       {
         "artifact": "Threat Model and Security Design Contract",
-        "owner": "security-threat-modeling"
+        "owner": "model-security-threats"
       }
     ],
     "nearNeighbourOf": "operational-observability-review"
@@ -751,12 +751,12 @@
     "kind": "near-neighbour",
     "prompt": "Using the existing evidence, compare competing explanations for last week's latency regression and determine the most likely cause.",
     "expectedSkills": [
-      "critical-analysis"
+      "analyze-critically"
     ],
     "artifacts": [
       {
         "artifact": "Critical Analysis Brief",
-        "owner": "critical-analysis"
+        "owner": "analyze-critically"
       }
     ],
     "nearNeighbourOf": "operational-observability-review"
@@ -1003,12 +1003,12 @@
     "kind": "near-neighbour",
     "prompt": "Design a general machine-readable provenance and custody graph for claims, artifacts, derivations, receipts, transformations and verification across products.",
     "expectedSkills": [
-      "provenance-system-design"
+      "design-provenance-system"
     ],
     "artifacts": [
       {
         "artifact": "Provenance Contract",
-        "owner": "provenance-system-design"
+        "owner": "design-provenance-system"
       }
     ],
     "nearNeighbourOf": "data-quality-observability-review"
@@ -1036,12 +1036,12 @@
     "kind": "near-neighbour",
     "prompt": "Design the authoritative double-entry balance and settlement ledger, including postings, invariants, reversals, close, and audit evidence.",
     "expectedSkills": [
-      "payment-platform-readiness"
+      "ready-payment-platform"
     ],
     "artifacts": [
       {
         "artifact": "Payment Platform Contract",
-        "owner": "payment-platform-readiness"
+        "owner": "ready-payment-platform"
       }
     ],
     "nearNeighbourOf": "data-quality-observability-review"
@@ -1111,12 +1111,12 @@
     "kind": "positive",
     "prompt": "Design how our Rust command-line product should ship through signed release assets, npm or npx, Homebrew, Windows package management, and one-command installers without rebuilding a different binary in every channel.",
     "expectedSkills": [
-      "software-distribution-readiness"
+      "ready-software-distribution"
     ],
     "artifacts": [
       {
         "artifact": "Software Distribution Contract and Distribution Evidence Pack",
-        "owner": "software-distribution-readiness"
+        "owner": "ready-software-distribution"
       }
     ],
     "tags": [
@@ -1130,12 +1130,12 @@
     "kind": "positive",
     "prompt": "我哋個 CLI 應該發佈去邊？請設計 macOS、Linux、Windows、Homebrew、npm 同一鍵安裝嘅 artifact、升級、解除安裝同 readback 合約。",
     "expectedSkills": [
-      "software-distribution-readiness"
+      "ready-software-distribution"
     ],
     "artifacts": [
       {
         "artifact": "Software Distribution Contract and Distribution Evidence Pack",
-        "owner": "software-distribution-readiness"
+        "owner": "ready-software-distribution"
       }
     ],
     "tags": [
@@ -1149,13 +1149,13 @@
     "kind": "compound",
     "prompt": "Implement and publish the cross-platform command-line release, keep the package-manager adapters on the exact tested artifacts, and prove the external registries can install the released version.",
     "expectedSkills": [
-      "software-distribution-readiness",
+      "ready-software-distribution",
       "delivery-standard"
     ],
     "artifacts": [
       {
         "artifact": "Software Distribution Contract and Distribution Evidence Pack",
-        "owner": "software-distribution-readiness"
+        "owner": "ready-software-distribution"
       }
     ],
     "tags": [
@@ -1172,19 +1172,19 @@
       "delivery-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "software-distribution-readiness"
+    "nearNeighbourOf": "ready-software-distribution"
   },
   {
     "id": "cli-distribution-same-owner-desktop-store",
     "kind": "positive",
     "prompt": "Prepare the signed GUI desktop application for Microsoft Store and notarized macOS direct release, including listing evidence, staged rollout, withdrawal, and live readback.",
     "expectedSkills": [
-      "software-distribution-readiness"
+      "ready-software-distribution"
     ],
     "artifacts": [
       {
         "artifact": "Software Distribution Contract and Distribution Evidence Pack",
-        "owner": "software-distribution-readiness"
+        "owner": "ready-software-distribution"
       }
     ],
     "tags": [
@@ -1200,7 +1200,7 @@
       "engineering-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "software-distribution-readiness"
+    "nearNeighbourOf": "ready-software-distribution"
   },
   {
     "id": "reference-originality-interface-comparison",
@@ -1245,13 +1245,13 @@
     "kind": "compound",
     "prompt": "Create the approved launch screenshot and trailer pack, then independently compare the exact finished media with the supplied inspiration set and remove any distinctive dependency before acceptance.",
     "expectedSkills": [
-      "product-asset-production",
+      "produce-product-assets",
       "reference-originality-review"
     ],
     "artifacts": [
       {
         "artifact": "Product Asset Production Pack",
-        "owner": "product-asset-production"
+        "owner": "produce-product-assets"
       },
       {
         "artifact": "Reference Originality Review",
@@ -1296,12 +1296,12 @@
     "kind": "positive",
     "prompt": "The dashboard becomes janky and consumes CPU after navigating between tabs several times. Reproduce it, identify the owning render or lifecycle mechanism, fix it and prove the exact before-and-after result.",
     "expectedSkills": [
-      "frontend-performance-remediation"
+      "remediate-frontend-performance"
     ],
     "artifacts": [
       {
         "artifact": "Frontend Runtime Performance Remediation Record",
-        "owner": "frontend-performance-remediation"
+        "owner": "remediate-frontend-performance"
       }
     ],
     "tags": [
@@ -1315,12 +1315,12 @@
     "kind": "positive",
     "prompt": "呢個頁面 scroll 同動畫會窒，離開畫面之後 CPU 仲係高。請先重現，檢查 RAF、timer、observer、listener 同 cleanup，再修正根因同做相同場景嘅前後對照。",
     "expectedSkills": [
-      "frontend-performance-remediation"
+      "remediate-frontend-performance"
     ],
     "artifacts": [
       {
         "artifact": "Frontend Runtime Performance Remediation Record",
-        "owner": "frontend-performance-remediation"
+        "owner": "remediate-frontend-performance"
       }
     ],
     "tags": [
@@ -1334,13 +1334,13 @@
     "kind": "compound",
     "prompt": "Repair the memory and frame-time regression in this web application at the owning code boundary, preserve behavior and accessibility, and add regression proof for repeated route and visibility cycles.",
     "expectedSkills": [
-      "frontend-performance-remediation",
+      "remediate-frontend-performance",
       "engineering-standard"
     ],
     "artifacts": [
       {
         "artifact": "Frontend Runtime Performance Remediation Record",
-        "owner": "frontend-performance-remediation"
+        "owner": "remediate-frontend-performance"
       }
     ],
     "tags": [
@@ -1354,15 +1354,15 @@
     "kind": "near-neighbour",
     "prompt": "Design and implement a new responsive checkout flow with complete states, keyboard and touch input, baseline accessibility, purposeful motion and rendered verification.",
     "expectedSkills": [
-      "interface-craft"
+      "craft-interface"
     ],
     "artifacts": [
       {
         "artifact": "Interface Craft Pack",
-        "owner": "interface-craft"
+        "owner": "craft-interface"
       }
     ],
-    "nearNeighbourOf": "frontend-performance-remediation"
+    "nearNeighbourOf": "remediate-frontend-performance"
   },
   {
     "id": "frontend-performance-neighbour-service-observability",
@@ -1377,7 +1377,7 @@
         "owner": "operational-observability-review"
       }
     ],
-    "nearNeighbourOf": "frontend-performance-remediation"
+    "nearNeighbourOf": "remediate-frontend-performance"
   },
   {
     "id": "composable-portfolio-platform-breakup-cantonese",
@@ -1589,7 +1589,7 @@
     "kind": "compound",
     "prompt": "Continue this multi-phase repair to its real terminal without another prompt. Stop alternating between a local workaround and the old design: fix the owning boundary, preserve proven predicates and avoid creating cleanup the same objective must later undo.",
     "expectedSkills": [
-      "autonomous-execution",
+      "drive-to-delivery",
       "bound-task-scope"
     ],
     "artifacts": [],
@@ -1718,7 +1718,7 @@
     "kind": "positive",
     "prompt": "呢個 migration 唔好每做完一個 phase 就停低等我再叫；保留原本目標，主動完成所有仍然安全而且屬於範圍內嘅步驟，並且只喺真正終點有證據時先報完成。",
     "expectedSkills": [
-      "autonomous-execution"
+      "drive-to-delivery"
     ],
     "artifacts": [],
     "tags": [
@@ -1732,7 +1732,7 @@
     "kind": "positive",
     "prompt": "Drive this non-trivial objective through all remaining eligible work. If one dependency or remote check is pending, advance independent implementation, integration, validation or documentation instead of stopping or polling.",
     "expectedSkills": [
-      "autonomous-execution"
+      "drive-to-delivery"
     ],
     "artifacts": [],
     "tags": [
@@ -1746,7 +1746,7 @@
     "kind": "positive",
     "prompt": "Keep the accepted objective intact across replans and reviews. Do not turn an actionable in-scope gap into a follow-up merely to close the current phase, and do not claim completion from effort or a status report.",
     "expectedSkills": [
-      "autonomous-execution"
+      "drive-to-delivery"
     ],
     "artifacts": [],
     "tags": [
@@ -1760,7 +1760,7 @@
     "kind": "positive",
     "prompt": "You stopped after reporting phase one. Resume from the accepted goal, verify what remains against its actual terminal, and carry every eligible dependency-ready lane forward without waiting for another steering prompt.",
     "expectedSkills": [
-      "autonomous-execution"
+      "drive-to-delivery"
     ],
     "artifacts": [],
     "tags": [
@@ -1774,7 +1774,7 @@
     "kind": "positive",
     "prompt": "Carry this non-trivial repository job through properly. Keep checking the real outcome rather than the current checklist, replan when a route fails, and stop only at its evidence-backed endpoint.",
     "expectedSkills": [
-      "autonomous-execution"
+      "drive-to-delivery"
     ],
     "artifacts": [],
     "tags": [
@@ -1788,7 +1788,7 @@
     "kind": "compound",
     "prompt": "Run a bounded loop engineering cycle for this original repository objective: preserve the complete acceptance denominator, research only decision-changing uncertainty, execute every required outcome, and have an independent formal reviewer audit the exact candidate against the original task until it is complete or genuinely blocked.",
     "expectedSkills": [
-      "autonomous-execution",
+      "drive-to-delivery",
       "convergent-review"
     ],
     "artifacts": [
@@ -1809,7 +1809,7 @@
     "kind": "positive",
     "prompt": "用 loop engineering 將呢一個已定義任務由原始目標推到真正終點：唔好做到一個 phase 就停，方向被證據推翻先重新決策，驗證失敗就修正，完整通過先收工。",
     "expectedSkills": [
-      "autonomous-execution"
+      "drive-to-delivery"
     ],
     "artifacts": [],
     "tags": [
@@ -1826,7 +1826,7 @@
       "select-next-work"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution",
+    "nearNeighbourOf": "drive-to-delivery",
     "tags": [
       "continuous-loop",
       "new-work",
@@ -1838,7 +1838,7 @@
     "kind": "compound",
     "prompt": "Implement the repository change completely, make the exact source candidate self-contained and validated, then continue through the repository's declared landing or release terminal without treating a commit or open pull request as done.",
     "expectedSkills": [
-      "autonomous-execution",
+      "drive-to-delivery",
       "delivery-standard"
     ],
     "artifacts": [],
@@ -1856,7 +1856,7 @@
       "delivery-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution",
+    "nearNeighbourOf": "drive-to-delivery",
     "tags": [
       "explicit-terminal",
       "pull-request"
@@ -1868,7 +1868,7 @@
     "prompt": "Run the existing unit-test command once and report only its exit result. Do not edit files, diagnose failures, or start another task.",
     "expectedSkills": [],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution",
+    "nearNeighbourOf": "drive-to-delivery",
     "tags": [
       "one-command",
       "bounded"
@@ -1880,7 +1880,7 @@
     "prompt": "In the README sentence “open the PR after phase one,” correct the punctuation only. Do not change the workflow or execute any phase.",
     "expectedSkills": [],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution",
+    "nearNeighbourOf": "drive-to-delivery",
     "tags": [
       "misleading-keyword",
       "small-edit"
@@ -1892,7 +1892,7 @@
     "prompt": "Tell me the current branch and whether its working tree has a local diff or unpushed commit. Make no changes.",
     "expectedSkills": [],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution",
+    "nearNeighbourOf": "drive-to-delivery",
     "tags": [
       "status",
       "short-answer"
@@ -1906,7 +1906,7 @@
       "engineering-standard"
     ],
     "artifacts": [],
-    "nearNeighbourOf": "autonomous-execution",
+    "nearNeighbourOf": "drive-to-delivery",
     "tags": [
       "tightly-coupled",
       "local-only"
@@ -1919,7 +1919,7 @@
     "expectedSkills": [],
     "artifacts": [],
     "coverageFor": [
-      "autonomous-execution",
+      "drive-to-delivery",
       "delivery-standard"
     ],
     "tags": [
@@ -1957,11 +1957,11 @@
     ]
   },
   {
-    "id": "high-signal-communication-cantonese",
+    "id": "write-high-signal-update-cantonese",
     "kind": "positive",
     "prompt": "將呢份長篇 status report 壓縮成簡潔、答案先行、容易掃讀但證據同風險完整嘅版本，唔好重複歷史或者加 generic 收尾。",
     "expectedSkills": [
-      "high-signal-communication"
+      "write-high-signal-update"
     ],
     "artifacts": [],
     "tags": [
@@ -1972,11 +1972,11 @@
     ]
   },
   {
-    "id": "high-signal-communication-adhd-friendly",
+    "id": "write-high-signal-update-adhd-friendly",
     "kind": "positive",
     "prompt": "Rewrite this incident update so it is ADHD-friendly and action-first without losing the confirmed cause, impact, evidence, recovery state or uncertainty. Use professional language, not telegraphic fragments.",
     "expectedSkills": [
-      "high-signal-communication"
+      "write-high-signal-update"
     ],
     "artifacts": [],
     "tags": [
@@ -1987,25 +1987,25 @@
     ]
   },
   {
-    "id": "high-signal-communication-neighbour-detailed-explanation",
+    "id": "write-high-signal-update-neighbour-detailed-explanation",
     "kind": "near-neighbour",
     "prompt": "Teach me this unfamiliar consensus protocol carefully. I need a complete conceptual explanation with examples and trade-offs; I am not asking for a shortened summary.",
     "expectedSkills": [],
     "artifacts": [],
-    "nearNeighbourOf": "high-signal-communication",
+    "nearNeighbourOf": "write-high-signal-update",
     "tags": [
       "detailed-explanation",
       "not-compression"
     ]
   },
   {
-    "id": "high-signal-communication-abstain-short-fact",
+    "id": "write-high-signal-update-abstain-short-fact",
     "kind": "abstention",
     "prompt": "What version is declared in this package manifest? Reply with the version only.",
     "expectedSkills": [],
     "artifacts": [],
     "coverageFor": [
-      "high-signal-communication"
+      "write-high-signal-update"
     ],
     "tags": [
       "short-answer",
@@ -2058,12 +2058,12 @@
     "kind": "near-neighbour",
     "prompt": "Polish only this existing checkout flow: improve hierarchy, form states, error recovery, mobile layout, keyboard access, motion, copy, and rendered verification. Do not review the rest of the product.",
     "expectedSkills": [
-      "interface-craft"
+      "craft-interface"
     ],
     "artifacts": [
       {
         "artifact": "Interface Craft Pack",
-        "owner": "interface-craft"
+        "owner": "craft-interface"
       }
     ],
     "nearNeighbourOf": "product-finish",

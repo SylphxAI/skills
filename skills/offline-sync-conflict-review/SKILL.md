@@ -74,7 +74,7 @@ the current contract and measured eviction behavior prove it.
   workflows, information architecture, identity, collaboration, and UX.
 - Use a database/data-architecture procedure when the job is server storage,
   schema design, replication, or backup without a client sync protocol.
-- Use `payment-platform-readiness` for provider-authoritative purchases,
+- Use `ready-payment-platform` for provider-authoritative purchases,
   entitlement reconciliation, and finance ledgers; never merge them locally.
 - Use `product-analytics-instrumentation-review` for product behavior events and
   decision metrics. Use `operational-observability-review` for sync health,

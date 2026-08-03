@@ -1,0 +1,4 @@
+interface:
+  display_name: "Model Decision Optimization"
+  short_description: "Build a decision optimization model: objective, constraints, solver choice, sensitivity."
+  default_prompt: "Run Model Decision Optimization for the active task/workspace."

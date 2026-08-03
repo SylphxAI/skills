@@ -72,7 +72,7 @@ cross-platform contract stack:
     semantics.
 
 Library versions are resolved from live authoritative registries by the
-dependency-version-selection procedure. The profile selects package families
+select-dependency-versions procedure. The profile selects package families
 and roles, not stale version numbers.
 
 ## Consequences

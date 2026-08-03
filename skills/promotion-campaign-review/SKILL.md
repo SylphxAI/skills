@@ -108,7 +108,7 @@ it does not erase platform-account, legal, child-safety, privacy, or trust ruin.
   creative, attribution, spend, reputation, and shutdown operating system.
 - Use `referral-loop-review` for persistent inviter/invitee qualification,
   attribution, pending grants, reversals, fraud, and support.
-- Use `store-listing-optimization` when the artifact is one channel's metadata,
+- Use `optimize-store-listing` when the artifact is one channel's metadata,
   screenshot/video/capsule sequence, proof, localization, and conversion test.
 - Use `daily-reward-and-streak-review` for a durable recurring return-loop state
   machine, or `game-economy-review` for economy balance and inflation.

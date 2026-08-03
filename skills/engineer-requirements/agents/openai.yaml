@@ -1,0 +1,4 @@
+interface:
+  display_name: "Engineer Requirements"
+  short_description: "Turn requirements into testable acceptance criteria with traceability."
+  default_prompt: "Run Engineer Requirements for the active task/workspace."

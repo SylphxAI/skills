@@ -13,7 +13,7 @@ Own revenue object semantics, lifecycle/pipeline states, evidence gates, attribu
 
 ## When not to use
 
-- Use `marketing-automation-blueprint`, `saas-subscription-pricing`, or `payment-platform-readiness` when the primary artifact is demand generation, price/package choice, or payment/ledger correctness.
+- Use `marketing-automation-blueprint`, `price-saas-subscription`, or `ready-payment-platform` when the primary artifact is demand generation, price/package choice, or payment/ledger correctness.
 - Use `enterprise-contract-operations-review` or `customer-success-operations-review` when the primary artifact is executable contract obligations or recurring post-sale customer value rather than revenue pipeline truth.
 
 ## Resource routing

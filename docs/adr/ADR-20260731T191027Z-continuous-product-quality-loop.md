@@ -17,7 +17,7 @@ scope:
 ## Context
 
 The existing loop methods intentionally separate one bounded objective from a
-continuous operating system. `autonomous-execution` closes one
+continuous operating system. `drive-to-delivery` closes one
 accepted Work Item. `select-next-work` discovers, qualifies,
 claims, executes, and re-enters recurring Work. Specialist Skills review one
 quality domain, while `improve-agent-system` changes prompts, Skills,

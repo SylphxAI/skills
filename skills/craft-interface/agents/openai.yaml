@@ -1,0 +1,4 @@
+interface:
+  display_name: "Craft Interface"
+  short_description: "Craft one product interface or flow: visual direction, interaction states, responsive, accessibility."
+  default_prompt: "Run Craft Interface for the active task/workspace."

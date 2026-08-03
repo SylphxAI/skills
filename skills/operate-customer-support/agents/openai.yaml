@@ -1,0 +1,4 @@
+interface:
+  display_name: "Operate Customer Support"
+  short_description: "Design or run support operations: queues, SLAs, escalation paths, tooling, quality sampling."
+  default_prompt: "Run Operate Customer Support for the active task/workspace."

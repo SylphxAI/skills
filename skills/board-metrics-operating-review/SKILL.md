@@ -39,7 +39,7 @@ plausible-looking board numbers.
 - For a single retention diagnosis, use `retention-cohort-review`.
 - For analytics event design or pipeline QA, use
   `product-analytics-instrumentation-review`.
-- For subscription pricing/packaging decisions, use `saas-subscription-pricing`;
+- For subscription pricing/packaging decisions, use `price-saas-subscription`;
   consume its approved decision rather than recreating it here.
 - For audited accounts, tax, securities disclosure, or legal assurance, prepare
   source mappings and open questions but defer authoritative conclusions.

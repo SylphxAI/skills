@@ -47,7 +47,7 @@ Model trial eligibility/start/end/conversion, coupon/promotion qualification, ch
 
 ### Plan and promotion rules
 
-- Choose packages and a value metric through `saas-subscription-pricing`; do not make a UI tier table the decision.
+- Choose packages and a value metric through `price-saas-subscription`; do not make a UI tier table the decision.
 - Give every offer a version, audience, eligibility, start/end, stacking/exclusion, qualification, grant, reversal, abuse, locale/currency/tax, disclosure, renewal and support contract.
 - A trial should demonstrate the recurring value. Decide whether a payment method is intrinsic, disclose conversion and renewal, remind where required or trust-beneficial, and provide simple cancellation.
 - Long-tenure, win-back, education, migration and targeted offers may be useful, but must be deterministic, explainable, non-discriminatory on protected/vulnerable traits, supportable and measured for retained contribution and regret.
@@ -89,8 +89,8 @@ If support impersonation or “view as customer” is selected, make it scoped, 
 
 Compose:
 
-- `customer-support-operations` for channels, taxonomy, queues, service objectives, knowledge, QA and product-feedback closure;
-- `customer-support-case-resolution` for one customer's facts, reply, remedy, protected handoff and verified closure;
+- `operate-customer-support` for channels, taxonomy, queues, service objectives, knowledge, QA and product-feedback closure;
+- `resolve-support-case` for one customer's facts, reply, remedy, protected handoff and verified closure;
 - `revenue-operations-review` for lead/account/opportunity/renewal commercial workflow;
 - `customer-success-operations-review` when proactive adoption, health and renewal intervention is the independent system.
 

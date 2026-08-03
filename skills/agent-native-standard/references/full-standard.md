@@ -100,7 +100,7 @@ brief contract, child method and replanning autonomy, parent integration
 accountability, what never to delegate, and the separate-context
 adversarial-review requirement with its high-risk trigger list and
 durable-artifact rule — live in
-[`autonomous-execution.md`](https://github.com/SylphxAI/skills/blob/main/skills/autonomous-execution/references/full-standard.md)
+[`drive-to-delivery.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/full-standard.md)
 "Subagent Use" and "Self-Review Loop".
 
 ## Durable Context

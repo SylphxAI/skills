@@ -1,0 +1,4 @@
+interface:
+  display_name: "Remediate Frontend Performance"
+  short_description: "Remediate frontend performance: measurement, budgets, critical path, regression control."
+  default_prompt: "Run Remediate Frontend Performance for the active task/workspace."

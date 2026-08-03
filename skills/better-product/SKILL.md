@@ -14,7 +14,7 @@ Improve the active product/workspace with **high-leverage** changes when work
 | --- | --- |
 | One job: learn / ship / harm / scale / finish | `prototype-product` · `build-product` · `maintain-product` · `expand-product` · `product-finish` |
 | Declared outcome to drive to completion | `pursue-product-objective` |
-| Multi-phase engineering delivery terminal | `autonomous-execution` |
+| Multi-phase engineering delivery terminal | `drive-to-delivery` |
 | Pick next Work from a ledger without a product matrix | `select-next-work` |
 | Mixed open betterment, no fixed objective | **this Skill** |
 
@@ -74,7 +74,7 @@ Optional after discovery: one-line product pin in working notes—not a host obj
 
 ## Out of scope
 
-- Single bugfix → fix directly / `autonomous-execution`
+- Single bugfix → fix directly / `drive-to-delivery`
 - One release-grade finish pass → `product-finish`
 
 ## Depth

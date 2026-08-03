@@ -333,7 +333,7 @@ test('sync, status, update, and clear own only the declared packages', () => {
     assert.deepEqual(manifest.packageDigests, Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])));
     assert.deepEqual(manifest.profiles, catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile));
     assert.equal(existsSync(path.join(destination, 'engineering-standard', 'SKILL.md')), true);
-    assert.equal(existsSync(path.join(destination, 'sylphx-platform-first', 'SKILL.md')), true);
+    assert.equal(existsSync(path.join(destination, 'prefer-sylphx-platform', 'SKILL.md')), true);
 
     const status = run(['status', '--dest', destination, '--json']);
     const parsed = JSON.parse(status.stdout);
@@ -2176,7 +2176,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     const fixtureSkillNames = [
       'engineering-standard',
       'technology-stack-profile',
-      'voice-preserving-editor',
+      'edit-preserving-voice',
     ];
     for (const name of fixtureSkillNames) {
       cpSync(path.join(root, 'skills', name), path.join(source, 'skills', name), { recursive: true });
@@ -2372,7 +2372,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     mkdirSync(unmanaged, { recursive: true });
     writeFileSync(path.join(unmanaged, 'SKILL.md'), 'third party\n');
 
-    const removedSkill = 'voice-preserving-editor';
+    const removedSkill = 'edit-preserving-voice';
     const removedFile = path.join(
       codexHome,
       'skills',

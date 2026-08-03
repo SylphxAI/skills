@@ -61,7 +61,7 @@ for quality states, check selection, reconciliation, and backfill patterns.
 - `search-discovery-quality-review` owns retrieval, relevance, ranking, query
   understanding, and user discovery quality. Source-to-index freshness and
   reconciliation remain data reliability.
-- `provenance-system-design` owns a general machine-readable lineage,
+- `design-provenance-system` owns a general machine-readable lineage,
   derivation, custody, receipt, and verification system. This contract consumes
   only enough lineage to judge fitness and affected consumers.
 - Payment/ledger owners retain billing, entitlement, balance, and settlement

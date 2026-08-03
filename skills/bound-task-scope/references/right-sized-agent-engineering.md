@@ -169,7 +169,7 @@ One-question-at-a-time pressure, a recommended answer, and an evolving decision
 map are useful when a user explicitly requests an interview or deliberation.
 They are inefficient as the default for autonomous execution: repository facts
 should be inspected, and independent work should not wait behind a serial
-questionnaire. Existing requirements, critical-analysis, and structured-
+questionnaire. Existing requirements, analyze-critically, and structured-
 deliberation owners cover the conditional job.
 
 ### 11. Superpowers

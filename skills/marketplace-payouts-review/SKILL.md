@@ -23,7 +23,7 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 
 ## When not to use
 
-- Use `payment-platform-readiness` when the primary job is buyer checkout, payment ingestion, or product entitlement rather than seller earnings and payout.
+- Use `ready-payment-platform` when the primary job is buyer checkout, payment ingestion, or product entitlement rather than seller earnings and payout.
 - Do not use for a content/listing dispute that does not change balances, holds, clawbacks, or payout authority.
 
 ## Source verification

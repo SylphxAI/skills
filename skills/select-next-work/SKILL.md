@@ -12,7 +12,7 @@ policy or always-on law. See
 
 **When you need to:** pick and advance the **next** Work from evidence without the user naming the ticket.
 
-**Not for:** product betterment cycles (`better-product` / job skills), or one declared product objective (`pursue-product-objective` / `autonomous-execution`).
+**Not for:** product betterment cycles (`better-product` / job skills), or one declared product objective (`pursue-product-objective` / `drive-to-delivery`).
 
 ## Progressive disclosure
 
@@ -24,8 +24,8 @@ policy or always-on law. See
 Open composed packs when the tick touches their domain:
 
 - `work-coordination-standard` for portable ledger semantics
-- `enact-work-coordination` when authenticated Enact tools are present (live ops)
-- `autonomous-execution` **inside** each claimed bounded Work (one
+- `coordinate-enact-work` when authenticated Enact tools are present (live ops)
+- `drive-to-delivery` **inside** each claimed bounded Work (one
   objective to terminal) — this package does not replace that closure loop
 - `delivery-standard` / `evidence-and-claims-standard` when ticks claim delivery
   outcomes
@@ -52,11 +52,11 @@ because this package loaded.
 
 - Does not grant deploy, credential, or MCP capabilities.
 - Does not drive one already-accepted objective to terminal by itself
-  (`autonomous-execution`).
+  (`drive-to-delivery`).
 - Does not replace product betterment matrix ownership
   (`better-product`).
 - Does not replace portable semantics (`work-coordination-standard`) or live
-  Enact schema (`enact-work-coordination`).
+  Enact schema (`coordinate-enact-work`).
 - Skill text is not a runtime scheduler.
 
 ## When not to use
@@ -65,4 +65,4 @@ because this package loaded.
 - Multi-aspect product betterment as the primary product job without Work OS
   selection concerns → `better-product`.
 - Portable ledger design without continuous OS → `work-coordination-standard`.
-- Live Enact tool calls alone → `enact-work-coordination`.
+- Live Enact tool calls alone → `coordinate-enact-work`.

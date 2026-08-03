@@ -25,7 +25,7 @@ This is the goal-directed betterment job: same high-leverage cycle shape as open
 - Scale bet only → `expand-product`
 - Deburr integrated UX only → `product-finish`
 - Open-ended betterment with **no** fixed objective → `better-product`
-- Generic multi-phase engineering objective (not product betterment framing) → `autonomous-execution`
+- Generic multi-phase engineering objective (not product betterment framing) → `drive-to-delivery`
 
 ## Host continuity (portable)
 

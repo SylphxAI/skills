@@ -1,0 +1,4 @@
+interface:
+  display_name: "Synthesize Market Research"
+  short_description: "Synthesize market research: segments, competitors, demand evidence, implications."
+  default_prompt: "Run Synthesize Market Research for the active task/workspace."

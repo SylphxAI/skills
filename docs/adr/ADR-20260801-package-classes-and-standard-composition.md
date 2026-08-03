@@ -154,16 +154,16 @@ material. Class labels alone do not fix utilization.
 | Loop layer | Primary class | Owner package | Terminal |
 | --- | --- | --- | --- |
 | Product betterment | workflow | `better-product` | Idle frontier (not perfection) |
-| Single-objective closure | **workflow** (execution method; may embed predicates) | `autonomous-execution` | Delivery terminal for one accepted objective |
+| Single-objective closure | **workflow** (execution method; may embed predicates) | `drive-to-delivery` | Delivery terminal for one accepted objective |
 | Continuous work selection OS | **workflow** (work OS method; may embed predicates) | `select-next-work` | Tick/report; continuous by design |
 | Portable coordination semantics | policy | `work-coordination-standard` | N/A (semantics) |
-| Live coordination ops | adapter | `enact-work-coordination` | Live Work effect/readback |
+| Live coordination ops | adapter | `coordinate-enact-work` | Live Work effect/readback |
 | Harness recovery | adapter (tool surface) + workflow binding | host Goal System via CPQ / execution workflows | Resume uncapped goal |
 
 Do **not** treat product betterment, single-objective closure, and continuous
 work selection as one package or one `-standard` prestige suffix.
 
-**Rename note:** `autonomous-execution` and `select-next-work` are
+**Rename note:** `drive-to-delivery` and `select-next-work` are
 job-named **workflow** packages (ADR-0016 hard rename; no discoverable
 `*-standard` alias). Their primary class is workflow (loop/execution method with
 embedded binding predicates). If a pure predicate subset is needed later,
@@ -221,7 +221,7 @@ Runtime auto-loop requires Goal/Work/scheduler surfaces + an owning workflow
 - New/changed packages declare primary class in PR notes / CONTRIBUTING
   checklist (docs only — not frontmatter).
 - Descriptions for true policy packs use compose/not-workflow language.
-- `better-product`, `autonomous-execution`, and
+- `better-product`, `drive-to-delivery`, and
   `select-next-work` descriptions exclude each other by layer.
 - No claim that Skills are an industry "standard package type" distinct from
   workflows; Skills *are* the on-demand specialized-package channel.

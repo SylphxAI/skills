@@ -14,7 +14,7 @@ Own entry, account-safe discovery, claimant/subject/tenant context, recovery eli
 ## When not to use
 
 - Use `product-abuse-risk-review` or `enterprise-access-governance-review` when the primary artifact is cross-product abuse control or enterprise tenant/admin authority rather than recovery of one account's access.
-- Use `customer-support-operations`, `data-rights-operations-review`, or the owning identity/security engineering procedure for support-organization design, a data-rights case, general authentication architecture, or incident implementation.
+- Use `operate-customer-support`, `data-rights-operations-review`, or the owning identity/security engineering procedure for support-organization design, a data-rights case, general authentication architecture, or incident implementation.
 
 ## Resource routing
 

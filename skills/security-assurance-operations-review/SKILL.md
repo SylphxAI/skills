@@ -47,7 +47,7 @@ memory are not evidence.
 
 ## Routing boundaries
 
-- `security-threat-modeling` owns threat and security-design contracts. The
+- `model-security-threats` owns threat and security-design contracts. The
   owning engineering boundary and `engineering-standard` own implementation,
   testing, vulnerability remediation, and production proof.
 - `incident-standard` plus the current security/legal owners govern incident response,

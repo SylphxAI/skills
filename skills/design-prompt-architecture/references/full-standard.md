@@ -5,7 +5,7 @@
 Prompts for agents are operating policy, not motivational prose. Optimize them
 for deterministic execution, conflict resolution, delegation, future sessions,
 and machine parsing. Human- and agent-facing output follows
-[`high-signal-communication`](https://github.com/SylphxAI/skills/blob/main/skills/high-signal-communication/SKILL.md).
+[`write-high-signal-update`](https://github.com/SylphxAI/skills/blob/main/skills/write-high-signal-update/SKILL.md).
 
 ## Minimum Effective Policy
 
@@ -74,7 +74,7 @@ version or increasing prompt size by default.
 The compact communication projection qualifies for the always-on kernel: lead
 with the answer or strongest truthful state; omit repetition, routine process,
 and raw logs; preserve material decisions, evidence, risk, uncertainty, and
-next action. Keep the full compression method in `high-signal-communication`.
+next action. Keep the full compression method in `write-high-signal-update`.
 
 ## Role Prompt Derivation
 
@@ -102,7 +102,7 @@ owning source so the agent population does not fork the operating model.
 
 This applies whenever one agent writes a task brief for another agent, including
 an executor, reviewer, specialist, or subagent. The
-`autonomous-execution.md` "Subagent Use" section additionally owns when
+`drive-to-delivery.md` "Subagent Use" section additionally owns when
 to delegate and the outcome-owned subagent contract. A task brief transfers
 bounded outcome ownership; it is not a miniature implementation plan or a copy
 of the author's reasoning trace.

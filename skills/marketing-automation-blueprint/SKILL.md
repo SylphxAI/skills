@@ -15,7 +15,7 @@ Followers, impressions, clicks, CTR, opens, installs, CPI, platform-attributed c
 
 ## Atomic boundary
 
-This skill owns one independently useful artifact: the **Marketing Automation Blueprint**, including the multi-channel desired-state, creative briefs, and spend operating policy. It consumes product promise, claims, prices, entitlements, offer/grant semantics, a planning Product Program Manifest revision when present, and specialist campaign artifacts; it may translate them for a channel but cannot invent or overwrite them. Exact rendered product media belongs to `product-asset-production`.
+This skill owns one independently useful artifact: the **Marketing Automation Blueprint**, including the multi-channel desired-state, creative briefs, and spend operating policy. It consumes product promise, claims, prices, entitlements, offer/grant semantics, a planning Product Program Manifest revision when present, and specialist campaign artifacts; it may translate them for a channel but cannot invent or overwrite them. Exact rendered product media belongs to `produce-product-assets`.
 
 One campaign, listing, referral, notification system, review prompt, positioning decision, or public-signal research question remains with its specialist. Add a new skill only when a distinct recurring user trigger and independently acceptable artifact exists; use references for inseparable capability modules.
 
@@ -77,7 +77,7 @@ Read all references for a complete marketing system. For a bounded review, load 
    rights requirements, locale, accessibility, product/release compatibility,
    AI/sponsorship disclosure, expiry, and acceptance tests. Marketing owns the
    campaign brief, concept, message, variant hypothesis, and selection intent;
-   `product-asset-production` owns exact captures and rendered files.
+   `produce-product-assets` owns exact captures and rendered files.
 7. Consume the product's Durable Investment Contract. Never threaten loss of creations, history, identity, relationships, earned value, portability, export, or account access to drive renewal, return, referral, review, share, or purchase—even when the underlying expiration/downgrade behavior is technically true. Communicate state neutrally and preserve the product's recovery/data-transition contract.
 8. Use product-native sharing, referrals, reputation, update education, and cross-promotion only when both sender and recipient receive real value. Raw shares, installs, messages, reviews, or opens are not success.
 9. Keep public review solicitation separate from private feedback and support. Platform review policy is adapter-specific; never sentiment-gate, star-steer, suppress unhappy users, reward ratings, or ask inside a platform that forbids it.
@@ -98,7 +98,7 @@ Create intent/lifecycle states, eligibility/exclusions, age/territory/sensitive-
 
 ### 3. Build the selected channel and creative portfolio
 
-Evaluate the role and handoff for owned, earned, paid, store, creator, community, partner, referral, lifecycle, reputation, cross-promotion, update education, SEO/AEO, and launch. Select channels from product truth, audience mechanism, recipient value, authority, and program target; build every selected adapter or specialist operating contract plus its localized brief and production-request supply now, route exact files through `product-asset-production`, and route official social account execution through `social-media-operations-review`, then choose activation from evidence and policy.
+Evaluate the role and handoff for owned, earned, paid, store, creator, community, partner, referral, lifecycle, reputation, cross-promotion, update education, SEO/AEO, and launch. Select channels from product truth, audience mechanism, recipient value, authority, and program target; build every selected adapter or specialist operating contract plus its localized brief and production-request supply now, route exact files through `produce-product-assets`, and route official social account execution through `social-media-operations-review`, then choose activation from evidence and policy.
 
 For a PC-store launch, preserve the separation between Store Listing narrative,
 Product Asset Production files, Distribution build/store proof, Launch Admission
@@ -165,7 +165,7 @@ Produce one **Marketing Automation Blueprint** containing:
 6. paid channel adapter and immutable bid/budget/spend envelope matrix;
 7. localized creative brief and production-request graph with message/variant
    lineage, provenance and rights requirements, accessibility, disclosures,
-   fatigue, acceptance gates, and handoffs to `product-asset-production`;
+   fatigue, acceptance gates, and handoffs to `produce-product-assets`;
 8. event/cost/identity/dedupe/attribution/experiment/incrementality/MMM/economics measurement plan;
 9. privacy/consent/age/territory/sensitive-category, fraud/IVT, brand safety, reputation, deliverability, complaint/refund/support guardrails;
 10. desired-state manifests, role/authority separation, canary/promotion/pause policy, reconciliation, incident and recovery model;
@@ -176,16 +176,16 @@ Produce one **Marketing Automation Blueprint** containing:
 
 - `marketing-automation-blueprint` owns the complete multi-channel marketing operating system and control plane.
 - `social-media-operations-review` owns recurring account, publishing/readback, listening, reply/moderation routing, crisis, impersonation, rights, recovery, and shutdown operations only after Marketing selects the official social channels, audience and message.
-- `market-research-synthesis` owns source-bounded market/positioning evidence; marketing consumes and channel-translates it.
+- `synthesize-market-research` owns source-bounded market/positioning evidence; marketing consumes and channel-translates it.
 - `promotion-campaign-review` owns one offer, event, update-reward, cross-promotion, or lifecycle campaign.
 - `referral-loop-review` owns qualification, attribution, pending grants, reversals, and referral fraud.
-- `store-listing-optimization` owns listing metadata/creative sequence/conversion; `software-distribution-readiness` owns submission/release evidence.
-- `product-asset-production` owns deterministic product capture, localization,
+- `optimize-store-listing` owns listing metadata/creative sequence/conversion; `ready-software-distribution` owns submission/release evidence.
+- `produce-product-assets` owns deterministic product capture, localization,
   exact rendered media, rights/provenance, accessibility variants, and file QA.
 - `review-solicitation-policy` owns platform-specific authentic public review
   eligibility and request state; `run-product-feedback-loop` owns universal
   private feedback, review ingestion, support/product routing and close-loop.
-- `notification-strategy-review` owns notification channel/copy/frequency semantics; `promotion-campaign-review` owns one dormant-user recovery campaign; `market-research-synthesis` owns source-bounded voice-of-customer evidence.
+- `notification-strategy-review` owns notification channel/copy/frequency semantics; `promotion-campaign-review` owns one dormant-user recovery campaign; `synthesize-market-research` owns source-bounded voice-of-customer evidence.
 - `app-design-blueprint`/`game-design-blueprint` own product-side share, cross-promotion, notification, review, and lifecycle surfaces.
 
 ## Completion check

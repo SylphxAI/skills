@@ -22,7 +22,7 @@ decisions.
 
 ## Decision
 
-1. `high-signal-communication` owns information density across agent-generated
+1. `write-high-signal-update` owns information density across agent-generated
    transient and durable communication.
 2. The default is answer-first, delta-based, progressively disclosed output.
    A statement stays only when it changes interpretation, action, authority,
@@ -31,7 +31,7 @@ decisions.
    defines the lower bound.
 4. Raw logs, transcripts, and duplicated source facts remain in their owning
    artifacts and are referenced precisely.
-5. `voice-preserving-editor` continues to own voice and locale;
+5. `edit-preserving-voice` continues to own voice and locale;
    `documentation-standard` owns durable artifact placement;
    domain standards own technical content.
 6. The compact answer-first invariant may be projected into always-on runtime

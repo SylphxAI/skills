@@ -45,7 +45,7 @@ Revision `2026-07-29.2` preserves every selection from
    incident, audit, legal, or protocol contract.
 
 Library versions continue to resolve from current authoritative release sources
-through `dependency-version-selection`; the Profile selects roles and standards,
+through `select-dependency-versions`; the Profile selects roles and standards,
 not stale package versions.
 
 ## Consequences

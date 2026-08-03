@@ -1,0 +1,4 @@
+interface:
+  display_name: "Optimize Store Listing"
+  short_description: "Optimize store or download listing conversion: positioning, creatives, proof, experiments."
+  default_prompt: "Run Optimize Store Listing for the active task/workspace."

@@ -45,16 +45,16 @@ Pick only aspects that can change product value for this subject:
 
 | Aspect family | Example cells | Example specialist Skills |
 | --- | --- | --- |
-| Product definition | promise, IA, journeys, capability portfolio | `app-design-blueprint`, `game-design-blueprint`, `requirements-engineering` |
-| Interaction & craft | UI states, flows, visual hierarchy, feel | `interface-craft`, `product-finish` |
+| Product definition | promise, IA, journeys, capability portfolio | `app-design-blueprint`, `game-design-blueprint`, `engineer-requirements` |
+| Interaction & craft | UI states, flows, visual hierarchy, feel | `craft-interface`, `product-finish` |
 | Accessibility | AT paths, semantics, exceptions | `accessibility-conformance-program-review` |
-| Performance | latency, jank, budgets, low-end | `frontend-performance-remediation`, `operational-observability-review` |
+| Performance | latency, jank, budgets, low-end | `remediate-frontend-performance`, `operational-observability-review` |
 | Reliability/ops | errors, recovery, SLOs, diagnosability | `operational-observability-review`, `incident-standard` |
-| Security/privacy | threats, abuse, data lifecycle | `security-threat-modeling`, `privacy-data-lifecycle-review`, `product-abuse-risk-review` |
+| Security/privacy | threats, abuse, data lifecycle | `model-security-threats`, `privacy-data-lifecycle-review`, `product-abuse-risk-review` |
 | Content/brand | accuracy, voice, localization | `documentation-standard` |
-| Growth/commerce | pricing packaging, retention, ads, referrals | `saas-subscription-pricing`, `retention-cohort-review`, `ad-monetization-review`, `referral-loop-review` |
+| Growth/commerce | pricing packaging, retention, ads, referrals | `price-saas-subscription`, `retention-cohort-review`, `ad-monetization-review`, `referral-loop-review` |
 | Game systems | loops, economy, progression, soft launch | `game-design-blueprint`, `game-economy-review`, `game-soft-launch-review`, `daily-reward-and-streak-review` |
-| Art/assets/3D | art direction, asset fidelity, packaging inputs | `product-asset-production`, `product-finish` |
+| Art/assets/3D | art direction, asset fidelity, packaging inputs | `produce-product-assets`, `product-finish` |
 | Architecture | seams, migrations, maintainability | `converge-architecture`, `engineering-standard` |
 | Feedback | private/public signal learning | `run-product-feedback-loop` |
 

@@ -45,24 +45,24 @@ produce duplicate artifacts or competing completion rules.
 
 The portfolio adds these independently requested methods:
 
-- `structured-deliberation`
+- `deliberate-structured`
 - `design-space-exploration`
-- `evidence-synthesis`
-- `requirements-engineering`
-- `user-research-and-discovery`
+- `synthesize-evidence`
+- `engineer-requirements`
+- `research-users`
 - `review-agent-planning-system`
 - `engineer-agent-context`
 - `improve-agent-system`
 - `optimization-objective-review`
-- `decision-optimization-modeling`
-- `provenance-system-design`
-- `semantic-taxonomy-design`
-- `security-threat-modeling`
-- `system-dynamics-analysis`
-- `probabilistic-forecasting`
-- `causal-inference-analysis`
+- `model-decision-optimization`
+- `design-provenance-system`
+- `design-semantic-taxonomy`
+- `model-security-threats`
+- `analyze-system-dynamics`
+- `forecast-probabilistically`
+- `analyze-causal-inference`
 
-`enact-work-coordination` is a product adapter. Portable claim, lease,
+`coordinate-enact-work` is a product adapter. Portable claim, lease,
 checkpoint, handoff, and recovery semantics remain in
 `work-coordination-standard`; Enact API and product vocabulary do not
 become universal method law.
@@ -99,7 +99,7 @@ and coordination protocols—live as references under their natural owner.
   an authored injection contract, and structurally reject duplicate artifact
   owners or per-standard reports. These fixtures do not prove runtime behavior.
 - Prove behavioral injection separately against each supported runtime using
-  `skill-eval-designer` when promotion or regression evidence requires it; do
+  `design-skill-evals` when promotion or regression evidence requires it; do
   not build a repository-local router to test a router.
 
 Native discovery and package-boundary details are owned by

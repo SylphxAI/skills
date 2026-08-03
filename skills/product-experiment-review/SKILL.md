@@ -55,7 +55,7 @@ evidence for this experiment.
   metric-pipeline, and QA implementation; this skill states measurement needs.
 - Domain specialists own the treatment: pricing, notifications, game economy,
   marketplace policy, AI behavior, accessibility, privacy, and support.
-- Use `market-research-synthesis` when the uncertainty requires sourced market
+- Use `synthesize-market-research` when the uncertainty requires sourced market
   research rather than controlled product exposure.
 - A staged rollout is not automatically an experiment. Use this skill only when
   a causal or comparative learning decision is explicitly designed.

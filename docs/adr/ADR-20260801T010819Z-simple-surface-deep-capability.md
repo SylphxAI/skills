@@ -52,7 +52,7 @@ full required capability and quality floor.
    inside its owner rather than expose it to every consumer.
 6. `engineering-standard` owns the architecture invariant,
    `bound-task-scope` owns the selection test, and
-   `high-signal-communication` owns its explanatory projection. No new Skill,
+   `write-high-signal-update` owns its explanatory projection. No new Skill,
    branded architecture, prose scanner, or CI gate is introduced.
 
 ## Consequences

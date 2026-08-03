@@ -29,7 +29,7 @@ delegation was valuable.
 
 ## Decision
 
-1. `autonomous-execution` owns one local, task-semantic delegation
+1. `drive-to-delivery` owns one local, task-semantic delegation
    predicate. A lane is eligible only when it is materially complex, bounded,
    independently useful, evidence-bound, collision-safe, capability-matched,
    and expected to improve total verified throughput after startup, compute,

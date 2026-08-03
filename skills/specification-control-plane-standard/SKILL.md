@@ -15,7 +15,7 @@ method and predicates.
 
 1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
    If stakeholder needs, operating scenarios, quality attributes, constraints,
-   or acceptance boundaries are unresolved, use `requirements-engineering`
+   or acceptance boundaries are unresolved, use `engineer-requirements`
    before freezing the executable implementation specification.
 2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
 3. Prefer schema/test/ADR homes over copying this body into product repos.

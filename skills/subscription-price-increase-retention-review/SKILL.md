@@ -40,7 +40,7 @@ price change moves through real contracts and billing channels.
 ## When not to use
 
 - For price metric, package, entitlement, packaging, or willingness-to-pay
-  design, use `saas-subscription-pricing`. This artifact consumes that decision.
+  design, use `price-saas-subscription`. This artifact consumes that decision.
 - For a retention-cohort diagnosis unrelated to a price increase, use
   `retention-cohort-review`.
 - For refund ledger and support operations beyond this change, use

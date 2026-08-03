@@ -64,12 +64,12 @@ Create an **Agent Planning and Control Contract** with:
 
 ## Boundaries
 
-- Use `autonomous-execution` to run and reschedule the current task
+- Use `drive-to-delivery` to run and reschedule the current task
   portfolio; this skill designs the reusable planning mechanism itself.
 - Use `work-coordination-standard` for portable claim, lease, handoff, and
   shared-ledger semantics; use the matching product adapter for live state.
 - Use `engineer-agent-context` for context assembly and memory lifecycle.
-- Use `decision-optimization-modeling` when the primary artifact is a
+- Use `model-decision-optimization` when the primary artifact is a
   constrained allocation, routing, scheduling, or capacity model rather than
   the agent's reusable planning and control mechanism.
 - Use `convergent-review` for final review closure of an exact implementation.

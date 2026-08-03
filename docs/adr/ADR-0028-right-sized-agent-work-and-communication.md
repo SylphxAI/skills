@@ -46,7 +46,7 @@ source.
    task-matched under their existing owners. No universal interview, design
    approval, unit-test-first, independent-review, ticket, or subagent sequence
    is introduced.
-5. `high-signal-communication` remains the single owner of concise output. It
+5. `write-high-signal-update` remains the single owner of concise output. It
    gains matter-of-fact failure reporting, agent-owned action before
    instruction, no forced closer, and professional complete sentences.
    Correctness, autonomy, actionability, and safety outrank brevity.
@@ -112,7 +112,7 @@ A read-only probe exercised installed packages from source revision
 
 - `bound-task-scope`
   `sha256:c59f0c92cee578d5ee279e63900c130b1617009f4f53cd2bb32c22ead749f473`;
-- `high-signal-communication`
+- `write-high-signal-update`
   `sha256:3c722367993f2697917f14d2494a6ad94f5ed5b918eb9157c92e74e7d9f4e165`;
 - Codex CLI `0.144.6`, model `gpt-5.6-sol`; and
 - Grok Build `0.2.117`, model `grok-4.5`.
@@ -124,7 +124,7 @@ multi-tenant upload that removed containment, size, media, publication, and
 error safeguards, and instead concentrated those invariants behind a narrow
 owned primitive. The concise-status case preserved candidate, test, merge,
 deploy, production, blocker, and next-observation facts; Grok explicitly loaded
-`high-signal-communication`, while Codex produced the compliant result without
+`write-high-signal-update`, while Codex produced the compliant result without
 an observable Skill read. A Codex detailed-teaching near-neighbour did not load
 the concise-output Skill and returned the requested full explanation.
 
@@ -160,7 +160,7 @@ routing reliability or a general effect size.
 The complete source-by-source disposition and exact revisions are in:
 
 - [`bound-task-scope/references/right-sized-agent-engineering.md`](../../skills/bound-task-scope/references/right-sized-agent-engineering.md)
-- [`high-signal-communication/references/research-basis.md`](../../skills/high-signal-communication/references/research-basis.md)
+- [`write-high-signal-update/references/research-basis.md`](../../skills/write-high-signal-update/references/research-basis.md)
 
 Primary portable foundations:
 

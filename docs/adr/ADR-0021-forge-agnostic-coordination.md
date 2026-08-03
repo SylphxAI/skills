@@ -41,7 +41,7 @@ or Platform source-admission requirement.
 
 ## Consequences
 
-- Runtime constitution and `enact-work-coordination` / `delivery-standard`
+- Runtime constitution and `coordinate-enact-work` / `delivery-standard`
   packages must match this boundary.
 - AutoSync projections must not reintroduce lineage forge gates.
 - Historical evidence mentioning old checks remains historical only.

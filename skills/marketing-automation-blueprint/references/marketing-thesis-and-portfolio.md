@@ -101,7 +101,7 @@ Never use `not relevant` without a user/channel mechanism explanation. Once a ca
   exact upstream references and stable handoff IDs. Marketing never consumes the
   later observed-state revision that indexes Marketing.
 - Marketing supplies creative briefs, concepts, variant hypotheses and channel
-  requests. `product-asset-production` supplies exact localized media;
+  requests. `produce-product-assets` supplies exact localized media;
   Distribution/runtime sources supply release and observed-state evidence.
 - Campaign specialist supplies one campaign/offer state machine.
 - Referral specialist supplies qualification/grant/reversal/fraud.

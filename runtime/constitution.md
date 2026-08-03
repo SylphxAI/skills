@@ -57,5 +57,5 @@ only (universal by default). Detailed procedures stay in Skills.
 
 - If authenticated Enact tools are available, bind substantive multi-agent or
   long-running objectives to claimed Work before that objective's mutation.
-  Follow `enact-work-coordination` / work-coordination Skills for the full
+  Follow `coordinate-enact-work` / work-coordination Skills for the full
   procedure.

@@ -64,7 +64,7 @@ for signal, audience, SLO, alert, validation, and public-boundary patterns.
 - `product-analytics-instrumentation-review` owns product behavior events and
   decision metrics, not service health or operator diagnostics.
 - `data-quality-observability-review` owns dataset and pipeline reliability.
-- `security-threat-modeling` owns a material new or changed diagnostic trust
+- `model-security-threats` owns a material new or changed diagnostic trust
   boundary or exposure threat model.
 
 ## Guardrails

@@ -32,7 +32,7 @@ const REQUIRED_PHRASES = [
   'Always-on stays',
   'progressive disclosure',
   'delivery terminal',
-  'enact-work-coordination',
+  'coordinate-enact-work',
 ];
 
 const FORBIDDEN_MARKERS = [

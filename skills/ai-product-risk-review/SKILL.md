@@ -47,7 +47,7 @@ provider, policy, tool, or production authority.
 
 - Use `risk-matched-verification-standard` for eval design, judges, replay, simulation,
   red-team execution, and nondeterministic release proof.
-- Use `security-threat-modeling` for threat and security-design contracts;
+- Use `model-security-threats` for threat and security-design contracts;
   engineering owns implementation and vulnerability remediation, while
   `incident-standard` owns active incident response.
 - Use `product-analytics-instrumentation-review` for event/identity pipeline

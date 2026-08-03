@@ -80,7 +80,7 @@ All selected stacks prove:
 
 ### Version currency and reproducibility
 
-Use `dependency-version-selection` whenever a project is created or a runtime,
+Use `select-dependency-versions` whenever a project is created or a runtime,
 framework, SDK, generator, plugin, or library is added or upgraded. Query the
 authoritative live release source during the task and target the newest eligible
 stable production release. Model memory, static templates, existing manifest

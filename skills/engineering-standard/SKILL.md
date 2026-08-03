@@ -21,7 +21,7 @@ For code structure or architecture migration, also read:
 - [Cross-platform contract architecture](references/cross-platform-contract-architecture.md)
 
 When creating a project, adding a package, or upgrading a runtime, framework,
-SDK, generator, plugin, or library, use `dependency-version-selection`. Query
+SDK, generator, plugin, or library, use `select-dependency-versions`. Query
 the authoritative live release source; never select a version from model
 memory, a stale template, or an old example.
 
@@ -55,11 +55,11 @@ When concurrent or offline replicated state needs an algebraic merge, read
 [CRDT convergence](references/crdt-convergence.md).
 
 For a large shared capability catalog, concept scheme, faceted vocabulary, or
-cross-domain taxonomy, use `semantic-taxonomy-design`; do not force identity,
+cross-domain taxonomy, use `design-semantic-taxonomy`; do not force identity,
 hierarchy, and mutable labels into one tree path.
 
 For a new or materially changed trust boundary, privileged action, data flow,
-integration, or deployment exposure, use `security-threat-modeling` to produce
+integration, or deployment exposure, use `model-security-threats` to produce
 the security-design contract before or alongside implementation.
 
 

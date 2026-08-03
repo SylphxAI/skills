@@ -25,7 +25,7 @@ their canonical owners; do not redesign those systems here.
   rate limiting, infrastructure capacity, or release engineering; hand the
   experience requirement to the owning engineering project under
   `engineering-standard` and `delivery-standard`. Use
-  `software-distribution-readiness` when the independent job is selecting,
+  `ready-software-distribution` when the independent job is selecting,
   implementing, or verifying CLI install and update channels.
 - Do not use for developer quota/free-credit abuse policy or generic product
   abuse; use `developer-quota-credit-abuse-review` or
@@ -137,13 +137,13 @@ claiming production performance before measurement exists.
   evidence outside the developer journey.
 - Use `product-analytics-instrumentation-review` to implement the measurement
   contract; this skill defines the developer outcome and required evidence.
-- Use `saas-subscription-pricing` and `payment-platform-readiness` for packaging,
+- Use `price-saas-subscription` and `ready-payment-platform` for packaging,
   price, payment, ledger, or entitlement authority.
 - Use `app-design-blueprint` when the whole application experience, rather than
   the developer integration journey, is the independent artifact.
 - Use `delivery-standard`, `incident-standard`, `engineering-standard`, and
   `privacy-data-lifecycle-review` for shipped proof, incidents, controls, and privacy.
-- Use `software-distribution-readiness` for the executable artifact set, installers,
+- Use `ready-software-distribution` for the executable artifact set, installers,
   package-manager adapters, upgrades, uninstall, and publication readback of a
   CLI named by this adoption journey.
 

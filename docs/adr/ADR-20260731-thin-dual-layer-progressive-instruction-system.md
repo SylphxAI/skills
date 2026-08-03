@@ -68,7 +68,7 @@ It does not invent a portable meta-router.
 3. **Fleet-conditional L0.** At most one short reminder: when authenticated
    Enact tools are available, bind substantive multi-agent or long-running
    objectives to claimed Work before that objective's mutation, and follow
-   `enact-work-coordination` / work-coordination Skills for the procedure.
+   `coordinate-enact-work` / work-coordination Skills for the procedure.
 
 4. **Hard L0 budget.** Target ≤ ~900 tokens (approx. chars/4); ceiling 1,500
    tokens. Structural checks enforce a character ceiling derived from that

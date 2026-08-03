@@ -1,0 +1,4 @@
+interface:
+  display_name: "Distill Source To Skill"
+  short_description: "Distill source material into one installable Skill package (SKILL.md)."
+  default_prompt: "Run Distill Source To Skill for the active task/workspace."

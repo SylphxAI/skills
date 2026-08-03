@@ -137,11 +137,11 @@ Rules:
 - When monetization is selected, state one primary commercial model; do not list every model as strategy. A free, public-interest, bundled, or otherwise non-commercial app may mark commerce `not-applicable` for an exact business-model reason and must then keep payment and advertising runtime truly absent.
 - Where the app creates honest durable or recurring paid value, evaluate purchase, IAP, or subscription as the primary exchange before relying on interruption-based IAA. Do not force paid mechanics where no credible paid value exists.
 - Ads are a contextual or supplementary model unless product evidence supports them as primary. Preserve useful core behavior, consent, age modes, payer/ad-free treatment, startup and low-end budgets.
-- Use `saas-subscription-pricing` when subscription/SaaS packaging is the independent decision, `payment-platform-readiness` for provider/ledger correctness, and `ad-monetization-review` for in-product advertising.
+- Use `price-saas-subscription` when subscription/SaaS packaging is the independent decision, `ready-payment-platform` for provider/ledger correctness, and `ad-monetization-review` for in-product advertising.
 
 ### Refund Consequence Contract
 
-App/game design declares semantics; `payment-platform-readiness` and `refund-and-support-flow-review` implement and adjudicate them.
+App/game design declares semantics; `ready-payment-platform` and `refund-and-support-flow-review` implement and adjudicate them.
 
 ```text
 purchase/entitlement/value type:
@@ -217,10 +217,10 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 | Artifact | Primary owner |
 | --- | --- |
 | App monetization model and value-exchange semantics | `app-design-blueprint` |
-| Subscription/SaaS price and package decision | `saas-subscription-pricing` |
-| Provider payment, ledger, settlement and entitlement projection | `payment-platform-readiness` |
+| Subscription/SaaS price and package decision | `price-saas-subscription` |
+| Provider payment, ledger, settlement and entitlement projection | `ready-payment-platform` |
 | Refund consequence, repurchase, restriction, support and appeal | `refund-and-support-flow-review` |
-| Subscription access state | `payment-platform-readiness` |
+| Subscription access state | `ready-payment-platform` |
 | Ad placement/monetization | `ad-monetization-review` |
 | Notification channel strategy | `notification-strategy-review` |
 | Daily rewards and streaks | `daily-reward-and-streak-review` |
@@ -230,9 +230,9 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 | Universal private feedback, review ingestion and product-learning close-loop | `run-product-feedback-loop` |
 | Event/identity/metric instrumentation | `product-analytics-instrumentation-review` |
 | Offline/sync conflict | `offline-sync-conflict-review` |
-| Store/channel release evidence | `software-distribution-readiness` |
+| Store/channel release evidence | `ready-software-distribution` |
 | Localized experience semantics | `app-design-blueprint` |
-| Deterministic product capture, cross-channel asset transformation, localized production and LQA pack | `product-asset-production` |
+| Deterministic product capture, cross-channel asset transformation, localized production and LQA pack | `produce-product-assets` |
 | Multi-channel marketing control plane | `marketing-automation-blueprint` |
 | Product Program Manifest composition/index of independently owned sibling artifacts | `compose-product-program` |
 

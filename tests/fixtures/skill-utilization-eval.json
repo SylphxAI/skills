@@ -123,11 +123,11 @@
       ]
     },
     {
-      "id": "critical-autonomous-execution",
+      "id": "critical-drive-to-delivery",
       "suite": "critical-skill",
       "prompt": "Take this multi-phase migration all the way to the repository delivery terminal without waiting for me between phases. Do not stop after the first PR.",
       "expectedSkills": [
-        "autonomous-execution"
+        "drive-to-delivery"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Preserves a full-scope acceptance/delivery map and continues research-execute-verify beyond intermediate checkpoints; does not stop at one phase/local diff as complete.",
@@ -157,7 +157,7 @@
       "behaviorOracle": {
         "mandatoryObservable": "Frames a continuous discovery/admission/idle-wake loop for new Work, not a single bounded objective pushed to one terminal.",
         "mustNot": [
-          "Treat autonomous-execution as the sole primary owner of this job",
+          "Treat drive-to-delivery as the sole primary owner of this job",
           "Treat better-product as the sole primary owner of this job"
         ]
       },
@@ -166,7 +166,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "autonomous-execution",
+        "drive-to-delivery",
         "better-product"
       ]
     },
@@ -181,7 +181,7 @@
         "mandatoryObservable": "Produces or plans a Product Finish Pass over an already-integrated product (multi-surface polish/verification), not a greenfield blueprint and not a standing quality scout loop.",
         "mustNot": [
           "Treat app-design-blueprint as the sole primary owner of this job",
-          "Treat interface-craft as the sole primary owner of this job",
+          "Treat craft-interface as the sole primary owner of this job",
           "Treat better-product as the sole primary owner of this job"
         ]
       },
@@ -191,7 +191,7 @@
       ],
       "nearNeighbours": [
         "app-design-blueprint",
-        "interface-craft",
+        "craft-interface",
         "better-product"
       ]
     },
@@ -219,11 +219,11 @@
       ]
     },
     {
-      "id": "critical-interface-craft",
+      "id": "critical-craft-interface",
       "suite": "critical-skill",
       "prompt": "Polish only the checkout page flow: hierarchy, interaction states, responsive behavior, and accessibility.",
       "expectedSkills": [
-        "interface-craft"
+        "craft-interface"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Scopes work to one bounded interface/flow craft job rather than whole-app blueprint or multi-surface product finish.",
@@ -254,7 +254,7 @@
         "mandatoryObservable": "Targets a whole-app design blueprint for a new/redesigned product, not polish of an already-integrated app and not a single-screen craft job.",
         "mustNot": [
           "Treat product-finish as the sole primary owner of this job",
-          "Treat interface-craft as the sole primary owner of this job",
+          "Treat craft-interface as the sole primary owner of this job",
           "Treat compose-product-program as the sole primary owner of this job"
         ]
       },
@@ -264,7 +264,7 @@
       ],
       "nearNeighbours": [
         "product-finish",
-        "interface-craft",
+        "craft-interface",
         "compose-product-program"
       ]
     },
@@ -273,12 +273,12 @@
       "suite": "critical-skill",
       "prompt": "Resolve this individual billing support case from verified facts through remedy, escalation if needed, follow-up, and closure evidence.",
       "expectedSkills": [
-        "customer-support-case-resolution"
+        "resolve-support-case"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Treats a single case resolution path as the artifact; does not redesign the whole support organization.",
         "mustNot": [
-          "Treat customer-support-operations as the sole primary owner of this job",
+          "Treat operate-customer-support as the sole primary owner of this job",
           "Treat refund-and-support-flow-review as the sole primary owner of this job",
           "Treat customer-success-operations-review as the sole primary owner of this job"
         ]
@@ -288,7 +288,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "customer-support-operations",
+        "operate-customer-support",
         "refund-and-support-flow-review",
         "customer-success-operations-review"
       ]
@@ -298,12 +298,12 @@
       "suite": "critical-skill",
       "prompt": "Redesign our customer support operating system: channels, intake, routing, SLAs, knowledge, escalation, and quality management.",
       "expectedSkills": [
-        "customer-support-operations"
+        "operate-customer-support"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Designs the support operating system, not the resolution of one case and not CS success/renewal outcomes alone.",
         "mustNot": [
-          "Treat customer-support-case-resolution as the sole primary owner of this job",
+          "Treat resolve-support-case as the sole primary owner of this job",
           "Treat customer-success-operations-review as the sole primary owner of this job"
         ]
       },
@@ -312,7 +312,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "customer-support-case-resolution",
+        "resolve-support-case",
         "customer-success-operations-review"
       ]
     },
@@ -327,7 +327,7 @@
         "mandatoryObservable": "Owns feedback/learning operations from intake to action/closure; does not define public rating-request eligibility/cooldowns policy as the primary artifact.",
         "mustNot": [
           "Treat review-solicitation-policy as the sole primary owner of this job",
-          "Treat user-research-and-discovery as the sole primary owner of this job"
+          "Treat research-users as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -336,7 +336,7 @@
       ],
       "nearNeighbours": [
         "review-solicitation-policy",
-        "user-research-and-discovery"
+        "research-users"
       ]
     },
     {
@@ -370,8 +370,8 @@
       "behaviorOracle": {
         "mandatoryObservable": "Produces portable coordination semantics, not live Enact tool calls or a product-specific API tutorial alone.",
         "mustNot": [
-          "Treat enact-work-coordination as the sole primary owner of this job",
-          "Treat autonomous-execution as the sole primary owner of this job"
+          "Treat coordinate-enact-work as the sole primary owner of this job",
+          "Treat drive-to-delivery as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -379,8 +379,8 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "enact-work-coordination",
-        "autonomous-execution"
+        "coordinate-enact-work",
+        "drive-to-delivery"
       ]
     },
     {
@@ -388,7 +388,7 @@
       "suite": "critical-skill",
       "prompt": "Using authenticated Enact tools, claim the ready Work, attach evidence, and complete or defer it correctly.",
       "expectedSkills": [
-        "enact-work-coordination"
+        "coordinate-enact-work"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Uses live Enact work operations (claim/run/evidence/complete or defer) rather than inventing a new portable ledger standard.",
@@ -460,7 +460,7 @@
         "mustNot": [
           "Treat marketplace-seller-performance-review as the sole primary owner of this job",
           "Treat marketplace-trust-operations-review as the sole primary owner of this job",
-          "Treat payment-platform-readiness as the sole primary owner of this job"
+          "Treat ready-payment-platform as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -470,7 +470,7 @@
       "nearNeighbours": [
         "marketplace-seller-performance-review",
         "marketplace-trust-operations-review",
-        "payment-platform-readiness"
+        "ready-payment-platform"
       ]
     },
     {
@@ -510,7 +510,7 @@
         "mustNot": [
           "Treat instruction-evolution-standard as the sole primary owner of this job",
           "Treat engineer-agent-context as the sole primary owner of this job",
-          "Treat skill-repository-curator as the sole primary owner of this job"
+          "Treat curate-skill-repository as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -520,7 +520,7 @@
       "nearNeighbours": [
         "instruction-evolution-standard",
         "engineer-agent-context",
-        "skill-repository-curator"
+        "curate-skill-repository"
       ]
     },
     {
@@ -528,13 +528,13 @@
       "suite": "critical-skill",
       "prompt": "Audit our entire skills repository for description collisions, package boundaries, and which skills to merge, split, or retire.",
       "expectedSkills": [
-        "skill-repository-curator"
+        "curate-skill-repository"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Performs portfolio-level skill curation decisions (boundaries/merge/split/retire), not authoring one skill from one source and not building a router.",
         "mustNot": [
-          "Treat source-to-skill-distiller as the sole primary owner of this job",
-          "Treat skill-eval-designer as the sole primary owner of this job"
+          "Treat distill-source-to-skill as the sole primary owner of this job",
+          "Treat design-skill-evals as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -542,8 +542,8 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "source-to-skill-distiller",
-        "skill-eval-designer"
+        "distill-source-to-skill",
+        "design-skill-evals"
       ]
     },
     {
@@ -551,12 +551,12 @@
       "suite": "critical-skill",
       "prompt": "Turn this internal playbook into one installable SKILL.md package with triggers, workflow, and validation.",
       "expectedSkills": [
-        "source-to-skill-distiller"
+        "distill-source-to-skill"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Output is an installable Skill package/SKILL.md from source mechanisms, not a generic summary and not full-catalog curation.",
         "mustNot": [
-          "Treat skill-repository-curator as the sole primary owner of this job",
+          "Treat curate-skill-repository as the sole primary owner of this job",
           "Treat documentation-standard as the sole primary owner of this job"
         ]
       },
@@ -565,7 +565,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "skill-repository-curator",
+        "curate-skill-repository",
         "documentation-standard"
       ]
     },
@@ -580,7 +580,7 @@
         "mandatoryObservable": "Chooses finish of an integrated product over greenfield app blueprint design.",
         "mustNot": [
           "Treat app-design-blueprint as the sole primary owner of this job",
-          "Treat interface-craft as the sole primary owner of this job",
+          "Treat craft-interface as the sole primary owner of this job",
           "Treat better-product as the sole primary owner of this job"
         ]
       },
@@ -590,7 +590,7 @@
       ],
       "nearNeighbours": [
         "app-design-blueprint",
-        "interface-craft",
+        "craft-interface",
         "better-product"
       ]
     },
@@ -599,12 +599,12 @@
       "suite": "near-neighbour",
       "prompt": "This one angry customer ticket needs a correct remedy, apology, and closure evidence today.",
       "expectedSkills": [
-        "customer-support-case-resolution"
+        "resolve-support-case"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Resolves one case rather than redesigning support channels/SLAs/org process.",
         "mustNot": [
-          "Treat customer-support-operations as the sole primary owner of this job",
+          "Treat operate-customer-support as the sole primary owner of this job",
           "Treat customer-success-operations-review as the sole primary owner of this job"
         ]
       },
@@ -613,7 +613,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "customer-support-operations",
+        "operate-customer-support",
         "customer-success-operations-review"
       ]
     },
@@ -643,7 +643,7 @@
       "suite": "near-neighbour",
       "prompt": "Finish this specific incident-hardening program through land and live proof without me re-prompting between phases.",
       "expectedSkills": [
-        "autonomous-execution"
+        "drive-to-delivery"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Pushes one bounded multi-phase objective to terminal rather than designing an infinite new-work discovery loop.",
@@ -671,7 +671,7 @@
       "behaviorOracle": {
         "mandatoryObservable": "Keeps portable ledger semantics; does not require live Enact tool operations as the primary method.",
         "mustNot": [
-          "Treat enact-work-coordination as the sole primary owner of this job"
+          "Treat coordinate-enact-work as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -679,7 +679,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "enact-work-coordination"
+        "coordinate-enact-work"
       ]
     },
     {
@@ -793,7 +793,7 @@
       "suite": "compound",
       "prompt": "Drive this multi-service change fully to production-ready delivery proof without stopping at the open PR, and keep using the correct done criteria.",
       "expectedSkills": [
-        "autonomous-execution",
+        "drive-to-delivery",
         "delivery-standard"
       ],
       "behaviorOracle": {
@@ -826,7 +826,7 @@
       ],
       "nearNeighbours": [
         "better-product",
-        "interface-craft"
+        "craft-interface"
       ]
     },
     {
@@ -839,7 +839,7 @@
       "nearNeighbours": [
         "product-finish",
         "select-next-work",
-        "autonomous-execution"
+        "drive-to-delivery"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Establishes or updates a multi-aspect quality matrix/loop contract, admits only bounded positive-net work, requires oracle readback, and treats idle as non-perfection rather than one finish pass or infinite vague improvement.",
@@ -863,8 +863,8 @@
       ],
       "nearNeighbours": [
         "product-finish",
-        "interface-craft",
-        "frontend-performance-remediation"
+        "craft-interface",
+        "remediate-frontend-performance"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Chooses standing multi-aspect betterment loop operation over a single Product Finish Pass as the primary artifact.",
@@ -885,7 +885,7 @@
         "better-product"
       ],
       "nearNeighbours": [
-        "autonomous-execution",
+        "drive-to-delivery",
         "select-next-work",
         "product-finish"
       ],

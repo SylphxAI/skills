@@ -191,7 +191,7 @@ unknown state into approval.
 | Tool schemas, permissions, implementation, observability | owning engineering project |
 | Event and identity pipeline | `product-analytics-instrumentation-review` artifact |
 | Release, rollout, recovery, production proof | `delivery-standard` artifact |
-| Support taxonomy and customer recovery | `customer-support-operations` artifact |
+| Support taxonomy and customer recovery | `operate-customer-support` artifact |
 | Whole-product product/commercial design | app/game/product/pricing specialist artifact |
 
 The handoff states an exact question, artifact ID/version, blocked product

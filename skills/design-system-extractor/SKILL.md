@@ -35,9 +35,9 @@ and proposed normalization visibly separate.
 
 ## When not to use
 
-- For a new product or greenfield redesign, use `interface-craft` and treat any
+- For a new product or greenfield redesign, use `craft-interface` and treat any
   existing-system extraction as an input, not the final design direction.
-- For a one-flow usability or visual critique, use `interface-craft`.
+- For a one-flow usability or visual critique, use `craft-interface`.
 - For implementation from an already authoritative system, hand off the exact
   component contract and acceptance states to the implementation owner.
 - Do not extract a clone from an unrelated third-party product. Use external

@@ -61,7 +61,7 @@ output digest, upload receipt and observed live ID:
 
 Marketing owns the creative brief, concept/storyboard, message,
 campaign-specific source direction and variant hypothesis.
-`product-asset-production` owns deterministic product capture, exact rendered
+`produce-product-assets` owns deterministic product capture, exact rendered
 files, localization/accessibility variants, rights/provenance and file QA. Store
 Listing owns listing narrative, selection/order and channel metadata. Marketing
 requests website, YouTube, X, short-video, social, display, creator, email and

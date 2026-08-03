@@ -24,7 +24,7 @@ transfer usable ownership. Vendor or marketing labels such as `SOTA` also do
 not establish the recipient's actual tools, access, context, or task
 capability.
 
-`autonomous-execution` already owns whether a subagent should be used
+`drive-to-delivery` already owns whether a subagent should be used
 and the outcome-owned subagent contract. `design-prompt-architecture` needs the same
 specificity boundary for every agent-to-agent brief, including executors,
 reviewers, specialists, and subagents.
@@ -32,7 +32,7 @@ reviewers, specialists, and subagents.
 ## Decision
 
 1. `design-prompt-architecture` owns capability-calibrated specificity for every
-   agent-to-agent task brief. `autonomous-execution` continues to own
+   agent-to-agent task brief. `drive-to-delivery` continues to own
    whether delegation is eligible.
 2. Treat a recipient with task-appropriate tools, access, and discoverable
    context as a capable reasoning peer by default. Calibrate extra detail to an

@@ -8,25 +8,25 @@
 | App availability/presentation or game progression/population exposure | corresponding design blueprint |
 | Evergreen game-world fairness | `game-design-blueprint` |
 | Cross-domain dependency graph, release targets, stable handoffs and declared Definition of Done | planning revision of `compose-product-program` |
-| Market evidence | `market-research-synthesis` |
+| Market evidence | `synthesize-market-research` |
 | App monetization model and value-exchange semantics | `app-design-blueprint` |
-| Subscription/SaaS pricing and packaging decision | `saas-subscription-pricing` |
+| Subscription/SaaS pricing and packaging decision | `price-saas-subscription` |
 | Other pricing/packaging decisions | declared commercial decision owner and billing SSOT |
-| Provider transaction, ledger and settlement integration | `payment-platform-readiness` |
+| Provider transaction, ledger and settlement integration | `ready-payment-platform` |
 | Refund customer/account consequence and appeal | `refund-and-support-flow-review` |
-| Subscription entitlement semantics | `payment-platform-readiness` |
+| Subscription entitlement semantics | `ready-payment-platform` |
 | Analytics event/identity contract | `product-analytics-instrumentation-review` |
 | Platform-specific authentic public review request policy | `review-solicitation-policy` |
 | Universal private feedback, review ingestion and product-learning close-loop | `run-product-feedback-loop` |
 | One promotion, update-reward or cross-promotion campaign | `promotion-campaign-review` |
 | Referral qualification, grant, reversal and fraud | `referral-loop-review` |
 | Marketing channel, budget and creative control plane | `marketing-automation-blueprint` |
-| Listing metadata/creative conversion design | `store-listing-optimization` |
-| Channel submission/certification/release evidence | `software-distribution-readiness` |
+| Listing metadata/creative conversion design | `optimize-store-listing` |
+| Channel submission/certification/release evidence | `ready-software-distribution` |
 | Localized product meaning | corresponding App/Game Design Blueprint |
-| Exact localized product capture, media transformation, accessibility, rights/provenance and file QA | `product-asset-production` |
+| Exact localized product capture, media transformation, accessibility, rights/provenance and file QA | `produce-product-assets` |
 | Campaign creative brief/concept and paid/organic variants | `marketing-automation-blueprint` |
-| Listing narrative, asset selection and channel metadata | `store-listing-optimization` |
+| Listing narrative, asset selection and channel metadata | `optimize-store-listing` |
 | SDK semantic ports and product behavior | corresponding App/Game Design Blueprint |
 | SDK provider/version/disclosure/replacement and release registry | `compose-product-program` |
 | Actual source/build/release/runtime truth | Owning source, build, artifact, store/partner and runtime systems; an observed-state manifest revision references their evidence |

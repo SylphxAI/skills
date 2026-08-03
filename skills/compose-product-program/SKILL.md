@@ -106,7 +106,7 @@ product's unrelated lifecycle was reviewed.
 6. Build iOS and Android release lanes for mobile products. Build HTML5/PWA as a first-class global route when product semantics permit. Establish adapters/contracts for Huawei, Samsung, Amazon, Microsoft/direct desktop, Steam/Epic and consoles where relevant; partner authority controls release proof, not architecture readiness.
 7. Maintain one platform-neutral semantic core plus explicit ports for input/UI, identity, storage, commerce, social, achievements, notifications, packaging/signing, certification, update, telemetry, and support. “One codebase” is not a goal if it erases platform quality.
 8. Internationalize contracts and route the complete localized media target to
-   `product-asset-production`. That specialist owns deterministic capture,
+   `produce-product-assets`. That specialist owns deterministic capture,
    transformation, exact files, rights/provenance, accessibility, and file QA;
    Marketing owns campaign briefs/concepts, Store Listing owns narrative and
    selection/order, and this skill owns only their dependency, coverage, and
@@ -181,7 +181,7 @@ Produce one **Product Program Manifest** containing:
 3. complete lifecycle capability matrix with construction, proof, release/exposure, scale/failure, migration, recovery, and maintenance states;
 4. cross-domain dependency DAG, critical path, delivery order, collision boundaries, and handoff acceptance tests;
 5. platform/channel capability matrix and release-control state machines, including iOS, Android, HTML5/PWA, relevant stores/direct channels, and console authority gates; when selected, include the ecosystem certification promise, criteria/test/badge, renewal, appeal, revocation, partner-enablement, and customer-impact graph;
-6. i18n/culturalization plan plus exact `product-asset-production` pack inputs,
+6. i18n/culturalization plan plus exact `produce-product-assets` pack inputs,
    coverage, acceptance, rights/provenance, LQA, and downstream handoffs;
 7. vendor-neutral SDK adapter registry with consent/privacy/startup/dormant/replacement controls;
 8. exact-artifact build/sign/attest/submit/stage/promote/halt/readback graph and evidence pack;
@@ -198,15 +198,15 @@ Produce one **Product Program Manifest** containing:
   product or bundle.
 - `app-design-blueprint`, `game-design-blueprint`, and `saas-web-platform-blueprint` own their product promise, experience or public-to-service platform semantics; this skill only indexes their artifacts and cross-domain delivery dependencies.
 - `marketing-automation-blueprint` owns the complete marketing operating
-  blueprint and creative briefs; `product-asset-production` owns exact rendered
+  blueprint and creative briefs; `produce-product-assets` owns exact rendered
   product media; `promotion-campaign-review`, `referral-loop-review`, and
-  `store-listing-optimization` own their narrow artifacts.
-- `payment-platform-readiness` owns provider transaction/ledger integration; `refund-and-support-flow-review` owns refund customer/account consequences.
+  `optimize-store-listing` own their narrow artifacts.
+- `ready-payment-platform` owns provider transaction/ledger integration; `refund-and-support-flow-review` owns refund customer/account consequences.
 - `review-solicitation-policy` owns platform-specific authentic public review
   request policy; `run-product-feedback-loop` owns universal private
   feedback, authorized review ingestion, evidence clustering, routing, product
   action, and close-loop behavior.
-- `software-distribution-readiness` consumes a sealed planning revision and
+- `ready-software-distribution` consumes a sealed planning revision and
   owns the distribution contract and evidence pack for target artifacts,
   installers, package-manager and store adapters, channel eligibility,
   submission or certification, lifecycle behavior, rollout, recovery, and live
