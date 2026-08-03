@@ -179,3 +179,42 @@ test('critical-skill prompts discriminate expected skill descriptions structural
     `description discrimination too weak: ${wins}/${critical.length} critical singles ranked expected skill in top ~20% (structural only; not host utilization proof)`,
   );
 });
+
+test('near-neighbour prompts prefer expected skill over listed neighbours structurally', () => {
+  // Secondary catalog-quality signal only — not host behavior-oracle utilization proof.
+  const program = JSON.parse(readFileSync(fixturePath, 'utf8'));
+  const catalog = buildCatalog(repositoryRoot);
+  const byName = new Map(catalog.skills.map((s) => [s.name, s.description || '']));
+  const tokenize = (text) =>
+    String(text)
+      .toLowerCase()
+      .split(/[^a-z0-9+]+/g)
+      .filter((tok) => tok.length >= 3);
+  const score = (promptTokens, description) => {
+    const desc = new Set(tokenize(description));
+    if (desc.size === 0) return 0;
+    let hit = 0;
+    for (const tok of promptTokens) if (desc.has(tok)) hit += 1;
+    return hit / Math.sqrt(desc.size);
+  };
+  const cases = program.cases.filter(
+    (c) => c.suite === 'near-neighbour' && (c.expectedSkills || []).length === 1 && Array.isArray(c.nearNeighbours) && c.nearNeighbours.length,
+  );
+  assert.ok(cases.length >= 5, `expected near-neighbour cases, got ${cases.length}`);
+  let wins = 0;
+  for (const item of cases) {
+    const expected = item.expectedSkills[0];
+    const promptTokens = tokenize(item.prompt);
+    const expectedScore = score(promptTokens, byName.get(expected) || '');
+    let ok = true;
+    for (const neighbour of item.nearNeighbours) {
+      if (score(promptTokens, byName.get(neighbour) || '') >= expectedScore) ok = false;
+    }
+    if (ok) wins += 1;
+  }
+  assert.ok(
+    wins / cases.length >= 0.8,
+    `near-neighbour discrimination too weak: ${wins}/${cases.length} (structural only)`,
+  );
+});
+

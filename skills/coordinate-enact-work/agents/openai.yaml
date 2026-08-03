@@ -1,4 +1,4 @@
 interface:
   display_name: "Coordinate Enact Work"
-  short_description: "Operate live Enact Work: claim, attempt, evidence, handoff (authenticated tools)."
+  short_description: "Operate live Enact Work APIs: claim, attempt, evidence, handoff with authenticated Enact tools."
   default_prompt: "Run Coordinate Enact Work for the active task/workspace."

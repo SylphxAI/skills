@@ -1,6 +1,6 @@
 ---
 name: coordinate-enact-work
-description: "Operate live Enact Work: claim, attempt, evidence, handoff (authenticated tools)."
+description: "Operate live Enact Work APIs: claim, attempt, evidence, handoff with authenticated Enact tools."
 ---
 
 # Coordinate Enact Work

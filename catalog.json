@@ -95,9 +95,9 @@
     },
     {
       "name": "coordinate-enact-work",
-      "description": "Operate live Enact Work: claim, attempt, evidence, handoff (authenticated tools).",
+      "description": "Operate live Enact Work APIs: claim, attempt, evidence, handoff with authenticated Enact tools.",
       "path": "skills/coordinate-enact-work/SKILL.md",
-      "packageDigest": "sha256:4ba488aa72f2aa62368ba63b81773a41e0fc474bb0c6a18b482fe23169c43e90"
+      "packageDigest": "sha256:9be5e983c1d0fcddcdca2390fb72a509cedca6d543386c0cdab7bea7dd51d646"
     },
     {
       "name": "craft-interface",
@@ -203,9 +203,9 @@
     },
     {
       "name": "drive-to-delivery",
-      "description": "Drive one multi-phase engineering objective to delivery-terminal evidence.",
+      "description": "Drive one multi-phase engineering objective through land/live terminal evidence without re-prompt between phases.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:437694b9864bfed94368ef258d85ca4cddcb7e20613620ab702dd34b8053fce7"
+      "packageDigest": "sha256:c951031f8af1f71e17b9583a3e838db74eb0e6a6d14b35639a7aded0ca763638"
     },
     {
       "name": "edit-preserving-voice",
@@ -347,9 +347,9 @@
     },
     {
       "name": "prototype-product",
-      "description": "Cheap real probe for a product hypothesis with go/kill/pivot decision.",
+      "description": "Learning probe only: cheapest real experiment and go/kill/pivot—not shipping durable capability yet.",
       "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:a92ea0e36fbb558364dee148f3b33658f1df19db76fe5a63cd2243feec9b812c"
+      "packageDigest": "sha256:1b05d407bfa97566b934c387b29a1109b3ece1e150912df0e95a89888f51666b"
     },
     {
       "name": "pursue-product-objective",
@@ -708,9 +708,9 @@
     },
     {
       "name": "work-coordination-standard",
-      "description": "Policy: work-ledger semantics—claims, attempts, checkpoints, handoff, stale recovery.",
+      "description": "Policy: portable work-ledger—claims, leases, checkpoints, handoff; runtime-agnostic (not live Enact API ops).",
       "path": "skills/work-coordination-standard/SKILL.md",
-      "packageDigest": "sha256:3523a7e442c76b5b6398a9466cb365acbfc2ffc4c4991b81b2cad00df78a5346"
+      "packageDigest": "sha256:fb70f88b17b8aee8cff6acb363f1dfabce9276316896802bd25c115b42f21e9d"
     },
     {
       "name": "write-high-signal-update",

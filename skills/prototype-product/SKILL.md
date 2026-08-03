@@ -1,6 +1,6 @@
 ---
 name: prototype-product
-description: "Cheap real probe for a product hypothesis with go/kill/pivot decision."
+description: "Learning probe only: cheapest real experiment and go/kill/pivot—not shipping durable capability yet."
 ---
 
 # Prototype Product

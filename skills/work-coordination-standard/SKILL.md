@@ -1,6 +1,6 @@
 ---
 name: work-coordination-standard
-description: "Policy: work-ledger semantics—claims, attempts, checkpoints, handoff, stale recovery."
+description: "Policy: portable work-ledger—claims, leases, checkpoints, handoff; runtime-agnostic (not live Enact API ops)."
 ---
 # Work Coordination Standard
 
