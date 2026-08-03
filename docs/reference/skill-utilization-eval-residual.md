@@ -114,3 +114,5 @@ utilization.
 - Product job Skills covered in fixtures; better-product oracles aligned to portable continuity and admit-all-B.
 - Host runbook added; live host behavior-oracle green runs still required to close residual.
 - All 118 packages ship `agents/openai.yaml` UI metadata.
+
+Result sheet drop: `tests/fixtures/skill-utilization-host-results/` (see README there).

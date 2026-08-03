@@ -4,7 +4,7 @@ Companion to
 [ADR-20260801-package-classes-and-standard-composition](../adr/ADR-20260801-package-classes-and-standard-composition.md)
 and [skill-package-classes-and-composition.md](skill-package-classes-and-composition.md).
 
-**Snapshot:** 2026-08-01, ~112 catalog skills, 23 `*-standard` packages.  
+**Snapshot:** 2026-08-03, 118 catalog skills, 22 `*-standard` packages (+ profile/prefer policy packs).  
 **Change rule:** reclass + description first; rename only with ADR-0009/0016
 discipline and routing cases. No mega-merge for count cosmetics.
 

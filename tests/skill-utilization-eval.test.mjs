@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -123,3 +123,59 @@ test('utilization fixtures cover core product job Skills', () => {
   }
 });
 
+
+test('every canonical skill package has agents/openai.yaml UI metadata', () => {
+  const catalog = buildCatalog(repositoryRoot);
+  for (const skill of catalog.skills) {
+    const yamlPath = path.join(repositoryRoot, 'skills', skill.name, 'agents', 'openai.yaml');
+    assert.ok(existsSync(yamlPath), `missing ${yamlPath}`);
+    const text = readFileSync(yamlPath, 'utf8');
+    assert.match(text, /display_name:\s*.+/, `${skill.name}: display_name`);
+    assert.match(text, /short_description:\s*.+/, `${skill.name}: short_description`);
+    assert.match(text, /default_prompt:\s*.+/, `${skill.name}: default_prompt`);
+  }
+});
+
+test('critical-skill prompts discriminate expected skill descriptions structurally', () => {
+  // Secondary catalog-quality signal only — not host behavior-oracle utilization proof.
+  const program = JSON.parse(readFileSync(fixturePath, 'utf8'));
+  const catalog = buildCatalog(repositoryRoot);
+  const byName = new Map(catalog.skills.map((s) => [s.name, s.description || '']));
+
+  const tokenize = (text) =>
+    String(text)
+      .toLowerCase()
+      .split(/[^a-z0-9+]+/g)
+      .filter((t) => t.length >= 3);
+
+  const score = (promptTokens, description) => {
+    const desc = new Set(tokenize(description));
+    if (desc.size === 0) return 0;
+    let hit = 0;
+    for (const t of promptTokens) if (desc.has(t)) hit += 1;
+    return hit / Math.sqrt(desc.size);
+  };
+
+  const critical = program.cases.filter((c) => c.suite === 'critical-skill' && (c.expectedSkills || []).length === 1);
+  assert.ok(critical.length >= 8, `expected enough critical-skill singles, got ${critical.length}`);
+
+  let wins = 0;
+  for (const item of critical) {
+    const expected = item.expectedSkills[0];
+    assert.ok(byName.has(expected), `missing catalog skill ${expected}`);
+    const promptTokens = tokenize(item.prompt);
+    const expectedScore = score(promptTokens, byName.get(expected));
+    let betterOrEqual = 0;
+    for (const [name, description] of byName) {
+      if (name === expected) continue;
+      if (score(promptTokens, description) > expectedScore) betterOrEqual += 1;
+    }
+    // Expected skill should beat at least 80% of the catalog on bag-of-tokens overlap.
+    const rankOk = betterOrEqual <= Math.floor(byName.size * 0.2);
+    if (rankOk) wins += 1;
+  }
+  assert.ok(
+    wins / critical.length >= 0.7,
+    `description discrimination too weak: ${wins}/${critical.length} critical singles ranked expected skill in top ~20% (structural only)`,
+  );
+});
