@@ -4,7 +4,7 @@
   "status": "design-contract-and-oracle-fixtures",
   "residualRef": "docs/reference/skill-utilization-eval-residual.md",
   "pinnedAtAuthoring": {
-    "skillsCommit": "b16407bc2c781e82b7c03a0ebe4c33cab11d39ac",
+    "skillsCommit": "39d11e5352fc9230a26ec0c29a6210d1aebf448f",
     "catalogCount": 118,
     "catalogDigestSha256OfCatalogJson": "sha256:fea98c87f220cb2ed614fc2018099a24615228daeb617806d564600345c04e2a",
     "note": "Authoring pin after drive/select entry rewrite; fixtures are not live host utilization proof."
