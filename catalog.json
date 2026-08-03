@@ -205,7 +205,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one multi-phase engineering objective to delivery-terminal evidence.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:472601890005cee120bf3f0daf7c15ca7d5743d0f170cb48599fb6ea96c75de8"
+      "packageDigest": "sha256:437694b9864bfed94368ef258d85ca4cddcb7e20613620ab702dd34b8053fce7"
     },
     {
       "name": "edit-preserving-voice",
@@ -667,7 +667,7 @@
       "name": "select-next-work",
       "description": "Select/claim next high-value Work from evidence/ledger (not product betterment matrix).",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:440b9d5e51c8d1876a5b39821b78266636bf270e2d5ff7c9ea62d0ac249caf50"
+      "packageDigest": "sha256:85ad07f7fc570f7eb8f9bb8bdd9cc8fc3a1f67d9b6a87429ee2c686e4aed572d"
     },
     {
       "name": "source-authoring-standard",

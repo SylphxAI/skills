@@ -5,64 +5,49 @@ description: "Select/claim next high-value Work from evidence/ledger (not produc
 
 # Select Next Work
 
-**Primary class:** `workflow` (continuous next-Work selection method with embedded
-predicates). **Package id** is job-named (workflow). Do not treat this package as pure
-policy or always-on law. See
-[ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
+When you must **pick and advance the next Work from evidence** without the user
+naming the ticket, run **one tick** of this method.
 
-**When you need to:** pick and advance the **next** Work from evidence without the user naming the ticket.
+## When to use
 
-**Not for:** product betterment cycles (`better-product` / job skills), or one declared product objective (`pursue-product-objective` / `drive-to-delivery`).
+- Queue/ledger/capacity signals exist (or must be established)
+- Job is continuous selection + claim under WIP/backpressure
+- Not the same as open product betterment or one fixed product objective
 
-## Progressive disclosure
+## When not to use
 
-1. Read [references/full-standard.md](references/full-standard.md) for the full
-   next-Work selection method, authority map, tick shape, and backpressure rules.
+- One bounded objective already accepted → `drive-to-delivery` (or product jobs / `pursue-product-objective`)
+- Multi-aspect product betterment matrix as the primary job → `better-product`
+- Portable ledger **design** without continuous selection → `work-coordination-standard`
+- Live Enact tool I/O alone → `coordinate-enact-work`
 
-## Soft composition (native discovery has no dependency graph)
+## Method (one tick)
 
-Open composed packs when the tick touches their domain:
-
-- `work-coordination-standard` for portable ledger semantics
-- `coordinate-enact-work` when authenticated Enact tools are present (live ops)
-- `drive-to-delivery` **inside** each claimed bounded Work (one
-  objective to terminal) — this package does not replace that closure loop
-- `delivery-standard` / `evidence-and-claims-standard` when ticks claim delivery
-  outcomes
-- `better-product` when the continuous selection is specifically product
-  betterment across aspects (compose; do not merge packages)
-
-## Method (summary)
-
-1. Resolve organization/project and live Work authority.
-2. Inspect queue, claims, capacity, and material signals.
-3. Deduplicate and qualify independently useful bounded outcomes.
+1. Resolve org/project and live Work authority.
+2. Inspect queue, claims, capacity, material signals.
+3. Deduplicate; keep only independently useful bounded outcomes.
 4. Claim/launch only positive-net lanes under WIP and cost backpressure.
-5. Checkpoint material state; emit a compact tick report and stop the tick.
-6. Continuous mode requires external scheduler/wake, bounded WIP, and readout —
-   not an immortal chat session.
+5. Checkpoint material state; emit a compact tick report; **end the tick**.
+6. Continuous mode needs external scheduler/wake + bounded WIP + readout—not an immortal chat session.
 
-## Primary artifact
+### Progressive disclosure
 
-A **bounded tick report** plus durable Work/claim/checkpoint effects (when
-authority surfaces exist). Not a separate per-standard compliance report merely
-because this package loaded.
+- [references/full-standard.md](references/full-standard.md) — full selection method, authority map, tick shape, backpressure.
+
+### Soft composition (no meta-router)
+
+- `work-coordination-standard` — portable ledger semantics
+- `coordinate-enact-work` — authenticated Enact live ops
+- `drive-to-delivery` — **inside** each claimed bounded Work (this package does not close that objective)
+- `delivery-standard` / `evidence-and-claims-standard` — when ticks claim delivery outcomes
+- `better-product` — only when the continuous job is specifically multi-aspect product betterment (compose; do not merge packages)
+
+## Output
+
+A **bounded tick report** plus durable Work/claim/checkpoint effects when authority surfaces exist.
 
 ## Boundaries
 
 - Does not grant deploy, credential, or MCP capabilities.
-- Does not drive one already-accepted objective to terminal by itself
-  (`drive-to-delivery`).
-- Does not replace product betterment matrix ownership
-  (`better-product`).
-- Does not replace portable semantics (`work-coordination-standard`) or live
-  Enact schema (`coordinate-enact-work`).
+- Does not drive one already-accepted objective to terminal by itself.
 - Skill text is not a runtime scheduler.
-
-## When not to use
-
-- One bounded objective already accepted and only needs closure.
-- Multi-aspect product betterment as the primary product job without Work OS
-  selection concerns → `better-product`.
-- Portable ledger design without continuous OS → `work-coordination-standard`.
-- Live Enact tool calls alone → `coordinate-enact-work`.

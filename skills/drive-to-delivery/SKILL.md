@@ -5,62 +5,56 @@ description: "Drive one multi-phase engineering objective to delivery-terminal e
 
 # Drive To Delivery
 
-**Primary class:** `workflow` (execution method with embedded binding predicates).  
-**Package id** is job-named (workflow). Do not treat this package as pure policy or always-on law. See [ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
+When one **accepted multi-phase engineering objective** must reach its
+**delivery terminal** (not a polish essay, not open product betterment), run
+this method until evidence at the active delivery boundary says done—or until
+honestly blocked.
 
-**When matched:** run this workflow for the active accepted objective.
+## When to use
 
-## Progressive disclosure
+- Multi-phase engineering objective already accepted
+- Need research → execute → verify → repair/replan until terminal evidence
+- Host continuity/objective surfaces may re-inject; do not stop after one phase
 
-1. Read [references/full-standard.md](references/full-standard.md) for the full
-   execution method, startup, graph, evidence, and completion discipline.
-2. Read [references/tool-grounded-execution.md](references/tool-grounded-execution.md)
-   when the task needs tool-grounded iteration, checkpoint, recovery, or
-   termination semantics.
-3. Read [references/bounded-objective-closure-loop.md](references/bounded-objective-closure-loop.md)
-   when the user explicitly asks for loop engineering, a full-scope autonomous
-   closure loop, or repeated research-execute-audit transitions for one objective.
+## When not to use
 
-## Soft composition (native discovery has no dependency graph)
+- Short Q&A or one local edit with no multi-phase terminal
+- Continuous next-Work discovery without a single accepted objective → `select-next-work`
+- Mixed open product betterment → `better-product`
+- Declared **product** outcome betterment framing → `pursue-product-objective`
+- Live Enact API design alone → `coordinate-enact-work` / `work-coordination-standard`
 
-Before material mutations, open and apply only the composed packs that match the
-objective (do not invent a meta-router):
+## Method
 
-- `decision-quality-standard` for framing, alternatives, and claim discipline
-- `source-authoring-standard` for Work/attempt/checkpoint/source identity
-- `delivery-standard` when claiming land/live done
-- `evidence-and-claims-standard` when grading proof strength
-- `engineering-standard` / `technology-stack-profile` when implementing software
-- host continuity/objective surface when present: bind/resume per host rules (prefer uncapped
-  goals for long multi-phase work unless the user set a budget)
-- `coordinate-enact-work` only when authenticated Enact tools are present
+1. **Startup:** objective, acceptance map, workspace ownership, non-interference with foreign changes. Bind host continuity if present (prefer uncapped long work unless user set a budget). No hard-coded host tool ids.
+2. **Graph:** maximize authorized verified throughput without inflating certainty or delivery claims.
+3. **Loop:** research → execute → verify → repair or replan until the delivery terminal for **this one** objective is met or an honest blocker is recorded.
+4. **Done:** claim only with evidence at the active delivery boundary (landed/live as required—not merely local green).
 
-## Method (summary)
+### Progressive disclosure
 
-1. Establish intentional startup: objective, acceptance map, goal binding,
-   workspace ownership, and non-interference with foreign changes.
-2. Build an execution graph that maximizes authorized verified throughput
-   without inflating certainty or delivery claims.
-3. Research → execute → verify → repair or replan until the delivery terminal
-   for this one objective is met or an honest blocker is recorded.
-4. Claim done only with evidence at the active delivery boundary.
+1. [references/full-standard.md](references/full-standard.md) — full execution method, startup, graph, evidence, completion.
+2. [references/tool-grounded-execution.md](references/tool-grounded-execution.md) — tool-grounded iteration, checkpoint, recovery, termination.
+3. [references/bounded-objective-closure-loop.md](references/bounded-objective-closure-loop.md) — explicit loop-engineering / full-scope closure for one objective.
 
-## Primary artifact
+### Soft composition (no meta-router)
 
-Progress toward **one accepted objective at its delivery terminal**, with
-checkpoint/evidence integrated into the primary job output — not a separate
-compliance report merely because this package loaded.
+Open only packs that match the objective:
+
+- `decision-quality-standard` — framing, alternatives, claims
+- `source-authoring-standard` — Work/attempt/checkpoint/source identity
+- `delivery-standard` — land/live done claims
+- `evidence-and-claims-standard` — proof strength
+- `engineering-standard` / `technology-stack-profile` — when implementing software
+- `coordinate-enact-work` — only with authenticated Enact tools
+
+## Output
+
+Progress on **one accepted objective at its delivery terminal**, with checkpoint/evidence in the primary job output—not a separate compliance report.
 
 ## Boundaries
 
 - Does not grant deploy, credential, or MCP capabilities.
 - Does not own continuous next-Work discovery (`select-next-work`).
-- Does not own multi-aspect product betterment loops (`better-product`).
-- Does not replace product-local ADRs where those own decisions.
-
-## When not to use
-
-- Short Q&A or one local edit with no multi-phase terminal.
-- Continuous work-selection OS without a single accepted objective.
-- Product betterment across aspects as the primary job → `better-product`.
-- Live Enact API design alone → `coordinate-enact-work` / `work-coordination-standard`.
+- Does not own multi-aspect product betterment (`better-product` / job skills).
+- Does not replace product-local ADRs.

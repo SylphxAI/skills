@@ -50,3 +50,16 @@ Apply while doing another job: `*-standard`, `technology-stack-profile`, `prefer
 Domain review Skills use the `review-*` id prefix (e.g. `review-launch-readiness`,
 `review-ai-product-risk`). Descriptions start with `Review:` for retrieval.
 
+## Invoke (hosts with `$skill` / Skill triggers)
+
+| Intent | Skill id |
+| --- | --- |
+| Open betterment, mixed jobs | `better-product` |
+| Fixed product outcome until done | `pursue-product-objective` |
+| One multi-phase engineering terminal | `drive-to-delivery` |
+| Next Work from ledger/evidence | `select-next-work` |
+| Single job cycle | `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `finish-product` |
+| Write/edit a Skill | `author-skill` |
+
+Native discovery still applies: agents may load by description match without an explicit `$` invoke.
+
