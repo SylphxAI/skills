@@ -1,10 +1,3 @@
-# Continuity model
+# Product betterment continuity
 
-```text
-Skill invoke  →  bootstrap only
-create_goal(full cycle workflow + terminal)  →  durable task
-each host Goal continue  →  next cycle (the loop)
-update_goal(complete)  →  only idle high-EV frontier
-```
-
-Automation is not the default loop motor when Goal exists.
+Agent binds uncapped Goal (cycle contract + terminal). Host re-injects Goal each turn. Complete only at empty high-EV frontier.
