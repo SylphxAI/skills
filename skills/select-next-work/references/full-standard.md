@@ -17,7 +17,7 @@ second queue, scheduler, or continuation authority inside that task.
 - Enact owns Work, claims, Runs, checkpoints, review findings, subscriptions,
   and effects when available.
 - Git owns source.
-- The repository owns PR/direct-trunk and merge-queue policy.
+- The repository owns PR + Merge Queue policy (ADR-20260803).
 - CI owns the exact-SHA correctness verdict.
 - Platform owns artifact build and deployment.
 - Sessions are disposable workers.
@@ -69,8 +69,10 @@ reports the missing fact; it does not spawn performatively.
 
 ## Work and backpressure
 
-One Work Item owns one independently terminal outcome. Use a parent Work plus
-child DAG for programmes.
+One Work Item owns one independently terminal outcome **and maps to one PR**.
+Phases, checkpoints, and implementation layers of that outcome are not separate
+Works or PRs. Use a parent Work plus child DAG only for programmes whose
+children are each independently terminal and main-green-safe.
 
 - Reuse a semantic duplicate instead of adding another item.
 - Cap active attempts by repository integration and CI capacity.
@@ -145,10 +147,9 @@ or other specialist methods.
 
 Agents follow repository policy:
 
-- internal authorized work prefers direct trunk where allowed;
-- external work uses PR;
-- CI accepts both supported ingress paths; and
-- merge queue is opt-in only for measured PR contention.
+- ordinary work uses one PR per Work and Merge Queue admission;
+- CI accepts the ordinary PR + merge-group path; and
+- claim/worker occupancy is not a selection or admission gate.
 
 Platform does not select the source adapter. Delivery uses `On Commit`, `After
 Verification`, or `Off` and one exact-SHA aggregate verdict.

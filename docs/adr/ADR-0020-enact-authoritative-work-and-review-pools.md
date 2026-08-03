@@ -11,9 +11,7 @@ scope:
 
 # ADR-0020: Enact-authoritative work and review pools
 
-> **Amended by ADR-0027.** Enact remains Work/review authority. Git repositories
-> now own source integration directly; Platform no longer selects PR versus
-> direct-trunk or owns a central source Candidate/landing plane.
+> **Amended by ADR-0027 and ADR-20260803.** Enact remains optional Work/review authority. Git repositories own source admission via forge-native PR + Merge Queue; Work ids are not required in public commits/PR bodies.
 
 ## Context
 

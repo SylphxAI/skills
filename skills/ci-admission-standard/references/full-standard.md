@@ -18,67 +18,61 @@ Composes with:
 
 | Owner | Responsibility |
 | --- | --- |
-| Repository / forge | PR or direct-trunk policy, branch protection, optional merge queue |
+| Repository / forge | PR-required + Merge Queue policy, branch protection/rulesets |
 | Project CI | What must pass for a Git SHA |
 | Platform | Observe configured aggregate verdict; build and deploy exact artifact |
 | Enact | Optional Work coordination and durable findings |
 
 CI must not reject a valid change solely because it arrived through a pull
-request or direct trunk. Platform and Enact do not select the landing path.
+request + Merge Queue. Platform and Enact do not select the landing path.
 
 ## Source integration
 
-Use the repository's declared policy:
+Ordinary agent-native repositories follow
+[ADR-20260803](../../../docs/adr/ADR-20260803-agent-native-queued-trunk.md):
 
-- Internal agents prefer small non-force direct-trunk updates when write access
-  and repository rules allow.
-- External contributors use pull requests.
-- A repository may require pull requests for everyone.
+- PR-required default branch + Merge Queue is the ordinary write path;
+- one Work/outcome uses one branch and one PR; phases stay inside that PR;
+- ordinary agents do not direct-push main; break-glass direct trunk only;
+- claim/worker leases and Work ids are not CI or merge admission.
 
-These are contribution paths, not safety levels. A PR is useful for public
-discussion, external contribution, and pre-merge feedback. Correctness still
-comes from the code, review, exact-SHA checks, and effect policy.
+Correctness still comes from code, exact-SHA checks, and effect policy—not from
+human ceremony.
 
-### Pull-request and default-branch evidence
+### Two-layer CI evidence
 
-A pull-request check and a default-branch check are not automatically the same
-observation. A forge may test a synthetic merge commit, while squash or rebase
-landing creates a different commit SHA. Use the simplest repository-native
-choice:
+A PR head check and a merge-group check are different observations:
 
-- internal direct-trunk work normally has one authoritative default-branch CI
-  run and no duplicate presubmit;
-- external or PR-required work runs the checks needed for safe pre-merge
-  feedback, then produces the configured aggregate verdict for the exact
-  landed SHA used by deployment;
-- when a forge can preserve or natively attest the exact validated landing
-  revision, reuse that provider fact; otherwise do not invent a tree-equivalence
-  ledger or Platform evidence-transfer service merely to avoid one PR-path
-  check; and
-- keep the external/PR path economical by running the same affected jobs,
-  caches, and reusable workflow rather than two divergent full suites.
+- **PR head CI** gives fast attributable feedback for that Work. Use
+  provider-native concurrency so latest-wins cancellation stays **inside the
+  same PR** and does not cancel other candidates' feedback.
+- **Merge Queue CI** (`merge_group`) is the authoritative admission check for
+  latest main + queued predecessors + this PR.
+- **Main post-land** runs identity readback, production artifact build, deploy,
+  health, narrow smoke, and scheduled full-suite backstops. It must not
+  unconditionally re-run the same full source suite already admitted by the
+  queue.
 
-If duplicate PR/default-branch computation is material, first prefer direct
-trunk for authorized internal work, provider-native merge behavior, shared
-remote caches, and a smaller sound presubmit. A custom evidence-reuse system
-must name an integration failure it prevents and prove positive net value.
+When squash/rebase produces a landed SHA different from the merge-group SHA,
+verify the landed tree relationship to the admitted candidate or choose a queue
+merge method that preserves needed identity. Do not invent a Platform
+tree-equivalence ledger merely to avoid sound provider-native checks.
 
 ### Merge queue
 
-Do not enable merge queue by default. Enable it only for a PR-required branch
-with measured concurrent ready PRs and material stale-base or pairwise
-integration failures.
+For agent-native repositories, enable Merge Queue by default on the protected
+default branch:
 
-When enabled:
-
-- trigger every required workflow on the forge's merge-group event;
-- evaluate the synthetic merge-group SHA, not the stale PR head;
+- require pull requests; forbid ordinary direct pushes;
+- trigger every required workflow on the forge's `merge_group` event;
+- evaluate the synthetic merge-group SHA, not a stale PR head;
 - keep the required set minimal and sound;
 - bound queue/check timeouts and eject failures;
-- measure queue wait, ejection, retest, and compute cost; and
-- disable the queue if its avoided failures no longer exceed its cost.
+- measure queue wait, ejection, retest, and compute cost;
+- prefer squash merge so main history is Work-level, not checkpoint-level.
 
-Direct-trunk repositories do not use a merge queue.
+Low-traffic non-agent repos may use a simpler PR-required policy, but the
+portfolio default for owned agent-native orgs is PR + Merge Queue.
 
 ## Pipeline shape
 
@@ -332,12 +326,12 @@ quality checks.
 
 ## Acceptance
 
-- Both ordinary merged PR and direct-trunk SHA can reach the same aggregate
+- Ordinary Merge Queue landings produce the exact default-branch SHA used by
   verdict without ingress-only failure.
 - External PRs require no Enact Work id.
 - A newer green SHA cannot hide a required failure if the required check set is
   incomplete for that SHA.
-- Merge queue exists only where repository metrics justify it.
+- Merge Queue is the ordinary agent-native admission path (ADR-20260803).
 - Required check p50/p95 latency, queue delay, cancellation, and flake rate are
   observable.
 - CI does not build and discard a production artifact that Platform rebuilds;

@@ -7,7 +7,7 @@
       "name": "agent-first-development-standard",
       "description": "Policy: multi-agent delivery packets—attribution, collision scopes, machine acceptance.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:9b8175f50c6763fa8f7258fb5662b03d5a79ddaae9b4794c4a818d515fd58610"
+      "packageDigest": "sha256:fe6920afe44881265f86767e9acad578d11a40f8f4faa297d3dc75f82b40ef0e"
     },
     {
       "name": "agent-native-standard",
@@ -61,7 +61,7 @@
       "name": "ci-admission-standard",
       "description": "Policy: protected-branch CI admission—required checks, risk-matched gates, flake/preview.",
       "path": "skills/ci-admission-standard/SKILL.md",
-      "packageDigest": "sha256:4d2b539dd233d810a550c704dc54c3549b7b7a4fb0419b12aa58590e5b59ff85"
+      "packageDigest": "sha256:419f88b58ba0ac19b39ff77631ac6ee208799b89f7d168bf03c043bec8547eea"
     },
     {
       "name": "ci-runner-capacity-standard",
@@ -73,7 +73,7 @@
       "name": "commercial-decision-standard",
       "description": "Policy: durable commercial decisions—pricing, packaging, entitlements, licensing.",
       "path": "skills/commercial-decision-standard/SKILL.md",
-      "packageDigest": "sha256:5d69e61bae5dceb26bc4e3532473ab22cb0300cd77f1fbe87572b455d00c116d"
+      "packageDigest": "sha256:41fe3b80930ed179463b8165464bffee3426573da98e8f6a62edfb12ff2139e3"
     },
     {
       "name": "compose-product-portfolio",
@@ -97,7 +97,7 @@
       "name": "coordinate-enact-work",
       "description": "Operate live Enact Work APIs: claim, attempt, evidence, handoff with authenticated Enact tools.",
       "path": "skills/coordinate-enact-work/SKILL.md",
-      "packageDigest": "sha256:9be5e983c1d0fcddcdca2390fb72a509cedca6d543386c0cdab7bea7dd51d646"
+      "packageDigest": "sha256:8fc3d0a5637744c8f172b53e81a93fad909a7e4a71cee8f028a23a6daefc0809"
     },
     {
       "name": "craft-interface",
@@ -127,7 +127,7 @@
       "name": "delivery-standard",
       "description": "Policy: delivery honesty—source vs artifact vs desired/current vs live proof.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:c748621b268b7d14191e9288a60f663fd4f2e8b3234d32e09fc0c90a8b62e8b8"
+      "packageDigest": "sha256:cb37a4b3e593ccf30012a27481834a04dd5916eb6f10228a9dcdb138b3fdbba0"
     },
     {
       "name": "design-app",
@@ -205,7 +205,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one multi-phase engineering objective through land/live terminal evidence without re-prompt between phases.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:c951031f8af1f71e17b9583a3e838db74eb0e6a6d14b35639a7aded0ca763638"
+      "packageDigest": "sha256:cff75b3506a8e4a7f635f6a16b8a764666e9813167ee2cb7141118e0b77e9072"
     },
     {
       "name": "edit-preserving-voice",
@@ -319,7 +319,7 @@
       "name": "parallel-change-integration-standard",
       "description": "Policy: parallel change integration—branches, rebase, collision, exact-SHA.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
-      "packageDigest": "sha256:4426c1efc85cb5a12b3e14d0e623b9f20aafb0d188fd29c6f87902740b030294"
+      "packageDigest": "sha256:65adce5072f9659ac1700c9926eb85c02649f46f36772ef90979cc559a9ab1d7"
     },
     {
       "name": "prefer-sylphx-platform",
@@ -667,13 +667,13 @@
       "name": "select-next-work",
       "description": "Select/claim next high-value Work from evidence/ledger (not product betterment matrix).",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:85ad07f7fc570f7eb8f9bb8bdd9cc8fc3a1f67d9b6a87429ee2c686e4aed572d"
+      "packageDigest": "sha256:5709e18724db320527cfde0bcf1781c7c0f7765bde04350a95c993620e1ab134"
     },
     {
       "name": "source-authoring-standard",
       "description": "Policy: source authoring—commits, exact candidates, worktrees, concurrent-edit safety.",
       "path": "skills/source-authoring-standard/SKILL.md",
-      "packageDigest": "sha256:372d15442e2d3a9d971482d89a36d6fefda3edee9e205dc57a6e5a5066360bde"
+      "packageDigest": "sha256:99c6785bfe630854ec400c1ecf2aa0d69dccce0ee6c74176a496e6dce6e076f8"
     },
     {
       "name": "specification-control-plane-standard",

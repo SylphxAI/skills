@@ -19,7 +19,7 @@ Current product source locators for agents with repository access:
 - `SylphxAI/enact:docs/adr/ADR-0045-organization-project-commercial-spine.md` —
   commercial spine (Organization → Project; no Workspace product surface);
 - `SylphxAI/enact:docs/runbooks/agent-work-loop.md` — agent operating loop; and
-- `SylphxAI/skills:docs/adr/ADR-0027-repository-native-trunk-and-simple-auto-deploy.md`
+- `SylphxAI/skills:docs/adr/ADR-20260803-agent-native-queued-trunk.md` (supersedes ADR-0027)
   — repository-native source integration and simple deployment boundary.
 
 ## Semantic surface
@@ -73,8 +73,7 @@ repository's native source policy and links the exact source revision. Review
 policy may project an independent typed Work obligation.
 
 An external pull request may be linked to Enact as a provider observation —
-**without requiring a public Work id in the PR body**. PR and direct-trunk are
-both valid repository ingresses.
+**without requiring a public Work id in the PR body**. PR + Merge Queue is the ordinary repository ingress; direct trunk is break-glass only.
 
 ## Private coordination lineage (not public forge text)
 

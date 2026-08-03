@@ -1,6 +1,6 @@
 ---
 id: ADR-0027-repository-native-trunk-and-simple-auto-deploy
-status: accepted
+status: superseded
 date: 2026-07-30
 decision_owner: SylphxAI
 supersedes:
@@ -16,6 +16,8 @@ scope:
 ---
 
 # ADR-0027: Repository-native trunk integration and simple auto-deploy
+
+> **Superseded by [ADR-20260803-agent-native-queued-trunk](ADR-20260803-agent-native-queued-trunk.md).** Ordinary agent-native integration is PR + Merge Queue with Work-terminal boundaries and always-green main. Three-authority separation, simple auto-deploy modes, and Candidate/watermark retirement remain in force via the superseding ADR.
 
 ## Context
 

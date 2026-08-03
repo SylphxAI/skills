@@ -189,7 +189,7 @@ decision continues must feed a check, issue, alert, or scheduled review record.
 ## Automation Identity
 
 Generated commercial, release, pricing-config, and policy-sync changes follow
-the repository's declared direct-trunk or PR path. When a generated PR must
+the repository's declared PR + Merge Queue path. When a generated PR must
 trigger ordinary CI, it uses a dedicated GitHub App or bot identity. Do not
 rely on a human account, long-lived personal access token, or repository
 `GITHUB_TOKEN`.

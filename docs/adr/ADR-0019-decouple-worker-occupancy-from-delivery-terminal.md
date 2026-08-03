@@ -11,9 +11,7 @@ scope:
 
 # ADR-0019: Decouple worker occupancy from delivery terminal state
 
-> **Amended by ADR-0027.** Worker release and event-driven re-entry remain
-> binding. Platform Candidate selection, scoped watermarks, and selected
-> snapshots do not.
+> **Amended by ADR-0027 and ADR-20260803.** Worker release and event-driven re-entry remain binding. Claim/worker occupancy is not git admission; ordinary integration is PR + Merge Queue.
 
 ## Context
 
