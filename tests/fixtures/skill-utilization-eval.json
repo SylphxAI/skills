@@ -4,10 +4,10 @@
   "status": "design-contract-and-oracle-fixtures",
   "residualRef": "docs/reference/skill-utilization-eval-residual.md",
   "pinnedAtAuthoring": {
-    "skillsCommit": "8f5cb7920b6ed9aaf4184450c638a4602379e733",
+    "skillsCommit": "dea3f1cc583cbec1c066813dcb828dfabae4b94e",
     "catalogCount": 118,
     "catalogDigestSha256OfCatalogJson": "sha256:9064e15e39c4bc1340c35663582c6605d9b0ebd4aae01d05e957ea920e09f892",
-    "note": "Authoring pin at full openai.yaml coverage tip; fixtures are not live host utilization proof."
+    "note": "Authoring pin after openai.yaml+discrimination guards; not live host utilization proof."
   },
   "metricHierarchy": [
     "behaviorOracle",
