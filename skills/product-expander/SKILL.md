@@ -20,7 +20,7 @@ Improve the active product/workspace by **scaling a validated core**, not by inv
 - Core still hypothetical → `product-prototyper`
 - Core path missing → `product-builder`
 - Only outages/regressions → `product-maintainer`
-- Only burrs on current surface → `product-finisher`
+- Only burrs on current surface → `product-finish`
 
 ## Methodology
 
@@ -71,7 +71,7 @@ Expanding a broken core is out of scope.
 | Ship capability | `product-builder` |
 | Cut live harm | `product-maintainer` |
 | Scale validated core | `product-expander` |
-| Remove material burrs | `product-finisher` |
+| Remove material burrs | `product-finish` |
 
 Parallel product work: other agents may run other role Skills in the same
 period. Keep this cycle inside **this** role’s admit rules and cycle-done.

@@ -20,7 +20,7 @@ Improve the active product/workspace by closing **real capability gaps** on the 
 - Still validating the idea → `product-prototyper`
 - Only live reliability harm → `product-maintainer`
 - Only scale ×N → `product-expander`
-- Only polish integrated experience → `product-finisher`
+- Only polish integrated experience → `product-finish`
 
 ## Methodology
 
@@ -71,7 +71,7 @@ No permanent workarounds. Prefer durable implementation on the owning layer (eng
 | Ship capability | `product-builder` |
 | Cut live harm | `product-maintainer` |
 | Scale validated core | `product-expander` |
-| Remove material burrs | `product-finisher` |
+| Remove material burrs | `product-finish` |
 
 Parallel product work: other agents may run other role Skills in the same
 period. Keep this cycle inside **this** role’s admit rules and cycle-done.

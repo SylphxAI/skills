@@ -9,7 +9,7 @@ Improve the active product/workspace with **high-leverage** changes. Discover st
 
 When the engagement is clearly one product role, prefer that role Skill for the
 cycle: `product-prototyper`, `product-builder`, `product-maintainer`,
-`product-expander`, `product-finisher`. Use this Skill when betterment spans
+`product-expander`, `product-finish`. Use this Skill when betterment spans
 roles or has no single identity.
 
 

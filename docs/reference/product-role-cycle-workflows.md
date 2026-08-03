@@ -9,7 +9,7 @@ are separate engagements, not one global stage lock.
 | `product-builder` | Is this capability usable on a real path? |
 | `product-maintainer` | Did framed harm go down with evidence? |
 | `product-expander` | Did ×N move without breaking the core? |
-| `product-finisher` | Did above-threshold burrs clear for the finish target? |
+| `product-finish` | Did above-threshold burrs clear for the finish target? |
 
 Common steps: Frame → Research → Admit → Implement → Deliver/Verify → Cycle-done.
 

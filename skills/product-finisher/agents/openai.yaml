@@ -1,4 +1,0 @@
-interface:
-  display_name: "Product Finisher"
-  short_description: "One finish cycle: inspect integrated product, admit above-threshold burrs, fix coherence/states/feel, verify finish bar."
-  default_prompt: "Run one Product Finisher cycle on the active product/workspace."

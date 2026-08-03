@@ -20,7 +20,7 @@ Improve the active product/workspace by **learning**, not by shipping permanence
 - Known ship path → `product-builder`
 - Live harm / regressions → `product-maintainer`
 - Scale a validated core → `product-expander`
-- Release-grade polish of integrated product → `product-finisher` / `product-finish`
+- Release-grade polish of integrated product → `product-finish`
 
 ## Methodology
 
@@ -72,7 +72,7 @@ All hold:
 | Ship capability | `product-builder` |
 | Cut live harm | `product-maintainer` |
 | Scale validated core | `product-expander` |
-| Remove material burrs | `product-finisher` |
+| Remove material burrs | `product-finish` |
 
 Parallel product work: other agents may run other role Skills in the same
 period. Keep this cycle inside **this** role’s admit rules and cycle-done.

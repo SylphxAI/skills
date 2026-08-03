@@ -11,7 +11,7 @@ scope:
   - product-builder
   - product-maintainer
   - product-expander
-  - product-finisher
+  - product-finish
 ---
 
 # Five product-role cycle workflows
@@ -32,7 +32,7 @@ Ship **five separate workflow Skills**, each owning **one cycle** for one role:
 | `product-builder` | Ship capability: gap → correct boundary → oracle |
 | `product-maintainer` | Harm↓: symptom → cause → fix → reliability oracle |
 | `product-expander` | Scale: validated core ×N → metric + non-regression |
-| `product-finisher` | Burr removal: inspect → above-threshold fixes → recapture |
+| `product-finish` | Finish/deburr: inspect integrated product → above-threshold fixes → recapture (sole finisher entry) |
 
 Shared skeleton only: **Frame → Research → Admit → Implement → Deliver/Verify → Cycle-done**.
 

@@ -1,6 +1,6 @@
 ---
 name: product-finish
-description: "Release-grade finish pass on an already-integrated product: coherence, states, a11y, performance."
+description: "Finish/deburr an integrated product: inspect reality, fix coherence/states/feel/a11y/performance above threshold, recapture."
 ---
 
 # Product Finish
@@ -15,13 +15,28 @@ Own one **Product Finish Pass** over an exact integrated product or release
 candidate. The artifact records the finish target, coverage, implemented
 corrections, rendered or playthrough evidence, and remaining blockers.
 
-This Skill owns whole-product manifestation after the product promise and
-selected capabilities are defined. It does not invent product strategy,
-business truth, prices, policy, brand identity, game economy authority, or
-launch approval. It does not replace a bounded `interface-craft` job or the
-recurring `continuous-product-quality` operating loop. For a single
-role-shaped finish **cycle** with thin steps, `product-finisher` may lead and
-compose this Skill for deep finish doctrine.
+This Skill owns whole-product **finish** work after the product promise and
+selected capabilities are defined: one finish pass / cycle over an integrated
+subject. When a normal agent decides “this needs finishing / deburring,” load
+**this Skill only**—there is no second finisher package.
+
+It does not invent product strategy, business truth, prices, policy, brand
+identity, game economy authority, or launch approval. It does not replace a
+bounded `interface-craft` job, role cycles for prototype/build/maintain/expand,
+or mixed betterment via `continuous-product-quality`.
+
+
+## Sibling product roles
+
+When the job is not finish:
+
+| Need | Skill |
+| --- | --- |
+| Learn / decide | `product-prototyper` |
+| Ship capability | `product-builder` |
+| Cut live harm | `product-maintainer` |
+| Scale validated core | `product-expander` |
+| Finish / deburr | **this Skill** (`product-finish`) |
 
 ## Finish invariant
 

@@ -20,7 +20,7 @@ Improve the active product/workspace by cutting **failures, regressions, and ope
 - Greenfield idea test → `product-prototyper`
 - New capability for ship → `product-builder`
 - Pure growth ×N without harm → `product-expander`
-- Cosmetic finish without reliability impact → `product-finisher`
+- Cosmetic finish without reliability impact → `product-finish`
 
 ## Methodology
 
@@ -71,7 +71,7 @@ Prefer detectability and regression locks over silent “cleanup”.
 | Ship capability | `product-builder` |
 | Cut live harm | `product-maintainer` |
 | Scale validated core | `product-expander` |
-| Remove material burrs | `product-finisher` |
+| Remove material burrs | `product-finish` |
 
 Parallel product work: other agents may run other role Skills in the same
 period. Keep this cycle inside **this** role’s admit rules and cycle-done.
