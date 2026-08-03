@@ -79,7 +79,7 @@ the security-design contract before or alongside implementation.
 
 ## Soft composition
 
-- `prefer-hard-cut-migration` when changing or retiring dual paths, shims, or legacy lanes.
+- `migrate` when the job is a cutover (API, schema, package, stack, data, skill portfolio).
 
 ## Boundaries
 

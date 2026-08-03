@@ -29,7 +29,7 @@ standard.
 
 ## Soft composition
 
-- `prefer-hard-cut-migration` for generation cutovers and predecessor retirement (no permanent dual instruction stack).
+- `migrate` when executing an instruction/skill generation cutover (no permanent dual instruction stack).
 
 ## Boundaries
 

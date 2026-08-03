@@ -142,5 +142,5 @@ When adding or materially changing a skill, state in the PR:
 Class labels and composition docs do **not** close host utilization. See
 [skill-utilization-eval-residual.md](skill-utilization-eval-residual.md) —
 install/reclass green is not behavior-oracle proof.
-| `prefer-hard-cut-migration` | policy | Hard-cut default; exceptional expand-contract only |
+| `migrate` | workflow | Cutover job: hard-cut default; retire dual-paths |
 

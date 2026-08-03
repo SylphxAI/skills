@@ -49,7 +49,7 @@ tool manual.
    the job is explicitly pursue-to-objective.
 9. **Hard-cut portfolio changes.** Prefer rename/delete/migrate over long
    backward-compatible dual packages. Keep a dual Skill only with demonstrated
-   large-scale impact and a dated retirement (see `prefer-hard-cut-migration`).
+   large-scale impact and a dated retirement—execute via the `migrate` Skill.
 
 Read for class/composition detail:
 [skill-package-classes-and-composition.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/skill-package-classes-and-composition.md)

@@ -37,7 +37,7 @@
       "name": "author-skill",
       "description": "Author/revise a Skill: job-shaped id, short description, method body, portable host rules.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:d3b4c22c014e6603871242b603601279c8b23a30bda746f6a99da51e5b1134af"
+      "packageDigest": "sha256:b9bfb469862a06e3f91b45eea1a13d82c2309d63868c1aee3226097a71e025df"
     },
     {
       "name": "better-product",
@@ -223,7 +223,7 @@
       "name": "engineering-standard",
       "description": "Policy: engineering method—design, verification, change safety, repro-driven fixes.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:73e0a93cb980eab1d4946b8cd99243fbe5c7d0372e3856ef800b38c2dd957e5d"
+      "packageDigest": "sha256:18d2db7c709a2dcd427838afa17b690fef89841d208ebe660c7d8a2296ee84c1"
     },
     {
       "name": "enterprise-control-plane-standard",
@@ -277,13 +277,19 @@
       "name": "instruction-evolution-standard",
       "description": "Policy: evolve Skills/constitutions/profiles—owner, migration, retirement.",
       "path": "skills/instruction-evolution-standard/SKILL.md",
-      "packageDigest": "sha256:f02b0696d8b1cce6c7366e94012b605090be984a7381a0ffd8c3a57150c95e17"
+      "packageDigest": "sha256:73f6128e0f09e2e9af73d5a2e08f4acd069d5f09939b33c4eb90baf7cebb1d33"
     },
     {
       "name": "maintain-product",
       "description": "Cut framed live/regression harm: repro, root-cause fix, prove harm reduced.",
       "path": "skills/maintain-product/SKILL.md",
       "packageDigest": "sha256:1b18dfbc6e7452fdc8b23aa799c63e670f791c78ef4fb88ef506141527bc0762"
+    },
+    {
+      "name": "migrate",
+      "description": "Migrate a system to a destination cutover: hard-cut by default, full backfill, retire predecessor dual-paths; expand-contract only for proven large-scale live risk.",
+      "path": "skills/migrate/SKILL.md",
+      "packageDigest": "sha256:9b960f17bd404f70de55335e1ccfe0d84ca4b25abf2dead441c56f8e7c0c1bb4"
     },
     {
       "name": "model-decision-optimization",
@@ -314,12 +320,6 @@
       "description": "Policy: parallel change integration—branches, rebase, collision, exact-SHA.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
       "packageDigest": "sha256:a9869fcb705c663a21c6a3a8609fd24f79ae1bb2bbd72c206d1f4447a2f958d0"
-    },
-    {
-      "name": "prefer-hard-cut-migration",
-      "description": "Policy: default hard-cut migration; ban long dual-path compatibility debt unless large-scale user impact forces expand-contract with a dated retirement.",
-      "path": "skills/prefer-hard-cut-migration/SKILL.md",
-      "packageDigest": "sha256:401998f915a21d63dd3d67b2fd4abdacccf5fae2168ba716d747a6610a518c9b"
     },
     {
       "name": "prefer-sylphx-platform",

@@ -22,7 +22,7 @@ Rule IDs:
 
 1. One semantic fact has one writable authority.
 2. A successor generation includes a mandatory retirement path for its
-   predecessor; permanent dual-stack is forbidden. Hard-cut is the default for instruction generations; long backward-compatible dual instruction stacks require the prefer-hard-cut-migration exception bar.
+   predecessor; permanent dual-stack is forbidden. Hard-cut is the default for instruction generations; long backward-compatible dual instruction stacks use the `migrate` Skill exception bar.
 3. Migration destination is mandatory for every selected durable project.
    Phasing is an execution strategy, not permission to remain old.
 4. Completion is derived from delivered facts and applicable predicates—not

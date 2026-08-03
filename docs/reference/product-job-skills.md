@@ -20,6 +20,7 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 | --- | --- |
 | `drive-to-delivery` | Drive one multi-phase engineering objective to delivery-terminal evidence |
 | `select-next-work` | Pick and tick the next high-value Work from evidence/ledger |
+| `migrate` | Cut over predecessor → destination; hard-cut default; retire dual-paths |
 | `bound-task-scope` | Right-size in/out and non-goals for this request |
 
 ## Skill portfolio
@@ -33,7 +34,7 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 
 ## Policy (not job cycles)
 
-Apply while doing another job: `*-standard`, `technology-stack-profile`, `prefer-sylphx-platform`, `prefer-hard-cut-migration`, etc.
+Apply while doing another job: `*-standard`, `technology-stack-profile`, `prefer-sylphx-platform`, etc.
 
 ## Design blueprints
 
@@ -59,7 +60,7 @@ Domain review Skills use the `review-*` id prefix (e.g. `review-launch-readiness
 | Next Work from ledger/evidence | `select-next-work` |
 | Single job cycle | `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `finish-product` |
 | Write/edit a Skill | `author-skill` |
-| Hard-cut migration / kill dual-path debt | `prefer-hard-cut-migration` |
+| Migrate/cut over a predecessor to a destination | `migrate` |
 
 Native discovery still applies: agents may load by description match without an explicit `$` invoke.
 
