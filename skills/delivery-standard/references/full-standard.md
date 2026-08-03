@@ -19,17 +19,17 @@ are related facts, not interchangeable authorities.
 
 ## Source integration
 
-Follow the repository:
+Follow Agent-Native Queued Trunk
+([ADR-20260803](../../../docs/adr/ADR-20260803-agent-native-queued-trunk.md)):
 
-- prefer non-force direct trunk for internal work when authorized and allowed;
-- use pull requests for external contributors and repositories that require
-  them; and
-- never fail a valid ordinary change solely because it used the other supported
-  path.
+- ordinary changes use one Work → one branch → one PR → Merge Queue → main;
+- do not land incomplete phases; main stays production-ready and green;
+- ordinary agents do not direct-push main; break-glass only;
+- never fail a valid ordinary change solely because it used PR + Merge Queue.
 
-Platform does not select or execute a PR/direct-trunk landing adapter. Merge
-queue is an optional forge mechanism for measured PR contention, not a delivery
-requirement.
+Platform does not select or execute a landing adapter. Merge Queue is the
+ordinary forge admission mechanism for agent-native repositories, not an
+optional afterthought.
 
 ## Simple auto-deploy model
 
@@ -153,7 +153,7 @@ This rule avoids idle workers; it does not lower the declared terminal.
 1. Read the repository delivery declaration and current source state.
 2. Attribute existing changes and avoid overwriting unrelated work.
 3. Implement one coherent change and run risk-appropriate local checks.
-4. Integrate through the repository's native path: direct trunk or PR.
+4. Integrate through PR + Merge Queue (break-glass direct trunk only).
 5. Read exact landed SHA; do not infer it from branch intent.
 6. Let repository CI and Platform advance through events.
 7. If active work remains but only an external event can advance it, defer and
@@ -184,7 +184,7 @@ or PR bodies.
 ## Acceptance
 
 - Product surfaces use `On Commit`, `After Verification`, and `Off`.
-- PR and direct-trunk landings feed the same exact-SHA build/deploy contract.
+- Merge Queue landings feed the same exact-SHA build/deploy contract.
 - Verification failure never deploys under `After Verification`.
 - Build and verification can run in parallel.
 - Verification success to deploy dispatch is event-driven and measured.

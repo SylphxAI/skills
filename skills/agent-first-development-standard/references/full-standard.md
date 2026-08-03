@@ -60,17 +60,16 @@ Do not require global tree-depth knowledge or a role-based fan-out quota.
 
 ## Source integration
 
-Follow the repository's declared policy:
+Follow Agent-Native Queued Trunk
+([ADR-20260803](../../../docs/adr/ADR-20260803-agent-native-queued-trunk.md)):
 
-- internal authorized agents prefer small non-force direct-trunk commits when
-  allowed;
-- external contributors use ordinary pull requests;
-- a repository may require pull requests for all writers; and
-- merge queue is enabled only for measured contention on a PR-required branch.
+- one Work/outcome → one branch → one PR → Merge Queue → green main;
+- draft PR immediately; arbitrary commits inside the PR; no phase-per-PR;
+- ordinary agents do not direct-push main; break-glass only;
+- claim/worker leases are not source admission.
 
-Both PR and direct trunk are valid source paths. CI must not reject a valid
-change solely because it used either supported path. Platform does not choose
-or execute the landing adapter.
+CI must not reject a valid change solely because it used PR + Merge Queue.
+Platform does not choose or execute the landing adapter.
 
 Every landed change is semantically coherent: code, tests, schemas, migrations,
 docs, and generated artifacts needed for one objective land together. Atomic
@@ -112,7 +111,7 @@ Repository CI owns what “pass” means. Use:
 - bounded flake quarantine with owner and expiry; and
 - least-privilege, untrusted-input-safe workflows.
 
-Do not add CI to prove Enact lineage, reject PR versus direct trunk, or recreate
+Do not add CI to prove Enact lineage, reject the ordinary PR+queue path, or recreate
 Platform deployment state. Do not run the same heavy evidence twice without a
 specific integration failure it prevents.
 
@@ -180,7 +179,7 @@ transaction or hold one large mutable branch until every consumer is ready.
 ## Generated source and automation
 
 Generators, dependency updaters, release tools, and policy sync follow the
-repository's ordinary direct-trunk or bot-PR policy. Use a dedicated
+repository's ordinary PR + Merge Queue policy. Use a dedicated
 least-privilege App/bot where provider automation needs an identity. The bot is
 not a reviewer and does not create a second source workflow.
 
@@ -250,7 +249,7 @@ trunk as a correctness gate.
 - Multiple agents claim Work from a shared pool rather than permanent pairs.
 - Internal DT and external PR both work without ingress-only CI rejection.
 - External contributors need no Enact access.
-- Merge queue exists only where measured PR contention justifies it.
+- Merge Queue is the ordinary agent-native admission path.
 - Source, CI, deployment, and Work authorities remain separate.
 - Waiting agents release capacity and provider events cause re-entry.
 - CI/deploy use exact SHA and artifact identity without Candidate/watermark

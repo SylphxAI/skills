@@ -18,8 +18,9 @@ work/goal -> attributed attempt -> checkpoints -> coherent exact revision
   remaining work, and next safe action. It is not delivered source.
 - **Commit / exact revision:** Git's immutable content identity. It is the
   source unit consumed by CI and delivery.
-- **Pull request:** forge collaboration and integration envelope, normally for
-  external contribution or a repository that requires PRs.
+- **Pull request:** machine-owned candidate envelope for one Work/outcome.
+  Ordinary internal and external changes enter main only through PR + Merge
+  Queue.
 - **Worktree:** checkout/index isolation only; not a lock, identity, tenancy,
   security boundary, or external-effect fence.
 
@@ -28,17 +29,22 @@ ledgers. Do not require Enact Work ids in public commits or PR bodies.
 
 ## Repository-native integration
 
-Follow the repository's declared source policy:
+Ordinary agent-native path follows
+[ADR-20260803](../../../docs/adr/ADR-20260803-agent-native-queued-trunk.md)
+(**Agent-Native Queued Trunk**):
 
-- internal authorized agents prefer small non-force direct-trunk commits when
-  allowed;
-- external contributors use pull requests;
-- repositories may require pull requests for every writer; and
-- merge queue is optional only for measured contention on a PR-required branch.
+- one Work = one complete outcome = one short-lived branch = one PR;
+- open a draft PR immediately; commit at any frequency inside that PR;
+- phases/checkpoints stay in the same PR until the Work terminal is met;
+- enter Merge Queue only when the outcome is complete and main-green-safe;
+- squash-merge through the queue; main stays always production-ready and green;
+- ordinary agents do **not** direct-push the default branch;
+- direct trunk is **break-glass only** (explicit incident authority);
+- claim/worker leases and Work ids are not source admission;
+- Platform does not select the landing adapter.
 
-Both PR and direct trunk are valid. CI must not reject a valid source change
-solely because it used either supported ingress. Platform does not select the
-landing adapter.
+CI must not reject a valid change solely because it used the ordinary PR+queue
+path. External contributors without write access use the same PR envelope.
 
 ## Semantic atomicity
 
@@ -70,23 +76,27 @@ the durable result. Add a body only for non-obvious rationale, compatibility,
 risk, or recovery. Do not encode chat history, live status, model identity,
 secrets, or personal data.
 
-### Direct trunk
+### Ordinary path (PR + Merge Queue)
+
+1. Search open PRs for an overlapping candidate; reuse it when present.
+2. Create/reuse a short-lived branch for this Work and open a draft PR
+   immediately.
+3. Commit and push at any frequency; keep PR CI latest-wins within this PR.
+4. Keep every phase, fix, test, schema, migration, doc, and generated artifact
+   required by the outcome in the **same** PR.
+5. Mark ready only when the Work terminal is fully satisfied.
+6. Let Merge Queue evaluate the merge-group SHA and squash-merge.
+7. Treat the resulting default-branch SHA—not the mutable PR head—as landed
+   source truth.
+
+### Break-glass direct trunk
+
+Only with explicit incident/hotfix authority:
 
 1. Refresh the current default branch.
-2. Run the repository's required local/affected validation.
-3. Create a coherent commit.
-4. Push without force.
-5. On non-fast-forward rejection, fetch, reconcile semantic conflicts, re-run
-   affected validation, and retry.
-
-### Pull request
-
-1. Keep the branch short-lived and the change coherent.
-2. Push and open/update the PR.
-3. Run repository checks and any required review.
-4. If configured, let merge queue evaluate the merge-group SHA.
-5. Treat the resulting default-branch SHA—not the mutable PR head—as landed
-   source truth.
+2. Run required local/affected validation.
+3. Create a coherent commit and push without force (or use an admin bypass).
+4. Immediately restore queue/PR discipline for follow-up repair if needed.
 
 ## Workspace admission
 
@@ -142,7 +152,7 @@ owner, reason, expiry, and recovery locator.
 
 | Case | Required behavior |
 | --- | --- |
-| Internal repository work | Small coherent revision; non-force direct trunk when allowed, otherwise native PR |
+| Internal repository work | One complete Work/outcome on one branch+PR; Merge Queue squash to main |
 | External contribution | Normal PR; no Enact account or Work id required |
 | Risky migration/security/public contract | Same repository integration path plus stronger exact-revision evidence/review/effect authority |
 | Parallel agents | Separate Work/attempt scopes; Git conflict recovery; worktrees only for mutable isolation |

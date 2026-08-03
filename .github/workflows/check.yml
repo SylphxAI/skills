@@ -1,13 +1,14 @@
 name: check
 
-# Fast Trunk (Agent-native):
-# - Aggregate source verdict: source-ci/pass
-# - CI = source correctness only; Platform builds production once
-# - Merge Queue off by default (no merge_group trigger)
-# - Concurrency cancels superseded PR/branch tip runs
+# Agent-Native Queued Trunk (ADR-20260803):
+# - PR head: attributable feedback (same-PR latest-wins)
+# - merge_group: authoritative admission for Merge Queue
+# - main push: post-land identity / pack smoke (not a second full admission lane)
+# - Aggregate source verdict: source-ci/pass where declared
 
 on:
   pull_request:
+  merge_group:
   push:
     branches: [main]
   workflow_dispatch:
@@ -16,8 +17,8 @@ permissions:
   contents: read
 
 concurrency:
-  # Fast Trunk: supersede obsolete runs for the same PR or branch tip.
-  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  # Supersede obsolete runs for the same PR; isolate merge_group and branch tips.
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.event.merge_group.head_sha || github.ref }}
   cancel-in-progress: true
 
 jobs:

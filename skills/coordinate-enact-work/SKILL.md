@@ -78,7 +78,7 @@ Organization
 | Local `git commit` / WIP / private checkpoint | **No Git gate** — checkpoint *to Enact* when material |
 | Land source | Git works independently; privately link the exact revision to Work when a Work exists |
 | Public PR body / commit trailer | **Must not require raw `wi_…`** |
-| Ingress via PR vs direct-trunk | **Both valid** — prefer DT for internal ordinary (guidance only) |
+| Ingress via PR + Merge Queue | **Ordinary path** (ADR-20260803); DT break-glass only |
 
 **Direction of integration:** Enact and Platform **connect out** to Git. Git is not
 the work ledger. Do **not** write `Work: wi_…` into public commits or PR bodies
@@ -92,7 +92,7 @@ never substitute a GitHub lineage check. Git and external contribution remain
 independently operable.
 
 - **Internal agent:** claim Work when required → implement → land through the
-  repository's native direct-trunk or PR path → privately link exact revision →
+  repository's native PR + Merge Queue path → privately link exact revision →
   checkpoint/release.
 - **External contributor:** ordinary PR, no Enact OAuth and no Work id in body.
   A connector may later link the resulting provider fact.

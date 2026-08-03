@@ -57,7 +57,7 @@ intentional starting state.
 - Use a dedicated branch, worktree, or clone when it is the smallest safe way to
   establish exclusive mutable ownership. One exclusive mutable worktree should
   serve one attempt/source stream. The producer follows the repository's
-  declared direct-trunk or PR integration path; Platform does not select it.
+  declared PR + Merge Queue integration path; Platform does not select it.
 - Before claiming new high-priority work, re-check live state so the task does
   not duplicate an open PR, issue, merge-queue candidate, generated registry
   update, or release already in flight.

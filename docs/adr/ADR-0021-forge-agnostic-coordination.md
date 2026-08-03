@@ -11,9 +11,7 @@ scope:
 
 # ADR-0021: Forge-agnostic coordination boundary
 
-> **Amended by ADR-0027.** Forge-agnostic Work coordination remains binding.
-> Platform Candidate admission and verification watermarks are retired from the
-> ordinary source/deploy model.
+> **Amended by ADR-0027 and ADR-20260803.** Forge-agnostic Work coordination remains optional. Ordinary source integration is forge-native branch/PR/Merge Queue without external landing serializers.
 
 ## Context
 

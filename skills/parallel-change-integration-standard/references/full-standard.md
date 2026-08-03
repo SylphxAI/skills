@@ -10,43 +10,37 @@ features without an additional control plane.
 Scale proven repository primitives before inventing a source-integration
 system:
 
-- small atomic commits;
-- short-lived branches where branches are used;
-- non-force fast-forward or normal reviewed merges;
-- native conflict detection;
-- optional forge merge queue for busy PR-required branches;
-- CI concurrency cancellation for obsolete runs;
+- one complete Work/outcome per short-lived branch + PR;
+- arbitrary checkpoint commits inside the PR, not on main;
+- forge Merge Queue as the ordinary integration serializer;
+- native conflict detection at queue time;
+- CI concurrency cancellation scoped to the same PR (latest-wins);
 - sound affected-test selection and sharding; and
-- event-driven deployment with exact identity.
+- event-driven deployment with exact landed identity.
 
 Do not create Platform Candidate, landing-controller, selected-snapshot, or
 verification-watermark authorities to solve ordinary Git contention.
 
-## Choose one repository operating mode
+## Ordinary repository operating mode
 
-The repository declares its default. Agents do not classify each change into a
-new global lane.
+Agent-native owned repositories use **Agent-Native Queued Trunk**
+([ADR-20260803](../../../docs/adr/ADR-20260803-agent-native-queued-trunk.md)).
+Agents do not classify each change into DT vs PR.
 
-### Direct-trunk repository
+### PR + Merge Queue (ordinary)
 
-- Internal authorized writers land small non-force commits frequently.
-- On non-fast-forward rejection, fetch, reconcile current source contracts,
-  re-run affected validation, and retry.
-- External contributors still use PRs.
-- Production uses `After Verification` when a red trunk revision must not
-  deploy.
-- No merge queue is present.
+- One Work = one complete outcome = one branch = one PR.
+- Draft the PR immediately; commit at any frequency inside it.
+- Phases/checkpoints are not separate PRs and do not land incomplete outcomes.
+- PR head CI is attributable feedback with same-PR latest-wins cancellation.
+- Ready PRs enter Merge Queue; required checks run on the merge-group SHA.
+- Squash-merge to main; main stays always production-ready and green.
+- Production uses `After Verification` on the admitted/landed identity.
 
-### PR-required repository
+### Break-glass direct trunk
 
-- Contributors use short-lived branches and small PRs.
-- Required checks run on the exact pre-merge or merge-group SHA.
-- Enable merge queue only when concurrent ready PRs and stale-base failures
-  justify it.
-- Keep the queue's required checks smaller than the full audit suite while
-  preserving a sound merge decision.
-
-Both modes are trunk-based when changes remain small and integrate frequently.
+- Only with explicit incident/hotfix authority and org/repo bypass.
+- Not an ordinary agent lane and not a per-change classification.
 
 ## Collision domains
 
@@ -102,25 +96,23 @@ Do not create a Platform source Candidate schema merely to deduplicate Work.
 
 ## Integration
 
-### Direct trunk
+### Ordinary path
 
-1. Refresh the default branch before landing.
-2. Preserve unrelated local work.
-3. Produce a coherent exact commit with local affected validation.
-4. Push without force.
-5. If rejected, reconcile against current trunk and retry.
-6. Let main CI evaluate the resulting exact SHA.
+1. Search open PRs for overlap; reuse the active candidate when present.
+2. Create/reuse branch + draft PR for the Work.
+3. Preserve unrelated local work; commit only this Work on the branch.
+4. Run fast PR checks with same-PR latest-wins cancellation.
+5. Complete the full outcome terminal inside the same PR.
+6. Enter Merge Queue; let it test the merge-group SHA.
+7. Treat the resulting default-branch SHA as source truth.
 
-### Pull request
+### Break-glass direct trunk
 
-1. Keep branch lifetime short and scope coherent.
-2. Run fast PR checks.
-3. Update or merge through repository policy.
-4. If merge queue is enabled, let it test the merge-group SHA.
-5. Treat the resulting default-branch SHA as source truth.
+1. Obtain explicit authority.
+2. Refresh default branch, validate, push without force (or admin bypass).
+3. Restore ordinary PR+queue discipline for any follow-up.
 
-CI must not reject a contribution solely because it used either supported
-path.
+CI must not reject a contribution solely for using the ordinary PR+queue path.
 
 ## CI backpressure
 
@@ -137,20 +129,20 @@ When source arrival outpaces verification:
 
 This is provider concurrency management, not a cumulative watermark.
 
-## Merge queue decision record
+## Merge queue operations record
 
-For every enabled queue, record:
+For each org/repo queue, track:
 
-- why the target branch requires PRs;
 - ready-PR arrival rate and concurrency;
-- stale-base/pairwise failure rate before and after;
+- stale-base/pairwise failure rate;
 - p50/p95 queue wait and merge-group duration;
 - ejection/retry and compute cost;
 - required `merge_group` workflow wiring; and
-- disable/review threshold.
+- capacity actions when the queue is saturated.
 
-A merge queue is over-engineering when it mostly waits on one PR at a time or
-repeats expensive checks without avoiding integration failures.
+Do not disable the ordinary agent-native queue merely because it is idle on a
+quiet day; disable only if the repository is deliberately non-agent and
+low-contention under an explicit exception.
 
 ## Deployment
 
@@ -184,15 +176,14 @@ Commit or PR count is a flow signal, not a quality target.
 
 ## Acceptance
 
-- Repository mode is documented and agents can follow it without central lane
-  classification.
+- Agents follow one ordinary path without DT/PR classification.
 - External PRs remain first-class and contain no private Work requirement.
-- Internal direct-trunk writes are non-force and recover cleanly from conflicts.
-- Merge queue is enabled only with measured benefit.
+- Ordinary main writes go through Merge Queue; break-glass is exceptional.
+- PR CI supersession is per-candidate; global feedback isolation is preserved.
 - CI and deploy are exact-SHA bound and do not depend on Candidate/watermark
   services.
-- Parallel agents retain Git throughput without file locks or permanent
-  Advisor/Executor pairs.
+- Parallel agents retain Git throughput without file locks, claim leases as
+  source gates, or permanent Advisor/Executor pairs.
 
 ## Primary references
 
