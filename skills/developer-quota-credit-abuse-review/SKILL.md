@@ -1,6 +1,6 @@
 ---
 name: developer-quota-credit-abuse-review
-description: "Developer quota and credit abuse: metering, limits, fraud patterns, enforcement."
+description: "Review: Developer quota and credit abuse: metering, limits, fraud patterns, enforcement."
 ---
 
 # Developer Quota Credit Abuse Review

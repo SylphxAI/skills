@@ -1,6 +1,6 @@
 ---
 name: social-media-operations-review
-description: "Official social channel operating model: authority, publishing, listening, crisis."
+description: "Review: Official social channel operating model: authority, publishing, listening, crisis."
 ---
 
 # Social Media Operations Review
@@ -92,7 +92,7 @@ project the protected authority register or raw operator evidence.
 
 ## Routing boundaries
 
-- `marketing-automation-blueprint` owns the full channel portfolio, audience, positioning/message hierarchy, campaign briefs, allocation/spend, causal measurement and incrementality. This skill operates only already-selected official social channels.
+- `design-marketing-automation` owns the full channel portfolio, audience, positioning/message hierarchy, campaign briefs, allocation/spend, causal measurement and incrementality. This skill operates only already-selected official social channels.
 - `promotion-campaign-review` owns one campaign/offer; `produce-product-assets` owns exact media; `edit-preserving-voice` owns one fixed post/reply rewrite.
 - `resolve-support-case` owns one private customer case; `operate-customer-support` owns the whole support system.
 - `run-product-feedback-loop` owns authorized review/social feedback ingestion, public response evidence and product learning; this skill routes signals and operates the platform response surface.

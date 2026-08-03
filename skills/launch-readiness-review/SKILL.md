@@ -1,6 +1,6 @@
 ---
 name: launch-readiness-review
-description: "Launch readiness gates across product, ops, support, risk, and go/no-go evidence."
+description: "Review: Launch readiness gates across product, ops, support, risk, and go/no-go evidence."
 ---
 
 # Launch Readiness Review

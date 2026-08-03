@@ -1,9 +1,9 @@
 ---
-name: game-design-blueprint
-description: "Whole-game design/GDD: promise, core loops, progression, economy, FTE, live ops."
+name: design-game
+description: "Design a whole game/GDD: promise, core loops, progression, economy, FTE, live ops."
 ---
 
-# Game Design Blueprint
+# Design Game
 
 Design a game whose systems reinforce one player promise. Produce enough precise state, pacing, interaction, evidence, and handoff detail for autonomous agents to build it once without turning the blueprint into an infrastructure specification.
 
@@ -142,7 +142,7 @@ Use diagrams and tables only where they reduce ambiguity. Preserve uncertainty; 
 
 ## Routing boundaries
 
-- `game-design-blueprint` owns whole-game coherence.
+- `design-game` owns whole-game coherence.
 - `game-economy-review` owns currencies, sources/sinks, pacing, IAP/IAA economics, gacha math, refunds/economy adjustment, simulations, and tuning.
 - `game-soft-launch-review` owns bounded real-player cohort learning and scale/hold/pause/withdraw decisions for an already-designed game.
 - `daily-reward-and-streak-review`, `ad-monetization-review`, `notification-strategy-review`, `referral-loop-review`, and `promotion-campaign-review` own their detailed state machines.

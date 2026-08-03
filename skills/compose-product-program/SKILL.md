@@ -196,8 +196,8 @@ Produce one **Product Program Manifest** containing:
   Capabilities, shared substrate, connectors, composed experiences or bundles.
   This Skill owns the build-to-run program graph for one already selected
   product or bundle.
-- `app-design-blueprint`, `game-design-blueprint`, and `saas-web-platform-blueprint` own their product promise, experience or public-to-service platform semantics; this skill only indexes their artifacts and cross-domain delivery dependencies.
-- `marketing-automation-blueprint` owns the complete marketing operating
+- `design-app`, `design-game`, and `design-saas-web-platform` own their product promise, experience or public-to-service platform semantics; this skill only indexes their artifacts and cross-domain delivery dependencies.
+- `design-marketing-automation` owns the complete marketing operating
   blueprint and creative briefs; `produce-product-assets` owns exact rendered
   product media; `promotion-campaign-review`, `referral-loop-review`, and
   `optimize-store-listing` own their narrow artifacts.

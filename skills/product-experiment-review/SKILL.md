@@ -1,6 +1,6 @@
 ---
 name: product-experiment-review
-description: "Product experiment design and readout: hypothesis, assignment, metrics, decision rules."
+description: "Review: Product experiment design and readout: hypothesis, assignment, metrics, decision rules."
 ---
 
 # Product Experiment Review

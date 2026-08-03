@@ -35,3 +35,13 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 ## Policy (not job cycles)
 
 Apply while doing another job: `*-standard`, `technology-stack-profile`, `prefer-sylphx-platform`, etc.
+
+## Design blueprints
+
+| Skill | When you need to… |
+| --- | --- |
+| `design-app` | Whole-app design blueprint |
+| `design-game` | Whole-game / GDD blueprint |
+| `design-saas-web-platform` | SaaS web platform blueprint |
+| `design-marketing-automation` | Marketing automation blueprint |
+

@@ -1,6 +1,6 @@
 ---
 name: optimization-objective-review
-description: "Audit whether an optimization objective is well-posed, aligned, and measurable."
+description: "Review: Audit whether an optimization objective is well-posed, aligned, and measurable."
 ---
 
 # Optimization Objective Review

@@ -1,6 +1,6 @@
 ---
 name: game-economy-review
-description: "Game economy: sources/sinks, balance, progression coupling, abuse vectors."
+description: "Review: Game economy: sources/sinks, balance, progression coupling, abuse vectors."
 ---
 
 # Game Economy Review
@@ -77,7 +77,7 @@ the affected exposure, not construction of the dormant adapter.
 
 ## When not to use
 
-- Use `game-design-blueprint` when core play, progression, challenge, social,
+- Use `design-game` when core play, progression, challenge, social,
   content, retention, feel, and platform experience must be designed together.
 - Use `daily-reward-and-streak-review` for one recurring calendar/streak state
   machine and its economy handoff.

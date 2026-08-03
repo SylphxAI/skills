@@ -1,6 +1,6 @@
 ---
 name: notification-strategy-review
-description: "Notification strategy: channels, cadence, consent, fatigue, measurement."
+description: "Review: Notification strategy: channels, cadence, consent, fatigue, measurement."
 ---
 
 # Notification Strategy Review
@@ -50,9 +50,9 @@ Unknown/stale authority disables the affected send.
   loop state machine; notifications are only its delivery intent.
 - Use `promotion-campaign-review` for one offer/event audience, economics,
   fulfillment, and rollback system.
-- Use `marketing-automation-blueprint` for the whole multi-channel acquisition,
+- Use `design-marketing-automation` for the whole multi-channel acquisition,
   lifecycle, creative, spend, attribution, and shutdown operating system.
-- Use `app-design-blueprint` or `game-design-blueprint` when notification
+- Use `design-app` or `design-game` when notification
   semantics depend on unresolved whole-product value and progression.
 
 ## Source verification

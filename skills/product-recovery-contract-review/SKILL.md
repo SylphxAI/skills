@@ -1,6 +1,6 @@
 ---
 name: product-recovery-contract-review
-description: "User-facing recovery after product failure: state repair, compensation, trust rebuild."
+description: "Review: User-facing recovery after product failure: state repair, compensation, trust rebuild."
 ---
 
 # Product Recovery Contract Review

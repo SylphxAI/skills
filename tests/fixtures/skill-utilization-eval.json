@@ -180,7 +180,7 @@
       "behaviorOracle": {
         "mandatoryObservable": "Produces or plans a Product Finish Pass over an already-integrated product (multi-surface polish/verification), not a greenfield blueprint and not a standing quality scout loop.",
         "mustNot": [
-          "Treat app-design-blueprint as the sole primary owner of this job",
+          "Treat design-app as the sole primary owner of this job",
           "Treat craft-interface as the sole primary owner of this job",
           "Treat better-product as the sole primary owner of this job"
         ]
@@ -190,7 +190,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "app-design-blueprint",
+        "design-app",
         "craft-interface",
         "better-product"
       ]
@@ -229,7 +229,7 @@
         "mandatoryObservable": "Scopes work to one bounded interface/flow craft job rather than whole-app blueprint or multi-surface product finish.",
         "mustNot": [
           "Treat finish-product as the sole primary owner of this job",
-          "Treat app-design-blueprint as the sole primary owner of this job",
+          "Treat design-app as the sole primary owner of this job",
           "Treat design-system-extractor as the sole primary owner of this job"
         ]
       },
@@ -239,16 +239,16 @@
       ],
       "nearNeighbours": [
         "finish-product",
-        "app-design-blueprint",
+        "design-app",
         "design-system-extractor"
       ]
     },
     {
-      "id": "critical-app-design-blueprint",
+      "id": "critical-design-app",
       "suite": "critical-skill",
       "prompt": "Design a new cross-platform consumer app from jobs and information architecture through activation, retention, and multi-surface UX as one coherent blueprint.",
       "expectedSkills": [
-        "app-design-blueprint"
+        "design-app"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Targets a whole-app design blueprint for a new/redesigned product, not polish of an already-integrated app and not a single-screen craft job.",
@@ -579,7 +579,7 @@
       "behaviorOracle": {
         "mandatoryObservable": "Chooses finish of an integrated product over greenfield app blueprint design.",
         "mustNot": [
-          "Treat app-design-blueprint as the sole primary owner of this job",
+          "Treat design-app as the sole primary owner of this job",
           "Treat craft-interface as the sole primary owner of this job",
           "Treat better-product as the sole primary owner of this job"
         ]
@@ -589,7 +589,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "app-design-blueprint",
+        "design-app",
         "craft-interface",
         "better-product"
       ]

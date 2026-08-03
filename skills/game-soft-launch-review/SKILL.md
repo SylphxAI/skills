@@ -1,6 +1,6 @@
 ---
 name: game-soft-launch-review
-description: "Game soft-launch readiness: markets, KPIs, kill/scale criteria, live-ops plan."
+description: "Review: Game soft-launch readiness: markets, KPIs, kill/scale criteria, live-ops plan."
 ---
 
 # Game Soft Launch Review
@@ -71,11 +71,11 @@ global compliance or product-fit verdict.
 
 ## When not to use
 
-- Use `game-design-blueprint` when the primary job is designing or repairing
+- Use `design-game` when the primary job is designing or repairing
   core play, progression, content, social, feel, retention, or monetization.
 - Use `ready-software-distribution` for submission assets, certification,
   reviewer access, staged release mechanics, and exact live-channel evidence.
-- Use `marketing-automation-blueprint` for the complete multi-channel creative,
+- Use `design-marketing-automation` for the complete multi-channel creative,
   organic, lifecycle, paid-spend, attribution, and shutdown operating system.
 - Use `launch-readiness-review` for a cross-domain final admission verdict when
   the soft-launch learning program is already complete.

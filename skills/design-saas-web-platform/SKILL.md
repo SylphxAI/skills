@@ -1,9 +1,9 @@
 ---
-name: saas-web-platform-blueprint
-description: "SaaS web platform blueprint: tenancy, core surfaces, billing hooks, admin, scale path."
+name: design-saas-web-platform
+description: "Design a SaaS web platform blueprint: tenancy, core surfaces, billing hooks, admin, scale path."
 ---
 
-# SaaS Web Platform Blueprint
+# Design SaaS Web Platform
 
 Produce one **SaaS Web Platform Blueprint** that connects a truthful public promise, a fast path to first value, a durable authenticated service, a viable value exchange, and autonomous scale operations.
 
@@ -97,11 +97,11 @@ Return one SaaS Web Platform Blueprint containing:
 
 ## Routing boundaries
 
-- Use `app-design-blueprint` for a complete non-SaaS app whose web route is only one platform; use this skill when public acquisition plus an authenticated, usually multi-tenant subscription/service platform is the independent whole. A compound SaaS app may use App Design for experience coherence and this skill for the public-to-service platform contract, with one declared primary artifact.
+- Use `design-app` for a complete non-SaaS app whose web route is only one platform; use this skill when public acquisition plus an authenticated, usually multi-tenant subscription/service platform is the independent whole. A compound SaaS app may use App Design for experience coherence and this skill for the public-to-service platform contract, with one declared primary artifact.
 - Use `craft-interface` for one landing page, dashboard, settings, onboarding, checkout, or account flow.
 - Use `price-saas-subscription`, `ready-payment-platform`, and `refund-and-support-flow-review` for their detailed commercial artifacts.
 - Use `notification-strategy-review`, `account-recovery-review`, `enterprise-access-governance-review`, `privacy-data-lifecycle-review`, `product-analytics-instrumentation-review`, and `operate-customer-support` when one of those systems is the primary artifact.
-- Use `marketing-automation-blueprint` for the whole go-to-market control plane, `social-media-operations-review` for recurring social channel operations, and `ready-software-distribution` for release-channel proof.
+- Use `design-marketing-automation` for the whole go-to-market control plane, `social-media-operations-review` for recurring social channel operations, and `ready-software-distribution` for release-channel proof.
 - Use `compose-product-program` only when a separate cross-domain Product Program Manifest is required; it indexes the SaaS blueprint and specialist outputs without absorbing their semantics.
 - Use `finish-product` for the integrated public-to-authenticated finish pass
   after product, commercial, policy, and experience direction are defined.

@@ -1,6 +1,6 @@
 ---
 name: account-recovery-review
-description: "End-to-end account recovery: lost credentials/MFA, locks, compromise, ownership proof, post-recovery hardening."
+description: "Review: End-to-end account recovery: lost credentials/MFA, locks, compromise, ownership proof, post-recovery hardening."
 ---
 
 # Account Recovery Review

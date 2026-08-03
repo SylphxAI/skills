@@ -1,6 +1,6 @@
 ---
 name: product-analytics-instrumentation-review
-description: "Product analytics instrumentation: events, properties, identity, data quality."
+description: "Review: Product analytics instrumentation: events, properties, identity, data quality."
 ---
 
 # Product Analytics Instrumentation Review
@@ -72,10 +72,10 @@ never the product's consent or retention policy.
 
 ## When not to use
 
-- Use `app-design-blueprint`, `game-design-blueprint`, or
+- Use `design-app`, `design-game`, or
   `compose-product-program` when the primary artifact is product behavior or
   a cross-domain delivery program, not measurement implementation.
-- Use `marketing-automation-blueprint` for spend, channel attribution decisions,
+- Use `design-marketing-automation` for spend, channel attribution decisions,
   creative automation, and budget/shutdown control.
 - Use the owning product or experiment workflow to choose hypotheses, variants,
   exposure, and promotion; analytics records the agreed assignment and outcome.

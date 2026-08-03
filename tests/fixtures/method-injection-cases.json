@@ -1508,12 +1508,12 @@
     "kind": "near-neighbour",
     "prompt": "Design one complete SaaS product from public acquisition through onboarding, organizations, billing, authenticated workflows, support, analytics, operations and global scale; its product boundary is already settled.",
     "expectedSkills": [
-      "saas-web-platform-blueprint"
+      "design-saas-web-platform"
     ],
     "artifacts": [
       {
         "artifact": "SaaS Web Platform Blueprint",
-        "owner": "saas-web-platform-blueprint"
+        "owner": "design-saas-web-platform"
       }
     ],
     "nearNeighbourOf": "compose-product-portfolio",
@@ -2077,12 +2077,12 @@
     "kind": "near-neighbour",
     "prompt": "Design a new game from first principles: player promise, core verbs and loops, challenge, progression, economy, content, social systems, platforms, and validation. There is no integrated game to polish yet.",
     "expectedSkills": [
-      "game-design-blueprint"
+      "design-game"
     ],
     "artifacts": [
       {
         "artifact": "Game Design Blueprint",
-        "owner": "game-design-blueprint"
+        "owner": "design-game"
       }
     ],
     "nearNeighbourOf": "finish-product",

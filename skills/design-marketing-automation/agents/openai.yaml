@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Marketing Automation"
+  short_description: "Design marketing automation: lifecycle journeys, channels, measurement, guardrails."
+  default_prompt: "Run Design Marketing Automation for the active product/workspace."

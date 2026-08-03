@@ -1,9 +1,9 @@
 ---
-name: app-design-blueprint
-description: "Whole-app design blueprint for new apps or full redesigns: jobs, IA, activation, retention, multi-surface."
+name: design-app
+description: "Design a whole app: jobs, IA, activation, retention, multi-surface blueprint."
 ---
 
-# App Design Blueprint
+# Design App
 
 Create one coherent application experience and a complete scale-ready
 architecture for its selected capabilities. Start from the recurring user job
@@ -225,9 +225,9 @@ Produce one **App Design Blueprint** containing:
 
 ## Routing boundaries
 
-- `app-design-blueprint` owns whole-app coherence and app-side capability semantics.
-- `saas-web-platform-blueprint` owns the whole public-acquisition-to-authenticated-service composition for a SaaS platform, including tenant, commercial and operational integration contracts; a compound SaaS app may compose both with one declared primary artifact.
-- `game-design-blueprint` owns a product whose primary promise is play, mastery, fantasy, and game progression; gamification does not automatically make an app a game.
+- `design-app` owns whole-app coherence and app-side capability semantics.
+- `design-saas-web-platform` owns the whole public-acquisition-to-authenticated-service composition for a SaaS platform, including tenant, commercial and operational integration contracts; a compound SaaS app may compose both with one declared primary artifact.
+- `design-game` owns a product whose primary promise is play, mastery, fantasy, and game progression; gamification does not automatically make an app a game.
 - `compose-product-program` owns a cross-domain product program dependency and delivery graph spanning at least three lifecycle domains.
 - `refund-and-support-flow-review` owns refund consequences, repurchase, appeal, restrictions, and support; `ready-payment-platform` owns provider/ledger correctness.
 - `review-solicitation-policy` owns platform-specific authentic public review
@@ -235,7 +235,7 @@ Produce one **App Design Blueprint** containing:
   private feedback, authorized review ingestion, support/product routing, and
   close-loop behavior.
 - Use `notification-strategy-review`, `daily-reward-and-streak-review`, `referral-loop-review`, `promotion-campaign-review`, `product-analytics-instrumentation-review`, `offline-sync-conflict-review`, and `ad-monetization-review` for their detailed artifacts.
-- `ready-software-distribution` owns channel submission/release evidence; `marketing-automation-blueprint` owns the multi-channel marketing control plane.
+- `ready-software-distribution` owns channel submission/release evidence; `design-marketing-automation` owns the multi-channel marketing control plane.
 - `finish-product` owns the integrated whole-app finish pass after the promise,
   selected capabilities, and approved direction are defined. It consumes this
   blueprint; it does not make blueprint acceptance implementation proof.

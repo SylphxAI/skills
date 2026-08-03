@@ -8,7 +8,7 @@ Create the record before generating or capturing anything.
 | --- | --- | --- |
 | Product truth | App/Game design and exact build/runtime sources | shipped behavior, states, platform/input modes, age and territory modes |
 | Orchestrated release target and handoffs, when present | planning revision of `compose-product-program` | product/build identity, selected channels, locales, audience modes, stable handoff IDs |
-| Campaign brief, when the Marketing branch is selected | `marketing-automation-blueprint` or campaign specialist | audience, job, message, proof-backed claims, placement, variant hypothesis |
+| Campaign brief, when the Marketing branch is selected | `design-marketing-automation` or campaign specialist | audience, job, message, proof-backed claims, placement, variant hypothesis |
 | Listing request, when the Store Listing branch is selected | `optimize-store-listing` | narrative beat, asset role, sequence intent, disclosure, channel and experiment need |
 | Standalone production/audit request | direct request owner | stable local request/artifact identity; for audit, exact observed file/pack and source identities without a fabricated upstream handoff |
 | Brand and rights | declared brand/legal/rights owner | marks, typography, voice, source licenses, talent/UGC permissions, expiry |

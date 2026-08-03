@@ -1,6 +1,6 @@
 ---
 name: data-rights-operations-review
-description: "Data-rights operations: DSAR, retention, deletion, fulfillment proof."
+description: "Review: Data-rights operations: DSAR, retention, deletion, fulfillment proof."
 ---
 
 # Data Rights Operations Review

@@ -1,6 +1,6 @@
 ---
 name: enterprise-contract-operations-review
-description: "Enterprise contract operations: obligations, renewals, compliance hooks, negotiation artifacts."
+description: "Review: Enterprise contract operations: obligations, renewals, compliance hooks, negotiation artifacts."
 ---
 
 # Enterprise Contract Operations Review

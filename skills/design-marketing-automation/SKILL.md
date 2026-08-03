@@ -1,9 +1,9 @@
 ---
-name: marketing-automation-blueprint
-description: "Marketing automation blueprint: triggers, journeys, governance, measurement."
+name: design-marketing-automation
+description: "Design marketing automation: lifecycle journeys, channels, measurement, guardrails."
 ---
 
-# Marketing Automation Blueprint
+# Design Marketing Automation
 
 Design the complete relevant global marketing capability portfolio now, then let a bounded autonomous control plane decide which approved content or campaigns to activate, spend on, scale, hold, pause, or retire from current product truth, consent, causal evidence, economics, platform authority, quality, and trust. Delegate exact official social-account execution and live readback to `social-media-operations-review`.
 
@@ -174,7 +174,7 @@ Produce one **Marketing Automation Blueprint** containing:
 
 ## Routing boundaries
 
-- `marketing-automation-blueprint` owns the complete multi-channel marketing operating system and control plane.
+- `design-marketing-automation` owns the complete multi-channel marketing operating system and control plane.
 - `social-media-operations-review` owns recurring account, publishing/readback, listening, reply/moderation routing, crisis, impersonation, rights, recovery, and shutdown operations only after Marketing selects the official social channels, audience and message.
 - `synthesize-market-research` owns source-bounded market/positioning evidence; marketing consumes and channel-translates it.
 - `promotion-campaign-review` owns one offer, event, update-reward, cross-promotion, or lifecycle campaign.
@@ -186,7 +186,7 @@ Produce one **Marketing Automation Blueprint** containing:
   eligibility and request state; `run-product-feedback-loop` owns universal
   private feedback, review ingestion, support/product routing and close-loop.
 - `notification-strategy-review` owns notification channel/copy/frequency semantics; `promotion-campaign-review` owns one dormant-user recovery campaign; `synthesize-market-research` owns source-bounded voice-of-customer evidence.
-- `app-design-blueprint`/`game-design-blueprint` own product-side share, cross-promotion, notification, review, and lifecycle surfaces.
+- `design-app`/`design-game` own product-side share, cross-promotion, notification, review, and lifecycle surfaces.
 
 ## Completion check
 

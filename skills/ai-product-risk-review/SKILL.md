@@ -1,6 +1,6 @@
 ---
 name: ai-product-risk-review
-description: "AI product behavior/launch contract: job, autonomy bounds, data use, failure/abuse, disclosure, fallback, cost."
+description: "Review: AI product behavior/launch contract: job, autonomy bounds, data use, failure/abuse, disclosure, fallback, cost."
 ---
 
 # AI Product Risk Review
@@ -52,7 +52,7 @@ provider, policy, tool, or production authority.
   `incident-standard` owns active incident response.
 - Use `product-analytics-instrumentation-review` for event/identity pipeline
   implementation after this dossier states the required product signals.
-- Use `app-design-blueprint` or `game-design-blueprint` when the primary artifact
+- Use `design-app` or `design-game` when the primary artifact
   is the whole product rather than one AI behavior contract.
 - Use current provider/model retrieval for capabilities, prices, limits, latency,
   and policy. This skill never acts as live provider authority.

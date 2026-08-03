@@ -4,12 +4,12 @@
 
 | Fact or artifact | Owner |
 | --- | --- |
-| Product promise, user experience, capability semantics | `app-design-blueprint` or `game-design-blueprint` |
+| Product promise, user experience, capability semantics | `design-app` or `design-game` |
 | App availability/presentation or game progression/population exposure | corresponding design blueprint |
-| Evergreen game-world fairness | `game-design-blueprint` |
+| Evergreen game-world fairness | `design-game` |
 | Cross-domain dependency graph, release targets, stable handoffs and declared Definition of Done | planning revision of `compose-product-program` |
 | Market evidence | `synthesize-market-research` |
-| App monetization model and value-exchange semantics | `app-design-blueprint` |
+| App monetization model and value-exchange semantics | `design-app` |
 | Subscription/SaaS pricing and packaging decision | `price-saas-subscription` |
 | Other pricing/packaging decisions | declared commercial decision owner and billing SSOT |
 | Provider transaction, ledger and settlement integration | `ready-payment-platform` |
@@ -20,12 +20,12 @@
 | Universal private feedback, review ingestion and product-learning close-loop | `run-product-feedback-loop` |
 | One promotion, update-reward or cross-promotion campaign | `promotion-campaign-review` |
 | Referral qualification, grant, reversal and fraud | `referral-loop-review` |
-| Marketing channel, budget and creative control plane | `marketing-automation-blueprint` |
+| Marketing channel, budget and creative control plane | `design-marketing-automation` |
 | Listing metadata/creative conversion design | `optimize-store-listing` |
 | Channel submission/certification/release evidence | `ready-software-distribution` |
 | Localized product meaning | corresponding App/Game Design Blueprint |
 | Exact localized product capture, media transformation, accessibility, rights/provenance and file QA | `produce-product-assets` |
-| Campaign creative brief/concept and paid/organic variants | `marketing-automation-blueprint` |
+| Campaign creative brief/concept and paid/organic variants | `design-marketing-automation` |
 | Listing narrative, asset selection and channel metadata | `optimize-store-listing` |
 | SDK semantic ports and product behavior | corresponding App/Game Design Blueprint |
 | SDK provider/version/disclosure/replacement and release registry | `compose-product-program` |

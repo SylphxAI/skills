@@ -169,7 +169,7 @@ Use `artifactDigest` only on exact child files or sealed input references with
 
 ## Routing boundaries
 
-- `marketing-automation-blueprint` owns channel strategy, message, campaign
+- `design-marketing-automation` owns channel strategy, message, campaign
   concepts, creative briefs, spend, publication policy, and performance loop.
 - `optimize-store-listing` owns listing narrative, metadata, asset request,
   final selection/order, disclosures, and conversion experiment.

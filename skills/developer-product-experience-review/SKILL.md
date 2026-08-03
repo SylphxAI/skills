@@ -1,6 +1,6 @@
 ---
 name: developer-product-experience-review
-description: "Developer product experience: onboarding, APIs, docs, DX friction, time-to-first-success."
+description: "Review: Developer product experience: onboarding, APIs, docs, DX friction, time-to-first-success."
 ---
 
 # Developer Product Experience Review
@@ -139,7 +139,7 @@ claiming production performance before measurement exists.
   contract; this skill defines the developer outcome and required evidence.
 - Use `price-saas-subscription` and `ready-payment-platform` for packaging,
   price, payment, ledger, or entitlement authority.
-- Use `app-design-blueprint` when the whole application experience, rather than
+- Use `design-app` when the whole application experience, rather than
   the developer integration journey, is the independent artifact.
 - Use `delivery-standard`, `incident-standard`, `engineering-standard`, and
   `privacy-data-lifecycle-review` for shipped proof, incidents, controls, and privacy.

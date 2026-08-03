@@ -1,6 +1,6 @@
 ---
 name: offline-sync-conflict-review
-description: "Offline sync and conflict resolution for product state across devices."
+description: "Review: Offline sync and conflict resolution for product state across devices."
 ---
 
 # Offline Sync Conflict Review
@@ -70,7 +70,7 @@ the current contract and measured eviction behavior prove it.
 
 ## When not to use
 
-- Use `app-design-blueprint` when offline/sync is one part of unresolved whole
+- Use `design-app` when offline/sync is one part of unresolved whole
   workflows, information architecture, identity, collaboration, and UX.
 - Use a database/data-architecture procedure when the job is server storage,
   schema design, replication, or backup without a client sync protocol.

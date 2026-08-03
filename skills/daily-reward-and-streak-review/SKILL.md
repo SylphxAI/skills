@@ -1,6 +1,6 @@
 ---
 name: daily-reward-and-streak-review
-description: "Daily rewards and streaks: incentives, fairness, abuse, retention coupling."
+description: "Review: Daily rewards and streaks: incentives, fairness, abuse, retention coupling."
 ---
 
 # Daily Reward And Streak Review
@@ -58,7 +58,7 @@ repair or gacha-linked rewards require transparent terms and current authority.
 
 ## When not to use
 
-- Use `game-design-blueprint` or `app-design-blueprint` for the complete
+- Use `design-game` or `design-app` for the complete
   retention/value architecture rather than one return loop.
 - Use `game-economy-review` when sources, sinks, inflation, progression, and
   payer fairness are the primary artifact.

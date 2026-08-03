@@ -109,14 +109,14 @@ Reject or revise work that:
 
 ## Routing boundaries
 
-- Use `app-design-blueprint` when deciding a whole app’s promise, workflows, capability portfolio, retention, commerce, social systems, and cross-platform architecture.
-- Use `game-design-blueprint` when deciding a whole game’s player promise, mechanics, loops, progression, economy, challenge, social systems, and game feel. Use this skill for a bounded HUD, menu, store, inventory, onboarding, or control surface.
+- Use `design-app` when deciding a whole app’s promise, workflows, capability portfolio, retention, commerce, social systems, and cross-platform architecture.
+- Use `design-game` when deciding a whole game’s player promise, mechanics, loops, progression, economy, challenge, social systems, and game feel. Use this skill for a bounded HUD, menu, store, inventory, onboarding, or control surface.
 - Use `finish-product` when an already integrated product needs one coherent
   finish pass across multiple surfaces, content or asset families, copy,
   numbers, sensory behavior, and product-wide consistency. This Skill remains
   the implementation owner for a bounded interface handoff inside that pass.
 - Route design-system extraction/governance and formal accessibility certification to their owning specialist when available; this skill still implements baseline quality on its bounded surface.
-- Consume approved pricing and marketing decisions. Route unresolved tier/value/price decisions to `price-saas-subscription`, campaign/message strategy to `marketing-automation-blueprint`, and promotional captures/media to `produce-product-assets`.
+- Consume approved pricing and marketing decisions. Route unresolved tier/value/price decisions to `price-saas-subscription`, campaign/message strategy to `design-marketing-automation`, and promotional captures/media to `produce-product-assets`.
 
 ## Completion check
 

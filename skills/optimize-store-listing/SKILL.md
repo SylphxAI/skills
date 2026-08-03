@@ -84,7 +84,7 @@ Unknown/stale channel authority blocks submission of that adapter.
 
 - Use `ready-software-distribution` for eligibility, signing, submission,
   reviewer/certification, staged rollout, withdrawal, and live channel evidence.
-- Use `marketing-automation-blueprint` for the whole SEO/creator/community/
+- Use `design-marketing-automation` for the whole SEO/creator/community/
   lifecycle/paid creative portfolio, spend, attribution, and shutdown.
 - Use `produce-product-assets` to create deterministic captures, rendered
   screenshots/art/video, localized/accessibility variants, and the exact media

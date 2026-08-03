@@ -3,7 +3,7 @@
 [![CI](https://github.com/SylphxAI/skills/actions/workflows/check.yml/badge.svg)](https://github.com/SylphxAI/skills/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](./package.json)
-[![Agent Skills](https://img.shields.io/badge/agent%20skills-111%20packages-111827.svg)](./catalog.json)
+[![Agent Skills](https://img.shields.io/badge/agent%20skills-118%20packages-111827.svg)](./catalog.json)
 
 **Working methods for AI agents — installed by the agent that needs them.**
 
@@ -69,6 +69,30 @@ Platform integrations, and support — **not** pretending public Markdown is
 secret.
 
 ---
+
+
+
+
+## Product job Skills (agent discovery)
+
+When an agent needs to do product work, load the **job technique**, not a role title:
+
+| Need | Skill |
+| --- | --- |
+| Validate idea | `prototype-product` |
+| Ship capability | `build-product` |
+| Cut live harm | `maintain-product` |
+| Scale core | `expand-product` |
+| Finish / deburr | `finish-product` |
+| Follow a fixed outcome to done | `pursue-product-objective` |
+| Open betterment (mixed jobs) | `better-product` |
+| Multi-phase delivery terminal | `drive-to-delivery` |
+| Next Work from evidence | `select-next-work` |
+| Author a Skill | `author-skill` |
+
+Full map: [`docs/reference/product-job-skills.md`](./docs/reference/product-job-skills.md).
+
+Policy packages (`*-standard`, stack/profile pins) constrain other jobs; they are not standalone product cycles.
 
 
 ### Always-on floors vs Skills
@@ -210,7 +234,7 @@ Examples: `analyze-critically` · `deliberate-structured` · `reference-original
 
 Whole-product craft surfaces plus live-system adapters (for example Enact).
 
-Examples: `app-design-blueprint` · `saas-web-platform-blueprint` · `craft-interface` · `design-prompt-architecture` · `coordinate-enact-work`
+Examples: `design-app` · `design-saas-web-platform` · `craft-interface` · `design-prompt-architecture` · `coordinate-enact-work`
 
 Open any package: `skills/<id>/SKILL.md` is the contract; deeper material lives
 in `references/`.

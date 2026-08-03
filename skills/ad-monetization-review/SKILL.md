@@ -1,6 +1,6 @@
 ---
 name: ad-monetization-review
-description: "In-product ad system: formats, mediation, rewards, consent, frequency caps, fraud, IAP/IAA tradeoffs."
+description: "Review: In-product ad system: formats, mediation, rewards, consent, frequency caps, fraud, IAP/IAA tradeoffs."
 ---
 
 # Ad Monetization Review
@@ -72,9 +72,9 @@ never a current compliance verdict. Unknown/stale authority disables exposure.
 
 - Use `game-economy-review` when the primary artifact is currency/reward
   inflation, sources/sinks, progression, gacha, or payer fairness.
-- Use `marketing-automation-blueprint` for external paid acquisition, creative
+- Use `design-marketing-automation` for external paid acquisition, creative
   spend, attribution, and lifecycle channel automation.
-- Use `app-design-blueprint` or `game-design-blueprint` when ads are only one
+- Use `design-app` or `design-game` when ads are only one
   component of a whole-product design.
 - Use `ready-payment-platform` for purchases, receipts, entitlements,
   settlement, refunds, and finance-close authority.

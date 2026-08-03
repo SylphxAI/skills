@@ -216,7 +216,7 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 
 | Artifact | Primary owner |
 | --- | --- |
-| App monetization model and value-exchange semantics | `app-design-blueprint` |
+| App monetization model and value-exchange semantics | `design-app` |
 | Subscription/SaaS price and package decision | `price-saas-subscription` |
 | Provider payment, ledger, settlement and entitlement projection | `ready-payment-platform` |
 | Refund consequence, repurchase, restriction, support and appeal | `refund-and-support-flow-review` |
@@ -231,9 +231,9 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 | Event/identity/metric instrumentation | `product-analytics-instrumentation-review` |
 | Offline/sync conflict | `offline-sync-conflict-review` |
 | Store/channel release evidence | `ready-software-distribution` |
-| Localized experience semantics | `app-design-blueprint` |
+| Localized experience semantics | `design-app` |
 | Deterministic product capture, cross-channel asset transformation, localized production and LQA pack | `produce-product-assets` |
-| Multi-channel marketing control plane | `marketing-automation-blueprint` |
+| Multi-channel marketing control plane | `design-marketing-automation` |
 | Product Program Manifest composition/index of independently owned sibling artifacts | `compose-product-program` |
 
 ## 5. Dangerous interaction tests

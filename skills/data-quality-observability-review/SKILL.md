@@ -1,6 +1,6 @@
 ---
 name: data-quality-observability-review
-description: "Data quality observability: contracts, monitors, incident paths, ownership."
+description: "Review: Data quality observability: contracts, monitors, incident paths, ownership."
 ---
 
 # Data Quality Observability Review

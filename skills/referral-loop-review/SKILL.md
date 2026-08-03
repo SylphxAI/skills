@@ -1,6 +1,6 @@
 ---
 name: referral-loop-review
-description: "Referral loops: incentives, fraud controls, viral mechanics, measurement."
+description: "Review: Referral loops: incentives, fraud controls, viral mechanics, measurement."
 ---
 
 # Referral Loop Review
@@ -72,11 +72,11 @@ affected channel or incentive; it does not justify covert collection.
 
 ## When not to use
 
-- Use `marketing-automation-blueprint` for the complete organic/lifecycle/paid,
+- Use `design-marketing-automation` for the complete organic/lifecycle/paid,
   creative, attribution, spend, reputation, and shutdown system.
 - Use `promotion-campaign-review` for one time-bounded referral push or offer
   after the persistent referral contract already exists.
-- Use `app-design-blueprint` or `game-design-blueprint` when friendship,
+- Use `design-app` or `design-game` when friendship,
   co-op/guild, collaboration, identity, or sharing semantics are unresolved as
   part of the whole product.
 - Use `marketplace-payouts-review` when affiliate/creator earnings, holds,

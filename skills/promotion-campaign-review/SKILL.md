@@ -1,6 +1,6 @@
 ---
 name: promotion-campaign-review
-description: "Promotion campaign: offer, eligibility, abuse, measurement, net impact."
+description: "Review: Promotion campaign: offer, eligibility, abuse, measurement, net impact."
 ---
 
 # Promotion Campaign Review
@@ -104,7 +104,7 @@ it does not erase platform-account, legal, child-safety, privacy, or trust ruin.
 
 ## When not to use
 
-- Use `marketing-automation-blueprint` for the full organic/lifecycle/paid,
+- Use `design-marketing-automation` for the full organic/lifecycle/paid,
   creative, attribution, spend, reputation, and shutdown operating system.
 - Use `referral-loop-review` for persistent inviter/invitee qualification,
   attribution, pending grants, reversals, fraud, and support.

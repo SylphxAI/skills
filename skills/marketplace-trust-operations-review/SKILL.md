@@ -1,6 +1,6 @@
 ---
 name: marketplace-trust-operations-review
-description: "Marketplace trust and safety ops: detection, enforcement, appeals, evidence."
+description: "Review: Marketplace trust and safety ops: detection, enforcement, appeals, evidence."
 ---
 
 # Marketplace Trust Operations Review

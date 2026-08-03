@@ -1,6 +1,6 @@
 ---
 name: marketplace-payouts-review
-description: "Marketplace seller payouts: eligibility, calculation, holds, tax and compliance hooks."
+description: "Review: Marketplace seller payouts: eligibility, calculation, holds, tax and compliance hooks."
 ---
 
 # Marketplace Payouts Review

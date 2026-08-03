@@ -1,6 +1,6 @@
 ---
 name: convergent-review
-description: "Converge divergent analysis into one decision record with explicit residuals and commitments."
+description: "Review: Converge divergent analysis into one decision record with explicit residuals and commitments."
 ---
 
 # Convergent Review
