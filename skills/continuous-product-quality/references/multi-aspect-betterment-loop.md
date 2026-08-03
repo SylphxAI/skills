@@ -15,21 +15,20 @@ Multi-cycle continuity:
 ## Layers (do not collapse)
 
 ```text
-Outer engagement (runner + durable state + Goal insurance)
+Outer engagement motor: uncapped Goal (host auto-continue while active)
   while not engagement_idle:
       one cycle (this Skill method)
-      write state
-      re-invoke
+      next cycle in-process and/or Goal continuation at turn boundary
 
 One cycle:
   coverage card + VoI deepen -> C -> B + R
-  if B empty after honest re-scout: hard_wait | idle per runner rules
-  else: execute all B -> verify -> cycle Stop-Audit -> write state
+  if B empty after honest re-scout: hard_wait | idle (Goal complete only if idle)
+  else: execute all B -> verify -> short log -> next cycle
 ```
 
-A **cycle** clears **B** for this research pass and leaves state.  
-**Loop engineering** means the **outer runner** keeps starting cycles until idle.  
-This reference does **not** require infinite same-turn self-loop as a portable contract.
+A **cycle** clears **B** for this research pass.  
+**Loop engineering** = Goal stays active across cycles until engagement idle.  
+Automation re-kick is fallback when Goal API is absent—not the default on Codex.
 
 It is **not**:
 

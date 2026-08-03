@@ -113,9 +113,9 @@
     },
     {
       "name": "continuous-product-quality",
-      "description": "One high-leverage product betterment cycle: coverage card, admit B, residual R, execute, verify, write engagement state for the next invoke.",
+      "description": "High-leverage product betterment under an uncapped Goal: coverage card, admit all B, residual R, execute, verify; keep cycling until engagement idle.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:ee7503e18e42c3b6769373505eee0a855aeeba8c1bb1b00e89f34fbe4563dabc"
+      "packageDigest": "sha256:d70cae22246be49bc8aff8b44a8ae5f140a8389bd200abe0ff51d2563b41e737"
     },
     {
       "name": "convergent-review",

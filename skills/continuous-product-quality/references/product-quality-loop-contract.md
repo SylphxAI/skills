@@ -317,11 +317,11 @@ scope shrink of the engagement.
 | **Cycle Stop-Audit** | B cleared + verify cadence for cycle k | Keep goal active; **write state** for next invoke |
 | **Engagement Stop-Audit / idle** | Fresh coverage card/re-scout admits B=∅ and R has no unblocked high-EV | `update_goal(complete)` allowed; runner stops |
 
-**Loop engineering rule (ADR-20260803):** multi-cycle continuity is the **outer
-runner** (re-invoke + durable state; Goal as insurance). This contract owns
-**cycle quality** and honest idle/hard_wait signals. One-cycle-and-stop as
-*product done* is an anti-pattern. Prefer state handoff over long cycle essays.
-“要開 Cycle N+1 嗎？” is not a control protocol when a runner exists. Outer
+**Loop engineering rule:** multi-cycle continuity is the **uncapped Goal**
+(host auto-continue) when the Goal API exists; durable state optional; automation
+re-kick only as fallback. This contract owns **cycle quality** and honest
+idle/hard_wait signals. One-cycle-and-stop as *product done* is an anti-pattern.
+Keep tool-working into the next cycle; do not ask “要開 Cycle N+1 嗎？”. Outer
 objective stays product outcomes, not “cycle N.”
 
 ### Stop-Audit package (required at cycle end and before engagement idle)

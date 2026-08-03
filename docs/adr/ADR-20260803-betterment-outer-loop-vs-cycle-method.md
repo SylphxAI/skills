@@ -13,124 +13,72 @@ scope:
   - agent-harness-boundary
 ---
 
-# Betterment: outer harness loop vs cycle method skill
+# Betterment: Goal continuity vs cycle method skill
 
 ## Context
 
-`continuous-product-quality` accumulated multi-cycle self-loop, soft-blocker
-law, anti final-response rules, Goal binding, and product betterment method in
-one Skill. Agents still end turns after cycle reports, soft-park high-EV work,
-and confuse cycle checkpoints with outer product goals. Patch density rose while
-behavior remained unstable.
+`continuous-product-quality` mixed cycle method with multi-turn continuity. A
+later draft over-corrected by demoting the **Goal System** to “insurance only”
+and pushing **automation re-kick** as the default outer loop. That is a
+**UX regression** on Codex: operators already get multi-hour runs from one press
+when an uncapped Goal is active.
 
-Public harness research (2025–2026) separates layers that we had collapsed:
-
-- **Agent harness** = model + tools + memory + sandbox + recovery + orchestration
-  (everything except the weights). Skills are progressive method packages inside
-  that system—not the scheduler.
-- **Inner loop** = within a turn/session: gather context, tool, observe, repeat
-  until the model emits a final text turn.
-- **Outer loop** = across sessions/cycles: re-invoke, durable progress files,
-  external done conditions, refusal to accept premature “done” (e.g. Anthropic
-  long-running harness initializer + coding agent; Ralph-style re-kick loops;
-  OpenAI harness engineering review/iterate until gates pass).
-
-Encoding “while not engagement_idle: cycle++ without user final” primarily as
-Skill prose fights the turn model: a final user-facing message ends the turn;
-nothing restarts unless the **outer harness** does.
+Codex Goals (public docs, 2026): thread-scoped persistent objective; after a turn
+finishes, if the thread is idle, the Goal is active, and budget allows, the host
+can continue; complete only with evidence; budget stop ≠ complete; no-tool
+continuation can suppress the next auto-continue.
 
 ## Decision
 
-### 1. Split ownership
+### 1. Split ownership (corrected)
 
-| Concern | Owner | Not owner |
-| --- | --- | --- |
-| One betterment **cycle** method (coverage card, admit B, execute, verify, cycle log) | Skill (`continuous-product-quality` thinned to cycle method) | Runtime scheduler |
-| Multi-cycle **engagement continuity** | Outer harness: Goal resume (insurance), automation/re-invoke, progress state file | Skill body “do not final-response” alone |
-| Outer product acceptance / idle | Durable engagement brief + state (and Goal objective when present) | Cycle backlog list as goal text |
-| Portable domain methods | Other Skills (compose) | One monotheistic OS skill |
+| Concern | Owner |
+| --- | --- |
+| One betterment **cycle** method | Skill (`continuous-product-quality`) |
+| **Multi-turn continuity on Codex** | **Uncapped Goal** (primary motor) |
+| Optional durable B/R notes | Product state/contract file |
+| Continuity when Goal API absent | In-process tool loop; then manual re-kick; automation last |
 
-### 2. Skill responsibility (method only)
+### 2. Skill responsibility
 
-`continuous-product-quality` (and any successor cycle skill) **owns**:
+Owns: coverage card, C/B/R, leverage, verify, when Goal may complete/block, cycle quality.
 
-- What a high-leverage betterment **cycle** is
-- Research coverage card, Candidate C, backlog B, residual R
-- Leverage / MinOutcomeDelta / qualified blockers (truthful parking only)
-- Verify cadence and cycle Stop-Audit fields
-- Explicit **handoff artifact** for the next invoke (state delta)
+Does **not** own: inventing heartbeat automation as the happy path on Goal hosts.
 
-It **does not own**:
+### 3. Goal responsibility
 
-- Guaranteeing another turn starts after a cycle report
-- Replacing missing Goal API with prose self-loop as the sole motor
-- Infinite in-turn cycling as a portable skill contract
+- Create/resume on continuous betterment invoke
+- **No default token budget**
+- Outer product objective only
+- Host continuation across idle turns while active
+- `complete` only at engagement idle with evidence
 
-### 3. Outer harness responsibility (continuity)
+### 4. Communication
 
-Engagement continuity **must** be provided by at least one of:
+- Prefer tools + next cycle over long “Cycle N 報告”
+- Never “要開 Cycle N+1 嗎？” while Goal active
+- User-facing final at idle, true hard wait, or user stop
 
-1. **Re-invoke runner** (script/automation/Ralph-style): while not
-   `engagement_idle(state): run agent(cycle skill + state)`
-2. **Harness Goal** as **insurance**: uncapped outer objective; resume after
-   accidental stop—not the only motor
-3. **Durable state** (`progress` / PQLC operating state): next action, B/R,
-   last cycle id, outer acceptance
+### 5. Non-goals
 
-Preferred shape (industry-aligned):
-
-```text
-initializer (once): engagement brief + state skeleton + optional goal
-loop:
-  coding/betterment agent: one cycle → update state → commit/log
-  outer check: engagement_idle? stop : re-invoke
-```
-
-### 4. Communication boundary
-
-- Cycle complete → write state; **short or no user essay**; outer runner continues
-- User-facing final → engagement idle, true hard external wait, or user stop
-- “要開 Cycle N+1 嗎？” is **not** a control protocol when a runner exists
-
-### 5. Migration
-
-1. Publish this ADR (normative boundary).
-2. Thin CPQ skill intro: cycle method + pointer to outer loop; stop claiming
-   skill-alone eternal self-loop.
-3. Add reference: engagement state schema + runner contract
-   (`docs/reference/betterment-engagement-runner.md`).
-4. Do **not** keep stacking soft-blocker epicycles as the primary reliability path.
-5. Optional later: rename/split packages (`product-betterment-cycle`) without
-   blocking the boundary decision.
-
-### 6. Non-goals
-
-- Replacing Codex/Claude host agent loops
+- Replacing host Goal implementation
 - Requiring Enact for all betterment
-- Abandoning the skills repository (methods remain portable Skills)
+- Abandoning portable Skills
 
 ## Consequences
 
-- Reliability of “keep going” becomes a **runner/goal/state** problem—testable
-  without arguing with final-answer behavior.
-- Skills stay short enough for progressive disclosure and listing budgets.
-- Agent-facing jobs match reality: “run one cycle well and leave state,” not
-  “violate turn boundaries forever.”
-- Residual: products must adopt a runner (or accept human/goal re-kick) for
-  true multi-cycle engagement.
+- One-press multi-hour runs return on Codex via Goal
+- Skills stay method-focused
+- Automation remains available as degraded fallback only
 
 ## Verification
 
-- ADR accepted and linked from CPQ skill.
-- Runner reference exists with idle predicate and state fields.
-- CPQ skill no longer claims skill-alone multi-cycle motor as portable contract.
-- Future CPQ changes prefer method quality over anti-stop epicycles.
+- CPQ requires uncapped Goal bind when API present
+- Docs do not prescribe automation as default on Codex
+- Idle/complete rules remain evidence-based
 
-## Research basis (non-exhaustive)
+## Research basis
 
-- Anthropic: Effective harnesses for long-running agents; harness design for
-  long-running application development; Managed Agents (session/harness/sandbox)
-- OpenAI: Harness engineering (agent-first workflows, review loops, progressive
-  disclosure of repo knowledge)
-- Industry: outer loop ownership; Ralph-style re-kick; progress files + external
-  done conditions; skills as progressive method packages
+- OpenAI Cookbook: Using Goals in Codex (continuation from idle thread; budget; evidence complete)
+- OpenAI: Harness engineering / long-running agent patterns
+- Industry Ralph-style keep-goal-alive loops
