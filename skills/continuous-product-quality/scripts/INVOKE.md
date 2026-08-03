@@ -2,4 +2,4 @@
 $continuous-product-quality
 ```
 
-Skill = bootstrap. Agent puts full workflow into uncapped Goal. Host continue = loop.
+Bootstrap → agent create_goal once (uncapped) with per-cycle contract → host continue re-injects that contract each turn.

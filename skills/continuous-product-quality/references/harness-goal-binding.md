@@ -1,19 +1,15 @@
-# Goal = workflow; Skill = bootstrap
+# Goal binding
 
 ## Split
 
-| Artifact | Role |
+| Text | Where |
 | --- | --- |
-| Skill invoke | Human start point → agent self-setup |
-| `create_goal(objective=workflow contract)` | Durable full cycle workflow + terminal |
-| Host Goal continuation | Loop: each continue = next cycle under same objective |
-
-The Skill is not the loop. The Goal text is the loop body the host re-injects.
+| create_goal / no token_budget / do not recreate each cycle | Skill **bootstrap only** |
+| Cycle method + terminal + blocked | **Goal objective** (re-injected every turn) |
 
 ## Rules
 
-1. Agent creates Goal on invoke (user does not author it).
-2. Objective = full workflow contract from SKILL.md (not a product brief).
-3. No default token budget.
-4. Complete only at terminal (no unblocked high-EV after fresh re-scout).
-5. After bind, execute from Goal; do not require re-opening Skill each cycle.
+1. Bind Goal once per engagement (repair if wrong/missing).
+2. Goal text is agent-facing **this-turn** work, not setup narration.
+3. Complete only when terminal in the Goal holds with evidence.
+4. Optional short product pin after discovery; never replace contract with a tiny B list.
