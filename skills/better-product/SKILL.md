@@ -40,7 +40,7 @@ High-leverage product betterment on the active workspace. Discover product state
 
 This turn:
 1. Discover product/repo/surfaces and evidence.
-2. Coverage card — each cell evidence or unknown+reason:
+2. Coverage card / quality matrix — each cell evidence or unknown+reason:
    (a) outcomes that matter now
    (b) primary journeys/surfaces
    (c) quality/competitive anchor or unknown+why

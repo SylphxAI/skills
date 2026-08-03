@@ -43,7 +43,7 @@
       "name": "better-product",
       "description": "Open betterment loop (no fixed objective): quality matrix, scout, all high-EV B, oracle verify; idle at empty high-EV frontier (else pursue-product-objective).",
       "path": "skills/better-product/SKILL.md",
-      "packageDigest": "sha256:4fdb0396484a5040a3772bd621fa076e899bdb11e67171af25ae17a56cbc3f3b"
+      "packageDigest": "sha256:5b270be3d244346f52795ea6ba0a273103786888ec7c3f04b302d69b12bee822"
     },
     {
       "name": "bound-task-scope",
