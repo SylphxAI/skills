@@ -84,3 +84,15 @@ Does **not** own: inventing heartbeat automation as the happy path on Goal hosts
 - OpenAI Cookbook: Using Goals in Codex (continuation from idle thread; budget; evidence complete)
 - OpenAI: Harness engineering / long-running agent patterns
 - Industry Ralph-style keep-goal-alive loops
+
+## Correction (2026-08-03 later)
+
+User-critical refinement accepted:
+
+1. Skill describes **one cycle** only.
+2. Agent puts **cycle method + terminal** into Goal objective (fixed contract).
+3. Host Goal auto-continue **is** the next cycle start — do not teach a second
+   “loop motor” (automation) on Codex.
+4. Terminal = no unblocked higher-value work (idle frontier), not perfection.
+5. User only invokes the Skill; does not author product goals.
+

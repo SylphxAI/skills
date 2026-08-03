@@ -1,45 +1,19 @@
-# Harness Goal Binding — continuity motor, not product brief
+# Goal = workflow; Skill = bootstrap
 
-## What Goal is here
+## Split
 
-**Mechanical continuity** so the host auto-continues an idle thread while high-value betterment remains.
-
-It is **not**:
-
-- a user-written project goal
-- a north-star essay the human must invent each time
-- “work I assigned you this cycle”
-
-The agent **always** sets it on Skill invoke. Product discovery happens after bind.
-
-## Fixed objective (canonical)
-
-```text
-Continuous high-leverage product betterment on the active workspace until engagement idle.
-Keep cycling: research coverage card → admit ALL capacity-feasible high-leverage items into B → execute all B → verify → re-scout.
-Do not stop after one cycle, one PR, local green, or a progress report.
-Do not complete this Goal while any unblocked residual has EV ≥ MinOutcomeDelta (including soft-only “large/hard/engine” items — slice L0 into B).
-Engagement idle only after a fresh re-scout shows B empty and R has no unblocked high-EV work.
-Never rewrite this Goal into a single-cycle backlog. Discover product state from the workspace yourself.
-```
-
-Use this text (or a strict paraphrase that preserves every bullet). Do **not** expand it into a product-specific roadmap inside `create_goal`.
-
-## Procedure
-
-| Step | Action |
+| Artifact | Role |
 | --- | --- |
-| 1 | `get_goal` |
-| 2 | If missing / wrong shape → `create_goal({ objective: fixed text })` — **omit token_budget** |
-| 3 | Work cycles; discover product from workspace |
-| 4 | `update_goal(complete)` only at engagement idle with evidence |
-| 5 | `blocked` only after harness repeated hard-impasse rule |
+| Skill invoke | Human start point → agent self-setup |
+| `create_goal(objective=workflow contract)` | Durable full cycle workflow + terminal |
+| Host Goal continuation | Loop: each continue = next cycle under same objective |
 
-## Idle vs perfect
+The Skill is not the loop. The Goal text is the loop body the host re-injects.
 
-There is no absolute perfect terminal.  
-**Idle** = policy empty frontier (no unblocked high-EV left), not “product is ideal.”
+## Rules
 
-## Missing Goal API
-
-Note residual once; continue in-process. Do not invent a fake Goal store. Do not demand the user write an objective to compensate.
+1. Agent creates Goal on invoke (user does not author it).
+2. Objective = full workflow contract from SKILL.md (not a product brief).
+3. No default token budget.
+4. Complete only at terminal (no unblocked high-EV after fresh re-scout).
+5. After bind, execute from Goal; do not require re-opening Skill each cycle.

@@ -113,9 +113,9 @@
     },
     {
       "name": "continuous-product-quality",
-      "description": "Continuous high-leverage product betterment: auto-bind uncapped Goal, coverage card, admit all B, residual R, execute, verify; cycle until no high-EV work remains.",
+      "description": "Bootstrap product betterment / loop engineering: agent self-sets uncapped Goal containing the full cycle workflow + idle terminal; host Goal continue runs later cycles.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:30b68c13063a4ca79bbad1089c536c299848243173163bd00c5b0ed2ed64a8f7"
+      "packageDigest": "sha256:3340a83072a0b24313b5259a4dd177df4beea7e1125529a83ea3b6e78f2d66c8"
     },
     {
       "name": "convergent-review",

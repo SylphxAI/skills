@@ -1,126 +1,100 @@
 ---
 name: continuous-product-quality
-description: "Continuous high-leverage product betterment: auto-bind uncapped Goal, coverage card, admit all B, residual R, execute, verify; cycle until no high-EV work remains."
+description: "Bootstrap product betterment / loop engineering: agent self-sets uncapped Goal containing the full cycle workflow + idle terminal; host Goal continue runs later cycles."
 ---
 
 # Continuous Product Quality
 
-Close user/business-visible product gaps with **high leverage**, not cosmetic commit thrash.
+## What this Skill is
 
-**Primary class:** `workflow`.  
-User invoke = load this Skill (e.g. `$continuous-product-quality`). **Do not** demand a long user-written project brief or north-star essay.
+**Bootstrap only.** Humans cannot paste a long operating contract every time.
+Invoking this Skill means: **set up your own environment**, then work under it.
 
-## Continuity Goal (fixed motor — agent sets it)
-
-On hosts with a Goal API (Codex): **you** bind the Goal. The user does not author it.
-
-| Fact | Rule |
+| Layer | Owns |
 | --- | --- |
-| Who sets Goal | **Agent**, immediately on invoke |
-| What Goal is | **Continuity contract** so the host keeps auto-continuing while work remains |
-| What Goal is not | A user-supplied product roadmap; not “finish cycle N”; not a one-shot task list |
-| Goal text | **Stable template** below — same shape every engagement |
-| Budget | **Omit `token_budget`** unless the user explicitly set one |
-| Complete | Only at **engagement idle** (fresh re-scout: no unblocked high-EV ≥ MinOutcomeDelta) |
-| Perfect / true north-star | **Does not exist.** Idle ≠ perfection. Idle = no remaining positive-leverage unblocked work under policy |
+| **This Skill** | Start point: agent binds Goal with the full workflow text |
+| **Goal objective** | The **real workflow** (re-shown every host continuation) |
+| **Host Goal continue** | The **loop** (next turn = next cycle under that Goal) |
 
-### Fixed Goal objective (use essentially this text)
+After Goal is set, **do not depend on re-reading this Skill** for the loop.
+Execute from the **Goal contract**. Complete only when the Goal’s terminal holds.
+
+User invoke is enough, e.g.:
 
 ```text
-Continuous high-leverage product betterment on the active workspace until engagement idle.
-Keep cycling: research coverage card → admit ALL capacity-feasible high-leverage items into B → execute all B → verify → re-scout.
-Do not stop after one cycle, one PR, local green, or a progress report.
-Do not complete this Goal while any unblocked residual has EV ≥ MinOutcomeDelta (including soft-only “large/hard/engine” items — slice L0 into B).
-Engagement idle only after a fresh re-scout shows B empty and R has no unblocked high-EV work.
-Never rewrite this Goal into a single-cycle backlog. Discover product state from the workspace yourself.
+$continuous-product-quality
 ```
 
-### Bind procedure (first tools this Skill runs)
+No user project brief. No user-authored north-star essay.
+
+## Bootstrap (do this first)
 
 1. `get_goal`
-2. If missing or objective is a one-shot/cycle backlog → `create_goal` with the fixed objective above (**no** `token_budget`)
-3. If already this continuity Goal and active → resume work (do not recreate thrash)
-4. Then discover product/repo/surfaces from the workspace and run cycles
+2. If missing or not the workflow below → `create_goal` with **Goal workflow contract** as `objective`
+3. **Omit `token_budget`** unless the user explicitly set one
+4. Optionally write a short local state note in-repo; not required for continuation
+5. Immediately run **cycle 1** under that Goal (tools, not essays)
+6. If terminal not met → leave Goal **active** (host continue = next cycle)
+7. If terminal met → evidence Stop-Audit → `update_goal(complete)`
 
-Missing Goal API: note once; keep multi-cycle tool work in-process. Automation re-kick is last-resort fallback only—not the happy path.
+Missing Goal API: residual once; still run the workflow in-process as far as the host allows.
 
-**Why fixed text:** Goal only needs to keep the host from stopping. Product specifics live in cycle research, not in Goal authorship. The user is not “finding work for the agent”; the agent finds work under this Skill.
+---
 
-## Units
+## Goal workflow contract
 
-| Unit | Meaning |
-| --- | --- |
-| **Engagement** | This continuity Goal’s lifetime |
-| **Cycle** | Card → C → B+R → execute all B → verify → short log → next cycle |
-| **B** | All capacity-feasible above-threshold items this cycle (many OK) |
-| **R** | Parked items with EV + honest blocker |
-| **Engagement idle** | Fresh re-scout: B=∅ and no unblocked EV ≥ MinOutcomeDelta in R |
-
-## Method
-
-1. **Bind fixed uncapped Goal** (above).
-2. **Discover** product identity and evidence from the workspace (git, docs, live surfaces as available).
-3. **Coverage card** (five cells) + VoI deepen until admission won’t change.
-4. **Admit all** capacity-feasible passers into **B** (not Top-1). Soft cost → L0 slice into B, not stop.
-5. **Execute all of B** (parallel default for independent items).
-6. **Verify** (original-oracle per item; one cycle outcome readback).
-7. **Short cycle log** — no “要開 Cycle N+1 嗎？”
-8. If not idle → **next cycle** (same turn if possible; else Goal auto-continue). If idle → Stop-Audit → `update_goal(complete)`.
+**Put the following block in `create_goal` `objective` (verbatim or strict paraphrase that keeps every rule).**  
+This block **is** the loop. Host re-prompt carries it; that is enough.
 
 ```text
-create/resume FIXED uncapped continuity Goal
-loop:
-  discover + coverage card + admit all high-L into B
-  if B empty & R clean after fresh re-scout → complete Goal (idle)
-  else execute all B → verify → next cycle
+WORKFLOW: High-leverage product betterment on the active workspace.
+You set this Goal; discover product state yourself from the workspace.
+
+EACH HOST TURN = ONE CYCLE:
+1. Discover current product/repo/surfaces from the workspace.
+2. Research coverage card (5 cells, decision-complete not omniscient):
+   (a) outcomes that matter now (b) primary journeys/surfaces
+   (c) quality/competitive anchor or unknown+why (d) hard floors
+   (e) highest pains/bets. Evidence or unknown+reason each cell.
+3. Candidate set C. Score leverage
+   L = (expected_outcome_or_frontier_gap_delta × weight × confidence) / full_lifecycle_cost.
+4. Admit into B: ALL capacity-feasible items with EV ≥ MinOutcomeDelta (not Top-1 only).
+   Soft cost (large/hard/engine/multi-day/not-title-only) → slice L0 into B now.
+   Only qualified park: external_wait | authority_pending | dependency_blocked | safety_hold (with evidence).
+5. Execute ALL of B. Independent items parallel by default; shared setup once.
+6. Verify: original-oracle per B item; one cycle outcome readback on exact subjects.
+   Local green / commit count ≠ success.
+7. Short log. Do not ask the user to start the next cycle.
+8. End turn with Goal still active unless TERMINAL holds. Host continue starts the next cycle.
+   Prefer tool work every turn; essay-only turns risk stopping auto-continue.
+
+TERMINAL — only then update_goal(complete):
+After a FRESH re-scout, B is empty AND no residual has unblocked EV ≥ MinOutcomeDelta.
+This is an idle high-value frontier, NOT product perfection (perfection does not exist).
+One cycle done / one PR / progress report / “improved a bit” is NOT terminal.
+
+BLOCKED: only per harness rules for true repeated impasse on qualified blockers.
+Never rewrite this Goal into a single-cycle task list.
+No default token budget.
 ```
 
-## Qualified blockers (only these park high-EV in R)
+---
 
-`external_wait` · `authority_pending` · `dependency_blocked` · `safety_hold`  
-(with concrete evidence)
+## Bootstrap anti-patterns
 
-**Not** blockers alone: multi-day, hard, expensive, engine, “not title-only”, missing user north-star essay, desire to report and wait.
+- Treating this Skill body as the ongoing loop motor after Goal exists
+- Asking the user to type the workflow or north-stars
+- Completing Goal after cycle 1
+- Putting a tiny backlog in Goal instead of the workflow contract
+- Default `token_budget`
+- Automation-first on hosts where Goal continue works
 
-## Non-negotiable
+## When not to bootstrap this
 
-1. Agent sets Goal; user only invokes Skill.
-2. Goal text stays the continuity template — not a user task dump.
-3. Outcomes over activity; commit count ≠ progress.
-4. All passers into B; leverage not ease.
-5. B clear ≠ Goal complete.
-6. Idle ≠ perfect; idle = no unblocked high-EV left.
-7. Keep using tools each turn (essay-only can kill auto-continue).
-8. No meta-router; native discovery only.
-9. No continuous independent reviewers except irreversible/public-contract, load-bearing SOTA, contested idle.
+- One bug / one-shot → fix directly / `autonomous-execution`
+- Single release finish pass → `product-finish`
 
-## Anti-patterns
+## Optional deeper fields
 
-- Asking the user to write outer objectives / north-stars to “start the loop”
-- Goal = “finish cycle 3” / ship a tiny B list
-- Completing Goal after one productive cycle
-- Soft-parking high-EV then stopping
-- Automation-first on Codex when Goal works
-- Micro-polish thrash as substitute for high-L work
-
-## When not to use
-
-- One bug / one-shot edit → direct fix / `autonomous-execution`
-- One release-grade finish pass → `product-finish`
-- Any-Work OS without product matrix → `self-feeding-agent-loop`
-
-## Compose with
-
-| Need | Skill |
-| --- | --- |
-| Decision quality | `decision-quality-standard` |
-| Claims / SOTA | `evidence-and-claims-standard` |
-| Single Workstream delivery | `autonomous-execution` |
-| Land/live proof | `delivery-standard` |
-| Domain method | matching specialist |
-
-## Read when needed
-
-- [references/product-quality-loop-contract.md](references/product-quality-loop-contract.md)
-- [references/multi-aspect-betterment-loop.md](references/multi-aspect-betterment-loop.md)
-- [references/harness-goal-binding.md](references/harness-goal-binding.md)
+Only if needed mid-work (not required to start):  
+[references/product-quality-loop-contract.md](references/product-quality-loop-contract.md)
