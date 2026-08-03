@@ -1,5 +1,9 @@
 # Product Quality Loop Contract
 
+> **Boundary:** cycle method fields live here; multi-cycle continuity is
+> [betterment-engagement-runner.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/betterment-engagement-runner.md)
+> ([ADR-20260803](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260803-betterment-outer-loop-vs-cycle-method.md)).
+
 ## Contents
 
 1. [Control model](#control-model)
@@ -163,10 +167,12 @@ evidence, delivery boundary, and relation to findings/candidates.
 want polish later”. For these: **slice an L0/next shippable Work into B now**.
 
 **False B-empty:** Claiming B=∅ while R lists high-EV soft-only items is a
-Stop-Audit **fail** for engagement idle and a **continue** signal for cycle k+1.
+Stop-Audit **fail** for engagement idle. Slice L0 into B or leave state
+`status=active` for the outer runner—do not park+essay.
 
 Re-admission: when capacity frees, evidence changes, or blockers clear, promote
-R→B. Soft-blocked high-EV must not wait for a user “start next cycle” message.
+R→B on the next cycle. Soft-blocked high-EV must not wait for a user “start
+next cycle” message; the runner re-invokes with state.
 
 ### Quality Coverage
 
@@ -306,15 +312,17 @@ scope shrink of the engagement.
 
 ### Cycle vs engagement (normative)
 
-| Boundary | When | Goal API |
+| Boundary | When | Goal API / runner |
 | --- | --- | --- |
-| **Cycle Stop-Audit** | B cleared + verify cadence for cycle k | **Keep goal active**; open cycle k+1 |
-| **Engagement Stop-Audit / idle** | Fresh coverage card/re-scout admits B=∅ and R has no unblocked high-EV | `update_goal(complete)` allowed |
+| **Cycle Stop-Audit** | B cleared + verify cadence for cycle k | Keep goal active; **write state** for next invoke |
+| **Engagement Stop-Audit / idle** | Fresh coverage card/re-scout admits B=∅ and R has no unblocked high-EV | `update_goal(complete)` allowed; runner stops |
 
-**Loop engineering rule:** after every non-empty cycle, **re-research in the
-same run**. One-cycle-and-stop is an anti-pattern. **Illegal:** end the agent
-turn with a cycle report and wait for the user (or Goal API) to start k+1 while
-engagement is not idle. Outer objective stays product outcomes, not “cycle N.”
+**Loop engineering rule (ADR-20260803):** multi-cycle continuity is the **outer
+runner** (re-invoke + durable state; Goal as insurance). This contract owns
+**cycle quality** and honest idle/hard_wait signals. One-cycle-and-stop as
+*product done* is an anti-pattern. Prefer state handoff over long cycle essays.
+“要開 Cycle N+1 嗎？” is not a control protocol when a runner exists. Outer
+objective stays product outcomes, not “cycle N.”
 
 ### Stop-Audit package (required at cycle end and before engagement idle)
 
@@ -425,7 +433,7 @@ Dashboards are projections, not admission authority.
 
 Research → C with 8+ candidates → B admits all five above MinOutcomeDelta under
 capacity → R holds three capacity/authority items → execute five Workstreams →
-cycle readback → Stop-Audit → continue engagement to promote R or idle.
+cycle readback → Stop-Audit → write state (`status=active`) for the outer runner.
 
 ### Interface stability campaign
 
