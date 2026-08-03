@@ -5,7 +5,7 @@
 An agent entering a repository must be able to resolve its purpose, lifecycle,
 ownership, public surfaces, dependencies, delivery boundary, and known adoption
 gaps without guessing. The repository owns these facts; Skills owns their
-shared meaning; Sylphx Enact may ingest and project them as live adoption state.
+shared meaning; the live work system may ingest and project them as live adoption state.
 
 ## Canonical local surfaces
 
@@ -48,14 +48,14 @@ The machine manifest records, using controlled vocabulary where available:
 
 Profiles and portfolio selectors are referenced by stable identity and digest; the
 manifest does not copy their content. Current resolved organization-wide adoption state belongs in
-Sylphx Enact, not in hand-maintained repository prose.
+the live work system, not in hand-maintained repository prose.
 
 `architecture.components` records intended repository topology, not deployment
 claims. Its role, implementation, and effect values use generic ids so Profiles
 can define their meaning without the manifest schema copying policy vocabulary.
 `architecture.profileBindings` binds each applicable Profile id to its exact
 revision and content digest; it does not copy Profile policy. Live presence,
-revision, health, traffic, and production ownership remain Sylphx Enact
+revision, health, traffic, and production ownership remain the live work system
 observations. A selected Profile fails missing, stale, or unknown component
 facts closed rather than inferring them from filenames.
 
@@ -69,7 +69,7 @@ placement, traffic, health, and incident state remain external observations.
 Committed `PROJECT.md` and manifest content is repo-audience-safe static intent
 and configuration. Protected observed runtime topology, migration/cutover
 detail, control knobs, raw diagnostics, customer data, and live process state
-stay in Sylphx Enact or another authorized evidence store and are referenced by
+stay in the live work system or another authorized evidence store and are referenced by
 an opaque locator when the static manifest needs a durable relationship.
 
 ## Lifecycle contract
@@ -97,7 +97,7 @@ an opaque locator when the static manifest needs a durable relationship.
 ## Authority split
 
 Skills owns the manifest vocabulary and static predicates. Each repository owns
-its local facts, code, ADRs, and delivery truth. Sylphx Enact ingests those
+its local facts, code, ADRs, and delivery truth. the live work system ingests those
 facts, evaluates portfolio selectors, and owns current work/adoption state; it must
 not invent missing project intent. GitHub/GitLab metadata is an adapter
 projection, not a second manifest authority.
@@ -118,7 +118,7 @@ Do not restate static standards already owned by Skills.
 
 Validate the manifest against the active schema, check projection freshness,
 and run the repository's declared conformance entrypoint. Selected-repository adoption is
-confirmed through Sylphx Enact readback; a local manifest alone is not
+confirmed through the live work system readback; a local manifest alone is not
 organization-wide proof.
 
 ### Manifest readiness checklist

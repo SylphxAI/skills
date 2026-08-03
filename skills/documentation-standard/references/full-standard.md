@@ -16,7 +16,7 @@ drift.
 | What behavior/contract must implementation satisfy? | Spec, schema, test, or executable policy |
 | How is an operation performed or recovered? | Runbook |
 | What public capability exists? | Capability catalog derived from contracts/code where possible |
-| What is the current work/adoption/incident state? | Sylphx Enact live record, linked from docs if useful |
+| What is the current work/adoption/incident state? | Repository/forge Work or incident record, linked from docs if useful |
 | What static method applies across repositories? | Binding Skills package |
 | What does an API/schema/CLI expose now? | Generated reference from the authoritative source |
 
@@ -33,7 +33,7 @@ state, or capability status manually in two places.
 
 Static cross-repo instructions are authored under `skills/<id>/`. Product code,
 contracts, ADRs, specs, and runbooks live with the owning product repository.
-Sylphx Enact owns live work/adoption/incident/discussion state. Archived
+Live work/adoption/incident/discussion state lives in the product/forge systems that own it. Archived
 repositories may be linked as historical evidence but never as current law.
 
 ## Publication and diagnostic boundaries

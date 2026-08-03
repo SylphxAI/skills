@@ -79,7 +79,7 @@ the security-design contract before or alongside implementation.
 
 ## Boundaries
 
-- Does not grant deploy, credential, or MCP capabilities.
+- Does not grant deploy or credential capabilities.
 - Does not replace product-local technical ADRs.
 - Does not auto-route as a procedure; it is binding policy text with separate conformance evidence.
 

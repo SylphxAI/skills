@@ -8,7 +8,7 @@ boundaries.
 
 | Boundary | Authority |
 | --- | --- |
-| Work | Enact when available; otherwise the declared coordination adapter |
+| Work | the work ledger when available; otherwise the declared coordination adapter |
 | Source | Git repository and its contribution rules |
 | Correctness | Repository-owned tests, review, and aggregate CI verdict |
 | Artifact and deployment | Platform or the declared release provider |
@@ -142,7 +142,7 @@ declaration selects the terminal.
 
 The durable Work terminal is separate from worker occupancy. When only external
 CI, build, deployment, soak, or approval can advance a Work, checkpoint and use
-Enact `work.defer` when available to register the typed wake-up, release effects
+the work ledger `work.defer` when available to register the typed wake-up, release effects
 and the active claim/Run, and continue other ready work. Do not keep an agent
 session alive to poll.
 
@@ -178,7 +178,7 @@ Delivery evidence should allow another authorized agent to verify:
 - rollout health and user-visible behavior; and
 - recovery or rollback result when exercised.
 
-Enact may link these facts privately. Do not require Work ids in public commits
+the work ledger may link these facts privately. Do not require Work ids in public commits
 or PR bodies.
 
 ## Acceptance

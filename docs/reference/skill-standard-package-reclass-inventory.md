@@ -43,7 +43,6 @@ Legend:
 | `select-next-work` | **workflow** | RENAMED-workflow | Hard-renamed from `select-next-work-standard` |
 | `source-authoring-standard` | policy | KEEP-policy | Source identity/commit predicates |
 | `specification-control-plane-standard` | policy | KEEP-policy | Spec lifecycle; check overlap with project-manifest / enterprise later only if coincident |
-| `work-coordination-standard` | policy | KEEP-policy | Portable ledger semantics; pair with adapter `coordinate-enact-work` |
 
 ## Not `*-standard` but loop-critical (for exclusion discipline)
 
@@ -51,7 +50,6 @@ Legend:
 | --- | --- | --- |
 | `better-product` | workflow | Multi-aspect product betterment loop |
 | `finish-product` | workflow | Whole-product finish pass |
-| `coordinate-enact-work` | adapter | Live Enact ops |
 | `technology-stack-profile` | policy | Stack defaults (profile naming, not `-standard`) |
 
 ## Immediate non-goals

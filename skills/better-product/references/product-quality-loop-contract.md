@@ -422,7 +422,7 @@ Dashboards are projections, not admission authority.
 | --- | --- |
 | Static method | this Skill + composed standards |
 | Contract / B / R | product source or durable store bound to revision |
-| Work/claims (if fleet) | Enact via `coordinate-enact-work` |
+| Work/claims (if fleet) | the work ledger via `work-coordination-standard` |
 | Source | Git |
 | Engagement recovery | Harness Goal System |
 | Live proof | delivery/platform systems |

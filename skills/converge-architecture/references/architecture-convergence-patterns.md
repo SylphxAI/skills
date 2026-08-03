@@ -45,7 +45,7 @@ Useful public orientation: Martin Fowler's descriptions of [Strangler Fig Applic
 | Candidate | Good slice? | Reason |
 | --- | --- | --- |
 | One API method group backed by one bounded context and data surface | Usually | Independently contractable, testable, switchable, and recoverable |
-| One MCP tool family with stable tool schemas and transport boundary | Usually | Caller-visible contract and authority can move together |
+| One tool interface tool family with stable tool schemas and transport boundary | Usually | Caller-visible contract and authority can move together |
 | One worker job type with explicit input, idempotency, effects, and replay | Usually | State effects and recovery can be proven independently |
 | Create a target-language workspace and health route | No | Foundation only; no product behavior moved |
 | Rewrite 10,000 lines | No | Size is not an observable capability or cutover boundary |

@@ -1,6 +1,6 @@
 ---
 name: work-coordination-standard
-description: "Policy: portable work-ledger—claims, leases, checkpoints, handoff; runtime-agnostic (not live Enact API ops)."
+description: "Policy: portable work-ledger—claims, leases, checkpoints, handoff; runtime-agnostic."
 ---
 # Work Coordination Standard
 
@@ -32,11 +32,11 @@ standard.
 
 ## Boundaries
 
-- Does not grant deploy, credential, or MCP capabilities.
+- Does not grant deploy or credential capabilities.
 - Does not replace product-local ADRs where those own decisions.
 
 ## When not to use
 
-- Product-specific live operations → the matching coordination adapter Skill
+- Product-local work tracking UIs or forge-only workflows with no portable ledger need
   and that product's current API or tool schema.
 - Unrelated commercial packaging alone → commercial-decision-standard when in scope.

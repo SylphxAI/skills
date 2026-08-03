@@ -19,9 +19,7 @@ Give this to your agent:
 
 That is the complete user procedure. The agent reads [`INSTALL.md`](./INSTALL.md),
 detects its environment, installs the exact Skill catalog and compact runtime
-constitution, enables managed AutoSync, enrolls the canonical Sylphx Enact
-SaaS endpoint through native OAuth, preserves unrelated configuration,
-and verifies the result in a fresh context. The repository never asks the user
+constitution and enables managed AutoSync for that runtime.
 to translate that outcome into shell commands.
 
 The root [`SKILL.md`](./SKILL.md) is a discovery bootstrap for clients that
@@ -104,7 +102,7 @@ Sylphx uses a **thin dual-layer** model:
   operating manual.
 - **Skills** — portable domain methods loaded through host progressive
   disclosure when relevant.
-- **Live systems** — Enact, CI, deploy, and RBAC remain real authority;
+- **Live systems** — CI, deploy, and RBAC remain real authority;
   markdown does not grant tools or permissions.
 
 See [`ADR-20260731`](./docs/adr/ADR-20260731-thin-dual-layer-progressive-instruction-system.md),
@@ -148,7 +146,7 @@ runtime generations, drift repair, and backoff.
 Each tick verifies the installed catalog, profile metadata, source commit, and
 package bytes and checks the public remote head. Either a changed commit or
 local drift triggers an exact-source resync. There are no agent hooks, runtime
-approvals, unowned resident daemons, webhook relays, tokens, or Enact
+approvals, unowned resident daemons, webhook relays, or tokens
 dependencies. When offline, a verified last-known-good generation remains
 active and retries back off.
 
@@ -182,20 +180,6 @@ The deterministic adapter exposes install, status, clear, and scheduled-sync
 operations to agents and automation. Those operations are implementation
 mechanisms, not a user installation interface.
 
-### Sylphx Enact integration
-
-Static Skills and live coordination remain separate authorities. Every
-installation validates and registers the stable Sylphx SaaS MCP resource
-`https://enact.sylphx.com/api/mcp` through Codex, Claude Code, or Grok Build's
-native MCP configuration. The hostname is public product identity, not a
-credential or tenant grant. Codex and Claude use their native OAuth login
-command; Grok starts its native browser flow when the server connects. OAuth
-account, tenant, scopes, expiry, and revocation determine access. A runtime
-without safe OAuth support is partial rather than receiving a copied bearer
-token. See [`INSTALL.md`](./INSTALL.md) and
-[`ADR-20260720`](./docs/adr/ADR-20260720-agent-owned-installation-and-constitution.md).
-
----
 
 ## What you get
 
@@ -232,9 +216,9 @@ Examples: `analyze-critically` · `deliberate-structured` · `review-reference-o
 
 ### Blueprints, craft & adapters
 
-Whole-product craft surfaces plus live-system adapters (for example Enact).
+Whole-product craft surfaces and product-specific adapters.
 
-Examples: `design-app` · `design-saas-web-platform` · `craft-interface` · `design-prompt-architecture` · `coordinate-enact-work`
+Examples: `design-app` · `design-saas-web-platform` · `craft-interface` · `design-prompt-architecture`
 
 Open any package: `skills/<id>/SKILL.md` is the contract; deeper material lives
 in `references/`.
@@ -272,7 +256,7 @@ skills/<id>/
   owner.
 - **Compound tasks** may load several useful Skills. One owner produces each
   requested artifact while standards constrain it without duplicate reports.
-- **Runtime tools** (browse, execute, MCP, credentials) stay with the agent;
+- **Runtime tools** (browse, execute, credentials) stay with the agent;
   skills teach method and expected artifacts.
 
 Authority notes: [docs/adr/ADR-0001-public-agent-instruction-source.md](./docs/adr/ADR-0001-public-agent-instruction-source.md) ·
@@ -289,7 +273,7 @@ Authority notes: [docs/adr/ADR-0001-public-agent-instruction-source.md](./docs/a
 | --- | --- |
 | `skills/<id>/` | **Only** writable semantic source for packages |
 | `catalog.json` | Deterministic index from frontmatter |
-| `runtime/` | Agent-facing install / sync / auto-sync / verified MCP enrollment adapters and compact constitution |
+| `runtime/` | Agent-facing install / sync / auto-sync adapters and compact constitution |
 | `INSTALL.md` | Environment-neutral installation contract for the receiving agent |
 | `scripts/` · `tests/` | Integrity gates only |
 | `docs/adr/` | Repository-level decisions |

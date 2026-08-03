@@ -20,7 +20,7 @@ Use the smallest prompt that reliably changes behavior.
   skills, commands, plugin, or registry layer.
 - Put repo facts in the project's agent file (`AGENTS.md` / `CLAUDE.md`).
 - Put durable task decisions in product-owned specs, ADRs, tests, evals, and
-  changelogs, or in Sylphx Enact decision/evidence records when live work owns
+  changelogs, or in decision/evidence records when live work owns
   them. Runtime memory is a cache or pointer, never the sole decision home.
 
 Do not duplicate the same rule across layers. An always-on projection states
@@ -40,7 +40,7 @@ Choose the repository by semantic ownership, not by the `SKILL.md` filename:
 | Compact rules required before on-demand loading | Canonical always-on constitution source and its runtime projection | Omission can break the first meaningful action or every task |
 | Detailed static standard or independently useful cross-runtime procedure | [`SylphxAI/skills`](https://github.com/SylphxAI/skills) | Admitted package with a clear trigger, boundary, predicates or artifact, and validation |
 | Historical decision, profile lineage, or migration alias | Its owning decision/history repository | Must not duplicate or override current Skills semantics |
-| Runtime-native command, permission, hook, MCP binding, or vendor integration | Owning runtime, plugin, or local configuration | Depends on a specific runtime capability and carries no shared policy |
+| Runtime-native command, permission, hook, tool interface binding, or vendor integration | Owning runtime, plugin, or local configuration | Depends on a specific runtime capability and carries no shared policy |
 | Repository fact, command, hazard, or validation note | Owning repository's local instruction surface | True only for that repository or machine boundary |
 
 Project only the compact pre-loading subset into the always-on constitution;
@@ -166,7 +166,7 @@ The adapted prompt must:
 - Leave tool-specific skills, commands, permissions, and native wiring in the
   tool's own home.
 - Put static standards and independently reusable cross-runtime methods in
-  `SylphxAI/skills`; keep only runtime-native tooling, MCP bindings, and vendor
+  `SylphxAI/skills`; keep only runtime-native tooling, tool interface bindings, and vendor
   wrappers in the plugin or runtime registry layer.
 - Respect higher-priority host instructions instead of pretending company policy can
   override the tool's system or platform policy.
@@ -335,7 +335,7 @@ Bootstrap prompts must not:
 
 - copy standards, principles, or installed skills into the bootstrap
   prompt body;
-- request elevated permissions, hooks, MCP servers, credential storage, dynamic
+- request elevated permissions, hooks, tool interface servers, credential storage, dynamic
   shell injection, model overrides, third-party payload downloads, or anything
   outside the authenticated package install and constitution projection surface;
 - silently overwrite per-repo `PROJECT.md`, `project.manifest.json`, or

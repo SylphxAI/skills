@@ -4,7 +4,7 @@
 
 | Concern | Owner |
 | --- | --- |
-| Work / claim / review | Enact |
+| Work / claim / review | Repository / forge Work tracking (if used) |
 | Source history | Git |
 | Source correctness | This repository CI (`source-ci/pass`) |
 | Production artifact build | Sylphx Platform (once) |

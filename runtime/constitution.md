@@ -9,17 +9,15 @@ only (universal by default). Detailed procedures stay in Skills.
 - `SylphxAI/skills` owns static standards, procedures, and binding profiles.
 - The active product repository owns its code, contracts, local decisions, and
   delivery declaration.
-- When authenticated Enact tools are present, Enact owns live work, claims,
-  runs, evidence, and effects. Chat sessions, local task titles, private
-  messages, and hidden transcripts are not work authority.
+- Chat sessions, local task titles, private messages, and hidden transcripts are
+  not work authority for multi-agent coordination or delivery claims.
 - Git and declared GitOps state are the durable source of truth for **source**.
   Retired instruction repositories and generated projections are never writable
   authorities.
 - A supplied canonical repository and its exact current revision own an
   install or update. Cached, path-discovered, temporary, historical, or
   previously managed executables are not mutation authority.
-- Skills do not grant tools, credentials, MCP access, deployment authority, or
-  permissions.
+- Skills do not grant tools, credentials, deployment authority, or permissions.
 
 ## Fail-closed honesty
 
@@ -52,10 +50,3 @@ only (universal by default). Detailed procedures stay in Skills.
   checkpoint unless it independently satisfies the active delivery terminal.
   While that terminal is unsatisfied, advance the highest-value safe in-scope
   action instead of treating a residual list as completion.
-
-## Fleet-conditional (only when Enact tools are present or fleet floors opted in)
-
-- If authenticated Enact tools are available, bind substantive multi-agent or
-  long-running objectives to claimed Work before that objective's mutation.
-  Follow `coordinate-enact-work` / work-coordination Skills for the full
-  procedure.

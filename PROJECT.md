@@ -19,7 +19,7 @@ This repository owns:
 - canonical packages under `skills/<id>/`;
 - one deterministic public catalog;
 - the agent-owned repository + `install this` contract, root discovery Skill,
-  compact runtime constitution, mandatory AutoSync, and canonical Sylphx Enact
+  compact runtime constitution and mandatory AutoSync
   SaaS enrollment;
 - package validation and Codex / Claude / Grok installation/update adapters;
 - public contribution and community entry points proportional to that scope.

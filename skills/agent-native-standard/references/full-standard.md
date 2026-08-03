@@ -4,7 +4,7 @@
 
 Design systems as if agents are primary operators.
 
-- Expose meaningful operations as typed tools, CLIs, APIs, or MCP surfaces.
+- Expose meaningful operations as typed tools, CLIs, APIs, or tool surfaces.
 - Use Effect Schema as the shared contract for tools, HTTP, forms, generated docs, tests, and clients when the repo standard allows it.
 - Prefer generated UIs, SDKs, API references, fixtures, and validation from schemas over hand-maintained duplicates.
 - Expose reusable agent procedures as Agent Skills when the surface is

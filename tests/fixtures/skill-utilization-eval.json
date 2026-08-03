@@ -4,10 +4,10 @@
   "status": "design-contract-and-oracle-fixtures",
   "residualRef": "docs/reference/skill-utilization-eval-residual.md",
   "pinnedAtAuthoring": {
-    "skillsCommit": "81974bba0d207d76d0961e7d46317e4cfac2589c",
-    "catalogCount": 118,
-    "catalogDigestSha256OfCatalogJson": "sha256:3affda685336bc1fc40b9c7b545979f3dca0a430e677acb4f48f94b82a987305",
-    "note": "Authoring pin after structural L0 floor markers; not live host behavior-oracle proof."
+    "skillsCommit": "pending",
+    "catalogCount": 117,
+    "catalogDigestSha256OfCatalogJson": "sha256:9fa43ef331b9758791f585c97dc8e38ade79c731b8e71af3a5f67103e9b3cdea",
+    "note": "Post Enact/MCP retirement; 117 skills; not multi-host utilization proof."
   },
   "metricHierarchy": [
     "behaviorOracle",
@@ -370,9 +370,8 @@
         "work-coordination-standard"
       ],
       "behaviorOracle": {
-        "mandatoryObservable": "Produces portable coordination semantics, not live Enact tool calls or a product-specific API tutorial alone.",
+        "mandatoryObservable": "Produces portable coordination semantics, not live product API calls or a product-specific API tutorial alone.",
         "mustNot": [
-          "Treat coordinate-enact-work as the sole primary owner of this job",
           "Treat drive-to-delivery as the sole primary owner of this job"
         ]
       },
@@ -381,29 +380,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "coordinate-enact-work",
         "drive-to-delivery"
-      ]
-    },
-    {
-      "id": "critical-enact-work",
-      "suite": "critical-skill",
-      "prompt": "Using authenticated Enact tools, claim the ready Work, attach evidence, and complete or defer it correctly.",
-      "expectedSkills": [
-        "coordinate-enact-work"
-      ],
-      "behaviorOracle": {
-        "mandatoryObservable": "Uses live Enact work operations (claim/run/evidence/complete or defer) rather than inventing a new portable ledger standard.",
-        "mustNot": [
-          "Treat work-coordination-standard as the sole primary owner of this job"
-        ]
-      },
-      "failureTaxonomy": [
-        "skill_miss",
-        "model_limit"
-      ],
-      "nearNeighbours": [
-        "work-coordination-standard"
       ]
     },
     {
@@ -661,27 +638,6 @@
       "nearNeighbours": [
         "select-next-work",
         "delivery-standard"
-      ]
-    },
-    {
-      "id": "neighbour-work-vs-enact",
-      "suite": "near-neighbour",
-      "prompt": "We need portable claim/lease/checkpoint semantics that any runtime can implement, not Sylphx Enact API calls.",
-      "expectedSkills": [
-        "work-coordination-standard"
-      ],
-      "behaviorOracle": {
-        "mandatoryObservable": "Keeps portable ledger semantics; does not require live Enact tool operations as the primary method.",
-        "mustNot": [
-          "Treat coordinate-enact-work as the sole primary owner of this job"
-        ]
-      },
-      "failureTaxonomy": [
-        "skill_miss",
-        "model_limit"
-      ],
-      "nearNeighbours": [
-        "coordinate-enact-work"
       ]
     },
     {

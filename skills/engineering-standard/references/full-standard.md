@@ -419,7 +419,7 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
 
 Current technology, typed-effect, contract/transport, database-change, and
 AI-runtime selections resolve from the binding profile packages in
-`SylphxAI/skills` plus current Sylphx Enact organization-wide adoption state. This standard owns the
+`SylphxAI/skills` plus current the live work system organization-wide adoption state. This standard owns the
 bar and proof obligations; the selected profile owns replaceable choices.
 Repositories record only their local selected stack and exceptions, not a copy
 of the technology stack profile.

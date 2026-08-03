@@ -47,7 +47,6 @@ When authoring a workflow:
    - `source-authoring-standard` when mutating git source;
    - `evidence-and-claims-standard` when grading claims;
    - `work-coordination-standard` when designing portable ledgers;
-   - `coordinate-enact-work` when live Enact tools are present;
    - `drive-to-delivery` when one accepted objective must reach terminal without prompt churn;
    - `select-next-work` when continuous work selection OS behavior is in scope.
 3. Do **not** restate those packs' full predicates; name and apply them.
@@ -64,7 +63,6 @@ When authoring a workflow:
 - workflows: drive-to-delivery (per admitted Work), select-next-work only if
   continuous Work OS selection is required
 - policy: delivery / evidence / engineering / stack when implementing
-- adapters: harness goal binding (uncapped), Enact when present
 - specialists: interface, performance, game, pricing, security, ...
 
 ## Tech stack standards: where?
@@ -115,8 +113,6 @@ Operate <system> with live tools/auth: <ops>. Not portable semantics-only design
 
 | `drive-to-delivery` | One accepted objective to delivery terminal | Continuous new-Work discovery; short Q&A |
 | `select-next-work` | Continuous next-work selection OS | Driving one bounded objective alone |
-| `work-coordination-standard` | Portable ledger semantics | Live Enact API ops |
-| `coordinate-enact-work` | Live Enact ops | Portable semantics-only design |
 
 ## Anti-patterns
 
@@ -124,7 +120,7 @@ Operate <system> with live tools/auth: <ops>. Not portable semantics-only design
 - Filing pure loops as pure policy solely to keep a suffix
 - Putting multi-page excellence essays in public L0
 - Copying tech stack / delivery predicates into every workflow
-- Treating "automation" skill text as runtime auto-loop without Goal/scheduler/Enact
+- Treating "automation" skill text as runtime auto-loop without host Goal/scheduler
 - Mega-merging unrelated reviews to reduce package count
 - Inventing a meta-router because policy/workflow boundaries are unclear
 - Non-portable frontmatter fields beyond `name`/`description` for class labels

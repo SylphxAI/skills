@@ -21,10 +21,9 @@ Composes with:
 | Repository / forge | PR-required + Merge Queue policy, branch protection/rulesets |
 | Project CI | What must pass for a Git SHA |
 | Platform | Observe configured aggregate verdict; build and deploy exact artifact |
-| Enact | Optional Work coordination and durable findings |
 
 CI must not reject a valid change solely because it arrived through a pull
-request + Merge Queue. Platform and Enact do not select the landing path.
+request + Merge Queue. Platform do not select the landing path.
 
 ## Source integration
 
@@ -241,7 +240,7 @@ To reduce an existing thick pipeline:
    an arbitrary gate count is reached.
 
 Do not build CI whose primary purpose is to police whether an agent used PR or
-direct trunk, prove Enact lineage, or reproduce Platform deployment state.
+direct trunk, prove work lineage, or reproduce Platform deployment state.
 
 ## Required-check wiring
 
@@ -328,7 +327,7 @@ quality checks.
 
 - Ordinary Merge Queue landings produce the exact default-branch SHA used by
   verdict without ingress-only failure.
-- External PRs require no Enact Work id.
+- External PRs need no internal Work id.
 - A newer green SHA cannot hide a required failure if the required check set is
   incomplete for that SHA.
 - Merge Queue is the ordinary agent-native admission path (ADR-20260803).

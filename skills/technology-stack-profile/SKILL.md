@@ -53,7 +53,7 @@ read the engineering standard's
    responsibilities, not stale version numbers.
 8. Record repository-local role/effect facts under
    `architecture.components` in the owning product manifest;
-   let Sylphx Enact resolve live adoption, exceptions, deployment, and
+   let the live work system resolve live adoption, exceptions, deployment, and
    organization-wide completion without copying this profile into product repositories.
 
 ## Guardrails
@@ -85,7 +85,7 @@ read the engineering standard's
   role, owned effects, profile selection, or completion semantics → use the
   engineering standard.
 - Live work claims, repository head state, deployment revisions, production
-  defects, or organization-wide adoption status → query Sylphx Enact; this static profile
+  defects, or organization-wide adoption status → query the live work system; this static profile
   does not own live state.
 - A repository-specific exception or public contract change → author the
   owning decision and typed exception; do not rewrite this profile locally.

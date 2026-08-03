@@ -14,9 +14,7 @@ the receiving runtime unless the user explicitly names additional runtimes.
 
 Install or update the complete Sylphx-managed Skill catalog and compact runtime
 constitution for the agent runtime receiving this request. Enable managed
-AutoSync for that runtime and validate and enroll the canonical Sylphx Enact
-SaaS resource `https://enact.sylphx.com/api/mcp` through the runtime's native
-HTTPS/OAuth surface. Configure other supported runtimes only when the user
+AutoSync for that runtime. Configure other supported runtimes only when the user
 explicitly asks for them. Preserve unrelated instructions, Skills,
 configuration, and data. Finish with effective readback, not a folder-count
 claim.
@@ -85,7 +83,7 @@ claim.
    did not change. A missing or different `sourceCommit` is not complete.
 6. Verify behavior in a fresh context or the runtime's closest supported
    readback boundary. The new context must identify `SylphxAI/skills` as static
-   instruction source, distinguish product Git truth from Enact live
+   instruction source, distinguish product Git truth from live
    work, claim work rather than files, resolve the active delivery lane, and
    separate source, admission, landing, deployment, and live proof. An active
    context that predates installation is not evidence. Complete package bytes
@@ -108,53 +106,6 @@ claim.
    unit files, an unavailable user bus, a detached best-effort process, a stale
    heartbeat, or an unstarted cron entry are not AutoSync. Never ask the user to
    keep a shell process alive.
-8. Resolve the live integration separately from static installation:
-   - The canonical Sylphx SaaS MCP resource is
-     `https://enact.sylphx.com/api/mcp`. This stable public product hostname is
-     service metadata, not a credential, and is the default for every
-     installation. `SYLPHX_ENACT_MCP_URL` or an explicit URL may
-     override it only for controlled staging or isolated evaluation; they do
-     not define an alternative self-hosted production topology.
-   - Validate the endpoint with the repository adapter's `integration discover`
-     operation. It must use HTTPS (except loopback evaluation), expose RFC 9728
-     protected-resource metadata, bind the exact `/api/mcp` resource, advertise
-     exactly the public non-effect Enact scopes, and declare streamable HTTP transport.
-     Discovery follows no redirects and sends no credential.
-   - If discovery is `ready_for_enrollment`, use the adapter's `integration
-     enroll` operation for the current runtime. It delegates configuration to
-     the runtime's native MCP command and never writes an authorization header.
-     Preserve unrelated MCP entries and do not delete a legacy adapter unless
-     its ownership and replacement are both proven.
-   - Complete authentication without writing secret values into config:
-     - **Interactive hosts:** use the runtime's native OAuth flow when it
-       supports one. For clients that accept an explicit OAuth scope set, pass
-       the exact scopes discovered from the protected resource instead of
-       inheriting the authorization server's broader managed-client catalog.
-       The agent starts and owns the flow; the user may approve identity-provider
-       consent but must not be asked to type an installation command or paste a
-       token. Never substitute an MCP session id, Work claim, static header, or
-       copied bearer token for OAuth.
-     - **Break-glass headless only:** ordinary installs use OAuth. Managed
-       bearer enrollment is opt-in when `SYLPHX_ENACT_BEARER_TOKEN_ENV` explicitly
-       names an env var that already holds a short-lived/rotated agent
-       principal. The installer then enrolls Codex with
-       `--bearer-token-env-var` pointing at that env *name* only. It must not
-       mint, print, copy, or write the secret value; must not autodetect token
-       files; and must not shell-autoload or wrap vendor agent executables.
-       Static headers and inlined tokens remain forbidden. Prefer OAuth
-       discovery/login/refresh/revocation for all interactive and fleet hosts
-       that can complete MCP client OAuth.
-   - Verify the integration in a new context: the server initializes over
-     remote HTTPS, its instructions load, authenticated `tools/list` succeeds,
-     and the expected Work tools are visible. Do not mutate Work merely to prove
-     connectivity. An integration that cannot authenticate is `partial`. If the
-     runtime has neither OAuth nor a fleet-managed bearer env, report that
-
-     When Enact MCP tools are available after OAuth (or rare break-glass
-     bearer enrollment), agents must call `work.propose_or_get` before
-     substantive mutation (see `coordinate-enact-work` and the runtime
-     constitution). Report an auth capability gap instead of persisting a
-     bearer token or wrapping vendor executables.
 
 ## Boundaries
 
@@ -168,10 +119,7 @@ claim.
   hosting-runtime supervisor, applies only exact canonical generations, and
   preserves the last known-good generation while offline.
 - Do not copy, request, mint, print, or persist credentials; infer tenant
-  identity; configure deployment access, hooks, or model overrides. The
-  canonical public MCP hostname may be embedded and registered because it is
-  Sylphx SaaS service identity, not authorization. OAuth consent and credentials
-  remain owned by the runtime and identity provider.
+  identity; configure deployment access, hooks, or model overrides.
 - Do not load retired instruction repositories, generated projections, or any
   superseded runtime layout as current instruction authority. A bounded
   installer migration may read one exact historical projection solely to
@@ -182,8 +130,7 @@ claim.
 
 Return `complete`, `partial`, or `blocked`; the exact repository commit; each
 runtime's catalog, constitution, and AutoSync readback; fresh-context
-verification; the Enact integration disposition (authenticated or a
-typed gap); and any capability or authorization gap. Keep internal commands and
+verification; and any capability or authorization gap. Keep internal commands and
 routine logs out of the user-facing response unless they are necessary to
 diagnose a typed failure. Never end by offering installation commands to the
 user.

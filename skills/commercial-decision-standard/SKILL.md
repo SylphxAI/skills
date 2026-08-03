@@ -29,7 +29,7 @@ standard.
 
 ## Boundaries
 
-- Does not grant deploy, credential, or MCP capabilities.
+- Does not grant deploy or credential capabilities.
 - Does not replace product-local ADRs where those own decisions.
 
 ## When not to use

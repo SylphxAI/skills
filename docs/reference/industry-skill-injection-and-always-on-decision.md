@@ -38,9 +38,8 @@ norms; Skills for detailed task methods.
 Thin dual-layer progressive instruction system:
 
 - L0 miss-class-A floors only (hard budget; public default universal).
-- L0-fleet conditional Enact one-liner.
 - L1/L2 portable agentskills packages.
-- L3 live systems (Enact/CI/deploy/RBAC) for real authority.
+- L3 live systems (CI/deploy/RBAC) for real authority.
 - No portable meta-router.
 - Catalog listing budget and utilization eval as product residuals.
 

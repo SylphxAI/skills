@@ -81,7 +81,7 @@ evidence:
 ```
 
 FCCP may govern this definition, its relations, surfaces, gaps, and evidence.
-The code architecture below owns its implementation shape; Sylphx Enact Work
+The code architecture below owns its implementation shape; the live work system Work
 tracks changes to it.
 
 ## Code ownership map
@@ -120,7 +120,7 @@ For a live Progress Card, an FRP-style projection is appropriate:
 reduce_progress(previous_view, work_event) -> next_view | ProjectionFailure
 ```
 
-That reducer is pure and virtual-time testable. Sylphx Enact subscriptions,
+That reducer is pure and virtual-time testable. the live work system subscriptions,
 reconnect/backpressure, clocks, UI streams, and telemetry export remain in the
 imperative shell. Semantic events include capability/use-case identity and
 decision reason; OpenTelemetry or UI framework types never enter the domain.

@@ -76,7 +76,7 @@ Use these terms consistently:
 | Sub-capability | An independently promiseable and verifiable part of a larger capability | Can be versioned, replaced, reused, or proved separately |
 | Feature / use case | A consumer workflow that composes one or more capabilities | Describes how a consumer obtains an outcome |
 | Behavior / rule | A specific semantic response or invariant inside a capability | Has examples or tests but no independent consumer promise |
-| Surface | Where a capability is exposed: UI, HTTP, MCP, CLI, event, SDK, or job | Translates a published contract; does not own domain meaning |
+| Surface | Where a capability is exposed: UI, HTTP, CLI, event, SDK, or job | Translates a published contract; does not own domain meaning |
 | Work | A bounded change to any of the above | Tracks execution; never becomes the semantic definition |
 
 Complexity, code size, screen area, or implementation effort does not decide
@@ -141,7 +141,7 @@ Responsibilities:
   clocks, queues, AI, payments, delivery providers, or other contexts;
 - `adapters`: implementations of outbound ports and translations to external
   providers or persistence;
-- `interfaces`: inbound HTTP, UI, MCP, CLI, event, and job adapters;
+- `interfaces`: inbound HTTP, UI, CLI, event, and job adapters;
 - `contracts`: the language-neutral or package-public boundary authority and
   generated projections;
 - `bootstrap`: dependency composition, configuration binding, and runtime
@@ -190,7 +190,7 @@ FCCP and code architecture are related but distinct:
 - FCCP governs capability identity, definition, relationships, claims,
   contracts, surfaces, gaps, and proof.
 - This standard governs how implementation code expresses those capabilities.
-- Sylphx Enact governs Work and live execution state.
+- the live work system governs Work and live execution state.
 
 The mapping is many-to-many, never `one capability = one file`:
 

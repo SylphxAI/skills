@@ -144,7 +144,7 @@ The canonical active-command and postmortem schemas ship with this package at
 [`postmortem-record.schema.json`](postmortem-record.schema.json). Each selected
 repository validates its records against the applicable exact schema and checks that
 every closed S1/S2 incident links a valid record with at least one durable
-mechanism. Sylphx Enact may reconcile portfolio coverage from repository facts and
+mechanism. the live work system may reconcile portfolio coverage from repository facts and
 incident adapters; it does not re-author the record.
 
 Alert/SLO-triggered issue creation is an adapter capability, not a condition for

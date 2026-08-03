@@ -1,4 +1,4 @@
 interface:
   display_name: "Work Coordination Standard"
-  short_description: "Policy: portable work-ledger—claims, leases, checkpoints, handoff; runtime-agnostic (not live Enact API ops)."
+  short_description: "Policy: portable work-ledger—claims, leases, checkpoints, handoff; runtime-agnostic (portable ledger)."
   default_prompt: "Apply work-coordination-standard constraints on the active task/workspace."

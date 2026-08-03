@@ -106,7 +106,7 @@ Use the smallest mature mechanism that can be the source of truth:
   protocol stack. A single-language private boundary may use a smaller local
   authority until it becomes public, cross-runtime, persistent, or independently
   versioned.
-- Agent tools and MCP surfaces: JSON Schema or typed tool contracts.
+- Agent tools and tool surfaces: JSON Schema or typed tool contracts.
 - Manifests/config: JSON Schema, CUE, or equivalent typed validators.
 - Policy: OPA/Rego, Conftest, Kyverno, GitHub rulesets, or repo-native
   policy-as-code.

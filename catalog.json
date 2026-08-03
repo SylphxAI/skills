@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 118,
+  "count": 117,
   "skills": [
     {
       "name": "agent-first-development-standard",
       "description": "Policy: multi-agent delivery packets—attribution, collision scopes, machine acceptance.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:fe6920afe44881265f86767e9acad578d11a40f8f4faa297d3dc75f82b40ef0e"
+      "packageDigest": "sha256:cd49d7b083d2180a15cfda8ec05bcec7951b26c7b3bbad7a3816d944d0b313ec"
     },
     {
       "name": "agent-native-standard",
       "description": "Policy: agent-operable products—typed state, schema tools, recoverable workflows, run traces.",
       "path": "skills/agent-native-standard/SKILL.md",
-      "packageDigest": "sha256:2367693097378b0b930941b05d5b38fcc80d8f006e18bc80c7e974e3d685b0a9"
+      "packageDigest": "sha256:8c42003d94a63045cae7bac1c31ca27cec1a7fbb9d369acd7346273b5b0d98f3"
     },
     {
       "name": "analyze-causal-inference",
@@ -43,7 +43,7 @@
       "name": "better-product",
       "description": "Open betterment loop (no fixed objective): quality matrix, scout, all high-EV B, oracle verify; idle at empty high-EV frontier (else pursue-product-objective).",
       "path": "skills/better-product/SKILL.md",
-      "packageDigest": "sha256:5b270be3d244346f52795ea6ba0a273103786888ec7c3f04b302d69b12bee822"
+      "packageDigest": "sha256:442a8efb77795a2e22009100fd0c3587d9e288f9d3f699da4fcbe8541ac13c1e"
     },
     {
       "name": "bound-task-scope",
@@ -61,19 +61,19 @@
       "name": "ci-admission-standard",
       "description": "Policy: protected-branch CI admission—required checks, risk-matched gates, flake/preview.",
       "path": "skills/ci-admission-standard/SKILL.md",
-      "packageDigest": "sha256:419f88b58ba0ac19b39ff77631ac6ee208799b89f7d168bf03c043bec8547eea"
+      "packageDigest": "sha256:8f59d509fb19aaf18ba1bdb150d40878ae534e8cc183524c601ea83af089dfaa"
     },
     {
       "name": "ci-runner-capacity-standard",
       "description": "Policy: CI runner pools—fairness, isolation, scaling, queue pressure.",
       "path": "skills/ci-runner-capacity-standard/SKILL.md",
-      "packageDigest": "sha256:89de21ac93df7b8546b2a6d610232810df012e06fb21f37f7675078c4080fc02"
+      "packageDigest": "sha256:77d938e01cbec745947bf970c5fb6e51f43b1c49b4124af5fb9fdd1a5c83f60f"
     },
     {
       "name": "commercial-decision-standard",
       "description": "Policy: durable commercial decisions—pricing, packaging, entitlements, licensing.",
       "path": "skills/commercial-decision-standard/SKILL.md",
-      "packageDigest": "sha256:41fe3b80930ed179463b8165464bffee3426573da98e8f6a62edfb12ff2139e3"
+      "packageDigest": "sha256:58efc824f0c2d44d724ebeac3b2dccf433d1512864b2d19691b3d93eeb08edb8"
     },
     {
       "name": "compose-product-portfolio",
@@ -91,13 +91,7 @@
       "name": "converge-architecture",
       "description": "Converge architecture options to one decided shape with tradeoffs and residuals.",
       "path": "skills/converge-architecture/SKILL.md",
-      "packageDigest": "sha256:b5b60f1da3c03494587bcd9ebd0a6f8a3474165dccb1c6f39b77c8a06c39acc7"
-    },
-    {
-      "name": "coordinate-enact-work",
-      "description": "Operate live Enact Work APIs: claim, attempt, evidence, handoff with authenticated Enact tools.",
-      "path": "skills/coordinate-enact-work/SKILL.md",
-      "packageDigest": "sha256:8fc3d0a5637744c8f172b53e81a93fad909a7e4a71cee8f028a23a6daefc0809"
+      "packageDigest": "sha256:5cc13936f9ed03ba29dd5387f586043079fd31194d593b2772fa96419af42ccb"
     },
     {
       "name": "craft-interface",
@@ -115,7 +109,7 @@
       "name": "decision-quality-standard",
       "description": "Policy: decision quality—framing, alternatives, tradeoffs, commitment, learning.",
       "path": "skills/decision-quality-standard/SKILL.md",
-      "packageDigest": "sha256:073099e4fc3d73ebf5846ef8acb741affa83465b2d75aaeac3528f00e03a73b9"
+      "packageDigest": "sha256:c8f6112e95f625fe32b539bd8ede3616f8186496a0f854ce3d89bae130d04745"
     },
     {
       "name": "deliberate-structured",
@@ -127,7 +121,7 @@
       "name": "delivery-standard",
       "description": "Policy: delivery honesty—source vs artifact vs desired/current vs live proof.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:cb37a4b3e593ccf30012a27481834a04dd5916eb6f10228a9dcdb138b3fdbba0"
+      "packageDigest": "sha256:90b650278ee1b805f5315378f91473762f46a4d6798108accb3f849ec01383a3"
     },
     {
       "name": "design-app",
@@ -151,7 +145,7 @@
       "name": "design-prompt-architecture",
       "description": "Design prompt/context architecture: always-on constitution, Skill metadata, subagent briefs, layers without policy duplication.",
       "path": "skills/design-prompt-architecture/SKILL.md",
-      "packageDigest": "sha256:92a0167ddbc3f1e1e9b649878882810543413e4445cb74a9320bbd01cde303bb"
+      "packageDigest": "sha256:911e3e3e55bf4eca5814d961107c2aea022ca947f7f7ec399de3e0aa8b407ec0"
     },
     {
       "name": "design-provenance-system",
@@ -199,13 +193,13 @@
       "name": "documentation-standard",
       "description": "Policy: docs create/retire—minimal sufficient, freshness, low prose drift.",
       "path": "skills/documentation-standard/SKILL.md",
-      "packageDigest": "sha256:c85b2169cdbd4d2452178092e7715a23eff8bf83f600100ae3c87b86ebf7be13"
+      "packageDigest": "sha256:e2f38fd59b1230d3825507319f6fb7ec6cbfc35da31d57eb6c7d84371e7ef1d9"
     },
     {
       "name": "drive-to-delivery",
       "description": "Drive one multi-phase engineering objective through land/live terminal evidence without re-prompt between phases.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:cff75b3506a8e4a7f635f6a16b8a764666e9813167ee2cb7141118e0b77e9072"
+      "packageDigest": "sha256:bd4fd709363f42fd86d861bbbb268bf6f8358e09b707a3790edf300e9a060bd9"
     },
     {
       "name": "edit-preserving-voice",
@@ -229,19 +223,19 @@
       "name": "engineering-standard",
       "description": "Policy: engineering method—design, verification, change safety, repro-driven fixes.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:e42b0a735b8a7a10d307f38df04adc6daeb2a772712275803398e8b717e5d3ec"
+      "packageDigest": "sha256:8f379564abea110385a0ae64c5628fd44576727fcd944137dc00e62c7c01be9c"
     },
     {
       "name": "enterprise-control-plane-standard",
       "description": "Policy: multi-repo control plane—rulesets, reconcilers, audits, status.",
       "path": "skills/enterprise-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:e1ea5ab6edf762c09ff5224ab8c7e3ffdc2be4ede2a4874810daada5e8b82add"
+      "packageDigest": "sha256:efb7d2f01b5d6a920558517ca06c5303ff8da19ee8b44c066fc4e039d4c828d2"
     },
     {
       "name": "enterprise-profile-standard",
       "description": "Policy: versioned enterprise profiles—selectors, defaults, exceptions, migration.",
       "path": "skills/enterprise-profile-standard/SKILL.md",
-      "packageDigest": "sha256:e1aeb88d9730f73471ef9038153fb763053d5fc2cff0627155c03b1c32fb82b3"
+      "packageDigest": "sha256:789be618ba1fbe9d354ce94e370db2c6d53cecec48bcefdf001d055a9d1ad578"
     },
     {
       "name": "evidence-and-claims-standard",
@@ -277,13 +271,13 @@
       "name": "incident-standard",
       "description": "Policy: production incidents—command, severity, mitigation, comms, learning.",
       "path": "skills/incident-standard/SKILL.md",
-      "packageDigest": "sha256:7bbbd7dab0fb968bfd430c06fd4302d564c8c3edd2b1a08ab478e68cf94e6374"
+      "packageDigest": "sha256:17891d17f00fd4dfaa7010d9f2697aa16518557f94f7d2a411d4e4341171f13a"
     },
     {
       "name": "instruction-evolution-standard",
       "description": "Policy: evolve Skills/constitutions/profiles—owner, migration, retirement.",
       "path": "skills/instruction-evolution-standard/SKILL.md",
-      "packageDigest": "sha256:5909b202c687f44863f49971ac4d99cac774b4a109c83123f99edcfcd78ffbe6"
+      "packageDigest": "sha256:d549e05d32143b0b3ed12c010149269bcf27e43b1e29496c8430d352eca73c5e"
     },
     {
       "name": "maintain-product",
@@ -319,7 +313,7 @@
       "name": "parallel-change-integration-standard",
       "description": "Policy: parallel change integration—branches, rebase, collision, exact-SHA.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
-      "packageDigest": "sha256:65adce5072f9659ac1700c9926eb85c02649f46f36772ef90979cc559a9ab1d7"
+      "packageDigest": "sha256:a9869fcb705c663a21c6a3a8609fd24f79ae1bb2bbd72c206d1f4447a2f958d0"
     },
     {
       "name": "prefer-sylphx-platform",
@@ -343,7 +337,7 @@
       "name": "project-manifest-standard",
       "description": "Policy: project manifest—ownership, surfaces, delivery terminals, machine facts.",
       "path": "skills/project-manifest-standard/SKILL.md",
-      "packageDigest": "sha256:710eb0d03ab36fe7c18bd04dbf97b1feced869f7f6e05a4da2d41137e6d79df3"
+      "packageDigest": "sha256:05c37c3ecad1f74de3fd3bae218bd5e023984b7602ba20780642feb8126bb91e"
     },
     {
       "name": "prototype-product",
@@ -379,7 +373,7 @@
       "name": "repo-adoption-standard",
       "description": "Adopt engineering standards in a repo: constitution, manifest, fences, conformance.",
       "path": "skills/repo-adoption-standard/SKILL.md",
-      "packageDigest": "sha256:585d693ddf0bc9e3bd27c8eb5e8aafa3072abd8a81a70c9006a623e8d7c9c302"
+      "packageDigest": "sha256:c53e1e468deeb27d70797fcde1bb76eaf55456409f62a174eccb350dee1a0a27"
     },
     {
       "name": "research-users",
@@ -649,7 +643,7 @@
       "name": "risk-matched-verification-standard",
       "description": "Policy: verification depth matched to failure risk—evidence class, gates, residuals.",
       "path": "skills/risk-matched-verification-standard/SKILL.md",
-      "packageDigest": "sha256:e0c0e3ada3eb08a1c0a16703456ff53f5b470a8ebd8ca292bfd0aa2fe96188d8"
+      "packageDigest": "sha256:5844d559cabfe7b7ebb49ef71b9c6b7f31b863dc5dbe556265b25fa5ddd65493"
     },
     {
       "name": "run-product-feedback-loop",
@@ -667,19 +661,19 @@
       "name": "select-next-work",
       "description": "Select/claim next high-value Work from evidence/ledger (not product betterment matrix).",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:5709e18724db320527cfde0bcf1781c7c0f7765bde04350a95c993620e1ab134"
+      "packageDigest": "sha256:237cd779f0c3fcdbde9c42e90daa8cfc97910164cf60b7a704a0ad04b1f8fd68"
     },
     {
       "name": "source-authoring-standard",
       "description": "Policy: source authoring—commits, exact candidates, worktrees, concurrent-edit safety.",
       "path": "skills/source-authoring-standard/SKILL.md",
-      "packageDigest": "sha256:99c6785bfe630854ec400c1ecf2aa0d69dccce0ee6c74176a496e6dce6e076f8"
+      "packageDigest": "sha256:d660c61b5b964289f64e9b31c1d553d0b9f95cd2c0ba1d8e8e24f8d64bed4ca2"
     },
     {
       "name": "specification-control-plane-standard",
       "description": "Policy: executable specs lifecycle—packets, eval manifests, telemetry, exceptions.",
       "path": "skills/specification-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:d66851460fc019c5b8f15b7a07d7f5e0e822b310887e09985fefdb43791cd14f"
+      "packageDigest": "sha256:56673e151e44c8df17d333af1eb0398499a633e68ca1e45b58ed6f49672a09b1"
     },
     {
       "name": "synthesize-evidence",
@@ -697,20 +691,20 @@
       "name": "technology-stack-profile",
       "description": "Policy profile: technology-stack selection rules for matching repos (not a product job).",
       "path": "skills/technology-stack-profile/SKILL.md",
-      "packageDigest": "sha256:f65f336b8e4fd6c6573d74b3ff841594403a14496c156256d64beb58b87f386d",
+      "packageDigest": "sha256:2fced4a51070405ac06887dcd341413d77e87a7424c6b4640c27b77b96b7508f",
       "profile": {
         "id": "technology-stack-profile",
         "revision": "2026-07-29.2",
-        "contentDigest": "sha256:6226c54e8502fd2c97419988a8b92dd42fc22e9da5abeace7afa1192bf08bd49",
+        "contentDigest": "sha256:33ede8b210636ff6646f534156a06e5367de23bb9b88caaa6490009b34a3c019",
         "lifecycle": "active",
         "authorityClass": "governance-constraint"
       }
     },
     {
       "name": "work-coordination-standard",
-      "description": "Policy: portable work-ledger—claims, leases, checkpoints, handoff; runtime-agnostic (not live Enact API ops).",
+      "description": "Policy: portable work-ledger—claims, leases, checkpoints, handoff; runtime-agnostic.",
       "path": "skills/work-coordination-standard/SKILL.md",
-      "packageDigest": "sha256:fb70f88b17b8aee8cff6acb363f1dfabce9276316896802bd25c115b42f21e9d"
+      "packageDigest": "sha256:94b5ac90202f6f4f5deeec1428667ff8a875a44d7185ea19cf38f5d53dd0f5a6"
     },
     {
       "name": "write-high-signal-update",

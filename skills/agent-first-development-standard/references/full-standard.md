@@ -11,14 +11,14 @@ and low coordination cost—not imitation of a human organization.
 | Concern | Authority |
 | --- | --- |
 | Static method | `SylphxAI/skills` |
-| Work coordination | Enact when available; otherwise the declared adapter |
+| Work coordination | the work ledger when available; otherwise the declared adapter |
 | Source | Git repository and forge |
 | CI correctness | Repository-owned checks |
 | Build/deploy | Platform or declared release provider |
 | Live behavior | Runtime provider observations |
 
 A session is not a work ledger. Prompts and transcripts are disposable
-execution context. Git is source truth, not Work truth. Enact is Work truth,
+execution context. Git is source truth, not Work truth. the work ledger is Work truth,
 not source or deploy truth.
 
 ## Smallest complete loop
@@ -44,7 +44,7 @@ accumulates unrelated changes and delivery decisions.
 
 Proposal, admission, and claim are distinct. The proposer does not implicitly
 own the Work. Claims own outcomes, not files, branches, PRs, or worktrees.
-Duplicate objectives are resolved in Enact when available; overlapping files
+Duplicate objectives are resolved in the work ledger when available; overlapping files
 remain legal and are reconciled through Git.
 
 Proposer, Executor, Reviewer, and Delivery/Re-entry are temporary perspectives
@@ -92,7 +92,7 @@ contract, not from whether it has a PR.
   each other in private sessions.
 
 Public PR review remains valid for external/community collaboration, but it is
-not Enact Work authority and does not require private Work ids.
+not Work authority and does not require private Work ids.
 PR titles, bodies, comments, labels, and trailers are collaboration surfaces,
 not typed admission facts. Do not parse custom prose tokens from them to decide
 risk, work ownership, reviewer independence, completion, or required controls.
@@ -111,7 +111,7 @@ Repository CI owns what “pass” means. Use:
 - bounded flake quarantine with owner and expiry; and
 - least-privilege, untrusted-input-safe workflows.
 
-Do not add CI to prove Enact lineage, reject the ordinary PR+queue path, or recreate
+Do not add CI to prove work lineage, reject the ordinary PR+queue path, or recreate
 Platform deployment state. Do not run the same heavy evidence twice without a
 specific integration failure it prevents.
 
@@ -139,7 +139,7 @@ declare and measure the narrower build-once-per-environment-profile contract
 instead of hiding rebuilds.
 
 Source landing releases the producer when only external CI, build, deploy,
-soak, or approval can advance the Work. Use Enact `work.defer` when available
+soak, or approval can advance the Work. Use the work ledger `work.defer` when available
 to checkpoint, subscribe, release effects/claim/Run, and re-enter on the next
 provider event. Waiting is not active execution.
 
@@ -239,16 +239,16 @@ An agent-first repository declares:
 5. local validation commands and aggregate CI verdict;
 6. auto-deploy mode and tracked branch;
 7. package/deploy terminal where applicable; and
-8. coordination adapter when Enact is unavailable.
+8. coordination adapter when the work ledger is unavailable.
 
-No product-repo workflow may require Enact Work ids or choose PR versus direct
+No product-repo workflow may require Work ids or choose PR versus direct
 trunk as a correctness gate.
 
 ## Acceptance
 
 - Multiple agents claim Work from a shared pool rather than permanent pairs.
 - Internal DT and external PR both work without ingress-only CI rejection.
-- External contributors need no Enact access.
+- External contributors need no internal Work access.
 - Merge Queue is the ordinary agent-native admission path.
 - Source, CI, deployment, and Work authorities remain separate.
 - Waiting agents release capacity and provider events cause re-entry.

@@ -14,7 +14,7 @@ second queue, scheduler, or continuation authority inside that task.
 
 ## Authority
 
-- Enact owns Work, claims, Runs, checkpoints, review findings, subscriptions,
+- the work ledger owns Work, claims, Runs, checkpoints, review findings, subscriptions,
   and effects when available.
 - Git owns source.
 - The repository owns PR + Merge Queue policy (ADR-20260803).
@@ -35,7 +35,7 @@ owner / production / CI / security / customer signals
   -> delivery event completes or creates/re-enters correction Work
 ```
 
-An external contribution enters as a normal PR and needs no Enact account or
+An external contribution enters as a normal PR and needs no account or
 Work id. A connector may link its provider facts after intake.
 
 ## Perspectives
@@ -156,7 +156,7 @@ Verification`, or `Off` and one exact-SHA aggregate verdict.
 
 ## Durable waits
 
-At the first external-only boundary, use Enact `work.defer` when available. The
+At the first external-only boundary, use the work ledger `work.defer` when available. The
 atomic operation checkpoints, subscribes to the next provider state change,
 marks Work deferred, releases effects and claim/Run capacity, and finishes the
 Run.

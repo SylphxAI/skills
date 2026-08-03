@@ -9,7 +9,7 @@ that stop after documentation.
 
 Skills owns canonical static standards, procedures, and profiles. Runtime
 constitutions are compact projections. Repositories own their code and local
-decisions. Sylphx Enact owns live selection, work, adoption, and convergence.
+decisions. Live systems own selection, work, adoption, and convergence.
 
 ## Core invariants
 
@@ -49,7 +49,7 @@ A material generation change declares:
 - typed exceptions with owner, expiry, and replacement;
 - predecessor retirement condition.
 
-Static source and live adoption state remain separate. Sylphx Enact may project
+Static source and live adoption state remain separate. adoption systems may project
 Skills identities and track migration; it must not become a second authoring
 home for the standard text.
 
@@ -91,7 +91,7 @@ For every selected repository:
 1. resolve the exact current generation and local baseline;
 2. change the owning code, contracts, tests, and instruction projections;
 3. verify the exact delivered candidate;
-4. publish current adoption facts to Sylphx Enact;
+4. publish current adoption facts to the owning adoption system;
 5. remove superseded code, aliases, projections, and methods once the declared
    compatibility need ends; retire migration-only gates, mutable ledgers,
    rebind workflows, and duplicate proof artifacts at the same terminal.

@@ -24,7 +24,7 @@ test('catalog is deterministic and covers every canonical package', () => {
   assert.deepEqual(technologyProfile, {
     id: 'technology-stack-profile',
     revision: '2026-07-29.2',
-    contentDigest: 'sha256:6226c54e8502fd2c97419988a8b92dd42fc22e9da5abeace7afa1192bf08bd49',
+    contentDigest: 'sha256:33ede8b210636ff6646f534156a06e5367de23bb9b88caaa6490009b34a3c019',
     lifecycle: 'active',
     authorityClass: 'governance-constraint',
   });

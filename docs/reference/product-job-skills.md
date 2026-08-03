@@ -21,7 +21,6 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 | `drive-to-delivery` | Drive one multi-phase engineering objective to delivery-terminal evidence |
 | `select-next-work` | Pick and tick the next high-value Work from evidence/ledger |
 | `bound-task-scope` | Right-size in/out and non-goals for this request |
-| `coordinate-enact-work` | Operate live Enact Work with authenticated tools |
 
 ## Skill portfolio
 

@@ -1,7 +1,7 @@
 # Source Authoring Standard
 
 Agent-first source authoring from attributed mutable work to coherent Git
-history and a reconciled workspace. Git owns source identity; Enact may own
+history and a reconciled workspace. Git owns source identity; a work ledger may own
 Work coordination; the repository owns its contribution path.
 
 ## Source model
@@ -25,7 +25,7 @@ work/goal -> attributed attempt -> checkpoints -> coherent exact revision
   security boundary, or external-effect fence.
 
 Branch names, PRs, sessions, and worktree paths do not become competing work
-ledgers. Do not require Enact Work ids in public commits or PR bodies.
+ledgers. Do not require Work ids in public commits or PR bodies.
 
 ## Repository-native integration
 
@@ -124,7 +124,7 @@ databases, or provider effects.
 Claims own objectives, not files. Overlapping files remain legal when agents
 own different coherent outcomes and Git can reconcile them.
 
-- Resolve duplicate objectives in Enact when available.
+- Resolve duplicate objectives in the work ledger when one exists.
 - Bound deliberately independent attempts.
 - Select by acceptance evidence, not first-finish alone.
 - Use Git conflict detection and non-force retries.
@@ -153,7 +153,7 @@ owner, reason, expiry, and recovery locator.
 | Case | Required behavior |
 | --- | --- |
 | Internal repository work | One complete Work/outcome on one branch+PR; Merge Queue squash to main |
-| External contribution | Normal PR; no Enact account or Work id required |
+| External contribution | Normal PR; no account or Work id required |
 | Risky migration/security/public contract | Same repository integration path plus stronger exact-revision evidence/review/effect authority |
 | Parallel agents | Separate Work/attempt scopes; Git conflict recovery; worktrees only for mutable isolation |
 | Dirty unknown checkout | Preserve it and use a known safe workspace |
@@ -165,7 +165,7 @@ owner, reason, expiry, and recovery locator.
 ## Evidence and metrics
 
 Record the exact landed revision, base when relevant, changed boundary,
-validation commands/results, material dependencies, and recovery needs. Enact
+validation commands/results, material dependencies, and recovery needs. the work ledger
 may privately link this source fact to Work. Platform does not need a duplicate
 Candidate record to own source.
 

@@ -5,7 +5,7 @@
   "profile": {
     "id": "technology-stack-profile",
     "revision": "2026-07-29.2",
-    "contentDigest": "sha256:6226c54e8502fd2c97419988a8b92dd42fc22e9da5abeace7afa1192bf08bd49",
+    "contentDigest": "sha256:33ede8b210636ff6646f534156a06e5367de23bb9b88caaa6490009b34a3c019",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
     "decisionRef": "references/ADR-20260729-system-interoperability-stack.md",
@@ -419,7 +419,7 @@
   "retirement": {
     "predecessor": "technology-stack-profile@2026-07-29.1",
     "successor": null,
-    "terminal": "An admitted active successor revision covers this selector and all selection keys, Sylphx Enact resolves selected repositories to that successor, all exceptions are closed, and this revision is marked retired.",
+    "terminal": "An admitted active successor revision covers this selector and all selection keys, the adoption system resolves selected repositories to that successor, all exceptions are closed, and this revision is marked retired.",
     "retiredRevisionSelectable": false
   }
 }

@@ -304,7 +304,7 @@ Classification is fail closed on causality:
 
 ## Validation
 
-Use the current Sylphx Enact queue-capacity and runner-profile conformance
+Use the current queue-capacity and runner-profile conformance
 surfaces for organization or repository status. Bind every observation to the
 queried repo/ref, provider run/job identities, observation time, inventory
 completeness, and active profile revision.

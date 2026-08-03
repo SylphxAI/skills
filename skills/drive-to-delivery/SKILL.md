@@ -22,7 +22,6 @@ honestly blocked.
 - Continuous next-Work discovery without a single accepted objective → `select-next-work`
 - Mixed open product betterment → `better-product`
 - Declared **product** outcome betterment framing → `pursue-product-objective`
-- Live Enact API design alone → `coordinate-enact-work` / `work-coordination-standard`
 
 ## Method
 
@@ -46,7 +45,6 @@ Open only packs that match the objective:
 - `delivery-standard` — land/live done claims
 - `evidence-and-claims-standard` — proof strength
 - `engineering-standard` / `technology-stack-profile` — when implementing software
-- `coordinate-enact-work` — only with authenticated Enact tools
 
 ## Output
 
@@ -54,7 +52,7 @@ Progress on **one accepted objective at its delivery terminal**, with checkpoint
 
 ## Boundaries
 
-- Does not grant deploy, credential, or MCP capabilities.
+- Does not grant deploy or credential capabilities.
 - Does not own continuous next-Work discovery (`select-next-work`).
 - Does not own multi-aspect product betterment (`better-product` / job skills).
 - Does not replace product-local ADRs.

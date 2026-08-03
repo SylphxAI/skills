@@ -19,7 +19,6 @@ naming the ticket, run **one tick** of this method.
 - One bounded objective already accepted → `drive-to-delivery` (or product jobs / `pursue-product-objective`)
 - Multi-aspect product betterment matrix as the primary job → `better-product`
 - Portable ledger **design** without continuous selection → `work-coordination-standard`
-- Live Enact tool I/O alone → `coordinate-enact-work`
 
 ## Method (one tick)
 
@@ -37,7 +36,6 @@ naming the ticket, run **one tick** of this method.
 ### Soft composition (no meta-router)
 
 - `work-coordination-standard` — portable ledger semantics
-- `coordinate-enact-work` — authenticated Enact live ops
 - `drive-to-delivery` — **inside** each claimed bounded Work (this package does not close that objective)
 - `delivery-standard` / `evidence-and-claims-standard` — when ticks claim delivery outcomes
 - `better-product` — only when the continuous job is specifically multi-aspect product betterment (compose; do not merge packages)
@@ -48,6 +46,6 @@ A **bounded tick report** plus durable Work/claim/checkpoint effects when author
 
 ## Boundaries
 
-- Does not grant deploy, credential, or MCP capabilities.
+- Does not grant deploy or credential capabilities.
 - Does not drive one already-accepted objective to terminal by itself.
 - Skill text is not a runtime scheduler.

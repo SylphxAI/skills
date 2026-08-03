@@ -64,7 +64,6 @@ function retiredInstructionProjectionPath(file) {
 function validateLegacyConstitution(content, target) {
   const markerIndexes = occurrences(content, LEGACY_LOCAL_NOTES_MARKER);
   const liveAuthorityLine = [
-    '**Live fleet / work / ingestion / effects:** `SylphxAI/enact`',
     // Bounded predecessor recognition only: an exact retired projection may
     // move to the current constitution. Not a live instruction authority.
     '**Live fleet / work / ingestion / effects:** `SylphxAI/control-plane`',

@@ -29,12 +29,6 @@ import {
   legacyAgentsProjectionReadback,
   retireLegacyAgentsProjection,
 } from './legacy-agents-projection.mjs';
-import {
-  configureEnactMcp,
-  ENACT_MCP_ENV,
-  DEFAULT_ENACT_MCP_URL,
-  discoverEnactMcp,
-} from './enact-mcp.mjs';
 import { reconcile, withLifecycleLock, withReconcileLock } from './reconcile.mjs';
 import {
   installScheduler,
@@ -942,27 +936,22 @@ function argumentValue(name) {
   return index >= 0 ? argv[index + 1] : undefined;
 }
 
-async function integration() {
-  const actionIndex = argv.indexOf('integration') + 1;
-  const action = argv[actionIndex] || 'discover';
-  const endpoint = argumentValue('--url') || process.env[ENACT_MCP_ENV];
-  const discovery = await discoverEnactMcp({ endpoint });
-  let result = discovery;
-  if (action === 'enroll') {
-    const runtime = argumentValue('--agent');
-    if (!runtime || runtime.includes(',') || runtime === 'all') {
-      throw new Error('integration enroll requires one --agent codex, claude, or grok');
-    }
-    result = configureEnactMcp(runtime, discovery);
-  } else if (action !== 'discover') {
-    throw new Error(`Unknown integration action: ${action}`);
-  }
-  if (jsonOutput) console.log(JSON.stringify(result, null, 2));
-  else log(`${result.disposition}${result.endpoint ? ` ${result.endpoint}` : ''}`);
-}
 
 function help() {
-  console.log(`Sylphx Skills ${packageJson.version}\n\nUsage:\n  sylphx-skills install --agent codex|claude|grok|all\n  sylphx-skills sync (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills status [--agent codex|claude|grok|all | --dest PATH] [--json]\n  sylphx-skills clear (--agent codex|claude|grok|all | --dest PATH)\n  sylphx-skills integration discover [--url HTTPS_URL] [--json]\n  sylphx-skills integration enroll --agent codex|claude|grok [--url HTTPS_URL] [--json]\n  sylphx-skills auto-sync enable --agent codex|claude|grok|all [--interval 10m] [--scheduler native|external]\n  sylphx-skills auto-sync disable|status\n\nInstall is the agent-facing static reconciliation operation and requires an\nexplicit native runtime. The complete repository installation contract also\nenables AutoSync and enrolls ${DEFAULT_ENACT_MCP_URL} for that receiving\nruntime. Every mutating native operation requires an explicit runtime selection;\ndetecting another runtime never grants permission to change it. OAuth remains\nruntime-native.`);
+  console.log(`Sylphx Skills ${packageJson.version}
+
+Usage:
+  sylphx-skills install --agent codex|claude|grok|all
+  sylphx-skills sync (--agent codex|claude|grok|all | --dest PATH)
+  sylphx-skills status [--agent codex|claude|grok|all | --dest PATH] [--json]
+  sylphx-skills clear (--agent codex|claude|grok|all | --dest PATH)
+  sylphx-skills auto-sync enable --agent codex|claude|grok|all [--interval 10m] [--scheduler native|external]
+  sylphx-skills auto-sync disable|status
+
+Install is the agent-facing static reconciliation operation and requires an
+explicit native runtime. The complete repository installation contract also
+enables AutoSync for that receiving runtime. Every mutating native operation requires an explicit runtime selection; detecting another runtime never grants
+permission to change it.`);
 }
 
 async function main() {
@@ -973,7 +962,6 @@ async function main() {
   if (command === 'sync') return sync();
   if (command === 'status') return status();
   if (command === 'clear') return clear();
-  if (command === 'integration') return integration();
   if (command === 'auto-sync') {
     const actionIndex = argv.indexOf('auto-sync') + 1;
     const action = argv[actionIndex] || 'status';

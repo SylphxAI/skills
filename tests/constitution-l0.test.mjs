@@ -16,7 +16,6 @@ const L0_TARGET_CHARS = 3600;
 const REQUIRED_PHRASES = [
   'SylphxAI/skills',
   'active product repository',
-  'authenticated Enact tools',
   'not work authority',
   'durable source of truth for **source**',
   'exact current revision',
@@ -32,7 +31,6 @@ const REQUIRED_PHRASES = [
   'Always-on stays',
   'progressive disclosure',
   'delivery terminal',
-  'coordinate-enact-work',
 ];
 
 const FORBIDDEN_MARKERS = [
@@ -86,10 +84,12 @@ test('runtime constitution excludes demoted dense operating-loop markers', () =>
   }
 });
 
-test('runtime constitution keeps fleet Enact bind as conditional section', () => {
+test('runtime constitution no longer binds Enact or MCP in L0', () => {
   const text = readFileSync(constitutionPath, 'utf8');
-  assert.match(text, /Fleet-conditional/i);
-  assert.match(text, /only when Enact tools are present or fleet floors opted in/i);
+  assert.ok(!text.includes('Enact'), 'constitution must not mention Enact');
+  assert.ok(!text.includes('MCP'), 'constitution must not mention MCP');
+  assert.ok(!/fleet-conditional/i.test(text), 'fleet-conditional Enact section must be gone');
+  assert.ok(!text.includes('coordinate-enact-work'), 'coordinate-enact-work must not appear in L0');
 });
 
 test('catalog listing pressure is measurable from built catalog', () => {

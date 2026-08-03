@@ -54,7 +54,7 @@ Git conflicts are only one collision class. Before parallel mutation, identify:
 - credentials and rate-limited provider effects; and
 - deployment or migration targets.
 
-Enact claims own Work, not files. Use a worktree/clone only when it is the
+the work ledger claims own Work, not files. Use a worktree/clone only when it is the
 smallest safe isolation for mutable state; never treat worktrees as locks or as
 isolation for external effects.
 
@@ -83,7 +83,7 @@ authorization, expiry, fencing, and concurrency tests.
 
 ## Duplicate work
 
-Resolve semantic duplicate Work through Enact when available. Git branches,
+Resolve semantic duplicate Work through the work ledger when available. Git branches,
 PRs, or commits do not define task ownership.
 
 - Reuse an active matching Work instead of creating another.

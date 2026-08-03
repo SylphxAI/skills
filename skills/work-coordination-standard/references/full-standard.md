@@ -142,7 +142,7 @@ Projections must be disposable and reproducible from canonical events plus
 provider readbacks. Test snapshot, delete, replay, and semantic diff for any
 persistent projection.
 
-An adapter may map these concepts to product tools, REST, MCP, a forge, or
+An adapter may map these concepts to product tools, REST, a forge, or
 another provider. It may not redefine portable lifecycle semantics, create a
 transport-only effect, or make provider observations the internal queue. Bind
 the adapter to current versioned schemas and keep vendor vocabulary in its own
