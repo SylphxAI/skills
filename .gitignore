@@ -5,3 +5,6 @@ node_modules/
 
 # Local description rewrite scratch (not source authority)
 .description-rewrite-work/
+
+# Generated host-run packs (scripts/prepare-utilization-host-run.mjs)
+tests/fixtures/skill-utilization-host-results/host-run-pack-*

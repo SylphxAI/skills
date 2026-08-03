@@ -29,3 +29,13 @@ Use the result sheet template from
 - `promotable: true` only when the runbook minimum case slice is scored
 - Report pass/fail/inconclusive rates; never “utilization solved” from one host
 - Authoring structural tests in CI are **not** host behavior-oracle results
+
+## Generate a pack
+
+```bash
+node scripts/prepare-utilization-host-run.mjs
+```
+
+Writes `host-run-pack-<commit12>.json` and `.md` under this directory for a
+runbook minimum slice. Generated packs are inputs for host scoring, not results.
+

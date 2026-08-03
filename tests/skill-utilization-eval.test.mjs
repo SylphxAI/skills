@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
@@ -216,5 +217,16 @@ test('near-neighbour prompts prefer expected skill over listed neighbours struct
     wins / cases.length >= 0.8,
     `near-neighbour discrimination too weak: ${wins}/${cases.length} (structural only)`,
   );
+});
+
+test('prepare-utilization-host-run script is executable and emits pack files', () => {
+  const script = path.join(repositoryRoot, 'scripts', 'prepare-utilization-host-run.mjs');
+  assert.ok(existsSync(script));
+  const out = execFileSync(process.execPath, [script], {
+    cwd: repositoryRoot,
+    encoding: 'utf8',
+  });
+  assert.match(out, /host-run-pack-/);
+  assert.match(out, /cases=/);
 });
 

@@ -116,3 +116,5 @@ utilization.
 - All 118 packages ship `agents/openai.yaml` UI metadata.
 
 Result sheet drop: `tests/fixtures/skill-utilization-host-results/` (see README there).
+
+Pack generator: `node scripts/prepare-utilization-host-run.mjs` (printable minimum slice; not a green claim).
