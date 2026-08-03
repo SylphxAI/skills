@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "High-leverage product betterment under an uncapped Goal: coverage card, admit all B, residual R, execute, verify; keep cycling until engagement idle."
+description: "Continuous high-leverage product betterment: auto-bind uncapped Goal, coverage card, admit all B, residual R, execute, verify; cycle until no high-EV work remains."
 ---
 
 # Continuous Product Quality
@@ -8,136 +8,119 @@ description: "High-leverage product betterment under an uncapped Goal: coverage 
 Close user/business-visible product gaps with **high leverage**, not cosmetic commit thrash.
 
 **Primary class:** `workflow`.  
-See [ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
+User invoke = load this Skill (e.g. `$continuous-product-quality`). **Do not** demand a long user-written project brief or north-star essay.
 
-## Continuity (Codex / Goal-first)
+## Continuity Goal (fixed motor — agent sets it)
 
-On harnesses with a **Goal System** (Codex):
+On hosts with a Goal API (Codex): **you** bind the Goal. The user does not author it.
 
-| Layer | Owner |
+| Fact | Rule |
 | --- | --- |
-| **Multi-turn loop motor** | **Uncapped Goal** — host continues an idle thread while the Goal is active |
-| **Cycle quality** | This Skill (card → B → execute → verify → honest idle/complete) |
-| **Durable notes** | Optional state/contract log in the product repo |
-| **Automation / manual re-kick** | **Fallback only** when Goal API is missing or broken |
+| Who sets Goal | **Agent**, immediately on invoke |
+| What Goal is | **Continuity contract** so the host keeps auto-continuing while work remains |
+| What Goal is not | A user-supplied product roadmap; not “finish cycle N”; not a one-shot task list |
+| Goal text | **Stable template** below — same shape every engagement |
+| Budget | **Omit `token_budget`** unless the user explicitly set one |
+| Complete | Only at **engagement idle** (fresh re-scout: no unblocked high-EV ≥ MinOutcomeDelta) |
+| Perfect / true north-star | **Does not exist.** Idle ≠ perfection. Idle = no remaining positive-leverage unblocked work under policy |
 
-**Do not** tell the operator to set up heartbeat automation as the default path.  
-**Do not** demote Goal to “insurance only” when Goal API exists.
+### Fixed Goal objective (use essentially this text)
 
-Official Codex Goals behavior (summary): after a turn finishes, if the thread is idle, the Goal is active, and budget allows, the host can **continue** from latest state until success, pause, clear, interruption, budget limit, or a true blocker. Reaching a budget limit is **not** completion. Continuation that makes **no tool call** can suppress the next auto-continue—so keep doing real work with tools, not essay-only turns.
+```text
+Continuous high-leverage product betterment on the active workspace until engagement idle.
+Keep cycling: research coverage card → admit ALL capacity-feasible high-leverage items into B → execute all B → verify → re-scout.
+Do not stop after one cycle, one PR, local green, or a progress report.
+Do not complete this Goal while any unblocked residual has EV ≥ MinOutcomeDelta (including soft-only “large/hard/engine” items — slice L0 into B).
+Engagement idle only after a fresh re-scout shows B empty and R has no unblocked high-EV work.
+Never rewrite this Goal into a single-cycle backlog. Discover product state from the workspace yourself.
+```
 
-### Required Goal bind (when API present)
-
-When the user invokes continuous betterment / loop engineering (this Skill, `$continuous-product-quality`, or equivalent explicit request):
+### Bind procedure (first tools this Skill runs)
 
 1. `get_goal`
-2. If missing or wrong objective → `create_goal` with the **outer product objective**
-3. **Omit `token_budget`** unless the user set a budget (uncapped by default)
-4. Never rewrite the Goal to “finish cycle N” / “ship B8–B10”
-5. `update_goal(complete)` **only** at **engagement idle** with Stop-Audit evidence
-6. `update_goal(blocked)` only after the harness’s repeated hard-impasse rule
+2. If missing or objective is a one-shot/cycle backlog → `create_goal` with the fixed objective above (**no** `token_budget`)
+3. If already this continuity Goal and active → resume work (do not recreate thrash)
+4. Then discover product/repo/surfaces from the workspace and run cycles
 
-Missing Goal API: note residual once; continue multi-cycle **in-process with tools** as far as the host allows; operator re-kick is last resort—not the happy path.
+Missing Goal API: note once; keep multi-cycle tool work in-process. Automation re-kick is last-resort fallback only—not the happy path.
+
+**Why fixed text:** Goal only needs to keep the host from stopping. Product specifics live in cycle research, not in Goal authorship. The user is not “finding work for the agent”; the agent finds work under this Skill.
 
 ## Units
 
 | Unit | Meaning |
 | --- | --- |
-| **Engagement** | Outer product betterment under one uncapped Goal. Ends only at engagement idle. |
-| **Cycle** | Coverage card → Candidate **C** → admit **B** + **R** → execute **all of B** → verify → cycle log |
+| **Engagement** | This continuity Goal’s lifetime |
+| **Cycle** | Card → C → B+R → execute all B → verify → short log → next cycle |
 | **B** | All capacity-feasible above-threshold items this cycle (many OK) |
-| **R** | Not-in-B items with EV + honest blocker |
-| **Engagement idle** | Fresh re-scout: **B=∅** and R has no unblocked EV ≥ MinOutcomeDelta |
-
-Clearing B ends a **cycle**, not the Goal. After a cycle, **immediately start the next cycle** (new card → C → B) while the Goal is active—prefer same turn when context allows; Goal auto-continue covers turn boundaries.
-
-## Outer objective vs cycle
-
-| Layer | Stop? |
-| --- | --- |
-| Outer engagement / Goal objective | Only at engagement idle |
-| One cycle | Checkpoint only—never Goal complete |
+| **R** | Parked items with EV + honest blocker |
+| **Engagement idle** | Fresh re-scout: B=∅ and no unblocked EV ≥ MinOutcomeDelta in R |
 
 ## Method
 
-1. **Bind Goal** (uncapped outer objective) when API present.
-2. **Coverage card** (five cells) + VoI deepen until admission won’t change.
-3. **Admit all** capacity-feasible passers into **B** (not Top-1). Overflow → R with `capacity`.
-4. **Soft blockers are not stops:** multi-day / hard / engine / “not title-only” → slice L0 into B now.
+1. **Bind fixed uncapped Goal** (above).
+2. **Discover** product identity and evidence from the workspace (git, docs, live surfaces as available).
+3. **Coverage card** (five cells) + VoI deepen until admission won’t change.
+4. **Admit all** capacity-feasible passers into **B** (not Top-1). Soft cost → L0 slice into B, not stop.
 5. **Execute all of B** (parallel default for independent items).
-6. **Verify:** original-oracle per B item; one outcome/north-star readback for the cycle.
-7. **Cycle log** (short). Do **not** ask “要開 Cycle N+1 嗎？”
-8. If not idle → **next cycle** (tools keep going). If idle → Stop-Audit → `update_goal(complete)`.
+6. **Verify** (original-oracle per item; one cycle outcome readback).
+7. **Short cycle log** — no “要開 Cycle N+1 嗎？”
+8. If not idle → **next cycle** (same turn if possible; else Goal auto-continue). If idle → Stop-Audit → `update_goal(complete)`.
 
 ```text
-create/resume uncapped Goal (outer product outcomes)
-while Goal active:
-  card → C → admit all high-L into B (soft → L0 slice)
-  if B empty and R clean after fresh re-scout:
-    engagement Stop-Audit → update_goal(complete) → stop
-  if B empty and only qualified external/authority blockers:
-    update_goal(blocked) only if harness blocked-rule met; else hard-wait honestly
-  else:
-    execute all B → verify → short cycle log → next cycle
+create/resume FIXED uncapped continuity Goal
+loop:
+  discover + coverage card + admit all high-L into B
+  if B empty & R clean after fresh re-scout → complete Goal (idle)
+  else execute all B → verify → next cycle
 ```
 
-## Qualified blockers (may park high-EV in R)
+## Qualified blockers (only these park high-EV in R)
 
-| Class | Example |
-| --- | --- |
-| `external_wait` | Human-only browser visual OK; missing credentials |
-| `authority_pending` | Explicit approval already requested |
-| `dependency_blocked` | Upstream not under this engagement |
-| `safety_hold` | Irreversible/live risk without authority |
+`external_wait` · `authority_pending` · `dependency_blocked` · `safety_hold`  
+(with concrete evidence)
 
-**Not** qualified alone: multi-day, expensive, hard, missing Goal API, “polish later,” desire to write a long cycle report.
+**Not** blockers alone: multi-day, hard, expensive, engine, “not title-only”, missing user north-star essay, desire to report and wait.
 
-## Non-negotiable laws
+## Non-negotiable
 
-1. Outcomes over activity; commit count ≠ progress.
-2. Coverage card before admit; decision-complete, not omniscient.
-3. `L = (Δ outcome/frontier × weight × confidence) / full_lifecycle_cost`
-4. MinOutcomeDelta — below threshold stays out of B.
-5. All passers into B; not Top-1 only.
-6. Parallel default for independent B items.
-7. Evidence before claims; local green ≠ betterment.
-8. B clear ≠ Goal complete; re-cycle until idle.
-9. Goal complete only at engagement idle with evidence.
-10. No continuous independent reviewers (except irreversible/public-contract, load-bearing SOTA, contested idle).
-11. No meta-router; native discovery only.
-12. Goal is the multi-turn motor when present—not optional insurance, not automation-first.
+1. Agent sets Goal; user only invokes Skill.
+2. Goal text stays the continuity template — not a user task dump.
+3. Outcomes over activity; commit count ≠ progress.
+4. All passers into B; leverage not ease.
+5. B clear ≠ Goal complete.
+6. Idle ≠ perfect; idle = no unblocked high-EV left.
+7. Keep using tools each turn (essay-only can kill auto-continue).
+8. No meta-router; native discovery only.
+9. No continuous independent reviewers except irreversible/public-contract, load-bearing SOTA, contested idle.
 
 ## Anti-patterns
 
-- Micro-polish thrash; hundreds of commits with no user-visible Δ
-- One-cycle-and-stop / Goal complete after B-clear
-- End-turn “要我開 Cycle N+1 嗎？” while Goal active
-- Soft-parking high-EV then idling
-- Essay-only turns with **no tools** (can kill Goal auto-continue)
-- Setting a token budget “for safety” by default
-- Telling the user automation/heartbeat is required when Goal works
-- Redefining Goal text as the current cycle backlog
+- Asking the user to write outer objectives / north-stars to “start the loop”
+- Goal = “finish cycle 3” / ship a tiny B list
+- Completing Goal after one productive cycle
+- Soft-parking high-EV then stopping
+- Automation-first on Codex when Goal works
+- Micro-polish thrash as substitute for high-L work
 
 ## When not to use
 
-- Single bug / one-shot edit → direct fix / `autonomous-execution`
+- One bug / one-shot edit → direct fix / `autonomous-execution`
 - One release-grade finish pass → `product-finish`
-- Continuous any-Work OS without product matrix → `self-feeding-agent-loop`
+- Any-Work OS without product matrix → `self-feeding-agent-loop`
 
 ## Compose with
 
 | Need | Skill |
 | --- | --- |
-| Decision / stop quality | `decision-quality-standard` |
-| SOTA / frontier claims | `evidence-and-claims-standard` |
-| One Workstream delivery | `autonomous-execution` |
+| Decision quality | `decision-quality-standard` |
+| Claims / SOTA | `evidence-and-claims-standard` |
+| Single Workstream delivery | `autonomous-execution` |
 | Land/live proof | `delivery-standard` |
-| Live Enact | `enact-work-coordination` |
-| Domain method | matching specialist Skill |
+| Domain method | matching specialist |
 
 ## Read when needed
 
 - [references/product-quality-loop-contract.md](references/product-quality-loop-contract.md)
 - [references/multi-aspect-betterment-loop.md](references/multi-aspect-betterment-loop.md)
 - [references/harness-goal-binding.md](references/harness-goal-binding.md)
-- [docs/reference/betterment-engagement-runner.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/betterment-engagement-runner.md) — fallback hosts + state schema

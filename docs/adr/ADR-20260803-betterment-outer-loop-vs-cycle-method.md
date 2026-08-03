@@ -47,11 +47,13 @@ Does **not** own: inventing heartbeat automation as the happy path on Goal hosts
 
 ### 3. Goal responsibility
 
-- Create/resume on continuous betterment invoke
+- **Agent** creates/resumes Goal on Skill invoke (user does not author it)
+- Goal text is a **fixed continuity template** (“keep high-leverage betterment
+  until engagement idle”), not a user product brief or per-cycle backlog
 - **No default token budget**
-- Outer product objective only
 - Host continuation across idle turns while active
-- `complete` only at engagement idle with evidence
+- Product/repo discovery happens in cycle research, not Goal authorship
+- `complete` only at engagement idle with evidence (idle ≠ perfection)
 
 ### 4. Communication
 

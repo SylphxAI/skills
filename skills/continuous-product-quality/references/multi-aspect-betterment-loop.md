@@ -15,7 +15,7 @@ Multi-cycle continuity:
 ## Layers (do not collapse)
 
 ```text
-Outer engagement motor: uncapped Goal (host auto-continue while active)
+Outer engagement motor: agent-set FIXED uncapped continuity Goal (host auto-continue while active)
   while not engagement_idle:
       one cycle (this Skill method)
       next cycle in-process and/or Goal continuation at turn boundary

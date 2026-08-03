@@ -113,9 +113,9 @@
     },
     {
       "name": "continuous-product-quality",
-      "description": "High-leverage product betterment under an uncapped Goal: coverage card, admit all B, residual R, execute, verify; keep cycling until engagement idle.",
+      "description": "Continuous high-leverage product betterment: auto-bind uncapped Goal, coverage card, admit all B, residual R, execute, verify; cycle until no high-EV work remains.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:d70cae22246be49bc8aff8b44a8ae5f140a8389bd200abe0ff51d2563b41e737"
+      "packageDigest": "sha256:30b68c13063a4ca79bbad1089c536c299848243173163bd00c5b0ed2ed64a8f7"
     },
     {
       "name": "convergent-review",

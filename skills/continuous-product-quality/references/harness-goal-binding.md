@@ -1,55 +1,45 @@
-# Harness Goal Binding for Product Betterment
+# Harness Goal Binding — continuity motor, not product brief
 
-## Purpose
+## What Goal is here
 
-On Codex-class harnesses, the **Goal System is the multi-turn loop motor**:
-persistent thread objective + evidence-based complete/blocked + host continuation
-when the thread is idle and the Goal is active.
+**Mechanical continuity** so the host auto-continues an idle thread while high-value betterment remains.
 
-This Skill/job **must bind an uncapped Goal** when the API is present and the
-user asked for continuous betterment / loop engineering.
+It is **not**:
 
-Not product Work authority (Enact/Git/delivery still own those planes).
+- a user-written project goal
+- a north-star essay the human must invent each time
+- “work I assigned you this cycle”
 
-## Outer objective only
+The agent **always** sets it on Skill invoke. Product discovery happens after bind.
 
-Goal `objective` = product/north-star betterment.  
-**Illegal:** Goal sole meaning = “finish cycle 3” / “land B8–B10”.
+## Fixed objective (canonical)
 
-## Bind procedure
+```text
+Continuous high-leverage product betterment on the active workspace until engagement idle.
+Keep cycling: research coverage card → admit ALL capacity-feasible high-leverage items into B → execute all B → verify → re-scout.
+Do not stop after one cycle, one PR, local green, or a progress report.
+Do not complete this Goal while any unblocked residual has EV ≥ MinOutcomeDelta (including soft-only “large/hard/engine” items — slice L0 into B).
+Engagement idle only after a fresh re-scout shows B empty and R has no unblocked high-EV work.
+Never rewrite this Goal into a single-cycle backlog. Discover product state from the workspace yourself.
+```
+
+Use this text (or a strict paraphrase that preserves every bullet). Do **not** expand it into a product-specific roadmap inside `create_goal`.
+
+## Procedure
 
 | Step | Action |
 | --- | --- |
-| Start | `get_goal` |
-| Create | If none/wrong → `create_goal(outer_objective)` |
-| Budget | **Omit `token_budget`** unless user set a budget |
-| Work | Cycles under this Skill; keep using tools |
-| Complete | Only engagement idle + Stop-Audit evidence |
-| Blocked | Only harness repeated hard-impasse rule |
+| 1 | `get_goal` |
+| 2 | If missing / wrong shape → `create_goal({ objective: fixed text })` — **omit token_budget** |
+| 3 | Work cycles; discover product from workspace |
+| 4 | `update_goal(complete)` only at engagement idle with evidence |
+| 5 | `blocked` only after harness repeated hard-impasse rule |
 
-## Why uncapped
+## Idle vs perfect
 
-A default token budget stops continuation while the product engagement is still
-open. That looks like “loop died.” Uncapped is the correct default for
-continuous betterment; user may still set a budget explicitly.
-
-## Continuation hygiene
-
-- Prefer tool calls over pure narrative between cycles.
-- Do not end with “要開 Cycle N+1 嗎？” — open the next cycle or leave Goal active for host continue.
-- Do not mark complete because a cycle felt productive.
+There is no absolute perfect terminal.  
+**Idle** = policy empty frontier (no unblocked high-EV left), not “product is ideal.”
 
 ## Missing Goal API
 
-Record `goal_api=unavailable` once. Continue in-process multi-cycle if the host
-allows. Operator re-kick / automation is fallback only—not the designed happy path
-for Codex.
-
-## Objective string (minimum)
-
-1. Continuous high-leverage product betterment (not one polish pass)
-2. Product/repo/surfaces in scope + non-goals
-3. North-star outcomes (1–3)
-4. MinOutcomeDelta / leverage not ease-first
-5. Multi-cycle until engagement idle (fresh empty re-scout)
-6. Complete only with evidence; never after one cycle B-clear
+Note residual once; continue in-process. Do not invent a fake Goal store. Do not demand the user write an objective to compensate.
