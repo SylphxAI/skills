@@ -5,7 +5,7 @@ description: "Policy profile: technology-stack selection rules for matching repo
 
 # Backend, Web, and Cross-platform Interoperability Profile
 
-**Primary class:** `policy` / profile pin. **Not a product job Skill.**
+Policy/profile pin—not a product job cycle. Apply as stack constraints on matching repos.
 Apply when implementing or reviewing stack choices for a matching repository.
 Agents do not “run a cycle” of this package; they apply its constraints while doing another job.
 

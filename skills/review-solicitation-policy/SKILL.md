@@ -5,7 +5,7 @@ description: "Policy: review solicitation—timing, channels, bias/abuse control
 
 # Review Solicitation Policy
 
-**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
+Policy constraints—apply while doing another matching job; not a standalone product job cycle.
 
 Produce one platform-current public review request policy. Optimize for authentic
 participation and durable trust, never predicted star value.

@@ -5,7 +5,7 @@ description: "Policy: evidence before claims—local vs candidate vs landed vs l
 
 # Evidence and Claims Standard
 
-**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
+Policy constraints—apply while doing another matching job; not a standalone product job cycle.
 
 Make the strongest claim current evidence supports, and no stronger. Read
 [references/claim-evidence-method.md](references/claim-evidence-method.md) before

@@ -5,7 +5,7 @@ description: "Policy: prefer Sylphx platform capabilities before inventing paral
 
 # Prefer Sylphx Platform
 
-**Primary class:** `policy` (selection rule). **Not a product job Skill.**
+Policy selection rule—not a product job cycle. Prefer Sylphx platform before inventing parallel infra.
 Apply when choosing platform/backend/infra approach for company-owned work.
 Do not treat this as a standalone betterment or build cycle.
 

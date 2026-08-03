@@ -4,9 +4,7 @@ description: "Policy: durable commercial decisions—pricing, packaging, entitle
 ---
 # Commercial Decision Standard
 
-**Primary class:** `policy` (constraints). Not a standalone product job cycle—apply while doing another job when the domain matches.
-
-**Requirement:** apply this standard when the task matches its scope.
+Policy constraints—apply while doing another matching job; not a standalone product job cycle.
 
 Read [references/full-standard.md](references/full-standard.md) for the full
 method and predicates.

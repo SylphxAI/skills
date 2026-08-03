@@ -4,7 +4,7 @@ description: "Policy: versioned enterprise profiles—selectors, defaults, excep
 ---
 # Enterprise Profile Standard
 
-**Primary class:** `policy` (versioned selection/profile contract).
+Policy: versioned enterprise profile contract—apply when managing profile selection.
 
 **Requirement:** apply this standard when the task matches its scope.
 

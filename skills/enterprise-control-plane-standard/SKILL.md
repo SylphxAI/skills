@@ -4,7 +4,7 @@ description: "Policy: multi-repo control plane—rulesets, reconcilers, audits, 
 ---
 # Enterprise Control Plane Standard
 
-**Primary class:** `policy` (org-wide control-plane design predicates).
+Policy: org-wide control-plane design predicates—apply when designing fleet control planes.
 
 **Requirement:** apply this standard when the task matches its scope.
 
