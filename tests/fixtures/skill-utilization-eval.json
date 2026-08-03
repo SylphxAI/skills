@@ -4,10 +4,10 @@
   "status": "design-contract-and-oracle-fixtures",
   "residualRef": "docs/reference/skill-utilization-eval-residual.md",
   "pinnedAtAuthoring": {
-    "skillsCommit": "dea3f1cc583cbec1c066813dcb828dfabae4b94e",
+    "skillsCommit": "5adddee0eb75aef8410b68f6593ff600e17399ee",
     "catalogCount": 118,
-    "catalogDigestSha256OfCatalogJson": "sha256:9064e15e39c4bc1340c35663582c6605d9b0ebd4aae01d05e957ea920e09f892",
-    "note": "Authoring pin after openai.yaml+discrimination guards; not live host utilization proof."
+    "catalogDigestSha256OfCatalogJson": "sha256:a31ee5908706d3aee390cb928b5e0ee41fe74e2ca779c291672803edcda6a36d",
+    "note": "Authoring pin after critical-skill description discrimination fix; not live host utilization proof."
   },
   "metricHierarchy": [
     "behaviorOracle",
