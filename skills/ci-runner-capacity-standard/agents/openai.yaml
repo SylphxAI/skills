@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ci Runner Capacity Standard"
+  short_description: "Policy: CI runner pools—fairness, isolation, scaling, queue pressure."
+  default_prompt: "Apply ci-runner-capacity-standard constraints on the active task/workspace."

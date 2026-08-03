@@ -1,0 +1,4 @@
+interface:
+  display_name: "Work Coordination Standard"
+  short_description: "Policy: work-ledger semantics—claims, attempts, checkpoints, handoff, stale recovery."
+  default_prompt: "Apply work-coordination-standard constraints on the active task/workspace."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Incident Standard"
+  short_description: "Policy: production incidents—command, severity, mitigation, comms, learning."
+  default_prompt: "Apply incident-standard constraints on the active task/workspace."

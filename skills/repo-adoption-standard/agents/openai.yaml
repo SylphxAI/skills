@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repo Adoption Standard"
+  short_description: "Adopt engineering standards in a repo: constitution, manifest, fences, conformance."
+  default_prompt: "Apply repo-adoption-standard constraints on the active task/workspace."

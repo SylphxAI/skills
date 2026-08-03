@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delivery Standard"
+  short_description: "Policy: delivery honesty—source vs artifact vs desired/current vs live proof."
+  default_prompt: "Apply delivery-standard constraints on the active task/workspace."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Source Authoring Standard"
+  short_description: "Policy: source authoring—commits, exact candidates, worktrees, concurrent-edit safety."
+  default_prompt: "Apply source-authoring-standard constraints on the active task/workspace."
