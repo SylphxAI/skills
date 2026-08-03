@@ -63,6 +63,20 @@ All hold:
 3. A written **go / kill / pivot / next-probe** decision exists with evidence pointers.
 4. Non-learning production work was not smuggled in as “prototype”.
 
+
+## Sibling roles
+
+| Need | Skill |
+| --- | --- |
+| Learn / decide | `product-prototyper` |
+| Ship capability | `product-builder` |
+| Cut live harm | `product-maintainer` |
+| Scale validated core | `product-expander` |
+| Remove material burrs | `product-finisher` |
+
+Parallel product work: other agents may run other role Skills in the same
+period. Keep this cycle inside **this** role’s admit rules and cycle-done.
+
 ## Output (short)
 
 - Hypothesis · probe · evidence · decision · follow-on owner hint (build / expand / another prototype)

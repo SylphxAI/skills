@@ -19,7 +19,9 @@ This Skill owns whole-product manifestation after the product promise and
 selected capabilities are defined. It does not invent product strategy,
 business truth, prices, policy, brand identity, game economy authority, or
 launch approval. It does not replace a bounded `interface-craft` job or the
-recurring `continuous-product-quality` operating loop.
+recurring `continuous-product-quality` operating loop. For a single
+role-shaped finish **cycle** with thin steps, `product-finisher` may lead and
+compose this Skill for deep finish doctrine.
 
 ## Finish invariant
 

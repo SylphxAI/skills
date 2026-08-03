@@ -62,6 +62,20 @@ Expanding a broken core is out of scope.
 3. New operational/product burden is written down (not denied).
 4. Work stayed on the framed ×N, not a silent product reboot.
 
+
+## Sibling roles
+
+| Need | Skill |
+| --- | --- |
+| Learn / decide | `product-prototyper` |
+| Ship capability | `product-builder` |
+| Cut live harm | `product-maintainer` |
+| Scale validated core | `product-expander` |
+| Remove material burrs | `product-finisher` |
+
+Parallel product work: other agents may run other role Skills in the same
+period. Keep this cycle inside **this** role’s admit rules and cycle-done.
+
 ## Output (short)
 
 - Core · ×N target · change · metrics · core check · new burdens

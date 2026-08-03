@@ -115,7 +115,7 @@
       "name": "continuous-product-quality",
       "description": "High-leverage product betterment: coverage card, admit all B, execute, verify; continue until no unblocked high-EV work remains.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:a66f8f514215098b3a5b888be26ed7e6d7826cbcbbbde9a80b9f318327577584"
+      "packageDigest": "sha256:017c9c1218fb6abbec90939dda18152b084a01eaaff66e08269208347bfb9ff2"
     },
     {
       "name": "convergent-review",
@@ -427,13 +427,13 @@
       "name": "product-builder",
       "description": "One build cycle: close shippable capability gaps with research, implement on correct boundaries, verify delivery path.",
       "path": "skills/product-builder/SKILL.md",
-      "packageDigest": "sha256:7b0a9feb8e638a10d90fbc9b9c007fb0e02b59e236ee679fafd7d994284bbd20"
+      "packageDigest": "sha256:0bd77602ec294aedb7e329778d19345381eb317028c6bd24f36d6a2d17ec1d17"
     },
     {
       "name": "product-expander",
       "description": "One expand cycle: pick a leverage scale bet, research bottleneck, implement ×N change, verify scale and core non-regression.",
       "path": "skills/product-expander/SKILL.md",
-      "packageDigest": "sha256:a2a503470ef8be0ed2fc9663da5bdd0af8db0e10ade2ba6bac95bbe72df6aca2"
+      "packageDigest": "sha256:e6fd6f5ac4122db7037e0c0455f6dcbff8d880ce07f0a751ede1a974870256f0"
     },
     {
       "name": "product-experiment-review",
@@ -451,13 +451,13 @@
       "name": "product-finish",
       "description": "Release-grade finish pass on an already-integrated product: coherence, states, a11y, performance.",
       "path": "skills/product-finish/SKILL.md",
-      "packageDigest": "sha256:466d1017f721a015c553b12fc1c4334efe0c3a162ec6f597fff7999cf1c74e25"
+      "packageDigest": "sha256:bb49582ccfe7e25ee9c6c9f7ef7b020509dea9bd74a84ef81e616921cd8aa2c0"
     },
     {
       "name": "product-finisher",
       "description": "One finish cycle: inspect integrated product, admit above-threshold burrs, fix coherence/states/feel, verify finish bar.",
       "path": "skills/product-finisher/SKILL.md",
-      "packageDigest": "sha256:ccc1463e9920a379fe9444dcf0947a04fe371e4d0bb627dd1b2ab81bde29de22"
+      "packageDigest": "sha256:c825ff502a6df94abf402ac3dcf33bc80137cc015c10665fef2f3bc09b138776"
     },
     {
       "name": "product-lifecycle-architect",
@@ -469,13 +469,13 @@
       "name": "product-maintainer",
       "description": "One maintain cycle: find live/regression harm, fix on correct boundaries, verify with reliability oracles.",
       "path": "skills/product-maintainer/SKILL.md",
-      "packageDigest": "sha256:0c4d9a34eac70c55645f446aa0e3117ee5475be93b7f2dc101bab9e0a265c896"
+      "packageDigest": "sha256:f60e1f1f4053c7711be5a72bfcb89feaa6d2add5d66f3402040bfca3dfe1d6f3"
     },
     {
       "name": "product-prototyper",
       "description": "One prototype cycle: frame hypothesis, cheap research, build throwaway learning slice, decide go/kill/pivot.",
       "path": "skills/product-prototyper/SKILL.md",
-      "packageDigest": "sha256:cfbe3922967e48233fb790a1fe271af1935198d59f3a1916ecbcc7839e4b4baf"
+      "packageDigest": "sha256:9fee7eee295466f80cea8290705d31bf47b40a4ea75edc0d494a12260afadec2"
     },
     {
       "name": "product-recovery-contract-review",

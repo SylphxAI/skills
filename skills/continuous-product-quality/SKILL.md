@@ -7,6 +7,12 @@ description: "High-leverage product betterment: coverage card, admit all B, exec
 
 Improve the active product/workspace with **high-leverage** changes. Discover state yourself.
 
+When the engagement is clearly one product role, prefer that role Skill for the
+cycle: `product-prototyper`, `product-builder`, `product-maintainer`,
+`product-expander`, `product-finisher`. Use this Skill when betterment spans
+roles or has no single identity.
+
+
 ## Continuity (host-defined)
 
 Some hosts expose a **persistent objective / goal / mission** surface. Rules:

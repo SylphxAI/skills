@@ -63,6 +63,20 @@ Depth is semantic resolution, not ornament count. Micro-thrash below user-visibl
 3. Recapture matches the framed finish target or honest residual list.
 4. No feature-scope smuggling.
 
+
+## Sibling roles
+
+| Need | Skill |
+| --- | --- |
+| Learn / decide | `product-prototyper` |
+| Ship capability | `product-builder` |
+| Cut live harm | `product-maintainer` |
+| Scale validated core | `product-expander` |
+| Remove material burrs | `product-finisher` |
+
+Parallel product work: other agents may run other role Skills in the same
+period. Keep this cycle inside **this** role’s admit rules and cycle-done.
+
 ## Output (short)
 
 - Target · inspected surfaces · fixes · recapture evidence · leftovers

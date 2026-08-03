@@ -62,6 +62,20 @@ Prefer detectability and regression locks over silent “cleanup”.
 3. No ship-blocking regression introduced on the touched path (best-effort oracle).
 4. Scope stayed harm-linked.
 
+
+## Sibling roles
+
+| Need | Skill |
+| --- | --- |
+| Learn / decide | `product-prototyper` |
+| Ship capability | `product-builder` |
+| Cut live harm | `product-maintainer` |
+| Scale validated core | `product-expander` |
+| Remove material burrs | `product-finisher` |
+
+Parallel product work: other agents may run other role Skills in the same
+period. Keep this cycle inside **this** role’s admit rules and cycle-done.
+
 ## Output (short)
 
 - Harm · cause · fix · oracle · residual risk

@@ -110,6 +110,8 @@ Operate <system> with live tools/auth: <ops>. Not portable semantics-only design
 | Package | Layer | Not |
 | --- | --- | --- |
 | `continuous-product-quality` | Product betterment across aspects | One bug; one finish pass; pure Work OS |
+| `product-prototyper` / `product-builder` / `product-maintainer` / `product-expander` / `product-finisher` | One product-role cycle each | Other role’s cycle; multi-role orchestration OS |
+
 | `autonomous-execution` | One accepted objective to delivery terminal | Continuous new-Work discovery; short Q&A |
 | `self-feeding-agent-loop` | Continuous next-work selection OS | Driving one bounded objective alone |
 | `work-coordination-standard` | Portable ledger semantics | Live Enact API ops |

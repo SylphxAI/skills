@@ -62,6 +62,20 @@ No permanent workarounds. Prefer durable implementation on the owning layer (eng
 3. Residuals are listed without claiming whole-product completion.
 4. No known ship-blocker for this slice was ignored without a residual entry.
 
+
+## Sibling roles
+
+| Need | Skill |
+| --- | --- |
+| Learn / decide | `product-prototyper` |
+| Ship capability | `product-builder` |
+| Cut live harm | `product-maintainer` |
+| Scale validated core | `product-expander` |
+| Remove material burrs | `product-finisher` |
+
+Parallel product work: other agents may run other role Skills in the same
+period. Keep this cycle inside **this** role’s admit rules and cycle-done.
+
 ## Output (short)
 
 - Capability · changes · oracle evidence · residuals by role
