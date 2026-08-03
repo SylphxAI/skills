@@ -96,15 +96,23 @@ test('catalog listing pressure is measurable from built catalog', () => {
   const catalog = JSON.parse(catalogBytes(repositoryRoot));
   assert.ok(catalog.count > 0);
   const descChars = catalog.skills.reduce((sum, skill) => sum + String(skill.description || '').length, 0);
-  // Codex unknown-window class ~8000 chars. Recording the ratio keeps the
-  // constraint visible without forcing an immediate destructive mega-merge.
+  // Codex unknown-window class ~8000 chars. Prefer agent-facing short descriptions
+  // over mega-merge. Soft ceiling prevents silent listing-budget regression.
   const ratio = descChars / 8000;
   assert.ok(Number.isFinite(ratio) && ratio > 0);
+  assert.ok(
+    ratio <= 1.25,
+    `catalog description sum ${descChars} is ${ratio.toFixed(2)}× the 8k class (max 1.25×); shorten descriptions or retire packages`,
+  );
   // Guardrail: individual descriptions must remain bounded for listing.
   for (const skill of catalog.skills) {
     assert.ok(
       String(skill.description || '').length <= 1024,
       `${skill.name} description exceeds 1024 chars`,
+    );
+    assert.ok(
+      String(skill.description || '').length <= 220,
+      `${skill.name} description exceeds 220-char agent-facing target (${String(skill.description || '').length})`,
     );
   }
 });

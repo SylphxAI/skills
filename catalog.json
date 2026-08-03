@@ -43,7 +43,7 @@
       "name": "better-product",
       "description": "Open betterment with no fixed objective: coverage card, all high-EV B, verify; stop at empty high-EV frontier (else pursue-product-objective).",
       "path": "skills/better-product/SKILL.md",
-      "packageDigest": "sha256:55f54df7c65938a63ed9d79daac00260a50d4cc69e5e1948e901c30589b46a45"
+      "packageDigest": "sha256:125f1870dd7d0fa88b607ddeb31cf1e0ac2192a2887709dce4d2603491c7fb49"
     },
     {
       "name": "bound-task-scope",
