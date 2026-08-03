@@ -73,7 +73,7 @@
       "name": "autonomous-execution",
       "description": "Drive one accepted multi-phase objective through research, execute, verify, repair to delivery-terminal evidence.",
       "path": "skills/autonomous-execution/SKILL.md",
-      "packageDigest": "sha256:60c110e59a5ce14048f40c8082bf5294e1b655fad6c572bbc324eb3f2338111c"
+      "packageDigest": "sha256:3f1089b6c6c019219aeb88fb39a234a4620cb44d0be0eadc8dffd5ef875172a0"
     },
     {
       "name": "board-metrics-operating-review",
@@ -113,9 +113,9 @@
     },
     {
       "name": "continuous-product-quality",
-      "description": "High-leverage product betterment: coverage card, admit all B, execute, verify; uncapped Goal with per-cycle contract until no unblocked high-EV work remains.",
+      "description": "High-leverage product betterment: coverage card, admit all B, execute, verify; continue until no unblocked high-EV work remains.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:bc1770a447166810fdc0085ca6b7e7bc41d12d400185c8162e461eaae5cb7611"
+      "packageDigest": "sha256:a66f8f514215098b3a5b888be26ed7e6d7826cbcbbbde9a80b9f318327577584"
     },
     {
       "name": "convergent-review",

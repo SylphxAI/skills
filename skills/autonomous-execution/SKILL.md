@@ -31,7 +31,7 @@ objective (do not invent a meta-router):
 - `delivery-standard` when claiming land/live done
 - `evidence-and-claims-standard` when grading proof strength
 - `engineering-standard` / `technology-stack-profile` when implementing software
-- host Goal System when present: bind/resume the objective (prefer uncapped
+- host continuity/objective surface when present: bind/resume per host rules (prefer uncapped
   goals for long multi-phase work unless the user set a budget)
 - `enact-work-coordination` only when authenticated Enact tools are present
 

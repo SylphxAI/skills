@@ -1,3 +1,5 @@
 # Product betterment continuity
 
-Agent binds uncapped Goal (cycle contract + terminal). Host re-injects Goal each turn. Complete only at empty high-EV frontier.
+Cycle method is portable Skill text.
+
+Multi-turn continuity is **host-specific** (objective/goal/mission/automation). Skills must not hardcode tool names. If the host re-injects an active objective each turn, that is the loop. If not, in-process multi-cycle or host-native re-invoke applies.

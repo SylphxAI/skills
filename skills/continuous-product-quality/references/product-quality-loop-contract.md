@@ -315,7 +315,7 @@ scope shrink of the engagement.
 | Boundary | When | Goal API / runner |
 | --- | --- | --- |
 | **Cycle Stop-Audit** | B cleared + verify cadence for cycle k | Keep goal active; **write state** for next invoke |
-| **Engagement Stop-Audit / idle** | Fresh coverage card/re-scout admits B=∅ and R has no unblocked high-EV | `update_goal(complete)` allowed; runner stops |
+| **Engagement Stop-Audit / idle** | Fresh coverage card/re-scout admits B=∅ and R has no unblocked high-EV | Host objective complete allowed; continuity stops |
 
 **Loop engineering rule:** multi-cycle continuity is an **agent-set fixed uncapped Goal**
 (host auto-continue) when the Goal API exists—not a user-written product brief.
@@ -379,7 +379,7 @@ patch.
 
 When a Goal API exists: uncapped bind/resume; objective carries idle DoD, EV
 policy, contract pointer, next action—not full B as sole SSOT.  
-`update_goal(complete)` only with Stop-Audit package. See
+Mark host objective complete only with Stop-Audit package (host-native API). See
 [harness-goal-binding.md](harness-goal-binding.md).
 
 ## Parallelism and backpressure
