@@ -1,6 +1,6 @@
 ---
 name: software-distribution-readiness
-description: "Distribute software safely: artifacts, signing, channels, updates, rollback—not store listing conversion copy."
+description: "Software distribution readiness: artifacts, signing, channels, updates, rollback."
 ---
 
 # Software Distribution Readiness

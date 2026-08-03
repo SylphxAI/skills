@@ -1,6 +1,6 @@
 ---
 name: work-coordination-standard
-description: "Portable work-ledger semantics (claims, checkpoints, handoff, recovery)—not live Enact API ops."
+description: "Portable work-ledger semantics: claims, attempts, checkpoints, handoff, stale recovery."
 ---
 # Work Coordination Standard
 

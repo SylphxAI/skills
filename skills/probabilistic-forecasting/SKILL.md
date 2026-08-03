@@ -1,6 +1,6 @@
 ---
 name: probabilistic-forecasting
-description: "Probabilistic forecasts with calibration and decision use—not point KPI reporting or causal identification."
+description: "Probabilistic forecasts with uncertainty, calibration, and decision use."
 ---
 
 # Probabilistic Forecasting

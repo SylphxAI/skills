@@ -1,6 +1,6 @@
 ---
 name: developer-product-experience-review
-description: "Developer product experience: onboarding, APIs, docs, DX friction—not end-user consumer UX alone."
+description: "Developer product experience: onboarding, APIs, docs, DX friction, time-to-first-success."
 ---
 
 # Developer Product Experience Review

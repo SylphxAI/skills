@@ -1,6 +1,6 @@
 ---
 name: saas-subscription-pricing
-description: "SaaS subscription pricing/packaging design—not implementing billing code or a one-off promo."
+description: "SaaS subscription pricing and packaging design with entitlements and tradeoffs."
 ---
 
 # SaaS Subscription Pricing

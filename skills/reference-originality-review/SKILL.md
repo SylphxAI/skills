@@ -1,6 +1,6 @@
 ---
 name: reference-originality-review
-description: "Reference originality and derivation risk for designs/content/code—not ordinary plagiarism tooling setup."
+description: "Originality and derivation risk for designs, content, or code references."
 ---
 
 # Reference Originality Review

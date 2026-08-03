@@ -1,6 +1,6 @@
 ---
 name: game-soft-launch-review
-description: "Game soft-launch readiness: markets, KPIs, kill/scale criteria, live ops—not full GDD authorship."
+description: "Game soft-launch readiness: markets, KPIs, kill/scale criteria, live-ops plan."
 ---
 
 # Game Soft Launch Review

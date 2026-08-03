@@ -1,6 +1,6 @@
 ---
 name: causal-inference-analysis
-description: "Causal effect identification, estimators, robustness, claim bounds—not KPI reporting, pure forecasting, or unconstrained experiment brainstorming."
+description: "Causal effects: identification strategy, assumptions, estimators, robustness, claim bounds."
 ---
 
 # Causal Inference Analysis

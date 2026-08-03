@@ -1,6 +1,6 @@
 ---
 name: skill-repository-curator
-description: "Curate a skills portfolio: collisions, merge/split, retirement—not writing one SKILL.md or runtime eval harness alone."
+description: "Skills portfolio curation: collisions, merge/split, thickness, retirement."
 ---
 
 # Skill Repository Curator

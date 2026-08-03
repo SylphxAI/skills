@@ -1,6 +1,6 @@
 ---
 name: enterprise-profile-standard
-description: "Versioned enterprise profiles: selectors, defaults, exceptions, migration—not org control-plane enforcement layers."
+description: "Versioned enterprise profiles: selectors, defaults, exceptions, replacement, migration."
 ---
 # Enterprise Profile Standard
 

@@ -1,6 +1,6 @@
 ---
 name: app-design-blueprint
-description: "Whole-app design blueprint (new app or full redesign)—not product-finish polish or one-screen interface craft."
+description: "Whole-app design blueprint for new apps or full redesigns: jobs, IA, activation, retention, multi-surface."
 ---
 
 # App Design Blueprint

@@ -1,6 +1,6 @@
 ---
 name: accessibility-conformance-program-review
-description: "Accessibility conformance program: AT coverage, release evidence, VPAT/ACR, remediation governance—not one UI critique or a single code fix."
+description: "Accessibility conformance program: AT coverage, release evidence, VPAT/ACR, remediation ownership."
 ---
 
 # Accessibility Conformance Program Review

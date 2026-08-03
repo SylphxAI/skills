@@ -1,6 +1,6 @@
 ---
 name: account-recovery-review
-description: "Account recovery for lost credentials/MFA/channels, locks, compromise, ownership disputes—not tenant JML or broad abuse policy."
+description: "End-to-end account recovery: lost credentials/MFA, locks, compromise, ownership proof, post-recovery hardening."
 ---
 
 # Account Recovery Review

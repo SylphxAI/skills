@@ -1,6 +1,6 @@
 ---
 name: enact-work-coordination
-description: "Live Enact Work ops with authenticated tools (claim/run/evidence/effects)—not portable ledger design (work-coordination-standard)."
+description: "Live Enact Work with authenticated tools: propose, claim, run, evidence, effects, defer/wake."
 ---
 
 # Enact Work Coordination

@@ -1,6 +1,6 @@
 ---
 name: game-economy-review
-description: "Game economy: sinks/sources, balance, progression coupling, abuse—not whole GDD or soft-launch readiness."
+description: "Game economy: sources/sinks, balance, progression coupling, abuse vectors."
 ---
 
 # Game Economy Review

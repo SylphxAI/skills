@@ -1,6 +1,6 @@
 ---
 name: agent-system-improvement
-description: "Recurring agent-system failure: Learning Change Record, controlled intervention, replay/holdout, promotion—not one-off product bugs or live incidents."
+description: "Recurring agent-system failures: Learning Change Record, controlled intervention, replay/holdout, promotion."
 ---
 
 # Agent System Improvement

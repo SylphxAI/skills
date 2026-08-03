@@ -1,6 +1,6 @@
 ---
 name: frontend-performance-remediation
-description: "Frontend performance: measure, budgets, critical path, regression control—not backend capacity or pure visual design."
+description: "Frontend performance remediation: measurement, budgets, critical path, regression control."
 ---
 
 # Frontend Performance Remediation

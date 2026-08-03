@@ -1,6 +1,6 @@
 ---
 name: customer-support-operations
-description: "Support operations design: queues, SLAs, escalation, tooling, quality—not resolving one ticket."
+description: "Support operations: queues, SLAs, escalation paths, tooling, quality sampling."
 ---
 
 # Customer Support Operations

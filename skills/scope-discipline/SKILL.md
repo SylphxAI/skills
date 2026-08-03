@@ -1,6 +1,6 @@
 ---
 name: scope-discipline
-description: "Keep scope honest: in/out, non-goals, cut lines—not prioritization scoring frameworks alone."
+description: "Scope discipline: in/out bounds, non-goals, cut lines, honesty under pressure."
 ---
 
 # Scope Discipline

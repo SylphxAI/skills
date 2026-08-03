@@ -1,6 +1,6 @@
 ---
 name: ai-product-risk-review
-description: "AI product behavior/launch contract: job, autonomy, data, failure/abuse, disclosure, fallback, cost—not eval impl, red team, or incident response."
+description: "AI product behavior/launch contract: job, autonomy bounds, data use, failure/abuse, disclosure, fallback, cost."
 ---
 
 # AI Product Risk Review

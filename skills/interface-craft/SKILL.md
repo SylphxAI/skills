@@ -1,6 +1,6 @@
 ---
 name: interface-craft
-description: "One interface/flow: visual direction, states, responsive, a11y—not whole-app blueprint or product-finish pass."
+description: "One product interface or flow: visual direction, interaction states, responsive, accessibility."
 ---
 
 # Interface Craft

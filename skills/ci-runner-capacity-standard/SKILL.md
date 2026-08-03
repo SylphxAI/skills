@@ -1,6 +1,6 @@
 ---
 name: ci-runner-capacity-standard
-description: "CI runner pools, fairness, isolation, scaling under load—not admission-gate content or product production capacity."
+description: "CI runner pools: fairness, isolation, scaling, queue pressure under load."
 ---
 # Ci Runner Capacity Standard
 

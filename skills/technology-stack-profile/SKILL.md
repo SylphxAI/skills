@@ -1,6 +1,6 @@
 ---
 name: technology-stack-profile
-description: "Required stack profile across backend, web, APIs, clients, events, telemetry—not product strategy."
+description: "Required technology stack profile across backend, web, APIs, clients, events, telemetry."
 ---
 
 # Backend, Web, and Cross-platform Interoperability Profile

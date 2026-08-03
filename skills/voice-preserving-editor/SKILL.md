@@ -1,6 +1,6 @@
 ---
 name: voice-preserving-editor
-description: "Rewrite preserving a specified human voice/locale/texture without changing facts—not ordinary translation or unconstrained copy edits."
+description: "Rewrite preserving a specified human voice, locale, and texture without changing facts."
 ---
 
 # Voice-Preserving Editor

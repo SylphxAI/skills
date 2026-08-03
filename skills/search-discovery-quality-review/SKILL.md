@@ -1,6 +1,6 @@
 ---
 name: search-discovery-quality-review
-description: "Search/discovery quality: relevance, ranking, eval, abuse, UX—not generic recommendations without search surface."
+description: "Search and discovery quality: relevance, ranking, evaluation, abuse resistance."
 ---
 
 # Search Discovery Quality Review

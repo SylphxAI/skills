@@ -1,6 +1,6 @@
 ---
 name: product-feedback-learning-loop
-description: "Product feedback learning loop: capture, cluster, decide, close the loop—not one support case or user research study alone."
+description: "Product feedback loop: capture, cluster, decide, close the loop to users/roadmap."
 ---
 
 # Product Feedback Learning Loop

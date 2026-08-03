@@ -1,6 +1,6 @@
 ---
 name: product-analytics-instrumentation-review
-description: "Product analytics instrumentation: events, properties, identity, quality—not board metrics ops or causal studies."
+description: "Product analytics instrumentation: events, properties, identity, data quality."
 ---
 
 # Product Analytics Instrumentation Review

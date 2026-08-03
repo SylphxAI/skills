@@ -1,6 +1,6 @@
 ---
 name: high-signal-communication
-description: "High-signal stakeholder communication: decisions, risks, asks—not status theater or long narrative updates."
+description: "High-signal stakeholder updates: decisions, risks, explicit asks, minimal narrative."
 ---
 
 # High-Signal Communication

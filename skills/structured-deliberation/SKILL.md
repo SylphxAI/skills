@@ -1,6 +1,6 @@
 ---
 name: structured-deliberation
-description: "Multi-party deliberation record: positions, argument graph, objections—not brainstorming or status meetings."
+description: "Multi-party deliberation record: positions, argument graph, tested objections."
 ---
 
 # Structured Deliberation

@@ -1,6 +1,6 @@
 ---
 name: game-design-blueprint
-description: "Whole-game design/GDD: promise, loops, progression, economy, FTE, live ops—not one economy subsystem or soft-launch checklist alone."
+description: "Whole-game design/GDD: promise, core loops, progression, economy, FTE, live ops."
 ---
 
 # Game Design Blueprint

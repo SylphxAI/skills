@@ -1,6 +1,6 @@
 ---
 name: data-rights-operations-review
-description: "Data-rights ops: DSAR, retention, deletion, proof—not threat modeling or general privacy policy prose."
+description: "Data-rights operations: DSAR, retention, deletion, fulfillment proof."
 ---
 
 # Data Rights Operations Review

@@ -1,6 +1,6 @@
 ---
 name: product-abuse-risk-review
-description: "Product abuse risks and controls (fraud, spam, exploitation)—not security threat models or developer quota abuse alone."
+description: "Product abuse risks and controls: fraud, spam, exploitation, enforcement."
 ---
 
 # Product Abuse Risk Review

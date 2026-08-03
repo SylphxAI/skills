@@ -1,6 +1,6 @@
 ---
 name: security-assurance-operations-review
-description: "Ongoing security assurance ops: scanning, triage, SLAs, evidence—not a one-shot threat model."
+description: "Ongoing security assurance ops: scanning, triage, SLAs, evidence packs."
 ---
 
 # Security Assurance Operations Review

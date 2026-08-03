@@ -1,6 +1,6 @@
 ---
 name: product-recovery-contract-review
-description: "Product recovery contracts after failure: user state, compensation, trust repair—not production incident command alone."
+description: "User-facing recovery after product failure: state repair, compensation, trust rebuild."
 ---
 
 # Product Recovery Contract Review

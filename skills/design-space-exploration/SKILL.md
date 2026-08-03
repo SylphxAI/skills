@@ -1,6 +1,6 @@
 ---
 name: design-space-exploration
-description: "Map and rank a design space with explicit alternatives and kill criteria—not implementing the first idea or convergent decision closure alone."
+description: "Map a design space: alternatives, dimensions, kill criteria, ranked options."
 ---
 
 # Design Space Exploration

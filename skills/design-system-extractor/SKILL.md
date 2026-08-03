@@ -1,6 +1,6 @@
 ---
 name: design-system-extractor
-description: "Extract a design system from live product UI into tokens/components/rules—not inventing a greenfield brand system or one-screen craft."
+description: "Extract design system tokens/components/rules from live product UI."
 ---
 
 # Design System Extractor

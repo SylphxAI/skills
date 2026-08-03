@@ -1,6 +1,6 @@
 ---
 name: prompt-architecture
-description: "Prompt/system-instruction architecture for agents/products—not one-off prompt tweaks without structure."
+description: "Prompt and system-instruction architecture for agent or product surfaces."
 ---
 # Prompt Architecture
 

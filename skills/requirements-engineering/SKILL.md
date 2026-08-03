@@ -1,6 +1,6 @@
 ---
 name: requirements-engineering
-description: "Requirements into testable acceptance and traceability—not freeform brainstorming or pure research synthesis."
+description: "Requirements to testable acceptance criteria with traceability."
 ---
 
 # Requirements Engineering

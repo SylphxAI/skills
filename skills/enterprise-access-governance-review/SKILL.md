@@ -1,6 +1,6 @@
 ---
 name: enterprise-access-governance-review
-description: "Enterprise access governance: roles, joiner-mover-leaver, reviews, least privilege—not product auth feature UI alone."
+description: "Enterprise access governance: roles, joiner-mover-leaver, access reviews, least privilege."
 ---
 
 # Enterprise Access Governance Review

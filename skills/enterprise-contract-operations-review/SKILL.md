@@ -1,6 +1,6 @@
 ---
 name: enterprise-contract-operations-review
-description: "Enterprise contract ops: negotiation artifacts, obligations, renewals, compliance hooks—not commercial pricing strategy alone."
+description: "Enterprise contract operations: obligations, renewals, compliance hooks, negotiation artifacts."
 ---
 
 # Enterprise Contract Operations Review

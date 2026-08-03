@@ -1,6 +1,6 @@
 ---
 name: composable-product-portfolio
-description: "Multi-product portfolio seams: share vs isolate, composition rules—not a single-product blueprint or one-repo layout."
+description: "Multi-product portfolio seams: what to share vs isolate, composition rules across products."
 ---
 
 # Composable Product Portfolio

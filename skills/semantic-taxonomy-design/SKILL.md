@@ -1,6 +1,6 @@
 ---
 name: semantic-taxonomy-design
-description: "Governed taxonomy/ontology: terms, relations, migration—not an ungoverned tag list."
+description: "Governed semantic taxonomy or ontology: terms, relations, migration."
 ---
 
 # Semantic Taxonomy Design

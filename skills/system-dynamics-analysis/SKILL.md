@@ -1,6 +1,6 @@
 ---
 name: system-dynamics-analysis
-description: "Feedback-loop system dynamics model (delays, stocks, policy resistance)—not isolated bugs or single causal estimates."
+description: "System dynamics for stubborn loops: stocks, delays, incentives, policy resistance."
 ---
 
 # System Dynamics Analysis

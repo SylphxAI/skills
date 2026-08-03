@@ -1,6 +1,6 @@
 ---
 name: customer-data-migration-review
-description: "Customer data migration: mapping, dual-write/read, cutover, rollback, integrity proof—not schema-only refactors without customer data movement."
+description: "Customer data migration: mapping, dual-write/read, cutover, rollback, integrity proof."
 ---
 
 # Customer Data Migration Review

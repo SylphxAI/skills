@@ -1,6 +1,6 @@
 ---
 name: referral-loop-review
-description: "Referral loops: incentives, fraud, viral mechanics—not general growth analytics."
+description: "Referral loops: incentives, fraud controls, viral mechanics, measurement."
 ---
 
 # Referral Loop Review

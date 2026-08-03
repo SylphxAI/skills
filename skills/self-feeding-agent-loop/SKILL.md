@@ -1,6 +1,6 @@
 ---
 name: self-feeding-agent-loop
-description: "Continuous work-selection OS from evidence without prompt churn—not autonomous-execution single-objective closure or product betterment loop alone."
+description: "Continuous next-Work selection OS from evidence without human prompt churn."
 ---
 
 # Self-Feeding Agent Loop (workflow)

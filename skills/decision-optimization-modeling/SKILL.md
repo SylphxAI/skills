@@ -1,6 +1,6 @@
 ---
 name: decision-optimization-modeling
-description: "Build/audit an optimization model: objective, constraints, solvers, sensitivity—not generic decision process quality."
+description: "Decision optimization model: objective, constraints, solver choice, sensitivity."
 ---
 
 # Decision Optimization Modeling

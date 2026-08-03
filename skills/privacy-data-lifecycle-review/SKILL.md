@@ -1,6 +1,6 @@
 ---
 name: privacy-data-lifecycle-review
-description: "Privacy data lifecycle: collection, purpose, retention, deletion paths—not DSAR ops runbooks or threat models alone."
+description: "Privacy data lifecycle: collection, purpose limits, retention, deletion paths."
 ---
 
 # Privacy Data Lifecycle Review

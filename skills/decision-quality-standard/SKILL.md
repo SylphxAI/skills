@@ -1,6 +1,6 @@
 ---
 name: decision-quality-standard
-description: "Decision-process quality: framing, alternatives, information, tradeoffs, commitment, learning—not one optimization model or pure research methods."
+description: "Decision-process quality: framing, alternatives, information, tradeoffs, commitment, learning."
 ---
 # Decision Quality Standard
 

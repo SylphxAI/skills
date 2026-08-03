@@ -1,6 +1,6 @@
 ---
 name: user-research-and-discovery
-description: "Qualitative user research protocol and findings—not market sizing, analytics instrumentation, or causal experiments."
+description: "Qualitative user research protocol and findings: goals, behavior, context, barriers."
 ---
 
 # User Research and Discovery

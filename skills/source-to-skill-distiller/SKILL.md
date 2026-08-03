@@ -1,6 +1,6 @@
 ---
 name: source-to-skill-distiller
-description: "Distill sources into one installable Skill package—not ordinary summary/docs/code without SKILL.md output."
+description: "Distill source material into one installable Skill package (SKILL.md)."
 ---
 
 # Source To Skill Distiller

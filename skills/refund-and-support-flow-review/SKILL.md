@@ -1,6 +1,6 @@
 ---
 name: refund-and-support-flow-review
-description: "Refund and support money flows: policy, authority, ledger impact—not payments processor readiness alone."
+description: "Refund and support money flows: policy, authority, ledger impact, customer path."
 ---
 
 # Refund And Support Flow Review

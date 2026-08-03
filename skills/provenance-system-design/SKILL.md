@@ -1,6 +1,6 @@
 ---
 name: provenance-system-design
-description: "Provenance system: lineage, attestations, verification UX—not generic logging or evidence-grade claims alone."
+description: "Provenance system: lineage, attestations, verification paths, user-visible trust."
 ---
 
 # Provenance System Design

@@ -1,6 +1,6 @@
 ---
 name: evidence-synthesis
-description: "Synthesize conflicting sources into an evidence-backed synthesis with residuals—not single-source summary or claim grading alone."
+description: "Synthesize multi-source evidence into one bounded synthesis with residuals."
 ---
 
 # Evidence Synthesis

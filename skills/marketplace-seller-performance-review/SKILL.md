@@ -1,6 +1,6 @@
 ---
 name: marketplace-seller-performance-review
-description: "Seller performance: quality evidence, tiers, coaching, ranking inputs—not payouts or trust/safety ops alone."
+description: "Marketplace seller performance: quality evidence, tiers, coaching, ranking inputs."
 ---
 
 # Marketplace Seller Performance Review

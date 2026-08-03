@@ -1,6 +1,6 @@
 ---
 name: product-finish
-description: "Release-grade finish pass on an already-integrated product—not greenfield blueprint, one screen, or continuous betterment loop."
+description: "Release-grade finish pass on an already-integrated product: coherence, states, a11y, performance."
 ---
 
 # Product Finish

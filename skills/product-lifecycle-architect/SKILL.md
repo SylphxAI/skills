@@ -1,6 +1,6 @@
 ---
 name: product-lifecycle-architect
-description: "Product lifecycle architecture across stages (build, grow, sunset)—not a single feature design."
+description: "Product lifecycle architecture across build, growth, and sunset stages."
 ---
 
 # Product Lifecycle Architect

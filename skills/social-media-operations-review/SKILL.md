@@ -1,6 +1,6 @@
 ---
 name: social-media-operations-review
-description: "Official social channel operating model: authority, publish, listen, crisis—not campaign strategy or one post."
+description: "Official social channel operating model: authority, publishing, listening, crisis."
 ---
 
 # Social Media Operations Review

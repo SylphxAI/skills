@@ -1,6 +1,6 @@
 ---
 name: review-solicitation-policy
-description: "When/how to solicit reviews without abuse or bias—not building the review UI."
+description: "Review solicitation policy: timing, channels, bias and abuse controls."
 ---
 
 # Review Solicitation Policy

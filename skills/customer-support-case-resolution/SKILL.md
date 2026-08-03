@@ -1,6 +1,6 @@
 ---
 name: customer-support-case-resolution
-description: "Resolve one support case to a durable outcome with evidence—not designing the whole support org."
+description: "Resolve one support case to a durable outcome with evidence and customer-visible close."
 ---
 
 # Customer Support Case Resolution

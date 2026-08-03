@@ -1,6 +1,6 @@
 ---
 name: data-quality-observability-review
-description: "Data quality observability: contracts, monitors, incidents, ownership—not product analytics event design alone."
+description: "Data quality observability: contracts, monitors, incident paths, ownership."
 ---
 
 # Data Quality Observability Review

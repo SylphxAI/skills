@@ -1,6 +1,6 @@
 ---
 name: documentation-standard
-description: "What docs to create, generate, or retire—minimal, fresh, low drift—not product behavior change itself."
+description: "Documentation create/generate/retire: minimal sufficient, freshness, low prose drift."
 ---
 # Documentation Standard
 

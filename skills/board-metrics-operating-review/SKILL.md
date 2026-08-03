@@ -1,6 +1,6 @@
 ---
 name: board-metrics-operating-review
-description: "Board/executive metrics operating model: definitions, lineage, decision use, cadence, trust—not event instrumentation or one dashboard mock."
+description: "Board/executive metrics operating model: definitions, lineage, decision use, reporting cadence, trust."
 ---
 
 # Board Metrics Operating Review

@@ -1,6 +1,6 @@
 ---
 name: parallel-change-integration-standard
-description: "Expand/contract and dual-write/read migrations with coexistence—not big-bang rewrites without coexistence."
+description: "Expand/contract migrations with dual-write/read coexistence and cutover."
 ---
 # Parallel Change Integration Standard
 

@@ -1,6 +1,6 @@
 ---
 name: incident-standard
-description: "Production incident practice: command, severity, mitigate, communicate, learn—not ordinary bugfix queues or planned maintenance only."
+description: "Production incident practice: command, severity, mitigation, communication, learning."
 ---
 # Incident Standard
 

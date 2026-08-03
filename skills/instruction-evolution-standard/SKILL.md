@@ -1,6 +1,6 @@
 ---
 name: instruction-evolution-standard
-description: "Evolve Skills/constitutions/profiles with one owner, migration, retirement—not live Work ops or product code features."
+description: "Evolve Skills, constitutions, and profiles: single owner, migration, reconciliation, retirement."
 ---
 # Instruction Evolution Standard
 

@@ -1,6 +1,6 @@
 ---
 name: marketplace-trust-operations-review
-description: "Marketplace trust & safety ops: detection, enforcement, appeals—not payments or seller score design alone."
+description: "Marketplace trust and safety ops: detection, enforcement, appeals, evidence."
 ---
 
 # Marketplace Trust Operations Review

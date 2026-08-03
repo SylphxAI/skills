@@ -1,6 +1,6 @@
 ---
 name: marketing-automation-blueprint
-description: "Marketing automation system blueprint: triggers, journeys, governance—not one campaign brief."
+description: "Marketing automation blueprint: triggers, journeys, governance, measurement."
 ---
 
 # Marketing Automation Blueprint

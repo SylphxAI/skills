@@ -1,6 +1,6 @@
 ---
 name: customer-success-operations-review
-description: "Customer success operating model: segments, plays, health, expansion, handoffs—not support ticket queues alone."
+description: "Customer success operating model: segments, plays, health scores, expansion, handoffs."
 ---
 
 # Customer Success Operations Review

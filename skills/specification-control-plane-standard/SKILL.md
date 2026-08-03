@@ -1,6 +1,6 @@
 ---
 name: specification-control-plane-standard
-description: "Executable specification lifecycle, packets, eval manifests, exceptions—not trivial already-unambiguous changes."
+description: "Executable specification lifecycle: packets, eval manifests, telemetry contracts, exceptions."
 ---
 # Specification Control Plane Standard
 

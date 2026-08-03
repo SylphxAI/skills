@@ -1,6 +1,6 @@
 ---
 name: agent-native-standard
-description: "Agent-operable product constraints: typed queryable state, schema tools, recoverable workflows, traces—not automation without an agent-facing contract."
+description: "Agent-operable products: queryable typed state, schema-derived tools, recoverable workflows, run traces."
 ---
 # Agent Native Standard
 

@@ -1,6 +1,6 @@
 ---
 name: skill-eval-designer
-description: "Falsifiable evals for skill selection/behavior (neighbours, abstention, oracles)—not authoring a skill or building a router."
+description: "Falsifiable skill-selection and behavior evals: neighbours, abstention, oracles, regressions."
 ---
 
 # Skill Eval Designer

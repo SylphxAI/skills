@@ -1,6 +1,6 @@
 ---
 name: critical-analysis
-description: "Adversarial critical analysis of a claim, plan, or design—not supportive brainstorming or ordinary code review."
+description: "Adversarial critical analysis of a claim, plan, or design with kill criteria and residuals."
 ---
 
 # Critical Analysis

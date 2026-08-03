@@ -1,6 +1,6 @@
 ---
 name: optimization-objective-review
-description: "Whether an optimization objective is well-posed and aligned—not building the solver model itself."
+description: "Audit whether an optimization objective is well-posed, aligned, and measurable."
 ---
 
 # Optimization Objective Review

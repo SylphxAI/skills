@@ -1,6 +1,6 @@
 ---
 name: product-asset-production
-description: "Produce product art/3D/content assets to a brief with acceptance—not whole game design or store listing copy."
+description: "Produce product art, 3D, or content assets to a brief with acceptance checks."
 ---
 
 # Product Asset Production

@@ -1,6 +1,6 @@
 ---
 name: engineering-standard
-description: "Engineering method floor: design, verification, change safety—not product strategy, pure research, or incident command."
+description: "Engineering method floor: design, verification, change safety, reproduction-driven fixes."
 ---
 # Engineering Standard
 

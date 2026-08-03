@@ -1,6 +1,6 @@
 ---
 name: convergent-review
-description: "Force divergent analysis into one decision record with explicit residuals—not open brainstorming or status updates."
+description: "Converge divergent analysis into one decision record with explicit residuals and commitments."
 ---
 
 # Convergent Review

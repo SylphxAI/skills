@@ -1,6 +1,6 @@
 ---
 name: store-listing-optimization
-description: "Store/download listing conversion: positioning, creatives, proof, experiments—not cert submission readiness."
+description: "Store or download listing conversion: positioning, creatives, proof, experiments."
 ---
 
 # Store Listing Optimization

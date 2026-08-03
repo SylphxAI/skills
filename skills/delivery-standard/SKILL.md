@@ -1,6 +1,6 @@
 ---
 name: delivery-standard
-description: "Delivery-terminal proof: land, artifacts, publish, deploy, rollback, live readback—not local-only work without a delivery claim."
+description: "Delivery-terminal proof: land, artifacts, publish, deploy, rollback, live readback."
 ---
 # Delivery Standard
 

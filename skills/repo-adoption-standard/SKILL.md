@@ -1,6 +1,6 @@
 ---
 name: repo-adoption-standard
-description: "Repo onboarding to engineering standards: constitution, manifest, fences, conformance entrypoints—not inventing new standards."
+description: "Adopt engineering standards in a repo: constitution, manifest, fences, conformance entrypoints."
 ---
 # Repo Adoption Standard
 

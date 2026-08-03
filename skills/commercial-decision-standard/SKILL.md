@@ -1,6 +1,6 @@
 ---
 name: commercial-decision-standard
-description: "Durable commercial decision: pricing, packaging, entitlements, licensing, route-to-market—not implementing an already-decided checkout."
+description: "Durable commercial decisions: pricing, packaging, entitlements, licensing, route-to-market ADRs."
 ---
 # Commercial Decision Standard
 

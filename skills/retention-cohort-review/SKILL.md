@@ -1,6 +1,6 @@
 ---
 name: retention-cohort-review
-description: "Retention cohort analysis and intervention design—not acquisition campaigns or pricing increases alone."
+description: "Retention cohorts: measurement, drivers, intervention design."
 ---
 
 # Retention Cohort Review

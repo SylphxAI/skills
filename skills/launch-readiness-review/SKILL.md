@@ -1,6 +1,6 @@
 ---
 name: launch-readiness-review
-description: "Launch readiness across product, ops, support, legal/risk gates—not a single feature QA pass."
+description: "Launch readiness gates across product, ops, support, risk, and go/no-go evidence."
 ---
 
 # Launch Readiness Review

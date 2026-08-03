@@ -1,6 +1,6 @@
 ---
 name: market-research-synthesis
-description: "Market research synthesis: segments, competitors, demand evidence—not user interviews alone or pricing decision alone."
+description: "Market research synthesis: segments, competitors, demand evidence, implications."
 ---
 
 # Market Research Synthesis

@@ -1,6 +1,6 @@
 ---
 name: operational-observability-review
-description: "Service/ops observability: SLOs, telemetry, alerting, diagnosability—not product analytics events or board metrics."
+description: "Service observability: SLOs, telemetry, alerting, on-call diagnosability."
 ---
 
 # Operational Observability Review

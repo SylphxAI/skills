@@ -1,6 +1,6 @@
 ---
 name: ad-monetization-review
-description: "In-product ads: formats, mediation, rewards, consent, frequency, fraud, IAP/IAA tradeoffs—not a whole-app/game blueprint."
+description: "In-product ad system: formats, mediation, rewards, consent, frequency caps, fraud, IAP/IAA tradeoffs."
 ---
 
 # Ad Monetization Review

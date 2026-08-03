@@ -1,6 +1,6 @@
 ---
 name: daily-reward-and-streak-review
-description: "Daily reward and streak systems: incentives, fairness, abuse, retention coupling—not full game economy or soft-launch readiness."
+description: "Daily rewards and streaks: incentives, fairness, abuse, retention coupling."
 ---
 
 # Daily Reward And Streak Review

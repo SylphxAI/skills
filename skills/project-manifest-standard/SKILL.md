@@ -1,6 +1,6 @@
 ---
 name: project-manifest-standard
-description: "Project/repo manifest: ownership, surfaces, delivery terminals, machine-readable facts—not org-wide enterprise control plane."
+description: "Repo/project manifest: ownership, surfaces, delivery terminals, machine-readable facts."
 ---
 # Project Manifest Standard
 

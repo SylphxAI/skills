@@ -1,6 +1,6 @@
 ---
 name: autonomous-execution
-description: "Drive one accepted multi-phase objective to delivery terminal with evidence—not short Q&A, self-feeding work-selection, or continuous-product-quality betterment."
+description: "Drive one accepted multi-phase objective through research, execute, verify, repair to delivery-terminal evidence."
 ---
 
 # Autonomous Execution (workflow)

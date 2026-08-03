@@ -1,6 +1,6 @@
 ---
 name: continuous-product-quality
-description: "Multi-cycle product betterment to idle frontier (high-leverage outcomes)—not autonomous-execution closure or self-feeding work-selection."
+description: "Multi-cycle product betterment engagement: high-leverage outcomes, backlog B, residual R, idle frontier."
 ---
 
 # Continuous Product Quality

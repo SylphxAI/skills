@@ -1,6 +1,6 @@
 ---
 name: saas-web-platform-blueprint
-description: "SaaS web platform blueprint: tenancy, core surfaces, billing hooks, admin, scale—not one feature or a marketing site."
+description: "SaaS web platform blueprint: tenancy, core surfaces, billing hooks, admin, scale path."
 ---
 
 # SaaS Web Platform Blueprint

@@ -1,6 +1,6 @@
 ---
 name: architecture-convergence
-description: "Substantial architecture rewrite onto shared invariants with migration path and acceptance—not a local refactor or ordinary feature."
+description: "Substantial architecture rewrite onto shared invariants with migration path and acceptance evidence."
 ---
 
 # Architecture Convergence

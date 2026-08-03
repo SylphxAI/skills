@@ -1,6 +1,6 @@
 ---
 name: notification-strategy-review
-description: "Notification strategy: channels, cadence, consent, fatigue, measurement—not implementing one push template."
+description: "Notification strategy: channels, cadence, consent, fatigue, measurement."
 ---
 
 # Notification Strategy Review

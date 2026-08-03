@@ -1,6 +1,6 @@
 ---
 name: revenue-operations-review
-description: "Revenue operations: pipeline, handoffs, forecasting hygiene, systems—not product pricing strategy alone."
+description: "Revenue operations: pipeline hygiene, handoffs, forecast process, systems."
 ---
 
 # Revenue Operations Review

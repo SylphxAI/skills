@@ -1,6 +1,6 @@
 ---
 name: dependency-version-selection
-description: "Pick dependency/runtime versions from live authoritative sources—not inventing versions from memory or stale templates."
+description: "Select dependency and runtime versions from live authoritative release sources."
 ---
 
 # Dependency Version Selection

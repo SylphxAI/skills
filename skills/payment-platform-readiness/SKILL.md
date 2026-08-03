@@ -1,6 +1,6 @@
 ---
 name: payment-platform-readiness
-description: "Payments capability readiness: processors, rails, ledger, disputes, compliance hooks—not pricing strategy or refunds policy alone."
+description: "Payments capability readiness: processors, rails, ledger, disputes, compliance hooks."
 ---
 
 # Payment Platform Readiness

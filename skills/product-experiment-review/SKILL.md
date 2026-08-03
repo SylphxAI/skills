@@ -1,6 +1,6 @@
 ---
 name: product-experiment-review
-description: "Experiment design/readout: hypothesis, assignment, metrics, decision rules—not causal ID from observational data alone."
+description: "Product experiment design and readout: hypothesis, assignment, metrics, decision rules."
 ---
 
 # Product Experiment Review

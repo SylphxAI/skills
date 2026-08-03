@@ -1,6 +1,6 @@
 ---
 name: source-authoring-standard
-description: "Source authoring: commits, exact candidates, worktrees, checkpoints, concurrent-edit safety—not read-only analysis."
+description: "Source authoring: commits, exact candidates, worktrees, checkpoints, concurrent-edit safety."
 ---
 # Source Authoring Standard
 

@@ -1,6 +1,6 @@
 ---
 name: offline-sync-conflict-review
-description: "Offline sync and conflict resolution design—not general CRDT theory without a product sync surface."
+description: "Offline sync and conflict resolution for product state across devices."
 ---
 
 # Offline Sync Conflict Review

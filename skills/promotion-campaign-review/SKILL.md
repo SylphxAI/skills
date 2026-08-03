@@ -1,6 +1,6 @@
 ---
 name: promotion-campaign-review
-description: "Promotion campaign design: offer, eligibility, abuse, measurement—not base pricing architecture."
+description: "Promotion campaign: offer, eligibility, abuse, measurement, net impact."
 ---
 
 # Promotion Campaign Review
