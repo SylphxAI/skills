@@ -27,6 +27,10 @@ primary artifact or final status. When conformance assessment is itself the
 requested job, produce one standalone domain conformance record from this
 standard.
 
+## Soft composition
+
+- `prefer-hard-cut-migration` for generation cutovers and predecessor retirement (no permanent dual instruction stack).
+
 ## Boundaries
 
 - Does not grant deploy or credential capabilities.

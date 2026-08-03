@@ -33,7 +33,7 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 
 ## Policy (not job cycles)
 
-Apply while doing another job: `*-standard`, `technology-stack-profile`, `prefer-sylphx-platform`, etc.
+Apply while doing another job: `*-standard`, `technology-stack-profile`, `prefer-sylphx-platform`, `prefer-hard-cut-migration`, etc.
 
 ## Design blueprints
 
@@ -59,6 +59,7 @@ Domain review Skills use the `review-*` id prefix (e.g. `review-launch-readiness
 | Next Work from ledger/evidence | `select-next-work` |
 | Single job cycle | `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `finish-product` |
 | Write/edit a Skill | `author-skill` |
+| Hard-cut migration / kill dual-path debt | `prefer-hard-cut-migration` |
 
 Native discovery still applies: agents may load by description match without an explicit `$` invoke.
 

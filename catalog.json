@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 117,
+  "count": 118,
   "skills": [
     {
       "name": "agent-first-development-standard",
@@ -37,7 +37,7 @@
       "name": "author-skill",
       "description": "Author/revise a Skill: job-shaped id, short description, method body, portable host rules.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:32c9a3dc6ac054ab89e5e83316b0196c68e18ff08aeea77e4a11d55a1c2f68df"
+      "packageDigest": "sha256:d3b4c22c014e6603871242b603601279c8b23a30bda746f6a99da51e5b1134af"
     },
     {
       "name": "better-product",
@@ -67,7 +67,7 @@
       "name": "ci-runner-capacity-standard",
       "description": "Policy: CI runner pools—fairness, isolation, scaling, queue pressure.",
       "path": "skills/ci-runner-capacity-standard/SKILL.md",
-      "packageDigest": "sha256:77d938e01cbec745947bf970c5fb6e51f43b1c49b4124af5fb9fdd1a5c83f60f"
+      "packageDigest": "sha256:e486faff2c2c6c58e40f74bf0a595e7a15365751c8ff8d1849cf9e2b74e039c8"
     },
     {
       "name": "commercial-decision-standard",
@@ -223,7 +223,7 @@
       "name": "engineering-standard",
       "description": "Policy: engineering method—design, verification, change safety, repro-driven fixes.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:8f379564abea110385a0ae64c5628fd44576727fcd944137dc00e62c7c01be9c"
+      "packageDigest": "sha256:73e0a93cb980eab1d4946b8cd99243fbe5c7d0372e3856ef800b38c2dd957e5d"
     },
     {
       "name": "enterprise-control-plane-standard",
@@ -277,7 +277,7 @@
       "name": "instruction-evolution-standard",
       "description": "Policy: evolve Skills/constitutions/profiles—owner, migration, retirement.",
       "path": "skills/instruction-evolution-standard/SKILL.md",
-      "packageDigest": "sha256:d549e05d32143b0b3ed12c010149269bcf27e43b1e29496c8430d352eca73c5e"
+      "packageDigest": "sha256:f02b0696d8b1cce6c7366e94012b605090be984a7381a0ffd8c3a57150c95e17"
     },
     {
       "name": "maintain-product",
@@ -314,6 +314,12 @@
       "description": "Policy: parallel change integration—branches, rebase, collision, exact-SHA.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
       "packageDigest": "sha256:a9869fcb705c663a21c6a3a8609fd24f79ae1bb2bbd72c206d1f4447a2f958d0"
+    },
+    {
+      "name": "prefer-hard-cut-migration",
+      "description": "Policy: default hard-cut migration; ban long dual-path compatibility debt unless large-scale user impact forces expand-contract with a dated retirement.",
+      "path": "skills/prefer-hard-cut-migration/SKILL.md",
+      "packageDigest": "sha256:401998f915a21d63dd3d67b2fd4abdacccf5fae2168ba716d747a6610a518c9b"
     },
     {
       "name": "prefer-sylphx-platform",

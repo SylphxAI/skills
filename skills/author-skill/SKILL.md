@@ -47,6 +47,9 @@ tool manual.
 8. **Done criteria.** Every workflow Skill states when **this run/cycle** is
    complete. Do not equate “product forever perfect” with Skill done unless
    the job is explicitly pursue-to-objective.
+9. **Hard-cut portfolio changes.** Prefer rename/delete/migrate over long
+   backward-compatible dual packages. Keep a dual Skill only with demonstrated
+   large-scale impact and a dated retirement (see `prefer-hard-cut-migration`).
 
 Read for class/composition detail:
 [skill-package-classes-and-composition.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/skill-package-classes-and-composition.md)
@@ -158,6 +161,7 @@ interface:
 ## Anti-patterns
 
 - Role nouns as package ids (`product-prototyper`) when a verb job fits
+- Forever compatibility dual packages or undated shims “for safety”
 - Two packages for one intent
 - Always-on essays inside Skills
 - Host tool hardcoding; “create goal every message”

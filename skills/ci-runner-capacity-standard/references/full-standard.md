@@ -224,9 +224,9 @@ pickup evidence by itself.
 
 Classification is fail closed on causality:
 
-- `queue_seconds` remains a compatibility alias for queue-age exposure;
-  `queue_age_seconds` is the exact field for that exposure, while
+- `queue_age_seconds` is the exact field for queue-age exposure;
   `pickup_seconds` is populated only after `started_at` closes the interval;
+  do not introduce new compatibility aliases for retired metric names (prefer hard-cut rename + migration);
 - `runnable_state=runnable` requires provider-backed `runnable_at` or a stronger
   equivalent; GitHub `queued` plus a busy inventory snapshot is insufficient;
 - raw GitHub workflow-job observations publish

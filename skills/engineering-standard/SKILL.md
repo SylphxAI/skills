@@ -77,6 +77,10 @@ the security-design contract before or alongside implementation.
    matching Skills from metadata; the catalog has no dependency primitive, so
    do not invent one or restate these predicates in every procedure.
 
+## Soft composition
+
+- `prefer-hard-cut-migration` when changing or retiring dual paths, shims, or legacy lanes.
+
 ## Boundaries
 
 - Does not grant deploy or credential capabilities.

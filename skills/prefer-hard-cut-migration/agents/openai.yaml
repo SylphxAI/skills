@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prefer Hard-Cut Migration"
+  short_description: "Policy: hard-cut migration default; no long dual-path compatibility debt without large-scale user risk."
+  default_prompt: "Apply prefer-hard-cut-migration on the active migration or retirement work."
