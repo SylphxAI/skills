@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Data Rights Operations Review"
-  short_description: "Review: Data-rights ops — access, export, deletion, audit evidence."
+  short_description: "Review: data-rights ops—access, export, deletion, audit evidence."
   default_prompt: "Run Review Data Rights Operations Review for the active product/workspace."

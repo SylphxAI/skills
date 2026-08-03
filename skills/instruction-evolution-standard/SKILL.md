@@ -1,6 +1,6 @@
 ---
 name: instruction-evolution-standard
-description: "Policy: evolve Skills/constitutions/profiles — single owner, migration, reconciliation, retirement."
+description: "Policy: evolve Skills/constitutions/profiles—owner, migration, retirement."
 ---
 # Instruction Evolution Standard
 

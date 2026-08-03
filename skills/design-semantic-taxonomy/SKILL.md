@@ -1,6 +1,6 @@
 ---
 name: design-semantic-taxonomy
-description: "Design a governed semantic taxonomy or ontology: terms, relations, migration."
+description: "Governed taxonomy/ontology: terms, relations, migration."
 ---
 
 # Design Semantic Taxonomy

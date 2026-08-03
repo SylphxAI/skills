@@ -1,4 +1,4 @@
 interface:
   display_name: "Drive To Delivery"
-  short_description: "Drive one multi-phase engineering objective to delivery-terminal evidence (not open product betterment)."
+  short_description: "Drive one multi-phase engineering objective to delivery-terminal evidence."
   default_prompt: "Run Drive To Delivery for the active task/workspace."

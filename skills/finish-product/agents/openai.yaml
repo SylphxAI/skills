@@ -1,4 +1,4 @@
 interface:
   display_name: "Finish Product"
-  short_description: "Finish/deburr an integrated product to release-grade across real surfaces with re-captured evidence."
+  short_description: "Release-grade finish/deburr of an integrated product with re-captured evidence."
   default_prompt: "Run a finish-product pass on the active integrated product/workspace."

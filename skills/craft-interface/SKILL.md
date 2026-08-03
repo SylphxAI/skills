@@ -1,6 +1,6 @@
 ---
 name: craft-interface
-description: "Craft one product interface or flow: visual direction, interaction states, responsive, accessibility."
+description: "Craft one interface/flow: direction, interaction states, responsive, a11y."
 ---
 
 # Craft Interface

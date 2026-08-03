@@ -1,6 +1,6 @@
 ---
 name: repo-adoption-standard
-description: "Policy/method: adopt engineering standards in a repo — constitution, manifest, fences, conformance entrypoints."
+description: "Adopt engineering standards in a repo: constitution, manifest, fences, conformance."
 ---
 # Repo Adoption Standard
 

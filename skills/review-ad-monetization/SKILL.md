@@ -1,6 +1,6 @@
 ---
 name: review-ad-monetization
-description: "Review: Ad monetization — inventory, UX harm, policy, measurement, net revenue."
+description: "Review: ad monetization—inventory, UX harm, policy, measurement, net revenue."
 ---
 
 # Review Ad Monetization Review

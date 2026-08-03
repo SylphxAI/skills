@@ -1,6 +1,6 @@
 ---
 name: analyze-critically
-description: "Adversarially critique a claim, plan, or design with kill criteria and residuals."
+description: "Adversarially critique a claim/plan/design with kill criteria and residuals."
 ---
 
 # Analyze Critically

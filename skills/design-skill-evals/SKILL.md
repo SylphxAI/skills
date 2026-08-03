@@ -1,6 +1,6 @@
 ---
 name: design-skill-evals
-description: "Design falsifiable skill routing/behavior evals: suites, oracles, failure taxonomy."
+description: "Falsifiable skill evals: suites, behavior oracles, failure taxonomy."
 ---
 
 # Design Skill Evals

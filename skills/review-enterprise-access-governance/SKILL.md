@@ -1,6 +1,6 @@
 ---
 name: review-enterprise-access-governance
-description: "Review: Enterprise access governance — roles, JML, reviews, least privilege."
+description: "Review: enterprise access—roles, JML, reviews, least privilege."
 ---
 
 # Review Enterprise Access Governance Review

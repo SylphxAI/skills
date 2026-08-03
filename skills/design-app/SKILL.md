@@ -1,6 +1,6 @@
 ---
 name: design-app
-description: "Design a whole app: jobs, IA, activation, retention, multi-surface blueprint."
+description: "Whole-app design: jobs, IA, activation, retention, multi-surface blueprint."
 ---
 
 # Design App

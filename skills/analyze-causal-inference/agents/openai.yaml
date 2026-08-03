@@ -1,4 +1,4 @@
 interface:
   display_name: "Analyze Causal Inference"
-  short_description: "Estimate causal effects: identification, assumptions, estimators, robustness, claim bounds."
+  short_description: "Estimate causal effects: identification, estimators, robustness, claim bounds."
   default_prompt: "Run Analyze Causal Inference for the active task/workspace."

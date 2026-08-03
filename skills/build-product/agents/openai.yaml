@@ -1,4 +1,4 @@
 interface:
   display_name: "Build Product"
-  short_description: "Ship a missing product capability end-to-end on the correct ownership boundary; original-oracle verify."
+  short_description: "Ship a missing capability end-to-end on the correct boundary; original-oracle verify."
   default_prompt: "Run one Build Product cycle on the active product/workspace."

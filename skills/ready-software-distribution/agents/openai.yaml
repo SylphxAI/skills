@@ -1,4 +1,4 @@
 interface:
   display_name: "Ready Software Distribution"
-  short_description: "Design software distribution: artifacts, install/upgrade/uninstall, channels, readback."
+  short_description: "Software distribution: artifacts, install/upgrade/uninstall, channels, readback."
   default_prompt: "Run Ready Software Distribution for the active task/workspace."

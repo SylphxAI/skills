@@ -1,6 +1,6 @@
 ---
 name: build-product
-description: "Ship a missing product capability end-to-end on the correct ownership boundary; original-oracle verify."
+description: "Ship a missing capability end-to-end on the correct boundary; original-oracle verify."
 ---
 
 # Build Product

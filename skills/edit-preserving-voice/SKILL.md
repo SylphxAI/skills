@@ -1,6 +1,6 @@
 ---
 name: edit-preserving-voice
-description: "Edit text while preserving voice, constraints, and factual claims."
+description: "Edit text preserving voice, constraints, and factual claims."
 ---
 
 # Edit Preserving Voice

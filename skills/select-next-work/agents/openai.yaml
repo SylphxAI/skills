@@ -1,4 +1,4 @@
 interface:
   display_name: "Select Next Work"
-  short_description: "Select and claim the next high-value Work from evidence/ledger (not product betterment matrix)."
+  short_description: "Select/claim next high-value Work from evidence/ledger (not product betterment matrix)."
   default_prompt: "Select and advance the next high-value Work from current evidence."

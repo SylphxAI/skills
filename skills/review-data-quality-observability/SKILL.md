@@ -1,6 +1,6 @@
 ---
 name: review-data-quality-observability
-description: "Review: Data pipeline quality — freshness, completeness, drift, backfill safety."
+description: "Review: pipeline quality—freshness, completeness, drift, backfill safety."
 ---
 
 # Review Data Quality Observability Review

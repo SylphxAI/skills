@@ -1,4 +1,4 @@
 interface:
   display_name: "Design SaaS Web Platform"
-  short_description: "Design a SaaS web platform: identity, billing, tenancy, ops, multi-surface blueprint."
+  short_description: "SaaS web platform design: identity, billing, tenancy, ops, multi-surface."
   default_prompt: "Run Design SaaS Web Platform for the active product/workspace."

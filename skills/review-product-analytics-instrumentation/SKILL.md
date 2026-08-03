@@ -1,6 +1,6 @@
 ---
 name: review-product-analytics-instrumentation
-description: "Review: Product analytics instrumentation — events, identity, data quality."
+description: "Review: product analytics instrumentation—events, identity, data quality."
 ---
 
 # Review Product Analytics Instrumentation Review

@@ -1,6 +1,6 @@
 ---
 name: design-space-exploration
-description: "Map a design space: alternatives, dimensions, kill criteria, ranked options."
+description: "Design-space map: alternatives, dimensions, kill criteria, ranked options."
 ---
 
 # Design Space Exploration

@@ -1,4 +1,4 @@
 interface:
   display_name: "Expand Product"
-  short_description: "Scale a validated product core (×N): capacity, metrics, non-regression of the core path."
+  short_description: "Scale a validated core (×N) with metrics and core-path non-regression."
   default_prompt: "Run one Expand Product cycle on the active product/workspace."

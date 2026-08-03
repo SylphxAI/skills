@@ -1,6 +1,6 @@
 ---
 name: engineering-standard
-description: "Policy: engineering method — design, verification, change safety, reproduction-driven fixes."
+description: "Policy: engineering method—design, verification, change safety, repro-driven fixes."
 ---
 # Engineering Standard
 

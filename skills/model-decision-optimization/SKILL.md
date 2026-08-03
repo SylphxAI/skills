@@ -1,6 +1,6 @@
 ---
 name: model-decision-optimization
-description: "Model a decision for optimization: objective, constraints, sensitivity, recommendation."
+description: "Model a decision for optimization: objective, constraints, sensitivity."
 ---
 
 # Model Decision Optimization

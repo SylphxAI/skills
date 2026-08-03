@@ -1,6 +1,6 @@
 ---
 name: improve-agent-system
-description: "Improve an agent system: harness, tools, evals, failure modes, measured deltas."
+description: "Improve agent system: harness, tools, evals, failure modes, measured deltas."
 ---
 
 # Improve Agent System

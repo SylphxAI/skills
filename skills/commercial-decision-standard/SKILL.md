@@ -1,6 +1,6 @@
 ---
 name: commercial-decision-standard
-description: "Policy: durable commercial decisions — pricing, packaging, entitlements, licensing, route-to-market."
+description: "Policy: durable commercial decisions—pricing, packaging, entitlements, licensing."
 ---
 # Commercial Decision Standard
 

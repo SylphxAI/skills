@@ -1,6 +1,6 @@
 ---
 name: maintain-product
-description: "Reduce framed live/regression harm: reproduce, fix root cause, prove harm reduced."
+description: "Cut framed live/regression harm: repro, root-cause fix, prove harm reduced."
 ---
 
 # Maintain Product

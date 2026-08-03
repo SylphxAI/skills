@@ -1,6 +1,6 @@
 ---
 name: deliberate-structured
-description: "Run a structured deliberation: options, criteria, decision record, next actions."
+description: "Structured deliberation: options, criteria, decision record, next actions."
 ---
 
 # Deliberate Structured

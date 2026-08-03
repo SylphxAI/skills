@@ -1,6 +1,6 @@
 ---
 name: ready-software-distribution
-description: "Design software distribution: artifacts, install/upgrade/uninstall, channels, readback."
+description: "Software distribution: artifacts, install/upgrade/uninstall, channels, readback."
 ---
 
 # Ready Software Distribution

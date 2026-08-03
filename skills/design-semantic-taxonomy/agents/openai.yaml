@@ -1,4 +1,4 @@
 interface:
   display_name: "Design Semantic Taxonomy"
-  short_description: "Design a governed semantic taxonomy or ontology: terms, relations, migration."
+  short_description: "Governed taxonomy/ontology: terms, relations, migration."
   default_prompt: "Run Design Semantic Taxonomy for the active task/workspace."

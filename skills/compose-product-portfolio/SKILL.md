@@ -1,6 +1,6 @@
 ---
 name: compose-product-portfolio
-description: "Compose a multi-product portfolio: product vs platform split, connectors, bundles, dogfooding boundaries."
+description: "Compose multi-product portfolio: product vs platform, connectors, bundles, dogfood edges."
 ---
 
 # Compose Product Portfolio

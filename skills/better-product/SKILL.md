@@ -1,6 +1,6 @@
 ---
 name: better-product
-description: "Open-ended product betterment (no fixed objective): coverage card, admit all high-EV B, execute, verify; stop at empty high-EV frontier. Prefer pursue-product-objective when outcome is fixed."
+description: "Open betterment with no fixed objective: coverage card, all high-EV B, verify; stop at empty high-EV frontier (else pursue-product-objective)."
 ---
 
 # Better Product

@@ -1,6 +1,6 @@
 ---
 name: research-users
-description: "Research users: questions, methods, synthesis, decision-ready findings."
+description: "User research: questions, methods, synthesis, decision-ready findings."
 ---
 
 # Research Users

@@ -1,6 +1,6 @@
 ---
 name: engineer-requirements
-description: "Turn requirements into testable acceptance criteria with traceability."
+description: "Requirements → testable acceptance criteria with traceability."
 ---
 
 # Engineer Requirements

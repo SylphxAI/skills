@@ -1,6 +1,6 @@
 ---
 name: review-convergent
-description: "Review: Convergent multi-review synthesis into ranked actions and residuals."
+description: "Review: multi-review synthesis into ranked actions and residuals."
 ---
 
 # Review Convergent Review

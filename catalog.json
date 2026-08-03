@@ -5,87 +5,87 @@
   "skills": [
     {
       "name": "agent-first-development-standard",
-      "description": "Policy: multi-agent delivery packets — attribution, collision scopes, machine-verifiable acceptance.",
+      "description": "Policy: multi-agent delivery packets—attribution, collision scopes, machine acceptance.",
       "path": "skills/agent-first-development-standard/SKILL.md",
-      "packageDigest": "sha256:647bcf5ea105a99fb622f7bb2b5a19033a455e2288d20c6364050672009b9cca"
+      "packageDigest": "sha256:55b5f48dccc89e4c181e90a42c3c0020d052579880f2583e5d1fba43410402ca"
     },
     {
       "name": "agent-native-standard",
-      "description": "Policy: agent-operable products — typed state, schema-derived tools, recoverable workflows, run traces.",
+      "description": "Policy: agent-operable products—typed state, schema tools, recoverable workflows, run traces.",
       "path": "skills/agent-native-standard/SKILL.md",
-      "packageDigest": "sha256:3f64851a8d6db23143796f24cc6598bd3ff0d50c31cde7b2ecf338738b1b2f00"
+      "packageDigest": "sha256:718e1b5eee7142b460c0d87453743d0ef1c1bb454cd78dc8a8c59650573be336"
     },
     {
       "name": "analyze-causal-inference",
-      "description": "Estimate causal effects: identification, assumptions, estimators, robustness, claim bounds.",
+      "description": "Estimate causal effects: identification, estimators, robustness, claim bounds.",
       "path": "skills/analyze-causal-inference/SKILL.md",
-      "packageDigest": "sha256:80b8303d45573ffd89b7d68ca77e18e28bbabd5b3e1d7c4b9627c066dbe04e2c"
+      "packageDigest": "sha256:e18fdb34fa44f9bdaac773b0f075127bba372f585f1f387be12cc653bca213ce"
     },
     {
       "name": "analyze-critically",
-      "description": "Adversarially critique a claim, plan, or design with kill criteria and residuals.",
+      "description": "Adversarially critique a claim/plan/design with kill criteria and residuals.",
       "path": "skills/analyze-critically/SKILL.md",
-      "packageDigest": "sha256:f069b765deddd92b627127336c93fdbc498135d92948d8b41306b885cf85d96b"
+      "packageDigest": "sha256:625df5bf4bf0104f27c7ee0422f91e302676274916f37e27afc1280ccfe9a713"
     },
     {
       "name": "analyze-system-dynamics",
-      "description": "Map stubborn system loops: stocks, delays, incentives, policy resistance.",
+      "description": "Map stubborn loops: stocks, delays, incentives, policy resistance.",
       "path": "skills/analyze-system-dynamics/SKILL.md",
-      "packageDigest": "sha256:0c5b959ee929be64dad382415d099160b8216d43ae516f751a66f384e3f88e77"
+      "packageDigest": "sha256:8227e567bed0e7fc26089e049a9082d5b383fbdbe835823986519090297a1ee4"
     },
     {
       "name": "author-skill",
-      "description": "Author or revise a Skill package: job-shaped id, short description, method body, progressive disclosure, portable host rules.",
+      "description": "Author/revise a Skill: job-shaped id, short description, method body, portable host rules.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:b1d7ee589d83f1c7197ea1807027626c0b5638127fe3c9f3dcebab03fca7a8b3"
+      "packageDigest": "sha256:32c9a3dc6ac054ab89e5e83316b0196c68e18ff08aeea77e4a11d55a1c2f68df"
     },
     {
       "name": "better-product",
-      "description": "Open-ended product betterment (no fixed objective): coverage card, admit all high-EV B, execute, verify; stop at empty high-EV frontier. Prefer pursue-product-objective when outcome is fixed.",
+      "description": "Open betterment with no fixed objective: coverage card, all high-EV B, verify; stop at empty high-EV frontier (else pursue-product-objective).",
       "path": "skills/better-product/SKILL.md",
-      "packageDigest": "sha256:6c8376d517b4f3c0947c967f1269c9939e96e7b3683886c7ad03a0513e721c0a"
+      "packageDigest": "sha256:55f54df7c65938a63ed9d79daac00260a50d4cc69e5e1948e901c30589b46a45"
     },
     {
       "name": "bound-task-scope",
-      "description": "Bound this request: objective, in/out, non-goals, cut lines, right-sized ceremony.",
+      "description": "Bound this request: objective, in/out, non-goals, right-sized ceremony.",
       "path": "skills/bound-task-scope/SKILL.md",
-      "packageDigest": "sha256:8deb03157a18a84ce5112ad9bdcd109c344e089ea47537e606d68e2fa8dbb2d9"
+      "packageDigest": "sha256:b6c96c994417d44d4f3c2c2f342ee9ea7871d688ca26c16428968811b0ae05c9"
     },
     {
       "name": "build-product",
-      "description": "Ship a missing product capability end-to-end on the correct ownership boundary; original-oracle verify.",
+      "description": "Ship a missing capability end-to-end on the correct boundary; original-oracle verify.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:00752860da5945394a2877713c0e07067192b2aadbcc4dc1467214dd45ba3c6c"
+      "packageDigest": "sha256:31c9f5ff77c72094c4ec506a3d64d9a3d79e202a7096866ad1f51bc1a7b118d8"
     },
     {
       "name": "ci-admission-standard",
-      "description": "Policy: protected-branch CI admission — required checks, risk-matched gates, flake and preview policy.",
+      "description": "Policy: protected-branch CI admission—required checks, risk-matched gates, flake/preview.",
       "path": "skills/ci-admission-standard/SKILL.md",
-      "packageDigest": "sha256:701bced6d938b28e5645209398302c95906706585b40ac2c1d09f4cdcb75bc31"
+      "packageDigest": "sha256:9a0a8769b6c279ec2fdb5b9a8031beade81de5f4f4d64c8b538e56518084cae5"
     },
     {
       "name": "ci-runner-capacity-standard",
-      "description": "Policy: CI runner pools — fairness, isolation, scaling, queue pressure.",
+      "description": "Policy: CI runner pools—fairness, isolation, scaling, queue pressure.",
       "path": "skills/ci-runner-capacity-standard/SKILL.md",
-      "packageDigest": "sha256:098c3465d817d880d4a005333f7ea31bc51b88db42591578e33fb211a291669a"
+      "packageDigest": "sha256:a96462d44e685ce31ce8e6326afb2f73641c3e4eb5ab57f4e59e3954d4d5fcf6"
     },
     {
       "name": "commercial-decision-standard",
-      "description": "Policy: durable commercial decisions — pricing, packaging, entitlements, licensing, route-to-market.",
+      "description": "Policy: durable commercial decisions—pricing, packaging, entitlements, licensing.",
       "path": "skills/commercial-decision-standard/SKILL.md",
-      "packageDigest": "sha256:29652b6cb8d946fe63d7830407271a0ae30f1bee75e7d45cf8ef0557dfee4279"
+      "packageDigest": "sha256:816284a3eab6189c1af8f70dce0ff0d6fe9f2371f255aa22efec85d12deb320c"
     },
     {
       "name": "compose-product-portfolio",
-      "description": "Compose a multi-product portfolio: product vs platform split, connectors, bundles, dogfooding boundaries.",
+      "description": "Compose multi-product portfolio: product vs platform, connectors, bundles, dogfood edges.",
       "path": "skills/compose-product-portfolio/SKILL.md",
-      "packageDigest": "sha256:c8731069cedec7ceacf067d59886e8d4f313d9fa2f442741d25e793a11845bb9"
+      "packageDigest": "sha256:c123f12a7cf45123ca703d3f2b6ec8db5fcc526d0cdab2ea068cc95857f908b0"
     },
     {
       "name": "compose-product-program",
-      "description": "Compose a multi-work product program: phases, dependencies, milestones, kill/scale criteria.",
+      "description": "Compose multi-work product program: phases, dependencies, milestones, kill/scale.",
       "path": "skills/compose-product-program/SKILL.md",
-      "packageDigest": "sha256:a019cd2844ba1328aa1dced2843edce26b8c42353029cc282008b1604c58c87a"
+      "packageDigest": "sha256:bd5aff42b6bbd7ca5ae6e3a07530fecd0dcf611914f386622900a13d55d8092e"
     },
     {
       "name": "converge-architecture",
@@ -95,207 +95,207 @@
     },
     {
       "name": "coordinate-enact-work",
-      "description": "Operate live Enact Work: claim, attempt, evidence, handoff with authenticated tools.",
+      "description": "Operate live Enact Work: claim, attempt, evidence, handoff (authenticated tools).",
       "path": "skills/coordinate-enact-work/SKILL.md",
-      "packageDigest": "sha256:c8874a746f0ca0c37a32cd02a9b4b3402203daea0708f4cf2203fb89ac09fc42"
+      "packageDigest": "sha256:4ba488aa72f2aa62368ba63b81773a41e0fc474bb0c6a18b482fe23169c43e90"
     },
     {
       "name": "craft-interface",
-      "description": "Craft one product interface or flow: visual direction, interaction states, responsive, accessibility.",
+      "description": "Craft one interface/flow: direction, interaction states, responsive, a11y.",
       "path": "skills/craft-interface/SKILL.md",
-      "packageDigest": "sha256:7f3f2f1fb620a3631b238e565ef646ec7d235905e1de862c4a537aedb0f33fac"
+      "packageDigest": "sha256:910cd6b9cb49fc5b189f2e98c670611cd654b273a973bd256582a4d76abc7f2a"
     },
     {
       "name": "curate-skill-repository",
-      "description": "Curate a skills portfolio: collisions, merge/split, thickness, retirement.",
+      "description": "Curate skills portfolio: collisions, merge/split, thickness, retirement.",
       "path": "skills/curate-skill-repository/SKILL.md",
-      "packageDigest": "sha256:fd4519576eb4c71a88b660d48b024d224499b8e1284719f8f411d0888e06b1c9"
+      "packageDigest": "sha256:1544d3c5d5ad8882a2c0eab45516e63ec45730ab6f36f0155da3df2f53cbdcce"
     },
     {
       "name": "decision-quality-standard",
-      "description": "Policy: decision quality — framing, alternatives, information, tradeoffs, commitment, learning.",
+      "description": "Policy: decision quality—framing, alternatives, tradeoffs, commitment, learning.",
       "path": "skills/decision-quality-standard/SKILL.md",
-      "packageDigest": "sha256:a42f05e7f28808fa538f6e5b47ed332dcd5d6a424347b6856fa9ce2a62175553"
+      "packageDigest": "sha256:8954b5f91347f927bf0ae3620a9aa452ba01c3ad4096791b320d858c0909b279"
     },
     {
       "name": "deliberate-structured",
-      "description": "Run a structured deliberation: options, criteria, decision record, next actions.",
+      "description": "Structured deliberation: options, criteria, decision record, next actions.",
       "path": "skills/deliberate-structured/SKILL.md",
-      "packageDigest": "sha256:e03554bbe18b277d6cdf69028301cdb7d13aa8fe2690dcd2eea8874c1b9cd7d8"
+      "packageDigest": "sha256:16b0c16c9e41fdbdede1dd98e6ceb703eb9061bfbd5a51003e8cd0ead06dea72"
     },
     {
       "name": "delivery-standard",
-      "description": "Policy: delivery terminal honesty — source vs artifact vs desired/current vs live proof.",
+      "description": "Policy: delivery honesty—source vs artifact vs desired/current vs live proof.",
       "path": "skills/delivery-standard/SKILL.md",
-      "packageDigest": "sha256:949c52a48260d1a37a7d22000f9fbee7345cce2710d42992f6738aa2af8864ce"
+      "packageDigest": "sha256:909db242b2e299778ba4b3412ff9bc2528a83cfe1f0c7adf5bdfb32c6a6325e2"
     },
     {
       "name": "design-app",
-      "description": "Design a whole app: jobs, IA, activation, retention, multi-surface blueprint.",
+      "description": "Whole-app design: jobs, IA, activation, retention, multi-surface blueprint.",
       "path": "skills/design-app/SKILL.md",
-      "packageDigest": "sha256:a80215ef6de125ac0f3d860f13d7e4c74c4e93e4640ab3cf8f86ea7430fbc833"
+      "packageDigest": "sha256:a952f0a3266cca5834f8101cfd0755cc77e9960e029bda0ab1cf22cfc2f1d483"
     },
     {
       "name": "design-game",
-      "description": "Design a whole game: thesis, loops, progression, economy, social, live-ops blueprint.",
+      "description": "Whole-game design: thesis, loops, progression, economy, social, live-ops.",
       "path": "skills/design-game/SKILL.md",
-      "packageDigest": "sha256:420a32c4a1a48c6ca3426f8a4b48ccbc48359a5f7ed02be7a13f1858c7b30346"
+      "packageDigest": "sha256:74d40cf6f61f9c1748434c940e0b16cfc4c61e01d15d5a633ea15560bc38caf6"
     },
     {
       "name": "design-marketing-automation",
-      "description": "Design marketing automation: journeys, triggers, consent, measurement, brand-safe ops.",
+      "description": "Marketing automation design: journeys, triggers, consent, measurement.",
       "path": "skills/design-marketing-automation/SKILL.md",
-      "packageDigest": "sha256:c14b003b51a225a55eab997a7df99b6986879d0a24020cc03a8f4ccae83cf02c"
+      "packageDigest": "sha256:35249ae396f60e42020cde7bbb4ea037e359f57f3e007ec4fcccb7abdf269614"
     },
     {
       "name": "design-prompt-architecture",
-      "description": "Design a prompt/context architecture: layers, tools, memory, eval hooks.",
+      "description": "Prompt/context architecture: layers, tools, memory, eval hooks.",
       "path": "skills/design-prompt-architecture/SKILL.md",
-      "packageDigest": "sha256:98f1e5c529a0a9c1084ba3fbd1343d90e5b9738630138e831360fe0a79350a35"
+      "packageDigest": "sha256:40306ebc9fa822aa49e705bab2fc37c3db824009b02372b096c1909b65e2209c"
     },
     {
       "name": "design-provenance-system",
-      "description": "Design provenance: lineage, attestation, retention, consumer contracts.",
+      "description": "Provenance design: lineage, attestation, retention, consumer contracts.",
       "path": "skills/design-provenance-system/SKILL.md",
-      "packageDigest": "sha256:e98760c81335b287f669d2e837ff6b5001732169e7c4e199cfbd555248daa911"
+      "packageDigest": "sha256:cb5a36ed01edac1e07d557a80f5ade0cc3bc330c522ac7af676fc9916d07ff8c"
     },
     {
       "name": "design-saas-web-platform",
-      "description": "Design a SaaS web platform: identity, billing, tenancy, ops, multi-surface blueprint.",
+      "description": "SaaS web platform design: identity, billing, tenancy, ops, multi-surface.",
       "path": "skills/design-saas-web-platform/SKILL.md",
-      "packageDigest": "sha256:0d7f65d60fcf06dc643fd1ef21512038e731df0144ae4416827ff1626bc7a1ea"
+      "packageDigest": "sha256:5e2c271c711df2395b6c90ba227c01bbbcbc08336b1085bee5b32013ac179ac6"
     },
     {
       "name": "design-semantic-taxonomy",
-      "description": "Design a governed semantic taxonomy or ontology: terms, relations, migration.",
+      "description": "Governed taxonomy/ontology: terms, relations, migration.",
       "path": "skills/design-semantic-taxonomy/SKILL.md",
-      "packageDigest": "sha256:ae677c2b372b2651bb2a1857a42cf0bc7b94d3c6cca3faa167433b23c20f388b"
+      "packageDigest": "sha256:7c9e65ff66b2c86adda8162b4895980bc8bd65c09fc6ea7ff0cfd3d54b2bf5e5"
     },
     {
       "name": "design-skill-evals",
-      "description": "Design falsifiable skill routing/behavior evals: suites, oracles, failure taxonomy.",
+      "description": "Falsifiable skill evals: suites, behavior oracles, failure taxonomy.",
       "path": "skills/design-skill-evals/SKILL.md",
-      "packageDigest": "sha256:5706613ccac283256a80edda9da9d0c35858ca22be21a71bfccd4a84700daa9b"
+      "packageDigest": "sha256:8557498268e4270c56cd5a9cf3f64c7c52df42ebcc7bb0d0bc658025e87b36b9"
     },
     {
       "name": "design-space-exploration",
-      "description": "Map a design space: alternatives, dimensions, kill criteria, ranked options.",
+      "description": "Design-space map: alternatives, dimensions, kill criteria, ranked options.",
       "path": "skills/design-space-exploration/SKILL.md",
-      "packageDigest": "sha256:0446b96a13c01f0488ec32912937f81b1b875923277e7638a20552c2c0bf0ebb"
+      "packageDigest": "sha256:bedbc1a61c7b1b5cc222bc50d9efb4de663f5e58ba01956af26fb1316ce292ae"
     },
     {
       "name": "design-system-extractor",
-      "description": "Extract design-system tokens/components/rules from live product UI.",
+      "description": "Extract design-system tokens/components/rules from live UI.",
       "path": "skills/design-system-extractor/SKILL.md",
-      "packageDigest": "sha256:101aa26183f48ddcaee9e3df7e6267e61ffb6b2b6557b46bcc1c0375fd2cf9c2"
+      "packageDigest": "sha256:d5cf68a45dfc70086610383d4768c261aa9a14319006eed192a7750a4602b41c"
     },
     {
       "name": "distill-source-to-skill",
-      "description": "Distill source material into one installable Skill package (SKILL.md).",
+      "description": "Distill source material into one Skill package (SKILL.md).",
       "path": "skills/distill-source-to-skill/SKILL.md",
-      "packageDigest": "sha256:173915755484aeb2529f41b3975cea39882104788ada75094ba59181103cf8bc"
+      "packageDigest": "sha256:3edfe550c3d86b91c82f90afaa93c05502f3b99428bb8d962095eff619e00fa7"
     },
     {
       "name": "documentation-standard",
-      "description": "Policy: docs create/generate/retire — minimal sufficient, freshness, low prose drift.",
+      "description": "Policy: docs create/retire—minimal sufficient, freshness, low prose drift.",
       "path": "skills/documentation-standard/SKILL.md",
-      "packageDigest": "sha256:6a4588bbf25f0fd70e09a265d1db99a738ee93f88ef2375e4f5093c031fbe0f7"
+      "packageDigest": "sha256:6960e3cfe68ef683d17171a133005501a51ebdddb741c372c61612bf63a1e5c1"
     },
     {
       "name": "drive-to-delivery",
-      "description": "Drive one multi-phase engineering objective to delivery-terminal evidence (not open product betterment).",
+      "description": "Drive one multi-phase engineering objective to delivery-terminal evidence.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:f868bfc408c25243a7c0c6f2661a436dad376a7f2cce34bfc6fb63034e744d5b"
+      "packageDigest": "sha256:472601890005cee120bf3f0daf7c15ca7d5743d0f170cb48599fb6ea96c75de8"
     },
     {
       "name": "edit-preserving-voice",
-      "description": "Edit text while preserving voice, constraints, and factual claims.",
+      "description": "Edit text preserving voice, constraints, and factual claims.",
       "path": "skills/edit-preserving-voice/SKILL.md",
-      "packageDigest": "sha256:1e509d5c1dd22c5657e0f655927d1ad722648cf4fe7c5be7739bd869ea466299"
+      "packageDigest": "sha256:a0b99f6825327d1485ac274d5b16281975b78ea4112e01be75804dcba56a3579"
     },
     {
       "name": "engineer-agent-context",
-      "description": "Engineer agent context packs: what to load, when, budgets, refresh rules.",
+      "description": "Engineer agent context packs: load rules, budgets, refresh.",
       "path": "skills/engineer-agent-context/SKILL.md",
-      "packageDigest": "sha256:6133ba1e76f3424100b9ff4a8846bf39787432182c2773732d66ed866de4f63e"
+      "packageDigest": "sha256:f1fc46dfb3ebcb17166287771a7ba3ab0e5b764b951debbacdf06a5d08502b2e"
     },
     {
       "name": "engineer-requirements",
-      "description": "Turn requirements into testable acceptance criteria with traceability.",
+      "description": "Requirements → testable acceptance criteria with traceability.",
       "path": "skills/engineer-requirements/SKILL.md",
-      "packageDigest": "sha256:a318f4996825108496c77b642eaac9329661dcdf8fb367c6fe9cf55ce675152f"
+      "packageDigest": "sha256:9ef72aab7dbd0f0ac0620837dbdab83194ab4c13e96c8cabe48db9daef766cc7"
     },
     {
       "name": "engineering-standard",
-      "description": "Policy: engineering method — design, verification, change safety, reproduction-driven fixes.",
+      "description": "Policy: engineering method—design, verification, change safety, repro-driven fixes.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:aaea05a70390010d85d09508c4cc824311a95f394c4d112ff16c364ab83799c1"
+      "packageDigest": "sha256:beedc2a2c1c8216c188fc58595c2aa332db7703fa4d4264e2738a43714c6a107"
     },
     {
       "name": "enterprise-control-plane-standard",
-      "description": "Policy: org-wide multi-repo control plane — rulesets, reconcilers, audits, status projections.",
+      "description": "Policy: multi-repo control plane—rulesets, reconcilers, audits, status.",
       "path": "skills/enterprise-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:c78e7efc4f8d1e6968c07ea043f2e216ecad70d366e0f6e9475f08381fa7f484"
+      "packageDigest": "sha256:dd9c67a02b6d1ae50fae079439a5a64ea8b7239b62f93b7fe484353117345cc6"
     },
     {
       "name": "enterprise-profile-standard",
-      "description": "Policy: versioned enterprise profiles — selectors, defaults, exceptions, migration.",
+      "description": "Policy: versioned enterprise profiles—selectors, defaults, exceptions, migration.",
       "path": "skills/enterprise-profile-standard/SKILL.md",
-      "packageDigest": "sha256:dacd1a24e7023efdd6bf65ce7d3fd0017b48a437c37d473759d51874ebc67c28"
+      "packageDigest": "sha256:9f5d3cb594c1aea85f7bdd825d5d8ba04c71cca0948bbf4a5fa0f6572e6e177b"
     },
     {
       "name": "evidence-and-claims-standard",
-      "description": "Policy: evidence before claims — local vs candidate vs landed vs live; no false green.",
+      "description": "Policy: evidence before claims—local vs candidate vs landed vs live.",
       "path": "skills/evidence-and-claims-standard/SKILL.md",
-      "packageDigest": "sha256:b89d767cf58c19fd70b20f4f587b44bdb047cb7c479e5c2355319194eb648d81"
+      "packageDigest": "sha256:03c80f4d1f43af657db4f4dfbe124c6f4fd65673707dda50f219b66a6ac2a625"
     },
     {
       "name": "expand-product",
-      "description": "Scale a validated product core (×N): capacity, metrics, non-regression of the core path.",
+      "description": "Scale a validated core (×N) with metrics and core-path non-regression.",
       "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:52b5112ac1bd871db1a9e397dade3045ac8c0c023b8dd983af4c0b491f412cbc"
+      "packageDigest": "sha256:9a68b5f42591bc689fde1fc9f5d3ce1f72c736ac847339e20a39e96bcba8b447"
     },
     {
       "name": "finish-product",
-      "description": "Finish/deburr an integrated product to release-grade across real surfaces with re-captured evidence.",
+      "description": "Release-grade finish/deburr of an integrated product with re-captured evidence.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:c662272a8d415aec2733f7e70b69c95d1857937c327748ad48b22ade987b928f"
+      "packageDigest": "sha256:7597ae910b245fa9c289adf8862cda56c1e507d2aaa6d833896622cebd1d1944"
     },
     {
       "name": "forecast-probabilistically",
-      "description": "Produce calibrated probabilistic forecasts with base rates and scoring rules.",
+      "description": "Calibrated probabilistic forecasts with base rates and scoring rules.",
       "path": "skills/forecast-probabilistically/SKILL.md",
-      "packageDigest": "sha256:e6bfc2aa9e5f6dbc2161db125253a635056be31820edb83945e6dbaa900583a3"
+      "packageDigest": "sha256:64753b94acbe11ad9a85cd7c1a9cd753947af5e344b0745d98f96818e39902c8"
     },
     {
       "name": "improve-agent-system",
-      "description": "Improve an agent system: harness, tools, evals, failure modes, measured deltas.",
+      "description": "Improve agent system: harness, tools, evals, failure modes, measured deltas.",
       "path": "skills/improve-agent-system/SKILL.md",
-      "packageDigest": "sha256:e10672a4570ade0c4a308063f64dc386db4e4bd6099b52e4ec9f6d4441406fad"
+      "packageDigest": "sha256:4dffad87b7905c44c4446876c7beff06d98870095d5b6f7d1ab5983ebb24df5b"
     },
     {
       "name": "incident-standard",
-      "description": "Policy: production incidents — command, severity, mitigation, communication, learning.",
+      "description": "Policy: production incidents—command, severity, mitigation, comms, learning.",
       "path": "skills/incident-standard/SKILL.md",
-      "packageDigest": "sha256:e6a720ec1237633c31b1c9db9a35103938399e6c034df7087220f4919b764359"
+      "packageDigest": "sha256:94296f9afbd20d77042dad3866b24666f89cdf48626b46bd17ccadd4c9cc16ba"
     },
     {
       "name": "instruction-evolution-standard",
-      "description": "Policy: evolve Skills/constitutions/profiles — single owner, migration, reconciliation, retirement.",
+      "description": "Policy: evolve Skills/constitutions/profiles—owner, migration, retirement.",
       "path": "skills/instruction-evolution-standard/SKILL.md",
-      "packageDigest": "sha256:3e2df619aa2b0cbda77f76ae9bf809da6e167bb7173bf2a6cf1fbf4581a8d184"
+      "packageDigest": "sha256:9bd53d343b2a2980ba804c50e7fddfa4d37856ca69e23d89559f93f96783ef9c"
     },
     {
       "name": "maintain-product",
-      "description": "Reduce framed live/regression harm: reproduce, fix root cause, prove harm reduced.",
+      "description": "Cut framed live/regression harm: repro, root-cause fix, prove harm reduced.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:116bf38cb816536cafd7caa16e121f7c19cf5deeb6dbe882c6eaacade9b473cd"
+      "packageDigest": "sha256:1b18dfbc6e7452fdc8b23aa799c63e670f791c78ef4fb88ef506141527bc0762"
     },
     {
       "name": "model-decision-optimization",
-      "description": "Model a decision for optimization: objective, constraints, sensitivity, recommendation.",
+      "description": "Model a decision for optimization: objective, constraints, sensitivity.",
       "path": "skills/model-decision-optimization/SKILL.md",
-      "packageDigest": "sha256:914aeff43ea826436f49c3b2e82cd69cd5a12c0b3ea7ca3f9c58632430ea503d"
+      "packageDigest": "sha256:7896cad7b9dac44be0a7da34e0918af3a4c173d644d4b4edbda18149c4134772"
     },
     {
       "name": "model-security-threats",
@@ -305,381 +305,381 @@
     },
     {
       "name": "operate-customer-support",
-      "description": "Operate customer support: triage, resolution path, escalation, quality loops.",
+      "description": "Operate support: triage, resolution path, escalation, quality loops.",
       "path": "skills/operate-customer-support/SKILL.md",
-      "packageDigest": "sha256:10385ee2a574c9e470bb9d17b7484d9f9ae91aa2324c4da4bf31ac94c590ce8e"
+      "packageDigest": "sha256:0124ee9ebb35b001ad9c79da2202748b5016a69e104b99ff48651b2c875d07d9"
     },
     {
       "name": "optimize-store-listing",
-      "description": "Optimize app/store listing: metadata, creatives, conversion evidence, compliance.",
+      "description": "Optimize store listing: metadata, creatives, conversion evidence, compliance.",
       "path": "skills/optimize-store-listing/SKILL.md",
-      "packageDigest": "sha256:b032a71f1bb00ff8630987e43d509accf6a5805d117413eb46ff919c516d5649"
+      "packageDigest": "sha256:f6c3897f7ac1beb0db3a732bc23d07480d632771c55349f5a84e8155fbc89492"
     },
     {
       "name": "parallel-change-integration-standard",
-      "description": "Policy: parallel change integration — branches, rebase, collision, exact-SHA evidence.",
+      "description": "Policy: parallel change integration—branches, rebase, collision, exact-SHA.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
-      "packageDigest": "sha256:34347008acd70f51532cde3ed917141682e4042a0eae76ee3ccd081fa44b334a"
+      "packageDigest": "sha256:7d1a0567c42a3e3c8b813da1751be3a3672eeffc8a471d749d03f38cf393e1a7"
     },
     {
       "name": "prefer-sylphx-platform",
-      "description": "Policy: prefer Sylphx platform capabilities before inventing parallel infrastructure.",
+      "description": "Policy: prefer Sylphx platform capabilities before inventing parallel infra.",
       "path": "skills/prefer-sylphx-platform/SKILL.md",
-      "packageDigest": "sha256:7eb5c9b798eae743b00ed8084e7f325aed05c7031e394425a923375be0fca35a"
+      "packageDigest": "sha256:7994990e16983ecc9f52f74142ce34527763567d57874fb36ea3696d16c1e22a"
     },
     {
       "name": "price-saas-subscription",
-      "description": "Price a SaaS subscription: packaging, value metric, fences, migration, net revenue.",
+      "description": "Price SaaS subscription: packaging, value metric, fences, migration, net revenue.",
       "path": "skills/price-saas-subscription/SKILL.md",
-      "packageDigest": "sha256:1ee5b87590ce1115b34d2447767b54dfb5a25595c46d604eb8a52f35e598117f"
+      "packageDigest": "sha256:9a39f4a657cbd17813bae6790e3583ef2108e7a9650d647cdd7105dc949728c6"
     },
     {
       "name": "produce-product-assets",
-      "description": "Produce product assets (copy, media, UI content) to brief and brand constraints.",
+      "description": "Produce product assets to brief and brand constraints.",
       "path": "skills/produce-product-assets/SKILL.md",
-      "packageDigest": "sha256:ad3e8c81dd5a223bafc4fbdcff38eace7f79aa79aa96a3625c2dd273a3a4796c"
+      "packageDigest": "sha256:4e0672496df5f6e307f82d7d7cfc4b19b40c67b880f93f4b72a13d05f467737f"
     },
     {
       "name": "project-manifest-standard",
-      "description": "Policy: project manifest shape — ownership, surfaces, delivery terminals, machine facts.",
+      "description": "Policy: project manifest—ownership, surfaces, delivery terminals, machine facts.",
       "path": "skills/project-manifest-standard/SKILL.md",
-      "packageDigest": "sha256:4134ca4d6d0bab2a70fe7e5f2153d27d9d5c6cd01c61b420bc78c902faf23332"
+      "packageDigest": "sha256:1bd0df3f337ce4b05bedb8931686b9e5075865840a25854f033c89932630bd7c"
     },
     {
       "name": "prototype-product",
-      "description": "Validate a product hypothesis with the cheapest real probe and a go/kill/pivot decision.",
+      "description": "Cheap real probe for a product hypothesis with go/kill/pivot decision.",
       "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:825a5d0eb4c455e2001effe383851c4f84d8f48af2a2b70bf3815d91683b854d"
+      "packageDigest": "sha256:a92ea0e36fbb558364dee148f3b33658f1df19db76fe5a63cd2243feec9b812c"
     },
     {
       "name": "pursue-product-objective",
-      "description": "Pursue a declared product objective via betterment cycles until evidence-backed completion or honest block (not open-ended betterment).",
+      "description": "Pursue a declared product objective via betterment cycles to evidence completion or honest block.",
       "path": "skills/pursue-product-objective/SKILL.md",
-      "packageDigest": "sha256:e11118f65b61ece7f4c628079ff405b40257d356e81a0e2ff73de92a3802e1f4"
+      "packageDigest": "sha256:2e2861d7450197b5353fd72a8fde0959e937335f100d4e2bc40b2917dcd8d1e1"
     },
     {
       "name": "ready-payment-platform",
-      "description": "Make payments production-ready: providers, ledger, webhooks, refunds, support adjustments.",
+      "description": "Production-ready payments: providers, ledger, webhooks, refunds, support adjustments.",
       "path": "skills/ready-payment-platform/SKILL.md",
-      "packageDigest": "sha256:577ee45976a1e32097af730b713a1d7750ad1aabfe89d26a196412c41046f047"
+      "packageDigest": "sha256:4696873a726f9c6c41b6b43ffbf77838c8c19ed84d00268cd9edce2bae6ced90"
     },
     {
       "name": "ready-software-distribution",
-      "description": "Design software distribution: artifacts, install/upgrade/uninstall, channels, readback.",
+      "description": "Software distribution: artifacts, install/upgrade/uninstall, channels, readback.",
       "path": "skills/ready-software-distribution/SKILL.md",
-      "packageDigest": "sha256:dd6add819c56022eb8970bc00aaf8b479771c8c5dac4f7b30e78da37eac8f199"
+      "packageDigest": "sha256:23d573ae3c1e530ba02e99cca7174d7398ad6097a05d10ff6558675b3aee97d0"
     },
     {
       "name": "remediate-frontend-performance",
-      "description": "Remediate frontend jank: reproduce, find RAF/timer/listener leaks, fix, before/after same scene.",
+      "description": "Fix frontend jank: repro, RAF/timer/listener leaks, before/after same scene.",
       "path": "skills/remediate-frontend-performance/SKILL.md",
-      "packageDigest": "sha256:38b8858df51800b240403e90b6c1b2d4ec3ead026abd38c091d357b5574fbc76"
+      "packageDigest": "sha256:383830f8ba7d039d154f6ef23f7be2791c2cc856e9283e66ef30bd8fbb82604c"
     },
     {
       "name": "repo-adoption-standard",
-      "description": "Policy/method: adopt engineering standards in a repo — constitution, manifest, fences, conformance entrypoints.",
+      "description": "Adopt engineering standards in a repo: constitution, manifest, fences, conformance.",
       "path": "skills/repo-adoption-standard/SKILL.md",
-      "packageDigest": "sha256:4625f825e5d870f798f9c320b665e7d13314a600979ac4e5b739c125452efc55"
+      "packageDigest": "sha256:6a6bec952aab7cc349c6c8750af4a4c730363254698c6e8884e52418d3c84b66"
     },
     {
       "name": "research-users",
-      "description": "Research users: questions, methods, synthesis, decision-ready findings.",
+      "description": "User research: questions, methods, synthesis, decision-ready findings.",
       "path": "skills/research-users/SKILL.md",
-      "packageDigest": "sha256:8b7a29b580acafe94fe39707c2ade11f0caf64914c9a889d13bee638dcf2b742"
+      "packageDigest": "sha256:4359d5d169359cebd9c92a27a9c33157bfb90e206ab6c17cea094e75b36f52ba"
     },
     {
       "name": "resolve-support-case",
-      "description": "Resolve one support case to closure with correct authority and customer outcome.",
+      "description": "Resolve one support case to closure with correct authority and outcome.",
       "path": "skills/resolve-support-case/SKILL.md",
-      "packageDigest": "sha256:5bbe576a1bc3517761bcdf91de74056179933dfaceced4c89fc53cf88f18c57a"
+      "packageDigest": "sha256:7eeca1f5f32b0e28fb27f738fecad6b8881b836a05e36435e3c6023439f95bcc"
     },
     {
       "name": "review-accessibility-conformance-program",
-      "description": "Review: Accessibility conformance program design, evidence, and residual risk.",
+      "description": "Review: accessibility conformance program design, evidence, residual risk.",
       "path": "skills/review-accessibility-conformance-program/SKILL.md",
-      "packageDigest": "sha256:75611f8e3593a6732c1bc6079b2eecddab76c4bc596cd45dc95b07a98949274c"
+      "packageDigest": "sha256:5db5b4531ffcb4a11d9f2416d4f2454ab37023a09f79c71345fb87043a943b5d"
     },
     {
       "name": "review-account-recovery",
-      "description": "Review: Account recovery paths — security, UX, abuse, proof of recovery.",
+      "description": "Review: account recovery—security, UX, abuse, recovery proof.",
       "path": "skills/review-account-recovery/SKILL.md",
-      "packageDigest": "sha256:6ab2b3632af415c283f1828dbe557403bab6757ed3727f20e24c2df5f0052a81"
+      "packageDigest": "sha256:886a1925e5273799dd5451be12a64cf42b3fccccf691918c85d5dcb90eaefe4b"
     },
     {
       "name": "review-ad-monetization",
-      "description": "Review: Ad monetization — inventory, UX harm, policy, measurement, net revenue.",
+      "description": "Review: ad monetization—inventory, UX harm, policy, measurement, net revenue.",
       "path": "skills/review-ad-monetization/SKILL.md",
-      "packageDigest": "sha256:3ff3bddc50cf478d71e63b964745cbb17f81162fa16e9ca19291351aaa05e2ff"
+      "packageDigest": "sha256:c4d0d51391e1d83cd5ae6ef231ac8dd0e398b136db4579be54e422ea684ad8a2"
     },
     {
       "name": "review-agent-planning-system",
-      "description": "Review: Agent planning system — goals, tools, memory, evals, failure handling.",
+      "description": "Review: agent planning—goals, tools, memory, evals, failure handling.",
       "path": "skills/review-agent-planning-system/SKILL.md",
-      "packageDigest": "sha256:215c12a93e632ea1582143e6aa3d653ec75de794ff09c6a3a0f5a208d0da0281"
+      "packageDigest": "sha256:6f43bbac0dcf43396b41cd768ec0523f582bda7d99e277f4d27c99477ce1c632"
     },
     {
       "name": "review-ai-product-risk",
-      "description": "Review: AI product risk — safety, abuse, evals, human oversight, residual claims.",
+      "description": "Review: AI product risk—safety, abuse, evals, oversight, residual claims.",
       "path": "skills/review-ai-product-risk/SKILL.md",
-      "packageDigest": "sha256:9a2ff462ddb3aab54f90184d128c34be345cb2cf963b68a14781d5289f8d75a1"
+      "packageDigest": "sha256:2873c709c300c72d72253c6344d7bd876351fd3b900b388b87340f9e53678efa"
     },
     {
       "name": "review-board-metrics-operating",
-      "description": "Review: Board/metrics operating rhythm — definitions, cadence, decision use.",
+      "description": "Review: board/metrics rhythm—definitions, cadence, decision use.",
       "path": "skills/review-board-metrics-operating/SKILL.md",
-      "packageDigest": "sha256:bbfc852001cf0508da0fce10516946f7d0572a790ea1b9ce238ec97bab1facd8"
+      "packageDigest": "sha256:57a1a355b6264735a74d012a533554a3bebb83d3a5342cb00209cde21a59cfcf"
     },
     {
       "name": "review-convergent",
-      "description": "Review: Convergent multi-review synthesis into ranked actions and residuals.",
+      "description": "Review: multi-review synthesis into ranked actions and residuals.",
       "path": "skills/review-convergent/SKILL.md",
-      "packageDigest": "sha256:864048b709ee57f64fd02756ea8b7b6dd141b13210e38bfd7d5af0d3e5865a0b"
+      "packageDigest": "sha256:94562fdf1f10e98e178fcdaef45e6c1dad33bd2c93f742f00c199df8cc3e060f"
     },
     {
       "name": "review-customer-data-migration",
-      "description": "Review: Customer data migration — correctness, downtime, rollback, proof.",
+      "description": "Review: customer data migration—correctness, downtime, rollback, proof.",
       "path": "skills/review-customer-data-migration/SKILL.md",
-      "packageDigest": "sha256:1da42d0a3c8d337103fdea5f6d72bbd296780ffa8d903769482eb37b90495182"
+      "packageDigest": "sha256:714bc94ed785a42ba4126dcb7b0027ffe8d7c9e0ddf494cc386ec02686e3141c"
     },
     {
       "name": "review-customer-success-operations",
-      "description": "Review: Customer success ops — health, playbooks, escalation, expansion signals.",
+      "description": "Review: customer success ops—health, playbooks, escalation, expansion.",
       "path": "skills/review-customer-success-operations/SKILL.md",
-      "packageDigest": "sha256:38e37a8f03b2f63b689ce34890b9cbd812ad95e303ece76035898dba4c44ae00"
+      "packageDigest": "sha256:d7f3589bfc6561529638163396874b2fa94164ebee22799f67a56d8952dc0316"
     },
     {
       "name": "review-daily-reward-and-streak",
-      "description": "Review: Daily reward and streak systems — incentives, abuse, retention lift.",
+      "description": "Review: daily reward/streak systems—incentives, abuse, retention lift.",
       "path": "skills/review-daily-reward-and-streak/SKILL.md",
-      "packageDigest": "sha256:8a06ca8dd1df246916cbe0de082b5cf9a9c038aa1c39e26d3e73384be598ab0c"
+      "packageDigest": "sha256:b3900f711521be3fd92aa64ceb0a80a02efbf54946a81a08687ec43b94b2dfa5"
     },
     {
       "name": "review-data-quality-observability",
-      "description": "Review: Data pipeline quality — freshness, completeness, drift, backfill safety.",
+      "description": "Review: pipeline quality—freshness, completeness, drift, backfill safety.",
       "path": "skills/review-data-quality-observability/SKILL.md",
-      "packageDigest": "sha256:9113f853a2481d3ecdd963b68f1667747798c72980e56d36e4d11ad6ce095c68"
+      "packageDigest": "sha256:bb8aaa7aa1d9d22b8f359803470156fff4e80dddd98c2e075b480c6e0244b41c"
     },
     {
       "name": "review-data-rights-operations",
-      "description": "Review: Data-rights ops — access, export, deletion, audit evidence.",
+      "description": "Review: data-rights ops—access, export, deletion, audit evidence.",
       "path": "skills/review-data-rights-operations/SKILL.md",
-      "packageDigest": "sha256:5a86e5f1ffa8a38b6bda25512b077fa03789ec3619ecaacc10045fd05adf9413"
+      "packageDigest": "sha256:775cb126aef3e8e186266969496b1a5a02de1fcb64df44fde57f20b658926240"
     },
     {
       "name": "review-developer-product-experience",
-      "description": "Review: Developer product experience — onboarding, APIs, docs, time-to-value.",
+      "description": "Review: developer product UX—onboarding, APIs, docs, time-to-value.",
       "path": "skills/review-developer-product-experience/SKILL.md",
-      "packageDigest": "sha256:73d9176b697d9855f1044cded74a6f870a7c2febee691283ab737e9a592f3731"
+      "packageDigest": "sha256:5d2087346f4b5d9ac4023e9986242c1c1124acba4bbb124d1774efd99b366367"
     },
     {
       "name": "review-developer-quota-credit-abuse",
-      "description": "Review: Developer quota/credit systems — fairness, abuse, metering accuracy.",
+      "description": "Review: developer quota/credit systems—fairness, abuse, metering.",
       "path": "skills/review-developer-quota-credit-abuse/SKILL.md",
-      "packageDigest": "sha256:9dbc589514f9b82e3a8be9405772289a602202543dd437bf0747355c7d40970a"
+      "packageDigest": "sha256:cef36b7cadfe654b87ce967ad553b9192a660f3f9eb243180b14cb09a11d80b2"
     },
     {
       "name": "review-enterprise-access-governance",
-      "description": "Review: Enterprise access governance — roles, JML, reviews, least privilege.",
+      "description": "Review: enterprise access—roles, JML, reviews, least privilege.",
       "path": "skills/review-enterprise-access-governance/SKILL.md",
-      "packageDigest": "sha256:507f6e474417cc94a2a9481a6a1a2fb2aa3f54fe28ac194f0192f1334ebc0ffe"
+      "packageDigest": "sha256:d7dfb1338133a47cdd55e0750a6f21f45602c18e9e25619654bf9c3302cbe807"
     },
     {
       "name": "review-enterprise-contract-operations",
-      "description": "Review: Enterprise contract ops — obligations, renewals, compliance hooks.",
+      "description": "Review: enterprise contract ops—obligations, renewals, compliance hooks.",
       "path": "skills/review-enterprise-contract-operations/SKILL.md",
-      "packageDigest": "sha256:8f32bfa31e0af526c07027f2fa09c45000b0e86e3f1765fe05092ee99030e1b9"
+      "packageDigest": "sha256:c026c414db278b62d630aaf97c25619245378fbeb0fdb002ac6ad3edbefb883b"
     },
     {
       "name": "review-game-economy",
-      "description": "Review: Game economy — sources/sinks, balance, progression coupling, abuse.",
+      "description": "Review: game economy—sources/sinks, balance, progression, abuse.",
       "path": "skills/review-game-economy/SKILL.md",
-      "packageDigest": "sha256:3acbe292b5a704604c69638fc73a6109c745f04924fa87291d3fabdd089f3829"
+      "packageDigest": "sha256:66c0c354de5499e84033c1b9634eadf3cf47c6fba315650f41cf02d4f5735bf4"
     },
     {
       "name": "review-game-soft-launch",
-      "description": "Review: Game soft-launch — markets, KPIs, kill/scale criteria, live-ops plan.",
+      "description": "Review: game soft-launch—markets, KPIs, kill/scale, live-ops plan.",
       "path": "skills/review-game-soft-launch/SKILL.md",
-      "packageDigest": "sha256:0398029e3043f12b7b2dcd18ae293a82abe169464a0d604aadfb9df5e5fc413e"
+      "packageDigest": "sha256:3907ad36b44027344446d0efe968223a3c4a0c2c1c9e36089dc967ca73a7ba5e"
     },
     {
       "name": "review-launch-readiness",
-      "description": "Review: Launch readiness across product, ops, support, risk, go/no-go evidence.",
+      "description": "Review: launch readiness—product, ops, support, risk, go/no-go evidence.",
       "path": "skills/review-launch-readiness/SKILL.md",
-      "packageDigest": "sha256:7e9eeb7001f4ff6f3dd7118353284ed6a4a154086ba0a0ef922056cf0e1b50f6"
+      "packageDigest": "sha256:f4058a293162abccbb725dc3a5e07a47a3c5a903a8f24b268839966b763cbfab"
     },
     {
       "name": "review-marketplace-payouts",
-      "description": "Review: Marketplace seller payouts — eligibility, calc, holds, tax/compliance.",
+      "description": "Review: marketplace payouts—eligibility, calc, holds, tax/compliance.",
       "path": "skills/review-marketplace-payouts/SKILL.md",
-      "packageDigest": "sha256:2a8e9f5cf09c5c0d9c026ea1a432822ece55d1cab53bef884846dc7590feed2b"
+      "packageDigest": "sha256:6566ac52160c2722615c3cfc270b89985b1d589e69974b332eae930b02b2bb04"
     },
     {
       "name": "review-marketplace-seller-performance",
-      "description": "Review: Marketplace seller performance — quality evidence, tiers, ranking inputs.",
+      "description": "Review: seller performance—quality evidence, tiers, ranking inputs.",
       "path": "skills/review-marketplace-seller-performance/SKILL.md",
-      "packageDigest": "sha256:242e1c8b1c8352168d62b1208b564661035e4efa36d3ab7d9900dc5790c5ec3c"
+      "packageDigest": "sha256:95152328b900710f3fa9c4917484f1d3ee99050967eec2f7e5bc73d4906d850c"
     },
     {
       "name": "review-marketplace-trust-operations",
-      "description": "Review: Marketplace trust ops — detection, enforcement, appeals, evidence.",
+      "description": "Review: marketplace trust ops—detection, enforcement, appeals, evidence.",
       "path": "skills/review-marketplace-trust-operations/SKILL.md",
-      "packageDigest": "sha256:55621173e2abd9f88e0960078474d11ff17acc7cab7702fedbf8645305872f16"
+      "packageDigest": "sha256:20a3bfe9c36942eef062032089a1d820674d071bd1d8a9512c04874381e83540"
     },
     {
       "name": "review-notification-strategy",
-      "description": "Review: Notifications — channels, cadence, consent, fatigue, measurement.",
+      "description": "Review: notifications—channels, cadence, consent, fatigue, measurement.",
       "path": "skills/review-notification-strategy/SKILL.md",
-      "packageDigest": "sha256:ab66dc4d828154b526d8cb98d6bbf3c3d030ae601e1b0ef2c90bf1e07e9fee33"
+      "packageDigest": "sha256:bb96ecf48ceda5c9afd30c728b3b57c030d77dd2aa7b0079d046c419f87841e5"
     },
     {
       "name": "review-offline-sync-conflict",
-      "description": "Review: Offline sync and conflict resolution for product state across devices.",
+      "description": "Review: offline sync and conflict resolution across devices.",
       "path": "skills/review-offline-sync-conflict/SKILL.md",
-      "packageDigest": "sha256:4081096e7c60ff9741438df1b5b73cad3d6b60146cd47066cae9aad6ed9d0c7e"
+      "packageDigest": "sha256:021ba22aa5a086c8b63631ecaf14a4f46ecb42181b55745fd8aed17ac56d02a9"
     },
     {
       "name": "review-operational-observability",
-      "description": "Review: Service observability — SLOs, telemetry, alerting, on-call diagnosability.",
+      "description": "Review: observability—SLOs, telemetry, alerting, on-call diagnosability.",
       "path": "skills/review-operational-observability/SKILL.md",
-      "packageDigest": "sha256:0b063d0aca035960acd5ae908333a0287f2c591d718b6857194fa099fe928c3e"
+      "packageDigest": "sha256:6780e2e4e7b165172b953598939edf86a8f4ef85ec94c9cd5d8aae80ad8414c7"
     },
     {
       "name": "review-optimization-objective",
-      "description": "Review: Whether an optimization objective is well-posed, aligned, and measurable.",
+      "description": "Review: optimization objective well-posed, aligned, measurable.",
       "path": "skills/review-optimization-objective/SKILL.md",
-      "packageDigest": "sha256:775b5f6c8f7b84ed47eecc7b2e125c2dca65e706f40dcb943605945aaa3209a9"
+      "packageDigest": "sha256:694c0beccf242c769f7580f813815b1f2d5b1d504c9fe4fedff73a464d01e3ce"
     },
     {
       "name": "review-privacy-data-lifecycle",
-      "description": "Review: Privacy data lifecycle — collection, purpose limits, retention, deletion.",
+      "description": "Review: privacy lifecycle—collection, purpose limits, retention, deletion.",
       "path": "skills/review-privacy-data-lifecycle/SKILL.md",
-      "packageDigest": "sha256:93a94f801b7b2bc028eb95c0fe7d7a72766042be6d27116b53934a30f17954a3"
+      "packageDigest": "sha256:f16a3101de36699cea589d868429f3218d57b10f8693143c864b40f723c4aa68"
     },
     {
       "name": "review-product-abuse-risk",
-      "description": "Review: Product abuse risks — fraud, spam, exploitation, enforcement controls.",
+      "description": "Review: product abuse—fraud, spam, exploitation, enforcement.",
       "path": "skills/review-product-abuse-risk/SKILL.md",
-      "packageDigest": "sha256:7fc058f4d27230e8c5c57f017caff7a12ae042e75ad6d5f385b059fef433ca17"
+      "packageDigest": "sha256:8bef42052595cd578f6c2139b46a600ad23f993656322f615ec1b08b2cf00371"
     },
     {
       "name": "review-product-analytics-instrumentation",
-      "description": "Review: Product analytics instrumentation — events, identity, data quality.",
+      "description": "Review: product analytics instrumentation—events, identity, data quality.",
       "path": "skills/review-product-analytics-instrumentation/SKILL.md",
-      "packageDigest": "sha256:4ada728a6467dd7dfbf6c3091cb704339abceb414437a01a262f48a9acf81652"
+      "packageDigest": "sha256:d295cac2071cf3f3d398c987fc1b4c71dd4eacc4c4c63176bd99fd655f086469"
     },
     {
       "name": "review-product-experiment",
-      "description": "Review: Experiment design/readout — hypothesis, assignment, metrics, decisions.",
+      "description": "Review: experiment design/readout—hypothesis, assignment, metrics, decisions.",
       "path": "skills/review-product-experiment/SKILL.md",
-      "packageDigest": "sha256:30a9657456eda3e6500cf0fac768ef9e8b40b1d87f38e172a3272148adf3362b"
+      "packageDigest": "sha256:d8be39a9d56de8a2c59c9c4dce02a3b74a601744e7dca76220b16ba75514b247"
     },
     {
       "name": "review-product-recovery-contract",
-      "description": "Review: User-facing recovery after product failure — repair, compensation, trust.",
+      "description": "Review: post-failure user recovery—repair, compensation, trust rebuild.",
       "path": "skills/review-product-recovery-contract/SKILL.md",
-      "packageDigest": "sha256:d177d51ff230fca8e65e7c349023f051ac1a018b10d773b84ed8cb13b01a6804"
+      "packageDigest": "sha256:941b32e0a2ebf51386cb3ef4e46ab599de8ba90dfb78cafa7c6d4b91a1aa1fc7"
     },
     {
       "name": "review-promotion-campaign",
-      "description": "Review: Promotion campaign — offer, eligibility, abuse, measurement, net impact.",
+      "description": "Review: promotion campaign—offer, eligibility, abuse, measurement, net impact.",
       "path": "skills/review-promotion-campaign/SKILL.md",
-      "packageDigest": "sha256:02208ea1f8f30aa02556d582e97d343cde3252882b63fa1cfd5d1d9222812c06"
+      "packageDigest": "sha256:6f8bd27e83caadc7bbcb14d451d6099641c79ef679aee1cd160b49a30f88225c"
     },
     {
       "name": "review-reference-originality",
-      "description": "Review: Originality and derivation risk for designs, content, or code references.",
+      "description": "Review: originality/derivation risk for designs, content, or code references.",
       "path": "skills/review-reference-originality/SKILL.md",
-      "packageDigest": "sha256:7a4b3dbe3339f5400d869a8c1ba0ad23e02199ce1fd1a9781d38deee35179fce"
+      "packageDigest": "sha256:fc0da8a8ab36764f241bac0e671cbc5881e8362ead3787de039492c28a636d68"
     },
     {
       "name": "review-referral-loop",
-      "description": "Review: Referral loops — incentives, fraud controls, viral mechanics, measurement.",
+      "description": "Review: referral loops—incentives, fraud controls, viral mechanics, measurement.",
       "path": "skills/review-referral-loop/SKILL.md",
-      "packageDigest": "sha256:45b377e38bd8b775a5202ad4cab1b4d7305685649e803f22ae5531ed7df59dc0"
+      "packageDigest": "sha256:5e378a983f7716dec56458a7e6d9f8148fef9673f0367738225bf616942a9cf8"
     },
     {
       "name": "review-refund-and-support-flow",
-      "description": "Review: Refund/support money flows — policy, authority, ledger, customer path.",
+      "description": "Review: refund/support money flows—policy, authority, ledger, customer path.",
       "path": "skills/review-refund-and-support-flow/SKILL.md",
-      "packageDigest": "sha256:3cedaa053b709273a4699407091f66eb5ab0b63e73b1835b330b861661548fc1"
+      "packageDigest": "sha256:2a9521c47a7bee61f8d0550c9f6f79bf7df2f5acfa3d4c2e1d143e8ee1d71698"
     },
     {
       "name": "review-retention-cohort",
-      "description": "Review: Retention cohorts — measurement, drivers, intervention design.",
+      "description": "Review: retention cohorts—measurement, drivers, interventions.",
       "path": "skills/review-retention-cohort/SKILL.md",
-      "packageDigest": "sha256:e36565a29020340262c83d995ae2acbf4ab0fc3bd57eddd814579ad241837494"
+      "packageDigest": "sha256:f4ed2450fae4e4ddf4eec52a65cc10b6a0f58f27eafcb4a06785abcf58a079b6"
     },
     {
       "name": "review-revenue-operations",
-      "description": "Review: Revenue ops — pipeline hygiene, handoffs, forecast process, systems.",
+      "description": "Review: revenue ops—pipeline hygiene, handoffs, forecast process, systems.",
       "path": "skills/review-revenue-operations/SKILL.md",
-      "packageDigest": "sha256:11051ab893b96e705fcad26f8357f2fb48b7e9d7acb0d32054e18629137a8fb2"
+      "packageDigest": "sha256:13d6b5a12fda849d44a45451a3a0c83e463de24eed73bc03c40ea726f68e139d"
     },
     {
       "name": "review-search-discovery-quality",
-      "description": "Review: Search/discovery quality — relevance, ranking, evaluation, abuse resistance.",
+      "description": "Review: search/discovery—relevance, ranking, evaluation, abuse resistance.",
       "path": "skills/review-search-discovery-quality/SKILL.md",
-      "packageDigest": "sha256:21b45a3707e3c93d62b386eb574a87704647d91763f2aa755ad8d88ee0723108"
+      "packageDigest": "sha256:1bc2fe6d8e1f4fb69b3881ae423dc5826828159e6713fefe3b7ef08d2f99d389"
     },
     {
       "name": "review-security-assurance-operations",
-      "description": "Review: Security assurance ops — scanning, triage, SLAs, evidence packs.",
+      "description": "Review: security assurance ops—scanning, triage, SLAs, evidence packs.",
       "path": "skills/review-security-assurance-operations/SKILL.md",
-      "packageDigest": "sha256:4ba80dfe59adba924202379ea408e48b59b11c7bf923419eca5a1712ee44b100"
+      "packageDigest": "sha256:9f0553b7154b08c360933436468e1c3c4c89716691fa1a4daf04cd1d53158328"
     },
     {
       "name": "review-social-media-operations",
-      "description": "Review: Official social ops — authority, publishing, listening, crisis.",
+      "description": "Review: official social ops—authority, publishing, listening, crisis.",
       "path": "skills/review-social-media-operations/SKILL.md",
-      "packageDigest": "sha256:fa72834236d07de1383c425b27864b2def6da9805ac69025163dff2d82eaa792"
+      "packageDigest": "sha256:c9bfeacd2a016cfdcd30437676654df4bdc9b2094a38ba1cee2f23700914caa4"
     },
     {
       "name": "review-solicitation-policy",
-      "description": "Policy: review solicitation — timing, channels, bias and abuse controls.",
+      "description": "Policy: review solicitation—timing, channels, bias/abuse controls.",
       "path": "skills/review-solicitation-policy/SKILL.md",
-      "packageDigest": "sha256:518845349c0b4c640c170069fe2abb7cf9a6171bd5aef570edcb063c4f7627fe"
+      "packageDigest": "sha256:f8b47ad3c92d1837e2bb782b7780b88cc9c9455dda206a6fb08621d92dd0a966"
     },
     {
       "name": "review-subscription-price-increase-retention",
-      "description": "Review: Retention-safe subscription price increase — cohorts, notices, grandfathering.",
+      "description": "Review: retention-safe subscription price increase—cohorts, notices, grandfathering.",
       "path": "skills/review-subscription-price-increase-retention/SKILL.md",
-      "packageDigest": "sha256:2ac06772de80889921bfb7a117e6ba8212f69c448487a79d380752be921fe813"
+      "packageDigest": "sha256:e3a1d33cf25643a96a11cd781fd45d29d20a51242576c691f873282dde3e967f"
     },
     {
       "name": "risk-matched-verification-standard",
-      "description": "Policy: scale verification depth to failure risk — evidence class, gates, residuals.",
+      "description": "Policy: verification depth matched to failure risk—evidence class, gates, residuals.",
       "path": "skills/risk-matched-verification-standard/SKILL.md",
-      "packageDigest": "sha256:f833057ea02ddeed52ff44348f54dc39087233df8522333450ca280276a9de97"
+      "packageDigest": "sha256:7df915957b6c74868b6118e89bd5be6419817473dbe8593b74ebeab97848de8c"
     },
     {
       "name": "run-product-feedback-loop",
-      "description": "Run one product feedback loop: capture, cluster, decide, close loop to users/roadmap.",
+      "description": "One product feedback loop: capture, cluster, decide, close to users/roadmap.",
       "path": "skills/run-product-feedback-loop/SKILL.md",
-      "packageDigest": "sha256:849cc3f478640251bb2259e21bad4909edc6d59b5dd26c23eb23de141b47b1b9"
+      "packageDigest": "sha256:9dc03d4ce563b27fb84e7446bc130494d7b84d4f623877bca5fac19a3708c496"
     },
     {
       "name": "select-dependency-versions",
-      "description": "Select dependency and runtime versions from live authoritative release sources.",
+      "description": "Select dependency/runtime versions from live authoritative release sources.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:713087dbea628c88b16c1aa5c7218d8924f242c792a0f8bdba7541c33cd1d9c9"
+      "packageDigest": "sha256:c9ad9b3e3ee7de18ebe4030c58b52e03b9ed954170d1dc11d0f4298571f78916"
     },
     {
       "name": "select-next-work",
-      "description": "Select and claim the next high-value Work from evidence/ledger (not product betterment matrix).",
+      "description": "Select/claim next high-value Work from evidence/ledger (not product betterment matrix).",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:e552ee0b5781e0105ac585cab4d76c90f8d889bd8a6efd82e04a75339f019afa"
+      "packageDigest": "sha256:440b9d5e51c8d1876a5b39821b78266636bf270e2d5ff7c9ea62d0ac249caf50"
     },
     {
       "name": "source-authoring-standard",
-      "description": "Policy: source authoring — commits, exact candidates, worktrees, concurrent-edit safety.",
+      "description": "Policy: source authoring—commits, exact candidates, worktrees, concurrent-edit safety.",
       "path": "skills/source-authoring-standard/SKILL.md",
-      "packageDigest": "sha256:2e5cca99feaf82d9e4c5605b9f6aaaf851b74d9fe0278d4a060240b814e9c2aa"
+      "packageDigest": "sha256:a9fd0b37a992853466acb760e6da9c054c6ea5c0ba5438449050b52e10b7bda2"
     },
     {
       "name": "specification-control-plane-standard",
-      "description": "Policy: executable specification lifecycle — packets, eval manifests, telemetry, exceptions.",
+      "description": "Policy: executable specs lifecycle—packets, eval manifests, telemetry, exceptions.",
       "path": "skills/specification-control-plane-standard/SKILL.md",
-      "packageDigest": "sha256:ca93d401c22f5aaa78eab11a5325f823bfe6b9cf51b56700ef882792a590b158"
+      "packageDigest": "sha256:8ccfa9e0a9508c95e68123cf1204e9db448e290feac8ecb3b438c4c01827a737"
     },
     {
       "name": "synthesize-evidence",
@@ -689,15 +689,15 @@
     },
     {
       "name": "synthesize-market-research",
-      "description": "Synthesize market research: segments, competitors, demand evidence, implications.",
+      "description": "Synthesize market research: segments, competitors, demand, implications.",
       "path": "skills/synthesize-market-research/SKILL.md",
-      "packageDigest": "sha256:217bda3c947cb97a614139edbe8737f903f0d278c411bd8a1c386601e686c7ab"
+      "packageDigest": "sha256:9f6cff37ce5f272e1dbd11c785aba267db3459e686568268a0a466fb44bcfca5"
     },
     {
       "name": "technology-stack-profile",
-      "description": "Policy profile: required technology-stack selection rules for matching repos (not a product job).",
+      "description": "Policy profile: technology-stack selection rules for matching repos (not a product job).",
       "path": "skills/technology-stack-profile/SKILL.md",
-      "packageDigest": "sha256:06ebd8e307453f98969a62e6775742598fd3d986dfc664d04c0ad17fa5bbae23",
+      "packageDigest": "sha256:8592d3d13d551e8b595f3d793821afddf7d2e0fcce146d5953ed1eacd5fa647a",
       "profile": {
         "id": "technology-stack-profile",
         "revision": "2026-07-29.2",
@@ -708,15 +708,15 @@
     },
     {
       "name": "work-coordination-standard",
-      "description": "Policy: portable work-ledger semantics — claims, attempts, checkpoints, handoff, stale recovery.",
+      "description": "Policy: work-ledger semantics—claims, attempts, checkpoints, handoff, stale recovery.",
       "path": "skills/work-coordination-standard/SKILL.md",
-      "packageDigest": "sha256:10a53a23d9f3ceb906a08de2ac5aea5aa0e9fc533313a188cceb48dbde1bec4c"
+      "packageDigest": "sha256:75b65a883da9dcc9fe784b1717d9d5d328d40e970b0edb251c2a6baafeb98d49"
     },
     {
       "name": "write-high-signal-update",
-      "description": "Write a high-signal stakeholder update: decisions, risks, explicit asks, minimal narrative.",
+      "description": "High-signal stakeholder update: decisions, risks, explicit asks, minimal narrative.",
       "path": "skills/write-high-signal-update/SKILL.md",
-      "packageDigest": "sha256:3d622ac3c32535508daf86aeb512f920c57fe006c0681fe5981533ef8d71f4a3"
+      "packageDigest": "sha256:b8b804f0dc93b268f80e0eb6621d0a8d9f7c4f47d43a140eb3a3f429bd939b88"
     }
   ]
 }

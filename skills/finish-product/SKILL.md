@@ -1,6 +1,6 @@
 ---
 name: finish-product
-description: "Finish/deburr an integrated product to release-grade across real surfaces with re-captured evidence."
+description: "Release-grade finish/deburr of an integrated product with re-captured evidence."
 ---
 
 # Finish Product

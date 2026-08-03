@@ -1,6 +1,6 @@
 ---
 name: review-account-recovery
-description: "Review: Account recovery paths — security, UX, abuse, proof of recovery."
+description: "Review: account recovery—security, UX, abuse, recovery proof."
 ---
 
 # Review Account Recovery Review

@@ -1,6 +1,6 @@
 ---
 name: engineer-agent-context
-description: "Engineer agent context packs: what to load, when, budgets, refresh rules."
+description: "Engineer agent context packs: load rules, budgets, refresh."
 ---
 
 # Engineer Agent Context

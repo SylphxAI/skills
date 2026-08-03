@@ -1,6 +1,6 @@
 ---
 name: review-referral-loop
-description: "Review: Referral loops — incentives, fraud controls, viral mechanics, measurement."
+description: "Review: referral loops—incentives, fraud controls, viral mechanics, measurement."
 ---
 
 # Review Referral Loop Review

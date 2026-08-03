@@ -1,6 +1,6 @@
 ---
 name: work-coordination-standard
-description: "Policy: portable work-ledger semantics — claims, attempts, checkpoints, handoff, stale recovery."
+description: "Policy: work-ledger semantics—claims, attempts, checkpoints, handoff, stale recovery."
 ---
 # Work Coordination Standard
 

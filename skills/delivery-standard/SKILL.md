@@ -1,6 +1,6 @@
 ---
 name: delivery-standard
-description: "Policy: delivery terminal honesty — source vs artifact vs desired/current vs live proof."
+description: "Policy: delivery honesty—source vs artifact vs desired/current vs live proof."
 ---
 # Delivery Standard
 

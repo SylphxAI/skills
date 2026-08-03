@@ -1,6 +1,6 @@
 ---
 name: review-reference-originality
-description: "Review: Originality and derivation risk for designs, content, or code references."
+description: "Review: originality/derivation risk for designs, content, or code references."
 ---
 
 # Review Reference Originality Review

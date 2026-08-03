@@ -1,6 +1,6 @@
 ---
 name: review-accessibility-conformance-program
-description: "Review: Accessibility conformance program design, evidence, and residual risk."
+description: "Review: accessibility conformance program design, evidence, residual risk."
 ---
 
 # Review Accessibility Conformance Program Review

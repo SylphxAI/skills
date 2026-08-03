@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Product Experiment Review"
-  short_description: "Review: Experiment design/readout — hypothesis, assignment, metrics, decisions."
+  short_description: "Review: experiment design/readout—hypothesis, assignment, metrics, decisions."
   default_prompt: "Run Review Product Experiment Review for the active product/workspace."

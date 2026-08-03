@@ -1,6 +1,6 @@
 ---
 name: analyze-system-dynamics
-description: "Map stubborn system loops: stocks, delays, incentives, policy resistance."
+description: "Map stubborn loops: stocks, delays, incentives, policy resistance."
 ---
 
 # Analyze System Dynamics

@@ -1,6 +1,6 @@
 ---
 name: review-retention-cohort
-description: "Review: Retention cohorts — measurement, drivers, intervention design."
+description: "Review: retention cohorts—measurement, drivers, interventions."
 ---
 
 # Review Retention Cohort Review

@@ -1,6 +1,6 @@
 ---
 name: select-next-work
-description: "Select and claim the next high-value Work from evidence/ledger (not product betterment matrix)."
+description: "Select/claim next high-value Work from evidence/ledger (not product betterment matrix)."
 ---
 
 # Select Next Work

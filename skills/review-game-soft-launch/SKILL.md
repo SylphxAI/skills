@@ -1,6 +1,6 @@
 ---
 name: review-game-soft-launch
-description: "Review: Game soft-launch — markets, KPIs, kill/scale criteria, live-ops plan."
+description: "Review: game soft-launch—markets, KPIs, kill/scale, live-ops plan."
 ---
 
 # Review Game Soft Launch Review

@@ -1,6 +1,6 @@
 ---
 name: prefer-sylphx-platform
-description: "Policy: prefer Sylphx platform capabilities before inventing parallel infrastructure."
+description: "Policy: prefer Sylphx platform capabilities before inventing parallel infra."
 ---
 
 # Prefer Sylphx Platform

@@ -1,6 +1,6 @@
 ---
 name: price-saas-subscription
-description: "Price a SaaS subscription: packaging, value metric, fences, migration, net revenue."
+description: "Price SaaS subscription: packaging, value metric, fences, migration, net revenue."
 ---
 
 # Price SaaS Subscription

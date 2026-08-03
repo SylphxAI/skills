@@ -1,6 +1,6 @@
 ---
 name: design-prompt-architecture
-description: "Design a prompt/context architecture: layers, tools, memory, eval hooks."
+description: "Prompt/context architecture: layers, tools, memory, eval hooks."
 ---
 # Design Prompt Architecture
 

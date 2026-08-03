@@ -1,6 +1,6 @@
 ---
 name: review-data-rights-operations
-description: "Review: Data-rights ops — access, export, deletion, audit evidence."
+description: "Review: data-rights ops—access, export, deletion, audit evidence."
 ---
 
 # Review Data Rights Operations Review

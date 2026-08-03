@@ -1,4 +1,4 @@
 interface:
   display_name: "Compose Product Portfolio"
-  short_description: "Compose a multi-product portfolio: product vs platform split, connectors, bundles, dogfooding boundaries."
+  short_description: "Compose multi-product portfolio: product vs platform, connectors, bundles, dogfood edges."
   default_prompt: "Compose portfolio unit boundaries and composition contracts for the active multi-product surface."

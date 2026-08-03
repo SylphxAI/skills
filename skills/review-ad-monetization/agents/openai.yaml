@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Ad Monetization Review"
-  short_description: "Review: Ad monetization — inventory, UX harm, policy, measurement, net revenue."
+  short_description: "Review: ad monetization—inventory, UX harm, policy, measurement, net revenue."
   default_prompt: "Run Review Ad Monetization Review for the active product/workspace."

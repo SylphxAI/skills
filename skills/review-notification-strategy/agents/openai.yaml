@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Notification Strategy Review"
-  short_description: "Review: Notifications — channels, cadence, consent, fatigue, measurement."
+  short_description: "Review: notifications—channels, cadence, consent, fatigue, measurement."
   default_prompt: "Run Review Notification Strategy Review for the active product/workspace."

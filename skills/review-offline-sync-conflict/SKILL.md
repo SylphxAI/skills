@@ -1,6 +1,6 @@
 ---
 name: review-offline-sync-conflict
-description: "Review: Offline sync and conflict resolution for product state across devices."
+description: "Review: offline sync and conflict resolution across devices."
 ---
 
 # Review Offline Sync Conflict Review

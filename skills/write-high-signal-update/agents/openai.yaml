@@ -1,4 +1,4 @@
 interface:
   display_name: "Write High-Signal Update"
-  short_description: "Write a high-signal stakeholder update: decisions, risks, explicit asks, minimal narrative."
+  short_description: "High-signal stakeholder update: decisions, risks, explicit asks, minimal narrative."
   default_prompt: "Run Write High-Signal Update for the active task/workspace."

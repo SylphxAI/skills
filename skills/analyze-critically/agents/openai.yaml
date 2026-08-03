@@ -1,4 +1,4 @@
 interface:
   display_name: "Analyze Critically"
-  short_description: "Adversarially critique a claim, plan, or design with kill criteria and residuals."
+  short_description: "Adversarially critique a claim/plan/design with kill criteria and residuals."
   default_prompt: "Run Analyze Critically for the active task/workspace."

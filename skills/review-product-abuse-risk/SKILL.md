@@ -1,6 +1,6 @@
 ---
 name: review-product-abuse-risk
-description: "Review: Product abuse risks — fraud, spam, exploitation, enforcement controls."
+description: "Review: product abuse—fraud, spam, exploitation, enforcement."
 ---
 
 # Review Product Abuse Risk Review

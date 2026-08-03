@@ -1,6 +1,6 @@
 ---
 name: review-ai-product-risk
-description: "Review: AI product risk — safety, abuse, evals, human oversight, residual claims."
+description: "Review: AI product risk—safety, abuse, evals, oversight, residual claims."
 ---
 
 # Review AI Product Risk Review

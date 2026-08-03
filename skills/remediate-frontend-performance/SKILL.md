@@ -1,6 +1,6 @@
 ---
 name: remediate-frontend-performance
-description: "Remediate frontend jank: reproduce, find RAF/timer/listener leaks, fix, before/after same scene."
+description: "Fix frontend jank: repro, RAF/timer/listener leaks, before/after same scene."
 ---
 
 # Remediate Frontend Performance

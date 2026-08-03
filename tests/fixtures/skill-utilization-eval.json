@@ -4,10 +4,10 @@
   "status": "design-contract-and-oracle-fixtures",
   "residualRef": "docs/reference/skill-utilization-eval-residual.md",
   "pinnedAtAuthoring": {
-    "skillsCommit": "943748f3a04ebe94ba2e1d30405474334e21e56a",
+    "skillsCommit": "c2c6663807b4919a95ac5873da5c5773b1ca9b25",
     "catalogCount": 118,
-    "catalogDigestSha256OfCatalogJson": "sha256:2b6ef333f1df71f764a2290bd41d648ed4c9e114a224fa06556f52a3a83fa854",
-    "note": "Product job Skills covered; description tighten is not live host proof."
+    "catalogDigestSha256OfCatalogJson": "sha256:5f6c075f0157bbdcaa18b488272f710e0b53d780a3312f4f170e930c78401f84",
+    "note": "Authoring pin after description pass2 (listing ~1.09×8k); not live host utilization proof."
   },
   "metricHierarchy": [
     "behaviorOracle",

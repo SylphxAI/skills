@@ -1,6 +1,6 @@
 ---
 name: produce-product-assets
-description: "Produce product assets (copy, media, UI content) to brief and brand constraints."
+description: "Produce product assets to brief and brand constraints."
 ---
 
 # Produce Product Assets

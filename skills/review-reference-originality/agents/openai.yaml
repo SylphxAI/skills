@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Reference Originality Review"
-  short_description: "Review: Originality and derivation risk for designs, content, or code references."
+  short_description: "Review: originality/derivation risk for designs, content, or code references."
   default_prompt: "Run Review Reference Originality Review for the active product/workspace."

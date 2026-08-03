@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Product Recovery Contract Review"
-  short_description: "Review: User-facing recovery after product failure — repair, compensation, trust."
+  short_description: "Review: post-failure user recovery—repair, compensation, trust rebuild."
   default_prompt: "Run Review Product Recovery Contract Review for the active product/workspace."

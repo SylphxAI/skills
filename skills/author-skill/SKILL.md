@@ -1,6 +1,6 @@
 ---
 name: author-skill
-description: "Author or revise a Skill package: job-shaped id, short description, method body, progressive disclosure, portable host rules."
+description: "Author/revise a Skill: job-shaped id, short description, method body, portable host rules."
 ---
 
 # Author Skill

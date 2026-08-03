@@ -1,4 +1,4 @@
 interface:
   display_name: "Review Game Soft Launch Review"
-  short_description: "Review: Game soft-launch — markets, KPIs, kill/scale criteria, live-ops plan."
+  short_description: "Review: game soft-launch—markets, KPIs, kill/scale, live-ops plan."
   default_prompt: "Run Review Game Soft Launch Review for the active product/workspace."

@@ -1,6 +1,6 @@
 ---
 name: decision-quality-standard
-description: "Policy: decision quality — framing, alternatives, information, tradeoffs, commitment, learning."
+description: "Policy: decision quality—framing, alternatives, tradeoffs, commitment, learning."
 ---
 # Decision Quality Standard
 

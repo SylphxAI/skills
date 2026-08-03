@@ -1,6 +1,6 @@
 ---
 name: agent-native-standard
-description: "Policy: agent-operable products — typed state, schema-derived tools, recoverable workflows, run traces."
+description: "Policy: agent-operable products—typed state, schema tools, recoverable workflows, run traces."
 ---
 # Agent Native Standard
 

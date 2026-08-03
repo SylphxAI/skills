@@ -1,6 +1,6 @@
 ---
 name: evidence-and-claims-standard
-description: "Policy: evidence before claims — local vs candidate vs landed vs live; no false green."
+description: "Policy: evidence before claims—local vs candidate vs landed vs live."
 ---
 
 # Evidence and Claims Standard
