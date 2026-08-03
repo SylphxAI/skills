@@ -79,7 +79,7 @@ the security-design contract before or alongside implementation.
 
 ## Soft composition
 
-- `migrate` when the job is a cutover (API, schema, package, stack, data, skill portfolio).
+- `execute-hard-cutover` when the job is a cutover (API, schema, package, stack, data, skill portfolio).
 
 ## Boundaries
 

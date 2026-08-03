@@ -1,9 +1,9 @@
 ---
-name: deliberate-structured
-description: "Structured deliberation: options, criteria, decision record, next actions."
+name: record-structured-deliberation
+description: "Record a structured deliberation: options, criteria, decision record, next actions (not decision-quality policy alone)."
 ---
 
-# Deliberate Structured
+# Record Structured Deliberation
 
 Produce a **Deliberation Record** that preserves genuine alternatives and makes
 the remaining choice legible. Read
@@ -71,6 +71,6 @@ Create a **Deliberation Record** with:
   cause.
 - Use `decision-quality-standard` for final material option selection and its
   durable Decision Record or ADR.
-- Use `review-convergent` for pass/fail review of an exact candidate.
+- Use `review-multi-review-synthesis` for pass/fail review of an exact candidate.
 - Use a domain skill to supply technical, commercial, legal, security, or
   product-specific criteria.

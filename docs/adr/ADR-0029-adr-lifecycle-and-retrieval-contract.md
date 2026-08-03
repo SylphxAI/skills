@@ -87,7 +87,7 @@ executable, and atomic for this repository.
     records; in-place edits are non-semantic only.
 
 11. **Atomic Skills cutover.** Landing this contract in `SylphxAI/skills`
-    migrates every existing ADR metadata record, ships schema/resolver/checker,
+    execute-hard-cutovers every existing ADR metadata record, ships schema/resolver/checker,
     and replaces the numeric short-locator-only ADR check inside existing
     `npm test` in the **same candidate**. Dual retrieval semantics are
     forbidden. Product-repo adapters are out of scope for completion.

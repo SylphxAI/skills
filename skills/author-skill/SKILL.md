@@ -47,9 +47,14 @@ tool manual.
 8. **Done criteria.** Every workflow Skill states when **this run/cycle** is
    complete. Do not equate “product forever perfect” with Skill done unless
    the job is explicitly pursue-to-objective.
-9. **Hard-cut portfolio changes.** Prefer rename/delete/migrate over long
+9. **Hard-cut portfolio changes.** Prefer rename/delete/execute-hard-cutover over long
    backward-compatible dual packages. Keep a dual Skill only with demonstrated
-   large-scale impact and a dated retirement—execute via the `migrate` Skill.
+   large-scale impact and a dated retirement—execute via `execute-hard-cutover`.
+10. **Discoverable ids.** Workflow ids are verb-led **2–4 kebab tokens** that
+   encode the job terminal (e.g. `select-dependency-versions`,
+   `execute-hard-cutover`). Ban 1-token workflow ids. Policy packs use `Policy:`
+   descriptions and `*-standard` / `*-policy` / `*-profile` ids—not job-verb masks
+   on pure constraints.
 
 Read for class/composition detail:
 [skill-package-classes-and-composition.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/skill-package-classes-and-composition.md)

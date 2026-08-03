@@ -1,0 +1,4 @@
+interface:
+  display_name: "Remediate Agent Harness"
+  short_description: "Remediate an agent harness/system with measured deltas: tools, evals, failure modes (not open-ended improve forever)."
+  default_prompt: "Improve the agent system against a recurring failure class with evidence and promotion discipline."

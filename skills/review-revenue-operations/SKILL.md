@@ -72,7 +72,7 @@ Specify discovery evidence, disqualifiers, routing, technical validation, demo/P
 
 Define forecast taxonomy and horizons, amount/date/scenario uncertainty, calibration, pipeline coverage limits, delivery/implementation capacity constraints, incentive/commission rules, gaming and conflict analysis, disputes, corrections, and finance boundaries.
 
-### 5. Automate, migrate, and assure
+### 5. Automate, execute-hard-cutover, and assure
 
 Create the automation authority, event/reconciliation contracts, and
 risk-selected migration/backfill, shadow/canary, alerting, change approval,

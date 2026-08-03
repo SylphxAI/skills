@@ -38,7 +38,7 @@ Legend:
 | `instruction-evolution-standard` | policy | KEEP-policy | Instruction/profile evolution predicates |
 | `parallel-change-integration-standard` | policy | KEEP-policy | Expand/contract migration predicates |
 | `project-manifest-standard` | policy | KEEP-policy | Project declaration predicates; distinct from org control plane |
-| `repo-adoption-standard` | policy (with onboarding procedure) | KEEP-policy | Prefer keep; if body is mostly procedure, consider workflow extract later |
+| `adopt-repo-standards` | policy (with onboarding procedure) | KEEP-policy | Prefer keep; if body is mostly procedure, consider workflow extract later |
 | `risk-matched-verification-standard` | policy | KEEP-policy | Verification depth predicates |
 | `select-next-work` | **workflow** | RENAMED-workflow | Hard-renamed from `select-next-work-standard` |
 | `source-authoring-standard` | policy | KEEP-policy | Source identity/commit predicates |

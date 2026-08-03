@@ -1,9 +1,9 @@
 ---
-name: improve-agent-system
-description: "Improve agent system: harness, tools, evals, failure modes, measured deltas."
+name: remediate-agent-harness
+description: "Remediate an agent harness/system with measured deltas: tools, evals, failure modes (not open-ended improve forever)."
 ---
 
-# Improve Agent System
+# Remediate Agent Harness
 
 Turn repeated agent behavior into a tested system change, not another reminder.
 Read [references/learning-system-methods.md](references/learning-system-methods.md)

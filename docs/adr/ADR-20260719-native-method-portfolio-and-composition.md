@@ -45,14 +45,14 @@ produce duplicate artifacts or competing completion rules.
 
 The portfolio adds these independently requested methods:
 
-- `deliberate-structured`
+- `record-structured-deliberation`
 - `design-space-exploration`
 - `synthesize-evidence`
 - `engineer-requirements`
 - `research-users`
 - `review-agent-planning-system`
 - `engineer-agent-context`
-- `improve-agent-system`
+- `remediate-agent-harness`
 - `review-optimization-objective`
 - `model-decision-optimization`
 - `design-provenance-system`

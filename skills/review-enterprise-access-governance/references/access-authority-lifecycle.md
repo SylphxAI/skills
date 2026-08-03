@@ -35,7 +35,7 @@ Model at least the entities relevant to the product:
 
 Use stable IDs and versions. Keep human-friendly names as projections. A renamed
 role must not silently alter semantics; a changed role template must identify
-which existing grants are pinned, migrated, re-reviewed, or revoked.
+which existing grants are pinned, execute-hard-cutoverd, re-reviewed, or revoked.
 
 ## Permission and grant contract
 
@@ -120,7 +120,7 @@ events idempotently. Define the authoritative event time and reconciliation rule
 | In-product admin differs from IdP | Explicit source conflict | Freeze risky new grants and route resolution | Last write silently wins |
 | Domain claim overlaps tenant | Ownership conflict, not authentication proof | Require typed ownership evidence and safe dispute path | Tenant takeover |
 | Support requests override | Temporary support authority request | Bind ticket/consent, scope, expiry, audit | Shadow superuser |
-| Role template changes | Policy migration affecting grants | Diff blast radius and migrate/review by rule | Silent privilege expansion |
+| Role template changes | Policy migration affecting grants | Diff blast radius and execute-hard-cutover/review by rule | Silent privilege expansion |
 | Parent tenant restructures | Hierarchy and data-boundary change | Model split/merge/transfer and affected grants | Cross-tenant data exposure |
 
 ## Delegation and inheritance

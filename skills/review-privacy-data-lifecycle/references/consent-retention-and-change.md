@@ -40,7 +40,7 @@ For every material difference choose one:
 - compatible under the validated current contract, with evidence;
 - re-notice before continued use;
 - renewed affirmative choice or other newly validated authority;
-- migrate only an eligible subset;
+- execute-hard-cutover only an eligible subset;
 - stop and suppress/delete incompatible historical data;
 - floor-block the new behavior.
 

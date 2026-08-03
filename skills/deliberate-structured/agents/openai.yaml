@@ -1,4 +1,0 @@
-interface:
-  display_name: "Deliberate Structured"
-  short_description: "Structured deliberation: options, criteria, decision record, next actions."
-  default_prompt: "Run Deliberate Structured for the active task/workspace."

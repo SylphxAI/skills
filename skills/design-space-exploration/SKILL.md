@@ -55,7 +55,7 @@ Produce a **Design Space Portfolio**:
 ## Boundaries
 
 - Use `analyze-critically` to compare explanations about what is true.
-- Use `deliberate-structured` when independent participants must exchange
+- Use `record-structured-deliberation` when independent participants must exchange
   positions, objections, and dissent.
 - Use `decision-quality-standard` to select and record the final material
   option.

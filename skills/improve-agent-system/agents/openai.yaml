@@ -1,4 +1,0 @@
-interface:
-  display_name: "Improve Agent System"
-  short_description: "Improve agent system: harness, tools, evals, failure modes, measured deltas."
-  default_prompt: "Improve the agent system against a recurring failure class with evidence and promotion discipline."

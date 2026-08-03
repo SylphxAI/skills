@@ -17,7 +17,7 @@ production channel from the active technology profile.
    in clean build and delivery evidence.
 4. Upgrade framework plugins, native extensions, type packages, and generated
    artifacts coupled to the runtime. Do not retain an old runtime merely because
-   one coupled package has not been migrated.
+   one coupled package has not been execute-hard-cutoverd.
 
 ## Authoritative discovery
 

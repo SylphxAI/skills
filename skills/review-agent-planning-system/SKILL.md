@@ -72,4 +72,4 @@ Create an **Agent Planning and Control Contract** with:
 - Use `model-decision-optimization` when the primary artifact is a
   constrained allocation, routing, scheduling, or capacity model rather than
   the agent's reusable planning and control mechanism.
-- Use `review-convergent` for final review closure of an exact implementation.
+- Use `review-multi-review-synthesis` for final review closure of an exact implementation.

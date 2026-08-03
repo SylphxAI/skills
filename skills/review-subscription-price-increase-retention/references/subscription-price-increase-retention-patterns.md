@@ -93,7 +93,7 @@ Use these fields before choosing grandfathering or save offers:
 
 | Segment | Candidate treatment pending current authority | Required evidence | Approval owner |
 | --- | --- | --- | --- |
-| Legacy discounted self-serve | Preserve discount through current term, then migrate with clear effective date | coupon/source, discount expiry, renewal date, price delta | Growth/Pricing |
+| Legacy discounted self-serve | Preserve discount through current term, then execute-hard-cutover with clear effective date | coupon/source, discount expiry, renewal date, price delta | Growth/Pricing |
 | Sales exception / negotiated discount | Do not auto-change until contract owner approves | opportunity/contract record, exception reason, renewal clause | Sales/RevOps |
 | Enterprise annual contract | Apply at renewal or amendment only | MSA/order form, notice clause, renewal window | Account owner + Legal |
 | Grandfathered plan | Sunset in phases or preserve explicit protected cohort | grandfathering policy, cohort size, margin exposure | Pricing council |

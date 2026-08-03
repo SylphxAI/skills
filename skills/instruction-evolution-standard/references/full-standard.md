@@ -16,13 +16,13 @@ decisions. Live systems own selection, work, adoption, and convergence.
 Rule IDs:
 
 - `instruction-ssot-01` — one semantic fact has one writable authority.
-- `instruction-migrate-01` — every selected durable repo reaches the current generation.
+- `instruction-execute-hard-cutover-01` — every selected durable repo reaches the current generation.
 - `instruction-proof-01` — terminal state is derived from delivered evidence.
 - `instruction-retire-01` — predecessor methods and projections leave steady state.
 
 1. One semantic fact has one writable authority.
 2. A successor generation includes a mandatory retirement path for its
-   predecessor; permanent dual-stack is forbidden. Hard-cut is the default for instruction generations; long backward-compatible dual instruction stacks use the `migrate` Skill exception bar.
+   predecessor; permanent dual-stack is forbidden. Hard-cut is the default for instruction generations; long backward-compatible dual instruction stacks use the `execute-hard-cutover` Skill exception bar.
 3. Migration destination is mandatory for every selected durable project.
    Phasing is an execution strategy, not permission to remain old.
 4. Completion is derived from delivered facts and applicable predicates—not

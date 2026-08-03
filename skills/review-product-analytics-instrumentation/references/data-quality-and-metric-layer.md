@@ -30,7 +30,7 @@ source/version observed -> contract checked -> transform ran -> quality checked
 quality checked -> certified or exploratory -> published -> monitored -> deprecated
                          |                         |             |
                          v                         v             v
-                   owner pending             stale/partial   consumers migrated
+                   owner pending             stale/partial   consumers execute-hard-cutoverd
 ```
 
 Dashboards and APIs expose `fresh`, `delayed`, `partial`, `backfilling`,

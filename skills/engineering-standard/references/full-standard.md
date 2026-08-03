@@ -85,7 +85,7 @@ framework, SDK, generator, plugin, or library is added or upgraded. Query the
 authoritative live release source during the task and target the newest eligible
 stable production release. Model memory, static templates, existing manifest
 ranges, installed prevalence, and migration effort are not version-selection
-evidence. Existing projects cross major versions and migrate by default rather
+evidence. Existing projects cross major versions and execute-hard-cutover by default rather
 than stopping at the newest release allowed by an obsolete range.
 
 "Use latest" is a selection rule, not a floating-build mechanism. Commit exact
@@ -331,7 +331,7 @@ dependency/build graphs, generated-contract ownership, route/job registration,
 and semantic behavior proof. Do not infer it from source spelling or a folder
 named `legacy`. Apply the full
 [active-source authority and retirement contract](active-source-authority-and-retirement.md)
-whenever an implementation is replaced, migrated, deprecated, folded, or
+whenever an implementation is replaced, execute-hard-cutoverd, deprecated, folded, or
 substantially refactored.
 
 ## Source-Controlled Artifact Identity

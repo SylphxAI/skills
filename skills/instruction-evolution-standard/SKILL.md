@@ -29,7 +29,7 @@ standard.
 
 ## Soft composition
 
-- `migrate` when executing an instruction/skill generation cutover (no permanent dual instruction stack).
+- `execute-hard-cutover` when executing an instruction/skill generation cutover (no permanent dual instruction stack).
 
 ## Boundaries
 

@@ -18,12 +18,12 @@
     "kind": "positive",
     "prompt": "Several experts disagree on this policy; elicit independent positions and map their objections before the owner decides.",
     "expectedSkills": [
-      "deliberate-structured"
+      "record-structured-deliberation"
     ],
     "artifacts": [
       {
         "artifact": "Deliberation Record",
-        "owner": "deliberate-structured"
+        "owner": "record-structured-deliberation"
       }
     ]
   },
@@ -258,7 +258,7 @@
     "prompt": "Generate distinct architecture options, let independent experts challenge them, then select and record the best durable choice.",
     "expectedSkills": [
       "design-space-exploration",
-      "deliberate-structured",
+      "record-structured-deliberation",
       "decision-quality-standard"
     ],
     "artifacts": [
@@ -268,7 +268,7 @@
       },
       {
         "artifact": "Deliberation Record",
-        "owner": "deliberate-structured"
+        "owner": "record-structured-deliberation"
       },
       {
         "artifact": "Decision Record",
@@ -281,14 +281,14 @@
     "kind": "compound",
     "prompt": "Fix a recurring agent failure, audit whether its completion score is being gamed, and evaluate the exact changed Skill before promotion.",
     "expectedSkills": [
-      "improve-agent-system",
+      "remediate-agent-harness",
       "review-optimization-objective",
       "design-skill-evals"
     ],
     "artifacts": [
       {
         "artifact": "Learning Change Record",
-        "owner": "improve-agent-system"
+        "owner": "remediate-agent-harness"
       },
       {
         "artifact": "Optimization Objective Contract",
@@ -1789,12 +1789,12 @@
     "prompt": "Run a bounded loop engineering cycle for this original repository objective: preserve the complete acceptance denominator, research only decision-changing uncertainty, execute every required outcome, and have an independent formal reviewer audit the exact candidate against the original task until it is complete or genuinely blocked.",
     "expectedSkills": [
       "drive-to-delivery",
-      "review-convergent"
+      "review-multi-review-synthesis"
     ],
     "artifacts": [
       {
         "artifact": "Review Closure Record",
-        "owner": "review-convergent"
+        "owner": "review-multi-review-synthesis"
       }
     ],
     "tags": [
@@ -2229,12 +2229,12 @@
     "kind": "near-neighbour",
     "prompt": "Agents repeatedly miss the same accessibility requirement even when it is present in the task. Diagnose the recurring agent-system cause, test one intervention, and define promotion and recurrence evidence.",
     "expectedSkills": [
-      "improve-agent-system"
+      "remediate-agent-harness"
     ],
     "artifacts": [
       {
         "artifact": "Learning Change Record",
-        "owner": "improve-agent-system"
+        "owner": "remediate-agent-harness"
       }
     ],
     "nearNeighbourOf": "better-product",

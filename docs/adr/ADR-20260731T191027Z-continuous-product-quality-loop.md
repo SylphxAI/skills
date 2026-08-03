@@ -20,7 +20,7 @@ The existing loop methods intentionally separate one bounded objective from a
 continuous operating system. `drive-to-delivery` closes one
 accepted Work Item. `select-next-work` discovers, qualifies,
 claims, executes, and re-enters recurring Work. Specialist Skills review one
-quality domain, while `improve-agent-system` changes prompts, Skills,
+quality domain, while `remediate-agent-harness` changes prompts, Skills,
 context, tools, evaluators, or workflow after a recurring agent-system failure.
 
 None of those owners defines the cross-domain product artifact that says which

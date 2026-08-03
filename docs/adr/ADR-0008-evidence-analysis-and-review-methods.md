@@ -29,7 +29,7 @@ Maintain three independent instruction packages:
    supportable.
 2. `analyze-critically` produces a Critical Analysis Brief using competing
    hypotheses, disconfirming evidence, assumptions, and calibrated confidence.
-3. `review-convergent` produces a Review Closure Record using frozen acceptance,
+3. `review-multi-review-synthesis` produces a Review Closure Record using frozen acceptance,
    distinct perspectives, executable oracles, batched repair, and fixed exit
    criteria.
 

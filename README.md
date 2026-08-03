@@ -212,7 +212,7 @@ Examples: `better-product` · `finish-product` · `drive-to-delivery` · `select
 
 Assessment/design jobs and independent methods with concrete artifacts.
 
-Examples: `analyze-critically` · `deliberate-structured` · `review-reference-originality` · `remediate-frontend-performance` · `model-security-threats` · `ready-payment-platform` · `review-launch-readiness`
+Examples: `analyze-critically` · `record-structured-deliberation` · `review-reference-originality` · `remediate-frontend-performance` · `model-security-threats` · `ready-payment-platform` · `review-launch-readiness`
 
 ### Blueprints, craft & adapters
 

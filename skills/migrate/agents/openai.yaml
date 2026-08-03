@@ -1,4 +1,0 @@
-interface:
-  display_name: "Migrate"
-  short_description: "Cut over to a destination: hard-cut default, backfill, retire dual-paths; expand-contract only for proven large-scale live risk."
-  default_prompt: "Migrate the framed predecessor to the destination with a clean hard-cut (or justified expand-contract) and retire dual paths."

@@ -61,7 +61,7 @@ not separate semantic jobs.
   recovery behavior.
 - No second CLI Skill or compatibility alias remains. Inbound owner references
   move to the broader package so native injection sees one owner.
-- Explicit invocations migrate from `$app-store-distribution-readiness` to
+- Explicit invocations execute-hard-cutover from `$app-store-distribution-readiness` to
   `$ready-software-distribution`; the retired identifier is not retained as
   a second discoverable package.
 - The broadened Skill composes with Delivery Standard and does not emit a

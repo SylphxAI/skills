@@ -1,6 +1,6 @@
 # Active source authority and predecessor retirement
 
-Use this contract whenever a change replaces, migrates, deprecates, folds, or
+Use this contract whenever a change replaces, execute-hard-cutovers, deprecates, folds, or
 substantially refactors an existing implementation. Its purpose is not to
 delete history. Its purpose is to ensure that normal agent and tool discovery
 exposes one current implementation path.

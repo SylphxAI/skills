@@ -1,9 +1,9 @@
 ---
-name: review-convergent
-description: "Review: multi-review synthesis into ranked actions and residuals."
+name: review-multi-review-synthesis
+description: "Review: Synthesize multiple reviews into ranked actions and residuals (not general evidence synthesis)."
 ---
 
-# Review Convergent Review
+# Review Multi-Review Synthesis
 
 Find material defects and reach a defensible terminal. Read
 [references/convergent-review-method.md](references/convergent-review-method.md)

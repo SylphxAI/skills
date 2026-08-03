@@ -102,7 +102,7 @@ Verify:
   languages, controller/input, achievements, cloud saves, multiplayer/server,
   anti-cheat, demo scope, DLC and accessibility claims;
 - install/update/uninstall, first-session crash/performance, save
-  create/load/migrate/conflict/restore and rollback/hotfix paths;
+  create/load/execute-hard-cutover/conflict/restore and rollback/hotfix paths;
 - demo/playtest and release build separation, compatibility and data migration;
 - current policy/partner evidence for pricing, discounts, DLC, keys, refunds,
   reviews and release operations—never policy from memory;

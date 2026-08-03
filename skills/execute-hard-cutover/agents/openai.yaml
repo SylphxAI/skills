@@ -1,0 +1,4 @@
+interface:
+  display_name: "Execute Hard Cutover"
+  short_description: "Execute a hard cutover migration: destination sole writer, full backfill, retire dual-paths; expand-contract only for proven large-scale…"
+  default_prompt: "Migrate the framed predecessor to the destination with a clean hard-cut (or justified expand-contract) and retire dual paths."
