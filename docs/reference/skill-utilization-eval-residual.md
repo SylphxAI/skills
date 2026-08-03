@@ -92,6 +92,8 @@ a code in a real host run is still required for measured utilization claims.
 
 Until exit criteria land, utilization remains an honest open residual.
 
+Host execution procedure: [skill-utilization-host-runbook.md](./skill-utilization-host-runbook.md).
+
 ## Corpus notes (2026-08-03)
 
 Pinned suite includes critical/neighbour cases for product job Skills:
