@@ -19,7 +19,7 @@ When the core already works and you need **reach, capacity, or leverage ×N**, r
 - Core still hypothetical → `prototype-product`
 - Core path missing → `build-product`
 - Outages/regressions dominate → `maintain-product`
-- Only surface burrs → `product-finish`
+- Only surface burrs → `finish-product`
 
 ## Method
 

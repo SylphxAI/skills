@@ -12,7 +12,7 @@ Improve the active product/workspace with **high-leverage** changes when work
 
 | Situation | Skill |
 | --- | --- |
-| One job: learn / ship / harm / scale / finish | `prototype-product` · `build-product` · `maintain-product` · `expand-product` · `product-finish` |
+| One job: learn / ship / harm / scale / finish | `prototype-product` · `build-product` · `maintain-product` · `expand-product` · `finish-product` |
 | Declared outcome to drive to completion | `pursue-product-objective` |
 | Multi-phase engineering delivery terminal | `drive-to-delivery` |
 | Pick next Work from a ledger without a product matrix | `select-next-work` |
@@ -75,7 +75,7 @@ Optional after discovery: one-line product pin in working notes—not a host obj
 ## Out of scope
 
 - Single bugfix → fix directly / `drive-to-delivery`
-- One release-grade finish pass → `product-finish`
+- One release-grade finish pass → `finish-product`
 
 ## Depth
 

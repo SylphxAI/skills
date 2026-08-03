@@ -50,7 +50,7 @@ Legend:
 | Package | Class | Role |
 | --- | --- | --- |
 | `better-product` | workflow | Multi-aspect product betterment loop |
-| `product-finish` | workflow | Whole-product finish pass |
+| `finish-product` | workflow | Whole-product finish pass |
 | `coordinate-enact-work` | adapter | Live Enact ops |
 | `technology-stack-profile` | policy | Stack defaults (profile naming, not `-standard`) |
 

@@ -20,7 +20,7 @@ scope:
    - `product-lifecycle-architect` → `compose-product-program`
    - `scope-discipline` → `bound-task-scope`
 2. **Betterment routing (unique defaults):**
-   - single product job → `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `product-finish`
+   - single product job → `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `finish-product`
    - declared outcome to completion → `pursue-product-objective`
    - mixed open betterment, no fixed objective → `better-product`
    - next Work from evidence/ledger (not product matrix) → `select-next-work`

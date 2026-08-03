@@ -110,7 +110,7 @@ Operate <system> with live tools/auth: <ops>. Not portable semantics-only design
 | Package | Layer | Not |
 | --- | --- | --- |
 | `better-product` | Product betterment across aspects | One bug; one finish pass; pure Work OS |
-| `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `product-finish` | One product-job cycle each | Other job kind; multi-agent staffing (not a Skill) |
+| `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `finish-product` | One product-job cycle each | Other job kind; multi-agent staffing (not a Skill) |
 | `pursue-product-objective` | Drive declared product objective to evidence-backed completion | One-cycle job Skills; open betterment without fixed objective |
 
 | `drive-to-delivery` | One accepted objective to delivery terminal | Continuous new-Work discovery; short Q&A |

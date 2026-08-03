@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finish Product"
+  short_description: "Finish/deburr integrated product: inspect, fix above-threshold gaps, recapture."
+  default_prompt: "Run a finish-product pass on the active integrated product/workspace."

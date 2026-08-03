@@ -198,7 +198,7 @@ Multi-step jobs and operating loops: product betterment, whole-product finish,
 single-objective closure, continuous work selection. Job-named packages; not
 policy packs.
 
-Examples: `better-product` · `product-finish` · `drive-to-delivery` · `select-next-work`
+Examples: `better-product` · `finish-product` · `drive-to-delivery` · `select-next-work`
 
 ### Reviews, analysis & agent-system methods
 

@@ -147,7 +147,7 @@ Use diagrams and tables only where they reduce ambiguity. Preserve uncertainty; 
 - `game-soft-launch-review` owns bounded real-player cohort learning and scale/hold/pause/withdraw decisions for an already-designed game.
 - `daily-reward-and-streak-review`, `ad-monetization-review`, `notification-strategy-review`, `referral-loop-review`, and `promotion-campaign-review` own their detailed state machines.
 - Payment, refund, review/feedback, analytics, distribution, listing, marketing, support, and engineering procedures own their independent artifacts.
-- `product-finish` owns the integrated whole-game finish pass after the player
+- `finish-product` owns the integrated whole-game finish pass after the player
   promise, systems, and approved direction are defined. Graybox or low-poly
   work is terminal only when that exact prototype fidelity or art direction is
   declared; blueprint acceptance is not whole-game finish evidence.

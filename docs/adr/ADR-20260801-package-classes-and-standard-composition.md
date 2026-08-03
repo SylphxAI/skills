@@ -93,7 +93,7 @@ named primary):
 
 Naming guidance:
 
-- Prefer job nouns for workflows (`product-finish`, `better-product`).
+- Prefer job nouns for workflows (`finish-product`, `better-product`).
 - `-review` for assessment jobs.
 - `-standard` **only** for packages whose **primary** class is `policy`
   (binding predicates / profiles), not prestige for any important package.

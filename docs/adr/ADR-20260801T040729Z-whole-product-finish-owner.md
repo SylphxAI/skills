@@ -8,7 +8,7 @@ amends:
   - ADR-20260731T191027Z-continuous-product-quality-loop
   - ADR-20260801T010819Z-simple-surface-deep-capability
 scope:
-  - product-finish
+  - finish-product
   - product-quality
   - experience-quality
 ---
@@ -37,7 +37,7 @@ it does not mean more features, decoration, prose, files, gates, or mechanisms.
 
 ## Decision
 
-1. Add `product-finish` as the owner of one independently accepted **Product
+1. Add `finish-product` as the owner of one independently accepted **Product
    Finish Pass** over an exact integrated product or release candidate.
 2. Distinguish `prototype`, `final-fidelity-reference`, `product-candidate`,
    and `release-finish`. Functional behavior or blueprint acceptance cannot

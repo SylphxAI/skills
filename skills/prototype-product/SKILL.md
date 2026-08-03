@@ -19,7 +19,7 @@ When you need to **learn** whether something is worth building, run **one** prot
 - Capability is decided and must ship → `build-product`
 - Live harm / regressions dominate → `maintain-product`
 - Scaling a core that already works → `expand-product`
-- Integrated product needs deburring → `product-finish`
+- Integrated product needs deburring → `finish-product`
 
 ## Method
 

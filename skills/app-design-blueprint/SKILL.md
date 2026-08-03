@@ -236,7 +236,7 @@ Produce one **App Design Blueprint** containing:
   close-loop behavior.
 - Use `notification-strategy-review`, `daily-reward-and-streak-review`, `referral-loop-review`, `promotion-campaign-review`, `product-analytics-instrumentation-review`, `offline-sync-conflict-review`, and `ad-monetization-review` for their detailed artifacts.
 - `ready-software-distribution` owns channel submission/release evidence; `marketing-automation-blueprint` owns the multi-channel marketing control plane.
-- `product-finish` owns the integrated whole-app finish pass after the promise,
+- `finish-product` owns the integrated whole-app finish pass after the promise,
   selected capabilities, and approved direction are defined. It consumes this
   blueprint; it does not make blueprint acceptance implementation proof.
 

@@ -19,7 +19,7 @@ When users or operators are **hurt** by failures or regressions, run **one** mai
 - Idea still unproven → `prototype-product`
 - Missing capability to ship → `build-product`
 - Pure growth ×N without harm → `expand-product`
-- Cosmetic deburr without reliability impact → `product-finish`
+- Cosmetic deburr without reliability impact → `finish-product`
 
 ## Method
 

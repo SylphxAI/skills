@@ -61,19 +61,19 @@
       "name": "app-design-blueprint",
       "description": "Whole-app design blueprint for new apps or full redesigns: jobs, IA, activation, retention, multi-surface.",
       "path": "skills/app-design-blueprint/SKILL.md",
-      "packageDigest": "sha256:a49d17405e72c27f81e26cb01b75a331520dd9f409f9b8451caf9cac79ff6fe8"
+      "packageDigest": "sha256:374bb65aa9d881f186d30c95f7bc4f2daf7cdc921d2d598a8c10afd6d2799a1a"
     },
     {
       "name": "author-skill",
       "description": "Author or update a Sylphx Skill package: job-shaped name, short description, one-cycle or job method, progressive disclosure, portable host rules.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:8c3894761841ebb36050df7582bafa26c8665a7a9f8363ce2259ad6d385958cf"
+      "packageDigest": "sha256:35fe5c54817beba41e481a8491808058ec2156ab743c2c11d73762f6e9b2f9b8"
     },
     {
       "name": "better-product",
       "description": "Open-ended product betterment when jobs mix and there is no fixed objective: coverage card, admit all high-EV B, execute, verify; stop at empty high-EV frontier.",
       "path": "skills/better-product/SKILL.md",
-      "packageDigest": "sha256:f001405603917bdd8dc26a121624eaa82e4ea84ddbc211a9ea03353a50efc709"
+      "packageDigest": "sha256:f7e74bcba3b8c2ed0ba3becefdf37a7f08a06d8b84e3abdb7bea82f778bfaeb2"
     },
     {
       "name": "board-metrics-operating-review",
@@ -91,7 +91,7 @@
       "name": "build-product",
       "description": "Close shippable product capability gaps: frame the journey, implement on correct boundaries, verify with oracles.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:9e84d556f841a8d8db72f5c505c94e795589c5775edebebaac93b4c9d31ee766"
+      "packageDigest": "sha256:886da60bfe90440f8bf1a659d8d81bc11f6abb5a0bac254ce9c98ea818f69886"
     },
     {
       "name": "ci-admission-standard",
@@ -145,7 +145,7 @@
       "name": "craft-interface",
       "description": "Craft one product interface or flow: visual direction, interaction states, responsive, accessibility.",
       "path": "skills/craft-interface/SKILL.md",
-      "packageDigest": "sha256:d6df86354a5035c581b4526c395d28e8cba446b6a90ae4fed1afde402a043067"
+      "packageDigest": "sha256:ca36ae18faa4595bcf039f532f28e42bbd21477231c0d8949a00b2c00626e3ec"
     },
     {
       "name": "curate-skill-repository",
@@ -325,7 +325,13 @@
       "name": "expand-product",
       "description": "Scale a validated product core: pick a ×N bet, implement leverage, verify scale metric and core non-regression.",
       "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:a0fe76a853c874abef88536c7d3dc46883c8ee891fd66d64c472908406a6e266"
+      "packageDigest": "sha256:54debdf553d8fa7e9dc7452e340616b38e07c47bf82ec160b81cc0d401559b3a"
+    },
+    {
+      "name": "finish-product",
+      "description": "Finish/deburr an integrated product: inspect reality, fix coherence/states/feel/a11y/performance above threshold, recapture.",
+      "path": "skills/finish-product/SKILL.md",
+      "packageDigest": "sha256:8b358cbca4cbe39c344ed0688797b213c98bb9757e2773ca39aca29081722201"
     },
     {
       "name": "forecast-probabilistically",
@@ -337,7 +343,7 @@
       "name": "game-design-blueprint",
       "description": "Whole-game design/GDD: promise, core loops, progression, economy, FTE, live ops.",
       "path": "skills/game-design-blueprint/SKILL.md",
-      "packageDigest": "sha256:967378cbd0155247fad6838f6bccc1a89586c1effd16065f851c1fbae013b792"
+      "packageDigest": "sha256:3a8bf6c66f345dc4f67c38dfbf0db12de653218de2e46d6735c8e187042b1207"
     },
     {
       "name": "game-economy-review",
@@ -373,13 +379,13 @@
       "name": "launch-readiness-review",
       "description": "Launch readiness gates across product, ops, support, risk, and go/no-go evidence.",
       "path": "skills/launch-readiness-review/SKILL.md",
-      "packageDigest": "sha256:12d36342b9441406b2cc1613ad70f3526e64f6894eecc9e8e1a9311bec1cb693"
+      "packageDigest": "sha256:f0421d0752557116787bc430fb2af46b9f072566f8233e96897571c89c73d4e9"
     },
     {
       "name": "maintain-product",
       "description": "Reduce live product harm: reproduce, fix root cause on the owning layer, verify reliability oracles.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:843e08aceb50b51ba9e4cce27d3773527fcc1f81348a1f6eead1f0b51aaa048f"
+      "packageDigest": "sha256:42f1d62446f7f43d5b5054f4a897c86f389bdaa5cb773ab796263d649b345ee3"
     },
     {
       "name": "marketing-automation-blueprint",
@@ -502,12 +508,6 @@
       "packageDigest": "sha256:ddfef1347f40387fb12a52258d4c86e995a5c45de701e05685971a3672674f3e"
     },
     {
-      "name": "product-finish",
-      "description": "Finish/deburr an integrated product: inspect reality, fix coherence/states/feel/a11y/performance above threshold, recapture.",
-      "path": "skills/product-finish/SKILL.md",
-      "packageDigest": "sha256:43660874ad36bd4c38f537bae3dfd6d722185cb04da2101625f5c3f6e65e3c96"
-    },
-    {
       "name": "product-recovery-contract-review",
       "description": "User-facing recovery after product failure: state repair, compensation, trust rebuild.",
       "path": "skills/product-recovery-contract-review/SKILL.md",
@@ -529,13 +529,13 @@
       "name": "prototype-product",
       "description": "Validate a product hypothesis with the cheapest real slice: frame, probe, observe, go/kill/pivot.",
       "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:ac61c9b3baa2c9f0bdbcaaddd44ef84c5e24daffb8cb8bd0e30155dcfbadc84a"
+      "packageDigest": "sha256:369c6aa5476ee1a35f67582824c464824f4529739e15957fab70a581fdc7745c"
     },
     {
       "name": "pursue-product-objective",
       "description": "Pursue a declared product objective to evidence-backed completion: bind objective, betterment cycles (card, admit all B, execute, verify), stop only when the objective is met or honestly blocked.",
       "path": "skills/pursue-product-objective/SKILL.md",
-      "packageDigest": "sha256:54210254fa2d7b29bde938e5209f4ec93455708c7978826b33f39750afd04215"
+      "packageDigest": "sha256:ffd10249fcf733a4d26d0b6b5bd4de41e0048281d929dfe2819dd91fd9dd06bd"
     },
     {
       "name": "ready-payment-platform",
@@ -631,7 +631,7 @@
       "name": "saas-web-platform-blueprint",
       "description": "SaaS web platform blueprint: tenancy, core surfaces, billing hooks, admin, scale path.",
       "path": "skills/saas-web-platform-blueprint/SKILL.md",
-      "packageDigest": "sha256:b0a52ce1a2e57132429a3649da3ce1ae96ccbed7553abdb5992ab7a0b5ea9199"
+      "packageDigest": "sha256:78a4ca730e0f096947b7ce0fd3a4d545bdb4e227719ff1a725d6efc178b2fe0f"
     },
     {
       "name": "search-discovery-quality-review",

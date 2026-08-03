@@ -111,7 +111,7 @@ Reject or revise work that:
 
 - Use `app-design-blueprint` when deciding a whole app’s promise, workflows, capability portfolio, retention, commerce, social systems, and cross-platform architecture.
 - Use `game-design-blueprint` when deciding a whole game’s player promise, mechanics, loops, progression, economy, challenge, social systems, and game feel. Use this skill for a bounded HUD, menu, store, inventory, onboarding, or control surface.
-- Use `product-finish` when an already integrated product needs one coherent
+- Use `finish-product` when an already integrated product needs one coherent
   finish pass across multiple surfaces, content or asset families, copy,
   numbers, sensory behavior, and product-wide consistency. This Skill remains
   the implementation owner for a bounded interface handoff inside that pass.

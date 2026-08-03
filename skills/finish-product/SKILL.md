@@ -1,9 +1,9 @@
 ---
-name: product-finish
+name: finish-product
 description: "Finish/deburr an integrated product: inspect reality, fix coherence/states/feel/a11y/performance above threshold, recapture."
 ---
 
-# Product Finish
+# Finish Product
 
 Turn one already defined, integrated product into a coherent, deeply resolved,
 release-grade experience. Keep the public story and primary interaction simple;

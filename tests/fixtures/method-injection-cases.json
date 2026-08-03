@@ -2013,16 +2013,16 @@
     ]
   },
   {
-    "id": "product-finish-whole-saas-positive",
+    "id": "finish-product-whole-saas-positive",
     "kind": "positive",
     "prompt": "The SaaS is functional but still feels generated and unfinished. Finish the whole integrated product to release-grade quality across public pages, onboarding, workspace, billing, support, copy, visual identity, realistic data, all states, accessibility, localization, performance, and rendered evidence—not just the landing page.",
     "expectedSkills": [
-      "product-finish"
+      "finish-product"
     ],
     "artifacts": [
       {
         "artifact": "Product Finish Pass",
-        "owner": "product-finish"
+        "owner": "finish-product"
       }
     ],
     "tags": [
@@ -2033,16 +2033,16 @@
     ]
   },
   {
-    "id": "product-finish-game-cantonese",
+    "id": "finish-product-game-cantonese",
     "kind": "positive",
     "prompt": "隻 3D game 已經玩到，但大廈、角色、動畫、音效、UI、關卡節奏同數值都仲係 placeholder 或者好求其。直接將成隻 integrated game 深度 polish 到一致、精緻、可發佈，做真實 playthrough 同效能證據，唔好淨係整靚一個畫面。",
     "expectedSkills": [
-      "product-finish"
+      "finish-product"
     ],
     "artifacts": [
       {
         "artifact": "Product Finish Pass",
-        "owner": "product-finish"
+        "owner": "finish-product"
       }
     ],
     "tags": [
@@ -2054,7 +2054,7 @@
     ]
   },
   {
-    "id": "product-finish-neighbour-bounded-interface",
+    "id": "finish-product-neighbour-bounded-interface",
     "kind": "near-neighbour",
     "prompt": "Polish only this existing checkout flow: improve hierarchy, form states, error recovery, mobile layout, keyboard access, motion, copy, and rendered verification. Do not review the rest of the product.",
     "expectedSkills": [
@@ -2066,14 +2066,14 @@
         "owner": "craft-interface"
       }
     ],
-    "nearNeighbourOf": "product-finish",
+    "nearNeighbourOf": "finish-product",
     "tags": [
       "bounded-interface",
       "not-whole-product"
     ]
   },
   {
-    "id": "product-finish-neighbour-greenfield-game",
+    "id": "finish-product-neighbour-greenfield-game",
     "kind": "near-neighbour",
     "prompt": "Design a new game from first principles: player promise, core verbs and loops, challenge, progression, economy, content, social systems, platforms, and validation. There is no integrated game to polish yet.",
     "expectedSkills": [
@@ -2085,7 +2085,7 @@
         "owner": "game-design-blueprint"
       }
     ],
-    "nearNeighbourOf": "product-finish",
+    "nearNeighbourOf": "finish-product",
     "tags": [
       "greenfield",
       "blueprint",
@@ -2093,7 +2093,7 @@
     ]
   },
   {
-    "id": "product-finish-neighbour-continuous-loop",
+    "id": "finish-product-neighbour-continuous-loop",
     "kind": "near-neighbour",
     "prompt": "Design an ongoing autonomous system that repeatedly discovers product-quality issues, qualifies them into Work, verifies delivery, and wakes again on changes. Do not run one release finish pass now.",
     "expectedSkills": [
@@ -2105,7 +2105,7 @@
         "owner": "better-product"
       }
     ],
-    "nearNeighbourOf": "product-finish",
+    "nearNeighbourOf": "finish-product",
     "tags": [
       "continuous",
       "quality-loop",
@@ -2113,7 +2113,7 @@
     ]
   },
   {
-    "id": "product-finish-neighbour-launch-admission",
+    "id": "finish-product-neighbour-launch-admission",
     "kind": "near-neighbour",
     "prompt": "Review the exact release evidence across product, security, payments, support, distribution, rollback and live watch, then issue the launch go or hold verdict. Do not redesign or polish the product.",
     "expectedSkills": [
@@ -2125,7 +2125,7 @@
         "owner": "launch-readiness-review"
       }
     ],
-    "nearNeighbourOf": "product-finish",
+    "nearNeighbourOf": "finish-product",
     "tags": [
       "launch",
       "admission",
@@ -2272,7 +2272,7 @@
     ]
   },
   {
-    "id": "cpq-neighbour-not-product-finish",
+    "id": "cpq-neighbour-not-finish-product",
     "kind": "near-neighbour",
     "prompt": "We need an always-on betterment loop for many quality aspects after ship, not a single release-grade finish pass on the current build.",
     "expectedSkills": [

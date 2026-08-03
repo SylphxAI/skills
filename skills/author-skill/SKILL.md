@@ -27,7 +27,7 @@ tool manual.
 
 1. **Job method, not role title.** Name and voice = *what work to do*, not
    “Prototyper / Builder / who you are.” Prefer verb-led ids:
-   `prototype-product`, `create-skill`, `pursue-product-objective`.
+   `prototype-product`, `author-skill`, `pursue-product-objective`.
 2. **Progressive disclosure.** Listing sees only `name` + `description`. Body
    loads after match. Keep description short and searchable; put depth in
    body/`references/`.
@@ -171,3 +171,23 @@ interface:
 - Class + one-line job
 - Neighbours touched
 - Test/catalog result
+
+## Portfolio routing (product jobs)
+
+When authoring product methods, prefer these existing job Skills over new near-duplicates:
+
+| Job | Skill |
+| --- | --- |
+| Learn / probe | `prototype-product` |
+| Ship capability | `build-product` |
+| Cut live harm | `maintain-product` |
+| Scale validated core | `expand-product` |
+| Finish / deburr | `finish-product` |
+| Pursue fixed outcome to completion | `pursue-product-objective` |
+| Mixed open betterment | `better-product` |
+| Next Work from evidence/ledger | `select-next-work` |
+| Multi-phase delivery terminal | `drive-to-delivery` |
+| Author a Skill | `author-skill` |
+
+Policy packages (`*-standard`, stack/profile pins) constrain other jobs; they are not product job cycles.
+

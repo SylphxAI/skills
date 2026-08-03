@@ -23,7 +23,7 @@ This is the goal-directed betterment job: same high-leverage cycle shape as open
 - One capability gap with a short ship slice → `build-product`
 - Framed live harm only → `maintain-product`
 - Scale bet only → `expand-product`
-- Deburr integrated UX only → `product-finish`
+- Deburr integrated UX only → `finish-product`
 - Open-ended betterment with **no** fixed objective → `better-product`
 - Generic multi-phase engineering objective (not product betterment framing) → `drive-to-delivery`
 

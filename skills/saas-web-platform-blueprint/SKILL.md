@@ -103,7 +103,7 @@ Return one SaaS Web Platform Blueprint containing:
 - Use `notification-strategy-review`, `account-recovery-review`, `enterprise-access-governance-review`, `privacy-data-lifecycle-review`, `product-analytics-instrumentation-review`, and `operate-customer-support` when one of those systems is the primary artifact.
 - Use `marketing-automation-blueprint` for the whole go-to-market control plane, `social-media-operations-review` for recurring social channel operations, and `ready-software-distribution` for release-channel proof.
 - Use `compose-product-program` only when a separate cross-domain Product Program Manifest is required; it indexes the SaaS blueprint and specialist outputs without absorbing their semantics.
-- Use `product-finish` for the integrated public-to-authenticated finish pass
+- Use `finish-product` for the integrated public-to-authenticated finish pass
   after product, commercial, policy, and experience direction are defined.
   Blueprint acceptance is not evidence that copy, content, routes, states, and
   the real rendered product meet the declared finish target.

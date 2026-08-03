@@ -11,7 +11,7 @@ scope:
   - build-product
   - maintain-product
   - expand-product
-  - product-finish
+  - finish-product
   - pursue-product-objective
 ---
 
@@ -34,7 +34,7 @@ Provide separate **workflow** Skills for distinct **job kinds**:
 | `build-product` | Close a shippable capability gap |
 | `maintain-product` | Reduce framed live/regression harm |
 | `expand-product` | Scale a validated core (×N) |
-| `product-finish` | Deburr/finish an integrated product |
+| `finish-product` | Deburr/finish an integrated product |
 | `pursue-product-objective` | Pursue a declared product objective to evidence-backed completion |
 
 Each Skill: Frame → Research → Admit → Implement → Deliver/Verify → Cycle-done.
@@ -64,4 +64,4 @@ Use a job Skill when the work is clearly that job. Use
 
 - Five job Skills exist with one-cycle methods
 - No spawn/role staffing instructions in those Skill bodies
-- `product-finish` remains the sole finish entry
+- `finish-product` remains the sole finish entry

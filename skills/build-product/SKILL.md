@@ -19,7 +19,7 @@ When you need a **real capability** on a dogfood or market path, run **one** bui
 - Still validating the idea → `prototype-product`
 - Live reliability harm only → `maintain-product`
 - Scale ×N only → `expand-product`
-- Polish of an already integrated surface → `product-finish`
+- Polish of an already integrated surface → `finish-product`
 
 ## Method
 

@@ -171,11 +171,11 @@
       ]
     },
     {
-      "id": "critical-product-finish",
+      "id": "critical-finish-product",
       "suite": "critical-skill",
       "prompt": "Our SaaS app is feature-complete but looks generic and unfinished. Run a whole-product release-grade finish pass.",
       "expectedSkills": [
-        "product-finish"
+        "finish-product"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Produces or plans a Product Finish Pass over an already-integrated product (multi-surface polish/verification), not a greenfield blueprint and not a standing quality scout loop.",
@@ -205,7 +205,7 @@
       "behaviorOracle": {
         "mandatoryObservable": "Defines a standing quality loop contract with scout triggers, finding admission, Work handoff, and coverage freshness/budgets—not a one-off finish pass.",
         "mustNot": [
-          "Treat product-finish as the sole primary owner of this job",
+          "Treat finish-product as the sole primary owner of this job",
           "Treat operational-observability-review as the sole primary owner of this job"
         ]
       },
@@ -214,7 +214,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "product-finish",
+        "finish-product",
         "operational-observability-review"
       ]
     },
@@ -228,7 +228,7 @@
       "behaviorOracle": {
         "mandatoryObservable": "Scopes work to one bounded interface/flow craft job rather than whole-app blueprint or multi-surface product finish.",
         "mustNot": [
-          "Treat product-finish as the sole primary owner of this job",
+          "Treat finish-product as the sole primary owner of this job",
           "Treat app-design-blueprint as the sole primary owner of this job",
           "Treat design-system-extractor as the sole primary owner of this job"
         ]
@@ -238,7 +238,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "product-finish",
+        "finish-product",
         "app-design-blueprint",
         "design-system-extractor"
       ]
@@ -253,7 +253,7 @@
       "behaviorOracle": {
         "mandatoryObservable": "Targets a whole-app design blueprint for a new/redesigned product, not polish of an already-integrated app and not a single-screen craft job.",
         "mustNot": [
-          "Treat product-finish as the sole primary owner of this job",
+          "Treat finish-product as the sole primary owner of this job",
           "Treat craft-interface as the sole primary owner of this job",
           "Treat compose-product-program as the sole primary owner of this job"
         ]
@@ -263,7 +263,7 @@
         "model_limit"
       ],
       "nearNeighbours": [
-        "product-finish",
+        "finish-product",
         "craft-interface",
         "compose-product-program"
       ]
@@ -574,7 +574,7 @@
       "suite": "near-neighbour",
       "prompt": "The app already exists and ships features, but screens feel unfinished and inconsistent. Make it release-grade across surfaces.",
       "expectedSkills": [
-        "product-finish"
+        "finish-product"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Chooses finish of an integrated product over greenfield app blueprint design.",
@@ -814,7 +814,7 @@
       "suite": "compound",
       "prompt": "The product is integrated; make a release-grade finish pass now, and separately outline whether we later need a standing quality scout loop.",
       "expectedSkills": [
-        "product-finish"
+        "finish-product"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Primary work is a finish pass; if continuous quality is mentioned it is secondary/composed, not substituted for finish.",
@@ -837,14 +837,14 @@
         "better-product"
       ],
       "nearNeighbours": [
-        "product-finish",
+        "finish-product",
         "select-next-work",
         "drive-to-delivery"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Establishes or updates a multi-aspect quality matrix/loop contract, admits only bounded positive-net work, requires oracle readback, and treats idle as non-perfection rather than one finish pass or infinite vague improvement.",
         "mustNot": [
-          "Treat product-finish as the sole primary owner of this standing loop job",
+          "Treat finish-product as the sole primary owner of this standing loop job",
           "Claim the product is perfect",
           "Create vague unbounded Work such as make everything better without cells/oracles"
         ]
@@ -862,14 +862,14 @@
         "better-product"
       ],
       "nearNeighbours": [
-        "product-finish",
+        "finish-product",
         "craft-interface",
         "remediate-frontend-performance"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Chooses standing multi-aspect betterment loop operation over a single Product Finish Pass as the primary artifact.",
         "mustNot": [
-          "Treat product-finish as the sole primary owner of this job"
+          "Treat finish-product as the sole primary owner of this job"
         ]
       },
       "failureTaxonomy": [
@@ -887,14 +887,14 @@
       "nearNeighbours": [
         "drive-to-delivery",
         "select-next-work",
-        "product-finish"
+        "finish-product"
       ],
       "behaviorOracle": {
         "mandatoryObservable": "Creates or resumes a harness goal whose objective carries product/aspects/idle-frontier DoD and omits token_budget/budget cap; does not mark goal complete after one tick/Work; continues betterment loop semantics rather than one-shot finish.",
         "mustNot": [
           "Set a token_budget unless the user explicitly requested a cap",
           "Mark the harness goal complete after a single improvement or PR",
-          "Treat product-finish as the sole primary owner of the standing loop"
+          "Treat finish-product as the sole primary owner of the standing loop"
         ]
       },
       "failureTaxonomy": [
