@@ -1,9 +1,15 @@
 ---
 name: continuous-product-quality
-description: "Multi-cycle product betterment engagement: high-leverage B slices, residual R, silent self-loop to idle frontier."
+description: "One high-leverage product betterment cycle: coverage card, admit B, residual R, execute, verify, write engagement state for the next invoke."
 ---
 
 # Continuous Product Quality
+
+> **Boundary (ADR-20260803):** this Skill owns the **cycle method** (research →
+> admit B → execute → verify → write state). **Multi-cycle continuity** is the
+> **outer harness runner** (re-invoke / automation / Goal resume as insurance)—see
+> [betterment-engagement-runner.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/betterment-engagement-runner.md).
+> Do not treat Skill prose alone as a portable forever-while-loop motor.
 
 Run **outcome-frontier product betterment**: close user/business-visible gaps with
 **high leverage**, not hundreds of cosmetic commits.
@@ -128,6 +134,7 @@ Only these (with concrete evidence) may keep high-EV work out of B:
 - [references/product-quality-loop-contract.md](references/product-quality-loop-contract.md)
 - [references/multi-aspect-betterment-loop.md](references/multi-aspect-betterment-loop.md)
 - [references/harness-goal-binding.md](references/harness-goal-binding.md)
+- [Betterment engagement runner (outer loop)](https://github.com/SylphxAI/skills/blob/main/docs/reference/betterment-engagement-runner.md)
 
 ## Non-negotiable laws
 
@@ -182,12 +189,19 @@ bind product + north-stars + uncapped goal  (engagement START — goal stays act
 
 ## Method (summary)
 
-1. **Outcome lock + uncapped goal (engagement).** Goal remains active for the whole loop.
-2. **Cycle body:** coverage card → C → B/R → if B non-empty execute all B (parallel default) → verify → cycle Stop-Audit.
-3. **Loop:** after cycle Stop-Audit, **immediately re-research** (new card/C/B) **in the same turn/run**. Do not park; do not final-response the user.
-4. **Engagement idle only when** a post-clear (or initial) re-research yields B=∅ and R has no unblocked EV ≥ MinOutcomeDelta — then Stop-Audit + `update_goal(complete)` (if Goal API) + **then** user-facing final status.
-5. **Never** goal-complete or user-final on one PR, one cycle B-clear, cycle report, or “improved a bit.”
-6. **No Goal API residual:** still self-loop to engagement idle; record “goal API missing” once, do not use it as a reason to stop between cycles.
+1. **Bind outer engagement** (product outcomes + state path). Create/resume
+   uncapped Goal **if present** (insurance only).
+2. **Run one cycle well:** coverage card → C → B/R → execute all B (parallel
+   default; slice large work) → verify → cycle Stop-Audit → **write state**
+   (`next_action`, B/R, cycle id).
+3. **Continuity:** prefer **same-turn** start of cycle k+1 when context allows
+   and work remains. Portable guarantee of multi-cycle is the **outer runner**
+   re-invoke—not Skill text alone (ADR-20260803).
+4. **Do not** end with “要開 Cycle N+1 嗎？” when unblocked/soft-only high-EV
+   work remains; either continue or leave state for the runner.
+5. **Engagement idle** only after fresh re-scout B=∅ and R has no unqualified
+   high-EV—then Goal complete if API + user-facing final.
+6. **Never** treat cycle B-clear, PR green, or cycle essay as outer done.
 
 ## Anti-patterns
 

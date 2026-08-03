@@ -113,9 +113,9 @@
     },
     {
       "name": "continuous-product-quality",
-      "description": "Multi-cycle product betterment engagement: high-leverage B slices, residual R, silent self-loop to idle frontier.",
+      "description": "One high-leverage product betterment cycle: coverage card, admit B, residual R, execute, verify, write engagement state for the next invoke.",
       "path": "skills/continuous-product-quality/SKILL.md",
-      "packageDigest": "sha256:0b464150db7799c9cb11329dc30f4e2b80db9f7a49f475a278f036a46ace5faa"
+      "packageDigest": "sha256:bf92d1d40cdd65b4e8c50485d732bb9e7dba7fc6a7ffc90bb5b6d62d758a1f68"
     },
     {
       "name": "convergent-review",
