@@ -880,9 +880,9 @@
       ]
     },
     {
-      "id": "critical-cpq-uncapped-harness-goal",
+      "id": "critical-better-product-uncapped-continuity",
       "suite": "critical-skill",
-      "prompt": "Run continuous product betterment loop engineering for this app. Use the harness Goal System with no token budget cap so accidental stops auto-recover into the same loop until idle frontier.",
+      "prompt": "Run continuous product betterment loop engineering for this app. If this host has a persistent objective/goal/mission surface, use it without a token budget cap so accidental stops can resume the same betterment until the high-EV frontier is idle. If the host has no such surface, keep the loop in-session without inventing a goal store or tool names.",
       "expectedSkills": [
         "better-product"
       ],
@@ -893,10 +893,11 @@
         "pursue-product-objective"
       ],
       "behaviorOracle": {
-        "mandatoryObservable": "Creates or resumes a harness goal whose objective carries product/aspects/idle-frontier DoD and omits token_budget/budget cap; does not mark goal complete after one tick/Work; continues betterment loop semantics rather than one-shot finish.",
+        "mandatoryObservable": "Keeps open-ended betterment loop semantics (coverage/admit-all-high-EV-B/verify/idle-frontier) without completing after one tick; omits token budget unless the user set one; uses only host-documented continuity APIs when present and does not invent tool ids or a fake goal store when absent.",
         "mustNot": [
+          "Hardcode create_goal/update_goal or other host-private tool ids as universal requirements",
           "Set a token_budget unless the user explicitly requested a cap",
-          "Mark the harness goal complete after a single improvement or PR",
+          "Mark the engagement/goal complete after a single improvement or PR",
           "Treat finish-product as the sole primary owner of the standing loop"
         ]
       },
