@@ -8,6 +8,15 @@ be claimed from installation, AutoSync green, catalog integrity, or authored
 fixtures alone (ADR-0009, ADR-0011,
 ADR-20260731-thin-dual-layer-progressive-instruction-system).
 
+
+### 2026-08-04 authoring follow-up
+
+- Codex host runner `scripts/run-utilization-host-codex.mjs`: `--ids=` now selects from the **full** fixture corpus (not only the default subset).
+- Codex remaining-slice sheet at tip `711d30b` still non-promotable auto-heuristic.
+- Positive-writing strip continued: ban neighbour-id dumps in workflow Boundaries; description templates no longer teach `Not <neighbours>`.
+- Mechanical-rename pollution from `migrate`→`execute-hard-cutover` verb substitution cleaned (restored English *migrate/migrated*; eng predicates `eng-hard-cut-0N`).
+- Residual still **open** for promotable multi-host proof (Claude auth / Grok billing).
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,

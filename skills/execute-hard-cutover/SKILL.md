@@ -18,7 +18,7 @@ run **one migration** to a clean cutover—not a permanent dual-stack.
 
 ## Method
 
-**Destination sole writer → execute-hard-cutover/backfill → verify → delete predecessor.**  
+**Destination sole writer → migrate/backfill → verify → delete predecessor.**  
 Default is **hard-cut**. Dual-path is exceptional tech debt.
 
 ### 1. Frame
@@ -52,11 +52,11 @@ Default is **hard-cut**. Dual-path is exceptional tech debt.
 - Prefer one coherent cutover on the **owning** layer; no title-local forever
   bridges for engine floors, no product dual-write “for safety”
 - Backfill or regenerate so destination is complete, not partial
-- If expand-contract: expand → execute-hard-cutover traffic/data → **contract** (mandatory)
+- If expand-contract: expand → migrate traffic/data → **contract** (mandatory)
 - Do not stop at “both work”
 
 ### 5. Deliver / verify
-- Original oracles for the execute-hard-cutoverd behavior (not only local green)
+- Original oracles for the migrated behavior (not only local green)
 - Destination is **sole writer** for the framed boundary
 - Predecessor removed or behind an explicit dated residual with owner
 - Separate local vs landed vs live claims when delivery is in scope
@@ -76,7 +76,7 @@ Not done: “compat left for later,” undated flags, dual packages for comfort.
 
 Open only what the cut touches:
 
-- `engineering-standard` — safety, verification, eng-execute-hard-cutover predicates
+- `engineering-standard` — safety, verification, eng-hard-cut predicates
 - `source-authoring-standard` / `delivery-standard` — land/live honesty
 - `instruction-evolution-standard` — skill/constitution generation cutovers
 - `author-skill` / `curate-skill-repository` — portfolio package retirements

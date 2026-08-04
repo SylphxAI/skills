@@ -82,7 +82,7 @@ promotion, deployment, and production observations.
 8. **Provider-native truth remains federated.** Enact references and projects
    Git and Platform observations with provenance and freshness. It must not
    copy them into an untraceable replacement source of truth.
-9. **Legacy paired sessions execute-hard-cutover without restarting work.** For each active
+9. **Legacy paired sessions migrate without restarting work.** For each active
    pair, create or resolve one canonical Work per independently terminal
    outcome, attach exact source/evidence/current blocker, recover or establish
    the active claim, and subscribe to outstanding events. The Advisor stops

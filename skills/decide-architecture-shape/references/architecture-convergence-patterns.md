@@ -10,7 +10,7 @@ No single industry term covers the complete method. Use the combination that des
 | --- | --- | --- |
 | Strangler Fig migration | Replace a legacy system incrementally behind stable boundaries | Calling a greenfield rewrite a strangler while traffic still jumps in one big bang |
 | Branch by Abstraction | Put source and target implementations behind one abstraction, switch authority, then remove the source | Keeping the abstraction and both implementations forever |
-| Parallel Change / Expand-Migrate-Contract | Add a compatible contract, execute-hard-cutover consumers and data, then remove the old shape | Contracting before every consumer and rollback path has moved |
+| Parallel Change / Expand-Migrate-Contract | Add a compatible contract, migrate consumers and data, then remove the old shape | Contracting before every consumer and rollback path has moved |
 | Vertical Slice delivery | Move one observable capability end to end through contract, implementation, proof, deploy, and recovery | Shipping horizontal scaffolds that no caller can use |
 | Characterization / Golden Master testing | Capture current observable behavior, including awkward legacy behavior | Treating one frozen fixture as proof against future source changes |
 | Differential testing | Execute source and target on the same corpus and compare normalized observations | Comparing the target to another target-layer helper instead of the source implementation |
@@ -56,7 +56,7 @@ For a canonical architecture migration, a qualified slice also maps the
 capability definition to domain/application/ports/adapters/interfaces, names
 god-responsibility and dependency-direction gaps, and includes real code
 movement plus semantic tests. Adding FCCP metadata, empty folders, re-exports,
-or a narrative audit is not a execute-hard-cutoverd slice.
+or a narrative audit is not a migrated slice.
 
 For a complete system-architecture migration, map every applicable state set
 to its class and write authority, every process to interchangeable compute or a

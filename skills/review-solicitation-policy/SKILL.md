@@ -5,7 +5,7 @@ description: "Policy: public in-app review request—eligibility, native surface
 
 # Review Solicitation Policy
 
-Policy constraints—apply while doing another matching job; not a standalone product job cycle.
+Policy constraints—compose onto matching host jobs.
 
 Produce one platform-current public review request policy. Optimize for authentic
 participation and durable trust, never predicted star value.

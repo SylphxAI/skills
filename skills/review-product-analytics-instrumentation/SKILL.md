@@ -79,7 +79,7 @@ never the product's consent or retention policy.
 - Do not merge identities without explicit rules, consent/authority, reversibility,
   and deletion semantics.
 - Never silently change an event or metric meaning. Version, dual-write/read,
-  backfill or annotate discontinuity, and execute-hard-cutover consumers.
+  backfill or annotate discontinuity, and migrate consumers.
 - Dashboard freshness/coverage and model confidence are not product success;
   retain value, quality, trust, fairness, privacy, and support countermetrics.
 

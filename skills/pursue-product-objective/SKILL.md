@@ -1,6 +1,6 @@
 ---
 name: pursue-product-objective
-description: "Pursue a fixed declared product objective to evidence-backed completion—not open-ended betterment."
+description: "Pursue a fixed declared product objective to evidence-backed completion: keep going until that named outcome is reached and proved."
 ---
 
 # Pursue Product Objective

@@ -254,7 +254,7 @@ platform capability.
 ## Adoption
 
 This standard is `new-default` for new repos and new high-risk surfaces. Existing
-repos execute-hard-cutover by selector:
+repos migrate by selector:
 
 1. Add schema/template support in the owning Skills package or product repo.
 2. Audit for drift without blocking.

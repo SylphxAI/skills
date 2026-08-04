@@ -4,7 +4,7 @@ description: "Policy: engineering method—design, verification, change safety, 
 ---
 # Engineering Standard
 
-Policy constraints—apply while doing another matching job; not a standalone product job cycle.
+Policy constraints—compose onto matching host jobs.
 
 Full progressive-disclosure body: [references/full-standard.md](references/full-standard.md).  
 Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).

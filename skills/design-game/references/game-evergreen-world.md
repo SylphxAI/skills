@@ -30,7 +30,7 @@ Classify every important state:
 
 | Class | Examples | Rollover/reset rule |
 | --- | --- | --- |
-| Durable ownership | paid items, earned collection, account unlocks, creations, identity, history, relationships | preserve; execute-hard-cutover/compensate if semantics change |
+| Durable ownership | paid items, earned collection, account unlocks, creations, identity, history, relationships | preserve; migrate/compensate if semantics change |
 | Durable breadth/mastery | skills, sidegrades, knowledge, professions, exploration, mentorship reputation | preserve; horizontal extension preferred |
 | Seasonal competitive | rank, ladder rating, tournament qualification | may reset with disclosed seeding, history and rewards |
 | Renewable world control | territory, seasonal structures, contested resources | may cycle under fair participation/anti-zerg rules |

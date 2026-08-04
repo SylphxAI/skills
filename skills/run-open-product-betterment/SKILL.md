@@ -1,6 +1,6 @@
 ---
 name: run-open-product-betterment
-description: "Run open product betterment (no fixed objective): quality matrix, scout, all high-EV B, oracle verify; idle at empty high-EV frontier."
+description: "Run ongoing open product betterment loop (no fixed objective): quality matrix, scout, all high-EV B including UI and performance opportunities, oracle verify; idle at empty high-EV frontier."
 ---
 
 # Run Open Product Betterment

@@ -75,7 +75,7 @@ created -> invite/join_request -> eligibility_check -> joined -> ready
 -> matchmaking_or_activity -> in_session -> result/reward -> remain_or_leave
 
 member -> disconnected -> grace/rejoin | bot_or_role_fill | removed
-host -> execute-hard-cutovers | service_authority_continues
+host -> migrates | service_authority_continues
 party -> version/region/age/platform/content incompatibility -> explained recovery
 ```
 

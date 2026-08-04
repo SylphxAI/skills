@@ -43,7 +43,7 @@ tool manual.
 8. **Done criteria.** Every workflow Skill states when **this run/cycle** is
    complete. Do not equate “product forever perfect” with Skill done unless
    the job is explicitly pursue-to-objective.
-9. **Hard-cut portfolio changes.** Prefer rename/delete/execute-hard-cutover over long
+9. **Hard-cut portfolio changes.** Prefer rename/delete/migrate over long
    backward-compatible dual packages. Keep a dual Skill only with demonstrated
    large-scale impact and a dated retirement—execute via `execute-hard-cutover`.
 10. **Discoverable ids.** Workflow ids are verb-led **2–4 kebab tokens** that

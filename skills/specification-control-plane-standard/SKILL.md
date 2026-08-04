@@ -4,7 +4,7 @@ description: "Policy: executable specs lifecycle—packets, eval manifests, tele
 ---
 # Specification Control Plane Standard
 
-Policy constraints—apply while doing another matching job; not a standalone product job cycle.
+Policy constraints—compose onto matching host jobs.
 
 Read [references/full-standard.md](references/full-standard.md) for the full
 method and predicates.

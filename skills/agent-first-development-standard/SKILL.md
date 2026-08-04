@@ -4,7 +4,7 @@ description: "Policy: multi-agent delivery packets—attribution, collision scop
 ---
 # Agent First Development Standard
 
-Policy constraints—apply while doing another matching job; not a standalone product job cycle.
+Policy constraints—compose onto matching host jobs.
 
 Read [references/full-standard.md](references/full-standard.md) for the full
 method and predicates.

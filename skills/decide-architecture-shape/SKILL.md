@@ -39,7 +39,7 @@ on narrative status or stale proof.
    resource, and integration cost. Atomic inspection and tightly coupled work
    stay local.
 6. Select the shortest safe cutover from the real lifecycle stage. In
-   development or internal dogfood without real-user state risk, execute-hard-cutover and
+   development or internal dogfood without real-user state risk, cut over and
    delete the old structure in one verified candidate. Use expand-contract only
    when a demonstrated live compatibility, data, or external-effect risk needs
    concurrent paths; preserve one write authority.
@@ -69,7 +69,7 @@ on narrative status or stale proof.
   readback at the declared stage. Require deploy/live readback only when the
   terminal includes deployed or live authority.
 - Fail on unclassified tracked migration changes. A dashboard, comment, or manually edited state is not a gate.
-- Measure progress by completed capabilities and weighted risk, never execute-hard-cutoverd line count or repo count alone.
+- Measure progress by completed capabilities and weighted risk, never migrated line count or repo count alone.
 - A metadata/docs/folder-only migration cannot complete a code-architecture
   slice. The candidate must change responsibility and dependency boundaries in
   real product code when the audit finds structural gaps.

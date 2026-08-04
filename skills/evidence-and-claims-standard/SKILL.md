@@ -5,7 +5,7 @@ description: "Policy: evidence before claims—local vs candidate vs landed vs l
 
 # Evidence and Claims Standard
 
-Policy constraints—apply while doing another matching job; not a standalone product job cycle.
+Policy constraints—compose onto matching host jobs.
 
 Make the strongest claim current evidence supports, and no stronger. Read
 [references/claim-evidence-method.md](references/claim-evidence-method.md) before

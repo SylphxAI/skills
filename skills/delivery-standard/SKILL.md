@@ -4,7 +4,7 @@ description: "Policy: delivery honesty—source vs artifact vs desired/current v
 ---
 # Delivery Standard
 
-Policy constraints—apply while doing another matching job; not a standalone product job cycle.
+Policy constraints—compose onto matching host jobs.
 
 Read [references/full-standard.md](references/full-standard.md) for the full
 method and predicates.

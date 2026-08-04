@@ -1,6 +1,6 @@
 ---
 name: select-next-work
-description: "Select/claim next high-value Work from evidence/ledger (not product betterment matrix)."
+description: "Select/claim next high-value Work from evidence/ledger under WIP and backpressure."
 ---
 
 # Select Next Work
@@ -12,7 +12,7 @@ naming the ticket, run **one tick** of this method.
 
 - Queue/ledger/capacity signals exist (or must be established)
 - Job is continuous selection + claim under WIP/backpressure
-- Not the same as open product betterment or one fixed product objective
+- Continuous selection + claim under queue/capacity signals
 
 ## Method (one tick)
 
@@ -40,6 +40,6 @@ A **bounded tick report** plus durable Work/claim/checkpoint effects when author
 
 ## Boundaries
 
-- Does not grant deploy or credential capabilities.
-- Does not drive one already-accepted objective to terminal by itself.
-- Skill text is not a runtime scheduler.
+- Grants no deploy or credential capabilities.
+- One **tick** selects/claims; closing a claimed multi-phase objective uses the delivery method for that Work.
+- This package is method text, not a runtime scheduler.

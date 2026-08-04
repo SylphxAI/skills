@@ -76,7 +76,7 @@ requires overlap:
 
 1. admit a non-binding successor candidate;
 2. evaluate and select the affected denominator;
-3. activate the successor and execute-hard-cutover selected repositories;
+3. activate the successor and migrate selected repositories;
 4. retire the predecessor once machine-readable convergence is true.
 
 During development, when no live compatibility or irreversible state exists,

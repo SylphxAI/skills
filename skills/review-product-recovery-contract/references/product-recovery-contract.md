@@ -92,7 +92,7 @@ snapshot/version, policy version, before/after manifest, and decision reason.
 | Device replacement | recover account-scoped durable state; identify device-only exclusions | representative user completes recovery on a clean device |
 | Accidental deletion | undo or point-in-time/selective restore within stated window | deleted object, relationships, and audit outcome verified |
 | Old snapshot after erasure | preserve deletion outcome | tombstoned data remains absent or is lawfully quarantined |
-| Cross-version restore | execute-hard-cutover, read-only open, or block with reason | fixture across supported source/target versions |
+| Cross-version restore | migrate, read-only open, or block with reason | fixture across supported source/target versions |
 | E2EE recovery | use advertised client/escrow authority only | support cannot access plaintext outside the declared model |
 | Entitlement replay | reconcile against canonical ledger | refunded/revoked item stays revoked; duplicate grant impossible |
 | Partial restore | resume or compensate under same operation ID | no duplicated side effects; unresolved items are enumerated |

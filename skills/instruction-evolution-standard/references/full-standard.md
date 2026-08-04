@@ -16,7 +16,7 @@ decisions. Live systems own selection, work, adoption, and convergence.
 Rule IDs:
 
 - `instruction-ssot-01` — one semantic fact has one writable authority.
-- `instruction-execute-hard-cutover-01` — every selected durable repo reaches the current generation.
+- `instruction-migrate-01` — every selected durable repo reaches the current generation.
 - `instruction-proof-01` — terminal state is derived from delivered evidence.
 - `instruction-retire-01` — predecessor methods and projections leave steady state.
 

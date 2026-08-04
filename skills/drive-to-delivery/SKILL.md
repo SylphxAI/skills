@@ -45,7 +45,6 @@ Progress on **one accepted objective at its delivery terminal**, with checkpoint
 
 ## Boundaries
 
-- Does not grant deploy or credential capabilities.
-- Does not own continuous next-Work discovery (`select-next-work`).
-- Does not own multi-aspect product betterment (`run-open-product-betterment` / job skills).
-- Does not replace product-local ADRs.
+- Grants no deploy or credential capabilities.
+- Scope is **one accepted multi-phase engineering objective** to its delivery terminal.
+- Product-local ADRs remain authoritative for product decisions.

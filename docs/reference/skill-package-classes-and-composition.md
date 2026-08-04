@@ -79,28 +79,26 @@ When authoring a workflow:
 ### Policy
 
 ```text
-Binding rules for <domain>: <predicates>. Compose when doing <host jobs>.
-Not a workflow for <procedure neighbour>.
+Policy: <domain> constraints—<predicates>. Compose onto matching host jobs.
 ```
 
 ### Workflow
 
 ```text
-Do <job> producing <artifact>: <steps>. Use when <triggers>.
-Not <neighbours>. Compose <policy packs> when relevant.
+Do <job> producing <artifact>: <positive method gist>. Use when <triggers>.
+Compose <policy packs> when the job needs those constraints.
 ```
 
 ### Review
 
 ```text
-Design or audit <subject> into <artifact>. Use when assessment is primary.
-Not implementation/ops alone.
+Design or audit <subject> into <assessment artifact>. Use when assessment is the primary outcome.
 ```
 
 ### Adapter
 
 ```text
-Operate <system> with live tools/auth: <ops>. Not portable semantics-only design.
+Operate <system> with live tools/auth: <ops>. Requires live credentials and host I/O.
 ```
 
 ## Loop layer exclusions (must stay distinct)

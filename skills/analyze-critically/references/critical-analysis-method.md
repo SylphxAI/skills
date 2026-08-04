@@ -11,7 +11,7 @@ Start with four columns:
 | Required premise | assumption | testability and sensitivity | may invalidate conclusion |
 | Missing fact | unknown | acquisition cost and value | may justify targeted research |
 
-Do not let inference execute-hard-cutover into the facts column through repetition.
+Do not let inference migrate into the facts column through repetition.
 
 ## Competing-hypothesis matrix
 

@@ -41,8 +41,12 @@ function pickCases() {
     'drive-to-delivery','select-next-work','execute-hard-cutover','run-incident-response',
   ]);
   let selected;
-  if (suiteFilter) selected = [...(by[suiteFilter] || [])];
-  else {
+  // Explicit ids always select from the full fixture corpus.
+  if (onlyIds.size) {
+    selected = program.cases.filter((c) => onlyIds.has(c.id));
+  } else if (suiteFilter) {
+    selected = [...(by[suiteFilter] || [])];
+  } else {
     const crit = by['critical-skill'] || [];
     const pref = crit.filter((c) => (c.expectedSkills || []).some((s) => product.has(s)));
     const rest = crit.filter((c) => !pref.includes(c));
@@ -55,7 +59,6 @@ function pickCases() {
       ...(by.compound || []).slice(0, 1),
     ];
   }
-  if (onlyIds.size) selected = selected.filter((c) => onlyIds.has(c.id));
   const seen = new Set();
   selected = selected.filter((c) => (seen.has(c.id) ? false : (seen.add(c.id), true)));
   if (limit > 0) selected = selected.slice(0, limit);

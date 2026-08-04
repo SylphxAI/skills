@@ -29,4 +29,4 @@ Require exact source/target/rule versions; authority current; rehearsal cohort r
 
 ## Acceptance ledger
 
-Record expected, execute-hard-cutoverd, excluded by approved rule, quarantined, failed, retried, reconciled, customer-validated, and unresolved counts per entity/cohort. Link validation evidence, known loss, customer or owner acceptance, complaints/support cases, post-cutover monitoring, cleanup, and decommission status. `accepted` is an explicit authority state, not the absence of a complaint.
+Record expected, migrated, excluded by approved rule, quarantined, failed, retried, reconciled, customer-validated, and unresolved counts per entity/cohort. Link validation evidence, known loss, customer or owner acceptance, complaints/support cases, post-cutover monitoring, cleanup, and decommission status. `accepted` is an explicit authority state, not the absence of a complaint.

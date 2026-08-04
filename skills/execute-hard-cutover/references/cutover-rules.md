@@ -9,7 +9,7 @@ Use when any of these hold (usual case):
 - Clients are internal agents or a bounded fleet you can update together
 - Keeping dual-path costs more than the cut (matrix, tests, residual risk)
 
-Steps: destination → execute-hard-cutover/backfill → flip readers/writers → verify → delete.
+Steps: destination → migrate/backfill → flip readers/writers → verify → delete.
 
 ## Expand-contract exception
 

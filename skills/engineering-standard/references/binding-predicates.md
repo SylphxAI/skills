@@ -25,8 +25,8 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-concur-01` | Shared mutable state is fenced (locks, CAS, leases) with explicit timeouts. |
 | `eng-sidefx-01` | External side effects are idempotent or exactly-once with recovery. |
 | `eng-timeout-01` | Every network/RPC path has timeout, cancellation, and retry budget. |
-| `eng-execute-hard-cutover-01` | Default is verified hard-cut / one-step cutover with predecessor retirement. Expand-contract only for demonstrated large-scale user or live compatibility/state/effect risk, and only with a dated contract step—no permanent dual-path residual. |
-| `eng-execute-hard-cutover-02` | Backward-compatible dual paths, shims, and aliases are exceptional tech debt; keep them only under eng-execute-hard-cutover-01 exception bar and delete them at the retirement gate. |
+| `eng-hard-cut-01` | Default is verified hard-cut / one-step cutover with predecessor retirement. Expand-contract only for demonstrated large-scale user or live compatibility/state/effect risk, and only with a dated contract step—no permanent dual-path residual. |
+| `eng-hard-cut-02` | Backward-compatible dual paths, shims, and aliases are exceptional tech debt; keep them only under eng-hard-cut-01 exception bar and delete them at the retirement gate. |
 | `eng-layer-01` | Dependency direction is domain → application → infrastructure. |
 | `eng-capability-01` | Durable code is organized by capability/bounded context; features are vertical slices inside the owning capability. |
 | `eng-ddd-01` | Strategic and Tactical DDD concepts carry domain language, invariants, aggregates, value objects, services, events, and repository ports. |
