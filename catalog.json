@@ -643,7 +643,7 @@
       "name": "run-open-product-betterment",
       "description": "Run open product betterment (no fixed objective): quality matrix, scout, all high-EV B, oracle verify; idle at empty high-EV frontier.",
       "path": "skills/run-open-product-betterment/SKILL.md",
-      "packageDigest": "sha256:d8f06bfceba15a982a1736a72ff54b3b9decb068fe043020dbd8186af2b6a1f5"
+      "packageDigest": "sha256:7c00e84ac1d8b40bf65a3db90adc73a1c5748d1546455a1bcab4b1b6e5af59ba"
     },
     {
       "name": "run-product-feedback-loop",
