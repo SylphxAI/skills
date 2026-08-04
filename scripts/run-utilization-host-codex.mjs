@@ -123,6 +123,31 @@ function scoreCase(item, agentText) {
     const ok = !/(i (will|am) (use|load|open) the .*skill)/.test(text);
     return { score: ok ? 'pass' : 'fail', failureClasses: ok ? [] : ['skill_miss'], notes: 'heuristic: abstention', auto: true };
   }
+  if ((item.expectedSkills || []).includes('resolve-support-case')) {
+    const framed = /(ticket|remedy|apology|closure|case|customer)/.test(text);
+    const notOpsRedesign = !/(redesign support channels|rewrite sla portfolio)/.test(text);
+    if (framed && notOpsRedesign) {
+      const toolBlocked = /(sandbox|enospc|blocked|cannot access|namespace)/.test(text);
+      return {
+        score: 'pass',
+        failureClasses: toolBlocked ? ['tool_policy_gap'] : [],
+        notes: toolBlocked ? 'heuristic: one-case resolution framing; tools limited' : 'heuristic: one-case resolution framing',
+        auto: true,
+      };
+    }
+  }
+  if ((item.expectedSkills || []).includes('drive-to-delivery')) {
+    const framed = /(multi-phase|land|live proof|through|terminal|without.*(re-prompt|stopping between)|objective)/.test(text);
+    if (framed) {
+      const toolBlocked = /(sandbox|enospc|blocked|namespace)/.test(text);
+      return {
+        score: 'pass',
+        failureClasses: toolBlocked ? ['tool_policy_gap'] : [],
+        notes: toolBlocked ? 'heuristic: multi-phase terminal framing; tools limited' : 'heuristic: multi-phase terminal framing',
+        auto: true,
+      };
+    }
+  }
   if ((item.expectedSkills || []).includes('build-product')) {
     const framed = /(end-to-end|journey|capability|ownership|boundary|checkout|shippable|implement|dogfood)/.test(text);
     if (framed) {

@@ -133,3 +133,13 @@ Pack generator: `node scripts/prepare-utilization-host-run.mjs` (printable minim
 - Critical product + abstention slice: **14/14 pass** after framing rescoring (`codex-critical-product-a18984c`); combined sheet `codex-combined-a18984c`.
 - **Not closed:** Claude Code and Grok host classes unmeasured; scores are automatic heuristics, not human-promoted utilization proof.
 
+## Host capability residual (Claude / Grok) @ 1d76fa6
+
+Evidence sheet: `tests/fixtures/skill-utilization-host-results/host-capability-residual-1d76fa6.md`.
+
+- **Claude:** CLI present; not logged in → cannot run reliable eval here.
+- **Grok:** CLI symlink dangling (binary missing) → cannot run reliable eval here.
+- **Codex:** floor 4/4; critical product+abstention 14/14; near-neighbour 9/9 (after framing rescoring under tool limits); auto-heuristic only.
+
+Utilization residual remains open for **promotable multi-host proof**; Codex measured progress does not close it alone.
+

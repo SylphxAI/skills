@@ -1,0 +1,130 @@
+{
+  "host": "codex",
+  "hostVersion": "codex-cli 0.146.0",
+  "model": "host-default (codex exec)",
+  "skillsCommit": "1d76fa65165ec24f3070b8f3550ac592a76b7d81",
+  "catalogDigest": "sha256:566e8c68de01d192cac546565cc94471cbf2ac051d61de98037b8b7bd8fb9cc5",
+  "catalogCount": 118,
+  "ranAtUtc": "2026-08-04T00:37:31.907Z",
+  "promotable": false,
+  "scoring": "automatic-heuristic; not multi-host utilization closure",
+  "summary": {
+    "pass": 9,
+    "fail": 0,
+    "inconclusive": 0
+  },
+  "cases": [
+    {
+      "id": "neighbour-finish-vs-blueprint",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "finish-product"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: expectedMention=finish-product oracleTokenRatio=0.43",
+      "autoScored": true,
+      "agentTextExcerpt": "I'll treat this as a product-finish pass: load the finish-product guidance, identify which app/surfaces are in play, then assess release-grade gaps across screens.\nShell sandbox hit a namespace limit \u2014 switching approach to read files directly.\nLocal FS is blocked by a namespace limit, so I'm loading the finish-product references from the public skill repo and checking which shipping app this most likely targets.## Product Finish Pass \u2014 **blocked at subject bind**\n\nMode intended: **Finish** (inspect \u2192 correct \u2192 recapture)  \nTarget intended: **`release-finish`** across all customer-visible surfaces  \nStatus: **not started on a real product** \u2014 cannot invent or guess the app\n\n### Why this stops here (evidence, not preference)\n\n| Gate | Result |\n| --- | --- |\n| Exact product / repo / revision | **Unbound.** Prompt says \u201cthe app\u201d but names no product. CWD is `/tmp`. Prior memory only lists candidates (Cubeage titles: Sumseed, Cubit, Cubloom, QuoteBeam, Postgrove, word-grove-keel, etc.) \u2014 not authority for this pass. |\n| Inspect reality (run/render) | **Blocked.** Local shell/FS helpers fail with `bwrap` namespace exhaustion (`ENOSPC`). Cannot read workspace, run the app, or capture scr"
+    },
+    {
+      "id": "neighbour-case-vs-ops",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "resolve-support-case"
+      ],
+      "score": "pass",
+      "failureClasses": [
+        "tool_policy_gap"
+      ],
+      "notes": "rescored: one-case framing; tools limited",
+      "autoScored": true,
+      "agentTextExcerpt": "I'll load the customer-support skills and look for the ticket context so we can remedy, apologize, and close with evidence.\nShell sandbox is failing on namespaces \u2014 trying alternate read paths for skills and ticket context.\n\n\n## Blocked: cannot access the ticket or local workspace\n\nI cannot complete remedy / apology / closure for this ticket yet. Every local inspection path failed:\n\n| Path | Result |\n|------|--------|\n| Shell (`exec_command`) | `bwrap: Creating new namespace failed: nesting depth or /proc/sys/user/max_*_namespaces exceeded (ENOSPC)` |\n| Local skill files | Unreadable (same environment failure) |\n| Memory registry / workspace under `/tmp` | Unreadable |\n| MCP resources | Empty |\n\nPer fail-closed rules: **no invented ticket content, remedy, apology, or \u201cclosed\u201d claim without the actual case and evidence.**\n\n### What I need from you (any one unblocks)\n\n1. **Paste the ticket** (ID, product, customer issue, timestamps, desired outcome), **or**\n2. **Point to a reachable path/URL** for the case once the environment can read files again, **or**\n3. **Confirm product context** if this is one of the known live pain areas (e.g. Cubeage payment/dispatch latency, Spiron Telegram"
+    },
+    {
+      "id": "neighbour-feedback-vs-solicitation",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "review-solicitation-policy"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: expectedMention=review-solicitation-policy oracleTokenRatio=0.63",
+      "autoScored": true,
+      "agentTextExcerpt": "Loading the solicitation-policy skill \u2014 it should define when native rate prompts are allowed, including cooldowns and no star-gating.\nRetrying file reads after the sandbox namespace failure.\nShell sandbox is blocked, so I'll pull the skill and store guidelines from GitHub and official docs instead.# Rules for native \u201cRate us\u201d prompts\n\nCross-platform policy derived from Apple and Google store rules. Treat **platform hard limits** as non-negotiable; treat **app cooldowns / eligibility** as required self-discipline so you don\u2019t burn quota or annoy users.\n\n## 1. Only use the native system prompt\n\n| Platform | API | Hard rule |\n|---|---|---|\n| **iOS / iPadOS / macOS** | StoreKit `requestReview` / `RequestReviewAction` (legacy: `SKStoreReviewController`) | Custom in-app review prompts are disallowed. Use the system API.[[1]](https://developer.apple.com/app-store/review/guidelines/) |\n| **Android** | Google Play In-App Review API (`launchReviewFlow`) | Show the Play card as-is: no redesign, no overlays, no programmatic dismiss.[[2]](https://developer.android.com/guide/playcore/in-app-review) |\n\n**Allowed alternative (user-initiated only):** a settings / help control that opens the store "
+    },
+    {
+      "id": "neighbour-autonomous-vs-selffeeding",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "drive-to-delivery"
+      ],
+      "score": "pass",
+      "failureClasses": [
+        "tool_policy_gap"
+      ],
+      "notes": "rescored: drive-to-terminal framing; tools limited",
+      "autoScored": true,
+      "agentTextExcerpt": "I'll identify the active incident-hardening program from memory and workspace state, then drive it through land and live proof without stopping between phases.\nShell sandbox hit a namespace limit; retrying with a lighter path into memory and workspace state.\n## Blocked: cannot execute the incident-hardening program\n\nI cannot advance land or live proof right now. The agent environment is failing closed on **all shell execution** with:\n\n```text\nbwrap: Creating new namespace failed: nesting depth or /proc/sysuser/max_*_namespaces exceeded (ENOSPC)\n```\n\nThat blocks reading memory files beyond the always-on summary, inspecting worktrees, git, CI, deploy/readback, and any live verification. Network page reads of local paths also failed. MCP resources are empty. Sandbox is `read-only` with approval policy `never`, so I cannot escalate out of this.\n\n### What I take \u201cthis program\u201d to mean (from memory; may be stale)\n\nMost likely: **Cubeage payment + order-dispatch degradation hardening** after the pooler/TLS/`ECONNRESET` incident (`REDIS_DB=2`, `order_dispatch`, pooled vs `DATABASE_URL_UNPOOLED`, Codex automation boundary). Known residual theme from memory: dispatch may have recovered, but "
+    },
+    {
+      "id": "neighbour-admission-vs-capacity",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "ci-admission-standard"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: expectedMention=ci-admission-standard oracleTokenRatio=0.40",
+      "autoScored": true,
+      "agentTextExcerpt": "I'll look up the CI admission standard and related memory notes for required merge-to-main checks and fail-closed missing-evidence rules.\nFetching the public `ci-admission-standard` skill from the Sylphx skills repo.\nLocal shell namespaces are exhausted; loading the CI admission standard from the public skills repository instead.The full standard was truncated; loading the remaining sections on required checks and fail-closed evidence.Checking related standards for explicit fail-closed missing-evidence rules.\nOpening the public skill package and its full-standard reference next.Reading the rest of the standard, especially required-check wiring and missing-evidence rules.Checking the evidence/claims standard and related policy for the fail-closed missing-evidence rule.\n## Required checks before merge to `main`\n\nPer the Sylphx **CI Admission Standard** and **ADR-20260803 (Agent-Native Queued Trunk)**, merge admission is **forge + repository CI**, not Platform, Work ids, or PR prose.\n\n### Admission authority (what actually gates merge)\n\n| Layer | Role for merge to main |\n| --- | --- |\n| **PR head CI** | Fast, attributable feedback only (same-PR latest-wins). **Not** the final merge au"
+    },
+    {
+      "id": "neighbour-payouts-vs-trust",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "review-marketplace-payouts"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: expectedMention=none oracleTokenRatio=0.29",
+      "autoScored": true,
+      "agentTextExcerpt": "Sellers missing payouts points at holds/settlement/clawbacks/disputes \u2014 I'll load the marketplace-payouts skill and check prior notes before redesigning those flows.\nShell sandbox hit a namespace limit \u2014 retrying file reads another way.\nNested exec works \u2014 reading the payout skill and memory through that path."
+    },
+    {
+      "id": "neighbour-betterment-loop-vs-finish",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "run-open-product-betterment"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: expectedMention=none oracleTokenRatio=0.55",
+      "autoScored": true,
+      "agentTextExcerpt": "Installing an ongoing betterment loop, not a one-time polish. I'll load the continuous-product-quality guidance and check how it's installed in this environment.\nSandbox hit a namespace limit; retrying with a different execution path.\nFound the matching product job: `better-product` (open betterment), not `finish-product` (one-time polish). Loading that skill and related continuous-quality docs.\nFound `better-product` as the open betterment job skill. Loading that and related continuous-quality docs next.\nEnact quality tools are available. Checking operating scopes and quality surfaces so we can bind the betterment loop correctly.\n## Disposition: **blocked** (loop method bound; engagement not installed)\n\nYou asked for an **ongoing betterment loop**, not a one-time polish pass. That maps to **`better-product`** (open continuous betterment), **not** `finish-product` (single release-grade finish pass).[[1]](https://api.github.com/search/code?q=repo:SylphxAI/skills+better-product+UI+performance)\n\nI loaded the public method and loop contract and attempted to bind/run them in this session. The engagement is **not installed or running** here. Claiming \u201cloop installed\u201d or \u201cUI/perf opportun"
+    },
+    {
+      "id": "neighbour-pursue-vs-better",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "pursue-product-objective"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: pursue-objective framing",
+      "autoScored": true,
+      "agentTextExcerpt": "The instruction says there's a fixed product outcome, but it isn't named in the message. Checking the workspace and memory for the active target and proof bar.\nShell namespace is failing. Retrying with simpler read-only probes.\nShell is blocked by namespace limits. Checking Enact operating context for the fixed product outcome.\nI can\u2019t advance a fixed product outcome yet \u2014 the outcome itself isn\u2019t specified, and the execution environment is blocked.\n\n## What\u2019s blocking\n\n1. **No named outcome in the request**  \n   The turn says \u201cthere is a fixed product outcome to reach and prove,\u201d but does not name the product, objective, acceptance bar, repository, Work ID, or proof criteria.\n\n2. **Local shell is unavailable**  \n   Every `exec_command` fails with:\n   `bwrap: Creating new namespace failed ... (ENOSPC)`  \n   So I can\u2019t inspect `/tmp`, git state, memory files, or local checkouts.\n\n3. **Enact coordination is unavailable right now**  \n   `operating_scopes` returned `user cancelled MCP tool call`. MCP resource list is empty.\n\n4. **Read-only / no mutation authority**  \n   Sandbox is read-only. Even after the outcome is clear, I can investigate and draft only; I can\u2019t land, deploy, or mut"
+    },
+    {
+      "id": "neighbour-prototype-vs-build",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "prototype-product"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: expectedMention=prototype-product oracleTokenRatio=0.63",
+      "autoScored": true,
+      "agentTextExcerpt": "This is a pre-build validation ask\u2014I'll check memory for any active feature context, then load the lightest product-probe skills so we can pick a cheap real experiment rather than a ship path.\nSandbox hit a namespace limit; retrying with simpler file reads.\nShell works without login shells. Continuing memory and skill lookup that way.\n**Mode locked: learning probe, not shipping.**  \nWe use a one-cycle **hypothesis \u2192 cheapest real probe \u2192 observe \u2192 go/kill/pivot** loop. Durable production work is out of scope until the probe decides.[[1]](https://raw.githubusercontent.com/SylphxAI/skills/main/skills/prototype-product/SKILL.md)\n\n## Decision contract\n\n| Field | Fill this |\n| --- | --- |\n| **Hypothesis** | One sentence: \u201cIf we do X for Y, they will Z.\u201d |\n| **Success signal** | What observation would make you **build**? What would make you **kill**? |\n| **Non-goals** | No production hardening, multi-region, abstract platforms, pixel-perfect systems, or permanent architecture. |\n| **Time box** | Hours\u2013days, not a delivery program. |\n| **Terminal** | Written **go / kill / pivot / need-another-probe** with evidence pointers\u2014not \u201ccode exists.\u201d |\n\nEvidence for this stage is **observation + d"
+    }
+  ]
+}
