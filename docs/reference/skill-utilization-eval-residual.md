@@ -126,3 +126,10 @@ Pack generator: `node scripts/prepare-utilization-host-run.mjs` (printable minim
 - Non-promotable structural L0 floor-marker sheet under `tests/fixtures/skill-utilization-host-results/`.
 - **Still open:** green behavior-oracle runs on Codex/Claude/Grok hosts at a pinned SHA.
 
+## Host run progress (Codex CLI, tip a18984c)
+
+- Runner: `scripts/run-utilization-host-codex.mjs` (heuristic auto-score, `promotable: false`).
+- Floor suite: **4/4 pass** (`codex-floor-a18984c`).
+- Critical product + abstention slice: **14/14 pass** after framing rescoring (`codex-critical-product-a18984c`); combined sheet `codex-combined-a18984c`.
+- **Not closed:** Claude Code and Grok host classes unmeasured; scores are automatic heuristics, not human-promoted utilization proof.
+

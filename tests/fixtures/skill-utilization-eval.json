@@ -4,10 +4,10 @@
   "status": "design-contract-and-oracle-fixtures",
   "residualRef": "docs/reference/skill-utilization-eval-residual.md",
   "pinnedAtAuthoring": {
-    "skillsCommit": "pending",
-    "catalogCount": 117,
-    "catalogDigestSha256OfCatalogJson": "sha256:9fa43ef331b9758791f585c97dc8e38ade79c731b8e71af3a5f67103e9b3cdea",
-    "note": "Post Enact/MCP retirement; 117 skills; not multi-host utilization proof."
+    "skillsCommit": "a18984c5f55188abefb6f5741876d4136bb933a0",
+    "catalogCount": 118,
+    "catalogDigestSha256OfCatalogJson": "sha256:566e8c68de01d192cac546565cc94471cbf2ac051d61de98037b8b7bd8fb9cc5",
+    "note": "Authoring pin at current tip before host behavior run; auto host scores not residual closure."
   },
   "metricHierarchy": [
     "behaviorOracle",

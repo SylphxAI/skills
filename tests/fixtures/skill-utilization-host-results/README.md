@@ -39,3 +39,12 @@ node scripts/prepare-utilization-host-run.mjs
 Writes `host-run-pack-<commit12>.json` and `.md` under this directory for a
 runbook minimum slice. Generated packs are inputs for host scoring, not results.
 
+## Codex CLI runner
+
+```bash
+node scripts/run-utilization-host-codex.mjs --suite=floor --out-stem=codex-floor
+node scripts/run-utilization-host-codex.mjs --out-stem=codex-critical --ids=...
+```
+
+Sheets are auto-heuristic and `promotable: false` by default.
+
