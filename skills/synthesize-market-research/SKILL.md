@@ -44,18 +44,6 @@ unsupported market opinions.
 - If source access is unavailable, return a research plan and mark market claims
   unverified rather than filling gaps from memory.
 
-## When not to use
-
-- Use `synthesize-evidence-brief` for a reproducible cross-domain systematic, rapid,
-  scoping, or structured evidence review whose artifact is not a market
-  recommendation.
-- Use distill-source-to-skill when one bounded document or corpus must become
-  a reusable procedure.
-- Use price-saas-subscription when current market evidence already exists and
-  the primary artifact is the actual package and price decision.
-- Do not use for a routine implementation plan or a repository of raw research
-  notes with no current decision.
-
 ## Guardrails
 
 - Do not copy competitor wording, screenshots, proprietary workflows, or other

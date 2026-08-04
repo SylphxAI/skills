@@ -64,17 +64,6 @@ capability, or adoption/outcome telemetry.
    to chase green—and rerun from a newly frozen candidate. Any relevant byte
    change invalidates the matching proof.
 
-## When not to use
-
-- Use `distill-source-to-skill` to author or repair the procedure from source
-  material before evaluation.
-- Use `curate-skill-repository` to audit portfolio value, content quality,
-  collisions, consolidation, and retirement across a repository.
-- Use deterministic unit/contract/property/model tests directly when no model
-  behavior or routing judgment is involved.
-- Do not use authored evals, self-installs, catalog presence, or historical
-  scores as adoption or current behavior proof.
-
 ## Guardrails
 
 - Do not leak the intended answer, suspected bug, fix, or expected verdict into

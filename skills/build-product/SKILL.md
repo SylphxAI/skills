@@ -12,15 +12,6 @@ When you need a **real capability** on a dogfood or market path, run **one** bui
 - Direction is decided; a journey or capability is still missing
 - Engine or product gaps block a customer path
 
-## When not to use
-
-- Mixed open betterment with no fixed objective → `run-open-product-betterment`
-- Durable declared outcome to drive to completion → `pursue-product-objective`
-- Still validating the idea → `prototype-product`
-- Live reliability harm only → `maintain-product`
-- Scale ×N only → `expand-product`
-- Polish of an already integrated surface → `finish-product`
-
 ## Method
 
 **Journey gap → correct ownership boundary → implement → original-oracle verify.**  

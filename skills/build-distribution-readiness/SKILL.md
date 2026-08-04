@@ -90,20 +90,6 @@ law, safety, and physical hardware remain authority gates. Prepare and verify
 what the selected release requires; never fabricate approval or require
 adapters for channels outside the declared audience.
 
-## When not to use
-
-- Use `compose-product-program` when the primary artifact is a cross-domain
-  product-program graph spanning at least three lifecycle domains.
-- Use `delivery-standard` for one language library's ordinary registry publish
-  when no channel portfolio, installer, executable lifecycle, submission, or
-  certification decision exists.
-- Use `review-developer-product-experience` when the independent artifact is
-  the full discovery-to-production developer journey.
-- Use `optimize-store-listing` for listing positioning, metadata, creative
-  order, keywords/tags, asset requirements, and conversion experiments.
-- Use app/game design for product semantics and `review-launch-readiness` for an
-  independent whole-launch verdict.
-
 ## Guardrails
 
 - Do not claim a channel ready without current authority, exact artifact,

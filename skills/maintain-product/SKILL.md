@@ -12,15 +12,6 @@ When users or operators are **hurt** by failures or regressions, run **one** mai
 - Live/prod/dogfood breakage, flaky paths, security/privacy incidents
 - Regressions, noisy errors, undiagnosable failure modes
 
-## When not to use
-
-- Mixed open betterment with no fixed objective → `run-open-product-betterment`
-- Durable declared outcome to drive to completion → `pursue-product-objective`
-- Idea still unproven → `prototype-product`
-- Missing capability to ship → `build-product`
-- Pure growth ×N without harm → `expand-product`
-- Cosmetic deburr without reliability impact → `finish-product`
-
 ## Method
 
 **Symptom → blast radius → fix cause on owning layer → prove harm↓.**  

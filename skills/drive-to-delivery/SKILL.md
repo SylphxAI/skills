@@ -16,13 +16,6 @@ honestly blocked.
 - Need research → execute → verify → repair/replan until terminal evidence
 - Host continuity/objective surfaces may re-inject; do not stop after one phase
 
-## When not to use
-
-- Short Q&A or one local edit with no multi-phase terminal
-- Continuous next-Work discovery without a single accepted objective → `select-next-work`
-- Mixed open product betterment → `run-open-product-betterment`
-- Declared **product** outcome betterment framing → `pursue-product-objective`
-
 ## Method
 
 1. **Startup:** objective, acceptance map, workspace ownership, non-interference with foreign changes. Bind host continuity if present (prefer uncapped long work unless user set a budget). No hard-coded host tool ids.

@@ -33,18 +33,6 @@ and proposed normalization visibly separate.
 9. Produce the provenance ledger, token graph, component contracts, exception
    register, confidence gaps, representative-flow validation, and migration map.
 
-## When not to use
-
-- For a new product or greenfield redesign, use `craft-product-interface` and treat any
-  existing-system extraction as an input, not the final design direction.
-- For a one-flow usability or visual critique, use `craft-product-interface`.
-- For implementation from an already authoritative system, hand off the exact
-  component contract and acceptance states to the implementation owner.
-- Do not extract a clone from an unrelated third-party product. Use external
-  products for high-level comparative research, not source copying.
-- Do not claim Figma, code, screenshots, or production are universally
-  canonical; record conflicts and the authority chosen for this extraction.
-
 ## Guardrails
 
 - Never invent missing values or states and report them as extracted.

@@ -19,7 +19,6 @@ method and predicates.
 4. When a required check claims to detect a failure class, apply
    [control-effectiveness verification](../engineering-standard/references/control-effectiveness.md).
 
-
 ## Composition and output
 
 Apply this standard as constraints on the artifact requested by the user or
@@ -36,8 +35,3 @@ standard.
 - Does not grant deploy or credential capabilities.
 - Does not replace product-local ADRs where those own decisions.
 
-## When not to use
-
-- Product-specific live coordination operations → the matching adapter Skill
-  and that product's current API or tool schema.
-- Unrelated commercial packaging alone → commercial-decision-standard when in scope.

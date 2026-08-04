@@ -406,20 +406,6 @@ high-return, in-boundary improvement is cheap to deliver now. Completion is the
 point where the requested outcome and selected positive-net improvements are
 verified, not the point where imagination runs out.
 
-## When not to use
-
-- Do not use this skill to waive a correctness, security, legal, credential,
-  destructive-action, or public-contract floor already present in the task.
-- Do not use it as a substitute for domain engineering, incident response, or
-  delivery procedures; use it alongside them to keep their application bounded.
-- Do not label necessary root-cause work as over-engineering merely because the
-  direct fix is difficult.
-
-Read
-[references/right-sized-agent-engineering.md](references/right-sized-agent-engineering.md)
-only when evolving this method, auditing an external simplicity or workflow
-method, or evaluating claims about code, token, or process reduction.
-
 ## Output
 
 Return a compact closure note:

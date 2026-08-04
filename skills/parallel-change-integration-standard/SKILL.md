@@ -19,7 +19,6 @@ method and predicates.
 4. Read [CRDT convergence](../engineering-standard/references/crdt-convergence.md) when
    concurrent shared state requires algebraic merge rather than CAS selection.
 
-
 ## Composition and output
 
 Apply this standard as constraints on the artifact requested by the user or
@@ -36,8 +35,3 @@ standard.
 - Does not grant deploy or credential capabilities.
 - Does not replace product-local ADRs where those own decisions.
 
-## When not to use
-
-- Product-specific live coordination operations → the matching adapter Skill
-  and that product's current API or tool schema.
-- Unrelated commercial packaging alone → commercial-decision-standard when in scope.

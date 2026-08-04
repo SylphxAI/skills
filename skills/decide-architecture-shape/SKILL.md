@@ -77,17 +77,6 @@ on narrative status or stale proof.
   when an applicable state, process, cell, control/data-plane, deployment,
   trust, event/telemetry, or extension boundary remains implicit or violated.
 
-## When not to use
-
-- Cut over systems—not choose architecture shape → `execute-hard-cutover`
-
-- Map options without choosing—not decide the architecture shape → `design-space-exploration`
-
-- Use a data-migration runbook for customer records, CSV/schema mapping, backfills, or data reconciliation between systems.
-- Use a feature-rollout plan when the job is only staged exposure of one already-implemented feature.
-- Use a normal implementation plan for a small single-boundary task that does not need parallel source/target implementations or a capability ledger.
-- Do not use this skill to justify a rewrite when deletion, a local refactor, or retaining the current runtime is the stronger option.
-
 ## Guardrails
 
 - Do not maintain multiple implementations as competing steady-state truth.

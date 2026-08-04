@@ -11,14 +11,6 @@ Produce one **Product Abuse Control Contract** that makes abusive value extracti
 
 Own the product-wide abuse model, protected resources, actor/action graph, loss and user-harm model, signals, decision tiers, friction/control ladder, enforcement/recovery, appeals, false-positive controls, adversarial evaluation, operating economics, and learning loop. Consume identity, payment, refund, support, marketplace, developer quota, privacy, security, and incident artifacts from their owners; do not duplicate them.
 
-## When not to use
-
-- Use `review-account-recovery`, `review-marketplace-trust-operations`, or `build-payment-readiness` when the primary artifact is rightful access recovery, marketplace participant enforcement, or payment/ledger correctness.
-- Use the developer quota/credit specialist, `risk-matched-verification-standard`,
-  `run-incident-response`, or the owning security boundary under
-  `engineering-standard` when the primary artifact is developer resource
-  policy, AI red-team evaluation, DDoS/security engineering, or incident response.
-
 ## Resource routing
 
 - Read `references/abuse-model-and-control-ladder.md` for every task.

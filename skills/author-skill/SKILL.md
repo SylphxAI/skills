@@ -15,13 +15,9 @@ tool manual.
 - New reusable agent method (workflow / review / policy / adapter)
 - Rewrite an existing Skill for clarity, boundaries, or portability
 - User asks to “make a skill for …”
+- One-off work with no reuse stays outside Skills (just do the task)
+- Universal floors stay in `runtime/constitution.md` / host always-on, not a fat Skill
 
-## When not to use
-
-- One-off task with no reuse → just do the task
-- Universal miss-class-A floors → `runtime/constitution.md` / host always-on, not a fat Skill
-- Repo-local commands and stack pins → product `AGENTS.md` / project docs
-- Designing multi-agent staffing → host/runtime, not Skill text
 
 ## Authoring principles (non-negotiable)
 
@@ -55,6 +51,11 @@ tool manual.
    `execute-hard-cutover`). Ban 1-token workflow ids. Policy packs use `Policy:`
    descriptions and `*-standard` / `*-policy` / `*-profile` ids—not job-verb masks
    on pure constraints.
+11. **Positive writing only.** Write what this Skill *does* and when to use it.
+   **Do not** add `## When not to use` lists, “not X → `other-skill`” bullets, or
+   neighbour-id negation dumps. Those inject foreign keywords into the body and
+   **worsen** retrieval (“此地無銀”). Discriminate with a sharp **name**, short
+   **description**, and precise **When to use** / method scope—not by naming rivals.
 
 Read for class/composition detail:
 [skill-package-classes-and-composition.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/skill-package-classes-and-composition.md)
@@ -82,8 +83,7 @@ skills/<skill-id>/
 
 - One sentence: **When you need to …, do …**
 - Primary artifact / outcome of one run
-- In scope / out of scope
-- Neighbour Skills (when not to use → point at ids)
+- In scope / out of scope (positive: what this job owns)
 
 If you cannot name a single job, split or refuse a mega-Skill.
 
@@ -98,9 +98,11 @@ If you cannot name a single job, split or refuse a mega-Skill.
 
 Description template (one or two short sentences, agent-facing):
 
-> <verb job / Policy: / Review:> <discriminating substance>. [Prefer neighbour-id when … only if needed.]
+> <verb job / Policy: / Review:> <discriminating substance for *this* job only.>
 
-No textbook restatement of the title. Include only trigger terms that change retrieval; exclude host-private API names. Prefer shorter text under catalog listing pressure.
+No textbook restatement of the title. Include only positive trigger terms for this
+job; exclude host-private API names and foreign skill ids. Prefer shorter text
+under catalog listing pressure.
 
 ### 3. Draft `SKILL.md` body
 
@@ -112,7 +114,6 @@ Recommended skeleton for **workflow**:
 When you need to …, run one … cycle.   # or pursue until terminal
 
 ## When to use
-## When not to use
 ## Method
 ### 1. Frame
 ### 2. Research   # stop rule / VoI
@@ -145,9 +146,9 @@ interface:
 
 ### 5. Wire discovery (minimal)
 
-- Neighbour Skills’ **When not to use** / related lines if boundaries shifted
 - Optional one line in a relevant ADR/reference if portfolio-level
 - Do **not** invent a meta-router Skill
+- Do **not** edit neighbour Skills just to add “when not → this id” keyword lists
 
 ### 6. Validate and land
 
@@ -160,11 +161,12 @@ interface:
 ### 7. Smoke the trigger
 
 - Would an agent with only **name+description** load this for the right ask?
-- Would it load for the wrong ask? Tighten description / when-not.
+- Would it load for the wrong ask? Tighten **name** and **description** (positive), not a when-not list.
 - Open body: can it execute without re-reading the whole catalog?
 
 ## Anti-patterns
 
+- `## When not to use` sections or “not X → `other-skill`” neighbour dumps (keyword pollution)
 - Role nouns as package ids (`product-prototyper`) when a verb job fits
 - Forever compatibility dual packages or undated shims “for safety”
 - Two packages for one intent
@@ -179,7 +181,7 @@ interface:
 
 - Path to new/updated package
 - Class + one-line job
-- Neighbours touched
+- Scope / positive discrimination notes (no when-not lists)
 - Test/catalog result
 
 ## Portfolio routing (product jobs)

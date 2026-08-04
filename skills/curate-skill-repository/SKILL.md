@@ -62,15 +62,6 @@ a folder, topic, governance mechanism, or generated catalog row.
 - Run scripts/check_skill_folder.py only for a quick folder/frontmatter check;
   it is not behavior, demand, or quality proof.
 
-## When not to use
-
-- Use distill-source-to-skill when one bounded source needs to become one
-  skill package.
-- Use design-skill-evals when the primary artifact is a falsifiable routing or
-  behavior evaluation for an existing skill.
-- Use a runtime/plugin architecture when the product executes tools, APIs,
-  credentials, billing, or permissioned actions; a skill is procedural content.
-
 ## Guardrails
 
 - Do not optimize for skill count, folder symmetry, line count, or topic coverage.

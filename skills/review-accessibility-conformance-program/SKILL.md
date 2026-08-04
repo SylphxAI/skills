@@ -28,17 +28,6 @@ turning a scanner result into a conformance claim.
 8. Produce the conformance program, claim ledger, issue portfolio, release
    decision, exception register, and evidence-refresh cadence.
 
-## When not to use
-
-- For a component or flow design critique, use the relevant interface or
-  accessibility implementation workflow; do not create a company-wide program.
-- For source-code remediation, hand off verified findings and acceptance tests
-  to the owning implementation agent.
-- For legal applicability or contractual interpretation, identify the question
-  and evidence gap, then defer the conclusion to authorized counsel.
-- For generic test planning with no accessibility claim or governance decision,
-  use the product's QA process.
-
 ## Source verification
 
 - Resolve the exact product version, standard or platform requirement, version,

@@ -9,7 +9,6 @@ Policy/profile pin—not a product job cycle. Apply as stack constraints on matc
 Apply when implementing or reviewing stack choices for a matching repository.
 Agents do not “run a cycle” of this package; they apply its constraints while doing another job.
 
-
 **Requirement:** apply this profile when its selector matches the repository.
 
 Read the normative [machine profile](references/profile.json) and the
@@ -78,17 +77,6 @@ read the engineering standard's
   every local domain event, or substitute for ordering/idempotency/replay.
 - Do not import OpenTelemetry SDK types into domain policy or expose protected
   telemetry through an unintended public/customer response.
-
-## When not to use
-
-- A language-internal implementation detail that does not change component
-  role, owned effects, profile selection, or completion semantics → use the
-  engineering standard.
-- Live work claims, repository head state, deployment revisions, production
-  defects, or organization-wide adoption status → query the live work system; this static profile
-  does not own live state.
-- A repository-specific exception or public contract change → author the
-  owning decision and typed exception; do not rewrite this profile locally.
 
 ## Output format
 

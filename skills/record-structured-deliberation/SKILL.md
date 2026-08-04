@@ -10,12 +10,6 @@ the remaining choice legible. Read
 [references/deliberation-methods.md](references/deliberation-methods.md) before
 choosing a protocol.
 
-## When not to use
-
-- Decision-process policy predicates alone → `decision-quality-standard`
-- Numeric optimization model → `optimize-decision-model`
-- Map design space without a deliberation record → `design-space-exploration`
-
 ## Method
 
 1. Define the question, decision owner, participants, material constraints,

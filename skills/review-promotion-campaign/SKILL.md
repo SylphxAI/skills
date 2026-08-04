@@ -102,17 +102,6 @@ exposure/spend are capped, stop signals are observable, and recovery has been
 tested. A small company’s ability to correct quickly lowers some recovery cost;
 it does not erase platform-account, legal, child-safety, privacy, or trust ruin.
 
-## When not to use
-
-- Use `design-marketing-automation` for the full organic/lifecycle/paid,
-  creative, attribution, spend, reputation, and shutdown operating system.
-- Use `review-referral-loop` for persistent inviter/invitee qualification,
-  attribution, pending grants, reversals, fraud, and support.
-- Use `optimize-store-listing` when the artifact is one channel's metadata,
-  screenshot/video/capsule sequence, proof, localization, and conversion test.
-- Use `review-daily-reward-and-streak` for a durable recurring return-loop state
-  machine, or `review-game-economy` for economy balance and inflation.
-
 ## Guardrails
 
 - No fake scarcity/countdown, hidden renewal/normal price, shame, blocked exit,

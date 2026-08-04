@@ -69,17 +69,6 @@ learning state, and the graph must remain acyclic.
    artifacts with stable handoff IDs; never use feedback or inferred sentiment
    to gate its public request policy.
 
-## When not to use
-
-- For generative interviews, observation, contextual inquiry, concept
-  evaluation, or usability discovery before or beyond recurring feedback
-  operations, use `research-user-needs`.
-- For public review request eligibility, prompt timing, native solicitation,
-  cooldown, or platform request policy, use `review-solicitation-policy`.
-- For end-to-end support, refund, incident, analytics implementation, listing
-  conversion, or store submission, route to the corresponding specialist and
-  keep this skill limited to evidence-preserving product learning.
-
 ## Boundaries
 
 - `review-social-media-operations` owns recurring official-account publishing, platform readback, listening, reply routing, crisis, impersonation, rights, recovery, and shutdown; this skill owns authorized feedback/review ingestion, public response evidence, product action, and close-loop.

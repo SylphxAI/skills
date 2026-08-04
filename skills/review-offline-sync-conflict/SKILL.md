@@ -68,19 +68,6 @@ backup, encryption/keychain, privacy/deletion, network, battery, and quota
 authority for the exact versions. Platform persistence is not guaranteed unless
 the current contract and measured eviction behavior prove it.
 
-## When not to use
-
-- Use `design-app` when offline/sync is one part of unresolved whole
-  workflows, information architecture, identity, collaboration, and UX.
-- Use a database/data-architecture procedure when the job is server storage,
-  schema design, replication, or backup without a client sync protocol.
-- Use `build-payment-readiness` for provider-authoritative purchases,
-  entitlement reconciliation, and finance ledgers; never merge them locally.
-- Use `review-product-analytics-instrumentation` for product behavior events and
-  decision metrics. Use `review-operational-observability` for sync health,
-  queue/retry traces, diagnostics, SLOs, and alerts. Neither telemetry class may
-  share the user-data sync authority.
-
 ## Guardrails
 
 - Never silently merge money, permissions, legal records, inventory, deletion,

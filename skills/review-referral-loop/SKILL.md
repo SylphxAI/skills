@@ -70,18 +70,6 @@ child/age, referral/affiliate, advertising/endorsement, payment/reward, tax,
 store, territory, and anti-spam authority. Unknown authority disables the
 affected channel or incentive; it does not justify covert collection.
 
-## When not to use
-
-- Use `design-marketing-automation` for the complete organic/lifecycle/paid,
-  creative, attribution, spend, reputation, and shutdown system.
-- Use `review-promotion-campaign` for one time-bounded referral push or offer
-  after the persistent referral contract already exists.
-- Use `design-app` or `design-game` when friendship,
-  co-op/guild, collaboration, identity, or sharing semantics are unresolved as
-  part of the whole product.
-- Use `review-marketplace-payouts` when affiliate/creator earnings, holds,
-  settlement, tax, and payout reconciliation are the primary artifact.
-
 ## Guardrails
 
 - No spam, forced contact upload, address-book dark patterns, preselected

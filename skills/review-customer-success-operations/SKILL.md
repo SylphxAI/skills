@@ -11,11 +11,6 @@ Produce one **Customer Success Operating Contract** that turns promised customer
 
 Own the recurring post-sale operating model: segmentation, desired outcomes, onboarding/adoption milestones, multi-dimensional health, trigger-to-playbook rules, education, business reviews, risk recovery, value proof, expansion readiness, and feedback to product. Do not own technical data migration, ticket operations, billing/contract truth, product analytics schemas, campaign automation, or pricing decisions.
 
-## When not to use
-
-- Use `review-customer-data-migration` or `operate-customer-support` when the primary artifact is a technical data cutover or the reactive support operating model.
-- Use `review-enterprise-contract-operations`, `review-product-analytics-instrumentation`, `design-marketing-automation`, or `price-saas-subscription` for contract mechanics, measurement implementation, campaigns, or pricing decisions.
-
 ## Resource routing
 
 - Read `references/outcomes-health-and-account-state.md` for every task.

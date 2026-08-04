@@ -12,15 +12,6 @@ When you need to **learn** whether something is worth building, run **one** prot
 - New idea, mechanic, IA, or demand is uncertain
 - You need go / kill / pivot evidence before investing in a durable build
 
-## When not to use
-
-- Mixed open betterment with no fixed objective → `run-open-product-betterment`
-- Durable declared outcome to drive to completion → `pursue-product-objective`
-- Capability is decided and must ship → `build-product`
-- Live harm / regressions dominate → `maintain-product`
-- Scaling a core that already works → `expand-product`
-- Integrated product needs deburring → `finish-product`
-
 ## Method
 
 Lean experiment: **hypothesis → cheapest probe → observe → decision**.  

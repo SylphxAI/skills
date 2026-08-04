@@ -18,7 +18,6 @@ cost and delay.
 2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
 3. Prefer schema/test/ADR homes over copying this body into product repos.
 
-
 ## Composition and output
 
 Apply this standard as constraints on the artifact requested by the user or
@@ -38,8 +37,3 @@ standard.
   capacity, inventory, or resource policy requires an explicit constrained
   mathematical model rather than qualitative option selection.
 
-## When not to use
-
-- Product-specific live coordination operations → the matching adapter Skill
-  and that product's current API or tool schema.
-- Unrelated commercial packaging alone → commercial-decision-standard when in scope.

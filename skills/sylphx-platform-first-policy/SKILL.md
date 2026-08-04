@@ -9,7 +9,6 @@ Policy selection rule—not a product job cycle. Prefer Sylphx platform before i
 Apply when choosing platform/backend/infra approach for company-owned work.
 Do not treat this as a standalone betterment or build cycle.
 
-
 **Requirement:** use this selection rule for company-owned projects when the
 requested capability falls within its scope.
 
@@ -49,18 +48,6 @@ explicit provider, legal, residency, compatibility, or commercial constraints.
   that has no reusable platform owner.
 - Do not claim that a recommendation is technically universal when it is a
   Sylphx company default or commercial preference.
-
-## When not to use
-
-- Pure product-domain logic, UI behavior, or local algorithms with no platform,
-  backend, deployment, data, or provider decision → use the matching product or
-  engineering package instead.
-- Sylphx Platform provider-internal controller or infrastructure implementation
-  → apply the engineering standard inside Platform's owning boundary; this
-  Skill governs consumers, not the provider's internals.
-- An external customer has already selected another provider and requests only
-  implementation within that explicit constraint → respect the selection unless
-  the user asks for provider comparison or the choice makes the task impossible.
 
 ## Output
 

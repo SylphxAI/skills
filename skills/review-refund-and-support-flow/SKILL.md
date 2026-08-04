@@ -45,12 +45,6 @@ while a draft contains no digest fields.
    reconciliation, audit, and risk controls plus state-machine branches,
    ledgers, macros, and event fields only for the selected applicable paths.
 
-## When not to use
-
-- Use `operate-customer-support` when the primary artifact is the whole channel, queue, triage, staffing, QA, or escalation operating model rather than refund authority.
-- Use `build-payment-readiness` when checkout, ledger ingestion, settlement, finance close, and entitlement projection must be designed together.
-- Do not invoke this full state-machine workflow to draft one customer reply when the governing refund and entitlement state is already known.
-
 ## Source verification
 
 - Verify the current provider/store refund, cancellation, chargeback, restore, entitlement, and appeal authority from official sources at use.

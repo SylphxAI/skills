@@ -11,11 +11,6 @@ Produce one **Account Recovery Protocol** that restores the rightful user while 
 
 Own entry, account-safe discovery, claimant/subject/tenant context, recovery eligibility, proportional proof, risk and cooling, channel orchestration, support or enterprise authority, session/credential containment, restoration, notifications, appeals, post-recovery hardening, audit, and operational evidence. Consume authentication/identity architecture, enterprise ownership, abuse controls, support operations, privacy rules, and incident response from their canonical owners.
 
-## When not to use
-
-- Use `review-product-abuse-risk` or `review-enterprise-access-governance` when the primary artifact is cross-product abuse control or enterprise tenant/admin authority rather than recovery of one account's access.
-- Use `operate-customer-support`, `review-data-rights-operations`, or the owning identity/security engineering procedure for support-organization design, a data-rights case, general authentication architecture, or incident implementation.
-
 ## Resource routing
 
 - Read `references/recovery-state-and-proof.md` for every task.

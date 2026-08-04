@@ -60,7 +60,6 @@ For a new or materially changed trust boundary, privileged action, data flow,
 integration, or deployment exposure, use `model-security-threats` to produce
 the security-design contract before or alongside implementation.
 
-
 ## Method
 
 1. Load this package for durable engineering work on product code.
@@ -86,13 +85,6 @@ the security-design contract before or alongside implementation.
 - Does not grant deploy or credential capabilities.
 - Does not replace product-local technical ADRs.
 - Does not auto-route as a procedure; it is binding policy text with separate conformance evidence.
-
-## When not to use
-
-- Commercial packaging alone → commercial-decision class packages.
-- Product-specific live coordination operations → the matching adapter Skill
-  and that product's current API or tool schema.
-- One-off scripts with no durable product surface and no shared contract impact.
 
 ## Composition and output
 

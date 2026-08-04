@@ -31,21 +31,6 @@ implements it.
 8. Produce the product contract, data-class matrix, restore state model,
    support boundary, telemetry contract, acceptance scenarios, and open risks.
 
-## When not to use
-
-- This skill owns product semantics and an independently acceptable recovery
-  artifact; it does not own storage topology, replication, backup jobs, cloud
-  configuration, deployment rollout, or incident operations.
-- For sync merge semantics without backup/restore, use
-  `review-offline-sync-conflict`.
-- For account authentication recovery, define only the dependency and hand off
-  identity proofing to `review-account-recovery`.
-- For onboarding, mapping, rehearsal, cutover, reconciliation, and acceptance of
-  data arriving from a different product, use `review-customer-data-migration`.
-- For engineering DR, provide the product RPO/RTO, data classes, invariants, and
-  acceptance tests, then defer implementation and operational proof to the
-  owning engineering project under the applicable binding Skills.
-
 ## Guardrails
 
 - Never call data recoverable until an exact restore path has produced retained

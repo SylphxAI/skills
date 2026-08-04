@@ -66,15 +66,6 @@ never create a cycle or merge their state machines.
    accepted, versioned artifacts with stable handoff IDs and explicit one-way
    evidence handoffs where a real dependency exists.
 
-## When not to use
-
-- For private feedback intake, review ingestion or response, evidence
-  clustering, product action, or customer close-loop state, use
-  `run-product-feedback-loop`.
-- For listing conversion, analytics implementation, support operations, or
-  store submission, use the corresponding specialist instead of expanding
-  public review solicitation into those jobs.
-
 ## Boundaries
 
 - Never ask whether the user likes the product before deciding whether to show

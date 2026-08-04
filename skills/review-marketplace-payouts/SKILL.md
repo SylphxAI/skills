@@ -21,11 +21,6 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 10. For incident states, attach owner, entry evidence, exit gate, provider/status-page signal, support message, and audit invariant; recovery learning must include provider SLA evidence, monitoring, post-incident control fixes, and future resilience work.
 11. For abuse holds, segment signals from conclusions: distinguish refund spikes, self-purchases, review manipulation, linked accounts, payout-threshold farming, legitimate launch winners, false positives, buyer-protection exposure, clawback/negative-balance paths, partial reserves, release criteria, appeal evidence, and reviewer QA.
 
-## When not to use
-
-- Use `build-payment-readiness` when the primary job is buyer checkout, payment ingestion, or product entitlement rather than seller earnings and payout.
-- Do not use for a content/listing dispute that does not change balances, holds, clawbacks, or payout authority.
-
 ## Source verification
 
 - Verify current provider, tax-authority, sanctions, country-eligibility, and reporting requirements from authoritative sources at use.

@@ -32,16 +32,6 @@ expansion, cost, and trust constraints.
 - An already-approved price increase needs a separate migration artifact for
   cohorts, notice, consent where required, grandfathering, retention, and rollback.
 
-## When not to use
-
-- Do not use when the primary artifact is billing, ledger, invoice, or
-  access/entitlement state after provider events.
-- Do not use for an already-decided price increase whose main job is cohort migration, consent, grandfathering, and retention response.
-- Do not use for broad competitor/demand research whose output is not yet a
-  price/package decision.
-- Do not use as accounting, tax, competition-law, or jurisdiction-specific
-  pricing advice.
-
 ## Source verification
 
 - Consume or research current competitor pricing, package boundaries, currencies,

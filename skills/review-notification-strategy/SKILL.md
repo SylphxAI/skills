@@ -44,17 +44,6 @@ Unknown/stale authority disables the affected send.
    callbacks, reconcile provider/internal state, and prove observed zero-send.
 10. Produce a notification taxonomy, lifecycle journey map, channel/frequency policy, suppression rules, consent/preference model, incident/readback plan, event schema, and trust metrics.
 
-## When not to use
-
-- Use `review-daily-reward-and-streak` when the primary artifact is the return
-  loop state machine; notifications are only its delivery intent.
-- Use `review-promotion-campaign` for one offer/event audience, economics,
-  fulfillment, and rollback system.
-- Use `design-marketing-automation` for the whole multi-channel acquisition,
-  lifecycle, creative, spend, attribution, and shutdown operating system.
-- Use `design-app` or `design-game` when notification
-  semantics depend on unresolved whole-product value and progression.
-
 ## Source verification
 
 Retrieve current push/browser/email/SMS/desktop platform, consent, marketing,

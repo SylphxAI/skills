@@ -14,12 +14,6 @@ naming the ticket, run **one tick** of this method.
 - Job is continuous selection + claim under WIP/backpressure
 - Not the same as open product betterment or one fixed product objective
 
-## When not to use
-
-- One bounded objective already accepted → `drive-to-delivery` (or product jobs / `pursue-product-objective`)
-- Multi-aspect product betterment matrix as the primary job → `run-open-product-betterment`
-- Portable ledger **design** without continuous selection → `work-coordination-standard`
-
 ## Method (one tick)
 
 1. Resolve org/project and live Work authority.

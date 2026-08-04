@@ -37,12 +37,6 @@ refund-authority, support, and finance handoffs without copying sibling facts.
 8. For finance close, name numeric tolerances, cadence, owner, source systems, exception queue, and close blocker for every money/tax/settlement/revenue check.
 9. Produce payment state model, ledger schema, event precedence rules, reconciliation plan, support tooling, blockers, observability dashboards, rollback controls, and launch checklist.
 
-## When not to use
-
-- Use `price-saas-subscription` when the primary decision is packaging, price, value metric, or commercial experimentation.
-- Use `review-marketplace-payouts` when the primary authority is seller/creator earnings, holds, reserves, and payout.
-- Use `review-refund-and-support-flow` for a refund/chargeback/restore support state machine that does not require redesigning the payment platform.
-
 ## Source verification
 
 - Verify current Apple, Google, wallet, processor, tax, invoice, settlement, and dispute requirements from official sources at use.

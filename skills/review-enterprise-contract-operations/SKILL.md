@@ -11,11 +11,6 @@ Produce one **Enterprise Contract Operations Contract** that converts executed c
 
 Own authoritative-source intake, document family/version/precedence, structured clause and obligation records, deviation/redline workflow, approval and signature authority, commitments, amendments, renewals/notice/termination, exceptions/expiry, operational handoffs, evidence, reconciliation, and customer-safe status. Do not interpret law, negotiate or sign without authority, set product pricing, operate billing/payment ledgers, or own customer-success and revenue pipeline systems.
 
-## When not to use
-
-- Use qualified legal authority when the primary job is interpretation, negotiation advice, approval, signature, or a jurisdiction-specific legal conclusion.
-- Use `review-revenue-operations`, `price-saas-subscription`, `build-payment-readiness`, or `review-customer-success-operations` for pipeline/forecast, price/package choice, payment/ledger operation, or recurring customer value.
-
 ## Resource routing
 
 - Read `references/contract-source-and-obligation-register.md` for every task.

@@ -80,21 +80,6 @@ subscription/ad disclosures, privacy/data-safety, age/content rating,
 compatibility, accessibility, localization, IP/rights, and regional rules.
 Unknown/stale channel authority blocks submission of that adapter.
 
-## When not to use
-
-- Use `build-distribution-readiness` for eligibility, signing, submission,
-  reviewer/certification, staged rollout, withdrawal, and live channel evidence.
-- Use `design-marketing-automation` for the whole SEO/creator/community/
-  lifecycle/paid creative portfolio, spend, attribution, and shutdown.
-- Use `produce-product-assets` to create deterministic captures, rendered
-  screenshots/art/video, localized/accessibility variants, and the exact media
-  pack requested by this listing.
-- Use `synthesize-market-research` when product positioning and audience demand
-  are not yet evidence-bounded across the market.
-- Use `review-solicitation-policy` for public rating/review request eligibility
-  and `run-product-feedback-loop` for private feedback, authorized review
-  ingestion/responses, support routing, and product close-loop.
-
 ## Guardrails
 
 - Never show unreleased/nonexistent UI, fake rankings/reviews/awards, hidden

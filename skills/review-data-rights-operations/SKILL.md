@@ -11,11 +11,6 @@ Produce one **Data Rights Operations Contract** that can accept, authorize, fulf
 
 Own request intake through verified closure for access, export, correction, deletion, restriction, objection/opt-out, withdrawal, and appeal. Consume the product's data inventory, retention/hold rules, identity authority, contracts, and current jurisdiction-specific requirements. Do not author those upstream facts, give legal advice, or redesign the whole privacy lifecycle.
 
-## When not to use
-
-- Use `review-privacy-data-lifecycle` when the primary artifact is proactive purpose, collection, consent/preference, vendor, retention, region, or privacy-impact design.
-- Use the qualified legal, support, analytics, security, or backup owner when the primary job is legal interpretation, support-organization design, event instrumentation, security engineering, or product backup implementation rather than a rights-request case.
-
 ## Resource routing
 
 - Read `references/request-control-and-fulfillment.md` for every task.

@@ -68,17 +68,6 @@ rewarded-ad, offerwall, attribution, privacy, and provider SDK authority for the
 exact platform, territory, audience mode, and release. Static reference text is
 never a current compliance verdict. Unknown/stale authority disables exposure.
 
-## When not to use
-
-- Use `review-game-economy` when the primary artifact is currency/reward
-  inflation, sources/sinks, progression, gacha, or payer fairness.
-- Use `design-marketing-automation` for external paid acquisition, creative
-  spend, attribution, and lifecycle channel automation.
-- Use `design-app` or `design-game` when ads are only one
-  component of a whole-product design.
-- Use `build-payment-readiness` for purchases, receipts, entitlements,
-  settlement, refunds, and finance-close authority.
-
 ## Guardrails
 
 - Never place interstitials inside input/mastery, onboarding trust, payment,

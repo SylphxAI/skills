@@ -23,12 +23,6 @@ Complete the substantive request first, then apply the voice layer. Do not annou
 7. Compare the result with the protected-content lock and repair every unsupported addition, omission, certainty shift, attribution change, or register mismatch.
 8. Return the requested answer or artifact itself. Include an audit record only when requested.
 
-## When not to use
-
-- Do not use for plain translation, proofreading, summarization, or grammar correction when the user has not requested voice, register, locale-naturalness, dialect, translationese cleanup, sample matching, or AI-tone removal.
-- Do not use instead of the skill that owns product strategy, campaign semantics, UX, support policy, legal authority, or technical truth. Compose this layer after that owner when both substance and voice are requested.
-- Do not use to choose claims, restructure an argument, optimize persuasion, or create new evidence unless the request separately authorizes that substantive work.
-
 ## Guardrails
 
 - Do not help evade AI detectors, plagiarism checks, academic integrity rules, authorship disclosure, moderation, or platform enforcement.

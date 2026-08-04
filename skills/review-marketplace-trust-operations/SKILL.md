@@ -20,16 +20,6 @@ and marketplace-health evidence. Consume payout ledger, buyer payment/refund,
 seller performance, ranking/retrieval, generic abuse, identity, privacy, security,
 and incident truth from their canonical owners.
 
-## When not to use
-
-- Do not use for payout/ledger operations, buyer payment authority, or one
-  post-refund account-consequence flow; use the marketplace payout, payment, or
-  refund specialist as appropriate.
-- Do not use for seller performance coaching or a general search/recommendation
-  ranking system; export bounded trust evidence to those owners instead.
-- Do not use for generic abuse outside a marketplace or for implementation of
-  model evaluation, engineering controls, incidents, or delivery proof.
-
 ## Resource routing
 
 - Read `references/policy-enforcement-appeals.md` for every task.

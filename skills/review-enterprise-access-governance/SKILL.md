@@ -20,16 +20,6 @@ governance metrics. Consume authentication protocols, identity-provider
 connectors, authorization enforcement code, security controls, account recovery,
 privacy, contract, and incident facts from their canonical owners.
 
-## When not to use
-
-- Do not use to implement authentication, sessions, tokens, SAML/OIDC/SCIM, an
-  authorization library, or policy enforcement code; hand exact requirements to
-  the current engineering and specification owners.
-- Do not use for a legitimate user's lost credentials or channels; use
-  `review-account-recovery` and supply tenant/admin authority as an input.
-- Do not use for security questionnaires, compliance evidence, generic product
-  abuse, or the whole support model; route those to their specialist owners.
-
 ## Resource routing
 
 - Read `references/access-authority-lifecycle.md` for every task.

@@ -13,12 +13,6 @@ learning**, run this response method—not a policy essay.
 - Live or imminent production harm with unclear owner/command
 - Severity triage, mitigation, customer/comms, and postmortem are in scope
 
-## When not to use
-
-- Planned migrations/cutovers without incident → `execute-hard-cutover`
-- Single support ticket without fleet impact → `resolve-support-case`
-- Pure claim grading without an active incident → `evidence-and-claims-standard`
-
 ## Method
 
 **Command → mitigate → communicate → learn.** Depth:

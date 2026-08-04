@@ -1,24 +1,20 @@
 ---
 name: run-open-product-betterment
-description: "Run open product betterment (no fixed objective): quality matrix, scout, all high-EV B, oracle verify; idle at empty high-EV frontier (else pursue-product-objective)."
+description: "Run open product betterment (no fixed objective): quality matrix, scout, all high-EV B, oracle verify; idle at empty high-EV frontier."
 ---
 
 # Run Open Product Betterment
 
+When product work **mixes** jobs and there is **no single fixed objective**, run
+high-leverage betterment cycles on the active workspace.
+
+## When to use
+
+- Mixed betterment across aspects with no fixed outcome bar
+- Standing coverage-card / admit-all-high-EV-B loop is the job
+
 Improve the active product/workspace with **high-leverage** changes when work
 **mixes** product jobs and there is **no single fixed objective**. Discover state yourself.
-
-**Prefer other Skills first:**
-
-| Situation | Skill |
-| --- | --- |
-| One job: learn / ship / harm / scale / finish | `prototype-product` · `build-product` · `maintain-product` · `expand-product` · `finish-product` |
-| Declared outcome to drive to completion | `pursue-product-objective` |
-| Multi-phase engineering delivery terminal | `drive-to-delivery` |
-| Pick next Work from a ledger without a product matrix | `select-next-work` |
-| Mixed open betterment, no fixed objective | **this Skill** |
-
-
 
 ## Continuity (host-defined)
 
@@ -71,11 +67,6 @@ Optional after discovery: one-line product pin in working notes—not a host obj
 - One PR / one cycle / "improved a bit" is not complete.
 - Prefer tools over essay-only turns.
 - Portable method only—no Codex/Spiron/Claude tool identifiers in this Skill.
-
-## Out of scope
-
-- Single bugfix → fix directly / `drive-to-delivery`
-- One release-grade finish pass → `finish-product`
 
 ## Depth
 

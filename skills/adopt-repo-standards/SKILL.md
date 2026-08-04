@@ -15,12 +15,6 @@ adoption** cycle—not a permanent dual instruction stack.
 - Predecessor instruction layouts / dual standards must be retired
 - Manifest, fences, and conformance entrypoints are missing or stale
 
-## When not to use
-
-- Evolving the Skills portfolio itself → `author-skill` / `instruction-evolution-standard` / `execute-hard-cutover`
-- Only selecting stack versions → `select-dependency-versions` / `technology-stack-profile`
-- Incident response → incident methods, not adoption
-
 ## Method
 
 **Required surfaces → wire entrypoints → verify → hard-cut predecessor layouts.**

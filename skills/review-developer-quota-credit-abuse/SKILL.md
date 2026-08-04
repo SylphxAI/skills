@@ -35,21 +35,6 @@ look indistinguishable from abuse.
 9. Produce the quota/credit authority map, ledger contract, trust/action matrix,
    explanation policy, appeal and graduation model, and balanced metric plan.
 
-## When not to use
-
-- For token-bucket, distributed rate limiting, queueing, or capacity engineering,
-  emit the product policy and hand implementation to the engineering owner.
-- For package and price architecture, use `price-saas-subscription`.
-- For payment authorization, settlement, refunds, or chargebacks, use
-  `build-payment-readiness`; consume its canonical money state.
-- For DDoS or active security incidents, use `run-incident-response` and the owning
-  security engineering boundary under `engineering-standard`.
-- For a specific fraud case, preserve evidence and authorized review; this
-  skill designs the reusable product controls, not the case verdict.
-- For one developer account or app's diagnostics, support case, or bounded
-  limit-increase request, use `review-developer-product-experience` and consume
-  the current quota policy rather than redesigning it here.
-
 ## Source verification
 
 - Resolve the current entitlement and price contract, public quota promise,

@@ -56,17 +56,6 @@ Retrieve current notification, payment, child/age, chance-based reward, store,
 privacy, and promotion authority for the exact product/platform/territory. Paid
 repair or gacha-linked rewards require transparent terms and current authority.
 
-## When not to use
-
-- Use `design-game` or `design-app` for the complete
-  retention/value architecture rather than one return loop.
-- Use `review-game-economy` when sources, sinks, inflation, progression, and
-  payer fairness are the primary artifact.
-- Use `review-notification-strategy` when the job is permission, channel,
-  frequency, privacy, deliverability, or cross-channel suppression.
-- Use `review-promotion-campaign` for a time-bounded offer/event whose recurrence
-  is campaign-driven rather than a durable daily state machine.
-
 ## Guardrails
 
 - Never make anxiety, shame, irreversible loss, or paid repair the main value.

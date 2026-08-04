@@ -69,17 +69,6 @@ privacy/consent, reviews/community, refund, promotion, and acquisition-platform
 authority for every active cell. A test market or platform permission is not a
 global compliance or product-fit verdict.
 
-## When not to use
-
-- Use `design-game` when the primary job is designing or repairing
-  core play, progression, content, social, feel, retention, or monetization.
-- Use `build-distribution-readiness` for submission assets, certification,
-  reviewer access, staged release mechanics, and exact live-channel evidence.
-- Use `design-marketing-automation` for the complete multi-channel creative,
-  organic, lifecycle, paid-spend, attribution, and shutdown operating system.
-- Use `review-launch-readiness` for a cross-domain final admission verdict when
-  the soft-launch learning program is already complete.
-
 ## Guardrails
 
 - Never scale blended metrics that hide version, market, device, source,

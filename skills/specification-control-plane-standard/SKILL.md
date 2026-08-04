@@ -18,7 +18,6 @@ method and predicates.
 2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
 3. Prefer schema/test/ADR homes over copying this body into product repos.
 
-
 ## Composition and output
 
 Apply this standard as constraints on the artifact requested by the user or
@@ -35,8 +34,3 @@ standard.
 - Does not grant deploy or credential capabilities.
 - Does not replace product-local ADRs where those own decisions.
 
-## When not to use
-
-- Product-specific live coordination operations → the matching adapter Skill
-  and that product's current API or tool schema.
-- Unrelated commercial packaging alone → commercial-decision-standard when in scope.

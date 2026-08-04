@@ -10,12 +10,6 @@ certainty can be audited and reproduced. Read
 [references/reproducible-evidence-synthesis.md](references/reproducible-evidence-synthesis.md)
 before defining the review protocol.
 
-## When not to use
-
-- Claim grading policy alone → `evidence-and-claims-standard`
-- Roll up formal multi-review findings → `review-multi-review-synthesis`
-- Pure adversarial critique without synthesis deliverable → `analyze-critically`
-
 ## Method
 
 1. Frame the answerable question, intended decision, population/system/context,

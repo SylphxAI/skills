@@ -33,23 +33,6 @@ one opaque score into ranking, payout, and punishment authority.
 9. Produce the signal registry, decision architecture, seller explanation,
    intervention and appeal state model, fairness/health readout, and monitoring plan.
 
-## When not to use
-
-- For payout ledger, reserve, settlement, refund clawback, or reconciliation,
-  use `review-marketplace-payouts`. This artifact may emit a risk referral but
-  cannot place or release funds.
-- For general retrieval or recommendation ranking, hand off calibrated seller
-  evidence and confidence; do not design the whole ranking system here.
-- For transaction refund/support operations, use
-  `review-refund-and-support-flow`.
-- For fraud detection, protect signal secrecy and refer evidence to the trust
-  owner; seller-performance explanations expose safe reason categories only.
-- For one seller policy violation, moderation action, dispute, enforcement
-  appeal, or fraud review, use `review-marketplace-trust-operations`; this skill
-  may supply governed performance evidence but does not decide that case.
-- For onboarding or marketplace product architecture, consume this system as a
-  bounded specialist artifact rather than expanding the skill.
-
 ## Source verification
 
 - Resolve the current seller terms, category and buyer promise, enforcement and

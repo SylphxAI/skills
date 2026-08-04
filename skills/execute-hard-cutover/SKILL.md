@@ -16,15 +16,6 @@ run **one migration** to a clean cutover—not a permanent dual-stack.
 - Retire shims, flags, dual writers, legacy lanes, or undated “compat”
 - Upgrade across major versions when the job is the cutover itself
 
-## When not to use
-
-- Greenfield build with no predecessor → `build-product` / domain design Skills
-- Live incident harm reduction only → `maintain-product`
-- Instruction portfolio generation rules without a concrete cutover job →
-  `instruction-evolution-standard` (constraints) plus this Skill when you
-  actually execute the generation cutover
-- Pure dependency pin without structural move → `select-dependency-versions`
-
 ## Method
 
 **Destination sole writer → execute-hard-cutover/backfill → verify → delete predecessor.**  

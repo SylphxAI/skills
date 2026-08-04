@@ -11,11 +11,6 @@ Produce one **Revenue Operations Contract** that turns customer evidence into a 
 
 Own revenue object semantics, lifecycle/pipeline states, evidence gates, attribution and routing, qualification/discovery, solution/technical handoff, forecast and capacity logic, incentives/commission control effects, automation, reconciliation, and change governance. Do not own campaign execution, pricing/package decisions, contract interpretation, billing/ledger truth, product implementation, or customer-success playbooks.
 
-## When not to use
-
-- Use `design-marketing-automation`, `price-saas-subscription`, or `build-payment-readiness` when the primary artifact is demand generation, price/package choice, or payment/ledger correctness.
-- Use `review-enterprise-contract-operations` or `review-customer-success-operations` when the primary artifact is executable contract obligations or recurring post-sale customer value rather than revenue pipeline truth.
-
 ## Resource routing
 
 - Read `references/revenue-system-and-crm-truth.md` for every task.

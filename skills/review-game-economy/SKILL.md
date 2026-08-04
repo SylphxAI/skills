@@ -75,17 +75,6 @@ promotion, refund, virtual-currency, marketplace/trading, territory, and tax
 authority for the exact platforms and audience modes. Unknown authority blocks
 the affected exposure, not construction of the dormant adapter.
 
-## When not to use
-
-- Use `design-game` when core play, progression, challenge, social,
-  content, retention, feel, and platform experience must be designed together.
-- Use `review-daily-reward-and-streak` for one recurring calendar/streak state
-  machine and its economy handoff.
-- Use `build-payment-readiness` for checkout, receipts, provider events,
-  settlement, entitlement projection, reconciliation, and finance close.
-- Use `review-promotion-campaign` for one time-bounded offer/event and its
-  audience/placement/fulfillment experiment.
-
 ## Guardrails
 
 - Fun and meaningful choice come before extraction; monetization cannot repair

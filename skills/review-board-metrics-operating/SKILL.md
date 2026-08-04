@@ -34,18 +34,6 @@ plausible-looking board numbers.
 9. Produce the released snapshot or blocked release packet, variance bridge,
    confidence ledger, board decision memo, and action register.
 
-## When not to use
-
-- For a single retention diagnosis, use `review-retention-cohort`.
-- For analytics event design or pipeline QA, use
-  `review-product-analytics-instrumentation`.
-- For subscription pricing/packaging decisions, use `price-saas-subscription`;
-  consume its approved decision rather than recreating it here.
-- For audited accounts, tax, securities disclosure, or legal assurance, prepare
-  source mappings and open questions but defer authoritative conclusions.
-- For narrative-only rewriting, preserve the released facts and use the
-  appropriate editing skill; do not let prose change metric meaning.
-
 ## Source verification
 
 - Require exact locked extracts, metric and forecast versions, reporting

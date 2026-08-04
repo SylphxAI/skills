@@ -70,25 +70,6 @@ and regional privacy, ATT/device identifier, cookie/storage, data-residency,
 deletion/export, and provider quota/retention authority. A vendor default is
 never the product's consent or retention policy.
 
-## When not to use
-
-- Use `design-app`, `design-game`, or
-  `compose-product-program` when the primary artifact is product behavior or
-  a cross-domain delivery program, not measurement implementation.
-- Use `design-marketing-automation` for spend, channel attribution decisions,
-  creative automation, and budget/shutdown control.
-- Use the owning product or experiment workflow to choose hypotheses, variants,
-  exposure, and promotion; analytics records the agreed assignment and outcome.
-- Use `run-product-feedback-loop` for qualitative feedback/review
-  ingestion, evidence clusters, support routing, and product close-loop. Use
-  `review-solicitation-policy` for public review request eligibility and state.
-- Use `build-payment-readiness` for payment/entitlement/settlement authority;
-  analytics only consumes its signed/authoritative projection.
-- Use `review-operational-observability` for service logs, traces, health,
-  SLOs, alerts, runtime diagnostics, and operator action. Use
-  `review-data-quality-observability` when generic dataset or pipeline
-  reliability is the independently accepted artifact.
-
 ## Guardrails
 
 - Do not instrument everything or collect data “just in case.” Minimize by

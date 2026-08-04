@@ -37,19 +37,6 @@ price change moves through real contracts and billing channels.
 10. Produce the authority ledger, matrices, communication/support package,
     offer governance, experiment, net-revenue readout, and recovery decisions.
 
-## When not to use
-
-- For price metric, package, entitlement, packaging, or willingness-to-pay
-  design, use `price-saas-subscription`. This artifact consumes that decision.
-- For a retention-cohort diagnosis unrelated to a price increase, use
-  `review-retention-cohort`.
-- For refund ledger and support operations beyond this change, use
-  `review-refund-and-support-flow`.
-- For general notification permission, channel, cadence, and quiet-hour policy,
-  use `review-notification-strategy`; mandatory price notices remain in scope.
-- For contract or legal interpretation, identify evidence and defer the
-  conclusion to the authorized account/legal owner.
-
 ## Source verification
 
 - Resolve current catalog and entitlement versions, signed contract and

@@ -19,20 +19,6 @@ experience metrics, and automation contract. Consume API/SDK implementation,
 identity, quota, billing, analytics, security, privacy, and delivery facts from
 their canonical owners; do not redesign those systems here.
 
-## When not to use
-
-- Do not use for API/SDK implementation, compatibility architecture, low-level
-  rate limiting, infrastructure capacity, or release engineering; hand the
-  experience requirement to the owning engineering project under
-  `engineering-standard` and `delivery-standard`. Use
-  `build-distribution-readiness` when the independent job is selecting,
-  implementing, or verifying CLI install and update channels.
-- Do not use for developer quota/free-credit abuse policy or generic product
-  abuse; use `review-developer-quota-credit-abuse` or
-  `review-product-abuse-risk` respectively.
-- Do not use for a whole app, analytics implementation, pricing/package design,
-  or payment authority when the developer adoption journey is not being decided.
-
 ## Resource routing
 
 - Read `references/developer-adoption-contract.md` for every task.

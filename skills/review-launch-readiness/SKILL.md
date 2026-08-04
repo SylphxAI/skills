@@ -59,17 +59,6 @@ payment/refund, advertising/promotion, child/age, legal/regulated-category,
 regional, certification, and partner authority. External approval remains an
 explicit floor and may not be self-attested.
 
-## When not to use
-
-- Use `compose-product-program` to build the multi-domain program graph and
-  produce the sibling artifacts, not merely decide one launch candidate.
-- Use `build-distribution-readiness` for channel submission, reviewer,
-  certification, rollout, and live-store evidence.
-- Use `review-game-soft-launch` for a multi-cohort game learning/exposure
-  program rather than final cross-domain admission.
-- Use a domain specialist when only one missing artifact is being designed or
-  audited and the overall launch decision is not reopened.
-
 ## Guardrails
 
 - Marketing readiness never substitutes for product, authority, support,

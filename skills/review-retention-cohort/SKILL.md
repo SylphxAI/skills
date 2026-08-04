@@ -35,25 +35,6 @@ should change. Do not optimize a chart whose denominator or value event is wrong
 9. Produce the metric contract, data-quality verdict, cohort decomposition,
    diagnosis, hypotheses, experiment plan, and instrumentation handoff.
 
-## When not to use
-
-- For product event taxonomy, identity, consent, and metric semantics, use
-  `review-product-analytics-instrumentation` after specifying the retention
-  measurement requirement. For recurring dataset/pipeline/warehouse freshness,
-  completeness, reconciliation, trust state, or repair, use
-  `review-data-quality-observability`; this Skill retains the local
-  input-quality verdict needed to interpret the cohort.
-- For notification channel, permission, cadence, quiet hours, and message policy,
-  use `review-notification-strategy`; consume the cohort hypothesis here.
-- For pricing/package architecture, use `price-saas-subscription`.
-- For broad game/app product architecture, use the relevant design blueprint;
-  this skill owns the retention analysis slice only.
-- For a proposed, staged, or live subscription price increase, including its
-  renewal-maturity cohort diagnosis and recovery decision, use
-  `review-subscription-price-increase-retention`.
-- For board reporting, provide a released retention artifact that another owner
-  may consume; do not expand into a full board pack.
-
 ## Source verification
 
 - Resolve the exact event dictionary and revision, query or dataset version,

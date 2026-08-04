@@ -133,10 +133,3 @@ A finished conversion:
 - passes structural validation for the target repository;
 - reports skipped validation honestly.
 
-## When not to use
-
-- Use `curate-skill-repository` when the job is repository-wide content
-  curation, collision resolution, consolidation, or retirement rather than one
-  bounded conversion.
-- Use `design-skill-evals` when the package already exists and the primary deliverable is a falsifiable routing/behavior evaluation.
-- Do not use this workflow for a plain summary, translation, or knowledge-base note when no reusable procedure and independent trigger/output are required.
