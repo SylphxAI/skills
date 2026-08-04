@@ -226,11 +226,21 @@ grant.
 
 ## Implementation Shape
 
+Binding rule IDs: `eng-simplicity-01`, `eng-growth-01`, `eng-deps-01` (with
+`eng-hard-cut-01` / `eng-hard-cut-02` when retiring predecessors).
+
 Prefer the simplest design that expresses the domain cleanly. One clear
 function, schema, query, module, or generated contract beats a framework of
 helpers that does not protect a real boundary. Add an abstraction only when it
 removes demonstrated duplication, protects a stable boundary, or names a domain
 concept that future code will reuse.
+
+Ship thin vertical slices on a path that already works end to end; do not trade
+a working product for unfinished layered complexity (`eng-growth-01`). Long-term
+shape means the **destination** is sole writer and ownership is correct—not a
+stopgap dual-path left for later. Prefer hard-cut with migrate/backfill and
+predecessor deletion over permanent compatibility layers (`eng-hard-cut-01/02`).
+Migration is the cutover method; forever backward-compat shims are the debt.
 
 Before adding code, check whether the right move is to delete, fold, derive, or
 move existing code to its canonical owner. Remove dead code, stale comments,

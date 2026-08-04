@@ -27,6 +27,9 @@ Apply the relevant subset; verify rather than slogan.
 | `eng-timeout-01` | Every network/RPC path has timeout, cancellation, and retry budget. |
 | `eng-hard-cut-01` | Default is verified hard-cut / one-step cutover with predecessor retirement. Expand-contract only for demonstrated large-scale user or live compatibility/state/effect risk, and only with a dated contract step—no permanent dual-path residual. |
 | `eng-hard-cut-02` | Backward-compatible dual paths, shims, and aliases are exceptional tech debt; keep them only under eng-hard-cut-01 exception bar and delete them at the retirement gate. |
+| `eng-simplicity-01` | Prefer the simplest end-to-end design that fully meets the framed requirements; add abstraction, configuration, or indirection only for a measured need (boundary protection, real reuse, or named domain concept). |
+| `eng-growth-01` | Grow by thin vertical slices on a product path that already works end to end; do not trade a working path for unfinished layered complexity. |
+| `eng-deps-01` | Prefer in-tree and established dependencies after checking docs/types; reimplement commodity behavior only with a clear reason that owning it is smaller lifecycle cost than adopting. |
 | `eng-layer-01` | Dependency direction is domain → application → infrastructure. |
 | `eng-capability-01` | Durable code is organized by capability/bounded context; features are vertical slices inside the owning capability. |
 | `eng-ddd-01` | Strategic and Tactical DDD concepts carry domain language, invariants, aggregates, value objects, services, events, and repository ports. |

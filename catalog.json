@@ -229,7 +229,7 @@
       "name": "engineering-standard",
       "description": "Policy: engineering method—design, verification, change safety, repro-driven fixes.",
       "path": "skills/engineering-standard/SKILL.md",
-      "packageDigest": "sha256:fb313dd49a77ba406aab5078ad8bfec6292617a87cd4504c554b6057197197b8"
+      "packageDigest": "sha256:0f1de9d1b09aa401d834003c4b42ee699969e6378f1539a80f2e02e5cfc8681c"
     },
     {
       "name": "enterprise-control-plane-standard",
