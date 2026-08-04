@@ -43,14 +43,16 @@ This turn:
    (d) hard floors
    (e) highest pains/bets
 3. Candidates C. L = (expected_outcome_or_frontier_gap_delta × weight × confidence) / full_lifecycle_cost.
-4. B = all capacity-feasible items with EV ≥ MinOutcomeDelta (not Top-1).
-   Soft cost (large/hard/engine/multi-day) → L0 slice into B.
+4. B = ALL items with EV ≥ MinOutcomeDelta that are runnable now (not Top-1,
+   not a small sample). Soft cost → L0 slice into B now.
    Park only with evidence: external_wait | authority_pending | dependency_blocked | safety_hold.
-5. Execute all of B (parallel when independent).
+   Capacity is real constraint only—not a preference to drip 1–3 items per cycle.
+5. Execute ALL of B this cycle (parallel when independent). Prefer one coherent
+   integration unit over many micro-PRs that each re-claim a pass.
 6. Verify: original-oracle per item; one outcome readback on touched subjects.
-   Local green / commit count ≠ success.
+   Local green / commit count / open PR ≠ success.
 7. Short log. Do not ask the user to assign the next work.
-8. If terminal is false, do not mark the host objective complete.
+8. If terminal is false, re-scout and continue; do not mark host objective complete.
 
 Complete the host objective only when a fresh re-scout shows B empty and no residual has unblocked EV ≥ MinOutcomeDelta.
 That is an empty high-value frontier, not perfection.
@@ -62,11 +64,11 @@ Optional after discovery: one-line product pin in working notes—not a host obj
 
 ## Rules
 
-- All passers into B each cycle; leverage over ease.
-- Soft cost is not a stop.
+- All passers into B each cycle; batch high-EV work—do not drip-feed for tidy commits.
+- Soft cost is not a stop; inventing small WIP is not capacity.
 - One PR / one cycle / "improved a bit" is not complete.
 - Prefer tools over essay-only turns.
-- Portable method only—no Codex/Spiron/Claude tool identifiers in this Skill.
+- Portable method only—no host tool identifiers in this Skill.
 
 ## Depth
 

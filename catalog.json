@@ -343,7 +343,7 @@
       "name": "pursue-product-objective",
       "description": "Pursue a fixed declared product objective to evidence-backed completion: keep going until that named outcome is reached and proved.",
       "path": "skills/pursue-product-objective/SKILL.md",
-      "packageDigest": "sha256:ac7e5f81be2db2d16cc6b532faeacbcdf4da8f68d778e482452901e4c843295d"
+      "packageDigest": "sha256:c56a64600effd3d8ff3e3608dadd8b9708e24965691db25d85a97a13a2120954"
     },
     {
       "name": "record-structured-deliberation",
@@ -643,7 +643,7 @@
       "name": "run-open-product-betterment",
       "description": "Run ongoing open product betterment loop (no fixed objective): quality matrix, scout, all high-EV B including UI and performance opportunities, oracle verify; idle at empty high-EV frontier.",
       "path": "skills/run-open-product-betterment/SKILL.md",
-      "packageDigest": "sha256:0355bfce049e2b2ace3b9422381e8380d59e7af3b045fc8d40a7ab41ca9c435f"
+      "packageDigest": "sha256:065d7f9f7bdc1db202a1fbbdd008c909b04c1568cc728587b5e6840663db8084"
     },
     {
       "name": "run-product-feedback-loop",
