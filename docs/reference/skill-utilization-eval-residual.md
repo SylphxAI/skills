@@ -83,6 +83,15 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 - Claude unauth; Grok 403 spending-limit — host-incapable residuals unchanged.
 - Residual **open** for promotable multi-host proof.
 
+
+### 2026-08-05 runner timeout + tip-pin @ `a0dec0a`
+
+- `run-utilization-host-codex.mjs`: per-case timeout (default 180s,
+  `UTIL_CODEX_TIMEOUT_MS`) → empty timeout scores **inconclusive** (not hang forever).
+- Tip-pin sheet `codex-tip-pin-a0dec0a` **4/4** (floor + three-layer; non-promotable).
+- Exit criteria honest snapshot table added; residual still **open** for
+  promotable multi-host proof (Claude unauth; Grok 402/403).
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,
@@ -165,7 +174,18 @@ a code in a real host run is still required for measured utilization claims.
    an explicit residual that a host cannot support reliable eval.
 3. Failure taxonomy: L0 miss vs Skill miss vs tool/policy gap vs model limit.
 
-Until exit criteria land, utilization remains an honest open residual.
+
+## Exit criteria status (honest snapshot)
+
+| # | Criterion | Status @ tip lineage |
+| --- | --- | --- |
+| 1 | Documented fixtures + behavior oracles | **Met** |
+| 2 | Green run **or** host-incapable residual per host class | **Partial:** Codex auto-heuristic sheets; Claude unauth residual; Grok 402/403 residual. Not human-promoted multi-host closure. |
+| 3 | Failure taxonomy documented | **Met** |
+
+**Residual remains OPEN** for promotable multi-host utilization proof.
+
+Until full residual closure, utilization remains an honest open residual.
 
 Host execution procedure: [skill-utilization-host-runbook.md](./skill-utilization-host-runbook.md).
 
