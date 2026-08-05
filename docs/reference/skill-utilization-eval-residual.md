@@ -17,6 +17,21 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 - Mechanical-rename pollution from `migrate`→`execute-hard-cutover` verb substitution cleaned (restored English *migrate/migrated*; eng predicates `eng-hard-cut-0N`).
 - Residual still **open** for promotable multi-host proof (Claude auth / Grok billing).
 
+
+### 2026-08-05 three-layer + host follow-up
+
+- Three-layer integration model landed on main (`0c97bf9` / PR #86): L1 batch,
+  L2 atomic commits, L3 revert-safe PR outcomes in `source-authoring-standard`,
+  `pursue-product-objective`, `run-open-product-betterment`.
+- Compose alignment: `drive-to-delivery` + `author-skill` point at the same layers.
+- Codex auto-heuristic @ `0c97bf9`: three-layer + pursue slice
+  `codex-three-layer-0c97bf9` **4/4 pass** (non-promotable).
+- New fixtures: `critical-source-authoring-three-layer`,
+  `neighbour-source-authoring-vs-drive`.
+- Utilization residual remains **open**: Claude `loggedIn: false`; Grok binary
+  present but promotable multi-host proof not closed; Codex sheets stay
+  auto-heuristic / non-promotable unless human-promoted.
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,

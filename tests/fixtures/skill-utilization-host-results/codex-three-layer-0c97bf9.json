@@ -1,0 +1,66 @@
+{
+  "host": "codex",
+  "hostVersion": "codex-cli 0.146.0",
+  "model": "host-default (codex exec)",
+  "skillsCommit": "0c97bf98d0fc6ac8683e51fa1ecac9fb094ec5f8",
+  "catalogDigest": "sha256:70253849259ab22b40b294d0c33d893522c4c6d3136c52a7344f008754c178d8",
+  "catalogCount": 118,
+  "ranAtUtc": "2026-08-05T02:51:43.998Z",
+  "promotable": false,
+  "scoring": "automatic-heuristic; not multi-host utilization closure",
+  "summary": {
+    "pass": 4,
+    "fail": 0,
+    "inconclusive": 0
+  },
+  "cases": [
+    {
+      "id": "critical-pursue-product-objective",
+      "suite": "critical-skill",
+      "expectedSkills": [
+        "pursue-product-objective"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: pursue-objective framing",
+      "autoScored": true,
+      "agentTextExcerpt": "I'll establish the current Trueform authority tip, workspace state, and delivery bar, then drive the Keel + live Pages path until commercial readiness is evidenced."
+    },
+    {
+      "id": "neighbour-pursue-vs-better",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "pursue-product-objective"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: pursue-objective framing",
+      "autoScored": true,
+      "agentTextExcerpt": "The constitution is loaded. Next I’ll identify the fixed product outcome and current workspace authority before taking any action.\nI can’t advance the fixed product outcome yet — two blockers:\n\n## 1. Product outcome not specified\nThis turn only loaded the constitution and environment context, plus:\n\n> Do not run open-ended betterment. There is a fixed product outcome to reach and prove; keep going until that outcome is met.\n\nThere is no concrete outcome, acceptance bar, repo, or PR/work item named in the message. Workspace is `/tmp`, which also doesn’t point at a product repo.\n\n## 2. Shell is unusable (hard stop)\nEvery command fails immediately with:\n\n```text\nbwrap: Creating new namespace failed: nesting depth or /proc/sys/user/max_*_namespaces exceeded (ENOSPC)\n```\n\nSo I can’t read the filesystem, memory files, repos, git state, or run any verification. In this sandbox I have no alternate file-read path.\n\n---\n\n**What I need from you:**\n1. **State the fixed product outcome** (repo path/URL, exact done bar, and what to prove).\n2. **Restore shell/namespace capacity** (or switch to a session where `exec_command` works).\n\nOnce both are available, I’ll revalidate authority and drive onl"
+    },
+    {
+      "id": "critical-source-authoring-three-layer",
+      "suite": "critical-skill",
+      "expectedSkills": [
+        "source-authoring-standard"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: expectedMention=none oracleTokenRatio=0.50",
+      "autoScored": true,
+      "agentTextExcerpt": "This is a delivery/integration process question for multi-fix engine work under merge-queue squash. I'll load the relevant standards and any prior commit/PR conventions before recommending a structure.\nSandbox hit a namespace limit; retrying memory and skill lookup with direct file reads.\n## Rule of thumb\n\n**PR = shippable unit. Commits = review scaffolding.**  \nWith merge-queue **squash**, only the PR’s final squash message and tip SHA survive as source authority. Structure around **one engine outcome**, not “how many files I touched today.”\n\n---\n\n## 1. Choose the PR boundary first\n\n| Situation | Structure |\n|---|---|\n| Several fixes that **together** deliver one shippable engine outcome | **One PR** |\n| Fixes are **independently** shippable and could land alone | Prefer **separate PRs** (each with its own bar) |\n| Same session, **unrelated** outcomes | **Do not** batch into one PR |\n\nSession convenience ≠ delivery unit. Merge queue squash makes the PR the atomic land.\n\n---\n\n## 2. How to structure commits *inside* that PR\n\nEven though squash erases them, keep commits **review-useful**:\n\n1. **By behavioral intent**, not savepoints  \n   - `fix: X invariant under Y`  \n   - `test: loc"
+    },
+    {
+      "id": "neighbour-source-authoring-vs-drive",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "source-authoring-standard"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: expectedMention=source-authoring-standard oracleTokenRatio=0.83",
+      "autoScored": true,
+      "agentTextExcerpt": "I'll look up the commit hygiene rule for atomic branch history versus squash-to-main, starting with memory and the relevant standards skills.\n**Rule: branch commits may be checkpoints; main gets one Work-level squash.**\n\nFrom **Agent-Native Queued Trunk** (ADR-20260803 / `parallel-change-integration-standard`):\n\n### Inside the branch / PR\n- **One Work = one complete outcome = one branch = one PR.**\n- Open the draft PR early; **commit and push at any frequency**.\n- Checkpoints, repairs, refactors, retries, and phases stay **on that PR**.\n- They are **not** separate PRs and **must not** land incomplete.\n- There is **no** policy that forces you to batch commits for CI economics.  \n  Control is: **unverified intermediate state stays off main.**\n\n### What lands on main after squash\n- Ready PR → Merge Queue → **squash-merge by default**.\n- Main history is **Work-level**, not checkpoint-level.\n- Normally **one squash = one main integration unit** for that Work/PR.\n- Main tip should stay **production-ready and green** (no half-finished features, phase-only landings, or “next commit fixes it”).\n\n### What “atomic” means here\n**Atomic = one independently terminal, coherent outcome**, not “one"
+    }
+  ]
+}

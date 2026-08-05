@@ -57,6 +57,10 @@ tool manual.
    **worsen** retrieval (“此地無銀”). Discriminate with a sharp **name**, short
    **description**, and precise **When to use** / method scope—not by naming rivals.
 
+12. **Source-mutating workflows** compose `source-authoring-standard` three layers
+   (L1 batch implement → L2 atomic commits in the PR → L3 revert-safe PR outcome).
+   Do not invent a second trunk doctrine inside job Skills.
+
 Read for class/composition detail:
 [skill-package-classes-and-composition.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/skill-package-classes-and-composition.md)
 and [ADR-20260801](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
