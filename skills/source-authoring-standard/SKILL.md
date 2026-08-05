@@ -1,6 +1,6 @@
 ---
 name: source-authoring-standard
-description: "Policy: source authoring—commits, exact candidates, worktrees, concurrent-edit safety."
+description: "Policy: source authoring—atomic PR commits, revert-safe PR outcomes, worktrees, concurrent-edit safety."
 ---
 # Source Authoring Standard
 
