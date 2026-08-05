@@ -1,0 +1,54 @@
+{
+  "host": "codex",
+  "hostVersion": "codex-cli 0.146.0",
+  "model": "host-default (codex exec)",
+  "skillsCommit": "73f7d4bcb511edc68258a7b57e93a003d7de60d1",
+  "catalogDigest": "sha256:ebe9319a4b077279901e076f6028300cefc48cc3668bdbdb406169012d9e8b79",
+  "catalogCount": 118,
+  "ranAtUtc": "2026-08-05T04:52:22.958Z",
+  "promotable": false,
+  "scoring": "automatic-heuristic; not multi-host utilization closure",
+  "summary": {
+    "pass": 3,
+    "fail": 0,
+    "inconclusive": 0
+  },
+  "cases": [
+    {
+      "id": "neighbour-pursue-vs-better",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "pursue-product-objective"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: pursue-objective framing",
+      "autoScored": true,
+      "agentTextExcerpt": "Understood. I’ll work only toward the fixed product outcome, verify its acceptance bar, and continue until it is met—not pursue open-ended betterment.\n\nPlease provide the outcome and repository/path if they are not already specified."
+    },
+    {
+      "id": "critical-source-authoring-three-layer",
+      "suite": "critical-skill",
+      "expectedSkills": [
+        "source-authoring-standard"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: expectedMention=none oracleTokenRatio=0.25",
+      "autoScored": true,
+      "agentTextExcerpt": "Use **commits for reviewability** and the **PR for the shippable outcome**.\n\n### Recommended structure\n\n**One PR** when the fixes share:\n\n- one user/customer-visible engine outcome,\n- one acceptance bar,\n- one release/rollback boundary,\n- dependencies that make separate shipping unsafe or meaningless.\n\nWithin it, keep commits logically sliced:\n\n```text\ntest(engine): encode the outcome and regression cases\nrefactor(engine): isolate the required execution boundary\nfix(engine): correct deterministic scheduling\nfix(engine): preserve state across reset\ntest(engine): add integration and performance coverage\ndocs(engine): document the new contract\n```\n\nCommits should be coherent, ordered by dependency, and preferably build/test cleanly. Avoid WIP commits, unrelated cleanup, formatting churn, and “fix typo/fix CI” noise. Use `fixup!` commits during iteration, then autosquash or clean them before queue entry if useful.\n\n### PR should contain\n\n- The single outcome and why it matters.\n- Mapping from each fix to acceptance criteria.\n- Exact validation performed at the current tip.\n- Performance/regression evidence.\n- Risk, rollback, and any residual gaps.\n- Clear statement of what is **not** i"
+    },
+    {
+      "id": "neighbour-source-authoring-vs-drive",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "source-authoring-standard"
+      ],
+      "score": "pass",
+      "failureClasses": [],
+      "notes": "heuristic: expectedMention=none oracleTokenRatio=0.25",
+      "autoScored": true,
+      "agentTextExcerpt": "- **Inside the branch:** keep commits atomic and logically coherent—one intent per commit, no unrelated changes, and each should be buildable/testable where practical. Don’t land broken WIP or “fixup” chains.\n- **On `main` after squash:** the **PR becomes the atomic delivery unit**: one complete, passing, rollbackable commit representing the whole change.\n- Squashing removes noisy intermediate history; it does **not** justify broken intermediate commits or an incomplete PR. Preserve any important sequencing/ rationale in the PR description or final commit message."
+    }
+  ]
+}

@@ -55,7 +55,7 @@
       "name": "build-distribution-readiness",
       "description": "Build software distribution readiness: artifacts, install/upgrade/uninstall, channels, live readback evidence.",
       "path": "skills/build-distribution-readiness/SKILL.md",
-      "packageDigest": "sha256:7638d9bedd1a5fcb3a6855d73216e8d13003ed19fe7146362006cd8ceba4f760"
+      "packageDigest": "sha256:f02df4563898121bd6d0d671078599793b0db795e5bc6aa8776e94b6b851c43c"
     },
     {
       "name": "build-payment-readiness",
@@ -115,7 +115,7 @@
       "name": "decide-architecture-shape",
       "description": "Decide one architecture shape from options with tradeoffs and residuals (not open design-space mapping alone).",
       "path": "skills/decide-architecture-shape/SKILL.md",
-      "packageDigest": "sha256:7485aff616852eb6c745ba9d9c74dfeb136a69e8f29b46280a69835f7209f0c6"
+      "packageDigest": "sha256:db3fafd543c1de4415af1d59e2fdea9de3c8291baac08ef82a8303479bcc08d6"
     },
     {
       "name": "decision-quality-standard",
@@ -649,7 +649,7 @@
       "name": "run-product-feedback-loop",
       "description": "Run feedback learning loop: private feedback and public reviews, cluster, route, product actions, truthful close.",
       "path": "skills/run-product-feedback-loop/SKILL.md",
-      "packageDigest": "sha256:b287314cf924039559d7fe74a9e406cc1570d0081c68c199a9bceb22c9a2e74e"
+      "packageDigest": "sha256:df6ba3b0a0f327ebc5e84a147d975e5f87dd181cd3f33d3f850922f9e36fb912"
     },
     {
       "name": "select-dependency-versions",
