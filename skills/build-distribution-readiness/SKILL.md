@@ -135,3 +135,7 @@ independently observable. Mutable external observations record when they were
 read, their freshness boundary, and the event that requires revalidation; a
 stale observation retracts the stronger claim to unknown. The pack does not
 imply undeclared channels or the whole product launch are complete.
+
+## Soft composition
+
+- When landing source: compose `source-authoring-standard` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).

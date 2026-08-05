@@ -73,6 +73,16 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 - Claude still unauth; Grok still 402/403 — host-incapable residuals explicit.
 - Residual **remains open** for promotable multi-host closure.
 
+
+### 2026-08-05 tip-pin @ `73f7d4b`
+
+- Additional mutators compose L1/L2/L3: `build-distribution-readiness`,
+  `decide-architecture-shape`, `run-product-feedback-loop` (structural test extended).
+- Codex tip-pinned three-layer slice: `codex-tip-pin-three-layer-73f7d4b` **3/3**.
+- Floor+abstention tip-pin sheet recorded when available at same tip.
+- Claude unauth; Grok 403 spending-limit — host-incapable residuals unchanged.
+- Residual **open** for promotable multi-host proof.
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,

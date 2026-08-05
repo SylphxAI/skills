@@ -107,3 +107,7 @@ Product action, validation, rollout, and close-loop state:
 Sibling handoffs:
 
 Validation, unresolved authority, and next proof:
+
+## Soft composition
+
+- When landing source: compose `source-authoring-standard` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).
