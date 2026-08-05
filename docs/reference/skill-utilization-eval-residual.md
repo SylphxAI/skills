@@ -64,6 +64,15 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 - Additional three-layer compose: `select-dependency-versions`,
   `adopt-repo-standards`, `parallel-change-integration-standard`.
 
+
+### 2026-08-05 doctrine guard + inventory @ `a48a717`
+
+- Structural test `tests/three-layer-source-doctrine.test.mjs` locks L1/L2/L3 in
+  core packages and high-EV mutators (regression guard; not utilization proof).
+- Codex sheet inventory: `tests/fixtures/skill-utilization-host-results/CODEX-SHEET-INVENTORY.md`.
+- Claude still unauth; Grok still 402/403 — host-incapable residuals explicit.
+- Residual **remains open** for promotable multi-host closure.
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,
