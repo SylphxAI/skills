@@ -66,10 +66,19 @@ function pickCases() {
 }
 
 function runCodex(prompt) {
+  const timeoutMs = Number(process.env.UTIL_CODEX_TIMEOUT_MS || 180000);
   const result = spawnSync(
     'codex',
     ['exec', '--ephemeral', '--skip-git-repo-check', '-s', 'read-only', '--json', prompt],
-    { cwd: '/tmp', encoding: 'utf8', maxBuffer: 20 * 1024 * 1024, env: process.env, input: '' },
+    {
+      cwd: '/tmp',
+      encoding: 'utf8',
+      maxBuffer: 20 * 1024 * 1024,
+      env: process.env,
+      input: '',
+      timeout: timeoutMs,
+      killSignal: 'SIGTERM',
+    },
   );
   let agentText = '';
   for (const line of (result.stdout || '').split('\n')) {
@@ -81,11 +90,13 @@ function runCodex(prompt) {
       }
     } catch { /* ignore */ }
   }
+  const timedOut = Boolean(result.error && /ETIMEDOUT|TIMEDOUT|timed out/i.test(String(result.error)));
   return {
     exitCode: result.status,
     agentText: agentText.trim(),
     stderr: result.stderr || '',
     error: result.error ? String(result.error) : '',
+    timedOut,
   };
 }
 
@@ -213,7 +224,17 @@ console.error(`Running ${cases.length} cases on ${codexVersion} @ ${skillsCommit
 for (const item of cases) {
   process.stderr.write(`- ${item.id} ... `);
   const run = runCodex(item.prompt);
-  let scored = scoreCase(item, run.agentText);
+  let scored;
+  if (run.timedOut && !run.agentText) {
+    scored = {
+      score: 'inconclusive',
+      failureClasses: ['tool_policy_gap', 'model_limit'],
+      notes: 'codex exec timed out with empty response',
+      auto: true,
+    };
+  } else {
+    scored = scoreCase(item, run.agentText);
+  }
   if (run.exitCode !== 0 && !run.agentText) {
     scored = {
       score: 'inconclusive',

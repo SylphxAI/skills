@@ -1,6 +1,6 @@
 # Codex utilization sheet inventory (auto-heuristic)
 
-Generated evidence index. **Not** multi-host promotable proof.
+**Not** multi-host promotable proof.
 
 | Sheet | Skills SHA | Cases | Pass | Fail | Inc | Promotable |
 | --- | --- | ---: | ---: | ---: | ---: | --- |
@@ -18,9 +18,8 @@ Generated evidence index. **Not** multi-host promotable proof.
 | `codex-remaining-critical-fe8d153.json` | `fe8d1532b94b` | 8 | 7 | 0 | 1 | False |
 | `codex-skill-curator-recheck-a48a717.json` | `a48a717eebd0` | 1 | 1 | 0 | 0 | False |
 | `codex-three-layer-0c97bf9.json` | `0c97bf98d0fc` | 4 | 4 | 0 | 0 | False |
+| `codex-tip-pin-a0dec0a.json` | `a0dec0a9895a` | 4 | 4 | 0 | 0 | False |
 | `codex-tip-pin-floor-abstain-73f7d4b.json` | `73f7d4bcb511` | 6 | 5 | 1 | 0 | False |
 | `codex-tip-pin-three-layer-73f7d4b.json` | `73f7d4bcb511` | 3 | 3 | 0 | 0 | False |
 
-## Residual
-
-**Open** for promotable multi-host utilization (Claude unauth; Grok 402/403; Codex heuristic only).
+Residual **open** (Claude unauth; Grok 402/403; Codex heuristic only).
