@@ -452,6 +452,23 @@ Until those text updates land, **this ADR controls** the ordinary path.
 8. ADR-0027 is marked superseded; dependent standards cite this ADR for the
    ordinary agent-native path.
 
+
+## Agent commit and PR layering (skills portfolio)
+
+Binding method for how agents author Git history under this trunk path lives in
+`source-authoring-standard` (three layers):
+
+1. **L1 Implementation batch** — do all high-value unblocked work toward the
+   framed outcome(s) in the worktree.
+2. **L2 Atomic commits** — each preserved PR commit is one logical step with a
+   valid tree (not a monocommit grab bag).
+3. **L3 Revert-safe PR outcome** — one complete, independently revertible
+   outcome per PR; ordinary squash makes that the main history unit.
+
+Product loops (`pursue-product-objective`, `run-open-product-betterment`,
+`drive-to-delivery`, product job Skills) compose that standard; they do not
+define a second trunk doctrine.
+
 ## Primary references
 
 - [DORA: Trunk-based development](https://dora.dev/capabilities/trunk-based-development/)

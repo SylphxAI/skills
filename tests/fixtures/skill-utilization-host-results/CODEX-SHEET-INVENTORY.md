@@ -19,6 +19,7 @@
 | `codex-skill-curator-recheck-a48a717.json` | `a48a717eebd0` | 1 | 1 | 0 | 0 | False |
 | `codex-three-layer-0c97bf9.json` | `0c97bf98d0fc` | 4 | 4 | 0 | 0 | False |
 | `codex-tip-pin-011d0fe.json` | `011d0fe0d5ea` | 4 | 4 | 0 | 0 | False |
+| `codex-tip-pin-36ae7f3.json` | `36ae7f3a839e` | 4 | 4 | 0 | 0 | False |
 | `codex-tip-pin-a0dec0a.json` | `a0dec0a9895a` | 4 | 4 | 0 | 0 | False |
 | `codex-tip-pin-floor-abstain-73f7d4b.json` | `73f7d4bcb511` | 6 | 5 | 1 | 0 | False |
 | `codex-tip-pin-three-layer-73f7d4b.json` | `73f7d4bcb511` | 3 | 3 | 0 | 0 | False |
