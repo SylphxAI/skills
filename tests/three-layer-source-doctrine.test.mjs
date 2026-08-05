@@ -26,6 +26,9 @@ const COMPOSE = [
   'skills/prototype-product/SKILL.md',
   'skills/execute-hard-cutover/SKILL.md',
   'skills/author-skill/SKILL.md',
+  'skills/build-distribution-readiness/SKILL.md',
+  'skills/decide-architecture-shape/SKILL.md',
+  'skills/run-product-feedback-loop/SKILL.md',
 ];
 
 test('source-authoring defines L1 batch, L2 atomic commits, L3 revert-safe PR', () => {
