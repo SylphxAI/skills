@@ -92,6 +92,14 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 - Exit criteria honest snapshot table added; residual still **open** for
   promotable multi-host proof (Claude unauth; Grok 402/403).
 
+
+### 2026-08-05 tip `011d0fe` promotion path + tip-pin
+
+- Host runbook: promotion checklist for `promotable: true` and Codex runner usage.
+- Tip-pin util sheet at `011d0fe` when recorded (`codex-tip-pin-011d0fe*`).
+- Live re-probe: Claude unauth; Grok 402 — host-incapable residuals stand.
+- Residual **open** until multi-host promotable proof or accepted policy closure.
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,

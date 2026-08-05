@@ -74,3 +74,40 @@ summary:
 Per `skill-utilization-eval-residual.md`, residual closes only when exit
 criteria land (fixtures + green host-class runs or explicit host-incapable
 residual + taxonomy). This runbook alone does not close it.
+
+## Codex auto-heuristic runner (this repo)
+
+```bash
+node scripts/run-utilization-host-codex.mjs --suite=floor --out-stem=codex-floor
+node scripts/run-utilization-host-codex.mjs --ids=id1,id2 --out-stem=codex-slice
+# optional per-case timeout (ms), default 180000
+UTIL_CODEX_TIMEOUT_MS=120000 node scripts/run-utilization-host-codex.mjs --suite=floor
+```
+
+Sheets write under `tests/fixtures/skill-utilization-host-results/` with
+`promotable: false` by default. Auto-heuristic scores are **not** multi-host
+closure.
+
+## Promotion (promotable: true)
+
+A sheet may be marked `promotable: true` only when **all** hold:
+
+1. Pinned Skills SHA + catalog digest + host version recorded on the sheet.
+2. Minimum promotable slice above is fully scored (not a partial convenience subset).
+3. Scoring is **human-reviewed** against `behaviorOracle` (not only auto-heuristic).
+4. Host class is capable (authenticated CLI / paid balance as required).
+5. No silent rewrite of fixture prompts.
+
+Closing the residual requires promotable evidence for **each** supported host
+class **or** a dated host-incapable residual for that class, plus explicit
+owner acceptance that incomplete multi-host coverage is acceptable policy—not
+claimed by auto-heuristic alone.
+
+## Current environment residual (re-check live)
+
+Re-probe before claiming host capability:
+
+- Claude: `claude auth status` must show logged in.
+- Grok: non-interactive prompt must not return 402/403 billing/spending errors.
+- Codex: `codex --version` and runner sheets at the pin.
+
