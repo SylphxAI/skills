@@ -100,6 +100,15 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 - Live re-probe: Claude unauth; Grok 402 — host-incapable residuals stand.
 - Residual **open** until multi-host promotable proof or accepted policy closure.
 
+
+### 2026-08-05 tip `36ae7f3` ADR cross-link + tip-pin
+
+- ADR-20260803 cites source-authoring three-layer (L1/L2/L3) as binding method
+  under Agent-Native Queued Trunk.
+- Tip-pin util sheet `codex-tip-pin-36ae7f3` when recorded.
+- Claude unauth; Grok 402 — host-incapable residuals stand.
+- Residual **open** for promotable multi-host proof.
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,
