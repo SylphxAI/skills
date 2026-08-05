@@ -14,6 +14,7 @@ Read
 before choosing instrumentation or a fix.
 
 ## Method
+- When landing source: compose `source-authoring-standard` — **L1** batch admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome.
 
 1. Freeze the exact candidate, runtime, device and viewport class, route and
    state, input sequence, data fixture, performance budget or user-visible

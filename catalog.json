@@ -109,7 +109,7 @@
       "name": "curate-skill-repository",
       "description": "Curate skills portfolio: collisions, merge/split, thickness, retirement.",
       "path": "skills/curate-skill-repository/SKILL.md",
-      "packageDigest": "sha256:576911b427885309c5a2bf8af7cc66f5d885ebe72d4f175708b359543b4b76a4"
+      "packageDigest": "sha256:0f7b17ecdd60e29337f77cf259dd8a33be9997fdba1970fce3c4df26472321b4"
     },
     {
       "name": "decide-architecture-shape",
@@ -253,7 +253,7 @@
       "name": "execute-hard-cutover",
       "description": "Execute a hard cutover migration: destination sole writer, full backfill, retire dual-paths; expand-contract only for proven large-scale live risk.",
       "path": "skills/execute-hard-cutover/SKILL.md",
-      "packageDigest": "sha256:ba46d6830a1e82cc7fe8417207d9bada3eb247915a0a3df6e76a283089dd3753"
+      "packageDigest": "sha256:e31bb13bb4d0b4dffc9db9c9f57db10a1c66795657546fbfe53929ce51834357"
     },
     {
       "name": "expand-product",
@@ -355,13 +355,13 @@
       "name": "remediate-agent-harness",
       "description": "Remediate an agent harness/system with measured deltas: tools, evals, failure modes (not open-ended improve forever).",
       "path": "skills/remediate-agent-harness/SKILL.md",
-      "packageDigest": "sha256:eefeacdff8ad21bab7f17150344971f15f57a013057385699e241570e764cad7"
+      "packageDigest": "sha256:14384317c79a8e72070decbda6e91e553262b26578d8d73f6542eb13ce37c69d"
     },
     {
       "name": "remediate-frontend-performance",
       "description": "Fix frontend jank: repro, RAF/timer/listener leaks, before/after same scene.",
       "path": "skills/remediate-frontend-performance/SKILL.md",
-      "packageDigest": "sha256:edcd89bc2f2a67be6a72922eb22362552eba6cd696dd73e6650277d5bf52f2df"
+      "packageDigest": "sha256:f8f33bb64cbdf7035b911f6588e931bc6659b832967cd1fa005798dc3b4da643"
     },
     {
       "name": "research-user-needs",

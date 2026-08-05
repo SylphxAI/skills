@@ -1,0 +1,32 @@
+{
+  "host": "codex",
+  "hostVersion": "codex-cli 0.146.0",
+  "model": "host-default (codex exec)",
+  "skillsCommit": "c3c9ed7284b1a20a76479b6fa49ed29f9a33781a",
+  "catalogDigest": "sha256:85ec450693a8fd8289fea3f9e97323657761d94fee7fbe8614adc8621f597df8",
+  "catalogCount": 118,
+  "ranAtUtc": "2026-08-05T03:44:57.844Z",
+  "promotable": false,
+  "scoring": "automatic-heuristic; not multi-host utilization closure",
+  "summary": {
+    "pass": 1,
+    "fail": 0,
+    "inconclusive": 0
+  },
+  "cases": [
+    {
+      "id": "neighbour-prototype-vs-build",
+      "suite": "near-neighbour",
+      "expectedSkills": [
+        "prototype-product"
+      ],
+      "score": "pass",
+      "failureClasses": [
+        "tool_policy_gap"
+      ],
+      "notes": "heuristic: prototype/probe framing; tools limited",
+      "autoScored": true,
+      "agentTextExcerpt": "I'll pull the relevant product-validation guidance and any prior notes on cheap real probes so we can recommend the lowest-cost decision test.\nSandbox hit a namespace limit; retrying with simpler file reads.\n## Goal\nCheapest **real** probe: the lowest-cost experiment that can **falsify** “this feature is worth building,” with pre-committed kill criteria. Not a partial build, mock, or “nice-to-have” demo.\n\n## Decision first (before any probe)\n\nWrite these four lines:\n\n1. **Decision this probe unlocks:** Build / don’t build / only under X constraint.  \n2. **Riskiest assumption** (one sentence): e.g. “Target users will change behavior Y weekly for outcome Z.”  \n3. **Worth-building threshold:** measurable, pre-committed (not “positive feedback”).  \n4. **Kill threshold:** what result ends the idea without more investment.\n\nIf you can’t name (2)–(4), you’re not ready to probe—you’re still framing.\n\n## Probe ladder (pick the cheapest that can kill the assumption)\n\n| Cost | Probe type | When it’s “real” enough | Typical kill signal |\n|------|------------|-------------------------|---------------------|\n| Lowest | **Evidence scan** (tickets, search, churn reasons, competitor usage) | Only i"
+    }
+  ]
+}

@@ -49,6 +49,7 @@ Default is **hard-cut**. Dual-path is exceptional tech debt.
 “Might break someone” without scale/path/cost is **not** an exception.
 
 ### 4. Implement
+- When landing source: L1 batch → L2 atomic commits → L3 revert-safe PR outcome(s) (`source-authoring-standard`).
 - Prefer one coherent cutover on the **owning** layer; no title-local forever
   bridges for engine floors, no product dual-write “for safety”
 - Backfill or regenerate so destination is complete, not partial
@@ -77,7 +78,7 @@ Not done: “compat left for later,” undated flags, dual packages for comfort.
 Open only what the cut touches:
 
 - `engineering-standard` — safety, verification, eng-hard-cut predicates
-- `source-authoring-standard` / `delivery-standard` — land/live honesty
+- `source-authoring-standard` — L1 batch cutover work, L2 atomic commits, L3 revert-safe PR outcome(s); `delivery-standard` — land/live honesty
 - `instruction-evolution-standard` — skill/constitution generation cutovers
 - `author-skill` / `curate-skill-repository` — portfolio package retirements
 - `parallel-change-integration-standard` — only under measured Git contention

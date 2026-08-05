@@ -42,6 +42,16 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
   - `codex-product-jobs-cd2e5c6` **6/6** (drive/finish/betterment/build/source-authoring)
 - Claude still **not logged in** → multi-host residual open.
 
+
+### 2026-08-05 near-neighbour + host residual
+
+- Mutating jobs: `execute-hard-cutover`, `remediate-*`, `curate-skill-repository`
+  compose L1/L2/L3 landing.
+- Codex near-neighbour @ `c3c9ed7`: **9/10** then prototype scorer framing fix;
+  recheck **1/1** (`promotable: false`).
+- Host residual sheet `host-capability-residual-c3c9ed7.md`: Claude unauth;
+  Grok **402 balance exhausted**.
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,
