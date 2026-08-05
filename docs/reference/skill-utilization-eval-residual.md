@@ -32,6 +32,16 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
   present but promotable multi-host proof not closed; Codex sheets stay
   auto-heuristic / non-promotable unless human-promoted.
 
+
+### 2026-08-05 compose + host slices @ `cd2e5c6`
+
+- Product jobs (`prototype/build/maintain/expand/finish-product`) compose
+  three-layer source landing; package-classes composition bullet updated.
+- Codex auto-heuristic (non-promotable):
+  - `codex-floor-cd2e5c6` **4/4**
+  - `codex-product-jobs-cd2e5c6` **6/6** (drive/finish/betterment/build/source-authoring)
+- Claude still **not logged in** → multi-host residual open.
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,

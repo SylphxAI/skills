@@ -67,7 +67,7 @@
       "name": "build-product",
       "description": "Ship a missing capability end-to-end on the correct boundary; original-oracle verify.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:653cc9f66ed2b0cdc81178319f190b598d876b385135ad090fa340662b6d4f62"
+      "packageDigest": "sha256:1f88c74ff178ec831c70590833d253bb9a7706b6af8a6faf76b88ca7deb8c2c9"
     },
     {
       "name": "ci-admission-standard",
@@ -259,13 +259,13 @@
       "name": "expand-product",
       "description": "Scale a validated core (×N) with metrics and core-path non-regression.",
       "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:eba0b42cc3b63f5fa731974f9e6e26ab3e0758f13c24bf50f08abab4d83d5fbd"
+      "packageDigest": "sha256:91d586513e474afddd98e1c6c9b893564eae17fc835557c6dbd63a4936187f10"
     },
     {
       "name": "finish-product",
       "description": "Release-grade finish/deburr of an integrated product with re-captured evidence.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:9f394f72e1445f9af6bcad66f822274cc0860117f0aea1ca7cf50d58652ec7c4"
+      "packageDigest": "sha256:dcd5ec42af9b63d1b993919a3fec3eb8ebafa2b47dedf6d2001a8d4fd8ade313"
     },
     {
       "name": "forecast-with-calibration",
@@ -283,7 +283,7 @@
       "name": "maintain-product",
       "description": "Cut framed live/regression harm: repro, root-cause fix, prove harm reduced.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:6c9120506c09b969ad0e9d86588980d1655ddc5a1902398577943bdc1e122026"
+      "packageDigest": "sha256:10adb5fb7d0d5992f7e32a05b4b3b9add7b4b654499ed5502bb1f9a8f96be6b3"
     },
     {
       "name": "model-security-threats",
@@ -337,7 +337,7 @@
       "name": "prototype-product",
       "description": "Learning probe only: cheapest real experiment and go/kill/pivot—not shipping durable capability yet.",
       "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:a0405f3ce7746fa944c242f8e39e9f1f574763dcaec7ecda20bccb672cd21850"
+      "packageDigest": "sha256:b1d8b1d354b75cf6a26ba7886ee7694a46ec1128d7d20e6530853b712000b01b"
     },
     {
       "name": "pursue-product-objective",
