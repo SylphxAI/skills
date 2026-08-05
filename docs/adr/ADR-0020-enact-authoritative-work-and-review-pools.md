@@ -1,6 +1,6 @@
 ---
 id: ADR-0020-enact-authoritative-work-and-review-pools
-status: accepted
+status: superseded
 date: 2026-07-28
 decision_owner: SylphxAI
 supersedes: []
@@ -11,7 +11,11 @@ scope:
 
 # ADR-0020: Enact-authoritative work and review pools
 
-> **Amended by ADR-0027 and ADR-20260803.** Enact remains optional Work/review authority. Git repositories own source admission via forge-native PR + Merge Queue; Work ids are not required in public commits/PR bodies.
+> **Superseded by [ADR-20260805](ADR-20260805-retire-enact-from-active-instructions.md).**
+> This record is historical rationale only; Enact is not an active instruction,
+> coordination, evidence, or deployment authority.
+
+> **Historical amendment (pre-2026-08-05):** ADR-0027 and ADR-20260803 had made Enact optional while retaining it. ADR-20260805 now retires that remaining integration.
 
 ## Context
 

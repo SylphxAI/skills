@@ -1,6 +1,6 @@
 ---
 id: ADR-0021-forge-agnostic-coordination
-status: accepted
+status: superseded
 date: 2026-07-28
 decision_owner: SylphxAI
 supersedes: []
@@ -11,7 +11,11 @@ scope:
 
 # ADR-0021: Forge-agnostic coordination boundary
 
-> **Amended by ADR-0027 and ADR-20260803.** Forge-agnostic Work coordination remains optional. Ordinary source integration is forge-native branch/PR/Merge Queue without external landing serializers.
+> **Superseded by [ADR-20260805](ADR-20260805-retire-enact-from-active-instructions.md).**
+> This record is historical rationale only; Enact is not an active instruction,
+> coordination, evidence, or deployment authority.
+
+> **Historical amendment (pre-2026-08-05):** ADR-0027 and ADR-20260803 had made legacy Work coordination optional. ADR-20260805 now retires the remaining Enact integration.
 
 ## Context
 
