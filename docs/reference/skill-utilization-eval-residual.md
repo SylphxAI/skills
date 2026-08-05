@@ -109,6 +109,44 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 - Claude unauth; Grok 402 — host-incapable residuals stand.
 - Residual **open** for promotable multi-host proof.
 
+
+## Objective split status (three-layer goal vs utilization residual)
+
+This section separates the broader skills product objective so agents do not
+confuse **landed doctrine** with **open multi-host utilization**.
+
+### A. Three-layer integration model — landed (evidence)
+
+| Item | Evidence |
+| --- | --- |
+| L1/L2/L3 defined | `skills/source-authoring-standard/references/full-standard.md` |
+| pursue / open-betterment backbone | `skills/pursue-product-objective/SKILL.md`, `skills/run-open-product-betterment/SKILL.md` |
+| High-EV mutators compose layers | structural test `tests/three-layer-source-doctrine.test.mjs` |
+| Queued trunk alignment | `docs/adr/ADR-20260803-agent-native-queued-trunk.md` (agent commit/PR layering) |
+| Install currency | `node runtime/sylphx-skills.mjs status --agent all` → current 118/118 |
+
+### B. Utilization residual — still open
+
+| Item | Status |
+| --- | --- |
+| Fixtures + oracles | Met |
+| Codex auto-heuristic coverage | Met (non-promotable sheets under `tests/fixtures/skill-utilization-host-results/`) |
+| Claude host | **Incapable here** (not logged in) |
+| Grok host | **Incapable here** (402/403 billing) |
+| Promotable multi-host proof | **Not met** |
+
+Closing **B** requires host capability + promotion checklist in
+`skill-utilization-host-runbook.md`. Closing **A** is not claimed by re-running
+the same Codex tip-pin forever.
+
+
+### 2026-08-05 tip `090759e` objective split status
+
+- Residual doc now separates **landed three-layer doctrine** from **open
+  multi-host utilization** (stop thrashing tip-pins as fake residual progress).
+- Tip-pin `codex-tip-pin-090759e` **4/4** non-promotable.
+- Claude unauth; Grok 402 — host-incapable.
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,
