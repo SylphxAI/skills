@@ -52,6 +52,18 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 - Host residual sheet `host-capability-residual-c3c9ed7.md`: Claude unauth;
   Grok **402 balance exhausted**.
 
+
+### 2026-08-05 remaining critical coverage @ `fe8d153`
+
+- Codex measured remaining unmeasured critical/compound IDs:
+  `codex-remaining-critical-fe8d153` — **7 pass / 0 fail / 1 inconclusive**
+  (`critical-skill-curator` inconclusive under tool limits; non-promotable).
+- Full fixture corpus now has Codex auto-heuristic coverage for all 48 cases
+  (aggregate across tip lineage sheets; still **not** multi-host promotable).
+- Host residual refreshed: Claude unauth; Grok **403 spending-limit / credits**.
+- Additional three-layer compose: `select-dependency-versions`,
+  `adopt-repo-standards`, `parallel-change-integration-standard`.
+
 ## Goal
 
 Measure whether agents **behave** as if the correct Skill method was applied,

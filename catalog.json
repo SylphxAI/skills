@@ -7,7 +7,7 @@
       "name": "adopt-repo-standards",
       "description": "Adopt engineering standards into a repo: constitution, manifest, fences, conformance entrypoints; hard-cut predecessor instruction layouts.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:4ac08f29e49b9b252cad7993329728b8a474adc7bb0e425e723fd2f6f55dda6b"
+      "packageDigest": "sha256:5f8d3781aea7730bb45bac6481b4d52c26128729adf15447bedf6304354e6743"
     },
     {
       "name": "agent-first-development-standard",
@@ -313,7 +313,7 @@
       "name": "parallel-change-integration-standard",
       "description": "Policy: parallel change integration—branches, rebase, collision, exact-SHA.",
       "path": "skills/parallel-change-integration-standard/SKILL.md",
-      "packageDigest": "sha256:7104d17b126d204771190d85cebe23339d1e7babb71bec1505d2b043797c5f08"
+      "packageDigest": "sha256:68f109d13ad101a94bc455e061c5bdac2775124441c9660d9e02734aa8107108"
     },
     {
       "name": "price-saas-subscription",
@@ -655,7 +655,7 @@
       "name": "select-dependency-versions",
       "description": "Select dependency/runtime versions from live authoritative release sources.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:1c0f81e1973ee4168fd8ab7023629d2c37bc0bbdca4ae79db6cff6df8d49b52e"
+      "packageDigest": "sha256:fb47546ee3486d1d4d10d4369c508feeebfdf6b196d8fa0e87a4e58232b9581c"
     },
     {
       "name": "select-next-work",
