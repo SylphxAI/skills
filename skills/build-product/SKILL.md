@@ -34,6 +34,7 @@ No permanent workarounds. Prefer durable work on the owning layer.
 - Large gaps → a still-meaningful vertical slice
 
 ### 4. Implement
+- When landing source: compose `source-authoring-standard` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
 - Correct boundary; no product hacks for shared floors that belong elsewhere
 - Real paths over mocks unless the cycle is explicitly building a seam
 - Update public docs/contracts when behavior changes

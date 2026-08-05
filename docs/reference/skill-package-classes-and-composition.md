@@ -44,7 +44,7 @@ When authoring a workflow:
 2. List composed policy packs (examples):
    - `delivery-standard` when claiming done/land/live;
    - `engineering-standard` / `technology-stack-profile` when implementing software;
-   - `source-authoring-standard` when mutating git source;
+   - `source-authoring-standard` when mutating git source (**L1** batch implement, **L2** atomic commits in the PR, **L3** one revert-safe complete PR outcome / squash unit);
    - `evidence-and-claims-standard` when grading claims;
    - `work-coordination-standard` when designing portable ledgers;
    - `drive-to-delivery` when one accepted objective must reach terminal without prompt churn;
