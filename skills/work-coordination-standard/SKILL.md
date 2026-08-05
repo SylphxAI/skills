@@ -33,4 +33,6 @@ standard.
 
 - Does not grant deploy or credential capabilities.
 - Does not replace product-local ADRs where those own decisions.
+- A discovered tool or adapter does not select the work ledger; selection is
+  explicit in the active product contract.
 

@@ -14,6 +14,10 @@ scope:
 
 # ADR-20260720: Make installation an agent-owned outcome
 
+> **Amended by [ADR-20260805](ADR-20260805-retire-enact-from-active-instructions.md).**
+> The installation/projection mechanics remain in force, but all Enact
+> enrollment, OAuth, authority, and always-on-instruction clauses are retired.
+
 ## Context
 
 The original distribution interface exposed package-manager and runtime

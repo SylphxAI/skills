@@ -15,6 +15,10 @@ scope:
 
 # Package classes and where standards live
 
+> **Amended by [ADR-20260805](ADR-20260805-retire-enact-from-active-instructions.md).**
+> The former Enact-specific adapter examples are retired. A discovered or
+> installed integration never selects a live coordination operation by itself.
+
 ## Context
 
 The public Agent Skills ecosystem ([agentskills.io](https://agentskills.io),

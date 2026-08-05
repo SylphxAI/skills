@@ -17,6 +17,10 @@ scope:
 
 # ADR-0027: Repository-native trunk integration and simple auto-deploy
 
+> **Amended by [ADR-20260805](ADR-20260805-retire-enact-from-active-instructions.md).**
+> Every Enact-specific clause below is historical only. Current coordination is
+> product-selected; a host-advertised integration is not an authority.
+
 > **Superseded by [ADR-20260803-agent-native-queued-trunk](ADR-20260803-agent-native-queued-trunk.md).** Ordinary agent-native integration is PR + Merge Queue with Work-terminal boundaries and always-green main. Three-authority separation, simple auto-deploy modes, and Candidate/watermark retirement remain in force via the superseding ADR.
 
 ## Context

@@ -1,5 +1,11 @@
 # Development flow simplification audit — 2026-07-30
 
+> **Current-reading note (2026-08-05):** the Enact-specific coordination
+> conclusion in the original audit is retired. Read
+> [ADR-20260805](adr/ADR-20260805-retire-enact-from-active-instructions.md)
+> for the active boundary; the source/deployment simplification findings below
+> otherwise remain useful historical analysis.
+
 ## Verdict
 
 The previous Platform Candidate / selected-snapshot / green-watermark design was
@@ -16,10 +22,10 @@ standard `On Commit / After Verification / Off` deployment model defined by
 
 | Concern | Previous design | Evidence-based target | Disposition |
 | --- | --- | --- | --- |
-| Work coordination | Enact Work plus Platform Candidate lineage | Enact Work may privately link exact Git revision | Keep Enact; remove source-admission dependency |
+| Work coordination | Legacy external Work plus Platform Candidate lineage | Product-selected/native coordination with no source-admission dependency | Retire legacy integration; remove source-admission dependency |
 | Source authority | Git plus Platform Candidate/landing controller | Git repository/forge only | Retire Platform source authority |
 | Internal integration | Platform selects direct trunk or PR adapter | Repository policy; internal DT preferred where allowed | Remove central selection |
-| External contribution | PR imported into private Candidate contract | Ordinary PR; no Enact account/Work id | Simplify |
+| External contribution | PR imported into private Candidate contract | Ordinary PR; no external coordination account/work ID | Simplify |
 | PR safety | Treated as a policy lane | Collaboration/pre-merge feedback envelope | Do not overclaim |
 | Merge queue | Compatibility serializer / broad default | Opt-in for measured contention on PR-required branches | Default off |
 | CI | Candidate admission plus cumulative watermarks | Exact-SHA jobs plus one aggregate verdict | Simplify |
@@ -107,7 +113,7 @@ tree-equivalence or evidence-transfer control plane just to remove one rerun.
 - selected-snapshot product/control-plane semantics;
 - proof bundles that relabel build/artifact/SHA integrity as project quality;
 - automatic merge queue without measured contention;
-- public Work ids or Enact lineage checks in product repositories; and
+- public external-work IDs or legacy coordination-lineage checks in product repositories; and
 - session polling while external delivery advances.
 
 ## Industry basis

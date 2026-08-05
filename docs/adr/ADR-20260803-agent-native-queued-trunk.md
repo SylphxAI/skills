@@ -19,6 +19,10 @@ scope:
 
 # ADR-20260803: Agent-Native Queued Trunk
 
+> **Amended by [ADR-20260805](ADR-20260805-retire-enact-from-active-instructions.md).**
+> Enact is retired; all Enact-specific optional-work-ledger clauses below are
+> historical and do not authorize an integration or a second control plane.
+
 ## Context
 
 ### What ADR-0027 optimized for

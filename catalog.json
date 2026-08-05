@@ -710,7 +710,7 @@
       "name": "work-coordination-standard",
       "description": "Policy: portable work-ledger—claims, leases, checkpoints, handoff; runtime-agnostic.",
       "path": "skills/work-coordination-standard/SKILL.md",
-      "packageDigest": "sha256:7bf90d4711138dbe4118debe81133e0ffebfa6c04f1aac6a84808bd311edb600"
+      "packageDigest": "sha256:985aea5aeb6700694bb152a1057d5a555d8e9b08a605a36526b55c73372851de"
     },
     {
       "name": "write-high-signal-update",

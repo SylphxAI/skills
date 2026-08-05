@@ -14,6 +14,10 @@ scope:
 
 # Add a distinct continuous product-quality loop contract
 
+> **Amended by [ADR-20260805](ADR-20260805-retire-enact-from-active-instructions.md).**
+> Any Enact-specific live-observation, Work, or Finding path is retired; this
+> record must not select a coordination integration for a current product.
+
 ## Context
 
 The existing loop methods intentionally separate one bounded objective from a

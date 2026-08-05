@@ -16,6 +16,10 @@ scope:
 
 # Thin dual-layer progressive instruction system
 
+> **Amended by [ADR-20260805](ADR-20260805-retire-enact-from-active-instructions.md).**
+> The thin-layer decision remains in force, but the former Enact-specific L0
+> bind line and all integration-specific authority clauses are retired.
+
 ## Context
 
 Agent hosts (Codex, Claude Code, Grok Build, Copilot, Cursor) converge on

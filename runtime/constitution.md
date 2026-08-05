@@ -18,6 +18,8 @@ only (universal by default). Detailed procedures stay in Skills.
   install or update. Cached, path-discovered, temporary, historical, or
   previously managed executables are not mutation authority.
 - Skills do not grant tools, credentials, deployment authority, or permissions.
+- A host-advertised tool, installed adapter, or historical configuration does
+  not select an authority or dependency; only an active product contract can.
 
 ## Fail-closed honesty
 
