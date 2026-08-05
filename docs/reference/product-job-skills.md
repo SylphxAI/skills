@@ -14,6 +14,14 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 | `pursue-product-objective` | Follow a declared product objective to evidence-backed completion |
 | `run-open-product-betterment` | Open-ended mixed-job betterment with no fixed objective |
 
+## Source integration layers
+
+Compose `source-authoring-standard` on any mutating job:
+
+1. **L1** — batch high-EV unblocked implementation  
+2. **L2** — atomic valid commits inside the PR  
+3. **L3** — one complete, independently revertible outcome per PR (queue/squash unit)
+
 ## Execution / work selection
 
 | Skill | When you need to… |
