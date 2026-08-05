@@ -43,7 +43,7 @@
       "name": "author-skill",
       "description": "Author/revise a Skill: job-shaped id, short description, method body, portable host rules.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:383a4bde8caae24f02979aada023acdd0d2d97fc3cd44c6baecec67d80211349"
+      "packageDigest": "sha256:d9e7c545fc2d9f87e9c682da0bec996222dcc7dcbd21ef77163bd6fece6240a7"
     },
     {
       "name": "bound-request-scope",
@@ -205,7 +205,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one multi-phase engineering objective through land/live terminal evidence without re-prompt between phases.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:8e9fe7d42554bdad93097be56877a3b8e221de7045efc17eb94c3004313b45d0"
+      "packageDigest": "sha256:ec47976b3e6c30a86f0f4278e54fcca20e6b7d155420aa2cd0a35cddc2a1e877"
     },
     {
       "name": "edit-preserving-voice",
