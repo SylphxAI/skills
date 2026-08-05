@@ -46,23 +46,60 @@ Ordinary agent-native path follows
 CI must not reject a valid change solely because it used the ordinary PR+queue
 path. External contributors without write access use the same PR envelope.
 
+## Three layers (batch work ≠ one Git object)
+
+| Layer | Unit | Rule |
+| --- | --- | --- |
+| **L1 Implementation** | Session / admitted work batch | Do all high-value unblocked work you can toward the framed outcome(s). |
+| **L2 History** | **Atomic commit** inside the PR | Each commit is one logical transition and leaves a **valid** tree. |
+| **L3 Integration / revert** | **PR = one complete, independently revertible outcome** | Squash to main makes **one landed commit per PR**—that commit must be a safe revert unit. |
+
+- **Batch implementation** does not mean one monocommit or one mixed bag on main.
+- **Many atomic commits in one PR** is the default when an outcome has multiple logical steps.
+- **Several PRs from one session** are correct when outcomes are independently revertible.
+- Commit count and PR count are diagnostics, not progress KPIs.
+
 ## Semantic atomicity
 
-A landed source change is semantically atomic when it:
+### L3 — Landed PR / squash unit (revert boundary)
 
-1. advances one coherent objective or invariant transition;
+A landed source change (the PR outcome; after squash, the main commit) is
+semantically atomic when it:
+
+1. advances **one** coherent objective or invariant transition (one revert story);
 2. includes code, tests, schemas, migrations, docs, and generated artifacts
    required to keep the landed state valid;
 3. excludes unrelated work and unattributed state;
 4. declares dependencies and material recovery needs; and
-5. can be reverted safely or has a forward-recovery contract; and
+5. can be reverted safely as a whole **or** has an explicit forward-recovery
+   contract; and
 6. when it establishes a successor implementation or source authority,
    resolves predecessor disposition under the Engineering Standard instead of
    leaving an active-looking old path as optional cleanup.
 
+**Revert test:** if this PR were wholly wrong, would `git revert` of its landed
+main commit leave the product coherent? If no, split outcomes into separate PRs
+before ready—or keep working until the PR is one coherent revert unit.
+
 Atomic does not mean one file, one commit, one PR, or a fixed line count.
 Dependent changes form a valid ordered stack; cross-repository changes use
 expand-contract and independently valid repository states.
+
+### L2 — Commits inside the PR
+
+Every **preserved** commit on the PR branch:
+
+1. records **one** logical step (one fix, one feature slice, one wiring, one
+   schema step—not an unrelated grab bag);
+2. leaves the tree **valid** for that step (build/tests appropriate to the
+   change; no knowingly broken intermediate if that commit will remain);
+3. has a subject that describes the durable result (body only for non-obvious
+   rationale, compatibility, risk, or recovery);
+4. excludes secrets, chat logs, live status, and model identity.
+
+Recovery checkpoints may be temporary; before ready/merge, normalize history so
+every preserved commit meets the above. Prefer a **sequence of atomic commits**
+over a single monocommit when the outcome has multiple logical steps.
 
 ## Checkpoints and commits
 
@@ -70,24 +107,24 @@ Use local recovery commits or patches during risky work. Create a durable
 checkpoint before handoff, likely context loss, or claim expiry. Preserve exact
 bytes or a content digest and durable locator.
 
-Before source integration, normalize the intended result into a coherent commit
-or a sequence where every preserved commit is valid. Commit subjects describe
-the durable result. Add a body only for non-obvious rationale, compatibility,
-risk, or recovery. Do not encode chat history, live status, model identity,
-secrets, or personal data.
+Before source integration, normalize into a **sequence of valid atomic commits**
+(or one commit only when the whole outcome truly is a single logical step).
 
 ### Ordinary path (PR + Merge Queue)
 
 1. Search open PRs for an overlapping candidate; reuse it when present.
 2. Create/reuse a short-lived branch for this Work and open a draft PR
    immediately.
-3. Commit and push at any frequency; keep PR CI latest-wins within this PR.
+3. Commit atomic steps at any frequency; push; keep PR CI latest-wins within
+   this PR.
 4. Keep every phase, fix, test, schema, migration, doc, and generated artifact
-   required by the outcome in the **same** PR.
-5. Mark ready only when the Work terminal is fully satisfied.
-6. Let Merge Queue evaluate the merge-group SHA and squash-merge.
-7. Treat the resulting default-branch SHA—not the mutable PR head—as landed
-   source truth.
+   required by **this outcome** in the **same** PR.
+5. If the session produced multiple **independently revertible** outcomes, open
+   multiple PRs (one outcome each)—do not fuse unrelated revert stories.
+6. Mark ready only when the Work/outcome terminal is fully satisfied.
+7. Let Merge Queue evaluate the merge-group SHA and squash-merge.
+8. Treat the resulting default-branch SHA—not the mutable PR head—as landed
+   source truth. Plan reverts at **that** granularity.
 
 ### Break-glass direct trunk
 

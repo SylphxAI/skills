@@ -139,8 +139,11 @@ evidence, delivery boundary, and relation to findings/candidates.
 
 - One Work owns one independently terminal **outcome story** (may cover multiple
   findings when one owning cause or one coherent tranche).
-- Prefer packaging **high-leverage coherent changes** over atomized polish.
-- Several Work items may exist in **B** simultaneously (the cycle executes all).
+- **L3:** one Work/outcome → one PR (revert-safe complete unit after squash).
+- **L2:** multiple **atomic commits** inside that PR when the outcome has steps.
+- Prefer high-leverage coherent **outcomes** over atomized polish PRs; still split
+  **independently revertible** outcomes into separate PRs.
+- Several Work items may exist in **B** simultaneously (the batch executes all).
 
 ### Candidate C, backlog B, residual R
 
@@ -158,7 +161,7 @@ evidence, delivery boundary, and relation to findings/candidates.
 | --- | --- |
 | `external_wait` | Human/owner must produce an artifact or credential the agent cannot |
 | `authority_pending` | Required approval already requested; id/link recorded |
-| `capacity` | This cycle’s B is already full under hard WIP; overflow ranked |
+| `capacity` | Named real limit only (tools/auth/safety/integration saturation)—not a preference for small batches; overflow ranked |
 | `below_min_delta` / `negative_ev` / `duplicate` | Policy reject with reason |
 | `unauthorized_irreversible` | Would violate safety/legal without owner |
 
@@ -292,7 +295,7 @@ While clearing **B**, maximize outcome throughput:
 admitted B item
   -> claim / drive-to-delivery Workstream
   -> specialist diagnosis and implementation
-  -> repository-native integration (small commits OK)
+  -> repository-native integration (atomic commits in PR; revert-safe PR outcome)
   -> exact-candidate verification as needed
   -> delivery owner path as required
   -> original-oracle readback on exact delivered subject
@@ -301,8 +304,9 @@ admitted B item
 
 Word Work for native specialist discovery—not “use all quality Skills.”
 
-**Engineering vs product batching:** DORA-style small commits are allowed.
-Product progress is measured at Work and cycle outcome oracles—not commit
+**Three layers:** L1 batch high-EV implementation; L2 atomic valid commits
+inside each PR; L3 one revert-safe complete outcome per PR (squash unit).
+Product progress is measured at Work and outcome oracles—not commit or PR
 count.
 
 Rework is related Work (`rework_of`, `follow_up_of`, `reverts`), not silent

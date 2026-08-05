@@ -343,7 +343,7 @@
       "name": "pursue-product-objective",
       "description": "Pursue a fixed declared product objective to evidence-backed completion: keep going until that named outcome is reached and proved.",
       "path": "skills/pursue-product-objective/SKILL.md",
-      "packageDigest": "sha256:c56a64600effd3d8ff3e3608dadd8b9708e24965691db25d85a97a13a2120954"
+      "packageDigest": "sha256:a06966bcbf7da7ca14b46329e3674e1404aa1e2d6b182c9da8ae8b379d79c807"
     },
     {
       "name": "record-structured-deliberation",
@@ -641,9 +641,9 @@
     },
     {
       "name": "run-open-product-betterment",
-      "description": "Run ongoing open product betterment loop (no fixed objective): quality matrix, scout, all high-EV B including UI and performance opportunities, oracle verify; idle at empty high-EV frontier.",
+      "description": "Run ongoing open product betterment (no fixed objective): scout high-EV work, batch implement, atomic commits, revert-safe PRs; idle at empty high-EV frontier.",
       "path": "skills/run-open-product-betterment/SKILL.md",
-      "packageDigest": "sha256:065d7f9f7bdc1db202a1fbbdd008c909b04c1568cc728587b5e6840663db8084"
+      "packageDigest": "sha256:07b1fecb57542b036d2344682c48bf2f6a13e6e191a09583146560202d41dda5"
     },
     {
       "name": "run-product-feedback-loop",
@@ -665,9 +665,9 @@
     },
     {
       "name": "source-authoring-standard",
-      "description": "Policy: source authoring—commits, exact candidates, worktrees, concurrent-edit safety.",
+      "description": "Policy: source authoring—atomic PR commits, revert-safe PR outcomes, worktrees, concurrent-edit safety.",
       "path": "skills/source-authoring-standard/SKILL.md",
-      "packageDigest": "sha256:7e4513ca5cfa68a66cbaa4bdf5f9c24f9fd84eb6070fde1a86410c414dc87ae6"
+      "packageDigest": "sha256:541bdcadbc2fe4c4a4adfe603c7cb84b22e611015358b10fa661b3a19ed8561c"
     },
     {
       "name": "specification-control-plane-standard",
