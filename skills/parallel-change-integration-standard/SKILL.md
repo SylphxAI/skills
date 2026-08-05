@@ -11,6 +11,9 @@ method and predicates.
 
 ## Method
 
+Compose `source-authoring-standard` three layers when implementing: L1 batch, L2 atomic commits in the PR, L3 one revert-safe outcome per PR (queued squash unit).
+
+
 1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
 2. Apply the strongest relevant subset; record material tradeoffs only where
    the owning contract, configuration, ADR, or executable proof requires them.

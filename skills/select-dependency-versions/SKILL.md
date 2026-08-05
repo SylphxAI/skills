@@ -14,6 +14,7 @@ package ecosystem. Read [runtime channels](references/runtime-channels.md) when
 selecting a language runtime, compiler, SDK, or toolchain.
 
 ## Method
+- When landing source: compose `source-authoring-standard` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).
 
 1. Inspect the active technology profile, manifests, lockfiles, runtime and
    platform constraints, package type, and current dependency graph. Separate
