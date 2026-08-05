@@ -163,6 +163,19 @@ function scoreCase(item, agentText) {
       return { score: 'pass', failureClasses: [], notes: 'heuristic: pursue-objective framing', auto: true };
     }
   }
+  if ((item.expectedSkills || []).includes('prototype-product')) {
+    const framed = /(probe|prototype|go\/?kill|pivot|kill\/keep|cheapest|not shipping|hypothesis|throwaway|learning experiment|spike)/.test(text)
+      && !/(ship end-to-end durable capability as the only goal)/.test(text);
+    if (framed) {
+      const toolBlocked = /(sandbox|enospc|blocked|namespace|read-only)/.test(text);
+      return {
+        score: 'pass',
+        failureClasses: toolBlocked ? ['tool_policy_gap'] : [],
+        notes: toolBlocked ? 'heuristic: prototype/probe framing; tools limited' : 'heuristic: prototype/probe framing',
+        auto: true,
+      };
+    }
+  }
   if ((item.expectedSkills || []).includes('maintain-product')) {
     const framed = /(repro|reproduce|root cause|regression|harm|500|outage|incident|fix|owning)/.test(text);
     const toolBlocked = /(sandbox|read-only|enospc|blocked|cannot reproduce|no shell)/.test(text);
