@@ -1,6 +1,6 @@
 ---
 name: craft-product-interface
-description: "Craft one product interface or flow: visual direction, interaction states, responsive, accessibility."
+description: "Craft one product interface or flow: premium non-generic UI, HUD/overlay, states, responsive, a11y."
 ---
 
 # Craft Product Interface
@@ -43,6 +43,9 @@ Load only the references needed for the declared surface, but always read the ve
 | Greenfield direction, hierarchy, visual language, density, tokens, or non-generic styling | [Interface direction and craft rules](references/interface-craft-rules.md) |
 | Premium / anti-generic floors (palette, tokens, concentric radius, anti-slop) | [Premium non-generic UI](references/premium-non-generic-ui.md) |
 | Game start screens, HUD, pause/menus over a stage | [Game overlay and HUD](references/game-overlay-and-hud.md) |
+| Type scale, tabular nums, wrap/orphan floors | [Typography floors](references/typography-floors.md) |
+| Elevation, concentric surfaces, optical alignment | [Surfaces and elevation](references/surfaces-and-elevation.md) |
+| Enter/exit motion craft and transition perf | [Motion craft floors](references/motion-craft-floors.md) |
 | Compact/wide layouts, mobile web/native, safe areas, text expansion, or input parity | [Responsive, mobile, and input](references/responsive-mobile-and-input.md) |
 | Forms, loading, empty, offline, permission, error, success, destructive, or recovery behavior | [States, forms, and recovery](references/states-forms-and-recovery.md) |
 | Semantics, focus, assistive technology, motion, feedback timing, or low-end performance | [Accessibility, motion, and performance](references/accessibility-motion-and-performance.md) |

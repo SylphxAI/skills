@@ -106,3 +106,10 @@ User bar: agents must (1) absorb why external builders look premium, especially 
 
 Keel tip docs remain **engine authority**; Skills hold agent job methods and maps only.
 
+## Wave 3b — depth continue
+
+| Gap | Action |
+| --- | --- |
+| design-ui typography/surfaces/motion depth | Portable floors under craft-product-interface |
+| build-keel-title example discoverability | `keel-examples-routing.md` from EXAMPLES_CATALOG |
+
