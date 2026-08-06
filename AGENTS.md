@@ -6,8 +6,8 @@ method knowledge.
 ## Layout
 
 - `skills/<task-id>/` — installable task skills (small catalog)
-- `skills/consult-sylphx-methods/references/` — migrated standards, reviews,
-  design/product methods (progressive library; one listing entry)
+- `skills/sylphx-methods/` — **company method library** (one listing entry;
+  real map is `references/INDEX.md` job → path; not optional nesting)
 - `skills/author-skill/references/` — skill-authoring depth (incl. folded
   curate/distill/evals methods)
 - `runtime/constitution.md` — thin always-on floors
@@ -17,7 +17,7 @@ method knowledge.
 
 - Frontmatter is `name` + `description` only.
 - Prefer task skills only when the task-skill test in `docs/MODEL.md` passes.
-- Otherwise add depth under `consult-sylphx-methods/references/` and index it.
+- Otherwise add depth under `sylphx-methods/references/` and index it.
 - Rebuild with `npm run build:catalog`. Run `npm test` before landing.
 
 ## Install targets

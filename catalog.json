@@ -7,25 +7,19 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill: one job, trigger description, concise procedure, optional scripts/references. Use when packaging a reusable specialized workflow.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:16a463e98129f2849f90ff7f728b89ff27a3a71928a0e6cc51e37a209ff37833"
+      "packageDigest": "sha256:57a5a04f4d8716259ae2a9e1d2018c0fa724db451bbb9306e6f3d1c45b43224f"
     },
     {
       "name": "build-keel-title",
       "description": "Implement a Keel external title/game/app: Title day-1, examples routing, pack shell, doctor floors.",
       "path": "skills/build-keel-title/SKILL.md",
-      "packageDigest": "sha256:b63597a9a11345e765a4e8a367bbddf1c647ccc5b9ead01327f8c19c519f1565"
-    },
-    {
-      "name": "consult-sylphx-methods",
-      "description": "Open Sylphx method knowledge: standards, domain review playbooks, design/product procedures migrated from the pre-v3 portfolio. Use when you need org methods not covered by a dedicated task skill.",
-      "path": "skills/consult-sylphx-methods/SKILL.md",
-      "packageDigest": "sha256:600bf0111ee744a8a1b5517ac0cae95be9fc6806c4804b46e7b82ecfa1cacb7d"
+      "packageDigest": "sha256:1e3e080ac78b2eb3f4cad377e275cfd0bb0b62d4a011fdf1e75168fb13adaa29"
     },
     {
       "name": "craft-product-interface",
       "description": "Craft one product interface or flow: premium non-generic UI, HUD/overlay, states, responsive, a11y.",
       "path": "skills/craft-product-interface/SKILL.md",
-      "packageDigest": "sha256:5ac32217d54cd3c2c6ed9c2bcdaca8dba9f4bdd923cbb3904cc6c247f2cabdee"
+      "packageDigest": "sha256:4de0c03bb4af0bd8fed7ed2c3c34ffcc20e74896fd3ba45fbef3b51b5043bd27"
     },
     {
       "name": "execute-hard-cutover",
@@ -68,6 +62,12 @@
       "description": "Select dependency and runtime versions from live authoritative release sources. Use when adding or upgrading packages, runtimes, SDKs, or generators.",
       "path": "skills/select-dependency-versions/SKILL.md",
       "packageDigest": "sha256:fd7bdd705d1fc096d6d85850d6473b35262774e463c4c064ed7ccef973ad58fc"
+    },
+    {
+      "name": "sylphx-methods",
+      "description": "Sylphx company methods for agent work: agent-native products, delivery proof, source authoring, product cycles (prototype/build/finish/betterment), Keel/Platform-first, design blueprints, domain review playbooks. Open for any Sylphx/Keel/Platform/Cubeage job that needs org standards or multi-step methods—not only when a specialized task skill is missing.",
+      "path": "skills/sylphx-methods/SKILL.md",
+      "packageDigest": "sha256:c34c9da1134573a3f4053f3312f31ead94af284ed48cad0268dd58896a6dcb57"
     },
     {
       "name": "verify-local-web-preview",

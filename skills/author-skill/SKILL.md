@@ -103,7 +103,7 @@ interface:
 ## Related depth
 
 - Folded curator/distill/eval material: [references/](references/) (`curate-skill-repository`, `distill-source-to-skill`, `design-skill-evals`)
-- Org-wide methods library skill: `consult-sylphx-methods` → its `references/INDEX.md`
+- Org-wide methods library skill: `sylphx-methods` → its `references/INDEX.md`
 
 ## Archived depth
 

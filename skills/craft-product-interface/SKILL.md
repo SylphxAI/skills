@@ -126,3 +126,8 @@ Reject or revise work that:
 ## Completion check
 
 The pack is complete only when the declared surface has a coherent direction, truthful state model, responsive and input behavior, baseline accessibility, purposeful feedback, appropriate performance, and mode-appropriate evidence. For Build or Polish, another agent must be able to locate the changed files, reproduce validation, and inspect the rendered states without reopening the design intent.
+
+## Company methods
+
+For whole-app/game design blueprints beyond one surface, open `sylphx-methods` → `design/` via INDEX.
+

@@ -93,3 +93,8 @@ When the title is a game (not only app chrome), also load:
 - UI craft: `craft-product-interface` (Keel Paint/ThemePack — never a second React UI tree)
 
 Platform services (auth, deploy, data) come from **Sylphx Platform** when needed — not workspace-kit clones.
+
+## Company methods
+
+For org delivery/agent-native/source standards, open task skill `sylphx-methods` → `references/INDEX.md`.
+

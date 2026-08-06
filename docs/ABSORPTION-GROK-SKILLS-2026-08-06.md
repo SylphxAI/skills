@@ -26,7 +26,7 @@ Agents must **not** adopt foreign app-builder stacks as the product SSOT.
 | Map modes / layered contract / prop packs | `produce-game-2d-map-assets/references/*` |
 | Sprite modes/actions/bundles + video pipeline | `produce-game-2d-sprites/references/*` |
 | Game loop/feel/genre principles (engine-agnostic) | `build-keel-title/references/title-game-craft-absorbed.md` |
-| Pointers from design-game library | `consult-sylphx-methods/.../design-game/README.md` |
+| Pointers from design-game library | `sylphx-methods/.../design-game/README.md` |
 
 ## Explicitly rejected (do not reintroduce)
 

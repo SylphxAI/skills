@@ -36,7 +36,7 @@ OS loops, and domain review matrices are out of catalog scope. See
 | Skill | Job |
 | --- | --- |
 | `author-skill` | Create or revise an Agent Skill package |
-| `consult-sylphx-methods` | Org method library (migrated standards/reviews/methods) |
+| `sylphx-methods` | **Company methods** (INDEX: delivery, agent-native, product cycles, design, reviews) |
 | `build-keel-title` | Implement a Keel external title/app |
 | `craft-product-interface` | Product UI craft with verification |
 | `execute-hard-cutover` | Hard-cut predecessor → destination |

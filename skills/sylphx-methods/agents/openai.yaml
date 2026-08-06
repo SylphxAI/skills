@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sylphx Methods"
+  short_description: "Company methods: agent-native, delivery, product cycles, design, reviews"
+  default_prompt: "Open Sylphx methods INDEX for this job and apply the matching company method."
