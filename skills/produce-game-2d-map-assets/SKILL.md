@@ -76,3 +76,11 @@ Sylphx-native and Keel-aligned.
 ## Output
 
 Tile/prop paths, preview composites, QC notes, residuals.
+
+## Absorbed depth (Keel-native)
+
+- [references/map-pipeline-selection.md](references/map-pipeline-selection.md)
+- [references/layered-map-contract.md](references/layered-map-contract.md)
+- [references/prop-pack-contract.md](references/prop-pack-contract.md)
+
+Default `engine_target` for Sylphx work is **Keel title assets + World geometry**, not Phaser/Godot/Unity.

@@ -1,21 +1,18 @@
-# Layered map notes
+# Layered map notes (index)
 
-Use when assembling multi-layer 2D map previews (terrain, props, overlays).
+For full contracts absorbed into this skill (Keel-native):
 
-## Practical contract
+1. [map-pipeline-selection.md](map-pipeline-selection.md) — map_mode → visual/object/collision axes
+2. [layered-map-contract.md](layered-map-contract.md) — layers, props, collision metadata, QA
+3. [prop-pack-contract.md](prop-pack-contract.md) — prop sheets, magenta extract, density
+4. [tileset-and-prop-qc.md](tileset-and-prop-qc.md) — seam/alpha QC floors
 
-- Keep layers separable files or named groups: base terrain, decals, props,
-  collision/debug overlay (debug never ships in player art).
-- Same pixel scale and origin across layers so `compose_layered_preview.py`
-  (or title tools) stack without drift.
-- Name layers and z-order in a tiny manifest next to the set.
-- Preview is art-direction QC—not the runtime map format. Title/Keel owns
-  runtime packing.
+**Owners**
 
-## Strategies (pick, do not invent five pipelines)
+| Artifact | Owner |
+| --- | --- |
+| Tiles/props PNGs + extract scripts | this skill |
+| Map data / spawn hooks / collision in World | title (Keel Systems) |
+| Ship shells | `keel pack` / title packaging |
 
-1. **Tile atlas + prop sheet** — default for grid maps.
-2. **Hero backdrop + modular props** — for linear stages.
-3. **Chunked biomes** — large worlds; keep per-biome style contracts tight.
-
-Document chosen strategy, tile size, and residual seam/identity issues.
+Never invent a second browser engine stack for Sylphx titles.

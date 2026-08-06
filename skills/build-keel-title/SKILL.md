@@ -83,3 +83,13 @@ fork a second runtime.
 ## Output
 
 Title paths · systems/intents · pack/profile notes · oracle evidence · residuals
+
+## Absorbed title game craft
+
+When the title is a game (not only app chrome), also load:
+
+- [references/title-game-craft-absorbed.md](references/title-game-craft-absorbed.md) — loop/feel/genre principles rewritten off foreign browser engines
+- Asset production: `produce-game-2d-sprites`, `produce-game-2d-map-assets`
+- UI craft: `craft-product-interface` (Keel Paint/ThemePack — never a second React UI tree)
+
+Platform services (auth, deploy, data) come from **Sylphx Platform** when needed — not workspace-kit clones.

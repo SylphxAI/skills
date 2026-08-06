@@ -188,3 +188,8 @@ Compound work may use multiple procedures. Name one primary artifact owner, pass
 ## Completion check
 
 The blueprint is ready when another agent can explain the promised experience, why each selected system belongs, how loops and systems interact, what is fully built versus only contract-ready or exposed, how late and returning players reach meaningful participation, which evidence could falsify each major hypothesis, and where every specialist decision lives. No requested capability may be deferred for conventional human scarcity, and no genre-incoherent feature, implementation-control-plane boilerplate, fabricated digest, or invented proof may substitute for game design. Blueprint acceptance does not itself claim implementation, whole-game finish, release, or live quality.
+
+## Absorbed external craft (Keel filter)
+
+Additional playable-title craft distilled from external skills lives in the installable task skill [`build-keel-title`](../../../../build-keel-title/references/title-game-craft-absorbed.md) and asset skills `produce-game-2d-sprites` / `produce-game-2d-map-assets`. Do not reintroduce React/Three/Phaser as the Sylphx title stack.
+

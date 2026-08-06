@@ -111,3 +111,10 @@ Sylphx-native and Keel-aligned.
 
 Engine-ready asset paths, QC notes, residuals, and evidence of host tools used
 or gaps.
+
+## Absorbed depth
+
+- [references/modes-actions-bundles.md](references/modes-actions-bundles.md) — asset types, actions, bundles
+- [references/video-to-sprite-pipeline.md](references/video-to-sprite-pipeline.md) — optional video→sheet path
+
+Ship into title `assets/` for Keel packs; do not couple to foreign app-builder runtimes.

@@ -13,13 +13,13 @@
       "name": "build-keel-title",
       "description": "Implement a Keel external title/game/app: Title day-1, examples routing, pack shell, doctor floors.",
       "path": "skills/build-keel-title/SKILL.md",
-      "packageDigest": "sha256:74bee6ff724fefd40d4cc62ca1c0936e6ac2e495278c8e22cd4e531a6125e77d"
+      "packageDigest": "sha256:b63597a9a11345e765a4e8a367bbddf1c647ccc5b9ead01327f8c19c519f1565"
     },
     {
       "name": "consult-sylphx-methods",
       "description": "Open Sylphx method knowledge: standards, domain review playbooks, design/product procedures migrated from the pre-v3 portfolio. Use when you need org methods not covered by a dedicated task skill.",
       "path": "skills/consult-sylphx-methods/SKILL.md",
-      "packageDigest": "sha256:53f9cf76ed70fb5bb2199d4afb8cc44e280908593d9c6dfd6ac07dd8fa7e944f"
+      "packageDigest": "sha256:600bf0111ee744a8a1b5517ac0cae95be9fc6806c4804b46e7b82ecfa1cacb7d"
     },
     {
       "name": "craft-product-interface",
@@ -37,13 +37,13 @@
       "name": "produce-game-2d-map-assets",
       "description": "Produce 2D map tiles/props packs: layered sheets, magenta prop extract, previews for title/Keel assets.",
       "path": "skills/produce-game-2d-map-assets/SKILL.md",
-      "packageDigest": "sha256:4a8b9bf7bab6328ed4b7a0f30772bcbcec199943bf0221bcf15967473a3266c3"
+      "packageDigest": "sha256:6e9b7bf36dfa7bf3cd43f2b4e49578e5f13127b0601c5d1aacb91a2c49388ac3"
     },
     {
       "name": "produce-game-2d-sprites",
       "description": "Produce engine-ready 2D game sprites/sheets: generate, chroma postprocess, loop QC, Keel pack paths.",
       "path": "skills/produce-game-2d-sprites/SKILL.md",
-      "packageDigest": "sha256:1fc543c3f50f265b67b89af597b2aa975bf227c31e16ed9d6635e461bcfc1b84"
+      "packageDigest": "sha256:c0d97487ef4b83b73e93ef95d72507f624056849b8421d39ab1d0d319cb9c773"
     },
     {
       "name": "produce-product-assets",
