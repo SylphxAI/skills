@@ -65,12 +65,7 @@ Read `--help` before inventing flags. Requires Pillow (and script-local deps).
 ### 5. Verify + deliver
 
 - Seam QC, alpha edges, naming, residual defects
-- Land with `source-authoring-standard` L1/L2/L3 when committing to a title repo
-
-## Soft composition
-
-Share art contracts with character/FX sheets when the same title style applies;
-whole-game world thesis stays in design-game; packaging stays Keel pack docs.
+- Land with atomic commits and a revert-safe PR outcome L1/L2/L3 when committing to a title repo
 
 ## Provenance
 

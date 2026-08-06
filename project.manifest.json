@@ -1,182 +1,27 @@
 {
-  "$schema": "./skills/project-manifest-standard/references/project-manifest.schema.json",
-  "schemaVersion": 2,
+  "schemaVersion": 1,
   "kind": "ProjectManifest",
   "project": {
     "id": "sylphx-skills",
     "repository": "SylphxAI/skills",
     "name": "Sylphx Skills",
-    "summary": "Public static instructions, compact runtime constitution, and mandatory AutoSync for Codex, Claude, and Grok.",
+    "summary": "Industry-aligned Agent Skills catalog and install adapters for Codex, Claude Code, and Grok Build.",
     "lifecycle": "production",
-    "layer": "tooling",
-    "visibility": "public",
-    "policyPool": "agent-tool",
-    "links": [
-      {
-        "type": "repository",
-        "url": "https://github.com/SylphxAI/skills",
-        "title": "Public Skills repository"
-      }
-    ],
-    "tags": [
-      "agent-skills",
-      "standards",
-      "procedures",
-      "codex",
-      "claude",
-      "grok",
-      "agent-native"
-    ]
+    "visibility": "public"
   },
   "intent": {
     "goals": [
-      "Own canonical static instructions under skills/<id>/.",
-      "Let a user install or update Codex, Claude Code, and Grok Build by giving the repository to an agent.",
-      "Converge the complete Skill generation and compact persistent constitution without replacing unrelated user state.",
-      "Publish Sylphx working methods and Platform guidance as useful public product surfaces."
+      "Ship a small catalog of specialized task skills.",
+      "Keep always-on floors thin and miss-class-A only.",
+      "Install and sync skills for Codex, Claude Code, and Grok Build."
     ],
     "nonGoals": [
-      "Own live work, organization-wide adoption, effect state, or customer data.",
-      "Preserve retired instruction copies outside Git history."
+      "Own live work or organization-wide adoption state.",
+      "Publish a policy encyclopedia as skill packages.",
+      "Preserve obsolete large-catalog portfolio structures."
     ]
-  },
-  "boundaries": {
-    "owns": [
-      {
-        "id": "static-instruction-packages",
-        "name": "Static instruction packages",
-        "description": "Public standards, procedures, profiles, adapters, and self-contained references."
-      },
-      {
-        "id": "runtime-sync",
-        "name": "Runtime synchronization",
-        "description": "Small install, update, status, clear, and auto-sync adapters for Codex, Claude Code, and Grok Build."
-      },
-      {
-        "id": "agent-owned-installation",
-        "name": "Agent-owned installation",
-        "description": "A repository-plus-intent contract, compact persistent constitution, exact readback, and fresh-context adoption boundary."
-      }
-    ],
-    "doesNotOwn": [
-      "Live selected-repository adoption, work claims, effects, or operational customer state.",
-      "Product-local decisions, runtime implementation, or model benchmark results."
-    ],
-    "publicSurfaces": [
-      {
-        "type": "instruction",
-        "name": "Canonical Skills",
-        "location": "skills/"
-      },
-      {
-        "type": "instruction",
-        "name": "Repository installation bootstrap",
-        "location": "SKILL.md"
-      },
-      {
-        "type": "manifest",
-        "name": "Deterministic catalog",
-        "location": "catalog.json"
-      },
-      {
-        "type": "instruction",
-        "name": "Agent installation contract",
-        "location": "INSTALL.md"
-      },
-      {
-        "type": "instruction",
-        "name": "Compact runtime constitution",
-        "location": "runtime/constitution.md"
-      },
-      {
-        "type": "tooling",
-        "name": "Runtime sync CLI",
-        "location": "runtime/sylphx-skills.mjs"
-      },
-      {
-        "type": "documentation",
-        "name": "Public entry point",
-        "location": "README.md"
-      }
-    ],
-    "allowedDependencies": [
-      {
-        "owner": "Node.js",
-        "surface": "Standard library, native runtime CLIs, and npx bootstrap",
-        "direction": "runtime-tool"
-      }
-    ],
-    "forbiddenCouplings": [
-      "No hard-coded credential, tenant grant, customer-data, benchmark, or model-provider dependency; the canonical Sylphx SaaS hostname is product identity.",
-      "No generated or secondary writable copy of Skill semantics."
-    ]
-  },
-  "architecture": {
-    "generationRef": "skills/engineering-standard/references/capability-first-architecture.md",
-    "standardPackages": [
-      "engineering-standard",
-      "instruction-evolution-standard",
-      "project-manifest-standard",
-      "design-prompt-architecture",
-      "bound-request-scope"
-    ],
-    "capabilities": [
-      "static-instruction-packages",
-      "runtime-sync",
-      "agent-owned-installation",
-      "remote-integration-enrollment"
-    ],
-    "adoptionStatus": "adopted",
-    "gaps": []
-  },
-  "documentation": {
-    "adrs": {
-      "location": "docs/adr/",
-      "status": "present"
-    },
-    "specs": {
-      "location": "skills/",
-      "status": "present"
-    },
-    "catalog": {
-      "location": "catalog.json",
-      "status": "present"
-    },
-    "runbooks": {
-      "location": "README.md, INSTALL.md, CONTRIBUTING.md, PROJECT.md",
-      "status": "present"
-    },
-    "generatedReferences": {
-      "location": "catalog.json",
-      "status": "present"
-    }
   },
   "delivery": {
-    "lane": "public-source",
-    "verificationCommands": [
-      "npm test",
-      "npm pack --dry-run",
-      "isolated runtime fresh-context evaluation when installation changes"
-    ],
-    "terminalBoundary": "Exact default-branch tree passes package and installer integrity, public package inspection, and any installation change has typed clean-runtime evidence for authenticated supported providers.",
-    "recoveryClass": "source-revertable",
-    "deployable": false,
-    "runnerProfiles": {
-      "check": "github-hosted-public-source"
-    }
-  },
-  "commercial": {
-    "status": "commercial",
-    "decisionHome": "docs/adr/ADR-0001-public-agent-instruction-source.md",
-    "pricingSourceOfTruth": "Outside this source repository.",
-    "metricsSourceOfTruth": "Package and product telemetry only where separately authorized.",
-    "guardrails": [
-      "Do not represent MIT-licensed public text as exclusive.",
-      "Commercial services may include managed updates, private packages, profiles, integrations, verification, and support."
-    ]
-  },
-  "adoption": {
-    "status": "adopted",
-    "gaps": []
+    "terminal": "default-branch tree passes npm test; public package surfaces match source"
   }
 }

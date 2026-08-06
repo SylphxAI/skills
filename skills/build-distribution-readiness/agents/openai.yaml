@@ -1,4 +1,0 @@
-interface:
-  display_name: "Build Distribution Readiness"
-  short_description: "Build software distribution readiness: artifacts, install/upgrade/uninstall, channels, live readback evidence."
-  default_prompt: "Run Build Distribution Readiness on the active workspace."

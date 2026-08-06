@@ -1,4 +1,0 @@
-interface:
-  display_name: "Bound Request Scope"
-  short_description: "Bound this request: objective, in/out, non-goals, cut lines, right-sized ceremony."
-  default_prompt: "Run Bound Request Scope on the active workspace."

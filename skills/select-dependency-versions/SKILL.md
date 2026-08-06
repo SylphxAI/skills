@@ -1,108 +1,38 @@
 ---
 name: select-dependency-versions
-description: "Select dependency/runtime versions from live authoritative release sources."
+description: "Select dependency and runtime versions from live authoritative release sources. Use when adding or upgrading packages, runtimes, SDKs, or generators."
 ---
 
 # Select Dependency Versions
 
-Select current releases from live evidence, then make the resulting build
-reproducible. A version remembered by the model, copied from a template, or
-shown in an old example is never version-selection evidence.
+Never pick versions from model memory, stale templates, or old examples.
 
-Read [registry resolution](references/registry-resolution.md) for the relevant
-package ecosystem. Read [runtime channels](references/runtime-channels.md) when
-selecting a language runtime, compiler, SDK, or toolchain.
+## When to use
 
-## Method
-- When landing source: compose `source-authoring-standard` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).
+- Adding a dependency
+- Upgrading a runtime, framework, SDK, plugin, or generator
+- Pinning versions in manifests or Docker/toolchains
 
-1. Inspect the active technology profile, manifests, lockfiles, runtime and
-   platform constraints, package type, and current dependency graph. Separate
-   genuine constraints from versions that are merely already installed.
-2. Query the affected dependency set at its authoritative release source during
-   this task: every direct dependency for project bootstrap or a currency
-   review, and the changed package plus its coupled runtime, framework,
-   generator, plugin, and peer set for a bounded addition. Record the source,
-   observation time, stable channel, current stable release, deprecation or
-   withdrawal state, and material engine or peer constraints.
-3. Select the newest eligible stable production release. For a new project,
-   shape the project around that release. For an existing project, cross the
-   major-version boundary and perform the migration by default; do not stop at
-   the newest version admitted by an obsolete manifest range.
-4. Resolve a coherent set. Upgrade the runtime, framework, official plugins,
-   peer dependencies, generators, type packages, linters, and adapters together
-   when their contracts move together. Read official migration and release
-   notes across every skipped major and apply codemods only as reviewed edits.
-5. Treat a downgrade or retained older direct version as a temporary exception,
-   never the easy path. It requires exact evidence that the newer stable release
-   cannot satisfy a real platform, public-contract, or upstream compatibility
-   constraint, plus the newest eligible fallback and a forward replacement
-   condition, owner, expiry, and recheck trigger.
-6. Materialize reproducibility after selection. Applications commit the exact
-   resolved graph and native lockfile where the ecosystem provides one, then
-   verify frozen/locked installation. Where no native lock exists, use fixed
-   selectors, immutable repositories, a machine-readable resolved graph, and
-   repeatable clean resolution. Published libraries declare intentional
-   consumer and peer ranges, lock their own development graph where supported,
-   and test the supported lower bound and newest eligible graph where
-   compatibility is promised.
-7. Remove superseded packages, compatibility shims, duplicate lockfiles, and
-   stale configuration. Run a clean frozen/locked install where supported, or
-   the declared repeatable clean-resolution check otherwise, followed by
-   affected build, type/static, lint, test, contract, security, and migration
-   checks.
-8. If the repository already has dependency-update automation, make it target
-   the same stable channel and allow major-version migration candidates. Do not
-   add a new service or block the current upgrade merely to automate a future
-   check.
+## Workflow
 
-## Selection rules
+1. **Name the package and ecosystem** (npm, crates.io, PyPI, Go module, GitHub release, distro, etc.).
+2. **Query the live authoritative source** for current stable releases and support policy.
+3. **Prefer the latest stable** that satisfies security and compatibility constraints of the active repo.
+4. **Record the exact version** and source URL/command used.
+5. **Apply pins** in the owning manifests; run install/build/tests required by the repo.
+6. **Reject** versions chosen only because they appeared in training data or a tutorial.
 
-- `latest` means the newest eligible release in the selected production
-  channel, not the greatest-looking version string, preview, beta, release
-  candidate, nightly, canary, stale support line, or mutable production
-  reference. A runtime's official active-LTS channel may be the selected
-  production channel even when a newer non-LTS release exists.
-- Use mutable tags such as `@latest` only to discover or invoke the current
-  resolver. Commit the resolved version and integrity-bearing lock graph; never
-  deploy from a mutable tag.
-- Package-manager “update” commands that preserve the old major range do not
-  prove currency. Compare against the live stable release explicitly.
-- A security advisory, yanked/retracted release, end-of-life runtime, or
-  publisher deprecation makes a version ineligible even when a lockfile still
-  resolves it.
-- Never claim “latest” when any retained direct dependency is older. Report the
-  exact constraint and selected fallback instead.
-- If the authoritative source is unavailable, preserve an already locked graph
-  or report the selection as blocked. Never invent a version or call cached or
-  remembered metadata current.
+## Gotchas
 
-## Output contract
+- "Latest" tags can move; pin immutable versions for production.
+- Pre-release channels are opt-in only.
+- Transitive resolution can still pull older vulnerable packages — check lockfiles.
 
-The primary artifact is the updated project: manifests, lock graph, required
-code/config migration, removed predecessor paths, and passing verification.
-Integrate a concise resolution record into the normal final status:
+## Validation
 
-- authoritative queries and observation time;
-- previous, current stable, and selected exact versions;
-- stable-channel and compatibility decisions;
-- migrations and removals performed;
-- clean frozen/locked-install evidence where supported, or repeatable clean-
-  resolution evidence otherwise, plus affected checks;
-- any explicit unresolved version gap with owner, expiry, recheck trigger, and
-  replacement condition.
+- Version came from a live registry/release API or official channel in this session
+- Install/build/test commands from the repo pass or residuals are explicit
 
-Do not create a separate dependency report unless audit or inventory is the
-requested artifact.
+## Output
 
-## Boundaries
-
-- `technology-stack-profile` and decision methods choose the technology;
-  this Skill chooses its current eligible release after that choice.
-- `bound-request-scope`, `decision-quality-standard`, and `engineering-standard`
-  decide whether commodity functionality should use a dependency or a direct
-  implementation; this Skill starts after a dependency is selected.
-- `engineering-standard` supplies reproducibility, architecture, testing, and
-  delivery constraints.
-- Security response may accelerate or block a release, but it does not permit
-  an unsupported silent downgrade.
+Chosen versions · sources · commands run · residuals

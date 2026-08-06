@@ -46,7 +46,7 @@ Re-read Keel tip docs—do not invent APIs from chat memory.
 
 ### 3. Design composition (load on demand)
 
-- Whole-game thesis/loops → `design-game`
+- Whole-game thesis/loops → whole-game design
 - Premium HUD/menus → `craft-product-interface` (+ premium + game-overlay refs)
 - Sprite/tile production → `produce-game-2d-*`
 - Playable floors → [references/playable-implementation-floor.md](references/playable-implementation-floor.md)
@@ -58,7 +58,7 @@ Re-read Keel tip docs—do not invent APIs from chat memory.
 - Chrome via **View / ThemePack / Widget**—apply premium non-generic UI floors.
 - Assets via **Asset** + title paths; pack profiles in `keel.toml`.
 - Prefer copying **keel-examples** patterns over inventing host facades.
-- Source landing: `source-authoring-standard` L1/L2/L3 when mutating git.
+- Source landing: atomic commits and a revert-safe PR outcome L1/L2/L3 when mutating git.
 
 ### 5. Verify
 

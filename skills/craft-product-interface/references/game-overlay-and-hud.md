@@ -8,7 +8,7 @@ sim rules themselves.
 
 | Layer | Owner |
 | --- | --- |
-| Rules / World / Intent | Game systems (`design-game` + title + Keel sim) |
+| Rules / World / Intent | Game systems (whole-game design + title + Keel sim) |
 | Feel juice (shake, hitstop, SFX) | Presentation; sim outcomes unchanged |
 | HUD / menus / settings chrome | **This craft** + Keel View/ThemePack |
 | Pack player shell (web index, fullscreen boot) | **Keel pack** — do not fork a second shell |
@@ -26,7 +26,7 @@ sim rules themselves.
 5. **Input honesty:** on-screen buttons match physical control signs; no fake
    disabled states without reason.
 6. **No monetization uncanny valley:** IAP/shop chrome matches the game’s craft
-   language (`feel-5` in design-game experience quality).
+   language (`feel-5` in whole-game design experience quality).
 
 ## Layout patterns
 
@@ -45,6 +45,6 @@ sim rules themselves.
 ## Compose
 
 - Premium floors: [premium-non-generic-ui.md](premium-non-generic-ui.md)
-- Control signs: `design-game` player-controls self-test
+- Control signs: whole-game design player-controls self-test
 - Asset icons/panels as **art**: `produce-game-2d-sprites` HUD art ref when
   generating bitmaps; prefer vector/Widget for interactive chrome when possible

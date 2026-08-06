@@ -43,7 +43,7 @@ Exit codes: `0` ok, `1` nav/HTTP fail, `2` console/page errors, `3` no Playwrigh
 
 - Open the PNG (or host screenshot) and note layout, blank canvas, obvious bugs.
 - For movement games, run player-visible control signs (A left / D right) per
-  `design-game` controls self-test—not screenshot-only for steer.
+  whole-game design controls self-test—not screenshot-only for steer.
 - Production claim still needs product build/test oracles—not smoke alone.
 
 ### 4. Communicate (human-facing)
@@ -54,7 +54,7 @@ sees **their** preview channel; do not send them agent-only localhost chores.
 ### 5. Record evidence
 
 URL, status, screenshot path, console errors, what remains untested. Compose
-`source-authoring-standard` L1/L2/L3 only when this job mutates product source.
+atomic commits and a revert-safe PR outcome L1/L2/L3 only when this job mutates product source.
 
 ## Done for this run
 

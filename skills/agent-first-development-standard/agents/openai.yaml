@@ -1,4 +1,0 @@
-interface:
-  display_name: "Agent First Development Standard"
-  short_description: "Policy: multi-agent delivery packets—attribution, collision scopes, machine acceptance."
-  default_prompt: "Apply agent-first-development-standard constraints on the active task/workspace."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Specification Control Plane Standard"
-  short_description: "Policy: executable specs lifecycle—packets, eval manifests, telemetry, exceptions."
-  default_prompt: "Apply specification-control-plane-standard constraints on the active task/workspace."

@@ -1,4 +1,4 @@
 interface:
   display_name: "Sylphx Skills Installer"
-  short_description: "Install the managed Sylphx agent environment"
-  default_prompt: "Use $skills to install Sylphx Skills into this agent runtime."
+  short_description: "Install the managed Sylphx Agent Skills catalog"
+  default_prompt: "Install Sylphx Skills into this agent runtime using INSTALL.md."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Pursue Product Objective"
-  short_description: "Pursue a fixed declared product objective to evidence-backed completion—not open-ended betterment."
-  default_prompt: "Pursue the declared product objective on the active workspace until evidence shows it is met or honestly blocked."

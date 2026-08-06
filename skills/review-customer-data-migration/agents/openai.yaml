@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review Customer Data Migration Review"
-  short_description: "Review: customer data migration—correctness, downtime, rollback, proof."
-  default_prompt: "Run Review Customer Data Migration Review for the active product/workspace."

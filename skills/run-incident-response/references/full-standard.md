@@ -16,11 +16,11 @@ This standard composes with:
 - [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
   for risk lanes and recovery semantics (source revert / runtime rollback /
   forward-fix) — cited here, not restated;
-- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for production
+- [`honest local vs landed vs live claims.md`](https://github.com/SylphxAI/skills/blob/main/skills/honest local vs landed vs live claims/references/full-standard.md) for production
   verification signals used to prove a mitigation actually recovered;
 - applicable binding security constraints and the current product threat model
   for fail-closed invariants whose breach is always at least S1;
-- `documentation-standard` for collision-resistant postmortem identity.
+- documentation discipline for collision-resistant postmortem identity.
 
 ## Scope and Trigger
 
@@ -70,7 +70,7 @@ alert / SLO gate (or manual report)
   -> machine-actionable issue/status adapters project from that record
   -> mitigate: source revert / runtime rollback / forward-fix,
      selected under delivery recovery semantics
-  -> verify recovery with evidence (delivery-standard.md production
+  -> verify recovery with evidence (honest local vs landed vs live claims.md production
      verification signals: smoke/health checks, logs, metrics, canary verdict)
   -> postmortem-record artifact (schema below), gate-checkable, not prose
 ```
@@ -109,7 +109,7 @@ not a prose document a human reads once. Shape, at a glance:
 
 | Field | Content |
 | --- | --- |
-| `id` | Follows `engineering-standard` artifact identity: an allocator-backed identity (e.g. the tracking issue number) or a collision-resistant generated identity (ULID/UUIDv7/content hash) — never a hand-picked sequential number. |
+| `id` | Follows sound engineering practice artifact identity: an allocator-backed identity (e.g. the tracking issue number) or a collision-resistant generated identity (ULID/UUIDv7/content hash) — never a hand-picked sequential number. |
 | `severity` | One of the table above. |
 | `detectedAt` / `mitigatedAt` / `resolvedAt` | Timeline timestamps proving detection-to-recovery latency, not narrated after the fact. |
 | `rootCause.mechanism` + `rootCause.evidence[]` | The traced mechanism Evidence First requires for any root-cause claim: reproduce, trace through the actual code/config path, fix, re-verify — with checkable evidence, not a plausible story. |

@@ -3,312 +3,60 @@
 [![CI](https://github.com/SylphxAI/skills/actions/workflows/check.yml/badge.svg)](https://github.com/SylphxAI/skills/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](./package.json)
-[![Agent Skills](https://img.shields.io/badge/agent%20skills-122%20packages-111827.svg)](./catalog.json)
 
-**Working methods for AI agents — installed by the agent that needs them.**
+**Task-focused Agent Skills for Codex, Claude Code, and Grok Build.**
 
-Sylphx Skills is the public, MIT-licensed library of how Sylphx agents design,
-build, verify, deliver, operate, and grow software. It supports
-[Codex](https://openai.com/codex),
-[Claude Code](https://docs.anthropic.com/en/docs/claude-code), and
-[Grok Build](https://grok.x.ai/).
+This repository follows the open [Agent Skills](https://agentskills.io) model:
+small packages that teach agents specialized jobs, loaded on demand through
+progressive disclosure.
+
+## Install
 
 Give this to your agent:
 
 > Install this: https://github.com/SylphxAI/skills
 
-That is the complete user procedure. The agent reads [`INSTALL.md`](./INSTALL.md),
-detects its environment, installs the exact Skill catalog and compact runtime
-constitution and enables managed AutoSync for that runtime.
-to translate that outcome into shell commands.
-
-The root [`SKILL.md`](./SKILL.md) is a discovery bootstrap for clients that
-pre-route repository installation through a generic Skill installer. It sends
-the agent to `INSTALL.md` before any leaf-package operation. Folder copying
-alone omits the managed source manifest, compact constitution, idempotent
-reconciliation, and fresh-context proof; changing other runtimes without an
-explicit request exceeds the installation scope.
-
-Updates also converge installations that still point at a retired instruction-
-runtime layout. Only the exact per-user Sylphx legacy projection is eligible:
-the adapter preserves local notes, installs a regular digest-bound
-constitution, and does not alter the retired target. It also validates POSIX
-ownership and permissions where those metadata are authoritative. Unknown
-links and imports remain fail-closed.
-
-Codex also discovers the shared `~/.agents/skills` root, and current public
-source labels `$CODEX_HOME/skills` as deprecated user storage. Grok discovers
-the shared root too, so moving a Codex-targeted install there can also change
-Grok's effective catalog. The current adapter therefore keeps its existing
-runtime-scoped compatibility target while removing only one exactly proven
-historical duplicate from shared discovery. This is a bounded transition, not
-a claim that the shared root is obsolete. A shared-catalog cutover must first
-define cross-runtime scope and prove a lossless migration. Unknown, modified,
-or lookalike projections remain fail-closed.
-
----
-
-## Why this exists
-
-Agents already load skills. Most collections are either thin stubs or private
-playbooks. This repository is different:
-
-| | |
-| --- | --- |
-| **Public on purpose** | Our real operating methods, not marketing vapor |
-| **Agent-native packages** | Each skill has a clear job, load trigger, and bounded method |
-| **Multi-runtime** | Codex · Claude Code · Grok Build from one source |
-| **Converging sync** | New skills appear; removed skills leave; third-party skills stay |
-| **Agent-owned adoption** | Install, update, integration enrollment, and readback are outcomes owned by the receiving agent |
-| **Supervised auto-update** | Standard launchd / systemd / Task Scheduler, or an explicit hosting-runtime supervisor — no detached updater |
-
-Commercial Sylphx value is continuous maintenance, private customer packages,
-Platform integrations, and support — **not** pretending public Markdown is
-secret.
-
----
-
-
-
-
-## Product job Skills (agent discovery)
-
-When an agent needs to do product work, load the **job technique**, not a role title:
-
-| Need | Skill |
-| --- | --- |
-| Validate idea | `prototype-product` |
-| Ship capability | `build-product` |
-| Cut live harm | `maintain-product` |
-| Scale core | `expand-product` |
-| Finish / deburr | `finish-product` |
-| Follow a fixed outcome to done | `pursue-product-objective` |
-| Open betterment (mixed jobs) | `run-open-product-betterment` |
-| Multi-phase delivery terminal | `drive-to-delivery` |
-| Next Work from evidence | `select-next-work` |
-| Author a Skill | `author-skill` |
-
-Full map: [`docs/reference/product-job-skills.md`](./docs/reference/product-job-skills.md).
-
-Policy packages (`*-standard`, stack/profile pins) constrain other jobs; they are not standalone product cycles.
-
-
-### Always-on floors vs Skills
-
-Sylphx uses a **thin dual-layer** model:
-
-- **Always-on constitution** — miss-class-A floors only (authority, evidence,
-  fail-closed honesty, native skill loading). Hard budget; not a full
-  operating manual.
-- **Skills** — portable domain methods loaded through host progressive
-  disclosure when relevant.
-- **Live systems** — CI, deploy, and RBAC remain real authority;
-  markdown does not grant tools or permissions.
-
-See [`ADR-20260731`](./docs/adr/ADR-20260731-thin-dual-layer-progressive-instruction-system.md),
-[`catalog listing-budget policy`](./docs/reference/catalog-listing-budget-policy.md),
-the open [`utilization residual`](./docs/reference/skill-utilization-eval-residual.md), and the [`industry research summary`](./docs/reference/industry-skill-injection-and-always-on-decision.md).
-
-## Install, update, or inspect
-
-Installation is intentionally prompt-native:
-
-> Install this: https://github.com/SylphxAI/skills
-
-For a later exact-source update:
-
-> Update my Sylphx Skills from https://github.com/SylphxAI/skills and verify them in a fresh context.
-
-To repair or re-enable managed updates explicitly:
-
-> Keep my Sylphx Skills current from https://github.com/SylphxAI/skills.
-
-For readback without mutation:
-
-> Verify my Sylphx Skills installation and report any drift without changing it.
-
-The agent uses the repository-owned adapter internally. Humans do not need to
-select a runtime, locate a home directory, invoke a package manager, or repair
-permissions. If the environment cannot safely persist a required surface, the
-agent reports a typed partial or blocked result instead of delegating repair to
-the user.
-
-### Managed update behavior
-
-By default the command uses the operating system's built-in per-user scheduler:
-launchd on macOS, a systemd user timer on Linux, and Task Scheduler on Windows.
-A container or cloud-agent host without a usable user scheduler may instead
-select the explicit external-supervisor contract. In that mode the host owns
-the foreground lifecycle and freshness heartbeat while the exact Skills
-adapter continues to own source validation, locking, reconciliation, atomic
-runtime generations, drift repair, and backoff.
-
-Each tick verifies the installed catalog, profile metadata, source commit, and
-package bytes and checks the public remote head. Either a changed commit or
-local drift triggers an exact-source resync. There are no agent hooks, runtime
-approvals, unowned resident daemons, webhook relays, or tokens
-dependencies. When offline, a verified last-known-good generation remains
-active and retries back off.
-
-AutoSync readback verifies scheduler liveness, the current public remote head,
-the clean managed checkout, the applied state, adapter bytes, and installed
-targets rather than trusting its config alone. It also requires each selected
-target home recorded at enablement to equal the current runtime-home context;
-an up-to-date shadow directory cannot make the active runtime green. Explicit
-non-default runtime homes are supported when the same environment is used for
-enablement, reconciliation, and status. A Linux container with no
-working user-systemd manager is therefore reported as configured but inactive
-instead of green unless its hosting runtime explicitly activates the
-external-supervisor mode. That mode becomes healthy only while its owned
-heartbeat is fresh and the exact source and all selected targets are current;
-file presence and detached processes are not durable scheduling evidence.
-
-Each successful reconciliation converges the complete Sylphx-managed set as one
-verified target generation: new packages, changed package bytes, removals, and
-the ownership manifest commit together through an ownership-proven recoverable
-journal under a fenced per-target writer lock. One managed-generation pointer
-switches every package and the manifest together, so a crash recovers to one
-complete old or new generation rather than mixed packages. The target root
-stays stable: unrelated third-party or hand-authored Skills never enter the
-managed journal and are never copied, moved, or deleted by the switch.
-
-An already-running agent may not reload a changed Skill until that runtime's
-next normal reload boundary. The files themselves converge within the selected
-interval.
-
-The deterministic adapter exposes install, status, clear, and scheduled-sync
-operations to agents and automation. Those operations are implementation
-mechanisms, not a user installation interface.
-
+The agent reads [`INSTALL.md`](./INSTALL.md), installs the skill catalog and
+compact constitution, and enables managed AutoSync for the receiving runtime.
 
 ## What you get
 
-**122 packages** as on-demand Agent Skills (see [`catalog.json`](./catalog.json)
-for the machine index and [`skills/`](./skills/) for sources). Hosts list
-`name`/`description` first and load bodies on selection — Skills are **not**
-always-on law. Authoring classes (`workflow` · `review` · `policy` · `adapter`)
-are documented in
-[ADR-20260801](./docs/adr/ADR-20260801-package-classes-and-standard-composition.md);
-they are not host Skill subtypes.
+| Layer | Content |
+| --- | --- |
+| Always-on | Thin `runtime/constitution.md` (authority + evidence honesty) |
+| Skills | A small catalog of specialized task procedures under `skills/` |
+| Live systems | CI, deploy, and tools remain real authority |
 
-### Policy packs & profiles (`*-standard` / profiles)
+Skills here are **not** a company policy encyclopedia. Long standards, product
+OS loops, and domain review matrices are out of catalog scope. See
+[`docs/MODEL.md`](./docs/MODEL.md).
 
-Compose-on binding predicates for many jobs: delivery proof, engineering
-method, CI admission, incidents, portable work-ledger semantics, enterprise
-control plane, versioned profiles, and more. **Not** automatic loops by
-themselves.
+## Catalog
 
-Examples: `engineering-standard` · `delivery-standard` · `work-coordination-standard` · `technology-stack-profile` · `enterprise-control-plane-standard`
+| Skill | Job |
+| --- | --- |
+| `author-skill` | Create or revise an Agent Skill package |
+| `build-keel-title` | Implement a Keel external title/app |
+| `craft-product-interface` | Product UI craft with verification |
+| `execute-hard-cutover` | Hard-cut predecessor → destination |
+| `produce-game-2d-map-assets` | 2D map/prop asset packs |
+| `produce-game-2d-sprites` | 2D sprites/sheets |
+| `produce-product-assets` | Product marketing/store assets |
+| `remediate-frontend-performance` | Measured frontend performance fixes |
+| `run-incident-response` | Production incident command |
+| `select-dependency-versions` | Live registry version selection |
+| `verify-local-web-preview` | Local web load/screenshot/console gate |
+| `write-high-signal-update` | Short stakeholder updates |
 
-### Workflows & loop engineering
+## Develop
 
-Multi-step jobs and operating loops: product betterment, whole-product finish,
-single-objective closure, continuous work selection. Job-named packages; not
-policy packs.
-
-Examples: `run-open-product-betterment` · `finish-product` · `drive-to-delivery` · `select-next-work`
-
-### Reviews, analysis & agent-system methods
-
-Assessment/design jobs and independent methods with concrete artifacts.
-
-Examples: `analyze-critically` · `record-structured-deliberation` · `review-reference-originality` · `remediate-frontend-performance` · `model-security-threats` · `build-payment-readiness` · `review-launch-readiness`
-
-### Blueprints, craft & adapters
-
-Whole-product craft surfaces and product-specific adapters.
-
-Examples: `design-app` · `design-saas-web-platform` · `craft-product-interface` · `design-prompt-architecture`
-
-Open any package: `skills/<id>/SKILL.md` is the contract; deeper material lives
-in `references/`.
-
----
-
-## How a skill is structured
-
-```text
-skills/<id>/
-  SKILL.md           # name + description (when to load) + procedure body
-  references/        # durable depth (optional)
-  scripts/           # deterministic helpers only (optional)
-  agents/            # runtime display metadata (optional; not a second SSOT)
+```bash
+npm test
+npm run build:catalog
+node runtime/sylphx-skills.mjs install --agent all
 ```
 
-- **One semantic owner** per package — no dual authoring roots.
-- **Description** front-loads the concrete job, artifact, nearby contexts, and
-  exclusions. Current Codex and Grok expose metadata to the model, so implicit
-  matching is model-mediated rather than a deterministic keyword or embedding
-  verdict. Trigger phrases are selection evidence, not exact activation rules.
-- **Native discovery** starts from compact metadata. Current Codex gives the
-  model `name + description + locator`; current Grok gives it identity through
-  the locator plus `description + when-to-use`. A valid, enabled, unambiguous
-  explicit `$skill` or `/skill` invocation is host-resolved; ambiguous bare
-  names fail or require qualification. Implicit use depends on the model
-  choosing and loading the body. Listing budgets may shorten descriptions or
-  omit entries, so an installed package is not proof that it was visible or
-  selected for a task.
-  Material routes need fresh evidence from each supported native runtime.
-- There is no repository meta-router or dependency graph. Provider-specific
-  listing, visibility gates, explicit invocation, or shadow rankers remain
-  runtime behavior rather than a second semantic authority. Several relevant
-  packages may compose, but each requested artifact still has one semantic
-  owner.
-- **Compound tasks** may load several useful Skills. One owner produces each
-  requested artifact while standards constrain it without duplicate reports.
-- **Runtime tools** (browse, execute, credentials) stay with the agent;
-  skills teach method and expected artifacts.
+## License
 
-Authority notes: [docs/adr/ADR-0001-public-agent-instruction-source.md](./docs/adr/ADR-0001-public-agent-instruction-source.md) ·
-[docs/adr/ADR-0002-consumption-boundary-skill-reconciliation.md](./docs/adr/ADR-0002-consumption-boundary-skill-reconciliation.md) ·
-[docs/adr/ADR-0009-native-skill-discovery-and-package-boundaries.md](./docs/adr/ADR-0009-native-skill-discovery-and-package-boundaries.md) ·
-[docs/adr/ADR-0010-observability-audience-boundaries.md](./docs/adr/ADR-0010-observability-audience-boundaries.md) ·
-[docs/adr/ADR-0011-source-verified-native-skill-discovery.md](./docs/adr/ADR-0011-source-verified-native-skill-discovery.md)
-
----
-
-## Repository map
-
-| Path | Role |
-| --- | --- |
-| `skills/<id>/` | **Only** writable semantic source for packages |
-| `catalog.json` | Deterministic index from frontmatter |
-| `runtime/` | Agent-facing install / sync / auto-sync adapters and compact constitution |
-| `INSTALL.md` | Environment-neutral installation contract for the receiving agent |
-| `scripts/` · `tests/` | Integrity gates only |
-| `docs/adr/` | Repository-level decisions |
-
-Not in this repo: live work or organization-wide adoption state, customer data, benchmark laboratories,
-admission services, or model-provider evidence runs.
-
----
-
-## Community
-
-- **Questions & ideas** → [GitHub Discussions](https://github.com/SylphxAI/skills/discussions)
-- **Bugs in the installer or package shape** → [Issues](https://github.com/SylphxAI/skills/issues)
-- **Contributing a skill** → [CONTRIBUTING.md](./CONTRIBUTING.md)
-- **Security** → [SECURITY.md](./SECURITY.md)
-
-We care about packages that encode a real, recurring job with an independent
-artifact — not skill-count inflation. Contributors can give the repository and
-their intended change to an agent; the repository instructions require that
-agent to run the complete integrity suite before delivery.
-
----
-
-## License & commercial posture
-
-[MIT](./LICENSE). Inspect, fork, embed, and reuse freely.
-
-Sylphx may offer managed updates, enterprise/private packages, Platform
-integrations, verification, and support. Public text is intentionally not
-exclusive; quality and continuity are the product.
-
----
-
-<p align="center">
-  <a href="https://sylphx.com">sylphx.com</a> ·
-  <a href="https://github.com/SylphxAI">SylphxAI</a> ·
-  <a href="https://github.com/SylphxAI/skills/discussions">Discussions</a>
-</p>
+MIT. Public methods on purpose. Commercial value is maintenance, private packs,
+integrations, and support—not pretending public Markdown is secret.

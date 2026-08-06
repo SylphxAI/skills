@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review Security Assurance Operations Review"
-  short_description: "Review: security assurance ops—scanning, triage, SLAs, evidence packs."
-  default_prompt: "Run Review Security Assurance Operations Review for the active product/workspace."

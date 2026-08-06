@@ -1,4 +1,0 @@
-interface:
-  display_name: "Decision Quality Standard"
-  short_description: "Policy: decision quality—framing, alternatives, tradeoffs, commitment, learning."
-  default_prompt: "Apply decision-quality-standard constraints on the active task/workspace."

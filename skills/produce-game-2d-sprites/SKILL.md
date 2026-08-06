@@ -98,13 +98,8 @@ as required by each script.
 
 ### 6. Land
 
-When committing into a product repo, compose `source-authoring-standard`
+When committing into a product repo, compose atomic commits and a revert-safe PR outcome
 three layers (L1 batch → L2 atomic commits → L3 one revert-safe PR outcome).
-
-## Soft composition
-
-Load sibling depth only when the job expands: whole-game thesis, store/marketing
-captures, interface craft in product chrome, local web preview smoke.
 
 ## Provenance
 

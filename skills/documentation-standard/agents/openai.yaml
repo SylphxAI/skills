@@ -1,4 +1,0 @@
-interface:
-  display_name: "Documentation Standard"
-  short_description: "Policy: docs create/retire—minimal sufficient, freshness, low prose drift."
-  default_prompt: "Apply documentation-standard constraints on the active task/workspace."

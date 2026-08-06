@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review Daily Reward And Streak Review"
-  short_description: "Review: daily reward/streak systems—incentives, abuse, retention lift."
-  default_prompt: "Run Review Daily Reward And Streak Review for the active product/workspace."

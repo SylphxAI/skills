@@ -1,67 +1,26 @@
 # Contributing
 
-These Skills are **instruction packages for agents**, not blog posts.
+## What belongs here
 
-Public contributions are welcome when they improve a real, recurring job.
-Drive-by skill dumps and generic “be a better developer” prompts are not.
+Specialized **task skills** the agent cannot do well without packaged procedure,
+scripts, or org-specific gotchas.
 
-## Before you open a PR
+## What does not
 
-1. Prefer **improving an existing** package over adding a near-duplicate.
-2. Confirm the skill has an **independent job** and a **concrete artifact**
-   (checklist, design, audit report, decision record — not “general advice”).
-3. Read an adjacent skill under `skills/` so routing descriptions do not collide.
+- Generic textbook checklists
+- Company-wide policy encyclopedias
+- Always-on essays
+- Skills that only exist to route to other skills
 
-## Authoring rules
+## Authoring
 
-0. Declare a **primary package class** in the PR notes (`workflow` | `review` |
-   `policy` | `adapter`). Classes are authoring labels only — see
-   [docs/reference/skill-package-classes-and-composition.md](docs/reference/skill-package-classes-and-composition.md)
-   and [ADR-20260801](docs/adr/ADR-20260801-package-classes-and-standard-composition.md).
-   Do **not** add non-portable frontmatter fields beyond `name` and `description`.
-   Reserve `-standard` for true **policy** packages; do not use it as prestige
-   for procedures or loops.
+1. Prove a real agent gap on a recurring job.
+2. Follow `skills/author-skill`.
+3. Keep `SKILL.md` under ~500 lines; put depth in `references/`.
+4. Keep the catalog inside the Codex ~8k description listing class.
+5. Run `npm test`.
 
-1. Add or update **exactly one** semantic owner under `skills/<id>/`.
-2. `SKILL.md` frontmatter is only `name` and `description`.
-3. The **description** must say when the skill **should** load and when it
-   **must not** (hand off to another skill or base model).
-4. Keep the procedure **actionable, bounded, and evidence-oriented**.
-5. Put durable depth in `references/`; put deterministic helpers in package
-   `scripts/` only.
-6. Use **original synthesis**. Do not copy third-party prose, customer data,
-   credentials, private incident detail, or inaccessible proprietary process.
-7. Update related packages only when their **contract** truly changes.
-8. Use concrete professional language. Avoid branded metaphors, slogans, and
-   vague scale words when the actual subject is repositories, services, agents,
-   or work items.
-9. Rebuild the catalog and run the full local check:
+## PR complete
 
-```bash
-npm run build:catalog
-npm test
-```
-
-## Repository boundaries
-
-Do **not** introduce:
-
-- a second authoring root (for example generated skill bodies from prose trees)
-- a meta-router that competes with native agent skill loading
-- benchmark laboratories, admission services, or live work/adoption state
-- secrets or private customer material
-
-Repository decisions that change public contract go in `docs/adr/`.
-
-## PR expectations
-
-- Small, reviewable diffs; one skill or one installer concern per change when
-  possible.
-- CI (`npm test`) must stay green.
-- If you change `runtime/`, say which agents and commands you exercised.
-
-## Discussions
-
-Design questions, “which skill should I use?”, and roadmap ideas belong in
-[Discussions](https://github.com/SylphxAI/skills/discussions) — not in issues
-unless something is broken.
+Exact branch passes `npm test`; catalog rebuilt; no residual references to
+deleted packages.
