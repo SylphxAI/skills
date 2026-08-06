@@ -11,6 +11,7 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 | `verify-local-web-preview` | Local web load/screenshot/console evidence |
 | `prototype-product` | Validate a hypothesis with a cheap real slice |
 | `build-product` | Close a shippable capability gap |
+| `build-keel-title` | Implement external title/game on Keel (Title/pack) |
 | `maintain-product` | Reduce framed live/regression harm |
 | `expand-product` | Scale a validated core (×N) |
 | `finish-product` | Deburr/finish an integrated product |

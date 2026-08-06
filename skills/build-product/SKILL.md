@@ -12,6 +12,12 @@ When you need a **real capability** on a dogfood or market path, run **one** bui
 - Direction is decided; a journey or capability is still missing
 - Engine or product gaps block a customer path
 
+## Soft composition
+
+- Product on **Keel** (title/game/app client): prefer `build-keel-title` for engine grammar,
+  pack shell, and doctor floors; use this skill for non-Keel boundaries or cross-cutting
+  capabilities that are not title implementation.
+
 ## Method
 
 **Journey gap → correct ownership boundary → implement → original-oracle verify.**  

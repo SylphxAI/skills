@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 121,
+  "count": 122,
   "skills": [
     {
       "name": "adopt-repo-standards",
@@ -58,6 +58,12 @@
       "packageDigest": "sha256:f02df4563898121bd6d0d671078599793b0db795e5bc6aa8776e94b6b851c43c"
     },
     {
+      "name": "build-keel-title",
+      "description": "Implement a Keel external title/game/app: Title day-1, World/System/Intent/Port/Asset, pack shell, doctor floors.",
+      "path": "skills/build-keel-title/SKILL.md",
+      "packageDigest": "sha256:730f2c77f0a9553648154df0c5e23aabc5ef2962a70207306ab70b97d4b1dff1"
+    },
+    {
       "name": "build-payment-readiness",
       "description": "Build production-ready payments: providers, ledger, webhooks, refunds, support adjustments, reconciliation.",
       "path": "skills/build-payment-readiness/SKILL.md",
@@ -67,7 +73,7 @@
       "name": "build-product",
       "description": "Ship a missing capability end-to-end on the correct boundary; original-oracle verify.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:75cb90f7100f243d5a51bab87c5247b4a34f41c51b6ce076e11ec83a000ec414"
+      "packageDigest": "sha256:e2a9b4005d9a4a601e9dc88a5295ed705c13f3821d48b83a1364f4628e3133ae"
     },
     {
       "name": "ci-admission-standard",
@@ -103,7 +109,7 @@
       "name": "craft-product-interface",
       "description": "Craft one product interface or flow: visual direction, interaction states, responsive, accessibility.",
       "path": "skills/craft-product-interface/SKILL.md",
-      "packageDigest": "sha256:d893fbda753716534d5542930f8191b669588cb7bcca44234ebe2045939a92c8"
+      "packageDigest": "sha256:e7861b9bd188437374e2afaa3dcc237912294503222979824f95328345c3f593"
     },
     {
       "name": "curate-skill-repository",
@@ -139,7 +145,7 @@
       "name": "design-game",
       "description": "Whole-game design: thesis, loops, progression, economy, social, live-ops.",
       "path": "skills/design-game/SKILL.md",
-      "packageDigest": "sha256:b28deed39dd3e3ce384effca32ebd03754099083b0de48d915c0f11c18ccc12a"
+      "packageDigest": "sha256:80d0d93ae8b944d223e19633d6e7546311a1ee5b21b41ad3a858cd2a0f869fc8"
     },
     {
       "name": "design-marketing-automation",

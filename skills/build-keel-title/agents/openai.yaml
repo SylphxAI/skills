@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Keel Title"
+  short_description: "Implement a Keel game/app title: Title day-1, pack, doctor."
+  default_prompt: "Implement or extend this product as a Keel external title (Title + World/System/Intent/Port/Asset, pack shell)."
