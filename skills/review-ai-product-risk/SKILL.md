@@ -5,6 +5,8 @@ description: "Review: AI product risk—safety, abuse, evals, oversight,…"
 
 # Review AI Product Risk Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Decide what an AI feature may promise, observe, decide, and do before its
 implementation or launch outruns the product's evidence and recovery capacity.
 

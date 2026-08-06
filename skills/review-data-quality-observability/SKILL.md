@@ -5,6 +5,8 @@ description: "Review: pipeline quality—freshness, completeness, drift,…"
 
 # Review Data Quality Observability Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Data Reliability Contract** that tells producers, consumers, and
 operators whether a dataset or projection is fit for its declared decisions and
 actions, what has degraded, and how to recover without silently publishing stale

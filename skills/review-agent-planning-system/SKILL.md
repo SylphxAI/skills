@@ -5,6 +5,8 @@ description: "Review: agent planning—goals, tools, memory, evals, failure…"
 
 # Review Agent Planning System
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce an **Agent Planning and Control Contract** for a reusable autonomous
 system. Read
 [references/planning-and-control-methods.md](references/planning-and-control-methods.md)

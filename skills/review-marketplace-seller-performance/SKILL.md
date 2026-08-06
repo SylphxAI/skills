@@ -5,6 +5,8 @@ description: "Review: seller performance—quality evidence, tiers, ranking…"
 
 # Review Marketplace Seller Performance Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Create incentives and interventions that improve buyer outcomes without turning
 one opaque score into ranking, payout, and punishment authority.
 

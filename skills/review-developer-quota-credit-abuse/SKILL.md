@@ -5,6 +5,8 @@ description: "Review: developer quota/credit systems—fairness, abuse,…"
 
 # Review Developer Quota Credit Abuse Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Protect finite platform resources without making successful legitimate developers
 look indistinguishable from abuse.
 

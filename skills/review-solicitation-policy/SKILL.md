@@ -5,6 +5,8 @@ description: "Policy: public in-app review request—eligibility, native…"
 
 # Review Solicitation Policy
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Policy constraints—compose onto matching host jobs.
 
 Produce one platform-current public review request policy. Optimize for authentic

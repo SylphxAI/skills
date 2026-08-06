@@ -5,6 +5,8 @@ description: "Review: enterprise contract ops—obligations, renewals,…"
 
 # Review Enterprise Contract Operations Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Enterprise Contract Operations Contract** that converts executed commercial/legal sources into versioned obligations, dates, controls, system changes, evidence, and accountable decisions. Contract text remains authoritative; extracted data and summaries are governed operational views, never silent substitutes.
 
 ## Atomic boundary

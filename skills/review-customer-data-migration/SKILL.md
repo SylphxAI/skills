@@ -5,6 +5,8 @@ description: "Review: customer data migration—correctness, downtime,…"
 
 # Review Customer Data Migration Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Customer Data Migration Contract** that preserves meaning, ownership, access, history, and customer trust across a verifiable source-to-target transition. “Rows copied” is never the acceptance condition.
 
 ## Atomic boundary

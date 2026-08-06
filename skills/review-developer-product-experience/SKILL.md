@@ -5,6 +5,8 @@ description: "Review: developer product UX—onboarding, APIs, docs,…"
 
 # Review Developer Product Experience Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Developer Adoption Contract** that makes a developer product fast
 to evaluate, safe to integrate, observable in production, and maintainable across
 versions. Treat docs, SDKs, errors, sandboxes, dashboards, certification, and

@@ -5,6 +5,8 @@ description: "Review: offline sync and conflict resolution across devices."
 
 # Review Offline Sync Conflict Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce an **Offline Sync and Conflict Protocol** that preserves user intent and
 data across network loss, retries, restarts, multi-device concurrency,
 collaboration, auth expiry, migrations, and partial failure.

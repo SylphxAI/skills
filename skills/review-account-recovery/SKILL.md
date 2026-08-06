@@ -5,6 +5,8 @@ description: "Review: account recovery—security, UX, abuse, recovery proof."
 
 # Review Account Recovery Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Account Recovery Protocol** that restores the rightful user while resisting account takeover, protecting other tenant members, and preserving a clear appeal and correction path. Recovery is an alternative authentication ceremony, not a weaker support exception.
 
 ## Atomic boundary

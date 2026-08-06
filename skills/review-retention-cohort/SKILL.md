@@ -5,6 +5,8 @@ description: "Review: retention cohorts—measurement, drivers, interventions."
 
 # Review Retention Cohort Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Explain who returned for which value and what evidence-backed product action
 should change. Do not optimize a chart whose denominator or value event is wrong.
 

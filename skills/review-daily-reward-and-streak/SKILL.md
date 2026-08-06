@@ -5,6 +5,8 @@ description: "Review: daily reward/streak systems—incentives, abuse,…"
 
 # Review Daily Reward And Streak Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce a **Return Loop Contract** that reinforces real recurring value and
 voluntary mastery without anxiety, hostage progress, or economy damage.
 

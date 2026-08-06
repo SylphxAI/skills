@@ -5,6 +5,8 @@ description: "Review: marketplace payouts—eligibility, calc, holds,…"
 
 # Review Marketplace Payouts Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Use this skill to make marketplace payouts traceable, fair, supportable, and resilient to refunds or abuse.
 
 ## Workflow

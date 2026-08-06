@@ -5,6 +5,8 @@ description: "Review: observability—SLOs, telemetry, alerting, on-call…"
 
 # Review Operational Observability Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Operational Observability Contract** that lets an authorized
 operator explain service behavior, detect material degradation, diagnose causes,
 act safely, and verify recovery without exposing raw internal evidence through

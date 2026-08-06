@@ -5,6 +5,8 @@ description: "Review: official social ops—authority, publishing,…"
 
 # Review Social Media Operations Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Social Media Operating Model** that can run selected official accounts continuously, truthfully, safely, and autonomously—from approved input through live platform readback, conversation handling, correction, recovery, and verified shutdown.
 
 ## Atomic boundary

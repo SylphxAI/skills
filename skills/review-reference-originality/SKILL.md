@@ -5,6 +5,8 @@ description: "Review: originality/derivation risk for designs, content, or…"
 
 # Review Reference Originality Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Determine whether a declared subject is independently expressed relative to its
 declared references. Produce one **Reference Originality Review** grounded in
 exact source pairs, not a visual impression or unsupported legal conclusion.

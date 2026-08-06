@@ -5,6 +5,8 @@ description: "Review: post-failure user recovery—repair, compensation,…"
 
 # Review Product Recovery Contract Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Design what the product promises users before prescribing how infrastructure
 implements it.
 

@@ -5,6 +5,8 @@ description: "Review: revenue ops—pipeline hygiene, handoffs, forecast…"
 
 # Review Revenue Operations Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Revenue Operations Contract** that turns customer evidence into a trustworthy, auditable flow from demand through qualification, solution proof, commitment, forecast, handoff, and outcome. Treat CRM as an operating ledger with scoped authority—not a spreadsheet-shaped source of wishful thinking.
 
 ## Atomic boundary

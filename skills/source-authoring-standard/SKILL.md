@@ -32,3 +32,5 @@ standard.
 - Does not grant deploy or credential capabilities.
 - Does not replace product-local ADRs where those own decisions.
 
+For doc create/retire freshness rules, see [documentation-standard/METHOD.md](references/documentation-standard/METHOD.md).
+

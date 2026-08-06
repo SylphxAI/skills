@@ -5,6 +5,8 @@ description: "Review: security assurance ops—scanning, triage, SLAs,…"
 
 # Review Security Assurance Operations Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Answer customer security questions from current scoped evidence, not confidence,
 templates, sales pressure, or planned controls.
 

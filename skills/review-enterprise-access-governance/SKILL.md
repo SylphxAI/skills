@@ -5,6 +5,8 @@ description: "Review: enterprise access—roles, JML, reviews, least…"
 
 # Review Enterprise Access Governance Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Enterprise Access Governance Contract** that answers who may grant,
 inherit, exercise, review, recover, and revoke administrative authority inside and
 across customer tenants. Treat identity assertions as inputs to product authority,

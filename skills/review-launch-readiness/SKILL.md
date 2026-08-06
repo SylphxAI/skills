@@ -5,6 +5,8 @@ description: "Review: launch readiness—product, ops, support, risk,…"
 
 # Review Launch Readiness Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce a **Launch Admission Record** that makes a proportional release decision
 from exact evidence rather than a ceremonial checklist.
 

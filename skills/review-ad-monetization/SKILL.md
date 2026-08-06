@@ -5,6 +5,8 @@ description: "Review: ad monetization—inventory, UX harm, policy,…"
 
 # Review Ad Monetization Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce an **Ad Monetization Contract** that maximizes incremental retained
 contribution without turning attention, privacy, gameplay, or core utility into
 an interruption tax.

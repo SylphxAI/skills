@@ -5,6 +5,8 @@ description: "Review: marketplace trust ops—detection, enforcement,…"
 
 # Review Marketplace Trust Operations Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Marketplace Trust Operating Contract** that protects participants
 and market quality without making one opaque score the authority for visibility,
 money, access, and account survival. Treat policy, evidence, queues, decisions,

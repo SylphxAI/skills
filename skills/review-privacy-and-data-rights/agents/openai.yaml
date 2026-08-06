@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Privacy And Data Rights"
+  short_description: "Review: privacy lifecycle and data-rights ops—collection, retention, DSAR, deletion, audit."
+  default_prompt: "Apply the review-privacy-and-data-rights method to the active workspace."

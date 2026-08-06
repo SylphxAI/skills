@@ -5,6 +5,8 @@ description: "Review: search/discovery—relevance, ranking, evaluation,…"
 
 # Review Search Discovery Quality Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Determine whether a discovery surface helps the right user find a trustworthy,
 eligible result for the intended job—and why it fails when it does not.
 

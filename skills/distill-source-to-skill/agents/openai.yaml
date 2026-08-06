@@ -1,4 +1,0 @@
-interface:
-  display_name: "distill-source-to-skill"
-  short_description: "Distill source material into one Skill package (SKILL.md)."
-  default_prompt: "Run distill-source-to-skill."

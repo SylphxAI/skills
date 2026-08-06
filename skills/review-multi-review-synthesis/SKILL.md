@@ -5,6 +5,8 @@ description: "Review: Synthesize multiple reviews into ranked actions and…"
 
 # Review Multi-Review Synthesis
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Find material defects and reach a defensible terminal. Read
 [references/convergent-review-method.md](references/convergent-review-method.md)
 before running a formal review.

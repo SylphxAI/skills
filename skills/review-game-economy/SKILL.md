@@ -5,6 +5,8 @@ description: "Review: game economy—sources/sinks, balance, progression,…"
 
 # Review Game Economy Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce a **Game Economy Specification** whose fun, progression, scarcity,
 fairness, and monetization remain sustainable across launch, seasons, veteran
 accumulation, late joiners, refunds, and low population.

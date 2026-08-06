@@ -5,6 +5,8 @@ description: "Review: product analytics instrumentation—events, identity,…"
 
 # Review Product Analytics Instrumentation Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce an **Analytics Event, Identity, and Metric Contract** that makes product
 decisions reproducible without turning surveillance, dashboard convenience, or
 client events into false authority.

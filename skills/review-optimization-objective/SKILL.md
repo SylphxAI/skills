@@ -5,6 +5,8 @@ description: "Review: optimization objective well-posed, aligned,…"
 
 # Review Optimization Objective Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Make the measured target improve the real outcome even after an optimizer learns
 its weaknesses. Read
 [references/optimization-objective-methods.md](references/optimization-objective-methods.md)

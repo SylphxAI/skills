@@ -5,6 +5,8 @@ description: "Review: product abuse—fraud, spam, exploitation, enforcement."
 
 # Review Product Abuse Risk Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce one **Product Abuse Control Contract** that makes abusive value extraction harder without making legitimate users prove innocence at every step. Treat abuse as an adaptive incentive and systems problem, not a static blocklist.
 
 ## Atomic boundary

@@ -109,3 +109,14 @@ interface:
 
 If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
 
+## Absorbed sub-methods (same job family)
+
+These are not separate listing skills; open only when needed:
+
+| Need | Open |
+| --- | --- |
+| Distill notes/repo material into a skill | [references/distill-source-to-skill/METHOD.md](references/distill-source-to-skill/METHOD.md) |
+| Design falsifiable skill evals | [references/design-skill-evals/METHOD.md](references/design-skill-evals/METHOD.md) |
+
+Portfolio-wide merge/split/retire across many skills remains `curate-skill-repository` (different primary job).
+

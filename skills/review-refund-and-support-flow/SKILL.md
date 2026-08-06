@@ -5,6 +5,8 @@ description: "Review: refund/support money flows—policy, authority,…"
 
 # Review Refund And Support Flow Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Use this skill to handle refunds without damaging trust or letting abuse break the product.
 
 ## Composition contract

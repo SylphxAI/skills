@@ -5,6 +5,8 @@ description: "Review: game soft-launch—markets, KPIs, kill/scale, live-ops…"
 
 # Review Game Soft Launch Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Produce a **Game Soft-Launch Program** that converts bounded real-player
 exposure into causal evidence and automated release decisions without reducing
 the declared final game to a conventional MVP.

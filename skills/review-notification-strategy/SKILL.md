@@ -5,6 +5,8 @@ description: "Review: notifications—channels, cadence, consent, fatigue,…"
 
 # Review Notification Strategy Review
 
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
+
 Use this skill to make notifications useful enough to deserve attention.
 
 ## Atomic boundary
