@@ -67,6 +67,7 @@ For every handoff state the owner skill, input facts, output required, acceptanc
 - Read `references/game-feel-juice.md` when specifying presentation feedback (shake, hitstop, particles, easing) separate from simulation.
 - Read `references/genre-acceptance-checks.md` for portable playable-quality checks by genre after thesis/loops exist.
 - Read `references/multiplayer-trust-boundary.md` when designing realtime multiplayer authority and population trust.
+- When the product ships on **Keel**, hand implementation to `build-keel-title` (Title/pack/doctor)—do not blueprint Three/Phaser as SSOT.
 
 - Read `references/game-thesis-and-loops.md` for every whole-game task.
 - Read `references/game-progression-and-quests.md` when progression, levels, characters, equipment, mastery, quests, achievements, catch-up, or content unlocks matter.

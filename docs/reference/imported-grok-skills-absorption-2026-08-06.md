@@ -39,7 +39,7 @@ Start templates.
 | `threejs` + llms dump | **Reject** as default stack | Keel/WebGPU native path |
 | `auth` / `neon` / `og` / `xai-api` / `imagine` | **Reject** (Grok broker, Neon, xAI key, sandbox OG) | product auth/marketing skills already cover real jobs |
 | `multiplayer-p2p` | **Trust boundary only** (no P2P kit) | `design-game/references/multiplayer-trust-boundary.md` |
-| `design-ui` | **Defer install** — overlap `craft-product-interface`; no proven gap after cherry-read | keep craft-* as UI craft authority |
+| `design-ui` | **Distill** premium floors into craft refs (Wave 3); do not install TanStack skill | `craft-product-interface` premium + game-overlay refs |
 
 ## Disposition — workspace-kit
 
@@ -90,3 +90,19 @@ Start templates.
 
 - Deeper AssetStage/pack manifest contracts when titles demand
 - Title-specific genre depth under Cubeage/Keel docs rather than Skills micro-forks
+
+## Wave 3 — quality gap (UI + Keel-native build)
+
+User bar: agents must (1) absorb why external builders look premium, especially UI;
+(2) implement games on **Keel**, not Three/Phaser defaults.
+
+| Source strength | Disposition | Sylphx home |
+| --- | --- | --- |
+| `design-ui` anti-slop, tokens, concentric radius, quantified floors | **Distill portable craft** (no Tailwind/shadcn as portfolio law) | `craft-product-interface/references/premium-non-generic-ui.md` |
+| Game overlay / HUD chrome quality | **Distill** | `craft-product-interface/references/game-overlay-and-hud.md` |
+| `building-games` loop/dt/input/playable floors | **Map to Keel** | `build-keel-title/references/playable-implementation-floor.md` |
+| `building-games` Three/Phaser/Babylon runtime | **Reject as SSOT** | Keel wgpu + Title |
+| Keel engine teaching gap in Skills | **New job skill** | `build-keel-title` + `keel-authority-map.md` (pointers to Keel docs) |
+
+Keel tip docs remain **engine authority**; Skills hold agent job methods and maps only.
+
