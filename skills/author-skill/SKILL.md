@@ -1,6 +1,6 @@
 ---
 name: author-skill
-description: "Create or revise an Agent Skill: one job, trigger description, concise procedure, optional scripts/references. Use when packaging a reusable specialized workflow."
+description: "Create or revise an Agent Skill: one job, trigger…"
 ---
 
 # Author Skill
@@ -103,7 +103,7 @@ interface:
 ## Related depth
 
 - Folded curator/distill/eval material: [references/](references/) (`curate-skill-repository`, `distill-source-to-skill`, `design-skill-evals`)
-- Org-wide methods library skill: `sylphx-methods` → its `references/INDEX.md`
+- Org-wide methods library skill: `` → its `references/INDEX.md`
 
 ## Archived depth
 

@@ -49,7 +49,7 @@ Incident slice done when command, mitigation state, and next decision are
 explicit; residual risk is named; learning artifact is scheduled or completed
 when the framed bar requires it.
 
-## Soft composition
+## optional composition
 
 - `evidence-and-claims-standard` — claim grades
 - `delivery-standard` — no false live/deploy claims

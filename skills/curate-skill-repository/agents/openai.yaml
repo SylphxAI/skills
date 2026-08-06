@@ -1,0 +1,4 @@
+interface:
+  display_name: "curate-skill-repository"
+  short_description: "Curate skills portfolio: collisions, merge/split, thickness, retirement."
+  default_prompt: "Run curate-skill-repository."

@@ -1,32 +1,13 @@
-# Sylphx Skills
+# Skills
 
-## Purpose
-
-Own a **small public Agent Skills catalog** and the install/sync adapters that
-keep Codex, Claude Code, and Grok Build current with that catalog and a thin
-always-on constitution.
-
-## Boundary
-
-Owns:
-
-- task skills under `skills/<id>/`
-- deterministic `catalog.json`
-- install/update/status adapters and AutoSync enrollment
-- thin `runtime/constitution.md`
-
-Does not own:
-
-- live work, org adoption state, customer data
-- product-specific engineering standards (those live in product repos)
-- policy encyclopedias packaged as hundreds of skills
-
-## Delivery
-
-Complete when the exact default-branch tree passes `npm test` and the public
-package surfaces are consistent. Install-contract changes need fresh-context
-proof on supported runtimes when available.
+Own a public **first-class Agent Skills** catalog and install adapters for
+Codex, Claude Code, and Grok Build.
 
 ## Model
 
-See `docs/MODEL.md` and `runtime/constitution.md`.
+One skill = one job. Host discovers via short descriptions. Depth in references.
+No method-bag indirection.
+
+## Delivery
+
+Default branch passes `npm test`; catalog rebuilt; install adapters current.

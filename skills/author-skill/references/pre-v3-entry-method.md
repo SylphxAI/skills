@@ -39,7 +39,7 @@ tool manual.
 7. **Class correctly.** Primary output decides class:
    - procedure / cycle / job artifact → `workflow`
    - assessment record → `review`
-   - reusable predicates → `policy` (`*-standard` only for true policy)
+   - reusable predicates → `policy` (`policy-standard skills` only for true policy)
    - live tool I/O → `adapter`
 8. **Done criteria.** Every workflow Skill states when **this run/cycle** is
    complete. Do not equate “product forever perfect” with Skill done unless
@@ -50,7 +50,7 @@ tool manual.
 10. **Discoverable ids.** Workflow ids are verb-led **2–4 kebab tokens** that
    encode the job terminal (e.g. `select-dependency-versions`,
    `execute-hard-cutover`). Ban 1-token workflow ids. Policy packs use `Policy:`
-   descriptions and `*-standard` / `*-policy` / `*-profile` ids—not job-verb masks
+   descriptions and `policy-standard skills` / `*-policy` / `*-profile` ids—not job-verb masks
    on pure constraints.
 11. **Positive writing only.** Write what this Skill *does* and when to use it.
    **Do not** add `## When not to use` lists, “not X → `other-skill`” bullets, or
@@ -178,7 +178,7 @@ interface:
 - Always-on essays inside Skills
 - Host tool hardcoding; “create goal every message”
 - Multi-agent spawn counts inside Skill bodies
-- Prestige `*-standard` on pure workflows
+- Prestige `policy-standard skills` on pure workflows
 - Description essays that restate the title with no new retrieval signal
 - Loop-scheduler claims that fight the host turn model
 
@@ -206,5 +206,5 @@ When authoring product methods, prefer these existing job Skills over new near-d
 | Multi-phase delivery terminal | `drive-to-delivery` |
 | Author a Skill | `author-skill` |
 
-Policy packages (`*-standard`, stack/profile pins) constrain other jobs; they are not product job cycles.
+Policy packages (`policy-standard skills`, stack/profile pins) constrain other jobs; they are not product job cycles.
 

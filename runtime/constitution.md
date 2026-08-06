@@ -38,10 +38,3 @@ only when a task matches. Always-on text is miss-class-A floors only.
   independently satisfies the active delivery terminal. While that terminal is
   unsatisfied, advance the highest-value safe in-scope action.
 
-## Company methods
-
-- For Sylphx-owned work, researched company methods ship in the `sylphx-methods`
-  skill. Open its `references/INDEX.md` when the job needs org standards or
-  multi-step product/design/review methods—not only when a hot-path task skill
-  is missing.
-

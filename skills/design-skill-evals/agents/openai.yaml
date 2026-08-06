@@ -1,0 +1,4 @@
+interface:
+  display_name: "design-skill-evals"
+  short_description: "Falsifiable skill evals: suites, behavior oracles, failure taxonomy."
+  default_prompt: "Run design-skill-evals."

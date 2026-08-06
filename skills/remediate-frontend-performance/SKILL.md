@@ -1,6 +1,6 @@
 ---
 name: remediate-frontend-performance
-description: "Remediate frontend runtime performance with measured before/after evidence. Use for jank, long tasks, bloated bundles, or slow interaction paths."
+description: "Remediate frontend runtime performance with measured…"
 ---
 
 # Remediate Frontend Performance

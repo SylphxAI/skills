@@ -1,6 +1,6 @@
 ---
 name: run-incident-response
-description: "Run production incident response: severity, command, mitigation, communications, and learning. Use for live outages or user-visible production failures."
+description: "production incident response: severity, command, mitigation,…"
 ---
 
 # Run Incident Response

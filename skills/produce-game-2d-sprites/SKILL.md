@@ -1,6 +1,6 @@
 ---
 name: produce-game-2d-sprites
-description: "Produce engine-ready 2D game sprites/sheets: generate, chroma postprocess, loop QC, Keel pack paths."
+description: "Produce engine-ready 2D game sprites/sheets: generate,…"
 ---
 
 # Produce Game 2D Sprites

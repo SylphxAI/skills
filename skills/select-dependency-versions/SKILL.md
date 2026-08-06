@@ -1,6 +1,6 @@
 ---
 name: select-dependency-versions
-description: "Select dependency and runtime versions from live authoritative release sources. Use when adding or upgrading packages, runtimes, SDKs, or generators."
+description: "Select dependency and runtime versions from live…"
 ---
 
 # Select Dependency Versions

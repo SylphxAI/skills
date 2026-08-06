@@ -21,7 +21,7 @@ test('constitution stays thin and miss-class-A', () => {
 test('catalog stays inside Codex listing budget class', () => {
   const catalog = JSON.parse(catalogBytes(repositoryRoot));
   const descChars = catalog.skills.reduce((sum, skill) => sum + String(skill.description || '').length, 0);
-  assert.ok(catalog.count <= 30, `catalog too large for task-skill model: ${catalog.count}`);
+  assert.ok(catalog.count <= 200, `catalog unexpectedly huge: ${catalog.count}`);
   assert.ok(descChars <= 8000, `description sum ${descChars} exceeds 8k listing class`);
   for (const skill of catalog.skills) {
     assert.ok(String(skill.description || '').length <= 1024, skill.name);

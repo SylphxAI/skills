@@ -1,6 +1,6 @@
 ---
 name: verify-local-web-preview
-description: "Verify a local web/game preview: headless load, screenshot, console gate, honest human-facing report."
+description: "Verify a local web/game preview: headless load, screenshot,…"
 ---
 
 # Verify Local Web Preview

@@ -1,6 +1,6 @@
 ---
 name: execute-hard-cutover
-description: "Hard-cut a predecessor path to a destination: sole writer, full backfill, retire dual-paths. Use for migrations that must not leave permanent dual-write."
+description: "Hard-cut a predecessor path to a destination: sole writer,…"
 ---
 
 # Execute Hard Cutover

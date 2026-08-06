@@ -74,7 +74,7 @@ Migration cycle is done when:
 
 Not done: “compat left for later,” undated flags, dual packages for comfort.
 
-## Soft composition
+## optional composition
 
 Open only what the cut touches:
 
