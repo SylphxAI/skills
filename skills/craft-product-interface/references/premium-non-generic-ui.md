@@ -76,3 +76,11 @@ token discipline**, not Sylphx portfolio defaults.
 - Side-by-side: no second visual language
 - Real content lengths (not tidy lorem)
 - Screenshot or host browser evidence for Build/Polish modes
+
+## Deeper floors
+
+- Type: [typography-floors.md](typography-floors.md)
+- Surfaces: [surfaces-and-elevation.md](surfaces-and-elevation.md)
+- Motion: [motion-craft-floors.md](motion-craft-floors.md)
+- Game HUD: [game-overlay-and-hud.md](game-overlay-and-hud.md)
+

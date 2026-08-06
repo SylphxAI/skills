@@ -1,6 +1,6 @@
 ---
 name: build-keel-title
-description: "Implement a Keel external title/game/app: Title day-1, World/System/Intent/Port/Asset, pack shell, doctor floors."
+description: "Implement a Keel external title/game/app: Title day-1, examples routing, pack shell, doctor floors."
 ---
 
 # Build Keel Title
@@ -25,7 +25,7 @@ thesis and marketing live elsewhere.
 | Static agent methods | Sylphx Skills (this + compose) |
 | Product content, economy, live ops | Title / studio product repo |
 
-Map: [references/keel-authority-map.md](references/keel-authority-map.md).  
+Map: [references/keel-authority-map.md](references/keel-authority-map.md) · Examples: [references/keel-examples-routing.md](references/keel-examples-routing.md).  
 Re-read Keel tip docs—do not invent APIs from chat memory.
 
 ## Method
@@ -38,7 +38,7 @@ Re-read Keel tip docs—do not invent APIs from chat memory.
 
 ### 2. Orient on Keel (before coding stack defaults)
 
-1. Open Keel **AGENT_PRODUCT_GUIDE** “I want → example” table; pick nearest bins.  
+1. Open [references/keel-examples-routing.md](references/keel-examples-routing.md) (then Keel **AGENT_PRODUCT_GUIDE** / EXAMPLES_CATALOG at tip); pick nearest bins and run them.  
 2. Confirm day-1 shape: **`Title`** + `.view` + `.game` + Intent—not GameApp dual path.  
 3. Confirm ship path: **`keel pack`** owns player shell; title owns sim wasm/content.  
 4. If tempted by Three/R3F/Phaser/HTML sim: stop—map the need to World/Port/Asset

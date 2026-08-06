@@ -59,9 +59,9 @@
     },
     {
       "name": "build-keel-title",
-      "description": "Implement a Keel external title/game/app: Title day-1, World/System/Intent/Port/Asset, pack shell, doctor floors.",
+      "description": "Implement a Keel external title/game/app: Title day-1, examples routing, pack shell, doctor floors.",
       "path": "skills/build-keel-title/SKILL.md",
-      "packageDigest": "sha256:730f2c77f0a9553648154df0c5e23aabc5ef2962a70207306ab70b97d4b1dff1"
+      "packageDigest": "sha256:987900809dbc45cea2c2540225b5c3a5a622e6f2416dabc4bf835e64f026dd81"
     },
     {
       "name": "build-payment-readiness",
@@ -107,9 +107,9 @@
     },
     {
       "name": "craft-product-interface",
-      "description": "Craft one product interface or flow: visual direction, interaction states, responsive, accessibility.",
+      "description": "Craft one product interface or flow: premium non-generic UI, HUD/overlay, states, responsive, a11y.",
       "path": "skills/craft-product-interface/SKILL.md",
-      "packageDigest": "sha256:e7861b9bd188437374e2afaa3dcc237912294503222979824f95328345c3f593"
+      "packageDigest": "sha256:f0fcc5050221ff7bcbd191a8e96d7eed8ded19f07108577a1b1da0f8f1745b53"
     },
     {
       "name": "curate-skill-repository",

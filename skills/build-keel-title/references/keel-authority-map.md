@@ -33,7 +33,7 @@ paths per Keel docs—not React as sim SSOT.
 4. [PACKAGING.md](https://github.com/SylphxAI/keel/blob/main/docs/PACKAGING.md) — `keel pack` owns player shell
 5. [UI_KIT.md](https://github.com/SylphxAI/keel/blob/main/docs/UI_KIT.md) · [DESIGN_SYSTEM.md](https://github.com/SylphxAI/keel/blob/main/docs/DESIGN_SYSTEM.md) — chrome
 6. [AGENT_CAPABILITY_USAGE.md](https://github.com/SylphxAI/keel/blob/main/docs/AGENT_CAPABILITY_USAGE.md) — before inventing title-local hacks
-7. [EXAMPLES_CATALOG.md](https://github.com/SylphxAI/keel/blob/main/docs/EXAMPLES_CATALOG.md) — run matching `keel-examples` bins
+7. Local skill map [keel-examples-routing.md](keel-examples-routing.md) then [EXAMPLES_CATALOG.md](https://github.com/SylphxAI/keel/blob/main/docs/EXAMPLES_CATALOG.md) — run matching `keel-examples` bins
 8. Domain SOTA only when needed (INPUT, AUDIO, XR, …) under DOC_AUTHORITY
 
 ## Hard forbid (engine constitution)
