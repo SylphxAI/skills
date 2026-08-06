@@ -13,14 +13,9 @@ engine-ready defaults; the title or Keel pack owns runtime wiring.
 
 - Character/NPC/creature/prop/projectile/FX sprites or sheets
 - Walk/run/attack/idle cycles and transparent PNG/GIF exports
+- Game HUD icons/buttons/panels delivered as **art assets**
+- Recurring character identity across a multi-image set
 - Preparing assets for Keel pack / title `assets/` trees
-
-## Not this job
-
-- Whole-game thesis/blueprint → `design-game`
-- Marketing/store media pack → `produce-product-assets`
-- Interface craft for app chrome → `craft-product-interface`
-- Grok-only sandbox auth or TanStack Start scaffolds (not Sylphx defaults)
 
 ## Sylphx / Keel alignment
 
@@ -42,13 +37,13 @@ Document exact paths in the delivery pack. Do not invent a second pack standard.
 
 ## Host image tools (portable)
 
-Use **whichever image generation/edit tools the host exposes** (e.g. Codex
-imagegen, Claude image tools, Grok Imagine). Do **not** hard-require one vendor.
+Use **whichever image generation/edit tools the host exposes**. Do not hard-require
+one vendor.
 
 If the host lacks image tools:
 
-1. Prefer code-built geometry for exact text/structure, or  
-2. Postprocess existing source art with scripts below, or  
+1. Prefer code-built geometry for exact text/structure, or
+2. Postprocess existing source art with scripts below, or
 3. Report the tool gap honestly—do not fake engine-ready sheets.
 
 Optional denser motion harvest (`scripts/video2dsprite.py`) needs a host with
@@ -58,28 +53,33 @@ postprocess.
 ## Method
 
 ### 1. Frame
+
 - Subject, style, frame count/grid, loop vs one-shot, size class, naming
 - Success signal (e.g. clean chroma, loop, consistent scale across cells)
-- Non-goals: full game systems, marketing stills, 3D mesh production
+- Scope this run to the asset set (not whole-game thesis)
 
-### 2. Engine-ready defaults (apply unless user overrides)
-- Isolated subject on **solid keyable background** default `#FF00FF` for chroma paths
-- No baked ground scene, no cast shadow under subject, no text/labels
+### 2. Engine-ready defaults
+
+Apply [references/engine-ready-defaults.md](references/engine-ready-defaults.md)
+unless the brief overrides:
+
+- Isolated subject on solid keyable `#FF00FF` when chroma paths follow
+- No baked ground scene, cast shadow under subject, or text/labels
 - Sheet cells: uniform size, no divider lines, consistent pose scale/position
 - Animation: loopable cycle when motion is requested
-- Recurring character: edit-chain from prior base—do not regenerate identity cold
-
-Full checklist: [references/engine-ready-defaults.md](references/engine-ready-defaults.md).
+- Recurring character: edit-chain from prior base
 
 ### 3. Generate
+
 - Prompt in visual language (2–5 vivid sentences + style words)
 - Prefer reference images when identity continuity matters
 - Keep style contract across a set (palette, outline weight, view angle)
 
-Prompt craft notes: [references/prompt-rules.md](references/prompt-rules.md).
+Prompt craft: [references/prompt-rules.md](references/prompt-rules.md).  
+Identity sets: [references/character-consistency.md](references/character-consistency.md).  
+HUD/icon art: [references/game-ui-icons-and-hud-art.md](references/game-ui-icons-and-hud-art.md).
 
-### 4. Postprocess with scripts
-From this package (Pillow/numpy; ffmpeg for video path):
+### 4. Postprocess / package
 
 ```bash
 python3 skills/produce-game-2d-sprites/scripts/generate2dsprite.py --help
@@ -87,36 +87,32 @@ python3 skills/produce-game-2d-sprites/scripts/make_layout_guide.py --help
 python3 skills/produce-game-2d-sprites/scripts/video2dsprite.py --help
 ```
 
-When running from a product checkout, copy or invoke scripts by absolute path
-under the installed Skills tree. Treat script flags as local truth—read
-`--help` before inventing options.
+Read `--help` before inventing flags. Pillow/numpy (and ffmpeg for video path)
+as required by each script.
 
-### 5. Verify (blind read-back)
-- Describe the image **before** re-reading the spec
-- Pass/fail every stated property and every applicable default
-- Flag defects honestly; ~2 retries max per proven failure mode, then escalate
-  (compositional assembly) or ship with explicit residual
+### 5. Verify
 
-### 6. Deliver
-- Organized files + short manifest (names, grid, chroma, loop notes)
-- When landing into a title repo: compose `source-authoring-standard`
-  (**L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome)
+- Blind describe → pass/fail checklist including defaults
+- Motion: [references/animation-loop-qc.md](references/animation-loop-qc.md) flip test
+- Deliver files + manifest + residual defects
+
+### 6. Land
+
+When committing into a product repo, compose `source-authoring-standard`
+three layers (L1 batch → L2 atomic commits → L3 one revert-safe PR outcome).
 
 ## Soft composition
 
-- `produce-product-assets` — marketing/store/capture packs (not gameplay sheets)
-- `design-game` / `finish-product` — thesis and final-fidelity bar
-- `source-authoring-standard` — when committing into a product repo
-- Keel pack docs in the active Keel pin — packaging/runtime, not art generation
+Load sibling depth only when the job expands: whole-game thesis, store/marketing
+captures, interface craft in product chrome, local web preview smoke.
 
 ## Provenance
 
-Postprocess scripts adapted from MIT **agent-sprite-forge** (see
-`scripts/LICENSE-agent-sprite-forge` and [SOURCE.md](SOURCE.md)). Method text is
-Sylphx-native: portable hosts, Keel packaging authority, no Grok-only gate as
-the sole path.
+Scripts adapted from MIT **agent-sprite-forge** (see
+`scripts/LICENSE-agent-sprite-forge` and [SOURCE.md](SOURCE.md)). Method is
+Sylphx-native and Keel-aligned.
 
 ## Output
 
-Sprite Production Pack: paths, grid/chroma contract, loop QC, residuals, next
-title/Keel wiring notes.
+Engine-ready asset paths, QC notes, residuals, and evidence of host tools used
+or gaps.

@@ -12,14 +12,9 @@ shells and multi-platform emit.
 ## When to use
 
 - Tileable terrain/water/walls and prop sheets for 2D/2.5D maps
+- Transition tilesets and rotation-safe masters
 - Extracting transparent props from solid-magenta packs
 - Layered map previews for art direction QC
-
-## Not this job
-
-- Full game design thesis → `design-game`
-- Character sprite cycles → `produce-game-2d-sprites`
-- Marketing/store captures → `produce-product-assets`
 
 ## Sylphx / Keel alignment
 
@@ -39,17 +34,23 @@ Suggested paths:
 ## Method
 
 ### 1. Frame
+
 - Tile size, atlas layout, prop density, style match to characters/UI
 - Seamless vs hero-prop distinction
 - Naming + manifest requirements
 
-### 2. Defaults
+### 2. Defaults and QC
+
 - Terrain: seamless, non-directional lighting when rotation may apply
 - Props: isolated on `#FF00FF` for extract; no baked text
 - Verify tile seams with real 2×2 (or larger) composites
 
+Depth: [references/tileset-and-prop-qc.md](references/tileset-and-prop-qc.md),
+[references/layered-map-notes.md](references/layered-map-notes.md).
+
 ### 3. Generate / assemble
-- Use host image tools when available; keep style contract with sprites
+
+- Use host image tools when available; keep style contract with character art
 - Prefer compositional assembly when generators fail seam/identity checks
 
 ### 4. Scripts
@@ -62,14 +63,14 @@ python3 skills/produce-game-2d-map-assets/scripts/compose_layered_preview.py --h
 Read `--help` before inventing flags. Requires Pillow (and script-local deps).
 
 ### 5. Verify + deliver
+
 - Seam QC, alpha edges, naming, residual defects
 - Land with `source-authoring-standard` L1/L2/L3 when committing to a title repo
 
 ## Soft composition
 
-- `produce-game-2d-sprites` — character/FX sheets sharing the same art contract
-- `design-game` / `finish-product` — world thesis and final fidelity
-- Keel pack documentation for packaging—not a second art pipeline
+Share art contracts with character/FX sheets when the same title style applies;
+whole-game world thesis stays in design-game; packaging stays Keel pack docs.
 
 ## Provenance
 
@@ -79,4 +80,4 @@ Sylphx-native and Keel-aligned.
 
 ## Output
 
-Map Asset Pack: tile/prop paths, seam QC notes, extract parameters, residuals.
+Tile/prop paths, preview composites, QC notes, residuals.

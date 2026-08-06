@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 120,
+  "count": 121,
   "skills": [
     {
       "name": "adopt-repo-standards",
@@ -139,7 +139,7 @@
       "name": "design-game",
       "description": "Whole-game design: thesis, loops, progression, economy, social, live-ops.",
       "path": "skills/design-game/SKILL.md",
-      "packageDigest": "sha256:a2587f17c916e8b1fe0e5bea7d490daae360ceb8e9d64d152253cbde9ee7d997"
+      "packageDigest": "sha256:b28deed39dd3e3ce384effca32ebd03754099083b0de48d915c0f11c18ccc12a"
     },
     {
       "name": "design-marketing-automation",
@@ -325,13 +325,13 @@
       "name": "produce-game-2d-map-assets",
       "description": "Produce 2D map tiles/props packs: layered sheets, magenta prop extract, previews for title/Keel assets.",
       "path": "skills/produce-game-2d-map-assets/SKILL.md",
-      "packageDigest": "sha256:9524d7b7635f5165aa0a226119ee8077c81467ffe387a1dc9960bf1d4b5b114f"
+      "packageDigest": "sha256:7f99498be6c755dd7fdc4ea6d1218e0479d0458dc630f70eaeb7fcf010d13052"
     },
     {
       "name": "produce-game-2d-sprites",
       "description": "Produce engine-ready 2D game sprites/sheets: generate, chroma postprocess, loop QC, Keel pack paths.",
       "path": "skills/produce-game-2d-sprites/SKILL.md",
-      "packageDigest": "sha256:277c6a2a3029fff7fbbcc5e7eac80c1d79df4d16bff97b7fc6e157589fb68eb2"
+      "packageDigest": "sha256:cfaf7eceb1623176c2a9ebd85abe9b388f9143857d37a6fed3e44010e607ad4f"
     },
     {
       "name": "produce-product-assets",
@@ -717,6 +717,12 @@
         "lifecycle": "active",
         "authorityClass": "governance-constraint"
       }
+    },
+    {
+      "name": "verify-local-web-preview",
+      "description": "Verify a local web/game preview: headless load, screenshot, console gate, honest human-facing report.",
+      "path": "skills/verify-local-web-preview/SKILL.md",
+      "packageDigest": "sha256:4e8b38ef9a9f8f27a415ef7e4ce5aed9284a971a628f8bf9442db11b99ca1b11"
     },
     {
       "name": "work-coordination-standard",
