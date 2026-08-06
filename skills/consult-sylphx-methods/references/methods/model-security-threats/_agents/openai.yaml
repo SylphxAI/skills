@@ -1,0 +1,4 @@
+interface:
+  display_name: "Model Security Threats"
+  short_description: "Threat-model assets, adversaries, entry points, mitigations, residual risk."
+  default_prompt: "Run Model Security Threats for the active task/workspace."

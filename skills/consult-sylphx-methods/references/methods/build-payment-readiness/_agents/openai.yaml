@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Payment Readiness"
+  short_description: "Build production-ready payments: providers, ledger, webhooks, refunds, support adjustments, reconciliation."
+  default_prompt: "Run Build Payment Readiness on the active workspace."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research User Needs"
+  short_description: "Research user needs: questions, methods, synthesis, decision-ready findings."
+  default_prompt: "Run Research User Needs on the active workspace."

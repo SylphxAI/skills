@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Data Quality Observability Review"
+  short_description: "Review: pipeline quality—freshness, completeness, drift, backfill safety."
+  default_prompt: "Run Review Data Quality Observability Review for the active product/workspace."

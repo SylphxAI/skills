@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run Product Feedback Loop"
+  short_description: "Run feedback learning loop: private feedback and public reviews, cluster, route, product actions, truthful close."
+  default_prompt: "Run a product feedback loop cycle: capture, cluster, decide, close the loop."

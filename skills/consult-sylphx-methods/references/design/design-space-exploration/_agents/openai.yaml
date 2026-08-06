@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Space Exploration"
+  short_description: "Design-space map: alternatives, dimensions, kill criteria, ranked options."
+  default_prompt: "Use $design-space-exploration to generate and map materially different solutions before choosing one."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Marketplace Payouts Review"
+  short_description: "Review: marketplace payouts—eligibility, calc, holds, tax/compliance."
+  default_prompt: "Run Review Marketplace Payouts Review for the active product/workspace."

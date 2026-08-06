@@ -1,0 +1,4 @@
+interface:
+  display_name: "Price SaaS Subscription"
+  short_description: "Price SaaS subscription: packaging, value metric, fences, migration, net revenue."
+  default_prompt: "Run Price SaaS Subscription for the active task/workspace."

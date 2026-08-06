@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Offline Sync Conflict Review"
+  short_description: "Review: offline sync and conflict resolution across devices."
+  default_prompt: "Run Review Offline Sync Conflict Review for the active product/workspace."

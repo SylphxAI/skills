@@ -1,0 +1,4 @@
+interface:
+  display_name: "Record Structured Deliberation"
+  short_description: "Record a structured deliberation: options, criteria, decision record, next actions (not decision-quality policy alone)."
+  default_prompt: "Run Deliberate Structured for the active task/workspace."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Accessibility Conformance Program Review"
+  short_description: "Review: accessibility conformance program design, evidence, residual risk."
+  default_prompt: "Run Review Accessibility Conformance Program Review for the active product/workspace."

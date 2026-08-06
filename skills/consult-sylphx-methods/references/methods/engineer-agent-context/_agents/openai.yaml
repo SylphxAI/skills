@@ -1,0 +1,4 @@
+interface:
+  display_name: "Engineer Agent Context"
+  short_description: "Engineer agent context packs: load rules, budgets, refresh."
+  default_prompt: "Engineer the agent context and memory contract for this surface."

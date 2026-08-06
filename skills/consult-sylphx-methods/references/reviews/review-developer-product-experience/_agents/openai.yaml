@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Developer Product Experience Review"
+  short_description: "Review: developer product UX—onboarding, APIs, docs, time-to-value."
+  default_prompt: "Run Review Developer Product Experience Review for the active product/workspace."

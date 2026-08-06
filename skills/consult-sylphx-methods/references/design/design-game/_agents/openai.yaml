@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Game"
+  short_description: "Whole-game design: thesis, loops, progression, economy, social, live-ops."
+  default_prompt: "Run Design Game for the active product/workspace."

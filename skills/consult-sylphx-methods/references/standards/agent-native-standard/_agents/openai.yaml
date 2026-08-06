@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Native Standard"
+  short_description: "Policy: agent-operable products—typed state, schema tools, recoverable workflows, run traces."
+  default_prompt: "Apply agent-native-standard constraints on the active task/workspace."

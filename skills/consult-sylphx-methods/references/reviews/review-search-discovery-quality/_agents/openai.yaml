@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Search Discovery Quality Review"
+  short_description: "Review: search/discovery—relevance, ranking, evaluation, abuse resistance."
+  default_prompt: "Run Review Search Discovery Quality Review for the active product/workspace."

@@ -24,7 +24,7 @@ compact constitution, and enables managed AutoSync for the receiving runtime.
 | Layer | Content |
 | --- | --- |
 | Always-on | Thin `runtime/constitution.md` (authority + evidence honesty) |
-| Skills | A small catalog of specialized task procedures under `skills/` |
+| Skills | A small catalog of task skills plus one method-library skill under `skills/` |
 | Live systems | CI, deploy, and tools remain real authority |
 
 Skills here are **not** a company policy encyclopedia. Long standards, product
@@ -36,6 +36,7 @@ OS loops, and domain review matrices are out of catalog scope. See
 | Skill | Job |
 | --- | --- |
 | `author-skill` | Create or revise an Agent Skill package |
+| `consult-sylphx-methods` | Org method library (migrated standards/reviews/methods) |
 | `build-keel-title` | Implement a Keel external title/app |
 | `craft-product-interface` | Product UI craft with verification |
 | `execute-hard-cutover` | Hard-cut predecessor → destination |

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Parallel Change Integration Standard"
+  short_description: "Policy: parallel change integration—branches, rebase, collision, exact-SHA."
+  default_prompt: "Apply parallel-change-integration-standard constraints on the active task/workspace."

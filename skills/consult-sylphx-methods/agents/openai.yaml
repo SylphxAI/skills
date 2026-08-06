@@ -1,0 +1,4 @@
+interface:
+  display_name: "Consult Sylphx Methods"
+  short_description: "Org method library: standards, reviews, design, product procedures"
+  default_prompt: "Consult the Sylphx method library for the current task and apply the matching playbook."

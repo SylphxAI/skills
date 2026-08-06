@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Enterprise Access Governance Review"
+  short_description: "Review: enterprise access—roles, JML, reviews, least privilege."
+  default_prompt: "Run Review Enterprise Access Governance Review for the active product/workspace."

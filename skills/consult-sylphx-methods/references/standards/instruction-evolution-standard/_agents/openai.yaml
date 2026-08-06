@@ -1,0 +1,4 @@
+interface:
+  display_name: "Instruction Evolution Standard"
+  short_description: "Policy: evolve Skills/constitutions/profiles—owner, migration, retirement."
+  default_prompt: "Apply instruction-evolution-standard constraints on the active task/workspace."

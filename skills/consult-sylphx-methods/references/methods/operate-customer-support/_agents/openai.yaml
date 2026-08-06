@@ -1,0 +1,4 @@
+interface:
+  display_name: "Operate Customer Support"
+  short_description: "Operate support: triage, resolution path, escalation, quality loops."
+  default_prompt: "Run Operate Customer Support for the active task/workspace."

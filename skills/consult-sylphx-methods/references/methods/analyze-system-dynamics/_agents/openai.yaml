@@ -1,0 +1,4 @@
+interface:
+  display_name: "Analyze System Dynamics"
+  short_description: "Map stubborn loops: stocks, delays, incentives, policy resistance."
+  default_prompt: "Run Analyze System Dynamics for the active task/workspace."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Marketplace Seller Performance Review"
+  short_description: "Review: seller performance—quality evidence, tiers, ranking inputs."
+  default_prompt: "Run Review Marketplace Seller Performance Review for the active product/workspace."

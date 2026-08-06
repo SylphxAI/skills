@@ -1,0 +1,4 @@
+interface:
+  display_name: "Forecast With Calibration"
+  short_description: "Produce calibrated probabilistic forecasts with base rates and scoring rules."
+  default_prompt: "Run Forecast With Calibration on the active workspace."

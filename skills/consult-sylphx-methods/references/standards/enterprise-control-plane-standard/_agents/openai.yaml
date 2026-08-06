@@ -1,0 +1,4 @@
+interface:
+  display_name: "Enterprise Control Plane Standard"
+  short_description: "Policy: multi-repo control plane—rulesets, reconcilers, audits, status."
+  default_prompt: "Apply enterprise-control-plane-standard constraints on the active task/workspace."

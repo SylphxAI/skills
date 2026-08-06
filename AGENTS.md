@@ -1,20 +1,24 @@
 # Skills repository instructions
 
-Public source for a small Agent Skills catalog (MIT) and install adapters.
+Public source for an industry-aligned Agent Skills catalog (MIT) plus migrated
+method knowledge.
+
+## Layout
+
+- `skills/<task-id>/` — installable task skills (small catalog)
+- `skills/consult-sylphx-methods/references/` — migrated standards, reviews,
+  design/product methods (progressive library; one listing entry)
+- `skills/author-skill/references/` — skill-authoring depth (incl. folded
+  curate/distill/evals methods)
+- `runtime/constitution.md` — thin always-on floors
+- `docs/MODEL.md` — architecture rules
 
 ## Authoring
 
-- Managed packages live only under `skills/<id>/`.
-- Root `SKILL.md` is the install bootstrap; it points at `INSTALL.md` only.
 - Frontmatter is `name` + `description` only.
-- Put depth in `references/`; deterministic helpers in `scripts/`.
-- One specialized job per skill. No policy encyclopedias, no meta-routers.
-- Keep the catalog inside the Codex ~8k description listing class.
+- Prefer task skills only when the task-skill test in `docs/MODEL.md` passes.
+- Otherwise add depth under `consult-sylphx-methods/references/` and index it.
 - Rebuild with `npm run build:catalog`. Run `npm test` before landing.
-
-## Model
-
-See `docs/MODEL.md`. Always-on floors stay in `runtime/constitution.md`.
 
 ## Install targets
 

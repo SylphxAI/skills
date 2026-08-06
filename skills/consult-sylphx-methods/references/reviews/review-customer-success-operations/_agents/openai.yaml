@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Customer Success Operations Review"
+  short_description: "Review: customer success ops—health, playbooks, escalation, expansion."
+  default_prompt: "Run Review Customer Success Operations Review for the active product/workspace."

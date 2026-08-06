@@ -1,0 +1,13 @@
+{
+  "engagement_id": "PQLC-example-product-v1",
+  "outer_objective": "Ship <product> to production-quality outcomes: <north-stars>. Non-goals: perfection, micro-polish thrash.",
+  "status": "active",
+  "cycle": 0,
+  "coverage_card": null,
+  "B": [],
+  "R": [],
+  "last_cycle_result": null,
+  "next_action": "Run cycle 1: full coverage card, admit all high-L passers into B, execute, verify, write state.",
+  "hard_wait": null,
+  "state_path": "docs/specs/example-betterment-state.json"
+}

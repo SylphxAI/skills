@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Promotion Campaign Review"
+  short_description: "Review: promotion campaign—offer, eligibility, abuse, measurement, net impact."
+  default_prompt: "Run Review Promotion Campaign Review for the active product/workspace."

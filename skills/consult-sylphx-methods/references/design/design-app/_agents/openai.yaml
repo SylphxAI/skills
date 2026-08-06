@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design App"
+  short_description: "Whole-app design: jobs, IA, activation, retention, multi-surface blueprint."
+  default_prompt: "Run Design App for the active product/workspace."

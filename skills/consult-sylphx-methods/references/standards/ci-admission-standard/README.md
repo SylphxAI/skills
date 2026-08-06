@@ -1,0 +1,44 @@
+# ci-admission-standard
+
+> **Migrated knowledge** (not an installable Agent Skill).
+> Former package class in old catalog → now progressive documentation under this skill's `references/` tree.
+>
+> **Job summary:** Policy: protected-branch CI admission—required checks, risk-matched gates, flake/preview.
+
+Open deeper files in this folder only when needed.
+
+---
+
+# Ci Admission Standard
+
+Policy constraints—compose onto matching host jobs.
+
+Read [references/full-standard.md](references/full-standard.md) for the full
+method and predicates.
+
+## Method
+
+1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
+2. Apply the strongest relevant subset; record material tradeoffs only where
+   the owning contract, configuration, ADR, or executable proof requires them.
+   Do not add a prose-presence test to prove that this standard was followed.
+3. Prefer schema/test/ADR homes over copying this body into product repos.
+4. When a required check claims to detect a failure class, apply
+   [control-effectiveness verification](../engineering-standard/references/control-effectiveness.md).
+
+## Composition and output
+
+Apply this standard as constraints on the artifact requested by the user or
+owned by the primary procedure. Do not emit a separate per-standard compliance
+report merely because this Skill was injected.
+
+Integrate only material obligations, deviations, evidence, and gaps into the
+primary artifact or final status. When conformance assessment is itself the
+requested job, produce one standalone domain conformance record from this
+standard.
+
+## Boundaries
+
+- Does not grant deploy or credential capabilities.
+- Does not replace product-local ADRs where those own decisions.
+

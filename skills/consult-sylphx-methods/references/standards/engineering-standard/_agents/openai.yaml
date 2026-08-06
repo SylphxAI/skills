@@ -1,0 +1,4 @@
+interface:
+  display_name: "Engineering Standard"
+  short_description: "Policy: engineering method—design, verification, change safety, repro-driven fixes."
+  default_prompt: "Apply engineering-standard constraints on the active task/workspace."

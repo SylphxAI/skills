@@ -1,19 +1,25 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 12,
+  "count": 13,
   "skills": [
     {
       "name": "author-skill",
       "description": "Create or revise an Agent Skill: one job, trigger description, concise procedure, optional scripts/references. Use when packaging a reusable specialized workflow.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:964f36761f0363fb85a1728564232c9becb53f0af75bf7ec8d920032a954745b"
+      "packageDigest": "sha256:98275be605ab83e64ebc70ff6dbf1d7a870ec5c0117b06744e5027cddae5c9a6"
     },
     {
       "name": "build-keel-title",
       "description": "Implement a Keel external title/game/app: Title day-1, examples routing, pack shell, doctor floors.",
       "path": "skills/build-keel-title/SKILL.md",
       "packageDigest": "sha256:74bee6ff724fefd40d4cc62ca1c0936e6ac2e495278c8e22cd4e531a6125e77d"
+    },
+    {
+      "name": "consult-sylphx-methods",
+      "description": "Open Sylphx method knowledge: standards, domain review playbooks, design/product procedures migrated from the pre-v3 portfolio. Use when you need org methods not covered by a dedicated task skill.",
+      "path": "skills/consult-sylphx-methods/SKILL.md",
+      "packageDigest": "sha256:53f9cf76ed70fb5bb2199d4afb8cc44e280908593d9c6dfd6ac07dd8fa7e944f"
     },
     {
       "name": "craft-product-interface",
