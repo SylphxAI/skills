@@ -20,6 +20,30 @@ Maximize durable user value, voluntary retention, commercial value, reach, trust
 
 “Modern” means immediate, legible, responsive, resilient, inclusive, globally adaptable, instrumented, and continuously improving. Visual novelty alone is not modernity.
 
+
+## Core concept power (job method — not a separate standard)
+
+When designing the app, optimize for **one powerful core concept** that is:
+
+1. **Simple** — as few user-facing concepts as still express the promise; one
+   primary path; no concept invented only for symmetry or feature checklist.
+2. **Integrated** — every selected capability deepens or delivers that same
+   concept; no parallel mini-products, dual mental models, or side systems that
+   teach a second product.
+3. **Deep** — material exposed detail is resolved for the core concept
+   (states, recovery, edge paths, feedback), not a shallow tour of many ideas.
+4. **Strong** — the core concept is built to the modern capability bar where the
+   path requires it: correct ownership, durable investment, high enough
+   throughput/latency, scale, resilience, and observability for real use—not a
+   toy shell that needs a later “real” product.
+5. **Extensible without proliferation** — growth is new slices and depth on the
+   same concept (and reuse of scale-ready primitives), not a new concept each
+   release. Prefer hard-cut of obsolete concepts over permanent dual concepts.
+
+This is method inside **this job Skill**. Do not author a portfolio
+`*-standard` package for concept power; do not load always-on essays. Specialists
+compose by artifact handoff while the core concept stays singular.
+
 ## Atomic boundary
 
 This skill owns one independently useful artifact: the **App Design Blueprint**, including app-level capability semantics and integration contracts. It does not own provider transaction correctness, detailed refund enforcement, one engagement mechanic, marketing spend, store submission evidence, localized copy QA, or implementation of a single screen.
@@ -130,7 +154,7 @@ Rules:
 
 1. Label inputs as `given`, `observed`, `assumed`, `hypothesis`, or `decision`. Never present a competitor pattern or generic benchmark as proof for this app.
 2. Define the primary user, job, trigger, context, frequency, current alternative, desired outcome, business model, lead platform, minimum device/browser, age/territory modes, and non-goals. Inclusive reach does not mean an undefined “everyone” audience.
-3. Write one falsifiable promise: who reaches what outcome, through what distinctive mechanism, and what observable event proves first value.
+3. Write one falsifiable promise: who reaches what outcome, through what **single distinctive core concept/mechanism**, and what observable event proves first value. Reject a second competing concept unless it is explicitly not-applicable or a temporary probe.
 4. Benchmark three to five relevant products by mechanism and tradeoff: direct category, adjacent workflow, retention, collaboration, commerce, and technical reach leaders as applicable. Synthesize; do not cargo-cult.
 5. Map jobs to workflows, objects, state authorities, navigation, search, creation, decisions, errors, recovery, and feedback before styling screens.
 6. Give every swept capability a proportionate record: disposition and exact reason; user value or inapplicability/floor; owner; state and dependency boundary; complete target and planned verified slices for selected capabilities; build/proof/availability/presentation; telemetry, migration, dormant state, degradation, recovery, and specialist handoff where applicable. If implementation is in scope, execute and evidence those slices; otherwise keep them as explicit downstream acceptance contracts. Do not invent runtime architecture for `not-applicable` capabilities or use `contract-ready` to defer selected work.

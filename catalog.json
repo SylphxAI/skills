@@ -67,7 +67,7 @@
       "name": "build-product",
       "description": "Ship a missing capability end-to-end on the correct boundary; original-oracle verify.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:1f88c74ff178ec831c70590833d253bb9a7706b6af8a6faf76b88ca7deb8c2c9"
+      "packageDigest": "sha256:75cb90f7100f243d5a51bab87c5247b4a34f41c51b6ce076e11ec83a000ec414"
     },
     {
       "name": "ci-admission-standard",
@@ -133,13 +133,13 @@
       "name": "design-app",
       "description": "Whole-app design: jobs, IA, activation, retention, multi-surface blueprint.",
       "path": "skills/design-app/SKILL.md",
-      "packageDigest": "sha256:66084246f55b15137ac45e5f20e7f762f8893a83d4c6927404c813c6e1260fc6"
+      "packageDigest": "sha256:202e0b777bbfc073a410e69ed7f34b4d096cc803b5840f412bc80156fef52cde"
     },
     {
       "name": "design-game",
       "description": "Whole-game design: thesis, loops, progression, economy, social, live-ops.",
       "path": "skills/design-game/SKILL.md",
-      "packageDigest": "sha256:74d40cf6f61f9c1748434c940e0b16cfc4c61e01d15d5a633ea15560bc38caf6"
+      "packageDigest": "sha256:ce3e66f59f13c791a14aa92ada13f75daa6944e16bb7e369dc121c335d2b9384"
     },
     {
       "name": "design-marketing-automation",
@@ -265,7 +265,7 @@
       "name": "finish-product",
       "description": "Release-grade finish/deburr of an integrated product with re-captured evidence.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:dcd5ec42af9b63d1b993919a3fec3eb8ebafa2b47dedf6d2001a8d4fd8ade313"
+      "packageDigest": "sha256:5f372e63fa1349ecaca6aa5bcb87fe67ff96b8ce8da272daaceadb7f47baba01"
     },
     {
       "name": "forecast-with-calibration",

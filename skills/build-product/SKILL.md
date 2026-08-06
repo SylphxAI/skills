@@ -34,7 +34,18 @@ No permanent workarounds. Prefer durable work on the owning layer.
 - Large gaps → a still-meaningful vertical slice
 
 ### 4. Implement
-- When landing source: compose `source-authoring-standard` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
+
+### Core concept power (when implementing)
+
+- Implement the **framed capability** as a full, owning-boundary vertical slice
+  of the product’s core concept—not a parallel concept or permanent workaround.
+- Prefer depth and strength on that capability (real path, oracle, operability)
+  over shipping many half-concepts.
+- When landing source: compose `source-authoring-standard` L1/L2/L3 (batch →
+  atomic commits → revert-safe PR outcome). Do not leave dual-path concept
+  residue; hard-cut obsolete paths via `execute-hard-cutover` when cutover is
+  the job.
+
 - Correct boundary; no product hacks for shared floors that belong elsewhere
 - Real paths over mocks unless the cycle is explicitly building a seam
 - Update public docs/contracts when behavior changes

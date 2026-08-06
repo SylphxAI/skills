@@ -14,6 +14,14 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 | `pursue-product-objective` | Follow a declared product objective to evidence-backed completion |
 | `run-open-product-betterment` | Open-ended mixed-job betterment with no fixed objective |
 
+
+## Core concept power (in job Skills only)
+
+Product design/build/finish jobs encode **one strong core concept**: simple,
+integrated, deep, capable, extensible without inventing a new concept each
+release. This is **method inside** `design-app`, `design-game`, `build-product`,
+and `finish-product`—not a portfolio `*-standard` package.
+
 ## Source integration layers
 
 Compose `source-authoring-standard` on any mutating job:

@@ -13,6 +13,25 @@ Maximize durable player value, voluntary retention, commercial upside, advocacy,
 
 Treat revenue, retention, reach, and virality as outcomes of player value. Never optimize addiction, compulsion, fear, shame, fake scarcity, hidden cost, vulnerable-player spend, or difficulty leaving.
 
+
+## Core concept power (job method — not a separate standard)
+
+Design around **one player promise / core fantasy** that is:
+
+1. **Simple** — few player-facing concepts; pillars choose tradeoffs, not a pile
+   of slogans or systems that each teach a different game.
+2. **Integrated** — loops, progression, economy, social, and live-ops reinforce
+   the same promise; no bolted-on second thesis.
+3. **Deep** — systems that stay are fully authored for feel, state, recovery,
+   and edge cases—not graybox mechanics wearing a feature list.
+4. **Strong** — selected systems meet production-shaped capability (scale,
+   session reliability, operability, observability, trust floors) where the
+   live product needs them.
+5. **Extensible without proliferation** — new content and modes deepen the same
+   promise; retire obsolete systems with hard-cut rather than dual fantasy.
+
+This lives in the **design-game job**, not a concept-power standard package.
+
 ## Agent-first invariant
 
 Assume autonomous construction capacity is elastic. Reprice implementation and
