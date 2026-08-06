@@ -31,3 +31,8 @@ description: "Write a high-signal stakeholder update: decisions, risks, explicit
 ## Output
 
 A short update ready to send.
+
+## Archived depth
+
+If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
+

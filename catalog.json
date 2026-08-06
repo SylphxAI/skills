@@ -7,7 +7,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill: one job, trigger description, concise procedure, optional scripts/references. Use when packaging a reusable specialized workflow.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:98275be605ab83e64ebc70ff6dbf1d7a870ec5c0117b06744e5027cddae5c9a6"
+      "packageDigest": "sha256:16a463e98129f2849f90ff7f728b89ff27a3a71928a0e6cc51e37a209ff37833"
     },
     {
       "name": "build-keel-title",
@@ -31,7 +31,7 @@
       "name": "execute-hard-cutover",
       "description": "Hard-cut a predecessor path to a destination: sole writer, full backfill, retire dual-paths. Use for migrations that must not leave permanent dual-write.",
       "path": "skills/execute-hard-cutover/SKILL.md",
-      "packageDigest": "sha256:5e306bb57d5250e2b8bc56a658e9954ef9ed4c8d051c1e4350d8d91bfa063153"
+      "packageDigest": "sha256:2921a84e156b2fb4bc51a784b59a6c3aa801cad62ad5abf8fe8e977681db9795"
     },
     {
       "name": "produce-game-2d-map-assets",
@@ -55,19 +55,19 @@
       "name": "remediate-frontend-performance",
       "description": "Remediate frontend runtime performance with measured before/after evidence. Use for jank, long tasks, bloated bundles, or slow interaction paths.",
       "path": "skills/remediate-frontend-performance/SKILL.md",
-      "packageDigest": "sha256:728db39c1ed5ea4cc5e5e07e6611335c8db35bbd53a7bd327699b697c9fce196"
+      "packageDigest": "sha256:a347e46b744ba76f6e462fd5289359825059939cbe92bd6e1cc7ab114f1c03d1"
     },
     {
       "name": "run-incident-response",
       "description": "Run production incident response: severity, command, mitigation, communications, and learning. Use for live outages or user-visible production failures.",
       "path": "skills/run-incident-response/SKILL.md",
-      "packageDigest": "sha256:9e3b2ccebe44a1cc47e3345181ea925527101dd2bc32efb8f8f983e37ac9dd9e"
+      "packageDigest": "sha256:379e11b9972c1812b7224730b922d749e307d53f285cd05e32482add9f335e26"
     },
     {
       "name": "select-dependency-versions",
       "description": "Select dependency and runtime versions from live authoritative release sources. Use when adding or upgrading packages, runtimes, SDKs, or generators.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:e15844782b461034ad1b36923c79846d0afc3d506d6942896789698af4b5fd0d"
+      "packageDigest": "sha256:fd7bdd705d1fc096d6d85850d6473b35262774e463c4c064ed7ccef973ad58fc"
     },
     {
       "name": "verify-local-web-preview",
@@ -79,7 +79,7 @@
       "name": "write-high-signal-update",
       "description": "Write a high-signal stakeholder update: decisions, risks, explicit asks, minimal narrative. Use for status notes, exec updates, or handoffs.",
       "path": "skills/write-high-signal-update/SKILL.md",
-      "packageDigest": "sha256:f829d50c7f175214852884bf017a02288acfae8639f63eb8596e0977c1af4a4d"
+      "packageDigest": "sha256:c60d6c47075b192287bb61dc8e606ce726bf80354613dc860d4ba11a00ecfcc6"
     }
   ]
 }

@@ -38,3 +38,8 @@ Run a hard cutover when a predecessor implementation must stop owning a path and
 ## Output
 
 Cutover plan executed · evidence · residuals
+
+## Archived depth
+
+If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
+

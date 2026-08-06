@@ -36,3 +36,8 @@ Read [references/full-standard.md](references/full-standard.md) only for extende
 ## Output
 
 Incident record · mitigation evidence · communications · follow-ups
+
+## Archived depth
+
+If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
+

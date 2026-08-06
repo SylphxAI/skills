@@ -36,3 +36,8 @@ Never pick versions from model memory, stale templates, or old examples.
 ## Output
 
 Chosen versions · sources · commands run · residuals
+
+## Archived depth
+
+If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
+

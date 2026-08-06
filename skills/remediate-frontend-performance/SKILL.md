@@ -26,3 +26,8 @@ For detailed technique notes open [references/frontend-runtime-performance-metho
 ## Output
 
 Baseline · changes · after metrics · residuals
+
+## Archived depth
+
+If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
+
