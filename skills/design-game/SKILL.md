@@ -63,6 +63,8 @@ For every handoff state the owner skill, input facts, output required, acceptanc
 
 ## Resource routing
 
+- Read `references/player-controls-self-test.md` when the game has WASD, vehicles, flight, or mouse-look (player-visible input signs + self-test).
+
 - Read `references/game-thesis-and-loops.md` for every whole-game task.
 - Read `references/game-progression-and-quests.md` when progression, levels, characters, equipment, mastery, quests, achievements, catch-up, or content unlocks matter.
 - Read `references/game-system-integration.md` for the capability sweep, cross-system interactions, retention, commercial hierarchy, durable ownership, and specialist handoffs.
