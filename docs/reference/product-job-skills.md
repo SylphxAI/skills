@@ -6,6 +6,9 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 
 | Skill | When you need to… |
 | --- | --- |
+| `produce-game-2d-sprites` | Engine-ready 2D sprites/sheets for titles/Keel assets |
+| `produce-game-2d-map-assets` | 2D tiles/props packs + extract/preview |
+| `verify-local-web-preview` | Local web load/screenshot/console evidence |
 | `prototype-product` | Validate a hypothesis with a cheap real slice |
 | `build-product` | Close a shippable capability gap |
 | `maintain-product` | Reduce framed live/regression harm |

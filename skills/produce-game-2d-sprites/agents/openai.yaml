@@ -1,0 +1,4 @@
+interface:
+  display_name: "Produce Game 2D Sprites"
+  short_description: "Engine-ready 2D sprites/sheets with chroma postprocess."
+  default_prompt: "Produce engine-ready 2D game sprite sheets for the active title/workspace."

@@ -63,6 +63,11 @@ For every handoff state the owner skill, input facts, output required, acceptanc
 
 ## Resource routing
 
+- Read `references/player-controls-self-test.md` when the game has WASD, vehicles, flight, or mouse-look (player-visible input signs + self-test).
+- Read `references/game-feel-juice.md` when specifying presentation feedback (shake, hitstop, particles, easing) separate from simulation.
+- Read `references/genre-acceptance-checks.md` for portable playable-quality checks by genre after thesis/loops exist.
+- Read `references/multiplayer-trust-boundary.md` when designing realtime multiplayer authority and population trust.
+
 - Read `references/game-thesis-and-loops.md` for every whole-game task.
 - Read `references/game-progression-and-quests.md` when progression, levels, characters, equipment, mastery, quests, achievements, catch-up, or content unlocks matter.
 - Read `references/game-system-integration.md` for the capability sweep, cross-system interactions, retention, commercial hierarchy, durable ownership, and specialist handoffs.

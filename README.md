@@ -3,7 +3,7 @@
 [![CI](https://github.com/SylphxAI/skills/actions/workflows/check.yml/badge.svg)](https://github.com/SylphxAI/skills/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](./package.json)
-[![Agent Skills](https://img.shields.io/badge/agent%20skills-118%20packages-111827.svg)](./catalog.json)
+[![Agent Skills](https://img.shields.io/badge/agent%20skills-121%20packages-111827.svg)](./catalog.json)
 
 **Working methods for AI agents — installed by the agent that needs them.**
 
@@ -183,7 +183,7 @@ mechanisms, not a user installation interface.
 
 ## What you get
 
-**112 packages** as on-demand Agent Skills (see [`catalog.json`](./catalog.json)
+**121 packages** as on-demand Agent Skills (see [`catalog.json`](./catalog.json)
 for the machine index and [`skills/`](./skills/) for sources). Hosts list
 `name`/`description` first and load bodies on selection — Skills are **not**
 always-on law. Authoring classes (`workflow` · `review` · `policy` · `adapter`)
