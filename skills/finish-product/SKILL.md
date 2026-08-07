@@ -30,9 +30,10 @@ concept** deeply—do not invent extra concepts to fill a checklist.
 
 - **Simple surface** — as few concepts as the promise needs; legible story;
   obvious primary path; restrained controls; coherent visual or gameplay language.
-- **Deep resolution** — every material exposed detail of that core concept is
-  intentional, derived from an authority, explicitly not applicable, or recorded
-  as a defect; strength and polish match real use (feel, recovery, edge states).
+- **Deep resolution** (`q-depth`) — every material exposed detail of that core
+  concept is intentional, derived from an authority, explicitly not applicable,
+  or recorded as a defect; strength and polish match real use (feel, recovery,
+  edge states) under the Engineering Standard Quality North Star.
 - **Integrated, not proliferated** — new surfaces deepen the same concept;
   retire obsolete concepts rather than leaving dual product stories.
 

@@ -40,8 +40,10 @@ No permanent workarounds. Prefer durable work on the owning layer.
 
 - Implement the **framed capability** as a full, owning-boundary vertical slice
   of the product’s core concept—not a parallel concept or permanent workaround.
-- Prefer depth and strength on that capability (real path, oracle, operability)
-  over shipping many half-concepts.
+- Prefer **Depth** and strength on that capability (real path, oracle,
+  operability) over shipping many half-concepts. Apply the Engineering Standard
+  **Quality North Star** (`q-*`) on the framed path—not a shallow shell that
+  defers Correctness, Reliability, Observability, or Security.
 - When landing source: land with atomic commits and a revert-safe PR outcome. Do not leave dual-path concept
   residue; hard-cut obsolete paths via the execute-hard-cutover skill when cutover is the job.
 

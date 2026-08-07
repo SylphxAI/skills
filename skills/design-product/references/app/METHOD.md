@@ -28,10 +28,12 @@ When designing the app, optimize for **one powerful core concept** that is:
    teach a second product.
 3. **Deep** — material exposed detail is resolved for the core concept
    (states, recovery, edge paths, feedback), not a shallow tour of many ideas.
-4. **Strong** — the core concept is built to the modern capability bar where the
-   path requires it: correct ownership, durable investment, high enough
-   throughput/latency, scale, resilience, and observability for real use—not a
-   toy shell that needs a later “real” product.
+4. **Strong** — the core concept is built to the Engineering Standard **Quality
+   North Star** where the path requires it: Correctness, Performance,
+   Scalability, Reliability, Availability, Resilience, Observability, Security,
+   Testability, and Evolvability for real use—not a toy shell that needs a later
+   “real” product. Depth (this method) + the other `q-*` attributes (engineering
+   standard) are one vocabulary, not two competing bars.
 5. **Extensible without proliferation** — growth is new slices and depth on the
    same concept (and reuse of scale-ready primitives), not a new concept each
    release. Prefer hard-cut of obsolete concepts over permanent dual concepts.
