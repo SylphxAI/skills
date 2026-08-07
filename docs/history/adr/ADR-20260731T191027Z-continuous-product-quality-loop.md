@@ -24,7 +24,7 @@ The existing loop methods intentionally separate one bounded objective from a
 continuous operating system. `drive-to-delivery` closes one
 accepted Work Item. `select-next-work` discovers, qualifies,
 claims, executes, and re-enters recurring Work. Specialist Skills review one
-quality domain, while `remediate-agent-harness` changes prompts, Skills,
+quality domain, while `maintain-product` (see references/agent-harness) changes prompts, Skills,
 context, tools, evaluators, or workflow after a recurring agent-system failure.
 
 None of those owners defines the cross-domain product artifact that says which
@@ -38,7 +38,7 @@ warnings.
 
 ## Decision
 
-1. Add `run-open-product-betterment` as the owner of one independently accepted
+1. Add `maintain-product` (see references/open-betterment) as the owner of one independently accepted
    **Product Quality Loop Contract**.
 2. Model quality as a surface-by-dimension matrix with explicit promises,
    hard floors or objectives, required source/Candidate/artifact/live subject

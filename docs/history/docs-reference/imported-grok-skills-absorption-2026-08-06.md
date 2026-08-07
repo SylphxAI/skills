@@ -24,14 +24,14 @@ Start templates.
 
 | Intake id | Disposition | Sylphx home |
 | --- | --- | --- |
-| `generate2dsprite` + scripts | **Rewrite job** | `produce-game-2d-sprites` |
+| `generate2dsprite` + scripts | **Rewrite job** | `produce-product-assets` (see references/game-2d-sprites) |
 | `video2dsprite` + script | **Optional path** inside sprites skill (host must have video tools) | same |
 | `game-asset-core` | **Fold doctrine** | `produce-game-2d-sprites/references/engine-ready-defaults.md` |
 | `game-animation-frames` | **Fold doctrine** | `…/references/animation-loop-qc.md` |
 | `game-character-consistency` | **Fold doctrine** | `…/references/character-consistency.md` |
 | `game-ui-icons` | **Fold doctrine** | `…/references/game-ui-icons-and-hud-art.md` |
 | `game-tilesets` | **Fold doctrine** | `produce-game-2d-map-assets/references/tileset-and-prop-qc.md` |
-| `generate2dmap` + scripts + refs | **Rewrite job** + notes | `produce-game-2d-map-assets` (+ layered-map-notes) |
+| `generate2dmap` + scripts + refs | **Rewrite job** + notes | `produce-product-assets` (see references/game-2d-map-assets) (+ layered-map-notes) |
 | `controls` | **Distill** player-sign self-test | `design-game/references/player-controls-self-test.md` |
 | `building-games` genre playbooks | **Portable checks** only (no Phaser/R3F default) | `design-game/references/genre-acceptance-checks.md` |
 | `building-games` juice / feel | **Portable presentation doctrine** | `design-game/references/game-feel-juice.md` |
@@ -39,7 +39,7 @@ Start templates.
 | `threejs` + llms dump | **Reject** as default stack | Keel/WebGPU native path |
 | `auth` / `neon` / `og` / `xai-api` / `imagine` | **Reject** (Grok broker, Neon, xAI key, sandbox OG) | product auth/marketing skills already cover real jobs |
 | `multiplayer-p2p` | **Trust boundary only** (no P2P kit) | `design-game/references/multiplayer-trust-boundary.md` |
-| `design-ui` | **Distill** premium floors into craft refs (Wave 3); do not install TanStack skill | `craft-product-interface` premium + game-overlay refs |
+| `design-ui` | **Distill** premium floors into craft refs (Wave 3); do not install TanStack skill | `build-product` (see references/craft-interface) premium + game-overlay refs |
 
 ## Disposition — workspace-kit
 
@@ -66,8 +66,8 @@ Start templates.
 
 **Wave 1**
 
-- `skills/produce-game-2d-sprites/`
-- `skills/produce-game-2d-map-assets/`
+- `skills/produce-product-assets/references/game-2d-sprites/`
+- `skills/produce-product-assets/references/game-2d-map-assets/`
 - `skills/design-game/references/player-controls-self-test.md`
 
 **Wave 2 (complete in-scope fold)**
@@ -83,7 +83,7 @@ Start templates.
 - Installing Grok/TanStack sandbox as a Sylphx product template
 - Genre playbooks that lock Phaser/R3F/Babylon as the only path
 - Multiplayer product implementation skill (needs product networking authority)
-- Cherry-merging full `design-ui` when `craft-product-interface` already covers craft
+- Cherry-merging full `design-ui` when `build-product` (see references/craft-interface) already covers craft
 - Claiming multi-host skill-utilization promotion complete without host-capable oracles
 
 ## Follow-ups (optional later, outside this matrix)

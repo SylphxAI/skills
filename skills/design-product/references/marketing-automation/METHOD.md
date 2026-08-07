@@ -176,11 +176,11 @@ Produce one **Marketing Automation Blueprint** containing:
 - `synthesize-market-research` owns source-bounded market/positioning evidence; marketing consumes and channel-translates it.
 - `review-promotion-campaign` owns one offer, event, update-reward, cross-promotion, or lifecycle campaign.
 - `review-referral-loop` owns qualification, attribution, pending grants, reversals, and referral fraud.
-- `optimize-store-listing` owns listing metadata/creative sequence/conversion; `build-distribution-readiness` owns submission/release evidence.
+- `produce-product-assets` (see references/store-listing) owns listing metadata/creative sequence/conversion; `build-product` (see references/distribution-readiness) owns submission/release evidence.
 - `produce-product-assets` owns deterministic product capture, localization,
   exact rendered media, rights/provenance, accessibility variants, and file QA.
 - `review-solicitation-policy` owns platform-specific authentic public review
-  eligibility and request state; `run-product-feedback-loop` owns universal
+  eligibility and request state; `operate-customer-support` (see references/feedback-loop) owns universal
   private feedback, review ingestion, support/product routing and close-loop.
 - `review-notification-strategy` owns notification channel/copy/frequency semantics; `review-promotion-campaign` owns one dormant-user recovery campaign; `synthesize-market-research` owns source-bounded voice-of-customer evidence.
 - `design-app`/`design-game` own product-side share, cross-promotion, notification, review, and lifecycle surfaces.

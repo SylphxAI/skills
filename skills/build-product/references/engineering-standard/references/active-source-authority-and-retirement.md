@@ -137,6 +137,6 @@ A successor-bearing change is complete only when:
   predicate is satisfied.
 
 For a substantial multi-slice or cross-repository cutover, use
-`decide-architecture-shape` to track exact source, target, proof, authority, and
+`design-product` (see references/architecture-shape) to track exact source, target, proof, authority, and
 retirement states. A small local replacement applies this contract directly
 without creating a ledger or migration programme.

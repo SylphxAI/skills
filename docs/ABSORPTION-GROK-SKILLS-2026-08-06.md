@@ -40,7 +40,7 @@ Agents must **not** adopt foreign app-builder stacks as the product SSOT.
 
 ## Already covered (no duplicate skill)
 
-- Premium UI anti-slop / tokens / motion → existing `craft-product-interface` references (already Keel-oriented)
+- Premium UI anti-slop / tokens / motion → existing `build-product` (see references/craft-interface) references (already Keel-oriented)
 - Local preview smoke → `verify-local-web-preview` (may reuse script ideas; kit not imported wholesale)
 
 ## Listing budget

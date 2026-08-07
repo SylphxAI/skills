@@ -28,6 +28,12 @@ description: "Write a short stakeholder update: decisions, risks, asks."
 - Updates that bury the ask produce no action.
 - Do not claim live/production status without evidence.
 
+
+## Progressive disclosure
+
+- [references/edit-preserving-voice/](references/edit-preserving-voice/) — edit while preserving voice and facts
+- [references/research-basis.md](references/research-basis.md)
+
 ## Output
 
 A short update ready to send.

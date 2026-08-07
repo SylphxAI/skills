@@ -465,7 +465,7 @@ Binding method for how agents author Git history under this trunk path lives in
 3. **L3 Revert-safe PR outcome** — one complete, independently revertible
    outcome per PR; ordinary squash makes that the main history unit.
 
-Product loops (`pursue-product-objective`, `run-open-product-betterment`,
+Product loops (`drive-to-delivery` (see references/pursue-objective), `maintain-product` (see references/open-betterment),
 `drive-to-delivery`, product job Skills) compose that standard; they do not
 define a second trunk doctrine.
 

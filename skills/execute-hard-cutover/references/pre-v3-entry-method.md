@@ -81,7 +81,7 @@ Open only what the cut touches:
 - `engineering-standard` — safety, verification, eng-hard-cut predicates
 - `source-authoring-standard` — L1 batch cutover work, L2 atomic commits, L3 revert-safe PR outcome(s); `delivery-standard` — land/live honesty
 - `instruction-evolution-standard` — skill/constitution generation cutovers
-- `author-skill` / `curate-skill-repository` — portfolio package retirements
+- `author-skill` / `author-skill` (see references/curate-repository) — portfolio package retirements
 - `parallel-change-integration-standard` — only under measured Git contention
 
 ## Boundaries

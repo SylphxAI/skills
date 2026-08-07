@@ -30,12 +30,12 @@ Provide separate **workflow** Skills for distinct **job kinds**:
 
 | Skill | Job this cycle |
 | --- | --- |
-| `prototype-product` | Validate a hypothesis with a cheap real probe |
+| `build-product` (see references/prototype) | Validate a hypothesis with a cheap real probe |
 | `build-product` | Close a shippable capability gap |
 | `maintain-product` | Reduce framed live/regression harm |
-| `expand-product` | Scale a validated core (×N) |
-| `finish-product` | Deburr/finish an integrated product |
-| `pursue-product-objective` | Pursue a declared product objective to evidence-backed completion |
+| `build-product` (see references/expand) | Scale a validated core (×N) |
+| `build-product` (see references/finish) | Deburr/finish an integrated product |
+| `drive-to-delivery` (see references/pursue-objective) | Pursue a declared product objective to evidence-backed completion |
 
 Each Skill: Frame → Research → Admit → Implement → Deliver/Verify → Cycle-done.
 
@@ -51,8 +51,8 @@ only answers: **given this job, how do you run one cycle?**
 ### Relation to run-open-product-betterment
 
 Use a job Skill when the work is clearly that job. Use
-`pursue-product-objective` when a fixed outcome must be pursued until met. Use
-`run-open-product-betterment` when betterment mixes jobs with no fixed objective.
+`drive-to-delivery` (see references/pursue-objective) when a fixed outcome must be pursued until met. Use
+`maintain-product` (see references/open-betterment) when betterment mixes jobs with no fixed objective.
 
 ## Consequences
 
@@ -64,4 +64,4 @@ Use a job Skill when the work is clearly that job. Use
 
 - Five job Skills exist with one-cycle methods
 - No spawn/role staffing instructions in those Skill bodies
-- `finish-product` remains the sole finish entry
+- `build-product` (see references/finish) remains the sole finish entry

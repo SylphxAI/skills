@@ -1,4 +1,0 @@
-interface:
-  display_name: "Prototype Product"
-  short_description: "Learning probe only: cheapest real experiment and go/kill/pivot—not shipping durable capability yet."
-  default_prompt: "Run one Prototype Product cycle on the active product/workspace."

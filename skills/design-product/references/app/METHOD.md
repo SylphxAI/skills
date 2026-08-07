@@ -248,15 +248,15 @@ Produce one **App Design Blueprint** containing:
 - `design-app` owns whole-app coherence and app-side capability semantics.
 - `design-saas-web-platform` owns the whole public-acquisition-to-authenticated-service composition for a SaaS platform, including tenant, commercial and operational integration contracts; a compound SaaS app may compose both with one declared primary artifact.
 - `design-game` owns a product whose primary promise is play, mastery, fantasy, and game progression; gamification does not automatically make an app a game.
-- `compose-product-program` owns a cross-domain product program dependency and delivery graph spanning at least three lifecycle domains.
-- `review-refund-and-support-flow` owns refund consequences, repurchase, appeal, restrictions, and support; `build-payment-readiness` owns provider/ledger correctness.
+- `references/program` owns a cross-domain product program dependency and delivery graph spanning at least three lifecycle domains.
+- `review-refund-and-support-flow` owns refund consequences, repurchase, appeal, restrictions, and support; `build-product` (see references/payment-readiness) owns provider/ledger correctness.
 - `review-solicitation-policy` owns platform-specific authentic public review
-  eligibility and request state; `run-product-feedback-loop` owns universal
+  eligibility and request state; `operate-customer-support` (see references/feedback-loop) owns universal
   private feedback, authorized review ingestion, support/product routing, and
   close-loop behavior.
 - Use `review-notification-strategy`, `review-daily-reward-and-streak`, `review-referral-loop`, `review-promotion-campaign`, `review-product-analytics-instrumentation`, `review-offline-sync-conflict`, and `review-ad-monetization` for their detailed artifacts.
-- `build-distribution-readiness` owns channel submission/release evidence; `design-marketing-automation` owns the multi-channel marketing control plane.
-- `finish-product` owns the integrated whole-app finish pass after the promise,
+- `build-product` (see references/distribution-readiness) owns channel submission/release evidence; `design-marketing-automation` owns the multi-channel marketing control plane.
+- `build-product` (see references/finish) owns the integrated whole-app finish pass after the promise,
   selected capabilities, and approved direction are defined. It consumes this
   blueprint; it does not make blueprint acceptance implementation proof.
 

@@ -95,7 +95,7 @@ and scheduling of new Work owned by `select-next-work`.
 - Do not hide unfinished accepted scope as another phase, optional follow-up,
   backlog, residual programme, or lower priority. Conversely, once the frozen
   terminal is satisfied, run the one bounded positive-net and same-cause scan
-  owned by `bound-request-scope`, then stop when no eligible improvement changes
+  owned by `references/bound-request-scope`, then stop when no eligible improvement changes
   the outcome enough to justify its lifecycle cost.
 - “SOTA”, “perfect”, or “extreme” describes the strongest positive-net durable
   outcome inside the accepted boundary; it is not an infinite requirement to

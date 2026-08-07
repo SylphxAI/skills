@@ -22,7 +22,7 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 
 - Three-layer integration model landed on main (`0c97bf9` / PR #86): L1 batch,
   L2 atomic commits, L3 revert-safe PR outcomes in `source-authoring-standard`,
-  `pursue-product-objective`, `run-open-product-betterment`.
+  `drive-to-delivery` (see references/pursue-objective), `maintain-product` (see references/open-betterment).
 - Compose alignment: `drive-to-delivery` + `author-skill` point at the same layers.
 - Codex auto-heuristic @ `0c97bf9`: three-layer + pursue slice
   `codex-three-layer-0c97bf9` **4/4 pass** (non-promotable).
@@ -45,7 +45,7 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 
 ### 2026-08-05 near-neighbour + host residual
 
-- Mutating jobs: `execute-hard-cutover`, `remediate-*`, `curate-skill-repository`
+- Mutating jobs: `execute-hard-cutover`, `remediate-*`, `author-skill` (see references/curate-repository)
   compose L1/L2/L3 landing.
 - Codex near-neighbour @ `c3c9ed7`: **9/10** then prototype scorer framing fix;
   recheck **1/1** (`promotable: false`).
@@ -76,8 +76,8 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 
 ### 2026-08-05 tip-pin @ `73f7d4b`
 
-- Additional mutators compose L1/L2/L3: `build-distribution-readiness`,
-  `decide-architecture-shape`, `run-product-feedback-loop` (structural test extended).
+- Additional mutators compose L1/L2/L3: `build-product` (see references/distribution-readiness),
+  `design-product` (see references/architecture-shape), `operate-customer-support` (see references/feedback-loop) (structural test extended).
 - Codex tip-pinned three-layer slice: `codex-tip-pin-three-layer-73f7d4b` **3/3**.
 - Floor+abstention tip-pin sheet recorded when available at same tip.
 - Claude unauth; Grok 403 spending-limit — host-incapable residuals unchanged.
@@ -120,7 +120,7 @@ confuse **landed doctrine** with **open multi-host utilization**.
 | Item | Evidence |
 | --- | --- |
 | L1/L2/L3 defined | `skills/source-authoring-standard/references/full-standard.md` |
-| pursue / open-betterment backbone | `skills/pursue-product-objective/SKILL.md`, `skills/run-open-product-betterment/SKILL.md` |
+| pursue / open-betterment backbone | `skills/drive-to-delivery/references/pursue-objective/SKILL.md`, `skills/maintain-product/references/open-betterment/SKILL.md` |
 | High-EV mutators compose layers | structural test `tests/three-layer-source-doctrine.test.mjs` |
 | Queued trunk alignment | `history/adr/ADR-20260803-agent-native-queued-trunk.md` (agent commit/PR layering) |
 | Install currency | `node runtime/sylphx-skills.mjs status --agent all` → current 118/118 |
@@ -247,8 +247,8 @@ Host execution procedure: [skill-utilization-host-runbook.md](./skill-utilizatio
 ## Corpus notes (2026-08-03)
 
 Pinned suite includes critical/neighbour cases for product job Skills:
-`prototype-product`, `build-product`, `maintain-product`, `expand-product`,
-`finish-product`, `pursue-product-objective`, `run-open-product-betterment`, `author-skill`,
+`build-product` (see references/prototype), `build-product`, `maintain-product`, `build-product` (see references/expand),
+`build-product` (see references/finish), `drive-to-delivery` (see references/pursue-objective), `maintain-product` (see references/open-betterment), `author-skill`,
 plus delivery/select-next-work neighbours. Fixtures alone are not utilization
 proof (see Goal above).
 

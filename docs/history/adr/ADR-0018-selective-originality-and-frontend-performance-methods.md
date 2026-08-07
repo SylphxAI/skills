@@ -25,9 +25,9 @@ Two jobs were not yet first-class routes:
 2. reproducing and repairing a frontend runtime performance failure with
    comparable source and runtime proof.
 
-`design-system-extractor`, `craft-product-interface`, and `produce-product-assets`
+`design-system-extractor`, `build-product` (see references/craft-interface), and `produce-product-assets`
 contain adjacent rules but do not own the first artifact.
-`craft-product-interface` carries a baseline performance floor, while
+`build-product` (see references/craft-interface) carries a baseline performance floor, while
 `engineering-standard` owns general implementation quality; neither provides
 the second dedicated diagnostic and remediation record.
 
@@ -35,7 +35,7 @@ the second dedicated diagnostic and remediation record.
 
 1. Add `review-reference-originality` as the single owner of a Reference
    Originality Review. It evaluates design risk, not legal infringement.
-2. Add `remediate-frontend-performance` as the single owner of a Frontend
+2. Add `maintain-product` (see references/frontend-performance) as the single owner of a Frontend
    Runtime Performance Remediation Record. It requires reproduction, causal
    diagnosis, owner-level repair, and comparable before/after evidence.
 3. Keep both Skill entrypoints thin and place detailed methods in one reference

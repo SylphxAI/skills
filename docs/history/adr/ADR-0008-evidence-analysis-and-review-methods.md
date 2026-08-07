@@ -27,7 +27,7 @@ Maintain three independent instruction packages:
 1. `evidence-and-claims-standard` produces a Claim-Evidence Record and governs
    whether factual, status, causality, delivery, and completion claims are
    supportable.
-2. `analyze-critically` produces a Critical Analysis Brief using competing
+2. `synthesize-evidence-brief` (see references/critical-analysis) produces a Critical Analysis Brief using competing
    hypotheses, disconfirming evidence, assumptions, and calibrated confidence.
 3. `review-multi-review-synthesis` produces a Review Closure Record using frozen acceptance,
    distinct perspectives, executable oracles, batched repair, and fixed exit

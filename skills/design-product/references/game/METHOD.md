@@ -168,7 +168,7 @@ Use diagrams and tables only where they reduce ambiguity. Preserve uncertainty; 
 - `review-game-soft-launch` owns bounded real-player cohort learning and scale/hold/pause/withdraw decisions for an already-designed game.
 - `review-daily-reward-and-streak`, `review-ad-monetization`, `review-notification-strategy`, `review-referral-loop`, and `review-promotion-campaign` own their detailed state machines.
 - Payment, refund, review/feedback, analytics, distribution, listing, marketing, support, and engineering procedures own their independent artifacts.
-- `finish-product` owns the integrated whole-game finish pass after the player
+- `build-product` (see references/finish) owns the integrated whole-game finish pass after the player
   promise, systems, and approved direction are defined. Graybox or low-poly
   work is terminal only when that exact prototype fidelity or art direction is
   declared; blueprint acceptance is not whole-game finish evidence.
@@ -181,5 +181,5 @@ The blueprint is ready when another agent can explain the promised experience, w
 
 ## Absorbed external craft (Keel filter)
 
-Additional playable-title craft distilled from external skills lives in the installable task skill [`build-product (Keel app reference)`](../../../build-product/references/keel-app/METHOD.md)/references/title-game-craft-absorbed.md) and asset skills `produce-game-2d-sprites` / `produce-game-2d-map-assets`. Do not reintroduce React/Three/Phaser as the Sylphx title stack.
+Additional playable-title craft distilled from external skills lives in the installable task skill [`build-product (Keel app reference)`](../../../build-product/references/keel-app/METHOD.md)/references/title-game-craft-absorbed.md) and asset skills `produce-product-assets` (see references/game-2d-sprites) / `produce-product-assets` (see references/game-2d-map-assets). Do not reintroduce React/Three/Phaser as the Sylphx title stack.
 

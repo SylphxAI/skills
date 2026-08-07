@@ -216,7 +216,7 @@ emotional intensity by onboarding, core work, success, error and recovery:
 performance, battery, accessibility and cultural constraints:
 ```
 
-Use feedback intensity to clarify importance and create emotional contrast. Keep the product recognizable across platforms without forcing identical layouts or ignoring native expectations. Route file-level implementation and polish to `craft-product-interface`.
+Use feedback intensity to clarify importance and create emotional contrast. Keep the product recognizable across platforms without forcing identical layouts or ignoring native expectations. Route file-level implementation and polish to `build-product` (see references/craft-interface).
 
 ## 8. Feedback and interface state
 
@@ -245,7 +245,7 @@ Specify for each action:
 
 `feedback-3` — Private feedback and public review solicitation are separate
 artifacts. `review-solicitation-policy` owns neutral public eligibility and
-request state; `run-product-feedback-loop` owns universal private intake,
+request state; `operate-customer-support` (see references/feedback-loop) owns universal private intake,
 authorized review ingestion, evidence routing and close-loop. Negative
 sentiment may trigger support, but may not suppress a public route offered to
 otherwise eligible users.

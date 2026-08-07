@@ -17,12 +17,12 @@ scope:
 
 1. Rename OS/role packages to **job verbs** where agents trigger them as techniques:
    - `self-feeding-agent-loop` → `select-next-work`
-   - `product-lifecycle-architect` → `compose-product-program`
-   - `scope-discipline` → `bound-request-scope`
+   - `product-lifecycle-architect` → `design-product` (see references/program)
+   - `scope-discipline` → `drive-to-delivery` (see references/bound-request-scope)
 2. **Betterment routing (unique defaults):**
-   - single product job → `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `finish-product`
-   - declared outcome to completion → `pursue-product-objective`
-   - mixed open betterment, no fixed objective → `run-open-product-betterment`
+   - single product job → `build-product` (see references/prototype) / `build-product` / `maintain-product` / `build-product` (see references/expand) / `build-product` (see references/finish)
+   - declared outcome to completion → `drive-to-delivery` (see references/pursue-objective)
+   - mixed open betterment, no fixed objective → `maintain-product` (see references/open-betterment)
    - next Work from evidence/ledger (not product matrix) → `select-next-work`
    - multi-phase engineering delivery → `drive-to-delivery`
 3. Mark `technology-stack-profile` and `sylphx-platform-first-policy` as **policy/profile**, not product job Skills (ids kept for tooling pins).

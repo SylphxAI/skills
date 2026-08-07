@@ -213,7 +213,7 @@ turn a staged rollout into causal evidence.
 | Assignment service, flags, exposure logs | owning engineering project |
 | Deployment, rollback, health, live readback | `delivery-standard` artifact |
 | High-risk rights/safety/privacy/AI review | current domain evidence plus applicable binding Skills |
-| Price/package architecture | `price-saas-subscription` |
+| Price/package architecture | `design-product` (see references/pricing) |
 | Notification policy | `review-notification-strategy` |
 | Marketplace seller intervention | `review-marketplace-seller-performance` when published |
 

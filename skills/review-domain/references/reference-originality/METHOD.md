@@ -73,7 +73,7 @@ Produce one **Reference Originality Review** containing:
 
 - `design-system-extractor` owns evidence-backed recovery of the subject
   product's own existing tokens, components, states, and design rules.
-- `craft-product-interface` owns designing, building, polishing, or reviewing a bounded
+- `build-product` (see references/craft-interface) owns designing, building, polishing, or reviewing a bounded
   interface or flow; this Skill supplies an originality finding when that is an
   independently requested artifact.
 - `produce-product-assets` owns rights-safe production, provenance, and exact

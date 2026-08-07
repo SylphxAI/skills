@@ -30,6 +30,16 @@ User intent is **design a product**, not pick an engine brand. Shape-specific de
 3. **Synthesize** one blueprint: concept, structure, critical flows/states, risks, open questions.
 4. **Hand off** to build/prototype with testable acceptance criteria.
 
+
+## Progressive disclosure
+
+- Shape packs under [references/](references/) (`app`, `game`, `saas-web-platform`, …)
+- [references/pricing/](references/pricing/) — SaaS packaging and meters
+- [references/portfolio/](references/portfolio/) — multi-product portfolio boundary
+- [references/program/](references/program/) — multi-work program phases
+- [references/architecture-shape/](references/architecture-shape/) — one architecture decision
+- [references/testable-requirements/](references/testable-requirements/) — acceptance criteria with oracles
+
 ## Output
 
 Product design blueprint · shape-specific residuals · build-ready acceptance criteria

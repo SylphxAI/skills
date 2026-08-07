@@ -30,7 +30,7 @@ source.
 
 ## Decision
 
-1. `bound-request-scope` remains the single owner of right-sized work. It gains an
+1. `drive-to-delivery` (see references/bound-request-scope) remains the single owner of right-sized work. It gains an
    ordered smallest-complete solution ladder:
    avoid/delete, existing owner, standard-library or native capability, admitted
    dependency, direct local implementation, then justified new machinery.
@@ -110,7 +110,7 @@ adding a distinct contract.
 A read-only probe exercised installed packages from source revision
 `eb2b989dc709ca46fcaf6c08a7951d8dc344a1ce`:
 
-- `bound-request-scope`
+- `drive-to-delivery` (see references/bound-request-scope)
   `sha256:c59f0c92cee578d5ee279e63900c130b1617009f4f53cd2bb32c22ead749f473`;
 - `write-high-signal-update`
   `sha256:3c722367993f2697917f14d2494a6ad94f5ed5b918eb9157c92e74e7d9f4e165`;

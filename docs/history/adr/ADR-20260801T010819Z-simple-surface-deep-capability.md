@@ -51,7 +51,7 @@ full required capability and quality floor.
    semantic boundaries remain. The aim is to pay unavoidable complexity once
    inside its owner rather than expose it to every consumer.
 6. `engineering-standard` owns the architecture invariant,
-   `bound-request-scope` owns the selection test, and
+   `drive-to-delivery` (see references/bound-request-scope) owns the selection test, and
    `write-high-signal-update` owns its explanatory projection. No new Skill,
    branded architecture, prose scanner, or CI gate is introduced.
 

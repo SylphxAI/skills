@@ -66,7 +66,7 @@ Keep one semantic owner for each part of the problem:
    Detailed mechanics remain in the two owning standards.
 
 The standard preserves aggressive progress without unbounded execution.
-`bound-request-scope` still closes a satisfied objective after one bounded
+`drive-to-delivery` (see references/bound-request-scope) still closes a satisfied objective after one bounded
 positive-net scan. Work-conserving scheduling does not authorize busywork,
 unsafe mutation, new scope, polling, or unbounded delegation. Independent
 review remains risk-selected; ordinary work uses bounded self-review instead of

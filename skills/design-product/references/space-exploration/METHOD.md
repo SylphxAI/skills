@@ -51,8 +51,8 @@ Produce a **Design Space Portfolio**:
 
 ## Boundaries
 
-- Use `analyze-critically` to compare explanations about what is true.
-- Use `record-structured-deliberation` when independent participants must exchange
+- Use `synthesize-evidence-brief` (see references/critical-analysis) to compare explanations about what is true.
+- Use `synthesize-evidence-brief` (see references/structured-deliberation) when independent participants must exchange
   positions, objections, and dissent.
 - Use `decision-quality-standard` to select and record the final material
   option.

@@ -1,35 +1,29 @@
 # Curation ledger
 
-## Principle
+## v6 — atomic action catalog
 
-Listing skills are **workflows users request**. Constraint depth lives under the
-workflow that applies it. No standards bag skill. No docs-only agent binding.
+Principle: listings are **finite agent atomic actions**. Everything else is reference depth under an owner action. Migrate; do not destroy.
 
-## v5 workflows
+### Demotions (listing → owner/references)
 
-| Action | Detail |
+| Former listing | Owner reference |
 | --- | --- |
-| demote | `*-standard` / `*-policy` / `*-profile` off the listing catalog |
-| merge | design shapes → `design-product` + references |
-| absorb | Keel app tooling → `build-product/references/keel-app` |
-| absorb | resolve-support-case → `operate-customer-support/references/resolve-one-case` |
-| merge | domain reviews → `review-domain` + references |
+| prototype/expand/finish-product | build-product/references/{prototype,expand,finish} |
+| payment/distribution readiness, craft-interface | build-product/references/* |
+| pursue-product-objective, bound-request-scope | drive-to-delivery/references/* |
+| open-betterment, frontend-perf, agent-harness | maintain-product/references/* |
+| portfolio/program/pricing/architecture/requirements | design-product/references/* |
+| analyze-*, forecast, optimize-decision, deliberation | synthesize-evidence-brief/references/* |
+| distill/evals/curate | author-skill/references/* |
+| game-2d sprites/maps, store-listing | produce-product-assets/references/* |
+| feedback-loop | operate-customer-support/references/* |
+| edit-preserving-voice | write-high-signal-update/references/* |
 
-## v5.1 packaging mistake (corrected)
+### Kept (20)
 
-Putting all packs under `adopt-repo-standards/references/policies/` fixed install
-visibility but **broke discovery semantics** (fake bag skill).
+adopt-repo-standards, author-skill, build-product, design-product, drive-to-delivery, engineer-agent-context, execute-hard-cutover, maintain-product, model-security-threats, operate-customer-support, produce-product-assets, research-user-needs, review-domain, run-incident-response, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, verify-local-web-preview, write-high-signal-update
 
-## v5.2 owner placement
+### Prior cuts
 
-| Action | Detail |
-| --- | --- |
-| place | each pack under its applying workflow's `references/` |
-| link | other workflows point to owner path; no duplicate pack trees |
-| keep | `docs/` human-only; `adopt-repo-standards` is only *repo adoption* |
-
-## Non-goals
-
-- Meta-router skill
-- Restoring packs as listing skills
-- Destroying pack method text
+- v5: standards off listing; design/review hubs; Keel under build-product
+- v5.2: constraint packs under applying workflows (no standards bag)
