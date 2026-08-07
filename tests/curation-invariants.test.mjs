@@ -130,3 +130,49 @@ test('Quality North Star is sole engineering quality vocabulary', () => {
   }
 });
 
+test('constraint pack listing paths are dead; owners exist under applying skills', () => {
+  const owners = {
+    'engineering-standard': 'build-product/references/engineering-standard',
+    'delivery-standard': 'drive-to-delivery/references/delivery-standard',
+    'sota-execution-standard': 'record-structured-deliberation/references/sota-execution-standard',
+    'autonomous-execution-standard': 'drive-to-delivery/references/autonomous-execution-standard',
+    'frontier-verification-standard': 'build-product/references/frontier-verification-standard',
+    'agent-first-development-standard': 'engineer-agent-context/references/agent-first-development-standard',
+    'commercial-decision-standard': 'compose-product-portfolio/references/commercial-decision-standard',
+    'instruction-evolution-standard': 'author-skill/references/instruction-evolution-standard',
+    'enterprise-profile-standard': 'adopt-repo-standards/references/enterprise-profile-standard',
+  };
+  for (const [name, owner] of Object.entries(owners)) {
+    assert.equal(existsSync(path.join(skillsRoot, name)), false, `listing ${name}`);
+    assert.ok(
+      existsSync(path.join(skillsRoot, owner, 'README.md'))
+        || existsSync(path.join(skillsRoot, owner, 'references', 'full-standard.md')),
+      owner,
+    );
+  }
+});
+
+test('active skills do not link retired listing-standard GitHub paths', () => {
+  const listingPath = /https:\/\/github\.com\/SylphxAI\/skills\/blob\/[^/\s)`"]+\/skills\/(engineering-standard|delivery-standard|sota-execution-standard|autonomous-execution-standard|frontier-verification-standard|agent-first-development-standard|commercial-decision-standard|instruction-evolution-standard|enterprise-profile-standard|agent-native-standard|decision-quality-standard|risk-matched-verification-standard|source-authoring-standard|ci-admission-standard|ci-runner-capacity-standard|enterprise-control-plane-standard|project-manifest-standard|specification-control-plane-standard|work-coordination-standard|evidence-and-claims-standard|documentation-standard)(?:\/|"|'|\)|\s|$)/;
+  const offenders = [];
+  function walk(dir) {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const abs = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(abs);
+      else if (entry.isFile() && /\.(md|json)$/.test(entry.name)) {
+        const text = readFileSync(abs, 'utf8');
+        if (listingPath.test(text)) offenders.push(path.relative(skillsRoot, abs));
+      }
+    }
+  }
+  walk(skillsRoot);
+  assert.deepEqual(offenders, [], offenders.join('\n'));
+});
+
+test('sylphx-methods bag remains absent and knowledge docs do not point at it', () => {
+  assert.equal(existsSync(path.join(skillsRoot, 'sylphx-methods')), false);
+  const knowledge = readFileSync(path.join(repositoryRoot, 'docs', 'knowledge', 'README.md'), 'utf8');
+  assert.equal(knowledge.includes('skills/sylphx-methods'), false);
+  assert.ok(knowledge.includes('skills/<job>/references'));
+});
+

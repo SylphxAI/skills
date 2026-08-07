@@ -68,18 +68,9 @@ No permanent workarounds. Prefer durable work on the owning layer.
 Open only depth the current build needs:
 
 - [references/keel-app/](references/keel-app/) — Keel app tooling when the product uses Keel
-- [references/engineering-standard/](references/engineering-standard/) — engineering constraints while building
+- [references/engineering-standard/](references/engineering-standard/) — Quality North Star and engineering constraints while building
 - [references/risk-matched-verification-standard/](references/risk-matched-verification-standard/) — risk-matched verification
+- [references/frontier-verification-standard/](references/frontier-verification-standard/) — frontier verification for high blast-radius paths
 - [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — platform-first boundaries
 - Source landing: `../drive-to-delivery/references/source-authoring-standard/`
 - Related jobs (separate skills when requested): `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`
-
-
-When implementing, open only depth you need:
-
-1. [references/keel-app/](references/keel-app/) — Keel app tooling (when the product uses Keel)
-2. [references/engineering-standard/](references/engineering-standard/) — engineering constraints while building
-3. [references/risk-matched-verification-standard/](references/risk-matched-verification-standard) — verification depth matched to risk
-4. [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — platform-first boundaries when relevant
-5. Source landing rules live under `../drive-to-delivery/references/source-authoring-standard/`
-

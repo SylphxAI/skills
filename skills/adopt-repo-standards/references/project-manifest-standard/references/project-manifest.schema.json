@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/project-manifest.schema.json",
+  "$id": "https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/project-manifest-standard/references/project-manifest.schema.json",
   "title": "Canonical project manifest",
   "type": "object",
   "additionalProperties": false,

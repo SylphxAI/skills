@@ -7,7 +7,7 @@
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, manifest, fences.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:7b77f08e54d8b9ad14f4a7b5f5137ec7131585da7ca8a5964ce0a5b64b0f9ef7"
+      "packageDigest": "sha256:abd75d1ee957ac0c06eb6d4570635bc003b502e3b61835d63f2fd613331b568b"
     },
     {
       "name": "analyze-causal-inference",
@@ -55,13 +55,13 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:9e012abed65a2eed63e5394dd4ce135354ec5a9ad2bfcb773e43dc0c812b1dc9"
+      "packageDigest": "sha256:5042ad8a23217b1e16529bb900e47445e744cf98fb31a865a236769f96ec3f12"
     },
     {
       "name": "compose-product-portfolio",
       "description": "Compose multi-product portfolio: platform vs products, connectors, bundles.",
       "path": "skills/compose-product-portfolio/SKILL.md",
-      "packageDigest": "sha256:fde9b204f26cbe81dd5dd88214193f42611e202d2ad3709c6c16348769c09c51"
+      "packageDigest": "sha256:86dea121f1e2e018dcdc223d35cdeaa844eb97690491a1d6ffbc072e3265959f"
     },
     {
       "name": "compose-product-program",
@@ -109,7 +109,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one multi-phase engineering objective to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:9d6c7333a9986b4a43241040af12a0acd87f0c987a8081469504f41f78e92f2e"
+      "packageDigest": "sha256:a86e3600c12abc8259a73a026767f52f79ba2dd279892a9bf2cea45ffc47f140"
     },
     {
       "name": "edit-preserving-voice",
@@ -121,13 +121,13 @@
       "name": "engineer-agent-context",
       "description": "Engineer agent context packs: load rules, budgets, refresh.",
       "path": "skills/engineer-agent-context/SKILL.md",
-      "packageDigest": "sha256:4575f959c8ecc823d9ab625c829abf8992d9ae33af70134b0ed32819e33af4ca"
+      "packageDigest": "sha256:be21b498c82e04960fc37efd60f20c1fe958d4c7e7b7febfb017904ecfc6eff5"
     },
     {
       "name": "engineer-testable-requirements",
       "description": "Turn requirements into testable acceptance criteria with oracles.",
       "path": "skills/engineer-testable-requirements/SKILL.md",
-      "packageDigest": "sha256:3ba22f8509641429f6a73a64b6d0fb3a1cf42a0dcd3da6ba42096a3a148477aa"
+      "packageDigest": "sha256:002569414b191af6b295c9fc40382634ebf5a1053d2151476e6702f052939852"
     },
     {
       "name": "execute-hard-cutover",
@@ -223,7 +223,7 @@
       "name": "record-structured-deliberation",
       "description": "Record a structured deliberation: options, criteria, decision, actions.",
       "path": "skills/record-structured-deliberation/SKILL.md",
-      "packageDigest": "sha256:7574598adcb97009d5812c536eba655573244835c4864081fff10a10f1bf6725"
+      "packageDigest": "sha256:2f52b5ecdacb630046eb07b6e7765c16b64fe8f9abe5c42a604e00abfda37f0f"
     },
     {
       "name": "remediate-agent-harness",
@@ -253,7 +253,7 @@
       "name": "run-incident-response",
       "description": "Run production incident response to mitigation and learning.",
       "path": "skills/run-incident-response/SKILL.md",
-      "packageDigest": "sha256:fbf18326574da9ce90bb6d0c3a492add69d52f4324b2e934bb920ca6cfe1535c"
+      "packageDigest": "sha256:18cc8f4b05fe0f886184ac90354e0cf176310e5d2292bc132db0cae10e5b7474"
     },
     {
       "name": "run-open-product-betterment",

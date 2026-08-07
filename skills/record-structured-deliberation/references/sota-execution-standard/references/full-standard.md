@@ -1,24 +1,27 @@
-# Decision Quality Standard
+# sota-execution-standard (canonical body)
+
+**Authority:** binding constraint pack owned by `skills/record-structured-deliberation/references/sota-execution-standard` in `SylphxAI/skills` (not a listing skill).
+
+Author here; do not maintain a second prose SSOT.
+
+---
+
+# SOTA Execution Standard
 
 ## Purpose
 
-Use this standard when a task asks for the best available option, future-proofing, executive-level
+Use this standard when a task invokes SOTA, future-proofing, CEO-level
 thinking, frontier comparison, deep improvement, broad refactoring,
 cross-project leverage, product/business direction, or any non-trivial decision
 where a local patch could preserve the wrong end state.
 
-Decision quality is an execution obligation, not motivational wording. It means selecting
+SOTA is an execution obligation, not motivational wording. It means selecting
 the strongest, simplest, most robust, highest-leverage path under real
 constraints, then proving it with the right evidence.
 
-The decision kernel is universal; its ceremony is not. Apply the same
-value/risk/reversibility logic implicitly to a trivial reversible action and
-explicitly to a material commitment. Do not turn a universal principle into a
-universal planning document, review meeting, or evidence programme.
-
 This standard composes with:
 
-- [`drive-to-delivery.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/full-standard.md) for
+- [`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/autonomous-execution-standard/references/full-standard.md) for
   execution graphs, latency hiding, subagents, and completion discipline;
 - [`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/build-product/references/engineering-standard/references/full-standard.md) for architecture,
   SSOT, SoC, testing, performance, observability, security, and the Quality North Star;
@@ -26,11 +29,11 @@ This standard composes with:
   for no-human gates, CI, merge queues, delivery slices, and recovery;
 - [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/compose-product-portfolio/references/commercial-decision-standard/references/full-standard.md) for
   pricing, packaging, roadmap, positioning, and monetization decisions;
-- [`risk-matched-verification-standard.md`](../../../../build-product/references/risk-matched-verification-standard/references/full-standard.md)
+- [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/build-product/references/frontier-verification-standard/references/full-standard.md)
   for deterministic simulation, eval-gated merge, automated canary analysis,
   and frontier verification backstops;
 - [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/author-skill/references/instruction-evolution-standard/references/full-standard.md) for
-  cross-repository impact and migration when a material decision changes shared instructions.
+  fleet impact and migration when a SOTA decision changes canonical instructions.
 - [`enterprise-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/enterprise-profile-standard/references/full-standard.md) for binding
   current selections whose validity depends on tooling or ecosystem conditions.
 
@@ -51,7 +54,7 @@ every diff; select the properties that match the domain and blast radius, then
 prove them with tests, types, benchmarks, traces, SLOs, rollout readback,
 security checks, or recovery evidence as appropriate.
 
-## Decision method
+## Canonical Decision Kernel
 
 This section is the single cross-domain owner for decision precedence. Other
 standards add domain evidence and mechanisms; they do not redefine the order.
@@ -67,115 +70,12 @@ Before comparing solutions, establish:
 - current source/runtime truth and the quality, age, and uncertainty of the
   available evidence;
 - active binding enterprise profiles whose selectors match;
-- current agent, tool, automation, reusable-artifact, parallelism, integration,
-  and verification capabilities;
 - blast radius, reversibility, migration cost, recovery path, and opportunity
   cost of delay.
 
 If an input that changes the ends is genuinely unknown, escalate only that
 input. Uncertainty about means is handled by evidence, a reversible choice, or
 a bounded experiment.
-
-When deciding whether more evidence is worth acquiring, apply
-[`value-of-information.md`](value-of-information.md). More research is not
-automatically better; acquire it when it can change the decision enough to
-justify its full cost and delay.
-
-### Agent-native cost repricing
-
-Treat historical human estimates as evidence about an old production function,
-not as current cost. Before comparing options, reprice them using the strongest
-available agents, tools, deterministic generation, automation, integration-safe
-parallelism, reusable artifacts, and machine verification.
-
-Human-era proxies that are not costs by themselves include:
-
-- typing volume, boilerplate, file count, model/type count, or the number of
-  coherent modules;
-- manual reading, repetitive edits, generated clients, routine migrations, and
-  mechanically consistent tests that current agents or tools can produce and
-  verify cheaply; and
-- calendar estimates derived mainly from sequential human implementation or
-  review capacity.
-
-Real agent-native lifecycle costs include:
-
-- ambiguous or conflicting semantics, unknown ends, and weak oracles;
-- shared-write, dependency-propagation, integration, and serialization
-  bottlenecks;
-- exact verification, compatibility, public/data migration, and recovery;
-- irreversible effects, blast radius, external systems, and wall-clock
-  behavior that cannot be simulated credibly;
-- permanent runtime, infrastructure, security, observability, support, and
-  maintenance surfaces; and
-- compute, memory, context, supervision, collision, result-reading, and
-  integration overhead from agents or tools.
-
-Estimate critical-path elapsed time and durable lifecycle cost rather than
-person-hours. Parallelizable work becomes cheap only while the jointly feasible
-launch set remains integration-safe and positive-net; generating the same wrong
-semantic decision many times is fast duplication, not leverage.
-
-Prefer richer code structure when agents can cheaply generate and verify it and
-it buys semantic clarity, future velocity, replaceability, or migration safety
-without a larger permanent operating surface. Prefer the simpler design when
-extra structure creates no durable capability or makes future change harder.
-Never reject a stronger architecture merely because it contains more typed
-files, adapters, generated projections, or tests.
-
-### Adopt before invent
-
-For commodity engineering and operating mechanisms, start from the simplest
-applicable published standard, ecosystem-native primitive, actively maintained
-library or reference implementation, or established reference design. Treat
-that baseline as the first credible option, not as an automatic winner:
-standards and libraries can be obsolete, abandoned, inapplicable, or weaker
-than the declared requirement.
-
-For a build-versus-adopt choice, compare total lifecycle cost rather than raw
-dependency count, package popularity, or implementation size. The absence of an
-existing dependency does not make custom code cheaper; equally, a popular
-package does not justify its supply-chain, runtime, licensing, compatibility,
-or maintenance surface when a small stable direct implementation owns the
-whole requirement more cleanly.
-
-Before selecting a custom concept, abstraction, framework, control plane,
-state machine, gate, queue, protocol, or vocabulary, establish:
-
-1. the concrete requirement the closest established baseline cannot meet;
-2. the closest credible prior art and the evidence-backed reason each option is
-   insufficient rather than merely unfamiliar;
-3. the semantic delta: the new capability, invariant, failure containment,
-   interoperability property, or operating guarantee that now exists;
-4. the measurable quality delta against the baseline, including latency,
-   throughput, reliability, recovery, security, usability, maintainability, or
-   lifecycle cost as applicable;
-5. the additional state, coupling, dependencies, failure modes, proof,
-   operations, migration, support, and explanation cost; and
-6. the standards-compatible boundary, exit, replacement, or simplification path.
-
-Scale the artifact to the commitment. A trivial reversible local choice can
-satisfy this comparison implicitly through clear code and a narrow test; do not
-run a broad industry survey or create an ADR when the native primitive plainly
-fits. A durable shared, cross-boundary, operational, or organization-wide custom
-mechanism requires the explicit comparison and evidence above.
-
-If the custom option produces materially equivalent behavior and guarantees,
-or performs worse after full lifecycle cost, select the simpler established
-baseline. A longer explanation, novel diagram, new label, extra status model,
-or internal implementation layer is not a semantic delta.
-
-Synthesis means selecting a coherent minimal set of complementary mechanisms,
-not combining every relevant pattern. Each added mechanism must own a distinct
-requirement that the selected baseline does not already satisfy. Prefer
-standard domain and industry vocabulary; introduce a new term only for a
-genuinely distinct concept, and publish its mapping to the closest established
-terms.
-
-This rule does not prohibit product or domain innovation. It places a higher
-burden on custom infrastructure and process machinery, where interoperability,
-operator comprehension, tooling, and proven failure behavior usually dominate
-novelty value.
 
 ### Current evidence and active resolution
 
@@ -275,17 +175,14 @@ For every material option:
 1. Eliminate violations of higher constraints and ruin/floor conditions.
 2. Compare the observable outcome against the objective; do not compare tools
    or feature counts in isolation.
-3. Reprice implementation, proof, delay, and lifecycle cost through the current
-   agent-native capability frontier rather than human-effort proxies.
-4. Classify reversibility, blast radius, migration surface, recovery class,
+3. Classify reversibility, blast radius, migration surface, recovery class,
    expected upside/downside, and cost of waiting.
-5. Price option value and expected regret. Prefer a path that learns cheaply
+4. Price option value and expected regret. Prefer a path that learns cheaply
    when evidence is weak; require stronger evidence as commitment becomes
    harder to reverse.
-6. Choose the smallest complete path that strengthens the target state without
-   hiding future migration cost, preserving a broken owner boundary, or
-   knowingly creating avoidable reversal work.
-7. Record the selected option, rejected credible alternative, evidence
+5. Choose the smallest complete path that strengthens the target state without
+   hiding future migration cost.
+6. Record the selected option, rejected credible alternative, evidence
    confidence, accepted tradeoff, proof, and review trigger in the smallest
    durable decision home.
 
@@ -294,7 +191,7 @@ they do not replace it. Mandatory-governance profiles were already applied at
 item 3. Evidence that a selection default is dominated triggers its exception
 contract and a profile amendment rather than silent repo-local drift.
 
-### Best available target before selected-repository adoption
+### Frontier target before fleet adoption
 
 The owning binding Skills package or enterprise profile selects the target from
 the global feasible frontier, not by
@@ -303,14 +200,14 @@ Selection evidence comes from current primary specifications and release
 contracts, compiler and analyzer guarantees, security and supply-chain
 properties, interoperability and ecosystem support, representative benchmarks
 or evals, and operational failure/recovery evidence. Popularity, existing
-lockfiles, local familiarity, and current portfolio prevalence cannot promote a
+lockfiles, local familiarity, and current fleet prevalence cannot promote a
 candidate or veto a stronger target.
 
-Repository and portfolio readback enter only after the target is selected. They
+Repository and fleet readback enter only after the target is selected. They
 measure migration surface, compatibility, cost, sequencing, and conformance;
 they never become the semantic authority for the central standard. Dogfooding
 proves that the selected supported surface works and exposes adoption gaps. It
-does not prove that the selection is the best available option. When migration cost changes
+does not prove that the selection is frontier SOTA. When migration cost changes
 feasibility, record it as a priced constraint or bounded transition—never as a
 reverse justification that makes the incumbent the target.
 
@@ -332,7 +229,7 @@ migration overlap use the same ownership and retirement discipline.
 
 ## Minimal Surface, Maximum Quality
 
-Good decision-making prefers the smallest expressive surface that preserves or improves the
+SOTA prefers the smallest expressive surface that preserves or improves the
 important guarantees. The best change is often negative code: delete obsolete
 paths, duplicated contracts, unnecessary dependencies, stale docs, weak
 abstractions, and manual steps before adding new mechanisms.
@@ -353,14 +250,7 @@ The default optimization target is maximum verified throughput with minimum
 durable overhead. Optimize for the shortest safe path from intent to production
 proof, not for the fewest checks, largest diff, or most optimistic story.
 
-Throughput is durable only when accepted progress preserves already proven
-material predicates and reduces the remaining distance to the declared
-terminal. A locally fast workaround, duplicate authority, compatibility path,
-or weak intermediate design that predictably requires reversal is negative
-progress unless a demonstrated external constraint makes it the lowest-regret
-bounded experiment or containment.
-
-Every non-trivial material decision should be able to answer:
+Every non-trivial SOTA decision should be able to answer:
 
 - which latency, queue wait, build minute, cognitive step, manual action,
   duplicate proof, or operational toil is being removed;
@@ -376,12 +266,12 @@ deleting it: fast exact-candidate admission on the merge critical path,
 complete postsubmit/backstop proof off the critical path, canary/SLO analysis
 for rollout risk, and recovery automation for failures that escape admission.
 
-The operating posture is **aggressive in execution; conservative in claims**.
-Decision quality therefore optimizes verified throughput, never the speed or
+The fleet posture is **aggressive in execution; conservative in claims**.
+SOTA judgment therefore optimizes verified throughput, never the speed or
 confidence of the story: the asserted certainty, scope, delivery state, safety,
 or frontier position may not exceed current authoritative evidence. Operational
 execution, checkpoint, and reporting mechanics are owned by
-[`drive-to-delivery.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/full-standard.md), not
+[`autonomous-execution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/autonomous-execution-standard/references/full-standard.md), not
 duplicated here.
 
 ## Evaluation Axes
@@ -425,7 +315,7 @@ because it is uncomfortable or outside the first implementation idea.
    hacks, hidden coupling, copied policy, duplicate sources of truth, and
    complexity that is not buying real option value.
 7. **Encode the decision.** Material architecture, commercial, AI-workflow,
-   data, security, organization-wide, or public-contract decisions require an
+   data, security, operational, fleet, or public-contract decisions require an
    ADR or amendment before broad implementation. Behavior contracts should
    become schemas, tests, generated clients, evals, or policy checks.
 8. **Ship verified slices.** Use the active delivery profile: small complete
@@ -434,7 +324,7 @@ because it is uncomfortable or outside the first implementation idea.
 
 ## Cross-Project Rule
 
-When multiple projects are involved, decision quality never means making one project aware
+When multiple projects are involved, SOTA never means making one project aware
 of another project's special requirements. Cross-project value must be
 expressed through a general primitive, shared capability, platform layer,
 standard contract, configuration, extension point, generated client, policy
@@ -456,14 +346,14 @@ Use the smallest durable artifact that changes future behavior:
 | Pricing, packaging, roadmap, positioning, monetization, or commercial experiment | Commercial ADR |
 | Project goal, lifecycle, boundary, public surfaces, delivery proof, or adoption state | `PROJECT.md` plus `project.manifest.json` |
 | Reusable static cross-repo rule/profile/procedure | Binding Skills package and its schemas/evals |
-| Live multi-repository migration, status, adoption, or work | the live work system record plus owning repository evidence |
+| Live fleet migration, status, adoption, or work | Control Plane record plus owning repository evidence |
 | AI behavior correctness | Versioned eval manifest, thresholds, traces, failure examples |
 | High-blast-radius concurrency or irreversible workflow | Property/model test, deterministic simulation harness, replay artifact |
 | Runtime rollout risk | Feature flag, canary analysis contract, SLO/error-budget gate, rollback/forward-fix plan |
 
 ## Machine Gates
 
-If a material judgment will matter more than once, encode it as a mechanism:
+If a SOTA judgment will matter more than once, encode it as a mechanism:
 
 - policy-as-code instead of review preference;
 - schema or generated client instead of copied contract prose;
@@ -480,23 +370,13 @@ policy, or deployment decision consumes it.
 
 ## Anti-Patterns
 
-- Copying a long “best practice” prompt into every repository.
-- Treating quality as “add more features” or “add more abstraction”.
-- Renaming an established mechanism, pipeline, or state transition and claiming
-  architectural progress without a semantic or measurable quality delta.
-- Combining many individually credible patterns without proving that each owns
-  a distinct unmet requirement.
-- Making a custom mechanism prove itself only against its own terminology,
-  authored status, or internally chosen success criteria.
-- Treating a date, vendor, language, protocol, model, or forge as best without
+- Copying a long SOTA prompt into every repository.
+- Treating SOTA as "add more features" or "add more abstraction".
+- Treating a date, vendor, language, protocol, model, or forge as SOTA without
   a current profile, evidence, and replacement trigger.
 - Shipping a local workaround that preserves a broken owner boundary.
 - Rejecting high-upside work because it is risky instead of pricing and
   containing the risk.
-- Pricing files, boilerplate, generated types, mechanical migrations, or human
-  review hours as if current agents and automation did not exist.
-- Calling a workaround fast while transferring a known owner-boundary repair
-  and cleanup cost to the next attempt.
 - Using research to delay a reversible decision.
 - Using a narrow test to claim a broad system is correct.
 - Making a dashboard or scorecard that expects a human to enforce the result.

@@ -87,7 +87,7 @@ boundary and stops when its observable predicates pass.
 
 The maintained source comparison and dispositions live with the executable
 method in
-[`bounded-objective-closure-loop.md`](../../methods/drive-to-delivery/references/bounded-objective-closure-loop.md#research-basis).
+[`bounded-objective-closure-loop.md`](../../../skills/drive-to-delivery/references/bounded-objective-closure-loop.md#research-basis).
 
 ## Consequences
 

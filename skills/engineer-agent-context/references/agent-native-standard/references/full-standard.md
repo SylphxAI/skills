@@ -145,7 +145,7 @@ For long-running agents, use conversation/state compaction intentionally:
 preserve completed actions, active assumptions, IDs, tool outcomes, unresolved
 blockers, and the next concrete goal. SDK and runtime selection follows the
 active engineering profile; enduring adapter and evidence obligations live in
-[`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineering-standard/references/full-standard.md).
+[`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/build-product/references/engineering-standard/references/full-standard.md).
 
 
 ## Package checklist

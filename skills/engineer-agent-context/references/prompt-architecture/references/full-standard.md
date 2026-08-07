@@ -80,7 +80,7 @@ next action. Keep the full compression method in `write-high-signal-update`.
 
 Agent role prompts are implementation adapters, not independent policy. The
 canonical role taxonomy and operating protocol live in
-[`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md);
+[`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineer-agent-context/references/agent-first-development-standard/references/full-standard.md);
 role prompts must reference or be generated from that source.
 
 A role prompt should define only:
@@ -92,7 +92,7 @@ A role prompt should define only:
 - required artifacts: issue update, PR metadata, structured review, status check,
   ADR/spec, or production signal;
 - verification and handoff evidence;
-- delivery boundary from [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md).
+- delivery boundary from [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/delivery-standard/references/full-standard.md).
 
 Do not paste a giant static playbook into every role. When canonical
 instructions change, affected role projections must be refreshed from their

@@ -43,3 +43,11 @@ Not listings. One owner skill each; others link. No standards bag skill.
 - **Listing-budget hosts:** keep `name`+`description` short and discriminating; measure aggregate description size; front-load job language; run near-miss checks. Soft capacity may constrain description characters—not job existence.
 - **RAG / large catalogs:** same descriptions as retrieval keys; do not dump foreign skill ids into bodies for routing; put domain maps in `references/INDEX.md` and open one pack at a time.
 - **Every reference tree** under a skill should be reachable from that skill's body with an explicit when-to-open cue.
+
+## Constraint pack authority
+
+Constraint packs resolve only under applying skills. Never invent top-level
+`skills/<pack>-standard/` listings for standards, profiles, or matrices.
+Engineering quality vocabulary is the **Quality North Star** owned by
+`build-product/references/engineering-standard`.
+

@@ -63,17 +63,17 @@ Create a **Deliberation Record** with:
 - Do not keep deliberating after a decision owner has enough evidence to act;
   record residual dissent instead.
 
-
 ## Progressive disclosure
 
-- [references/decision-quality-standard/](references/decision-quality-standard/) — open when this topic applies
+- [references/decision-quality-standard/](references/decision-quality-standard/) — decision criteria, tradeoffs, durable decision record
+- [references/sota-execution-standard/](references/sota-execution-standard/) — SOTA decision kernel and end-state selection for non-trivial objectives
 - [references/deliberation-methods.md](references/deliberation-methods.md) — open when needed for depth
 
 ## Boundaries
 
 - Use `design-space-exploration` for generic brainstorming and generation of
   materially different solution concepts before participants take positions.
-- Use ``analyze-critically` for one analyst comparing hypotheses or diagnosing a
+- Use `analyze-critically` for one analyst comparing hypotheses or diagnosing a
   cause.
 - Use `references/decision-quality-standard/` for final material option selection and its
   durable Decision Record or ADR.

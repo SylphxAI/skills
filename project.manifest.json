@@ -11,17 +11,19 @@
   },
   "intent": {
     "goals": [
-      "Ship a small catalog of specialized task skills.",
+      "Ship a semantic catalog of specialized requestable job skills with progressive references.",
       "Keep always-on floors thin and miss-class-A only.",
-      "Install and sync skills for Codex, Claude Code, and Grok Build."
+      "Install and sync skills for Codex, Claude Code, and Grok Build from exact source revisions.",
+      "Enforce one quality vocabulary (Quality North Star) and one owner path per constraint pack."
     ],
     "nonGoals": [
       "Own live work or organization-wide adoption state.",
-      "Publish a policy encyclopedia as skill packages.",
-      "Preserve obsolete large-catalog portfolio structures."
+      "Publish a policy encyclopedia as top-level listing skills.",
+      "Preserve obsolete listing-standard paths, methods bags, or dual-authority prose.",
+      "Hard-cap listing count for appearance; organize by requestable-job semantics only."
     ]
   },
   "delivery": {
-    "terminal": "default-branch tree passes npm test; public package surfaces match source"
+    "terminal": "default-branch tree passes npm test; catalog digests match packages; constraint packs resolve only under applying skills; no dead listing-standard URLs in active skills"
   }
 }
