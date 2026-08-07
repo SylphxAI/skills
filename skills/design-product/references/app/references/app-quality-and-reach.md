@@ -139,7 +139,7 @@ Machine translation and multi-model judging can scale coverage; neither proves n
 
 ## 8. Privacy, security, SDKs, and dormant state
 
-The App Design Blueprint owns the semantic port: which product capability exists, what data/consent/startup behavior it permits, and how the app degrades. `references/program` owns the cross-platform provider/version/disclosure/replacement and release registry. Do not maintain those provider facts in both artifacts.
+The App Design Blueprint owns the semantic port: which product capability exists, what data/consent/startup behavior it permits, and how the app degrades. ``compose-product-program` owns the cross-platform provider/version/disclosure/replacement and release registry. Do not maintain those provider facts in both artifacts.
 
 For each semantic first- or third-party SDK port record:
 

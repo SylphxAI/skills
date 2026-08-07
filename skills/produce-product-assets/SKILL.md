@@ -1,6 +1,6 @@
 ---
 name: produce-product-assets
-description: "Produce product assets (creatives, store, game 2D packs) to brief and brand."
+description: "Produce product assets to brief and brand constraints."
 ---
 
 # Produce Product Assets
@@ -146,10 +146,9 @@ Reject or redesign a pack that:
 
 ## Progressive disclosure
 
-- Core asset patterns under [references/](references/)
-- [references/store-listing/](references/store-listing/) — store listing optimization
-- [references/game-2d-sprites/](references/game-2d-sprites/) — engine-ready 2D sprites
-- [references/game-2d-map-assets/](references/game-2d-map-assets/) — map tiles/props packs
+- Asset patterns under [references/](references/)
+- Related jobs: `optimize-store-listing`, `produce-game-2d-sprites`, `produce-game-2d-map-assets`
+
 
 ## Output contract
 

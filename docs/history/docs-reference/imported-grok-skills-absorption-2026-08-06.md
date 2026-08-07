@@ -66,8 +66,8 @@ Start templates.
 
 **Wave 1**
 
-- `skills/produce-product-assets/references/game-2d-sprites/`
-- `skills/produce-product-assets/references/game-2d-map-assets/`
+- `skills/produce-product-assets/../produce-game-2d-sprites/`
+- `skills/produce-product-assets/../produce-game-2d-map-assets/`
 - `skills/design-game/references/player-controls-self-test.md`
 
 **Wave 2 (complete in-scope fold)**

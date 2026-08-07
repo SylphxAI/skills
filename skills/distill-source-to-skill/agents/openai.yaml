@@ -1,0 +1,4 @@
+interface:
+  display_name: "Distill Source To Skill"
+  short_description: "Distill docs/repos/notes into one installable Skill package."
+  default_prompt: "Run this skill on the active workspace."

@@ -1,7 +1,7 @@
 {
   "name": "sylphx-skills",
-  "version": "6.0.0",
-  "description": "Finite atomic-action Agent Skills; depth in owner references",
+  "version": "6.1.0",
+  "description": "Agent Skills: requestable jobs + progressive references; no hard listing cap",
   "license": "MIT",
   "type": "module",
   "bin": {

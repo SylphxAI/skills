@@ -66,7 +66,7 @@ emitting a second report.
   built or tested.
 - Use `delivery-standard` for delivery mechanics and
   `risk-matched-verification-standard` for nondeterministic verification design.
-- Use `references/critical-analysis` when several explanations remain credible.
+- Use ``analyze-critically` when several explanations remain credible.
 - Do not demand ceremonial evidence that cannot change the claim.
 
 ## Routing examples

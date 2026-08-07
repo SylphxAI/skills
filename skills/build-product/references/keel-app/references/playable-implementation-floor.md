@@ -19,7 +19,7 @@ Portable correctness floors from high-quality game builders, mapped to Keel.
 ## Presentation vs sim
 
 - Juice (shake, hitstop, flash, particles) **must not** change outcomes.
-- HUD/menus: `references/craft-interface` premium + game-overlay refs + Keel View.
+- HUD/menus: ``craft-product-interface` premium + game-overlay refs + Keel View.
 - Stage vs chrome: `game_slot` + View hierarchy.
 
 ## Assets

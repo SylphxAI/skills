@@ -34,11 +34,8 @@ User intent is **design a product**, not pick an engine brand. Shape-specific de
 ## Progressive disclosure
 
 - Shape packs under [references/](references/) (`app`, `game`, `saas-web-platform`, …)
-- [references/pricing/](references/pricing/) — SaaS packaging and meters
-- [references/portfolio/](references/portfolio/) — multi-product portfolio boundary
-- [references/program/](references/program/) — multi-work program phases
-- [references/architecture-shape/](references/architecture-shape/) — one architecture decision
-- [references/testable-requirements/](references/testable-requirements/) — acceptance criteria with oracles
+- Related jobs (separate skills when requested): `price-saas-subscription`, `compose-product-portfolio`, `compose-product-program`, `decide-architecture-shape`, `engineer-testable-requirements`
+
 
 ## Output
 

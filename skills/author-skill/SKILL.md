@@ -1,77 +1,82 @@
 ---
 name: author-skill
-description: "Create or revise an Agent Skill: atomic action, description, method, references."
+description: "Create or revise an Agent Skill package: job, description, method, references."
 ---
 
 # Author Skill
 
-Create or revise skills so the catalog stays a **finite set of agent atomic actions**—not a standards bag, not a domain encyclopedia, not lifecycle fragment spam.
+Build skills that match the open Agent Skills model: one specialized requestable job, progressive disclosure, real task value.
+
+Hosts differ: some rank a small metadata listing; others (including RAG-style discovery) can surface a large catalog. **Do not invent a hard global skill count cap.** Growth is expected as real skills accumulate. Organize for clarity and discoverability—not compression for its own sake.
 
 ## When to use
 
 - Creating a new skill package
-- Rewriting a skill that is too broad, too vague, fragmented, or unused
-- Deciding whether something is a **listing skill** vs **reference depth**
-- Absorbing a repeated correction loop into one action package
+- Rewriting a skill that is too broad, too vague, unused, or mis-classified
+- Deciding listing skill vs reference depth
+- Absorbing a repeated correction loop into a reusable package
 
-## What a skill is (non-negotiable)
+## What a skill is
 
-A **Skill** is one **task-level atomic action** an agent is asked to perform (or should proactively start):
+A **Skill** is one **requestable job** with a specialized procedure and an acceptably complete outcome.
 
-Examples of the *kind* of thing that belongs in the listing:
+Examples of the *kind* of listing skill:
 
 - build / create a product capability
 - design a product
-- produce an image or asset pack
-- deploy / drive work to delivered
-- respond / operate support
-- write an update or content piece
-- fix live product harm
+- produce sprites or store assets
+- drive work to delivered
+- operate support / respond to a user
+- write an update
 - run an incident
+- analyze critically / forecast with calibration (when those jobs are requested on their own)
 
 A Skill is **not**:
 
-- a policy, standard, profile, or compliance essay
-- a lifecycle phase of another action (`prototype`, `expand`, `finish` of *build*)
-- a domain checklist that only differs by tables (`review-billing` vs `review-privacy` as separate listings)
-- an analysis *technique* that only runs inside research/design/build
-- an engine or brand name (`keel-title`)
-- a bag whose job is "hold methods/standards"
+- a policy, standard, profile, or compliance encyclopedia entry
+- a domain checklist that only differs by tables (prefer one review skill + domain references)
+- an engine or brand product name as the listing (`keel-title`)
+- a bag whose only job is to hold methods or standards
 - repository docs under `docs/` (not installed to agents)
 
 ### Listing vs reference
 
-| Layer | What | Discovered how |
+| Layer | What | How discovered |
 | --- | --- | --- |
-| Listing skill | Finite atomic action | Host matches `name` + `description` |
-| Skill body | Procedure for that action | After selection |
-| `references/` | Standards, shapes, domains, phases, techniques | Body says **when** to open |
-| `docs/` | Human git docs only | Not installed |
+| Listing skill | Requestable job package | Host discovery (`name`+`description`, RAG, etc.) |
+| Skill body | Procedure | After the skill is selected/retrieved |
+| `references/` | Standards, shapes, domain packs, long matrices | Body says **when** to open |
+| `docs/` | Human git docs | Not installed |
 
-**Discovery is the hard problem.** Only listing metadata is always visible. Depth the agent never opens might as well not exist for routing—but depth must still **install** under a real action skill (not only under `docs/`).
+**Discovery matters.** Write descriptions so the right job is found. Put agent-needed depth under installed skill packages—not only under `docs/`.
 
-## Gate: create a listing skill only if all hold
+## Gate: create a listing skill when these hold
 
-1. **Requestable** — a user/agent would say "do X" as the job.
-2. **Independent outcome** — one acceptably complete artifact; not a half-phase of another action.
+1. **Requestable** — users/agents say "do X" as the job (now or as a recurring gap).
+2. **Independent outcome** — an acceptably complete artifact; not only a hidden sub-step with no standalone acceptance.
 3. **Real gap** — without it the agent drifts or fails in a recurring way.
 4. **Specific procedure** — commands, gotchas, formats; not textbook filler.
-5. **Listing budget** — adding it improves routing; it does not dilute a finite action set.
+5. **Honest description** — listing metadata can select it without synonym dumps or false neighbours.
 
-If any fail:
+If the content fails those tests:
 
-- fold into an existing action's `references/<topic>/`, or
-- put a short always-on floor in constitution/AGENTS only if universal miss-class-A, or
+- fold into an existing skill's `references/<topic>/` when it is truly subordinate depth, or
+- put a short always-on floor only for universal miss-class-A rules, or
 - do nothing.
 
-**Prefer ~15–25 listing skills for a whole org catalog.** More is usually fragmentation. Do not optimize for coverage of nouns.
+**Do not demote a real requestable job just to shrink the catalog.**  
+**Do not merge unrelated jobs into one mega-skill to hit a number.**  
+**Do not refuse a valid new skill because "we already have enough."**
+
+Merge only when job, artifact, and acceptance authority are materially the same. Split when a sub-job is independently requested and independently accepted.
 
 ## Standards and constraint packs
 
 - Org constraint packs are **never** listing skills.
-- Place each pack under the **one** action that applies it, e.g. engineering under `build-product`, source-authoring under `drive-to-delivery`.
-- Other actions **link** to that path; do not duplicate trees; do not create `adopt-named standard packagess` as a bag.
+- Place each pack under the **one** skill that most naturally applies it (e.g. engineering depth under `build-product`, source-authoring under `drive-to-delivery`).
+- Other skills **link** to that path; do not duplicate pack trees; do not create a "hold all standards" skill.
 - Body text must say when to open the pack.
+- Depth must live under `skills/` so install ships it; `docs/` is human-only.
 
 ## Package layout
 
@@ -79,15 +84,15 @@ If any fail:
 skill-id/
   SKILL.md              # required
   agents/openai.yaml    # display metadata (this repo)
-  references/           # optional depth (phases, standards, shapes, methods)
+  references/           # optional depth
   scripts/              # optional deterministic helpers
   assets/               # optional templates
 ```
 
-- `skill-id`: lowercase kebab, **verb-led action** when possible (`build-product`, not `product-excellence`)
+- `skill-id`: lowercase kebab; prefer verb-led action names
 - Frontmatter: only `name` (matches folder) and `description`
 
-## Description (routing key)
+## Description (routing / retrieval key)
 
 1–3 sentences: **what** + **when**. Agent-facing. Concrete triggers and artifact.
 
@@ -97,9 +102,9 @@ Bad: Helps with products and engineering.
 
 Rules:
 
-- No synonym dumps, no foreign skill ids, no standard names as the job
-- Stay short under catalog pressure (hosts truncate)
-- Near-miss exclusions when needed ("not for open-ended research")
+- No synonym dumps, no foreign skill ids as the job name, no standard package names as the skill id
+- Prefer short, discriminating prose (hosts may truncate listings; RAG still benefits from clear job language)
+- Near-miss exclusions when needed
 
 ## Body
 
@@ -112,44 +117,41 @@ Rules:
 - Link `references/` with **when-to-open**
 - Prefer scripts for fragile deterministic steps
 
-## Progressive disclosure for absorbed depth
+## Related first-class skills
 
-When a former listing is demoted:
+These stay **listings** when they are independently requested:
 
-1. `git mv` the package under the owner action's `references/<topic>/`
-2. Replace listing `SKILL.md` with `METHOD.md` (not a second listing)
-3. Point the owner body at it with a one-line when-to-open
-4. Do **not** delete researched method text
+| Need | Skill |
+| --- | --- |
+| Distill docs/repo material into a skill package | `distill-source-to-skill` |
+| Design falsifiable evals for a skill | `design-skill-evals` |
+| Portfolio merge/split/retire across many skills | `curate-skill-repository` |
 
-Depth already under this skill:
+Also useful depth under this package:
 
-- [references/distill-source/](references/distill-source/) — distill docs/repos into a skill package
-- [references/design-evals/](references/design-evals/) — falsifiable skill evals
-- [references/curate-repository/](references/curate-repository/) — portfolio merge/split/retire
 - [references/instruction-evolution-standard/](references/instruction-evolution-standard/) — instruction evolution constraints
 - [references/checklist.md](references/checklist.md) · [references/industry-sources.md](references/industry-sources.md)
 
-## Anti-patterns (catalog rot)
+## Anti-patterns
 
-- Mega-skill that mixes unrelated actions
-- Lifecycle fragment listings (`finish-*`, `expand-*`, `pursue-*` next to `build-*` / `drive-*`)
-- Technique farm (`analyze-*` × N) instead of one evidence/research action + refs
-- Meta skill sprawl (author + distill + evals + curate all listed)
-- Standards bag skill or docs-only binding depth
-- Custom skill-routing engine or keyword dispatcher skill
-- Keeping a skill for completeness with no agent gap
+- Mega-skill that mixes unrelated jobs to reduce count
+- Demoting a standalone requestable job only to hit a size target
+- Domain checklist sprawl as separate listings when one review skill + refs is enough
+- Standards bag skill or docs-only agent binding depth
+- Custom skill-routing engine / keyword dispatcher skill
+- Generic policy essays with no executable job
+- Keeping a hollow shell with no agent gap
 
 ## Validate in this repo
 
 1. Frontmatter `name` equals folder id
 2. Local links resolve
 3. `npm run build:catalog && npm test`
-4. Smoke: name+description would load for the right ask and abstain on near-misses
-5. Catalog stays a finite action set (see `docs/MODEL.md`)
+4. Smoke: description would select/retrieve for the right ask and abstain on near-misses
 
 ## Output
 
 - Path to the package
-- One-line atomic action
-- What was refused or demoted to references
+- One-line job
+- What was folded to references (and why—not "to hit a cap")
 - Catalog/test result

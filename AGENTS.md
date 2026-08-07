@@ -1,8 +1,9 @@
 # Skills repository
 
-- Listings: finite **atomic actions** only (`skills/<action>/`)
-- Depth: `skills/<owner>/references/<topic>/` (standards, phases, domains, techniques)
+- Listings: requestable jobs under `skills/<id>/` (no hard count cap)
+- Depth: standards, shapes, domains, matrices under owner `references/`
 - Never standards bag; never docs-only agent binding depth
-- Author/revise via `author-skill` gates
+- Do not demote real jobs only to shrink the catalog
+- Author via `author-skill` semantic gates
 - Prefer app/product/game language; Keel depth under `build-product`
 - `npm run build:catalog && npm test`

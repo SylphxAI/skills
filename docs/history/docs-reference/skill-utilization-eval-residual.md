@@ -120,7 +120,7 @@ confuse **landed doctrine** with **open multi-host utilization**.
 | Item | Evidence |
 | --- | --- |
 | L1/L2/L3 defined | `skills/source-authoring-standard/references/full-standard.md` |
-| pursue / open-betterment backbone | `skills/drive-to-delivery/references/pursue-objective/SKILL.md`, `skills/maintain-product/references/open-betterment/SKILL.md` |
+| pursue / open-betterment backbone | `skills/drive-to-delivery/../pursue-product-objective/SKILL.md`, `skills/maintain-product/../run-open-product-betterment/SKILL.md` |
 | High-EV mutators compose layers | structural test `tests/three-layer-source-doctrine.test.mjs` |
 | Queued trunk alignment | `history/adr/ADR-20260803-agent-native-queued-trunk.md` (agent commit/PR layering) |
 | Install currency | `node runtime/sylphx-skills.mjs status --agent all` → current 118/118 |

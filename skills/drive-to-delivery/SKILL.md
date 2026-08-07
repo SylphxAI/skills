@@ -34,7 +34,7 @@ honestly blocked.
 
 Open only packs that match the objective:
 
-- `../synthesize-evidence-brief/references/structured-deliberation/references/decision-quality-standard/` — framing, alternatives, claims
+- `../synthesize-evidence-brief/../record-structured-deliberation/references/decision-quality-standard/` — framing, alternatives, claims
 - `references/source-authoring-standard/` — L1 batch / L2 atomic commits / L3 revert-safe PR outcomes
 - `references/delivery-standard/` — land/live done claims
 - `../synthesize-evidence-brief/references/evidence-and-claims-standard/` — proof strength
@@ -48,12 +48,12 @@ Progress on **one accepted objective at its delivery terminal**, with checkpoint
 ## Progressive disclosure
 
 - [references/full-standard.md](references/full-standard.md) — full drive method
-- [references/bound-request-scope/](references/bound-request-scope/) — bound objective/in/out before long work
-- [references/pursue-objective/](references/pursue-objective/) — fixed-objective pursuit loop depth
 - [references/source-authoring-standard/](references/source-authoring-standard/) — L1/L2/L3 source landing
 - [references/delivery-standard/](references/delivery-standard/) — land/live done claims
 - [references/ci-admission-standard/](references/ci-admission-standard/) · [references/ci-runner-capacity-standard/](references/ci-runner-capacity-standard/)
 - [references/parallel-change-integration-standard/](references/parallel-change-integration-standard/)
+- Related jobs: `bound-request-scope`, `pursue-product-objective`
+
 
 ## Boundaries
 
