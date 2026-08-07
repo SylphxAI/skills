@@ -1,6 +1,6 @@
 ---
 name: synthesize-evidence-brief
-description: "Synthesize evidence and run analysis/decision methods into one bounded brief."
+description: "Synthesize multi-source evidence into one bounded brief with residuals."
 ---
 
 # Synthesize Evidence Brief
@@ -76,22 +76,18 @@ Produce an **Evidence Synthesis** containing:
 
 - [references/reproducible-evidence-synthesis.md](references/reproducible-evidence-synthesis.md)
 - [references/evidence-and-claims-standard/](references/evidence-and-claims-standard/)
-- [references/critical-analysis/](references/critical-analysis/) — adversarial critique with kill criteria
-- [references/causal-inference/](references/causal-inference/)
-- [references/system-dynamics/](references/system-dynamics/)
-- [references/forecast-calibration/](references/forecast-calibration/)
-- [references/decision-optimization/](references/decision-optimization/)
-- [references/structured-deliberation/](references/structured-deliberation/) — options, criteria, decision record (+ decision-quality pack)
+- Related analysis jobs (separate skills): `analyze-critically`, `analyze-causal-inference`, `analyze-system-dynamics`, `forecast-with-calibration`, `optimize-decision-model`, `record-structured-deliberation`
+
 
 ## Boundaries
 
 - `synthesize-market-research` owns market, category, competitor, positioning,
   pricing, or demand recommendations.
-- `references/critical-analysis` owns competing hypotheses and diagnosis for one uncertain
+- ``analyze-critically` owns competing hypotheses and diagnosis for one uncertain
   material question.
 - `references/evidence-and-claims-standard/` owns the verdict on one material or disputed
   factual, completion, causality, or delivery claim.
-- `references/causal-inference` owns identification and estimation of a causal
+- ``analyze-causal-inference` owns identification and estimation of a causal
   effect from data; this Skill may synthesize multiple causal studies without
   replacing their identification analyses.
 - A domain Skill owns domain-specific interpretation and decisions that consume

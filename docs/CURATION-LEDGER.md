@@ -1,29 +1,24 @@
 # Curation ledger
 
-## v6 — atomic action catalog
+## Principle
 
-Principle: listings are **finite agent atomic actions**. Everything else is reference depth under an owner action. Migrate; do not destroy.
+Organize skills by **semantics** (requestable job vs depth). Do **not** hard-cap listing count. Migrate knowledge; do not destroy.
 
-### Demotions (listing → owner/references)
+## v6 mistake corrected
 
-| Former listing | Owner reference |
+v6 forced ~20 listings with a 15–25 gate. That demoted many **independently requestable** jobs for size, not for meaning. Those listings are restored.
+
+## Still correct (keep)
+
+| Kind | Treatment |
 | --- | --- |
-| prototype/expand/finish-product | build-product/references/{prototype,expand,finish} |
-| payment/distribution readiness, craft-interface | build-product/references/* |
-| pursue-product-objective, bound-request-scope | drive-to-delivery/references/* |
-| open-betterment, frontend-perf, agent-harness | maintain-product/references/* |
-| portfolio/program/pricing/architecture/requirements | design-product/references/* |
-| analyze-*, forecast, optimize-decision, deliberation | synthesize-evidence-brief/references/* |
-| distill/evals/curate | author-skill/references/* |
-| game-2d sprites/maps, store-listing | produce-product-assets/references/* |
-| feedback-loop | operate-customer-support/references/* |
-| edit-preserving-voice | write-high-signal-update/references/* |
+| `*-standard` / policy / profile | references under applying skills (not listings) |
+| Domain review packs | `review-domain/references/*` |
+| Design shapes (app/game/saas/…) | `design-product/references/*` |
+| Keel app tooling | `build-product/references/keel-app` |
+| Single-case support depth | `operate-customer-support/references/resolve-one-case` |
+| Prompt architecture | `engineer-agent-context/references/prompt-architecture` |
 
-### Kept (20)
+## Restored to listings
 
-adopt-repo-standards, author-skill, build-product, design-product, drive-to-delivery, engineer-agent-context, execute-hard-cutover, maintain-product, model-security-threats, operate-customer-support, produce-product-assets, research-user-needs, review-domain, run-incident-response, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, verify-local-web-preview, write-high-signal-update
-
-### Prior cuts
-
-- v5: standards off listing; design/review hubs; Keel under build-product
-- v5.2: constraint packs under applying workflows (no standards bag)
+prototype/expand/finish product; payment/distribution readiness; craft interface; pursue objective; bound-request-scope; open betterment; frontend-perf; agent-harness; pricing; portfolio; program; architecture-shape; testable-requirements; analyze-*; forecast; optimize-decision; deliberation; store-listing; game-2d sprites/maps; feedback-loop; edit-preserving-voice; distill/evals/curate skill-meta.

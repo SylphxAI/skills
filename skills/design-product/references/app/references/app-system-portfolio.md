@@ -137,7 +137,7 @@ Rules:
 - When monetization is selected, state one primary commercial model; do not list every model as strategy. A free, public-interest, bundled, or otherwise non-commercial app may mark commerce `not-applicable` for an exact business-model reason and must then keep payment and advertising runtime truly absent.
 - Where the app creates honest durable or recurring paid value, evaluate purchase, IAP, or subscription as the primary exchange before relying on interruption-based IAA. Do not force paid mechanics where no credible paid value exists.
 - Ads are a contextual or supplementary model unless product evidence supports them as primary. Preserve useful core behavior, consent, age modes, payer/ad-free treatment, startup and low-end budgets.
-- Use `references/pricing` when subscription/SaaS packaging is the independent decision, `build-product` (see references/payment-readiness) for provider/ledger correctness, and `review-ad-monetization` for in-product advertising.
+- Use ``price-saas-subscription` when subscription/SaaS packaging is the independent decision, `build-product` (see references/payment-readiness) for provider/ledger correctness, and `review-ad-monetization` for in-product advertising.
 
 ### Refund Consequence Contract
 
@@ -217,7 +217,7 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 | Artifact | Primary owner |
 | --- | --- |
 | App monetization model and value-exchange semantics | `design-app` |
-| Subscription/SaaS price and package decision | `references/pricing` |
+| Subscription/SaaS price and package decision | ``price-saas-subscription` |
 | Provider payment, ledger, settlement and entitlement projection | `build-product` (see references/payment-readiness) |
 | Refund consequence, repurchase, restriction, support and appeal | `review-refund-and-support-flow` |
 | Subscription access state | `build-product` (see references/payment-readiness) |
@@ -234,7 +234,7 @@ Public review eligibility may not depend on inferred positivity, spend, rating p
 | Localized experience semantics | `design-app` |
 | Deterministic product capture, cross-channel asset transformation, localized production and LQA pack | `produce-product-assets` |
 | Multi-channel marketing control plane | `design-marketing-automation` |
-| Product Program Manifest composition/index of independently owned sibling artifacts | `references/program` |
+| Product Program Manifest composition/index of independently owned sibling artifacts | ``compose-product-program` |
 
 ## 5. Dangerous interaction tests
 

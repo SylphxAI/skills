@@ -1,0 +1,4 @@
+interface:
+  display_name: "Analyze Critically"
+  short_description: "Adversarially critique a claim/plan/design with kill criteria."
+  default_prompt: "Run this skill on the active workspace."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Optimize Store Listing"
+  short_description: "Optimize store listing: metadata, creatives, conversion, compliance."
+  default_prompt: "Run this skill on the active workspace."

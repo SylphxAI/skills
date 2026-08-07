@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run Product Feedback Loop"
+  short_description: "Run product feedback learning loop: private feedback and public reviews."
+  default_prompt: "Run this skill on the active workspace."

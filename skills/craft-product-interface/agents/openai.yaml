@@ -1,0 +1,4 @@
+interface:
+  display_name: "Craft Product Interface"
+  short_description: "Craft one product UI flow with states, a11y, verification."
+  default_prompt: "Run this skill on the active workspace."

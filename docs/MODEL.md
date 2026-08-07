@@ -1,54 +1,39 @@
-# Agent Skills model (v6 — atomic actions)
+# Agent Skills model
 
-## Industry + local rule
+## Meaning
 
-A **Skill** is a specialized package an agent loads on demand for **one task-level atomic action**:
+A **Skill** is a specialized package an agent loads for **one requestable job**:
 
-- finite, requestable job
-- short `name` + `description` for discovery
-- procedure body + optional `references/` / `scripts/`
+- short `name` + `description` for discovery (listing metadata and/or RAG)
+- procedure body
+- optional `references/` / `scripts/` for depth
 
-Progressive disclosure (industry default): listing → body → references.
+Progressive disclosure: discover → body → references when the body says so.
 
-## Atomic action test
+## No hard catalog cap
 
-Listing skill **only if** all true:
+Skill counts **grow** as real jobs accumulate. Some runtimes use small metadata windows; others (including Spiron-style RAG discovery) support large catalogs.
 
-1. Requestable as "do X"
-2. Independent acceptably complete outcome
-3. Real recurring agent gap without it
-4. Specific non-textbook procedure
-5. Improves listing-budget routing
+**Never use a fixed listing count (e.g. 15–25) as a merge/demote target.**  
+Organize by semantics: requestable job vs subordinate depth—not by compressing until a number looks clean.
 
-Otherwise: owner action `references/`, thin always-on floor, or nothing.
+## When to list vs reference
 
-**Target catalog size: ~15–25 actions**, not dozens of phases/techniques/domains.
+**List** when the job is requestable, has an independent outcome, fills a real agent gap, and has a specific procedure.
 
-## Not skills
+**Reference** when the material is:
 
-- standards / policies / profiles
-- lifecycle phases of another action
-- domain checklist packs (one `review-domain` + refs)
-- analysis techniques (under evidence/research actions)
-- engine brand product names
-- methods bags / "consult standards" skills
-- `docs/`-only material (not installed)
+- a standard/policy/profile
+- a shape/domain table under a real job (`design-product/references/app`)
+- engine tooling under a product job (`build-product/references/keel-app`)
+- long matrices/examples for an already-listed job
+
+Merge only when job + artifact + acceptance authority are the same. Split when they are not.
 
 ## Install reality
 
-Installer copies `skills/*` only. Agent-needed depth must live under an installed action skill's `references/`. `docs/` is human git documentation.
+Installer copies `skills/*` only. Agent-needed depth must live under skill packages. `docs/` is human git documentation.
 
-## Constraint pack owners (examples)
+## Constraint packs
 
-| Depth | Owner action |
-| --- | --- |
-| engineering, verification, platform-first | `build-product` |
-| source-authoring, delivery, CI | `drive-to-delivery` |
-| project-manifest / enterprise profile | `adopt-repo-standards` |
-| decision-quality, causal, critique methods | `synthesize-evidence-brief` |
-| instruction-evolution, distill, evals, curate | `author-skill` |
-| review solicitation / feedback loop | `operate-customer-support` |
-
-## v6 listing catalog
-
-Twenty atomic actions (see `catalog.json`). Demoted jobs live under those owners' `references/`.
+Not listings. One owner skill each; others link. No standards bag skill.

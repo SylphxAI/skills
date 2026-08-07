@@ -1,8 +1,3 @@
 # Policies pointer
 
-Constraint packs are not listing skills. They live under owner atomic actions, e.g.:
-
-- `skills/build-product/references/engineering-standard/`
-- `skills/drive-to-delivery/references/source-authoring-standard/`
-
-See [docs/MODEL.md](../MODEL.md). `docs/` is not agent-installed.
+Constraint packs are not listing skills. They live under applying skills' `references/` (for example `build-product` engineering depth, `drive-to-delivery` source-authoring). See [docs/MODEL.md](../MODEL.md). `docs/` is not agent-installed.

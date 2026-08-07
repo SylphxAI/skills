@@ -31,7 +31,7 @@ description: "Write a short stakeholder update: decisions, risks, asks."
 
 ## Progressive disclosure
 
-- [references/edit-preserving-voice/](references/edit-preserving-voice/) — edit while preserving voice and facts
+- [../edit-preserving-voice/](../edit-preserving-voice/) — edit while preserving voice and facts
 - [references/research-basis.md](references/research-basis.md)
 
 ## Output

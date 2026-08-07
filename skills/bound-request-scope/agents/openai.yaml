@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bound Request Scope"
+  short_description: "Bound this request: objective, in/out, non-goals, cut lines."
+  default_prompt: "Run this skill on the active workspace."

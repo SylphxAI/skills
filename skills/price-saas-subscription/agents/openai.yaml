@@ -1,0 +1,4 @@
+interface:
+  display_name: "Price SaaS Subscription"
+  short_description: "Price a SaaS subscription: packaging, meters, fences, migration."
+  default_prompt: "Run this skill on the active workspace."

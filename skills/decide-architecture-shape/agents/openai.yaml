@@ -1,0 +1,4 @@
+interface:
+  display_name: "Decide Architecture Shape"
+  short_description: "Decide one architecture shape from options with tradeoffs."
+  default_prompt: "Run this skill on the active workspace."

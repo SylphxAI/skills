@@ -1,0 +1,4 @@
+interface:
+  display_name: "Remediate Frontend Performance"
+  short_description: "Remediate frontend performance with before/after path metrics."
+  default_prompt: "Run this skill on the active workspace."

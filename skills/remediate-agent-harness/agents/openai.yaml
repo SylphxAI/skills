@@ -1,0 +1,4 @@
+interface:
+  display_name: "Remediate Agent Harness"
+  short_description: "Remediate an agent harness with measured deltas and failure modes."
+  default_prompt: "Run this skill on the active workspace."

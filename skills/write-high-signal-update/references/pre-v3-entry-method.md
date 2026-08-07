@@ -141,7 +141,7 @@ command output when a bounded extraction proves the claim.
   Number only real sequences; group peers only when the grouping improves
   retrieval.
 - Preserve the user's requested language, register, and useful domain terms.
-  Use `references/edit-preserving-voice` when voice or locale shaping is separately in
+  Use ``edit-preserving-voice` when voice or locale shaping is separately in
   scope.
 - Do not impose a universal word count. Required length follows semantic load,
   not artifact type or template size.

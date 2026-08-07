@@ -1,8 +1,7 @@
-# Acceptance — v6 atomic action catalog
+# Acceptance
 
-1. Listing count ≈ 15–25; currently 20 atomic actions
-2. No `*-standard` listings; no standards bag skill
-3. Demoted jobs exist as `METHOD.md` (or depth) under owner `references/`
-4. `author-skill` encodes atomic-action gates and anti-patterns
-5. `npm test` green; install ships 20 skills; demoted depth installs with owners
-6. Knowledge migrated (rename), not deleted
+1. No hard listing-count gate in author-skill or MODEL
+2. Independently requestable jobs are listings (not demoted for size)
+3. Standards/domain shapes/engine tooling remain references where appropriate
+4. `npm test` green; install ships all listings + their references
+5. Knowledge preserved on move/restore
