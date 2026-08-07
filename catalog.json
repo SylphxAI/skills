@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 50,
+  "count": 51,
   "skills": [
     {
       "name": "adopt-repo-standards",
@@ -26,6 +26,12 @@
       "description": "Map stubborn loops: stocks, delays, incentives, policy resistance.",
       "path": "skills/analyze-system-dynamics/SKILL.md",
       "packageDigest": "sha256:585e81e32560b92ac4350ab8e32dbd653a0b3ac4381d7dac38f3e1f47365b0a0"
+    },
+    {
+      "name": "apply-instrument-family",
+      "description": "Apply Sylphx Instruments family law for Citra Iris Cue Spine Lookout Locus — evidence envelope, brand-sole packages, sole-engine paths, Prism retirement.",
+      "path": "skills/apply-instrument-family/SKILL.md",
+      "packageDigest": "sha256:36ef496530f400bbfac42237c20e4f8cf81837523ec89136effaf22ef9382d6a"
     },
     {
       "name": "author-skill",
