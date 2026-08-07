@@ -1,4 +1,0 @@
-interface:
-  display_name: "Backend, Web, and Client Technology Profile"
-  short_description: "Policy profile: technology-stack selection rules for matching repos (not a product job)."
-  default_prompt: "Use $technology-stack-profile to classify roles and effects, then apply the required Rust backend, TypeScript web, Protobuf/Connect contract, and platform-native client technologies."

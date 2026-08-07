@@ -1,6 +1,6 @@
 ---
 name: build-product
-description: "Ship a missing capability end-to-end with original-oracle proof."
+description: "Ship a missing product capability end-to-end with original-oracle proof."
 ---
 
 # Build Product
@@ -42,10 +42,8 @@ No permanent workarounds. Prefer durable work on the owning layer.
   of the product’s core concept—not a parallel concept or permanent workaround.
 - Prefer depth and strength on that capability (real path, oracle, operability)
   over shipping many half-concepts.
-- When landing source: compose `source-authoring-standard` L1/L2/L3 (batch →
-  atomic commits → revert-safe PR outcome). Do not leave dual-path concept
-  residue; hard-cut obsolete paths via `execute-hard-cutover` when cutover is
-  the job.
+- When landing source: land with atomic commits and a revert-safe PR outcome. Do not leave dual-path concept
+  residue; hard-cut obsolete paths via the execute-hard-cutover skill when cutover is the job.
 
 - Correct boundary; no product hacks for shared floors that belong elsewhere
 - Real paths over mocks unless the cycle is explicitly building a seam
@@ -66,4 +64,13 @@ No permanent workarounds. Prefer durable work on the owning layer.
 ## Output
 
 Capability · changes · oracle evidence · residuals
+
+## Platform / engine tools (references, not separate skills)
+
+When the product is implemented on **Keel** (app, game client, multi-platform shell):
+
+- Read [references/keel-app/METHOD.md](references/keel-app/METHOD.md) for engine boundaries, pack, doctor, examples.
+- Do **not** invent a separate "build engine product" skill — the user job is still **build product**.
+
+Prefer product-repo tools and Platform services the same way: name them in research/implement steps, load depth from docs/references when needed.
 

@@ -21,7 +21,7 @@ honestly blocked.
 1. **Startup:** objective, acceptance map, workspace ownership, non-interference with foreign changes. Bind host continuity if present (prefer uncapped long work unless user set a budget). No hard-coded host tool ids.
 2. **Graph:** maximize authorized verified throughput without inflating certainty or delivery claims.
 3. **Loop:** research → execute → verify → repair or replan until the delivery terminal for **this one** objective is met or an honest blocker is recorded.
-   When mutating source, follow `source-authoring-standard` three layers: **L1** batch unblocked high-value work for this objective; **L2** atomic valid commits; **L3** land via **one revert-safe complete PR outcome** per independent outcome (queue/squash unit).
+   When mutating source, follow `docs/policies/source-authoring-standard/` three layers: **L1** batch unblocked high-value work for this objective; **L2** atomic valid commits; **L3** land via **one revert-safe complete PR outcome** per independent outcome (queue/squash unit).
 4. **Done:** claim only with evidence at the active delivery boundary (landed/live as required—not merely local green).
 
 ### Progressive disclosure
@@ -34,11 +34,11 @@ honestly blocked.
 
 Open only packs that match the objective:
 
-- `decision-quality-standard` — framing, alternatives, claims
-- `source-authoring-standard` — L1 batch / L2 atomic commits / L3 revert-safe PR outcomes
-- `delivery-standard` — land/live done claims
-- `evidence-and-claims-standard` — proof strength
-- `engineering-standard` / `technology-stack-profile` — when implementing software
+- `docs/policies/decision-quality-standard/` — framing, alternatives, claims
+- `docs/policies/source-authoring-standard/` — L1 batch / L2 atomic commits / L3 revert-safe PR outcomes
+- `docs/policies/delivery-standard/` — land/live done claims
+- `docs/policies/evidence-and-claims-standard/` — proof strength
+- `docs/policies/engineering-standard/` / `docs/policies/technology-stack-profile/` — when implementing software
 
 ## Output
 

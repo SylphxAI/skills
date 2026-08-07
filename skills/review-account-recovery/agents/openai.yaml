@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review Account Recovery Review"
-  short_description: "Review: account recovery—security, UX, abuse, recovery proof."
-  default_prompt: "Run Review Account Recovery Review for the active product/workspace."

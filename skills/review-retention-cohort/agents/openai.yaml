@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review Retention Cohort Review"
-  short_description: "Review: retention cohorts—measurement, drivers, interventions."
-  default_prompt: "Run Review Retention Cohort Review for the active product/workspace."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Sylphx Platform-First Policy"
-  short_description: "Policy: prefer Sylphx Platform capabilities before inventing parallel infrastructure on company-owned work."
-  default_prompt: "Run Sylphx Platform-First Policy on the active workspace."

@@ -22,7 +22,7 @@ engine-ready defaults; the title or Keel pack owns runtime wiring.
 | Concern | Owner |
 | --- | --- |
 | Asset files + QC | this skill |
-| Title content layout under pack | product title repo |
+| Title content layout under pack | product app repo |
 | Pack shell / player / multi-platform emit | **Keel** (`keel pack` / `keel-pack`) |
 | Runtime ECS/input/render | Keel ports + title |
 

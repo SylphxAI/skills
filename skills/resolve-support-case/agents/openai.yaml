@@ -1,4 +1,0 @@
-interface:
-  display_name: "Resolve Support Case"
-  short_description: "Resolve one support case to closure with correct authority and outcome."
-  default_prompt: "Run Resolve Support Case for the active task/workspace."

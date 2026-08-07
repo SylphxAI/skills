@@ -2,7 +2,7 @@
 
 Apply on product chrome, game HUD labels, and marketing-adjacent panels.
 Stack-specific CSS/Tailwind snippets are **examples of discipline**, not portfolio defaults.
-On Keel titles, prefer ThemePack type roles + View text widgets over dual CSS SSOT.
+On Keel apps, prefer ThemePack type roles + View text widgets over dual CSS SSOT.
 
 ## Hierarchy floors
 

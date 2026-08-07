@@ -66,7 +66,7 @@ Produce a **Constrained Decision Model**:
 - When both Skills apply but no standalone objective audit was requested,
   integrate the material objective-contract fields into this Constrained
   Decision Model rather than emitting a second artifact.
-- Use `decision-quality-standard` when the job is evidence-based qualitative
+- Use `docs/policies/decision-quality-standard/` when the job is evidence-based qualitative
   selection among materially distinct options without a mathematical program.
 - Use `review-agent-planning-system` for how an agent decomposes, sequences,
   observes, and replans work.

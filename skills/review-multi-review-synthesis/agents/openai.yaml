@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review Multi-Review Synthesis"
-  short_description: "Review: Synthesize multiple reviews into ranked actions and residuals (not general evidence synthesis)."
-  default_prompt: "Run Review Convergent Review for the active product/workspace."

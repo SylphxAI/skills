@@ -49,7 +49,7 @@ Produce a **Probabilistic Forecast Record**:
 
 - Use `analyze-critically` for confidence in a present explanation rather than a
   resolvable future event.
-- Use `decision-quality-standard` to combine forecasts with value, cost, risk
+- Use `docs/policies/decision-quality-standard/` to combine forecasts with value, cost, risk
   appetite, reversibility, and authority to choose an action.
 - Domain skills own the meaning of revenue, reliability, delivery, safety, or
   other specialized outcomes; this skill owns the forecasting method.

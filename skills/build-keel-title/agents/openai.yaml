@@ -1,4 +1,0 @@
-interface:
-  display_name: "Build Keel Title"
-  short_description: "Keel Title day-1, examples map, pack/doctor—not Three/Phaser."
-  default_prompt: "Implement or extend this product as a Keel external title using Title + pack + nearest keel-examples bin."

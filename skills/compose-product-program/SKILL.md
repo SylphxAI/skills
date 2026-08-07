@@ -202,7 +202,7 @@ Produce one **Product Program Manifest** containing:
   product media; `review-promotion-campaign`, `review-referral-loop`, and
   `optimize-store-listing` own their narrow artifacts.
 - `build-payment-readiness` owns provider transaction/ledger integration; `review-refund-and-support-flow` owns refund customer/account consequences.
-- `review-solicitation-policy` owns platform-specific authentic public review
+- `docs/policies/review-solicitation-policy/` owns platform-specific authentic public review
   request policy; `run-product-feedback-loop` owns universal private
   feedback, authorized review ingestion, evidence clustering, routing, product
   action, and close-loop behavior.

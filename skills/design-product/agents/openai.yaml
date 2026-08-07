@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Product"
+  short_description: "Design a product blueprint (app, game, SaaS, etc.); shape depth in references."
+  default_prompt: "Run design-product for the active workspace."

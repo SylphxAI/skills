@@ -1,4 +1,0 @@
-interface:
-  display_name: "Commercial Decision Standard"
-  short_description: "Policy: durable commercial decisions—pricing, packaging, entitlements, licensing."
-  default_prompt: "Apply commercial-decision-standard constraints on the active task/workspace."

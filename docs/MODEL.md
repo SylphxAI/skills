@@ -1,29 +1,38 @@
-# Agent Skills model
+# Agent Skills model (v5)
 
-## North star
+## Industry meaning
 
-One **listing** skill = one independently requestable job with one primary artifact.
+A **Skill** is a specialized **workflow** an agent loads on demand:
 
-- Host matches `name` + short `description`
-- Body loads on selection; `references/` on demand
-- Integrate (absorb/merge) only when job + artifact + acceptance coincide
-- Do **not** hide many jobs behind a single library bag
-- Do **not** keep duplicate listings for the same job
+- one user-requestable job
+- short `name` + `description` for discovery
+- procedure body + optional `references/` / `scripts/`
 
-## Integration rules
+A Skill is **not**:
 
-1. Same user request shape and same accepted deliverable → one skill
-2. Sub-steps of that job → `references/` inside the owner skill
-3. Shared rhythm across many domain skills → shared skeleton file copied/linked, still separate listings
-4. Distinct domain assessments stay separate even if the checklist shape looks similar
+- a policy encyclopedia entry
+- an engine brand product name
+- a domain checklist that only differs by reference tables
 
-See [CURATION-LEDGER.md](CURATION-LEDGER.md) for executed decisions.
+## Catalog shape
 
-## Always-on
+| Kind | Where |
+| --- | --- |
+| Workflows | `skills/<job>/` (listing) |
+| Shape/engine depth | `skills/<job>/references/` |
+| Org policy packs | `docs/policies/` (not listing skills) |
 
-`runtime/constitution.md` — miss-class-A floors only.
+## User-job framing
 
-## Listing budget
+Agents match how users think about work:
 
-Short descriptions so the catalog fits host listing class (~8k chars on Codex).
-Depth never belongs in the description.
+- "design a product" → `design-product` (app/game/SaaS depth in references)
+- "build a product" → `build-product` (Keel app tooling in `references/keel-app`)
+- "review this domain" → `review-domain` (domain packs in references)
+- "operate support" → `operate-customer-support` (single-case depth in references)
+
+## Progressive disclosure
+
+1. Listing metadata (budgeted)
+2. Skill body when selected
+3. References only when the body says so

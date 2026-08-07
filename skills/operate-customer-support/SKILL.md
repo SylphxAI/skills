@@ -1,6 +1,6 @@
 ---
 name: operate-customer-support
-description: "Operate support: triage, resolution path, escalation, quality loops."
+description: "Operate customer support: triage, resolution, escalation, quality loops."
 ---
 
 # Operate Customer Support
@@ -73,10 +73,17 @@ Return one Support Operating Model containing:
 - `resolve-support-case` owns one specific customer's evidence, response, remedy recommendation, protected-action handoff, verification, appeal/reopen, and closure record; this skill owns the whole support system around it.
 - `review-refund-and-support-flow` owns refund, repayment, entitlement consequence, restriction, appeal, and repurchase policy.
 - `build-payment-readiness` owns provider ingestion, money ledger, entitlement projection, settlement, and reconciliation truth.
-- `review-solicitation-policy` owns platform-specific public review request eligibility and state.
+- `docs/policies/review-solicitation-policy/` owns platform-specific public review request eligibility and state.
 - `run-product-feedback-loop` owns private feedback, authorized review ingestion and responses, evidence clusters, and product learning; support consumes routed cases.
 - App/Game Design owns product behavior; `review-product-analytics-instrumentation` owns event/identity implementation; incident and safety owners retain their authority.
 
 ## Completion check
 
 Complete only when every material contact reason has a trustworthy source, evidence contract, route, authority, timer, response, safe action or handoff, verification, appeal/reopen behavior, metric, and product-feedback owner—and the whole system can degrade, stop, recover, and update customers without a routine manual operating gap.
+
+## Single-case depth
+
+For closing **one** support case with authority and proof, open
+[references/resolve-one-case/METHOD.md](references/resolve-one-case/METHOD.md).
+The listing skill remains **operate support** as the user job.
+

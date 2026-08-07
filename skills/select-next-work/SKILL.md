@@ -29,9 +29,9 @@ naming the ticket, run **one tick** of this method.
 
 ### composition (no meta-router)
 
-- `work-coordination-standard` — portable ledger semantics
+- `docs/policies/work-coordination-standard/` — portable ledger semantics
 - `drive-to-delivery` — **inside** each claimed bounded Work (this package does not close that objective)
-- `delivery-standard` / `evidence-and-claims-standard` — when ticks claim delivery outcomes
+- `docs/policies/delivery-standard/` / `docs/policies/evidence-and-claims-standard/` — when ticks claim delivery outcomes
 - `run-open-product-betterment` — only when the continuous job is specifically multi-aspect product betterment (compose; do not merge packages)
 
 ## Output

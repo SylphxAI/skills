@@ -48,11 +48,11 @@ Produce a **Critical Analysis Brief**:
 
 ## Boundaries
 
-- This skill diagnoses and challenges; `decision-quality-standard` owns final
+- This skill diagnoses and challenges; `docs/policies/decision-quality-standard/` owns final
   material option selection and durable decision tradeoffs.
 - Use `design-space-exploration` to generate materially different solution
   options before selection.
-- Use `evidence-and-claims-standard` to adjudicate whether an individual claim
+- Use `docs/policies/evidence-and-claims-standard/` to adjudicate whether an individual claim
   is supportable.
 - Use a domain skill for technical, commercial, security, legal, or product
   requirements.

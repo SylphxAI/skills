@@ -127,9 +127,9 @@ Reject or redesign a portfolio that:
 
 ## Routing boundaries
 
-- `engineering-standard` owns Capability, module, contract, state, process,
+- `docs/policies/engineering-standard/` owns Capability, module, contract, state, process,
   cell, deployment and trust architecture inside and between implementations.
-- `commercial-decision-standard` owns accepted pricing, packaging, SKU,
+- `docs/policies/commercial-decision-standard/` owns accepted pricing, packaging, SKU,
   entitlement, profit-center and internal-settlement decisions.
 - `compose-product-program` owns the cross-domain build-to-run delivery
   graph for one selected product program, not the portfolio's product-unit
@@ -138,7 +138,7 @@ Reject or redesign a portfolio that:
   has resolved which products remain independently owned.
 - `design-saas-web-platform`, app/game blueprints and other product
   procedures own each product's promise and experience.
-- `build-distribution-readiness` and `delivery-standard` own release and
+- `build-distribution-readiness` and `docs/policies/delivery-standard/` own release and
   externally observed delivery evidence.
 
 ## Completion check

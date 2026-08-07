@@ -34,10 +34,10 @@ adoption** cycle—not a permanent dual instruction stack.
 - **Out:** unrelated product features; forever dual AGENTS layouts
 
 ### 4. Implement
-- When landing source: compose `source-authoring-standard` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).
+- When landing source: apply constraints from `docs/policies/source-authoring-standard/` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).
 - Install/update required baseline surfaces on the owning paths
 - Prefer hard-cut of predecessor instruction layouts (see `execute-hard-cutover`)
-- Compose policy Skills (`engineering-standard`, `project-manifest-standard`, .)
+- Compose policy Skills (`docs/policies/engineering-standard/`, `docs/policies/project-manifest-standard/`, .)
   as constraints—do not copy entire standards into the product repo
 
 ### 5. Deliver / verify

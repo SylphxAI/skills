@@ -1,4 +1,0 @@
-interface:
-  display_name: "Risk Matched Verification Standard"
-  short_description: "Policy: verification depth matched to failure risk—evidence class, gates, residuals."
-  default_prompt: "Apply risk-matched-verification-standard constraints on the active task/workspace."

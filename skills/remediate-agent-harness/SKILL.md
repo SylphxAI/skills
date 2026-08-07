@@ -10,7 +10,7 @@ Read [references/learning-system-methods.md](references/learning-system-methods.
 before choosing the intervention and evaluation design.
 
 ## Method
-- When landing source: compose `source-authoring-standard` — **L1** batch admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome.
+- When landing source: apply constraints from `docs/policies/source-authoring-standard/` — **L1** batch admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome.
 
 1. Define the recurring outcome, affected population, impact, baseline rate,
    observation window, and evidence quality. Separate one incident from a
