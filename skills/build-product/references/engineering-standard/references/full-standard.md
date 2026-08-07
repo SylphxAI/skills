@@ -456,7 +456,7 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
   narrowing without exhaustive handling, and retries that discard the final
   failure. Treat test-assertion weakening as a policy-grade diff, not a fix —
   Engineering owns whether the repair evidence is valid, while
-  [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md)
+  [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/ci-admission-standard/references/full-standard.md)
   "Reward-hacking and execution-trace integrity" owns candidate-trace review
   and the heightened lane for gate-weakening diffs.
 - **Schema-derived surfaces**: derive validators, types, interface descriptions, clients,
@@ -483,7 +483,7 @@ split, verify, and recover. Prefer these patterns when they fit the repo:
   without weakening required checks. Affected selection is a presubmit *speed*
   optimization safe only with a postsubmit full-suite backstop and a complete
   dependency graph; it is never a correctness or security control. See
-  [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-admission-standard/references/full-standard.md) for the two-tier model,
+  [`ci-admission-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/ci-admission-standard/references/full-standard.md) for the two-tier model,
   the never-skip global gate
   classes, and merge-queue flake/quarantine signal integrity.
 
@@ -853,7 +853,7 @@ for high-blast-radius distributed/concurrent/stateful behavior where ordinary
 property/model tests cannot explore enough interleavings. Keep them optional for
 CRUD/UI glue.
 Which rungs are blocking vs continuous follows the two-tier model in
-[`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md).
+[`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineer-agent-context/references/agent-first-development-standard/references/full-standard.md).
 
 ## Naming
 

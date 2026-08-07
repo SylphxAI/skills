@@ -13,15 +13,15 @@ decision records, configuration, experiments, gates, and follow-up work.
 
 This standard composes with:
 
-- [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/documentation-standard/references/full-standard.md) for ADR altitude
+- [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard/references/full-standard.md) for ADR altitude
   and source-of-truth rules;
-- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md) for the
+- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/project-manifest-standard/references/full-standard.md) for the
   repo-local current-state manifest;
-- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for release and production
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/delivery-standard/references/full-standard.md) for release and production
   proof;
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineer-agent-context/references/agent-first-development-standard/references/full-standard.md)
   for no-human gates, risk lanes, and recovery.
-- [`decision-quality-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/decision-quality-standard/references/full-standard.md) for the canonical
+- [`decision-quality-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/record-structured-deliberation/references/decision-quality-standard/references/full-standard.md) for the canonical
   decision precedence, risk, reversibility, evidence, and option-value kernel.
 - [``compose-product-portfolio`](https://github.com/SylphxAI/skills/blob/main/skills/design-product/../compose-product-portfolio/SKILL.md)
   when the requested artifact classifies a multi-product portfolio, selects

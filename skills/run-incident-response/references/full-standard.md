@@ -13,7 +13,7 @@ gate can check, not a ceremony a human reads once and forgets.
 
 This standard composes with:
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineer-agent-context/references/agent-first-development-standard/references/full-standard.md)
   for risk lanes and recovery semantics (source revert / runtime rollback /
   forward-fix) — cited here, not restated;
 - [`honest local vs landed vs live claims.md`](https://github.com/SylphxAI/skills/blob/main/skills/honest local vs landed vs live claims/references/full-standard.md) for production

@@ -19,17 +19,17 @@ compact constitution projections, and unavoidable transport adapters.
 
 This standard composes with:
 
-- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/project-manifest-standard/references/full-standard.md) for repo
+- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/project-manifest-standard/references/full-standard.md) for repo
   identity, lifecycle, boundaries, and rollout packets;
-- [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) for
+- [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/author-skill/references/instruction-evolution-standard/references/full-standard.md) for
   static instruction updates and multi-repository migration contracts;
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineer-agent-context/references/agent-first-development-standard/references/full-standard.md)
   for no-human gates, CI admission, merge queue, preview policy, runners, and
   package-release controls;
-- [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/ci-runner-capacity-standard/references/full-standard.md) for
+- [`ci-runner-capacity-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/ci-runner-capacity-standard/references/full-standard.md) for
   runner pickup SLOs, queue classification, and capacity/backpressure signals;
-- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for shipped-state proof;
-- [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/commercial-decision-standard/references/full-standard.md) for
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/delivery-standard/references/full-standard.md) for shipped-state proof;
+- [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/compose-product-portfolio/references/commercial-decision-standard/references/full-standard.md) for
   pricing, roadmap, and business-direction decisions.
 
 ## Control-plane layers
@@ -66,7 +66,7 @@ New repositories start from binding Skills and enterprise-profile defaults:
 ### Existing repositories
 
 Do not manually redesign every repository. Use the reconcile loop from
-[`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md):
+[`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/author-skill/references/instruction-evolution-standard/references/full-standard.md):
 
 ```text
 central audit
@@ -276,7 +276,7 @@ Only hard `DRIFT` artifact-identity findings should become generated packet
 issues by default; `REVIEW` findings (grandfathered ADR numbers,
 already-applied sequential migration filenames) follow the DRIFT/REVIEW
 handling in
-[`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md).
+[`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/author-skill/references/instruction-evolution-standard/references/full-standard.md).
 
 ### Commercial decisions
 

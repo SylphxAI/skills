@@ -16,13 +16,13 @@ adapters; named systems below are the current profile projection.
 
 This standard composes with:
 
-- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/agent-first-development-standard/references/full-standard.md)
+- [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineer-agent-context/references/agent-first-development-standard/references/full-standard.md)
   for autonomous admission, risk lanes, preview policy, and merge queue;
-- [`enterprise-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/enterprise-control-plane-standard/references/full-standard.md)
+- [`enterprise-control-plane-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/enterprise-control-plane-standard/references/full-standard.md)
   for GitHub checks, Sylphx Platform runners, status publishers, and portfolio
   reconciliation;
-- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/delivery-standard/references/full-standard.md) for truthful done states;
-- [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/instruction-evolution-standard/references/full-standard.md) for
+- [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/delivery-standard/references/full-standard.md) for truthful done states;
+- [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/author-skill/references/instruction-evolution-standard/references/full-standard.md) for
   multi-repository migrations and ratchets.
 
 ## Control-Plane Contract

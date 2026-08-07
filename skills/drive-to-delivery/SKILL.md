@@ -24,36 +24,28 @@ honestly blocked.
    When mutating source, follow `references/source-authoring-standard/` three layers: **L1** batch unblocked high-value work for this objective; **L2** atomic valid commits; **L3** land via **one revert-safe complete PR outcome** per independent outcome (queue/squash unit).
 4. **Done:** claim only with evidence at the active delivery boundary (landed/live as required—not merely local green).
 
-### Progressive disclosure
-
-1. [references/full-standard.md](references/full-standard.md) — full execution method, startup, graph, evidence, completion.
-2. [references/tool-grounded-execution.md](references/tool-grounded-execution.md) — tool-grounded iteration, checkpoint, recovery, termination.
-3. [references/bounded-objective-closure-loop.md](references/bounded-objective-closure-loop.md) — explicit loop-engineering / full-scope closure for one objective.
-
-### composition (no meta-router)
-
-Open only packs that match the objective:
-
-- `../record-structured-deliberation/references/decision-quality-standard/` — framing, alternatives, claims
-- `references/source-authoring-standard/` — L1 batch / L2 atomic commits / L3 revert-safe PR outcomes
-- `references/delivery-standard/` — land/live done claims
-- `../synthesize-evidence-brief/references/evidence-and-claims-standard/` — proof strength
-- `../build-product/references/engineering-standard/` / `../select-dependency-versions/references/technology-stack-profile/` — when implementing software
-
 ## Output
 
 Progress on **one accepted objective at its delivery terminal**, with checkpoint/evidence in the primary job output—not a separate compliance report.
 
-
 ## Progressive disclosure
 
-- [references/full-standard.md](references/full-standard.md) — full drive method
-- [references/source-authoring-standard/](references/source-authoring-standard/) — L1/L2/L3 source landing
-- [references/delivery-standard/](references/delivery-standard/) — land/live done claims
-- [references/ci-admission-standard/](references/ci-admission-standard/) · [references/ci-runner-capacity-standard/](references/ci-runner-capacity-standard/)
-- [references/parallel-change-integration-standard/](references/parallel-change-integration-standard/)
-- Related jobs: `bound-request-scope`, `pursue-product-objective`
+1. [references/full-standard.md](references/full-standard.md) — full execution method, startup, graph, evidence, completion.
+2. [references/tool-grounded-execution.md](references/tool-grounded-execution.md) — tool-grounded iteration, checkpoint, recovery, termination.
+3. [references/bounded-objective-closure-loop.md](references/bounded-objective-closure-loop.md) — explicit loop-engineering / full-scope closure for one objective.
+4. [references/autonomous-execution-standard/](references/autonomous-execution-standard/) — multi-step execution graphs and completion discipline for non-trivial objectives.
+5. [references/source-authoring-standard/](references/source-authoring-standard/) · [references/delivery-standard/](references/delivery-standard/) — source landing and land/live done claims.
+6. [references/ci-admission-standard/](references/ci-admission-standard/) · [references/ci-runner-capacity-standard/](references/ci-runner-capacity-standard/) · [references/parallel-change-integration-standard/](references/parallel-change-integration-standard/)
 
+### Composition (no meta-router)
+
+Open only packs that match the objective:
+
+- `../record-structured-deliberation/references/decision-quality-standard/` — framing, alternatives, claims
+- `../record-structured-deliberation/references/sota-execution-standard/` — SOTA end-state selection when the objective is non-trivial
+- `../synthesize-evidence-brief/references/evidence-and-claims-standard/` — proof strength
+- `../build-product/references/engineering-standard/` / `../select-dependency-versions/references/technology-stack-profile/` — when implementing software
+- Related jobs: `bound-request-scope`, `pursue-product-objective`
 
 ## Boundaries
 

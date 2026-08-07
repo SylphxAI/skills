@@ -1,4 +1,12 @@
-# Risk-Matched Verification Standard
+# frontier-verification-standard (canonical body)
+
+**Authority:** binding constraint pack owned by `skills/build-product/references/frontier-verification-standard` in `SylphxAI/skills` (not a listing skill).
+
+Author here; do not maintain a second prose SSOT.
+
+---
+
+# Frontier Verification Standard
 
 ## Purpose
 
@@ -14,9 +22,7 @@ This standard composes with:
   for risk lanes, admission manifests, the active delivery profile's integration
   serializer, postsubmit proof, and recovery;
 - [`engineering-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/build-product/references/engineering-standard/references/full-standard.md) for pure cores,
-  Effect, testing ladder, observability, state-machine correctness, and the
-  multidimensional
-  [verification coverage model](../../engineering-standard/references/verification-coverage-model.md);
+  Effect, testing ladder, observability, and state-machine correctness, and the Quality North Star;
 - [`agent-native-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineer-agent-context/references/agent-native-standard/references/full-standard.md) "AI Agents" for AI
   evals, tracing, and guardrails;
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/delivery-standard/references/full-standard.md) for deploy proof and
@@ -26,70 +32,19 @@ This standard composes with:
 
 ## Core Rule
 
-Verification depth is targeted by failure model, residual uncertainty, and
-blast radius. It is not a universal
+Frontier verification is targeted by blast radius. It is not a universal
 presubmit tax and not a replacement for the active delivery profile's admission
 and integration controls, postsubmit proof, deploy proof, or recovery.
-
-Start from the coverage model's material claims and uncovered failure classes.
-This standard selects advanced, expensive, probabilistic, or live-dependent
-evidence only where the ordinary deterministic suite leaves a plausible
-decision-changing residual. It does not create a second coverage authority.
-
-Do not attempt to eliminate every logically imaginable failure. A failure mode
-enters the blocking proof plan only when it is plausible under the declared
-environment, material to the claim or floor, and capable of changing the
-action, terminal verdict, or risk treatment. Claims remain conservative, but
-evidence acquisition stops when more information is non-decision-changing or a
-safe reversible action with faster feedback dominates it.
-
-“Risk-matched” describes evidence selection, not a maturity or market-rank
-claim. This standard never proves that a system is frontier, SOTA, best, or
-latest merely because it uses advanced verification methods.
 
 Use this selection matrix:
 
 | Surface | Required evidence |
 | --- | --- |
-| Ordinary deterministic local behavior with low blast radius and a reversible change | Narrow unit or integration proof that exercises the changed claim; no simulation, canary, independent review, or broad evidence programme by default |
 | Distributed protocols, queues, locks, ledgers, billing, permissions, durable agent runtimes, irreversible workflows | Property/model tests first; deterministic simulation testing when interleavings, faults, or long-running behavior dominate risk |
 | Public API/tool/event/package contracts, generated clients, schema-derived surfaces | Spec/contract gate from the schema source of truth, generated artifact freshness, compatibility proof |
 | AI product behavior, model/provider routing, agent workflows, prompt/tool policies | Versioned capability/substitution eval manifest, thresholded status, traces, drift budgets, safety/privacy checks, failure examples, requalification and recovery |
 | Runtime behavior with material residual uncertainty that cannot be reproduced credibly before exposure | Short automated canary or progressive analysis with declared hypothesis, SLO/error-budget guardrails, and automatic promote/pause/rollback |
 | Local branch/stack/conflict authoring | Optional change-centric VCS experiment; final delivery conforms to the active delivery profile |
-
-Start with the least-cost decisive evidence for the declared failure model.
-Escalate only while a material residual remains unresolved and the next method's
-expected risk reduction exceeds its delay, compute, integration, and
-opportunity cost. Advanced verification is a targeted instrument, not a maturity
-ritual.
-
-## Verification non-interference
-
-A verification, soak, benchmark, or evidence-collection task does not acquire
-authority over unrelated delivery merely because a stable sample would be
-convenient.
-
-- Bind evidence to an exact immutable artifact, deployment, cohort, cell, or
-  replay corpus.
-- When time-dependent observation remains necessary, pin or isolate that subject
-  while normal delivery continues. Prefer a preview, canary, dedicated cell, or
-  recorded replay over freezing the shared production lane.
-- Treat a missing isolation or pinned-deployment capability as an owning product
-  gap. Do not hide it with a local daemon that repeatedly restores shared
-  configuration.
-- Long observation is read-only by default and belongs in durable monitoring or
-  a deferred Work subscription, not a resident agent session that mutates policy
-  to keep its sample alive.
-- If a newer deployment invalidates an unisolated sample, restart or mark that
-  sample incomplete; do not revert other owners' delivery state.
-
-A shared delivery hold is justified only when continued delivery itself creates
-a plausible material hazard that cannot be bounded by isolation. It requires
-explicit effect authority, the smallest affected project/environment/cell,
-owner-visible impact, a hard maximum expiry that does not renew by default,
-recovery or rollback, and an auditable release. Sample continuity, benchmark
-convenience, or one Work's completion never satisfies this predicate.
 
 ## Deterministic Simulation Testing
 
@@ -197,9 +152,28 @@ the analysis verdict or an explicit signed exception with expiry.
 When no repo-local telemetry/canary contract schema exists, resolve the active
 telemetry-contract and exception-policy schemas through the binding profile.
 
-Source-authoring experiments and VCS adapters remain owned by the Source
-Authoring and Parallel Change Integration standards. This verification
-standard consumes their exact candidate; it does not select or govern a VCS.
+## Change-Centric VCS Watch Policy
+
+The active delivery profile owns the enterprise source and audit adapter.
+Change-centric authoring tools are allowed only when they export an ordinary
+candidate into that profile and preserve exact-candidate admission, provenance,
+serialization, and recovery.
+
+Under the current GitHub delivery profile, examples of allowed experiments are:
+
+- local Jujutsu authoring for stacked diffs or conflict management;
+- local branch/stack manipulation that exports ordinary Git branches and PRs;
+- prototype tooling that improves the active profile's stack metadata.
+
+Forbidden without a successor delivery profile and migration ADR:
+
+- bypassing or replacing the active profile's change-admission surface or
+  integration serializer;
+- treating an identity outside the active profile's provenance contract as
+  release provenance;
+- requiring downstream repositories to adopt a new VCS;
+- hiding conflicts from the active profile's required admission status or
+  integration serializer.
 
 ## Adoption
 
@@ -221,11 +195,11 @@ Until then, these methods are `new-default` or `optional-adoption`.
 
 | Rule ID | Check |
 | --- | --- |
-| `risk-ver-01` | Strongest relevant subset applied |
-| `risk-ver-02` | Facts in schema/test/ADR homes |
-| `risk-ver-03` | Proof layers separated |
-| `risk-ver-04` | Unknown authority fails closed |
-| `risk-ver-05` | Tradeoffs owned |
+| `frontier-ver-01` | Strongest relevant subset applied |
+| `frontier-ver-02` | Facts in schema/test/ADR homes |
+| `frontier-ver-03` | Proof layers separated |
+| `frontier-ver-04` | Unknown authority fails closed |
+| `frontier-ver-05` | Tradeoffs owned |
 
 - [ ] Full body obligations reviewed for applicability.
 - [ ] Residual gaps have owner and follow-up.
