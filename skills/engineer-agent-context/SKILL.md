@@ -64,6 +64,14 @@ Create a **Context and Memory Contract** with:
   correctness, and give each an appropriate consent and deletion contract.
 - Measure decision utility and error, not retrieval volume or context length.
 
+
+## Progressive disclosure
+
+- [references/agent-first-development-standard/](references/agent-first-development-standard/) — open when this topic applies
+- [references/agent-native-standard/](references/agent-native-standard/) — open when this topic applies
+- [references/context-and-memory-methods.md](references/context-and-memory-methods.md) — open when needed for depth
+- [references/prompt-architecture/](references/prompt-architecture/) — open when this topic applies
+
 ## Boundaries
 
 - Use `design-prompt-architecture` for instruction hierarchy, skill metadata, and

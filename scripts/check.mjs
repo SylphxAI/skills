@@ -158,7 +158,7 @@ function validateCatalogBudget(errors, skillFolders) {
   }
   if (descChars > CATALOG_DESC_SOFT_MAX) {
     errors.push(
-      `catalog description sum ${descChars} exceeds Codex ~${CATALOG_DESC_SOFT_MAX} char listing class; shorten or remove skills`,
+      `catalog description sum ${descChars} exceeds Codex ~${CATALOG_DESC_SOFT_MAX} char listing class; shorten descriptions or retire packages with semantic evidence (not count targets)`,
     );
   }
 }

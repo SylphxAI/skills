@@ -46,11 +46,17 @@ Produce a **Critical Analysis Brief**:
 - **Conclusion and calibrated confidence**
 - **What would change the conclusion**
 
+
+## Progressive disclosure
+
+- [references/bayesian-evidence-updates.md](references/bayesian-evidence-updates.md) — open when needed for depth
+- [references/critical-analysis-method.md](references/critical-analysis-method.md) — open when needed for depth
+
 ## Boundaries
 
 - This skill diagnoses and challenges; `../record-structured-deliberation/references/decision-quality-standard/` owns final
   material option selection and durable decision tradeoffs.
-- Use `design-space-exploration` to generate materially different solution
+- Use design exploration depth under `design-product` when relevant to generate materially different solution
   options before selection.
 - Use `../synthesize-evidence-brief/references/evidence-and-claims-standard/` to adjudicate whether an individual claim
   is supportable.

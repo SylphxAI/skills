@@ -69,6 +69,13 @@ learning state, and the graph must remain acyclic.
    artifacts with stable handoff IDs; never use feedback or inferred sentiment
    to gate its public request policy.
 
+
+## Progressive disclosure
+
+- [references/feedback-learning-loop.md](references/feedback-learning-loop.md) — open when needed for depth
+- [references/product-artifact-envelope.schema.json](references/product-artifact-envelope.schema.json) — open when needed for depth
+- [references/review-solicitation-policy/](references/review-solicitation-policy/) — open when this topic applies
+
 ## Boundaries
 
 - `review-social-media-operations` owns recurring official-account publishing, platform readback, listening, reply routing, crisis, impersonation, rights, recovery, and shutdown; this skill owns authorized feedback/review ingestion, public response evidence, product action, and close-loop.

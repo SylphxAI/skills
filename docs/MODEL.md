@@ -37,3 +37,9 @@ Installer copies `skills/*` only. Agent-needed depth must live under skill packa
 ## Constraint packs
 
 Not listings. One owner skill each; others link. No standards bag skill.
+
+## Dual-host authoring
+
+- **Listing-budget hosts:** keep `name`+`description` short and discriminating; measure aggregate description size; front-load job language; run near-miss checks. Soft capacity may constrain description characters—not job existence.
+- **RAG / large catalogs:** same descriptions as retrieval keys; do not dump foreign skill ids into bodies for routing; put domain maps in `references/INDEX.md` and open one pack at a time.
+- **Every reference tree** under a skill should be reachable from that skill's body with an explicit when-to-open cue.

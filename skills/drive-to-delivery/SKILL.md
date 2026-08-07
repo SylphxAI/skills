@@ -34,7 +34,7 @@ honestly blocked.
 
 Open only packs that match the objective:
 
-- `../synthesize-evidence-brief/../record-structured-deliberation/references/decision-quality-standard/` — framing, alternatives, claims
+- `../record-structured-deliberation/references/decision-quality-standard/` — framing, alternatives, claims
 - `references/source-authoring-standard/` — L1 batch / L2 atomic commits / L3 revert-safe PR outcomes
 - `references/delivery-standard/` — land/live done claims
 - `../synthesize-evidence-brief/references/evidence-and-claims-standard/` — proof strength

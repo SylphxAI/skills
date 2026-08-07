@@ -1,3 +1,5 @@
+> **Historical / non-normative.** Live model: `docs/MODEL.md` and `skills/author-skill`. Snapshot counts in this file are stale; do not reimpose hard skill-count caps.
+
 # Catalog listing-budget policy
 
 ## Purpose

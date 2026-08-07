@@ -89,6 +89,12 @@ Produce a **Requirements Contract** containing:
 - Keep requirements, architecture decisions, work items, tests, and observed
   delivery as linked artifacts with distinct owners.
 
+
+## Progressive disclosure
+
+- [references/requirements-method.md](references/requirements-method.md) — open when needed for depth
+- [references/specification-control-plane-standard/](references/specification-control-plane-standard/) — open when this topic applies
+
 ## Boundaries
 
 - `research-user-needs` and whole-product blueprint Skills own direct

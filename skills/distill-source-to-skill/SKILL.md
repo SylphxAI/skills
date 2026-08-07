@@ -100,6 +100,11 @@ Rollback point:
 Residual risks:
 ```
 
+
+## Progressive disclosure
+
+- [references/source-to-skill-patterns.md](references/source-to-skill-patterns.md) — open when needed for depth
+
 ## Boundaries
 
 - Do not invent details from inaccessible documents, private repos, audio, video, screenshots, or links.

@@ -33,6 +33,14 @@ Read [references/full-standard.md](references/full-standard.md) only for extende
 - "Working as designed" is not resolution if users are still harmed.
 - Never invent live metrics; report telemetry gaps.
 
+
+## Progressive disclosure
+
+- [references/active-incident-record.schema.json](references/active-incident-record.schema.json) — open when needed for depth
+- [references/full-standard.md](references/full-standard.md) — open when needed for depth
+- [references/postmortem-record.schema.json](references/postmortem-record.schema.json) — open when needed for depth
+- [references/pre-v3-entry-method.md](references/pre-v3-entry-method.md) — open when needed for depth
+
 ## Output
 
 Incident record · mitigation evidence · communications · follow-ups

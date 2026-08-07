@@ -45,6 +45,11 @@ Produce a **Probabilistic Forecast Record**:
 - **Resolution and learning** — outcome, score, calibration context, failure
   analysis, and reusable update.
 
+
+## Progressive disclosure
+
+- [references/probabilistic-forecasting-methods.md](references/probabilistic-forecasting-methods.md) — open when needed for depth
+
 ## Boundaries
 
 - Use ``analyze-critically` for confidence in a present explanation rather than a

@@ -112,6 +112,14 @@ adapters for channels outside the declared audience.
 - Do not create product assets, choose positioning, or redesign the product to
   make a distribution matrix appear complete; record the owning handoff.
 
+
+## Progressive disclosure
+
+- [references/cli-and-package-distribution.md](references/cli-and-package-distribution.md) — open when needed for depth
+- [references/desktop-and-pc-release-readiness.md](references/desktop-and-pc-release-readiness.md) — open when needed for depth
+- [references/distribution-channel-matrix.md](references/distribution-channel-matrix.md) — open when needed for depth
+- [references/release-communication.md](references/release-communication.md) — open when needed for depth
+
 ## Output contract
 
 Produce one **Software Distribution Contract and Distribution Evidence Pack**:

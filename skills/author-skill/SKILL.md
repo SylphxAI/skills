@@ -142,12 +142,26 @@ Also useful depth under this package:
 - Generic policy essays with no executable job
 - Keeping a hollow shell with no agent gap
 
+## Dual-host notes
+
+- Listing-budget hosts: short discriminating descriptions; near-miss testing; do not grow descriptions into keyword soup.
+- RAG hosts: same job descriptions; bodies must not rely on neighbour-skill keyword dumps for selection; INDEX mega-ref owners.
+- Installed reference paths must be reachable from the owner body with when-to-open language.
+
 ## Validate in this repo
 
 1. Frontmatter `name` equals folder id
 2. Local links resolve
 3. `npm run build:catalog && npm test`
 4. Smoke: description would select/retrieve for the right ask and abstain on near-misses
+
+
+## Progressive disclosure
+
+- [references/checklist.md](references/checklist.md) — open when needed for depth
+- [references/industry-sources.md](references/industry-sources.md) — open when needed for depth
+- [references/instruction-evolution-standard/](references/instruction-evolution-standard/) — open when this topic applies
+- [references/pre-v3-entry-method.md](references/pre-v3-entry-method.md) — open when needed for depth
 
 ## Output
 

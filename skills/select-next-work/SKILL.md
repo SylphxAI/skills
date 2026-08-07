@@ -38,6 +38,12 @@ naming the ticket, run **one tick** of this method.
 
 A **bounded tick report** plus durable Work/claim/checkpoint effects when authority surfaces exist.
 
+
+## Progressive disclosure
+
+- [references/full-standard.md](references/full-standard.md) — open when needed for depth
+- [references/work-coordination-standard/](references/work-coordination-standard/) — open when this topic applies
+
 ## Boundaries
 
 - Grants no deploy or credential capabilities.

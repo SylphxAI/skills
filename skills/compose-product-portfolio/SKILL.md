@@ -81,6 +81,12 @@ remain with their owning product and matching Standards or Procedures.
    alternatives, migration only when requested, and exact handoffs to
    commercial, engineering, lifecycle and delivery owners.
 
+
+## Progressive disclosure
+
+- [references/commercial-decision-standard/](references/commercial-decision-standard/) — open when this topic applies
+- [references/composable-product-portfolio-method.md](references/composable-product-portfolio-method.md) — open when needed for depth
+
 ## Output contract
 
 Produce one **Composable Product Portfolio Contract** containing:

@@ -63,6 +63,12 @@ Create a **Deliberation Record** with:
 - Do not keep deliberating after a decision owner has enough evidence to act;
   record residual dissent instead.
 
+
+## Progressive disclosure
+
+- [references/decision-quality-standard/](references/decision-quality-standard/) — open when this topic applies
+- [references/deliberation-methods.md](references/deliberation-methods.md) — open when needed for depth
+
 ## Boundaries
 
 - Use `design-space-exploration` for generic brainstorming and generation of

@@ -172,6 +172,15 @@ Reject or redesign a program that:
 - treats a proposal, generated artifact, or self-reported status as independent delivery evidence, or lets automation exceed its declared authority;
 - claims completion without implementation acceptance evidence, release identity, external authority state where required, and observed runtime/store state.
 
+
+## Progressive disclosure
+
+- [references/ecosystem-certification-program.md](references/ecosystem-certification-program.md) — open when needed for depth
+- [references/product-artifact-envelope.schema.json](references/product-artifact-envelope.schema.json) — open when needed for depth
+- [references/product-distribution-and-release.md](references/product-distribution-and-release.md) — open when needed for depth
+- [references/product-globalization-assets-and-sdks.md](references/product-globalization-assets-and-sdks.md) — open when needed for depth
+- [references/product-lifecycle-matrix.md](references/product-lifecycle-matrix.md) — open when needed for depth
+
 ## Output contract
 
 Produce one **Product Program Manifest** containing:

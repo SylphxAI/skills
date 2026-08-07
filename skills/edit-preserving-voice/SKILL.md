@@ -34,6 +34,11 @@ Complete the substantive request first, then apply the voice layer. Do not annou
 
 If the request is detector evasion or fake authorship, refuse that part and offer a quality-focused edit that improves clarity, specificity, attribution, and voice honestly.
 
+
+## Progressive disclosure
+
+- [references/voice-preserving-rules.md](references/voice-preserving-rules.md) — open when needed for depth
+
 ## Output format
 
 ### Default

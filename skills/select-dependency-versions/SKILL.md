@@ -37,6 +37,14 @@ Never pick versions from model memory, stale templates, or old examples.
 
 Chosen versions · sources · commands run · residuals
 
+
+## Progressive disclosure
+
+- [references/registry-resolution.md](references/registry-resolution.md) — how to query registries
+- [references/runtime-channels.md](references/runtime-channels.md) — runtime release channels
+- [references/technology-stack-profile/](references/technology-stack-profile/) — stack profile constraints when selecting versions for this fleet
+- [references/pre-v3-entry-method.md](references/pre-v3-entry-method.md) — archived depth only if the thinner entry is insufficient
+
 ## Archived depth
 
 If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).

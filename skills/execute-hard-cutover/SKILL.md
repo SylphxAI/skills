@@ -35,6 +35,12 @@ Run a hard cutover when a predecessor implementation must stop owning a path and
 - Predecessor retired or explicitly time-boxed with kill criteria
 - Evidence for backfill + cut + residual list
 
+
+## Progressive disclosure
+
+- [references/cutover-rules.md](references/cutover-rules.md) — open when needed for depth
+- [references/pre-v3-entry-method.md](references/pre-v3-entry-method.md) — open when needed for depth
+
 ## Output
 
 Cutover plan executed · evidence · residuals

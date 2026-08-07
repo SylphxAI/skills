@@ -93,6 +93,11 @@ on narrative status or stale proof.
 - Do not call a scaffold, plan, local diff, open pull request, merged change, or healthy process a completed cutover.
 - Do not weaken tests, fixtures, thresholds, or changed-file classification to make a slice advance.
 
+
+## Progressive disclosure
+
+- [references/architecture-convergence-patterns.md](references/architecture-convergence-patterns.md) — open when needed for depth
+
 ## Output format
 
 ```text

@@ -51,6 +51,11 @@ Produce a **Causal Inference Record**:
 - **Claim boundary** — supported causal statement, non-supported statements,
   transportability, and evidence that would change the conclusion.
 
+
+## Progressive disclosure
+
+- [references/causal-inference-methods.md](references/causal-inference-methods.md) — open when needed for depth
+
 ## Boundaries
 
 - Use `review-product-experiment` to design or audit a product A/B test,
