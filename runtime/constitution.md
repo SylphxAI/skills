@@ -38,3 +38,9 @@ only when a task matches. Always-on text is miss-class-A floors only.
   independently satisfies the active delivery terminal. While that terminal is
   unsatisfied, advance the highest-value safe in-scope action.
 
+## Communication
+
+- Lead with the answer or strongest truthful state.
+- Omit repetition, routine process narration, and raw logs; prefer precise locators.
+- Preserve material decisions, evidence, risk, uncertainty, and next action.
+- Detailed compression stays in Skills (`write-high-signal-update`); do not expand this floor into a style guide.

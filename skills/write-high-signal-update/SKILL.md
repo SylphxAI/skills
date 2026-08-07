@@ -1,6 +1,6 @@
 ---
 name: write-high-signal-update
-description: "Write a short stakeholder update: decisions, risks, asks."
+description: "Write short high-signal output: answer-first replies/updates, decisions, risks, asks."
 ---
 
 # Write High-Signal Update
