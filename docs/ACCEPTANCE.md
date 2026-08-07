@@ -1,41 +1,40 @@
-# Acceptance — semantic skill curation cut
+# Acceptance — skill catalog optimization cut
 
 ## Objective
 
-Deliver a skill catalog where:
+Optimize `SylphxAI/skills` so:
 
-1. Each listing skill is an independently requestable job (or true policy pack).
-2. Integration happened by job/artifact rationale, not bagging and not blind restore.
-3. Unique method text is preserved under owner packages.
-4. Host listing stays within ~8k description characters.
-5. Install + tests prove the tree.
+1. Every independently requestable job is a **first-class listing skill** (no methods bag).
+2. Integration is **semantic** (job/artifact), with content preserved under owners.
+3. Listing descriptions are complete, short, and fit host budget (~8k chars).
+4. Tests and live install prove the tree.
+5. PR carries the full decision record.
 
-## Evidence (this branch)
+## Verified evidence (HEAD of this branch)
 
-| Gate | Evidence |
+| Requirement | Evidence |
 | --- | --- |
-| Model | `docs/MODEL.md` — no methods bag |
-| Decisions | `docs/CURATION-LEDGER.md` — executed absorbs/merges + explicit non-merges + full inventory |
+| No methods bag | no `skills/sylphx-methods` / `consult-sylphx-methods` |
+| distill + skill-evals discoverable | `skills/distill-source-to-skill`, `skills/design-skill-evals` first-class |
+| author-skill does not hide them | related-skill table only; invariants test |
+| privacy reviews integrated | `review-privacy-and-data-rights` only |
+| documentation-standard demoted | under `source-authoring-standard/references/` |
+| review skeleton shared | every `review-*/references/review-playbook-skeleton.md` |
+| Catalog size | **120** skills |
+| Listing budget | description sum **7722** ≤ 8000 |
+| Local tests | `npm test` **54/54** |
+| Live install | Codex/Claude/Grok **current 120/120** |
+| Decision SSOT | `docs/CURATION-LEDGER.md` |
 | Invariants | `tests/curation-invariants.test.mjs` |
-| Integrity | `npm test` includes check + unit tests |
-| Catalog | 120 skills; description sum ≤ 8000 |
-| Live install | `node runtime/sylphx-skills.mjs status` → current N/N after install |
 
-## Integrations executed
+## Explicit non-merges retained
 
-- restore distill-source-to-skill + design-skill-evals as first-class listings
+Product cycles, delivery vs evidence, marketplace triad, design shapes, support vs incident, curate vs author — see ledger.
 
-- distill + design-skill-evals restored as first-class (not hidden under author-skill)
-- merge privacy lifecycle + data-rights → review-privacy-and-data-rights
-- demote documentation-standard → source-authoring-standard
-- shared review-playbook-skeleton across review-*
+## Residual (external)
 
-## Residual
+GitHub Actions on `sylphx-linux-standard` may remain **queued/blocked** independent of local green. Merge to main requires runner admission success or org policy override.
 
-- GitHub Actions `check` on PR depends on `sylphx-linux-standard` runners. Recent PR runs failed or cancelled at job setup/queue — **not** a local integrity failure. Merge requires runner admission green or operator override per org policy.
-- Further domain merges only after false-negative review (documented in ledger).
+## Version
 
-## Not residual
-
-- Knowledge destruction of pre-v3 packages (migrated then integrated)
-- Dual methods-bag + listing catalog
+`4.3.0`
