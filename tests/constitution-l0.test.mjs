@@ -13,6 +13,7 @@ test('constitution stays thin and miss-class-A', () => {
     'Done means delivered',
     'progressive disclosure',
     'Skills do not grant tools',
+    'Lead with the answer',
   ]) {
     assert.ok(constitution.includes(phrase), `missing ${phrase}`);
   }

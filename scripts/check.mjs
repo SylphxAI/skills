@@ -138,6 +138,7 @@ function validateRuntimeConstitution(errors) {
     'Done means delivered',
     'progressive disclosure',
     'Skills do not grant tools',
+    'Lead with the answer',
   ];
   for (const phrase of required) {
     if (!text.includes(phrase)) errors.push(`${location}: missing required L0 phrase: ${phrase}`);

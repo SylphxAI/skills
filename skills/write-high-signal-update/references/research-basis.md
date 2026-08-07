@@ -17,6 +17,11 @@ agent context engineering:
 - *Lost in the Middle* found that retrieval can degrade when relevant facts are
   buried inside long contexts. This supports front-loading the answer and
   material constraints, not repeating them throughout a document.
+- ISO 24495-1 plain-language principles (find, understand, use) align with
+  scannable answer-first writing for human readers. They inform accessibility of
+  agent prose but do not own agent context budgets, progressive disclosure, or
+  evidence/locator rules; those remain under this Skill. Do not treat the ISO
+  text as always-on policy or a separate Skill route.
 
 These sources inform the method; they do not create rigid sentence, paragraph,
 or token limits. Semantic completeness remains the stop condition.
@@ -100,3 +105,4 @@ Sources:
 - [Anthropic: The new rules of context engineering for Claude 5 generation models](https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models)
 - [Agent Skills specification](https://agentskills.io/specification)
 - [Liu et al.: Lost in the Middle](https://arxiv.org/abs/2307.03172)
+- [ISO 24495-1: Plain language — Part 1: Governing principles and guidelines](https://www.iso.org/standard/78907.html)
