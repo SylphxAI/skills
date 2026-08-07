@@ -1,7 +1,8 @@
 ---
 name: work-coordination-standard
-description: "Policy: portable work-ledger—claims, leases, checkpoints, handoff; runtime-agnostic."
+description: "Policy: portable work-ledger—claims, leases, checkpoints, handoff."
 ---
+
 # Work Coordination Standard
 
 Policy constraints—compose onto matching host jobs.

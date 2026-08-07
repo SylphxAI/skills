@@ -1,9 +1,11 @@
 ---
 name: review-accessibility-conformance-program
-description: "Review: accessibility conformance program design, evidence, residual risk."
+description: "Review accessibility conformance program design, evidence, residuals."
 ---
 
 # Review Accessibility Conformance Program Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Build an evidence-backed program that can support product decisions without
 turning a scanner result into a conformance claim.

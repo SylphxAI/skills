@@ -1,9 +1,11 @@
 ---
 name: review-marketplace-payouts
-description: "Review: marketplace payouts—eligibility, calc, holds, tax/compliance."
+description: "Review marketplace payouts—eligibility, calc, holds, tax/compliance."
 ---
 
 # Review Marketplace Payouts Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Use this skill to make marketplace payouts traceable, fair, supportable, and resilient to refunds or abuse.
 

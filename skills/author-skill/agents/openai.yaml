@@ -1,4 +1,4 @@
 interface:
   display_name: "Author Skill"
-  short_description: "Author/revise a Skill: job-shaped id, short description, method body, portable host rules."
-  default_prompt: "Author or update a Skill package for the requested job using author-skill."
+  short_description: "Create or revise a focused Agent Skill package"
+  default_prompt: "Author or revise a skill for a real recurring specialized job in this workspace."

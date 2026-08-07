@@ -1,6 +1,6 @@
 ---
 name: build-distribution-readiness
-description: "Build software distribution readiness: artifacts, install/upgrade/uninstall, channels, live readback evidence."
+description: "Build distribution readiness: artifacts, install/upgrade, channel readback."
 ---
 
 # Build Distribution Readiness
@@ -136,6 +136,3 @@ read, their freshness boundary, and the event that requires revalidation; a
 stale observation retracts the stronger claim to unknown. The pack does not
 imply undeclared channels or the whole product launch are complete.
 
-## Soft composition
-
-- When landing source: compose `source-authoring-standard` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).

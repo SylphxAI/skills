@@ -2,6 +2,7 @@
 name: ci-runner-capacity-standard
 description: "Policy: CI runner pools—fairness, isolation, scaling, queue pressure."
 ---
+
 # Ci Runner Capacity Standard
 
 Policy constraints—compose onto matching host jobs.

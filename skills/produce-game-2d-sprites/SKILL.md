@@ -1,6 +1,6 @@
 ---
 name: produce-game-2d-sprites
-description: "Produce engine-ready 2D game sprites/sheets: generate, chroma postprocess, loop QC, Keel pack paths."
+description: "Produce engine-ready 2D game sprites/sheets with QC."
 ---
 
 # Produce Game 2D Sprites
@@ -98,13 +98,8 @@ as required by each script.
 
 ### 6. Land
 
-When committing into a product repo, compose `source-authoring-standard`
+When committing into a product repo, compose atomic commits and a revert-safe PR outcome
 three layers (L1 batch → L2 atomic commits → L3 one revert-safe PR outcome).
-
-## Soft composition
-
-Load sibling depth only when the job expands: whole-game thesis, store/marketing
-captures, interface craft in product chrome, local web preview smoke.
 
 ## Provenance
 
@@ -116,3 +111,10 @@ Sylphx-native and Keel-aligned.
 
 Engine-ready asset paths, QC notes, residuals, and evidence of host tools used
 or gaps.
+
+## Absorbed depth
+
+- [references/modes-actions-bundles.md](references/modes-actions-bundles.md) — asset types, actions, bundles
+- [references/video-to-sprite-pipeline.md](references/video-to-sprite-pipeline.md) — optional video→sheet path
+
+Ship into title `assets/` for Keel packs; do not couple to foreign app-builder runtimes.

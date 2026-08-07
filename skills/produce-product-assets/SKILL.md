@@ -169,13 +169,13 @@ Use `artifactDigest` only on exact child files or sealed input references with
 
 ## Routing boundaries
 
-- `design-marketing-automation` owns channel strategy, message, campaign
+- marketing automation design owns channel strategy, message, campaign
   concepts, creative briefs, spend, publication policy, and performance loop.
-- `optimize-store-listing` owns listing narrative, metadata, asset request,
+- store listing work owns listing narrative, metadata, asset request,
   final selection/order, disclosures, and conversion experiment.
-- `build-distribution-readiness` owns upload/submission, certification,
+- distribution readiness work owns upload/submission, certification,
   rollout, withdrawal, and observed channel evidence.
-- `compose-product-program` owns planning and observed-state revisions of
+- program planning owns planning and observed-state revisions of
   the cross-domain dependency graph and composition index, not this pack.
 - `craft-product-interface` owns product-interface implementation and polish, not
   promotional capture or media production.

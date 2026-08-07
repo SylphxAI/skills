@@ -34,7 +34,7 @@ One semantic authority per fact:
 
 | Fact | Canonical home |
 | --- | --- |
-| Why a pricing, packaging, roadmap, ICP, or market-position decision was made | `docs/adr/` Commercial ADR |
+| Why a pricing, packaging, roadmap, ICP, or market-position decision was made | `history/adr/` Commercial ADR |
 | Current project commercial posture and where to find decisions | `project.manifest.json` optional `commercial` section |
 | Live billable prices, products, coupons, and subscriptions | Stripe or the repo's declared billing SSOT |
 | Entitlement rules and product capability gates | Code/schema/tests in the owning product |

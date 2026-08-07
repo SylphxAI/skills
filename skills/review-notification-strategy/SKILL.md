@@ -1,9 +1,11 @@
 ---
 name: review-notification-strategy
-description: "Review: notifications—channels, cadence, consent, fatigue, measurement."
+description: "Review notifications—channels, cadence, consent, fatigue, measure."
 ---
 
 # Review Notification Strategy Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Use this skill to make notifications useful enough to deserve attention.
 

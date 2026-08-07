@@ -1,9 +1,11 @@
 ---
 name: review-marketplace-trust-operations
-description: "Review: marketplace trust ops—detection, enforcement, appeals, evidence."
+description: "Review marketplace trust ops—detection, enforcement, appeals."
 ---
 
 # Review Marketplace Trust Operations Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Produce one **Marketplace Trust Operating Contract** that protects participants
 and market quality without making one opaque score the authority for visibility,

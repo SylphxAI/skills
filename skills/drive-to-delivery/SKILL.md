@@ -1,6 +1,6 @@
 ---
 name: drive-to-delivery
-description: "Drive one multi-phase engineering objective through land/live terminal evidence without re-prompt between phases."
+description: "Drive one multi-phase engineering objective to delivery-terminal."
 ---
 
 # Drive To Delivery
@@ -30,7 +30,7 @@ honestly blocked.
 2. [references/tool-grounded-execution.md](references/tool-grounded-execution.md) — tool-grounded iteration, checkpoint, recovery, termination.
 3. [references/bounded-objective-closure-loop.md](references/bounded-objective-closure-loop.md) — explicit loop-engineering / full-scope closure for one objective.
 
-### Soft composition (no meta-router)
+### composition (no meta-router)
 
 Open only packs that match the objective:
 

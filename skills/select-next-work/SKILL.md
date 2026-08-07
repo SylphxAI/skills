@@ -1,6 +1,6 @@
 ---
 name: select-next-work
-description: "Select/claim next high-value Work from evidence/ledger under WIP and backpressure."
+description: "Select/claim next high-value Work from evidence under WIP limits."
 ---
 
 # Select Next Work
@@ -27,7 +27,7 @@ naming the ticket, run **one tick** of this method.
 
 - [references/full-standard.md](references/full-standard.md) — full selection method, authority map, tick shape, backpressure.
 
-### Soft composition (no meta-router)
+### composition (no meta-router)
 
 - `work-coordination-standard` — portable ledger semantics
 - `drive-to-delivery` — **inside** each claimed bounded Work (this package does not close that objective)

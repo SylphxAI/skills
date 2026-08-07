@@ -1,6 +1,6 @@
 ---
 name: model-security-threats
-description: "Threat-model assets, adversaries, entry points, mitigations, residual risk."
+description: "Model security threats for a trust boundary before implementation."
 ---
 
 # Model Security Threats

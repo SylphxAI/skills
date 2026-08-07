@@ -1,7 +1,8 @@
 ---
 name: agent-first-development-standard
-description: "Policy: multi-agent delivery packets—attribution, collision scopes, machine acceptance."
+description: "Policy: multi-agent delivery packets and collision scopes."
 ---
+
 # Agent First Development Standard
 
 Policy constraints—compose onto matching host jobs.

@@ -1,7 +1,8 @@
 ---
 name: commercial-decision-standard
-description: "Policy: durable commercial decisions—pricing, packaging, entitlements, licensing."
+description: "Policy: durable commercial decisions—pricing, packaging, entitlements."
 ---
+
 # Commercial Decision Standard
 
 Policy constraints—compose onto matching host jobs.

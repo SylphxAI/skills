@@ -61,7 +61,7 @@ Do not require global tree-depth knowledge or a role-based fan-out quota.
 ## Source integration
 
 Follow Agent-Native Queued Trunk
-([ADR-20260803](../../../docs/adr/ADR-20260803-agent-native-queued-trunk.md)):
+([ADR-20260803](../../../docs/history/adr/ADR-20260803-agent-native-queued-trunk.md)):
 
 - one Work/outcome → one branch → one PR → Merge Queue → green main;
 - draft PR immediately; arbitrary commits inside the PR; no phase-per-PR;

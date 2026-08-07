@@ -1,8 +1,8 @@
 # Product Quality Loop Contract
 
 > **Boundary:** cycle method fields live here; multi-cycle continuity is
-> [betterment-engagement-runner.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/betterment-engagement-runner.md)
-> ([ADR-20260803](https://github.com/SylphxAI/skills/blob/main/docs/adr/ADR-20260803-betterment-outer-loop-vs-cycle-method.md)).
+> [betterment-engagement-runner.md](https://github.com/SylphxAI/skills/blob/main/../../../docs/history/docs-reference/betterment-engagement-runner.md)
+> ([ADR-20260803](https://github.com/SylphxAI/skills/blob/main/history/adr/ADR-20260803-betterment-outer-loop-vs-cycle-method.md)).
 
 ## Contents
 

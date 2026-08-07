@@ -12,7 +12,7 @@ Portable correctness floors from high-quality game builders, mapped to Keel.
 ## Input
 
 - Player-visible signs first (A = left on chase cam). Self-test before “controls
-  done” — `design-game` player-controls reference.
+  done” — whole-game design player-controls reference.
 - Map keys/pointers → **Intent**, not scattered global flags.
 - Keel: `.on_key` / `.on_intent`; host input Ports when needed.
 
@@ -42,5 +42,5 @@ Portable correctness floors from high-quality game builders, mapped to Keel.
 
 ## Genre acceptance
 
-After thesis exists, use `design-game` genre-acceptance-checks—not Phaser genre
+After thesis exists, use whole-game design genre-acceptance-checks—not Phaser genre
 files as runtime authority.

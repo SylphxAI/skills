@@ -1,9 +1,11 @@
 ---
 name: review-refund-and-support-flow
-description: "Review: refund/support money flows—policy, authority, ledger, customer path."
+description: "Review refund/support money flows—policy, authority, ledger path."
 ---
 
 # Review Refund And Support Flow Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Use this skill to handle refunds without damaging trust or letting abuse break the product.
 

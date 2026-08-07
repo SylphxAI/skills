@@ -1,9 +1,11 @@
 ---
 name: review-game-economy
-description: "Review: game economy—sources/sinks, balance, progression, abuse."
+description: "Review game economy—sources/sinks, balance, progression, abuse."
 ---
 
 # Review Game Economy Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Produce a **Game Economy Specification** whose fun, progression, scarcity,
 fairness, and monetization remain sustainable across launch, seasons, veteran

@@ -1,9 +1,11 @@
 ---
 name: review-product-experiment
-description: "Review: experiment design/readout—hypothesis, assignment, metrics, decisions."
+description: "Review experiment design/readout—hypothesis, assignment, metrics."
 ---
 
 # Review Product Experiment Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Turn a product uncertainty into a valid decision protocol. Prefer no experiment
 over an experiment that cannot change a decision or support its causal claim.

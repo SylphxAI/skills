@@ -20,7 +20,6 @@ Maximize durable user value, voluntary retention, commercial value, reach, trust
 
 “Modern” means immediate, legible, responsive, resilient, inclusive, globally adaptable, instrumented, and continuously improving. Visual novelty alone is not modernity.
 
-
 ## Core concept power (job method — not a separate standard)
 
 When designing the app, optimize for **one powerful core concept** that is:
@@ -41,7 +40,7 @@ When designing the app, optimize for **one powerful core concept** that is:
    release. Prefer hard-cut of obsolete concepts over permanent dual concepts.
 
 This is method inside **this job Skill**. Do not author a portfolio
-`*-standard` package for concept power; do not load always-on essays. Specialists
+`policy skill` package for concept power; do not load always-on essays. Specialists
 compose by artifact handoff while the core concept stays singular.
 
 ## Atomic boundary

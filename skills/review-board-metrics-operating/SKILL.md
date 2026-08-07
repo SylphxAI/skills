@@ -1,9 +1,11 @@
 ---
 name: review-board-metrics-operating
-description: "Review: board/metrics rhythm—definitions, cadence, decision use."
+description: "Review board/metrics rhythm—definitions, cadence, decision use."
 ---
 
 # Review Board Metrics Operating Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Turn source-backed operating metrics into decisions. Never turn missing data into
 plausible-looking board numbers.

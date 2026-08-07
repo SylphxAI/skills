@@ -1,6 +1,6 @@
 ---
 name: analyze-causal-inference
-description: "Estimate causal effects: identification, estimators, robustness, claim bounds."
+description: "Estimate causal effects: identification, estimators, robustness bounds."
 ---
 
 # Analyze Causal Inference

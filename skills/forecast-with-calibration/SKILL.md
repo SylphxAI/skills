@@ -1,6 +1,6 @@
 ---
 name: forecast-with-calibration
-description: "Produce calibrated probabilistic forecasts with base rates and scoring rules."
+description: "Produce calibrated probabilistic forecasts with base rates and ranges."
 ---
 
 # Forecast With Calibration

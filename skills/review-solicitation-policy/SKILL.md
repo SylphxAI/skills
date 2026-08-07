@@ -1,9 +1,11 @@
 ---
 name: review-solicitation-policy
-description: "Policy: public in-app review request—eligibility, native surfaces, cooldowns, anti star-steering."
+description: "Policy: in-app review solicitation—eligibility, cooldowns, anti-steering."
 ---
 
 # Review Solicitation Policy
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Policy constraints—compose onto matching host jobs.
 

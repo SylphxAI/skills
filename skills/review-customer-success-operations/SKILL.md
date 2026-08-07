@@ -1,9 +1,11 @@
 ---
 name: review-customer-success-operations
-description: "Review: customer success ops—health, playbooks, escalation, expansion."
+description: "Review customer success ops—health, playbooks, escalation, expansion."
 ---
 
 # Review Customer Success Operations Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Produce one **Customer Success Operating Contract** that turns promised customer outcomes into observable milestones, honest account states, proportionate interventions, scalable learning, and durable value. Optimize for customer success that predicts retention—not retention tactics that trap an unsuccessful customer.
 

@@ -1,7 +1,8 @@
 ---
 name: engineering-standard
-description: "Policy: engineering method—design, verification, change safety, repro-driven fixes."
+description: "Policy: engineering method—design, verification, change safety."
 ---
+
 # Engineering Standard
 
 Policy constraints—compose onto matching host jobs.
@@ -76,9 +77,6 @@ the security-design contract before or alongside implementation.
    matching Skills from metadata; the catalog has no dependency primitive, so
    do not invent one or restate these predicates in every procedure.
 
-## Soft composition
-
-- `execute-hard-cutover` when the job is a cutover (API, schema, package, stack, data, skill portfolio).
 
 ## Boundaries
 

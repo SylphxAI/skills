@@ -1,7 +1,9 @@
 ---
 name: distill-source-to-skill
-description: "Distill source material into one Skill package (SKILL.md)."
+description: "Distill docs/repos/notes into one installable Skill package."
 ---
+
+# distill-source-to-skill
 
 # Distill Source To Skill
 
@@ -132,4 +134,3 @@ A finished conversion:
 - includes positive and negative eval prompts;
 - passes structural validation for the target repository;
 - reports skipped validation honestly.
-

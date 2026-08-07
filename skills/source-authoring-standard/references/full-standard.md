@@ -30,7 +30,7 @@ ledgers. Do not require Work ids in public commits or PR bodies.
 ## Repository-native integration
 
 Ordinary agent-native path follows
-[ADR-20260803](../../../docs/adr/ADR-20260803-agent-native-queued-trunk.md)
+[ADR-20260803](../../../docs/history/adr/ADR-20260803-agent-native-queued-trunk.md)
 (**Agent-Native Queued Trunk**):
 
 - one Work = one complete outcome = one short-lived branch = one PR;

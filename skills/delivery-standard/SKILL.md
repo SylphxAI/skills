@@ -1,7 +1,8 @@
 ---
 name: delivery-standard
-description: "Policy: delivery honesty—source vs artifact vs desired/current vs live proof."
+description: "Policy: delivery honesty—source vs artifact vs live proof."
 ---
+
 # Delivery Standard
 
 Policy constraints—compose onto matching host jobs.

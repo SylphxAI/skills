@@ -1,6 +1,6 @@
 ---
 name: produce-game-2d-map-assets
-description: "Produce 2D map tiles/props packs: layered sheets, magenta prop extract, previews for title/Keel assets."
+description: "Produce 2D map tiles/props packs with extract/preview."
 ---
 
 # Produce Game 2D Map Assets
@@ -65,12 +65,7 @@ Read `--help` before inventing flags. Requires Pillow (and script-local deps).
 ### 5. Verify + deliver
 
 - Seam QC, alpha edges, naming, residual defects
-- Land with `source-authoring-standard` L1/L2/L3 when committing to a title repo
-
-## Soft composition
-
-Share art contracts with character/FX sheets when the same title style applies;
-whole-game world thesis stays in design-game; packaging stays Keel pack docs.
+- Land with atomic commits and a revert-safe PR outcome L1/L2/L3 when committing to a title repo
 
 ## Provenance
 
@@ -81,3 +76,11 @@ Sylphx-native and Keel-aligned.
 ## Output
 
 Tile/prop paths, preview composites, QC notes, residuals.
+
+## Absorbed depth (Keel-native)
+
+- [references/map-pipeline-selection.md](references/map-pipeline-selection.md)
+- [references/layered-map-contract.md](references/layered-map-contract.md)
+- [references/prop-pack-contract.md](references/prop-pack-contract.md)
+
+Default `engine_target` for Sylphx work is **Keel title assets + World geometry**, not Phaser/Godot/Unity.

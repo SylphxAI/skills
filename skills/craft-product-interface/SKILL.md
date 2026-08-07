@@ -1,6 +1,6 @@
 ---
 name: craft-product-interface
-description: "Craft one product interface or flow: premium non-generic UI, HUD/overlay, states, responsive, a11y."
+description: "Craft one product UI flow with states, a11y, verification."
 ---
 
 # Craft Product Interface
@@ -114,15 +114,16 @@ Reject or revise work that:
 
 ## Routing boundaries
 
-- Use `design-app` when deciding a whole app’s promise, workflows, capability portfolio, retention, commerce, social systems, and cross-platform architecture.
-- Use `design-game` when deciding a whole game’s player promise, mechanics, loops, progression, economy, challenge, social systems, and game feel. Use this skill for a bounded HUD, menu, store, inventory, onboarding, or control surface.
-- Use `finish-product` when an already integrated product needs one coherent
+- Use whole-app design when deciding a whole app’s promise, workflows, capability portfolio, retention, commerce, social systems, and cross-platform architecture.
+- Use whole-game design when deciding a whole game’s player promise, mechanics, loops, progression, economy, challenge, social systems, and game feel. Use this skill for a bounded HUD, menu, store, inventory, onboarding, or control surface.
+- Use product finish work when an already integrated product needs one coherent
   finish pass across multiple surfaces, content or asset families, copy,
   numbers, sensory behavior, and product-wide consistency. This Skill remains
   the implementation owner for a bounded interface handoff inside that pass.
 - Route design-system extraction/governance and formal accessibility certification to their owning specialist when available; this skill still implements baseline quality on its bounded surface.
-- Consume approved pricing and marketing decisions. Route unresolved tier/value/price decisions to `price-saas-subscription`, campaign/message strategy to `design-marketing-automation`, and promotional captures/media to `produce-product-assets`.
+- Consume approved pricing and marketing decisions. Route unresolved tier/value/price decisions to SaaS pricing work, campaign/message strategy to marketing automation design, and promotional captures/media to `produce-product-assets`.
 
 ## Completion check
 
 The pack is complete only when the declared surface has a coherent direction, truthful state model, responsive and input behavior, baseline accessibility, purposeful feedback, appropriate performance, and mode-appropriate evidence. For Build or Polish, another agent must be able to locate the changed files, reproduce validation, and inspect the rendered states without reopening the design intent.
+

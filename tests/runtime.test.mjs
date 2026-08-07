@@ -320,9 +320,9 @@ test('sync, status, update, and clear own only the declared packages', () => {
     assert.equal(manifest.owner, 'SylphxAI/skills');
     assert.equal(manifest.skills.length, catalog.count);
     assert.deepEqual(manifest.packageDigests, Object.fromEntries(catalog.skills.map((skill) => [skill.name, skill.packageDigest])));
-    assert.deepEqual(manifest.profiles, catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile));
-    assert.equal(existsSync(path.join(destination, 'engineering-standard', 'SKILL.md')), true);
-    assert.equal(existsSync(path.join(destination, 'sylphx-platform-first-policy', 'SKILL.md')), true);
+    assert.deepEqual(manifest.profiles || [], catalog.skills.filter((skill) => skill.profile).map((skill) => skill.profile));
+    assert.equal(existsSync(path.join(destination, 'author-skill', 'SKILL.md')), true);
+    assert.equal(existsSync(path.join(destination, 'verify-local-web-preview', 'SKILL.md')), true);
 
     const status = run(['status', '--dest', destination, '--json']);
     const parsed = JSON.parse(status.stdout);
@@ -343,12 +343,12 @@ test('sync, status, update, and clear own only the declared packages', () => {
     assert.equal(committedStatus.targets[0].sourceCommit, 'abc123deadbeef');
     assert.equal(committedStatus.targets[0].sourceCommitCurrent, true);
 
-    const installedSkill = path.join(destination, 'engineering-standard', 'SKILL.md');
+    const installedSkill = path.join(destination, 'author-skill', 'SKILL.md');
     writeFileSync(installedSkill, `${readFileSync(installedSkill, 'utf8')}\nmutated\n`);
     const drifted = JSON.parse(run(['status', '--dest', destination, '--json']).stdout);
     assert.equal(drifted.targets[0].current, false);
     assert.equal(drifted.targets[0].packagesCurrent, false);
-    assert.ok(drifted.targets[0].driftedPackages.includes('engineering-standard'));
+    assert.ok(drifted.targets[0].driftedPackages.includes('author-skill'));
     run(['sync', '--dest', destination, '--quiet']);
 
     writeFileSync(path.join(destination, '.sylphx-skills.json'), `${JSON.stringify({ ...manifest, skills: [] }, null, 2)}\n`);
@@ -357,22 +357,13 @@ test('sync, status, update, and clear own only the declared packages', () => {
     assert.equal(driftedSkills.targets[0].skillsCurrent, false);
     run(['sync', '--dest', destination, '--quiet']);
 
-    const installedProfilePath = path.join(destination, 'technology-stack-profile', 'references', 'profile.json');
-    const installedProfile = JSON.parse(readFileSync(installedProfilePath, 'utf8'));
-    installedProfile.profile.lifecycle = 'candidate';
-    writeFileSync(installedProfilePath, `${JSON.stringify(installedProfile, null, 2)}\n`);
-    const driftedProfile = JSON.parse(run(['status', '--dest', destination, '--json']).stdout);
-    assert.equal(driftedProfile.targets[0].current, false);
-    assert.equal(driftedProfile.targets[0].packagesCurrent, false);
-
-    run(['sync', '--dest', destination, '--quiet']);
-    const installedSkillPath = path.join(destination, 'technology-stack-profile', 'SKILL.md');
+    const installedSkillPath = path.join(destination, 'author-skill', 'SKILL.md');
     writeFileSync(installedSkillPath, `${readFileSync(installedSkillPath, 'utf8')}\nmutated\n`);
     const driftedSkill = JSON.parse(run(['status', '--dest', destination, '--json']).stdout);
     assert.equal(driftedSkill.targets[0].current, false);
 
     run(['sync', '--dest', destination, '--quiet']);
-    const installedLink = path.join(destination, 'technology-stack-profile', 'linked.md');
+    const installedLink = path.join(destination, 'author-skill', 'linked.md');
     symlinkSync('SKILL.md', installedLink);
     const linkedStatus = spawnSync(process.execPath, [cli, 'status', '--dest', destination, '--json'], {
       cwd: root,
@@ -382,7 +373,7 @@ test('sync, status, update, and clear own only the declared packages', () => {
     assert.match(linkedStatus.stderr, /unsupported symbolic link: linked\.md/);
 
     run(['sync', '--dest', destination, '--quiet']);
-    const interruptedPackage = 'engineering-standard';
+    const interruptedPackage = 'author-skill';
     const interruptedDestination = path.join(destination, interruptedPackage);
     const interruptedTransaction = path.join(destination, '.sylphx-transaction-test-recovery');
     mkdirSync(interruptedTransaction);
@@ -405,7 +396,7 @@ test('sync, status, update, and clear own only the declared packages', () => {
     assert.equal(JSON.parse(readFileSync(path.join(destination, '.sylphx-skills.json'), 'utf8')).owner, 'SylphxAI/skills');
 
     run(['clear', '--dest', destination, '--quiet']);
-    assert.equal(existsSync(path.join(destination, 'engineering-standard')), false);
+    assert.equal(existsSync(path.join(destination, 'author-skill')), false);
     assert.equal(existsSync(path.join(destination, '.sylphx-skills.json')), false);
   } finally {
     rmSync(sandbox, { recursive: true, force: true });
@@ -514,7 +505,7 @@ test('agent install converges native Skills and managed constitutions without ow
     runWithEnvironment(['clear', '--agent', 'all', '--quiet'], environment);
     for (const [index, file] of instructionFiles.entries()) {
       assert.equal(readFileSync(file, 'utf8'), `# Local runtime note ${index + 1}\n\nPreserve this text.\n`);
-      assert.equal(existsSync(path.join(path.dirname(file), 'skills', 'engineering-standard')), false);
+      assert.equal(existsSync(path.join(path.dirname(file), 'skills', 'author-skill')), false);
     }
   } finally {
     rmSync(sandbox, { recursive: true, force: true });
@@ -789,7 +780,7 @@ test('sync rejects symbolic links before replacing the affected installed packag
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-sync-symlink-'));
   const source = path.join(sandbox, 'source');
   const destination = path.join(sandbox, 'destination');
-  const installedPackage = path.join(destination, 'technology-stack-profile');
+  const installedPackage = path.join(destination, 'author-skill');
   try {
     for (const entry of ['runtime', 'skills']) cpSync(path.join(root, entry), path.join(source, entry), { recursive: true });
     for (const entry of ['catalog.json', 'package.json']) cpSync(path.join(root, entry), path.join(source, entry));
@@ -801,7 +792,7 @@ test('sync rejects symbolic links before replacing the affected installed packag
     assert.equal(initial.status, 0, initial.stderr || initial.stdout);
     symlinkSync(
       'SKILL.md',
-      path.join(source, 'skills', 'technology-stack-profile', 'linked.md'),
+      path.join(source, 'skills', 'author-skill', 'linked.md'),
     );
     writeFileSync(path.join(installedPackage, 'preserved.txt'), 'existing installation\n');
 
@@ -1752,9 +1743,9 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     cpSync(path.join(root, 'runtime'), path.join(source, 'runtime'), { recursive: true });
     mkdirSync(path.join(source, 'skills'));
     const fixtureSkillNames = [
-      'engineering-standard',
-      'technology-stack-profile',
-      'edit-preserving-voice',
+      'author-skill',
+      'verify-local-web-preview',
+      'craft-product-interface',
     ];
     for (const name of fixtureSkillNames) {
       cpSync(path.join(root, 'skills', name), path.join(source, 'skills', name), { recursive: true });
@@ -1868,10 +1859,9 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
 
     const driftedManifest = JSON.parse(readFileSync(installedManifest, 'utf8'));
     driftedManifest.catalogDigest = `sha256:${'0'.repeat(64)}`;
-    driftedManifest.profiles[0].lifecycle = 'candidate';
     driftedManifest.skills = [];
     writeFileSync(installedManifest, `${JSON.stringify(driftedManifest, null, 2)}\n`);
-    const driftedSkill = path.join(codexHome, 'skills', 'engineering-standard', 'SKILL.md');
+    const driftedSkill = path.join(codexHome, 'skills', 'author-skill', 'SKILL.md');
     writeFileSync(driftedSkill, `${readFileSync(driftedSkill, 'utf8')}\nlocal drift\n`);
     const repaired = spawnSync(process.execPath, [
       path.join(managedHome, '.sylphx-skills', 'reconcile.mjs'),
@@ -1884,14 +1874,13 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     assert.equal(repairResult.appliedSha, sourceSha);
     const repairedManifest = JSON.parse(readFileSync(installedManifest, 'utf8'));
     assert.notEqual(repairedManifest.catalogDigest, driftedManifest.catalogDigest);
-    assert.equal(repairedManifest.profiles[0].lifecycle, 'active');
     assert.deepEqual(repairedManifest.skills, fixtureCatalog.skills.map((skill) => skill.name));
     assert.equal(repairedManifest.sourceCommit, sourceSha);
     assert.equal(readFileSync(driftedSkill, 'utf8').includes('local drift'), false);
 
     rmSync(installedManifest, { force: true });
     writeFileSync(installedManifest, '{"owner":"invalid projection"}\n');
-    const installedSkillLink = path.join(codexHome, 'skills', 'engineering-standard');
+    const installedSkillLink = path.join(codexHome, 'skills', 'author-skill');
     rmSync(installedSkillLink, { recursive: true, force: true });
     mkdirSync(installedSkillLink);
     writeFileSync(path.join(installedSkillLink, 'SKILL.md'), 'managed link drift\n');
@@ -1950,21 +1939,21 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     mkdirSync(unmanaged, { recursive: true });
     writeFileSync(path.join(unmanaged, 'SKILL.md'), 'third party\n');
 
-    const removedSkill = 'edit-preserving-voice';
+    const removedSkill = 'craft-product-interface';
     const removedFile = path.join(
       codexHome,
       'skills',
-      'engineering-standard',
+      'author-skill',
       'references',
-      'capability-first-examples.md',
+      'industry-sources.md',
     );
     rmSync(path.join(source, 'skills', removedSkill), { recursive: true, force: true });
     rmSync(path.join(
       source,
       'skills',
-      'engineering-standard',
+      'author-skill',
       'references',
-      'capability-first-examples.md',
+      'industry-sources.md',
     ));
     const addedSkill = 'sync-fixture-added';
     mkdirSync(path.join(source, 'skills', addedSkill), { recursive: true });
@@ -2098,7 +2087,7 @@ test('auto-sync supports a host-supervised scheduler with freshness-backed statu
     git(source, ['init', '--initial-branch=main']);
     cpSync(path.join(root, 'runtime'), path.join(source, 'runtime'), { recursive: true });
     mkdirSync(path.join(source, 'skills'));
-    const fixtureName = 'engineering-standard';
+    const fixtureName = 'author-skill';
     cpSync(path.join(root, 'skills', fixtureName), path.join(source, 'skills', fixtureName), {
       recursive: true,
     });

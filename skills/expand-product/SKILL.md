@@ -1,6 +1,6 @@
 ---
 name: expand-product
-description: "Scale a validated core (×N) with metrics and core-path non-regression."
+description: "Scale a validated product core with metrics and core-path proof."
 ---
 
 # Expand Product

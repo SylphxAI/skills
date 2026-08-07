@@ -1,9 +1,11 @@
 ---
 name: review-multi-review-synthesis
-description: "Review: Synthesize multiple reviews into ranked actions and residuals (not general evidence synthesis)."
+description: "Synthesize multiple reviews into ranked actions and residuals."
 ---
 
 # Review Multi-Review Synthesis
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Find material defects and reach a defensible terminal. Read
 [references/convergent-review-method.md](references/convergent-review-method.md)

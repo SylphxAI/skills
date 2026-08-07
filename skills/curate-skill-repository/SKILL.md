@@ -1,6 +1,6 @@
 ---
 name: curate-skill-repository
-description: "Curate skills portfolio: collisions, merge/split, thickness, retirement."
+description: "Curate skill portfolio: merge/split, collisions, retirement."
 ---
 
 # Curate Skill Repository
@@ -123,6 +123,3 @@ Validation run:
 
 Delivery state and unresolved evidence:
 
-## Soft composition
-
-- When landing source: compose `source-authoring-standard` — **L1** batch admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome.

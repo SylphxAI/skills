@@ -1,7 +1,8 @@
 ---
 name: parallel-change-integration-standard
-description: "Policy: parallel change integration—branches, rebase, collision, exact-SHA."
+description: "Policy: expand/contract parallel change and exact-SHA integration."
 ---
+
 # Parallel Change Integration Standard
 
 Policy constraints—compose onto matching host jobs.
@@ -12,7 +13,6 @@ method and predicates.
 ## Method
 
 Compose `source-authoring-standard` three layers when implementing: L1 batch, L2 atomic commits in the PR, L3 one revert-safe outcome per PR (queued squash unit).
-
 
 1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
 2. Apply the strongest relevant subset; record material tradeoffs only where

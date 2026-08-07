@@ -1,6 +1,6 @@
 ---
 name: decide-architecture-shape
-description: "Decide one architecture shape from options with tradeoffs and residuals (not open design-space mapping alone)."
+description: "Decide one architecture shape from options with tradeoffs."
 ---
 
 # Decide Architecture Shape
@@ -124,6 +124,3 @@ Verdict:
 - safe to retire source / blocked
 ```
 
-## Soft composition
-
-- When landing source: compose `source-authoring-standard` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).

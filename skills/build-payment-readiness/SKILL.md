@@ -1,6 +1,6 @@
 ---
 name: build-payment-readiness
-description: "Build production-ready payments: providers, ledger, webhooks, refunds, support adjustments, reconciliation."
+description: "Build production payments: providers, ledger, webhooks, reconciliation."
 ---
 
 # Build Payment Readiness

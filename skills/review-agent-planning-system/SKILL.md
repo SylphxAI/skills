@@ -1,9 +1,11 @@
 ---
 name: review-agent-planning-system
-description: "Review: agent planning—goals, tools, memory, evals, failure handling."
+description: "Review agent planning—goals, tools, memory, evals, failures."
 ---
 
 # Review Agent Planning System
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Produce an **Agent Planning and Control Contract** for a reusable autonomous
 system. Read

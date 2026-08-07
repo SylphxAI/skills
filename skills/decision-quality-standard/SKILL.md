@@ -1,7 +1,8 @@
 ---
 name: decision-quality-standard
-description: "Policy: decision quality—framing, alternatives, tradeoffs, commitment, learning."
+description: "Policy: decision quality—framing, alternatives, tradeoffs."
 ---
+
 # Decision Quality Standard
 
 Policy constraints—compose onto matching host jobs.

@@ -1,7 +1,8 @@
 ---
 name: design-prompt-architecture
-description: "Design prompt/context architecture: always-on constitution, Skill metadata, subagent briefs, layers without policy duplication."
+description: "Design prompt/context architecture: constitution, skills, subagent briefs."
 ---
+
 # Design Prompt Architecture
 
 **Requirement:** apply this standard when the task matches its scope.

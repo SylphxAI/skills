@@ -1,7 +1,8 @@
 ---
 name: agent-native-standard
-description: "Policy: agent-operable products—typed state, schema tools, recoverable workflows, run traces."
+description: "Policy: agent-operable products—typed state, tools, recovery."
 ---
+
 # Agent Native Standard
 
 Policy constraints—compose onto matching host jobs.

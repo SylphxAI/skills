@@ -1,136 +1,44 @@
-# Install for agents
+# Install Sylphx Skills
 
-This file is addressed to the agent that received this repository with a short
-request such as **“install this.”** Own the installation outcome. Do not turn
-the repository's internal commands into work for the user.
+## Outcome
 
-Root `SKILL.md` is a discovery bootstrap for clients that initially route the
-request through a built-in Skill installer. It points here before any leaf
-package operation. A generic Skill installer that only copies `skills/*` is not
-completion; installing every detected runtime also exceeds scope. The target is
-the receiving runtime unless the user explicitly names additional runtimes.
+Install or update the Sylphx Agent Skills catalog and thin always-on constitution
+for one or more of: **Codex**, **Claude Code**, **Grok Build**.
 
-## Required outcome
+## Agent procedure
 
-Install or update the complete Sylphx-managed Skill catalog and compact runtime
-constitution for the agent runtime receiving this request. Enable managed
-AutoSync for that runtime. Configure other supported runtimes only when the user
-explicitly asks for them. Preserve unrelated instructions, Skills,
-configuration, and data. Finish with effective readback, not a folder-count
-claim.
+From this exact repository checkout, run the repository-owned adapter:
 
-## Procedure
+```bash
+node runtime/sylphx-skills.mjs install --agent <codex|claude|grok|all>
+```
 
-1. Resolve the supplied locator to an exact commit of the canonical public
-   repository `https://github.com/SylphxAI/skills`. This file is the
-   self-contained operational contract; consult other repository documents or
-   runtime help only when needed to resolve a conflict or capability boundary.
-   Before any mutation, prove that the adapter being executed is inside that
-   exact checkout and that its Git remote resolves to the supplied canonical
-   repository. Never substitute an executable discovered through `PATH`, a
-   package-manager cache, an old managed repository, a temporary or historical
-   checkout, or an unrelated clone. If the supplied source cannot be resolved
-   and bound exactly, return a typed block without changing any runtime.
-2. Identify the current runtime and its native home. Honor its native home
-   environment variable and `SYLPHX_SKILLS_HOME` when set. Do not scan or
-   mutate unrelated users or runtime homes. Never infer success from another
-   home or a previously loaded context.
-3. Use the repository-owned runtime adapter because it applies the complete
-   catalog as one verified managed generation, preserves third-party Skills,
-   and safely reconciles a marked constitution block without replacing
-   unrelated instructions. Invoke its quiet `install` operation for the current
-   runtime from the exact checkout. Bind the resolved commit through
-   `SYLPHX_SKILLS_COMMIT_SHA` when the execution mechanism strips Git metadata.
-   The user does not run it. An older Sylphx installation may still project its
-   constitution from a retired instruction-runtime layout. The adapter reports
-   that as a typed migration and replaces only an exact, structurally
-   recognized per-user legacy link or Claude import with a regular managed
-   instruction file. It preserves local notes and leaves the retired target
-   untouched.
-   Owner and permission bits are also fenced where the operating system exposes
-   authoritative POSIX metadata. Arbitrary links, imports, unsafe metadata, or
-   content remain fail-closed. For Codex, the adapter also checks the shared
-   `~/.agents/skills` discovery root for the one exact historical Sylphx
-   projection. It archives only packages proven by the known manifest, source
-   commit, package set, and package digests, resumes an interrupted verified
-   move, and preserves every unrelated shared Skill. Unknown, modified,
-   symlinked, or lookalike projections fail closed; status and clear cannot
-   report success while one remains active.
-   Every mutating adapter operation must name the receiving runtime explicitly;
-   discovery of other installed runtimes never grants permission to change
-   them. Use `all` only when the user explicitly requested every supported
-   runtime.
-   Do not substitute a per-Skill download loop for this operation. Presence of
-   all `SKILL.md` files without the managed manifest and current constitution is
-   a typed partial installation, not success.
-4. If that adapter cannot execute, use the runtime's documented native Skill
-   installation and persistent-instruction mechanisms to achieve the same
-   result. Do not invent unsupported files, silently overwrite instructions,
-   copy credentials, install hooks, or weaken host policy. A runtime that cannot
-   persist one of the required surfaces is `partial`, not complete.
-5. Run machine-readable status from the exact installed candidate. Every
-   explicitly in-scope runtime must report the complete catalog current and its
-   managed constitution installed and current. AutoSync status must separately
-   prove that its selected scheduler is configured **and live**; config, timer,
-   or heartbeat files alone are not activation evidence. Its source readback must also bind
-   the clean managed checkout, applied state, installed targets, adapter bytes,
-   current canonical remote head, and every selected runtime's configured home
-   to the receiving process's explicit runtime-home context. A current shadow
-   directory is not evidence for the runtime that will execute work. Intentional
-   non-default homes remain supported only when the same explicit runtime-home
-   environment is present at enable, reconciliation, and readback. Re-run installation once and
-   verify that generation identity, manifest timestamp, and instruction bytes
-   did not change. A missing or different `sourceCommit` is not complete.
-6. Verify behavior in a fresh context or the runtime's closest supported
-   readback boundary. The new context must identify `SylphxAI/skills` as static
-   instruction source, distinguish product Git truth from live
-   work, claim work rather than files, resolve the active delivery lane, and
-   separate source, admission, landing, deployment, and live proof. An active
-   context that predates installation is not evidence. Complete package bytes
-   are availability evidence only: native metadata budgets may shorten or omit
-   descriptions, and model-mediated implicit selection may still miss or
-   over-trigger a package. Do not claim catalog-wide injection from install
-   status or from the model saying it followed a Skill; use exact native
-   runtime evidence where the claim matters.
-7. Enable repository-owned AutoSync for the receiving runtime at the default
-   ten-minute interval. Prefer the operating system's native per-user scheduler.
-   A container or cloud-agent host without that facility may use the explicit
-   external-supervisor mode only when its hosting runtime owns a foreground
-   lifecycle, restart recovery, and the freshness heartbeat. If AutoSync already manages other
-   explicitly selected runtimes, preserve that set and add the receiving
-   runtime; never shrink or silently expand the selection from runtime
-   discovery. Verify scheduler status and perform one exact-source
-   reconciliation. A static one-shot copy is a partial Sylphx installation. A
-   container or remote agent host with neither a working per-user scheduler nor
-   a proven hosting-runtime supervisor must report `partial`; inert systemd
-   unit files, an unavailable user bus, a detached best-effort process, a stale
-   heartbeat, or an unstarted cron entry are not AutoSync. Never ask the user to
-   keep a shell process alive.
+Then verify:
 
-## Boundaries
+```bash
+node runtime/sylphx-skills.mjs status --agent <same>
+```
 
-- Do not ask the user to paste or execute a shell command.
-- If the runtime protects its own home, request the runtime's normal write
-  authorization or report that capability as blocked. Do not offer a shell
-  command as the completion path.
-- Do not use or repair package-manager caches with privileged commands.
-- Do not leave AutoSync disabled after a Sylphx installation. AutoSync uses the
-  operating system's per-user scheduler or an explicitly proven
-  hosting-runtime supervisor, applies only exact canonical generations, and
-  preserves the last known-good generation while offline.
-- Do not copy, request, mint, print, or persist credentials; infer tenant
-  identity; configure deployment access, hooks, or model overrides.
-- Do not load retired instruction repositories, generated projections, or any
-  superseded runtime layout as current instruction authority. A bounded
-  installer migration may read one exact historical projection solely to
-  preserve local notes and remove that runtime dependency; it does not admit
-  the predecessor as an authority.
+Current means the installed package digests match this checkout's catalog and
+the constitution projection is present.
 
-## Completion response
+## Rules
 
-Return `complete`, `partial`, or `blocked`; the exact repository commit; each
-runtime's catalog, constitution, and AutoSync readback; fresh-context
-verification; and any capability or authorization gap. Keep internal commands and
-routine logs out of the user-facing response unless they are necessary to
-diagnose a typed failure. Never end by offering installation commands to the
-user.
+1. Use the adapter from the **supplied exact checkout**. Do not run a cached or
+   PATH-discovered historical installer as a substitute.
+2. Only touch runtimes the user explicitly included.
+3. Preserve third-party skills and unrelated user files.
+4. Managed AutoSync is part of a complete install when the adapter enables it.
+5. Folder-copy of `skills/*` alone is incomplete (skips constitution, digests,
+   reconciliation, and status).
+
+## Clear
+
+```bash
+node runtime/sylphx-skills.mjs clear --agent <codex|claude|grok|all>
+```
+
+## Model
+
+See [docs/MODEL.md](./docs/MODEL.md). Skills are specialized task packages, not
+a policy encyclopedia.

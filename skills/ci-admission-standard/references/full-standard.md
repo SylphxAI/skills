@@ -28,7 +28,7 @@ request + Merge Queue. Platform do not select the landing path.
 ## Source integration
 
 Ordinary agent-native repositories follow
-[ADR-20260803](../../../docs/adr/ADR-20260803-agent-native-queued-trunk.md):
+[ADR-20260803](../../../docs/history/adr/ADR-20260803-agent-native-queued-trunk.md):
 
 - PR-required default branch + Merge Queue is the ordinary write path;
 - one Work/outcome uses one branch and one PR; phases stay inside that PR;

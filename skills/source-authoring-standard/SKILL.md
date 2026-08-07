@@ -1,7 +1,8 @@
 ---
 name: source-authoring-standard
-description: "Policy: source authoring—atomic PR commits, revert-safe PR outcomes, worktrees, concurrent-edit safety."
+description: "Policy: atomic commits and revert-safe PR outcomes."
 ---
+
 # Source Authoring Standard
 
 Policy constraints—compose onto matching host jobs.
@@ -30,4 +31,6 @@ standard.
 
 - Does not grant deploy or credential capabilities.
 - Does not replace product-local ADRs where those own decisions.
+
+For doc create/retire freshness rules, see [documentation-standard/METHOD.md](references/documentation-standard/METHOD.md).
 

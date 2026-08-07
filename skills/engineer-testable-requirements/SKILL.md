@@ -1,6 +1,6 @@
 ---
 name: engineer-testable-requirements
-description: "Turn requirements into testable acceptance criteria with traceability."
+description: "Turn requirements into testable acceptance criteria with oracles."
 ---
 
 # Engineer Testable Requirements

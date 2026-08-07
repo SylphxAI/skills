@@ -1,6 +1,6 @@
 ---
 name: run-open-product-betterment
-description: "Run ongoing open product betterment (no fixed objective): scout high-EV work, batch implement, atomic commits, revert-safe PRs; idle at empty high-EV frontier."
+description: "Run open product betterment: scout high-EV work, land, re-measure."
 ---
 
 # Run Open Product Betterment

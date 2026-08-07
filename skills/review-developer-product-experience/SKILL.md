@@ -1,9 +1,11 @@
 ---
 name: review-developer-product-experience
-description: "Review: developer product UX—onboarding, APIs, docs, time-to-value."
+description: "Review developer product UX—onboarding, APIs, docs, time-to-value."
 ---
 
 # Review Developer Product Experience Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Produce one **Developer Adoption Contract** that makes a developer product fast
 to evaluate, safe to integrate, observable in production, and maintainable across

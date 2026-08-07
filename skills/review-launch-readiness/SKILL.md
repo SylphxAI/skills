@@ -1,9 +1,11 @@
 ---
 name: review-launch-readiness
-description: "Review: launch readiness—product, ops, support, risk, go/no-go evidence."
+description: "Review launch readiness—product, ops, support, risk, go/no-go."
 ---
 
 # Review Launch Readiness Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Produce a **Launch Admission Record** that makes a proportional release decision
 from exact evidence rather than a ceremonial checklist.

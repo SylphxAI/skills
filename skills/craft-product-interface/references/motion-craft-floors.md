@@ -37,5 +37,5 @@ swap. Game juice that can induce nausea must respect the same preference path.
 
 - Pause/menu enter may use medium motion; in-play HUD updates should stay micro.
 - Never block input waiting for chrome animation.
-- Juice (shake/hitstop) lives in presentation systems—see design-game feel refs—
+- Juice (shake/hitstop) lives in presentation systems—see whole-game design feel refs—
   and must not change sim outcomes.

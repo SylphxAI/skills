@@ -1,7 +1,8 @@
 ---
 name: risk-matched-verification-standard
-description: "Policy: verification depth matched to failure risk—evidence class, gates, residuals."
+description: "Policy: match verification depth to failure risk and evidence class."
 ---
+
 # Risk-Matched Verification Standard
 
 Policy constraints—compose onto matching host jobs.

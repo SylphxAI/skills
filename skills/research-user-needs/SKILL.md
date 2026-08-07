@@ -1,6 +1,6 @@
 ---
 name: research-user-needs
-description: "Research user needs: questions, methods, synthesis, decision-ready findings."
+description: "Research user needs: jobs, evidence, segments, opportunity ranking."
 ---
 
 # Research User Needs

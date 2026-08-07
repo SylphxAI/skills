@@ -1,9 +1,11 @@
 ---
 name: review-promotion-campaign
-description: "Review: promotion campaign—offer, eligibility, abuse, measurement, net impact."
+description: "Review promotion campaign—offer, eligibility, abuse, net impact."
 ---
 
 # Review Promotion Campaign Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Produce a **Promotion Campaign Contract** that grows incremental retained value
 without fake urgency, loyal-customer punishment, review manipulation, spam, or

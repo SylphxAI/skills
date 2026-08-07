@@ -1,7 +1,8 @@
 ---
 name: instruction-evolution-standard
-description: "Policy: evolve Skills/constitutions/profiles—owner, migration, retirement."
+description: "Policy: evolve skills/constitutions—owner, migration, retirement."
 ---
+
 # Instruction Evolution Standard
 
 Policy constraints—compose onto matching host jobs.
@@ -26,9 +27,6 @@ primary artifact or final status. When conformance assessment is itself the
 requested job, produce one standalone domain conformance record from this
 standard.
 
-## Soft composition
-
-- `execute-hard-cutover` when executing an instruction/skill generation cutover (no permanent dual instruction stack).
 
 ## Boundaries
 

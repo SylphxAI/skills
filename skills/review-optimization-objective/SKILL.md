@@ -1,9 +1,11 @@
 ---
 name: review-optimization-objective
-description: "Review: optimization objective well-posed, aligned, measurable."
+description: "Review whether an optimization objective is well-posed and aligned."
 ---
 
 # Review Optimization Objective Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Make the measured target improve the real outcome even after an optimizer learns
 its weaknesses. Read

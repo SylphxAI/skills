@@ -1,7 +1,8 @@
 ---
 name: ci-admission-standard
-description: "Policy: protected-branch CI admission—required checks, risk-matched gates, flake/preview."
+description: "Policy: protected-branch CI admission, required checks, flake control."
 ---
+
 # Ci Admission Standard
 
 Policy constraints—compose onto matching host jobs.

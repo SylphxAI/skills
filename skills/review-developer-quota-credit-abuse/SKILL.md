@@ -1,9 +1,11 @@
 ---
 name: review-developer-quota-credit-abuse
-description: "Review: developer quota/credit systems—fairness, abuse, metering."
+description: "Review developer quota/credit systems—fairness, abuse, metering."
 ---
 
 # Review Developer Quota Credit Abuse Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Protect finite platform resources without making successful legitimate developers
 look indistinguishable from abuse.

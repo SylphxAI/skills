@@ -1,6 +1,6 @@
 ---
 name: synthesize-evidence-brief
-description: "Synthesize multi-source evidence into one bounded brief with residuals (not claim-policy alone, not multi-review rollup)."
+description: "Synthesize multi-source evidence into one bounded brief with residuals."
 ---
 
 # Synthesize Evidence Brief

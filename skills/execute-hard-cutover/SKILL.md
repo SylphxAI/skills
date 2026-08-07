@@ -1,90 +1,45 @@
 ---
 name: execute-hard-cutover
-description: "Execute a hard cutover migration: destination sole writer, full backfill, retire dual-paths; expand-contract only for proven large-scale live risk."
+description: "Hard-cut predecessor to destination sole writer; retire dual paths."
 ---
 
 # Execute Hard Cutover
 
-When you need to **move** a system (API, schema, package, skill, stack, data,
-runtime instruction, or owned boundary) from a predecessor to a destination,
-run **one migration** to a clean cutover—not a permanent dual-stack.
+Run a hard cutover when a predecessor implementation must stop owning a path and a destination must become the only writer.
 
 ## When to use
 
-- Replace an old path/package/schema/API with a new one
-- Cut over owned boundaries (engine vs title, platform vs product, etc.)
-- Retire shims, flags, dual writers, legacy lanes, or undated “compat”
-- Upgrade across major versions when the job is the cutover itself
+- Replacing a system, package, API, instruction set, or data path
+- Dual-write / dual-read shims have become permanent residue
+- Expand/contract is only a temporary phase, not the end state
 
-## Method
+## Workflow
 
-**Destination sole writer → migrate/backfill → verify → delete predecessor.**  
-Default is **hard-cut**. Dual-path is exceptional tech debt.
+1. **Name the cut.** Predecessor, destination, traffic/data surface, and terminal: destination sole writer; predecessor retired for that surface.
+2. **Inventory dependency.** Callers, data, jobs, docs, install paths, feature flags. Record what must migrate.
+3. **Prefer hard cut.** Default is switch + retire. Use short expand/contract only when required for safety, with an explicit end date and owner.
+4. **Backfill.** Move or rebuild required state at the destination before cut. Verify with original oracles, not memory.
+5. **Cut traffic.** Point writers and readers at destination. Block new predecessor writes.
+6. **Retire predecessor.** Delete or quarantine dead paths in the same delivery unit when safe. Do not leave "just in case" dual paths.
+7. **Prove.** Destination handles the surface under real checks. Predecessor no longer receives production responsibility for that surface.
 
-### 1. Frame
-- **Destination** state (what sole truth looks like when done)
-- **Predecessor** surfaces to retire (code, data, flags, packages, docs, tests)
-- **Ownership boundary** for each piece (who owns write authority after cut)
-- Non-goals: forever-compat matrix, “might break someone” without scale evidence
+## Gotchas
 
-### 2. Research
-- Current writers/readers of predecessor and destination
-- Data and traffic that must move (backfill, re-pin, reinstall, regenerate)
-- Whether any **large-scale live user** path would hard-fail a clean cut
-- Stop when more reading will not change cut strategy
+- A green dual-path is not done.
+- Feature flags that never expire become the new system of record — ban them as the terminal state.
+- Docs and installers often keep pointing at the predecessor after code cutover.
 
-### 3. Admit work
-**Default — hard-cut (In):**
-- Implement destination on the owning boundary
-- Migrate/backfill all owned state to destination
-- Point all in-boundary clients at destination
-- Verify original oracles on destination
-- Delete predecessor paths, shims, dual writers, dead tests/docs
+## Validation
 
-**Exception — expand-contract (only if all true):**
-- Demonstrated large-scale user or live production impact if cut hard now
-- Measured risk that a temporary dual path reduces
-- Named owner + **dated** contract/retirement gate
+- Destination sole writer for the named surface
+- Predecessor retired or explicitly time-boxed with kill criteria
+- Evidence for backfill + cut + residual list
 
-“Might break someone” without scale/path/cost is **not** an exception.
+## Output
 
-### 4. Implement
-- When landing source: L1 batch → L2 atomic commits → L3 revert-safe PR outcome(s) (`source-authoring-standard`).
-- Prefer one coherent cutover on the **owning** layer; no title-local forever
-  bridges for engine floors, no product dual-write “for safety”
-- Backfill or regenerate so destination is complete, not partial
-- If expand-contract: expand → migrate traffic/data → **contract** (mandatory)
-- Do not stop at “both work”
+Cutover plan executed · evidence · residuals
 
-### 5. Deliver / verify
-- Original oracles for the migrated behavior (not only local green)
-- Destination is **sole writer** for the framed boundary
-- Predecessor removed or behind an explicit dated residual with owner
-- Separate local vs landed vs live claims when delivery is in scope
+## Archived depth
 
-## Cycle done
+If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
 
-Migration cycle is done when:
-
-1. Destination owns the framed truth on the correct boundary, and
-2. Predecessor dual-path is gone **or** an exception residual has owner + date
-   + contract proof plan, and
-3. Oracles for the destination path pass.
-
-Not done: “compat left for later,” undated flags, dual packages for comfort.
-
-## Soft composition
-
-Open only what the cut touches:
-
-- `engineering-standard` — safety, verification, eng-hard-cut predicates
-- `source-authoring-standard` — L1 batch cutover work, L2 atomic commits, L3 revert-safe PR outcome(s); `delivery-standard` — land/live honesty
-- `instruction-evolution-standard` — skill/constitution generation cutovers
-- `author-skill` / `curate-skill-repository` — portfolio package retirements
-- `parallel-change-integration-standard` — only under measured Git contention
-
-## Boundaries
-
-- Does not grant deploy or credential capabilities.
-- Hard-cut still requires verification—not silent production breakage.
-- Historical docs/ADRs are not permission to keep dual paths running.

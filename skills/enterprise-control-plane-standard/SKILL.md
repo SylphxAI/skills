@@ -1,7 +1,8 @@
 ---
 name: enterprise-control-plane-standard
-description: "Policy: multi-repo control plane—rulesets, reconcilers, audits, status."
+description: "Policy: multi-repo control plane—rulesets, reconcilers, scorecards."
 ---
+
 # Enterprise Control Plane Standard
 
 Policy: org-wide control-plane design predicates—apply when designing fleet control planes.

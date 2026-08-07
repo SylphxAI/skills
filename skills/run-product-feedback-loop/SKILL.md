@@ -1,6 +1,6 @@
 ---
 name: run-product-feedback-loop
-description: "Run feedback learning loop: private feedback and public reviews, cluster, route, product actions, truthful close."
+description: "feedback learning loop: private feedback and public reviews."
 ---
 
 # Run Product Feedback Loop
@@ -108,6 +108,3 @@ Sibling handoffs:
 
 Validation, unresolved authority, and next proof:
 
-## Soft composition
-
-- When landing source: compose `source-authoring-standard` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).

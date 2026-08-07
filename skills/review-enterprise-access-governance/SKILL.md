@@ -1,9 +1,11 @@
 ---
 name: review-enterprise-access-governance
-description: "Review: enterprise access—roles, JML, reviews, least privilege."
+description: "Review enterprise access—roles, JML, reviews, least privilege."
 ---
 
 # Review Enterprise Access Governance Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Produce one **Enterprise Access Governance Contract** that answers who may grant,
 inherit, exercise, review, recover, and revoke administrative authority inside and

@@ -24,7 +24,7 @@ verification-watermark authorities to solve ordinary Git contention.
 ## Ordinary repository operating mode
 
 Agent-native owned repositories use **Agent-Native Queued Trunk**
-([ADR-20260803](../../../docs/adr/ADR-20260803-agent-native-queued-trunk.md)).
+([ADR-20260803](../../../docs/history/adr/ADR-20260803-agent-native-queued-trunk.md)).
 Agents do not classify each change into DT vs PR.
 
 ### PR + Merge Queue (ordinary)

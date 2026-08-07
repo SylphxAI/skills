@@ -1,6 +1,6 @@
 ---
 name: prototype-product
-description: "Learning probe only: cheapest real experiment and go/kill/pivot—not shipping durable capability yet."
+description: "Run a cheap real prototype with kill/continue criteria."
 ---
 
 # Prototype Product

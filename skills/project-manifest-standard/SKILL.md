@@ -1,7 +1,8 @@
 ---
 name: project-manifest-standard
-description: "Policy: project manifest—ownership, surfaces, delivery terminals, machine facts."
+description: "Policy: project manifest—ownership, surfaces, delivery terminals."
 ---
+
 # Project Manifest Standard
 
 Policy constraints—compose onto matching host jobs.

@@ -1,9 +1,11 @@
 ---
 name: review-referral-loop
-description: "Review: referral loops—incentives, fraud controls, viral mechanics, measurement."
+description: "Review referral loops—incentives, fraud controls, viral metrics."
 ---
 
 # Review Referral Loop Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Produce a **Referral and Invite Contract** that spreads real product value
 through trusted relationships without spam, coerced contact upload, fake

@@ -1,6 +1,6 @@
 ---
 name: design-saas-web-platform
-description: "SaaS web platform design: identity, billing, tenancy, ops, multi-surface."
+description: "SaaS web platform design: identity, billing, tenancy, ops surfaces."
 ---
 
 # Design SaaS Web Platform

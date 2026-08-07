@@ -1,6 +1,6 @@
 ---
 name: build-keel-title
-description: "Implement a Keel external title/game/app: Title day-1, examples routing, pack shell, doctor floors."
+description: "Implement a Keel title/app: pack shell, examples, doctor floors."
 ---
 
 # Build Keel Title
@@ -46,7 +46,7 @@ Re-read Keel tip docs—do not invent APIs from chat memory.
 
 ### 3. Design composition (load on demand)
 
-- Whole-game thesis/loops → `design-game`
+- Whole-game thesis/loops → whole-game design
 - Premium HUD/menus → `craft-product-interface` (+ premium + game-overlay refs)
 - Sprite/tile production → `produce-game-2d-*`
 - Playable floors → [references/playable-implementation-floor.md](references/playable-implementation-floor.md)
@@ -58,7 +58,7 @@ Re-read Keel tip docs—do not invent APIs from chat memory.
 - Chrome via **View / ThemePack / Widget**—apply premium non-generic UI floors.
 - Assets via **Asset** + title paths; pack profiles in `keel.toml`.
 - Prefer copying **keel-examples** patterns over inventing host facades.
-- Source landing: `source-authoring-standard` L1/L2/L3 when mutating git.
+- Source landing: atomic commits and a revert-safe PR outcome L1/L2/L3 when mutating git.
 
 ### 5. Verify
 
@@ -83,3 +83,14 @@ fork a second runtime.
 ## Output
 
 Title paths · systems/intents · pack/profile notes · oracle evidence · residuals
+
+## Absorbed title game craft
+
+When the title is a game (not only app chrome), also load:
+
+- [references/title-game-craft-absorbed.md](references/title-game-craft-absorbed.md) — loop/feel/genre principles rewritten off foreign browser engines
+- Asset production: `produce-game-2d-sprites`, `produce-game-2d-map-assets`
+- UI craft: `craft-product-interface` (Keel Paint/ThemePack — never a second React UI tree)
+
+Platform services (auth, deploy, data) come from **Sylphx Platform** when needed — not workspace-kit clones.
+

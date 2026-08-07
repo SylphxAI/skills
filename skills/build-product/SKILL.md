@@ -1,6 +1,6 @@
 ---
 name: build-product
-description: "Ship a missing capability end-to-end on the correct boundary; original-oracle verify."
+description: "Ship a missing capability end-to-end with original-oracle proof."
 ---
 
 # Build Product
@@ -12,11 +12,6 @@ When you need a **real capability** on a dogfood or market path, run **one** bui
 - Direction is decided; a journey or capability is still missing
 - Engine or product gaps block a customer path
 
-## Soft composition
-
-- Product on **Keel** (title/game/app client): prefer `build-keel-title` for engine grammar,
-  pack shell, and doctor floors; use this skill for non-Keel boundaries or cross-cutting
-  capabilities that are not title implementation.
 
 ## Method
 

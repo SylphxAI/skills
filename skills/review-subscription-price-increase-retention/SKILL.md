@@ -1,9 +1,11 @@
 ---
 name: review-subscription-price-increase-retention
-description: "Review: retention-safe subscription price increase—cohorts, notices, grandfathering."
+description: "Review retention-safe subscription price increase and notices."
 ---
 
 # Review Subscription Price Increase Retention Review
+
+Shared rhythm: [review-playbook-skeleton.md](references/review-playbook-skeleton.md).
 
 Protect long-term net revenue and customer trust while an approved or proposed
 price change moves through real contracts and billing channels.

@@ -20,7 +20,7 @@ are related facts, not interchangeable authorities.
 ## Source integration
 
 Follow Agent-Native Queued Trunk
-([ADR-20260803](../../../docs/adr/ADR-20260803-agent-native-queued-trunk.md)):
+([ADR-20260803](../../../docs/history/adr/ADR-20260803-agent-native-queued-trunk.md)):
 
 - ordinary changes use one Work → one branch → one PR → Merge Queue → main;
 - do not land incomplete phases; main stays production-ready and green;
