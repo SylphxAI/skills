@@ -302,6 +302,10 @@
       "description": "Write short high-signal output: answer-first replies/updates, decisions, risks, asks.",
       "path": "skills/write-high-signal-update/SKILL.md",
       "packageDigest": "sha256:0834eb9f05bc3ad0c94967cea3b5c7430a81745dc12acfe213d1d61d08c983db"
+    },
+    {
+      "name": "instrument-family-standard",
+      "description": "Instruments family law and evidence envelope"
     }
   ]
 }
