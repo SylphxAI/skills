@@ -1,4 +1,0 @@
-interface:
-  display_name: "Enterprise Profile Standard"
-  short_description: "Policy: versioned enterprise profiles—selectors, defaults, exceptions, migration."
-  default_prompt: "Apply enterprise-profile-standard constraints on the active task/workspace."

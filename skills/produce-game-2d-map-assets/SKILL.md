@@ -21,7 +21,7 @@ shells and multi-platform emit.
 | Concern | Owner |
 | --- | --- |
 | Tiles/props files + extract scripts | this skill |
-| Title map data / world layout | title repo |
+| Title map data / world layout | app repo |
 | Pack / player / platform emit | **Keel pack** |
 
 Suggested paths:
@@ -65,7 +65,7 @@ Read `--help` before inventing flags. Requires Pillow (and script-local deps).
 ### 5. Verify + deliver
 
 - Seam QC, alpha edges, naming, residual defects
-- Land with atomic commits and a revert-safe PR outcome L1/L2/L3 when committing to a title repo
+- Land with atomic commits and a revert-safe PR outcome L1/L2/L3 when committing to a app repo
 
 ## Provenance
 
@@ -83,4 +83,4 @@ Tile/prop paths, preview composites, QC notes, residuals.
 - [references/layered-map-contract.md](references/layered-map-contract.md)
 - [references/prop-pack-contract.md](references/prop-pack-contract.md)
 
-Default `engine_target` for Sylphx work is **Keel title assets + World geometry**, not Phaser/Godot/Unity.
+Default `engine_target` for Sylphx work is **Keel app assets + World geometry**, not Phaser/Godot/Unity.

@@ -78,7 +78,7 @@ Load both domain references only when the product genuinely spans both.
 
 ## Method
 
-- When landing source: compose `source-authoring-standard` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
+- When landing source: apply constraints from `../adopt-repo-standards/references/policies/source-authoring-standard/` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
 1. **Bind the subject.** Identify the exact source, build, content, config,
    platform, locale, route or level inventory, declared finish target, product
    promise, approved direction, user or player, and non-goals.

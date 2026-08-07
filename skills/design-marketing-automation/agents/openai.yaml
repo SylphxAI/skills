@@ -1,4 +1,0 @@
-interface:
-  display_name: "Design Marketing Automation"
-  short_description: "Marketing automation design: journeys, triggers, consent, measurement."
-  default_prompt: "Run Design Marketing Automation for the active product/workspace."

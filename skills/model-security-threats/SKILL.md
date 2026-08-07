@@ -88,7 +88,7 @@ Produce a **Threat Model and Security Design Contract** containing:
   appeals, and false-positive economics across a product.
 - `review-security-assurance-operations` owns what may truthfully be claimed
   and shown to customers about current controls.
-- `engineering-standard` and the owning project implement and test controls;
+- `../adopt-repo-standards/references/policies/engineering-standard/` and the owning project implement and test controls;
   this Skill supplies the security design contract.
 - `run-incident-response` owns active incident classification and response.
 - Use privacy, AI-risk, identity, payment, or other domain Skills when their

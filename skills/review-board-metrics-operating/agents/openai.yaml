@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review Board Metrics Operating Review"
-  short_description: "Review: board/metrics rhythm—definitions, cadence, decision use."
-  default_prompt: "Run Review Board Metrics Operating Review for the active product/workspace."

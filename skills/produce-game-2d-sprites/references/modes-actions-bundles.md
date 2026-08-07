@@ -1,6 +1,6 @@
 # Sprite modes, actions, and bundles (Keel-native)
 
-Distilled from external sprite-skill references. Export for **Keel Asset/pack paths** in the title repo. Prefer `produce-game-2d-sprites` scripts for layout/chroma.
+Distilled from external sprite-skill references. Export for **Keel Asset/pack paths** in the app repo. Prefer `produce-game-2d-sprites` scripts for layout/chroma.
 
 
 

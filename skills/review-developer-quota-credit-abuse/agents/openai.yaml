@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review Developer Quota Credit Abuse Review"
-  short_description: "Review: developer quota/credit systems—fairness, abuse, metering."
-  default_prompt: "Run Review Developer Quota Credit Abuse Review for the active product/workspace."

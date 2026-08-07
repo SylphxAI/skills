@@ -34,11 +34,11 @@ adoption** cycle—not a permanent dual instruction stack.
 - **Out:** unrelated product features; forever dual AGENTS layouts
 
 ### 4. Implement
-- When landing source: compose `source-authoring-standard` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).
+- When landing source: apply constraints from `references/policies/source-authoring-standard/` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).
 - Install/update required baseline surfaces on the owning paths
 - Prefer hard-cut of predecessor instruction layouts (see `execute-hard-cutover`)
-- Compose policy Skills (`engineering-standard`, `project-manifest-standard`, .)
-  as constraints—do not copy entire standards into the product repo
+- Compose constraint packs under `references/policies/` (for example `engineering-standard`, `project-manifest-standard`)
+as constraints—do not copy entire standards into the product repo
 
 ### 5. Deliver / verify
 - Entrypoints resolve; conformance checks run as declared
@@ -49,6 +49,11 @@ adoption** cycle—not a permanent dual instruction stack.
 
 Adoption cycle is done when required surfaces exist, entrypoints work, and
 predecessor dual instruction authority is retired for the framed scope.
+
+## Progressive disclosure
+
+1. [references/full-standard.md](references/full-standard.md) — adoption surfaces and retirement method.
+2. [references/policies/INDEX.md](references/policies/INDEX.md) — installable org constraint packs (constraints, not separate listing skills). Open only packs matching the adoption or compose need.
 
 ## Boundaries
 

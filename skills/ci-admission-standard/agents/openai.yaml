@@ -1,4 +1,0 @@
-interface:
-  display_name: "Ci Admission Standard"
-  short_description: "Policy: protected-branch CI admission—required checks, risk-matched gates, flake/preview."
-  default_prompt: "Apply ci-admission-standard constraints on the active task/workspace."

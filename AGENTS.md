@@ -1,15 +1,11 @@
-# Skills repository instructions
+# Skills repository
 
-Public Agent Skills catalog (MIT) for Codex, Claude Code, and Grok Build.
+Public workflow Agent Skills with installable constraint depth.
 
-## Rules
-
-- Every method is a first-class package under `skills/<id>/`.
-- Frontmatter: only `name` and `description` (keep descriptions short for listing budget).
-- Depth in `references/`; helpers in `scripts/`.
-- No meta-router skill and no "methods library bag" that hides jobs.
-- Rebuild: `npm run build:catalog`. Test: `npm test`.
-
-## Always-on
-
-`runtime/constitution.md` — thin fail-closed floors only.
+- Listing packages: `skills/<workflow-id>/` only
+- Constraint packs (not listing skills): `skills/adopt-repo-standards/references/policies/`
+- `docs/` is human git documentation only; the installer does not ship it
+- One skill = one user-requestable job; depth in references
+- Prefer product language **app/game/product**, not "title"
+- Keel tooling is reference under `build-product`, not a separate listing
+- `npm run build:catalog && npm test`

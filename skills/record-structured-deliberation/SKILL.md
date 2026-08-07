@@ -69,7 +69,7 @@ Create a **Deliberation Record** with:
   materially different solution concepts before participants take positions.
 - Use `analyze-critically` for one analyst comparing hypotheses or diagnosing a
   cause.
-- Use `decision-quality-standard` for final material option selection and its
+- Use `../adopt-repo-standards/references/policies/decision-quality-standard/` for final material option selection and its
   durable Decision Record or ADR.
 - Use `review-multi-review-synthesis` for pass/fail review of an exact candidate.
 - Use a domain skill to supply technical, commercial, legal, security, or

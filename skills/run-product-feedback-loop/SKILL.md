@@ -65,7 +65,7 @@ learning state, and the graph must remain acyclic.
    investigating, fixed, shipped, not planned, policy-limited, or
    support-resolved. Never promise an uncommitted feature or date.
 8. For a request that also asks when or how to solicit public reviews, invoke
-   `review-solicitation-policy` as a sibling. Return two independent, versioned
+   `../adopt-repo-standards/references/policies/review-solicitation-policy/` as a sibling. Return two independent, versioned
    artifacts with stable handoff IDs; never use feedback or inferred sentiment
    to gate its public request policy.
 

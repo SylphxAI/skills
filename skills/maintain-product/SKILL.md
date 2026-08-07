@@ -33,7 +33,7 @@ Prefer regression locks and detectability over silent cleanup.
 - Multiple related fixes OK if they share one harm theme
 
 ### 4. Implement
-- When landing source: compose `source-authoring-standard` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
+- When landing source: apply constraints from `../adopt-repo-standards/references/policies/source-authoring-standard/` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
 - Fix cause; add regression test/smoke when automatable
 - Small blast radius
 - Do not paper over shared floors in the wrong layer

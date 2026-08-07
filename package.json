@@ -1,7 +1,7 @@
 {
   "name": "sylphx-skills",
-  "version": "4.3.0",
-  "description": "First-class Agent Skills catalog: one job per skill, progressive disclosure",
+  "version": "5.0.1",
+  "description": "User-job Agent Skills: workflows + installable policy references",
   "license": "MIT",
   "type": "module",
   "bin": {

@@ -2,7 +2,7 @@
 
 **Why this exists:** App-builder stacks look “good” mostly because agents load a
 **hard anti-slop + token-first** method before styling—not because Tailwind alone
-is magic. Apply the same *discipline* on any stack. On Keel titles, implement
+is magic. Apply the same *discipline* on any stack. On Keel apps, implement
 through **ThemePack / Widget / View / Paint** ([Keel `UI_KIT.md`](https://github.com/SylphxAI/keel/blob/main/docs/UI_KIT.md)),
 not a second React/CSS product chrome.
 

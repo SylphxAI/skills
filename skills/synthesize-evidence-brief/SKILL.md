@@ -77,7 +77,7 @@ Produce an **Evidence Synthesis** containing:
   pricing, or demand recommendations.
 - `analyze-critically` owns competing hypotheses and diagnosis for one uncertain
   material question.
-- `evidence-and-claims-standard` owns the verdict on one material or disputed
+- `../adopt-repo-standards/references/policies/evidence-and-claims-standard/` owns the verdict on one material or disputed
   factual, completion, causality, or delivery claim.
 - `analyze-causal-inference` owns identification and estimation of a causal
   effect from data; this Skill may synthesize multiple causal studies without

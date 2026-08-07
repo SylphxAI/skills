@@ -1,4 +1,0 @@
-interface:
-  display_name: "Project Manifest Standard"
-  short_description: "Policy: project manifest—ownership, surfaces, delivery terminals, machine facts."
-  default_prompt: "Apply project-manifest-standard constraints on the active task/workspace."
