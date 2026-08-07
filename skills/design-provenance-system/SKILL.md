@@ -1,6 +1,6 @@
 ---
 name: design-provenance-system
-description: "Provenance design: lineage, attestation, retention, consumer…"
+description: "Provenance design: lineage, attestation, retention, consumer surfaces."
 ---
 
 # Design Provenance System

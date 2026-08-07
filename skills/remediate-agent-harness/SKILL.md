@@ -1,6 +1,6 @@
 ---
 name: remediate-agent-harness
-description: "Remediate an agent harness/system with measured deltas:…"
+description: "Remediate an agent harness with measured deltas and failure modes."
 ---
 
 # Remediate Agent Harness

@@ -1,6 +1,6 @@
 ---
 name: ci-admission-standard
-description: "Policy: protected-branch CI admission—required checks,…"
+description: "Policy: protected-branch CI admission, required checks, flake control."
 ---
 
 # Ci Admission Standard

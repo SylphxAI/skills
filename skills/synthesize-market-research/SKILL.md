@@ -1,6 +1,6 @@
 ---
 name: synthesize-market-research
-description: "Synthesize market research: segments, competitors, demand,…"
+description: "Synthesize market research: segments, competitors, demand, implications."
 ---
 
 # Synthesize Market Research

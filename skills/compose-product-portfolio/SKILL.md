@@ -1,6 +1,6 @@
 ---
 name: compose-product-portfolio
-description: "Compose multi-product portfolio: product vs platform,…"
+description: "Compose multi-product portfolio: platform vs products, connectors, bundles."
 ---
 
 # Compose Product Portfolio

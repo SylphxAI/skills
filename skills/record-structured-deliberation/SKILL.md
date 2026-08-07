@@ -1,6 +1,6 @@
 ---
 name: record-structured-deliberation
-description: "Record a structured deliberation: options, criteria,…"
+description: "Record a structured deliberation: options, criteria, decision, actions."
 ---
 
 # Record Structured Deliberation

@@ -1,6 +1,6 @@
 ---
 name: review-privacy-and-data-rights
-description: "Review: privacy lifecycle and data-rights ops—collection,…"
+description: "Review privacy lifecycle and data-rights ops in one assessment."
 ---
 
 # Review Privacy and Data Rights

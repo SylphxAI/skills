@@ -1,6 +1,6 @@
 ---
 name: compose-product-program
-description: "Compose multi-work product program: phases, dependencies,…"
+description: "Compose multi-work product program: phases, dependencies, kill/scale."
 ---
 
 # Compose Product Program

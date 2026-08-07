@@ -1,6 +1,6 @@
 ---
 name: review-promotion-campaign
-description: "Review: promotion campaign—offer, eligibility, abuse,…"
+description: "Review promotion campaign—offer, eligibility, abuse, net impact."
 ---
 
 # Review Promotion Campaign Review

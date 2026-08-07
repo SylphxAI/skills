@@ -1,6 +1,6 @@
 ---
 name: synthesize-evidence-brief
-description: "Synthesize multi-source evidence into one bounded brief with…"
+description: "Synthesize multi-source evidence into one bounded brief with residuals."
 ---
 
 # Synthesize Evidence Brief

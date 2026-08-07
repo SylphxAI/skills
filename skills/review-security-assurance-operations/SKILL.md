@@ -1,6 +1,6 @@
 ---
 name: review-security-assurance-operations
-description: "Review: security assurance ops—scanning, triage, SLAs,…"
+description: "Review security assurance ops—scanning, triage, SLAs, evidence."
 ---
 
 # Review Security Assurance Operations Review

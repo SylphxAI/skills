@@ -1,6 +1,6 @@
 ---
 name: craft-product-interface
-description: "Craft one product interface or flow: premium non-generic UI,…"
+description: "Craft one product UI flow with states, a11y, verification."
 ---
 
 # Craft Product Interface

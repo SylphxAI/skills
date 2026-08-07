@@ -1,6 +1,6 @@
 ---
 name: curate-skill-repository
-description: "Curate skills portfolio: collisions, merge/split, thickness,…"
+description: "Curate skill portfolio: merge/split, collisions, retirement."
 ---
 
 # Curate Skill Repository

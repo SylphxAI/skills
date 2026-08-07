@@ -1,6 +1,6 @@
 ---
 name: review-developer-quota-credit-abuse
-description: "Review: developer quota/credit systems—fairness, abuse,…"
+description: "Review developer quota/credit systems—fairness, abuse, metering."
 ---
 
 # Review Developer Quota Credit Abuse Review

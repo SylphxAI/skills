@@ -1,6 +1,6 @@
 ---
 name: review-social-media-operations
-description: "Review: official social ops—authority, publishing,…"
+description: "Review official social ops—authority, publishing, listening, crisis."
 ---
 
 # Review Social Media Operations Review

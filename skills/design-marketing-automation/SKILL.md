@@ -1,6 +1,6 @@
 ---
 name: design-marketing-automation
-description: "Marketing automation design: journeys, triggers, consent,…"
+description: "Marketing automation design: journeys, triggers, consent, measurement."
 ---
 
 # Design Marketing Automation

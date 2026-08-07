@@ -1,6 +1,6 @@
 ---
 name: review-solicitation-policy
-description: "Policy: public in-app review request—eligibility, native…"
+description: "Policy: in-app review solicitation—eligibility, cooldowns, anti-steering."
 ---
 
 # Review Solicitation Policy

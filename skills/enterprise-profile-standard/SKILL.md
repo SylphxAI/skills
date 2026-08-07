@@ -1,6 +1,6 @@
 ---
 name: enterprise-profile-standard
-description: "Policy: versioned enterprise profiles—selectors, defaults,…"
+description: "Policy: versioned enterprise profiles—selectors, defaults, exceptions."
 ---
 
 # Enterprise Profile Standard

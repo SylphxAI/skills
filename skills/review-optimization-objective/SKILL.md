@@ -1,6 +1,6 @@
 ---
 name: review-optimization-objective
-description: "Review: optimization objective well-posed, aligned,…"
+description: "Review whether an optimization objective is well-posed and aligned."
 ---
 
 # Review Optimization Objective Review

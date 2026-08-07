@@ -1,6 +1,6 @@
 ---
 name: review-subscription-price-increase-retention
-description: "Review: retention-safe subscription price increase—cohorts,…"
+description: "Review retention-safe subscription price increase and notices."
 ---
 
 # Review Subscription Price Increase Retention Review

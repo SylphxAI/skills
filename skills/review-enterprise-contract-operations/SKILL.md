@@ -1,6 +1,6 @@
 ---
 name: review-enterprise-contract-operations
-description: "Review: enterprise contract ops—obligations, renewals,…"
+description: "Review enterprise contract ops—obligations, renewals, compliance."
 ---
 
 # Review Enterprise Contract Operations Review

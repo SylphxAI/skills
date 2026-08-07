@@ -1,6 +1,6 @@
 ---
 name: sylphx-platform-first-policy
-description: "Policy: prefer Sylphx Platform capabilities before inventing…"
+description: "Policy: prefer Sylphx Platform before inventing parallel infra."
 ---
 
 # Sylphx Platform-First Policy

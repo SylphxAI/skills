@@ -1,6 +1,6 @@
 ---
 name: review-customer-data-migration
-description: "Review: customer data migration—correctness, downtime,…"
+description: "Review customer data migration—correctness, downtime, rollback."
 ---
 
 # Review Customer Data Migration Review

@@ -1,6 +1,6 @@
 ---
 name: remediate-frontend-performance
-description: "Remediate frontend runtime performance with measured…"
+description: "Remediate frontend performance with before/after path metrics."
 ---
 
 # Remediate Frontend Performance

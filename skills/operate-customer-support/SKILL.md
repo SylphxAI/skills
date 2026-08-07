@@ -1,6 +1,6 @@
 ---
 name: operate-customer-support
-description: "Operate support: triage, resolution path, escalation,…"
+description: "Operate support: triage, resolution path, escalation, quality loops."
 ---
 
 # Operate Customer Support

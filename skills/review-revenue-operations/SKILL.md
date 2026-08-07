@@ -1,6 +1,6 @@
 ---
 name: review-revenue-operations
-description: "Review: revenue ops—pipeline hygiene, handoffs, forecast…"
+description: "Review revenue ops—pipeline hygiene, handoffs, forecast process."
 ---
 
 # Review Revenue Operations Review

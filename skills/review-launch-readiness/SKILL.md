@@ -1,6 +1,6 @@
 ---
 name: review-launch-readiness
-description: "Review: launch readiness—product, ops, support, risk,…"
+description: "Review launch readiness—product, ops, support, risk, go/no-go."
 ---
 
 # Review Launch Readiness Review

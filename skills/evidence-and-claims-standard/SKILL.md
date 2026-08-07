@@ -1,6 +1,6 @@
 ---
 name: evidence-and-claims-standard
-description: "Policy: evidence before claims—local vs candidate vs landed…"
+description: "Policy: grade claims by evidence class and residuals."
 ---
 
 # Evidence and Claims Standard

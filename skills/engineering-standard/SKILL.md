@@ -1,6 +1,6 @@
 ---
 name: engineering-standard
-description: "Policy: engineering method—design, verification, change…"
+description: "Policy: engineering method—design, verification, change safety."
 ---
 
 # Engineering Standard

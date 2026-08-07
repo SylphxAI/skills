@@ -1,6 +1,6 @@
 ---
 name: build-distribution-readiness
-description: "Build software distribution readiness: artifacts,…"
+description: "Build distribution readiness: artifacts, install/upgrade, channel readback."
 ---
 
 # Build Distribution Readiness

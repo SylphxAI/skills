@@ -1,6 +1,6 @@
 ---
 name: drive-to-delivery
-description: "Drive one multi-phase engineering objective to delivery-terminal evidence."
+description: "Drive one multi-phase engineering objective to delivery-terminal."
 ---
 
 # Drive To Delivery

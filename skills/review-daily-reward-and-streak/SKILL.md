@@ -1,6 +1,6 @@
 ---
 name: review-daily-reward-and-streak
-description: "Review: daily reward/streak systems—incentives, abuse,…"
+description: "Review daily reward/streak systems—incentives, abuse, retention."
 ---
 
 # Review Daily Reward And Streak Review

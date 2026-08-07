@@ -1,6 +1,6 @@
 ---
 name: review-customer-success-operations
-description: "Review: customer success ops—health, playbooks, escalation,…"
+description: "Review customer success ops—health, playbooks, escalation, expansion."
 ---
 
 # Review Customer Success Operations Review

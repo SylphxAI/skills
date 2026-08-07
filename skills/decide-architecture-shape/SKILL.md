@@ -1,6 +1,6 @@
 ---
 name: decide-architecture-shape
-description: "Decide one architecture shape from options with tradeoffs…"
+description: "Decide one architecture shape from options with tradeoffs."
 ---
 
 # Decide Architecture Shape

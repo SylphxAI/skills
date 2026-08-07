@@ -1,6 +1,6 @@
 ---
 name: engineer-testable-requirements
-description: "Turn requirements into testable acceptance criteria with…"
+description: "Turn requirements into testable acceptance criteria with oracles."
 ---
 
 # Engineer Testable Requirements

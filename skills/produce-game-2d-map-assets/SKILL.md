@@ -1,6 +1,6 @@
 ---
 name: produce-game-2d-map-assets
-description: "Produce 2D map tiles/props packs: layered sheets, magenta…"
+description: "Produce 2D map tiles/props packs with extract/preview."
 ---
 
 # Produce Game 2D Map Assets

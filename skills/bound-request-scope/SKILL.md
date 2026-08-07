@@ -1,6 +1,6 @@
 ---
 name: bound-request-scope
-description: "Bound this request: objective, in/out, non-goals, cut lines, ceremony size."
+description: "Bound this request: objective, in/out, non-goals, cut lines."
 ---
 
 # Bound Request Scope

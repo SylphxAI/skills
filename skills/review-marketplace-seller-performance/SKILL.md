@@ -1,6 +1,6 @@
 ---
 name: review-marketplace-seller-performance
-description: "Review: seller performance—quality evidence, tiers, ranking…"
+description: "Review seller performance—quality evidence, tiers, ranking inputs."
 ---
 
 # Review Marketplace Seller Performance Review

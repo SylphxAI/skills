@@ -1,6 +1,6 @@
 ---
 name: design-prompt-architecture
-description: "Design prompt/context architecture: always-on constitution,…"
+description: "Design prompt/context architecture: constitution, skills, subagent briefs."
 ---
 
 # Design Prompt Architecture

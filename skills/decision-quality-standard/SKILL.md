@@ -1,6 +1,6 @@
 ---
 name: decision-quality-standard
-description: "Policy: decision quality—framing, alternatives, tradeoffs,…"
+description: "Policy: decision quality—framing, alternatives, tradeoffs."
 ---
 
 # Decision Quality Standard

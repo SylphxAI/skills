@@ -1,6 +1,6 @@
 ---
 name: maintain-product
-description: "Cut framed live/regression harm: repro, root-cause fix, original oracle."
+description: "Cut live/regression harm with root-cause fix and oracle."
 ---
 
 # Maintain Product

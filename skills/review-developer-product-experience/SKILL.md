@@ -1,6 +1,6 @@
 ---
 name: review-developer-product-experience
-description: "Review: developer product UX—onboarding, APIs, docs,…"
+description: "Review developer product UX—onboarding, APIs, docs, time-to-value."
 ---
 
 # Review Developer Product Experience Review

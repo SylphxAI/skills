@@ -1,6 +1,6 @@
 ---
 name: review-accessibility-conformance-program
-description: "Review: accessibility conformance program design, evidence,…"
+description: "Review accessibility conformance program design, evidence, residuals."
 ---
 
 # Review Accessibility Conformance Program Review

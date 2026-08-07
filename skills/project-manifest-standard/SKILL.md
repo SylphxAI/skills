@@ -1,6 +1,6 @@
 ---
 name: project-manifest-standard
-description: "Policy: project manifest—ownership, surfaces, delivery…"
+description: "Policy: project manifest—ownership, surfaces, delivery terminals."
 ---
 
 # Project Manifest Standard

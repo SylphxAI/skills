@@ -1,6 +1,6 @@
 ---
 name: select-dependency-versions
-description: "Select dependency and runtime versions from live…"
+description: "Select package/runtime versions from live authoritative sources."
 ---
 
 # Select Dependency Versions

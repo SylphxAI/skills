@@ -1,6 +1,6 @@
 ---
 name: run-product-feedback-loop
-description: "feedback learning loop: private feedback and public reviews,…"
+description: "feedback learning loop: private feedback and public reviews."
 ---
 
 # Run Product Feedback Loop

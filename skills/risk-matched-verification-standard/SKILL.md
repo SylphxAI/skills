@@ -1,6 +1,6 @@
 ---
 name: risk-matched-verification-standard
-description: "Policy: verification depth matched to failure risk—evidence…"
+description: "Policy: match verification depth to failure risk and evidence class."
 ---
 
 # Risk-Matched Verification Standard

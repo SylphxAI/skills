@@ -1,6 +1,6 @@
 ---
 name: distill-source-to-skill
-description: "Distill source material into one Skill package (SKILL.md). Use when converting…"
+description: "Distill docs/repos/notes into one installable Skill package."
 ---
 
 # distill-source-to-skill

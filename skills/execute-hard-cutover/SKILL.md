@@ -1,6 +1,6 @@
 ---
 name: execute-hard-cutover
-description: "Hard-cut a predecessor path to a destination: sole writer,…"
+description: "Hard-cut predecessor to destination sole writer; retire dual paths."
 ---
 
 # Execute Hard Cutover

@@ -1,6 +1,6 @@
 ---
 name: parallel-change-integration-standard
-description: "Policy: parallel change integration—branches, rebase,…"
+description: "Policy: expand/contract parallel change and exact-SHA integration."
 ---
 
 # Parallel Change Integration Standard

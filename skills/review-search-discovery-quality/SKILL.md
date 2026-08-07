@@ -1,6 +1,6 @@
 ---
 name: review-search-discovery-quality
-description: "Review: search/discovery—relevance, ranking, evaluation,…"
+description: "Review search/discovery—relevance, ranking, evaluation, abuse."
 ---
 
 # Review Search Discovery Quality Review

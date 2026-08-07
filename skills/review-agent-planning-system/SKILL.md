@@ -1,6 +1,6 @@
 ---
 name: review-agent-planning-system
-description: "Review: agent planning—goals, tools, memory, evals, failure…"
+description: "Review agent planning—goals, tools, memory, evals, failures."
 ---
 
 # Review Agent Planning System

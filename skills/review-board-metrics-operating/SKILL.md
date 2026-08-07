@@ -1,6 +1,6 @@
 ---
 name: review-board-metrics-operating
-description: "Review: board/metrics rhythm—definitions, cadence, decision…"
+description: "Review board/metrics rhythm—definitions, cadence, decision use."
 ---
 
 # Review Board Metrics Operating Review

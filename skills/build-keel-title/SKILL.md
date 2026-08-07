@@ -1,6 +1,6 @@
 ---
 name: build-keel-title
-description: "Implement a Keel external title/game/app: Title day-1,…"
+description: "Implement a Keel title/app: pack shell, examples, doctor floors."
 ---
 
 # Build Keel Title

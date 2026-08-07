@@ -1,6 +1,6 @@
 ---
 name: review-operational-observability
-description: "Review: observability—SLOs, telemetry, alerting, on-call…"
+description: "Review observability—SLOs, telemetry, alerting, diagnosability."
 ---
 
 # Review Operational Observability Review

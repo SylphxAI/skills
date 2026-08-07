@@ -1,6 +1,6 @@
 ---
 name: agent-first-development-standard
-description: "Policy: multi-agent delivery packets—attribution, collision…"
+description: "Policy: multi-agent delivery packets and collision scopes."
 ---
 
 # Agent First Development Standard

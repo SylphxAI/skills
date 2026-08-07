@@ -1,6 +1,6 @@
 ---
 name: optimize-store-listing
-description: "Optimize store listing: metadata, creatives, conversion…"
+description: "Optimize store listing: metadata, creatives, conversion, compliance."
 ---
 
 # Optimize Store Listing

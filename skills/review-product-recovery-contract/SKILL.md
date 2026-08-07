@@ -1,6 +1,6 @@
 ---
 name: review-product-recovery-contract
-description: "Review: post-failure user recovery—repair, compensation,…"
+description: "Review post-failure user recovery—repair, compensation, trust."
 ---
 
 # Review Product Recovery Contract Review

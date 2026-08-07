@@ -1,6 +1,6 @@
 ---
 name: work-coordination-standard
-description: "Policy: portable work-ledger—claims, leases, checkpoints,…"
+description: "Policy: portable work-ledger—claims, leases, checkpoints, handoff."
 ---
 
 # Work Coordination Standard

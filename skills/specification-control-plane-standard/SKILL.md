@@ -1,6 +1,6 @@
 ---
 name: specification-control-plane-standard
-description: "Policy: executable specs lifecycle—packets, eval manifests,…"
+description: "Policy: executable specs lifecycle—packets, evals, telemetry."
 ---
 
 # Specification Control Plane Standard

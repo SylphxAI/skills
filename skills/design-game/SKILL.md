@@ -1,6 +1,6 @@
 ---
 name: design-game
-description: "Whole-game design: thesis, loops, progression, economy,…"
+description: "Whole-game design: thesis, loops, progression, economy, live-ops."
 ---
 
 # Design Game

@@ -1,6 +1,6 @@
 ---
 name: review-multi-review-synthesis
-description: "Review: Synthesize multiple reviews into ranked actions and…"
+description: "Synthesize multiple reviews into ranked actions and residuals."
 ---
 
 # Review Multi-Review Synthesis

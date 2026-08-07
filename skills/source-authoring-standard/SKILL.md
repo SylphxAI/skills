@@ -1,6 +1,6 @@
 ---
 name: source-authoring-standard
-description: "Policy: source authoring—atomic PR commits, revert-safe PR…"
+description: "Policy: atomic commits and revert-safe PR outcomes."
 ---
 
 # Source Authoring Standard

@@ -1,6 +1,6 @@
 ---
 name: technology-stack-profile
-description: "Policy: Policy profile: technology-stack selection rules for…"
+description: "Policy profile: technology-stack selection rules for matching repos."
 ---
 
 # Backend, Web, and Cross-platform Interoperability Profile

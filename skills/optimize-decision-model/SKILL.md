@@ -1,6 +1,6 @@
 ---
 name: optimize-decision-model
-description: "Model a decision for optimization: objective, constraints,…"
+description: "Model a decision for optimization: objective, constraints, sensitivity."
 ---
 
 # Optimize Decision Model

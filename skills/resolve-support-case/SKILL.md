@@ -1,6 +1,6 @@
 ---
 name: resolve-support-case
-description: "Resolve one support case to closure with correct authority…"
+description: "Resolve one support case to closure with correct authority and proof."
 ---
 
 # Resolve Support Case
