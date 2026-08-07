@@ -18,12 +18,14 @@ Deliver a skill catalog where:
 | Decisions | `docs/CURATION-LEDGER.md` — executed absorbs/merges + explicit non-merges + full inventory |
 | Invariants | `tests/curation-invariants.test.mjs` |
 | Integrity | `npm test` includes check + unit tests |
-| Catalog | 118 skills; description sum ≤ 8000 |
+| Catalog | 120 skills; description sum ≤ 8000 |
 | Live install | `node runtime/sylphx-skills.mjs status` → current N/N after install |
 
 ## Integrations executed
 
-- absorb distill + design-skill-evals → author-skill
+- restore distill-source-to-skill + design-skill-evals as first-class listings
+
+- distill + design-skill-evals restored as first-class (not hidden under author-skill)
 - merge privacy lifecycle + data-rights → review-privacy-and-data-rights
 - demote documentation-standard → source-authoring-standard
 - shared review-playbook-skeleton across review-*

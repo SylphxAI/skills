@@ -1,3 +1,8 @@
+---
+name: design-skill-evals
+description: "Design falsifiable skill evals: routing cases, behavior oracles, failure taxonomy. Use…"
+---
+
 # design-skill-evals
 
 # Design Skill Evals

@@ -12,13 +12,13 @@ test('no methods-bag package hides jobs from listing', () => {
   }
 });
 
-test('absorbed authoring sub-methods are not separate listings', () => {
-  for (const absorbed of ['distill-source-to-skill', 'design-skill-evals']) {
-    assert.equal(existsSync(path.join(skillsRoot, absorbed)), false, absorbed);
-    assert.ok(
-      existsSync(path.join(skillsRoot, 'author-skill', 'references', absorbed, 'METHOD.md'))
-        || existsSync(path.join(skillsRoot, 'author-skill', 'references', absorbed)),
-      `author-skill should own ${absorbed}`,
+test('distill and design-skill-evals are first-class listings', () => {
+  for (const id of ['distill-source-to-skill', 'design-skill-evals']) {
+    assert.ok(existsSync(path.join(skillsRoot, id, 'SKILL.md')), id);
+    assert.equal(
+      existsSync(path.join(skillsRoot, 'author-skill', 'references', id)),
+      false,
+      `${id} must not remain only under author-skill`,
     );
   }
 });

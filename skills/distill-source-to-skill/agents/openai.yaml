@@ -1,0 +1,4 @@
+interface:
+  display_name: "Distill Source To Skill"
+  short_description: "Distill source material into one Skill package (SKILL.md). Use when converting docs/repos/notes into an installable skil"
+  default_prompt: "Run distill-source-to-skill on the active workspace."

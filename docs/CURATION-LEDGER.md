@@ -7,11 +7,12 @@ Not a methods bag. Not blind 122-preserve. Integrate only on job/artifact coinci
 
 | Action | From | To | Reason |
 | --- | --- | --- | --- |
-| absorb | `distill-source-to-skill` | `author-skill/references/distill-source-to-skill/` | Same job: produce a skill package from material |
-| absorb | `design-skill-evals` | `author-skill/references/design-skill-evals/` | Sub-method of authoring quality, not separate request |
+| absorb→restore | `distill-source-to-skill` | first-class (was briefly under author-skill) | Distinct request shape: source→skill package |
+| absorb→restore | `design-skill-evals` | first-class (was briefly under author-skill) | Distinct artifact: eval program, not SKILL.md |
 | merge | `review-privacy-data-lifecycle` + `review-data-rights-operations` | `review-privacy-and-data-rights` | One privacy/rights assessment artifact |
 | demote | `documentation-standard` | `source-authoring-standard/references/documentation-standard/` | Doc freshness is source-authoring adjacent policy depth |
 | share | review skeleton | every `review-*/references/review-playbook-skeleton.md` + `docs/shared/` | Shared rhythm ≠ shared domain job |
+| restore | `distill-source-to-skill`, `design-skill-evals` | first-class listings | Independently requestable jobs with distinct primary artifacts (package vs eval program); must not hide under author-skill |
 
 ## Explicit non-merges (keep separate)
 
@@ -32,7 +33,7 @@ Not a methods bag. Not blind 122-preserve. Integrate only on job/artifact coinci
 
 ## Current catalog size
 
-118 first-class skills after integration.
+120 first-class skills after restore of distill + design-skill-evals.
 
 ## Default for all other packages
 
@@ -49,17 +50,17 @@ Further merges require false-negative review (what unique mechanism would be los
 | `analyze-causal-inference` | task | Estimate causal effects: identification, estimators,… |
 | `analyze-critically` | task | Adversarially critique a claim/plan/design with kill… |
 | `analyze-system-dynamics` | task | Map stubborn loops: stocks, delays, incentives, policy… |
-| `author-skill` | absorbed-owner | Create or revise an Agent Skill: one job, trigger… |
-| `bound-request-scope` | product-cycle | Bound this request: objective, in/out, non-goals, cut lines,… |
+| `author-skill` | skill-meta | Create or revise an Agent Skill: one job, trigger… |
+| `bound-request-scope` | task | Bound this request: objective, in/out, non-goals, cut lines,… |
 | `build-distribution-readiness` | task | Build software distribution readiness: artifacts,… |
 | `build-keel-title` | task | Implement a Keel external title/game/app: Title day-1,… |
 | `build-payment-readiness` | task | Build production-ready payments: providers, ledger,… |
-| `build-product` | product-cycle | Ship a missing capability end-to-end on the correct… |
+| `build-product` | task | Ship a missing capability end-to-end on the correct… |
 | `ci-admission-standard` | policy | Policy: protected-branch CI admission—required checks,… |
 | `ci-runner-capacity-standard` | policy | Policy: CI runner pools—fairness, isolation, scaling, queue… |
 | `commercial-decision-standard` | policy | Policy: durable commercial decisions—pricing, packaging,… |
-| `compose-product-portfolio` | product-cycle | Compose multi-product portfolio: product vs platform,… |
-| `compose-product-program` | product-cycle | Compose multi-work product program: phases, dependencies,… |
+| `compose-product-portfolio` | task | Compose multi-product portfolio: product vs platform,… |
+| `compose-product-program` | task | Compose multi-work product program: phases, dependencies,… |
 | `craft-product-interface` | task | Craft one product interface or flow: premium non-generic UI,… |
 | `curate-skill-repository` | skill-meta | Curate skills portfolio: collisions, merge/split, thickness,… |
 | `decide-architecture-shape` | task | Decide one architecture shape from options with tradeoffs… |
@@ -72,9 +73,11 @@ Further merges require false-negative review (what unique mechanism would be los
 | `design-provenance-system` | design | Provenance design: lineage, attestation, retention, consumer… |
 | `design-saas-web-platform` | design | SaaS web platform design: identity, billing, tenancy, ops,… |
 | `design-semantic-taxonomy` | design | Governed taxonomy/ontology: terms, relations, migration. |
+| `design-skill-evals` | design | Design falsifiable skill evals: routing cases, behavior oracles, failure taxonomy. Use… |
 | `design-space-exploration` | design | Design-space map: alternatives, dimensions, kill criteria,… |
 | `design-system-extractor` | design | Extract design-system tokens/components/rules from live UI. |
-| `drive-to-delivery` | product-cycle | Drive one multi-phase engineering objective through… |
+| `distill-source-to-skill` | skill-meta | Distill source material into one Skill package (SKILL.md). Use when converting… |
+| `drive-to-delivery` | task | Drive one multi-phase engineering objective through… |
 | `edit-preserving-voice` | task | Edit text preserving voice, constraints, and factual claims. |
 | `engineer-agent-context` | task | Engineer agent context packs: load rules, budgets, refresh. |
 | `engineer-testable-requirements` | task | Turn requirements into testable acceptance criteria with… |
@@ -83,23 +86,23 @@ Further merges require false-negative review (what unique mechanism would be los
 | `enterprise-profile-standard` | policy | Policy: versioned enterprise profiles—selectors, defaults,… |
 | `evidence-and-claims-standard` | policy | Policy: evidence before claims—local vs candidate vs landed… |
 | `execute-hard-cutover` | task | Hard-cut a predecessor path to a destination: sole writer,… |
-| `expand-product` | product-cycle | Scale a validated core (×N) with metrics and core-path… |
-| `finish-product` | product-cycle | Release-grade finish/deburr of an integrated product with… |
+| `expand-product` | task | Scale a validated core (×N) with metrics and core-path… |
+| `finish-product` | task | Release-grade finish/deburr of an integrated product with… |
 | `forecast-with-calibration` | task | Produce calibrated probabilistic forecasts with base rates… |
 | `instruction-evolution-standard` | policy | Policy: evolve Skills/constitutions/profiles—owner,… |
-| `maintain-product` | product-cycle | Cut framed live/regression harm: repro, root-cause fix,… |
+| `maintain-product` | task | Cut framed live/regression harm: repro, root-cause fix,… |
 | `model-security-threats` | task | Threat-model assets, adversaries, entry points, mitigations,… |
 | `operate-customer-support` | task | Operate support: triage, resolution path, escalation,… |
 | `optimize-decision-model` | task | Model a decision for optimization: objective, constraints,… |
 | `optimize-store-listing` | task | Optimize store listing: metadata, creatives, conversion… |
 | `parallel-change-integration-standard` | policy | Policy: parallel change integration—branches, rebase,… |
 | `price-saas-subscription` | task | Price SaaS subscription: packaging, value metric, fences,… |
-| `produce-game-2d-map-assets` | assets | Produce 2D map tiles/props packs: layered sheets, magenta… |
-| `produce-game-2d-sprites` | assets | Produce engine-ready 2D game sprites/sheets: generate,… |
-| `produce-product-assets` | assets | Produce product assets to brief and brand constraints. |
+| `produce-game-2d-map-assets` | task | Produce 2D map tiles/props packs: layered sheets, magenta… |
+| `produce-game-2d-sprites` | task | Produce engine-ready 2D game sprites/sheets: generate,… |
+| `produce-product-assets` | task | Produce product assets to brief and brand constraints. |
 | `project-manifest-standard` | policy | Policy: project manifest—ownership, surfaces, delivery… |
-| `prototype-product` | product-cycle | Learning probe only: cheapest real experiment and… |
-| `pursue-product-objective` | product-cycle | Pursue a fixed declared product objective to evidence-backed… |
+| `prototype-product` | task | Learning probe only: cheapest real experiment and… |
+| `pursue-product-objective` | task | Pursue a fixed declared product objective to evidence-backed… |
 | `record-structured-deliberation` | task | Record a structured deliberation: options, criteria,… |
 | `remediate-agent-harness` | task | Remediate an agent harness/system with measured deltas:… |
 | `remediate-frontend-performance` | task | Remediate frontend runtime performance with measured… |
@@ -130,7 +133,7 @@ Further merges require false-negative review (what unique mechanism would be los
 | `review-offline-sync-conflict` | review | Review: offline sync and conflict resolution across devices. |
 | `review-operational-observability` | review | Review: observability—SLOs, telemetry, alerting, on-call… |
 | `review-optimization-objective` | review | Review: optimization objective well-posed, aligned,… |
-| `review-privacy-and-data-rights` | merged-review | Review: privacy lifecycle and data-rights ops—collection,… |
+| `review-privacy-and-data-rights` | review | Review: privacy lifecycle and data-rights ops—collection,… |
 | `review-product-abuse-risk` | review | Review: product abuse—fraud, spam, exploitation, enforcement. |
 | `review-product-analytics-instrumentation` | review | Review: product analytics instrumentation—events, identity,… |
 | `review-product-experiment` | review | Review: experiment design/readout—hypothesis, assignment,… |
@@ -148,10 +151,10 @@ Further merges require false-negative review (what unique mechanism would be los
 | `review-subscription-price-increase-retention` | review | Review: retention-safe subscription price increase—cohorts,… |
 | `risk-matched-verification-standard` | policy | Policy: verification depth matched to failure risk—evidence… |
 | `run-incident-response` | task | production incident response: severity, command, mitigation,… |
-| `run-open-product-betterment` | product-cycle | ongoing open product betterment (no fixed objective): scout… |
+| `run-open-product-betterment` | task | ongoing open product betterment (no fixed objective): scout… |
 | `run-product-feedback-loop` | task | feedback learning loop: private feedback and public reviews,… |
 | `select-dependency-versions` | task | Select dependency and runtime versions from live… |
-| `select-next-work` | product-cycle | Select/claim next high-value Work from evidence/ledger under… |
+| `select-next-work` | task | Select/claim next high-value Work from evidence/ledger under… |
 | `source-authoring-standard` | policy | Policy: source authoring—atomic PR commits, revert-safe PR… |
 | `specification-control-plane-standard` | policy | Policy: executable specs lifecycle—packets, eval manifests,… |
 | `sylphx-platform-first-policy` | policy | Policy: prefer Sylphx Platform capabilities before inventing… |
@@ -162,4 +165,4 @@ Further merges require false-negative review (what unique mechanism would be los
 | `work-coordination-standard` | policy | Policy: portable work-ledger—claims, leases, checkpoints,… |
 | `write-high-signal-update` | task | Write a high-signal stakeholder update: decisions, risks,… |
 
-**Count:** 118
+**Count:** 120

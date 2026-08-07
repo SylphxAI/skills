@@ -1,3 +1,8 @@
+---
+name: distill-source-to-skill
+description: "Distill source material into one Skill package (SKILL.md). Use when converting…"
+---
+
 # distill-source-to-skill
 
 # Distill Source To Skill
@@ -129,4 +134,3 @@ A finished conversion:
 - includes positive and negative eval prompts;
 - passes structural validation for the target repository;
 - reports skipped validation honestly.
-

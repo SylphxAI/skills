@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 118,
+  "count": 120,
   "skills": [
     {
       "name": "adopt-repo-standards",
@@ -43,7 +43,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill: one job, trigger…",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:9e7a564ea9b83d837f5036cc61b0d3fe50974e679faad0099dcd170854e77d01"
+      "packageDigest": "sha256:41f76bc0893483a41ea0f85c7d707de1868ccdb929253422e63bfd55308cf317"
     },
     {
       "name": "bound-request-scope",
@@ -178,6 +178,12 @@
       "packageDigest": "sha256:7c9e65ff66b2c86adda8162b4895980bc8bd65c09fc6ea7ff0cfd3d54b2bf5e5"
     },
     {
+      "name": "design-skill-evals",
+      "description": "Design falsifiable skill evals: routing cases, behavior oracles, failure taxonomy. Use…",
+      "path": "skills/design-skill-evals/SKILL.md",
+      "packageDigest": "sha256:e505726fffa40a143a3acaeb1351ddfab5e818e466b19ad7d90ccbabd89b83e3"
+    },
+    {
       "name": "design-space-exploration",
       "description": "Design-space map: alternatives, dimensions, kill criteria,…",
       "path": "skills/design-space-exploration/SKILL.md",
@@ -188,6 +194,12 @@
       "description": "Extract design-system tokens/components/rules from live UI.",
       "path": "skills/design-system-extractor/SKILL.md",
       "packageDigest": "sha256:92543885932d22615a93a390f0622a55fab4c51d03da4146b179ab04b2aac9b8"
+    },
+    {
+      "name": "distill-source-to-skill",
+      "description": "Distill source material into one Skill package (SKILL.md). Use when converting…",
+      "path": "skills/distill-source-to-skill/SKILL.md",
+      "packageDigest": "sha256:91f3721f97e725c4945105a211736112c832bb66dc17cb1651cc23d8900317c7"
     },
     {
       "name": "drive-to-delivery",
