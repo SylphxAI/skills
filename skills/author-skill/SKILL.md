@@ -1,6 +1,6 @@
 ---
 name: author-skill
-description: "Create or revise an Agent Skill: one job, trigger…"
+description: "Create or revise an Agent Skill: job id, description, method body, references."
 ---
 
 # Author Skill

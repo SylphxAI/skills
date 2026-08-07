@@ -1,6 +1,6 @@
 ---
 name: pursue-product-objective
-description: "Pursue a fixed declared product objective to evidence-backed…"
+description: "Pursue a fixed product objective to evidence-backed completion."
 ---
 
 # Pursue Product Objective

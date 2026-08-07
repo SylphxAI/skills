@@ -1,6 +1,6 @@
 ---
 name: run-incident-response
-description: "production incident response: severity, command, mitigation,…"
+description: "Run production incident response: severity, command, mitigation, postmortem."
 ---
 
 # Run Incident Response

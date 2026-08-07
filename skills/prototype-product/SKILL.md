@@ -1,6 +1,6 @@
 ---
 name: prototype-product
-description: "Learning probe only: cheapest real experiment and…"
+description: "Learning probe: cheapest real experiment and kill/continue criteria."
 ---
 
 # Prototype Product

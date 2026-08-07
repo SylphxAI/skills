@@ -41,15 +41,15 @@
     },
     {
       "name": "author-skill",
-      "description": "Create or revise an Agent Skill: one job, trigger…",
+      "description": "Create or revise an Agent Skill: job id, description, method body, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:41f76bc0893483a41ea0f85c7d707de1868ccdb929253422e63bfd55308cf317"
+      "packageDigest": "sha256:5e3c18b612e47af2c1767e9b3ceb3d46e690d1a804887da7cd885e5795fd47d3"
     },
     {
       "name": "bound-request-scope",
-      "description": "Bound this request: objective, in/out, non-goals, cut lines,…",
+      "description": "Bound this request: objective, in/out, non-goals, cut lines, ceremony size.",
       "path": "skills/bound-request-scope/SKILL.md",
-      "packageDigest": "sha256:890433221fce633b6b5594c925c0413ca7d2728d8bfdb75d2ffd125204298e66"
+      "packageDigest": "sha256:eb2f5ccdbafc64e2e06158ed14d526eefb281259524ef7addbb4aba52aafbefb"
     },
     {
       "name": "build-distribution-readiness",
@@ -71,9 +71,9 @@
     },
     {
       "name": "build-product",
-      "description": "Ship a missing capability end-to-end on the correct…",
+      "description": "Ship a missing capability end-to-end on the correct boundary with oracles.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:0c4a94d5a8d3fdead9090d2531342bf5e7153573af502a47637910657fc86281"
+      "packageDigest": "sha256:e28f733447680dae327a43dc1783e35e06a9c303c2d782b265f730f61d2c80d3"
     },
     {
       "name": "ci-admission-standard",
@@ -203,9 +203,9 @@
     },
     {
       "name": "drive-to-delivery",
-      "description": "Drive one multi-phase engineering objective through…",
+      "description": "Drive one multi-phase engineering objective to delivery-terminal evidence.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:cd5601b871859987923e86a34529a71d74ab309ef682a8899ffffa7f4af5ca8f"
+      "packageDigest": "sha256:cf89e5d2b42cfc41446afa92c492e1e6c7511b9e6b04e64ba1c72f0871a90c01"
     },
     {
       "name": "edit-preserving-voice",
@@ -257,15 +257,15 @@
     },
     {
       "name": "expand-product",
-      "description": "Scale a validated core (×N) with metrics and core-path…",
+      "description": "Scale a validated core (×N) with metrics and core-path evidence.",
       "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:9d85441ab4ceafd2608a5256cff401ef2c51f89d04bc0606bb13c084ef14e78e"
+      "packageDigest": "sha256:a915a8146db6c5456b1af68cf5a52434082c12a3e420da3c5eeb216286f282ab"
     },
     {
       "name": "finish-product",
-      "description": "Release-grade finish/deburr of an integrated product with…",
+      "description": "Release-grade finish/deburr of an integrated product with re-proof.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:4070fafd128ed25de0932bb0ba95b118af39e3fba4949898ce4e7c3f99d9e34c"
+      "packageDigest": "sha256:6fa08c332608f6fd98af29f20c9074ec00ef58abe640af7ac8a55724048093b1"
     },
     {
       "name": "forecast-with-calibration",
@@ -281,9 +281,9 @@
     },
     {
       "name": "maintain-product",
-      "description": "Cut framed live/regression harm: repro, root-cause fix,…",
+      "description": "Cut framed live/regression harm: repro, root-cause fix, original oracle.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:d14191b5c3fc003f85e6988448ad3225960d572a32d9975f076742e0dea0f15d"
+      "packageDigest": "sha256:e06105e6160318326c644ee422a5b44799c4c92235afefeef127b3f8f1c67bdb"
     },
     {
       "name": "model-security-threats",
@@ -347,15 +347,15 @@
     },
     {
       "name": "prototype-product",
-      "description": "Learning probe only: cheapest real experiment and…",
+      "description": "Learning probe: cheapest real experiment and kill/continue criteria.",
       "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:04f4e1f8460c67a4f16223996bb7c2007b796cd205b72901f08fb525e5f999e5"
+      "packageDigest": "sha256:d4b1e01ebb518f34f5c51d3f9ec9656458417850ed9529c1164de851061f223f"
     },
     {
       "name": "pursue-product-objective",
-      "description": "Pursue a fixed declared product objective to evidence-backed…",
+      "description": "Pursue a fixed product objective to evidence-backed completion.",
       "path": "skills/pursue-product-objective/SKILL.md",
-      "packageDigest": "sha256:1231773e3618612144e4cf329e2674a5e92cc63df4b0b60e63ad9c4c49dacef7"
+      "packageDigest": "sha256:1910d3a0c835e35075743b860c9eba926b046a7165b814eb30aa7209a4b7c853"
     },
     {
       "name": "record-structured-deliberation",
@@ -641,15 +641,15 @@
     },
     {
       "name": "run-incident-response",
-      "description": "production incident response: severity, command, mitigation,…",
+      "description": "Run production incident response: severity, command, mitigation, postmortem.",
       "path": "skills/run-incident-response/SKILL.md",
-      "packageDigest": "sha256:f1bab5bf4adde40fed76874248827ec7b01d6131bcda361375003a6810ad4e5c"
+      "packageDigest": "sha256:925987ce5f5efe9802c03279d25d1df2393903a4b50752964e6b68b5f0c11fc9"
     },
     {
       "name": "run-open-product-betterment",
-      "description": "ongoing open product betterment (no fixed objective): scout…",
+      "description": "Run open product betterment: scout high-EV work, land, re-measure.",
       "path": "skills/run-open-product-betterment/SKILL.md",
-      "packageDigest": "sha256:b5bf74425ebc1be8c1100eedbc553237cafe98adb3413dcde1a813777589598e"
+      "packageDigest": "sha256:c800e6076dbc39e69b8ac57fa5309b90937e017426d536f11f0859151db92b7a"
     },
     {
       "name": "run-product-feedback-loop",
@@ -665,9 +665,9 @@
     },
     {
       "name": "select-next-work",
-      "description": "Select/claim next high-value Work from evidence/ledger under…",
+      "description": "Select/claim next high-value Work from evidence under WIP limits.",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:0c4ff2c8673728946c4091811da7a7bb41bea5f5e2381cf6f776e9d53adc0c46"
+      "packageDigest": "sha256:d5401a3b3b3291458a77ee5ecb6441abdc1526548dd2f3a3f75230ae98c006c8"
     },
     {
       "name": "source-authoring-standard",

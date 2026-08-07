@@ -1,6 +1,6 @@
 ---
 name: build-product
-description: "Ship a missing capability end-to-end on the correct…"
+description: "Ship a missing capability end-to-end on the correct boundary with oracles."
 ---
 
 # Build Product

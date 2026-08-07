@@ -1,6 +1,6 @@
 ---
 name: select-next-work
-description: "Select/claim next high-value Work from evidence/ledger under…"
+description: "Select/claim next high-value Work from evidence under WIP limits."
 ---
 
 # Select Next Work

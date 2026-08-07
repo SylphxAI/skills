@@ -1,6 +1,6 @@
 ---
 name: run-open-product-betterment
-description: "ongoing open product betterment (no fixed objective): scout…"
+description: "Run open product betterment: scout high-EV work, land, re-measure."
 ---
 
 # Run Open Product Betterment
