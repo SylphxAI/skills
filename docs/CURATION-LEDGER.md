@@ -1,35 +1,35 @@
-# Curation ledger — user-job catalog (v5.1)
+# Curation ledger
 
 ## Principle
 
-Listing skills are **workflows users request**. Overlapping shapes and policies are **references**, not parallel listings. Anything agents must open after install must live under `skills/`.
+Listing skills are **workflows users request**. Constraint depth lives under the
+workflow that applies it. No standards bag skill. No docs-only agent binding.
 
-## Executed (v5)
-
-| Action | Detail |
-| --- | --- |
-| demote | all `*-standard` / `*-policy` / `*-profile` off the listing catalog |
-| merge | design-app/game/saas/marketing/… → `design-product` + shape references |
-| absorb | `build-keel-title` → `build-product/references/keel-app` (product term: app, not title) |
-| absorb | `resolve-support-case` → `operate-customer-support/references/resolve-one-case` |
-| merge | all `review-*` → `review-domain` + domain references |
-| move | `design-prompt-architecture` → `engineer-agent-context/references/prompt-architecture` |
-
-## Executed (v5.1 packaging fix)
+## v5 workflows
 
 | Action | Detail |
 | --- | --- |
-| relocate | policy packs → `skills/adopt-repo-standards/references/policies/` (installable) |
-| demote docs | `docs/policies/` is a human pointer only; no binding method depth there |
-| rewire | workflow composition paths use `../adopt-repo-standards/references/policies/<pack>/` |
+| demote | `*-standard` / `*-policy` / `*-profile` off the listing catalog |
+| merge | design shapes → `design-product` + references |
+| absorb | Keel app tooling → `build-product/references/keel-app` |
+| absorb | resolve-support-case → `operate-customer-support/references/resolve-one-case` |
+| merge | domain reviews → `review-domain` + references |
 
-## Naming
+## v5.1 packaging mistake (corrected)
 
-- Prefer **app** / **product** / **game** in agent-facing language.
-- Keel type name `Title` may appear only as engine API vocabulary inside Keel references.
+Putting all packs under `adopt-repo-standards/references/policies/` fixed install
+visibility but **broke discovery semantics** (fake bag skill).
+
+## v5.2 owner placement
+
+| Action | Detail |
+| --- | --- |
+| place | each pack under its applying workflow's `references/` |
+| link | other workflows point to owner path; no duplicate pack trees |
+| keep | `docs/` human-only; `adopt-repo-standards` is only *repo adoption* |
 
 ## Non-goals
 
-- Deleting researched method text (moved, not destroyed)
 - Meta-router skill
-- Restoring policy packs as listing skills
+- Restoring packs as listing skills
+- Destroying pack method text

@@ -33,7 +33,7 @@ Throwaway fidelity is fine. Learning quality beats permanence.
 - Keep the set finishable inside the time box
 
 ### 4. Implement
-- When landing source: apply constraints from `../adopt-repo-standards/references/policies/source-authoring-standard/` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
+- When landing source: apply constraints from `../drive-to-delivery/references/source-authoring-standard/` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
 - Minimum interactive or observable slice in the real workspace when possible
 - Mark throwaway and placeholders explicitly
 - Do not fake future production architecture unless the hypothesis is about that architecture

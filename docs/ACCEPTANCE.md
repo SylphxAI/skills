@@ -1,18 +1,8 @@
-# Acceptance — user-job skills catalog (v5.1)
+# Acceptance
 
-## Objective
-
-Skills catalog matches industry workflow definition and user mental model:
-
-1. Listing skills are workflows, not policies
-2. Overlapping domains use one skill + references
-3. Engine tooling (Keel) is reference under product build, not a separate "title" skill
-4. Policy/constraint packs that agents must apply are **installable** under skill `references/`
-5. Content preserved; listing budget healthy; tests/install green
-
-## Evidence
-
-- `skills/adopt-repo-standards/references/policies/*/README.md` present for each pack
-- `docs/policies/` contains only a pointer README
-- package tests and `catalog.json` green after this cut
-- reinstall shows packs under the installed `adopt-repo-standards` package
+1. Listing skills are workflows only (no `*-standard` listings).
+2. Each former policy pack has exactly one owner under `skills/<owner>/references/<pack>/`.
+3. No `skills/*/references/policies/` bag.
+4. Workflow bodies that need a pack link to the owner path and say when to open it.
+5. `docs/` is not the agent install path for binding method depth.
+6. `npm test` green; install ships packs with their owner skills.

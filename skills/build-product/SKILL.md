@@ -74,3 +74,14 @@ When the product is implemented on **Keel** (app, game client, multi-platform sh
 
 Prefer product-repo tools and Platform services the same way: name them in research/implement steps, load depth from docs/references when needed.
 
+
+## Progressive disclosure
+
+When implementing, open only depth you need:
+
+1. [references/keel-app/](references/keel-app/) — Keel app tooling (when the product uses Keel)
+2. [references/engineering-standard/](references/engineering-standard/) — engineering constraints while building
+3. [references/risk-matched-verification-standard/](references/risk-matched-verification-standard) — verification depth matched to risk
+4. [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — platform-first boundaries when relevant
+5. Source landing rules live under `../drive-to-delivery/references/source-authoring-standard/`
+

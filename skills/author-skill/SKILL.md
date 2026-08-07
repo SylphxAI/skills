@@ -13,6 +13,14 @@ Build skills that match the open Agent Skills model: one specialized job, progre
 - Rewriting a skill that is too broad, too vague, or unused
 - Extracting a repeated correction loop into a reusable package
 
+## Standards vs skills
+
+- A **standard** (coding rules, delivery predicates, verification matrices) is **not** a skill.
+- Put it under the workflow that applies it: `skills/<job>/references/<topic>/`.
+- The workflow body must say **when** to open that reference. Discovery is the job name, not the standard name.
+- Do not create a skill whose only purpose is to hold standards.
+- Do not put agent-needed depth only under `docs/` (not installed).
+
 ## Before you write
 
 Only create a skill if all of these hold:
@@ -103,7 +111,6 @@ interface:
 ## Related depth
 
 - Folded curator/distill/eval material: [references/](references/) (`curate-skill-repository`, `distill-source-to-skill`, `design-skill-evals`)
-- Org-wide methods library skill: `` → its `references/INDEX.md`
 
 ## Archived depth
 

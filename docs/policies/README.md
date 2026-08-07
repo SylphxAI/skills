@@ -1,26 +1,13 @@
-# Policy packs (installable location)
+# Policies (human pointer)
 
-Org policy packs are **not** listing skills. They ship **inside** the installed
-skill package:
+Org constraint packs are **not** listing skills and are **not** stored here for agents.
 
-`skills/adopt-repo-standards/references/policies/<pack>/`
+Each pack lives under the workflow that applies it, for example:
 
-Agents only receive packages under `skills/` from the installer. Do not put
-binding method depth only under `docs/` — documentation here is a pointer for
-humans browsing the repository.
+- `skills/build-product/references/engineering-standard/`
+- `skills/drive-to-delivery/references/source-authoring-standard/`
+- `skills/adopt-repo-standards/references/project-manifest-standard/`
 
-## Catalog
+See [docs/MODEL.md](../MODEL.md) for the full owner map.
 
-See the directories under:
-
-[../../skills/adopt-repo-standards/references/policies/](../../skills/adopt-repo-standards/references/policies/)
-
-## Progressive disclosure
-
-Workflow skills compose constraints by opening those packs when the job needs
-them. Prefer paths relative to installed skill packages, for example from
-`drive-to-delivery`:
-
-`../adopt-repo-standards/references/policies/<pack>/`
-
-Primary entry is usually `README.md` then `references/full-standard.md`.
+`docs/` is not installed into agent skill roots.

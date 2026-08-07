@@ -1,6 +1,6 @@
 ---
 name: adopt-repo-standards
-description: "Adopt engineering standards into a repo: constitution, manifest, fences."
+description: "Adopt engineering baseline into a repo: constitution, manifest, fences."
 ---
 
 # Adopt Repo Standards
@@ -27,6 +27,11 @@ adoption** cycle—not a permanent dual instruction stack.
 ### 2. Research
 - What is already present vs missing (read repo; do not invent authority)
 - Depth: [references/full-standard.md](references/full-standard.md)
+- When wiring project facts: open [references/project-manifest-standard/](references/project-manifest-standard/)
+- When choosing stack/profile fences: open [references/enterprise-profile-standard/](references/enterprise-profile-standard/) and [references/enterprise-control-plane-standard/](references/enterprise-control-plane-standard/) as needed
+- For implementation shape constraints applied *while adopting*, open sibling depth under other workflows only if this adoption must implement product code:
+  - `../build-product/references/engineering-standard/`
+  - `../select-dependency-versions/references/technology-stack-profile/`
 - Stop when more reading will not change the adoption set
 
 ### 3. Admit work
@@ -34,11 +39,10 @@ adoption** cycle—not a permanent dual instruction stack.
 - **Out:** unrelated product features; forever dual AGENTS layouts
 
 ### 4. Implement
-- When landing source: apply constraints from `references/policies/source-authoring-standard/` — **L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome(s).
+- When landing source for this adoption: open `../drive-to-delivery/references/source-authoring-standard/` (**L1** batch, **L2** atomic commits, **L3** revert-safe PR outcome)
 - Install/update required baseline surfaces on the owning paths
 - Prefer hard-cut of predecessor instruction layouts (see `execute-hard-cutover`)
-- Compose constraint packs under `references/policies/` (for example `engineering-standard`, `project-manifest-standard`)
-as constraints—do not copy entire standards into the product repo
+- Apply constraint depth as **constraints on the adoption artifact**—do not copy entire standards into the product repo
 
 ### 5. Deliver / verify
 - Entrypoints resolve; conformance checks run as declared
@@ -52,10 +56,12 @@ predecessor dual instruction authority is retired for the framed scope.
 
 ## Progressive disclosure
 
-1. [references/full-standard.md](references/full-standard.md) — adoption surfaces and retirement method.
-2. [references/policies/INDEX.md](references/policies/INDEX.md) — installable org constraint packs (constraints, not separate listing skills). Open only packs matching the adoption or compose need.
+1. [references/full-standard.md](references/full-standard.md) — adoption surfaces and retirement method
+2. [references/project-manifest-standard/](references/project-manifest-standard/) — project facts schema and placement
+3. Other packs only when the step above says so (owned by the workflow that applies them)
 
 ## Boundaries
 
 - Does not grant deploy or credential capabilities.
+- Does not own every org constraint pack; those live under the workflows that apply them.
 - Does not replace product-local ADRs where those own decisions.

@@ -4,24 +4,16 @@ Agent **workflow** skills for Codex, Claude Code, and Grok Build.
 
 ## What a skill is
 
-A skill is a **job procedure** users request (design product, build product, review domain, …).  
-Depth and engine-specific tooling live in `references/`.
+A skill is a **job procedure** a user or agent intentionally starts.  
+Depth (including coding/delivery standards) lives in that job's `references/`,
+opened when the procedure says so—not as separate "standard" skills and not
+only under `docs/`.
 
-Org **policy packs** are not listing skills. They install under:
-
-`skills/adopt-repo-standards/references/policies/`
-
-so agents can open them after skill install. Repository `docs/` is for humans browsing git; it is not the agent install path.
+See [docs/MODEL.md](docs/MODEL.md).
 
 ## Install
 
 > Install this: https://github.com/SylphxAI/skills
-
-## Docs
-
-- [docs/MODEL.md](docs/MODEL.md)
-- [docs/CURATION-LEDGER.md](docs/CURATION-LEDGER.md)
-- [docs/policies/](docs/policies/) (pointer to installable packs)
 
 ## Develop
 

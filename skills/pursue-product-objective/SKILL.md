@@ -39,7 +39,7 @@ while objective evidence is incomplete:
   7. Continue—batch clear ≠ objective complete
 ```
 
-Compose `../adopt-repo-standards/references/policies/source-authoring-standard/` (and delivery/engineering policy as needed)
+Compose `../drive-to-delivery/references/source-authoring-standard/` (and delivery/engineering policy as needed)
 for Git/PR rules. Summary of the three layers:
 
 | Layer | Meaning here |
