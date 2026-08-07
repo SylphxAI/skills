@@ -98,6 +98,11 @@ a folder, topic, governance mechanism, or generated catalog row.
   security-sensitive detail, or hidden identifiers. Preserve a useful method
   only through authorized, non-reconstructable generalization or redaction.
 
+
+## Progressive disclosure
+
+- [references/repository-curation-patterns.md](references/repository-curation-patterns.md) — open when needed for depth
+
 ## Output format
 
 Repository boundary and users:

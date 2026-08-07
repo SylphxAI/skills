@@ -56,6 +56,13 @@ refund-authority, support, and finance handoffs without copying sibling facts.
 - Do not call release gates complete unless every gate names the fixture, dashboard/alert, rollback or kill-switch path, owner, and approval evidence.
 - Do not describe webhook replay as a generic queue drain; every replay state needs required evidence, ordering/idempotency rule, exit gate, dead-letter handling, customer/support impact, and incident-review artifact.
 
+
+## Progressive disclosure
+
+- [references/billing-reconciliation-patterns.md](references/billing-reconciliation-patterns.md) — open when needed for depth
+- [references/payment-platform-patterns.md](references/payment-platform-patterns.md) — open when needed for depth
+- [references/product-artifact-envelope.schema.json](references/product-artifact-envelope.schema.json) — open when needed for depth
+
 ## Output format
 
 ```text

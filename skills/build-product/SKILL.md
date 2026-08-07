@@ -59,33 +59,19 @@ No permanent workarounds. Prefer durable work on the owning layer.
 1. Framed capability is usable under the stated oracle, or only externally blocked  
 2. Ownership of changes is honest  
 3. Residuals are listed  
-4. No known ship-blocker for this slice was ignored  
-
+4. No known ship-blocker for this slice was ignored
 
 ## Progressive disclosure
+
+Open only depth the current build needs:
 
 - [references/keel-app/](references/keel-app/) — Keel app tooling when the product uses Keel
 - [references/engineering-standard/](references/engineering-standard/) — engineering constraints while building
 - [references/risk-matched-verification-standard/](references/risk-matched-verification-standard/) — risk-matched verification
 - [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — platform-first boundaries
-- Related jobs (separate skills when requested): `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`
 - Source landing: `../drive-to-delivery/references/source-authoring-standard/`
+- Related jobs (separate skills when requested): `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`
 
-## Output
-
-Capability · changes · oracle evidence · residuals
-
-## Platform / engine tools (references, not separate skills)
-
-When the product is implemented on **Keel** (app, game client, multi-platform shell):
-
-- Read [references/keel-app/METHOD.md](references/keel-app/METHOD.md) for engine boundaries, pack, doctor, examples.
-- Do **not** invent a separate "build engine product" skill — the user job is still **build product**.
-
-Prefer product-repo tools and Platform services the same way: name them in research/implement steps, load depth from docs/references when needed.
-
-
-## Progressive disclosure
 
 When implementing, open only depth you need:
 

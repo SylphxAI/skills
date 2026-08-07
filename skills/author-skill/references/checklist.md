@@ -7,7 +7,7 @@
 - [ ] When to use is positive and precise
 - [ ] Method steps + done criteria
 - [ ] No multi-agent staffing
-- [ ] Class correct (workflow/review/policy/adapter)
+- [ ] Class correct (listing job / reference depth (not policy listing))
 - [ ] `agents/openai.yaml` present
 - [ ] Depth in `references/` if needed
 - [ ] `npm run build:catalog && npm test`

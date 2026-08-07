@@ -62,3 +62,7 @@ atomic commits and a revert-safe PR outcome L1/L2/L3 only when this job mutates 
 - Screenshot or explicit tool-gap
 - Console/page errors listed or clean
 - Human-facing summary without false production claims
+
+## Progressive disclosure
+
+- [references/preview-honesty.md](references/preview-honesty.md) — open when needed for depth

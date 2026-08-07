@@ -155,3 +155,9 @@ cross-surface identity and semantics agree, the real product has been rendered
 or played through at the applicable matrix, exact regressions and budgets pass,
 and delivery state is reported truthfully. “No further imaginable improvement”
 is not required; no remaining positive-net material defect at this target is.
+
+## Progressive disclosure
+
+- [references/app-saas-finish.md](references/app-saas-finish.md) — open when needed for depth
+- [references/finish-contract.md](references/finish-contract.md) — open when needed for depth
+- [references/game-finish.md](references/game-finish.md) — open when needed for depth

@@ -53,6 +53,11 @@ Produce a **User Research Protocol and Findings**:
 If only the protocol or only the findings are requested, produce that section
 without inventing the missing study phase.
 
+
+## Progressive disclosure
+
+- [references/research-method.md](references/research-method.md) — open when needed for depth
+
 ## Boundaries
 
 - Use `synthesize-market-research` for category, competitor, pricing, or demand

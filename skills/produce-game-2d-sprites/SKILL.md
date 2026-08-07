@@ -107,6 +107,17 @@ Scripts adapted from MIT **agent-sprite-forge** (see
 `scripts/LICENSE-agent-sprite-forge` and [SOURCE.md](SOURCE.md)). Method is
 Sylphx-native and Keel-aligned.
 
+
+## Progressive disclosure
+
+- [references/animation-loop-qc.md](references/animation-loop-qc.md) — open when needed for depth
+- [references/character-consistency.md](references/character-consistency.md) — open when needed for depth
+- [references/engine-ready-defaults.md](references/engine-ready-defaults.md) — open when needed for depth
+- [references/game-ui-icons-and-hud-art.md](references/game-ui-icons-and-hud-art.md) — open when needed for depth
+- [references/modes-actions-bundles.md](references/modes-actions-bundles.md) — open when needed for depth
+- [references/prompt-rules.md](references/prompt-rules.md) — open when needed for depth
+- [references/video-to-sprite-pipeline.md](references/video-to-sprite-pipeline.md) — open when needed for depth
+
 ## Output
 
 Engine-ready asset paths, QC notes, residuals, and evidence of host tools used

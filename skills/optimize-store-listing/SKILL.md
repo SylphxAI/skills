@@ -96,6 +96,12 @@ Unknown/stale channel authority blocks submission of that adapter.
 - Do not capture, render, localize, or hand-edit product media; request a new
   canonical `produce-product-assets` pack revision.
 
+
+## Progressive disclosure
+
+- [references/product-artifact-envelope.schema.json](references/product-artifact-envelope.schema.json) — open when needed for depth
+- [references/store-listing-optimization-patterns.md](references/store-listing-optimization-patterns.md) — open when needed for depth
+
 ## Output contract
 
 Return one typed Channel Listing and Creative Sequence with:

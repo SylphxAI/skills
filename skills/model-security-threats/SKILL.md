@@ -82,6 +82,11 @@ Produce a **Threat Model and Security Design Contract** containing:
 - Do not create universal gates or infrastructure when a bounded design
   control closes the material path more cheaply and reliably.
 
+
+## Progressive disclosure
+
+- [references/threat-modeling-method.md](references/threat-modeling-method.md) — open when needed for depth
+
 ## Boundaries
 
 - `review-product-abuse-risk` owns adaptive fraud, incentive abuse, enforcement,

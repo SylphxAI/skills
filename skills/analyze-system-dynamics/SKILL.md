@@ -48,6 +48,11 @@ Produce a **Dynamic System Model**:
 - **Validation plan** — discriminating measures, scenario replay, monitoring,
   and conditions requiring model revision.
 
+
+## Progressive disclosure
+
+- [references/system-dynamics-methods.md](references/system-dynamics-methods.md) — open when needed for depth
+
 ## Boundaries
 
 - Use ``analyze-critically` for a bounded defect or competing root-cause

@@ -23,6 +23,13 @@ This is **one user job** (review/assess). Domain checklists differ; they are ref
 5. Produce **one** ranked findings + actions record for that domain.
 6. For multi-domain synthesis after several reviews, open [references/multi-review-synthesis/METHOD.md](references/multi-review-synthesis/METHOD.md).
 
+
+## Progressive disclosure
+
+1. Open [references/INDEX.md](references/INDEX.md) and pick **one** domain pack matching the review ask.
+2. Open only that pack's METHOD (and nested refs if the pack says so).
+3. Optional multi-domain synthesis only when the ask requires it.
+
 ## Output
 
 Domain review record · severity-ranked findings · residuals · recommended actions

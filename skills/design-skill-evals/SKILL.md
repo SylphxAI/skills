@@ -87,6 +87,12 @@ capability, or adoption/outcome telemetry.
 - Separate behavior improvement from demand, business outcome, current
   authority, and production proof.
 
+
+## Progressive disclosure
+
+- [references/holdout-sequential-evaluation.md](references/holdout-sequential-evaluation.md) — open when needed for depth
+- [references/skill-eval-systems.md](references/skill-eval-systems.md) — open when needed for depth
+
 ## Output contract
 
 Return one Skill Evaluation Program containing:

@@ -63,6 +63,21 @@ Load only the references needed for the declared surface, but always read the ve
 7. **Render and challenge.** Exercise the viewport × state × input matrix with representative content. Inspect screenshots or the live render; check focus order, contrast, reduced motion, text expansion, layout stability, console/runtime errors, slow/offline behavior where relevant, and low-end budgets.
 8. **Report proof.** Separate implemented, rendered, mechanically tested, manually inspected, assumed, and unverified. Name files and commands exactly; do not call a mockup production-ready or a local render deployed.
 
+
+## Progressive disclosure
+
+- [references/accessibility-motion-and-performance.md](references/accessibility-motion-and-performance.md) — open when needed for depth
+- [references/game-overlay-and-hud.md](references/game-overlay-and-hud.md) — open when needed for depth
+- [references/interface-craft-rules.md](references/interface-craft-rules.md) — open when needed for depth
+- [references/motion-craft-floors.md](references/motion-craft-floors.md) — open when needed for depth
+- [references/premium-non-generic-ui.md](references/premium-non-generic-ui.md) — open when needed for depth
+- [references/responsive-mobile-and-input.md](references/responsive-mobile-and-input.md) — open when needed for depth
+- [references/states-forms-and-recovery.md](references/states-forms-and-recovery.md) — open when needed for depth
+- [references/surfaces-and-elevation.md](references/surfaces-and-elevation.md) — open when needed for depth
+- [references/typography-floors.md](references/typography-floors.md) — open when needed for depth
+- [references/ux-writing-and-truth.md](references/ux-writing-and-truth.md) — open when needed for depth
+- [references/visual-verification-and-delivery.md](references/visual-verification-and-delivery.md) — open when needed for depth
+
 ## Output contract
 
 Return only the fields useful to the selected mode.

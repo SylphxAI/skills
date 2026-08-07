@@ -48,6 +48,11 @@ expansion, cost, and trust constraints.
 - Do not let pricing copy or billing implementation silently change the approved
   value metric, limits, price, renewal, cancellation, or downgrade semantics.
 
+
+## Progressive disclosure
+
+- [references/pricing-packaging-patterns.md](references/pricing-packaging-patterns.md) — open when needed for depth
+
 ## Output format
 
 ```text

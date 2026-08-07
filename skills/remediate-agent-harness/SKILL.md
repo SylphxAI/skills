@@ -46,6 +46,11 @@ Produce one **Learning Change Record** containing:
 - promote, revise, or revert verdict with rollback;
 - recurrence signal, review trigger, owner, and retained uncertainty.
 
+
+## Progressive disclosure
+
+- [references/learning-system-methods.md](references/learning-system-methods.md) — open when needed for depth
+
 ## Boundaries
 
 - Use `synthesize-evidence-brief` (see references/critical-analysis) when the primary job is diagnosing an uncertain cause.

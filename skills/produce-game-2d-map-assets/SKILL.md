@@ -73,6 +73,15 @@ Extract/preview scripts adapted from MIT **agent-sprite-forge** (see
 `scripts/LICENSE-agent-sprite-forge` and [SOURCE.md](SOURCE.md)). Method is
 Sylphx-native and Keel-aligned.
 
+
+## Progressive disclosure
+
+- [references/layered-map-contract.md](references/layered-map-contract.md) — open when needed for depth
+- [references/layered-map-notes.md](references/layered-map-notes.md) — open when needed for depth
+- [references/map-pipeline-selection.md](references/map-pipeline-selection.md) — open when needed for depth
+- [references/prop-pack-contract.md](references/prop-pack-contract.md) — open when needed for depth
+- [references/tileset-and-prop-qc.md](references/tileset-and-prop-qc.md) — open when needed for depth
+
 ## Output
 
 Tile/prop paths, preview composites, QC notes, residuals.

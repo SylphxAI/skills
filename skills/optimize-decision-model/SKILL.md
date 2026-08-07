@@ -57,6 +57,11 @@ Produce a **Constrained Decision Model**:
   conditions;
 - unsupported claims, unresolved model risk, and implementation handoff.
 
+
+## Progressive disclosure
+
+- [references/optimization-modeling-method.md](references/optimization-modeling-method.md) — open when needed for depth
+
 ## Boundaries
 
 - Use `review-optimization-objective` for the real outcome, proxy, Goodhart,

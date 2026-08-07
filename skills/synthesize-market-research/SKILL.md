@@ -54,6 +54,12 @@ unsupported market opinions.
 - Do not hide negative evidence, source conflicts, weak coverage, or uncertainty.
 - Do not recommend dark patterns merely because competitors use them.
 
+
+## Progressive disclosure
+
+- [references/positioning-decision.md](references/positioning-decision.md) — open when needed for depth
+- [references/research-synthesis-method.md](references/research-synthesis-method.md) — open when needed for depth
+
 ## Output format
 
 Decision and scope:
