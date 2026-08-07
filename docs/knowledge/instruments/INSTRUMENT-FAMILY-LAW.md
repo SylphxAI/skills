@@ -84,3 +84,17 @@ Prism (`smart-reader-mcp`) is **not** an Instrument product.
 - Sniff utility may live as a tiny host skill or optional SDK helper.
 - Agents compose Citra/Iris/Cue via multi-server MCP + skill routing.
 - Do not reinvest in Prism release trains, marketplace listings, or brand growth.
+
+
+## Delivery honesty (do not collapse planes)
+
+| Plane | Meaning |
+| --- | --- |
+| Source tip | Git `main` package identity + code |
+| Candidate PR | Open change not yet on main |
+| Registry | `npm view` published versions (may lag tip) |
+| Live MCP host | Installed binary actually running |
+
+Brand-sole on **source tip** does not imply brand-sole on **npm registry** until release publish + deprecate transitional.
+
+As of the hard-cut implementation: Instruments source tips are brand-sole (`@sylphx/{citra,iris,cue,spine,lookout,locus}`) with Evidence Envelope v1 on tool results. Registry publish of those tip versions is a separate delivery terminal.
