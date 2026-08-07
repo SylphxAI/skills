@@ -34,7 +34,7 @@ Do not scale a broken core.
 - Prefer one coherent scale bet
 
 ### 4. Implement
-- When landing source: apply constraints from `../adopt-repo-standards/references/policies/source-authoring-standard/` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
+- When landing source: apply constraints from `../drive-to-delivery/references/source-authoring-standard/` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
 - Scale bet on the correct layer
 - Minimum observability for the new scale dimension when missing
 - Avoid hacks that cannot survive the target ×N

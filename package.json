@@ -1,7 +1,7 @@
 {
   "name": "sylphx-skills",
-  "version": "5.0.1",
-  "description": "User-job Agent Skills: workflows + installable policy references",
+  "version": "5.1.0",
+  "description": "User-job Agent Skills: workflow listings; constraint depth under applying workflows",
   "license": "MIT",
   "type": "module",
   "bin": {

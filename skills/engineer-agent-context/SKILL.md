@@ -69,7 +69,7 @@ Create a **Context and Memory Contract** with:
 - Use `design-prompt-architecture` for instruction hierarchy, skill metadata, and
   runtime constitutions.
 - Use `review-agent-planning-system` for goals, plans, actions, and replanning.
-- Use `../adopt-repo-standards/references/policies/work-coordination-standard/` for portable claim, lease, checkpoint, and
+- Use `../select-next-work/references/work-coordination-standard/` for portable claim, lease, checkpoint, and
   handoff semantics; use the matching product adapter for live operations.
 - Use a product privacy or security skill for jurisdictional and threat-model
   requirements beyond this context contract.
