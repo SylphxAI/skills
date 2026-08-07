@@ -44,7 +44,7 @@ Re-read Keel tip docs—do not invent APIs from chat memory.
 ### 3. Design composition (load on demand)
 
 - Whole-game thesis/loops → whole-game design
-- Premium HUD/menus → `craft-product-interface` (+ premium + game-overlay refs)
+- Premium HUD/menus → `references/craft-interface` (+ premium + game-overlay refs)
 - Sprite/tile production → `produce-game-2d-*`
 - Playable floors → [references/playable-implementation-floor.md](references/playable-implementation-floor.md)
 
@@ -86,8 +86,8 @@ app paths · systems/intents · pack/profile notes · oracle evidence · residua
 When the app is a game (not only app chrome), also load:
 
 - [references/game-craft-absorbed.md](references/game-craft-absorbed.md) — loop/feel/genre principles rewritten off foreign browser engines
-- Asset production: `produce-game-2d-sprites`, `produce-game-2d-map-assets`
-- UI craft: `craft-product-interface` (Keel Paint/ThemePack — never a second React UI tree)
+- Asset production: `produce-product-assets` (see references/game-2d-sprites), `produce-product-assets` (see references/game-2d-map-assets)
+- UI craft: `references/craft-interface` (Keel Paint/ThemePack — never a second React UI tree)
 
 Platform services (auth, deploy, data) come from **Sylphx Platform** when needed — not workspace-kit clones.
 

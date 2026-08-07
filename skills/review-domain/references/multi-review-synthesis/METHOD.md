@@ -34,7 +34,7 @@ for an executable oracle.
 ### Classify and repair once
 
 Apply the canonical finding and expansion classification from
-`bound-request-scope`. Batch terminal blockers and material same-cause repairs;
+`drive-to-delivery` (see references/bound-request-scope). Batch terminal blockers and material same-cause repairs;
 include positive-net improvements only through its bounded value scan, and do
 not let independent or speculative expansion extend this review.
 
@@ -67,7 +67,7 @@ Produce a **Review Closure Record**:
 ## Boundaries
 
 - This skill structures review; domain skills supply domain criteria.
-- `bound-request-scope` owns value and expansion control.
+- `drive-to-delivery` (see references/bound-request-scope) owns value and expansion control.
 - `evidence-and-claims-standard` owns the truthfulness of the closure claim.
 - Independent reviewers increase coverage only when their perspectives or
   evidence channels differ.

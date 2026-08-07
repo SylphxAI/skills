@@ -1,6 +1,6 @@
 ---
 name: produce-product-assets
-description: "Produce product assets to brief and brand constraints."
+description: "Produce product assets (creatives, store, game 2D packs) to brief and brand."
 ---
 
 # Produce Product Assets
@@ -143,6 +143,14 @@ Reject or redesign a pack that:
 - claims uploaded, approved, released, live, or conversion-proven from local
   files, generated manifests, or self-reported status.
 
+
+## Progressive disclosure
+
+- Core asset patterns under [references/](references/)
+- [references/store-listing/](references/store-listing/) — store listing optimization
+- [references/game-2d-sprites/](references/game-2d-sprites/) — engine-ready 2D sprites
+- [references/game-2d-map-assets/](references/game-2d-map-assets/) — map tiles/props packs
+
 ## Output contract
 
 Return one **Product Asset Production Pack** containing:
@@ -177,7 +185,7 @@ Use `artifactDigest` only on exact child files or sealed input references with
   rollout, withdrawal, and observed channel evidence.
 - program planning owns planning and observed-state revisions of
   the cross-domain dependency graph and composition index, not this pack.
-- `craft-product-interface` owns product-interface implementation and polish, not
+- `build-product` (see references/craft-interface) owns product-interface implementation and polish, not
   promotional capture or media production.
 
 Complete only when the selected pack can be reproduced from owned sources,

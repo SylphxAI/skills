@@ -100,7 +100,7 @@ requested artifact.
 
 - `technology-stack-profile` and decision methods choose the technology;
   this Skill chooses its current eligible release after that choice.
-- `bound-request-scope`, `decision-quality-standard`, and `engineering-standard`
+- `drive-to-delivery` (see references/bound-request-scope), `decision-quality-standard`, and `engineering-standard`
   decide whether commodity functionality should use a dependency or a direct
   implementation; this Skill starts after a dependency is selected.
 - `engineering-standard` supplies reproducibility, architecture, testing, and

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 50,
+  "count": 20,
   "skills": [
     {
       "name": "adopt-repo-standards",
@@ -10,112 +10,28 @@
       "packageDigest": "sha256:7b77f08e54d8b9ad14f4a7b5f5137ec7131585da7ca8a5964ce0a5b64b0f9ef7"
     },
     {
-      "name": "analyze-causal-inference",
-      "description": "Estimate causal effects: identification, estimators, robustness bounds.",
-      "path": "skills/analyze-causal-inference/SKILL.md",
-      "packageDigest": "sha256:329b5bea34a2c7315e34b3d2eb8a1330acca47d35bf84f774f273271d338d49e"
-    },
-    {
-      "name": "analyze-critically",
-      "description": "Adversarially critique a claim/plan/design with kill criteria.",
-      "path": "skills/analyze-critically/SKILL.md",
-      "packageDigest": "sha256:37e0c74090756489473716b073c8d11c7077f38688bc43ca10329ed465269f69"
-    },
-    {
-      "name": "analyze-system-dynamics",
-      "description": "Map stubborn loops: stocks, delays, incentives, policy resistance.",
-      "path": "skills/analyze-system-dynamics/SKILL.md",
-      "packageDigest": "sha256:8227e567bed0e7fc26089e049a9082d5b383fbdbe835823986519090297a1ee4"
-    },
-    {
       "name": "author-skill",
-      "description": "Create or revise an Agent Skill package: job, description, method.",
+      "description": "Create or revise an Agent Skill: atomic action, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:1860bd7e68bed45c2b00d02ab84d92447703f8049b020a6b97d8aa98ce6d1a72"
-    },
-    {
-      "name": "bound-request-scope",
-      "description": "Bound this request: objective, in/out, non-goals, cut lines.",
-      "path": "skills/bound-request-scope/SKILL.md",
-      "packageDigest": "sha256:61ec8410ae24bf8efa524a5f4cbd5616636ddd7869cb4ab5071b09a442a7f5c6"
-    },
-    {
-      "name": "build-distribution-readiness",
-      "description": "Build distribution readiness: artifacts, install/upgrade, channel readback.",
-      "path": "skills/build-distribution-readiness/SKILL.md",
-      "packageDigest": "sha256:666e310c7fc471206de560a9679eb9c4e98b90a8648742f18ad717550343cc1d"
-    },
-    {
-      "name": "build-payment-readiness",
-      "description": "Build production payments: providers, ledger, webhooks, reconciliation.",
-      "path": "skills/build-payment-readiness/SKILL.md",
-      "packageDigest": "sha256:61c244baad72629e490625335433f33c75043b822023f54ddebaa25b705f44a5"
+      "packageDigest": "sha256:13c5bc46c7beb30c85f6bb33ac00697ed85f38b872b3ee5ccd43df0d7d999813"
     },
     {
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:b2f9fa26f536afd16c880b63b0793ee15ffca387b6802480c5de1c228896db31"
-    },
-    {
-      "name": "compose-product-portfolio",
-      "description": "Compose multi-product portfolio: platform vs products, connectors, bundles.",
-      "path": "skills/compose-product-portfolio/SKILL.md",
-      "packageDigest": "sha256:11b296c8a00a3539c1c01be53eb7b0b5cde7341405b0bafbdffd016792f5fac2"
-    },
-    {
-      "name": "compose-product-program",
-      "description": "Compose multi-work product program: phases, dependencies, kill/scale.",
-      "path": "skills/compose-product-program/SKILL.md",
-      "packageDigest": "sha256:ea014eda906e6511e9ce11bac2933288b5a6574a8ad814cc5eab977a1e1813f6"
-    },
-    {
-      "name": "craft-product-interface",
-      "description": "Craft one product UI flow with states, a11y, verification.",
-      "path": "skills/craft-product-interface/SKILL.md",
-      "packageDigest": "sha256:d86766e0efeb541b1d1a4c79645f53fe0b7230ddd1b8870bf1a8aaaf76bb7082"
-    },
-    {
-      "name": "curate-skill-repository",
-      "description": "Curate skill portfolio: merge/split, collisions, retirement.",
-      "path": "skills/curate-skill-repository/SKILL.md",
-      "packageDigest": "sha256:c7b6a3fbad1776c634b80c518b20c599d663172ef935078a1c1e067e97025239"
-    },
-    {
-      "name": "decide-architecture-shape",
-      "description": "Decide one architecture shape from options with tradeoffs.",
-      "path": "skills/decide-architecture-shape/SKILL.md",
-      "packageDigest": "sha256:0f7ada1a9965d7f28e92644751db6511731ab1093f11e6ae6fdbc7763bb5258b"
+      "packageDigest": "sha256:3a895d9bebe5c2c8f41945798a83c33a51334682a72e1376bf118a74eab69db2"
     },
     {
       "name": "design-product",
       "description": "Design a product blueprint (app, game, SaaS, etc.); shape depth in references.",
       "path": "skills/design-product/SKILL.md",
-      "packageDigest": "sha256:bbecec077e8a03a7dc1c54ed1e02c7fc29a6086144553ada0171bac97a7f065b"
-    },
-    {
-      "name": "design-skill-evals",
-      "description": "Design falsifiable skill evals: routing cases, oracles, failures.",
-      "path": "skills/design-skill-evals/SKILL.md",
-      "packageDigest": "sha256:3a526fe8207e0668a442ed0084d7188f71b30c8b87bfeebdcb7f7b1bbc710551"
-    },
-    {
-      "name": "distill-source-to-skill",
-      "description": "Distill docs/repos/notes into one installable Skill package.",
-      "path": "skills/distill-source-to-skill/SKILL.md",
-      "packageDigest": "sha256:cfb0f842fe315359ca18f1ef1e8d3bdfb84cfa75abe91dbb2b1145cfad36bcd3"
+      "packageDigest": "sha256:101ffa21d7d5b699350f8d469cf0b86c28e274fb8c3086671224fd4282404093"
     },
     {
       "name": "drive-to-delivery",
       "description": "Drive one multi-phase engineering objective to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:1686449a52b76380a42d1dfb9ab17fb41fe5e9b573356d453e15221afe61c120"
-    },
-    {
-      "name": "edit-preserving-voice",
-      "description": "Edit text preserving voice, constraints, and factual claims.",
-      "path": "skills/edit-preserving-voice/SKILL.md",
-      "packageDigest": "sha256:4262e3d2b1716e82ebc278519f2cb022743f4aa59326d8a4023fb866e50f980c"
+      "packageDigest": "sha256:2b74ced0e8a5de2ea5501b5dc26e381b2bf1172c27079e34816c9b8d7a4050ce"
     },
     {
       "name": "engineer-agent-context",
@@ -124,40 +40,16 @@
       "packageDigest": "sha256:e17efc489fbb26f51f658cd1a0110b85663aa6aa612b2f271d446a14bdb91f50"
     },
     {
-      "name": "engineer-testable-requirements",
-      "description": "Turn requirements into testable acceptance criteria with oracles.",
-      "path": "skills/engineer-testable-requirements/SKILL.md",
-      "packageDigest": "sha256:05b03f630c94f3892532426479eb5a49218c5f56aae50b7e9b0021af078b0c01"
-    },
-    {
       "name": "execute-hard-cutover",
       "description": "Hard-cut predecessor to destination sole writer; retire dual paths.",
       "path": "skills/execute-hard-cutover/SKILL.md",
-      "packageDigest": "sha256:c098e5d81516f0a0fb4bd606d97cd446c7f68b27045917f3710e3de5a44d4511"
-    },
-    {
-      "name": "expand-product",
-      "description": "Scale a validated product core with metrics and core-path proof.",
-      "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:1637e292ecc238f87bcf780a394411ca3c3ac3868d199f3d99a84cb0b29b9752"
-    },
-    {
-      "name": "finish-product",
-      "description": "Finish/deburr an integrated product with re-captured evidence.",
-      "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:bde0f1080d12ac70c3119d77cde1c1e0c82438a5e44c30f73785bc8e47cf11df"
-    },
-    {
-      "name": "forecast-with-calibration",
-      "description": "Produce calibrated probabilistic forecasts with base rates and ranges.",
-      "path": "skills/forecast-with-calibration/SKILL.md",
-      "packageDigest": "sha256:1d5a5695fc86ee0ee8f65edfc938235da0ecdb09948b212d7b89678434ce9e34"
+      "packageDigest": "sha256:c0c41292b01973a4d82e9178284491be5b1bec5bf73e68b13aead0f609bd858f"
     },
     {
       "name": "maintain-product",
-      "description": "Cut live/regression harm with root-cause fix and oracle.",
+      "description": "Cut live/regression harm; remediate performance or harness with oracles.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:60d90edbb60d4761509bb1abfd59a0e4fa71aedfce39af515264956bc144d625"
+      "packageDigest": "sha256:0950511510e495925b22913e7122ee8bd14646ad447f3c2b2f0a3fce36533e65"
     },
     {
       "name": "model-security-threats",
@@ -169,85 +61,25 @@
       "name": "operate-customer-support",
       "description": "Operate customer support: triage, resolution, escalation, quality loops.",
       "path": "skills/operate-customer-support/SKILL.md",
-      "packageDigest": "sha256:eec994647a1b7d05f091f30457effc13c289155d73db5a5d6b2c1572c2429157"
-    },
-    {
-      "name": "optimize-decision-model",
-      "description": "Model a decision for optimization: objective, constraints, sensitivity.",
-      "path": "skills/optimize-decision-model/SKILL.md",
-      "packageDigest": "sha256:b981d59f90629425c5be420af20fea5fbdd13803ea04c20cc9190066ff34be8c"
-    },
-    {
-      "name": "optimize-store-listing",
-      "description": "Optimize store listing: metadata, creatives, conversion, compliance.",
-      "path": "skills/optimize-store-listing/SKILL.md",
-      "packageDigest": "sha256:aae7bd7b2596a12dc9042d7da8d8daf48a84afce0b460b9583718264a7a50139"
-    },
-    {
-      "name": "price-saas-subscription",
-      "description": "Price a SaaS subscription: packaging, meters, fences, migration.",
-      "path": "skills/price-saas-subscription/SKILL.md",
-      "packageDigest": "sha256:716feae5ee2fc6e7ff4bf4c01020b88f2e11a02d9460e019de93b418687316a1"
-    },
-    {
-      "name": "produce-game-2d-map-assets",
-      "description": "Produce 2D map tiles/props packs with extract/preview.",
-      "path": "skills/produce-game-2d-map-assets/SKILL.md",
-      "packageDigest": "sha256:28770bf0d007d6c496c2b516db3362e0829929337678bcf253ed4239c06e832f"
-    },
-    {
-      "name": "produce-game-2d-sprites",
-      "description": "Produce engine-ready 2D game sprites/sheets with QC.",
-      "path": "skills/produce-game-2d-sprites/SKILL.md",
-      "packageDigest": "sha256:4ba6074c404600904e87923c55d11f9a6a4f36bab66aa42d22fbfaa0f752f263"
+      "packageDigest": "sha256:bdc35ede4c3935726e02aa7b04c42a9cb116303e975346a943635babe16c9afe"
     },
     {
       "name": "produce-product-assets",
-      "description": "Produce product assets to brief and brand constraints.",
+      "description": "Produce product assets (creatives, store, game 2D packs) to brief and brand.",
       "path": "skills/produce-product-assets/SKILL.md",
-      "packageDigest": "sha256:d05f46c5a855e6126bbcdc168af6b2327074a8ac1615c6431468233f22f7ef90"
-    },
-    {
-      "name": "prototype-product",
-      "description": "Run a cheap real prototype with kill/continue criteria.",
-      "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:81c8d5b9b2875322a87fe5dba8aef573f0a8bd974b94e5a87bf4fd86bb9ad73c"
-    },
-    {
-      "name": "pursue-product-objective",
-      "description": "Pursue a fixed product objective to evidence-backed completion.",
-      "path": "skills/pursue-product-objective/SKILL.md",
-      "packageDigest": "sha256:99e2ca81af68cde051e4555b5347cda64021ccdab7369bc2cdd98af7ad4359c5"
-    },
-    {
-      "name": "record-structured-deliberation",
-      "description": "Record a structured deliberation: options, criteria, decision, actions.",
-      "path": "skills/record-structured-deliberation/SKILL.md",
-      "packageDigest": "sha256:5145e357142dacd022151dd903b239b96aa48d89b5e367e33919b93794ec8045"
-    },
-    {
-      "name": "remediate-agent-harness",
-      "description": "Remediate an agent harness with measured deltas and failure modes.",
-      "path": "skills/remediate-agent-harness/SKILL.md",
-      "packageDigest": "sha256:dcc1d2b6cdc256b0ac4aa427ef8f5abac51ccce3a4a592441a4b5ce1e7aa6341"
-    },
-    {
-      "name": "remediate-frontend-performance",
-      "description": "Remediate frontend performance with before/after path metrics.",
-      "path": "skills/remediate-frontend-performance/SKILL.md",
-      "packageDigest": "sha256:07da50fb1b5651426f2bcf4a53bab770db892a682c304a52b507e06da5136ef6"
+      "packageDigest": "sha256:25193a26affa4fc1118b5823215c0c5b0ef3bd077977aa1a583baa18529c6e9c"
     },
     {
       "name": "research-user-needs",
       "description": "Research user needs: jobs, evidence, segments, opportunity ranking.",
       "path": "skills/research-user-needs/SKILL.md",
-      "packageDigest": "sha256:b7803b4062f39398d1a807bca89f56f93a057ce9a89726c27e82e77869dc64bb"
+      "packageDigest": "sha256:03ec559ca80cab7f1cdf6f6abfd7c6c2a7cfbde466b5570df8a4a4d059d4481b"
     },
     {
       "name": "review-domain",
       "description": "Review a product/ops domain into one assessment; domain packs are references.",
       "path": "skills/review-domain/SKILL.md",
-      "packageDigest": "sha256:7ff4309a6e9330e7ddc269ea60b9f9b9cf791714b7bf44fe12f14198073d3055"
+      "packageDigest": "sha256:558b64f18af7aa464dabdaaa1680aaf929a10e8d5d5c67e5d4ea174c117716a1"
     },
     {
       "name": "run-incident-response",
@@ -256,34 +88,22 @@
       "packageDigest": "sha256:1dae6f723ff4256ea151d93bd3e9ceceeca3168ba328d3eb87e84c00dcd976b7"
     },
     {
-      "name": "run-open-product-betterment",
-      "description": "Run open product betterment: scout high-EV work, land, re-measure.",
-      "path": "skills/run-open-product-betterment/SKILL.md",
-      "packageDigest": "sha256:048647bfa3951644ce1c45c80efa4533263d299437f8c2fc8849d996c9eef306"
-    },
-    {
-      "name": "run-product-feedback-loop",
-      "description": "feedback learning loop: private feedback and public reviews.",
-      "path": "skills/run-product-feedback-loop/SKILL.md",
-      "packageDigest": "sha256:10dda1071657ae4eb76d8b018182c375c549ea239fb22435210740d8728040b4"
-    },
-    {
       "name": "select-dependency-versions",
       "description": "Select package/runtime versions from live authoritative sources.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:b671d1133b0b748686b2ebf285f49cc9c2cc36471ae36faad297faee944f908b"
+      "packageDigest": "sha256:0bc253866de50644f38ec4448c595b4e8649c76e5fefaf780fbb26811b073973"
     },
     {
       "name": "select-next-work",
       "description": "Select/claim next high-value Work from evidence under WIP limits.",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:24580d2aa268a3ba86c62bda177653763d47d68dbb68c3259198afa2bc223db6"
+      "packageDigest": "sha256:5e6710b77bfa547d102a2bbfc841e806c073b5b00b355bd983c807aeb244ddd3"
     },
     {
       "name": "synthesize-evidence-brief",
-      "description": "Synthesize multi-source evidence into one bounded brief with residuals.",
+      "description": "Synthesize evidence and run analysis/decision methods into one bounded brief.",
       "path": "skills/synthesize-evidence-brief/SKILL.md",
-      "packageDigest": "sha256:6b66bcd8f2be81b172c9bb52f7dd96897db5647e1b8cd2510a8cbfb98d86235a"
+      "packageDigest": "sha256:bc43e204da974fa0a0c07873357dc2ada48de25523299ad44b5d536a5a57f137"
     },
     {
       "name": "synthesize-market-research",
@@ -301,7 +121,7 @@
       "name": "write-high-signal-update",
       "description": "Write a short stakeholder update: decisions, risks, asks.",
       "path": "skills/write-high-signal-update/SKILL.md",
-      "packageDigest": "sha256:c7fb61ddce081bec04b337cb5f13d08d7b349f08c73ed3af954507be30b69d4d"
+      "packageDigest": "sha256:cbbbfe63902575f54aedf989d90ef2e1146610924437380f18de06fdcd2e6587"
     }
   ]
 }

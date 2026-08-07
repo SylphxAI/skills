@@ -92,9 +92,9 @@ project the protected authority register or raw operator evidence.
 ## Routing boundaries
 
 - `design-marketing-automation` owns the full channel portfolio, audience, positioning/message hierarchy, campaign briefs, allocation/spend, causal measurement and incrementality. This skill operates only already-selected official social channels.
-- `review-promotion-campaign` owns one campaign/offer; `produce-product-assets` owns exact media; `edit-preserving-voice` owns one fixed post/reply rewrite.
+- `review-promotion-campaign` owns one campaign/offer; `produce-product-assets` owns exact media; `write-high-signal-update` (see references/edit-preserving-voice) owns one fixed post/reply rewrite.
 - `resolve-support-case` owns one private customer case; `operate-customer-support` owns the whole support system.
-- `run-product-feedback-loop` owns authorized review/social feedback ingestion, public response evidence and product learning; this skill routes signals and operates the platform response surface.
+- `operate-customer-support` (see references/feedback-loop) owns authorized review/social feedback ingestion, public response evidence and product learning; this skill routes signals and operates the platform response surface.
 - Product Abuse, Marketplace Trust, Security, Incident and Legal owners define enforcement and authoritative high-risk decisions; this skill applies and routes them on official accounts.
 
 ## Completion check

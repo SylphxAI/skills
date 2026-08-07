@@ -32,7 +32,7 @@ naming the ticket, run **one tick** of this method.
 - `references/work-coordination-standard/` — portable ledger semantics
 - `drive-to-delivery` — **inside** each claimed bounded Work (this package does not close that objective)
 - `../drive-to-delivery/references/delivery-standard/` / `../synthesize-evidence-brief/references/evidence-and-claims-standard/` — when ticks claim delivery outcomes
-- `run-open-product-betterment` — only when the continuous job is specifically multi-aspect product betterment (compose; do not merge packages)
+- `maintain-product` (see references/open-betterment) — only when the continuous job is specifically multi-aspect product betterment (compose; do not merge packages)
 
 ## Output
 

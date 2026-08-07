@@ -6,17 +6,17 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 
 | Skill | When you need to… |
 | --- | --- |
-| `produce-game-2d-sprites` | Engine-ready 2D sprites/sheets for titles/Keel assets |
-| `produce-game-2d-map-assets` | 2D tiles/props packs + extract/preview |
+| `produce-product-assets` (see references/game-2d-sprites) | Engine-ready 2D sprites/sheets for titles/Keel assets |
+| `produce-product-assets` (see references/game-2d-map-assets) | 2D tiles/props packs + extract/preview |
 | `verify-local-web-preview` | Local web load/screenshot/console evidence |
-| `prototype-product` | Validate a hypothesis with a cheap real slice |
+| `build-product` (see references/prototype) | Validate a hypothesis with a cheap real slice |
 | `build-product` | Close a shippable capability gap |
 | `build-keel-title` | Implement external title/game on Keel (Title/pack) |
 | `maintain-product` | Reduce framed live/regression harm |
-| `expand-product` | Scale a validated core (×N) |
-| `finish-product` | Deburr/finish an integrated product |
-| `pursue-product-objective` | Follow a declared product objective to evidence-backed completion |
-| `run-open-product-betterment` | Open-ended mixed-job betterment with no fixed objective |
+| `build-product` (see references/expand) | Scale a validated core (×N) |
+| `build-product` (see references/finish) | Deburr/finish an integrated product |
+| `drive-to-delivery` (see references/pursue-objective) | Follow a declared product objective to evidence-backed completion |
+| `maintain-product` (see references/open-betterment) | Open-ended mixed-job betterment with no fixed objective |
 
 
 ## Core concept power (in job Skills only)
@@ -24,7 +24,7 @@ Agent-facing techniques (verb-led). Staffing is not part of Skills.
 Product design/build/finish jobs encode **one strong core concept**: simple,
 integrated, deep, capable, extensible without inventing a new concept each
 release. This is **method inside** `design-app`, `design-game`, `build-product`,
-and `finish-product`—not a portfolio `*-standard` package.
+and `build-product` (see references/finish)—not a portfolio `*-standard` package.
 
 ## Source integration layers
 
@@ -41,16 +41,16 @@ Compose `source-authoring-standard` on any mutating job:
 | `drive-to-delivery` | Drive one multi-phase engineering objective to delivery-terminal evidence |
 | `select-next-work` | Pick and tick the next high-value Work from evidence/ledger |
 | `execute-hard-cutover` | Cut over predecessor → destination; hard-cut default; retire dual-paths |
-| `bound-request-scope` | Right-size in/out and non-goals for this request |
+| `drive-to-delivery` (see references/bound-request-scope) | Right-size in/out and non-goals for this request |
 
 ## Skill portfolio
 
 | Skill | When you need to… |
 | --- | --- |
 | `author-skill` | Create/update a Sylphx Skill package |
-| `distill-source-to-skill` | Distill source material into SKILL.md |
-| `design-skill-evals` | Design falsifiable skill evals |
-| `curate-skill-repository` | Curate merge/split/retire of the portfolio |
+| `author-skill` (see references/distill-source) | Distill source material into SKILL.md |
+| `author-skill` (see references/design-evals) | Design falsifiable skill evals |
+| `author-skill` (see references/curate-repository) | Curate merge/split/retire of the portfolio |
 
 ## Policy (not job cycles)
 
@@ -74,11 +74,11 @@ Domain review Skills use the `review-*` id prefix (e.g. `review-launch-readiness
 
 | Intent | Skill id |
 | --- | --- |
-| Open betterment, mixed jobs | `run-open-product-betterment` |
-| Fixed product outcome until done | `pursue-product-objective` |
+| Open betterment, mixed jobs | `maintain-product` (see references/open-betterment) |
+| Fixed product outcome until done | `drive-to-delivery` (see references/pursue-objective) |
 | One multi-phase engineering terminal | `drive-to-delivery` |
 | Next Work from ledger/evidence | `select-next-work` |
-| Single job cycle | `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `finish-product` |
+| Single job cycle | `build-product` (see references/prototype) / `build-product` / `maintain-product` / `build-product` (see references/expand) / `build-product` (see references/finish) |
 | Write/edit a Skill | `author-skill` |
 | Migrate/cut over a predecessor to a destination | `execute-hard-cutover` |
 

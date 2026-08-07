@@ -37,7 +37,7 @@ it does not mean more features, decoration, prose, files, gates, or mechanisms.
 
 ## Decision
 
-1. Add `finish-product` as the owner of one independently accepted **Product
+1. Add `build-product` (see references/finish) as the owner of one independently accepted **Product
    Finish Pass** over an exact integrated product or release candidate.
 2. Distinguish `prototype`, `final-fidelity-reference`, `product-candidate`,
    and `release-finish`. Functional behavior or blueprint acceptance cannot
@@ -54,9 +54,9 @@ it does not mean more features, decoration, prose, files, gates, or mechanisms.
    final-fidelity reference slice when needed, repeat coherent passes, and
    verify through renders, playthroughs, measurements, regressions, and the
    repository's declared delivery boundary. A report alone is not completion.
-6. Keep authority boundaries: blueprints own product intent, `craft-product-interface`
+6. Keep authority boundaries: blueprints own product intent, `build-product` (see references/craft-interface)
    owns bounded interface work, domain systems own consequential facts and
-   numbers, `run-open-product-betterment` owns recurring discovery, and
+   numbers, `maintain-product` (see references/open-betterment) owns recurring discovery, and
    `review-launch-readiness` owns go/no-go admission.
 7. Update the App, Game, SaaS, Interface, Continuous Quality, and Launch Skills
    only enough to make this handoff explicit. Use native Skill discovery and

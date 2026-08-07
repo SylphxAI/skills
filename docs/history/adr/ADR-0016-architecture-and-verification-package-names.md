@@ -26,9 +26,9 @@ SOTA/frontier claims and risk-proportionate verification are separate jobs.
 ## Decision
 
 1. Hard-rename `multi-repository-migration` to
-   `decide-architecture-shape`; do not keep a discoverable alias.
+   `design-product` (see references/architecture-shape); do not keep a discoverable alias.
 2. `engineering-standard` continues to own code-architecture invariants and the
-   canonical terminal. `decide-architecture-shape` owns substantial audit,
+   canonical terminal. `design-product` (see references/architecture-shape) owns substantial audit,
    slicing, real code movement, exact-candidate proof, authority cutover,
    predecessor retirement, and stale-proof handling for one or many
    repositories. A small local refactor remains engineering work and does not

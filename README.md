@@ -1,15 +1,11 @@
 # Sylphx Skills
 
-Agent **workflow** skills for Codex, Claude Code, and Grok Build.
+Finite **atomic-action** Agent Skills for Codex, Claude Code, and Grok Build.
 
-## What a skill is
+A skill is a task-level action an agent is asked to do (build product, ship to delivery, operate support, produce assets, …).  
+Standards, lifecycle phases, domain packs, and techniques live in `references/` under the action that uses them.
 
-A skill is a **job procedure** a user or agent intentionally starts.  
-Depth (including coding/delivery standards) lives in that job's `references/`,
-opened when the procedure says so—not as separate "standard" skills and not
-only under `docs/`.
-
-See [docs/MODEL.md](docs/MODEL.md).
+See [docs/MODEL.md](docs/MODEL.md). Author against [skills/author-skill](skills/author-skill/SKILL.md).
 
 ## Install
 

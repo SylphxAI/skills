@@ -27,7 +27,7 @@ not separate semantic jobs.
 ## Decision
 
 1. Rename and broaden `app-store-distribution-readiness` to
-   `build-distribution-readiness`. Preserve one owner and one Software
+   `build-product` (see references/distribution-readiness). Preserve one owner and one Software
    Distribution Contract and Distribution Evidence Pack across CLI, direct,
    package-manager, registry, container, app-store, desktop, PC, and console
    channels.
@@ -42,7 +42,7 @@ not separate semantic jobs.
    require every package manager by checklist.
 5. Keep generic shipped-state proof in `delivery-standard`, the wider developer
    journey in `review-developer-product-experience`, listing conversion in
-   `optimize-store-listing`, and cross-domain launch admission in
+   `produce-product-assets` (see references/store-listing), and cross-domain launch admission in
    `review-launch-readiness`.
 6. Keep all source, build, artifact, publication, rollout, credential, and
    rollback mutations in the active product repository and delivery profile.

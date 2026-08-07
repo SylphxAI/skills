@@ -45,22 +45,22 @@ produce duplicate artifacts or competing completion rules.
 
 The portfolio adds these independently requested methods:
 
-- `record-structured-deliberation`
+- `synthesize-evidence-brief` (see references/structured-deliberation)
 - `design-space-exploration`
 - `synthesize-evidence-brief`
-- `engineer-testable-requirements`
+- `design-product` (see references/testable-requirements)
 - `research-user-needs`
 - `review-agent-planning-system`
 - `engineer-agent-context`
-- `remediate-agent-harness`
+- `maintain-product` (see references/agent-harness)
 - `review-optimization-objective`
-- `optimize-decision-model`
+- `synthesize-evidence-brief` (see references/decision-optimization)
 - `design-provenance-system`
 - `design-semantic-taxonomy`
 - `model-security-threats`
-- `analyze-system-dynamics`
-- `forecast-with-calibration`
-- `analyze-causal-inference`
+- `synthesize-evidence-brief` (see references/system-dynamics)
+- `synthesize-evidence-brief` (see references/forecast-calibration)
+- `synthesize-evidence-brief` (see references/causal-inference)
 
 `coordinate-enact-work` is a product adapter. Portable claim, lease,
 checkpoint, handoff, and recovery semantics remain in
@@ -99,7 +99,7 @@ and coordination protocols—live as references under their natural owner.
   an authored injection contract, and structurally reject duplicate artifact
   owners or per-standard reports. These fixtures do not prove runtime behavior.
 - Prove behavioral injection separately against each supported runtime using
-  `design-skill-evals` when promotion or regression evidence requires it; do
+  `author-skill` (see references/design-evals) when promotion or regression evidence requires it; do
   not build a repository-local router to test a router.
 
 Native discovery and package-boundary details are owned by

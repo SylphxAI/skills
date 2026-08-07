@@ -58,7 +58,7 @@ When authoring a workflow:
 
 ### Example (product betterment)
 
-`run-open-product-betterment` (workflow) composes:
+`maintain-product` (see references/open-betterment) (workflow) composes:
 
 - workflows: drive-to-delivery (per admitted Work), select-next-work only if
   continuous Work OS selection is required
@@ -105,9 +105,9 @@ Operate <system> with live tools/auth: <ops>. Requires live credentials and host
 
 | Package | Layer | Not |
 | --- | --- | --- |
-| `run-open-product-betterment` | Product betterment across aspects | One bug; one finish pass; pure Work OS |
-| `prototype-product` / `build-product` / `maintain-product` / `expand-product` / `finish-product` | One product-job cycle each | Other job kind; multi-agent staffing (not a Skill) |
-| `pursue-product-objective` | Drive declared product objective to evidence-backed completion | One-cycle job Skills; open betterment without fixed objective |
+| `maintain-product` (see references/open-betterment) | Product betterment across aspects | One bug; one finish pass; pure Work OS |
+| `build-product` (see references/prototype) / `build-product` / `maintain-product` / `build-product` (see references/expand) / `build-product` (see references/finish) | One product-job cycle each | Other job kind; multi-agent staffing (not a Skill) |
+| `drive-to-delivery` (see references/pursue-objective) | Drive declared product objective to evidence-backed completion | One-cycle job Skills; open betterment without fixed objective |
 
 | `drive-to-delivery` | One accepted objective to delivery terminal | Continuous new-Work discovery; short Q&A |
 | `select-next-work` | Continuous next-work selection OS | Driving one bounded objective alone |

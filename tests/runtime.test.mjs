@@ -1745,7 +1745,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     const fixtureSkillNames = [
       'author-skill',
       'verify-local-web-preview',
-      'craft-product-interface',
+      'build-product',
     ];
     for (const name of fixtureSkillNames) {
       cpSync(path.join(root, 'skills', name), path.join(source, 'skills', name), { recursive: true });
@@ -1939,7 +1939,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     mkdirSync(unmanaged, { recursive: true });
     writeFileSync(path.join(unmanaged, 'SKILL.md'), 'third party\n');
 
-    const removedSkill = 'craft-product-interface';
+    const removedSkill = 'build-product';
     const removedFile = path.join(
       codexHome,
       'skills',

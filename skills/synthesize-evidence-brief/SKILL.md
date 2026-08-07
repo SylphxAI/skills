@@ -1,6 +1,6 @@
 ---
 name: synthesize-evidence-brief
-description: "Synthesize multi-source evidence into one bounded brief with residuals."
+description: "Synthesize evidence and run analysis/decision methods into one bounded brief."
 ---
 
 # Synthesize Evidence Brief
@@ -71,15 +71,27 @@ Produce an **Evidence Synthesis** containing:
 - A rapid review may narrow scope or duplicate work explicitly; it may not hide
   the resulting uncertainty.
 
+
+## Progressive disclosure
+
+- [references/reproducible-evidence-synthesis.md](references/reproducible-evidence-synthesis.md)
+- [references/evidence-and-claims-standard/](references/evidence-and-claims-standard/)
+- [references/critical-analysis/](references/critical-analysis/) — adversarial critique with kill criteria
+- [references/causal-inference/](references/causal-inference/)
+- [references/system-dynamics/](references/system-dynamics/)
+- [references/forecast-calibration/](references/forecast-calibration/)
+- [references/decision-optimization/](references/decision-optimization/)
+- [references/structured-deliberation/](references/structured-deliberation/) — options, criteria, decision record (+ decision-quality pack)
+
 ## Boundaries
 
 - `synthesize-market-research` owns market, category, competitor, positioning,
   pricing, or demand recommendations.
-- `analyze-critically` owns competing hypotheses and diagnosis for one uncertain
+- `references/critical-analysis` owns competing hypotheses and diagnosis for one uncertain
   material question.
 - `references/evidence-and-claims-standard/` owns the verdict on one material or disputed
   factual, completion, causality, or delivery claim.
-- `analyze-causal-inference` owns identification and estimation of a causal
+- `references/causal-inference` owns identification and estimation of a causal
   effect from data; this Skill may synthesize multiple causal studies without
   replacing their identification analyses.
 - A domain Skill owns domain-specific interpretation and decisions that consume

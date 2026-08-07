@@ -1,4 +1,0 @@
-interface:
-  display_name: "Design Skill Evals"
-  short_description: "Design falsifiable skill evals: routing cases, behavior oracles, failure taxonomy. Use when proving a skill works."
-  default_prompt: "Run design-skill-evals on the active workspace."

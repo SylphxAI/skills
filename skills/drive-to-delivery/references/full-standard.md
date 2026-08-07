@@ -244,7 +244,7 @@ material, observed requirement.
 
 Before implementation, convert vague requests into verifiable outcomes.
 
-Use `bound-request-scope` for the canonical terminal, same-cause, positive-net,
+Use `references/bound-request-scope` for the canonical terminal, same-cause, positive-net,
 and speculative-expansion classification. This section supplies execution-graph
 inputs; it does not define a second scope algorithm.
 
@@ -309,7 +309,7 @@ terminal outcome, an explicitly excluded scope, or a dependency that cannot be
 advanced under current authority; it does not make the parent complete while
 the parent still owns that outcome. Conversely, do not expand a satisfied
 objective indefinitely because more hardening is imaginable: after reaching the
-terminal, use `bound-request-scope` for one bounded positive-net scan, apply material
+terminal, use `references/bound-request-scope` for one bounded positive-net scan, apply material
 same-cause corrections inside the owning boundary, and close when no eligible
 improvement changes the outcome enough to justify its cost.
 
@@ -629,7 +629,7 @@ pause only for that narrow decision and keep all independent tracks moving.
 Use research swarms for important architecture, AI, security, scaling,
 dependency, product, or ecosystem choices.
 
-Use `analyze-critically` for competing hypotheses, disconfirmation, and
+Use `synthesize-evidence-brief` (see references/critical-analysis) for competing hypotheses, disconfirmation, and
 calibration; use `decision-quality-standard` for the final option choice. This
 section owns when and how to schedule independent research lanes.
 

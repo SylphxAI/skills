@@ -17,7 +17,7 @@ scope:
 
 ## Context
 
-`run-open-product-betterment` mixed cycle method with multi-turn continuity. A
+`maintain-product` (see references/open-betterment) mixed cycle method with multi-turn continuity. A
 later draft over-corrected by demoting the **Goal System** to “insurance only”
 and pushing **automation re-kick** as the default outer loop. That is a
 **UX regression** on Codex: operators already get multi-hour runs from one press
@@ -34,7 +34,7 @@ continuation can suppress the next auto-continue.
 
 | Concern | Owner |
 | --- | --- |
-| One betterment **cycle** method | Skill (`run-open-product-betterment`) |
+| One betterment **cycle** method | Skill (`maintain-product` (see references/open-betterment)) |
 | **Multi-turn continuity on Codex** | **Uncapped Goal** (primary motor) |
 | Optional durable B/R notes | Product state/contract file |
 | Continuity when Goal API absent | In-process tool loop; then manual re-kick; automation last |

@@ -24,7 +24,7 @@ tool manual.
 
 1. **Job method, not role title.** Name and voice = *what work to do*, not
    “Prototyper / Builder / who you are.” Prefer verb-led ids:
-   `prototype-product`, `author-skill`, `pursue-product-objective`,
+   `build-product` (see references/prototype), `author-skill`, `drive-to-delivery` (see references/pursue-objective),
    `review-launch-readiness` (reviews), `design-app` (blueprints).
 2. **Progressive disclosure.** Listing sees only `name` + `description`. Body
    loads after match. Keep description short and searchable; put depth in
@@ -195,13 +195,13 @@ When authoring product methods, prefer these existing job Skills over new near-d
 
 | Job | Skill |
 | --- | --- |
-| Learn / probe | `prototype-product` |
+| Learn / probe | `build-product` (see references/prototype) |
 | Ship capability | `build-product` |
 | Cut live harm | `maintain-product` |
-| Scale validated core | `expand-product` |
-| Finish / deburr | `finish-product` |
-| Pursue fixed outcome to completion | `pursue-product-objective` |
-| Mixed open betterment | `run-open-product-betterment` |
+| Scale validated core | `build-product` (see references/expand) |
+| Finish / deburr | `build-product` (see references/finish) |
+| Pursue fixed outcome to completion | `drive-to-delivery` (see references/pursue-objective) |
+| Mixed open betterment | `maintain-product` (see references/open-betterment) |
 | Next Work from evidence/ledger | `select-next-work` |
 | Multi-phase delivery terminal | `drive-to-delivery` |
 | Author a Skill | `author-skill` |

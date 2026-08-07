@@ -1,4 +1,0 @@
-interface:
-  display_name: "Produce Game 2D Map Assets"
-  short_description: "2D tiles/props packs with extract and preview scripts."
-  default_prompt: "Produce engine-ready 2D map tiles and prop packs for the active title."

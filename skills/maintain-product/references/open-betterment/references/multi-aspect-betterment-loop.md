@@ -1,0 +1,100 @@
+# Multi-Aspect Product Betterment (cycle reference)
+
+## Purpose
+
+Use when continuous improvement of a product spans one or many aspects—UI/UX,
+performance, business model, game design, art/3D, reliability, content, growth—
+without a false “perfect” terminal.
+
+Binding control fields:
+[product-quality-loop-contract.md](product-quality-loop-contract.md).  
+Multi-cycle continuity:
+[betterment-engagement-runner.md](../../../../../docs/history/docs-reference/betterment-engagement-runner.md)
+(ADR-20260803).
+
+## Layers (do not collapse)
+
+```text
+Outer engagement motor: agent-set FIXED uncapped continuity Goal (host auto-continue while active)
+  while not engagement_idle:
+      one cycle (this Skill method)
+      next cycle in-process and/or Goal continuation at turn boundary
+
+One cycle:
+  coverage card + VoI deepen -> C -> B + R
+  if B empty after honest re-scout: hard_wait | idle (Goal complete only if idle)
+  else: execute all B -> verify -> short log -> next cycle
+```
+
+A **cycle** clears **B** for this research pass.  
+**Loop engineering** = Goal stays active across cycles until engagement idle.  
+Automation re-kick is fallback when Goal API is absent—not the default on Codex.
+
+It is **not**:
+
+- an immortal chat thread;
+- a single global quality score;
+- a meta-router over all Skills;
+- continuous independent reviewers on every tick;
+- a freeze-all waterfall of every idea forever;
+- a promise of product perfection.
+
+## Aspect catalog (select; do not force all)
+
+Pick only aspects that can change product value for this subject:
+
+| Aspect family | Example cells | Example specialist Skills |
+| --- | --- | --- |
+| Product definition | promise, IA, journeys, capability portfolio | `design-app`, `design-game`, `design-product` (see references/testable-requirements) |
+| Interaction & craft | UI states, flows, visual hierarchy, feel | `build-product` (see references/craft-interface), `build-product` (see references/finish) |
+| Accessibility | AT paths, semantics, exceptions | `review-accessibility-conformance-program` |
+| Performance | latency, jank, budgets, low-end | `references/frontend-performance`, `review-operational-observability` |
+| Reliability/ops | errors, recovery, SLOs, diagnosability | `review-operational-observability`, `run-incident-response` |
+| Security/privacy | threats, abuse, data lifecycle | `model-security-threats`, `review-privacy-data-lifecycle`, `review-product-abuse-risk` |
+| Content/brand | accuracy, voice, localization | `documentation-standard` |
+| Growth/commerce | pricing packaging, retention, ads, referrals | `design-product` (see references/pricing), `review-retention-cohort`, `review-ad-monetization`, `review-referral-loop` |
+| Game systems | loops, economy, progression, soft launch | `design-game`, `review-game-economy`, `review-game-soft-launch`, `review-daily-reward-and-streak` |
+| Art/assets/3D | art direction, asset fidelity, packaging inputs | `produce-product-assets`, `build-product` (see references/finish) |
+| Architecture | seams, migrations, maintainability | `design-product` (see references/architecture-shape), `engineering-standard` |
+| Feedback | private/public signal learning | `operate-customer-support` (see references/feedback-loop) |
+
+If no specialist fits, keep the item under this loop with an explicit method
+card rather than inventing a Skill mid-flight.
+
+## Betterment classes
+
+| Class | Meaning | Admission bias |
+| --- | --- | --- |
+| Hard floor | Unacceptable if failed for declared product state | Highest; still needs authority/safety |
+| Objective | Declared measurable north-star / target | Rank by leverage L |
+| Frontier opportunity | Closes claim-grade frontier gap; EV ≥ MinOutcomeDelta | Into B if capacity; else R with reason |
+| Polish residual | Below MinOutcomeDelta cosmetic | R or reject; not B |
+
+## Leverage (normative sketch)
+
+```text
+L = (expected_outcome_or_frontier_gap_delta × weight × confidence)
+    / full_lifecycle_cost
+```
+
+- Full cost includes implementation, integration, verification, operation,
+  collision, and recovery—not “typing effort” alone.
+- **Difficulty alone does not disqualify.**
+- **Ease alone must not promote** micro-polish over higher-L harder bets.
+
+## Admission in one cycle
+
+1. Build coverage card (five cells from contract).
+2. Enumerate candidates across selected aspects.
+3. Score L; drop below MinOutcomeDelta.
+4. Admit **all** capacity-feasible passers into **B** (not Top-1).
+5. Park only with **qualified** blockers; soft cost → L0 slice into B.
+6. Execute all B; verify; write state for the outer runner.
+
+## Anti-patterns (cycle level)
+
+- Aspect tourism with no admission impact
+- Ease-first ranking
+- One-item B while nine passers exist
+- Soft-parking high-EV as “engine later” without L0
+- Treating cycle B-clear as product done

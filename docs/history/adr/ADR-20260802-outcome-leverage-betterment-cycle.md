@@ -17,7 +17,7 @@ scope:
 
 Independent review task `indep_review_cpq_loop` returned accept-with-amendments.
 
-Operating `run-open-product-betterment` produced long cycles of micro-polish,
+Operating `maintain-product` (see references/open-betterment) produced long cycles of micro-polish,
 many commits, and little user-visible product change. Agents optimized for easy
 findings and treated one Work land as loop completion.
 

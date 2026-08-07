@@ -31,7 +31,7 @@ decisions.
    defines the lower bound.
 4. Raw logs, transcripts, and duplicated source facts remain in their owning
    artifacts and are referenced precisely.
-5. `edit-preserving-voice` continues to own voice and locale;
+5. `write-high-signal-update` (see references/edit-preserving-voice) continues to own voice and locale;
    `documentation-standard` owns durable artifact placement;
    domain standards own technical content.
 6. The compact answer-first invariant may be projected into always-on runtime

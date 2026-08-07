@@ -41,7 +41,7 @@ commercial product is a runtime cell.
 
 ## Decision
 
-Add `compose-product-portfolio` as the single owner of a **Composable
+Add `design-product` (see references/portfolio) as the single owner of a **Composable
 Product Portfolio Contract**.
 
 The Procedure:
@@ -64,7 +64,7 @@ The new Procedure owns portfolio topology, not accepted product-local facts:
 - `engineering-standard` continues to own code and system architecture;
 - `commercial-decision-standard` owns pricing, SKU, entitlement, packaging,
   profit-center and internal-settlement decisions;
-- `compose-product-program` owns one selected product program's lifecycle
+- `design-product` (see references/program) owns one selected product program's lifecycle
   graph;
 - product procedures own each product's promise and experience; and
 - delivery procedures own release and observed delivery evidence.

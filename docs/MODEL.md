@@ -1,71 +1,54 @@
-# Agent Skills model
+# Agent Skills model (v6 — atomic actions)
 
-## Industry meaning
+## Industry + local rule
 
-A **Skill** is a specialized **workflow** an agent loads on demand:
+A **Skill** is a specialized package an agent loads on demand for **one task-level atomic action**:
 
-- one user-requestable job (discoverable `name` + `description`)
-- short procedure body
-- optional `references/` / `scripts/` for depth
+- finite, requestable job
+- short `name` + `description` for discovery
+- procedure body + optional `references/` / `scripts/`
 
-A Skill is **not**:
+Progressive disclosure (industry default): listing → body → references.
 
-- a policy encyclopedia entry or "follow standards" bag
-- an engine brand product name
-- a domain checklist that only differs by reference tables
-- repository documentation under `docs/` (not installed to agents)
+## Atomic action test
 
-## Discovery (the important part)
+Listing skill **only if** all true:
 
-Hosts select skills from **listing metadata** (`name` + `description`).  
-The body and `references/` load **after** selection.
+1. Requestable as "do X"
+2. Independent acceptably complete outcome
+3. Real recurring agent gap without it
+4. Specific non-textbook procedure
+5. Improves listing-budget routing
 
-Therefore:
+Otherwise: owner action `references/`, thin always-on floor, or nothing.
 
-1. Put in the **listing** only jobs a user/agent would intentionally request.
-2. Put **constraint depth** (coding standard, delivery rules, verification matrices) under the workflow that applies them: `skills/<that-job>/references/<topic>/`.
-3. In the workflow body, name **when** to open each reference. That is how the agent "sees" a standard—not by discovering a skill named after the standard.
-4. Do **not** create a skill whose only job is "hold standards."
-5. Do **not** put agent-needed method depth only under `docs/` (installer does not ship it).
+**Target catalog size: ~15–25 actions**, not dozens of phases/techniques/domains.
 
-## Catalog shape
+## Not skills
 
-| Kind | Where | Listed? | Installed? |
-| --- | --- | --- | --- |
-| Workflow | `skills/<job>/` | Yes | Yes |
-| Shape / engine / constraint depth | `skills/<job>/references/<topic>/` | No | Yes (with parent skill) |
-| Human repo docs | `docs/` | No | No |
+- standards / policies / profiles
+- lifecycle phases of another action
+- domain checklist packs (one `review-domain` + refs)
+- analysis techniques (under evidence/research actions)
+- engine brand product names
+- methods bags / "consult standards" skills
+- `docs/`-only material (not installed)
 
-## Ownership of constraint packs
+## Install reality
 
-Each constraint pack has **one** canonical owner workflow—the job that most naturally *applies* it:
+Installer copies `skills/*` only. Agent-needed depth must live under an installed action skill's `references/`. `docs/` is human git documentation.
 
-| Pack | Owner workflow |
+## Constraint pack owners (examples)
+
+| Depth | Owner action |
 | --- | --- |
-| project-manifest, enterprise-profile, enterprise-control-plane | `adopt-repo-standards` |
-| engineering, risk-matched verification, platform-first | `build-product` |
-| technology-stack profile | `select-dependency-versions` |
-| source-authoring, delivery, CI admission/capacity, parallel-change | `drive-to-delivery` |
-| decision-quality | `record-structured-deliberation` |
-| evidence-and-claims | `synthesize-evidence-brief` |
-| commercial-decision | `compose-product-portfolio` |
-| review-solicitation | `run-product-feedback-loop` |
-| specification-control-plane | `engineer-testable-requirements` |
-| work-coordination | `select-next-work` |
-| agent-native, agent-first | `engineer-agent-context` |
-| instruction-evolution | `author-skill` |
+| engineering, verification, platform-first | `build-product` |
+| source-authoring, delivery, CI | `drive-to-delivery` |
+| project-manifest / enterprise profile | `adopt-repo-standards` |
+| decision-quality, causal, critique methods | `synthesize-evidence-brief` |
+| instruction-evolution, distill, evals, curate | `author-skill` |
+| review solicitation / feedback loop | `operate-customer-support` |
 
-Other workflows that need the same constraints **link** to the owner path (for example `../drive-to-delivery/references/source-authoring-standard/`). They do not re-list the pack as a skill and should not duplicate the pack tree.
+## v6 listing catalog
 
-## User-job framing
-
-- "design a product" → `design-product` (+ shape references)
-- "build a product" → `build-product` (+ engineering / Keel / verification references)
-- "drive this objective to delivery" → `drive-to-delivery` (+ source-authoring / delivery references)
-- "adopt baseline into this repo" → `adopt-repo-standards` (+ manifest / profile references)
-
-## Progressive disclosure
-
-1. Listing metadata (budgeted)
-2. Skill body when selected
-3. References only when the body says so
+Twenty atomic actions (see `catalog.json`). Demoted jobs live under those owners' `references/`.

@@ -22,8 +22,8 @@ Minimum promotable slice:
 
 1. All `suite: floor` cases
 2. At least 10 `critical-skill` cases (include product jobs:
-   `prototype-product`, `build-product`, `maintain-product`, `expand-product`,
-   `finish-product`, `pursue-product-objective`, `run-open-product-betterment`, `author-skill`)
+   `build-product` (see references/prototype), `build-product`, `maintain-product`, `build-product` (see references/expand),
+   `build-product` (see references/finish), `drive-to-delivery` (see references/pursue-objective), `maintain-product` (see references/open-betterment), `author-skill`)
 3. At least 5 `near-neighbour` cases
 4. All `abstention` cases
 5. At least 1 `compound` case

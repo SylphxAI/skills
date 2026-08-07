@@ -1,4 +1,0 @@
-interface:
-  display_name: "Compose Product Program"
-  short_description: "Compose multi-work product program: phases, dependencies, milestones, kill/scale."
-  default_prompt: "Compose a Product Program Manifest for this cross-domain product program."

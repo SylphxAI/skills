@@ -11,7 +11,7 @@ Use this skill to handle refunds without damaging trust or letting abuse break t
 Own entitlement/customer consequence, grace/hold/recovery, account action,
 appeal, repayment, support, and product-feedback states. Do **not** own provider
 event ingestion, money truth, or the entitlement projector. Consume those
-authoritative facts from `build-payment-readiness` or the owning provider/
+authoritative facts from `build-product` (see references/payment-readiness) or the owning provider/
 ledger system and preserve their evidence references.
 
 For every artifact, record `artifactVersion`, `artifactRevision`, and

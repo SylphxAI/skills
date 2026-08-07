@@ -1,4 +1,0 @@
-interface:
-  display_name: "Decide Architecture Shape"
-  short_description: "Decide one architecture shape from options with tradeoffs and residuals (not open design-space mapping alone)."
-  default_prompt: "Run Decide Architecture Shape on the active workspace."

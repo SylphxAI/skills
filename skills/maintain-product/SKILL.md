@@ -1,6 +1,6 @@
 ---
 name: maintain-product
-description: "Cut live/regression harm with root-cause fix and oracle."
+description: "Cut live/regression harm; remediate performance or harness with oracles."
 ---
 
 # Maintain Product
@@ -49,6 +49,14 @@ Prefer regression locks and detectability over silent cleanup.
 2. Reproduction closed or residual owner named  
 3. No obvious new regression on the touched path  
 4. Scope stayed harm-linked  
+
+
+## Progressive disclosure
+
+- [references/open-betterment/](references/open-betterment/) — open product betterment loop
+- [references/frontend-performance/](references/frontend-performance/) — frontend perf remediation
+- [references/agent-harness/](references/agent-harness/) — agent harness remediation
+- Source landing: `../drive-to-delivery/references/source-authoring-standard/`
 
 ## Output
 

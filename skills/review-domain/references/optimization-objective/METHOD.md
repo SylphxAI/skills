@@ -49,11 +49,11 @@ Produce one **Optimization Objective Contract** containing:
   measurement plumbing.
 - Use `review-product-experiment` when estimating the causal effect of a product
   intervention on users.
-- Use `design-skill-evals` when the optimized artifact is specifically a Skill
+- Use `author-skill` (see references/design-evals) when the optimized artifact is specifically a Skill
   routing or behavior evaluation.
 - Use `decision-quality-standard` to choose among material business or technical
   options after the objective supplies trustworthy evidence.
-- Use `optimize-decision-model` for decision variables, mathematical
+- Use `synthesize-evidence-brief` (see references/decision-optimization) for decision variables, mathematical
   constraints, solver execution, and independent solution verification. This
   Skill owns the real-outcome, proxy, Goodhart, gaming, and protected-floor
   contract that the decision model consumes.

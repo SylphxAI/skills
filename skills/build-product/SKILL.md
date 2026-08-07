@@ -61,6 +61,23 @@ No permanent workarounds. Prefer durable work on the owning layer.
 3. Residuals are listed  
 4. No known ship-blocker for this slice was ignored  
 
+
+## Progressive disclosure
+
+Open only depth the current build needs:
+
+- [references/prototype/](references/prototype/) — cheap real prototype with kill/continue
+- [references/expand/](references/expand/) — scale a validated core
+- [references/finish/](references/finish/) — finish/deburr with re-captured evidence
+- [references/payment-readiness/](references/payment-readiness/) — production payments
+- [references/distribution-readiness/](references/distribution-readiness/) — artifacts, install, channels
+- [references/craft-interface/](references/craft-interface/) — one UI flow, a11y, verification
+- [references/keel-app/](references/keel-app/) — Keel app tooling when the product uses Keel
+- [references/engineering-standard/](references/engineering-standard/) — engineering constraints while building
+- [references/risk-matched-verification-standard/](references/risk-matched-verification-standard/) — risk-matched verification
+- [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — platform-first boundaries
+- Source landing: `../drive-to-delivery/references/source-authoring-standard/`
+
 ## Output
 
 Capability · changes · oracle evidence · residuals

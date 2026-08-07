@@ -68,7 +68,7 @@ Create an **Agent Planning and Control Contract** with:
 - Use `work-coordination-standard` for portable claim, lease, handoff, and
   shared-ledger semantics; use the matching product adapter for live state.
 - Use `engineer-agent-context` for context assembly and memory lifecycle.
-- Use `optimize-decision-model` when the primary artifact is a
+- Use `synthesize-evidence-brief` (see references/decision-optimization) when the primary artifact is a
   constrained allocation, routing, scheduling, or capacity model rather than
   the agent's reusable planning and control mechanism.
 - Use `review-multi-review-synthesis` for final review closure of an exact implementation.

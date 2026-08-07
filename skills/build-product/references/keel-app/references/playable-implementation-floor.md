@@ -19,12 +19,12 @@ Portable correctness floors from high-quality game builders, mapped to Keel.
 ## Presentation vs sim
 
 - Juice (shake, hitstop, flash, particles) **must not** change outcomes.
-- HUD/menus: `craft-product-interface` premium + game-overlay refs + Keel View.
+- HUD/menus: `references/craft-interface` premium + game-overlay refs + Keel View.
 - Stage vs chrome: `game_slot` + View hierarchy.
 
 ## Assets
 
-- Engine-ready sheets/tiles: `produce-game-2d-sprites` / `produce-game-2d-map-assets`.
+- Engine-ready sheets/tiles: `produce-product-assets` (see references/game-2d-sprites) / `produce-product-assets` (see references/game-2d-map-assets).
 - Prefer Keel Asset loaders + pack paths over ad-hoc CDN Three loaders.
 
 ## Save / meta

@@ -48,8 +48,8 @@ Legend:
 
 | Package | Class | Role |
 | --- | --- | --- |
-| `run-open-product-betterment` | workflow | Multi-aspect product betterment loop |
-| `finish-product` | workflow | Whole-product finish pass |
+| `maintain-product` (see references/open-betterment) | workflow | Multi-aspect product betterment loop |
+| `build-product` (see references/finish) | workflow | Whole-product finish pass |
 | `technology-stack-profile` | policy | Stack defaults (profile naming, not `-standard`) |
 
 ## Immediate non-goals

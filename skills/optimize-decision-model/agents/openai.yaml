@@ -1,4 +1,0 @@
-interface:
-  display_name: "Optimize Decision Model"
-  short_description: "Model a decision for optimization: objective, constraints, sensitivity, recommendation (not deliberation record alone)."
-  default_prompt: "Run Optimize Decision Model on the active workspace."

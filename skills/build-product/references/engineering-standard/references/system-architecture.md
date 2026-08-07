@@ -92,7 +92,7 @@ until an independent deployment predicate appears.
 Document the mapping where it materially affects ownership or operations. Never
 use folder names or deployment count as the semantic authority.
 
-Use `compose-product-portfolio` when the requested artifact is the
+Use `design-product` (see references/portfolio) when the requested artifact is the
 portfolio-level decision about which Capabilities become independently
 valuable products and how products compose. This Engineering Standard owns the
 implementation boundaries after that decision; it does not decide pricing,

@@ -179,7 +179,7 @@ merely to satisfy this method.
 - `engineering-standard` owns reproduction, repair, regression, and cleanup.
 - `run-incident-response` owns command, mitigation, recovery, communication, and
   incident closure while service or customer harm is active.
-- `analyze-critically` owns a requested analysis artifact or a material
+- `synthesize-evidence-brief` (see references/critical-analysis) owns a requested analysis artifact or a material
   investigation while multiple credible causes remain unresolved.
 - `evidence-and-claims-standard` adjudicates a material or disputed causal,
   fixed, delivery, or completion claim.

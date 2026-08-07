@@ -122,13 +122,13 @@ claiming production performance before measurement exists.
   evidence outside the developer journey.
 - Use `review-product-analytics-instrumentation` to implement the measurement
   contract; this skill defines the developer outcome and required evidence.
-- Use `price-saas-subscription` and `build-payment-readiness` for packaging,
+- Use `design-product` (see references/pricing) and `build-product` (see references/payment-readiness) for packaging,
   price, payment, ledger, or entitlement authority.
 - Use `design-app` when the whole application experience, rather than
   the developer integration journey, is the independent artifact.
 - Use `delivery-standard`, `run-incident-response`, `engineering-standard`, and
   `review-privacy-data-lifecycle` for shipped proof, incidents, controls, and privacy.
-- Use `build-distribution-readiness` for the executable artifact set, installers,
+- Use `build-product` (see references/distribution-readiness) for the executable artifact set, installers,
   package-manager adapters, upgrades, uninstall, and publication readback of a
   CLI named by this adoption journey.
 

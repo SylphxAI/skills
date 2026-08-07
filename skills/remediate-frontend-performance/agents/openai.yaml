@@ -1,4 +1,0 @@
-interface:
-  display_name: "Remediate Frontend Performance"
-  short_description: "Fix frontend jank: repro, RAF/timer/listener leaks, before/after same scene."
-  default_prompt: "Run Remediate Frontend Performance for the active task/workspace."
