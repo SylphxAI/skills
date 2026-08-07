@@ -1,0 +1,4 @@
+interface:
+  display_name: "Apply Instrument Family"
+  short_description: "Instruments family law: brand-sole packages, evidence envelope v1, sole-engine paths, Prism retired."
+  default_prompt: "Apply the Instrument Family law to the active Instruments/MCP product work."

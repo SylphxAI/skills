@@ -1,11 +1,9 @@
 ---
-name: instrument-family-standard
-description: Apply the binding Sylphx Instruments family law for Citra Iris Cue Spine Lookout Locus — evidence envelope, brand-sole packages, sole-engine paths, tool surface, and Prism retirement.
-metadata:
-  short-description: Instruments family law and evidence envelope
+name: apply-instrument-family
+description: Apply Sylphx Instruments family law for Citra Iris Cue Spine Lookout Locus — evidence envelope, brand-sole packages, sole-engine paths, Prism retirement.
 ---
 
-# Instrument Family Standard
+# Apply Instrument Family
 
 Use when building, reviewing, releasing, or redesigning Sylphx local-first agent instruments (PDF/image/video/architecture/web/code evidence products).
 
@@ -13,6 +11,7 @@ Use when building, reviewing, releasing, or redesigning Sylphx local-first agent
 
 1. Family law: `docs/knowledge/instruments/INSTRUMENT-FAMILY-LAW.md`
 2. Envelope schema: `schemas/instrument-evidence-envelope.schema.json`
+3. Product map: `references/product-map.md`
 
 ## Workflow
 
