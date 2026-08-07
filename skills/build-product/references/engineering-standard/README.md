@@ -6,6 +6,12 @@
 
 Policy constraints—compose onto matching host jobs.
 
+**Quality North Star:** fourteen attributes (Depth, Correctness, Simplicity,
+Readability, Maintainability, Scalability, Performance, Reliability,
+Availability, Resilience, Observability, Security, Testability, Evolvability)
+are the sole quality vocabulary. Full body owns obligations; rule IDs bind
+selection and proof. The phrase **Modern Technical Bar** is retired.
+
 Full progressive-disclosure body: [references/full-standard.md](references/full-standard.md).  
 Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).
 
@@ -97,7 +103,10 @@ standard.
 ## Guardrails
 
 - Fail closed on secret material in source and logs.
-- Never treat health/readiness probes as product capability proof.
+- Never treat health/readiness probes as product capability proof
+  (`q-availability` / `eng-avail-01`).
+- Use the Quality North Star (`q-*`) as the sole quality vocabulary; do not
+  reintroduce Modern Technical Bar or parallel ilities lists.
 - In development or without live compatibility/state risk, prefer a verified
   one-step cutover. Use expand-contract only when a demonstrated live data,
   compatibility, availability, or external-effect boundary requires it.

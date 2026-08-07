@@ -3,18 +3,29 @@
 Progressive-disclosure rule IDs for `engineering-standard`. Full prose:
 [full-standard.md](full-standard.md).
 
-## Modern technical bar
+## Quality North Star
 
-Apply the relevant subset; verify rather than slogan.
+Sole quality vocabulary (`q-*`). Apply the relevant subset; verify rather than
+slogan. Retired phrase: Modern Technical Bar.
 
-- high-throughput and low-latency on the critical path when required;
-- horizontally scalable, elastic, resilient, and observable under production load;
-- type-safe, memory-safe, concurrency-safe, deterministic where practical;
-- secure-by-default, privacy-conscious, least-privilege, auditable at boundaries;
-- cost-efficient across CPU, memory, IO, network, storage, build minutes, and toil;
-- idempotent, retry-safe, timeout-bounded, cancellation-aware, backpressure-aware on side effects;
-- composable, interoperable, portable, upgradeable, testable, operable, migration-safe, rollback-safe;
-- near-native performance only when the domain requires it.
+| ID | Attribute |
+| --- | --- |
+| `q-depth` | Depth — one powerful concept/capability fully resolved |
+| `q-correctness` | Correctness — contract-true under the failure model |
+| `q-simplicity` | Simplicity — simplest end-to-end design that meets requirements |
+| `q-readability` | Readability — intent legible without archaeology |
+| `q-maintainability` | Maintainability — local change, clear ownership, no hidden wrongness |
+| `q-scalability` | Scalability — horizontal scale and elastic capacity where growth bites |
+| `q-performance` | Performance — latency, throughput, cost, resource budgets |
+| `q-reliability` | Reliability — promised outcomes under expected adverse conditions |
+| `q-availability` | Availability — continuity to declared SLO; probes ≠ capability |
+| `q-resilience` | Resilience — absorb, degrade, recover without silent corruption |
+| `q-observability` | Observability — minimum correlated, privacy-preserving evidence |
+| `q-security` | Security — secure-by-default, least-privilege, auditable boundaries |
+| `q-testability` | Testability — falsifiable automated semantic oracles |
+| `q-evolvability` | Evolvability — affordable change; migrate/backfill then hard-cut |
+
+Full obligations: [full-standard.md](full-standard.md) § Quality North Star.
 
 ## Rule IDs
 
@@ -22,6 +33,12 @@ Apply the relevant subset; verify rather than slogan.
 | --- | --- |
 | `eng-adr-01` | Before broad implementation, material durable architecture, ownership, public-contract, persistence, security/privacy, delivery-semantics, or enterprise-default decisions are recorded in the owning repository ADR; ordinary implementation details do not require an ADR. |
 | `eng-safety-01` | Fail closed on secrets in source, logs, and manifests. |
+| `eng-quality-01` | Material durable work names the in-scope Quality North Star attribute IDs (`q-*`) and closes each with evidence or an explicit residual (owner + expiry/review + retirement). Naming without proof is non-conformance. |
+| `eng-quality-02` | Do not maintain a parallel quality slogan list. The fourteen `q-*` attributes are the sole vocabulary; mechanism phrases (idempotent, elastic, etc.) map into them and do not form a second bar. |
+| `eng-readability-01` | Names, module structure, and required comments make non-obvious intent legible; prefer simplification and domain language over cleverness or archaeology-required structure. |
+| `eng-maintain-01` | Touched paths leave change local and ownership explicit: no new god modules, no unowned dual paths, and temporary fences carry retirement predicates. |
+| `eng-avail-01` | Availability-sensitive paths declare continuity intent (SLO or equivalent) and do not treat health/readiness probes as product capability proof. |
+| `eng-depth-01` | Framed product/design work deepens one core concept or capability end-to-end; reject shallow multi-concept residue and permanent dual concepts on the framed path. |
 | `eng-concur-01` | Shared mutable state is fenced (locks, CAS, leases) with explicit timeouts. |
 | `eng-sidefx-01` | External side effects are idempotent or exactly-once with recovery. |
 | `eng-timeout-01` | Every network/RPC path has timeout, cancellation, and retry budget. |
@@ -94,6 +111,7 @@ Apply the relevant subset; verify rather than slogan.
 
 ## Conformance checklist
 
+- [ ] In-scope Quality North Star attribute IDs (`q-*`) listed with evidence or residual.
 - [ ] Applicable rule IDs listed.
 - [ ] Material durable decisions have an owning-repository ADR before broad implementation; ordinary details are not inflated into ADR ceremony.
 - [ ] Tests/schemas cover each selected rule ID.

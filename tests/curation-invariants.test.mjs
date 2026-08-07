@@ -71,3 +71,62 @@ test('catalog is workflow listings under description budget only', () => {
   const stored = JSON.parse(readFileSync(path.join(repositoryRoot, 'catalog.json'), 'utf8'));
   assert.deepEqual(stored, catalog);
 });
+
+test('Quality North Star is sole engineering quality vocabulary', () => {
+  const full = readFileSync(
+    path.join(
+      skillsRoot,
+      'build-product',
+      'references',
+      'engineering-standard',
+      'references',
+      'full-standard.md',
+    ),
+    'utf8',
+  );
+  const predicates = readFileSync(
+    path.join(
+      skillsRoot,
+      'build-product',
+      'references',
+      'engineering-standard',
+      'references',
+      'binding-predicates.md',
+    ),
+    'utf8',
+  );
+  assert.ok(full.includes('## Quality North Star'));
+  assert.ok(predicates.includes('## Quality North Star'));
+  assert.equal(full.includes('## Modern Technical Bar'), false);
+  assert.equal(predicates.includes('## Modern technical bar'), false);
+  for (const id of [
+    'q-depth',
+    'q-correctness',
+    'q-simplicity',
+    'q-readability',
+    'q-maintainability',
+    'q-scalability',
+    'q-performance',
+    'q-reliability',
+    'q-availability',
+    'q-resilience',
+    'q-observability',
+    'q-security',
+    'q-testability',
+    'q-evolvability',
+  ]) {
+    assert.ok(full.includes(id), id);
+    assert.ok(predicates.includes(id), id);
+  }
+  for (const id of [
+    'eng-quality-01',
+    'eng-quality-02',
+    'eng-depth-01',
+    'eng-readability-01',
+    'eng-maintain-01',
+    'eng-avail-01',
+  ]) {
+    assert.ok(predicates.includes(id), id);
+  }
+});
+
