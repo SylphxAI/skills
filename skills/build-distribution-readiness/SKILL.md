@@ -76,7 +76,7 @@ or media dependencies.
 
 The active product repository and delivery profile own source, build, artifact,
 publish, rollout, rollback, credentials, and channel-adapter mutations.
-`docs/policies/delivery-standard/` owns their generic source-to-landed-to-published proof
+`../adopt-repo-standards/references/policies/delivery-standard/` owns their generic source-to-landed-to-published proof
 ladder. This Skill owns the distribution contract, channel selection,
 adapter-to-artifact requirements, install lifecycle requirements, and the
 evidence pack that audits observed channel states; it does not become a second

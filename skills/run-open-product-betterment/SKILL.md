@@ -38,7 +38,7 @@ while high-EV unblocked work remains:
   7. Short log; re-scout—do not stop because one PR landed
 ```
 
-Compose `docs/policies/source-authoring-standard/` for Git/PR. Three layers:
+Compose `../adopt-repo-standards/references/policies/source-authoring-standard/` for Git/PR. Three layers:
 
 | Layer | Meaning here |
 | --- | --- |

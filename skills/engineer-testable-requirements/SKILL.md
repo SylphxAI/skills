@@ -94,10 +94,10 @@ Produce a **Requirements Contract** containing:
 - `research-user-needs` and whole-product blueprint Skills own direct
   user evidence, opportunity, user promise, market fit, and capability
   selection before requirements stabilize.
-- `docs/policies/decision-quality-standard/` owns material option selection; architecture and
+- `../adopt-repo-standards/references/policies/decision-quality-standard/` owns material option selection; architecture and
   engineering Skills own how accepted requirements are realized.
-- `docs/policies/specification-control-plane-standard/` owns executable implementation
+- `../adopt-repo-standards/references/policies/specification-control-plane-standard/` owns executable implementation
   specifications and work/evaluation contracts after requirements establish
   the required behavior.
-- `docs/policies/evidence-and-claims-standard/` and `docs/policies/delivery-standard/` own factual completion
+- `../adopt-repo-standards/references/policies/evidence-and-claims-standard/` and `../adopt-repo-standards/references/policies/delivery-standard/` own factual completion
   and delivered-state claims.

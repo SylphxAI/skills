@@ -1,4 +1,4 @@
-# Agent Skills model (v5)
+# Agent Skills model (v5.1)
 
 ## Industry meaning
 
@@ -16,11 +16,18 @@ A Skill is **not**:
 
 ## Catalog shape
 
-| Kind | Where |
-| --- | --- |
-| Workflows | `skills/<job>/` (listing) |
-| Shape/engine depth | `skills/<job>/references/` |
-| Org policy packs | `docs/policies/` (not listing skills) |
+| Kind | Where | Installed to agents? |
+| --- | --- | --- |
+| Workflows | `skills/<job>/` (listing) | Yes |
+| Shape / engine depth | `skills/<job>/references/` | Yes (with parent skill) |
+| Org policy packs | `skills/adopt-repo-standards/references/policies/<pack>/` | Yes (with adopt-repo-standards) |
+| Human repo docs | `docs/` (including `docs/policies/` pointer) | **No** — not in package install path |
+
+## Why policies live under a workflow package
+
+The installer copies only `skills/*` packages into runtime skill roots. Content that must constrain live agent work therefore **must** live under an installed skill package—typically as progressive `references/`—not only under `docs/`.
+
+Policies remain **not listing skills**. Agents do not discover `delivery-standard` as a job; they open policy packs when a workflow says so.
 
 ## User-job framing
 
@@ -30,9 +37,10 @@ Agents match how users think about work:
 - "build a product" → `build-product` (Keel app tooling in `references/keel-app`)
 - "review this domain" → `review-domain` (domain packs in references)
 - "operate support" → `operate-customer-support` (single-case depth in references)
+- "adopt engineering baseline" → `adopt-repo-standards` (and its policy packs)
 
 ## Progressive disclosure
 
 1. Listing metadata (budgeted)
 2. Skill body when selected
-3. References only when the body says so
+3. References (shape depth, engine tooling, policy packs) only when the body says so

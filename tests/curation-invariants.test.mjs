@@ -5,7 +5,12 @@ import test from 'node:test';
 import { buildCatalog, repositoryRoot } from '../scripts/build-catalog.mjs';
 
 const skillsRoot = path.join(repositoryRoot, 'skills');
-const policiesRoot = path.join(repositoryRoot, 'docs', 'policies');
+const policiesRoot = path.join(
+  skillsRoot,
+  'adopt-repo-standards',
+  'references',
+  'policies',
+);
 
 test('no methods-bag or retired hide packages', () => {
   for (const banned of ['sylphx-methods', 'consult-sylphx-methods', 'build-keel-title']) {
@@ -13,11 +18,16 @@ test('no methods-bag or retired hide packages', () => {
   }
 });
 
-test('policies are docs, not skill listings', () => {
+test('policies install under adopt-repo-standards references, not as listings', () => {
   assert.ok(existsSync(path.join(policiesRoot, 'delivery-standard', 'README.md')));
+  assert.ok(existsSync(path.join(policiesRoot, 'engineering-standard', 'README.md')));
+  assert.ok(existsSync(path.join(policiesRoot, 'source-authoring-standard', 'README.md')));
   assert.equal(existsSync(path.join(skillsRoot, 'delivery-standard')), false);
   assert.equal(existsSync(path.join(skillsRoot, 'engineering-standard')), false);
   assert.equal(existsSync(path.join(skillsRoot, 'source-authoring-standard')), false);
+  // docs/policies is a human pointer only
+  assert.ok(existsSync(path.join(repositoryRoot, 'docs', 'policies', 'README.md')));
+  assert.equal(existsSync(path.join(repositoryRoot, 'docs', 'policies', 'delivery-standard')), false);
 });
 
 test('user-job consolidations exist', () => {
