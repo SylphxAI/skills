@@ -1,12 +1,13 @@
 # Sylphx Skills
 
-First-class **Agent Skills**: one job per package, short descriptions, depth in `references/`.
+First-class **Agent Skills** for Codex, Claude Code, and Grok Build.
 
 ## Model
 
-- Host discovers skills from `name` + `description`
-- Integrate only when job + artifact coincide ([docs/CURATION-LEDGER.md](docs/CURATION-LEDGER.md))
-- No meta method-bag hiding many jobs
+- **One listing skill = one independently requestable job** (or true policy pack)
+- Short `description` for discovery; depth in `references/`
+- Integrate only when job + artifact coincide — see [docs/CURATION-LEDGER.md](docs/CURATION-LEDGER.md)
+- **No** methods-bag package that hides many jobs behind one listing
 
 ## Install
 
@@ -15,6 +16,15 @@ First-class **Agent Skills**: one job per package, short descriptions, depth in 
 ```bash
 npm test
 npm run build:catalog
+node runtime/sylphx-skills.mjs install --agent all
 ```
 
-See [docs/MODEL.md](docs/MODEL.md).
+## Docs
+
+- [docs/MODEL.md](docs/MODEL.md)
+- [docs/CURATION-LEDGER.md](docs/CURATION-LEDGER.md)
+- [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md)
+
+## License
+
+MIT.

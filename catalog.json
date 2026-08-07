@@ -49,7 +49,7 @@
       "name": "bound-request-scope",
       "description": "Bound this request: objective, in/out, non-goals, cut lines.",
       "path": "skills/bound-request-scope/SKILL.md",
-      "packageDigest": "sha256:8698a7b7ea4e788e6713a2233cc76f929dc341e6b35cf3cb540d95ef2f91e6f3"
+      "packageDigest": "sha256:61ec8410ae24bf8efa524a5f4cbd5616636ddd7869cb4ab5071b09a442a7f5c6"
     },
     {
       "name": "build-distribution-readiness",

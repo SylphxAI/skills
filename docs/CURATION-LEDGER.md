@@ -7,6 +7,7 @@ Not a methods bag. Not blind 122-preserve. Integrate only on job/artifact coinci
 
 | Action | From | To | Reason |
 | --- | --- | --- | --- |
+| progressive | `bound-request-scope` entry | `references/full-method.md` | Industry soft body size; keep listing job, move depth |
 | absorb→restore | `distill-source-to-skill` | first-class (was briefly under author-skill) | Distinct request shape: source→skill package |
 | absorb→restore | `design-skill-evals` | first-class (was briefly under author-skill) | Distinct artifact: eval program, not SKILL.md |
 | merge | `review-privacy-data-lifecycle` + `review-data-rights-operations` | `review-privacy-and-data-rights` | One privacy/rights assessment artifact |
