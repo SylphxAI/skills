@@ -21,6 +21,8 @@ Produce **markdown image embeds** for README/docs: badges, banners, tech icon ro
 
 ## Method
 
+**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+
 1. Choose mark types: badge / banner / icons / stats.
 2. Open [references/providers/INDEX.md](references/providers/INDEX.md); prefer no-key public APIs.
 3. Build URLs with required query params; URL-encode text.
@@ -36,6 +38,7 @@ Produce **markdown image embeds** for README/docs: badges, banners, tech icon ro
 
 ## Progressive disclosure
 
+- [references/recipes.md](references/recipes.md) — **open first**: copy-paste endpoints/commands
 - [references/providers/INDEX.md](references/providers/INDEX.md)
 - [references/providers/mark-sylphx.md](references/providers/mark-sylphx.md)
 - [references/providers/shields.md](references/providers/shields.md)

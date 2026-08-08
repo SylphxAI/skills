@@ -20,6 +20,8 @@ Publish a **non-secret** file, log, screenshot, or build output to a short-lived
 
 ## Method
 
+**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+
 1. **Scrub**: redact secrets; prefer minimized logs.
 2. **Choose host** from [references/providers/INDEX.md](references/providers/INDEX.md) (L1/L2 hobby hosts).
 3. **Upload** via documented CLI/curl; capture URL + retention.
@@ -35,6 +37,7 @@ Publish a **non-secret** file, log, screenshot, or build output to a short-lived
 
 ## Progressive disclosure
 
+- [references/recipes.md](references/recipes.md) — **open first**: copy-paste recipes
 - [references/providers/INDEX.md](references/providers/INDEX.md)
 - [references/providers/file-hosts.md](references/providers/file-hosts.md)
 - [references/safety.md](references/safety.md)

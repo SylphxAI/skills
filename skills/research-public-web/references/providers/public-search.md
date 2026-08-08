@@ -1,27 +1,20 @@
-# Public search & fetch
+# Public search & fetch — concrete endpoints
 
-## Patterns
+| Source | Endpoint pattern | Auth | Notes |
+|---|---|---|---|
+| Wikipedia REST | `https://en.wikipedia.org/api/rest_v1/page/summary/{title}` | none | JSON extract + urls |
+| MediaWiki opensearch | `https://en.wikipedia.org/w/api.php?action=opensearch&search=` | none | title list |
+| HN Algolia | `https://hn.algolia.com/api/v1/search?query=` | none | practitioner signal |
+| npm | `https://registry.npmjs.org/{pkg}/latest` | none | version authority |
+| crates.io | `https://crates.io/api/v1/crates/{name}` | none | send User-Agent |
+| PyPI | `https://pypi.org/pypi/{name}/json` | none | |
+| jsDelivr | `https://cdn.jsdelivr.net/npm/{pkg}/…` | none | CDN + file fetch |
+| Wayback available | `https://archive.org/wayback/available?url=` | none | |
+| Open-Meteo | `https://api.open-meteo.com/v1/forecast?…` | none | non-commercial quotas |
+| ipify | `https://api.ipify.org?format=json` | none | egress IP only |
+| DDG HTML | `https://html.duckduckgo.com/html/?q=` | none | brittle |
 
-1. **Query** → collect top candidate URLs (title, snippet, engine).
-2. **Fetch** primary pages; strip chrome; keep excerpts short.
-3. **Cross-check** at least two independent sources for high-stakes claims.
+## Method
 
-## DuckDuckGo HTML class
-
-- No key; HTML parsing breaks when markup changes.
-- On failure: fall back to known official URLs or Wikipedia, not endless retries.
-
-## Wikipedia API
-
-- `action=query` / REST summary endpoints.
-- Good for definitions and timelines; still verify against primary standards docs for engineering claims.
-
-## HN Algolia
-
-- `http://hn.algolia.com/api/v1/search?query=...`
-- Useful for practitioner reports; not formal authority.
-
-## Archive.org
-
-- Use when live page 404s or marketing pages rewrite history.
-- Cite archived URL + original URL + archive timestamp.
+Query → candidate URLs → fetch primary → excerpt + cite → cross-check.  
+On adapter failure, **switch source**, do not infinite retry.

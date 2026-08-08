@@ -21,6 +21,8 @@ Give the agent a **working directory + command execution** surface for multi-ste
 
 ## Method
 
+**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+
 ### 1. Pick isolation class
 
 | Class | Typical surface | Free class |
@@ -59,6 +61,7 @@ Open [references/providers/INDEX.md](references/providers/INDEX.md).
 
 ## Progressive disclosure
 
+- [references/recipes.md](references/recipes.md) — **open first**: copy-paste recipes
 - [references/providers/INDEX.md](references/providers/INDEX.md)
 - [references/providers/cloudflare-computer.md](references/providers/cloudflare-computer.md)
 - [references/providers/sylphx-sandbox.md](references/providers/sylphx-sandbox.md)

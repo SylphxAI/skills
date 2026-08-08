@@ -73,7 +73,7 @@
       "name": "compose-readme-marks",
       "description": "Compose README and docs badges or banners from public mark APIs without a design tool.",
       "path": "skills/compose-readme-marks/SKILL.md",
-      "packageDigest": "sha256:6b0444375e56fb36e0a75476b62df3a54f36784137c6bc3d1d273b6c9032f895"
+      "packageDigest": "sha256:1a6f19a2b74b02643ad7ff804be5c832eabb660a51acf2f2b706a187b843057f"
     },
     {
       "name": "craft-product-interface",
@@ -97,7 +97,7 @@
       "name": "deploy-ephemeral-web-preview",
       "description": "Publish a short-lived public web URL for demos or agent proof; record claim/expiry honesty.",
       "path": "skills/deploy-ephemeral-web-preview/SKILL.md",
-      "packageDigest": "sha256:646ccee23297b73266772d396258e0171db28280ce62988589aa90050409ad57"
+      "packageDigest": "sha256:55ea83d9d2dd8bc1225568f78fe6c7be286361b303300e0602236b051af71d9b"
     },
     {
       "name": "design-product",
@@ -229,7 +229,7 @@
       "name": "provision-agent-workspace",
       "description": "Provision an agent filesystem and shell workspace with isolation and free-boundary honesty.",
       "path": "skills/provision-agent-workspace/SKILL.md",
-      "packageDigest": "sha256:2bb4027d4ddc8fffc386a7dbfcb388d177c7a3fa6eecad96b414b599fbaa27c3"
+      "packageDigest": "sha256:69cb8a1056bb5c2cefa95bc278a416a551d0fa44f5f3a947c26056bab2e6e36f"
     },
     {
       "name": "pursue-product-objective",
@@ -259,7 +259,7 @@
       "name": "research-public-web",
       "description": "Research the public web without paid SERP keys; cite sources and record adapter gaps.",
       "path": "skills/research-public-web/SKILL.md",
-      "packageDigest": "sha256:bbe75ecaff8389bf6a4858443b08ca3fc747250b583bf3b9d4313027146e5a1c"
+      "packageDigest": "sha256:f616f0549d548b97f77fb08123a78b304247e41407ec1477750b904eb11b916d"
     },
     {
       "name": "research-user-needs",
@@ -307,7 +307,7 @@
       "name": "share-ephemeral-artifact",
       "description": "Share a non-secret file or log via short-lived public URL with retention and ToS limits.",
       "path": "skills/share-ephemeral-artifact/SKILL.md",
-      "packageDigest": "sha256:578bb54aa72f5735429eb8a45182d7f6f4b851fe7ff57e6acab6a0e55f6de6f4"
+      "packageDigest": "sha256:5433c94a96462010d100950187707725bd4cb339b0e13da1e30a1722a2c06009"
     },
     {
       "name": "synthesize-evidence-brief",
@@ -331,7 +331,7 @@
       "name": "wire-managed-backend-services",
       "description": "Wire managed backend capabilities via maintained BaaS candidates with auth and quota honesty.",
       "path": "skills/wire-managed-backend-services/SKILL.md",
-      "packageDigest": "sha256:4d2179d9684904249a2933c45b19d9d1cc89e69b018ff91891106bc508323de1"
+      "packageDigest": "sha256:a59b5735c4148415bad79e7431e6e8f02c74cae8c15febf594c38cf7318fe10f"
     },
     {
       "name": "write-high-signal-update",

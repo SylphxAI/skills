@@ -1,23 +1,36 @@
-# File host usage patterns
+# File host recipes
 
-## Generic curl upload pattern
+## 0x0.st
+
+| Field | Value |
+|---|---|
+| Auth | none |
+| Class | L1 |
+| Upload | `curl -F file=@path https://0x0.st` |
+| Response | URL text |
+| Risk | public, logged, hobby |
+
+## litterbox (temporary catbox)
+
+| Field | Value |
+|---|---|
+| Auth | none |
+| Class | L1/L2 |
+| Upload | multipart API (`reqtype=fileupload`, `time=`, `fileToUpload`) |
+| Risk | public; TTL modes |
+
+## catbox permanent
+
+Longer retention but still **public**. Not private object storage.
+
+## transfer.sh class
+
+Historically intermittent — **live `curl -sI` before use**.
+
+## Proof template
 
 ```bash
-# Example shape only — confirm current host API before use
-curl -F "file=@./artifact.log" https://<host>/
+URL=...
+curl -sSI "$URL" | head -15
+# optional size class: curl -sS "$URL" | wc -c
 ```
-
-Record the returned URL exactly. Some hosts return plain text URLs; some JSON.
-
-## Proof
-
-```bash
-curl -sI "$URL" | head
-# optional: curl -s "$URL" | wc -c  # match expected size class
-```
-
-## Prefer / avoid
-
-- Prefer smallest host that meets TTL and size.
-- Avoid hosts that require account tracking for anonymous agent runs unless policy allows.
-- Avoid uploading binaries that look like malware; hosts will ban.

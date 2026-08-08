@@ -31,3 +31,10 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Quality vocabulary: Engineering Standard **Quality North Star** only; Modern Technical Bar is a retired phrase.
 - `sylphx-methods` bag remains forbidden.
 
+## Free-provider job skills (2026-08-08)
+
+- Removed listing `apply-instrument-family` (immature Instruments/MCP path).
+- Added job listings: `deploy-ephemeral-web-preview`, `provision-agent-workspace`, `share-ephemeral-artifact`, `compose-readme-marks`, `research-public-web`, `wire-managed-backend-services`.
+- Provider depth lives under each skill `references/` so agents get recipes without web search.
+- Human-only Instruments law + envelope schema retired to `docs/history/retired-instruments-2026-08-08/` (not installable).
+

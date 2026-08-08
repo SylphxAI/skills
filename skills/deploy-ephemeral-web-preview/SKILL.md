@@ -21,6 +21,8 @@ Ship a **public URL** so humans or other agents can hit a demo without SSH, Dock
 
 ## Method
 
+**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+
 ### 1. Classify the artifact
 
 - **Static files** (HTML/CSS/JS, zip of assets)
@@ -33,7 +35,7 @@ Open [references/providers/INDEX.md](references/providers/INDEX.md) and pick the
 
 Default ladder (stop at first success):
 
-1. **Cloudflare Temporary Account** — `npx wrangler@latest deploy --temporary` for Workers; no permanent CF login. Live window ~**60 minutes** unless claimed.
+1. **Cloudflare Temporary Account** — `npx wrangler@≥4.102 deploy --temporary` (see recipes). No permanent CF login. **Claim within 60 minutes** or resources expire.
 2. **Cloudflare Drop** (or equivalent no-login static drop) when the artifact is static-only and supported by the current Drop surface.
 3. **Account free static** (Surge, GitHub Pages, CF Pages free) when you already have credentials and need longer than ~1h.
 4. **Hobby full-stack previews** (Vercel/Netlify free) when the app needs their build pipeline.
@@ -61,6 +63,7 @@ Record exact CLI output: public URL, claim URL (if any), expiry, and project/wor
 
 ## Progressive disclosure
 
+- [references/recipes.md](references/recipes.md) — **open first**: copy-paste deploy recipes
 - [references/providers/INDEX.md](references/providers/INDEX.md) — choose provider
 - [references/providers/cloudflare-temporary.md](references/providers/cloudflare-temporary.md) — CF temp Workers / Drop
 - [references/providers/static-free.md](references/providers/static-free.md) — Surge / Pages / Tiiny class

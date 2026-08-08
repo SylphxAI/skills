@@ -21,6 +21,8 @@ Answer a research question using **public, no-key or local adapters** first. Pai
 
 ## Method
 
+**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+
 ### 1. Frame the question
 
 - Write the decision the research must support.
@@ -58,6 +60,7 @@ Open [references/providers/INDEX.md](references/providers/INDEX.md).
 
 ## Progressive disclosure
 
+- [references/recipes.md](references/recipes.md) — **open first**: copy-paste endpoints/commands
 - [references/providers/INDEX.md](references/providers/INDEX.md)
 - [references/providers/public-search.md](references/providers/public-search.md)
 - [references/providers/reference-apis.md](references/providers/reference-apis.md)

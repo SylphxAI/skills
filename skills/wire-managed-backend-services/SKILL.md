@@ -23,6 +23,8 @@ Attach **managed backend capabilities** (auth, KV, storage, email, realtime, san
 
 ## Method
 
+**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+
 ### 1. Name the jobs
 
 List required capabilities as jobs: e.g. `sign-in`, `store-object`, `cache-key`, `send-email`, `run-sandbox`, `cron-callback`.
@@ -60,6 +62,7 @@ Original oracle: the app or curl/CLI that exercises the real postcondition (obje
 
 ## Progressive disclosure
 
+- [references/recipes.md](references/recipes.md) — **open first**: copy-paste endpoints/commands
 - [references/providers/sylphx-baas.md](references/providers/sylphx-baas.md) — service matrix + planes
 - [references/providers/peers.md](references/providers/peers.md) — other BaaS classes
 - [references/proof-bar.md](references/proof-bar.md)

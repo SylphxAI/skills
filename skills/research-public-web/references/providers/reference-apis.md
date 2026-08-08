@@ -1,11 +1,11 @@
-# Structured public APIs (examples)
+# Structured public APIs
 
-| API | Use | Auth | Notes |
-|---|---|---|---|
-| Open-Meteo | weather | none | non-commercial quotas; not a search engine |
-| REST Countries class | country metadata | none/free | verify current host |
-| npm registry | package versions | none | authoritative for npm names |
-| crates.io API | crate metadata | none | Rust deps |
-| PyPI JSON | python packages | none | |
+| API | Job | Example |
+|---|---|---|
+| Open-Meteo | weather | `https://api.open-meteo.com/v1/forecast?latitude=&longitude=&current=temperature_2m` |
+| ipify | public IP | `https://api.ipify.org?format=json` |
+| Frankfurter class | FX | `https://api.frankfurter.app/latest?from=USD&to=HKD` (verify live; hosts move) |
+| npm / crates.io / PyPI | dependency truth | see [../recipes.md](../recipes.md) |
+| REST Countries | country metadata | check current docs; **v3.1 probed deprecated 2026-08-08** |
 
-These answer **fact queries**, not open-web search. Combine with search providers when the question is exploratory.
+These answer fact queries, not open-ended web search.

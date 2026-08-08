@@ -1,5 +1,13 @@
 # Sylphx Platform BaaS (maintained)
 
+## Agent quickstart
+
+1. Obtain `SYLPHX_TOKEN` (management) and/or runtime `sk_…`.
+2. `export SYLPHX_API_URL=https://api.sylphx.com/v1` and `sylphx whoami --json`.
+3. Open [../recipes.md](../recipes.md) for capability → curl/CLI proofs.
+4. Prefer **shipped** services; treat Functions commercial path as non-default until GA.
+5. Account-backed infrastructure — **not** no-login free internet.
+
 ## Positioning
 
 PaaS + BaaS on Sylphx Platform. Customer apps get managed services behind management API + runtime API. Catalog SSOT in Platform repo: `docs/catalog/baas/*`.

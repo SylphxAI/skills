@@ -1,39 +1,61 @@
 # `@cloudflare/computer` (Cloudflare Computer)
 
-## What it is
+**Package:** https://www.npmjs.com/package/@cloudflare/computer  
+**Monorepo overview:** Cloudflare Computer README (backends: container / isolate shell / isolate JS).
 
-Open-source **preview** package: SQLite-backed virtual filesystem for Durable Objects, with pluggable exec backends (worker shell, worker JS, Linux container) and optional AI SDK tools (`read`, `write`, `edit`, `ls`, `exec`).
+## Status
 
-## Auth / cost honesty
+**PREVIEW ONLY.** APIs unstable. Experiments and prototypes — **not** production.
 
-- Package install is free (npm).
-- Running it requires a **Cloudflare Workers / Durable Objects** deployment (account free tier or temporary deploy of *your* Worker).
-- Container backend performance and billing follow Cloudflare Containers/Workers limits—not “unlimited $0 VPS.”
-- Official status: **preview only**, not production-suitable while labeled preview.
+## Install
 
-## Limits (document drift; re-check)
+```bash
+npm install @cloudflare/computer
+# version pin example after check:
+# npm install @cloudflare/computer@0.1.1
+```
 
-- On the order of **~10 GB** workspace storage shared with DO SQLite.
-- Container-side FS often memory-backed; heavy `node_modules` I/O is slower than native disk.
-- Agent-scale workspaces, not full monorepos.
+Worker: `compatibility_flags = ["nodejs_compat"]` (plus backend-specific flags/bindings).
 
-## Minimal shape
+## Surfaces
 
 ```ts
 import { withWorkspace, getWorkspace } from "@cloudflare/computer";
-// withWorkspace on a Durable Object; getWorkspace(stub)
-// await ws.fs.writeFile(...); await ws.runtime.exec(...)
+// workspace.fs ≈ node:fs/promises subset (readFile, writeFile, mkdir, readdir, rm, grep, …)
+// workspace.runtime.exec(source, { backend })
 ```
 
-Requires `nodejs_compat` (and backend-specific bindings/flags per current package docs).
+| Backend | `source` meaning | Notes |
+|---|---|---|
+| Container | shell command | Full Linux userland; FUSE projection; heavier |
+| Isolate shell | shell command | just-bash; Dynamic Worker; no second store |
+| Isolate JS | ESM module | structured result; Workspace-backed fs |
+| None | — | FS only |
 
-## Acceptance proof
+Optional: `@cloudflare/computer/tools` with peer `ai` + `zod`.
 
-1. Worker/DO with workspace deploys.
-2. Write/read canary file via `workspace.fs`.
-3. `runtime.exec` returns expected stdout for a trivial command **if** an exec backend is configured (FS-only mode is valid—state that explicitly).
+## Limits (re-check)
+
+- ~**10 GB** per workspace (DO SQLite share).  
+- Container FS often memory-backed; heavy `node_modules` I/O slower than native disk.  
+- Agent-scale workspaces, not full monorepos.
+
+## Cost / auth honesty
+
+| Layer | Reality |
+|---|---|
+| npm package | free/OSS |
+| Running DO/Worker | Cloudflare account free tier or temporary deploy of **your** Worker |
+| Containers | CF plan/limits — not unlimited $0 VPS |
+
+## Acceptance
+
+1. Deploy Worker/DO with workspace.  
+2. FS canary write/read.  
+3. Exec canary **or** explicit FS-only mode.  
+4. Label **preview**.
 
 ## Prefer / avoid
 
-- **Prefer** for experiments on CF-native agents needing durable files across DO restarts.
-- **Avoid** as silent production dependency while preview; avoid equating with no-login permanent computers.
+- Prefer CF-native agent experiments.  
+- Avoid silent production dependency; avoid “no account forever computer” claims.
