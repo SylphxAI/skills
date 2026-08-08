@@ -106,8 +106,8 @@ Define:
 
 ## 7. Implementation checklist
 
-- [ ] Product send/edit uses Rich Message (`rich_message.markdown`), not MarkdownV2/HTML
-- [ ] Formatters emit GFM tables/lists; no MarkdownV2 escape helper on the default path
+- [ ] Product send/edit uses Rich Message only; HTML/MarkdownV2 product helpers removed
+- [ ] Formatters emit GFM tables/lists (or rich blocks); no dual formatters
 - [ ] Handlers for slash **and** callback share the same job functions
 - [ ] `callback_data` ≤64 bytes; protocol documented
 - [ ] Every callback answered

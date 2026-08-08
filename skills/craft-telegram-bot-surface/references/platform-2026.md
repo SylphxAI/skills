@@ -59,7 +59,7 @@ These APIs are new enough that coding agents often:
 
 | Priority | Upgrade | Why |
 | --- | --- | --- |
-| P0 | Rich Message success path; **kill silent HTML floor** for tables | HTML drops tables |
+| P0 | Rich Message success path; **kill silent HTML path (delete)** for tables | HTML drops tables |
 | P0 | Keep ≤5 slash + keyboard trees | Already correct IA |
 | P1 | **Ephemeral** for `/follow`, manage subs, errors, personal help in groups | Shared tip topics stay clean |
 | P1 | **editMessage** (+ rich) for race/follow trees | Less flood; native progressive UI |
@@ -121,8 +121,7 @@ Do not rewrite GFM formatters to blocks until:
 - Feature flag / capability residual documented if partially rolled out,
 - No claim of Guest/Ephemeral/Managed from blog text alone.
 
-## Residuals honesty
+## Authority
 
-Stale notes that still say “default MarkdownV2” are **historical**, not product
-authority, if the live adapter is ADR-941 rich-only. Prefer source +
-`CHANNEL-REPLIES` / channel-format rules over old MEMORY lines.
+Prefer live source + this skill over stale MEMORY lines that mention MarkdownV2
+or HTML product paths. Those labels are invalid for product Telegram text.

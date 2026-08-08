@@ -14,8 +14,8 @@ copy, or reviewing `parse_mode` / escape helpers.
 | Edit via `editMessageText` + `rich_message` | `parse_mode=HTML` as the product success path |
 | Tables, task lists, headings, code, links | Building boards as plain monospace because “HTML is safer” |
 
-Bot API 10.1+ Rich Message is the current native path. MarkdownV2 and classic
-HTML `parse_mode` are **legacy residual**, not the default craft.
+Bot API 10.1+ Rich Message is the **only** product text path. MarkdownV2 and
+classic HTML `parse_mode` are forbidden for product text.
 
 ## Wire shape
 
