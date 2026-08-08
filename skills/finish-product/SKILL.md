@@ -28,8 +28,9 @@ bounded ``craft-product-interface` job. For missing capability, live harm, scale
 Simple and detailed are different dimensions. Finish the product’s **one core
 concept** deeply—do not invent extra concepts to fill a checklist.
 
-- **Simple surface** — as few concepts as the promise needs; legible story;
-  obvious primary path; restrained controls; coherent visual or gameplay language.
+- **Simple surface** (`q-simplicity`) — as few concepts as the promise needs;
+  legible story; obvious primary path; restrained controls; coherent visual or
+  gameplay language—**without cutting** capability the promise requires.
 - **Deep resolution** (`q-depth`) — every material exposed detail of that core
   concept is intentional, derived from an authority, explicitly not applicable,
   or recorded as a defect; strength and polish match real use (feel, recovery,

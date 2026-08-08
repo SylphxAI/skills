@@ -6,14 +6,18 @@
 
 Policy constraints—compose onto matching host jobs.
 
-**Quality North Star:** fourteen attributes (Depth, Correctness, Simplicity,
-Readability, Maintainability, Scalability, Performance, Reliability,
-Availability, Resilience, Observability, Security, Testability, Evolvability)
-are the sole quality vocabulary. Full body owns obligations; rule IDs bind
-selection and proof. The phrase **Modern Technical Bar** is retired.
+**Quality North Star** (sole quality vocabulary): Meta *Simple concepts,
+powerful usage* + **13 primary attributes** (Depth, Simplicity, Correctness,
+Security, Reliability, Availability, Resilience, Performance, Scalability,
+Observability, Maintainability, Evolvability, Testability). Readability is a
+facet of Maintainability (`q-readability` alias). Memory set of 8 groups
+Dependability and Sustainment. Full body owns obligations; rule IDs bind
+selection, proof, and default quality precedence. The phrase **Modern
+Technical Bar** is retired.
 
 Full progressive-disclosure body: [references/full-standard.md](references/full-standard.md).  
-Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).
+Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).  
+Usage / pocket questions / anti-examples: [references/quality-north-star-usage.md](references/quality-north-star-usage.md).
 
 For code structure or architecture migration, also read:
 

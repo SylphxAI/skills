@@ -1,31 +1,44 @@
 # Binding engineering predicates
 
 Progressive-disclosure rule IDs for `engineering-standard`. Full prose:
-[full-standard.md](full-standard.md).
+[full-standard.md](full-standard.md). Usage modes and anti-examples:
+[quality-north-star-usage.md](quality-north-star-usage.md).
 
 ## Quality North Star
 
 Sole quality vocabulary (`q-*`). Apply the relevant subset; verify rather than
-slogan. Retired phrase: Modern Technical Bar.
+slogan. Meta: *Simple concepts, powerful usage.* Retired phrase: Modern
+Technical Bar.
+
+**Operating set:** 13 primary attributes. **Memory set (8):** Depth ·
+Simplicity · Correctness · Security · Dependability · Performance & Scale ·
+Observability · Sustainment.
 
 | ID | Attribute |
 | --- | --- |
-| `q-depth` | Depth — one powerful concept/capability fully resolved |
-| `q-correctness` | Correctness — contract-true under the failure model |
-| `q-simplicity` | Simplicity — simplest end-to-end design that meets requirements |
-| `q-readability` | Readability — intent legible without archaeology |
-| `q-maintainability` | Maintainability — local change, clear ownership, no hidden wrongness |
-| `q-scalability` | Scalability — horizontal scale and elastic capacity where growth bites |
-| `q-performance` | Performance — latency, throughput, cost, resource budgets |
-| `q-reliability` | Reliability — promised outcomes under expected adverse conditions |
-| `q-availability` | Availability — continuity to declared SLO; probes ≠ capability |
-| `q-resilience` | Resilience — absorb, degrade, recover without silent corruption |
-| `q-observability` | Observability — minimum correlated, privacy-preserving evidence |
+| `q-depth` | Depth — mechanism, boundary, invariant, failure mode; one powerful concept fully resolved |
+| `q-simplicity` | Simplicity — fewer primitives via unify/compose; capability not cut |
+| `q-correctness` | Correctness — contract-true under the failure model; explicit failure |
 | `q-security` | Security — secure-by-default, least-privilege, auditable boundaries |
-| `q-testability` | Testability — falsifiable automated semantic oracles |
+| `q-reliability` | Reliability — promised correct outcomes under expected adverse conditions |
+| `q-availability` | Availability — continuity to declared SLO; probes ≠ capability |
+| `q-resilience` | Resilience — absorb, degrade, recover without silent corruption or cascade |
+| `q-performance` | Performance — latency, throughput, cost, resource budgets (incl. tails) |
+| `q-scalability` | Scalability — structure holds ~10× load/data/coordination; cost curve acceptable |
+| `q-observability` | Observability — minimum correlated, privacy-preserving, actionable evidence |
+| `q-maintainability` | Maintainability — local change, clear ownership; **includes Readability** |
 | `q-evolvability` | Evolvability — affordable change; migrate/backfill then hard-cut |
+| `q-testability` | Testability — falsifiable automated semantic oracles |
+| `q-readability` | **Alias** of Maintainability (legibility facet)—not a 14th peer attribute |
 
 Full obligations: [full-standard.md](full-standard.md) § Quality North Star.
+
+**Default quality precedence** (absent business counter-instruction):  
+Depth/Simplicity → Correctness → Security → Reliability/Availability/Resilience
+→ Observability → Performance/Scalability →
+Maintainability/Evolvability/Testability. Intentional inversion requires
+tradeoff + rollback/review (`eng-quality-precedence-01`). Does not override
+legal/safety/ruin or Decision Quality / SOTA ends.
 
 ## Rule IDs
 
@@ -34,17 +47,18 @@ Full obligations: [full-standard.md](full-standard.md) § Quality North Star.
 | `eng-adr-01` | Before broad implementation, material durable architecture, ownership, public-contract, persistence, security/privacy, delivery-semantics, or enterprise-default decisions are recorded in the owning repository ADR; ordinary implementation details do not require an ADR. |
 | `eng-safety-01` | Fail closed on secrets in source, logs, and manifests. |
 | `eng-quality-01` | Material durable work names the in-scope Quality North Star attribute IDs (`q-*`) and closes each with evidence or an explicit residual (owner + expiry/review + retirement). Naming without proof is non-conformance. |
-| `eng-quality-02` | Do not maintain a parallel quality slogan list. The fourteen `q-*` attributes are the sole vocabulary; mechanism phrases (idempotent, elastic, etc.) map into them and do not form a second bar. |
-| `eng-readability-01` | Names, module structure, and required comments make non-obvious intent legible; prefer simplification and domain language over cleverness or archaeology-required structure. |
-| `eng-maintain-01` | Touched paths leave change local and ownership explicit: no new god modules, no unowned dual paths, and temporary fences carry retirement predicates. |
+| `eng-quality-02` | Do not maintain a parallel quality slogan list. The thirteen primary `q-*` attributes (plus the `q-readability` alias of Maintainability) are the sole vocabulary; mechanism phrases (idempotent, elastic, etc.) map into them and do not form a second bar. |
+| `eng-quality-precedence-01` | When quality attributes conflict without an explicit business counter-instruction, apply default quality precedence; intentional inversion records tradeoff, owner, and rollback or review condition. |
+| `eng-readability-01` | Names, module structure, and required comments make non-obvious intent legible; prefer simplification and domain language over cleverness or archaeology-required structure. (Facet of Maintainability.) |
+| `eng-maintain-01` | Touched paths leave change local and ownership explicit: no new god modules, no unowned dual paths, and temporary fences carry retirement predicates. Includes readability obligations. |
 | `eng-avail-01` | Availability-sensitive paths declare continuity intent (SLO or equivalent) and do not treat health/readiness probes as product capability proof. |
-| `eng-depth-01` | Framed product/design work deepens one core concept or capability end-to-end; reject shallow multi-concept residue and permanent dual concepts on the framed path. |
+| `eng-depth-01` | Framed product/design work deepens one core concept or capability end-to-end; reject shallow multi-concept residue and permanent dual concepts on the framed path; name why shallower options were rejected when material. |
 | `eng-concur-01` | Shared mutable state is fenced (locks, CAS, leases) with explicit timeouts. |
 | `eng-sidefx-01` | External side effects are idempotent or exactly-once with recovery. |
 | `eng-timeout-01` | Every network/RPC path has timeout, cancellation, and retry budget. |
 | `eng-hard-cut-01` | Default is verified hard-cut / one-step cutover with predecessor retirement. Expand-contract only for demonstrated large-scale user or live compatibility/state/effect risk, and only with a dated contract step—no permanent dual-path residual. |
 | `eng-hard-cut-02` | Backward-compatible dual paths, shims, and aliases are exceptional tech debt; keep them only under eng-hard-cut-01 exception bar and delete them at the retirement gate. |
-| `eng-simplicity-01` | Prefer the simplest end-to-end design that fully meets the framed requirements; add abstraction, configuration, or indirection only for a measured need (boundary protection, real reuse, or named domain concept). |
+| `eng-simplicity-01` | Prefer fewer concepts and special cases by **unify/compose** while preserving framed capability coverage; deletion of difficulty is last resort after coverage is held. Abstraction, configuration, or indirection only for measured need (boundary protection, real reuse, or named domain concept)—never simplistic cut, hidden convention, or false unification of incompatible concerns. |
 | `eng-growth-01` | Grow by thin vertical slices on a product path that already works end to end; do not trade a working path for unfinished layered complexity. |
 | `eng-deps-01` | Prefer in-tree and established dependencies after checking docs/types; reimplement commodity behavior only with a clear reason that owning it is smaller lifecycle cost than adopting. |
 | `eng-layer-01` | Dependency direction is domain → application → infrastructure. |
@@ -108,6 +122,7 @@ Full obligations: [full-standard.md](full-standard.md) § Quality North Star.
 | Product/commercial impact | Commercial ADR | owner + metrics |
 | Development/no-live-risk migration | focused change record or migration packet | exact-candidate equivalence + one-step replacement/readback |
 | Live shared-state/compatibility migration | migration packet + expand-contract | dual-path, recovery, or rollback drill |
+| Intentional quality-precedence inversion | ADR or change record naming attributes | tradeoff + owner + rollback/review |
 
 ## Conformance checklist
 
@@ -139,3 +154,5 @@ Full obligations: [full-standard.md](full-standard.md) § Quality North Star.
 - [ ] Temporary migration fences have an exact retirement predicate, and
       completed migrations have retired their proof machinery.
 - [ ] Delivery claims separate local / trunk / production proof.
+- [ ] Simplicity claims preserve capability coverage (compose, not cut).
+- [ ] Quality-precedence inversions have tradeoff + rollback/review recorded.

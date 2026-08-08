@@ -2,28 +2,59 @@
 
 ## Quality North Star
 
-Every durable **product, design, code, and architecture** outcome is judged
-against these fourteen properties when they are relevant to the domain and
-blast radius. This is the **sole engineering quality vocabulary** for Sylphx
-work that loads this standard.
+**Meta:** *Simple concepts, powerful usage.*
+
+Use a few deep concepts; compose them for power. Do **not** fake simplicity by
+cutting capability, hiding difficulty in implicit convention, or forcing a
+false unification. Depth decides whether a unification is earned; Simplicity
+decides whether the result is actually cleaner after composition.
+
+Every durable **product, design, code, documentation, and architecture**
+outcome is judged against this **sole engineering quality vocabulary** when
+attributes are relevant to the domain and blast radius.
 
 Retired phrase: **Modern Technical Bar**. Do not reintroduce it, parallel
 ility lists, or a second quality slogan layer. Prefer attribute IDs and binding
-rule IDs below.
+rule IDs below. Do not expand the table with Cost or Latency rows—latency lives
+under Performance; cost is a budget constraint on Performance/Scalability, not
+a separate quality slogan.
+
+### Structure (operating set + memory set)
+
+**Operating set = Meta + 13 primary attributes** (Readability is folded into
+Maintainability; `q-readability` remains a compatibility alias for that facet).
+
+```text
+Meta     Simple concepts, powerful usage
+
+A. Stance     Depth · Simplicity
+B. Quality    Correctness · Security · Reliability · Availability
+              Resilience · Performance · Scalability · Observability
+C. Sustainment Maintainability · Evolvability · Testability
+```
+
+**Memory set (8):** Depth · Simplicity · Correctness · Security · Dependability
+· Performance & Scale · Observability · Sustainment  
+(Dependability = Reliability + Availability + Resilience;  
+Sustainment = Maintainability + Evolvability + Testability)
+
+Usage modes, pocket questions, and anti-examples:
+[quality-north-star-usage.md](quality-north-star-usage.md).
 
 ### Application law
 
-These properties are **constraints to price and verify**, not slogans to paste
-into every design. Apply the strongest relevant subset. A static docs change
-does not need a canary analysis contract; a queue, ledger, permission system,
-parser, runtime, AI gateway, or deploy controller must prove the relevant
-concurrency, retry, idempotency, observability, security, and recovery
+These properties are **decision tools to price and verify**, not slogans to
+paste into every design. Apply the strongest relevant subset. A static docs
+change does not need a canary analysis contract; a queue, ledger, permission
+system, parser, runtime, AI gateway, or deploy controller must prove the
+relevant concurrency, retry, idempotency, observability, security, and recovery
 properties explicitly.
 
-When two properties trade off, record the tradeoff in the smallest durable
-home: code comment for a local implementation choice, test/benchmark for a
-measurable behavior, ADR for material architecture or operational policy, and
-Commercial ADR for product/business impact.
+For design reviews: pass **Layer A** (Depth / Simplicity) first, then scan B/C
+in conflict precedence order. For PRs and design docs: name at most one or two
+attributes intentionally strengthened or intentionally sacrificed—not the full
+table. For retrospectives: name which attribute was broken, the consequence,
+and whether it hardens into a rule.
 
 **Clean-break default.** When a change replaces incomplete quality posture,
 migrate or backfill what must be preserved, delete obsolete dual paths and
@@ -33,31 +64,80 @@ default quality strategy.
 
 **Domain altitude.** Depth is capability and core-concept power first (product
 and design). The remaining attributes bind code and architecture always; they
-bind product/design insofar as the artifact promises a real path users or
+bind product/design/docs insofar as the artifact promises a real path users or
 operators depend on. Do not confuse this **Depth** with progressive-disclosure
 documentation depth in skill packages.
 
-### Fourteen attributes
+### Conflict precedence (`eng-quality-precedence-01`)
+
+Absent an explicit business counter-instruction, resolve **engineering-quality**
+tradeoffs in this order:
+
+> **Depth / Simplicity (think clearly) → Correctness → Security → Reliability /
+> Availability / Resilience → Observability → Performance / Scalability →
+> Maintainability / Evolvability / Testability**
+
+Rationale:
+
+- Optimizing before understanding is prepaid incident.
+- Incorrect high availability or high throughput only accelerates wrongness.
+- An unobserved system cannot be called stable or resilient with confidence.
+- Long-term maintainability matters and cannot replace “right and safe first.”
+- Intentional violation of this order must record **tradeoff, owner, and
+  rollback or review condition** in the smallest durable home.
+
+This order is the quality-axis default inside the Engineering Standard. It does
+**not** override higher-authority decision kernels (legal/safety/ruin floors,
+principal objective, commercial EV) owned by Decision Quality / SOTA standards.
+Those kernels decide ends and feasibility; this order decides which quality
+attribute wins when two quality attributes cannot both be fully satisfied.
+
+When two properties trade off, record the tradeoff in the smallest durable
+home: code comment for a local implementation choice, test/benchmark for a
+measurable behavior, ADR for material architecture or operational policy, and
+Commercial ADR for product/business impact.
+
+### Thirteen primary attributes
 
 Each attribute is selected by relevance, priced against cost, and closed by
 evidence—not by naming it in a PR description.
 
+#### Layer A — Stance
+
 | ID | Attribute | Obligation |
 | --- | --- | --- |
-| `q-depth` | **Depth** | Prefer one powerful core concept or framed capability fully resolved end-to-end (states, recovery, edge paths, feedback, operability) over a shallow tour of many half-concepts. Growth deepens the same concept; do not invent parallel products for checklist coverage. |
-| `q-correctness` | **Correctness** | The system does what the owned contract says under the stated failure model. Prefer type-, memory-, concurrency-safe construction; deterministic decision cores where practical; fail-closed floors for auth, integrity, privacy, and recovery. A feature is incomplete if it violates a declared floor. |
-| `q-simplicity` | **Simplicity** | Prefer the simplest end-to-end design that fully meets framed requirements. Delete, fold, derive, or move before adding. Abstraction only for boundary protection, real reuse, or a named domain concept (`eng-simplicity-01`). |
-| `q-readability` | **Readability** | Names, structure, and necessary comments make intent legible to humans and agents without archaeology. Prefer clear modules and domain language over cleverness. If a simple idea needs a paragraph, simplify first; keep comments for non-obvious intent. |
-| `q-maintainability` | **Maintainability** | Future change is local, ownership is clear, and residual wrongness is not hidden. No god modules; no unowned dual paths; comments and handoff capture non-obvious invariants; temporary fences name retirement predicates. |
-| `q-scalability` | **Scalability** | Design for horizontal scale and elastic load on the boundaries that can grow. Keep compute interchangeable where practical; declare partition, ownership, and hot-path limits for authoritative state. Do not claim scale without a scale envelope or load evidence when the path is load-sensitive. |
-| `q-performance` | **Performance** | Meet explicit latency, throughput, cost, and resource budgets on critical paths. Near-native performance only when the domain requires it. Cost-efficiency (CPU, memory, IO, network, storage, build minutes, toil) is part of performance, not a separate slogan. |
-| `q-reliability` | **Reliability** | Deliver the promised outcome under normal and expected adverse conditions. Side-effect paths are idempotent or exactly-once with recovery; retries, timeouts, and cancellation are budgeted; workers and jobs have durable transitions. |
-| `q-availability` | **Availability** | Preserve service continuity to the declared SLO. Where a control/data-plane split exists, data-plane behavior stays stable through bounded control-plane impairment using admitted last-known-good state when the availability contract requires it. Probes are not capability proof. |
-| `q-resilience` | **Resilience** | Absorb, degrade, and recover from faults without silent corruption. Backpressure, bulkheads, graceful degradation, recovery drills, and rollback-safe cutovers are designed in, not bolted on after the first outage. |
-| `q-observability` | **Observability** | Material decisions, actions, and failures leave the minimum correlated, privacy-preserving evidence needed to diagnose and govern them. Collection, access, redaction, retention, cardinality, and cost are part of the contract. |
-| `q-security` | **Security** | Secure-by-default, least-privilege, privacy-conscious, and auditable at trust boundaries. Verify at every boundary; never leave secrets in source, logs, or manifests. Threat modeling for new or changed trust boundaries is not optional ceremony when blast radius is material. |
-| `q-testability` | **Testability** | Behavior is falsifiable by automated semantic oracles at the lowest capable layer. Pure cores, declared ports, deterministic simulation, and risk-matched verification beat untestable god-paths and source-string change detectors. |
-| `q-evolvability` | **Evolvability** | Change remains affordable: composable, interoperable, portable, upgradeable, migration-safe, and rollback-safe under sole-writer ownership. Preserve option value without permanent dual systems; hard-cut predecessors after migrate/backfill. |
+| `q-depth` | **Depth** | Reach mechanism, boundary, invariant, and failure mode; prefer one powerful core concept or framed capability fully resolved end-to-end (states, recovery, edge paths, feedback, operability) over a shallow tour of many half-concepts. Be able to say why a shallower option was rejected. Growth deepens the same concept; do not invent parallel products for checklist coverage (`eng-depth-01`). |
+| `q-simplicity` | **Simplicity** | Reduce concepts, special cases, and entanglement **without reducing capability**. Prefer **unify / compose** first; deletion of difficulty is last resort and only after coverage is preserved. Good simplicity: fewer primitives, stronger composition, capability held. Bad simplicity: cut edge paths, shallow shells, hide hardness in implicit convention, or false-unify incompatible concerns (`eng-simplicity-01`). |
+
+Depth and Simplicity lock each other: Depth earns the right to integrate;
+Simplicity judges whether integration actually cleaned the design. Both must
+hold for the meta *Simple concepts, powerful usage.*
+
+#### Layer B — Core quality
+
+| ID | Attribute | Obligation |
+| --- | --- | --- |
+| `q-correctness` | **Correctness** | The system does what the owned contract says under the stated failure model, and fails in an explicit way when it must. Prefer type-, memory-, concurrency-safe construction; deterministic decision cores where practical; fail-closed floors for auth, integrity, privacy, and recovery. A feature is incomplete if it violates a declared floor. |
+| `q-security` | **Security** | Secure-by-default, least-privilege, privacy-conscious, and auditable at trust boundaries. Trust, blast radius, and attack surface are design inputs—not a pre-launch patch. Verify at every boundary; never leave secrets in source, logs, or manifests. Threat modeling for new or changed trust boundaries is not optional ceremony when blast radius is material. |
+| `q-reliability` | **Reliability** | Continuously deliver the promised **correct** outcome under normal and expected adverse conditions (not merely “stays up”). Side-effect paths are idempotent or exactly-once with recovery; retries, timeouts, and cancellation are budgeted; workers and jobs have durable transitions. |
+| `q-availability` | **Availability** | Preserve service continuity to the declared SLO via health discovery, redundancy, failover, and maintenance/degradation policy—not infinite-uptime superstition or staying online while wrong. Where a control/data-plane split exists, data-plane behavior stays stable through bounded control-plane impairment using admitted last-known-good state when the availability contract requires it. Probes are not capability proof. |
+| `q-resilience` | **Resilience** | Faults will happen; isolate, degrade, retry/backoff, recover, and avoid cascades (timeout, bulkhead, circuit breaker, idempotency, backpressure). Blind infinite retry that thrash-kills a dependency is not resilience. |
+| `q-performance` | **Performance** | Meet explicit latency, throughput, cost, and resource budgets on critical paths; measure and own p50/p95/p99 where latency matters—not averages alone. Near-native performance only when the domain requires it. Cost-efficiency (CPU, memory, IO, network, storage, build minutes, toil) is part of performance, not a separate slogan. |
+| `q-scalability` | **Scalability** | When load, data, or team coordination grows ~10×, the structure still holds with an acceptable cost curve. Design for horizontal scale and elastic load on boundaries that can grow; declare partition, ownership, and hot-path limits for authoritative state. “Add K8s/cache” is not a scalability argument; premature full distribution is not one either. |
+| `q-observability` | **Observability** | Material decisions, actions, and failures leave the minimum correlated, privacy-preserving evidence (logs, metrics, traces, events) needed to explain current state without SSH guesswork. Collection, access, redaction, retention, cardinality, cost, and **actionable** alerts are part of the contract—not success-path dashboards alone. |
+
+#### Layer C — Long-term survival
+
+| ID | Attribute | Obligation |
+| --- | --- | --- |
+| `q-maintainability` | **Maintainability** | Humans and agents (including six-months-later selves) can read, change, and diagnose safely. **Includes Readability** (alias `q-readability`): names, structure, local reasoning cost, and necessary comments make intent legible without archaeology. No god modules; no unowned dual paths; handoff captures non-obvious invariants; temporary fences name retirement predicates (`eng-maintain-01`, `eng-readability-01`). |
+| `q-evolvability` | **Evolvability** | Requirements can change locally without rewrite; boundaries stay stable while interiors replace. Change remains affordable: composable, interoperable, portable, upgradeable, migration-safe, and rollback-safe under sole-writer ownership. Preserve option value without permanent dual systems or speculative dead switches; hard-cut predecessors after migrate/backfill. |
+| `q-testability` | **Testability** | Critical behavior is falsifiable by automated semantic oracles at the lowest capable layer. Design seams and boundaries so tests are cheap, stable, and meaningful—contracts and invariants, not implementation trivia or coverage vanity. Pure cores, declared ports, deterministic simulation, and risk-matched verification beat untestable god-paths and source-string change detectors. |
+
+**Alias (not a 14th peer attribute):** `q-readability` → facet of
+`q-maintainability`. Prefer `q-maintainability` on new work; keep
+`q-readability` / `eng-readability-01` valid for existing references and
+comment/docs obligations.
 
 ### Subsumed mechanism properties
 
@@ -77,6 +157,8 @@ checklists:
 - composable, interoperable, portable, upgradeable, migration-safe, rollback-safe →
   **Evolvability**
 - operable → **Maintainability** + **Observability** + **Reliability**
+- readable / legible / documentation-for-intent → **Maintainability**
+  (`q-readability` alias)
 - testable → **Testability**
 
 ### Selection and proof
@@ -89,9 +171,11 @@ For each material change:
    SLOs, recovery drills, threat models, rollout readback.
 3. Explicit residuals name owner, expiry or review trigger, and retirement
    path—never “best effort” as a permanent quality state.
-4. Product/design tasks apply **Depth** as core-concept power; implementation
-   tasks must not ship a shallow shell that defers Correctness, Reliability,
-   Observability, or Security on the framed path.
+4. Product/design tasks apply **Depth** as core-concept power and **Simplicity**
+   as compose-not-cut; implementation must not ship a shallow shell that defers
+   Correctness, Security, Reliability, or Observability on the framed path.
+5. If the change intentionally violates default quality precedence, record the
+   tradeoff and rollback/review condition (`eng-quality-precedence-01`).
 
 ## Decision First, Contract And Code Second
 
@@ -286,16 +370,19 @@ grant.
 
 ## Implementation Shape
 
-Binding rule IDs: `eng-quality-01`, `eng-quality-02`, `eng-depth-01`,
-`eng-simplicity-01`, `eng-readability-01`, `eng-maintain-01`, `eng-growth-01`,
-`eng-deps-01` (with `eng-hard-cut-01` / `eng-hard-cut-02` when retiring
-predecessors). Select other `q-*` attributes and rule IDs by blast radius.
+Binding rule IDs: `eng-quality-01`, `eng-quality-02`,
+`eng-quality-precedence-01`, `eng-depth-01`, `eng-simplicity-01`,
+`eng-readability-01`, `eng-maintain-01`, `eng-growth-01`, `eng-deps-01` (with
+`eng-hard-cut-01` / `eng-hard-cut-02` when retiring predecessors). Select other
+`q-*` attributes and rule IDs by blast radius.
 
-Prefer the simplest design that expresses the domain cleanly. One clear
-function, schema, query, module, or generated contract beats a framework of
-helpers that does not protect a real boundary. Add an abstraction only when it
-removes demonstrated duplication, protects a stable boundary, or names a domain
-concept that future code will reuse.
+Prefer the simplest design that **preserves capability** and expresses the
+domain cleanly through fewer composed primitives. One clear function, schema,
+query, module, or generated contract beats a framework of helpers that does not
+protect a real boundary. Unify and compose before deleting coverage. Add an
+abstraction only when it removes demonstrated duplication, protects a stable
+boundary, or names a domain concept that future code will reuse—and never as a
+false unification of incompatible concerns.
 
 Ship thin vertical slices on a path that already works end to end; do not trade
 a working product for unfinished layered complexity (`eng-growth-01`). Long-term
@@ -715,9 +802,10 @@ Concurrency and worker correctness:
 
 ## Comments And Code Documentation
 
-Comments are part of **Readability** (`q-readability`) and **Maintainability**
-(`q-maintainability`) and agent handoff. Write comments when they preserve
-information that is not obvious from names, types, schemas, or tests.
+Comments are part of **Maintainability** (`q-maintainability`), including the
+**Readability** facet (alias `q-readability`), and agent handoff. Write comments
+when they preserve information that is not obvious from names, types, schemas,
+or tests.
 
 Comment required:
 

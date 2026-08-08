@@ -55,7 +55,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:5042ad8a23217b1e16529bb900e47445e744cf98fb31a865a236769f96ec3f12"
+      "packageDigest": "sha256:620484e2b256972ee0d8ff73d605d4b202783a22e201a82cbf760d9eba91aea8"
     },
     {
       "name": "compose-product-portfolio",
@@ -97,7 +97,7 @@
       "name": "decide-architecture-shape",
       "description": "Decide one architecture shape from options with tradeoffs.",
       "path": "skills/decide-architecture-shape/SKILL.md",
-      "packageDigest": "sha256:403dabadb15a6104b1d51cdee590ec537ec6ef1106d492d057b83a330d0d2f19"
+      "packageDigest": "sha256:03b159f5fe457ef670c7836ea28863c0bb8ce6a0eae6d7d66dd58f4dea5a41a5"
     },
     {
       "name": "deploy-ephemeral-web-preview",
@@ -109,7 +109,7 @@
       "name": "design-product",
       "description": "Design a product blueprint (app, game, SaaS, etc.); shape depth in references.",
       "path": "skills/design-product/SKILL.md",
-      "packageDigest": "sha256:99550447c88d4886b9574a7c159c10babb373c964142dfdf04f4af42df9f8c42"
+      "packageDigest": "sha256:1fdd20133b43f84c15d3527eec40bbae7cd6e6386434743ab4df8a721657a60f"
     },
     {
       "name": "design-skill-evals",
@@ -163,7 +163,7 @@
       "name": "finish-product",
       "description": "Finish/deburr an integrated product with re-captured evidence.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:f1e3f18e3390e805e0dd8138a496b7ff74ac94f058b58311aa94f5c0d1ed4dc6"
+      "packageDigest": "sha256:c935d15f7615222d0e5de118f03a084a06ee91f9e7337c95799e5f116e56a98e"
     },
     {
       "name": "forecast-with-calibration",
