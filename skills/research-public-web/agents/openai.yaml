@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Public Web"
+  short_description: "No-paid-SERP web research with citations and gap notes."
+  default_prompt: "Research this question on the public web without paid SERP keys; cite sources and residual gaps."

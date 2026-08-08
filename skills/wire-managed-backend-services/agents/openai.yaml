@@ -1,0 +1,4 @@
+interface:
+  display_name: "Wire Managed Backend Services"
+  short_description: "Attach auth/KV/storage/sandbox via maintained BaaS with proof."
+  default_prompt: "Wire the required managed backend capabilities via BaaS; prove each with a real postcondition."

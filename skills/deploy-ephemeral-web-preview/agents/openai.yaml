@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deploy Ephemeral Web Preview"
+  short_description: "Short-lived public URL for demos with claim/expiry honesty."
+  default_prompt: "Publish an ephemeral public preview URL for this artifact; verify it live and state expiry/claim residuals."

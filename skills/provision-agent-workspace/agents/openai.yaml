@@ -1,0 +1,4 @@
+interface:
+  display_name: "Provision Agent Workspace"
+  short_description: "FS+shell workspace with isolation and free-boundary honesty."
+  default_prompt: "Provision an agent workspace with filesystem and exec; prove canaries and state free/isolation boundaries."

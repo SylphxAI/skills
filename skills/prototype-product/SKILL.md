@@ -54,3 +54,7 @@ Throwaway fidelity is fine. Learning quality beats permanence.
 
 Hypothesis · probe · evidence · decision · suggested next work kind (build / expand / another prototype)
 
+## Progressive disclosure
+
+- Public demo URL without durable hosting: open skill `deploy-ephemeral-web-preview` when the prototype needs a shareable link
+- Managed backend instead of toy storage: open skill `wire-managed-backend-services` when auth/KV/storage/sandbox are in scope
