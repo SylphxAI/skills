@@ -83,9 +83,9 @@
     },
     {
       "name": "craft-telegram-bot-surface",
-      "description": "Craft a Telegram bot interaction surface with sparse slash menu and layered native keyboards (not CLI command sprawl). Use when designing, implementing, reviewing, or hard-cutting Telegram bot commands, BotFather/setMyCommands menus, inline/reply keyboards, callback trees, forum-topic UX, or when an agent is about to add many slash commands for one product job.",
+      "description": "Craft a Telegram bot interaction surface with sparse slash menu, layered native keyboards, and Rich Message (sendRichMessage GFM) only—not CLI command sprawl, MarkdownV2, or HTML parse_mode. Use when designing, implementing, reviewing, or hard-cutting Telegram bot commands, keyboards, callback trees, digests/boards, progress text, setMyCommands, forum-topic UX, or message formatting.",
       "path": "skills/craft-telegram-bot-surface/SKILL.md",
-      "packageDigest": "sha256:544c1103b5aebccd14416e84e52273f5a0882ef8799258a15b33f50ade4d8c7b"
+      "packageDigest": "sha256:d3e2bc47509ba1eb80d9d822da8597e677bcd212cc45d1368d791863ba64f61f"
     },
     {
       "name": "curate-skill-repository",

@@ -51,6 +51,20 @@ Unlisted but button-reachable: score, why/detail, manage subs, lens switch.
 This matches the hard-cut pattern used by mature tip/query bots: **native menu
 is tiny; power is in keyboards.**
 
+
+## 3b. Rich Message (required format)
+
+Before implementing copy or send helpers, lock format:
+
+- Content = ordinary Markdown/GFM
+- Wire = `sendRichMessage` / rich edit with `rich_message.markdown`
+- **Not** MarkdownV2, **not** HTML `parse_mode` product path
+
+See [rich-message-format.md](rich-message-format.md). Boards should prefer GFM
+tables; list items when soft newlines would collapse. Migration must retire any
+default MarkdownV2 escape path and any silent HTML success path for structured
+text.
+
 ## 4. Draw trees
 
 For each multi-step job, write the path:
@@ -92,6 +106,8 @@ Define:
 
 ## 7. Implementation checklist
 
+- [ ] Product send/edit uses Rich Message (`rich_message.markdown`), not MarkdownV2/HTML
+- [ ] Formatters emit GFM tables/lists; no MarkdownV2 escape helper on the default path
 - [ ] Handlers for slash **and** callback share the same job functions
 - [ ] `callback_data` ≤64 bytes; protocol documented
 - [ ] Every callback answered
@@ -137,6 +153,7 @@ Minimum evidence before calling a surface done:
 3. Callback double-tap and stale button behavior recorded
 4. Topic-scoped action verified in a forum topic when relevant
 5. Empty-data and error paths show recovery actions
+6. Wire or client proof that messages used Rich Message (not MarkdownV2/HTML success)
 
 “Unit tests for formatters” without menu/tree proof is incomplete for this job.
 

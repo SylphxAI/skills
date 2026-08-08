@@ -1,4 +1,4 @@
 interface:
   display_name: "Craft Telegram Bot Surface"
-  short_description: "Sparse slash menu + layered keyboards; no CLI command sprawl."
-  default_prompt: "Use $craft-telegram-bot-surface to design or hard-cut this Telegram bot into sparse slash entrypoints and layered native keyboards."
+  short_description: "Sparse slash + layered keyboards + Rich Message only."
+  default_prompt: "Use $craft-telegram-bot-surface to design or hard-cut this Telegram bot into sparse slash entrypoints, layered native keyboards, and Rich Message (GFM) text—not CLI commands, MarkdownV2, or HTML."
