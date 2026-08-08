@@ -66,3 +66,7 @@ atomic commits and a revert-safe PR outcome L1/L2/L3 only when this job mutates 
 ## Progressive disclosure
 
 - [references/preview-honesty.md](references/preview-honesty.md) — open when needed for depth
+
+## Related
+
+- Need a **public** temporary URL instead of localhost? Use `deploy-ephemeral-web-preview`.

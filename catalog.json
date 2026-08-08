@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 51,
+  "count": 56,
   "skills": [
     {
       "name": "adopt-repo-standards",
@@ -26,12 +26,6 @@
       "description": "Map stubborn loops: stocks, delays, incentives, policy resistance.",
       "path": "skills/analyze-system-dynamics/SKILL.md",
       "packageDigest": "sha256:585e81e32560b92ac4350ab8e32dbd653a0b3ac4381d7dac38f3e1f47365b0a0"
-    },
-    {
-      "name": "apply-instrument-family",
-      "description": "Apply Sylphx Instruments family law for Citra Iris Cue Spine Lookout Locus — evidence envelope, brand-sole packages, sole-engine paths, Prism retirement.",
-      "path": "skills/apply-instrument-family/SKILL.md",
-      "packageDigest": "sha256:36ef496530f400bbfac42237c20e4f8cf81837523ec89136effaf22ef9382d6a"
     },
     {
       "name": "author-skill",
@@ -76,6 +70,12 @@
       "packageDigest": "sha256:29c747f693eacdea4c027e02d01620cbc85e488662d222c9b5b593a85c24d88c"
     },
     {
+      "name": "compose-readme-marks",
+      "description": "Compose README and docs badges or banners from public mark APIs without a design tool.",
+      "path": "skills/compose-readme-marks/SKILL.md",
+      "packageDigest": "sha256:6b0444375e56fb36e0a75476b62df3a54f36784137c6bc3d1d273b6c9032f895"
+    },
+    {
       "name": "craft-product-interface",
       "description": "Craft one product UI flow with states, a11y, verification.",
       "path": "skills/craft-product-interface/SKILL.md",
@@ -92,6 +92,12 @@
       "description": "Decide one architecture shape from options with tradeoffs.",
       "path": "skills/decide-architecture-shape/SKILL.md",
       "packageDigest": "sha256:403dabadb15a6104b1d51cdee590ec537ec6ef1106d492d057b83a330d0d2f19"
+    },
+    {
+      "name": "deploy-ephemeral-web-preview",
+      "description": "Publish a short-lived public web URL for demos or agent proof; record claim/expiry honesty.",
+      "path": "skills/deploy-ephemeral-web-preview/SKILL.md",
+      "packageDigest": "sha256:646ccee23297b73266772d396258e0171db28280ce62988589aa90050409ad57"
     },
     {
       "name": "design-product",
@@ -217,7 +223,13 @@
       "name": "prototype-product",
       "description": "Run a cheap real prototype with kill/continue criteria.",
       "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:972285549f950384fdac510ff947ff84ea4e3e3b4485a55498c4cc5d7715b890"
+      "packageDigest": "sha256:e73f09cc9e1ddbd36e6180e85a7ff2a8c6f34108858f56310427c5c2f8305dc0"
+    },
+    {
+      "name": "provision-agent-workspace",
+      "description": "Provision an agent filesystem and shell workspace with isolation and free-boundary honesty.",
+      "path": "skills/provision-agent-workspace/SKILL.md",
+      "packageDigest": "sha256:2bb4027d4ddc8fffc386a7dbfcb388d177c7a3fa6eecad96b414b599fbaa27c3"
     },
     {
       "name": "pursue-product-objective",
@@ -242,6 +254,12 @@
       "description": "Remediate frontend performance with before/after path metrics.",
       "path": "skills/remediate-frontend-performance/SKILL.md",
       "packageDigest": "sha256:ecf02f2795faedd9eaca57e8eb16dea9be2d21dc2bdff4f58f19b72144d3b8ca"
+    },
+    {
+      "name": "research-public-web",
+      "description": "Research the public web without paid SERP keys; cite sources and record adapter gaps.",
+      "path": "skills/research-public-web/SKILL.md",
+      "packageDigest": "sha256:bbe75ecaff8389bf6a4858443b08ca3fc747250b583bf3b9d4313027146e5a1c"
     },
     {
       "name": "research-user-needs",
@@ -286,6 +304,12 @@
       "packageDigest": "sha256:68f69958d08f66355ccfe0069c95b448f5b93c7e026d5c1d4ced70dab2c61bdf"
     },
     {
+      "name": "share-ephemeral-artifact",
+      "description": "Share a non-secret file or log via short-lived public URL with retention and ToS limits.",
+      "path": "skills/share-ephemeral-artifact/SKILL.md",
+      "packageDigest": "sha256:578bb54aa72f5735429eb8a45182d7f6f4b851fe7ff57e6acab6a0e55f6de6f4"
+    },
+    {
       "name": "synthesize-evidence-brief",
       "description": "Synthesize multi-source evidence into one bounded brief with residuals.",
       "path": "skills/synthesize-evidence-brief/SKILL.md",
@@ -301,7 +325,13 @@
       "name": "verify-local-web-preview",
       "description": "Verify local web/game preview: load, screenshot, console gate.",
       "path": "skills/verify-local-web-preview/SKILL.md",
-      "packageDigest": "sha256:59f4762a2a14f0f821eb788e86b76c84ae42bb9c354c8cd40238634e95d2fc0d"
+      "packageDigest": "sha256:7d42f2e004b028c32c73822aaaae7c085da88de54fad2afefcfcc4f75d9cd679"
+    },
+    {
+      "name": "wire-managed-backend-services",
+      "description": "Wire managed backend capabilities via maintained BaaS candidates with auth and quota honesty.",
+      "path": "skills/wire-managed-backend-services/SKILL.md",
+      "packageDigest": "sha256:4d2179d9684904249a2933c45b19d9d1cc89e69b018ff91891106bc508323de1"
     },
     {
       "name": "write-high-signal-update",
