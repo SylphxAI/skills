@@ -68,10 +68,17 @@ These APIs are new enough that coding agents often:
 | P3 | Guest mode only if product wants @summon outside membership | Usually **not** for paid/private tip channels |
 | Later | Communities if multi-chat brand packaging is a product goal | Topology, not a patch |
 
-### Legacy runtime (OpenClaw-class)
+### Legacy runtime (OpenClaw-class) — hard isolation
 
-Treat as **migration residual**: do not invent Guest/Managed features there unless
-ownership is explicitly reopened. Prefer Spiron-native path for new agent UX.
+OpenClaw is **not** a product Telegram surface for this clean-break.
+
+- Do **not** implement surface-v2 features, Guest/Managed bots, or webhook cutover
+  there unless ownership is explicitly reopened and Spiron cutover is authorized.
+- Do **not** copy live Telegram tokens or call `setWebhook` against OpenClaw-owned
+  bots from Spiron/Gateway paths.
+- Prefer Spiron-native (and sylphx-ai admin bot) for all new agent/admin UX.
+- Until cutover, treat OpenClaw Telegram as **non-product / migration residual** —
+  not dual-path authority.
 
 ## Slash budget for agent bots (special case)
 
