@@ -89,6 +89,11 @@ implement only if the user wants code.
 Full method depth:
 [references/telegram-surface-method.md](references/telegram-surface-method.md).
 
+For **new** platform APIs (Ephemeral, Guest, bot-to-bot, Managed, Rich blocks,
+colored buttons), open
+[references/platform-2026.md](references/platform-2026.md) and adopt only when a
+user job fails without them — do not cargo-cult every blog feature onto every bot.
+
 ## Slash budget (hard guidance)
 
 | Count | Verdict |
@@ -148,5 +153,6 @@ and test evidence.
 
 - [references/telegram-surface-method.md](references/telegram-surface-method.md) — full method, limits, migration, verification
 - [references/rich-message-format.md](references/rich-message-format.md) — Rich Message wire, GFM rules, failure policy
+- [references/platform-2026.md](references/platform-2026.md) — Bot API 9.3–10.2 map: ephemeral, guest, bot-to-bot, blocks; when agents may apply
 - [references/interaction-primitives.md](references/interaction-primitives.md) — when to use each Telegram control
 - [references/callback-protocol.md](references/callback-protocol.md) — callback_data design and handler rules

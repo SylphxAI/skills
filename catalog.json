@@ -85,7 +85,7 @@
       "name": "craft-telegram-bot-surface",
       "description": "Craft a Telegram bot interaction surface with sparse slash menu, layered native keyboards, and Rich Message (sendRichMessage GFM) only—not CLI command sprawl, MarkdownV2, or HTML parse_mode. Use when designing, implementing, reviewing, or hard-cutting Telegram bot commands, keyboards, callback trees, digests/boards, progress text, setMyCommands, forum-topic UX, or message formatting.",
       "path": "skills/craft-telegram-bot-surface/SKILL.md",
-      "packageDigest": "sha256:d3e2bc47509ba1eb80d9d822da8597e677bcd212cc45d1368d791863ba64f61f"
+      "packageDigest": "sha256:c58a3e1412b511e99f51707347de80b66b23da11da187ea6558d3b85c4836770"
     },
     {
       "name": "curate-skill-repository",

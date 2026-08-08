@@ -96,3 +96,21 @@ Is it heavy form or auth web?          → Web App
 Is it share/install bind?              → deep link
 Would CLI people add a flag/subcommand?→ almost always a button, not a slash
 ```
+
+
+## Ephemeral replies (Bot API 10.2+)
+
+**Good for:** group personal help, settings, errors, per-user status — only the
+invoking user (and bot) should see them.
+
+**Bad for:** shared digests, public tips, anything others must audit in-chat.
+
+See [platform-2026.md](platform-2026.md) before implementing.
+
+## Guest mode (Bot API 10.0+)
+
+**Good for:** @summon helpers without adding the bot to the group.
+
+**Bad for:** products that need history, membership, or continuous presence.
+
+See [platform-2026.md](platform-2026.md).
