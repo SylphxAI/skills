@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 51,
+  "count": 52,
   "skills": [
     {
       "name": "adopt-repo-standards",
@@ -80,6 +80,12 @@
       "description": "Craft one product UI flow with states, a11y, verification.",
       "path": "skills/craft-product-interface/SKILL.md",
       "packageDigest": "sha256:3ebc1c7cd81657d664d9c2560a8a11a516e7520c97e32ecb7b255b4a3aed563e"
+    },
+    {
+      "name": "craft-telegram-bot-surface",
+      "description": "Craft a Telegram bot interaction surface with sparse slash menu and layered native keyboards (not CLI command sprawl). Use when designing, implementing, reviewing, or hard-cutting Telegram bot commands, BotFather/setMyCommands menus, inline/reply keyboards, callback trees, forum-topic UX, or when an agent is about to add many slash commands for one product job.",
+      "path": "skills/craft-telegram-bot-surface/SKILL.md",
+      "packageDigest": "sha256:544c1103b5aebccd14416e84e52273f5a0882ef8799258a15b33f50ade4d8c7b"
     },
     {
       "name": "curate-skill-repository",
