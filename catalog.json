@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 56,
+  "count": 57,
   "skills": [
     {
       "name": "adopt-repo-standards",
@@ -80,6 +80,12 @@
       "description": "Craft one product UI flow with states, a11y, verification.",
       "path": "skills/craft-product-interface/SKILL.md",
       "packageDigest": "sha256:3ebc1c7cd81657d664d9c2560a8a11a516e7520c97e32ecb7b255b4a3aed563e"
+    },
+    {
+      "name": "craft-telegram-bot-surface",
+      "description": "Craft or hard-cut a Telegram bot to the sole 2026 surface model: sparse slash menu, layered keyboards with edit trees, Rich Message only, public vs ephemeral visibility, and bot-to-bot loop guards when multi-bot. Use for any Telegram bot design, implementation, review, command menu, keyboard tree, digest/board, progress UI, group multi-bot, or format path—never MarkdownV2/HTML product text or CLI command sprawl.",
+      "path": "skills/craft-telegram-bot-surface/SKILL.md",
+      "packageDigest": "sha256:81bcb9ebc66c8c39554b48af341a4e47926281babe34ce6d6f4fea1287915c66"
     },
     {
       "name": "curate-skill-repository",
