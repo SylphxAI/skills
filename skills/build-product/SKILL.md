@@ -40,10 +40,13 @@ No permanent workarounds. Prefer durable work on the owning layer.
 
 - Implement the **framed capability** as a full, owning-boundary vertical slice
   of the product’s core concept—not a parallel concept or permanent workaround.
-- Prefer **Depth** and strength on that capability (real path, oracle,
-  operability) over shipping many half-concepts. Apply the Engineering Standard
-  **Quality North Star** (`q-*`) on the framed path—not a shallow shell that
-  defers Correctness, Reliability, Observability, or Security.
+- Prefer **Depth** and **Simplicity** on that capability: fully resolve one
+  concept (real path, oracle, operability, failure modes) and **compose**
+  rather than cut coverage. Apply the Engineering Standard **Quality North
+  Star** (`q-*`) on the framed path—not a shallow shell that defers
+  Correctness, Security, Reliability, or Observability. When quality
+  attributes conflict, use default quality precedence or record tradeoff +
+  rollback.
 - When landing source: land with atomic commits and a revert-safe PR outcome. Do not leave dual-path concept
   residue; hard-cut obsolete paths via the execute-hard-cutover skill when cutover is the job.
 
@@ -68,7 +71,7 @@ No permanent workarounds. Prefer durable work on the owning layer.
 Open only depth the current build needs:
 
 - [references/keel-app/](references/keel-app/) — Keel app tooling when the product uses Keel
-- [references/engineering-standard/](references/engineering-standard/) — Quality North Star and engineering constraints while building
+- [references/engineering-standard/](references/engineering-standard/) — Quality North Star (meta, 13 primaries, precedence) and engineering constraints while building; open `references/quality-north-star-usage.md` for pocket questions / anti-examples
 - [references/risk-matched-verification-standard/](references/risk-matched-verification-standard/) — risk-matched verification
 - [references/frontier-verification-standard/](references/frontier-verification-standard/) — frontier verification for high blast-radius paths
 - [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — platform-first boundaries

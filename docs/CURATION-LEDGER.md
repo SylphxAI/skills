@@ -29,6 +29,7 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Listing paths `skills/<name>-standard/` are retired; do not restore them as top-level skills.
 - Restored owner homes: `sota-execution-standard` → `record-structured-deliberation`; `autonomous-execution-standard` → `drive-to-delivery`; `frontier-verification-standard` → `build-product`.
 - Quality vocabulary: Engineering Standard **Quality North Star** only; Modern Technical Bar is a retired phrase.
+- Quality North Star convergence (2026-08-08): Meta *Simple concepts, powerful usage*; 13 primary attributes (Readability folded into Maintainability as `q-readability` alias); default quality precedence (`eng-quality-precedence-01`); Simplicity locked to compose/unify without cutting capability; usage/anti-examples under `quality-north-star-usage.md`.
 - `sylphx-methods` bag remains forbidden.
 
 ## Free-provider job skills (2026-08-08)

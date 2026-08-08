@@ -49,5 +49,7 @@ Not listings. One owner skill each; others link. No standards bag skill.
 Constraint packs resolve only under applying skills. Never invent top-level
 `skills/<pack>-standard/` listings for standards, profiles, or matrices.
 Engineering quality vocabulary is the **Quality North Star** owned by
-`build-product/references/engineering-standard`.
+`build-product/references/engineering-standard` (Meta + 13 primaries; Simplicity
+= compose without cutting capability; default quality precedence; not a listing
+skill).
 

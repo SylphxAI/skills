@@ -29,5 +29,7 @@ are retired.
 | work-coordination-standard | skills/select-next-work/references/work-coordination-standard |
 | documentation-standard | skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard |
 
-Quality vocabulary: **Quality North Star** (`q-*`) owned by
-`engineering-standard`. The phrase Modern Technical Bar is retired.
+Quality vocabulary: **Quality North Star** (`q-*`, 13 primaries + `q-readability`
+alias; meta *Simple concepts, powerful usage*) owned by `engineering-standard`
+under `build-product`. Default quality precedence and usage guidance live there.
+The phrase Modern Technical Bar is retired.

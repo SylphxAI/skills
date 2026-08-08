@@ -16,6 +16,10 @@ on narrative status or stale proof.
 - Read `references/decide-architecture-shape-patterns.md` before choosing slice boundaries, states, parity gates, concurrency, or cutover policy.
 - Use `scripts/validate_migration_ledger.py` only when the convergence adopts the portable ledger shape in the reference. From this repository's root, run `python3 -m unittest -v skills/design-product/../decide-architecture-shape/scripts/test_validate_migration_ledger.py` after changing the validator. A simple single-repository refactor does not need a ledger merely to use this Skill. Reuse the repository's existing proportional verification entrypoint when ledger validity is material; do not add a dedicated CI workflow merely because the portable validator exists. Prefer an existing repo-native schema and validator when one already owns this fact.
 - Load the target repositories' local architecture, delivery, and safety rules. This portfolio skill does not replace them.
+- Apply Engineering Standard **Quality North Star** (Depth/Simplicity first;
+  compose, do not cut capability; default quality precedence on tradeoffs) from
+  `../build-product/references/engineering-standard/` when choosing shape or
+  recording rejected alternatives.
 
 ## Workflow
 

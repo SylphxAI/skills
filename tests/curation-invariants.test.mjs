@@ -121,13 +121,31 @@ test('Quality North Star is sole engineering quality vocabulary', () => {
   for (const id of [
     'eng-quality-01',
     'eng-quality-02',
+    'eng-quality-precedence-01',
     'eng-depth-01',
+    'eng-simplicity-01',
     'eng-readability-01',
     'eng-maintain-01',
     'eng-avail-01',
   ]) {
     assert.ok(predicates.includes(id), id);
   }
+  assert.ok(full.includes('Simple concepts, powerful usage'));
+  assert.ok(full.includes('thirteen primary') || full.includes('Thirteen primary'));
+  assert.ok(predicates.includes('Alias'));
+  assert.ok(
+    existsSync(
+      path.join(
+        skillsRoot,
+        'build-product',
+        'references',
+        'engineering-standard',
+        'references',
+        'quality-north-star-usage.md',
+      ),
+    ),
+    'quality-north-star-usage.md',
+  );
 });
 
 test('constraint pack listing paths are dead; owners exist under applying skills', () => {
