@@ -85,7 +85,7 @@
       "name": "craft-telegram-bot-surface",
       "description": "Craft or hard-cut a Telegram bot to the sole 2026 surface model: sparse slash menu, layered keyboards with edit trees, Rich Message only, public vs ephemeral visibility, and bot-to-bot loop guards when multi-bot. Use for any Telegram bot design, implementation, review, command menu, keyboard tree, digest/board, progress UI, group multi-bot, or format path—never MarkdownV2/HTML product text or CLI command sprawl.",
       "path": "skills/craft-telegram-bot-surface/SKILL.md",
-      "packageDigest": "sha256:81bcb9ebc66c8c39554b48af341a4e47926281babe34ce6d6f4fea1287915c66"
+      "packageDigest": "sha256:0a0557f54b4310926e82e6ce94138dfecb4bdaec149c37b38540934e15867841"
     },
     {
       "name": "curate-skill-repository",
