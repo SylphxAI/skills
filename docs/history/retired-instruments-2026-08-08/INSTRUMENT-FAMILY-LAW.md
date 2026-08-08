@@ -1,3 +1,6 @@
+> **RETIRED SNAPSHOT (2026-08-08).** Not agent-install authority. Not binding SSOT.
+> Live catalog removed `apply-instrument-family`. Active free-tool jobs use multi-provider skill recipes instead.
+
 # Sylphx Instrument Family Law (clean-break)
 
 **Status:** binding for Citra, Iris, Cue, Spine, Lookout, Locus  
