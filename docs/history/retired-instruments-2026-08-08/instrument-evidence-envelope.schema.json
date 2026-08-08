@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/SylphxAI/skills/blob/main/schemas/instrument-evidence-envelope.schema.json",
-  "title": "Sylphx Instrument Evidence Envelope v1",
-  "description": "Wire-level result contract for Sylphx local-first Instruments (Citra, Iris, Cue, Spine, Lookout, Locus). Evidence rides on every tool result; there is no evidence_first tool.",
+  "$id": "https://github.com/SylphxAI/skills/blob/main/docs/history/retired-instruments-2026-08-08/instrument-evidence-envelope.schema.json",
+  "title": "Sylphx Instrument Evidence Envelope v1 (retired snapshot)",
+  "description": "Wire-level result contract for Sylphx local-first Instruments (Citra, Iris, Cue, Spine, Lookout, Locus). Evidence rides on every tool result; there is no evidence_first tool. RETIRED SNAPSHOT 2026-08-08; not active skills authority.",
   "type": "object",
   "additionalProperties": true,
   "required": [
@@ -23,7 +23,11 @@
     },
     "status": {
       "type": "string",
-      "enum": ["ok", "error", "partial"],
+      "enum": [
+        "ok",
+        "error",
+        "partial"
+      ],
       "description": "ok = usable payload; partial = usable with material gaps; error = no trustworthy primary payload."
     },
     "tool": {
@@ -33,7 +37,14 @@
     },
     "product": {
       "type": "string",
-      "enum": ["citra", "iris", "cue", "spine", "lookout", "locus"],
+      "enum": [
+        "citra",
+        "iris",
+        "cue",
+        "spine",
+        "lookout",
+        "locus"
+      ],
       "description": "Brand product id (not transitional package id)."
     },
     "product_version": {
@@ -43,7 +54,9 @@
     },
     "route": {
       "type": "object",
-      "required": ["engine"],
+      "required": [
+        "engine"
+      ],
       "additionalProperties": true,
       "properties": {
         "engine": {
@@ -64,11 +77,23 @@
       "type": "object",
       "additionalProperties": true,
       "properties": {
-        "path": { "type": "string" },
-        "url": { "type": "string" },
-        "hash": { "type": "string", "description": "Content hash, preferably sha256:hex" },
-        "mime": { "type": "string" },
-        "bytes": { "type": "integer", "minimum": 0 }
+        "path": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string",
+          "description": "Content hash, preferably sha256:hex"
+        },
+        "mime": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
       }
     },
     "locators": {
@@ -90,12 +115,16 @@
     },
     "warnings": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Non-fatal honesty notes (partial OCR, missing optional adapter, cache miss, ...)."
     },
     "gaps": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Material absences the agent must not invent (no text layer, unknown impact, SSRF deny, ...)."
     },
     "confidence": {
@@ -104,12 +133,18 @@
       "properties": {
         "kind": {
           "type": "string",
-          "enum": ["deterministic", "scored_non_locator", "inferred"],
+          "enum": [
+            "deterministic",
+            "scored_non_locator",
+            "inferred"
+          ],
           "description": "deterministic = locators/facts from local engines; scored_non_locator = optional model scores that must not override locators; inferred = non-authoritative."
         },
         "notes": {
           "type": "array",
-          "items": { "type": "string" }
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -117,8 +152,12 @@
       "type": "object",
       "additionalProperties": true,
       "properties": {
-        "code": { "type": "string" },
-        "message": { "type": "string" }
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
       }
     }
   }
