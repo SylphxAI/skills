@@ -10,10 +10,19 @@ argument, and falsifiable analysis. Read
 [references/causal-inference-methods.md](references/causal-inference-methods.md)
 before choosing a design or adjustment strategy.
 
+
+## When to use
+- A claim says one thing causes another and the counterfactual contrast can be stated
+- You need an identified estimate (not correlation, prediction, or temporal order) with assumptions and sensitivity
+- Designing or auditing an experiment, holdout, switchback, or observational study of an intervention
+- Not for competing root-cause hypotheses without an estimand (`analyze-critically`) or feedback dynamics over time (`analyze-system-dynamics`)
+
 ## Workflow
 
 1. Define the intervention or exposure, comparator, population, outcome, time
    zero, follow-up horizon, and target estimand. Reject vague verbs such as
+
+Example: "Does the new onboarding flow (intervention) change 7-day retention (outcome) vs the current flow (comparator) for new signups (population) within 30 days (horizon)?" is a complete causal question; "impact" alone is not.
    “impact” until the counterfactual contrast is clear.
 2. Establish temporal ordering and draw the causal assumptions. Distinguish
    confounders, mediators, colliders, selection mechanisms, measurement error,

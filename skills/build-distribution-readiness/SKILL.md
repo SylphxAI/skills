@@ -10,6 +10,12 @@ support-ready Distribution Evidence Pack. Architecture readiness, local build,
 upload, processing, external review, publication, indexing, installation, and
 live readback are distinct states.
 
+
+## When to use
+- An exact product artifact needs channel-specific distribution readiness: packages, install/upgrade, certification, live readback
+- Release communication variants bind to exact shipped identity
+- Not for making the artifact (`build-product`) or listing conversion (`optimize-store-listing`)
+
 ## Resource routing
 
 - Read `references/distribution-channel-matrix.md` only when a mobile app store,

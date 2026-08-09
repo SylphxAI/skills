@@ -10,12 +10,21 @@ arrows. Read
 [references/system-dynamics-methods.md](references/system-dynamics-methods.md)
 when constructing loops, stock-flow models, simulations, or interventions.
 
+
+## When to use
+- Behavior over time needs explanation: growth, decline, oscillation, delay, or policy resistance
+- Stocks/flows, feedback loops, delays, or adaptive actors materially shape the outcome
+- Testing interventions for burden-shifting, compensating feedback, or delayed harm
+- Not for a static dependency graph or a one-shot causal estimate (`analyze-causal-inference`)
+
 ## Workflow
 
 1. Define the focal behavior, decision, time horizon, system boundary, and the
    evidence showing how the behavior changes over time.
 2. Draw a behavior-over-time view for the important variables. Distinguish an
    observed pattern from a hypothesized mechanism.
+
+Example: signups grow fast then plateau — sketch active-users-over-time before naming loops; the plateau may be capacity, churn, or market saturation.
 3. Identify accumulations and their rates of change: queues, inventory,
    installed base, knowledge, debt, trust, capacity, cash, or other relevant
    stocks and flows.

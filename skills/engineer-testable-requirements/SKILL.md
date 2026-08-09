@@ -11,6 +11,12 @@ inside a requirement. Read
 [references/requirements-method.md](references/requirements-method.md) before
 baselining the contract.
 
+
+## When to use
+- Needs/requirements must become testable acceptance criteria with oracles and traceability
+- Ambiguous adjectives (fast, secure, user-friendly) need observable context and boundaries
+- Not for architecture shape (`decide-architecture-shape`) or user research (`research-user-needs`)
+
 ## Method
 
 1. Define the subject, system boundary, lifecycle stage, intended outcomes,

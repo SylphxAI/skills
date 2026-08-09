@@ -10,6 +10,12 @@ system model to credible threats, controls, verification, and owned residual
 risk. Read [references/threat-modeling-method.md](references/threat-modeling-method.md)
 before selecting a threat-enumeration technique.
 
+
+## When to use
+- A system, feature, or trust boundary needs a security threat model and control design
+- Protected assets, unacceptable outcomes, or attacker-relevant flows need enumeration
+- Not for incident response (`run-incident-response`) or implementation (owning project + `build-product`)
+
 ## Method
 
 1. Define the subject, version, environment, intended users, security
@@ -18,6 +24,8 @@ before selecting a threat-enumeration technique.
 2. Model components, identities, data stores, external dependencies, data and
    control flows, privileges, trust boundaries, entry points, administrative
    paths, build/deploy paths, and recovery paths. Link each element to source
+
+Example: for a checkout flow, trust boundaries include client, TLS edge, payment provider, and ledger; an attacker with client access must not reach refund authority.
    evidence.
 3. Derive misuse and abuse cases from attacker goals, capabilities, access,
    incentives, and affected parties. Use STRIDE, attack trees, kill-chain

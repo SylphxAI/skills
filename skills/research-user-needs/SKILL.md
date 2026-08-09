@@ -10,6 +10,12 @@ memorable quotation, or researcher's interpretation into a population claim.
 Read [references/research-method.md](references/research-method.md) before
 selecting participants, collecting data, or interpreting findings.
 
+
+## When to use
+- A decision needs user evidence: jobs, segments, opportunity ranking
+- Qualitative or mixed-method study design and findings with traceability
+- Not for market/category evidence (`synthesize-market-research`) or post-use feedback loops (`run-product-feedback-loop`)
+
 ## Workflow
 
 1. Bind the study to a decision, target users, context, known evidence,

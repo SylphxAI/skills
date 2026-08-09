@@ -9,6 +9,12 @@ Turn one already defined, integrated product into a coherent, deeply resolved,
 release-grade experience. Keep the public story and primary interaction simple;
 resolve the details behind them to high fidelity.
 
+
+## When to use
+- A selected product needs final deburr to its declared target: no material accidental or placeholder detail
+- Render/play matrix, regression and budget checks, and truthful delivery state
+- Not for missing capability (`build-product`) or live harm (`maintain-product`)
+
 ## Atomic boundary
 
 Own one **Product Finish Pass** over an exact integrated product or release
