@@ -69,3 +69,19 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Wired Economy into `commercial-decision-standard` (business models, pricing,
   roadmap, unit economics) and added `eng-economy-01/02` predicates.
 - ADR: `docs/history/adr/ADR-20260809-universal-principles-and-q-economy.md`.
+
+## Objective-loop consolidation + composition contract (2026-08-09)
+
+- Merged `pursue-product-objective` into `drive-to-delivery`: same job (one
+  accepted objective → terminal evidence), same artifact, same acceptance
+  authority, same loop mechanism (MODEL.md merge rule: job/artifact/authority/
+  mechanism coincide). Capability preserved: host-continuity, research-depth,
+  and objective-terminal rules moved to
+  `skills/drive-to-delivery/references/product-objective-mode.md`.
+- Listing `pursue-product-objective` retired; `drive-to-delivery` description
+  now covers engineering and product objectives. One sole writer for the
+  objective loop (no dual path).
+- Composition-and-output contract consolidated: 19 near-identical pack sections
+  → one canonical `skills/author-skill/references/composition-contract.md`;
+  packs link instead of restating (entropy / future-edit interest reduction).
+- Self-audit record: `docs/PRINCIPLES-SELF-AUDIT-2026-08-09.md`.

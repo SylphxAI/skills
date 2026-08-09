@@ -1,6 +1,6 @@
 ---
 name: drive-to-delivery
-description: "Drive one multi-phase engineering objective to delivery-terminal."
+description: "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal."
 ---
 
 # Drive To Delivery
@@ -24,6 +24,11 @@ honestly blocked.
    When mutating source, follow `references/source-authoring-standard/` three layers: **L1** batch unblocked high-value work for this objective; **L2** atomic valid commits; **L3** land via **one revert-safe complete PR outcome** per independent outcome (queue/squash unit).
 4. **Done:** claim only with evidence at the active delivery boundary (landed/live as required—not merely local green).
 
+When the accepted objective is a **product outcome** (host-declared objective,
+terminal = current evidence, not just a delivery boundary), also open
+[references/product-objective-mode.md](references/product-objective-mode.md)
+for host-continuity, research-depth, and objective-terminal rules.
+
 ## Output
 
 Progress on **one accepted objective at its delivery terminal**, with checkpoint/evidence in the primary job output—not a separate compliance report.
@@ -36,6 +41,7 @@ Progress on **one accepted objective at its delivery terminal**, with checkpoint
 4. [references/autonomous-execution-standard/](references/autonomous-execution-standard/) — multi-step execution graphs and completion discipline for non-trivial objectives.
 5. [references/source-authoring-standard/](references/source-authoring-standard/) · [references/delivery-standard/](references/delivery-standard/) — source landing and land/live done claims.
 6. [references/ci-admission-standard/](references/ci-admission-standard/) · [references/ci-runner-capacity-standard/](references/ci-runner-capacity-standard/) · [references/parallel-change-integration-standard/](references/parallel-change-integration-standard/)
+7. [references/product-objective-mode.md](references/product-objective-mode.md) — product-objective mode (host continuity, objective terminal)
 
 ### Composition (no meta-router)
 
@@ -45,7 +51,7 @@ Open only packs that match the objective:
 - `../record-structured-deliberation/references/sota-execution-standard/` — SOTA end-state selection when the objective is non-trivial
 - `../synthesize-evidence-brief/references/evidence-and-claims-standard/` — proof strength
 - `../build-product/references/engineering-standard/` / `../select-dependency-versions/references/technology-stack-profile/` — when implementing software
-- Related jobs: `bound-request-scope`, `pursue-product-objective`
+- Related jobs: `bound-request-scope`
 
 ## Boundaries
 

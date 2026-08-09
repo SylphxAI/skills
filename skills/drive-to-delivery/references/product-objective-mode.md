@@ -1,52 +1,38 @@
----
-name: pursue-product-objective
-description: "Pursue a fixed product objective to evidence-backed completion."
----
+# Product objective mode
 
-# Pursue Product Objective
-
-When a **declared product objective** exists, keep advancing the product until
-that objective has **current evidence**. The terminal is the objective—not a
-cycle report, not a single PR, not “feels improved.”
-
-## When to use
-
-- A durable product outcome is already declared (user or host)
-- Work may span many implementation batches and PRs
-- Stopping for a progress essay while the objective is unmet is wrong
+Open when the accepted objective is a **product outcome** (declared by the user
+or host) rather than a pure engineering delivery: keep advancing the product
+until that objective has **current evidence**. The terminal is the objective —
+not a cycle report, not a single PR, not "feels improved".
 
 ## Host continuity (portable)
 
 Some hosts keep a persistent objective/goal/mission.
 
-- Use only that host’s APIs and names—**no hard-coded tool ids**.
+- Use only that host's APIs and names — **no hard-coded tool ids**.
 - If replace is forbidden: work under the active objective; do not invent rewrites.
 - If an objective can be set when empty: set the **declared product objective**
-  (outcome + done evidence), not “finish this batch.”
+  (outcome + done evidence), not "finish this batch."
 - If no continuity surface exists: keep the objective in working notes and continue.
 - Follow host budgets only when the user or host set them; do not invent caps.
 
-## Backbone
+## Backbone loop
 
 ```text
 while objective evidence is incomplete:
-  1. Restate objective + done evidence (do not shrink to “what fits one PR”)
+  1. Restate objective + done evidence (do not shrink to "what fits one PR")
   2. Discover what still blocks the objective (enough to decide, not omniscient)
   3. Admit every high-leverage unblocked change that advances the objective
   4. Implement that batch in the worktree (L1)
   5. Record atomic commits (L2); open revert-safe PR outcome(s) (L3)
   6. Verify with original oracles on the subjects you changed
-  7. Continue—batch clear ≠ objective complete
+  7. Continue — batch clear ≠ objective complete
 ```
 
-Compose `../drive-to-delivery/references/source-authoring-standard/` (and delivery/engineering policy as needed)
-for Git/PR rules. Summary of the three layers:
-
-| Layer | Meaning here |
-| --- | --- |
-| **L1** | One discovery pass → implement **all** high-EV unblocked work you can toward the objective |
-| **L2** | **Atomic commits**: one logical step each, tree valid at each preserved commit |
-| **L3** | **PR = one complete, independently revertible outcome**; squash lands that unit on main |
+Source landing follows `source-authoring-standard/` three layers: **L1** one
+discovery pass → implement all high-EV unblocked work toward the objective;
+**L2** atomic commits (tree valid at each preserved commit); **L3** one
+complete, independently revertible PR outcome per unit (squash lands it).
 
 - Prefer high leverage over easy polish; hard work gets an L0 shippable slice in
   the batch, not a soft skip.

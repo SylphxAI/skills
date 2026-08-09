@@ -18,20 +18,12 @@ Compose `source-authoring-standard` three layers when implementing: L1 batch, L2
    the owning contract, configuration, ADR, or executable proof requires them.
    Do not add a prose-presence test to prove that this standard was followed.
 3. Prefer schema/test/ADR homes over copying this body into product repos.
-4. Read [CRDT convergence](../../../build-product/references/engineering-standard/references/crdt-convergence.md when
+4. Read [CRDT convergence](../../../build-product/references/engineering-standard/references/crdt-convergence.md) when
    concurrent shared state requires algebraic merge rather than CAS selection.
 
 ## Composition and output
 
-Apply this standard as constraints on the artifact requested by the user or
-owned by the primary procedure. Do not emit a separate per-standard compliance
-report merely because this Skill was injected.
-
-Integrate only material obligations, deviations, evidence, and gaps into the
-primary artifact or final status. When conformance assessment is itself the
-requested job, produce one standalone domain conformance record from this
-standard.
-
+Canonical contract: [`author-skill/references/composition-contract.md`](../../../author-skill/references/composition-contract.md).
 ## Boundaries
 
 - Does not grant deploy or credential capabilities.

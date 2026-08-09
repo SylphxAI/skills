@@ -22,7 +22,7 @@ or hard-coded role lists.
 
 For the stable architecture and protocol exceptions behind the selected stack,
 read the engineering standard's
-[cross-platform contract architecture](../../../build-product/references/engineering-standard/references/cross-platform-contract-architecture.md.
+[cross-platform contract architecture](../../../build-product/references/engineering-standard/references/cross-platform-contract-architecture.md).
 
 ## Method
 

@@ -22,10 +22,7 @@ Focused methods (sibling under `build-product`):
 
 ## Composition and output
 
-Apply this standard as constraints on the artifact requested by the user or
-owned by the primary procedure. Do not emit a separate per-standard compliance
-report merely because this pack was opened.
-
+Canonical contract: [`author-skill/references/composition-contract.md`](../../../author-skill/references/composition-contract.md).
 ## Boundaries
 
 - Does not grant deploy or credential capabilities.

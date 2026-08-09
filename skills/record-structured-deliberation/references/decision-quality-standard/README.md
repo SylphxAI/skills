@@ -20,15 +20,7 @@ cost and delay.
 
 ## Composition and output
 
-Apply this standard as constraints on the artifact requested by the user or
-owned by the primary procedure. Do not emit a separate per-standard compliance
-report merely because this Skill was injected.
-
-Integrate only material obligations, deviations, evidence, and gaps into the
-primary artifact or final status. When conformance assessment is itself the
-requested job, produce one standalone domain conformance record from this
-standard.
-
+Canonical contract: [`author-skill/references/composition-contract.md`](../../../author-skill/references/composition-contract.md).
 ## Boundaries
 
 - Does not grant deploy or credential capabilities.
