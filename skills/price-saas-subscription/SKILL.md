@@ -8,6 +8,12 @@ description: "Price a SaaS subscription: packaging, meters, fences, migration."
 Produce a **Pricing and Packaging Decision** that matches customer value,
 expansion, cost, and trust constraints.
 
+
+## When to use
+- A SaaS price/package decision needs packaging, meters, fences, migration, or enterprise path
+- Pricing arithmetic must be internally consistent before publication
+- Not for billing/ledger execution (`build-payment-readiness`)
+
 ## Workflow
 
 1. Identify the decision, buyer, user, purchasing motion, value metric, cost

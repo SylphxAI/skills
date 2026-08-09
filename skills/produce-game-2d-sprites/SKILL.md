@@ -82,9 +82,9 @@ HUD/icon art: [references/game-ui-icons-and-hud-art.md](references/game-ui-icons
 ### 4. Postprocess / package
 
 ```bash
-python3 skills/produce-product-assets/../produce-game-2d-sprites/scripts/generate2dsprite.py --help
-python3 skills/produce-product-assets/../produce-game-2d-sprites/scripts/make_layout_guide.py --help
-python3 skills/produce-product-assets/../produce-game-2d-sprites/scripts/video2dsprite.py --help
+python3 skills/produce-game-2d-sprites/scripts/generate2dsprite.py --help
+python3 skills/produce-game-2d-sprites/scripts/make_layout_guide.py --help
+python3 skills/produce-game-2d-sprites/scripts/video2dsprite.py --help
 ```
 
 Read `--help` before inventing flags. Pillow/numpy (and ffmpeg for video path)

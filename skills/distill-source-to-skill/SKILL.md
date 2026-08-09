@@ -7,6 +7,12 @@ description: "Distill docs/repos/notes into one installable Skill package."
 
 # Distill Source To Skill
 
+
+## When to use
+- Source material (docs, repos, notes, transcripts) should become one installable skill package
+- Mechanisms, decision rules, and failure modes need extraction; not summaries
+- Not for revising an existing package in place (`author-skill`)
+
 ## Overview
 
 Use this skill to turn source material into a compact, installable skill package that a future agent can use without rereading the original source. Distill mechanisms, not summaries.

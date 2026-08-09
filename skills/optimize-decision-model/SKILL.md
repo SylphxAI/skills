@@ -24,6 +24,8 @@ before selecting a formulation or solver.
 4. State the objective in business or system units. For multiple objectives,
    declare priority, lexicographic order, Pareto treatment, or calibrated
    trade-off weights; never hide policy choices inside arbitrary coefficients.
+
+Example: "maximize weekly shipped items subject to at most 3 in-flight batches and one review owner per PR" states units and constraints; "be more productive" does not.
 5. Encode hard constraints separately from soft preferences and penalties.
    Bind every constraint to its operational rule, source, tolerance, and reason
    for being hard or relaxable.

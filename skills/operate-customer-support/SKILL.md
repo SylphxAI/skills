@@ -7,6 +7,12 @@ description: "Operate customer support: triage, resolution, escalation, quality 
 
 Produce one **Support Operating Model** that resolves customer jobs, preserves trust, and turns recurring failure into owned product improvement.
 
+
+## When to use
+- Support operations need triage, resolution, escalation, and quality-loop design or review
+- Recurring customer failure should feed owned product improvement
+- Not for one customer case (`references/resolve-one-case/`) or payment/refund policy (`build-payment-readiness`)
+
 ## Atomic boundary
 
 Own support channels, self-service, taxonomy, ticket state, routing, evidence intake, decision rights, response policy, service objectives, automation, quality, escalation, knowledge, metrics, and product-feedback closure.

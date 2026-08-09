@@ -11,6 +11,12 @@ Produce a **Skill Evaluation Program** that can disprove whether an exact skill
 bundle improves realistic work while preserving routing boundaries, safety,
 cost, and evidence integrity.
 
+
+## When to use
+- An exact skill bundle needs falsifiable routing/behavior evals with holdouts and replay
+- Promotion claims need candidate-bound digests, controls, oracles, and provenance
+- Not for the skill procedure itself (`author-skill`) or portfolio decisions (`curate-skill-repository`)
+
 ## Atomic boundary
 
 Own the eval contract: candidate digests, routing/behavior tasks, controls,

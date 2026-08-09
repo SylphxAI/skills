@@ -13,7 +13,7 @@
       "name": "analyze-causal-inference",
       "description": "Estimate causal effects: identification, estimators, robustness bounds.",
       "path": "skills/analyze-causal-inference/SKILL.md",
-      "packageDigest": "sha256:6388bcf3cbe2a7d82391e9315805de388edd50906dc8b4c8b56ca231ed02bbdf"
+      "packageDigest": "sha256:d028a5fc7264b0fb406242a8e1f935d84b7a3af0859ae7c0948a4e94bf6a0e2e"
     },
     {
       "name": "analyze-critically",
@@ -25,7 +25,7 @@
       "name": "analyze-system-dynamics",
       "description": "Map stubborn loops: stocks, delays, incentives, policy resistance.",
       "path": "skills/analyze-system-dynamics/SKILL.md",
-      "packageDigest": "sha256:533f26c8e7e2c940f82cca78f1b17698eede6cd16cf62ba5b253506f59c5c495"
+      "packageDigest": "sha256:0676089f9147daf89d55bcec3356d7bc61f409c1018606cd0a505162d3601f26"
     },
     {
       "name": "author-skill",
@@ -43,7 +43,7 @@
       "name": "build-distribution-readiness",
       "description": "Build distribution readiness: artifacts, install/upgrade, channel readback.",
       "path": "skills/build-distribution-readiness/SKILL.md",
-      "packageDigest": "sha256:6c3cd3b87043309c8defc3ff793646f4457ea8be3d87830cd4bf28626c28d368"
+      "packageDigest": "sha256:0e639c39d113f42fea643be269635ac5e86e3b9b6b92d5febe1399c9d31cbfaa"
     },
     {
       "name": "build-payment-readiness",
@@ -97,13 +97,13 @@
       "name": "curate-skill-repository",
       "description": "Curate skill portfolio: merge/split, collisions, retirement.",
       "path": "skills/curate-skill-repository/SKILL.md",
-      "packageDigest": "sha256:70801d930d8321872dffb5459612e62b581eaf79c05c16e0a85f9d21deb493ac"
+      "packageDigest": "sha256:173c14ba542f83cf635917112749da28ae5f959d455a3ba30d8f45ecdc4d1929"
     },
     {
       "name": "decide-architecture-shape",
       "description": "Decide one architecture shape from options with tradeoffs.",
       "path": "skills/decide-architecture-shape/SKILL.md",
-      "packageDigest": "sha256:03b159f5fe457ef670c7836ea28863c0bb8ce6a0eae6d7d66dd58f4dea5a41a5"
+      "packageDigest": "sha256:e3283f7d9a26ae4f49edbed653abbaf623aca672ee4002ef6732d63a368aa61d"
     },
     {
       "name": "deploy-ephemeral-web-preview",
@@ -121,13 +121,13 @@
       "name": "design-skill-evals",
       "description": "Design falsifiable skill evals: routing cases, oracles, failures.",
       "path": "skills/design-skill-evals/SKILL.md",
-      "packageDigest": "sha256:108793de6ce43fd9d81d6b46c53ddc3226d22e67f08f789f7356943a315ff299"
+      "packageDigest": "sha256:870803d0fb2c59b5c9bcd381f36b1a5ccd64f3f71124a93afb840b5e704fdd6e"
     },
     {
       "name": "distill-source-to-skill",
       "description": "Distill docs/repos/notes into one installable Skill package.",
       "path": "skills/distill-source-to-skill/SKILL.md",
-      "packageDigest": "sha256:093adfd78398329b10ea980639f82d8dc76187c7b48a7577784bae6cc9b0f76a"
+      "packageDigest": "sha256:d1227061dea522ff701518b51707c04de2691bb8784166440a1558b1cc6f6e97"
     },
     {
       "name": "drive-to-delivery",
@@ -151,7 +151,7 @@
       "name": "engineer-testable-requirements",
       "description": "Turn requirements into testable acceptance criteria with oracles.",
       "path": "skills/engineer-testable-requirements/SKILL.md",
-      "packageDigest": "sha256:f77be123d03c52fc9f9e1444e3099aeac16f0e1b0e2ef3a5ec7ead1c612c0816"
+      "packageDigest": "sha256:3a8d0db7fae5963d7db710f2be46e0d807e8fbb9c8fdeff72c5df586dc5eb162"
     },
     {
       "name": "execute-hard-cutover",
@@ -169,13 +169,13 @@
       "name": "finish-product",
       "description": "Finish/deburr an integrated product with re-captured evidence.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:2b3ffd36c9afec85650293b36da35c0ce12d6517ea3058f3f4eeca554a56a734"
+      "packageDigest": "sha256:da6ba0d9fa7b6da5220b941201407251057deddff6badfe9556f3b6138a930bc"
     },
     {
       "name": "forecast-with-calibration",
       "description": "Produce calibrated probabilistic forecasts with base rates and ranges.",
       "path": "skills/forecast-with-calibration/SKILL.md",
-      "packageDigest": "sha256:cbf85c53003b44d108b5e3775ce04894f530b70ef075296734578dbdfdd9f160"
+      "packageDigest": "sha256:2b203f9c585a8a217ee8f41535381670234f9e783cf06dab23d076762b9adefc"
     },
     {
       "name": "maintain-product",
@@ -187,43 +187,43 @@
       "name": "model-security-threats",
       "description": "Model security threats for a trust boundary before implementation.",
       "path": "skills/model-security-threats/SKILL.md",
-      "packageDigest": "sha256:84ccfba4f5535acaa5eca6381619697583de6e62939b1d38009376cc5aea05d2"
+      "packageDigest": "sha256:50315effedac2d541358e455f34346a26646082780b9c11164bc18e6eaf9e859"
     },
     {
       "name": "operate-customer-support",
       "description": "Operate customer support: triage, resolution, escalation, quality loops.",
       "path": "skills/operate-customer-support/SKILL.md",
-      "packageDigest": "sha256:50222200aa03507c292dc81e3c9a7a8b4dc2fe055ec966b6bfb05eec8b2e2825"
+      "packageDigest": "sha256:f467bcd91c81cb176ecd3bb72ff6773f948c88cbbef8bc063fd0a3f6b2e993e6"
     },
     {
       "name": "optimize-decision-model",
       "description": "Model a decision for optimization: objective, constraints, sensitivity.",
       "path": "skills/optimize-decision-model/SKILL.md",
-      "packageDigest": "sha256:27b431d32fcb6507733d92c3769c18fac88f62154b99e9b1ab200f0b3c2291e9"
+      "packageDigest": "sha256:10a2c104a0caddaf59b73462911cf235ef628c7664d90613711ef66eec26413e"
     },
     {
       "name": "optimize-store-listing",
       "description": "Optimize store listing: metadata, creatives, conversion, compliance.",
       "path": "skills/optimize-store-listing/SKILL.md",
-      "packageDigest": "sha256:77f3623526f5a1d3807c9542f0a8f0052fcb52874f9495a60cc61c1e43908fa8"
+      "packageDigest": "sha256:5681f0207ec70aeb50308dc537ed357d5001ebbb4b6b6f5c0668659ba9c76b76"
     },
     {
       "name": "price-saas-subscription",
       "description": "Price a SaaS subscription: packaging, meters, fences, migration.",
       "path": "skills/price-saas-subscription/SKILL.md",
-      "packageDigest": "sha256:033d0f4f953cc94bd35eaad70b0873a8b2d86ebc2fb326fef17ffa7eaaf81d0c"
+      "packageDigest": "sha256:49cf0a354a9050bd7d5787a02e45b317b747bf8acd8081f950a962bcff487342"
     },
     {
       "name": "produce-game-2d-map-assets",
       "description": "Produce 2D map tiles/props packs with extract/preview.",
       "path": "skills/produce-game-2d-map-assets/SKILL.md",
-      "packageDigest": "sha256:756de5c28c3c3768f9cb19aed3ca1163a7602687e1f914ebb74d5b56c5df963b"
+      "packageDigest": "sha256:634a8e9c284502f6fd61747ce93bb34f16d70099d095f37999f099edfdc7e54c"
     },
     {
       "name": "produce-game-2d-sprites",
       "description": "Produce engine-ready 2D game sprites/sheets with QC.",
       "path": "skills/produce-game-2d-sprites/SKILL.md",
-      "packageDigest": "sha256:81f6d12d6cb4b3fa4106efc46b5d12c4e48afcebb43d508802c83d266f803b6f"
+      "packageDigest": "sha256:5fe2adb27813ee6b80c4240961f36340ebb72d5b494302e340f7e0c75171db72"
     },
     {
       "name": "produce-product-assets",
@@ -259,7 +259,7 @@
       "name": "remediate-agent-harness",
       "description": "Remediate an agent harness with measured deltas and failure modes.",
       "path": "skills/remediate-agent-harness/SKILL.md",
-      "packageDigest": "sha256:b027b914ecfce831ba0daa80e229cdeef0370f08b85e83d919702f489e4d0ea1"
+      "packageDigest": "sha256:96dacc684d11d127f16e8451c969f4a8ba2009f574f1a04ac981e47687b118cd"
     },
     {
       "name": "remediate-frontend-performance",
@@ -277,7 +277,7 @@
       "name": "research-user-needs",
       "description": "Research user needs: jobs, evidence, segments, opportunity ranking.",
       "path": "skills/research-user-needs/SKILL.md",
-      "packageDigest": "sha256:18769a0652153a7f7d77eb15702c67a465a2756c46cee9c7b923512b7bf78074"
+      "packageDigest": "sha256:26fa3c1e1fa43d3ea0bdb408dd5d11bda3cafec196fedf98bf5d04996bf09181"
     },
     {
       "name": "review-domain",

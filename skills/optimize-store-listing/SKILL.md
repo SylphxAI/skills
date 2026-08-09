@@ -9,6 +9,12 @@ Produce a **Channel Listing and Creative Sequence** that communicates truthful
 value before install, wishlist, trial, or purchase and can be generated,
 localized, tested, and updated across exact channel variants.
 
+
+## When to use
+- A store/channel listing needs narrative, metadata, creatives, localization, experiment, or compliance work
+- Pre-install/purchase conversion and trust need an exact-channel listing revision
+- Not for distribution/submission (`build-distribution-readiness`) or asset production (`produce-product-assets`)
+
 ## Atomic boundary
 
 Own one channel listing's positioning-to-asset narrative, metadata, creative

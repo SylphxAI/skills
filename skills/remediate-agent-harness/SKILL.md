@@ -9,8 +9,15 @@ Turn repeated agent behavior into a tested system change, not another reminder.
 Read [references/learning-system-methods.md](references/learning-system-methods.md)
 before choosing the intervention and evaluation design.
 
+
+## When to use
+- Repeated agent behavior needs a tested system change, not another reminder
+- Baseline rate, countermetrics, and promotion threshold are measurable
+- Not for a single uncertain cause (`analyze-critically`)
+
 ## Method
-- When landing source: apply constraints from `../drive-to-delivery/references/source-authoring-standard/` — **L1** batch admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome.
+
+When landing source, apply constraints from `../drive-to-delivery/references/source-authoring-standard/` — **L1** batch admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome.
 
 1. Define the recurring outcome, affected population, impact, baseline rate,
    observation window, and evidence quality. Separate one incident from a
@@ -18,6 +25,8 @@ before choosing the intervention and evaluation design.
 2. Trace the behavior through the whole agent system: objective, instruction,
    injected Skills, context and memory, model, tools, permissions, state,
    evaluator, coordination, and feedback. Do not assume the prompt is the cause.
+
+Example: repeated half-migrations may come from objective pressure, missing tools, or evaluator reward — trace before adding instruction.
 3. Form competing causal hypotheses and identify the observation that would
    distinguish each one. Check whether the system is optimizing the wrong
    objective before adding more instruction.

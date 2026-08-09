@@ -56,8 +56,8 @@ Depth: [references/tileset-and-prop-qc.md](references/tileset-and-prop-qc.md),
 ### 4. Scripts
 
 ```bash
-python3 skills/produce-product-assets/../produce-game-2d-map-assets/scripts/extract_prop_pack.py --help
-python3 skills/produce-product-assets/../produce-game-2d-map-assets/scripts/compose_layered_preview.py --help
+python3 skills/produce-game-2d-map-assets/scripts/extract_prop_pack.py --help
+python3 skills/produce-game-2d-map-assets/scripts/compose_layered_preview.py --help
 ```
 
 Read `--help` before inventing flags. Requires Pillow (and script-local deps).

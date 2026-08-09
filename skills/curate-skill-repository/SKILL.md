@@ -9,6 +9,12 @@ Make a skills repository more useful by improving the skills themselves. The
 primary unit is a recurring user job with an independently useful artifact—not
 a folder, topic, governance mechanism, or generated catalog row.
 
+
+## When to use
+- A skills repository needs portfolio review: merge/split, collisions, retirement, or package repair
+- Catalog decisions must be grounded in recurring jobs and accepted artifacts, not folder counts
+- Not for authoring one new skill (`author-skill`) or distilling source into a package (`distill-source-to-skill`)
+
 ## Workflow
 
 1. Establish the repository boundary, intended users, public/private

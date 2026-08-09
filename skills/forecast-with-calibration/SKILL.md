@@ -9,11 +9,19 @@ Make uncertainty explicit, updateable, and accountable. Read
 [references/probabilistic-forecasting-methods.md](references/probabilistic-forecasting-methods.md)
 for elicitation, aggregation, calibration, and scoring detail.
 
+
+## When to use
+- A resolvable future event needs an explicit probability or distribution with a deadline and resolution source
+- Decisions depend on calibrated uncertainty, base rates, or updateable forecasts
+- Not for confidence in an explanation of what already happened (`analyze-critically`)
+
 ## Workflow
 
 1. Write one resolvable question with an outcome, deadline, resolution date,
    authoritative resolution source, and rules for ambiguous, canceled, or
    partially observed outcomes. Reframe or decline an unresolvable question.
+
+Example: "Will the merge queue admit PR #124 before 2026-08-10T00:00Z?" is resolvable with a deadline and an authoritative resolution source; "will it be fast?" is not.
 2. Establish the reference class and base rate before inspecting vivid case
    details. Record data provenance, selection effects, and relevance limits.
 3. Decompose the event into causal drivers, necessary milestones, conditional
