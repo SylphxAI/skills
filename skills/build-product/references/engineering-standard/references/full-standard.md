@@ -11,32 +11,38 @@ decides whether the result is actually cleaner after composition.
 
 Every durable **product, design, code, documentation, and architecture**
 outcome is judged against this **sole engineering quality vocabulary** when
-attributes are relevant to the domain and blast radius.
+attributes are relevant to the domain and blast radius. Business-model work
+prices the same attributes through `commercial-decision-standard`.
 
 Retired phrase: **Modern Technical Bar**. Do not reintroduce it, parallel
 ility lists, or a second quality slogan layer. Prefer attribute IDs and binding
-rule IDs below. Do not expand the table with Cost or Latency rows—latency lives
-under Performance; cost is a budget constraint on Performance/Scalability, not
-a separate quality slogan.
+rule IDs below. Do not expand the table with Latency rows—latency lives under
+Performance. Runtime resource cost (CPU, memory, IO, network, storage, build
+minutes, toil) is a budget constraint on Performance/Scalability and is **not**
+a separate slogan. Lifecycle / system-entropy / human-attention cost is
+`q-economy`: a distinct decision lens below, never a runtime-resource slogan.
 
 ### Structure (operating set + memory set)
 
-**Operating set = Meta + 13 primary attributes** (Readability is folded into
-Maintainability; `q-readability` remains a compatibility alias for that facet).
+**Operating set = Meta + 14 primary attributes** (Readability is folded into
+Maintainability; `q-readability` remains a compatibility alias for that facet;
+Economy = lifecycle / system-entropy / human-attention cost accounting).
 
 ```text
 Meta     Simple concepts, powerful usage
 
 A. Stance     Depth · Simplicity
 B. Quality    Correctness · Security · Reliability · Availability
-              Resilience · Performance · Scalability · Observability
+              Resilience · Performance · Scalability · Economy · Observability
 C. Sustainment Maintainability · Evolvability · Testability
 ```
 
-**Memory set (8):** Depth · Simplicity · Correctness · Security · Dependability
-· Performance & Scale · Observability · Sustainment  
-(Dependability = Reliability + Availability + Resilience;  
-Sustainment = Maintainability + Evolvability + Testability)
+**Memory set (9): 深正簡 · 改觀快 · 穩安平** — Depth · Correctness ·
+Simplicity · Evolvability · Observability · Performance & Velocity ·
+Reliability · Security · Economy  
+(Evolvability = Sustainment: Maintainability + Evolvability + Testability;  
+Reliability = Dependability: Reliability + Availability + Resilience;  
+Velocity = delivery speed; Economy = lifecycle / entropy / attention cost)
 
 Usage modes, pocket questions, and anti-examples:
 [quality-north-star-usage.md](quality-north-star-usage.md).
@@ -74,8 +80,8 @@ Absent an explicit business counter-instruction, resolve **engineering-quality**
 tradeoffs in this order:
 
 > **Depth / Simplicity (think clearly) → Correctness → Security → Reliability /
-> Availability / Resilience → Observability → Performance / Scalability →
-> Maintainability / Evolvability / Testability**
+> Availability / Resilience → Observability → Performance / Scalability / Economy
+> → Maintainability / Evolvability / Testability**
 
 Rationale:
 
@@ -97,7 +103,7 @@ home: code comment for a local implementation choice, test/benchmark for a
 measurable behavior, ADR for material architecture or operational policy, and
 Commercial ADR for product/business impact.
 
-### Thirteen primary attributes
+### Fourteen primary attributes
 
 Each attribute is selected by relevance, priced against cost, and closed by
 evidence—not by naming it in a PR description.
@@ -124,6 +130,7 @@ hold for the meta *Simple concepts, powerful usage.*
 | `q-resilience` | **Resilience** | Faults will happen; isolate, degrade, retry/backoff, recover, and avoid cascades (timeout, bulkhead, circuit breaker, idempotency, backpressure). Blind infinite retry that thrash-kills a dependency is not resilience. |
 | `q-performance` | **Performance** | Meet explicit latency, throughput, cost, and resource budgets on critical paths; measure and own p50/p95/p99 where latency matters—not averages alone. Near-native performance only when the domain requires it. Cost-efficiency (CPU, memory, IO, network, storage, build minutes, toil) is part of performance, not a separate slogan. |
 | `q-scalability` | **Scalability** | When load, data, or team coordination grows ~10×, the structure still holds with an acceptable cost curve. Design for horizontal scale and elastic load on boundaries that can grow; declare partition, ownership, and hot-path limits for authoritative state. “Add K8s/cache” is not a scalability argument; premature full distribution is not one either. |
+| `q-economy` | **Economy** | Cost is priced by lifecycle, system entropy, and human attention — not by development effort. In an agent-native world build cost has fallen; cost has moved to verification and entropy, and entropy is compound interest: every added concept charges lifecycle interest to every future agent and human. A cost claim states which budget, how it is measured, and which principle it trades (`eng-economy-01/02`). Runtime resource budgets stay under Performance/Scalability. |
 | `q-observability` | **Observability** | Material decisions, actions, and failures leave the minimum correlated, privacy-preserving evidence (logs, metrics, traces, events) needed to explain current state without SSH guesswork. Collection, access, redaction, retention, cardinality, cost, and **actionable** alerts are part of the contract—not success-path dashboards alone. |
 
 #### Layer C — Long-term survival
@@ -146,8 +153,10 @@ checklists:
 
 - type-/memory-/concurrency-safe, deterministic cores, automated verification →
   **Correctness** + **Testability**
-- high-throughput / low-latency / near-native when required / resource cost →
-  **Performance** (+ **Scalability** for capacity shape)
+- high-throughput / low-latency / near-native when required / runtime resource
+  cost → **Performance** (+ **Scalability** for capacity shape)
+- TCO, lifecycle cost, system entropy, human attention, agent-native build
+  economics → **Economy**
 - horizontally scalable, elastic → **Scalability**
 - resilient under production load → **Resilience** (+ **Reliability**)
 - observable under production load → **Observability**
