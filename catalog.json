@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 57,
+  "count": 58,
   "skills": [
     {
       "name": "adopt-repo-standards",
@@ -74,6 +74,12 @@
       "description": "Compose README and docs badges or banners from public mark APIs without a design tool.",
       "path": "skills/compose-readme-marks/SKILL.md",
       "packageDigest": "sha256:1a6f19a2b74b02643ad7ff804be5c832eabb660a51acf2f2b706a187b843057f"
+    },
+    {
+      "name": "craft-human-agent-language",
+      "description": "Write or review any document or prompt that humans and agents both use (README, ADR, update, instruction): frame purpose and audience, structure before prose, plain language, model-agnostic language choice, output contract, and a re-verification gate. Use when asked to write/translate/review a doc or prompt for humans and agents, or to choose the most efficient language and format for a model you are switching.",
+      "path": "skills/craft-human-agent-language/SKILL.md",
+      "packageDigest": "sha256:5710f4d3239855af5700c4c6bd464e5a2e8f9ffa3f68c630f5d6350d50144bfd"
     },
     {
       "name": "craft-product-interface",
