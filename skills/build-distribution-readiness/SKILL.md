@@ -80,7 +80,7 @@ publish, rollout, rollback, credentials, and channel-adapter mutations.
 ladder. This Skill owns the distribution contract, channel selection,
 adapter-to-artifact requirements, install lifecycle requirements, and the
 evidence pack that audits observed channel states; it does not become a second
-release control plane. `review-developer-product-experience` owns the wider
+release control plane. `../review-domain/references/developer-product-experience/` owns the wider
 developer adoption journey. A later product-program observed-state revision may
 index this pack but the pack must not consume that later revision or a moving
 “latest” alias.

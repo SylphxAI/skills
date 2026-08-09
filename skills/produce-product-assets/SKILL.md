@@ -184,7 +184,7 @@ Use `artifactDigest` only on exact child files or sealed input references with
   rollout, withdrawal, and observed channel evidence.
 - program planning owns planning and observed-state revisions of
   the cross-domain dependency graph and composition index, not this pack.
-- `build-product` (see references/craft-interface) owns product-interface implementation and polish, not
+- `../craft-product-interface/` owns product-interface implementation and polish, not
   promotional capture or media production.
 
 Complete only when the selected pack can be reproduced from owned sources,

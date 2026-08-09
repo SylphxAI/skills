@@ -64,7 +64,7 @@ Produce a **Constrained Decision Model**:
 
 ## Boundaries
 
-- Use `review-optimization-objective` for the real outcome, proxy, Goodhart,
+- Use `../review-domain/references/optimization-objective/` for the real outcome, proxy, Goodhart,
   gaming, and protected-floor contract when an automated optimizer will act on
   the model. This Skill consumes that contract and owns variables, constraints,
   solver evidence, and solution verification.
@@ -73,11 +73,11 @@ Produce a **Constrained Decision Model**:
   Decision Model rather than emitting a second artifact.
 - Use `../record-structured-deliberation/references/decision-quality-standard/` when the job is evidence-based qualitative
   selection among materially distinct options without a mathematical program.
-- Use `review-agent-planning-system` for how an agent decomposes, sequences,
+- Use `../review-domain/references/agent-planning-system/` for how an agent decomposes, sequences,
   observes, and replans work.
-- Use ``forecast-with-calibration` when the primary artifact is a calibrated
+- Use `forecast-with-calibration` when the primary artifact is a calibrated
   prediction rather than a controllable decision.
-- Use `review-product-experiment` or ``analyze-causal-inference` to estimate the
+- Use `../review-domain/references/product-experiment/` or `analyze-causal-inference` to estimate the
   effect of an intervention. An optimizer may consume those estimates but does
   not identify them.
 - Do not treat solver success as model validity. Feasible nonsense remains

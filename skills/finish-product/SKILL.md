@@ -21,7 +21,7 @@ subject. When the work is finishing / deburring an integrated product, load **th
 
 It does not invent product strategy, business truth, prices, policy, brand
 identity, game economy authority, or launch approval. It does not replace a
-bounded ``craft-product-interface` job. For missing capability, live harm, scale, or hypothesis work, use `build-product`, `maintain-product`, ``expand-product`, or ``prototype-product`. For a declared outcome to pursue to completion, use `drive-to-delivery` (see references/pursue-objective). For mixed betterment without a single work kind, use `maintain-product` (see references/open-betterment).
+bounded `craft-product-interface` job. For missing capability, live harm, scale, or hypothesis work, use `build-product`, `maintain-product`, `expand-product`, or `prototype-product`. For a declared outcome to pursue to completion, use `drive-to-delivery` (see ../pursue-product-objective/SKILL.md). For mixed betterment without a single work kind, use `maintain-product` (see ../run-open-product-betterment/SKILL.md).
 
 ## Finish invariant
 
@@ -106,7 +106,7 @@ Load both domain references only when the product genuinely spans both.
    defect remains and the next correction is positive-net.
 7. **Deliver honestly.** Validate the exact changed candidate through its
    repository delivery boundary. Separate local, candidate, landed, released,
-   and live claims. Hand launch admission to `review-launch-readiness` when a
+   and live claims. Hand launch admission to `../review-domain/references/launch-readiness/` when a
    go/no-go decision is required.
 
 ## Product Finish Pass

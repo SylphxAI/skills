@@ -71,12 +71,12 @@ Create a **Deliberation Record** with:
 
 ## Boundaries
 
-- Use `design-space-exploration` for generic brainstorming and generation of
+- Use `../design-product/references/space-exploration/` for generic brainstorming and generation of
   materially different solution concepts before participants take positions.
 - Use `analyze-critically` for one analyst comparing hypotheses or diagnosing a
   cause.
 - Use `references/decision-quality-standard/` for final material option selection and its
   durable Decision Record or ADR.
-- Use `review-multi-review-synthesis` for pass/fail review of an exact candidate.
+- Use `../review-domain/references/multi-review-synthesis/` for pass/fail review of an exact candidate.
 - Use a domain skill to supply technical, commercial, legal, security, or
   product-specific criteria.

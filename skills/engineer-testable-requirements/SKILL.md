@@ -100,7 +100,7 @@ Produce a **Requirements Contract** containing:
 - `research-user-needs` and whole-product blueprint Skills own direct
   user evidence, opportunity, user promise, market fit, and capability
   selection before requirements stabilize.
-- `../synthesize-evidence-brief/../record-structured-deliberation/references/decision-quality-standard/` owns material option selection; architecture and
+- `../record-structured-deliberation/references/decision-quality-standard/` owns material option selection; architecture and
   engineering Skills own how accepted requirements are realized.
 - `references/specification-control-plane-standard/` owns executable implementation
   specifications and work/evaluation contracts after requirements establish

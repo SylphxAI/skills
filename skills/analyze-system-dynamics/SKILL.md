@@ -55,9 +55,9 @@ Produce a **Dynamic System Model**:
 
 ## Boundaries
 
-- Use ``analyze-critically` for a bounded defect or competing root-cause
+- Use `analyze-critically` for a bounded defect or competing root-cause
   hypotheses without material feedback dynamics.
-- Use ``analyze-causal-inference` to identify or estimate a specific
+- Use `analyze-causal-inference` to identify or estimate a specific
   intervention effect from experimental or observational evidence.
 - Use engineering architecture methods for a static dependency, module, or
   deployment graph.

@@ -83,11 +83,11 @@ Produce an **Evidence Synthesis** containing:
 
 - `synthesize-market-research` owns market, category, competitor, positioning,
   pricing, or demand recommendations.
-- ``analyze-critically` owns competing hypotheses and diagnosis for one uncertain
+- `analyze-critically` owns competing hypotheses and diagnosis for one uncertain
   material question.
 - `references/evidence-and-claims-standard/` owns the verdict on one material or disputed
   factual, completion, causality, or delivery claim.
-- ``analyze-causal-inference` owns identification and estimation of a causal
+- `analyze-causal-inference` owns identification and estimation of a causal
   effect from data; this Skill may synthesize multiple causal studies without
   replacing their identification analyses.
 - A domain Skill owns domain-specific interpretation and decisions that consume

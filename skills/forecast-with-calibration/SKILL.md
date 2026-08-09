@@ -52,7 +52,7 @@ Produce a **Probabilistic Forecast Record**:
 
 ## Boundaries
 
-- Use ``analyze-critically` for confidence in a present explanation rather than a
+- Use `analyze-critically` for confidence in a present explanation rather than a
   resolvable future event.
 - Use `../record-structured-deliberation/references/decision-quality-standard/` to combine forecasts with value, cost, risk
   appetite, reversibility, and authority to choose an action.

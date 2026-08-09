@@ -200,29 +200,29 @@ Produce one **Product Program Manifest** containing:
 
 ## Routing boundaries
 
-- ``compose-product-portfolio` owns the topology of a multi-product
+- `compose-product-portfolio` owns the topology of a multi-product
   portfolio: which candidate units are standalone products, embedded
   Capabilities, shared substrate, connectors, composed experiences or bundles.
   This Skill owns the build-to-run program graph for one already selected
   product or bundle.
-- `design-app`, `design-game`, and `design-saas-web-platform` own their product promise, experience or public-to-service platform semantics; this skill only indexes their artifacts and cross-domain delivery dependencies.
-- `design-marketing-automation` owns the complete marketing operating
+- `../design-product/references/app/`, `../design-product/references/game/`, and `../design-product/references/saas-web-platform/` own their product promise, experience or public-to-service platform semantics; this skill only indexes their artifacts and cross-domain delivery dependencies.
+- `../design-product/references/marketing-automation/` owns the complete marketing operating
   blueprint and creative briefs; `produce-product-assets` owns exact rendered
-  product media; `review-promotion-campaign`, `review-referral-loop`, and
-  `produce-product-assets` (see references/store-listing) own their narrow artifacts.
-- `build-product` (see references/payment-readiness) owns provider transaction/ledger integration; `review-refund-and-support-flow` owns refund customer/account consequences.
-- `../operate-customer-support/../run-product-feedback-loop/references/review-solicitation-policy/` owns platform-specific authentic public review
-  request policy; `operate-customer-support` (see references/feedback-loop) owns universal private
+  product media; `../review-domain/references/promotion-campaign/`, `../review-domain/references/referral-loop/`, and
+  `produce-product-assets` and `../optimize-store-listing/` own their narrow artifacts.
+- `../build-payment-readiness/` owns provider transaction/ledger integration; `../review-domain/references/refund-and-support-flow/` owns refund customer/account consequences.
+- `../run-product-feedback-loop/references/review-solicitation-policy/` owns platform-specific authentic public review
+  request policy; `operate-customer-support` and `../run-product-feedback-loop/` own universal private
   feedback, authorized review ingestion, evidence clustering, routing, product
   action, and close-loop behavior.
-- `build-product` (see references/distribution-readiness) consumes a sealed planning revision and
+- `../build-distribution-readiness/` consumes a sealed planning revision and
   owns the distribution contract and evidence pack for target artifacts,
   installers, package-manager and store adapters, channel eligibility,
   submission or certification, lifecycle behavior, rollout, recovery, and live
   readback; the product repository and active delivery profile retain mutation
   authority, and a later observed-state manifest revision indexes that pack.
 - App/Game blueprints own localized product semantics; this lifecycle architect owns the cross-channel globalization, asset, market-adapter, evidence, and release dependency graph.
-- `review-launch-readiness` independently evaluates evidence; it cannot self-certify a manifest it authored.
+- `../review-domain/references/launch-readiness/` independently evaluates evidence; it cannot self-certify a manifest it authored.
 
 ## Completion check
 
