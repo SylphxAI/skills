@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 58,
+  "count": 57,
   "skills": [
     {
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, manifest, fences.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:abd75d1ee957ac0c06eb6d4570635bc003b502e3b61835d63f2fd613331b568b"
+      "packageDigest": "sha256:549cb017d54516ec953ff76bc661eeffdac35cdeafeea3306591b201d8a473d1"
     },
     {
       "name": "analyze-causal-inference",
@@ -31,7 +31,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:5d5bff03352aca0d76f034f36e7e2485a40d96a9156cfd2919c0983687909150"
+      "packageDigest": "sha256:d8b5937cf728599d1f1706dc2f91bd115c93bb13db866b66424939a87e9dfe04"
     },
     {
       "name": "bound-request-scope",
@@ -55,13 +55,13 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:d80596df5beccde93e56f6d64e8e0a60c2de1086c210b5045637f6cd4f0f86a9"
+      "packageDigest": "sha256:a5449e86581e5ff35e3d5f3f7159da2cb845b81ec1584f009a99bc2eabc89705"
     },
     {
       "name": "compose-product-portfolio",
       "description": "Compose multi-product portfolio: platform vs products, connectors, bundles.",
       "path": "skills/compose-product-portfolio/SKILL.md",
-      "packageDigest": "sha256:33187762e8cd894a86e6ffc81b5a2dff05607d797716893cca36f7b2c34db5cf"
+      "packageDigest": "sha256:4e02af4a24e614739d1e85d4d1fa8716c938ea60fda9a1e18545da9357a7aa8f"
     },
     {
       "name": "compose-product-program",
@@ -131,9 +131,9 @@
     },
     {
       "name": "drive-to-delivery",
-      "description": "Drive one multi-phase engineering objective to delivery-terminal.",
+      "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:a86e3600c12abc8259a73a026767f52f79ba2dd279892a9bf2cea45ffc47f140"
+      "packageDigest": "sha256:db72fbe16936ea54f7bae931ddab123bab3792fd5c4d588ad80dd7d587e83d8f"
     },
     {
       "name": "edit-preserving-voice",
@@ -145,13 +145,13 @@
       "name": "engineer-agent-context",
       "description": "Engineer agent context packs: load rules, budgets, refresh.",
       "path": "skills/engineer-agent-context/SKILL.md",
-      "packageDigest": "sha256:40b772fabcf1e0681c2c77b3aec82c0f8221fd5d67ce1d503227b91b1cdc5710"
+      "packageDigest": "sha256:4fbcda62240c5e60ae9a6516202f88a40c5ac8544e80b46b16b6de6d338a3129"
     },
     {
       "name": "engineer-testable-requirements",
       "description": "Turn requirements into testable acceptance criteria with oracles.",
       "path": "skills/engineer-testable-requirements/SKILL.md",
-      "packageDigest": "sha256:3a8d0db7fae5963d7db710f2be46e0d807e8fbb9c8fdeff72c5df586dc5eb162"
+      "packageDigest": "sha256:f357895a4d807114321a4e9b4fac029e3c3a6b28ecafc8b8314a446e56c38a38"
     },
     {
       "name": "execute-hard-cutover",
@@ -244,16 +244,10 @@
       "packageDigest": "sha256:69cb8a1056bb5c2cefa95bc278a416a551d0fa44f5f3a947c26056bab2e6e36f"
     },
     {
-      "name": "pursue-product-objective",
-      "description": "Pursue a fixed product objective to evidence-backed completion.",
-      "path": "skills/pursue-product-objective/SKILL.md",
-      "packageDigest": "sha256:bdbe17026508ac71a4b123359c004de00c060735d9b498d7c5578c1381c1312d"
-    },
-    {
       "name": "record-structured-deliberation",
       "description": "Record a structured deliberation: options, criteria, decision, actions.",
       "path": "skills/record-structured-deliberation/SKILL.md",
-      "packageDigest": "sha256:fc81b3eca4d996203b98160c7dbbc1099afe152814a8a7bc81c825611ceb95aa"
+      "packageDigest": "sha256:5651302c00c685311036e35c21fe3e8c7c4ac85a285f5fedfbb263da66c6912d"
     },
     {
       "name": "remediate-agent-harness",
@@ -307,13 +301,13 @@
       "name": "select-dependency-versions",
       "description": "Select package/runtime versions from live authoritative sources.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:648ecfc5b7ce5cb2f7aef065acec02b282a6b446be0fc5f6b6fcd9607e3acae7"
+      "packageDigest": "sha256:28c9db01fcbc6d01fa9bec5f633dbb5d1eabdcb673a5e73e63f53d03c17e8f29"
     },
     {
       "name": "select-next-work",
       "description": "Select/claim next high-value Work from evidence under WIP limits.",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:452d3c16e3e7869d174b17da59e5cf78b584894803a4d2d514050f18661459c5"
+      "packageDigest": "sha256:b158d73abde576db5cfa9991bc99c8a07aad66d999d23bb856d1023d6e8cf6ec"
     },
     {
       "name": "share-ephemeral-artifact",

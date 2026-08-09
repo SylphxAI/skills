@@ -49,6 +49,12 @@ function validateLocalLinks(markdown, file, errors) {
       errors.push(`${path.relative(repositoryRoot, file)}: broken link ${target}`);
     }
   }
+  // Unclosed link targets: "](" reaching end of line without a closing ")".
+  // The link regex above cannot see these, so malformed links stayed invisible.
+  const unclosed = /\]\(([^)\n]+)$/gm;
+  for (const match of markdown.matchAll(unclosed)) {
+    errors.push(`${path.relative(repositoryRoot, file)}: unclosed link target ${match[1].trim().slice(0, 80)}`);
+  }
 }
 
 function validateSkill(folder, names, errors) {

@@ -7,13 +7,14 @@
 Policy constraints—compose onto matching host jobs.
 
 **Quality North Star** (sole quality vocabulary): Meta *Simple concepts,
-powerful usage* + **13 primary attributes** (Depth, Simplicity, Correctness,
+powerful usage* + **14 primary attributes** (Depth, Simplicity, Correctness,
 Security, Reliability, Availability, Resilience, Performance, Scalability,
-Observability, Maintainability, Evolvability, Testability). Readability is a
-facet of Maintainability (`q-readability` alias). Memory set of 8 groups
-Dependability and Sustainment. Full body owns obligations; rule IDs bind
-selection, proof, and default quality precedence. The phrase **Modern
-Technical Bar** is retired.
+Economy, Observability, Maintainability, Evolvability, Testability). Readability
+is a facet of Maintainability (`q-readability` alias). **Memory set of 9
+(深正簡 · 改觀快 · 穩安平):** Depth · Correctness · Simplicity · Evolvability ·
+Observability · Performance & Velocity · Reliability · Security · Economy.
+Full body owns obligations; rule IDs bind selection, proof, and default quality
+precedence. The phrase **Modern Technical Bar** is retired.
 
 Full progressive-disclosure body: [references/full-standard.md](references/full-standard.md).  
 Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).  
@@ -95,15 +96,7 @@ the security-design contract before or alongside implementation.
 
 ## Composition and output
 
-Apply this standard as constraints on the artifact requested by the user or
-owned by the primary procedure. Do not emit a separate per-standard compliance
-report merely because this Skill was injected.
-
-Integrate only material obligations, deviations, evidence, and gaps into the
-primary artifact or final status. When conformance assessment is itself the
-requested job, produce one standalone domain conformance record from this
-standard.
-
+Canonical contract: [`author-skill/references/composition-contract.md`](../../../author-skill/references/composition-contract.md).
 ## Guardrails
 
 - Fail closed on secret material in source and logs.

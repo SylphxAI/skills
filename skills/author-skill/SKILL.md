@@ -72,6 +72,11 @@ Merge only when job, artifact, and acceptance authority are materially the same.
 
 ## Standards and constraint packs
 
+Constraint packs share one canonical composition-and-output contract:
+[references/composition-contract.md](references/composition-contract.md); pack
+READMEs link it instead of restating it.
+
+
 - Org constraint packs are **never** listing skills.
 - Place each pack under the **one** skill that most naturally applies it (e.g. engineering depth under `build-product`, source-authoring under `drive-to-delivery`).
 - Other skills **link** to that path; do not duplicate pack trees; do not create a "hold all standards" skill.
