@@ -55,7 +55,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:d80596df5beccde93e56f6d64e8e0a60c2de1086c210b5045637f6cd4f0f86a9"
+      "packageDigest": "sha256:2ba3e6255ffe57a3fcda1d97b18d6a77c2948e2dc7982cfe7627055f2294ed91"
     },
     {
       "name": "compose-product-portfolio",

@@ -1,5 +1,8 @@
 # Absorption: external skills dump + workspace-kit (2026-08-06)
 
+> Historical record (2026-08-06), archived. Not current authority. See
+> [docs/MODEL.md](../MODEL.md) and [docs/CURATION-LEDGER.md](../CURATION-LEDGER.md).
+
 ## Company stance
 
 Sylphx agents build with **company products**:
@@ -8,7 +11,7 @@ Sylphx agents build with **company products**:
 | --- | --- |
 | **Keel** | Agent-native client runtime (game + app + website + CLI); World/System/Intent/Port/Asset |
 | **Sylphx Platform** | Deploy, BaaS/primitives, dogfood hosting |
-| **Sylphx Skills** | Task methods + method library |
+| **Sylphx Skills** | Requestable job skills + progressive references (see [docs/MODEL.md](../MODEL.md)) |
 | **Cubeage titles** | Games/apps as Keel consumers |
 | **Spiron / MCP / gateway** | Memory, tools, model routing as product surfaces |
 
@@ -25,8 +28,8 @@ Agents must **not** adopt foreign app-builder stacks as the product SSOT.
 | --- | --- |
 | Map modes / layered contract / prop packs | `produce-game-2d-map-assets/references/*` |
 | Sprite modes/actions/bundles + video pipeline | `produce-game-2d-sprites/references/*` |
-| Game loop/feel/genre principles (engine-agnostic) | `build-keel-title/references/title-game-craft-absorbed.md` |
-| Pointers from design-game library | `sylphx-methods/.../design-game/README.md` |
+| Game loop/feel/genre principles (engine-agnostic) | `build-product/references/keel-app/references/game-craft-absorbed.md` |
+| Pointers from design-game library | historical pointer — `sylphx-methods` is retired; method depth lives under job skills |
 
 ## Explicitly rejected (do not reintroduce)
 

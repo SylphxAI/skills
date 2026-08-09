@@ -160,7 +160,7 @@ routing reliability or a general effect size.
 The complete source-by-source disposition and exact revisions are in:
 
 - [`bound-request-scope/references/right-sized-agent-engineering.md`](../../../skills/bound-request-scope/references/right-sized-agent-engineering.md)
-- [`write-high-signal-update/references/research-basis.md`](../../../../write-high-signal-update/references/research-basis.md)
+- [`write-high-signal-update/references/research-basis.md`](../../../skills/write-high-signal-update/references/research-basis.md)
 
 Primary portable foundations:
 
