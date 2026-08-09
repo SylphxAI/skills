@@ -1,0 +1,4 @@
+interface:
+  display_name: "Craft Human-Agent Language"
+  short_description: "Language/structure/format for docs and prompts humans and agents both use; model-agnostic with verification gate."
+  default_prompt: "Use $craft-human-agent-language to write or review this document/prompt for humans and agents: frame purpose/audience, structure before prose, plain language, model-agnostic language choice, output contract, and verification gate."

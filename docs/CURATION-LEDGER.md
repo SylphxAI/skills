@@ -39,3 +39,14 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Provider depth lives under each skill `references/` so agents get recipes without web search.
 - Human-only Instruments law + envelope schema retired to `docs/history/retired-instruments-2026-08-08/` (not installable).
 
+
+## 2026-08-09 — craft-human-agent-language
+
+- New job listing: write/review documents and prompts that humans and agents
+  both use (language × structure × format × output contract).
+- Model-agnostic by design: durable method in SKILL.md; dated measurements in
+  `references/evidence-brief-2026-08.md`; ISO/STE mapping in
+  `references/iso-plain-language.md`. No new `*-standard` pack; no routing bag.
+- Near-miss boundaries kept: skill packages → `author-skill`; short updates →
+  `write-high-signal-update`; agent context packs → `engineer-agent-context`;
+  distillation → `distill-source-to-skill`.
