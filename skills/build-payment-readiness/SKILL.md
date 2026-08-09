@@ -13,7 +13,7 @@ Own provider authority/readback, ingestion, money ledger, entitlement
 projection, settlement, reconciliation, and finance-close facts. In particular,
 this artifact owns whether a provider-confirmed refund, revocation, dispute, or
 chargeback event occurred and how it projects into ledger/entitlement truth.
-`review-refund-and-support-flow` consumes that authority and owns customer
+`../review-domain/references/refund-and-support-flow/` consumes that authority and owns customer
 messaging, grace, repayment, restrictions, appeal, and account consequences.
 
 For every artifact, record `artifactVersion`, `artifactRevision`, and
@@ -50,7 +50,7 @@ refund-authority, support, and finance handoffs without copying sibling facts.
 - Do not use payment confusion as retention.
 - Do not collapse refund, cancellation, revocation, dispute, chargeback, grace, billing retry, restore, promo, and manual adjustment into one generic state.
 - Do not silently edit entitlements; append corrective ledger events and replay the projector.
-- Do not make customer punishment, grace, repayment, appeal, or commerce-restriction policy here. Emit authoritative refund/entitlement facts to `review-refund-and-support-flow`.
+- Do not make customer punishment, grace, repayment, appeal, or commerce-restriction policy here. Emit authoritative refund/entitlement facts to `../review-domain/references/refund-and-support-flow/`.
 - Do not let support agents change provider truth. Support corrections must be role-gated, reason-coded, expiring where appropriate, and auditable.
 - Do not ship payments without fee, tax, settlement, invoice, refund, dispute, and entitlement reconciliation evidence.
 - Do not call release gates complete unless every gate names the fixture, dashboard/alert, rollback or kill-switch path, owner, and approval evidence.

@@ -58,13 +58,13 @@ Produce a **Causal Inference Record**:
 
 ## Boundaries
 
-- Use `review-product-experiment` to design or audit a product A/B test,
+- Use `../review-domain/references/product-experiment/` to design or audit a product A/B test,
   holdout, switchback, or staged experiment protocol.
-- Use ``analyze-critically` for competing explanations or software root-cause
+- Use `analyze-critically` for competing explanations or software root-cause
   diagnosis without a population-level intervention estimand.
-- Use ``analyze-system-dynamics` for feedback, delay, accumulation, and policy
+- Use `analyze-system-dynamics` for feedback, delay, accumulation, and policy
   resistance over time.
-- Use analytics instrumentation methods to define event and data pipelines;
+- Use `../review-domain/references/product-analytics-instrumentation/` for event definitions and data pipelines;
   measurement availability alone does not identify a causal effect.
 - Never convert association, prediction accuracy, temporal order, or a causal
   diagram by itself into a causal claim.

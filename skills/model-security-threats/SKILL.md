@@ -89,9 +89,9 @@ Produce a **Threat Model and Security Design Contract** containing:
 
 ## Boundaries
 
-- `review-product-abuse-risk` owns adaptive fraud, incentive abuse, enforcement,
+- `../review-domain/references/product-abuse-risk/` owns adaptive fraud, incentive abuse, enforcement,
   appeals, and false-positive economics across a product.
-- `review-security-assurance-operations` owns what may truthfully be claimed
+- `../review-domain/references/security-assurance-operations/` owns what may truthfully be claimed
   and shown to customers about current controls.
 - `../build-product/references/engineering-standard/` and the owning project implement and test controls;
   this Skill supplies the security design contract.

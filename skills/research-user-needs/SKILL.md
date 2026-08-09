@@ -62,11 +62,11 @@ without inventing the missing study phase.
 
 - Use `synthesize-market-research` for category, competitor, pricing, or demand
   evidence from market sources.
-- Use `operate-customer-support` (see references/feedback-loop) for recurring post-use feedback intake,
+- Use `../run-product-feedback-loop/` for recurring post-use feedback intake,
   triage, prioritization, and closure.
-- Use `review-product-analytics-instrumentation` for event definitions,
+- Use `../review-domain/references/product-analytics-instrumentation/` for event definitions,
   telemetry coverage, and quantitative behavioral measurement.
-- Use `review-product-experiment` for randomized, holdout, switchback, or staged
-  product experiments; use `synthesize-evidence-brief` (see references/causal-inference) for causal effect claims.
+- Use `../review-domain/references/product-experiment/` for randomized, holdout, switchback, or staged
+  product experiments; use `../analyze-causal-inference/` for causal effect claims.
 - Do not generalize prevalence from qualitative evidence. Hand a prevalence
   question to an appropriately sampled quantitative study.

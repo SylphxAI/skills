@@ -53,11 +53,11 @@ Produce one **Learning Change Record** containing:
 
 ## Boundaries
 
-- Use `synthesize-evidence-brief` (see references/critical-analysis) when the primary job is diagnosing an uncertain cause.
-- Use `author-skill` (see references/design-evals) for a complete exact-candidate Skill evaluation;
+- Use `../analyze-critically/` when the primary job is diagnosing an uncertain cause.
+- Use `../design-skill-evals/` for a complete exact-candidate Skill evaluation;
   this skill owns why the agent system should change and whether the broader
   intervention solved the recurring problem.
-- Use `review-optimization-objective` when the objective, reward, KPI, or
+- Use `../review-domain/references/optimization-objective/` when the objective, reward, KPI, or
   evaluator may be creating the behavior.
 - Use `run-incident-response` to contain and recover a live incident. A post-incident
   recurring system change may then use this skill.
