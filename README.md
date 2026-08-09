@@ -17,6 +17,10 @@ npm test
 npm run build:catalog
 ```
 
+## Principles
+
+Universal doctrine (design, development, business): [docs/policies/PRINCIPLES.md](docs/policies/PRINCIPLES.md) — 深正簡 · 改觀快 · 穩安平.
+
 ## License
 
 MIT.

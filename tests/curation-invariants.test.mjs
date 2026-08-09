@@ -114,6 +114,7 @@ test('Quality North Star is sole engineering quality vocabulary', () => {
     'q-security',
     'q-testability',
     'q-evolvability',
+    'q-economy',
   ]) {
     assert.ok(full.includes(id), id);
     assert.ok(predicates.includes(id), id);
@@ -131,7 +132,8 @@ test('Quality North Star is sole engineering quality vocabulary', () => {
     assert.ok(predicates.includes(id), id);
   }
   assert.ok(full.includes('Simple concepts, powerful usage'));
-  assert.ok(full.includes('thirteen primary') || full.includes('Thirteen primary'));
+  assert.ok(full.includes('14 primary'), 'full-standard should list fourteen primary attributes');
+  assert.ok(predicates.includes('fourteen primary'), 'binding-predicates should list fourteen primary attributes');
   assert.ok(predicates.includes('Alias'));
   assert.ok(
     existsSync(

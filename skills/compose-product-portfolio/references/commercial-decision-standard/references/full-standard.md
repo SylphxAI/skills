@@ -284,6 +284,29 @@ Tradeoffs and rejected alternatives.
 ```
 
 
+## Economy law (`q-economy`)
+
+Cost is priced by **lifecycle, system entropy, and human attention** — not by
+development effort. In an agent-native world build cost has fallen and cost has
+moved to verification and entropy; entropy is compound interest, and every
+added concept (SKU, tier, segment, surface, integration, or special case)
+charges lifecycle interest to every future agent and human.
+
+Any cost-saving claim — engineering or commercial — must answer three
+questions, or it is incomplete:
+
+1. Which budget is saved (runtime, lifecycle, entropy, or attention)?
+2. How is it measured?
+3. Which principle is traded, and when does it return?
+
+Do not equate "cheaper to build" with "cheaper": pricing, packaging, margin,
+and roadmap decisions must also price verification, support, attention,
+migration, and retirement/removal cost — including the option value of keeping
+a capability versus cutting it. Universal doctrine:
+[`docs/policies/PRINCIPLES.md`](../../../../../docs/policies/PRINCIPLES.md);
+engineering obligations: `q-economy` + `eng-economy-01/02` under
+`engineering-standard`.
+
 ## Package checklist
 
 | Rule ID | Check |
@@ -293,6 +316,7 @@ Tradeoffs and rejected alternatives.
 | `commercial-d-03` | Proof layers separated |
 | `commercial-d-04` | Unknown authority fails closed |
 | `commercial-d-05` | Tradeoffs owned |
+| `commercial-d-06` | Economy: cost claims state budget, measurement, and traded principle (lifecycle/entropy/attention, not dev effort) |
 
 - [ ] Full body obligations reviewed for applicability.
 - [ ] Residual gaps have owner and follow-up.

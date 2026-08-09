@@ -26,6 +26,20 @@ only when a task matches. Always-on text is miss-class-A floors only.
 - Obtain explicit authority before destructive actions, credentials,
   public-contract changes, new infrastructure, or irreversible effects.
 
+## Principles (深正簡 · 改觀快 · 穩安平)
+
+- Universal floors for all design, development, and business-model work:
+  Depth · Correctness · Simplicity · Evolvability · Observability · Performance
+  & Velocity · Reliability · Security · Economy. Canonical text:
+  `docs/policies/PRINCIPLES.md` (human documentation, not agent-installed).
+- Correctness (evidence discipline) and Security (least privilege) are
+  non-tradeable floors. Other conflicts name the traded principle, why, and
+  when it returns; when unsure, default to Simplicity.
+- Economy prices cost by lifecycle, system entropy, and human attention — not
+  by development effort. A cost claim must state which budget, how it is
+  measured, and which principle it trades.
+- Keep source / CI / deploy / live states distinct; evidence is per layer.
+
 ## Skill loading
 
 - Load skills through host progressive disclosure and native discovery only.

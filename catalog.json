@@ -55,13 +55,13 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:620484e2b256972ee0d8ff73d605d4b202783a22e201a82cbf760d9eba91aea8"
+      "packageDigest": "sha256:d80596df5beccde93e56f6d64e8e0a60c2de1086c210b5045637f6cd4f0f86a9"
     },
     {
       "name": "compose-product-portfolio",
       "description": "Compose multi-product portfolio: platform vs products, connectors, bundles.",
       "path": "skills/compose-product-portfolio/SKILL.md",
-      "packageDigest": "sha256:86dea121f1e2e018dcdc223d35cdeaa844eb97690491a1d6ffbc072e3265959f"
+      "packageDigest": "sha256:35a73ac2463654aeaee2b09ba09d08938ad8c33f384dbf8beb958eb86bccb521"
     },
     {
       "name": "compose-product-program",

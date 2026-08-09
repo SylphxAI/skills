@@ -50,3 +50,22 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Near-miss boundaries kept: skill packages → `author-skill`; short updates →
   `write-high-signal-update`; agent context packs → `engineer-agent-context`;
   distillation → `distill-source-to-skill`.
+
+## Universal principles + Economy (2026-08-09)
+
+- Adopted the nine-principle universal doctrine 深正簡 · 改觀快 · 穩安平
+  (Depth · Correctness · Simplicity · Evolvability · Observability ·
+  Performance & Velocity · Reliability · Security · Economy) as canonical
+  doctrine for all design, development, and business-model work.
+  Full text: `docs/policies/PRINCIPLES.md`; compact always-on floor added to
+  `runtime/constitution.md`. Not a second quality vocabulary — it maps onto the
+  Quality North Star `q-*` IDs.
+- Added `q-economy` as the 14th primary North Star attribute:
+  lifecycle / system-entropy / human-attention cost accounting (not dev
+  effort). Runtime resource cost stays under Performance/Scalability per the
+  #121 guardrail; `q-economy` is the decision lens for lifecycle cost,
+  attention, and agent-native economics.
+- Memory set grew 8 → 9 (深正簡 · 改觀快 · 穩安平); operating set Meta + 13 → 14.
+- Wired Economy into `commercial-decision-standard` (business models, pricing,
+  roadmap, unit economics) and added `eng-economy-01/02` predicates.
+- ADR: `docs/history/adr/ADR-20260809-universal-principles-and-q-economy.md`.

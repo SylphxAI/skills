@@ -19,14 +19,16 @@ IDs live in [full-standard.md](full-standard.md) § Quality North Star and
 Do not re-author a parallel quality list in product repos. Link or apply `q-*`
 IDs and prove them.
 
-## Pocket six questions
+## Pocket seven questions
 
 1. Deep enough? Can fewer concepts cover the same capability by composition?
 2. Correct? Are security boundaries clear?
 3. When it fails, is blast radius contained—and is the system observable?
 4. Fast and large enough? Where are budgets and measurement points?
-5. Six months later: still changeable and testable?
-6. If default quality precedence is violated, are reason and rollback written?
+5. Which cost budget is saved (runtime, lifecycle, entropy, or attention), how
+   is it measured, and which principle is traded? (Economy)
+6. Six months later: still changeable and testable?
+7. If default quality precedence is violated, are reason and rollback written?
 
 ## Anti-examples (quick table)
 
@@ -41,6 +43,7 @@ IDs and prove them.
 | Resilience | Infinite retry stampede kills the dependency |
 | Performance | Micro-optimize with no budget; report only mean latency |
 | Scalability | All state pinned to one-machine memory; “just add nodes” |
+| Economy | “Saving dev effort” with no budget, no measurement, and no traded principle; counting only build cost while ignoring verification, entropy, and attention |
 | Observability | Logs without trace id; alerts with no owner action |
 | Maintainability | Clever one-liners no one can safely edit; unreadability sold as depth |
 | Evolvability | Business detail leaks every layer; swapping a store rewrites callers |
@@ -52,6 +55,7 @@ IDs and prove them.
 > under correctness and security, make the system steady, observable, fast
 > enough, large enough, and changeable.
 
-**Operating set = Meta + 13 primary attributes** (`q-readability` is a
-Maintainability alias). **Memory set = Meta + 8.** Grow by refining definitions
+**Operating set = Meta + 14 primary attributes** (`q-readability` is a
+Maintainability alias; `q-economy` = lifecycle/entropy/attention cost).
+**Memory set = Meta + 9 (深正簡 · 改觀快 · 穩安平).** Grow by refining definitions
 and anti-examples—not by adding slogan rows.
