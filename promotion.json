@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "owner": "SylphxAI/skills",
+  "channel": "release-tag",
+  "sourceRevision": "4f09a5936dcd84ad1ac0922b9e2a15ea51f764dc",
+  "catalogDigest": "sha256:d2be021d2c33050cf9447defac54a0feda57d5d12aa22a1d2d8d0976e148fc85",
+  "qualifiedNames": [
+    "analyze-critically",
+    "author-skill",
+    "bound-request-scope",
+    "craft-human-agent-language",
+    "curate-skill-repository",
+    "decide-architecture-shape",
+    "design-skill-evals",
+    "engineer-testable-requirements",
+    "execute-hard-cutover",
+    "forecast-with-calibration",
+    "maintain-product",
+    "produce-game-2d-map-assets",
+    "produce-game-2d-sprites",
+    "record-structured-deliberation",
+    "run-incident-response",
+    "select-dependency-versions",
+    "select-next-work",
+    "synthesize-evidence-brief",
+    "synthesize-market-research",
+    "write-high-signal-update"
+  ],
+  "promotedAt": "2026-08-10T18:16:09.291Z"
+}
