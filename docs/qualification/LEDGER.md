@@ -4,16 +4,17 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-10, waves 1–5)
+## Current state (2026-08-10, waves 1–6)
 
 - Capability packages: **57**
-- Qualified: **20** — analyze-critically, author-skill, bound-request-scope,
-  craft-human-agent-language, curate-skill-repository, decide-architecture-shape,
-  design-skill-evals, engineer-testable-requirements, execute-hard-cutover,
-  forecast-with-calibration, maintain-product, produce-game-2d-map-assets,
-  produce-game-2d-sprites, record-structured-deliberation, run-incident-response,
-  select-dependency-versions, select-next-work, synthesize-evidence-brief,
-  synthesize-market-research, write-high-signal-update
+- Qualified: **24** — analyze-critically, analyze-system-dynamics, author-skill,
+  bound-request-scope, craft-human-agent-language, curate-skill-repository,
+  decide-architecture-shape, design-skill-evals, engineer-testable-requirements,
+  execute-hard-cutover, forecast-with-calibration, maintain-product,
+  optimize-decision-model, produce-game-2d-map-assets, produce-game-2d-sprites,
+  record-structured-deliberation, research-public-web, run-incident-response,
+  run-product-feedback-loop, select-dependency-versions, select-next-work,
+  synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
@@ -90,6 +91,15 @@ inconclusive record; the capability qualified on the re-run.
 | maintain-product | `run-2026-08-10T17-29-42-099Z` | pass | fail | qualified |
 | run-incident-response | `run-2026-08-10T17-32-18-026Z` | pass | pass | qualified (no delta) |
 | craft-human-agent-language | `run-2026-08-10T17-32-18-592Z` | pass | fail | qualified |
+
+## Wave-6 runs
+
+| Capability | Run | With-skill | Baseline | Verdict |
+| --- | --- | --- | --- | --- |
+| optimize-decision-model | `run-2026-08-10T18-20-38-297Z` | pass | pass | qualified (no delta) |
+| research-public-web | `run-2026-08-10T18-20-38-775Z` | pass | fail | qualified |
+| analyze-system-dynamics | `run-2026-08-10T18-23-41-030Z` | pass | fail | qualified |
+| run-product-feedback-loop | `run-2026-08-10T18-23-41-604Z` | pass | fail | qualified |
 
 ## Wave-1 finding (author-skill)
 

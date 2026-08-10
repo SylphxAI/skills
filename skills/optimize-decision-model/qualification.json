@@ -1,10 +1,36 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "optimize-decision-model"
+  "name": "optimize-decision-model",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-10T18:23:31.320Z",
+  "expiresAt": "2026-11-08T18:27:19.693Z",
+  "evidence": [
+    {
+      "id": "optimize-decision-model-compatibility-2026-08-10T18-20-38-297Z",
+      "kind": "compatibility",
+      "digest": "sha256:f62e77431f2e149df7ac81090ddca8f124d57757123cec31bd8896c14660dea4",
+      "uri": "docs/qualification/evals/optimize-decision-model/run-2026-08-10T18-20-38-297Z/report.json"
+    },
+    {
+      "id": "optimize-decision-model-security-2026-08-10T18-20-38-297Z",
+      "kind": "security",
+      "digest": "sha256:f62e77431f2e149df7ac81090ddca8f124d57757123cec31bd8896c14660dea4",
+      "uri": "docs/qualification/evals/optimize-decision-model/run-2026-08-10T18-20-38-297Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

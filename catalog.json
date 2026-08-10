@@ -4,9 +4,10 @@
   "count": 57,
   "qualification": {
     "total": 57,
-    "qualified": 20,
+    "qualified": 24,
     "qualifiedNames": [
       "analyze-critically",
+      "analyze-system-dynamics",
       "author-skill",
       "bound-request-scope",
       "craft-human-agent-language",
@@ -17,10 +18,13 @@
       "execute-hard-cutover",
       "forecast-with-calibration",
       "maintain-product",
+      "optimize-decision-model",
       "produce-game-2d-map-assets",
       "produce-game-2d-sprites",
       "record-structured-deliberation",
+      "research-public-web",
       "run-incident-response",
+      "run-product-feedback-loop",
       "select-dependency-versions",
       "select-next-work",
       "synthesize-evidence-brief",
@@ -72,14 +76,14 @@
       "name": "analyze-system-dynamics",
       "description": "Map stubborn loops: stocks, delays, incentives, policy resistance.",
       "path": "skills/analyze-system-dynamics/SKILL.md",
-      "packageDigest": "sha256:7e8d554f029cafcc2512986df1bfcadedde9aea8f3f657573f410cd0818d1e9f",
+      "packageDigest": "sha256:d5daa61999f544bc3ac8e2293402fdd8724c21bbc5c3227cdd354062a6b6510e",
       "capability": {
         "job": "Explain behavior over time with stocks, flows, feedback loops, and intervention analysis.",
         "outcomeObservable": "A Dynamic System Model with explicit model status (observed facts versus hypotheses), intervention analysis, and a validation plan an independent analyst can replay.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "author-skill",
@@ -449,14 +453,14 @@
       "name": "optimize-decision-model",
       "description": "Model a decision for optimization: objective, constraints, sensitivity.",
       "path": "skills/optimize-decision-model/SKILL.md",
-      "packageDigest": "sha256:b36a4111bfb91f242465e1cad087696fc2e2456d729ff6977de010b2a2cd2ad3",
+      "packageDigest": "sha256:9b1657e317ea6179c9ff5d3fb06b78db72c16ba512c6eee68738a53b55874be0",
       "capability": {
         "job": "Model a decision for optimization: objective, constraints, sensitivity, with independently checkable recommended solutions.",
         "outcomeObservable": "A Constrained Decision Model whose recommended solution an independent checker can recompute, with feasibility evidence, solver record, sensitivity analysis, and a robust operating policy with fallback and re-solve triggers.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "optimize-store-listing",
@@ -592,14 +596,14 @@
       "name": "research-public-web",
       "description": "Research the public web without paid SERP keys; cite sources and record adapter gaps.",
       "path": "skills/research-public-web/SKILL.md",
-      "packageDigest": "sha256:03570db763b678c38c9bf43c7af24936077b8dc009d5ab89467d175c832172f3",
+      "packageDigest": "sha256:b1aeb07dfc916d2400e6da2f6d05081139a928ea5c88d5ceae2fdd16939885df",
       "capability": {
         "job": "Research the public web without paid SERP keys; cite sources and record adapter gaps.",
         "outcomeObservable": "A decision-ready answer (or explicit blocked) with cited sources, retrieved times, labeled free versus paid paths, and an honest gap list an independent researcher can re-fetch.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "research-user-needs",
@@ -657,14 +661,14 @@
       "name": "run-product-feedback-loop",
       "description": "Run product feedback learning loop: private feedback and public reviews.",
       "path": "skills/run-product-feedback-loop/SKILL.md",
-      "packageDigest": "sha256:7c29477608dd63c2b447d2b2e9d2da7c9fc3a2ad144ca2cf5a9ef62960245306",
+      "packageDigest": "sha256:ed9e3a512235aea00b969dca333727c9a98c7bfea565ae1cb3b78465e5c31e36",
       "capability": {
         "job": "Run product feedback learning loop: private feedback and public reviews into source-preserving evidence, safe routing, validated action, truthful updates.",
         "outcomeObservable": "Feedback and review signals become source-preserving evidence clusters with validated product actions, immediate routing of urgent signals, and truthful customer updates, with two independent artifacts for combined private and public review flows.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "select-dependency-versions",
