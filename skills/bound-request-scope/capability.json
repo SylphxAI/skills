@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "name": "bound-request-scope",
+  "job": "Bound this request to a right-sized scope contract: objective, in/out, non-goals, cut lines, and ceremony matched to risk.",
+  "boundaries": {
+    "inScope": [
+      "Binding objective, owning boundary, terminal condition, and risk floor",
+      "Grounding facts versus inference with decision-critical evidence only",
+      "Choosing the smallest complete path and scaling ceremony to risk"
+    ],
+    "outOfScope": [
+      "Mandatory reports for ordinary reversible work",
+      "Unbounded deep analysis the decision does not need",
+      "Executing the scoped work itself"
+    ]
+  },
+  "inputs": [
+    "The request and its owning boundary",
+    "Risk context and terminal condition",
+    "Decision-critical evidence availability"
+  ],
+  "outputs": [
+    "Stable scope contract with in/out, non-goals, and cut lines",
+    "Chosen smallest complete path with residuals"
+  ],
+  "required": {
+    "tools": [],
+    "data": [],
+    "permissions": []
+  },
+  "failureSemantics": "Scope thrash, hidden residuals, or ceremony that outgrows the risk are failures; the terminal condition is explicit and residuals are reported rather than silently carried.",
+  "outcome": {
+    "observable": "A stable scope contract with objective, in/out, non-goals, cut lines, and residuals that the requester can approve before implementation proceeds.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

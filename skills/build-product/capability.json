@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "name": "build-product",
+  "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
+  "boundaries": {
+    "inScope": [
+      "Framing the journey/capability gap and done look",
+      "Implementing the full owning-boundary vertical slice of the core concept",
+      "Applying the Quality North Star and risk-matched verification on the framed path",
+      "Landing source with atomic commits and a revert-safe PR outcome"
+    ],
+    "outOfScope": [
+      "Below-threshold polish, speculative features, and drive-by rewrites",
+      "Parallel concepts or permanent workarounds",
+      "Whole-product completion claims beyond the framed slice"
+    ]
+  },
+  "inputs": [
+    "Product, journey/capability, and done look for this cycle",
+    "Constraints: platforms, auth, data, engine versus product boundary",
+    "Current failure evidence from code, build, live, and docs"
+  ],
+  "outputs": [
+    "Framed capability usable under a stated original oracle",
+    "Original-oracle verification (run, smoke, API, pack, host as applicable)",
+    "Honest residuals list with ownership of changes"
+  ],
+  "required": {
+    "tools": [
+      "development environment and CI for the target platform"
+    ],
+    "data": [
+      "current failure evidence and domain constraints"
+    ],
+    "permissions": [
+      "write access on the owning layer or a PR path into it"
+    ]
+  },
+  "failureSemantics": "No permanent workarounds: gaps resolve on the owning layer; a slice is done only when the framed capability is usable under the stated oracle or only externally blocked, residuals are listed, and no known ship-blocker was ignored.",
+  "outcome": {
+    "observable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

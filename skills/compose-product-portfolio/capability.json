@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "name": "compose-product-portfolio",
+  "job": "Compose a multi-product portfolio: product-unit boundaries, typed connector graphs, and keep/extract/merge/retire decisions.",
+  "boundaries": {
+    "inScope": [
+      "Classifying candidate surfaces on independent axes",
+      "Defining product units, connectors, shared substrate, and composed experiences",
+      "Drawing the directed connector graph with one contract and state owner per edge",
+      "Recording keep/extract/merge/retire decisions with evidence and handoffs"
+    ],
+    "outOfScope": [
+      "Rewriting another product's domain facts or live state",
+      "Forcing product, capability, module, repo, or deployment boundaries one-to-one",
+      "Owning pricing, marketing, or delivery execution for the units"
+    ]
+  },
+  "inputs": [
+    "Portfolio objective, target customers, and recurring jobs",
+    "Existing products, proposed capabilities, and experience surfaces",
+    "Commercial constraints and shared dependencies"
+  ],
+  "outputs": [
+    "Composable Product Portfolio Contract with product-unit registry",
+    "Typed connector graph with complete edge semantics",
+    "Keep/extract/merge/retire decisions with expected value and permanent cost"
+  ],
+  "required": {
+    "tools": [],
+    "data": [
+      "current implementation versus desired product semantics"
+    ],
+    "permissions": []
+  },
+  "failureSemantics": "A feature, module, repo, or runtime cell is never a product without passing the independent product test; cross-product truth never hides inside connectors, shared UI, or integration databases, and dogfooding uses the same supported contract as customers.",
+  "outcome": {
+    "observable": "A Composable Product Portfolio Contract where every unit has a standalone job, contract, lifecycle, and support path, every connector edge names its contract and state owner, and decisions carry evidence and handoffs.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

@@ -4,26 +4,28 @@
   "project": {
     "id": "sylphx-skills",
     "repository": "SylphxAI/skills",
-    "name": "Sylphx Skills",
-    "summary": "Industry-aligned Agent Skills catalog and install adapters for Codex, Claude Code, and Grok Build.",
+    "name": "Sylphx Verified Capabilities (open foundation)",
+    "summary": "Open capability packages with contracts, qualification records, and outcome-receipt contracts for Codex, Claude Code, and Grok Build; static install/sync runtime.",
     "lifecycle": "production",
     "visibility": "public"
   },
   "intent": {
     "goals": [
-      "Ship a semantic catalog of specialized requestable job skills with progressive references.",
+      "Ship a semantic catalog of specialized requestable-job capability packages with progressive references and machine-readable capability contracts.",
       "Keep always-on floors thin and miss-class-A only.",
-      "Install and sync skills for Codex, Claude Code, and Grok Build from exact source revisions.",
-      "Enforce one quality vocabulary (Quality North Star) and one owner path per constraint pack."
+      "Install and sync capabilities for Codex, Claude Code, and Grok Build from exact source revisions.",
+      "Record version-scoped qualification state per package (honest unqualified default) and project Verified Capability Yield.",
+      "Enforce one quality vocabulary (Quality North Star, authoring-only) and one owner path per constraint pack."
     ],
     "nonGoals": [
-      "Own live work or organization-wide adoption state.",
+      "Own live work, organization-wide adoption state, or outcome recording (user system / Control Plane).",
       "Publish a policy encyclopedia as top-level listing skills.",
       "Preserve obsolete listing-standard paths, methods bags, or dual-authority prose.",
-      "Hard-cap listing count for appearance; organize by requestable-job semantics only."
+      "Hard-cap listing count for appearance; organize by requestable-job semantics only.",
+      "Claim qualification without version-scoped, expiring evidence from a named evaluator."
     ]
   },
   "delivery": {
-    "terminal": "default-branch tree passes npm test; catalog digests match packages; constraint packs resolve only under applying skills; no dead listing-standard URLs in active skills"
+    "terminal": "default-branch tree passes npm test; catalog digests match packages and carry per-package/repo-wide qualification state; every package has a schema-valid capability contract and qualification record; AutoSync promotion never downgrades qualified state; no dead listing-standard URLs in active skills"
   }
 }

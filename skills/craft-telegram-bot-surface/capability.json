@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "name": "craft-telegram-bot-surface",
+  "job": "Craft or hard-cut a Telegram bot to the 2026 surface: sparse slash menu, layered keyboard edit trees, Rich Message only, visibility, bot-to-bot guards.",
+  "boundaries": {
+    "inScope": [
+      "Jobs-to-channels mapping and the final registered slash menu",
+      "Keyboard and edit trees that edit the same message",
+      "Rich Message-only product text with no MarkdownV2 or HTML paths",
+      "Visibility matrix, bot-to-bot guards, and deletion of dual paths"
+    ],
+    "outOfScope": [
+      "Token custody and webhook ownership cutover",
+      "Non-Telegram channels and message routing",
+      "Product truth behind the surfaced commands"
+    ]
+  },
+  "inputs": [
+    "Jobs the bot must surface and group context",
+    "Existing menus, formatters, and callback routers to inventory",
+    "Multi-bot group composition and policy"
+  ],
+  "outputs": [
+    "Final slash menu (within budget) and help tree map",
+    "Visibility matrix and Rich-only wire proof",
+    "Deleted dual paths with tests and verification evidence"
+  ],
+  "required": {
+    "tools": [
+      "Telegram bot API test environment"
+    ],
+    "data": [
+      "current menu inventory and wire methods actually used"
+    ],
+    "permissions": [
+      "bot token or test-bot access owned by the operator"
+    ]
+  },
+  "failureSemantics": "Any surviving MarkdownV2/HTML product send, unregistered slash overflow, new-message-per-step keyboard flow, or unguarded bot-to-bot loop is a failure; verification requires wire proof, not menu documentation alone.",
+  "outcome": {
+    "observable": "A Telegram surface with a registered menu within budget, layered edit trees, Rich Message-only product sends verified on the wire, a visibility matrix, bot-to-bot guards where applicable, and legacy formatter/menu paths removed.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

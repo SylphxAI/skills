@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "name": "record-structured-deliberation",
+  "job": "Record a structured deliberation: options, criteria, decision, actions, preserving genuine alternatives and dissent.",
+  "boundaries": {
+    "inScope": [
+      "Defining question, owner, participants, constraints, and publication rule",
+      "Eliciting independent initial positions",
+      "Mapping proposal-reason-objection-rebuttal links",
+      "Running a challenge round and recording position changes with reasons"
+    ],
+    "outOfScope": [
+      "Manufacturing independence with near-identical leading prompts",
+      "Vote, consensus, or repetition as evidence",
+      "Continuing after the decision owner has enough evidence to act"
+    ]
+  },
+  "inputs": [
+    "The question and decision owner",
+    "Participants and material constraints",
+    "Evidence boundary and visibility rules"
+  ],
+  "outputs": [
+    "Deliberation Record with independently formed positions",
+    "Linked arguments, disputed claims, and missing evidence",
+    "Commitments, owners, residual dissent, and handoff"
+  ],
+  "required": {
+    "tools": [],
+    "data": [
+      "authorized deliberation store for raw positions and transcripts"
+    ],
+    "permissions": [
+      "audience allowlist for protected evidence"
+    ]
+  },
+  "failureSemantics": "Consensus is not truth, a vote is not evidence, and repetition is not an independent signal; raw private material stays in the authorized store and public projections never make participants or evidence reconstructable.",
+  "outcome": {
+    "observable": "A Deliberation Record preserving genuine alternatives, linked arguments, position changes with reasons, residual dissent, commitments and owners, and a handoff to a decision, experiment, or work item.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

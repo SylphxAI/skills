@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "name": "design-skill-evals",
+  "job": "Design a falsifiable Skill Evaluation Program that can disprove whether an exact skill bundle improves realistic work.",
+  "boundaries": {
+    "inScope": [
+      "Freezing the falsifiable question and exact candidate identities/digests",
+      "Designing full-catalog auto-injection datasets (positives, near-neighbours, abstentions, compound, multilingual)",
+      "Designing unseen behavior tasks with deterministic assertions and critical-failure modes",
+      "Building the control matrix (base, expert, skill, comparator) and answer/judge/provider matrix",
+      "Specifying holdouts, protected raw-artifact stores, commitments, receipts, replay, expiry",
+      "Defining metrics, uncertainty, cost/latency, failure triage and regression fixtures"
+    ],
+    "outOfScope": [
+      "Authoring the skill procedure itself (author-skill)",
+      "Portfolio decisions across skills (curate-skill-repository)",
+      "Running evals at production scale or owning live outcome telemetry (host/Control Plane)",
+      "Treating self-attested green scores as proof without replay"
+    ]
+  },
+  "inputs": [
+    "The exact skill bundle (name, description, body, references, scripts)",
+    "Intended jobs, artifacts, nearest neighbours and risks",
+    "Supported runtimes/tools, output budget and the claim the eval may falsify",
+    "Eval store policy for raw artifacts, audience, access, retention"
+  ],
+  "outputs": [
+    "One Skill Evaluation Program with the seven-part output contract",
+    "Candidate/catalog/task/rubric/runner/model-registry digests and binding",
+    "Protected holdout and raw-artifact store with commitment and disclosure rule",
+    "Qualification-record evidence filed when the run is completed"
+  ],
+  "required": {
+    "tools": ["deterministic artifact checkers", "independent judge families (at least two)"],
+    "data": ["protected eval store for raw artifacts and holdouts"],
+    "permissions": ["declared eval-store access, audience, retention and deletion policy"]
+  },
+  "failureSemantics": "A green score is invalid without exact candidate binding, complete artifacts, independent recomputation, provenance and replay; failures become minimal regression cases and the skill is edited, never the threshold; any relevant byte change invalidates the matching proof.",
+  "outcome": {
+    "observable": "An independent runner can reproduce the candidate, tasks, outputs, metrics and verdict without trusting the author narrative, and the result is recorded as version-scoped qualification evidence.",
+    "oracleOwner": "repository",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

@@ -2,348 +2,752 @@
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
   "count": 57,
+  "qualification": {
+    "total": 57,
+    "qualified": 0,
+    "qualifiedNames": []
+  },
   "skills": [
     {
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, manifest, fences.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:549cb017d54516ec953ff76bc661eeffdac35cdeafeea3306591b201d8a473d1"
+      "packageDigest": "sha256:f36abf85a06995a9aec83c2e7fe296783fcff79e2bb7bf839d2f4370a08309c5",
+      "capability": {
+        "job": "Bring a concrete repository onto the engineering baseline: constitution projection, project facts, fences, conformance entrypoints, retire predecessor layouts.",
+        "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired or a dated residual with an owner for the framed scope.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "analyze-causal-inference",
       "description": "Estimate causal effects: identification, estimators, robustness bounds.",
       "path": "skills/analyze-causal-inference/SKILL.md",
-      "packageDigest": "sha256:d028a5fc7264b0fb406242a8e1f935d84b7a3af0859ae7c0948a4e94bf6a0e2e"
+      "packageDigest": "sha256:be193b070a2009720eadf3d0cbd3621314af359bff518ecc3ed8a7eefe71ea30",
+      "capability": {
+        "job": "Turn a causal claim into an explicit intervention, estimand, identification argument, and falsifiable analysis.",
+        "outcomeObservable": "A Causal Inference Record with an explicit estimand, identification assumptions, diagnostics, uncertainty, and claim boundary that an independent analyst can reproduce from the same data.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "analyze-critically",
       "description": "Adversarially critique a claim/plan/design with kill criteria.",
       "path": "skills/analyze-critically/SKILL.md",
-      "packageDigest": "sha256:a688e05951eb0229e044ace342bc5dd9d23e49eb5d8c74920792b3652aa88262"
+      "packageDigest": "sha256:93f63888fb3f0e9b9f871fa1a35ee833082f5fd82c74eea6c873f58db71feafe",
+      "capability": {
+        "job": "Adversarially critique a claim, plan, or design with kill criteria and calibrated confidence.",
+        "outcomeObservable": "A Critical Analysis Brief containing competing hypotheses, discriminating evidence, a calibrated conclusion, and explicit conditions that would change the conclusion, usable by decision-makers.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "analyze-system-dynamics",
       "description": "Map stubborn loops: stocks, delays, incentives, policy resistance.",
       "path": "skills/analyze-system-dynamics/SKILL.md",
-      "packageDigest": "sha256:0676089f9147daf89d55bcec3356d7bc61f409c1018606cd0a505162d3601f26"
+      "packageDigest": "sha256:7e8d554f029cafcc2512986df1bfcadedde9aea8f3f657573f410cd0818d1e9f",
+      "capability": {
+        "job": "Explain behavior over time with stocks, flows, feedback loops, and intervention analysis.",
+        "outcomeObservable": "A Dynamic System Model with explicit model status (observed facts versus hypotheses), intervention analysis, and a validation plan an independent analyst can replay.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:d8b5937cf728599d1f1706dc2f91bd115c93bb13db866b66424939a87e9dfe04"
+      "packageDigest": "sha256:f81bdcf1fe41708cbbb9aa14edb58ef0513fbff70ce849dd8efecfe99912c7e3",
+      "capability": {
+        "job": "Create or revise an Agent Skill package: job, description, method, references, contract.",
+        "outcomeObservable": "The revised package passes npm test with a fresh catalog, local links resolve, the capability contract validates, and the description selects for the right ask and abstains on near-misses.",
+        "oracleOwner": "repository"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "bound-request-scope",
       "description": "Bound this request: objective, in/out, non-goals, cut lines.",
       "path": "skills/bound-request-scope/SKILL.md",
-      "packageDigest": "sha256:0297e711943123cbd54efbd41e32c90c36d2232460000f49e2b218fb6aebce8d"
+      "packageDigest": "sha256:80c38a149e2a616a21c76f0eededcd2cfc14d07a9d5ec7fdf9f90f429ccc6298",
+      "capability": {
+        "job": "Bound this request to a right-sized scope contract: objective, in/out, non-goals, cut lines, and ceremony matched to risk.",
+        "outcomeObservable": "A stable scope contract with objective, in/out, non-goals, cut lines, and residuals that the requester can approve before implementation proceeds.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "build-distribution-readiness",
       "description": "Build distribution readiness: artifacts, install/upgrade, channel readback.",
       "path": "skills/build-distribution-readiness/SKILL.md",
-      "packageDigest": "sha256:0e639c39d113f42fea643be269635ac5e86e3b9b6b92d5febe1399c9d31cbfaa"
+      "packageDigest": "sha256:c2f5a42dfb019ad44d6504494314a8877353bf967824b3729e94a8f5591a95d9",
+      "capability": {
+        "job": "Turn an exact product artifact into one audience-selected, channel-specific, support-ready Distribution Evidence Pack.",
+        "outcomeObservable": "A Distribution Evidence Pack where every selected channel names its exact artifact identity, install/upgrade behavior, and live readback proof, and every blocker names its next machine action.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "build-payment-readiness",
       "description": "Build production payments: providers, ledger, webhooks, reconciliation.",
       "path": "skills/build-payment-readiness/SKILL.md",
-      "packageDigest": "sha256:351c9da8672ae1d17f9c07d9e28ebb2dd0437a4ecca353d5ef92ce65a05627b0"
+      "packageDigest": "sha256:0b7d278ad88a803689820faf76bf6dd21054f2b1815041b3d304a533a44be41c",
+      "capability": {
+        "job": "Build production payments: providers, ledger, webhooks, entitlement projection, reconciliation, and finance close.",
+        "outcomeObservable": "Payments, entitlements, and refunds reconcile against provider truth with replayable ledger events, named finance-close owners and tolerances, and release gates carrying fixture, alert, rollback, and approval evidence.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:a5449e86581e5ff35e3d5f3f7159da2cb845b81ec1584f009a99bc2eabc89705"
+      "packageDigest": "sha256:3e7b56bff712bd4a745918c9e833ef026505f80c6be18cf1c56c55ffa376211d",
+      "capability": {
+        "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
+        "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "compose-product-portfolio",
       "description": "Compose multi-product portfolio: platform vs products, connectors, bundles.",
       "path": "skills/compose-product-portfolio/SKILL.md",
-      "packageDigest": "sha256:4e02af4a24e614739d1e85d4d1fa8716c938ea60fda9a1e18545da9357a7aa8f"
+      "packageDigest": "sha256:a148ed0afd1b596c556982fff9930936954a63c9eac4c5204a9f01585d56ea1b",
+      "capability": {
+        "job": "Compose a multi-product portfolio: product-unit boundaries, typed connector graphs, and keep/extract/merge/retire decisions.",
+        "outcomeObservable": "A Composable Product Portfolio Contract where every unit has a standalone job, contract, lifecycle, and support path, every connector edge names its contract and state owner, and decisions carry evidence and handoffs.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "compose-product-program",
       "description": "Compose multi-work product program: phases, dependencies, kill/scale.",
       "path": "skills/compose-product-program/SKILL.md",
-      "packageDigest": "sha256:2d675346c58bb88884283f9c25cc746fbcf0d6ed063d6f5c275460d11070e88c"
+      "packageDigest": "sha256:834dd6adb9fd32da9ef87823f56276029d234ec8925db21aeae5f552ba230ede",
+      "capability": {
+        "job": "Compose one versioned Product Program Manifest that directs multi-work delivery and indexes exact delivered evidence without owning domain facts.",
+        "outcomeObservable": "A Product Program Manifest where every declared capability has one owner and full target, the graph is acyclic, all handoffs and gates are executable, and the observed-state revision indexes exact accepted sibling evidence.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "compose-readme-marks",
       "description": "Compose README and docs badges or banners from public mark APIs without a design tool.",
       "path": "skills/compose-readme-marks/SKILL.md",
-      "packageDigest": "sha256:1a6f19a2b74b02643ad7ff804be5c832eabb660a51acf2f2b706a187b843057f"
+      "packageDigest": "sha256:f82426da4dfbfd07f14943ba22b287e59ae923c8c5e1ce4db34ddd101747c8b3",
+      "capability": {
+        "job": "Compose README and docs markdown image embeds (badges, banners, icon rows, stats cards) from public no-key APIs and probe them live.",
+        "outcomeObservable": "Markdown snippets that render live images, with each URL probed to an image content-type 200 and theme choices recorded in source so agents can regenerate them.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "craft-human-agent-language",
       "description": "Write or review any document or prompt that humans and agents both use (README, ADR, update, instruction): frame purpose and audience, structure before prose, plain language, model-agnostic language choice, output contract, and a re-verification gate. Use when asked to write/translate/review a doc or prompt for humans and agents, or to choose the most efficient language and format for a model you are switching.",
       "path": "skills/craft-human-agent-language/SKILL.md",
-      "packageDigest": "sha256:5710f4d3239855af5700c4c6bd464e5a2e8f9ffa3f68c630f5d6350d50144bfd"
+      "packageDigest": "sha256:91ccad43d21fff407ce9cbc922cd80959fd00df2c4b5256f506a33181b232d5a",
+      "capability": {
+        "job": "Write or review a human-agent document or prompt: purpose, audience, structure, plain language, evidence-based language, output contract, re-verification.",
+        "outcomeObservable": "A document or prompt with explicit purpose/audience, structure before prose, plain-language floors, a recorded evidence-based language/format decision, and a re-verification gate that an independent reviewer can rerun.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "craft-product-interface",
       "description": "Craft one product UI flow with states, a11y, verification.",
       "path": "skills/craft-product-interface/SKILL.md",
-      "packageDigest": "sha256:3ebc1c7cd81657d664d9c2560a8a11a516e7520c97e32ecb7b255b4a3aed563e"
+      "packageDigest": "sha256:e375d0e02d3122f1836c3deb5b312965e1688e18859800349496fca6364105c3",
+      "capability": {
+        "job": "Craft one bounded product UI flow with states, accessibility, and verification: direction, build, polish, or review.",
+        "outcomeObservable": "An Interface Craft Pack with a stated direction, covered states and accessibility floors, and rendered verification evidence (screenshots, device checks, tests) for the declared surface or flow.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "craft-telegram-bot-surface",
       "description": "Craft or hard-cut a Telegram bot to the sole 2026 surface model: sparse slash menu, layered keyboards with edit trees, Rich Message only, public vs ephemeral visibility, and bot-to-bot loop guards when multi-bot. Use for any Telegram bot design, implementation, review, command menu, keyboard tree, digest/board, progress UI, group multi-bot, or format path—never MarkdownV2/HTML product text or CLI command sprawl.",
       "path": "skills/craft-telegram-bot-surface/SKILL.md",
-      "packageDigest": "sha256:0a0557f54b4310926e82e6ce94138dfecb4bdaec149c37b38540934e15867841"
+      "packageDigest": "sha256:e4007459fc3f7d239235aec4eef70263ca3414853c5de19a201a35ec9ec11de6",
+      "capability": {
+        "job": "Craft or hard-cut a Telegram bot to the 2026 surface: sparse slash menu, layered keyboard edit trees, Rich Message only, visibility, bot-to-bot guards.",
+        "outcomeObservable": "A Telegram surface with a registered menu within budget, layered edit trees, Rich Message-only product sends verified on the wire, a visibility matrix, bot-to-bot guards where applicable, and legacy formatter/menu paths removed.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "curate-skill-repository",
       "description": "Curate skill portfolio: merge/split, collisions, retirement.",
       "path": "skills/curate-skill-repository/SKILL.md",
-      "packageDigest": "sha256:173c14ba542f83cf635917112749da28ae5f959d455a3ba30d8f45ecdc4d1929"
+      "packageDigest": "sha256:680176c1fa039671733ff606d889de699a380b36091773dc74358dc1ce5e6319",
+      "capability": {
+        "job": "Curate a skill repository portfolio: keep/rewrite/absorb/transfer/investigate/archive decisions with semantic evidence and forward tests.",
+        "outcomeObservable": "A portfolio verdict where every capability decision names a semantic reason, canonical owner, exact content action, and confidence, backed by a false-negative review and a forward-test validation run.",
+        "oracleOwner": "repository"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "decide-architecture-shape",
       "description": "Decide one architecture shape from options with tradeoffs.",
       "path": "skills/decide-architecture-shape/SKILL.md",
-      "packageDigest": "sha256:e3283f7d9a26ae4f49edbed653abbaf623aca672ee4002ef6732d63a368aa61d"
+      "packageDigest": "sha256:d1f01b1fcd3e4c81054dd17835b708e12357017b2f4867613b06b22dd2169f97",
+      "capability": {
+        "job": "Decide one architecture shape from options and drive it through independently verifiable convergence slices with parity proof and cutover.",
+        "outcomeObservable": "A decided shape with each slice carrying exact-candidate parity proof, a cutover that retired obsolete structure at the real lifecycle stage, and a reconciled migration ledger reporting implementation, merge, deployment, and retirement separately.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "deploy-ephemeral-web-preview",
       "description": "Publish a short-lived public web URL for demos or agent proof; record claim/expiry honesty.",
       "path": "skills/deploy-ephemeral-web-preview/SKILL.md",
-      "packageDigest": "sha256:55ea83d9d2dd8bc1225568f78fe6c7be286361b303300e0602236b051af71d9b"
+      "packageDigest": "sha256:ebe4e3443f7d31b0aa7dbfea05215299bb0823ab2cba34481dabef8cc115ca40",
+      "capability": {
+        "job": "Publish a short-lived public web URL for demos or agent proof, with claim and expiry honesty.",
+        "outcomeObservable": "A public URL that responds to verification probes with recorded expiry and claim path, and residuals documented so the user knows the preview is not durable production.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "design-product",
       "description": "Design a product blueprint (app, game, SaaS, etc.); shape depth in references.",
       "path": "skills/design-product/SKILL.md",
-      "packageDigest": "sha256:1fdd20133b43f84c15d3527eec40bbae7cd6e6386434743ab4df8a721657a60f"
+      "packageDigest": "sha256:31a554d938d8a0e65bf2a6d234a53be4ecd9ed58bc9624510fca947ac7e2bee9",
+      "capability": {
+        "job": "Design a product blueprint (app, game, SaaS, or similar) with one deep core concept and build-ready acceptance criteria.",
+        "outcomeObservable": "A product design blueprint with one deep core concept, critical flows and states, named quality tradeoffs with rollback conditions, and acceptance criteria a builder can test.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "design-skill-evals",
       "description": "Design falsifiable skill evals: routing cases, oracles, failures.",
       "path": "skills/design-skill-evals/SKILL.md",
-      "packageDigest": "sha256:870803d0fb2c59b5c9bcd381f36b1a5ccd64f3f71124a93afb840b5e704fdd6e"
+      "packageDigest": "sha256:a121f99d4e4210aa3e4241863b3090a09bb1ea92d686e05948f05fe63c3b7cbf",
+      "capability": {
+        "job": "Design a falsifiable Skill Evaluation Program that can disprove whether an exact skill bundle improves realistic work.",
+        "outcomeObservable": "An independent runner can reproduce the candidate, tasks, outputs, metrics and verdict without trusting the author narrative, and the result is recorded as version-scoped qualification evidence.",
+        "oracleOwner": "repository"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "distill-source-to-skill",
       "description": "Distill docs/repos/notes into one installable Skill package.",
       "path": "skills/distill-source-to-skill/SKILL.md",
-      "packageDigest": "sha256:d1227061dea522ff701518b51707c04de2691bb8784166440a1558b1cc6f6e97"
+      "packageDigest": "sha256:75cf6464fb2309c93660df33fda0ab3f2e7874697e5a83196244a5a55bdb90d6",
+      "capability": {
+        "job": "Distill docs, repos, or notes into one installable Skill package with mechanisms, not summaries.",
+        "outcomeObservable": "A compact installable skill package that runs without the original source, names its evidence boundary, carries output contracts and validation signals, and passes the target repository's structural validation.",
+        "oracleOwner": "repository"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:db72fbe16936ea54f7bae931ddab123bab3792fd5c4d588ad80dd7d587e83d8f"
+      "packageDigest": "sha256:50e7a0a7b79e87087c0c54c47c0a1c7c1a2a23ed44694fa2218082969c311e9b",
+      "capability": {
+        "job": "Drive one accepted multi-phase objective (engineering or product) to its delivery terminal with evidence at the active delivery boundary.",
+        "outcomeObservable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "edit-preserving-voice",
       "description": "Edit text preserving voice, constraints, and factual claims.",
       "path": "skills/edit-preserving-voice/SKILL.md",
-      "packageDigest": "sha256:d90c998c2048327eee9efda2952059cd08f267f62b9e4e11cbe891d3a4e847d5"
+      "packageDigest": "sha256:24817c01d6348f5005bf76a9cc857eab35e4687ca593c4ca75c8b393d3251e75",
+      "capability": {
+        "job": "Edit text preserving voice, constraints, and factual claims as a language-quality layer over the substantive request.",
+        "outcomeObservable": "The delivered text preserves all protected facts and claims, matches the supported voice constraints, and contains no unsupported additions, omissions, or certainty shifts.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "engineer-agent-context",
       "description": "Engineer agent context packs: load rules, budgets, refresh.",
       "path": "skills/engineer-agent-context/SKILL.md",
-      "packageDigest": "sha256:4fbcda62240c5e60ae9a6516202f88a40c5ac8544e80b46b16b6de6d338a3129"
+      "packageDigest": "sha256:eb24091f328d4ef5710e2a7c75c76ea2ecec5f4ff109e64a23077add51307c9d",
+      "capability": {
+        "job": "Engineer a Context and Memory Contract that bounds what agents load, with budgets, freshness, and invalidation.",
+        "outcomeObservable": "A Context and Memory Contract where every information class has an owner and authority order, budgets are explicit, invalidation and deletion rules work, and adversarial and degradation tests pass.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "engineer-testable-requirements",
       "description": "Turn requirements into testable acceptance criteria with oracles.",
       "path": "skills/engineer-testable-requirements/SKILL.md",
-      "packageDigest": "sha256:f357895a4d807114321a4e9b4fac029e3c3a6b28ecafc8b8314a446e56c38a38"
+      "packageDigest": "sha256:37a9e975676ad5e59380c1199ae3000bb9eeacee3956375ba870004f4e95e142",
+      "capability": {
+        "job": "Turn requirements into testable acceptance criteria with oracles, traceability, and change authority.",
+        "outcomeObservable": "A Requirements Contract where each accepted requirement has an oracle and success boundary, traces to a source need and forward artifacts, and changes require impact analysis and supersession under a named authority.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "execute-hard-cutover",
       "description": "Hard-cut predecessor to destination sole writer; retire dual paths.",
       "path": "skills/execute-hard-cutover/SKILL.md",
-      "packageDigest": "sha256:47573f2691e6195b15b0c64de67d25f275625ee2a233868de8fd8260c0a0fe55"
+      "packageDigest": "sha256:0b8ba9a4893f7272994b312d669c2c13aad727ca043062a735fa22bdbb973303",
+      "capability": {
+        "job": "Hard-cut a predecessor to a destination sole writer and retire dual paths with backfill and proof.",
+        "outcomeObservable": "The destination is the sole writer for the named surface under real checks, the predecessor is retired or time-boxed with kill criteria, and backfill, cut, and residual evidence are recorded.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "expand-product",
       "description": "Scale a validated product core with metrics and core-path proof.",
       "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:856c117520527b1652384875ea80b3d3345e7e34c70bfad6ed87952480283286"
+      "packageDigest": "sha256:ab7ea3c0ee74a16f6f6df94993814dba5a18aa38d70bbe0f015cedc7576f1333",
+      "capability": {
+        "job": "Scale a validated product core with a measured ×N metric, core-path non-regression proof, and recorded new burden.",
+        "outcomeObservable": "The ×N metric moved or is externally blocked with evidence, the core journey still holds, and the new maintain/finish burden is written down.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "finish-product",
       "description": "Finish/deburr an integrated product with re-captured evidence.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:da6ba0d9fa7b6da5220b941201407251057deddff6badfe9556f3b6138a930bc"
+      "packageDigest": "sha256:9d9b97c5956feb69e1b657964326569382f793248714aef2262f2cbbce58569a",
+      "capability": {
+        "job": "Finish and deburr an integrated product to its declared target with re-captured render, play, regression, and delivery evidence.",
+        "outcomeObservable": "The product reaches its declared finish target with re-captured render or playthrough evidence, regression and budget checks, and a blocker list that names remaining delivery state truthfully.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "forecast-with-calibration",
       "description": "Produce calibrated probabilistic forecasts with base rates and ranges.",
       "path": "skills/forecast-with-calibration/SKILL.md",
-      "packageDigest": "sha256:2b203f9c585a8a217ee8f41535381670234f9e783cf06dab23d076762b9adefc"
+      "packageDigest": "sha256:242a930d7fa9e229df32afcbbdd92c67e71c858c62b7de0d3848c5c3950a8b24",
+      "capability": {
+        "job": "Produce calibrated probabilistic forecasts with resolvable question contracts, base rates, transparent aggregation, and proper scoring.",
+        "outcomeObservable": "A Probabilistic Forecast Record with a resolvable question contract, base-rate anchored probability or distribution, transparent history, and a proper-score resolution an independent scorer can reproduce.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "maintain-product",
       "description": "Cut live/regression harm with root-cause fix and oracle.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:8560d53c101e324c7620c0ae5f1cdce485a5ad22ca831ba00a7ec8ab8cf51a6e"
+      "packageDigest": "sha256:94fbdd79ab088037f35deb723d923bc935fd89dc7e9474cf7a9b4217219e31bd",
+      "capability": {
+        "job": "Cut live or regression harm with a root-cause fix on the owning layer and an oracle proving harm reduction.",
+        "outcomeObservable": "The failing oracle reruns green or harm measurably reduces, reproduction is closed or owned, and the touched path shows no obvious new regression.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "model-security-threats",
       "description": "Model security threats for a trust boundary before implementation.",
       "path": "skills/model-security-threats/SKILL.md",
-      "packageDigest": "sha256:50315effedac2d541358e455f34346a26646082780b9c11164bc18e6eaf9e859"
+      "packageDigest": "sha256:3e9d384de05cee3271f9f78580bae0de7cce5bf21ecb3518c30223c828c00425",
+      "capability": {
+        "job": "Model security threats for a trust boundary before implementation and produce a Threat Model and Security Design Contract.",
+        "outcomeObservable": "A Threat Model and Security Design Contract linking system elements to credible threats, controls with enforcement points and owners, falsifiable verification, and owned residual risk with review triggers.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "operate-customer-support",
       "description": "Operate customer support: triage, resolution, escalation, quality loops.",
       "path": "skills/operate-customer-support/SKILL.md",
-      "packageDigest": "sha256:f467bcd91c81cb176ecd3bb72ff6773f948c88cbbef8bc063fd0a3f6b2e993e6"
+      "packageDigest": "sha256:d5d6845ee0119ed19832866049aadd6d00a5439c5699be250b9b06e8d45411d6",
+      "capability": {
+        "job": "Operate customer support: triage, resolution, escalation, quality loops, with grounded responses and verified resolution.",
+        "outcomeObservable": "A Support Operating Model where every material contact reason has a trustworthy source, evidence contract, route, authority, timer, safe action, verification, appeal/reopen behavior, metric, and product-feedback owner, with degrade/stop/recover paths.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "optimize-decision-model",
       "description": "Model a decision for optimization: objective, constraints, sensitivity.",
       "path": "skills/optimize-decision-model/SKILL.md",
-      "packageDigest": "sha256:10a2c104a0caddaf59b73462911cf235ef628c7664d90613711ef66eec26413e"
+      "packageDigest": "sha256:b36a4111bfb91f242465e1cad087696fc2e2456d729ff6977de010b2a2cd2ad3",
+      "capability": {
+        "job": "Model a decision for optimization: objective, constraints, sensitivity, with independently checkable recommended solutions.",
+        "outcomeObservable": "A Constrained Decision Model whose recommended solution an independent checker can recompute, with feasibility evidence, solver record, sensitivity analysis, and a robust operating policy with fallback and re-solve triggers.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "optimize-store-listing",
       "description": "Optimize store listing: metadata, creatives, conversion, compliance.",
       "path": "skills/optimize-store-listing/SKILL.md",
-      "packageDigest": "sha256:5681f0207ec70aeb50308dc537ed357d5001ebbb4b6b6f5c0668659ba9c76b76"
+      "packageDigest": "sha256:121fd213b269cc196f7bb482539730c433724cfe6e7f7121ef53c79df7efdf86",
+      "capability": {
+        "job": "Optimize store listing: metadata, creatives, localization, conversion experiment, compliance, with exact-channel revisions.",
+        "outcomeObservable": "A Channel Listing and Creative Sequence where every claim maps to exact shipped behavior, assets pass channel QA by digest, localization is native-QA'd, and conversion gains survive trust and retention countermetrics with live readback.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "price-saas-subscription",
       "description": "Price a SaaS subscription: packaging, meters, fences, migration.",
       "path": "skills/price-saas-subscription/SKILL.md",
-      "packageDigest": "sha256:49cf0a354a9050bd7d5787a02e45b317b747bf8acd8081f950a962bcff487342"
+      "packageDigest": "sha256:e432048525adfd228cd0da8611c804d619adcb1047814b1f227861da147d6a98",
+      "capability": {
+        "job": "Price a SaaS subscription: packaging, meters, fences, migration, with internally consistent pricing arithmetic.",
+        "outcomeObservable": "A Pricing and Packaging Decision with an internally consistent arithmetic pass, named value metric and plan boundaries, margin guardrails, and a bounded rollout plan with kill criteria.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "produce-game-2d-map-assets",
       "description": "Produce 2D map tiles/props packs with extract/preview.",
       "path": "skills/produce-game-2d-map-assets/SKILL.md",
-      "packageDigest": "sha256:634a8e9c284502f6fd61747ce93bb34f16d70099d095f37999f099edfdc7e54c"
+      "packageDigest": "sha256:c5a704c01e8f2adce074ff65985ad333e929448d1130e9f7570e45a1f1f54acb",
+      "capability": {
+        "job": "Produce 2D map tiles, terrain sheets, and prop packs with extraction, layering, and seam QC.",
+        "outcomeObservable": "Tile or prop packs at the declared title paths with real seam composites, alpha-edge and naming QC notes, preview images, and an honest residual list.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "produce-game-2d-sprites",
       "description": "Produce engine-ready 2D game sprites/sheets with QC.",
       "path": "skills/produce-game-2d-sprites/SKILL.md",
-      "packageDigest": "sha256:5fe2adb27813ee6b80c4240961f36340ebb72d5b494302e340f7e0c75171db72"
+      "packageDigest": "sha256:8bfd4de828ac5973b95f08a99aa1c97296c14b662468bec91c1296430dd216c9",
+      "capability": {
+        "job": "Produce engine-ready 2D game sprites and animation sheets with QC: chroma, loop, scale consistency, naming.",
+        "outcomeObservable": "Engine-ready sprite or sheet files at declared title paths with manifest, QC evidence (chroma, loop flip test, scale consistency), and an honest residual and tool-gap list.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "produce-product-assets",
       "description": "Produce product assets to brief and brand constraints.",
       "path": "skills/produce-product-assets/SKILL.md",
-      "packageDigest": "sha256:50f8622be3b15fe476cc54135dc438f09985e73e7d899e8edd43a8b50709d419"
+      "packageDigest": "sha256:e7e7e6cff5cad3ef64e095c50a47cc9c7b71ff31ce06f387a48ad085097bb8f6",
+      "capability": {
+        "job": "Produce product assets to brief and brand constraints: one reproducible Product Asset Production Pack with provenance and exact-file QA.",
+        "outcomeObservable": "A Product Asset Production Pack whose finished files match the approved brief and brand constraints, pass exact-file QA against current official requirements, carry rights and provenance, and include an honest residual list.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "prototype-product",
       "description": "Run a cheap real prototype with kill/continue criteria.",
       "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:e73f09cc9e1ddbd36e6180e85a7ff2a8c6f34108858f56310427c5c2f8305dc0"
+      "packageDigest": "sha256:e628dd55eee7c9f1e5f83250ded5796e05a8cac13c459564e6c1297a3b6db349",
+      "capability": {
+        "job": "Run a cheap real prototype with explicit hypothesis, probe, evidence, and go/kill/pivot decision.",
+        "outcomeObservable": "A real probe ran (or a concrete external blocker is named) and a written go, kill, pivot, or next-probe decision with evidence pointers was produced.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "provision-agent-workspace",
       "description": "Provision an agent filesystem and shell workspace with isolation and free-boundary honesty.",
       "path": "skills/provision-agent-workspace/SKILL.md",
-      "packageDigest": "sha256:69cb8a1056bb5c2cefa95bc278a416a551d0fa44f5f3a947c26056bab2e6e36f"
+      "packageDigest": "sha256:6b909d92e1a996c0a1c02ca41d9d5d8e71037af3f882547e24f2116b1660a54a",
+      "capability": {
+        "job": "Provision an agent filesystem and shell workspace with isolation class matched to risk and free-boundary honesty.",
+        "outcomeObservable": "A provisioned workspace with documented handle, filesystem and exec canary proofs, stated isolation class and free boundaries, and reap or TTL policy with residual risks.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "record-structured-deliberation",
       "description": "Record a structured deliberation: options, criteria, decision, actions.",
       "path": "skills/record-structured-deliberation/SKILL.md",
-      "packageDigest": "sha256:5651302c00c685311036e35c21fe3e8c7c4ac85a285f5fedfbb263da66c6912d"
+      "packageDigest": "sha256:93435bef2c8b0b375fc7fe5eb79c4d36de1a71bf2201da8294498558dfab41b2",
+      "capability": {
+        "job": "Record a structured deliberation: options, criteria, decision, actions, preserving genuine alternatives and dissent.",
+        "outcomeObservable": "A Deliberation Record preserving genuine alternatives, linked arguments, position changes with reasons, residual dissent, commitments and owners, and a handoff to a decision, experiment, or work item.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "remediate-agent-harness",
       "description": "Remediate an agent harness with measured deltas and failure modes.",
       "path": "skills/remediate-agent-harness/SKILL.md",
-      "packageDigest": "sha256:96dacc684d11d127f16e8451c969f4a8ba2009f574f1a04ac981e47687b118cd"
+      "packageDigest": "sha256:a32a009e54337f7daf2cdc0664c9afa9ad4183c1f09ce2f6ba96d611ecbb2626",
+      "capability": {
+        "job": "Remediate an agent harness with measured deltas: baseline, countermetrics, promotion threshold, and failure modes.",
+        "outcomeObservable": "A Learning Change Record where the intervention is deployed at the owning layer, measured against a frozen baseline with countermetrics and critical failures, and promoted, revised, or reverted with rollback and a monitored recurrence signal.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "remediate-frontend-performance",
       "description": "Remediate frontend performance with before/after path metrics.",
       "path": "skills/remediate-frontend-performance/SKILL.md",
-      "packageDigest": "sha256:ecf02f2795faedd9eaca57e8eb16dea9be2d21dc2bdff4f58f19b72144d3b8ca"
+      "packageDigest": "sha256:a72e5a9f7cc72c031322710482ccc0868991ddb3b77454a323ef875202455cef",
+      "capability": {
+        "job": "Remediate frontend performance with before and after path metrics: LCP, INP, FPS, bundle KB, long task ms.",
+        "outcomeObservable": "The framed path re-measures with deltas against baseline using the repo's real tooling, and the run stops when the metric meets the target or only external blockers remain.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "research-public-web",
       "description": "Research the public web without paid SERP keys; cite sources and record adapter gaps.",
       "path": "skills/research-public-web/SKILL.md",
-      "packageDigest": "sha256:f616f0549d548b97f77fb08123a78b304247e41407ec1477750b904eb11b916d"
+      "packageDigest": "sha256:03570db763b678c38c9bf43c7af24936077b8dc009d5ab89467d175c832172f3",
+      "capability": {
+        "job": "Research the public web without paid SERP keys; cite sources and record adapter gaps.",
+        "outcomeObservable": "A decision-ready answer (or explicit blocked) with cited sources, retrieved times, labeled free versus paid paths, and an honest gap list an independent researcher can re-fetch.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "research-user-needs",
       "description": "Research user needs: jobs, evidence, segments, opportunity ranking.",
       "path": "skills/research-user-needs/SKILL.md",
-      "packageDigest": "sha256:26fa3c1e1fa43d3ea0bdb408dd5d11bda3cafec196fedf98bf5d04996bf09181"
+      "packageDigest": "sha256:b6e513eeffebc0d55e24b0753abc191a600f16ce4b9b5102637917876aef35aa",
+      "capability": {
+        "job": "Research user needs: jobs, evidence, segments, opportunity ranking, with traceable findings and non-claims.",
+        "outcomeObservable": "A User Research Protocol and Findings with a session ledger, supporting and disconfirming observations, coverage limits, confidence, and non-claims that a decision owner can act on.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "review-domain",
       "description": "Review a product/ops domain into one assessment; domain packs are references.",
       "path": "skills/review-domain/SKILL.md",
-      "packageDigest": "sha256:7e43327b09220ffa62bd9a2472193e3b1b5de6cac3514e4a7985cb8decf33846"
+      "packageDigest": "sha256:18bae74c6395f3db6b20e9a80aebe228777ead8ea5ca494eb30fa5c9afd67fdf",
+      "capability": {
+        "job": "Review a product or ops domain into one assessment record with severity-ranked findings and recommended actions.",
+        "outcomeObservable": "One domain review record with severity-ranked findings, residuals, and recommended actions that a decision owner can act on, produced from one matching domain pack.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "run-incident-response",
       "description": "Run production incident response to mitigation and learning.",
       "path": "skills/run-incident-response/SKILL.md",
-      "packageDigest": "sha256:18cc8f4b05fe0f886184ac90354e0cf176310e5d2292bc132db0cae10e5b7474"
+      "packageDigest": "sha256:e4cc59e82010a33a1233b4dfa15f79fa0c33d5dead546f75f4adfea30e672619",
+      "capability": {
+        "job": "Run production incident response to mitigation and truthful close: declare, stabilize, communicate, diagnose, resolve, learn.",
+        "outcomeObservable": "An incident record with mitigation evidence, facts-only stakeholder communications, an owning-cause fix or permanent mitigation, and a postmortem with action items and owners.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "run-open-product-betterment",
       "description": "Run open product betterment: scout high-EV work, land, re-measure.",
       "path": "skills/run-open-product-betterment/SKILL.md",
-      "packageDigest": "sha256:649f02c20b755151082aa86d1c0be5a5e4fdd7b455427c2eb925b1a13a1e5181"
+      "packageDigest": "sha256:6294c1e9a9b82af91925497c8fc58f9bd2205554065c13084a43a467a696d85b",
+      "capability": {
+        "job": "Run open product betterment: scout high-EV work, land the full batch, re-measure until the high-value frontier is empty.",
+        "outcomeObservable": "A standing betterment cycle lands every material unblocked high-EV item in complete revert-safe batches with original-oracle verification, and completes only after a fresh scout shows an empty high-value frontier or named evidence parks.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "run-product-feedback-loop",
       "description": "Run product feedback learning loop: private feedback and public reviews.",
       "path": "skills/run-product-feedback-loop/SKILL.md",
-      "packageDigest": "sha256:eca64867afb9f0fe84dbcae95a0a057f41eee013f492967e5dd6b24d19a58abf"
+      "packageDigest": "sha256:7c29477608dd63c2b447d2b2e9d2da7c9fc3a2ad144ca2cf5a9ef62960245306",
+      "capability": {
+        "job": "Run product feedback learning loop: private feedback and public reviews into source-preserving evidence, safe routing, validated action, truthful updates.",
+        "outcomeObservable": "Feedback and review signals become source-preserving evidence clusters with validated product actions, immediate routing of urgent signals, and truthful customer updates, with two independent artifacts for combined private and public review flows.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "select-dependency-versions",
       "description": "Select package/runtime versions from live authoritative sources.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:28c9db01fcbc6d01fa9bec5f633dbb5d1eabdcb673a5e73e63f53d03c17e8f29"
+      "packageDigest": "sha256:d30ab2777203cfe68fc9eb82f42f619667378b84dafc016687b47560f2dea4e0",
+      "capability": {
+        "job": "Select package and runtime versions from live authoritative sources with exact versions, sources, and applied pins.",
+        "outcomeObservable": "Selected versions trace to a live registry or release API with the exact source recorded, pins are applied in owning manifests, and the repo's install, build, and tests pass or residuals are explicit.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "select-next-work",
       "description": "Select/claim next high-value Work from evidence under WIP limits.",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:b158d73abde576db5cfa9991bc99c8a07aad66d999d23bb856d1023d6e8cf6ec"
+      "packageDigest": "sha256:fe13e5896ec580f137ec2c75f355dee8e8a4165aaaeead9d870e8ff0930e9bff",
+      "capability": {
+        "job": "Select and claim the next high-value Work from evidence under WIP limits: one tick, bounded outcome, compact report.",
+        "outcomeObservable": "A bounded tick report that selects and claims the next positive-net Work under WIP limits, with durable claim or checkpoint effects recorded where authority surfaces exist.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "share-ephemeral-artifact",
       "description": "Share a non-secret file or log via short-lived public URL with retention and ToS limits.",
       "path": "skills/share-ephemeral-artifact/SKILL.md",
-      "packageDigest": "sha256:5433c94a96462010d100950187707725bd4cb339b0e13da1e30a1722a2c06009"
+      "packageDigest": "sha256:d4d11d0834f21a7639f7e0374d87da7eb30e61f5cfbd90fd1d0c19b34f4c43aa",
+      "capability": {
+        "job": "Share a non-secret file or log via short-lived public URL with retention and ToS limits.",
+        "outcomeObservable": "A short-lived public URL serving the scrubbed artifact with recorded retention, a verified GET, an explicit non-secret statement, and the provider reliability residual stated.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "synthesize-evidence-brief",
       "description": "Synthesize multi-source evidence into one bounded brief with residuals.",
       "path": "skills/synthesize-evidence-brief/SKILL.md",
-      "packageDigest": "sha256:4c9ec032b94e913e47acab3a50e06ce621a845b1de39b0fed2c6f72458de6c08"
+      "packageDigest": "sha256:4d71ffd122f72320db5f5d9c42eb4bf0641cff7b7a578101f9c83df81d0e38c0",
+      "capability": {
+        "job": "Synthesize multi-source evidence into one bounded, auditable Evidence Synthesis with residuals.",
+        "outcomeObservable": "An Evidence Synthesis whose coverage, exclusions, conflicts, and certainty can be audited and reproduced from the search log and evidence table, with an explicit claim boundary and update triggers.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "synthesize-market-research",
       "description": "Synthesize market research: segments, competitors, demand, implications.",
       "path": "skills/synthesize-market-research/SKILL.md",
-      "packageDigest": "sha256:38cc40ee91ad15207031454f3d747d59875123ff81202111a3382cb8425a57be"
+      "packageDigest": "sha256:c19516d96f5b8337061af85c61a613ffe5eccc5334558320984d2beb9c52d55b",
+      "capability": {
+        "job": "Synthesize market research: segments, competitors, demand, implications, with a traceable source ledger.",
+        "outcomeObservable": "A decision-ready market synthesis where every recommendation links to supporting and contradicting ledger entries, includes counterevidence, and names the smallest next validation that could overturn it.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "verify-local-web-preview",
       "description": "Verify local web/game preview: load, screenshot, console gate.",
       "path": "skills/verify-local-web-preview/SKILL.md",
-      "packageDigest": "sha256:7d42f2e004b028c32c73822aaaae7c085da88de54fad2afefcfcc4f75d9cd679"
+      "packageDigest": "sha256:0e9ee31669643fc94be5889424841ad3dbb7e1365c37d892b998c30ee57b7d74",
+      "capability": {
+        "job": "Verify local web or game preview: load, screenshot, console gate, with fail-closed page-error checks.",
+        "outcomeObservable": "A recorded preview load with screenshot or explicit tool-gap, a fail-closed console gate result, and a human-facing summary that makes no false production claims.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "wire-managed-backend-services",
       "description": "Wire managed backend capabilities via maintained BaaS candidates with auth and quota honesty.",
       "path": "skills/wire-managed-backend-services/SKILL.md",
-      "packageDigest": "sha256:a59b5735c4148415bad79e7431e6e8f02c74cae8c15febf594c38cf7318fe10f"
+      "packageDigest": "sha256:cc0c9f5a5d1adbcdb2c4c1ab9a8867ce7e36844ab6527b5b6187c2f2c36a10da",
+      "capability": {
+        "job": "Wire managed backend capabilities via maintained BaaS candidates with auth, quota, and behavioral-proof honesty.",
+        "outcomeObservable": "Managed backend capabilities wired end-to-end with documented auth planes and at least one behavioral proof per capability, plus an honest gap list for unshipped services, plan limits, or missing tokens.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "write-high-signal-update",
       "description": "Write short high-signal output: answer-first replies/updates, decisions, risks, asks.",
       "path": "skills/write-high-signal-update/SKILL.md",
-      "packageDigest": "sha256:0834eb9f05bc3ad0c94967cea3b5c7430a81745dc12acfe213d1d61d08c983db"
+      "packageDigest": "sha256:2ad3b2380c1723892cbe67e24468d69326c5e393182fe8b72af5c9d31bfc3f18",
+      "capability": {
+        "job": "Write short high-signal output: answer-first replies and updates, decisions, risks, asks.",
+        "outcomeObservable": "A short update ready to send where the decision or outcome comes first, facts carry sources, risks name owners and dates, and the ask is explicit.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     }
   ]
 }

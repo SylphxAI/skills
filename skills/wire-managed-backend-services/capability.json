@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "name": "wire-managed-backend-services",
+  "job": "Wire managed backend capabilities via maintained BaaS candidates with auth, quota, and behavioral-proof honesty.",
+  "boundaries": {
+    "inScope": [
+      "Naming required capabilities as jobs",
+      "Mapping jobs to shipped services",
+      "Authenticating on the correct management or runtime plane",
+      "Wiring one capability end-to-end with write-then-read proof"
+    ],
+    "outOfScope": [
+      "Unmaintained free MCP backend plugins as production authority",
+      "Health 200 as behavioral proof",
+      "Routing production secrets through ephemeral paste hosts"
+    ]
+  },
+  "inputs": [
+    "Required capabilities: auth, KV, storage, email, realtime, sandbox, flags",
+    "BaaS candidate matrix and quota classes",
+    "Machine tokens or SDK keys"
+  ],
+  "outputs": [
+    "Capability list mapped to services",
+    "End-to-end behavioral proof per wired capability",
+    "Gaps: unshipped services, plan limits, missing tokens"
+  ],
+  "required": {
+    "tools": [
+      "BaaS CLI or SDK"
+    ],
+    "data": [],
+    "permissions": [
+      "provisioned operator or runtime tokens"
+    ]
+  },
+  "failureSemantics": "Preview or unshipped services fail closed and are never faked; every wired capability needs a real postcondition proof (object exists, session issued, sandbox exec returns, email accepted, flag evaluates).",
+  "outcome": {
+    "observable": "Managed backend capabilities wired end-to-end with documented auth planes and at least one behavioral proof per capability, plus an honest gap list for unshipped services, plan limits, or missing tokens.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

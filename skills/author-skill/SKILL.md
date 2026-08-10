@@ -18,7 +18,9 @@ Hosts differ: some rank a small metadata listing; others (including RAG-style di
 
 ## What a skill is
 
-A **Skill** is one **requestable job** with a specialized procedure and an acceptably complete outcome.
+A **Skill** is one **requestable job** with a specialized procedure, an
+acceptably complete outcome, and a machine-readable capability contract
+(`capability.json`) plus an honest qualification record (`qualification.json`).
 
 Examples of the *kind* of listing skill:
 
@@ -88,11 +90,19 @@ READMEs link it instead of restating it.
 ```text
 skill-id/
   SKILL.md              # required
+  capability.json       # required capability contract (job, boundaries, inputs/outputs, required, failure semantics, outcome)
+  qualification.json    # required qualification record (honest `unqualified` default)
   agents/openai.yaml    # display metadata (this repo)
   references/           # optional depth
   scripts/              # optional deterministic helpers
   assets/               # optional templates
 ```
+
+Every listing is a **capability**: `capability.json` follows
+`schemas/capability-contract.schema.json`; `qualification.json` follows
+`schemas/qualification-record.schema.json`. `unqualified` is the honest
+default — never claim qualification without version-scoped, expiring evidence
+filed per `docs/QUALIFICATION.md` and `design-skill-evals`.
 
 - `skill-id`: lowercase kebab; prefer verb-led action names
 - Frontmatter: only `name` (matches folder) and `description`

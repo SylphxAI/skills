@@ -30,6 +30,10 @@ export function parseFrontmatter(markdown, file = 'SKILL.md') {
   return { values, keys };
 }
 
+export function readJson(file) {
+  return JSON.parse(readFileSync(file, 'utf8'));
+}
+
 export function buildCatalog(root = repositoryRoot) {
   const skillsRoot = path.join(root, 'skills');
   const entries = readdirSync(skillsRoot, { withFileTypes: true });
@@ -43,19 +47,45 @@ export function buildCatalog(root = repositoryRoot) {
     const absolutePath = path.join(root, relativePath);
     if (!existsSync(absolutePath)) throw new Error(`${relativePath}: missing`);
     const { values } = parseFrontmatter(readFileSync(absolutePath, 'utf8'), relativePath);
+
+    // Every listing package is a capability: it must carry a contract and a
+    // qualification record. The catalog only projects package-declared facts.
+    const contractPath = `skills/${folder}/capability.json`;
+    const qualificationPath = `skills/${folder}/qualification.json`;
+    if (!existsSync(path.join(root, contractPath))) throw new Error(`${contractPath}: missing`);
+    if (!existsSync(path.join(root, qualificationPath))) throw new Error(`${qualificationPath}: missing`);
+    const contract = readJson(path.join(root, contractPath));
+    const qualification = readJson(path.join(root, qualificationPath));
+    if (contract.name !== folder) throw new Error(`${contractPath}: name must match folder`);
+    if (qualification.name !== folder) throw new Error(`${qualificationPath}: name must match folder`);
+
     const skill = {
       name: values.name,
       description: values.description,
       path: relativePath,
       packageDigest: packageDigest(path.join(root, 'skills', folder)),
+      capability: {
+        job: contract.job,
+        outcomeObservable: contract.outcome.observable,
+        oracleOwner: contract.outcome.oracleOwner,
+      },
+      qualified: qualification.status === 'qualified',
+      qualificationStatus: qualification.status,
     };
     return skill;
   });
+
+  const qualifiedNames = skills.filter((skill) => skill.qualified).map((skill) => skill.name).sort();
 
   return {
     schemaVersion: 1,
     source: 'skills/*/SKILL.md',
     count: skills.length,
+    qualification: {
+      total: skills.length,
+      qualified: qualifiedNames.length,
+      qualifiedNames,
+    },
     skills,
   };
 }
@@ -73,11 +103,17 @@ function main() {
       console.error('catalog.json is stale; run npm run build:catalog');
       process.exit(1);
     }
-    console.log(`catalog.json is current (${buildCatalog().count} skills)`);
+    const catalog = buildCatalog();
+    console.log(
+      `catalog.json is current (${catalog.count} capabilities, ${catalog.qualification.qualified}/${catalog.qualification.total} qualified)`,
+    );
     return;
   }
   writeFileSync(output, next);
-  console.log(`wrote catalog.json (${buildCatalog().count} skills)`);
+  const catalog = buildCatalog();
+  console.log(
+    `wrote catalog.json (${catalog.count} capabilities, ${catalog.qualification.qualified}/${catalog.qualification.total} qualified)`,
+  );
 }
 
 if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) main();

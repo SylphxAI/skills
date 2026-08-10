@@ -27,7 +27,7 @@ import {
   legacyAgentsProjectionReadback,
   retireLegacyAgentsProjection,
 } from '../runtime/legacy-agents-projection.mjs';
-import { mergeAutoSyncAgents } from '../runtime/sylphx-skills.mjs';
+import { mergeAutoSyncAgents, qualificationRegressions } from '../runtime/sylphx-skills.mjs';
 import {
   applyConstitutionPlan,
   CONSTITUTION_END,
@@ -512,6 +512,55 @@ test('agent install converges native Skills and managed constitutions without ow
   }
 });
 
+test('install is static reconciliation only: AutoSync stays disabled and status projects qualification', () => {
+  const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-install-static-'));
+  const codexHome = path.join(sandbox, '.codex');
+  const environment = {
+    SYLPHX_SKILLS_HOME: sandbox,
+    CODEX_HOME: codexHome,
+    CLAUDE_CONFIG_DIR: path.join(sandbox, '.claude'),
+    GROK_HOME: path.join(sandbox, '.grok'),
+  };
+  try {
+    mkdirSync(codexHome, { recursive: true });
+    writeFileSync(path.join(codexHome, 'AGENTS.md'), '# Local runtime note\n\nPreserve this text.\n');
+
+    runWithEnvironment(['install', '--agent', 'codex', '--quiet'], environment);
+
+    // The documented contract: install is static; it never creates schedulers.
+    const autoSync = JSON.parse(
+      runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout,
+    );
+    assert.equal(autoSync.configured, false);
+    assert.equal(autoSync.enabled, false);
+
+    // status projects the catalog's qualification state per installed target.
+    const installed = JSON.parse(runWithEnvironment(['status', '--agent', 'codex', '--json'], environment).stdout);
+    assert.equal(installed.targets[0].current, true);
+    assert.deepEqual(installed.targets[0].qualification, {
+      total: catalog.qualification.total,
+      qualified: catalog.qualification.qualified,
+      installedQualifiedNames: [],
+    });
+    const manifest = JSON.parse(readFileSync(path.join(installed.targets[0].path, '.sylphx-skills.json'), 'utf8'));
+    assert.deepEqual(manifest.qualifiedNames, catalog.qualification.qualifiedNames);
+    assert.deepEqual(manifest.qualification, {
+      total: catalog.qualification.total,
+      qualified: catalog.qualification.qualified,
+    });
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('qualification promotion gate detects qualified-to-unqualified downgrades', () => {
+  assert.deepEqual(qualificationRegressions(['a', 'b'], ['a', 'b', 'c']), []);
+  assert.deepEqual(qualificationRegressions(['a', 'b'], ['a']), ['b']);
+  assert.deepEqual(qualificationRegressions(['a', 'b'], []), ['a', 'b']);
+  assert.deepEqual(qualificationRegressions(undefined, ['a']), []);
+  assert.deepEqual(qualificationRegressions(['a'], ['a']), []);
+});
+
 test('agent install safely retires recognized instruction projections and preserves local notes', () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-retired-instruction-'));
   const codexHome = path.join(sandbox, '.codex');
@@ -815,11 +864,23 @@ function writeFixtureCatalog(source, names) {
     description: `Use for the ${name} transaction fixture.`,
     path: `skills/${name}/SKILL.md`,
     packageDigest: packageDigest(path.join(source, 'skills', name)),
+    capability: {
+      job: `Run the ${name} fixture job.`,
+      outcomeObservable: `Fixture ${name} outcome satisfies its contract.`,
+      oracleOwner: 'user-system',
+    },
+    qualified: false,
+    qualificationStatus: 'unqualified',
   }));
   writeFileSync(path.join(source, 'catalog.json'), `${JSON.stringify({
     schemaVersion: 1,
     source: 'skills/*/SKILL.md',
     count: skills.length,
+    qualification: {
+      total: skills.length,
+      qualified: 0,
+      qualifiedNames: [],
+    },
     skills,
   }, null, 2)}\n`);
 }

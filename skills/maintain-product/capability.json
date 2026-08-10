@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "name": "maintain-product",
+  "job": "Cut live or regression harm with a root-cause fix on the owning layer and an oracle proving harm reduction.",
+  "boundaries": {
+    "inScope": [
+      "Framing symptom, severity, audience, and health signal",
+      "Reproducing and bisecting to root cause",
+      "Fixing cause on the owning layer with regression locks",
+      "Verifying oracle green or reduced harm"
+    ],
+    "outOfScope": [
+      "Feature expansion or visual redesign without a harm link",
+      "Papering over shared floors in the wrong layer",
+      "Unrelated refactors or improve-everything polish"
+    ]
+  },
+  "inputs": [
+    "Live or regression symptom with severity and audience",
+    "Logs, tests, live smoke, and reports",
+    "Health signal that must improve this cycle"
+  ],
+  "outputs": [
+    "Root-cause fix with regression test or smoke where automatable",
+    "Oracle rerun showing green or reduced harm",
+    "Residual risk and structural follow-ups"
+  ],
+  "required": {
+    "tools": [
+      "reproduction and live-verification tooling"
+    ],
+    "data": [
+      "evidence: logs, tests, live smoke, reports"
+    ],
+    "permissions": [
+      "delivery access on the owning layer"
+    ]
+  },
+  "failureSemantics": "The cycle is not done until the framed harm is fixed or mitigated with evidence, reproduction is closed or a residual owner is named, and no obvious new regression appears on the touched path.",
+  "outcome": {
+    "observable": "The failing oracle reruns green or harm measurably reduces, reproduction is closed or owned, and the touched path shows no obvious new regression.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

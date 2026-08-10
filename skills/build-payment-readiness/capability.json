@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "name": "build-payment-readiness",
+  "job": "Build production payments: providers, ledger, webhooks, entitlement projection, reconciliation, and finance close.",
+  "boundaries": {
+    "inScope": [
+      "Provider authority and readback for confirmations, refunds, disputes, chargebacks",
+      "Idempotent ledger ingestion and entitlement projection",
+      "Settlement, reconciliation, finance close, and rollback controls",
+      "Webhook outage ingestion, replay, and dead-letter handling"
+    ],
+    "outOfScope": [
+      "Customer messaging, grace, repayment, and account consequences (refund-and-support-flow)",
+      "Customer punishment or commerce-restriction policy",
+      "Granting durable value from client-only confirmation"
+    ]
+  },
+  "inputs": [
+    "Payment channel, product type, and billing model",
+    "Provider identifiers, catalog mapping, and entitlement semantics",
+    "Refund/dispute policy, settlement/fee model, and reconciliation owner"
+  ],
+  "outputs": [
+    "Payment state model, ledger schema, and event precedence rules",
+    "Reconciliation plan with numeric tolerances, owners, and close blockers",
+    "Release gates with fixture, dashboard/alert, rollback path, and approval evidence"
+  ],
+  "required": {
+    "tools": [
+      "provider sandbox and live testing environments"
+    ],
+    "data": [
+      "current official provider, tax, and platform requirements"
+    ],
+    "permissions": [
+      "provider API credentials owned by the payment operator"
+    ]
+  },
+  "failureSemantics": "No durable value from client-only confirmation; corrective ledger events append and replay rather than silently editing entitlements; payments never ship without fee, tax, settlement, invoice, refund, dispute, and entitlement reconciliation evidence.",
+  "outcome": {
+    "observable": "Payments, entitlements, and refunds reconcile against provider truth with replayable ledger events, named finance-close owners and tolerances, and release gates carrying fixture, alert, rollback, and approval evidence.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

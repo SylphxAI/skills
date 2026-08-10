@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "name": "synthesize-evidence-brief",
+  "job": "Synthesize multi-source evidence into one bounded, auditable Evidence Synthesis with residuals.",
+  "boundaries": {
+    "inScope": [
+      "Framing the answerable question and claim boundary",
+      "Predeclaring a proportionate review protocol",
+      "Searching, screening, and extracting into an evidence table",
+      "Assessing bias and synthesizing with calibrated certainty"
+    ],
+    "outOfScope": [
+      "Averaging incompatible evidence until disagreement disappears",
+      "Counting repeated reports of one dataset as independent",
+      "Market, category, or competitor recommendations (synthesize-market-research)"
+    ]
+  },
+  "inputs": [
+    "Question, decision use, scope, and time horizon",
+    "Sources, search strings, dates, and inclusion rules",
+    "Evidence that could change the conclusion"
+  ],
+  "outputs": [
+    "Evidence Synthesis with protocol and search log",
+    "Evidence table with provenance and quality",
+    "Calibrated certainty, claim boundary, gaps, and update triggers"
+  ],
+  "required": {
+    "tools": [],
+    "data": [
+      "primary studies or original records"
+    ],
+    "permissions": [
+      "access to declared sources"
+    ]
+  },
+  "failureSemantics": "The protocol is frozen before reading toward a preferred conclusion; search rank, citation count, prestige, and agent consensus are not independent evidence quality; absence of evidence is separated from evidence of no effect; nothing is fabricated from titles or abstracts.",
+  "outcome": {
+    "observable": "An Evidence Synthesis whose coverage, exclusions, conflicts, and certainty can be audited and reproduced from the search log and evidence table, with an explicit claim boundary and update triggers.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "name": "engineer-agent-context",
+  "job": "Engineer a Context and Memory Contract that bounds what agents load, with budgets, freshness, and invalidation.",
+  "boundaries": {
+    "inScope": [
+      "Inventorying information classes, owners, and authority order",
+      "Defining write, retrieve, rank, summarize, invalidate, and delete rules",
+      "Setting token, latency, storage, and retrieval budgets",
+      "Testing stale, poisoned, conflicting, and leaking context"
+    ],
+    "outOfScope": [
+      "Goals, plans, and replanning systems (agent-planning-system)",
+      "Work claim and handoff semantics (work-coordination-standard)",
+      "Jurisdictional privacy or threat-model requirements"
+    ]
+  },
+  "inputs": [
+    "Information classes and their sources and owners",
+    "Current assembly order and authority rules",
+    "Budget and degradation constraints"
+  ],
+  "outputs": [
+    "Context and Memory Contract with budgets and authority order",
+    "Handoff schema and recovery path",
+    "Adversarial and degradation test results"
+  ],
+  "required": {
+    "tools": [],
+    "data": [
+      "source-of-truth locators outside the context window"
+    ],
+    "permissions": [
+      "least-disclosure access per tenant and credential rules"
+    ]
+  },
+  "failureSemantics": "Context is a bounded projection with lineage, never the authority; agent-generated summaries are never the only durable copy; vector similarity is never treated as relevance, correctness, or permission; decision utility is measured, not retrieval volume.",
+  "outcome": {
+    "observable": "A Context and Memory Contract where every information class has an owner and authority order, budgets are explicit, invalidation and deletion rules work, and adversarial and degradation tests pass.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

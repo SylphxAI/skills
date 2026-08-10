@@ -1,16 +1,19 @@
 #!/usr/bin/env node
 
 /**
- * Repository integrity for an industry-shaped Agent Skills catalog.
- * Validates package shape, progressive-disclosure layout, listing budget,
- * secrets hygiene, constitution budget, and catalog freshness.
+ * Repository integrity for the Sylphx Verified Capabilities open foundation.
+ * Validates package shape, progressive-disclosure layout, capability contracts,
+ * qualification records, listing budget, secrets hygiene, constitution budget,
+ * and catalog freshness.
  */
 
 import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { catalogBytes, parseFrontmatter, repositoryRoot } from './build-catalog.mjs';
+import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
+import { catalogBytes, parseFrontmatter, readJson, repositoryRoot } from './build-catalog.mjs';
 
 const NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const SECRET_PATTERNS = [
@@ -26,6 +29,31 @@ const CATALOG_DESC_SOFT_MAX = 8000;
 const DESCRIPTION_HARD_MAX = 1024;
 const SKILL_MD_LINE_SOFT_MAX = 500;
 const L0_MAX_CHARS = 6000;
+
+const SCHEMA_FILES = [
+  'schemas/capability-contract.schema.json',
+  'schemas/qualification-record.schema.json',
+  'schemas/outcome-receipt.schema.json',
+];
+
+const REQUIRED_ROOT_FILES = [
+  'README.md',
+  'PROJECT.md',
+  'LICENSE',
+  'INSTALL.md',
+  'SKILL.md',
+  'docs/MODEL.md',
+  'docs/NORTH-STAR.md',
+  'docs/QUALIFICATION.md',
+  'docs/qualification/LEDGER.md',
+  ...SCHEMA_FILES,
+  'runtime/hooks.mjs',
+  'runtime/package-digest.mjs',
+  'runtime/reconcile.mjs',
+  'runtime/sylphx-skills.mjs',
+  'runtime/target-generation.mjs',
+  'runtime/constitution.md',
+];
 
 function walk(directory) {
   const files = [];
@@ -54,6 +82,48 @@ function validateLocalLinks(markdown, file, errors) {
   const unclosed = /\]\(([^)\n]+)$/gm;
   for (const match of markdown.matchAll(unclosed)) {
     errors.push(`${path.relative(repositoryRoot, file)}: unclosed link target ${match[1].trim().slice(0, 80)}`);
+  }
+}
+
+function validateCapabilityContract(folder, errors) {
+  const contractPath = `skills/${folder}/capability.json`;
+  const qualificationPath = `skills/${folder}/qualification.json`;
+  for (const [file, schema, label] of [
+    [contractPath, capabilitySchema, 'capability contract'],
+    [qualificationPath, qualificationSchema, 'qualification record'],
+  ]) {
+    if (!existsSync(path.join(repositoryRoot, file))) {
+      errors.push(`${file}: missing ${label}`);
+      return;
+    }
+    let record;
+    try {
+      record = readJson(path.join(repositoryRoot, file));
+    } catch (error) {
+      errors.push(`${file}: invalid JSON: ${error.message}`);
+      return;
+    }
+    const valid = schema(record);
+    if (!valid) {
+      for (const detail of schema.errors || []) {
+        errors.push(`${file}: ${detail.instancePath || '/'} ${detail.message}`);
+      }
+    }
+    if (record.name !== folder) errors.push(`${file}: name must match folder`);
+  }
+
+  const contract = readJson(path.join(repositoryRoot, contractPath));
+  const qualification = readJson(path.join(repositoryRoot, qualificationPath));
+
+  if (qualification.status === 'qualified') {
+    if (!contract.outcome.observable) errors.push(`${contractPath}: qualified capability needs an outcome oracle`);
+    const expires = Date.parse(qualification.expiresAt || '');
+    if (!Number.isFinite(expires) || expires <= Date.now()) {
+      errors.push(`${qualificationPath}: qualified record must have a future expiresAt`);
+    }
+    if (!qualification.evidence.every((item) => item.digest && item.uri)) {
+      errors.push(`${qualificationPath}: qualified evidence must carry digest and uri`);
+    }
   }
 }
 
@@ -117,6 +187,8 @@ function validateSkill(folder, names, errors) {
     errors.push(`skills/${folder}/agents/openai.yaml: missing`);
   }
 
+  validateCapabilityContract(folder, errors);
+
   for (const file of walk(packageRoot)) {
     const relative = path.relative(repositoryRoot, file);
     const text = readFileSync(file, 'utf8');
@@ -168,6 +240,10 @@ function validateCatalogBudget(errors, skillFolders) {
       `catalog description sum ${descChars} exceeds Codex ~${CATALOG_DESC_SOFT_MAX} char listing class; shorten descriptions or retire packages with semantic evidence (not count targets)`,
     );
   }
+  const qualified = catalog.qualification.qualified;
+  if (qualified !== catalog.qualification.qualifiedNames.length) {
+    errors.push('catalog qualification projection is inconsistent');
+  }
 }
 
 export function checkRepository() {
@@ -187,26 +263,19 @@ export function checkRepository() {
     errors.push('catalog.json is stale; run npm run build:catalog');
   }
 
-  for (const rootFile of [
-    'README.md',
-    'PROJECT.md',
-    'LICENSE',
-    'INSTALL.md',
-    'SKILL.md',
-    'docs/MODEL.md',
-    'runtime/hooks.mjs',
-    'runtime/package-digest.mjs',
-    'runtime/reconcile.mjs',
-    'runtime/sylphx-skills.mjs',
-    'runtime/target-generation.mjs',
-    'runtime/constitution.md',
-  ]) {
+  for (const rootFile of REQUIRED_ROOT_FILES) {
     const absolute = path.join(repositoryRoot, rootFile);
     if (!existsSync(absolute) || !statSync(absolute).isFile()) errors.push(`${rootFile}: missing`);
   }
 
   return { errors, skillFolders };
 }
+
+const ajv = new Ajv({ allErrors: true, strict: false });
+addFormats(ajv);
+const capabilitySchema = ajv.compile(readJson(path.join(repositoryRoot, SCHEMA_FILES[0])));
+const qualificationSchema = ajv.compile(readJson(path.join(repositoryRoot, SCHEMA_FILES[1])));
+export const outcomeReceiptSchema = ajv.compile(readJson(path.join(repositoryRoot, SCHEMA_FILES[2])));
 
 if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) {
   const { errors, skillFolders } = checkRepository();
@@ -215,5 +284,8 @@ if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) {
     for (const error of errors) console.error(`- ${error}`);
     process.exit(1);
   }
-  console.log(`Skills integrity ok: ${skillFolders.length} task skills`);
+  const catalog = JSON.parse(catalogBytes(repositoryRoot));
+  console.log(
+    `Skills integrity ok: ${skillFolders.length} task skills (${catalog.qualification.qualified}/${catalog.qualification.total} qualified)`,
+  );
 }

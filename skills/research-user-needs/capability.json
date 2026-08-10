@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "name": "research-user-needs",
+  "job": "Research user needs: jobs, evidence, segments, opportunity ranking, with traceable findings and non-claims.",
+  "boundaries": {
+    "inScope": [
+      "Binding the study to a decision and target users",
+      "Choosing the smallest method mix that observes real behavior",
+      "Building a purposive recruitment matrix with consent and privacy",
+      "Analyzing with negative cases and connecting findings to the decision"
+    ],
+    "outOfScope": [
+      "Generalizing prevalence from qualitative evidence",
+      "Market or category evidence (synthesize-market-research)",
+      "Recurring post-use feedback loops (run-product-feedback-loop)"
+    ]
+  },
+  "inputs": [
+    "Decision, research questions, and prior evidence",
+    "Target users and material behaviors",
+    "Consent, privacy, and safeguarding constraints"
+  ],
+  "outputs": [
+    "User Research Protocol and Findings",
+    "Session ledger with evidence locators",
+    "Ranked findings with confidence, limitations, and decision handoff"
+  ],
+  "required": {
+    "tools": [],
+    "data": [
+      "session evidence with traceable locators"
+    ],
+    "permissions": [
+      "consent and data-retention governance"
+    ]
+  },
+  "failureSemantics": "A convenient sample, memorable quotation, or researcher interpretation never becomes a population claim; what participants did or said is separated from what the researcher inferred; saturation is never manufactured from repetition in a narrow sample.",
+  "outcome": {
+    "observable": "A User Research Protocol and Findings with a session ledger, supporting and disconfirming observations, coverage limits, confidence, and non-claims that a decision owner can act on.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

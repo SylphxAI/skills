@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "name": "forecast-with-calibration",
+  "job": "Produce calibrated probabilistic forecasts with resolvable question contracts, base rates, transparent aggregation, and proper scoring.",
+  "boundaries": {
+    "inScope": [
+      "Making the question resolvable with deadline and resolution source",
+      "Establishing reference class and base rates before case details",
+      "Decomposing events without double-counting dependencies",
+      "Updating with policy, resolving against the predeclared source, and scoring"
+    ],
+    "outOfScope": [
+      "Confidence in a present explanation (analyze-critically)",
+      "Combining forecasts with value and risk to choose an action (decision-quality)",
+      "Manufacturing precise probabilities from prose alone"
+    ]
+  },
+  "inputs": [
+    "Forecast question, horizon, and resolution source",
+    "Evidence, base rates, and assumptions",
+    "Independent estimates where material"
+  ],
+  "outputs": [
+    "Probabilistic Forecast Record with question contract and decomposition",
+    "Timestamped history with update triggers",
+    "Resolution, proper score, and calibration learning"
+  ],
+  "required": {
+    "tools": [],
+    "data": [
+      "base rates and resolution authority"
+    ],
+    "permissions": []
+  },
+  "failureSemantics": "Ranges or insufficient-evidence exposure replace unsupported precision; correlated agreement is not independent evidence; a single forecast is never judged only by whether it happened, but by process, proper score, and calibration.",
+  "outcome": {
+    "observable": "A Probabilistic Forecast Record with a resolvable question contract, base-rate anchored probability or distribution, transparent history, and a proper-score resolution an independent scorer can reproduce.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

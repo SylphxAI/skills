@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "name": "price-saas-subscription",
+  "job": "Price a SaaS subscription: packaging, meters, fences, migration, with internally consistent pricing arithmetic.",
+  "boundaries": {
+    "inScope": [
+      "Identifying buyer, value metric, cost driver, and expansion path",
+      "Designing packaging, plan boundaries, and upgrade moments",
+      "Running pricing arithmetic and unit-economics sanity checks",
+      "Defining bounded validation, sales enablement, and kill criteria"
+    ],
+    "outOfScope": [
+      "Billing, ledger, and entitlement execution (build-payment-readiness)",
+      "Channel copy and creative implementation",
+      "Approved price-increase migration cohorts without a separate artifact"
+    ]
+  },
+  "inputs": [
+    "Customer, buyer, purchasing motion, and value metric",
+    "Cost, margin, usage, conversion, churn, and support data",
+    "Competitor pricing and demand evidence"
+  ],
+  "outputs": [
+    "Pricing and Packaging Decision with plan architecture",
+    "Pricing arithmetic pass with margin sanity check",
+    "Experiment or rollout plan with guardrails and kill criteria"
+  ],
+  "required": {
+    "tools": [],
+    "data": [
+      "current internal cost, margin, usage, conversion, and churn data"
+    ],
+    "permissions": []
+  },
+  "failureSemantics": "Seat minimums versus included seats, overage rates versus marginal cost, and annual terms must reconcile; missing values are marked assumptions and the recommendation becomes a bounded experiment, never hidden policy.",
+  "outcome": {
+    "observable": "A Pricing and Packaging Decision with an internally consistent arithmetic pass, named value metric and plan boundaries, margin guardrails, and a bounded rollout plan with kill criteria.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

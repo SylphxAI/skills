@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "name": "model-security-threats",
+  "job": "Model security threats for a trust boundary before implementation and produce a Threat Model and Security Design Contract.",
+  "boundaries": {
+    "inScope": [
+      "Defining subject, objectives, assets, and unacceptable outcomes",
+      "Modeling components, trust boundaries, privileges, and flows",
+      "Deriving misuse cases and ranking threats with evidence-bounded likelihood",
+      "Designing controls with verification and residual-risk ownership"
+    ],
+    "outOfScope": [
+      "Incident response execution (run-incident-response)",
+      "Implementation itself (owning project and build-product)",
+      "Publishing exploit-enabling detail beyond authorized audiences"
+    ]
+  },
+  "inputs": [
+    "System, feature, or trust boundary under design",
+    "Protected assets and unacceptable outcomes",
+    "Source evidence for components, flows, and dependencies"
+  ],
+  "outputs": [
+    "Threat Model and Security Design Contract",
+    "Threat register with controls, enforcement points, and owners",
+    "Verification matrix and residual-risk decisions"
+  ],
+  "required": {
+    "tools": [
+      "threat-enumeration aids (STRIDE, attack trees) as coverage aid only"
+    ],
+    "data": [
+      "source evidence for the real candidate and environment"
+    ],
+    "permissions": [
+      "protected storage and audience allowlist for the model"
+    ]
+  },
+  "failureSemantics": "A generic checklist is not a threat model; no taxonomy proves completeness; a control is never effective without implementation and verification evidence; the model never accepts its own material residual risk.",
+  "outcome": {
+    "observable": "A Threat Model and Security Design Contract linking system elements to credible threats, controls with enforcement points and owners, falsifiable verification, and owned residual risk with review triggers.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}
