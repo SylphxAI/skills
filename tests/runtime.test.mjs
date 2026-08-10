@@ -97,9 +97,13 @@ function promoteFixtureRelease(cwd, version, sourceRevision) {
     `${JSON.stringify(promotionManifest(cwd, sourceRevision), null, 2)}\n`,
   );
   const manifestSha = commit(cwd, `promotion manifest skills-v${version}`);
-  git(cwd, ['tag', '-a', `skills-v${version}`, '-m', `release skills-v${version}`, manifestSha]);
+  annotatedTag(cwd, `skills-v${version}`, `release skills-v${version}`, manifestSha);
   return manifestSha;
 }
+function annotatedTag(cwd, name, message, target) {
+  git(cwd, ['-c', 'user.name=Sylphx Test', '-c', 'user.email=test@sylphx.invalid', 'tag', '-a', name, '-m', message, target]);
+}
+
 
 function fixtureCatalogFile(entries) {
   return {
@@ -1727,7 +1731,7 @@ test('reconciler applies only immutable promoted release tags, honors TTL, and f
     git(remote, ['update-index', '--cacheinfo', `100644,${invalidBlob},content.txt`]);
     git(remote, ['-c', 'user.name=Sylphx Test', '-c', 'user.email=test@sylphx.invalid', 'commit', '-m', 'noncanonical candidate']);
     const invalidSha = git(remote, ['rev-parse', 'HEAD']);
-    git(remote, ['tag', '-a', 'skills-v7.0.3', '-m', 'noncanonical promoted candidate', invalidSha]);
+    annotatedTag(remote, 'skills-v7.0.3', 'noncanonical promoted candidate', invalidSha);
     const rejected = reconcile({ stateDirectory, force: true, now: 16_250 });
     assert.equal(rejected.status, 'unavailable');
     assert.match(rejected.error, /do not normalize to the committed tree/);
@@ -1922,7 +1926,7 @@ test('promotion channel fails closed on lightweight tags, legacy configs, and in
     const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-promo-manifest-'));
     try {
       const { remote, stateDirectory, config, contentSha } = promotionFixture(sandbox);
-      git(remote, ['tag', '-a', 'skills-v7.0.0', '-m', 'unsigned release', contentSha]);
+      annotatedTag(remote, 'skills-v7.0.0', 'unsigned release', contentSha);
       const result = reconcile({ stateDirectory, force: true });
       assert.equal(result.status, 'unavailable');
       assert.match(result.error, /invalid promotion manifest/);
@@ -1941,7 +1945,7 @@ test('promotion channel fails closed on lightweight tags, legacy configs, and in
       manifest.catalogDigest = `sha256:${'0'.repeat(64)}`;
       writeFileSync(path.join(remote, 'promotion.json'), `${JSON.stringify(manifest, null, 2)}\n`);
       const manifestSha = commit(remote, 'tampered manifest');
-      git(remote, ['tag', '-a', 'skills-v7.0.0', '-m', 'tampered', manifestSha]);
+      annotatedTag(remote, 'skills-v7.0.0', 'tampered', manifestSha);
       const result = reconcile({ stateDirectory, force: true });
       assert.equal(result.status, 'unavailable');
       assert.match(result.error, /catalog digest does not match the candidate tree/);
@@ -1961,7 +1965,7 @@ test('promotion channel fails closed on lightweight tags, legacy configs, and in
       const manifest = promotionManifest(remote, contentSha);
       writeFileSync(path.join(remote, 'promotion.json'), `${JSON.stringify(manifest, null, 2)}\n`);
       const manifestSha = commit(remote, 'manifest over next content');
-      git(remote, ['tag', '-a', 'skills-v7.0.0', '-m', 'wrong source', manifestSha]);
+      annotatedTag(remote, 'skills-v7.0.0', 'wrong source', manifestSha);
       const result = reconcile({ stateDirectory, force: true });
       assert.equal(result.status, 'unavailable');
       assert.match(result.error, /sourceRevision does not match the tag commit parent/);
@@ -1998,7 +2002,7 @@ test('promotion channel fails closed on lightweight tags, legacy configs, and in
       assert.equal(first.status, 'updated');
       assert.equal(first.appliedTag, 'skills-v7.1.0');
       git(remote, ['tag', '-d', 'skills-v7.1.0']);
-      git(remote, ['tag', '-a', 'skills-v7.0.0', '-m', 'older release', contentSha]);
+      annotatedTag(remote, 'skills-v7.0.0', 'older release', contentSha);
       const result = reconcile({ stateDirectory, force: true });
       assert.equal(result.status, 'unavailable');
       assert.match(result.error, /promotion regression/);
