@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "capability": "optimize-decision-model",
+  "claim": "Produces a Constrained Decision Model: boundary/horizon/baseline, sets/parameters/provenance, variables/objective/constraints, feasibility and solver evidence, independent verification, sensitivity/stress, and unresolved model risk.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write decision-model.md modeling the decision: how many support tickets to assign to each of three agents per day to maximize throughput, given each agent has a capacity and tickets have priorities. Describe the model and how you would solve and check it."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Constrained Decision Model elements.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write decision-model.md modeling: assign support tickets to three agents per day to maximize throughput; each agent has a daily capacity and tickets have priorities; at most one review owner per ticket. Follow the artifact contract: decision boundary/horizon/baseline/assumptions/non-goals; sets, parameters, units, provenance; variables, objective, constraints with tolerances and formulation; feasibility evidence and solver configuration with result/bounds/gap; independent solution verification; sensitivity/stress cases with robust policy and re-solve conditions; unsupported claims, unresolved model risk, and implementation handoff.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "decision-model.md" },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "objective", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "constraint", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "variable", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "solver", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "feasib", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "sensitivity", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "verification", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same decision-model oracle.",
+      "prompt": "Write decision-model.md modeling the decision: how many support tickets to assign to each of three agents per day to maximize throughput, given each agent has a capacity and tickets have priorities. Describe the model and how you would solve and check it.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "decision-model.md" },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "objective", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "constraint", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "variable", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "solver", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "feasib", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "sensitivity", "caseInsensitive": true },
+          { "type": "file-regex", "path": "decision-model.md", "contains": "verification", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "capability": "optimize-decision-model",
+  "claim": "Produces a Constrained Decision Model: boundary/horizon/baseline, sets/parameters/provenance, variables/objective/constraints, feasibility and solver evidence, independent verification, sensitivity/stress, and unresolved model risk.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "4f09a5936dcd84ad1ac0922b9e2a15ea51f764dc",
+    "packageDigest": "sha256:922c8586c67d561dca9d2dec3323a32ce429cb9f1c6a8e06c3a2aab853e754df",
+    "catalogDigest": "sha256:d2be021d2c33050cf9447defac54a0feda57d5d12aa22a1d2d8d0976e148fc85"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-10T18:23:31.320Z",
+  "finishedAt": "2026-08-10T18:23:31.320Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "pass",
+      "failures": [],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "pass"
+  },
+  "security": {
+    "verdict": "clean",
+    "scannedFiles": 6,
+    "findings": []
+  },
+  "evidenceDigest": "sha256:f62e77431f2e149df7ac81090ddca8f124d57757123cec31bd8896c14660dea4",
+  "verdict": "qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/optimize-decision-model/run-2026-08-10T18-20-38-297Z"
+}

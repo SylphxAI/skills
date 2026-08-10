@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "capability": "analyze-system-dynamics",
+  "claim": "Produces a Dynamic System Model: question/behavior, structure (stocks, flows, feedback loops, delays), model status, intervention analysis, and validation plan.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "4f09a5936dcd84ad1ac0922b9e2a15ea51f764dc",
+    "packageDigest": "sha256:a9fa21049014584bc1654357c69511fc210f13d88b596e7e8e078ef86198693f",
+    "catalogDigest": "sha256:d2be021d2c33050cf9447defac54a0feda57d5d12aa22a1d2d8d0976e148fc85"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-10T18:27:04.907Z",
+  "finishedAt": "2026-08-10T18:27:04.907Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "fail",
+      "failures": [
+        "file system-model.md does not match /feedback loop/"
+      ],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "fail"
+  },
+  "security": {
+    "verdict": "clean",
+    "scannedFiles": 6,
+    "findings": []
+  },
+  "evidenceDigest": "sha256:786001609e1dd8c4d6caad937e1dee50667cc995f11c92c5a6b46c427c6f11b0",
+  "verdict": "qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/analyze-system-dynamics/run-2026-08-10T18-23-41-030Z"
+}

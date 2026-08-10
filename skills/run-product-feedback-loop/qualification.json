@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "run-product-feedback-loop"
+  "name": "run-product-feedback-loop",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-10T18:25:47.694Z",
+  "expiresAt": "2026-11-08T18:27:19.969Z",
+  "evidence": [
+    {
+      "id": "run-product-feedback-loop-incremental-value-2026-08-10T18-23-41-604Z",
+      "kind": "incremental-value",
+      "digest": "sha256:4557711c7331aa8d5190d7828abd61dd3cd3ada027a99df7b467db4951eefae2",
+      "uri": "docs/qualification/evals/run-product-feedback-loop/run-2026-08-10T18-23-41-604Z/report.json"
+    },
+    {
+      "id": "run-product-feedback-loop-compatibility-2026-08-10T18-23-41-604Z",
+      "kind": "compatibility",
+      "digest": "sha256:4557711c7331aa8d5190d7828abd61dd3cd3ada027a99df7b467db4951eefae2",
+      "uri": "docs/qualification/evals/run-product-feedback-loop/run-2026-08-10T18-23-41-604Z/report.json"
+    },
+    {
+      "id": "run-product-feedback-loop-security-2026-08-10T18-23-41-604Z",
+      "kind": "security",
+      "digest": "sha256:4557711c7331aa8d5190d7828abd61dd3cd3ada027a99df7b467db4951eefae2",
+      "uri": "docs/qualification/evals/run-product-feedback-loop/run-2026-08-10T18-23-41-604Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

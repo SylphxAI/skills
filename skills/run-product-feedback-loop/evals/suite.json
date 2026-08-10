@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "capability": "run-product-feedback-loop",
+  "claim": "Produces a feedback-loop record: scope/sources/authority, private feedback contract, normalized signal, urgent routing, review ingestion, product action with validation/rollout, handoffs, and unresolved authority.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write feedback-loop.md describing how you would take user feedback about a confusing onboarding flow, decide what to change, and verify the change helped. Keep it practical."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the feedback-loop record elements.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write feedback-loop.md for feedback that the onboarding flow is confusing (sources: in-app survey + support tickets; authority: product owner). Follow the output contract: scope, sources, authority, evidence gaps; private feedback contract; normalized signal, taxonomy, and evidence-cluster contract; urgent support/safety routing; authorized review ingestion and response policy; product action, validation, rollout, and close-loop state; sibling handoffs; validation, unresolved authority, and next proof.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "feedback-loop.md" },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "scope", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "source", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "authority", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "routing", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "validation", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "rollout", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "handoff", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "unresolved authority", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same feedback-loop oracle.",
+      "prompt": "Write feedback-loop.md describing how you would take user feedback about a confusing onboarding flow, decide what to change, and verify the change helped. Keep it practical.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "feedback-loop.md" },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "scope", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "source", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "authority", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "routing", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "validation", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "rollout", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "handoff", "caseInsensitive": true },
+          { "type": "file-regex", "path": "feedback-loop.md", "contains": "unresolved authority", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}
