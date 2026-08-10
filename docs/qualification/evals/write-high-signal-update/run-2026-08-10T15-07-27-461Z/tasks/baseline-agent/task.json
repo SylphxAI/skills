@@ -1,0 +1,38 @@
+{
+  "id": "baseline-agent",
+  "kind": "agent",
+  "baseline": true,
+  "description": "Fresh-context baseline (no skill): same update task, same exact-template oracle.",
+  "command": [
+    "codex",
+    "exec",
+    "--skip-git-repo-check",
+    "-C",
+    "/tmp/sylphx-qualify-run-2026-08-10T15-07-27-461Z-baseline-agent",
+    "-s",
+    "danger-full-access",
+    "--ephemeral",
+    "-c",
+    "model_provider=openmodel",
+    "-c",
+    "model=deepseek-v4-flash",
+    "Write a short status update to update.md about shipping the login-outage fix: the fix is deployed, a rollback is ready, QA must verify by Friday, and you will monitor for 24 hours. Keep it concise."
+  ],
+  "status": "fail",
+  "failures": [
+    "file update.md does not match /^## Outcome/",
+    "file update.md does not match /^## Facts/",
+    "file update.md does not match /^## Risks / blockers/",
+    "file update.md does not match /^## Asks/",
+    "file update.md does not match /^## Next/"
+  ],
+  "exitCode": 0,
+  "startedAt": "2026-08-10T15:07:40.351Z",
+  "finishedAt": "2026-08-10T15:07:49.384Z",
+  "stdoutTail": "Created `update.md` in the workspace with a concise status update: fix deployed, rollback ready, QA verification due by Friday, and 24-hour monitoring planned.\n",
+  "stderrTail": "Reading additional input from stdin...\nOpenAI Codex v0.147.0\n--------\nworkdir: /tmp/sylphx-qualify-run-2026-08-10T15-07-27-461Z-baseline-agent\nmodel: deepseek-v4-flash\nprovider: openmodel\napproval: never\nsandbox: danger-full-access\nreasoning effort: max\nreasoning summaries: none\nsession id: 019fec37-1437-7791-9224-927ab5eb6525\n--------\nuser\nWrite a short status update to update.md about shipping the login-outage fix: the fix is deployed, a rollback is ready, QA must verify by Friday, and you will monitor for 24 hours. Keep it concise.\nwarning: Model metadata for `deepseek-v4-flash` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.\nexec\n/bin/bash -lc 'ls -la /tmp/sylphx-qualify-run-2026-08-10T15-07-27-461Z-baseline-agent && [ -f update.md ] && cat update.md' in /tmp/sylphx-qualify-run-2026-08-10T15-07-27-461Z-baseline-agent\n exited 1 in 0ms:\ntotal 308\ndrwxr-xr-x. 2 codex codex      6 Aug 10 15:07 .\ndrwxrwxrwt. 1 root  root  221184 Aug 10 15:07 ..\n\ncodex\nThe workspace is empty, so I'll create `update.md` with the status note.\nexec\n/bin/bash -lc \"cat > /tmp/sylphx-qualify-run-2026-08-10T15-07-27-461Z-baseline-agent/update.md <<'EOF'\n# Status: Login-Outage Fix\n\n- Fix is deployed to production.\n- Rollback is staged and ready if needed.\n- QA must verify the fix by Friday.\n- I will monitor for 24 hours after deploy.\nEOF\" in /tmp/sylphx-qualify-run-2026-08-10T15-07-27-461Z-baseline-agent\n succeeded in 0ms:\ncodex\nCreated `update.md` in the workspace with a concise status update: fix deployed, rollback ready, QA verification due by Friday, and 24-hour monitoring planned.\ntokens used\n965\n",
+  "artifactCount": 1,
+  "artifactDigests": {
+    "../../../../../../tmp/sylphx-qualify-run-2026-08-10T15-07-27-461Z-baseline-agent/update.md": "sha256:ed711d9aa57a01c59d0aa95ccba5b976693a79774def36132569cd2f7aa1ab96"
+  }
+}

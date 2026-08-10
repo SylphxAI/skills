@@ -4,11 +4,13 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-10, wave 1)
+## Current state (2026-08-10, waves 1–2)
 
 - Capability packages: **57**
-- Qualified: **4** — author-skill, produce-game-2d-map-assets,
-  produce-game-2d-sprites, select-dependency-versions
+- Qualified: **8** — author-skill, bound-request-scope,
+  decide-architecture-shape, engineer-testable-requirements,
+  produce-game-2d-map-assets, produce-game-2d-sprites,
+  select-dependency-versions, write-high-signal-update
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
@@ -30,6 +32,25 @@ task-level digests, security-scan results, and `report.json`. Each
 qualification expires 90 days after `qualifiedAt`; a stale expiry downgrades
 eligibility. Injection state is recorded as **not verified** for agent tasks
 (fresh-context behavior tests; no runtime-native selection trace).
+
+## Wave-2 runs (incremental-value controls)
+
+Each wave-2 suite pairs a with-skill agent task with a baseline control
+(no skill, same task, same oracle). In every run the baseline **failed** the
+strict output-contract oracle while the with-skill run passed, and the
+security scan was clean:
+
+| Capability | Run | With-skill | Baseline | Verdict |
+| --- | --- | --- | --- | --- |
+| write-high-signal-update | `run-2026-08-10T15-07-27-461Z` | pass | fail | qualified |
+| bound-request-scope | `run-2026-08-10T15-07-55-630Z` | pass | fail | qualified |
+| engineer-testable-requirements | `run-2026-08-10T15-09-58-318Z` | pass | fail | qualified |
+| decide-architecture-shape | `run-2026-08-10T15-09-58-823Z` | pass | fail | qualified |
+
+Baseline failures are recorded in the bundles (raw `baseline-agent` task
+records) and are the incremental-value evidence — a failing control never
+blocks qualification, because it demonstrates the capability's value rather
+than a defect. `report.json` carries the `comparison` block.
 
 ## Wave-1 finding (author-skill)
 

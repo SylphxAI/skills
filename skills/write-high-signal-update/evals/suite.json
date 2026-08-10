@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "capability": "write-high-signal-update",
+  "claim": "Produces the exact answer-first update template (Outcome, Facts, Risks/blockers, Asks, Next) instead of burying the ask in narrative.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write a short status update to update.md about shipping the login-outage fix: the fix is deployed, a rollback is ready, QA must verify by Friday, and you will monitor for 24 hours. Keep it concise."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the exact template headings.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely, then write update.md for this situation: the login-outage fix shipped; a rollback is ready if needed; the QA lead must verify by Friday; next step is 24h monitoring. Follow the procedure's template exactly.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "update.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "update.md",
+            "contains": "^## Outcome"
+          },
+          {
+            "type": "file-regex",
+            "path": "update.md",
+            "contains": "^## Facts"
+          },
+          {
+            "type": "file-regex",
+            "path": "update.md",
+            "contains": "^## Risks / blockers"
+          },
+          {
+            "type": "file-regex",
+            "path": "update.md",
+            "contains": "^## Asks"
+          },
+          {
+            "type": "file-regex",
+            "path": "update.md",
+            "contains": "^## Next"
+          },
+          {
+            "type": "file-not-regex",
+            "path": "update.md",
+            "contains": "^## Outcome\\n## Outcome"
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "description": "Fresh-context baseline (no skill): same update task, same exact-template oracle.",
+      "prompt": "Write a short status update to update.md about shipping the login-outage fix: the fix is deployed, a rollback is ready, QA must verify by Friday, and you will monitor for 24 hours. Keep it concise.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "update.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "update.md",
+            "contains": "^## Outcome"
+          },
+          {
+            "type": "file-regex",
+            "path": "update.md",
+            "contains": "^## Facts"
+          },
+          {
+            "type": "file-regex",
+            "path": "update.md",
+            "contains": "^## Risks / blockers"
+          },
+          {
+            "type": "file-regex",
+            "path": "update.md",
+            "contains": "^## Asks"
+          },
+          {
+            "type": "file-regex",
+            "path": "update.md",
+            "contains": "^## Next"
+          }
+        ]
+      },
+      "baseline": true
+    }
+  ]
+}

@@ -224,11 +224,18 @@
                     "schema": {
                       "type": "string",
                       "maxLength": 300
+                    },
+                    "caseInsensitive": {
+                      "type": "boolean"
                     }
                   }
                 }
               }
             }
+          },
+          "baseline": {
+            "type": "boolean",
+            "description": "True marks a control task; its result is recorded as comparison evidence and never gates qualification."
           }
         }
       }

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "capability": "engineer-testable-requirements",
+  "claim": "Produces a Requirements Contract: identity, need register, requirement register with stable IDs and verification, non-goals, traceability, and validation record.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write requirements.md with acceptance criteria for: 'Users must be able to reset their password securely and quickly'. Cover what you think matters and keep it concise."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Requirements Contract elements.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely (open references/requirements-method.md if the body directs you to), then write requirements.md for: 'Users must be able to reset their password securely and quickly'. Produce the Requirements Contract per the output contract: identity/version, need register, scenario/state model, requirement register with stable IDs and verification, non-goals, traceability, and validation record.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "requirements.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "requirement",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "success boundary",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "verification method",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "non-goal",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "traceab",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "validation record",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "description": "Fresh-context baseline (no skill): same task, same Requirements-Contract oracle.",
+      "prompt": "Write requirements.md with acceptance criteria for: 'Users must be able to reset their password securely and quickly'. Cover what you think matters and keep it concise.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "requirements.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "requirement",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "success boundary",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "verification method",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "non-goal",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "traceab",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "requirements.md",
+            "contains": "validation record",
+            "caseInsensitive": true
+          }
+        ]
+      },
+      "baseline": true
+    }
+  ]
+}

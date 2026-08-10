@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "capability": "write-high-signal-update",
+  "claim": "Produces the exact answer-first update template (Outcome, Facts, Risks/blockers, Asks, Next) instead of burying the ask in narrative.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "bfa4ab55642b43389e7a82fffeddb674496ecc60",
+    "packageDigest": "sha256:25a40264c1e1ab7f65055a44ec0469a3b4f9d76f7f8b34eb6536536b0b422018",
+    "catalogDigest": "sha256:0eaaa849cf1be805171b91feed6c66669479af6871656194206c3d1ee151b219"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-10T15:07:49.387Z",
+  "finishedAt": "2026-08-10T15:07:49.387Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "fail",
+      "failures": [
+        "file update.md does not match /^## Outcome/",
+        "file update.md does not match /^## Facts/",
+        "file update.md does not match /^## Risks / blockers/",
+        "file update.md does not match /^## Asks/",
+        "file update.md does not match /^## Next/"
+      ],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "fail"
+  },
+  "security": {
+    "verdict": "clean",
+    "scannedFiles": 7,
+    "findings": []
+  },
+  "evidenceDigest": "sha256:42d40ca98fa98092652b9015ac71743f26e650ed1ab13a083fea3ffad7a90b55",
+  "verdict": "qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/write-high-signal-update/run-2026-08-10T15-07-27-461Z"
+}
