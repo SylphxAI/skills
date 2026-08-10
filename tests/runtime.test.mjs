@@ -19,6 +19,7 @@ import {
 import os from 'node:os';
 import path from 'node:path';
 import { spawn, spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { packageDigest } from '../runtime/package-digest.mjs';
@@ -70,6 +71,44 @@ function commit(cwd, message) {
   git(cwd, ['add', '.']);
   git(cwd, ['-c', 'user.name=Sylphx Test', '-c', 'user.email=test@sylphx.invalid', 'commit', '-m', message]);
   return git(cwd, ['rev-parse', 'HEAD']);
+}
+
+function promotionManifest(cwd, sourceRevision, { qualifiedNames = [] } = {}) {
+  const catalogBytes = readFileSync(path.join(cwd, 'catalog.json'), 'utf8');
+  return {
+    schemaVersion: 1,
+    owner: 'SylphxAI/skills',
+    channel: 'release-tag',
+    sourceRevision,
+    catalogDigest: `sha256:${createHash('sha256').update(catalogBytes).digest('hex')}`,
+    qualifiedNames: [...qualifiedNames].sort(),
+    promotedAt: new Date().toISOString(),
+  };
+}
+
+/**
+ * Fixture equivalent of the release-promotion workflow: the content commit is
+ * the promoted main revision, the manifest commit carries promotion.json, and
+ * the annotated tag is the immutable promotion candidate AutoSync may apply.
+ */
+function promoteFixtureRelease(cwd, version, sourceRevision) {
+  writeFileSync(
+    path.join(cwd, 'promotion.json'),
+    `${JSON.stringify(promotionManifest(cwd, sourceRevision), null, 2)}\n`,
+  );
+  const manifestSha = commit(cwd, `promotion manifest skills-v${version}`);
+  git(cwd, ['tag', '-a', `skills-v${version}`, '-m', `release skills-v${version}`, manifestSha]);
+  return manifestSha;
+}
+
+function fixtureCatalogFile(entries) {
+  return {
+    schemaVersion: 1,
+    source: 'skills/*/SKILL.md',
+    count: entries.length,
+    qualification: { total: entries.length, qualified: 0, qualifiedNames: [] },
+    skills: entries,
+  };
 }
 
 function exactLocalSourceCommit() {
@@ -1538,7 +1577,7 @@ test('scheduler status rejects inert Linux timer files when the user manager is 
   }
 });
 
-test('reconciler fetches only changed commits, honors TTL, and fences concurrent scheduler ticks', async () => {
+test('reconciler applies only immutable promoted release tags, honors TTL, and fences concurrent scheduler ticks', async () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-reconcile-'));
   const remote = path.join(sandbox, 'source');
   const stateDirectory = path.join(sandbox, 'state');
@@ -1552,14 +1591,18 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
     writeFileSync(path.join(remote, 'runtime', 'sylphx-skills.mjs'), fixtureCli);
     cpSync(path.join(root, 'runtime', 'reconcile.mjs'), path.join(remote, 'runtime', 'reconcile.mjs'));
     writeFileSync(path.join(remote, 'content.txt'), 'one\n');
+    writeFileSync(path.join(remote, 'catalog.json'), `${JSON.stringify(fixtureCatalogFile([]), null, 2)}\n`);
     const firstSha = commit(remote, 'first');
+    const firstRelease = promoteFixtureRelease(remote, '7.0.0', firstSha);
 
     mkdirSync(stateDirectory, { recursive: true });
     const config = {
-      schemaVersion: 1,
+      schemaVersion: 2,
       owner: 'SylphxAI/skills',
       enabled: true,
       mode: 'interval-scheduler',
+      channel: 'release-tag',
+      tagPrefix: 'skills-v',
       remote,
       branch: 'main',
       repository: path.join(stateDirectory, 'repository'),
@@ -1583,9 +1626,15 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
     };
     const first = reconcile({ stateDirectory, force: true, strict: true, now: 1_000, run: crlfCheckoutRun });
     assert.equal(first.status, 'updated');
-    assert.equal(first.appliedSha, firstSha);
-    assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), firstSha);
+    assert.equal(first.appliedSha, firstRelease);
+    assert.equal(first.appliedTag, 'skills-v7.0.0');
+    assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), firstRelease);
     assert.equal(readFileSync(path.join(config.repository, 'content.txt'), 'utf8'), 'one\r\n');
+    assert.equal(
+      JSON.parse(readFileSync(path.join(config.repository, 'promotion.json'), 'utf8')).sourceRevision,
+      firstSha,
+      'the applied candidate must carry the promoted main revision in its manifest',
+    );
 
     let remoteChecks = 0;
     const countingRun = (command, args, options) => {
@@ -1600,8 +1649,8 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
     const repaired = reconcile({ stateDirectory, maxAgeMs: 10_000, strict: true, now: 6_000, run: countingRun });
     assert.equal(repaired.status, 'updated');
     assert.equal(repaired.repaired, true);
-    assert.equal(repaired.appliedSha, firstSha);
-    assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), firstSha);
+    assert.equal(repaired.appliedSha, firstRelease);
+    assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), firstRelease);
     assert.equal(remoteChecks, 0);
 
     writeFileSync(path.join(codexHome, 'applied-sha.txt'), 'offline local drift\n');
@@ -1614,11 +1663,12 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
     const offlineRepaired = reconcile({ stateDirectory, force: true, now: 7_000, run: offlineRun });
     assert.equal(offlineRepaired.status, 'unavailable');
     assert.equal(offlineRepaired.repaired, true);
-    assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), firstSha);
+    assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), firstRelease);
 
     assert.equal(git(config.repository, ['status', '--porcelain', '--untracked-files=all']), '');
     writeFileSync(path.join(remote, '.gitattributes'), '* text=auto eol=lf\n');
     const attributesSha = commit(remote, 'bind exact checkout line endings');
+    const attributesRelease = promoteFixtureRelease(remote, '7.0.1', attributesSha);
     const interrupted = spawnSync(process.execPath, [config.reconcilerPath, '--force'], {
       cwd: root,
       encoding: 'utf8',
@@ -1640,7 +1690,8 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
 
     const attributesUpdate = reconcile({ stateDirectory, force: true, strict: true, now: 16_000 });
     assert.equal(attributesUpdate.status, 'updated');
-    assert.equal(attributesUpdate.appliedSha, attributesSha);
+    assert.equal(attributesUpdate.appliedSha, attributesRelease);
+    assert.equal(attributesUpdate.appliedTag, 'skills-v7.0.1');
     assert.equal(existsSync(materializationStage), false, 'successful recovery must remove the owned journal');
     assert.equal(git(config.repository, ['status', '--porcelain', '--untracked-files=all']), '');
     assert.equal(
@@ -1651,6 +1702,7 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
 
     writeFileSync(path.join(remote, 'content.txt'), 'temporary index recovery\n');
     const temporaryIndexSha = commit(remote, 'exercise temporary index recovery');
+    const temporaryIndexRelease = promoteFixtureRelease(remote, '7.0.2', temporaryIndexSha);
     const interruptedIndex = spawnSync(process.execPath, [config.reconcilerPath, '--force'], {
       cwd: root,
       encoding: 'utf8',
@@ -1665,7 +1717,8 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
     assert.equal(existsSync(path.join(materializationStage, 'candidate.index.lock')), true);
     const recoveredIndex = reconcile({ stateDirectory, force: true, strict: true, now: 16_125 });
     assert.equal(recoveredIndex.status, 'updated');
-    assert.equal(recoveredIndex.appliedSha, temporaryIndexSha);
+    assert.equal(recoveredIndex.appliedSha, temporaryIndexRelease);
+    assert.equal(recoveredIndex.appliedTag, 'skills-v7.0.2');
     assert.equal(existsSync(materializationStage), false);
     assert.equal(git(config.repository, ['status', '--porcelain', '--untracked-files=all']), '');
 
@@ -1674,6 +1727,7 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
     git(remote, ['update-index', '--cacheinfo', `100644,${invalidBlob},content.txt`]);
     git(remote, ['-c', 'user.name=Sylphx Test', '-c', 'user.email=test@sylphx.invalid', 'commit', '-m', 'noncanonical candidate']);
     const invalidSha = git(remote, ['rev-parse', 'HEAD']);
+    git(remote, ['tag', '-a', 'skills-v7.0.3', '-m', 'noncanonical promoted candidate', invalidSha]);
     const rejected = reconcile({ stateDirectory, force: true, now: 16_250 });
     assert.equal(rejected.status, 'unavailable');
     assert.match(rejected.error, /do not normalize to the committed tree/);
@@ -1683,17 +1737,20 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
 
     writeFileSync(path.join(remote, 'content.txt'), 'fixed candidate\n');
     const fixedSha = commit(remote, 'fix candidate normalization');
+    const fixedRelease = promoteFixtureRelease(remote, '7.0.4', fixedSha);
     const fixed = reconcile({ stateDirectory, force: true, strict: true, now: 16_500 });
     assert.equal(fixed.status, 'updated');
-    assert.equal(fixed.appliedSha, fixedSha);
+    assert.equal(fixed.appliedSha, fixedRelease);
+    assert.equal(fixed.appliedTag, 'skills-v7.0.4');
     assert.equal(git(config.repository, ['status', '--porcelain', '--untracked-files=all']), '');
 
     writeFileSync(path.join(remote, 'content.txt'), 'two\n');
     const secondSha = commit(remote, 'second');
+    const secondRelease = promoteFixtureRelease(remote, '7.0.5', secondSha);
     const second = reconcile({ stateDirectory, force: true, maxAgeMs: 10_000, strict: true, now: 17_000 });
     assert.equal(second.status, 'updated');
-    assert.equal(second.appliedSha, secondSha);
-    assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), secondSha);
+    assert.equal(second.appliedSha, secondRelease);
+    assert.equal(readFileSync(path.join(codexHome, 'applied-sha.txt'), 'utf8').trim(), secondRelease);
 
     const held = spawn(process.execPath, [config.reconcilerPath, '--force'], {
       cwd: root,
@@ -1789,6 +1846,168 @@ test('reconciler fetches only changed commits, honors TTL, and fences concurrent
   }
 });
 
+function promotionFixture(sandbox) {
+  const remote = path.join(sandbox, 'source');
+  const stateDirectory = path.join(sandbox, 'state');
+  const codexHome = path.join(sandbox, 'codex');
+  const claudeHome = path.join(sandbox, 'claude');
+  const grokHome = path.join(sandbox, 'grok');
+  mkdirSync(path.join(remote, 'runtime'), { recursive: true });
+  git(remote, ['init', '--initial-branch=main']);
+  const fixtureCli = `import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';\nimport path from 'node:path';\nconst args = process.argv.slice(2);\nconst agentIndex = args.indexOf('--agent');\nconst agents = agentIndex >= 0 ? args[agentIndex + 1].split(',') : ['codex', 'claude', 'grok'];\nconst homes = { codex: process.env.CODEX_HOME, claude: process.env.CLAUDE_CONFIG_DIR, grok: process.env.GROK_HOME };\nif (args[0] === 'status') {\n  const targets = agents.map((runtime) => {\n    const marker = path.join(homes[runtime], 'applied-sha.txt');\n    return { runtime, current: existsSync(marker) && readFileSync(marker, 'utf8').trim() === process.env.SYLPHX_SKILLS_COMMIT_SHA };\n  });\n  console.log(JSON.stringify({ command: 'status', targets }));\n} else {\n  for (const runtime of agents) {\n    mkdirSync(homes[runtime], { recursive: true });\n    writeFileSync(path.join(homes[runtime], 'applied-sha.txt'), process.env.SYLPHX_SKILLS_COMMIT_SHA + '\\n');\n  }\n}\n`;
+  writeFileSync(path.join(remote, 'runtime', 'sylphx-skills.mjs'), fixtureCli);
+  cpSync(path.join(root, 'runtime', 'reconcile.mjs'), path.join(remote, 'runtime', 'reconcile.mjs'));
+  writeFileSync(path.join(remote, 'content.txt'), 'one\n');
+  writeFileSync(path.join(remote, 'catalog.json'), `${JSON.stringify(fixtureCatalogFile([]), null, 2)}\n`);
+  const contentSha = commit(remote, 'content');
+  mkdirSync(stateDirectory, { recursive: true });
+  const config = {
+    schemaVersion: 2,
+    owner: 'SylphxAI/skills',
+    enabled: true,
+    mode: 'interval-scheduler',
+    channel: 'release-tag',
+    tagPrefix: 'skills-v',
+    remote,
+    branch: 'main',
+    repository: path.join(stateDirectory, 'repository'),
+    reconcilerPath: path.join(stateDirectory, 'reconcile.mjs'),
+    nodePath: process.execPath,
+    pathEnv: process.env.PATH,
+    agents: ['codex', 'claude', 'grok'],
+    homes: { codexHome, claudeHome, grokHome },
+  };
+  writeFileSync(path.join(stateDirectory, 'config.json'), `${JSON.stringify(config, null, 2)}\n`);
+  cpSync(path.join(root, 'runtime', 'reconcile.mjs'), config.reconcilerPath);
+  return { remote, stateDirectory, config, contentSha, codexHome, claudeHome, grokHome };
+}
+
+test('promotion channel fails closed on lightweight tags, legacy configs, and invalid manifests', () => {
+  // 1. A lightweight tag is never a promotion candidate.
+  {
+    const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-promo-lightweight-'));
+    try {
+      const { remote, stateDirectory, config, contentSha } = promotionFixture(sandbox);
+      git(remote, ['tag', 'skills-v7.0.0', contentSha]);
+      const result = reconcile({ stateDirectory, force: true });
+      assert.equal(result.status, 'unavailable');
+      assert.match(result.error, /not an annotated release tag/);
+    } finally {
+      rmSync(sandbox, { recursive: true, force: true });
+    }
+  }
+
+  // 2. A legacy branch-following config is retired and never silently migrates.
+  {
+    const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-promo-legacy-'));
+    try {
+      const { remote, stateDirectory, config, contentSha } = promotionFixture(sandbox);
+      const legacy = { ...config, schemaVersion: 1, branch: 'main' };
+      delete legacy.channel;
+      delete legacy.tagPrefix;
+      delete legacy.requireVerifiedTag;
+      writeFileSync(path.join(stateDirectory, 'config.json'), `${JSON.stringify(legacy, null, 2)}\n`);
+      const result = reconcile({ stateDirectory, force: true });
+      assert.equal(result.status, 'unconfigured');
+      assert.match(result.error, /legacy branch-following auto-sync config .* retired/);
+      assert.equal(existsSync(path.join(stateDirectory, 'repository')), false);
+    } finally {
+      rmSync(sandbox, { recursive: true, force: true });
+    }
+  }
+
+  // 3. An annotated tag without a promotion manifest is refused before its
+  //    repository-owned CLI runs.
+  {
+    const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-promo-manifest-'));
+    try {
+      const { remote, stateDirectory, config, contentSha } = promotionFixture(sandbox);
+      git(remote, ['tag', '-a', 'skills-v7.0.0', '-m', 'unsigned release', contentSha]);
+      const result = reconcile({ stateDirectory, force: true });
+      assert.equal(result.status, 'unavailable');
+      assert.match(result.error, /invalid promotion manifest/);
+    } finally {
+      rmSync(sandbox, { recursive: true, force: true });
+    }
+  }
+
+  // 4. A manifest whose catalog digest does not match the candidate tree is
+  //    refused (transplanted or tampered manifest).
+  {
+    const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-promo-digest-'));
+    try {
+      const { remote, stateDirectory, config, contentSha } = promotionFixture(sandbox);
+      const manifest = promotionManifest(remote, contentSha);
+      manifest.catalogDigest = `sha256:${'0'.repeat(64)}`;
+      writeFileSync(path.join(remote, 'promotion.json'), `${JSON.stringify(manifest, null, 2)}\n`);
+      const manifestSha = commit(remote, 'tampered manifest');
+      git(remote, ['tag', '-a', 'skills-v7.0.0', '-m', 'tampered', manifestSha]);
+      const result = reconcile({ stateDirectory, force: true });
+      assert.equal(result.status, 'unavailable');
+      assert.match(result.error, /catalog digest does not match the candidate tree/);
+    } finally {
+      rmSync(sandbox, { recursive: true, force: true });
+    }
+  }
+
+  // 5. A manifest whose sourceRevision does not match the tag commit parent is
+  //    refused.
+  {
+    const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-promo-source-'));
+    try {
+      const { remote, stateDirectory, config, contentSha } = promotionFixture(sandbox);
+      writeFileSync(path.join(remote, 'content.txt'), 'another revision\n');
+      const nextSha = commit(remote, 'next content');
+      const manifest = promotionManifest(remote, contentSha);
+      writeFileSync(path.join(remote, 'promotion.json'), `${JSON.stringify(manifest, null, 2)}\n`);
+      const manifestSha = commit(remote, 'manifest over next content');
+      git(remote, ['tag', '-a', 'skills-v7.0.0', '-m', 'wrong source', manifestSha]);
+      const result = reconcile({ stateDirectory, force: true });
+      assert.equal(result.status, 'unavailable');
+      assert.match(result.error, /sourceRevision does not match the tag commit parent/);
+      assert.equal(result.appliedSha, undefined);
+    } finally {
+      rmSync(sandbox, { recursive: true, force: true });
+    }
+  }
+
+  // 6. Requiring a verified tag fails closed when the tag is unsigned.
+  {
+    const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-promo-verified-'));
+    try {
+      const { remote, stateDirectory, config, contentSha } = promotionFixture(sandbox);
+      const manifestSha = promoteFixtureRelease(remote, '7.0.0', contentSha);
+      config.requireVerifiedTag = true;
+      writeFileSync(path.join(stateDirectory, 'config.json'), `${JSON.stringify(config, null, 2)}\n`);
+      const result = reconcile({ stateDirectory, force: true });
+      assert.equal(result.status, 'unavailable');
+      assert.match(result.error, /verify-tag .* failed/);
+    } finally {
+      rmSync(sandbox, { recursive: true, force: true });
+    }
+  }
+
+  // 7. Applying an older promotion than the applied one is a regression and is
+  //    refused even when the older tag is otherwise valid.
+  {
+    const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-promo-regression-'));
+    try {
+      const { remote, stateDirectory, config, contentSha } = promotionFixture(sandbox);
+      const firstRelease = promoteFixtureRelease(remote, '7.1.0', contentSha);
+      const first = reconcile({ stateDirectory, force: true });
+      assert.equal(first.status, 'updated');
+      assert.equal(first.appliedTag, 'skills-v7.1.0');
+      git(remote, ['tag', '-d', 'skills-v7.1.0']);
+      git(remote, ['tag', '-a', 'skills-v7.0.0', '-m', 'older release', contentSha]);
+      const result = reconcile({ stateDirectory, force: true });
+      assert.equal(result.status, 'unavailable');
+      assert.match(result.error, /promotion regression/);
+    } finally {
+      rmSync(sandbox, { recursive: true, force: true });
+    }
+  }
+});
+
 test('auto-sync enables a configurable scheduler, repairs exact-source drift, and removes legacy hooks', async () => {
   const sandbox = mkdtempSync(path.join(os.tmpdir(), 'sylphx-auto-sync-'));
   const source = path.join(sandbox, 'source');
@@ -1821,6 +2040,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     const remoteReconciler = path.join(source, 'runtime', 'reconcile.mjs');
     writeFileSync(remoteReconciler, `${readFileSync(remoteReconciler, 'utf8')}\n// exact remote candidate fixture\n`);
     const sourceSha = commit(source, 'fixture source');
+    const firstRelease = promoteFixtureRelease(source, '7.0.0', sourceSha);
 
     const legacyCommand = `'${process.execPath}' '${path.join(managedHome, '.sylphx-skills', 'reconcile.mjs')}' --quiet`;
     const legacyHooks = { UserPromptSubmit: [{ hooks: [{ type: 'command', command: legacyCommand }] }] };
@@ -1898,15 +2118,15 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     );
     const installedManifest = path.join(codexHome, 'skills', '.sylphx-skills.json');
     assert.equal(existsSync(installedManifest), true, `installed paths: ${readdirSync(managedHome, { recursive: true }).join(', ')}`);
-    assert.equal(readFileSync(installedManifest, 'utf8').includes(sourceSha), true);
+    assert.equal(readFileSync(installedManifest, 'utf8').includes(firstRelease), true);
     assert.equal(existsSync(path.join(grokHome, 'skills', '.sylphx-skills.json')), false);
     const status = JSON.parse(runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout);
     assert.equal(status.enabled, true);
     assert.equal(status.current, true);
     assert.equal(status.healthy, true);
     assert.equal(status.scheduler.active, true);
-    assert.equal(status.source.managedHead, sourceSha);
-    assert.equal(status.source.remoteHead, sourceSha);
+    assert.equal(status.source.managedHead, firstRelease);
+    assert.equal(status.source.remoteHead, firstRelease);
     assert.equal(status.intervalMinutes, 7);
     assert.equal(status.mode, 'interval-scheduler');
     assert.deepEqual(status.agents, ['codex', 'claude']);
@@ -1932,11 +2152,11 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     const repairResult = JSON.parse(repaired.stdout);
     assert.equal(repairResult.status, 'updated');
     assert.equal(repairResult.repaired, true);
-    assert.equal(repairResult.appliedSha, sourceSha);
+    assert.equal(repairResult.appliedSha, firstRelease);
     const repairedManifest = JSON.parse(readFileSync(installedManifest, 'utf8'));
     assert.notEqual(repairedManifest.catalogDigest, driftedManifest.catalogDigest);
     assert.deepEqual(repairedManifest.skills, fixtureCatalog.skills.map((skill) => skill.name));
-    assert.equal(repairedManifest.sourceCommit, sourceSha);
+    assert.equal(repairedManifest.sourceCommit, firstRelease);
     assert.equal(readFileSync(driftedSkill, 'utf8').includes('local drift'), false);
 
     rmSync(installedManifest, { force: true });
@@ -1965,7 +2185,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     assert.equal(repairedCurrent.status, 0, repairedCurrent.stderr || repairedCurrent.stdout);
     assert.equal(JSON.parse(repairedCurrent.stdout).repaired, true);
     managedGenerationName(managedCurrent);
-    assert.equal(JSON.parse(readFileSync(installedManifest, 'utf8')).sourceCommit, sourceSha);
+    assert.equal(JSON.parse(readFileSync(installedManifest, 'utf8')).sourceCommit, firstRelease);
 
     const residualSkill = path.join(codexHome, 'skills', '.sylphx-managed-current', 'residual-owned-skill');
     mkdirSync(residualSkill);
@@ -2032,19 +2252,20 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     writeFileSync(path.join(source, 'catalog.json'), `${JSON.stringify(updatedCatalog, null, 2)}\n`);
 
     const updatedSha = commit(source, 'change exact fixture package set');
+    const updatedRelease = promoteFixtureRelease(source, '7.0.1', updatedSha);
     const staleReadback = JSON.parse(runWithEnvironment(['auto-sync', 'status', '--json'], environment).stdout);
     assert.equal(staleReadback.enabled, true, 'scheduler capability remains live while source is stale');
     assert.equal(staleReadback.current, false);
     assert.equal(staleReadback.healthy, false);
-    assert.equal(staleReadback.source.managedHead, sourceSha);
-    assert.equal(staleReadback.source.remoteHead, updatedSha);
+    assert.equal(staleReadback.source.managedHead, firstRelease);
+    assert.equal(staleReadback.source.remoteHead, updatedRelease);
     const scheduledRun = spawnSync(process.execPath, [
       path.join(managedHome, '.sylphx-skills', 'reconcile.mjs'),
       '--force', '--strict', '--quiet',
     ], { encoding: 'utf8', env: { ...process.env, ...environment } });
     assert.equal(scheduledRun.status, 0, scheduledRun.stderr || scheduledRun.stdout);
     const updatedManifest = JSON.parse(readFileSync(installedManifest, 'utf8'));
-    assert.equal(updatedManifest.sourceCommit, updatedSha);
+    assert.equal(updatedManifest.sourceCommit, updatedRelease);
     assert.deepEqual(updatedManifest.skills, updatedCatalog.skills.map((skill) => skill.name));
     assert.equal(existsSync(path.join(codexHome, 'skills', addedSkill, 'SKILL.md')), true);
     assert.equal(existsSync(path.join(claudeHome, 'skills', addedSkill, 'SKILL.md')), true);
@@ -2056,8 +2277,8 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     assert.equal(convergedReadback.enabled, true);
     assert.equal(convergedReadback.current, true);
     assert.equal(convergedReadback.healthy, true);
-    assert.equal(convergedReadback.source.managedHead, updatedSha);
-    assert.equal(convergedReadback.source.remoteHead, updatedSha);
+    assert.equal(convergedReadback.source.managedHead, updatedRelease);
+    assert.equal(convergedReadback.source.remoteHead, updatedRelease);
     assert.equal(existsSync(path.join(unmanaged, 'SKILL.md')), true);
     assert.deepEqual(
       readdirSync(path.join(codexHome, 'skills')).filter((name) => name.startsWith('.sylphx-transaction-')),
@@ -2117,7 +2338,7 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     assert.equal(JSON.parse(preLockStdout).status, 'unconfigured');
     assert.equal(
       JSON.parse(readFileSync(installedManifest, 'utf8')).sourceCommit,
-      updatedSha,
+      updatedRelease,
       'a tick admitted before disable must re-read config under lock and perform no later target effects',
     );
     const claude = JSON.parse(readFileSync(path.join(claudeHome, 'settings.json'), 'utf8'));
@@ -2162,6 +2383,7 @@ test('auto-sync supports a host-supervised scheduler with freshness-backed statu
       cpSync(path.join(root, entry), path.join(source, entry));
     }
     const sourceSha = commit(source, 'external supervisor fixture');
+    const firstRelease = promoteFixtureRelease(source, '7.0.0', sourceSha);
     const environment = {
       SYLPHX_SKILLS_HOME: managedHome,
       SYLPHX_SKILLS_REMOTE: pathToFileURL(source).href,
@@ -2193,7 +2415,7 @@ test('auto-sync supports a host-supervised scheduler with freshness-backed statu
     assert.equal(
       JSON.parse(readFileSync(path.join(codexHome, 'skills', '.sylphx-skills.json'), 'utf8'))
         .sourceCommit,
-      sourceSha,
+      firstRelease,
     );
 
     const awaitingSupervisor = JSON.parse(
@@ -2257,7 +2479,7 @@ test('auto-sync supports a host-supervised scheduler with freshness-backed statu
       env: { ...process.env, ...environment },
     });
     assert.equal(tick.status, 0, tick.stderr || tick.stdout);
-    assert.equal(JSON.parse(tick.stdout).appliedSha, sourceSha);
+    assert.equal(JSON.parse(tick.stdout).appliedSha, firstRelease);
 
     writeFileSync(heartbeat, `${JSON.stringify({
       schemaVersion: 1,

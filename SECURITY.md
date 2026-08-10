@@ -21,14 +21,17 @@ no requirement to send credentials to Sylphx to install.
 
 ## AutoSync distribution model
 
-AutoSync follows the declared remote branch, fetches its current head, and
-executes that candidate's repository-owned CLI under the user's privileges.
-Branch protection and exact-digest application mitigate risk, but there is no
-immutable signed promotion authority between "landed on main" and "executed on
-user machines"; qualification is the trust model and it is currently empty.
-AutoSync refuses to downgrade an installed `qualified` capability to
-`unqualified`. Users who do not want mutable-main tracking should install
-statically and update explicitly.
+AutoSync applies **only immutable annotated release tags** carrying a verified
+promotion manifest — never the current head of a mutable branch — and verifies
+the manifest (catalog digest, qualification projection, sourceRevision) against
+the exact candidate tree **before** the candidate's repository-owned CLI runs
+under the user's privileges (see [docs/PROMOTION.md](docs/PROMOTION.md)).
+Without `requireVerifiedTag: true`, the authority is repository governance plus
+tag immutability; with it, the authority is cryptographic (GPG/SSH `git
+verify-tag`). Branch-following AutoSync configs (schemaVersion 1) are retired
+and fail closed. Qualification is the value-trust model and it is currently
+empty: no package is qualified. AutoSync also refuses to downgrade an
+installed `qualified` capability to `unqualified`.
 
 ## Do not commit
 

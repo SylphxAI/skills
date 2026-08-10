@@ -51,6 +51,8 @@ self-graded quality. It grows only when real capability and real value grow.
 - Outcome receipts are recorded against `schemas/outcome-receipt.schema.json`
   by the user's product/system and the Control Plane; the repository never
   fabricates receipts.
+- AutoSync applies only immutable annotated release tags with a verified
+  promotion manifest (`docs/PROMOTION.md`); branch-following is retired.
 
 Current honest projection (2026-08-10): 57 capability packages, 0 qualified,
 0 recorded outcome receipts, Verified Capability Yield = 0 eligible attempts

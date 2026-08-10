@@ -40,11 +40,16 @@ the constitution projection is present.
 
 ## AutoSync promotion safety
 
-AutoSync follows the declared remote branch and applies only exact candidate
-revisions whose package digests match their catalog. It refuses to apply a
-candidate that would downgrade an installed `qualified` capability to
-`unqualified` (fail-closed promotion gate; explicit override is recorded in
-the config). Qualification state is visible per package in `status --json`.
+AutoSync applies **only immutable annotated release tags** (`skills-vX.Y.Z`
+with a promotion manifest) — never mutable branch heads — and verifies each
+candidate's promotion manifest (catalog digest and qualification projection
+against the exact candidate tree, sourceRevision against the tag commit's
+first parent) **before** the candidate's repository-owned CLI runs. It also
+refuses to apply a candidate that would downgrade an installed `qualified`
+capability to `unqualified`, or a tag older than the already applied one.
+See [docs/PROMOTION.md](docs/PROMOTION.md). AutoSync requires at least one
+promoted release tag to exist; until then `auto-sync enable` fails closed with
+a clear error. Qualification state is visible per package in `status --json`.
 
 ## Clear
 
