@@ -1,0 +1,39 @@
+{
+  "id": "qc-edge-touch-fail-closed",
+  "kind": "exec",
+  "description": "A sheet whose content touches cell edges must fail closed under --reject-edge-touch.",
+  "command": [
+    "/tmp/sylphx-eval-venv/bin/python",
+    "generate2dsprite.py",
+    "process",
+    "--input",
+    "input.png",
+    "--target",
+    "creature",
+    "--mode",
+    "evolution",
+    "--output-dir",
+    "out",
+    "--reject-edge-touch"
+  ],
+  "status": "pass",
+  "failures": [],
+  "exitCode": 1,
+  "startedAt": "2026-08-10T14:21:44.168Z",
+  "finishedAt": "2026-08-10T14:21:44.315Z",
+  "stdoutTail": "",
+  "stderrTail": "Traceback (most recent call last):\n  File \"/home/codex/src/github.com/SylphxAI/skills-wt-verified-capabilities/docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/generate2dsprite.py\", line 1031, in <module>\n    main()\n  File \"/home/codex/src/github.com/SylphxAI/skills-wt-verified-capabilities/docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/generate2dsprite.py\", line 1027, in main\n    cmd_process(args)\n  File \"/home/codex/src/github.com/SylphxAI/skills-wt-verified-capabilities/docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/generate2dsprite.py\", line 957, in cmd_process\n    raise ValueError(f\"Frames touch a cell edge: {metadata['edge_touch_frames']}\")\nValueError: Frames touch a cell edge: [[0, 0], [0, 1], [1, 0], [1, 1]]\n",
+  "artifactCount": 10,
+  "artifactDigests": {
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/generate2dsprite.py": "sha256:681d0885d1813e9d7e1a82dfd340c1c71c8158e57a4c0710516c3f6c2c944a95",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/input.png": "sha256:6e21b3a82892f275a3d9efadd9c39918ee144037c4f394e7b4fbbee17222eeef",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/out/animation.gif": "sha256:ca7e1bb3da6b88eb1bf09893f496fd8e15801df5c6818fcf231d5664abba69e1",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/out/raw-sheet-clean.png": "sha256:c0191fe7a776d54dcdcc845004031f81a70ff1d39c4ad82598baf9d09993cab8",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/out/raw-sheet.png": "sha256:2b63c2f5a813ff5e1bfc5af1e7e597e4374ff40d4d72f114169d7233fa43a049",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/out/sheet-transparent.png": "sha256:9e713684343d05d5a1a959c2bec23219ec990fd9d0642f351090d367e6d41b65",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/out/stage-1.png": "sha256:97bb7bf2c32510d5c54bce4c9431d79417ca66231f3ed3b9d020d95bd95e7015",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/out/stage-2.png": "sha256:adcb35f8079ce8e0fcde49ae3068b17e0ae70cacb52bbd29721c548db44100c2",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/out/stage-3.png": "sha256:64ce87edeed15bba3804155c03e2e0a231e6db57ec0059ff49ee592bb14f074f",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/qc-edge-touch-fail-closed/work/out/stage-4.png": "sha256:9deba4ecf9215ebdadbe7d1f4d2f3fb5dd76fe416187cb1fd177952da55c2ca0"
+  }
+}

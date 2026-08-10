@@ -1,0 +1,36 @@
+{
+  "name": "release readiness",
+  "version": "1.2.3",
+  "release": true,
+  "meta": {
+    "owner": "platform",
+    "checks": ["lint", "unit", "integration"]
+  },
+  "gates": [
+    {
+      "id": "version-present",
+      "description": "a version is declared",
+      "check": {"type": "exists", "path": "version"}
+    },
+    {
+      "id": "version-value",
+      "description": "version matches the release candidate",
+      "check": {"type": "equals", "path": "version", "value": "1.2.3"}
+    },
+    {
+      "id": "release-flag",
+      "description": "release is enabled",
+      "check": {"type": "truthy", "path": "release"}
+    },
+    {
+      "id": "owner-set",
+      "description": "an owner is recorded",
+      "check": {"type": "non-empty", "path": "meta.owner"}
+    },
+    {
+      "id": "checks-run",
+      "description": "at least one check ran",
+      "check": {"type": "non-empty", "path": "meta.checks"}
+    }
+  ]
+}

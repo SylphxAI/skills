@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "name": "hello-check",
+  "status": "unqualified",
+  "evaluator": null,
+  "qualifiedAt": null,
+  "expiresAt": null,
+  "evidence": [],
+  "compatibility": []
+}

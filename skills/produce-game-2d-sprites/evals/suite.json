@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "capability": "produce-game-2d-sprites",
+  "claim": "Deterministic postprocessing turns chroma-keyed sprite sheets into engine-ready transparent sprites with fail-closed QC; the procedure is followable by a fresh agent.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "python3 + Pillow (script runtime)",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Postprocess this chroma-keyed 2x2 sprite sheet (input.png, solid magenta #FF00FF background, one creature pose per quadrant) into at least one transparent PNG per pose in an out/ directory. You may write any helper code you like. Keep backgrounds transparent."
+  },
+  "tasks": [
+    {
+      "id": "extract-2x2",
+      "kind": "exec",
+      "description": "Process a 2x2 chroma-keyed creature sheet into transparent sprites with pipeline metadata.",
+      "fixtures": [
+        {
+          "source": "sheet-2x2.png",
+          "as": "input.png"
+        },
+        {
+          "source": "package:scripts/generate2dsprite.py",
+          "as": "generate2dsprite.py"
+        }
+      ],
+      "command": [
+        "{python}",
+        "generate2dsprite.py",
+        "process",
+        "--input",
+        "input.png",
+        "--target",
+        "creature",
+        "--mode",
+        "evolution",
+        "--output-dir",
+        "out"
+      ],
+      "oracle": {
+        "assertions": [
+          {
+            "type": "exit-code-eq",
+            "value": 0
+          },
+          {
+            "type": "file-exists",
+            "path": "out/stage-1.png"
+          },
+          {
+            "type": "file-exists",
+            "path": "out/stage-4.png"
+          },
+          {
+            "type": "file-exists",
+            "path": "out/sheet-transparent.png"
+          },
+          {
+            "type": "image-dimensions",
+            "path": "out/stage-1.png",
+            "min": 4,
+            "max": 128
+          },
+          {
+            "type": "image-corner-alpha",
+            "path": "out/stage-1.png",
+            "corner": "top-left",
+            "opaque": false
+          },
+          {
+            "type": "file-exists",
+            "path": "out/pipeline-meta.json"
+          },
+          {
+            "type": "json-path-eq",
+            "path": "out/pipeline-meta.json",
+            "jsonPath": "frames.length",
+            "value": 4
+          }
+        ]
+      }
+    },
+    {
+      "id": "qc-edge-touch-fail-closed",
+      "kind": "exec",
+      "description": "A sheet whose content touches cell edges must fail closed under --reject-edge-touch.",
+      "fixtures": [
+        {
+          "source": "sheet-edge-touch.png",
+          "as": "input.png"
+        },
+        {
+          "source": "package:scripts/generate2dsprite.py",
+          "as": "generate2dsprite.py"
+        }
+      ],
+      "command": [
+        "{python}",
+        "generate2dsprite.py",
+        "process",
+        "--input",
+        "input.png",
+        "--target",
+        "creature",
+        "--mode",
+        "evolution",
+        "--output-dir",
+        "out",
+        "--reject-edge-touch"
+      ],
+      "oracle": {
+        "assertions": [
+          {
+            "type": "exit-code-eq",
+            "value": 1
+          },
+          {
+            "type": "stdout-not-contains",
+            "contains": "succeeded"
+          }
+        ]
+      }
+    },
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full SKILL.md and shipped script performs the same extraction contract.",
+      "fixtures": [
+        {
+          "source": "sheet-2x2.png",
+          "as": "input.png"
+        },
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        },
+        {
+          "source": "package:scripts/generate2dsprite.py",
+          "as": "generate2dsprite.py"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely, then perform the produce-game-2d-sprites job on ./input.png (2x2 chroma-keyed creature evolution sheet): use the provided ./generate2dsprite.py script (python3 ./generate2dsprite.py process --input input.png --target creature --mode evolution --output-dir out) and then report the output paths. Do not invent other formats; follow the script contract.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "exit-code-eq",
+            "value": 0
+          },
+          {
+            "type": "file-exists",
+            "path": "out/pipeline-meta.json"
+          },
+          {
+            "type": "json-path-eq",
+            "path": "out/pipeline-meta.json",
+            "jsonPath": "frames.length",
+            "value": 4
+          },
+          {
+            "type": "file-exists",
+            "path": "out/stage-1.png"
+          },
+          {
+            "type": "image-corner-alpha",
+            "path": "out/stage-1.png",
+            "corner": "top-left",
+            "opaque": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "description": "Fresh-context baseline (no skill): same extraction task, lenient oracle (some transparent output).",
+      "fixtures": [
+        {
+          "source": "sheet-2x2.png",
+          "as": "input.png"
+        }
+      ],
+      "prompt": "Postprocess this chroma-keyed 2x2 sprite sheet (input.png, solid magenta #FF00FF background, one creature pose per quadrant) into at least one transparent PNG per pose in an out/ directory. You may write any helper code you like. Keep backgrounds transparent.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "exit-code-eq",
+            "value": 0
+          },
+          {
+            "type": "dir-entry-count-min",
+            "path": "out",
+            "min": 1
+          }
+        ]
+      }
+    }
+  ]
+}

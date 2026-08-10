@@ -4,8 +4,13 @@
   "count": 57,
   "qualification": {
     "total": 57,
-    "qualified": 0,
-    "qualifiedNames": []
+    "qualified": 4,
+    "qualifiedNames": [
+      "author-skill",
+      "produce-game-2d-map-assets",
+      "produce-game-2d-sprites",
+      "select-dependency-versions"
+    ]
   },
   "skills": [
     {
@@ -64,14 +69,14 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:f81bdcf1fe41708cbbb9aa14edb58ef0513fbff70ce849dd8efecfe99912c7e3",
+      "packageDigest": "sha256:31ee4aff7547ab1584cefc6748d1b0b03391b0f593c390100ce9d3e5c82d45c5",
       "capability": {
         "job": "Create or revise an Agent Skill package: job, description, method, references, contract.",
         "outcomeObservable": "The revised package passes npm test with a fresh catalog, local links resolve, the capability contract validates, and the description selects for the right ask and abstains on near-misses.",
         "oracleOwner": "repository"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "bound-request-scope",
@@ -467,27 +472,27 @@
       "name": "produce-game-2d-map-assets",
       "description": "Produce 2D map tiles/props packs with extract/preview.",
       "path": "skills/produce-game-2d-map-assets/SKILL.md",
-      "packageDigest": "sha256:c5a704c01e8f2adce074ff65985ad333e929448d1130e9f7570e45a1f1f54acb",
+      "packageDigest": "sha256:624099f969d4b4e60449eb2a97c4cd2c0753da7375eb0aaede609a24e846676f",
       "capability": {
         "job": "Produce 2D map tiles, terrain sheets, and prop packs with extraction, layering, and seam QC.",
         "outcomeObservable": "Tile or prop packs at the declared title paths with real seam composites, alpha-edge and naming QC notes, preview images, and an honest residual list.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "produce-game-2d-sprites",
       "description": "Produce engine-ready 2D game sprites/sheets with QC.",
       "path": "skills/produce-game-2d-sprites/SKILL.md",
-      "packageDigest": "sha256:8bfd4de828ac5973b95f08a99aa1c97296c14b662468bec91c1296430dd216c9",
+      "packageDigest": "sha256:8630db60b7ec1cd10b82177849f951971d4bcf872b102b361bc0a1bc91ea3c1c",
       "capability": {
         "job": "Produce engine-ready 2D game sprites and animation sheets with QC: chroma, loop, scale consistency, naming.",
         "outcomeObservable": "Engine-ready sprite or sheet files at declared title paths with manifest, QC evidence (chroma, loop flip test, scale consistency), and an honest residual and tool-gap list.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "produce-product-assets",
@@ -649,14 +654,14 @@
       "name": "select-dependency-versions",
       "description": "Select package/runtime versions from live authoritative sources.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:d30ab2777203cfe68fc9eb82f42f619667378b84dafc016687b47560f2dea4e0",
+      "packageDigest": "sha256:b1cb622575c8f9ea8545c15cc941aad0c3bf22cb272413cc87784e122898c0ff",
       "capability": {
         "job": "Select package and runtime versions from live authoritative sources with exact versions, sources, and applied pins.",
         "outcomeObservable": "Selected versions trace to a live registry or release API with the exact source recorded, pins are applied in owning manifests, and the repo's install, build, and tests pass or residuals are explicit.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "select-next-work",

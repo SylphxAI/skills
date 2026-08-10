@@ -34,6 +34,7 @@ const SCHEMA_FILES = [
   'schemas/capability-contract.schema.json',
   'schemas/qualification-record.schema.json',
   'schemas/outcome-receipt.schema.json',
+  'schemas/eval-suite.schema.json',
 ];
 
 const REQUIRED_ROOT_FILES = [
@@ -48,6 +49,7 @@ const REQUIRED_ROOT_FILES = [
   'docs/qualification/LEDGER.md',
   'docs/PROMOTION.md',
   'scripts/promote-release.mjs',
+  'scripts/run-qualification.mjs',
   ...SCHEMA_FILES,
   'runtime/hooks.mjs',
   'runtime/package-digest.mjs',
@@ -125,6 +127,14 @@ function validateCapabilityContract(folder, errors) {
     }
     if (!qualification.evidence.every((item) => item.digest && item.uri)) {
       errors.push(`${qualificationPath}: qualified evidence must carry digest and uri`);
+    }
+    if (!existsSync(path.join(repositoryRoot, `skills/${folder}/evals/suite.json`))) {
+      errors.push(`${qualificationPath}: qualified capability requires an eval suite at skills/${folder}/evals/suite.json`);
+    }
+    for (const item of qualification.evidence) {
+      if (!existsSync(path.join(repositoryRoot, item.uri))) {
+        errors.push(`${qualificationPath}: evidence uri missing on disk: ${item.uri}`);
+      }
     }
   }
 }

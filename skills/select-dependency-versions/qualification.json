@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "select-dependency-versions"
+  "name": "select-dependency-versions",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-10T14:38:45.493Z",
+  "expiresAt": "2026-11-08T14:40:04.390Z",
+  "evidence": [
+    {
+      "id": "select-dependency-versions-incremental-value-2026-08-10T14-37-58-866Z",
+      "kind": "incremental-value",
+      "digest": "sha256:cc7c1fd980bd37fa7260f0af86cb6a62014e10eeb4e5490c76f562794e34e012",
+      "uri": "docs/qualification/evals/select-dependency-versions/run-2026-08-10T14-37-58-866Z/report.json"
+    },
+    {
+      "id": "select-dependency-versions-compatibility-2026-08-10T14-37-58-866Z",
+      "kind": "compatibility",
+      "digest": "sha256:cc7c1fd980bd37fa7260f0af86cb6a62014e10eeb4e5490c76f562794e34e012",
+      "uri": "docs/qualification/evals/select-dependency-versions/run-2026-08-10T14-37-58-866Z/report.json"
+    },
+    {
+      "id": "select-dependency-versions-security-2026-08-10T14-37-58-866Z",
+      "kind": "security",
+      "digest": "sha256:cc7c1fd980bd37fa7260f0af86cb6a62014e10eeb4e5490c76f562794e34e012",
+      "uri": "docs/qualification/evals/select-dependency-versions/run-2026-08-10T14-37-58-866Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    },
+    {
+      "environment": "network (registry.npmjs.org)",
+      "result": "verified"
+    }
+  ]
 }

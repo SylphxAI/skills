@@ -1,0 +1,36 @@
+{
+  "id": "extract-2x2",
+  "kind": "exec",
+  "description": "Extract four labeled transparent props from a 2x2 chroma-keyed pack with manifest.",
+  "command": [
+    "/tmp/sylphx-eval-venv/bin/python",
+    "extract_prop_pack.py",
+    "--input",
+    "input.png",
+    "--rows",
+    "2",
+    "--cols",
+    "2",
+    "--output-dir",
+    "out",
+    "--labels",
+    "a,b,c,d"
+  ],
+  "status": "pass",
+  "failures": [],
+  "exitCode": 0,
+  "startedAt": "2026-08-10T14:19:54.619Z",
+  "finishedAt": "2026-08-10T14:19:54.717Z",
+  "stdoutTail": "/home/codex/src/github.com/SylphxAI/skills-wt-verified-capabilities/docs/qualification/evals/produce-game-2d-map-assets/run-2026-08-10T14-19-54-574Z/tasks/extract-2x2/work/out/prop-pack.json\n",
+  "stderrTail": "",
+  "artifactCount": 7,
+  "artifactDigests": {
+    "docs/qualification/evals/produce-game-2d-map-assets/run-2026-08-10T14-19-54-574Z/tasks/extract-2x2/work/extract_prop_pack.py": "sha256:c02a2726497e6771e0a5a1e5105591ce98b9f161b8f6a36e04863bf7592f8e36",
+    "docs/qualification/evals/produce-game-2d-map-assets/run-2026-08-10T14-19-54-574Z/tasks/extract-2x2/work/input.png": "sha256:9801790b5dfe59e73c136b66190a547b9cc83468a58843410cebf985b86db2ab",
+    "docs/qualification/evals/produce-game-2d-map-assets/run-2026-08-10T14-19-54-574Z/tasks/extract-2x2/work/out/a/prop.png": "sha256:4476133e89ef7231fab1436af2e9b319d5c7b2f31606ffc1950ef3ed4aa1e68f",
+    "docs/qualification/evals/produce-game-2d-map-assets/run-2026-08-10T14-19-54-574Z/tasks/extract-2x2/work/out/b/prop.png": "sha256:26b9e50826cbfc389ea4177dd1456a6cfdae3343de5f034f97d399cbbb649f5c",
+    "docs/qualification/evals/produce-game-2d-map-assets/run-2026-08-10T14-19-54-574Z/tasks/extract-2x2/work/out/c/prop.png": "sha256:9a07ebb9fc83e00cb2132be5e8ea05eb21627785c11af459b65a20dd37bdbde4",
+    "docs/qualification/evals/produce-game-2d-map-assets/run-2026-08-10T14-19-54-574Z/tasks/extract-2x2/work/out/d/prop.png": "sha256:2f9f3b0d105c215f9dd8dcf15d9ee01fcfb5fef23c941263f59aaae4cf49097e",
+    "docs/qualification/evals/produce-game-2d-map-assets/run-2026-08-10T14-19-54-574Z/tasks/extract-2x2/work/out/prop-pack.json": "sha256:062eacbbd7a2ae876a769f827960850d2f68cd84cd7073a47df88ddeb1641b7d"
+  }
+}
