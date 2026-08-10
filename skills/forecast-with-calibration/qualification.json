@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "forecast-with-calibration"
+  "name": "forecast-with-calibration",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-10T15:41:39.569Z",
+  "expiresAt": "2026-11-08T15:56:21.340Z",
+  "evidence": [
+    {
+      "id": "forecast-with-calibration-incremental-value-2026-08-10T15-38-53-178Z",
+      "kind": "incremental-value",
+      "digest": "sha256:c28728bc697b50fc78f4d1c4f6ccf8e6af473d9c87cb14b5c248c7161fc6bd72",
+      "uri": "docs/qualification/evals/forecast-with-calibration/run-2026-08-10T15-38-53-178Z/report.json"
+    },
+    {
+      "id": "forecast-with-calibration-compatibility-2026-08-10T15-38-53-178Z",
+      "kind": "compatibility",
+      "digest": "sha256:c28728bc697b50fc78f4d1c4f6ccf8e6af473d9c87cb14b5c248c7161fc6bd72",
+      "uri": "docs/qualification/evals/forecast-with-calibration/run-2026-08-10T15-38-53-178Z/report.json"
+    },
+    {
+      "id": "forecast-with-calibration-security-2026-08-10T15-38-53-178Z",
+      "kind": "security",
+      "digest": "sha256:c28728bc697b50fc78f4d1c4f6ccf8e6af473d9c87cb14b5c248c7161fc6bd72",
+      "uri": "docs/qualification/evals/forecast-with-calibration/run-2026-08-10T15-38-53-178Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

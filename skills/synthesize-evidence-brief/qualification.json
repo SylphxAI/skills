@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "synthesize-evidence-brief"
+  "name": "synthesize-evidence-brief",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-10T15:56:14.743Z",
+  "expiresAt": "2026-11-08T15:56:21.525Z",
+  "evidence": [
+    {
+      "id": "synthesize-evidence-brief-incremental-value-2026-08-10T15-42-08-028Z",
+      "kind": "incremental-value",
+      "digest": "sha256:9e7331500a4ad62c95e525de132a005e107ec0cadcf8f2797dcdd5c9d01b714a",
+      "uri": "docs/qualification/evals/synthesize-evidence-brief/run-2026-08-10T15-42-08-028Z/report.json"
+    },
+    {
+      "id": "synthesize-evidence-brief-compatibility-2026-08-10T15-42-08-028Z",
+      "kind": "compatibility",
+      "digest": "sha256:9e7331500a4ad62c95e525de132a005e107ec0cadcf8f2797dcdd5c9d01b714a",
+      "uri": "docs/qualification/evals/synthesize-evidence-brief/run-2026-08-10T15-42-08-028Z/report.json"
+    },
+    {
+      "id": "synthesize-evidence-brief-security-2026-08-10T15-42-08-028Z",
+      "kind": "security",
+      "digest": "sha256:9e7331500a4ad62c95e525de132a005e107ec0cadcf8f2797dcdd5c9d01b714a",
+      "uri": "docs/qualification/evals/synthesize-evidence-brief/run-2026-08-10T15-42-08-028Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

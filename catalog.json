@@ -4,15 +4,19 @@
   "count": 57,
   "qualification": {
     "total": 57,
-    "qualified": 8,
+    "qualified": 12,
     "qualifiedNames": [
+      "analyze-critically",
       "author-skill",
       "bound-request-scope",
       "decide-architecture-shape",
       "engineer-testable-requirements",
+      "forecast-with-calibration",
       "produce-game-2d-map-assets",
       "produce-game-2d-sprites",
+      "record-structured-deliberation",
       "select-dependency-versions",
+      "synthesize-evidence-brief",
       "write-high-signal-update"
     ]
   },
@@ -47,14 +51,14 @@
       "name": "analyze-critically",
       "description": "Adversarially critique a claim/plan/design with kill criteria.",
       "path": "skills/analyze-critically/SKILL.md",
-      "packageDigest": "sha256:93f63888fb3f0e9b9f871fa1a35ee833082f5fd82c74eea6c873f58db71feafe",
+      "packageDigest": "sha256:22aa7ee7fb8c977196f35f4cd79769b502784382c6691c1afe275ad8f6bc560d",
       "capability": {
         "job": "Adversarially critique a claim, plan, or design with kill criteria and calibrated confidence.",
         "outcomeObservable": "A Critical Analysis Brief containing competing hypotheses, discriminating evidence, a calibrated conclusion, and explicit conditions that would change the conclusion, usable by decision-makers.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "analyze-system-dynamics",
@@ -385,14 +389,14 @@
       "name": "forecast-with-calibration",
       "description": "Produce calibrated probabilistic forecasts with base rates and ranges.",
       "path": "skills/forecast-with-calibration/SKILL.md",
-      "packageDigest": "sha256:242a930d7fa9e229df32afcbbdd92c67e71c858c62b7de0d3848c5c3950a8b24",
+      "packageDigest": "sha256:05f4b56dbe6364592bc73e7059b7a62132c49dfc0aba11270f882fe158767270",
       "capability": {
         "job": "Produce calibrated probabilistic forecasts with resolvable question contracts, base rates, transparent aggregation, and proper scoring.",
         "outcomeObservable": "A Probabilistic Forecast Record with a resolvable question contract, base-rate anchored probability or distribution, transparent history, and a proper-score resolution an independent scorer can reproduce.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "maintain-product",
@@ -541,14 +545,14 @@
       "name": "record-structured-deliberation",
       "description": "Record a structured deliberation: options, criteria, decision, actions.",
       "path": "skills/record-structured-deliberation/SKILL.md",
-      "packageDigest": "sha256:93435bef2c8b0b375fc7fe5eb79c4d36de1a71bf2201da8294498558dfab41b2",
+      "packageDigest": "sha256:184a45158658be5dc8c9cd61de48bee8e3dad41062f11b6cefef86057eb4f913",
       "capability": {
         "job": "Record a structured deliberation: options, criteria, decision, actions, preserving genuine alternatives and dissent.",
         "outcomeObservable": "A Deliberation Record preserving genuine alternatives, linked arguments, position changes with reasons, residual dissent, commitments and owners, and a handoff to a decision, experiment, or work item.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "remediate-agent-harness",
@@ -697,14 +701,14 @@
       "name": "synthesize-evidence-brief",
       "description": "Synthesize multi-source evidence into one bounded brief with residuals.",
       "path": "skills/synthesize-evidence-brief/SKILL.md",
-      "packageDigest": "sha256:4d71ffd122f72320db5f5d9c42eb4bf0641cff7b7a578101f9c83df81d0e38c0",
+      "packageDigest": "sha256:53982d7ef057a46551136aa8d61ee909da468af1c091fb967ea90902bef98047",
       "capability": {
         "job": "Synthesize multi-source evidence into one bounded, auditable Evidence Synthesis with residuals.",
         "outcomeObservable": "An Evidence Synthesis whose coverage, exclusions, conflicts, and certainty can be audited and reproduced from the search log and evidence table, with an explicit claim boundary and update triggers.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "synthesize-market-research",

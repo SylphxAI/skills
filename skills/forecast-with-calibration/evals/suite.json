@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "capability": "forecast-with-calibration",
+  "claim": "Produces a Probabilistic Forecast Record: resolvable question contract, base rate, probability/distribution, evidence, update history, and resolution/scoring plan.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write forecast.md giving a probability for: 'The company will launch the mobile app before 2026-12-31'. Explain your reasoning briefly."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Probabilistic Forecast Record elements.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write forecast.md for the resolvable question: 'The company will launch the mobile app before 2026-12-31T00:00Z' (resolution source: the public release announcement). Follow the output contract: question contract (outcome, horizon, resolution source, ambiguity rules, owner), forecast (probability or distribution, timestamp, base rate, decomposition), evidence and assumptions (supports, objections, unknowns, update triggers), history, and resolution/learning plan.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "forecast.md" },
+          { "type": "file-regex", "path": "forecast.md", "contains": "question", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "resolution source", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "base rate", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "probability", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "update trigger", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "history", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "resolution", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same Forecast-Record oracle.",
+      "prompt": "Write forecast.md giving a probability for: 'The company will launch the mobile app before 2026-12-31'. Explain your reasoning briefly.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "forecast.md" },
+          { "type": "file-regex", "path": "forecast.md", "contains": "question", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "resolution source", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "base rate", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "probability", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "update trigger", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "history", "caseInsensitive": true },
+          { "type": "file-regex", "path": "forecast.md", "contains": "resolution", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}

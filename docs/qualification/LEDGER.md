@@ -4,13 +4,15 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-10, waves 1–2)
+## Current state (2026-08-10, waves 1–3)
 
 - Capability packages: **57**
-- Qualified: **8** — author-skill, bound-request-scope,
+- Qualified: **12** — analyze-critically, author-skill, bound-request-scope,
   decide-architecture-shape, engineer-testable-requirements,
-  produce-game-2d-map-assets, produce-game-2d-sprites,
-  select-dependency-versions, write-high-signal-update
+  forecast-with-calibration, produce-game-2d-map-assets,
+  produce-game-2d-sprites, record-structured-deliberation,
+  select-dependency-versions, synthesize-evidence-brief,
+  write-high-signal-update
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
@@ -51,6 +53,19 @@ Baseline failures are recorded in the bundles (raw `baseline-agent` task
 records) and are the incremental-value evidence — a failing control never
 blocks qualification, because it demonstrates the capability's value rather
 than a defect. `report.json` carries the `comparison` block.
+
+## Wave-3 runs
+
+| Capability | Run | With-skill | Baseline | Verdict |
+| --- | --- | --- | --- | --- |
+| record-structured-deliberation | `run-2026-08-10T15-38-52-658Z` | pass | fail | qualified |
+| forecast-with-calibration | `run-2026-08-10T15-38-53-178Z` | pass | fail | qualified |
+| analyze-critically | `run-2026-08-10T15-42-07-521Z` | pass | **pass** | qualified (no demonstrated delta; incremental-value evidence NOT claimed) |
+| synthesize-evidence-brief | `run-2026-08-10T15-42-08-028Z` | pass | fail | qualified |
+
+`analyze-critically`'s baseline met the same oracle, so its record carries only
+`compatibility` + `security` evidence — the runner claims `incremental-value`
+only when with-skill passes and baseline fails, never to manufacture a delta.
 
 ## Wave-1 finding (author-skill)
 
