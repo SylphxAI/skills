@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "owner": "SylphxAI/skills",
+  "channel": "release-tag",
+  "sourceRevision": "03572c76cbede6955a7bf5d3e6352703696eaf1c",
+  "catalogDigest": "sha256:1fca2ac6dc7ad5db8df754aed8e8e55e82cd57859ddef57c6aa72d6266b81767",
+  "qualifiedNames": [
+    "author-skill",
+    "bound-request-scope",
+    "decide-architecture-shape",
+    "engineer-testable-requirements",
+    "produce-game-2d-map-assets",
+    "produce-game-2d-sprites",
+    "select-dependency-versions",
+    "write-high-signal-update"
+  ],
+  "promotedAt": "2026-08-10T15:35:22.479Z"
+}
