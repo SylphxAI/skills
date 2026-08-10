@@ -4,19 +4,23 @@
   "count": 57,
   "qualification": {
     "total": 57,
-    "qualified": 12,
+    "qualified": 16,
     "qualifiedNames": [
       "analyze-critically",
       "author-skill",
       "bound-request-scope",
+      "curate-skill-repository",
       "decide-architecture-shape",
+      "design-skill-evals",
       "engineer-testable-requirements",
       "forecast-with-calibration",
       "produce-game-2d-map-assets",
       "produce-game-2d-sprites",
       "record-structured-deliberation",
       "select-dependency-versions",
+      "select-next-work",
       "synthesize-evidence-brief",
+      "synthesize-market-research",
       "write-high-signal-update"
     ]
   },
@@ -220,14 +224,14 @@
       "name": "curate-skill-repository",
       "description": "Curate skill portfolio: merge/split, collisions, retirement.",
       "path": "skills/curate-skill-repository/SKILL.md",
-      "packageDigest": "sha256:680176c1fa039671733ff606d889de699a380b36091773dc74358dc1ce5e6319",
+      "packageDigest": "sha256:e9dbaa8866ed9665e0567feb81e53ea78a387e1fa9111a758e9400a8195374db",
       "capability": {
         "job": "Curate a skill repository portfolio: keep/rewrite/absorb/transfer/investigate/archive decisions with semantic evidence and forward tests.",
         "outcomeObservable": "A portfolio verdict where every capability decision names a semantic reason, canonical owner, exact content action, and confidence, backed by a false-negative review and a forward-test validation run.",
         "oracleOwner": "repository"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "decide-architecture-shape",
@@ -272,14 +276,14 @@
       "name": "design-skill-evals",
       "description": "Design falsifiable skill evals: routing cases, oracles, failures.",
       "path": "skills/design-skill-evals/SKILL.md",
-      "packageDigest": "sha256:a121f99d4e4210aa3e4241863b3090a09bb1ea92d686e05948f05fe63c3b7cbf",
+      "packageDigest": "sha256:b58ab5f1150b670529c3a15b067622ca24f50e139687f7e0fdf2d0193cbc588a",
       "capability": {
         "job": "Design a falsifiable Skill Evaluation Program that can disprove whether an exact skill bundle improves realistic work.",
         "outcomeObservable": "An independent runner can reproduce the candidate, tasks, outputs, metrics and verdict without trusting the author narrative, and the result is recorded as version-scoped qualification evidence.",
         "oracleOwner": "repository"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "distill-source-to-skill",
@@ -675,14 +679,14 @@
       "name": "select-next-work",
       "description": "Select/claim next high-value Work from evidence under WIP limits.",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:fe13e5896ec580f137ec2c75f355dee8e8a4165aaaeead9d870e8ff0930e9bff",
+      "packageDigest": "sha256:2d366a9ae606286f5bb49940dddd22ff249d9a5aa22f6bbb58f28b2540bd5e7e",
       "capability": {
         "job": "Select and claim the next high-value Work from evidence under WIP limits: one tick, bounded outcome, compact report.",
         "outcomeObservable": "A bounded tick report that selects and claims the next positive-net Work under WIP limits, with durable claim or checkpoint effects recorded where authority surfaces exist.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "share-ephemeral-artifact",
@@ -714,14 +718,14 @@
       "name": "synthesize-market-research",
       "description": "Synthesize market research: segments, competitors, demand, implications.",
       "path": "skills/synthesize-market-research/SKILL.md",
-      "packageDigest": "sha256:c19516d96f5b8337061af85c61a613ffe5eccc5334558320984d2beb9c52d55b",
+      "packageDigest": "sha256:3fb17d222eb3bc9aa1f12748c3d82a175731a682e0af61e146715371e0e11f5d",
       "capability": {
         "job": "Synthesize market research: segments, competitors, demand, implications, with a traceable source ledger.",
         "outcomeObservable": "A decision-ready market synthesis where every recommendation links to supporting and contradicting ledger entries, includes counterevidence, and names the smallest next validation that could overturn it.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "verify-local-web-preview",

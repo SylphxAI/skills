@@ -1,10 +1,36 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "design-skill-evals"
+  "name": "design-skill-evals",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-10T16:29:27.038Z",
+  "expiresAt": "2026-11-08T16:46:16.085Z",
+  "evidence": [
+    {
+      "id": "design-skill-evals-compatibility-2026-08-10T16-22-02-309Z",
+      "kind": "compatibility",
+      "digest": "sha256:3487075013c155b506b7c88775e41c4f30dfff4b673d4fe8f80e14e1f027bcfc",
+      "uri": "docs/qualification/evals/design-skill-evals/run-2026-08-10T16-22-02-309Z/report.json"
+    },
+    {
+      "id": "design-skill-evals-security-2026-08-10T16-22-02-309Z",
+      "kind": "security",
+      "digest": "sha256:3487075013c155b506b7c88775e41c4f30dfff4b673d4fe8f80e14e1f027bcfc",
+      "uri": "docs/qualification/evals/design-skill-evals/run-2026-08-10T16-22-02-309Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

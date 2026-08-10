@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "capability": "curate-skill-repository",
+  "claim": "Produces a portfolio curation record: boundary, portfolio verdict, per-skill decisions with evidence, absorption map, validation run, and unresolved evidence.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write curation.md recommending what to do with these two skills in a repository: 'write-high-signal-update' (used often) and 'compose-readme-marks' (rarely used, overlaps with author-skill). Recommend keep/merge/retire for each with reasons."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the portfolio curation record.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write curation.md for a repository with two overlapping capabilities: 'write-high-signal-update' (used often, distinct job) and 'compose-readme-marks' (rarely used, overlaps author-skill). Follow the output format: repository boundary and users; portfolio verdict; skill decisions table (Capability | Job value | Package value | Route value | Evidence | Owner | Decision | Exact change); absorption map; missing or weak capabilities; false-negative review and disagreements; validation run; delivery state and unresolved evidence.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "curation.md" },
+          { "type": "file-regex", "path": "curation.md", "contains": "Portfolio verdict", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "Skill decisions", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "Absorption map", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "Validation run", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "Evidence", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "Exact change", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "unresolved", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same curation oracle.",
+      "prompt": "Write curation.md recommending what to do with these two skills in a repository: 'write-high-signal-update' (used often) and 'compose-readme-marks' (rarely used, overlaps with author-skill). Recommend keep/merge/retire for each with reasons.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "curation.md" },
+          { "type": "file-regex", "path": "curation.md", "contains": "Portfolio verdict", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "Skill decisions", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "Absorption map", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "Validation run", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "Evidence", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "Exact change", "caseInsensitive": true },
+          { "type": "file-regex", "path": "curation.md", "contains": "unresolved", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}

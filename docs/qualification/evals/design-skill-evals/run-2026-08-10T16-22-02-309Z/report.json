@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "capability": "design-skill-evals",
+  "claim": "Produces a seven-part Skill Evaluation Program: falsifiable claim and digests, injection dataset, behavior tasks, control/judge matrix, holdouts, metrics, and failure triage.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "df66714048305af7bc0a6994608494a3a52d7818",
+    "packageDigest": "sha256:4228cf50dd5b5c02f0afaffc8c59a59867870b5b083c7b41e813d910fbd840cd",
+    "catalogDigest": "sha256:c38136a05fe6876d337e7656bc07ae4b2414f82d8137e271e1c6dfd7733dc922"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-10T16:29:27.038Z",
+  "finishedAt": "2026-08-10T16:29:27.038Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "pass",
+      "failures": [],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "pass"
+  },
+  "security": {
+    "verdict": "clean",
+    "scannedFiles": 7,
+    "findings": []
+  },
+  "evidenceDigest": "sha256:3487075013c155b506b7c88775e41c4f30dfff4b673d4fe8f80e14e1f027bcfc",
+  "verdict": "qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/design-skill-evals/run-2026-08-10T16-22-02-309Z"
+}

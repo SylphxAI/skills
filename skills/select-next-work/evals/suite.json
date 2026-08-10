@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "capability": "select-next-work",
+  "claim": "Produces a bounded tick report that selects and claims the next positive-net Work under WIP/backpressure from queue/claim/capacity evidence.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write tick.md picking the next task to work on from this queue: fix login bug (high), add export (medium), refactor auth (low), investigate flaky CI (high). You may claim at most two under a WIP limit of 2. Explain briefly."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the bounded tick report elements.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then run ONE tick and write tick.md. Queue: fix login bug (high, no claim), add CSV export (medium), refactor auth internals (low), investigate flaky CI (high). WIP limit 2, one claim slot free. Produce the bounded tick report per the method: authority resolution, queue/claims/capacity inspection, deduplicated bounded outcomes, positive-net claim under WIP/backpressure, checkpoint and compact report, tick ended.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "tick.md" },
+          { "type": "file-regex", "path": "tick.md", "contains": "queue", "caseInsensitive": true },
+          { "type": "file-regex", "path": "tick.md", "contains": "claim", "caseInsensitive": true },
+          { "type": "file-regex", "path": "tick.md", "contains": "capacity", "caseInsensitive": true },
+          { "type": "file-regex", "path": "tick.md", "contains": "WIP", "caseInsensitive": true },
+          { "type": "file-regex", "path": "tick.md", "contains": "bounded outcome", "caseInsensitive": true },
+          { "type": "file-regex", "path": "tick.md", "contains": "tick report", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same tick-report oracle.",
+      "prompt": "Write tick.md picking the next task to work on from this queue: fix login bug (high), add export (medium), refactor auth (low), investigate flaky CI (high). You may claim at most two under a WIP limit of 2. Explain briefly.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "tick.md" },
+          { "type": "file-regex", "path": "tick.md", "contains": "queue", "caseInsensitive": true },
+          { "type": "file-regex", "path": "tick.md", "contains": "claim", "caseInsensitive": true },
+          { "type": "file-regex", "path": "tick.md", "contains": "capacity", "caseInsensitive": true },
+          { "type": "file-regex", "path": "tick.md", "contains": "WIP", "caseInsensitive": true },
+          { "type": "file-regex", "path": "tick.md", "contains": "bounded outcome", "caseInsensitive": true },
+          { "type": "file-regex", "path": "tick.md", "contains": "tick report", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}

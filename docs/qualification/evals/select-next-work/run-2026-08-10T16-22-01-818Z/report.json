@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "capability": "select-next-work",
+  "claim": "Produces a bounded tick report that selects and claims the next positive-net Work under WIP/backpressure from queue/claim/capacity evidence.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "df66714048305af7bc0a6994608494a3a52d7818",
+    "packageDigest": "sha256:59396934a0053275fc845da6741663188b08aa60bc3e4f7eafd5503d6b877d79",
+    "catalogDigest": "sha256:c38136a05fe6876d337e7656bc07ae4b2414f82d8137e271e1c6dfd7733dc922"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-10T16:23:28.727Z",
+  "finishedAt": "2026-08-10T16:23:28.727Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "fail",
+      "failures": [
+        "file tick.md does not match /capacity/",
+        "file tick.md does not match /bounded outcome/",
+        "file tick.md does not match /tick report/"
+      ],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "fail"
+  },
+  "security": {
+    "verdict": "clean",
+    "scannedFiles": 9,
+    "findings": []
+  },
+  "evidenceDigest": "sha256:c9a6faeb84d247f670ab47e5385972177a9ff8d33ddab9918088a51243aabd04",
+  "verdict": "qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/select-next-work/run-2026-08-10T16-22-01-818Z"
+}

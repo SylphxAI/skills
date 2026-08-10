@@ -1,0 +1,36 @@
+{
+  "id": "baseline-agent",
+  "kind": "agent",
+  "baseline": true,
+  "description": "Fresh-context baseline (no skill): same task, same tick-report oracle.",
+  "command": [
+    "codex",
+    "exec",
+    "--skip-git-repo-check",
+    "-C",
+    "/tmp/sylphx-qualify-run-2026-08-10T16-22-01-818Z-baseline-agent",
+    "-s",
+    "danger-full-access",
+    "--ephemeral",
+    "-c",
+    "model_provider=openmodel",
+    "-c",
+    "model=deepseek-v4-flash",
+    "Write tick.md picking the next task to work on from this queue: fix login bug (high), add export (medium), refactor auth (low), investigate flaky CI (high). You may claim at most two under a WIP limit of 2. Explain briefly."
+  ],
+  "status": "fail",
+  "failures": [
+    "file tick.md does not match /capacity/",
+    "file tick.md does not match /bounded outcome/",
+    "file tick.md does not match /tick report/"
+  ],
+  "exitCode": 0,
+  "startedAt": "2026-08-10T16:23:17.041Z",
+  "finishedAt": "2026-08-10T16:23:28.721Z",
+  "stdoutTail": "Wrote `tick.md` (tick.md). Claimed exactly two under the WIP limit of 2: **fix login bug** (high) first as the user-facing blocker, then **investigate flaky CI** (high) for delivery trust. Left `add export` (medium) and `refactor auth` (low) unclaimed — the latter deliberately so it doesn't overlap with the in-flight login bug.\n",
+  "stderrTail": "Reading additional input from stdin...\nOpenAI Codex v0.147.0\n--------\nworkdir: /tmp/sylphx-qualify-run-2026-08-10T16-22-01-818Z-baseline-agent\nmodel: deepseek-v4-flash\nprovider: openmodel\napproval: never\nsandbox: danger-full-access\nreasoning effort: max\nreasoning summaries: none\nsession id: 019fec7c-4dba-74c3-9c11-7f8eebcf6c55\n--------\nuser\nWrite tick.md picking the next task to work on from this queue: fix login bug (high), add export (medium), refactor auth (low), investigate flaky CI (high). You may claim at most two under a WIP limit of 2. Explain briefly.\nwarning: Model metadata for `deepseek-v4-flash` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.\nexec\n/bin/bash -lc 'ls -la && [ -f AGENTS.md ] && cat AGENTS.md || true' in /tmp/sylphx-qualify-run-2026-08-10T16-22-01-818Z-baseline-agent\n succeeded in 0ms:\ntotal 308\ndrwxr-xr-x. 2 codex codex      6 Aug 10 16:23 .\ndrwxrwxrwt. 1 root  root  221184 Aug 10 16:23 ..\n\ncodex\nEmpty workspace — writing `tick.md` with the two high-priority claims.\nexec\n/bin/bash -lc \"cat > tick.md <<'EOF'\n# Tick\n\nClaimed (2 of 2 WIP):\n1. fix login bug (high) — first: user-facing blocker, highest impact.\n2. investigate flaky CI (high) — second: erodes delivery trust and blocks other work.\n\nUnclaimed:\n- add export (medium) — queued; blocked by nothing, but lower than the two highs.\n- refactor auth (low) — queued; do not touch while login bug is in flight to avoid overlapping auth changes.\n\nRationale: priority-first selection under the WIP limit of 2. Claim exactly the two high-priority items and stop; the medium/low items wait until a slot frees.\nEOF\ncat tick.md\" in /tmp/sylphx-qualify-run-2026-08-10T16-22-01-818Z-baseline-agent\n succeeded in 0ms:\n# Tick\n\nClaimed (2 of 2 WIP):\n1. fix login bug (high) — first: user-facing blocker, highest impact.\n2. investigate flaky CI (high) — second: erodes delivery trust and blocks other work.\n\nUnclaimed:\n- add export (medium) — queued; blocked by nothing, but lower than the two highs.\n- refactor auth (low) — queued; do not touch while login bug is in flight to avoid overlapping auth changes.\n\nRationale: priority-first selection under the WIP limit of 2. Claim exactly the two high-priority items and stop; the medium/low items wait until a slot frees.\n\ncodex\nWrote `tick.md` (tick.md). Claimed exactly two under the WIP limit of 2: **fix login bug** (high) first as the user-facing blocker, then **investigate flaky CI** (high) for delivery trust. Left `add export` (medium) and `refactor auth` (low) unclaimed — the latter deliberately so it doesn't overlap with the in-flight login bug.\ntokens used\n1,341\n",
+  "artifactCount": 1,
+  "artifactDigests": {
+    "../../../../../../tmp/sylphx-qualify-run-2026-08-10T16-22-01-818Z-baseline-agent/tick.md": "sha256:39f24c34d1abcd5ae34c11b02a9d0ceaf79d33fb6ed6c85b79526ab06615f86d"
+  }
+}
