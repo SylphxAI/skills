@@ -22,6 +22,13 @@ Outcomes are recorded against `schemas/outcome-receipt.schema.json` by the
 user's product/system (oracle owner) and the Control Plane (live recording).
 The repository never fabricates receipts.
 
+## Discovery is a floor
+
+The always-on constitution directs every agent to **search the installed
+capability catalog before acting** and to open the matching package. Skills are
+checked first, not last; familiarity with the job is never a reason to skip
+discovery.
+
 ## No hard catalog cap
 
 Capability counts **grow** as real jobs accumulate. Some runtimes use small

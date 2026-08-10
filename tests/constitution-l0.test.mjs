@@ -9,6 +9,7 @@ const constitution = readFileSync(path.join(repositoryRoot, 'runtime/constitutio
 test('constitution stays thin and miss-class-A', () => {
   assert.ok(constitution.length <= 6000, `constitution too large: ${constitution.length}`);
   for (const phrase of [
+    'Search before you act',
     'Evidence precedes claims',
     'Done means delivered',
     'progressive disclosure',

@@ -224,6 +224,7 @@ function validateRuntimeConstitution(errors) {
   }
   const required = [
     'SylphxAI/skills',
+    'Search before you act',
     'Evidence precedes claims',
     'Done means delivered',
     'progressive disclosure',
