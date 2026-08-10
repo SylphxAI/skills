@@ -698,11 +698,16 @@ function enableAutoSync() {
   }
   const pathEnv = process.env.PATH || '/usr/local/bin:/usr/bin:/bin';
   const config = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     owner: 'SylphxAI/skills',
     enabled: false,
     remote: process.env.SYLPHX_SKILLS_REMOTE || 'https://github.com/SylphxAI/skills.git',
+    channel: 'release-tag',
+    tagPrefix: 'skills-v',
+    // Bootstrap clone branch only; AutoSync candidates come from immutable
+    // release tags, never from mutable branch heads.
     branch: 'main',
+    requireVerifiedTag: false,
     repository: managedRepository,
     reconcilerPath: reconcilerScript,
     nodePath: executableFromPath('node', pathEnv),
@@ -791,6 +796,9 @@ function autoSyncSourceReadback(config, state) {
   if (
     !config?.repository
     || !config?.remote
+    || !config?.channel
+    || config.channel !== 'release-tag'
+    || !config?.tagPrefix
     || !config?.branch
     || !config?.nodePath
     || !config?.reconcilerPath
@@ -823,14 +831,37 @@ function autoSyncSourceReadback(config, state) {
   if (!/^[0-9a-f]{40,64}$/.test(managedHead)) {
     return unavailable('managed_repository_head_unavailable');
   }
-  const remote = runGit(['ls-remote', config.remote, `refs/heads/${config.branch}`]);
-  const remoteMatch = remote.status === 0
-    ? String(remote.stdout).trim().match(/^([0-9a-f]{40,64})\s+refs\/heads\//)
-    : null;
-  if (!remoteMatch) {
-    return unavailable('remote_head_unavailable', { managedHead });
+  // Status reads the same promotion surface the reconciler applies: immutable
+  // annotated release tags under the configured prefix, never branch heads.
+  const remote = runGit(['ls-remote', '--tags', config.remote, `refs/tags/${config.tagPrefix}*`]);
+  const promoted = [];
+  if (remote.status === 0) {
+    const byName = new Map();
+    for (const line of String(remote.stdout).trim().split('\n')) {
+      const match = line.match(/^([0-9a-f]{40,64})\t(refs\/tags\/(.+))$/);
+      if (!match) continue;
+      const ref = match[2];
+      const peeled = ref.endsWith('^{}');
+      const name = peeled ? match[3].slice(0, -3) : match[3];
+      if (!name.startsWith(config.tagPrefix)) continue;
+      const version = name.slice(config.tagPrefix.length).match(/^(\d+)\.(\d+)\.(\d+)$/);
+      if (!version) continue;
+      const entry = byName.get(name) || { name, major: Number(version[1]), minor: Number(version[2]), patch: Number(version[3]), peeledSha: null };
+      if (peeled) entry.peeledSha = match[1].toLowerCase();
+      byName.set(name, entry);
+    }
+    for (const entry of byName.values()) {
+      if (entry.peeledSha) promoted.push(entry);
+    }
+    promoted.sort((left, right) => (
+      right.major - left.major || right.minor - left.minor || right.patch - left.patch
+    ));
   }
-  const remoteHead = remoteMatch[1].toLowerCase();
+  if (!promoted.length) {
+    return unavailable('no_promoted_release_tag', { managedHead });
+  }
+  const latestTag = promoted[0];
+  const remoteHead = latestTag.peeledSha;
   const sourceCli = path.join(config.repository, 'runtime', 'sylphx-skills.mjs');
   const sourceReconciler = path.join(config.repository, 'runtime', 'reconcile.mjs');
   const adapterCurrent = existsSync(sourceCli)
@@ -877,6 +908,8 @@ function autoSyncSourceReadback(config, state) {
     error: current ? null : 'source_or_targets_outdated',
     managedHead,
     remoteHead,
+    latestTag: latestTag.name,
+    appliedTag: typeof state?.appliedTag === 'string' ? state.appliedTag : null,
     targetsCurrent,
     adapterCurrent,
     runtimeHomes: runtimeHomeReadback,
@@ -930,7 +963,8 @@ function autoSyncStatus() {
   const configured = Boolean(config?.enabled)
     && ['interval-scheduler', 'external-supervisor'].includes(config?.mode)
     && config?.owner === 'SylphxAI/skills'
-    && config?.schemaVersion === 1;
+    && config?.schemaVersion === 2
+    && config?.channel === 'release-tag';
   let scheduler = null;
   if (configured) {
     scheduler = config.mode === 'external-supervisor'
@@ -954,6 +988,9 @@ function autoSyncStatus() {
     healthy: configured && scheduler?.active === true && source?.current === true,
     scheduler,
     source,
+    channel: config?.channel || null,
+    tagPrefix: config?.tagPrefix || null,
+    requireVerifiedTag: config?.requireVerifiedTag === true,
     intervalMinutes: config?.intervalMinutes || null,
     agents: Array.isArray(config?.agents) ? config.agents : null,
     remote: config?.remote || null,
@@ -962,10 +999,11 @@ function autoSyncStatus() {
       ? new Date(Number(state.lastCheckedAt)).toISOString()
       : null,
     appliedSha: state?.appliedSha || null,
+    appliedTag: state?.appliedTag || null,
     lastError: state?.lastError || null,
   };
   if (jsonOutput) console.log(JSON.stringify(result, null, 2));
-  else log(`auto-sync: ${result.healthy ? `healthy every ${result.intervalMinutes} minutes for ${(result.agents || []).join(', ') || 'legacy all-runtime selection'}` : result.enabled ? 'active but outdated or unavailable' : configured ? 'configured but inactive' : 'disabled'}`);
+  else log(`auto-sync: ${result.healthy ? `healthy every ${result.intervalMinutes} minutes for ${(result.agents || []).join(', ') || 'legacy all-runtime selection'} via ${result.tagPrefix || '?'} release tags` : result.enabled ? 'active but outdated or unavailable' : configured ? 'configured but inactive' : 'disabled'}`);
 }
 
 function argumentValue(name) {
@@ -988,8 +1026,11 @@ Usage:
 Install is the agent-facing static reconciliation operation and requires an
 explicit native runtime; it syncs the exact checked-out catalog and never
 creates schedulers. AutoSync is an explicit, separate opt-in on durable hosts:
-'auto-sync enable --agent <runtime>'. A machine without AutoSync is a partial
-installation, never a false green; 'status' reports it. Every mutating native operation requires an explicit runtime selection; detecting another runtime never grants
+'auto-sync enable --agent <runtime>'; it follows immutable annotated release
+tags (default prefix skills-v) — never mutable branch heads — and verifies each
+candidate's promotion manifest before its repository-owned CLI runs. A machine
+without AutoSync is a partial installation, never a false green; 'status'
+reports it. Every mutating native operation requires an explicit runtime selection; detecting another runtime never grants
 permission to change it.`);
 }
 

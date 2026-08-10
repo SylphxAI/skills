@@ -46,6 +46,8 @@ const REQUIRED_ROOT_FILES = [
   'docs/NORTH-STAR.md',
   'docs/QUALIFICATION.md',
   'docs/qualification/LEDGER.md',
+  'docs/PROMOTION.md',
+  'scripts/promote-release.mjs',
   ...SCHEMA_FILES,
   'runtime/hooks.mjs',
   'runtime/package-digest.mjs',

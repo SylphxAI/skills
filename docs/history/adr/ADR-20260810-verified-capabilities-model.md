@@ -70,6 +70,14 @@ identity and North Star. This ADR records the clean break and what it retires.
    in favor of Verified Capabilities; the repository remains a public static
    source with no hosted service.
 
+6b. **Promotion channel.** AutoSync applies only immutable annotated release
+   tags (`skills-vX.Y.Z`) carrying a promotion manifest verified against the
+   exact candidate tree (catalog digest, qualification projection,
+   sourceRevision = tag commit first parent), optionally `git verify-tag`
+   (`requireVerifiedTag`). Branch-following AutoSync configs (schemaVersion 1)
+   are retired and fail closed with a migration message. See
+   `docs/PROMOTION.md`.
+
 7. **Commercial boundary.** Open foundation stays free and inspectable; paid
    assurance (private portfolios, context-specific qualification, policy and
    evidence projections) belongs to the Control Plane. No price is published

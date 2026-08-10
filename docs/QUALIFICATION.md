@@ -54,6 +54,10 @@ for outcomes is `schemas/outcome-receipt.schema.json`.
 
 ## Promotion safety
 
+- AutoSync applies only immutable annotated release tags carrying a verified
+  promotion manifest (`docs/PROMOTION.md`); branch-following is retired and
+  fails closed. A candidate is also refused if it would **downgrade** an
+  installed capability from `qualified` to `unqualified`.
 - `unqualified` packages are installable (open foundation) but their attempts
   are **not eligible** for a positive Verified Capability Yield contribution.
 - AutoSync applies a candidate only if it does not **downgrade** an installed

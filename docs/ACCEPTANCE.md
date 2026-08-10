@@ -8,3 +8,4 @@
 6. Every listing carries schema-valid `capability.json` and `qualification.json`; catalog projects per-package and repo-wide qualification state
 7. AutoSync and manual sync fail closed on qualified→unqualified downgrade; `status` surfaces qualification state
 8. No package claims `qualified` without version-scoped, expiring evidence from a named evaluator
+9. AutoSync applies only immutable annotated release tags with a verified promotion manifest; branch-following configs are retired and fail closed

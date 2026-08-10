@@ -12,7 +12,7 @@ import {
   rmSync,
   writeFileSync,
 } from 'node:fs';
-import { randomBytes } from 'node:crypto';
+import { createHash, randomBytes } from 'node:crypto';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -70,10 +70,156 @@ function checked(run, command, args, options = {}) {
   return result;
 }
 
-function parseRemoteHead(output) {
-  const match = String(output).trim().match(/^([0-9a-f]{40,64})\s+refs\/heads\//);
-  if (!match) throw new Error('Remote main did not return one valid commit identity');
-  return match[1];
+const PROMOTION_TAG_PREFIX = /^[A-Za-z0-9][A-Za-z0-9._-]*$/;
+const PROMOTION_VERSION = /^(\d+)\.(\d+)\.(\d+)$/;
+const COMMIT_IDENTITY = /^[0-9a-f]{40,64}$/;
+
+function parsePromotionVersion(name, prefix) {
+  if (!name.startsWith(prefix)) return null;
+  const match = String(name.slice(prefix.length)).match(PROMOTION_VERSION);
+  if (!match) return null;
+  return {
+    major: Number(match[1]),
+    minor: Number(match[2]),
+    patch: Number(match[3]),
+  };
+}
+
+function comparePromotionVersions(left, right) {
+  if (left.major !== right.major) return left.major - right.major;
+  if (left.minor !== right.minor) return left.minor - right.minor;
+  return left.patch - right.patch;
+}
+
+/**
+ * The AutoSync promotion channel is immutable release tags, never mutable
+ * branch heads. `git ls-remote --tags` lists each tag once (the tag object)
+ * and, for annotated tags, again peeled to its target commit (`^{}`). A tag
+ * without a peeled entry is lightweight and is never a promotion candidate.
+ */
+function listPromotedTags(run, config) {
+  const result = checked(run, 'git', [
+    'ls-remote', '--tags', config.remote, `refs/tags/${config.tagPrefix}*`,
+  ], { timeout: 10_000 });
+  const byName = new Map();
+  for (const line of String(result.stdout).trim().split('\n')) {
+    const match = line.match(/^([0-9a-f]{40,64})\t(refs\/tags\/.+)$/);
+    if (!match) continue;
+    const ref = match[2];
+    if (!ref.startsWith(`refs/tags/${config.tagPrefix}`)) continue;
+    const peeled = ref.endsWith('^{}');
+    const name = peeled ? ref.slice('refs/tags/'.length, -3) : ref.slice('refs/tags/'.length);
+    const version = parsePromotionVersion(name, config.tagPrefix);
+    if (!version) continue;
+    const entry = byName.get(name) || { name, version, objectSha: null, peeledSha: null };
+    if (peeled) entry.peeledSha = match[1].toLowerCase();
+    else entry.objectSha = match[1].toLowerCase();
+    byName.set(name, entry);
+  }
+  return [...byName.values()]
+    .sort((left, right) => comparePromotionVersions(right.version, left.version))
+    .map((tag) => ({ ...tag }));
+}
+
+function validatePromotionConfig(config) {
+  if (config?.schemaVersion !== 2) {
+    throw new Error(
+      'legacy branch-following auto-sync config (schemaVersion 1) is retired; run `sylphx-skills auto-sync enable` to adopt release-tag promotion',
+    );
+  }
+  if (config?.channel !== 'release-tag') {
+    throw new Error(`unsupported auto-sync promotion channel: ${config?.channel || '(missing)'}`);
+  }
+  if (!PROMOTION_TAG_PREFIX.test(config?.tagPrefix || '')) {
+    throw new Error(`invalid promotion tag prefix: ${config?.tagPrefix || '(missing)'}`);
+  }
+  if (!PROMOTION_TAG_PREFIX.test(config?.branch || '')) {
+    throw new Error(`invalid bootstrap clone branch: ${config?.branch || '(missing)'}`);
+  }
+  if (config?.requireVerifiedTag !== undefined && typeof config.requireVerifiedTag !== 'boolean') {
+    throw new Error('requireVerifiedTag must be a boolean when present');
+  }
+}
+
+function fetchPromotedTag(run, config, tagName, expectedCommit) {
+  const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
+  checked(run, 'git', [
+    '-C', config.repository, 'fetch', '--quiet', '--depth', '2', '--no-tags', 'origin', 'tag', tagName,
+  ], { timeout: 60_000, env });
+  // An annotated tag's ref tip is the tag object; peel to the commit that
+  // `ls-remote` reported so the listing and the fetch resolve to one identity.
+  const fetched = checked(run, 'git', ['-C', config.repository, 'rev-parse', 'FETCH_HEAD^{}'], { env })
+    .stdout.trim();
+  if (fetched !== expectedCommit) {
+    throw new Error(`promoted tag ${tagName} moved between listing and fetch`);
+  }
+  return fetched;
+}
+
+/**
+ * The release workflow cuts each promoted tag from CI-green main, appends
+ * exactly one manifest commit carrying promotion.json, and annotates the tag.
+ * This check ties the manifest to the exact candidate tree (catalog digest and
+ * qualification projection) and to the declared promoted main revision (the
+ * tag commit's first parent), so a manifest cannot be transplanted onto a
+ * different tree. `requireVerifiedTag` additionally demands a GPG/SSH-verified
+ * tag through `git verify-tag`; production fleets should enable it.
+ */
+function verifyPromotionManifest(run, config, candidate, tagName) {
+  const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
+  // Read both files from the candidate's canonical git blobs: the worktree
+  // may carry EOL-normalized bytes (core.autocrlf), but the promotion digest
+  // must bind to the exact committed tree.
+  let manifest;
+  try {
+    const manifestBytes = checked(run, 'git', ['-C', config.repository, 'show', `${candidate}:promotion.json`], { env }).stdout;
+    manifest = JSON.parse(manifestBytes);
+  } catch (error) {
+    throw new Error(`promoted candidate ${candidate} has an invalid promotion manifest: ${error.message}`);
+  }
+  let catalog;
+  let catalogBytes;
+  try {
+    catalogBytes = checked(run, 'git', ['-C', config.repository, 'show', `${candidate}:catalog.json`], { env }).stdout;
+    catalog = JSON.parse(catalogBytes);
+  } catch (error) {
+    throw new Error(`promoted candidate ${candidate} has an invalid catalog: ${error.message}`);
+  }
+  const catalogDigest = `sha256:${createHash('sha256').update(catalogBytes).digest('hex')}`;
+  const qualifiedNames = (Array.isArray(catalog?.qualification?.qualifiedNames)
+    ? catalog.qualification.qualifiedNames
+    : [])
+    .slice()
+    .sort();
+  if (manifest?.schemaVersion !== 1 || manifest?.owner !== 'SylphxAI/skills') {
+    throw new Error(`promoted candidate ${candidate} has an unrecognized promotion manifest`);
+  }
+  if (manifest?.channel !== 'release-tag') {
+    throw new Error(
+      `promoted candidate ${candidate} declares unsupported promotion channel: ${manifest?.channel || '(missing)'}`,
+    );
+  }
+  if (!COMMIT_IDENTITY.test(manifest?.sourceRevision || '')) {
+    throw new Error(`promoted candidate ${candidate} has an invalid sourceRevision`);
+  }
+  if (manifest?.catalogDigest !== catalogDigest) {
+    throw new Error(`promotion manifest catalog digest does not match the candidate tree: ${candidate}`);
+  }
+  if (JSON.stringify(manifest?.qualifiedNames || []) !== JSON.stringify(qualifiedNames)) {
+    throw new Error(`promotion manifest qualification projection does not match the candidate tree: ${candidate}`);
+  }
+  const parent = run('git', ['-C', config.repository, 'rev-parse', `${candidate}^`], { env });
+  if (parent.status !== 0) {
+    if (manifest.sourceRevision !== candidate) {
+      throw new Error(`promotion manifest sourceRevision must equal the root tag commit: ${candidate}`);
+    }
+  } else if (String(parent.stdout).trim().toLowerCase() !== manifest.sourceRevision) {
+    throw new Error(`promotion manifest sourceRevision does not match the tag commit parent: ${candidate}`);
+  }
+  if (config.requireVerifiedTag === true) {
+    checked(run, 'git', ['-C', config.repository, 'verify-tag', tagName], { env });
+  }
+  return manifest;
 }
 
 function pathEntryExists(file) {
@@ -532,26 +678,22 @@ function repairAppliedHead(run, config, expectedSha) {
   return true;
 }
 
-function applyRemoteHead(run, config, expectedRemoteHead) {
-  const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
-  if (existsSync(path.join(config.repository, '.git'))) recoverTrackedMaterialization(run, config);
-  const { created } = ensureCleanManagedRepository(run, config);
-  let candidate;
-  if (created) {
-    candidate = checked(run, 'git', ['-C', config.repository, 'rev-parse', 'HEAD'], { env }).stdout.trim();
-  } else {
-    checked(run, 'git', [
-      '-C', config.repository, 'fetch', '--quiet', '--depth', '1', '--no-tags',
-      'origin', `refs/heads/${config.branch}`,
-    ], { timeout: 60_000, env });
-    candidate = checked(run, 'git', ['-C', config.repository, 'rev-parse', 'FETCH_HEAD'], { env }).stdout.trim();
-    checked(run, 'git', ['-C', config.repository, 'checkout', '--quiet', '--detach', '--force', candidate], { env });
+function applyPromotedTag(run, config, promoted) {
+  if (!promoted?.name || !COMMIT_IDENTITY.test(promoted?.peeledSha || '')) {
+    throw new Error(`promoted tag ${promoted?.name || '(unknown)'} is not an annotated release tag`);
   }
+  if (existsSync(path.join(config.repository, '.git'))) recoverTrackedMaterialization(run, config);
+  ensureCleanManagedRepository(run, config);
+  const candidate = fetchPromotedTag(run, config, promoted.name, promoted.peeledSha);
+  checked(run, 'git', ['-C', config.repository, 'checkout', '--quiet', '--detach', '--force', candidate], {
+    env: { ...process.env, PATH: config.pathEnv || process.env.PATH },
+  });
   materializeTrackedFiles(run, config);
-  // A new commit may land between ls-remote and fetch. Applying the fetched
-  // branch head is fresher than retrying the older observation.
+  // The tag commit is immutable; verify its manifest against the exact tree
+  // before the candidate's repository-owned CLI is allowed to execute.
+  verifyPromotionManifest(run, config, candidate, promoted.name);
   syncCandidate(run, config, candidate);
-  return { candidate, raced: candidate !== expectedRemoteHead };
+  return { candidate, tagName: promoted.name };
 }
 
 export function reconcile({
@@ -569,8 +711,14 @@ export function reconcile({
   const locked = withReconcileLock(stateDirectory, () => {
     testHoldLock();
     const config = readJson(configPath, null);
-    if (!config || config.owner !== 'SylphxAI/skills' || config.schemaVersion !== 1) {
+    if (!config || config.owner !== 'SylphxAI/skills') {
       const error = new Error(`Missing or invalid Sylphx Skills auto-sync config: ${configPath}`);
+      if (strict) throw error;
+      return { status: 'unconfigured', error: error.message };
+    }
+    try {
+      validatePromotionConfig(config);
+    } catch (error) {
       if (strict) throw error;
       return { status: 'unconfigured', error: error.message };
     }
@@ -610,16 +758,26 @@ export function reconcile({
       }
 
       const env = { ...process.env, PATH: config.pathEnv || process.env.PATH };
-      const remote = checked(run, 'git', ['ls-remote', config.remote, `refs/heads/${config.branch}`], {
-        timeout: 10_000,
-        env,
-      });
-      const remoteHead = parseRemoteHead(remote.stdout);
-      const repairing = remoteHead === state.appliedSha;
-      if (repairing && installedTargetsCurrent(run, config, remoteHead)) {
+      const promotedTags = listPromotedTags(run, config);
+      if (!promotedTags.length) {
+        throw new Error(`no promoted release tag matching ${config.tagPrefix}* at ${config.remote}`);
+      }
+      const promoted = promotedTags[0];
+      if (state.appliedTag) {
+        const previousVersion = parsePromotionVersion(state.appliedTag, config.tagPrefix);
+        if (previousVersion && comparePromotionVersions(promoted.version, previousVersion) < 0) {
+          throw new Error(
+            `promotion regression: ${state.appliedTag} is newer than ${promoted.name}; refusing to downgrade`,
+          );
+        }
+      }
+      const candidateSha = promoted.peeledSha;
+      const repairing = candidateSha === state.appliedSha;
+      if (repairing && installedTargetsCurrent(run, config, candidateSha)) {
         state = {
           ...state,
           schemaVersion: 1,
+          appliedTag: promoted.name,
           lastCheckedAt: now,
           failureCount: 0,
           retryAfterAt: null,
@@ -627,14 +785,15 @@ export function reconcile({
         };
         writeAtomic(statePath, `${JSON.stringify(state, null, 2)}\n`);
         return localRepaired
-          ? { status: 'updated', appliedSha: remoteHead, repaired: true }
-          : { status: 'current', appliedSha: remoteHead };
+          ? { status: 'updated', appliedSha: candidateSha, appliedTag: promoted.name, repaired: true }
+          : { status: 'current', appliedSha: candidateSha, appliedTag: promoted.name };
       }
 
-      const applied = applyRemoteHead(run, config, remoteHead);
+      const applied = applyPromotedTag(run, config, promoted);
       state = {
         schemaVersion: 1,
         appliedSha: applied.candidate,
+        appliedTag: applied.tagName,
         lastCheckedAt: now,
         lastAppliedAt: now,
         failureCount: 0,
@@ -645,7 +804,7 @@ export function reconcile({
       return {
         status: 'updated',
         appliedSha: applied.candidate,
-        raced: applied.raced,
+        appliedTag: applied.tagName,
         repaired: repairing || localRepaired,
       };
     } catch (error) {
