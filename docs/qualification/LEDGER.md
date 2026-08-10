@@ -4,15 +4,15 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-10, waves 1–3)
+## Current state (2026-08-10, waves 1–4)
 
 - Capability packages: **57**
-- Qualified: **12** — analyze-critically, author-skill, bound-request-scope,
-  decide-architecture-shape, engineer-testable-requirements,
-  forecast-with-calibration, produce-game-2d-map-assets,
-  produce-game-2d-sprites, record-structured-deliberation,
-  select-dependency-versions, synthesize-evidence-brief,
-  write-high-signal-update
+- Qualified: **16** — analyze-critically, author-skill, bound-request-scope,
+  curate-skill-repository, decide-architecture-shape, design-skill-evals,
+  engineer-testable-requirements, forecast-with-calibration,
+  produce-game-2d-map-assets, produce-game-2d-sprites,
+  record-structured-deliberation, select-dependency-versions, select-next-work,
+  synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
@@ -66,6 +66,20 @@ than a defect. `report.json` carries the `comparison` block.
 `analyze-critically`'s baseline met the same oracle, so its record carries only
 `compatibility` + `security` evidence — the runner claims `incremental-value`
 only when with-skill passes and baseline fails, never to manufacture a delta.
+
+## Wave-4 runs
+
+| Capability | Run | With-skill | Baseline | Verdict |
+| --- | --- | --- | --- | --- |
+| select-next-work | `run-2026-08-10T16-22-01-818Z` | pass | fail | qualified |
+| design-skill-evals | `run-2026-08-10T16-22-02-309Z` | pass | pass | qualified (no delta) |
+| curate-skill-repository | `run-2026-08-10T16-41-46-039Z` | pass | pass | qualified (no delta; first run inconclusive, kept as record) |
+| synthesize-market-research | `run-2026-08-10T16-29-32-534Z` | pass | fail | qualified |
+
+`curate-skill-repository`'s first with-skill run produced no artifact (empty
+agent session) and is kept at
+`evals/curate-skill-repository/run-2026-08-10T16-29-32-051Z/` as an
+inconclusive record; the capability qualified on the re-run.
 
 ## Wave-1 finding (author-skill)
 

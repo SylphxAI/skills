@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "capability": "design-skill-evals",
+  "claim": "Produces a seven-part Skill Evaluation Program: falsifiable claim and digests, injection dataset, behavior tasks, control/judge matrix, holdouts, metrics, and failure triage.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write eval-program.md designing an evaluation for the 'write-high-signal-update' skill: how you would test whether it improves agent updates. Cover cases, controls, and metrics at a practical level."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the seven-part Evaluation Program.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write eval-program.md designing a Skill Evaluation Program for the 'write-high-signal-update' capability (falsifiable claim: following the skill produces the exact update template). Follow the output contract's seven parts: falsifiable claim with candidate/catalog identities and digests; auto-injection dataset design (positive, neighbour, abstention, compound, multilingual); behavior tasks with assertions and deterministic artifacts; base/expert/skill/competitor and answer/judge/provider matrix; protected holdout/raw-artifact store with commitment/receipts/replay/retention/expiry; thresholds and per-skill metrics with uncertainty/cost/latency; failure triage, regression fixtures, proof invalidation, next run.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "eval-program.md" },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "falsifiable", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "injection", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "behavior task", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "judge", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "holdout", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "threshold", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "regression", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same seven-part oracle.",
+      "prompt": "Write eval-program.md designing an evaluation for the 'write-high-signal-update' skill: how you would test whether it improves agent updates. Cover cases, controls, and metrics at a practical level.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "eval-program.md" },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "falsifiable", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "injection", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "behavior task", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "judge", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "holdout", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "threshold", "caseInsensitive": true },
+          { "type": "file-regex", "path": "eval-program.md", "contains": "regression", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}
