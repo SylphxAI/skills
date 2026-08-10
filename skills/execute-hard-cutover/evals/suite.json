@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "capability": "execute-hard-cutover",
+  "claim": "Produces an executed cutover plan: named predecessor/destination with sole-writer terminal, dependency inventory, backfill, traffic cut, retirement, evidence, and residuals.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write cutover.md planning how to replace an old payment API with a new one and remove the old path. Cover what must move, how traffic switches, and how you know it is done."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the cutover plan elements.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write cutover.md for replacing the legacy payment API ('pay-legacy') with the destination 'pay-v2' as sole writer. Follow the workflow: name the cut (predecessor, destination, traffic/data surface, terminal), dependency inventory, backfill with original oracles, cut traffic with new writes blocked, retire the predecessor, and prove destination ownership. Output: cutover plan executed, evidence, residuals.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "cutover.md" },
+          { "type": "file-regex", "path": "cutover.md", "contains": "predecessor", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "destination", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "sole writer", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "retire", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "backfill", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "evidence", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "residual", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same cutover oracle.",
+      "prompt": "Write cutover.md planning how to replace an old payment API with a new one and remove the old path. Cover what must move, how traffic switches, and how you know it is done.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "cutover.md" },
+          { "type": "file-regex", "path": "cutover.md", "contains": "predecessor", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "destination", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "sole writer", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "retire", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "backfill", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "evidence", "caseInsensitive": true },
+          { "type": "file-regex", "path": "cutover.md", "contains": "residual", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "capability": "maintain-product",
+  "claim": "Produces a maintain cycle record: framed harm with severity/audience/health signal, root cause on the owning layer, fix with regression lock, oracle rerun, and residual risk.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write maintain.md describing how you would fix a production bug where checkout fails with a 500 for some users. Include diagnosis, fix, and how you would verify."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the maintain cycle elements.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write maintain.md for one maintain cycle: checkout returns 500 for ~5% of users after the last release. Follow the method: frame (symptom, severity, audience, health signal that must improve), research (reproduce, bisect, owning layer), admit in/out, implement root-cause fix with a regression lock, deliver/verify by re-running the failing oracle, and record residual risk. Output: harm, cause, fix, oracle, residual risk.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "maintain.md" },
+          { "type": "file-regex", "path": "maintain.md", "contains": "harm", "caseInsensitive": true },
+          { "type": "file-regex", "path": "maintain.md", "contains": "severity", "caseInsensitive": true },
+          { "type": "file-regex", "path": "maintain.md", "contains": "root cause", "caseInsensitive": true },
+          { "type": "file-regex", "path": "maintain.md", "contains": "regression", "caseInsensitive": true },
+          { "type": "file-regex", "path": "maintain.md", "contains": "oracle", "caseInsensitive": true },
+          { "type": "file-regex", "path": "maintain.md", "contains": "residual risk", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same maintain oracle.",
+      "prompt": "Write maintain.md describing how you would fix a production bug where checkout fails with a 500 for some users. Include diagnosis, fix, and how you would verify.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "maintain.md" },
+          { "type": "file-regex", "path": "maintain.md", "contains": "harm", "caseInsensitive": true },
+          { "type": "file-regex", "path": "maintain.md", "contains": "severity", "caseInsensitive": true },
+          { "type": "file-regex", "path": "maintain.md", "contains": "root cause", "caseInsensitive": true },
+          { "type": "file-regex", "path": "maintain.md", "contains": "regression", "caseInsensitive": true },
+          { "type": "file-regex", "path": "maintain.md", "contains": "oracle", "caseInsensitive": true },
+          { "type": "file-regex", "path": "maintain.md", "contains": "residual risk", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}

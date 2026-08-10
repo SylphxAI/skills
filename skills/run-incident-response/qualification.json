@@ -1,10 +1,36 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "run-incident-response"
+  "name": "run-incident-response",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-10T17:36:49.887Z",
+  "expiresAt": "2026-11-08T17:37:04.809Z",
+  "evidence": [
+    {
+      "id": "run-incident-response-compatibility-2026-08-10T17-32-18-026Z",
+      "kind": "compatibility",
+      "digest": "sha256:3d35603511b78a2a8014ff4ae562db7c7dda31addad73faf2a03a49572e9f5e3",
+      "uri": "docs/qualification/evals/run-incident-response/run-2026-08-10T17-32-18-026Z/report.json"
+    },
+    {
+      "id": "run-incident-response-security-2026-08-10T17-32-18-026Z",
+      "kind": "security",
+      "digest": "sha256:3d35603511b78a2a8014ff4ae562db7c7dda31addad73faf2a03a49572e9f5e3",
+      "uri": "docs/qualification/evals/run-incident-response/run-2026-08-10T17-32-18-026Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

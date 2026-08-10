@@ -4,15 +4,16 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-10, waves 1–4)
+## Current state (2026-08-10, waves 1–5)
 
 - Capability packages: **57**
-- Qualified: **16** — analyze-critically, author-skill, bound-request-scope,
-  curate-skill-repository, decide-architecture-shape, design-skill-evals,
-  engineer-testable-requirements, forecast-with-calibration,
-  produce-game-2d-map-assets, produce-game-2d-sprites,
-  record-structured-deliberation, select-dependency-versions, select-next-work,
-  synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
+- Qualified: **20** — analyze-critically, author-skill, bound-request-scope,
+  craft-human-agent-language, curate-skill-repository, decide-architecture-shape,
+  design-skill-evals, engineer-testable-requirements, execute-hard-cutover,
+  forecast-with-calibration, maintain-product, produce-game-2d-map-assets,
+  produce-game-2d-sprites, record-structured-deliberation, run-incident-response,
+  select-dependency-versions, select-next-work, synthesize-evidence-brief,
+  synthesize-market-research, write-high-signal-update
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
@@ -80,6 +81,15 @@ only when with-skill passes and baseline fails, never to manufacture a delta.
 agent session) and is kept at
 `evals/curate-skill-repository/run-2026-08-10T16-29-32-051Z/` as an
 inconclusive record; the capability qualified on the re-run.
+
+## Wave-5 runs
+
+| Capability | Run | With-skill | Baseline | Verdict |
+| --- | --- | --- | --- | --- |
+| execute-hard-cutover | `run-2026-08-10T17-29-41-586Z` | pass | pass | qualified (no delta) |
+| maintain-product | `run-2026-08-10T17-29-42-099Z` | pass | fail | qualified |
+| run-incident-response | `run-2026-08-10T17-32-18-026Z` | pass | pass | qualified (no delta) |
+| craft-human-agent-language | `run-2026-08-10T17-32-18-592Z` | pass | fail | qualified |
 
 ## Wave-1 finding (author-skill)
 

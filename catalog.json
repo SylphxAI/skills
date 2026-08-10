@@ -4,19 +4,23 @@
   "count": 57,
   "qualification": {
     "total": 57,
-    "qualified": 16,
+    "qualified": 20,
     "qualifiedNames": [
       "analyze-critically",
       "author-skill",
       "bound-request-scope",
+      "craft-human-agent-language",
       "curate-skill-repository",
       "decide-architecture-shape",
       "design-skill-evals",
       "engineer-testable-requirements",
+      "execute-hard-cutover",
       "forecast-with-calibration",
+      "maintain-product",
       "produce-game-2d-map-assets",
       "produce-game-2d-sprites",
       "record-structured-deliberation",
+      "run-incident-response",
       "select-dependency-versions",
       "select-next-work",
       "synthesize-evidence-brief",
@@ -185,14 +189,14 @@
       "name": "craft-human-agent-language",
       "description": "Write or review any document or prompt that humans and agents both use (README, ADR, update, instruction): frame purpose and audience, structure before prose, plain language, model-agnostic language choice, output contract, and a re-verification gate. Use when asked to write/translate/review a doc or prompt for humans and agents, or to choose the most efficient language and format for a model you are switching.",
       "path": "skills/craft-human-agent-language/SKILL.md",
-      "packageDigest": "sha256:91ccad43d21fff407ce9cbc922cd80959fd00df2c4b5256f506a33181b232d5a",
+      "packageDigest": "sha256:cf042ab9abd3db6410e8a8524e51ab82396c58c75c7be1615570793110647309",
       "capability": {
         "job": "Write or review a human-agent document or prompt: purpose, audience, structure, plain language, evidence-based language, output contract, re-verification.",
         "outcomeObservable": "A document or prompt with explicit purpose/audience, structure before prose, plain-language floors, a recorded evidence-based language/format decision, and a re-verification gate that an independent reviewer can rerun.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "craft-product-interface",
@@ -354,14 +358,14 @@
       "name": "execute-hard-cutover",
       "description": "Hard-cut predecessor to destination sole writer; retire dual paths.",
       "path": "skills/execute-hard-cutover/SKILL.md",
-      "packageDigest": "sha256:0b8ba9a4893f7272994b312d669c2c13aad727ca043062a735fa22bdbb973303",
+      "packageDigest": "sha256:b86b1fad6d9bb216973d75eedcc44b00c9c49bc41734070fdbc04c33f0adb232",
       "capability": {
         "job": "Hard-cut a predecessor to a destination sole writer and retire dual paths with backfill and proof.",
         "outcomeObservable": "The destination is the sole writer for the named surface under real checks, the predecessor is retired or time-boxed with kill criteria, and backfill, cut, and residual evidence are recorded.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "expand-product",
@@ -406,14 +410,14 @@
       "name": "maintain-product",
       "description": "Cut live/regression harm with root-cause fix and oracle.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:94fbdd79ab088037f35deb723d923bc935fd89dc7e9474cf7a9b4217219e31bd",
+      "packageDigest": "sha256:27ac87c42bae1dd40b9b7961dcf470dd2737d14accba453fabc32a4f84a94c68",
       "capability": {
         "job": "Cut live or regression harm with a root-cause fix on the owning layer and an oracle proving harm reduction.",
         "outcomeObservable": "The failing oracle reruns green or harm measurably reduces, reproduction is closed or owned, and the touched path shows no obvious new regression.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "model-security-threats",
@@ -627,14 +631,14 @@
       "name": "run-incident-response",
       "description": "Run production incident response to mitigation and learning.",
       "path": "skills/run-incident-response/SKILL.md",
-      "packageDigest": "sha256:e4cc59e82010a33a1233b4dfa15f79fa0c33d5dead546f75f4adfea30e672619",
+      "packageDigest": "sha256:76579b5d6cb8728410a8392e982672f61e11c76b2b40d529437441d8db861fcb",
       "capability": {
         "job": "Run production incident response to mitigation and truthful close: declare, stabilize, communicate, diagnose, resolve, learn.",
         "outcomeObservable": "An incident record with mitigation evidence, facts-only stakeholder communications, an owning-cause fix or permanent mitigation, and a postmortem with action items and owners.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "run-open-product-betterment",
