@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "name": "produce-game-2d-sprites",
+  "job": "Produce engine-ready 2D game sprites and animation sheets with QC: chroma, loop, scale consistency, naming.",
+  "boundaries": {
+    "inScope": [
+      "Producing characters, props, projectiles, FX, and HUD art assets",
+      "Building walk/run/attack/idle cycles and transparent exports",
+      "Applying engine-ready defaults and postprocessing scripts",
+      "Verifying with blind-describe QC and flip tests"
+    ],
+    "outOfScope": [
+      "Runtime wiring and ECS/render (Keel ports and title)",
+      "Title content layout under pack",
+      "Faking engine-ready sheets when host tools are missing"
+    ]
+  },
+  "inputs": [
+    "Subject, style, frame count or grid, loop versus one-shot",
+    "Size class, naming, and success signal",
+    "Host image generation or editing tools"
+  ],
+  "outputs": [
+    "Engine-ready asset files with manifest and exact paths",
+    "QC notes including chroma, loop, scale, and consistency",
+    "Residual defects and host tool gaps"
+  ],
+  "required": {
+    "tools": [
+      "host image tools",
+      "Pillow or numpy (and ffmpeg for video path)"
+    ],
+    "data": [
+      "style contract and reference images for identity continuity"
+    ],
+    "permissions": [
+      "write access to the title assets tree"
+    ]
+  },
+  "failureSemantics": "Missing host tools are reported honestly, never papered over; sheets failing chroma, loop, scale, or consistency checks are residuals; helpers are only used per their documented --help contract.",
+  "outcome": {
+    "observable": "Engine-ready sprite or sheet files at declared title paths with manifest, QC evidence (chroma, loop flip test, scale consistency), and an honest residual and tool-gap list.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

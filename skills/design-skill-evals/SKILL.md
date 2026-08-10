@@ -117,3 +117,14 @@ Return one Skill Evaluation Program containing:
 
 Complete only when an independent runner can reproduce the candidate, tasks,
 outputs, metrics, and verdict without trusting the author narrative.
+
+## Filing qualification records
+
+A completed, reproducible run is filed as version-scoped evidence:
+`skills/<id>/qualification.json` (`status: qualified`, named evaluator,
+evidence digest+uri, compatibility rows, future `expiresAt`), the raw report
+under `docs/qualification/evals/`, and the ledger entry in
+`docs/qualification/LEDGER.md`. Schema:
+`schemas/qualification-record.schema.json`. Without an independently
+reproducible run, the capability stays `unqualified` — never a lower score, an
+ineligible state.

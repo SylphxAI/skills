@@ -1,13 +1,19 @@
-# Skills
+# Sylphx Verified Capabilities (open foundation)
 
-Own a public **first-class Agent Skills** catalog and install adapters for
-Codex, Claude Code, and Grok Build.
+Own the public **open foundation** of Sylphx Verified Capabilities: portable
+capability packages with machine-readable contracts, honest version-scoped
+qualification records, an outcome-receipt recording contract, and static
+install/sync adapters for Codex, Claude Code, and Grok Build.
 
 ## Model
 
-One skill = one job. Host discovers via short descriptions. Depth in references.
-No method-bag indirection.
+One capability = one requestable job with an externally observable outcome
+contract. Host discovers via short descriptions. Depth in references. No
+method-bag indirection. Every package carries `capability.json` and
+`qualification.json` (`unqualified` is the honest default).
 
 ## Delivery
 
-Default branch passes `npm test`; catalog rebuilt; install adapters current.
+Default branch passes `npm test`; catalog rebuilt with qualification
+projection; install adapters current; no package claims qualification without
+version-scoped, expiring evidence.

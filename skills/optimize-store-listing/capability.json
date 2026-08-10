@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "name": "optimize-store-listing",
+  "job": "Optimize store listing: metadata, creatives, localization, conversion experiment, compliance, with exact-channel revisions.",
+  "boundaries": {
+    "inScope": [
+      "Building positioning-to-asset narrative and metadata contract",
+      "Specifying creatives and stable production asset requests",
+      "Localization briefs per locale with native QA",
+      "Defining conversion experiments with countermetrics and stop rules"
+    ],
+    "outOfScope": [
+      "Distribution and submission (build-distribution-readiness)",
+      "Asset production (produce-product-assets)",
+      "Public review solicitation and paid acquisition"
+    ]
+  },
+  "inputs": [
+    "Exact product/build/content identity and channel territories",
+    "Audience, positioning promise, conversion event, and price model",
+    "Current listing evidence and channel contracts"
+  ],
+  "outputs": [
+    "Channel Listing and Creative Sequence with exact revisions",
+    "Per-locale localization and accessibility briefs",
+    "Experiment design with metrics, confidence, stop, rollback, and readback"
+  ],
+  "required": {
+    "tools": [
+      "channel submission and QA tooling"
+    ],
+    "data": [
+      "exact shipped behavior evidence for every claim"
+    ],
+    "permissions": [
+      "channel authority for publication only when selected"
+    ]
+  },
+  "failureSemantics": "Every live claim must be exact-build truthful, localized, and accessible; conversion gains that worsen downstream quality, trust, retention, refund, or support countermetrics are not wins; no second production source of truth is created.",
+  "outcome": {
+    "observable": "A Channel Listing and Creative Sequence where every claim maps to exact shipped behavior, assets pass channel QA by digest, localization is native-QA'd, and conversion gains survive trust and retention countermetrics with live readback.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

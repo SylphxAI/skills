@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "name": "write-high-signal-update",
+  "job": "Write short high-signal output: answer-first replies and updates, decisions, risks, asks.",
+  "boundaries": {
+    "inScope": [
+      "Stating the decision or outcome first",
+      "Listing facts with sources and separating inference",
+      "Listing risks and blockers with owners and dates",
+      "Making explicit asks with who, what, and by when"
+    ],
+    "outOfScope": [
+      "Narrative and timeline fluff the audience already has",
+      "Claiming live or production status without evidence",
+      "Updates that bury the ask"
+    ]
+  },
+  "inputs": [
+    "The decision or outcome and relevant facts",
+    "Sources, risks, blockers, and owners",
+    "Explicit asks and next steps"
+  ],
+  "outputs": [
+    "A short update ready to send with outcome, facts, risks, asks, and next"
+  ],
+  "required": {
+    "tools": [],
+    "data": [],
+    "permissions": []
+  },
+  "failureSemantics": "An update that buries the ask produces no action; live or production status is never claimed without evidence; facts and inference stay separated.",
+  "outcome": {
+    "observable": "A short update ready to send where the decision or outcome comes first, facts carry sources, risks name owners and dates, and the ask is explicit.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

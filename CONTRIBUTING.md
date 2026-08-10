@@ -2,8 +2,9 @@
 
 ## What belongs here
 
-Specialized **task skills** the agent cannot do well without packaged procedure,
-scripts, or org-specific gotchas.
+Specialized **task capabilities** the agent cannot do well without packaged
+procedure, scripts, or org-specific gotchas. Every package is a capability
+with a contract and an honest qualification record.
 
 ## What does not
 
@@ -17,10 +18,15 @@ scripts, or org-specific gotchas.
 1. Prove a real agent gap on a recurring job.
 2. Follow `skills/author-skill`.
 3. Keep `SKILL.md` under ~500 lines; put depth in `references/`.
-4. Keep the catalog inside the Codex ~8k description listing class.
-5. Run `npm test`.
+4. Write `capability.json` (contract: job, boundaries, inputs/outputs,
+   required tools/data/permissions, failure semantics, outcome observable).
+5. `qualification.json` stays `unqualified` unless you filed version-scoped,
+   expiring evidence per `design-skill-evals` and `docs/QUALIFICATION.md`.
+6. Keep the catalog inside the Codex ~8k description listing class.
+7. Run `npm test`.
 
 ## PR complete
 
-Exact branch passes `npm test`; catalog rebuilt; no residual references to
-deleted packages.
+Exact branch passes `npm test`; catalog rebuilt with qualification projection;
+no residual references to deleted packages; no capability claims qualification
+without evidence.

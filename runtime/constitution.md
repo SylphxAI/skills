@@ -23,6 +23,9 @@ only when a task matches. Always-on text is miss-class-A floors only.
   edited, committed, proposed, or locally green.
 - Do not fabricate live coordination, deploy, or CI authority when tools or
   state are missing. Report the gap.
+- Installed or structurally green is not qualified: capability value requires
+  version-scoped qualification evidence and an outcome receipt; `unqualified`
+  is the honest default.
 - Obtain explicit authority before destructive actions, credentials,
   public-contract changes, new infrastructure, or irreversible effects.
 

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "name": "build-distribution-readiness",
+  "job": "Turn an exact product artifact into one audience-selected, channel-specific, support-ready Distribution Evidence Pack.",
+  "boundaries": {
+    "inScope": [
+      "Selecting the smallest complete channel set from real user journeys",
+      "Requiring and verifying one immutable target-artifact set per selected channel",
+      "Modeling channel state machines with durable receipts and consumer-side readback",
+      "Binding release communication variants to the exact shipped identity"
+    ],
+    "outOfScope": [
+      "Making the artifact itself (build-product)",
+      "Listing conversion and storefront copy (optimize-store-listing)",
+      "Provider or channel mutation authority (active product repository and delivery profile)"
+    ]
+  },
+  "inputs": [
+    "Owner-approved immutable product and release target",
+    "Exact source revision, version, target artifacts and digests",
+    "Audience, invocation journeys, territories, and selected channels"
+  ],
+  "outputs": [
+    "Distribution Evidence Pack with channel capability and evidence matrix",
+    "Exact per-channel blockers, next machine actions, and required live readback",
+    "Release communication variants bound to shipped identity"
+  ],
+  "required": {
+    "tools": [
+      "official channel/package-manager tooling for selected channels"
+    ],
+    "data": [
+      "current official requirements per channel, territory, and action"
+    ],
+    "permissions": [
+      "publish credentials owned by the active delivery profile"
+    ]
+  },
+  "failureSemantics": "An untested channel row is unknown, never inherited from another OS or runtime; blockers are typed by exact dependency, failed proof, external authority pending, or policy floor, and no release is called complete without live readback evidence.",
+  "outcome": {
+    "observable": "A Distribution Evidence Pack where every selected channel names its exact artifact identity, install/upgrade behavior, and live readback proof, and every blocker names its next machine action.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

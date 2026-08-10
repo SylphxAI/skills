@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "name": "select-next-work",
+  "job": "Select and claim the next high-value Work from evidence under WIP limits: one tick, bounded outcome, compact report.",
+  "boundaries": {
+    "inScope": [
+      "Resolving org, project, and live Work authority",
+      "Inspecting queue, claims, capacity, and material signals",
+      "Deduplicating to independently useful bounded outcomes",
+      "Claiming positive-net lanes under WIP and cost backpressure"
+    ],
+    "outOfScope": [
+      "Immortal chat sessions as continuous mode",
+      "Closing claimed multi-phase objectives inside a tick",
+      "Claiming delivery outcomes without delivery evidence"
+    ]
+  },
+  "inputs": [
+    "Live queue, claims, capacity, and signals",
+    "WIP and cost backpressure constraints",
+    "Work authority surfaces"
+  ],
+  "outputs": [
+    "Bounded tick report",
+    "Durable claim and checkpoint effects where authority surfaces exist"
+  ],
+  "required": {
+    "tools": [],
+    "data": [
+      "live queue and capacity evidence"
+    ],
+    "permissions": []
+  },
+  "failureSemantics": "Only positive-net lanes are claimed under WIP and cost backpressure; continuous mode requires an external scheduler, bounded WIP, and readout; the tick ends after a compact report.",
+  "outcome": {
+    "observable": "A bounded tick report that selects and claims the next positive-net Work under WIP limits, with durable claim or checkpoint effects recorded where authority surfaces exist.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

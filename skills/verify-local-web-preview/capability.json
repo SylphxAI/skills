@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "name": "verify-local-web-preview",
+  "job": "Verify local web or game preview: load, screenshot, console gate, with fail-closed page-error checks.",
+  "boundaries": {
+    "inScope": [
+      "Locating the actual listen URL or port",
+      "Capturing a screenshot via host tools or Playwright smoke",
+      "Inspecting layout, blank canvas, and obvious defects",
+      "Recording URL, status, screenshot, console errors, and untested items"
+    ],
+    "outOfScope": [
+      "Claiming production readiness from smoke alone",
+      "Inventing a port or URL",
+      "Sending agent-only localhost chores to a human"
+    ]
+  },
+  "inputs": [
+    "Local preview URL and port",
+    "Screenshot tooling or browser access",
+    "Movement-game control signs where applicable"
+  ],
+  "outputs": [
+    "Load attempt with recorded result",
+    "Screenshot or explicit tool-gap",
+    "Console and page-error list or clean gate, plus human-facing summary"
+  ],
+  "required": {
+    "tools": [
+      "host browser or Playwright"
+    ],
+    "data": [],
+    "permissions": []
+  },
+  "failureSemantics": "Console or page errors fail the gate; a 200 alone is not visual proof; movement games need control-sign self-tests, not screenshots only; missing tools are reported as a gap, never faked.",
+  "outcome": {
+    "observable": "A recorded preview load with screenshot or explicit tool-gap, a fail-closed console gate result, and a human-facing summary that makes no false production claims.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

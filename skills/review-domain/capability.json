@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "name": "review-domain",
+  "job": "Review a product or ops domain into one assessment record with severity-ranked findings and recommended actions.",
+  "boundaries": {
+    "inScope": [
+      "Framing subject, surfaces, users, and success criteria",
+      "Opening one domain pack matching the review ask",
+      "Gathering evidence and separating fact, inference, and unknown",
+      "Producing one ranked findings and actions record"
+    ],
+    "outOfScope": [
+      "Implementing the fix unless scope expands",
+      "Multiple domain packs for a single-domain ask",
+      "Domain checklists as separate listing skills"
+    ]
+  },
+  "inputs": [
+    "Subject and domain of the assessment",
+    "Users, surfaces, and success criteria",
+    "Evidence sources per the domain pack"
+  ],
+  "outputs": [
+    "Domain review record",
+    "Severity-ranked findings and residuals",
+    "Recommended actions"
+  ],
+  "required": {
+    "tools": [],
+    "data": [
+      "evidence per domain pack"
+    ],
+    "permissions": []
+  },
+  "failureSemantics": "Findings separate fact, inference, and unknown; a review record without ranked severity or residuals is incomplete, and domain checklists never become separate listing skills.",
+  "outcome": {
+    "observable": "One domain review record with severity-ranked findings, residuals, and recommended actions that a decision owner can act on, produced from one matching domain pack.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

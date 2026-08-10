@@ -27,12 +27,23 @@ jobs:
     # remains the workflow orchestrator; it is not a compute fallback.
     runs-on: sylphx-linux-standard
     timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        # package.json declares node >=20; every declared floor must be tested,
+        # not only the newest runtime.
+        node-version: [20, 24]
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: 24
+          node-version: ${{ matrix.node-version }}
           cache: npm
       - run: npm ci --ignore-scripts
       - run: npm test
       - run: npm pack --dry-run
+      # Python helper floor: package scripts under skills/*/scripts must at
+      # least parse on the runner's python3 (syntax smoke; not dependency
+      # integration, which is declared per-package qualification).
+      - name: Python helper syntax smoke
+        run: python3 -m py_compile $(find skills -name '*.py' -type f)

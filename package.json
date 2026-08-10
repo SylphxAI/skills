@@ -1,7 +1,7 @@
 {
   "name": "sylphx-skills",
-  "version": "6.1.0",
-  "description": "Agent Skills: requestable jobs + progressive references; no hard listing cap",
+  "version": "6.2.0",
+  "description": "Sylphx Verified Capabilities: requestable-job capability packages with contracts, qualification records, and outcome-receipt contract; no hard listing cap",
   "license": "MIT",
   "type": "module",
   "bin": {
@@ -12,6 +12,7 @@
     "agents/",
     "skills/",
     "runtime/",
+    "schemas/",
     "catalog.json",
     "INSTALL.md",
     "README.md",

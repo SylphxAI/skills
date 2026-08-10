@@ -1,0 +1,314 @@
+# Skill utilization eval residual (live qualification evidence)
+
+Filed under [`docs/qualification/LEDGER.md`](../LEDGER.md). This record is the honest evidence that acceptable automatic Skill utilization is **not** proven.
+
+## Status
+
+**Open residual.** Architecture (thin dual-layer progressive instructions) is
+decided. Acceptable automatic Skill utilization is **not** proven and must not
+be claimed from installation, AutoSync green, catalog integrity, or authored
+fixtures alone (ADR-0009, ADR-0011,
+ADR-20260731-thin-dual-layer-progressive-instruction-system).
+
+### 2026-08-10 Verified Capabilities projection
+
+- The repository now projects qualification explicitly: **57 capability
+  packages, 0 qualified, 0 outcome receipts** (`docs/qualification/LEDGER.md`).
+  This record and the multi-host sheets below are the honest evidence that no
+  with-skill versus baseline delta is promotable yet; none of the historical
+  Codex auto-heuristic slices changed that.
+- **External projections are not authoritative.** The skills.sh projection
+  (public aggregate of historical installs) is operated outside this
+  repository and may list retired or historical packages; the authoritative
+  catalog is `catalog.json` at the exact source revision. Install counts are
+  fleet/crawler-compatible signals, never qualification or utilization
+  evidence.
+- Qualification requires a named evaluator, version-scoped expiring evidence,
+  and a security review; structural green is explicitly not evidence
+  (`docs/QUALIFICATION.md`, ADR-20260810).
+
+
+### 2026-08-04 authoring follow-up
+
+- Codex host runner `scripts/run-utilization-host-codex.mjs`: `--ids=` now selects from the **full** fixture corpus (not only the default subset).
+- Codex remaining-slice sheet at tip `711d30b` still non-promotable auto-heuristic.
+- Positive-writing strip continued: ban neighbour-id dumps in workflow Boundaries; description templates no longer teach `Not <neighbours>`.
+- Mechanical-rename pollution from `migrate`→`execute-hard-cutover` verb substitution cleaned (restored English *migrate/migrated*; eng predicates `eng-hard-cut-0N`).
+- Residual still **open** for promotable multi-host proof (Claude auth / Grok billing).
+
+
+### 2026-08-05 three-layer + host follow-up
+
+- Three-layer integration model landed on main (`0c97bf9` / PR #86): L1 batch,
+  L2 atomic commits, L3 revert-safe PR outcomes in `source-authoring-standard`,
+  `drive-to-delivery` (see references/pursue-objective), `maintain-product` (see references/open-betterment).
+- Compose alignment: `drive-to-delivery` + `author-skill` point at the same layers.
+- Codex auto-heuristic @ `0c97bf9`: three-layer + pursue slice
+  `codex-three-layer-0c97bf9` **4/4 pass** (non-promotable).
+- New fixtures: `critical-source-authoring-three-layer`,
+  `neighbour-source-authoring-vs-drive`.
+- Utilization residual remains **open**: Claude `loggedIn: false`; Grok binary
+  present but promotable multi-host proof not closed; Codex sheets stay
+  auto-heuristic / non-promotable unless human-promoted.
+
+
+### 2026-08-05 compose + host slices @ `cd2e5c6`
+
+- Product jobs (`prototype/build/maintain/expand/finish-product`) compose
+  three-layer source landing; package-classes composition bullet updated.
+- Codex auto-heuristic (non-promotable):
+  - `codex-floor-cd2e5c6` **4/4**
+  - `codex-product-jobs-cd2e5c6` **6/6** (drive/finish/betterment/build/source-authoring)
+- Claude still **not logged in** → multi-host residual open.
+
+
+### 2026-08-05 near-neighbour + host residual
+
+- Mutating jobs: `execute-hard-cutover`, `remediate-*`, `author-skill` (see references/curate-repository)
+  compose L1/L2/L3 landing.
+- Codex near-neighbour @ `c3c9ed7`: **9/10** then prototype scorer framing fix;
+  recheck **1/1** (`promotable: false`).
+- Host residual sheet `host-capability-residual-c3c9ed7.md`: Claude unauth;
+  Grok **402 balance exhausted**.
+
+
+### 2026-08-05 remaining critical coverage @ `fe8d153`
+
+- Codex measured remaining unmeasured critical/compound IDs:
+  `codex-remaining-critical-fe8d153` — **7 pass / 0 fail / 1 inconclusive**
+  (`critical-skill-curator` inconclusive under tool limits; non-promotable).
+- Full fixture corpus now has Codex auto-heuristic coverage for all 48 cases
+  (aggregate across tip lineage sheets; still **not** multi-host promotable).
+- Host residual refreshed: Claude unauth; Grok **403 spending-limit / credits**.
+- Additional three-layer compose: `select-dependency-versions`,
+  `adopt-repo-standards`, `parallel-change-integration-standard`.
+
+
+### 2026-08-05 doctrine guard + inventory @ `a48a717`
+
+- Structural test `tests/three-layer-source-doctrine.test.mjs` locks L1/L2/L3 in
+  core packages and high-EV mutators (regression guard; not utilization proof).
+- Codex sheet inventory: `tests/fixtures/skill-utilization-host-results/CODEX-SHEET-INVENTORY.md`.
+- Claude still unauth; Grok still 402/403 — host-incapable residuals explicit.
+- Residual **remains open** for promotable multi-host closure.
+
+
+### 2026-08-05 tip-pin @ `73f7d4b`
+
+- Additional mutators compose L1/L2/L3: `build-product` (see references/distribution-readiness),
+  `design-product` (see references/architecture-shape), `operate-customer-support` (see references/feedback-loop) (structural test extended).
+- Codex tip-pinned three-layer slice: `codex-tip-pin-three-layer-73f7d4b` **3/3**.
+- Floor+abstention tip-pin sheet recorded when available at same tip.
+- Claude unauth; Grok 403 spending-limit — host-incapable residuals unchanged.
+- Residual **open** for promotable multi-host proof.
+
+
+### 2026-08-05 runner timeout + tip-pin @ `a0dec0a`
+
+- `run-utilization-host-codex.mjs`: per-case timeout (default 180s,
+  `UTIL_CODEX_TIMEOUT_MS`) → empty timeout scores **inconclusive** (not hang forever).
+- Tip-pin sheet `codex-tip-pin-a0dec0a` **4/4** (floor + three-layer; non-promotable).
+- Exit criteria honest snapshot table added; residual still **open** for
+  promotable multi-host proof (Claude unauth; Grok 402/403).
+
+
+### 2026-08-05 tip `011d0fe` promotion path + tip-pin
+
+- Host runbook: promotion checklist for `promotable: true` and Codex runner usage.
+- Tip-pin util sheet at `011d0fe` when recorded (`codex-tip-pin-011d0fe*`).
+- Live re-probe: Claude unauth; Grok 402 — host-incapable residuals stand.
+- Residual **open** until multi-host promotable proof or accepted policy closure.
+
+
+### 2026-08-05 tip `36ae7f3` ADR cross-link + tip-pin
+
+- ADR-20260803 cites source-authoring three-layer (L1/L2/L3) as binding method
+  under Agent-Native Queued Trunk.
+- Tip-pin util sheet `codex-tip-pin-36ae7f3` when recorded.
+- Claude unauth; Grok 402 — host-incapable residuals stand.
+- Residual **open** for promotable multi-host proof.
+
+
+## Objective split status (three-layer goal vs utilization residual)
+
+This section separates the broader skills product objective so agents do not
+confuse **landed doctrine** with **open multi-host utilization**.
+
+### A. Three-layer integration model — landed (evidence)
+
+| Item | Evidence |
+| --- | --- |
+| L1/L2/L3 defined | `skills/source-authoring-standard/references/full-standard.md` |
+| pursue / open-betterment backbone | `skills/drive-to-delivery/../pursue-product-objective/SKILL.md`, `skills/maintain-product/../run-open-product-betterment/SKILL.md` |
+| High-EV mutators compose layers | structural test `tests/three-layer-source-doctrine.test.mjs` |
+| Queued trunk alignment | `history/adr/ADR-20260803-agent-native-queued-trunk.md` (agent commit/PR layering) |
+| Install currency | `node runtime/sylphx-skills.mjs status --agent all` → current 118/118 |
+
+### B. Utilization residual — still open
+
+| Item | Status |
+| --- | --- |
+| Fixtures + oracles | Met |
+| Codex auto-heuristic coverage | Met (non-promotable sheets under `tests/fixtures/skill-utilization-host-results/`) |
+| Claude host | **Incapable here** (not logged in) |
+| Grok host | **Incapable here** (402/403 billing) |
+| Promotable multi-host proof | **Not met** |
+
+Closing **B** requires host capability + promotion checklist in
+`skill-utilization-host-runbook.md`. Closing **A** is not claimed by re-running
+the same Codex tip-pin forever.
+
+
+### 2026-08-05 tip `090759e` objective split status
+
+- Residual doc now separates **landed three-layer doctrine** from **open
+  multi-host utilization** (stop thrashing tip-pins as fake residual progress).
+- Tip-pin `codex-tip-pin-090759e` **4/4** non-promotable.
+- Claude unauth; Grok 402 — host-incapable.
+
+## Goal
+
+Measure whether agents **behave** as if the correct Skill method was applied,
+on pinned Skills revisions and host versions.
+
+## Non-goals
+
+- Proving L0 token optimality
+- Replacing host native discovery with a meta-router
+- Using model self-report ("I opened the skill") as a pass
+- Flaky full-catalog perfection as a hard release gate
+
+## Metric hierarchy
+
+1. **Primary — behavior oracles.** Tasks require a Skill-unique, non-obvious
+   mandatory step that is not present in L0. Score whether the agent performs
+   that step (or correctly abstains).
+2. **Secondary — load traces.** When a host exposes Skill open/load events,
+   record them. Absence of traces does not forbid behavior-oracle eval.
+3. **Not sufficient alone:** install status, package digests, fixture corpora.
+
+## Suites
+
+| Suite | Intent |
+| --- | --- |
+| Floor | L0 miss-class-A invariants hold without loading domain Skills |
+| Critical skill | Top binding methods open/follow under positive prompts |
+| Near-neighbour | Discriminate adjacent Skills |
+| Abstention | Do not load an irrelevant Skill / do not invent authority |
+| Compound | Multi-domain tasks load the needed subset without dumping the catalog |
+
+## Pinning
+
+Every run records:
+
+- Exact Skills source commit / package digests
+- Host product and version (Codex / Claude / Grok)
+- Model identity when available
+- Prompt fixtures and oracle definitions
+
+## Pass language
+
+- **May claim:** measured behavior-oracle pass rate for a named suite at a
+  pinned revision.
+- **Must not claim:** "utilization solved," "agents always load Skills," or
+  catalog-wide automatic use without suite coverage and pins.
+
+## Progress at pinned authoring
+
+Documented fixtures now live at
+`tests/fixtures/skill-utilization-eval.json` with structural coverage for
+floor, critical-skill, near-neighbour, abstention, and compound suites, plus a
+failure taxonomy and host-runtime residual block. Structural tests in
+`tests/skill-utilization-eval.test.mjs` validate fixture integrity against the
+current catalog.
+
+This advances residual exit criterion 1 (documented fixtures/oracles). It does
+**not** close the residual: automated green behavior-oracle runs on each
+supported host class remain outstanding, and install/status green is still not
+utilization proof.
+
+## Failure taxonomy
+
+Fixture cases tag one or more of:
+
+- `l0_miss` — always-on floor violated
+- `skill_miss` — wrong/missing Skill selection or failure to follow method
+- `tool_policy_gap` — missing tools/credentials/policy, not cognition alone
+- `model_limit` — model capability/context limitation
+- `listing_truncation` — host listing budget shortened/omitted descriptions
+
+These codes satisfy residual exit criterion 3 as a documented taxonomy. Assigning
+a code in a real host run is still required for measured utilization claims.
+
+## Exit criteria for closing this residual
+
+1. Documented fixture set with behavior oracles for floor, critical-skill, and
+   abstention suites.
+2. At least one green run per supported host class at a pinned Skills SHA, or
+   an explicit residual that a host cannot support reliable eval.
+3. Failure taxonomy: L0 miss vs Skill miss vs tool/policy gap vs model limit.
+
+
+## Exit criteria status (honest snapshot)
+
+| # | Criterion | Status @ tip lineage |
+| --- | --- | --- |
+| 1 | Documented fixtures + behavior oracles | **Met** |
+| 2 | Green run **or** host-incapable residual per host class | **Partial:** Codex auto-heuristic sheets; Claude unauth residual; Grok 402/403 residual. Not human-promoted multi-host closure. |
+| 3 | Failure taxonomy documented | **Met** |
+
+**Residual remains OPEN** for promotable multi-host utilization proof.
+
+Until full residual closure, utilization remains an honest open residual.
+
+Host execution procedure: [skill-utilization-host-runbook.md](./skill-utilization-host-runbook.md).
+
+## Corpus notes (2026-08-03)
+
+Pinned suite includes critical/neighbour cases for product job Skills:
+`build-product` (see references/prototype), `build-product`, `maintain-product`, `build-product` (see references/expand),
+`build-product` (see references/finish), `drive-to-delivery` (see references/pursue-objective), `maintain-product` (see references/open-betterment), `author-skill`,
+plus delivery/select-next-work neighbours. Fixtures alone are not utilization
+proof (see Goal above).
+
+## Related catalog pressure (not utilization proof)
+
+Description character budget is a separate listing-capacity concern
+(`history/docs-reference/catalog-listing-budget-policy.md`). Agent-facing description
+tightening reduces truncation risk; it does **not** close host behavior-oracle
+utilization.
+
+## Authoring progress (2026-08-03)
+
+- Product job Skills covered in fixtures; run-open-product-betterment oracles aligned to portable continuity and admit-all-B.
+- Host runbook added; live host behavior-oracle green runs still required to close residual.
+- All 118 packages ship `agents/openai.yaml` UI metadata.
+
+Result sheet drop: `tests/fixtures/skill-utilization-host-results/` (see README there).
+
+Pack generator: `node scripts/prepare-utilization-host-run.mjs` (printable minimum slice; not a green claim).
+
+## Authoring progress (continued)
+
+- Structural description discrimination guards for critical-skill and near-neighbour suites.
+- Host-run pack generator (`scripts/prepare-utilization-host-run.mjs`).
+- Non-promotable structural L0 floor-marker sheet under `tests/fixtures/skill-utilization-host-results/`.
+- **Still open:** green behavior-oracle runs on Codex/Claude/Grok hosts at a pinned SHA.
+
+## Host run progress (Codex CLI, tip a18984c)
+
+- Runner: `scripts/run-utilization-host-codex.mjs` (heuristic auto-score, `promotable: false`).
+- Floor suite: **4/4 pass** (`codex-floor-a18984c`).
+- Critical product + abstention slice: **14/14 pass** after framing rescoring (`codex-critical-product-a18984c`); combined sheet `codex-combined-a18984c`.
+- **Not closed:** Claude Code and Grok host classes unmeasured; scores are automatic heuristics, not human-promoted utilization proof.
+
+## Host capability residual (Claude / Grok) @ 1d76fa6
+
+Evidence sheet: `tests/fixtures/skill-utilization-host-results/host-capability-residual-1d76fa6.md`.
+
+- **Claude:** CLI present; not logged in → cannot run reliable eval here.
+- **Grok:** CLI symlink dangling (binary missing) → cannot run reliable eval here.
+- **Codex:** floor 4/4; critical product+abstention 14/14; near-neighbour 9/9 (after framing rescoring under tool limits); auto-heuristic only.
+
+Utilization residual remains open for **promotable multi-host proof**; Codex measured progress does not close it alone.
+

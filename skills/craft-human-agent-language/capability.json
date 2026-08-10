@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "name": "craft-human-agent-language",
+  "job": "Write or review a human-agent document or prompt: purpose, audience, structure, plain language, evidence-based language, output contract, re-verification.",
+  "boundaries": {
+    "inScope": [
+      "Framing purpose and audience before writing",
+      "Structuring headings, lists, examples, and schemas",
+      "Choosing language and format from dated evidence, never hardcoded model truth",
+      "Defining an output contract at the boundary and a verification gate"
+    ],
+    "outOfScope": [
+      "Hardcoding a fixed model ranking as truth",
+      "Over-constraining reasoning output with forced schemas",
+      "Publishing dated tokenizer measurements as durable doctrine"
+    ]
+  },
+  "inputs": [
+    "Purpose (inform/decide/execute) and audience (human/agent/both)",
+    "Existing draft or empty artifact and token/parse constraints",
+    "Current dated language and tokenizer evidence"
+  ],
+  "outputs": [
+    "Written or reviewed artifact with structure-first layout",
+    "Recorded language/format decision and its evidence basis",
+    "Verification-gate results and refresh note for dated evidence"
+  ],
+  "required": {
+    "tools": [],
+    "data": [
+      "dated language/tokenizer evidence for the target model family"
+    ],
+    "permissions": []
+  },
+  "failureSemantics": "Language and format claims are only as fresh as their dated evidence; a gate runs before committing unknown-model choices, and any hardcoded model ranking is treated as stale until re-measured.",
+  "outcome": {
+    "observable": "A document or prompt with explicit purpose/audience, structure before prose, plain-language floors, a recorded evidence-based language/format decision, and a re-verification gate that an independent reviewer can rerun.",
+    "oracleOwner": "user-system",
+    "receiptSchema": "outcome-receipt.schema.json"
+  }
+}

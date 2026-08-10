@@ -217,6 +217,16 @@ export function mergeAutoSyncAgents(existing, requested) {
   return merged;
 }
 
+/**
+ * Names installed as `qualified` that the candidate catalog no longer lists as
+ * qualified. AutoSync's fail-closed promotion gate blocks any such downgrade
+ * unless the operator explicitly overrides (recorded in state/status).
+ */
+export function qualificationRegressions(installedQualifiedNames, candidateQualifiedNames) {
+  const candidate = new Set(candidateQualifiedNames || []);
+  return (installedQualifiedNames || []).filter((name) => !candidate.has(name));
+}
+
 function manifestPath(target) {
   return path.join(target.path, '.sylphx-skills.json');
 }
@@ -307,6 +317,8 @@ function expectedTargetState(target, manifest) {
     'packageDigests',
     'packageVersion',
     'profiles',
+    'qualification',
+    'qualifiedNames',
     'runtime',
     'schemaVersion',
     'skills',
@@ -377,6 +389,15 @@ function syncTarget(target) {
     mkdirSync(target.path, { recursive: true });
     recoverInterruptedTransactions(target.path);
     const previous = readPreviousManifest(target);
+    const regressions = qualificationRegressions(
+      previous?.qualifiedNames,
+      catalog.skills.filter((skill) => skill.qualified).map((skill) => skill.name),
+    );
+    if (regressions.length > 0 && !process.env.SYLPHX_SKILLS_ALLOW_QUALIFICATION_REGRESSION) {
+      throw new Error(
+        `qualification promotion gate: candidate catalog downgrades installed qualified capability(ies): ${regressions.join(', ')}; set SYLPHX_SKILLS_ALLOW_QUALIFICATION_REGRESSION=1 to override`,
+      );
+    }
     const desired = catalog.skills.map((skill) => skill.name);
     if (expectedTargetState(target, previous)) {
       applyConstitutionPlan(constitutionPlan);
@@ -401,6 +422,11 @@ function syncTarget(target) {
       profiles: catalog.skills
         .filter((skill) => skill.profile)
         .map((skill) => skill.profile),
+      qualifiedNames: catalog.skills.filter((skill) => skill.qualified).map((skill) => skill.name).sort(),
+      qualification: {
+        total: catalog.skills.length,
+        qualified: catalog.skills.filter((skill) => skill.qualified).length,
+      },
     };
     installTargetGeneration({
       targetPath: target.path,
@@ -516,12 +542,17 @@ function status() {
       'packageDigests',
       'packageVersion',
       'profiles',
+      'qualification',
+      'qualifiedNames',
       'runtime',
       'schemaVersion',
       'skills',
       'sourceCommit',
       'synchronizedAt',
     ]);
+    const qualificationCurrent = JSON.stringify(manifest?.qualifiedNames || []) === JSON.stringify(
+      catalog.skills.filter((skill) => skill.qualified).map((skill) => skill.name).sort(),
+    );
     const synchronizedAtCurrent = typeof manifest?.synchronizedAt === 'string'
       && Number.isFinite(Date.parse(manifest.synchronizedAt))
       && new Date(manifest.synchronizedAt).toISOString() === manifest.synchronizedAt;
@@ -546,6 +577,11 @@ function status() {
       path: target.path,
       installed: present,
       expected: catalog.count,
+      qualification: {
+        total: catalog.qualification.total,
+        qualified: catalog.qualification.qualified,
+        installedQualifiedNames: manifest?.qualifiedNames || [],
+      },
       current: manifest?.catalogDigest === `sha256:${catalogDigest}`
         && present === catalog.count
         && packagesCurrent
@@ -557,6 +593,7 @@ function status() {
         && runtimeCurrent
         && manifestShapeCurrent
         && synchronizedAtCurrent
+        && qualificationCurrent
         && constitution.current
         && legacyNativeProjection?.state !== 'recognized'
         && legacyNativeProjection?.state !== 'retirement-interrupted'
@@ -949,8 +986,10 @@ Usage:
   sylphx-skills auto-sync disable|status
 
 Install is the agent-facing static reconciliation operation and requires an
-explicit native runtime. The complete repository installation contract also
-enables AutoSync for that receiving runtime. Every mutating native operation requires an explicit runtime selection; detecting another runtime never grants
+explicit native runtime; it syncs the exact checked-out catalog and never
+creates schedulers. AutoSync is an explicit, separate opt-in on durable hosts:
+'auto-sync enable --agent <runtime>'. A machine without AutoSync is a partial
+installation, never a false green; 'status' reports it. Every mutating native operation requires an explicit runtime selection; detecting another runtime never grants
 permission to change it.`);
 }
 

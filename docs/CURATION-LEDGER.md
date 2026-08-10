@@ -85,3 +85,19 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   → one canonical `skills/author-skill/references/composition-contract.md`;
   packs link instead of restating (entropy / future-edit interest reduction).
 - Self-audit record: `docs/PRINCIPLES-SELF-AUDIT-2026-08-09.md`.
+
+## Verified Capabilities clean break (2026-08-10)
+
+- Product identity is now **Sylphx Verified Capabilities** (open foundation):
+  Capability, Qualification, Outcome receipt; North Star metric = Verified
+  Capability Yield (see `docs/NORTH-STAR.md`, ADR-20260810).
+- Every listing package carries `capability.json` (contract) and
+  `qualification.json` (record; honest default `unqualified`). Catalog projects
+  qualification state (0/57 qualified, 0 receipts at adoption).
+- Quality North Star remains the authoring quality vocabulary and is explicitly
+  **not** qualification evidence.
+- Utilization residual moved to live qualification evidence:
+  `docs/qualification/evals/utilization-residual.md` (history keeps a stub).
+- Integrity gate now validates contracts, qualification records (expiry +
+  evidence), and catalog projection; AutoSync promotion refuses qualification
+  downgrade.

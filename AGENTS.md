@@ -1,10 +1,14 @@
-# Skills repository
+# Skills repository (Sylphx Verified Capabilities open foundation)
 
 - Listings: requestable jobs under `skills/<id>/` (no hard count cap)
 - Depth: standards, shapes, domains, matrices under owner `references/`
 - Never standards bag; never docs-only agent binding depth
 - Do not demote real jobs only to shrink the catalog
-- Author via `author-skill` semantic gates
+- Every listing carries `capability.json` (contract) + `qualification.json`
+  (honest `unqualified` default); author via `author-skill` semantic gates and
+  file qualification evidence via `design-skill-evals` + `docs/QUALIFICATION.md`
+- Never claim qualification without version-scoped, expiring evidence; Quality
+  North Star is authoring quality, not qualification evidence
 - Universal doctrine (design/dev/business): `docs/policies/PRINCIPLES.md`; compact floor in `runtime/constitution.md`
 - Prefer app/product/game language; Keel depth under `build-product`
 - `npm run build:catalog && npm test`
