@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "capability": "craft-human-agent-language",
+  "claim": "Produces a document/prompt artifact with stated purpose and audience, clear structure, a boundary output contract, and a verification gate for model switches.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write document.md: a short guide for both humans and AI agents explaining how to write a bug report in this repository. Make it clear and useful."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the language artifact elements.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write document.md: a guide for both humans and AI agents on how to write a bug report in this repository. Follow the artifact rules: state purpose and audience; use structure (headings/lists/code), not a prose wall; define the output contract at the boundary (agents get schema/JSON, not free-form prose for machine consumption); include a verification gate that would apply when the model family changes.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "document.md" },
+          { "type": "file-regex", "path": "document.md", "contains": "purpose", "caseInsensitive": true },
+          { "type": "file-regex", "path": "document.md", "contains": "audience", "caseInsensitive": true },
+          { "type": "file-regex", "path": "document.md", "contains": "structure", "caseInsensitive": true },
+          { "type": "file-regex", "path": "document.md", "contains": "output contract", "caseInsensitive": true },
+          { "type": "file-regex", "path": "document.md", "contains": "verification", "caseInsensitive": true },
+          { "type": "file-regex", "path": "document.md", "contains": "gate", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same language-artifact oracle.",
+      "prompt": "Write document.md: a short guide for both humans and AI agents explaining how to write a bug report in this repository. Make it clear and useful.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "document.md" },
+          { "type": "file-regex", "path": "document.md", "contains": "purpose", "caseInsensitive": true },
+          { "type": "file-regex", "path": "document.md", "contains": "audience", "caseInsensitive": true },
+          { "type": "file-regex", "path": "document.md", "contains": "structure", "caseInsensitive": true },
+          { "type": "file-regex", "path": "document.md", "contains": "output contract", "caseInsensitive": true },
+          { "type": "file-regex", "path": "document.md", "contains": "verification", "caseInsensitive": true },
+          { "type": "file-regex", "path": "document.md", "contains": "gate", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}
