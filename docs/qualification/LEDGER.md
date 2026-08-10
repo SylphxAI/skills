@@ -4,29 +4,54 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-10)
+## Current state (2026-08-10, wave 1)
 
 - Capability packages: **57**
-- Qualified: **0**
+- Qualified: **4** — author-skill, produce-game-2d-map-assets,
+  produce-game-2d-sprites, select-dependency-versions
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
-- Verified Capability Yield: no eligible attempts (eligibility requires
-  current + qualified + authorized; unverified success is not eligible)
+- Verified Capability Yield: no eligible attempts yet (eligibility also
+  requires authorization in the actual context; receipts are the live
+  recording side)
 
-No package may be marked `qualified` without filed, version-scoped evidence.
-Until then every package stays `unqualified` — this is the honest default, not
-a failure of authoring.
+Wave-1 qualification runs:
+
+| Capability | Run | Tasks | Verdict |
+| --- | --- | --- | --- |
+| author-skill | `run-2026-08-10T14-33-38-339Z` | 2 (agent with-skill + baseline) | qualified |
+| produce-game-2d-map-assets | `run-2026-08-10T14-19-54-574Z` | 2 (deterministic exec) | qualified |
+| produce-game-2d-sprites | `run-2026-08-10T14-21-43-928Z` | 4 (2 exec + 2 agent) | qualified |
+| select-dependency-versions | `run-2026-08-10T14-37-58-866Z` | 3 (1 exec + 2 agent) | qualified |
+
+All evidence bundles live under `evals/<id>/run-*/` with raw task artifacts,
+task-level digests, security-scan results, and `report.json`. Each
+qualification expires 90 days after `qualifiedAt`; a stale expiry downgrades
+eligibility. Injection state is recorded as **not verified** for agent tasks
+(fresh-context behavior tests; no runtime-native selection trace).
+
+## Wave-1 finding (author-skill)
+
+The first author-skill run (`run-2026-08-10T14-27-35-826Z`, kept as a
+regression record) failed: a fresh agent produced a non-conformant
+`capability.json` (invented `job` object, `boundary` instead of `boundaries`,
+missing `outcome`) and an invented qualification record. Root cause: the
+procedure did not teach the exact contract fields. Fixed in the skill body
+(exact `capability.json` / `qualification.json` field contract), then the
+suite passed. This follows the eval methodology: edit the skill, never the
+threshold.
 
 ## Updating this ledger
 
 1. Follow [`docs/QUALIFICATION.md`](../QUALIFICATION.md) and
    `skills/design-skill-evals`.
-2. Update the per-package `qualification.json`, add evidence under
-   `evals/`, then run `npm run build:catalog && npm test`.
-3. Record here: capability id, version/digest, evaluator, qualifiedAt,
-   expiresAt, and evidence locator. The catalog `qualification` block must
-   match this ledger.
+2. Run the harness: `node scripts/run-qualification.mjs --capability <id>`
+   (see `docs/QUALIFICATION.md` for environment requirements), then
+   `--apply-from <stamp>` after review of the recorded bundle.
+3. Record here: capability id, run stamp, evaluator, qualifiedAt, expiresAt,
+   and evidence locator. The catalog `qualification` block must match this
+   ledger.
 
 ## Evaluation evidence
 
@@ -34,12 +59,5 @@ a failure of authoring.
   multi-host utilization residual: structural tests and Codex auto-heuristic
   slices are not promotable qualification evidence; Claude/Grok host proof is
   not yet closed.
-
-## Known distribution residuals (honest gaps, not silently covered)
-
-- No `sylphx-skills` npm package is published (requires registry credentials);
-  the GitHub install prompt is the current distribution surface.
-- The external skills.sh projection is not owned by this repository; install
-  claims here are bound to this repo's exact revisions, not third-party counts.
-- Host runtime integration (Claude/Grok live selection) is not closed; see
-  `evals/utilization-residual.md`. Python helpers get a CI syntax floor only.
+- `evals/<id>/run-*/` — wave-1 qualification bundles (raw artifacts, digests,
+  security scan, report).

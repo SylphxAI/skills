@@ -1,0 +1,20 @@
+{
+  "id": "registry-env-check",
+  "kind": "exec",
+  "description": "The declared live source (npm registry) is reachable and returns a satisfying version.",
+  "command": [
+    "npm",
+    "view",
+    "ajv@^8.20.0",
+    "version"
+  ],
+  "status": "pass",
+  "failures": [],
+  "exitCode": 0,
+  "startedAt": "2026-08-10T14:37:58.911Z",
+  "finishedAt": "2026-08-10T14:37:59.239Z",
+  "stdoutTail": "8.20.0\n",
+  "stderrTail": "",
+  "artifactCount": 0,
+  "artifactDigests": {}
+}

@@ -73,15 +73,22 @@ function commit(cwd, message) {
   return git(cwd, ['rev-parse', 'HEAD']);
 }
 
-function promotionManifest(cwd, sourceRevision, { qualifiedNames = [] } = {}) {
+function promotionManifest(cwd, sourceRevision, { qualifiedNames } = {}) {
   const catalogBytes = readFileSync(path.join(cwd, 'catalog.json'), 'utf8');
+  const catalog = JSON.parse(catalogBytes);
+  // The promotion manifest must carry the candidate tree's own qualification
+  // projection; fixtures that copy real packages into a smaller catalog must
+  // keep the projection consistent with the copied catalog.
+  const names = qualifiedNames !== undefined
+    ? qualifiedNames
+    : (Array.isArray(catalog?.qualification?.qualifiedNames) ? catalog.qualification.qualifiedNames : []);
   return {
     schemaVersion: 1,
     owner: 'SylphxAI/skills',
     channel: 'release-tag',
     sourceRevision,
     catalogDigest: `sha256:${createHash('sha256').update(catalogBytes).digest('hex')}`,
-    qualifiedNames: [...qualifiedNames].sort(),
+    qualifiedNames: [...names].sort(),
     promotedAt: new Date().toISOString(),
   };
 }
@@ -583,7 +590,7 @@ test('install is static reconciliation only: AutoSync stays disabled and status 
     assert.deepEqual(installed.targets[0].qualification, {
       total: catalog.qualification.total,
       qualified: catalog.qualification.qualified,
-      installedQualifiedNames: [],
+      installedQualifiedNames: catalog.qualification.qualifiedNames,
     });
     const manifest = JSON.parse(readFileSync(path.join(installed.targets[0].path, '.sylphx-skills.json'), 'utf8'));
     assert.deepEqual(manifest.qualifiedNames, catalog.qualification.qualifiedNames);

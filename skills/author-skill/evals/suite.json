@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "capability": "author-skill",
+  "claim": "The procedure yields a schema-conformant skill package (contract, qualification record, agent config) for a requested job.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Create a folder skills/hello-check with a SKILL.md (YAML frontmatter with name and description) for the job: validate that a checklist JSON file passes its declared gates. Add any supporting files you think are appropriate."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full author-skill procedure produces the complete package layout.",
+      "fixtures": [
+        { "source": "package:SKILL.md", "as": "SKILL.md" }
+      ],
+      "prompt": "Read ./SKILL.md completely. Create a new skill package at skills/hello-check/ following that procedure exactly: job is 'validate that a checklist JSON file passes its declared gates'. Produce the full package layout (SKILL.md with frontmatter name+description, capability.json, qualification.json with honest unqualified status, agents/openai.yaml). Do not modify any other files.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "skills/hello-check/SKILL.md" },
+          { "type": "file-regex", "path": "skills/hello-check/SKILL.md", "contains": "^---\\nname: hello-check" },
+          { "type": "file-exists", "path": "skills/hello-check/capability.json" },
+          { "type": "json-schema-valid", "path": "skills/hello-check/capability.json", "schema": "schemas/capability-contract.schema.json" },
+          { "type": "file-exists", "path": "skills/hello-check/qualification.json" },
+          { "type": "json-path-eq", "path": "skills/hello-check/qualification.json", "jsonPath": "status", "value": "unqualified" },
+          { "type": "file-exists", "path": "skills/hello-check/agents/openai.yaml" }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "description": "Fresh-context baseline (no skill): same requested job, minimal oracle (SKILL.md with frontmatter).",
+      "prompt": "Create a folder skills/hello-check with a SKILL.md (YAML frontmatter with name and description) for the job: validate that a checklist JSON file passes its declared gates. Add any supporting files you think are appropriate.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "skills/hello-check/SKILL.md" },
+          { "type": "file-regex", "path": "skills/hello-check/SKILL.md", "contains": "^---\\nname: hello-check" }
+        ]
+      }
+    }
+  ]
+}

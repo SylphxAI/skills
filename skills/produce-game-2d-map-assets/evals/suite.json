@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "capability": "produce-game-2d-map-assets",
+  "claim": "Deterministic extraction turns chroma-keyed prop packs into per-label transparent props with an honest manifest that records edge-touch conditions.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "python3 + Pillow (script runtime)",
+    "node >= 20"
+  ],
+  "tasks": [
+    {
+      "id": "extract-2x2",
+      "kind": "exec",
+      "description": "Extract four labeled transparent props from a 2x2 chroma-keyed pack with manifest.",
+      "fixtures": [
+        {
+          "source": "prop-sheet-2x2.png",
+          "as": "input.png"
+        },
+        {
+          "source": "package:scripts/extract_prop_pack.py",
+          "as": "extract_prop_pack.py"
+        }
+      ],
+      "command": [
+        "{python}",
+        "extract_prop_pack.py",
+        "--input",
+        "input.png",
+        "--rows",
+        "2",
+        "--cols",
+        "2",
+        "--output-dir",
+        "out",
+        "--labels",
+        "a,b,c,d"
+      ],
+      "oracle": {
+        "assertions": [
+          {
+            "type": "exit-code-eq",
+            "value": 0
+          },
+          {
+            "type": "file-exists",
+            "path": "out/prop-pack.json"
+          },
+          {
+            "type": "json-path-eq",
+            "path": "out/prop-pack.json",
+            "jsonPath": "accepted.length",
+            "value": 4
+          },
+          {
+            "type": "json-path-eq",
+            "path": "out/prop-pack.json",
+            "jsonPath": "rejected.length",
+            "value": 0
+          },
+          {
+            "type": "file-exists",
+            "path": "out/a/prop.png"
+          },
+          {
+            "type": "file-exists",
+            "path": "out/d/prop.png"
+          },
+          {
+            "type": "image-dimensions",
+            "path": "out/a/prop.png",
+            "min": 4,
+            "max": 128
+          },
+          {
+            "type": "image-corner-alpha",
+            "path": "out/a/prop.png",
+            "corner": "top-left",
+            "opaque": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "edge-touch-recorded-honestly",
+      "kind": "exec",
+      "description": "Edge-touching content is never hidden: the manifest records it in edge_touch_props.",
+      "fixtures": [
+        {
+          "source": "prop-sheet-edge-touch.png",
+          "as": "input.png"
+        },
+        {
+          "source": "package:scripts/extract_prop_pack.py",
+          "as": "extract_prop_pack.py"
+        }
+      ],
+      "command": [
+        "{python}",
+        "extract_prop_pack.py",
+        "--input",
+        "input.png",
+        "--rows",
+        "2",
+        "--cols",
+        "2",
+        "--output-dir",
+        "out",
+        "--labels",
+        "a,b,c,d"
+      ],
+      "oracle": {
+        "assertions": [
+          {
+            "type": "exit-code-eq",
+            "value": 0
+          },
+          {
+            "type": "json-path-eq",
+            "path": "out/prop-pack.json",
+            "jsonPath": "edge_touch_props.length",
+            "value": 4
+          },
+          {
+            "type": "json-path-eq",
+            "path": "out/prop-pack.json",
+            "jsonPath": "accepted.length",
+            "value": 4
+          }
+        ]
+      }
+    }
+  ]
+}

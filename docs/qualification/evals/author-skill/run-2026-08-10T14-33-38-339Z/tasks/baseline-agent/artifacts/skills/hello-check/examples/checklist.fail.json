@@ -1,0 +1,16 @@
+{
+  "name": "release-readiness",
+  "gates": [
+    {
+      "id": "tests-green",
+      "description": "CI test suite passes",
+      "status": "pass",
+      "note": "build 1234"
+    },
+    {
+      "id": "no-critical-bugs",
+      "description": "No open critical bugs",
+      "status": "pending"
+    }
+  ]
+}

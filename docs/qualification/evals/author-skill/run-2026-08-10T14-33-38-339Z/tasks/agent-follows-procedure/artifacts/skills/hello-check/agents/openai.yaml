@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hello Check"
+  short_description: "Validate that a checklist JSON file passes its declared gates"
+  default_prompt: "Validate the checklist JSON file at the given path: parse it, run every declared gate, and report a fail-closed pass/fail verdict."

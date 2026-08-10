@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import Ajv from 'ajv';
@@ -19,6 +19,8 @@ const folders = readdirSync(skillsRoot, { withFileTypes: true })
   .filter((entry) => entry.isDirectory())
   .map((entry) => entry.name)
   .sort();
+
+const evalSuiteSchema = ajv.compile(JSON.parse(readFileSync(path.join(repositoryRoot, 'schemas/eval-suite.schema.json'), 'utf8')));
 
 test('every listing package carries a schema-valid capability contract', () => {
   assert.ok(folders.length >= 50, `expected a real catalog, got ${folders.length}`);
@@ -78,6 +80,33 @@ test('outcome-receipt schema accepts a valid receipt and rejects invalid ones', 
   const noCapability = { ...valid };
   delete noCapability.capability;
   assert.equal(receiptSchema(noCapability), false);
+});
+
+test('every eval suite is schema-valid and bound to its capability', () => {
+  const withSuites = folders.filter((folder) => existsSync(path.join(skillsRoot, folder, 'evals', 'suite.json')));
+  assert.ok(withSuites.length > 0, 'wave-1 suites expected');
+  for (const folder of withSuites) {
+    const suite = JSON.parse(readFileSync(path.join(skillsRoot, folder, 'evals', 'suite.json'), 'utf8'));
+    assert.equal(suite.capability, folder, folder);
+    assert.equal(evalSuiteSchema(suite), true, `${folder}: ${JSON.stringify(evalSuiteSchema.errors)}`);
+  }
+});
+
+test('qualified packages carry suites, on-disk evidence, and future expiry', () => {
+  const qualified = folders.filter((folder) => (
+    JSON.parse(readFileSync(path.join(skillsRoot, folder, 'qualification.json'), 'utf8')).status === 'qualified'
+  ));
+  assert.ok(qualified.length > 0, 'wave-1 qualification expected');
+  for (const folder of qualified) {
+    const record = JSON.parse(readFileSync(path.join(skillsRoot, folder, 'qualification.json'), 'utf8'));
+    assert.ok(existsSync(path.join(skillsRoot, folder, 'evals', 'suite.json')), `${folder}: suite`);
+    assert.ok(Date.parse(record.expiresAt) > Date.now(), `${folder}: future expiry`);
+    assert.ok(record.evidence.length >= 2, `${folder}: evidence (compatibility + security at minimum)`);
+    for (const item of record.evidence) {
+      assert.match(item.digest, /^sha256:[0-9a-f]{64}$/, `${folder}: ${item.id}`);
+      assert.ok(existsSync(path.join(repositoryRoot, item.uri)), `${folder}: evidence on disk ${item.uri}`);
+    }
+  }
 });
 
 test('unqualified default is honest: a claim requires evidence', () => {

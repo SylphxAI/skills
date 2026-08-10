@@ -1,0 +1,39 @@
+{
+  "id": "extract-2x2",
+  "kind": "exec",
+  "description": "Process a 2x2 chroma-keyed creature sheet into transparent sprites with pipeline metadata.",
+  "command": [
+    "/tmp/sylphx-eval-venv/bin/python",
+    "generate2dsprite.py",
+    "process",
+    "--input",
+    "input.png",
+    "--target",
+    "creature",
+    "--mode",
+    "evolution",
+    "--output-dir",
+    "out"
+  ],
+  "status": "pass",
+  "failures": [],
+  "exitCode": 0,
+  "startedAt": "2026-08-10T14:21:43.973Z",
+  "finishedAt": "2026-08-10T14:21:44.167Z",
+  "stdoutTail": "/home/codex/src/github.com/SylphxAI/skills-wt-verified-capabilities/docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/out\n",
+  "stderrTail": "",
+  "artifactCount": 11,
+  "artifactDigests": {
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/generate2dsprite.py": "sha256:681d0885d1813e9d7e1a82dfd340c1c71c8158e57a4c0710516c3f6c2c944a95",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/input.png": "sha256:9801790b5dfe59e73c136b66190a547b9cc83468a58843410cebf985b86db2ab",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/out/animation.gif": "sha256:3ab3fb296a5bf8f1e78ed043a089ef0f11aba09a2fbaf6e42fb4737b13b01ef7",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/out/pipeline-meta.json": "sha256:f247fb69249e1212bfa486b698faa93759208fb49b07bcb41dfe7cfbf31c446c",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/out/raw-sheet-clean.png": "sha256:6e057783c5bdb86c77730f2dd0ea2d3048c1b4873d99767dfb2672610208d295",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/out/raw-sheet.png": "sha256:556980aa540796a078da241412031ae27630f14a717b2764d290ec03a46f15ed",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/out/sheet-transparent.png": "sha256:420edc78f1df38a0d4d533b028e06acf41068a45f63342b341789f2dd6be0928",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/out/stage-1.png": "sha256:a1f3e264bd11ea79f615b2e6ab9c9a592a7086c9e0fab67a97619becd7421880",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/out/stage-2.png": "sha256:73422136f5adf56c464192e556fbb8a8fdedb58ef7924e3f557c15f54c2a1f14",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/out/stage-3.png": "sha256:60bca4651cc4d1b323f72cc48404571fb6b5b0e6f0f91c4874057fdd4c1c07d0",
+    "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/tasks/extract-2x2/work/out/stage-4.png": "sha256:1566b4f31aeccf45b031f107a775c5187e84f9f1de438815755da289bdfe837c"
+  }
+}

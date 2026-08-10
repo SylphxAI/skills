@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "name": "hello-check",
+  "version": "1.0.0",
+  "job": {
+    "summary": "Validate that a checklist JSON file passes its declared gates: parse the file, load the gates it declares, run each gate deterministically, and report per-gate pass/fail with evidence.",
+    "requestable": true,
+    "requestExample": "Validate that ./checklist.json passes its declared gates.",
+    "primaryArtifact": "Validation report: per-gate pass/fail with evidence and an overall verdict",
+    "acceptanceAuthority": "The report lists every declared gate, each gate ran deterministically against the parsed file, and the overall verdict is PASS only when every gate passed"
+  },
+  "boundary": {
+    "inScope": [
+      "Parsing one checklist JSON file",
+      "Loading the gates declared in the file",
+      "Running each declared gate",
+      "Reporting per-gate results with evidence"
+    ],
+    "outOfScope": [
+      "Editing or fixing the checklist file",
+      "Running gates not declared in the file",
+      "Executing arbitrary code from the file"
+    ]
+  },
+  "inputs": {
+    "required": [
+      "Path to a checklist JSON file with a top-level gates array"
+    ],
+    "optional": [
+      "Output format preference for the report"
+    ]
+  },
+  "outputs": {
+    "primary": "Validation report with overall verdict",
+    "evidence": "Per-gate result lines with the values each gate evaluated",
+    "format": "Text report: per-gate id, result, and evidence, then overall PASS/FAIL"
+  },
+  "requiredAccess": {
+    "tools": [
+      "File read"
+    ],
+    "data": [
+      "The checklist JSON file"
+    ],
+    "permissions": [
+      "None beyond reading the target file"
+    ],
+    "note": "Declared needs only; this package grants nothing."
+  },
+  "failureSemantics": {
+    "failClosed": true,
+    "partialOutcome": "A gate that cannot be evaluated reports FAIL with the reason and the overall verdict is FAIL",
+    "unresolvedOutcome": "If the file cannot be read or parsed, or the declared gates are invalid, report FAIL with the reason and do not guess results"
+  },
+  "outcomeContract": {
+    "oracle": "For every gate declared in the checklist JSON, the report states a result; the overall verdict is PASS if and only if every declared gate passed",
+    "observable": "Validation report with per-gate results and overall verdict",
+    "owner": "user-product-system",
+    "verification": "Re-run the validation against a known-passing and a known-failing checklist and compare verdicts"
+  },
+  "environments": [
+    { "runtime": "generic", "version": "any", "status": "declared" }
+  ]
+}

@@ -70,6 +70,29 @@ for outcomes is `schemas/outcome-receipt.schema.json`.
 - Qualification is scoped and expiring — never a universal "certified safe"
   badge.
 
+## Running the harness
+
+`scripts/run-qualification.mjs` executes a capability's eval suite
+(`skills/<id>/evals/suite.json`, schema `schemas/eval-suite.schema.json`) and
+records a digest-bound evidence bundle:
+
+```bash
+node scripts/run-qualification.mjs --capability <id>          # run + record
+node scripts/run-qualification.mjs --capability <id> --apply  # run, record, file qualification.json
+node scripts/run-qualification.mjs --capability <id> --apply-from <stamp>  # file from an existing verified run
+```
+
+Environment: `SYLPHX_QUALIFY_PYTHON` (python3 with Pillow for image oracles),
+`SYLPHX_QUALIFY_CODEX` (codex CLI for agent tasks), `SYLPHX_QUALIFY_AGENT_ARGS`
+(extra `codex exec` args, e.g. `-c model_provider=openmodel -c model=deepseek-v4-flash`).
+Agent tasks run in temp dirs outside any git repository and are recorded as
+fresh-context behavior tests (`injectionState: not-verified`); exec tasks are
+deterministic functional oracles. The bundle includes raw artifacts, task
+records, a security scan (secrets + dangerous patterns), and `report.json` with
+an evidence digest; `--apply-from` refuses to apply if the recorded digest does
+not match the bundle. Qualification files in the ledger with a review of the
+bundle.
+
 ## Ledger
 
 Current state: [`docs/qualification/LEDGER.md`](qualification/LEDGER.md).

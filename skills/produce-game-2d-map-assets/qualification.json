@@ -1,10 +1,36 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "produce-game-2d-map-assets"
+  "name": "produce-game-2d-map-assets",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-10T14:19:54.790Z",
+  "expiresAt": "2026-11-08T14:40:04.110Z",
+  "evidence": [
+    {
+      "id": "produce-game-2d-map-assets-compatibility-2026-08-10T14-19-54-574Z",
+      "kind": "compatibility",
+      "digest": "sha256:9fc42f943ac0cfc1564965e6863f4ebbbac8396deb29c7fabdf8b7aa5db82155",
+      "uri": "docs/qualification/evals/produce-game-2d-map-assets/run-2026-08-10T14-19-54-574Z/report.json"
+    },
+    {
+      "id": "produce-game-2d-map-assets-security-2026-08-10T14-19-54-574Z",
+      "kind": "security",
+      "digest": "sha256:9fc42f943ac0cfc1564965e6863f4ebbbac8396deb29c7fabdf8b7aa5db82155",
+      "uri": "docs/qualification/evals/produce-game-2d-map-assets/run-2026-08-10T14-19-54-574Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "python3 + Pillow (script runtime)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }
