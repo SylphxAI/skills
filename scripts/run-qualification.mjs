@@ -435,7 +435,13 @@ function applyQualification(suite, report, capability, stamp, resultsDigest) {
   const qualificationPath = path.join(repositoryRoot, 'skills', capability, 'qualification.json');
   const expiresAt = new Date(Date.now() + suite.validityDays * 86_400_000).toISOString();
   const evidenceKinds = ['compatibility'];
-  if (suite.baseline) evidenceKinds.unshift('incremental-value');
+  // incremental-value is claimed only when the control comparison demonstrates
+  // a with-skill pass over a failing baseline; a passing baseline is recorded
+  // honestly as no demonstrated delta.
+  const comparison = report?.comparison;
+  if (suite.baseline && comparison?.withSkill === 'pass' && comparison?.baseline === 'fail') {
+    evidenceKinds.unshift('incremental-value');
+  }
   evidenceKinds.push('security');
   const updated = {
     schemaVersion: 1,

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "capability": "analyze-critically",
+  "claim": "Produces a Critical Analysis Brief: question/stakes, facts, competing hypotheses, discriminating evidence, strongest case for/against, calibrated conclusion, and what would change the answer.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "03572c76cbede6955a7bf5d3e6352703696eaf1c",
+    "packageDigest": "sha256:ae82bcd8838fc12067de3ae9ec96332d72b75707f5517489b6148ada4113b5ae",
+    "catalogDigest": "sha256:1fca2ac6dc7ad5db8df754aed8e8e55e82cd57859ddef57c6aa72d6266b81767"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-10T15:46:03.483Z",
+  "finishedAt": "2026-08-10T15:46:03.483Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "pass",
+      "failures": [],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "pass"
+  },
+  "security": {
+    "verdict": "clean",
+    "scannedFiles": 7,
+    "findings": []
+  },
+  "evidenceDigest": "sha256:26d3ebd993ccec3f838de5757a4300eb3c2fa8bc56f3b1e7c7e30bdeced8fa2b",
+  "verdict": "qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/analyze-critically/run-2026-08-10T15-42-07-521Z"
+}

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "capability": "synthesize-evidence-brief",
+  "claim": "Produces an Evidence Synthesis: predeclared protocol, search log, screening flow, evidence table, conflict/bias analysis, calibrated certainty, and evidence gaps.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write synthesis.md summarizing the evidence on whether daily standups improve software delivery outcomes. Cover what you know and how confident you are."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Evidence Synthesis elements.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write synthesis.md answering: 'Do daily standup meetings improve software delivery outcomes?' (decision use: whether to keep standups; scope: team-level studies and practitioner evidence). Follow the output contract: question/protocol/deviations, search log (sources, queries, dates, access limits), screening flow and inclusion/exclusion reasons, evidence table with provenance and findings, conflict/heterogeneity/bias analysis, synthesis by outcome including contrary evidence, calibrated certainty with claim boundary, and evidence gaps with update triggers.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "synthesis.md" },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "protocol", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "search log", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "screen", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "evidence table", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "bias", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "certainty", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "evidence gap", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "update trigger", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same Evidence-Synthesis oracle.",
+      "prompt": "Write synthesis.md summarizing the evidence on whether daily standups improve software delivery outcomes. Cover what you know and how confident you are.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "synthesis.md" },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "protocol", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "search log", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "screen", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "evidence table", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "bias", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "certainty", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "evidence gap", "caseInsensitive": true },
+          { "type": "file-regex", "path": "synthesis.md", "contains": "update trigger", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}

@@ -1,10 +1,36 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "analyze-critically"
+  "name": "analyze-critically",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-10T15:46:03.483Z",
+  "expiresAt": "2026-11-08T15:56:21.432Z",
+  "evidence": [
+    {
+      "id": "analyze-critically-compatibility-2026-08-10T15-42-07-521Z",
+      "kind": "compatibility",
+      "digest": "sha256:26d3ebd993ccec3f838de5757a4300eb3c2fa8bc56f3b1e7c7e30bdeced8fa2b",
+      "uri": "docs/qualification/evals/analyze-critically/run-2026-08-10T15-42-07-521Z/report.json"
+    },
+    {
+      "id": "analyze-critically-security-2026-08-10T15-42-07-521Z",
+      "kind": "security",
+      "digest": "sha256:26d3ebd993ccec3f838de5757a4300eb3c2fa8bc56f3b1e7c7e30bdeced8fa2b",
+      "uri": "docs/qualification/evals/analyze-critically/run-2026-08-10T15-42-07-521Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

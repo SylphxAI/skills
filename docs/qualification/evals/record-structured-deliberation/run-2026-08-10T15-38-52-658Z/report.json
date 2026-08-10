@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "capability": "record-structured-deliberation",
+  "claim": "Produces a Deliberation Record with question/owner/participants/protocol, linked proposal-objection-rebuttal positions, dissent, commitments and handoff.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "03572c76cbede6955a7bf5d3e6352703696eaf1c",
+    "packageDigest": "sha256:332fe4afa96fa837ab242e707592110baf5983eabdb52ff65998fa549e246601",
+    "catalogDigest": "sha256:1fca2ac6dc7ad5db8df754aed8e8e55e82cd57859ddef57c6aa72d6266b81767"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-10T15:41:54.109Z",
+  "finishedAt": "2026-08-10T15:41:54.109Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "fail",
+      "failures": [
+        "file deliberation.md does not match /proposal/",
+        "file deliberation.md does not match /rebuttal/",
+        "file deliberation.md does not match /handoff/"
+      ],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "fail"
+  },
+  "security": {
+    "verdict": "clean",
+    "scannedFiles": 11,
+    "findings": []
+  },
+  "evidenceDigest": "sha256:ec360b3cb33ea14146b429f93447bdc8d37cf3c6a405dc9a896e1ba6b82a685d",
+  "verdict": "qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/record-structured-deliberation/run-2026-08-10T15-38-52-658Z"
+}
