@@ -22,7 +22,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check:
+  # Matrix lanes exercise the declared Node floor (>=20) and the current
+  # runtime (24), plus the python3 helper syntax floor.
+  verify:
+    name: check (${{ matrix.node-version }})
     # Company CI compute is owned by the managed runner plane. GitHub Actions
     # remains the workflow orchestrator; it is not a compute fallback.
     runs-on: sylphx-linux-standard
@@ -47,3 +50,13 @@ jobs:
       # integration, which is declared per-package qualification).
       - name: Python helper syntax smoke
         run: python3 -m py_compile $(find skills -name '*.py' -type f)
+  # Merge-queue admission check: the ruleset requires a status named exactly
+  # "check"; this aggregate preserves that name while the matrix lanes do the
+  # real work above.
+  check:
+    name: check
+    runs-on: sylphx-linux-standard
+    timeout-minutes: 5
+    needs: verify
+    steps:
+      - run: echo "matrix lanes passed"
