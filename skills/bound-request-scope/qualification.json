@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "bound-request-scope"
+  "name": "bound-request-scope",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-10T15:09:53.303Z",
+  "expiresAt": "2026-11-08T15:14:39.271Z",
+  "evidence": [
+    {
+      "id": "bound-request-scope-incremental-value-2026-08-10T15-07-55-630Z",
+      "kind": "incremental-value",
+      "digest": "sha256:b00b9377f41a4c486966c354027bda48eb381e9af6ea144fbec9bda0b9b3bca1",
+      "uri": "docs/qualification/evals/bound-request-scope/run-2026-08-10T15-07-55-630Z/report.json"
+    },
+    {
+      "id": "bound-request-scope-compatibility-2026-08-10T15-07-55-630Z",
+      "kind": "compatibility",
+      "digest": "sha256:b00b9377f41a4c486966c354027bda48eb381e9af6ea144fbec9bda0b9b3bca1",
+      "uri": "docs/qualification/evals/bound-request-scope/run-2026-08-10T15-07-55-630Z/report.json"
+    },
+    {
+      "id": "bound-request-scope-security-2026-08-10T15-07-55-630Z",
+      "kind": "security",
+      "digest": "sha256:b00b9377f41a4c486966c354027bda48eb381e9af6ea144fbec9bda0b9b3bca1",
+      "uri": "docs/qualification/evals/bound-request-scope/run-2026-08-10T15-07-55-630Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

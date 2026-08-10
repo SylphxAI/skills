@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "capability": "bound-request-scope",
+  "claim": "Produces a stable scope contract with objective, in/out, non-goals and cut lines, right-sized to risk.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write scope.md that bounds this request: 'Add a payment feature to the app'. Include what is in scope, what is not, and any limits you consider important."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the scope contract elements.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely, then write scope.md for the request: 'Add a payment feature to the app'. Produce the stable scope contract per the procedure: objective, owning boundary, in/out, non-goals, cut lines, and the smallest complete path.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "scope.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "scope.md",
+            "contains": "objective",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "scope.md",
+            "contains": "in scope",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "scope.md",
+            "contains": "out of scope",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "scope.md",
+            "contains": "non-goal",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "scope.md",
+            "contains": "cut line",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "description": "Fresh-context baseline (no skill): same request, same scope-contract oracle.",
+      "prompt": "Write scope.md that bounds this request: 'Add a payment feature to the app'. Include what is in scope, what is not, and any limits you consider important.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "scope.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "scope.md",
+            "contains": "objective",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "scope.md",
+            "contains": "in scope",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "scope.md",
+            "contains": "out of scope",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "scope.md",
+            "contains": "non-goal",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "scope.md",
+            "contains": "cut line",
+            "caseInsensitive": true
+          }
+        ]
+      },
+      "baseline": true
+    }
+  ]
+}

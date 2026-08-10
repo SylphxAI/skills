@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "capability": "decide-architecture-shape",
+  "claim": "Produces an Architecture Convergence Packet with labeled sections (boundaries, capability ledger, slice graph, parity/cutover, control-plane decisions, verdict).",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write convergence.md with an architecture migration plan for: 'migrate the monolith to services'. Cover slices, proof, and cutover at a level that would guide implementation."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Convergence Packet sections.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely, then write convergence.md for: 'migrate the monolith to services'. Follow the output format exactly: Architecture Convergence Packet with Source / target / boundary, Capability ledger, Slice graph, Parity and cutover, Control-plane decisions, and a Verdict.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "convergence.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Source / target / boundary"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Capability ledger"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Slice graph"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Parity and cutover"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Control-plane decisions"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Verdict"
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "description": "Fresh-context baseline (no skill): same task, same Convergence-Packet oracle.",
+      "prompt": "Write convergence.md with an architecture migration plan for: 'migrate the monolith to services'. Cover slices, proof, and cutover at a level that would guide implementation.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "convergence.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Source / target / boundary"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Capability ledger"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Slice graph"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Parity and cutover"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Control-plane decisions"
+          },
+          {
+            "type": "file-regex",
+            "path": "convergence.md",
+            "contains": "Verdict"
+          }
+        ]
+      },
+      "baseline": true
+    }
+  ]
+}

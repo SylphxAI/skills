@@ -182,7 +182,7 @@ async function runAssertions(assertions, sandbox, python) {
           const absolute = path.join(sandbox.root, assertion.path);
           if (!existsSync(absolute)) { failures.push(`missing file ${assertion.path}`); break; }
           const content = readFileSync(absolute, 'utf8');
-          if (!new RegExp(assertion.contains, 'm').test(content)) {
+          if (!new RegExp(assertion.contains, assertion.caseInsensitive ? 'mi' : 'm').test(content)) {
             failures.push(`file ${assertion.path} does not match /${assertion.contains}/`);
           }
           break;
@@ -191,7 +191,7 @@ async function runAssertions(assertions, sandbox, python) {
           const absolute = path.join(sandbox.root, assertion.path);
           if (!existsSync(absolute)) { failures.push(`missing file ${assertion.path}`); break; }
           const content = readFileSync(absolute, 'utf8');
-          if (new RegExp(assertion.contains, 'm').test(content)) {
+          if (new RegExp(assertion.contains, assertion.caseInsensitive ? 'mi' : 'm').test(content)) {
             failures.push(`file ${assertion.path} unexpectedly matches /${assertion.contains}/`);
           }
           break;
@@ -288,6 +288,7 @@ async function runTask(task, suite, suiteRoot, runRoot, python) {
   const record = {
     id: task.id,
     kind: task.kind,
+    baseline: task.baseline === true,
     description: task.description,
     command,
     status,
@@ -380,13 +381,22 @@ async function main() {
   let allPass = true;
   for (const task of suite.tasks) {
     if (noAgent && task.kind === 'agent') {
-      taskResults.push({ id: task.id, status: 'skipped', reason: '--no-agent' });
+      taskResults.push({ id: task.id, status: 'skipped', reason: '--no-agent', baseline: task.baseline === true });
       continue;
     }
     const { status, record } = await runTask(task, suite, suiteRoot, runRoot, python);
-    taskResults.push({ id: task.id, status, failures: record.failures });
-    if (status !== 'pass') allPass = false;
+    taskResults.push({ id: task.id, status, failures: record.failures, baseline: task.baseline === true });
+    // Baseline tasks are controls: their result is comparison evidence and
+    // never gates qualification (a failing baseline demonstrates value).
+    if (status !== 'pass' && !(task.baseline === true)) allPass = false;
   }
+
+  const comparison = suite.baseline
+    ? {
+        withSkill: taskResults.some((task) => !task.baseline && task.status === 'pass') ? 'pass' : 'fail',
+        baseline: taskResults.some((task) => task.baseline && task.status === 'pass') ? 'pass' : 'fail',
+      }
+    : null;
 
   const security = securityScan(path.join(repositoryRoot, 'skills', capability));
   const recordFiles = walk(runRoot);
@@ -402,6 +412,7 @@ async function main() {
     startedAt: new Date().toISOString(),
     finishedAt: new Date().toISOString(),
     tasks: taskResults,
+    comparison,
     security: { verdict: security.verdict, scannedFiles: security.scannedFiles, findings: security.findings },
     evidenceDigest: resultsDigest,
     verdict,

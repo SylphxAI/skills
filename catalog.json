@@ -4,12 +4,16 @@
   "count": 57,
   "qualification": {
     "total": 57,
-    "qualified": 4,
+    "qualified": 8,
     "qualifiedNames": [
       "author-skill",
+      "bound-request-scope",
+      "decide-architecture-shape",
+      "engineer-testable-requirements",
       "produce-game-2d-map-assets",
       "produce-game-2d-sprites",
-      "select-dependency-versions"
+      "select-dependency-versions",
+      "write-high-signal-update"
     ]
   },
   "skills": [
@@ -82,14 +86,14 @@
       "name": "bound-request-scope",
       "description": "Bound this request: objective, in/out, non-goals, cut lines.",
       "path": "skills/bound-request-scope/SKILL.md",
-      "packageDigest": "sha256:80c38a149e2a616a21c76f0eededcd2cfc14d07a9d5ec7fdf9f90f429ccc6298",
+      "packageDigest": "sha256:2de5c4ae6772a34d11f78f73698536fff969c85fb2d7b22fee10d48c41bc2ac9",
       "capability": {
         "job": "Bound this request to a right-sized scope contract: objective, in/out, non-goals, cut lines, and ceremony matched to risk.",
         "outcomeObservable": "A stable scope contract with objective, in/out, non-goals, cut lines, and residuals that the requester can approve before implementation proceeds.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "build-distribution-readiness",
@@ -225,14 +229,14 @@
       "name": "decide-architecture-shape",
       "description": "Decide one architecture shape from options with tradeoffs.",
       "path": "skills/decide-architecture-shape/SKILL.md",
-      "packageDigest": "sha256:d1f01b1fcd3e4c81054dd17835b708e12357017b2f4867613b06b22dd2169f97",
+      "packageDigest": "sha256:9e7ed4a8c9bf559999facff77f1d49ffb2f3cbd2f5be2cedc185cb06d930ec0f",
       "capability": {
         "job": "Decide one architecture shape from options and drive it through independently verifiable convergence slices with parity proof and cutover.",
         "outcomeObservable": "A decided shape with each slice carrying exact-candidate parity proof, a cutover that retired obsolete structure at the real lifecycle stage, and a reconciled migration ledger reporting implementation, merge, deployment, and retirement separately.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "deploy-ephemeral-web-preview",
@@ -329,14 +333,14 @@
       "name": "engineer-testable-requirements",
       "description": "Turn requirements into testable acceptance criteria with oracles.",
       "path": "skills/engineer-testable-requirements/SKILL.md",
-      "packageDigest": "sha256:37a9e975676ad5e59380c1199ae3000bb9eeacee3956375ba870004f4e95e142",
+      "packageDigest": "sha256:35e4f369f4fa915cfca18344ec85907186eb77a41d07a065e8250faa4471895b",
       "capability": {
         "job": "Turn requirements into testable acceptance criteria with oracles, traceability, and change authority.",
         "outcomeObservable": "A Requirements Contract where each accepted requirement has an oracle and success boundary, traces to a source need and forward artifacts, and changes require impact analysis and supersession under a named authority.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "execute-hard-cutover",
@@ -745,14 +749,14 @@
       "name": "write-high-signal-update",
       "description": "Write short high-signal output: answer-first replies/updates, decisions, risks, asks.",
       "path": "skills/write-high-signal-update/SKILL.md",
-      "packageDigest": "sha256:2ad3b2380c1723892cbe67e24468d69326c5e393182fe8b72af5c9d31bfc3f18",
+      "packageDigest": "sha256:0fe4d6e916f3e06eeef5373cf838333c6dd0f2bf239a1c9600e02663b409ffac",
       "capability": {
         "job": "Write short high-signal output: answer-first replies and updates, decisions, risks, asks.",
         "outcomeObservable": "A short update ready to send where the decision or outcome comes first, facts carry sources, risks name owners and dates, and the ask is explicit.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     }
   ]
 }
