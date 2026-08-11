@@ -31,7 +31,7 @@ under the user's privileges (see [docs/PROMOTION.md](docs/PROMOTION.md)).
 Without `requireVerifiedTag: true`, the authority is repository governance plus
 tag immutability; with it, the authority is cryptographic (GPG/SSH `git
 verify-tag`). Branch-following AutoSync configs (schemaVersion 1) are retired
-and fail closed. Qualification is the value-trust model: 24 of 57 packages
+and fail closed. Qualification is the value-trust model: 28 of 57 packages
 currently carry expiring qualification evidence, and `unqualified` remains
 the honest default. AutoSync also refuses to downgrade an installed
 `qualified` capability to `unqualified`.

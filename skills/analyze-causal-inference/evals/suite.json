@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "capability": "analyze-causal-inference",
+  "claim": "Produces a Causal Inference Record with explicit estimand, identification assumptions, diagnostics, sensitivity, uncertainty, and claim boundary reproducible from the same data.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Using onboarding-data.csv, write causal-inference.md analyzing whether the new onboarding flow causes higher 7-day retention than the old flow. Cover your assumptions, checks, and how confident you are."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Causal Inference Record from the fixture data.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        },
+        {
+          "source": "onboarding-data.csv",
+          "as": "onboarding-data.csv"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely (open references/causal-inference-methods.md before choosing a design), then write causal-inference.md using onboarding-data.csv: does the new onboarding flow (intervention) cause higher 7-day retention (outcome) vs the old flow (comparator) for new signups (population)? Follow the workflow: intervention/comparator/population/outcome/time zero/follow-up, target estimand and counterfactual contrast, identification assumptions and an identified design, diagnostics and sensitivity and negative controls, uncertainty, and an explicit claim boundary reproducible from the same data.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "causal-inference.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "estimand",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "identification",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "counterfactual|potential outcome|two worlds",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "diagnostic",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "sensitivity",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "uncertainty",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "boundary",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same Causal Inference Record oracle.",
+      "prompt": "Using onboarding-data.csv, write causal-inference.md analyzing whether the new onboarding flow causes higher 7-day retention than the old flow. Cover your assumptions, checks, and how confident you are.",
+      "fixtures": [
+        {
+          "source": "onboarding-data.csv",
+          "as": "onboarding-data.csv"
+        }
+      ],
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "causal-inference.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "estimand",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "identification",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "counterfactual|potential outcome|two worlds",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "diagnostic",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "sensitivity",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "uncertainty",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "causal-inference.md",
+            "contains": "boundary",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-causal-question",
+        "description": "User asks whether a change causes an outcome without naming any skill; a fresh agent must natively discover and apply analyze-causal-inference.",
+        "prompt": "Write causal-inference.md: our new onboarding flow shows ~62% 7-day retention versus ~48% for the old flow in an observational comparison (n=200 per cohort, signup week, device and region differ slightly between cohorts). Does the new flow cause the change? State the target estimand, assumptions, checks, sensitivity, uncertainty, and what would change the conclusion.",
+        "selectionKeywords": [
+          "analyze-causal-inference",
+          "Causal Inference Record",
+          "estimand",
+          "counterfactual"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "causal-inference.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "causal-inference.md",
+              "contains": "estimand",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "causal-inference.md",
+              "contains": "identification",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "causal-inference.md",
+              "contains": "counterfactual|potential outcome|two worlds",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "causal-inference.md",
+              "contains": "sensitivity",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "causal-inference.md",
+              "contains": "uncertainty",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

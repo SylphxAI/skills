@@ -4,8 +4,10 @@
   "count": 57,
   "qualification": {
     "total": 57,
-    "qualified": 24,
+    "qualified": 28,
     "qualifiedNames": [
+      "adopt-repo-standards",
+      "analyze-causal-inference",
       "analyze-critically",
       "analyze-system-dynamics",
       "author-skill",
@@ -14,10 +16,12 @@
       "curate-skill-repository",
       "decide-architecture-shape",
       "design-skill-evals",
+      "distill-source-to-skill",
       "engineer-testable-requirements",
       "execute-hard-cutover",
       "forecast-with-calibration",
       "maintain-product",
+      "model-security-threats",
       "optimize-decision-model",
       "produce-game-2d-map-assets",
       "produce-game-2d-sprites",
@@ -43,8 +47,8 @@
         "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired or a dated residual with an owner for the framed scope.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "analyze-causal-inference",
@@ -56,8 +60,8 @@
         "outcomeObservable": "A Causal Inference Record with an explicit estimand, identification assumptions, diagnostics, uncertainty, and claim boundary that an independent analyst can reproduce from the same data.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "analyze-critically",
@@ -303,8 +307,8 @@
         "outcomeObservable": "A compact installable skill package that runs without the original source, names its evidence boundary, carries output contracts and validation signals, and passes the target repository's structural validation.",
         "oracleOwner": "repository"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "drive-to-delivery",
@@ -433,8 +437,8 @@
         "outcomeObservable": "A Threat Model and Security Design Contract linking system elements to credible threats, controls with enforcement points and owners, falsifiable verification, and owned residual risk with review triggers.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "operate-customer-support",

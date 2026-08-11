@@ -4,19 +4,13 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-11, waves 1–7)
+## Current state (2026-08-11, waves 1–8)
 
 - Capability packages: **57**
-- Qualified: **24** — analyze-critically, analyze-system-dynamics, author-skill,
-  bound-request-scope, craft-human-agent-language, curate-skill-repository,
-  decide-architecture-shape, design-skill-evals, engineer-testable-requirements,
-  execute-hard-cutover, forecast-with-calibration, maintain-product,
-  optimize-decision-model, produce-game-2d-map-assets, produce-game-2d-sprites,
-  record-structured-deliberation, research-public-web, run-incident-response,
-  run-product-feedback-loop, select-dependency-versions, select-next-work,
-  synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
-- Native-activation selection evidence: **1/24** (analyze-critically); the
-  other 23 remain `injectionState: not-verified` — see wave-7 below.
+- Qualified: **28** — adopt-repo-standards, analyze-causal-inference, analyze-critically, analyze-system-dynamics, author-skill, bound-request-scope, craft-human-agent-language, curate-skill-repository, decide-architecture-shape, design-skill-evals, distill-source-to-skill, engineer-testable-requirements, execute-hard-cutover, forecast-with-calibration, maintain-product, model-security-threats, optimize-decision-model, produce-game-2d-map-assets, produce-game-2d-sprites, record-structured-deliberation, research-public-web, run-incident-response, run-product-feedback-loop, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
+- Native-activation selection evidence: **3/28** (analyze-critically,
+  analyze-causal-inference, model-security-threats); the others remain
+  `injectionState: not-verified` — see wave-7 and wave-8 below.
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
@@ -147,6 +141,35 @@ Notes on the runs:
   capability identity. Historical report `candidate.packageDigest` values
   are point-in-time records under the prior contract; the current catalog is
   authoritative.
+
+## Wave-8 runs
+
+Wave-8 qualified four more capabilities and fixed a runner sandbox bug:
+
+| Capability | Run | With-skill | Baseline | Activation | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| adopt-repo-standards | `run-2026-08-11T05-17-33-694Z` | pass | fail | not declared | qualified (incremental-value) |
+| analyze-causal-inference | `run-2026-08-11T05-27-02-454Z` | pass | fail | **verified** | qualified (incremental-value + activation) |
+| model-security-threats | `run-2026-08-11T04-52-11-042Z` | pass | pass | **verified** | qualified (activation; no delta) |
+| distill-source-to-skill | `run-2026-08-11T05-17-33-689Z` | pass | fail | not declared | qualified (incremental-value) |
+
+Notes:
+
+- Runner sandbox paths are now capability-scoped
+  (`sylphx-qualify-<capability>-<run>-<task>`): two capabilities launched in
+  the same second previously shared a temp sandbox path derived only from the
+  run stamp and corrupted each other's fixtures. The two corrupted runs were
+  removed; the fix is part of this wave.
+- adopt-repo-standards: an earlier run (`run-2026-08-11T05-06-04-934Z`) is
+  kept as a record of the stricter oracle (constitution is projected by link
+  per the skill's own contract, and the manifest nests under `project.name`;
+  the oracle now measures that intent).
+- analyze-causal-inference: the output expressed the counterfactual contrast
+  as "two worlds"/"potential outcomes" without the literal word
+  "counterfactual"; the oracle now accepts the equivalent expressions and the
+  capability is activation-verified (agent natively selected the skill).
+- model-security-threats: activation-verified — the agent natively selected
+  the skill and produced a 673-line Threat Model and Security Design Contract.
 
 ## Wave-1 finding (author-skill)
 

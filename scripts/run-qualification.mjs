@@ -241,7 +241,7 @@ async function runTask(task, suite, suiteRoot, runRoot, python) {
   // The task sandbox must live OUTSIDE any git repository: an agent in
   // danger-full-access inside a repo treats the repo root as its workspace
   // and escapes the intended sandbox. Temp dirs keep evals isolated.
-  const work = path.join(os.tmpdir(), `sylphx-qualify-${path.basename(runRoot)}-${task.id}`);
+  const work = path.join(os.tmpdir(), `sylphx-qualify-${suite.capability}-${path.basename(runRoot)}-${task.id}`);
   rmSync(work, { recursive: true, force: true });
   mkdirSync(work, { recursive: true });
   const artifactRoot = path.join(runRoot, 'tasks', task.id, 'artifacts');
@@ -327,10 +327,10 @@ async function runActivationCase(activationCase, suite, runRoot, python) {
   // agent's visible transcript references a declared selection keyword; the
   // outcome is judged by the same deterministic oracle style as tasks.
   const stampName = path.basename(runRoot);
-  const work = path.join(os.tmpdir(), `sylphx-activate-${stampName}-${activationCase.id}`);
+  const work = path.join(os.tmpdir(), `sylphx-activate-${suite.capability}-${stampName}-${activationCase.id}`);
   rmSync(work, { recursive: true, force: true });
   mkdirSync(work, { recursive: true });
-  const codexHome = path.join(os.tmpdir(), `sylphx-activate-home-${stampName}-${activationCase.id}`);
+  const codexHome = path.join(os.tmpdir(), `sylphx-activate-home-${suite.capability}-${stampName}-${activationCase.id}`);
   rmSync(codexHome, { recursive: true, force: true });
   mkdirSync(codexHome, { recursive: true });
   const artifactRoot = path.join(runRoot, 'activation', activationCase.id, 'artifacts');

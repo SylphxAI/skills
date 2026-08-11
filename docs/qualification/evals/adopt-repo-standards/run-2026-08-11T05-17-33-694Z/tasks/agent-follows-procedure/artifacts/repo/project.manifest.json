@@ -1,0 +1,120 @@
+{
+  "$schema": "https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/project-manifest-standard/references/project-manifest.schema.json",
+  "schemaVersion": 2,
+  "kind": "ProjectManifest",
+  "project": {
+    "id": "acme-app",
+    "repository": "acme-app",
+    "name": "acme-app",
+    "summary": "Example product repository used as an eval fixture for adopt-repo-standards qualification runs.",
+    "lifecycle": "active",
+    "layer": "eval-fixture",
+    "visibility": "internal",
+    "policyPool": "sylphx-engineering-baseline",
+    "links": [
+      {
+        "type": "readme",
+        "url": "./README.md",
+        "title": "Repository readme"
+      },
+      {
+        "type": "constitution",
+        "url": "https://github.com/SylphxAI/skills/blob/main/runtime/constitution.md",
+        "title": "Sylphx Agent Runtime Constitution"
+      },
+      {
+        "type": "standard",
+        "url": "https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/SKILL.md",
+        "title": "adopt-repo-standards skill"
+      }
+    ],
+    "tags": ["eval-fixture", "engineering-baseline"]
+  },
+  "intent": {
+    "goals": [
+      "Serve as a deterministic qualification fixture for adopt-repo-standards adoption cycles.",
+      "Expose the complete engineering baseline surfaces: runtime constitution projection, project manifest, fences, and a conformance entrypoint.",
+      "Keep the repository minimal, self-contained, and verifiable with a single deterministic command."
+    ],
+    "nonGoals": [
+      "Implement product application features or capabilities.",
+      "Own organization-wide adoption, work, or control-plane state.",
+      "Publish packages, deploy services, or operate live runtime infrastructure."
+    ]
+  },
+  "boundaries": {
+    "owns": [
+      {
+        "id": "baseline-fixture",
+        "name": "Engineering baseline fixture",
+        "description": "Owns the adopted baseline surfaces (constitution projection, manifest, fences, conformance entrypoint) used to qualify adopt-repo-standards runs."
+      }
+    ],
+    "doesNotOwn": [
+      "Product application code or runtime behavior.",
+      "Live deployments, release artifacts, or package publication.",
+      "Organization-wide adoption, work-ledger, or control-plane state."
+    ],
+    "publicSurfaces": [
+      {
+        "type": "command",
+        "name": "conformance",
+        "location": "package.json#scripts.check",
+        "description": "Deterministic repository-baseline conformance entrypoint; exits nonzero on any drift."
+      }
+    ],
+    "allowedDependencies": [
+      {
+        "owner": "SylphxAI/skills",
+        "surface": "https://github.com/SylphxAI/skills/blob/main/runtime/constitution.md",
+        "direction": "inbound"
+      }
+    ],
+    "forbiddenCouplings": [
+      "Legacy instruction layouts acting as active authority.",
+      "Org-wide policy or control-plane defaults authored repo-locally.",
+      "Cross-repository internal access; all coupling goes through declared surfaces."
+    ]
+  },
+  "architecture": {
+    "generationRef": "sylphx-engineering-standard",
+    "standardPackages": ["adopt-repo-standards", "project-manifest-standard"],
+    "capabilities": ["baseline-fixture"],
+    "adoptionStatus": "not-applicable",
+    "gaps": [
+      {
+        "id": "repo-architecture-01",
+        "description": "No product code exists in this fixture, so the canonical code-architecture surface (Capability-first Modular DDD, Clean/Hexagonal, FCIS) is not applicable until code lands.",
+        "owner": "acme-app",
+        "exitCondition": "Product code lands and is migrated against the Sylphx engineering standard with npm run check green."
+      }
+    ]
+  },
+  "documentation": {
+    "adrs": { "location": "docs/adr/", "status": "planned" },
+    "specs": { "location": "docs/specs/", "status": "planned" },
+    "catalog": { "location": "docs/catalog/", "status": "planned" },
+    "runbooks": { "location": "docs/runbooks/", "status": "planned" },
+    "generatedReferences": { "location": "docs/generated/", "status": "planned" }
+  },
+  "delivery": {
+    "lane": "source-landing",
+    "ciModel": "github-actions-stub",
+    "verificationCommands": ["npm run check"],
+    "terminalBoundary": "Default-branch source landing with the conformance entrypoint green; no package publication, deployment, or live runtime.",
+    "recoveryClass": "source-revert",
+    "deployable": false,
+    "packageRelease": {
+      "producer": false,
+      "strategy": "none"
+    }
+  },
+  "commercial": {
+    "status": "not-applicable",
+    "decisionHome": "docs/adr/"
+  },
+  "adoption": {
+    "status": "adopted",
+    "gaps": []
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "acme-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "check": "node conformance/check.mjs"
+  }
+}
