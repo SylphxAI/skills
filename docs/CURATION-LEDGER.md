@@ -1,5 +1,30 @@
 # Curation ledger
 
+## 2026-08-11 — Ordinary delivery operating mandate (agent path)
+
+Folded day-to-day delivery operating principles into existing homes (no new
+listing skill; always-on constitution stays thin):
+
+| Principle | Home |
+| --- | --- |
+| Direction first; project boundary; root-cause / no workaround | `runtime/constitution.md` floors; `drive-to-delivery` method; `autonomous-execution-standard` startup |
+| Canonical path PR → Merge Queue → main → Auto Deploy → live | `delivery-standard`, `source-authoring-standard`, constitution Progress |
+| Auto-merge = queue arm only; never quality/done | `delivery-standard`, `source-authoring-standard` |
+| No gate/blocker bypass; fix owning project | constitution Fail-closed; `delivery-standard` |
+| Independent separate-context review before ready/auto-merge | `autonomous-execution-standard` Self-Review; `drive-to-delivery` method |
+| Outcome ownership vs worker occupancy; merged/deployed ≠ automatic done | `delivery-standard`; constitution Done/Progress |
+| Mid-task re-anchor (working brief) | `drive-to-delivery/references/working-brief.md` |
+
+Explicitly **not** added: a public “sole maintainer of every company product”
+listing skill (org posture, not a portable requestable job). Portfolio agents
+still own the accepted objective’s full delivery loop under boundary discipline.
+
+Residual: `drive-to-delivery/references/full-standard.md` and
+`autonomous-execution-standard/references/full-standard.md` remain dual-evolved
+execution prose; path/review wording landed in the pack marked canonical
+(`autonomous-execution-standard`). A later absorb pass should hard-cut one
+execution SSOT.
+
 ## Principle
 
 Organize skills by **semantics** (requestable job vs depth). Do **not** hard-cap listing count. Migrate knowledge; do not destroy.

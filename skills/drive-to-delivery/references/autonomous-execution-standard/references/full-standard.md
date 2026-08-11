@@ -40,8 +40,13 @@ it does not redefine them around a particular forge or delivery lane.
 Before editing, delegating, or launching long-running work, create an
 intentional starting state.
 
+- **Direction first.** Before material mutation, restate the north-star / product
+  direction for the affected surface, the owning **project boundary**, what must
+  not be crossed, and how success is observed at the delivery terminal.
 - Load the smallest relevant binding Skills packages and repo-local source of truth before
-  making durable decisions.
+  making durable decisions. When boundaries or integration risk are unclear,
+  expand estate literacy (adjacent projects, contracts, deploy paths) until the
+  owner is correct—do not invent a convenient cross-boundary fix.
 - Set or update the active goal when the runtime exposes a goal system. The goal
   must state the objective, owning boundary, success criteria, Definition of
   Done, validation gates, delivery target, and evidence expected at completion.
@@ -613,36 +618,68 @@ Minimum loop:
 - Do one final pass for accidental scope creep, stale comments, dead code,
   unresolved sessions, and unreported residual risk.
 
-Use a separate-context adversarial reviewer subagent when available and permitted. For changes
-touching public contracts, persistence, auth, billing, security, infrastructure,
-deploy/release behavior, cross-repo boundaries, migrations, high-risk
-concurrency, or agent/tool schemas, produce a durable review artifact: PR body
-section, committed review note, CI artifact, eval result, issue, or status
-summary. Chat-only review output is evidence for the lead agent, not durable
-governance.
+### Independent review before merge trust
 
-If the reviewer finds material issues, fix them before final response unless
-blocked by a machine policy gate, credentials, external systems, or user
-direction. Repeated reviewer findings must become CI gates, policy rules,
-generators, tests, evals, or conformance checks.
+For source changes that will enter PR → Merge Queue (or equivalent ordinary
+admission):
+
+1. Run a **separate-context** independent review (subagent when available)
+   **before** marking the PR ready or arming auto-merge.
+2. Scope at least: correctness, regressions, project-boundary / contract
+   violations, workaround smell, missing tests or oracles, deploy/live risk, and
+   north-star misalignment.
+3. Clear all **material** findings before ready / auto-merge arm. Self-check is
+   not a substitute for independent review on the merge path.
+4. Prefer a durable review artifact for high-risk surfaces (public contracts,
+   persistence, auth, billing, security, infrastructure, deploy/release,
+   cross-repo boundaries, migrations, high-risk concurrency, agent/tool
+   schemas): PR review event, committed review note, CI artifact, or eval
+   result. Chat-only review is context for the lead agent, not admission
+   authority.
+
+Ordinary low-risk reversible edits may use a lightweight local self-check when
+independent review cost exceeds risk—but do not use that exception to skip
+review on material product or delivery path changes.
+
+If the reviewer finds material issues, fix them in the **owning project** before
+ready/merge unless blocked by a machine policy gate, credentials, external
+systems, or user direction. Repeated reviewer findings trigger root-cause
+strengthening of the owning contract or lowest-cost semantic oracle when that
+cost is justified; they do not justify gate bypass.
 
 ## Completion Discipline
 
 Do not finish only because the local edit is done.
 
+Ordinary agent-native delivery path (when the repository uses it):
+
+```text
+PR → Merge Queue → main → Auto Deploy → live verification
+```
+
+Auto-merge is a queue arm only. Never bypass required gates; repair the owning
+project and re-enter. Own the outcome to the declared terminal; worker occupancy
+may release and re-enter while external events run.
+
 Before final response, check:
 
+- Direction and owning **project boundary** remain correct; no workaround or
+  boundary violation remains as residual "follow-up."
 - Required background sessions are complete or explicitly blocked.
 - The active goal, owning boundary, and completion evidence are still accurate.
+- Independent review material findings are cleared before ready/auto-merge when
+  the merge path applies.
 - Required tests/checks have passed, failed with diagnosis, or were skipped with
   stated residual risk.
 - The bounded pattern sweep is complete, or a larger same-class issue is recorded
   in a durable work packet, issue, ADR, generated diff, or failing gate.
-- CI/deploy/release monitors are complete or blocked by an external event.
+- CI/deploy/release monitors are complete or blocked by an external event with a
+  durable residual and re-entry path—not silently abandoned.
 - Docs, ADRs, release notes, changelogs, tests, or evals were updated if future
   agents/operators need them.
 - The final answer distinguishes implemented work, validation, blockers, and
-  next concrete action.
+  next concrete action, and names the strongest proven lifecycle layer
+  (local | PR/candidate | merged | deployed | live-verified).
 
 
 ## Package checklist

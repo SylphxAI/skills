@@ -18,11 +18,16 @@ honestly blocked.
 
 ## Method
 
-1. **Startup:** objective, acceptance map, workspace ownership, non-interference with foreign changes. Bind host continuity if present (prefer uncapped long work unless user set a budget). No hard-coded host tool ids.
+1. **Startup (direction first):** objective, acceptance map, owning **project boundary**, north-star / product direction, workspace ownership, non-interference with foreign changes. Load enough estate literacy (adjacent products/contracts) to keep boundaries correct. Bind host continuity if present (prefer uncapped long work unless user set a budget). No hard-coded host tool ids.
 2. **Graph:** maximize authorized verified throughput without inflating certainty or delivery claims.
 3. **Loop:** research → execute → verify → repair or replan until the delivery terminal for **this one** objective is met or an honest blocker is recorded.
-   When mutating source, follow `references/source-authoring-standard/` three layers: **L1** batch unblocked high-value work for this objective; **L2** atomic valid commits; **L3** land via **one revert-safe complete PR outcome** per independent outcome (queue/squash unit).
-4. **Done:** claim only with evidence at the active delivery boundary (landed/live as required—not merely local green).
+   - Implement **root-cause, future-proof** fixes in the **owning project**. No workarounds, dual paths left as escape, or cross-boundary hacks.
+   - When mutating source, follow `references/source-authoring-standard/` three layers: **L1** batch unblocked high-value work for this objective; **L2** atomic valid commits; **L3** land via **one revert-safe complete PR outcome** per independent outcome (queue/squash unit).
+   - **Ordinary path (no bypass):** PR → Merge Queue → main → Auto Deploy → live verification (per repository delivery declaration). Never force-merge, skip required checks, admin-override, or weaken gates to unblock—fix the owning project and re-enter.
+   - **Auto-merge** may be armed only after independent review is clear of material findings and required checks will admit the candidate; it is a **queue mechanism**, not quality proof and not done.
+   - Before marking ready / arming auto-merge: run **independent separate-context review** (subagent when available); clear material findings first.
+   - Own the outcome through the path. Worker occupancy may checkpoint/re-enter while waiting on external events; merged or deployed alone is never automatic done.
+4. **Done:** claim only with evidence at the active delivery boundary (often **live-observed / well-tested**—not merely local green, PR open, auto-merge armed, merged, or deployed).
 
 When the accepted objective is a **product outcome** (host-declared objective,
 terminal = current evidence, not just a delivery boundary), also open
@@ -35,13 +40,14 @@ Progress on **one accepted objective at its delivery terminal**, with checkpoint
 
 ## Progressive disclosure
 
-1. [references/full-standard.md](references/full-standard.md) — full execution method, startup, graph, evidence, completion.
-2. [references/tool-grounded-execution.md](references/tool-grounded-execution.md) — tool-grounded iteration, checkpoint, recovery, termination.
-3. [references/bounded-objective-closure-loop.md](references/bounded-objective-closure-loop.md) — explicit loop-engineering / full-scope closure for one objective.
-4. [references/autonomous-execution-standard/](references/autonomous-execution-standard/) — multi-step execution graphs and completion discipline for non-trivial objectives.
-5. [references/source-authoring-standard/](references/source-authoring-standard/) · [references/delivery-standard/](references/delivery-standard/) — source landing and land/live done claims.
-6. [references/ci-admission-standard/](references/ci-admission-standard/) · [references/ci-runner-capacity-standard/](references/ci-runner-capacity-standard/) · [references/parallel-change-integration-standard/](references/parallel-change-integration-standard/)
-7. [references/product-objective-mode.md](references/product-objective-mode.md) — product-objective mode (host continuity, objective terminal)
+1. [references/working-brief.md](references/working-brief.md) — mid-task re-anchor (direction, path, no-bypass, review, done layers).
+2. [references/full-standard.md](references/full-standard.md) — full execution method, startup, graph, evidence, completion.
+3. [references/tool-grounded-execution.md](references/tool-grounded-execution.md) — tool-grounded iteration, checkpoint, recovery, termination.
+4. [references/bounded-objective-closure-loop.md](references/bounded-objective-closure-loop.md) — explicit loop-engineering / full-scope closure for one objective.
+5. [references/autonomous-execution-standard/](references/autonomous-execution-standard/) — multi-step execution graphs and completion discipline for non-trivial objectives.
+6. [references/source-authoring-standard/](references/source-authoring-standard/) · [references/delivery-standard/](references/delivery-standard/) — source landing and land/live done claims.
+7. [references/ci-admission-standard/](references/ci-admission-standard/) · [references/ci-runner-capacity-standard/](references/ci-runner-capacity-standard/) · [references/parallel-change-integration-standard/](references/parallel-change-integration-standard/)
+8. [references/product-objective-mode.md](references/product-objective-mode.md) — product-objective mode (host continuity, objective terminal)
 
 ### Composition (no meta-router)
 

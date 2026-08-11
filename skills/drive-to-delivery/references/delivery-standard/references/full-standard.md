@@ -22,7 +22,12 @@ are related facts, not interchangeable authorities.
 Follow Agent-Native Queued Trunk
 (../../../../../docs/history/adr/ADR-20260803-agent-native-queued-trunk.md)):
 
-- ordinary changes use one Work → one branch → one PR → Merge Queue → main;
+```text
+PR → Merge Queue → main → Auto Deploy → live verification
+```
+
+- ordinary changes use one Work → one branch → one PR → Merge Queue → main →
+  declared auto-deploy → risk-appropriate live observation;
 - do not land incomplete phases; main stays production-ready and green;
 - ordinary agents do not direct-push main; break-glass only;
 - never fail a valid ordinary change solely because it used PR + Merge Queue.
@@ -30,6 +35,47 @@ Follow Agent-Native Queued Trunk
 Platform does not select or execute a landing adapter. Merge Queue is the
 ordinary forge admission mechanism for agent-native repositories, not an
 optional afterthought.
+
+### No gate or blocker bypass
+
+Required review, CI, merge-queue, branch-protection, and deploy-policy gates are
+part of the product path—not optional friction.
+
+- Do **not** force-merge, skip or disable required checks, admin-override
+  protections, push main outside break-glass authority, or weaken policy to
+  "get unblocked."
+- A red gate or queue eject is work: fix the **owning project** with a correct,
+  future-proof, root-cause change; re-run the ordinary path.
+- Temporary flags, dual paths, silenced tests/linters, or cross-boundary patches
+  that only hide the blocker are workarounds, not delivery.
+
+### Auto-merge (queue arm, not done)
+
+Auto-merge / automatic queue entry is a **Merge Queue mechanism**. It is not
+quality proof and not a completion signal.
+
+Arm auto-merge only when **all** are true:
+
+1. direction and owning project boundary are sound;
+2. the change is a complete, main-green-safe outcome (not a phase);
+3. independent separate-context review has no outstanding material findings;
+4. required checks are green or will be required on the merge-group path.
+
+If the candidate goes red after arming: disarm if needed, repair in the owning
+project, and re-enter. Never treat "auto-merge enabled" as terminal progress.
+
+### Outcome ownership vs worker occupancy
+
+The agent **owns the outcome** through PR → queue → main → auto-deploy → live
+as required by the repository delivery declaration. Owning the outcome does
+**not** require parking a session to poll:
+
+- when only external CI/queue/deploy/soak can advance the Work, checkpoint,
+  release worker capacity, and re-enter on event (see Worker release below);
+- never declare done at "PR opened," "checks green," "auto-merge armed,"
+  "merged," or "deployed" unless that layer is the declared terminal **and**
+  evidence is present;
+- merged ≠ done; deployed ≠ done when live/behavior verification is required.
 
 ## Simple auto-deploy model
 
@@ -150,17 +196,21 @@ This rule avoids idle workers; it does not lower the declared terminal.
 
 ## Delivery procedure
 
-1. Read the repository delivery declaration and current source state.
-2. Attribute existing changes and avoid overwriting unrelated work.
-3. Implement one coherent change and run risk-appropriate local checks.
-4. Integrate through PR + Merge Queue (break-glass direct trunk only).
-5. Read exact landed SHA; do not infer it from branch intent.
-6. Let repository CI and Platform advance through events.
-7. If active work remains but only an external event can advance it, defer and
-   release worker capacity.
-8. For a deployment-terminal task, verify exact source, digest, rollout, health,
-   behavior, and rollback/recovery as applicable.
-9. Report the strongest proven lifecycle state and any residual separately.
+1. Confirm direction and owning project boundary before material mutation.
+2. Read the repository delivery declaration and current source state.
+3. Attribute existing changes and avoid overwriting unrelated work.
+4. Implement one coherent, root-cause change in the owner; run risk-appropriate
+   local checks. No workarounds that bypass the real fix.
+5. Independent separate-context review; clear material findings before ready.
+6. Integrate through PR + Merge Queue only (break-glass direct trunk only). Arm
+   auto-merge only under the arm conditions above.
+7. Read exact landed SHA; do not infer it from branch intent.
+8. Let repository CI and Platform advance through events (auto-deploy modes).
+9. If active work remains but only an external event can advance it, defer and
+   release worker capacity—keep the outcome residual explicit.
+10. For a deployment- or live-terminal task, verify exact source, digest,
+    rollout, health, behavior, and rollback/recovery as applicable.
+11. Report the strongest proven lifecycle state and any residual separately.
 
 Do not force deploy, weaken checks, patch a cluster, create a second authority,
 or use break-glass credentials merely to shorten a normal wait.

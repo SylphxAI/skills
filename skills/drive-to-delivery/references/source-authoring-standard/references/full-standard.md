@@ -121,10 +121,19 @@ Before source integration, normalize into a **sequence of valid atomic commits**
    required by **this outcome** in the **same** PR.
 5. If the session produced multiple **independently revertible** outcomes, open
    multiple PRs (one outcome each)—do not fuse unrelated revert stories.
-6. Mark ready only when the Work/outcome terminal is fully satisfied.
-7. Let Merge Queue evaluate the merge-group SHA and squash-merge.
-8. Treat the resulting default-branch SHA—not the mutable PR head—as landed
-   source truth. Plan reverts at **that** granularity.
+6. Before ready: confirm direction and **project boundary**; clear independent
+   separate-context review of material findings; required PR checks green (or
+   will be required on the merge-group path).
+7. Mark ready only when the Work/outcome is complete and main-green-safe—not a
+   phase checkpoint.
+8. Arm auto-merge / enter Merge Queue only after step 6–7. Auto-merge is a queue
+   arm, not quality proof and not done. Never force-merge, skip required checks,
+   or admin-bypass to enter main.
+9. Let Merge Queue evaluate the merge-group SHA and squash-merge. On eject or
+   red: repair the **owning project** and re-enter; do not bypass the gate.
+10. Treat the resulting default-branch SHA—not the mutable PR head—as landed
+    source truth. Plan reverts at **that** granularity. Continue to auto-deploy
+    and live verification when the delivery terminal requires them.
 
 ### Break-glass direct trunk
 

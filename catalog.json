@@ -326,7 +326,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:e9f4b2425995f23aee789b251e2667116c63a6a0e3cecae477b33cf1e34348e1",
+      "packageDigest": "sha256:ac3f9102a23a5f24f1345e74eb95c41d5c9098900e677aaf52366df33b4a5588",
       "capability": {
         "job": "Drive one accepted multi-phase objective (engineering or product) to its delivery terminal with evidence at the active delivery boundary.",
         "outcomeObservable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",

@@ -11,9 +11,10 @@ method and predicates.
 
 ## Method
 
-1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates.
+1. Read [references/full-standard.md](references/full-standard.md) for the full method and predicates (ordinary path PR → Merge Queue → main → Auto Deploy → live; auto-merge as queue arm only; no gate bypass; done layers).
 2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
 3. Prefer schema/test/ADR homes over copying this body into product repos.
+4. Mid-task re-anchor: [`../working-brief.md`](../working-brief.md).
 
 ## Composition and output
 

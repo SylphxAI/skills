@@ -20,9 +20,12 @@ only when a task matches. Always-on text is miss-class-A floors only.
 - Evidence precedes claims. Distinguish local, candidate, landed, released, and
   live states.
 - Done means delivered at the active repository delivery boundary, not merely
-  edited, committed, proposed, or locally green.
+  edited, committed, proposed, merged, auto-merged, deployed, or locally green.
 - Do not fabricate live coordination, deploy, or CI authority when tools or
   state are missing. Report the gap.
+- Never bypass required delivery gates (review, CI, merge queue, deploy policy)
+  to unblock. Fix the owning project with a correct, future-proof change and
+  re-enter the ordinary path.
 - Installed or structurally green is not qualified: capability value requires
   version-scoped qualification evidence and an outcome receipt; `unqualified`
   is the honest default.
@@ -55,9 +58,16 @@ only when a task matches. Always-on text is miss-class-A floors only.
 
 ## Progress
 
-- A plan, local diff, commit, or open pull request is a checkpoint unless it
-  independently satisfies the active delivery terminal. While that terminal is
-  unsatisfied, advance the highest-value safe in-scope action.
+- Before material mutation: confirm direction (north-star / product goal),
+  owning project boundary, and contracts. Prefer root-cause fixes in the owner;
+  no workarounds that preserve a broken boundary.
+- Ordinary source path when the repository uses agent-native delivery:
+  PR → Merge Queue → main → Auto Deploy → live verification. Auto-merge is a
+  queue arm only, never a quality or done signal.
+- A plan, local diff, commit, open pull request, merge, or deploy is a
+  checkpoint unless it independently satisfies the active delivery terminal.
+  While that terminal is unsatisfied, advance the highest-value safe in-scope
+  action (own the outcome; worker occupancy may release and re-enter).
 
 ## Communication
 

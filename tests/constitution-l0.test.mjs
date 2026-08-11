@@ -12,6 +12,8 @@ test('constitution stays thin and miss-class-A', () => {
     'Search before you act',
     'Evidence precedes claims',
     'Done means delivered',
+    'Never bypass required delivery gates',
+    'PR → Merge Queue → main → Auto Deploy',
     'progressive disclosure',
     'Skills do not grant tools',
     'Lead with the answer',
