@@ -12,8 +12,10 @@ no requirement to send credentials to Sylphx to install.
   secrets hygiene, link integrity, and catalog digests. Hashes prove **bytes**,
   not publisher intent or semantic safety.
 - `qualified` in this repository means version-scoped, expiring evidence from
-  a named evaluator, including a mandatory security review. No package is
-  currently qualified; every package is honestly `unqualified`.
+  a named evaluator, including a mandatory automated pattern scan for secrets
+  and dangerous instruction patterns. As of 2026-08-11, 24 of 57 packages
+  carry that evidence; the rest are honestly `unqualified`. The pattern scan
+  is a regex backstop, not a security review.
 - There is **no current automated gate that evaluates malicious instructions,
   unsafe scripts, or capability permissions**. Treat any installed package as
   code from its author. This gap is tracked as a qualification gate, not

@@ -17,8 +17,8 @@
       "uri": "docs/qualification/evals/design-skill-evals/run-2026-08-10T16-22-02-309Z/report.json"
     },
     {
-      "id": "design-skill-evals-security-2026-08-10T16-22-02-309Z",
-      "kind": "security",
+      "id": "design-skill-evals-automated-pattern-scan-2026-08-10T16-22-02-309Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:3487075013c155b506b7c88775e41c4f30dfff4b673d4fe8f80e14e1f027bcfc",
       "uri": "docs/qualification/evals/design-skill-evals/run-2026-08-10T16-22-02-309Z/report.json"
     }

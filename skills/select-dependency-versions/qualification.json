@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/select-dependency-versions/run-2026-08-10T14-37-58-866Z/report.json"
     },
     {
-      "id": "select-dependency-versions-security-2026-08-10T14-37-58-866Z",
-      "kind": "security",
+      "id": "select-dependency-versions-automated-pattern-scan-2026-08-10T14-37-58-866Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:cc7c1fd980bd37fa7260f0af86cb6a62014e10eeb4e5490c76f562794e34e012",
       "uri": "docs/qualification/evals/select-dependency-versions/run-2026-08-10T14-37-58-866Z/report.json"
     }

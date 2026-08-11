@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/select-next-work/run-2026-08-10T16-22-01-818Z/report.json"
     },
     {
-      "id": "select-next-work-security-2026-08-10T16-22-01-818Z",
-      "kind": "security",
+      "id": "select-next-work-automated-pattern-scan-2026-08-10T16-22-01-818Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:c9a6faeb84d247f670ab47e5385972177a9ff8d33ddab9918088a51243aabd04",
       "uri": "docs/qualification/evals/select-next-work/run-2026-08-10T16-22-01-818Z/report.json"
     }

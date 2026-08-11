@@ -101,7 +101,7 @@ test('qualified packages carry suites, on-disk evidence, and future expiry', () 
     const record = JSON.parse(readFileSync(path.join(skillsRoot, folder, 'qualification.json'), 'utf8'));
     assert.ok(existsSync(path.join(skillsRoot, folder, 'evals', 'suite.json')), `${folder}: suite`);
     assert.ok(Date.parse(record.expiresAt) > Date.now(), `${folder}: future expiry`);
-    assert.ok(record.evidence.length >= 2, `${folder}: evidence (compatibility + security at minimum)`);
+    assert.ok(record.evidence.length >= 2, `${folder}: evidence (compatibility + automated-pattern-scan at minimum)`);
     for (const item of record.evidence) {
       assert.match(item.digest, /^sha256:[0-9a-f]{64}$/, `${folder}: ${item.id}`);
       assert.ok(existsSync(path.join(repositoryRoot, item.uri)), `${folder}: evidence on disk ${item.uri}`);

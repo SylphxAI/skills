@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/analyze-system-dynamics/run-2026-08-10T18-23-41-030Z/report.json"
     },
     {
-      "id": "analyze-system-dynamics-security-2026-08-10T18-23-41-030Z",
-      "kind": "security",
+      "id": "analyze-system-dynamics-automated-pattern-scan-2026-08-10T18-23-41-030Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:786001609e1dd8c4d6caad937e1dee50667cc995f11c92c5a6b46c427c6f11b0",
       "uri": "docs/qualification/evals/analyze-system-dynamics/run-2026-08-10T18-23-41-030Z/report.json"
     }

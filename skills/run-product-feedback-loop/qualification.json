@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/run-product-feedback-loop/run-2026-08-10T18-23-41-604Z/report.json"
     },
     {
-      "id": "run-product-feedback-loop-security-2026-08-10T18-23-41-604Z",
-      "kind": "security",
+      "id": "run-product-feedback-loop-automated-pattern-scan-2026-08-10T18-23-41-604Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:4557711c7331aa8d5190d7828abd61dd3cd3ada027a99df7b467db4951eefae2",
       "uri": "docs/qualification/evals/run-product-feedback-loop/run-2026-08-10T18-23-41-604Z/report.json"
     }

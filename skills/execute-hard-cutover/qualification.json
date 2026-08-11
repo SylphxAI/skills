@@ -17,8 +17,8 @@
       "uri": "docs/qualification/evals/execute-hard-cutover/run-2026-08-10T17-29-41-586Z/report.json"
     },
     {
-      "id": "execute-hard-cutover-security-2026-08-10T17-29-41-586Z",
-      "kind": "security",
+      "id": "execute-hard-cutover-automated-pattern-scan-2026-08-10T17-29-41-586Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:aedc81c381baf3ad74ac8e0d8a6e2af55d2d320bb836caa8ffefb48e49c82fab",
       "uri": "docs/qualification/evals/execute-hard-cutover/run-2026-08-10T17-29-41-586Z/report.json"
     }

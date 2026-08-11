@@ -1,0 +1,7 @@
+Done. `research.md` is written in the workspace root (research.md).
+
+Key findings:
+- Current LTS is **Node.js 24 "Krypton"** (v24.19.0, 2026-08-03); Node 22 "Jod" remains Maintenance LTS until 2027-04-30.
+- Core requirements (from official `BUILDING.md` at the v24.19.0 tag): Linux x64/arm64 with kernel ≥ 4.18 and glibc ≥ 2.28 (Tier 1), Windows ≥ 10/Server 2016 (x64 Tier 1), macOS ≥ 13.5 (Tier 1), plus toolchains (GCC ≥ 12.2, VS 2022/2026 with ClangCL — MSVC removed in v24, Xcode ≥ 16.1), Python, and 8 GB RAM for compiling.
+- Sources: `nodejs.org/dist/index.json`, the official Releases page, `nodejs/Release` schedule.json, `BUILDING.md` v24.19.0, and the v24.0.0 release blog — all official, free endpoints, retrieved ~02:30 UTC today.
+- Limits noted: no single nodejs.org "system requirements" page exists, runtime hardware specs are unofficial, and experimental tiers (musl/Alpine, armv7, FreeBSD, WSL) aren't release-backed.

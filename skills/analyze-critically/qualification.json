@@ -7,20 +7,26 @@
     "kind": "host",
     "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
   },
-  "qualifiedAt": "2026-08-10T15:46:03.483Z",
-  "expiresAt": "2026-11-08T15:56:21.432Z",
+  "qualifiedAt": "2026-08-11T02:33:51.148Z",
+  "expiresAt": "2026-11-09T02:34:55.194Z",
   "evidence": [
     {
-      "id": "analyze-critically-compatibility-2026-08-10T15-42-07-521Z",
+      "id": "analyze-critically-compatibility-2026-08-11T02-26-25-834Z",
       "kind": "compatibility",
-      "digest": "sha256:26d3ebd993ccec3f838de5757a4300eb3c2fa8bc56f3b1e7c7e30bdeced8fa2b",
-      "uri": "docs/qualification/evals/analyze-critically/run-2026-08-10T15-42-07-521Z/report.json"
+      "digest": "sha256:8140a2ec40c3d8ea26cd12f5879f533c1aea9b6a6535b54ce7c11326cd9549f0",
+      "uri": "docs/qualification/evals/analyze-critically/run-2026-08-11T02-26-25-834Z/report.json"
     },
     {
-      "id": "analyze-critically-security-2026-08-10T15-42-07-521Z",
-      "kind": "security",
-      "digest": "sha256:26d3ebd993ccec3f838de5757a4300eb3c2fa8bc56f3b1e7c7e30bdeced8fa2b",
-      "uri": "docs/qualification/evals/analyze-critically/run-2026-08-10T15-42-07-521Z/report.json"
+      "id": "analyze-critically-activation-2026-08-11T02-26-25-834Z",
+      "kind": "activation",
+      "digest": "sha256:8140a2ec40c3d8ea26cd12f5879f533c1aea9b6a6535b54ce7c11326cd9549f0",
+      "uri": "docs/qualification/evals/analyze-critically/run-2026-08-11T02-26-25-834Z/report.json"
+    },
+    {
+      "id": "analyze-critically-automated-pattern-scan-2026-08-11T02-26-25-834Z",
+      "kind": "automated-pattern-scan",
+      "digest": "sha256:8140a2ec40c3d8ea26cd12f5879f533c1aea9b6a6535b54ce7c11326cd9549f0",
+      "uri": "docs/qualification/evals/analyze-critically/run-2026-08-11T02-26-25-834Z/report.json"
     }
   ],
   "compatibility": [

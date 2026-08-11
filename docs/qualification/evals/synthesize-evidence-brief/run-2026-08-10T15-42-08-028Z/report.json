@@ -46,7 +46,8 @@
     "withSkill": "pass",
     "baseline": "fail"
   },
-  "security": {
+  "patternScan": {
+    "kind": "automated-pattern-scan",
     "verdict": "clean",
     "scannedFiles": 10,
     "findings": []

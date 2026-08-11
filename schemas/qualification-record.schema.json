@@ -50,9 +50,10 @@
           "kind": {
             "enum": [
               "incremental-value",
+              "activation",
               "compatibility",
               "provenance",
-              "security",
+              "automated-pattern-scan",
               "currentness",
               "outcome"
             ]

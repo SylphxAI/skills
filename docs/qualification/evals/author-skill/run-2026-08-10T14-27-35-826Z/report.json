@@ -37,7 +37,8 @@
       "failures": []
     }
   ],
-  "security": {
+  "patternScan": {
+    "kind": "automated-pattern-scan",
     "verdict": "clean",
     "scannedFiles": 11,
     "findings": []

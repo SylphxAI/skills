@@ -17,8 +17,8 @@
       "uri": "docs/qualification/evals/curate-skill-repository/run-2026-08-10T16-41-46-039Z/report.json"
     },
     {
-      "id": "curate-skill-repository-security-2026-08-10T16-41-46-039Z",
-      "kind": "security",
+      "id": "curate-skill-repository-automated-pattern-scan-2026-08-10T16-41-46-039Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:43ca5debd229c727c75d5e22f2a65917aed0553df1e829c42b51529532f2b13e",
       "uri": "docs/qualification/evals/curate-skill-repository/run-2026-08-10T16-41-46-039Z/report.json"
     }

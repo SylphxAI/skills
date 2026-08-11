@@ -5,9 +5,12 @@ version is **safe, applicable, current and outcome-positive** in declared
 environments. A named evaluator or attestor owns the result; the repository
 only records and projects it.
 
-Unqualified is the honest default. This repository currently declares **zero**
-qualified capabilities: there is no with-skill versus baseline evidence for any
-package (see the eval residual ledger). Nothing here claims otherwise.
+Unqualified is the honest default. As of 2026-08-11 this repository declares
+**24** qualified capabilities (57 packages) with version-scoped, expiring
+evidence under `docs/qualification/evals/`; everything else is honestly
+`unqualified`. Qualification is never inferred from structure, CI, or
+installation — only from filed with-skill versus baseline evidence and, where
+declared, native-activation evidence.
 
 ## What evidence qualifies a capability
 
@@ -24,9 +27,12 @@ proof is a **with-skill versus baseline comparison** on realistic work:
    strongest reasonable public comparator where licensing permits.
 3. Separate deterministic oracles from blind judgment; recompute metrics from
    complete raw artifacts in a protected eval store.
-4. Cover incremental value, compatibility, provenance, security, and
-   currentness. A security review is mandatory before a package may be
-   `qualified`; absence is a hard gate.
+4. Cover incremental value, activation/selection, compatibility, provenance,
+   security, and currentness. An automated pattern scan (secrets and dangerous instruction
+   patterns) is mandatory before a package may be `qualified`; absence is a
+   hard gate. It is a regex backstop, not a security review: no current gate
+   evaluates malicious instructions, unsafe scripts, or capability
+   permissions, and hashes prove bytes, not intent.
 5. Record the result as a version-scoped, **expiring** qualification record.
    Any relevant byte change invalidates the matching proof.
 
@@ -51,6 +57,17 @@ authored-to-fit tasks, or self-attestation.
 
 The schema is `schemas/qualification-record.schema.json`; the receipt contract
 for outcomes is `schemas/outcome-receipt.schema.json`.
+
+## Capability identity
+
+The catalog `packageDigest` covers what an agent loads and what host discovery
+consumes: `SKILL.md`, `references/`, `scripts/`, `capability.json` and
+`agents/`. Evaluator-owned evidence metadata (`qualification.json`) and eval
+material (`evals/`) are **excluded**: re-qualification or evidence relabeling
+must not change the capability version identity. The qualification record's
+`evidence[].digest` independently binds the exact eval bundle (raw artifacts,
+task records, pattern scan, report), so evidence remains byte-bound without
+churning capability identity.
 
 ## Promotion safety
 
@@ -86,12 +103,17 @@ Environment: `SYLPHX_QUALIFY_PYTHON` (python3 with Pillow for image oracles),
 `SYLPHX_QUALIFY_CODEX` (codex CLI for agent tasks), `SYLPHX_QUALIFY_AGENT_ARGS`
 (extra `codex exec` args, e.g. `-c model_provider=openmodel -c model=deepseek-v4-flash`).
 Agent tasks run in temp dirs outside any git repository and are recorded as
-fresh-context behavior tests (`injectionState: not-verified`); exec tasks are
-deterministic functional oracles. The bundle includes raw artifacts, task
-records, a security scan (secrets + dangerous patterns), and `report.json` with
-an evidence digest; `--apply-from` refuses to apply if the recorded digest does
-not match the bundle. Qualification files in the ledger with a review of the
-bundle.
+fresh-context behavior tests. A suite may additionally declare
+`activation.cases`: the capability is installed as the only native skill of a
+fresh session under the always-on search-before-act floor, and the user prompt
+never names the skill. A case passes only when the agent's visible transcript
+references a declared selection keyword and every oracle assertion holds;
+`injectionState` is `verified` only when every declared case passes, and stays
+`not-verified` otherwise. Exec tasks are deterministic functional oracles. The bundle includes raw artifacts, task
+records, an automated pattern scan (secrets + dangerous instruction patterns),
+and `report.json` with an evidence digest; `--apply-from` refuses to apply if
+the recorded digest does not match the bundle. Qualification files in the
+ledger with a review of the bundle.
 
 ## Ledger
 

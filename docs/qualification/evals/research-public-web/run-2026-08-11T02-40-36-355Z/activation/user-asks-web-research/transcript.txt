@@ -1,0 +1,10 @@
+Done — `research.md` is written at `/tmp/sylphx-activate-run-2026-08-11T02-40-36-355Z-user-asks-web-research/research.md:1`.
+
+**Answer summary**
+- Current Active LTS (as of 2026-08-11): **Node.js v24 "Krypton"** (v24.19.0, LTS until 2028-04-30); v22 "Jod" is maintenance LTS.
+- Official binaries require: Linux x64/arm64 with kernel ≥ 4.18 + glibc ≥ 2.28; Windows x64 ≥ Windows 10/Server 2016 (arm64 ≥ Windows 10, Tier 2); macOS ≥ 13.5 (both arches); no EOL platform versions.
+- Building from source: GCC ≥ 12.2 (Linux/AIX), Xcode ≥ 16.1 (macOS), VS 2022/2026 + ClangCL (Windows), supported Python, ~8 GB RAM for `-j4` builds.
+
+**Method & limits**
+- All facts verified against primary sources: `nodejs/Release` schedule.json, `nodejs/dist/index.json`, `BUILDING.md` on the `v24.x` branch, the official v22→v24 migration guide, the v24.0.0 release notes, and the v24.19.0 dist listing. Retrieval time and URLs are in the file.
+- Notable gaps recorded: there is no single official "system requirements" page (open issue nodejs/nodejs.org#8124), no official runtime RAM/disk minimums, the learn URL returned 404, and the download page is client-rendered so the binary set was verified via the dist listing instead.
