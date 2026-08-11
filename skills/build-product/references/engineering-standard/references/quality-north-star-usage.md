@@ -11,8 +11,8 @@ IDs live in [full-standard.md](full-standard.md) § Quality North Star and
 | --- | --- |
 | **Design review** | Layer A (Depth / Simplicity) first; then scan B/C in conflict precedence. Violations need written tradeoff + rollback/review. |
 | **PR / design doc** | Name 1–2 attributes intentionally strengthened or intentionally sacrificed—not the full table. |
-| **Product / finish** | Depth = one core concept fully resolved; Simplicity = surface stays few-concept while capability holds. |
-| **Architecture decision** | Record rejected shallower option (Depth) and whether composition reduced special cases without cutting coverage (Simplicity). |
+| **Product / finish** | Depth = one core concept fully resolved; Simplicity = fewest concepts covering maximum capability (ambition held). |
+| **Architecture decision** | Record rejected shallower option (Depth) and whether composition reduced special cases while holding or expanding coverage (Simplicity). |
 | **Retrospective** | Name which attribute broke → consequence → whether it hardens into a rule. |
 | **Retirement of wording** | Sentences that never guide a decision for six months: delete or merge; keep few and sharp. |
 
@@ -21,12 +21,13 @@ IDs and prove them.
 
 ## Pocket seven questions
 
-1. Deep enough? Can fewer concepts cover the same capability by composition?
+1. Deep enough? Can fewer concepts cover *more* capability by composition?
 2. Correct? Are security boundaries clear?
 3. When it fails, is blast radius contained—and is the system observable?
 4. Fast and large enough? Where are budgets and measurement points?
-5. Which cost budget is saved (runtime, lifecycle, entropy, or attention), how
-   is it measured, and which principle is traded? (Economy)
+5. Which agent-native cost budget is saved (entropy, verification, attention,
+   runtime, coordination, or reversal), how is it measured, and which
+   principle is traded? (Economy — not person-days)
 6. Six months later: still changeable and testable?
 7. If default quality precedence is violated, are reason and rollback written?
 
@@ -35,7 +36,7 @@ IDs and prove them.
 | Attribute | Typical failure |
 | --- | --- |
 | Depth | Reused a framework “best practice” without naming failure modes or a rejected simpler path |
-| Simplicity | Cut edge cases for cleanliness; or one god abstraction that forced more special cases |
+| Simplicity | Cut features/edge cases for cleanliness; fewer-features cosplay; or one god abstraction that forced more special cases |
 | Correctness | High-throughput writes that silently drop data |
 | Security | Admin surface exposed, secured only by “nobody knows the URL” |
 | Reliability | Always HTTP 200 with errors buried in body and no monitor |
@@ -43,7 +44,7 @@ IDs and prove them.
 | Resilience | Infinite retry stampede kills the dependency |
 | Performance | Micro-optimize with no budget; report only mean latency |
 | Scalability | All state pinned to one-machine memory; “just add nodes” |
-| Economy | “Saving dev effort” with no budget, no measurement, and no traded principle; counting only build cost while ignoring verification, entropy, and attention |
+| Economy | “Saving dev effort” / person-days as the cost story; no agent-native budget, measurement, or traded principle; counting only build cost while ignoring verification, entropy, attention, coordination, and reversal |
 | Observability | Logs without trace id; alerts with no owner action |
 | Maintainability | Clever one-liners no one can safely edit; unreadability sold as depth |
 | Evolvability | Business detail leaks every layer; swapping a store rewrites callers |
@@ -51,11 +52,14 @@ IDs and prove them.
 
 ## Center (for agents and humans)
 
-> Use depth for insight, integration for simplicity, composition for capability;
-> under correctness and security, make the system steady, observable, fast
-> enough, large enough, and changeable.
+> Use depth for insight, integration for simplicity, composition for maximum
+> capability; under correctness and security, make the system steady,
+> observable, fast enough, large enough, and changeable — pricing agent-native
+> cost, not person-days.
 
 **Operating set = Meta + 14 primary attributes** (`q-readability` is a
-Maintainability alias; `q-economy` = lifecycle/entropy/attention cost).
-**Memory set = Meta + 9 (深正簡 · 改觀快 · 穩安平).** Grow by refining definitions
-and anti-examples—not by adding slogan rows.
+Maintainability alias; `q-economy` = agent-native entropy/verification/
+attention/runtime/coordination/reversal cost).
+**Memory set = Meta + 9** (Depth · Correctness · Simplicity · Evolvability ·
+Observability · Performance & Velocity · Reliability · Security · Economy).
+Grow by refining definitions and anti-examples—not by adding slogan rows.

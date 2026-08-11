@@ -30,10 +30,11 @@ are retired.
 | documentation-standard | skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard |
 
 Quality vocabulary: **Quality North Star** (`q-*`, 14 primaries + `q-readability`
-alias; `q-economy` = lifecycle/entropy/attention cost; meta *Simple concepts,
-powerful usage*) owned by `engineering-standard` under `build-product`. Default
-quality precedence and usage guidance live there. Universal doctrine:
-[PRINCIPLES.md](policies/PRINCIPLES.md).
+alias; `q-economy` = agent-native entropy/verification/attention/runtime/
+coordination/reversal cost — not person-days; meta *Simple concepts, powerful
+usage* = maximize capability per concept) owned by `engineering-standard` under
+`build-product`. Default quality precedence and usage guidance live there.
+Universal principles: [PRINCIPLES.md](policies/PRINCIPLES.md).
 The phrase Modern Technical Bar is retired.
 
 ## Verified Capabilities boundary (2026-08-10)

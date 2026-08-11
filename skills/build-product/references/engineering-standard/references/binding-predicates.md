@@ -10,14 +10,14 @@ Sole quality vocabulary (`q-*`). Apply the relevant subset; verify rather than
 slogan. Meta: *Simple concepts, powerful usage.* Retired phrase: Modern
 Technical Bar.
 
-**Operating set:** 14 primary attributes. **Memory set (9): 深正簡 · 改觀快 ·
-穩安平** — Depth · Correctness · Simplicity · Evolvability · Observability ·
-Performance & Velocity · Reliability · Security · Economy.
+**Operating set:** 14 primary attributes. **Memory set (9):** Depth ·
+Correctness · Simplicity · Evolvability · Observability · Performance &
+Velocity · Reliability · Security · Economy.
 
 | ID | Attribute |
 | --- | --- |
 | `q-depth` | Depth — mechanism, boundary, invariant, failure mode; one powerful concept fully resolved |
-| `q-simplicity` | Simplicity — fewer primitives via unify/compose; capability not cut |
+| `q-simplicity` | Simplicity — fewest primitives via unify/compose covering maximum capability; never cut ambition to look clean |
 | `q-correctness` | Correctness — contract-true under the failure model; explicit failure |
 | `q-security` | Security — secure-by-default, least-privilege, auditable boundaries |
 | `q-reliability` | Reliability — promised correct outcomes under expected adverse conditions |
@@ -25,7 +25,7 @@ Performance & Velocity · Reliability · Security · Economy.
 | `q-resilience` | Resilience — absorb, degrade, recover without silent corruption or cascade |
 | `q-performance` | Performance — latency, throughput, cost, resource budgets (incl. tails) |
 | `q-scalability` | Scalability — structure holds ~10× load/data/coordination; cost curve acceptable |
-| `q-economy` | Economy — lifecycle/entropy/attention cost accounting; runtime budgets stay under Performance |
+| `q-economy` | Economy — agent-native cost (entropy/verification/attention/runtime/coordination/reversal); not person-days; runtime resource budgets stay under Performance |
 | `q-observability` | Observability — minimum correlated, privacy-preserving, actionable evidence |
 | `q-maintainability` | Maintainability — local change, clear ownership; **includes Readability** |
 | `q-evolvability` | Evolvability — affordable change; migrate/backfill then hard-cut |
@@ -50,8 +50,8 @@ legal/safety/ruin or Decision Quality / SOTA ends.
 | `eng-quality-01` | Material durable work names the in-scope Quality North Star attribute IDs (`q-*`) and closes each with evidence or an explicit residual (owner + expiry/review + retirement). Naming without proof is non-conformance. |
 | `eng-quality-02` | Do not maintain a parallel quality slogan list. The fourteen primary `q-*` attributes (plus the `q-readability` alias of Maintainability) are the sole vocabulary; mechanism phrases (idempotent, elastic, etc.) map into them and do not form a second bar. |
 | `eng-quality-precedence-01` | When quality attributes conflict without an explicit business counter-instruction, apply default quality precedence; intentional inversion records tradeoff, owner, and rollback or review condition. |
-| `eng-economy-01` | Cost claims state which budget (lifecycle, system entropy, or human attention), how it is measured, and which principle is traded; cost is not development effort. |
-| `eng-economy-02` | Every added concept is priced as lifecycle interest charged to every future agent and human; prefer integration that holds capability over deletion that drops it. |
+| `eng-economy-01` | Cost claims state which agent-native budget (entropy, verification, attention, runtime, coordination, or reversal), how it is measured, and which principle is traded; cost is not human person-days / development effort by default. |
+| `eng-economy-02` | Every added concept is priced as lifecycle interest charged to every future agent and human; prefer integration that holds or expands capability over deletion that shrinks ambition. |
 | `eng-readability-01` | Names, module structure, and required comments make non-obvious intent legible; prefer simplification and domain language over cleverness or archaeology-required structure. (Facet of Maintainability.) |
 | `eng-maintain-01` | Touched paths leave change local and ownership explicit: no new god modules, no unowned dual paths, and temporary fences carry retirement predicates. Includes readability obligations. |
 | `eng-avail-01` | Availability-sensitive paths declare continuity intent (SLO or equivalent) and do not treat health/readiness probes as product capability proof. |
@@ -61,7 +61,7 @@ legal/safety/ruin or Decision Quality / SOTA ends.
 | `eng-timeout-01` | Every network/RPC path has timeout, cancellation, and retry budget. |
 | `eng-hard-cut-01` | Default is verified hard-cut / one-step cutover with predecessor retirement. Expand-contract only for demonstrated large-scale user or live compatibility/state/effect risk, and only with a dated contract step—no permanent dual-path residual. |
 | `eng-hard-cut-02` | Backward-compatible dual paths, shims, and aliases are exceptional tech debt; keep them only under eng-hard-cut-01 exception bar and delete them at the retirement gate. |
-| `eng-simplicity-01` | Prefer fewer concepts and special cases by **unify/compose** while preserving framed capability coverage; deletion of difficulty is last resort after coverage is held. Abstraction, configuration, or indirection only for measured need (boundary protection, real reuse, or named domain concept)—never simplistic cut, hidden convention, or false unification of incompatible concerns. |
+| `eng-simplicity-01` | Prefer fewer concepts and special cases by **unify/compose** while preserving or expanding framed capability coverage (ambition-preserving simplicity); deletion of difficulty is last resort after coverage is held. Abstraction, configuration, or indirection only for measured need (boundary protection, real reuse, or named domain concept)—never simplistic cut, fewer-features cosplay, hidden convention, or false unification of incompatible concerns. |
 | `eng-growth-01` | Grow by thin vertical slices on a product path that already works end to end; do not trade a working path for unfinished layered complexity. |
 | `eng-deps-01` | Prefer in-tree and established dependencies after checking docs/types; reimplement commodity behavior only with a clear reason that owning it is smaller lifecycle cost than adopting. |
 | `eng-layer-01` | Dependency direction is domain → application → infrastructure. |

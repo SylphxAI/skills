@@ -53,22 +53,35 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 
 ## Universal principles + Economy (2026-08-09)
 
-- Adopted the nine-principle universal doctrine 深正簡 · 改觀快 · 穩安平
-  (Depth · Correctness · Simplicity · Evolvability · Observability ·
-  Performance & Velocity · Reliability · Security · Economy) as canonical
-  doctrine for all design, development, and business-model work.
-  Full text: `docs/policies/PRINCIPLES.md`; compact always-on floor added to
-  `runtime/constitution.md`. Not a second quality vocabulary — it maps onto the
-  Quality North Star `q-*` IDs.
+- Adopted the nine-principle universal principles (Depth · Correctness ·
+  Simplicity · Evolvability · Observability · Performance & Velocity ·
+  Reliability · Security · Economy) as canonical principles for all design,
+  development, and business-model work. Full text: `docs/policies/PRINCIPLES.md`;
+  compact always-on floor added to `runtime/constitution.md`. Not a second
+  quality vocabulary — it maps onto the Quality North Star `q-*` IDs.
 - Added `q-economy` as the 14th primary North Star attribute:
   lifecycle / system-entropy / human-attention cost accounting (not dev
   effort). Runtime resource cost stays under Performance/Scalability per the
   #121 guardrail; `q-economy` is the decision lens for lifecycle cost,
   attention, and agent-native economics.
-- Memory set grew 8 → 9 (深正簡 · 改觀快 · 穩安平); operating set Meta + 13 → 14.
+- Memory set grew 8 → 9; operating set Meta + 13 → 14.
 - Wired Economy into `commercial-decision-standard` (business models, pricing,
   roadmap, unit economics) and added `eng-economy-01/02` predicates.
 - ADR: `docs/history/adr/ADR-20260809-universal-principles-and-q-economy.md`.
+
+## Principles refinement — ambition + agent-native budgets (2026-08-11)
+
+- Canonical PRINCIPLES body is English-only; non-English slogans retired from
+  principles, constitution, and quality vocabulary surfaces.
+- Simplicity clarified as **ambition-preserving**: fewest concepts/systems
+  covering maximum capability — not fewer features.
+- Economy budgets made explicit for agent-native work: entropy, verification,
+  attention, runtime, coordination, reversal (not person-days default).
+- Facet map: longer attributes (readability, maintainability, scalability,
+  availability, resilience, testability, …) nest under the nine cores.
+- Aligned constitution, `eng-simplicity-01`, `eng-economy-01/02`, North Star
+  `q-simplicity` / `q-economy`, and commercial Economy law.
+- ADR: `docs/history/adr/ADR-20260811-principles-ambition-agent-economy.md`.
 
 ## Objective-loop consolidation + composition contract (2026-08-09)
 

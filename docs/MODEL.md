@@ -81,7 +81,8 @@ Constraint packs resolve only under applying skills. Never invent top-level
 `skills/<pack>-standard/` listings for standards, profiles, or matrices.
 Engineering quality vocabulary is the **Quality North Star** owned by
 `build-product/references/engineering-standard` (Meta + 14 primaries; Simplicity
-= compose without cutting capability; Economy = lifecycle/entropy/attention
-cost; default quality precedence; not a listing skill). Quality North Star is
-an authoring quality vocabulary; it is **not** qualification evidence and never
-substitutes for Verified Capability Yield (see `NORTH-STAR.md`).
+= fewest concepts covering maximum capability; Economy = agent-native
+entropy/verification/attention/runtime/coordination/reversal cost, not
+person-days; default quality precedence; not a listing skill). Quality North
+Star is an authoring quality vocabulary; it is **not** qualification evidence
+and never substitutes for Verified Capability Yield (see `NORTH-STAR.md`).
