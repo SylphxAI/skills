@@ -12,8 +12,10 @@ semantics.
 
 Every package carries `capability.json` (contract) and `qualification.json`
 (record; `unqualified` is the honest default). The catalog projects
-qualification state: currently **0/57 qualified, 0 outcome receipts** — no
-package claims with-skill value without evidence. See
+qualification state: currently **24/57 qualified** with version-scoped,
+expiring evidence (0 outcome receipts; receipts are recorded by user systems
+and the Control Plane, never fabricated here) — no package claims with-skill
+value without evidence. See
 [docs/NORTH-STAR.md](docs/NORTH-STAR.md),
 [docs/MODEL.md](docs/MODEL.md), [docs/QUALIFICATION.md](docs/QUALIFICATION.md).
 
