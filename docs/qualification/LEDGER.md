@@ -4,15 +4,17 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-11, waves 1–10)
+## Current state (2026-08-11, waves 1–11)
 
 - Capability packages: **57**
-- Qualified: **36** — adopt-repo-standards, analyze-causal-inference, analyze-critically, analyze-system-dynamics, author-skill, bound-request-scope, craft-human-agent-language, curate-skill-repository, decide-architecture-shape, design-product, design-skill-evals, distill-source-to-skill, edit-preserving-voice, engineer-agent-context, engineer-testable-requirements, execute-hard-cutover, forecast-with-calibration, maintain-product, model-security-threats, operate-customer-support, optimize-decision-model, optimize-store-listing, price-saas-subscription, produce-game-2d-map-assets, produce-game-2d-sprites, record-structured-deliberation, research-public-web, research-user-needs, review-domain, run-incident-response, run-product-feedback-loop, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
-- Native-activation selection evidence: **10/36** (analyze-critically,
+- Qualified: **40** — adopt-repo-standards, analyze-causal-inference, analyze-critically, analyze-system-dynamics, author-skill, bound-request-scope, compose-product-portfolio, compose-product-program, compose-readme-marks, craft-human-agent-language, craft-product-interface, curate-skill-repository, decide-architecture-shape, design-product, design-skill-evals, distill-source-to-skill, edit-preserving-voice, engineer-agent-context, engineer-testable-requirements, execute-hard-cutover, forecast-with-calibration, maintain-product, model-security-threats, operate-customer-support, optimize-decision-model, optimize-store-listing, price-saas-subscription, produce-game-2d-map-assets, produce-game-2d-sprites, record-structured-deliberation, research-public-web, research-user-needs, review-domain, run-incident-response, run-product-feedback-loop, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
+- Native-activation selection evidence: **14/40** (analyze-critically,
   analyze-causal-inference, model-security-threats, engineer-agent-context,
   operate-customer-support, review-domain, research-user-needs,
-  price-saas-subscription, optimize-store-listing, design-product); the
-  others remain `injectionState: not-verified` — see wave-7 through wave-10.
+  price-saas-subscription, optimize-store-listing, design-product,
+  compose-product-portfolio, compose-product-program, craft-product-interface,
+  compose-readme-marks); the others remain `injectionState: not-verified`
+  — see wave-7 through wave-11.
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
@@ -214,6 +216,22 @@ All four activation cases show the agent natively referencing the skill
 (e.g. "per the research-user-needs procedure", "Pricing and Packaging
 Decision", "conversion experiment", "core concept") while producing the
 declared output contract.
+
+## Wave-11 runs
+
+Wave-11 qualified four more capabilities, all four activation-verified:
+
+| Capability | Run | With-skill | Baseline | Activation | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| compose-product-portfolio | `run-2026-08-11T07-12-56-899Z` | pass | pass | **verified** | qualified (activation; no delta) |
+| compose-product-program | `run-2026-08-11T07-12-56-899Z` | pass | pass | **verified** | qualified (activation; no delta) |
+| craft-product-interface | `run-2026-08-11T07-12-56-897Z` | pass | fail | **verified** | qualified (incremental-value + activation) |
+| compose-readme-marks | `run-2026-08-11T07-26-42-713Z` | pass | pass | **verified** | qualified (activation; no delta) |
+
+Note: compose-readme-marks' first run
+(`run-2026-08-11T07-12-56-898Z`) used an unescaped `![` oracle regex
+(invalid pattern); the oracle was corrected to `!\\[` and the run re-done;
+the first run is kept as a record.
 
 ## Wave-1 finding (author-skill)
 

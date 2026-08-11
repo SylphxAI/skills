@@ -1,0 +1,14 @@
+`program-manifest.md` is complete at the workspace root (422 lines), written to the `compose-product-program` output contract.
+
+**What it contains**
+- **Envelope & program truth** — `planning-1` revision, draft state (no invented digests), objective, constraints, ruin boundaries, labeled facts (given/assumed/decision/requested), and typed requests for missing inputs (design blueprint, PSP/pricing, release targets, locales, age rating) instead of prose gaps.
+- **One owner per artifact** — 12 artifacts (design, commerce decisions, backend API, payments, refund flow, store listing, assets pack, marketing, release/distribution, support, manifest, launch admission), each with a single owning skill/system plus accountable role.
+- **Dependency graph** — mermaid DAG plus critical path (`design → backend → payments → release → observed manifest → launch admission`), delivery phases P0–P5 with verified slices, and collision boundaries (claims, price, refund-vs-data, release identity, deep links, rollback).
+- **Handoffs** — 34 producer-owned handoff IDs (e.g., `H-DESIGN-API`, `H-PAY-REFUND`, `H-RELEASE-EVIDENCE`), each with contract and acceptance tests; evidence handoffs feed the observed-state revision.
+- **Gates** — 11 gates from design seal through store accounts, privacy, release evidence, and independent launch admission.
+- **Done per part** — §2.3 Definition of Done table gives each artifact its evidence-backed done criteria, and §3 maps construction/proof/exposure/scale/migration states per artifact.
+- **Supporting completeness** — channel/release state machines (iOS/Android mandatory, PWA unselected decision), i18n + asset production plan, vendor-neutral SDK registry, automated maintenance loops, typed blocker register, and evidence ledger with next machine actions.
+
+Consistency checked: every handoff ID in the graph and tables matches, and each registry row has exactly one owner.
+
+Suggested next step: accept and seal `planning-1`, then issue the R-1/R-2 artifact requests so `design-app` and `product-owner` can start P0/P1.

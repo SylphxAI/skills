@@ -13,8 +13,8 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 ### 2026-08-10 Verified Capabilities projection
 
 - The repository now projects qualification explicitly: **57 capability
-  packages, 36 qualified, 0 outcome receipts** as of 2026-08-11
-  (`docs/qualification/LEDGER.md`; 10 of the 36 also carry
+  packages, 40 qualified, 0 outcome receipts** as of 2026-08-11
+  (`docs/qualification/LEDGER.md`; 14 of the 40 also carry
   native-activation selection evidence). This record and the multi-host sheets below remain the
   honest evidence that automatic multi-host utilization is not promotable
   yet; qualification covers a growing subset of packages, not the fleet.

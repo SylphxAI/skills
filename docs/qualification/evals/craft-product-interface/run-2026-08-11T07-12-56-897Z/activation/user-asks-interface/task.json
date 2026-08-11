@@ -1,0 +1,27 @@
+{
+  "id": "user-asks-interface",
+  "description": "User asks for a UI flow design without naming any skill; a fresh agent must natively discover and apply craft-product-interface.",
+  "status": "pass",
+  "selected": true,
+  "selectionKeywords": [
+    "craft-product-interface",
+    "Interface Craft Pack",
+    "accessibility floor"
+  ],
+  "matchedKeywords": [
+    "craft-product-interface",
+    "accessibility floor"
+  ],
+  "failures": [],
+  "exitCode": 0,
+  "prompt": "Design the onboarding flow for our habit-tracking mobile app: write interface-pack.md covering the screens and every state (empty, error, loading, success), the visual and interaction direction, accessibility floors, and how we would verify it renders correctly.",
+  "startedAt": "2026-08-11T07:19:26.595Z",
+  "finishedAt": "2026-08-11T07:23:21.940Z",
+  "transcriptPath": "docs/qualification/evals/craft-product-interface/run-2026-08-11T07-12-56-897Z/activation/user-asks-interface/transcript.txt",
+  "transcriptTail": "Done — `interface-pack.md` is in the workspace root (314 lines), following the `craft-product-interface` Direction-mode contract.\n\n**What the pack covers**\n- **Screens & flow:** S0 Launch → S1 Welcome → S2 First habit → S3 Schedule + reminder → S4 Ready → Home handoff, with a bounded Home empty-state contract.\n- **Every state, per screen:** explicit Default, Empty, Loading, Error, Success rows (plus focus, permission, and resume specials); unreachable states are declared with reasons, and all error/loading states guarantee input retention and retry.\n- **Direction:** Friendly utility + conversion clarity, with one signature move — the Day Arc, where the habit is a bead placed on the day in S3 and locked in S4. Tokens, type, spacing, concentric radii, motion, haptics, and an anti-pattern list are specified.\n- **Accessibility floors:** structure, semantics, keyboard/focus, contrast, reflow/text scaling, live regions, reduced motion, and input parity — framed as a baseline floor, not certification.\n- **Verification:** render matrix (3 viewports × states × inputs × preferences), per-screen checkpoints, unit/widget/integration/a11y/perf tests, an evidence-record template, and acceptance gates.\n- **Truth discipline:** copy with `[assumption]` / `[truth owner]` labels, provisional performance budgets, and an open-questions table (accounts/sync, dark mode, RTL, notification policy, default slot times, etc.) for product review before a Build pass.\n\nNotable decisions to confirm: notifications stay optional with a full no-reminder path, onboarding is local-first (no network blocking), and the flow is portrait-locked with no whole-flow skip. If you want, I can turn the open questions into a decision sheet or start a Build pass on the flow.\n",
+  "artifactCount": 2,
+  "artifactDigests": {
+    "../../../../../../tmp/sylphx-activate-craft-product-interface-run-2026-08-11T07-12-56-897Z-user-asks-interface/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+    "../../../../../../tmp/sylphx-activate-craft-product-interface-run-2026-08-11T07-12-56-897Z-user-asks-interface/interface-pack.md": "sha256:501b3d49340eab73c497b42e85fa01af1db98aabc3ac966043062974914831b6"
+  }
+}

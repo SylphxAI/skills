@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "capability": "compose-product-portfolio",
+  "claim": "Produces a Composable Product Portfolio Contract where every unit has a standalone job, contract, lifecycle, and support path; every connector edge names its contract and state owner; and keep/extract/merge/retire decisions carry evidence and handoffs.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "We have one platform that also ships a mobile app, a dashboard, and an API SDK. Write portfolio-contract.md: what should be separate products, what stays embedded, and how they connect."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Composable Product Portfolio Contract.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely (open references/composable-product-portfolio-method.md before classifying), then write portfolio-contract.md for this portfolio: one platform that also ships a mobile app, a dashboard, and an API SDK, with a shared auth substrate and a billing connector. For every proposed unit: standalone job, contract, lifecycle, operational/commercial obligations, and support path. Classify each surface (product, embedded capability, shared substrate, connector, composed experience, bundle). Draw the product and connector graph with every edge naming its contract and state owner. Give keep/extract/merge/retire decisions with evidence and handoffs, and show composition does not create a hidden monolith or fragmented system.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "portfolio-contract.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "standalone",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "contract",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "lifecycle",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "connector",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "substrate",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "extract",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "retire",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "monolith",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same portfolio oracle.",
+      "prompt": "We have one platform that also ships a mobile app, a dashboard, and an API SDK. Write portfolio-contract.md: what should be separate products, what stays embedded, and how they connect.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "portfolio-contract.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "standalone",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "contract",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "lifecycle",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "connector",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "substrate",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "extract",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "retire",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "portfolio-contract.md",
+            "contains": "monolith",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-portfolio",
+        "description": "User asks for portfolio composition without naming any skill; a fresh agent must natively discover and apply compose-product-portfolio.",
+        "prompt": "We run one platform that also ships a mobile app, a dashboard, and an API SDK, sharing auth and a billing connector. Write portfolio-contract.md: which parts should be separate products with their own job and support path, what stays embedded, how the parts connect, and what should be retired.",
+        "selectionKeywords": [
+          "compose-product-portfolio",
+          "portfolio contract",
+          "connector",
+          "substrate"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "portfolio-contract.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "portfolio-contract.md",
+              "contains": "contract",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "portfolio-contract.md",
+              "contains": "connector",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "portfolio-contract.md",
+              "contains": "retire",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "portfolio-contract.md",
+              "contains": "monolith",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

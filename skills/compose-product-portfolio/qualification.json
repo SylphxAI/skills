@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "compose-product-portfolio"
+  "name": "compose-product-portfolio",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-11T07:25:15.369Z",
+  "expiresAt": "2026-11-09T07:32:50.071Z",
+  "evidence": [
+    {
+      "id": "compose-product-portfolio-compatibility-2026-08-11T07-12-56-899Z",
+      "kind": "compatibility",
+      "digest": "sha256:aeead75194ca5ee2acdb0ef996806906293ba83748cdba3ed640c86294d77bc7",
+      "uri": "docs/qualification/evals/compose-product-portfolio/run-2026-08-11T07-12-56-899Z/report.json"
+    },
+    {
+      "id": "compose-product-portfolio-activation-2026-08-11T07-12-56-899Z",
+      "kind": "activation",
+      "digest": "sha256:aeead75194ca5ee2acdb0ef996806906293ba83748cdba3ed640c86294d77bc7",
+      "uri": "docs/qualification/evals/compose-product-portfolio/run-2026-08-11T07-12-56-899Z/report.json"
+    },
+    {
+      "id": "compose-product-portfolio-automated-pattern-scan-2026-08-11T07-12-56-899Z",
+      "kind": "automated-pattern-scan",
+      "digest": "sha256:aeead75194ca5ee2acdb0ef996806906293ba83748cdba3ed640c86294d77bc7",
+      "uri": "docs/qualification/evals/compose-product-portfolio/run-2026-08-11T07-12-56-899Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

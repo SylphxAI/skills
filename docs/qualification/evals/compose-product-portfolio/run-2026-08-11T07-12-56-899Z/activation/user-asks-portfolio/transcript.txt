@@ -1,0 +1,11 @@
+Wrote `portfolio-contract.md` (333 lines) following the `compose-product-portfolio` skill's output contract. The headline decisions:
+
+- **One product: the Platform** — owns the core job, domain state, one support path, and the public API contract.
+- **Mobile app, dashboard, API SDK stay embedded** as surfaces (client / composed-experience / contract surface). They may keep their own repos and release pipelines, but that doesn't make them products.
+- **Auth = shared substrate** (identities, sessions, federation only); **billing = shared substrate + thin connector** — the connector translates/routes/reconciles but never owns ledger, entitlement, or domain truth.
+- **Retire:** hidden/private APIs, surface direct DB access, hand-maintained SDK forks, duplicate billing logic, embedded legacy auth, dashboard write paths, and any separate product ambition (SKUs, support queues) for the three surfaces.
+- **Extract nothing today**; a conditional extraction path for the mobile app is gated on evidence of a genuinely distinct job (D-2 in the contract).
+
+The doc includes the classification matrix, orthogonal boundary map, full product-unit registry, typed connector graph with edge semantics (E1–E3), dogfooding matrix with required tests, keep/retire decisions with expected value and permanent cost, ADR/handoff list, and open evidence questions with discriminating actions.
+
+Natural next step if you want it: fill in the platform's actual domain into the registry (assumption A-1) or run the D-1 backdoor audit to start executing the retirements.

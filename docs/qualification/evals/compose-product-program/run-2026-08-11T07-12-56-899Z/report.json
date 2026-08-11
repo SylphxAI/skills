@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "capability": "compose-product-program",
+  "claim": "Produces a Product Program Manifest where every declared capability has one owner and full target, the dependency graph is acyclic, handoffs and gates are executable, and the observed-state revision indexes exact accepted sibling evidence.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "b7415cff6da6cd00a5c803ecc3a510f5b4dd31bc",
+    "packageDigest": "sha256:9518d1becf73821573d8328d7dad5480c77050b2aa9238bcaa1444b26eb6d6fa",
+    "catalogDigest": "sha256:22963bef1e0077451d749a71f947bab7ff0160cd0bccb6d5fd1e485095b123c9"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-11T07:26:20.242Z",
+  "finishedAt": "2026-08-11T07:26:20.242Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "pass",
+      "failures": [],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "pass"
+  },
+  "patternScan": {
+    "kind": "automated-pattern-scan",
+    "verdict": "clean",
+    "scannedFiles": 10,
+    "findings": []
+  },
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-program",
+        "description": "User asks for a delivery program plan without naming any skill; a fresh agent must natively discover and apply compose-product-program.",
+        "status": "pass",
+        "selected": true,
+        "selectionKeywords": [
+          "compose-product-program",
+          "Product Program Manifest",
+          "observed-state",
+          "ruin boundary"
+        ],
+        "matchedKeywords": [
+          "compose-product-program",
+          "Product Program Manifest",
+          "observed-state"
+        ],
+        "failures": [],
+        "exitCode": 0,
+        "prompt": "Plan the delivery program for our new mobile app (design, backend API, payments, assets, release, marketing, support): write program-manifest.md with one owner per artifact, the dependency graph, handoffs, gates, and what counts as done for each part.",
+        "startedAt": "2026-08-11T07:21:34.060Z",
+        "finishedAt": "2026-08-11T07:26:20.239Z",
+        "transcriptPath": "docs/qualification/evals/compose-product-program/run-2026-08-11T07-12-56-899Z/activation/user-asks-program/transcript.txt",
+        "transcriptTail": "`program-manifest.md` is complete at the workspace root (422 lines), written to the `compose-product-program` output contract.\n\n**What it contains**\n- **Envelope & program truth** — `planning-1` revision, draft state (no invented digests), objective, constraints, ruin boundaries, labeled facts (given/assumed/decision/requested), and typed requests for missing inputs (design blueprint, PSP/pricing, release targets, locales, age rating) instead of prose gaps.\n- **One owner per artifact** — 12 artifacts (design, commerce decisions, backend API, payments, refund flow, store listing, assets pack, marketing, release/distribution, support, manifest, launch admission), each with a single owning skill/system plus accountable role.\n- **Dependency graph** — mermaid DAG plus critical path (`design → backend → payments → release → observed manifest → launch admission`), delivery phases P0–P5 with verified slices, and collision boundaries (claims, price, refund-vs-data, release identity, deep links, rollback).\n- **Handoffs** — 34 producer-owned handoff IDs (e.g., `H-DESIGN-API`, `H-PAY-REFUND`, `H-RELEASE-EVIDENCE`), each with contract and acceptance tests; evidence handoffs feed the observed-state revision.\n- **Gates** — 11 gates from design seal through store accounts, privacy, release evidence, and independent launch admission.\n- **Done per part** — §2.3 Definition of Done table gives each artifact its evidence-backed done criteria, and §3 maps construction/proof/exposure/scale/migration states per artifact.\n- **Supporting completeness** — channel/release state machines (iOS/Android mandatory, PWA unselected decision), i18n + asset production plan, vendor-neutral SDK registry, automated maintenance loops, typed blocker register, and evidence ledger with next machine actions.\n\nConsistency checked: every handoff ID in the graph and tables matches, and each registry row has exactly one owner.\n\nSuggested next step: accept and seal `planning-1`, then issue the R-1/R-2 artifact requests so `design-app` and `product-owner` can start P0/P1.\n",
+        "artifactCount": 2,
+        "artifactDigests": {
+          "../../../../../../tmp/sylphx-activate-compose-product-program-run-2026-08-11T07-12-56-899Z-user-asks-program/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+          "../../../../../../tmp/sylphx-activate-compose-product-program-run-2026-08-11T07-12-56-899Z-user-asks-program/program-manifest.md": "sha256:843efb365f74f05aa1b270f293cc6a4fed33d438fd793b05c697bc9a15a5b012"
+        }
+      }
+    ],
+    "verified": true,
+    "method": "native-install-under-search-before-act-floor",
+    "limitation": "selection is observed via agent transcript references plus output-contract match; native context load itself is not directly observable"
+  },
+  "evidenceDigest": "sha256:e34b32e39b22fec97ee873aecf95772b12eb99ece28ee3da3f66c7b6b34d406c",
+  "verdict": "qualified",
+  "injectionState": "verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/compose-product-program/run-2026-08-11T07-12-56-899Z"
+}

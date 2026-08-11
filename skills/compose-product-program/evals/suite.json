@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "capability": "compose-product-program",
+  "claim": "Produces a Product Program Manifest where every declared capability has one owner and full target, the dependency graph is acyclic, handoffs and gates are executable, and the observed-state revision indexes exact accepted sibling evidence.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write program-manifest.md for delivering our new mobile app: the phases, dependencies, gates, and how we know each part is done."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Product Program Manifest.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely, then write program-manifest.md for delivering a new mobile app across design, backend API, commerce/payments, assets, release, marketing, and support: state the objective, constraints, ruin boundaries and Definition of Done; inventory artifacts with one canonical owner per fact; draw the dependency DAG (acyclic) with typed handoffs, collision boundaries, exact blockers, delivery slices, validation gates, release targets, operating loops, and completion evidence; and define how an observed-state revision indexes exact accepted sibling evidence without rewriting their facts.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "program-manifest.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "owner",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "DAG",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "acyclic",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "handoff",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "gate",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "definition of done",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "observed-state",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "evidence",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same manifest oracle.",
+      "prompt": "Write program-manifest.md for delivering our new mobile app: the phases, dependencies, gates, and how we know each part is done.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "program-manifest.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "owner",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "DAG",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "acyclic",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "handoff",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "gate",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "definition of done",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "observed-state",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "program-manifest.md",
+            "contains": "evidence",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-program",
+        "description": "User asks for a delivery program plan without naming any skill; a fresh agent must natively discover and apply compose-product-program.",
+        "prompt": "Plan the delivery program for our new mobile app (design, backend API, payments, assets, release, marketing, support): write program-manifest.md with one owner per artifact, the dependency graph, handoffs, gates, and what counts as done for each part.",
+        "selectionKeywords": [
+          "compose-product-program",
+          "Product Program Manifest",
+          "observed-state",
+          "ruin boundary"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "program-manifest.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "program-manifest.md",
+              "contains": "owner",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "program-manifest.md",
+              "contains": "acyclic",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "program-manifest.md",
+              "contains": "gate",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "program-manifest.md",
+              "contains": "definition of done",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

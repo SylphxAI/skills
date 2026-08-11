@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "capability": "craft-product-interface",
+  "claim": "Produces an Interface Craft Pack with a stated direction, covered states and accessibility floors, and rendered verification evidence for the declared surface or flow.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write interface-pack.md designing the onboarding flow for our habit-tracking app: the screens, states, and accessibility considerations."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Interface Craft Pack (direction mode).",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely, then write interface-pack.md in Direction mode for the onboarding flow of a habit-tracking mobile app: state the direction (visual and interaction) with rationale tied to comprehension/task completion/trust/feedback/identity/performance; enumerate the covered screens and every state (default, empty, error, loading, disabled, success, interruption); set accessibility floors (contrast, touch targets, labels, keyboard/AT); and define rendered verification evidence (screenshots, device checks, tests) with the acceptance checks for the declared flow.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "interface-pack.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "direction",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "state",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "accessibility",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "contrast",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "verification",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "screenshot",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same interface oracle.",
+      "prompt": "Write interface-pack.md designing the onboarding flow for our habit-tracking app: the screens, states, and accessibility considerations.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "interface-pack.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "direction",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "state",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "accessibility",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "contrast",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "verification",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "interface-pack.md",
+            "contains": "screenshot",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-interface",
+        "description": "User asks for a UI flow design without naming any skill; a fresh agent must natively discover and apply craft-product-interface.",
+        "prompt": "Design the onboarding flow for our habit-tracking mobile app: write interface-pack.md covering the screens and every state (empty, error, loading, success), the visual and interaction direction, accessibility floors, and how we would verify it renders correctly.",
+        "selectionKeywords": [
+          "craft-product-interface",
+          "Interface Craft Pack",
+          "accessibility floor"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "interface-pack.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "interface-pack.md",
+              "contains": "state",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "interface-pack.md",
+              "contains": "accessibility",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "interface-pack.md",
+              "contains": "verification",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

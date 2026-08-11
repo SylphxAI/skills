@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "capability": "compose-readme-marks",
+  "claim": "Produces Markdown badge/snippet marks that render live images, with each URL purpose-labeled and no broken local link patterns.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write README-marks.md for our open-source library: a set of badges (build, coverage, version, license) and a sample hero section we can paste into the README."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the README marks with live image URLs.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely, then write README-marks.md for an open-source library called acme-lib (npm + GitHub): produce a badge row and a hero section as copy-paste Markdown, where every image/URL is a real public endpoint pattern (shields.io, GitHub Actions status, npm version, license) with alt text and purpose labels, and note any URL that cannot be verified live as a residual rather than claiming it works.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "README-marks.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "!\\[",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "http",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "shields.io",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "badge",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "alt",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "residual",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same marks oracle.",
+      "prompt": "Write README-marks.md for our open-source library: a set of badges (build, coverage, version, license) and a sample hero section we can paste into the README.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "README-marks.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "!\\[",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "http",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "shields.io",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "badge",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "alt",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "README-marks.md",
+            "contains": "residual",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-readme-badges",
+        "description": "User asks for README badges without naming any skill; a fresh agent must natively discover and apply compose-readme-marks.",
+        "prompt": "Add a professional badge row and a short hero section to our open-source library's README: write README-marks.md with copy-paste Markdown for build, coverage, version, and license badges with proper alt text and purpose labels.",
+        "selectionKeywords": [
+          "compose-readme-marks",
+          "README marks",
+          "shields.io",
+          "badge row"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "README-marks.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "README-marks.md",
+              "contains": "!\\[",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "README-marks.md",
+              "contains": "http",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "README-marks.md",
+              "contains": "badge",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

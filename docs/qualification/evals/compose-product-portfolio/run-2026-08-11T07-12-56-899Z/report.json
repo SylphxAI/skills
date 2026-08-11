@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "capability": "compose-product-portfolio",
+  "claim": "Produces a Composable Product Portfolio Contract where every unit has a standalone job, contract, lifecycle, and support path; every connector edge names its contract and state owner; and keep/extract/merge/retire decisions carry evidence and handoffs.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "b7415cff6da6cd00a5c803ecc3a510f5b4dd31bc",
+    "packageDigest": "sha256:d8355848610a5f6dc7b7b7b0fe43c9ab848c2e941f56a7f4f4360e199bea8d22",
+    "catalogDigest": "sha256:22963bef1e0077451d749a71f947bab7ff0160cd0bccb6d5fd1e485095b123c9"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-11T07:25:15.369Z",
+  "finishedAt": "2026-08-11T07:25:15.369Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "pass",
+      "failures": [],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "pass"
+  },
+  "patternScan": {
+    "kind": "automated-pattern-scan",
+    "verdict": "clean",
+    "scannedFiles": 8,
+    "findings": []
+  },
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-portfolio",
+        "description": "User asks for portfolio composition without naming any skill; a fresh agent must natively discover and apply compose-product-portfolio.",
+        "status": "pass",
+        "selected": true,
+        "selectionKeywords": [
+          "compose-product-portfolio",
+          "portfolio contract",
+          "connector",
+          "substrate"
+        ],
+        "matchedKeywords": [
+          "compose-product-portfolio",
+          "portfolio contract",
+          "connector",
+          "substrate"
+        ],
+        "failures": [],
+        "exitCode": 0,
+        "prompt": "We run one platform that also ships a mobile app, a dashboard, and an API SDK, sharing auth and a billing connector. Write portfolio-contract.md: which parts should be separate products with their own job and support path, what stays embedded, how the parts connect, and what should be retired.",
+        "startedAt": "2026-08-11T07:21:35.120Z",
+        "finishedAt": "2026-08-11T07:25:15.366Z",
+        "transcriptPath": "docs/qualification/evals/compose-product-portfolio/run-2026-08-11T07-12-56-899Z/activation/user-asks-portfolio/transcript.txt",
+        "transcriptTail": "Wrote `portfolio-contract.md` (333 lines) following the `compose-product-portfolio` skill's output contract. The headline decisions:\n\n- **One product: the Platform** — owns the core job, domain state, one support path, and the public API contract.\n- **Mobile app, dashboard, API SDK stay embedded** as surfaces (client / composed-experience / contract surface). They may keep their own repos and release pipelines, but that doesn't make them products.\n- **Auth = shared substrate** (identities, sessions, federation only); **billing = shared substrate + thin connector** — the connector translates/routes/reconciles but never owns ledger, entitlement, or domain truth.\n- **Retire:** hidden/private APIs, surface direct DB access, hand-maintained SDK forks, duplicate billing logic, embedded legacy auth, dashboard write paths, and any separate product ambition (SKUs, support queues) for the three surfaces.\n- **Extract nothing today**; a conditional extraction path for the mobile app is gated on evidence of a genuinely distinct job (D-2 in the contract).\n\nThe doc includes the classification matrix, orthogonal boundary map, full product-unit registry, typed connector graph with edge semantics (E1–E3), dogfooding matrix with required tests, keep/retire decisions with expected value and permanent cost, ADR/handoff list, and open evidence questions with discriminating actions.\n\nNatural next step if you want it: fill in the platform's actual domain into the registry (assumption A-1) or run the D-1 backdoor audit to start executing the retirements.\n",
+        "artifactCount": 2,
+        "artifactDigests": {
+          "../../../../../../tmp/sylphx-activate-compose-product-portfolio-run-2026-08-11T07-12-56-899Z-user-asks-portfolio/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+          "../../../../../../tmp/sylphx-activate-compose-product-portfolio-run-2026-08-11T07-12-56-899Z-user-asks-portfolio/portfolio-contract.md": "sha256:74c0c7ff75a6686d74a6c6bf8df5bc3929eccf238d640cec63358af6ec557061"
+        }
+      }
+    ],
+    "verified": true,
+    "method": "native-install-under-search-before-act-floor",
+    "limitation": "selection is observed via agent transcript references plus output-contract match; native context load itself is not directly observable"
+  },
+  "evidenceDigest": "sha256:aeead75194ca5ee2acdb0ef996806906293ba83748cdba3ed640c86294d77bc7",
+  "verdict": "qualified",
+  "injectionState": "verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/compose-product-portfolio/run-2026-08-11T07-12-56-899Z"
+}

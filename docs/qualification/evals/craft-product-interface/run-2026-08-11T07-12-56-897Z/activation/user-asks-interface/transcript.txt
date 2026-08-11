@@ -1,0 +1,11 @@
+Done — `interface-pack.md` is in the workspace root (314 lines), following the `craft-product-interface` Direction-mode contract.
+
+**What the pack covers**
+- **Screens & flow:** S0 Launch → S1 Welcome → S2 First habit → S3 Schedule + reminder → S4 Ready → Home handoff, with a bounded Home empty-state contract.
+- **Every state, per screen:** explicit Default, Empty, Loading, Error, Success rows (plus focus, permission, and resume specials); unreachable states are declared with reasons, and all error/loading states guarantee input retention and retry.
+- **Direction:** Friendly utility + conversion clarity, with one signature move — the Day Arc, where the habit is a bead placed on the day in S3 and locked in S4. Tokens, type, spacing, concentric radii, motion, haptics, and an anti-pattern list are specified.
+- **Accessibility floors:** structure, semantics, keyboard/focus, contrast, reflow/text scaling, live regions, reduced motion, and input parity — framed as a baseline floor, not certification.
+- **Verification:** render matrix (3 viewports × states × inputs × preferences), per-screen checkpoints, unit/widget/integration/a11y/perf tests, an evidence-record template, and acceptance gates.
+- **Truth discipline:** copy with `[assumption]` / `[truth owner]` labels, provisional performance budgets, and an open-questions table (accounts/sync, dark mode, RTL, notification policy, default slot times, etc.) for product review before a Build pass.
+
+Notable decisions to confirm: notifications stay optional with a full no-reminder path, onboarding is local-first (no network blocking), and the flow is portrait-locked with no whole-flow skip. If you want, I can turn the open questions into a decision sheet or start a Build pass on the flow.
