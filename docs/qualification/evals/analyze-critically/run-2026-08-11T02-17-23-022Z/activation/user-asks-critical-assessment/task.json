@@ -1,0 +1,28 @@
+{
+  "id": "user-asks-critical-assessment",
+  "description": "User asks for a critical assessment without naming any skill; a fresh agent must natively discover and apply analyze-critically.",
+  "status": "fail",
+  "selected": true,
+  "selectionKeywords": [
+    "analyze-critically",
+    "Critical Analysis Brief",
+    "discriminating evidence"
+  ],
+  "matchedKeywords": [
+    "analyze-critically"
+  ],
+  "failures": [
+    "file analysis.md does not match /calibrated/"
+  ],
+  "exitCode": 0,
+  "prompt": "The team keeps delivering half-finished migrations. Write analysis.md with a critical assessment of whether the migration should be re-planned, with a verdict and reasons.",
+  "startedAt": "2026-08-11T02:22:12.309Z",
+  "finishedAt": "2026-08-11T02:24:33.390Z",
+  "transcriptPath": "docs/qualification/evals/analyze-critically/run-2026-08-11T02-17-23-022Z/activation/user-asks-critical-assessment/transcript.txt",
+  "transcriptTail": "Wrote `analysis.md` (in `/tmp/sylphx-activate-run-2026-08-11T02-17-23-022Z-user-asks-critical-assessment/analysis.md`), following the `analyze-critically` skill.\n\n**Verdict:** don’t re-plan wholesale — the repeated half-finished pattern points to execution/definition-of-done failure (no terminal states, no proof gates), which a re-plan alone won’t fix. The brief recommends an audit-first sequence: build a state ledger, complete sound slices with gates, and re-plan only structurally broken parts (slice boundaries, contract, lifecycle, terminal criteria). Full re-plan is justified only under explicit triggers, e.g., slices defined on files/lines with no observable capability, no contract source of truth, or a lifecycle choice mismatched to real risk.\n\nThe brief includes an evidence ledger, five competing hypotheses, discriminating checks, Team A/Team B cases, a premortem, calibrated confidence (~65–70%), and what would flip the verdict.\n\nNote: the workspace contained no migration plan or artifacts, so the assessment is pattern-based and marks that absence as a control-plane finding. Also, spawning a red-team sub-agent failed on infrastructure errors, so the devil’s-advocate case is built into the document directly.\n",
+  "artifactCount": 2,
+  "artifactDigests": {
+    "../../../../../../tmp/sylphx-activate-run-2026-08-11T02-17-23-022Z-user-asks-critical-assessment/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+    "../../../../../../tmp/sylphx-activate-run-2026-08-11T02-17-23-022Z-user-asks-critical-assessment/analysis.md": "sha256:6042be66b63c147b83df7429ab09bc2eee8382551c47bb60f7a2aba1bf65eb0f"
+  }
+}

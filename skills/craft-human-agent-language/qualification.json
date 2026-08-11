@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/craft-human-agent-language/run-2026-08-10T17-32-18-592Z/report.json"
     },
     {
-      "id": "craft-human-agent-language-security-2026-08-10T17-32-18-592Z",
-      "kind": "security",
+      "id": "craft-human-agent-language-automated-pattern-scan-2026-08-10T17-32-18-592Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:bf1d459d2516d6c69c651bbdbc6b59b0bb70c17d69c0b6c06e359c71c9b0f607",
       "uri": "docs/qualification/evals/craft-human-agent-language/run-2026-08-10T17-32-18-592Z/report.json"
     }

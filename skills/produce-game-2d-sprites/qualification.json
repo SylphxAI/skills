@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/report.json"
     },
     {
-      "id": "produce-game-2d-sprites-security-2026-08-10T14-21-43-928Z",
-      "kind": "security",
+      "id": "produce-game-2d-sprites-automated-pattern-scan-2026-08-10T14-21-43-928Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:f8ae647ccedba9d1de88f2a41925accb58dccbe9bcf7ceebb05d72eb302a34dd",
       "uri": "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/report.json"
     }

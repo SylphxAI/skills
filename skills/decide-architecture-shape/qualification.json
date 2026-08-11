@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/decide-architecture-shape/run-2026-08-10T15-09-58-823Z/report.json"
     },
     {
-      "id": "decide-architecture-shape-security-2026-08-10T15-09-58-823Z",
-      "kind": "security",
+      "id": "decide-architecture-shape-automated-pattern-scan-2026-08-10T15-09-58-823Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:f00054d09a3ed7c768ebf96f630bcc09cfe92b377f8ab7e1f8247344ddddf548",
       "uri": "docs/qualification/evals/decide-architecture-shape/run-2026-08-10T15-09-58-823Z/report.json"
     }

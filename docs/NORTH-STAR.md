@@ -54,10 +54,11 @@ self-graded quality. It grows only when real capability and real value grow.
 - AutoSync applies only immutable annotated release tags with a verified
   promotion manifest (`docs/PROMOTION.md`); branch-following is retired.
 
-Current honest projection (2026-08-10): 57 capability packages, 0 qualified,
-0 recorded outcome receipts, Verified Capability Yield = 0 eligible attempts
-(yield is undefined/zero until eligibility gates are met). Structural and
-runtime CI prove consistency, not capability value.
+Current honest projection (2026-08-11): 57 capability packages, 24 qualified
+(with version-scoped expiring evidence; 1 of them also carries
+native-activation selection evidence), 0 recorded outcome receipts, Verified Capability Yield =
+0 eligible attempts (yield is undefined/zero until eligibility gates are met).
+Structural and runtime CI prove consistency, not capability value.
 
 ## Quality North Star vs Verified Capability Yield
 

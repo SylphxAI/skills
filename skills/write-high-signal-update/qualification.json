@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/write-high-signal-update/run-2026-08-10T15-07-27-461Z/report.json"
     },
     {
-      "id": "write-high-signal-update-security-2026-08-10T15-07-27-461Z",
-      "kind": "security",
+      "id": "write-high-signal-update-automated-pattern-scan-2026-08-10T15-07-27-461Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:42d40ca98fa98092652b9015ac71743f26e650ed1ab13a083fea3ffad7a90b55",
       "uri": "docs/qualification/evals/write-high-signal-update/run-2026-08-10T15-07-27-461Z/report.json"
     }

@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/maintain-product/run-2026-08-10T17-29-42-099Z/report.json"
     },
     {
-      "id": "maintain-product-security-2026-08-10T17-29-42-099Z",
-      "kind": "security",
+      "id": "maintain-product-automated-pattern-scan-2026-08-10T17-29-42-099Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:a51daedc31eba73c9cf715627232622bcb307d214a8b3c8ce669972665b7c21e",
       "uri": "docs/qualification/evals/maintain-product/run-2026-08-10T17-29-42-099Z/report.json"
     }

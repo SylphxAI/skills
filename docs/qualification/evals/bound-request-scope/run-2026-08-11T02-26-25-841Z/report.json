@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "capability": "bound-request-scope",
+  "claim": "Produces a stable scope contract with objective, in/out, non-goals and cut lines, right-sized to risk.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "e72e80b002b3b325b79dee2d36c5e31948fd9ea8",
+    "packageDigest": "sha256:163286d57fad282b88667f4e8e307244ba3423103e62a0cbef048c2f1abb80bb",
+    "catalogDigest": "sha256:58b4549acfbf196b80ee9c9131069b4c7c718ae61be3f57cf728884882af6b62"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-11T02:28:16.131Z",
+  "finishedAt": "2026-08-11T02:28:16.131Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "fail",
+      "failures": [
+        "file scope.md does not match /cut line/"
+      ],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "fail"
+  },
+  "patternScan": {
+    "kind": "automated-pattern-scan",
+    "verdict": "clean",
+    "scannedFiles": 8,
+    "findings": []
+  },
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-to-bound-request",
+        "description": "User asks to bound a growing request without naming any skill; a fresh agent must natively discover and apply bound-request-scope.",
+        "status": "fail",
+        "selected": false,
+        "selectionKeywords": [
+          "bound-request-scope",
+          "Bound Request Scope"
+        ],
+        "matchedKeywords": [],
+        "failures": [
+          "file scope.md does not match /non-goal/",
+          "no selection keyword found in transcript (bound-request-scope, Bound Request Scope)"
+        ],
+        "exitCode": 0,
+        "prompt": "We are about to build a public landing page for our product and the scope keeps growing. Write scope.md that bounds this effort: what is in scope, what is out of scope, and what we will not do.",
+        "startedAt": "2026-08-11T02:27:38.945Z",
+        "finishedAt": "2026-08-11T02:28:16.127Z",
+        "transcriptPath": "docs/qualification/evals/bound-request-scope/run-2026-08-11T02-26-25-841Z/activation/user-asks-to-bound-request/transcript.txt",
+        "transcriptTail": "Created `scope.md:1` — a bounded scope contract for the landing page with the three sections you asked for, plus a definition of done and change-control rules so scope stops growing by default.\n\nHighlights:\n- **In scope** — one launch-quality page (hero, value prop, features, social proof, pricing, FAQ, CTA), minimal legal pages, form capture, SEO/analytics, CI/CD, performance and accessibility floor.\n- **Out of scope (deferred)** — auth, dashboard, blog/docs, i18n, payments, A/B testing, live chat, video, marketing campaigns.\n- **Will not do (hard cuts)** — no custom CMS, no self-built analytics/form/email infra, no backend-dependent page features, no \"coming soon\" placeholder CTA.\n- **Cut lines** — any new request must serve the one objective, be launch-required, and add no new system; otherwise it's deferred or rejected.\n- **Open items** — `scope.md:112` lists the specifics to confirm (URL, CTA destination, stack, legal contact, assets).\n\nWant me to tighten it with your actual product name/stack, or split the deferred list into a tracked backlog file?\n",
+        "artifactCount": 2,
+        "artifactDigests": {
+          "../../../../../../tmp/sylphx-activate-run-2026-08-11T02-26-25-841Z-user-asks-to-bound-request/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+          "../../../../../../tmp/sylphx-activate-run-2026-08-11T02-26-25-841Z-user-asks-to-bound-request/scope.md": "sha256:013bac9db3e8b30c18308241cffcea060a129e6e350a33939c1dd38ba887ce11"
+        }
+      }
+    ],
+    "verified": false,
+    "method": "native-install-under-search-before-act-floor",
+    "limitation": "selection is observed via agent transcript references plus output-contract match; native context load itself is not directly observable"
+  },
+  "evidenceDigest": "sha256:e96cebb0fe39709440e34ee4a0aad541afce11fe78b80ff67cc97d4dd176b78f",
+  "verdict": "not-qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/bound-request-scope/run-2026-08-11T02-26-25-841Z"
+}

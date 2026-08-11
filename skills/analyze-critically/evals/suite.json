@@ -8,7 +8,10 @@
     "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
   },
   "validityDays": 90,
-  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
   "baseline": {
     "prompt": "Write analysis.md critically reviewing the claim: 'The migration is stalled because the team is unmotivated'. Give your verdict and reasons."
   },
@@ -17,19 +20,62 @@
       "id": "agent-follows-procedure",
       "kind": "agent",
       "description": "Fresh-context agent with the full procedure produces the Critical Analysis Brief elements.",
-      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
       "prompt": "Read ./SKILL.md completely, then write analysis.md for the question: 'Why does the team keep delivering half-finished migrations?' (decision: whether to re-plan the migration). Follow the output contract: question and stakes, observed facts and evidence quality, competing hypotheses, discriminating evidence, strongest case for and against the leading conclusion, assumptions and failure paths, conclusion with calibrated confidence, and what would change the conclusion.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
-          { "type": "file-exists", "path": "analysis.md" },
-          { "type": "file-regex", "path": "analysis.md", "contains": "question", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "stakes", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "hypothes", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "discriminating evidence", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "strongest case", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "calibrated", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "would change", "caseInsensitive": true }
+          {
+            "type": "file-exists",
+            "path": "analysis.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "question",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "stakes",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "hypothes",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "discriminating evidence",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "strongest case",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "calibrated",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "would change",
+            "caseInsensitive": true
+          }
         ]
       }
     },
@@ -42,16 +88,119 @@
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
-          { "type": "file-exists", "path": "analysis.md" },
-          { "type": "file-regex", "path": "analysis.md", "contains": "question", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "stakes", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "hypothes", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "discriminating evidence", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "strongest case", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "calibrated", "caseInsensitive": true },
-          { "type": "file-regex", "path": "analysis.md", "contains": "would change", "caseInsensitive": true }
+          {
+            "type": "file-exists",
+            "path": "analysis.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "question",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "stakes",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "hypothes",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "discriminating evidence",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "strongest case",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "calibrated",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "analysis.md",
+            "contains": "would change",
+            "caseInsensitive": true
+          }
         ]
       }
     }
-  ]
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-critical-assessment",
+        "description": "User asks for a critical assessment without naming any skill; a fresh agent must natively discover and apply analyze-critically.",
+        "prompt": "The team keeps delivering half-finished migrations. Write analysis.md with a critical assessment of whether the migration should be re-planned, with a verdict and reasons.",
+        "selectionKeywords": [
+          "analyze-critically",
+          "Critical Analysis Brief",
+          "discriminating evidence"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "analysis.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "analysis.md",
+              "contains": "question",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "analysis.md",
+              "contains": "stakes",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "analysis.md",
+              "contains": "hypothes",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "analysis.md",
+              "contains": "discriminating evidence",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "analysis.md",
+              "contains": "strongest case",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "analysis.md",
+              "contains": "calibrat",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "analysis.md",
+              "contains": "would change",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

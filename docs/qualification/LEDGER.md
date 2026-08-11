@@ -4,7 +4,7 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-10, waves 1–6)
+## Current state (2026-08-11, waves 1–7)
 
 - Capability packages: **57**
 - Qualified: **24** — analyze-critically, analyze-system-dynamics, author-skill,
@@ -15,6 +15,8 @@ filed evidence; it is not a separate source of truth.
   record-structured-deliberation, research-public-web, run-incident-response,
   run-product-feedback-loop, select-dependency-versions, select-next-work,
   synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
+- Native-activation selection evidence: **1/24** (analyze-critically); the
+  other 23 remain `injectionState: not-verified` — see wave-7 below.
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
@@ -32,7 +34,7 @@ Wave-1 qualification runs:
 | select-dependency-versions | `run-2026-08-10T14-37-58-866Z` | 3 (1 exec + 2 agent) | qualified |
 
 All evidence bundles live under `evals/<id>/run-*/` with raw task artifacts,
-task-level digests, security-scan results, and `report.json`. Each
+task-level digests, automated pattern-scan results, and `report.json`. Each
 qualification expires 90 days after `qualifiedAt`; a stale expiry downgrades
 eligibility. Injection state is recorded as **not verified** for agent tasks
 (fresh-context behavior tests; no runtime-native selection trace).
@@ -42,7 +44,7 @@ eligibility. Injection state is recorded as **not verified** for agent tasks
 Each wave-2 suite pairs a with-skill agent task with a baseline control
 (no skill, same task, same oracle). In every run the baseline **failed** the
 strict output-contract oracle while the with-skill run passed, and the
-security scan was clean:
+automated pattern scan was clean:
 
 | Capability | Run | With-skill | Baseline | Verdict |
 | --- | --- | --- | --- | --- |
@@ -66,7 +68,7 @@ than a defect. `report.json` carries the `comparison` block.
 | synthesize-evidence-brief | `run-2026-08-10T15-42-08-028Z` | pass | fail | qualified |
 
 `analyze-critically`'s baseline met the same oracle, so its record carries only
-`compatibility` + `security` evidence — the runner claims `incremental-value`
+`compatibility` + `automated-pattern-scan` evidence — the runner claims `incremental-value`
 only when with-skill passes and baseline fails, never to manufacture a delta.
 
 ## Wave-4 runs
@@ -101,6 +103,51 @@ inconclusive record; the capability qualified on the re-run.
 | analyze-system-dynamics | `run-2026-08-10T18-23-41-030Z` | pass | fail | qualified |
 | run-product-feedback-loop | `run-2026-08-10T18-23-41-604Z` | pass | fail | qualified |
 
+## Wave-7 runs (native activation)
+
+Wave-7 added native-activation cases to the harness: the eval suite may
+declare `activation.cases`, the runner installs the capability as the **only
+native skill** of a fresh session under the always-on search-before-act floor,
+and the user prompt never names the skill. A case passes only when the agent's
+transcript **or produced artifacts** reference a declared selection keyword
+and every oracle assertion holds; `injectionState` becomes `verified` only
+when every declared case passes. Honest semantics: a model saying it used a
+skill is not proof of native context load — the record keeps the method and
+limitation, and selection stays per-model, per-skill evidence, never a fleet
+claim.
+
+| Capability | Runs (2026-08-11) | Selection observed | Oracle | Activation verdict |
+| --- | --- | --- | --- | --- |
+| analyze-critically | `run-2026-08-11T02-26-25-834Z` (applied); `run-2026-08-11T02-17-23-022Z` kept as record | yes — transcript: "following the `analyze-critically` procedure" + 3/3 keywords | pass | **verified** — record updated (compatibility + activation + automated-pattern-scan) |
+| research-public-web | `run-2026-08-11T02-17-23-019Z`, `run-2026-08-11T02-26-25-855Z`, `run-2026-08-11T02-40-36-355Z` | 1/3 explicit (artifact method note "per the research-public-web skill"); 2/3 no reference | mixed | **not verified** — qualification record unchanged |
+| bound-request-scope | `run-2026-08-11T02-17-23-029Z`, `run-2026-08-11T02-26-25-841Z` | none — no skill reference; output lacks the non-goals/cut-line contract | fail | **not verified** — qualification record unchanged |
+
+Notes on the runs:
+
+- analyze-critically's activation output passed the corrected oracle
+  (`calibrat` — the first run produced a fully calibrated conclusion using
+  "Calibration"/"Confidence ~65–70%" without the literal word "calibrated";
+  the initial run is kept as a record of the narrower oracle).
+- research-public-web produced method-consistent research in all three runs
+  (primary sources, retrieved times, free/paid labeling, gaps), but named the
+  skill in only one artifact; two runs show no observable reference, so
+  selection is **not** considered verified. The first two runs also exposed
+  oracle narrowness ("free path" vs "free L0/L1 paths"/"free public
+  endpoints"); the activation oracle now measures free/paid labeling and the
+  earlier runs are kept as records.
+- bound-request-scope is a consistent two-run negative: with the same floor
+  and model, the agent produced a scope contract without referencing the
+  skill and without the non-goals/cut-line contract. This is direct evidence
+  that the always-on floor does not reliably cause selection for every skill
+  on deepseek-v4-flash.
+- Capability-identity contract (2026-08-11): `packageDigest` now covers only
+  what agents load and host discovery consumes (SKILL.md, references/,
+  scripts/, capability.json, agents/); `qualification.json` and `evals/`
+  are excluded so re-qualification or evidence relabeling never changes
+  capability identity. Historical report `candidate.packageDigest` values
+  are point-in-time records under the prior contract; the current catalog is
+  authoritative.
+
 ## Wave-1 finding (author-skill)
 
 The first author-skill run (`run-2026-08-10T14-27-35-826Z`, kept as a
@@ -130,4 +177,4 @@ threshold.
   slices are not promotable qualification evidence; Claude/Grok host proof is
   not yet closed.
 - `evals/<id>/run-*/` — wave-1 qualification bundles (raw artifacts, digests,
-  security scan, report).
+  automated pattern scan, report).

@@ -1,0 +1,28 @@
+{
+  "id": "user-asks-web-research",
+  "description": "User asks for web research with sources without naming any skill; a fresh agent must natively discover and apply research-public-web.",
+  "status": "fail",
+  "selected": false,
+  "selectionKeywords": [
+    "research-public-web",
+    "Research Public Web",
+    "free path",
+    "adapter gap"
+  ],
+  "matchedKeywords": [],
+  "failures": [
+    "file research.md does not match /free .{0,20}path/",
+    "no selection keyword found in transcript (research-public-web, Research Public Web, free path, adapter gap)"
+  ],
+  "exitCode": 0,
+  "prompt": "Write research.md answering: 'What are the current system requirements of the Node.js LTS release?' Include where you got the information and any limits you hit.",
+  "startedAt": "2026-08-11T02:30:04.575Z",
+  "finishedAt": "2026-08-11T02:31:44.011Z",
+  "transcriptPath": "docs/qualification/evals/research-public-web/run-2026-08-11T02-26-25-855Z/activation/user-asks-web-research/transcript.txt",
+  "transcriptTail": "Done. `research.md` is written in the workspace root (research.md).\n\nKey findings:\n- Current LTS is **Node.js 24 \"Krypton\"** (v24.19.0, 2026-08-03); Node 22 \"Jod\" remains Maintenance LTS until 2027-04-30.\n- Core requirements (from official `BUILDING.md` at the v24.19.0 tag): Linux x64/arm64 with kernel ≥ 4.18 and glibc ≥ 2.28 (Tier 1), Windows ≥ 10/Server 2016 (x64 Tier 1), macOS ≥ 13.5 (Tier 1), plus toolchains (GCC ≥ 12.2, VS 2022/2026 with ClangCL — MSVC removed in v24, Xcode ≥ 16.1), Python, and 8 GB RAM for compiling.\n- Sources: `nodejs.org/dist/index.json`, the official Releases page, `nodejs/Release` schedule.json, `BUILDING.md` v24.19.0, and the v24.0.0 release blog — all official, free endpoints, retrieved ~02:30 UTC today.\n- Limits noted: no single nodejs.org \"system requirements\" page exists, runtime hardware specs are unofficial, and experimental tiers (musl/Alpine, armv7, FreeBSD, WSL) aren't release-backed.\n",
+  "artifactCount": 2,
+  "artifactDigests": {
+    "../../../../../../tmp/sylphx-activate-run-2026-08-11T02-26-25-855Z-user-asks-web-research/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+    "../../../../../../tmp/sylphx-activate-run-2026-08-11T02-26-25-855Z-user-asks-web-research/research.md": "sha256:343148a8af636b30f27f0c595022820623082c76600f49b693209c4e17431280"
+  }
+}

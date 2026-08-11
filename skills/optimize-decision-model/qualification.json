@@ -17,8 +17,8 @@
       "uri": "docs/qualification/evals/optimize-decision-model/run-2026-08-10T18-20-38-297Z/report.json"
     },
     {
-      "id": "optimize-decision-model-security-2026-08-10T18-20-38-297Z",
-      "kind": "security",
+      "id": "optimize-decision-model-automated-pattern-scan-2026-08-10T18-20-38-297Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:f62e77431f2e149df7ac81090ddca8f124d57757123cec31bd8896c14660dea4",
       "uri": "docs/qualification/evals/optimize-decision-model/run-2026-08-10T18-20-38-297Z/report.json"
     }

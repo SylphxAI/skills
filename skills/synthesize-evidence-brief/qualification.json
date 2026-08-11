@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/synthesize-evidence-brief/run-2026-08-10T15-42-08-028Z/report.json"
     },
     {
-      "id": "synthesize-evidence-brief-security-2026-08-10T15-42-08-028Z",
-      "kind": "security",
+      "id": "synthesize-evidence-brief-automated-pattern-scan-2026-08-10T15-42-08-028Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:9e7331500a4ad62c95e525de132a005e107ec0cadcf8f2797dcdd5c9d01b714a",
       "uri": "docs/qualification/evals/synthesize-evidence-brief/run-2026-08-10T15-42-08-028Z/report.json"
     }

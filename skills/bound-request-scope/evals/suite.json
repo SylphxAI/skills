@@ -113,5 +113,57 @@
       },
       "baseline": true
     }
-  ]
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-to-bound-request",
+        "description": "User asks to bound a growing request without naming any skill; a fresh agent must natively discover and apply bound-request-scope.",
+        "prompt": "We are about to build a public landing page for our product and the scope keeps growing. Write scope.md that bounds this effort: what is in scope, what is out of scope, and what we will not do.",
+        "selectionKeywords": [
+          "bound-request-scope",
+          "Bound Request Scope"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "scope.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "scope.md",
+              "contains": "objective",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "scope.md",
+              "contains": "in scope",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "scope.md",
+              "contains": "out of scope",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "scope.md",
+              "contains": "non-goal",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "scope.md",
+              "contains": "cut line",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

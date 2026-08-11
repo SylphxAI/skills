@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/author-skill/run-2026-08-10T14-33-38-339Z/report.json"
     },
     {
-      "id": "author-skill-security-2026-08-10T14-33-38-339Z",
-      "kind": "security",
+      "id": "author-skill-automated-pattern-scan-2026-08-10T14-33-38-339Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:e2e2d1db8ab2e70a0d80687ae914902218e3f3e2b8e4e09470309c067866dd5c",
       "uri": "docs/qualification/evals/author-skill/run-2026-08-10T14-33-38-339Z/report.json"
     }

@@ -5,16 +5,21 @@
  *
  * Executes a version-scoped eval suite (skills/<id>/evals/suite.json) for one
  * capability: deterministic functional tasks (exec), optional fresh-context
- * agent comparison (agent via the Codex CLI), and a security scan. Records raw
- * artifacts and digests under docs/qualification/evals/<id>/run-<stamp>/.
+ * agent comparison (agent via the Codex CLI), optional native-activation
+ * cases (the skill installed as the only native skill of a fresh session
+ * under the search-before-act floor, user prompt never naming the skill), and
+ * an automated pattern scan. Records raw artifacts and digests under
+ * docs/qualification/evals/<id>/run-<stamp>/.
  *
  * Honesty contract (docs/QUALIFICATION.md, skills/design-skill-evals):
  * - Structural green and CI are never qualification evidence; this runner
  *   records observable artifacts and deterministic oracles.
  * - Agent tasks are fresh-context behavior tests; injection state is recorded
  *   as NOT verified unless a runtime-native selection trace exists.
- * - A qualified record requires every task to pass and the security scan to be
- *   clean; qualification is expiring (validityDays).
+ * - A qualified record requires every task to pass, the automated pattern
+ *   scan to be clean, and any declared activation cases to pass (selection is
+ *   observable via the agent transcript); qualification is expiring
+ *   (validityDays).
  *
  * Usage:
  *   node scripts/run-qualification.mjs --capability <id> [--apply]
@@ -54,6 +59,15 @@ const DANGEROUS_PATTERNS = [
   { pattern: /disable\s+(the\s+)?sandbox/i, label: 'disable-sandbox' },
   { pattern: /bypass\s+(security|approval)/i, label: 'bypass-security' },
 ];
+
+// Always-on floor for native-activation cases: mirrors the runtime
+// constitution's "Search before you act" bullet so the test measures whether a
+// fresh agent discovers the installed skill on its own.
+const AGENTS_FLOOR = `# Instructions
+
+- Search before you act: before doing any work, search your installed skills. If a matching skill exists, load it and follow its procedure.
+- Complete the user's requested output in this workspace.
+`;
 
 function sha256(bytes) {
   return `sha256:${createHash('sha256').update(bytes).digest('hex')}`;
@@ -305,7 +319,106 @@ async function runTask(task, suite, suiteRoot, runRoot, python) {
   return { status, record };
 }
 
-function securityScan(packageRoot) {
+
+async function runActivationCase(activationCase, suite, runRoot, python) {
+  // Native-activation test: the capability is installed as the only native
+  // skill of a fresh session under the always-on search-before-act floor, and
+  // the user prompt never names the skill. Selection is observable when the
+  // agent's visible transcript references a declared selection keyword; the
+  // outcome is judged by the same deterministic oracle style as tasks.
+  const stampName = path.basename(runRoot);
+  const work = path.join(os.tmpdir(), `sylphx-activate-${stampName}-${activationCase.id}`);
+  rmSync(work, { recursive: true, force: true });
+  mkdirSync(work, { recursive: true });
+  const codexHome = path.join(os.tmpdir(), `sylphx-activate-home-${stampName}-${activationCase.id}`);
+  rmSync(codexHome, { recursive: true, force: true });
+  mkdirSync(codexHome, { recursive: true });
+  const artifactRoot = path.join(runRoot, 'activation', activationCase.id, 'artifacts');
+  mkdirSync(artifactRoot, { recursive: true });
+
+  const hostCodexHome = process.env.CODEX_HOME || path.join(process.env.HOME || '.', '.codex');
+  for (const name of ['config.toml', 'auth.json']) {
+    const source = path.join(hostCodexHome, name);
+    if (existsSync(source)) cpSync(source, path.join(codexHome, name));
+  }
+  const skillDest = path.join(codexHome, 'skills', suite.capability);
+  mkdirSync(skillDest, { recursive: true });
+  const packageRoot = path.join(repositoryRoot, 'skills', suite.capability);
+  for (const entry of readdirSync(packageRoot, { withFileTypes: true })) {
+    if (entry.name === 'evals') continue; // fixtures are eval material, not part of the installed skill
+    cpSync(path.join(packageRoot, entry.name), path.join(skillDest, entry.name), { recursive: true });
+  }
+  writeFileSync(path.join(work, 'AGENTS.md'), AGENTS_FLOOR);
+
+  const agentExtraArgs = (process.env.SYLPHX_QUALIFY_AGENT_ARGS || '').split(/\s+/).filter(Boolean);
+  const agentArgs = ['exec', '--skip-git-repo-check', '-C', work, '-s', 'danger-full-access', '--ephemeral', ...agentExtraArgs, activationCase.prompt];
+  const startedAt = new Date().toISOString();
+  const result = spawnSync(CODEX, agentArgs, {
+    encoding: 'utf8',
+    timeout: activationCase.timeoutMs || 600_000,
+    env: { ...process.env, CODEX_HOME: codexHome },
+  });
+  const stdout = String(result.stdout || '');
+  const transcriptPath = path.join(runRoot, 'activation', activationCase.id, 'transcript.txt');
+  writeFileSync(transcriptPath, stdout);
+
+  const produced = walk(work).filter((file) => !file.endsWith('.git'));
+  for (const file of produced) {
+    const relative = path.relative(work, file);
+    const target = path.join(artifactRoot, relative);
+    mkdirSync(path.dirname(target), { recursive: true });
+    cpSync(file, target);
+  }
+  const artifactDigests = fileDigestMap(produced);
+
+  // Selection corpus = the agent's visible transcript plus the contents of
+  // the files it produced (e.g. a method note inside the artifact naming the
+  // skill). Both are agent-authored evidence; the suite declares the keywords
+  // up front.
+  const corpus = [stdout];
+  for (const file of produced) {
+    try {
+      corpus.push(readFileSync(file, 'utf8').slice(0, 200_000));
+    } catch {
+      // binary artifact; skip
+    }
+  }
+  const corpusText = corpus.join('\n').toLowerCase();
+  const matchedKeywords = (activationCase.selectionKeywords || []).filter((keyword) =>
+    corpusText.includes(keyword.toLowerCase())
+  );
+  const selected = matchedKeywords.length > 0;
+
+  const failures = await runAssertions(activationCase.oracle.assertions, { root: work, exitCode: result.status, stdout }, python);
+  if (!selected) {
+    failures.push(`no selection keyword found in transcript or produced artifacts (${(activationCase.selectionKeywords || []).join(', ')})`);
+  }
+  rmSync(work, { recursive: true, force: true });
+  rmSync(codexHome, { recursive: true, force: true });
+
+  const status = failures.length === 0 ? 'pass' : 'fail';
+  const record = {
+    id: activationCase.id,
+    description: activationCase.description,
+    status,
+    selected,
+    selectionKeywords: activationCase.selectionKeywords,
+    matchedKeywords,
+    failures,
+    exitCode: result.status,
+    prompt: activationCase.prompt,
+    startedAt,
+    finishedAt: new Date().toISOString(),
+    transcriptPath: path.relative(repositoryRoot, transcriptPath),
+    transcriptTail: stdout.slice(-60_000),
+    artifactCount: Object.keys(artifactDigests).length,
+    artifactDigests,
+  };
+  writeFileSync(path.join(runRoot, 'activation', activationCase.id, 'task.json'), `${JSON.stringify(record, null, 2)}\n`);
+  return record;
+}
+
+function patternScan(packageRoot) {
   const findings = [];
   const scanned = [];
   for (const file of walk(packageRoot)) {
@@ -398,10 +511,26 @@ async function main() {
       }
     : null;
 
-  const security = securityScan(path.join(repositoryRoot, 'skills', capability));
+  const activationResults = [];
+  let activationAllPass = true;
+  if (suite.activation) {
+    for (const activationCase of suite.activation.cases) {
+      if (noAgent) {
+        activationResults.push({ id: activationCase.id, status: 'skipped', reason: '--no-agent' });
+        continue;
+      }
+      const record = await runActivationCase(activationCase, suite, runRoot, python);
+      activationResults.push(record);
+      if (record.status !== 'pass') activationAllPass = false;
+    }
+  }
+  const activationVerified = Boolean(suite.activation) && activationResults.length > 0 && activationAllPass;
+
+  const scan = patternScan(path.join(repositoryRoot, 'skills', capability));
   const recordFiles = walk(runRoot);
   const resultsDigest = bundleDigest(recordFiles);
-  const verdict = allPass && security.verdict === 'clean' ? 'qualified' : 'not-qualified';
+  const gatePass = allPass && scan.verdict === 'clean' && (activationResults.length === 0 || activationAllPass);
+  const verdict = gatePass ? 'qualified' : 'not-qualified';
   const report = {
     schemaVersion: 1,
     capability,
@@ -413,10 +542,23 @@ async function main() {
     finishedAt: new Date().toISOString(),
     tasks: taskResults,
     comparison,
-    security: { verdict: security.verdict, scannedFiles: security.scannedFiles, findings: security.findings },
+    patternScan: {
+      kind: 'automated-pattern-scan',
+      verdict: scan.verdict,
+      scannedFiles: scan.scannedFiles,
+      findings: scan.findings,
+    },
+    activation: suite.activation
+      ? {
+          cases: activationResults,
+          verified: activationVerified,
+          method: 'native-install-under-search-before-act-floor',
+          limitation: 'selection is observed via agent transcript references plus output-contract match; native context load itself is not directly observable',
+        }
+      : null,
     evidenceDigest: resultsDigest,
     verdict,
-    injectionState: 'not-verified', // fresh-context behavior tests; no runtime-native selection trace recorded
+    injectionState: activationVerified ? 'verified' : 'not-verified', // verified only via a passing native-activation trace
     expiryDays: suite.validityDays,
     runDir: path.relative(repositoryRoot, runRoot),
   };
@@ -428,7 +570,7 @@ async function main() {
   } else {
     console.log(JSON.stringify(report, null, 2));
   }
-  process.exit(allPass && security.verdict === 'clean' && (!apply || verdict === 'qualified') ? 0 : 1);
+  process.exit(gatePass && (!apply || verdict === 'qualified') ? 0 : 1);
 }
 
 function applyQualification(suite, report, capability, stamp, resultsDigest) {
@@ -442,7 +584,8 @@ function applyQualification(suite, report, capability, stamp, resultsDigest) {
   if (suite.baseline && comparison?.withSkill === 'pass' && comparison?.baseline === 'fail') {
     evidenceKinds.unshift('incremental-value');
   }
-  evidenceKinds.push('security');
+  if (report?.activation?.verified) evidenceKinds.push('activation');
+  evidenceKinds.push('automated-pattern-scan');
   const updated = {
     schemaVersion: 1,
     name: capability,

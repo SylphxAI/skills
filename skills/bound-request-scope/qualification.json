@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/bound-request-scope/run-2026-08-10T15-07-55-630Z/report.json"
     },
     {
-      "id": "bound-request-scope-security-2026-08-10T15-07-55-630Z",
-      "kind": "security",
+      "id": "bound-request-scope-automated-pattern-scan-2026-08-10T15-07-55-630Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:b00b9377f41a4c486966c354027bda48eb381e9af6ea144fbec9bda0b9b3bca1",
       "uri": "docs/qualification/evals/bound-request-scope/run-2026-08-10T15-07-55-630Z/report.json"
     }

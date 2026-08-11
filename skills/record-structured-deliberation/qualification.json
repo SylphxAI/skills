@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/record-structured-deliberation/run-2026-08-10T15-38-52-658Z/report.json"
     },
     {
-      "id": "record-structured-deliberation-security-2026-08-10T15-38-52-658Z",
-      "kind": "security",
+      "id": "record-structured-deliberation-automated-pattern-scan-2026-08-10T15-38-52-658Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:ec360b3cb33ea14146b429f93447bdc8d37cf3c6a405dc9a896e1ba6b82a685d",
       "uri": "docs/qualification/evals/record-structured-deliberation/run-2026-08-10T15-38-52-658Z/report.json"
     }

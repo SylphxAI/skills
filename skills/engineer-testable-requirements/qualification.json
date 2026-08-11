@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/engineer-testable-requirements/run-2026-08-10T15-09-58-318Z/report.json"
     },
     {
-      "id": "engineer-testable-requirements-security-2026-08-10T15-09-58-318Z",
-      "kind": "security",
+      "id": "engineer-testable-requirements-automated-pattern-scan-2026-08-10T15-09-58-318Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:f7d74ee82de1a65e029cffeb391305dc621d6be80d78d3bc382d22a10088b4f1",
       "uri": "docs/qualification/evals/engineer-testable-requirements/run-2026-08-10T15-09-58-318Z/report.json"
     }

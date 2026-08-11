@@ -21,6 +21,13 @@ function rejectUnsupportedEntry(packageRoot, absolute, kind) {
  * Hash one Skill package from an unambiguous, platform-neutral file manifest.
  * Paths and per-file content hashes stay distinct JSON fields, so file-boundary
  * changes cannot reproduce another package's digest by embedding delimiters.
+ *
+ * Capability identity covers what an agent loads and what host discovery
+ * consumes: SKILL.md, references/, scripts/, capability.json and agents/.
+ * Evaluator-owned evidence metadata (qualification.json) and eval material
+ * (evals/) are excluded: re-qualification or evidence relabeling must not
+ * change the capability version identity, and the qualification record's
+ * evidence digest already binds the exact eval bundle.
  */
 export function packageDigest(packageRoot) {
   let rootStat;
@@ -39,9 +46,14 @@ export function packageDigest(packageRoot) {
       const absolute = path.join(directory, entry.name);
       if (entry.isSymbolicLink()) rejectUnsupportedEntry(packageRoot, absolute, 'symbolic link');
       if (entry.isDirectory()) {
+        // evals/ is eval material, not capability content; see header note.
+        if (relativePackagePath(packageRoot, absolute) === 'evals') continue;
         visit(absolute);
         continue;
       }
+      // qualification.json is evaluator-owned evidence metadata, not
+      // capability content; see header note.
+      if (relativePackagePath(packageRoot, absolute) === 'qualification.json') continue;
       if (!entry.isFile()) rejectUnsupportedEntry(packageRoot, absolute, 'non-regular entry');
 
       // Re-check the current path type rather than relying only on the

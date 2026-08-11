@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/synthesize-market-research/run-2026-08-10T16-29-32-534Z/report.json"
     },
     {
-      "id": "synthesize-market-research-security-2026-08-10T16-29-32-534Z",
-      "kind": "security",
+      "id": "synthesize-market-research-automated-pattern-scan-2026-08-10T16-29-32-534Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:b0d8031919fbd5be0448d027bbb5114005773f32ca80da42ba519a2877b1eeca",
       "uri": "docs/qualification/evals/synthesize-market-research/run-2026-08-10T16-29-32-534Z/report.json"
     }

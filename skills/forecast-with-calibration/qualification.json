@@ -23,8 +23,8 @@
       "uri": "docs/qualification/evals/forecast-with-calibration/run-2026-08-10T15-38-53-178Z/report.json"
     },
     {
-      "id": "forecast-with-calibration-security-2026-08-10T15-38-53-178Z",
-      "kind": "security",
+      "id": "forecast-with-calibration-automated-pattern-scan-2026-08-10T15-38-53-178Z",
+      "kind": "automated-pattern-scan",
       "digest": "sha256:c28728bc697b50fc78f4d1c4f6ccf8e6af473d9c87cb14b5c248c7161fc6bd72",
       "uri": "docs/qualification/evals/forecast-with-calibration/run-2026-08-10T15-38-53-178Z/report.json"
     }

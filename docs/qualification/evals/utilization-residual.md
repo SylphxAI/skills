@@ -13,10 +13,11 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 ### 2026-08-10 Verified Capabilities projection
 
 - The repository now projects qualification explicitly: **57 capability
-  packages, 0 qualified, 0 outcome receipts** (`docs/qualification/LEDGER.md`).
-  This record and the multi-host sheets below are the honest evidence that no
-  with-skill versus baseline delta is promotable yet; none of the historical
-  Codex auto-heuristic slices changed that.
+  packages, 24 qualified, 0 outcome receipts** as of 2026-08-11
+  (`docs/qualification/LEDGER.md`; 1 of the 24 also carries
+  native-activation selection evidence). This record and the multi-host sheets below remain the
+  honest evidence that automatic multi-host utilization is not promotable
+  yet; qualification covers a growing subset of packages, not the fleet.
 - **External projections are not authoritative.** The skills.sh projection
   (public aggregate of historical installs) is operated outside this
   repository and may list retired or historical packages; the authoritative
@@ -24,7 +25,7 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
   fleet/crawler-compatible signals, never qualification or utilization
   evidence.
 - Qualification requires a named evaluator, version-scoped expiring evidence,
-  and a security review; structural green is explicitly not evidence
+  and an automated pattern scan; structural green is explicitly not evidence
   (`docs/QUALIFICATION.md`, ADR-20260810).
 
 
