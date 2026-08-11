@@ -60,5 +60,6 @@ IDs and prove them.
 **Operating set = Meta + 14 primary attributes** (`q-readability` is a
 Maintainability alias; `q-economy` = agent-native entropy/verification/
 attention/runtime/coordination/reversal cost).
-**Memory set = Meta + 9 (深正簡 · 改觀快 · 穩安平).** Grow by refining definitions
-and anti-examples—not by adding slogan rows.
+**Memory set = Meta + 9** (Depth · Correctness · Simplicity · Evolvability ·
+Observability · Performance & Velocity · Reliability · Security · Economy).
+Grow by refining definitions and anti-examples—not by adding slogan rows.

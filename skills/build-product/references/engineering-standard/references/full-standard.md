@@ -37,12 +37,11 @@ B. Quality    Correctness · Security · Reliability · Availability
 C. Sustainment Maintainability · Evolvability · Testability
 ```
 
-**Memory set (9): 深正簡 · 改觀快 · 穩安平** — Depth · Correctness ·
-Simplicity · Evolvability · Observability · Performance & Velocity ·
-Reliability · Security · Economy  
-(Evolvability = Sustainment: Maintainability + Evolvability + Testability;  
-Reliability = Dependability: Reliability + Availability + Resilience;  
-Velocity = delivery speed; Economy = lifecycle / entropy / attention cost)
+**Memory set (9):** Depth · Correctness · Simplicity · Evolvability ·
+Observability · Performance & Velocity · Reliability · Security · Economy  
+(Evolvability folds Maintainability + Testability for memory; Reliability folds
+Availability + Resilience; Velocity = delivery speed; Economy = agent-native
+lifecycle / entropy / attention / coordination cost)
 
 Usage modes, pocket questions, and anti-examples:
 [quality-north-star-usage.md](quality-north-star-usage.md).

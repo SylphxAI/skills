@@ -10,9 +10,9 @@ Policy constraints—compose onto matching host jobs.
 powerful usage* + **14 primary attributes** (Depth, Simplicity, Correctness,
 Security, Reliability, Availability, Resilience, Performance, Scalability,
 Economy, Observability, Maintainability, Evolvability, Testability). Readability
-is a facet of Maintainability (`q-readability` alias). **Memory set of 9
-(深正簡 · 改觀快 · 穩安平):** Depth · Correctness · Simplicity · Evolvability ·
-Observability · Performance & Velocity · Reliability · Security · Economy.
+is a facet of Maintainability (`q-readability` alias). **Memory set of 9:**
+Depth · Correctness · Simplicity · Evolvability · Observability · Performance &
+Velocity · Reliability · Security · Economy.
 Full body owns obligations; rule IDs bind selection, proof, and default quality
 precedence. The phrase **Modern Technical Bar** is retired.
 

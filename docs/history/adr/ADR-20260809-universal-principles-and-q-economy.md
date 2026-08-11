@@ -20,12 +20,12 @@ scope:
 Sylphx work spans design, development, and business models, but the always-on
 instruction floor and the engineering quality vocabulary did not carry one
 memorable, universal set of principles. The team's operating doctrine is the
-nine-character system **深正簡 · 改觀快 · 穩安平** (Depth · Correctness ·
-Simplicity · Evolvability · Observability · Performance & Velocity ·
-Reliability · Security · Economy), with decision rules (Correctness and
-Security are non-tradeable floors; other conflicts name the traded principle
-and when it returns; default to Simplicity when unsure; keep source/CI/deploy/
-live states distinct) and a 60-second pre-flight checklist.
+nine-principle system **Depth · Correctness · Simplicity · Evolvability ·
+Observability · Performance & Velocity · Reliability · Security · Economy**,
+with decision rules (Correctness and Security are non-tradeable floors; other
+conflicts name the traded principle and when it returns; default to Simplicity
+when unsure; keep source/CI/deploy/live states distinct) and a 60-second
+pre-flight checklist.
 
 The Quality North Star (merged in #121) is the sole `q-*` vocabulary with a
 memory set of 8 buckets. It deliberately excluded cost as a separate attribute:
@@ -38,16 +38,15 @@ agent-native economics, and entropy as compound interest.
 
 1. **Adopt the nine-principle doctrine as canonical universal doctrine** for
    all design, development, and business-model work. Full text:
-   `docs/policies/PRINCIPLES.md` (including the verbatim Cantonese source as
-   provenance). The compact always-on floor goes into
+   `docs/policies/PRINCIPLES.md`. The compact always-on floor goes into
    `runtime/constitution.md` (still under the 6000-char L0 ceiling).
 2. **Add `q-economy` as the 14th primary Quality North Star attribute**:
    lifecycle / system-entropy / human-attention cost accounting, priced not by
    development effort. Runtime resource cost remains a budget constraint under
    Performance/Scalability (the #121 guardrail is re-scoped to that exact
    meaning, not weakened).
-3. **Grow the memory set 8 → 9** to exactly the nine characters 深正簡 · 改觀快 ·
-   穩安平, mapping each character to `q-*` IDs. Operating set Meta + 13 → 14.
+3. **Grow the memory set 8 → 9**, mapping each principle to `q-*` IDs.
+   Operating set Meta + 13 → 14.
 4. **Wire Economy into the commercial side**: `commercial-decision-standard`
    gains an Economy law (which budget / how measured / what traded) and rule
    `commercial-d-06`; business-model, pricing, packaging, and roadmap work

@@ -10,9 +10,9 @@ Sole quality vocabulary (`q-*`). Apply the relevant subset; verify rather than
 slogan. Meta: *Simple concepts, powerful usage.* Retired phrase: Modern
 Technical Bar.
 
-**Operating set:** 14 primary attributes. **Memory set (9): 深正簡 · 改觀快 ·
-穩安平** — Depth · Correctness · Simplicity · Evolvability · Observability ·
-Performance & Velocity · Reliability · Security · Economy.
+**Operating set:** 14 primary attributes. **Memory set (9):** Depth ·
+Correctness · Simplicity · Evolvability · Observability · Performance &
+Velocity · Reliability · Security · Economy.
 
 | ID | Attribute |
 | --- | --- |

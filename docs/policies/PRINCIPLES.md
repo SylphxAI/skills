@@ -22,13 +22,15 @@ remains the sole `q-*` vocabulary and this document maps onto it (see
 change, clear to see, fast under load; hard to kill, hard to breach, costs
 priced in agent-native budgets.**
 
-Memory set (9): **深正簡 · 改觀快 · 穩安平**
+## Memory set (9)
 
-| Group | Characters | Principles |
-| --- | --- | --- |
-| How we think | 深正簡 | Depth · Correctness · Simplicity |
-| How we build | 改觀快 | Evolvability · Observability · Performance & Velocity |
-| How it runs and pays | 穩安平 | Reliability · Security · Economy |
+Three layers, nine principles — English names only:
+
+| Layer | Principles |
+| --- | --- |
+| **Think** | Depth · Correctness · Simplicity |
+| **Build** | Evolvability · Observability · Performance & Velocity |
+| **Operate** | Reliability · Security · Economy |
 
 ## Ambition and Simplicity
 
@@ -238,10 +240,10 @@ Mapping to the Quality North Star (`q-*`):
 
 Adopted as universal doctrine in
 [ADR-20260809](../history/adr/ADR-20260809-universal-principles-and-q-economy.md).
-Refined for ambition-preserving Simplicity and explicit agent-native Economy
-budgets in
+Refined for ambition-preserving Simplicity, agent-native Economy budgets, and
+English-only presentation in
 [ADR-20260811](../history/adr/ADR-20260811-principles-ambition-agent-economy.md).
 
-Historical Cantonese source wording that seeded the nine-character memory set
-is retained only as lineage; the English body above is authoritative for
-execution.
+This document is authoritative in English. Do not reintroduce non-English
+slogans or parallel mnemonics into doctrine, constitution, or quality
+vocabulary surfaces.

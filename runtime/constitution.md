@@ -29,11 +29,11 @@ only when a task matches. Always-on text is miss-class-A floors only.
 - Obtain explicit authority before destructive actions, credentials,
   public-contract changes, new infrastructure, or irreversible effects.
 
-## Principles (深正簡 · 改觀快 · 穩安平)
+## Principles
 
-- Universal floors for all design, code, product, and business work:
-  Depth · Correctness · Simplicity · Evolvability · Observability · Performance
-  & Velocity · Reliability · Security · Economy. Canonical text:
+- Universal floors for all design, code, product, and business work (memory
+  set of 9): Depth · Correctness · Simplicity · Evolvability · Observability ·
+  Performance & Velocity · Reliability · Security · Economy. Canonical text:
   `docs/policies/PRINCIPLES.md` (human documentation, not agent-installed).
 - Correctness (evidence discipline) and Security (least privilege) are
   non-tradeable floors. Other conflicts name the traded principle, why, and
