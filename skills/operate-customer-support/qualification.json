@@ -1,10 +1,48 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "operate-customer-support"
+  "name": "operate-customer-support",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-11T06:08:08.346Z",
+  "expiresAt": "2026-11-09T06:11:52.100Z",
+  "evidence": [
+    {
+      "id": "operate-customer-support-incremental-value-2026-08-11T05-58-54-251Z",
+      "kind": "incremental-value",
+      "digest": "sha256:1033b407235f21d0a860f1ec1fea7131cf1182d2d1bca2abb44fbbbb60f99e9e",
+      "uri": "docs/qualification/evals/operate-customer-support/run-2026-08-11T05-58-54-251Z/report.json"
+    },
+    {
+      "id": "operate-customer-support-compatibility-2026-08-11T05-58-54-251Z",
+      "kind": "compatibility",
+      "digest": "sha256:1033b407235f21d0a860f1ec1fea7131cf1182d2d1bca2abb44fbbbb60f99e9e",
+      "uri": "docs/qualification/evals/operate-customer-support/run-2026-08-11T05-58-54-251Z/report.json"
+    },
+    {
+      "id": "operate-customer-support-activation-2026-08-11T05-58-54-251Z",
+      "kind": "activation",
+      "digest": "sha256:1033b407235f21d0a860f1ec1fea7131cf1182d2d1bca2abb44fbbbb60f99e9e",
+      "uri": "docs/qualification/evals/operate-customer-support/run-2026-08-11T05-58-54-251Z/report.json"
+    },
+    {
+      "id": "operate-customer-support-automated-pattern-scan-2026-08-11T05-58-54-251Z",
+      "kind": "automated-pattern-scan",
+      "digest": "sha256:1033b407235f21d0a860f1ec1fea7131cf1182d2d1bca2abb44fbbbb60f99e9e",
+      "uri": "docs/qualification/evals/operate-customer-support/run-2026-08-11T05-58-54-251Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "review-domain"
+  "name": "review-domain",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-11T06:04:05.358Z",
+  "expiresAt": "2026-11-09T06:11:51.984Z",
+  "evidence": [
+    {
+      "id": "review-domain-compatibility-2026-08-11T05-58-54-258Z",
+      "kind": "compatibility",
+      "digest": "sha256:047e166a4525b0107e6f69fe16656a49edc7ea84adbdb9aefbe156c1247c203e",
+      "uri": "docs/qualification/evals/review-domain/run-2026-08-11T05-58-54-258Z/report.json"
+    },
+    {
+      "id": "review-domain-activation-2026-08-11T05-58-54-258Z",
+      "kind": "activation",
+      "digest": "sha256:047e166a4525b0107e6f69fe16656a49edc7ea84adbdb9aefbe156c1247c203e",
+      "uri": "docs/qualification/evals/review-domain/run-2026-08-11T05-58-54-258Z/report.json"
+    },
+    {
+      "id": "review-domain-automated-pattern-scan-2026-08-11T05-58-54-258Z",
+      "kind": "automated-pattern-scan",
+      "digest": "sha256:047e166a4525b0107e6f69fe16656a49edc7ea84adbdb9aefbe156c1247c203e",
+      "uri": "docs/qualification/evals/review-domain/run-2026-08-11T05-58-54-258Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

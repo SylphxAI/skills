@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "capability": "engineer-agent-context",
+  "claim": "Produces a Context and Memory Contract where every information class has an owner and authority order, budgets are explicit, and invalidation, deletion, handoff, and degradation behavior are defined.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write context-contract.md for a customer-support agent: what information it should load and remember, how much, what to refresh, and what to delete."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Context and Memory Contract.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely (open references/context-and-memory-methods.md), then write context-contract.md for a customer-support agent: inventory each information class (current task state, source evidence, decisions, episodic history, semantic knowledge, procedures, user preferences, secrets, derived summaries) with owner and authority order; define context assembly order; assign memory class, scope, retention, provenance, freshness, sensitivity, invalidation trigger, and deletion path per durable item; set an explicit retrieval budget; define handoff as typed state transfer; and specify degradation tests (stale memory, poisoned retrieval, conflicting sources, privacy deletion, compaction loss, cross-tenant leakage, recovery after interruption).",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "context-contract.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "owner",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "authority",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "budget",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "retention",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "invalidat",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "deletion",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "handoff",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "stale",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same Contract oracle.",
+      "prompt": "Write context-contract.md for a customer-support agent: what information it should load and remember, how much, what to refresh, and what to delete.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "context-contract.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "owner",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "authority",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "budget",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "retention",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "invalidat",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "deletion",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "handoff",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "context-contract.md",
+            "contains": "stale",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-context-design",
+        "description": "User asks for agent context design without naming any skill; a fresh agent must natively discover and apply engineer-agent-context.",
+        "prompt": "Design the context and memory rules for our customer-support agent: write context-contract.md covering what it should load and remember, who owns each information class, refresh and deletion rules, and how to detect stale or poisoned memory.",
+        "selectionKeywords": [
+          "engineer-agent-context",
+          "Context and Memory Contract",
+          "retrieval budget",
+          "invalidation"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "context-contract.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "context-contract.md",
+              "contains": "owner",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "context-contract.md",
+              "contains": "budget",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "context-contract.md",
+              "contains": "invalidat",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "context-contract.md",
+              "contains": "deletion",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "context-contract.md",
+              "contains": "stale",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

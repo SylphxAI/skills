@@ -1,0 +1,26 @@
+{
+  "id": "user-asks-rewrite",
+  "description": "User asks for a rewrite without naming any skill; a fresh agent must natively discover and apply edit-preserving-voice.",
+  "status": "fail",
+  "selected": false,
+  "selectionKeywords": [
+    "edit-preserving-voice",
+    "voice-preserving",
+    "protected content"
+  ],
+  "matchedKeywords": [],
+  "failures": [
+    "no selection keyword found in transcript or produced artifacts (edit-preserving-voice, voice-preserving, protected content)"
+  ],
+  "exitCode": 0,
+  "prompt": "Rewrite this launch announcement as edited.txt to be clearer and more professional, but do not change any facts, numbers, dates, names, or the level of certainty: 'Acme Cloud's new edge storage tier, Acme Edge, launches on 2026-09-01 in the EU and US regions. Pricing starts at $0.0045 per GB-month for standard storage and $0.012 per GB-month for infrequent access. Existing customers keep their current price until 2027-03-31. The beta closed on 2026-07-15 with 3,214 participants from 42 countries. Uptime target is 99.95%, and early access users reported p95 latency of 38 ms in Frankfurt. Team lead: Dr. Mei Chen. No commit date has been set for APAC availability.'",
+  "startedAt": "2026-08-11T06:11:15.138Z",
+  "finishedAt": "2026-08-11T06:11:36.659Z",
+  "transcriptPath": "docs/qualification/evals/edit-preserving-voice/run-2026-08-11T06-09-45-213Z/activation/user-asks-rewrite/transcript.txt",
+  "transcriptTail": "Done — `edited.txt` is ready. The rewrite is organized into three short sections (launch, beta performance, leadership), uses professional phrasing, and preserves every fact, number, date, and name exactly:\n\n- `2026-09-01`, EU and US regions, `$0.0045`/`$0.012` per GB-month, `2027-03-31` price hold, `2026-07-15` beta close, `3,214` participants, `42` countries, `99.95%` uptime target, `38 ms` p95 in Frankfurt, Dr. Mei Chen\n- Certainty levels unchanged: uptime remains a \"target,\" latency remains \"reported,\" and APAC keeps \"no commit date has been set\"\n- No facts added or removed\n",
+  "artifactCount": 2,
+  "artifactDigests": {
+    "../../../../../../tmp/sylphx-activate-edit-preserving-voice-run-2026-08-11T06-09-45-213Z-user-asks-rewrite/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+    "../../../../../../tmp/sylphx-activate-edit-preserving-voice-run-2026-08-11T06-09-45-213Z-user-asks-rewrite/edited.txt": "sha256:64d1bf904e2d1cc05009ca9653449d99641a9c810f15140de70258c3189bcae3"
+  }
+}

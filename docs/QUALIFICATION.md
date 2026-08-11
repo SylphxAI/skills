@@ -106,10 +106,13 @@ Agent tasks run in temp dirs outside any git repository and are recorded as
 fresh-context behavior tests. A suite may additionally declare
 `activation.cases`: the capability is installed as the only native skill of a
 fresh session under the always-on search-before-act floor, and the user prompt
-never names the skill. A case passes only when the agent's visible transcript
-references a declared selection keyword and every oracle assertion holds;
+never names the skill. A case passes only when the agent's transcript or produced artifacts
+reference a declared selection keyword and every oracle assertion holds;
 `injectionState` is `verified` only when every declared case passes, and stays
-`not-verified` otherwise. Exec tasks are deterministic functional oracles. The bundle includes raw artifacts, task
+`not-verified` otherwise. Activation cases are recorded evidence and never
+gate qualification: selection is model/host-contextual and belongs to the
+actual-context eligibility layer. Exec tasks are deterministic functional
+oracles. The bundle includes raw artifacts, task
 records, an automated pattern scan (secrets + dangerous instruction patterns),
 and `report.json` with an evidence digest; `--apply-from` refuses to apply if
 the recorded digest does not match the bundle. Qualification files in the

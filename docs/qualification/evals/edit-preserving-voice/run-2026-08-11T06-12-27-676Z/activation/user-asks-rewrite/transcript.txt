@@ -1,0 +1,1 @@
+Done. The rewrite is in `edited.txt` — reorganized into clear announcement sections (launch, pricing, beta/performance, team/APAC) while keeping every fact, number, date, name, and the level of certainty intact, including "starts at," the 99.95% "target," the attribution to early access user reports, and the uncommitted APAC timeline.

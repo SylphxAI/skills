@@ -1,0 +1,12 @@
+Done. `support-operating-model.md` is ready — a complete, draft-state operating model calibrated for 12k users, 3 agents, email + chat, built from the `operate-customer-support` skill contract.
+
+**What it covers**
+- **Triage:** severity model (S1–S4 with ruin boundaries) + 12-code reason taxonomy; every ticket gets one primary code that drives routing, timers, and clustering.
+- **Routing:** one shared General queue with named specialty authorities (billing, tech liaison, accounts + feedback coordinator) so 3 agents never starve silos; full route table with evidence, priority, owner, escalation trigger, and customer promise per reason code.
+- **Escalation:** protected-action table (money, identity, deletion, enforcement, legal, incidents) that never goes autonomous, plus handoff packets for engineering/billing/identity/security/CSM/legal with acceptance tests.
+- **Autonomous actions:** pre-authorized, reversible, audited actions agents can take (read account context, grounded macros, webhook resends, safe diagnostics, in-band credits ≤ $100), with abstention, idempotency, and audit rules.
+- **Resolution verification:** `resolved` requires customer confirmation or authoritative downstream state — never a sent reply; unconfirmed closes get a distinct `closed_no_confirmation` state with reopen-on-reply.
+- **Product improvement:** the full `signal → cluster → owner → reproduce → candidate → validate → ship → live_readback → customer_update` loop with a weekly 30-min triage and a "no duplicate-article trap" rule.
+- Plus service objectives, case state machine with waiting-state clocks, self-service/knowledge contract, metrics with machine actions, QA/replay, and degrade/stop/recover staffing plans.
+
+**Note:** it opens with an assumptions table (volume ~300 tickets/mo, hours, contact rate, 24/7 S1 on-call) and closes with 7 questions to confirm before go-live — most importantly whether "12k users" means seats or accounts, and whether support tooling has read access to billing/identity/logs. Want me to tighten any section (e.g., chat-specific flows or a staffing roster template) next?

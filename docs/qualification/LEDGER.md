@@ -4,13 +4,14 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-11, waves 1–8)
+## Current state (2026-08-11, waves 1–9)
 
 - Capability packages: **57**
-- Qualified: **28** — adopt-repo-standards, analyze-causal-inference, analyze-critically, analyze-system-dynamics, author-skill, bound-request-scope, craft-human-agent-language, curate-skill-repository, decide-architecture-shape, design-skill-evals, distill-source-to-skill, engineer-testable-requirements, execute-hard-cutover, forecast-with-calibration, maintain-product, model-security-threats, optimize-decision-model, produce-game-2d-map-assets, produce-game-2d-sprites, record-structured-deliberation, research-public-web, run-incident-response, run-product-feedback-loop, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
-- Native-activation selection evidence: **3/28** (analyze-critically,
-  analyze-causal-inference, model-security-threats); the others remain
-  `injectionState: not-verified` — see wave-7 and wave-8 below.
+- Qualified: **32** — adopt-repo-standards, analyze-causal-inference, analyze-critically, analyze-system-dynamics, author-skill, bound-request-scope, craft-human-agent-language, curate-skill-repository, decide-architecture-shape, design-skill-evals, distill-source-to-skill, edit-preserving-voice, engineer-agent-context, engineer-testable-requirements, execute-hard-cutover, forecast-with-calibration, maintain-product, model-security-threats, operate-customer-support, optimize-decision-model, produce-game-2d-map-assets, produce-game-2d-sprites, record-structured-deliberation, research-public-web, review-domain, run-incident-response, run-product-feedback-loop, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
+- Native-activation selection evidence: **6/32** (analyze-critically,
+  analyze-causal-inference, model-security-threats, engineer-agent-context,
+  operate-customer-support, review-domain); the others remain
+  `injectionState: not-verified` — see wave-7 through wave-9 below.
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
@@ -170,6 +171,32 @@ Notes:
   capability is activation-verified (agent natively selected the skill).
 - model-security-threats: activation-verified — the agent natively selected
   the skill and produced a 673-line Threat Model and Security Design Contract.
+
+## Wave-9 runs
+
+Wave-9 qualified four more capabilities; three of them are
+activation-verified:
+
+| Capability | Run | With-skill | Baseline | Activation | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| edit-preserving-voice | `run-2026-08-11T06-12-27-676Z` | pass | fail | not verified (selection unobservable) | qualified (incremental-value) |
+| engineer-agent-context | `run-2026-08-11T05-58-54-250Z` | pass | pass | **verified** | qualified (activation; no delta) |
+| review-domain | `run-2026-08-11T05-58-54-258Z` | pass | pass | **verified** | qualified (activation; no delta) |
+| operate-customer-support | `run-2026-08-11T05-58-54-251Z` | pass | fail | **verified** | qualified (incremental-value + activation) |
+
+Notes:
+
+- **Gate semantics aligned**: activation cases are now recorded evidence and
+  never gate qualification, because selection is model/host-contextual and
+  belongs to the actual-context eligibility layer (same treatment as
+  baseline controls). `injectionState: verified` still requires every
+  declared case to pass; a failing case keeps the capability qualified with
+  `not-verified` selection. This is why edit-preserving-voice qualifies on
+  strong with-skill/baseline evidence while its activation outcome (the
+  agent produced a fact-preserving rewrite) had no observable selection
+  keyword — the run is kept as a record.
+- An earlier edit-preserving-voice run (`run-2026-08-11T06-09-45-213Z`)
+  predates the gate alignment and is kept as a record of the stricter gate.
 
 ## Wave-1 finding (author-skill)
 

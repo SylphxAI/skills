@@ -1,0 +1,26 @@
+{
+  "id": "user-asks-rewrite",
+  "description": "User asks for a rewrite without naming any skill; a fresh agent must natively discover and apply edit-preserving-voice.",
+  "status": "fail",
+  "selected": false,
+  "selectionKeywords": [
+    "edit-preserving-voice",
+    "voice-preserving",
+    "protected content"
+  ],
+  "matchedKeywords": [],
+  "failures": [
+    "no selection keyword found in transcript or produced artifacts (edit-preserving-voice, voice-preserving, protected content)"
+  ],
+  "exitCode": 0,
+  "prompt": "Rewrite this launch announcement as edited.txt to be clearer and more professional, but do not change any facts, numbers, dates, names, or the level of certainty: 'Acme Cloud's new edge storage tier, Acme Edge, launches on 2026-09-01 in the EU and US regions. Pricing starts at $0.0045 per GB-month for standard storage and $0.012 per GB-month for infrequent access. Existing customers keep their current price until 2027-03-31. The beta closed on 2026-07-15 with 3,214 participants from 42 countries. Uptime target is 99.95%, and early access users reported p95 latency of 38 ms in Frankfurt. Team lead: Dr. Mei Chen. No commit date has been set for APAC availability.'",
+  "startedAt": "2026-08-11T06:13:40.078Z",
+  "finishedAt": "2026-08-11T06:15:14.504Z",
+  "transcriptPath": "docs/qualification/evals/edit-preserving-voice/run-2026-08-11T06-12-27-676Z/activation/user-asks-rewrite/transcript.txt",
+  "transcriptTail": "Done. The rewrite is in `edited.txt` — reorganized into clear announcement sections (launch, pricing, beta/performance, team/APAC) while keeping every fact, number, date, name, and the level of certainty intact, including \"starts at,\" the 99.95% \"target,\" the attribution to early access user reports, and the uncommitted APAC timeline.\n",
+  "artifactCount": 2,
+  "artifactDigests": {
+    "../../../../../../tmp/sylphx-activate-edit-preserving-voice-run-2026-08-11T06-12-27-676Z-user-asks-rewrite/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+    "../../../../../../tmp/sylphx-activate-edit-preserving-voice-run-2026-08-11T06-12-27-676Z-user-asks-rewrite/edited.txt": "sha256:c817f555c624998ea78d6766e7a934cb3cd84af9f4d1f66000c9e5e3b29ffae1"
+  }
+}
