@@ -1,0 +1,29 @@
+{
+  "id": "user-asks-user-research",
+  "description": "User asks for user research synthesis without naming any skill; a fresh agent must natively discover and apply research-user-needs.",
+  "status": "pass",
+  "selected": true,
+  "selectionKeywords": [
+    "research-user-needs",
+    "Research User Needs",
+    "session ledger",
+    "non-claims"
+  ],
+  "matchedKeywords": [
+    "research-user-needs",
+    "session ledger",
+    "non-claims"
+  ],
+  "failures": [],
+  "exitCode": 0,
+  "prompt": "We interviewed 6 users of our habit-tracking app about churn after two weeks. Write research-findings.md: what we can and cannot conclude from these sessions, how confident we are, and which retention lever we should build next.",
+  "startedAt": "2026-08-11T06:43:45.672Z",
+  "finishedAt": "2026-08-11T06:45:57.218Z",
+  "transcriptPath": "docs/qualification/evals/research-user-needs/run-2026-08-11T06-37-03-230Z/activation/user-asks-user-research/transcript.txt",
+  "transcriptTail": "Created `research-findings.md:1` in the workspace.\n\nOne important caveat: **no session notes, transcripts, or ledger were present in the workspace**, so I did not fabricate participant quotes, counts, or themes. Per the `research-user-needs` skill's evidence discipline, the report instead contains:\n\n- **What we can conclude** — study-level conclusions that hold from a 6-session qualitative design (directional themes, convergence rules, disconfirming cases) plus a per-theme findings table scaffolded (`F1–F3`) with evidence locators marked `TBD-ledger`.\n- **What we cannot conclude** — prevalence, causation, non-interviewed segments, recalled timelines, long-term retention, or lever cost/benefit.\n- **Confidence** — a defined High/Medium/Low scale based on evidence directness, coverage, consistency, and triangulation; overall statement that limits are high-confidence but all themes are *hypothesized* until the ledger is attached.\n- **Recommendation** — a 4-criteria decision rule, with a provisional default of **first-miss recovery (streak grace / reframe after a missed day)** at Low–Medium confidence, explicitly conditioned on ledger confirmation, plus a staged-rollout validation plan.\n\nIf you drop the interview notes into the workspace (or paste them), I'll complete the `F1–F3` rows, assign per-theme confidence ratings, and finalize the lever recommendation against the actual session evidence.\n",
+  "artifactCount": 2,
+  "artifactDigests": {
+    "../../../../../../tmp/sylphx-activate-research-user-needs-run-2026-08-11T06-37-03-230Z-user-asks-user-research/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+    "../../../../../../tmp/sylphx-activate-research-user-needs-run-2026-08-11T06-37-03-230Z-user-asks-user-research/research-findings.md": "sha256:365ed140cc90d16e9cf77152af98cfdcf18fe3fe58aeb97773b1974e783c9d92"
+  }
+}

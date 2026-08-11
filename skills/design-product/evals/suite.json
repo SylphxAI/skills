@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "capability": "design-product",
+  "claim": "Produces a product design blueprint with one deep core concept, critical flows and states, named quality tradeoffs with rollback conditions, and acceptance criteria a builder can test.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write product-blueprint.md designing a mobile habit-tracking app: the core idea, main flows, and what good looks like."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the product design blueprint.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely (open the app shape reference under references/app/METHOD.md), then write product-blueprint.md for a mobile habit-tracking app: frame the promise, users, surfaces, non-goals and success criteria; name ONE deep core concept (do not spread across half-concepts) and 1-2 quality attributes intentionally strengthened or sacrificed with rollback conditions; define jobs/IA, core loops, tenancy, critical flows with states; and end with build-ready acceptance criteria a builder can test.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "product-blueprint.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "core concept",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "promise",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "non-goal",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "flow",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "tradeoff",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "rollback",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "acceptance criteria",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same blueprint oracle.",
+      "prompt": "Write product-blueprint.md designing a mobile habit-tracking app: the core idea, main flows, and what good looks like.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "product-blueprint.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "core concept",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "promise",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "non-goal",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "flow",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "tradeoff",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "rollback",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "product-blueprint.md",
+            "contains": "acceptance criteria",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-product-design",
+        "description": "User asks for a product design without naming any skill; a fresh agent must natively discover and apply design-product.",
+        "prompt": "Design our mobile habit-tracking app: write product-blueprint.md with one deep core concept, the main flows and states, what we deliberately trade off (and when we would roll back), and acceptance criteria a builder can test.",
+        "selectionKeywords": [
+          "design-product",
+          "Design Product",
+          "core concept",
+          "blueprint"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "product-blueprint.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "product-blueprint.md",
+              "contains": "core concept",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "product-blueprint.md",
+              "contains": "rollback",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "product-blueprint.md",
+              "contains": "acceptance criteria",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+`listing-plan.md` is ready — 243 lines covering the full plan.
+
+**What's in it**
+- **Metadata:** recommended title `Streaks — Habit Tracker` (23 chars), subtitle `Reminders & weekly reports` (26 chars), keywords (88 chars), and a full description whose every sentence maps to shipped behavior.
+- **Screenshot order:** 6 screenshots from the real build — streak view → one-tap check-in → reminders → weekly report → privacy trust frame → start-fast CTA — each with its claim and placement rationale.
+- **Claim discipline:** a claim-evidence table plus an explicit non-claims list (no social, no coaching, no fake stats/awards); anything unverifiable is flagged (e.g., "data stays on your device" marked `VERIFY A4`).
+- **Localization:** per-locale metadata + re-rendered screenshots (never stamped translation), RTL, date/unit handling, native QA.
+- **Testing:** App Store Connect Product Page Optimization plan — baseline capture, one-variable tests (title/subtitle → screenshots → description), install-rate primary metric, retention/first-value/refund guardrails, 90-day/impression stop rules, rollback, and live readback.
+
+**Assumptions flagged for you:** the real app name, pricing model, local-vs-iCloud storage, and current live listing weren't in the workspace, so the plan uses placeholders and verify-before-ship steps. If you share those facts, I'll update the assumptions and tighten the privacy and pricing copy.

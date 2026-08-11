@@ -1,0 +1,10 @@
+Created `research-findings.md:1` in the workspace.
+
+One important caveat: **no session notes, transcripts, or ledger were present in the workspace**, so I did not fabricate participant quotes, counts, or themes. Per the `research-user-needs` skill's evidence discipline, the report instead contains:
+
+- **What we can conclude** — study-level conclusions that hold from a 6-session qualitative design (directional themes, convergence rules, disconfirming cases) plus a per-theme findings table scaffolded (`F1–F3`) with evidence locators marked `TBD-ledger`.
+- **What we cannot conclude** — prevalence, causation, non-interviewed segments, recalled timelines, long-term retention, or lever cost/benefit.
+- **Confidence** — a defined High/Medium/Low scale based on evidence directness, coverage, consistency, and triangulation; overall statement that limits are high-confidence but all themes are *hypothesized* until the ledger is attached.
+- **Recommendation** — a 4-criteria decision rule, with a provisional default of **first-miss recovery (streak grace / reframe after a missed day)** at Low–Medium confidence, explicitly conditioned on ledger confirmation, plus a staged-rollout validation plan.
+
+If you drop the interview notes into the workspace (or paste them), I'll complete the `F1–F3` rows, assign per-theme confidence ratings, and finalize the lever recommendation against the actual session evidence.
