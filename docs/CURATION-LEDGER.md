@@ -70,6 +70,20 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   roadmap, unit economics) and added `eng-economy-01/02` predicates.
 - ADR: `docs/history/adr/ADR-20260809-universal-principles-and-q-economy.md`.
 
+## Principles refinement — ambition + agent-native budgets (2026-08-11)
+
+- English-first canonical PRINCIPLES body; nine-character memory set retained
+  as mnemonic; applies to any design (code, product, ops, business).
+- Simplicity clarified as **ambition-preserving**: fewest concepts/systems
+  covering maximum capability — not fewer features.
+- Economy budgets made explicit for agent-native work: entropy, verification,
+  attention, runtime, coordination, reversal (not person-days default).
+- Facet map: longer attributes (readability, maintainability, scalability,
+  availability, resilience, testability, …) nest under the nine cores.
+- Aligned constitution, `eng-simplicity-01`, `eng-economy-01/02`, North Star
+  `q-simplicity` / `q-economy`, and commercial Economy law.
+- ADR: `docs/history/adr/ADR-20260811-principles-ambition-agent-economy.md`.
+
 ## Objective-loop consolidation + composition contract (2026-08-09)
 
 - Merged `pursue-product-objective` into `drive-to-delivery`: same job (one

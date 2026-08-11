@@ -286,23 +286,37 @@ Tradeoffs and rejected alternatives.
 
 ## Economy law (`q-economy`)
 
-Cost is priced by **lifecycle, system entropy, and human attention** — not by
-development effort. In an agent-native world build cost has fallen and cost has
-moved to verification and entropy; entropy is compound interest, and every
-added concept (SKU, tier, segment, surface, integration, or special case)
-charges lifecycle interest to every future agent and human.
+Cost is priced in **agent-native budgets** — not human person-days /
+development effort as the default yardstick. In an agent-native world
+generating artifacts is cheap; cost has moved to verification and entropy.
+Entropy is compound interest: every added concept (SKU, tier, segment,
+surface, integration, or special case) charges lifecycle interest to every
+future agent and human.
+
+Agent-native budgets (name which one on every cost claim):
+
+| Budget | Commercial meaning |
+| --- | --- |
+| Entropy | extra SKUs, tiers, exceptions, dual paths, special cases |
+| Verification | metering proof, entitlement tests, margin/oracle checks |
+| Attention | human review, sales/ops focus, support load |
+| Runtime | infra/API unit cost, $ per action |
+| Coordination | multi-team / multi-product collision and redo |
+| Reversal | migration, grandfathering unwind, hard-cut / retirement cost |
 
 Any cost-saving claim — engineering or commercial — must answer three
 questions, or it is incomplete:
 
-1. Which budget is saved (runtime, lifecycle, entropy, or attention)?
+1. Which agent-native budget is saved?
 2. How is it measured?
 3. Which principle is traded, and when does it return?
 
 Do not equate "cheaper to build" with "cheaper": pricing, packaging, margin,
 and roadmap decisions must also price verification, support, attention,
 migration, and retirement/removal cost — including the option value of keeping
-a capability versus cutting it. Universal doctrine:
+a capability versus cutting it. Ambition-preserving simplicity still applies:
+fewer concepts covering more capability, not fewer features as "savings."
+Universal doctrine:
 [`docs/policies/PRINCIPLES.md`](../../../../../docs/policies/PRINCIPLES.md);
 engineering obligations: `q-economy` + `eng-economy-01/02` under
 `engineering-standard`.
@@ -316,7 +330,7 @@ engineering obligations: `q-economy` + `eng-economy-01/02` under
 | `commercial-d-03` | Proof layers separated |
 | `commercial-d-04` | Unknown authority fails closed |
 | `commercial-d-05` | Tradeoffs owned |
-| `commercial-d-06` | Economy: cost claims state budget, measurement, and traded principle (lifecycle/entropy/attention, not dev effort) |
+| `commercial-d-06` | Economy: cost claims state agent-native budget, measurement, and traded principle (not person-days) |
 
 - [ ] Full body obligations reviewed for applicability.
 - [ ] Residual gaps have owner and follow-up.
