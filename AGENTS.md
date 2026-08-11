@@ -1,5 +1,7 @@
 # Skills repository (Sylphx Verified Capabilities open foundation)
 
+- **Search before you act.** Before any work, search `skills/` for the matching
+  capability and open it; never skip discovery because the task looks familiar.
 - Listings: requestable jobs under `skills/<id>/` (no hard count cap)
 - Depth: standards, shapes, domains, matrices under owner `references/`
 - Never standards bag; never docs-only agent binding depth

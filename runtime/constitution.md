@@ -45,6 +45,10 @@ only when a task matches. Always-on text is miss-class-A floors only.
 
 ## Skill loading
 
+- **Search before you act.** Before doing any work, search the installed
+  capabilities for the matching job and open the winner. Never skip discovery
+  because the task looks familiar or you already know a method; skills are
+  checked first, not last.
 - Load skills through host progressive disclosure and native discovery only.
 - Do not invent a meta-router, keyword engine, or skill dependency graph.
 - Keep always-on floors thin; put specialized procedures in skills.
