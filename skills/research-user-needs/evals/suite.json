@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "capability": "research-user-needs",
+  "claim": "Produces a User Research Protocol and Findings with a session ledger, supporting and disconfirming observations, coverage limits, confidence, and non-claims a decision owner can act on.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "We interviewed 6 users of our habit-tracking app about why they stop using it after two weeks. Write research-findings.md with what we learned, how confident we are, and what we should not claim."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the User Research Protocol and Findings.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely (open references/research-method.md before selecting participants or interpreting), then write research-findings.md for a study about why users of a habit-tracking app stop after two weeks: bind the study to the decision (which retention lever to build next) and target users; define a purposive recruitment matrix with excluded groups; establish consent/privacy/recording/retention handling; write a piloted protocol; record a session ledger with supporting and disconfirming observations; state coverage limits, confidence, and explicit non-claims; rank opportunities for the decision owner.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "research-findings.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "protocol",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "session ledger",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "supporting",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "disconfirming",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "coverage",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "confidence",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "non-claim",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same findings oracle.",
+      "prompt": "We interviewed 6 users of our habit-tracking app about why they stop using it after two weeks. Write research-findings.md with what we learned, how confident we are, and what we should not claim.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "research-findings.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "protocol",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "session ledger",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "supporting",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "disconfirming",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "coverage",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "confidence",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "research-findings.md",
+            "contains": "non-claim",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-user-research",
+        "description": "User asks for user research synthesis without naming any skill; a fresh agent must natively discover and apply research-user-needs.",
+        "prompt": "We interviewed 6 users of our habit-tracking app about churn after two weeks. Write research-findings.md: what we can and cannot conclude from these sessions, how confident we are, and which retention lever we should build next.",
+        "selectionKeywords": [
+          "research-user-needs",
+          "Research User Needs",
+          "session ledger",
+          "non-claims"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "research-findings.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "research-findings.md",
+              "contains": "session",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "research-findings.md",
+              "contains": "coverage",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "research-findings.md",
+              "contains": "confidence",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "research-findings.md",
+              "contains": "non-claim",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

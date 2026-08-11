@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "capability": "optimize-store-listing",
+  "claim": "Produces a Channel Listing and Creative Sequence where every claim maps to exact shipped behavior, assets pass channel QA, localization is native-QAed, and conversion gains survive trust and retention countermetrics.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write listing-plan.md for our app's App Store listing: the title, subtitle, screenshots order, and description claims, all true to the product."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Channel Listing and Creative Sequence.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely, then write listing-plan.md for our habit-tracking app's App Store listing: define the positioning-to-asset narrative; write exact title/subtitle/description/screenshot-order metadata where every claim maps to shipped behavior (the app tracks streaks, reminders, and weekly reports; it does not do social or coaching); record artifactVersion/artifactRevision/artifactState per artifact; plan localization with native QA; define asset QA (exact revisions by digest); and design a conversion experiment with trust and retention countermetrics, disclosures, and compliance limits.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "listing-plan.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "claim",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "screenshot",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "localization",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "artifactVersion",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "experiment",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "compliance",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same listing oracle.",
+      "prompt": "Write listing-plan.md for our app's App Store listing: the title, subtitle, screenshots order, and description claims, all true to the product.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "listing-plan.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "claim",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "screenshot",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "localization",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "artifactVersion",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "experiment",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "listing-plan.md",
+            "contains": "compliance",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-listing",
+        "description": "User asks for store-listing improvements without naming any skill; a fresh agent must natively discover and apply optimize-store-listing.",
+        "prompt": "Improve our habit-tracking app's App Store listing: write listing-plan.md with the title, subtitle, description, and screenshot order where every claim is true to the shipped app (streaks, reminders, weekly reports; no social or coaching features), plus how to localize and how to test whether the change improves conversion.",
+        "selectionKeywords": [
+          "optimize-store-listing",
+          "Channel Listing and Creative Sequence",
+          "creative sequence",
+          "conversion experiment"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "listing-plan.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "listing-plan.md",
+              "contains": "claim",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "listing-plan.md",
+              "contains": "localization",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "listing-plan.md",
+              "contains": "experiment",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
