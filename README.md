@@ -36,7 +36,7 @@ npm run build:catalog
 
 ## Principles
 
-Universal doctrine (any design: code, product, ops, business):
+Universal principles (any design: code, product, ops, business):
 [docs/policies/PRINCIPLES.md](docs/policies/PRINCIPLES.md) — nine principles
 (ambition-preserving Simplicity; agent-native Economy).
 

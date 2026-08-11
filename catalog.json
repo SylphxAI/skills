@@ -105,7 +105,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:7f1ae0820359a6b7fa091456b7064a3656b447657716e7a60b5827dff52eb4dc",
+      "packageDigest": "sha256:f816426df73886d9d2875351452b825b4f190c0d99826fd93183ebd850d78f29",
       "capability": {
         "job": "Create or revise an Agent Skill package: job, description, method, references, contract.",
         "outcomeObservable": "The revised package passes npm test with a fresh catalog, local links resolve, the capability contract validates, and the description selects for the right ask and abstains on near-misses.",
@@ -157,7 +157,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:f5bf7441a3fd324cff52631fd6ff7c8f5e21951fa4a901ef74bc2bba14483179",
+      "packageDigest": "sha256:221de74e63eba8ad43f7a65840180aad7f01c959edc43c177fa2ec39f678113c",
       "capability": {
         "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
@@ -170,7 +170,7 @@
       "name": "compose-product-portfolio",
       "description": "Compose multi-product portfolio: platform vs products, connectors, bundles.",
       "path": "skills/compose-product-portfolio/SKILL.md",
-      "packageDigest": "sha256:d8355848610a5f6dc7b7b7b0fe43c9ab848c2e941f56a7f4f4360e199bea8d22",
+      "packageDigest": "sha256:6964699eade74688e5be478edba690642c97fb0c86c8a28231250fa271d2aad8",
       "capability": {
         "job": "Compose a multi-product portfolio: product-unit boundaries, typed connector graphs, and keep/extract/merge/retire decisions.",
         "outcomeObservable": "A Composable Product Portfolio Contract where every unit has a standalone job, contract, lifecycle, and support path, every connector edge names its contract and state owner, and decisions carry evidence and handoffs.",

@@ -7,17 +7,17 @@ supersedes: []
 amends:
   - ADR-20260809-universal-principles-and-q-economy
 scope:
-  - doctrine
+  - principles
   - economy
   - simplicity
   - presentation
 ---
 
-# ADR-20260811: Ambition-preserving Simplicity, agent-native Economy, English-only doctrine
+# ADR-20260811: Ambition-preserving Simplicity, agent-native Economy, English-only principles
 
 ## Context
 
-ADR-20260809 adopted the nine-principle doctrine and `q-economy`. Three
+ADR-20260809 adopted the nine principles and `q-economy`. Three
 execution risks remained:
 
 1. **Simplicity misread as fewer features** — ambitious work needs the opposite:
@@ -27,7 +27,7 @@ execution risks remained:
    entropy, verification, attention, runtime, coordination, and reversal. A
    vague "lifecycle / entropy / attention" line still lets agents default to
    eng-effort accounting.
-3. **Non-English slogans on doctrine surfaces** — parallel mnemonics and mixed-
+3. **Non-English slogans on principles surfaces** — parallel mnemonics and mixed-
    language branding reduce clarity for international agents and readers, and
    look unprofessional next to the English `q-*` vocabulary.
 
@@ -41,7 +41,7 @@ availability, resilience, testability, …) was also being treated as peer
    work (code, product, ops, business). Memory set of 9 uses English names only:
    Depth · Correctness · Simplicity · Evolvability · Observability ·
    Performance & Velocity · Reliability · Security · Economy, grouped as
-   Think / Build / Operate. Non-English slogans are retired from doctrine,
+   Think / Build / Operate. Non-English slogans are retired from principles,
    constitution, README, and quality vocabulary surfaces.
 2. **Simplicity** is explicitly ambition-preserving: minimize concept/system
    count while maximizing capability surface; integrate rather than shrink the
@@ -58,7 +58,7 @@ availability, resilience, testability, …) was also being treated as peer
 
 ## Options considered
 
-- **Leave doctrine unchanged**: keeps both misread modes and mixed-language
+- **Leave principles unchanged**: keeps both misread modes and mixed-language
   branding in agent defaults.
 - **Keep a non-English mnemonic alongside English**: still pollutes always-on
   and quality surfaces; rejected.
@@ -81,7 +81,7 @@ availability, resilience, testability, …) was also being treated as peer
 
 - `docs/policies/PRINCIPLES.md` states ambition rule, agent-native budgets,
   facet map, decision rules, and English-only presentation rule.
-- Active doctrine surfaces contain no non-English principle slogans.
+- Active principles surfaces contain no non-English principle slogans.
 - `runtime/constitution.md` stays ≤ 6000 chars and still carries miss-class-A
   phrases.
 - Engineering and commercial Economy/Simplicity predicates match.

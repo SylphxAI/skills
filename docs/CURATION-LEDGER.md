@@ -53,9 +53,9 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 
 ## Universal principles + Economy (2026-08-09)
 
-- Adopted the nine-principle universal doctrine (Depth · Correctness ·
+- Adopted the nine-principle universal principles (Depth · Correctness ·
   Simplicity · Evolvability · Observability · Performance & Velocity ·
-  Reliability · Security · Economy) as canonical doctrine for all design,
+  Reliability · Security · Economy) as canonical principles for all design,
   development, and business-model work. Full text: `docs/policies/PRINCIPLES.md`;
   compact always-on floor added to `runtime/constitution.md`. Not a second
   quality vocabulary — it maps onto the Quality North Star `q-*` IDs.
@@ -72,7 +72,7 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 ## Principles refinement — ambition + agent-native budgets (2026-08-11)
 
 - Canonical PRINCIPLES body is English-only; non-English slogans retired from
-  doctrine, constitution, and quality vocabulary surfaces.
+  principles, constitution, and quality vocabulary surfaces.
 - Simplicity clarified as **ambition-preserving**: fewest concepts/systems
   covering maximum capability — not fewer features.
 - Economy budgets made explicit for agent-native work: entropy, verification,

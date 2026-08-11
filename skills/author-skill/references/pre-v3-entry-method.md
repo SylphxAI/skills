@@ -60,7 +60,7 @@ tool manual.
 
 12. **Source-mutating workflows** compose `source-authoring-standard` three layers
    (L1 batch implement → L2 atomic commits in the PR → L3 revert-safe PR outcome).
-   Do not invent a second trunk doctrine inside job Skills.
+   Do not invent a second trunk principles set inside job Skills.
 
 Read for class/composition detail:
 [skill-package-classes-and-composition.md](https://github.com/SylphxAI/skills/blob/main/docs/reference/skill-package-classes-and-composition.md)

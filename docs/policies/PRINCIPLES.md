@@ -2,7 +2,7 @@
 
 > Principles few enough to remember; usage detailed enough to execute.
 
-Universal doctrine for **any design work**: code, systems, products,
+Universal principles for **any design work**: code, systems, products,
 interfaces, operations, and business models — not engineering alone.
 
 This file is the canonical full text. The compact always-on floor lives in
@@ -12,7 +12,7 @@ instantiation is the Quality North Star (`q-*`) under
 the commercial instantiation is
 [`commercial-decision-standard`](../../skills/compose-product-portfolio/references/commercial-decision-standard/README.md).
 
-This is doctrine, **not a parallel quality vocabulary**: the Quality North Star
+These are principles, **not a parallel quality vocabulary**: the Quality North Star
 remains the sole `q-*` vocabulary and this document maps onto it (see
 [Relation to repo surfaces](#relation-to-repo-surfaces)).
 
@@ -34,7 +34,7 @@ Three layers, nine principles — English names only:
 
 ## Ambition and Simplicity
 
-This doctrine is **ambitious**. Simplicity does **not** mean fewer features,
+These principles are **ambitious**. Simplicity does **not** mean fewer features,
 smaller vision, or shrinking the world to look clean.
 
 - **Ambition** lives in *what capability surface we cover* — as much of the
@@ -217,7 +217,7 @@ decide tradeoffs; facets audit coverage.
 
 | Surface | Role |
 | --- | --- |
-| `runtime/constitution.md` | Compact always-on floor of this doctrine (agent-installed) |
+| `runtime/constitution.md` | Compact always-on floor of these principles (agent-installed) |
 | `docs/policies/PRINCIPLES.md` | This file — canonical full text (human documentation) |
 | `engineering-standard` (`q-*`) | Engineering instantiation under `build-product` |
 | `commercial-decision-standard` | Business-model / pricing / packaging instantiation |
@@ -238,12 +238,12 @@ Mapping to the Quality North Star (`q-*`):
 
 ## Provenance
 
-Adopted as universal doctrine in
+Adopted as universal principles in
 [ADR-20260809](../history/adr/ADR-20260809-universal-principles-and-q-economy.md).
 Refined for ambition-preserving Simplicity, agent-native Economy budgets, and
 English-only presentation in
 [ADR-20260811](../history/adr/ADR-20260811-principles-ambition-agent-economy.md).
 
 This document is authoritative in English. Do not reintroduce non-English
-slogans or parallel mnemonics into doctrine, constitution, or quality
+slogans or parallel mnemonics into principles, constitution, or quality
 vocabulary surfaces.

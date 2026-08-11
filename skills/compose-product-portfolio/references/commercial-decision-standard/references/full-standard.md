@@ -316,7 +316,7 @@ and roadmap decisions must also price verification, support, attention,
 migration, and retirement/removal cost — including the option value of keeping
 a capability versus cutting it. Ambition-preserving simplicity still applies:
 fewer concepts covering more capability, not fewer features as "savings."
-Universal doctrine:
+Universal principles:
 [`docs/policies/PRINCIPLES.md`](../../../../../docs/policies/PRINCIPLES.md);
 engineering obligations: `q-economy` + `eng-economy-01/02` under
 `engineering-standard`.

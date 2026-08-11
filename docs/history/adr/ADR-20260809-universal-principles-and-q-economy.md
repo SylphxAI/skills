@@ -7,7 +7,7 @@ supersedes: []
 amends:
   - ADR-20260801T010819Z-simple-surface-deep-capability
 scope:
-  - doctrine
+  - principles
   - quality-vocabulary
   - economy
   - commercial-decisions
@@ -19,7 +19,7 @@ scope:
 
 Sylphx work spans design, development, and business models, but the always-on
 instruction floor and the engineering quality vocabulary did not carry one
-memorable, universal set of principles. The team's operating doctrine is the
+memorable, universal set of principles. The team's operating principles is the
 nine-principle system **Depth · Correctness · Simplicity · Evolvability ·
 Observability · Performance & Velocity · Reliability · Security · Economy**,
 with decision rules (Correctness and Security are non-tradeable floors; other
@@ -30,13 +30,13 @@ pre-flight checklist.
 The Quality North Star (merged in #121) is the sole `q-*` vocabulary with a
 memory set of 8 buckets. It deliberately excluded cost as a separate attribute:
 runtime resource cost is a budget constraint on Performance/Scalability. That
-guardrail is correct for runtime budgets but does not cover the new doctrine's
+guardrail is correct for runtime budgets but does not cover the new principles'
 **Economy**: lifecycle / system-entropy / human-attention cost accounting,
 agent-native economics, and entropy as compound interest.
 
 ## Decision
 
-1. **Adopt the nine-principle doctrine as canonical universal doctrine** for
+1. **Adopt the nine principles as canonical universal principles** for
    all design, development, and business-model work. Full text:
    `docs/policies/PRINCIPLES.md`. The compact always-on floor goes into
    `runtime/constitution.md` (still under the 6000-char L0 ceiling).
@@ -53,20 +53,20 @@ agent-native economics, and entropy as compound interest.
    price verification, attention, entropy, and retirement cost — not dev
    effort.
 5. **New binding predicates** `eng-economy-01/02` under `engineering-standard`.
-6. This is doctrine, **not a second quality vocabulary**: PRINCIPLES maps onto
+6. These are principles, **not a second quality vocabulary**: PRINCIPLES maps onto
    `q-*` and does not re-author a parallel list.
 
 ## Options considered
 
-- **Reject the addition (keep 13 primaries, no doctrine doc)**: fails the
+- **Reject the addition (keep 13 primaries, no principles doc)**: fails the
   user's explicit requirement that the latest guidance be added; Economy would
   remain absent from both engineering and commercial vocabulary.
 - **Add PRINCIPLES as a top-level listing skill**: violates the repo model
-  (doctrine is not a requestable job; `*-standard` listing paths are retired).
+  (principles are not a requestable job; `*-standard` listing paths are retired).
 - **Fold Economy into Performance only**: loses lifecycle/attention/entropy
   accounting and the agent-native economics rule; "cost" claims would keep
   defaulting to dev effort.
-- **Second parallel quality list**: explicitly forbidden by the repo doctrine
+- **Second parallel quality list**: explicitly forbidden by the repo principles
   ("do not reintroduce a second quality slogan layer").
 
 ## Consequences
