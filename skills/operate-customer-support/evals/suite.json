@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "capability": "operate-customer-support",
+  "claim": "Produces a Support Operating Model where every material contact reason has a trustworthy source, evidence contract, route, authority, timer, safe action, verification, appeal/reopen behavior, metric, and product-feedback owner.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Write support-operating-model.md for our SaaS: how support requests should be triaged, routed, escalated, resolved, and turned into product improvements."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the Support Operating Model.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely (open references/support-ops-patterns.md), then write support-operating-model.md for a B2B SaaS with 12k users, 3 support agents, email + chat channels, and payment/refund, identity, and data-sync specialists: define products/audiences/locales/volume/high-risk boundaries/service objectives; a reason-code taxonomy and routing table (evidence, authority, queue, priority/severity, timer, stop condition, customer promise, escalation packet, fallback per route); the case lifecycle with every waiting state owned; self-service and assisted support together; decision rights with safe autonomous vs protected actions, abstention and audit; specialist handoffs; quality and learning (QA/replay, routing confusion matrix, resolution verification, reopen analysis, product-feedback closure); and degrade/stop/recover paths.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "support-operating-model.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "reason",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "route",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "authority",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "timer",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "escalat",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "verification",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "feedback",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "degrade",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same Support Operating Model oracle.",
+      "prompt": "Write support-operating-model.md for our SaaS: how support requests should be triaged, routed, escalated, resolved, and turned into product improvements.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "support-operating-model.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "reason",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "route",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "authority",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "timer",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "escalat",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "verification",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "feedback",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "support-operating-model.md",
+            "contains": "degrade",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-support-design",
+        "description": "User asks for support operations design without naming any skill; a fresh agent must natively discover and apply operate-customer-support.",
+        "prompt": "Design how we should run customer support for our B2B SaaS (12k users, 3 agents, email + chat): write support-operating-model.md covering triage, routing, escalation, what agents may do autonomously, how we verify resolution, and how recurring issues feed product improvement.",
+        "selectionKeywords": [
+          "operate-customer-support",
+          "Support Operating Model",
+          "reason-code",
+          "escalation packet"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "support-operating-model.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "support-operating-model.md",
+              "contains": "reason",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "support-operating-model.md",
+              "contains": "escalat",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "support-operating-model.md",
+              "contains": "authority",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "support-operating-model.md",
+              "contains": "verification",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "support-operating-model.md",
+              "contains": "feedback",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

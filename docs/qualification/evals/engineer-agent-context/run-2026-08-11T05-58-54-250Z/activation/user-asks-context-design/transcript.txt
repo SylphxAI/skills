@@ -1,0 +1,9 @@
+Wrote `context-contract.md` in the workspace root, following the `engineer-agent-context` skill's output contract and the `operate-customer-support` operating model, with a review pass by a sub-agent (its four fixes were verified and folded in).
+
+Coverage for your four asks:
+- **Load vs. remember** — §3.3 matrix plus a per-turn assembly order (§6) and retrieval budgets (§7, §15).
+- **Owners per information class** — §3.1 maps each class (ticket state, entitlement, product facts, incident, KB, policy, episodic/semantic/procedural memory, preferences, secrets) to its canonical home, with a strict authority order (§3.2) and load-always/conditional/never rules.
+- **Refresh and deletion** — §9 TTL + revalidation/event-triggered refresh and auto-withdrawal; §10 retention windows, erasure propagation, append-only tombstones, holds, and rebuildability.
+- **Stale vs. poisoned detection** — §11 defines both, with nine detection layers (provenance, freshness/readback, authority, contradiction, poisoning indicators, canary backstops, replay oracles, eval gates, runtime monitors), fail-closed rules, and a 7-step quarantine→root-cause→restore protocol.
+
+Also includes the memory record schema (§5), write rules (§8), confidence/conflict representation (§12), typed handoff/recovery schema (§13), privacy and least-disclosure boundaries (§14), metrics (§16), adversarial/degradation tests (§17), and change control (§18–19). It's marked `artifactState: draft` / `ready for review`; happy to walk through any section, tighten the default budgets, or turn it into implementation schemas/tests next.

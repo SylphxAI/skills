@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "capability": "operate-customer-support",
+  "claim": "Produces a Support Operating Model where every material contact reason has a trustworthy source, evidence contract, route, authority, timer, safe action, verification, appeal/reopen behavior, metric, and product-feedback owner.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "3279c6b1a8a341867b626625003776bb1f568c90",
+    "packageDigest": "sha256:84978c37f59817696ee6e7a3f128a9fee56ec96eff12d349cf2032f3fe7188de",
+    "catalogDigest": "sha256:4c379af1de2ee87cafd8f9286148152eb821ff787c784189759ae41e071b441d"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-11T06:08:08.346Z",
+  "finishedAt": "2026-08-11T06:08:08.346Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "fail",
+      "failures": [
+        "file support-operating-model.md does not match /degrade/"
+      ],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "fail"
+  },
+  "patternScan": {
+    "kind": "automated-pattern-scan",
+    "verdict": "clean",
+    "scannedFiles": 9,
+    "findings": []
+  },
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-support-design",
+        "description": "User asks for support operations design without naming any skill; a fresh agent must natively discover and apply operate-customer-support.",
+        "status": "pass",
+        "selected": true,
+        "selectionKeywords": [
+          "operate-customer-support",
+          "Support Operating Model",
+          "reason-code",
+          "escalation packet"
+        ],
+        "matchedKeywords": [
+          "operate-customer-support",
+          "Support Operating Model",
+          "reason-code",
+          "escalation packet"
+        ],
+        "failures": [],
+        "exitCode": 0,
+        "prompt": "Design how we should run customer support for our B2B SaaS (12k users, 3 agents, email + chat): write support-operating-model.md covering triage, routing, escalation, what agents may do autonomously, how we verify resolution, and how recurring issues feed product improvement.",
+        "startedAt": "2026-08-11T06:04:52.022Z",
+        "finishedAt": "2026-08-11T06:08:08.343Z",
+        "transcriptPath": "docs/qualification/evals/operate-customer-support/run-2026-08-11T05-58-54-251Z/activation/user-asks-support-design/transcript.txt",
+        "transcriptTail": "Done. `support-operating-model.md` is ready — a complete, draft-state operating model calibrated for 12k users, 3 agents, email + chat, built from the `operate-customer-support` skill contract.\n\n**What it covers**\n- **Triage:** severity model (S1–S4 with ruin boundaries) + 12-code reason taxonomy; every ticket gets one primary code that drives routing, timers, and clustering.\n- **Routing:** one shared General queue with named specialty authorities (billing, tech liaison, accounts + feedback coordinator) so 3 agents never starve silos; full route table with evidence, priority, owner, escalation trigger, and customer promise per reason code.\n- **Escalation:** protected-action table (money, identity, deletion, enforcement, legal, incidents) that never goes autonomous, plus handoff packets for engineering/billing/identity/security/CSM/legal with acceptance tests.\n- **Autonomous actions:** pre-authorized, reversible, audited actions agents can take (read account context, grounded macros, webhook resends, safe diagnostics, in-band credits ≤ $100), with abstention, idempotency, and audit rules.\n- **Resolution verification:** `resolved` requires customer confirmation or authoritative downstream state — never a sent reply; unconfirmed closes get a distinct `closed_no_confirmation` state with reopen-on-reply.\n- **Product improvement:** the full `signal → cluster → owner → reproduce → candidate → validate → ship → live_readback → customer_update` loop with a weekly 30-min triage and a \"no duplicate-article trap\" rule.\n- Plus service objectives, case state machine with waiting-state clocks, self-service/knowledge contract, metrics with machine actions, QA/replay, and degrade/stop/recover staffing plans.\n\n**Note:** it opens with an assumptions table (volume ~300 tickets/mo, hours, contact rate, 24/7 S1 on-call) and closes with 7 questions to confirm before go-live — most importantly whether \"12k users\" means seats or accounts, and whether support tooling has read access to billing/identity/logs. Want me to tighten any section (e.g., chat-specific flows or a staffing roster template) next?\n",
+        "artifactCount": 2,
+        "artifactDigests": {
+          "../../../../../../tmp/sylphx-activate-operate-customer-support-run-2026-08-11T05-58-54-251Z-user-asks-support-design/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+          "../../../../../../tmp/sylphx-activate-operate-customer-support-run-2026-08-11T05-58-54-251Z-user-asks-support-design/support-operating-model.md": "sha256:fc2c27344b739956ea5de41f8c49c32cf9184b7cb341ee070433a82562e0b603"
+        }
+      }
+    ],
+    "verified": true,
+    "method": "native-install-under-search-before-act-floor",
+    "limitation": "selection is observed via agent transcript references plus output-contract match; native context load itself is not directly observable"
+  },
+  "evidenceDigest": "sha256:1033b407235f21d0a860f1ec1fea7131cf1182d2d1bca2abb44fbbbb60f99e9e",
+  "verdict": "qualified",
+  "injectionState": "verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/operate-customer-support/run-2026-08-11T05-58-54-251Z"
+}

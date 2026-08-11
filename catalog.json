@@ -4,7 +4,7 @@
   "count": 57,
   "qualification": {
     "total": 57,
-    "qualified": 28,
+    "qualified": 32,
     "qualifiedNames": [
       "adopt-repo-standards",
       "analyze-causal-inference",
@@ -17,16 +17,20 @@
       "decide-architecture-shape",
       "design-skill-evals",
       "distill-source-to-skill",
+      "edit-preserving-voice",
+      "engineer-agent-context",
       "engineer-testable-requirements",
       "execute-hard-cutover",
       "forecast-with-calibration",
       "maintain-product",
       "model-security-threats",
+      "operate-customer-support",
       "optimize-decision-model",
       "produce-game-2d-map-assets",
       "produce-game-2d-sprites",
       "record-structured-deliberation",
       "research-public-web",
+      "review-domain",
       "run-incident-response",
       "run-product-feedback-loop",
       "select-dependency-versions",
@@ -333,8 +337,8 @@
         "outcomeObservable": "The delivered text preserves all protected facts and claims, matches the supported voice constraints, and contains no unsupported additions, omissions, or certainty shifts.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "engineer-agent-context",
@@ -346,8 +350,8 @@
         "outcomeObservable": "A Context and Memory Contract where every information class has an owner and authority order, budgets are explicit, invalidation and deletion rules work, and adversarial and degradation tests pass.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "engineer-testable-requirements",
@@ -450,8 +454,8 @@
         "outcomeObservable": "A Support Operating Model where every material contact reason has a trustworthy source, evidence contract, route, authority, timer, safe action, verification, appeal/reopen behavior, metric, and product-feedback owner, with degrade/stop/recover paths.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "optimize-decision-model",
@@ -632,8 +636,8 @@
         "outcomeObservable": "One domain review record with severity-ranked findings, residuals, and recommended actions that a decision owner can act on, produced from one matching domain pack.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "run-incident-response",

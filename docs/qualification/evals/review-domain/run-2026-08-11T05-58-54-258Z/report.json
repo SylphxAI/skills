@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "capability": "review-domain",
+  "claim": "Produces one domain review record with severity-ranked findings, residuals, and recommended actions a decision owner can act on.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "3279c6b1a8a341867b626625003776bb1f568c90",
+    "packageDigest": "sha256:517505bb86f546c179d531f2972a771e233e49851f7e16abba2a734b903c30cb",
+    "catalogDigest": "sha256:4c379af1de2ee87cafd8f9286148152eb821ff787c784189759ae41e071b441d"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-11T06:04:05.358Z",
+  "finishedAt": "2026-08-11T06:04:05.358Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "pass",
+      "failures": [],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "pass"
+  },
+  "patternScan": {
+    "kind": "automated-pattern-scan",
+    "verdict": "clean",
+    "scannedFiles": 147,
+    "findings": []
+  },
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-launch-review",
+        "description": "User asks for a launch assessment without naming any skill; a fresh agent must natively discover and apply review-domain.",
+        "status": "pass",
+        "selected": true,
+        "selectionKeywords": [
+          "review-domain",
+          "domain review",
+          "severity-ranked",
+          "residual"
+        ],
+        "matchedKeywords": [
+          "review-domain",
+          "domain review",
+          "residual"
+        ],
+        "failures": [],
+        "exitCode": 0,
+        "prompt": "We are launching our mobile app next week: it collects email and location, has no published privacy notice, no support plan, no rollback runbook, two open P1 crashes in payment, and no on-call responder. Write domain-review.md with the main findings ranked by severity, residuals, and the actions we should take.",
+        "startedAt": "2026-08-11T06:02:30.808Z",
+        "finishedAt": "2026-08-11T06:04:05.346Z",
+        "transcriptPath": "docs/qualification/evals/review-domain/run-2026-08-11T05-58-54-258Z/activation/user-asks-launch-review/transcript.txt",
+        "transcriptTail": "Wrote `domain-review.md` following the `review-domain` launch-readiness procedure (Launch Admission Record format).\n\n**Verdict: No-go** for the planned window — four S1 blockers (no privacy notice while collecting email/location, two open payment P1s, no rollback runbook, no on-call responder) plus an S2 support gap. The privacy and payment items fall in the no-waiver class (personal data, money, store authority), so business approval can't override them.\n\n**Key contents**\n- Findings ranked S1 → S2, each with fact / inference / impact / required proof, including the store-blocking detail (Apple 5.1.1 + App Privacy details; Google Play privacy policy URL + Data Safety form).\n- Residuals: store review timing stays outside our control, payment edge cases beyond the two fixed crashes, location-consent friction, regulatory variance, slip cost.\n- Actions A1–A7 with owner role, deadline, exact proof, and consequence, plus a re-admission checklist that would flip the verdict to conditional-go.\n- Scope note: shipping without paid flows shrinks the payment blast radius but the privacy gap alone still blocks store submission.\n\nOne judgment call: I marked analytics/rollout controls as an evidence gap rather than a confirmed failure, since nothing was provided either way. Want me to tailor it once you know the exact build version, stores, and territories?\n",
+        "artifactCount": 2,
+        "artifactDigests": {
+          "../../../../../../tmp/sylphx-activate-review-domain-run-2026-08-11T05-58-54-258Z-user-asks-launch-review/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+          "../../../../../../tmp/sylphx-activate-review-domain-run-2026-08-11T05-58-54-258Z-user-asks-launch-review/domain-review.md": "sha256:fdb84b8e0e92e1f490f7c85247b2902a947a2c282d742b273aeb084807e86472"
+        }
+      }
+    ],
+    "verified": true,
+    "method": "native-install-under-search-before-act-floor",
+    "limitation": "selection is observed via agent transcript references plus output-contract match; native context load itself is not directly observable"
+  },
+  "evidenceDigest": "sha256:047e166a4525b0107e6f69fe16656a49edc7ea84adbdb9aefbe156c1247c203e",
+  "verdict": "qualified",
+  "injectionState": "verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/review-domain/run-2026-08-11T05-58-54-258Z"
+}

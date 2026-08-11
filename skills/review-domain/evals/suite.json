@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "capability": "review-domain",
+  "claim": "Produces one domain review record with severity-ranked findings, residuals, and recommended actions a decision owner can act on.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "We are launching our mobile app next week. Write domain-review.md assessing launch readiness: main risks, how severe they are, and what we should do."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure produces the severity-ranked domain review record.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely, open references/INDEX.md and pick the launch-readiness domain pack, then write domain-review.md reviewing this domain: Acme's mobile app is due to launch next week; it collects email and location, has no published privacy notice, no support plan, no rollback runbook, and two open P1 crashes in the payment flow; the team has no incident responder on call; marketing promised a public beta in three weeks. Separate fact from inference and unknown; produce one severity-ranked findings + actions record with residuals.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "domain-review.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "severity",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "finding",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "action",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "residual",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "fact",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "unknown",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same review-record oracle.",
+      "prompt": "We are launching our mobile app next week. Write domain-review.md assessing launch readiness: main risks, how severe they are, and what we should do.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "domain-review.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "severity",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "finding",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "action",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "residual",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "fact",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "domain-review.md",
+            "contains": "unknown",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ],
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-launch-review",
+        "description": "User asks for a launch assessment without naming any skill; a fresh agent must natively discover and apply review-domain.",
+        "prompt": "We are launching our mobile app next week: it collects email and location, has no published privacy notice, no support plan, no rollback runbook, two open P1 crashes in payment, and no on-call responder. Write domain-review.md with the main findings ranked by severity, residuals, and the actions we should take.",
+        "selectionKeywords": [
+          "review-domain",
+          "domain review",
+          "severity-ranked",
+          "residual"
+        ],
+        "timeoutMs": 600000,
+        "oracle": {
+          "assertions": [
+            {
+              "type": "file-exists",
+              "path": "domain-review.md"
+            },
+            {
+              "type": "file-regex",
+              "path": "domain-review.md",
+              "contains": "severity",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "domain-review.md",
+              "contains": "finding",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "domain-review.md",
+              "contains": "action",
+              "caseInsensitive": true
+            },
+            {
+              "type": "file-regex",
+              "path": "domain-review.md",
+              "contains": "residual",
+              "caseInsensitive": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

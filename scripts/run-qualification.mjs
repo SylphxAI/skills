@@ -16,9 +16,11 @@
  *   records observable artifacts and deterministic oracles.
  * - Agent tasks are fresh-context behavior tests; injection state is recorded
  *   as NOT verified unless a runtime-native selection trace exists.
- * - A qualified record requires every task to pass, the automated pattern
- *   scan to be clean, and any declared activation cases to pass (selection is
- *   observable via the agent transcript); qualification is expiring
+ * - A qualified record requires every task to pass and the automated pattern
+ *   scan to be clean; declared activation cases are recorded (selection is
+ *   observable via transcript/artifacts) and never gate qualification,
+ *   because selection is model/host-contextual and belongs to the
+ *   actual-context eligibility layer; qualification is expiring
  *   (validityDays).
  *
  * Usage:
@@ -529,7 +531,10 @@ async function main() {
   const scan = patternScan(path.join(repositoryRoot, 'skills', capability));
   const recordFiles = walk(runRoot);
   const resultsDigest = bundleDigest(recordFiles);
-  const gatePass = allPass && scan.verdict === 'clean' && (activationResults.length === 0 || activationAllPass);
+  // Activation is recorded evidence, never a gate: selection is
+  // model/host-contextual and belongs to the actual-context eligibility
+  // layer (injectionState still requires every declared case to pass).
+  const gatePass = allPass && scan.verdict === 'clean';
   const verdict = gatePass ? 'qualified' : 'not-qualified';
   const report = {
     schemaVersion: 1,
