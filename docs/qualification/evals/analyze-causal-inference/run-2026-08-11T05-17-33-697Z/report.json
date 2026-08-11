@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "capability": "analyze-causal-inference",
+  "claim": "Produces a Causal Inference Record with explicit estimand, identification assumptions, diagnostics, sensitivity, uncertainty, and claim boundary reproducible from the same data.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "c7d12952717107c8adb64c8a7c7a0c8c634ac976",
+    "packageDigest": "sha256:a74c60fc2817608c2121303a644e42e2de255161257f884b42e6a48be84b2011",
+    "catalogDigest": "sha256:f36aeb5b209fbdde2b420eba7db5d3aaa5ac0797ea48bbe56b8c02f22c990788"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-11T05:25:20.638Z",
+  "finishedAt": "2026-08-11T05:25:20.638Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "fail",
+      "failures": [
+        "file causal-inference.md does not match /counterfactual/"
+      ],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "pass",
+      "failures": [],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "fail",
+    "baseline": "pass"
+  },
+  "patternScan": {
+    "kind": "automated-pattern-scan",
+    "verdict": "clean",
+    "scannedFiles": 7,
+    "findings": []
+  },
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-causal-question",
+        "description": "User asks whether a change causes an outcome without naming any skill; a fresh agent must natively discover and apply analyze-causal-inference.",
+        "status": "fail",
+        "selected": true,
+        "selectionKeywords": [
+          "analyze-causal-inference",
+          "Causal Inference Record",
+          "estimand",
+          "counterfactual"
+        ],
+        "matchedKeywords": [
+          "analyze-causal-inference",
+          "Causal Inference Record",
+          "estimand"
+        ],
+        "failures": [
+          "file causal-inference.md does not match /counterfactual/"
+        ],
+        "exitCode": 0,
+        "prompt": "Write causal-inference.md: our new onboarding flow shows ~62% 7-day retention versus ~48% for the old flow in an observational comparison (n=200 per cohort, signup week, device and region differ slightly between cohorts). Does the new flow cause the change? State the target estimand, assumptions, checks, sensitivity, uncertainty, and what would change the conclusion.",
+        "startedAt": "2026-08-11T05:21:33.759Z",
+        "finishedAt": "2026-08-11T05:25:20.635Z",
+        "transcriptPath": "docs/qualification/evals/analyze-causal-inference/run-2026-08-11T05-17-33-697Z/activation/user-asks-causal-question/transcript.txt",
+        "transcriptTail": "Written `causal-inference.md` (246 lines) in the workspace, following the `analyze-causal-inference` skill's Causal Inference Record format.\n\n**Verdict:** Not identified from the reported summary alone. The +14 pp (62% vs 48%, n=200/cohort) is statistically significant — 95% CI (4.3, 23.7) pp, p≈0.005 — but the cohorts differ on signup week, device, and region, so the naive contrast is confounded.\n\nThe record covers everything you asked for:\n- **Estimand** — ATE on the risk-difference scale, `E[Y(1) − Y(0)]` for 7-day retention, plus the conditional `RD(w, d, r)` version the observational data can identify.\n- **Assumptions** — DAG with week/device/region/unmeasured confounders; conditional exchangeability, positivity, consistency, no interference, measurement/selection integrity; and the critical caveat that if flow is a deterministic function of signup week, the effect is not identified without parallel-trends or no-concurrent-shocks assumptions.\n- **Checks** — balance (SMDs), overlap, pre-trends, discontinuity at rollout, concurrent changes, negative controls, treatment/measurement integrity, missingness, model dependence.\n- **Sensitivity** — E-value ≈1.9 (point), ≈1.4 (CI lower bound); bias formula `δ×γ` for a binary confounder; scenario analysis showing device/region imbalances likely contribute only ~1–2 pp, while week/time-trend confounding is the dominant threat.\n- **Uncertainty** — sampling uncertainty small; identification uncertainty dominant; measurement and transportability limits.\n- **What would change the conclusion** — concrete evidence paths toward causal, toward no effect, and toward not identified, plus a recommended RCT path (~200/arm for 14 pp, ~1,600/arm for 5 pp).\n\nBottom line for reporting: say \"new-flow signups retained ~14 pp higher (associational, consistent with but not proof of a causal effect)\" until the unit-level adjusted analysis and diagnostics are run.\n",
+        "artifactCount": 2,
+        "artifactDigests": {
+          "../../../../../../tmp/sylphx-activate-analyze-causal-inference-run-2026-08-11T05-17-33-697Z-user-asks-causal-question/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+          "../../../../../../tmp/sylphx-activate-analyze-causal-inference-run-2026-08-11T05-17-33-697Z-user-asks-causal-question/causal-inference.md": "sha256:b65799db767019e230d2922e17c942e584ff2299055d8dce62232f95a8988c24"
+        }
+      }
+    ],
+    "verified": false,
+    "method": "native-install-under-search-before-act-floor",
+    "limitation": "selection is observed via agent transcript references plus output-contract match; native context load itself is not directly observable"
+  },
+  "evidenceDigest": "sha256:1cb03f3c87b8e2cb59382ca2f0d6d60974dee74eb417ab5bc3f5895f0693dd3d",
+  "verdict": "not-qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/analyze-causal-inference/run-2026-08-11T05-17-33-697Z"
+}

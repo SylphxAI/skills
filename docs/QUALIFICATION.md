@@ -6,7 +6,7 @@ environments. A named evaluator or attestor owns the result; the repository
 only records and projects it.
 
 Unqualified is the honest default. As of 2026-08-11 this repository declares
-**24** qualified capabilities (57 packages) with version-scoped, expiring
+**28** qualified capabilities (57 packages) with version-scoped, expiring
 evidence under `docs/qualification/evals/`; everything else is honestly
 `unqualified`. Qualification is never inferred from structure, CI, or
 installation — only from filed with-skill versus baseline evidence and, where

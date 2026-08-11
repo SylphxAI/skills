@@ -1,0 +1,160 @@
+{
+  "$schema": "https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/project-manifest-standard/references/project-manifest.schema.json",
+  "schemaVersion": 2,
+  "kind": "ProjectManifest",
+  "project": {
+    "id": "acme-app",
+    "repository": "acme-app",
+    "name": "Acme App",
+    "summary": "Example TypeScript product repository used as an engineering-baseline fixture with a projected constitution, machine-readable project facts, and a conformance entrypoint.",
+    "lifecycle": "incubating",
+    "layer": "example-product",
+    "visibility": "private",
+    "policyPool": "sylphx-product-engineering",
+    "links": [
+      {
+        "type": "documentation",
+        "url": "PROJECT.md",
+        "title": "Project facts"
+      },
+      {
+        "type": "standards",
+        "url": "https://github.com/SylphxAI/skills",
+        "title": "Sylphx engineering standards"
+      }
+    ],
+    "tags": [
+      "typescript",
+      "example",
+      "fixture"
+    ]
+  },
+  "intent": {
+    "goals": [
+      "Serve as the example product repository on the Sylphx engineering baseline with a projected constitution, machine-readable project facts, and a working conformance entrypoint.",
+      "Keep repository-local instructions compact and derived from the active Skills runtime so agents and owners share one instruction authority."
+    ],
+    "nonGoals": [
+      "Owning product capabilities beyond the example fixture surface.",
+      "Maintaining a second instruction authority or resurrecting the predecessor layout."
+    ]
+  },
+  "boundaries": {
+    "owns": [
+      {
+        "id": "repository-baseline",
+        "name": "Repository engineering baseline",
+        "description": "Runtime constitution projection, project identity and manifest, and the conformance entrypoint that define how agents and owners operate this repository."
+      }
+    ],
+    "doesNotOwn": [
+      "Sylphx skills catalog, runtime constitution, and organization-wide engineering policy.",
+      "Live deployment, credentials, or package publication surfaces."
+    ],
+    "publicSurfaces": [
+      {
+        "type": "documentation",
+        "name": "Project orientation",
+        "location": "README.md"
+      },
+      {
+        "type": "contract",
+        "name": "Machine-readable project manifest",
+        "location": "project.manifest.json"
+      },
+      {
+        "type": "cli",
+        "name": "Conformance check",
+        "location": "npm run check"
+      }
+    ],
+    "allowedDependencies": [
+      {
+        "owner": "SylphxAI/skills",
+        "surface": "runtime constitution and standards",
+        "direction": "read"
+      }
+    ],
+    "forbiddenCouplings": [
+      "Any second instruction authority or restored predecessor layout inside this repository."
+    ]
+  },
+  "architecture": {
+    "generationRef": "capability-first-modular-ddd-clean-hexagonal-fcis",
+    "standardPackages": [
+      "engineering-standard"
+    ],
+    "capabilities": [
+      "repository-baseline"
+    ],
+    "components": {
+      "conformance-check": {
+        "role": "verification-interface",
+        "implementation": "node-javascript",
+        "backendOwner": null,
+        "ownedEffects": []
+      }
+    },
+    "moduleGraph": {
+      "cyclePolicy": "forbidden",
+      "internalAccessPolicy": "public-api-only",
+      "allowedEdges": [],
+      "enforcementCommands": [
+        "npm run check"
+      ]
+    },
+    "adoptionStatus": "not-applicable",
+    "gaps": []
+  },
+  "documentation": {
+    "adrs": {
+      "location": "docs/adr/",
+      "status": "planned"
+    },
+    "specs": {
+      "location": "docs/specs/",
+      "status": "planned"
+    },
+    "catalog": {
+      "location": "docs/catalog.md",
+      "status": "planned"
+    },
+    "runbooks": {
+      "location": "docs/runbooks/",
+      "status": "planned"
+    },
+    "generatedReferences": {
+      "location": "reports/",
+      "status": "not-applicable"
+    }
+  },
+  "delivery": {
+    "lane": "trunk-source-landing",
+    "ciModel": "github-actions",
+    "verificationCommands": [
+      "npm run check"
+    ],
+    "terminalBoundary": "Source landing on main with the conformance check green; this fixture has no package release or deployment boundary.",
+    "recoveryClass": "git-revert",
+    "deployable": false,
+    "packageRelease": {
+      "producer": false,
+      "strategy": "not-applicable"
+    }
+  },
+  "commercial": {
+    "status": "not-applicable",
+    "decisionHome": "docs/adr/"
+  },
+  "adoption": {
+    "status": "gapped",
+    "gaps": [
+      {
+        "id": "product-code-architecture",
+        "description": "No product code exists in the fixture yet, so canonical code architecture conformance cannot be evidenced on the current candidate.",
+        "owner": "acme-app maintainers",
+        "exitCondition": "Real product code lands and satisfies the canonical engineering architecture with behavior tests."
+      }
+    ]
+  }
+}

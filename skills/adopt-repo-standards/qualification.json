@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "adopt-repo-standards"
+  "name": "adopt-repo-standards",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-11T05:26:26.609Z",
+  "expiresAt": "2026-11-09T05:36:13.394Z",
+  "evidence": [
+    {
+      "id": "adopt-repo-standards-incremental-value-2026-08-11T05-17-33-694Z",
+      "kind": "incremental-value",
+      "digest": "sha256:3d44a389f3593aa0470be4df6d56c1b934fe3128bba9e9c139e70e91d97d66ba",
+      "uri": "docs/qualification/evals/adopt-repo-standards/run-2026-08-11T05-17-33-694Z/report.json"
+    },
+    {
+      "id": "adopt-repo-standards-compatibility-2026-08-11T05-17-33-694Z",
+      "kind": "compatibility",
+      "digest": "sha256:3d44a389f3593aa0470be4df6d56c1b934fe3128bba9e9c139e70e91d97d66ba",
+      "uri": "docs/qualification/evals/adopt-repo-standards/run-2026-08-11T05-17-33-694Z/report.json"
+    },
+    {
+      "id": "adopt-repo-standards-automated-pattern-scan-2026-08-11T05-17-33-694Z",
+      "kind": "automated-pattern-scan",
+      "digest": "sha256:3d44a389f3593aa0470be4df6d56c1b934fe3128bba9e9c139e70e91d97d66ba",
+      "uri": "docs/qualification/evals/adopt-repo-standards/run-2026-08-11T05-17-33-694Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

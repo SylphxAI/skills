@@ -1,0 +1,14 @@
+Done — `threat-model.md` is written (673 lines) as a design-stage Threat Model and Security Design Contract, following the loaded `model-security-threats` skill.
+
+**What's inside**
+- **Scope & model:** objectives (money-movement integrity, refund-authority isolation, token-only card data), protected assets, unacceptable outcomes, assumptions, trust boundaries, and an ASCII component/data-flow diagram for browser → TLS edge → payment provider → ledger → admin refund path.
+- **Threat register:** 20 threats with ordinal severity (impact/likelihood/confidence, no fake precision), attack paths, bypass assumptions, and disposition. Headliners: webhook forgery/replay, payment-state bypass (return-URL forged as "success"), refund bounds abuse, admin takeover, ledger integrity/race failures, client price tampering, PCI scope creep, card testing, supply-chain JS.
+- **Controls:** 22 designed controls (C-01…C-22) with enforcement point, owner, failure mode, and threat traceability — e.g., server-side signed cart snapshot, HMAC webhook verification with ~5-min replay window, DB-level idempotency + CAS state machine, append-only ledger with outbox, daily reconciliation, refund API bounds + two-person approval, phishing-resistant MFA, immutable audit log.
+- **Verification:** 22 falsifiable claims (V-01…V-22), each with method, oracle (what disproves it), environment, and required evidence — e.g., negative tests for tampered webhooks, concurrency/fault-injection for double-charge and ledger-loss, injected-drift reconciliation test, restore drills, SSL/TLS scan, PCI SAQ A vs A-EP assessment.
+- **Governance:** residual-risk decisions with named acceptance authority outside this document, six open evidence needs (provider semantics, volumes, existing org controls), artifact sensitivity handling, and handoffs (implementation, pen test, fraud domain, IR, compliance).
+
+**Notes**
+- Per the skill's integrity rules, no control is claimed effective — the verification matrix is the launch acceptance gate.
+- The main open items before launch are OE-01 (provider webhook/retry semantics), OE-03 (volume + RPO/RTO), and the SAQ A vs A-EP decision (R-06).
+
+Want me to tailor it to a specific provider once chosen, or produce a short redacted executive summary for launch review?

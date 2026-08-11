@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "capability": "adopt-repo-standards",
+  "claim": "Adopts a repository onto the engineering baseline: constitution projection, project facts, fences, conformance entrypoints, and retires the predecessor instruction layout.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "c7d12952717107c8adb64c8a7c7a0c8c634ac976",
+    "packageDigest": "sha256:ae4b1df3ee556a0ac2854e216b8c8ddb8358bf0bf397b74c232c0f58620de0e0",
+    "catalogDigest": "sha256:f36aeb5b209fbdde2b420eba7db5d3aaa5ac0797ea48bbe56b8c02f22c990788"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-11T05:16:38.201Z",
+  "finishedAt": "2026-08-11T05:16:38.201Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "fail",
+      "failures": [
+        "file repo/AGENTS.md does not match /evidence precedes claims/",
+        "json repo/project.manifest.json name != \"acme-app\""
+      ],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "fail",
+      "failures": [
+        "file repo/AGENTS.md does not match /constitution/",
+        "file repo/AGENTS.md does not match /evidence precedes claims/",
+        "json repo/project.manifest.json name != \"acme-app\""
+      ],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "fail",
+    "baseline": "fail"
+  },
+  "patternScan": {
+    "kind": "automated-pattern-scan",
+    "verdict": "clean",
+    "scannedFiles": 16,
+    "findings": []
+  },
+  "activation": null,
+  "evidenceDigest": "sha256:dc88fdae85587ce23dd0c46c2d45cd812119d15875c2861a36d0380e07b94522",
+  "verdict": "not-qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/adopt-repo-standards/run-2026-08-11T05-06-04-934Z"
+}

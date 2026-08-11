@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "capability": "distill-source-to-skill",
+  "claim": "Distills source material into a compact installable skill package that runs without the original source, names its evidence boundary, and carries output contracts and validation signals.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Using notes.md as source, create a skill package at skills/my-distilled-skill/ (SKILL.md and any references) that a future agent could follow without reading notes.md."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure distills the source notes into an installable skill package.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        },
+        {
+          "source": "notes.md",
+          "as": "notes.md"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely (open references/source-to-skill-patterns.md), then read notes.md and distill it into an installable skill package at skills/my-distilled-skill/ with SKILL.md (trigger, decision rules, workflow, output contract, failure modes) and any references needed, so a future agent can run the job without reading notes.md. Name the evidence boundary (what notes.md covers, what is unavailable, sensitivity).",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "skills/my-distilled-skill/SKILL.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "skills/my-distilled-skill/SKILL.md",
+            "contains": "When to use",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "skills/my-distilled-skill/SKILL.md",
+            "contains": "output contract",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "skills/my-distilled-skill/SKILL.md",
+            "contains": "failure mode",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "skills/my-distilled-skill/SKILL.md",
+            "contains": "evidence boundary",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same package-shape oracle.",
+      "prompt": "Using notes.md as source, create a skill package at skills/my-distilled-skill/ (SKILL.md and any references) that a future agent could follow without reading notes.md.",
+      "fixtures": [
+        {
+          "source": "notes.md",
+          "as": "notes.md"
+        }
+      ],
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "skills/my-distilled-skill/SKILL.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "skills/my-distilled-skill/SKILL.md",
+            "contains": "When to use",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "skills/my-distilled-skill/SKILL.md",
+            "contains": "output contract",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "skills/my-distilled-skill/SKILL.md",
+            "contains": "failure mode",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "skills/my-distilled-skill/SKILL.md",
+            "contains": "evidence boundary",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ]
+}

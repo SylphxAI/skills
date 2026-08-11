@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "capability": "adopt-repo-standards",
+  "claim": "Adopts a repository onto the engineering baseline: constitution projection, project facts, fences, conformance entrypoints, and retires the predecessor instruction layout.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "baseline": {
+    "prompt": "Bring the repo/ folder onto a modern engineering baseline: add an AGENTS.md with standing instructions, a project manifest, and a conformance check entrypoint; retire the legacy instruction file if it conflicts."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full procedure adopts the baseline into the fixture repo and retires the predecessor layout.",
+      "fixtures": [
+        {
+          "source": "package:SKILL.md",
+          "as": "SKILL.md"
+        },
+        {
+          "source": "repo/README.md",
+          "as": "repo/README.md"
+        },
+        {
+          "source": "repo/AGENTS.md",
+          "as": "repo/AGENTS.md"
+        },
+        {
+          "source": "repo/package.json",
+          "as": "repo/package.json"
+        }
+      ],
+      "prompt": "Read ./SKILL.md completely (open references/full-standard.md and the project-manifest/enterprise-profile references as needed), then adopt the engineering baseline into the repo/ folder: wire the constitution projection on its owning path, record project facts in a manifest, add fences and a conformance entrypoint that runs, and retire the predecessor instruction layout (repo/AGENTS.md legacy content) with a dated residual. Leave the adopted surfaces in repo/.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "repo/AGENTS.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "repo/AGENTS.md",
+            "contains": "constitution",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "repo/AGENTS.md",
+            "contains": "SylphxAI/skills",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-exists",
+            "path": "repo/project.manifest.json"
+          },
+          {
+            "type": "json-path-eq",
+            "path": "repo/project.manifest.json",
+            "jsonPath": "project.name",
+            "value": "acme-app"
+          },
+          {
+            "type": "file-regex",
+            "path": "repo/package.json",
+            "contains": "\"check\"",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-not-regex",
+            "path": "repo/AGENTS.md",
+            "contains": "ops guild",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same adoption oracle.",
+      "prompt": "Bring the repo/ folder onto a modern engineering baseline: add an AGENTS.md with standing instructions, a project manifest, and a conformance check entrypoint; retire the legacy instruction file if it conflicts.",
+      "fixtures": [
+        {
+          "source": "repo/README.md",
+          "as": "repo/README.md"
+        },
+        {
+          "source": "repo/AGENTS.md",
+          "as": "repo/AGENTS.md"
+        },
+        {
+          "source": "repo/package.json",
+          "as": "repo/package.json"
+        }
+      ],
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          {
+            "type": "file-exists",
+            "path": "repo/AGENTS.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "repo/AGENTS.md",
+            "contains": "constitution",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "repo/AGENTS.md",
+            "contains": "SylphxAI/skills",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-exists",
+            "path": "repo/project.manifest.json"
+          },
+          {
+            "type": "json-path-eq",
+            "path": "repo/project.manifest.json",
+            "jsonPath": "project.name",
+            "value": "acme-app"
+          },
+          {
+            "type": "file-regex",
+            "path": "repo/package.json",
+            "contains": "\"check\"",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-not-regex",
+            "path": "repo/AGENTS.md",
+            "contains": "ops guild",
+            "caseInsensitive": true
+          }
+        ]
+      }
+    }
+  ]
+}

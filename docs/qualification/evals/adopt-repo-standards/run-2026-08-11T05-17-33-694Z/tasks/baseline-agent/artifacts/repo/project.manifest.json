@@ -1,0 +1,145 @@
+{
+  "$schema": "https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/project-manifest-standard/references/project-manifest.schema.json",
+  "schemaVersion": 2,
+  "kind": "ProjectManifest",
+  "project": {
+    "id": "acme-app",
+    "repository": "acme-app",
+    "name": "Acme App",
+    "summary": "Example TypeScript product repository used as an eval fixture for adopt-repo-standards.",
+    "lifecycle": "incubating",
+    "layer": "product",
+    "visibility": "private",
+    "policyPool": "sylphx-skills-catalog",
+    "links": [
+      {
+        "type": "readme",
+        "url": "README.md",
+        "title": "Repository readme"
+      },
+      {
+        "type": "projection",
+        "url": "PROJECT.md",
+        "title": "Project orientation"
+      },
+      {
+        "type": "constitution",
+        "url": "https://github.com/SylphxAI/skills/blob/main/runtime/constitution.md",
+        "title": "Sylphx runtime constitution"
+      }
+    ]
+  },
+  "intent": {
+    "goals": [
+      "Maintain the acme-app product repository on the Sylphx engineering baseline.",
+      "Keep one schema-valid project manifest as the machine-readable fact authority."
+    ],
+    "nonGoals": [
+      "Ship product features beyond the current repository scaffolding.",
+      "Publish packages or operate production deployments."
+    ]
+  },
+  "boundaries": {
+    "owns": [
+      {
+        "id": "acme-app",
+        "name": "Acme App",
+        "description": "Example product surface owned by this repository; currently scaffolding only."
+      }
+    ],
+    "doesNotOwn": [
+      "SylphxAI/skills standards, profiles, and their content digests",
+      "CI infrastructure or deployment environments outside this repository"
+    ],
+    "publicSurfaces": [],
+    "allowedDependencies": [
+      {
+        "owner": "nodejs",
+        "surface": "node >= 20 runtime",
+        "direction": "depends-on"
+      }
+    ],
+    "forbiddenCouplings": [
+      "Cross-repository internal imports",
+      "Dual or competing instruction authorities"
+    ]
+  },
+  "architecture": {
+    "generationRef": "https://github.com/SylphxAI/skills/blob/main/skills/build-product/references/engineering-standard/README.md",
+    "standardPackages": [
+      "sylphx-constitution",
+      "sylphx-project-manifest",
+      "sylphx-engineering-standard"
+    ],
+    "capabilities": [
+      "acme-app"
+    ],
+    "adoptionStatus": "migrating",
+    "gaps": [
+      {
+        "id": "gap-no-product-source",
+        "description": "No product source exists yet, so the canonical code architecture surface cannot be verified.",
+        "owner": "repo-owner",
+        "exitCondition": "Product code lands and passes compiler and capability behavior checks."
+      },
+      {
+        "id": "gap-ci-lane",
+        "description": "The readme historically declared GitHub Actions, but no workflow exists in the repository.",
+        "owner": "repo-owner",
+        "exitCondition": "A GitHub Actions workflow runs the conformance entrypoint on candidates."
+      }
+    ]
+  },
+  "documentation": {
+    "adrs": {
+      "location": "docs/adrs/",
+      "status": "planned"
+    },
+    "specs": {
+      "location": "docs/specs/",
+      "status": "planned"
+    },
+    "catalog": {
+      "location": "docs/catalog/",
+      "status": "planned"
+    },
+    "runbooks": {
+      "location": "docs/runbooks/",
+      "status": "planned"
+    },
+    "generatedReferences": {
+      "location": "docs/generated/",
+      "status": "planned"
+    }
+  },
+  "delivery": {
+    "lane": "source-landing",
+    "verificationCommands": [
+      "npm run check"
+    ],
+    "terminalBoundary": "Source landing on the default branch with a schema-valid manifest and passing conformance checks.",
+    "recoveryClass": "none",
+    "deployable": false
+  },
+  "commercial": {
+    "status": "not-applicable",
+    "decisionHome": "PROJECT.md"
+  },
+  "adoption": {
+    "status": "migrating",
+    "gaps": [
+      {
+        "id": "gap-no-product-source",
+        "description": "No product source exists yet, so the canonical code architecture surface cannot be verified.",
+        "owner": "repo-owner",
+        "exitCondition": "Product code lands and passes compiler and capability behavior checks."
+      },
+      {
+        "id": "gap-ci-lane",
+        "description": "The readme historically declared GitHub Actions, but no workflow exists in the repository.",
+        "owner": "repo-owner",
+        "exitCondition": "A GitHub Actions workflow runs the conformance entrypoint on candidates."
+      }
+    ]
+  }
+}

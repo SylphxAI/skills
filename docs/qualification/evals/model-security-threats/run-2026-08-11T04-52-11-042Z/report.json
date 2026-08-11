@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "capability": "model-security-threats",
+  "claim": "Produces a Threat Model and Security Design Contract: protected assets, trust boundaries, evidence-ranked threats, controls traced to threats, and falsifiable verification.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "c7d12952717107c8adb64c8a7c7a0c8c634ac976",
+    "packageDigest": "sha256:f4ed2c71d992e445426ed348b82f4ecdab22702683261bfd3cd5e60e1009163e",
+    "catalogDigest": "sha256:f36aeb5b209fbdde2b420eba7db5d3aaa5ac0797ea48bbe56b8c02f22c990788"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-11T05:05:23.354Z",
+  "finishedAt": "2026-08-11T05:05:23.354Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "pass",
+      "failures": [],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "pass"
+  },
+  "patternScan": {
+    "kind": "automated-pattern-scan",
+    "verdict": "clean",
+    "scannedFiles": 6,
+    "findings": []
+  },
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-threat-model",
+        "description": "User asks for a threat model without naming any skill; a fresh agent must natively discover and apply model-security-threats.",
+        "status": "pass",
+        "selected": true,
+        "selectionKeywords": [
+          "model-security-threats",
+          "Threat Model",
+          "trust boundary",
+          "residual risk"
+        ],
+        "matchedKeywords": [
+          "model-security-threats",
+          "Threat Model",
+          "trust boundary",
+          "residual risk"
+        ],
+        "failures": [],
+        "exitCode": 0,
+        "prompt": "We are about to launch a public checkout flow (client browser, TLS edge, payment provider, internal ledger, admin refund path). Write threat-model.md covering the main threats, how serious they are, the controls we should put in place, and how we would verify the controls hold.",
+        "startedAt": "2026-08-11T04:57:51.576Z",
+        "finishedAt": "2026-08-11T05:05:23.350Z",
+        "transcriptPath": "docs/qualification/evals/model-security-threats/run-2026-08-11T04-52-11-042Z/activation/user-asks-threat-model/transcript.txt",
+        "transcriptTail": "Done — `threat-model.md` is written (673 lines) as a design-stage Threat Model and Security Design Contract, following the loaded `model-security-threats` skill.\n\n**What's inside**\n- **Scope & model:** objectives (money-movement integrity, refund-authority isolation, token-only card data), protected assets, unacceptable outcomes, assumptions, trust boundaries, and an ASCII component/data-flow diagram for browser → TLS edge → payment provider → ledger → admin refund path.\n- **Threat register:** 20 threats with ordinal severity (impact/likelihood/confidence, no fake precision), attack paths, bypass assumptions, and disposition. Headliners: webhook forgery/replay, payment-state bypass (return-URL forged as \"success\"), refund bounds abuse, admin takeover, ledger integrity/race failures, client price tampering, PCI scope creep, card testing, supply-chain JS.\n- **Controls:** 22 designed controls (C-01…C-22) with enforcement point, owner, failure mode, and threat traceability — e.g., server-side signed cart snapshot, HMAC webhook verification with ~5-min replay window, DB-level idempotency + CAS state machine, append-only ledger with outbox, daily reconciliation, refund API bounds + two-person approval, phishing-resistant MFA, immutable audit log.\n- **Verification:** 22 falsifiable claims (V-01…V-22), each with method, oracle (what disproves it), environment, and required evidence — e.g., negative tests for tampered webhooks, concurrency/fault-injection for double-charge and ledger-loss, injected-drift reconciliation test, restore drills, SSL/TLS scan, PCI SAQ A vs A-EP assessment.\n- **Governance:** residual-risk decisions with named acceptance authority outside this document, six open evidence needs (provider semantics, volumes, existing org controls), artifact sensitivity handling, and handoffs (implementation, pen test, fraud domain, IR, compliance).\n\n**Notes**\n- Per the skill's integrity rules, no control is claimed effective — the verification matrix is the launch acceptance gate.\n- The main open items before launch are OE-01 (provider webhook/retry semantics), OE-03 (volume + RPO/RTO), and the SAQ A vs A-EP decision (R-06).\n\nWant me to tailor it to a specific provider once chosen, or produce a short redacted executive summary for launch review?\n",
+        "artifactCount": 2,
+        "artifactDigests": {
+          "../../../../../../tmp/sylphx-activate-run-2026-08-11T04-52-11-042Z-user-asks-threat-model/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+          "../../../../../../tmp/sylphx-activate-run-2026-08-11T04-52-11-042Z-user-asks-threat-model/threat-model.md": "sha256:b22961413b7e20ddb1e3cd168b225f4fb01b99a4421aa7787ec21e0197c0ff8f"
+        }
+      }
+    ],
+    "verified": true,
+    "method": "native-install-under-search-before-act-floor",
+    "limitation": "selection is observed via agent transcript references plus output-contract match; native context load itself is not directly observable"
+  },
+  "evidenceDigest": "sha256:89227b8fd3f0fabcfae0b1c21455e53a91fbe1d5860ef3cecd2846d07dd546f4",
+  "verdict": "qualified",
+  "injectionState": "verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/model-security-threats/run-2026-08-11T04-52-11-042Z"
+}
