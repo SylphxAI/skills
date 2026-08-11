@@ -4,7 +4,7 @@
   "count": 57,
   "qualification": {
     "total": 57,
-    "qualified": 36,
+    "qualified": 40,
     "qualifiedNames": [
       "adopt-repo-standards",
       "analyze-causal-inference",
@@ -12,7 +12,11 @@
       "analyze-system-dynamics",
       "author-skill",
       "bound-request-scope",
+      "compose-product-portfolio",
+      "compose-product-program",
+      "compose-readme-marks",
       "craft-human-agent-language",
+      "craft-product-interface",
       "curate-skill-repository",
       "decide-architecture-shape",
       "design-product",
@@ -172,8 +176,8 @@
         "outcomeObservable": "A Composable Product Portfolio Contract where every unit has a standalone job, contract, lifecycle, and support path, every connector edge names its contract and state owner, and decisions carry evidence and handoffs.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "compose-product-program",
@@ -185,8 +189,8 @@
         "outcomeObservable": "A Product Program Manifest where every declared capability has one owner and full target, the graph is acyclic, all handoffs and gates are executable, and the observed-state revision indexes exact accepted sibling evidence.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "compose-readme-marks",
@@ -198,8 +202,8 @@
         "outcomeObservable": "Markdown snippets that render live images, with each URL probed to an image content-type 200 and theme choices recorded in source so agents can regenerate them.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "craft-human-agent-language",
@@ -224,8 +228,8 @@
         "outcomeObservable": "An Interface Craft Pack with a stated direction, covered states and accessibility floors, and rendered verification evidence (screenshots, device checks, tests) for the declared surface or flow.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "craft-telegram-bot-surface",

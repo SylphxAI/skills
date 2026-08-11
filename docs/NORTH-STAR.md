@@ -54,8 +54,8 @@ self-graded quality. It grows only when real capability and real value grow.
 - AutoSync applies only immutable annotated release tags with a verified
   promotion manifest (`docs/PROMOTION.md`); branch-following is retired.
 
-Current honest projection (2026-08-11): 57 capability packages, 36 qualified
-(with version-scoped expiring evidence; 10 of them also carry
+Current honest projection (2026-08-11): 57 capability packages, 40 qualified
+(with version-scoped expiring evidence; 14 of them also carry
 native-activation selection evidence), 0 recorded outcome receipts, Verified Capability Yield =
 0 eligible attempts (yield is undefined/zero until eligibility gates are met).
 Structural and runtime CI prove consistency, not capability value.

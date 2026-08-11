@@ -1,0 +1,30 @@
+{
+  "id": "user-asks-portfolio",
+  "description": "User asks for portfolio composition without naming any skill; a fresh agent must natively discover and apply compose-product-portfolio.",
+  "status": "pass",
+  "selected": true,
+  "selectionKeywords": [
+    "compose-product-portfolio",
+    "portfolio contract",
+    "connector",
+    "substrate"
+  ],
+  "matchedKeywords": [
+    "compose-product-portfolio",
+    "portfolio contract",
+    "connector",
+    "substrate"
+  ],
+  "failures": [],
+  "exitCode": 0,
+  "prompt": "We run one platform that also ships a mobile app, a dashboard, and an API SDK, sharing auth and a billing connector. Write portfolio-contract.md: which parts should be separate products with their own job and support path, what stays embedded, how the parts connect, and what should be retired.",
+  "startedAt": "2026-08-11T07:21:35.120Z",
+  "finishedAt": "2026-08-11T07:25:15.366Z",
+  "transcriptPath": "docs/qualification/evals/compose-product-portfolio/run-2026-08-11T07-12-56-899Z/activation/user-asks-portfolio/transcript.txt",
+  "transcriptTail": "Wrote `portfolio-contract.md` (333 lines) following the `compose-product-portfolio` skill's output contract. The headline decisions:\n\n- **One product: the Platform** — owns the core job, domain state, one support path, and the public API contract.\n- **Mobile app, dashboard, API SDK stay embedded** as surfaces (client / composed-experience / contract surface). They may keep their own repos and release pipelines, but that doesn't make them products.\n- **Auth = shared substrate** (identities, sessions, federation only); **billing = shared substrate + thin connector** — the connector translates/routes/reconciles but never owns ledger, entitlement, or domain truth.\n- **Retire:** hidden/private APIs, surface direct DB access, hand-maintained SDK forks, duplicate billing logic, embedded legacy auth, dashboard write paths, and any separate product ambition (SKUs, support queues) for the three surfaces.\n- **Extract nothing today**; a conditional extraction path for the mobile app is gated on evidence of a genuinely distinct job (D-2 in the contract).\n\nThe doc includes the classification matrix, orthogonal boundary map, full product-unit registry, typed connector graph with edge semantics (E1–E3), dogfooding matrix with required tests, keep/retire decisions with expected value and permanent cost, ADR/handoff list, and open evidence questions with discriminating actions.\n\nNatural next step if you want it: fill in the platform's actual domain into the registry (assumption A-1) or run the D-1 backdoor audit to start executing the retirements.\n",
+  "artifactCount": 2,
+  "artifactDigests": {
+    "../../../../../../tmp/sylphx-activate-compose-product-portfolio-run-2026-08-11T07-12-56-899Z-user-asks-portfolio/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+    "../../../../../../tmp/sylphx-activate-compose-product-portfolio-run-2026-08-11T07-12-56-899Z-user-asks-portfolio/portfolio-contract.md": "sha256:74c0c7ff75a6686d74a6c6bf8df5bc3929eccf238d640cec63358af6ec557061"
+  }
+}

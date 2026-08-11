@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "compose-readme-marks"
+  "name": "compose-readme-marks",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-11T07:32:40.576Z",
+  "expiresAt": "2026-11-09T07:32:50.435Z",
+  "evidence": [
+    {
+      "id": "compose-readme-marks-compatibility-2026-08-11T07-26-42-713Z",
+      "kind": "compatibility",
+      "digest": "sha256:f694b509c97124cf6227d039bf8e2e2d57c5345e5493686832c56d254985e69d",
+      "uri": "docs/qualification/evals/compose-readme-marks/run-2026-08-11T07-26-42-713Z/report.json"
+    },
+    {
+      "id": "compose-readme-marks-activation-2026-08-11T07-26-42-713Z",
+      "kind": "activation",
+      "digest": "sha256:f694b509c97124cf6227d039bf8e2e2d57c5345e5493686832c56d254985e69d",
+      "uri": "docs/qualification/evals/compose-readme-marks/run-2026-08-11T07-26-42-713Z/report.json"
+    },
+    {
+      "id": "compose-readme-marks-automated-pattern-scan-2026-08-11T07-26-42-713Z",
+      "kind": "automated-pattern-scan",
+      "digest": "sha256:f694b509c97124cf6227d039bf8e2e2d57c5345e5493686832c56d254985e69d",
+      "uri": "docs/qualification/evals/compose-readme-marks/run-2026-08-11T07-26-42-713Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "sylphx-skills",
-  "version": "6.13.0",
+  "version": "6.14.0",
   "description": "Sylphx Verified Capabilities: requestable-job capability packages with contracts, qualification records, and outcome-receipt contract; no hard listing cap",
   "license": "MIT",
   "type": "module",

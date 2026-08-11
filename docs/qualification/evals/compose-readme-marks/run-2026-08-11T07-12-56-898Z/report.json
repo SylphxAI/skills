@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "capability": "compose-readme-marks",
+  "claim": "Produces Markdown badge/snippet marks that render live images, with each URL purpose-labeled and no broken local link patterns.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "b7415cff6da6cd00a5c803ecc3a510f5b4dd31bc",
+    "packageDigest": "sha256:b9a5fd29d6816411aedda5af175c56aab1900b2d794c55d8262961ca1d598b78",
+    "catalogDigest": "sha256:22963bef1e0077451d749a71f947bab7ff0160cd0bccb6d5fd1e485095b123c9"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openmodel -c model=deepseek-v4-flash",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-11T07:21:05.436Z",
+  "finishedAt": "2026-08-11T07:21:05.436Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "fail",
+      "failures": [
+        "file-regex: Invalid regular expression: /![/im: Unterminated character class"
+      ],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "fail",
+      "failures": [
+        "file-regex: Invalid regular expression: /![/im: Unterminated character class"
+      ],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "fail",
+    "baseline": "fail"
+  },
+  "patternScan": {
+    "kind": "automated-pattern-scan",
+    "verdict": "clean",
+    "scannedFiles": 10,
+    "findings": []
+  },
+  "activation": {
+    "cases": [
+      {
+        "id": "user-asks-readme-badges",
+        "description": "User asks for README badges without naming any skill; a fresh agent must natively discover and apply compose-readme-marks.",
+        "status": "fail",
+        "selected": true,
+        "selectionKeywords": [
+          "compose-readme-marks",
+          "README marks",
+          "shields.io",
+          "badge row"
+        ],
+        "matchedKeywords": [
+          "shields.io",
+          "badge row"
+        ],
+        "failures": [
+          "file-regex: Invalid regular expression: /![/im: Unterminated character class"
+        ],
+        "exitCode": 0,
+        "prompt": "Add a professional badge row and a short hero section to our open-source library's README: write README-marks.md with copy-paste Markdown for build, coverage, version, and license badges with proper alt text and purpose labels.",
+        "startedAt": "2026-08-11T07:19:41.407Z",
+        "finishedAt": "2026-08-11T07:21:05.434Z",
+        "transcriptPath": "docs/qualification/evals/compose-readme-marks/run-2026-08-11T07-12-56-898Z/activation/user-asks-readme-badges/transcript.txt",
+        "transcriptTail": "Done. Created `README-marks.md` with paste-ready Markdown:\n\n- **Hero section** — `# Your Library` title, one-line pitch, and a live-probed Mark hero banner (`form=hero&art=wave&theme=github`, `image/svg+xml` 200).\n- **Badge row** — shields.io chips for build, coverage, version, and license, each with descriptive alt text (`![Build status: passing](...)`, etc.) and a generator-intent comment keeping query params intact.\n- **Purpose labels** — a legend table mapping each badge to its purpose, plus the license repeated as real Markdown text per the skill's guidance.\n\nTwo notes:\n- The skill's documented Mark routes (`/api/v1/banner`, `/api/v1/badge`) returned 404; the live route is `/api/v1/mark` (confirmed via `/api/v1/catalog` and probes). The file uses the working URL.\n- Placeholders (`Your Library`, `v1.0.0`, `92%`, `MIT`) are marked for easy replacement — tell me the real repo/package name and I'll swap them in and switch to dynamic badges if you'd like.\n",
+        "artifactCount": 2,
+        "artifactDigests": {
+          "../../../../../../tmp/sylphx-activate-compose-readme-marks-run-2026-08-11T07-12-56-898Z-user-asks-readme-badges/AGENTS.md": "sha256:ac748642d75e7aa1db8fef138623c773b96a8a140560ad19c89c50e08e73c844",
+          "../../../../../../tmp/sylphx-activate-compose-readme-marks-run-2026-08-11T07-12-56-898Z-user-asks-readme-badges/README-marks.md": "sha256:c38c7c237535273297146e7e0d57d91b8da1a6f842b16679faad639ca4411a31"
+        }
+      }
+    ],
+    "verified": false,
+    "method": "native-install-under-search-before-act-floor",
+    "limitation": "selection is observed via agent transcript references plus output-contract match; native context load itself is not directly observable"
+  },
+  "evidenceDigest": "sha256:915ff97aba97172730d24162aa7b797f78f7a5b9915a6d22b5af4bcdf45ce0e1",
+  "verdict": "not-qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/compose-readme-marks/run-2026-08-11T07-12-56-898Z"
+}
