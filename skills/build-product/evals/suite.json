@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "capability": "build-product",
+  "claim": "Produces one build-cycle record that frames a journey/capability gap, names the owning-boundary vertical slice, states an original oracle, separates local vs landed vs live claims, and lists residuals without whole-product completion.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write build-cycle.md for shipping password-reset email delivery that currently fails for ~10% of users. Describe the plan, what you would build, and how you would know it works."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full build-product procedure produces the build-cycle contract sections.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write build-cycle.md for one build cycle only: password-reset email delivery fails for ~10% of users after the last release; product direction is already decided and the missing capability is reliable password-reset email delivery.\n\nYou MUST use these exact markdown headings (copy them literally):\n## Journey gap\n## Owning boundary\n## Vertical slice\n## Original oracle\n## Local vs landed vs live\n## Residuals\n\nUnder those headings, fill the Frame/Research/Admit/Implement/Deliver content from the skill method. Do not claim whole-product completion.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "build-cycle.md" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Journey gap" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Owning boundary" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Vertical slice" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Original oracle" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Local vs landed vs live" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Residuals" },
+          { "type": "file-not-regex", "path": "build-cycle.md", "contains": "whole product is complete", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same build-cycle oracle.",
+      "prompt": "Write build-cycle.md for shipping password-reset email delivery that currently fails for ~10% of users. Describe the plan, what you would build, and how you would know it works.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "build-cycle.md" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Journey gap" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Owning boundary" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Vertical slice" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Original oracle" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Local vs landed vs live" },
+          { "type": "file-regex", "path": "build-cycle.md", "contains": "## Residuals" },
+          { "type": "file-not-regex", "path": "build-cycle.md", "contains": "whole product is complete", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}

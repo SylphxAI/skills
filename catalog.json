@@ -4,7 +4,7 @@
   "count": 57,
   "qualification": {
     "total": 57,
-    "qualified": 40,
+    "qualified": 42,
     "qualifiedNames": [
       "adopt-repo-standards",
       "analyze-causal-inference",
@@ -12,6 +12,7 @@
       "analyze-system-dynamics",
       "author-skill",
       "bound-request-scope",
+      "build-product",
       "compose-product-portfolio",
       "compose-product-program",
       "compose-readme-marks",
@@ -22,6 +23,7 @@
       "design-product",
       "design-skill-evals",
       "distill-source-to-skill",
+      "drive-to-delivery",
       "edit-preserving-voice",
       "engineer-agent-context",
       "engineer-testable-requirements",
@@ -163,8 +165,8 @@
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "compose-product-portfolio",
@@ -332,8 +334,8 @@
         "outcomeObservable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
         "oracleOwner": "user-system"
       },
-      "qualified": false,
-      "qualificationStatus": "unqualified"
+      "qualified": true,
+      "qualificationStatus": "qualified"
     },
     {
       "name": "edit-preserving-voice",

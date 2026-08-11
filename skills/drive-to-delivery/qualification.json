@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "drive-to-delivery"
+  "name": "drive-to-delivery",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-11T14:43:23.291Z",
+  "expiresAt": "2026-11-09T14:43:23.291Z",
+  "evidence": [
+    {
+      "id": "drive-to-delivery-incremental-value-2026-08-11T14-42-07-989Z",
+      "kind": "incremental-value",
+      "digest": "sha256:eb0c213d94d607aae3cafa3b77bf58a7a37241809a8b677ef28e1c6e406cf22b",
+      "uri": "docs/qualification/evals/drive-to-delivery/run-2026-08-11T14-42-07-989Z/report.json"
+    },
+    {
+      "id": "drive-to-delivery-compatibility-2026-08-11T14-42-07-989Z",
+      "kind": "compatibility",
+      "digest": "sha256:eb0c213d94d607aae3cafa3b77bf58a7a37241809a8b677ef28e1c6e406cf22b",
+      "uri": "docs/qualification/evals/drive-to-delivery/run-2026-08-11T14-42-07-989Z/report.json"
+    },
+    {
+      "id": "drive-to-delivery-automated-pattern-scan-2026-08-11T14-42-07-989Z",
+      "kind": "automated-pattern-scan",
+      "digest": "sha256:eb0c213d94d607aae3cafa3b77bf58a7a37241809a8b677ef28e1c6e406cf22b",
+      "uri": "docs/qualification/evals/drive-to-delivery/run-2026-08-11T14-42-07-989Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

@@ -1,10 +1,42 @@
 {
   "schemaVersion": 1,
-  "status": "unqualified",
-  "evaluator": null,
-  "qualifiedAt": null,
-  "expiresAt": null,
-  "evidence": [],
-  "compatibility": [],
-  "name": "build-product"
+  "name": "build-product",
+  "status": "qualified",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "qualifiedAt": "2026-08-11T14:42:07.828Z",
+  "expiresAt": "2026-11-09T14:42:07.828Z",
+  "evidence": [
+    {
+      "id": "build-product-incremental-value-2026-08-11T14-41-20-328Z",
+      "kind": "incremental-value",
+      "digest": "sha256:f4de5235b3908705d3b76bedddfef6c5b23e85dd1dcf3bc1f347c659017c2802",
+      "uri": "docs/qualification/evals/build-product/run-2026-08-11T14-41-20-328Z/report.json"
+    },
+    {
+      "id": "build-product-compatibility-2026-08-11T14-41-20-328Z",
+      "kind": "compatibility",
+      "digest": "sha256:f4de5235b3908705d3b76bedddfef6c5b23e85dd1dcf3bc1f347c659017c2802",
+      "uri": "docs/qualification/evals/build-product/run-2026-08-11T14-41-20-328Z/report.json"
+    },
+    {
+      "id": "build-product-automated-pattern-scan-2026-08-11T14-41-20-328Z",
+      "kind": "automated-pattern-scan",
+      "digest": "sha256:f4de5235b3908705d3b76bedddfef6c5b23e85dd1dcf3bc1f347c659017c2802",
+      "uri": "docs/qualification/evals/build-product/run-2026-08-11T14-41-20-328Z/report.json"
+    }
+  ],
+  "compatibility": [
+    {
+      "environment": "codex-cli 0.147.0 (agent task)",
+      "result": "verified"
+    },
+    {
+      "environment": "node >= 20",
+      "result": "verified"
+    }
+  ]
 }

@@ -2040,12 +2040,37 @@ test('auto-sync enables a configurable scheduler, repairs exact-source drift, an
     ];
     for (const name of fixtureSkillNames) {
       cpSync(path.join(root, 'skills', name), path.join(source, 'skills', name), { recursive: true });
+      // Fixture package-set churn must not trip the live qualification promotion
+      // gate: pin each copied package to honest unqualified regardless of the
+      // repository tip's qualification state (build-product is later removed).
+      writeFileSync(
+        path.join(source, 'skills', name, 'qualification.json'),
+        `${JSON.stringify({
+          schemaVersion: 1,
+          name,
+          status: 'unqualified',
+          evaluator: null,
+          qualifiedAt: null,
+          expiresAt: null,
+          evidence: [],
+          compatibility: [],
+        }, null, 2)}\n`,
+      );
     }
     const fixtureCatalog = {
       ...catalog,
       count: fixtureSkillNames.length,
       skills: catalog.skills.filter((skill) => fixtureSkillNames.includes(skill.name)),
+      qualification: {
+        total: fixtureSkillNames.length,
+        qualified: 0,
+        qualifiedNames: [],
+      },
     };
+    for (const skill of fixtureCatalog.skills) {
+      skill.qualified = false;
+      skill.qualificationStatus = 'unqualified';
+    }
     writeFileSync(path.join(source, 'catalog.json'), `${JSON.stringify(fixtureCatalog, null, 2)}\n`);
     for (const entry of ['.gitattributes', 'package.json']) cpSync(path.join(root, entry), path.join(source, entry));
     const remoteReconciler = path.join(source, 'runtime', 'reconcile.mjs');

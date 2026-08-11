@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "capability": "drive-to-delivery",
+  "claim": "Produces one objective-to-terminal plan that binds a single accepted multi-phase objective, states the delivery terminal and acceptance map, uses research→execute→verify→repair loop language, requires evidence at the active delivery boundary (not merely local green), and records an honest blocker alternative.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "validityDays": 90,
+  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "baseline": {
+    "prompt": "Write delivery-plan.md for getting the password-reset reliability fix all the way shipped. Cover phases and how you would finish."
+  },
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "kind": "agent",
+      "description": "Fresh-context agent with the full drive-to-delivery procedure produces the terminal-driven plan contract.",
+      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
+      "prompt": "Read ./SKILL.md completely, then write delivery-plan.md for one accepted multi-phase engineering objective: 'Password-reset email delivery is reliable for 99.9% of requests in production under the existing provider, with rollback ready.'\n\nYou MUST use these exact markdown headings (copy them literally):\n## Acceptance map\n## Delivery terminal\n## Research execute verify repair loop\n## Revert-safe PR outcome\n## Not merely local green\n## Honest blocker\n\nFill each section from the skill method (Startup/Graph/Loop/Done). Use real newlines in the file, not escaped \\\\n sequences.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "delivery-plan.md" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Acceptance map" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Delivery terminal" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Research execute verify repair loop" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Revert-safe PR outcome" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Not merely local green" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Honest blocker" },
+          { "type": "file-not-regex", "path": "delivery-plan.md", "contains": "done after the first PR regardless of evidence", "caseInsensitive": true }
+        ]
+      }
+    },
+    {
+      "id": "baseline-agent",
+      "kind": "agent",
+      "baseline": true,
+      "description": "Fresh-context baseline (no skill): same task, same delivery-terminal oracle.",
+      "prompt": "Write delivery-plan.md for getting the password-reset reliability fix all the way shipped. Cover phases and how you would finish.",
+      "timeoutMs": 600000,
+      "oracle": {
+        "assertions": [
+          { "type": "file-exists", "path": "delivery-plan.md" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Acceptance map" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Delivery terminal" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Research execute verify repair loop" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Revert-safe PR outcome" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Not merely local green" },
+          { "type": "file-regex", "path": "delivery-plan.md", "contains": "## Honest blocker" },
+          { "type": "file-not-regex", "path": "delivery-plan.md", "contains": "done after the first PR regardless of evidence", "caseInsensitive": true }
+        ]
+      }
+    }
+  ]
+}

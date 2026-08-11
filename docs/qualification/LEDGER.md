@@ -4,11 +4,11 @@ Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
 This is a **projection** of the per-package `qualification.json` records plus
 filed evidence; it is not a separate source of truth.
 
-## Current state (2026-08-11, waves 1–11)
+## Current state (2026-08-11, waves 1–12)
 
 - Capability packages: **57**
-- Qualified: **40** — adopt-repo-standards, analyze-causal-inference, analyze-critically, analyze-system-dynamics, author-skill, bound-request-scope, compose-product-portfolio, compose-product-program, compose-readme-marks, craft-human-agent-language, craft-product-interface, curate-skill-repository, decide-architecture-shape, design-product, design-skill-evals, distill-source-to-skill, edit-preserving-voice, engineer-agent-context, engineer-testable-requirements, execute-hard-cutover, forecast-with-calibration, maintain-product, model-security-threats, operate-customer-support, optimize-decision-model, optimize-store-listing, price-saas-subscription, produce-game-2d-map-assets, produce-game-2d-sprites, record-structured-deliberation, research-public-web, research-user-needs, review-domain, run-incident-response, run-product-feedback-loop, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
-- Native-activation selection evidence: **14/40** (analyze-critically,
+- Qualified: **42** — adopt-repo-standards, analyze-causal-inference, analyze-critically, analyze-system-dynamics, author-skill, bound-request-scope, build-product, compose-product-portfolio, compose-product-program, compose-readme-marks, craft-human-agent-language, craft-product-interface, curate-skill-repository, decide-architecture-shape, design-product, design-skill-evals, distill-source-to-skill, drive-to-delivery, edit-preserving-voice, engineer-agent-context, engineer-testable-requirements, execute-hard-cutover, forecast-with-calibration, maintain-product, model-security-threats, operate-customer-support, optimize-decision-model, optimize-store-listing, price-saas-subscription, produce-game-2d-map-assets, produce-game-2d-sprites, record-structured-deliberation, research-public-web, research-user-needs, review-domain, run-incident-response, run-product-feedback-loop, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
+- Native-activation selection evidence: **14/42** (analyze-critically,
   analyze-causal-inference, model-security-threats, engineer-agent-context,
   operate-customer-support, review-domain, research-user-needs,
   price-saas-subscription, optimize-store-listing, design-product,
@@ -232,6 +232,23 @@ Note: compose-readme-marks' first run
 (`run-2026-08-11T07-12-56-898Z`) used an unescaped `![` oracle regex
 (invalid pattern); the oracle was corrected to `!\\[` and the run re-done;
 the first run is kept as a record.
+
+
+## Wave-12 runs (product-core path)
+
+Wave-12 qualified the two product-core delivery capabilities with strict
+with-skill versus baseline output-contract oracles (exact required headings).
+Both baselines failed the same oracle while with-skill passed, so
+`incremental-value` is claimed. `injectionState` remains `not-verified`
+(fresh-context behavior tests; no native-activation cases declared).
+
+| Capability | Run | With-skill | Baseline | Verdict |
+| --- | --- | --- | --- | --- |
+| build-product | `run-2026-08-11T14-41-20-328Z` | pass | fail | qualified (incremental-value) |
+| drive-to-delivery | `run-2026-08-11T14-42-07-989Z` | pass | fail | qualified (incremental-value) |
+
+Earlier failed runs under openmodel 402 / gateway 503 and near-miss oracles are
+kept as records under the same `evals/<id>/` trees.
 
 ## Wave-1 finding (author-skill)
 

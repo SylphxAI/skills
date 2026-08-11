@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "capability": "drive-to-delivery",
+  "claim": "Produces one objective-to-terminal plan that binds a single accepted multi-phase objective, states the delivery terminal and acceptance map, uses research→execute→verify→repair loop language, requires evidence at the active delivery boundary (not merely local green), and records an honest blocker alternative.",
+  "evaluator": {
+    "name": "Sylphx Qualification Runner",
+    "kind": "host",
+    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
+  },
+  "candidate": {
+    "sourceRevision": "a09122d4e299300b16901c4f1a0fe5ab014f27a5",
+    "packageDigest": "sha256:e9f4b2425995f23aee789b251e2667116c63a6a0e3cecae477b33cf1e34348e1",
+    "catalogDigest": "sha256:6b2ce6baa6fd06b9cde51f2fbd4912da62df15602bca1470ed314ed8888f6ea8"
+  },
+  "environment": [
+    "node v22.23.2",
+    "python3 (Pillow)",
+    "codex codex-cli 0.147.0",
+    "codex exec agent args: -c model_provider=openrouter -c model=openai/gpt-4o-mini",
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
+  "startedAt": "2026-08-11T14:43:23.291Z",
+  "finishedAt": "2026-08-11T14:43:23.291Z",
+  "tasks": [
+    {
+      "id": "agent-follows-procedure",
+      "status": "pass",
+      "failures": [],
+      "baseline": false
+    },
+    {
+      "id": "baseline-agent",
+      "status": "fail",
+      "failures": [
+        "missing file delivery-plan.md",
+        "missing file delivery-plan.md",
+        "missing file delivery-plan.md",
+        "missing file delivery-plan.md",
+        "missing file delivery-plan.md",
+        "missing file delivery-plan.md",
+        "missing file delivery-plan.md",
+        "missing file delivery-plan.md"
+      ],
+      "baseline": true
+    }
+  ],
+  "comparison": {
+    "withSkill": "pass",
+    "baseline": "fail"
+  },
+  "patternScan": {
+    "kind": "automated-pattern-scan",
+    "verdict": "clean",
+    "scannedFiles": 23,
+    "findings": []
+  },
+  "activation": null,
+  "evidenceDigest": "sha256:eb0c213d94d607aae3cafa3b77bf58a7a37241809a8b677ef28e1c6e406cf22b",
+  "verdict": "qualified",
+  "injectionState": "not-verified",
+  "expiryDays": 90,
+  "runDir": "docs/qualification/evals/drive-to-delivery/run-2026-08-11T14-42-07-989Z"
+}
