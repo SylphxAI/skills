@@ -129,3 +129,14 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   `quality-north-star-usage.md`, engineering-standard README / full-standard /
   binding-predicates openings; cross-refs in README, PROJECT, MODEL,
   AUTHORITY-MAP, QUALIFICATION, LEDGER, PRINCIPLES.
+
+## Project documentation model (2026-08-12)
+
+- Binding product/repo doc altitude in `documentation-standard` under
+  `drive-to-delivery`: **Purpose · North Star · End state · Goals ·
+  Capabilities · Tools · Contracts · ADR · Delivery**.
+- Industry-aligned: North Star ≠ goals/OKRs ≠ design inventory ≠ field contracts.
+- `PROJECT.md` skeleton required by adopt-repo; this repo’s `PROJECT.md` is the
+  exemplar. Wired into design-product, craft-human-agent-language,
+  engineer-testable-requirements, author-skill, build-product, bound-request-scope,
+  drive-to-delivery, MODEL, AUTHORITY-MAP.

@@ -16,6 +16,9 @@ Keep **this request** right-sized: objective, in/out, non-goals, cut lines, and 
 ## Method (short)
 
 1. **Bind** objective, owning boundary, terminal condition, risk floor, non-goals.
+   Request scope is a **completable goal/work slice**, not a second product
+   North Star. Product win condition stays in project North Star / end state
+   (`documentation-standard` under `drive-to-delivery`).
 2. **Ground** facts vs inference; acquire only decision-critical evidence.
 3. **Choose the smallest complete path** (avoid → reuse → stdlib/platform → existing dep → new only if required).
 4. **Scale ceremony to risk** — trivial reversible edits stay direct; irreversible material changes earn deeper analysis.
