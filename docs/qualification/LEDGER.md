@@ -18,9 +18,11 @@ filed evidence; it is not a separate source of truth.
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
-- Verified Capability Yield: no eligible attempts yet (eligibility also
+- Product North Star compass: **Stage A — Trustworthy Job Coverage** (honest
+  current qualification of real jobs; zero false-qualified). Stage B —
+  Verified Capability Yield: no eligible attempts yet (eligibility also
   requires authorization in the actual context; receipts are the live
-  recording side)
+  recording side; this repository never fabricates them)
 
 Wave-1 qualification runs:
 

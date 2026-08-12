@@ -18,9 +18,9 @@ remains the sole `q-*` vocabulary and this document maps onto it (see
 
 ## One line
 
-**Deep basis, correct outcomes, minimal concepts — maximum capability; easy to
-change, clear to see, fast under load; hard to kill, hard to breach, costs
-priced in agent-native budgets.**
+**Deep basis, correct outcomes, minimal concepts—maximum capability; easy to
+change, impossible to fly blind, fast under load; hard to kill, hard to breach,
+costs priced in agent-native budgets.**
 
 ## Memory set (9)
 
@@ -224,9 +224,10 @@ decide tradeoffs; facets audit coverage.
 | `engineering-standard` (`q-*`) | Engineering instantiation under `build-product` |
 | `commercial-decision-standard` | Business-model / pricing / packaging instantiation |
 
-Mapping to the Quality North Star (`q-*`):
+Mapping to the **Quality North Star** engineering vocabulary (`q-*`) — not the
+**Product North Star** in [`docs/NORTH-STAR.md`](../NORTH-STAR.md):
 
-| Principle | North Star IDs |
+| Principle | Quality North Star IDs |
 | --- | --- |
 | Depth | `q-depth` |
 | Correctness | `q-correctness` (+ evidence floors in the constitution) |
@@ -237,6 +238,9 @@ Mapping to the Quality North Star (`q-*`):
 | Reliability | `q-reliability`, `q-availability`, `q-resilience` |
 | Security | `q-security` |
 | Economy | `q-economy` (agent-native lifecycle / entropy / attention / coordination cost) |
+
+Product win conditions (TJC / VCY, three durable concepts) live only in
+`docs/NORTH-STAR.md`.
 
 ## Provenance
 

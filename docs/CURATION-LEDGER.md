@@ -102,8 +102,8 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 ## Verified Capabilities clean break (2026-08-10)
 
 - Product identity is now **Sylphx Verified Capabilities** (open foundation):
-  Capability, Qualification, Outcome receipt; North Star metric = Verified
-  Capability Yield (see `docs/NORTH-STAR.md`, ADR-20260810).
+  Capability, Qualification, Outcome receipt; original North Star metric =
+  Verified Capability Yield (see `docs/NORTH-STAR.md`, ADR-20260810).
 - Every listing package carries `capability.json` (contract) and
   `qualification.json` (record; honest default `unqualified`). Catalog projects
   qualification state (0/57 qualified, 0 receipts at adoption).
@@ -114,3 +114,18 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Integrity gate now validates contracts, qualification records (expiry +
   evidence), and catalog projection; AutoSync promotion refuses qualification
   downgrade.
+
+## Stage-honest Product North Star (2026-08-12)
+
+- Full rewrite of `docs/NORTH-STAR.md`: product one-liner, three durable
+  concepts retained, **stage-honest metrics** — Stage A **Trustworthy Job
+  Coverage (TJC)** as active compass (0-receipt open foundation); Stage B
+  **Verified Capability Yield (VCY)** remains eventual product-system truth.
+- Naming hygiene: Product North Star vs Quality North Star (`q-*`) vs
+  universal Principles (9) — three layers, not one slogan.
+- ADR: `docs/history/adr/ADR-20260812-stage-honest-product-north-star.md`
+  (amends ADR-20260810).
+- Quality North Star surfaces rewritten for depth and separation:
+  `quality-north-star-usage.md`, engineering-standard README / full-standard /
+  binding-predicates openings; cross-refs in README, PROJECT, MODEL,
+  AUTHORITY-MAP, QUALIFICATION, LEDGER, project.manifest, PRINCIPLES.

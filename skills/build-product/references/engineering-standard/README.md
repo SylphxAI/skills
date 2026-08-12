@@ -6,15 +6,17 @@
 
 Policy constraints—compose onto matching host jobs.
 
-**Quality North Star** (sole quality vocabulary): Meta *Simple concepts,
-powerful usage* + **14 primary attributes** (Depth, Simplicity, Correctness,
-Security, Reliability, Availability, Resilience, Performance, Scalability,
-Economy, Observability, Maintainability, Evolvability, Testability). Readability
-is a facet of Maintainability (`q-readability` alias). **Memory set of 9:**
-Depth · Correctness · Simplicity · Evolvability · Observability · Performance &
+**Quality North Star** (sole **engineering** quality vocabulary—not the Product
+North Star in `docs/NORTH-STAR.md`): Meta *Simple concepts, powerful usage* +
+**14 primary attributes** (Depth, Simplicity, Correctness, Security,
+Reliability, Availability, Resilience, Performance, Scalability, Economy,
+Observability, Maintainability, Evolvability, Testability). Readability is a
+facet of Maintainability (`q-readability` alias). **Memory set of 9:** Depth ·
+Correctness · Simplicity · Evolvability · Observability · Performance &
 Velocity · Reliability · Security · Economy.
 Full body owns obligations; rule IDs bind selection, proof, and default quality
-precedence. The phrase **Modern Technical Bar** is retired.
+precedence. A `q-*` pass is never package qualification or Verified Capability
+Yield. The phrase **Modern Technical Bar** is retired.
 
 Full progressive-disclosure body: [references/full-standard.md](references/full-standard.md).  
 Rule IDs: [references/binding-predicates.md](references/binding-predicates.md).  

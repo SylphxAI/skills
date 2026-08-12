@@ -1,54 +1,195 @@
 # Quality North Star — usage, pocket questions, anti-examples
 
-Open when applying the North Star in design review, PR/design notes, finish
-passes, architecture tradeoffs, or retrospectives. Normative definitions and
-IDs live in [full-standard.md](full-standard.md) § Quality North Star and
-[binding-predicates.md](binding-predicates.md).
+**What this is.** Operating guide for the **Quality North Star** (`q-*`): the
+**sole engineering quality vocabulary** for durable product, design, code,
+architecture, and ops work under this Engineering Standard.
+
+**What this is not.**
+
+- Not the **Product North Star** for Sylphx Verified Capabilities  
+  → that is [`docs/NORTH-STAR.md`](../../../../../docs/NORTH-STAR.md)
+  (trusted methods; trust capped by version-scoped evidence; Stage A TJC /
+  Stage B VCY).
+- Not qualification evidence and not Verified Capability Yield.
+- Not a second universal principles document  
+  → principles: [`docs/policies/PRINCIPLES.md`](../../../../../docs/policies/PRINCIPLES.md).
+
+Normative attribute definitions and IDs:
+[full-standard.md](full-standard.md) § Quality North Star.  
+Binding rule IDs: [binding-predicates.md](binding-predicates.md).
+
+---
+
+## Why a Quality North Star exists
+
+Agents and humans can satisfy a ticket while leaving a system that is shallow,
+incorrect under failure, unobservable, expensive in entropy, or dual-pathed
+forever. The Quality North Star exists so durable work is judged against a
+**single, ambitious vocabulary**—few enough to remember, deep enough to force
+real tradeoffs—without inventing a new slogan list per repo.
+
+**Meta (center of gravity):**
+
+> *Simple concepts, powerful usage.*
+
+Use depth for insight and **integration for simplicity**; compose for maximum
+capability; under correctness and security floors, make the system steady,
+observable, fast enough, large enough, and changeable—**pricing agent-native
+cost**, not person-days.
+
+**Operating set:** Meta + **14 primary** attributes (`q-readability` is a
+Maintainability alias).  
+**Memory set (9):** Depth · Correctness · Simplicity · Evolvability ·
+Observability · Performance & Velocity · Reliability · Security · Economy.
+
+Grow by refining definitions, tests, and anti-examples—not by adding slogan
+rows.
+
+---
 
 ## How to use (or it stays a wall poster)
 
-| Occasion | Usage |
+| Occasion | Required usage |
 | --- | --- |
-| **Design review** | Layer A (Depth / Simplicity) first; then scan B/C in conflict precedence. Violations need written tradeoff + rollback/review. |
-| **PR / design doc** | Name 1–2 attributes intentionally strengthened or intentionally sacrificed—not the full table. |
-| **Product / finish** | Depth = one core concept fully resolved; Simplicity = fewest concepts covering maximum capability (ambition held). |
-| **Architecture decision** | Record rejected shallower option (Depth) and whether composition reduced special cases while holding or expanding coverage (Simplicity). |
-| **Retrospective** | Name which attribute broke → consequence → whether it hardens into a rule. |
-| **Retirement of wording** | Sentences that never guide a decision for six months: delete or merge; keep few and sharp. |
+| **Design review** | Clear **Layer A** (Depth / Simplicity) first. Then scan Layers B/C in **default quality precedence**. Violations need written tradeoff + owner + rollback/review. |
+| **PR / design note** | Name **1–2** attributes intentionally strengthened or intentionally sacrificed—not the full table. Attach evidence or residual. |
+| **Product / finish** | Depth = one core concept fully resolved end-to-end; Simplicity = fewest concepts covering **maximum** capability (ambition held). |
+| **Architecture decision** | Record the rejected shallower option (Depth) and whether composition reduced special cases while holding or expanding coverage (Simplicity). |
+| **Cutover / migration** | Evolvability + Economy: sole-writer terminal; dual-path only under `eng-hard-cut-01`; price dual-system **entropy** vs one-time verification/reversal. |
+| **Retrospective** | Name which attribute broke → consequence → whether it hardens into a rule ID or residual retirement. |
+| **Vocabulary retirement** | Sentences that never guided a decision for six months: delete or merge. Keep few and sharp. |
 
-Do not re-author a parallel quality list in product repos. Link or apply `q-*`
-IDs and prove them.
+**Do not** re-author a parallel quality list in product repositories. Link or
+apply `q-*` IDs and **prove** them (`eng-quality-01`, `eng-quality-02`).
 
-## Pocket seven questions
+**Do not** treat a Quality North Star pass as:
 
-1. Deep enough? Can fewer concepts cover *more* capability by composition?
-2. Correct? Are security boundaries clear?
-3. When it fails, is blast radius contained—and is the system observable?
-4. Fast and large enough? Where are budgets and measurement points?
-5. Which agent-native cost budget is saved (entropy, verification, attention,
-   runtime, coordination, or reversal), how is it measured, and which
-   principle is traded? (Economy — not person-days)
-6. Six months later: still changeable and testable?
-7. If default quality precedence is violated, are reason and rollback written?
+- package qualification,
+- Product North Star progress,
+- or live outcome proof.
 
-## Anti-examples (quick table)
+---
+
+## Default quality precedence
+
+Absent explicit business counter-instruction
+(`eng-quality-precedence-01`):
+
+> **Depth / Simplicity → Correctness → Security → Reliability / Availability /
+> Resilience → Observability → Performance / Scalability / Economy →
+> Maintainability / Evolvability / Testability**
+
+Rationale (compressed):
+
+1. Optimize before understanding → prepaid incident.
+2. Incorrect high availability only accelerates wrongness.
+3. Unobserved systems cannot honestly claim stability.
+4. Long-term changeability cannot replace “right and safe first.”
+5. Intentional inversion records **tradeoff, owner, rollback/review** in the
+   smallest durable home (comment / test / ADR / commercial ADR).
+
+Does **not** override legal/safety/ruin floors or Decision Quality / SOTA ends.
+
+---
+
+## Pocket questions (ambitious, not ceremonial)
+
+Use these as a **pre-flight**, not a form to fill with boilerplate.
+
+### Stance
+
+1. **Depth** — Root cause or workaround? Can you state the basis and the
+   rejected shallower path?
+2. **Simplicity** — After “simplifying,” did capability shrink? If yes, you
+   have not found the basis yet. Can one integrated system cover more than
+   these parallel ones?
+
+### Floors
+
+3. **Correctness** — What is the oracle? Can we re-run and see the
+   postcondition at the real layer (artifact → check → live)?
+4. **Security** — Who can touch this? Blast radius of a stolen credential?
+   Secrets in source/logs/manifests?
+
+### Operate under stress
+
+5. **Reliability / Availability / Resilience** — If one part dies, what does
+   the user see, and how long until healthy? Is wrong-but-up forbidden?
+6. **Observability** — In minutes, not days: signal → locus → cause?
+7. **Performance / Scalability** — SLO / load shape? What happens at 2× and
+   ~10×? Measured or hoped?
+
+### Sustain and pay
+
+8. **Maintainability / Evolvability / Testability** — How many places move for
+   the next real requirement? After hard-cut, one clear authority? Falsifiable
+   automated oracles?
+9. **Economy** — Which **agent-native** budget (entropy, verification,
+   attention, runtime, coordination, reversal)? How measured? Which principle
+   traded? (Person-days alone = incomplete.)
+
+### Precedence
+
+10. If default precedence is inverted, are reason, owner, and rollback written?
+
+---
+
+## Anti-examples (failure atlas)
 
 | Attribute | Typical failure |
 | --- | --- |
-| Depth | Reused a framework “best practice” without naming failure modes or a rejected simpler path |
-| Simplicity | Cut features/edge cases for cleanliness; fewer-features cosplay; or one god abstraction that forced more special cases |
-| Correctness | High-throughput writes that silently drop data |
-| Security | Admin surface exposed, secured only by “nobody knows the URL” |
-| Reliability | Always HTTP 200 with errors buried in body and no monitor |
-| Availability | Single point of failure, no health discovery; users are the pager |
-| Resilience | Infinite retry stampede kills the dependency |
-| Performance | Micro-optimize with no budget; report only mean latency |
-| Scalability | All state pinned to one-machine memory; “just add nodes” |
-| Economy | “Saving dev effort” / person-days as the cost story; no agent-native budget, measurement, or traded principle; counting only build cost while ignoring verification, entropy, attention, coordination, and reversal |
-| Observability | Logs without trace id; alerts with no owner action |
-| Maintainability | Clever one-liners no one can safely edit; unreadability sold as depth |
-| Evolvability | Business detail leaks every layer; swapping a store rewrites callers |
-| Testability | Logic locked in non-injectable static singletons; coverage without contract oracles |
+| **Depth** | Framework “best practice” copy without failure modes or a rejected simpler path; shallow multi-concept residue sold as “coverage” |
+| **Simplicity** | Cut edge cases for cleanliness; fewer-features cosplay; god abstraction that forced *more* special cases; false unification of incompatible concerns |
+| **Correctness** | High-throughput writes that silently drop data; 200 OK with wrong body; green tests that never issue the real action |
+| **Security** | Admin surface secured only by obscurity; secrets in repo or logs; trust boundary added without threat model |
+| **Reliability** | Always HTTP 200 with errors buried; side effects without idempotency; workers without durable transitions |
+| **Availability** | Single point of failure; users as pager; “uptime” while serving wrong answers |
+| **Resilience** | Infinite retry stampede kills the dependency; no bulkhead; recovery that corrupts state |
+| **Performance** | Micro-optimize with no budget; report mean latency only; cost ignored |
+| **Scalability** | All state pinned to one machine; “just add nodes/K8s” as architecture; premature full distribution with no partition story |
+| **Economy** | “Saved eng time” as the whole cost story; counting only build cost while ignoring verification, entropy, attention, coordination, reversal; calendar scarcity used to keep permanent dual paths |
+| **Observability** | Logs without correlation; alerts with no owner action; dashboards as success theater |
+| **Maintainability** | Clever one-liners no one can safely edit; unreadability sold as depth; god modules; unowned dual paths |
+| **Evolvability** | Business detail leaks every layer; swapping a store rewrites all callers; forever flags; dual writers as steady state |
+| **Testability** | Logic locked in non-injectable statics; coverage vanity; source-string change-detector tests as durable product contracts |
+
+---
+
+## Worked application patterns
+
+### A. Small pure-logic change
+
+- In scope often: `q-correctness`, `q-testability` (± `q-maintainability`).
+- Evidence: unit/property oracle on exact candidate; no canary essay required.
+
+### B. New trust boundary or privileged action
+
+- In scope: `q-security`, `q-correctness`, `q-observability` (+ threat model
+  via `model-security-threats` when blast is material).
+- Evidence: deny-by-default, least privilege, audit path, negative tests.
+
+### C. Queue / worker / money path
+
+- In scope: `q-reliability`, `q-resilience`, `q-correctness`, `q-observability`,
+  often `q-economy` (reversal, verification).
+- Evidence: idempotency, timeout/retry budget, durable transitions, recovery
+  drill proportionate to risk.
+
+### D. Cutover / predecessor retirement
+
+- In scope: `q-evolvability`, `q-correctness`, `q-economy` (entropy),
+  `eng-hard-cut-01/02`, `eng-product-dual-ban-01`.
+- Evidence: destination sole writer, predecessor retired, dual only under
+  risk-class gates—not calendar fear.
+
+### E. Docs-only / skill package authoring
+
+- In scope: `q-depth`, `q-simplicity`, `q-maintainability` (legibility),
+  `q-economy` (attention/entropy of the instruction surface).
+- Still **not** Product North Star progress unless qualification or install
+  truth moved.
+
+---
 
 ## Center (for agents and humans)
 
@@ -57,9 +198,14 @@ IDs and prove them.
 > observable, fast enough, large enough, and changeable — pricing agent-native
 > cost, not person-days.
 
-**Operating set = Meta + 14 primary attributes** (`q-readability` is a
-Maintainability alias; `q-economy` = agent-native entropy/verification/
-attention/runtime/coordination/reversal cost).
-**Memory set = Meta + 9** (Depth · Correctness · Simplicity · Evolvability ·
-Observability · Performance & Velocity · Reliability · Security · Economy).
-Grow by refining definitions and anti-examples—not by adding slogan rows.
+**Operating set = Meta + 14 primary attributes**  
+**Memory set = Meta + 9 principles-aligned names**
+
+When Product North Star and Quality North Star both appear in one task:
+
+1. Product North Star decides whether the **capability/trust** work is the
+   right job.
+2. Quality North Star decides whether the **engineering artifact** is good
+   enough to land.
+3. Qualification / receipts decide whether **trust and outcomes** may be
+   claimed externally.

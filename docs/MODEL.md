@@ -1,7 +1,8 @@
 # Capability model
 
-The product identity is **Sylphx Verified Capabilities** (see
-[`NORTH-STAR.md`](NORTH-STAR.md)). A **Skill** is the host-standard package
+The product identity is **Sylphx Verified Capabilities**. The **Product North
+Star** (one-liner, three concepts, stage-honest metrics) is
+[`NORTH-STAR.md`](NORTH-STAR.md). A **Skill** is the host-standard package
 format that carries one **Capability**: one portable user job with boundaries,
 inputs and outputs, required tools/data/permissions, failure semantics, and an
 externally observable outcome contract.
@@ -79,10 +80,11 @@ Not listings. One owner skill each; others link. No standards bag skill.
 
 Constraint packs resolve only under applying skills. Never invent top-level
 `skills/<pack>-standard/` listings for standards, profiles, or matrices.
-Engineering quality vocabulary is the **Quality North Star** owned by
+Engineering quality vocabulary is the **Quality North Star** (`q-*`) owned by
 `build-product/references/engineering-standard` (Meta + 14 primaries; Simplicity
 = fewest concepts covering maximum capability; Economy = agent-native
 entropy/verification/attention/runtime/coordination/reversal cost, not
 person-days; default quality precedence; not a listing skill). Quality North
 Star is an authoring quality vocabulary; it is **not** qualification evidence
-and never substitutes for Verified Capability Yield (see `NORTH-STAR.md`).
+and never substitutes for Product North Star metrics (Stage A TJC / Stage B
+Verified Capability Yield — see `NORTH-STAR.md`).
