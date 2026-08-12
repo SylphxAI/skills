@@ -9,12 +9,15 @@ are retired.
 | engineering-standard | skills/build-product/references/engineering-standard |
 | risk-matched-verification-standard | skills/build-product/references/risk-matched-verification-standard |
 | frontier-verification-standard | skills/build-product/references/frontier-verification-standard |
+| technology-stack-profile | skills/select-dependency-versions/references/technology-stack-profile |
+| database-cutover-and-migration | skills/execute-hard-cutover/references/database-cutover-and-migration.md |
 | delivery-standard | skills/drive-to-delivery/references/delivery-standard |
 | autonomous-execution-standard | skills/drive-to-delivery/references/autonomous-execution-standard |
 | source-authoring-standard | skills/drive-to-delivery/references/source-authoring-standard |
 | ci-admission-standard | skills/drive-to-delivery/references/ci-admission-standard |
 | ci-runner-capacity-standard | skills/drive-to-delivery/references/ci-runner-capacity-standard |
 | parallel-change-integration-standard | skills/drive-to-delivery/references/parallel-change-integration-standard |
+| agent-native-queued-trunk (ADR) | docs/history/adr/ADR-20260803-agent-native-queued-trunk.md |
 | sota-execution-standard | skills/record-structured-deliberation/references/sota-execution-standard |
 | decision-quality-standard | skills/record-structured-deliberation/references/decision-quality-standard |
 | agent-first-development-standard | skills/engineer-agent-context/references/agent-first-development-standard |

@@ -140,7 +140,7 @@
         },
         "rules": {
           "type": "array",
-          "minItems": 7,
+          "minItems": 8,
           "items": {
             "oneOf": [
               { "$ref": "#/$defs/selectorOutcomeAssertion" },
@@ -148,7 +148,8 @@
               { "$ref": "#/$defs/roleRequirementAssertion" },
               { "$ref": "#/$defs/completionAssertion" },
               { "$ref": "#/$defs/contractStackAssertion" },
-              { "$ref": "#/$defs/interoperabilityStackAssertion" }
+              { "$ref": "#/$defs/interoperabilityStackAssertion" },
+              { "$ref": "#/$defs/databaseMigrationStackAssertion" }
             ]
           }
         }
@@ -463,6 +464,139 @@
             "publicProjection": { "const": "explicit-allowlist-only" }
           }
         }
+      }
+    },
+    "databaseMigrationStackAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "appliesTo",
+        "engine",
+        "mode",
+        "schemaSources",
+        "productionBans",
+        "ciSafety",
+        "applyPolicy",
+        "revertSurface",
+        "queryToolRule",
+        "unknownDialectOutcome"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/kebab" },
+        "kind": { "const": "database-migration-stack-requirement" },
+        "appliesTo": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "relational-product-database",
+              "schema-change",
+              "data-backfill-with-schema",
+              "migration-apply"
+            ]
+          }
+        },
+        "engine": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "scope", "cliPinPolicy"],
+          "properties": {
+            "name": { "const": "atlas" },
+            "scope": { "const": "sole-production-schema-apply-authority" },
+            "cliPinPolicy": {
+              "const": "single-version-os-arch-matching-apply-images"
+            }
+          }
+        },
+        "mode": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["production", "localDisposable"],
+          "properties": {
+            "production": { "const": "versioned-migrations" },
+            "localDisposable": {
+              "enum": [
+                "versioned-migrations",
+                "declarative-dev-only-with-no-prod-credentials"
+              ]
+            }
+          }
+        },
+        "schemaSources": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "orm-external-schema-loader",
+              "sql-schema",
+              "hcl-schema",
+              "composite-schema"
+            ]
+          }
+        },
+        "productionBans": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "orm-push-to-live-database",
+              "second-production-migration-runner",
+              "unpinned-floating-atlas-cli",
+              "macos-hash-commit-for-linux-apply",
+              "migrate-down-as-ordinary-recovery"
+            ]
+          }
+        },
+        "ciSafety": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ephemeralFullHistoryReplay",
+            "destructiveOrDataDependGate",
+            "directoryIntegrity",
+            "atlasMigrateLint"
+          ],
+          "properties": {
+            "ephemeralFullHistoryReplay": { "const": "required" },
+            "destructiveOrDataDependGate": { "const": "required" },
+            "directoryIntegrity": { "const": "required" },
+            "atlasMigrateLint": {
+              "const": "when-admitted-edition-evaluates-schema-source"
+            }
+          }
+        },
+        "applyPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["direction", "identity", "lock"],
+          "properties": {
+            "direction": { "const": "forward-only-ordinary" },
+            "identity": { "const": "collision-resistant-migration-versions" },
+            "lock": { "const": "engine-native-apply-lock-required" }
+          }
+        },
+        "revertSurface": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "pitr-or-volume-snapshot",
+              "append-only-business-log",
+              "forward-repair-migration",
+              "previous-healthy-deployment"
+            ]
+          }
+        },
+        "queryToolRule": {
+          "const": "runtime-query-tools-compile-against-migration-derived-schema-only"
+        },
+        "unknownDialectOutcome": { "const": "blocked-until-profile-review" }
       }
     },
     "clientStack": {

@@ -4,15 +4,15 @@
   "kind": "EnterpriseProfile",
   "profile": {
     "id": "technology-stack-profile",
-    "revision": "2026-07-29.2",
-    "contentDigest": "sha256:33ede8b210636ff6646f534156a06e5367de23bb9b88caaa6490009b34a3c019",
+    "revision": "2026-08-12.1",
+    "contentDigest": "sha256:183c1ee98c728525d54b039ac77ea3b821d48380bff0cb7a7dc6399bdd7ad89b",
     "contentDigestScope": "canonical-json-excluding:/profile/contentDigest",
     "owner": "SylphxAI/skills",
-    "decisionRef": "references/ADR-20260729-system-interoperability-stack.md",
+    "decisionRef": "references/ADR-20260812-atlas-database-migration-stack.md",
     "lifecycle": "active",
     "authorityClass": "governance-constraint",
-    "effectiveOn": "2026-07-29",
-    "reviewBy": "2026-10-29"
+    "effectiveOn": "2026-08-12",
+    "reviewBy": "2026-11-12"
   },
   "selector": {
     "matchAll": [
@@ -94,6 +94,17 @@
       "constraints": [
         "Use CloudEvents only as the outer envelope for cross-boundary integration events; the schema-first payload remains semantic authority and local domain events need no transport wrapper.",
         "Bind OpenTelemetry at adapters and bootstrap, keep raw operator evidence protected, and expose public operational facts only through an explicit allowlisted product or protocol contract."
+      ]
+    },
+    {
+      "key": "engineering.database.migration-required-stack",
+      "assertionIds": [
+        "database-migration-stack"
+      ],
+      "rationale": "One language-agnostic Atlas versioned migration authority prevents per-repository engine forks and ORM push-to-prod, while CI replay and destructive gates protect live data.",
+      "constraints": [
+        "Use Atlas as the sole production schema-change applicator for relational product databases on every language and project size.",
+        "Ban ORM push to live databases, a second production migration runner, unpinned Atlas CLI binaries, and migrate-down as ordinary recovery."
       ]
     }
   ],
@@ -375,6 +386,57 @@
           "operatorEvidence": "protected-by-default",
           "publicProjection": "explicit-allowlist-only"
         }
+      },
+      {
+        "id": "database-migration-stack",
+        "kind": "database-migration-stack-requirement",
+        "appliesTo": [
+          "relational-product-database",
+          "schema-change",
+          "data-backfill-with-schema",
+          "migration-apply"
+        ],
+        "engine": {
+          "name": "atlas",
+          "scope": "sole-production-schema-apply-authority",
+          "cliPinPolicy": "single-version-os-arch-matching-apply-images"
+        },
+        "mode": {
+          "production": "versioned-migrations",
+          "localDisposable": "versioned-migrations"
+        },
+        "schemaSources": [
+          "orm-external-schema-loader",
+          "sql-schema",
+          "hcl-schema",
+          "composite-schema"
+        ],
+        "productionBans": [
+          "orm-push-to-live-database",
+          "second-production-migration-runner",
+          "unpinned-floating-atlas-cli",
+          "macos-hash-commit-for-linux-apply",
+          "migrate-down-as-ordinary-recovery"
+        ],
+        "ciSafety": {
+          "ephemeralFullHistoryReplay": "required",
+          "destructiveOrDataDependGate": "required",
+          "directoryIntegrity": "required",
+          "atlasMigrateLint": "when-admitted-edition-evaluates-schema-source"
+        },
+        "applyPolicy": {
+          "direction": "forward-only-ordinary",
+          "identity": "collision-resistant-migration-versions",
+          "lock": "engine-native-apply-lock-required"
+        },
+        "revertSurface": [
+          "pitr-or-volume-snapshot",
+          "append-only-business-log",
+          "forward-repair-migration",
+          "previous-healthy-deployment"
+        ],
+        "queryToolRule": "runtime-query-tools-compile-against-migration-derived-schema-only",
+        "unknownDialectOutcome": "blocked-until-profile-review"
       }
     ]
   },
@@ -386,7 +448,8 @@
       "engineering.contract.cross-platform-required-stack",
       "engineering.interoperability.event-and-telemetry",
       "engineering.language.completion-measure",
-      "engineering.language.web-required-technology"
+      "engineering.language.web-required-technology",
+      "engineering.database.migration-required-stack"
     ],
     "requiredFields": [
       "id",
@@ -411,13 +474,15 @@
       "A new public or cross-runtime client platform has no selected generated client path.",
       "A cross-boundary integration event lacks a CloudEvents envelope or re-authors its payload semantics.",
       "OpenTelemetry SDK types enter domain policy or raw operator telemetry appears in an unintended public/customer contract.",
+      "A repository uses a second production migration runner, ORM push to a live database, or unpinned Atlas apply binary.",
+      "CI lacks ephemeral full-history migration replay or a destructive/data-depend gate for relational schema changes.",
       "Current evidence shows a selected technology is dominated on correctness, security, privacy, legal, or an explicit task requirement.",
       "Another active profile overlaps this selector and selection key.",
       "The reviewBy date is reached."
     ]
   },
   "retirement": {
-    "predecessor": "technology-stack-profile@2026-07-29.1",
+    "predecessor": "technology-stack-profile@2026-07-29.2",
     "successor": null,
     "terminal": "An admitted active successor revision covers this selector and all selection keys, the adoption system resolves selected repositories to that successor, all exceptions are closed, and this revision is marked retired.",
     "retiredRevisionSelectable": false

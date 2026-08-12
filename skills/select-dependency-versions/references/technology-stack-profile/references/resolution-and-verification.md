@@ -41,6 +41,15 @@ instructions.
    at the declared adapter/bootstrap telemetry boundary. Any other envelope,
    payload authority, domain SDK dependency, or public evidence disposition is
    a profile violation.
+7. For relational product databases, schema changes, migration apply, or
+   schema-coupled backfill, resolve the single
+   `database-migration-stack-requirement`. Atlas is the sole production
+   schema-change applicator. Versioned migrations are required. ORM push to
+   live databases, a second production migration runner, unpinned CLI
+   binaries, and migrate-down as ordinary recovery are violations. CI must
+   provide ephemeral full-history replay, a destructive/data-depend gate, and
+   directory integrity; `atlas migrate lint` only when the admitted edition
+   evaluates the schema source.
 
 The current rule table requires Rust for backend roles and
 TypeScript/Bun/Next for web roles. It forbids backend-effect ownership by web
@@ -48,8 +57,9 @@ roles and TypeScript backend fallback. It also selects Protobuf Editions, Buf,
 Protovalidate, Connect Rust, the Connect/gRPC/gRPC-Web protocol family, and the
 native client matrix for web, Flutter, Apple, Android, Rust, Go, Python, Node,
 and .NET. It selects CloudEvents for cross-boundary integration-event context
-and OpenTelemetry for protected operational telemetry. Those values are read
-from the profile, not duplicated in an adapter.
+and OpenTelemetry for protected operational telemetry. It selects Atlas as the
+sole production database migration engine for every language and repository
+size. Those values are read from the profile, not duplicated in an adapter.
 
 Product repositories project intended component topology through the optional
 `architecture.components` map in `project.manifest.json` and bind this Profile
@@ -78,6 +88,9 @@ production status remain the live work system observations, not repo-authored fi
 | Integration event crossing Capability/process/runtime/repository ownership | cross-boundary event | CloudEvents envelope plus schema-first payload; delivery/idempotency/replay remain explicit |
 | In-process domain event | local domain fact | native typed event; no CloudEvents wrapper required |
 | Production operational signal | telemetry | OpenTelemetry at adapters/bootstrap; protected by default, explicit allowlist for public/customer projection |
+| Relational product schema change or migration apply | database migration | Atlas versioned migrations; sole production applicator; ban ORM push and second migrator |
+| Runtime query tool (sqlx, Drizzle, etc.) | query layer | Compile/check against migration-derived schema; never a second apply authority |
+| “Small repo / early stage” alternate migration tool | stack fork | profile violation; one fleet method |
 
 Transport shape does not decide implementation ownership. An HTTP or RPC boundary may exist on
 either side. Ownership follows the semantic role and effects behind the
@@ -131,6 +144,9 @@ production defect, parity gap, or missing capability remains a Rust work item.
   backend business truth are not duplicated across state systems.
 - Search for TypeScript backend fallback, dual-run, shadow, recovery, and
   business-effect paths.
+- For relational databases, prove Atlas is the sole production migration
+  applicator, CI has ephemeral replay plus destructive/data-depend gate, CLI
+  is OS/arch-pinned for apply images, and no ORM push/second migrator remains.
 - Compute completion from the machine-declared role/effect denominator and name
   unresolved domains explicitly.
 - Keep source admission, product-manifest resolution, deployment, and live

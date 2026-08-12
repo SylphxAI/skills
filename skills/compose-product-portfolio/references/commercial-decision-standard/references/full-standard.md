@@ -150,6 +150,24 @@ SKU, price, P&L, repository or deployment. Use a Composable Product Portfolio
 Contract to resolve the structural topology; use the Commercial ADR to accept
 the pricing, packaging, entitlement, accounting and market consequences.
 
+## Public product narrative
+
+Public product narrative (landing, brand, sell-oriented README, launch and
+category copy) presents the product promise, category, and destination outcome.
+It is not a substitute for engineering status, qualification records, or
+delivery proof.
+
+When writing or reviewing that surface:
+
+- Lead with the product promise, category, ambition, and intended outcome.
+- Do not open with internal gap inventories, residual lists, or qualification
+  status language.
+- Keep executable truth separate: delivery state, tests, qualification,
+  migrations, deploy proof, and Work status remain evidence-bound.
+- Live store listings, checkout, charged prices, refunds, and named compliance
+  badges must match what the published channel or payment rail actually
+  presents.
+
 ## Roadmap Decisions
 
 A roadmap item is not "important" because an agent or owner wants it. It is

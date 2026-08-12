@@ -42,12 +42,13 @@ Default is **hard-cut**. Dual-path is exceptional tech debt.
 - Verify original oracles on destination
 - Delete predecessor paths, shims, dual writers, dead tests/docs
 
-**Exception — expand-contract (only if all true):**
-- Demonstrated large-scale user or live production impact if cut hard now
-- Measured risk that a temporary dual path reduces
-- Named owner + **dated** contract/retirement gate
+**Exception — temporary dual-write / expand steps (eng-hard-cut-01):**
+- Risk class hits (any): money/conserved value; multi-tenant shared blast;
+  large online DDL/lock; external un-updatable clients; irreversible effects
+- All procedure gates: named live failure mode; dual EV lower than hard-cut
+  incident EV; owner + dated contract; readiness oracles; recovery drill
 
-“Might break someone” without scale/path/cost is **not** an exception.
+“Might break someone” without a risk class and gates is **not** an exception.
 
 ### 4. Implement
 - When landing source: L1 batch → L2 atomic commits → L3 revert-safe PR outcome(s) (`source-authoring-standard`).
@@ -60,7 +61,7 @@ Default is **hard-cut**. Dual-path is exceptional tech debt.
 ### 5. Deliver / verify
 - Original oracles for the migrated behavior (not only local green)
 - Destination is **sole writer** for the framed boundary
-- Predecessor removed or behind an explicit dated residual with owner
+- Predecessor deleted (or one-way no-write adapter under eng-hard-cut-01 gates only)
 - Separate local vs landed vs live claims when delivery is in scope
 
 ## Cycle done
@@ -68,8 +69,8 @@ Default is **hard-cut**. Dual-path is exceptional tech debt.
 Migration cycle is done when:
 
 1. Destination owns the framed truth on the correct boundary, and
-2. Predecessor dual-path is gone **or** an exception residual has owner + date
-   + contract proof plan, and
+2. Predecessor dual-path is gone (exception residual is incomplete status only,
+   with owner + date + contract; not permission to keep dual systems), and
 3. Oracles for the destination path pass.
 
 Not done: “compat left for later,” undated flags, dual packages for comfort.

@@ -263,15 +263,20 @@ Normalize only declared nondeterminism such as timestamps, generated IDs, trace 
 
 ### Lifecycle-stage selection
 
+Every stage uses the **same maximum-scale method**: hard-cut terminal (destination
+sole writer + predecessor retirement). Stage changes **proof intensity**, not the
+stack or dual-system philosophy. Project size is never a fork.
+
 | Stage | Default migration strategy |
 | --- | --- |
-| Development | One exact-candidate code cutover; boundary-complete risk-matched tests/replay; delete old structure immediately |
-| Internal dogfood without external users | One-step where state/effects are reversible; otherwise a short synthetic/shadow boundary check |
-| Internal beta with real users | Expand-contract only for affected compatibility/data/effect paths; bounded exposure and automatic rollback |
-| Public production | Risk-proportionate progressive authority switch and live readback after full pre-production proof |
+| Development | One exact-candidate hard-cut; boundary-complete risk-matched tests/replay; delete old structure immediately |
+| Internal dogfood without external users | Hard-cut terminal; short synthetic/shadow only when reversible-state oracles need it; then delete predecessor |
+| Internal beta with real users | Hard-cut terminal; temporary fenced dual-write/shadow or in-destination schema multi-step only under eng-hard-cut-01 risk-class gates; dated contract; automatic rollback of authority when guardrails trip |
+| Public production | Hard-cut terminal after full pre-production proof; temporary dual-write/shadow or progressive cohort only under eng-hard-cut-01 risk-class gates; live readback for live-authority claims; predecessor retired |
 
 No fixed-day soak is implied. Any calendar wait must name a time-dependent
-hypothesis that active proof cannot credibly test.
+hypothesis that active proof cannot credibly test. Calendar scarcity and
+“migration takes too long” are invalid reasons to keep product dual systems.
 
 ## Migration event schema
 

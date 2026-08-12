@@ -65,7 +65,7 @@ Read all references for a complete marketing system. For a bounded review, load 
 
 ## Operating rules
 
-1. Consume a versioned product promise, audience modes, claim-proof registry, price/offer/entitlement source, release state, platform/territory availability, and support truth. Missing proof blocks the claim, not construction of the adapter.
+1. Consume a versioned product promise, audience modes, claim-proof registry, price/offer/entitlement source, release state, platform/territory availability, and support truth. Missing proof blocks the claim, not construction of the adapter. Public copy leads with product promise and category; do not open with internal residual or qualification language.
 2. Label `given`, `observed`, `assumed`, `hypothesis`, and `decision`. Separate platform-reported attribution, observed correlation, controlled incrementality, modeled contribution, and strategic judgment.
 3. Define audience job/intent/lifecycle state, exclusions, consent, age/territory/sensitive-category policy, expected recipient value, message, channel role, and natural frequency before content generation or spend.
 4. Sweep website/landing, SEO/AEO, store, content, social, community, creator/influencer, PR, partner/affiliate, referral, cross-promotion, lifecycle CRM, reputation, launch, paid search/social/display/video, creative, experimentation, attribution, incrementality, MMM, fraud, brand safety, and operations.

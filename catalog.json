@@ -53,10 +53,10 @@
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, manifest, fences.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:ae4b1df3ee556a0ac2854e216b8c8ddb8358bf0bf397b74c232c0f58620de0e0",
+      "packageDigest": "sha256:820034bd9e1a39b444c94fcee2f3e6aae05a45889711b177fc2f772a1911d08c",
       "capability": {
         "job": "Bring a concrete repository onto the engineering baseline: constitution projection, project facts, fences, conformance entrypoints, retire predecessor layouts.",
-        "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired or a dated residual with an owner for the framed scope.",
+        "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired for the framed scope (residuals are incomplete status only, not dual-system permission).",
         "oracleOwner": "user-system"
       },
       "qualified": true,
@@ -157,7 +157,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:221de74e63eba8ad43f7a65840180aad7f01c959edc43c177fa2ec39f678113c",
+      "packageDigest": "sha256:5959871d00dfc50c4de93536fbd29f549d0a6d88cb722a54f4cbedd777422881",
       "capability": {
         "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
@@ -170,7 +170,7 @@
       "name": "compose-product-portfolio",
       "description": "Compose multi-product portfolio: platform vs products, connectors, bundles.",
       "path": "skills/compose-product-portfolio/SKILL.md",
-      "packageDigest": "sha256:6964699eade74688e5be478edba690642c97fb0c86c8a28231250fa271d2aad8",
+      "packageDigest": "sha256:10cda07aa2b4b4b5408ef97757863f405f1efec0f11a77fb922a4408bb73967f",
       "capability": {
         "job": "Compose a multi-product portfolio: product-unit boundaries, typed connector graphs, and keep/extract/merge/retire decisions.",
         "outcomeObservable": "A Composable Product Portfolio Contract where every unit has a standalone job, contract, lifecycle, and support path, every connector edge names its contract and state owner, and decisions carry evidence and handoffs.",
@@ -261,7 +261,7 @@
       "name": "decide-architecture-shape",
       "description": "Decide one architecture shape from options with tradeoffs.",
       "path": "skills/decide-architecture-shape/SKILL.md",
-      "packageDigest": "sha256:7e5711f0d58535658792bfb9094b889b3cab6af824d601e5e578e48a8493fb81",
+      "packageDigest": "sha256:2c07fa48db87640fdc7c1ba1cac74857e48322522b21f771215b91119943e7d8",
       "capability": {
         "job": "Decide one architecture shape from options and drive it through independently verifiable convergence slices with parity proof and cutover.",
         "outcomeObservable": "A decided shape with each slice carrying exact-candidate parity proof, a cutover that retired obsolete structure at the real lifecycle stage, and a reconciled migration ledger reporting implementation, merge, deployment, and retirement separately.",
@@ -287,7 +287,7 @@
       "name": "design-product",
       "description": "Design a product blueprint (app, game, SaaS, etc.); shape depth in references.",
       "path": "skills/design-product/SKILL.md",
-      "packageDigest": "sha256:892e222497a0c05dd55e79d4d5297d8ffb91d18e6f82e4ef0e6700dc6bae714e",
+      "packageDigest": "sha256:04348dac6728340e8ea834089565ca9e9065463b0fb8ecb33c1cd72b6ec967e5",
       "capability": {
         "job": "Design a product blueprint (app, game, SaaS, or similar) with one deep core concept and build-ready acceptance criteria.",
         "outcomeObservable": "A product design blueprint with one deep core concept, critical flows and states, named quality tradeoffs with rollback conditions, and acceptance criteria a builder can test.",
@@ -326,7 +326,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:e9f4b2425995f23aee789b251e2667116c63a6a0e3cecae477b33cf1e34348e1",
+      "packageDigest": "sha256:d7a52e0d8c01a8d7a74cc7cdc42cd9c15bb0672c301079ecfc2f5999bb940dd0",
       "capability": {
         "job": "Drive one accepted multi-phase objective (engineering or product) to its delivery terminal with evidence at the active delivery boundary.",
         "outcomeObservable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
@@ -378,10 +378,10 @@
       "name": "execute-hard-cutover",
       "description": "Hard-cut predecessor to destination sole writer; retire dual paths.",
       "path": "skills/execute-hard-cutover/SKILL.md",
-      "packageDigest": "sha256:21342f849b80701146ba586385b8d46075e382e04b44b362d624caf1d9057185",
+      "packageDigest": "sha256:7abf5a44702e6f1e53e0b1be4a2b69bfb664c95c714e6494e10115d211ffd20b",
       "capability": {
         "job": "Hard-cut a predecessor to a destination sole writer and retire dual paths with backfill and proof.",
-        "outcomeObservable": "The destination is the sole writer for the named surface under real checks, the predecessor is retired or time-boxed with kill criteria, and backfill, cut, and residual evidence are recorded.",
+        "outcomeObservable": "The destination is the sole writer for the named surface under real checks, the predecessor is retired (time-boxed dual only under eng-hard-cut-01 gates), and backfill, cut, and residual incomplete-status evidence are recorded.",
         "oracleOwner": "user-system"
       },
       "qualified": true,
@@ -404,7 +404,7 @@
       "name": "finish-product",
       "description": "Finish/deburr an integrated product with re-captured evidence.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:667ea71b244dcc9ee7264b65cdc73c9788f61446b6d8ec2d826e13697d282856",
+      "packageDigest": "sha256:3cbaee8b7d3be94c3b215a222b6b75f3ac8309befacc9445df77ae3e1b9ce13f",
       "capability": {
         "job": "Finish and deburr an integrated product to its declared target with re-captured render, play, regression, and delivery evidence.",
         "outcomeObservable": "The product reaches its declared finish target with re-captured render or playthrough evidence, regression and budget checks, and a blocker list that names remaining delivery state truthfully.",
@@ -482,7 +482,7 @@
       "name": "optimize-store-listing",
       "description": "Optimize store listing: metadata, creatives, conversion, compliance.",
       "path": "skills/optimize-store-listing/SKILL.md",
-      "packageDigest": "sha256:c3a3e03e60aae51aed2c7675c703fd608f14265f9e7a156002287f260c8f82cc",
+      "packageDigest": "sha256:ba2fef6f2511e8920c588e87fe1a57048ea6cf1a34b87df2d8ec2e7a41f98318",
       "capability": {
         "job": "Optimize store listing: metadata, creatives, localization, conversion experiment, compliance, with exact-channel revisions.",
         "outcomeObservable": "A Channel Listing and Creative Sequence where every claim maps to exact shipped behavior, assets pass channel QA by digest, localization is native-QA'd, and conversion gains survive trust and retention countermetrics with live readback.",
@@ -690,7 +690,7 @@
       "name": "select-dependency-versions",
       "description": "Select package/runtime versions from live authoritative sources.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:33139ff5615d0a7e54eb6d50c4e2759fb8c0a7a45b5d366cc441e20b35488f3b",
+      "packageDigest": "sha256:d93061169d4bbcdd85883a7130a930ce271ab9dff820d212c3fcb8fc131a2357",
       "capability": {
         "job": "Select package and runtime versions from live authoritative sources with exact versions, sources, and applied pins.",
         "outcomeObservable": "Selected versions trace to a live registry or release API with the exact source recorded, pins are applied in owning manifests, and the repo's install, build, and tests pass or residuals are explicit.",

@@ -384,7 +384,7 @@ An architecture migration is complete only when:
    pass.
 
 Metadata-only, docs-only, folder-only, re-export-only, or mechanical file-split
-changes cannot satisfy this terminal. In development or internal dogfood
-without real-user state risk, prefer a verified one-step cutover. Use
-expand/contract or runtime canaries only for a demonstrated live compatibility,
-data, or external-effect risk—not as a default calendar delay.
+changes cannot satisfy this terminal. Cutover terminal is hard-cut: destination
+sole writer and predecessor retirement. Temporary dual-write/shadow or expand
+steps only under `eng-hard-cut-01` risk-class and procedure gates; schema
+multi-step stays inside the destination system. Not a default calendar delay.

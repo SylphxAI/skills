@@ -17,28 +17,31 @@ Run a hard cutover when a predecessor implementation must stop owning a path and
 
 1. **Name the cut.** Predecessor, destination, traffic/data surface, and terminal: destination sole writer; predecessor retired for that surface.
 2. **Inventory dependency.** Callers, data, jobs, docs, install paths, feature flags. Record what must migrate.
-3. **Prefer hard cut.** Default is switch + retire. Use short expand/contract only when required for safety, with an explicit end date and owner.
-4. **Backfill.** Move or rebuild required state at the destination before cut. Verify with original oracles, not memory.
-5. **Cut traffic.** Point writers and readers at destination. Block new predecessor writes.
-6. **Retire predecessor.** Delete or quarantine dead paths in the same delivery unit when safe. Do not leave "just in case" dual paths.
-7. **Prove.** Destination handles the surface under real checks. Predecessor no longer receives production responsibility for that surface.
+3. **Prefer hard cut.** Default terminal is switch + retire. Temporary dual-write/shadow only under eng-hard-cut-01 risk-class gates with owner, date, oracles, and recovery drill. Agent speed does not skip those gates.
+4. **Schema multi-step inside destination** when live DDL/lock risk exists (not a second product system). Relational apply authority is Atlas (technology-stack-profile).
+5. **Backfill.** Move or rebuild required state at the destination before cut. Verify with original oracles, not memory.
+6. **Cut traffic.** Point writers and readers at destination. Block new predecessor writes.
+7. **Retire predecessor.** Delete or quarantine dead paths in the same delivery unit when safe. Do not leave "just in case" dual paths. Residuals are status, not permission to keep A alive.
+8. **Prove.** Destination handles the surface under real checks. Predecessor no longer receives production responsibility for that surface.
 
 ## Gotchas
 
 - A green dual-path is not done.
 - Feature flags that never expire become the new system of record — ban them as the terminal state.
 - Docs and installers often keep pointing at the predecessor after code cutover.
+- Schema multi-step inside B is not product dual-write; permanent dual systems are.
 
 ## Validation
 
 - Destination sole writer for the named surface
-- Predecessor retired or explicitly time-boxed with kill criteria
-- Evidence for backfill + cut + residual list
+- Predecessor retired or explicitly time-boxed with kill criteria under risk-class gates only
+- Evidence for backfill + cut; residuals are incomplete-status only, not dual-system permission
 
 
 ## Progressive disclosure
 
 - [references/cutover-rules.md](references/cutover-rules.md) — open when needed for depth
+- [references/database-cutover-and-migration.md](references/database-cutover-and-migration.md) — database/Atlas cutover, dual taxonomy, readiness checklist
 - [references/pre-v3-entry-method.md](references/pre-v3-entry-method.md) — open when needed for depth
 
 ## Output

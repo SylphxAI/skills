@@ -59,8 +59,12 @@ legal/safety/ruin or Decision Quality / SOTA ends.
 | `eng-concur-01` | Shared mutable state is fenced (locks, CAS, leases) with explicit timeouts. |
 | `eng-sidefx-01` | External side effects are idempotent or exactly-once with recovery. |
 | `eng-timeout-01` | Every network/RPC path has timeout, cancellation, and retry budget. |
-| `eng-hard-cut-01` | Default is verified hard-cut / one-step cutover with predecessor retirement. Expand-contract only for demonstrated large-scale user or live compatibility/state/effect risk, and only with a dated contract step—no permanent dual-path residual. |
-| `eng-hard-cut-02` | Backward-compatible dual paths, shims, and aliases are exceptional tech debt; keep them only under eng-hard-cut-01 exception bar and delete them at the retirement gate. |
+| `eng-hard-cut-01` | Default terminal is verified hard-cut: destination sole writer, data migrated/backfilled, predecessor retired. Temporary dual-write/shadow or expand-contract steps are allowed only when a risk class hits (money/conserved value, multi-tenant shared blast, large online DDL/lock, external un-updatable clients, irreversible external effects) and all procedure gates pass (named failure mode, dual EV lower than hard-cut incident EV, owner + dated contract, readiness oracles, recovery drill). Permanent dual-path residual is forbidden. Agent wall-clock speed never skips risk-class gates. |
+| `eng-hard-cut-02` | Backward-compatible dual paths, shims, and aliases are exceptional tech debt; keep them only under eng-hard-cut-01 risk-class and procedure gates and delete them at the retirement gate. |
+| `eng-product-dual-ban-01` | Product dual systems (long-lived A and B both owning writers/readers/authority for the same surface) are forbidden as steady state. Temporary fenced dual-write/shadow during cutover is a technique, not a second product system. |
+| `eng-schema-multistep-01` | Live DDL/lock/data-depend risk uses multi-step schema changes **inside the destination system** (e.g. nullable → backfill → constrain; create-new → swap). Schema multi-step is not product dual-path and does not authorize permanent dual-write. |
+| `eng-max-scale-01` | Selected stack, architecture generation, and migration method do not fork on project size, stage, headcount, language count, or “early.” Always design and execute the maximum-scale method. |
+| `eng-entropy-cutover-01` | Cutover cost claims price dual-system entropy versus one-time agent verification/reversal budgets. Calendar scarcity and human person-days are invalid reasons to keep dual systems. |
 | `eng-simplicity-01` | Prefer fewer concepts and special cases by **unify/compose** while preserving or expanding framed capability coverage (ambition-preserving simplicity); deletion of difficulty is last resort after coverage is held. Abstraction, configuration, or indirection only for measured need (boundary protection, real reuse, or named domain concept)—never simplistic cut, fewer-features cosplay, hidden convention, or false unification of incompatible concerns. |
 | `eng-growth-01` | Grow by thin vertical slices on a product path that already works end to end; do not trade a working path for unfinished layered complexity. |
 | `eng-deps-01` | Prefer in-tree and established dependencies after checking docs/types; reimplement commodity behavior only with a clear reason that owning it is smaller lifecycle cost than adopting. |
@@ -123,8 +127,8 @@ legal/safety/ruin or Decision Quality / SOTA ends.
 | Measurable behavior | benchmark or load test | threshold + head SHA |
 | Material architecture/ops | ADR | accepted ADR + conformance |
 | Product/commercial impact | Commercial ADR | owner + metrics |
-| Development/no-live-risk migration | focused change record or migration packet | exact-candidate equivalence + one-step replacement/readback |
-| Live shared-state/compatibility migration | migration packet + expand-contract | dual-path, recovery, or rollback drill |
+| Development/no-live-risk migration | focused change record or migration packet | exact-candidate equivalence + one-step hard-cut + predecessor delete |
+| Live risk-class cutover (money, multi-tenant blast, large online DDL, external un-updatable clients, irreversible effects) | migration packet + eng-hard-cut-01 procedure gates | temporary fenced dual-write/shadow and/or in-B schema multi-step + recovery drill + dated contract + sole-writer terminal |
 | Intentional quality-precedence inversion | ADR or change record naming attributes | tradeoff + owner + rollback/review |
 
 ## Conformance checklist
@@ -135,8 +139,9 @@ legal/safety/ruin or Decision Quality / SOTA ends.
 - [ ] Tests/schemas cover each selected rule ID.
 - [ ] No secret material in source or logs.
 - [ ] External calls declare timeout/retry/idempotency.
-- [ ] Migration strategy matches lifecycle and demonstrated live risk; no
-      calendar delay or dual path without a named compatibility/state/effect need.
+- [ ] Migration strategy is hard-cut terminal; temporary dual-write or schema
+      multi-step only under eng-hard-cut-01 risk-class + procedure gates; no
+      calendar delay or permanent dual path; no size/stage stack fork.
 - [ ] Layer direction respected.
 - [ ] Applicable semantic, module, contract, state, process, cell, deployment,
       and trust boundaries are explicit rather than inferred one-to-one.

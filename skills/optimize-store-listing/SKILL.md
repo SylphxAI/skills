@@ -63,7 +63,8 @@ public page and claims no compatibility until authority and the exact pack pass.
    capsule art, selection/order and stable production requests for screenshots
    by device/input, video/trailer, captions/transcript,
    alt text, pricing/IAP/subscription/ad disclosures, privacy/compatibility, and
-   support links. Every claim maps to exact shipped behavior.
+   support links. Every live listing claim maps to exact shipped behavior in
+   that channel.
 5. Build localization briefs per locale: intent, search language, cultural
    meaning, reading direction, typography, image/text constraints, age modes,
    price/unit/date, and native QA. Do not reuse one translated screenshot set.
