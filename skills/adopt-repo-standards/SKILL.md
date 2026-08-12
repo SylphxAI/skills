@@ -46,13 +46,17 @@ adoption** cycle—not a permanent dual instruction stack.
 
 ### 5. Deliver / verify
 - Entrypoints resolve; conformance checks run as declared
-- Predecessor dual layout gone or dated residual with owner
+- Predecessor dual layout **deleted** (or reduced to a one-way no-write adapter
+  with exact retirement under eng-hard-cut-01 gates only)
+- A residual is truthful incomplete **status**, not permission to keep dual
+  instruction authority or a second system
 - Local vs landed claims stay honest
 
 ## Cycle done
 
 Adoption cycle is done when required surfaces exist, entrypoints work, and
-predecessor dual instruction authority is retired for the framed scope.
+predecessor dual instruction authority is **retired** for the framed scope.
+Dated residual language does not complete dual-layout retirement.
 
 ## Progressive disclosure
 

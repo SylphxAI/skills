@@ -2,13 +2,15 @@
 
 > Constraint depth owned by `select-dependency-versions` (not a listing skill). Other workflows open this path when their body says so.
 
-# Backend, Web, and Cross-platform Interoperability Profile
+# Backend, Web, Contract, Interoperability, and Database Migration Profile
 
 Policy/profile pin—not a product job cycle. Apply as stack constraints on matching repos.
 Apply when implementing or reviewing stack choices for a matching repository.
 Agents do not “run a cycle” of this package; they apply its constraints while doing another job.
 
 **Requirement:** apply this profile when its selector matches the repository.
+**Scale rule:** always apply the maximum-scale method. Repository size, language
+count, headcount, and “early stage” do not fork the stack.
 
 Read the normative [machine profile](references/profile.json) and the
 [resolution method](references/resolution-and-verification.md) before making a
@@ -23,6 +25,9 @@ or hard-coded role lists.
 For the stable architecture and protocol exceptions behind the selected stack,
 read the engineering standard's
 [cross-platform contract architecture](../../../build-product/references/engineering-standard/references/cross-platform-contract-architecture.md).
+
+For A→B system cutover, data backfill, and dual-write bans, open
+[`execute-hard-cutover/references/database-cutover-and-migration.md`](../../../execute-hard-cutover/references/database-cutover-and-migration.md).
 
 ## Method
 
@@ -46,10 +51,16 @@ read the engineering standard's
    schema-owned cross-boundary integration-event payloads and OpenTelemetry at
    adapter/bootstrap telemetry boundaries. Keep local domain events native and
    raw operator evidence protected.
-7. Resolve package versions at implementation time with
+7. For relational product databases, schema changes, migration apply, or
+   schema-coupled backfill, resolve the `database-migration-stack-requirement`:
+   Atlas is the sole production schema applicator; versioned migrations; ban
+   ORM push to live DBs and second migration runners; CI requires ephemeral
+   full-history replay plus a destructive/data-depend gate; pin OS/arch-matching
+   Atlas CLI for apply images.
+8. Resolve package versions at implementation time with
    `select-dependency-versions`; the Profile selects package families and
    responsibilities, not stale version numbers.
-8. Record repository-local role/effect facts under
+9. Record repository-local role/effect facts under
    `architecture.components` in the owning product manifest;
    let the live work system resolve live adoption, exceptions, deployment, and
    organization-wide completion without copying this profile into product repositories.
@@ -76,6 +87,13 @@ read the engineering standard's
   every local domain event, or substitute for ordering/idempotency/replay.
 - Do not import OpenTelemetry SDK types into domain policy or expose protected
   telemetry through an unintended public/customer response.
+- Do not choose a different migration engine because the repository is “small,”
+  Rust-only, TypeScript-only, or early-stage. One fleet method.
+- Do not use `drizzle-kit push`, `prisma db push`, or equivalent against non-
+  disposable databases. Do not run a second production migration applicator
+  beside Atlas.
+- Schema multi-step inside the destination system is not a second product stack.
+  Permanent dual product systems remain forbidden under hard-cut predicates.
 
 ## Output format
 
@@ -86,6 +104,8 @@ Report:
 3. required Rust or TypeScript/Bun/Next selection;
 4. applied contract-stack assertion, selected protocol and client libraries;
 5. applied event-envelope and telemetry assertion;
-6. any forbidden backend effect, fallback, duplicated contract, unlisted
+6. applied database-migration assertion, Atlas apply/CI contract, and any ban
+   violations (second migrator, ORM push, unpinned CLI);
+7. any forbidden backend effect, fallback, duplicated contract, unlisted
    client, event-payload fork, or telemetry-boundary violation;
-7. role/effect-based completion evidence and unresolved live-state gaps.
+8. role/effect-based completion evidence and unresolved live-state gaps.

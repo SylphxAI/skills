@@ -1,9 +1,10 @@
 # Parallel Change Integration Standard
 
-Use this standard only when measured concurrent source activity creates
-collisions, stale-base failures, CI backlog, or duplicated integration work.
-Ordinary low-contention work should use the repository's normal Git and CI
-features without an additional control plane.
+Agent-native owned repositories use one ordinary integration path regardless of
+traffic level. Do not invent a second philosophy for “low contention” or small
+repositories. Use this standard’s extra collision and capacity controls when
+measured concurrent source activity creates collisions, stale-base failures, CI
+backlog, or duplicated integration work—not as permission to leave Merge Queue.
 
 ## Principle
 
@@ -141,8 +142,8 @@ For each org/repo queue, track:
 - capacity actions when the queue is saturated.
 
 Do not disable the ordinary agent-native queue merely because it is idle on a
-quiet day; disable only if the repository is deliberately non-agent and
-low-contention under an explicit exception.
+quiet day. Disable only for a deliberately non-agent repository under an
+explicit typed exception—not because the project is “small” or temporarily quiet.
 
 ## Deployment
 

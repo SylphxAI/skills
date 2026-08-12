@@ -702,17 +702,34 @@ second domain contract. Model/provider/runtime/policy choices bind exact
 versions and requalification triggers through the eval contract in the
 Risk-Matched Verification Standard.
 
-For persistence work, declare one schema and migration authority. Migration
-identity is collision-resistant and changes are replay-tested. In development
-or without live compatibility/state risk, use an exact-candidate one-step
-cutover with recovery evidence. When demonstrated live data, availability,
-compatibility, or external-effect risk exists, use expand/contract and prove
-the compatibility and recovery path. Every static relational query is
-compile-time or admission-time checked against the exact migration-derived
-schema, database dialect, and relevant server version. Inputs and outputs carry
-exact native or generated types for nullability, domains/enums, and row shape;
-untyped row maps, unchecked result assertions, and independently authored ORM
-models do not cross the persistence boundary.
+For persistence work, declare one schema and migration authority. The active
+technology-stack profile selects **Atlas** as the sole production schema-change
+applicator for relational product databases (cross-language, every repository
+size). Migration identity is collision-resistant and changes are replay-tested.
+ORM push to live databases and a second production migration runner are
+forbidden. Pin the OS/arch-matching Atlas CLI for apply images; regenerate
+directory integrity hashes only with that binary. Ordinary recovery is
+forward-only; do not use migrate-down as the ordinary path.
+
+Default cutover terminal is hard-cut: build destination, migrate/backfill with
+oracles, sole writer, delete predecessor. **Schema multi-step inside the
+destination** (nullable → backfill → constrain; create-new → swap) is required
+when live DDL/lock/data-depend risk exists and is **not** a product dual system.
+Temporary dual-write or shadow is allowed only under `eng-hard-cut-01` risk-class
+and procedure gates (money/conserved value, multi-tenant shared blast, large
+online DDL, external un-updatable clients, irreversible external effects) with
+owner, dated contract, readiness oracles, and recovery drill. Permanent
+dual-write, forever flags, and “support both” are forbidden. Agent wall-clock
+speed does not skip risk-class gates; dual-system entropy is the expensive
+budget (`eng-entropy-cutover-01`). See
+[`execute-hard-cutover/references/database-cutover-and-migration.md`](../../../../execute-hard-cutover/references/database-cutover-and-migration.md).
+
+Every static relational query is compile-time or admission-time checked against
+the exact migration-derived schema, database dialect, and relevant server
+version. Inputs and outputs carry exact native or generated types for
+nullability, domains/enums, and row shape; untyped row maps, unchecked result
+assertions, and independently authored ORM models do not cross the persistence
+boundary.
 
 Query layers use parameterized operations, indexed access paths, bounded
 pagination or streaming, and idempotent mutation where the failure model
@@ -724,10 +741,12 @@ schema, and records owner, expiry, evidence, and replacement trigger.
 
 Admission reconstructs an ephemeral database from the complete migration
 history, rejects drift, rebuilds and compares schema-derived projections, checks
-all eligible queries, and runs the database contract suite. Database
-constraints and runtime proof still own data-dependent integrity, permissions,
-transaction isolation, locks, live schema drift, and query-plan behavior. The
-active profile owns current tool selections and escape-hatch inventory.
+all eligible queries, and runs the database contract suite. Prefer a
+destructive/data-depend gate on candidates; use `atlas migrate lint` when the
+admitted Atlas edition can evaluate the schema source. Database constraints and
+runtime proof still own data-dependent integrity, permissions, transaction
+isolation, locks, live schema drift, and query-plan behavior. The active profile
+owns current tool selections and escape-hatch inventory.
 
 For performance-sensitive touched paths:
 

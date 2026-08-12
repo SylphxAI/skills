@@ -104,8 +104,9 @@ Canonical contract: [`author-skill/references/composition-contract.md`](../../..
   (`q-availability` / `eng-avail-01`).
 - Use the Quality North Star (`q-*`) as the sole quality vocabulary; do not
   reintroduce Modern Technical Bar or parallel ilities lists.
-- In development or without live compatibility/state risk, prefer a verified
-  one-step cutover. Use expand-contract only when a demonstrated live data,
-  compatibility, availability, or external-effect boundary requires it.
+- Prefer verified hard-cut terminal (sole writer + predecessor delete). Schema
+  multi-step inside the destination is not dual-path. Temporary dual-write only
+  under eng-hard-cut-01 risk-class gates. Atlas is the sole production migration
+  applicator (technology-stack-profile).
 - Apply the canonical Capability-first architecture from the first durable
-  product commit; project size and migration cost are not exemptions.
+  product commit; project size, stage, and human calendar are not exemptions.

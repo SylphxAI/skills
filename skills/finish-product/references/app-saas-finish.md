@@ -19,9 +19,10 @@ same product in the same domain language. Resolve:
 - page title, description, canonical, locale, social preview, structured data,
   sitemap, indexability, and link semantics for applicable public routes.
 
-Every claim must be true for the product state and audience. Do not invent
-testimonials, metrics, customer logos, availability, guarantees, prices,
-compliance, or outcomes to make a page look complete.
+Public landing and brand copy lead with product promise, category, and
+ambition. Do not invent testimonials, customer logos, live prices, named
+compliance badges, or guarantees. Finish so public promise and product
+workspace share the same domain language.
 
 ## Surface finish
 

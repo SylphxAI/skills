@@ -1,33 +1,46 @@
 # Migration cutover rules
 
-## Hard-cut default
+Universal max-scale method. No smaller fork for small repositories. See also
+[database-cutover-and-migration.md](database-cutover-and-migration.md).
 
-Use when any of these hold (usual case):
+## Hard-cut default (terminal always)
+
+Usual case — any of:
 
 - You control the owning boundary and all writers/readers in scope
 - Data can be backfilled, regenerated, or re-derived
 - Clients are internal agents or a bounded fleet you can update together
-- Keeping dual-path costs more than the cut (matrix, tests, residual risk)
+- Dual-system entropy exceeds the one-time cut cost
 
-Steps: destination → migrate/backfill → flip readers/writers → verify → delete.
+Steps: destination → (schema multi-step inside destination if needed) →
+migrate/backfill with oracles → flip writers → flip readers → verify → **delete
+predecessor**.
 
-## Expand-contract exception
+## Temporary dual-write / expand steps (exception)
 
-Only with **all** of:
+Open only when a **risk class** hits (any one): money/conserved value;
+multi-tenant shared blast; large online DDL/lock; external un-updatable clients;
+irreversible external effects.
+
+Then require **all** procedure gates:
 
 | Gate | Evidence |
 | --- | --- |
-| Scale | Large user cohort, traffic share, or data volume named |
-| Live impact | Concrete failure if hard-cut now |
-| EV | Dual-path cost < expected incident/cost of hard-cut |
+| Live impact | Concrete failure if hard-cut now without temporary path |
+| EV | Temporary dual/expand cost < expected hard-cut incident cost |
 | Exit | Date + owner + delete proof for the old path |
+| Oracles | Sole-writer readiness oracles green |
+| Recovery | Forward repair and/or PITR restore point named |
 
 Contract is mandatory. Expand without contract is incomplete migration.
+Schema multi-step **inside B** is not product dual-path.
 
 ## Forbidden residuals
 
+- Permanent dual-write or dual-read product authority
 - Forever feature flags for old behavior
 - Undated compatibility shims
 - Dual public Skills/packages for one job without retire plan
 - Silent dual writers after destination is ready
 - “Support both” without a terminal
+- Residuals used as permission to keep the predecessor alive

@@ -155,6 +155,8 @@ failure.
 - **Rule**: any cost claim that cannot answer those three questions is
   incomplete. Runtime resource budgets stay under Performance; Economy is the
   decision lens for lifecycle / entropy / attention / coordination economics.
+  For cutovers, dual-system entropy usually dominates one-time agent wall-clock;
+  calendar scarcity is not a reason to keep permanent dual paths.
 
 ## Decision rules
 

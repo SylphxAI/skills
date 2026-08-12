@@ -85,9 +85,10 @@ build and search surface does not retire it.
 
 1. **Resolve.** Identify the current owner, predecessor, consumers, state and
    effects, compatibility risk, and behavioral contract before editing.
-2. **Select.** Choose one-step replacement by default. Use expand-contract only
-   for demonstrated live data, compatibility, availability, or external-effect
-   risk, while preserving one write authority.
+2. **Select.** Choose one-step hard-cut replacement by default. Temporary dual-write
+   or expand steps only under eng-hard-cut-01 risk-class and procedure gates while
+   preserving one write authority at the terminal. Schema multi-step stays inside
+   the destination system and is not a second product dual system.
 3. **Prove.** Verify the successor with the smallest semantic oracle capable of
    detecting material regression. Use differential, replay, property,
    integration, or live evidence only when its failure model applies.

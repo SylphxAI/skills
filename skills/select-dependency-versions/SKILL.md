@@ -42,7 +42,8 @@ Chosen versions · sources · commands run · residuals
 
 - [references/registry-resolution.md](references/registry-resolution.md) — how to query registries
 - [references/runtime-channels.md](references/runtime-channels.md) — runtime release channels
-- [references/technology-stack-profile/](references/technology-stack-profile/) — stack profile constraints when selecting versions for this fleet
+- [references/technology-stack-profile/](references/technology-stack-profile/) — stack profile constraints when selecting versions for this fleet (includes Atlas database-migration pin)
+- [../execute-hard-cutover/references/database-cutover-and-migration.md](../execute-hard-cutover/references/database-cutover-and-migration.md) — hard-cut data migration and dual-write taxonomy when applying schema change
 - [references/pre-v3-entry-method.md](references/pre-v3-entry-method.md) — archived depth only if the thinner entry is insufficient
 
 ## Archived depth
