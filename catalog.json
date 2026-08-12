@@ -53,10 +53,10 @@
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, manifest, fences.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:792273fc417699d6e2557d448a6c9ffbe71b9e5559cb5e52ee442ea159002aca",
+      "packageDigest": "sha256:820034bd9e1a39b444c94fcee2f3e6aae05a45889711b177fc2f772a1911d08c",
       "capability": {
         "job": "Bring a concrete repository onto the engineering baseline: constitution projection, project facts, fences, conformance entrypoints, retire predecessor layouts.",
-        "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired or a dated residual with an owner for the framed scope.",
+        "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired for the framed scope (residuals are incomplete status only, not dual-system permission).",
         "oracleOwner": "user-system"
       },
       "qualified": true,
@@ -157,7 +157,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:42696870d2ae6fc718cf646c20a39133ae5319f8921b9f94c2bcc85b0b436c70",
+      "packageDigest": "sha256:5959871d00dfc50c4de93536fbd29f549d0a6d88cb722a54f4cbedd777422881",
       "capability": {
         "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
@@ -261,7 +261,7 @@
       "name": "decide-architecture-shape",
       "description": "Decide one architecture shape from options with tradeoffs.",
       "path": "skills/decide-architecture-shape/SKILL.md",
-      "packageDigest": "sha256:2f304d3a30758455206452f27a00ae07ea58a7f54732cd28ccc5bcabc468fb53",
+      "packageDigest": "sha256:2c07fa48db87640fdc7c1ba1cac74857e48322522b21f771215b91119943e7d8",
       "capability": {
         "job": "Decide one architecture shape from options and drive it through independently verifiable convergence slices with parity proof and cutover.",
         "outcomeObservable": "A decided shape with each slice carrying exact-candidate parity proof, a cutover that retired obsolete structure at the real lifecycle stage, and a reconciled migration ledger reporting implementation, merge, deployment, and retirement separately.",
@@ -378,10 +378,10 @@
       "name": "execute-hard-cutover",
       "description": "Hard-cut predecessor to destination sole writer; retire dual paths.",
       "path": "skills/execute-hard-cutover/SKILL.md",
-      "packageDigest": "sha256:16304e5c57ecf9ebbb2dbfb5c0c5d99769f6fd04ffaf40ce13b7d239a5ce6920",
+      "packageDigest": "sha256:7abf5a44702e6f1e53e0b1be4a2b69bfb664c95c714e6494e10115d211ffd20b",
       "capability": {
         "job": "Hard-cut a predecessor to a destination sole writer and retire dual paths with backfill and proof.",
-        "outcomeObservable": "The destination is the sole writer for the named surface under real checks, the predecessor is retired or time-boxed with kill criteria, and backfill, cut, and residual evidence are recorded.",
+        "outcomeObservable": "The destination is the sole writer for the named surface under real checks, the predecessor is retired (time-boxed dual only under eng-hard-cut-01 gates), and backfill, cut, and residual incomplete-status evidence are recorded.",
         "oracleOwner": "user-system"
       },
       "qualified": true,

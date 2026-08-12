@@ -48,26 +48,34 @@ on narrative status or stale proof.
    write sets when the expected speed or quality gain exceeds coordination,
    resource, and integration cost. Atomic inspection and tightly coupled work
    stay local.
-6. Select the shortest safe cutover from the real lifecycle stage. In
-   development or internal dogfood without real-user state risk, cut over and
-   delete the old structure in one verified candidate. Use expand-contract only
-   when a demonstrated live compatibility, data, or external-effect risk needs
-   concurrent paths; preserve one write authority.
+6. Select cutover with a hard-cut terminal at every lifecycle stage: destination
+   sole writer, predecessor retired. Stage changes proof intensity, not dual-
+   system philosophy. Prefer one verified candidate cutover and delete the old
+   structure. Temporary dual-write/shadow or expand steps only under
+   `eng-hard-cut-01` risk-class and procedure gates (money/conserved value,
+   multi-tenant shared blast, large online DDL/lock, external un-updatable
+   clients, irreversible external effects—with named failure mode, dated owner
+   contract, readiness oracles, and recovery drill). Schema multi-step stays
+   inside the destination system and is not a second product path. Preserve one
+   write authority at the terminal.
 7. Prove observable equivalence. Run the source and target against the same deterministic corpus and compare complete normalized outputs, errors, ordering, state effects, events, retries, and operational behavior at exact source and target revisions.
 8. Make proof expire. Route source, target, contract, shared-constant, config, schema, and migration changes to affected capabilities. Retain the last proof for audit, mark it stale, and block authority promotion until exact candidate revisions and artifact digest are compared again.
 9. Cut over with evidence appropriate to the stage. Prefer boundary-complete,
    risk-matched semantic review, differential/property tests, replay,
    simulation, and exact-candidate integration proof. Add shadow/canary only
-   when the residual claim genuinely requires live traffic or elapsed time.
+   under the same eng-hard-cut-01 gates when residual risk requires it—not as
+   a default calendar delay.
 10. Contract immediately after the selected proof establishes target authority.
    Remove source implementation, obsolete structure, compatibility switches,
    obsolete fixtures, source-parity/no-old-path gates, mutable migration ledgers,
    and rebind workflows that no longer protect a live compatibility boundary;
    do not create a permanent dual generation or permanent migration CI. A
+   residual is incomplete status, not permission to keep dual systems. A
    retained compatibility adapter must serve named current consumers, delegate
    one way to the target, own no domain policy or authoritative writes, be
    unavailable to new consumers by default, expose protected usage or
-   contract-support evidence, and have an exact retirement predicate.
+   contract-support evidence, and have an exact retirement predicate under
+   eng-hard-cut-01.
 11. Reconcile the migration ledger from merged and deployed evidence. Report implementation, merge, deployment, active implementation, and retirement as separate states.
 
 ## Validation integrity
@@ -90,8 +98,9 @@ on narrative status or stale proof.
 ## Guardrails
 
 - Do not maintain multiple implementations as competing steady-state truth.
-  A one-step development cutover is valid when exact-candidate proof and source
-  control recovery cover the material risk.
+  Hard-cut terminal is the default at every stage; temporary dual paths require
+  eng-hard-cut-01 gates. A one-step development cutover is valid when exact-
+  candidate proof and source-control recovery cover the material risk.
 - Do not treat a deprecated comment, `legacy` folder, disabled route, or
   currently unused registration as retirement while the predecessor remains in
   the normal dependency, build, export, generation, or runtime graph.

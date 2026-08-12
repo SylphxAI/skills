@@ -22,8 +22,8 @@
   ],
   "outputs": [
     "Destination sole writer for the named surface",
-    "Predecessor retired or explicitly time-boxed with kill criteria",
-    "Evidence for backfill, cut, and residual list"
+    "Predecessor retired (or one-way no-write adapter only under eng-hard-cut-01 risk-class gates with dated kill criteria)",
+    "Evidence for backfill, cut, and any residual incomplete-status list"
   ],
   "required": {
     "tools": [
@@ -38,7 +38,7 @@
   },
   "failureSemantics": "A green dual-path is not done; never-expiring feature flags and docs or installers still pointing at the predecessor are failures; cutover completes only when the destination handles the surface under real checks and the predecessor no longer receives production responsibility.",
   "outcome": {
-    "observable": "The destination is the sole writer for the named surface under real checks, the predecessor is retired or time-boxed with kill criteria, and backfill, cut, and residual evidence are recorded.",
+    "observable": "The destination is the sole writer for the named surface under real checks, the predecessor is retired (time-boxed dual only under eng-hard-cut-01 gates), and backfill, cut, and residual incomplete-status evidence are recorded.",
     "oracleOwner": "user-system",
     "receiptSchema": "outcome-receipt.schema.json"
   }

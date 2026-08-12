@@ -42,12 +42,13 @@ Default is **hard-cut**. Dual-path is exceptional tech debt.
 - Verify original oracles on destination
 - Delete predecessor paths, shims, dual writers, dead tests/docs
 
-**Exception — temporary dual-write / expand steps (only if risk-class + all procedure gates):**
-- Demonstrated large-scale user or live production impact if cut hard now
-- Measured risk that a temporary dual path reduces
-- Named owner + **dated** contract/retirement gate
+**Exception — temporary dual-write / expand steps (eng-hard-cut-01):**
+- Risk class hits (any): money/conserved value; multi-tenant shared blast;
+  large online DDL/lock; external un-updatable clients; irreversible effects
+- All procedure gates: named live failure mode; dual EV lower than hard-cut
+  incident EV; owner + dated contract; readiness oracles; recovery drill
 
-“Might break someone” without scale/path/cost is **not** an exception.
+“Might break someone” without a risk class and gates is **not** an exception.
 
 ### 4. Implement
 - When landing source: L1 batch → L2 atomic commits → L3 revert-safe PR outcome(s) (`source-authoring-standard`).
