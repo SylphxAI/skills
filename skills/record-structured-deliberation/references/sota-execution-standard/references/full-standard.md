@@ -293,7 +293,7 @@ because it is uncomfortable or outside the first implementation idea.
 ## Execution Loop
 
 1. **Frame the real goal.** Read the repo's `PROJECT.md`,
-   `project.manifest.json`, nearest agent instructions, and relevant standards.
+   `PROJECT.md`, nearest agent instructions, and relevant standards.
    Identify lifecycle, layer, owner, public surfaces, dependency direction, and
    what success would prove.
 2. **Establish current truth.** Inspect current code, docs, ADRs, tests,
@@ -344,7 +344,7 @@ Use the smallest durable artifact that changes future behavior:
 | Local reversible implementation detail | Code, tests, final validation note |
 | Material architecture, public contract, data, AI workflow, security, operations, or instruction decision | ADR |
 | Pricing, packaging, roadmap, positioning, monetization, or commercial experiment | Commercial ADR |
-| Project goal, lifecycle, boundary, public surfaces, delivery proof, or adoption state | `PROJECT.md` plus `project.manifest.json` |
+| Project goal, lifecycle, boundary, public surfaces, delivery proof, or adoption state | `PROJECT.md` |
 | Reusable static cross-repo rule/profile/procedure | Binding Skills package and its schemas/evals |
 | Live fleet migration, status, adoption, or work | Control Plane record plus owning repository evidence |
 | AI behavior correctness | Versioned eval manifest, thresholds, traces, failure examples |

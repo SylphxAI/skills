@@ -128,4 +128,4 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Quality North Star surfaces rewritten for depth and separation:
   `quality-north-star-usage.md`, engineering-standard README / full-standard /
   binding-predicates openings; cross-refs in README, PROJECT, MODEL,
-  AUTHORITY-MAP, QUALIFICATION, LEDGER, project.manifest, PRINCIPLES.
+  AUTHORITY-MAP, QUALIFICATION, LEDGER, PRINCIPLES.

@@ -338,7 +338,7 @@ Bootstrap prompts must not:
 - request elevated permissions, hooks, tool interface servers, credential storage, dynamic
   shell injection, model overrides, third-party payload downloads, or anything
   outside the authenticated package install and constitution projection surface;
-- silently overwrite per-repo `PROJECT.md`, `project.manifest.json`, or
+- silently overwrite per-repo `PROJECT.md`, or
   production evidence;
 - invent unsupported tool syntax or tool-specific frontmatter for the portable
   corpus;

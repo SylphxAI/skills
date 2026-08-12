@@ -173,7 +173,7 @@ test('constraint pack listing paths are dead; owners exist under applying skills
 });
 
 test('active skills do not link retired listing-standard GitHub paths', () => {
-  const listingPath = /https:\/\/github\.com\/SylphxAI\/skills\/blob\/[^/\s)`"]+\/skills\/(engineering-standard|delivery-standard|sota-execution-standard|autonomous-execution-standard|frontier-verification-standard|agent-first-development-standard|commercial-decision-standard|instruction-evolution-standard|enterprise-profile-standard|agent-native-standard|decision-quality-standard|risk-matched-verification-standard|source-authoring-standard|ci-admission-standard|ci-runner-capacity-standard|enterprise-control-plane-standard|project-manifest-standard|specification-control-plane-standard|work-coordination-standard|evidence-and-claims-standard|documentation-standard)(?:\/|"|'|\)|\s|$)/;
+  const listingPath = /https:\/\/github\.com\/SylphxAI\/skills\/blob\/[^/\s)`"]+\/skills\/(engineering-standard|delivery-standard|sota-execution-standard|autonomous-execution-standard|frontier-verification-standard|agent-first-development-standard|commercial-decision-standard|instruction-evolution-standard|enterprise-profile-standard|agent-native-standard|decision-quality-standard|risk-matched-verification-standard|source-authoring-standard|ci-admission-standard|ci-runner-capacity-standard|enterprise-control-plane-standard|specification-control-plane-standard|work-coordination-standard|evidence-and-claims-standard|documentation-standard)(?:\/|"|'|\)|\s|$)/;
   const offenders = [];
   function walk(dir) {
     for (const entry of readdirSync(dir, { withFileTypes: true })) {

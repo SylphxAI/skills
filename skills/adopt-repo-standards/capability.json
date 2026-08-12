@@ -6,7 +6,7 @@
     "inScope": [
       "Wiring required baseline surfaces on their owning paths",
       "Retiring predecessor instruction layouts and dual authority stacks",
-      "Fixing missing or stale manifest, fences, and conformance entrypoints"
+      "Fixing missing or stale PROJECT.md, fences, and conformance entrypoints"
     ],
     "outOfScope": [
       "Unrelated product features in the target repository",
@@ -16,7 +16,7 @@
   },
   "inputs": [
     "Target repository and its delivery terminal",
-    "Required surfaces (constitution projection, manifest, fences, checks)",
+    "Required surfaces (constitution projection, PROJECT.md, fences, checks)",
     "Predecessor instruction sources to retire"
   ],
   "outputs": [

@@ -11,7 +11,7 @@ drift.
 
 | Question | Durable home |
 | --- | --- |
-| What is this repository and what does it own? | `PROJECT.md` + machine project manifest |
+| What is this repository and what does it own? | `PROJECT.md` |
 | Why was a material durable choice made? | Repo-owned ADR |
 | What behavior/contract must implementation satisfy? | Spec, schema, test, or executable policy |
 | How is an operation performed or recovered? | Runbook |

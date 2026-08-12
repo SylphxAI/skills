@@ -23,11 +23,11 @@ Every active durable repository exposes:
    It projects the compact Skills topology and contains only
    repo-local commands, hazards, and authority additions. It must not copy or
    fork detailed standards.
-2. **Project identity** — `PROJECT.md` plus the canonical machine-readable
-   project manifest selected by `project-manifest-standard`.
+2. **Project identity** — `PROJECT.md` (purpose, lifecycle, boundaries,
+   public surfaces, delivery).
 3. **Canonical code architecture** — real product code conforms to
    `engineering-standard`, including Capability-first Modular DDD,
-   Clean/Hexagonal boundaries, and FCIS. Docs, manifests, folder names,
+   Clean/Hexagonal boundaries, and FCIS. Docs, folder names,
    re-exports, or generated reports alone cannot satisfy this surface.
 4. **Source integrity** — the repository's selected delivery lane prevents
    unowned destructive history changes and identifies its exact candidate.
@@ -71,7 +71,7 @@ not a reason to hold a proven terminal indefinitely.
 | Surface | Minimum authoritative evidence |
 | --- | --- |
 | Runtime entry | Installed constitution readback plus valid local links |
-| Project identity | Schema-valid `project.manifest.json` and matching concise projection |
+| Project identity | Durable `PROJECT.md` with purpose, boundaries, and delivery terminal |
 | Code architecture | Compiler/module visibility or semantic dependency analysis plus domain/use-case/adapter behavior tests; no source-string implementation-token tests |
 | Verification | Exact-candidate command and results |
 | Delivery | Proof at the repository's declared terminal boundary |

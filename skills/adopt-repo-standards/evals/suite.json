@@ -13,7 +13,7 @@
     "node >= 20"
   ],
   "baseline": {
-    "prompt": "Bring the repo/ folder onto a modern engineering baseline: add an AGENTS.md with standing instructions, a project manifest, and a conformance check entrypoint; retire the legacy instruction file if it conflicts."
+    "prompt": "Bring the repo/ folder onto a modern engineering baseline: add an AGENTS.md with standing instructions, a PROJECT.md, and a conformance check entrypoint; retire the legacy instruction file if it conflicts."
   },
   "tasks": [
     {
@@ -38,7 +38,7 @@
           "as": "repo/package.json"
         }
       ],
-      "prompt": "Read ./SKILL.md completely (open references/full-standard.md and the project-manifest/enterprise-profile references as needed), then adopt the engineering baseline into the repo/ folder: wire the constitution projection on its owning path, record project facts in a manifest, add fences and a conformance entrypoint that runs, and retire the predecessor instruction layout (repo/AGENTS.md legacy content) with a dated residual. Leave the adopted surfaces in repo/.",
+      "prompt": "Read ./SKILL.md completely (open references/full-standard.md as needed), then adopt the engineering baseline into the repo/ folder: wire the constitution projection on its owning path, record project facts in PROJECT.md only, add fences and a conformance entrypoint that runs, and retire the predecessor instruction layout (repo/AGENTS.md legacy content) with a dated residual. Leave the adopted surfaces in repo/.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -60,13 +60,13 @@
           },
           {
             "type": "file-exists",
-            "path": "repo/project.manifest.json"
+            "path": "repo/PROJECT.md"
           },
           {
-            "type": "json-path-eq",
-            "path": "repo/project.manifest.json",
-            "jsonPath": "project.name",
-            "value": "acme-app"
+            "type": "file-regex",
+            "path": "repo/PROJECT.md",
+            "contains": "acme",
+            "caseInsensitive": true
           },
           {
             "type": "file-regex",
@@ -88,7 +88,7 @@
       "kind": "agent",
       "baseline": true,
       "description": "Fresh-context baseline (no skill): same task, same adoption oracle.",
-      "prompt": "Bring the repo/ folder onto a modern engineering baseline: add an AGENTS.md with standing instructions, a project manifest, and a conformance check entrypoint; retire the legacy instruction file if it conflicts.",
+      "prompt": "Bring the repo/ folder onto a modern engineering baseline: add an AGENTS.md with standing instructions, a PROJECT.md, and a conformance check entrypoint; retire the legacy instruction file if it conflicts.",
       "fixtures": [
         {
           "source": "repo/README.md",
@@ -124,13 +124,13 @@
           },
           {
             "type": "file-exists",
-            "path": "repo/project.manifest.json"
+            "path": "repo/PROJECT.md"
           },
           {
-            "type": "json-path-eq",
-            "path": "repo/project.manifest.json",
-            "jsonPath": "project.name",
-            "value": "acme-app"
+            "type": "file-regex",
+            "path": "repo/PROJECT.md",
+            "contains": "acme",
+            "caseInsensitive": true
           },
           {
             "type": "file-regex",
