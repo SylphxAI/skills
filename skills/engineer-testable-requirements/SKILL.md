@@ -100,17 +100,17 @@ Produce a **Requirements Contract** containing:
 
 - [references/requirements-method.md](references/requirements-method.md) — open when needed for depth
 - [references/specification-control-plane-standard/](references/specification-control-plane-standard/) — open when this topic applies
-- Product doc homes (NS / end state / goals vs capability-tool **details**):
+- Industry doc homes (Vision · NSM · OKR · PRD vs interface **specs**):
   `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`
-  — requirements and specs own field-level behavior; they do not replace product North Star.
+  — requirements/specs own field-level behavior; they do not replace the North Star Metric.
 
 ## Boundaries
 
 - `research-user-needs` and whole-product blueprint Skills own direct
   user evidence, opportunity, user promise, market fit, and capability
   selection before requirements stabilize.
-- Per-tool/capability **details** land as requirements → specs/tests/contracts;
-  product design owns the capabilities/tools **inventory**.
+- Per-tool **details** land as requirements → specs/tests/contracts; the **PRD**
+  owns the feature/capability **inventory**.
 - `../record-structured-deliberation/references/decision-quality-standard/` owns material option selection; architecture and
   engineering Skills own how accepted requirements are realized.
 - `references/specification-control-plane-standard/` owns executable implementation

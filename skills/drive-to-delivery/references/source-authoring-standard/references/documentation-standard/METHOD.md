@@ -5,17 +5,17 @@
 Policy constraints—compose onto matching host jobs.
 
 Read [references/full-standard.md](references/full-standard.md) for the full
-method and predicates, including the **product repository documentation model**
-(North Star · End state · Goals · Capabilities · Tools · Contracts).
+method. **Industry layers:** Product Vision · North Star Metric · OKRs/Goals ·
+PRD · Specs/API reference · ADR · README entry · Diátaxis user docs.
 
 ## Method
 
-1. Resolve the question with the altitude map (which durable home owns this fact).
-2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests as required.
-3. Prefer schema/test/ADR homes over copying this body into product repos.
-4. Keep North Star short (line + metric); put construction target in End state;
-   put completable slices in Goals; put capability/tool inventories in design;
-   put field-level details in contracts.
+1. Map the fact to the altitude table (industry home).
+2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests.
+3. Prefer schema/test/generated reference over hand-copied lists.
+4. Keep NSM short (metric + optional one-liner); put product shape in **Vision**;
+   completable work in **OKRs/Goals**; features in **PRD**; field details in
+   **specs**.
 
 ## Composition and output
 
@@ -25,4 +25,4 @@ Canonical contract: [`author-skill/references/composition-contract.md`](../../..
 
 - Does not grant deploy or credential capabilities.
 - Does not replace product-local ADRs where those own decisions.
-- Does not treat Quality North Star (`q-*`) as product North Star.
+- Does not treat Quality vocabulary (`q-*`) as product North Star Metric.

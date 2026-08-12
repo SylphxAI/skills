@@ -23,11 +23,10 @@ Every active durable repository exposes:
    It projects the compact Skills topology and contains only
    repo-local commands, hazards, and authority additions. It must not copy or
    fork detailed standards.
-2. **Project identity** — `PROJECT.md` using the product documentation model
-   from `documentation-standard`: **Purpose**, **North Star** (one line +
-   metric when the repo is a product), **End state**, optional completable
-   **Goals**, capability/tool index or links, **Delivery**. Do not invent a
-   parallel machine project-fact file.
+2. **Project identity** — `PROJECT.md` / README projection per industry
+   `documentation-standard`: **Purpose**, **Product Vision**, **North Star
+   Metric**, optional **OKRs/Goals**, **Delivery**, **Links** (to `docs/prd.md`,
+   ADRs, specs). Feature/capability inventories live in the **PRD**, not here.
 3. **Canonical code architecture** — real product code conforms to
    `engineering-standard`, including Capability-first Modular DDD,
    Clean/Hexagonal boundaries, and FCIS. Docs, folder names,
@@ -74,7 +73,7 @@ not a reason to hold a proven terminal indefinitely.
 | Surface | Minimum authoritative evidence |
 | --- | --- |
 | Runtime entry | Installed constitution readback plus valid local links |
-| Project identity | Durable `PROJECT.md` with purpose, North Star/end state as applicable, boundaries, and delivery terminal |
+| Project identity | Durable `PROJECT.md`/README with purpose, vision/NSM as applicable, and delivery terminal |
 | Code architecture | Compiler/module visibility or semantic dependency analysis plus domain/use-case/adapter behavior tests; no source-string implementation-token tests |
 | Verification | Exact-candidate command and results |
 | Delivery | Proof at the repository's declared terminal boundary |
@@ -96,19 +95,24 @@ canonical architecture migration.
 
 ## `PROJECT.md` content (project facts)
 
-Author `PROJECT.md` as the sole repo-local project-fact surface. Default
-skeleton (omit empty optional sections; do not invent duplicate Vision/Mission
-files):
+Author `PROJECT.md` as a **short projection** (industry entry is also README).
+Default skeleton—industry names:
 
-1. **Purpose** — what this repository/product is.
-2. **North Star** — one line + primary metric + anti-proxies (product repos).
-3. **End state** — final product shape and non-goals (link out if long).
-4. **Goals** — optional completable outcomes toward end state (never a second North Star).
-5. **Capabilities / tools** — short index or links to product design / contracts.
-6. **Delivery** — terminal boundary, verify command, lifecycle.
-7. **Links** — ADRs, specs, runbooks, full North Star if separate.
+1. **Purpose** — what this repository is.
+2. **Product Vision** — long-term product shape and non-goals (or link `docs/vision.md`).
+3. **North Star Metric** — one primary customer-value metric + anti-proxies.
+4. **Goals** — optional OKR-style completable outcomes (never a second NSM).
+5. **Delivery** — terminal boundary, verify command, lifecycle.
+6. **Links** — `docs/prd.md` (PRD), NSM/vision depth, ADRs, specs, runbooks.
 
-Full altitude rules: `drive-to-delivery` → `source-authoring-standard` →
+```text
+docs/prd.md         PRD — features/capabilities, requirements
+docs/vision.md      Full vision if not inlined (optional)
+specs / OpenAPI     Interface contracts
+docs/adr/*          ADRs
+```
+
+Full altitude: `drive-to-delivery` → `source-authoring-standard` →
 `documentation-standard`.
 
 ## Validation

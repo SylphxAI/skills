@@ -34,10 +34,11 @@ are retired.
 **Product North Star:** [NORTH-STAR.md](NORTH-STAR.md) — trusted methods; trust
 capped by version-scoped evidence; Stage A TJC / Stage B VCY.
 
-**Project / product documentation model** (Purpose · North Star · End state ·
-Goals · Capabilities · Tools · Contracts):
+**Project / product documentation (industry layers):** Product Vision · North
+Star Metric · OKRs/Goals · PRD · Specs/API reference · ADR · README/`PROJECT.md`
+entry · Diátaxis user docs —
 [documentation-standard](../skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard/)
-under `drive-to-delivery`. `PROJECT.md` is the repo projection.
+under `drive-to-delivery`. PRD path: [prd.md](prd.md).
 
 **Quality vocabulary:** **Quality North Star** (`q-*`, 14 primaries +
 `q-readability` alias; `q-economy` = agent-native

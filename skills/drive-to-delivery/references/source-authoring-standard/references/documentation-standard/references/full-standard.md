@@ -7,293 +7,237 @@ become a parallel implementation, live-state database, or duplicated standard.
 Prefer executable contracts and generated projections wherever prose would
 drift.
 
-This standard is the **authority for where product and project facts live** in a
-repository. It aligns with industry practice (product North Star metric ≠
-goals/OKRs ≠ PRD/spec) and agent-native delivery (one product objective
-authority; completable work slices; no second “sprint North Star”).
+This standard is the **authority for where product and project facts live**.
+It follows **global industry practice** (not org-invented philosophy):
+
+| Industry layer | Mainstream home |
+| --- | --- |
+| **Product Vision** | Vision doc / charter (what world we build) |
+| **North Star Metric (NSM)** | Single metric of core customer value (+ optional one-line strategy) |
+| **OKRs / Goals** | Time-bound, completable objectives |
+| **PRD / product spec** | Features, capabilities, requirements, non-goals |
+| **Specs / API reference** | Exact interface behavior (OpenAPI, schema, tests) |
+| **ADR** | Why a material decision stands (in-repo) |
+| **README** | Repo entry: what it is, how to run, links |
+| **Diátaxis** | User-facing docs: tutorial · how-to · reference · explanation |
+
+There is **no single ISO filename** for product docs. Industry alignment means
+**these layers and purposes**, with familiar names—not a proprietary “End state”
+taxonomy.
 
 ## Altitude map
 
-| Question | Durable home |
-| --- | --- |
-| What is this repository / product, and what does it own? | `PROJECT.md` |
-| What does this product win at, and how do we measure it? | **North Star** (short: one line + primary metric + anti-proxies) in `PROJECT.md` and/or `docs/NORTH-STAR.md` |
-| What is the final product shape (end state)? | **End state** section in `PROJECT.md` or linked product design — not a second North Star |
-| What completable outcomes move us toward end state *now*? | **Goals** in `PROJECT.md` (optional; always completable) |
-| What user/agent jobs does the product provide? | **Capabilities** inventory in product design (`docs/PRODUCT.md` or design blueprint) |
-| What tools / surfaces expose those capabilities? | **Tools / surfaces** table in product design |
-| What are inputs, outputs, failures, limits for each tool or capability? | **Spec / schema / test / capability contract** (executable preferred) |
-| Why was a material durable choice made? | Repo-owned ADR |
-| How is an operation performed or recovered? | Runbook |
-| What is current work / adoption / incident state? | Forge / live work system — not git prose as truth |
-| What static method applies across repositories? | Binding Skills package |
-| What does an API/schema/CLI expose *now*? | Generated reference from the authoritative source |
+| Question | Industry home | Typical path |
+| --- | --- | --- |
+| What is this repository? | **README** (+ optional short `PROJECT.md` projection) | `README.md`, `PROJECT.md` |
+| What long-term product are we building? | **Product Vision** | `docs/vision.md` or PRD overview |
+| How do we measure core customer value? | **North Star Metric** | `docs/NORTH-STAR.md` or vision/NS section (keep short) |
+| What completable outcomes this period? | **OKRs / Goals** | OKR system or `PROJECT.md` Goals |
+| What features/capabilities and requirements? | **PRD / product spec** | `docs/prd.md` |
+| Exact tool/API behavior? | **Spec / API reference / tests** | OpenAPI, schema, `capability.json`, tests |
+| Why a durable technical/product choice? | **ADR** | `docs/adr/` (MADR/Nygard class) |
+| How do I learn / do a task / look up facts? | **Diátaxis** | tutorial · how-to · reference · explanation |
+| How do we operate or recover? | **Runbook** | ops docs |
+| Current work / incident state? | **Work system / forge** | not git prose as truth |
+| Cross-repo static methods? | **Skills packages** | installed skills |
 
-Discussion, brainstorming, and research are evidence inputs. Promote only their
-durable outcome into North Star, end state, goal, design, ADR, spec, or work;
-do not treat raw chat history as the final decision authority.
+Chat is draft. Promote durable outcomes into the homes above.
 
-## Product repository documentation model
+## Industry layers (binding definitions)
 
-Use **fewest durable concepts**. Do not invent parallel Vision / Mission /
-Strategy / Goals / North Star files that restate the same facts.
-
-### Layer definitions (binding)
-
-| Layer | Answers | Shape | Completable? |
+| Layer | Answers | Shape | Industry notes |
 | --- | --- | --- | --- |
-| **Purpose** | What is this repo/product for? | Short prose | Identity, not a sprint |
-| **North Star** | How do we know we are winning? | **One line** + **one primary metric** (stage-honest if needed) + anti-proxies | Long-lived compass |
-| **End state** | What does the finished product look like / not look like? | Product shape, boundaries, non-goals — may be long | Product ambition; not “this PR done” |
-| **Goals** | What completable outcomes do we ship next toward end state? | Bullet list of results | **Yes** — finish, drop, or replace |
-| **Capabilities** | What requestable jobs does the product provide? | Inventory table (job → success → non-goals) | Design inventory |
-| **Tools / surfaces** | How are capabilities exposed? | Tool ↔ capability map | Design inventory |
-| **Contracts** | Exact behavior of each capability/tool | Spec, schema, test, OpenAPI, `capability.json`, … | Implementation truth |
-| **ADR** | Why a material choice stands | Sparse decision records | Decision history |
-| **Delivery** | What is landed / live proof? | Terminal boundary + verify command | Per change |
+| **Product Vision** | What product world are we building; for whom; not doing what? | Qualitative; may be long | Not a metric; not a feature backlog |
+| **North Star Metric** | Single metric that best captures core value delivered to customers | **One primary metric**; optional one-line product strategy | Amplitude/Sean Ellis class practice; ≠ OKR; ≠ feature list |
+| **OKRs / Goals** | What we commit to complete or move this period | Time-bound, completable | Implement strategy; may target NSM or input metrics |
+| **PRD / product spec** | Problem, users, features/capabilities, requirements, non-goals | Inventory + requirements | Features live **here**, not in NSM |
+| **Specs / API reference** | Exact I/O, failures, limits | Schema/OpenAPI/tests preferred | Do not hand-duplicate in vision/NSM |
+| **ADR** | Why we chose A over B | Sparse, in-repo | Status is decision history, not live ops state |
+| **README / PROJECT projection** | Entry + links | Short | Must not become a second PRD |
 
-### Hard separation rules
+### Hard separation (industry consensus)
 
-1. **North Star ≠ Goal.** Goals complete; North Star steers. Never rename end
-   state or North Star as “the goal” unless you drop the word Goal entirely.
-2. **North Star ≠ End state.** North Star is compass + metric. End state is the
-   construction target (documentation-first for builders). End state may live
-   in the same file as North Star but **must be a distinct section**.
-3. **North Star ≠ product design inventory.** Capabilities, tools, and field
-   details do not belong in the North Star metric section.
-4. **Goal ≠ ultimate product.** Agent-native work may pursue end state without
-   a human sprint calendar, but **execution slices** remain goals/work with
-   done criteria. Residual gaps are residuals, not a second North Star.
-5. **One writable authority per fact.** `PROJECT.md` may project; it must not
-   fight a longer North Star or design file. Link instead of duplicate lists.
-6. **Quality North Star (`q-*`)** is engineering authoring vocabulary under
-   `build-product` engineering-standard — **not** product North Star.
-7. **Universal principles** (`docs/policies/PRINCIPLES.md` in Skills) are how
-   any work trades off — not a per-product win metric.
+1. **Vision ≠ North Star Metric ≠ OKR ≠ PRD ≠ API reference.**
+2. **NSM is one primary metric** of customer value (vanity proxies are not NSM).
+3. **OKRs are time-bound**; completing an OKR ≠ fulfilling the whole vision.
+4. **Feature/capability inventories belong in the PRD**, not the NSM document.
+5. **Field-level tool details belong in specs/reference/tests.**
+6. **ADRs record why**, not dashboards or backlog status.
+7. **One writable authority per fact**; entry docs only link.
+8. **Quality North Star (`q-*`)** in this org is engineering authoring vocabulary
+   under `build-product`—**not** product NSM (name collision; say **Quality
+   vocabulary / `q-*`** when engineering).
 
-### `PROJECT.md` skeleton (default for every durable product repo)
+### Optional short strategy
+
+A brief product strategy (how we win) may sit next to vision or NSM. It is not
+a fourth parallel encyclopedia; keep it short.
+
+## `PROJECT.md` / README entry (projection only)
+
+Industry default entry is **README**. This org also uses **`PROJECT.md`** as a
+**short agent/human projection**—not a PRD.
 
 ```markdown
 # <Product or repository name>
 
 ## Purpose
-…
+What this repository is (one short block).
 
-## North Star
-> One line: what we win at.
-**Metric:** …
-**Anti-proxy:** …
+## Product Vision
+(or link docs/vision.md)
+Long-term product shape, users, boundaries, non-goals.
 
-## End state
-Final product shape, boundaries, explicit non-goals.
-(Link to full design if long.)
+## North Star Metric
+> Optional one-line strategy / value promise
+**Metric:** <single primary NSM>
+**Anti-proxy:** what must not substitute for the NSM
 
 ## Goals
-- Completable outcomes toward end state (optional section; omit if empty)
-
-## Capabilities
-(Short index or link to docs/PRODUCT.md / design blueprint)
+- Optional OKR-style completable outcomes (omit if empty)
 
 ## Delivery
 Terminal boundary, verify command, lifecycle notes.
 
 ## Links
-North Star full text, design, ADRs, specs, runbooks.
+| Doc | Role |
+| --- | --- |
+| docs/prd.md | PRD — capabilities, features, requirements |
+| docs/vision.md | Full vision if not inlined |
+| docs/NORTH-STAR.md | NSM depth if not inlined |
+| docs/adr/* | ADRs |
+| OpenAPI / schema / specs | Interface contracts |
+| User docs | Diátaxis-structured docs if any |
 ```
 
-**Proportionality**
+**Do not** put capability inventories, tool matrices, or API field tables in
+`PROJECT.md` / README body—**link the PRD and specs**.
+
+### Proportionality
 
 | Repo kind | Minimum |
 | --- | --- |
-| Tiny library / one-shot | Purpose + Delivery (+ North Star only if product claims exist) |
-| Active product | Full skeleton; design file when capabilities/tools exceed a short table |
-| Multi-surface commercial | Skeleton + `docs/NORTH-STAR.md` and/or design blueprint + generated API refs |
+| Tiny library | README: purpose + how to run + delivery |
+| Active product | README/`PROJECT.md` projection + vision + NSM + PRD + specs as needed |
+| Multi-surface commercial | Above + generated API refs + ADR discipline |
 
-### Product design: capabilities, tools, details
+## PRD / product spec
 
-When the product has more than a trivial surface, write design in one entry
-(e.g. `docs/PRODUCT.md`, design blueprint from `design-product`, or shape pack
-output). Required inventories:
+Canonical path: **`docs/prd.md`** (industry name: PRD).  
+Legacy alias `docs/PRODUCT.md` may redirect with one line; do not maintain two
+inventories.
 
-#### Capabilities
+Typical PRD contents (industry templates converge on):
 
-User- or agent-**requestable jobs**, not internal module names:
+- Problem / opportunity / purpose  
+- Target users and use cases  
+- Goals / success metrics for the scope of the PRD  
+- **Features / capabilities** (what the product provides)  
+- Functional and quality requirements  
+- Non-goals / out of scope  
+- Links to specs, designs, ADRs  
 
-| ID | Job | Success looks like | Non-goals |
+### Features / capabilities and tools
+
+| ID | User/agent job | Success | Non-goals |
 | --- | --- | --- | --- |
 
-#### Tools / surfaces
+| Tool / surface | Capabilities | Audience | Entry | Contract |
+| --- | --- | --- | --- | --- |
 
-How capabilities are exposed (CLI, API, UI, bot, Skill listing, …):
+One capability may map to many surfaces. Surfaces must not silently own
+unlisted capabilities.
 
-| Tool / surface | Capabilities | Audience | Entry |
+### Details
 
-One capability may map to many tools; a tool must not silently own unlisted
-capabilities.
+Prefer schema / OpenAPI / protobuf / tests; Skill packages use
+`capability.json` + `references/`. Prose contracts only when no executable home
+exists yet (purpose, inputs, outputs, failures, auth, side effects, limits,
+examples, non-goals, oracle).
 
-#### Details (per capability or tool)
+## Diátaxis (user-facing technical docs)
 
-**Do not** expand full I/O tables inside North Star or Goals. Prefer:
+When writing docs for product users (not strategy law), separate:
 
-1. schema / OpenAPI / protobuf / tests as truth;
-2. Skill `capability.json` + references when the unit is a Skill package;
-3. a short prose contract only when no executable home exists yet.
+| Type | Need |
+| --- | --- |
+| **Tutorial** | Learn by doing |
+| **How-to** | Achieve a concrete goal |
+| **Reference** | Accurate lookup (often generated) |
+| **Explanation** | Understanding / background |
 
-Minimum contract fields when prose is the temporary home: purpose, inputs,
-outputs, failures, auth, side effects, limits, examples, non-goals, oracle.
+Do not mix a PRD with a tutorial, or an API reference with a vision essay.
 
-### Documentation-first execution (agent-native)
+## ADRs
 
-```text
-Write Purpose + North Star + End state (+ design inventories as needed)
-  → optional Goals for current completable slices
-  → implement toward end state (continuous; no second North Star)
-  → prove Delivery; residual honestly if end state not yet met
-```
+Create an ADR for material decisions that change architecture, ownership,
+public contracts, persistence, security/privacy, delivery semantics, or durable
+defaults. Lightweight MADR/Nygard class; store under the owning repo
+(e.g. `docs/adr/`). Current behavior authority remains code, schema, and tests.
 
-Chat is draft. Promote durable outcomes into the altitude map homes above.
+### Keep
 
-## One semantic authority
+- Context, decision, consequences, supersession  
+- Structural validity of frontmatter when used  
 
-Each fact has one writable source. A projection declares its source identity,
-generation method, and freshness or is clearly labelled non-authoritative.
-Never maintain the same standard, API field list, architecture rule, roadmap
-state, or capability status manually in two places.
+### Do not require
 
-Static cross-repo instructions are authored under `skills/<id>/`. Product code,
-contracts, ADRs, specs, and runbooks live with the owning product repository.
-Live work/adoption/incident/discussion state lives in the product/forge systems that own it. Archived
-repositories may be linked as historical evidence but never as current law.
-
-## Publication and diagnostic boundaries
-
-Public repositories, documentation sites, issue/PR bodies, release notes,
-status pages, examples, support replies, and generated references are disclosure
-sinks. Publication must be intentional; a useful internal evidence artifact is
-not automatically a safe public document.
-
-- Keep raw internal logs/traces, private topology, environment-specific runtime
-  configuration, observed internal migration/cutover state, private
-  identifiers/control knobs, security hypotheses, customer data, and
-  unrestricted diagnostic attachments in the authorized operator/evidence
-  boundary. Public OSS configuration, migration definitions/guides, and stable
-  customer-selectable settings remain publishable when they are intentionally
-  documented contracts and contain no private runtime values.
-- Publish a separate minimum projection for the intended audience. It states
-  purpose, audience, authority/source, allowlisted fields, redaction, freshness,
-  and compatibility or correction semantics.
-- Public API/protocol references document only deliberate stable fields. They
-  do not mirror an internal struct merely because generation is convenient.
-- Prefer opaque correlation identifiers that authorized operators can resolve
-  to protected evidence. Never use public prose or attachments as a substitute
-  for protected observability storage.
-- Test examples, generated docs, errors, and status payloads with sentinel
-  internal/secret/cross-tenant fields so projections fail on leakage.
-
-## ADR rules
-
-Create an ADR for a material decision that changes architecture, ownership,
-public contracts, persistence, security/privacy posture, delivery semantics, or
-a durable enterprise default. Do not create an ADR for ordinary implementation
-detail already governed by an accepted decision or testable contract.
-
-### Lightweight ADR governance
-
-This repository is public. ADR governance stays small and industry-comparable
-(MADR / adr-tools class). It is **not** a retrieval control plane.
-
-**Keep:**
-
-- ADRs live in the owning repository and record **why** a durable choice exists.
-- Current behavior authority remains code, schemas, tests, and product
-  current-state surfaces—not ADR narrative status.
-- Generated projections are non-authoritative.
-- Minimal frontmatter: `id`, `status`, optional `date`, `decision_owner`,
-  `supersedes`, `amends`, and optional `scope` hints.
-- Status: `proposed | accepted | rejected | superseded`.
-- Material changes amend or supersede; do not silently rewrite accepted history.
-- Structural CI only: parseable YAML, stable identity, legal status, existing
-  relation targets, no relation cycles, and `superseded` has a superseding ADR.
-
-**Do not require:**
-
-- ApplicableDecisionBundle as portfolio law
-- mandatory `decision_mode` / `decision_key` calculus
-- typed-scope AND/OR policy engines
-- unresolved disposition / provenance digest law
-- every product repository shipping a local resolver adapter
-
-Agents retrieve ADRs with ordinary search/RAG over markdown at a known commit.
-Future knowledge systems may index ADRs as derived consumers; they own ranking
-and query provenance.
-
-Product adoption guidance: `../../../../../../../docs/history/docs-reference/adr-lifecycle-product-adoption.md`.
-
-An ADR contains:
-
-- stable collision-resistant identity and status;
-- context and forces;
-- decision and owned scope;
-- alternatives and material tradeoffs;
-- consequences, migration/recovery, and verification intent;
-- supersession links rather than rewritten history.
-
-The owning repository defines its collision-safe identity mechanism. Sequential
-numbers are acceptable only when allocation cannot race; portable slugs are
-preferable in parallel agent workflows.
+- Portfolio-wide decision control planes as a precondition for product ADRs  
 
 ## Specs, schemas, and generated references
 
-- A spec defines observable behavior, invariants, failure semantics, and
-  acceptance—not implementation narration.
-- Schemas and executable policies own machine contracts. Prose links to them.
-- Generated reference material is never hand-edited and must fail freshness
-  validation when its source changes.
-- Examples are conformance fixtures where practical; decorative examples must
-  not contradict the contract.
+- Specs define observable behavior and acceptance—not implementation narration.
+- Generated reference is never hand-edited; freshness must fail closed.
+- Examples should not contradict contracts.
 
-## Capability documentation
+## Capability packages (this repository)
 
-Capability records use stable identity and may relate through a graph, facets,
-and curated sets. Important detail attaches as sub-capability, behavior/rule,
-invariant, contract, scenario, or surface. Work items link to capabilities but
-do not replace capability truth; bugs and maintenance work may legitimately
-have no capability relation.
+In Sylphx Verified Capabilities, each `skills/<id>/` listing is one capability
+unit for the PRD inventory: `capability.json` owns the contract, `SKILL.md` the
+procedure, `references/` the depth. `catalog.json` is a projection.
 
-In the Sylphx Verified Capabilities repository, each listing under `skills/<id>/`
-is one capability (tool/method unit): `capability.json` owns the contract,
-`SKILL.md` owns the procedure entry, `references/` owns depth. The catalog is a
-projection, not a second authority.
+## Documentation-first delivery
+
+```text
+Vision + North Star Metric (+ PRD when building features)
+  → OKRs/Goals as completable slices
+  → implement; specs/tests own interface truth
+  → ADRs for material forks
+  → prove delivery; residual if vision not yet met
+```
+
+Do not invent a second “sprint North Star Metric.”
+
+## One semantic authority
+
+Each fact has one writable source. Projections declare source and freshness or
+are labelled non-authoritative. Skills own cross-repo methods; product repos own
+code, PRD, ADRs, specs; live systems own work/incident state.
+
+## Publication and diagnostic boundaries
+
+Public surfaces are intentional disclosure sinks. Keep raw logs, private
+topology, secrets, customer data, and unrestricted diagnostics in authorized
+operator stores. Public API docs expose only deliberate stable fields. Test
+projections against sentinel leaks.
 
 ## Minimal sufficient documentation
 
-Write the smallest durable artifact that closes a real information gap. Do not
-add prose because a template has a section, and do not omit material semantics
-because code exists. Prefer:
+Write the smallest durable artifact that closes a real gap:
 
 1. names and types in code;
 2. tests/schemas for enforceable behavior;
 3. generated reference for enumerable current state;
-4. focused prose for intent, tradeoffs, and operations.
+4. focused prose for vision, tradeoffs, and operations.
 
-## Validation
+## Validation checklist
 
-Check links, generated freshness, schema/examples, ownership, supersession, and
-duplicate semantic authorities. Documentation presence alone never proves code
-architecture, delivery, or migration completion.
-
-### Authority checklist
-
-- [ ] Each material fact has one named writable source.
-- [ ] Projections identify source and freshness or say non-authoritative.
-- [ ] North Star, end state, goals, and design inventories are not collapsed into one unlabeled blob.
-- [ ] Goals (if present) are completable; North Star remains the product compass.
-- [ ] Tool/capability field lists live in contracts or generated refs, not duplicated hand tables.
-- [ ] ADRs contain decisions and tradeoffs, not current mutable status.
-- [ ] ADR frontmatter is structurally valid; projections remain non-authoritative.
-- [ ] Enumerated API/schema/CLI facts are generated or freshness-checked.
-- [ ] Raw discussion is linked as evidence only after its durable outcome is
-      promoted to the correct authority.
-- [ ] Every public/customer artifact is an intentional minimum projection, not
-      raw internal evidence or an internal object serialized by convenience.
-- [ ] Archived material is historical evidence, never an active fallback.
+- [ ] Vision, NSM, OKRs/goals, PRD, and specs are not one unlabeled blob  
+- [ ] NSM is a metric of customer value; not a feature list  
+- [ ] OKRs/goals are completable when present  
+- [ ] Feature/capability inventory lives in the PRD only  
+- [ ] Interface field lists live in contracts/generated refs  
+- [ ] ADRs are decisions, not live status  
+- [ ] README/`PROJECT.md` links rather than duplicating the PRD  
+- [ ] Diátaxis types are not mixed when user docs exist  
+- [ ] Archived material is never active law  

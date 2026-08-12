@@ -18,12 +18,12 @@ Hosts differ: some rank a small metadata listing; others (including RAG-style di
 
 ## What a skill is
 
-A **Skill** is one **requestable job** (one product **capability** / method
-unit) with a specialized procedure, an acceptably complete outcome, and a
+A **Skill** is one **requestable job** (one PRD **feature/capability** unit)
+with a specialized procedure, an acceptably complete outcome, and a
 machine-readable capability contract (`capability.json`) plus an honest
-qualification record (`qualification.json`). Field-level tool details live in
-that contract and `references/` — not in product North Star prose. Repo product
-doc altitude (NS / end state / goals / design inventory): see
+qualification record (`qualification.json`). Field-level details live in that
+contract and `references/` — not in vision or North Star Metric prose. Repo doc
+altitude (Vision · NSM · OKR · PRD · Spec · ADR): see
 `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`.
 
 Examples of the *kind* of listing skill:

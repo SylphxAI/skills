@@ -3,15 +3,15 @@
 The product identity is **Sylphx Verified Capabilities**. The **Product North
 Star** (one-liner, three concepts, stage-honest metrics) is
 [`NORTH-STAR.md`](NORTH-STAR.md). Repo projection:
-[`PROJECT.md`](../PROJECT.md) (Purpose · North Star · End state · Capabilities
-index · Delivery). Project/product documentation altitude (where goals, design
-inventories, and per-tool contracts live) is owned by
+[`PROJECT.md`](../PROJECT.md) (Purpose · Product Vision · North Star Metric ·
+Delivery · Links). Feature inventory: [`prd.md`](prd.md). Documentation altitude
+(Vision · NSM · OKR · PRD · Spec · ADR · Diátaxis) is owned by
 `skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`.
 
 A **Skill** is the host-standard package format that carries one **Capability**:
 one portable user job with boundaries, inputs and outputs, required
 tools/data/permissions, failure semantics, and an externally observable outcome
-contract. That package is the **tool/capability detail** home for this product.
+contract. That package is the **spec/detail** home for this product’s tools.
 
 Every listing package under `skills/<id>/` is a capability and must carry:
 
