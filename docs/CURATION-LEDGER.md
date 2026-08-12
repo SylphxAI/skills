@@ -132,11 +132,15 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 
 ## Project documentation model (2026-08-12)
 
-- Binding product/repo doc altitude in `documentation-standard` under
-  `drive-to-delivery`: **Purpose · North Star · End state · Goals ·
-  Capabilities · Tools · Contracts · ADR · Delivery**.
-- Industry-aligned: North Star ≠ goals/OKRs ≠ design inventory ≠ field contracts.
-- `PROJECT.md` skeleton required by adopt-repo; this repo’s `PROJECT.md` is the
-  exemplar. Wired into design-product, craft-human-agent-language,
-  engineer-testable-requirements, author-skill, build-product, bound-request-scope,
-  drive-to-delivery, MODEL, AUTHORITY-MAP.
+- Initial product/repo doc altitude under `documentation-standard`.
+
+## Industry documentation layers (2026-08-12)
+
+- `documentation-standard` rewritten to **global industry names and layers**:
+  **Product Vision · North Star Metric · OKRs/Goals · PRD · Specs/API reference ·
+  ADR · README/`PROJECT.md` entry · Diátaxis** (no proprietary “End state”
+  taxonomy as the law).
+- Exemplar: `PROJECT.md` projection; **`docs/prd.md`** as PRD; `docs/PRODUCT.md`
+  is a one-line redirect. Wired across adopt-repo, design-product,
+  craft-human-agent-language, engineer-testable-requirements, author-skill,
+  build-product, bound-request-scope, drive-to-delivery, MODEL, AUTHORITY-MAP.

@@ -18,15 +18,15 @@ User intent is **design a product**, not pick an engine brand. Shape-specific de
 ## Method
 
 1. **Frame** the product promise, users, surfaces, non-goals, success criteria.
-   Separate **product North Star** (one line + metric) from **end state**
-   (final shape) and from **completable goals** — see documentation model under
+   Use **industry layers**: **Product Vision** · **North Star Metric** ·
+   **OKRs/Goals** · **PRD** (features/capabilities) — see
    `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`.
-2. **Stance (Quality North Star Layer A):** prefer one deep core concept over
+2. **Stance (Quality vocabulary Layer A):** prefer one deep core concept over
    many half-concepts; simplify by composition without cutting user-facing
    capability. Name 1–2 quality attributes this design intentionally strengthens
    or sacrifices. Open
    `../build-product/references/engineering-standard/` when quality tradeoffs
-   or precedence matter. Quality `q-*` is **not** the product North Star.
+   or precedence matter. Quality `q-*` is **not** the product North Star Metric.
 3. **Choose shape** and open only the matching reference:
    - App / multi-surface client → [references/app/METHOD.md](references/app/METHOD.md)
    - Game → [references/game/METHOD.md](references/game/METHOD.md)
@@ -36,24 +36,22 @@ User intent is **design a product**, not pick an engine brand. Shape-specific de
    - Extract live UI system → [references/system-extractor/METHOD.md](references/system-extractor/METHOD.md)
    - Taxonomy/ontology → [references/semantic-taxonomy/METHOD.md](references/semantic-taxonomy/METHOD.md)
    - Provenance system → [references/provenance-system/METHOD.md](references/provenance-system/METHOD.md)
-4. **Inventory** in the blueprint (or linked `docs/PRODUCT.md`):
-   - **Capabilities** — requestable jobs, success, non-goals
+4. **Inventory in the PRD** (`docs/prd.md` or blueprint that becomes the PRD):
+   - **Features / capabilities** — requestable jobs, success, non-goals
    - **Tools / surfaces** — how each capability is exposed
-   - **Details** — point at contracts/specs (or draft them); do not bury field
-     lists only inside North Star prose
+   - **Details** — point at specs/OpenAPI/`capability.json` (not vision/NSM prose)
 5. **Synthesize** one blueprint: concept, structure, critical flows/states, risks, open questions.
-6. **Hand off** durable homes (do not leave design only in chat):
-   - `PROJECT.md` — Purpose, North Star projection, End state summary, optional Goals, Delivery
-   - Design entry — full capabilities/tools inventory
-   - Specs/tests/`capability.json` — per-tool or per-capability contracts
-   - Build/prototype with testable acceptance criteria and any quality-precedence
-     tradeoffs + rollback conditions
+6. **Hand off** durable industry homes (not chat-only):
+   - `PROJECT.md` / README — Purpose, Vision projection, NSM, optional Goals, Delivery, Links
+   - `docs/prd.md` — PRD inventory and requirements
+   - Specs/tests/`capability.json` — interface contracts
+   - Build/prototype with testable acceptance criteria and quality tradeoffs + rollback
 
 
 ## Progressive disclosure
 
 - Shape packs under [references/](references/) (`app`, `game`, `saas-web-platform`, …)
-- Documentation altitude (where NS / end state / goals / design live):
+- Industry documentation altitude (Vision · NSM · OKR · PRD · Spec · ADR · Diátaxis):
   `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`
 - Quality vocabulary (Depth / Simplicity / `q-*`): `../build-product/references/engineering-standard/`
 - Related jobs (separate skills when requested): `price-saas-subscription`, `compose-product-portfolio`, `compose-product-program`, `decide-architecture-shape`, `engineer-testable-requirements`
@@ -61,7 +59,7 @@ User intent is **design a product**, not pick an engine brand. Shape-specific de
 
 ## Output
 
-Product design blueprint · capabilities/tools inventory · contract pointers ·
-shape-specific residuals · build-ready acceptance criteria · projected
-`PROJECT.md` North Star / end state when the owning repo is in scope
+Product design blueprint · PRD-ready feature/capability inventory · contract
+pointers · shape-specific residuals · build-ready acceptance criteria ·
+projected README/`PROJECT.md` vision + NSM when the owning repo is in scope
 
