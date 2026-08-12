@@ -26,7 +26,6 @@ are retired.
 | instruction-evolution-standard | skills/author-skill/references/instruction-evolution-standard |
 | enterprise-profile-standard | skills/adopt-repo-standards/references/enterprise-profile-standard |
 | enterprise-control-plane-standard | skills/adopt-repo-standards/references/enterprise-control-plane-standard |
-| project-manifest-standard | skills/adopt-repo-standards/references/project-manifest-standard |
 | evidence-and-claims-standard | skills/synthesize-evidence-brief/references/evidence-and-claims-standard |
 | specification-control-plane-standard | skills/engineer-testable-requirements/references/specification-control-plane-standard |
 | work-coordination-standard | skills/select-next-work/references/work-coordination-standard |

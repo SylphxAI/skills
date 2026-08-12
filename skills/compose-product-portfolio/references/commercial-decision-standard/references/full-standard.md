@@ -15,8 +15,7 @@ This standard composes with:
 
 - [`documentation-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard/references/full-standard.md) for ADR altitude
   and source-of-truth rules;
-- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/project-manifest-standard/references/full-standard.md) for the
-  repo-local current-state manifest;
+- `PROJECT.md` for repo-local project facts;
 - [`delivery-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/drive-to-delivery/references/delivery-standard/references/full-standard.md) for release and production
   proof;
 - [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineer-agent-context/references/agent-first-development-standard/references/full-standard.md)
@@ -35,7 +34,7 @@ One semantic authority per fact:
 | Fact | Canonical home |
 | --- | --- |
 | Why a pricing, packaging, roadmap, ICP, or market-position decision was made | `history/adr/` Commercial ADR |
-| Current project commercial posture and where to find decisions | `project.manifest.json` optional `commercial` section |
+| Current project commercial posture and where to find decisions | `PROJECT.md` commercial section or links to Commercial ADRs |
 | Live billable prices, products, coupons, and subscriptions | Stripe or the repo's declared billing SSOT |
 | Entitlement rules and product capability gates | Code/schema/tests in the owning product |
 | Metrics, cohorts, funnels, revenue, churn, CAC, and margin evidence | Analytics/warehouse/dashboard declared by the repo |

@@ -1,19 +1,19 @@
 ---
 name: adopt-repo-standards
-description: "Adopt engineering baseline into a repo: constitution, manifest, fences."
+description: "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences."
 ---
 
 # Adopt Repo Standards
 
 When you need to **bring a concrete repository onto the engineering baseline**
-(constitution, project facts, fences, conformance entrypoints), run **one
+(constitution, `PROJECT.md`, fences, conformance entrypoints), run **one
 adoption** cycle—not a permanent dual instruction stack.
 
 ## When to use
 
 - New or existing product repo needs Skills-aligned engineering baseline
 - Predecessor instruction layouts / dual standards must be retired
-- Manifest, fences, and conformance entrypoints are missing or stale
+- Project facts, fences, and conformance entrypoints are missing or stale
 
 ## Method
 
@@ -21,13 +21,13 @@ adoption** cycle—not a permanent dual instruction stack.
 
 ### 1. Frame
 - Target repo and delivery terminal
-- Required surfaces (constitution projection, project.manifest, fences, checks)
+- Required surfaces (constitution projection, `PROJECT.md`, fences, checks)
 - Predecessor instruction sources to retire
 
 ### 2. Research
 - What is already present vs missing (read repo; do not invent authority)
 - Depth: [references/full-standard.md](references/full-standard.md)
-- When wiring project facts: open [references/project-manifest-standard/](references/project-manifest-standard/)
+- Project facts live in `PROJECT.md`
 - When choosing stack/profile fences: open [references/enterprise-profile-standard/](references/enterprise-profile-standard/) and [references/enterprise-control-plane-standard/](references/enterprise-control-plane-standard/) as needed
 - For implementation shape constraints applied *while adopting*, open sibling depth under other workflows only if this adoption must implement product code:
   - `../build-product/references/engineering-standard/`
@@ -61,8 +61,7 @@ Dated residual language does not complete dual-layout retirement.
 ## Progressive disclosure
 
 1. [references/full-standard.md](references/full-standard.md) — adoption surfaces and retirement method
-2. [references/project-manifest-standard/](references/project-manifest-standard/) — project facts schema and placement
-3. Other packs only when the step above says so (owned by the workflow that applies them)
+2. Other packs only when the step above says so (owned by the workflow that applies them)
 
 ## Boundaries
 

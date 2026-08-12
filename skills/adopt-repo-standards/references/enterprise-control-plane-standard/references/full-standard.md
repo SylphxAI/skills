@@ -19,8 +19,7 @@ compact constitution projections, and unavoidable transport adapters.
 
 This standard composes with:
 
-- [`project-manifest-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/project-manifest-standard/references/full-standard.md) for repo
-  identity, lifecycle, boundaries, and rollout packets;
+- `PROJECT.md` for repo identity, lifecycle, boundaries, and delivery;
 - [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/author-skill/references/instruction-evolution-standard/references/full-standard.md) for
   static instruction updates and multi-repository migration contracts;
 - [`agent-first-development-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/engineer-agent-context/references/agent-first-development-standard/references/full-standard.md)
@@ -41,9 +40,9 @@ Use the layer that owns the fact or mechanism:
 | Active delivery-forge enforcement (currently GitHub) | issues, change candidates, merge serialization, rulesets, branch protection, checks/statuses, workload identities, selector properties | product intent, hidden workflow state, dashboard-only governance |
 | Skills | static standards, procedures, profiles, schemas, and reusable templates | live work/organization-wide adoption state, repo-local facts, product runtime behavior |
 | the live work system | live selectors, Work Ledger, adoption, migration, repository ingestion, effects, and conformance projections | static instruction prose or repo-local product decisions |
-| Repo-local facts | `PROJECT.md`, `project.manifest.json`, root runtime constitution, thin caller workflows | copied enterprise process, sibling-repo internals |
+| Repo-local facts | `PROJECT.md`, root runtime constitution, thin caller workflows | copied enterprise process, sibling-repo internals |
 | Active execution platform (currently Sylphx Platform) | CI compute, preview/deploy orchestration, status publication, reconciliation, portfolio dashboards, portal projection | merge authority outside the selected delivery forge, project facts guessed centrally |
-| Portal/catalog projection | searchable catalog, scorecards, scaffolding UI, ownership views, maturity summaries | source-of-truth state not backed by forge/Skills/manifests/telemetry |
+| Portal/catalog projection | searchable catalog, scorecards, scaffolding UI, ownership views, maturity summaries | source-of-truth state not backed by forge/Skills/PROJECT.md/telemetry |
 
 If two layers can express a fact, choose the one that can enforce or generate it
 without drift. Prose dashboards are never enforcement.
@@ -55,12 +54,12 @@ without drift. Prose dashboards are never enforcement.
 New repositories start from binding Skills and enterprise-profile defaults:
 
 - compact runtime constitution installed from the binding instruction source;
-- `PROJECT.md` and `project.manifest.json`;
+- `PROJECT.md`;
 - organization Renovate preset or relay;
 - baseline ruleset and branch protection from the owning organization;
 - thin workflow caller only when GitHub Actions, a status publisher, or a
   runtime requires a local file;
-- manifest-declared lifecycle, layer, public surfaces, delivery proof, and
+- declared lifecycle, layer, public surfaces, delivery proof, and
   adoption state before substantive cross-repo consumption.
 
 ### Existing repositories
@@ -86,11 +85,7 @@ Use organization rulesets for shared branch/tag/check policy. Use repository
 custom properties to select broad repo classes: lifecycle, layer, artifact
 producer, deployable service, commercial surface, package producer, or CI model.
 
-Custom properties are selectors, not the canonical project manifest. The
-manifest remains the local source of truth for nuanced goals and boundaries.
-The platform reconciler may project manifest facts into GitHub custom
-properties, but it must not make GitHub custom properties the only home for
-project purpose, lifecycle, boundary, deploy path, or commercial posture.
+Custom properties are selectors, not the canonical project facts. `PROJECT.md` remains the local source of truth for nuanced goals and boundaries. The platform reconciler may project project facts into GitHub custom properties, but it must not make GitHub custom properties the only home for project purpose, lifecycle, boundary, deploy path, or commercial posture.
 
 The active enterprise profile owns the selector baseline:
 
@@ -108,7 +103,7 @@ The active enterprise profile owns the selector baseline:
 repository. It selects web application repositories for web preview/build
 defaults, front-end checks, route/rendering admission, and Sylphx Platform
 deploy policies. A repository enters or leaves `webpool` by updating its
-manifest facts and then letting the reconciler update GitHub custom properties.
+project facts and then letting the reconciler update GitHub custom properties.
 Do not hardcode WebPool membership in workflow YAML, runner labels, or sibling
 projects.
 
@@ -123,10 +118,7 @@ properties are created with `required=false` and
 `require_explicit_values=false`. A later ratchet may make values required only
 after the Sylphx Platform/GitHub App projection job has populated in-scope
 repositories and default-branch readback proves coverage.
-Use the current projection capability to project repo-local manifest
-facts into forge custom-property values. It applies only complete selector facts
-and reports missing `project.policyPool` or `delivery.deployable` as repo-local
-manifest work rather than guessing centrally.
+Use the current projection capability to project repo-local project facts into forge custom-property values. It applies only complete selector facts and reports missing lifecycle/deployable facts as repo-local project-fact work rather than guessing centrally.
 Use the the live work system Work Ledger to batch incomplete selector facts into
 claimable repo-local migration packets. Packet batching is
 the default; do not create one issue per repository for selector fact adoption.
@@ -291,7 +283,7 @@ It is not governance by itself.
 
 Allowed:
 
-- read-only catalog projections from `project.manifest.json`, GitHub, CI,
+- read-only catalog projections from `PROJECT.md`, GitHub, CI,
   release systems, billing SSOT, metrics SSOT, and telemetry;
 - scaffolding flows that create typed Work Items and source candidates through
   the active adapter;
@@ -307,7 +299,7 @@ Forbidden:
 - comments or dashboard warnings that no candidate gate or Work Item reconciler
   consumes;
 - portal workflows that bypass the active profile's integrity, admission,
-  serialization, release controls, or repo-local manifests.
+  serialization, release controls, or repo-local project facts.
 
 ## Migration Classes
 
@@ -326,7 +318,7 @@ its selector is explicit, and recovery is documented.
 
 ## Validation
 
-Validate the exact Skills/profile identities, project-manifest schema, selector
+Validate the exact Skills/profile identities, project facts, selector
 resolution, desired/observed reconciliation, and target repository's declared
 verification entrypoint. Read current queue, runner, ruleset, package-release,
 artifact-identity, and selector conformance through the live work system or the owning

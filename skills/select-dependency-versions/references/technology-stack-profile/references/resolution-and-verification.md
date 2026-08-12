@@ -62,11 +62,11 @@ sole production database migration engine for every language and repository
 size. Those values are read from the profile, not duplicated in an adapter.
 
 Product repositories project intended component topology through the optional
-`architecture.components` map in `project.manifest.json` and bind this Profile
+`architecture.components` map in `PROJECT.md` or repo architecture docs and bind this Profile
 under `architecture.profileBindings` using its exact revision and content
 digest. Each unique component id declares its role, implementation,
-backend-owner reference, and owned effects. The manifest schema owns only the
-generic fact shape; this Profile owns the recognized role/effect meanings.
+backend-owner reference, and owned effects. Repo docs own only the generic fact
+shape; this Profile owns the recognized role/effect meanings.
 Missing, stale, or unknown bindings and facts block a selected technology
 decision instead of being inferred from filenames. Live deployment and
 production status remain the live work system observations, not repo-authored fields.

@@ -51,9 +51,9 @@
   "skills": [
     {
       "name": "adopt-repo-standards",
-      "description": "Adopt engineering baseline into a repo: constitution, manifest, fences.",
+      "description": "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:820034bd9e1a39b444c94fcee2f3e6aae05a45889711b177fc2f772a1911d08c",
+      "packageDigest": "sha256:042ba9e55747180353208e22b99f9abef893f672fe77a66cb1b6bc498d6c1099",
       "capability": {
         "job": "Bring a concrete repository onto the engineering baseline: constitution projection, project facts, fences, conformance entrypoints, retire predecessor layouts.",
         "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired for the framed scope (residuals are incomplete status only, not dual-system permission).",
@@ -170,7 +170,7 @@
       "name": "compose-product-portfolio",
       "description": "Compose multi-product portfolio: platform vs products, connectors, bundles.",
       "path": "skills/compose-product-portfolio/SKILL.md",
-      "packageDigest": "sha256:10cda07aa2b4b4b5408ef97757863f405f1efec0f11a77fb922a4408bb73967f",
+      "packageDigest": "sha256:224718cfcf4130f9815793e9f85d5d61b3663cfe459b33819dc809588706a643",
       "capability": {
         "job": "Compose a multi-product portfolio: product-unit boundaries, typed connector graphs, and keep/extract/merge/retire decisions.",
         "outcomeObservable": "A Composable Product Portfolio Contract where every unit has a standalone job, contract, lifecycle, and support path, every connector edge names its contract and state owner, and decisions carry evidence and handoffs.",
@@ -326,7 +326,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:d7a52e0d8c01a8d7a74cc7cdc42cd9c15bb0672c301079ecfc2f5999bb940dd0",
+      "packageDigest": "sha256:c69fcb02a756358521ca2f7349e762470c8b0e32f8b6a8650d09c1adad72d119",
       "capability": {
         "job": "Drive one accepted multi-phase objective (engineering or product) to its delivery terminal with evidence at the active delivery boundary.",
         "outcomeObservable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
@@ -352,7 +352,7 @@
       "name": "engineer-agent-context",
       "description": "Engineer agent context packs: load rules, budgets, refresh.",
       "path": "skills/engineer-agent-context/SKILL.md",
-      "packageDigest": "sha256:0ef1b9a3acc77562fd30eb6cf088d4853edb6fea2bb23394d5d25fe1bd86c487",
+      "packageDigest": "sha256:c4e972a025768800ac3490870996a9a0b227a448e826cb6f9019e3fde6531296",
       "capability": {
         "job": "Engineer a Context and Memory Contract that bounds what agents load, with budgets, freshness, and invalidation.",
         "outcomeObservable": "A Context and Memory Contract where every information class has an owner and authority order, budgets are explicit, invalidation and deletion rules work, and adversarial and degradation tests pass.",
@@ -573,7 +573,7 @@
       "name": "record-structured-deliberation",
       "description": "Record a structured deliberation: options, criteria, decision, actions.",
       "path": "skills/record-structured-deliberation/SKILL.md",
-      "packageDigest": "sha256:9cacb2ad67572e25a0609f7f6c76ab2b4c0ca198f9ffe6e02add8228f55e2c91",
+      "packageDigest": "sha256:03212e42e7b1d1c9be8470bb2040abc7b063e5b13089dbc761be86b95e115333",
       "capability": {
         "job": "Record a structured deliberation: options, criteria, decision, actions, preserving genuine alternatives and dissent.",
         "outcomeObservable": "A Deliberation Record preserving genuine alternatives, linked arguments, position changes with reasons, residual dissent, commitments and owners, and a handoff to a decision, experiment, or work item.",
@@ -651,7 +651,7 @@
       "name": "run-incident-response",
       "description": "Run production incident response to mitigation and learning.",
       "path": "skills/run-incident-response/SKILL.md",
-      "packageDigest": "sha256:e5d7d2dfbfc81c449dba73a563b1cd9102c3c4897733ba1dfac5d7a00d7bfded",
+      "packageDigest": "sha256:7bd012a37f04a709b1bd47e30eec407fc94ec6d2640874b74249da8ec7f8a609",
       "capability": {
         "job": "Run production incident response to mitigation and truthful close: declare, stabilize, communicate, diagnose, resolve, learn.",
         "outcomeObservable": "An incident record with mitigation evidence, facts-only stakeholder communications, an owning-cause fix or permanent mitigation, and a postmortem with action items and owners.",
@@ -690,7 +690,7 @@
       "name": "select-dependency-versions",
       "description": "Select package/runtime versions from live authoritative sources.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:d93061169d4bbcdd85883a7130a930ce271ab9dff820d212c3fcb8fc131a2357",
+      "packageDigest": "sha256:2813cbc97a2669b66b980fe4eadfbf722b1f0947b786d3b0ab7cca2efb70b924",
       "capability": {
         "job": "Select package and runtime versions from live authoritative sources with exact versions, sources, and applied pins.",
         "outcomeObservable": "Selected versions trace to a live registry or release API with the exact source recorded, pins are applied in owning manifests, and the repo's install, build, and tests pass or residuals are explicit.",

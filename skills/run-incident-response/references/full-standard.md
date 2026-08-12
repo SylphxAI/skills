@@ -26,17 +26,18 @@ This standard composes with:
 
 An explicit request to design or review an incident lifecycle may use this
 method before production. Operational adoption applies by selector, not by
-exemption prose: a repository is in scope when `project.manifest.json` states
-`project.lifecycle` is `production` or `commercial` **and**
-`delivery.deployable` is `true` (or the projected deployed/operated-surface
-property). A library, CLI-only tool, or research repo with no deployed or
-operated surface never satisfies the adoption selector, so it does not need to
-run an incident process it has no incidents to write. A pre-live S4 near-miss
-may still use the typed artifacts when a gate or floor almost failed.
+exemption prose: a repository is in scope when `PROJECT.md` (or forge
+selector properties projected from it) states lifecycle is `production` or
+`commercial` **and** the repo is deployable/operated (or the projected
+deployed/operated-surface property is true). A library, CLI-only tool, or
+research repo with no deployed or operated surface never satisfies the
+adoption selector, so it does not need to run an incident process it has no
+incidents to write. A pre-live S4 near-miss may still use the typed artifacts
+when a gate or floor almost failed.
 
-The canonical project-manifest schema requires both lifecycle and deployable
-state, so selector evaluation fails rather than guessing when either fact is
-missing.
+If lifecycle or deployable
+state is missing from `PROJECT.md` and forge selectors, evaluation fails
+closed rather than guessing.
 
 ## Severity Classification
 
