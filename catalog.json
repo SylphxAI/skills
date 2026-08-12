@@ -53,7 +53,7 @@
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:042ba9e55747180353208e22b99f9abef893f672fe77a66cb1b6bc498d6c1099",
+      "packageDigest": "sha256:2bdfbeae80a9b72013f7ee2519e50e36125e4f5b3e5878b7a72968bb75f0c152",
       "capability": {
         "job": "Bring a concrete repository onto the engineering baseline: constitution projection, project facts, fences, conformance entrypoints, retire predecessor layouts.",
         "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired for the framed scope (residuals are incomplete status only, not dual-system permission).",
@@ -105,7 +105,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:f816426df73886d9d2875351452b825b4f190c0d99826fd93183ebd850d78f29",
+      "packageDigest": "sha256:d7116a5e1984d72d28c57640226b0e17afca90eb8a79b35355ea961cf5aadf30",
       "capability": {
         "job": "Create or revise an Agent Skill package: job, description, method, references, contract.",
         "outcomeObservable": "The revised package passes npm test with a fresh catalog, local links resolve, the capability contract validates, and the description selects for the right ask and abstains on near-misses.",
@@ -118,7 +118,7 @@
       "name": "bound-request-scope",
       "description": "Bound this request: objective, in/out, non-goals, cut lines.",
       "path": "skills/bound-request-scope/SKILL.md",
-      "packageDigest": "sha256:36deca1539a56eebf4adc44645da301ae11879f5f2f1d2c2e8b9e35b29359197",
+      "packageDigest": "sha256:7937e3bc7667aa650382ac15b3de991b7514d045c522b83712edf73feadd075a",
       "capability": {
         "job": "Bound this request to a right-sized scope contract: objective, in/out, non-goals, cut lines, and ceremony matched to risk.",
         "outcomeObservable": "A stable scope contract with objective, in/out, non-goals, cut lines, and residuals that the requester can approve before implementation proceeds.",
@@ -157,7 +157,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:5160d6c31ddb4de46e3ef29f8b32d881fbdc7318f4434ba6264382a30579e0c6",
+      "packageDigest": "sha256:54c0402e81ab18a2dbeabe3432d9b1f0518b3fb3b284283586c54bfe3e63c90b",
       "capability": {
         "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
@@ -209,7 +209,7 @@
       "name": "craft-human-agent-language",
       "description": "Write or review any document or prompt that humans and agents both use (README, ADR, update, instruction): frame purpose and audience, structure before prose, plain language, model-agnostic language choice, output contract, and a re-verification gate. Use when asked to write/translate/review a doc or prompt for humans and agents, or to choose the most efficient language and format for a model you are switching.",
       "path": "skills/craft-human-agent-language/SKILL.md",
-      "packageDigest": "sha256:31cd2e6cfa0acd5f4625661a19c7712aaf05c728ac43c2e9280b02926a43fc77",
+      "packageDigest": "sha256:ada3cb470d634d892d9131f4502686238e656d45b1505f298e870e3b94320594",
       "capability": {
         "job": "Write or review a human-agent document or prompt: purpose, audience, structure, plain language, evidence-based language, output contract, re-verification.",
         "outcomeObservable": "A document or prompt with explicit purpose/audience, structure before prose, plain-language floors, a recorded evidence-based language/format decision, and a re-verification gate that an independent reviewer can rerun.",
@@ -287,7 +287,7 @@
       "name": "design-product",
       "description": "Design a product blueprint (app, game, SaaS, etc.); shape depth in references.",
       "path": "skills/design-product/SKILL.md",
-      "packageDigest": "sha256:04348dac6728340e8ea834089565ca9e9065463b0fb8ecb33c1cd72b6ec967e5",
+      "packageDigest": "sha256:772080d616997155c183befe4d48b84f2672c6f2c1307508a3b6588b544e1198",
       "capability": {
         "job": "Design a product blueprint (app, game, SaaS, or similar) with one deep core concept and build-ready acceptance criteria.",
         "outcomeObservable": "A product design blueprint with one deep core concept, critical flows and states, named quality tradeoffs with rollback conditions, and acceptance criteria a builder can test.",
@@ -326,7 +326,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:c69fcb02a756358521ca2f7349e762470c8b0e32f8b6a8650d09c1adad72d119",
+      "packageDigest": "sha256:bd8b865dd5b9f755b665105f8d47acf3952de8da3ffa8c37fb1be574004aeda4",
       "capability": {
         "job": "Drive one accepted multi-phase objective (engineering or product) to its delivery terminal with evidence at the active delivery boundary.",
         "outcomeObservable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
@@ -365,7 +365,7 @@
       "name": "engineer-testable-requirements",
       "description": "Turn requirements into testable acceptance criteria with oracles.",
       "path": "skills/engineer-testable-requirements/SKILL.md",
-      "packageDigest": "sha256:9c616117b4fcfbfda3833f1845b673db380b9637dbfb120b97177d44046df910",
+      "packageDigest": "sha256:26d4f4bdcf8156ff433cd17c2b0b69d423af7083e2602abc397c8f0270791e90",
       "capability": {
         "job": "Turn requirements into testable acceptance criteria with oracles, traceability, and change authority.",
         "outcomeObservable": "A Requirements Contract where each accepted requirement has an oracle and success boundary, traces to a source need and forward artifacts, and changes require impact analysis and supersession under a named authority.",

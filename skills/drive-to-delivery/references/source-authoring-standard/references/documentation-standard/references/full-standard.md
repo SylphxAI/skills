@@ -7,22 +7,151 @@ become a parallel implementation, live-state database, or duplicated standard.
 Prefer executable contracts and generated projections wherever prose would
 drift.
 
+This standard is the **authority for where product and project facts live** in a
+repository. It aligns with industry practice (product North Star metric ≠
+goals/OKRs ≠ PRD/spec) and agent-native delivery (one product objective
+authority; completable work slices; no second “sprint North Star”).
+
 ## Altitude map
 
 | Question | Durable home |
 | --- | --- |
-| What is this repository and what does it own? | `PROJECT.md` |
+| What is this repository / product, and what does it own? | `PROJECT.md` |
+| What does this product win at, and how do we measure it? | **North Star** (short: one line + primary metric + anti-proxies) in `PROJECT.md` and/or `docs/NORTH-STAR.md` |
+| What is the final product shape (end state)? | **End state** section in `PROJECT.md` or linked product design — not a second North Star |
+| What completable outcomes move us toward end state *now*? | **Goals** in `PROJECT.md` (optional; always completable) |
+| What user/agent jobs does the product provide? | **Capabilities** inventory in product design (`docs/PRODUCT.md` or design blueprint) |
+| What tools / surfaces expose those capabilities? | **Tools / surfaces** table in product design |
+| What are inputs, outputs, failures, limits for each tool or capability? | **Spec / schema / test / capability contract** (executable preferred) |
 | Why was a material durable choice made? | Repo-owned ADR |
-| What behavior/contract must implementation satisfy? | Spec, schema, test, or executable policy |
 | How is an operation performed or recovered? | Runbook |
-| What public capability exists? | Capability catalog derived from contracts/code where possible |
-| What is the current work/adoption/incident state? | Repository/forge Work or incident record, linked from docs if useful |
+| What is current work / adoption / incident state? | Forge / live work system — not git prose as truth |
 | What static method applies across repositories? | Binding Skills package |
-| What does an API/schema/CLI expose now? | Generated reference from the authoritative source |
+| What does an API/schema/CLI expose *now*? | Generated reference from the authoritative source |
 
 Discussion, brainstorming, and research are evidence inputs. Promote only their
-durable outcome into an ADR, spec, capability record, or work item; do not treat
-raw chat history as the final decision authority.
+durable outcome into North Star, end state, goal, design, ADR, spec, or work;
+do not treat raw chat history as the final decision authority.
+
+## Product repository documentation model
+
+Use **fewest durable concepts**. Do not invent parallel Vision / Mission /
+Strategy / Goals / North Star files that restate the same facts.
+
+### Layer definitions (binding)
+
+| Layer | Answers | Shape | Completable? |
+| --- | --- | --- | --- |
+| **Purpose** | What is this repo/product for? | Short prose | Identity, not a sprint |
+| **North Star** | How do we know we are winning? | **One line** + **one primary metric** (stage-honest if needed) + anti-proxies | Long-lived compass |
+| **End state** | What does the finished product look like / not look like? | Product shape, boundaries, non-goals — may be long | Product ambition; not “this PR done” |
+| **Goals** | What completable outcomes do we ship next toward end state? | Bullet list of results | **Yes** — finish, drop, or replace |
+| **Capabilities** | What requestable jobs does the product provide? | Inventory table (job → success → non-goals) | Design inventory |
+| **Tools / surfaces** | How are capabilities exposed? | Tool ↔ capability map | Design inventory |
+| **Contracts** | Exact behavior of each capability/tool | Spec, schema, test, OpenAPI, `capability.json`, … | Implementation truth |
+| **ADR** | Why a material choice stands | Sparse decision records | Decision history |
+| **Delivery** | What is landed / live proof? | Terminal boundary + verify command | Per change |
+
+### Hard separation rules
+
+1. **North Star ≠ Goal.** Goals complete; North Star steers. Never rename end
+   state or North Star as “the goal” unless you drop the word Goal entirely.
+2. **North Star ≠ End state.** North Star is compass + metric. End state is the
+   construction target (documentation-first for builders). End state may live
+   in the same file as North Star but **must be a distinct section**.
+3. **North Star ≠ product design inventory.** Capabilities, tools, and field
+   details do not belong in the North Star metric section.
+4. **Goal ≠ ultimate product.** Agent-native work may pursue end state without
+   a human sprint calendar, but **execution slices** remain goals/work with
+   done criteria. Residual gaps are residuals, not a second North Star.
+5. **One writable authority per fact.** `PROJECT.md` may project; it must not
+   fight a longer North Star or design file. Link instead of duplicate lists.
+6. **Quality North Star (`q-*`)** is engineering authoring vocabulary under
+   `build-product` engineering-standard — **not** product North Star.
+7. **Universal principles** (`docs/policies/PRINCIPLES.md` in Skills) are how
+   any work trades off — not a per-product win metric.
+
+### `PROJECT.md` skeleton (default for every durable product repo)
+
+```markdown
+# <Product or repository name>
+
+## Purpose
+…
+
+## North Star
+> One line: what we win at.
+**Metric:** …
+**Anti-proxy:** …
+
+## End state
+Final product shape, boundaries, explicit non-goals.
+(Link to full design if long.)
+
+## Goals
+- Completable outcomes toward end state (optional section; omit if empty)
+
+## Capabilities
+(Short index or link to docs/PRODUCT.md / design blueprint)
+
+## Delivery
+Terminal boundary, verify command, lifecycle notes.
+
+## Links
+North Star full text, design, ADRs, specs, runbooks.
+```
+
+**Proportionality**
+
+| Repo kind | Minimum |
+| --- | --- |
+| Tiny library / one-shot | Purpose + Delivery (+ North Star only if product claims exist) |
+| Active product | Full skeleton; design file when capabilities/tools exceed a short table |
+| Multi-surface commercial | Skeleton + `docs/NORTH-STAR.md` and/or design blueprint + generated API refs |
+
+### Product design: capabilities, tools, details
+
+When the product has more than a trivial surface, write design in one entry
+(e.g. `docs/PRODUCT.md`, design blueprint from `design-product`, or shape pack
+output). Required inventories:
+
+#### Capabilities
+
+User- or agent-**requestable jobs**, not internal module names:
+
+| ID | Job | Success looks like | Non-goals |
+| --- | --- | --- | --- |
+
+#### Tools / surfaces
+
+How capabilities are exposed (CLI, API, UI, bot, Skill listing, …):
+
+| Tool / surface | Capabilities | Audience | Entry |
+
+One capability may map to many tools; a tool must not silently own unlisted
+capabilities.
+
+#### Details (per capability or tool)
+
+**Do not** expand full I/O tables inside North Star or Goals. Prefer:
+
+1. schema / OpenAPI / protobuf / tests as truth;
+2. Skill `capability.json` + references when the unit is a Skill package;
+3. a short prose contract only when no executable home exists yet.
+
+Minimum contract fields when prose is the temporary home: purpose, inputs,
+outputs, failures, auth, side effects, limits, examples, non-goals, oracle.
+
+### Documentation-first execution (agent-native)
+
+```text
+Write Purpose + North Star + End state (+ design inventories as needed)
+  → optional Goals for current completable slices
+  → implement toward end state (continuous; no second North Star)
+  → prove Delivery; residual honestly if end state not yet met
+```
+
+Chat is draft. Promote durable outcomes into the altitude map homes above.
 
 ## One semantic authority
 
@@ -131,6 +260,11 @@ invariant, contract, scenario, or surface. Work items link to capabilities but
 do not replace capability truth; bugs and maintenance work may legitimately
 have no capability relation.
 
+In the Sylphx Verified Capabilities repository, each listing under `skills/<id>/`
+is one capability (tool/method unit): `capability.json` owns the contract,
+`SKILL.md` owns the procedure entry, `references/` owns depth. The catalog is a
+projection, not a second authority.
+
 ## Minimal sufficient documentation
 
 Write the smallest durable artifact that closes a real information gap. Do not
@@ -152,6 +286,9 @@ architecture, delivery, or migration completion.
 
 - [ ] Each material fact has one named writable source.
 - [ ] Projections identify source and freshness or say non-authoritative.
+- [ ] North Star, end state, goals, and design inventories are not collapsed into one unlabeled blob.
+- [ ] Goals (if present) are completable; North Star remains the product compass.
+- [ ] Tool/capability field lists live in contracts or generated refs, not duplicated hand tables.
 - [ ] ADRs contain decisions and tradeoffs, not current mutable status.
 - [ ] ADR frontmatter is structurally valid; projections remain non-authoritative.
 - [ ] Enumerated API/schema/CLI facts are generated or freshness-checked.

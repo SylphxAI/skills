@@ -34,6 +34,11 @@ are retired.
 **Product North Star:** [NORTH-STAR.md](NORTH-STAR.md) — trusted methods; trust
 capped by version-scoped evidence; Stage A TJC / Stage B VCY.
 
+**Project / product documentation model** (Purpose · North Star · End state ·
+Goals · Capabilities · Tools · Contracts):
+[documentation-standard](../skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard/)
+under `drive-to-delivery`. `PROJECT.md` is the repo projection.
+
 **Quality vocabulary:** **Quality North Star** (`q-*`, 14 primaries +
 `q-readability` alias; `q-economy` = agent-native
 entropy/verification/attention/runtime/coordination/reversal cost — not

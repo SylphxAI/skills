@@ -52,7 +52,12 @@ No permanent workarounds. Prefer durable work on the owning layer.
 
 - Correct boundary; no product hacks for shared floors that belong elsewhere
 - Real paths over mocks unless the cycle is explicitly building a seam
-- Update public docs/contracts when behavior changes
+- Update public docs/contracts when behavior changes. Keep product **North Star**
+  (line + metric), **end state**, completable **goals**, and capability/tool
+  **details** in their documentation-standard homes — do not dump implementation
+  field lists into North Star. Open
+  `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`
+  when placing docs.
 
 ### 5. Deliver / verify
 - Original oracles for this slice (run, smoke, API, pack, host as applicable)

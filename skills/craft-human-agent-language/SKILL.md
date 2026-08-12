@@ -26,6 +26,12 @@ State purpose and audience before writing:
 - Purpose: `inform` | `decide` | `execute`
 - Audience: `human` | `agent` | `both`
 - Constraints: token cost, correctness, parseability
+- **Altitude** (when the artifact is project/product law): put the fact in the
+  correct home — North Star (line + metric), End state, Goals (completable),
+  Capabilities/Tools (design), Contracts (details), ADR (why). Do not collapse
+  them into one unlabeled blob. Open
+  `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`
+  when choosing homes.
 
 ### 1. Structure before prose
 
@@ -82,6 +88,8 @@ Refresh `references/evidence-brief-*` with the measurement and new date.
 - `references/evidence-brief-2026-08.md` — open when you need dated numbers,
   sources, or the refresh protocol.
 - `references/iso-plain-language.md` — open for formal/long-lived artifacts.
+- Documentation altitude / project doc model:
+  `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`
 
 ## Validation
 
