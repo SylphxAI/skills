@@ -76,7 +76,9 @@ churning capability identity.
   fails closed. A candidate is also refused if it would **downgrade** an
   installed capability from `qualified` to `unqualified`.
 - `unqualified` packages are installable (open foundation) but their attempts
-  are **not eligible** for a positive Verified Capability Yield contribution.
+  are **not eligible** for a positive Verified Capability Yield contribution
+  (Stage B product metric; see `docs/NORTH-STAR.md`). They also do not count
+  toward Trustworthy Job Coverage (Stage A active compass) as qualified jobs.
 - AutoSync applies a candidate only if it does not **downgrade** an installed
   capability from `qualified` to `unqualified` (fail-closed promotion gate
   enforced by `syncTarget` in

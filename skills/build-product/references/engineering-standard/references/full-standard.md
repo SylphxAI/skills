@@ -4,23 +4,41 @@
 
 **Meta:** *Simple concepts, powerful usage.*
 
-Use a few deep concepts; compose them for power. Do **not** fake simplicity by
-cutting capability, hiding difficulty in implicit convention, or forcing a
-false unification. Depth decides whether a unification is earned; Simplicity
-decides whether the result is actually cleaner after composition.
+The Quality North Star is this standard’s **sole engineering quality
+vocabulary** (`q-*`). It is ambitious on purpose: durable product, design,
+code, architecture, documentation, and operations work is judged here when
+attributes are relevant to domain and blast radius.
 
-Every durable **product, design, code, documentation, and architecture**
-outcome is judged against this **sole engineering quality vocabulary** when
-attributes are relevant to the domain and blast radius. Business-model work
-prices the same attributes through `commercial-decision-standard`.
+It is **not**:
+
+- the **Product North Star** for Sylphx Verified Capabilities
+  ([`docs/NORTH-STAR.md`](../../../../../docs/NORTH-STAR.md)) — trusted
+  methods and evidence-capped trust; Stage A TJC / Stage B VCY;
+- package **qualification** evidence or **Verified Capability Yield**;
+- a second copy of universal principles
+  ([`docs/policies/PRINCIPLES.md`](../../../../../docs/policies/PRINCIPLES.md))
+  — principles decide cross-domain tradeoff floors; `q-*` IDs audit engineering
+  coverage and bind proof.
+
+Business-model work prices related attributes through
+`commercial-decision-standard` without inventing a parallel ility list.
+
+**Meta discipline.** Use a few deep concepts; compose them for power. Do
+**not** fake simplicity by cutting capability, hiding difficulty in implicit
+convention, or forcing a false unification. Depth decides whether a
+unification is earned; Simplicity decides whether the result is actually
+cleaner after composition. Ambition is held in the capability surface;
+simplicity lives in concept count.
 
 Retired phrase: **Modern Technical Bar**. Do not reintroduce it, parallel
 ility lists, or a second quality slogan layer. Prefer attribute IDs and binding
 rule IDs below. Do not expand the table with Latency rows—latency lives under
 Performance. Runtime resource cost (CPU, memory, IO, network, storage, build
 minutes, toil) is a budget constraint on Performance/Scalability and is **not**
-a separate slogan. Lifecycle / system-entropy / human-attention cost is
-`q-economy`: a distinct decision lens below, never a runtime-resource slogan.
+a separate slogan. Lifecycle / system-entropy / attention / coordination /
+reversal cost is `q-economy`: a distinct **agent-native** decision lens below,
+never a runtime-resource slogan and never “person-days” as the default
+yardstick.
 
 ### Structure (operating set + memory set)
 

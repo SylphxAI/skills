@@ -6,9 +6,14 @@ Progressive-disclosure rule IDs for `engineering-standard`. Full prose:
 
 ## Quality North Star
 
-Sole quality vocabulary (`q-*`). Apply the relevant subset; verify rather than
-slogan. Meta: *Simple concepts, powerful usage.* Retired phrase: Modern
-Technical Bar.
+Sole **engineering** quality vocabulary (`q-*`). Apply the relevant subset;
+verify rather than slogan. Meta: *Simple concepts, powerful usage.* Retired
+phrase: Modern Technical Bar.
+
+**Not the Product North Star.** Product win conditions and stage metrics
+(TJC / VCY) live in [`docs/NORTH-STAR.md`](../../../../../docs/NORTH-STAR.md).
+A `q-*` pass is never qualification evidence and never Verified Capability
+Yield. Universal principles: [`docs/policies/PRINCIPLES.md`](../../../../../docs/policies/PRINCIPLES.md).
 
 **Operating set:** 14 primary attributes. **Memory set (9):** Depth ·
 Correctness · Simplicity · Evolvability · Observability · Performance &

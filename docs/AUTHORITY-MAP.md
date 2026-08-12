@@ -32,11 +32,17 @@ are retired.
 | work-coordination-standard | skills/select-next-work/references/work-coordination-standard |
 | documentation-standard | skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard |
 
-Quality vocabulary: **Quality North Star** (`q-*`, 14 primaries + `q-readability`
-alias; `q-economy` = agent-native entropy/verification/attention/runtime/
-coordination/reversal cost — not person-days; meta *Simple concepts, powerful
-usage* = maximize capability per concept) owned by `engineering-standard` under
-`build-product`. Default quality precedence and usage guidance live there.
+**Product North Star:** [NORTH-STAR.md](NORTH-STAR.md) — trusted methods; trust
+capped by version-scoped evidence; Stage A TJC / Stage B VCY.
+
+**Quality vocabulary:** **Quality North Star** (`q-*`, 14 primaries +
+`q-readability` alias; `q-economy` = agent-native
+entropy/verification/attention/runtime/coordination/reversal cost — not
+person-days; meta *Simple concepts, powerful usage* = maximize capability per
+concept) owned by `engineering-standard` under `build-product`. Default quality
+precedence and usage guidance live there. A `q-*` pass is not product North
+Star progress and not qualification evidence.
+
 Universal principles: [PRINCIPLES.md](policies/PRINCIPLES.md).
 The phrase Modern Technical Bar is retired.
 

@@ -157,7 +157,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:5959871d00dfc50c4de93536fbd29f549d0a6d88cb722a54f4cbedd777422881",
+      "packageDigest": "sha256:5160d6c31ddb4de46e3ef29f8b32d881fbdc7318f4434ba6264382a30579e0c6",
       "capability": {
         "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
