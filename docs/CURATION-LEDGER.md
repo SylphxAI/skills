@@ -355,3 +355,8 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 
 - Domain review packs and the design-system extractor state the default
   path. Neighbour owners stay when-to-open homes.
+
+## 2026-08-13 — distill / research / feedback path
+
+- Distill, user-research, and feedback-loop listings state the action and
+  the owner home. Neighbour work stays a when-to-open link.

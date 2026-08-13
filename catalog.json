@@ -188,7 +188,7 @@
       "name": "distill-source-to-skill",
       "description": "Distill docs/repos/notes into one installable Skill package.",
       "path": "skills/distill-source-to-skill/SKILL.md",
-      "packageDigest": "sha256:c0c4a086fa3a64e7bf52c504d723052cd0a0135083953293bf0c79d296ff3686",
+      "packageDigest": "sha256:85129fffad187e2a24508463023efa3a6ff8b0ff43d362ef09519edf2bb6b1b0",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -396,7 +396,7 @@
       "name": "research-user-needs",
       "description": "Research user needs: jobs, evidence, segments, opportunity ranking.",
       "path": "skills/research-user-needs/SKILL.md",
-      "packageDigest": "sha256:26fa3c1e1fa43d3ea0bdb408dd5d11bda3cafec196fedf98bf5d04996bf09181",
+      "packageDigest": "sha256:55e018500ea7584993dcb3ec97b15a78d414c6560959ccf8918658ebb90979d3",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -436,7 +436,7 @@
       "name": "run-product-feedback-loop",
       "description": "Run product feedback learning loop: private feedback and public reviews.",
       "path": "skills/run-product-feedback-loop/SKILL.md",
-      "packageDigest": "sha256:13f37bf71681ddde6eb851b611ef76eeabaa5224e47bb22a1227cb2f9d09ba3d",
+      "packageDigest": "sha256:dbaae4ef8b51226201f9463f86ca64ead29eb1ca01b11d0b93ff742541afb0fc",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },

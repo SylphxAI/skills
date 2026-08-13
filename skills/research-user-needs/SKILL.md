@@ -25,20 +25,20 @@ selecting participants, collecting data, or interpreting findings.
    preference when the research question concerns behavior.
 3. Define a purposive recruitment matrix across material behaviors, access
    needs, experience, context, and risk. State excluded groups and coverage
-   limits; do not call a qualitative sample representative.
+   limits. A qualitative sample stays scoped to that sample.
 4. Establish consent, privacy, recording, compensation, safeguarding,
    accessibility, retention, withdrawal, and sensitive-topic handling before
    recruitment. Collect only data required by the study.
 5. Write and pilot a protocol. Use neutral prompts, realistic tasks, consistent
-   probes, and explicit stopping or escalation rules. Do not coach participants
-   toward the intended design.
+   probes, and explicit stopping or escalation rules. Prompts stay neutral to
+   the intended design.
 6. Preserve traceability from session evidence to observations, interpretations,
    themes, and recommendations. Separate what a participant did or said from
    what the researcher inferred.
 7. Analyze iteratively across participants. Search for negative cases,
    contradictory segments, researcher effects, non-response, proxy-user error,
-   and alternative explanations. Do not manufacture saturation from repetition
-   in a narrow sample.
+   and alternative explanations. Saturation is a coverage claim with a named
+   sample, not repetition in a narrow group.
 8. Connect findings to the original decision. Rank findings by consequence,
    evidence coverage, and confidence; state unresolved questions and the next
    evidence needed.
@@ -64,6 +64,10 @@ without inventing the missing study phase.
 
 - [references/research-method.md](references/research-method.md) — open when needed for depth
 
+## Path
+
+- Prevalence comes from an appropriately sampled quantitative study. Qualitative evidence stays scoped to the sample.
+
 ## Boundaries
 
 - Use `synthesize-market-research` for category, competitor, pricing, or demand
@@ -74,5 +78,3 @@ without inventing the missing study phase.
   telemetry coverage, and quantitative behavioral measurement.
 - Use `../review-domain/references/product-experiment/` for randomized, holdout, switchback, or staged
   product experiments; use `../analyze-causal-inference/` for causal effect claims.
-- Do not generalize prevalence from qualitative evidence. Hand a prevalence
-  question to an appropriately sampled quantitative study.

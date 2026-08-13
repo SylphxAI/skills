@@ -6,8 +6,8 @@ description: "Run product feedback learning loop: private feedback and public re
 # Run Product Feedback Loop
 
 Turn authorized feedback and review signals into source-preserving evidence,
-safe routing, validated product action, and truthful customer updates. Do not
-turn this learning surface into a public-review funnel.
+safe routing, validated product action, and truthful customer updates. Public
+review solicitation lives in `references/review-solicitation-policy/`.
 
 ## Resource guide
 
@@ -54,11 +54,11 @@ learning state, and the graph must remain acyclic.
 7. Respond publicly only through a current authorized route and with verified,
    privacy-safe facts. Close private loops as received, clarifying,
    investigating, fixed, shipped, not planned, policy-limited, or
-   support-resolved. Never promise an uncommitted feature or date.
+   support-resolved. Dates and features come from committed owners.
 8. For a request that also asks when or how to solicit public reviews, invoke
    `references/review-solicitation-policy/` as a sibling. Return two independent, versioned
-   artifacts with stable handoff IDs; never use feedback or inferred sentiment
-   to gate its public request policy.
+   artifacts with stable handoff IDs. Public request policy stays independent of
+   feedback sentiment.
 
 
 ## Progressive disclosure
@@ -66,23 +66,19 @@ learning state, and the graph must remain acyclic.
 - [references/feedback-learning-loop.md](references/feedback-learning-loop.md) — open when needed for depth
 - [references/review-solicitation-policy/](references/review-solicitation-policy/) — open when this topic applies
 
+## Path
+
+- Private feedback and help are universal and independent of review sentiment.
+- Roadmap priority uses prevalence, severity, and mechanism. Stars, volume, payer value, model confidence, and praise are supporting context. Safety, law, accessibility, and trust stay floors.
+- Endorsements use permission and disclosure. Reviewer identity, account data, public argument, rating requests, and unsupported fix claims stay out.
+- The classifier or proposer is a proposer. Validation and promotion have a second owner.
+
 ## Boundaries
 
 - `../review-domain/references/social-media-operations/` owns recurring official-account publishing, platform readback, listening, reply routing, crisis, impersonation, rights, recovery, and shutdown; this skill owns authorized feedback/review ingestion, public response evidence, product action, and close-loop.
 - `../operate-customer-support/references/resolve-one-case/` owns one private customer's facts, remedy, reply, protected-action handoff, verification, and closure. Link the case without exposing private facts in a public response.
-- Do not own public review eligibility, prompt timing, native request surfaces,
-  cooldowns, or platform solicitation policy.
-- Never route happy users to public review and unhappy users to private
-  feedback. Private feedback/help is universal and independent.
-- Do not let stars, volume, payer value, model confidence, or praise dictate
-  roadmap priority. Do not trade safety, law, accessibility, or trust through a
-  universal score.
-- Do not reuse praise as an endorsement without permission and disclosure,
-  deanonymize reviewers, retaliate, reveal account data, argue publicly, ask for
-  a higher rating, or publish unsupported fixes.
-- The classifier or proposer cannot be its sole validator or promoter.
-- Do not rebuild whole support operations, refunds, analytics implementation,
-  incident command, listing conversion, or store submission.
+- Public review eligibility, prompt timing, native request surfaces, cooldowns, and platform solicitation policy live in `references/review-solicitation-policy/`.
+- Support operations, refunds, analytics implementation, incident command, listing conversion, and store submission live with those owners.
 
 ## Output
 
