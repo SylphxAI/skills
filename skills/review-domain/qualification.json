@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "review-domain",
   "status": "qualified",
+  "packageDigest": "sha256:517505bb86f546c179d531f2972a771e233e49851f7e16abba2a734b903c30cb",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

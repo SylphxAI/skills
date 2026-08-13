@@ -7,24 +7,45 @@ filed evidence; it is not a separate source of truth.
 ## Current state (2026-08-13)
 
 - Capability packages: **56**
-- Qualified: **38** — adopt-repo-standards, analyze-causal-inference, analyze-critically, analyze-system-dynamics, author-skill, bound-request-scope, compose-product-portfolio, compose-product-program, craft-human-agent-language, craft-product-interface, curate-skill-repository, decide-architecture-shape, design-product, design-skill-evals, distill-source-to-skill, edit-preserving-voice, engineer-agent-context, engineer-testable-requirements, execute-hard-cutover, forecast-with-calibration, maintain-product, model-security-threats, operate-customer-support, optimize-decision-model, optimize-store-listing, price-saas-subscription, produce-game-2d-map-assets, produce-game-2d-sprites, record-structured-deliberation, research-user-needs, review-domain, run-incident-response, run-product-feedback-loop, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
-- Native-activation selection evidence: **13/38** (analyze-critically,
-  analyze-causal-inference, model-security-threats, engineer-agent-context,
-  operate-customer-support, review-domain, research-user-needs,
-  price-saas-subscription, optimize-store-listing, design-product,
-  compose-product-portfolio, compose-product-program, craft-product-interface);
+- Qualified: **24** — analyze-causal-inference, analyze-critically,
+  analyze-system-dynamics, compose-product-program, craft-product-interface,
+  curate-skill-repository, design-skill-evals, distill-source-to-skill,
+  edit-preserving-voice, forecast-with-calibration, maintain-product,
+  model-security-threats, operate-customer-support, optimize-decision-model,
+  price-saas-subscription, produce-game-2d-map-assets,
+  produce-game-2d-sprites, research-user-needs, review-domain,
+  run-product-feedback-loop, select-next-work, synthesize-evidence-brief,
+  synthesize-market-research, write-high-signal-update.
+  Each remaining record now carries `packageDigest` equal to the current
+  package identity. Fourteen names that were still `qualified` after a
+  material edit of loaded bytes were demoted the same day (see below).
+- Native-activation selection evidence: **9/24** (analyze-critically,
+  analyze-causal-inference, model-security-threats, operate-customer-support,
+  review-domain, research-user-needs, price-saas-subscription,
+  compose-product-program, craft-product-interface);
   the others remain `injectionState: not-verified`
-  — see wave-7 through wave-11.
+  — see wave-7 through wave-11. Activation traces on later-demoted packages
+  are archaeology, not current selection proof.
 - **Retired listing:** `research-public-web` (2026-08-13). Prior wave-6
   qualification and wave-7 activation records remain under
   `evals/research-public-web/` as archaeology. AutoSync onto a host that still
   has this name in `qualifiedNames` requires
   `SYLPHX_SKILLS_ALLOW_QUALIFICATION_REGRESSION=1`.
-- **Demoted:** `compose-readme-marks` (2026-08-13). Method bytes changed;
-  wave-11 evidence binds the previous package digest. Record reset to
-  `unqualified`. Bundle kept under
-  `evals/compose-readme-marks/`. AutoSync also treats this as a
-  qualification regression.
+- **Demoted (2026-08-13):** `compose-readme-marks` (method edit) and
+  fourteen further packages whose loaded bytes drifted from the evidence
+  source revision: adopt-repo-standards, author-skill, bound-request-scope,
+  compose-product-portfolio, craft-human-agent-language,
+  decide-architecture-shape, design-product, engineer-agent-context,
+  engineer-testable-requirements, execute-hard-cutover,
+  optimize-store-listing, record-structured-deliberation,
+  run-incident-response, select-dependency-versions. Prior bundles remain
+  under `evals/<id>/`. Applying this catalog over a host that still lists
+  those names as qualified is a qualification regression.
+- **Integrity floor:** `qualified` now requires a live-matching
+  `packageDigest`. The runner refuses to file qualification when the package
+  or suite prompts ban host web search. Remaining qualified records are
+  digest-current under the prior runner contract (with-skill vs baseline
+  plus pattern scan); they are not a four-way / multi-family claim.
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)

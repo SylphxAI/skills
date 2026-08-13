@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "select-next-work",
   "status": "qualified",
+  "packageDigest": "sha256:b5459e8dbdc296b79f11452602fa7056b29192ebad59637073284d9468bdabca",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

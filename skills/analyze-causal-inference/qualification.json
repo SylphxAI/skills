@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "analyze-causal-inference",
   "status": "qualified",
+  "packageDigest": "sha256:a74c60fc2817608c2121303a644e42e2de255161257f884b42e6a48be84b2011",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

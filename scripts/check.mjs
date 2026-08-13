@@ -13,7 +13,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
+import { packageDigest } from '../runtime/package-digest.mjs';
 import { catalogBytes, parseFrontmatter, readJson, repositoryRoot } from './build-catalog.mjs';
+import {
+  FORBIDDEN_INSTRUCTION_PATTERNS,
+  qualifiedDigestError,
+  suiteForbiddenInstructionFindings,
+} from './qualification-integrity.mjs';
 
 const NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const SECRET_PATTERNS = [
@@ -26,12 +32,7 @@ const SECRET_PATTERNS = [
 
 // Host web search/fetch is a primitive. Skills must not ban it or replace it
 // with "open recipes / curl first" as the research method.
-export const FORBIDDEN_INSTRUCTION_PATTERNS = [
-  { re: /do not web[- ]search/i, label: 'do not web-search' },
-  { re: /no search engine required/i, label: 'no search engine required' },
-  { re: /open recipes\.md first/i, label: 'open recipes.md first' },
-  { re: /open\s+\[references\/recipes\.md\].*first/i, label: 'open recipes.md first' },
-];
+export { FORBIDDEN_INSTRUCTION_PATTERNS };
 
 // Codex listing class: ~8k description chars when window unknown.
 const CATALOG_DESC_SOFT_MAX = 8000;
@@ -144,6 +145,23 @@ function validateCapabilityContract(folder, errors) {
       if (!existsSync(path.join(repositoryRoot, item.uri))) {
         errors.push(`${qualificationPath}: evidence uri missing on disk: ${item.uri}`);
       }
+    }
+    const digestError = qualifiedDigestError(
+      qualification,
+      packageDigest(path.join(repositoryRoot, 'skills', folder)),
+    );
+    if (digestError) errors.push(`${qualificationPath}: ${digestError}`);
+  }
+
+  const suitePath = path.join(repositoryRoot, `skills/${folder}/evals/suite.json`);
+  if (existsSync(suitePath)) {
+    try {
+      const suite = readJson(suitePath);
+      for (const label of suiteForbiddenInstructionFindings(suite)) {
+        errors.push(`skills/${folder}/evals/suite.json: eval prompt forbids host web search ("${label}")`);
+      }
+    } catch (error) {
+      errors.push(`skills/${folder}/evals/suite.json: invalid JSON: ${error.message}`);
     }
   }
 }

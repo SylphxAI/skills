@@ -1,36 +1,10 @@
 {
   "schemaVersion": 1,
   "name": "execute-hard-cutover",
-  "status": "qualified",
-  "evaluator": {
-    "name": "Sylphx Qualification Runner",
-    "kind": "host",
-    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
-  },
-  "qualifiedAt": "2026-08-10T17:32:06.862Z",
-  "expiresAt": "2026-11-08T17:37:04.627Z",
-  "evidence": [
-    {
-      "id": "execute-hard-cutover-compatibility-2026-08-10T17-29-41-586Z",
-      "kind": "compatibility",
-      "digest": "sha256:aedc81c381baf3ad74ac8e0d8a6e2af55d2d320bb836caa8ffefb48e49c82fab",
-      "uri": "docs/qualification/evals/execute-hard-cutover/run-2026-08-10T17-29-41-586Z/report.json"
-    },
-    {
-      "id": "execute-hard-cutover-automated-pattern-scan-2026-08-10T17-29-41-586Z",
-      "kind": "automated-pattern-scan",
-      "digest": "sha256:aedc81c381baf3ad74ac8e0d8a6e2af55d2d320bb836caa8ffefb48e49c82fab",
-      "uri": "docs/qualification/evals/execute-hard-cutover/run-2026-08-10T17-29-41-586Z/report.json"
-    }
-  ],
-  "compatibility": [
-    {
-      "environment": "codex-cli 0.147.0 (agent task)",
-      "result": "verified"
-    },
-    {
-      "environment": "node >= 20",
-      "result": "verified"
-    }
-  ]
+  "status": "unqualified",
+  "evaluator": null,
+  "qualifiedAt": null,
+  "expiresAt": null,
+  "evidence": [],
+  "compatibility": []
 }

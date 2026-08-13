@@ -6,14 +6,17 @@ environments. A named evaluator or attestor owns the result; the repository
 only records and projects it.
 
 Unqualified is the honest default. As of 2026-08-13 this repository declares
-**38** qualified capabilities (56 packages) with version-scoped, expiring
+**24** qualified capabilities (56 packages) with version-scoped, expiring
 evidence under `docs/qualification/evals/`; everything else is honestly
-`unqualified`. Qualification is never inferred from structure, CI, or
+`unqualified`. A `qualified` record must carry `packageDigest` equal to the
+live package identity; any material byte change to what an agent loads
+invalidates the proof. Qualification is never inferred from structure, CI, or
 installation — only from filed with-skill versus baseline evidence and, where
 declared, native-activation evidence. `research-public-web` was retired on
 2026-08-13 (host search/fetch is the job; the listing regressed agents onto
-`curl`). `compose-readme-marks` was demoted the same day after a digest-changing
-method edit; its wave-11 bundle is archaeology until re-qualified.
+`curl`). The same day, `compose-readme-marks` and fourteen other packages were
+demoted after their loaded bytes drifted from the evidence-bound digest; prior
+bundles remain archaeology until re-qualified.
 
 ## What evidence qualifies a capability
 
@@ -49,14 +52,20 @@ authored-to-fit tasks, or self-attestation.
 2. Update `skills/<id>/qualification.json` to `status: qualified` with:
    - a named `evaluator` (`author` is allowed only with independent
      verification; `independent`, `host`, or `vendor` are preferred),
+   - `packageDigest` equal to the current-algorithm identity of the
+     capability bytes (the runner writes this; do not hand-edit it onto a
+     different tree),
    - `qualifiedAt` and a future `expiresAt` (currentness is perishable),
    - `evidence` entries (each with `id`, `kind`, `digest`, `uri`),
    - `compatibility` rows for declared environments.
 3. Add the evidence artifact under `docs/qualification/evals/` and update
    `docs/qualification/LEDGER.md`.
 4. Rebuild the catalog: `npm run build:catalog && npm test`. The integrity
-   gate rejects qualified records without digest+uri evidence, a future
-   expiry, or a schema violation. A stale expiry downgrades eligibility.
+   gate rejects qualified records without a matching `packageDigest`,
+   digest+uri evidence, a future expiry, or a schema violation. A stale
+   expiry or a later material edit of the package downgrades eligibility.
+   The runner also refuses to file qualification when the package or suite
+   prompts ban host web search (`do not web-search`, `open recipes.md first`).
 
 The schema is `schemas/qualification-record.schema.json`; the receipt contract
 for outcomes is `schemas/outcome-receipt.schema.json`.

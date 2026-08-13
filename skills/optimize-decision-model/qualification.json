@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "optimize-decision-model",
   "status": "qualified",
+  "packageDigest": "sha256:393004adf4620a6f20a6b5abe66dfd45b8e9d3ce858bbb9e721c3c5ec4aa29a4",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

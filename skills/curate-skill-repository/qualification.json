@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "curate-skill-repository",
   "status": "qualified",
+  "packageDigest": "sha256:26d3ab30e00611bab941e71dd4cad26c9a2d2a6be9d31bc07ee104896d09d911",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

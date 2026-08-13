@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "craft-product-interface",
   "status": "qualified",
+  "packageDigest": "sha256:122913c9f9de8c9f3e60e6e1bfc495bc1412400b0d98ba395e3cb0de0b337d88",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

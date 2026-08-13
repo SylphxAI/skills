@@ -1,48 +1,10 @@
 {
   "schemaVersion": 1,
   "name": "optimize-store-listing",
-  "status": "qualified",
-  "evaluator": {
-    "name": "Sylphx Qualification Runner",
-    "kind": "host",
-    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
-  },
-  "qualifiedAt": "2026-08-11T06:46:23.476Z",
-  "expiresAt": "2026-11-09T06:51:04.277Z",
-  "evidence": [
-    {
-      "id": "optimize-store-listing-incremental-value-2026-08-11T06-37-03-225Z",
-      "kind": "incremental-value",
-      "digest": "sha256:ede27f73198a4646836aa72fdd3b8337991328bf4ce58ead87d9027c9b96f1ec",
-      "uri": "docs/qualification/evals/optimize-store-listing/run-2026-08-11T06-37-03-225Z/report.json"
-    },
-    {
-      "id": "optimize-store-listing-compatibility-2026-08-11T06-37-03-225Z",
-      "kind": "compatibility",
-      "digest": "sha256:ede27f73198a4646836aa72fdd3b8337991328bf4ce58ead87d9027c9b96f1ec",
-      "uri": "docs/qualification/evals/optimize-store-listing/run-2026-08-11T06-37-03-225Z/report.json"
-    },
-    {
-      "id": "optimize-store-listing-activation-2026-08-11T06-37-03-225Z",
-      "kind": "activation",
-      "digest": "sha256:ede27f73198a4646836aa72fdd3b8337991328bf4ce58ead87d9027c9b96f1ec",
-      "uri": "docs/qualification/evals/optimize-store-listing/run-2026-08-11T06-37-03-225Z/report.json"
-    },
-    {
-      "id": "optimize-store-listing-automated-pattern-scan-2026-08-11T06-37-03-225Z",
-      "kind": "automated-pattern-scan",
-      "digest": "sha256:ede27f73198a4646836aa72fdd3b8337991328bf4ce58ead87d9027c9b96f1ec",
-      "uri": "docs/qualification/evals/optimize-store-listing/run-2026-08-11T06-37-03-225Z/report.json"
-    }
-  ],
-  "compatibility": [
-    {
-      "environment": "codex-cli 0.147.0 (agent task)",
-      "result": "verified"
-    },
-    {
-      "environment": "node >= 20",
-      "result": "verified"
-    }
-  ]
+  "status": "unqualified",
+  "evaluator": null,
+  "qualifiedAt": null,
+  "expiresAt": null,
+  "evidence": [],
+  "compatibility": []
 }

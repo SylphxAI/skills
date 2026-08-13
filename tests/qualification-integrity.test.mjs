@@ -1,0 +1,74 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import {
+  FORBIDDEN_INSTRUCTION_PATTERNS,
+  qualifiedDigestError,
+  scanTextForForbiddenInstructions,
+  suiteForbiddenInstructionFindings,
+  unqualifiedRecord,
+} from '../scripts/qualification-integrity.mjs';
+
+const DIGEST_A = `sha256:${'a'.repeat(64)}`;
+const DIGEST_B = `sha256:${'b'.repeat(64)}`;
+
+test('qualifiedDigestError requires a matching current-algorithm digest', () => {
+  assert.equal(qualifiedDigestError({ status: 'unqualified' }, DIGEST_A), null);
+  assert.match(
+    qualifiedDigestError({ status: 'qualified' }, DIGEST_A),
+    /requires packageDigest/,
+  );
+  assert.match(
+    qualifiedDigestError({ status: 'qualified', packageDigest: DIGEST_A }, DIGEST_B),
+    /does not match current/,
+  );
+  assert.equal(
+    qualifiedDigestError({ status: 'qualified', packageDigest: DIGEST_A }, DIGEST_A),
+    null,
+  );
+});
+
+test('research-public-web class prompts cannot qualify', () => {
+  const leaked = {
+    baseline: { prompt: 'What are the current Node.js LTS system requirements?' },
+    tasks: [
+      {
+        id: 'agent-follows-procedure',
+        prompt:
+          'Read ./SKILL.md completely (open recipes.md first), then write research.md. Follow the method: do not web-search.',
+      },
+      {
+        id: 'baseline-agent',
+        baseline: true,
+        prompt: 'Write research.md answering the current Node.js LTS system requirements.',
+      },
+    ],
+  };
+  const findings = suiteForbiddenInstructionFindings(leaked);
+  assert.ok(findings.includes('open recipes.md first'), findings.join(','));
+  assert.ok(findings.includes('do not web-search'), findings.join(','));
+});
+
+test('honest eval prompts that mention search stay clean', () => {
+  const clean = {
+    tasks: [
+      {
+        prompt: 'Use host web search and fetch tools. Do not claim currentness without a retrieved page.',
+      },
+    ],
+  };
+  assert.deepEqual(suiteForbiddenInstructionFindings(clean), []);
+  assert.deepEqual(scanTextForForbiddenInstructions('Known URL patterns live in references/recipes.md.'), []);
+});
+
+test('forbidden instruction patterns stay exported for the integrity gate', () => {
+  assert.ok(FORBIDDEN_INSTRUCTION_PATTERNS.length >= 4);
+  assert.ok(FORBIDDEN_INSTRUCTION_PATTERNS.every((pattern) => pattern.re && pattern.label));
+});
+
+test('unqualifiedRecord is the honest default shape', () => {
+  const record = unqualifiedRecord('compose-readme-marks');
+  assert.equal(record.status, 'unqualified');
+  assert.equal(record.evaluator, null);
+  assert.deepEqual(record.evidence, []);
+  assert.equal(record.packageDigest, undefined);
+});

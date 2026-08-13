@@ -4,42 +4,28 @@
   "count": 56,
   "qualification": {
     "total": 56,
-    "qualified": 38,
+    "qualified": 24,
     "qualifiedNames": [
-      "adopt-repo-standards",
       "analyze-causal-inference",
       "analyze-critically",
       "analyze-system-dynamics",
-      "author-skill",
-      "bound-request-scope",
-      "compose-product-portfolio",
       "compose-product-program",
-      "craft-human-agent-language",
       "craft-product-interface",
       "curate-skill-repository",
-      "decide-architecture-shape",
-      "design-product",
       "design-skill-evals",
       "distill-source-to-skill",
       "edit-preserving-voice",
-      "engineer-agent-context",
-      "engineer-testable-requirements",
-      "execute-hard-cutover",
       "forecast-with-calibration",
       "maintain-product",
       "model-security-threats",
       "operate-customer-support",
       "optimize-decision-model",
-      "optimize-store-listing",
       "price-saas-subscription",
       "produce-game-2d-map-assets",
       "produce-game-2d-sprites",
-      "record-structured-deliberation",
       "research-user-needs",
       "review-domain",
-      "run-incident-response",
       "run-product-feedback-loop",
-      "select-dependency-versions",
       "select-next-work",
       "synthesize-evidence-brief",
       "synthesize-market-research",
@@ -57,8 +43,8 @@
         "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired for the framed scope (residuals are incomplete status only, not dual-system permission).",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "analyze-causal-inference",
@@ -109,8 +95,8 @@
         "outcomeObservable": "The revised package passes npm test with a fresh catalog, local links resolve, the capability contract validates, and the description selects for the right ask and abstains on near-misses.",
         "oracleOwner": "repository"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "bound-request-scope",
@@ -122,8 +108,8 @@
         "outcomeObservable": "A stable scope contract with objective, in/out, non-goals, cut lines, and residuals that the requester can approve before implementation proceeds.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "build-distribution-readiness",
@@ -174,8 +160,8 @@
         "outcomeObservable": "A Composable Product Portfolio Contract where every unit has a standalone job, contract, lifecycle, and support path, every connector edge names its contract and state owner, and decisions carry evidence and handoffs.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "compose-product-program",
@@ -213,8 +199,8 @@
         "outcomeObservable": "A document or prompt with explicit purpose/audience, structure before prose, plain-language floors, a recorded evidence-based language/format decision, and a re-verification gate that an independent reviewer can rerun.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "craft-product-interface",
@@ -265,8 +251,8 @@
         "outcomeObservable": "A decided shape with each slice carrying exact-candidate parity proof, a cutover that retired obsolete structure at the real lifecycle stage, and a reconciled migration ledger reporting implementation, merge, deployment, and retirement separately.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "deploy-ephemeral-web-preview",
@@ -291,8 +277,8 @@
         "outcomeObservable": "A product design blueprint with one deep core concept, critical flows and states, named quality tradeoffs with rollback conditions, and acceptance criteria a builder can test.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "design-skill-evals",
@@ -356,8 +342,8 @@
         "outcomeObservable": "A Context and Memory Contract where every information class has an owner and authority order, budgets are explicit, invalidation and deletion rules work, and adversarial and degradation tests pass.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "engineer-testable-requirements",
@@ -369,8 +355,8 @@
         "outcomeObservable": "A Requirements Contract where each accepted requirement has an oracle and success boundary, traces to a source need and forward artifacts, and changes require impact analysis and supersession under a named authority.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "execute-hard-cutover",
@@ -382,8 +368,8 @@
         "outcomeObservable": "The destination is the sole writer for the named surface under real checks, the predecessor is retired (time-boxed dual only under eng-hard-cut-01 gates), and backfill, cut, and residual incomplete-status evidence are recorded.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "expand-product",
@@ -486,8 +472,8 @@
         "outcomeObservable": "A Channel Listing and Creative Sequence where every claim maps to exact shipped behavior, assets pass channel QA by digest, localization is native-QA'd, and conversion gains survive trust and retention countermetrics with live readback.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "price-saas-subscription",
@@ -577,8 +563,8 @@
         "outcomeObservable": "A Deliberation Record preserving genuine alternatives, linked arguments, position changes with reasons, residual dissent, commitments and owners, and a handoff to a decision, experiment, or work item.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "remediate-agent-harness",
@@ -642,8 +628,8 @@
         "outcomeObservable": "An incident record with mitigation evidence, facts-only stakeholder communications, an owning-cause fix or permanent mitigation, and a postmortem with action items and owners.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "run-open-product-betterment",
@@ -681,8 +667,8 @@
         "outcomeObservable": "Selected versions trace to a live registry or release API with the exact source recorded, pins are applied in owning manifests, and the repo's install, build, and tests pass or residuals are explicit.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "select-next-work",

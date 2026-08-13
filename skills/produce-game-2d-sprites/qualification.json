@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "produce-game-2d-sprites",
   "status": "qualified",
+  "packageDigest": "sha256:ca583ca5fdf2b73939ef9be0c5d1b7da699583ba3d835f804c5cda3e10e67f89",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

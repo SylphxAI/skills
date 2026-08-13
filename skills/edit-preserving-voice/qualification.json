@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "edit-preserving-voice",
   "status": "qualified",
+  "packageDigest": "sha256:a19efaefe600efb4925d499d0139502e746b402e5daceb548b4f4c7f70bbe471",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

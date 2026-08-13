@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "operate-customer-support",
   "status": "qualified",
+  "packageDigest": "sha256:84978c37f59817696ee6e7a3f128a9fee56ec96eff12d349cf2032f3fe7188de",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

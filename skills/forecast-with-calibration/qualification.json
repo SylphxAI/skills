@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "forecast-with-calibration",
   "status": "qualified",
+  "packageDigest": "sha256:fa790850658b6c28a1997c338fb3711cc8340f2d31c0e1b4230a44f015828a6f",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

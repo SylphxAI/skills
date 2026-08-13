@@ -16,12 +16,13 @@
  *   records observable artifacts and deterministic oracles.
  * - Agent tasks are fresh-context behavior tests; injection state is recorded
  *   as NOT verified unless a runtime-native selection trace exists.
- * - A qualified record requires every task to pass and the automated pattern
- *   scan to be clean; declared activation cases are recorded (selection is
- *   observable via transcript/artifacts) and never gate qualification,
- *   because selection is model/host-contextual and belongs to the
- *   actual-context eligibility layer; qualification is expiring
- *   (validityDays).
+ * - A qualified record requires every task to pass, a clean automated pattern
+ *   scan (secrets, dangerous instructions, and host-search bans), and a live
+ *   packageDigest bind; --apply-from refuses a run whose candidate digest is
+ *   not the current package. Suite prompts that ban host web search cannot
+ *   qualify. Declared activation cases are recorded and never gate
+ *   qualification (selection is model/host-contextual); qualification is
+ *   expiring (validityDays).
  *
  * Usage:
  *   node scripts/run-qualification.mjs --capability <id> [--apply]
@@ -38,6 +39,10 @@ import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
 import { packageDigest } from '../runtime/package-digest.mjs';
 import { repositoryRoot, readJson } from './build-catalog.mjs';
+import {
+  FORBIDDEN_INSTRUCTION_PATTERNS,
+  suiteForbiddenInstructionFindings,
+} from './qualification-integrity.mjs';
 
 const PYTHON = process.env.SYLPHX_QUALIFY_PYTHON || 'python3';
 const CODEX = process.env.SYLPHX_QUALIFY_CODEX || 'codex';
@@ -434,6 +439,10 @@ function patternScan(packageRoot) {
       const match = text.match(pattern);
       if (match) findings.push({ file: relative, kind: label, snippet: match[0].slice(0, 120) });
     }
+    for (const { re, label } of FORBIDDEN_INSTRUCTION_PATTERNS) {
+      const match = text.match(re);
+      if (match) findings.push({ file: relative, kind: 'host-search-ban', label, snippet: match[0].slice(0, 120) });
+    }
   }
   return { scannedFiles: scanned.length, files: scanned, findings, verdict: findings.length === 0 ? 'clean' : 'findings' };
 }
@@ -456,12 +465,24 @@ async function main() {
   const validate = ajv.compile(readJson(path.join(repositoryRoot, 'schemas', 'eval-suite.schema.json')));
   if (!validate(suite)) throw new Error(`suite invalid: ${JSON.stringify(validate.errors)}`);
   if (suite.capability !== capability) throw new Error('suite capability must match folder');
+  const leakedPrompts = suiteForbiddenInstructionFindings(suite);
+  if (leakedPrompts.length) {
+    throw new Error(
+      `suite prompts forbid host web search (${leakedPrompts.join(', ')}); this class of eval cannot qualify`,
+    );
+  }
 
   if (applyFrom) {
     const runRoot = path.join(repositoryRoot, 'docs', 'qualification', 'evals', capability, `run-${applyFrom}`);
     if (!existsSync(path.join(runRoot, 'report.json'))) throw new Error(`no report at ${runRoot}`);
     const report = readJson(path.join(runRoot, 'report.json'));
     if (report.verdict !== 'qualified') throw new Error(`run ${applyFrom} verdict is ${report.verdict}; cannot apply`);
+    const currentPackageDigest = packageDigest(path.join(repositoryRoot, 'skills', capability));
+    if (!report.candidate?.packageDigest || report.candidate.packageDigest !== currentPackageDigest) {
+      throw new Error(
+        `run ${applyFrom} binds ${report.candidate?.packageDigest || 'no packageDigest'} but current package is ${currentPackageDigest}; re-run on the current bytes`,
+      );
+    }
     const recordFiles = walk(runRoot).filter((file) => !file.endsWith(`${path.sep}report.json`));
     const digest = bundleDigest(recordFiles);
     if (digest !== report.evidenceDigest) throw new Error('recorded evidence digest does not match the run bundle; do not apply');
@@ -595,6 +616,7 @@ function applyQualification(suite, report, capability, stamp, resultsDigest) {
     schemaVersion: 1,
     name: capability,
     status: 'qualified',
+    packageDigest: report.candidate.packageDigest,
     evaluator: suite.evaluator,
     qualifiedAt: report.finishedAt,
     expiresAt,

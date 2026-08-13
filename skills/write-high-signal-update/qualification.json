@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "write-high-signal-update",
   "status": "qualified",
+  "packageDigest": "sha256:b052ce74c0d83538070469bc002ffa12b7a9e2790faf3e272f2a29a56406033c",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",
