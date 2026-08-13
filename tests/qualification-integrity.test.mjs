@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import test from 'node:test';
+import { fileURLToPath } from 'node:url';
 import {
   FORBIDDEN_INSTRUCTION_PATTERNS,
   incrementalValueEligible,
@@ -9,6 +12,8 @@ import {
   suiteForbiddenInstructionFindings,
   unqualifiedRecord,
 } from '../scripts/qualification-integrity.mjs';
+
+const repoRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const DIGEST_A = `sha256:${'a'.repeat(64)}`;
 const DIGEST_B = `sha256:${'b'.repeat(64)}`;
@@ -100,6 +105,24 @@ test('fixture Read SKILL.md pairs are not incremental-value', () => {
     ),
     /same-prompt/,
   );
+});
+
+test('design-skill-evals is a same-prompt pair, not a four-way program', () => {
+  const capability = JSON.parse(readFileSync(path.join(repoRoot, 'skills/design-skill-evals/capability.json'), 'utf8'));
+  const suite = JSON.parse(readFileSync(path.join(repoRoot, 'skills/design-skill-evals/evals/suite.json'), 'utf8'));
+  const contract = JSON.stringify(capability).toLowerCase();
+  const suiteText = JSON.stringify(suite).toLowerCase();
+  assert.equal(contract.includes('seven-part'), false);
+  assert.equal(contract.includes('holdout'), false);
+  assert.equal(contract.includes('judge families'), false);
+  assert.equal(contract.includes('receiptschema'), false);
+  assert.equal(contract.includes('outcome-receipt'), false);
+  assert.equal(suiteText.includes('seven-part'), false);
+  assert.equal(suiteText.includes('holdout'), false);
+  assert.equal(incrementalValueEligible(suite), true);
+  const agentPrompts = suite.tasks.filter((task) => task.kind === 'agent').map((task) => task.prompt);
+  assert.equal(new Set(agentPrompts).size, 1);
+  assert.ok(!suite.tasks.some((task) => (task.fixtures || []).some((fixture) => fixture.source === 'package:SKILL.md')));
 });
 
 test('same-prompt installed-vs-absent pairs can claim incremental-value', () => {

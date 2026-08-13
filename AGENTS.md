@@ -15,6 +15,4 @@
   or yield KPIs.
 - Universal principles (any design: code/product/ops/business): `docs/policies/PRINCIPLES.md`; compact floor in `runtime/constitution.md`
 - Prefer app/product/game language; Keel depth under `build-product`
-- Platform customer method (how to deploy, sign in, persist, run jobs):
-  `skills/build-product/references/sylphx-platform-first-policy/`
 - `npm run build:catalog && npm test`

@@ -48,7 +48,7 @@ Chat is draft. Promote durable outcomes into the homes above.
 | Layer | Answers | Shape | Industry notes |
 | --- | --- | --- | --- |
 | **Product Vision** | What product world are we building; for whom; not doing what? | Qualitative; may be long | Not a metric; not a feature backlog |
-| **North Star Metric** | Single metric that best captures core value delivered to customers | **One primary metric**; optional one-line product strategy | Amplitude/Sean Ellis class practice; ≠ OKR; ≠ feature list |
+| **North Star Metric** | Single metric that best captures core value delivered to customers | **One primary metric** in English, using an industry quantity | Amplitude/Sean Ellis: nights booked, weekly learning users — not a house acronym |
 | **OKRs / Goals** | What we commit to complete or move this period | Time-bound, completable | Implement strategy; may target NSM or input metrics |
 | **PRD / product spec** | Problem, users, features/capabilities, requirements, non-goals | Inventory + requirements | Features live **here**, not in NSM |
 | **Specs / API reference** | Exact I/O, failures, limits | Schema/OpenAPI/tests preferred | Do not hand-duplicate in vision/NSM |
@@ -59,6 +59,14 @@ Chat is draft. Promote durable outcomes into the homes above.
 
 1. **Vision ≠ North Star Metric ≠ OKR ≠ PRD ≠ API reference.**
 2. **NSM is one primary metric** of customer value (vanity proxies are not NSM).
+   Name it in **English** with an **industry quantity** (information ratio,
+   GGR, contribution margin, daily completers, weekly returning users,
+   availability / correct-target success, completed public operations).
+   **Do not mint house score acronyms** (three-to-five-letter invented KPIs
+   such as TJC, VCY, QRR, UHDA, NITE, WMCCU, VCCR, VAV, RHW, TKU, NBC).
+   Amplitude examples are phrases, not org-private codes. A retired house
+   name may appear only in a historical ADR labeled retired — never as
+   current law, never as a JSON field, never as a new “standard.”
 3. **OKRs are time-bound**; completing an OKR ≠ fulfilling the whole vision.
 4. **Feature/capability inventories belong in the PRD**, not the NSM document.
 5. **Field-level tool details belong in specs/reference/tests.**
@@ -72,6 +80,24 @@ Chat is draft. Promote durable outcomes into the homes above.
 
 A brief product strategy (how we win) may sit next to vision or NSM. It is not
 a fourth parallel encyclopedia; keep it short.
+
+## North Star Metric (naming)
+
+Industry practice (Amplitude North Star Framework; Sean Ellis) is **one
+customer-value metric**, described so a stranger understands it, plus 3–5
+inputs. It is not a composite z-score of unlike units and not a private code.
+
+**Allowed names:** the industry quantity in words, optionally with a window
+(`weekly returning qualified wallets`, `admitted-book net information ratio`,
+`daily users who finish today's puzzle`). Established terms stay: GGR, NGR,
+IRR, Sharpe, information ratio, DSR, Brier, log-loss, contribution margin,
+availability, K-factor.
+
+**Forbidden:** inventing a house acronym or “verified X yield” brand and
+teaching it as the win condition. That pattern spreads: agents copy the
+code into the next repo. If a predecessor house name exists, hard-cut the
+binding docs and public fields to English; leave the old name only in a
+retired ADR.
 
 ## `PROJECT.md` / README entry (projection only)
 
@@ -90,7 +116,7 @@ Long-term product shape, users, boundaries, non-goals.
 
 ## North Star Metric
 > Optional one-line strategy / value promise
-**Metric:** <single primary NSM>
+**Metric:** <single primary NSM in English; industry quantity; no house acronym>
 **Anti-proxy:** what must not substitute for the NSM
 
 ## Goals
@@ -233,7 +259,7 @@ Write the smallest durable artifact that closes a real gap:
 ## Validation checklist
 
 - [ ] Vision, NSM, OKRs/goals, PRD, and specs are not one unlabeled blob  
-- [ ] NSM is a metric of customer value; not a feature list  
+- [ ] NSM is a metric of customer value in English industry terms; not a house acronym; not a feature list  
 - [ ] OKRs/goals are completable when present  
 - [ ] Feature/capability inventory lives in the PRD only  
 - [ ] Interface field lists live in contracts/generated refs  

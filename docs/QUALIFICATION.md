@@ -26,7 +26,9 @@ Follow [`skills/design-skill-evals`](../skills/design-skill-evals/SKILL.md)
 5. Bind `packageDigest`. Any later material edit invalidates the record.
 
 A fixture-read “follow this file” task is a behavior smoke test, not
-incremental-value.
+incremental-value. Agent tasks run in an isolated `CODEX_HOME`: the
+with-skill arm installs only that package; the baseline arm installs
+none. The host catalog must not leak into either arm.
 
 ## How a record is filed
 

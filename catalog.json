@@ -116,7 +116,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:8961f07668ad526c7339007b6bc9a9004ac685249250b2e8256e9ed84887a8c0",
+      "packageDigest": "sha256:bc828655cffa87fe54c9f44797d84d29683103ceb06ff50b127be4ce41dff028",
       "capability": {
         "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
@@ -259,10 +259,10 @@
       "name": "design-skill-evals",
       "description": "Design falsifiable skill evals: same-prompt paired tasks, oracles, harms.",
       "path": "skills/design-skill-evals/SKILL.md",
-      "packageDigest": "sha256:75c85f1f05eb6dbf8fe0eb14cb100a985dce03b6aa35c1adf2dfcc51eff90e83",
+      "packageDigest": "sha256:bdf6a9c3e28d0424db3a3680cd68f3bb208e6472373ed63302cb868103ed0606",
       "capability": {
-        "job": "Design a falsifiable Skill Evaluation Program that can disprove whether an exact skill bundle improves realistic work.",
-        "outcomeObservable": "An independent runner can reproduce the candidate, tasks, outputs, metrics and verdict without trusting the author narrative, and the result is recorded as version-scoped qualification evidence.",
+        "job": "Design a same-prompt paired skill eval that can disprove lift and veto on harm.",
+        "outcomeObservable": "An independent run produces BENCHMARK.md and a report whose with-skill vs baseline comparison and harm scan can be recomputed from the recorded artifacts.",
         "oracleOwner": "repository"
       },
       "qualified": false,
@@ -285,7 +285,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:219daeb6b7db2f9bdbce8d9f50f525951f6f9e31c430b3bdfc9c4deb59633312",
+      "packageDigest": "sha256:84ebd1a00b61cadd4d282184ed3cff3c6b4e92347d6669de65e6bd1644bbf634",
       "capability": {
         "job": "Drive one accepted multi-phase objective (engineering or product) to its delivery terminal with evidence at the active delivery boundary.",
         "outcomeObservable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
@@ -714,10 +714,10 @@
       "name": "wire-managed-backend-services",
       "description": "Wire managed backend capabilities via maintained BaaS candidates with auth and quota honesty.",
       "path": "skills/wire-managed-backend-services/SKILL.md",
-      "packageDigest": "sha256:294c2991b4b0daf705f04e94d03b7e78d38cbd09b089960efc723843cc68203a",
+      "packageDigest": "sha256:870d3042f934c7345b31fd13d860bba20e1033fe27c084bdda2b30b2693937f9",
       "capability": {
-        "job": "Attach one Platform backend capability end-to-end with a write-then-read proof.",
-        "outcomeObservable": "One managed backend capability is wired on the public Platform contract with a documented plane and a write-then-read or invoke-then-terminal proof.",
+        "job": "Wire managed backend capabilities via maintained BaaS candidates with auth, quota, and behavioral-proof honesty.",
+        "outcomeObservable": "Managed backend capabilities wired end-to-end with documented auth planes and at least one behavioral proof per capability, plus an honest gap list for unshipped services, plan limits, or missing tokens.",
         "oracleOwner": "user-system"
       },
       "qualified": false,

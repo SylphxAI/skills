@@ -6,7 +6,7 @@ filed evidence; it is not a separate source of truth.
 
 ## Current state (2026-08-13)
 
-- Capability packages: **60**
+- Capability packages: **56**
 - Qualified: **0**. House coverage/yield KPIs (TJC / VCY) and required
   outcome receipts are retired. Every listing stays installable. Prior
   wave tables below are archaeology of what the old runner filed.
@@ -29,9 +29,8 @@ filed evidence; it is not a separate source of truth.
   `packageDigest`. The runner refuses to file qualification when the package
   or suite prompts ban host web search, and refuses `incremental-value`
   unless a same-prompt agent pair differs only by whether the skill is the
-  condition. Remaining qualified records are digest-current behavior + scan
-  evidence under the prior runner; they are not a four-way / multi-family
-  claim and they do not currently claim incremental-value.
+  condition. There are no current `qualified` records. Historical wave
+  tables below are not a four-way / multi-family claim.
 - Industry bar for a future lift claim: same-prompt paired eval, one
   harness, harm veto. See `docs/QUALIFICATION.md`.
 

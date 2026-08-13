@@ -18,6 +18,9 @@ test('constitution stays thin and miss-class-A', () => {
   ]) {
     assert.ok(constitution.includes(phrase), `missing ${phrase}`);
   }
+  assert.equal(/outcome receipt/i.test(constitution), false);
+  assert.equal(/\bTJC\b/.test(constitution), false);
+  assert.equal(/\bVCY\b/.test(constitution), false);
 });
 
 test('catalog stays inside Codex listing budget class', () => {

@@ -70,6 +70,9 @@ How to file: [`docs/QUALIFICATION.md`](QUALIFICATION.md). Method:
 - Using qualification to block install or load
 - Inventing live success dashboards with zero external results
 - Batch-qualifying the catalog to make a coverage number move
+- Minting house score acronyms (three-to-five-letter KPIs). Name customer
+  value in English with an industry quantity. See documentation-standard
+  § North Star Metric (naming).
 
 ---
 

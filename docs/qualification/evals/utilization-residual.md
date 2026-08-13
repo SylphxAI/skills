@@ -13,13 +13,11 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 ### 2026-08-10 Verified Capabilities projection
 
 - The repository now projects qualification explicitly: **56 capability
-  packages, 24 qualified, 0 outcome receipts** as of 2026-08-13
-  (`docs/qualification/LEDGER.md`; 9 of the 24 also carry current
-  native-activation selection evidence). `research-public-web` was retired
-  on 2026-08-13; `compose-readme-marks` and fourteen digest-drifted
-  packages were demoted the same day. This record and the multi-host sheets below remain the
-  honest evidence that automatic multi-host utilization is not promotable
-  yet; qualification covers a growing subset of packages, not the fleet.
+  packages, 0 qualified** as of 2026-08-13 (`docs/qualification/LEDGER.md`).
+  House coverage/yield KPIs and required outcome receipts are retired.
+  `research-public-web` was retired the same day. This record and the
+  multi-host sheets below remain the honest evidence that automatic
+  multi-host utilization is not promotable.
 - **External projections are not authoritative.** The skills.sh projection
   (public aggregate of historical installs) is operated outside this
   repository and may list retired or historical packages; the authoritative
