@@ -40,7 +40,6 @@
   "failureSemantics": "Skipped tests, health-only probes, or successful compilation are not behavioral equivalence; proof expires and blocks promotion until exact candidate revisions and artifact digests are compared again; unclassified migration changes fail.",
   "outcome": {
     "observable": "A decided shape with each slice carrying exact-candidate parity proof, a cutover that retired obsolete structure at the real lifecycle stage, and a reconciled migration ledger reporting implementation, merge, deployment, and retirement separately.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

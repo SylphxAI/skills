@@ -4,9 +4,9 @@
 grant more trust than version-scoped evidence allows.
 
 This repository is the **open foundation**: capability packages with
-machine-readable contracts, honest version-scoped qualification records, an
-outcome-receipt recording contract, and install/sync for Codex, Claude Code, and
-Grok Build. It is not a marketplace, agent runtime, or Control Plane.
+machine-readable contracts, honest version-scoped qualification records, and
+install/sync for Codex, Claude Code, and Grok Build. It is not a marketplace,
+agent runtime, or Control Plane.
 
 A capability is a **requestable job** with a specialized procedure and an
 externally observable outcome contract. Standards, domain packs, and long
@@ -15,11 +15,9 @@ matrices live in `references/` under the capability that uses them. There is
 semantics.
 
 Every package carries `capability.json` (contract) and `qualification.json`
-(record; `unqualified` is the honest default). The catalog projects
-qualification state. **Active compass (Stage A):** Trustworthy Job Coverage—
-honest, current qualification of real jobs with zero false-qualified claims.
-**Eventual product truth (Stage B):** Verified Capability Yield, when external
-outcome receipts exist. This repository never fabricates receipts.
+(record; `unqualified` is the honest default and remains installable). The
+catalog projects qualification state. A value claim uses same-prompt paired
+evaluation; qualification is not a use gate.
 
 See [docs/NORTH-STAR.md](docs/NORTH-STAR.md) (full product North Star),
 [docs/MODEL.md](docs/MODEL.md), [docs/QUALIFICATION.md](docs/QUALIFICATION.md).

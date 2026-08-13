@@ -39,7 +39,6 @@
   "failureSemantics": "Mechanisms that do not change future agent behavior are discarded; no skill depends on private tools, credentials, or hidden chat context; validation failures are reported honestly, never published as benchmark quality.",
   "outcome": {
     "observable": "A compact installable skill package that runs without the original source, names its evidence boundary, carries output contracts and validation signals, and passes the target repository's structural validation.",
-    "oracleOwner": "repository",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "repository"
   }
 }

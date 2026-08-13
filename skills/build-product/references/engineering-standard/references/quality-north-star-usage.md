@@ -8,9 +8,8 @@ architecture, and ops work under this Engineering Standard.
 
 - Not the **Product North Star** for Sylphx Verified Capabilities  
   → that is [`docs/NORTH-STAR.md`](../../../../../docs/NORTH-STAR.md)
-  (trusted methods; trust capped by version-scoped evidence; Stage A TJC /
-  Stage B VCY).
-- Not qualification evidence and not Verified Capability Yield.
+  (trusted methods; trust capped by version-scoped evidence).
+- Not qualification evidence.
 - Not a second universal principles document  
   → principles: [`docs/policies/PRINCIPLES.md`](../../../../../docs/policies/PRINCIPLES.md).
 

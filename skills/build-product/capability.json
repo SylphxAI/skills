@@ -39,7 +39,6 @@
   "failureSemantics": "No permanent workarounds: gaps resolve on the owning layer; a slice is done only when the framed capability is usable under the stated oracle or only externally blocked, residuals are listed, and no known ship-blocker was ignored.",
   "outcome": {
     "observable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

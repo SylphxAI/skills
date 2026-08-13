@@ -44,7 +44,6 @@ const L0_MAX_CHARS = 6000;
 const SCHEMA_FILES = [
   'schemas/capability-contract.schema.json',
   'schemas/qualification-record.schema.json',
-  'schemas/outcome-receipt.schema.json',
   'schemas/eval-suite.schema.json',
 ];
 
@@ -323,7 +322,6 @@ const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
 const capabilitySchema = ajv.compile(readJson(path.join(repositoryRoot, SCHEMA_FILES[0])));
 const qualificationSchema = ajv.compile(readJson(path.join(repositoryRoot, SCHEMA_FILES[1])));
-export const outcomeReceiptSchema = ajv.compile(readJson(path.join(repositoryRoot, SCHEMA_FILES[2])));
 
 if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) {
   const { errors, skillFolders } = checkRepository();

@@ -23,9 +23,9 @@ only when a task matches. Always-on text is miss-class-A floors only.
   edited, committed, proposed, or locally green.
 - Do not fabricate live coordination, deploy, or CI authority when tools or
   state are missing. Report the gap.
-- Installed or structurally green is not qualified: capability value requires
-  version-scoped qualification evidence and an outcome receipt; `unqualified`
-  is the honest default.
+- Installed or structurally green is not qualified: a value claim needs
+  version-scoped evidence. `unqualified` is the honest default and remains
+  installable and loadable.
 - Obtain explicit authority before destructive actions, credentials,
   public-contract changes, new infrastructure, or irreversible effects.
 
@@ -44,6 +44,14 @@ only when a task matches. Always-on text is miss-class-A floors only.
   claim must state which budget, how it is measured, and which principle it
   trades.
 - Keep source / CI / deploy / live states distinct; evidence is per layer.
+
+## Platform apps
+
+When work needs deploy, preview, auth, data, files, email, jobs, or billing,
+use Sylphx Platform public contracts (`sylphx.toml`, the `sylphx` CLI, and
+the generated SDK). Customer compute is request-wake `type=web`. Durable
+memory and work live in Platform Data, Work, Events, Identity, and Commerce.
+Discover the current CLI/SDK at use.
 
 ## Skill loading
 

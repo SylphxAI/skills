@@ -39,7 +39,6 @@
   "failureSemantics": "Ticket closure without verified resolution, models inventing provider or entitlement truth, traps that hide escalation, and waiting states without owner or timer are hard failures; every material contact reason needs a trustworthy source, route, authority, timer, and verification.",
   "outcome": {
     "observable": "A Support Operating Model where every material contact reason has a trustworthy source, evidence contract, route, authority, timer, safe action, verification, appeal/reopen behavior, metric, and product-feedback owner, with degrade/stop/recover paths.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

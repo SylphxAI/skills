@@ -3,8 +3,8 @@
 ## Purpose
 
 Open foundation of Sylphx Verified Capabilities: portable capability packages,
-honest qualification records, outcome-receipt schema, and install/AutoSync for
-Codex, Claude Code, and Grok Build.
+honest qualification records, and install/AutoSync for Codex, Claude Code,
+and Grok Build.
 
 ## Product Vision
 
@@ -12,24 +12,20 @@ Agents get **one trusted method per real job**, with trust never exceeding
 version-scoped evidence. The open foundation ships packages, contracts,
 qualification honesty, and release-tag distribution—not a marketplace, agent
 runtime, or Control Plane. Full narrative:
-[docs/NORTH-STAR.md](docs/NORTH-STAR.md) (product identity and stage metrics).
+[docs/NORTH-STAR.md](docs/NORTH-STAR.md).
 
 ## North Star Metric
 
-> Right job → right method → trust capped by evidence.
+> Right job → right method → trust capped by evidence. Unqualified stays usable.
 
-| | |
-| --- | --- |
-| **Metric (Stage A, active)** | **Trustworthy Job Coverage (TJC)** — listed, discoverable, honestly qualified on current digest; zero false-qualified |
-| **Metric (Stage B, when receipts exist)** | **Verified Capability Yield (VCY)** — external successes ÷ eligible attempts |
-| **Anti-proxy** | Listing count, stars, CI green alone, self-graded `q-*`, fabricated receipts |
-
-Detail: [docs/NORTH-STAR.md](docs/NORTH-STAR.md).
+Industry evaluation: same-prompt paired lift when claiming better; no false
+verified; no house coverage/yield KPIs. Detail:
+[docs/NORTH-STAR.md](docs/NORTH-STAR.md).
 
 ## Goals
 
-Completable work is tracked as Work/PRs (OKR-style slices), not a second NSM.
-Raise TJC by qualifying high-value jobs and removing false trust.
+Completable work is tracked as Work/PRs. Do not batch-qualify to move a
+coverage number. File paired evals only when claiming lift.
 
 ## Delivery
 

@@ -6,30 +6,10 @@ filed evidence; it is not a separate source of truth.
 
 ## Current state (2026-08-13)
 
-- Capability packages: **56**
-- Qualified: **24** — analyze-causal-inference, analyze-critically,
-  analyze-system-dynamics, compose-product-program, craft-product-interface,
-  curate-skill-repository, design-skill-evals, distill-source-to-skill,
-  edit-preserving-voice, forecast-with-calibration, maintain-product,
-  model-security-threats, operate-customer-support, optimize-decision-model,
-  price-saas-subscription, produce-game-2d-map-assets,
-  produce-game-2d-sprites, research-user-needs, review-domain,
-  run-product-feedback-loop, select-next-work, synthesize-evidence-brief,
-  synthesize-market-research, write-high-signal-update.
-  Each remaining record now carries `packageDigest` equal to the current
-  package identity. Fourteen names that were still `qualified` after a
-  material edit of loaded bytes were demoted the same day (see below).
-  **Incremental-value claimed: 0/24.** Fifteen fixture-read
-  `incremental-value` filings (hand `SKILL.md` to the agent, different
-  baseline prompt) were withdrawn; those packages stay `qualified` on
-  compatibility + pattern scan (+ activation where verified).
-- Native-activation selection evidence: **9/24** (analyze-critically,
-  analyze-causal-inference, model-security-threats, operate-customer-support,
-  review-domain, research-user-needs, price-saas-subscription,
-  compose-product-program, craft-product-interface);
-  the others remain `injectionState: not-verified`
-  — see wave-7 through wave-11. Activation traces on later-demoted packages
-  are archaeology, not current selection proof.
+- Capability packages: **60**
+- Qualified: **0**. House coverage/yield KPIs (TJC / VCY) and required
+  outcome receipts are retired. Every listing stays installable. Prior
+  wave tables below are archaeology of what the old runner filed.
 - **Retired listing:** `research-public-web` (2026-08-13). Prior wave-6
   qualification and wave-7 activation records remain under
   `evals/research-public-web/` as archaeology. AutoSync onto a host that still
@@ -52,14 +32,8 @@ filed evidence; it is not a separate source of truth.
   condition. Remaining qualified records are digest-current behavior + scan
   evidence under the prior runner; they are not a four-way / multi-family
   claim and they do not currently claim incremental-value.
-- Outcome receipts recorded: **0** (receipts are recorded by user systems and
-  the Control Plane against `schemas/outcome-receipt.schema.json`; the
-  repository does not fabricate them)
-- Product North Star compass: **Stage A — Trustworthy Job Coverage** (honest
-  current qualification of real jobs; zero false-qualified). Stage B —
-  Verified Capability Yield: no eligible attempts yet (eligibility also
-  requires authorization in the actual context; receipts are the live
-  recording side; this repository never fabricates them)
+- Industry bar for a future lift claim: same-prompt paired eval, one
+  harness, harm veto. See `docs/QUALIFICATION.md`.
 
 Wave-1 qualification runs:
 

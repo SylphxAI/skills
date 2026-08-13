@@ -43,6 +43,7 @@ import { repositoryRoot, readJson } from './build-catalog.mjs';
 import {
   FORBIDDEN_INSTRUCTION_PATTERNS,
   incrementalValueEligible,
+  scanTextForForbiddenInstructions,
   suiteForbiddenInstructionFindings,
 } from './qualification-integrity.mjs';
 
@@ -306,6 +307,11 @@ async function runTask(task, suite, suiteRoot, runRoot, python) {
   const artifactDigests = fileDigestMap(produced);
 
   const failures = await runAssertions(task.oracle.assertions, { root: work, exitCode, stdout }, python);
+  if (task.kind === 'agent' && task.baseline !== true) {
+    for (const label of scanTextForForbiddenInstructions(stdout)) {
+      failures.push(`harm: with-skill output forbids host search ("${label}")`);
+    }
+  }
   rmSync(work, { recursive: true, force: true });
   const status = failures.length === 0 ? 'pass' : 'fail';
   const record = {
@@ -591,6 +597,20 @@ async function main() {
     runDir: path.relative(repositoryRoot, runRoot),
   };
   writeFileSync(path.join(runRoot, 'report.json'), `${JSON.stringify(report, null, 2)}\n`);
+  const benchmark = [
+    `# Benchmark`,
+    ``,
+    `- Capability: \`${capability}\``,
+    `- Verdict: ${verdict}`,
+    `- Package digest: \`${candidate.packageDigest}\``,
+    comparison
+      ? `- Paired result: with-skill ${comparison.withSkill} / baseline ${comparison.baseline}`
+      : `- Paired result: not declared (same-prompt pair required to claim incremental-value)`,
+    `- Pattern scan: ${scan.verdict}`,
+    `- Tasks: ${taskResults.map((task) => `${task.id}=${task.status}`).join(', ')}`,
+    ``,
+  ].join('\n');
+  writeFileSync(path.join(runRoot, 'BENCHMARK.md'), benchmark);
 
   if (apply && verdict === 'qualified') {
     const qualificationPath = applyQualification(suite, report, capability, stamp, resultsDigest);

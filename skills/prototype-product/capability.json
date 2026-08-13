@@ -35,7 +35,6 @@
   "failureSemantics": "Evidence is observation plus decision, not code existence; throwaway and placeholder elements are marked explicitly; the set stays finishable inside the time box.",
   "outcome": {
     "observable": "A real probe ran (or a concrete external blocker is named) and a written go, kill, pivot, or next-probe decision with evidence pointers was produced.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

@@ -39,7 +39,6 @@
   "failureSemantics": "The cycle is not done until the framed harm is fixed or mitigated with evidence, reproduction is closed or a residual owner is named, and no obvious new regression appears on the touched path.",
   "outcome": {
     "observable": "The failing oracle reruns green or harm measurably reduces, reproduction is closed or owned, and the touched path shows no obvious new regression.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

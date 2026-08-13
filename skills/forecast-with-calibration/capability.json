@@ -35,7 +35,6 @@
   "failureSemantics": "Ranges or insufficient-evidence exposure replace unsupported precision; correlated agreement is not independent evidence; a single forecast is never judged only by whether it happened, but by process, proper score, and calibration.",
   "outcome": {
     "observable": "A Probabilistic Forecast Record with a resolvable question contract, base-rate anchored probability or distribution, transparent history, and a proper-score resolution an independent scorer can reproduce.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

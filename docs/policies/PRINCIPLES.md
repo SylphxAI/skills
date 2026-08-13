@@ -239,8 +239,8 @@ Mapping to the **Quality North Star** engineering vocabulary (`q-*`) — not the
 | Security | `q-security` |
 | Economy | `q-economy` (agent-native lifecycle / entropy / attention / coordination cost) |
 
-Product win conditions (TJC / VCY, three durable concepts) live only in
-`docs/NORTH-STAR.md`.
+Product identity lives in `docs/NORTH-STAR.md`. Do not invent house
+coverage or yield KPIs.
 
 ## Provenance
 

@@ -39,7 +39,6 @@
   "failureSemantics": "No upload, public claim, or rights exposure for dormant targets; external rights, talent, and platform approval are real authority gates never fabricated; every QA failure is a residual, and a change issues a new revision rather than a same-revision back-reference.",
   "outcome": {
     "observable": "A Product Asset Production Pack whose finished files match the approved brief and brand constraints, pass exact-file QA against current official requirements, carry rights and provenance, and include an honest residual list.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

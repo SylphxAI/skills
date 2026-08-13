@@ -35,7 +35,6 @@
   "failureSemantics": "Revisions are immutable once consumed; a revision never both consumes and indexes the same artifact; a manifest is not delivery, and no revision claims evidence produced after its own identity; blockers are typed, never vague later work.",
   "outcome": {
     "observable": "A Product Program Manifest where every declared capability has one owner and full target, the graph is acyclic, all handoffs and gates are executable, and the observed-state revision indexes exact accepted sibling evidence.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

@@ -33,7 +33,6 @@
   "failureSemantics": "Agreement is not evidence and disagreement is not automatically uncertainty; mechanical enumeration of remote possibilities is rejected, missing-hypothesis risk stays residual, and confidence is calibrated rather than inflated.",
   "outcome": {
     "observable": "A Critical Analysis Brief containing competing hypotheses, discriminating evidence, a calibrated conclusion, and explicit conditions that would change the conclusion, usable by decision-makers.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

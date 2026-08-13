@@ -35,7 +35,6 @@
   "failureSemantics": "Findings separate fact, inference, and unknown; a review record without ranked severity or residuals is incomplete, and domain checklists never become separate listing skills.",
   "outcome": {
     "observable": "One domain review record with severity-ranked findings, residuals, and recommended actions that a decision owner can act on, produced from one matching domain pack.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

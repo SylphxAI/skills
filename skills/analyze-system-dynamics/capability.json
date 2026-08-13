@@ -35,7 +35,6 @@
   "failureSemantics": "A causal-loop diagram is a hypothesis, not evidence; qualitative models are labeled qualitative without invented parameter precision, and conditions requiring model revision are explicit.",
   "outcome": {
     "observable": "A Dynamic System Model with explicit model status (observed facts versus hypotheses), intervention analysis, and a validation plan an independent analyst can replay.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

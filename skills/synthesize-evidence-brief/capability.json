@@ -37,7 +37,6 @@
   "failureSemantics": "The protocol is frozen before reading toward a preferred conclusion; search rank, citation count, prestige, and agent consensus are not independent evidence quality; absence of evidence is separated from evidence of no effect; nothing is fabricated from titles or abstracts.",
   "outcome": {
     "observable": "An Evidence Synthesis whose coverage, exclusions, conflicts, and certainty can be audited and reproduced from the search log and evidence table, with an explicit claim boundary and update triggers.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

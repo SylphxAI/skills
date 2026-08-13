@@ -99,10 +99,6 @@
         "oracleOwner": {
           "enum": ["user-system", "repository", "host"],
           "description": "Who owns the oracle: the user's product/system (default), this repository, or the host runtime."
-        },
-        "receiptSchema": {
-          "const": "outcome-receipt.schema.json",
-          "description": "Every outcome is recorded against the shared outcome-receipt schema."
         }
       }
     }

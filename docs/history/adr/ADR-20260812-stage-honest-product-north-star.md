@@ -1,6 +1,6 @@
 ---
 id: ADR-20260812-stage-honest-product-north-star
-status: accepted
+status: superseded
 date: 2026-08-12
 decision_owner: SylphxAI
 supersedes: []
@@ -13,6 +13,10 @@ scope:
 ---
 
 # ADR-20260812: Stage-honest Product North Star
+
+> **Superseded for operations** by
+> [ADR-20260813](ADR-20260813-retire-house-nsm-follow-industry-eval.md).
+> TJC / VCY must not steer daily work.
 
 ## Context
 

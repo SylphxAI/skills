@@ -37,7 +37,6 @@
   "failureSemantics": "Improvements that merely move the failure or overfit observed examples are rejected; the prompt is never assumed to be the cause without tracing; promotion happens against the frozen threshold and monitoring continues afterward.",
   "outcome": {
     "observable": "A Learning Change Record where the intervention is deployed at the owning layer, measured against a frozen baseline with countermetrics and critical failures, and promoted, revised, or reverted with rollback and a monitored recurrence signal.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

@@ -37,7 +37,6 @@
   "failureSemantics": "A version is rejected unless it came from a live registry or official channel in this session; pre-release channels are opt-in only; lockfiles are checked for vulnerable transitive versions.",
   "outcome": {
     "observable": "Selected versions trace to a live registry or release API with the exact source recorded, pins are applied in owning manifests, and the repo's install, build, and tests pass or residuals are explicit.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

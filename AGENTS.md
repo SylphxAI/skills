@@ -10,8 +10,11 @@
   (honest `unqualified` default); author via `author-skill` semantic gates and
   file qualification evidence via `design-skill-evals` + `docs/QUALIFICATION.md`
 - Never claim qualification without version-scoped, expiring evidence; Quality
-  North Star (`q-*`) is authoring quality, not qualification evidence and not
-  Product North Star progress (`docs/NORTH-STAR.md`: Stage A TJC / Stage B VCY)
+  North Star (`q-*`) is authoring quality, not qualification evidence.
+  Unqualified packages stay usable. Do not steer work with house coverage
+  or yield KPIs.
 - Universal principles (any design: code/product/ops/business): `docs/policies/PRINCIPLES.md`; compact floor in `runtime/constitution.md`
 - Prefer app/product/game language; Keel depth under `build-product`
+- Platform customer method (how to deploy, sign in, persist, run jobs):
+  `skills/build-product/references/sylphx-platform-first-policy/`
 - `npm run build:catalog && npm test`

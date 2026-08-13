@@ -38,7 +38,6 @@
   "failureSemantics": "No URL is claimed live without a probe; a 200 on / alone does not prove an SPA works client-side; claim tokens are treated as ownership bearers and never pasted into untrusted channels; expiry is always stated.",
   "outcome": {
     "observable": "A public URL that responds to verification probes with recorded expiry and claim path, and residuals documented so the user knows the preview is not durable production.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

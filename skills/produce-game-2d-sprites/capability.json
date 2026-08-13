@@ -40,7 +40,6 @@
   "failureSemantics": "Missing host tools are reported honestly, never papered over; sheets failing chroma, loop, scale, or consistency checks are residuals; helpers are only used per their documented --help contract.",
   "outcome": {
     "observable": "Engine-ready sprite or sheet files at declared title paths with manifest, QC evidence (chroma, loop flip test, scale consistency), and an honest residual and tool-gap list.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

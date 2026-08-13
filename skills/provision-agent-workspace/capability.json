@@ -35,7 +35,6 @@
   "failureSemantics": "Long-lived secrets are not placed in ephemeral storage without a wipe plan; preview sandboxes are treated as hostile multi-tenant until proven otherwise; standby or resume is only assumed when the provider documents it.",
   "outcome": {
     "observable": "A provisioned workspace with documented handle, filesystem and exec canary proofs, stated isolation class and free boundaries, and reap or TTL policy with residual risks.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

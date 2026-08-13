@@ -35,7 +35,6 @@
   "failureSemantics": "A mark is not done until the live URL probes to an image content-type; provider downtime and GitHub rate limits are reported as residuals, and badges are never presented as delivery evidence.",
   "outcome": {
     "observable": "Markdown snippets that render live images, with each URL probed to an image content-type 200 and theme choices recorded in source so agents can regenerate them.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

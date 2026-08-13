@@ -1,8 +1,7 @@
 # Capability model
 
 The product identity is **Sylphx Verified Capabilities**. The **Product North
-Star** (one-liner, three concepts, stage-honest metrics) is
-[`NORTH-STAR.md`](NORTH-STAR.md). Repo projection:
+Star** is [`NORTH-STAR.md`](NORTH-STAR.md). Repo projection:
 [`PROJECT.md`](../PROJECT.md) (Purpose · Product Vision · North Star Metric ·
 Delivery · Links). Feature inventory: [`prd.md`](prd.md). Documentation altitude
 (Vision · NSM · OKR · PRD · Spec · ADR · Diátaxis) is owned by
@@ -24,10 +23,6 @@ Every listing package under `skills/<id>/` is a capability and must carry:
   ([schema](../schemas/qualification-record.schema.json)); `unqualified` is
   the honest default;
 - optional `references/` / `scripts/` / `assets/` for depth.
-
-Outcomes are recorded against `schemas/outcome-receipt.schema.json` by the
-user's product/system (oracle owner) and the Control Plane (live recording).
-The repository never fabricates receipts.
 
 ## Discovery is a floor
 
@@ -92,5 +87,4 @@ Engineering quality vocabulary is the **Quality North Star** (`q-*`) owned by
 entropy/verification/attention/runtime/coordination/reversal cost, not
 person-days; default quality precedence; not a listing skill). Quality North
 Star is an authoring quality vocabulary; it is **not** qualification evidence
-and never substitutes for Product North Star metrics (Stage A TJC / Stage B
-Verified Capability Yield — see `NORTH-STAR.md`).
+and never substitutes for product evaluation claims (see `NORTH-STAR.md`).

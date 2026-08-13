@@ -37,7 +37,6 @@
   "failureSemantics": "Consensus is not truth, a vote is not evidence, and repetition is not an independent signal; raw private material stays in the authorized store and public projections never make participants or evidence reconstructable.",
   "outcome": {
     "observable": "A Deliberation Record preserving genuine alternatives, linked arguments, position changes with reasons, residual dissent, commitments and owners, and a handoff to a decision, experiment, or work item.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

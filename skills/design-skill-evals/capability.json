@@ -31,14 +31,20 @@
     "Qualification-record evidence filed when the run is completed"
   ],
   "required": {
-    "tools": ["deterministic artifact checkers", "independent judge families (at least two)"],
-    "data": ["protected eval store for raw artifacts and holdouts"],
-    "permissions": ["declared eval-store access, audience, retention and deletion policy"]
+    "tools": [
+      "deterministic artifact checkers",
+      "independent judge families (at least two)"
+    ],
+    "data": [
+      "protected eval store for raw artifacts and holdouts"
+    ],
+    "permissions": [
+      "declared eval-store access, audience, retention and deletion policy"
+    ]
   },
   "failureSemantics": "A green score is invalid without exact candidate binding, complete artifacts, independent recomputation, provenance and replay; failures become minimal regression cases and the skill is edited, never the threshold; any relevant byte change invalidates the matching proof.",
   "outcome": {
     "observable": "An independent runner can reproduce the candidate, tasks, outputs, metrics and verdict without trusting the author narrative, and the result is recorded as version-scoped qualification evidence.",
-    "oracleOwner": "repository",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "repository"
   }
 }

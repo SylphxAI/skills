@@ -39,7 +39,6 @@
   "failureSemantics": "Unique knowledge is never deleted before its destination is explicit and checked; decisions without semantic reason, owner, or confidence are rejected, and a meta-router is never built to make semantic judgment look deterministic.",
   "outcome": {
     "observable": "A portfolio verdict where every capability decision names a semantic reason, canonical owner, exact content action, and confidence, backed by a false-negative review and a forward-test validation run.",
-    "oracleOwner": "repository",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "repository"
   }
 }

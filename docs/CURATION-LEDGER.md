@@ -187,6 +187,26 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - The runner pattern scan now treats host-search bans as findings, so
   the `research-public-web` class cannot be filed as qualified again.
 
+## 2026-08-13 — Platform customer method (positive verbs)
+
+- Rewrote `build-product/references/sylphx-platform-first-policy/` as the
+  **how-to** for Sylphx Platform (classify → recipe). Family recipes: CLI
+  planes, serverless web, PaaS deploy, identity, data, work, events, commerce,
+  observe. One home; listings open a recipe when the verb matches.
+- Owner jobs now default to that method: `build-product`, `drive-to-delivery`,
+  `adopt-repo-standards`, `craft-product-interface`, `build-payment-readiness`,
+  `execute-hard-cutover`, `deploy-ephemeral-web-preview`,
+  `provision-agent-workspace`, `maintain-product`, `select-dependency-versions`,
+  `design-product`.
+- New listings for independently requested verbs:
+  `authenticate-app-users`, `persist-app-data`, `run-background-work`,
+  `deliver-app-events`.
+- `wire-managed-backend-services` retargeted to **one** leftover capability
+  with write-then-read proof (no 22-service bag).
+- Compact constitution floor: Platform public contracts; customer compute is
+  request-wake `type=web`; durable memory/work in Platform families.
+- All new/changed packages remain `unqualified` until a digest-bound run.
+
 ## 2026-08-13 — incremental-value is same-prompt only
 
 - Fixture-read `Read ./SKILL.md` tasks are fresh-context behavior tests.
@@ -198,3 +218,15 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   incremental-value.
 - Integrity gate rejects a later hand-edit that puts `incremental-value`
   back onto an ineligible suite.
+
+## 2026-08-13 — retire house NSM; follow industry eval
+
+- Removed TJC, VCY, Stage A/B, and required `outcome.receiptSchema` from
+  active product surfaces. Outcome-receipt schema moved to
+  `docs/history/retired-outcome-receipt-2026-08-13/`.
+- All 56 packages reset to `unqualified` (capability bytes changed). They
+  remain listed and installable.
+- `design-skill-evals` now teaches SkillsBench / NVIDIA T3 paired
+  evaluation. Four-way / holdout program archived under
+  `docs/history/retired-four-way-eval-program-2026-08-13/`.
+- ADR: `docs/history/adr/ADR-20260813-retire-house-nsm-follow-industry-eval.md`.

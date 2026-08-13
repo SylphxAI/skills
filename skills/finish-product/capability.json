@@ -39,7 +39,6 @@
   "failureSemantics": "Functional, compilable, or clickable is not finished; the declared target is never silently lowered, and a report-only response is incomplete in finish mode.",
   "outcome": {
     "observable": "The product reaches its declared finish target with re-captured render or playthrough evidence, regression and budget checks, and a blocker list that names remaining delivery state truthfully.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

@@ -37,7 +37,6 @@
   "failureSemantics": "Acceptance criteria without purpose, context, affected parties, failure behavior, or quality constraints are not complete; priority labels and generated prose are never validation; implementation choices never hide inside requirements.",
   "outcome": {
     "observable": "A Requirements Contract where each accepted requirement has an oracle and success boundary, traces to a source need and forward artifacts, and changes require impact analysis and supersession under a named authority.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

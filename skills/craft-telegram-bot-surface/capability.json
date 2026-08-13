@@ -39,7 +39,6 @@
   "failureSemantics": "Any surviving MarkdownV2/HTML product send, unregistered slash overflow, new-message-per-step keyboard flow, or unguarded bot-to-bot loop is a failure; verification requires wire proof, not menu documentation alone.",
   "outcome": {
     "observable": "A Telegram surface with a registered menu within budget, layered edit trees, Rich Message-only product sends verified on the wire, a visibility matrix, bot-to-bot guards where applicable, and legacy formatter/menu paths removed.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }
