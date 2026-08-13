@@ -340,10 +340,10 @@ These are product laws for Verified Capabilities—not a second principles list.
 *Snapshot for operators and agents. Update when qualification or receipt
 reality changes; do not freeze vanity.*
 
-| Signal | State (as of 2026-08-12, post `skills-v6.17.0` channel) |
+| Signal | State (as of 2026-08-13; catalog/LEDGER win over this snapshot) |
 | --- | --- |
-| Capability packages | **57** |
-| Qualified (version-scoped, expiring) | **40** (see catalog / LEDGER; some digests may demote on content change) |
+| Capability packages | **56** |
+| Qualified (version-scoped, expiring) | **39** (see catalog / LEDGER; some digests may demote on content change) |
 | Unqualified (honest default or demoted) | **17** including core jobs whose digests churned (e.g. `build-product`, `drive-to-delivery` when engineering depth changed) |
 | Native-activation selection evidence | Subset of qualified only (see LEDGER); selection remains host/model contextual |
 | Outcome receipts recorded in this repo | **0** (by design—external oracle) |

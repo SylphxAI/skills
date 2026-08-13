@@ -24,6 +24,14 @@ const SECRET_PATTERNS = [
   /\bxox[baprs]-[A-Za-z0-9-]{20,}\b/,
 ];
 
+// Host web search/fetch is a primitive. Skills must not ban it or replace it
+// with "open recipes / curl first" as the research method.
+const FORBIDDEN_INSTRUCTION_PATTERNS = [
+  { re: /do not web[- ]search/i, label: 'do not web-search' },
+  { re: /no search engine required/i, label: 'no search engine required' },
+  { re: /without web search/i, label: 'without web search' },
+];
+
 // Codex listing class: ~8k description chars when window unknown.
 const CATALOG_DESC_SOFT_MAX = 8000;
 const DESCRIPTION_HARD_MAX = 1024;
@@ -206,6 +214,11 @@ function validateSkill(folder, names, errors) {
     const text = readFileSync(file, 'utf8');
     for (const pattern of SECRET_PATTERNS) {
       if (pattern.test(text)) errors.push(`${relative}: looks like a credential`);
+    }
+    for (const pattern of FORBIDDEN_INSTRUCTION_PATTERNS) {
+      if (pattern.re.test(text)) {
+        errors.push(`${relative}: forbids host web search ("${pattern.label}"); use host search/fetch, keep recipes as known URL/CLI patterns only`);
+      }
     }
     if (/\.(?:md|markdown)$/i.test(file)) validateLocalLinks(text, file, errors);
   }

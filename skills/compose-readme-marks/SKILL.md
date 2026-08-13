@@ -21,12 +21,12 @@ Produce **markdown image embeds** for README/docs: badges, banners, tech icon ro
 
 ## Method
 
-**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+Known provider URL patterns live in [references/recipes.md](references/recipes.md). Open that file when you need a documented endpoint. It is not a search replacement: if a host or path may have moved, use the host's web search and fetch tools.
 
 1. Choose mark types: badge / banner / icons / stats.
 2. Open [references/providers/INDEX.md](references/providers/INDEX.md); prefer no-key public APIs.
 3. Build URLs with required query params; URL-encode text.
-4. Probe with `curl -sI` → expect `image/svg+xml` or image content-type **200**.
+4. Probe the image URL (host fetch if present, otherwise `curl -sI`) → expect `image/svg+xml` or image content-type **200**.
 5. Paste markdown into README; keep params in source so agents can regenerate.
 
 ## Done for this run
@@ -38,7 +38,7 @@ Produce **markdown image embeds** for README/docs: badges, banners, tech icon ro
 
 ## Progressive disclosure
 
-- [references/recipes.md](references/recipes.md) — **open first**: copy-paste endpoints/commands
+- [references/recipes.md](references/recipes.md) — known URL patterns when the provider is already chosen
 - [references/providers/INDEX.md](references/providers/INDEX.md)
 - [references/providers/mark-sylphx.md](references/providers/mark-sylphx.md)
 - [references/providers/shields.md](references/providers/shields.md)

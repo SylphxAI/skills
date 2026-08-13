@@ -13,8 +13,8 @@ no requirement to send credentials to Sylphx to install.
   not publisher intent or semantic safety.
 - `qualified` in this repository means version-scoped, expiring evidence from
   a named evaluator, including a mandatory automated pattern scan for secrets
-  and dangerous instruction patterns. As of 2026-08-11, 40 of 57 packages
-  carry that evidence (as of 2026-08-11); the rest are honestly
+  and dangerous instruction patterns. As of 2026-08-13, 39 of 56 packages
+  carry that evidence; the rest are honestly
   `unqualified`. The pattern scan
   is a regex backstop, not a security review.
 - There is **no current automated gate that evaluates malicious instructions,
@@ -32,7 +32,7 @@ under the user's privileges (see [docs/PROMOTION.md](docs/PROMOTION.md)).
 Without `requireVerifiedTag: true`, the authority is repository governance plus
 tag immutability; with it, the authority is cryptographic (GPG/SSH `git
 verify-tag`). Branch-following AutoSync configs (schemaVersion 1) are retired
-and fail closed. Qualification is the value-trust model: 40 of 57 packages
+and fail closed. Qualification is the value-trust model: 39 of 56 packages
 currently carry expiring qualification evidence, and `unqualified` remains
 the honest default. AutoSync also refuses to downgrade an installed
 `qualified` capability to `unqualified`.

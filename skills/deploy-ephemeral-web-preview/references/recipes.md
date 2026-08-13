@@ -1,6 +1,6 @@
-# Agent recipes — ephemeral public web (no search)
+# Agent recipes — ephemeral public web
 
-Probed / documented as of 2026-08-08. Prefer these over open-web hunting.
+Documented as of 2026-08-08. If a CLI flag or host moved, check current official docs with host search.
 
 ## A. Cloudflare temporary Worker (default L2)
 

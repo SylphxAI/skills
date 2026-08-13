@@ -144,3 +144,23 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   is a one-line redirect. Wired across adopt-repo, design-product,
   craft-human-agent-language, engineer-testable-requirements, author-skill,
   build-product, bound-request-scope, drive-to-delivery, MODEL, AUTHORITY-MAP.
+
+## 2026-08-13 — retire research-public-web; strip host-search ban
+
+- Retired listing `research-public-web`. Public-page lookup is a host
+  search/fetch job, not a skill. The package opened `recipes.md` first, said
+  **do not web-search**, and shipped copy-paste `curl` as the method — a
+  fleet regression. Do not restore as a listing or as a "use host search
+  first" wrapper.
+- Absorption: registry URL patterns stay under
+  `select-dependency-versions`; citation/gap hygiene stays with
+  `synthesize-evidence-brief` and ordinary evidence honesty. Snapshot:
+  `docs/history/retired-research-public-web-2026-08-13/`.
+- Same 2026-08-08 free-provider boilerplate ("Open recipes.md first — do not
+  web-search") removed from `compose-readme-marks`,
+  `share-ephemeral-artifact`, `wire-managed-backend-services`,
+  `provision-agent-workspace`, and `deploy-ephemeral-web-preview`. Those
+  jobs stay; recipes are known URL/CLI patterns, not a search ban.
+- Integrity gate rejects those instruction phrases under `skills/`.
+- `compose-readme-marks` package digest changes; filed wave-11 eval is for
+  prior bytes. Residual: re-qualify that listing.

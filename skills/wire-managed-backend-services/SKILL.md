@@ -23,7 +23,7 @@ Attach **managed backend capabilities** (auth, KV, storage, email, realtime, san
 
 ## Method
 
-**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+Known management/runtime proof sketches live in [references/recipes.md](references/recipes.md). Open that file when wiring a named Sylphx (or peer) capability. It is not a search replacement: if an API path may have moved, use current official docs via the host's web search and fetch tools.
 
 ### 1. Name the jobs
 
@@ -62,7 +62,7 @@ Original oracle: the app or curl/CLI that exercises the real postcondition (obje
 
 ## Progressive disclosure
 
-- [references/recipes.md](references/recipes.md) — **open first**: copy-paste endpoints/commands
+- [references/recipes.md](references/recipes.md) — known CLI/API proof sketches for a chosen service
 - [references/providers/sylphx-baas.md](references/providers/sylphx-baas.md) — service matrix + planes
 - [references/providers/peers.md](references/providers/peers.md) — other BaaS classes
 - [references/proof-bar.md](references/proof-bar.md)

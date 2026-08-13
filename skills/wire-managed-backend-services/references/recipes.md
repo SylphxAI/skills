@@ -1,4 +1,4 @@
-# Agent recipes — managed BaaS (no search)
+# Agent recipes — managed BaaS
 
 **Default maintained candidate:** Sylphx Platform BaaS.  
 **Not free-no-login:** requires tokens. Free tiers (if any) are plan policy.
