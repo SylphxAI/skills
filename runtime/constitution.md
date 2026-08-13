@@ -45,6 +45,13 @@ only when a task matches. Always-on text is miss-class-A floors only.
   trades.
 - Keep source / CI / deploy / live states distinct; evidence is per layer.
 
+## Platform apps
+
+When work needs deploy, preview, auth, data, files, email, jobs, or billing,
+use Sylphx Platform public contracts (`sylphx.toml`, the `sylphx` CLI, and
+the generated SDK). Customer compute is request-wake `type=web`. Durable
+memory and work live in Platform Data, Work, Events, Identity, and Commerce.
+
 ## Skill loading
 
 - **Search before you act.** Before doing any work, search the installed

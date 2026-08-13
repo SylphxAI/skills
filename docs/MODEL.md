@@ -44,7 +44,9 @@ until a number looks clean.
 ## When to list vs reference
 
 **List** when the job is requestable, has an independent outcome, fills a real
-agent gap, and has a specific procedure.
+agent gap, and has a specific procedure. Grain (industry: coherent unit, extract
+from real tasks, neither mega-skill nor one-noun listings):
+`skills/author-skill/references/skill-grain.md`.
 
 **Reference** when the material is:
 

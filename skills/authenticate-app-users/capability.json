@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "name": "authenticate-app-users",
+  "job": "Add app sign-in, session, and recovery through Platform Auth.",
+  "boundaries": {
+    "inScope": [
+      "Sign-up, sign-in, session, OAuth/OIDC, passkeys, and recovery",
+      "Authorizing server decisions with the verified principal",
+      "Proving issue and revoke of a session"
+    ],
+    "outOfScope": [
+      "Operator Platform IAM and management tokens",
+      "Product entitlement rules beyond identity"
+    ]
+  },
+  "inputs": [
+    "App journey and protected resources",
+    "Runtime Auth credential and tenant"
+  ],
+  "outputs": [
+    "Working sign-in on Platform Auth",
+    "Revoke or logout proof"
+  ],
+  "required": {
+    "tools": ["Platform Auth SDK or runtime API"],
+    "data": [],
+    "permissions": ["runtime Auth credential"]
+  },
+  "failureSemantics": "A login page without a verified server principal is incomplete; revoke must make reuse fail.",
+  "outcome": {
+    "observable": "A user can sign in on the current Platform Auth contract, a protected route accepts the session, and revoke rejects reuse.",
+    "oracleOwner": "user-system"
+  }
+}

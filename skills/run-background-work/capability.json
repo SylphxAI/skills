@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "name": "run-background-work",
+  "job": "Run cron, queues, or jobs as Platform Work that HTTP-wakes a web service.",
+  "boundaries": {
+    "inScope": [
+      "Creating Schedule, BatchJob, or Functions invoke Resources",
+      "Implementing an idempotent type=web callback",
+      "Proving a typed Operation terminal"
+    ],
+    "outOfScope": [
+      "Product-domain job payloads",
+      "Always-on customer worker processes as the destination",
+      "Isolated exec workspace provisioning"
+    ]
+  },
+  "inputs": [
+    "Activation kind and schedule or queue identity",
+    "Web service callback path"
+  ],
+  "outputs": [
+    "Platform Work Resource that wakes the web handler",
+    "Typed Operation terminal"
+  ],
+  "required": {
+    "tools": ["sylphx CLI or Platform SDK"],
+    "data": [],
+    "permissions": ["project Work create"]
+  },
+  "failureSemantics": "A running process is not proof; the Work Operation must reach a typed terminal.",
+  "outcome": {
+    "observable": "A Platform Work Resource activates the app's type=web handler and the Operation reaches a typed terminal.",
+    "oracleOwner": "user-system"
+  }
+}

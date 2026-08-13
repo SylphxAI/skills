@@ -28,7 +28,7 @@ refund-authority, support, and finance handoffs without copying sibling facts.
 ## Workflow
 
 1. Identify payment channel, product type, billing model, provider identifiers, catalog mapping, entitlement semantics, refund/dispute policy, settlement/fee model, support surfaces, and reconciliation owner.
-2. Read `references/payment-platform-patterns.md`; load `references/billing-reconciliation-patterns.md` when settlement, finance close, or cross-system reconciliation is in scope.
+2. Read `references/payment-platform-patterns.md`; load `references/billing-reconciliation-patterns.md` when settlement, finance close, or cross-system reconciliation is in scope. On Sylphx Platform, open `../build-product/references/sylphx-platform-first-policy/references/commerce.md` for the ledger owner map.
 3. Map catalog, checkout, receipt/webhook processing, idempotent ledger ingestion, entitlement projection, refund/revoke/dispute handling, support corrections, settlement, and reconciliation.
 4. Define provider-specific precedence for Apple IAP, Google Play Billing, Stripe/web checkout, wallets, promo/admin grants, restore purchases, renewals, refunds, chargebacks, and delayed events.
 5. Check platform-specific constraints, sandbox/live separation, fallback paths, customer messaging, finance close, and operational rollback.

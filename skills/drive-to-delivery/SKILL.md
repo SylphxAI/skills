@@ -51,6 +51,7 @@ Open only packs that match the objective:
 - `../record-structured-deliberation/references/sota-execution-standard/` — SOTA end-state selection when the objective is non-trivial
 - `../synthesize-evidence-brief/references/evidence-and-claims-standard/` — proof strength
 - `../build-product/references/engineering-standard/` / `../select-dependency-versions/references/technology-stack-profile/` — when implementing software
+- `../build-product/references/sylphx-platform-first-policy/` — when the objective deploys, authenticates, persists, or runs work on Platform; open `references/paas-deploy.md` for deploy/preview
 - Related jobs: `bound-request-scope`
 
 ## Boundaries

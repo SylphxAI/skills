@@ -1,22 +1,23 @@
 {
   "schemaVersion": 1,
   "name": "wire-managed-backend-services",
-  "job": "Wire managed backend capabilities via maintained BaaS candidates with auth, quota, and behavioral-proof honesty.",
+  "job": "Wire leftover managed BaaS capabilities with quota and behavioral-proof honesty.",
   "boundaries": {
     "inScope": [
-      "Naming required capabilities as jobs",
+      "Naming leftover capabilities as jobs (flags, search, analytics, AI gateway, consent)",
       "Mapping jobs to shipped services",
       "Authenticating on the correct management or runtime plane",
-      "Wiring one capability end-to-end with write-then-read proof"
+      "Wiring one leftover capability end-to-end with write-then-read proof"
     ],
     "outOfScope": [
+      "Sign-in, durable app data, background work, and message delivery listings",
       "Unmaintained free MCP backend plugins as production authority",
       "Health 200 as behavioral proof",
       "Routing production secrets through ephemeral paste hosts"
     ]
   },
   "inputs": [
-    "Required capabilities: auth, KV, storage, email, realtime, sandbox, flags",
+    "Required leftover capabilities: flags, search, analytics, AI gateway, consent",
     "BaaS candidate matrix and quota classes",
     "Machine tokens or SDK keys"
   ],
@@ -34,9 +35,9 @@
       "provisioned operator or runtime tokens"
     ]
   },
-  "failureSemantics": "Preview or unshipped services fail closed and are never faked; every wired capability needs a real postcondition proof (object exists, session issued, sandbox exec returns, email accepted, flag evaluates).",
+  "failureSemantics": "Preview or unshipped services fail closed and are never faked; every wired leftover capability needs a real postcondition proof (flag evaluates, index returns, event accepted, model routes).",
   "outcome": {
-    "observable": "Managed backend capabilities wired end-to-end with documented auth planes and at least one behavioral proof per capability, plus an honest gap list for unshipped services, plan limits, or missing tokens.",
+    "observable": "Leftover managed backend capabilities wired end-to-end with documented auth planes and at least one behavioral proof per capability, plus an honest gap list for unshipped services, plan limits, or missing tokens.",
     "oracleOwner": "user-system"
   }
 }

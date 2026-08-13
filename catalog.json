@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 56,
+  "count": 60,
   "qualification": {
-    "total": 56,
+    "total": 60,
     "qualified": 0,
     "qualifiedNames": []
   },
@@ -12,7 +12,7 @@
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:829996eb78a201a17746255e9d78b2ea2e6d9c2a2594eaf294399ce52fe713fb",
+      "packageDigest": "sha256:818e7a8f6184fd12c68dc4bfb7f7223e86a69ce2497d78d14684ff3aafbb0c40",
       "capability": {
         "job": "Bring a concrete repository onto the engineering baseline: constitution projection, project facts, fences, conformance entrypoints, retire predecessor layouts.",
         "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired for the framed scope (residuals are incomplete status only, not dual-system permission).",
@@ -61,10 +61,23 @@
       "qualificationStatus": "unqualified"
     },
     {
+      "name": "authenticate-app-users",
+      "description": "Adds app sign-in, session, and recovery through Platform Auth. Use when implementing login, OAuth, passkeys, or account recovery.",
+      "path": "skills/authenticate-app-users/SKILL.md",
+      "packageDigest": "sha256:59e96b1d86fc7d756cb9c8b3ee508cb815c07ace3ad189eab332b21c09db851b",
+      "capability": {
+        "job": "Add app sign-in, session, and recovery through Platform Auth.",
+        "outcomeObservable": "A user can sign in on the current Platform Auth contract, a protected route accepts the session, and revoke rejects reuse.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
+    },
+    {
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:16dc9f9cbdf5eaac3e03ff66c086638d3a93190f8b892c42a522ae6940ece76b",
+      "packageDigest": "sha256:70449455b773e964f71e3fbbf6979a4253ce8031a3f1dd593ea093f1ca5e2213",
       "capability": {
         "job": "Create or revise an Agent Skill package: job, description, method, references, contract.",
         "outcomeObservable": "The revised package passes npm test with a fresh catalog, local links resolve, the capability contract validates, and the description selects for the right ask and abstains on near-misses.",
@@ -103,7 +116,7 @@
       "name": "build-payment-readiness",
       "description": "Build production payments: providers, ledger, webhooks, reconciliation.",
       "path": "skills/build-payment-readiness/SKILL.md",
-      "packageDigest": "sha256:ab8f618701a82c00b1952cbfba29968e0b71d21c6bf9fcb72e69e133c53da227",
+      "packageDigest": "sha256:6843a4c1b65d7046b98635b2be8e8309ae31d48c2bb43ce4976a3b36a74e0720",
       "capability": {
         "job": "Build production payments: providers, ledger, webhooks, entitlement projection, reconciliation, and finance close.",
         "outcomeObservable": "Payments, entitlements, and refunds reconcile against provider truth with replayable ledger events, named finance-close owners and tolerances, and release gates carrying fixture, alert, rollback, and approval evidence.",
@@ -114,9 +127,9 @@
     },
     {
       "name": "build-product",
-      "description": "Ship a missing product capability end-to-end with original-oracle proof.",
+      "description": "Ship a missing product capability end-to-end with original-oracle proof. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:bc828655cffa87fe54c9f44797d84d29683103ceb06ff50b127be4ce41dff028",
+      "packageDigest": "sha256:ec94aa3918c15a79ea8bea51ddc3911a7ddf311af153dd3c35a3a5a6faec3280",
       "capability": {
         "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
@@ -181,7 +194,7 @@
       "name": "craft-product-interface",
       "description": "Craft one product UI flow with states, a11y, verification.",
       "path": "skills/craft-product-interface/SKILL.md",
-      "packageDigest": "sha256:d746829062b1327576fcc3f8e4dc0be9184cd6bccc5ca3d10c3574fd260db715",
+      "packageDigest": "sha256:64ad421da9496019315fb47babf8763a5d03effdec4c85dac29c9b53d7a4f102",
       "capability": {
         "job": "Craft one bounded product UI flow with states, accessibility, and verification: direction, build, polish, or review.",
         "outcomeObservable": "An Interface Craft Pack with a stated direction, covered states and accessibility floors, and rendered verification evidence (screenshots, device checks, tests) for the declared surface or flow.",
@@ -224,6 +237,19 @@
       "capability": {
         "job": "Decide one architecture shape from options and drive it through independently verifiable convergence slices with parity proof and cutover.",
         "outcomeObservable": "A decided shape with each slice carrying exact-candidate parity proof, a cutover that retired obsolete structure at the real lifecycle stage, and a reconciled migration ledger reporting implementation, merge, deployment, and retirement separately.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
+    },
+    {
+      "name": "deliver-app-events",
+      "description": "Sends email, webhooks, realtime, or push through Platform Events. Use when the app must deliver a message and prove the receipt.",
+      "path": "skills/deliver-app-events/SKILL.md",
+      "packageDigest": "sha256:14ac822f1e62a5c000caf67ec51d9e2338a8ef5268c160a049dd9bdd2d4bc671",
+      "capability": {
+        "job": "Send email, webhooks, realtime, or push through Platform Events.",
+        "outcomeObservable": "A typed message was submitted on the Platform Events contract and the Delivery Operation reached a terminal with a receipt.",
         "oracleOwner": "user-system"
       },
       "qualified": false,
@@ -285,7 +311,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:84ebd1a00b61cadd4d282184ed3cff3c6b4e92347d6669de65e6bd1644bbf634",
+      "packageDigest": "sha256:67a330fd93c3b28c9197d48cc90cc1964f04943f0717cfde53d6179b66784c67",
       "capability": {
         "job": "Drive one accepted multi-phase objective (engineering or product) to its delivery terminal with evidence at the active delivery boundary.",
         "outcomeObservable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
@@ -451,6 +477,19 @@
       "qualificationStatus": "unqualified"
     },
     {
+      "name": "persist-app-data",
+      "description": "Persists app data on Platform Data bindings (database, KV, objects, search). Use when adding durable storage or replacing process-local state.",
+      "path": "skills/persist-app-data/SKILL.md",
+      "packageDigest": "sha256:ef35c1b6feef4f85fb47b52668b57b107cef3a1725d65174e27c8fb0ee676613",
+      "capability": {
+        "job": "Persist app data on Platform Data bindings: database, KV, objects, or search.",
+        "outcomeObservable": "The app writes and reads the named record through a Platform Data binding.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
+    },
+    {
       "name": "price-saas-subscription",
       "description": "Price a SaaS subscription: packaging, meters, fences, migration.",
       "path": "skills/price-saas-subscription/SKILL.md",
@@ -594,6 +633,19 @@
       "qualificationStatus": "unqualified"
     },
     {
+      "name": "run-background-work",
+      "description": "Runs cron, queues, or jobs as Platform Work that HTTP-wakes a web service. Use when adding scheduled or background work.",
+      "path": "skills/run-background-work/SKILL.md",
+      "packageDigest": "sha256:fb53f0431182b73a37c0981580ba8e5febefd5dfce592b511d90746b1fcc674a",
+      "capability": {
+        "job": "Run cron, queues, or jobs as Platform Work that HTTP-wakes a web service.",
+        "outcomeObservable": "A Platform Work Resource activates the app's type=web handler and the Operation reaches a typed terminal.",
+        "oracleOwner": "user-system"
+      },
+      "qualified": false,
+      "qualificationStatus": "unqualified"
+    },
+    {
       "name": "run-incident-response",
       "description": "Run production incident response to mitigation and learning.",
       "path": "skills/run-incident-response/SKILL.md",
@@ -712,12 +764,12 @@
     },
     {
       "name": "wire-managed-backend-services",
-      "description": "Wire managed backend capabilities via maintained BaaS candidates with auth and quota honesty.",
+      "description": "Wires leftover managed BaaS capabilities (flags, search, analytics, AI gateway, consent) with quota honesty. Use when attaching a shipped backend that is not sign-in, app data, cron, or message delivery.",
       "path": "skills/wire-managed-backend-services/SKILL.md",
-      "packageDigest": "sha256:870d3042f934c7345b31fd13d860bba20e1033fe27c084bdda2b30b2693937f9",
+      "packageDigest": "sha256:0b693cb50d8584677551cbd4872c4805b8819441dc854ce75e38f6472ea1659a",
       "capability": {
-        "job": "Wire managed backend capabilities via maintained BaaS candidates with auth, quota, and behavioral-proof honesty.",
-        "outcomeObservable": "Managed backend capabilities wired end-to-end with documented auth planes and at least one behavioral proof per capability, plus an honest gap list for unshipped services, plan limits, or missing tokens.",
+        "job": "Wire leftover managed BaaS capabilities with quota and behavioral-proof honesty.",
+        "outcomeObservable": "Leftover managed backend capabilities wired end-to-end with documented auth planes and at least one behavioral proof per capability, plus an honest gap list for unshipped services, plan limits, or missing tokens.",
         "oracleOwner": "user-system"
       },
       "qualified": false,

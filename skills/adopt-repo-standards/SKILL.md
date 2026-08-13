@@ -32,6 +32,7 @@ adoption** cycle—not a permanent dual instruction stack.
 - For implementation shape constraints applied *while adopting*, open sibling depth under other workflows only if this adoption must implement product code:
   - `../build-product/references/engineering-standard/`
   - `../select-dependency-versions/references/technology-stack-profile/`
+  - `../build-product/references/sylphx-platform-first-policy/` — product apps declare `sylphx.toml` `type=web` and Platform resource bindings
 - Stop when more reading will not change the adoption set
 
 ### 3. Admit work
