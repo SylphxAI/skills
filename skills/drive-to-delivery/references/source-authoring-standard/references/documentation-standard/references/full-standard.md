@@ -48,7 +48,7 @@ Chat is draft. Promote durable outcomes into the homes above.
 | Layer | Answers | Shape | Industry notes |
 | --- | --- | --- | --- |
 | **Product Vision** | What product world are we building; for whom; not doing what? | Qualitative; may be long | Not a metric; not a feature backlog |
-| **North Star Metric** | Single metric that best captures core value delivered to customers | **One primary metric** in English, using an industry quantity | Amplitude/Sean Ellis: nights booked, weekly learning users — not a house acronym |
+| **North Star Metric** | Single metric that best captures core value delivered to customers | **One primary metric** in English, using an industry quantity | Amplitude/Sean Ellis: nights booked, weekly learning users |
 | **OKRs / Goals** | What we commit to complete or move this period | Time-bound, completable | Implement strategy; may target NSM or input metrics |
 | **PRD / product spec** | Problem, users, features/capabilities, requirements, non-goals | Inventory + requirements | Features live **here**, not in NSM |
 | **Specs / API reference** | Exact I/O, failures, limits | Schema/OpenAPI/tests preferred | Do not hand-duplicate in vision/NSM |
@@ -61,20 +61,21 @@ Chat is draft. Promote durable outcomes into the homes above.
 2. **NSM is one primary metric** of customer value (vanity proxies are not NSM).
    Name it in **English** with an **industry quantity** (information ratio,
    GGR, contribution margin, daily completers, weekly returning users,
-   availability / correct-target success, completed public operations).
-   **Do not mint house score acronyms** (three-to-five-letter invented KPIs
-   such as TJC, VCY, QRR, UHDA, NITE, WMCCU, VCCR, VAV, RHW, TKU, NBC).
-   Amplitude examples are phrases, not org-private codes. A retired house
-   name may appear only in a historical ADR labeled retired — never as
-   current law, never as a JSON field, never as a new “standard.”
+   availability, completed public operations). Amplitude examples are
+   phrases. Do not mint an abbreviation for a standard concept. A
+   predecessor private name may appear only in a historical ADR labeled
+   retired — never as current law or a JSON field.
 3. **OKRs are time-bound**; completing an OKR ≠ fulfilling the whole vision.
 4. **Feature/capability inventories belong in the PRD**, not the NSM document.
 5. **Field-level tool details belong in specs/reference/tests.**
 6. **ADRs record why**, not dashboards or backlog status.
 7. **One writable authority per fact**; entry docs only link.
-8. **Quality North Star (`q-*`)** in this org is engineering authoring vocabulary
-   under `build-product`—**not** product NSM (name collision; say **Quality
-   vocabulary / `q-*`** when engineering).
+8. **Process words stay out of product law.** Delivery stages, instruction
+   generations, quality rule IDs, and claim scores belong in engineering or
+   delivery homes — not Vision, NSM, OKRs, or the PRD.
+9. **Quality vocabulary (`q-*`)** is engineering authoring under
+   `build-product`—**not** the product NSM (say **Quality vocabulary** when
+   engineering).
 
 ### Optional short strategy
 
@@ -85,34 +86,22 @@ a fourth parallel encyclopedia; keep it short.
 
 Industry practice (Amplitude North Star Framework; Sean Ellis) is **one
 customer-value metric**, described so a stranger understands it, plus 3–5
-inputs. It is not a composite z-score of unlike units and not a private code.
+inputs. It is not a composite of unlike units.
 
-**Allowed names:** the industry quantity in words, optionally with a window
-(`weekly returning qualified wallets`, `admitted-book net information ratio`,
-`daily users who finish today's puzzle`). Established terms stay: GGR, NGR,
-IRR, Sharpe, information ratio, DSR, Brier, log-loss, contribution margin,
-availability, K-factor.
+**Write the industry quantity in words**, optionally with a window
+(`weekly returning qualified wallets`, `daily users who finish today's
+puzzle`). Established finance and reliability terms stay: GGR, NGR, IRR,
+Sharpe, information ratio, contribution margin, availability, K-factor.
 
-**Forbidden:** inventing a house acronym or “verified X yield” brand and
-teaching it as the win condition. That pattern spreads: agents copy the
-code into the next repo. If a predecessor house name exists, hard-cut the
-binding docs and public fields to English; leave the old name only in a
-retired ADR.
+The industry name of the layer is **North Star Metric**. Do not rename
+the layer. Do not mint a private code and teach it as the win condition.
+If a predecessor private name exists, hard-cut binding docs and public
+fields to English; leave the old name only in a retired ADR.
 
-**Also forbidden (over-engineering that spreads the same way):**
-
-- Rebranding the North Star as **Polar / Polaris / Polariss** (the industry
-  name is North Star Metric).
-- Inventing **claim ladders** beyond industry evidence layers
-  (**artifact / check / live**). Do not mint L0–L6 as a product score.
-- Treating a **residual matrix**, soak-wave title, door crawl, or
-  `*Grade` string as progress or NSM. Those files are gap **inventory**.
-- Using **Quality vocabulary (`q-*`)** or `eng-*` rule IDs as a product
-  win metric. Engineering quality follows ISO/IEC 25010 names or the
-  nine English principles — not a second scoreboard.
-- Adding OpenTelemetry / logs / traces without a named golden signal
-  (latency, traffic, errors, saturation) or a live readback that an
-  operator would page on.
+Evidence for a delivery claim uses **artifact / check / live**. Gap
+inventories are inventories, not the NSM. Engineering quality follows
+ISO/IEC 25010 or the nine English principles — not a second product
+scoreboard.
 
 ## Evidence layers (industry)
 
@@ -142,7 +131,7 @@ Long-term product shape, users, boundaries, non-goals.
 
 ## North Star Metric
 > Optional one-line strategy / value promise
-**Metric:** <single primary NSM in English; industry quantity; no house acronym>
+**Metric:** <single primary NSM in English industry quantity>
 **Anti-proxy:** what must not substitute for the NSM
 
 ## Goals
@@ -286,9 +275,10 @@ Write the smallest durable artifact that closes a real gap:
 ## Validation checklist
 
 - [ ] Vision, NSM, OKRs/goals, PRD, and specs are not one unlabeled blob  
-- [ ] NSM is a metric of customer value in English industry terms; not a house acronym, Polar brand, residual grade, or feature list
-- [ ] Evidence claims use artifact / check / live — not an invented L0–L6 score
-- [ ] Residual matrices (if any) are inventory only; no `*Grade` as progress
+- [ ] NSM is a metric of customer value in English industry quantity; not a minted abbreviation or feature list
+- [ ] Evidence claims use artifact / check / live
+- [ ] Process words are absent from Vision, NSM, OKRs, and the PRD
+- [ ] Gap inventories (if any) are inventory only
 - [ ] OKRs/goals are completable when present  
 - [ ] Feature/capability inventory lives in the PRD only  
 - [ ] Interface field lists live in contracts/generated refs  

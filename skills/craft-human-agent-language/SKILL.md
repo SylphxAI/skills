@@ -28,8 +28,9 @@ State purpose and audience before writing:
 - Constraints: token cost, correctness, parseability
 - **Altitude** (when the artifact is project/product law): use **industry
   homes** — Product Vision, North Star Metric, OKRs/Goals, PRD (features),
-  Specs/API reference, ADR, README entry, Diátaxis user-doc type. Do not
-  collapse them into one unlabeled blob. Open
+  Specs/API reference, ADR, README entry, Diátaxis user-doc type. Metrics
+  and living docs speak English quantities. Do not mint abbreviations for
+  standard concepts. Process words stay out of product law. Open
   `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`
   when choosing homes.
 
