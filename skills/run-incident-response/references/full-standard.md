@@ -113,7 +113,7 @@ not a prose document a human reads once. Shape, at a glance:
 | `id` | Follows sound engineering practice artifact identity: an allocator-backed identity (e.g. the tracking issue number) or a collision-resistant generated identity (ULID/UUIDv7/content hash) — never a hand-picked sequential number. |
 | `severity` | One of the table above. |
 | `detectedAt` / `mitigatedAt` / `resolvedAt` | Timeline timestamps proving detection-to-recovery latency, not narrated after the fact. |
-| `rootCause.mechanism` + `rootCause.evidence[]` | The traced mechanism Evidence First requires for any root-cause claim: reproduce, trace through the actual code/config path, fix, re-verify — with checkable evidence, not a plausible story. |
+| `rootCause.mechanism` + `rootCause.evidence[]` | Reproduce, trace the owning code/config path, fix, and re-verify. A plausible story is not a root cause. |
 | `contributingFactors` | Secondary conditions that widened blast radius or slowed detection/mitigation; informational, not the accountability surface. |
 | `mechanisms[]` | One or more durable fixes, each typed `regression-test`, `ci-gate`, `alert`, `reconciler`, `policy`, or `runbook`. |
 | `links` | Issue, PR, dashboard, and alert references. |

@@ -243,6 +243,43 @@ function validateSkill(folder, names, errors) {
   }
 }
 
+const RETIRED_SLOGAN_RE = /Evidence First|Evidence-First|Evidence precedes claims/gi;
+
+export function activeInstructionFiles(root = repositoryRoot) {
+  const files = [
+    path.join(root, 'runtime/constitution.md'),
+    path.join(root, 'docs/policies/PRINCIPLES.md'),
+  ];
+  const skillsRoot = path.join(root, 'skills');
+  if (!existsSync(skillsRoot)) return files.filter((file) => existsSync(file));
+  for (const entry of readdirSync(skillsRoot, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const skillMd = path.join(skillsRoot, entry.name, 'SKILL.md');
+    if (existsSync(skillMd)) files.push(skillMd);
+    const refs = path.join(skillsRoot, entry.name, 'references');
+    if (existsSync(refs)) {
+      files.push(...walk(refs).filter((file) => /\.(?:md|markdown)$/i.test(file)));
+    }
+  }
+  return files;
+}
+
+export function retiredSloganMatches(text) {
+  return [...new Set(String(text).match(RETIRED_SLOGAN_RE) || [])];
+}
+
+export function retiredSloganFindings(root = repositoryRoot) {
+  const findings = [];
+  for (const file of activeInstructionFiles(root)) {
+    const text = readFileSync(file, 'utf8');
+    const relative = path.relative(root, file);
+    for (const match of retiredSloganMatches(text)) {
+      findings.push(`${relative}: retired slogan "${match}"`);
+    }
+  }
+  return findings;
+}
+
 function validateRuntimeConstitution(errors) {
   const location = 'runtime/constitution.md';
   const absolute = path.join(repositoryRoot, location);
@@ -257,14 +294,24 @@ function validateRuntimeConstitution(errors) {
   const required = [
     'SylphxAI/skills',
     'Search before you act',
-    'Evidence precedes claims',
     'Claim landed or live',
+    'Reversible local work is done when the change is correct',
     'progressive disclosure',
     'Skills do not grant tools',
     'Lead with the answer',
   ];
   for (const phrase of required) {
     if (!text.includes(phrase)) errors.push(`${location}: missing required L0 phrase: ${phrase}`);
+  }
+  const forbidden = [
+    'Evidence First',
+    'Evidence precedes claims',
+    'evidence discipline',
+  ];
+  for (const phrase of forbidden) {
+    if (text.toLowerCase().includes(phrase.toLowerCase())) {
+      errors.push(`${location}: retired phrase must not appear: ${phrase}`);
+    }
   }
 }
 
@@ -301,6 +348,7 @@ export function checkRepository() {
   const names = new Set();
   for (const folder of skillFolders) validateSkill(folder, names, errors);
   validateRuntimeConstitution(errors);
+  errors.push(...retiredSloganFindings());
   validateCatalogBudget(errors, skillFolders);
 
   const catalogPath = path.join(repositoryRoot, 'catalog.json');
