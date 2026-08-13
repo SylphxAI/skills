@@ -32,7 +32,9 @@ filed evidence; it is not a separate source of truth.
   condition. There are no current `qualified` records. Historical wave
   tables below are not a four-way / multi-family claim.
 - Industry bar for a future lift claim: same-prompt paired eval, one
-  harness, harm veto. See `docs/QUALIFICATION.md`.
+  harness, harm veto. See `docs/QUALIFICATION.md`. All 38 agent suites
+  are now same-prompt eligible. None have been applied; the catalog stays
+  0 qualified.
 
 Wave-1 qualification runs:
 

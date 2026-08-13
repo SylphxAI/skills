@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Pricing and Packaging Decision.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely (open references/pricing-packaging-patterns.md), then write pricing-decision.md for a B2B SaaS project-management tool (10k users, seats + automation runs as cost drivers, 70% gross margin target, annual prepay discount 20%): name the decision/buyer/value metric; choose the packaging model; design plan boundaries with exact limits, upgrade moments, and downgrade/cancel promises; run an explicit pricing arithmetic pass (seat minimums vs included seats, included usage vs overage rates, margin, annual discount) that is internally consistent; set margin guardrails; and give a bounded rollout plan with kill criteria before any discounting.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write pricing-decision.md for our SaaS project-management tool: what plans to offer, how to meter usage, and what prices are internally consistent with our costs.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -83,7 +77,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same pricing oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write pricing-decision.md for our SaaS project-management tool: what plans to offer, how to meter usage, and what prices are internally consistent with our costs.",
       "timeoutMs": 600000,
       "oracle": {

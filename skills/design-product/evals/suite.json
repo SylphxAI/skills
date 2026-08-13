@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the product design blueprint.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely (open the app shape reference under references/app/METHOD.md), then write product-blueprint.md for a mobile habit-tracking app: frame the promise, users, surfaces, non-goals and success criteria; name ONE deep core concept (do not spread across half-concepts) and 1-2 quality attributes intentionally strengthened or sacrificed with rollback conditions; define jobs/IA, core loops, tenancy, critical flows with states; and end with build-ready acceptance criteria a builder can test.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write product-blueprint.md designing a mobile habit-tracking app: the core idea, main flows, and what good looks like.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -83,7 +77,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same blueprint oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write product-blueprint.md designing a mobile habit-tracking app: the core idea, main flows, and what good looks like.",
       "timeoutMs": 600000,
       "oracle": {

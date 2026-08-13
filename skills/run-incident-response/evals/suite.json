@@ -8,7 +8,10 @@
     "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
   },
   "validityDays": 90,
-  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
   "baseline": {
     "prompt": "Write incident.md describing how you would handle a production outage where the website returns 502s. Cover what you do first, how you communicate, and what you learn afterward."
   },
@@ -16,20 +19,57 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the incident record elements.",
-      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
-      "prompt": "Read ./SKILL.md completely, then write incident.md for a production incident: the website returns 502s for all users. Follow the workflow: declare (severity, scope, impact, command owner, incident record), stabilize (mitigation first, reversible actions), communicate (facts only, no false ETAs), diagnose (reproduce, owning cause), resolve (fix with evidence), learn (short postmortem: cause, detection gaps, action items with owners). Output: incident record, mitigation evidence, communications, follow-ups.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write incident.md describing how you would handle a production outage where the website returns 502s. Cover what you do first, how you communicate, and what you learn afterward.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
-          { "type": "file-exists", "path": "incident.md" },
-          { "type": "file-regex", "path": "incident.md", "contains": "severity", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "mitigat", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "communicat", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "cause", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "postmortem", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "action item", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "owner", "caseInsensitive": true }
+          {
+            "type": "file-exists",
+            "path": "incident.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "severity",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "mitigat",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "communicat",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "cause",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "postmortem",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "action item",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "owner",
+            "caseInsensitive": true
+          }
         ]
       }
     },
@@ -37,19 +77,57 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same incident oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write incident.md describing how you would handle a production outage where the website returns 502s. Cover what you do first, how you communicate, and what you learn afterward.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
-          { "type": "file-exists", "path": "incident.md" },
-          { "type": "file-regex", "path": "incident.md", "contains": "severity", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "mitigat", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "communicat", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "cause", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "postmortem", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "action item", "caseInsensitive": true },
-          { "type": "file-regex", "path": "incident.md", "contains": "owner", "caseInsensitive": true }
+          {
+            "type": "file-exists",
+            "path": "incident.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "severity",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "mitigat",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "communicat",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "cause",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "postmortem",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "action item",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "incident.md",
+            "contains": "owner",
+            "caseInsensitive": true
+          }
         ]
       }
     }

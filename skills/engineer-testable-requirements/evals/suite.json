@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Requirements Contract elements.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely (open references/requirements-method.md if the body directs you to), then write requirements.md for: 'Users must be able to reset their password securely and quickly'. Produce the Requirements Contract per the output contract: identity/version, need register, scenario/state model, requirement register with stable IDs and verification, non-goals, traceability, and validation record.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write requirements.md with acceptance criteria for: 'Users must be able to reset their password securely and quickly'. Cover what you think matters and keep it concise.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -76,7 +70,7 @@
     {
       "id": "baseline-agent",
       "kind": "agent",
-      "description": "Fresh-context baseline (no skill): same task, same Requirements-Contract oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write requirements.md with acceptance criteria for: 'Users must be able to reset their password securely and quickly'. Cover what you think matters and keep it concise.",
       "timeoutMs": 600000,
       "oracle": {

@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Interface Craft Pack (direction mode).",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely, then write interface-pack.md in Direction mode for the onboarding flow of a habit-tracking mobile app: state the direction (visual and interaction) with rationale tied to comprehension/task completion/trust/feedback/identity/performance; enumerate the covered screens and every state (default, empty, error, loading, disabled, success, interruption); set accessibility floors (contrast, touch targets, labels, keyboard/AT); and define rendered verification evidence (screenshots, device checks, tests) with the acceptance checks for the declared flow.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write interface-pack.md designing the onboarding flow for our habit-tracking app: the screens, states, and accessibility considerations.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -77,7 +71,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same interface oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write interface-pack.md designing the onboarding flow for our habit-tracking app: the screens, states, and accessibility considerations.",
       "timeoutMs": 600000,
       "oracle": {

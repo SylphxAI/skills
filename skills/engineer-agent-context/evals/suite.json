@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Context and Memory Contract.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely (open references/context-and-memory-methods.md), then write context-contract.md for a customer-support agent: inventory each information class (current task state, source evidence, decisions, episodic history, semantic knowledge, procedures, user preferences, secrets, derived summaries) with owner and authority order; define context assembly order; assign memory class, scope, retention, provenance, freshness, sensitivity, invalidation trigger, and deletion path per durable item; set an explicit retrieval budget; define handoff as typed state transfer; and specify degradation tests (stale memory, poisoned retrieval, conflicting sources, privacy deletion, compaction loss, cross-tenant leakage, recovery after interruption).",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write context-contract.md for a customer-support agent: what information it should load and remember, how much, what to refresh, and what to delete.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -89,7 +83,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same Contract oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write context-contract.md for a customer-support agent: what information it should load and remember, how much, what to refresh, and what to delete.",
       "timeoutMs": 600000,
       "oracle": {

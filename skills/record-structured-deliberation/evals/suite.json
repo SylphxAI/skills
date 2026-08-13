@@ -8,7 +8,10 @@
     "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
   },
   "validityDays": 90,
-  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
   "baseline": {
     "prompt": "Write deliberation.md recording a discussion about whether to adopt a new search engine for the product search. Include who decided, what was discussed, and what happens next."
   },
@@ -16,22 +19,69 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Deliberation Record elements.",
-      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
-      "prompt": "Read ./SKILL.md completely, then write deliberation.md recording a structured deliberation about whether to adopt a new search engine for product search (participants: PM, two engineers, one data analyst; decision owner: the PM). Follow the output contract: question, scope, owner, participants, protocol, independently formed positions, proposal-reason-objection-rebuttal links, evidence, dissent, commitments/owners, unresolved questions, and handoff.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write deliberation.md recording a discussion about whether to adopt a new search engine for the product search. Include who decided, what was discussed, and what happens next.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
-          { "type": "file-exists", "path": "deliberation.md" },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "question", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "owner", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "participant", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "protocol", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "proposal", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "objection", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "rebuttal", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "dissent", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "handoff", "caseInsensitive": true }
+          {
+            "type": "file-exists",
+            "path": "deliberation.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "question",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "owner",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "participant",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "protocol",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "proposal",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "objection",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "rebuttal",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "dissent",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "handoff",
+            "caseInsensitive": true
+          }
         ]
       }
     },
@@ -39,21 +89,69 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same Deliberation-Record oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write deliberation.md recording a discussion about whether to adopt a new search engine for the product search. Include who decided, what was discussed, and what happens next.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
-          { "type": "file-exists", "path": "deliberation.md" },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "question", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "owner", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "participant", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "protocol", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "proposal", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "objection", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "rebuttal", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "dissent", "caseInsensitive": true },
-          { "type": "file-regex", "path": "deliberation.md", "contains": "handoff", "caseInsensitive": true }
+          {
+            "type": "file-exists",
+            "path": "deliberation.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "question",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "owner",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "participant",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "protocol",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "proposal",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "objection",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "rebuttal",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "dissent",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "deliberation.md",
+            "contains": "handoff",
+            "caseInsensitive": true
+          }
         ]
       }
     }

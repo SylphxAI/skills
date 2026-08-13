@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -123,6 +123,29 @@ test('design-skill-evals is a same-prompt pair, not a four-way program', () => {
   const agentPrompts = suite.tasks.filter((task) => task.kind === 'agent').map((task) => task.prompt);
   assert.equal(new Set(agentPrompts).size, 1);
   assert.ok(!suite.tasks.some((task) => (task.fixtures || []).some((fixture) => fixture.source === 'package:SKILL.md')));
+});
+
+test('every agent eval suite is a same-prompt pair and does not hand SKILL.md', () => {
+  const skillsRoot = path.join(repoRoot, 'skills');
+  const folders = readdirSync(skillsRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
+  let agentSuites = 0;
+  for (const folder of folders) {
+    const suitePath = path.join(skillsRoot, folder, 'evals', 'suite.json');
+    if (!existsSync(suitePath)) continue;
+    const suite = JSON.parse(readFileSync(suitePath, 'utf8'));
+    const agents = (suite.tasks || []).filter((task) => task.kind === 'agent');
+    if (!agents.length) continue;
+    agentSuites += 1;
+    const blob = JSON.stringify(suite);
+    assert.equal(/Read \.\/SKILL\.md/i.test(blob), false, folder);
+    assert.equal(blob.includes('package:SKILL.md'), false, folder);
+    assert.equal(incrementalValueEligible(suite), true, folder);
+    const prompts = agents.map((task) => task.prompt);
+    assert.equal(new Set(prompts).size, 1, folder);
+  }
+  assert.ok(agentSuites >= 30, `expected a real agent-suite corpus, got ${agentSuites}`);
 });
 
 test('same-prompt installed-vs-absent pairs can claim incremental-value', () => {

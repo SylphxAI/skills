@@ -213,3 +213,11 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Foreign Platform-first recipe files and a constitution Platform floor that
   were not part of this cut were dropped. They are not listings.
 - ADR: `docs/history/adr/ADR-20260813-retire-house-nsm-follow-industry-eval.md`.
+
+## 2026-08-13 — remaining eval suites are same-prompt pairs
+
+- Converted the 37 leftover agent suites off `Read ./SKILL.md` fixtures.
+  Both arms now use the declared baseline user prompt. Oracles stay on the
+  artifact. No qualification records were applied.
+- Integrity test fails if an agent suite hands `SKILL.md` or uses unequal
+  prompts.

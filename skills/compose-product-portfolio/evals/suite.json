@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Composable Product Portfolio Contract.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely (open references/composable-product-portfolio-method.md before classifying), then write portfolio-contract.md for this portfolio: one platform that also ships a mobile app, a dashboard, and an API SDK, with a shared auth substrate and a billing connector. For every proposed unit: standalone job, contract, lifecycle, operational/commercial obligations, and support path. Classify each surface (product, embedded capability, shared substrate, connector, composed experience, bundle). Draw the product and connector graph with every edge naming its contract and state owner. Give keep/extract/merge/retire decisions with evidence and handoffs, and show composition does not create a hidden monolith or fragmented system.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "We have one platform that also ships a mobile app, a dashboard, and an API SDK. Write portfolio-contract.md: what should be separate products, what stays embedded, and how they connect.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -89,7 +83,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same portfolio oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "We have one platform that also ships a mobile app, a dashboard, and an API SDK. Write portfolio-contract.md: what should be separate products, what stays embedded, and how they connect.",
       "timeoutMs": 600000,
       "oracle": {

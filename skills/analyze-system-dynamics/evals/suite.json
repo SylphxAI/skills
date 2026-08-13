@@ -8,7 +8,10 @@
     "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
   },
   "validityDays": 90,
-  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
   "baseline": {
     "prompt": "Write system-model.md explaining why support backlogs keep growing even when the team adds more agents. Describe the dynamics and what interventions might help."
   },
@@ -16,20 +19,57 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Dynamic System Model elements.",
-      "fixtures": [{ "source": "package:SKILL.md", "as": "SKILL.md" }],
-      "prompt": "Read ./SKILL.md completely, then write system-model.md for the behavior: support backlog keeps growing even when the team adds more agents. Follow the output contract: question and behavior (decision, boundary, horizon, observations, behavior-over-time); structure (stocks, flows, feedback loops, delays, constraints, nonlinearities, incentives, adaptive actors); model status (observed facts, hypotheses, parameters, calibration, competing structures, confidence); intervention analysis (leverage points, expected trajectories, counter-effects, failure modes, rollback); validation plan (discriminating measures, scenario replay, monitoring, revision conditions).",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write system-model.md explaining why support backlogs keep growing even when the team adds more agents. Describe the dynamics and what interventions might help.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
-          { "type": "file-exists", "path": "system-model.md" },
-          { "type": "file-regex", "path": "system-model.md", "contains": "stock", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "flow", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "feedback loop", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "delay", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "leverage point", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "validation", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "confidence", "caseInsensitive": true }
+          {
+            "type": "file-exists",
+            "path": "system-model.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "stock",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "flow",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "feedback loop",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "delay",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "leverage point",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "validation",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "confidence",
+            "caseInsensitive": true
+          }
         ]
       }
     },
@@ -37,19 +77,57 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same system-model oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write system-model.md explaining why support backlogs keep growing even when the team adds more agents. Describe the dynamics and what interventions might help.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
-          { "type": "file-exists", "path": "system-model.md" },
-          { "type": "file-regex", "path": "system-model.md", "contains": "stock", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "flow", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "feedback loop", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "delay", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "leverage point", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "validation", "caseInsensitive": true },
-          { "type": "file-regex", "path": "system-model.md", "contains": "confidence", "caseInsensitive": true }
+          {
+            "type": "file-exists",
+            "path": "system-model.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "stock",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "flow",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "feedback loop",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "delay",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "leverage point",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "validation",
+            "caseInsensitive": true
+          },
+          {
+            "type": "file-regex",
+            "path": "system-model.md",
+            "contains": "confidence",
+            "caseInsensitive": true
+          }
         ]
       }
     }

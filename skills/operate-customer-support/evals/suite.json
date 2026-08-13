@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Support Operating Model.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely (open references/support-ops-patterns.md), then write support-operating-model.md for a B2B SaaS with 12k users, 3 support agents, email + chat channels, and payment/refund, identity, and data-sync specialists: define products/audiences/locales/volume/high-risk boundaries/service objectives; a reason-code taxonomy and routing table (evidence, authority, queue, priority/severity, timer, stop condition, customer promise, escalation packet, fallback per route); the case lifecycle with every waiting state owned; self-service and assisted support together; decision rights with safe autonomous vs protected actions, abstention and audit; specialist handoffs; quality and learning (QA/replay, routing confusion matrix, resolution verification, reopen analysis, product-feedback closure); and degrade/stop/recover paths.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write support-operating-model.md for our SaaS: how support requests should be triaged, routed, escalated, resolved, and turned into product improvements.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -89,7 +83,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same Support Operating Model oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write support-operating-model.md for our SaaS: how support requests should be triaged, routed, escalated, resolved, and turned into product improvements.",
       "timeoutMs": 600000,
       "oracle": {

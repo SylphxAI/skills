@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Critical Analysis Brief elements.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely, then write analysis.md for the question: 'Why does the team keep delivering half-finished migrations?' (decision: whether to re-plan the migration). Follow the output contract: question and stakes, observed facts and evidence quality, competing hypotheses, discriminating evidence, strongest case for and against the leading conclusion, assumptions and failure paths, conclusion with calibrated confidence, and what would change the conclusion.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write analysis.md critically reviewing the claim: 'The migration is stalled because the team is unmotivated'. Give your verdict and reasons.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -83,7 +77,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same Critical-Analysis oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write analysis.md critically reviewing the claim: 'The migration is stalled because the team is unmotivated'. Give your verdict and reasons.",
       "timeoutMs": 600000,
       "oracle": {

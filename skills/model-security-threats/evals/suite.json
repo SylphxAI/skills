@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Threat Model and Security Design Contract.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely, then write threat-model.md for a public checkout flow: client browser, TLS edge, payment provider, internal ledger, admin refund path. Follow the method: subject/version/environment/users/security objectives; protected assets and unacceptable outcomes; components, trust boundaries, entry points, admin and recovery paths; misuse and abuse cases ranked with evidence-bounded likelihood/impact/detectability; controls traced to threats with enforcement point, owner, failure mode and bypass assumptions; verification that could falsify each control; residual risk and decision authority.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write threat-model.md for a public checkout flow (client browser, TLS edge, payment provider, internal ledger). List the main threats and what controls you would put in place.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -89,7 +83,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same Threat Model oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write threat-model.md for a public checkout flow (client browser, TLS edge, payment provider, internal ledger). List the main threats and what controls you would put in place.",
       "timeoutMs": 600000,
       "oracle": {
