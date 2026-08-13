@@ -56,7 +56,7 @@ App/Game Design Blueprint + independently owned specialist truth
 -> selected Marketing creative brief and/or Store Listing narrative/asset-request revision
 -> Product Asset Production Pack when required
 -> selected Marketing campaign candidate and/or final Channel Listing revision
--> Distribution Evidence Pack and other delivered specialist artifacts
+-> distribution contract and other delivered specialist artifacts
 -> Product Program Manifest observed-state revision N+1
 -> independent Launch Admission
 ```

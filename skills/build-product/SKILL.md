@@ -87,8 +87,7 @@ Open only depth the current build needs:
 
 - [references/keel-app/](references/keel-app/) — Keel app tooling when the product uses Keel
 - [references/engineering-standard/](references/engineering-standard/) — Quality North Star (meta, 13 primaries, precedence) and engineering constraints while building; open `references/quality-north-star-usage.md` for pocket questions / anti-examples
-- [references/risk-matched-verification-standard/](references/risk-matched-verification-standard/) — risk-matched verification
-- [references/frontier-verification-standard/](references/frontier-verification-standard/) — frontier verification for high blast-radius paths
+- [references/risk-matched-verification-standard/](references/risk-matched-verification-standard/) — open when the failure model needs more than the path you changed
 - [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — classify, then open one family recipe
 - Source landing: `../drive-to-delivery/references/source-authoring-standard/`
 - Related jobs when requested: `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`, `implement-continuous-integration`

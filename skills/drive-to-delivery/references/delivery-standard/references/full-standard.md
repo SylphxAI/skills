@@ -1,8 +1,7 @@
 # Delivery Standard
 
-Delivery proves the requested outcome beyond a local diff. Keep source
-integration, project correctness, and deployment as separate owning
-boundaries.
+Keep source integration, project correctness, and deployment as separate
+owning boundaries.
 
 ## Authority
 
@@ -133,10 +132,10 @@ declaration selects the terminal.
 | Task kind | Minimum truthful done state |
 | --- | --- |
 | Analysis only | Durable requested artifact or self-contained answer |
-| Source change | Validated exact revision landed on the default branch, unless the user explicitly requested only a branch/PR |
-| Package release | Exact version/artifact published with registry/provenance readback |
-| Deployable behavior | Exact artifact deployed and risk-appropriate live behavior observed |
-| GitOps/infrastructure | Desired state landed, controller reconciled, live state read back |
+| Source change | The asked terminal. Local-correct work is done when that is the ask. Landed or live only when the request or the repository delivery declaration requires it. |
+| Package release | Exact version/artifact published |
+| Deployable behavior | Exact artifact deployed, when deploy is the asked terminal |
+| GitOps/infrastructure | Desired state landed and reconciled, when that is the asked terminal |
 
 ## Worker release and event-driven re-entry
 

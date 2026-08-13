@@ -8,7 +8,6 @@ are retired.
 | --- | --- |
 | engineering-standard | skills/build-product/references/engineering-standard |
 | risk-matched-verification-standard | skills/build-product/references/risk-matched-verification-standard |
-| frontier-verification-standard | skills/build-product/references/frontier-verification-standard |
 | technology-stack-profile | skills/select-dependency-versions/references/technology-stack-profile |
 | database-cutover-and-migration | skills/execute-hard-cutover/references/database-cutover-and-migration.md |
 | delivery-standard | skills/drive-to-delivery/references/delivery-standard |

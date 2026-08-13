@@ -367,3 +367,16 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   decision-model, harness, preview, workspace, leftover BaaS, and product-asset
   listings state the action and the done look. The technology-stack profile
   states the default stack path.
+## 2026-08-13 — asked terminal, not a proof product
+
+- No listing deleted. Jobs stay.
+- Absorbed `frontier-verification-standard` into
+  `risk-matched-verification-standard` (ADR-0016 already required the
+  rename; dual pack retired).
+- `evidence-and-claims-standard` no longer gates ordinary `done`.
+  `delivery-standard` source-change done is the asked terminal.
+- Distribution / finish / expand listing copy no longer brands an Evidence
+  Pack, recapture matrix, or metrics proof as the job.
+- `author-skill` anti-pattern: output is the requested job, not a proof
+  bundle, receipt, or extra CI. `instruction-proof-01` is a claim-boundary
+  miss, not a new gate.

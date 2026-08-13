@@ -52,7 +52,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:253381b1f5c7df96093121dc39446cd2b1b4435d4b4d1dad46097686b55897f9",
+      "packageDigest": "sha256:5373151383f89179c3b85f217a9cbbfdb2cf6037cb0594758c9446ec2d58e6f7",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -66,9 +66,9 @@
     },
     {
       "name": "build-distribution-readiness",
-      "description": "Build distribution readiness: artifacts, install/upgrade, channel readback.",
+      "description": "Build distribution readiness: artifacts, install/upgrade, channel state.",
       "path": "skills/build-distribution-readiness/SKILL.md",
-      "packageDigest": "sha256:0e639c39d113f42fea643be269635ac5e86e3b9b6b92d5febe1399c9d31cbfaa",
+      "packageDigest": "sha256:60e8b3895bcab9e5714945aeeb1c20d29c8ef50d2d130e2ee24fde5768b49c11",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -84,7 +84,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, delivery verb, or the repository CI.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:52fb07ff6acd154c838811c669b3852a9cf506fab5303bdc5b677fa165cffd0a",
+      "packageDigest": "sha256:84fe31905324e51f8f1cf0a7940629bd6c48471faadd92c316a209bc1806281f",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -100,7 +100,7 @@
       "name": "compose-product-program",
       "description": "Compose multi-work product program: phases, dependencies, kill/scale.",
       "path": "skills/compose-product-program/SKILL.md",
-      "packageDigest": "sha256:467190b42dc4deb63956ef885b5b4c058b666356c5e0fe871f12391c503edc56",
+      "packageDigest": "sha256:583a6d746e0a93be3bc8cdbf00039d553673c38645c44bef99c07b1c96fe2499",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -196,7 +196,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to its asked terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:39b27db0e3ea94b4c66f17eb8794d5126dea2c45dbd3482664dd4e769f02e474",
+      "packageDigest": "sha256:f2951fba389410bc05920c4eabcbbce700bb98990fd0e397b67e15a203d0118c",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -252,7 +252,7 @@
       "name": "finish-product",
       "description": "Finish/deburr an integrated product to the declared target.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:03041f03cf8ddb5008146c6ce19b4d96235f0af439ce689908c98cf215e00a21",
+      "packageDigest": "sha256:aec4fb53200fbca85c6407c6b4877696cd0d8bf61cbcf1283c294f4be0c27758",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -372,7 +372,7 @@
       "name": "record-structured-deliberation",
       "description": "Record a structured deliberation: options, criteria, decision, actions.",
       "path": "skills/record-structured-deliberation/SKILL.md",
-      "packageDigest": "sha256:d17a27ad089043e53304df7661a0566fd6ba2c75669f4b978e28e1263b2b0944",
+      "packageDigest": "sha256:f4b15ea609c1df80833f9b0c04b68a767234696fed634869f0ed2fcd94676a81",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -468,7 +468,7 @@
       "name": "synthesize-evidence-brief",
       "description": "Synthesize multi-source evidence into one bounded brief with residuals.",
       "path": "skills/synthesize-evidence-brief/SKILL.md",
-      "packageDigest": "sha256:d4917e396f2b89a0f351c9d50e3b6913f7f1e794f90016f0f7db60bfa092fb26",
+      "packageDigest": "sha256:f5f5c045d74612d1150dc011bb47f7cf7b136fe6b34fd60d7a2728078722b530",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },

@@ -39,7 +39,7 @@ Manifest revision indexes the applicable exact outputs without copying facts.
 + selected Marketing and/or Listing brief/request
 -> Product Asset Production Pack when exact media is required
 -> selected listing and/or campaign revision
--> Distribution Evidence Pack when publication is selected
+-> distribution contract when publication is selected
 -> observed-state manifest revision when orchestrated
 ```
 

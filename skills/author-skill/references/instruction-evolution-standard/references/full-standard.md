@@ -17,7 +17,7 @@ Rule IDs:
 
 - `instruction-ssot-01` — one semantic fact has one writable authority.
 - `instruction-migrate-01` — every selected durable repo reaches the current generation.
-- `instruction-proof-01` — terminal state is derived from delivered evidence.
+- `instruction-proof-01` — overclaim is a claim-boundary miss; do not mint a gate, receipt, metric, or proof artifact to fix it.
 - `instruction-retire-01` — predecessor methods and projections leave steady state.
 
 1. One semantic fact has one writable authority.

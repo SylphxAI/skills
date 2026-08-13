@@ -29,9 +29,8 @@ This standard composes with:
   for no-human gates, CI, merge queues, delivery slices, and recovery;
 - [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/compose-product-portfolio/references/commercial-decision-standard/references/full-standard.md) for
   pricing, packaging, roadmap, positioning, and monetization decisions;
-- [`frontier-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/build-product/references/frontier-verification-standard/references/full-standard.md)
-  for deterministic simulation, eval-gated merge, automated canary analysis,
-  and frontier verification backstops;
+- [`risk-matched-verification-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/build-product/references/risk-matched-verification-standard/references/full-standard.md)
+  for simulation, eval, and canary methods when the failure model needs them;
 - [`instruction-evolution-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/author-skill/references/instruction-evolution-standard/references/full-standard.md) for
   fleet impact and migration when a SOTA decision changes canonical instructions.
 - [`enterprise-profile-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/adopt-repo-standards/references/enterprise-profile-standard/references/full-standard.md) for binding
