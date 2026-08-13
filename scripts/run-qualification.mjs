@@ -20,9 +20,10 @@
  *   scan (secrets, dangerous instructions, and host-search bans), and a live
  *   packageDigest bind; --apply-from refuses a run whose candidate digest is
  *   not the current package. Suite prompts that ban host web search cannot
- *   qualify. Declared activation cases are recorded and never gate
- *   qualification (selection is model/host-contextual); qualification is
- *   expiring (validityDays).
+ *   qualify. incremental-value is filed only for a same-prompt agent pair
+ *   that does not hand SKILL.md as a fixture. Declared activation cases are
+ *   recorded and never gate qualification (selection is model/host-contextual);
+ *   qualification is expiring (validityDays).
  *
  * Usage:
  *   node scripts/run-qualification.mjs --capability <id> [--apply]
@@ -41,6 +42,7 @@ import { packageDigest } from '../runtime/package-digest.mjs';
 import { repositoryRoot, readJson } from './build-catalog.mjs';
 import {
   FORBIDDEN_INSTRUCTION_PATTERNS,
+  incrementalValueEligible,
   suiteForbiddenInstructionFindings,
 } from './qualification-integrity.mjs';
 
@@ -603,11 +605,15 @@ function applyQualification(suite, report, capability, stamp, resultsDigest) {
   const qualificationPath = path.join(repositoryRoot, 'skills', capability, 'qualification.json');
   const expiresAt = new Date(Date.now() + suite.validityDays * 86_400_000).toISOString();
   const evidenceKinds = ['compatibility'];
-  // incremental-value is claimed only when the control comparison demonstrates
-  // a with-skill pass over a failing baseline; a passing baseline is recorded
-  // honestly as no demonstrated delta.
+  // incremental-value is a same-prompt causal claim. Fixture "read SKILL.md"
+  // tasks are behavior tests; a failing baseline on a different prompt is not
+  // a demonstrated delta.
   const comparison = report?.comparison;
-  if (suite.baseline && comparison?.withSkill === 'pass' && comparison?.baseline === 'fail') {
+  if (
+    incrementalValueEligible(suite) &&
+    comparison?.withSkill === 'pass' &&
+    comparison?.baseline === 'fail'
+  ) {
     evidenceKinds.unshift('incremental-value');
   }
   if (report?.activation?.verified) evidenceKinds.push('activation');

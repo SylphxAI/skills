@@ -12,12 +12,6 @@
   "expiresAt": "2026-11-08T14:40:04.213Z",
   "evidence": [
     {
-      "id": "produce-game-2d-sprites-incremental-value-2026-08-10T14-21-43-928Z",
-      "kind": "incremental-value",
-      "digest": "sha256:f8ae647ccedba9d1de88f2a41925accb58dccbe9bcf7ceebb05d72eb302a34dd",
-      "uri": "docs/qualification/evals/produce-game-2d-sprites/run-2026-08-10T14-21-43-928Z/report.json"
-    },
-    {
       "id": "produce-game-2d-sprites-compatibility-2026-08-10T14-21-43-928Z",
       "kind": "compatibility",
       "digest": "sha256:f8ae647ccedba9d1de88f2a41925accb58dccbe9bcf7ceebb05d72eb302a34dd",

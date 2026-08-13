@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { packageDigest } from '../runtime/package-digest.mjs';
 import { buildCatalog, repositoryRoot } from '../scripts/build-catalog.mjs';
 import { outcomeReceiptSchema } from '../scripts/check.mjs';
-import { qualifiedDigestError } from '../scripts/qualification-integrity.mjs';
+import { incrementalValueEvidenceError, qualifiedDigestError } from '../scripts/qualification-integrity.mjs';
 
 const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
@@ -111,6 +111,8 @@ test('qualified packages carry suites, on-disk evidence, and future expiry', () 
     }
     const current = packageDigest(path.join(skillsRoot, folder));
     assert.equal(qualifiedDigestError(record, current), null, `${folder}: live digest bind`);
+    const suite = JSON.parse(readFileSync(path.join(skillsRoot, folder, 'evals', 'suite.json'), 'utf8'));
+    assert.equal(incrementalValueEvidenceError(record, suite), null, `${folder}: incremental-value honesty`);
   }
 });
 

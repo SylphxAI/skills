@@ -11,18 +11,28 @@ evidence under `docs/qualification/evals/`; everything else is honestly
 `unqualified`. A `qualified` record must carry `packageDigest` equal to the
 live package identity; any material byte change to what an agent loads
 invalidates the proof. Qualification is never inferred from structure, CI, or
-installation — only from filed with-skill versus baseline evidence and, where
-declared, native-activation evidence. `research-public-web` was retired on
-2026-08-13 (host search/fetch is the job; the listing regressed agents onto
-`curl`). The same day, `compose-readme-marks` and fourteen other packages were
-demoted after their loaded bytes drifted from the evidence-bound digest; prior
-bundles remain archaeology until re-qualified.
+installation — only from filed, digest-bound evidence. A with-skill behavior
+pass plus a clean pattern scan can keep a package `qualified`. **Incremental
+value** is a separate claim and is recorded only when a same-prompt agent
+pair differs solely by whether the skill is the condition. Handing
+`SKILL.md` as a fixture and telling the agent to follow it is a
+fresh-context behavior test, not incremental-value. `research-public-web`
+was retired on 2026-08-13 (host search/fetch is the job; the listing
+regressed agents onto `curl`). The same day, `compose-readme-marks` and
+fourteen other packages were demoted after their loaded bytes drifted from
+the evidence-bound digest; fixture-read `incremental-value` filings on the
+remaining qualified set were withdrawn. Prior bundles remain archaeology
+until re-qualified under the current contract.
 
 ## What evidence qualifies a capability
 
 Follow the eval methodology owned by
-[`skills/design-skill-evals`](../skills/design-skill-evals/SKILL.md). The core
-proof is a **with-skill versus baseline comparison** on realistic work:
+[`skills/design-skill-evals`](../skills/design-skill-evals/SKILL.md). The
+repository runner currently records digest-bound **behavior** and **scan**
+evidence. Incremental-value is claimed only from a **same-prompt**
+with-skill vs baseline pair (not a fixture-read SKILL.md task). The
+aspirational four-way / multi-family program in `design-skill-evals` is
+not yet what this runner files:
 
 1. Freeze the exact capability version (name, description, body, references,
    scripts) and bind candidate commit, catalog digest, task/rubric/runner/
@@ -65,7 +75,9 @@ authored-to-fit tasks, or self-attestation.
    digest+uri evidence, a future expiry, or a schema violation. A stale
    expiry or a later material edit of the package downgrades eligibility.
    The runner also refuses to file qualification when the package or suite
-   prompts ban host web search (`do not web-search`, `open recipes.md first`).
+   prompts ban host web search (`do not web-search`, `open recipes.md first`),
+   and refuses to file `incremental-value` from a fixture-read SKILL.md
+   comparison.
 
 The schema is `schemas/qualification-record.schema.json`; the receipt contract
 for outcomes is `schemas/outcome-receipt.schema.json`.
@@ -129,8 +141,10 @@ actual-context eligibility layer. Exec tasks are deterministic functional
 oracles. The bundle includes raw artifacts, task
 records, an automated pattern scan (secrets + dangerous instruction patterns),
 and `report.json` with an evidence digest; `--apply-from` refuses to apply if
-the recorded digest does not match the bundle. Qualification files in the
-ledger with a review of the bundle.
+the recorded digest does not match the bundle or the candidate
+`packageDigest` is not the current package. `incremental-value` is filed
+only for a same-prompt agent pair that does not hand `SKILL.md` as a
+fixture. Qualification files in the ledger with a review of the bundle.
 
 ## Ledger
 

@@ -12,12 +12,6 @@
   "expiresAt": "2026-11-09T05:36:13.595Z",
   "evidence": [
     {
-      "id": "analyze-causal-inference-incremental-value-2026-08-11T05-27-02-454Z",
-      "kind": "incremental-value",
-      "digest": "sha256:7b269943d7bb5a0c95736d9e3410fa987e570c78422e5a2f5e25ffa4fcd1ad73",
-      "uri": "docs/qualification/evals/analyze-causal-inference/run-2026-08-11T05-27-02-454Z/report.json"
-    },
-    {
       "id": "analyze-causal-inference-compatibility-2026-08-11T05-27-02-454Z",
       "kind": "compatibility",
       "digest": "sha256:7b269943d7bb5a0c95736d9e3410fa987e570c78422e5a2f5e25ffa4fcd1ad73",

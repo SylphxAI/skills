@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   FORBIDDEN_INSTRUCTION_PATTERNS,
+  incrementalValueEligible,
+  incrementalValueEvidenceError,
   qualifiedDigestError,
   scanTextForForbiddenInstructions,
   suiteForbiddenInstructionFindings,
@@ -71,4 +73,46 @@ test('unqualifiedRecord is the honest default shape', () => {
   assert.equal(record.evaluator, null);
   assert.deepEqual(record.evidence, []);
   assert.equal(record.packageDigest, undefined);
+});
+
+test('fixture Read SKILL.md pairs are not incremental-value', () => {
+  const fixture = {
+    tasks: [
+      {
+        id: 'agent-follows-procedure',
+        kind: 'agent',
+        fixtures: [{ source: 'package:SKILL.md', as: 'SKILL.md' }],
+        prompt: 'Read ./SKILL.md completely, then write update.md with the exact template.',
+      },
+      {
+        id: 'baseline-agent',
+        kind: 'agent',
+        baseline: true,
+        prompt: 'Write a short status update to update.md. Keep it concise.',
+      },
+    ],
+  };
+  assert.equal(incrementalValueEligible(fixture), false);
+  assert.match(
+    incrementalValueEvidenceError(
+      { status: 'qualified', evidence: [{ kind: 'incremental-value' }] },
+      fixture,
+    ),
+    /same-prompt/,
+  );
+});
+
+test('same-prompt installed-vs-absent pairs can claim incremental-value', () => {
+  const prompt = 'Write update.md about the login-outage fix: deployed, rollback ready, QA by Friday.';
+  const same = {
+    tasks: [
+      { id: 'with-skill', kind: 'agent', prompt },
+      { id: 'baseline-agent', kind: 'agent', baseline: true, prompt },
+    ],
+  };
+  assert.equal(incrementalValueEligible(same), true);
+  assert.equal(
+    incrementalValueEvidenceError({ status: 'qualified', evidence: [{ kind: 'incremental-value' }] }, same),
+    null,
+  );
 });

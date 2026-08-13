@@ -12,12 +12,6 @@
   "expiresAt": "2026-11-09T05:36:13.496Z",
   "evidence": [
     {
-      "id": "distill-source-to-skill-incremental-value-2026-08-11T05-17-33-689Z",
-      "kind": "incremental-value",
-      "digest": "sha256:4c4ac4253f9d53a1446634c8f6588c2099ba03eebf7cd9d801e9a1a9276a43bb",
-      "uri": "docs/qualification/evals/distill-source-to-skill/run-2026-08-11T05-17-33-689Z/report.json"
-    },
-    {
       "id": "distill-source-to-skill-compatibility-2026-08-11T05-17-33-689Z",
       "kind": "compatibility",
       "digest": "sha256:4c4ac4253f9d53a1446634c8f6588c2099ba03eebf7cd9d801e9a1a9276a43bb",
