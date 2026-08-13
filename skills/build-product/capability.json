@@ -21,7 +21,7 @@
     "Current failure evidence from code, build, live, and docs"
   ],
   "outputs": [
-    "Framed capability usable under a stated original oracle",
+    "Framed capability usable on the path you changed",
     "Verification on the path you changed (run, smoke, API, pack, host as applicable)",
     "Honest residuals list with ownership of changes"
   ],
@@ -36,9 +36,9 @@
       "write access on the owning layer or a PR path into it"
     ]
   },
-  "failureSemantics": "No permanent workarounds: gaps resolve on the owning layer; a slice is done only when the framed capability is usable under the stated oracle or only externally blocked, residuals are listed, and no known ship-blocker was ignored.",
+  "failureSemantics": "No permanent workarounds: gaps resolve on the owning layer; a slice is done when the framed capability is usable on the path you changed or only externally blocked, residuals are listed, and no known ship-blocker was ignored.",
   "outcome": {
-    "observable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
+    "observable": "The framed capability works on the path you changed, local versus landed versus live claims stay honest, and residuals are listed without whole-product completion claims.",
     "oracleOwner": "user-system"
   }
 }

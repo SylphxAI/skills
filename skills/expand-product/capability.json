@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "name": "expand-product",
-  "job": "Scale a validated product core with a measured ×N metric, core-path non-regression proof, and recorded new burden.",
+  "job": "Scale a validated product core: bottleneck, highest-slope change, run the path you changed.",
   "boundaries": {
     "inScope": [
       "Framing the validated core and ×N target",
       "Measuring the binding constraint and choosing one scale bet",
       "Implementing on the correct layer with minimum observability",
-      "Verifying metric movement and core non-regression"
+      "Running the path you changed and spot-checking the core journey"
     ],
     "outOfScope": [
       "Scaling a broken core or greenfield reinvention",
@@ -16,29 +16,29 @@
     ]
   },
   "inputs": [
-    "Validated core and ×N target (metric or surface count)",
+    "Validated core and ×N target (users, surfaces, or capacity)",
     "Cost, latency, compliance, and ownership constraints",
     "Current binding constraint evidence"
   ],
   "outputs": [
-    "Scale bet implemented and measured (or externally blocked with evidence)",
-    "Core-path non-regression check",
+    "Scale bet implemented on the path you changed (or externally blocked)",
+    "Core-path spot-check",
     "Recorded maintain/finish burden created"
   ],
   "required": {
     "tools": [
-      "measurement for the scale metric or declared proxy"
+      "the changed product path"
     ],
     "data": [
-      "current metric baseline and core-path evidence"
+      "current bottleneck and core-path state"
     ],
     "permissions": [
       "delivery access on the owning layer"
     ]
   },
-  "failureSemantics": "No scale claim without metric movement or a declared proxy plus core non-regression check; new operational burden is recorded; scope stays on the framed ×N.",
+  "failureSemantics": "Do not invent a scale metric. The cycle is done when the scale bet is implemented on the path you changed, the core journey still holds, and new burden is recorded.",
   "outcome": {
-    "observable": "The ×N metric moved or is externally blocked with evidence, the core journey still holds, and the new maintain/finish burden is written down.",
+    "observable": "The scale bet is implemented on the path you changed (or externally blocked), the core journey still holds, and the new maintain/finish burden is written down.",
     "oracleOwner": "user-system"
   }
 }

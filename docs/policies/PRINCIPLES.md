@@ -61,16 +61,18 @@ failure.
 
 ### 2. Correctness (thinking)
 
-- **Definition**: right results **and** evidence. Includes consistency /
-  integrity: nothing missing, nothing duplicated, no silent rewinds, no wrong
-  data under the stated failure model.
-- **Not**: zero-bug theater. The floor is **evidence discipline**, not
-  perfection.
-- **Test**: "Where is the evidence — source / CI / deploy / live?" "What is
-  the oracle? Can we re-run and observe the postcondition?"
-- **Rule**: a contract, CI badge, or 200 OK is not behavioral proof by itself;
-  issue the real action and verify the postcondition.
-- **Facets**: testability, integrity, reproducibility, evidence.
+- **Definition**: right results. Includes consistency / integrity: nothing
+  missing, nothing duplicated, no silent rewinds, no wrong data under the
+  stated failure model.
+- **Not**: zero-bug theater, evidence packs, or invented scores. The floor is
+  **right results**, not a report.
+- **Test**: "Did the change do the right thing?" For a landed or live claim:
+  "Did we observe that layer?" The oracle is the compiler, a test, or one
+  real action.
+- **Rule**: a contract, CI badge, or 200 OK is not the behavior itself. Issue
+  the real action when claiming that layer. Reversible local work is done
+  when the change is correct.
+- **Facets**: testability, integrity, reproducibility.
 
 ### 3. Simplicity (thinking)
 
@@ -161,19 +163,21 @@ failure.
 ## Decision rules
 
 1. **Correctness and Security are floors** — never traded. Correctness floor =
-   evidence discipline; Security floor = least privilege.
+   right results; Security floor = least privilege.
 2. **Other conflicts**: name the traded principle, why, and when it returns.
    Never concede silently.
 3. **When unsure, default to Simplicity**: fewer concepts, **not** smaller
    ambition.
-4. **Layer the states**: source / CI / deploy / live are never conflated;
-   evidence is per layer. Designed ≠ implemented ≠ verified ≠ live.
+4. **Layer the states**: source / CI / deploy / live are never conflated.
+   Designed ≠ implemented ≠ verified ≠ live. Local work does not need a live
+   observation.
 5. **Ambition constraint**: expanding capability must not multiply parallel
    systems without an integration path to one basis.
 6. **Cost claims** are incomplete unless Economy's three questions are answered
    in agent-native budgets.
 7. **Situational defaults**:
-   - Experiment / new territory → fast + simple; correctness via evidence gates
+   - Experiment / new territory → fast + simple; correctness via the compiler
+     or a test that would fail if the change is wrong
    - Production systems → observability + reliability + security as operating floors
    - User-facing / money-touching → correctness + security first
 
@@ -185,7 +189,7 @@ principle set — each item is a core or a facet:
 | Core principle | Facets / related `q-*` |
 | --- | --- |
 | Depth | `q-depth` |
-| Correctness | `q-correctness`, `q-testability`, integrity, evidence |
+| Correctness | `q-correctness`, `q-testability`, integrity |
 | Simplicity | `q-simplicity`, concept count |
 | Evolvability | `q-evolvability`, `q-maintainability`, `q-readability` (alias), operability |
 | Observability | `q-observability` |
@@ -203,15 +207,15 @@ decide tradeoffs; facets audit coverage.
   features" is not an explanation.
 - **Economy** → demand budget + measurement in agent-native terms; override the
   default that cost means human development effort.
-- **Done** → demand the layer: source / CI / deploy / live; no evidence is not
-  done.
+- **Done** → name the layer. Local is done when the change is correct.
+  Landed or live only after observing that layer.
 - **Depth** → demand the basis/principle, not only the delivered artifact.
 
 ## 60-second pre-flight (every design / code / product task)
 
 1. Are the floors touched (Correctness, Security)?
 2. Which two principles conflict — has the tradeoff been stated?
-3. Which layer does the evidence sit on?
+3. Which layer is this claim on?
 4. Is there anything to integrate rather than delete — without shrinking ambition?
 5. If cost was mentioned: which agent-native budget, how measured, what traded?
 
@@ -230,7 +234,7 @@ Mapping to the **Quality North Star** engineering vocabulary (`q-*`) — not the
 | Principle | Quality North Star IDs |
 | --- | --- |
 | Depth | `q-depth` |
-| Correctness | `q-correctness` (+ evidence floors in the constitution) |
+| Correctness | `q-correctness` |
 | Simplicity | `q-simplicity` |
 | Evolvability | `q-evolvability` (+ `q-maintainability`, `q-testability`) |
 | Observability | `q-observability` |

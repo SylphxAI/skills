@@ -12,7 +12,7 @@
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:818e7a8f6184fd12c68dc4bfb7f7223e86a69ce2497d78d14684ff3aafbb0c40",
+      "packageDigest": "sha256:120605582536ee9d26edd9c0daf11f7928de806081de3ef5af40475f47bd82ed",
       "capability": {
         "job": "Bring a concrete repository onto the engineering baseline: constitution projection, project facts, fences, conformance entrypoints, retire predecessor layouts.",
         "outcomeObservable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired for the framed scope (residuals are incomplete status only, not dual-system permission).",
@@ -38,7 +38,7 @@
       "name": "analyze-critically",
       "description": "Adversarially critique a claim/plan/design with kill criteria.",
       "path": "skills/analyze-critically/SKILL.md",
-      "packageDigest": "sha256:15840d928b1c30dcd422b3e1c4f1b9be8598d479fb9e1fdeee79f616a66d830c",
+      "packageDigest": "sha256:7216ac3567eb568d59698ba6e1e9a4d14cc26e10d7e3357afd20edba99ba659e",
       "capability": {
         "job": "Adversarially critique a claim, plan, or design with kill criteria and calibrated confidence.",
         "outcomeObservable": "A Critical Analysis Brief containing competing hypotheses, discriminating evidence, a calibrated conclusion, and explicit conditions that would change the conclusion, usable by decision-makers.",
@@ -90,7 +90,7 @@
       "name": "bound-request-scope",
       "description": "Bound this request: objective, in/out, non-goals, cut lines.",
       "path": "skills/bound-request-scope/SKILL.md",
-      "packageDigest": "sha256:2cd367267899fd1a02c5fb1d53e2308724bc4fe8a741cb240f4c7123dcbb24c1",
+      "packageDigest": "sha256:4e44ba9fa095f353c6ab45494cd466eb816511b325080a1e110ed4a63b683ab2",
       "capability": {
         "job": "Bound this request to a right-sized scope contract: objective, in/out, non-goals, cut lines, and ceremony matched to risk.",
         "outcomeObservable": "A stable scope contract with objective, in/out, non-goals, cut lines, and residuals that the requester can approve before implementation proceeds.",
@@ -129,10 +129,10 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:0aee276f2f342424324fd94b8d49bb6fb07da962aae17cfefaff029738b9b4b6",
+      "packageDigest": "sha256:e443639dc368978c2f31a9ad6f0145b806803f558f34eb6dbdb8cca425058d21",
       "capability": {
         "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice.",
-        "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
+        "outcomeObservable": "The framed capability works on the path you changed, local versus landed versus live claims stay honest, and residuals are listed without whole-product completion claims.",
         "oracleOwner": "user-system"
       },
       "qualified": false,
@@ -298,7 +298,7 @@
       "name": "distill-source-to-skill",
       "description": "Distill docs/repos/notes into one installable Skill package.",
       "path": "skills/distill-source-to-skill/SKILL.md",
-      "packageDigest": "sha256:3c4043eceed153a3df325c818e897b74c65efa8b58eaff100e33afbfec7b685f",
+      "packageDigest": "sha256:24598047c05c0700a2520072721972e0a28202e84de6c18f6bc9a2a01f8869d1",
       "capability": {
         "job": "Distill docs, repos, or notes into one installable Skill package with mechanisms, not summaries.",
         "outcomeObservable": "A compact installable skill package that runs without the original source, names its evidence boundary, carries output contracts and validation signals, and passes the target repository's structural validation.",
@@ -309,12 +309,12 @@
     },
     {
       "name": "drive-to-delivery",
-      "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
+      "description": "Drive one accepted multi-phase objective (engineering or product) to its asked terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:10976730304d3b90f075c8280ef69fe08efefa56a38ffd52fa94d47780453bf6",
+      "packageDigest": "sha256:990b5f3c15c4d5e0f8404a64436ceaf04ed806ce2e5e38aa8155b7588f21ac8c",
       "capability": {
-        "job": "Drive one accepted multi-phase objective (engineering or product) to its delivery terminal with evidence at the active delivery boundary.",
-        "outcomeObservable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
+        "job": "Drive one accepted multi-phase objective (engineering or product) to its asked terminal.",
+        "outcomeObservable": "The accepted objective reaches its asked terminal, or a recorded honest blocker, after running the path you changed.",
         "oracleOwner": "user-system"
       },
       "qualified": false,
@@ -350,7 +350,7 @@
       "name": "engineer-testable-requirements",
       "description": "Turn requirements into testable acceptance criteria with oracles.",
       "path": "skills/engineer-testable-requirements/SKILL.md",
-      "packageDigest": "sha256:5605212a825078d90996387b983f8e547692b60da66325aed3f189655c7d31e8",
+      "packageDigest": "sha256:960c44b62d12bc79b749a88052ae05bd90a00c4838953a6c3d9793f099c5fd30",
       "capability": {
         "job": "Turn requirements into testable acceptance criteria with oracles, traceability, and change authority.",
         "outcomeObservable": "A Requirements Contract where each accepted requirement has an oracle and success boundary, traces to a source need and forward artifacts, and changes require impact analysis and supersession under a named authority.",
@@ -387,12 +387,12 @@
     },
     {
       "name": "expand-product",
-      "description": "Scale a validated product core with metrics and core-path proof.",
+      "description": "Scale a validated product core: bottleneck, highest-slope change, run the path you changed.",
       "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:0137ac0a5dcf3cd3890731b48db355fd784182d91e31d11816afdac9c4953cc7",
+      "packageDigest": "sha256:d23513b4418f64f26638d85955a9c9b18863dd729e292a7719876f874c44b138",
       "capability": {
-        "job": "Scale a validated product core with a measured ×N metric, core-path non-regression proof, and recorded new burden.",
-        "outcomeObservable": "The ×N metric moved or is externally blocked with evidence, the core journey still holds, and the new maintain/finish burden is written down.",
+        "job": "Scale a validated product core: bottleneck, highest-slope change, run the path you changed.",
+        "outcomeObservable": "The scale bet is implemented on the path you changed (or externally blocked), the core journey still holds, and the new maintain/finish burden is written down.",
         "oracleOwner": "user-system"
       },
       "qualified": false,
@@ -400,12 +400,12 @@
     },
     {
       "name": "finish-product",
-      "description": "Finish/deburr an integrated product with re-captured evidence.",
+      "description": "Finish/deburr an integrated product to the declared target.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:bdf2fa1567e2dda03d1c3c45260e7fdb1de1ee8eae1da31a35fcaf83da96903f",
+      "packageDigest": "sha256:79e24203ac50b5d310213adc5e913fa5bb3b935a35b1547b1496139d816ad4bc",
       "capability": {
-        "job": "Finish and deburr an integrated product to its declared target with re-captured render, play, regression, and delivery evidence.",
-        "outcomeObservable": "The product reaches its declared finish target with re-captured render or playthrough evidence, regression and budget checks, and a blocker list that names remaining delivery state truthfully.",
+        "job": "Finish and deburr an integrated product to its declared target.",
+        "outcomeObservable": "The product reaches its declared finish target after you run or render the finished path, with remaining blockers listed honestly.",
         "oracleOwner": "user-system"
       },
       "qualified": false,
@@ -426,12 +426,12 @@
     },
     {
       "name": "maintain-product",
-      "description": "Cut live/regression harm with root-cause fix and oracle.",
+      "description": "Cut live/regression harm with a root-cause fix on the owning layer.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:6a6a101a9a728b60417aea0cb83747bdc4390671efb9ed6e626446b11ad2d5fb",
+      "packageDigest": "sha256:5de403778a2216e40052637d58371268d4a26faf5ac2171e97ad2263e7aaaf93",
       "capability": {
-        "job": "Cut live or regression harm with a root-cause fix on the owning layer and an oracle proving harm reduction.",
-        "outcomeObservable": "The failing oracle reruns green or harm measurably reduces, reproduction is closed or owned, and the touched path shows no obvious new regression.",
+        "job": "Cut live or regression harm with a root-cause fix on the owning layer.",
+        "outcomeObservable": "The failing path re-runs clean or the residual is owned, and the touched path shows no obvious new regression.",
         "oracleOwner": "user-system"
       },
       "qualified": false,
@@ -662,7 +662,7 @@
       "name": "run-incident-response",
       "description": "Run production incident response to mitigation and learning.",
       "path": "skills/run-incident-response/SKILL.md",
-      "packageDigest": "sha256:ea32f1205d557626ab0bb4ff8d7275c1e1f752651ec055c69eba925aba26636c",
+      "packageDigest": "sha256:376a2375971e58f931d1e629a1020e4b94a7d6c2feb001b998e30537dbae3955",
       "capability": {
         "job": "Run production incident response to mitigation and truthful close: declare, stabilize, communicate, diagnose, resolve, learn.",
         "outcomeObservable": "An incident record with mitigation evidence, facts-only stakeholder communications, an owning-cause fix or permanent mitigation, and a postmortem with action items and owners.",
@@ -675,10 +675,10 @@
       "name": "run-open-product-betterment",
       "description": "Run open product betterment: scout high-EV work, land, re-measure.",
       "path": "skills/run-open-product-betterment/SKILL.md",
-      "packageDigest": "sha256:79f8bbd619d53708df039811068565861f5a10e5ba8c4b6314d39f16bb7d3249",
+      "packageDigest": "sha256:f8a915e0b73ffefe520081e8701b58a86121f696d859eb843a3be73a9cbfb9e9",
       "capability": {
         "job": "Run open product betterment: scout high-EV work, land the full batch, re-measure until the high-value frontier is empty.",
-        "outcomeObservable": "A standing betterment cycle lands every material unblocked high-EV item in complete revert-safe batches with original-oracle verification, and completes only after a fresh scout shows an empty high-value frontier or named evidence parks.",
+        "outcomeObservable": "A standing betterment cycle lands every material unblocked high-EV item in complete revert-safe batches after running the path you changed, and completes only after a fresh scout shows an empty high-value frontier or a named park.",
         "oracleOwner": "user-system"
       },
       "qualified": false,
@@ -714,7 +714,7 @@
       "name": "select-next-work",
       "description": "Select/claim next high-value Work from evidence under WIP limits.",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:5dab2758cff38c09bf0a1a5b02d67f569c0bf89445d5efb9d936da3ecd4d9e56",
+      "packageDigest": "sha256:f0bab4aa89ade974381706e10066c4920d2fe9877e0f6b4b7dd4a7d2ac73eb86",
       "capability": {
         "job": "Select and claim the next high-value Work from evidence under WIP limits: one tick, bounded outcome, compact report.",
         "outcomeObservable": "A bounded tick report that selects and claims the next positive-net Work under WIP limits, with durable claim or checkpoint effects recorded where authority surfaces exist.",
@@ -792,7 +792,7 @@
       "name": "write-high-signal-update",
       "description": "Write short high-signal output: answer-first replies/updates, decisions, risks, asks.",
       "path": "skills/write-high-signal-update/SKILL.md",
-      "packageDigest": "sha256:f83b12f07eb6b0004491249cf831a299dc2af58f724a01fa859d61dd997f4dd7",
+      "packageDigest": "sha256:c2c213dac8edb7711e2ee9d52023330cb3bce99c6d73d2ec86ce8b7d08d30a96",
       "capability": {
         "job": "Write short high-signal output: answer-first replies and updates, decisions, risks, asks.",
         "outcomeObservable": "A short update ready to send where the decision or outcome comes first, facts carry sources, risks name owners and dates, and the ask is explicit.",

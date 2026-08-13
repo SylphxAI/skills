@@ -26,7 +26,7 @@ description: "Write short high-signal output: answer-first replies/updates, deci
 ## Gotchas
 
 - Updates that bury the ask produce no action.
-- Do not claim live/production status without evidence.
+- Do not claim live/production status unless that layer is actually true.
 
 
 ## Progressive disclosure

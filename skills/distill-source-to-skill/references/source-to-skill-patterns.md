@@ -4,7 +4,7 @@ Use this reference when source material is larger than a short pasted method, sp
 
 ## Rule IDs
 
-- `source-skill-1` — Evidence first. Record what was read, what was unavailable, and which claims are inferred before writing instructions.
+- `source-skill-1` — Record what was read, what was unavailable, and which claims are inferred before writing instructions.
 - `source-skill-2` — Mechanisms beat summaries. Keep decision rules, procedures, outputs, quality signals, and failure modes; discard prose that only explains the topic.
 - `source-skill-3` — Discovery metadata is a semantic contract. The frontmatter description must front-load the concrete job, artifact, material contexts, and nearby exclusions; trigger words are anchors, not a literal router.
 - `source-skill-4` — Default to one skill. Split only when source tasks are independently requestable and have distinct accepted artifacts and acceptance authorities; never add a meta-router.

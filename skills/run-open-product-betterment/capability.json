@@ -38,7 +38,7 @@
   },
   "failureSemantics": "Only evidence-based parks are allowed (external wait, authority pending, dependency blocked, safety hold); one PR, one batch, local green, or improved-a-bit is never idle; budgets come from host or user only.",
   "outcome": {
-    "observable": "A standing betterment cycle lands every material unblocked high-EV item in complete revert-safe batches with original-oracle verification, and completes only after a fresh scout shows an empty high-value frontier or named evidence parks.",
+    "observable": "A standing betterment cycle lands every material unblocked high-EV item in complete revert-safe batches after running the path you changed, and completes only after a fresh scout shows an empty high-value frontier or a named park.",
     "oracleOwner": "user-system"
   }
 }

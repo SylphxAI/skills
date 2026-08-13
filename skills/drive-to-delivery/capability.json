@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "name": "drive-to-delivery",
-  "job": "Drive one accepted multi-phase objective (engineering or product) to its delivery terminal with evidence at the active delivery boundary.",
+  "job": "Drive one accepted multi-phase objective (engineering or product) to its asked terminal.",
   "boundaries": {
     "inScope": [
-      "Running research, execute, verify, and repair/replan loops until terminal",
+      "Running research, execute, path-run, and repair/replan loops until the asked terminal",
       "Landing source via one revert-safe complete PR outcome per objective",
       "Recording honest blockers when the terminal cannot be met",
-      "Product-objective mode when the terminal is current evidence"
+      "Product-objective mode when the asked terminal is a product result"
     ],
     "outOfScope": [
       "Open-ended product betterment without an accepted objective",
@@ -18,10 +18,10 @@
   "inputs": [
     "One accepted multi-phase objective and acceptance map",
     "Workspace ownership and host continuity bindings",
-    "Active delivery boundary requirements"
+    "Asked terminal"
   ],
   "outputs": [
-    "Objective at its delivery terminal with checkpoint evidence",
+    "Objective at its asked terminal",
     "One revert-safe complete PR outcome per independent outcome",
     "Honest blocker record if terminal is unreachable"
   ],
@@ -30,15 +30,15 @@
       "CI and delivery tooling for the active boundary"
     ],
     "data": [
-      "acceptance map and current evidence"
+      "acceptance map"
     ],
     "permissions": [
       "delivery authority owned by the active profile"
     ]
   },
-  "failureSemantics": "Claiming done on local green, a queued PR, or an unverified milestone is a failure; the loop continues until terminal evidence at the active delivery boundary exists or an honest blocker is recorded.",
+  "failureSemantics": "The loop continues until the asked terminal is met or an honest blocker is recorded. Reversible local work is done when the changed path is correct. Landed or live may be claimed only when that layer is actually true.",
   "outcome": {
-    "observable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
+    "observable": "The accepted objective reaches its asked terminal, or a recorded honest blocker, after running the path you changed.",
     "oracleOwner": "user-system"
   }
 }

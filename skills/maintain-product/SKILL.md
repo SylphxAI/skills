@@ -1,6 +1,6 @@
 ---
 name: maintain-product
-description: "Cut live/regression harm with root-cause fix and oracle."
+description: "Cut live/regression harm with a root-cause fix on the owning layer."
 ---
 
 # Maintain Product
@@ -14,8 +14,8 @@ When users or operators are **hurt** by failures or regressions, run **one** mai
 
 ## Method
 
-**Symptom → blast radius → fix cause on owning layer → prove harm↓.**  
-Prefer regression locks and detectability over silent cleanup.
+**Symptom → blast radius → fix cause on owning layer → re-run the failing path.**  
+Prefer a regression lock over silent cleanup. Do not invent a harm metric.
 
 ### 1. Frame
 - Symptom, severity, audience (user/ops/data/security)
@@ -39,13 +39,13 @@ Prefer regression locks and detectability over silent cleanup.
 - Do not paper over shared floors in the wrong layer
 
 ### 5. Deliver / verify
-- Re-run failing oracle; show green or reduced harm
-- Spot-check touched path for new regression
+- Re-run the failing path
+- Spot-check the touched path for a new regression
 - Note structural follow-ups if a deeper build/expand is still required later
 
 ## Cycle done
 
-1. Framed harm fixed or mitigated with evidence  
+1. Framed harm fixed or mitigated on the failing path  
 2. Reproduction closed or residual owner named  
 3. No obvious new regression on the touched path  
 4. Scope stayed harm-linked  
@@ -59,5 +59,5 @@ Prefer regression locks and detectability over silent cleanup.
 
 ## Output
 
-Harm · cause · fix · oracle · residual risk
+Harm · cause · fix · path re-run · residual risk
 

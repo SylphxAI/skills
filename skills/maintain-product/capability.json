@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "name": "maintain-product",
-  "job": "Cut live or regression harm with a root-cause fix on the owning layer and an oracle proving harm reduction.",
+  "job": "Cut live or regression harm with a root-cause fix on the owning layer.",
   "boundaries": {
     "inScope": [
       "Framing symptom, severity, audience, and health signal",
       "Reproducing and bisecting to root cause",
       "Fixing cause on the owning layer with regression locks",
-      "Verifying oracle green or reduced harm"
+      "Re-running the failing path"
     ],
     "outOfScope": [
       "Feature expansion or visual redesign without a harm link",
@@ -22,7 +22,7 @@
   ],
   "outputs": [
     "Root-cause fix with regression test or smoke where automatable",
-    "Oracle rerun showing green or reduced harm",
+    "Failing path re-run",
     "Residual risk and structural follow-ups"
   ],
   "required": {
@@ -36,9 +36,9 @@
       "delivery access on the owning layer"
     ]
   },
-  "failureSemantics": "The cycle is not done until the framed harm is fixed or mitigated with evidence, reproduction is closed or a residual owner is named, and no obvious new regression appears on the touched path.",
+  "failureSemantics": "The cycle is not done until the framed harm is fixed or mitigated on the failing path, reproduction is closed or a residual owner is named, and no obvious new regression appears on the touched path.",
   "outcome": {
-    "observable": "The failing oracle reruns green or harm measurably reduces, reproduction is closed or owned, and the touched path shows no obvious new regression.",
+    "observable": "The failing path re-runs clean or the residual is owned, and the touched path shows no obvious new regression.",
     "oracleOwner": "user-system"
   }
 }

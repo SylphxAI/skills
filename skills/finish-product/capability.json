@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "name": "finish-product",
-  "job": "Finish and deburr an integrated product to its declared target with re-captured render, play, regression, and delivery evidence.",
+  "job": "Finish and deburr an integrated product to its declared target.",
   "boundaries": {
     "inScope": [
       "Binding the exact integrated subject and declared finish target",
       "Resolving the one core concept deeply with no material placeholders",
-      "Running render/play matrix, regression, and budget checks",
-      "Recapturing and verifying evidence after corrections"
+      "Running or rendering the finished path",
+      "Staying honest about local vs landed vs live"
     ],
     "outOfScope": [
       "Missing capability work (build-product)",
@@ -22,8 +22,8 @@
   ],
   "outputs": [
     "Product Finish Pass: target, coverage, and implemented corrections",
-    "Rendered or playthrough evidence",
-    "Remaining blockers and truthful delivery state"
+    "What you ran or rendered on the finished path",
+    "Remaining blockers"
   ],
   "required": {
     "tools": [
@@ -38,7 +38,7 @@
   },
   "failureSemantics": "Functional, compilable, or clickable is not finished; the declared target is never silently lowered, and a report-only response is incomplete in finish mode.",
   "outcome": {
-    "observable": "The product reaches its declared finish target with re-captured render or playthrough evidence, regression and budget checks, and a blocker list that names remaining delivery state truthfully.",
+    "observable": "The product reaches its declared finish target after you run or render the finished path, with remaining blockers listed honestly.",
     "oracleOwner": "user-system"
   }
 }

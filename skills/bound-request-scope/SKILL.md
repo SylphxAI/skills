@@ -22,7 +22,7 @@ Keep **this request** right-sized: objective, in/out, non-goals, cut lines, and 
 2. **Ground** facts vs inference; acquire only decision-critical evidence.
 3. **Choose the smallest complete path** (avoid → reuse → stdlib/platform → existing dep → new only if required).
 4. **Scale ceremony to risk** — trivial reversible edits stay direct; irreversible material changes earn deeper analysis.
-5. **Do not** turn this into a mandatory report for ordinary work.
+5. **Do not** turn this into a mandatory report, proof ladder, or live-readback pack for ordinary work. Extra proof is only for money, safety, incident, or an explicit ship/live claim.
 
 ## Depth
 
