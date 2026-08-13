@@ -21,7 +21,7 @@ Ship a **public URL** so humans or other agents can hit a demo without SSH, Dock
 
 ## Method
 
-**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+Known deploy CLIs live in [references/recipes.md](references/recipes.md). Open that file when a provider is chosen. It is not a search replacement: if a flag or host may have moved, use current official docs via the host's web search and fetch tools.
 
 ### 1. Classify the artifact
 
@@ -44,7 +44,7 @@ Record exact CLI output: public URL, claim URL (if any), expiry, and project/wor
 
 ### 3. Verify the live URL
 
-- `curl -sI <url>` (or GET) from the agent host; note status and `server`/`cf-ray` headers when present.
+- Probe `<url>` from the agent host (host fetch if present, otherwise `curl -sI` or GET); note status and `server`/`cf-ray` headers when present.
 - Prefer a real browser load when UI matters; do not claim “works” from a 200 on `/` alone if the product is a SPA that fails client-side.
 - Never paste claim tokens into public chat logs if the channel is untrusted—treat claim URL as ownership bearer.
 
@@ -63,7 +63,7 @@ Record exact CLI output: public URL, claim URL (if any), expiry, and project/wor
 
 ## Progressive disclosure
 
-- [references/recipes.md](references/recipes.md) — **open first**: copy-paste deploy recipes
+- [references/recipes.md](references/recipes.md) — known deploy CLIs when the provider is already chosen
 - [references/providers/INDEX.md](references/providers/INDEX.md) — choose provider
 - [references/providers/cloudflare-temporary.md](references/providers/cloudflare-temporary.md) — CF temp Workers / Drop
 - [references/providers/static-free.md](references/providers/static-free.md) — Surge / Pages / Tiiny class

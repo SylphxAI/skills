@@ -1,4 +1,4 @@
-# Agent recipes — share non-secret files (no search)
+# Agent recipes — share non-secret files
 
 ## Preflight scrub (always)
 

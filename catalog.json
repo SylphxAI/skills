@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 57,
+  "count": 56,
   "qualification": {
-    "total": 57,
-    "qualified": 40,
+    "total": 56,
+    "qualified": 38,
     "qualifiedNames": [
       "adopt-repo-standards",
       "analyze-causal-inference",
@@ -14,7 +14,6 @@
       "bound-request-scope",
       "compose-product-portfolio",
       "compose-product-program",
-      "compose-readme-marks",
       "craft-human-agent-language",
       "craft-product-interface",
       "curate-skill-repository",
@@ -36,7 +35,6 @@
       "produce-game-2d-map-assets",
       "produce-game-2d-sprites",
       "record-structured-deliberation",
-      "research-public-web",
       "research-user-needs",
       "review-domain",
       "run-incident-response",
@@ -196,14 +194,14 @@
       "name": "compose-readme-marks",
       "description": "Compose README and docs badges or banners from public mark APIs without a design tool.",
       "path": "skills/compose-readme-marks/SKILL.md",
-      "packageDigest": "sha256:b9a5fd29d6816411aedda5af175c56aab1900b2d794c55d8262961ca1d598b78",
+      "packageDigest": "sha256:18d9bd9158f23038ff40f2608dacd382f4b39664bdfd539d148fdc35fca87e54",
       "capability": {
         "job": "Compose README and docs markdown image embeds (badges, banners, icon rows, stats cards) from public no-key APIs and probe them live.",
         "outcomeObservable": "Markdown snippets that render live images, with each URL probed to an image content-type 200 and theme choices recorded in source so agents can regenerate them.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "craft-human-agent-language",
@@ -274,7 +272,7 @@
       "name": "deploy-ephemeral-web-preview",
       "description": "Publish a short-lived public web URL for demos or agent proof; record claim/expiry honesty.",
       "path": "skills/deploy-ephemeral-web-preview/SKILL.md",
-      "packageDigest": "sha256:54cafc4b04165a910d19a67d033e1b238a8adb6d5f80e73a8967d0964bd02871",
+      "packageDigest": "sha256:904f64fe6ec1dfe472d8aaf9320207b2fbe535dd5159175c9b6b80ae867316a6",
       "capability": {
         "job": "Publish a short-lived public web URL for demos or agent proof, with claim and expiry honesty.",
         "outcomeObservable": "A public URL that responds to verification probes with recorded expiry and claim path, and residuals documented so the user knows the preview is not durable production.",
@@ -560,7 +558,7 @@
       "name": "provision-agent-workspace",
       "description": "Provision an agent filesystem and shell workspace with isolation and free-boundary honesty.",
       "path": "skills/provision-agent-workspace/SKILL.md",
-      "packageDigest": "sha256:cbc776591e388221436b98907f773aed2148b8ec43b5d05486dc90ce10dd25c5",
+      "packageDigest": "sha256:08f42c6ab779e36bd282ef382f9610f5974b5f7f63d6b554ecd89688e451deb3",
       "capability": {
         "job": "Provision an agent filesystem and shell workspace with isolation class matched to risk and free-boundary honesty.",
         "outcomeObservable": "A provisioned workspace with documented handle, filesystem and exec canary proofs, stated isolation class and free boundaries, and reap or TTL policy with residual risks.",
@@ -607,19 +605,6 @@
       },
       "qualified": false,
       "qualificationStatus": "unqualified"
-    },
-    {
-      "name": "research-public-web",
-      "description": "Research the public web without paid SERP keys; cite sources and record adapter gaps.",
-      "path": "skills/research-public-web/SKILL.md",
-      "packageDigest": "sha256:73abc1fdaab217e235271c6db287efe28e8a6c5b399ce087a446ef3dbd11fe45",
-      "capability": {
-        "job": "Research the public web without paid SERP keys; cite sources and record adapter gaps.",
-        "outcomeObservable": "A decision-ready answer (or explicit blocked) with cited sources, retrieved times, labeled free versus paid paths, and an honest gap list an independent researcher can re-fetch.",
-        "oracleOwner": "user-system"
-      },
-      "qualified": true,
-      "qualificationStatus": "qualified"
     },
     {
       "name": "research-user-needs",
@@ -716,7 +701,7 @@
       "name": "share-ephemeral-artifact",
       "description": "Share a non-secret file or log via short-lived public URL with retention and ToS limits.",
       "path": "skills/share-ephemeral-artifact/SKILL.md",
-      "packageDigest": "sha256:57befa163d57d4455a71140f3a215b3679dd75c7fd947f4705f842a03c450783",
+      "packageDigest": "sha256:8ae5ba175555eeafad66da337a4b694d0ac18bdcf54b3102c99a57ca8b3c28db",
       "capability": {
         "job": "Share a non-secret file or log via short-lived public URL with retention and ToS limits.",
         "outcomeObservable": "A short-lived public URL serving the scrubbed artifact with recorded retention, a verified GET, an explicit non-secret statement, and the provider reliability residual stated.",
@@ -768,7 +753,7 @@
       "name": "wire-managed-backend-services",
       "description": "Wire managed backend capabilities via maintained BaaS candidates with auth and quota honesty.",
       "path": "skills/wire-managed-backend-services/SKILL.md",
-      "packageDigest": "sha256:99fb9cc8be74943e2f9b2708d6b8a1dc6d3ab3463682bd5f0d5f0e313daa7476",
+      "packageDigest": "sha256:e0f17b3b47d2aae02f3d9d3f3e18ebbfcde101eed5fb775280b5b86e501054c3",
       "capability": {
         "job": "Wire managed backend capabilities via maintained BaaS candidates with auth, quota, and behavioral-proof honesty.",
         "outcomeObservable": "Managed backend capabilities wired end-to-end with documented auth planes and at least one behavioral proof per capability, plus an honest gap list for unshipped services, plan limits, or missing tokens.",

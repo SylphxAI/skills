@@ -17,11 +17,11 @@ Give the agent a **working directory + command execution** surface for multi-ste
 
 - Single-shot local edits already available on the host agent (use host FS/shell)
 - Production multi-tenant compute without account, quotas, and security review
-- Pure public HTTP research (use `research-public-web`)
+- Public-page lookup (use the host's web search and fetch tools)
 
 ## Method
 
-**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+Known workspace/exec sketches live in [references/recipes.md](references/recipes.md). Open that file when a provider is chosen. It is not a search replacement: if a CLI or package API may have moved, use current official docs via the host's web search and fetch tools.
 
 ### 1. Pick isolation class
 
@@ -61,7 +61,7 @@ Open [references/providers/INDEX.md](references/providers/INDEX.md).
 
 ## Progressive disclosure
 
-- [references/recipes.md](references/recipes.md) — **open first**: copy-paste recipes
+- [references/recipes.md](references/recipes.md) — known workspace/exec sketches when the provider is already chosen
 - [references/providers/INDEX.md](references/providers/INDEX.md)
 - [references/providers/cloudflare-computer.md](references/providers/cloudflare-computer.md)
 - [references/providers/sylphx-sandbox.md](references/providers/sylphx-sandbox.md)

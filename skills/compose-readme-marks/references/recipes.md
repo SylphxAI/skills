@@ -1,4 +1,4 @@
-# Agent recipes — README marks (no search)
+# Agent recipes — README marks
 
 Probed 2026-08-08: Mark badge and shields.io return `200` + `image/svg+xml`.
 

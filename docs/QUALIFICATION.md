@@ -5,12 +5,15 @@ version is **safe, applicable, current and outcome-positive** in declared
 environments. A named evaluator or attestor owns the result; the repository
 only records and projects it.
 
-Unqualified is the honest default. As of 2026-08-11 this repository declares
-**40** qualified capabilities (57 packages) with version-scoped, expiring
+Unqualified is the honest default. As of 2026-08-13 this repository declares
+**38** qualified capabilities (56 packages) with version-scoped, expiring
 evidence under `docs/qualification/evals/`; everything else is honestly
 `unqualified`. Qualification is never inferred from structure, CI, or
 installation — only from filed with-skill versus baseline evidence and, where
-declared, native-activation evidence.
+declared, native-activation evidence. `research-public-web` was retired on
+2026-08-13 (host search/fetch is the job; the listing regressed agents onto
+`curl`). `compose-readme-marks` was demoted the same day after a digest-changing
+method edit; its wave-11 bundle is archaeology until re-qualified.
 
 ## What evidence qualifies a capability
 

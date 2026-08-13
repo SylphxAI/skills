@@ -1,4 +1,4 @@
-# Agent recipes — workspace / exec (no search)
+# Agent recipes — workspace / exec
 
 ## A. Host shell (L0 — default)
 

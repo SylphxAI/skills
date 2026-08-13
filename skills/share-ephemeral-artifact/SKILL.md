@@ -20,7 +20,7 @@ Publish a **non-secret** file, log, screenshot, or build output to a short-lived
 
 ## Method
 
-**Open [references/recipes.md](references/recipes.md) first** — copy-paste endpoints/commands; do not web-search for these defaults.
+Known host upload patterns live in [references/recipes.md](references/recipes.md). Open that file when the provider is chosen. It is not a search replacement: if a host or form field may have moved, use the host's web search and fetch tools.
 
 1. **Scrub**: redact secrets; prefer minimized logs.
 2. **Choose host** from [references/providers/INDEX.md](references/providers/INDEX.md) (L1/L2 hobby hosts).
@@ -37,7 +37,7 @@ Publish a **non-secret** file, log, screenshot, or build output to a short-lived
 
 ## Progressive disclosure
 
-- [references/recipes.md](references/recipes.md) — **open first**: copy-paste recipes
+- [references/recipes.md](references/recipes.md) — known upload patterns when the provider is already chosen
 - [references/providers/INDEX.md](references/providers/INDEX.md)
 - [references/providers/file-hosts.md](references/providers/file-hosts.md)
 - [references/safety.md](references/safety.md)
