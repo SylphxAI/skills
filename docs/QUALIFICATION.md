@@ -7,7 +7,7 @@ Every listing installs and loads whether or not it is `qualified`.
 `unqualified` is the honest default.
 
 As of 2026-08-13 this repository declares **0** qualified capabilities
-(60 packages). Prior house metrics (TJC / VCY) and the required
+(61 packages). Prior house metrics (TJC / VCY) and the required
 outcome-receipt field are retired. Industry practice is paired evaluation
 when claiming lift — not coverage KPIs.
 

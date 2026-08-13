@@ -58,6 +58,9 @@ memory and work live in Platform Data, Work, Events, Identity, and Commerce.
   capabilities for the matching job and open the winner. Never skip discovery
   because the task looks familiar or you already know a method; skills are
   checked first, not last.
+- **Correct method first.** Before implementing or fixing a shared or
+  commodity path, name the current correct method from live authority. Do
+  not start from a workaround.
 - Load skills through host progressive disclosure and native discovery only.
 - Do not invent a meta-router, keyword engine, or skill dependency graph.
 - Keep always-on floors thin; put specialized procedures in skills.

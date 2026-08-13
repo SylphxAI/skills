@@ -1,0 +1,4 @@
+interface:
+  display_name: "Establish Correct Approach"
+  short_description: "Name the current correct method before implementing or fixing."
+  default_prompt: "Before changing code, establish the current correct method from live authority and reject hacks."

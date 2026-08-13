@@ -70,4 +70,5 @@ Produce a **Critical Analysis Brief**:
 Use for “critical think why agents keep doing half a migration,” “compare the
 credible causes,” “challenge this architecture thesis,” and “what evidence
 would distinguish these explanations?” Do not route a settled implementation
-task with a known cause and acceptance test.
+task with a known cause and acceptance test. Naming the current correct
+method *before* a build or fix is `../establish-correct-approach/`.

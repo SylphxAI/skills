@@ -30,6 +30,8 @@ No permanent workarounds. Prefer durable work on the owning layer.
 ### 2. Research
 - How the journey fails today (code, build, live, docs)
 - Owning layer for each gap
+- If the correct method is not already named, open
+  `../establish-correct-approach/` before implementing
 - Load domain Skills only as needed via native discovery
 - Stop when more reading will not change the plan
 
@@ -87,4 +89,4 @@ Open only depth the current build needs:
 - [references/frontier-verification-standard/](references/frontier-verification-standard/) — frontier verification for high blast-radius paths
 - [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — classify, then open one family recipe
 - Source landing: `../drive-to-delivery/references/source-authoring-standard/`
-- Related jobs (separate skills when requested): `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`
+- Related jobs (separate skills when requested): `establish-correct-approach`, `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`

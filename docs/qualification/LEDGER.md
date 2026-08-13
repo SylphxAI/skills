@@ -6,7 +6,7 @@ filed evidence; it is not a separate source of truth.
 
 ## Current state (2026-08-13)
 
-- Capability packages: **60**
+- Capability packages: **61**
 - Qualified: **0**. House coverage/yield KPIs (TJC / VCY) and required
   outcome receipts are retired. Every listing stays installable. Prior
   wave tables below are archaeology of what the old runner filed.
