@@ -12,12 +12,6 @@
   "expiresAt": "2026-11-08T16:46:16.271Z",
   "evidence": [
     {
-      "id": "synthesize-market-research-incremental-value-2026-08-10T16-29-32-534Z",
-      "kind": "incremental-value",
-      "digest": "sha256:b0d8031919fbd5be0448d027bbb5114005773f32ca80da42ba519a2877b1eeca",
-      "uri": "docs/qualification/evals/synthesize-market-research/run-2026-08-10T16-29-32-534Z/report.json"
-    },
-    {
       "id": "synthesize-market-research-compatibility-2026-08-10T16-29-32-534Z",
       "kind": "compatibility",
       "digest": "sha256:b0d8031919fbd5be0448d027bbb5114005773f32ca80da42ba519a2877b1eeca",

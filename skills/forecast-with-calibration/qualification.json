@@ -12,12 +12,6 @@
   "expiresAt": "2026-11-08T15:56:21.340Z",
   "evidence": [
     {
-      "id": "forecast-with-calibration-incremental-value-2026-08-10T15-38-53-178Z",
-      "kind": "incremental-value",
-      "digest": "sha256:c28728bc697b50fc78f4d1c4f6ccf8e6af473d9c87cb14b5c248c7161fc6bd72",
-      "uri": "docs/qualification/evals/forecast-with-calibration/run-2026-08-10T15-38-53-178Z/report.json"
-    },
-    {
       "id": "forecast-with-calibration-compatibility-2026-08-10T15-38-53-178Z",
       "kind": "compatibility",
       "digest": "sha256:c28728bc697b50fc78f4d1c4f6ccf8e6af473d9c87cb14b5c248c7161fc6bd72",

@@ -39,6 +39,43 @@ export function suiteForbiddenInstructionFindings(suite) {
   return [...new Set(findings)];
 }
 
+function isAgentTask(task) {
+  return Boolean(task) && task.kind === 'agent';
+}
+
+function taskHandsSkillText(task) {
+  if (!task) return false;
+  if ((task.fixtures || []).some((fixture) => fixture.source === 'package:SKILL.md')) return true;
+  return /read\s+(?:\.\/)?SKILL\.md/i.test(task.prompt || '');
+}
+
+/**
+ * Incremental-value is a same-prompt causal claim: the user wording is
+ * identical and the only intended difference is whether the skill is the
+ * condition. Handing SKILL.md as a fixture and saying "follow this" is a
+ * fresh-context behavior test, not incremental-value.
+ */
+export function incrementalValueEligible(suite) {
+  const agents = (suite?.tasks || []).filter(isAgentTask);
+  const withSkill = agents.filter((task) => task.baseline !== true);
+  const baseline = agents.filter((task) => task.baseline === true);
+  if (!withSkill.length || !baseline.length) return false;
+  return withSkill.some((task) => {
+    if (taskHandsSkillText(task)) return false;
+    return baseline.some((control) => control.prompt === task.prompt && !taskHandsSkillText(control));
+  });
+}
+
+export function incrementalValueEvidenceError(record, suite) {
+  if (!record || record.status !== 'qualified') return null;
+  const claimed = (record.evidence || []).some((item) => item.kind === 'incremental-value');
+  if (!claimed) return null;
+  if (!incrementalValueEligible(suite)) {
+    return 'incremental-value requires a same-prompt agent pair whose with-skill condition is not a SKILL.md fixture';
+  }
+  return null;
+}
+
 export function qualifiedDigestError(record, currentDigest) {
   if (!record || record.status !== 'qualified') return null;
   if (!PACKAGE_DIGEST.test(record.packageDigest || '')) {

@@ -17,6 +17,7 @@ import { packageDigest } from '../runtime/package-digest.mjs';
 import { catalogBytes, parseFrontmatter, readJson, repositoryRoot } from './build-catalog.mjs';
 import {
   FORBIDDEN_INSTRUCTION_PATTERNS,
+  incrementalValueEvidenceError,
   qualifiedDigestError,
   suiteForbiddenInstructionFindings,
 } from './qualification-integrity.mjs';
@@ -160,6 +161,8 @@ function validateCapabilityContract(folder, errors) {
       for (const label of suiteForbiddenInstructionFindings(suite)) {
         errors.push(`skills/${folder}/evals/suite.json: eval prompt forbids host web search ("${label}")`);
       }
+      const incrementalError = incrementalValueEvidenceError(qualification, suite);
+      if (incrementalError) errors.push(`${qualificationPath}: ${incrementalError}`);
     } catch (error) {
       errors.push(`skills/${folder}/evals/suite.json: invalid JSON: ${error.message}`);
     }

@@ -19,6 +19,10 @@ filed evidence; it is not a separate source of truth.
   Each remaining record now carries `packageDigest` equal to the current
   package identity. Fourteen names that were still `qualified` after a
   material edit of loaded bytes were demoted the same day (see below).
+  **Incremental-value claimed: 0/24.** Fifteen fixture-read
+  `incremental-value` filings (hand `SKILL.md` to the agent, different
+  baseline prompt) were withdrawn; those packages stay `qualified` on
+  compatibility + pattern scan (+ activation where verified).
 - Native-activation selection evidence: **9/24** (analyze-critically,
   analyze-causal-inference, model-security-threats, operate-customer-support,
   review-domain, research-user-needs, price-saas-subscription,
@@ -43,9 +47,11 @@ filed evidence; it is not a separate source of truth.
   those names as qualified is a qualification regression.
 - **Integrity floor:** `qualified` now requires a live-matching
   `packageDigest`. The runner refuses to file qualification when the package
-  or suite prompts ban host web search. Remaining qualified records are
-  digest-current under the prior runner contract (with-skill vs baseline
-  plus pattern scan); they are not a four-way / multi-family claim.
+  or suite prompts ban host web search, and refuses `incremental-value`
+  unless a same-prompt agent pair differs only by whether the skill is the
+  condition. Remaining qualified records are digest-current behavior + scan
+  evidence under the prior runner; they are not a four-way / multi-family
+  claim and they do not currently claim incremental-value.
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)
@@ -72,10 +78,12 @@ eligibility. Injection state is recorded as **not verified** for agent tasks
 
 ## Wave-2 runs (incremental-value controls)
 
-Each wave-2 suite pairs a with-skill agent task with a baseline control
-(no skill, same task, same oracle). In every run the baseline **failed** the
-strict output-contract oracle while the with-skill run passed, and the
-automated pattern scan was clean:
+Each wave-2 suite paired a fixture-read with-skill agent task with a
+baseline control on a **different** user prompt. The runner then treated a
+failing baseline as incremental-value. That claim was withdrawn on
+2026-08-13: fixture-read + different prompt is a behavior test, not a
+same-prompt causal comparison. Wave tables below remain archaeology of
+what the runner filed at the time:
 
 | Capability | Run | With-skill | Baseline | Verdict |
 | --- | --- | --- | --- | --- |

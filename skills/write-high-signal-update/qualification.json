@@ -12,12 +12,6 @@
   "expiresAt": "2026-11-08T15:14:39.176Z",
   "evidence": [
     {
-      "id": "write-high-signal-update-incremental-value-2026-08-10T15-07-27-461Z",
-      "kind": "incremental-value",
-      "digest": "sha256:42d40ca98fa98092652b9015ac71743f26e650ed1ab13a083fea3ffad7a90b55",
-      "uri": "docs/qualification/evals/write-high-signal-update/run-2026-08-10T15-07-27-461Z/report.json"
-    },
-    {
       "id": "write-high-signal-update-compatibility-2026-08-10T15-07-27-461Z",
       "kind": "compatibility",
       "digest": "sha256:42d40ca98fa98092652b9015ac71743f26e650ed1ab13a083fea3ffad7a90b55",

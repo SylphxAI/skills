@@ -186,3 +186,15 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   `qualified` and are rebound to the current-algorithm digest.
 - The runner pattern scan now treats host-search bans as findings, so
   the `research-public-web` class cannot be filed as qualified again.
+
+## 2026-08-13 — incremental-value is same-prompt only
+
+- Fixture-read `Read ./SKILL.md` tasks are fresh-context behavior tests.
+  Incremental-value now requires an identical user prompt on a with-skill
+  agent task and a baseline agent task, with no SKILL.md fixture.
+- Fifteen qualified records had fixture-read `incremental-value` filings
+  withdrawn. Status stays `qualified` (compatibility + scan, plus
+  activation where already verified). Zero packages currently claim
+  incremental-value.
+- Integrity gate rejects a later hand-edit that puts `incremental-value`
+  back onto an ineligible suite.
