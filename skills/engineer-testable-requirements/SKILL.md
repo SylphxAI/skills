@@ -116,5 +116,6 @@ Produce a **Requirements Contract** containing:
 - `references/specification-control-plane-standard/` owns executable implementation
   specifications and work/evaluation contracts after requirements establish
   the required behavior.
-- `../synthesize-evidence-brief/references/evidence-and-claims-standard/` and `../drive-to-delivery/references/delivery-standard/` own factual completion
-  and delivered-state claims.
+- `../drive-to-delivery/` owns driving an accepted objective. Open
+  `../synthesize-evidence-brief/` only when the job itself is a disputed or
+  public claim. Do not treat completion as a live-delivery pack.

@@ -1,7 +1,6 @@
 # Finish Contract
 
-Use this contract to turn “polish it” into an exact, bounded, evidence-bearing
-product job.
+Use this contract to turn “polish it” into an exact, bounded product job.
 
 ## 1. Simple surface, high resolution
 
@@ -31,8 +30,8 @@ truthful terminals:
   production bar across all applicable dimensions.
 - `product-candidate`: every selected surface has been brought to the reference
   bar; no hidden “we only polished the demo” denominator.
-- `release-finish`: exact real content, platform, locale, edge-state, performance,
-  and delivery evidence exists at the product's declared release boundary.
+- `release-finish`: exact real content, platform, locale, edge-state, and
+  performance resolution exists for the asked release boundary.
 
 Changing the target is a product decision, not a way to make a rough candidate
 pass.
@@ -157,25 +156,12 @@ Run coherent passes rather than random pixel edits:
 Correct the shared owner when one cause appears in several places. Preserve
 intentional exceptions; deduplication is not uniformity.
 
-## 6. Evidence and stop condition
+## 6. Stop condition
 
-Use the real product and repeatable evidence appropriate to the medium:
+Run or render the finished path. Do not recapture a mandatory evidence matrix.
+Do not require live identity unless the asked terminal is live.
 
-- same-state before/after captures;
-- representative route and journey traversal;
-- real-device or representative viewport/input/locale/quality-tier matrix;
-- gameplay recordings and scenario playthroughs;
-- accessibility, performance, layout, content, and regression checks;
-- direct measurements for claimed budgets; and
-- source/candidate/released/live identity where delivery is in scope.
-
-Subjective quality is made reviewable through a declared direction, reference
-slice, exact comparators, and observable consequences—not by pretending taste
-is one scalar score. Independent or multimodal critique is useful when its
-expected information value exceeds its cost; it is not a ritual.
-
-Stop when the declared target is met, every applicable matrix cell is resolved,
-no positive-net material exposed defect remains, and further change would be
-speculative, merely different, or lower value than delivery. Preserve newly
-observed future opportunities for the continuous quality loop rather than
-turning one finish pass into an immortal project.
+Stop when the declared target is met, leftover placeholders are gone, and
+further change would be speculative, merely different, or lower value than
+shipping. Leave leftover ideas as residuals rather than turning one finish
+pass into an immortal project.

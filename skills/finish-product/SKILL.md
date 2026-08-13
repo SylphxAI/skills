@@ -1,6 +1,6 @@
 ---
 name: finish-product
-description: "Finish/deburr an integrated product with re-captured evidence."
+description: "Finish/deburr an integrated product to the declared target."
 ---
 
 # Finish Product
@@ -12,14 +12,14 @@ resolve the details behind them to high fidelity.
 
 ## When to use
 - A selected product needs final deburr to its declared target: no material accidental or placeholder detail
-- Render/play matrix, regression and budget checks, and truthful delivery state
+- Render/play the product, fix leftover placeholder detail, stay honest about local vs landed vs live
 - Not for missing capability (`build-product`) or live harm (`maintain-product`)
 
 ## Atomic boundary
 
 Own one **Product Finish Pass** over an exact integrated product or release
-candidate. The artifact records the finish target, coverage, implemented
-corrections, rendered or playthrough evidence, and remaining blockers.
+candidate. The artifact records the finish target, implemented
+corrections, and remaining blockers.
 
 This Skill owns whole-product **finish** work after the product promise and
 selected capabilities are defined: one finish pass / cycle over an integrated
@@ -59,7 +59,7 @@ surface remains non-terminal unless that exact fidelity is the declared target.
 - **Direction** — define the finish thesis and final-fidelity reference slice;
   do not edit unless implementation is requested.
 - **Finish** — inspect and directly improve the integrated product, then
-  recapture and verify it. A report-only response is incomplete.
+  run or render the path you changed. A report-only response is incomplete.
 - **Audit** — remain read-only and return exact, prioritized finish findings.
 
 Declare the target state:
@@ -70,7 +70,7 @@ Declare the target state:
 3. `product-candidate` — all selected surfaces meet the reference bar and
    applicable quality floors.
 4. `release-finish` — the exact candidate has complete real-content,
-   cross-platform, edge-state, and delivery evidence required by its boundary.
+   cross-platform, and edge-state resolution required by its asked boundary.
 
 Do not silently lower the target because existing work is rough.
 
@@ -106,12 +106,11 @@ Load both domain references only when the product genuinely spans both.
    audio, haptics or game feel; accessibility, localization, performance, and
    resilience; then cross-surface consistency. Fix owning causes rather than
    masking each symptom.
-6. **Compare and repeat.** Recapture the same evidence matrix after changes.
+6. **Compare and repeat.** Run or render the changed surfaces again.
    Compare against the reference slice, product promise, platform conventions,
    realistic content, and declared budgets. Continue while a material exposed
    defect remains and the next correction is positive-net.
-7. **Deliver honestly.** Validate the exact changed candidate through its
-   repository delivery boundary. Separate local, candidate, landed, released,
+7. **Deliver honestly.** Run the finished path. Separate local, candidate, landed, released,
    and live claims. Hand launch admission to `../review-domain/references/launch-readiness/` when a
    go/no-go decision is required.
 
@@ -123,18 +122,15 @@ Return:
   input modes, and non-goals;
 - one-sentence product story and finish thesis, with approved reference slice
   and anti-directions;
-- surface-by-dimension coverage with `resolved | not-applicable | defect` and
-  exact evidence;
+- surface-by-dimension coverage with `resolved | not-applicable | defect`;
 - implemented corrections grouped by owning cause, including copy, assets,
   interactions, states, mechanics, and numbers changed;
-- before/after rendered captures, playthroughs, measurements, or other direct
-  evidence appropriate to the product;
+- what you ran or rendered on the finished path;
 - accessibility, localization, performance, resilience, and quality-tier
-  results where applicable;
-- blockers and residuals with consequence, owner, and exact closure evidence;
+  results where those were the job;
+- blockers and residuals with consequence and owner;
   and
-- local, candidate, landed, released, and live delivery state without
-  overclaim.
+- local, candidate, landed, released, and live state without overclaim.
 
 ## Guardrails
 
@@ -157,12 +153,11 @@ Return:
 
 ## Completion
 
-The pass completes only when every applicable selected surface reaches the
+The pass completes when every applicable selected surface reaches the
 declared target, no material exposed detail remains accidental or placeholder,
-cross-surface identity and semantics agree, the real product has been rendered
-or played through at the applicable matrix, exact regressions and budgets pass,
-and delivery state is reported truthfully. “No further imaginable improvement”
-is not required; no remaining positive-net material defect at this target is.
+cross-surface identity and semantics agree, and you ran or rendered the
+finished path. “No further imaginable improvement” is not required; no remaining
+positive-net material defect at this target is.
 
 ## Progressive disclosure
 

@@ -107,7 +107,7 @@ make the split operational:
   known-inferior instruction without surfacing the alternative is a failure
   equal to executing it wrong.
 - **Principal-blocking is a failure mode.** The default loop is agent-decide,
-  agent-review in a separate adversarial context, evidence-first report. Escalation
+  agent-review in a separate adversarial context, then a short status. Escalation
   to the principal is by exception: a materiality threshold from the
   delegation envelope (defined in the risk-posture record —
   [`commercial-decision-standard.md`](https://github.com/SylphxAI/skills/blob/main/skills/compose-product-portfolio/references/commercial-decision-standard/references/full-standard.md)
@@ -330,41 +330,12 @@ count. Human attention is a constrained interface budget:
 The quality target is the shortest scannable output that remains truthful and
 materially complete for its audience. Word count alone is not a quality gate.
 
-## Evidence-First Reporting
+## Status reporting
 
-Every factual claim in a checkpoint, review, handoff, issue, PR description, or
-final report carries its evidence. The claim class determines the proof
-obligation:
-
-| Claim | Required evidence |
-| --- | --- |
-| "I did X" (action taken) | The artifact: diff, commit SHA, PR/issue link, command run with its output. |
-| "X is done / works" (completion) | Verification output: test/CI results, typecheck/lint output, deploy readback, DB rows, pod state, observed runtime behavior. |
-| "X is broken / the bug is Y" (problem) | The reproduction: failing test, error log, stack trace, request/response pair, metric. |
-| "The root cause is Z" | The traced mechanism: reproduction → cause traced through the actual code/config path → fix → the original reproduction re-verified passing. |
-
-Rules:
-
-- Evidence is checkable by the reader: a command plus its output, a link, an
-  identifier, a `file:line` — not narrative. "I ran the tests" without the
-  result is a claim, not evidence.
-- Verify content, not exit codes: a green command that does not exercise the
-  claimed behavior proves nothing.
-- A root cause is proven only when the mechanism is traced end-to-end and the
-  fix makes the original reproduction pass. A plausible explanation that
-  pattern-matches a known failure mode is a hypothesis, not a diagnosis.
-- Label epistemic state explicitly: verified fact, inference, or hypothesis.
-  Never present an unverified inference as a verified outcome.
-- Bind delivery state explicitly. A plan is not implementation; implementation
-  is not validation; an open or green PR is not merge; merge is not deployment;
-  deployment is not behavioral or SLO proof.
-- Match evidence scope to claim scope: the proof must exercise the same
-  revision, environment, boundary, population, and failure mode the conclusion
-  covers. Narrow evidence cannot establish a broad claim.
-- Negative results are evidence too: report what failed, what was skipped, and
-  what is temporarily bridged, with the same citation discipline.
-- When evidence cannot be obtained (no access, blocked gate, missing telemetry),
-  say so, and state what evidence would prove the claim and how to obtain it.
+Say what you did and what you ran. Do not attach a proof table to ordinary
+work. Claim landed or live only when that layer is actually true. Open
+`synthesize-evidence-brief` only when the job itself is a disputed or public
+claim.
 
 ## Subagent Use
 

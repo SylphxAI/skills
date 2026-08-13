@@ -1,6 +1,6 @@
 ---
 name: expand-product
-description: "Scale a validated product core with metrics and core-path proof."
+description: "Scale a validated product core: bottleneck, highest-slope change, run the path you changed."
 ---
 
 # Expand Product
@@ -14,11 +14,11 @@ When the core already works and you need **reach, capacity, or leverage ×N**, r
 
 ## Method
 
-**Measure bottleneck → highest-slope change → implement → prove scale metric + core non-regression.**  
-Do not scale a broken core.
+**Measure bottleneck → highest-slope change → implement → run the path you changed.**  
+Do not scale a broken core. Do not invent a scale metric.
 
 ### 1. Frame
-- Validated core (what already works) and ×N target (metric or surface count)
+- Validated core (what already works) and ×N target (users, surfaces, or capacity)
 - Constraints: cost, latency, compliance, ownership boundaries
 - Non-goals: greenfield reinvention; pure cosmetics
 
@@ -29,7 +29,7 @@ Do not scale a broken core.
 - Stop when strategy choice is stable
 
 ### 3. Admit work
-- **In:** changes that move the ×N metric or unlock the next scale gate
+- **In:** changes that move the ×N target or unlock the next scale gate
 - **Out:** below-threshold polish; rewrites without scale slope
 - Prefer one coherent scale bet
 
@@ -40,18 +40,19 @@ Do not scale a broken core.
 - Avoid hacks that cannot survive the target ×N
 
 ### 5. Deliver / verify
-- Movement on the scale metric (or declared proxy)
-- Core journey non-regression check
+- Run the path you changed
+- Spot-check the core journey still works
 - Write down new maintain/finish burden created
+- Claim a scale result only when you actually measured it
 
 ## Cycle done
 
-1. Scale bet implemented and measured (or externally blocked with evidence)  
+1. Scale bet implemented on the path you changed (or externally blocked)  
 2. Core path still holds  
 3. New burden is recorded  
 4. Scope stayed on the framed ×N  
 
 ## Output
 
-Core · ×N target · change · metrics · core check · new burdens
+Core · ×N target · change · path run · new burdens
 

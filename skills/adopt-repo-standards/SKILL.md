@@ -20,7 +20,7 @@ adoption** cycle—not a permanent dual instruction stack.
 **Required surfaces → wire entrypoints → verify → hard-cut predecessor layouts.**
 
 ### 1. Frame
-- Target repo and delivery terminal
+- Target repo and asked terminal (source landing unless the user asked to ship)
 - Required surfaces (constitution projection, `PROJECT.md`, fences, checks)
 - Predecessor instruction sources to retire
 
@@ -46,12 +46,12 @@ adoption** cycle—not a permanent dual instruction stack.
 - Apply constraint depth as **constraints on the adoption artifact**—do not copy entire standards into the product repo
 
 ### 5. Deliver / verify
-- Entrypoints resolve; conformance checks run as declared
+- Entrypoints resolve; run the adoption checks the repo already declared
 - Predecessor dual layout **deleted** (or reduced to a one-way no-write adapter
   with exact retirement under eng-hard-cut-01 gates only)
 - A residual is truthful incomplete **status**, not permission to keep dual
   instruction authority or a second system
-- Local vs landed claims stay honest
+- Local vs landed claims stay honest. Do not require live readback to finish adoption.
 
 ## Cycle done
 

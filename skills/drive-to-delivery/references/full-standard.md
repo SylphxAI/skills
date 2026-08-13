@@ -108,7 +108,7 @@ outcomes one by one. Four rules make the split operational:
   known-inferior instruction without surfacing the alternative is a failure
   equal to executing it wrong.
 - **Principal-blocking is a failure mode.** The default loop is agent-decide,
-  proportionate self-review, evidence-first report; use a separate adversarial
+  proportionate self-review, then a short status; use a separate adversarial
   context only when it independently qualifies under the delegation predicate.
   Escalation to the principal is by exception: a materiality threshold from the
   delegation envelope (defined in the risk-posture record —
@@ -486,14 +486,12 @@ to checkpoints, handoffs, evidence reports, and final output. This standard
 owns the execution-specific facts; the communication Skill owns compression,
 ordering, and progressive disclosure.
 
-## Evidence-First Reporting
+## Status reporting
 
-Execution checkpoints supply exact state and evidence locators: current exact
-revision or live subject, completed actions, running lanes, blockers, and
-validation or delivery observations. `evidence-and-claims-standard` owns the
-support verdict and lifecycle boundaries for material action, problem,
-causality, completion, and delivery claims. Integrate its result into the
-checkpoint or final status instead of emitting a second evidence report.
+Execution checkpoints supply exact state: current revision or live subject,
+completed actions, running lanes, blockers, and what you ran. Open
+`synthesize-evidence-brief` only when the job itself is a disputed or public
+claim. Do not emit a second proof report for ordinary work.
 
 ## Subagent Use
 

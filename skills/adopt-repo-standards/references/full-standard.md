@@ -14,7 +14,7 @@ Rule IDs:
 - `repo-entry-01` — runtime entrypoint resolves Skills, local facts, and role maps.
 - `repo-architecture-01` — real product code satisfies the canonical engineering architecture.
 - `repo-verify-01` — one proportional exact-candidate verification entrypoint exists.
-- `repo-delivery-01` — the repository declares and proves its terminal delivery boundary.
+- `repo-delivery-01` — the repository declares its asked terminal (source landing unless the user asked to ship).
 - `repo-adoption-01` — adoption status is derived from facts, never authored around gaps.
 
 Every active durable repository exposes:
@@ -36,9 +36,9 @@ Every active durable repository exposes:
 5. **Verification entrypoint** — one documented command runs the smallest
    complete deterministic checks for a candidate. Extra gates require a
    distinct material risk; do not accumulate ceremonial checks.
-6. **Delivery boundary** — the repo declares whether terminal delivery is
+6. **Delivery boundary** — the repo declares whether the asked terminal is
    source landing, package release, deployment, store publication, or another
-   product-specific boundary, plus proportional proof and recovery.
+   product-specific boundary. Live proof is not required to finish adoption.
 7. **Contracts and documentation** — public APIs, events, schemas, CLI/config,
    database changes, generated clients, ADRs, specs, and runbooks have explicit
    authoritative homes where applicable.
@@ -76,7 +76,7 @@ not a reason to hold a proven terminal indefinitely.
 | Project identity | Durable `PROJECT.md`/README with purpose, vision/NSM as applicable, and delivery terminal |
 | Code architecture | Compiler/module visibility or semantic dependency analysis plus domain/use-case/adapter behavior tests; no source-string implementation-token tests |
 | Verification | Exact-candidate command and results |
-| Delivery | Proof at the repository's declared terminal boundary |
+| Delivery | Declared asked terminal; live proof only if that terminal is live |
 | Selected-repository adoption | adoption selector/conformance readback |
 
 ## Migration terminal
@@ -117,6 +117,6 @@ Full altitude: `drive-to-delivery` → `source-authoring-standard` →
 
 ## Validation
 
-Run the repository's declared verification entrypoint, then verify the active
-delivery boundary. Organization-wide status is adoption-system readback; it is not
+Run the repository's declared verification entrypoint. Do not require live
+readback unless the asked terminal is live. Organization-wide status is not
 a repo-local completion claim.
