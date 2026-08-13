@@ -99,6 +99,32 @@ code into the next repo. If a predecessor house name exists, hard-cut the
 binding docs and public fields to English; leave the old name only in a
 retired ADR.
 
+**Also forbidden (over-engineering that spreads the same way):**
+
+- Rebranding the North Star as **Polar / Polaris / Polariss** (the industry
+  name is North Star Metric).
+- Inventing **claim ladders** beyond industry evidence layers
+  (**artifact / check / live**). Do not mint L0–L6 as a product score.
+- Treating a **residual matrix**, soak-wave title, door crawl, or
+  `*Grade` string as progress or NSM. Those files are gap **inventory**.
+- Using **Quality vocabulary (`q-*`)** or `eng-*` rule IDs as a product
+  win metric. Engineering quality follows ISO/IEC 25010 names or the
+  nine English principles — not a second scoreboard.
+- Adding OpenTelemetry / logs / traces without a named golden signal
+  (latency, traffic, errors, saturation) or a live readback that an
+  operator would page on.
+
+## Evidence layers (industry)
+
+Google SRE and conventional delivery use three layers. Product repos
+must not invent a fourth product object here:
+
+| Layer | Means | Is not |
+| --- | --- | --- |
+| **Artifact** | Source, image digest, schema | Live behaviour |
+| **Check** | CI, tests, linters, contract gates | Customer value |
+| **Live** | Production readback of the postcondition | A residual JSON grade |
+
 ## `PROJECT.md` / README entry (projection only)
 
 Industry default entry is **README**. This org also uses **`PROJECT.md`** as a
@@ -259,7 +285,9 @@ Write the smallest durable artifact that closes a real gap:
 ## Validation checklist
 
 - [ ] Vision, NSM, OKRs/goals, PRD, and specs are not one unlabeled blob  
-- [ ] NSM is a metric of customer value in English industry terms; not a house acronym; not a feature list  
+- [ ] NSM is a metric of customer value in English industry terms; not a house acronym, Polar brand, residual grade, or feature list
+- [ ] Evidence claims use artifact / check / live — not an invented L0–L6 score
+- [ ] Residual matrices (if any) are inventory only; no `*Grade` as progress
 - [ ] OKRs/goals are completable when present  
 - [ ] Feature/capability inventory lives in the PRD only  
 - [ ] Interface field lists live in contracts/generated refs  

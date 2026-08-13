@@ -14,8 +14,9 @@ PRD · Specs/API reference · ADR · README entry · Diátaxis user docs.
 2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests.
 3. Prefer schema/test/generated reference over hand-copied lists.
 4. Keep NSM short (English industry quantity + optional one-liner). Do not
-   mint house score acronyms. Put product shape in **Vision**; completable
-   work in **OKRs/Goals**; features in **PRD**; field details in **specs**.
+   mint house score acronyms, Polar brands, residual grades, or L0–L6
+   claim scores. Put product shape in **Vision**; completable work in
+   **OKRs/Goals**; features in **PRD**; field details in **specs**.
 
 ## Composition and output
 

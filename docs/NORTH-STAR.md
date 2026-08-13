@@ -73,6 +73,7 @@ How to file: [`docs/QUALIFICATION.md`](QUALIFICATION.md). Method:
 - Minting house score acronyms (three-to-five-letter KPIs). Name customer
   value in English with an industry quantity. See documentation-standard
   § North Star Metric (naming).
+- Polar brands, residual grades, invented claim ladders.
 
 ---
 

@@ -129,7 +129,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end with original-oracle proof. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:c2ef2840c1e2cf2e1eee0095682efa68253f1c9775d693f6849c1f392153de9d",
+      "packageDigest": "sha256:c65c5d017f0328477707880c182acc088c77f29688d84b6803de235a6bc0f40f",
       "capability": {
         "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
@@ -311,7 +311,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:67a330fd93c3b28c9197d48cc90cc1964f04943f0717cfde53d6179b66784c67",
+      "packageDigest": "sha256:10976730304d3b90f075c8280ef69fe08efefa56a38ffd52fa94d47780453bf6",
       "capability": {
         "job": "Drive one accepted multi-phase objective (engineering or product) to its delivery terminal with evidence at the active delivery boundary.",
         "outcomeObservable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
