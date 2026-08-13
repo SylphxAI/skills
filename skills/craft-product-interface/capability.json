@@ -40,7 +40,6 @@
   "failureSemantics": "Never fabricate product behavior, testimonials, prices, entitlements, metrics, compliance, or validation; an unrenderable or unverified flow is not complete, and Review mode stays read-only unless fixing is requested.",
   "outcome": {
     "observable": "An Interface Craft Pack with a stated direction, covered states and accessibility floors, and rendered verification evidence (screenshots, device checks, tests) for the declared surface or flow.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

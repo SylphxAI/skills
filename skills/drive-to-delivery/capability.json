@@ -39,7 +39,6 @@
   "failureSemantics": "Claiming done on local green, a queued PR, or an unverified milestone is a failure; the loop continues until terminal evidence at the active delivery boundary exists or an honest blocker is recorded.",
   "outcome": {
     "observable": "The accepted objective reaches its delivery terminal with evidence at the active delivery boundary (landed or live as required), or a recorded honest blocker, with checkpoint evidence in the primary job output.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

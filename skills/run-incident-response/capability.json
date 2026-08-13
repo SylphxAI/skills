@@ -39,7 +39,6 @@
   "failureSemantics": "Mitigation comes before diagnosis; working as designed is not resolution while users are harmed; live metrics are never invented and telemetry gaps are reported.",
   "outcome": {
     "observable": "An incident record with mitigation evidence, facts-only stakeholder communications, an owning-cause fix or permanent mitigation, and a postmortem with action items and owners.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

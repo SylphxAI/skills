@@ -14,6 +14,8 @@
  * Honesty contract (docs/QUALIFICATION.md, skills/design-skill-evals):
  * - Structural green and CI are never qualification evidence; this runner
  *   records observable artifacts and deterministic oracles.
+ * - Agent tasks use an isolated CODEX_HOME: with-skill installs only this
+ *   package; baseline installs none. Host catalog must not leak.
  * - Agent tasks are fresh-context behavior tests; injection state is recorded
  *   as NOT verified unless a runtime-native selection trace exists.
  * - A qualified record requires every task to pass, a clean automated pattern
@@ -43,8 +45,15 @@ import { repositoryRoot, readJson } from './build-catalog.mjs';
 import {
   FORBIDDEN_INSTRUCTION_PATTERNS,
   incrementalValueEligible,
+  scanTextForForbiddenInstructions,
   suiteForbiddenInstructionFindings,
 } from './qualification-integrity.mjs';
+import {
+  SEARCH_BEFORE_ACT_FLOOR,
+  hostCodexHome,
+  prepareAgentPairHome,
+  writeSearchFloor,
+} from './qualification-pair.mjs';
 
 const PYTHON = process.env.SYLPHX_QUALIFY_PYTHON || 'python3';
 const CODEX = process.env.SYLPHX_QUALIFY_CODEX || 'codex';
@@ -68,15 +77,6 @@ const DANGEROUS_PATTERNS = [
   { pattern: /disable\s+(the\s+)?sandbox/i, label: 'disable-sandbox' },
   { pattern: /bypass\s+(security|approval)/i, label: 'bypass-security' },
 ];
-
-// Always-on floor for native-activation cases: mirrors the runtime
-// constitution's "Search before you act" bullet so the test measures whether a
-// fresh agent discovers the installed skill on its own.
-const AGENTS_FLOOR = `# Instructions
-
-- Search before you act: before doing any work, search your installed skills. If a matching skill exists, load it and follow its procedure.
-- Complete the user's requested output in this workspace.
-`;
 
 function sha256(bytes) {
   return `sha256:${createHash('sha256').update(bytes).digest('hex')}`;
@@ -282,17 +282,26 @@ async function runTask(task, suite, suiteRoot, runRoot, python) {
     stdout = String(result.stdout || '');
     stderr = String(result.stderr || '');
   } else if (task.kind === 'agent') {
+    const isolatedHome = prepareAgentPairHome({
+      label: `${suite.capability}-${path.basename(runRoot)}-${task.id}`,
+      baseline: task.baseline === true,
+      packageRoot,
+      capability: suite.capability,
+      hostHome: hostCodexHome(),
+    });
+    if (task.baseline !== true) writeSearchFloor(work);
     const agentExtraArgs = (process.env.SYLPHX_QUALIFY_AGENT_ARGS || '').split(/\s+/).filter(Boolean);
     const agentArgs = ['exec', '--skip-git-repo-check', '-C', work, '-s', 'danger-full-access', '--ephemeral', ...agentExtraArgs, task.prompt];
     command = [CODEX, ...agentArgs];
     const result = spawnSync(CODEX, agentArgs, {
       encoding: 'utf8',
       timeout: task.timeoutMs || 600_000,
-      env: { ...process.env, CODEX_HOME: process.env.CODEX_HOME || path.join(process.env.HOME || '.', '.codex') },
+      env: { ...process.env, CODEX_HOME: isolatedHome },
     });
     exitCode = result.status;
     stdout = String(result.stdout || '');
     stderr = String(result.stderr || '');
+    rmSync(isolatedHome, { recursive: true, force: true });
   }
 
   // Copy produced artifacts for the record (bounded size).
@@ -306,6 +315,11 @@ async function runTask(task, suite, suiteRoot, runRoot, python) {
   const artifactDigests = fileDigestMap(produced);
 
   const failures = await runAssertions(task.oracle.assertions, { root: work, exitCode, stdout }, python);
+  if (task.kind === 'agent' && task.baseline !== true) {
+    for (const label of scanTextForForbiddenInstructions(stdout)) {
+      failures.push(`harm: with-skill output forbids host search ("${label}")`);
+    }
+  }
   rmSync(work, { recursive: true, force: true });
   const status = failures.length === 0 ? 'pass' : 'fail';
   const record = {
@@ -339,25 +353,17 @@ async function runActivationCase(activationCase, suite, runRoot, python) {
   const work = path.join(os.tmpdir(), `sylphx-activate-${suite.capability}-${stampName}-${activationCase.id}`);
   rmSync(work, { recursive: true, force: true });
   mkdirSync(work, { recursive: true });
-  const codexHome = path.join(os.tmpdir(), `sylphx-activate-home-${suite.capability}-${stampName}-${activationCase.id}`);
-  rmSync(codexHome, { recursive: true, force: true });
-  mkdirSync(codexHome, { recursive: true });
+  const packageRoot = path.join(repositoryRoot, 'skills', suite.capability);
+  const codexHome = prepareAgentPairHome({
+    label: `activate-${suite.capability}-${stampName}-${activationCase.id}`,
+    baseline: false,
+    packageRoot,
+    capability: suite.capability,
+    hostHome: hostCodexHome(),
+  });
   const artifactRoot = path.join(runRoot, 'activation', activationCase.id, 'artifacts');
   mkdirSync(artifactRoot, { recursive: true });
-
-  const hostCodexHome = process.env.CODEX_HOME || path.join(process.env.HOME || '.', '.codex');
-  for (const name of ['config.toml', 'auth.json']) {
-    const source = path.join(hostCodexHome, name);
-    if (existsSync(source)) cpSync(source, path.join(codexHome, name));
-  }
-  const skillDest = path.join(codexHome, 'skills', suite.capability);
-  mkdirSync(skillDest, { recursive: true });
-  const packageRoot = path.join(repositoryRoot, 'skills', suite.capability);
-  for (const entry of readdirSync(packageRoot, { withFileTypes: true })) {
-    if (entry.name === 'evals') continue; // fixtures are eval material, not part of the installed skill
-    cpSync(path.join(packageRoot, entry.name), path.join(skillDest, entry.name), { recursive: true });
-  }
-  writeFileSync(path.join(work, 'AGENTS.md'), AGENTS_FLOOR);
+  writeSearchFloor(work);
 
   const agentExtraArgs = (process.env.SYLPHX_QUALIFY_AGENT_ARGS || '').split(/\s+/).filter(Boolean);
   const agentArgs = ['exec', '--skip-git-repo-check', '-C', work, '-s', 'danger-full-access', '--ephemeral', ...agentExtraArgs, activationCase.prompt];
@@ -591,6 +597,20 @@ async function main() {
     runDir: path.relative(repositoryRoot, runRoot),
   };
   writeFileSync(path.join(runRoot, 'report.json'), `${JSON.stringify(report, null, 2)}\n`);
+  const benchmark = [
+    `# Benchmark`,
+    ``,
+    `- Capability: \`${capability}\``,
+    `- Verdict: ${verdict}`,
+    `- Package digest: \`${candidate.packageDigest}\``,
+    comparison
+      ? `- Paired result: with-skill ${comparison.withSkill} / baseline ${comparison.baseline}`
+      : `- Paired result: not declared (same-prompt pair required to claim incremental-value)`,
+    `- Pattern scan: ${scan.verdict}`,
+    `- Tasks: ${taskResults.map((task) => `${task.id}=${task.status}`).join(', ')}`,
+    ``,
+  ].join('\n');
+  writeFileSync(path.join(runRoot, 'BENCHMARK.md'), benchmark);
 
   if (apply && verdict === 'qualified') {
     const qualificationPath = applyQualification(suite, report, capability, stamp, resultsDigest);

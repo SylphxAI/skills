@@ -31,7 +31,6 @@
   "failureSemantics": "Scope thrash, hidden residuals, or ceremony that outgrows the risk are failures; the terminal condition is explicit and residuals are reported rather than silently carried.",
   "outcome": {
     "observable": "A stable scope contract with objective, in/out, non-goals, cut lines, and residuals that the requester can approve before implementation proceeds.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

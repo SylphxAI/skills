@@ -1,37 +1,10 @@
 {
   "schemaVersion": 1,
   "name": "analyze-system-dynamics",
-  "status": "qualified",
-  "packageDigest": "sha256:ceeffc51a24fcdc9ec35baf16d328d81322c6288f93e8dd530db310c0b873dbb",
-  "evaluator": {
-    "name": "Sylphx Qualification Runner",
-    "kind": "host",
-    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
-  },
-  "qualifiedAt": "2026-08-10T18:27:04.907Z",
-  "expiresAt": "2026-11-08T18:27:19.881Z",
-  "evidence": [
-    {
-      "id": "analyze-system-dynamics-compatibility-2026-08-10T18-23-41-030Z",
-      "kind": "compatibility",
-      "digest": "sha256:786001609e1dd8c4d6caad937e1dee50667cc995f11c92c5a6b46c427c6f11b0",
-      "uri": "docs/qualification/evals/analyze-system-dynamics/run-2026-08-10T18-23-41-030Z/report.json"
-    },
-    {
-      "id": "analyze-system-dynamics-automated-pattern-scan-2026-08-10T18-23-41-030Z",
-      "kind": "automated-pattern-scan",
-      "digest": "sha256:786001609e1dd8c4d6caad937e1dee50667cc995f11c92c5a6b46c427c6f11b0",
-      "uri": "docs/qualification/evals/analyze-system-dynamics/run-2026-08-10T18-23-41-030Z/report.json"
-    }
-  ],
-  "compatibility": [
-    {
-      "environment": "codex-cli 0.147.0 (agent task)",
-      "result": "verified"
-    },
-    {
-      "environment": "node >= 20",
-      "result": "verified"
-    }
-  ]
+  "status": "unqualified",
+  "evaluator": null,
+  "qualifiedAt": null,
+  "expiresAt": null,
+  "evidence": [],
+  "compatibility": []
 }

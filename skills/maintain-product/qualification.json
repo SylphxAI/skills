@@ -1,37 +1,10 @@
 {
   "schemaVersion": 1,
   "name": "maintain-product",
-  "status": "qualified",
-  "packageDigest": "sha256:37ea5d3ca780505c76215a71d19d9eb5cca1e17d0c071c08ecf65595d68b5918",
-  "evaluator": {
-    "name": "Sylphx Qualification Runner",
-    "kind": "host",
-    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
-  },
-  "qualifiedAt": "2026-08-10T17:31:46.654Z",
-  "expiresAt": "2026-11-08T17:37:04.716Z",
-  "evidence": [
-    {
-      "id": "maintain-product-compatibility-2026-08-10T17-29-42-099Z",
-      "kind": "compatibility",
-      "digest": "sha256:a51daedc31eba73c9cf715627232622bcb307d214a8b3c8ce669972665b7c21e",
-      "uri": "docs/qualification/evals/maintain-product/run-2026-08-10T17-29-42-099Z/report.json"
-    },
-    {
-      "id": "maintain-product-automated-pattern-scan-2026-08-10T17-29-42-099Z",
-      "kind": "automated-pattern-scan",
-      "digest": "sha256:a51daedc31eba73c9cf715627232622bcb307d214a8b3c8ce669972665b7c21e",
-      "uri": "docs/qualification/evals/maintain-product/run-2026-08-10T17-29-42-099Z/report.json"
-    }
-  ],
-  "compatibility": [
-    {
-      "environment": "codex-cli 0.147.0 (agent task)",
-      "result": "verified"
-    },
-    {
-      "environment": "node >= 20",
-      "result": "verified"
-    }
-  ]
+  "status": "unqualified",
+  "evaluator": null,
+  "qualifiedAt": null,
+  "expiresAt": null,
+  "evidence": [],
+  "compatibility": []
 }

@@ -39,7 +39,6 @@
   "failureSemantics": "Every live claim must be exact-build truthful, localized, and accessible; conversion gains that worsen downstream quality, trust, retention, refund, or support countermetrics are not wins; no second production source of truth is created.",
   "outcome": {
     "observable": "A Channel Listing and Creative Sequence where every claim maps to exact shipped behavior, assets pass channel QA by digest, localization is native-QA'd, and conversion gains survive trust and retention countermetrics with live readback.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

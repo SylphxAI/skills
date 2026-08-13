@@ -35,7 +35,6 @@
   "failureSemantics": "Language and format claims are only as fresh as their dated evidence; a gate runs before committing unknown-model choices, and any hardcoded model ranking is treated as stale until re-measured.",
   "outcome": {
     "observable": "A document or prompt with explicit purpose/audience, structure before prose, plain-language floors, a recorded evidence-based language/format decision, and a re-verification gate that an independent reviewer can rerun.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

@@ -1,37 +1,10 @@
 {
   "schemaVersion": 1,
   "name": "synthesize-evidence-brief",
-  "status": "qualified",
-  "packageDigest": "sha256:38b45e5cbe029ea2b0bc0390b493b583fb7fb12b7cd9f6ccd14dcf44a5826544",
-  "evaluator": {
-    "name": "Sylphx Qualification Runner",
-    "kind": "host",
-    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
-  },
-  "qualifiedAt": "2026-08-10T15:56:14.743Z",
-  "expiresAt": "2026-11-08T15:56:21.525Z",
-  "evidence": [
-    {
-      "id": "synthesize-evidence-brief-compatibility-2026-08-10T15-42-08-028Z",
-      "kind": "compatibility",
-      "digest": "sha256:9e7331500a4ad62c95e525de132a005e107ec0cadcf8f2797dcdd5c9d01b714a",
-      "uri": "docs/qualification/evals/synthesize-evidence-brief/run-2026-08-10T15-42-08-028Z/report.json"
-    },
-    {
-      "id": "synthesize-evidence-brief-automated-pattern-scan-2026-08-10T15-42-08-028Z",
-      "kind": "automated-pattern-scan",
-      "digest": "sha256:9e7331500a4ad62c95e525de132a005e107ec0cadcf8f2797dcdd5c9d01b714a",
-      "uri": "docs/qualification/evals/synthesize-evidence-brief/run-2026-08-10T15-42-08-028Z/report.json"
-    }
-  ],
-  "compatibility": [
-    {
-      "environment": "codex-cli 0.147.0 (agent task)",
-      "result": "verified"
-    },
-    {
-      "environment": "node >= 20",
-      "result": "verified"
-    }
-  ]
+  "status": "unqualified",
+  "evaluator": null,
+  "qualifiedAt": null,
+  "expiresAt": null,
+  "evidence": [],
+  "compatibility": []
 }

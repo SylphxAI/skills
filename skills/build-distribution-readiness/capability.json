@@ -39,7 +39,6 @@
   "failureSemantics": "An untested channel row is unknown, never inherited from another OS or runtime; blockers are typed by exact dependency, failed proof, external authority pending, or policy floor, and no release is called complete without live readback evidence.",
   "outcome": {
     "observable": "A Distribution Evidence Pack where every selected channel names its exact artifact identity, install/upgrade behavior, and live readback proof, and every blocker names its next machine action.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

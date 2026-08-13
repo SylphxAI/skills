@@ -37,7 +37,6 @@
   "failureSemantics": "A convenient sample, memorable quotation, or researcher interpretation never becomes a population claim; what participants did or said is separated from what the researcher inferred; saturation is never manufactured from repetition in a narrow sample.",
   "outcome": {
     "observable": "A User Research Protocol and Findings with a session ledger, supporting and disconfirming observations, coverage limits, confidence, and non-claims that a decision owner can act on.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

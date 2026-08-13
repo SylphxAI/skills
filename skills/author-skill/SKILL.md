@@ -120,7 +120,7 @@ filed per `docs/QUALIFICATION.md` and `design-skill-evals`.
 - optional `required.tools[]`, `required.data[]`, `required.permissions[]`
 - `failureSemantics` (one sentence)
 - `outcome.observable` + `outcome.oracleOwner` (`user-system` | `repository` |
-  `host`) + `outcome.receiptSchema: "outcome-receipt.schema.json"`
+  `host`)
 
 `qualification.json` (schema `schemas/qualification-record.schema.json`):
 

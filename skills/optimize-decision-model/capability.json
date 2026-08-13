@@ -37,7 +37,6 @@
   "failureSemantics": "Solver success is not model validity; infeasibility keeps an explicit diagnostic instead of silently dropping constraints, and every material constraint is independently recomputed from the emitted solution.",
   "outcome": {
     "observable": "A Constrained Decision Model whose recommended solution an independent checker can recompute, with feasibility evidence, solver record, sensitivity analysis, and a robust operating policy with fallback and re-solve triggers.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

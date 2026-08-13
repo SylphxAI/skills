@@ -30,14 +30,19 @@
     "Fresh catalog.json and green npm test result"
   ],
   "required": {
-    "tools": ["node >= 20", "npm (npm run build:catalog && npm test)", "git"],
+    "tools": [
+      "node >= 20",
+      "npm (npm run build:catalog && npm test)",
+      "git"
+    ],
     "data": [],
-    "permissions": ["write access to the target repository (or a PR path into it)"]
+    "permissions": [
+      "write access to the target repository (or a PR path into it)"
+    ]
   },
   "failureSemantics": "check.mjs reports broken links, schema violations, stale catalogs, and forbidden markers; acceptance fails closed until the package passes npm test with a fresh catalog and the description selects for the right ask while abstaining on near-misses.",
   "outcome": {
     "observable": "The revised package passes npm test with a fresh catalog, local links resolve, the capability contract validates, and the description selects for the right ask and abstains on near-misses.",
-    "oracleOwner": "repository",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "repository"
   }
 }

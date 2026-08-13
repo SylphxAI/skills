@@ -39,7 +39,6 @@
   "failureSemantics": "Adoption fails closed: entrypoints that do not resolve, conformance checks that do not run as declared, or an unverified predecessor retirement mean the cycle is not done; local versus landed claims stay honest.",
   "outcome": {
     "observable": "Entrypoints resolve and conformance checks run as declared in the target repo, and the predecessor dual instruction authority is retired for the framed scope (residuals are incomplete status only, not dual-system permission).",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

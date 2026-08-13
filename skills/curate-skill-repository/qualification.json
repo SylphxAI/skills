@@ -1,37 +1,10 @@
 {
   "schemaVersion": 1,
   "name": "curate-skill-repository",
-  "status": "qualified",
-  "packageDigest": "sha256:26d3ab30e00611bab941e71dd4cad26c9a2d2a6be9d31bc07ee104896d09d911",
-  "evaluator": {
-    "name": "Sylphx Qualification Runner",
-    "kind": "host",
-    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
-  },
-  "qualifiedAt": "2026-08-10T16:46:03.737Z",
-  "expiresAt": "2026-11-08T16:46:16.178Z",
-  "evidence": [
-    {
-      "id": "curate-skill-repository-compatibility-2026-08-10T16-41-46-039Z",
-      "kind": "compatibility",
-      "digest": "sha256:43ca5debd229c727c75d5e22f2a65917aed0553df1e829c42b51529532f2b13e",
-      "uri": "docs/qualification/evals/curate-skill-repository/run-2026-08-10T16-41-46-039Z/report.json"
-    },
-    {
-      "id": "curate-skill-repository-automated-pattern-scan-2026-08-10T16-41-46-039Z",
-      "kind": "automated-pattern-scan",
-      "digest": "sha256:43ca5debd229c727c75d5e22f2a65917aed0553df1e829c42b51529532f2b13e",
-      "uri": "docs/qualification/evals/curate-skill-repository/run-2026-08-10T16-41-46-039Z/report.json"
-    }
-  ],
-  "compatibility": [
-    {
-      "environment": "codex-cli 0.147.0 (agent task)",
-      "result": "verified"
-    },
-    {
-      "environment": "node >= 20",
-      "result": "verified"
-    }
-  ]
+  "status": "unqualified",
+  "evaluator": null,
+  "qualifiedAt": null,
+  "expiresAt": null,
+  "evidence": [],
+  "compatibility": []
 }

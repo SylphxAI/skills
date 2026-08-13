@@ -35,7 +35,6 @@
   "failureSemantics": "Console or page errors fail the gate; a 200 alone is not visual proof; movement games need control-sign self-tests, not screenshots only; missing tools are reported as a gap, never faked.",
   "outcome": {
     "observable": "A recorded preview load with screenshot or explicit tool-gap, a fail-closed console gate result, and a human-facing summary that makes no false production claims.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

@@ -11,12 +11,10 @@ no requirement to send credentials to Sylphx to install.
 - CI validates package shape, capability contracts, qualification records,
   secrets hygiene, link integrity, and catalog digests. Hashes prove **bytes**,
   not publisher intent or semantic safety.
-- `qualified` in this repository means version-scoped, expiring evidence from
-  a named evaluator, including a mandatory automated pattern scan for secrets
-  and dangerous instruction patterns. As of 2026-08-13, 24 of 56 packages
-  carry that evidence bound to the live package digest; the rest are honestly
-  `unqualified`. The pattern scan
-  is a regex backstop, not a security review.
+- `qualified` means version-scoped, expiring evidence from a named evaluator,
+  including a pattern scan for secrets and dangerous instruction patterns.
+  As of 2026-08-13, **0 of 56** packages carry that badge; all remain
+  installable. The pattern scan is a regex backstop, not a security review.
 - There is **no current automated gate that evaluates malicious instructions,
   unsafe scripts, or capability permissions**. Treat any installed package as
   code from its author. This gap is tracked as a qualification gate, not
@@ -32,10 +30,8 @@ under the user's privileges (see [docs/PROMOTION.md](docs/PROMOTION.md)).
 Without `requireVerifiedTag: true`, the authority is repository governance plus
 tag immutability; with it, the authority is cryptographic (GPG/SSH `git
 verify-tag`). Branch-following AutoSync configs (schemaVersion 1) are retired
-and fail closed. Qualification is the value-trust model: 24 of 56 packages
-currently carry expiring, digest-bound qualification evidence, and `unqualified` remains
-the honest default. AutoSync also refuses to downgrade an installed
-`qualified` capability to `unqualified`.
+and fail closed. `unqualified` is the honest default and remains usable.
+AutoSync refuses to downgrade an installed `qualified` name to `unqualified`.
 
 ## Do not commit
 

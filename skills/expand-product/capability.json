@@ -39,7 +39,6 @@
   "failureSemantics": "No scale claim without metric movement or a declared proxy plus core non-regression check; new operational burden is recorded; scope stays on the framed ×N.",
   "outcome": {
     "observable": "The ×N metric moved or is externally blocked with evidence, the core journey still holds, and the new maintain/finish burden is written down.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

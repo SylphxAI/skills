@@ -35,7 +35,6 @@
   "failureSemantics": "Seat minimums versus included seats, overage rates versus marginal cost, and annual terms must reconcile; missing values are marked assumptions and the recommendation becomes a bounded experiment, never hidden policy.",
   "outcome": {
     "observable": "A Pricing and Packaging Decision with an internally consistent arithmetic pass, named value metric and plan boundaries, margin guardrails, and a bounded rollout plan with kill criteria.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

@@ -35,7 +35,6 @@
   "failureSemantics": "Micro-benchmarks that ignore the user path are not proof; local-only improvement is labeled local-only and never claimed as production improvement.",
   "outcome": {
     "observable": "The framed path re-measures with deltas against baseline using the repo's real tooling, and the run stops when the metric meets the target or only external blockers remain.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

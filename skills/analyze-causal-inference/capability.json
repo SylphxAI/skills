@@ -39,7 +39,6 @@
   "failureSemantics": "Not identified is a valid result when evidence cannot support the causal claim; association, prediction accuracy, or temporal order alone never becomes a causal claim, and unresolved threats stay in the record.",
   "outcome": {
     "observable": "A Causal Inference Record with an explicit estimand, identification assumptions, diagnostics, uncertainty, and claim boundary that an independent analyst can reproduce from the same data.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

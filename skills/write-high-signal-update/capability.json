@@ -31,7 +31,6 @@
   "failureSemantics": "An update that buries the ask produces no action; live or production status is never claimed without evidence; facts and inference stay separated.",
   "outcome": {
     "observable": "A short update ready to send where the decision or outcome comes first, facts carry sources, risks name owners and dates, and the ask is explicit.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

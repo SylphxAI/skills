@@ -35,7 +35,6 @@
   "failureSemantics": "Every material claim traces to a ledger entry with access date, geography, and evidence class; conflicts are preserved, never averaged away; inaccessible sources produce a research plan with unverified market claims, never memory-filled gaps.",
   "outcome": {
     "observable": "A decision-ready market synthesis where every recommendation links to supporting and contradicting ledger entries, includes counterevidence, and names the smallest next validation that could overturn it.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

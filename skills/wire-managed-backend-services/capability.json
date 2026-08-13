@@ -37,7 +37,6 @@
   "failureSemantics": "Preview or unshipped services fail closed and are never faked; every wired capability needs a real postcondition proof (object exists, session issued, sandbox exec returns, email accepted, flag evaluates).",
   "outcome": {
     "observable": "Managed backend capabilities wired end-to-end with documented auth planes and at least one behavioral proof per capability, plus an honest gap list for unshipped services, plan limits, or missing tokens.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

@@ -40,7 +40,6 @@
   "failureSemantics": "Seams are verified with real 2x2 or larger composites; props are isolated on keyable background without baked text; assets failing seam, identity, or naming QC are residual defects, not silently shipped.",
   "outcome": {
     "observable": "Tile or prop packs at the declared title paths with real seam composites, alpha-edge and naming QC notes, preview images, and an honest residual list.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

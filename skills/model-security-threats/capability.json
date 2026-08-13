@@ -39,7 +39,6 @@
   "failureSemantics": "A generic checklist is not a threat model; no taxonomy proves completeness; a control is never effective without implementation and verification evidence; the model never accepts its own material residual risk.",
   "outcome": {
     "observable": "A Threat Model and Security Design Contract linking system elements to credible threats, controls with enforcement points and owners, falsifiable verification, and owned residual risk with review triggers.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

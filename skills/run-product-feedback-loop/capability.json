@@ -39,7 +39,6 @@
   "failureSemantics": "Provenance is never flattened; urgent security, safety, payment, or accessibility signals never wait on a learning queue; the classifier is never its own validator or promoter; no uncommitted feature or date is promised.",
   "outcome": {
     "observable": "Feedback and review signals become source-preserving evidence clusters with validated product actions, immediate routing of urgent signals, and truthful customer updates, with two independent artifacts for combined private and public review flows.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

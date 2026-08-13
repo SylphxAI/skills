@@ -34,7 +34,6 @@
   "failureSemantics": "Only positive-net lanes are claimed under WIP and cost backpressure; continuous mode requires an external scheduler, bounded WIP, and readout; the tick ends after a compact report.",
   "outcome": {
     "observable": "A bounded tick report that selects and claims the next positive-net Work under WIP limits, with durable claim or checkpoint effects recorded where authority surfaces exist.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

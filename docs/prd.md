@@ -42,7 +42,7 @@ with **honest, version-scoped evidence** and **fail-closed install**.
 - Every listing carries `capability.json` and `qualification.json` (`unqualified` default).
 - Qualification is version-scoped, expiring, evaluator-named; structural CI ≠ value.
 - AutoSync applies only annotated `skills-v*` tags with promotion manifests.
-- This repository never fabricates outcome receipts (external oracle).
+- Unqualified packages remain installable. Qualification is not a use gate.
 
 ## Non-goals
 

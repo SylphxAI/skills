@@ -102,8 +102,9 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 ## Verified Capabilities clean break (2026-08-10)
 
 - Product identity is now **Sylphx Verified Capabilities** (open foundation):
-  Capability, Qualification, Outcome receipt; original North Star metric =
-  Verified Capability Yield (see `docs/NORTH-STAR.md`, ADR-20260810).
+  Capability and Qualification. The 2026-08-10 house yield KPI and required
+  outcome-receipt field were **retired 2026-08-13** (ADR-20260813;
+  `docs/NORTH-STAR.md`). Evaluation follows paired industry practice.
 - Every listing package carries `capability.json` (contract) and
   `qualification.json` (record; honest default `unqualified`). Catalog projects
   qualification state (0/57 qualified, 0 receipts at adoption).
@@ -117,10 +118,9 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 
 ## Stage-honest Product North Star (2026-08-12)
 
-- Full rewrite of `docs/NORTH-STAR.md`: product one-liner, three durable
-  concepts retained, **stage-honest metrics** — Stage A **Trustworthy Job
-  Coverage (TJC)** as active compass (0-receipt open foundation); Stage B
-  **Verified Capability Yield (VCY)** remains eventual product-system truth.
+- Full rewrite of `docs/NORTH-STAR.md` (superseded the next day): briefly
+  steered with house coverage/yield KPIs. **Do not restore.** See
+  ADR-20260813 and the 2026-08-13 ledger entry below.
 - Naming hygiene: Product North Star vs Quality North Star (`q-*`) vs
   universal Principles (9) — three layers, not one slogan.
 - ADR: `docs/history/adr/ADR-20260812-stage-honest-product-north-star.md`
@@ -198,3 +198,18 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   incremental-value.
 - Integrity gate rejects a later hand-edit that puts `incremental-value`
   back onto an ineligible suite.
+
+## 2026-08-13 — retire house NSM; follow industry eval
+
+- Removed TJC, VCY, Stage A/B, and required `outcome.receiptSchema` from
+  active product surfaces. Outcome-receipt schema moved to
+  `docs/history/retired-outcome-receipt-2026-08-13/`.
+- All 56 packages reset to `unqualified` (capability bytes changed). They
+  remain listed and installable.
+- `design-skill-evals` contract, suite, and runner now follow SkillsBench /
+  NVIDIA T3: same user prompt, isolated with-skill vs empty baseline home,
+  harm veto, one harness. Four-way / holdout program archived under
+  `docs/history/retired-four-way-eval-program-2026-08-13/`.
+- Foreign Platform-first recipe files and a constitution Platform floor that
+  were not part of this cut were dropped. They are not listings.
+- ADR: `docs/history/adr/ADR-20260813-retire-house-nsm-follow-industry-eval.md`.

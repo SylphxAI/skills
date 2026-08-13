@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "eval-suite.schema.json",
   "title": "Eval suite",
-  "description": "Version-scoped qualification suite for one capability: deterministic functional tasks, optional fresh-context agent comparison, optional native-activation cases, and an automated pattern scan, with deterministic oracles. Named evaluator owns the result; the runner records raw artifacts and digests.",
+  "description": "Version-scoped qualification suite for one capability: deterministic tasks, optional same-prompt with-skill vs baseline agent pair in isolated homes, optional native-activation cases, and an automated pattern scan. Named evaluator owns the result; the runner records raw artifacts and digests.",
   "type": "object",
   "additionalProperties": false,
   "required": [

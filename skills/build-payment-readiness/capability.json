@@ -39,7 +39,6 @@
   "failureSemantics": "No durable value from client-only confirmation; corrective ledger events append and replay rather than silently editing entitlements; payments never ship without fee, tax, settlement, invoice, refund, dispute, and entitlement reconciliation evidence.",
   "outcome": {
     "observable": "Payments, entitlements, and refunds reconcile against provider truth with replayable ledger events, named finance-close owners and tolerances, and release gates carrying fixture, alert, rollback, and approval evidence.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

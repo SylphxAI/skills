@@ -35,7 +35,6 @@
   "failureSemantics": "Public hosts are treated as hostile with crawlers assumed; no production custody or compliance archive is claimed; secrets never reach the artifact.",
   "outcome": {
     "observable": "A short-lived public URL serving the scrubbed artifact with recorded retention, a verified GET, an explicit non-secret statement, and the provider reliability residual stated.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

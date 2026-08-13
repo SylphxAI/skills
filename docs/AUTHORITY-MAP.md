@@ -30,9 +30,10 @@ are retired.
 | specification-control-plane-standard | skills/engineer-testable-requirements/references/specification-control-plane-standard |
 | work-coordination-standard | skills/select-next-work/references/work-coordination-standard |
 | documentation-standard | skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard |
+| sylphx-platform-first-policy | skills/build-product/references/sylphx-platform-first-policy |
 
 **Product North Star:** [NORTH-STAR.md](NORTH-STAR.md) — trusted methods; trust
-capped by version-scoped evidence; Stage A TJC / Stage B VCY.
+capped by version-scoped evidence; unqualified stays usable.
 
 **Project / product documentation (industry layers):** Product Vision · North
 Star Metric · OKRs/Goals · PRD · Specs/API reference · ADR · README/`PROJECT.md`
@@ -62,8 +63,7 @@ The repository is the **open foundation** of Sylphx Verified Capabilities (see
 | Package source (`skills/<id>/capability.json`) | The capability declaration (job, boundaries, inputs/outputs, required, failure semantics, outcome contract) | The truth of its claims |
 | Named evaluator / attestor | The qualification result (incremental value, compatibility, provenance, security, currentness) | The package content |
 | User product/system | The outcome oracle for the user's actual result | Qualification or catalog truth |
-| Control Plane (live product) | Live recording, activation, policy, evidence and reconciliation of outcome receipts | Static capability packages (SylphxAI/skills owns those) |
-| This repository | Static packages, qualification records, recording contracts, install/sync runtime | Live work, organization-wide adoption state, hosted services |
+| This repository | Static packages, qualification records, install/sync runtime | Live work, organization-wide adoption state, hosted services |
 
 Unqualified is the honest default; structural and runtime green is never
 qualification evidence. `catalog.json` projects per-package and repo-wide

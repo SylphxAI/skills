@@ -35,7 +35,6 @@
   "failureSemantics": "A design that spreads across many half-concepts instead of one deep core concept, or that lacks build-ready acceptance criteria, is incomplete; quality tradeoffs must name the sacrificed attributes and rollback conditions.",
   "outcome": {
     "observable": "A product design blueprint with one deep core concept, critical flows and states, named quality tradeoffs with rollback conditions, and acceptance criteria a builder can test.",
-    "oracleOwner": "user-system",
-    "receiptSchema": "outcome-receipt.schema.json"
+    "oracleOwner": "user-system"
   }
 }

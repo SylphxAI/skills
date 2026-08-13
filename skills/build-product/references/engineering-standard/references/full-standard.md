@@ -13,8 +13,8 @@ It is **not**:
 
 - the **Product North Star** for Sylphx Verified Capabilities
   ([`docs/NORTH-STAR.md`](../../../../../docs/NORTH-STAR.md)) — trusted
-  methods and evidence-capped trust; Stage A TJC / Stage B VCY;
-- package **qualification** evidence or **Verified Capability Yield**;
+  methods and evidence-capped trust;
+- package **qualification** evidence;
 - a second copy of universal principles
   ([`docs/policies/PRINCIPLES.md`](../../../../../docs/policies/PRINCIPLES.md))
   — principles decide cross-domain tradeoff floors; `q-*` IDs audit engineering
