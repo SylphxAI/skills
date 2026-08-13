@@ -48,6 +48,7 @@ Load only the references needed for the declared surface, but always read the ve
 | Enter/exit motion craft and transition perf | [Motion craft floors](references/motion-craft-floors.md) |
 | Compact/wide layouts, mobile web/native, safe areas, text expansion, or input parity | [Responsive, mobile, and input](references/responsive-mobile-and-input.md) |
 | Forms, loading, empty, offline, permission, error, success, destructive, or recovery behavior | [States, forms, and recovery](references/states-forms-and-recovery.md) |
+| Sign-in, session, or account-recovery UI | [Platform Identity recipe](../build-product/references/sylphx-platform-first-policy/references/identity.md) |
 | Semantics, focus, assistive technology, motion, feedback timing, or low-end performance | [Accessibility, motion, and performance](references/accessibility-motion-and-performance.md) |
 | Labels, help, errors, onboarding, checkout, landing, or pricing-surface copy | [UX writing and truth-bound surfaces](references/ux-writing-and-truth.md) |
 | Render matrix, screenshots, browser/device checks, tests, and completion evidence | [Visual verification and delivery](references/visual-verification-and-delivery.md) |

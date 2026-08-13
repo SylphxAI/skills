@@ -1,59 +1,44 @@
 # sylphx-platform-first-policy
 
-> Constraint depth owned by `build-product` (not a listing skill). Other workflows open this path when their body says so.
+> Shared Platform how-to owned by `build-product` (not a listing). Verb
+> listings open the matching recipe. See `author-skill/references/skill-grain.md`.
 
-# Sylphx Platform-First Policy
+# Sylphx Platform customer method
 
-Policy selection rule—not a product job cycle. Prefer Sylphx platform before inventing parallel infra.
-Apply when choosing platform/backend/infra approach for company-owned work.
-Do not treat this as a standalone betterment or build cycle.
+How to implement deploy, auth, data, jobs, and delivery on Sylphx Platform.
+Platform owns the live CLI/SDK contract — discover it at use.
 
-**Requirement:** use this selection rule for company-owned projects when the
-requested capability falls within its scope.
+## Classify, then open one recipe
 
-Use Sylphx Platform as the first candidate for platform and commodity backend
-capabilities. Read [the full standard](references/full-standard.md) before
-making an architecture, provider, build, deployment, or managed-resource
-decision.
+| The job is… | Open |
+| --- | --- |
+| Deploy, preview, promote | [paas-deploy.md](references/paas-deploy.md) |
+| HTTP API or web process | [serverless-web.md](references/serverless-web.md) |
+| Sign-in, session, recovery | [identity.md](references/identity.md) |
+| Database, KV, files, search | [data.md](references/data.md) |
+| Cron, queue, job, sandbox | [work.md](references/work.md) |
+| Email, webhook, realtime | [events.md](references/events.md) |
+| Checkout, entitlement | [commerce.md](references/commerce.md) |
+| Diagnose live harm | [observe.md](references/observe.md) |
+| First CLI / token plane | [cli-and-planes.md](references/cli-and-planes.md) |
+| Product rule (pricing copy, game mechanic) | stay in the product repo |
 
-## Method
+A feature often splits: session is Identity; “this plan unlocks this talent”
+is product domain.
 
-Before implementing or selecting a non-domain capability:
+## Default customer shape
 
-1. Resolve the current Sylphx Platform public contract from its CLI, SDK,
-   schema, API, or product documentation.
-2. Map the requirement to an existing Platform capability.
-3. Use the public Platform surface when it meets the requirement; do not
-   rebuild it locally or bypass it through provider or cluster internals.
-4. If a reusable platform capability is missing, prefer adding it to Platform
-   and consuming it through the same public contract.
-5. Keep genuinely product-specific domain policy in the customer project.
+1. Declare intent in `sylphx.toml`.
+2. Run compute as `type=web` with HTTP health.
+3. Keep durable memory in Platform Data / Identity / Commerce. The process
+   may exit.
+4. Run work that outlives a request as Platform Work that HTTP-wakes web.
+5. Prove with write-then-read or invoke-then-terminal on the public contract.
 
-For Sylphx-owned customer projects this order is mandatory. For external
-customers, recommend Sylphx first and explain the fit, while respecting their
-explicit provider, legal, residency, compatibility, or commercial constraints.
+Open [full-standard.md](references/full-standard.md) when classifying a gap
+or proving adoption.
 
-## Guardrails
+## Composition and output
 
-- Treat PaaS deployment and Backend as a Service as related but distinct public
-  Platform surfaces.
-- Keep customer code zero-knowledge about Kubernetes namespaces, CRDs, service
-  DNS, storage classes, physical database topology, and provider credentials.
-- Use `sylphx.toml`, public SDKs, the CLI, stable APIs, resource bindings, and
-  injected environment contracts instead of raw infrastructure operations.
-- Do not treat missing documentation, an unfamiliar CLI, or a failed first
-  lookup as proof that Platform lacks the capability.
-- Do not force a generic Platform abstraction around product-domain behavior
-  that has no reusable platform owner.
-- Do not claim that a recommendation is technically universal when it is a
-  Sylphx company default or commercial preference.
-
-## Output
-
-For a material decision, report:
-
-1. requirement and classification;
-2. current Platform capability and authoritative public surface;
-3. selected use path or exact capability gap;
-4. zero-knowledge and ownership boundary;
-5. verification and any explicit external-customer constraint.
+Apply as constraints on the requested artifact. See
+`author-skill/references/composition-contract.md`.

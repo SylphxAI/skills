@@ -199,6 +199,24 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Integrity gate rejects a later hand-edit that puts `incremental-value`
   back onto an ineligible suite.
 
+## 2026-08-13 — Platform customer method (industry grain)
+
+- Industry sources agree: a skill is one coherent requestable job. Extract
+  from real tasks. Do not pre-create one listing per feature noun. Do not
+  fold every verb into a fat `build-product`. Progressive disclosure holds
+  thickness. Record: `skills/author-skill/references/skill-grain.md`.
+- Rewrote `build-product/references/sylphx-platform-first-policy/` as the
+  **how-to** (classify → one family recipe). One home; listings open a recipe.
+- New listings for independently requested verbs: `authenticate-app-users`,
+  `persist-app-data`, `run-background-work`, `deliver-app-events`. All
+  `unqualified`.
+- Narrowed `build-product` and `wire-managed-backend-services` descriptions
+  so they do not steal sign-in / persist / cron / delivery routes.
+- Thin constitution **Platform apps** floor: public contracts, `type=web`,
+  durable memory in Platform families.
+- Owner when-to-open: `drive-to-delivery`, `adopt-repo-standards`,
+  `craft-product-interface`, `build-payment-readiness`.
+
 ## 2026-08-13 — retire house NSM; follow industry eval
 
 - Removed TJC, VCY, Stage A/B, and required `outcome.receiptSchema` from

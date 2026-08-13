@@ -34,6 +34,10 @@ test('requestable jobs are listings (not size-demoted)', () => {
     'produce-game-2d-sprites',
     'craft-product-interface',
     'run-open-product-betterment',
+    'authenticate-app-users',
+    'persist-app-data',
+    'run-background-work',
+    'deliver-app-events',
   ]) {
     assert.ok(existsSync(path.join(skillsRoot, id, 'SKILL.md')), id);
   }

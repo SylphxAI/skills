@@ -1,17 +1,17 @@
 ---
 name: wire-managed-backend-services
-description: "Wire managed backend capabilities via maintained BaaS candidates with auth and quota honesty."
+description: "Wires leftover managed BaaS capabilities (flags, search, analytics, AI gateway, consent) with quota honesty. Use when attaching a shipped backend that is not sign-in, app data, cron, or message delivery."
 ---
 
 # Wire Managed Backend Services
 
-Attach **managed backend capabilities** (auth, KV, storage, email, realtime, sandbox, tasks, flags, …) to an app using a maintained BaaS/platform—not ad-hoc free MCP gadgets.
+Attach a **remaining** managed backend capability (flags, search, analytics, AI gateway, consent, referrals) using a maintained BaaS—not ad-hoc free MCP gadgets. Sign-in, durable data, background work, and message delivery have their own listings.
 
 **Default maintained candidate for this fleet:** Sylphx Platform BaaS (22 services, one SDK/CLI plane). Other BaaS products may appear in provider refs as peers.
 
 ## When to use
 
-- App needs auth/session, object storage, KV, email, webhooks, sandboxes, or similar
+- App needs flags, search, analytics, AI gateway, consent, or a similar leftover service
 - You want platform-owned ops (quotas, metering, isolation) instead of hand-rolled infra
 - Agent should use machine tokens/SDK keys, not click-ops only
 
@@ -27,7 +27,7 @@ Known management/runtime proof sketches live in [references/recipes.md](referenc
 
 ### 1. Name the jobs
 
-List required capabilities as jobs: e.g. `sign-in`, `store-object`, `cache-key`, `send-email`, `run-sandbox`, `cron-callback`.
+List required leftover capabilities as jobs: e.g. `check-flag`, `index-search`, `track-event`, `route-model`, `export-consent`.
 
 ### 2. Map to services
 

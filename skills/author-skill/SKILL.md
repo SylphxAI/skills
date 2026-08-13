@@ -13,7 +13,7 @@ Hosts differ: some rank a small metadata listing; others (including RAG-style di
 
 - Creating a new skill package
 - Rewriting a skill that is too broad, too vague, unused, or mis-classified
-- Deciding listing skill vs reference depth
+- Deciding listing skill vs reference depth (open [references/skill-grain.md](references/skill-grain.md))
 - Absorbing a repeated correction loop into a reusable package
 
 ## What a skill is
@@ -72,7 +72,9 @@ If the content fails those tests:
 
 **Do not demote a real requestable job just to shrink the catalog.**  
 **Do not merge unrelated jobs into one mega-skill to hit a number.**  
-**Do not refuse a valid new skill because "we already have enough."**
+**Do not refuse a valid new skill because "we already have enough."**  
+**Do not mint a listing because a feature noun appeared on a roadmap.** Extract
+from a real task or a recurring miss ([skill-grain.md](references/skill-grain.md)).
 
 Merge only when job, artifact, and acceptance authority are materially the same. Split when a sub-job is independently requested and independently accepted.
 
@@ -171,6 +173,7 @@ These stay **listings** when they are independently requested:
 Also useful depth under this package:
 
 - [references/instruction-evolution-standard/](references/instruction-evolution-standard/) — instruction evolution constraints
+- [references/skill-grain.md](references/skill-grain.md) — list vs reference vs fat mega-skill
 - [references/checklist.md](references/checklist.md) · [references/industry-sources.md](references/industry-sources.md)
 
 ## Anti-patterns
@@ -199,6 +202,7 @@ Also useful depth under this package:
 
 ## Progressive disclosure
 
+- [references/skill-grain.md](references/skill-grain.md) — open when deciding list vs reference or skill size
 - [references/checklist.md](references/checklist.md) — open when needed for depth
 - [references/industry-sources.md](references/industry-sources.md) — open when needed for depth
 - [references/instruction-evolution-standard/](references/instruction-evolution-standard/) — open when this topic applies

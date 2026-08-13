@@ -1,6 +1,6 @@
 ---
 name: build-product
-description: "Ship a missing product capability end-to-end with original-oracle proof."
+description: "Ship a missing product capability end-to-end with original-oracle proof. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb."
 ---
 
 # Build Product
@@ -11,6 +11,7 @@ When you need a **real capability** on a dogfood or market path, run **one** bui
 
 - Direction is decided; a journey or capability is still missing
 - Engine or product gaps block a customer path
+- No more specific Platform verb listing matches the ask
 
 
 ## Method
@@ -21,6 +22,9 @@ No permanent workarounds. Prefer durable work on the owning layer.
 ### 1. Frame
 - Product, journey/capability, and **done look** for this cycle
 - Constraints: platforms, auth, data, engine vs product boundary
+- Classify Platform vs product-domain gaps. Open
+  [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/)
+  and the one matching recipe.
 - Non-goals: unrelated refactors, scale fantasy, cosmetic thrash
 
 ### 2. Research
@@ -50,7 +54,9 @@ No permanent workarounds. Prefer durable work on the owning layer.
 - When landing source: land with atomic commits and a revert-safe PR outcome. Do not leave dual-path concept
   residue; hard-cut obsolete paths via the execute-hard-cutover skill when cutover is the job.
 
-- Correct boundary; no product hacks for shared floors that belong elsewhere
+- Implement Platform gaps through `sylphx.toml` `type=web`, injected bindings,
+  runtime SDK, and Platform Work for anything that outlives a request.
+- Keep product-domain rules in this repo.
 - Real paths over mocks unless the cycle is explicitly building a seam
 - Update public docs/contracts when behavior changes. Keep **Vision**, **North
   Star Metric**, **OKRs/Goals**, **PRD** features, and interface **specs** in
@@ -79,6 +85,6 @@ Open only depth the current build needs:
 - [references/engineering-standard/](references/engineering-standard/) — Quality North Star (meta, 13 primaries, precedence) and engineering constraints while building; open `references/quality-north-star-usage.md` for pocket questions / anti-examples
 - [references/risk-matched-verification-standard/](references/risk-matched-verification-standard/) — risk-matched verification
 - [references/frontier-verification-standard/](references/frontier-verification-standard/) — frontier verification for high blast-radius paths
-- [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — platform-first boundaries
+- [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — classify, then open one family recipe
 - Source landing: `../drive-to-delivery/references/source-authoring-standard/`
 - Related jobs (separate skills when requested): `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`
