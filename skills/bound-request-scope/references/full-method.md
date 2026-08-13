@@ -392,7 +392,7 @@ When the declared terminal conditions pass:
 1. run the bounded high-value opportunity scan once;
 2. implement and verify the selected positive-net improvements;
 3. stop when remaining ideas are lower-value, speculative, or outside boundary;
-4. report the delivered outcome, evidence, and deliberate exclusions; and
+4. report the delivered outcome, what you ran, and deliberate exclusions; and
 5. mark the task complete.
 
 Never report `FAIL` solely because a stronger unrelated system could be built.
@@ -407,6 +407,6 @@ Return a compact closure note:
 
 - **Objective** — the bounded outcome.
 - **Terminal** — pass or the exact original blocker.
-- **Evidence** — checks that exercise the required claim.
+- **Path run** — the check you actually ran, if any. Extra proof only for money, safety, incident, or an explicit ship/live claim.
 - **Selected investments** — high-return adjacent improvements included now.
 - **Excluded expansion** — optional work deliberately kept outside scope.

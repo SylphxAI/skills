@@ -43,7 +43,7 @@ Separate layers:
 | --- | --- | --- |
 | Betterment **engagement (loop)** | Multi-cycle continuous betterment under one goal | Engagement idle after empty re-scout |
 | Betterment **cycle** | One card→B→execute→verify pass | Cycle Stop-Audit then **next cycle** |
-| Work execution | One accepted Work Item / Workstream | Delivery terminal + original-oracle |
+| Work execution | One accepted Work Item / Workstream | Asked terminal; run the path you changed |
 | Agent-system learning | One recurring agent failure class | Intervention against frozen evidence |
 
 A product defect does not automatically justify a Skill change. Repeated agent
@@ -113,8 +113,8 @@ Known uncertainty is a `residual`, not fake green. Applicable cells need oracles
 
 **Frontier / SOTA language** is forbidden without claim-grade fields: subject,
 comparison set, metrics, observation date, uncertainty, evidence. Prefer
-“meets target / best among evaluated / residual unknown.” Compose
-`evidence-and-claims-standard`.
+“meets target / best among evaluated / residual unknown.” Open
+`synthesize-evidence-brief` only for a disputed or public comparative claim.
 
 ## Observation, finding, Work, C/B/R, and coverage
 
@@ -285,8 +285,8 @@ While clearing **B**, maximize outcome throughput:
 
 | When | Verify | Not |
 | --- | --- | --- |
-| Each B item terminal | **Original-oracle** on exact delivered subject | Skip oracle |
-| Cycle / Stop-Audit | **One** north-star / outcome (and frontier if claimed) readback | Proxy-only (PR green, local CI) as betterment proof |
+| Each B item terminal | Run the path you changed | Skip the changed path |
+| Cycle / Stop-Audit | Re-scout; run changed paths | Invent a scale metric or live-readback pack |
 | Every commit | Optional risk-based checks only | Full product oracle suite as ceremony |
 
 ### Path
@@ -298,7 +298,7 @@ admitted B item
   -> repository-native integration (atomic commits in PR; revert-safe PR outcome)
   -> exact-candidate verification as needed
   -> delivery owner path as required
-  -> original-oracle readback on exact delivered subject
+  -> run the path you changed
   -> resolve, correct, or residual
 ```
 
@@ -334,7 +334,7 @@ continuity template; product discovery is in research, not Goal authorship.
 | --- | --- |
 | Research card | Coverage card incomplete or cells silently omitted |
 | Residual completeness | Applicable matrix cells stale/`unknown` without residual or floor evidence |
-| B clearance | Open B items without delivery proof or legal reject |
+| B clearance | Open B items without the asked change or a named reject |
 | EV leftover | Any R item with EV/L ≥ MinOutcomeDelta and no **qualified** blocker |
 | False B-empty | B=∅ claimed while soft-only high-EV sits in R |
 | Soft parking | multi-day/large/title-only used as sole R blocker without L0 B slice |
@@ -342,7 +342,7 @@ continuity template; product discovery is in research, not Goal authorship.
 | Polish trap | Shipping only cosmetic while higher-L residual unaddressed |
 | Authority trap | High-L residual blocked only by owner ask never attempted |
 | Evidence class | Stop reasons lack observation/finding IDs (slogans) |
-| Verify cadence | Missing per-Work original-oracle or cycle outcome readback |
+| Verify cadence | Missing a run of the path you changed |
 | Efficiency note | (observability) independent B items run purely serial without dependency—flag thrash |
 | Competitor week (optional VoI) | Named high-L competitor-move candidates unblocked and ignored |
 
@@ -413,7 +413,7 @@ Measure without reducing quality to one score:
 - R high-L leftover count (should be zero at idle);
 - polish vs high-L Work ratio;
 - observation→finding→B conversion;
-- original-oracle pass rate;
+- changed-path run rate;
 - Stop-Audit fail reasons;
 - research card completeness; VoI stop hits vs open-ended research time;
 - parallel vs serial B item ratio (efficiency).
@@ -473,8 +473,8 @@ in R, completes goal—**invalid** Stop-Audit (EV leftover + polish trap).
 - DORA continuous delivery: small **engineering** batches and fast feedback—not
   a ban on large product programs:  
   <https://dora.dev/capabilities/continuous-delivery/>
-- Claim-grade comparative/SOTA discipline: this repository’s
-  `evidence-and-claims-standard`.
+- Comparative/SOTA claims: open `synthesize-evidence-brief` only when that
+  claim is the job.
 - W3C ACT, Core Web Vitals, OWASP ASVS, OpenTelemetry as dimension-specific
   oracle families where applicable.
 

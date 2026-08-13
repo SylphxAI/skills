@@ -280,3 +280,16 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Agent-task eval oracles slimmed to the artifact, not heading lists.
 - Unused qualification evidence kinds (`provenance`, `currentness`,
   `outcome`) removed from the schema.
+
+## 2026-08-13 — clean-cut Evidence First from active instruction
+
+- Always-on constitution no longer names Evidence First or "Evidence precedes
+  claims". Correctness is right results and honest status, not evidence
+  discipline. Qualification is not a development floor.
+- Reversible local work is done when the change is correct. Claim landed or
+  live only when that layer is actually true.
+- `scripts/check.mjs` and `tests/constitution-l0.test.mjs` forbid the retired
+  slogans in constitution, PRINCIPLES, and active skill bodies. They do not
+  phrase-lock the slogan as required text.
+- Product/delivery verbs finish at the asked terminal. `synthesize-evidence-brief`
+  stays requestable; it is not composed onto ordinary build/fix/drive work.

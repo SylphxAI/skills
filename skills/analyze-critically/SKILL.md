@@ -58,8 +58,8 @@ Produce a **Critical Analysis Brief**:
   material option selection and durable decision tradeoffs.
 - Use design exploration depth under `design-product` when relevant to generate materially different solution
   options before selection.
-- Use `../synthesize-evidence-brief/references/evidence-and-claims-standard/` to adjudicate whether an individual claim
-  is supportable.
+- Open `../synthesize-evidence-brief/` only when the requested job is a
+  disputed or public claim. Do not open it for ordinary diagnosis.
 - Use a domain skill for technical, commercial, security, legal, or product
   requirements.
 - Multiple agents may provide independent perspectives, but agreement is not

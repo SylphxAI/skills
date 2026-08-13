@@ -12,7 +12,7 @@
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:81d63b5247418fd6db2645af9f39c5771a1ab5a33a7837a814c5bb70b8494b1e",
+      "packageDigest": "sha256:8be4d35ae7048fd4c7af052d806f34d3d89fe21dc9c08581f10adab0d857e205",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -28,7 +28,7 @@
       "name": "analyze-critically",
       "description": "Adversarially critique a claim/plan/design with kill criteria.",
       "path": "skills/analyze-critically/SKILL.md",
-      "packageDigest": "sha256:a688e05951eb0229e044ace342bc5dd9d23e49eb5d8c74920792b3652aa88262",
+      "packageDigest": "sha256:7bae3ef729ada7f58137fa3072e5aa1e6ca709950579227bc8e1dc7d1318a858",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -60,7 +60,7 @@
       "name": "bound-request-scope",
       "description": "Bound this request: objective, in/out, non-goals, cut lines.",
       "path": "skills/bound-request-scope/SKILL.md",
-      "packageDigest": "sha256:405be3eb95e213762c60087a72479b232d8bd74dd7520132e7bbcc6516f6aa16",
+      "packageDigest": "sha256:dccf19ff0e6612bce1e7914c240e999bcc68c239a73853c28ac0fde50ca07fac",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -188,15 +188,15 @@
       "name": "distill-source-to-skill",
       "description": "Distill docs/repos/notes into one installable Skill package.",
       "path": "skills/distill-source-to-skill/SKILL.md",
-      "packageDigest": "sha256:d1227061dea522ff701518b51707c04de2691bb8784166440a1558b1cc6f6e97",
+      "packageDigest": "sha256:c0c4a086fa3a64e7bf52c504d723052cd0a0135083953293bf0c79d296ff3686",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
     {
       "name": "drive-to-delivery",
-      "description": "Drive one accepted multi-phase objective (engineering or product) to delivery-terminal.",
+      "description": "Drive one accepted multi-phase objective (engineering or product) to its asked terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:49926cf09431fea02e5d50fef505270ea7ba7824cbb58e03fe21af0bb279ddbb",
+      "packageDigest": "sha256:4b1cf12206e4c45a5f2a4f0305e32e7bc2e989988c593b217236baef37f7dfff",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -220,7 +220,7 @@
       "name": "engineer-testable-requirements",
       "description": "Turn requirements into testable acceptance criteria with oracles.",
       "path": "skills/engineer-testable-requirements/SKILL.md",
-      "packageDigest": "sha256:25b5722a6caeea41403bdb0d17553f8426582f5ff771fc3950fb2d97a9ebba67",
+      "packageDigest": "sha256:1fc7580ff880db93a570b8fd20af2656c990daf64b2d591f2a221b94f21f0760",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -242,17 +242,17 @@
     },
     {
       "name": "expand-product",
-      "description": "Scale a validated product core with metrics and core-path proof.",
+      "description": "Scale a validated product core: bottleneck, highest-slope change, run the path you changed.",
       "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:856c117520527b1652384875ea80b3d3345e7e34c70bfad6ed87952480283286",
+      "packageDigest": "sha256:e4d43a49d0e0c1964526f8a1712f589cc9071f4c0d84def1ae9b95e1f3503150",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
     {
       "name": "finish-product",
-      "description": "Finish/deburr an integrated product with re-captured evidence.",
+      "description": "Finish/deburr an integrated product to the declared target.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:841c67e6defb1db2993f7690a821b721936e08238c09682ef329f71d66881f19",
+      "packageDigest": "sha256:03041f03cf8ddb5008146c6ce19b4d96235f0af439ce689908c98cf215e00a21",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -266,9 +266,9 @@
     },
     {
       "name": "maintain-product",
-      "description": "Cut live/regression harm with root-cause fix and oracle.",
+      "description": "Cut live/regression harm with a root-cause fix on the owning layer.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:8560d53c101e324c7620c0ae5f1cdce485a5ad22ca831ba00a7ec8ab8cf51a6e",
+      "packageDigest": "sha256:0b5ea967f32c91ddc112bb8268ec782af4eeabdd4d62864cb80c116add8874fa",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -412,7 +412,7 @@
       "name": "run-incident-response",
       "description": "Run production incident response to mitigation and learning.",
       "path": "skills/run-incident-response/SKILL.md",
-      "packageDigest": "sha256:eb50fef09acce695a730febb1a59cd3e84de7bc8af809acc714d3278846f2fcf",
+      "packageDigest": "sha256:025c39a59e72fabbf0bcab8c87f8c770b5ece2d01b9107567111ab5f176c30c5",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -420,7 +420,7 @@
       "name": "run-open-product-betterment",
       "description": "Run open product betterment: scout high-EV work, land, re-measure.",
       "path": "skills/run-open-product-betterment/SKILL.md",
-      "packageDigest": "sha256:883a75a60f879f419738b10652279c8ec2c935a23f2c7280778562d99e2b63ea",
+      "packageDigest": "sha256:edb81f7158c16609acc5c42989ed32fbd756ad1a176b74ac40c60e551fdf7b3a",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -444,7 +444,7 @@
       "name": "select-next-work",
       "description": "Select/claim next high-value Work from evidence under WIP limits.",
       "path": "skills/select-next-work/SKILL.md",
-      "packageDigest": "sha256:b158d73abde576db5cfa9991bc99c8a07aad66d999d23bb856d1023d6e8cf6ec",
+      "packageDigest": "sha256:0e7c8150002aadc59cbe56af3338b865240d9dc17221d56fd71c788bd9ecef91",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -492,7 +492,7 @@
       "name": "write-high-signal-update",
       "description": "Write short high-signal output: answer-first replies/updates, decisions, risks, asks.",
       "path": "skills/write-high-signal-update/SKILL.md",
-      "packageDigest": "sha256:0834eb9f05bc3ad0c94967cea3b5c7430a81745dc12acfe213d1d61d08c983db",
+      "packageDigest": "sha256:d83c8f5dd89c2552516527f17e00fd68b2f5a989d4073ed5782eb3d653a0cb28",
       "qualified": false,
       "qualificationStatus": "unqualified"
     }

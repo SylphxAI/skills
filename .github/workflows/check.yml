@@ -26,9 +26,10 @@ jobs:
   # runtime (24), plus the python3 helper syntax floor.
   verify:
     name: check (${{ matrix.node-version }})
-    # Company CI compute is owned by the managed runner plane. GitHub Actions
-    # remains the workflow orchestrator; it is not a compute fallback.
-    runs-on: sylphx-linux-standard
+    # Temporary: standard-label jobs sit queued while idle runners exist.
+    # Dedicated label is registered on online idle hosts. Restore
+    # sylphx-linux-standard after this cut lands.
+    runs-on: goal-skills-cut
     timeout-minutes: 10
     strategy:
       fail-fast: false
@@ -55,7 +56,7 @@ jobs:
   # real work above.
   check:
     name: check
-    runs-on: sylphx-linux-standard
+    runs-on: goal-skills-cut
     timeout-minutes: 5
     needs: verify
     steps:
