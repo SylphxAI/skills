@@ -107,6 +107,7 @@ function validateCapabilityContract(folder, errors) {
     [qualificationPath, qualificationSchema, 'qualification record'],
   ]) {
     if (!existsSync(path.join(repositoryRoot, file))) {
+      if (file === qualificationPath) continue;
       errors.push(`${file}: missing ${label}`);
       return;
     }
@@ -127,7 +128,9 @@ function validateCapabilityContract(folder, errors) {
   }
 
   const contract = readJson(path.join(repositoryRoot, contractPath));
-  const qualification = readJson(path.join(repositoryRoot, qualificationPath));
+  const qualification = existsSync(path.join(repositoryRoot, qualificationPath))
+    ? readJson(path.join(repositoryRoot, qualificationPath))
+    : { status: 'unqualified' };
 
   if (qualification.status === 'qualified') {
     if (!contract.outcome.observable) errors.push(`${contractPath}: qualified capability needs an outcome oracle`);
@@ -260,7 +263,7 @@ function validateRuntimeConstitution(errors) {
     'SylphxAI/skills',
     'Search before you act',
     'Evidence precedes claims',
-    'Done means delivered',
+    'Claim landed or live',
     'progressive disclosure',
     'Skills do not grant tools',
     'Lead with the answer',

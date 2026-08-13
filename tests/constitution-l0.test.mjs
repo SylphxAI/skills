@@ -11,7 +11,7 @@ test('constitution stays thin and miss-class-A', () => {
   for (const phrase of [
     'Search before you act',
     'Evidence precedes claims',
-    'Done means delivered',
+    'Claim landed or live',
     'progressive disclosure',
     'Skills do not grant tools',
     'Lead with the answer',
@@ -21,6 +21,8 @@ test('constitution stays thin and miss-class-A', () => {
   assert.equal(/outcome receipt/i.test(constitution), false);
   assert.equal(/\bTJC\b/.test(constitution), false);
   assert.equal(/\bVCY\b/.test(constitution), false);
+  assert.equal(constitution.includes('Correct method first'), false);
+  assert.equal(constitution.includes('## Platform apps'), false);
 });
 
 test('catalog stays inside Codex listing budget class', () => {

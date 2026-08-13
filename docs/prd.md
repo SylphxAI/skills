@@ -39,7 +39,7 @@ with **honest, version-scoped evidence** and **fail-closed install**.
 
 ## Requirements (summary)
 
-- Every listing carries `capability.json` and `qualification.json` (`unqualified` default).
+- Every listing carries `capability.json`. `qualification.json` is optional (missing = unqualified).
 - Qualification is version-scoped, expiring, evaluator-named; structural CI ≠ value.
 - AutoSync applies only annotated `skills-v*` tags with promotion manifests.
 - Unqualified packages remain installable. Qualification is not a use gate.

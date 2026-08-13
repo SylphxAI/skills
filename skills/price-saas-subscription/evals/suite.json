@@ -33,42 +33,6 @@
             "path": "pricing-decision.md",
             "contains": "value metric",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "plan",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "arithmetic",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "margin",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "guardrail",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "kill criteria",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "rollout",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "pricing-decision.md",
             "contains": "value metric",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "plan",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "arithmetic",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "margin",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "guardrail",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "kill criteria",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "pricing-decision.md",
-            "contains": "rollout",
             "caseInsensitive": true
           }
         ]

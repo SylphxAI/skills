@@ -32,9 +32,17 @@ test('every listing package carries a schema-valid capability contract', () => {
   }
 });
 
-test('every listing package carries a schema-valid qualification record', () => {
+function readQualification(folder) {
+  const file = path.join(skillsRoot, folder, 'qualification.json');
+  if (!existsSync(file)) return { name: folder, status: 'unqualified' };
+  return JSON.parse(readFileSync(file, 'utf8'));
+}
+
+test('qualification.json is optional; missing means unqualified', () => {
   for (const folder of folders) {
-    const record = JSON.parse(readFileSync(path.join(skillsRoot, folder, 'qualification.json'), 'utf8'));
+    const file = path.join(skillsRoot, folder, 'qualification.json');
+    if (!existsSync(file)) continue;
+    const record = JSON.parse(readFileSync(file, 'utf8'));
     assert.equal(record.name, folder, folder);
     assert.equal(qualificationSchema(record), true, `${folder}: ${JSON.stringify(qualificationSchema.errors)}`);
     if (record.status === 'qualified') {
@@ -50,7 +58,7 @@ test('catalog qualification projection matches package records', () => {
   const catalog = buildCatalog(repositoryRoot);
   assert.equal(catalog.count, folders.length);
   const qualifiedFromPackages = folders
-    .filter((folder) => JSON.parse(readFileSync(path.join(skillsRoot, folder, 'qualification.json'), 'utf8')).status === 'qualified')
+    .filter((folder) => readQualification(folder).status === 'qualified')
     .sort();
   assert.deepEqual(catalog.qualification.qualifiedNames, qualifiedFromPackages);
   assert.equal(catalog.qualification.qualified, qualifiedFromPackages.length);
@@ -73,11 +81,9 @@ test('every eval suite is schema-valid and bound to its capability', () => {
 });
 
 test('qualified packages carry suites, on-disk evidence, and future expiry', () => {
-  const qualified = folders.filter((folder) => (
-    JSON.parse(readFileSync(path.join(skillsRoot, folder, 'qualification.json'), 'utf8')).status === 'qualified'
-  ));
+  const qualified = folders.filter((folder) => readQualification(folder).status === 'qualified');
   for (const folder of qualified) {
-    const record = JSON.parse(readFileSync(path.join(skillsRoot, folder, 'qualification.json'), 'utf8'));
+    const record = readQualification(folder);
     assert.ok(existsSync(path.join(skillsRoot, folder, 'evals', 'suite.json')), `${folder}: suite`);
     assert.ok(Date.parse(record.expiresAt) > Date.now(), `${folder}: future expiry`);
     assert.ok(record.evidence.length >= 2, `${folder}: evidence (compatibility + automated-pattern-scan at minimum)`);

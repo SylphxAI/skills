@@ -34,7 +34,7 @@ while high-EV unblocked work remains:
   3. Admit every item with material outcome/frontier delta that is runnable now
   4. Implement that full batch (L1)
   5. Atomic commits (L2); revert-safe PR outcome(s) (L3)
-  6. Original-oracle verify on touched subjects
+  6. Run the path you changed on touched subjects
   7. Short log; re-scout—do not stop because one PR landed
 ```
 

@@ -25,8 +25,6 @@ Prefer regression locks and detectability over silent cleanup.
 ### 2. Research
 - Reproduce or gather evidence (logs, tests, live smoke, reports)
 - Bisect likely change sets; map owning component
-- If the first idea is a patch or the owning method is unproven, open
-  `../establish-correct-approach/` before changing code
 - Stop when root-cause hypotheses are actionable
 
 ### 3. Admit work
@@ -55,7 +53,7 @@ Prefer regression locks and detectability over silent cleanup.
 
 ## Progressive disclosure
 
-- Related jobs when requested: `establish-correct-approach`, `run-open-product-betterment`, `remediate-frontend-performance`, `remediate-agent-harness`
+- Related jobs when requested: `run-open-product-betterment`, `remediate-frontend-performance`, `remediate-agent-harness`
 - Source landing: `../drive-to-delivery/references/source-authoring-standard/`
 
 

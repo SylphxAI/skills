@@ -1,8 +1,8 @@
 # Qualification ledger
 
 Repo-wide, version-scoped qualification state for Sylphx Verified Capabilities.
-This is a **projection** of the per-package `qualification.json` records plus
-filed evidence; it is not a separate source of truth.
+This is a **projection** of per-package `qualification.json` records when
+present, plus filed evidence; missing records are `unqualified`.
 
 ## Current state (2026-08-13)
 

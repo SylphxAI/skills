@@ -1,6 +1,6 @@
 ---
 name: build-product
-description: "Ship a missing product capability end-to-end with original-oracle proof. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb."
+description: "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb."
 ---
 
 # Build Product
@@ -16,7 +16,7 @@ When you need a **real capability** on a dogfood or market path, run **one** bui
 
 ## Method
 
-**Journey gap → correct ownership boundary → implement → original-oracle verify.**  
+**Journey gap → correct ownership boundary → implement → run the path you changed.**  
 No permanent workarounds. Prefer durable work on the owning layer.
 
 ### 1. Frame
@@ -30,8 +30,6 @@ No permanent workarounds. Prefer durable work on the owning layer.
 ### 2. Research
 - How the journey fails today (code, build, live, docs)
 - Owning layer for each gap
-- If the correct method is not already named, open
-  `../establish-correct-approach/` before implementing
 - Load domain Skills only as needed via native discovery
 - Stop when more reading will not change the plan
 
@@ -68,13 +66,13 @@ No permanent workarounds. Prefer durable work on the owning layer.
   when placing docs.
 
 ### 5. Deliver / verify
-- Original oracles for this slice (run, smoke, API, pack, host as applicable)
-- Separate local vs landed vs live claims if delivery is in scope
+- Run the path you changed (test, smoke, API, or UI)
+- Separate local vs landed vs live claims if you are claiming delivery
 - List residuals without claiming whole-product completion
 
 ## Cycle done
 
-1. Framed capability is usable under the stated oracle, or only externally blocked  
+1. Framed capability is usable on the path you changed, or only externally blocked  
 2. Ownership of changes is honest  
 3. Residuals are listed  
 4. No known ship-blocker for this slice was ignored
@@ -89,4 +87,4 @@ Open only depth the current build needs:
 - [references/frontier-verification-standard/](references/frontier-verification-standard/) — frontier verification for high blast-radius paths
 - [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — classify, then open one family recipe
 - Source landing: `../drive-to-delivery/references/source-authoring-standard/`
-- Related jobs (separate skills when requested): `establish-correct-approach`, `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`
+- Related jobs when requested: `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`

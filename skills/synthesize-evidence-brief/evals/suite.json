@@ -33,48 +33,6 @@
             "path": "synthesis.md",
             "contains": "protocol",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "search log",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "screen",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "evidence table",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "bias",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "certainty",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "evidence gap",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "update trigger",
-            "caseInsensitive": true
           }
         ]
       }
@@ -96,48 +54,6 @@
             "type": "file-regex",
             "path": "synthesis.md",
             "contains": "protocol",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "search log",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "screen",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "evidence table",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "bias",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "certainty",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "evidence gap",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "synthesis.md",
-            "contains": "update trigger",
             "caseInsensitive": true
           }
         ]

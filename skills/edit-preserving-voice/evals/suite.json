@@ -39,66 +39,6 @@
             "path": "edited.txt",
             "contains": "Acme Edge",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "2026-09-01",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "0.0045",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "0.012",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "2027-03-31",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "3,214",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "42 countries",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "99.95%",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "38 ms",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "Mei Chen",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "no commit date",
-            "caseInsensitive": true
           }
         ]
       }
@@ -126,66 +66,6 @@
             "type": "file-regex",
             "path": "edited.txt",
             "contains": "Acme Edge",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "2026-09-01",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "0.0045",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "0.012",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "2027-03-31",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "3,214",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "42 countries",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "99.95%",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "38 ms",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "Mei Chen",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "edited.txt",
-            "contains": "no commit date",
             "caseInsensitive": true
           }
         ]

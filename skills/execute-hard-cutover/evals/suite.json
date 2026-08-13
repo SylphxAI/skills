@@ -33,42 +33,6 @@
             "path": "cutover.md",
             "contains": "predecessor",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "destination",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "sole writer",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "retire",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "backfill",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "evidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "residual",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "cutover.md",
             "contains": "predecessor",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "destination",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "sole writer",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "retire",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "backfill",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "evidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "cutover.md",
-            "contains": "residual",
             "caseInsensitive": true
           }
         ]

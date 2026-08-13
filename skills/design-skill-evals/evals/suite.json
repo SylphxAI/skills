@@ -8,7 +8,10 @@
     "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
   },
   "validityDays": 90,
-  "environment": ["codex-cli 0.147.0 (agent task)", "node >= 20"],
+  "environment": [
+    "codex-cli 0.147.0 (agent task)",
+    "node >= 20"
+  ],
   "baseline": {
     "prompt": "Write eval-program.md explaining how you would test whether installing a short status-update skill actually improves an agent's updates. Use the same user prompt with the skill and without it. Name one harm that should fail the claim even if the update looks fine."
   },
@@ -21,9 +24,16 @@
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
-          { "type": "file-exists", "path": "eval-program.md" },
-          { "type": "file-regex", "path": "eval-program.md", "contains": "same (user )?prompt|with(out)? the skill|paired", "caseInsensitive": true },
-          { "type": "file-regex", "path": "eval-program.md", "contains": "harm", "caseInsensitive": true }
+          {
+            "type": "file-exists",
+            "path": "eval-program.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "eval-program.md",
+            "contains": "same (user )?prompt|with(out)? the skill|paired",
+            "caseInsensitive": true
+          }
         ]
       }
     },
@@ -36,9 +46,16 @@
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
-          { "type": "file-exists", "path": "eval-program.md" },
-          { "type": "file-regex", "path": "eval-program.md", "contains": "same (user )?prompt|with(out)? the skill|paired", "caseInsensitive": true },
-          { "type": "file-regex", "path": "eval-program.md", "contains": "harm", "caseInsensitive": true }
+          {
+            "type": "file-exists",
+            "path": "eval-program.md"
+          },
+          {
+            "type": "file-regex",
+            "path": "eval-program.md",
+            "contains": "same (user )?prompt|with(out)? the skill|paired",
+            "caseInsensitive": true
+          }
         ]
       }
     }

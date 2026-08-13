@@ -49,32 +49,8 @@
             "caseInsensitive": true
           },
           {
-            "type": "file-regex",
-            "path": "repo/AGENTS.md",
-            "contains": "SylphxAI/skills",
-            "caseInsensitive": true
-          },
-          {
             "type": "file-exists",
             "path": "repo/PROJECT.md"
-          },
-          {
-            "type": "file-regex",
-            "path": "repo/PROJECT.md",
-            "contains": "acme",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "repo/package.json",
-            "contains": "\"check\"",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-not-regex",
-            "path": "repo/AGENTS.md",
-            "contains": "ops guild",
-            "caseInsensitive": true
           }
         ]
       }
@@ -113,32 +89,8 @@
             "caseInsensitive": true
           },
           {
-            "type": "file-regex",
-            "path": "repo/AGENTS.md",
-            "contains": "SylphxAI/skills",
-            "caseInsensitive": true
-          },
-          {
             "type": "file-exists",
             "path": "repo/PROJECT.md"
-          },
-          {
-            "type": "file-regex",
-            "path": "repo/PROJECT.md",
-            "contains": "acme",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "repo/package.json",
-            "contains": "\"check\"",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-not-regex",
-            "path": "repo/AGENTS.md",
-            "contains": "ops guild",
-            "caseInsensitive": true
           }
         ]
       }

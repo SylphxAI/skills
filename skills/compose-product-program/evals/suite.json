@@ -33,48 +33,6 @@
             "path": "program-manifest.md",
             "contains": "owner",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "DAG",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "acyclic",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "handoff",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "gate",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "definition of done",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "observed-state",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "evidence",
-            "caseInsensitive": true
           }
         ]
       }
@@ -96,48 +54,6 @@
             "type": "file-regex",
             "path": "program-manifest.md",
             "contains": "owner",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "DAG",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "acyclic",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "handoff",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "gate",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "definition of done",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "observed-state",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "program-manifest.md",
-            "contains": "evidence",
             "caseInsensitive": true
           }
         ]

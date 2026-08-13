@@ -19,9 +19,9 @@ Every listing package under `skills/<id>/` is a capability and must carry:
   says so);
 - `capability.json` — the machine-readable capability contract
   ([schema](../schemas/capability-contract.schema.json));
-- `qualification.json` — the version-scoped qualification record
-  ([schema](../schemas/qualification-record.schema.json)); `unqualified` is
-  the honest default;
+- `qualification.json` — optional; only after a filed eval
+  ([schema](../schemas/qualification-record.schema.json)); missing means
+  `unqualified`;
 - optional `references/` / `scripts/` / `assets/` for depth.
 
 ## Discovery is a floor

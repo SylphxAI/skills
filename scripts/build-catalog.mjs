@@ -48,16 +48,19 @@ export function buildCatalog(root = repositoryRoot) {
     if (!existsSync(absolutePath)) throw new Error(`${relativePath}: missing`);
     const { values } = parseFrontmatter(readFileSync(absolutePath, 'utf8'), relativePath);
 
-    // Every listing package is a capability: it must carry a contract and a
-    // qualification record. The catalog only projects package-declared facts.
+    // Every listing carries a contract. A qualification file is optional:
+    // missing means unqualified.
     const contractPath = `skills/${folder}/capability.json`;
     const qualificationPath = `skills/${folder}/qualification.json`;
     if (!existsSync(path.join(root, contractPath))) throw new Error(`${contractPath}: missing`);
-    if (!existsSync(path.join(root, qualificationPath))) throw new Error(`${qualificationPath}: missing`);
     const contract = readJson(path.join(root, contractPath));
-    const qualification = readJson(path.join(root, qualificationPath));
+    const qualification = existsSync(path.join(root, qualificationPath))
+      ? readJson(path.join(root, qualificationPath))
+      : { name: folder, status: 'unqualified' };
     if (contract.name !== folder) throw new Error(`${contractPath}: name must match folder`);
-    if (qualification.name !== folder) throw new Error(`${qualificationPath}: name must match folder`);
+    if (qualification.name && qualification.name !== folder) {
+      throw new Error(`${qualificationPath}: name must match folder`);
+    }
 
     const skill = {
       name: values.name,

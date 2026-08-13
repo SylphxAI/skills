@@ -12,4 +12,4 @@ There is **no** `sylphx-methods` bag and **no** docs-only agent binding depth.
 
 Start from the job capability that owns the work, then open the referenced
 standard or shape pack named by that capability body. Every package also
-carries `capability.json` (contract) and `qualification.json` (record).
+carries `capability.json`. `qualification.json` is optional.

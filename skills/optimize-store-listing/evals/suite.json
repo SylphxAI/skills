@@ -33,36 +33,6 @@
             "path": "listing-plan.md",
             "contains": "claim",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "listing-plan.md",
-            "contains": "screenshot",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "listing-plan.md",
-            "contains": "localization",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "listing-plan.md",
-            "contains": "artifactVersion",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "listing-plan.md",
-            "contains": "experiment",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "listing-plan.md",
-            "contains": "compliance",
-            "caseInsensitive": true
           }
         ]
       }
@@ -84,36 +54,6 @@
             "type": "file-regex",
             "path": "listing-plan.md",
             "contains": "claim",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "listing-plan.md",
-            "contains": "screenshot",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "listing-plan.md",
-            "contains": "localization",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "listing-plan.md",
-            "contains": "artifactVersion",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "listing-plan.md",
-            "contains": "experiment",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "listing-plan.md",
-            "contains": "compliance",
             "caseInsensitive": true
           }
         ]

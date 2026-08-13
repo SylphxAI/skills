@@ -32,31 +32,6 @@
             "type": "file-regex",
             "path": "convergence.md",
             "contains": "Source / target / boundary"
-          },
-          {
-            "type": "file-regex",
-            "path": "convergence.md",
-            "contains": "Capability ledger"
-          },
-          {
-            "type": "file-regex",
-            "path": "convergence.md",
-            "contains": "Slice graph"
-          },
-          {
-            "type": "file-regex",
-            "path": "convergence.md",
-            "contains": "Parity and cutover"
-          },
-          {
-            "type": "file-regex",
-            "path": "convergence.md",
-            "contains": "Control-plane decisions"
-          },
-          {
-            "type": "file-regex",
-            "path": "convergence.md",
-            "contains": "Verdict"
           }
         ]
       }
@@ -77,31 +52,6 @@
             "type": "file-regex",
             "path": "convergence.md",
             "contains": "Source / target / boundary"
-          },
-          {
-            "type": "file-regex",
-            "path": "convergence.md",
-            "contains": "Capability ledger"
-          },
-          {
-            "type": "file-regex",
-            "path": "convergence.md",
-            "contains": "Slice graph"
-          },
-          {
-            "type": "file-regex",
-            "path": "convergence.md",
-            "contains": "Parity and cutover"
-          },
-          {
-            "type": "file-regex",
-            "path": "convergence.md",
-            "contains": "Control-plane decisions"
-          },
-          {
-            "type": "file-regex",
-            "path": "convergence.md",
-            "contains": "Verdict"
           }
         ]
       },

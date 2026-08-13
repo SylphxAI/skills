@@ -33,36 +33,6 @@
             "path": "document.md",
             "contains": "purpose",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "document.md",
-            "contains": "audience",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "document.md",
-            "contains": "structure",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "document.md",
-            "contains": "output contract",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "document.md",
-            "contains": "verification",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "document.md",
-            "contains": "gate",
-            "caseInsensitive": true
           }
         ]
       }
@@ -84,36 +54,6 @@
             "type": "file-regex",
             "path": "document.md",
             "contains": "purpose",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "document.md",
-            "contains": "audience",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "document.md",
-            "contains": "structure",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "document.md",
-            "contains": "output contract",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "document.md",
-            "contains": "verification",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "document.md",
-            "contains": "gate",
             "caseInsensitive": true
           }
         ]

@@ -33,48 +33,6 @@
             "path": "portfolio-contract.md",
             "contains": "standalone",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "contract",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "lifecycle",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "connector",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "substrate",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "extract",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "retire",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "monolith",
-            "caseInsensitive": true
           }
         ]
       }
@@ -96,48 +54,6 @@
             "type": "file-regex",
             "path": "portfolio-contract.md",
             "contains": "standalone",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "contract",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "lifecycle",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "connector",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "substrate",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "extract",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "retire",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "portfolio-contract.md",
-            "contains": "monolith",
             "caseInsensitive": true
           }
         ]

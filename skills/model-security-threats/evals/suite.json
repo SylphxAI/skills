@@ -33,48 +33,6 @@
             "path": "threat-model.md",
             "contains": "trust boundary",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "asset",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "unacceptable outcome",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "threat",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "likelihood",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "control",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "falsif",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "residual risk",
-            "caseInsensitive": true
           }
         ]
       }
@@ -96,48 +54,6 @@
             "type": "file-regex",
             "path": "threat-model.md",
             "contains": "trust boundary",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "asset",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "unacceptable outcome",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "threat",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "likelihood",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "control",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "falsif",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "threat-model.md",
-            "contains": "residual risk",
             "caseInsensitive": true
           }
         ]

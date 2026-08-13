@@ -6,9 +6,9 @@
 - Depth: standards, shapes, domains, matrices under owner `references/`
 - Never standards bag; never docs-only agent binding depth
 - Do not demote real jobs only to shrink the catalog
-- Every listing carries `capability.json` (contract) + `qualification.json`
-  (honest `unqualified` default); author via `author-skill` semantic gates and
-  file qualification evidence via `design-skill-evals` + `docs/QUALIFICATION.md`
+- Every listing carries `capability.json`. `qualification.json` is optional
+  (missing = unqualified). File evidence via `design-skill-evals` only when
+  claiming lift.
 - Never claim qualification without version-scoped, expiring evidence; Quality
   North Star (`q-*`) is authoring quality, not qualification evidence.
   Unqualified packages stay usable. Do not steer work with house coverage

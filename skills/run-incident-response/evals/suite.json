@@ -33,42 +33,6 @@
             "path": "incident.md",
             "contains": "severity",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "mitigat",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "communicat",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "cause",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "postmortem",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "action item",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "owner",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "incident.md",
             "contains": "severity",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "mitigat",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "communicat",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "cause",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "postmortem",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "action item",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "incident.md",
-            "contains": "owner",
             "caseInsensitive": true
           }
         ]

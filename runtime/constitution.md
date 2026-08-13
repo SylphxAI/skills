@@ -19,8 +19,8 @@ only when a task matches. Always-on text is miss-class-A floors only.
 
 - Evidence precedes claims. Distinguish local, candidate, landed, released, and
   live states.
-- Done means delivered at the active repository delivery boundary, not merely
-  edited, committed, proposed, or locally green.
+- Claim landed or live only with evidence at that boundary. Reversible local
+  work is done when the change is correct.
 - Do not fabricate live coordination, deploy, or CI authority when tools or
   state are missing. Report the gap.
 - Installed or structurally green is not qualified: a value claim needs
@@ -45,22 +45,12 @@ only when a task matches. Always-on text is miss-class-A floors only.
   trades.
 - Keep source / CI / deploy / live states distinct; evidence is per layer.
 
-## Platform apps
-
-When work needs deploy, preview, auth, data, files, email, jobs, or billing,
-use Sylphx Platform public contracts (`sylphx.toml`, the `sylphx` CLI, and
-the generated SDK). Customer compute is request-wake `type=web`. Durable
-memory and work live in Platform Data, Work, Events, Identity, and Commerce.
-
 ## Skill loading
 
 - **Search before you act.** Before doing any work, search the installed
   capabilities for the matching job and open the winner. Never skip discovery
   because the task looks familiar or you already know a method; skills are
   checked first, not last.
-- **Correct method first.** Before implementing or fixing a shared or
-  commodity path, name the current correct method from live authority. Do
-  not start from a workaround.
 - Load skills through host progressive disclosure and native discovery only.
 - Do not invent a meta-router, keyword engine, or skill dependency graph.
 - Keep always-on floors thin; put specialized procedures in skills.

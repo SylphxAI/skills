@@ -1,21 +1,21 @@
 ---
 name: establish-correct-approach
-description: "Establishes the current correct method for an implementation or fix from live authority and competing alternatives. Use before building or patching when the right approach is not yet proven."
+description: "Name the current correct method from live authority when the approach is actually unknown. Not a gate before ordinary implement or fix work."
 ---
 
 # Establish Correct Approach
 
-Name the **current correct method** before mutating. A workaround, local
-hack, or dual-path patch is not a method.
+Name the **current correct method** when you do not already have one. A
+workaround, local hack, or dual-path patch is not a method. This is an
+optional job, not a gate before ordinary work.
 
 ## When to use
 
-- About to implement a capability or fix a bug
-- The first idea is a patch, flag, extra process, or copied tutorial
+- The approach is genuinely unknown or the first idea is a second system
 - The owning contract, public API, or industry method may have moved
 
-Skip only reversible local typos or a change whose correct method is already
-named by an installed skill you just opened.
+Skip reversible local edits and any change whose method is already named by
+the skill you just opened.
 
 ## Method
 
@@ -51,7 +51,7 @@ rejected hacks, and what would change the answer.
 ## Progressive disclosure
 
 - [references/correct-vs-hack.md](references/correct-vs-hack.md) — classify correct vs hack
-- [references/method-sources.md](references/method-sources.md) — industry sources for this gate
+- [references/method-sources.md](references/method-sources.md) — industry sources for this job
 - `../analyze-critically/` — competing methods or causes
 - `../select-dependency-versions/` — live versions, never remembered pins
 

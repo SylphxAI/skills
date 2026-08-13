@@ -39,42 +39,6 @@
             "path": "causal-inference.md",
             "contains": "estimand",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "identification",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "counterfactual|potential outcome|two worlds",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "diagnostic",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "sensitivity",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "uncertainty",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "boundary",
-            "caseInsensitive": true
           }
         ]
       }
@@ -102,42 +66,6 @@
             "type": "file-regex",
             "path": "causal-inference.md",
             "contains": "estimand",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "identification",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "counterfactual|potential outcome|two worlds",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "diagnostic",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "sensitivity",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "uncertainty",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "causal-inference.md",
-            "contains": "boundary",
             "caseInsensitive": true
           }
         ]

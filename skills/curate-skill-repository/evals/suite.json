@@ -33,42 +33,6 @@
             "path": "curation.md",
             "contains": "Portfolio verdict",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "Skill decisions",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "Absorption map",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "Validation run",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "Evidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "Exact change",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "unresolved",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "curation.md",
             "contains": "Portfolio verdict",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "Skill decisions",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "Absorption map",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "Validation run",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "Evidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "Exact change",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "curation.md",
-            "contains": "unresolved",
             "caseInsensitive": true
           }
         ]
