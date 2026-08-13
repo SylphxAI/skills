@@ -28,7 +28,7 @@ jobs:
     name: check (${{ matrix.node-version }})
     # Company CI compute is owned by the managed runner plane. GitHub Actions
     # remains the workflow orchestrator; it is not a compute fallback.
-    runs-on: goal-skills-cut
+    runs-on: sylphx-linux-standard
     timeout-minutes: 10
     strategy:
       fail-fast: false
@@ -55,7 +55,7 @@ jobs:
   # real work above.
   check:
     name: check
-    runs-on: goal-skills-cut
+    runs-on: sylphx-linux-standard
     timeout-minutes: 5
     needs: verify
     steps:
