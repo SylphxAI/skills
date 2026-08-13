@@ -7,19 +7,24 @@ filed evidence; it is not a separate source of truth.
 ## Current state (2026-08-13)
 
 - Capability packages: **56**
-- Qualified: **39** — adopt-repo-standards, analyze-causal-inference, analyze-critically, analyze-system-dynamics, author-skill, bound-request-scope, compose-product-portfolio, compose-product-program, compose-readme-marks, craft-human-agent-language, craft-product-interface, curate-skill-repository, decide-architecture-shape, design-product, design-skill-evals, distill-source-to-skill, edit-preserving-voice, engineer-agent-context, engineer-testable-requirements, execute-hard-cutover, forecast-with-calibration, maintain-product, model-security-threats, operate-customer-support, optimize-decision-model, optimize-store-listing, price-saas-subscription, produce-game-2d-map-assets, produce-game-2d-sprites, record-structured-deliberation, research-user-needs, review-domain, run-incident-response, run-product-feedback-loop, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
-- Native-activation selection evidence: **14/39** (analyze-critically,
+- Qualified: **38** — adopt-repo-standards, analyze-causal-inference, analyze-critically, analyze-system-dynamics, author-skill, bound-request-scope, compose-product-portfolio, compose-product-program, craft-human-agent-language, craft-product-interface, curate-skill-repository, decide-architecture-shape, design-product, design-skill-evals, distill-source-to-skill, edit-preserving-voice, engineer-agent-context, engineer-testable-requirements, execute-hard-cutover, forecast-with-calibration, maintain-product, model-security-threats, operate-customer-support, optimize-decision-model, optimize-store-listing, price-saas-subscription, produce-game-2d-map-assets, produce-game-2d-sprites, record-structured-deliberation, research-user-needs, review-domain, run-incident-response, run-product-feedback-loop, select-dependency-versions, select-next-work, synthesize-evidence-brief, synthesize-market-research, write-high-signal-update
+- Native-activation selection evidence: **13/38** (analyze-critically,
   analyze-causal-inference, model-security-threats, engineer-agent-context,
   operate-customer-support, review-domain, research-user-needs,
   price-saas-subscription, optimize-store-listing, design-product,
-  compose-product-portfolio, compose-product-program, craft-product-interface,
-  compose-readme-marks); the others remain `injectionState: not-verified`
+  compose-product-portfolio, compose-product-program, craft-product-interface);
+  the others remain `injectionState: not-verified`
   — see wave-7 through wave-11.
 - **Retired listing:** `research-public-web` (2026-08-13). Prior wave-6
   qualification and wave-7 activation records remain under
   `evals/research-public-web/` as archaeology. AutoSync onto a host that still
   has this name in `qualifiedNames` requires
   `SYLPHX_SKILLS_ALLOW_QUALIFICATION_REGRESSION=1`.
+- **Demoted:** `compose-readme-marks` (2026-08-13). Method bytes changed;
+  wave-11 evidence binds the previous package digest. Record reset to
+  `unqualified`. Bundle kept under
+  `evals/compose-readme-marks/`. AutoSync also treats this as a
+  qualification regression.
 - Outcome receipts recorded: **0** (receipts are recorded by user systems and
   the Control Plane against `schemas/outcome-receipt.schema.json`; the
   repository does not fabricate them)

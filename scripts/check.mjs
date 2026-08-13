@@ -26,10 +26,11 @@ const SECRET_PATTERNS = [
 
 // Host web search/fetch is a primitive. Skills must not ban it or replace it
 // with "open recipes / curl first" as the research method.
-const FORBIDDEN_INSTRUCTION_PATTERNS = [
+export const FORBIDDEN_INSTRUCTION_PATTERNS = [
   { re: /do not web[- ]search/i, label: 'do not web-search' },
   { re: /no search engine required/i, label: 'no search engine required' },
-  { re: /without web search/i, label: 'without web search' },
+  { re: /open recipes\.md first/i, label: 'open recipes.md first' },
+  { re: /open\s+\[references\/recipes\.md\].*first/i, label: 'open recipes.md first' },
 ];
 
 // Codex listing class: ~8k description chars when window unknown.

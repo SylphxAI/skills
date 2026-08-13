@@ -4,7 +4,7 @@
   "count": 56,
   "qualification": {
     "total": 56,
-    "qualified": 39,
+    "qualified": 38,
     "qualifiedNames": [
       "adopt-repo-standards",
       "analyze-causal-inference",
@@ -14,7 +14,6 @@
       "bound-request-scope",
       "compose-product-portfolio",
       "compose-product-program",
-      "compose-readme-marks",
       "craft-human-agent-language",
       "craft-product-interface",
       "curate-skill-repository",
@@ -201,8 +200,8 @@
         "outcomeObservable": "Markdown snippets that render live images, with each URL probed to an image content-type 200 and theme choices recorded in source so agents can regenerate them.",
         "oracleOwner": "user-system"
       },
-      "qualified": true,
-      "qualificationStatus": "qualified"
+      "qualified": false,
+      "qualificationStatus": "unqualified"
     },
     {
       "name": "craft-human-agent-language",

@@ -162,5 +162,6 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   `provision-agent-workspace`, and `deploy-ephemeral-web-preview`. Those
   jobs stay; recipes are known URL/CLI patterns, not a search ban.
 - Integrity gate rejects those instruction phrases under `skills/`.
-- `compose-readme-marks` package digest changes; filed wave-11 eval is for
-  prior bytes. Residual: re-qualify that listing.
+- `compose-readme-marks` demoted to `unqualified` because the method digest
+  changed; wave-11 bundle is archaeology. Residual: re-qualify on the new
+  digest.
