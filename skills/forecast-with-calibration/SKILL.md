@@ -66,7 +66,8 @@ Produce a **Probabilistic Forecast Record**:
   appetite, reversibility, and authority to choose an action.
 - Domain skills own the meaning of revenue, reliability, delivery, safety, or
   other specialized outcomes; this skill owns the forecasting method.
-- Do not manufacture precise probabilities from prose alone. Use ranges or
-  expose insufficient evidence when precision is unsupported.
-- Do not judge one forecast solely by whether it happened. Evaluate process,
-  proper score, and calibration across repeated forecasts.
+
+## Path
+
+- Precise probabilities come from a resolvable question plus evidence. Unsupported precision becomes a range or an insufficient-evidence mark.
+- Score process, proper score, and calibration across repeated forecasts. One outcome is one resolution, not the method verdict.

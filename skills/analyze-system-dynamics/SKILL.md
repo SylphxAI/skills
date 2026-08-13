@@ -70,7 +70,8 @@ Produce a **Dynamic System Model**:
   intervention effect from experimental or observational evidence.
 - Use engineering architecture methods for a static dependency, module, or
   deployment graph.
-- A causal-loop diagram is a hypothesis, not evidence that the represented
-  links or intervention effects are true.
-- Do not expand the boundary until it contains everything. Include a variable
-  only when it could materially change the behavior or intervention.
+- A causal-loop diagram is a hypothesis. Links and intervention effects need their own evidence.
+
+## Path
+
+- Include a variable when it could materially change the behavior or intervention. The boundary stays the smallest set that can produce the observed pattern.

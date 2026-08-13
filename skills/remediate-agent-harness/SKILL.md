@@ -70,5 +70,7 @@ Produce one **Learning Change Record** containing:
   evaluator may be creating the behavior.
 - Use `run-incident-response` to contain and recover a live incident. A post-incident
   recurring system change may then use this skill.
-- Do not keep a review or delivery task open merely to observe indefinite
-  improvement. Promote against the frozen threshold and monitor afterward.
+
+## Path
+
+- Promote against the frozen threshold. Monitor the recurrence signal afterward.

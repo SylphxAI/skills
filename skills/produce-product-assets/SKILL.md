@@ -46,7 +46,6 @@ App/Game truth + stable local request [+ producer handoff and planning Manifest 
 ```
 
 If a downstream review requests a change, issue a new brief or pack revision.
-Never create a same-revision back-reference.
 
 ## Agent-first invariant
 
@@ -56,11 +55,10 @@ produce the complete scale-ready asset target now. Human staffing, rendering
 volume, localization volume, absent users, uncertain demand, or speculative ROI
 cannot defer selected variants, automation, provenance, accessibility, or QA.
 
-Selection still matters. Do not generate irrelevant channels or formats merely
-because production is cheap. A dormant target creates no upload, public claim,
-tracking, rights exposure, or publication state. External rights, talent,
-partner access, platform approval, physical capture, and current policy remain
-real authority gates; agents must not fabricate them.
+Selection still matters. Produce the selected variants. A dormant target
+creates no upload, public claim, tracking, rights exposure, or publication
+state. External rights, talent, partner access, platform approval, physical
+capture, and current policy stay with those authorities.
 
 ## Resource guide
 
@@ -116,29 +114,18 @@ A concept board, generated mockup, interim stand-in, simulator frame, or asset p
 is not an exact product capture. Label it and keep it out of truth-claiming
 screenshots or footage until the exact product state exists.
 
-## Hard gates
+## Done look
 
-Reject or redesign a pack that:
-
-- invents or exaggerates product behavior, UI, gameplay, awards, reviews,
-  rankings, prices, compatibility, accessibility, performance, or availability;
-- starts production from a circular, missing, expired, or unowned brief;
-- copies Marketing message ownership, Store Listing selection/metadata, Product
-  Lifecycle orchestration, or Distribution publication evidence;
-- defers selected localization, accessibility, channel adaptation, rights,
-  provenance, technical QA, or automation because of conventional human cost;
-- treats one crop, literal translation, aspect ratio, device frame, input mode,
-  or visual hierarchy as universal;
-- exposes personal data, secrets, internal tooling, debug state, third-party
-  content without rights, undisclosed synthetic media, or unapproved talent;
-- produces captions that omit meaningful audio, alt text that repeats marketing
-  copy, illegible mobile text, unsafe flashes, clipped UI, or inaccessible
-  contrast merely to preserve the master composition;
-- lets a model or generator approve its own claim truth, rights, cultural fit,
-  or final exact-file QA;
-- hardcodes volatile platform specifications as timeless facts;
-- claims uploaded, approved, released, live, or conversion-proven from local
-  files, generated manifests, or self-reported status.
+- Claims match shipped behavior: UI, gameplay, awards, reviews, rankings, prices, compatibility, accessibility, performance, availability.
+- Production starts from a current owned brief.
+- Marketing message, listing selection/metadata, program orchestration, and distribution evidence stay with those owners.
+- Selected localization, accessibility, channel adaptation, rights, provenance, technical QA, and automation ship with the pack.
+- Each locale, aspect ratio, device frame, and input mode is adapted for that surface.
+- Personal data, secrets, internal tooling, debug state, unlicensed third-party content, undisclosed synthetic media, and unapproved talent stay out.
+- Captions cover meaningful audio. Alt text describes the image. Mobile text, flashes, clipped UI, and contrast meet the destination.
+- Claim truth, rights, cultural fit, and exact-file QA have an owner other than the generator.
+- Platform specifications are read from current authority at use.
+- Upload, approval, release, live, and conversion-proven claims come from downstream owners.
 
 
 ## Progressive disclosure

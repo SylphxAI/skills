@@ -57,19 +57,14 @@ Produce an **Evidence Synthesis** containing:
 - evidence gaps, update triggers, and next research that has positive expected
   information value.
 
-## Integrity rules
+## Path
 
-- Freeze the protocol before reading toward a preferred conclusion; record any
-  justified amendment rather than silently changing criteria.
-- Search-result rank, citation count, prestige, repetition, and agent consensus
-  are not independent evidence quality.
-- PRISMA improves transparent reporting; it does not itself prove review
-  quality, causal validity, or certainty.
-- Do not fabricate inaccessible methods, sample sizes, effect estimates,
-  quotations, or conclusions from titles and abstracts.
-- Do not average incompatible evidence until disagreement disappears.
-- A rapid review may narrow scope or duplicate work explicitly; it may not hide
-  the resulting uncertainty.
+- Freeze the protocol before reading toward a preferred conclusion. Record any justified amendment.
+- Search-result rank, citation count, prestige, repetition, and agent consensus stay labeled as those classes. Quality is design, bias, and relevance.
+- PRISMA is a reporting aid. Review quality, causal validity, and certainty have their own oracles.
+- Methods, sample sizes, effect estimates, quotations, and conclusions come from sources actually read.
+- Conflicts and incompatible measures stay visible. Pool only when the measures and contexts make the result meaningful.
+- A rapid review names the narrowed scope or skipped duplicate work and keeps the resulting uncertainty visible.
 
 
 ## Progressive disclosure

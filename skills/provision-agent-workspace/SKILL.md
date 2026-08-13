@@ -44,7 +44,7 @@ Open [references/providers/INDEX.md](references/providers/INDEX.md).
 ### 3. Use safely
 
 - Prefer least privilege network egress.
-- Do not put long-lived secrets into ephemeral workspace storage without a wipe plan.
+- Long-lived secrets stay with a durable secret store, or the ephemeral workspace has a wipe plan.
 - Treat preview sandboxes as hostile-multi-tenant until proven otherwise.
 
 ### 4. Tear down or standby
@@ -68,8 +68,8 @@ Open [references/providers/INDEX.md](references/providers/INDEX.md).
 - [references/providers/other-sandboxes.md](references/providers/other-sandboxes.md)
 - [references/acceptance.md](references/acceptance.md)
 
-## Boundaries
+## Path
 
-- OSS package ≠ free hosted infinite Linux
-- Temporary CF Workers deploys are not the same job as durable sandboxes
-- Do not claim production readiness for preview-only packages
+- An OSS package is a package. Hosted Linux capacity is an account and quota class.
+- Temporary Cloudflare Workers deploys are `deploy-ephemeral-web-preview`. This skill owns the workspace and exec surface.
+- Production readiness is for packages with a durable isolation and quota contract. Preview-only packages stay labeled preview.

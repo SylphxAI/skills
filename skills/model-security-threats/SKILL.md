@@ -72,23 +72,15 @@ Produce a **Threat Model and Security Design Contract** containing:
 - downstream implementation, assurance, testing, incident, or product-abuse
   handoffs without duplicating their artifacts.
 
-## Integrity rules
+## Path
 
-- Model the real candidate and environment; a generic checklist is not a
-  threat model.
-- Treat STRIDE as optional enumeration support, not the definition of threat
-  modeling and not evidence that all threats were found.
-- Keep security properties explicit: authentication is not authorization,
-  encryption is not integrity, logging is not detection, and backup is not
-  proven recovery.
-- Do not publish exploit-enabling detail beyond the authorized audience.
-- Treat the detailed threat model as protected by default. A public assurance
-  or learning document is a separate minimum derivative with its own audience,
-  redaction and disclosure review; repository visibility alone is not approval.
-- Do not call a control effective without implementation and verification
-  evidence at the claimed boundary.
-- Do not create universal gates or infrastructure when a bounded design
-  control closes the material path more cheaply and reliably.
+- Model the real candidate and environment.
+- STRIDE and other taxonomies are coverage aids.
+- Authentication, authorization, encryption, integrity, logging, detection, backup, and proven recovery stay named as distinct properties.
+- Exploit-enabling detail stays with the authorized audience.
+- The detailed threat model is protected by default. A public assurance or learning document is a separate minimum derivative with its own audience and redaction review.
+- A control is effective when implementation and verification evidence exist at the claimed boundary.
+- Prefer a bounded design control when it closes the material path more cheaply and reliably than a universal gate.
 
 
 ## Progressive disclosure

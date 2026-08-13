@@ -75,5 +75,7 @@ Produce a **Causal Inference Record**:
   resistance over time.
 - Use `../review-domain/references/product-analytics-instrumentation/` for event definitions and data pipelines;
   measurement availability alone does not identify a causal effect.
-- Never convert association, prediction accuracy, temporal order, or a causal
-  diagram by itself into a causal claim.
+
+## Path
+
+- A causal claim carries an intervention, estimand, identification argument, and diagnostics. Association, prediction accuracy, temporal order, and a diagram by themselves stay labeled as those classes.
