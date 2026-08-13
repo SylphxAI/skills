@@ -76,7 +76,7 @@
       "name": "build-payment-readiness",
       "description": "Build production payments: providers, ledger, webhooks, reconciliation.",
       "path": "skills/build-payment-readiness/SKILL.md",
-      "packageDigest": "sha256:6acf6df22fe176e99b8cc91afe8c9057e10deb3ea816e5fe11ca05c94d462ba7",
+      "packageDigest": "sha256:6afc3ac4da8a804f70f7dbf74948e1f2c944bedfa40b6571ea19cc41a8abccea",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -148,7 +148,7 @@
       "name": "decide-architecture-shape",
       "description": "Decide one architecture shape from options with tradeoffs.",
       "path": "skills/decide-architecture-shape/SKILL.md",
-      "packageDigest": "sha256:443ce611e265ed1c75c4b6adc3ffbd7651d3a3529726391f072829d2721aad2d",
+      "packageDigest": "sha256:93e51f488e5dd15e4d848a801f3512da59e68c1d5a500dd03e7d08c17a04a0bc",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -180,7 +180,7 @@
       "name": "design-skill-evals",
       "description": "Design falsifiable skill evals: same-prompt paired tasks, oracles, harms.",
       "path": "skills/design-skill-evals/SKILL.md",
-      "packageDigest": "sha256:177b33f4daaf391c7169b0afc413ba454e01c1afcec30a30a5d6efb3a1425506",
+      "packageDigest": "sha256:16d5c860d8efbb90eea4253b97ebd9279a4f6eaef0e4fd2f5eb54cac39840cdf",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -236,7 +236,7 @@
       "name": "execute-hard-cutover",
       "description": "Hard-cut predecessor to destination sole writer; retire dual paths.",
       "path": "skills/execute-hard-cutover/SKILL.md",
-      "packageDigest": "sha256:05710078f6ddb6d61d254e094de1d1fb0c1989fb641b98dbbcb376e9575d5ecd",
+      "packageDigest": "sha256:b518ccb16fe198332eb2eac0965e6e111c6ca8f62424f202672339c700bb81d6",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -244,7 +244,7 @@
       "name": "expand-product",
       "description": "Scale a validated product core: bottleneck, highest-slope change, run the path you changed.",
       "path": "skills/expand-product/SKILL.md",
-      "packageDigest": "sha256:e4d43a49d0e0c1964526f8a1712f589cc9071f4c0d84def1ae9b95e1f3503150",
+      "packageDigest": "sha256:9b1b35b339c11777f4ef72582552ff4892c68990bacb162c214b82fea6cea2cf",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -292,7 +292,7 @@
       "name": "operate-customer-support",
       "description": "Operate customer support: triage, resolution, escalation, quality loops.",
       "path": "skills/operate-customer-support/SKILL.md",
-      "packageDigest": "sha256:e42d9cbd5a6363782b64fce9be56b6c56294c1a595b51b66c72b076192072858",
+      "packageDigest": "sha256:01a951348e02f3c177723ca5f485127246bb62e24eb134a24fda8ecbbdc0b2ce",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -356,7 +356,7 @@
       "name": "prototype-product",
       "description": "Run a cheap real prototype with kill/continue criteria.",
       "path": "skills/prototype-product/SKILL.md",
-      "packageDigest": "sha256:e73f09cc9e1ddbd36e6180e85a7ff2a8c6f34108858f56310427c5c2f8305dc0",
+      "packageDigest": "sha256:7572d7e4b376989a1e9e7396f762c9e2f237c3227c2e3ada9c3a8aaa8b7fb47d",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },

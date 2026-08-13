@@ -20,8 +20,8 @@ skill; deterministic checks; harm can veto.
 ## Method
 
 1. Freeze the claim: this digest, this job, this artifact, this harm.
-2. Write 2–3 **real user prompts**. Do not name the skill. Do not say
-   “read SKILL.md”. Do not leak expected headings or keywords.
+2. Write 2–3 **real user prompts**. The prompt is the user job. The suite
+   leaves the skill unnamed and leaves `SKILL.md` unmentioned.
 3. Run each prompt twice under the same budget: skill installed as the
    condition, and baseline with no skill. Same prompt text both times.
 4. Oracle the **artifact or observable decision**, not a leaked template.
@@ -32,12 +32,12 @@ skill; deterministic checks; harm can veto.
 6. If it fails, edit the skill, not the threshold. Any later byte change
    to loaded files invalidates the proof.
 
-## Guardrails
+## Path
 
-- Qualification is not a use gate. Unqualified packages stay installed.
-- An LLM judge is extra evidence, never the only safety oracle.
-- Model self-report (“I loaded the skill”) is not injection proof.
-- Do not invent house coverage metrics or live yield scores.
+- Unqualified packages stay installed. Qualification is a claim, not a use gate.
+- The safety oracle is deterministic. An LLM judge may add a second look.
+- Injection proof is the paired run and the harm case.
+- Name customer value in English industry quantity.
 
 ## Output
 

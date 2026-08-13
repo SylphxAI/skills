@@ -15,7 +15,7 @@ When the core already works and you need **reach, capacity, or leverage ×N**, r
 ## Method
 
 **Measure bottleneck → highest-slope change → implement → run the path you changed.**  
-Do not scale a broken core. Do not invent a scale metric.
+Scale a working core.
 
 ### 1. Frame
 - Validated core (what already works) and ×N target (users, surfaces, or capacity)

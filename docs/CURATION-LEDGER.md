@@ -339,3 +339,8 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - `author-skill` and `documentation-standard` use that method. Listings
   name the job; product-law text names the industry home and English
   quantity.
+
+## 2026-08-13 — listing default path
+
+- Payment, architecture, cutover, evals, support, expand, and prototype
+  listings state the default path. Neighbour owners are when-to-open homes.

@@ -21,15 +21,15 @@ Run a hard cutover when a predecessor implementation must stop owning a path and
 4. **Schema multi-step inside destination** when live DDL/lock risk exists (not a second product system). Relational apply authority is Atlas (technology-stack-profile).
 5. **Backfill.** Move or rebuild required state at the destination before cut. Verify with original oracles, not memory.
 6. **Cut traffic.** Point writers and readers at destination. Block new predecessor writes.
-7. **Retire predecessor.** Delete or quarantine dead paths in the same delivery unit when safe. Do not leave "just in case" dual paths. Residuals are status, not permission to keep A alive.
+7. **Retire predecessor.** Delete or quarantine dead paths in the same delivery unit. Residuals are incomplete status.
 8. **Prove.** Destination handles the surface under real checks. Predecessor no longer receives production responsibility for that surface.
 
-## Gotchas
+## Checks
 
-- A green dual-path is not done.
-- Feature flags that never expire become the new system of record — ban them as the terminal state.
-- Docs and installers often keep pointing at the predecessor after code cutover.
-- Schema multi-step inside B is not product dual-write; permanent dual systems are.
+- Done is destination sole writer and predecessor retired.
+- Remaining flags have an expiry and kill criteria.
+- Docs and installers point at the destination.
+- Schema steps inside the destination stay inside that system.
 
 ## Validation
 
