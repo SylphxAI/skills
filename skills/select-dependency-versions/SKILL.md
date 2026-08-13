@@ -5,7 +5,7 @@ description: "Select package/runtime versions from live authoritative sources."
 
 # Select Dependency Versions
 
-Never pick versions from model memory, stale templates, or old examples.
+Query the live registry this session. Memory, templates, and tutorials are leads, not pins.
 
 ## When to use
 
@@ -20,13 +20,13 @@ Never pick versions from model memory, stale templates, or old examples.
 3. **Prefer the latest stable** that satisfies security and compatibility constraints of the active repo.
 4. **Record the exact version** and source URL/command used.
 5. **Apply pins** in the owning manifests; run install/build/tests required by the repo.
-6. **Reject** versions chosen only because they appeared in training data or a tutorial.
+6. **Pin** only versions confirmed from that live source.
 
-## Gotchas
+## Path
 
-- "Latest" tags can move; pin immutable versions for production.
-- Pre-release channels are opt-in only.
-- Transitive resolution can still pull older vulnerable packages — check lockfiles.
+- Pin immutable versions for production. Moving tags stay out of production pins.
+- Pre-release channels are opt-in.
+- After install, read the lockfile for transitive versions and known vulnerabilities.
 
 ## Validation
 

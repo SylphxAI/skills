@@ -18,10 +18,10 @@ description: "Remediate frontend performance with before/after path metrics."
 
 For detailed technique notes open [references/frontend-runtime-performance-method.md](references/frontend-runtime-performance-method.md).
 
-## Gotchas
+## Path
 
-- Micro-benchmarks that ignore the user path are not proof.
-- Do not claim production improvement from local-only numbers without stating that limit.
+- Baseline and after numbers are the same framed user path and metric.
+- Local numbers stay labeled local. A production claim uses production measurement.
 
 ## Output
 

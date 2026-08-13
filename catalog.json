@@ -132,7 +132,7 @@
       "name": "craft-telegram-bot-surface",
       "description": "Craft or hard-cut a Telegram bot to the sole 2026 surface model: sparse slash menu, layered keyboards with edit trees, Rich Message only, public vs ephemeral visibility, and bot-to-bot loop guards when multi-bot. Use for any Telegram bot design, implementation, review, command menu, keyboard tree, digest/board, progress UI, group multi-bot, or format path—never MarkdownV2/HTML product text or CLI command sprawl.",
       "path": "skills/craft-telegram-bot-surface/SKILL.md",
-      "packageDigest": "sha256:0a0557f54b4310926e82e6ce94138dfecb4bdaec149c37b38540934e15867841",
+      "packageDigest": "sha256:371a20b33768186ae2f66dbff1e4ae41e4ddea5409f8f88cb3bb9eb0cd62dead",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -140,7 +140,7 @@
       "name": "curate-skill-repository",
       "description": "Curate skill portfolio: merge/split, collisions, retirement.",
       "path": "skills/curate-skill-repository/SKILL.md",
-      "packageDigest": "sha256:173c14ba542f83cf635917112749da28ae5f959d455a3ba30d8f45ecdc4d1929",
+      "packageDigest": "sha256:dcc56df6ebd7ef0e074a8436c4956073fe60477608cbeb059b7fb1becb99d562",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -204,7 +204,7 @@
       "name": "edit-preserving-voice",
       "description": "Edit text preserving voice, constraints, and factual claims.",
       "path": "skills/edit-preserving-voice/SKILL.md",
-      "packageDigest": "sha256:d90c998c2048327eee9efda2952059cd08f267f62b9e4e11cbe891d3a4e847d5",
+      "packageDigest": "sha256:34388898d80ad3115c627f29fd4c14731a71e5d4d34640ed94fe1c94dea91e46",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -308,7 +308,7 @@
       "name": "optimize-store-listing",
       "description": "Optimize store listing: metadata, creatives, conversion, compliance.",
       "path": "skills/optimize-store-listing/SKILL.md",
-      "packageDigest": "sha256:20166ef0a142306359afd2ce89e278e29d7b3afdb56979df7c0f70da52d70b76",
+      "packageDigest": "sha256:ea2729c2bab10651f4b789afbdef73b8d9f1c81a91ce97cccb85733811aa6bad",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -324,7 +324,7 @@
       "name": "price-saas-subscription",
       "description": "Price a SaaS subscription: packaging, meters, fences, migration.",
       "path": "skills/price-saas-subscription/SKILL.md",
-      "packageDigest": "sha256:49cf0a354a9050bd7d5787a02e45b317b747bf8acd8081f950a962bcff487342",
+      "packageDigest": "sha256:c4021060d2793365108b98038f1683d59c0e2b184cce4430f0d9f6f601634511",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -388,7 +388,7 @@
       "name": "remediate-frontend-performance",
       "description": "Remediate frontend performance with before/after path metrics.",
       "path": "skills/remediate-frontend-performance/SKILL.md",
-      "packageDigest": "sha256:ecf02f2795faedd9eaca57e8eb16dea9be2d21dc2bdff4f58f19b72144d3b8ca",
+      "packageDigest": "sha256:80d6de8caa5fdace1f0f79bb1f9682305b4cf536eaf9be0ae12d8436f96f6598",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -420,7 +420,7 @@
       "name": "run-incident-response",
       "description": "Run production incident response to mitigation and learning.",
       "path": "skills/run-incident-response/SKILL.md",
-      "packageDigest": "sha256:025c39a59e72fabbf0bcab8c87f8c770b5ece2d01b9107567111ab5f176c30c5",
+      "packageDigest": "sha256:07021161513bbe8079a7637ca2c9f93f228ef0dc3c84aa7d4f928a42ab25f6b4",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -444,7 +444,7 @@
       "name": "select-dependency-versions",
       "description": "Select package/runtime versions from live authoritative sources.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:7896df66477755e2389f6acf59308aab85e65405a5f4f480dd3174767b855237",
+      "packageDigest": "sha256:8889326185205531d6fed3e94cbc1783de4412571ee3908411ce22f1766b4359",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -476,7 +476,7 @@
       "name": "synthesize-market-research",
       "description": "Synthesize market research: segments, competitors, demand, implications.",
       "path": "skills/synthesize-market-research/SKILL.md",
-      "packageDigest": "sha256:38cc40ee91ad15207031454f3d747d59875123ff81202111a3382cb8425a57be",
+      "packageDigest": "sha256:f143e9a4e2093000f9360420c43a23284ef9f35098aa2a9cacc1dad34c9efade",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },

@@ -27,11 +27,11 @@ Prefer the schema in [references/active-incident-record.schema.json](references/
 
 Read [references/full-standard.md](references/full-standard.md) only for extended severity definitions and communication templates.
 
-## Gotchas
+## Path
 
-- Debugging before mitigation extends outages.
-- "Working as designed" is not resolution if users are still harmed.
-- Never invent live metrics; report telemetry gaps.
+- Mitigate user harm first, then diagnose.
+- Resolution is users no longer harmed. Design intent is supporting context.
+- Report telemetry as read. Name gaps when a number is missing.
 
 
 ## Progressive disclosure

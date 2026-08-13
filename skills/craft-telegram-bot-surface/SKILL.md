@@ -6,8 +6,9 @@ description: "Craft or hard-cut a Telegram bot to the sole 2026 surface model: s
 # Craft Telegram Bot Surface
 
 Deliver one **Telegram Bot Surface** that matches Bot API 10.x product reality.
-There is **one** model. Do not leave dual paths, compatibility floors, or
-"temporary" format/IA residuals.
+There is **one** model: one menu, one text wire, one callback router, one
+visibility table. Delete superseded formatters and menus in the same delivery
+unit.
 
 ## Sole model (non-negotiable)
 
@@ -19,9 +20,8 @@ There is **one** model. Do not leave dual paths, compatibility floors, or
    work product may be a new public message.
 3. **Rich Message only** — all product text uses `sendRichMessage` /
    `editMessageText`+`rich_message` with ordinary Markdown/GFM (or 10.2 blocks
-   when implemented). **No** `parse_mode=MarkdownV2`. **No** `parse_mode=HTML`
-   for product text, command panels, digests, progress, or agent replies.
-   Captions are plain when media requires caption-only.
+   when implemented). Product send is Rich Message. Captions are plain when
+   media requires caption-only.
 4. **Visibility policy** — each outbound chooses:
    - **Public** — shared work product, digests, agent answers for the room,
      bot-to-bot handoffs
@@ -29,7 +29,7 @@ There is **one** model. Do not leave dual paths, compatibility floors, or
      UI, settings, permission errors, personal help in groups
 5. **Bot-to-bot** (when multiple bots share groups) — allowlist, max depth,
    dedupe, rate limit, public handoff line; no unguarded ping-pong.
-6. **No dual paths** — one menu inventory, one text wire, one callback action
+6. **One path** — one menu inventory, one text wire, one callback action
    router, one visibility rule table. Delete superseded formatters and menus.
 
 ## Modes
@@ -91,15 +91,14 @@ buttons.
 
 Ephemeral is **per message**, not a bot-wide mode.
 
-## Anti-patterns (reject / delete)
+## Done look
 
-- Dual text paths (rich for agent + HTML for commands)
-- HTML or MarkdownV2 "fallback success" for structured product text
-- 9+ registered slash commands for filters/panels
-- New message per keyboard step (no edit tree)
-- Treating ephemeral as "hide all agent output"
-- Bot-to-bot without loop guards
-- Leaving legacy formatters "just in case"
+- One text wire: Rich Message (GFM or blocks). Captions stay plain when the media API requires caption-only.
+- One registered menu within the slash budget. Filters and panels live in the help/footer tree.
+- Keyboard steps edit the same message.
+- Ephemeral is per message, for personal system UI. Shared work product is public.
+- Multi-bot groups carry allowlist, max depth, dedupe, and a public handoff line.
+- Superseded formatters and menus are deleted in the same delivery unit.
 
 ## Output contract
 

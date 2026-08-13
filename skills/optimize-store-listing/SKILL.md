@@ -19,9 +19,9 @@ localized, tested, and updated across exact channel variants.
 
 Own one channel listing's positioning-to-asset narrative, metadata, creative
 sequence, proof/disclosures, localization, accessibility, asset QA, experiment,
-and conversion/trust measurement. Do not own store submission/certification,
-whole-product positioning, public review solicitation, paid acquisition, or the
-multi-channel creative/spend control plane.
+and conversion/trust measurement. Store submission, whole-product positioning,
+public review solicitation, paid acquisition, and the multi-channel
+creative/spend control plane live with those owners.
 
 Write the listing record in markdown. Name owners and sources in prose. Do not
 add a parallel JSON envelope. Consume product thesis, canonical product/build
@@ -63,7 +63,7 @@ public page and claims no compatibility until authority and the exact pack pass.
    that channel.
 5. Build localization briefs per locale: intent, search language, cultural
    meaning, reading direction, typography, image/text constraints, age modes,
-   price/unit/date, and native QA. Do not reuse one translated screenshot set.
+   price/unit/date, and native QA. Each locale gets its own screenshot set.
 6. When exact media is selected, consume the Product Asset Production Pack in a
    new listing revision; validate dimensions, safe zones, compression/color/
    audio, device chrome, legibility, motion/captions, no unreleased UI, rights,
@@ -83,21 +83,14 @@ subscription/ad disclosures, privacy/data-safety, age/content rating,
 compatibility, accessibility, localization, IP/rights, and regional rules.
 Unknown/stale channel authority blocks submission of that adapter.
 
-## Guardrails
+## Path
 
-- Never show unreleased/nonexistent UI, fake rankings/reviews/awards, hidden
-  prices/renewal/ads, misleading gameplay, unsupported devices, or privacy/
-  accessibility claims without exact evidence.
-- Search optimization cannot reduce human clarity or stuff irrelevant terms,
-  competitor marks, or deceptive claims.
-- Do not sentiment-gate, incentivize, fabricate, filter, or steer ratings; review
-  context is observed evidence, not listing manipulation authority.
-- Separate creative conversion from product quality. A higher install rate with
-  worse activation, retention, refunds, support, or trust is not a win.
-- Autonomous generators cannot publish, change price/claims/rights, or promote
-  a variant without exact validation and authority.
-- Do not capture, render, localize, or hand-edit product media; request a new
-  canonical `produce-product-assets` pack revision.
+- Every live claim and asset matches shipped behavior on that channel. Rankings, reviews, awards, prices, renewal, ads, devices, and privacy or accessibility claims carry exact evidence.
+- Search language stays human-clear. Keywords are relevant terms the product actually earns.
+- Reviews are observed evidence. Solicitation and rating policy live with `run-product-feedback-loop`.
+- A win moves install or purchase while activation, retention, refunds, support, and trust stay level or improve.
+- Publication, price, claims, and rights changes go through validation and the owning authority.
+- Product media comes from a new `produce-product-assets` pack revision.
 
 
 ## Progressive disclosure

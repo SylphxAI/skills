@@ -344,3 +344,9 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 
 - Payment, architecture, cutover, evals, support, expand, and prototype
   listings state the default path. Neighbour owners are when-to-open homes.
+
+## 2026-08-13 — remaining listing path
+
+- Pricing, market research, curation, store listing, voice, dependency
+  versions, incident, frontend-perf, and Telegram surface listings state
+  the action, the home, and the done look.
