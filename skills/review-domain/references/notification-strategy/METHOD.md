@@ -50,24 +50,21 @@ transactional/security, child/age, privacy, sensitive-content, unsubscribe,
 sender/deliverability, and territory authority at execution. Static text is a
 route, not a compliance verdict.
 
-## Guardrails
+## Path
 
-- Do not use notifications to compensate for weak product value.
-- Do not mix transactional, security, marketing, and engagement consent.
-- Give users controls, quiet hours, and clear unsubscribe paths.
-- Do not send duplicate push/email/in-app messages for the same lifecycle event unless escalation value is explicit.
-- Do not ask platform push permission before the user has seen a concrete notification value moment.
-- Do not repeatedly ask after denial; use in-product education, preference-center recovery, and a user-initiated path back to OS/browser settings.
-- Do not optimize opens/clicks without delivery, opt-out, unsubscribe, complaint, retention, and long-term trust guardrails.
-- Do not describe fatigue management as "cap frequency" without naming concrete global, category, lifecycle-event, cooldown, and digest rules.
-- Do not use emergency override for marketing, habit nudges, win-back, IAP promotions, daily rewards, energy reminders, leaderboard resets, or live-event urgency. Reserve it for security, safety, service continuity, or explicit user-requested exact reminders, and log the override reason.
-- Do not continue a sequence after the user converts, cancels, pays, resolves the workflow, contacts support, unsubscribes, or complains.
-- Do not expose secrets, health/finance details, precise location, private message content, or sensitive account state in lock-screen previews, push payloads, SMS bodies, or email subjects; use auth-gated deep links for details.
-- Do not infer consent across channels or categories; email, SMS, push, in-app, desktop/browser, transactional, and marketing controls must stay separate.
-- Do not call a channel dormant merely because new scheduling stopped. Cancel
-  provider queues, expire uncancellable work, suppress retries/fallbacks,
-  reconcile delivery callbacks, and observe zero sends through the bounded
-  drain window.
+- Notifications carry product value. Weak product value is a product job.
+- Transactional, security, marketing, and engagement consent stay separate.
+- Users get controls, quiet hours, and a clear unsubscribe path.
+- One lifecycle event gets one message unless escalation value is named.
+- Platform push permission follows a concrete value moment the user has seen.
+- After denial, recovery is in-product education, the preference center, and a user-initiated path to OS/browser settings.
+- Optimize with delivery, opt-out, unsubscribe, complaint, retention, and trust alongside opens and clicks.
+- Fatigue management names global, category, lifecycle-event, cooldown, and digest rules.
+- Emergency override is for security, safety, service continuity, or explicit user-requested exact reminders, with a logged reason.
+- Sequences stop after convert, cancel, pay, resolve, support contact, unsubscribe, or complaint.
+- Lock-screen previews, push payloads, SMS bodies, and email subjects stay free of secrets, health/finance detail, precise location, private message content, and sensitive account state. Details live behind auth-gated deep links.
+- Consent is per channel and category.
+- Dormant means provider queues cancelled, uncancellable work expired, retries suppressed, callbacks reconciled, and zero sends through the drain window.
 
 ## Output format
 

@@ -68,19 +68,13 @@ privacy/consent, reviews/community, refund, promotion, and acquisition-platform
 authority for every active cell. A test market or platform permission is not a
 global compliance or product-fit verdict.
 
-## Guardrails
+## Path
 
-- Never scale blended metrics that hide version, market, device, source,
-  creative, age, payer, or experiment cohorts.
-- Do not over-monetize early cells and then treat damaged retention as product
-  truth; preserve baseline/no-paid-acceleration reachability.
-- Purchases, durable progress, social relationships, and creations survive
-  normal experiment/season/region changes; resets require explicit migration,
-  compensation, support, and authority.
-- One market is evidence for its cell, not global proof. Cultural/locale and
-  channel differences remain hypotheses until tested.
-- No autonomous system may raise spend/exposure caps or weaken quality, safety,
-  consent, payment, economy, or rollback gates to chase growth.
+- Readouts stay split by version, market, device, source, creative, age, payer, and experiment cell.
+- Early cells keep a baseline / no-paid-acceleration path. Retention in a monetized cell stays labeled as that cell.
+- Purchases, durable progress, social relationships, and creations survive normal experiment, season, and region changes. Resets carry migration, compensation, support, and authority.
+- One market is evidence for its cell. Cultural, locale, and channel differences stay hypotheses until tested.
+- Spend and exposure caps, plus quality, safety, consent, payment, economy, and rollback gates, stay with the owning authority.
 
 ## Output contract
 

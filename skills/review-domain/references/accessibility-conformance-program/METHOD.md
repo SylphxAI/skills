@@ -39,16 +39,14 @@ turning a scanner result into a conformance claim.
   untested workflow, platform, disability need, or conformance status from a
   neighbouring result.
 
-## Guardrails
+## Path
 
-- Never claim conformance from automated scans alone.
-- Never claim legal compliance, certification, or a completed VPAT/ACR without
-  scoped, current, reviewable evidence and known exceptions.
-- Never average away a blocker that prevents a disabled user from completing a
-  core task.
-- Never treat a design-system pass as proof that composed product workflows pass.
-- Keep disability-related research data minimal, consented, and access-controlled.
-- Distinguish `observed`, `inferred`, `not_tested`, and `blocked` evidence states.
+- Conformance claims combine automated scans with human evaluation of core tasks.
+- Legal compliance, certification, and VPAT/ACR claims carry scoped, current, reviewable evidence and known exceptions.
+- A blocker that stops a disabled user on a core task stays a blocker.
+- Design-system pass is one input. Composed product workflows have their own pass.
+- Disability-related research data stays minimal, consented, and access-controlled.
+- Evidence states are `observed`, `inferred`, `not_tested`, and `blocked`.
 
 ## Output
 

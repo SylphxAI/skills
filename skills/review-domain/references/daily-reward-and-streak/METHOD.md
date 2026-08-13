@@ -55,17 +55,12 @@ Retrieve current notification, payment, child/age, chance-based reward, store,
 privacy, and promotion authority for the exact product/platform/territory. Paid
 repair or gacha-linked rewards require transparent terms and current authority.
 
-## Guardrails
+## Path
 
-- Never make anxiety, shame, irreversible loss, or paid repair the main value.
-- Preserve creations, earned ownership, purchases, relationships, and core app
-  utility independently of streak state.
-- No silent clock correction, duplicate grant, surprise expiry, pay-to-win
-  multiplier, or gacha-currency inflation.
-- Missed-day recovery must be proportionate and accessible; repeated deliberate
-  churn/rejoin cannot become the optimal earning strategy.
-- Measure D7/D30 retained value, core behavior, fatigue, support/trust, economy,
-  payer/non-payer fairness, and abuse false positives—not claims alone.
+- The main value is the product. Creations, earned ownership, purchases, relationships, and core utility survive streak state.
+- Clock, grant, expiry, and multipliers stay published and auditable.
+- Missed-day recovery is proportionate and accessible. Repeated churn/rejoin is not the optimal earning strategy.
+- Measure D7/D30 retained value, core behavior, fatigue, support/trust, economy, payer/non-payer fairness, and abuse false positives.
 
 ## Output contract
 

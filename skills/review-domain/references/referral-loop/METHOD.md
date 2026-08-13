@@ -69,22 +69,14 @@ child/age, referral/affiliate, advertising/endorsement, payment/reward, tax,
 store, territory, and anti-spam authority. Unknown authority disables the
 affected channel or incentive; it does not justify covert collection.
 
-## Guardrails
+## Path
 
-- No spam, forced contact upload, address-book dark patterns, preselected
-  recipients, misleading sender identity, public-post requirement, or fake
-  waitlist scarcity.
-- Do not grant irreversible value before authoritative qualification and fraud
-  checks; do not silently confiscate unrelated value on reversal.
-- Terms, attribution, eligibility, caps, expiry, pending state, reversal, and
-  support/appeal are visible to both sides where relevant.
-- Protect genuine household/team/friend cases from crude multi-account bans;
-  use evidence bands, false-positive controls, and correction.
-- Measure retained qualified value, not invites or installs alone. Spam,
-  complaint, block/report, fraud, refund, support, fairness, and privacy are
-  mandatory countermetrics.
-- Autonomous optimization cannot expand contact access, change qualification/
-  rewards/caps, weaken fraud/privacy, or approve its own scale gate.
+- Invites are opted-in, sender-identified, and recipient-chosen. Contact books and waitlists stay honest.
+- Irreversible value lands after qualification and fraud checks. Reversal returns only the granted value.
+- Terms, attribution, eligibility, caps, expiry, pending state, reversal, and support/appeal are visible to both sides.
+- Household, team, and friend cases use evidence bands, false-positive controls, and correction.
+- Success is retained qualified value. Spam, complaint, block, fraud, refund, support, fairness, and privacy stay on the readout.
+- Scale gates, contact access, qualification, rewards, caps, fraud, and privacy stay with the owning authority.
 
 ## Output contract
 

@@ -74,19 +74,13 @@ promotion, refund, virtual-currency, marketplace/trading, territory, and tax
 authority for the exact platforms and audience modes. Unknown authority blocks
 the affected exposure, not construction of the dormant adapter.
 
-## Guardrails
+## Path
 
-- Fun and meaningful choice come before extraction; monetization cannot repair
-  weak gameplay or make the baseline path non-viable.
-- Publish exact odds/pity where required and never use fake scarcity, hidden
-  odds, misleading value anchors, or loss threats.
-- Bound vertical dominance; give veterans horizontal identity/mastery/social
-  value while keeping newcomers contributive and late entry viable.
-- Ordinary refunds enter declared value adjustment/reconciliation; automatic
-  bans, surprise debt, and deletion of unrelated progress are forbidden.
-- Never tune from aggregate ARPDAU alone. Track progression, scarcity,
-  inflation, concentration, completion, fairness, support, churn, abuse false
-  positives, and long-term retained value by cohort.
+- Fun and meaningful choice come first. The baseline path stays viable. Monetization sits on that path.
+- Exact odds and pity are published where required. Scarcity, odds, value anchors, and loss language stay truthful.
+- Vertical dominance is bounded. Veterans get horizontal identity, mastery, and social value. Newcomers stay contributive.
+- Ordinary refunds enter declared value adjustment. Unrelated progress stays.
+- Tune from progression, scarcity, inflation, concentration, completion, fairness, support, churn, abuse false positives, and long-term retained value by cohort.
 
 ## Output contract
 

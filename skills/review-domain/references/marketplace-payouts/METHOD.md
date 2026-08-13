@@ -25,13 +25,13 @@ Use this skill to make marketplace payouts traceable, fair, supportable, and res
 - Verify current provider, tax-authority, sanctions, country-eligibility, and reporting requirements from authoritative sources at use.
 - Label jurisdiction, effective/access date, source owner, and unresolved qualified-review decision; never treat a named form or threshold in this skill as current legal advice.
 
-## Guardrails
+## Path
 
-- Do not treat displayed balance as ledger truth.
-- Do not pay out funds that remain within a refund, fraud, chargeback, or delivery-risk window unless risk is explicitly accepted.
-- Do not make opaque holds or clawbacks without reason, evidence, and appeal/support path.
-- Do not approve global payouts without tax/compliance handoff, provider eligibility constraints, and creator-visible support status.
-- Do not give tax or sanctions advice; route jurisdiction, form, withholding, reporting, and sanctions decisions to a qualified owner while still defining product states, evidence, and payout blockers.
+- Ledger truth is the money ledger. Displayed balance is a projection.
+- Payout waits for the refund, fraud, chargeback, and delivery-risk window, or a named accepted risk.
+- Holds and clawbacks carry reason, evidence, and an appeal/support path.
+- Global payouts include tax/compliance handoff, provider eligibility, and creator-visible support status.
+- Tax and sanctions decisions route to a qualified owner. This pack defines product states, evidence, and payout blockers.
 
 ## Output format
 

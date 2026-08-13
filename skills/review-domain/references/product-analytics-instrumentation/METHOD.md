@@ -69,18 +69,13 @@ and regional privacy, ATT/device identifier, cookie/storage, data-residency,
 deletion/export, and provider quota/retention authority. A vendor default is
 never the product's consent or retention policy.
 
-## Guardrails
+## Path
 
-- Do not instrument everything or collect data “just in case.” Minimize by
-  declared decision and retention need.
-- No client event, dashboard, or model inference may grant entitlement, settle
-  money, enforce policy, or overwrite operational truth.
-- Do not merge identities without explicit rules, consent/authority, reversibility,
-  and deletion semantics.
-- Never silently change an event or metric meaning. Version, dual-write/read,
-  backfill or annotate discontinuity, and migrate consumers.
-- Dashboard freshness/coverage and model confidence are not product success;
-  retain value, quality, trust, fairness, privacy, and support countermetrics.
+- Collect the events a declared decision and retention need require.
+- Entitlement, money settlement, policy enforcement, and operational truth stay with their owners. Client events, dashboards, and model inference are measurement.
+- Identity merge uses explicit rules, consent/authority, reversibility, and deletion semantics.
+- Event and metric meaning changes are versioned, dual-written or dual-read, backfilled or annotated, and consumed by a migration.
+- Product success is retained value, quality, trust, fairness, privacy, and support. Dashboard freshness and model confidence are measurement health.
 
 ## Output contract
 

@@ -30,17 +30,13 @@ and proposed normalization visibly separate.
 9. Produce the provenance ledger, token graph, component contracts, exception
    register, confidence gaps, representative-flow validation, and migration map.
 
-## Guardrails
+## Path
 
-- Never invent missing values or states and report them as extracted.
-- Never collapse platform, theme, density, locale, accessibility, or product
-  variants merely because their raw styles are similar.
-- Never treat frequency as authority when the frequent pattern is deprecated,
-  inaccessible, or an accidental fork.
-- Never output raw style tokens without semantic roles, provenance, confidence,
-  and consumers.
-- Never log private customer content or proprietary third-party assets in the
-  reusable system artifact.
+- Missing values and states stay unlabeled or `unresolved`. Extracted means observed.
+- Platform, theme, density, locale, accessibility, and product variants stay distinct when their roles differ.
+- Authority is source ownership, shipped usage, recency, accessibility, and product intent. Frequency is one input.
+- Tokens ship with semantic roles, provenance, confidence, and consumers.
+- Private customer content and proprietary third-party assets stay out of the reusable system artifact.
 
 ## Output
 

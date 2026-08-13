@@ -350,3 +350,8 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Pricing, market research, curation, store listing, voice, dependency
   versions, incident, frontend-perf, and Telegram surface listings state
   the action, the home, and the done look.
+
+## 2026-08-13 — review-domain pack path
+
+- Domain review packs and the design-system extractor state the default
+  path. Neighbour owners stay when-to-open homes.

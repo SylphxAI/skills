@@ -45,19 +45,18 @@ purchase, product, economy, and support inputs without copying their facts.
 - Record provider, product type, geography, policy/API version, access date, and URL for every external rule that changes money or access.
 - Never turn an internal starter threshold, remembered store rule, or support convention into provider policy.
 
-## Guardrails
+## Path
 
-- Do not auto-ban after a normal refund.
-- Do not coerce repurchase with threats.
-- Keep immutable ledger evidence for support and audit.
-- Do not collapse Apple, Google, Stripe, chargebacks, and internal goodwill into one policy.
-- Do not collapse cancellation into refund. A user may cancel renewal and keep paid access until period end without receiving money back.
-- Do not revoke durable access without a server-side entitlement truth source and reversible audit trail.
-- Do not re-ingest or reinterpret provider events as a competing money ledger. Reference the Payment Platform/provider authority and own only the downstream customer/account policy.
-- Do not let restore-purchase or client state re-grant access after a confirmed refund, chargeback loss, or manual revoke without ledger reconciliation.
-- Do not create surprise negative balances for spent consumables by default; use explicit policy, warnings, review, and appeal paths.
-- Do not use refund flows to punish product-quality, outage, billing-copy, or accidental-purchase issues; feed those reason codes back into product/support fixes.
-- Do not ask users to repurchase under threat. Repurchase restores value only after entitlement, dispute, and abuse state are reconciled.
+- A normal refund keeps the account open. Ban is a separate enforcement action with its own evidence.
+- Repurchase is optional after entitlement, dispute, and abuse state are reconciled.
+- Support and audit read the immutable ledger.
+- Apple, Google, Stripe, chargebacks, and internal goodwill each keep their own policy.
+- Cancellation and refund are separate states. A user may cancel renewal and keep paid access until period end.
+- Durable access changes go through a server-side entitlement source with a reversible audit trail.
+- Provider events stay with `build-payment-readiness`. This pack owns downstream customer and account policy.
+- Restore-purchase and client state re-grant access only after ledger reconciliation.
+- Spent consumables keep their value unless an explicit policy, warning, review, and appeal path says otherwise.
+- Product-quality, outage, billing-copy, and accidental-purchase refunds feed product and support fixes.
 - Do not omit reason-code taxonomy. Product-quality and support learning must explicitly distinguish outage_or_bug, unclear_pricing_or_copy, duplicate_charge, accidental_purchase, minor_purchase, policy_mismatch, store_policy_redirect, support_exception, and refund_abuse_suspected.
 - Do not model chargebacks as a single refund event; include dispute_opened, evidence_due, evidence_submitted, dispute_won, dispute_lost, appeal_opened, and repurchase_requested states.
 

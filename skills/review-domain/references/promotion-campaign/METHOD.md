@@ -101,21 +101,14 @@ exposure/spend are capped, stop signals are observable, and recovery has been
 tested. A small company’s ability to correct quickly lowers some recovery cost;
 it does not erase platform-account, legal, child-safety, privacy, or trust ruin.
 
-## Guardrails
+## Path
 
-- No fake scarcity/countdown, hidden renewal/normal price, shame, blocked exit,
-  reset timer, or loss threat involving creations/history/identity/access.
-- Never reward review/rating, permission, ad click, spend, forced referral, or
-  mere update installation. Update benefit requires verified new-value use.
-- A user cannot see an offer they cannot redeem; regional/platform differences
-  and suppression are support-explainable.
-- Never confirm reward before authority and idempotent grant commit. Ordinary
-  refund/reversal cannot delete unrelated value or auto-ban an account.
-- Optimize neither gross revenue nor clicks alone. Retention, renewal, margin,
-  refunds, churn, loyal cohort, fatigue, support, fairness, economy, privacy,
-  and fraud false positives are mandatory countermetrics.
-- Autonomous optimizers cannot alter eligibility floors, prices/terms, consent,
-  reward value, grant/reversal, spend caps, or their own promotion gates.
+- Scarcity, countdown, price, exit, timer, and loss language stay truthful. Creations, history, identity, and access stay off the loss lever.
+- Rewards are for verified new-value use. Review, rating, permission, ad click, spend, forced referral, and mere update installation are not the reward trigger.
+- A user sees only offers they can redeem. Regional and platform differences are support-explainable.
+- Reward confirms after authority and idempotent grant commit. Ordinary refund or reversal returns the granted value.
+- Optimize with retention, renewal, margin, refunds, churn, loyal cohort, fatigue, support, fairness, economy, privacy, and fraud false positives alongside revenue and clicks.
+- Eligibility floors, prices, terms, consent, reward value, grant/reversal, spend caps, and promotion gates stay with the owning authority.
 
 ## Output contract
 
