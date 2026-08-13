@@ -199,6 +199,19 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Integrity gate rejects a later hand-edit that puts `incremental-value`
   back onto an ineligible suite.
 
+## 2026-08-13 — establish-correct-approach
+
+- New listing: name the current correct method from live authority before
+  implementing or fixing. Artifact is a Correct Approach Record, not the
+  patch. Composes `analyze-critically` and `synthesize-evidence-brief`;
+  does not replace them. Does not restore `research-public-web`.
+- Why one listing, not two: "deep research" is host search + evidence
+  synthesis; "critical thinking" is already `analyze-critically`. The
+  missing job is the **gate**.
+- Ingrained via a one-line constitution floor plus when-to-open on
+  `build-product` and `maintain-product`. Not an always-on encyclopedia.
+- `unqualified`.
+
 ## 2026-08-13 — Platform customer method (industry grain)
 
 - Industry sources agree: a skill is one coherent requestable job. Extract

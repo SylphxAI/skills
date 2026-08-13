@@ -12,7 +12,7 @@ ADR-20260731-thin-dual-layer-progressive-instruction-system).
 
 ### 2026-08-10 Verified Capabilities projection
 
-- The repository now projects qualification explicitly: **60 capability
+- The repository now projects qualification explicitly: **61 capability
   packages, 0 qualified** as of 2026-08-13 (`docs/qualification/LEDGER.md`).
   House coverage/yield KPIs and required outcome receipts are retired.
   `research-public-web` was retired the same day. This record and the

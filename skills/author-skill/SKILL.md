@@ -36,6 +36,7 @@ Examples of the *kind* of listing skill:
 - write an update
 - run an incident
 - analyze critically / forecast with calibration (when those jobs are requested on their own)
+- establish the current correct method before implementing or fixing
 
 A Skill is **not**:
 

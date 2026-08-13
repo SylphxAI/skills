@@ -13,7 +13,7 @@ no requirement to send credentials to Sylphx to install.
   not publisher intent or semantic safety.
 - `qualified` means version-scoped, expiring evidence from a named evaluator,
   including a pattern scan for secrets and dangerous instruction patterns.
-  As of 2026-08-13, **0 of 60** packages carry that badge; all remain
+  As of 2026-08-13, **0 of 61** packages carry that badge; all remain
   installable. The pattern scan is a regex backstop, not a security review.
 - There is **no current automated gate that evaluates malicious instructions,
   unsafe scripts, or capability permissions**. Treat any installed package as

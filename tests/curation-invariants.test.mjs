@@ -38,6 +38,7 @@ test('requestable jobs are listings (not size-demoted)', () => {
     'persist-app-data',
     'run-background-work',
     'deliver-app-events',
+    'establish-correct-approach',
   ]) {
     assert.ok(existsSync(path.join(skillsRoot, id, 'SKILL.md')), id);
   }
