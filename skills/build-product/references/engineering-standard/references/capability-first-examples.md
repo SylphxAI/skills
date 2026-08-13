@@ -80,9 +80,11 @@ evidence:
   - rendered accessibility test
 ```
 
-FCCP may govern this definition, its relations, surfaces, gaps, and evidence.
-The code architecture below owns its implementation shape; the live work system Work
-tracks changes to it.
+`capability.json`, product contracts, and tests own this definition, its
+relations, surfaces, gaps, and evidence. FCCP is a retired overlay — do not
+recreate it or treat it as a score or governance plane. The code architecture
+below owns its implementation shape; the live work system tracks Work
+changes to it.
 
 ## Code ownership map
 

@@ -129,7 +129,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:edd56c17bbda921f7b4cb9f7f9f37f62f5cee393181811d2750ce43aaa21b195",
+      "packageDigest": "sha256:0aee276f2f342424324fd94b8d49bb6fb07da962aae17cfefaff029738b9b4b6",
       "capability": {
         "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice.",
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
@@ -233,7 +233,7 @@
       "name": "decide-architecture-shape",
       "description": "Decide one architecture shape from options with tradeoffs.",
       "path": "skills/decide-architecture-shape/SKILL.md",
-      "packageDigest": "sha256:88fe7511a5573ff72adf6713f5a7f74bc6bdaf451a75163306f06f23cce513a9",
+      "packageDigest": "sha256:6c45c81f419aaff426f546694e8a34036ba43703a12cc13a25e2bba62c5e0f7b",
       "capability": {
         "job": "Decide one architecture shape from options and drive it through independently verifiable convergence slices with parity proof and cutover.",
         "outcomeObservable": "A decided shape with each slice carrying exact-candidate parity proof, a cutover that retired obsolete structure at the real lifecycle stage, and a reconciled migration ledger reporting implementation, merge, deployment, and retirement separately.",

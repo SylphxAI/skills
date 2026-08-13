@@ -185,17 +185,19 @@ bootstrap ──┘          │
 
 ## Capability governance mapping
 
-FCCP and code architecture are related but distinct:
+Capability identity lives in `capability.json`, product contracts, and tests.
+FCCP is a retired overlay — do not recreate it, and do not treat it as a score
+or governance plane.
 
-- FCCP governs capability identity, definition, relationships, claims,
-  contracts, surfaces, gaps, and proof.
+- Product contracts and tests own capability identity, definition,
+  relationships, claims, surfaces, gaps, and proof.
 - This standard governs how implementation code expresses those capabilities.
-- the live work system governs Work and live execution state.
+- The live work system governs Work and live execution state.
 
 The mapping is many-to-many, never `one capability = one file`:
 
 ```text
-governed Capability
+capability.json / product contract
   -> bounded context / capability module(s)
   -> feature/use-case slices
   -> published contracts and surfaces
@@ -204,8 +206,8 @@ governed Capability
 
 A large capability may require several cohesive modules. Several small related
 capabilities may share one bounded context while retaining distinct definitions
-and proof. The governing capability definition records the mapping; physical
-file count does not define semantics.
+and proof. The capability contract records the mapping; physical file count
+does not define semantics.
 
 ## Physical modularity
 
