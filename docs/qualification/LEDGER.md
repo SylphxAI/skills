@@ -156,7 +156,8 @@ Notes on the runs:
   on deepseek-v4-flash.
 - Capability-identity contract (2026-08-11): `packageDigest` now covers only
   what agents load and host discovery consumes (SKILL.md, references/,
-  scripts/, capability.json, agents/); `qualification.json` and `evals/`
+  scripts/, agents/); `qualification.json`, leftover `capability.json`,
+  and `evals/`
   are excluded so re-qualification or evidence relabeling never changes
   capability identity. Historical report `candidate.packageDigest` values
   are point-in-time records under the prior contract; the current catalog is

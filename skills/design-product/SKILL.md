@@ -39,12 +39,12 @@ User intent is **design a product**, not pick an engine brand. Shape-specific de
 4. **Inventory in the PRD** (`docs/prd.md` or blueprint that becomes the PRD):
    - **Features / capabilities** — requestable jobs, success, non-goals
    - **Tools / surfaces** — how each capability is exposed
-   - **Details** — point at specs/OpenAPI/`capability.json` (not vision/NSM prose)
+   - **Details** — point at specs/OpenAPI/tests (not vision/NSM prose)
 5. **Synthesize** one blueprint: concept, structure, critical flows/states, risks, open questions.
 6. **Hand off** durable industry homes (not chat-only):
    - `PROJECT.md` / README — Purpose, Vision projection, NSM, optional Goals, Delivery, Links
    - `docs/prd.md` — PRD inventory and requirements
-   - Specs/tests/`capability.json` — interface contracts
+   - Specs/tests — interface contracts
    - Build/prototype with testable acceptance criteria and quality tradeoffs + rollback
 
 

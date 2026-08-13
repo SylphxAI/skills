@@ -8,7 +8,7 @@ no requirement to send credentials to Sylphx to install.
 
 ## What the integrity gates do and do not prove
 
-- CI validates package shape, capability contracts, qualification records,
+- CI validates package shape, qualification records,
   secrets hygiene, link integrity, and catalog digests. Hashes prove **bytes**,
   not publisher intent or semantic safety.
 - `qualified` means version-scoped, expiring evidence from a named evaluator,

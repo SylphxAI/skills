@@ -48,16 +48,12 @@ export function buildCatalog(root = repositoryRoot) {
     if (!existsSync(absolutePath)) throw new Error(`${relativePath}: missing`);
     const { values } = parseFrontmatter(readFileSync(absolutePath, 'utf8'), relativePath);
 
-    // Every listing carries a contract. A qualification file is optional:
-    // missing means unqualified.
-    const contractPath = `skills/${folder}/capability.json`;
+    // SKILL.md is the industry package. Qualification is optional:
+    // missing means unqualified. Do not read a parallel JSON job contract.
     const qualificationPath = `skills/${folder}/qualification.json`;
-    if (!existsSync(path.join(root, contractPath))) throw new Error(`${contractPath}: missing`);
-    const contract = readJson(path.join(root, contractPath));
     const qualification = existsSync(path.join(root, qualificationPath))
       ? readJson(path.join(root, qualificationPath))
       : { name: folder, status: 'unqualified' };
-    if (contract.name !== folder) throw new Error(`${contractPath}: name must match folder`);
     if (qualification.name && qualification.name !== folder) {
       throw new Error(`${qualificationPath}: name must match folder`);
     }
@@ -67,11 +63,6 @@ export function buildCatalog(root = repositoryRoot) {
       description: values.description,
       path: relativePath,
       packageDigest: packageDigest(path.join(root, 'skills', folder)),
-      capability: {
-        job: contract.job,
-        outcomeObservable: contract.outcome.observable,
-        oracleOwner: contract.outcome.oracleOwner,
-      },
       qualified: qualification.status === 'qualified',
       qualificationStatus: qualification.status,
     };

@@ -19,11 +19,13 @@ Hosts differ: some rank a small metadata listing; others (including RAG-style di
 ## What a skill is
 
 A **Skill** is one **requestable job** (one PRD **feature/capability** unit)
-with a specialized procedure, an acceptably complete outcome, and a
-machine-readable capability contract (`capability.json`). A qualification
-record is optional and only exists after a filed eval. Field-level details live in that
-contract and `references/` — not in vision or North Star Metric prose. Repo doc
-altitude (Vision · NSM · OKR · PRD · Spec · ADR): see
+with a specialized procedure and an acceptably complete outcome. Hosts
+discover it from `SKILL.md` `name`+`description`. Depth lives in
+`references/`. Do **not** add a parallel JSON contract of the same job —
+the Agent Skills spec is `SKILL.md` only
+([agentskills.io](https://agentskills.io/specification)). A qualification
+record is optional and only exists after a filed eval. Repo doc altitude
+(Vision · NSM · OKR · PRD · Spec · ADR): see
 `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`.
 
 Examples of the *kind* of listing skill:
@@ -95,8 +97,7 @@ READMEs link it instead of restating it.
 
 ```text
 skill-id/
-  SKILL.md              # required
-  capability.json       # required capability contract (job, boundaries, inputs/outputs, required, failure semantics, outcome)
+  SKILL.md              # required (industry Agent Skills)
   qualification.json    # optional; write only when filing a qualify run
   agents/openai.yaml    # display metadata (this repo)
   references/           # optional depth
@@ -104,26 +105,9 @@ skill-id/
   assets/               # optional templates
 ```
 
-Every listing is a **capability**: `capability.json` follows
-`schemas/capability-contract.schema.json`. Missing `qualification.json`
-means `unqualified`. File a record only after a reproducible run per
+Do **not** write `capability.json`. Missing `qualification.json` means
+`unqualified`. File a record only after a reproducible run per
 `docs/QUALIFICATION.md` and `design-skill-evals`.
-
-### Exact contract fields (do not invent shapes)
-
-`capability.json` (schema `schemas/capability-contract.schema.json`,
-`additionalProperties: false`):
-
-- `schemaVersion: 1`, `name` (must equal folder), `job` (one requestable job,
-  a **string**, max 160 chars)
-- `boundaries.inScope` (1–8 strings) and optional `boundaries.outOfScope`
-- optional `inputs[]`; required `outputs[]` (1–8 strings)
-- optional `required.tools[]`, `required.data[]`, `required.permissions[]`
-- `failureSemantics` (one sentence)
-- `outcome.observable` + `outcome.oracleOwner` (`user-system` | `repository` |
-  `host`)
-
-Do not author `qualification.json` unless you are filing a qualify run.
 
 - `skill-id`: lowercase kebab; prefer verb-led action names
 - Frontmatter: only `name` (matches folder) and `description`
@@ -178,6 +162,7 @@ Also useful depth under this package:
 - Custom skill-routing engine / keyword dispatcher skill
 - Generic policy essays with no executable job
 - Keeping a hollow shell with no agent gap
+- A parallel JSON job contract (`capability.json`) next to `SKILL.md`
 
 ## Dual-host notes
 

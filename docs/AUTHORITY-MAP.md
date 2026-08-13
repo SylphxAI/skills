@@ -60,7 +60,7 @@ The repository is the **open foundation** of Sylphx Verified Capabilities (see
 
 | Authority | Owns | Does not own |
 | --- | --- | --- |
-| Package source (`skills/<id>/capability.json`) | The capability declaration (job, boundaries, inputs/outputs, required, failure semantics, outcome contract) | The truth of its claims |
+| Package source (`skills/<id>/SKILL.md`) | The job, discovery metadata, and procedure | The truth of its claims |
 | Named evaluator / attestor | The qualification result (incremental value, compatibility, provenance, security, currentness) | The package content |
 | User product/system | The outcome oracle for the user's actual result | Qualification or catalog truth |
 | This repository | Static packages, qualification records, install/sync runtime | Live work, organization-wide adoption state, hosted services |

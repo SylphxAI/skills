@@ -9,7 +9,7 @@ and Grok Build.
 ## Product Vision
 
 Agents get **one trusted method per real job**, with trust never exceeding
-version-scoped evidence. The open foundation ships packages, contracts,
+version-scoped evidence. The open foundation ships `SKILL.md` packages,
 qualification honesty, and release-tag distribution—not a marketplace, agent
 runtime, or Control Plane. Full narrative:
 [docs/NORTH-STAR.md](docs/NORTH-STAR.md).

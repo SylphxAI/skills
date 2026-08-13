@@ -11,7 +11,6 @@ import { incrementalValueEvidenceError, qualifiedDigestError } from '../scripts/
 
 const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
-const contractSchema = ajv.compile(JSON.parse(readFileSync(path.join(repositoryRoot, 'schemas/capability-contract.schema.json'), 'utf8')));
 const qualificationSchema = ajv.compile(JSON.parse(readFileSync(path.join(repositoryRoot, 'schemas/qualification-record.schema.json'), 'utf8')));
 
 const skillsRoot = path.join(repositoryRoot, 'skills');
@@ -22,14 +21,23 @@ const folders = readdirSync(skillsRoot, { withFileTypes: true })
 
 const evalSuiteSchema = ajv.compile(JSON.parse(readFileSync(path.join(repositoryRoot, 'schemas/eval-suite.schema.json'), 'utf8')));
 
-test('every listing package carries a schema-valid capability contract', () => {
+test('listing packages do not carry a parallel capability.json contract', () => {
   assert.ok(folders.length >= 50, `expected a real catalog, got ${folders.length}`);
   for (const folder of folders) {
-    const record = JSON.parse(readFileSync(path.join(skillsRoot, folder, 'capability.json'), 'utf8'));
-    assert.equal(record.name, folder, folder);
-    assert.equal(contractSchema(record), true, `${folder}: ${JSON.stringify(contractSchema.errors)}`);
-    assert.equal(record.outcome.receiptSchema, undefined, folder);
+    assert.equal(
+      existsSync(path.join(skillsRoot, folder, 'capability.json')),
+      false,
+      `${folder}: capability.json is retired; job lives in SKILL.md`,
+    );
   }
+  assert.equal(
+    existsSync(path.join(repositoryRoot, 'schemas/capability-contract.schema.json')),
+    false,
+    'house capability-contract schema must not stay under schemas/',
+  );
+  const author = readFileSync(path.join(skillsRoot, 'author-skill', 'SKILL.md'), 'utf8');
+  assert.match(author, /Do \*\*not\*\* write `capability\.json`/);
+  assert.equal(/capability\.json\s+# required/.test(author), false);
 });
 
 function readQualification(folder) {
@@ -65,8 +73,9 @@ test('catalog qualification projection matches package records', () => {
   assert.equal(catalog.qualification.total, folders.length);
   for (const skill of catalog.skills) {
     assert.equal(skill.qualified, skill.qualificationStatus === 'qualified');
-    assert.ok(skill.capability.job);
-    assert.ok(skill.capability.outcomeObservable);
+    assert.equal(skill.capability, undefined);
+    assert.ok(skill.name);
+    assert.ok(skill.description);
   }
 });
 

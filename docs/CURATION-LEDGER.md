@@ -253,6 +253,20 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Integrity test fails if an agent suite hands `SKILL.md` or uses unequal
   prompts.
 
+## 2026-08-13 — retire house `capability.json`
+
+- Agent Skills (agentskills.io) is `SKILL.md` plus optional
+  scripts/references/assets. A parallel JSON job contract is not an
+  industry field. Hosts and agents load `SKILL.md`; the only consumers of
+  `capability.json` were this repo's catalog/CI.
+- Deleted every `skills/*/capability.json`. Schema moved to
+  `docs/history/retired-capability-contract-2026-08-13/`. Catalog no
+  longer projects `job` / `outcomeObservable` / `oracleOwner`.
+- Integrity fails closed if a listing grows a leftover `capability.json`.
+- `qualification.json` stays optional evidence. Product API contracts
+  (OpenAPI, proto, tests) stay where a non-LLM consumer exists.
+- ADR: `docs/history/adr/ADR-20260813-retire-house-capability-json.md`.
+
 ## 2026-08-13 — drop proof theater for ordinary work
 
 - Empty `qualification.json` is no longer required. Missing means

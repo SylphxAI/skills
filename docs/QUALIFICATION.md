@@ -58,8 +58,8 @@ Schema: `schemas/qualification-record.schema.json`.
 ## Identity
 
 `packageDigest` covers what an agent loads: `SKILL.md`, `references/`,
-`scripts/`, `capability.json`, `agents/`. `qualification.json` and `evals/`
-are excluded.
+`scripts/`, `agents/`. `qualification.json`, leftover `capability.json`,
+and `evals/` are excluded.
 
 ## AutoSync
 
