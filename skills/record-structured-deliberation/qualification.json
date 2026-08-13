@@ -1,42 +1,10 @@
 {
   "schemaVersion": 1,
   "name": "record-structured-deliberation",
-  "status": "qualified",
-  "evaluator": {
-    "name": "Sylphx Qualification Runner",
-    "kind": "host",
-    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
-  },
-  "qualifiedAt": "2026-08-10T15:41:54.109Z",
-  "expiresAt": "2026-11-08T15:56:21.247Z",
-  "evidence": [
-    {
-      "id": "record-structured-deliberation-incremental-value-2026-08-10T15-38-52-658Z",
-      "kind": "incremental-value",
-      "digest": "sha256:ec360b3cb33ea14146b429f93447bdc8d37cf3c6a405dc9a896e1ba6b82a685d",
-      "uri": "docs/qualification/evals/record-structured-deliberation/run-2026-08-10T15-38-52-658Z/report.json"
-    },
-    {
-      "id": "record-structured-deliberation-compatibility-2026-08-10T15-38-52-658Z",
-      "kind": "compatibility",
-      "digest": "sha256:ec360b3cb33ea14146b429f93447bdc8d37cf3c6a405dc9a896e1ba6b82a685d",
-      "uri": "docs/qualification/evals/record-structured-deliberation/run-2026-08-10T15-38-52-658Z/report.json"
-    },
-    {
-      "id": "record-structured-deliberation-automated-pattern-scan-2026-08-10T15-38-52-658Z",
-      "kind": "automated-pattern-scan",
-      "digest": "sha256:ec360b3cb33ea14146b429f93447bdc8d37cf3c6a405dc9a896e1ba6b82a685d",
-      "uri": "docs/qualification/evals/record-structured-deliberation/run-2026-08-10T15-38-52-658Z/report.json"
-    }
-  ],
-  "compatibility": [
-    {
-      "environment": "codex-cli 0.147.0 (agent task)",
-      "result": "verified"
-    },
-    {
-      "environment": "node >= 20",
-      "result": "verified"
-    }
-  ]
+  "status": "unqualified",
+  "evaluator": null,
+  "qualifiedAt": null,
+  "expiresAt": null,
+  "evidence": [],
+  "compatibility": []
 }

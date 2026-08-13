@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "synthesize-evidence-brief",
   "status": "qualified",
+  "packageDigest": "sha256:38b45e5cbe029ea2b0bc0390b493b583fb7fb12b7cd9f6ccd14dcf44a5826544",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

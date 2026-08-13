@@ -1,48 +1,10 @@
 {
   "schemaVersion": 1,
   "name": "design-product",
-  "status": "qualified",
-  "evaluator": {
-    "name": "Sylphx Qualification Runner",
-    "kind": "host",
-    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
-  },
-  "qualifiedAt": "2026-08-11T06:49:40.612Z",
-  "expiresAt": "2026-11-09T06:51:04.376Z",
-  "evidence": [
-    {
-      "id": "design-product-incremental-value-2026-08-11T06-37-03-229Z",
-      "kind": "incremental-value",
-      "digest": "sha256:3179c0729fcb2aa5b4e1d7eeb29a84797f9e14a66a5ad9c644d92379a735f658",
-      "uri": "docs/qualification/evals/design-product/run-2026-08-11T06-37-03-229Z/report.json"
-    },
-    {
-      "id": "design-product-compatibility-2026-08-11T06-37-03-229Z",
-      "kind": "compatibility",
-      "digest": "sha256:3179c0729fcb2aa5b4e1d7eeb29a84797f9e14a66a5ad9c644d92379a735f658",
-      "uri": "docs/qualification/evals/design-product/run-2026-08-11T06-37-03-229Z/report.json"
-    },
-    {
-      "id": "design-product-activation-2026-08-11T06-37-03-229Z",
-      "kind": "activation",
-      "digest": "sha256:3179c0729fcb2aa5b4e1d7eeb29a84797f9e14a66a5ad9c644d92379a735f658",
-      "uri": "docs/qualification/evals/design-product/run-2026-08-11T06-37-03-229Z/report.json"
-    },
-    {
-      "id": "design-product-automated-pattern-scan-2026-08-11T06-37-03-229Z",
-      "kind": "automated-pattern-scan",
-      "digest": "sha256:3179c0729fcb2aa5b4e1d7eeb29a84797f9e14a66a5ad9c644d92379a735f658",
-      "uri": "docs/qualification/evals/design-product/run-2026-08-11T06-37-03-229Z/report.json"
-    }
-  ],
-  "compatibility": [
-    {
-      "environment": "codex-cli 0.147.0 (agent task)",
-      "result": "verified"
-    },
-    {
-      "environment": "node >= 20",
-      "result": "verified"
-    }
-  ]
+  "status": "unqualified",
+  "evaluator": null,
+  "qualifiedAt": null,
+  "expiresAt": null,
+  "evidence": [],
+  "compatibility": []
 }

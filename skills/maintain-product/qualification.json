@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "maintain-product",
   "status": "qualified",
+  "packageDigest": "sha256:37ea5d3ca780505c76215a71d19d9eb5cca1e17d0c071c08ecf65595d68b5918",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

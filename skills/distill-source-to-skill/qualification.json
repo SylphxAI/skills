@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "distill-source-to-skill",
   "status": "qualified",
+  "packageDigest": "sha256:aee5e537cb58062ee16610365c3ed7a9a29a6a8a539eb79db0f82db77b31466b",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

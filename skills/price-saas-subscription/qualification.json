@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "price-saas-subscription",
   "status": "qualified",
+  "packageDigest": "sha256:f1395130f5c2ab54ccda7950dcae44f076e70440bcfca502d270fc5163891f93",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

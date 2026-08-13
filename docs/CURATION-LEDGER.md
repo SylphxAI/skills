@@ -165,3 +165,24 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - `compose-readme-marks` demoted to `unqualified` because the method digest
   changed; wave-11 bundle is archaeology. Residual: re-qualify on the new
   digest.
+
+## 2026-08-13 — qualification digest integrity
+
+- `qualified` now requires `packageDigest` equal to the live package
+  identity (`SKILL.md`, `references/`, `scripts/`, `capability.json`,
+  `agents/`). The integrity gate fails closed on drift; `--apply-from`
+  refuses a run whose candidate digest is not the current package.
+- Fourteen packages still marked `qualified` after material edits were
+  reset to `unqualified` (same class as `compose-readme-marks`):
+  adopt-repo-standards, author-skill, bound-request-scope,
+  compose-product-portfolio, craft-human-agent-language,
+  decide-architecture-shape, design-product, engineer-agent-context,
+  engineer-testable-requirements, execute-hard-cutover,
+  optimize-store-listing, record-structured-deliberation,
+  run-incident-response, select-dependency-versions. Jobs stay listed;
+  evidence is archaeology until a new run on the current bytes.
+- Fourteen further records had report-digest drift only from the
+  identity-algorithm change (evals/qualification excluded). Those stay
+  `qualified` and are rebound to the current-algorithm digest.
+- The runner pattern scan now treats host-search bans as findings, so
+  the `research-public-web` class cannot be filed as qualified again.

@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "produce-game-2d-map-assets",
   "status": "qualified",
+  "packageDigest": "sha256:9660bc9f25f718d8ed99c68234dcad522bc1d51b7069bfdfe77cf1474b291169",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "analyze-critically",
   "status": "qualified",
+  "packageDigest": "sha256:6dfccce561418a9d1bca094d1116db3ed82cb9d316468b762beedefe0538813a",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

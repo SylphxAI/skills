@@ -1,42 +1,10 @@
 {
   "schemaVersion": 1,
   "name": "engineer-testable-requirements",
-  "status": "qualified",
-  "evaluator": {
-    "name": "Sylphx Qualification Runner",
-    "kind": "host",
-    "uri": "https://github.com/SylphxAI/skills/blob/main/docs/QUALIFICATION.md"
-  },
-  "qualifiedAt": "2026-08-10T15:14:25.814Z",
-  "expiresAt": "2026-11-08T15:14:39.369Z",
-  "evidence": [
-    {
-      "id": "engineer-testable-requirements-incremental-value-2026-08-10T15-09-58-318Z",
-      "kind": "incremental-value",
-      "digest": "sha256:f7d74ee82de1a65e029cffeb391305dc621d6be80d78d3bc382d22a10088b4f1",
-      "uri": "docs/qualification/evals/engineer-testable-requirements/run-2026-08-10T15-09-58-318Z/report.json"
-    },
-    {
-      "id": "engineer-testable-requirements-compatibility-2026-08-10T15-09-58-318Z",
-      "kind": "compatibility",
-      "digest": "sha256:f7d74ee82de1a65e029cffeb391305dc621d6be80d78d3bc382d22a10088b4f1",
-      "uri": "docs/qualification/evals/engineer-testable-requirements/run-2026-08-10T15-09-58-318Z/report.json"
-    },
-    {
-      "id": "engineer-testable-requirements-automated-pattern-scan-2026-08-10T15-09-58-318Z",
-      "kind": "automated-pattern-scan",
-      "digest": "sha256:f7d74ee82de1a65e029cffeb391305dc621d6be80d78d3bc382d22a10088b4f1",
-      "uri": "docs/qualification/evals/engineer-testable-requirements/run-2026-08-10T15-09-58-318Z/report.json"
-    }
-  ],
-  "compatibility": [
-    {
-      "environment": "codex-cli 0.147.0 (agent task)",
-      "result": "verified"
-    },
-    {
-      "environment": "node >= 20",
-      "result": "verified"
-    }
-  ]
+  "status": "unqualified",
+  "evaluator": null,
+  "qualifiedAt": null,
+  "expiresAt": null,
+  "evidence": [],
+  "compatibility": []
 }

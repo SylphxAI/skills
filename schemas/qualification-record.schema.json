@@ -16,6 +16,13 @@
       "enum": ["unqualified", "qualified", "expired"],
       "description": "unqualified is the honest default. qualified requires evidence below. expired means a prior qualification outlived its expiresAt and is no longer eligible."
     },
+    "packageDigest": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+      ],
+      "description": "Current-algorithm identity of the capability bytes this record attests (SKILL.md, references/, scripts/, capability.json, agents/). Required and equal to the live package digest when status is qualified. Any material byte change invalidates the record."
+    },
     "evaluator": {
       "oneOf": [
         { "type": "null" },
@@ -83,12 +90,13 @@
     {
       "if": { "properties": { "status": { "const": "qualified" } } },
       "then": {
-        "required": ["evaluator", "qualifiedAt", "expiresAt", "evidence"],
+        "required": ["evaluator", "qualifiedAt", "expiresAt", "evidence", "packageDigest"],
         "properties": {
           "evaluator": { "not": { "type": "null" } },
           "qualifiedAt": { "not": { "type": "null" } },
           "expiresAt": { "not": { "type": "null" } },
-          "evidence": { "minItems": 1 }
+          "evidence": { "minItems": 1 },
+          "packageDigest": { "not": { "type": "null" } }
         }
       }
     },
@@ -103,6 +111,7 @@
         "properties": {
           "evaluator": { "type": "null" },
           "qualifiedAt": { "type": "null" },
+          "packageDigest": { "type": "null" },
           "evidence": { "maxItems": 0 },
           "compatibility": { "maxItems": 0 }
         }

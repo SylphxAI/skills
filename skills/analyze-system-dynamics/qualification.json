@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "analyze-system-dynamics",
   "status": "qualified",
+  "packageDigest": "sha256:ceeffc51a24fcdc9ec35baf16d328d81322c6288f93e8dd530db310c0b873dbb",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

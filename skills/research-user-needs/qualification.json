@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "research-user-needs",
   "status": "qualified",
+  "packageDigest": "sha256:1ce1ffa1f2c07dc6ea965b4b8378a847d9773bbd75530b38087a035eac69b449",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

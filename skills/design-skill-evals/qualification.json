@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "design-skill-evals",
   "status": "qualified",
+  "packageDigest": "sha256:2b0f0a927eb1ed23488e8e777768070c8bcf45fb9ea1b18854a7b59b5a358421",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

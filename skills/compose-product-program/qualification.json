@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "compose-product-program",
   "status": "qualified",
+  "packageDigest": "sha256:9518d1becf73821573d8328d7dad5480c77050b2aa9238bcaa1444b26eb6d6fa",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

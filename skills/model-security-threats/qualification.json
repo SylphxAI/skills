@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "model-security-threats",
   "status": "qualified",
+  "packageDigest": "sha256:f4ed2c71d992e445426ed348b82f4ecdab22702683261bfd3cd5e60e1009163e",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

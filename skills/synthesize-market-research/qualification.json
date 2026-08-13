@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "synthesize-market-research",
   "status": "qualified",
+  "packageDigest": "sha256:84545b8a335fcb6a4bebff87e31a5b2ccc790c72b55eac2a37014a00fec34e9b",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",

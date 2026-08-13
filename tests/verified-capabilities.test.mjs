@@ -5,8 +5,10 @@ import test from 'node:test';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import { fileURLToPath } from 'node:url';
+import { packageDigest } from '../runtime/package-digest.mjs';
 import { buildCatalog, repositoryRoot } from '../scripts/build-catalog.mjs';
 import { outcomeReceiptSchema } from '../scripts/check.mjs';
+import { qualifiedDigestError } from '../scripts/qualification-integrity.mjs';
 
 const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
@@ -41,6 +43,7 @@ test('every listing package carries a schema-valid qualification record', () => 
       assert.ok(Date.parse(record.expiresAt) > Date.now(), `${folder}: qualified needs future expiry`);
       assert.ok(record.evidence.length > 0, `${folder}: qualified needs evidence`);
       assert.ok(record.evidence.every((item) => item.digest && item.uri), `${folder}: evidence needs digest+uri`);
+      assert.match(record.packageDigest || '', /^sha256:[0-9a-f]{64}$/, `${folder}: qualified needs packageDigest`);
     }
   }
 });
@@ -106,6 +109,8 @@ test('qualified packages carry suites, on-disk evidence, and future expiry', () 
       assert.match(item.digest, /^sha256:[0-9a-f]{64}$/, `${folder}: ${item.id}`);
       assert.ok(existsSync(path.join(repositoryRoot, item.uri)), `${folder}: evidence on disk ${item.uri}`);
     }
+    const current = packageDigest(path.join(skillsRoot, folder));
+    assert.equal(qualifiedDigestError(record, current), null, `${folder}: live digest bind`);
   }
 });
 

@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "name": "run-product-feedback-loop",
   "status": "qualified",
+  "packageDigest": "sha256:45a7c73719660a624ae322dc383e0066859038a8a81ea35813cd2d65f02d9845",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",
