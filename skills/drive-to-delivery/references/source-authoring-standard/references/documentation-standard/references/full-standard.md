@@ -2,10 +2,9 @@
 
 ## Purpose
 
-Documentation preserves intent and helps agents resolve authority; it must not
-become a parallel implementation, live-state database, or duplicated standard.
-Prefer executable contracts and generated projections wherever prose would
-drift.
+Documentation preserves intent and helps agents resolve authority.
+Executable contracts and generated projections own facts that would drift
+in prose.
 
 This standard is the **authority for where product and project facts live**.
 It follows **global industry practice** (not org-invented philosophy):
@@ -51,7 +50,7 @@ Chat is draft. Promote durable outcomes into the homes above.
 | **North Star Metric** | Single metric that best captures core value delivered to customers | **One primary metric** in English, using an industry quantity | Amplitude/Sean Ellis: nights booked, weekly learning users |
 | **OKRs / Goals** | What we commit to complete or move this period | Time-bound, completable | Implement strategy; may target NSM or input metrics |
 | **PRD / product spec** | Problem, users, features/capabilities, requirements, non-goals | Inventory + requirements | Features live **here**, not in NSM |
-| **Specs / API reference** | Exact I/O, failures, limits | Schema/OpenAPI/tests preferred | Do not hand-duplicate in vision/NSM |
+| **Specs / API reference** | Exact I/O, failures, limits | Schema/OpenAPI/tests preferred | Field lists live here; Vision and NSM link |
 | **ADR** | Why we chose A over B | Sparse, in-repo | Status is decision history, not live ops state |
 | **README / PROJECT projection** | Entry + links | Short | Must not become a second PRD |
 
@@ -62,20 +61,19 @@ Chat is draft. Promote durable outcomes into the homes above.
    Name it in **English** with an **industry quantity** (information ratio,
    GGR, contribution margin, daily completers, weekly returning users,
    availability, completed public operations). Amplitude examples are
-   phrases. Do not mint an abbreviation for a standard concept. A
-   predecessor private name may appear only in a historical ADR labeled
-   retired — never as current law or a JSON field.
+   phrases. Name the industry quantity. A predecessor private name lives
+   in a historical ADR labeled retired.
 3. **OKRs are time-bound**; completing an OKR ≠ fulfilling the whole vision.
 4. **Feature/capability inventories belong in the PRD**, not the NSM document.
 5. **Field-level tool details belong in specs/reference/tests.**
 6. **ADRs record why**, not dashboards or backlog status.
 7. **One writable authority per fact**; entry docs only link.
-8. **Process words stay out of product law.** Delivery stages, instruction
-   generations, quality rule IDs, and claim scores belong in engineering or
-   delivery homes — not Vision, NSM, OKRs, or the PRD.
+8. **Vision, NSM, OKRs, and the PRD use product language.** Delivery stages,
+   instruction generations, quality rule IDs, and claim scores live in
+   engineering or delivery homes.
 9. **Quality vocabulary (`q-*`)** is engineering authoring under
-   `build-product`—**not** the product NSM (say **Quality vocabulary** when
-   engineering).
+   `build-product`. Say **Quality vocabulary** when the subject is
+   engineering.
 
 ### Optional short strategy
 
@@ -93,10 +91,9 @@ inputs. It is not a composite of unlike units.
 puzzle`). Established finance and reliability terms stay: GGR, NGR, IRR,
 Sharpe, information ratio, contribution margin, availability, K-factor.
 
-The industry name of the layer is **North Star Metric**. Do not rename
-the layer. Do not mint a private code and teach it as the win condition.
-If a predecessor private name exists, hard-cut binding docs and public
-fields to English; leave the old name only in a retired ADR.
+The industry name of the layer is **North Star Metric**. Write the win
+condition as that English quantity. A predecessor private name lives in
+a retired ADR; binding docs and public fields use English.
 
 Evidence for a delivery claim uses **artifact / check / live**. Gap
 inventories are inventories, not the NSM. Engineering quality follows
@@ -105,8 +102,7 @@ scoreboard.
 
 ## Evidence layers (industry)
 
-Google SRE and conventional delivery use three layers. Product repos
-must not invent a fourth product object here:
+Google SRE and conventional delivery use three layers:
 
 | Layer | Means | Is not |
 | --- | --- | --- |
@@ -132,7 +128,7 @@ Long-term product shape, users, boundaries, non-goals.
 ## North Star Metric
 > Optional one-line strategy / value promise
 **Metric:** <single primary NSM in English industry quantity>
-**Anti-proxy:** what must not substitute for the NSM
+**Inputs:** leading quantities that feed the NSM, named as inputs
 
 ## Goals
 - Optional OKR-style completable outcomes (omit if empty)
@@ -151,8 +147,8 @@ Terminal boundary, verify command, lifecycle notes.
 | User docs | Diátaxis-structured docs if any |
 ```
 
-**Do not** put capability inventories, tool matrices, or API field tables in
-`PROJECT.md` / README body—**link the PRD and specs**.
+`PROJECT.md` / README link the PRD and specs. Capability inventories,
+tool matrices, and API field tables live there.
 
 ### Proportionality
 
@@ -186,8 +182,8 @@ Typical PRD contents (industry templates converge on):
 | Tool / surface | Capabilities | Audience | Entry | Contract |
 | --- | --- | --- | --- | --- |
 
-One capability may map to many surfaces. Surfaces must not silently own
-unlisted capabilities.
+One capability may map to many surfaces. Each surface owns only listed
+capabilities.
 
 ### Details
 
@@ -207,7 +203,7 @@ When writing docs for product users (not strategy law), separate:
 | **Reference** | Accurate lookup (often generated) |
 | **Explanation** | Understanding / background |
 
-Do not mix a PRD with a tutorial, or an API reference with a vision essay.
+Keep each Diátaxis type in its own artifact.
 
 ## ADRs
 
@@ -221,9 +217,9 @@ defaults. Lightweight MADR/Nygard class; store under the owning repo
 - Context, decision, consequences, supersession  
 - Structural validity of frontmatter when used  
 
-### Do not require
+### Enough for a product ADR
 
-- Portfolio-wide decision control planes as a precondition for product ADRs  
+Context, decision, consequences, and supersession in the owning repo.
 
 ## Specs, schemas, and generated references
 
@@ -248,7 +244,7 @@ Vision + North Star Metric (+ PRD when building features)
   → prove delivery; residual if vision not yet met
 ```
 
-Do not invent a second “sprint North Star Metric.”
+One North Star Metric per product. Period outcomes live in OKRs/Goals.
 
 ## One semantic authority
 
@@ -274,15 +270,15 @@ Write the smallest durable artifact that closes a real gap:
 
 ## Validation checklist
 
-- [ ] Vision, NSM, OKRs/goals, PRD, and specs are not one unlabeled blob  
-- [ ] NSM is a metric of customer value in English industry quantity; not a minted abbreviation or feature list
+- [ ] Vision, NSM, OKRs/goals, PRD, and specs each have a home  
+- [ ] NSM is one customer-value metric in English industry quantity
 - [ ] Evidence claims use artifact / check / live
-- [ ] Process words are absent from Vision, NSM, OKRs, and the PRD
+- [ ] Vision, NSM, OKRs, and the PRD use product language
 - [ ] Gap inventories (if any) are inventory only
 - [ ] OKRs/goals are completable when present  
-- [ ] Feature/capability inventory lives in the PRD only  
+- [ ] Feature/capability inventory lives in the PRD  
 - [ ] Interface field lists live in contracts/generated refs  
-- [ ] ADRs are decisions, not live status  
-- [ ] README/`PROJECT.md` links rather than duplicating the PRD  
-- [ ] Diátaxis types are not mixed when user docs exist  
-- [ ] Archived material is never active law  
+- [ ] ADRs record decisions  
+- [ ] README/`PROJECT.md` links the PRD  
+- [ ] Each Diátaxis type has its own artifact when user docs exist  
+- [ ] Active law is the current generation  

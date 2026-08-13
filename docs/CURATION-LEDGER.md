@@ -331,3 +331,11 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - `documentation-standard` no longer catalogs retired private names
   (that catalog was teaching the dialect). History stays in ADRs.
 - Active product-law templates are tested for absence of those names.
+
+## 2026-08-13 — write the path
+
+- Shared writing home is `craft-human-agent-language`: state the action,
+  the home, and the done look. Neighbour work is a when-to-open link.
+- `author-skill` and `documentation-standard` use that method. Listings
+  name the job; product-law text names the industry home and English
+  quantity.
