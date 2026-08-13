@@ -23,6 +23,14 @@ job. Qualification is optional.
 6. Keep the catalog inside the Codex ~8k description listing class.
 7. Run `npm test`.
 
+## Commit build
+
+`npm test` is this repository's commit build. The method for writing or
+cutting CI in **any** installed harness is
+`skills/implement-continuous-integration`. Do not add slogan, brand,
+heading-list, file-existence-as-architecture, coverage-floor, or meta-check
+tests. A red test must be a real product defect.
+
 ## PR complete
 
 Exact branch passes `npm test`; catalog rebuilt with qualification projection;

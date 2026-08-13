@@ -16,3 +16,6 @@
 - Universal principles (any design: code/product/ops/business): `docs/policies/PRINCIPLES.md`; compact floor in `runtime/constitution.md`
 - Prefer app/product/game language; Keel depth under `build-product`
 - `npm run build:catalog && npm test`
+- Commit build tests product behavior only. Pipeline job:
+  `implement-continuous-integration`. Do not add slogan, brand, heading-list,
+  file-existence-as-architecture, or meta-check tests.

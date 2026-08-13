@@ -43,6 +43,9 @@ only when a task matches. Always-on text is miss-class-A floors only.
   trades. Verification cost must stay smaller than the work it protects.
 - Keep source / CI / deploy / live states distinct. Extra proof is a cost;
   buy it only for money, safety, public contract, or an explicit live claim.
+- A merge-blocking check fails only on a real product defect. Do not block
+  landing because prose, brand, heading, file layout, a coverage number, or
+  another check's spelling changed.
 
 ## Skill loading
 

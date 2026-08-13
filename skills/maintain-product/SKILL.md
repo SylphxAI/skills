@@ -34,9 +34,12 @@ Prefer a regression lock over silent cleanup. Do not invent a harm metric.
 
 ### 4. Implement
 - When landing source: apply constraints from `../drive-to-delivery/references/source-authoring-standard/` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
-- Fix cause; add regression test/smoke when automatable
+- Fix cause; add a regression oracle on the failing **product behavior**
+  when automatable. Do not lock a heading, brand, or file path.
 - Small blast radius
 - Do not paper over shared floors in the wrong layer
+- When the harm *is* a bloated or false-red pipeline, use
+  `../implement-continuous-integration/`.
 
 ### 5. Deliver / verify
 - Re-run the failing path
@@ -53,7 +56,7 @@ Prefer a regression lock over silent cleanup. Do not invent a harm metric.
 
 ## Progressive disclosure
 
-- Related jobs when requested: `run-open-product-betterment`, `remediate-frontend-performance`, `remediate-agent-harness`
+- Related jobs when requested: `run-open-product-betterment`, `remediate-frontend-performance`, `remediate-agent-harness`, `implement-continuous-integration`
 - Source landing: `../drive-to-delivery/references/source-authoring-standard/`
 
 

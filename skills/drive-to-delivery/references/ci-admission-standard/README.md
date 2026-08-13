@@ -1,6 +1,9 @@
 # ci-admission-standard
 
-> Constraint depth owned by `drive-to-delivery` (not a listing skill). Other workflows open this path when their body says so.
+> Constraint depth owned by `drive-to-delivery` (not a listing skill). Other
+> workflows open this path when their body says so. The requestable job of
+> writing or cutting a repository commit build is
+> `../../../implement-continuous-integration/`.
 
 # Ci Admission Standard
 

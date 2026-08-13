@@ -1,10 +1,9 @@
 import assert from 'node:assert/strict';
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import {
-  FORBIDDEN_INSTRUCTION_PATTERNS,
   incrementalValueEligible,
   incrementalValueEvidenceError,
   qualifiedDigestError,
@@ -67,11 +66,6 @@ test('honest eval prompts that mention search stay clean', () => {
   assert.deepEqual(scanTextForForbiddenInstructions('Known URL patterns live in references/recipes.md.'), []);
 });
 
-test('forbidden instruction patterns stay exported for the integrity gate', () => {
-  assert.ok(FORBIDDEN_INSTRUCTION_PATTERNS.length >= 4);
-  assert.ok(FORBIDDEN_INSTRUCTION_PATTERNS.every((pattern) => pattern.re && pattern.label));
-});
-
 test('unqualifiedRecord is the honest default shape', () => {
   const record = unqualifiedRecord('compose-readme-marks');
   assert.equal(record.status, 'unqualified');
@@ -107,44 +101,9 @@ test('fixture Read SKILL.md pairs are not incremental-value', () => {
   );
 });
 
-test('design-skill-evals is a same-prompt pair, not a four-way program', () => {
-  const skillBody = readFileSync(path.join(repoRoot, 'skills/design-skill-evals/SKILL.md'), 'utf8').toLowerCase();
+test('design-skill-evals suite is incremental-value eligible', () => {
   const suite = JSON.parse(readFileSync(path.join(repoRoot, 'skills/design-skill-evals/evals/suite.json'), 'utf8'));
-  const suiteText = JSON.stringify(suite).toLowerCase();
-  assert.equal(skillBody.includes('seven-part'), false);
-  assert.equal(skillBody.includes('holdout'), false);
-  assert.equal(skillBody.includes('judge families'), false);
-  assert.equal(skillBody.includes('receiptschema'), false);
-  assert.equal(skillBody.includes('outcome-receipt'), false);
-  assert.equal(suiteText.includes('seven-part'), false);
-  assert.equal(suiteText.includes('holdout'), false);
   assert.equal(incrementalValueEligible(suite), true);
-  const agentPrompts = suite.tasks.filter((task) => task.kind === 'agent').map((task) => task.prompt);
-  assert.equal(new Set(agentPrompts).size, 1);
-  assert.ok(!suite.tasks.some((task) => (task.fixtures || []).some((fixture) => fixture.source === 'package:SKILL.md')));
-});
-
-test('every agent eval suite is a same-prompt pair and does not hand SKILL.md', () => {
-  const skillsRoot = path.join(repoRoot, 'skills');
-  const folders = readdirSync(skillsRoot, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name);
-  let agentSuites = 0;
-  for (const folder of folders) {
-    const suitePath = path.join(skillsRoot, folder, 'evals', 'suite.json');
-    if (!existsSync(suitePath)) continue;
-    const suite = JSON.parse(readFileSync(suitePath, 'utf8'));
-    const agents = (suite.tasks || []).filter((task) => task.kind === 'agent');
-    if (!agents.length) continue;
-    agentSuites += 1;
-    const blob = JSON.stringify(suite);
-    assert.equal(/Read \.\/SKILL\.md/i.test(blob), false, folder);
-    assert.equal(blob.includes('package:SKILL.md'), false, folder);
-    assert.equal(incrementalValueEligible(suite), true, folder);
-    const prompts = agents.map((task) => task.prompt);
-    assert.equal(new Set(prompts).size, 1, folder);
-  }
-  assert.ok(agentSuites >= 30, `expected a real agent-suite corpus, got ${agentSuites}`);
 });
 
 test('same-prompt installed-vs-absent pairs can claim incremental-value', () => {

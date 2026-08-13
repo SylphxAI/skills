@@ -32,6 +32,10 @@ are retired.
 | documentation-standard | skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard |
 | sylphx-platform-first-policy | skills/build-product/references/sylphx-platform-first-policy |
 
+The requestable job of writing or cutting a repository commit build is the
+listing `implement-continuous-integration`. It opens `ci-admission-standard`
+for gate wiring; the pack is not a listing.
+
 **Product North Star:** [NORTH-STAR.md](NORTH-STAR.md) — trusted methods; trust
 capped by version-scoped evidence; unqualified stays usable.
 

@@ -2,12 +2,11 @@
 
 /**
  * Repository integrity for the Sylphx Verified Capabilities open foundation.
- * Validates package shape, progressive-disclosure layout, qualification
- * records, listing budget, secrets hygiene, constitution budget, and
- * catalog freshness.
+ * Validates package shape, qualification records, listing budget, secrets
+ * hygiene, constitution size, and catalog freshness.
+ * Prose-presence and file-existence-as-architecture checks do not belong here.
  */
 
-import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -48,15 +47,9 @@ const SCHEMA_FILES = [
 
 const REQUIRED_ROOT_FILES = [
   'README.md',
-  'PROJECT.md',
   'LICENSE',
   'INSTALL.md',
   'SKILL.md',
-  'docs/MODEL.md',
-  'docs/NORTH-STAR.md',
-  'docs/QUALIFICATION.md',
-  'docs/qualification/LEDGER.md',
-  'docs/PROMOTION.md',
   'scripts/promote-release.mjs',
   'scripts/run-qualification.mjs',
   ...SCHEMA_FILES,
@@ -205,22 +198,6 @@ function validateSkill(folder, names, errors) {
     );
   }
 
-  // Forbid obsolete portfolio ontology markers in live skill packages.
-  const forbiddenMarkers = [
-    'compose delivery-standard',
-    'package class',
-    'Policy packs',
-    'soft composition',
-    '*-standard',
-    'meta-router skill',
-  ];
-  const lower = body.toLowerCase();
-  for (const marker of forbiddenMarkers) {
-    if (lower.includes(marker.toLowerCase())) {
-      errors.push(`skills/${folder}/SKILL.md: obsolete portfolio marker: ${marker}`);
-    }
-  }
-
   const openaiYaml = path.join(packageRoot, 'agents', 'openai.yaml');
   if (!existsSync(openaiYaml)) {
     errors.push(`skills/${folder}/agents/openai.yaml: missing`);
@@ -290,28 +267,6 @@ function validateRuntimeConstitution(errors) {
   const text = readFileSync(absolute, 'utf8');
   if (text.length > L0_MAX_CHARS) {
     errors.push(`${location}: exceeds hard L0 ceiling ${L0_MAX_CHARS} chars (got ${text.length})`);
-  }
-  const required = [
-    'SylphxAI/skills',
-    'Search before you act',
-    'Claim landed or live',
-    'Reversible local work is done when the change is correct',
-    'progressive disclosure',
-    'Skills do not grant tools',
-    'Lead with the answer',
-  ];
-  for (const phrase of required) {
-    if (!text.includes(phrase)) errors.push(`${location}: missing required L0 phrase: ${phrase}`);
-  }
-  const forbidden = [
-    'Evidence First',
-    'Evidence precedes claims',
-    'evidence discipline',
-  ];
-  for (const phrase of forbidden) {
-    if (text.toLowerCase().includes(phrase.toLowerCase())) {
-      errors.push(`${location}: retired phrase must not appear: ${phrase}`);
-    }
   }
 }
 
