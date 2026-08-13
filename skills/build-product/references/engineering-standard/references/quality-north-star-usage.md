@@ -1,8 +1,17 @@
 # Quality North Star — usage, pocket questions, anti-examples
 
-**What this is.** Operating guide for the **Quality North Star** (`q-*`): the
-**sole engineering quality vocabulary** for durable product, design, code,
-architecture, and ops work under this Engineering Standard.
+**Industry quality model.** Software product quality is **ISO/IEC 25010**.
+Tradeoffs use this repository's nine English principles (Depth · Correctness ·
+Simplicity · Evolvability · Observability · Performance & Velocity ·
+Reliability · Security · Economy).
+
+**What `q-*` is.** An **internal alias map** onto those industry names, kept
+so existing agents and `eng-*` rules still resolve. It is **never** a product
+North Star Metric and **never** a product score.
+
+**What this file is.** Operating guide for that alias map: pocket questions,
+anti-examples, and how to apply ISO/IEC 25010 / the nine principles on
+durable product, design, code, architecture, and ops work.
 
 **What this is not.**
 
@@ -12,6 +21,7 @@ architecture, and ops work under this Engineering Standard.
 - Not qualification evidence.
 - Not a second universal principles document  
   → principles: [`docs/policies/PRINCIPLES.md`](../../../../../docs/policies/PRINCIPLES.md).
+- Not a claim ladder, residual grade, or L0–L6 score.
 
 Normative attribute definitions and IDs:
 [full-standard.md](full-standard.md) § Quality North Star.  
