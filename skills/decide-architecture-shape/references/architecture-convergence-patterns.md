@@ -57,7 +57,7 @@ capability definition to domain/application/ports/adapters/interfaces, names
 god-responsibility and dependency-direction gaps, and includes real code
 movement plus semantic tests. Adding empty folders, re-exports, overlay
 catalogs, or a narrative audit is not a migrated slice. Capability identity
-lives in `capability.json`, product contracts, and tests. FCCP is a retired
+lives in product contracts and tests. FCCP is a retired
 overlay — do not recreate it or treat it as a score or governance plane.
 
 For a complete system-architecture migration, map every applicable state set

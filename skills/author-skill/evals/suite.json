@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "capability": "author-skill",
-  "claim": "The procedure yields a schema-conformant skill package (contract, qualification record, agent config) for a requested job.",
+  "claim": "The procedure yields an Agent Skills package (SKILL.md plus optional supporting files) for a requested job.",
   "evaluator": {
     "name": "Sylphx Qualification Runner",
     "kind": "host",
@@ -35,15 +35,6 @@
           },
           {
             "type": "file-exists",
-            "path": "skills/hello-check/capability.json"
-          },
-          {
-            "type": "json-schema-valid",
-            "path": "skills/hello-check/capability.json",
-            "schema": "schemas/capability-contract.schema.json"
-          },
-          {
-            "type": "file-exists",
             "path": "skills/hello-check/agents/openai.yaml"
           }
         ]
@@ -65,15 +56,6 @@
             "type": "file-regex",
             "path": "skills/hello-check/SKILL.md",
             "contains": "^---\\nname: hello-check"
-          },
-          {
-            "type": "file-exists",
-            "path": "skills/hello-check/capability.json"
-          },
-          {
-            "type": "json-schema-valid",
-            "path": "skills/hello-check/capability.json",
-            "schema": "schemas/capability-contract.schema.json"
           },
           {
             "type": "file-exists",

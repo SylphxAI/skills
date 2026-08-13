@@ -185,7 +185,7 @@ bootstrap ──┘          │
 
 ## Capability governance mapping
 
-Capability identity lives in `capability.json`, product contracts, and tests.
+Capability identity lives in product contracts and tests.
 FCCP is a retired overlay — do not recreate it, and do not treat it as a score
 or governance plane.
 
@@ -197,7 +197,7 @@ or governance plane.
 The mapping is many-to-many, never `one capability = one file`:
 
 ```text
-capability.json / product contract
+product contract
   -> bounded context / capability module(s)
   -> feature/use-case slices
   -> published contracts and surfaces

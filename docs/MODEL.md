@@ -8,21 +8,21 @@ Delivery · Links). Feature inventory: [`prd.md`](prd.md). Documentation altitud
 `skills/drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`.
 
 A **Skill** is the host-standard package format that carries one **Capability**:
-one portable user job with boundaries, inputs and outputs, required
-tools/data/permissions, failure semantics, and an externally observable outcome
-contract. That package is the **spec/detail** home for this product’s tools.
+one portable user job and its procedure. That package is the method home for
+this product’s tools. Industry format: [Agent Skills](https://agentskills.io/specification).
 
 Every listing package under `skills/<id>/` is a capability and must carry:
 
 - `SKILL.md` — short `name` + `description` for discovery, plus the procedure
   body (progressive disclosure: discover → body → references when the body
   says so);
-- `capability.json` — the machine-readable capability contract
-  ([schema](../schemas/capability-contract.schema.json));
 - `qualification.json` — optional; only after a filed eval
   ([schema](../schemas/qualification-record.schema.json)); missing means
   `unqualified`;
 - optional `references/` / `scripts/` / `assets/` for depth.
+
+Do **not** add `capability.json`. A second JSON restatement of the job is a
+duplicate source of truth; hosts and agents load `SKILL.md`.
 
 ## Discovery is a floor
 

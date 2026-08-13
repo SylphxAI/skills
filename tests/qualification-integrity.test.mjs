@@ -108,15 +108,14 @@ test('fixture Read SKILL.md pairs are not incremental-value', () => {
 });
 
 test('design-skill-evals is a same-prompt pair, not a four-way program', () => {
-  const capability = JSON.parse(readFileSync(path.join(repoRoot, 'skills/design-skill-evals/capability.json'), 'utf8'));
+  const skillBody = readFileSync(path.join(repoRoot, 'skills/design-skill-evals/SKILL.md'), 'utf8').toLowerCase();
   const suite = JSON.parse(readFileSync(path.join(repoRoot, 'skills/design-skill-evals/evals/suite.json'), 'utf8'));
-  const contract = JSON.stringify(capability).toLowerCase();
   const suiteText = JSON.stringify(suite).toLowerCase();
-  assert.equal(contract.includes('seven-part'), false);
-  assert.equal(contract.includes('holdout'), false);
-  assert.equal(contract.includes('judge families'), false);
-  assert.equal(contract.includes('receiptschema'), false);
-  assert.equal(contract.includes('outcome-receipt'), false);
+  assert.equal(skillBody.includes('seven-part'), false);
+  assert.equal(skillBody.includes('holdout'), false);
+  assert.equal(skillBody.includes('judge families'), false);
+  assert.equal(skillBody.includes('receiptschema'), false);
+  assert.equal(skillBody.includes('outcome-receipt'), false);
   assert.equal(suiteText.includes('seven-part'), false);
   assert.equal(suiteText.includes('holdout'), false);
   assert.equal(incrementalValueEligible(suite), true);

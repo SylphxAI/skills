@@ -16,7 +16,7 @@ with **honest, version-scoped evidence** and **fail-closed install**.
 | User | Use case |
 | --- | --- |
 | Coding agent (Codex, Claude Code, Grok Build) | Discover and load one method for a real job |
-| Skill author | Ship a capability with contract + qualification honesty |
+| Skill author | Ship a `SKILL.md` package with optional qualification honesty |
 | Installer / AutoSync | Apply exact release-tag revisions only |
 
 ## Features / capabilities
@@ -32,14 +32,14 @@ with **honest, version-scoped evidence** and **fail-closed install**.
 
 | Tool / surface | Capabilities | Audience | Entry | Contract |
 | --- | --- | --- | --- | --- |
-| `skills/<id>/SKILL.md` + `capability.json` | `skill.package` | Agents, authors | Progressive disclosure | Package `capability.json` + `references/` |
+| `skills/<id>/SKILL.md` | `skill.package` | Agents, authors | Progressive disclosure | `SKILL.md` + `references/` |
 | `catalog.json` | `skill.package`, `skill.qualify` | Installers, humans | Projection | Generated; not a second authority |
 | Install / AutoSync | `skill.install` | Hosts | Annotated release tags | [PROMOTION.md](PROMOTION.md) |
 | Constraint packs under jobs | `skill.compose` | Authors, agents | Job `references/` | Owning job + [AUTHORITY-MAP.md](AUTHORITY-MAP.md) |
 
 ## Requirements (summary)
 
-- Every listing carries `capability.json`. `qualification.json` is optional (missing = unqualified).
+- Every listing carries `SKILL.md`. Do not add `capability.json`. `qualification.json` is optional (missing = unqualified).
 - Qualification is version-scoped, expiring, evaluator-named; structural CI ≠ value.
 - AutoSync applies only annotated `skills-v*` tags with promotion manifests.
 - Unqualified packages remain installable. Qualification is not a use gate.
@@ -51,6 +51,6 @@ as top-level listings, hard cap on listing count for appearance.
 
 ## Specs / details
 
-Per-package: `skills/<id>/capability.json`, `SKILL.md`, `references/`.  
+Per-package: `skills/<id>/SKILL.md`, `references/`.  
 Model: [MODEL.md](MODEL.md). Qualification: [QUALIFICATION.md](QUALIFICATION.md).  
 North Star Metric: [NORTH-STAR.md](NORTH-STAR.md).

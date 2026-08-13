@@ -11,5 +11,5 @@ There is **no** `sylphx-methods` bag and **no** docs-only agent binding depth.
 `docs/` is human git documentation only.
 
 Start from the job capability that owns the work, then open the referenced
-standard or shape pack named by that capability body. Every package also
-carries `capability.json`. `qualification.json` is optional.
+standard or shape pack named by that capability body. The package is
+`SKILL.md`. `qualification.json` is optional. Do not add `capability.json`.

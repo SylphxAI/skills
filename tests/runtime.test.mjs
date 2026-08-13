@@ -914,11 +914,6 @@ function writeFixtureCatalog(source, names) {
     description: `Use for the ${name} transaction fixture.`,
     path: `skills/${name}/SKILL.md`,
     packageDigest: packageDigest(path.join(source, 'skills', name)),
-    capability: {
-      job: `Run the ${name} fixture job.`,
-      outcomeObservable: `Fixture ${name} outcome satisfies its contract.`,
-      oracleOwner: 'user-system',
-    },
     qualified: false,
     qualificationStatus: 'unqualified',
   }));

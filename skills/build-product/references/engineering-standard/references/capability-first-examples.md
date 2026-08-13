@@ -80,7 +80,7 @@ evidence:
   - rendered accessibility test
 ```
 
-`capability.json`, product contracts, and tests own this definition, its
+Product contracts and tests own this definition, its
 relations, surfaces, gaps, and evidence. FCCP is a retired overlay — do not
 recreate it or treat it as a score or governance plane. The code architecture
 below owns its implementation shape; the live work system tracks Work

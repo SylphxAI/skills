@@ -22,12 +22,11 @@ function rejectUnsupportedEntry(packageRoot, absolute, kind) {
  * Paths and per-file content hashes stay distinct JSON fields, so file-boundary
  * changes cannot reproduce another package's digest by embedding delimiters.
  *
- * Capability identity covers what an agent loads and what host discovery
- * consumes: SKILL.md, references/, scripts/, capability.json and agents/.
- * Evaluator-owned evidence metadata (qualification.json) and eval material
- * (evals/) are excluded: re-qualification or evidence relabeling must not
- * change the capability version identity, and the qualification record's
- * evidence digest already binds the exact eval bundle.
+ * Identity covers what an agent loads and what host discovery consumes:
+ * SKILL.md, references/, scripts/, and agents/. Evaluator-owned evidence
+ * (qualification.json), the retired house capability.json, and eval
+ * material (evals/) are excluded: re-qualification must not change package
+ * identity, and a leftover JSON job contract is not loaded content.
  */
 export function packageDigest(packageRoot) {
   let rootStat;
@@ -51,9 +50,10 @@ export function packageDigest(packageRoot) {
         visit(absolute);
         continue;
       }
-      // qualification.json is evaluator-owned evidence metadata, not
-      // capability content; see header note.
-      if (relativePackagePath(packageRoot, absolute) === 'qualification.json') continue;
+      // qualification.json is evaluator-owned evidence. capability.json is a
+      // retired house contract. Neither is loaded content; see header note.
+      const relative = relativePackagePath(packageRoot, absolute);
+      if (relative === 'qualification.json' || relative === 'capability.json') continue;
       if (!entry.isFile()) rejectUnsupportedEntry(packageRoot, absolute, 'non-regular entry');
 
       // Re-check the current path type rather than relying only on the

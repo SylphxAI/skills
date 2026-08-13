@@ -34,7 +34,7 @@ taxonomy.
 | How do we measure core customer value? | **North Star Metric** | `docs/NORTH-STAR.md` or vision/NS section (keep short) |
 | What completable outcomes this period? | **OKRs / Goals** | OKR system or `PROJECT.md` Goals |
 | What features/capabilities and requirements? | **PRD / product spec** | `docs/prd.md` |
-| Exact tool/API behavior? | **Spec / API reference / tests** | OpenAPI, schema, `capability.json`, tests |
+| Exact tool/API behavior? | **Spec / API reference / tests** | OpenAPI, schema, tests |
 | Why a durable technical/product choice? | **ADR** | `docs/adr/` (MADR/Nygard class) |
 | How do I learn / do a task / look up facts? | **Diátaxis** | tutorial · how-to · reference · explanation |
 | How do we operate or recover? | **Runbook** | ops docs |
@@ -202,10 +202,10 @@ unlisted capabilities.
 
 ### Details
 
-Prefer schema / OpenAPI / protobuf / tests; Skill packages use
-`capability.json` + `references/`. Prose contracts only when no executable home
-exists yet (purpose, inputs, outputs, failures, auth, side effects, limits,
-examples, non-goals, oracle).
+Prefer schema / OpenAPI / protobuf / tests for product interfaces. Skill
+packages use `SKILL.md` + `references/` (industry Agent Skills). Prose
+contracts only when no executable home exists yet (purpose, inputs, outputs,
+failures, auth, side effects, limits, examples, non-goals, oracle).
 
 ## Diátaxis (user-facing technical docs)
 
@@ -245,8 +245,9 @@ defaults. Lightweight MADR/Nygard class; store under the owning repo
 ## Capability packages (this repository)
 
 In Sylphx Verified Capabilities, each `skills/<id>/` listing is one capability
-unit for the PRD inventory: `capability.json` owns the contract, `SKILL.md` the
-procedure, `references/` the depth. `catalog.json` is a projection.
+unit for the PRD inventory: `SKILL.md` owns the job and procedure,
+`references/` the depth. `catalog.json` is a projection. Do not add
+`capability.json`.
 
 ## Documentation-first delivery
 

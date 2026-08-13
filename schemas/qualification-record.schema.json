@@ -21,7 +21,7 @@
         { "type": "null" },
         { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
       ],
-      "description": "Current-algorithm identity of the capability bytes this record attests (SKILL.md, references/, scripts/, capability.json, agents/). Required and equal to the live package digest when status is qualified. Any material byte change invalidates the record."
+      "description": "Current-algorithm identity of the package bytes this record attests (SKILL.md, references/, scripts/, agents/). Required and equal to the live package digest when status is qualified. Any material byte change invalidates the record."
     },
     "evaluator": {
       "oneOf": [

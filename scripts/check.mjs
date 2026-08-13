@@ -2,9 +2,9 @@
 
 /**
  * Repository integrity for the Sylphx Verified Capabilities open foundation.
- * Validates package shape, progressive-disclosure layout, capability contracts,
- * qualification records, listing budget, secrets hygiene, constitution budget,
- * and catalog freshness.
+ * Validates package shape, progressive-disclosure layout, qualification
+ * records, listing budget, secrets hygiene, constitution budget, and
+ * catalog freshness.
  */
 
 import { createHash } from 'node:crypto';
@@ -42,7 +42,6 @@ const SKILL_MD_LINE_SOFT_MAX = 500;
 const L0_MAX_CHARS = 6000;
 
 const SCHEMA_FILES = [
-  'schemas/capability-contract.schema.json',
   'schemas/qualification-record.schema.json',
   'schemas/eval-suite.schema.json',
 ];
@@ -99,41 +98,37 @@ function validateLocalLinks(markdown, file, errors) {
   }
 }
 
-function validateCapabilityContract(folder, errors) {
+function validateQualification(folder, errors) {
   const contractPath = `skills/${folder}/capability.json`;
-  const qualificationPath = `skills/${folder}/qualification.json`;
-  for (const [file, schema, label] of [
-    [contractPath, capabilitySchema, 'capability contract'],
-    [qualificationPath, qualificationSchema, 'qualification record'],
-  ]) {
-    if (!existsSync(path.join(repositoryRoot, file))) {
-      if (file === qualificationPath) continue;
-      errors.push(`${file}: missing ${label}`);
-      return;
-    }
-    let record;
-    try {
-      record = readJson(path.join(repositoryRoot, file));
-    } catch (error) {
-      errors.push(`${file}: invalid JSON: ${error.message}`);
-      return;
-    }
-    const valid = schema(record);
-    if (!valid) {
-      for (const detail of schema.errors || []) {
-        errors.push(`${file}: ${detail.instancePath || '/'} ${detail.message}`);
-      }
-    }
-    if (record.name !== folder) errors.push(`${file}: name must match folder`);
+  if (existsSync(path.join(repositoryRoot, contractPath))) {
+    errors.push(
+      `${contractPath}: retired house contract; job and procedure live in SKILL.md (agentskills.io). Do not restore.`,
+    );
   }
 
-  const contract = readJson(path.join(repositoryRoot, contractPath));
+  const qualificationPath = `skills/${folder}/qualification.json`;
+  if (existsSync(path.join(repositoryRoot, qualificationPath))) {
+    let record;
+    try {
+      record = readJson(path.join(repositoryRoot, qualificationPath));
+    } catch (error) {
+      errors.push(`${qualificationPath}: invalid JSON: ${error.message}`);
+      return;
+    }
+    const valid = qualificationSchema(record);
+    if (!valid) {
+      for (const detail of qualificationSchema.errors || []) {
+        errors.push(`${qualificationPath}: ${detail.instancePath || '/'} ${detail.message}`);
+      }
+    }
+    if (record.name !== folder) errors.push(`${qualificationPath}: name must match folder`);
+  }
+
   const qualification = existsSync(path.join(repositoryRoot, qualificationPath))
     ? readJson(path.join(repositoryRoot, qualificationPath))
     : { status: 'unqualified' };
 
   if (qualification.status === 'qualified') {
-    if (!contract.outcome.observable) errors.push(`${contractPath}: qualified capability needs an outcome oracle`);
     const expires = Date.parse(qualification.expiresAt || '');
     if (!Number.isFinite(expires) || expires <= Date.now()) {
       errors.push(`${qualificationPath}: qualified record must have a future expiresAt`);
@@ -231,7 +226,7 @@ function validateSkill(folder, names, errors) {
     errors.push(`skills/${folder}/agents/openai.yaml: missing`);
   }
 
-  validateCapabilityContract(folder, errors);
+  validateQualification(folder, errors);
 
   for (const file of walk(packageRoot)) {
     const relative = path.relative(repositoryRoot, file);
@@ -323,8 +318,7 @@ export function checkRepository() {
 
 const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
-const capabilitySchema = ajv.compile(readJson(path.join(repositoryRoot, SCHEMA_FILES[0])));
-const qualificationSchema = ajv.compile(readJson(path.join(repositoryRoot, SCHEMA_FILES[1])));
+const qualificationSchema = ajv.compile(readJson(path.join(repositoryRoot, SCHEMA_FILES[0])));
 
 if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) {
   const { errors, skillFolders } = checkRepository();

@@ -3,20 +3,19 @@
 **Product North Star:** agents load one trusted method for a real job—and never
 grant more trust than version-scoped evidence allows.
 
-This repository is the **open foundation**: capability packages with
-machine-readable contracts, honest version-scoped qualification records, and
+This repository is the **open foundation**: Agent Skill packages
+(`SKILL.md`), optional version-scoped qualification records, and
 install/sync for Codex, Claude Code, and Grok Build. It is not a marketplace,
 agent runtime, or Control Plane.
 
-A capability is a **requestable job** with a specialized procedure and an
-externally observable outcome contract. Standards, domain packs, and long
-matrices live in `references/` under the capability that uses them. There is
-**no hard skill-count cap**. Catalogs grow with real jobs; organize by
-semantics.
+A capability is a **requestable job** with a specialized procedure. Standards,
+domain packs, and long matrices live in `references/` under the capability
+that uses them. There is **no hard skill-count cap**. Catalogs grow with real
+jobs; organize by semantics.
 
-Every package carries `capability.json`. `qualification.json` is optional
-(missing = unqualified). A value claim uses same-prompt paired evaluation;
-qualification is not a use gate.
+Do not add `capability.json`. `qualification.json` is optional (missing =
+unqualified). A value claim uses same-prompt paired evaluation; qualification
+is not a use gate.
 
 See [docs/NORTH-STAR.md](docs/NORTH-STAR.md) (full product North Star),
 [docs/MODEL.md](docs/MODEL.md), [docs/QUALIFICATION.md](docs/QUALIFICATION.md).
