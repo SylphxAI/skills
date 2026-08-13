@@ -20,8 +20,8 @@ Hosts differ: some rank a small metadata listing; others (including RAG-style di
 
 A **Skill** is one **requestable job** (one PRD **feature/capability** unit)
 with a specialized procedure, an acceptably complete outcome, and a
-machine-readable capability contract (`capability.json`) plus an honest
-qualification record (`qualification.json`). Field-level details live in that
+machine-readable capability contract (`capability.json`). A qualification
+record is optional and only exists after a filed eval. Field-level details live in that
 contract and `references/` — not in vision or North Star Metric prose. Repo doc
 altitude (Vision · NSM · OKR · PRD · Spec · ADR): see
 `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`.
@@ -36,7 +36,6 @@ Examples of the *kind* of listing skill:
 - write an update
 - run an incident
 - analyze critically / forecast with calibration (when those jobs are requested on their own)
-- establish the current correct method before implementing or fixing
 
 A Skill is **not**:
 
@@ -98,7 +97,7 @@ READMEs link it instead of restating it.
 skill-id/
   SKILL.md              # required
   capability.json       # required capability contract (job, boundaries, inputs/outputs, required, failure semantics, outcome)
-  qualification.json    # required qualification record (honest `unqualified` default)
+  qualification.json    # optional; write only when filing a qualify run
   agents/openai.yaml    # display metadata (this repo)
   references/           # optional depth
   scripts/              # optional deterministic helpers
@@ -106,10 +105,9 @@ skill-id/
 ```
 
 Every listing is a **capability**: `capability.json` follows
-`schemas/capability-contract.schema.json`; `qualification.json` follows
-`schemas/qualification-record.schema.json`. `unqualified` is the honest
-default — never claim qualification without version-scoped, expiring evidence
-filed per `docs/QUALIFICATION.md` and `design-skill-evals`.
+`schemas/capability-contract.schema.json`. Missing `qualification.json`
+means `unqualified`. File a record only after a reproducible run per
+`docs/QUALIFICATION.md` and `design-skill-evals`.
 
 ### Exact contract fields (do not invent shapes)
 
@@ -125,13 +123,7 @@ filed per `docs/QUALIFICATION.md` and `design-skill-evals`.
 - `outcome.observable` + `outcome.oracleOwner` (`user-system` | `repository` |
   `host`)
 
-`qualification.json` (schema `schemas/qualification-record.schema.json`):
-
-- `schemaVersion: 1`, `name`, `status: "unqualified"` (honest default),
-  `evaluator: null`, `qualifiedAt: null`, `expiresAt: null`, `evidence: []`,
-  `compatibility: []`
-- `qualified` status is **not** a field to set during authoring; it requires
-  filed, expiring evidence per `design-skill-evals` and `docs/QUALIFICATION.md`
+Do not author `qualification.json` unless you are filing a qualify run.
 
 - `skill-id`: lowercase kebab; prefer verb-led action names
 - Frontmatter: only `name` (matches folder) and `description`
@@ -140,7 +132,7 @@ filed per `docs/QUALIFICATION.md` and `design-skill-evals`.
 
 1–3 sentences: **what** + **when**. Agent-facing. Concrete triggers and artifact.
 
-Good: Ship a missing product capability end-to-end with original-oracle proof.
+Good: Ship a missing product capability end-to-end.
 
 Bad: Helps with products and engineering.
 

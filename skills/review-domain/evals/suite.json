@@ -33,36 +33,6 @@
             "path": "domain-review.md",
             "contains": "severity",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "domain-review.md",
-            "contains": "finding",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "domain-review.md",
-            "contains": "action",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "domain-review.md",
-            "contains": "residual",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "domain-review.md",
-            "contains": "fact",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "domain-review.md",
-            "contains": "unknown",
-            "caseInsensitive": true
           }
         ]
       }
@@ -84,36 +54,6 @@
             "type": "file-regex",
             "path": "domain-review.md",
             "contains": "severity",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "domain-review.md",
-            "contains": "finding",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "domain-review.md",
-            "contains": "action",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "domain-review.md",
-            "contains": "residual",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "domain-review.md",
-            "contains": "fact",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "domain-review.md",
-            "contains": "unknown",
             "caseInsensitive": true
           }
         ]

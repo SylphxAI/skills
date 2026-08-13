@@ -14,10 +14,9 @@ matrices live in `references/` under the capability that uses them. There is
 **no hard skill-count cap**. Catalogs grow with real jobs; organize by
 semantics.
 
-Every package carries `capability.json` (contract) and `qualification.json`
-(record; `unqualified` is the honest default and remains installable). The
-catalog projects qualification state. A value claim uses same-prompt paired
-evaluation; qualification is not a use gate.
+Every package carries `capability.json`. `qualification.json` is optional
+(missing = unqualified). A value claim uses same-prompt paired evaluation;
+qualification is not a use gate.
 
 See [docs/NORTH-STAR.md](docs/NORTH-STAR.md) (full product North Star),
 [docs/MODEL.md](docs/MODEL.md), [docs/QUALIFICATION.md](docs/QUALIFICATION.md).

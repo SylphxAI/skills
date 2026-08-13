@@ -68,6 +68,7 @@ How to file: [`docs/QUALIFICATION.md`](QUALIFICATION.md). Method:
 
 - False verified (badge on drifted bytes, or leaked-method keyword oracles)
 - Using qualification to block install or load
+- Requiring a proof stack to start ordinary reversible work
 - Inventing live success dashboards with zero external results
 - Batch-qualifying the catalog to make a coverage number move
 - Minting house score acronyms (three-to-five-letter KPIs). Name customer

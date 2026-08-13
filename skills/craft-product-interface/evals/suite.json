@@ -33,36 +33,6 @@
             "path": "interface-pack.md",
             "contains": "direction",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "interface-pack.md",
-            "contains": "state",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "interface-pack.md",
-            "contains": "accessibility",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "interface-pack.md",
-            "contains": "contrast",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "interface-pack.md",
-            "contains": "verification",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "interface-pack.md",
-            "contains": "screenshot",
-            "caseInsensitive": true
           }
         ]
       }
@@ -84,36 +54,6 @@
             "type": "file-regex",
             "path": "interface-pack.md",
             "contains": "direction",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "interface-pack.md",
-            "contains": "state",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "interface-pack.md",
-            "contains": "accessibility",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "interface-pack.md",
-            "contains": "contrast",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "interface-pack.md",
-            "contains": "verification",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "interface-pack.md",
-            "contains": "screenshot",
             "caseInsensitive": true
           }
         ]

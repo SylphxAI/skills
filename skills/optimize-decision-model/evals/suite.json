@@ -33,42 +33,6 @@
             "path": "decision-model.md",
             "contains": "objective",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "constraint",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "variable",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "solver",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "feasib",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "sensitivity",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "verification",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "decision-model.md",
             "contains": "objective",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "constraint",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "variable",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "solver",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "feasib",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "sensitivity",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "decision-model.md",
-            "contains": "verification",
             "caseInsensitive": true
           }
         ]

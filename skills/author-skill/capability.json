@@ -7,7 +7,7 @@
       "Creating a new listing skill package for one requestable job",
       "Rewriting a skill that is too broad, vague, unused, or mis-classified",
       "Deciding listing skill vs reference depth and constraint-pack placement",
-      "Authoring the capability contract and honest qualification record for the package",
+      "Authoring the capability contract for the package",
       "Writing discovery-quality descriptions with near-miss discipline"
     ],
     "outOfScope": [
@@ -26,7 +26,7 @@
   "outputs": [
     "skills/<id>/SKILL.md with name+description frontmatter and procedure body",
     "Optional references/, scripts/, assets/ depth reachable from the body",
-    "capability.json contract and qualification.json record for the package",
+    "capability.json contract for the package",
     "Fresh catalog.json and green npm test result"
   ],
   "required": {

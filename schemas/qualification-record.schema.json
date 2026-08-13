@@ -59,10 +59,7 @@
               "incremental-value",
               "activation",
               "compatibility",
-              "provenance",
-              "automated-pattern-scan",
-              "currentness",
-              "outcome"
+              "automated-pattern-scan"
             ]
           },
           "digest": {

@@ -252,3 +252,17 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   artifact. No qualification records were applied.
 - Integrity test fails if an agent suite hands `SKILL.md` or uses unequal
   prompts.
+
+## 2026-08-13 — drop proof theater for ordinary work
+
+- Empty `qualification.json` is no longer required. Missing means
+  `unqualified`. File a record only after a qualify run.
+- Constitution: claim landed/live only with boundary evidence. Reversible
+  local work does not need live proof. Removed the always-on Platform floor
+  and the "correct method first" implement gate.
+- `establish-correct-approach` stays an optional listing; it is not a
+  pre-implement gate on `build-product` / `maintain-product`.
+- `build-product` no longer brands "original-oracle proof" as the job.
+- Agent-task eval oracles slimmed to the artifact, not heading lists.
+- Unused qualification evidence kinds (`provenance`, `currentness`,
+  `outcome`) removed from the schema.

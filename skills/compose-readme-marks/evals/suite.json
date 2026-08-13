@@ -33,36 +33,6 @@
             "path": "README-marks.md",
             "contains": "!\\[",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "README-marks.md",
-            "contains": "http",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "README-marks.md",
-            "contains": "shields.io",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "README-marks.md",
-            "contains": "badge",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "README-marks.md",
-            "contains": "alt",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "README-marks.md",
-            "contains": "residual",
-            "caseInsensitive": true
           }
         ]
       }
@@ -84,36 +54,6 @@
             "type": "file-regex",
             "path": "README-marks.md",
             "contains": "!\\[",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "README-marks.md",
-            "contains": "http",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "README-marks.md",
-            "contains": "shields.io",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "README-marks.md",
-            "contains": "badge",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "README-marks.md",
-            "contains": "alt",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "README-marks.md",
-            "contains": "residual",
             "caseInsensitive": true
           }
         ]

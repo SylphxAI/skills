@@ -33,48 +33,6 @@
             "path": "feedback-loop.md",
             "contains": "scope",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "source",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "authority",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "routing",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "validation",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "rollout",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "handoff",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "unresolved authority",
-            "caseInsensitive": true
           }
         ]
       }
@@ -96,48 +54,6 @@
             "type": "file-regex",
             "path": "feedback-loop.md",
             "contains": "scope",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "source",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "authority",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "routing",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "validation",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "rollout",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "handoff",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "feedback-loop.md",
-            "contains": "unresolved authority",
             "caseInsensitive": true
           }
         ]

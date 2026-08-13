@@ -33,42 +33,6 @@
             "path": "research-findings.md",
             "contains": "protocol",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "session ledger",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "supporting",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "disconfirming",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "coverage",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "confidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "non-claim",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "research-findings.md",
             "contains": "protocol",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "session ledger",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "supporting",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "disconfirming",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "coverage",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "confidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research-findings.md",
-            "contains": "non-claim",
             "caseInsensitive": true
           }
         ]

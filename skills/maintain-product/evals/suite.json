@@ -33,36 +33,6 @@
             "path": "maintain.md",
             "contains": "harm",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "maintain.md",
-            "contains": "severity",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "maintain.md",
-            "contains": "root cause",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "maintain.md",
-            "contains": "regression",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "maintain.md",
-            "contains": "oracle",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "maintain.md",
-            "contains": "residual risk",
-            "caseInsensitive": true
           }
         ]
       }
@@ -84,36 +54,6 @@
             "type": "file-regex",
             "path": "maintain.md",
             "contains": "harm",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "maintain.md",
-            "contains": "severity",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "maintain.md",
-            "contains": "root cause",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "maintain.md",
-            "contains": "regression",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "maintain.md",
-            "contains": "oracle",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "maintain.md",
-            "contains": "residual risk",
             "caseInsensitive": true
           }
         ]

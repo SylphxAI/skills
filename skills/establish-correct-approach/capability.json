@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "establish-correct-approach",
-  "job": "Establish the current correct method for an implementation or fix before mutating.",
+  "job": "Name the current correct method from live authority when the approach is unknown.",
   "boundaries": {
     "inScope": [
       "Framing the change as a method question",

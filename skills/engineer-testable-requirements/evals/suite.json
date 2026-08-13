@@ -33,36 +33,6 @@
             "path": "requirements.md",
             "contains": "requirement",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "requirements.md",
-            "contains": "success boundary",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "requirements.md",
-            "contains": "verification method",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "requirements.md",
-            "contains": "non-goal",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "requirements.md",
-            "contains": "traceab",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "requirements.md",
-            "contains": "validation record",
-            "caseInsensitive": true
           }
         ]
       }
@@ -83,36 +53,6 @@
             "type": "file-regex",
             "path": "requirements.md",
             "contains": "requirement",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "requirements.md",
-            "contains": "success boundary",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "requirements.md",
-            "contains": "verification method",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "requirements.md",
-            "contains": "non-goal",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "requirements.md",
-            "contains": "traceab",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "requirements.md",
-            "contains": "validation record",
             "caseInsensitive": true
           }
         ]

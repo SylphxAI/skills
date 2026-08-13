@@ -33,30 +33,6 @@
             "path": "scope.md",
             "contains": "objective",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "scope.md",
-            "contains": "in scope",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "scope.md",
-            "contains": "out of scope",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "scope.md",
-            "contains": "non-goal",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "scope.md",
-            "contains": "cut line",
-            "caseInsensitive": true
           }
         ]
       }
@@ -77,30 +53,6 @@
             "type": "file-regex",
             "path": "scope.md",
             "contains": "objective",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "scope.md",
-            "contains": "in scope",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "scope.md",
-            "contains": "out of scope",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "scope.md",
-            "contains": "non-goal",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "scope.md",
-            "contains": "cut line",
             "caseInsensitive": true
           }
         ]

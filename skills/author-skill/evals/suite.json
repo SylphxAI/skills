@@ -44,16 +44,6 @@
           },
           {
             "type": "file-exists",
-            "path": "skills/hello-check/qualification.json"
-          },
-          {
-            "type": "json-path-eq",
-            "path": "skills/hello-check/qualification.json",
-            "jsonPath": "status",
-            "value": "unqualified"
-          },
-          {
-            "type": "file-exists",
             "path": "skills/hello-check/agents/openai.yaml"
           }
         ]
@@ -84,16 +74,6 @@
             "type": "json-schema-valid",
             "path": "skills/hello-check/capability.json",
             "schema": "schemas/capability-contract.schema.json"
-          },
-          {
-            "type": "file-exists",
-            "path": "skills/hello-check/qualification.json"
-          },
-          {
-            "type": "json-path-eq",
-            "path": "skills/hello-check/qualification.json",
-            "jsonPath": "status",
-            "value": "unqualified"
           },
           {
             "type": "file-exists",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "build-product",
-  "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
+  "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice.",
   "boundaries": {
     "inScope": [
       "Framing the journey/capability gap and done look",
@@ -22,7 +22,7 @@
   ],
   "outputs": [
     "Framed capability usable under a stated original oracle",
-    "Original-oracle verification (run, smoke, API, pack, host as applicable)",
+    "Verification on the path you changed (run, smoke, API, pack, host as applicable)",
     "Honest residuals list with ownership of changes"
   ],
   "required": {

@@ -33,54 +33,6 @@
             "path": "deliberation.md",
             "contains": "question",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "owner",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "participant",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "protocol",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "proposal",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "objection",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "rebuttal",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "dissent",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "handoff",
-            "caseInsensitive": true
           }
         ]
       }
@@ -102,54 +54,6 @@
             "type": "file-regex",
             "path": "deliberation.md",
             "contains": "question",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "owner",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "participant",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "protocol",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "proposal",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "objection",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "rebuttal",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "dissent",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "deliberation.md",
-            "contains": "handoff",
             "caseInsensitive": true
           }
         ]

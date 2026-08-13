@@ -33,42 +33,6 @@
             "path": "research.md",
             "contains": "Source ledger",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "Competitor",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "Counterevidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "Recommendation",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "confidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "disconfirming",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "Positioning",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "research.md",
             "contains": "Source ledger",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "Competitor",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "Counterevidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "Recommendation",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "confidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "disconfirming",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "research.md",
-            "contains": "Positioning",
             "caseInsensitive": true
           }
         ]

@@ -33,48 +33,6 @@
             "path": "context-contract.md",
             "contains": "owner",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "authority",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "budget",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "retention",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "invalidat",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "deletion",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "handoff",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "stale",
-            "caseInsensitive": true
           }
         ]
       }
@@ -96,48 +54,6 @@
             "type": "file-regex",
             "path": "context-contract.md",
             "contains": "owner",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "authority",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "budget",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "retention",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "invalidat",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "deletion",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "handoff",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "context-contract.md",
-            "contains": "stale",
             "caseInsensitive": true
           }
         ]

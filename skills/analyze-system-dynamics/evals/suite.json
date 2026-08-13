@@ -33,42 +33,6 @@
             "path": "system-model.md",
             "contains": "stock",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "flow",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "feedback loop",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "delay",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "leverage point",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "validation",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "confidence",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "system-model.md",
             "contains": "stock",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "flow",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "feedback loop",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "delay",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "leverage point",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "validation",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "system-model.md",
-            "contains": "confidence",
             "caseInsensitive": true
           }
         ]

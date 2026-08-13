@@ -33,48 +33,6 @@
             "path": "support-operating-model.md",
             "contains": "reason",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "route",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "authority",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "timer",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "escalat",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "verification",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "feedback",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "degrade",
-            "caseInsensitive": true
           }
         ]
       }
@@ -96,48 +54,6 @@
             "type": "file-regex",
             "path": "support-operating-model.md",
             "contains": "reason",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "route",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "authority",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "timer",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "escalat",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "verification",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "feedback",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "support-operating-model.md",
-            "contains": "degrade",
             "caseInsensitive": true
           }
         ]

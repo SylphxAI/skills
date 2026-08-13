@@ -38,7 +38,7 @@
       "name": "analyze-critically",
       "description": "Adversarially critique a claim/plan/design with kill criteria.",
       "path": "skills/analyze-critically/SKILL.md",
-      "packageDigest": "sha256:4e0e622590e9e849ba6491959c5f511bed34adae86e7a3b9d9779e6a112010c3",
+      "packageDigest": "sha256:15840d928b1c30dcd422b3e1c4f1b9be8598d479fb9e1fdeee79f616a66d830c",
       "capability": {
         "job": "Adversarially critique a claim, plan, or design with kill criteria and calibrated confidence.",
         "outcomeObservable": "A Critical Analysis Brief containing competing hypotheses, discriminating evidence, a calibrated conclusion, and explicit conditions that would change the conclusion, usable by decision-makers.",
@@ -77,7 +77,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:fd7b346940380057cf3563b94e0f2ee3182c4fcdbe5ac7bbc50bbe155998c266",
+      "packageDigest": "sha256:f124536521d2991c25a3b0b8956b13b16751895580d507a52e207af805c7a1ff",
       "capability": {
         "job": "Create or revise an Agent Skill package: job, description, method, references, contract.",
         "outcomeObservable": "The revised package passes npm test with a fresh catalog, local links resolve, the capability contract validates, and the description selects for the right ask and abstains on near-misses.",
@@ -127,11 +127,11 @@
     },
     {
       "name": "build-product",
-      "description": "Ship a missing product capability end-to-end with original-oracle proof. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb.",
+      "description": "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:c65c5d017f0328477707880c182acc088c77f29688d84b6803de235a6bc0f40f",
+      "packageDigest": "sha256:edd56c17bbda921f7b4cb9f7f9f37f62f5cee393181811d2750ce43aaa21b195",
       "capability": {
-        "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice with original-oracle proof.",
+        "job": "Ship a missing product capability end-to-end as an owning-boundary vertical slice.",
         "outcomeObservable": "The framed capability works end-to-end under its stated original oracle with separated local versus landed versus live claims, and residuals are listed without whole-product completion claims.",
         "oracleOwner": "user-system"
       },
@@ -361,11 +361,11 @@
     },
     {
       "name": "establish-correct-approach",
-      "description": "Establishes the current correct method for an implementation or fix from live authority and competing alternatives. Use before building or patching when the right approach is not yet proven.",
+      "description": "Name the current correct method from live authority when the approach is actually unknown. Not a gate before ordinary implement or fix work.",
       "path": "skills/establish-correct-approach/SKILL.md",
-      "packageDigest": "sha256:bcea6928d3e92b0004b41b1b536409b5cf1e6584c1a3fc027883c07201bd9948",
+      "packageDigest": "sha256:0b1e1dd480f9097f65de1d7f78dbbc6587757196cfa33d53b285e87a4442390f",
       "capability": {
-        "job": "Establish the current correct method for an implementation or fix before mutating.",
+        "job": "Name the current correct method from live authority when the approach is unknown.",
         "outcomeObservable": "A Correct Approach Record names the current correct method, cites live authority, lists rejected hacks, and states what would change the answer.",
         "oracleOwner": "user-system"
       },
@@ -428,7 +428,7 @@
       "name": "maintain-product",
       "description": "Cut live/regression harm with root-cause fix and oracle.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:8b40d029056d683999400606905cb515cb600a9f69934f4c957a0b09ef1d4d79",
+      "packageDigest": "sha256:6a6a101a9a728b60417aea0cb83747bdc4390671efb9ed6e626446b11ad2d5fb",
       "capability": {
         "job": "Cut live or regression harm with a root-cause fix on the owning layer and an oracle proving harm reduction.",
         "outcomeObservable": "The failing oracle reruns green or harm measurably reduces, reproduction is closed or owned, and the touched path shows no obvious new regression.",
@@ -675,7 +675,7 @@
       "name": "run-open-product-betterment",
       "description": "Run open product betterment: scout high-EV work, land, re-measure.",
       "path": "skills/run-open-product-betterment/SKILL.md",
-      "packageDigest": "sha256:ba6092938d2553ca92a059b225258d1cf5b6438035a08d28faa9de7250ee21bc",
+      "packageDigest": "sha256:79f8bbd619d53708df039811068565861f5a10e5ba8c4b6314d39f16bb7d3249",
       "capability": {
         "job": "Run open product betterment: scout high-EV work, land the full batch, re-measure until the high-value frontier is empty.",
         "outcomeObservable": "A standing betterment cycle lands every material unblocked high-EV item in complete revert-safe batches with original-oracle verification, and completes only after a fresh scout shows an empty high-value frontier or named evidence parks.",

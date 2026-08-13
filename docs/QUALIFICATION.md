@@ -4,7 +4,8 @@ Qualification is optional, version-scoped evidence that a **specific package
 digest** was scanned and exercised. It is **not** a use gate.
 
 Every listing installs and loads whether or not it is `qualified`.
-`unqualified` is the honest default.
+`unqualified` is the honest default. A missing `qualification.json` is
+`unqualified`. Do not add an empty record just to exist.
 
 As of 2026-08-13 this repository declares **0** qualified capabilities
 (61 packages). Prior house metrics (TJC / VCY) and the required

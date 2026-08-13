@@ -33,42 +33,6 @@
             "path": "analysis.md",
             "contains": "question",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "stakes",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "hypothes",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "discriminating evidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "strongest case",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "calibrated",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "would change",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "analysis.md",
             "contains": "question",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "stakes",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "hypothes",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "discriminating evidence",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "strongest case",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "calibrated",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "analysis.md",
-            "contains": "would change",
             "caseInsensitive": true
           }
         ]

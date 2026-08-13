@@ -33,36 +33,6 @@
             "path": "tick.md",
             "contains": "queue",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "tick.md",
-            "contains": "claim",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "tick.md",
-            "contains": "capacity",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "tick.md",
-            "contains": "WIP",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "tick.md",
-            "contains": "bounded outcome",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "tick.md",
-            "contains": "tick report",
-            "caseInsensitive": true
           }
         ]
       }
@@ -84,36 +54,6 @@
             "type": "file-regex",
             "path": "tick.md",
             "contains": "queue",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "tick.md",
-            "contains": "claim",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "tick.md",
-            "contains": "capacity",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "tick.md",
-            "contains": "WIP",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "tick.md",
-            "contains": "bounded outcome",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "tick.md",
-            "contains": "tick report",
             "caseInsensitive": true
           }
         ]

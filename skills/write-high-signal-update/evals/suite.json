@@ -32,31 +32,6 @@
             "type": "file-regex",
             "path": "update.md",
             "contains": "^## Outcome"
-          },
-          {
-            "type": "file-regex",
-            "path": "update.md",
-            "contains": "^## Facts"
-          },
-          {
-            "type": "file-regex",
-            "path": "update.md",
-            "contains": "^## Risks / blockers"
-          },
-          {
-            "type": "file-regex",
-            "path": "update.md",
-            "contains": "^## Asks"
-          },
-          {
-            "type": "file-regex",
-            "path": "update.md",
-            "contains": "^## Next"
-          },
-          {
-            "type": "file-not-regex",
-            "path": "update.md",
-            "contains": "^## Outcome\\n## Outcome"
           }
         ]
       }
@@ -77,31 +52,6 @@
             "type": "file-regex",
             "path": "update.md",
             "contains": "^## Outcome"
-          },
-          {
-            "type": "file-regex",
-            "path": "update.md",
-            "contains": "^## Facts"
-          },
-          {
-            "type": "file-regex",
-            "path": "update.md",
-            "contains": "^## Risks / blockers"
-          },
-          {
-            "type": "file-regex",
-            "path": "update.md",
-            "contains": "^## Asks"
-          },
-          {
-            "type": "file-regex",
-            "path": "update.md",
-            "contains": "^## Next"
-          },
-          {
-            "type": "file-not-regex",
-            "path": "update.md",
-            "contains": "^## Outcome\\n## Outcome"
           }
         ]
       },

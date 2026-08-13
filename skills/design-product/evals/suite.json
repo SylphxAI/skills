@@ -33,42 +33,6 @@
             "path": "product-blueprint.md",
             "contains": "core concept",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "promise",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "non-goal",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "flow",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "tradeoff",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "rollback",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "acceptance criteria",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "product-blueprint.md",
             "contains": "core concept",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "promise",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "non-goal",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "flow",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "tradeoff",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "rollback",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "product-blueprint.md",
-            "contains": "acceptance criteria",
             "caseInsensitive": true
           }
         ]

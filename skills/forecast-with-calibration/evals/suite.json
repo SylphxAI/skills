@@ -33,42 +33,6 @@
             "path": "forecast.md",
             "contains": "question",
             "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "resolution source",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "base rate",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "probability",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "update trigger",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "history",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "resolution",
-            "caseInsensitive": true
           }
         ]
       }
@@ -90,42 +54,6 @@
             "type": "file-regex",
             "path": "forecast.md",
             "contains": "question",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "resolution source",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "base rate",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "probability",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "update trigger",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "history",
-            "caseInsensitive": true
-          },
-          {
-            "type": "file-regex",
-            "path": "forecast.md",
-            "contains": "resolution",
             "caseInsensitive": true
           }
         ]
