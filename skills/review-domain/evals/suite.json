@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the severity-ranked domain review record.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely, open references/INDEX.md and pick the launch-readiness domain pack, then write domain-review.md reviewing this domain: Acme's mobile app is due to launch next week; it collects email and location, has no published privacy notice, no support plan, no rollback runbook, and two open P1 crashes in the payment flow; the team has no incident responder on call; marketing promised a public beta in three weeks. Separate fact from inference and unknown; produce one severity-ranked findings + actions record with residuals.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "We are launching our mobile app next week. Write domain-review.md assessing launch readiness: main risks, how severe they are, and what we should do.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -77,7 +71,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same review-record oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "We are launching our mobile app next week. Write domain-review.md assessing launch readiness: main risks, how severe they are, and what we should do.",
       "timeoutMs": 600000,
       "oracle": {

@@ -25,10 +25,11 @@ Follow [`skills/design-skill-evals`](../skills/design-skill-evals/SKILL.md)
    portability claim.
 5. Bind `packageDigest`. Any later material edit invalidates the record.
 
-A fixture-read “follow this file” task is a behavior smoke test, not
-incremental-value. Agent tasks run in an isolated `CODEX_HOME`: the
-with-skill arm installs only that package; the baseline arm installs
-none. The host catalog must not leak into either arm.
+Agent suites use the same user prompt on both arms and do not hand
+`SKILL.md`. Agent tasks run in an isolated `CODEX_HOME`: the with-skill
+arm installs only that package; the baseline arm installs none. The host
+catalog must not leak into either arm. A leftover fixture-read task would
+be a behavior smoke, not incremental-value.
 
 ## How a record is filed
 

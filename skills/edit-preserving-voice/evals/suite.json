@@ -19,18 +19,14 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure rewrites the announcement while preserving every protected fact.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
       "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        },
         {
           "source": "source.txt",
           "as": "source.txt"
         }
       ],
-      "prompt": "Read ./SKILL.md completely (open references/voice-preserving-rules.md for hard-to-verify preservation), then rewrite source.txt as edited.txt: a clearer, more professional launch announcement in the same register. Lock and preserve every protected fact: names, dates, prices, numbers, percentages, regions, team lead, and the explicit uncertainty about APAC. Add no new facts, numbers, examples, or claims; do not shift certainty. Return only the edited text in edited.txt.",
+      "prompt": "Rewrite source.txt as a clearer, more professional launch announcement, keeping all the facts and numbers exactly as they are.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -111,7 +107,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same preservation oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Rewrite source.txt as a clearer, more professional launch announcement, keeping all the facts and numbers exactly as they are.",
       "fixtures": [
         {

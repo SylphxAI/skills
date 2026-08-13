@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the Channel Listing and Creative Sequence.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely, then write listing-plan.md for our habit-tracking app's App Store listing: define the positioning-to-asset narrative; write exact title/subtitle/description/screenshot-order metadata where every claim maps to shipped behavior (the app tracks streaks, reminders, and weekly reports; it does not do social or coaching); record artifactVersion/artifactRevision/artifactState per artifact; plan localization with native QA; define asset QA (exact revisions by digest); and design a conversion experiment with trust and retention countermetrics, disclosures, and compliance limits.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write listing-plan.md for our app's App Store listing: the title, subtitle, screenshots order, and description claims, all true to the product.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -77,7 +71,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same listing oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write listing-plan.md for our app's App Store listing: the title, subtitle, screenshots order, and description claims, all true to the product.",
       "timeoutMs": 600000,
       "oracle": {

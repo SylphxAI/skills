@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the scope contract elements.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely, then write scope.md for the request: 'Add a payment feature to the app'. Produce the stable scope contract per the procedure: objective, owning boundary, in/out, non-goals, cut lines, and the smallest complete path.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write scope.md that bounds this request: 'Add a payment feature to the app'. Include what is in scope, what is not, and any limits you consider important.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -70,7 +64,7 @@
     {
       "id": "baseline-agent",
       "kind": "agent",
-      "description": "Fresh-context baseline (no skill): same request, same scope-contract oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write scope.md that bounds this request: 'Add a payment feature to the app'. Include what is in scope, what is not, and any limits you consider important.",
       "timeoutMs": 600000,
       "oracle": {

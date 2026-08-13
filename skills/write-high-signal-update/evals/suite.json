@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the exact template headings.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely, then write update.md for this situation: the login-outage fix shipped; a rollback is ready if needed; the QA lead must verify by Friday; next step is 24h monitoring. Follow the procedure's template exactly.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write a short status update to update.md about shipping the login-outage fix: the fix is deployed, a rollback is ready, QA must verify by Friday, and you will monitor for 24 hours. Keep it concise.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -70,7 +64,7 @@
     {
       "id": "baseline-agent",
       "kind": "agent",
-      "description": "Fresh-context baseline (no skill): same update task, same exact-template oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write a short status update to update.md about shipping the login-outage fix: the fix is deployed, a rollback is ready, QA must verify by Friday, and you will monitor for 24 hours. Keep it concise.",
       "timeoutMs": 600000,
       "oracle": {
@@ -103,6 +97,11 @@
             "type": "file-regex",
             "path": "update.md",
             "contains": "^## Next"
+          },
+          {
+            "type": "file-not-regex",
+            "path": "update.md",
+            "contains": "^## Outcome\\n## Outcome"
           }
         ]
       },

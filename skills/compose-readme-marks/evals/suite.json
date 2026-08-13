@@ -19,14 +19,8 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full procedure produces the README marks with live image URLs.",
-      "fixtures": [
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        }
-      ],
-      "prompt": "Read ./SKILL.md completely, then write README-marks.md for an open-source library called acme-lib (npm + GitHub): produce a badge row and a hero section as copy-paste Markdown, where every image/URL is a real public endpoint pattern (shields.io, GitHub Actions status, npm version, license) with alt text and purpose labels, and note any URL that cannot be verified live as a residual rather than claiming it works.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
+      "prompt": "Write README-marks.md for our open-source library: a set of badges (build, coverage, version, license) and a sample hero section we can paste into the README.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -77,7 +71,7 @@
       "id": "baseline-agent",
       "kind": "agent",
       "baseline": true,
-      "description": "Fresh-context baseline (no skill): same task, same marks oracle.",
+      "description": "No skill installed; identical prompt.",
       "prompt": "Write README-marks.md for our open-source library: a set of badges (build, coverage, version, license) and a sample hero section we can paste into the README.",
       "timeoutMs": 600000,
       "oracle": {

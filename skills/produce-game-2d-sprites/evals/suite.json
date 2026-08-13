@@ -131,22 +131,14 @@
     {
       "id": "agent-follows-procedure",
       "kind": "agent",
-      "description": "Fresh-context agent with the full SKILL.md and shipped script performs the same extraction contract.",
+      "description": "Skill installed as the only condition; identical user prompt; no SKILL.md fixture.",
       "fixtures": [
         {
           "source": "sheet-2x2.png",
           "as": "input.png"
-        },
-        {
-          "source": "package:SKILL.md",
-          "as": "SKILL.md"
-        },
-        {
-          "source": "package:scripts/generate2dsprite.py",
-          "as": "generate2dsprite.py"
         }
       ],
-      "prompt": "Read ./SKILL.md completely, then perform the produce-game-2d-sprites job on ./input.png (2x2 chroma-keyed creature evolution sheet): use the provided ./generate2dsprite.py script (python3 ./generate2dsprite.py process --input input.png --target creature --mode evolution --output-dir out) and then report the output paths. Do not invent other formats; follow the script contract.",
+      "prompt": "Postprocess this chroma-keyed 2x2 sprite sheet (input.png, solid magenta #FF00FF background, one creature pose per quadrant) into at least one transparent PNG per pose in an out/ directory. You may write any helper code you like. Keep backgrounds transparent.",
       "timeoutMs": 600000,
       "oracle": {
         "assertions": [
@@ -180,7 +172,7 @@
     {
       "id": "baseline-agent",
       "kind": "agent",
-      "description": "Fresh-context baseline (no skill): same extraction task, lenient oracle (some transparent output).",
+      "description": "No skill installed; identical prompt.",
       "fixtures": [
         {
           "source": "sheet-2x2.png",
@@ -196,12 +188,28 @@
             "value": 0
           },
           {
-            "type": "dir-entry-count-min",
-            "path": "out",
-            "min": 1
+            "type": "file-exists",
+            "path": "out/pipeline-meta.json"
+          },
+          {
+            "type": "json-path-eq",
+            "path": "out/pipeline-meta.json",
+            "jsonPath": "frames.length",
+            "value": 4
+          },
+          {
+            "type": "file-exists",
+            "path": "out/stage-1.png"
+          },
+          {
+            "type": "image-corner-alpha",
+            "path": "out/stage-1.png",
+            "corner": "top-left",
+            "opaque": false
           }
         ]
-      }
+      },
+      "baseline": true
     }
   ]
 }
