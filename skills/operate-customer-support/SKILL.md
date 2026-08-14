@@ -32,7 +32,7 @@ Routine operation is autonomous. A support agent may retrieve, classify, explain
 
 ## Composition contract
 
-Use the shared envelope vocabulary: top-level artifacts carry `artifactVersion`, `artifactRevision`, and `artifactState` and never `artifactDigest`. Draft input references contain no digest; already sealed input references additionally require `artifactDigest` and `digestRule: sha256-exact-bytes`. Never invent either field. The Support Operating Model consumes product/version, identity, payment, refund, entitlement, sync/backup, incident, safety, review/feedback, analytics, and policy artifacts without copying their canonical facts. The downstream Product Program Manifest indexes the support artifact.
+Write the operating model in markdown. Name owners and sources in prose. Do not add a parallel JSON envelope. Consume product/version, identity, payment, refund, entitlement, sync/backup, incident, safety, review/feedback, analytics, and policy artifacts without copying their canonical facts.
 
 ## Workflow
 

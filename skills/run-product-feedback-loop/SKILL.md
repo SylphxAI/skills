@@ -19,20 +19,11 @@ ingesting or responding on an external platform.
 
 ## Composition contract
 
-Begin a composed artifact with the
-[product artifact envelope](references/product-artifact-envelope.schema.json).
-Set `ownerSkill: run-product-feedback-loop` and give the feedback/learning
-artifact its own `artifactId`, `artifactVersion`, `artifactRevision`, and
-`artifactState`. The top-level artifact never self-hashes.
-
-Every typed input names the exact producer contract through
-`fulfillsHandoffId`. A draft input carries identity/revision/state but no digest;
-a sealed input additionally requires `artifactDigest` and
-`digestRule: sha256-exact-bytes`. Never invent a digest or resolve a moving
-“latest” alias.
+Write the feedback record in markdown. Name owners and sources in prose. Do
+not add a parallel JSON envelope.
 
 For a combined private-feedback/public-review request, produce two sibling
-artifacts with distinct identities and stable producer-owned `handoffId`s.
+artifacts with distinct identities.
 They may share exact upstream product and value-event inputs. Add a one-way
 input edge only when this loop truly consumes a contract emitted by Review
 Solicitation; public request eligibility can never consume private sentiment or
@@ -73,7 +64,6 @@ learning state, and the graph must remain acyclic.
 ## Progressive disclosure
 
 - [references/feedback-learning-loop.md](references/feedback-learning-loop.md) — open when needed for depth
-- [references/product-artifact-envelope.schema.json](references/product-artifact-envelope.schema.json) — open when needed for depth
 - [references/review-solicitation-policy/](references/review-solicitation-policy/) — open when this topic applies
 
 ## Boundaries
@@ -96,8 +86,7 @@ learning state, and the graph must remain acyclic.
 
 ## Output
 
-Artifact envelope, exact inputs, proof state, stable handoff outputs, and
-assumptions:
+Exact inputs, proof state, handoffs, and assumptions:
 
 Scope, sources, authority, and evidence gaps:
 

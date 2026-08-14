@@ -18,7 +18,7 @@ Money, durable entitlement, identity recovery, deletion, security, enforcement, 
 
 ## Composition contract
 
-Use the [shared product artifact envelope](references/product-artifact-envelope.schema.json). The record carries `schemaVersion`, `artifactId`, `productId`, `artifactKind`, `ownerSkill`, `artifactVersion`, `artifactRevision`, `artifactState`, `inputArtifacts`, `canonicalFactsOwned`, `handoffOutputs`, `assumptions`, `proofState`, and `proofEvidence`, never its own `artifactDigest`. Every input names the producer contract through `fulfillsHandoffId`; a draft input has no digest, while a sealed input additionally carries `artifactDigest` and `digestRule: sha256-exact-bytes`. Reference provider, ledger, entitlement, policy, incident, account, product, and prior-case facts by stable IDs. Emit stable handoff IDs and do not copy those facts as new truth.
+Write the case record in markdown. Name owners and sources in prose. Do not add a parallel JSON envelope. Reference provider, ledger, entitlement, policy, incident, account, product, and prior-case facts by stable IDs. Do not copy those facts as new truth.
 
 Read [Case decisions, remedies, and scenario playbooks](references/case-decisions-remedies-and-playbooks.md) for every case.
 

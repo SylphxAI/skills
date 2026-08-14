@@ -71,7 +71,7 @@ explicitly supersedes N and may reference those exact outputs. Never let one
 revision both consume and index the same artifact, and never hide a
 same-revision cycle behind prose such as “latest manifest.”
 
-Use the [`product artifact envelope`](references/product-artifact-envelope.schema.json) vocabulary exactly. A top-level artifact carries `artifactVersion`, `artifactRevision`, and `artifactState` but never `artifactDigest`. Every input reference requires `fulfillsHandoffId`. A draft input has no digest; an already sealed input additionally requires `artifactDigest` and `digestRule: sha256-exact-bytes`. Never invent any field. The manifest assigns one owner to every canonical fact.
+Write the manifest in markdown. Name one owner per fact. Do not add a parallel JSON envelope.
 
 Use these principles to decide skill granularity:
 
@@ -176,7 +176,6 @@ Reject or redesign a program that:
 ## Progressive disclosure
 
 - [references/ecosystem-certification-program.md](references/ecosystem-certification-program.md) — open when needed for depth
-- [references/product-artifact-envelope.schema.json](references/product-artifact-envelope.schema.json) — open when needed for depth
 - [references/product-distribution-and-release.md](references/product-distribution-and-release.md) — open when needed for depth
 - [references/product-globalization-assets-and-sdks.md](references/product-globalization-assets-and-sdks.md) — open when needed for depth
 - [references/product-lifecycle-matrix.md](references/product-lifecycle-matrix.md) — open when needed for depth
@@ -185,7 +184,7 @@ Reject or redesign a program that:
 
 Produce one **Product Program Manifest** containing:
 
-1. artifact envelope, objective, constraints, ruin boundaries, product/release targets, and Definition of Done;
+1. objective, constraints, ruin boundaries, product/release targets, and Definition of Done;
 2. canonical fact and artifact-owner registry with IDs, versions/revisions, sealed digests where available, inputs, outputs, assumptions, proof, and supersession;
 3. complete lifecycle capability matrix with construction, proof, release/exposure, scale/failure, migration, recovery, and maintenance states;
 4. cross-domain dependency DAG, critical path, delivery order, collision boundaries, and handoff acceptance tests;

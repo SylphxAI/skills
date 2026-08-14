@@ -22,7 +22,7 @@ validation/live-readback evidence bundle
 incident/recovery runbook
 ```
 
-All material artifacts are versioned and provenance-linked. Top-level artifacts carry `artifactVersion`, `artifactRevision`, and `artifactState` but never self-hash. Only a reference to an already sealed input carries `artifactDigest` plus `digestRule: sha256-exact-bytes`. Desired state and observed provider state are separate.
+All material artifacts are versioned and provenance-linked in prose. Desired state and observed provider state are separate. Do not add a parallel JSON envelope.
 
 ## 2. Authority separation
 

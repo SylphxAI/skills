@@ -18,7 +18,7 @@ Selection, construction, proof, availability, and prominence are different decis
 
 ## Composition contract
 
-Use the [shared product artifact envelope](references/product-artifact-envelope.schema.json). The top level carries `schemaVersion`, `artifactId`, `productId`, `artifactKind`, `ownerSkill`, `artifactVersion`, `artifactRevision`, `artifactState`, `inputArtifacts`, `canonicalFactsOwned`, `handoffOutputs`, `assumptions`, `proofState`, and `proofEvidence`; it never carries its own `artifactDigest`. Every input names the exact producer contract through `fulfillsHandoffId`. Draft input references contain no digest. References to already sealed artifacts additionally carry `artifactDigest` and `digestRule: sha256-exact-bytes`. Use stable producer handoff IDs and keep the dependency graph acyclic.
+Write the blueprint in markdown. Name owners and sources in prose. Do not add a parallel JSON envelope. Keep the dependency graph acyclic.
 
 ```text
 SaaS Blueprint -> typed specialist requests -> specialist outputs

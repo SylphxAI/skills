@@ -16,10 +16,9 @@ signal semantics and proof requirements, and test fixtures. Do not own the
 end-to-end telemetry pipeline, whole-app experience, server business rules,
 backup retention, or collaboration permissions except as consumed contracts.
 
-Begin with the [shared product artifact envelope](references/product-artifact-envelope.schema.json)
-and object, identity, permission, privacy, and server-authority inputs that each
-name the exact producer contract through `fulfillsHandoffId`; digest-pin only
-sealed inputs.
+Write the protocol in markdown. Name owners and sources in prose. Do not add a
+parallel JSON envelope. Consume object, identity, permission, privacy, and
+server-authority inputs without copying their facts.
 
 ## Agent-first invariant
 

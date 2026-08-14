@@ -20,20 +20,11 @@ platform rule from current first-party authority before execution.
 
 ## Composition contract
 
-Begin a composed artifact with the
-[product artifact envelope](references/product-artifact-envelope.schema.json).
-Set `ownerSkill: review-solicitation-policy` and give the public request policy
-its own `artifactId`, `artifactVersion`, `artifactRevision`, and
-`artifactState`. The top-level artifact never self-hashes.
-
-Every typed input names the exact producer contract through
-`fulfillsHandoffId`. A draft input carries identity/revision/state but no digest;
-a sealed input additionally requires `artifactDigest` and
-`digestRule: sha256-exact-bytes`. Never invent a digest or resolve a moving
-“latest” alias.
+Write the policy in markdown. Name owners and sources in prose. Do not add a
+parallel JSON envelope.
 
 For a combined public-review/private-feedback request, produce two sibling
-artifacts with distinct identities and stable producer-owned `handoffId`s.
+artifacts with distinct identities.
 They may share exact upstream product/value-event inputs. Add a one-way input
 edge only when one sibling truly consumes a contract emitted by the other;
 never create a cycle or merge their state machines.
@@ -85,8 +76,7 @@ never create a cycle or merge their state machines.
 
 ## Output
 
-Artifact envelope, exact inputs, proof state, stable handoff outputs, and
-assumptions:
+Exact inputs, proof state, handoffs, and assumptions:
 
 Scope and current authority:
 

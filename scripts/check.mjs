@@ -98,6 +98,10 @@ function validateQualification(folder, errors) {
       `${contractPath}: retired house contract; job and procedure live in SKILL.md (agentskills.io). Do not restore.`,
     );
   }
+  const envelopePath = `skills/${folder}/references/product-artifact-envelope.schema.json`;
+  if (existsSync(path.join(repositoryRoot, envelopePath))) {
+    errors.push(`${envelopePath}: retired house envelope; write markdown artifacts. Do not restore.`);
+  }
 
   const qualificationPath = `skills/${folder}/qualification.json`;
   if (existsSync(path.join(repositoryRoot, qualificationPath))) {
@@ -302,6 +306,14 @@ export function checkRepository() {
 
   const names = new Set();
   for (const folder of skillFolders) validateSkill(folder, names, errors);
+  if (existsSync(path.join(repositoryRoot, 'schemas/product-artifact-envelope.schema.json'))) {
+    errors.push('schemas/product-artifact-envelope.schema.json: retired house envelope; do not restore');
+  }
+  for (const file of walk(path.join(repositoryRoot, 'skills'))) {
+    if (path.basename(file) === 'product-artifact-envelope.schema.json') {
+      errors.push(`${path.relative(repositoryRoot, file)}: retired house envelope; do not restore`);
+    }
+  }
   validateRuntimeConstitution(errors);
   errors.push(...retiredSloganFindings());
   validateCatalogBudget(errors, skillFolders);

@@ -14,14 +14,9 @@ event ingestion, money truth, or the entitlement projector. Consume those
 authoritative facts from `build-product` (see references/payment-readiness) or the owning provider/
 ledger system and preserve their evidence references.
 
-For every artifact, record `artifactVersion`, `artifactRevision`, and
-`artifactState`; never put `artifactDigest` on the top-level artifact. Use the
-[shared product artifact envelope](references/product-artifact-envelope.schema.json)
-for structured drafts and sealed artifacts. Consume payment, entitlement,
-purchase, product, economy, and support inputs through input references. A
-sealed input additionally requires `artifactDigest` and
-`digestRule: sha256-exact-bytes`; every input requires `fulfillsHandoffId`,
-while a draft contains no digest fields.
+Write the refund-consequence record in markdown. Name owners and sources in
+prose. Do not add a parallel JSON envelope. Consume payment, entitlement,
+purchase, product, economy, and support inputs without copying their facts.
 
 ## Workflow
 
@@ -69,12 +64,6 @@ while a draft contains no digest fields.
 ## Output format
 
 ```text
-Artifact identity:
-- schemaVersion / artifactId / productId / artifactKind / ownerSkill
-- artifactVersion / artifactRevision / artifactState / inputArtifacts
-- a sealed artifact does not self-hash; its exact-byte digest appears only in a downstream reference
-- canonicalFactsOwned / handoffOutputs / assumptions / proofState / proofEvidence
-
 Purchase/refund context:
 Authority:
 

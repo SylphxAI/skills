@@ -40,6 +40,22 @@ test('listing packages do not carry a parallel capability.json contract', () => 
   assert.equal(/capability\.json\s+# required/.test(author), false);
 });
 
+test('skills do not ship a product-artifact-envelope schema', () => {
+  assert.equal(
+    existsSync(path.join(repositoryRoot, 'schemas/product-artifact-envelope.schema.json')),
+    false,
+  );
+  for (const folder of folders) {
+    assert.equal(
+      existsSync(path.join(skillsRoot, folder, 'references', 'product-artifact-envelope.schema.json')),
+      false,
+      `${folder}: leftover envelope schema`,
+    );
+  }
+  const author = readFileSync(path.join(skillsRoot, 'author-skill', 'SKILL.md'), 'utf8');
+  assert.match(author, /product-artifact-envelope/);
+});
+
 function readQualification(folder) {
   const file = path.join(skillsRoot, folder, 'qualification.json');
   if (!existsSync(file)) return { name: folder, status: 'unqualified' };

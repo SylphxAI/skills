@@ -83,9 +83,8 @@ Agent-first is not permission to expose incoherent features, ignore physical bud
 
 ## Composition contract
 
-Treat the blueprint as an upstream design artifact. Start it with `schemaVersion`, `artifactId`, `productId`, `artifactKind`, `ownerSkill`, `artifactVersion`, `artifactRevision`, `artifactState`, `inputArtifacts`, `proofState`, assumptions, and handoff requests. A top-level artifact never carries `artifactDigest` because it cannot self-hash.
-
-Use [`references/product-artifact-envelope.schema.json`](references/product-artifact-envelope.schema.json) for a structured artifact. Every input reference names the producer contract through `fulfillsHandoffId`. A draft input reference uses `artifactId`, `artifactVersion`, `artifactRevision`, and `artifactState: draft`; a sealed input reference additionally requires `artifactDigest` and `digestRule: sha256-exact-bytes`. Never invent any field.
+Write the blueprint in markdown. Name owners and sources in prose. Do not add a
+parallel JSON envelope.
 
 The dependency direction is acyclic:
 
@@ -232,7 +231,7 @@ Reject or redesign an output that:
 
 Produce one **App Design Blueprint** containing:
 
-1. draft artifact identity or sealed envelope, plus evidence labels;
+1. evidence labels;
 2. user/job/context, promise, wedge, business model, platforms, audience modes, non-goals, and success contract;
 3. object model, state-authority map, workflows, information architecture, error/undo/recovery model;
 4. first-value beat map and friction budget;

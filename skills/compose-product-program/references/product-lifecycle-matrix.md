@@ -58,10 +58,10 @@ Every row receives a complete target or exact hard-floor/non-applicability reaso
 program_id, product_id and manifest phase (planning | observed-state):
 superseded manifest revision when observed-state:
 objective, constraints, ruin boundaries and DoD:
-upstream design input reference with artifactId/artifactVersion/artifactRevision/artifactState/fulfillsHandoffId, plus artifactDigest and digestRule only when sealed:
+upstream design input (owner, path, revision):
 
 artifact registry:
-| artifact ID | kind | owner skill/system | artifactVersion/artifactRevision/artifactState | sealed-input digest reference if applicable | canonical facts | inputs | outputs | proof | release state |
+| artifact | kind | owner | revision | facts | inputs | outputs | proof | release state |
 
 capability registry:
 | capability | owner artifact | construction | proof | exposure/release | scale envelope | migration/recovery |
@@ -80,9 +80,7 @@ blockers and next machine actions:
 
 Producer:
 
-1. emits a draft or sealed envelope with `artifactVersion`,
-   `artifactRevision`, `artifactState`, and stable producer-owned `handoffId`
-   values, never a top-level self-digest;
+1. names the artifact, owner, and revision in prose;
 2. owns only declared canonical facts;
 3. labels assumptions and proof state;
 4. supplies contract fixtures and acceptance evidence;
@@ -91,10 +89,10 @@ Producer:
 
 Consumer:
 
-1. verifies `artifactId`, `artifactVersion`, `artifactRevision`, `artifactState`, `fulfillsHandoffId`, and compatibility; a sealed input reference must also carry a reproducible `artifactDigest` and `digestRule`;
+1. checks owner, revision, and compatibility;
 2. references rather than copies canonical facts;
 3. rejects missing/expired/conflicting inputs with a typed blocker;
-4. records consumed version in its own envelope;
+4. records the consumed revision;
 5. revalidates when the producer supersedes a material contract.
 
 The observed-state Product Program Manifest is the only revision that indexes

@@ -20,7 +20,7 @@ Selection, construction, activation, publication, amplification, and reply are s
 
 ## Composition contract
 
-Use the [shared product artifact envelope](references/product-artifact-envelope.schema.json). The model carries `schemaVersion`, `artifactId`, `productId`, `artifactKind`, `ownerSkill`, `artifactVersion`, `artifactRevision`, `artifactState`, `inputArtifacts`, `canonicalFactsOwned`, `handoffOutputs`, `assumptions`, `proofState`, and `proofEvidence`; it never self-hashes. Every input names `fulfillsHandoffId`; only sealed input references carry `artifactDigest` plus `digestRule: sha256-exact-bytes`.
+Write the operating model in markdown. Name owners and sources in prose. Do not add a parallel JSON envelope.
 
 ```text
 Marketing channel selection/message/campaign brief

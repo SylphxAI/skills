@@ -41,16 +41,10 @@ App/Game Design + commercial truth [+ Product Program Manifest planning revision
 -> Product Program Manifest observed-state revision N+1 when orchestrated
 ```
 
-Consume exact product truth and, when orchestrated, a sealed planning manifest
-revision containing release targets and stable handoff IDs. Never consume the
-later observed-state revision that indexes Marketing. Follow the [`product
-artifact envelope`](references/product-artifact-envelope.schema.json):
-top-level artifacts use `artifactVersion`, `artifactRevision`, and
-`artifactState` and never self-hash; every input names the exact producer
-contract through `fulfillsHandoffId`; a sealed input reference additionally
-requires `artifactDigest` and `digestRule: sha256-exact-bytes`, while a draft
-input reference contains neither. Never invent them or resolve a moving
-“latest” revision.
+Consume exact product truth and, when orchestrated, a planning manifest
+revision. Never consume the later observed-state revision that indexes
+Marketing. Write the blueprint in markdown. Do not add a parallel JSON
+envelope or resolve a moving “latest” revision.
 
 ## Resource guide
 
@@ -154,7 +148,7 @@ Reject or redesign an output that:
 
 Produce one **Marketing Automation Blueprint** containing:
 
-1. draft artifact identity or sealed envelope and consumed product/claim/offer/release registry, with digests only for sealed inputs;
+1. consumed product/claim/offer/release registry;
 2. objective hierarchy, thesis, audience/intent/lifecycle/consent model, exclusions, non-goals, and ruin boundaries;
 3. full channel sweep plus selected capability portfolio, with inclusion/exclusion rationale, role, adapter authority, scale/spend/failure envelope, construction/proof/activation state, dormant contract, and handoffs;
 4. positioning/message translation and proof-backed claim registry references;
