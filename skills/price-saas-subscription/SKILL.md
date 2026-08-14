@@ -23,7 +23,7 @@ expansion, cost, and trust constraints.
 4. Design plan boundaries, exact limits, upgrade moments, downgrade/cancel
    promises, and enterprise/procurement path.
 5. Run a pricing arithmetic pass before publishing: seat minimums vs included seats, included usage vs overage rates, gross margin, annual discount, and procurement terms must be internally consistent.
-6. Define exact usage rates, unit economics, margin guardrails, a bounded
+6. Define exact usage rates, unit economics, margin floors, a bounded
    validation or rollout, sales enablement, objection handling, and kill criteria
    before proposing discounts.
 
@@ -45,14 +45,13 @@ expansion, cost, and trust constraints.
   geography, and plan.
 - Obtain current internal cost, margin, usage, conversion, churn, and support data from the owning systems. Mark missing values as assumptions and make the recommendation a bounded experiment.
 
-## Guardrails
+## Path
 
-- Do not mix "per seat" pricing with ambiguous "included base seats"; state either a minimum seat commitment or a bundled-seat package.
-- Do not set overage prices below marginal cost plus target gross margin.
-- Do not hide annual terms, usage caps, downgrade consequences, or procurement friction behind sales-only language.
-- Do not propose discounts without approval rules, CRM logging, renewal impact, and rollback criteria.
-- Do not let pricing copy or billing implementation silently change the approved
-  value metric, limits, price, renewal, cancellation, or downgrade semantics.
+- Per-seat prices name either a minimum seat commitment or a bundled-seat package.
+- Overage sits at or above marginal cost plus the target gross margin.
+- Annual terms, usage caps, downgrade consequences, and procurement friction live in the published offer.
+- A discount proposal includes approval rules, CRM logging, renewal impact, and rollback criteria.
+- Copy and billing implement the approved value metric, limits, price, renewal, cancellation, and downgrade semantics.
 
 
 ## Progressive disclosure
@@ -89,6 +88,6 @@ Experiment/rollout plan:
 - Test design:
 - Handoff for any approved migration:
 - Customer communications:
-- Guardrails:
+- Holds:
 Risks:
 ```

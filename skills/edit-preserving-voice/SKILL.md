@@ -10,7 +10,7 @@ Apply this skill as a language-quality layer over the current request. Let the c
 Information selection and compression belong to `write-high-signal-update`;
 this Skill owns voice, register, locale, and fact-preserving expression.
 
-Complete the substantive request first, then apply the voice layer. Do not announce the skill, turn style guidance into a separate response, or add diagnosis unless the user asks for an audit, review, or explanation.
+Complete the substantive request first, then apply the voice layer. Return the answer. An audit or diagnosis appears when the user asks for one.
 
 ## Workflow
 
@@ -23,16 +23,17 @@ Complete the substantive request first, then apply the voice layer. Do not annou
 7. Compare the result with the protected-content lock and repair every unsupported addition, omission, certainty shift, attribution change, or register mismatch.
 8. Return the requested answer or artifact itself. Include an audit record only when requested.
 
-## Guardrails
+## Path
 
-- Do not help evade AI detectors, plagiarism checks, academic integrity rules, authorship disclosure, moderation, or platform enforcement.
-- Do not launder copied text, imitate a living private person's voice without permission, fabricate lived experience, invent citations, or hide that material facts are uncertain.
-- Do not add new examples, numbers, sources, product claims, credentials, testimonials, or personal experience unless the user supplied them.
-- Do not imply that a human user's conversational input should be altered. Treat "humanize this conversation" as a request to shape the agent's generated language unless the request explicitly identifies supplied text to transform.
-- Do not turn technical, legal, medical, financial, or policy text into casual prose when precision is the human voice for that surface.
-- Do not overcorrect by removing useful structure, domain terms, local idiom, dialect, or roughness that belongs to the author.
+- Shape the agent's generated language. The content owner and evidence decide what belongs.
+- Facts, numbers, names, dates, citations, quotes, product names, code, commands, filenames, URLs, units, prices, benchmark conditions, caveats, judgment, and uncertainty stay as supplied.
+- "Humanize this conversation" shapes the agent's generated language. Transform supplied text only when the request names that text.
+- Technical, legal, medical, financial, and policy surfaces keep their precision as the voice.
+- Keep useful structure, domain terms, local idiom, dialect, and author roughness.
 
-If the request is detector evasion or fake authorship, refuse that part and offer a quality-focused edit that improves clarity, specificity, attribution, and voice honestly.
+## Holds when
+
+The request is detector evasion or fake authorship: refuse that part and offer a quality-focused edit that improves clarity, specificity, attribution, and voice.
 
 
 ## Progressive disclosure
@@ -43,7 +44,7 @@ If the request is detector evasion or fake authorship, refuse that part and offe
 
 ### Default
 
-Return the requested answer or artifact itself in the adjusted voice. Do not include an audit wrapper unless asked.
+Return the requested answer or artifact itself in the adjusted voice. An audit wrapper appears when asked.
 
 ### Audit requested
 

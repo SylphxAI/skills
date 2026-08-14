@@ -24,8 +24,8 @@ a folder, topic, governance mechanism, or generated catalog row.
    corpus from installable entries, active investigations, retirement records,
    default-branch history, and closed unmerged proposals. Classify sensitivity,
    audience, license, and publication authority before reuse; presence in
-   history is not authority to republish. Do not wait for the owner to remember
-   a hidden name.
+   history is not authority to republish. Reconstruct the corpus; the owner
+   is not the discovery index.
 3. For every capability, judge four facts separately: value of the recurring
    job, quality of the current package, need for a separate route, and current
    evidence state. A weak old implementation does not make its job worthless;
@@ -58,8 +58,8 @@ a folder, topic, governance mechanism, or generated catalog row.
    examples, then forward-test material changes on fresh native runtimes. Test
    positive, near-neighbour, abstention, compound, multilingual, ambiguous,
    correction, and misleading-keyword cases under realistic catalog pressure.
-   Run the repository's existing hygiene and delivery checks afterward. Do not
-   build a meta-router merely to make a semantic judgment look deterministic.
+   Run the repository's existing hygiene and delivery checks afterward. A
+   semantic judgment stays a curator decision.
 
 ## Resource guide
 
@@ -68,41 +68,21 @@ a folder, topic, governance mechanism, or generated catalog row.
 - Run scripts/check_skill_folder.py only for a quick folder/frontmatter check;
   it is not behavior, demand, or quality proof.
 
-## Guardrails
+## Path
 
-- Do not optimize for skill count, folder symmetry, line count, or topic coverage.
-- Do not assume every description is visible merely because every package is
-  installed. Codex/Claude listing budgets may shorten descriptions or omit
-  entries, while other runtimes may expose different semantics; record the
-  actual state and prove important routes in each supported native runtime.
-- Do not stuff synonyms into descriptions as a keyword list. Front-load the
-  concrete job, artifact, material contexts, and nearby exclusions in natural
-  language so model-mediated implicit selection has discriminating evidence.
-- A thick method is acceptable when progressive disclosure keeps the entry
-  procedure focused and moves optional depth to references. Split only when a
-  sub-job is independently requested and produces an independently accepted
-  artifact; merge when job, artifact and acceptance authority are materially
-  the same.
-- Do not delegate semantic value, atomicity, or absorption decisions to CI,
-  schemas, hashes, demand counters, or lifecycle labels.
-- Do not require the owner to recall or nominate hidden work. The owner sets
-  strategy and protected experience; curator agents own portfolio discovery,
-  comparison, rewriting, and routine reversible decisions.
-- Do not merge skills merely because they mention the same domain; compare the
-  requested job, artifact, acceptance authority, and unique mechanisms.
-- Do not keep generic wrappers that add no procedure beyond ordinary reasoning.
-- Do not turn a normal public/private repository into a control-plane project
-  unless the user explicitly asks for that infrastructure and it is necessary.
-- Do not claim current demand, behavior, adoption, or superiority from authored
-  examples, local installation, or repository presence.
-- Do not call a job low-value merely because its old package is shallow or its
-  current proof is absent. Distinguish job value, package value, route value,
-  and evidence state.
-- Do not delete unique knowledge before its destination is explicit and checked.
-- A public package must not reproduce secrets, customer/personal data, raw
-  telemetry, private topology/process/migration state, control knobs,
-  security-sensitive detail, or hidden identifiers. Preserve a useful method
-  only through authorized, non-reconstructable generalization or redaction.
+- Judge by recurring job, accepted artifact, package quality, and evidence state. Count, folder symmetry, line count, and topic coverage are not the score.
+- Record each runtime's actual listing: what is visible, shortened, or omitted. Prove important routes on each supported native runtime.
+- Front-load the job, artifact, material contexts, and nearby exclusions in natural language.
+- Keep a thick method under progressive disclosure. Split when a sub-job is independently requested and independently accepted. Merge when job, artifact, and acceptance authority are the same.
+- Semantic value, atomicity, and absorption stay curator judgments. CI, schemas, hashes, demand counters, and lifecycle labels are inputs.
+- Curator agents reconstruct the corpus. The owner sets strategy and protected experience.
+- Compare requested job, artifact, acceptance authority, and unique mechanisms. Same domain is not enough to merge.
+- Keep a listing when it has procedure the model lacks. Archive generic wrappers.
+- A control-plane project starts only from an explicit ask that needs that infrastructure.
+- Demand, behavior, adoption, and superiority come from current evidence.
+- Job value, package value, route value, and evidence state stay four facts. A shallow old package can still be a valuable job.
+- Unique knowledge moves only after its destination is explicit and checked.
+- Public packages carry authorized, non-reconstructable method. Secrets, customer data, raw telemetry, private topology, control knobs, and hidden identifiers stay out.
 
 
 ## Progressive disclosure

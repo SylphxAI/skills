@@ -44,15 +44,13 @@ unsupported market opinions.
 - If source access is unavailable, return a research plan and mark market claims
   unverified rather than filling gaps from memory.
 
-## Guardrails
+## Path
 
-- Do not copy competitor wording, screenshots, proprietary workflows, or other
-  protected expression into the recommendation.
-- Do not treat marketing claims, scraped reviews, community anecdotes, or search
-  rank as equivalent to verified behavior or demand.
-- Do not count multiple pages repeating one claim as independent corroboration.
-- Do not hide negative evidence, source conflicts, weak coverage, or uncertainty.
-- Do not recommend dark patterns merely because competitors use them.
+- Recommendations use original wording. Competitor expression stays with the competitor.
+- Marketing claims, scraped reviews, community anecdotes, and search rank stay labeled as those classes. Verified behavior and demand are a separate class.
+- Independent corroboration is a primary source plus a second independent source. Repeats of one claim stay one source.
+- The ledger keeps negative evidence, conflicts, weak coverage, and uncertainty visible.
+- Recommendations follow the product's own value and trust constraints. Competitor dark patterns stay competitor evidence.
 
 
 ## Progressive disclosure
