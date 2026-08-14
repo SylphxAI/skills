@@ -52,7 +52,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:8beeeeb3ef8d9ef8c24c432628adcad65f438de23f8235df33c0449ec6f3dc1c",
+      "packageDigest": "sha256:253381b1f5c7df96093121dc39446cd2b1b4435d4b4d1dad46097686b55897f9",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },

@@ -156,7 +156,8 @@ Also useful depth under this package:
 ## Listing quality
 
 A listing names one job, produces one artifact, and holds the procedure the
-model lacks. The package is `SKILL.md`. Standards live under the applying job.
+model lacks. The package is `SKILL.md`. Do not add `capability.json` or a
+`product-artifact-envelope`. Standards live under the applying job.
 Host discovery plus when-to-open links do the routing. Product-law text uses
 industry names and English quantities.
 
