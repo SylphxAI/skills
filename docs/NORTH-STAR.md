@@ -41,9 +41,10 @@ eval notes) is:
 5. **One working harness is enough to file a claim.** Extra model families
    are only for a portability claim. They are not a daily gate.
 
-We do **not** operate house metrics (retired 2026-08-13: TJC, VCY, required
-outcome receipts). We do **not** require four-way controls or dual judge
-families to keep a package in the catalog.
+We do **not** operate invented house metrics or required outcome receipts.
+We do **not** require four-way controls or dual judge families to keep a
+package in the catalog. Retirement of predecessor private names lives in
+[`docs/history/adr/ADR-20260813-retire-house-nsm-follow-industry-eval.md`](history/adr/ADR-20260813-retire-house-nsm-follow-industry-eval.md).
 
 ---
 
@@ -71,10 +72,9 @@ How to file: [`docs/QUALIFICATION.md`](QUALIFICATION.md). Method:
 - Requiring a proof stack to start ordinary reversible work
 - Inventing live success dashboards with zero external results
 - Batch-qualifying the catalog to make a coverage number move
-- Minting house score acronyms (three-to-five-letter KPIs). Name customer
-  value in English with an industry quantity. See documentation-standard
+- Minting an abbreviation for a standard concept. Name customer value in
+  English with an industry quantity. See documentation-standard
   § North Star Metric (naming).
-- Polar brands, residual grades, invented claim ladders.
 
 ---
 

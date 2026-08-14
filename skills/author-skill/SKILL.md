@@ -165,6 +165,7 @@ Also useful depth under this package:
 - Keeping a hollow shell with no agent gap
 - A parallel JSON job contract (`capability.json`) next to `SKILL.md`
 - A JSON artifact envelope (`product-artifact-envelope`) wrapping markdown outputs
+- Minting a house abbreviation, or writing process vocabulary into product-law templates
 
 ## Dual-host notes
 

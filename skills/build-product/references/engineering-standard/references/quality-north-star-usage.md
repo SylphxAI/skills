@@ -21,7 +21,7 @@ durable product, design, code, architecture, and ops work.
 - Not qualification evidence.
 - Not a second universal principles document  
   → principles: [`docs/policies/PRINCIPLES.md`](../../../../../docs/policies/PRINCIPLES.md).
-- Not a claim ladder, residual grade, or L0–L6 score.
+- Not a product metric or claim ladder.
 
 Normative attribute definitions and IDs:
 [full-standard.md](full-standard.md) § Quality North Star.  

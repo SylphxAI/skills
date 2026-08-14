@@ -28,8 +28,8 @@ Every active durable repository exposes:
    Metric**, optional **OKRs/Goals**, **Delivery**, **Links** (to `docs/prd.md`,
    ADRs, specs). Feature/capability inventories live in the **PRD**, not here.
 3. **Canonical code architecture** — real product code conforms to
-   `engineering-standard`, including Capability-first Modular DDD,
-   Clean/Hexagonal boundaries, and FCIS. Docs, folder names,
+   `engineering-standard` (capability-first modules, clean boundaries,
+   functional core with an imperative shell). Docs, folder names,
    re-exports, or generated reports alone cannot satisfy this surface.
 4. **Source integrity** — the repository's selected delivery lane prevents
    unowned destructive history changes and identifies its exact candidate.

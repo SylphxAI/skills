@@ -12,7 +12,7 @@
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences. Not the job of writing or cutting the commit build.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:2e03952b85467b5b554edbe66a73b0b259d2a391e283df15073f48f98dc69fb2",
+      "packageDigest": "sha256:4d09e85dd00bf4469215fbee5b231b9635aa0ff87a51fde1b702733e4d9cee31",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -52,7 +52,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:31f50826dcaf03e8a9cf9f21999bbb13fc6c9ecbeeb8b6da19c03d77bb170ffd",
+      "packageDigest": "sha256:1ecfc96e525d438f005004c3f518e39b5ae4b52c3c43e89d6e9457e43b6d6700",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -84,7 +84,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, delivery verb, or the repository CI.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:7a2a048696a43d9260245cef5e06c911bbed38ab4e357bfd9a171e3ccbec324f",
+      "packageDigest": "sha256:52fb07ff6acd154c838811c669b3852a9cf506fab5303bdc5b677fa165cffd0a",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -116,7 +116,7 @@
       "name": "craft-human-agent-language",
       "description": "Write or review any document or prompt that humans and agents both use (README, ADR, update, instruction): frame purpose and audience, structure before prose, plain language, model-agnostic language choice, output contract, and a re-verification gate. Use when asked to write/translate/review a doc or prompt for humans and agents, or to choose the most efficient language and format for a model you are switching.",
       "path": "skills/craft-human-agent-language/SKILL.md",
-      "packageDigest": "sha256:9797b363a74bee4b21336d756c24afe374a73c2803f8d6b1388f56647f93b2b7",
+      "packageDigest": "sha256:836106638074d487fbb4d71de262e1c9360fe5b5afb74584c1ee41bea035de31",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -196,7 +196,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to its asked terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:28ef2635119aad475db48e0bcc76393f5685b713f859ffc22182ec8577d5a48d",
+      "packageDigest": "sha256:30017ba5482b9b8013917cf2ab6b22eb800b6a63faf650cbc4d64d84e8709375",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },

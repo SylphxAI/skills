@@ -323,3 +323,11 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Applying skills (`build-product`, `maintain-product`, `adopt-repo-standards`,
   `author-skill`, `drive-to-delivery`) open the listing when the work is the
   pipeline or when adding tests/workflows.
+## 2026-08-13 — English quantities; no house codes in product law
+
+- Metrics and living docs speak English industry quantities.
+- Do not mint abbreviations for standard concepts.
+- Process words stay out of Vision, NSM, OKRs, and the PRD.
+- `documentation-standard` no longer catalogs retired private names
+  (that catalog was teaching the dialect). History stays in ADRs.
+- Active product-law templates are tested for absence of those names.
