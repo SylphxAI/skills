@@ -105,7 +105,9 @@ skill-id/
   assets/               # optional templates
 ```
 
-Do **not** write `capability.json`. Missing `qualification.json` means
+Do **not** write `capability.json`. Do **not** write `project.manifest.json`
+(house inventory JSON next to `PROJECT.md`; same class as `capability.json`).
+Missing `qualification.json` means
 `unqualified`. File a record only after a reproducible run per
 `docs/QUALIFICATION.md` and `design-skill-evals`.
 
@@ -156,9 +158,10 @@ Also useful depth under this package:
 ## Listing quality
 
 A listing names one job, produces one artifact, and holds the procedure the
-model lacks. The package is `SKILL.md`. Do not add `capability.json` or a
-`product-artifact-envelope`. The deliverable is the requested job, not a
-proof bundle, receipt, or extra CI. Standards live under the applying job.
+model lacks. The package is `SKILL.md`. Do not add `capability.json`, a
+`product-artifact-envelope`, or a house `project.manifest.json`. The
+deliverable is the requested job, not a proof bundle, receipt, or extra CI.
+Standards live under the applying job.
 Host discovery plus when-to-open links do the routing. Product-law text uses
 industry names and English quantities.
 

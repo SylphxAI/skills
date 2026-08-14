@@ -309,6 +309,9 @@ export function checkRepository() {
   if (existsSync(path.join(repositoryRoot, 'schemas/product-artifact-envelope.schema.json'))) {
     errors.push('schemas/product-artifact-envelope.schema.json: retired house envelope; do not restore');
   }
+  if (existsSync(path.join(repositoryRoot, 'skills/project-manifest-standard'))) {
+    errors.push('skills/project-manifest-standard: retired house inventory standard; do not restore');
+  }
   for (const file of walk(path.join(repositoryRoot, 'skills'))) {
     if (path.basename(file) === 'product-artifact-envelope.schema.json') {
       errors.push(`${path.relative(repositoryRoot, file)}: retired house envelope; do not restore`);

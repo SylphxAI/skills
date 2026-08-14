@@ -37,6 +37,7 @@ test('listing packages do not carry a parallel capability.json contract', () => 
   );
   const author = readFileSync(path.join(skillsRoot, 'author-skill', 'SKILL.md'), 'utf8');
   assert.match(author, /Do \*\*not\*\* write `capability\.json`/);
+  assert.match(author, /Do \*\*not\*\* write `project\.manifest\.json`/);
   assert.equal(/capability\.json\s+# required/.test(author), false);
 });
 

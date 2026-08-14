@@ -27,6 +27,7 @@ Every active durable repository exposes:
    `documentation-standard`: **Purpose**, **Product Vision**, **North Star
    Metric**, optional **OKRs/Goals**, **Delivery**, **Links** (to `docs/prd.md`,
    ADRs, specs). Feature/capability inventories live in the **PRD**, not here.
+   Do not add `project.manifest.json`.
 3. **Canonical code architecture** — real product code conforms to
    `engineering-standard` (capability-first modules, clean boundaries,
    functional core with an imperative shell). Docs, folder names,
