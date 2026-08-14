@@ -72,7 +72,7 @@ Human staffing, calendar, implementation cost, missing users, uncertain demand, 
 
 Produce:
 
-- draft artifact identity or sealed envelope, canonical state owners, and an acyclic dependency graph;
+- canonical state owners and an acyclic dependency graph;
 - a complete sweep with one disposition and exact reason per capability;
 - complete target behavior, versioned interfaces, automation, and acceptance criteria for every `integrate-now` capability, plus exact integration and proof for `reuse-scale-ready`;
 - dependency order, collision points, and typed handoffs to the owning implementation skills or projects;
@@ -137,7 +137,7 @@ For every stage state hypothesis, artifact, cohort/fixture, pass/watch/fail pred
 ## 8. Complete blueprint template
 
 ```text
-1. Draft artifact identity or sealed envelope and evidence ledger
+1. Evidence ledger
 2. User/job/context and falsifiable promise
 3. Product objects, state authorities, workflows and information architecture
 4. First-value beat map and friction budget
@@ -154,8 +154,7 @@ For every stage state hypothesis, artifact, cohort/fixture, pass/watch/fail pred
 11. Accessibility, applicable age modes, i18n/culturalization, security/privacy and selected-SDK matrix
 12. Implementation dependency DAG, typed handoffs, validation evidence and maintenance automation
 13. KPI/event/experiment contracts and countermetrics
-14. Specialist handoff-request manifest; exact inputs bind
-    `fulfillsHandoffId`, with digest fields only for sealed inputs
+14. Specialist handoff-request manifest with named owners and revisions
 15. Validation roadmap, hard blockers, unresolved hypotheses and next proofs
 ```
 

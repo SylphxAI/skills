@@ -16,13 +16,8 @@ chargeback event occurred and how it projects into ledger/entitlement truth.
 `../review-domain/references/refund-and-support-flow/` consumes that authority and owns customer
 messaging, grace, repayment, restrictions, appeal, and account consequences.
 
-For every artifact, record `artifactVersion`, `artifactRevision`, and
-`artifactState`; never put `artifactDigest` on the top-level artifact. Use the
-[shared product artifact envelope](references/product-artifact-envelope.schema.json)
-for structured drafts and sealed artifacts. Consume product, pricing, catalog,
-tax, and release inputs through input references. A sealed input additionally
-requires `artifactDigest` and `digestRule: sha256-exact-bytes`; every input
-requires `fulfillsHandoffId`, while a draft contains no digest fields. Emit payment, entitlement,
+Write the payment readiness record in markdown. Name owners and sources in
+prose. Do not add a parallel JSON envelope. Emit payment, entitlement,
 refund-authority, support, and finance handoffs without copying sibling facts.
 
 ## Workflow
@@ -61,17 +56,10 @@ refund-authority, support, and finance handoffs without copying sibling facts.
 
 - [references/billing-reconciliation-patterns.md](references/billing-reconciliation-patterns.md) — open when needed for depth
 - [references/payment-platform-patterns.md](references/payment-platform-patterns.md) — open when needed for depth
-- [references/product-artifact-envelope.schema.json](references/product-artifact-envelope.schema.json) — open when needed for depth
 
 ## Output format
 
 ```text
-Artifact identity:
-- schemaVersion / artifactId / productId / artifactKind / ownerSkill
-- artifactVersion / artifactRevision / artifactState / inputArtifacts
-- a sealed artifact does not self-hash; its exact-byte digest appears only in a downstream reference
-- canonicalFactsOwned / handoffOutputs / assumptions / proofState / proofEvidence
-
 Payment surfaces:
 Billing model:
 Authority boundary:

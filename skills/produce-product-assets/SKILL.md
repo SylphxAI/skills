@@ -33,11 +33,8 @@ Distribution owns upload, processing, submission, certification, rollout, and
 live readback. A later observed-state Product Program Manifest revision indexes
 the exact sibling artifacts; this skill never consumes that later revision.
 
-Use the [shared product artifact envelope](references/product-artifact-envelope.schema.json)
-for top-level identity, inputs, handoffs, assumptions, and proof. Every typed
-artifact input names the exact producer contract through `fulfillsHandoffId`;
-a standalone request need not invent an upstream artifact edge. The pack never
-self-hashes; only sealed inputs and exact child files carry reproducible digests.
+Write the pack in markdown. Name owners and sources in prose. Do not add a
+parallel JSON envelope. Exact child files may carry byte digests.
 
 ```text
 App/Game truth + stable local request [+ producer handoff and planning Manifest N]
@@ -154,7 +151,7 @@ Reject or redesign a pack that:
 
 Return one **Product Asset Production Pack** containing:
 
-1. artifact ID/version/revision/state, evidence labels, consumed input refs,
+1. evidence labels, consumed input refs,
    scope, selected destinations, non-goals, and unresolved authority;
 2. production brief reconciliation and claim/proof map;
 3. canonical source/capture manifest with exact build/state/seed/device/input;
@@ -170,9 +167,6 @@ Return one **Product Asset Production Pack** containing:
 9. exact handoff manifests for only the selected Marketing, Store Listing,
    Distribution, and downstream Product Program Manifest consumers; omit
    inapplicable consumers rather than creating empty obligations.
-
-Use `artifactDigest` only on exact child files or sealed input references with
-`digestRule: sha256-exact-bytes`; never invent a top-level self-digest.
 
 ## Routing boundaries
 

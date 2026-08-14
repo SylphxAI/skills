@@ -52,7 +52,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:49fc05f6e5f54aeb4bd9e683e753216eb1dbf14c633c49e8b7d022c1129989db",
+      "packageDigest": "sha256:31f50826dcaf03e8a9cf9f21999bbb13fc6c9ecbeeb8b6da19c03d77bb170ffd",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -76,7 +76,7 @@
       "name": "build-payment-readiness",
       "description": "Build production payments: providers, ledger, webhooks, reconciliation.",
       "path": "skills/build-payment-readiness/SKILL.md",
-      "packageDigest": "sha256:918cab1de4bffb533a1bcdc51797db09a245ed766242fcf57e329163c7b5e364",
+      "packageDigest": "sha256:6acf6df22fe176e99b8cc91afe8c9057e10deb3ea816e5fe11ca05c94d462ba7",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -100,7 +100,7 @@
       "name": "compose-product-program",
       "description": "Compose multi-work product program: phases, dependencies, kill/scale.",
       "path": "skills/compose-product-program/SKILL.md",
-      "packageDigest": "sha256:2d675346c58bb88884283f9c25cc746fbcf0d6ed063d6f5c275460d11070e88c",
+      "packageDigest": "sha256:467190b42dc4deb63956ef885b5b4c058b666356c5e0fe871f12391c503edc56",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -172,7 +172,7 @@
       "name": "design-product",
       "description": "Design a product blueprint (app, game, SaaS, etc.); shape depth in references.",
       "path": "skills/design-product/SKILL.md",
-      "packageDigest": "sha256:7c128ebdb9d1227fca92ff240e3cc3f01cf223a5a2d1826cb5886788ab16cb28",
+      "packageDigest": "sha256:74ce3d59ede8d8a9ee2342e41f499a1069739f576ccd309fce50e14865f77a0f",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -292,7 +292,7 @@
       "name": "operate-customer-support",
       "description": "Operate customer support: triage, resolution, escalation, quality loops.",
       "path": "skills/operate-customer-support/SKILL.md",
-      "packageDigest": "sha256:f467bcd91c81cb176ecd3bb72ff6773f948c88cbbef8bc063fd0a3f6b2e993e6",
+      "packageDigest": "sha256:e42d9cbd5a6363782b64fce9be56b6c56294c1a595b51b66c72b076192072858",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -308,7 +308,7 @@
       "name": "optimize-store-listing",
       "description": "Optimize store listing: metadata, creatives, conversion, compliance.",
       "path": "skills/optimize-store-listing/SKILL.md",
-      "packageDigest": "sha256:377d3ab41d105e4a7871261185396ff182fb535e45f6392fbf166b5f411a3732",
+      "packageDigest": "sha256:20166ef0a142306359afd2ce89e278e29d7b3afdb56979df7c0f70da52d70b76",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -348,7 +348,7 @@
       "name": "produce-product-assets",
       "description": "Produce product assets to brief and brand constraints.",
       "path": "skills/produce-product-assets/SKILL.md",
-      "packageDigest": "sha256:50f8622be3b15fe476cc54135dc438f09985e73e7d899e8edd43a8b50709d419",
+      "packageDigest": "sha256:629716017369945c458578f212504b55cbf6a7fec9989e9ac23ab912d74cb79c",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -404,7 +404,7 @@
       "name": "review-domain",
       "description": "Review a product/ops domain into one assessment; domain packs are references.",
       "path": "skills/review-domain/SKILL.md",
-      "packageDigest": "sha256:7e43327b09220ffa62bd9a2472193e3b1b5de6cac3514e4a7985cb8decf33846",
+      "packageDigest": "sha256:641b461f0c1f24152f9f79e218cbeb4e751d9f4354e62379f96a6b12a4d11fdc",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -436,7 +436,7 @@
       "name": "run-product-feedback-loop",
       "description": "Run product feedback learning loop: private feedback and public reviews.",
       "path": "skills/run-product-feedback-loop/SKILL.md",
-      "packageDigest": "sha256:eca64867afb9f0fe84dbcae95a0a057f41eee013f492967e5dd6b24d19a58abf",
+      "packageDigest": "sha256:13f37bf71681ddde6eb851b611ef76eeabaa5224e47bb22a1227cb2f9d09ba3d",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },

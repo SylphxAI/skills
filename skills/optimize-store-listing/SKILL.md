@@ -23,17 +23,13 @@ and conversion/trust measurement. Do not own store submission/certification,
 whole-product positioning, public review solicitation, paid acquisition, or the
 multi-channel creative/spend control plane.
 
-For every artifact, record `artifactVersion`, `artifactRevision`, and
-`artifactState`; never put `artifactDigest` on the top-level artifact. Use the
-[shared artifact envelope](references/product-artifact-envelope.schema.json)
-for structured drafts and sealed artifacts. Consume product thesis, canonical
-product/build truth, a planning Product Program Manifest revision when present,
-and only the Marketing, pricing/payment, review/reputation, analytics, Product
-Asset, or distribution facts applicable to that exact revision. The initial
-request revision must not consume its future Product Asset pack; a later final
-listing revision may. A sealed input additionally requires `artifactDigest` and
-`digestRule: sha256-exact-bytes`; every typed input requires
-`fulfillsHandoffId`, while a draft contains no digest fields.
+Write the listing record in markdown. Name owners and sources in prose. Do not
+add a parallel JSON envelope. Consume product thesis, canonical product/build
+truth, a planning Product Program Manifest revision when present, and only the
+Marketing, pricing/payment, review/reputation, analytics, Product Asset, or
+distribution facts applicable to that exact revision. The initial request
+revision must not consume its future Product Asset pack; a later final listing
+revision may.
 
 ## Agent-first invariant
 
@@ -106,14 +102,13 @@ Unknown/stale channel authority blocks submission of that adapter.
 
 ## Progressive disclosure
 
-- [references/product-artifact-envelope.schema.json](references/product-artifact-envelope.schema.json) — open when needed for depth
 - [references/store-listing-optimization-patterns.md](references/store-listing-optimization-patterns.md) — open when needed for depth
 
 ## Output contract
 
 Return one typed Channel Listing and Creative Sequence with:
 
-1. draft identity or sealed envelope, exact product/channel identities, audience/job, positioning, conversion,
+1. exact product/channel identities, audience/job, positioning, conversion,
    evidence labels, assumptions, and non-goals;
 2. objection/proof/narrative sequence and metadata field contract;
 3. icon/key/capsule, screenshot/device/input, trailer/video, caption/transcript/

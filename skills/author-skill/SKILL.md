@@ -164,6 +164,7 @@ Also useful depth under this package:
 - Generic policy essays with no executable job
 - Keeping a hollow shell with no agent gap
 - A parallel JSON job contract (`capability.json`) next to `SKILL.md`
+- A JSON artifact envelope (`product-artifact-envelope`) wrapping markdown outputs
 
 ## Dual-host notes
 

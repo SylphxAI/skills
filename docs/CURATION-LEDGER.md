@@ -281,6 +281,17 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 - Unused qualification evidence kinds (`provenance`, `currentness`,
   `outcome`) removed from the schema.
 
+## 2026-08-14 — retire product-artifact-envelope
+
+- Same class as `capability.json`: a house JSON wrapper for LLM-written
+  product artifacts. No product repo in the fleet scan committed one.
+- Deleted `schemas/product-artifact-envelope.schema.json` and every skill
+  copy. Teaching now: write markdown; name owners and sources; do not add
+  a parallel JSON envelope.
+- Schema archived under
+  `docs/history/retired-product-artifact-envelope-2026-08-14/`.
+- ADR: `docs/history/adr/ADR-20260814-retire-product-artifact-envelope.md`.
+
 ## 2026-08-13 — clean-cut Evidence First from active instruction
 
 - Always-on constitution no longer names Evidence First or "Evidence precedes
