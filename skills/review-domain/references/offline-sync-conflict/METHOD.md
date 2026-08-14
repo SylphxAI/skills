@@ -66,20 +66,13 @@ backup, encryption/keychain, privacy/deletion, network, battery, and quota
 authority for the exact versions. Platform persistence is not guaranteed unless
 the current contract and measured eviction behavior prove it.
 
-## Guardrails
+## Path
 
-- Never silently merge money, permissions, legal records, inventory, deletion,
-  or irreversible actions using a convenience heuristic.
-- Never confirm a server-authoritative write as committed before acknowledgement
-  without visible correction/compensation semantics.
-- Bound queues, storage, retries, attachment concurrency, battery, data use, and
-  background work; expose quota and recovery instead of dropping writes.
-- Permission revocation and deletion must stop future sync and remove/lock local
-  material according to the authoritative retention contract.
-- Raw sync telemetry and support evidence remain protected and must not leak
-  synchronized content, credentials, private process state, or cross-tenant
-  facts. Any customer/public sync status is a separate intentional allowlisted
-  projection, not a copy of the diagnostic record.
+- Money, permissions, legal records, inventory, deletion, and irreversible actions use an explicit conflict protocol.
+- A server-authoritative write is committed after acknowledgement, or the UI shows correction and compensation.
+- Queues, storage, retries, attachments, battery, data use, and background work have bounds, quota, and recovery.
+- Permission revocation and deletion stop future sync and remove or lock local material under the retention contract.
+- Raw sync telemetry stays protected. Customer/public sync status is an allowlisted projection.
 
 ## Output contract
 

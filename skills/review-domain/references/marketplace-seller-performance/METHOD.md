@@ -44,18 +44,14 @@ one opaque score into ranking, payout, and punishment authority.
   when evidence, policy version, confidence, notice, appeal, or action authority
   is unknown rather than manufacturing a threshold or case verdict.
 
-## Guardrails
+## Path
 
-- Never use revenue, volume, popularity, or review count as a quality proxy
-  without buyer-harm, exposure, and manipulation controls.
-- Never punish sparse or missing evidence as if it proved poor performance.
-- Never take a high-impact action from a composite score without the action's
-  own policy, evidence, confidence, notice, review, and appeal.
-- Never reveal fraud thresholds, linkage logic, or evasion-sensitive features in
-  seller-facing explanations.
-- Never invent current thresholds or policy. Use named parameters and mark the
-  decision blocked until the current authorized source is available.
-- Never exempt a high-revenue or strategic seller from the evidence bar.
+- Quality uses buyer-harm, exposure, and manipulation controls. Revenue, volume, popularity, and review count are supporting context.
+- Sparse or missing evidence stays unknown. Cold-start has its own path.
+- A high-impact action carries its own policy, evidence, confidence, notice, review, and appeal.
+- Seller-facing explanations use actionable reason categories. Fraud thresholds, linkage logic, and evasion-sensitive features stay operator-only.
+- Thresholds and policy come from the current authorized source. Unknown source blocks the decision.
+- High-revenue and strategic sellers keep the same evidence bar.
 
 ## Output
 

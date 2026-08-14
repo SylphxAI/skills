@@ -45,20 +45,14 @@ plausible-looking board numbers.
   stale, irreconcilable, or unsigned facts remain blocked cells rather than
   estimates generated for narrative completeness.
 
-## Guardrails
+## Path
 
-- Never fabricate or interpolate a current-period value, benchmark, forecast,
-  confidence, signoff, or variance driver.
-- Never release a derived metric whose definition, period, population, source,
-  or reconciliation status is unresolved.
-- Never hide a missed plan behind blended growth, percentage-only reporting,
-  changed denominators, or selective cohort windows.
-- Never present owner signoff as a sentence; retain who signed which version,
-  when, against which caveat and source lock.
-- Keep financial/accounting classifications distinct from product-operating
-  judgment, and identify where authorized finance review is required.
-- Never end with discussion themes only. Record decisions, dissent, actions,
-  owners, due dates, required evidence, and close conditions.
+- Current-period values, benchmarks, forecasts, confidence, signoff, and variance drivers come from locked sources.
+- A derived metric ships with definition, period, population, source, and reconciliation status.
+- Missed plan stays visible. Growth, percentages, denominators, and cohort windows stay comparable.
+- Signoff records who signed which version, when, against which caveat and source lock.
+- Financial/accounting classifications stay distinct from product-operating judgment. Authorized finance review is named where required.
+- The cycle ends with decisions, dissent, actions, owners, due dates, required evidence, and close conditions.
 
 ## Output
 

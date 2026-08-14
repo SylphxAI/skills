@@ -59,21 +59,14 @@ evidence for this experiment.
 - A staged rollout is not automatically an experiment. Use this skill only when
   a causal or comparative learning decision is explicitly designed.
 
-## Guardrails
+## Path
 
-- Do not experiment when the result cannot change the decision, the effect is
-  too slow or rare to observe, or the treatment is unsafe, deceptive, unlawful,
-  non-consensual, or impractical to reverse and contain.
-- Do not choose metrics after seeing movement, repeatedly peek without a sealed
-  sequential rule, or search segments until one wins.
-- Do not filter post-assignment users, analyze only accepters/completers, or hide
-  sample-ratio mismatch, contamination, missingness, attrition, or crossover.
-- Do not call a pre/post rollout causal without a credible comparison and tested
-  assumptions. Novelty, seasonality, interference, and concurrent changes matter.
-- Do not let a primary-metric win override trust, safety, privacy, accessibility,
-  payment, support, retention, fairness, or reliability guardrails.
-- Do not keep harmful, stale, or decision-complete exposure running merely to
-  collect more data; apply the predeclared pause/stop/cleanup state.
+- Run an experiment when the result can change the decision, the effect is observable, and the treatment is safe, consented, lawful, and containable.
+- Metrics and sequential rules are sealed before movement. Segments are predeclared.
+- Analyze the assigned cohort. Report sample-ratio mismatch, contamination, missingness, attrition, and crossover.
+- Causal claims use a credible comparison and tested assumptions. Novelty, seasonality, interference, and concurrent changes stay in the readout.
+- A primary-metric win keeps trust, safety, privacy, accessibility, payment, support, retention, fairness, and reliability level or better.
+- Pause, stop, and cleanup follow the predeclared state when exposure is harmful, stale, or decision-complete.
 
 ## Output
 

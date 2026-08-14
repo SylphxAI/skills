@@ -30,19 +30,14 @@ implements it.
 8. Produce the product contract, data-class matrix, restore state model,
    support boundary, telemetry contract, acceptance scenarios, and open risks.
 
-## Guardrails
+## Path
 
-- Never call data recoverable until an exact restore path has produced retained
-  verification evidence against the same product contract.
-- Never let restore bypass tenancy, authorization, deletion, retention, legal
-  hold, or entitlement authority.
-- Never treat sync, backup, export, archive, replica, and disaster recovery as
-  interchangeable.
-- Never make support a hidden decryption or unilateral account-takeover channel.
-- Never silently overwrite user-created content; preview, preserve both, merge,
-  or require an explicit authorized choice according to the data class.
-- Mark unsupported combinations and unknown current system facts as blocked;
-  do not invent infrastructure capabilities.
+- Recoverable means an exact restore path has produced retained verification against the same product contract.
+- Restore keeps tenancy, authorization, deletion, retention, legal hold, and entitlement authority.
+- Sync, backup, export, archive, replica, and disaster recovery stay named as distinct paths.
+- Support is a case channel. Decryption and account takeover stay with their owning authority.
+- User-created content uses preview, preserve-both, merge, or an explicit authorized choice for that data class.
+- Unsupported combinations and unknown system facts stay blocked.
 
 ## Output
 

@@ -47,19 +47,14 @@ look indistinguishable from abuse.
   controlled. Unknown, stale, or conflicting authority blocks irreversible or
   high-impact actions; it does not invite an invented default.
 
-## Guardrails
+## Path
 
-- Never reveal or invent risk cutoffs, account-linkage logic, velocity limits,
-  cluster counts, spend caps, or other evasion-sensitive parameters.
-- Never revoke purchased value or entitlements as if they were promotional
-  credits without current contract, payment, and authorized policy evidence.
-- Never let cost reduction be the only success metric; measure legitimate first
-  value, conversion, scale-up, appeal reversal, and retention.
-- Never make an irreversible high-impact decision from an opaque score alone.
-- Never collect identity/device/network linkages without purpose, access,
-  retention, and privacy controls.
-- Never promise a limit, review SLA, or appeal outcome that is not present in a
-  current authorized source.
+- Risk cutoffs, linkage logic, velocity limits, cluster counts, spend caps, and other evasion-sensitive parameters stay with the authorized operator source. The assessment names the source, not the numbers.
+- Purchased value and entitlements move only with current contract, payment, and authorized policy evidence.
+- Success is legitimate first value, conversion, scale-up, appeal reversal, and retention alongside cost.
+- An irreversible high-impact decision carries its own policy, evidence, and review. A score is one input.
+- Identity, device, and network linkages carry purpose, access, retention, and privacy controls.
+- Limits, review SLAs, and appeal outcomes come from a current authorized source.
 
 ## Output
 

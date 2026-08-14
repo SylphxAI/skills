@@ -66,26 +66,15 @@ for signal, audience, SLO, alert, validation, and public-boundary patterns.
 - `model-security-threats` owns a material new or changed diagnostic trust
   boundary or exposure threat model.
 
-## Guardrails
+## Path
 
-- Observability means authorized inspectability, not public disclosure.
-- Never place raw traces, logs, topology, migration/cutover state, internal
-  identifiers, stack details, control knobs, secrets, or cross-tenant evidence
-  in a public/customer response merely to prove that the system is observable.
-- Legitimate customer-visible operational facts are allowed only when they are
-  an intentional product, status, support, incident, audit, or protocol
-  contract with a named audience, authorization scope, allowlisted minimum
-  schema, stable semantics, and negative leakage tests.
-- Prefer opaque correlation identifiers in public errors and resolve them to
-  protected evidence inside the operator boundary.
-- Do not collect hidden chain-of-thought, unrestricted payloads, secrets, or
-  personal data as a debugging shortcut.
-- Telemetry is evidence about system behavior; it is not payment, entitlement,
-  permission, workflow, or domain-state authority.
-- Health/readiness, successful rollout, and customer outcome are separate
-  claims. One cannot silently stand in for another.
-- Missing telemetry is unknown, not healthy. Instrumentation failure must be
-  observable without creating an infinite self-monitoring hierarchy.
+- Observability is authorized inspectability.
+- Public or customer responses use an intentional product, status, support, incident, audit, or protocol contract: named audience, authorization, allowlisted schema, stable semantics, and leakage tests.
+- Public errors carry opaque correlation identifiers. Protected evidence stays inside the operator boundary.
+- Debugging uses bounded, authorized traces. Secrets, unrestricted payloads, hidden chain-of-thought, and personal data stay out of the debug shortcut.
+- Telemetry is evidence about system behavior. Payment, entitlement, permission, workflow, and domain-state authority stay with those owners.
+- Health/readiness, successful rollout, and customer outcome are separate claims.
+- Missing telemetry is `unknown`. Instrumentation failure is itself observable.
 
 ## Output contract
 

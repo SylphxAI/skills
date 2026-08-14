@@ -50,27 +50,16 @@ price change moves through real contracts and billing channels.
   generalize consent, renewal, refund, legal, tax, or store behavior across
   regions, plans, contracts, or billing adapters.
 
-## Guardrails
+## Path
 
-- Never optimize headline uplift while ignoring incremental churn, contraction,
-  refunds, credits, support, failed payments, trust, and long-term value.
-- Never state current App Store, Google Play, direct-billing, country, tax, or
-  consent behavior without current primary/console/API evidence for that cohort.
-- Never auto-change a negotiated, enterprise, protected, discounted, or
-  grandfathered cohort whose authority or effective-date path is unresolved.
-- Never hide a price increase, obstruct cancellation, preselect consent, or use
-  misleading scarcity, shame, or repeated save-offer pressure.
-- Never compare offer accepters with non-accepters as causal proof; preserve the
-  eligible/assigned cohort and intention-to-treat readout.
-- Never invent thresholds. Record named unset guardrails, owner, and evidence
-  source, then block scale until approved values exist.
-- Never resume a paused channel from aggregate recovery while its affected
-  cohort or no-action state remains unresolved.
-- Keep cohort membership, signed contract/discount terms, consent/payment
-  state, support history, offer eligibility, unit economics, and net-revenue
-  matrices in protected operator evidence. Customer and channel notices are
-  separately rendered minimum projections containing only that recipient's
-  authorized plan, exact change, timing, rights, actions, and support route.
+- Optimize net retained value: receipts minus incremental churn, contraction, refunds, credits, failed payments, support, trust, and long-term value.
+- App Store, Google Play, direct-billing, country, tax, and consent behavior come from current primary, console, or API evidence for that cohort.
+- Negotiated, enterprise, protected, discounted, and grandfathered cohorts move only on a resolved authority and effective-date path.
+- The increase is visible. Cancellation stays accessible. Consent is explicit. Save offers stay honest and bounded.
+- Causal readout is intention-to-treat on the eligible/assigned cohort.
+- Named floors have an owner and source. Scale waits for approved values.
+- Resume a paused channel from the affected cohort and no-action state, not from aggregate recovery.
+- Operator evidence stays protected. Customer and channel notices carry only that recipient's authorized plan, exact change, timing, rights, actions, and support route.
 
 ## Output
 

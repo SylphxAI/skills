@@ -58,19 +58,13 @@ payment/refund, advertising/promotion, child/age, legal/regulated-category,
 regional, certification, and partner authority. External approval remains an
 explicit floor and may not be self-attested.
 
-## Guardrails
+## Path
 
-- Marketing readiness never substitutes for product, authority, support,
-  payment, migration, security, or recovery readiness.
-- Do not call an open high-impact item “post-launch” without a bounded exposure,
-  explicit risk acceptance authority, expiry, countermetric, and automatic stop.
-- No launch of paid, personal-data, child, destructive, migration, or
-  irreversible flows without authoritative state, support, compensation, and
-  recovery.
-- A green workflow exit is not live proof. Verify deployed/released identity and
-  user-visible or telemetry readback.
-- Do not add unrelated gates merely for checklist completeness; proportionality
-  must never erase a requirement that is actually applicable.
+- Product, authority, support, payment, migration, security, and recovery readiness each stand on their own evidence.
+- An open high-impact item stays a launch condition unless it has bounded exposure, named risk-acceptance authority, expiry, countermetric, and automatic stop.
+- Paid, personal-data, child, destructive, migration, and irreversible flows launch with authoritative state, support, compensation, and recovery.
+- Done is the exact released candidate with user-visible or telemetry readback. A green workflow exit is characterization.
+- Gates stay proportional to the candidate. Applicable requirements stay in the matrix.
 
 ## Output contract
 

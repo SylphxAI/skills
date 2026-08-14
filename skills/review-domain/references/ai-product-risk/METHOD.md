@@ -56,22 +56,15 @@ provider, policy, tool, or production authority.
 - Use current provider/model retrieval for capabilities, prices, limits, latency,
   and policy. This skill never acts as live provider authority.
 
-## Guardrails
+## Path
 
-- Do not add AI when a deterministic interaction can satisfy the job more
-  reliably, cheaply, transparently, or accessibly.
-- Do not present generated or inferred output as verified fact, completed action,
-  professional judgment, or authoritative source when it is not.
-- Do not let ambiguous model output directly perform irreversible, financial,
-  legal, safety, privacy, access, account, or external-communication actions.
-- Do not expand training, retention, logging, retrieval, or provider use beyond
-  the verified purpose and user/enterprise controls.
-- Do not make fallback remove user rights, hide failure, or silently switch to a
-  route whose safety, data, cost, or quality contract differs.
-- Treat model, prompt, retrieval, tool, policy, and provider changes as product
-  behavior changes requiring current evidence and a recoverable release decision.
-- Store only the minimum support trace; redact sensitive content and keep access,
-  retention, user visibility, deletion, and audit semantics explicit.
+- Use AI when it is the better job path. A deterministic interaction stays the default when it is more reliable, cheap, transparent, or accessible.
+- Generated and inferred output stay labeled as generated or inferred until verified.
+- Irreversible, financial, legal, safety, privacy, access, account, and external-communication actions wait for an unambiguous authorized confirmation.
+- Training, retention, logging, retrieval, and provider use stay inside the verified purpose and user/enterprise controls.
+- Fallback keeps user rights visible and names any change to safety, data, cost, or quality.
+- Model, prompt, retrieval, tool, policy, and provider changes are product behavior changes with current evidence and a recoverable release.
+- Support traces stay minimal, redacted, and explicit about access, retention, visibility, deletion, and audit.
 
 ## Output
 

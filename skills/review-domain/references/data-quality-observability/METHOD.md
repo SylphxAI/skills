@@ -70,20 +70,14 @@ for quality states, check selection, reconciliation, and backfill patterns.
 - Privacy and security owners retain purpose, access, data lifecycle, and threat
   decisions. `run-incident-response` owns an active quality incident lifecycle.
 
-## Guardrails
+## Path
 
-- A passing schema check does not prove semantic correctness, completeness, or
-  fitness for a decision.
-- A dashboard, warehouse table, replica, cache, or model feature is not
-  authoritative merely because it is current.
-- Do not log sample rows, secrets, credentials, or personal data as quality
-  evidence; use bounded aggregates, hashes, synthetic fixtures, and protected
-  access when row-level diagnosis is necessary.
-- Unknown or missing observation remains `unknown`; it does not become healthy.
-- Do not backfill high-impact data without idempotency, exact version binding,
-  impact preview, reconciliation, and consumer communication.
-- Do not let a generic quality contract redefine product metrics, money,
-  permissions, legal records, or model-evaluation policy.
+- Schema pass is one check. Semantic correctness, completeness, and decision fitness have their own oracles.
+- Authority is the named source of record. Currency of a dashboard, warehouse table, replica, cache, or model feature is characterization.
+- Quality evidence uses bounded aggregates, hashes, synthetic fixtures, and protected access.
+- Unknown or missing observation stays `unknown`.
+- High-impact backfill carries idempotency, exact version binding, impact preview, reconciliation, and consumer communication.
+- Product metrics, money, permissions, legal records, and model-evaluation policy keep their owners.
 
 ## Output contract
 

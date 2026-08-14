@@ -47,19 +47,13 @@ should change. Do not optimize a chart whose denominator or value event is wrong
   cohorts explicitly. Do not fabricate causality, statistical confidence, or a
   current value to complete the analysis.
 
-## Guardrails
+## Path
 
-- Never use app open, login, or an active subscription as the retained action by
-  default when they do not prove recurring value.
-- Never count not-yet-observable users as churned or silently drop unfavorable
-  users from the denominator.
-- Never infer product causality from a blended pre/post curve alone.
-- Never compare cohorts across changed event definitions, identity rules, time
-  zones, or eligibility without a visible comparability break or restatement.
-- Never improve short-term return through spam, dark patterns, unwanted
-  notifications, exploitative rewards, or cancellation friction.
-- Pair retention with user value, satisfaction/trust, support, refunds, safety,
-  accessibility, performance, margin, and notification opt-out as applicable.
+- The retained action is recurring value. App open, login, and subscription are supporting context unless they prove that value.
+- Not-yet-observable users stay in the denominator as not-yet-observable. Unfavorable users stay in the cohort.
+- Causal claims use a comparison beyond a blended pre/post curve.
+- Changed event definitions, identity rules, time zones, or eligibility get a visible comparability break or restatement.
+- Return comes from product value. Pair retention with satisfaction/trust, support, refunds, safety, accessibility, performance, margin, and notification opt-out.
 
 ## Output
 

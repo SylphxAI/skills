@@ -59,21 +59,14 @@ bounded investigation plan rather than asserting current quality or behavior.
 - Moderation/policy owners decide eligibility. Ranking cannot override an
   ineligible item or silently become enforcement.
 
-## Guardrails
+## Path
 
-- Do not blend organic relevance, editorial curation, paid placement, policy
-  eligibility, and enforcement into one unexplained score or result stream.
-- Do not optimize clicks, dwell, installs, or revenue alone when successful
-  completion, retained value, refunds, reports, support, trust, diversity, or
-  supply health contradict them.
-- Do not invent current queries, corpus coverage, relevance judgments, weights,
-  thresholds, policy states, or ranker behavior.
-- Do not treat missing or sparse feedback as negative quality, or permanently
-  bury new/long-tail supply through popularity feedback loops.
-- Do not personalize sensitive topics or infer sensitive attributes without
-  verified purpose, authority, user control, fairness, and privacy boundaries.
-- Give operators and affected supply actionable reason categories without
-  exposing evasion-sensitive ranking, moderation, or fraud mechanisms.
+- Organic relevance, editorial curation, paid placement, policy eligibility, and enforcement stay labeled streams.
+- Rank for successful completion, retained value, refunds, reports, support, trust, diversity, and supply health alongside clicks and revenue.
+- Queries, corpus coverage, judgments, weights, thresholds, policy states, and ranker behavior come from current sources.
+- Missing or sparse feedback stays unknown. New and long-tail supply keep an exploration path.
+- Sensitive personalization carries verified purpose, authority, user control, fairness, and privacy.
+- Operators and supply get actionable reason categories. Evasion-sensitive ranking, moderation, and fraud mechanisms stay operator-only.
 
 ## Output
 

@@ -67,21 +67,14 @@ rewarded-ad, offerwall, attribution, privacy, and provider SDK authority for the
 exact platform, territory, audience mode, and release. Static reference text is
 never a current compliance verdict. Unknown/stale authority disables exposure.
 
-## Guardrails
+## Path
 
-- Never place interstitials inside input/mastery, onboarding trust, payment,
-  safety, accessibility, error recovery, or irreversible work.
-- State the reward, duration/format expectation, qualification, cap, and failure
-  behavior before start. Never falsely confirm an unverified reward.
-- No targeted/personalized ads in child or unknown-age modes unless exact
-  current authority permits; default to the safer mode.
-- Do not punish consent refusal, create fake close buttons, force clicks, hide
-  ad identity, or make ads the only practical path through core utility.
-- Optimize neither impressions nor eCPM alone. Retention, IAP conversion,
-  complaints, opt-out, latency, crashes, battery, fairness, support, and
-  long-term value are mandatory countermetrics.
-- An autonomous optimizer cannot change consent, child mode, reward value,
-  placement class, payer suppression, spend/provider caps, or promotion gates.
+- Interstitials stay outside input/mastery, onboarding trust, payment, safety, accessibility, error recovery, and irreversible work.
+- Reward, duration, format, qualification, cap, and failure behavior are stated before start. A reward confirms after verification.
+- Child and unknown-age modes use the safer ad mode unless current authority permits targeting.
+- Consent refusal keeps the core path. Close buttons, ad identity, and core utility stay honest.
+- Optimize with retention, IAP conversion, complaints, opt-out, latency, crashes, battery, fairness, support, and long-term value alongside impressions and eCPM.
+- Consent, child mode, reward value, placement class, payer suppression, spend/provider caps, and promotion gates stay with the owning authority.
 
 ## Output contract
 

@@ -60,22 +60,15 @@ memory are not evidence.
 - Trust-center UI, document portal implementation, IAM, and audit logging remain
   implementation work; this skill owns the claims, evidence, and access contract.
 
-## Guardrails
+## Path
 
-- Never answer yes because a control is common, planned, partially implemented,
-  enabled for another product, or true only for one customer configuration.
-- Never invent or overstate certification, audit, penetration test, encryption,
-  key management, SSO/RBAC, logging, retention, deletion, residency, subprocessor,
-  incident, vulnerability, insurance, SLA, uptime, or AI-data-use facts.
-- Never broaden a report, policy, screenshot, owner attestation, or independent
-  assessment beyond its product, environment, period, control, and caveats.
-- Never expose credentials, customer data, raw vulnerability details, exploit
-  paths, unrestricted architecture, evidence-room links, or internal backlog.
-- Never send sensitive reports without current identity, company, purpose,
-  terms, authorization, expiry, and an auditable revocation path.
-- Never turn roadmap intent or gap mitigation into a contractual commitment
-  without the authorized contract owner and a durable obligation record.
-- Prefer `unknown`, `not_verified`, or a scoped caveat to fabricated certainty.
+- Yes means a current operating fact for this product, environment, and configuration.
+- Certification, audit, penetration test, encryption, key management, SSO/RBAC, logging, retention, deletion, residency, subprocessor, incident, vulnerability, insurance, SLA, uptime, and AI-data-use facts come from scoped evidence.
+- A report, policy, screenshot, attestation, or assessment keeps its product, environment, period, control, and caveats.
+- Credentials, customer data, raw vulnerability details, exploit paths, unrestricted architecture, evidence-room links, and internal backlog stay inside the authorized audience.
+- Sensitive reports travel with current identity, company, purpose, terms, authorization, expiry, and an auditable revocation path.
+- Roadmap intent and gap mitigation become commitments only through the authorized contract owner and a durable obligation record.
+- Prefer `unknown`, `not_verified`, or a scoped caveat.
 
 ## Output
 
