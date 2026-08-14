@@ -38,6 +38,7 @@ Examples of the *kind* of listing skill:
 - write an update
 - run an incident
 - analyze critically / forecast with calibration (when those jobs are requested on their own)
+- implement a repository commit build (when CI itself is the job)
 
 A Skill is **not**:
 
@@ -176,6 +177,9 @@ Also useful depth under this package:
 2. Local links resolve
 3. `npm run build:catalog && npm test`
 4. Smoke: description would select/retrieve for the right ask and abstain on near-misses
+5. Do not add slogan, brand, heading-list, file-existence-as-architecture, or
+   meta-check tests to make the change land. A red test must be a product defect.
+   When this repository's CI is the job, use `../implement-continuous-integration/`.
 
 
 ## Progressive disclosure

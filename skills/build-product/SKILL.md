@@ -1,6 +1,6 @@
 ---
 name: build-product
-description: "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb."
+description: "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, delivery verb, or the repository CI."
 ---
 
 # Build Product
@@ -67,6 +67,10 @@ No permanent workarounds. Prefer durable work on the owning layer.
 
 ### 5. Deliver / verify
 - Run the path you changed (test, smoke, API, or UI)
+- Add or reuse a product-behavior oracle. Do not add slogan, brand,
+  heading-list, file-existence, coverage-threshold, or meta-check tests.
+  When the work *is* the repository pipeline, use
+  `../implement-continuous-integration/`.
 - Separate local vs landed vs live claims if you are claiming delivery
 - List residuals without claiming whole-product completion
 
@@ -87,4 +91,4 @@ Open only depth the current build needs:
 - [references/frontier-verification-standard/](references/frontier-verification-standard/) — frontier verification for high blast-radius paths
 - [references/sylphx-platform-first-policy/](references/sylphx-platform-first-policy/) — classify, then open one family recipe
 - Source landing: `../drive-to-delivery/references/source-authoring-standard/`
-- Related jobs when requested: `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`
+- Related jobs when requested: `prototype-product`, `expand-product`, `finish-product`, `craft-product-interface`, `build-payment-readiness`, `build-distribution-readiness`, `implement-continuous-integration`

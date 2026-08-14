@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "source": "skills/*/SKILL.md",
-  "count": 61,
+  "count": 62,
   "qualification": {
-    "total": 61,
+    "total": 62,
     "qualified": 0,
     "qualifiedNames": []
   },
   "skills": [
     {
       "name": "adopt-repo-standards",
-      "description": "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences.",
+      "description": "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences. Not the job of writing or cutting the commit build.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:8be4d35ae7048fd4c7af052d806f34d3d89fe21dc9c08581f10adab0d857e205",
+      "packageDigest": "sha256:2e03952b85467b5b554edbe66a73b0b259d2a391e283df15073f48f98dc69fb2",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -52,7 +52,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:487b940cc0e5378818a8bbe94277164df4c155cf3093c785e3bbac224519e6af",
+      "packageDigest": "sha256:49fc05f6e5f54aeb4bd9e683e753216eb1dbf14c633c49e8b7d022c1129989db",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -82,9 +82,9 @@
     },
     {
       "name": "build-product",
-      "description": "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, or delivery verb.",
+      "description": "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, delivery verb, or the repository CI.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:9aa2b83708d2b18f88b295ccf6e1c78b4932b4b488a94dbee201c8c78eaeae0f",
+      "packageDigest": "sha256:7a2a048696a43d9260245cef5e06c911bbed38ab4e357bfd9a171e3ccbec324f",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -196,7 +196,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to its asked terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:4b1cf12206e4c45a5f2a4f0305e32e7bc2e989988c593b217236baef37f7dfff",
+      "packageDigest": "sha256:28ef2635119aad475db48e0bcc76393f5685b713f859ffc22182ec8577d5a48d",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -265,10 +265,18 @@
       "qualificationStatus": "unqualified"
     },
     {
+      "name": "implement-continuous-integration",
+      "description": "Make this repository's CI a fast commit build of product behavior. Use when writing or cutting GitHub Actions, when CI is slow, or when tests fail after a rename, heading change, or file move.",
+      "path": "skills/implement-continuous-integration/SKILL.md",
+      "packageDigest": "sha256:3ede6c0eeea91750389eda40bccc69f021cf76fa08b8f41478d404cce6548075",
+      "qualified": false,
+      "qualificationStatus": "unqualified"
+    },
+    {
       "name": "maintain-product",
       "description": "Cut live/regression harm with a root-cause fix on the owning layer.",
       "path": "skills/maintain-product/SKILL.md",
-      "packageDigest": "sha256:0b5ea967f32c91ddc112bb8268ec782af4eeabdd4d62864cb80c116add8874fa",
+      "packageDigest": "sha256:9023d1045e8433cb6c91d488313202db49c1c2e9c33a8fdac538d5d0601ebd4f",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },

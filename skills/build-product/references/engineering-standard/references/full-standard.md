@@ -871,6 +871,10 @@ names; keep the comment only for the remaining non-obvious intent.
 
 ## Testing
 
+When the requested job is this repository's pipeline, use
+`implement-continuous-integration` rather than growing this section into a
+second CI method.
+
 Test coverage is a multidimensional claim-to-oracle model, not one scalar
 percentage. Cover the material contracts and requirements, implementation
 decisions, oracle sensitivity, input and state spaces, compatibility boundaries,

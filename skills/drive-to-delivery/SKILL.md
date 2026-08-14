@@ -39,7 +39,7 @@ Progress on **one accepted objective at its asked terminal**, in the primary job
 3. [references/bounded-objective-closure-loop.md](references/bounded-objective-closure-loop.md) — explicit loop-engineering / full-scope closure for one objective.
 4. [references/autonomous-execution-standard/](references/autonomous-execution-standard/) — multi-step execution graphs and completion discipline for non-trivial objectives.
 5. [references/source-authoring-standard/](references/source-authoring-standard/) · [references/delivery-standard/](references/delivery-standard/) — source landing. Open delivery-standard only when the asked terminal is land, release, or live. For industry product docs (Vision · North Star Metric · OKR · PRD · Spec · ADR · Diátaxis), open [references/source-authoring-standard/references/documentation-standard/](references/source-authoring-standard/references/documentation-standard/).
-6. [references/ci-admission-standard/](references/ci-admission-standard/) · [references/ci-runner-capacity-standard/](references/ci-runner-capacity-standard/) · [references/parallel-change-integration-standard/](references/parallel-change-integration-standard/)
+6. When the objective **is** this repo's pipeline: `../implement-continuous-integration/`. Admission wiring: [references/ci-admission-standard/](references/ci-admission-standard/). Runner health: [references/ci-runner-capacity-standard/](references/ci-runner-capacity-standard/). Parallel change: [references/parallel-change-integration-standard/](references/parallel-change-integration-standard/).
 7. [references/product-objective-mode.md](references/product-objective-mode.md) — product-objective mode (host continuity, objective terminal)
 
 ### Composition (no meta-router)

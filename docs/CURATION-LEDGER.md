@@ -288,8 +288,27 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
   discipline. Qualification is not a development floor.
 - Reversible local work is done when the change is correct. Claim landed or
   live only when that layer is actually true.
-- `scripts/check.mjs` and `tests/constitution-l0.test.mjs` forbid the retired
-  slogans in constitution, PRINCIPLES, and active skill bodies. They do not
-  phrase-lock the slogan as required text.
 - Product/delivery verbs finish at the asked terminal. `synthesize-evidence-brief`
   stays requestable; it is not composed onto ordinary build/fix/drive work.
+
+## 2026-08-13 — commit build is product behavior
+
+- Removed slogan/brand/heading-list and file-existence-as-architecture
+  tests from the commit build (including the #159 NSM-forbid pin).
+- `check.mjs` keeps schema, catalog freshness, listing budget, secrets,
+  instruction-surface hygiene, constitution size, and package shape.
+- Incremental-value honesty still binds only when a record claims it.
+- Main post-land no longer re-runs the admitted suite (ADR-20260803).
+- Gate rule: `ci-admission-standard`; industry: DORA CI / test automation,
+  Fowler 2024, Kent C. Dodds implementation details.
+
+## 2026-08-13 — listing: implement-continuous-integration
+
+- New requestable job: make a target repo's CI a fast commit build of
+  product behavior (industry or lighter).
+- `ci-admission-standard` stays a pack under `drive-to-delivery` (wiring).
+  The listing opens it. Not a standards-bag listing.
+- Constitution floor: merge-blocking checks fail only on product defects.
+- Applying skills (`build-product`, `maintain-product`, `adopt-repo-standards`,
+  `author-skill`, `drive-to-delivery`) open the listing when the work is the
+  pipeline or when adding tests/workflows.

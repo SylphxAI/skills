@@ -1,6 +1,6 @@
 ---
 name: adopt-repo-standards
-description: "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences."
+description: "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences. Not the job of writing or cutting the commit build."
 ---
 
 # Adopt Repo Standards
@@ -33,6 +33,9 @@ adoption** cycle—not a permanent dual instruction stack.
   - `../build-product/references/engineering-standard/`
   - `../select-dependency-versions/references/technology-stack-profile/`
   - `../build-product/references/sylphx-platform-first-policy/` — product apps declare `sylphx.toml` `type=web` and Platform resource bindings
+- When wiring or replacing the repository commit build / required checks, open
+  `../implement-continuous-integration/`. Do not invent slogan or
+  file-existence fences as the adoption check.
 - Stop when more reading will not change the adoption set
 
 ### 3. Admit work
