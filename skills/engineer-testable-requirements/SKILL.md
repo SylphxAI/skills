@@ -75,25 +75,24 @@ Produce a **Requirements Contract** containing:
 - validation record, baseline/change authority, impact analysis, and
   supersession history.
 
-## Integrity rules
+## Path
 
-- Do not write implementation choices as requirements unless an external
-  constraint or accepted decision truly fixes that choice.
-- Avoid `fast`, `secure`, `scalable`, `user-friendly`, `robust`, or `best
-  practice` without observable context and acceptance boundaries.
-- Acceptance criteria are not complete requirements when purpose, context,
-  affected parties, failure behavior, or quality constraints are missing.
-- Do not make every conceivable quality attribute mandatory. Include what the
-  outcome, environment, authority, or material risk justifies.
-- Do not treat priority labels, stakeholder seniority, generated prose, or
-  internal consistency as validation evidence.
-- Do not publish raw stakeholder evidence, contract/security details, misuse
-  cases, internal process state, or diagnostic sources merely because a
-  Requirements Contract is committed. A public/customer derivative has a named
-  audience, purpose, minimum allowlist, authorization where applicable, and
-  negative leakage review; it points opaquely to protected evidence.
-- Keep requirements, architecture decisions, work items, tests, and observed
-  delivery as linked artifacts with distinct owners.
+- Requirements state observable behavior. An implementation choice lands only
+  when an external constraint or accepted decision already fixes it.
+- Measurable claims carry observable context and acceptance boundaries —
+  including `fast`, `secure`, `scalable`, `user-friendly`, `robust`, and
+  `best practice`.
+- Acceptance criteria sit with purpose, context, affected parties, failure
+  behavior, and quality constraints.
+- Include the quality attributes the outcome, environment, authority, or
+  material risk justifies.
+- Validation is walkthroughs, examples, interface checks, and acceptance-test
+  design. Priority labels, seniority, generated prose, and internal
+  consistency stay inputs.
+- A public or customer derivative has a named audience, purpose, allowlist,
+  and leakage review. It points opaquely to protected evidence.
+- Requirements, architecture decisions, work items, tests, and observed
+  delivery stay linked artifacts with distinct owners.
 
 
 ## Progressive disclosure
@@ -117,5 +116,5 @@ Produce a **Requirements Contract** containing:
   specifications and work/evaluation contracts after requirements establish
   the required behavior.
 - `../drive-to-delivery/` owns driving an accepted objective. Open
-  `../synthesize-evidence-brief/` only when the job itself is a disputed or
-  public claim. Do not treat completion as a live-delivery pack.
+  `../synthesize-evidence-brief/` when the job itself is a disputed or
+  public claim. Completion stays at the asked requirements terminal.

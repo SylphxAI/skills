@@ -220,7 +220,7 @@
       "name": "engineer-testable-requirements",
       "description": "Turn requirements into testable acceptance criteria with oracles.",
       "path": "skills/engineer-testable-requirements/SKILL.md",
-      "packageDigest": "sha256:1fc7580ff880db93a570b8fd20af2656c990daf64b2d591f2a221b94f21f0760",
+      "packageDigest": "sha256:c03249f5c04525e71d8b1dedebec9e5dbd38307eb256b740742b9db95e25d84f",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
