@@ -60,7 +60,7 @@
       "name": "bound-request-scope",
       "description": "Bound this request: objective, in/out, non-goals, cut lines.",
       "path": "skills/bound-request-scope/SKILL.md",
-      "packageDigest": "sha256:dccf19ff0e6612bce1e7914c240e999bcc68c239a73853c28ac0fde50ca07fac",
+      "packageDigest": "sha256:0d7780ba7def35c243283ca9e76388470a8bb1913a37cdd3f7e9c7aa39ff6a01",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -68,7 +68,7 @@
       "name": "build-distribution-readiness",
       "description": "Build distribution readiness: artifacts, install/upgrade, channel state.",
       "path": "skills/build-distribution-readiness/SKILL.md",
-      "packageDigest": "sha256:60e8b3895bcab9e5714945aeeb1c20d29c8ef50d2d130e2ee24fde5768b49c11",
+      "packageDigest": "sha256:5526cc9f1b8341fced72df8a6c806018eebca9ae8df3e3838aea7a7a30fecf4f",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -84,7 +84,7 @@
       "name": "build-product",
       "description": "Ship a missing product capability end-to-end. Use when implementing a framed slice, not a single sign-in, storage, cron, delivery verb, or the repository CI.",
       "path": "skills/build-product/SKILL.md",
-      "packageDigest": "sha256:84fe31905324e51f8f1cf0a7940629bd6c48471faadd92c316a209bc1806281f",
+      "packageDigest": "sha256:fbe434139c7c552b6304e003035bee7e669c2fef983fa8a14580dee796f2dd41",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -252,7 +252,7 @@
       "name": "finish-product",
       "description": "Finish/deburr an integrated product to the declared target.",
       "path": "skills/finish-product/SKILL.md",
-      "packageDigest": "sha256:aec4fb53200fbca85c6407c6b4877696cd0d8bf61cbcf1283c294f4be0c27758",
+      "packageDigest": "sha256:4ffef0274d4d2ca102ddaeabd4ceb774991334ea99a5b9b8ffa57236311a2e83",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -372,7 +372,7 @@
       "name": "record-structured-deliberation",
       "description": "Record a structured deliberation: options, criteria, decision, actions.",
       "path": "skills/record-structured-deliberation/SKILL.md",
-      "packageDigest": "sha256:f4b15ea609c1df80833f9b0c04b68a767234696fed634869f0ed2fcd94676a81",
+      "packageDigest": "sha256:8b43b6483e33fefb4380a924cf0e6e1d9b9252cb42a61da4c1ecc6d9c2d0fa05",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -500,7 +500,7 @@
       "name": "write-high-signal-update",
       "description": "Write short high-signal output: answer-first replies/updates, decisions, risks, asks.",
       "path": "skills/write-high-signal-update/SKILL.md",
-      "packageDigest": "sha256:d83c8f5dd89c2552516527f17e00fd68b2f5a989d4073ed5782eb3d653a0cb28",
+      "packageDigest": "sha256:134a71cdc2a0488b322016f5717af737f76a834cb2efed8ddb8fd2dd7c563710",
       "qualified": false,
       "qualificationStatus": "unqualified"
     }

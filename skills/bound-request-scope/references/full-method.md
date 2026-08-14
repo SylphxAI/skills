@@ -322,7 +322,7 @@ The target is the strongest net-value result under the real objective and curren
 capability frontier. It does not mean maximum layers, maximum safety mechanisms,
 maximum tests, or theoretical perfection.
 
-## Guardrails
+## Path
 
 - Prefer deletion, an existing primitive, an established well-maintained
   library, a direct implementation, or one local check before adding a service,
@@ -330,43 +330,35 @@ maximum tests, or theoretical perfection.
   reconciler.
 - Adopt the simplest applicable published standard, ecosystem-native primitive,
   well-maintained library or reference implementation, or established reference
-  design before inventing a custom mechanism. A custom layer must name the
-  unmet requirement and demonstrate an observable semantic or quality
-  improvement over that baseline.
+  design before inventing a custom mechanism. A custom layer names the unmet
+  requirement and shows an observable semantic or quality improvement over
+  that baseline.
 - Keep the baseline check proportional. An obvious local native primitive needs
   no broad standards survey or decision document; durable shared or
   cross-boundary machinery earns explicit comparison.
-- Do not interpret “learn from many standards” as “combine every pattern.”
-  Select one coherent baseline and only the smallest complementary mechanisms
+- Select one coherent baseline and only the smallest complementary mechanisms
   that each satisfy a distinct requirement.
 - Treat explanation and ownership cost as real. If the owner cannot understand
   which capability, guarantee, failure mode, or measured outcome an added layer
   changes, it has not paid for its complexity.
 - Minimize the consumer-visible concept set as well as implementation volume.
-  An added concept or layer must own a distinct capability, contract, state
-  authority, failure or lifecycle boundary, or material quality delta. If it
-  does not, fold it into the existing owner. Keep necessary complexity behind
-  a narrow boundary rather than removing the quality floor or teaching every
-  consumer the internals.
-- Reuse standard industry vocabulary for standard behavior. A proprietary name
-  or diagram does not turn an existing sequence, state transition, queue, gate,
-  or pipeline into a new architecture.
-- Match the threat model to the declared environment. Do not design for hostile
-  principals when the task assumes trusted internal agents unless security or
-  authority isolation is itself the requested outcome.
-- Add gates only when they test a material claim and have a failure mode the
+  An added concept or layer owns a distinct capability, contract, state
+  authority, failure or lifecycle boundary, or material quality delta. Fold
+  anything else into the existing owner. Keep necessary complexity behind a
+  narrow boundary.
+- Reuse standard industry vocabulary for standard behavior.
+- Match the threat model to the declared environment. Hostile-principal design
+  belongs when security or authority isolation is the requested outcome, or
+  when the environment is actually hostile.
+- Add gates when they test a material claim and have a failure mode the
   current task must prevent.
 - Keep the proof surface smaller than, or proportionate to, the behavior being
-  protected. A small content or code change must not silently become a new
-  authorization platform or operational service.
-- Treat numeric limits on files, lines, dependencies, tools, questions, or
-  review rounds as real constraints only when they derive from an accepted
-  contract, resource budget, or measured failure. Otherwise use them as
-  diagnostic pressure, never as authority to omit a necessary invariant or
-  distort a coherent boundary.
-- Do not create machinery whose lifecycle is larger than the problem it solves.
-- Include high-return future-proofing found by the bounded high-value scan. Do not use
-  future-proofing as a label for speculative abstraction or unrelated scope.
+  protected.
+- Numeric limits on files, lines, dependencies, tools, questions, or review
+  rounds are real constraints when they derive from an accepted contract,
+  resource budget, or measured failure. Otherwise they are diagnostic pressure.
+- Machinery's lifecycle stays inside the problem it solves.
+- Include high-return future-proofing found by the bounded high-value scan.
 
 ### Bound review
 

@@ -54,8 +54,7 @@ Current official channel requirements remain execution-time authority.
    installer, container, or store package references or contains that exact set;
    preserve the relationship when a channel requires repackaging. An explicitly
    selected source-build channel instead binds the exact source revision and
-   controlled build inputs, produces its own attested artifact identity, and
-   must not claim byte identity.
+   controlled build inputs and produces its own attested artifact identity.
 5. Model every supported channel as an explicit state machine with durable
    receipts and consumer-side readback. Portal-only and partner decisions stay
    typed external gates rather than invisible checklist items.
@@ -67,54 +66,51 @@ Current official channel requirements remain execution-time authority.
    shipped identity, audience, user impact, compatibility/support action,
    locale, destination, publication identity, and correction path.
 
-Select the smallest complete channel set from actual user journeys. Do not
-publish everywhere by checklist, and do not omit a required ecosystem merely
-because a direct-download fallback is technically possible.
+Select the smallest complete channel set from actual user journeys. A
+required ecosystem channel stays in the set when users need that path.
 
 ## Composition contract
 
 Consume the exact owner-approved product/release target and only the commerce,
 privacy, localization, listing, Product Asset, developer-experience, and other
-upstream artifacts required by the selected product and channels. A free,
-direct, CLI, or registry release must not fabricate store, commerce, listing,
-or media dependencies.
+upstream artifacts the selected product and channels need. A free, direct, CLI,
+or registry release uses the dependencies that release actually has.
 
 The active product repository and delivery profile own source, build, artifact,
 publish, rollout, rollback, credentials, and channel-adapter mutations.
-`../drive-to-delivery/references/delivery-standard/` owns their generic source-to-landed-to-published proof
-ladder. This Skill owns the distribution contract, channel selection,
-adapter-to-artifact requirements, and install lifecycle requirements; it does not become a second
-release control plane. `../review-domain/references/developer-product-experience/` owns the wider
-developer adoption journey. A later product-program observed-state revision may
-index this pack but the pack must not consume that later revision or a moving
-“latest” alias.
+`../drive-to-delivery/references/delivery-standard/` owns the
+source-to-landed-to-published ladder. This Skill owns the distribution
+contract, channel selection, adapter-to-artifact requirements, and install
+lifecycle. `../review-domain/references/developer-product-experience/` owns
+the developer adoption journey. Bind to a named observed-state revision when
+a later product-program index exists.
 
 External partner access, contracts, review, certification, protected signing,
 law, safety, and physical hardware remain authority gates. Prepare and verify
-what the selected release requires; never fabricate approval or require
-adapters for channels outside the declared audience.
+what the selected release requires.
 
-## Guardrails
+## Path
 
-- Do not claim a channel ready without current authority, exact artifact,
-  signing/provenance, required hardware or certification, publication state,
-  and consumer-side evidence.
-- Do not rebuild independently in each adapter, select an unrelated “latest”
-  binary, present a source build as byte-identical, expose raw signing keys, or
-  execute unverified downloads.
-- Do not hardcode volatile API versions, quotas, fees, review times, target or
-  locale lists, package-manager acceptance rules, or certification details.
-- Do not call a local package, workflow success, upload, review submission,
-  approval, registry publish request, or generated adapter a live release.
-- Do not add low-value channels without an audience, owner, automated update
-  path, clean-environment verification, and support commitment.
-- Do not submit paid products without exact price, renewal, cancel, restore,
-  refund/support, ledger, and entitlement semantics matched across product,
-  channel, reviewer evidence, and support.
-- Do not roll out broadly until the selected product's failure signals and
-  halt, withdrawal, rollback, repair, or forward-fix path are readable.
-- Do not create product assets, choose positioning, or redesign the product to
-  make a distribution matrix appear complete; record the owning handoff.
+- A channel is ready when current authority, exact artifact, signing or
+  provenance, required hardware or certification, publication state, and
+  consumer-side evidence are present.
+- One immutable target-artifact set. Adapters reference that set. A
+  source-build channel binds revision and inputs and claims its own attested
+  identity. Signing keys stay protected. Downloads run after verification.
+- Volatile API versions, quotas, fees, review times, locale lists, and
+  certification details come from current official sources at use.
+- Local package, workflow success, upload, review submission, approval,
+  registry publish request, and generated adapter stay at their named state.
+  Live release is consumer-side readback.
+- Each channel has an audience, owner, automated update path,
+  clean-environment verification, and support commitment.
+- Paid products match price, renewal, cancel, restore, refund or support,
+  ledger, and entitlement across product, channel, reviewer evidence, and
+  support.
+- Broad rollout starts when failure signals and the halt, withdrawal,
+  rollback, repair, or forward-fix path are readable.
+- Product assets, positioning, and redesign stay with their owners. This
+  skill records the handoff.
 
 
 ## Progressive disclosure

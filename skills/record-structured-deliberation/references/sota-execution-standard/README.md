@@ -21,7 +21,7 @@ Full progressive-disclosure body: [references/full-standard.md](references/full-
 - Does not replace product-local ADRs where those own decisions.
 - Not a listing skill; host discovery must not treat this folder as a top-level job.
 
-## Guardrails
+## Path
 
-- Use Quality North Star (`q-*`) as the sole quality vocabulary when composing with engineering work.
-- Do not reintroduce listing paths under `skills/sota-execution-standard/`.
+- Engineering composition uses the Quality North Star (`q-*`).
+- This pack lives under `record-structured-deliberation/references/sota-execution-standard/`.

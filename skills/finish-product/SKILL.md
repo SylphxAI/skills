@@ -23,16 +23,19 @@ corrections, and remaining blockers.
 
 This Skill owns whole-product **finish** work after the product promise and
 selected capabilities are defined: one finish pass / cycle over an integrated
-subject. When the work is finishing / deburring an integrated product, load **this Skill**.
+subject.
 
-It does not invent product strategy, business truth, prices, policy, brand
-identity, game economy authority, or launch approval. It does not replace a
-bounded `craft-product-interface` job. For missing capability, live harm, scale, or hypothesis work, use `build-product`, `maintain-product`, `expand-product`, or `prototype-product`. For a declared outcome to pursue to completion, use `drive-to-delivery` (see ../pursue-product-objective/SKILL.md). For mixed betterment without a single work kind, use `maintain-product` (see ../run-open-product-betterment/SKILL.md).
+Neighbour homes: missing capability → `build-product`; live harm →
+`maintain-product`; scale → `expand-product`; hypothesis →
+`prototype-product`; one UI flow → `craft-product-interface`; one declared
+outcome to completion → `drive-to-delivery`; mixed betterment →
+`run-open-product-betterment`. Strategy, prices, policy, brand, game
+economy, and launch approval stay with their owners.
 
 ## Finish invariant
 
 Simple and detailed are different dimensions. Finish the product’s **one core
-concept** deeply—do not invent extra concepts to fill a checklist.
+concept** deeply. Extra concepts stay out unless they are the promise.
 
 - **Simple surface** (`q-simplicity`) — as few concepts as the promise needs;
   legible story; obvious primary path; restrained controls; coherent visual or
@@ -56,8 +59,8 @@ surface remains non-terminal unless that exact fidelity is the declared target.
 
 ## Resolve mode and target
 
-- **Direction** — define the finish thesis and final-fidelity reference slice;
-  do not edit unless implementation is requested.
+- **Direction** — define the finish thesis and final-fidelity reference slice.
+  Stay read-only until implementation is requested.
 - **Finish** — inspect and directly improve the integrated product, then
   run or render the path you changed. A report-only response is incomplete.
 - **Audit** — remain read-only and return exact, prioritized finish findings.
@@ -72,7 +75,7 @@ Declare the target state:
 4. `release-finish` — the exact candidate has complete real-content,
    cross-platform, and edge-state resolution required by its asked boundary.
 
-Do not silently lower the target because existing work is rough.
+Keep the declared target when existing work is rough.
 
 ## Resource router
 
@@ -132,24 +135,21 @@ Return:
   and
 - local, candidate, landed, released, and live state without overclaim.
 
-## Guardrails
+## Path
 
-- Do not polish only the hero screen while leaving the core product rough.
-- Do not equate more visual effects, copy, mechanics, controls, or content with
-  higher fidelity. Restraint may be the correct finish.
-- Do not call generic AI copy, repeated assets, default component styling,
-  graybox geometry, stock motion, or arbitrary tuning intentional without an
-  approved product reason.
-- Do not change a consequential number without its semantic owner, unit,
-  bounds, precision, format, consequence, and validation or tuning basis.
-- Do not trade away correctness, accessibility, localization, performance,
-  responsiveness, input parity, recovery, or product truth for aesthetics.
-- Do not fabricate claims, prices, testimonials, legal text, player findings,
-  analytics, user delight, or production proof.
-- Do not turn subjective prose, screenshot counts, keyword checks, or a global
-  polish score into universal merge-blocking CI.
-- Do not expand into unrelated capabilities or speculative decoration. Finish
-  the selected product completely at its declared target.
+- Finish the core product at the declared target. The hero screen matches the rest.
+- Fidelity is resolution of the core concept. Restraint is a valid finish.
+- Copy, assets, styling, geometry, motion, and tuning are intentional when they
+  have an approved product reason.
+- A consequential number keeps its owner, unit, bounds, precision, format,
+  consequence, and tuning basis.
+- Correctness, accessibility, localization, performance, responsiveness, input
+  parity, recovery, and product truth stay at the finish bar.
+- Claims, prices, testimonials, legal text, player findings, analytics, and
+  delight come from their owners.
+- Merge gates stay product-behavior oracles. When the work is the pipeline,
+  open `../implement-continuous-integration/`.
+- Stay on the selected product at its declared target.
 
 ## Completion
 

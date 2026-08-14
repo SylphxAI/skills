@@ -99,16 +99,14 @@ the security-design contract before or alongside implementation.
 ## Composition and output
 
 Canonical contract: [`author-skill/references/composition-contract.md`](../../../author-skill/references/composition-contract.md).
-## Guardrails
+## Path
 
 - Fail closed on secret material in source and logs.
-- Never treat health/readiness probes as product capability proof
-  (`q-availability` / `eng-avail-01`).
-- Use the Quality North Star (`q-*`) as the sole quality vocabulary; do not
-  reintroduce Modern Technical Bar or parallel ilities lists.
-- Prefer verified hard-cut terminal (sole writer + predecessor delete). Schema
-  multi-step inside the destination is not dual-path. Temporary dual-write only
-  under eng-hard-cut-01 risk-class gates. Atlas is the sole production migration
-  applicator (technology-stack-profile).
-- Apply the canonical Capability-first architecture from the first durable
-  product commit; project size, stage, and human calendar are not exemptions.
+- Product capability proof is the path you changed (`q-availability` /
+  `eng-avail-01`). Health and readiness probes stay characterization.
+- Quality vocabulary is the Quality North Star (`q-*`).
+- Terminal is sole writer plus predecessor delete. Schema multi-step stays
+  inside the destination. Temporary dual-write uses `eng-hard-cut-01`
+  risk-class gates. Atlas is the sole production migration applicator
+  (`technology-stack-profile`).
+- Capability-first architecture starts at the first durable product commit.

@@ -23,10 +23,10 @@ description: "Write short high-signal output: answer-first replies/updates, deci
 ## Next
 ```
 
-## Gotchas
+## Path
 
-- Updates that bury the ask produce no action.
-- Do not claim live/production status unless that layer is actually true.
+- Lead with the outcome. Facts, risks, and the ask follow.
+- Name the layer that is true: local, candidate, landed, released, or live.
 
 
 ## Progressive disclosure
