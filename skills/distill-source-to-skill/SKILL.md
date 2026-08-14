@@ -39,16 +39,15 @@ The source is evidence. The skill is the reusable control surface: trigger, deci
    - repair: existing skill fails, over-triggers, summarizes, or cannot validate.
 3. Extract mechanism cards from the source: trigger, user job, decision rule, procedure, output, quality signal, failure mode, and keep/merge/discard decision.
 4. Choose one package shape before writing: single procedural skill by default,
-   one skill with modes when source tasks share a route. Do not create meta
-   skill routers. Put extra knowledge in `references/` or merge into an existing
-   owner unless the recurring jobs, independently accepted artifacts, and
-   acceptance authorities are distinct.
+   one skill with modes when source tasks share a route. Put extra knowledge in
+   `references/` or merge into an existing owner unless the recurring jobs,
+   independently accepted artifacts, and acceptance authorities are distinct.
 5. Author the skill around action: concise front-loaded metadata naming the
    job, artifact, material contexts, and nearby exclusions; then a focused
    workflow, output protocol, boundaries, and linked references. Keywords are
    semantic anchors, not a list to stuff. Put long examples, rubrics, language
    tables, and edge cases in references.
-6. Add deterministic helpers only when repeated mechanical work exists. Do not script judgment-heavy synthesis.
+6. Add deterministic helpers only when repeated mechanical work exists. Judgment-heavy synthesis stays in the method.
 7. Add eval and behavior examples: positive prompts, nearby negative prompts, expected behaviors, and artifact-shape assertions.
 8. Validate locally, patch validator failures once, and report the exact command results and remaining gaps.
 
@@ -111,24 +110,17 @@ Residual risks:
 
 - [references/source-to-skill-patterns.md](references/source-to-skill-patterns.md) — open when needed for depth
 
-## Boundaries
+## Path
 
-- Do not invent details from inaccessible documents, private repos, audio, video, screenshots, or links.
-- Do not copy source wording into a public skill except short attributed quotes when licensing and policy allow it.
-- Before writing a public package, remove or safely generalize secrets,
-  customer/personal data, raw telemetry, private topology/process/migration
-  state, control knobs, security-sensitive details, and other non-public
-  identifiers. Redaction must preserve the reusable mechanism without making
-  the hidden source reconstructable.
-- Do not turn every chapter, anecdote, or example into a rule. Keep only mechanisms that change future agent behavior.
-- Do not create a meta skill router or skill family when one procedural skill with modes or a `references/` section is enough.
-- Do not assume a long body repairs weak discovery metadata: current Codex and
-  Claude select from `name` and `description` before loading the body and may
-  shorten or omit descriptions under catalog pressure; verify other runtimes
-  against their own documented behavior.
-- Read the target repository's contributing contract and existing package descriptions before adding a new standalone skill; preserve one clear semantic owner and avoid near-neighbour routing collisions.
-- Do not make a skill depend on private tools, credentials, or hidden chat context.
-- Do not publish, push, or claim benchmark quality without the target repository's validation and delivery gates.
+- Details come from sources actually read. Inaccessible documents, private repos, audio, video, screenshots, and links stay marked unavailable.
+- Public packages use original wording plus short attributed quotes when licensing allows.
+- Secrets, customer data, raw telemetry, private topology, control knobs, and hidden identifiers stay out. Redaction keeps the reusable mechanism and leaves the hidden source non-reconstructable.
+- Keep mechanisms that change future agent behavior.
+- One procedural skill with modes or a `references/` section is the default shape. Distinct jobs, artifacts, and acceptance authorities earn another listing.
+- Discovery is `name` and `description`. Codex and Claude may shorten or omit listings; prove routes on each supported runtime.
+- A new listing reads the target contributing contract and existing descriptions first. One semantic owner.
+- The skill runs with public tools and the sources it names.
+- Publish, push, and quality claims use the target repository's validation and delivery gates.
 
 ## Quality Standard
 
