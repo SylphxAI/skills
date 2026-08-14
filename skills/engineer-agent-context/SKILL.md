@@ -50,19 +50,14 @@ Create a **Context and Memory Contract** with:
 - quality and safety metrics; and
 - adversarial and degradation tests.
 
-## Design rules
+## Path
 
-- Keep source-of-truth data outside the context window; context is a bounded
-  projection with lineage, not the authority itself.
-- Never make an agent-generated summary the only durable copy of a fact,
-  decision, or commitment.
-- Do not equate vector similarity with relevance, correctness, authority, or
-  permission.
-- Prefer explicit invalidation and freshness checks over indefinitely
-  accumulating memory.
-- Separate memory useful for personalization from memory necessary for task
-  correctness, and give each an appropriate consent and deletion contract.
-- Measure decision utility and error, not retrieval volume or context length.
+- Source-of-truth data stays outside the context window. Context is a bounded projection with lineage.
+- Facts, decisions, and commitments keep a durable source. A generated summary is a projection.
+- Vector similarity is a retrieval signal. Relevance, correctness, authority, and permission have their own checks.
+- Memory has explicit invalidation and freshness checks.
+- Personalization memory and task-correctness memory each have their own consent and deletion contract.
+- Measure decision utility and error.
 
 
 ## Progressive disclosure

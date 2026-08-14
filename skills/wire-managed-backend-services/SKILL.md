@@ -47,7 +47,7 @@ Agents: machine token path—no Console required for operator verbs when token i
 1. Provision resource if needed (storage bucket, project env, …).
 2. Call the runtime API/SDK for a **write** then **read** (or signed URL).
 3. Record project/env ids, endpoints, and quota class.
-4. Fail closed on preview/unavailable services—do not fake success.
+4. Preview or unavailable services stay labeled as such.
 
 ### 5. Prove
 
@@ -68,8 +68,8 @@ Original oracle: the app or curl/CLI that exercises the real postcondition (obje
 - [references/proof-bar.md](references/proof-bar.md)
 - [references/anti-patterns.md](references/anti-patterns.md)
 
-## Boundaries
+## Path
 
-- BaaS is account-backed commercial infrastructure (free tiers if any are plan policy—not no-login internet free)
-- Do not route production secrets through ephemeral paste hosts
-- Do not substitute unmaintained MCP toolchains for Platform BaaS when Platform is the product authority
+- BaaS is account-backed commercial infrastructure. Free tiers are plan policy.
+- Production secrets stay in the product secret store.
+- When Platform is the product authority, leftover capabilities use Platform BaaS. Unmaintained MCP toolchains stay out of that path.

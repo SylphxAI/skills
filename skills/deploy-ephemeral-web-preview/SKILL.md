@@ -45,8 +45,8 @@ Record exact CLI output: public URL, claim URL (if any), expiry, and project/wor
 ### 3. Verify the live URL
 
 - Probe `<url>` from the agent host (host fetch if present, otherwise `curl -sI` or GET); note status and `server`/`cf-ray` headers when present.
-- Prefer a real browser load when UI matters; do not claim “works” from a 200 on `/` alone if the product is a SPA that fails client-side.
-- Never paste claim tokens into public chat logs if the channel is untrusted—treat claim URL as ownership bearer.
+- Prefer a real browser load when UI matters. A 200 on `/` is characterization when the product is a SPA.
+- Treat the claim URL as an ownership bearer. Share it only on a trusted channel.
 
 ### 4. Honesty and handoff
 
@@ -69,8 +69,8 @@ Record exact CLI output: public URL, claim URL (if any), expiry, and project/wor
 - [references/providers/static-free.md](references/providers/static-free.md) — Surge / Pages / Tiiny class
 - [references/acceptance.md](references/acceptance.md) — proof bar
 
-## Boundaries
+## Path
 
-- Do not store production secrets in temporary deploys
-- Temporary no-login is abuse-limited; expect rate limits and ToS enforcement
-- Free tiers change; re-probe when claims matter
+- Temporary deploys carry demo data only. Production secrets stay with the durable owner.
+- Temporary no-login is abuse-limited. Rate limits and ToS are expected.
+- Free tiers change. Re-probe when a claim depends on current availability.

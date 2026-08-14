@@ -16,8 +16,9 @@ choosing a protocol.
    evidence boundary, deadline, what the discussion may decide, and the
    visibility, access, attribution, retention, and publication rule for raw
    positions, transcripts, evidence, and the final record.
-2. Elicit initial positions independently. Do not reveal a proposed consensus,
-   majority, senior participant's answer, or other agents' drafts first.
+2. Elicit initial positions independently. A proposed consensus, majority,
+   senior participant's answer, or other agents' drafts wait until first
+   positions are recorded.
 3. Normalize positions without erasing disagreement. Separate proposals,
    supporting reasons, objections, rebuttals, assumptions, evidence, and open
    questions.
@@ -46,22 +47,14 @@ Create a **Deliberation Record** with:
 - audience classification plus protected-source locators and an intentionally
   shareable projection where one is authorized.
 
-## Integrity rules
+## Path
 
-- Consensus is not truth, a vote is not evidence, and repetition is not an
-  independent signal.
-- Do not manufacture independence by asking near-identical agents the same
-  leading prompt. Vary evidence sources or assigned hypotheses when useful.
-- Do not let rhetoric, status, verbosity, or early anchoring substitute for an
-  argument or source.
-- Preserve attributable commitments while allowing anonymous first-round
-  positions when hierarchy or conformity pressure would distort the result.
-- Raw private positions, transcripts, internal hypotheses, customer facts, and
-  protected evidence stay in the authorized deliberation store. A public or
-  broadly shared record uses an audience-safe minimum summary and must not make
-  hidden participants or evidence reconstructable.
-- Do not keep deliberating after a decision owner has enough evidence to act;
-  record residual dissent instead.
+- Consensus, votes, and repetition stay labeled as those classes. Truth is an argument or source.
+- Independence uses different evidence sources or assigned hypotheses.
+- Rhetoric, status, verbosity, and early anchoring stay supporting context. The record keeps the argument and source.
+- First-round positions may be anonymous when hierarchy would distort them. Commitments stay attributable.
+- Raw private positions, transcripts, internal hypotheses, customer facts, and protected evidence stay in the authorized store. A shared record is an audience-safe minimum that leaves hidden participants and evidence non-reconstructable.
+- Close when the decision owner has enough to act. Residual dissent stays in the record.
 
 ## Progressive disclosure
 

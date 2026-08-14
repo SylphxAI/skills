@@ -82,6 +82,7 @@ Produce a **Constrained Decision Model**:
 - Use `../review-domain/references/product-experiment/` or `analyze-causal-inference` to estimate the
   effect of an intervention. An optimizer may consume those estimates but does
   not identify them.
-- Do not treat solver success as model validity. Feasible nonsense remains
-  nonsense when variables, objectives, constraints, data, or uncertainty do not
-  represent the operational decision.
+
+## Path
+
+- Solver success is one check. Validity is variables, objective, constraints, data, and uncertainty that represent the operational decision, plus independent recomputation of the emitted solution.

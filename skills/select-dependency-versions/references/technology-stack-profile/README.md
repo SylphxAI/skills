@@ -65,35 +65,21 @@ For A→B system cutover, data backfill, and dual-write bans, open
    let the live work system resolve live adoption, exceptions, deployment, and
    organization-wide completion without copying this profile into product repositories.
 
-## Guardrails
+## Path
 
-- Treat TypeScript product web as an intended production surface, never as a
-  Rust migration residual merely because it uses `.ts` or Bun.
-- Treat a TypeScript process that owns a backend role or forbidden effect as a
-  profile violation even when its API contract matches Rust.
-- Fix an incomplete or defective backend in Rust. Do not restore TypeScript as
-  fallback, dual-run implementation, shadow production, recovery, or delay tactic.
-- Count completion by declared component roles and owned effects. A repository is not
-  complete because a source-language count reaches a target.
-- Do not silently invent a new role for an ambiguous component. Unknown or
-  conflicting resolution fails closed and triggers profile review.
-- Do not create a REST, GraphQL, TypeScript, Flutter, Swift, Kotlin, or SDK model
-  that independently copies the selected cross-runtime contract.
-- Keep generated wire types at interfaces/adapters. They are not capability
-  domain models, UI state objects, or persistence authorities.
-- Keep server state, local UI state, offline state, and backend business truth
-  in their declared owners. A state-management library does not merge them.
-- Do not let a CloudEvents envelope re-author its schema-owned payload, wrap
-  every local domain event, or substitute for ordering/idempotency/replay.
-- Do not import OpenTelemetry SDK types into domain policy or expose protected
-  telemetry through an unintended public/customer response.
-- Do not choose a different migration engine because the repository is “small,”
-  Rust-only, TypeScript-only, or early-stage. One fleet method.
-- Do not use `drizzle-kit push`, `prisma db push`, or equivalent against non-
-  disposable databases. Do not run a second production migration applicator
-  beside Atlas.
-- Schema multi-step inside the destination system is not a second product stack.
-  Permanent dual product systems remain forbidden under hard-cut predicates.
+- TypeScript product web is an intended production surface.
+- A TypeScript process that owns a backend role or forbidden effect is a profile violation even when its API contract matches Rust.
+- Incomplete or defective backends are fixed in Rust. TypeScript is not the backend fallback, dual-run, shadow, recovery, or delay path.
+- Completion is declared component roles and owned effects.
+- Ambiguous components fail closed and trigger profile review.
+- Cross-runtime contract is the one selected Protobuf/Buf contract. REST, GraphQL, TypeScript, Flutter, Swift, Kotlin, and SDK models consume it.
+- Generated wire types live at interfaces and adapters.
+- Server state, local UI state, offline state, and backend business truth keep their declared owners.
+- CloudEvents carries schema-owned cross-boundary payloads. Local domain events stay native. Ordering, idempotency, and replay stay with their owners.
+- OpenTelemetry stays at adapter and bootstrap. Domain policy and public or customer responses stay free of protected telemetry types.
+- Atlas is the sole production schema applicator for matching repos, regardless of size or language mix.
+- `drizzle-kit push`, `prisma db push`, and equivalent stay off non-disposable databases. One production migration applicator.
+- Schema multi-step stays inside the destination system.
 
 ## Output format
 

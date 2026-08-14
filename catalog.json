@@ -20,7 +20,7 @@
       "name": "analyze-causal-inference",
       "description": "Estimate causal effects: identification, estimators, robustness bounds.",
       "path": "skills/analyze-causal-inference/SKILL.md",
-      "packageDigest": "sha256:d028a5fc7264b0fb406242a8e1f935d84b7a3af0859ae7c0948a4e94bf6a0e2e",
+      "packageDigest": "sha256:4e777a3d87faf06a544be3f33c704fcfdb34248fff4eb93e5a3db8aa4a9f664e",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -36,7 +36,7 @@
       "name": "analyze-system-dynamics",
       "description": "Map stubborn loops: stocks, delays, incentives, policy resistance.",
       "path": "skills/analyze-system-dynamics/SKILL.md",
-      "packageDigest": "sha256:0676089f9147daf89d55bcec3356d7bc61f409c1018606cd0a505162d3601f26",
+      "packageDigest": "sha256:45b40985b55ce6f998407193ca92a5b5e447774b9922105e7475347cbb3a9ed8",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -164,7 +164,7 @@
       "name": "deploy-ephemeral-web-preview",
       "description": "Publish a short-lived public web URL for demos or agent proof; record claim/expiry honesty.",
       "path": "skills/deploy-ephemeral-web-preview/SKILL.md",
-      "packageDigest": "sha256:de58b74d076e9a35f39fde4afb7e8f2364935f49b03c5ddd07ac59d658145e18",
+      "packageDigest": "sha256:5eb99b1df1809ac73ad9010a6f245c31365fd9b6b41a471db728ea8c7df71147",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -212,7 +212,7 @@
       "name": "engineer-agent-context",
       "description": "Engineer agent context packs: load rules, budgets, refresh.",
       "path": "skills/engineer-agent-context/SKILL.md",
-      "packageDigest": "sha256:b4a3e390e8f48a2d35b510ec1ad9f1b02d71f6ca90da339ecf0df3cc805c80fe",
+      "packageDigest": "sha256:d41d4fd3e783a046ae206322642c9730043f87607f6e3c1ddc52849f5b6db03e",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -260,7 +260,7 @@
       "name": "forecast-with-calibration",
       "description": "Produce calibrated probabilistic forecasts with base rates and ranges.",
       "path": "skills/forecast-with-calibration/SKILL.md",
-      "packageDigest": "sha256:2b203f9c585a8a217ee8f41535381670234f9e783cf06dab23d076762b9adefc",
+      "packageDigest": "sha256:4a395da4477f9ae9f0f3f6a8068b4bb04518daa483329a7eed02168acc813ee9",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -284,7 +284,7 @@
       "name": "model-security-threats",
       "description": "Model security threats for a trust boundary before implementation.",
       "path": "skills/model-security-threats/SKILL.md",
-      "packageDigest": "sha256:50315effedac2d541358e455f34346a26646082780b9c11164bc18e6eaf9e859",
+      "packageDigest": "sha256:2ef0f15d4148e6ae61ac064ff64d1c53c02c38f6a10d7d9124089976d591ef48",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -300,7 +300,7 @@
       "name": "optimize-decision-model",
       "description": "Model a decision for optimization: objective, constraints, sensitivity.",
       "path": "skills/optimize-decision-model/SKILL.md",
-      "packageDigest": "sha256:10a2c104a0caddaf59b73462911cf235ef628c7664d90613711ef66eec26413e",
+      "packageDigest": "sha256:2060664b84e824838af59d08b2c59406461771251b2ef1174b855781b836d70c",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -348,7 +348,7 @@
       "name": "produce-product-assets",
       "description": "Produce product assets to brief and brand constraints.",
       "path": "skills/produce-product-assets/SKILL.md",
-      "packageDigest": "sha256:629716017369945c458578f212504b55cbf6a7fec9989e9ac23ab912d74cb79c",
+      "packageDigest": "sha256:211dcffcbd93859530f0552620c47b28b1e6bb62c845de661e115432b0ed57d1",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -364,7 +364,7 @@
       "name": "provision-agent-workspace",
       "description": "Provision an agent filesystem and shell workspace with isolation and free-boundary honesty.",
       "path": "skills/provision-agent-workspace/SKILL.md",
-      "packageDigest": "sha256:89c1bddda93e6d0f55147f7d09eabaabbee1447523e5209255920cb1f301bc75",
+      "packageDigest": "sha256:f05384feff2941621a01847ba77291da699990b4e4313a31f04df78c1c9220aa",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -372,7 +372,7 @@
       "name": "record-structured-deliberation",
       "description": "Record a structured deliberation: options, criteria, decision, actions.",
       "path": "skills/record-structured-deliberation/SKILL.md",
-      "packageDigest": "sha256:0ac2173734a5388b74f4d0c532d7e4d40c32dea1ebf7cb4bdf305f823acabbec",
+      "packageDigest": "sha256:d17a27ad089043e53304df7661a0566fd6ba2c75669f4b978e28e1263b2b0944",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -380,7 +380,7 @@
       "name": "remediate-agent-harness",
       "description": "Remediate an agent harness with measured deltas and failure modes.",
       "path": "skills/remediate-agent-harness/SKILL.md",
-      "packageDigest": "sha256:96dacc684d11d127f16e8451c969f4a8ba2009f574f1a04ac981e47687b118cd",
+      "packageDigest": "sha256:6ac4471c38a818af7cd6f7f1e5af1b5c1389b7a06bdb6f2e8dad71da6ad4a708",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -444,7 +444,7 @@
       "name": "select-dependency-versions",
       "description": "Select package/runtime versions from live authoritative sources.",
       "path": "skills/select-dependency-versions/SKILL.md",
-      "packageDigest": "sha256:8889326185205531d6fed3e94cbc1783de4412571ee3908411ce22f1766b4359",
+      "packageDigest": "sha256:0e198ec42a4e12117ea2c4e737a0d2dfbfb8b95f1bbb4fbef3606909bb3aafc1",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -468,7 +468,7 @@
       "name": "synthesize-evidence-brief",
       "description": "Synthesize multi-source evidence into one bounded brief with residuals.",
       "path": "skills/synthesize-evidence-brief/SKILL.md",
-      "packageDigest": "sha256:4c9ec032b94e913e47acab3a50e06ce621a845b1de39b0fed2c6f72458de6c08",
+      "packageDigest": "sha256:d4917e396f2b89a0f351c9d50e3b6913f7f1e794f90016f0f7db60bfa092fb26",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -492,7 +492,7 @@
       "name": "wire-managed-backend-services",
       "description": "Wires leftover managed BaaS capabilities (flags, search, analytics, AI gateway, consent) with quota honesty. Use when attaching a shipped backend that is not sign-in, app data, cron, or message delivery.",
       "path": "skills/wire-managed-backend-services/SKILL.md",
-      "packageDigest": "sha256:aae1decfc96f62ffcda8e289d114d4a9dbf88e4dbad2d3bef72e2f8cd7f7fdd3",
+      "packageDigest": "sha256:c1731749b6bec1cd78f8127601e4ce364aedfd261595af01e4b962e43af6c84b",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },

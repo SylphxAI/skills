@@ -360,3 +360,10 @@ prototype/expand/finish product; payment/distribution readiness; craft interface
 
 - Distill, user-research, and feedback-loop listings state the action and
   the owner home. Neighbour work stays a when-to-open link.
+
+## 2026-08-13 — analysis and ops listing path
+
+- Evidence, deliberation, threat, context, forecast, causal, dynamics,
+  decision-model, harness, preview, workspace, leftover BaaS, and product-asset
+  listings state the action and the done look. The technology-stack profile
+  states the default stack path.
