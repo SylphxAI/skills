@@ -7,7 +7,7 @@ description: "Create or revise an Agent Skill package: job, description, method,
 
 Build skills that match the open Agent Skills model: one specialized requestable job, progressive disclosure, real task value.
 
-Hosts differ: some rank a small metadata listing; others (including RAG-style discovery) can surface a large catalog. **Do not invent a hard global skill count cap.** Growth is expected as real skills accumulate. Organize for clarity and discoverability—not compression for its own sake.
+Hosts differ: some rank a small metadata listing; others (including RAG-style discovery) can surface a large catalog. Growth is expected as real skills accumulate. Organize for clarity and discoverability.
 
 ## When to use
 
@@ -21,8 +21,7 @@ Hosts differ: some rank a small metadata listing; others (including RAG-style di
 A **Skill** is one **requestable job** (one PRD **feature/capability** unit)
 with a specialized procedure and an acceptably complete outcome. Hosts
 discover it from `SKILL.md` `name`+`description`. Depth lives in
-`references/`. Do **not** add a parallel JSON contract of the same job —
-the Agent Skills spec is `SKILL.md` only
+`references/`. The package is `SKILL.md` only
 ([agentskills.io](https://agentskills.io/specification)). A qualification
 record is optional and only exists after a filed eval. Repo doc altitude
 (Vision · NSM · OKR · PRD · Spec · ADR): see
@@ -40,13 +39,16 @@ Examples of the *kind* of listing skill:
 - analyze critically / forecast with calibration (when those jobs are requested on their own)
 - implement a repository commit build (when CI itself is the job)
 
-A Skill is **not**:
+### What lives where
 
-- a policy, standard, profile, or compliance encyclopedia entry
-- a domain checklist that only differs by tables (prefer one review skill + domain references)
-- an engine or brand product name as the listing (`keel-title`)
-- a bag whose only job is to hold methods or standards
-- repository docs under `docs/` (not installed to agents)
+| Material | Home |
+| --- | --- |
+| One requestable job with its own artifact | Listing skill |
+| Standard, profile, or domain table | `references/` under the applying job |
+| Engine or brand name | Product recipe or repo, not the listing id |
+| Human git docs | `docs/` (not installed) |
+
+Write listings and bodies with `../craft-human-agent-language/`: the action, the home, and the done look.
 
 ### Listing vs reference
 
@@ -73,13 +75,10 @@ If the content fails those tests:
 - put a short always-on floor only for universal miss-class-A rules, or
 - do nothing.
 
-**Do not demote a real requestable job just to shrink the catalog.**  
-**Do not merge unrelated jobs into one mega-skill to hit a number.**  
-**Do not refuse a valid new skill because "we already have enough."**  
-**Do not mint a listing because a feature noun appeared on a roadmap.** Extract
-from a real task or a recurring miss ([skill-grain.md](references/skill-grain.md)).
-
-Merge only when job, artifact, and acceptance authority are materially the same. Split when a sub-job is independently requested and independently accepted.
+A requestable job stays a listing. Extract from a real task or a recurring
+miss ([skill-grain.md](references/skill-grain.md)). Merge when job, artifact,
+and acceptance authority are the same. Split when a sub-job is independently
+requested and independently accepted.
 
 ## Standards and constraint packs
 
@@ -88,10 +87,10 @@ Constraint packs share one canonical composition-and-output contract:
 READMEs link it instead of restating it.
 
 
-- Org constraint packs are **never** listing skills.
+- Constraint packs live under the applying job.
 - Place each pack under the **one** skill that most naturally applies it (e.g. engineering depth under `build-product`, source-authoring under `drive-to-delivery`).
-- Other skills **link** to that path; do not duplicate pack trees; do not create a "hold all standards" skill.
-- Body text must say when to open the pack.
+- Other skills **link** to that path. One pack tree per standard.
+- Body text says when to open the pack.
 - Depth must live under `skills/` so install ships it; `docs/` is human-only.
 
 ## Package layout
@@ -154,23 +153,18 @@ Also useful depth under this package:
 - [references/skill-grain.md](references/skill-grain.md) — list vs reference vs fat mega-skill
 - [references/checklist.md](references/checklist.md) · [references/industry-sources.md](references/industry-sources.md)
 
-## Anti-patterns
+## Listing quality
 
-- Mega-skill that mixes unrelated jobs to reduce count
-- Demoting a standalone requestable job only to hit a size target
-- Domain checklist sprawl as separate listings when one review skill + refs is enough
-- Standards bag skill or docs-only agent binding depth
-- Custom skill-routing engine / keyword dispatcher skill
-- Generic policy essays with no executable job
-- Keeping a hollow shell with no agent gap
-- A parallel JSON job contract (`capability.json`) next to `SKILL.md`
-- A JSON artifact envelope (`product-artifact-envelope`) wrapping markdown outputs
-- Minting a house abbreviation, or writing process vocabulary into product-law templates
+A listing names one job, produces one artifact, and holds the procedure the
+model lacks. The package is `SKILL.md`. Do not add `capability.json` or a
+`product-artifact-envelope`. Standards live under the applying job.
+Host discovery plus when-to-open links do the routing. Product-law text uses
+industry names and English quantities.
 
 ## Dual-host notes
 
-- Listing-budget hosts: short discriminating descriptions; near-miss testing; do not grow descriptions into keyword soup.
-- RAG hosts: same job descriptions; bodies must not rely on neighbour-skill keyword dumps for selection; INDEX mega-ref owners.
+- Listing-budget hosts: short discriminating descriptions; near-miss testing.
+- RAG hosts: same job descriptions; bodies use when-to-open links; INDEX mega-ref owners.
 - Installed reference paths must be reachable from the owner body with when-to-open language.
 
 ## Validate in this repo

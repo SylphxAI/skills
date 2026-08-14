@@ -14,10 +14,12 @@ PRD · Specs/API reference · ADR · README entry · Diátaxis user docs.
 2. Apply the strongest relevant subset; record material tradeoffs in ADR/tests.
 3. Prefer schema/test/generated reference over hand-copied lists.
 4. Keep NSM short: one customer-value metric in English industry quantity.
-   Do not mint abbreviations for standard concepts. Process words stay out
-   of Vision, NSM, OKRs, and the PRD. Put product shape in **Vision**;
+   Vision, NSM, OKRs, and the PRD use product language. Delivery and
+   engineering homes own process. Put product shape in **Vision**;
    completable work in **OKRs/Goals**; features in **PRD**; field details
    in **specs**.
+5. Write the action, the home, and the done look
+   (`../../../../../craft-human-agent-language/`).
 
 ## Composition and output
 
@@ -25,6 +27,6 @@ Canonical contract: [`author-skill/references/composition-contract.md`](../../..
 
 ## Boundaries
 
-- Does not grant deploy or credential capabilities.
-- Does not replace product-local ADRs where those own decisions.
-- Does not treat Quality vocabulary (`q-*`) as product North Star Metric.
+- Deploy and credentials stay with the runtime.
+- Product-local ADRs stay authoritative for product decisions.
+- Quality vocabulary (`q-*`) lives under `build-product`.

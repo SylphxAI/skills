@@ -52,7 +52,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:1ecfc96e525d438f005004c3f518e39b5ae4b52c3c43e89d6e9457e43b6d6700",
+      "packageDigest": "sha256:253381b1f5c7df96093121dc39446cd2b1b4435d4b4d1dad46097686b55897f9",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -114,9 +114,9 @@
     },
     {
       "name": "craft-human-agent-language",
-      "description": "Write or review any document or prompt that humans and agents both use (README, ADR, update, instruction): frame purpose and audience, structure before prose, plain language, model-agnostic language choice, output contract, and a re-verification gate. Use when asked to write/translate/review a doc or prompt for humans and agents, or to choose the most efficient language and format for a model you are switching.",
+      "description": "Write or review any document or prompt that humans and agents both use (README, ADR, update, instruction): frame purpose and audience, write the action path, structure before prose, plain language, model-agnostic language choice, output contract, and a re-verification gate. Use when asked to write/translate/review a doc or prompt for humans and agents, or to choose the most efficient language and format for a model you are switching.",
       "path": "skills/craft-human-agent-language/SKILL.md",
-      "packageDigest": "sha256:836106638074d487fbb4d71de262e1c9360fe5b5afb74584c1ee41bea035de31",
+      "packageDigest": "sha256:da31d7e43f504b813a552c6a3cefe1adc4f6bfac5d2f664622b943dcc7b1cb9d",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -196,7 +196,7 @@
       "name": "drive-to-delivery",
       "description": "Drive one accepted multi-phase objective (engineering or product) to its asked terminal.",
       "path": "skills/drive-to-delivery/SKILL.md",
-      "packageDigest": "sha256:30017ba5482b9b8013917cf2ab6b22eb800b6a63faf650cbc4d64d84e8709375",
+      "packageDigest": "sha256:39b27db0e3ea94b4c66f17eb8794d5126dea2c45dbd3482664dd4e769f02e474",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },

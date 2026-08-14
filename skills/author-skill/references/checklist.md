@@ -2,12 +2,11 @@
 
 - [ ] Single job named in one sentence
 - [ ] `name` == folder; kebab-case; workflow ids 2–4 tokens (no 1-token jobs)
-- [ ] Description positive triggers for *this* job only; no host tool ids; no foreign skill ids
-- [ ] **No** `## When not to use` / “not X → other-skill” neighbour keyword dumps
-- [ ] When to use is positive and precise
+- [ ] Description names this job's triggers
+- [ ] When to use states the job; neighbour work is a when-to-open home
 - [ ] Method steps + done criteria
-- [ ] No multi-agent staffing
-- [ ] Class correct (listing job / reference depth (not policy listing))
+- [ ] One agent job (staffing lives in the host)
+- [ ] Class correct (listing job / reference depth)
 - [ ] `agents/openai.yaml` present
 - [ ] Depth in `references/` if needed
 - [ ] `npm run build:catalog && npm test`
