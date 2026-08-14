@@ -32,17 +32,6 @@ Do not turn unavailable evidence into success or failure. A timeout, missing
 permission, absent observation, or unrun check means unknown unless the
 authoritative contract proves otherwise.
 
-## Completion claims
-
-Before saying `done`, `fixed`, `converged`, `shipped`, or an equivalent:
-
-- bind the terminal condition before evaluating it;
-- verify the exact candidate or live subject named by the claim;
-- require evidence that exercises the claimed behavior, not merely nearby
-  files, prose, or a self-declared status;
-- check that no open finding contradicts the terminal; and
-- stop at the lifecycle layer actually proven.
-
 ## Output
 
 When claim adjudication is the requested job, produce a standalone

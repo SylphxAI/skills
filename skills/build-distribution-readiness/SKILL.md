@@ -1,18 +1,18 @@
 ---
 name: build-distribution-readiness
-description: "Build distribution readiness: artifacts, install/upgrade, channel readback."
+description: "Build distribution readiness: artifacts, install/upgrade, channel state."
 ---
 
 # Build Distribution Readiness
 
 Turn an exact product artifact into one audience-selected, channel-specific,
-support-ready Distribution Evidence Pack. Architecture readiness, local build,
-upload, processing, external review, publication, indexing, installation, and
-live readback are distinct states.
+support-ready distribution contract. Architecture readiness, local build,
+upload, processing, external review, publication, indexing, and installation
+are distinct states.
 
 
 ## When to use
-- An exact product artifact needs channel-specific distribution readiness: packages, install/upgrade, certification, live readback
+- An exact product artifact needs channel-specific distribution readiness: packages, install/upgrade, certification
 - Release communication variants bind to exact shipped identity
 - Not for making the artifact (`build-product`) or listing conversion (`optimize-store-listing`)
 
@@ -21,7 +21,7 @@ live readback are distinct states.
 - Read `references/distribution-channel-matrix.md` only when a mobile app store,
   alternative app store, web/PWA, Microsoft Store, Steam/PC storefront, or
   console route is selected. It owns those store/channel states, commerce
-  evidence, and live-readback floor; do not load its store transitions for a
+  evidence, and live-release floor; do not load its store transitions for a
   CLI-only or package-registry task.
 - Read `references/cli-and-package-distribution.md` for command-line target
   artifacts, direct downloads, shell and PowerShell installers, npm/npx,
@@ -62,8 +62,7 @@ Current official channel requirements remain execution-time authority.
 6. Verify only OS/runtime integrations required by the declared product and
    channel behavior. Route unresolved product design back to its owner.
 7. Produce blockers by exact dependency, failed proof, external authority
-   pending, or policy floor; assign the next machine action and required live
-   readback.
+   pending, or policy floor; assign the next machine action.
 8. When release communication is selected, bind every variant to the exact
    shipped identity, audience, user impact, compatibility/support action,
    locale, destination, publication identity, and correction path.
@@ -84,8 +83,7 @@ The active product repository and delivery profile own source, build, artifact,
 publish, rollout, rollback, credentials, and channel-adapter mutations.
 `../drive-to-delivery/references/delivery-standard/` owns their generic source-to-landed-to-published proof
 ladder. This Skill owns the distribution contract, channel selection,
-adapter-to-artifact requirements, install lifecycle requirements, and the
-evidence pack that audits observed channel states; it does not become a second
+adapter-to-artifact requirements, and install lifecycle requirements; it does not become a second
 release control plane. `../review-domain/references/developer-product-experience/` owns the wider
 developer adoption journey. A later product-program observed-state revision may
 index this pack but the pack must not consume that later revision or a moving
@@ -128,14 +126,14 @@ adapters for channels outside the declared audience.
 
 ## Output contract
 
-Produce one **Software Distribution Contract and Distribution Evidence Pack**:
+Produce one **Software Distribution Contract**:
 
 1. product, audience and invocation journeys, exact release identity,
    artifact/provenance map, compatibility floor, and selected channels with
    reasons;
 2. per-channel adapter, authority, package/signing, install/update/uninstall,
    metadata/assets/privacy/commerce where applicable, testing, review/indexing,
-   rollout/recovery, support, and live-readback matrix;
+   rollout/recovery, and support matrix;
 3. OS/runtime integration evidence and unresolved design handoffs;
 4. exact submission, publication, certification, registry, rollout, and
    consumer installation states with receipts and next transitions;

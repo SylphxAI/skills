@@ -80,20 +80,6 @@ eval, model, and canary methods for a failure model. It does not establish that
 the subject is frontier or SOTA; this claim method adjudicates that separate
 comparison.
 
-## Completion assurance case
-
-For a material completion claim, write a compact assurance case:
-
-- **Top claim:** the declared terminal is satisfied for the exact subject.
-- **Context:** objective, active lane, environment, time, and constraints.
-- **Subclaims:** each acceptance predicate and delivery layer.
-- **Evidence:** direct proof for each subclaim.
-- **Rebuttals:** known contradictions or defeaters and their resolution.
-- **Residual:** uncertainty that remains outside the terminal.
-
-This is an argument structure, not extra ceremony. For a small reversible edit,
-it may be only a sentence plus one check result.
-
 ## Anti-overclaim checks
 
 Before publishing a verdict, ask:
