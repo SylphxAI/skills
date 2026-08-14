@@ -20,7 +20,7 @@ on narrative status or stale proof.
 ## Resource guide
 
 - Read `references/decide-architecture-shape-patterns.md` before choosing slice boundaries, states, parity gates, concurrency, or cutover policy.
-- Use `scripts/validate_migration_ledger.py` only when the convergence adopts the portable ledger shape in the reference. From this repository's root, run `python3 -m unittest -v skills/decide-architecture-shape/scripts/test_validate_migration_ledger.py` after changing the validator. A simple single-repository refactor does not need a ledger merely to use this Skill. Reuse the repository's existing proportional verification entrypoint when ledger validity is material; do not add a dedicated CI workflow merely because the portable validator exists. Prefer an existing repo-native schema and validator when one already owns this fact.
+- Use `scripts/validate_migration_ledger.py` when the convergence adopts the portable ledger shape in the reference. From this repository's root, run `python3 -m unittest -v skills/decide-architecture-shape/scripts/test_validate_migration_ledger.py` after changing the validator. A simple single-repository refactor uses the repo's existing verification entrypoint. Prefer an existing repo-native schema and validator when one already owns this fact.
 - Load the target repositories' local architecture, delivery, and safety rules. This portfolio skill does not replace them.
 - Apply Engineering Standard **Quality North Star** (Depth/Simplicity first;
   compose, do not cut capability; default quality precedence on tradeoffs) from
@@ -78,39 +78,16 @@ on narrative status or stale proof.
    eng-hard-cut-01.
 11. Reconcile the migration ledger from merged and deployed evidence. Report implementation, merge, deployment, active implementation, and retirement as separate states.
 
-## Validation integrity
+## Done look
 
-- Treat a one-time golden baseline as characterization evidence, not permanent parity proof.
-- Do not accept skipped tests, missing fixtures, health-only probes, or successful compilation as behavioral equivalence.
-- Bind proof to source revision, target revision, target artifact digest,
-  contract digest, behavior-spec digest, corpus digest, and verification
-  readback at the declared stage. Require deploy/live readback only when the
-  terminal includes deployed or live authority.
-- Fail on unclassified tracked migration changes. A dashboard, comment, or manually edited state is not a gate.
-- Measure progress by completed capabilities and weighted risk, never migrated line count or repo count alone.
-- A metadata/docs/folder-only migration cannot complete a code-architecture
-  slice. The candidate must change responsibility and dependency boundaries in
-  real product code when the audit finds structural gaps.
-- A code-only module move cannot complete a full system-architecture terminal
-  when an applicable state, process, cell, control/data-plane, deployment,
-  trust, event/telemetry, or extension boundary remains implicit or violated.
-
-## Guardrails
-
-- Do not maintain multiple implementations as competing steady-state truth.
-  Hard-cut terminal is the default at every stage; temporary dual paths require
-  eng-hard-cut-01 gates. A one-step development cutover is valid when exact-
-  candidate proof and source-control recovery cover the material risk.
-- Do not treat a deprecated comment, `legacy` folder, disabled route, or
-  currently unused registration as retirement while the predecessor remains in
-  the normal dependency, build, export, generation, or runtime graph.
-- Do not double-execute payments, notifications, destructive writes, or other irreversible side effects for parity testing.
-- Do not let two agents edit the same shared choke point concurrently; land or serialize the contract first.
-- Do not require production readback for a development-only structural claim.
-  Require live readback only when runtime authority or live behavior is part of
-  the declared terminal.
-- Do not call a scaffold, plan, local diff, open pull request, merged change, or healthy process a completed cutover.
-- Do not weaken tests, fixtures, thresholds, or changed-file classification to make a slice advance.
+- Equivalence is the same corpus on source and target: outputs, errors, order, state, events, retries. Compilation and health probes are characterization.
+- Proof binds source revision, target revision, artifact digest, and the stage the terminal names. Live observation is part of that bind when the terminal is live.
+- Progress is completed capabilities and weighted risk.
+- A code-architecture slice changes responsibility in product code. A system-architecture terminal names state, process, cell, plane, deploy, trust, and extension boundaries.
+- One writer at the terminal. Temporary dual paths use the hard-cut gates. Retirement removes the predecessor from the dependency, build, export, and runtime graph.
+- Parity tests leave irreversible side effects on the destination only.
+- Shared contracts land or serialize before two agents write them.
+- A slice advances when its oracles pass. Cutover is destination sole writer and predecessor retired.
 
 
 ## Progressive disclosure

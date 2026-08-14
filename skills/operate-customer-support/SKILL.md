@@ -11,13 +11,13 @@ Produce one **Support Operating Model** that resolves customer jobs, preserves t
 ## When to use
 - Support operations need triage, resolution, escalation, and quality-loop design or review
 - Recurring customer failure should feed owned product improvement
-- Not for one customer case (`references/resolve-one-case/`) or payment/refund policy (`build-payment-readiness`)
+- One customer case: `references/resolve-one-case/`. Payment and refund policy: `build-payment-readiness`.
 
 ## Atomic boundary
 
 Own support channels, self-service, taxonomy, ticket state, routing, evidence intake, decision rights, response policy, service objectives, automation, quality, escalation, knowledge, metrics, and product-feedback closure.
 
-Do not own provider payment truth, refund/account consequence policy, product roadmap priority, security or incident command, data-recovery protocol, marketplace payouts, or public-review solicitation. Consume those artifacts and route to their owners.
+Payment truth, refund policy, roadmap priority, incident command, data recovery, marketplace payouts, and public-review solicitation live with those owners. This skill consumes their artifacts and routes to them.
 
 ## Agent-first invariant
 
@@ -43,23 +43,21 @@ Write the operating model in markdown. Name owners and sources in prose. Do not 
 5. Define decision rights. Bind every macro/answer/action to current source IDs and product/policy versions. Specify safe autonomous actions, protected actions, abstention, approval/authority handoff, idempotency, compensation, appeal, and audit.
 6. Build specialist handoffs for payment/refund, identity/security, data/sync, safety/abuse, incident, marketplace, accessibility, legal/policy, and product defects. A ticket comment never becomes the authoritative money, access, incident, or enforcement record.
 7. Define quality and learning: stratified QA/replay, hallucination and policy-drift tests, routing confusion matrix, resolution verification, reopen analysis, tail latency, complaint/trust countermetrics, source freshness, and false-positive correction.
-8. Close `signal -> cluster -> owner -> reproduce -> candidate -> validate -> ship -> live_readback -> customer_update`. Do not call contact deflection or ticket closure success without verified resolution.
+8. Close `signal -> cluster -> owner -> reproduce -> candidate -> validate -> ship -> observe the shipped path -> customer_update`. Closure is a verified resolution.
 
 ## Source verification
 
 Retrieve current product/version behavior, support entitlement, identity and privacy rules, provider/store support routes, refund and chargeback authority, child/accessibility requirements, incident status, safety policy, retention, and regional communication requirements at use. Every answer source has owner, scope, version, last verification, expiry, and fallback.
 
-## Hard gates
+## Holds when
 
-Reject or redesign a system that:
-
-- optimizes ticket avoidance, handle time, containment, or CSAT while resolution, reopen, churn/refund, complaint, accessibility, safety, or trust worsens;
-- traps users in automation, hides escalation, repeatedly requests destructive steps, or asks for passwords, secrets, full payment data, or unnecessary personal information;
-- lets a model invent provider truth, refund eligibility, entitlement, incident status, enforcement, product commitments, or legal promises;
-- uses generic macros across incompatible products, versions, providers, locales, severities, or account states;
-- marks resolved from a sent reply or internal mutation without customer-visible or authoritative verification;
-- has waiting states without owner/timer/update, high-risk actions without audit/appeal, or stale knowledge without automatic withdrawal;
-- copies specialist facts into support, invents digests for drafts, or leaves routine triage, QA, escalation, knowledge refresh, and feedback closure manual.
+- Resolution, reopen, refund, complaint, accessibility, safety, and trust stay level or improve while handle time and deflection move.
+- Users can leave automation. Escalation is visible. Destructive steps and secrets stay with the owning authority.
+- Provider truth, refund eligibility, entitlement, incident status, enforcement, and legal promises come from their owners.
+- Macros bind to product, version, provider, locale, severity, and account state.
+- Resolved means the customer-visible or owning authority verified the outcome.
+- Every waiting state has an owner, timer, and next update. High-risk actions have audit and appeal. Stale knowledge withdraws itself.
+- Specialist facts stay with specialists. Drafts carry no digest. Routine triage, QA, escalation, knowledge refresh, and feedback closure run without a standing manual gap.
 
 ## Output contract
 

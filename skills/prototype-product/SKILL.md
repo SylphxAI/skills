@@ -36,7 +36,7 @@ Throwaway fidelity is fine. Learning quality beats permanence.
 - When landing source: apply constraints from `../drive-to-delivery/references/source-authoring-standard/` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
 - Minimum interactive or observable slice in the real workspace when possible
 - Mark throwaway and placeholders explicitly
-- Do not fake future production architecture unless the hypothesis is about that architecture
+- Production architecture appears only when the hypothesis is about that architecture
 
 ### 5. Deliver / verify
 - Run or show the slice

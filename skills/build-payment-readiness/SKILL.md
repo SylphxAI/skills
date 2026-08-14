@@ -38,18 +38,17 @@ refund-authority, support, and finance handoffs without copying sibling facts.
 - Record provider, API/policy version, jurisdiction, access date, and source URL for any requirement that can block money movement or customer access.
 - Treat remembered numeric thresholds, fee schedules, review rules, and platform policies as unverified until read back from the authority.
 
-## Guardrails
+## Path
 
-- Do not grant durable value from client-only confirmation.
+- Durable value starts from provider confirmation, then ledger, then entitlement.
 - Keep payment records, entitlement state, and support cases reconcilable.
-- Do not use payment confusion as retention.
-- Do not collapse refund, cancellation, revocation, dispute, chargeback, grace, billing retry, restore, promo, and manual adjustment into one generic state.
-- Do not silently edit entitlements; append corrective ledger events and replay the projector.
-- Do not make customer punishment, grace, repayment, appeal, or commerce-restriction policy here. Emit authoritative refund/entitlement facts to `../review-domain/references/refund-and-support-flow/`.
-- Do not let support agents change provider truth. Support corrections must be role-gated, reason-coded, expiring where appropriate, and auditable.
-- Do not ship payments without fee, tax, settlement, invoice, refund, dispute, and entitlement reconciliation evidence.
-- Do not call release gates complete unless every gate names the fixture, dashboard/alert, rollback or kill-switch path, owner, and approval evidence.
-- Do not describe webhook replay as a generic queue drain; every replay state needs required evidence, ordering/idempotency rule, exit gate, dead-letter handling, customer/support impact, and incident-review artifact.
+- Name refund, cancellation, revocation, dispute, chargeback, grace, retry, restore, promo, and adjustment as separate states.
+- Entitlement corrections are new ledger events; replay the projector.
+- Customer consequence policy lives in `../review-domain/references/refund-and-support-flow/`. This skill emits refund and entitlement facts there.
+- Support corrections are role-gated, reason-coded, expiring, and auditable. Provider truth stays with the provider owner.
+- Ship with fee, tax, settlement, invoice, refund, dispute, and entitlement reconciliation.
+- Each release gate names fixture, dashboard or alert, rollback or kill-switch, owner, and approval.
+- Webhook replay is a named state machine: evidence, order and idempotency, exit, dead-letter, customer impact, incident review.
 
 
 ## Progressive disclosure
