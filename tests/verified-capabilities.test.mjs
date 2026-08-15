@@ -39,6 +39,7 @@ test('listing packages do not carry a parallel capability.json contract', () => 
   assert.match(author, /Do \*\*not\*\* write `capability\.json`/);
   assert.match(author, /Do \*\*not\*\* write `project\.manifest\.json`/);
   assert.match(author, /Do \*\*not\*\* write `PROJECT\.json`/);
+  assert.match(author, /Do \*\*not\*\* write `\.doctrine\/project\.json`/);
   assert.equal(/capability\.json\s+# required/.test(author), false);
 });
 
