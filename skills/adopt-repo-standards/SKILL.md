@@ -27,7 +27,7 @@ adoption** cycle—not a permanent dual instruction stack.
 ### 2. Research
 - What is already present vs missing (read repo; do not invent authority)
 - Depth: [references/full-standard.md](references/full-standard.md)
-- Project facts live in `PROJECT.md`. Do not write `project.manifest.json`, `PROJECT.json`, or `.doctrine/project.json`.
+- Project facts live in `PROJECT.md`. Do not add a documentation JSON twin of it.
 - When choosing stack/profile fences: open [references/enterprise-profile-standard/](references/enterprise-profile-standard/) and [references/enterprise-control-plane-standard/](references/enterprise-control-plane-standard/) as needed
 - For implementation shape constraints applied *while adopting*, open sibling depth under other workflows only if this adoption must implement product code:
   - `../build-product/references/engineering-standard/`

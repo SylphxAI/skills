@@ -38,9 +38,9 @@ test('listing packages do not carry a parallel capability.json contract', () => 
   const author = readFileSync(path.join(skillsRoot, 'author-skill', 'SKILL.md'), 'utf8');
   assert.match(author, /Do \*\*not\*\* write `capability\.json`/);
   assert.match(author, /Do \*\*not\*\* write `project\.manifest\.json`/);
-  assert.match(author, /Do \*\*not\*\* write `PROJECT\.json`/);
-  assert.match(author, /Do \*\*not\*\* write `\.doctrine\/project\.json`/);
   assert.equal(/capability\.json\s+# required/.test(author), false);
+  assert.equal(author.includes('.doctrine/project.json'), false);
+  assert.equal(author.includes('PROJECT.json'), false);
 });
 
 test('skills do not ship a product-artifact-envelope schema', () => {
