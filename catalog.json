@@ -12,7 +12,7 @@
       "name": "adopt-repo-standards",
       "description": "Adopt engineering baseline into a repo: constitution, PROJECT.md, fences. Not the job of writing or cutting the commit build.",
       "path": "skills/adopt-repo-standards/SKILL.md",
-      "packageDigest": "sha256:995b3efbb7fe4a1651663d22995f031ff8542cb2726efc40972a456e4af8cef8",
+      "packageDigest": "sha256:ac655c7d2d2ad62ecf00528b1fc459301a287d0ecbf1728c6ac6e64015089f38",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
@@ -52,7 +52,7 @@
       "name": "author-skill",
       "description": "Create or revise an Agent Skill package: job, description, method, references.",
       "path": "skills/author-skill/SKILL.md",
-      "packageDigest": "sha256:0f7fdaaf662aeeb5e14fac3814fc94be07d20258325745292c2a62605b9d75ef",
+      "packageDigest": "sha256:9c5b772bed56db170532690c9b6ece1c8957e00da5e8bdeb416b2d3e450cdc86",
       "qualified": false,
       "qualificationStatus": "unqualified"
     },
