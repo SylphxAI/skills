@@ -1,9 +1,9 @@
 ---
 name: explore-product-space
-description: "Explore materially different product concepts and select a coherent direction."
+description: "Explore materially different product concepts and select a coherent direction. Use before design or prototype when the solution family is still open."
 ---
 
-# Design Space Exploration
+# Explore Product Space
 
 Expand the solution space deliberately before choosing. Read
 [references/design-space-methods.md](references/design-space-methods.md) when

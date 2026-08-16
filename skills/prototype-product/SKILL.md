@@ -1,6 +1,6 @@
 ---
 name: prototype-product
-description: "Run a cheap real prototype with kill/continue criteria."
+description: "Run the smallest real prototype that can change a product decision. Use when a cheap interactive probe is needed before committing to a build; use explore-product-space for concept families and build-product for an accepted vertical slice."
 ---
 
 # Prototype Product

@@ -1,6 +1,6 @@
 ---
 name: finish-product
-description: "Finish/deburr an integrated product to the declared target."
+description: "Finish an integrated product to its declared fidelity across surfaces. Use after the core capability exists and remaining work is resolution; use build-product for missing capability and maintain-product for live regressions."
 ---
 
 # Finish Product
