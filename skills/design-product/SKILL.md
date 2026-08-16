@@ -1,11 +1,23 @@
 ---
 name: design-product
-description: Design a product blueprint for an app, game, SaaS, service, or other digital product. Use when the product promise, users, journeys, capabilities, system shape, business model, and operating model need one coherent design.
+description: Design a coherent product blueprint when no more specific product-design owner applies. Use for an uncategorized or intentionally cross-type product; route app, game, and SaaS platform promises to their specialized design skills.
 ---
 
 # Design Product
 
 Turn a product opportunity into a coherent blueprint that can guide implementation and evaluation.
+
+## When to use
+
+- The product type is not yet known, or the promise intentionally spans types
+  without one specialized design owner.
+- A general product blueprint is the independently accepted artifact.
+
+Use `design-app-product` for an application promise, `design-game-product` for
+a play/mastery promise, and `design-saas-web-platform` for a public-to-
+authenticated SaaS platform. Use `compose-product-portfolio` for product-unit
+boundaries, `compose-product-program` for multi-domain delivery graphs, and
+`build-product` for one accepted implementation slice.
 
 ## Method
 
@@ -22,3 +34,9 @@ Turn a product opportunity into a coherent blueprint that can guide implementati
 ## Output
 
 Return the product promise, users, journeys, capability and state model, interface surfaces, architecture and ownership, business and operating model, lifecycle behavior, accepted decisions, and open questions.
+
+## Boundary
+
+This skill owns the generic product blueprint only. Specialized design skills
+own their product-type semantics; implementation, distribution, operations, and
+live behavior remain with their owning skills and repositories.
