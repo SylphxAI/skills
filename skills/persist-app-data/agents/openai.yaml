@@ -1,4 +1,0 @@
-interface:
-  display_name: "Persist App Data"
-  short_description: "Persists app data on Platform Data bindings."
-  default_prompt: "Persist this app's data on Sylphx Platform Data bindings."

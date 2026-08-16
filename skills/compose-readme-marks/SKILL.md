@@ -1,50 +1,29 @@
 ---
 name: compose-readme-marks
-description: "Compose README and docs badges or banners from public mark APIs without a design tool."
+description: Compose README badges, banners, status marks, and compact metadata rows from public mark providers and repository facts.
 ---
 
 # Compose README Marks
 
-Produce **markdown image embeds** for README/docs: badges, banners, tech icon rows, simple stats cards—using public no-key image APIs when possible.
-
-## When to use
-
-- Polishing OSS/product README or docs headers
-- Need consistent badges without checking binary assets into git
-- Brand-colored banners for multiple repos
-
-## When not to use
-
-- Custom illustration/marketing site hero requiring design system ownership
-- Offline-only docs that forbid hotlinked images
-- Release proof (badges are presentation, not delivery evidence)
+Create useful, accessible README marks that link readers to current authoritative information.
 
 ## Method
 
-Known provider URL patterns live in [references/recipes.md](references/recipes.md). Open that file when you need a documented endpoint. It is not a search replacement: if a host or path may have moved, use the host's web search and fetch tools.
+1. Define the README audience and the small set of facts that deserve immediate visibility.
+2. Confirm each fact from the repository, package registry, release system, documentation, or public service that owns it.
+3. Choose a stable mark provider supported by the repository and its security policy.
+4. Build each image URL and destination link from the provider's documented parameters.
+5. Use concise labels, meaningful alt text, readable contrast, and a consistent visual order.
+6. Link status marks to the workflow, release, package, license, documentation, or policy page that explains the state.
+7. Preview the rendered Markdown in light and dark contexts where the host supports both.
+8. Keep the final row focused on information readers can act on.
 
-1. Choose mark types: badge / banner / icons / stats.
-2. Open [references/providers/INDEX.md](references/providers/INDEX.md); prefer no-key public APIs.
-3. Build URLs with required query params; URL-encode text.
-4. Probe the image URL (host fetch if present, otherwise `curl -sI`) → expect `image/svg+xml` or image content-type **200**.
-5. Paste markdown into README; keep params in source so agents can regenerate.
+## References
 
-## Done for this run
+- [Markdown patterns](references/markdown-patterns.md) for layout and accessibility.
+- [Provider selection](references/provider-selection.md) for mark services.
+- [Recipes](references/recipes.md) for common README combinations.
 
-- Markdown snippets ready to paste
-- Live image URL(s) probed
-- Theme/style choices recorded
-- Residual: GitHub rate limits for stats endpoints if used without token
+## Output
 
-## Progressive disclosure
-
-- [references/recipes.md](references/recipes.md) — known URL patterns when the provider is already chosen
-- [references/providers/INDEX.md](references/providers/INDEX.md)
-- [references/providers/mark-sylphx.md](references/providers/mark-sylphx.md)
-- [references/providers/shields.md](references/providers/shields.md)
-- [references/markdown-patterns.md](references/markdown-patterns.md)
-
-## Boundaries
-
-- Hotlink dependency: if the mark host is down, README images break
-- Stats cards that call GitHub inherit GitHub rate limits
+Return copy-ready Markdown and the source of each displayed fact.

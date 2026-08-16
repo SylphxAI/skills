@@ -5,44 +5,29 @@ description: "Share a non-secret file or log via short-lived public URL with ret
 
 # Share Ephemeral Artifact
 
-Publish a **non-secret** file, log, screenshot, or build output to a short-lived public URL for debugging or handoff.
-
-## When to use
-
-- Need a link for a human or another system to download a log/bundle
-- Artifact is already scrubbed of secrets
-
-## When not to use
-
-- Tokens, private keys, customer PII, `.env`, heap dumps with secrets
-- Long-term product storage → use managed object storage (`wire-managed-backend-services` / BaaS Storage)
-- Source of truth for releases (use real artifact registry)
+Publish a scrubbed, non-secret file to a temporary public URL for debugging or
+handoff.
 
 ## Method
 
-Known host upload patterns live in [references/recipes.md](references/recipes.md). Open that file when the provider is chosen. It is not a search replacement: if a host or form field may have moved, use the host's web search and fetch tools.
-
-1. **Scrub**: redact secrets; prefer minimized logs.
-2. **Choose host** from [references/providers/INDEX.md](references/providers/INDEX.md) (L1/L2 hobby hosts).
-3. **Upload** via documented CLI/curl; capture URL + retention.
-4. **Verify** GET the URL once; note Content-Type/size.
-5. **Handoff** with expiry and “do not put secrets” reminder.
-
-## Done for this run
-
-- URL + retention/expiry
-- Size and content class stated
-- Explicit statement that content is non-secret
-- Provider reliability residual (hobby hosts fail)
-
-## Progressive disclosure
-
-- [references/recipes.md](references/recipes.md) — known upload patterns when the provider is already chosen
-- [references/providers/INDEX.md](references/providers/INDEX.md)
-- [references/providers/file-hosts.md](references/providers/file-hosts.md)
-- [references/safety.md](references/safety.md)
+1. Confirm the artifact is suitable for public access. Remove credentials,
+   customer data, private source, internal URLs, and unnecessary context.
+2. Open [provider selection](references/provider-selection.md), current provider
+   terms, and [safety guidance](references/safety.md). Select a host whose size,
+   retention, content type, and acceptable-use policy fit the artifact.
+3. Upload through the provider's documented route in
+   [recipes](references/recipes.md).
+4. Fetch the URL once and verify status, content type, size, and expected file.
+5. Return the URL with content class, size, expiry or retention, and deletion
+   route when the provider supplies one.
 
 ## Boundaries
 
-- Public paste/file hosts are hostile; assume crawlers
-- No production custody; no compliance archive
+Use managed object storage for durable product custody and an artifact registry
+for releases. Temporary public hosts are appropriate for intentionally public,
+short-lived, non-secret material.
+
+## Output
+
+Return the verified URL, provider, content class, size, retention or expiry,
+and deletion information.

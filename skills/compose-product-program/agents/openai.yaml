@@ -1,4 +1,0 @@
-interface:
-  display_name: "Compose Product Program"
-  short_description: "Compose multi-work product program: phases, dependencies, kill/scale."
-  default_prompt: "Run this skill on the active workspace."

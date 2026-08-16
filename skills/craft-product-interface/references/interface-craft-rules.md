@@ -1,6 +1,6 @@
 # Interface Direction and Craft Rules
 
-Use this method to create a local visual language for one bounded interface or flow. Synthesize mature patterns; do not imitate a named product or manufacture a global brand system.
+Use this method to create a local visual language for one bounded interface or flow. Synthesize mature principles into an original direction grounded in this product.
 
 ## Start with meaning
 
@@ -18,7 +18,7 @@ The product’s subject should shape the interface. If the same palette, layout,
 
 Choose one primary archetype and, only if useful, one modifier.
 
-| Archetype | Best fit | Design source of trust | Avoid |
+| Archetype | Best fit | Design source of trust | Boundary |
 | --- | --- | --- | --- |
 | Precision product | settings, billing, operations, enterprise | alignment, labels, auditability, calm recovery | decorative gradients competing with tasks |
 | Expert workbench | code, AI, creation, logs, automation | dense scan paths, shortcuts, visible state | hiding commands behind spectacle |
@@ -42,24 +42,24 @@ Type roles:
 Spacing / radius / elevation roles:
 Interaction and motion rhythm:
 One signature move and its meaning:
-Anti-patterns:
+Patterns outside the selected direction:
 Existing-system constraints:
 ```
 
 ## Visual system rules
 
-- `ic-direction-1` — Put the surface’s primary job in the strongest position; group by user decision, not backend object.
-- `ic-direction-2` — Define semantic roles before exact values: canvas, surface, primary/secondary text, divider, action, focus, and status.
-- `ic-direction-3` — Create hierarchy with scale, weight, spacing, alignment, and content order before adding color, shadow, or animation.
-- `ic-direction-4` — Limit product UI to a coherent type set. Display may be expressive; body, forms, tables, and data remain fast to read.
-- `ic-direction-5` — Use whitespace to show relationships. Dense UI needs stronger alignment and scan paths; sparse UI needs precise proportion.
-- `ic-direction-6` — Give each semantic action one visual rank. Multiple primary buttons on one decision plane are a design conflict.
-- `ic-direction-7` — Choose one memorable detail tied to product meaning. A signature move may be a spatial model, data treatment, material, transition, or interaction—not random ornament.
-- `ic-direction-8` — Reuse existing tokens and components first. Add the smallest local role needed; do not fork a second global system inside one screen.
-- `ic-direction-9` — Use realistic content lengths, units, names, and values. Lorem ipsum and tidy fake data conceal hierarchy and overflow defects.
-- `ic-direction-10` — Remove any element that does not improve meaning, comprehension, trust, conversion, feedback, access, or identity.
+- Put the surface’s primary job in the strongest position; group by user decision, not backend object.
+- Define semantic roles before exact values: canvas, surface, primary/secondary text, divider, action, focus, and status.
+- Create hierarchy with scale, weight, spacing, alignment, and content order before adding color, shadow, or animation.
+- Limit product UI to a coherent type set. Display may be expressive; body, forms, tables, and data remain fast to read.
+- Use whitespace to show relationships. Dense UI needs stronger alignment and scan paths; sparse UI needs precise proportion.
+- Give each semantic action one visual rank. Multiple primary buttons on one decision plane are a design conflict.
+- Choose one memorable detail tied to product meaning. A signature move may be a spatial model, data treatment, material, transition, or interaction—not random ornament.
+- Reuse existing tokens and components first. Add the smallest local role needed within the existing system.
+- Use realistic content lengths, units, names, and values. Lorem ipsum and tidy fake data conceal hierarchy and overflow defects.
+- Remove any element that does not improve meaning, comprehension, trust, conversion, feedback, access, or identity.
 
-## Generic-default rejection checklist
+## Distinctive interface checklist
 
 Revise the direction when any answer is yes:
 
@@ -71,8 +71,8 @@ Revise the direction when any answer is yes:
 - Was a famous interface copied instead of extracting density, navigation, hierarchy, or interaction principles?
 - Did local polish contradict the established product grammar without an explicit redesign decision?
 
-When using external references, write the extracted principle—such as “dense operational scan path” or “media-first spatial continuity”—and never copy proprietary colors, type, copy, imagery, layout, or identity.
+When using external references, write the extracted principle—such as “dense operational scan path” or “media-first spatial continuity”—and create original colors, type, copy, imagery, layout, and identity.
 
-## Restraint gate
+## Restraint check
 
 Keep a craft detail only if it helps the user complete or understand the task, preserves every applicable input and accessibility path, fits the surface’s frequency and risk, stays inside performance budgets, and can be verified through an observable state. Frequent actions should be faster and quieter than rare milestones. High-risk surfaces should be clearer and calmer than celebratory ones.

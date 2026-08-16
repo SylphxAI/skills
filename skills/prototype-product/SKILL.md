@@ -5,56 +5,24 @@ description: "Run a cheap real prototype with kill/continue criteria."
 
 # Prototype Product
 
-When you need to **learn** whether something is worth building, run **one** prototype cycle.
-
-## When to use
-
-- New idea, mechanic, IA, or demand is uncertain
-- You need go / kill / pivot evidence before investing in a durable build
+Run the smallest real probe that can change a product decision.
 
 ## Method
 
-Lean experiment: **hypothesis → cheapest probe → observe → decision**.  
-Throwaway fidelity is fine. Learning quality beats permanence.
-
-### 1. Frame
-- One-sentence **hypothesis** or open question
-- Users/players, **success signal** (what would change your mind), non-goals, time box
-- Separate “must learn” from “nice to build”
-
-### 2. Research
-- Only until it changes the probe: analogs, prior art, in-repo history
-- 2–3 probe options; pick the **lowest-cost** falsifying/supporting test
-- Stop when more reading will not change the experiment
-
-### 3. Admit work
-- **In:** build the probe + observation path
-- **Out:** production hardening, multi-region, abstract platforms, pixel-perfect systems
-- Keep the set finishable inside the time box
-
-### 4. Implement
-- When landing source: apply constraints from `../drive-to-delivery/references/source-authoring-standard/` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
-- Minimum interactive or observable slice in the real workspace when possible
-- Mark throwaway and placeholders explicitly
-- Production architecture appears only when the hypothesis is about that architecture
-
-### 5. Deliver / verify
-- Run or show the slice
-- Record observation + **decision**: go | kill | pivot | need-another-probe
-- Evidence is observation + decision, not “code exists”
-
-## Cycle done
-
-1. Hypothesis and success signal were explicit  
-2. A real probe ran (or a concrete external blocker is named)  
-3. go / kill / pivot / next-probe is written with evidence pointers  
-4. Non-learning production work was not smuggled in  
+1. State one hypothesis or open question, the target users or players, the
+   observation that changes the decision, the time box, and the scope.
+2. Review prior work and analogues until the probe choice is clear.
+3. Compare two or three probe options and select the lowest-cost one that
+   exposes the important uncertainty.
+4. Build the minimum interactive or observable slice in the real product
+   environment when practical. Mark placeholder and disposable work clearly.
+5. Run or show the slice to the relevant system or participants.
+6. Record the observation and choose `continue`, `stop`, `pivot`, or
+   `run another probe`.
 
 ## Output
 
-Hypothesis · probe · evidence · decision · suggested next work kind (build / expand / another prototype)
+Return the hypothesis, probe, observed result, decision, and next work kind.
 
-## Progressive disclosure
-
-- Public demo URL without durable hosting: open skill `deploy-ephemeral-web-preview` when the prototype needs a shareable link
-- Managed backend instead of toy storage: open skill `wire-managed-backend-services` when auth/KV/storage/sandbox are in scope
+A public demo can use `deploy-ephemeral-web-preview`. A probe that specifically
+tests managed infrastructure can use `wire-managed-backend-services`.

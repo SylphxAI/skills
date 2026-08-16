@@ -41,9 +41,9 @@ Funding, conflicts, limitations, and dependencies
 Supports, contradicts, or is neutral to each synthesis claim
 ```
 
-Do not impose medical-study hierarchies on engineering logs, legal materials,
-qualitative research, or operational records. Select domain-appropriate quality
-criteria and explain them. Across domains, retain the same invariants:
+Select and explain domain-appropriate quality criteria for engineering logs,
+legal materials, qualitative research, operational records, and medical studies.
+Across domains, retain the same invariants:
 traceability, declared selection, source dependence, measurement validity,
 counterevidence, uncertainty, and bounded claims.
 

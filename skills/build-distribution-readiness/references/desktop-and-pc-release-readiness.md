@@ -1,25 +1,24 @@
 # Desktop And PC Release Readiness
 
-Use this module for exact release evidence after desktop/PC product semantics
-have an owner-approved design. Consume the Desktop OS Experience Contract from
-App Design when present; unresolved startup, permission, file, notification,
-storage, credential, update, uninstall, or recovery behavior routes back to
-that owner rather than being invented during release review.
+Use this module after desktop or PC product semantics have an owner-approved
+design. Consume the Desktop OS Experience Contract from App Design when
+present. The design owner resolves startup, permission, file, notification,
+storage, credential, update, uninstall, and recovery behavior.
 
-## Common evidence record
+## Release details
 
 ```text
 OS/storefront, versions, architectures, device classes and territories:
 exact app/package/build/depot/branch identity and digest:
-publisher/developer identity, signing/notarization/certification evidence:
+publisher/developer identity, signing/notarization/certification result:
 install scope, privileges, background components and update channel:
 declared OS integrations and user controls:
 local data, credential, backup, migration and uninstall contract:
-store/build claims, commerce, support and current authority:
+store/build claims, commerce, support and current sources:
 smoke, upgrade, rollback/repair, diagnostics and live readback:
 ```
 
-Common gates:
+Common checks:
 
 - stable identity and upgrade lineage;
 - signed, provenance-bound packages and trusted update path;
@@ -31,9 +30,9 @@ Common gates:
   permission/integration state, update state, crash IDs and support route;
 - live readback of the exact released version, branch, territory and claims.
 
-## macOS release evidence
+## macOS release checks
 
-| Area | Required proof | Blocker examples |
+| Area | Healthy result | Release issue |
 | --- | --- | --- |
 | Identity | stable bundle ID, display/version/build, minimum OS and architectures | identity drift breaks data or update lineage |
 | Trust | current signing, hardened runtime/entitlements, notarization and stapling where applicable | quarantine or signature state is unknown |
@@ -44,12 +43,12 @@ Common gates:
 
 Test supported macOS versions and every promised architecture, including the
 upgrade path from supported prior releases. Retrieve current Apple authority for
-the selected distribution path; do not treat notarization submission as a
-successful end-user install.
+the selected distribution path and confirm a successful end-user install after
+notarization.
 
-## Windows and direct-download release evidence
+## Windows and direct-download checks
 
-| Area | Required proof | Blocker examples |
+| Area | Healthy result | Release issue |
 | --- | --- | --- |
 | Package/identity | intentional installer or MSIX identity, publisher, scope, version, architecture, shortcuts | upgrade identity changes or parallel ghost install |
 | Trust/reputation | code-signing readback and channel-appropriate reputation/recovery plan | unsigned/tampered warning without safe route |
@@ -90,9 +89,10 @@ certification_review -> rejected -> finding_triaged
 
 ## Steam and PC-store addendum
 
-Distribution owns exact build/store compatibility and live release evidence,
-not wishlist strategy, listing conversion, rendered assets, creator outreach,
-community operation, or the final cross-domain launch verdict.
+Distribution owns exact build/store compatibility and live release readback.
+Store Listing owns listing conversion, Product Asset Production owns rendered
+assets, Marketing owns wishlist and creator outreach, Community owns ongoing
+community operation, and Launch Readiness owns the cross-domain launch verdict.
 
 Verify:
 
@@ -104,21 +104,13 @@ Verify:
 - install/update/uninstall, first-session crash/performance, save
   create/load/migrate/conflict/restore and rollback/hotfix paths;
 - demo/playtest and release build separation, compatibility and data migration;
-- current policy/partner evidence for pricing, discounts, DLC, keys, refunds,
-  reviews and release operations—never policy from memory;
+- current partner sources for pricing, discounts, DLC, keys, refunds, reviews,
+  and release operations;
 - exact handoffs to Store Listing for page promise, Product Asset Production
   for capsules/trailer/screenshots, Marketing for wishlist/creator/community,
   and Launch Readiness for go/no-go and first-week health.
 
-```text
-store_build_draft -> claims_reconciled -> candidate_uploaded
--> processing_or_partner_review -> release_branch_staged
--> release_live -> exact_branch_and_store_readback
-release_live -> defect_or_claim_mismatch
--> hold_promotion | hotfix | rollback | supersede_build | correct_store_claim
-```
-
-## Regression and operating evidence
+## Regression and operating checks
 
 At minimum exercise:
 
@@ -132,13 +124,13 @@ At minimum exercise:
 - live released identity, update adoption, crash/install failures, support issue
   mix and rollback/supersession result.
 
-Recommended events preserve exact release identity: `desktop_install_result`,
+Useful events preserve exact release identity: `desktop_install_result`,
 `desktop_permission_result`, `desktop_integration_changed`,
 `desktop_update_result`, `desktop_uninstall_result`, `pc_store_build_released`,
 `pc_store_claim_checked`, `pc_store_save_integrity_checked`, and
 `desktop_diagnostic_exported`.
 
-Return one per-channel evidence matrix with pass/blocker, exact proof, owner,
-next transition and live-readback result. A design declaration, local package,
-portal upload, certification submission, or approved listing is not proof that
-the exact build is available and healthy for users.
+Return each channel's result with exact build identity, checks performed,
+material issue, owner, next action, and live readback. State design, local
+package, upload, review, publication, installation, and live health at the
+layer actually observed.

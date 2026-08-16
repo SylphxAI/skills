@@ -6,14 +6,14 @@ The product is **identity across images**, not any single frame.
 
 - Generate a **base** (hero pose / turnaround anchor) first; every later view,
   state, damage, equipment, or palette variant is an **edit-chain** from that
-  base—never a cold regenerate of the same character.
+  base, preserving the same character identity through an edit or derived variant.
 - Freeze silhouette, proportions, palette family, outline weight, and view
   angle contract unless the brief changes them.
 - Turnarounds (front/side/back): same height line, foot plant, and lighting
   language; only camera yaw changes.
 - State variants (hurt, powered, wet): geometry-stable; change only the state
   treatment.
-- Palette swaps: recolor from base; do not redesign costume silhouette.
+- Palette swaps: recolor from the base while preserving the costume silhouette.
 
 ## Verify
 

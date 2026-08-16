@@ -1,125 +1,33 @@
 ---
 name: craft-telegram-bot-surface
-description: "Craft or hard-cut a Telegram bot to the sole 2026 surface model: sparse slash menu, layered keyboards with edit trees, Rich Message only, public vs ephemeral visibility, and bot-to-bot loop guards when multi-bot. Use for any Telegram bot design, implementation, review, command menu, keyboard tree, digest/board, progress UI, group multi-bot, or format path—never MarkdownV2/HTML product text or CLI command sprawl."
+description: Design or implement a Telegram bot interface using concise commands, layered keyboards, edited message trees, rich content, clear visibility, and loop-safe bot interactions.
 ---
 
 # Craft Telegram Bot Surface
 
-Deliver one **Telegram Bot Surface** that matches Bot API 10.x product reality.
-There is **one** model: one menu, one text wire, one callback router, one
-visibility table. Delete superseded formatters and menus in the same delivery
-unit.
-
-## Sole model (non-negotiable)
-
-1. **Sparse slash** — registered `setMyCommands` is a short list of entrypoints
-   (product query bots ≤5; agent bots ≤8). Filters, panels, and CRUD are not
-   slash entries.
-2. **Keyboard trees + edit trees** — multi-step UI uses inline keyboards;
-   navigation **edits the same message** (rich body + markup). Final shared
-   work product may be a new public message.
-3. **Rich Message only** — all product text uses `sendRichMessage` /
-   `editMessageText`+`rich_message` with ordinary Markdown/GFM (or 10.2 blocks
-   when implemented). Product send is Rich Message. Captions are plain when
-   media requires caption-only.
-4. **Visibility policy** — each outbound chooses:
-   - **Public** — shared work product, digests, agent answers for the room,
-     bot-to-bot handoffs
-   - **Ephemeral** (`receiver_user_id` / ephemeral commands) — personal system
-     UI, settings, permission errors, personal help in groups
-5. **Bot-to-bot** (when multiple bots share groups) — allowlist, max depth,
-   dedupe, rate limit, public handoff line; no unguarded ping-pong.
-6. **One path** — one menu inventory, one text wire, one callback action
-   router, one visibility rule table. Delete superseded formatters and menus.
-
-## Modes
-
-- **Direction** — surface contract only
-- **Build / Polish** — implement and delete legacy paths
-- **Review / Hard-cut** — inventory dual paths; remove them
+Build a Telegram-native interaction that stays compact in chat and clear across private, group, and multi-bot contexts.
 
 ## Method
 
-1. **Jobs → channels** (see [interaction-primitives.md](references/interaction-primitives.md)).
-2. **Slash budget** — write the final menu; move everything else to help/footer trees.
-3. **Visibility matrix** — every command and reply class is public or ephemeral
-   ([platform-2026.md](references/platform-2026.md)).
-4. **Rich-only formatters** — GFM (or blocks); kill HTML/MarkdownV2 authors and
-   send helpers ([rich-message-format.md](references/rich-message-format.md)).
-5. **Edit trees** for system/settings UI; answer every callback.
-6. **Bot-to-bot policy** if multi-bot groups exist.
-7. **Register menu** for needed scopes; verify wire methods actually used.
-8. **Delete** dual paths: old menus, HTML builders, fallbacks, unlisted dual IA.
+1. Define the user jobs, chat types, public and private visibility, bot permissions, and product state behind each interaction.
+2. Keep the slash-command menu focused on entry points users may type directly.
+3. Use reply keyboards for persistent high-level navigation and inline keyboards for contextual choices attached to a message.
+4. Build deeper flows as an edited message tree with clear back, close, refresh, confirm, and recovery actions.
+5. Use Telegram's current Bot API entities, media, reply markup, callback queries, web apps, topics, and business features only where they improve the user job.
+6. Keep callback data compact, versioned, authorized, idempotent, and bound to the current user or chat state.
+7. Acknowledge callbacks promptly, then edit or replace the message with the resulting state.
+8. Separate group-visible updates from user-specific or sensitive responses.
+9. Validate sender, chat, topic, membership, tenant, and product authorization at the action boundary.
+10. Prevent bot loops by accepting bot-originated events only through an explicit trusted interaction contract.
+11. Exercise the flow in each supported chat type, including stale callbacks, deleted messages, retries, permission changes, and concurrent users.
 
-## Agent bot slash budget (Spiron-class)
+## References
 
-**Registered menu only (≤8):**
+- [Telegram platform](references/telegram-platform.md) for current Bot API capabilities.
+- [Interaction primitives](references/interaction-primitives.md) for command and keyboard selection.
+- [Callback protocol](references/callback-protocol.md) for compact authorized actions.
+- [Rich message format](references/rich-message-format.md) for content rendering.
 
-| Command | Role |
-| --- | --- |
-| `help` | Command center (edit tree to all panels) |
-| `new` | Fresh conversation |
-| `status` | Health (ephemeral in groups) |
-| `model` | Model picker (ephemeral in groups; edit tree) |
-| `effort` | Effort picker (ephemeral in groups; edit tree) |
-| `progress` | Progress toggle |
-| `mode` | Group response mode (groups) |
-| `allow` | Access (admin; ephemeral where personal) |
+## Output
 
-All other former menu items (`contacts`, `sessions`, `goal`, `todo`,
-`portfolio`, `credentials`, `computer`, `integrations`, `diagnostics`, `cron`,
-`verify`, `managers`, `admins`, `recap`, `background`, …) are **not** in
-`setMyCommands`. Reach via **help edit tree** (and admin section when
-authorized). Typed unlisted aliases may still route to the **same** action
-handler once, without a second menu.
-
-## Product query bot slash budget (tip/board-class)
-
-≤5: e.g. `board`, `soon`, `race`, `follow`, `help`. Lenses/modes/entities =
-buttons.
-
-## Visibility matrix (default)
-
-| Class | Visibility |
-| --- | --- |
-| Agent final answer / shared tool result | Public |
-| Digest / tip board / race card for the room | Public |
-| Bot-to-bot handoff summary | Public |
-| `/help` center, `/model`, `/effort`, personal settings | Ephemeral in groups; public ok in private DM |
-| Permission / validation errors to one user | Ephemeral in groups |
-| Progress card | Public or policy-owned progress surface (not personal-secret) |
-
-Ephemeral is **per message**, not a bot-wide mode.
-
-## Done look
-
-- One text wire: Rich Message (GFM or blocks). Captions stay plain when the media API requires caption-only.
-- One registered menu within the slash budget. Filters and panels live in the help/footer tree.
-- Keyboard steps edit the same message.
-- Ephemeral is per message, for personal system UI. Shared work product is public.
-- Multi-bot groups carry allowlist, max depth, dedupe, and a public handoff line.
-- Superseded formatters and menus are deleted in the same delivery unit.
-
-## Output contract
-
-1. Jobs and channel allocation  
-2. Final slash menu (≤N) + help tree map  
-3. Visibility matrix  
-4. Rich-only wire proof (methods + no HTML/MarkdownV2 product send)  
-5. Edit-tree flows  
-6. Bot-to-bot policy if applicable  
-7. **Deleted dual paths** (files/symbols removed)  
-8. Tests + verification evidence  
-
-## Progressive disclosure
-
-- [references/telegram-surface-method.md](references/telegram-surface-method.md)
-- [references/rich-message-format.md](references/rich-message-format.md)
-- [references/platform-2026.md](references/platform-2026.md)
-- [references/interaction-primitives.md](references/interaction-primitives.md)
-- [references/callback-protocol.md](references/callback-protocol.md)
-
-## Boundaries
-
-- Owns Telegram interaction IA and product text wire model.
-- Does not own token custody, webhook ownership cutover, or non-Telegram channels.
+Return the command menu, keyboard tree, message states, callback design, visibility rules, authorization points, implementation changes, and exercised chat paths.

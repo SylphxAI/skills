@@ -5,91 +5,40 @@ description: "Produce 2D map tiles/props packs with extract/preview."
 
 # Produce Game 2D Map Assets
 
-When you need **2D map tiles, terrain sheets, or prop packs** for a game title,
-run this job. Own art production and packing helpers; Keel pack owns shipping
-shells and multi-platform emit.
-
-## When to use
-
-- Tileable terrain/water/walls and prop sheets for 2D/2.5D maps
-- Transition tilesets and rotation-safe masters
-- Extracting transparent props from solid-magenta packs
-- Layered map previews for art direction QC
-
-## Sylphx / Keel alignment
-
-| Concern | Owner |
-| --- | --- |
-| Tiles/props files + extract scripts | this skill |
-| Title map data / world layout | app repo |
-| Pack / player / platform emit | **Keel pack** |
-
-Suggested paths:
-
-```text
-<title-repo>/assets/tiles/<set>/
-<title-repo>/assets/props/<set>/
-```
+Produce engine-ready 2D map foundations, tilesets, props, layers, placement,
+collision metadata, and visual previews for the selected game pipeline.
 
 ## Method
 
-### 1. Frame
+1. Open [map pipeline selection](references/map-pipeline-selection.md) and choose
+   the map, visual, runtime-object, collision, and engine models.
+2. Define camera, canvas, tile size, atlas layout, style, terrain, props,
+   interaction, placement, collision, zones, exits, and expected files.
+3. For layered maps, follow the
+   [layered map contract](references/layered-map-contract.md). For prop packs,
+   follow the [prop pack contract](references/prop-pack-contract.md).
+4. Generate visual assets with the host image tools or user-supplied art.
+   Runtime-controlled objects receive separate assets or editable layers.
+5. Use the package scripts for extraction and preview composition when their
+   documented input matches the job. Read each script's `--help` first:
+   [extract prop pack](scripts/extract_prop_pack.py) and
+   [compose layered preview](scripts/compose_layered_preview.py).
+6. Check seams, alpha edges, alignment, scale, palette, render order, object
+   isolation, collision, naming, and a composed gameplay preview using
+   [tileset and prop QC](references/tileset-and-prop-qc.md).
+7. Deliver the assets in the product repository's established asset and scene
+   layout with placement and collision data.
 
-- Tile size, atlas layout, prop density, style match to characters/UI
-- Seamless vs hero-prop distinction
-- Naming + manifest requirements
+## References
 
-### 2. Defaults and QC
-
-- Terrain: seamless, non-directional lighting when rotation may apply
-- Props: isolated on `#FF00FF` for extract; no baked text
-- Verify tile seams with real 2×2 (or larger) composites
-
-Depth: [references/tileset-and-prop-qc.md](references/tileset-and-prop-qc.md),
-[references/layered-map-notes.md](references/layered-map-notes.md).
-
-### 3. Generate / assemble
-
-- Use host image tools when available; keep style contract with character art
-- Prefer compositional assembly when generators fail seam/identity checks
-
-### 4. Scripts
-
-```bash
-python3 skills/produce-game-2d-map-assets/scripts/extract_prop_pack.py --help
-python3 skills/produce-game-2d-map-assets/scripts/compose_layered_preview.py --help
-```
-
-Read `--help` before inventing flags. Requires Pillow (and script-local deps).
-
-### 5. Verify + deliver
-
-- Seam QC, alpha edges, naming, residual defects
-- Land with atomic commits and a revert-safe PR outcome L1/L2/L3 when committing to a app repo
-
-## Provenance
-
-Extract/preview scripts adapted from MIT **agent-sprite-forge** (see
-`scripts/LICENSE-agent-sprite-forge` and [SOURCE.md](SOURCE.md)). Method is
-Sylphx-native and Keel-aligned.
-
-
-## Progressive disclosure
-
-- [references/layered-map-contract.md](references/layered-map-contract.md) — open when needed for depth
-- [references/layered-map-notes.md](references/layered-map-notes.md) — open when needed for depth
-- [references/map-pipeline-selection.md](references/map-pipeline-selection.md) — open when needed for depth
-- [references/prop-pack-contract.md](references/prop-pack-contract.md) — open when needed for depth
-- [references/tileset-and-prop-qc.md](references/tileset-and-prop-qc.md) — open when needed for depth
+- [Layered map notes](references/layered-map-notes.md)
+- [Map pipeline selection](references/map-pipeline-selection.md)
+- [Layered map contract](references/layered-map-contract.md)
+- [Prop pack contract](references/prop-pack-contract.md)
+- [Tileset and prop QC](references/tileset-and-prop-qc.md)
+- [Source and license](SOURCE.md)
 
 ## Output
 
-Tile/prop paths, preview composites, QC notes, residuals.
-
-## Absorbed depth (Keel-native)
-
-- [references/map-pipeline-selection.md](references/map-pipeline-selection.md)
-- [references/layered-map-contract.md](references/layered-map-contract.md)
-- [references/prop-pack-contract.md](references/prop-pack-contract.md)
-
-Default `engine_target` for Sylphx work is **Keel app assets + World geometry**, not Phaser/Godot/Unity.
+Return asset paths, engine/scene data, preview paths, checks performed, and
+material residuals.

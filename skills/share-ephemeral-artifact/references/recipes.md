@@ -1,37 +1,18 @@
-# Agent recipes — share non-secret files
+# Sharing recipes
 
-## Preflight scrub (always)
+## Repository artifact service
 
-```bash
-# fail if high-risk patterns appear
-if rg -n "AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9_-]{20,}|BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY|xox[baprs]-" "$FILE"; then
-  echo "REFUSE: scrub secrets first"; exit 2
-fi
-```
+Upload through the current CI or release interface, set the shortest useful
+retention, and return the artifact page or authenticated download URL.
 
-## A. 0x0.st (L1 hobby)
+## Approved object storage
 
-```bash
-# POST file; response is plain URL text when healthy
-curl -sS -F "file=@${FILE}" "https://0x0.st"
-# proof
-curl -sSI "$URL" | head
-```
+Upload through the product's native storage client. Use authenticated access or
+a short-lived signed URL for private material and record the object expiry or
+deletion path.
 
-Host is hobby-grade; uptime not guaranteed. Live probe host before depending on it.
+## Public temporary host
 
-## B. litterbox.catbox.moe (explicit temporary)
-
-```bash
-# time values commonly: 1h, 12h, 24h, 72h — confirm form fields if upload fails
-curl -sS -F "reqtype=fileupload" -F "time=24h" -F "fileToUpload=@${FILE}" \
-  "https://litterbox.catbox.moe/resources/internals/api.php"
-```
-
-## C. Prefer managed storage when durable
-
-If the file must survive or is product data → `wire-managed-backend-services` (BaaS Storage), not paste hosts.
-
-## Refuse
-
-Secrets, PII, env files, credential-bearing HAR/logs.
+Use the host's current documented upload command for public-safe material.
+Confirm that the returned URL opens and that the downloaded size matches the
+artifact. Return the host's stated retention with the URL.

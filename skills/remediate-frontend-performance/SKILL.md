@@ -5,29 +5,25 @@ description: "Remediate frontend performance with before/after path metrics."
 
 # Remediate Frontend Performance
 
-## Workflow
+Improve one user-visible frontend path and remeasure the same behavior.
 
-1. **Frame the user path** and metric (LCP, INP, FPS, bundle KB, long task ms).
-2. **Measure baseline** with the repo's real tooling (profiler, Lighthouse, browser perf, bundle analyzer).
-3. **Find the owning cause** (layout thrash, huge JS, images, main-thread work, chatty network).
-4. **Fix on the owning path** with the smallest complete change.
-5. **Re-measure** the same path and report deltas.
-6. **Stop** when the framed metric meets the target or only external blockers remain.
+## Method
 
-## Depth
+1. Define the user path, representative device/network, and metric such as LCP,
+   INP, FPS, bundle bytes, long tasks, memory, or startup time.
+2. Measure the current path with the repository's profiler, browser tooling,
+   Lighthouse, or bundle analyzer.
+3. Locate the owning cause: layout, JavaScript, images, rendering, main-thread
+   work, network, caching, hydration, or third-party code.
+4. Apply the smallest complete correction on that path.
+5. Rerun the same path, conditions, and metric. Check correctness,
+   accessibility, visual fidelity, and representative lower-end behavior.
+6. Report local, candidate, or production measurements at their observed layer.
 
-For detailed technique notes open [references/frontend-runtime-performance-method.md](references/frontend-runtime-performance-method.md).
-
-## Path
-
-- Baseline and after numbers are the same framed user path and metric.
-- Local numbers stay labeled local. A production claim uses production measurement.
+Open the [frontend runtime performance method](references/frontend-runtime-performance-method.md)
+for technique depth.
 
 ## Output
 
-Baseline · changes · after metrics · residuals
-
-## Archived depth
-
-If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
-
+Return the framed path, baseline, owning cause, correction, after result, and
+material residuals.

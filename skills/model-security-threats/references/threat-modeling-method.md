@@ -31,7 +31,7 @@ Attack or failure path:
 Security property and affected parties:
 Consequence and evidence-bounded likelihood:
 Existing controls and observed evidence:
-Disposition and designed controls:
+Decision and designed controls:
 Enforcement points, dependencies, and bypass assumptions:
 Verification and runtime observation:
 Residual risk, authority, owner, and review trigger:

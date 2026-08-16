@@ -50,16 +50,18 @@ their semantic parent.
 topology is a directed graph:
 
 - declare every edge and its reason;
-- reject hidden transitive dependencies and synchronous dependency cycles;
+- expose transitive dependencies and keep synchronous dependency edges acyclic;
 - keep critical shared substrate small, generic and failure-aware;
 - allow bidirectional collaboration only through separately owned contracts;
   and
 - use asynchronous reconciliation where reciprocal updates must converge
   without lockstep availability.
 
-No product should have to call an unrelated "main platform" merely to prove it
-belongs to the portfolio. Shared identity, policy distribution, discovery and
-billing remain explicit dependencies selected from their real contracts.
+Each product calls its owned dependencies directly and uses a shared platform
+only for capabilities that the platform semantically owns.
+Portfolio membership follows from the product identity and contract. Shared
+identity, policy distribution, discovery and billing remain explicit
+dependencies selected from their real contracts.
 
 ## Classification model
 
@@ -96,15 +98,15 @@ product.
 
 Select for a deliberately shared platform capability such as identity,
 entitlement evaluation, billing primitives, notifications or policy
-distribution. Substrate owns its generic contract and state only. It does not
-own each consuming product's user promise or domain policy.
+distribution. Substrate owns its generic contract and state. Each consuming
+product retains its user promise and domain policy.
 
 ### Connector
 
 Select for a replaceable edge between two owners. A connector may map schemas,
 authenticate, authorize, route, meter, retry, reconcile and expose
-observability. It must not become the durable home of policy or facts that
-belong to either side.
+observability. Each connected product remains the durable owner of its policy
+and facts.
 
 ### Composed experience
 
@@ -141,17 +143,17 @@ none of the hard negatives:
 8. **Change independence** — roadmap or release independence is real rather
    than a speculative preference.
 
-Keep the unit inside its product when any hard negative holds:
+Keep the unit inside its product when any cohesion condition holds:
 
-- it has no useful standalone journey or outcome;
-- it is mostly UI, configuration or orchestration of one owning product;
-- it cannot function without synchronous access to parent internals;
-- its state and invariants cannot be assigned without duplicating authority;
+- its useful journey or outcome belongs to the parent product;
+- it is primarily UI, configuration, or orchestration of one owning product;
+- operation requires synchronous access to parent internals;
+- its state and invariants remain under the parent's authority;
 - most changes require lockstep release with the parent;
-- separation adds discovery, auth, entitlement, billing, networking, support
-  and compatibility surfaces without material option value; or
-- the only reason is a large file, team chart, fashionable architecture, code
-  volume or an arbitrary feature count.
+- cohesion avoids extra discovery, auth, entitlement, billing, networking,
+  support, and compatibility surfaces with little option value; or
+- code modularity addresses the large file, team boundary, architecture, code
+  volume, or feature-count concern.
 
 The test decides product separation, not code modularity. A kept-together
 product still applies Capability-first modules and narrow contracts internally.
@@ -199,8 +201,8 @@ Every directed product edge names:
 - outage, partial failure, stale state and static-stability behavior; and
 - replacement, compatibility, migration and retirement tests.
 
-Prefer generated clients and adapters from one schema authority. Do not make
-each consumer reimplement protocol policy.
+Prefer generated clients and adapters from one schema authority so consumers
+share protocol policy.
 
 ### Cross-product workflows
 
@@ -214,9 +216,9 @@ one explicit owner. Use:
   timers, retries, compensation and visible state; or
 - a customer-owned sequence when products remain intentionally independent.
 
-Do not hide a distributed transaction in the connector layer. The process
-manager owns progress and compensation, while each product retains authority
-over its own state transitions.
+Assign distributed progress and compensation to the process manager while each
+product retains authority over its own state transitions. Keep connectors as
+transport and translation edges.
 
 ## Shared substrate without a new monolith
 
@@ -233,15 +235,15 @@ experience benefits from one generic capability. Keep it narrow:
 - a notification service owns delivery—not the domain decision to notify; and
 - an experience shell owns navigation and projections—not peer state.
 
-Avoid a synchronous global substrate dependency on every serving request when
+Keep serving requests independent of a synchronous global substrate when
 the product availability contract requires static stability. Distribute
-admitted state, cache safely or degrade explicitly; do not duplicate semantic
-authority.
+admitted state, cache safely or degrade explicitly while preserving one
+semantic authority.
 
 ## Experience, packaging and commercial independence
 
-Independent products do not require fragmented customer experience. A suite
-may provide:
+Independent products can share a coherent customer experience. A suite may
+provide:
 
 - one identity and organization model;
 - one navigation shell and design system;
@@ -263,12 +265,12 @@ deployment and runtime cell
 
 A Commercial ADR selects independent SKU, add-on, free companion, bundle,
 profit center, cost center, internal settlement or external pricing. The
-portfolio method must not invent those decisions from architecture.
+commercial decision owner selects those outcomes separately from architecture.
 
 ## Dogfooding contract
 
-Dogfooding is proof that a product is usable, not permission for a privileged
-integration:
+Dogfooding exercises the supported product contract with ordinary integration
+authority:
 
 1. Internal consumers use the same versioned semantic contract and supported
    SDK or connector available to the declared customer class.
@@ -283,11 +285,10 @@ integration:
    boundary. A diagram or claim of dogfooding is not evidence.
 
 Products should prefer one another when the peer is a valid product-grade fit.
-Dogfooding does not require using an internal product when it cannot meet the
-declared need, and it does not justify contaminating the consumer with
-provider-specific internals.
+Dogfooding selects an internal product when it meets the declared need and
+preserves a provider-neutral consumer boundary in every case.
 
-## Anti-fragmentation review
+## Portfolio cohesion review
 
 Before accepting the portfolio, calculate permanent complexity rather than
 construction effort:
@@ -305,10 +306,10 @@ permanent complexity than separation creates. Extract when the option value,
 customer value, independent evolution or fault/ownership boundary clearly
 exceeds the full lifecycle cost.
 
-Agentic implementation reduces construction cost but does not eliminate public
-concepts, latency, consistency, compatibility, support, security or operational
-cost. Use agents aggressively to build and verify the selected architecture;
-do not use cheap code generation as evidence that fragmentation is free.
+Agentic implementation reduces construction cost while public concepts,
+latency, consistency, compatibility, support, security, and operational cost
+remain lifecycle inputs. Use agents aggressively to build and verify the
+selected architecture and decide fragmentation from full lifecycle cost.
 
 ## Evidence and acceptance
 
@@ -338,8 +339,8 @@ ingestion, evidence storage and a portfolio dashboard.
   unless it offers a genuinely independent evidence product contract.
 - The portfolio dashboard is a composed experience over authorized projections,
   not the writer of work, repository or evidence truth.
-- Connectors subscribe, translate and reconcile owned contracts. They do not
-  create a second work or repository ledger.
+- Connectors subscribe, translate, and reconcile owned contracts while work and
+  repository state remain with their current owners.
 - Runtime cells may later partition any high-scale product by tenant for fault
   isolation. That deployment choice does not create or rename a product.
 

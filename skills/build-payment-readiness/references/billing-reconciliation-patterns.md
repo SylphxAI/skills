@@ -11,18 +11,18 @@ payment_failed     capture_failed    ledger_mismatch   entitlement_mismatch  ref
 
 Refund/dispute path: `refund_or_dispute -> ledger_adjusted -> entitlement_adjusted -> customer_notified -> support_closed`.
 
-## Rule IDs
+## Operating principles
 
-- `billing-recon-1` — Define the authoritative ledger and derived read models before reconciling.
-- `billing-recon-2` — Use stable correlation keys: customer, order, invoice, provider transaction, entitlement, refund, payout.
-- `billing-recon-3` — Separate order state, payment state, invoice state, ledger entry, entitlement state, tax record, and payout state.
-- `billing-recon-4` — Money movement and access changes must be idempotent and auditable.
-- `billing-recon-5` — Exceptions need severity by money risk, access risk, customer impact, and accounting impact.
-- `billing-recon-6` — App store receipts, web payments, manual invoices, credits, and marketplace payouts need channel-specific handling.
-- `billing-recon-7` — Refunds, chargebacks, disputes, failed renewals, and partial captures must update both ledger and entitlement projections.
-- `billing-recon-8` — Support needs a single timeline, not raw provider dashboards only.
-- `billing-recon-9` — Automated repair must leave before/after evidence and avoid double credits.
-- `billing-recon-10` — Reconciliation metrics should track exception rate, age, money at risk, access at risk, repair success, and repeat causes.
+- Define the authoritative ledger and derived read models before reconciling.
+- Use stable correlation keys: customer, order, invoice, provider transaction, entitlement, refund, payout.
+- Separate order state, payment state, invoice state, ledger entry, entitlement state, tax record, and payout state.
+- Money movement and access changes must be idempotent and auditable.
+- Exceptions need severity by money risk, access risk, customer impact, and accounting impact.
+- App store receipts, web payments, manual invoices, credits, and marketplace payouts need channel-specific handling.
+- Refunds, chargebacks, disputes, failed renewals, and partial captures must update both ledger and entitlement projections.
+- Support needs a single timeline, not raw provider dashboards only.
+- Automated repair must record before/after state and preserve exactly-once credits.
+- Reconciliation metrics should track exception rate, age, money at risk, access at risk, repair success, and repeat causes.
 
 ## Decision table
 
@@ -35,7 +35,7 @@ Refund/dispute path: `refund_or_dispute -> ledger_adjusted -> entitlement_adjust
 | Payout balance mismatch | Creator trust risk | Recompute payout ledger | Sales, fees, refunds, payouts |
 | Tax/invoice mismatch | Compliance/accounting risk | Route to finance/legal owner | Invoice, tax rate, jurisdiction |
 
-## Reconciliation checklist
+## Reconciliation checks
 
 - Every money event has idempotency key, provider reference, ledger entry, and status.
 - Entitlements derive from durable commerce events, not UI assumptions.

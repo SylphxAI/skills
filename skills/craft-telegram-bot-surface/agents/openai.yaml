@@ -1,4 +1,0 @@
-interface:
-  display_name: "Craft Telegram Bot Surface"
-  short_description: "Sole 2026 Telegram surface: sparse slash, edit trees, Rich Message, visibility, bot-to-bot."
-  default_prompt: "Use $craft-telegram-bot-surface to hard-cut this Telegram bot to sparse slash, edit trees, Rich Message only, public/ephemeral visibility, and bot-to-bot guards—no dual paths."

@@ -15,20 +15,20 @@ Open when defining or reviewing `callback_data` and `callback_query` handlers.
    `race|c|<course_key>`, `follow|on|<lens>|<mode>|<mins>`.
 2. **Opaque small ids.** Prefer short server-side keys over full names/URLs.
    If a real id does not fit in 64 bytes, store a handle and resolve server-side.
-3. **No secrets.** Tokens, signed session material, PII, or authz proofs do not
-   belong in `callback_data`. Authorize on the server from chat/user context.
-4. **Idempotent handlers.** Double-taps and replays must not double-subscribe,
-   double-charge, or corrupt state. Prefer upserts and explicit disable paths.
+3. **Server-side secrets.** Keep tokens, signed session material, personal data,
+   and authorization material on the server. Authorize from chat and user context.
+4. **Idempotent handlers.** Make double-taps and replays converge to one
+   subscription, charge, or state transition through upserts and explicit disable paths.
 5. **Stale UI.** If the probe/data epoch changed, edit with a clear “refresh”
-   state or rebuild the keyboard; do not silently no-op.
-6. **Fail closed on parse errors.** Unknown prefix → toast + optional home
-   keyboard. Never crash the webhook.
+   state or rebuild the keyboard with a visible refresh result.
+6. **Handle parse errors.** Unknown prefix → toast + optional home keyboard,
+   followed by a normal webhook response.
 7. **Thread continuity.** When editing or replying, preserve
    `message_thread_id` if the original interaction was in a topic.
 8. **Answer policy.**
    - Navigation success: `answerCallbackQuery` with empty text
    - Validation error: short `text` (and `show_alert` only for hard blocks)
-   - Long results: edit/send message body; do not stuff content into the toast
+   - Long results: edit or send the message body; reserve the toast for a short status
 
 ## Edit vs new message
 
@@ -47,14 +47,13 @@ Canonical progressive pattern:
 2. Pick dimension (e.g. lens)  
 3. Pick mode (realtime / interval / off)  
 4. Confirm by executing + short success message  
-5. “Manage” lists current state as buttons, not a new slash family  
+5. “Manage” lists current state as buttons under the existing settings entry
 
-Do **not** register `/subscribe_edge_30m`, `/unsubscribe_p`, etc.
+Register the user job once and express lens, cadence, and enabled state through the keyboard tree.
 
 ## Security / tenancy
 
-- Resolve authorization from bot membership, chat admin rules, and product ACL —
-  not from the callback string alone.
+- Resolve authorization from bot membership, chat admin rules, and the product ACL.
 - Group callbacks may be pressed by any member who sees the message; design for
   that or restrict via server checks.
 - Rotate protocol version in the prefix (`v2|...`) only when old messages may

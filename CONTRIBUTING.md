@@ -1,38 +1,37 @@
 # Contributing
 
-## What belongs here
+## Package shape
 
-Specialized **task capabilities** the agent cannot do well without packaged
-procedure, scripts, or org-specific gotchas. Every package is a `SKILL.md`
-job. Qualification is optional.
+A skill represents one recurring job that benefits from a reusable method.
+Create `skills/<name>/SKILL.md` with the standard `name` and `description`
+frontmatter. Put detailed material in references and executable helpers in
+scripts only when the main method uses them.
 
-## What does not
+The best contribution usually improves an existing semantic owner. A new
+package is appropriate when users request an independently meaningful job with
+its own loading description and output.
 
-- Generic textbook checklists
-- Company-wide policy encyclopedias
-- Always-on essays
-- Skills that only exist to route to other skills
+## Writing
 
-## Authoring
+- Lead with the action path and expected result.
+- Use plain product and domain language.
+- State the permitted path, owner, boundary, or selection condition directly.
+- Open references only where they help the current task.
+- Keep one source for each instruction or fact.
+- Use host-specific metadata for a real consumed setting outside the
+  `SKILL.md` contract.
 
-1. Prove a real agent gap on a recurring job.
-2. Follow `skills/author-skill`.
-3. Keep `SKILL.md` under ~500 lines; put depth in `references/`.
-4. Do not add `capability.json`. The job lives in `SKILL.md`.
-5. Do not add `qualification.json` unless you filed a qualify run.
-6. Keep the catalog inside the Codex ~8k description listing class.
-7. Run `npm test`.
+## Verification
 
-## Commit build
+Run the check that exercises the changed behavior. For Markdown-only changes,
+the pull-request workflow validates the Agent Skills format and local links.
+For bundled scripts, run their syntax check and tests as well.
 
-`npm test` is this repository's commit build. The method for writing or
-cutting CI in **any** installed harness is
-`skills/implement-continuous-integration`. Do not add slogan, brand,
-heading-list, file-existence-as-architecture, coverage-floor, or meta-check
-tests. A red test must be a real product defect.
+CI remains one fast commit build. A failing merge check identifies a broken
+skill contract, resource link, script, or script test.
 
-## PR complete
+## Pull requests
 
-Exact branch passes `npm test`; catalog rebuilt with qualification projection;
-no residual references to deleted packages; no capability claims qualification
-without evidence.
+Describe the job or behavior improved, the changed path you ran, and any user
+visible migration. Local, landed, released, and live state are reported as
+separate facts.

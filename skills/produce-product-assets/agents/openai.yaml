@@ -1,4 +1,0 @@
-interface:
-  display_name: "Produce Product Assets"
-  short_description: "Produce product assets to brief and brand constraints."
-  default_prompt: "Run Produce Product Assets for the active task/workspace."

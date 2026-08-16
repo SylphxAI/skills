@@ -1,6 +1,7 @@
 # Video→sprite pipeline notes
 
-Use only when the host has video generation + ffmpeg. Still export Keel-ready RGBA sheets; do not couple the title to a foreign app-builder runtime.
+Use this path when the host has video generation and ffmpeg. Export portable
+RGBA sheets into the product repository's selected runtime layout.
 
 
 
@@ -17,7 +18,7 @@ Use only when the host has video generation + ffmpeg. Still export Keel-ready RG
 5. sample              even indices for N in {8,16,24,48}
 6. normalize           crop alpha bbox → scale body height → feet line
 7. export              sprite_XX.png, strip, grid, preview GIF
-8. meta                pipeline-meta.json + README.txt
+8. summary             README.txt
 ```
 
 ## Suggested folder layout
@@ -38,7 +39,6 @@ Use only when the host has video generation + ffmpeg. Still export Keel-ready RG
     run-preview-24.gif
     ...
   prompt-used.txt
-  pipeline-meta.json
   README.txt
 ```
 
@@ -50,7 +50,7 @@ Processor shells out to `ffmpeg` when available:
 ffmpeg -y -i video.mp4 -vsync 0 frames-raw/frame_%04d.png
 ```
 
-If ffmpeg is missing, fail with a clear install message. Do not invent frames.
+If ffmpeg is missing, fail with a clear install message and preserve the source as the only frame authority.
 
 ## Chroma key
 
@@ -91,8 +91,8 @@ Goal: roughly 0.6–1.2s visual loop for previews (not necessarily matching sour
 
 ## When not to use this pipeline
 
-- Need hard pixel edges and fixed multi-row grids → `$generate2dsprite`
-- Map props / tilesets → `$generate2dmap` + `$generate2dsprite`
+- Need hard pixel edges and fixed multi-row grids → `produce-game-2d-sprites`
+- Map props / tilesets → `produce-game-2d-map-assets` + `produce-game-2d-sprites`
 - Non-Grok agent without `image_to_video`
 - User wants production-perfect hero kit with many actions — video path is locomotion experiment first
 
@@ -124,7 +124,7 @@ If matching a project sprite: use `image_edit` with the existing frame as refere
 
 Write **one short present-tense shot** (1–2 sentences). Constraints:
 
-| Do | Don't |
+| Preferred pattern | Quality boundary |
 | --- | --- |
 | Run/walk **in place** (treadmill) | Travel across the screen |
 | Locked camera | Pan, zoom, orbit, handheld |

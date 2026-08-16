@@ -20,9 +20,9 @@ same product in the same domain language. Resolve:
   sitemap, indexability, and link semantics for applicable public routes.
 
 Public landing and brand copy lead with product promise, category, and
-ambition. Do not invent testimonials, customer logos, live prices, named
-compliance badges, or guarantees. Finish so public promise and product
-workspace share the same domain language.
+ambition. Use authorized testimonials, customer logos, current prices, owned
+compliance claims, and supported guarantees. Finish so public promise and
+product workspace share the same domain language.
 
 ## Surface finish
 
@@ -39,8 +39,8 @@ Inspect the applicable full denominator:
   long/RTL text, locale, zoom/text scaling, reduced motion, high contrast,
   assistive technology, minimum device/network, and low-end paths.
 
-A polished landing page cannot hide a rough authenticated product. A polished
-dashboard cannot compensate for broken onboarding, billing, support, or exit.
+Finish quality covers the landing page, authenticated product, onboarding,
+billing, support, and exit as one coherent journey.
 
 ## Visual and content coherence
 
@@ -79,5 +79,6 @@ failure/recovery states. Verify visual layout, interaction behavior, content
 truth, metadata, accessibility, performance, and regression behavior against
 the exact candidate.
 
-Do not treat static mockups, source review, one viewport, synthetic-only text,
-or a passing component test as proof that the integrated product is finished.
+Run the integrated product journey; static mockups, source review, one viewport,
+synthetic-only text, and a passing component test cover narrower review
+surfaces.

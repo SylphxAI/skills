@@ -1,0 +1,220 @@
+# Game Thesis And Loops
+
+## Contents
+
+1. Success contract
+2. Evidence and comparator research
+3. Player promise and design pillars
+4. Experience-to-mechanics map
+5. Nested loop architecture
+6. Challenge, learning, failure, and recovery
+7. First-time experience
+8. Content, pacing, and distinctiveness
+9. Review checklist
+
+## 1. Success contract
+
+A successful game creates the intended experience for a specific audience, earns voluntary repeat play or advocacy appropriate to its archetype, monetizes real value sustainably, runs well on its promised devices, protects player trust, and operates, scales, and recovers autonomously.
+
+Define success as a success model with multiple constraints:
+
+| Dimension | Design question | Candidate evidence | Failure signal |
+| --- | --- | --- | --- |
+| Player value | Does the intended audience understand and desire the experience? | naive playtests, repeat choice, qualitative reasons, mastery signals | confusion, indifference, coerced continuation |
+| Distinctiveness | Can players explain why this game is worth choosing or discussing? | recall, comparison language, organic clips/stories, store-message comprehension | interchangeable pitch or copied feature set |
+| Commercial viability | Does the business model convert perceived value into sustainable contribution? | payer conversion, net LTV, margin, payer retention, purchase reasons | refunds, regret, concentration risk, acquisition payback failure |
+| Product quality | Is play responsive, stable, readable, accessible, and available on the target device? | startup, frame pacing, crash-free play, accessibility tests, device matrix | jank, heat, input lag, blocked players, lost progress |
+| Trust and safety | Can players understand cost and state, take healthy breaks, control contact, and recover from harm? | sentiment, opt-outs, reports, support outcomes, spend controls | deception, pressure, abuse, unresolved reports, child-safety breach |
+| Autonomous operability | Can bounded automation sustain content, balance, support, moderation, experiments, and recovery within declared authority? | coverage, error rate, capacity, rollback and recovery outcomes | manual queues, deferred automation, brittle operations, unowned moderation |
+
+Choose metric semantics by commercial archetype. A premium narrative game may optimize completion, satisfaction, reviews, sequels, and referrals; a live-service collector may depend on cohort retention and recurring spend.
+
+Define baseline, cohort, market, platform, window, target, guardrails, confidence, and decision for every numeric goal. An external benchmark is context, not a guarantee.
+
+Treat durable net value as the commercial outcome: gross revenue minus platform fees, acquisition, infrastructure or compute, rights, fraud, refunds, tax, and autonomous operations, constrained by trust and solvency. Use current external spend and runtime cost for construction decisions.
+
+## 2. Evidence and comparator research
+
+Start with a source-bounded comparator set using current product builds, primary developer material, platform data, relevant public filings, and measured play.
+
+| Comparator role | Selection rule | Extract | Keep separate |
+| --- | --- | --- | --- |
+| Direct genre leader | Same primary fantasy and audience/job | core verbs, session arc, friction, differentiation, player language | that its systems caused revenue |
+| Adjacent experience leader | Excels at one intended feeling | feedback timing, learning, pacing, expressive identity | that the mechanic transfers unchanged |
+| Commercial leader | Similar business and content economics | offer surfaces, value framing, payer/non-payer experience | private conversion or LTV without evidence |
+| Social/viral leader | Similar relationship or share context | recipient value, co-play structure, artifact, safety burden | that raw shares equal retained users |
+| Technical/reach leader | Similar devices, inputs, locales, or accessibility needs | quality tiers, UI/input adaptation, settings, startup path | hidden engine architecture |
+
+For each borrowed idea, write:
+
+```text
+Observed mechanism:
+Source and date:
+Player job served:
+Dynamics it appears to create:
+Player-attention, runtime, evidence, rights, safety, and operating implications:
+Why it may transfer here:
+What experiment could disprove transfer:
+Capability selection and reason:
+Automated exposure hypothesis:
+```
+
+Research for differentiation. Build requested and promise-essential reversible capabilities to scale, reuse shared primitives where appropriate, and let the game's promise and constraints determine which other systems receive an extension point, an authority handoff, progression-based exposure, or omission.
+
+## 3. Player promise and design pillars
+
+Write the promise in one sentence:
+
+> For `<target player in context>`, this is a `<archetype>` where they `<distinctive verbs and fantasy>`, producing `<specific feelings or social meaning>` within `<session and platform constraints>`.
+
+Then define three to five pillars. Each pillar needs observable consequences.
+
+| Pillar | Player should say/do | Required dynamics | Candidate mechanics | Evidence |
+| --- | --- | --- | --- | --- |
+| Example: readable improvisation | “I saw the opening and made my own plan” | clear state, multiple viable actions, recoverable surprise | telegraphs, tool combinations, short undo window | plan explanation, varied successful strategies |
+
+Each pillar states the limits it creates for session administration, social
+pressure, competition, commerce, randomness, and player time. Those limits
+keep mechanics and operations aligned with the player promise.
+
+Pillars choose player-facing tradeoffs. A useful pillar configures a capability, alters content, or decides a product measure.
+
+## 4. Experience-to-mechanics map
+
+Design in both directions:
+
+```text
+player experience wanted
+  -> observable decisions and relationships during play
+  -> mechanics, content, controls, rules, feedback, and economy
+
+implemented mechanic
+  -> runtime interactions and dominant strategies
+  -> intended and unintended player experience
+```
+
+Use this map:
+
+| Intended experience | Observable player behaviour | Dynamic | Mechanic/content | Feedback | Risk/test |
+| --- | --- | --- | --- | --- | --- |
+
+Name experiences precisely: mastery, tension, discovery, fellowship, expression, power fantasy, curiosity, relief, awe, humour, or contemplation is more actionable than “fun.”
+
+Treat autonomy, competence, and relatedness as useful hypotheses within the game's own player model.
+
+## 5. Nested loop architecture
+
+Every loop must end in a meaningful updated state and a reason for the next choice.
+
+| Loop | Typical shape | Design output | Common failure |
+| --- | --- | --- | --- |
+| Moment | perceive -> decide -> act -> immediate feedback -> update mental model | input-response and action-feedback matrix | delayed, ambiguous, or decorative response |
+| Encounter | choose goal -> face challenge -> outcome -> recovery/reward -> next choice | encounter grammar and difficulty variables | one dominant solution or arbitrary loss |
+| Session | enter with intent -> progress/variation -> climax -> closure -> future hook | session beat map and exit promise | chores before value or no clean stopping point |
+| Meta | invest/unlock/express -> gain possibility -> face changed challenge -> choose next goal | progression graph and content unlock logic | numbers grow while play stays identical |
+| Social/live, if selected | relationship/event -> coordinated or expressive action -> persistent consequence | relationship loop and operating cadence | obligation, spam, empty guilds, moderation debt |
+
+For every loop, specify entry trigger, player question, choices, state, feedback, reward meaning, failure/recovery, variation, exit, and dependency on another loop.
+
+The moment and encounter loops must remain understandable and satisfying before extrinsic rewards carry the experience.
+
+Give players stopping points. Endless pressure can raise session length while lowering trust, return quality, and long-term value.
+
+Progression should create new decisions, expression, access, mastery, or story—not merely larger numbers against proportionally larger enemies.
+
+## 6. Challenge, learning, failure, and recovery
+
+Model challenge as demand placed on a known skill or decision under readable conditions.
+
+### Learning sequence
+
+```text
+introduce one idea -> allow safe practice -> test recognition -> combine with known ideas
+-> add pressure or variation -> invite mastery/expression -> revisit in a new context
+```
+
+Specify:
+
+- assumed motor, cognitive, strategic, social, language, and genre literacy;
+- information available before commitment;
+- timing, precision, planning, memory, resource, and coordination demands;
+- accessibility or assist options that preserve the intended decision;
+- mastery signals and advanced depth;
+- when the game adapts difficulty, offers help, or lets the player choose.
+
+### Failure taxonomy
+
+| Failure class | Player interpretation to seek | Recovery | Select a path free of |
+| --- | --- | --- | --- |
+| Knowledge gap | “I learned what mattered” | clearer cue, safe retry, optional explanation | hidden rule or unexplained counter |
+| Execution gap | “I can improve that action” | fast retry, practice, input options | long reload or lost paid resource |
+| Strategy gap | “I chose poorly and see alternatives” | readable post-state, loadout/plan change | one secret viable build |
+| Variance | “I accepted a bounded risk” | known distribution, mitigation, bad-luck protection where needed | disguised inevitability or paid escape |
+| Social coordination | “Our roles/timing can improve” | rejoin, communication tools, role clarity | public blame or unrecoverable mismatch |
+
+Challenge requires agency, legibility, and a plausible improvement path. Grind, obscurity, inflated health, and paid relief are not substitutes.
+
+Measure comprehension, perceived fairness, confidence, frustration cause, strategy diversity, and mastery—not win rate alone.
+
+Assistance can change timing, information, input burden, damage, checkpoints, or complexity. State which decision or feeling must remain intact.
+
+## 7. First-time experience
+
+Storyboard the activation chain:
+
+```text
+launch
+-> first rendered interactive state
+-> first meaningful input
+-> first understood response
+-> first meaningful choice
+-> first competence moment
+-> first emotional or social payoff
+-> first self-chosen goal
+-> clean stop or next-session promise
+```
+
+For every beat record target context, dependency, maximum tolerated friction hypothesis, observable success, confusion risk, recovery, and measurement event.
+
+Ask for account, download, tracking, contacts, notification, microphone, camera, or purchase permission at its understandable value moment under current platform rules.
+
+Prefer playable guest state, background/lazy loading, resumable progress, contextual teaching, skip/replay, and safe experimentation where the game permits them.
+
+Test with genuinely naive players. Designer narration invalidates evidence about comprehension.
+
+Track time to first input, understood feedback, choice, competence, and payoff separately. Fast rendering does not prove fast time-to-fun.
+
+## 8. Content, pacing, and distinctiveness
+
+Define a content grammar rather than a list of levels:
+
+- atomic mechanics and verbs;
+- encounter ingredients and combination rules;
+- intensity, novelty, mastery, narrative, and recovery beats;
+- authored versus systemic variation;
+- reuse that changes decisions rather than only presentation;
+- agent-generation compute, verification/QA surface, rights/provenance, localization coverage, and content burn;
+- sustainable cadence, bounded automation, validation, rollback, and recovery needed from launch.
+
+Use a pacing map across the first five minutes, first session, first day, early mastery, mid-game, endgame, and returning-player path. Times are project-specific; the sequence must show tension, relief, novelty, choice, goal visibility, and clean exits.
+
+A live-service promise is also a content and operations contract. Build selected generation, provenance, localization, testing, moderation, capacity, rollback, and recovery capabilities now; bounded automation may adjust exposed cadence when quality, safety, capacity, or freshness conditions change.
+
+“Vibe” is coherent authorship: fantasy, colour, shape, motion, sound, music, writing, reward ceremony, community language, and shareable moments reinforce the same promise.
+
+Topic-worthiness comes from distinctive player stories, skill, expression, surprise, relationships, creation, or cultural relevance. A referral reward alone does not make a game discussable.
+
+## 9. Review checklist
+
+- The target player and play context are narrow enough to make tradeoffs.
+- The promise and pillars configure selected capabilities, player-facing
+  tradeoffs, operating needs, and explicit limits.
+- Comparator evidence separates observation from causation and transfer hypothesis.
+- Mechanics, dynamics, and intended experience map in both directions.
+- Moment, encounter, session, meta, and selected social/live loops have clear states and dependencies.
+- Challenge is readable, fair, recoverable, accessible, and deep enough for mastery.
+- FTUE reaches meaningful play before unnecessary account, permission, download, or monetization friction.
+- Content variety has a production and localization model.
+- The game has a coherent signature worth remembering or sharing.
+- Every selected capability has contextual experience, workload, failure, recovery and evidence expectations; “scale-ready” is not architecture prose.
+- The smallest proof tests the highest-risk part of the thesis while verified slices still converge on the complete selected target.

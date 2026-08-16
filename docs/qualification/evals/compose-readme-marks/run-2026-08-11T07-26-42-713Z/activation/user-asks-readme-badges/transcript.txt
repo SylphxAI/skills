@@ -1,9 +1,0 @@
-Done. Created `README-marks.md` with paste-ready snippets and verified every image URL live (HTTP 200, `image/svg+xml`).
-
-**What's in it**
-- **Hero section** — Sylphx Mark banner (`form=hero`, `art=wave`, `theme=tokyonight`, ambient animation) plus H1/tagline placeholder block, with a note to keep the real name/pitch as markdown text.
-- **Badge row** — four shields.io dynamic chips with descriptive alt text and purpose labels: `Build status` / `label=build` (GitHub Actions), `Test coverage` / `label=coverage` (Codecov), `Latest version` / `label=version` (npm), `License` / `label=license`.
-- **Placeholder map** — `OWNER`, `REPO`, `ci.yml`, `your-package`, `PROJECT_NAME`, `ONE_LINE_PITCH` documented in an HTML comment so nothing renders in the README.
-- **Swap-ins** — version badges for PyPI/crates.io/Maven/RubyGems, Coveralls coverage alternative, a static Mark badge option, and banner knob reference.
-
-One heads-up: the skill's recipe pointed at `mark.sylphx.com/api/v1/banner`, but the live API (probed) is now `/api/v1/mark?form=hero&art=...` — the file uses the verified paths, and the catalog at `https://mark.sylphx.com/api/v1/catalog` confirms the current param names. Want me to also update the skill's `recipes.md` with the corrected endpoint?

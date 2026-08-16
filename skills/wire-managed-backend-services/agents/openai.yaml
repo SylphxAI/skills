@@ -1,4 +1,0 @@
-interface:
-  display_name: "Wire Managed Backend Services"
-  short_description: "Attach leftover BaaS (flags, search, analytics, AI gateway) with proof."
-  default_prompt: "Wire the leftover managed backend capability via BaaS; prove it with a real postcondition."

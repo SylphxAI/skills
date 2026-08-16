@@ -11,7 +11,7 @@ Open when choosing **which native control** carries a job.
 - Rare system jobs that must be typeable without a message footer
 - Discoverability when the user types `/`
 
-**Bad for:**
+**Use another primitive for:**
 - Filters (edge vs p, sort, date range)
 - Entity selection (course, race, user, file)
 - Multi-step wizards
@@ -48,25 +48,26 @@ messages when tapped.
 
 **Good for:** persistent private-chat chrome for a small set of frequent actions.
 
-**Bad for:** group chats (noisy), deep trees, per-message contextual actions
-(use inline), or anything that should not pollute chat history as plain text.
+**Use inline keyboards for:** group chats, deep trees, and per-message
+contextual actions. Reply keyboards fit deliberate persistent private-chat
+chrome.
 
 Prefer inline keyboards for product bots unless private-chat chrome is a
 deliberate product choice. Always offer a way to remove the reply keyboard.
 
 ## ForceReply / free text
 
-Use only when the user must supply unconstrained content (search string, note,
-code). After capture, return to buttons. Do not design the main IA as “remember
-twelve slash forms.”
+Use when the user must supply unconstrained content such as a search string,
+note, or code. After capture, return to discoverable buttons and a small set of
+entry commands.
 
 ## Deep links (`t.me/bot?start=payload`)
 
 **Good for:** share links, install attribution, binding a resource once.
 
-**Bad for:** everyday navigation that should be a button tree inside chat.
+**Use button trees for:** everyday navigation inside chat.
 
-Payload is limited and public to the client path — never secrets.
+Payload is limited and public to the client path; store secrets on the server.
 
 ## Web Apps / Login Widget
 
@@ -103,14 +104,16 @@ Would CLI people add a flag/subcommand?→ almost always a button, not a slash
 **Good for:** group personal help, settings, errors, per-user status — only the
 invoking user (and bot) should see them.
 
-**Bad for:** shared digests, public tips, anything others must audit in-chat.
+**Use durable shared messages for:** digests, public tips, and information that
+others audit in chat.
 
-See [platform-2026.md](platform-2026.md) before implementing.
+See [Telegram platform](telegram-platform.md) before implementing.
 
 ## Guest mode (Bot API 10.0+)
 
 **Good for:** @summon helpers without adding the bot to the group.
 
-**Bad for:** products that need history, membership, or continuous presence.
+**Use ordinary bot membership for:** products that need history, membership,
+or continuous presence.
 
-See [platform-2026.md](platform-2026.md).
+See [Telegram platform](telegram-platform.md).

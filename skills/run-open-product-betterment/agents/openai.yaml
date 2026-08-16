@@ -1,4 +1,0 @@
-interface:
-  display_name: "Run Open Product Betterment"
-  short_description: "Run open product betterment: scout high-EV work, land, re-measure."
-  default_prompt: "Run this skill on the active workspace."

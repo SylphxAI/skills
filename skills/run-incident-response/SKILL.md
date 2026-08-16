@@ -1,51 +1,32 @@
 ---
 name: run-incident-response
-description: "Run production incident response to mitigation and learning."
+description: Coordinate a production incident from declaration through mitigation, recovery, and learning. Use for live outages, elevated errors, security events, or material data-integrity risk.
 ---
 
 # Run Incident Response
 
-Coordinate a production incident to mitigation and truthful close.
+Restore safe service quickly while preserving clear ownership and truthful communication.
 
-## When to use
+## Method
 
-- Live outage, elevated error rate, data loss risk, or security incident
-- User-visible production failure needing command and mitigation
+1. Declare the incident, commander, severity, affected users, current impact, start time, and communication channel.
+2. Stabilize users and conserved data with the fastest safe reversible mitigation available.
+3. Communicate observed facts, actions underway, user guidance, and the next update time.
+4. Preserve logs, traces, metrics, deploy identities, and relevant state needed for diagnosis.
+5. Locate the owning failure through current telemetry, recent changes, reproduction, and dependency status.
+6. Apply the durable repair or permanent mitigation at the owning layer.
+7. Confirm recovery through the affected customer path and the telemetry that originally showed impact.
+8. Close active response when user impact is resolved and operational ownership is clear.
+9. Record cause, contributing conditions, detection and response improvements, and follow-up owners in the team's incident system.
 
-## Workflow
+## Incident updates
 
-1. **Declare.** Severity, scope, impact, command owner. Start an incident record.
-2. **Stabilize.** Mitigate user harm first (rollback, disable, shed load). Prefer reversible actions.
-3. **Communicate.** Status to stakeholders with facts only; no false ETAs.
-4. **Diagnose.** Reproduce and find owning cause after mitigation is underway.
-5. **Resolve.** Land the fix or permanent mitigation with evidence.
-6. **Learn.** Short postmortem: cause, detection gaps, action items with owners.
+Each update should state:
 
-## Record
+- current user impact and scope;
+- confirmed observations;
+- mitigation or repair in progress;
+- current service state; and
+- next update time or closure condition.
 
-Prefer the schema in [references/active-incident-record.schema.json](references/active-incident-record.schema.json) when machine form helps.
-
-Read [references/full-standard.md](references/full-standard.md) only for extended severity definitions and communication templates.
-
-## Path
-
-- Mitigate user harm first, then diagnose.
-- Resolution is users no longer harmed. Design intent is supporting context.
-- Report telemetry as read. Name gaps when a number is missing.
-
-
-## Progressive disclosure
-
-- [references/active-incident-record.schema.json](references/active-incident-record.schema.json) — open when needed for depth
-- [references/full-standard.md](references/full-standard.md) — open when needed for depth
-- [references/postmortem-record.schema.json](references/postmortem-record.schema.json) — open when needed for depth
-- [references/pre-v3-entry-method.md](references/pre-v3-entry-method.md) — open when needed for depth
-
-## Output
-
-Incident record · mitigation evidence · communications · follow-ups
-
-## Archived depth
-
-If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
-
+Keep estimates labeled as estimates. Keep security-sensitive and personal data in authorized incident channels.

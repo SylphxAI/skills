@@ -1,4 +1,0 @@
-interface:
-  display_name: "Prototype Product"
-  short_description: "Run a cheap real prototype with kill/continue criteria."
-  default_prompt: "Run this skill on the active workspace."

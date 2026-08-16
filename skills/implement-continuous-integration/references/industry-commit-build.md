@@ -1,77 +1,57 @@
 # Industry commit build
 
-This is engineering consensus, not a house flavor. Read the cited pages when
-a classification is disputed. Prefer **lighter** than this table when a check
-does not buy a real defect signal.
+A commit build gives fast feedback on every integration to the shared mainline. Its required checks focus on executable product behavior and current public contracts.
 
-Sources (retrieved 2026-08-13):
+## Sources
 
 - DORA, [Continuous integration](https://dora.dev/capabilities/continuous-integration/)
-- DORA, [Test automation](https://dora.dev/capabilities/test-automation/) (updated 2025-07-17)
-- Martin Fowler, [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html) (2024)
+- DORA, [Test automation](https://dora.dev/capabilities/test-automation/)
+- Martin Fowler, [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html)
 - Kent C. Dodds, [Testing Implementation Details](https://kentcdodds.com/blog/testing-implementation-details)
 
-## Humble's three rules (Fowler)
+## Core practice
 
-1. Everyone integrates to the **same mainline** at least daily.
-2. Every integration is verified by an **automated build including meaningful tests**.
-3. A red build is **fixed before new feature work**.
+1. Integrate frequently into one shared mainline.
+2. Run an automated build with meaningful tests on every proposed integration.
+3. Restore a red build promptly so mainline remains a reliable base.
+4. Keep the commit build fast enough for the team to use continuously. DORA and Fowler describe about ten minutes as a useful upper bound.
+5. Make each required check actionable: red identifies a real defect and green materially increases confidence in the product.
 
-Self-testing: if the tests are green, be confident the product has no
-serious bug. **99.9% green is still red.** The reverse is also disqualifying:
-green while the product does not work is not CI.
+## Select checks by feedback need
 
-DORA measures test value by whether a failure is a **real defect**. If most
-reds are "you renamed a heading / brand / helper", the suite is not CI.
+| Feedback need | Suitable checks | Placement |
+| --- | --- | --- |
+| Buildability | Compile, typecheck, package, link | Commit build |
+| Product behavior | Unit and component tests at public or semantic boundaries | Commit build |
+| Representative use | Fastest stable user or caller journey | Commit build |
+| Public compatibility | API, schema, protocol, and migration compatibility | Commit build |
+| Security bytes | Secret detection, license policy, dependency checks with actionable findings | Commit build |
+| Environment integration | Real databases, external services, broad platform matrices | Release or deployment path |
+| Extended behavior | Load, endurance, exhaustive compatibility, exploratory security | Scheduled or explicitly selected path |
 
-DORA's commit-build upper bound is about **ten minutes**. Longer suites move
-to a later pipeline stage.
+Test behavior visible to users and callers. Let implementation structure evolve behind those contracts.
 
-## What the commit build runs
+## Classify an existing suite
 
-Every commit / PR / merge-group admission:
+For each workflow job, script, and test:
 
-| Run | Do not run (or put later) |
-| --- | --- |
-| Compile / typecheck | Whole-repo slogan / brand scans |
-| Unit / pure-logic tests of **product behavior** | "This ADR / North Star must contain this sentence" |
-| The fastest acceptance layer (one real user journey when one exists) | "File exists, therefore architecture is correct" |
-| Secret / license bytes (the bytes are the risk) | Tests that another check is spelled in a workflow |
-| Schema / proto / migration compatibility (the contract is the product) | Coverage thresholds as a quality score |
+1. Name the product defect it detects.
+2. Name the owner and direct repair path for a red result.
+3. Measure typical runtime and flake rate.
+4. Keep fast checks that protect current behavior or compatibility.
+5. Move valuable long-running checks to the delivery point that consumes their result.
+6. Retire checks whose result only confirms internal wording or structure.
+7. Consolidate duplicated setup and duplicated test execution.
 
-## Deployment pipeline (Humble / Farley; DORA uses the same picture)
+## Pipeline shape
 
 ```text
-commit build (<10 min, every integration)
-  → slower acceptance / real DB / contracts
-    → security, performance, exploratory (scheduled or by risk)
-      → then deploy
+pull request or merge group
+  -> fast commit build
+  -> release and environment checks selected by the delivery
+  -> deployment smoke on the released artifact
 ```
 
-Main post-land is identity / pack / deploy smoke. It is **not** a third copy
-of the admitted suite ([ADR-20260803](../../../docs/history/adr/ADR-20260803-agent-native-queued-trunk.md)).
+Use stable required-context names for repository rules. Share one local entrypoint between developer feedback and CI. Cache supported toolchain inputs and keep cache misses equivalent to a clean build.
 
-## Classify each existing check
-
-For every required job, script, and test file, pick one:
-
-| Class | When | Action |
-| --- | --- | --- |
-| Keep in commit build | Red = product defect; green raises release confidence | One owner; delete duplicates |
-| Move later | Valid, but too slow or rare for every commit | Post-merge, scheduled, or risk-triggered |
-| Delete | Slogan, layout, coverage floor, meta-check, retired fence | Remove from required contexts and from `npm test` / equivalent |
-
-Kent's test: users of the code (end user + caller) must be able to see the
-failure. State names, file trees, and heading lists are implementation
-details. They create false negatives on refactors and false positives when
-the product is broken but the spelling still matches.
-
-## Agent-native extra failure (same industry rule)
-
-Generating tests is cheap. A test that exists only so the agent can land
-creates work: change product → change the theater test → then commit. That
-is DORA's "poorly coded failure", not a defect. Do not add it.
-
-Do **not** add a merge-blocking test that this document or
-`ci-admission-standard` still contains a sentence. Review the standard;
-test the product.
+The finished pipeline makes ordinary product changes inexpensive while keeping failures specific, reproducible, and connected to product behavior.

@@ -1,60 +1,31 @@
 ---
 name: drive-to-delivery
-description: "Drive one accepted multi-phase objective (engineering or product) to its asked terminal."
+description: Drive one accepted engineering or product objective to its requested terminal. Use when work spans several dependent actions and completion matters more than a plan or partial checkpoint.
 ---
 
 # Drive To Delivery
 
-When one **accepted multi-phase engineering objective** must reach its
-**asked terminal** (not a polish essay, not open product betterment), run
-this method until that terminal is met—or until honestly blocked.
-
-## When to use
-
-- Multi-phase engineering objective already accepted
-- Need research → execute → run the changed path → repair/replan until the asked terminal
-- Host continuity/objective surfaces may re-inject; do not stop after one phase
+Keep one accepted objective moving until its requested result is true or an external blocker requires new authority.
 
 ## Method
 
-1. **Startup:** objective, acceptance map, workspace ownership, non-interference with foreign changes. Bind host continuity if present (prefer uncapped long work unless user set a budget). No hard-coded host tool ids.
-2. **Graph:** maximize authorized throughput without inflating certainty or delivery claims.
-3. **Loop:** research → execute → run the path you changed → repair or replan until the asked terminal for **this one** objective is met or an honest blocker is recorded.
-   When mutating source, follow `references/source-authoring-standard/` three layers: **L1** batch unblocked high-value work for this objective; **L2** atomic valid commits; **L3** land via **one revert-safe complete PR outcome** per independent outcome (queue/squash unit).
-4. **Done:** the asked terminal is met. Reversible local work is done when the changed path is correct. Claim landed or live only when that layer is actually true.
+1. Bind the objective, terminal condition, repository ownership, permissions, constraints, and current state.
+2. Inspect the active product and delivery path before choosing work. Preserve unrelated user changes.
+3. Build a simple dependency order around the highest-value safe actions that can advance now.
+4. Execute each action at its owning layer. Integrate related changes into one coherent outcome.
+5. Run the path changed and repair failures while the objective remains open.
+6. Keep local, landed, released, deployed, and live states distinct in decisions and updates.
+7. Continue through source landing, release, deployment, or live verification when those states are part of the request and the required authority is available.
+8. Close when the requested terminal is met. Record an external blocker only after safe in-scope alternatives are exhausted.
 
-When the accepted objective is a **product outcome** (host-declared objective,
-terminal = the asked product result, not a default live boundary), also open
-[references/product-objective-mode.md](references/product-objective-mode.md)
-for host-continuity, research-depth, and objective-terminal rules.
+## Delivery shape
+
+- Keep commits focused and valid.
+- Keep each pull request independently revertible and complete for its accepted outcome.
+- Rebase or merge current upstream changes before final validation when the repository requires it.
+- Use the repository's native CI, release, and deployment surfaces.
+- Report progress in the primary result instead of creating a parallel tracking artifact.
 
 ## Output
 
-Progress on **one accepted objective at its asked terminal**, in the primary job output—not a separate compliance report.
-
-## Progressive disclosure
-
-1. [references/full-standard.md](references/full-standard.md) — full execution method, startup, graph, completion.
-2. [references/tool-grounded-execution.md](references/tool-grounded-execution.md) — tool-grounded iteration, checkpoint, recovery, termination.
-3. [references/bounded-objective-closure-loop.md](references/bounded-objective-closure-loop.md) — explicit loop-engineering / full-scope closure for one objective.
-4. [references/autonomous-execution-standard/](references/autonomous-execution-standard/) — multi-step execution graphs and completion discipline for non-trivial objectives.
-5. [references/source-authoring-standard/](references/source-authoring-standard/) · [references/delivery-standard/](references/delivery-standard/) — source landing. Open delivery-standard only when the asked terminal is land, release, or live. For industry product docs (Vision · North Star Metric · OKR · PRD · Spec · ADR · Diátaxis), open [references/source-authoring-standard/references/documentation-standard/](references/source-authoring-standard/references/documentation-standard/).
-6. When the objective **is** this repo's pipeline: `../implement-continuous-integration/`. Admission wiring: [references/ci-admission-standard/](references/ci-admission-standard/). Runner health: [references/ci-runner-capacity-standard/](references/ci-runner-capacity-standard/). Parallel change: [references/parallel-change-integration-standard/](references/parallel-change-integration-standard/).
-7. [references/product-objective-mode.md](references/product-objective-mode.md) — product-objective mode (host continuity, objective terminal)
-
-### Composition (no meta-router)
-
-Open only packs that match the objective:
-
-- `../record-structured-deliberation/references/decision-quality-standard/` — framing, alternatives, claims
-- `../record-structured-deliberation/references/sota-execution-standard/` — SOTA end-state selection when the objective is non-trivial
-- `../synthesize-evidence-brief/` — only when the job itself is a disputed or public claim
-- `../build-product/references/engineering-standard/` / `../select-dependency-versions/references/technology-stack-profile/` — when implementing software
-- `../build-product/references/sylphx-platform-first-policy/` — when the objective deploys, authenticates, persists, or runs work on Platform; open `references/paas-deploy.md` for deploy/preview
-- Related jobs: `bound-request-scope`
-
-## Boundaries
-
-- Grants no deploy or credential capabilities.
-- Scope is **one accepted multi-phase engineering objective** to its asked terminal.
-- Product-local ADRs remain authoritative for product decisions.
+Return the strongest truthful state, the user-visible or engineering result, the checks run at the changed layer, and any authority still required.

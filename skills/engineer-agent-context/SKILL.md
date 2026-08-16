@@ -1,78 +1,25 @@
 ---
 name: engineer-agent-context
-description: "Engineer agent context packs: load rules, budgets, refresh."
+description: Design an agent's working context, durable memory, retrieval, compaction, and handoff behavior. Use when context quality, freshness, privacy, or token cost affects task correctness.
 ---
 
 # Engineer Agent Context
 
-Produce a **Context and Memory Contract** that makes useful information
-available without letting stale, untrusted, or excessive context silently
-control behavior. Read
-[references/context-and-memory-methods.md](references/context-and-memory-methods.md)
-for memory classes, retrieval controls, and research sources.
+Provide the minimum sufficient authorized context for the current decision while keeping durable facts at their owning sources.
 
 ## Method
 
-1. Inventory each information class and owner: current task state, source
-   evidence, decisions, episodic history, semantic knowledge, procedures,
-   user preferences, secrets, and derived summaries.
-2. Define the context assembly order and authority rules. Preserve the
-   distinction between source facts, retrieved memory, inference, and generated
-   summary.
-3. Assign memory class, scope, retention, provenance, freshness, sensitivity,
-   invalidation trigger, and deletion path to every durable item.
-4. Set a retrieval budget and rank by task relevance, authority, freshness,
-   expected decision value, diversity, and token cost. Require abstention when
-   retrieval confidence is inadequate.
-5. Compile only the minimum sufficient working context. Deduplicate repeated
-   instructions and keep conflicting evidence visible rather than blending it.
-6. Treat summarization and compaction as lossy transformations. Retain source
-   locators, material uncertainty, unresolved commitments, and a way to recover
-   omitted detail.
-7. Define handoff as a typed state transfer, not a transcript dump. Bind the
-   recipient to objective, current state, decisions, evidence, gaps, authority,
-   and next safe action.
-8. Test stale memory, poisoned retrieval, conflicting sources, missing context,
-   privacy deletion, compaction loss, cross-tenant leakage, and recovery after
-   interruption.
+1. Inventory task state, source facts, decisions, episodic history, semantic knowledge, procedures, user preferences, credentials, and derived summaries.
+2. Name the source and owner of each information class and distinguish retrieved fact, inference, and generated summary.
+3. Assign scope, retention, freshness, sensitivity, invalidation, and deletion behavior to durable memory.
+4. Rank retrieval by task relevance, authority, freshness, decision value, diversity, permission, and token cost.
+5. Assemble a small working context in authority order and preserve visible conflicts for resolution.
+6. Treat summaries and compaction as lossy projections with source locators, uncertainty, commitments, and a recovery path to omitted detail.
+7. Create handoffs around objective, current state, decisions, source locators, gaps, authority, changed files, checks, and next safe action.
+8. Exercise stale memory, conflicting sources, poisoned retrieval, missing context, privacy deletion, tenant separation, compaction loss, and interruption recovery.
+
+Read [Context and memory methods](references/context-and-memory-methods.md) for retrieval architecture, memory classes, privacy, and quality checks.
 
 ## Output
 
-Create a **Context and Memory Contract** with:
-
-- information classes, sources, owners, and authority order;
-- working, episodic, semantic, and procedural memory responsibilities;
-- write, retrieve, rank, compile, summarize, invalidate, and delete rules;
-- token, latency, storage, and retrieval budgets;
-- provenance, freshness, confidence, and conflict representation;
-- handoff schema and recovery path;
-- privacy, tenant, credential, and least-disclosure boundaries;
-- quality and safety metrics; and
-- adversarial and degradation tests.
-
-## Path
-
-- Source-of-truth data stays outside the context window. Context is a bounded projection with lineage.
-- Facts, decisions, and commitments keep a durable source. A generated summary is a projection.
-- Vector similarity is a retrieval signal. Relevance, correctness, authority, and permission have their own checks.
-- Memory has explicit invalidation and freshness checks.
-- Personalization memory and task-correctness memory each have their own consent and deletion contract.
-- Measure decision utility and error.
-
-
-## Progressive disclosure
-
-- [references/agent-first-development-standard/](references/agent-first-development-standard/) — open when this topic applies
-- [references/agent-native-standard/](references/agent-native-standard/) — open when this topic applies
-- [references/context-and-memory-methods.md](references/context-and-memory-methods.md) — open when needed for depth
-- [references/prompt-architecture/](references/prompt-architecture/) — open when this topic applies
-
-## Boundaries
-
-- Use `references/prompt-architecture/` for instruction hierarchy, skill metadata, and
-  runtime constitutions.
-- Use `../review-domain/references/agent-planning-system/` for goals, plans, actions, and replanning.
-- Use `../select-next-work/references/work-coordination-standard/` for portable claim, lease, checkpoint, and
-  handoff semantics; use the matching product adapter for live operations.
-- Use a product privacy or security skill for jurisdictional and threat-model
-  requirements beyond this context contract.
+Use the host or product's existing context and memory mechanisms. Return the information classes, authority order, retrieval policy, freshness and deletion rules, privacy boundaries, compaction strategy, handoff shape, and checks performed.

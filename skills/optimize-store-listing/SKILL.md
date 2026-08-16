@@ -5,115 +5,40 @@ description: "Optimize store listing: metadata, creatives, conversion, complianc
 
 # Optimize Store Listing
 
-Produce a **Channel Listing and Creative Sequence** that communicates truthful
-value before install, wishlist, trial, or purchase and can be generated,
-localized, tested, and updated across exact channel variants.
+Create one truthful channel listing and creative sequence for install,
+wishlist, trial, or purchase.
 
+## Method
 
-## When to use
-- A store/channel listing needs narrative, metadata, creatives, localization, experiment, or compliance work
-- Pre-install/purchase conversion and trust need an exact-channel listing revision
-- Not for distribution/submission (`build-distribution-readiness`) or asset production (`produce-product-assets`)
+1. Open [store listing patterns](references/store-listing-optimization-patterns.md).
+2. Define the exact product release, channel, territories, locales, audience,
+   job, positioning promise, conversion event, price model, devices, inputs,
+   age modes, and current listing.
+3. Retrieve the channel's current metadata, asset, rating, disclosure,
+   experiment, accessibility, and localization requirements.
+4. Map audience questions to a narrative: distinctive outcome, first value,
+   core interaction, depth or workflow, social value when real, trust,
+   compatibility, commercial terms, and call to action.
+5. Specify metadata and ordered media requests for icon/key art, screenshots,
+   video, captions, transcript, alt text, compatibility, privacy, price, IAP,
+   subscription, ads, and support links.
+6. Route exact rendered media to `produce-product-assets`. Validate the returned
+   files against the current product UI, rights, dimensions, safe zones,
+   legibility, accessibility, locale, and channel rules.
+7. Give each locale its own search language, cultural meaning, typography,
+   reading direction, image treatment, prices, dates, and native-language QA.
+8. When the channel supports experiments, define variants, assignment,
+   exposure, conversion, activation, retention, refund, support, review, and
+   trust measures.
+9. Hand the accepted listing and media to `build-distribution-readiness`, then
+   read back the published page when publication is part of the request.
 
-## Atomic boundary
+## Output
 
-Own one channel listing's positioning-to-asset narrative, metadata, creative
-sequence, proof/disclosures, localization, accessibility, asset QA, experiment,
-and conversion/trust measurement. Store submission, whole-product positioning,
-public review solicitation, paid acquisition, and the multi-channel
-creative/spend control plane live with those owners.
+Return a Channel Listing and Creative Sequence with product/channel identity,
+audience, narrative, metadata, ordered asset requests, locale briefs, current
+channel requirements, experiment, publication handoff, and live readback when
+requested.
 
-Write the listing record in markdown. Name owners and sources in prose. Do not
-add a parallel JSON envelope. Consume product thesis, canonical product/build
-truth, a planning Product Program Manifest revision when present, and only the
-Marketing, pricing/payment, review/reputation, analytics, Product Asset, or
-distribution facts applicable to that exact revision. The initial request
-revision must not consume its future Product Asset pack; a later final listing
-revision may.
-
-## Agent-first invariant
-
-Build the complete listing narrative, selection/order, metadata, channel
-templates, asset requests, experiment variants, validation, versioning,
-rollback, and readback now. Marketing owns campaign briefs/concepts;
-`produce-product-assets` owns deterministic capture, localized/accessibility
-variants, exact rendered files, rights/provenance, and file QA. This skill emits
-an asset request in an earlier revision and consumes the returned pack only in a
-later exact revision; it must not create a second production source of truth.
-Construction is separate from publication. A dormant channel generates no
-public page and claims no compatibility until authority and the exact pack pass.
-
-## Workflow
-
-1. Define exact product/build/content identity, channel/territories/locales,
-   primary audience and job, positioning promise, conversion event, price/model,
-   device/input/age modes, current listing evidence, and non-goals.
-2. Read `references/optimize-store-listing-patterns.md`. Retrieve the
-   channel's current metadata, asset, content-rating, pricing/disclosure,
-   experiment, and localization contract.
-3. Map audience objections and proof to a narrative sequence: distinctive
-   outcome/mechanism, first-value/core interaction, depth/progression or
-   workflow, social/collaboration where real, content/utility, trust/quality,
-   business model/compatibility, and call to action.
-4. Specify title/subtitle/short/long text, keywords/tags/categories, icon/key/
-   capsule art, selection/order and stable production requests for screenshots
-   by device/input, video/trailer, captions/transcript,
-   alt text, pricing/IAP/subscription/ad disclosures, privacy/compatibility, and
-   support links. Every live listing claim maps to exact shipped behavior in
-   that channel.
-5. Build localization briefs per locale: intent, search language, cultural
-   meaning, reading direction, typography, image/text constraints, age modes,
-   price/unit/date, and native QA. Each locale gets its own screenshot set.
-6. When exact media is selected, consume the Product Asset Production Pack in a
-   new listing revision; validate dimensions, safe zones, compression/color/
-   audio, device chrome, legibility, motion/captions, no unreleased UI, rights,
-   claim evidence, channel rules, and exact package digests.
-7. Define randomized/native experiment where supported, immutable variant and
-   traffic identity, exposure/contamination, install/wishlist/purchase plus
-   retention/refund/review/support countermetrics, confidence, and stop rules.
-8. When publication is selected, hand the exact final listing revision and
-   accepted asset pack when applicable to `../build-distribution-readiness/`;
-   verify submitted/live metadata and assets, then archive/supersede the prior
-   version.
-
-## Source verification
-
-Retrieve current channel metadata/asset/experiment, ratings/reviews, price/IAP/
-subscription/ad disclosures, privacy/data-safety, age/content rating,
-compatibility, accessibility, localization, IP/rights, and regional rules.
-Unknown/stale channel authority blocks submission of that adapter.
-
-## Path
-
-- Every live claim and asset matches shipped behavior on that channel. Rankings, reviews, awards, prices, renewal, ads, devices, and privacy or accessibility claims carry exact evidence.
-- Search language stays human-clear. Keywords are relevant terms the product actually earns.
-- Reviews are observed evidence. Solicitation and rating policy live with `run-product-feedback-loop`.
-- A win moves install or purchase while activation, retention, refunds, support, and trust stay level or improve.
-- Publication, price, claims, and rights changes go through validation and the owning authority.
-- Product media comes from a new `produce-product-assets` pack revision.
-
-
-## Progressive disclosure
-
-- [references/store-listing-optimization-patterns.md](references/store-listing-optimization-patterns.md) — open when needed for depth
-
-## Output contract
-
-Return one typed Channel Listing and Creative Sequence with:
-
-1. exact product/channel identities, audience/job, positioning, conversion,
-   evidence labels, assumptions, and non-goals;
-2. objection/proof/narrative sequence and metadata field contract;
-3. icon/key/capsule, screenshot/device/input, trailer/video, caption/transcript/
-   alt-text, disclosure, compatibility, support selection/order, and stable
-   Product Asset Production request plus accepted pack references;
-4. per-locale search/meaning/culture/RTL/typography/image/price/date/age brief;
-5. channel-authority, rights, claim, dimensions/safe-zone, media, accessibility,
-   and exact-package QA evidence;
-6. experiment variants, assignment, metrics/countermetrics, confidence, stop,
-   rollback, and live readback;
-7. digest-pinned distribution/marketing/review/analytics handoffs.
-
-Complete only when every live claim/asset is exact-build truthful, localized and
-accessible, the package is reproducible by digest, and conversion gains survive
-downstream quality/trust countermetrics.
+Listing claims come from the shipped product, price, rights, policy, and
+channel owners. Asset files come from Product Asset Production.

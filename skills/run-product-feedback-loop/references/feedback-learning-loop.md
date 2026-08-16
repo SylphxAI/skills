@@ -1,212 +1,165 @@
 # Product Feedback Learning Loop
 
-## Contents
+Use private feedback, support signals, product observations, and authorized
+public reviews to identify user problems, make product decisions, and close the
+loop truthfully.
 
-1. Signal sources and private intake
-2. Normalized signal and evidence schema
-3. Taxonomy, dedupe, and decision evidence
-4. Urgent and specialist routing
-5. Authorized public-review ingestion and response
-6. Product action and truthful close-loop
-7. Events and metrics
-8. Privacy and trust tests
+## Signal sources
 
-## 1. Signal sources and private intake
+Combine sources while preserving provenance:
 
-Combine without flattening provenance:
+- in-product free text and contextual feedback;
+- customer-support cases and conversation themes;
+- usability research and customer interviews;
+- accessibility reports;
+- crash, error, performance, and abandonment context;
+- cancellation, downgrade, refund, dispute, and churn reasons;
+- sales, customer-success, community, and partner observations;
+- authorized public app-store, marketplace, and review-platform sources.
 
-- private in-product feedback, surveys, interviews, usability research, and
-  requested diagnostics;
-- public store or platform reviews;
-- support tickets, chat/call reasons, and help-center searches;
-- cancellation, downgrade, refund, chargeback, and dispute reason codes;
-- authorized community and social reports;
-- product funnels, failed or abandoned tasks, and feature adoption;
-- crash, startup, latency, sync, offline, accessibility, and device quality;
-- experiments, explicit user goals, and observed research outcomes;
-- moderation, abuse, safety, privacy, complaint, and appeal outcomes.
+Each source has selection, participation, visibility, and survivorship bias.
+Quiet users and inaccessible intake paths remain part of the uncertainty.
 
-Absence of feedback is not satisfaction. Every source has selection,
-visibility, survivorship, and incentive bias.
+Private intake should be easy to find, accessible, and proportionate. Ask for
+the smallest useful set of fields: the user's goal, what happened, expected
+result, impact, affected surface or version, and optional contact permission.
+Add screenshot, logs, trace, account, or device context when the user consents
+and the problem needs it.
 
-Private feedback contract:
+## Signal record
 
-```text
-entry surface and context:
-anonymous/account-linked choice where feasible:
-type, product area, goal, expected/actual result and severity:
-optional free text and attachment:
-explicit diagnostics content/consent/preview/redaction:
-contact/follow-up permission and preferred channel:
-offline/retry/dedupe and receipt:
-privacy, retention, access and deletion:
-status vocabulary and close-loop promise:
-```
+For each signal, preserve:
 
-Do not require excessive fields or force a rating. Keep feedback accessible from
-settings/help and relevant error or success surfaces without nagging.
+- source and source-specific identifier;
+- observed time and ingestion time;
+- original text or media reference under its retention policy;
+- locale, platform, product version, surface, and journey state;
+- customer segment, lifecycle, and entitlement when authorized and relevant;
+- user goal, problem, expected outcome, impact, and frequency;
+- privacy class, consent, retention, access, and deletion owner;
+- links to related support, incident, payment, experiment, or product records;
+- taxonomy, duplicate cluster, confidence, owner, decision, and close-loop state.
 
-## 2. Normalized signal and evidence schema
+Derived summaries link back to original evidence. Preserve access control and
+retention across both raw and derived records.
 
-```text
-signal_id, source and source_object_id:
-received/occurred time and product release/version:
-user job, product area and object/workflow:
-type: bug | usability | capability | price | refund | quality
-      | praise | safety_abuse | policy | research_lead | other
-severity, urgency and reversibility:
-platform/locale/device/accessibility/network context:
-segment/lifecycle/entitlement only where allowed and necessary:
-raw evidence reference, redaction and consent:
-duplicate_cluster_id and evidence links:
-owner, route, status and user follow-up permission:
-external correction/deletion/response state where applicable:
-```
+## Taxonomy and deduplication
 
-Preserve original evidence securely. Derived summaries never replace raw
-lineage.
+Classify by the underlying user problem and affected state:
 
-Evidence cluster:
+- defect, reliability, data loss, performance, or compatibility;
+- usability, comprehension, accessibility, or localization;
+- capability gap, workflow friction, or integration need;
+- price, value, billing, entitlement, refund, or cancellation;
+- safety, security, privacy, abuse, moderation, or policy;
+- support, documentation, onboarding, or communication;
+- praise, use story, or outcome achieved.
 
-```text
-cluster and mechanism hypothesis:
-source diversity and selection bias:
-frequency/prevalence estimate with denominator:
-severity, affected outcome and reversibility:
-quality/safety/commercial/support impact:
-strategic and product-promise relevance:
-confidence and contradictory evidence:
-instrumentation/research gap:
-linked decision and action candidates:
-validation, rollout and live-outcome evidence:
-```
+Cluster duplicates by user goal, affected state, observed behavior, and impact.
+Keep distinct root causes, platforms, locales, permissions, and audience modes
+visible inside a cluster.
 
-## 3. Taxonomy, dedupe, and decision evidence
+Prioritize with explicit decision factors: severity, affected users, frequency,
+reproducibility, strategic fit, legal or safety urgency, accessibility,
+customer value, revenue and refund impact, confidence, effort, reversibility,
+and learning value. The product owner chooses the tradeoff and records the
+reason plus evidence that could change it.
 
-Dedupe by the underlying user problem and affected state, not requested
-solution or exact wording. Keep cohorts distinct where one change may help one
-and harm another.
+## Urgent and specialist routing
 
-Do not use one universal priority formula that silently trades safety, law,
-accessibility, or trust for revenue. Route hard-floor signals immediately.
-For other signals, make the product decision explicit: user outcome, reach,
-severity, confidence, strategic fit, opportunity cost, reversibility, and next
-falsifying evidence. Stars, loudness, payer value, or model confidence never
-decide alone.
-
-## 4. Urgent and specialist routing
-
-| Signal | Primary route | Required response |
+| Signal | Primary owner | Required response |
 | --- | --- | --- |
-| Security/privacy/safety or severe abuse | Protected incident/safety owner | Containment, evidence, support/appeal, authority |
-| Crash/data loss/payment/entitlement outage | Incident/engineering plus support | Reproduce, mitigate, status, correction/compensation |
-| Refund/chargeback/access consequence | Refund/payment specialist | Ledger evidence, entitlement, support, reason feedback |
-| Accessibility blocker | Accessibility/product owner | Affected-flow proof and equivalent access |
-| Repeated usability confusion | App/game/interface owner | Observation, flow hypothesis, documentation/support fix |
-| Capability request | Product discovery/decision owner | Problem cluster, alternatives, no false promise |
-| Price/value objection | Commercial owner | Segment/context and retention/refund evidence |
-| Praise/use story | Research/marketing with permission | Preserve authenticity; no automatic endorsement use |
-| Public review response needed | Authorized reputation response route | Verified, concise, private-safe response |
+| Security, privacy, safety, or severe abuse | Protected incident or safety owner | Containment, evidence preservation, support or appeal, applicable policy |
+| Crash, data loss, payment, or entitlement outage | Incident/engineering and support | Reproduce, mitigate, communicate status, correct or compensate |
+| Refund, chargeback, or access consequence | Refund/payment owner | Ledger evidence, entitlement state, support, reason feedback |
+| Accessibility barrier | Accessibility and product owner | Affected-flow observation and equivalent access |
+| Repeated usability confusion | Product/interface owner | Observation, flow hypothesis, product or documentation correction |
+| Capability request | Product discovery owner | Problem cluster, current alternatives, decision state |
+| Price or value objection | Commercial owner | Segment, context, retention, and refund evidence |
+| Praise or use story | Research/marketing with permission | Preserve authentic wording and usage rights |
+| Public review response | Authorized reputation owner | Verified, concise, privacy-safe response |
 
-## 5. Authorized public-review ingestion and response
+Urgent signals enter their incident, safety, security, payment, refund, privacy,
+or accessibility path immediately. The feedback system retains the product
+learning link and final outcome.
 
-For every platform adapter, separately verify read, reply/write,
-delete/correct, pagination/cursor, quota, moderation, role, and live-response
-readback authority. Solicitation permission and ingestion permission are
-different facts.
+## Authorized public-review ingestion
 
-Current routes, verified on 2026-07-11 and subject to refresh:
+Use the platform's current official read API, export, notification, or portal
+route under the authorized account. Record platform, listing or product,
+territory, locale, rating when present, text, review time, version, developer
+response state, edit history exposed by the platform, and ingestion time.
 
-- [Apple App Store Connect Customer Reviews](https://developer.apple.com/documentation/appstoreconnectapi/customer-reviews)
-  for current read/response endpoints, roles, scopes, and limits.
-- [Google Play Reply to Reviews](https://developers.google.com/android-publisher/reply-to-reviews)
-  for current Publisher API authorization, quotas, fields, and response
-  semantics.
-- [Steam GetReviews](https://partner.steampowered.com/doc/store/getreviews) for
-  the current public review-read interface and parameters. Do not infer a
-  write/reply API from read access. Steam also cautions that replying to every
-  review can draw attention; respond selectively and factually.
+The owning adapter defines pagination, rate limits, freshness, retries,
+deletions, edits, and historical coverage from current platform documentation.
+Reconcile edits and removals according to the product's retention and audit
+policy.
 
-Normalize authorized review facts:
+Respond publicly when a response can acknowledge the issue, clarify a verified
+fact, explain a released fix, provide a safe next step, or correct a material
+misunderstanding. Public responses use public facts and direct account-specific
+work to a protected support channel. The authorized reputation owner controls
+publishing; product, incident, legal, safety, and support owners supply the
+underlying facts.
 
-```text
-review_id, platform, locale, rating_if_supplied, title/body:
-created/updated time and app/product version/device if supplied:
-developer response and state:
-source URL, ingestion cursor and authority revision:
-privacy/redaction, classification and linked evidence cluster:
-correction/deletion and live-response readback:
-```
+Public-review solicitation uses the current policy of each platform. Apply one
+eligibility rule across sentiment, provide private feedback independently, and
+keep rating or review actions voluntary.
 
-Use a response only when it can acknowledge, clarify, explain a verified fix
-and version, provide a safe support route, or respectfully correct a material
-misunderstanding. Never reveal account data, diagnose private facts publicly,
-argue, market, spam, ask for a higher rating, or promise an uncommitted feature
-or date.
+## Product action and close-loop
 
-## 6. Product action and truthful close-loop
+Move a signal or cluster through plain product states:
 
-```text
-ingest -> redact -> classify -> dedupe -> enrich -> cluster
--> route urgent support/safety
--> form falsifiable product hypothesis
--> reproduce with exact context
--> propose code/design/content/config/support/instrumentation candidate
--> independent validation and dangerous-interaction tests
--> canary/holdout -> live readback
--> promote, rollback, compensate or forward-fix
--> update source users/status where permitted
--> archive learning with version/evidence
-```
+- received;
+- investigating;
+- product decision made;
+- planned;
+- implemented locally;
+- released;
+- observed live;
+- closed with explanation;
+- retained as an open residual.
 
-The classifier or proposer cannot be its sole validator or promoter. Candidate
-mutation authority cannot change evaluation gates, source evidence, platform
-policy, or protected response rights.
+Each state records the responsible owner and the actual product layer reached.
+Triage status communicates investigation, while implementation and release
+states communicate the stronger product claims.
 
-Close-loop states must be truthful and evidence-linked: received, needs
-clarification, routed to support/safety, investigating, reproduced, candidate
-validated, rolling out, fixed in an exact version, shipped and read back, not
-planned, policy-limited, duplicate, unable to reproduce, or support-resolved.
-Never imply commitment from triage status.
+When contact permission exists, close the loop with what changed, the affected
+version or availability, any required user action, remaining limits, and a
+route to continue the conversation. Group communication by an approved cohort
+when an incident or systemic defect affects many users.
 
-## 7. Events and metrics
+## Measurement
 
-Track only fields required by the approved measurement contract:
+Use the measures required by the product question:
 
-```text
-feedback_entry_viewed/submitted/received/redacted/classified/deduplicated
-feedback_routed/support_case_linked/safety_escalated
-evidence_cluster_updated/hypothesis_created/candidate_linked
-candidate_validated/canary_started/promoted/rolled_back
-customer_status_updated/loop_closed
-public_review_ingested/response_candidate_created/response_published/corrected
-```
+- intake reach and accessibility;
+- time to acknowledge, route, decide, correct, release, and close;
+- cluster volume, severity, affected journeys, versions, platforms, and locales;
+- reproducibility and root-cause confirmation;
+- reopened cases and recurrence after release;
+- refund, cancellation, support, trust, and accessibility impact;
+- representative user outcome after the correction;
+- public-review issue mix and response quality.
 
-Measure submission/abandonment with accessibility and privacy context;
-classification, dedupe, routing quality and lag; severe-issue detection and
-resolution; source and cohort coverage; contradictory evidence; support repeat
-contact and appeal reversal; reproduction and validated live outcome; close-loop
-accuracy; and public review issue mix. Do not optimize only average stars or
-review count.
+Interpret counts with channel and selection bias. Product outcome and recurrence
+matter more than maximizing ratings, response volume, or closure speed.
 
-Hand event, identity, consent, delivery, warehouse, metric, and dashboard
-implementation to Product Analytics.
+## Privacy and trust
 
-## 8. Privacy and trust tests
+- Preview collected context and provide relevant consent controls.
+- Keep anonymous feedback unlinkable beyond declared abuse-prevention needs.
+- Apply purpose limitation, retention, access control, deletion, and regional
+  handling to raw and derived records.
+- Use praise or use stories for marketing after obtaining the required rights
+  and preserving authentic context.
+- Keep reviewer identity, account behavior, refund rights, warranty, appeal,
+  chargeback, moderation, and entitlement decisions with their lawful owners.
+- Public replies contain public-safe facts and protected support routes.
 
-- Redact and safely route secrets, tokens, payment, health, child, and private
-  collaboration data.
-- Preview and consent diagnostics; never silently expand their scope.
-- Keep anonymous feedback unlinkable beyond declared anti-abuse needs.
-- Propagate feedback deletion and retention requirements into derived stores.
-- Do not reuse praise as a marketing endorsement without permission and
-  disclosure.
-- Never deanonymize reviewers or match them to account behavior for retaliation.
-- Preserve minority and contradictory signals and uncertainty in model
-  summaries.
-- Never reveal another user's report or internal sensitive evidence in an
-  update.
-- Public review state cannot change refund, warranty, appeal, chargeback,
-  entitlement, compensation, account, data, or support rights.
-- Public solicitation is not implemented here and cannot be conditioned on
-  feedback or inferred sentiment.
+## Completion
+
+The loop is operational when signals enter through accessible routes, retain
+their provenance, reach the appropriate owner, support a product decision,
+track the actual implementation and release layer, and close with the user or
+affected cohort when authorized.

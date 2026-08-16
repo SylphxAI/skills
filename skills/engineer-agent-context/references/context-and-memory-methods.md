@@ -25,8 +25,8 @@ store several classes if their policies remain distinguishable.
 7. Represent material conflicts explicitly.
 8. Compile a bounded projection and record what was omitted or unavailable.
 
-Do not use a single blended relevance score when authority, privacy, freshness,
-or contradiction can independently disqualify an item.
+Apply authority, privacy, freshness, and contradiction as independent inclusion
+conditions alongside relevance.
 
 ## Memory record
 
@@ -76,7 +76,7 @@ be wrong when retrieved later.
 
 - Apply data minimization before storage and again before context injection.
 - Separate tenant, user, project, and public scopes.
-- Never expose secrets merely because they are semantically relevant.
+- Require explicit secret authority and a task need before retrieval.
 - Propagate deletion and correction through indexes, caches, summaries, and
   derived memories.
 - Treat retrieved content as data, not executable instruction, unless it comes

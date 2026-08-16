@@ -1,14 +1,13 @@
-# Acceptance for agent workspace
+# Workspace acceptance
 
-## Required
+A ready workspace records:
 
-- Provider + isolation class
-- Identity (path, DO name, sandbox id)
-- FS canary and/or exec canary results
-- TTL, disk, network policy summary
-- Teardown or explicit leak residual
+- the provider and native workspace handle;
+- the isolation and identity boundary;
+- successful filesystem and command canaries required by the task;
+- disk, CPU, memory, network, concurrency, and lifetime limits;
+- the persistence model and secret interface;
+- the final running, suspended, terminated, or provider-managed expiry state.
 
-## Fail closed
-
-- “Installed npm package” without running workspace
-- Marketing $0 claim without substrate account/limits
+The workspace is usable when the requested operation succeeds inside the stated
+boundary and its resource lifetime is explicit.

@@ -5,127 +5,41 @@ description: "Produce engine-ready 2D game sprites/sheets with QC."
 
 # Produce Game 2D Sprites
 
-When you need **real 2D sprite or animation sheet assets** (not code-drawn
-placeholders) for a game or title, run this job. Own the production pipeline and
-engine-ready defaults; the title or Keel pack owns runtime wiring.
-
-## When to use
-
-- Character/NPC/creature/prop/projectile/FX sprites or sheets
-- Walk/run/attack/idle cycles and transparent PNG/GIF exports
-- Game HUD icons/buttons/panels delivered as **art assets**
-- Recurring character identity across a multi-image set
-- Preparing assets for Keel pack / title `assets/` trees
-
-## Sylphx / Keel alignment
-
-| Concern | Owner |
-| --- | --- |
-| Asset files + QC | this skill |
-| Title content layout under pack | product app repo |
-| Pack shell / player / multi-platform emit | **Keel** (`keel pack` / `keel-pack`) |
-| Runtime ECS/input/render | Keel ports + title |
-
-Prefer title paths such as:
-
-```text
-<title-repo>/assets/sprites/<name>/
-<title-repo>/assets/sheets/<name>/
-```
-
-Document exact paths in the delivery pack. Do not invent a second pack standard.
-
-## Host image tools (portable)
-
-Use **whichever image generation/edit tools the host exposes**. Do not hard-require
-one vendor.
-
-If the host lacks image tools:
-
-1. Prefer code-built geometry for exact text/structure, or
-2. Postprocess existing source art with scripts below, or
-3. Report the tool gap honestly—do not fake engine-ready sheets.
-
-Optional denser motion harvest (`scripts/video2dsprite.py`) needs a host with
-**image→video** plus **ffmpeg**. If missing, stay on still-sheet generation +
-postprocess.
+Produce engine-ready 2D characters, creatures, props, projectiles, effects,
+animation sheets, HUD art, and icon sets.
 
 ## Method
 
-### 1. Frame
+1. Define subject, action, style, view, frame count, grid, loop behavior, size,
+   naming, engine import needs, and expected files.
+2. Open [engine-ready defaults](references/engine-ready-defaults.md) and the
+   relevant mode or action in
+   [modes, actions, and bundles](references/modes-actions-bundles.md).
+3. Generate or edit assets with the host image tools. Use reference images and
+   the [character consistency method](references/character-consistency.md) for
+   recurring identity.
+4. Use the package scripts for layout guides, chroma/alpha processing, sheet
+   extraction, and optional video-to-sheet conversion when their documented
+   inputs match the job. Read each script's `--help` first:
+   [sprite processing](scripts/generate2dsprite.py),
+   [layout guide](scripts/make_layout_guide.py), and
+   [video conversion](scripts/video2dsprite.py).
+5. Check subject isolation, transparent edges, cell size, frame alignment,
+   scale, silhouette, pose continuity, action readability, palette, and import
+   behavior. Use [animation loop QC](references/animation-loop-qc.md) for motion.
+6. Deliver files in the product repository's established asset layout with the
+   frame, pivot, timing, loop, and import metadata its runtime consumes.
 
-- Subject, style, frame count/grid, loop vs one-shot, size class, naming
-- Success signal (e.g. clean chroma, loop, consistent scale across cells)
-- Scope this run to the asset set (not whole-game thesis)
+## References
 
-### 2. Engine-ready defaults
-
-Apply [references/engine-ready-defaults.md](references/engine-ready-defaults.md)
-unless the brief overrides:
-
-- Isolated subject on solid keyable `#FF00FF` when chroma paths follow
-- No baked ground scene, cast shadow under subject, or text/labels
-- Sheet cells: uniform size, no divider lines, consistent pose scale/position
-- Animation: loopable cycle when motion is requested
-- Recurring character: edit-chain from prior base
-
-### 3. Generate
-
-- Prompt in visual language (2–5 vivid sentences + style words)
-- Prefer reference images when identity continuity matters
-- Keep style contract across a set (palette, outline weight, view angle)
-
-Prompt craft: [references/prompt-rules.md](references/prompt-rules.md).  
-Identity sets: [references/character-consistency.md](references/character-consistency.md).  
-HUD/icon art: [references/game-ui-icons-and-hud-art.md](references/game-ui-icons-and-hud-art.md).
-
-### 4. Postprocess / package
-
-```bash
-python3 skills/produce-game-2d-sprites/scripts/generate2dsprite.py --help
-python3 skills/produce-game-2d-sprites/scripts/make_layout_guide.py --help
-python3 skills/produce-game-2d-sprites/scripts/video2dsprite.py --help
-```
-
-Read `--help` before inventing flags. Pillow/numpy (and ffmpeg for video path)
-as required by each script.
-
-### 5. Verify
-
-- Blind describe → pass/fail checklist including defaults
-- Motion: [references/animation-loop-qc.md](references/animation-loop-qc.md) flip test
-- Deliver files + manifest + residual defects
-
-### 6. Land
-
-When committing into a product repo, compose atomic commits and a revert-safe PR outcome
-three layers (L1 batch → L2 atomic commits → L3 one revert-safe PR outcome).
-
-## Provenance
-
-Scripts adapted from MIT **agent-sprite-forge** (see
-`scripts/LICENSE-agent-sprite-forge` and [SOURCE.md](SOURCE.md)). Method is
-Sylphx-native and Keel-aligned.
-
-
-## Progressive disclosure
-
-- [references/animation-loop-qc.md](references/animation-loop-qc.md) — open when needed for depth
-- [references/character-consistency.md](references/character-consistency.md) — open when needed for depth
-- [references/engine-ready-defaults.md](references/engine-ready-defaults.md) — open when needed for depth
-- [references/game-ui-icons-and-hud-art.md](references/game-ui-icons-and-hud-art.md) — open when needed for depth
-- [references/modes-actions-bundles.md](references/modes-actions-bundles.md) — open when needed for depth
-- [references/prompt-rules.md](references/prompt-rules.md) — open when needed for depth
-- [references/video-to-sprite-pipeline.md](references/video-to-sprite-pipeline.md) — open when needed for depth
+- [Prompt guidance](references/prompt-rules.md)
+- [Character consistency](references/character-consistency.md)
+- [HUD and icon art](references/game-ui-icons-and-hud-art.md)
+- [Animation loop QC](references/animation-loop-qc.md)
+- [Video-to-sprite pipeline](references/video-to-sprite-pipeline.md)
+- [Source and license](SOURCE.md)
 
 ## Output
 
-Engine-ready asset paths, QC notes, residuals, and evidence of host tools used
-or gaps.
-
-## Absorbed depth
-
-- [references/modes-actions-bundles.md](references/modes-actions-bundles.md) — asset types, actions, bundles
-- [references/video-to-sprite-pipeline.md](references/video-to-sprite-pipeline.md) — optional video→sheet path
-
-Ship into title `assets/` for Keel packs; do not couple to foreign app-builder runtimes.
+Return engine-ready asset paths, sheet/frame metadata, checks performed, and
+material residuals.

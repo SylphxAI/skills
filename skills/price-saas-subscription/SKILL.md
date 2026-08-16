@@ -5,89 +5,33 @@ description: "Price a SaaS subscription: packaging, meters, fences, migration."
 
 # Price SaaS Subscription
 
-Produce a **Pricing and Packaging Decision** that matches customer value,
-expansion, cost, and trust constraints.
+Choose SaaS packaging and pricing that align customer value, expansion, cost,
+margin, purchasing motion, and trust.
 
+## Method
 
-## When to use
-- A SaaS price/package decision needs packaging, meters, fences, migration, or enterprise path
-- Pricing arithmetic must be internally consistent before publication
-- Not for billing/ledger execution (`build-payment-readiness`)
+1. Open [pricing and packaging patterns](references/pricing-packaging-patterns.md).
+2. Define the decision, buyer, user, purchasing motion, customer value, value
+   metric, cost driver, expansion path, constraints, and assumptions.
+3. Use current competitor, substitute, customer, usage, conversion, churn,
+   support, cost, and margin sources appropriate to the decision.
+4. Choose the package model: trial, freemium, seat, usage, tiered, hybrid, or
+   enterprise.
+5. Define plan boundaries, included value, usage units, overages, upgrade
+   moments, downgrade/cancellation behavior, support, and procurement path.
+6. Reconcile seat minimums and included seats, included usage and overage,
+   marginal cost and gross margin, annual terms and discount, and enterprise
+   commitments.
+7. Define discount authority, sales enablement, objection handling, migration,
+   customer notice, and rollback conditions where applicable.
+8. Hand the approved catalog, prices, meters, renewal, cancellation, and
+   downgrade semantics to payment, entitlement, interface, listing, and support
+   owners.
 
-## Workflow
+## Output
 
-1. Identify the decision, buyer, user, purchasing motion, value metric, cost
-   driver, expansion path, constraints, and assumptions.
-2. Read `references/pricing-packaging-patterns.md`.
-3. Decide the packaging model: free trial, freemium, usage-based, seat-based, tiered, hybrid, or enterprise.
-4. Design plan boundaries, exact limits, upgrade moments, downgrade/cancel
-   promises, and enterprise/procurement path.
-5. Run a pricing arithmetic pass before publishing: seat minimums vs included seats, included usage vs overage rates, gross margin, annual discount, and procurement terms must be internally consistent.
-6. Define exact usage rates, unit economics, margin floors, a bounded
-   validation or rollout, sales enablement, objection handling, and kill criteria
-   before proposing discounts.
+Return a Pricing and Packaging Decision with value metric, plan architecture,
+usage and overages, procurement, upgrade moments, cancellation/downgrade,
+commercial arithmetic, assumptions, measures, migration, and owner handoffs.
 
-## Handoffs
-
-- Market Research Synthesis supplies current competitor, substitute, buyer, and
-  demand evidence; this skill owns the resulting price/package decision.
-- Payment Platform Readiness owns billing, ledger, entitlement, invoice,
-  collection, tax, reconciliation, and finance-close execution.
-- Store Listing Optimization and Interface Craft own channel copy, creative, and
-  UI implementation after the commercial decision is stable.
-- An already-approved price increase needs a separate migration artifact for
-  cohorts, notice, consent where required, grandfathering, retention, and rollback.
-
-## Source verification
-
-- Consume or research current competitor pricing, package boundaries, currencies,
-  contract terms, and customer evidence at use; record source URL, access date,
-  geography, and plan.
-- Obtain current internal cost, margin, usage, conversion, churn, and support data from the owning systems. Mark missing values as assumptions and make the recommendation a bounded experiment.
-
-## Path
-
-- Per-seat prices name either a minimum seat commitment or a bundled-seat package.
-- Overage sits at or above marginal cost plus the target gross margin.
-- Annual terms, usage caps, downgrade consequences, and procurement friction live in the published offer.
-- A discount proposal includes approval rules, CRM logging, renewal impact, and rollback criteria.
-- Copy and billing implement the approved value metric, limits, price, renewal, cancellation, and downgrade semantics.
-
-
-## Progressive disclosure
-
-- [references/pricing-packaging-patterns.md](references/pricing-packaging-patterns.md) — open when needed for depth
-
-## Output format
-
-```text
-Recommended model:
-Value metric:
-Plan architecture:
-- Free/trial:
-- Core paid:
-- Team/business:
-- Enterprise:
-- Usage and overages:
-- Procurement:
-- Support and sales enablement:
-
-Upgrade moments:
-Cancellation/downgrade:
-Metrics:
-Unit economics:
-- Gross margin target:
-- CAC payback / NRR target:
-- Cost and abuse controls:
-Pricing arithmetic:
-- Seat minimums / included seats:
-- Included usage and overage rate:
-- Annual discount and contract term:
-- Margin sanity check:
-Experiment/rollout plan:
-- Test design:
-- Handoff for any approved migration:
-- Customer communications:
-- Holds:
-Risks:
-```
+Payment and ledger execution belongs to `build-payment-readiness`.

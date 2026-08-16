@@ -1,4 +1,0 @@
-interface:
-  display_name: "Optimize Decision Model"
-  short_description: "Model a decision for optimization: objective, constraints, sensitivity."
-  default_prompt: "Run this skill on the active workspace."

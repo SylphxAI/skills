@@ -4,8 +4,8 @@
 
 System dynamics explains patterns through accumulations, rates, feedback, and
 delays. Start with observed behavior over time. A static relationship diagram
-cannot distinguish temporary correlation from a mechanism that reproduces the
-pattern.
+describes association; evidence over time distinguishes temporary correlation
+from a mechanism that reproduces the pattern.
 
 ## Core model elements
 
@@ -30,7 +30,7 @@ tests, historical replay, parameter sensitivity, and alternative structures.
 Treat qualitative loops as hypotheses when measurements or equations are not
 available.
 
-Do not fit a complex simulation merely to match history. Inspect whether the
+Use the smallest model that explains history and supports the decision. Inspect whether the
 mechanism, parameters, and boundary are independently defensible and whether
 different structures fit equally well.
 

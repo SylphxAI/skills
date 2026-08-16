@@ -21,8 +21,8 @@ valid: fix an instruction ambiguity, tool error, missing context field, or weak
 test. Use double-loop correction when repeated failure indicates that the goal,
 assumption, boundary, incentive, or evaluation system itself is wrong.
 
-Do not keep adding reminders around a bad objective. Conversely, do not redesign
-the whole operating model when a local contract defect explains the recurrence.
+Correct a bad objective at its owner. When a local contract defect explains the
+recurrence, repair that contract within the sound operating model.
 
 ## Causal system map
 
@@ -40,8 +40,8 @@ objective / incentive
 ```
 
 For every plausible cause, record expected evidence, disconfirming evidence,
-and whether causes may interact. Prefer a discriminating intervention over a
-large bundle whose successful component cannot be identified.
+and whether causes may interact. Prefer a discriminating intervention that
+identifies the successful component.
 
 ## Evaluation choices
 
@@ -52,8 +52,8 @@ large bundle whose successful component cannot be identified.
 - **Shadow execution:** compare behavior without granting candidate effects.
 - **Randomized or stepped comparison:** use when environments and populations
   permit causal comparison.
-- **Bounded live rollout:** use only when offline evidence cannot represent the
-  material external interaction; bind exposure and rollback first.
+- **Bounded live rollout:** use only when the material external interaction
+  requires live evidence; bind exposure and rollback first.
 
 Report critical failures and per-cluster effects, not only a mean. Test transfer
 across materially different tasks, runtimes, and model families when the change

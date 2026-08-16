@@ -5,84 +5,39 @@ description: "Model a decision for optimization: objective, constraints, sensiti
 
 # Optimize Decision Model
 
-Translate an operational decision into a falsifiable mathematical model whose
-recommended solution can be independently checked. Read
-[references/optimization-modeling-method.md](references/optimization-modeling-method.md)
-before selecting a formulation or solver.
+Translate an operational decision into a mathematical model whose variables,
+constraints, objective, and solution represent the real decision.
 
-## Workflow
+## Method
 
-1. Define the decision owner, controllable actions, entities, horizon,
-   frequency, latency, downstream effects, baseline policy, and terminal
-   decision artifact. Separate controllable choices from forecasts and facts.
-2. Declare sets, indices, parameters, units, sources, timestamps, uncertainty,
-   missingness, and lineage. Reject inputs whose meaning or unit cannot be
-   reconciled.
-3. Define decision variables and domains before writing the objective. Include
-   state, recourse, slack, and activation variables only when their operational
-   meaning is explicit.
-4. State the objective in business or system units. For multiple objectives,
-   declare priority, lexicographic order, Pareto treatment, or calibrated
-   trade-off weights; never hide policy choices inside arbitrary coefficients.
+1. Open the [optimization modeling method](references/optimization-modeling-method.md).
+2. Define the decision owner, controllable actions, entities, horizon,
+   frequency, latency, downstream effects, baseline policy, and output.
+3. Declare sets, parameters, units, sources, timestamps, uncertainty, and
+   missing-data treatment.
+4. Define decision variables and domains, including state, recourse, slack, or
+   activation variables when they have operational meaning.
+5. State the objective in business or system units. Name the priority,
+   lexicographic order, Pareto treatment, or approved weights for multiple
+   objectives.
+6. Encode hard constraints separately from preferences and penalties. Link
+   every constraint to its owner, source, tolerance, and relaxation policy.
+7. Choose deterministic, stochastic, chance-constrained, or robust treatment
+   from the uncertainty and decision timing.
+8. Test feasibility and boundedness, then solve with a reproducible solver
+   configuration.
+9. Recompute the objective and material constraints from the emitted solution.
+   Compare with the current baseline, a simple heuristic, and a tiny exhaustive
+   fixture when feasible.
+10. Run sensitivity and stress analysis, then define fallback behavior,
+    monitoring, re-solve triggers, and the decision handoff.
 
-Example: "maximize weekly shipped items subject to at most 3 in-flight batches and one review owner per PR" states units and constraints; "be more productive" does not.
-5. Encode hard constraints separately from soft preferences and penalties.
-   Bind every constraint to its operational rule, source, tolerance, and reason
-   for being hard or relaxable.
-6. Choose deterministic, scenario-based stochastic, chance-constrained, or
-   robust treatment according to the uncertainty and decision timing. State
-   distributional and independence assumptions and what happens outside the
-   modeled set.
-7. Test feasibility and boundedness before optimization. Exercise empty,
-   minimum, maximum, conflicting, and impossible cases; preserve an explicit
-   diagnostic for infeasibility instead of silently dropping constraints.
-8. Solve with reproducible configuration. Record solver, version, formulation,
-   seed where relevant, termination status, objective, bounds, optimality gap,
-   resource limits, and incumbent solution.
-9. Independently recompute the objective and every material constraint from the
-   emitted solution. Compare with a current baseline, a simple heuristic, and
-   exhaustive enumeration on a tiny fixture where feasible.
-10. Run sensitivity, scenario, stress, and parameter-perturbation analysis.
-    Convert the model into a robust operating policy with fallback behavior,
-    monitoring signals, re-solve triggers, and decision handoff.
+## Output
 
-## Artifact
+Return a Constrained Decision Model with decision boundary, data and units,
+variables, objective, constraints, formulation, solver result, independent
+recomputation, baseline comparison, sensitivity, fallback, and residual model
+risk.
 
-Produce a **Constrained Decision Model**:
-
-- decision boundary, horizon, baseline, assumptions, and non-goals;
-- sets, parameters, units, provenance, uncertainty, and data-quality rules;
-- variables, objective, constraints, tolerances, and mathematical formulation;
-- feasibility evidence, solver configuration, result, bounds, gap, and runtime;
-- independent solution verification and baseline or heuristic comparison;
-- sensitivity, stress cases, robust policy, fallback, monitoring, and re-solve
-  conditions;
-- unsupported claims, unresolved model risk, and implementation handoff.
-
-
-## Progressive disclosure
-
-- [references/optimization-modeling-method.md](references/optimization-modeling-method.md) — open when needed for depth
-
-## Boundaries
-
-- Use `../review-domain/references/optimization-objective/` for the real outcome, proxy, Goodhart,
-  gaming, and protected-floor contract when an automated optimizer will act on
-  the model. This Skill consumes that contract and owns variables, constraints,
-  solver evidence, and solution verification.
-- When both Skills apply but no standalone objective audit was requested,
-  integrate the material objective-contract fields into this Constrained
-  Decision Model rather than emitting a second artifact.
-- Use `../record-structured-deliberation/references/decision-quality-standard/` when the job is evidence-based qualitative
-  selection among materially distinct options without a mathematical program.
-- Use `../review-domain/references/agent-planning-system/` for how an agent decomposes, sequences,
-  observes, and replans work.
-- Use `forecast-with-calibration` when the primary artifact is a calibrated
-  prediction rather than a controllable decision.
-- Use `../review-domain/references/product-experiment/` or `analyze-causal-inference` to estimate the
-  effect of an intervention. An optimizer may consume those estimates but does
-  not identify them.
-
-## Path
-
-- Solver success is one check. Validity is variables, objective, constraints, data, and uncertainty that represent the operational decision, plus independent recomputation of the emitted solution.
+Solver success is one result. The operational decision owner accepts the model
+when its semantics and recomputed solution match the real decision.

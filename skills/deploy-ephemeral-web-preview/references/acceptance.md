@@ -1,19 +1,14 @@
-# Acceptance for ephemeral web preview
+# Preview acceptance
 
-## Required
+A ready preview records:
 
-- Provider name + free class (L2/L3)
-- Public URL
-- Probe result (status, time)
-- Expiry or “durable free tier” statement
-- Claim/ownership path if temporary
+- the exact candidate revision and build;
+- the provider and public or authorized URL;
+- the expiry or removal command;
+- a successful load of the entry route;
+- one representative interaction from the changed path;
+- relevant browser console and network state.
 
-## Not sufficient alone
-
-- Local `npm run dev` success
-- “Deploy started” without URL
-- Marketing free-tier copy without a live probe
-
-## Residuals to list
-
-- Custom domain, TLS edge cases, SPA routing, auth cookies, backend coupling
+Add route, authentication, storage, webhook, or device checks only when the
+candidate uses those behaviors. Report the preview as a candidate environment
+with its stated lifetime.

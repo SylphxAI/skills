@@ -2,7 +2,7 @@
 
 Use this file when writing sprite prompts by hand.
 
-Do not delegate prompt writing to a script unless you specifically need parity with an older generated prompt.
+Write prompts directly. Use a script only when exact parity with an older generated prompt is required.
 
 ## Global Rules
 
@@ -28,15 +28,16 @@ Choose the art style from the user request, project context, map context, or ref
 - `clean_hd`: clean hand-painted HD 2D game asset style, crisp silhouettes, smooth surfaces, low texture noise, controlled lighting, no chunky pixels.
 - `pixel_inspired`: clean modern pixel-art-inspired style without 16-bit wording, heavy dithering, or noisy microtexture.
 - `retro_pixel`: 16-bit pixel art or retro JRPG pixel art, only when explicitly requested.
-- `map_style` or `project-native`: match the visible reference, existing game, or `$generate2dmap` selected art style.
+- `map_style` or `project-native`: match the visible reference, existing game,
+  or `produce-game-2d-map-assets` selected art style.
 
-Do not write `16-bit`, `retro JRPG`, or `chunky pixel-art` unless the user asks for that look. For clean HD map props, explicitly say `Do not make pixel art`.
+Use `16-bit`, `retro JRPG`, or `chunky pixel-art` only when the user selects that look. For clean HD map props, specify smooth hand-painted HD forms and surfaces.
 
 ## Reference Rules
 
 Use these rules when the user attaches a reference, points to a local image, asks for consistency with an earlier generated image, or asks for an evolution/variant of an existing sprite:
 
-- Make the reference image visible to built-in `image_gen` before generation. If the reference is a local file, call `read_file` first; do not assume a path string is a visual input.
+- Make the reference image visible to built-in `image_gen` before generation. If the reference is a local file, call `read_file` first and pass the resulting visual reference.
 - In the prompt, say `use the image just shown as the visual reference`.
 - State what must stay fixed: silhouette family, palette, face/eyes, costume or markings, accessories, material language, and art style.
 - State what may change: pose, animation phase, action energy, size progression, evolution traits, or FX intensity.
@@ -55,10 +56,10 @@ Use a layout guide when the sheet needs stronger geometric control than text alo
 When using a layout guide, make the guide image visible first and write:
 
 ```text
-Use the layout guide image just shown as a layout-only reference. Use it only to understand the rows, columns, equal invisible frame slots, centering, spacing, and safe padding. Do not reproduce the guide: no visible boxes, no safe-area rectangles, no center marks, no labels, no borders, no guide background.
+Use the layout guide image just shown as a layout-only reference. Use it only to understand the rows, columns, equal invisible frame slots, centering, spacing, and safe padding. Render only the requested artwork on its intended background; keep all guide geometry invisible.
 ```
 
-Keep the creative prompt agent-written. The layout guide only provides geometry; it must not replace the action plan, art style, identity lock, or containment rules.
+Keep the creative prompt agent-written. Use the layout guide for geometry while retaining the action plan, art style, identity lock, and containment rules.
 
 ## Containment Rules
 
@@ -95,13 +96,14 @@ For `player` and `npc` when the request does not specify another style:
 
 ## Map Prop Style
 
-For `prop` assets requested by `$generate2dmap`, match the selected map art style:
+For `prop` assets requested by `produce-game-2d-map-assets`, match the selected
+map art style:
 
 - `clean_hd`: clean hand-painted HD 2D game asset style, crisp silhouettes, smooth painted surfaces, low texture noise, controlled accent lighting, no chunky pixels.
 - `pixel_inspired`: clean modern pixel-art-inspired prop, crisp readable shape, no 16-bit wording, no heavy dithering.
 - `retro_pixel`: 16-bit or retro JRPG pixel-art prop, only when the map is explicitly retro pixel.
 
-For clean HD props, use mostly front-facing top-down RPG object view: upright objects are vertical and centered, with only a small visible top face. Avoid strong isometric diagonal rotation unless requested.
+For clean HD props, use mostly front-facing top-down RPG object view: upright objects are vertical and centered, with only a small visible top face. Use strong isometric diagonal rotation only when requested.
 
 ## Creature and FX Style
 
@@ -110,7 +112,7 @@ For `creature`, `spell`, `projectile`, `impact`, `summon`, and `fx`:
 - strong silhouette
 - readable body colors or effect shape
 - battle-ready or gameplay-readable pose
-- avoid painterly composition drift between frames
+- keep composition, scale, and identity stable between frames
 - if humanoid, keep it clearly non-player unless the user explicitly wants a player-like unit
 
 ## Action Rules
@@ -216,20 +218,14 @@ State the travel behavior clearly:
 
 ### Mixed-action atlas guardrail
 
-Do not use a single raw generated sheet to pack unrelated actions just because the target engine wants a `4x4`, `5x5`, or custom atlas.
-
-Avoid prompts like:
-
-- row 1 idle, row 2 run, row 3 shoot, row 4 jump
-- first row walk, second row attack, third row hurt, fourth row death
-- one big atlas containing every hero action
+Generate unrelated actions as separate sheets, then assemble the target engine's `4x4`, `5x5`, or custom atlas after each action passes QC.
 
 For controllable heroes, main characters, and high-value player assets:
 
 1. Generate each action as its own multi-row grid sheet, usually `2x2` for 4-frame actions, `2x3` for 6-frame actions, and `2x4`, `3x3`, `3x4`, or `4x4` for longer actions.
 2. Keep attack/shoot/cast body animation separate from projectile, muzzle flash, slash arc, weapon trail, impact, and dust unless the runtime explicitly supports wider per-action cells plus explicit origins.
 3. Process and visually QC each action independently for feet line, body center, scale, silhouette, and edge safety.
-4. Reject a body action when the body appears more than about 10-15% smaller than idle/run because a wide FX bbox forced it to shrink.
+4. Keep the body within about 10-15% of the idle/run scale by placing wide effects in separate cells or sheets.
 5. Assemble a `4x4`, `5x5`, or custom engine atlas only after the separate action sheets pass QC.
 
 Allowed raw multi-row sheets:
@@ -252,7 +248,7 @@ Use:
 - column 3: neutral again
 - column 4: right foot forward
 
-Do not use a layout guide by default for this sheet. Try an unguided prompt first unless the previous result crossed cell edges or failed the grid shape.
+Start this sheet with an unguided prompt. Add a layout guide when a previous result crossed cell edges or failed the grid shape.
 
 ### `3x3` large idle
 
@@ -275,7 +271,7 @@ Use for casting, summoning, charging, transformation, death, and other single-ac
 - keep the subject identity stable while allowing pose, energy, and compact attached effects to change
 - use a layout guide when the action includes VFX, portals, circles, summons, or other elements that might cross cell boundaries
 
-Do not use this format as a shortcut for four unrelated hero actions. If the requested rows are different actions, treat it as a `hero_action_bundle` or `engine_atlas` delivery problem instead.
+Use this format for one coherent action sequence. When the requested rows are different actions, use the `hero_action_bundle` or `engine_atlas` delivery workflow.
 
 ### `5x5` and custom grids
 
@@ -307,7 +303,7 @@ or:
 - combat
 - walk
 
-Do not try to force unrelated assets into one giant sheet.
+Give unrelated assets separate sheets and assemble only the required delivery atlas.
 
 ## Quick Prompt Pattern
 

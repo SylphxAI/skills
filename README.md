@@ -1,47 +1,52 @@
-# Sylphx Verified Capabilities
+# Sylphx Agent Skills
 
-**Product North Star:** agents load one trusted method for a real job—and never
-grant more trust than version-scoped evidence allows.
+Reusable [Agent Skills](https://agentskills.io/specification) for product,
+engineering, operations, design, and research work.
 
-This repository is the **open foundation**: Agent Skill packages
-(`SKILL.md`), optional version-scoped qualification records, and
-install/sync for Codex, Claude Code, and Grok Build. It is not a marketplace,
-agent runtime, or Control Plane.
-
-A capability is a **requestable job** with a specialized procedure. Standards,
-domain packs, and long matrices live in `references/` under the capability
-that uses them. There is **no hard skill-count cap**. Catalogs grow with real
-jobs; organize by semantics.
-
-Do not add `capability.json`. `qualification.json` is optional (missing =
-unqualified). A value claim uses same-prompt paired evaluation; qualification
-is not a use gate.
-
-See [docs/NORTH-STAR.md](docs/NORTH-STAR.md) (full product North Star),
-[docs/MODEL.md](docs/MODEL.md), [docs/QUALIFICATION.md](docs/QUALIFICATION.md).
+Each package lives at `skills/<name>/` and uses `SKILL.md` as its source. A
+package may include references, scripts, and assets when the skill genuinely
+uses them. `SKILL.md` is the sole package contract, and each agent host owns
+installation and discovery through its native interface.
 
 ## Install
 
-> Install this: https://github.com/SylphxAI/skills
-
-`install` is the static reconciliation operation; AutoSync is an explicit,
-separate opt-in (`sylphx-skills auto-sync enable`). See
-[INSTALL.md](INSTALL.md). AutoSync applies only annotated `skills-v*` release
-tags ([docs/PROMOTION.md](docs/PROMOTION.md)).
-
-## Develop
+Install through the host's native plugin interface:
 
 ```bash
-npm test
-npm run build:catalog
+# Codex
+codex plugin marketplace add SylphxAI/skills
+codex plugin add sylphx-skills@sylphx
+
+# Claude Code
+claude plugin marketplace add SylphxAI/skills --scope user
+claude plugin install sylphx-skills@sylphx --scope user
+
+# Grok
+grok plugin install SylphxAI/skills --trust
 ```
 
-## Principles and quality vocabulary
+The host owns its plugin cache and update flow. Installed skill names use the
+plugin namespace, such as `sylphx-skills:analyze-critically`. Restart or reload
+the host after changing plugins.
 
-- Universal principles (any design): [docs/policies/PRINCIPLES.md](docs/policies/PRINCIPLES.md)
-- Engineering Quality North Star (`q-*`): under
-  `skills/build-product/references/engineering-standard/` — authoring quality,
-  **not** product metrics or qualification evidence
+## Repository layout
+
+```text
+skills/
+  <name>/
+    SKILL.md
+    references/   # optional reading selected by SKILL.md
+    scripts/      # optional executable helpers
+    assets/       # optional output resources
+```
+
+Browse [`skills/`](skills/) by job name. The frontmatter description in each
+`SKILL.md` defines when that skill applies.
+
+## Contribute
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Pull requests run one fast check for
+the Agent Skills format, local links, and bundled script behavior.
 
 ## License
 

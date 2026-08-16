@@ -1,21 +1,22 @@
-# Rich Message format (required)
+# Rich Message format
 
 Open when choosing Telegram text wire format, writing digests/boards/progress
 copy, or reviewing `parse_mode` / escape helpers.
 
-## Law
+## Product contract
 
-**Product Telegram text is Rich Message only.**
+Send durable Telegram product text through Rich Message with ordinary
+Markdown/GFM content.
 
-| Do | Do not |
+| Need | Product path |
 | --- | --- |
-| `sendRichMessage` with `rich_message.markdown` | `parse_mode=MarkdownV2` |
-| Ordinary **Markdown / GFM** as content | Hand-escaping MarkdownV2 entities |
-| Edit via `editMessageText` + `rich_message` | `parse_mode=HTML` as the product success path |
-| Tables, task lists, headings, code, links | Building boards as plain monospace because “HTML is safer” |
+| Create text | `sendRichMessage` with `rich_message.markdown` |
+| Author content | Ordinary Markdown/GFM |
+| Edit text or progress | `editMessageText` with the same `rich_message` shape |
+| Structured boards | Tables, task lists, headings, code, and links |
 
-Bot API 10.1+ Rich Message is the **only** product text path. MarkdownV2 and
-classic HTML `parse_mode` are forbidden for product text.
+Bot API 10.1+ Rich Message is the product text path. Media captions and other
+Telegram object types keep their documented format contract.
 
 ## Wire shape
 
@@ -30,81 +31,72 @@ classic HTML `parse_mode` are forbidden for product text.
 
 - **Create:** `sendRichMessage`
 - **Edit tree / progress:** `editMessageText` (or product edit helper) carrying
-  the same `rich_message` object — not a MarkdownV2 string + `parse_mode`
-- **Private streaming preview only:** `sendRichMessageDraft` (draft-only tags
-  such as `tg-thinking` stay on the draft path; durable sends must not rely on
-  them)
+  the same `rich_message` object
+- **Private streaming preview:** `sendRichMessageDraft`; draft tags such as
+  `tg-thinking` stay on this preview path, while durable sends use ordinary GFM
 
 Optional rich input flags (when the API/client supports them): `is_rtl`,
-`skip_entity_detection`. Prefer product defaults; do not invent flags per talent.
+`skip_entity_detection`. Set these from the product's locale and content policy.
 
 ## Agent-facing content contract
 
-Authors (humans or agents) write **ordinary Markdown/GFM**, not provider wire
-escape soup:
+Authors write **ordinary Markdown/GFM**:
 
 - `#` / `##` headings
 - `**bold**`, `*italic*`, `` `code` ``, fenced code
 - pipe tables (primary board layout when columns matter)
 - lists / task lists (`- [ ]` / `- [x]`)
 - blockquotes, normal links
-- hard structure for rows that must not collapse (see quirks)
+- hard structure for rows that need stable visual separation (see quirks)
 
-Dynamic user/domain strings still need **GFM-safe escaping of markdown
-punctuation** when interpolated into markup — that is ordinary MD hygiene, not
-MarkdownV2 entity encoding.
+Escape Markdown punctuation in dynamic user/domain strings before interpolating
+them into GFM markup.
 
-## Quirks that break “looks fine in GitHub”
+## Rendering behavior
 
-1. **Soft newlines can collapse.** A single `\n` may not force a visual row.
+1. **Soft newlines can collapse.** A single `\n` may leave text on one visual row.
    Prefer: markdown list items, tables, blank lines, or explicit hard-break
    patterns the product already verified on Telegram.
-2. **Tables render as real tables** under Rich Message — use them for boards.
-   Falling back to HTML often **cannot** preserve tables; silent HTML floor
-   under a table-capable contract is an anti-pattern.
-3. **Unsupported raw HTML tags** can reject the whole message. Sanitize at one
-   adapter chokepoint; allow only documented rich/official tags the product
-   relies on. Never inject HTML entities into rich markdown (they display
-   literally).
-4. **Groups vs private.** Prefer the same rich path everywhere the bot speaks;
-   legacy Markdown `parse_mode` often shows raw `*bold*` / `` `code` `` in groups.
-5. **Topic continuity.** Pass `message_thread_id` on rich send/edit; on
-   `message thread not found`, product policy may retry without thread — do not
-   change format to HTML because of thread errors.
+2. **Tables render as real tables** under Rich Message. Use them for boards
+   whose columns matter.
+3. **Raw tags follow the documented Rich Message set.** Sanitize at one adapter
+   boundary and allow the documented tags the product relies on. Write ordinary
+   Markdown characters in rich content.
+4. **Groups and private chats.** Use the same rich path everywhere the bot
+   speaks so formatting behavior stays consistent.
+5. **Topic continuity.** Pass `message_thread_id` on rich send/edit. When the
+   topic is missing, apply the product's topic fallback while preserving the
+   rich payload.
 
 ## Failure policy
 
 | Failure class | Correct response |
 | --- | --- |
 | Transport / 5xx / timeout | Retry **same** rich payload |
-| Content parse / “can't parse entities” | Bounded **ordinary GFM rewrite** (simplify markup); never “fix” by MarkdownV2 escaping |
-| `rich_message is not supported` / capability off | Fail closed or operator-visible residual — do not celebrate lossy HTML as success when tables/checklists were promised |
+| Content or entity parse error | Bounded ordinary-GFM rewrite that simplifies the markup |
+| `rich_message is not supported` / capability off | Return an operator-visible unsupported-capability result |
 | Thread missing | Topic fallback policy; keep rich format |
 
-**Do not** teach agents: “if rich fails, always send HTML.” If a temporary
-compat floor exists in a legacy codebase, label it residual, measure when it
-fires, and hard-cut it when the Bot API path is available.
+The adapter returns a truthful delivery result. A successful structured-text
+send means the Rich Message path accepted the requested structure.
 
 ## Copy / layout patterns
 
-- One digest/board per logical run when possible (anti-spam)
+- One digest or board per logical run when possible
 - Title heading + short context line + table or structured list + footer keyboard
-- Product labels in the user language; storage enums stay off-wire
-- Truncate long bodies with an honest “more” path (button or pagination), not a
-  second formatting mode
+- Product labels in the user language; translate storage enums into product copy
+- Truncate long bodies with a clear “more” button or pagination path
 
 ## Verification
 
-- Wire tests or logs show `sendRichMessage` / rich edit, **not**
-  `parse_mode=MarkdownV2` or default HTML success
+- Wire tests or logs show `sendRichMessage` or rich edit with
+  `rich_message.markdown`
 - Board with a pipe table renders as a table on a real client (or mocked body
   asserts `rich_message.markdown`)
-- No agent-facing docs that prescribe MarkdownV2 escape tables for Telegram
-- Progress/edit paths also rich-only when they show structured text
+- Progress and edit paths preserve the same rich structure
 
 ## Boundaries
 
-- Captions on media may still be plain or a narrower residual — do not silently
-  expand this into “HTML is fine for all text.”
-- Non-Telegram channels keep their own format contracts (web HTML, Slack plain,
-  etc.). This reference is **Telegram product text**.
+- Media captions use their Telegram object contract.
+- Other channels keep their own format contracts, such as web HTML or Slack
+  text. This reference governs Telegram product text.

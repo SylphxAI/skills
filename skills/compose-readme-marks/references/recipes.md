@@ -1,62 +1,28 @@
-# Agent recipes — README marks
+# README mark recipes
 
-Probed 2026-08-08: Mark badge and shields.io return `200` + `image/svg+xml`.
-
-## A. Sylphx Mark (L1)
-
-**Base:** `https://mark.sylphx.com`
-
-| Path | Use |
-|---|---|
-| `/api/v1/banner` | Header/footer SVG banners |
-| `/api/v1/badge` | Shields-like badges |
-| `/api/v1/icons?i=rust,ts,docker` | Tech icon row |
-| `/api/v1/stats/{user}` | GitHub user card (rate-limited) |
-| `/api/v1/repo/{owner}/{repo}` | Repo card |
-| `/api/v1/brand/{name}` | Fleet brand kit |
-| `/api/v1/deploy` | “deployed on …” pill |
-| `/health` | Liveness |
-
-### Copy-paste markdown
+## Static project mark
 
 ```markdown
-![header](https://mark.sylphx.com/api/v1/banner?type=wave&theme=tokyonight&text=My%20Project&desc=One-line%20pitch&height=200&animation=ambient&credit=0)
-![license](https://mark.sylphx.com/api/v1/badge?label=license&message=MIT&color=blue&style=for-the-badge)
-![stack](https://mark.sylphx.com/api/v1/icons?i=rust,ts,docker,kubernetes&theme=dark)
+[![Project mark](path/to/mark.svg)](https://example.com/project)
 ```
 
-### Banner knobs (common)
+Commit the SVG when documentation must render offline or retain a fixed brand
+asset. Use concise alternative text and link to the project or documentation.
 
-- `type`: wave, mesh, terminal, hud, product, oss, …  
-- `theme`: dark, light, tokyonight, nord, github, sylphx, …  
-- `text`, `desc` (URL-encoded; Mark may use `-nl-` for newlines)  
-- `height`, `animation` (none|ambient|rise|…), `credit=0|1`
-
-### Proof
-
-```bash
-curl -sSI "https://mark.sylphx.com/api/v1/badge?label=skill&message=ok&color=7C3AED" | head
-# expect: HTTP/2 200, content-type: image/svg+xml
-```
-
-## B. shields.io (L1)
+## Dynamic status badge
 
 ```markdown
-![build](https://img.shields.io/badge/build-passing-brightgreen)
-![license](https://img.shields.io/badge/license-MIT-blue)
-![node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
+[![Build status](https://provider.example/badge/build.svg)](https://example.com/actions)
 ```
 
-```bash
-curl -sSI "https://img.shields.io/badge/license-MIT-blue" | head
-```
+Build the image URL from the selected provider's current documented parameters.
+Link it to the workflow, release, package, or policy page that owns the fact.
 
-## C. Choose
+## Compact metadata row
 
-| Need | Provider |
-|---|---|
-| Rich animated banner / brand kit | Mark |
-| Classic CI/license chips | shields.io |
-| Both | banner Mark + chips shields |
+Group a small set of peer marks for build state, current release, package, and
+license. Keep the project purpose and primary usage path readable when remote
+images are unavailable.
 
-Do **not** treat badge uptime as release proof.
+Open the rendered README, inspect image text and destination links, and confirm
+that every displayed status matches its owning source.

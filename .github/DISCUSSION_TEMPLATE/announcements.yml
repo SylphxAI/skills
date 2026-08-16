@@ -1,10 +1,6 @@
-title: "[announce] "
+title: "[announcement] "
 labels: []
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Maintainer announcements about releases, install path changes, or catalog shifts.
   - type: textarea
     id: summary
     attributes:
@@ -14,7 +10,7 @@ body:
   - type: textarea
     id: action
     attributes:
-      label: What users should do
-      description: e.g. re-run sync, enable auto-sync, read an ADR
+      label: User action
+      description: Include an action when the change affects current users
     validations:
       required: false

@@ -1,6 +1,6 @@
 # Layered map notes (index)
 
-For full contracts absorbed into this skill (Keel-native):
+For the complete map contracts:
 
 1. [map-pipeline-selection.md](map-pipeline-selection.md) — map_mode → visual/object/collision axes
 2. [layered-map-contract.md](layered-map-contract.md) — layers, props, collision metadata, QA
@@ -12,7 +12,5 @@ For full contracts absorbed into this skill (Keel-native):
 | Artifact | Owner |
 | --- | --- |
 | Tiles/props PNGs + extract scripts | this skill |
-| Map data / spawn hooks / collision in World | title (Keel Systems) |
-| Ship shells | `keel pack` / title packaging |
-
-Never invent a second browser engine stack for Sylphx titles.
+| Map data, spawn hooks, and collision | product repository |
+| Runtime integration and packaging | product repository |

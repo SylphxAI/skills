@@ -295,7 +295,6 @@ def main() -> None:
 
     raw = Image.open(args.input).convert("RGBA")
     cleaned = remove_bg_magenta(raw, args.threshold, args.edge_threshold)
-    manifest_path = args.manifest or (args.output_dir / "prop-pack.json")
     accepted: list[dict[str, object]] = []
     rejected: list[dict[str, object]] = []
 
@@ -323,7 +322,7 @@ def main() -> None:
                 rejected.append(cell_info)
                 continue
 
-        # With --reject-edge-touch, never write edge-touching props as accepted.
+        # Edge-touch rejection keeps clipped props out of the accepted output.
         if args.reject_edge_touch and bool(cell_info.get("edge_touch")):
             cell_info["status"] = "edge_touch"
             rejected.append(cell_info)
@@ -342,27 +341,28 @@ def main() -> None:
         for item in accepted + rejected
         if bool(item.get("edge_touch")) and item.get("status") in {"accepted", "edge_touch"}
     ]
-    manifest = {
-        "input": str(args.input),
-        "rows": args.rows,
-        "cols": args.cols,
-        "threshold": args.threshold,
-        "edge_threshold": args.edge_threshold,
-        "component_mode": args.component_mode,
-        "component_padding": args.component_padding,
-        "min_component_area": args.min_component_area,
-        "edge_touch_margin": args.edge_touch_margin,
-        "accepted": accepted,
-        "rejected": rejected,
-        "edge_touch_props": edge_touch_props,
-    }
-    manifest_path.parent.mkdir(parents=True, exist_ok=True)
-    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    if args.manifest:
+        manifest = {
+            "input": str(args.input),
+            "rows": args.rows,
+            "cols": args.cols,
+            "threshold": args.threshold,
+            "edge_threshold": args.edge_threshold,
+            "component_mode": args.component_mode,
+            "component_padding": args.component_padding,
+            "min_component_area": args.min_component_area,
+            "edge_touch_margin": args.edge_touch_margin,
+            "accepted": accepted,
+            "rejected": rejected,
+            "edge_touch_props": edge_touch_props,
+        }
+        args.manifest.parent.mkdir(parents=True, exist_ok=True)
+        args.manifest.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
     if args.reject_edge_touch and edge_touch_props:
         raise ValueError(f"Props touch a cell edge (not accepted): {edge_touch_props}")
 
-    print(str(manifest_path.resolve()))
+    print(str(args.output_dir.resolve()))
 
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@ Create the ledger before writing the narrative.
 | Confidence | High, medium, or low with a short reason |
 | Limitation | Missing access, selection bias, stale date, small sample, or incomparable scope |
 
-Do not promote an inference into an observed fact when summarizing.
+Label each inference as an inference when summarizing.
 
 ## Source hierarchy
 
@@ -55,14 +55,14 @@ Include enough variety to expose different mechanisms:
 - substitutes, including manual workflows and adjacent products;
 - failed, abandoned, or low-rated examples for category failure modes.
 
-Do not compare unlike plans, regions, billing periods, or product generations
-without making the mismatch visible.
+Compare compatible plans, regions, billing periods, and product generations;
+state any material mismatch alongside the comparison.
 
-## Counterevidence sweep
+## Alternative explanations
 
 Actively look for:
 
-- users who reject the assumed problem or value metric;
+- users whose needs or value measures differ from the initial assumption;
 - products that succeeded without the supposed table stake;
 - products that failed despite the recommended feature or channel;
 - complaints contradicted by behavior or concentrated in one cohort;
@@ -88,7 +88,7 @@ counterevidence, confidence, and the smallest disconfirming test.
 
 ## Decision readiness checklist
 
-Do not issue a recommendation until all applicable checks pass:
+Issue a recommendation when all applicable checks pass:
 
 - the decision, alternatives, affected cohort, geography, time horizon, and
   irreversible consequences are explicit;
@@ -100,7 +100,7 @@ Do not issue a recommendation until all applicable checks pass:
   examined, not only named competitors;
 - pricing, feature, review, and demand comparisons use compatible dates,
   regions, plans, currencies, and cohorts or disclose the mismatch;
-- duplicated source families do not masquerade as independent corroboration;
+- duplicated source families count as one source family;
 - the recommendation identifies confidence, counterevidence, uncertainty,
   reversal conditions, and the cheapest decisive next test;
 - a reader can reproduce the conclusion from the ledger without trusting the

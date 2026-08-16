@@ -1,4 +1,0 @@
-interface:
-  display_name: "Select Dependency Versions"
-  short_description: "Select dependency/runtime versions from live authoritative release sources."
-  default_prompt: "Run Select Dependency Versions for the active task/workspace."

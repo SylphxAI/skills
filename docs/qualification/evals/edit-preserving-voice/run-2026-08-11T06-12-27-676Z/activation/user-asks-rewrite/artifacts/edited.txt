@@ -1,7 +1,0 @@
-Acme Cloud's new edge storage tier, Acme Edge, launches on 2026-09-01 in the EU and US regions.
-
-Pricing starts at $0.0045 per GB-month for standard storage and $0.012 per GB-month for infrequent access. Existing customers keep their current price until 2027-03-31.
-
-The beta closed on 2026-07-15 with 3,214 participants from 42 countries. The uptime target is 99.95%, and early access users reported p95 latency of 38 ms in Frankfurt.
-
-The team is led by Dr. Mei Chen. No commit date has been set for APAC availability.

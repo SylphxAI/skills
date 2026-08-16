@@ -1,9 +1,0 @@
-Done. Created `README-marks.md` with paste-ready Markdown:
-
-- **Hero section** — `# Your Library` title, one-line pitch, and a live-probed Mark hero banner (`form=hero&art=wave&theme=github`, `image/svg+xml` 200).
-- **Badge row** — shields.io chips for build, coverage, version, and license, each with descriptive alt text (`![Build status: passing](...)`, etc.) and a generator-intent comment keeping query params intact.
-- **Purpose labels** — a legend table mapping each badge to its purpose, plus the license repeated as real Markdown text per the skill's guidance.
-
-Two notes:
-- The skill's documented Mark routes (`/api/v1/banner`, `/api/v1/badge`) returned 404; the live route is `/api/v1/mark` (confirmed via `/api/v1/catalog` and probes). The file uses the working URL.
-- Placeholders (`Your Library`, `v1.0.0`, `92%`, `MIT`) are marked for easy replacement — tell me the real repo/package name and I'll swap them in and switch to dynamic badges if you'd like.

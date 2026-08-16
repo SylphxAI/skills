@@ -17,9 +17,9 @@ from PIL import Image
 
 ART_STYLE = (
     "Original digital monster creature. Digimon/Pokemon inspired pixel art, "
-    "strong outlines, dynamic, battle-ready. NOT cute, NOT round. "
-    "SOLID COLORED BODY. Background is 100% solid flat magenta (#FF00FF), no gradients. "
-    "NO text, NO labels, NO words, NO letters anywhere."
+    "strong angular outlines, dynamic, battle-ready, and visually formidable. "
+    "Use a solid-colored body on an uninterrupted flat magenta (#FF00FF) background. "
+    "The composition contains only the creature and its background."
 )
 
 CHAR_STYLE = (
@@ -27,27 +27,24 @@ CHAR_STYLE = (
     "above, you can see the top of the head, shoulders and full body. Chunky "
     "pixel-art with crisp dark outlines and saturated colors. Character fills "
     "~60% of its cell with margin for the engine to render cleanly. "
-    "Background is 100% solid flat magenta (#FF00FF), no gradients, no shadow "
-    "under character. NO text, NO labels, NO UI, NO speech bubbles."
+    "Use an uninterrupted flat magenta (#FF00FF) background. The composition "
+    "contains only the character and its background."
 )
 
 GRID_RULES = (
-    "ABSOLUTE RULES: "
-    "1. EXACTLY 4 equal quadrants (2x2). "
-    "2. NO borders, NO lines, NO frames between quadrants. "
-    "3. NO text, NO labels. "
-    "4. Each character fills 80%+ of its quadrant, SAME SIZE in every quadrant. "
-    "5. Quadrants connected by magenta background only."
+    "LAYOUT: "
+    "1. Use exactly 4 equal quadrants in a 2x2 grid. "
+    "2. Join every quadrant with continuous flat magenta background. "
+    "3. Place only the subject in each quadrant. "
+    "4. Each character fills at least 80% of its quadrant at identical scale."
 )
 
 GRID_RULES_4X4 = (
-    "ABSOLUTE RULES: "
-    "1. EXACTLY 16 equal-size cells arranged in a 4x4 grid (4 rows of 4 columns, every cell the same width and height). "
-    "2. NO borders, NO lines, NO frames between cells. "
-    "3. NO text, NO labels, NO numbers, NO arrows. "
-    "4. CRITICAL CONSISTENCY: the character in every single cell has the IDENTICAL height and IDENTICAL width "
-    "(same bounding box, same pixel scale). Do NOT zoom in or out between cells. "
-    "Do NOT crop tighter in some cells. The character's head-to-foot height must be visibly identical in all 16 cells. "
+    "LAYOUT: "
+    "1. Use exactly 16 equal-size cells arranged in a 4x4 grid. "
+    "2. Join every cell with continuous flat magenta background. "
+    "3. Place only the character pose in each cell. "
+    "4. Keep identical character height, width, bounding box, pixel scale, and crop in all 16 cells. "
     "5. Character is CENTERED horizontally and vertically within its cell. Fills ~60% of the cell, leaving equal magenta margin on all four sides. "
     "6. Cells connected ONLY by solid magenta (#FF00FF) background."
 )
@@ -254,7 +251,7 @@ def build_evolution_descs(subject: str, rng: random.Random) -> dict[str, str]:
         f"Evolution archetype: {arch['name']} ({arch['path']}). "
         f"Design: {silhouette} silhouette, {surface} surface, {vibe} feel. "
         "Ensure DIFFERENT silhouette, texture, posture per stage. "
-        "Avoid repeating limb structure or proportions."
+        "Vary limb structure and proportions across stages."
     )
 
     return {
@@ -376,7 +373,7 @@ def build_prompt(
                 "COLUMN 3: neutral pose again, both feet together. "
                 "COLUMN 4: RIGHT foot stepping forward. "
                 "IDENTICAL SIZE in every cell: same character height head-to-foot, same width shoulder-to-shoulder, "
-                "same on-screen pixel scale. No zooming, no cropping differently, only pose and direction change. "
+                "same on-screen pixel scale and crop; only pose and direction change. "
                 "SAME character identity, SAME costume, SAME palette in all 16 cells. "
                 "The head and torso orientation must clearly communicate which direction the character is facing in each row. "
                 f"{CHAR_STYLE} {GRID_RULES_4X4}"
@@ -451,7 +448,7 @@ def build_prompt(
             result = (
                 f"A {rows}x{cols} pixel art animation sheet of the same {prompt}. "
                 "The same asset identity appears in every cell, with the same bounding box, the same pixel scale, "
-                "and no part crossing a cell edge. "
+                "with every part contained inside its cell. "
                 "Keep the animation readable for a 2D game sprite, not a splash illustration. "
                 f"{ART_STYLE}"
             )
@@ -747,7 +744,7 @@ def compose_sheet(frames: list[Image.Image], rows: int, cols: int, cell_size: in
 
 def save_transparent_gif(frames: list[Image.Image], out_path: Path, duration: int) -> None:
     if not frames:
-        raise ValueError("No frames to encode.")
+        raise ValueError("At least one frame is required for encoding.")
 
     key = (255, 0, 254)
     width, height = frames[0].size
@@ -967,7 +964,9 @@ def cmd_process(args: argparse.Namespace) -> None:
     elif args.prompt:
         (out_dir / "prompt-used.txt").write_text(args.prompt, encoding="utf-8")
 
-    (out_dir / "pipeline-meta.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
+    if args.metadata:
+        args.metadata.parent.mkdir(parents=True, exist_ok=True)
+        args.metadata.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
     print(str(out_dir.resolve()))
 
 
@@ -1012,6 +1011,7 @@ def build_parser() -> argparse.ArgumentParser:
     process_parser.add_argument("--reject-edge-touch", action="store_true")
     process_parser.add_argument("--single-size", type=int, default=256)
     process_parser.add_argument("--duration", type=int, default=200)
+    process_parser.add_argument("--metadata", type=Path)
 
     return parser
 

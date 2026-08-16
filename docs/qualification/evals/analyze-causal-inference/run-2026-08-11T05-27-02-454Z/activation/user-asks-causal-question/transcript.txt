@@ -1,7 +1,0 @@
-Wrote `causal-inference.md:1` in the workspace root, following the `analyze-causal-inference` skill's Causal Inference Record format.
-
-Key conclusions in the document:
-- **Verdict:** the +14 pp association (62% vs 48%) is real and significant, but the causal effect is **not identified** by this observational cohort comparison — signup week, device, and region differences entangle calendar time, audience mix, and self-selection with flow assignment.
-- **Estimand:** ATE of flow version on day-7 retention, `E[Y(1)] − E[Y(0)]`, intention-to-treat, with a defined time zero/horizon.
-- **Quantified:** RD +14.0 pp (95% CI +4.3 to +23.7), RR 1.29 (95% CI 1.08–1.55), p ≈ 0.0045; E-values ~1.9 (point) and ~1.4 (CI bound); n≈200/arm only detects ~14 pp at 80% power.
-- **Path forward:** a randomized A/B test (~1,600/arm for 5 pp), or, if infeasible, within-week overlap + stable pre-trends + negative controls + channel adjustment; the doc lists exactly which evidence would support or refute the claim.

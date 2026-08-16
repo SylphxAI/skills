@@ -14,17 +14,17 @@
 
 ## Packaging rules
 
-- `pricing-1` — Choose a value metric customers already understand.
-- `pricing-2` — Gate scale, collaboration, compliance, automation, or advanced control; do not gate first value too early.
-- `pricing-3` — Make the upgrade reason visible before the paywall moment.
-- `pricing-4` — Put cancellation and renewal truth near subscription actions.
-- `pricing-5` — Do not train loyal users to churn for discounts.
-- `pricing-6` — Enterprise pricing needs proof: SSO/SAML, audit, DPA, support/SLA, security docs, admin controls.
-- `pricing-7` — Any pricing change needs a rollout plan: audience, hypothesis, holdout or staged exposure, guardrail metrics, rollback trigger, owner, and review date.
-- `pricing-8` — Migration must name who is grandfathered, for how long, what changes at renewal, what support can offer, and how customers export or downgrade before enforcement.
-- `pricing-9` — Per-seat pricing must distinguish seat minimums from bundled included seats. Do not say "$X/seat includes 20 seats" unless the invoice mechanics are explicit.
-- `pricing-10` — Overage rates must clear marginal cost at the target gross margin after discounts, credits, infrastructure spikes, and support load.
-- `pricing-11` — Annual discounts and multi-year concessions must be translated into effective ARR, margin, payback, renewal risk, and sales approval thresholds.
+- Choose a value metric customers already understand.
+- Gate scale, collaboration, compliance, automation, or advanced control while keeping first value accessible.
+- Make the upgrade reason visible before the paywall moment.
+- Put cancellation and renewal truth near subscription actions.
+- Reward continuity so loyal users receive value without needing to churn for discounts.
+- Enterprise pricing needs proof: SSO/SAML, audit, DPA, support/SLA, security docs, admin controls.
+- Any pricing change needs a rollout plan: audience, hypothesis, holdout or staged exposure, guardrail metrics, rollback trigger, owner, and review date.
+- Migration must name who is grandfathered, for how long, what changes at renewal, what support can offer, and how customers export or downgrade before enforcement.
+- Per-seat pricing must distinguish seat minimums from bundled included seats. Use "$X/seat includes 20 seats" only when the invoice mechanics state exactly how the bundle works.
+- Overage rates must clear marginal cost at the target gross margin after discounts, credits, infrastructure spikes, and support load.
+- Annual discounts and multi-year concessions must be translated into effective ARR, margin, payback, renewal risk, and sales approval thresholds.
 
 ## Pricing page requirements
 
@@ -42,7 +42,7 @@
 
 Before presenting a pricing table, run this consistency pass.
 
-| Item | Required check | Failure to avoid |
+| Item | Required check | Success condition |
 | --- | --- | --- |
 | Seat pricing | State per-seat price, minimum paid seats, included admin/viewer seats, and added-seat price separately | "$49/seat with 20 seats included" ambiguity |
 | Usage allowance | State included monthly usage, metered unit, overage tier, alert levels, hard cap/degrade mode, and prepaid pack discount | Bill shock or undefined throttling |
@@ -96,7 +96,7 @@ Owner:
 
 Default rules:
 
-- Do not force existing annual or enterprise customers onto new terms mid-contract unless the contract allows it and support/legal review is complete.
+- Keep existing annual and enterprise customers on their contracted terms through the term, with any contract-authorized change reviewed by support and legal.
 - Prefer renewal-bound migration for paid customers; use clear notice windows and explain exact changes.
 - Grandfather forever only when the operational cost is low; otherwise set a sunset date, migration offer, and support exception path.
 - Hold out a comparable cohort or run a staged rollout when price sensitivity, churn risk, or sales-cycle impact is uncertain.
@@ -130,7 +130,7 @@ Evaluate pricing by activation, conversion, retention, expansion, support load, 
 
 ## B2B analytics defaults
 
-Use concrete numbers only as placeholders to be validated, but do not omit the mechanics:
+Use concrete numbers as placeholders to be validated and always state the mechanics:
 
 - Seat expansion: include base seats per plan and an incremental seat price or sales-assist trigger.
 - Usage overages: price the value metric in tiers, for example events, rows scanned, reports, or seats, with 80/90/100% alerts and a hard cap or throttled degrade mode.
@@ -149,4 +149,4 @@ For analytics products, a clear hybrid usually reads better than a dense table:
 | Business | department owner | higher minimum, admin/viewer rules, annual default | higher included usage, cheaper overage, prepaid packs | SAML/audit/basic security docs |
 | Enterprise | procurement/security buyer | negotiated annual or multi-year commitment | committed usage band, true-up, custom caps | SSO/SCIM, DPA/MSA, SLA, security review, invoice/PO |
 
-When using a minimum commitment, write "minimum 5 paid seats" rather than "includes 5 seats." When using a bundle, write "$X/month includes 5 seats; extra seats are $Y/seat/month." Do not use both patterns in the same row.
+When using a minimum commitment, write "minimum 5 paid seats" rather than "includes 5 seats." When using a bundle, write "$X/month includes 5 seats; extra seats are $Y/seat/month." Use one pattern per row.

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Edit Preserving Voice"
-  short_description: "Edit text preserving voice, constraints, and factual claims."
-  default_prompt: "Run this skill on the active workspace."

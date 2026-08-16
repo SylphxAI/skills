@@ -1,27 +1,23 @@
-# Keel-native absorption note
-
-Distilled from external map-skill materials. **Default runtime is Sylphx Keel** (Asset → title pack paths; World/System owns playable geometry). Do **not** treat Phaser, Godot, Unity, Three.js, or Grok workspace-kit as the product stack.
-
-Playable deliverable rule: a single baked image is never the only map artifact for a playable title unless the user explicitly wants a flat background.
-
----
-
 # Map Pipeline Selection
 
-Choose maps by first selecting a product-level `map_mode`, then mapping that mode to pipeline axes. Avoid treating `hybrid` as a top-level strategy; most real 2D maps are hybrid combinations of visual art, objects, and collision metadata.
+Choose a product-level `map_mode`, then map it to the visual, object,
+collision, and engine axes. Playable maps use runtime structure in addition to
+their visual art. A baked image is complete by itself when the requested
+product is a fixed background.
 
 ## Core Map Modes
 
 Use these modes as the first decision layer:
 
-- `tile_mode`: editable tile/grid maps. Use for Pokemon-like routes, top-down RPG towns, monster-taming exploration, platformer tilemaps, tactical maps, factory maps, and projects that already use Tiled, keel_pack, Godot TileMap, Unity Tilemap, or keel_pack tilemaps.
+- `tile_mode`: editable tile/grid maps. Use for Pokemon-like routes, top-down RPG towns, monster-taming exploration, platformer tilemaps, tactical maps, factory maps, and projects that already use Tiled, Godot TileMap, Unity Tilemap, or equivalent tilemaps.
 - `scene_mode`: foundation/base map plus separate props. Use for tower defense, survivors-like arenas, cozy/top-down showcase maps, visual adventure scenes, and base-map-plus-props requests.
 - `side_scroll_mode`: parallax side-scroller scenes. Use for Mega Man-like, action platformer, Metroidvania side rooms, runners, side-view shooters, and brawlers.
 - `grid_mode`: rule-heavy grid scenes. Use for tactical RPGs, factory/automation games, board/card battlers, build grids, terrain-cost maps, and resource maps.
 - `room_chunk_mode`: modular room/chunk generation. Use for roguelike rooms, dungeon chunks, procedural level assembly, and Metroidvania room networks.
-- `baked_scene_mode`: fixed visual backgrounds. Use only for title screens, visual novel backgrounds, point-and-click scenes, boss arena concept art, non-playable showcase images, or explicit flat-image requests.
+- `baked_scene_mode`: fixed visual backgrounds for title screens, visual novel backgrounds, point-and-click scenes, boss arena concept art, showcases, and explicit flat-image requests.
 
-Modes are not final file formats. After choosing a mode, still define `visual_model`, `runtime_object_model`, `collision_model`, and `engine_target`.
+After choosing a mode, define its `visual_model`, `runtime_object_model`,
+`collision_model`, and `engine_target`.
 
 ## Genre Routing Table
 
@@ -37,25 +33,32 @@ Modes are not final file formats. After choosing a mode, still define `visual_mo
 | Factory / automation | `grid_mode` | Store buildable cells, resource nodes, machine slots, belts/conveyors, and item lanes. |
 | Card/board battler or UI-heavy game | `grid_mode` | Store board slots, UI zones, interaction regions, and background art. |
 | Roguelike room, procedural dungeon, modular rooms | `room_chunk_mode` | Store chunk sockets, exits, collision, spawn markers, and seam validation. |
-| Visual novel, title screen, fixed battle background | `baked_scene_mode` | Use only when no runtime editing/collision is needed. |
+| Visual novel, title screen, fixed battle background | `baked_scene_mode` | Select for a fixed visual whose runtime uses the image as one unit. |
 
 ## Playable Map Default
 
-When the user asks for a playable game map, level, stage, room, prototype, or engine scene, the runtime map must not be only a flattened generated image. A single baked image can be used as a background, in-world reference mockup, or QA preview, but playable output needs explicit runtime structure:
+For a playable map, level, stage, room, prototype, or engine scene, deliver a
+background or reference image together with explicit runtime structure:
 
 - top-down maps: ground/base layer plus separate props, object placement, collision, zones, exits, and spawn data
 - side-view scrolling/action stages: background/parallax layers plus an in-world stage reference mockup, platform objects or walkable lanes, terrain chunks, foreground occluders, hazards, doors, pickups, checkpoints, scene hooks, camera bounds, and collision
 - tile/editor workflows: generated or supplied tileset art plus tile layers, object layers, collision, zones, and engine-native scene/map data
 
-If the request mentions "game", "playable", "prototype", "level", "stage", "side-view action", "side-scroller", "platformer", "Megaman-like", "RPG exploration", "tower defense", or engine integration, start from the nearest playable preset below instead of `baked_raster`.
+When the request mentions "game", "playable", "prototype", "level", "stage",
+"side-view action", "side-scroller", "platformer", "Megaman-like", "RPG
+exploration", "tower defense", or engine integration, start from the nearest
+playable preset below. Select `baked_raster` for a fixed visual background.
 
 ## Mode Deliverable Contracts
 
 ### `tile_mode`
 
-Deliver tileset art, map data, tile layers, object layers, collision, exits, and a preview. Good output formats include Tiled JSON, keel_pack, Godot TileMap, Unity Tilemap, keel_pack tilemaps, or keel_title JSON.
+Deliver tileset art, map data, tile layers, object layers, collision, exits, and a preview. Good output formats include Tiled JSON, Godot TileMap, Unity Tilemap, or an equivalent engine-native format.
 
-Use `generate2dsprite` only when reusable transparent props, NPCs, animated objects, or non-tile scene objects are actually needed. A pure terrain map can stay tileset + map data + collision metadata.
+Use the `produce-game-2d-sprites` processing script for reusable transparent
+props, NPCs, animated objects,
+or scene objects outside the tile set. A pure terrain map can stay tileset +
+map data + collision metadata.
 
 ### `scene_mode`
 
@@ -73,7 +76,10 @@ Deliver scenery-only parallax layers plus separate playable foreground objects. 
 - `near_bg`
 - optional `foreground_overlay`
 
-Then deliver platform tiles/objects, terrain chunks, hazards, doors, checkpoints, pickups, exits, camera bounds, scroll factors, collision, scene hooks, and a QA preview. Parallax layers create depth; they are not collision sources.
+Then deliver platform tiles/objects, terrain chunks, hazards, doors,
+checkpoints, pickups, exits, camera bounds, scroll factors, collision, scene
+hooks, and a QA preview. Runtime object and tile layers own collision; parallax
+layers own visual depth.
 
 Choose one `stage_canvas` before generation. The primary parallax plates, stage reference, and QA preview must share the same pixel dimensions, aspect ratio, camera framing, horizon, and top-left anchor. Default to the project camera aspect ratio; when unknown, use a 16:9 side-scroller canvas such as `1536x864`.
 
@@ -91,13 +97,17 @@ Deliver reusable room/chunk art or tile/object layers, chunk dimensions, exits, 
 
 ### `baked_scene_mode`
 
-Deliver a fixed image plus optional coarse collision/zones only. Do not use this mode for editable or playable maps unless the user explicitly requests a flat background.
+Deliver a fixed image plus optional coarse collision or zones. Select an
+editable mode for maps whose objects or collision change at runtime.
 
 ## Visual Asset Source
 
 Default to built-in image generation for visual assets. Base maps, in-world reference mockups, dressed references, stage references, prop sheets, prop sprites, tileset art, parallax layers, and battle backgrounds should come from `host image generation tools` unless the user supplies existing art or explicitly asks for procedural placeholders.
 
-Scripts may slice, assemble, chroma-key, validate, compose previews, create metadata, and emit engine files. They must not replace image generation as the creative art source for final map visuals. Engine outputs such as Godot `.tscn`, Tiled JSON, keel_pack data, or Unity placement data should wire up image-generated or user-supplied assets.
+Scripts may slice, assemble, chroma-key, validate, compose previews, create
+metadata, and emit engine files. Image generation or user-supplied art owns
+the final creative visuals. Engine outputs such as Godot `.tscn`, Tiled JSON,
+or Unity placement data wire those assets into the runtime.
 
 ## In-World Reference Mockups
 
@@ -107,11 +117,13 @@ Use an in-world reference mockup whenever object placement must be visually cohe
 - Side-view scrolling/action stages use `assets/map/<name>-stage-reference.png`: background/parallax base plus proposed platforms or walkable lanes, hazards, pickups, doors, checkpoints, gates, and exits rendered as natural game-world objects or subtle in-world blockout geometry.
 - Reference mockups must preserve exact camera, framing, dimensions, terrain/background, entrances, exits, and collision-relevant boundaries from the base image.
 - Reference mockups should include at most 9 distinct visible runtime prop/object candidates unless the user explicitly asks for a larger pass. Repeated placements of the same object count as one candidate and should be repeated later in placement metadata.
-- Reference mockups are planning artifacts only. Do not ship them as runtime maps, infer collision from their pixels, or cut final platform/prop assets out of them.
+- Reference mockups are planning artifacts. Runtime maps use separately authored assets, object placement, and explicit collision.
 - Final output must still use separate props/platform objects, scene-object metadata, collision, zones, scene hooks, tile/object layers, or engine-native nodes.
-- Character, enemy, boss, projectile, player, NPC, and animation sprites are outside the map deliverable. Store actor spawn markers and encounter/arena hooks as metadata only, then use `$generate2dsprite` if those actor assets are needed.
-- Do not create annotated diagrams. Reference mockups must not contain circles, arrows, outlines, labels, numbers, UI callouts, text, captions, legends, highlighted boxes, highlighted zones, measurement lines, or explanatory overlays.
-- Do not stop after the reference mockup. Reference-only output is incomplete unless the user explicitly asked for a reference-only concept image.
+- Character, enemy, boss, projectile, player, NPC, and animation sprites belong
+  to `produce-game-2d-sprites`. Store actor spawn markers and encounter/arena
+  hooks as metadata in the map deliverable.
+- Render reference mockups as the natural game world, with scene objects in place and a clean image surface.
+- Continue from the reference mockup to final runtime assets and metadata. A reference-only request ends with the concept image.
 
 ## Visual Reference Handoff
 
@@ -121,24 +133,30 @@ Reference mockups must be generated from the actual visible base/background imag
 2. Immediately before the reference-mockup `host image generation tools` call, make the exact image visible in conversation context. For local files, call `read_file` on the saved image.
 3. The next image prompt must explicitly say to use the visible image immediately above as the visual reference.
 4. The prompt must name concrete features from the viewed image to preserve: camera framing, dimensions, horizon, terrain boundaries, road/water shapes, entrances, exits, major silhouettes, and landmark positions.
-5. The prompt must ask for an in-world reference mockup, not an annotated planning diagram.
-6. The prompt should render only visible scene objects: props, platforms, terrain chunks, hazards, gates, pickups, checkpoints, doors, exits, foreground occluders, or subtle blockout geometry.
-7. Non-visual data such as player spawns, actor spawn markers, camera bounds, patrol hints, and encounter/arena triggers must be written later as scene-hook metadata, not drawn into the image.
+5. The prompt must ask for an in-world reference mockup rendered as a clean game scene.
+6. The prompt should render visible scene objects: props, platforms, terrain chunks, hazards, gates, pickups, checkpoints, doors, exits, foreground occluders, or subtle blockout geometry.
+7. Write player spawns, actor spawn markers, camera bounds, patrol hints, and encounter/arena triggers later as scene-hook metadata.
 
-Do not rely on filenames, paths, or vague phrasing such as "based on this map". If the image is not visible in context, stop and make it visible before generating the dressed reference or stage reference.
+Use the visible image and concrete visual features as the reference. Make the
+image visible in context immediately before generating the dressed or stage
+reference.
 
 ## Layer Separation Contract
 
-For any playable or editable layered map, the first generated base/background/foundation image must not bake in objects that the runtime should control separately. This applies across top-down RPG maps, monster-taming maps, tactical arenas, tower-defense lanes, side-view platformers, parallax stages, tile/editor workflows, clean HD, pixel-inspired, and retro pixel art.
+For any playable or editable layered map, keep runtime-controlled objects in
+separate object, tile, or sprite layers. The first generated foundation image
+contains terrain and scenery across top-down RPG maps, monster-taming maps,
+tactical arenas, tower-defense lanes, side-view platformers, parallax stages,
+tile/editor workflows, clean HD, pixel-inspired, and retro pixel art.
 
 Allowed in the base/background/foundation layer:
 
 - top-down or 3/4 maps: ground material, paths, roads, water, cliffs, low terrain markings, floor patterns, and terrain boundaries
 - tactical or tower-defense maps: ground, lanes, roads, build pads, lane markings, terrain zones, and non-interactive floor detail
 - side-view stages: sky, far/mid scenery, distant buildings, distant terrain silhouettes, atmosphere, and non-colliding depth
-- tilemaps: tileset art and editable tile layers, not a flattened full-scene background
+- tilemaps: tileset art and editable tile layers
 
-Not allowed in the runtime base/background/foundation layer unless the user explicitly asks for a single baked image:
+Place these elements in runtime-controlled layers for playable maps:
 
 - tall props, buildings, trees, rocks, crates, signs, doors, gates, pickups, chests, checkpoints, hazards, traps, turrets, tower objects, ladders, foreground occluders, destructibles, actors, enemies, NPCs, bosses, player characters, UI, labels, or any object that needs collision, interaction, replacement, reuse, y-sorting, animation, engine editing, or independent render order
 
@@ -146,7 +164,7 @@ If a generated base/background contains runtime-controlled objects, regenerate a
 
 ## Side-Scroll Parallax Contract
 
-`side_scroll_mode` uses parallax background as a core stage-building method. It should produce a layered depth stack, not one crowded full-stage painting.
+`side_scroll_mode` uses a layered parallax depth stack as a core stage-building method.
 
 Typical layer responsibilities:
 
@@ -154,11 +172,16 @@ Typical layer responsibilities:
 - `far_bg`: mountains, skyline, far castle/factory silhouettes; slow scroll factor.
 - `mid_bg`: readable landmarks and large distant structures; medium scroll factor.
 - `near_bg`: near non-colliding scenery behind gameplay objects; faster scroll factor but still not collision.
-- `foreground_overlay`: optional fog, chains, pipes, silhouettes, smoke, or framing elements that render above actors but do not define gameplay collision.
+- `foreground_overlay`: optional fog, chains, pipes, silhouettes, smoke, or framing elements that render above actors as visual, non-collision layers.
 
-Generate parallax layers as scenery-only art. Platforms, walkable floors, ladders, hazards, gates, doors, pickups, checkpoints, and collision-critical props belong in platform/object/tile layers, not in parallax backgrounds.
+Generate parallax layers as scenery art. Place platforms, walkable floors,
+ladders, hazards, gates, doors, pickups, checkpoints, and collision-critical
+props in platform, object, or tile layers.
 
-All primary parallax plates must use the same `stage_canvas`. If image generation returns inconsistent dimensions, regenerate or normalize the generated layer before runtime use. Do not rely on the engine to guess scaling between mismatched layer sizes. Repeatable strips may have different source widths only when metadata records display size, anchor, scale, repeat axis, and loop policy.
+All primary parallax plates use the same `stage_canvas`. If image generation
+returns inconsistent dimensions, regenerate or normalize the layer before
+runtime use. Record display size, anchor, scale, repeat axis, and loop policy
+when a repeatable strip uses a different source width.
 
 The final side-scroller should feel deeper than a single flat image: distant layers move slowly, near layers move faster, and gameplay objects stay on their own runtime layer.
 
@@ -171,11 +194,14 @@ Allowed in the background:
 - sky, clouds, mountains, distant city/castle silhouettes, far walls, smoke, weather, atmospheric depth, and non-colliding distant landmarks
 - optional separate parallax midground/foreground layers when they are not gameplay geometry
 
-Not allowed in the runtime background:
+Place these elements in foreground, object, or gameplay layers:
 
 - walkable floors, platform tops, terrain chunks, ladders, spike traps, pickups, crates, doors, gates, checkpoints, near fences, near walls, foreground barricades, enemies, player characters, UI, labels, or any object that should be edited, collided with, reused, or rendered independently
 
-If a generated side-view background contains obvious foreground gameplay geometry, reject it as a runtime background and regenerate a cleaner scenery-only background. Do not set flattened `stage-reference` or `stage-preview` images as the runtime background.
+If a generated side-view background contains foreground gameplay geometry,
+use it as a concept reference and regenerate a scenery-only runtime
+background. The final runtime background comes from the dedicated parallax or
+scenery plates.
 
 ## Post-Reference Object Production
 
@@ -185,13 +211,16 @@ After a dressed reference or stage reference exists, continue into final runtime
 2. Create a concrete object list from the visible reference mockup while cross-checking the original base/background: object id, type, approximate position, approximate size, render layer, collision role, and asset strategy.
 3. For each visible runtime object, generate a separate transparent asset, extract it from a generated pack, or represent it as a tile/object layer when the engine/editor pipeline is tile-based.
 4. Every object/prop image prompt must explicitly state that the visible original base/background and visible reference mockup above are the visual context. The generated asset must match the original map style and correspond to an object visible in the reference mockup.
-5. Generate or define the final props, platforms, terrain chunks, hazards, pickups, doors, gates, checkpoints, exits, foreground occluders, and other visible scene objects. Do not rely on the reference image as the runtime art for these objects.
+5. Generate or define final runtime art for the props, platforms, terrain chunks, hazards, pickups, doors, gates, checkpoints, exits, foreground occluders, and other visible scene objects.
 6. Write placement metadata, object layers, collision data, scene hooks, camera bounds, exits, and zones.
 7. Compose a QA preview from the original base/background plus the final runtime objects.
 
-For playable maps, layered maps with props, side-view stages, engine scenes, and requests for separate/editable props, stopping after the reference mockup is a failed/incomplete run.
+For playable maps, layered maps with props, side-view stages, engine scenes,
+and editable-prop requests, complete the runtime assets and metadata after the
+reference mockup.
 
-For prop packs or object packs generated after a reference mockup, derive the object list and prompt from the visible reference mockup and original base/background. Do not generate generic props from memory or filenames.
+For prop or object packs, derive the object list and prompt from the visible
+reference mockup and original base/background.
 
 ## Visual Model
 
@@ -206,7 +235,9 @@ Use when:
 
 Deliver one image generated or edited through image generation, plus optional collision/zones metadata.
 
-Do not use this as the final runtime map for platformers, RPG exploration, tower defense, or any scene where props, platforms, hazards, exits, or interactables must be edited, collided with, reused, or rendered independently.
+For platformers, RPG exploration, tower defense, and other interactive scenes,
+use a layered visual model that gives props, platforms, hazards, exits, and
+interactables independent runtime control.
 
 ### `layered_raster`
 
@@ -224,13 +255,16 @@ The base image must be foundation-only: terrain, roads, water, floor markings, a
 
 Use when:
 
-- the engine/editor already uses Tiled, keel_pack, keel_pack tilemaps, Godot TileMap, Unity Tilemap, or similar tooling
+- the engine/editor already uses Tiled, Godot TileMap, Unity Tilemap, or similar tooling
 - the user asks for tiles, tilesets, tile collision, autotiling, or editable grid-perfect maps
 - procedural generation, large maps, or editor workflows matter
 
-Deliver image-generated or user-supplied tileset images, engine-native map data, tile layers, object layers, and tile/object collision. Do not script-draw the tileset as final art unless the user explicitly asked for procedural placeholders.
+Deliver image-generated or user-supplied tileset images, engine-native map
+data, tile layers, object layers, and tile/object collision. Procedural drawing
+is appropriate when the requested output is a procedural placeholder.
 
-Do not flatten tile layers, object layers, collision-relevant props, pickups, doors, hazards, or interactables into one runtime background image.
+Preserve tile layers, object layers, collision-relevant props, pickups, doors,
+hazards, and interactables as independent runtime elements.
 
 ### `layered_tilemap`
 
@@ -253,19 +287,24 @@ Deliver image-generated background, midground, foreground, and scroll-speed meta
 
 For a playable side-view scrolling/action stage, parallax layers are only the scenery. Generate an in-world stage reference mockup from the visible background using the visual reference handoff, then continue through post-reference object production. The playable stage still needs separate runtime objects for platforms or walkable lanes, terrain chunks, hazards, pickups, doors, checkpoints, gates, exits, scene hooks, camera bounds, and explicit collision.
 
-The runtime background for this preset must be scenery-only. Put collidable foreground geometry and reusable gameplay objects into `platform_objects`, tile/object layers, or engine-native nodes instead of baking them into the background image.
+The runtime background owns scenery. Put collidable foreground geometry and
+reusable gameplay objects into `platform_objects`, tile/object layers, or
+engine-native nodes.
 
-For `side_scroll_mode`, use named parallax layers (`sky`, `far_bg`, `mid_bg`, `near_bg`, optional `foreground_overlay`) plus explicit scroll factors, shared `stage_canvas`, and loop/repeat policy. Do not treat a single scenery background as a complete side-scroller background stack unless the user explicitly asks for a flat/non-parallax background.
+For `side_scroll_mode`, use named parallax layers (`sky`, `far_bg`, `mid_bg`,
+`near_bg`, optional `foreground_overlay`) plus explicit scroll factors, shared
+`stage_canvas`, and loop/repeat policy. An explicit flat-background request can
+use one scenery plate.
 
 ## Runtime Object Model
 
 - `none`: the map is just a background or tile layers.
-- `separate_props`: props are independent sprites but do not require y-sort.
+- `separate_props`: props are independent sprites with a static draw order.
 - `platform_objects`: platforms, walkable lanes, terrain chunks, walls, hazards, foreground blockers, and other collidable stage geometry are independent runtime objects with placement and collision data.
 - `y_sorted_props`: props and actors sort by base `y`; use for top-down RPG scenes.
 - `interactive_scene_objects`: doors, pickups, switches, checkpoints, gates, destructibles, signs, exits, and other non-character scene objects with interaction or state.
 - `foreground_occluders`: selected overlays always draw over actors.
-- `scene_hooks`: metadata-only markers such as player spawn, actor spawn markers, encounter zones, patrol hints, arena triggers, camera bounds, exit links, and checkpoint ids. These do not require generated actor art.
+- `scene_hooks`: metadata-only markers such as player spawn, actor spawn markers, encounter zones, patrol hints, arena triggers, camera bounds, exit links, and checkpoint ids. Generated actor art is optional.
 
 Use the simplest model that can express collision and occlusion correctly.
 
@@ -278,17 +317,16 @@ Use the simplest model that can express collision and occlusion correctly.
 - `polygon_walkmesh`: irregular walkable regions or constrained path maps.
 - `trigger_zones`: encounter/rest/exit/dialogue areas; often combined with another collision model.
 
-Do not infer collision from prop PNG bounds automatically. Use explicit blockers for prop bases and explicit walkable zones for navigation.
+Define collision with explicit prop-base blockers and walkable navigation
+zones.
 
 ## Engine Target
 
-- `keel_pack`: use PNG assets, JSON metadata, and project-specific render code.
-- `keel_pack`: prefer atlas/tilemap JSON when the project already uses keel_pack loaders; visual assets still come from image generation or existing art.
-- `keel_pack`: produce Tiled-compatible tilesets, layers, objects, and custom properties around image-generated or existing tileset art.
-- `keel_pack`: produce or adapt to keel_pack entity/layer concepts if the project uses keel_pack, while preserving image-generated or existing art as the visual source.
-- `keel_pack`: produce tile layers and scene metadata matching Godot's structure after generating or selecting the visual tileset art.
-- `keel_pack`: produce tileset/sprite assets and placement data for Unity workflows after generating or selecting the visual art.
-- keel_title: preserve existing schema when a game already has one.
+- Generic runtime: PNG assets, placement/collision metadata, and project render code.
+- Tiled: Tiled-compatible tilesets, layers, objects, and custom properties.
+- Godot: TileMap/scene data and image-generated or existing visual assets.
+- Unity: Tilemap/sprite assets and placement data for the selected scene workflow.
+- Existing project schema: preserve its established asset, layer, and scene contracts.
 
 ## Presets
 
@@ -318,7 +356,7 @@ Do not infer collision from prop PNG bounds automatically. Use explicit blockers
 - `visual_model`: `layered_tilemap`
 - `runtime_object_model`: `interactive_scene_objects + scene_hooks`
 - `collision_model`: `tile_collision + trigger_zones`
-- Use only when the engine/editor supports tilemaps.
+- Select this preset when the engine or editor supports tilemaps.
 
 ### Side-View Scrolling Stage
 
@@ -332,10 +370,10 @@ Do not infer collision from prop PNG bounds automatically. Use explicit blockers
 - `visual_model`: `parallax_layers` or `layered_tilemap` if the engine/editor already uses tiles
 - `runtime_object_model`: `platform_objects + interactive_scene_objects + scene_hooks + foreground_occluders`
 - `collision_model`: `precise_shapes` or engine-native platform/object collision
-- Applies to Megaman-like, Castlevania-like, Contra-like, side-view action, runner, shooter, and brawler stages across pixel art, clean HD, and keel_title styles.
+- Applies to Megaman-like, Castlevania-like, Contra-like, side-view action, runner, shooter, and brawler stages across pixel art and clean HD styles.
 - Required deliverables: shared `stage_canvas`, background/parallax art that matches that canvas, in-world stage reference mockup, separate platform or terrain-chunk sprites, hazard sprites, scene object placement data, scene-hook metadata, pickups/doors/checkpoints/gates when present, collision data, camera bounds, and a QA preview.
-- The stage reference should plan no more than 9 distinct visible object candidates unless the user requests a larger pass. Use repeats in metadata rather than asking the image model to invent many unrelated props at once.
-- Anti-pattern: one generated full-stage PNG plus collision rectangles. That is a background with hitboxes, not a playable stage.
+- The stage reference should plan up to 9 distinct visible object candidates by default. Represent repeated placements in metadata so one authored prop can serve many positions.
+- A playable stage includes independent geometry and runtime objects in addition to its full-stage visual preview.
 
 ## Escalation Heuristic
 

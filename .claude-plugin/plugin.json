@@ -1,0 +1,9 @@
+{
+  "name": "sylphx-skills",
+  "description": "Reusable Agent Skills for product, engineering, operations, design, and research work",
+  "author": {
+    "name": "SylphxAI"
+  },
+  "repository": "https://github.com/SylphxAI/skills",
+  "license": "MIT"
+}

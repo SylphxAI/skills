@@ -1,59 +1,33 @@
 name: check
 
-# Two-layer CI (ADR-20260803, ci-admission-standard, DORA/Fowler):
-# - PR head: attributable commit build (same-PR latest-wins)
-# - merge_group: authoritative admission (same commit build)
-# - main push: pack smoke only — do not re-run the admitted suite
-# Required context name remains "check".
-
 on:
   pull_request:
   merge_group:
-  push:
-    branches: [main]
-  workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  # Cancel only obsolete PR-head feedback. Main and merge_group keep one
-  # active run (ci-admission-standard: no default-branch starvation).
-  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.event.merge_group.head_sha || github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-
 jobs:
-  verify:
-    name: check (${{ matrix.node-version }})
-    runs-on: sylphx-linux-standard
-    timeout-minutes: 10
-    strategy:
-      fail-fast: false
-      matrix:
-        # package.json engines.node >=20; admission covers the floor and current.
-        node-version: [20, 24]
-    steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
-      - run: npm ci --ignore-scripts
-      - name: Commit build
-        if: github.event_name != 'push'
-        run: |
-          npm test
-          npm pack --dry-run
-          python3 -m py_compile $(find skills -name '*.py' -type f)
-      - name: Post-land pack smoke
-        if: github.event_name == 'push'
-        run: npm pack --dry-run
-
-  # Ruleset requires a status named exactly "check".
   check:
-    name: check
-    runs-on: sylphx-linux-standard
-    timeout-minutes: 5
-    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
     steps:
-      - run: echo "matrix lanes passed"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+      - name: Validate Agent Skills
+        run: |
+          for skill in skills/*/; do
+            uvx --from 'git+https://github.com/agentskills/agentskills.git@69ef37e9424c0a7ea9dd2293b559e43ec8176379#subdirectory=skills-ref' \
+              skills-ref validate "$skill"
+          done
+      - name: Check local links
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          lycheeVersion: v0.24.2
+          args: --offline --no-progress 'skills/**/*.md'
+          fail: true
+      - name: Check bundled scripts
+        run: |
+          python3 -m compileall -q skills
+          find skills -type f -name 'test_*.py' -print0 | \
+            xargs -0 -r -n1 uv run --with numpy --with pillow python3

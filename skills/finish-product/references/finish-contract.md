@@ -10,40 +10,26 @@ details reinforce that model.
 
 Evaluate two axes independently:
 
-| Axis | Strong state | Failure mode |
+| Axis | Strong state | Signals to resolve |
 | --- | --- | --- |
 | Conceptual simplicity | One accurate story, few primary objects and actions, legible causal path | jargon, feature piles, hidden modes, duplicated concepts |
 | Detail resolution | Material exposed choices are intentional, coherent, owned, and verified | placeholders, defaults, arbitrary values, contradictory states, rough edges |
 
-Do not simplify by deleting required meaning, states, feedback, or recovery. Do
-not create apparent depth through ornament, extra settings, verbose copy, or
-unowned mechanisms.
+Simplify while preserving required meaning, states, feedback, and recovery.
+Create depth through coherent behavior and owned detail.
 
 ## 2. Finish target
 
-Record the selected target before evaluation. Different targets have different
-truthful terminals:
-
-- `prototype`: representative behavior or composition is learnable, with every
-  placeholder and unsupported claim named.
-- `final-fidelity-reference`: one representative path establishes the approved
-  production bar across all applicable dimensions.
-- `product-candidate`: every selected surface has been brought to the reference
-  bar; no hidden “we only polished the demo” denominator.
-- `release-finish`: exact real content, platform, locale, edge-state, and
-  performance resolution exists for the asked release boundary.
-
-Changing the target is a product decision, not a way to make a rough candidate
-pass.
+Record the selected target before evaluation: the accepted placeholder policy,
+representative reference path, required surface coverage, real-content needs,
+platforms, locales, edge states, and performance expectations. The requested
+target stays stable through the pass; a product owner approves any change.
 
 ## 3. Detail Resolution Matrix
 
-For every selected surface, journey, asset/content family, mechanic, and
-meaningful number, disposition each applicable dimension as:
-
-```text
-resolved | not-applicable-with-reason | defect
-```
+For every selected surface, journey, asset or content family, mechanic, and
+meaningful number, record the current result, owning product when relevant, and
+material defect across each applicable dimension.
 
 ### Language and content
 
@@ -75,8 +61,9 @@ ranked, probabilistic, or tuned value, resolve:
   behavior, economy, ranking, difficulty, safety, or commercial outcome.
 
 An unexplained default, magic number, false precision, inconsistent unit, or
-decorative metric is a defect. The finish pass may correct representation; it
-must not invent business, policy, price, economy, or scientific truth.
+decorative metric is a defect. The finish pass may correct representation;
+the relevant product owner supplies business, policy, price, economy, and
+scientific truth.
 
 ### Visual, graphic, and art resolution
 
@@ -121,7 +108,7 @@ must not invent business, policy, price, economy, or scientific truth.
 - adaptations preserve product identity and meaning rather than mechanically
   copying one layout everywhere.
 
-## 4. Final-fidelity reference slice
+## 4. Approved reference slice
 
 Before scaling assets or screens, finish one representative end-to-end path
 that crosses the most important product states. Include real or representative
@@ -158,8 +145,8 @@ intentional exceptions; deduplication is not uniformity.
 
 ## 6. Stop condition
 
-Run or render the finished path. Do not recapture a mandatory evidence matrix.
-Do not require live identity unless the asked terminal is live.
+Run or render the finished path and record the result at the requested terminal.
+Use live identity when the requested terminal is live.
 
 Stop when the declared target is met, leftover placeholders are gone, and
 further change would be speculative, merely different, or lower value than

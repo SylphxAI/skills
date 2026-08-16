@@ -22,8 +22,8 @@ Use a directed acyclic graph or an equally explicit structural account. Mark:
 - treatment versions, adherence, measurement error, and interference;
 - time-varying treatment and confounding.
 
-The graph represents assumptions; data alone do not validate every arrow or
-absence. Record domain evidence and plausible alternative graphs.
+The graph represents assumptions. Validate each arrow or absence with domain
+evidence and record plausible alternative graphs.
 
 ## Match design to assignment
 
@@ -41,7 +41,7 @@ match the assignment mechanism:
 - interrupted time series or synthetic controls where temporal and comparison
   structures support them.
 
-Method names do not supply identification. State the estimand each design
+Identification comes from the design assumptions. State the estimand each design
 actually identifies and the population to which it applies.
 
 ## Diagnose and challenge
