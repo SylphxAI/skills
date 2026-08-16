@@ -1,6 +1,6 @@
 ---
 name: review-product-recovery-contract
-description: "Review product recovery contract and produce one actionable assessment."
+description: "Review what the product promises users after loss or outage before prescribing infrastructure recovery."
 ---
 
 # Review a Product Recovery Contract

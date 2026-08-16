@@ -1,6 +1,6 @@
 ---
 name: review-operational-observability
-description: "Review operational observability and produce one actionable assessment."
+description: "Review operational observability so operators can detect, diagnose, act, and verify recovery without leaking raw internals through customer contracts."
 ---
 
 # Review Operational Observability

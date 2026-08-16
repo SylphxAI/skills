@@ -1,11 +1,9 @@
 ---
 name: review-marketplace-seller-performance
-description: "Review marketplace seller performance and produce one actionable assessment."
+description: "Review seller performance incentives and interventions so buyer outcomes improve without one opaque score owning rank, payout, and punishment."
 ---
 
-# review-marketplace-seller-performance
-
-# Review Marketplace Seller Performance Review
+# Review Marketplace Seller Performance
 
 Create incentives and interventions that improve buyer outcomes without turning
 one opaque score into ranking, payout, and punishment authority.

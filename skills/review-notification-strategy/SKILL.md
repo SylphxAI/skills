@@ -1,6 +1,6 @@
 ---
 name: review-notification-strategy
-description: "Review notification strategy and produce one actionable assessment."
+description: "Review notification strategy so messages earn attention. Use for cadence, permission, fatigue, suppression, and channel choice."
 ---
 
 # Review Notification Strategy

@@ -1,11 +1,9 @@
 ---
 name: review-ai-product-risk
-description: "Review ai product risk and produce one actionable assessment."
+description: "Decide what an AI feature may promise, observe, decide, and do before launch outruns evidence and recovery."
 ---
 
-# review-ai-product-risk
-
-# Review AI Product Risk Review
+# Review AI Product Risk
 
 Decide what an AI feature may promise, observe, decide, and do before its
 implementation or launch outruns the product's evidence and recovery capacity.

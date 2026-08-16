@@ -1,6 +1,6 @@
 ---
 name: review-revenue-operations
-description: "Review revenue operations and produce one actionable assessment."
+description: "Review revenue operations from demand through qualification, commitment, forecast, and handoff. Treat CRM as a scoped ledger, not a wish list."
 ---
 
 # Review Revenue Operations

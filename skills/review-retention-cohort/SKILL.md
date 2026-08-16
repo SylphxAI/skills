@@ -1,6 +1,6 @@
 ---
 name: review-retention-cohort
-description: "Review retention cohort and produce one actionable assessment."
+description: "Explain who returned for which value and what product action should change. Validate the denominator and value event before optimizing."
 ---
 
 # Review a Retention Cohort

@@ -1,6 +1,6 @@
 ---
 name: review-subscription-price-increase-retention
-description: "Review subscription price increase retention and produce one actionable assessment."
+description: "Review a subscription price increase so net revenue and trust survive real contracts and billing channels."
 ---
 
 # Review Subscription Price Increase Retention

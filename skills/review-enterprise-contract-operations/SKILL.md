@@ -1,11 +1,9 @@
 ---
 name: review-enterprise-contract-operations
-description: "Review enterprise contract operations and produce one actionable assessment."
+description: "Review how executed commercial and legal terms become versioned obligations, dates, controls, and evidence. Contract text stays authoritative."
 ---
 
-# review-enterprise-contract-operations
-
-# Review Enterprise Contract Operations Review
+# Review Enterprise Contract Operations
 
 Produce one **Enterprise Contract Operations Contract** that converts executed commercial/legal sources into versioned obligations, dates, controls, system changes, evidence, and accountable decisions. Contract text remains authoritative; extracted data and summaries are governed operational views that link back to it.
 

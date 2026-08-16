@@ -1,11 +1,9 @@
 ---
 name: review-enterprise-access-governance
-description: "Review enterprise access governance and produce one actionable assessment."
+description: "Review who may grant, inherit, exercise, review, recover, and revoke administrative authority across customer tenants."
 ---
 
-# review-enterprise-access-governance
-
-# Review Enterprise Access Governance Review
+# Review Enterprise Access Governance
 
 Produce one **Enterprise Access Governance Contract** that answers who may grant,
 inherit, exercise, review, recover, and revoke administrative authority inside and

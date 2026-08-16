@@ -1,11 +1,9 @@
 ---
 name: review-data-quality-observability
-description: "Review data quality observability and produce one actionable assessment."
+description: "Review whether a dataset or projection is fit for its declared decisions, what degraded, and how to recover without publishing silent wrongness."
 ---
 
-# review-data-quality-observability
-
-# Review Data Quality Observability Review
+# Review Data Quality Observability
 
 Produce one **Data Reliability Contract** that tells producers, consumers, and
 operators whether a dataset or projection is fit for its declared decisions and

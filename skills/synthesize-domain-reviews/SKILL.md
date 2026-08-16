@@ -5,8 +5,6 @@ description: "Synthesize multiple domain reviews into one defensible closure dec
 
 # Synthesize Domain Reviews
 
-# Review Multi-Review Synthesis
-
 Find material defects and reach a defensible terminal. Read
 [references/convergent-review-method.md](references/convergent-review-method.md)
 before running a formal review.

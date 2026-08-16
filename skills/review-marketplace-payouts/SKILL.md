@@ -1,11 +1,9 @@
 ---
 name: review-marketplace-payouts
-description: "Review marketplace payouts and produce one actionable assessment."
+description: "Review marketplace payouts for traceability, fairness, refunds, and abuse. Use when seller money movement must stay supportable."
 ---
 
-# review-marketplace-payouts
-
-# Review Marketplace Payouts Review
+# Review Marketplace Payouts
 
 Use this skill to make marketplace payouts traceable, fair, supportable, and resilient to refunds or abuse.
 

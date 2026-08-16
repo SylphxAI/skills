@@ -1,6 +1,6 @@
 ---
 name: review-referral-loop
-description: "Review referral loop and produce one actionable assessment."
+description: "Review a referral or invite loop so real product value spreads without spam, coerced contacts, or unearned rewards."
 ---
 
 # Review a Referral Loop

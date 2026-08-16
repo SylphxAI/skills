@@ -1,6 +1,6 @@
 ---
 name: review-promotion-campaign
-description: "Review promotion campaign and produce one actionable assessment."
+description: "Review one promotion campaign's eligibility, economics, fulfillment, and shutdown so it grows incremental value without fake urgency or unreconciled rewards."
 ---
 
 # Review a Promotion Campaign

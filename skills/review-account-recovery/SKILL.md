@@ -1,11 +1,9 @@
 ---
 name: review-account-recovery
-description: "Review account recovery and produce one actionable assessment."
+description: "Review account recovery so the rightful user can return without opening takeover paths. Use for proof, cooling-off, support-assisted recovery, or post-compromise session repair."
 ---
 
-# review-account-recovery
-
-# Review Account Recovery Review
+# Review Account Recovery
 
 Produce one **Account Recovery Protocol** that restores the rightful user while resisting account takeover, protecting other tenant members, and preserving a clear appeal and correction path. Recovery is an alternative authentication ceremony, not a weaker support exception.
 

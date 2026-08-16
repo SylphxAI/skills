@@ -1,6 +1,6 @@
 ---
 name: review-social-media-operations
-description: "Review social media operations and produce one actionable assessment."
+description: "Review official-account social operations from publishing through live readback, correction, crisis freeze, and shutdown."
 ---
 
 # Review Social Media Operations

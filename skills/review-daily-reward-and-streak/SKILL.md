@@ -1,11 +1,9 @@
 ---
 name: review-daily-reward-and-streak
-description: "Review daily reward and streak and produce one actionable assessment."
+description: "Review a daily, streak, or calendar loop so it reinforces real recurring value without hostage progress or economy damage."
 ---
 
-# review-daily-reward-and-streak
-
-# Review Daily Reward And Streak Review
+# Review Daily Reward And Streak
 
 Produce a **Return Loop Contract** that reinforces real recurring value and
 voluntary mastery without anxiety, hostage progress, or economy damage.

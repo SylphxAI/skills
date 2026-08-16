@@ -1,6 +1,6 @@
 ---
 name: review-product-abuse-risk
-description: "Review product abuse risk and produce one actionable assessment."
+description: "Review product abuse controls so unearned value is harder to extract without making legitimate users prove innocence at every step."
 ---
 
 # Review Product Abuse Risk

@@ -1,11 +1,9 @@
 ---
 name: review-ad-monetization
-description: "Review ad monetization and produce one actionable assessment."
+description: "Review ad placement, frequency, rewards, and mediation so ads add retained contribution without taxing attention, privacy, or core utility."
 ---
 
-# review-ad-monetization
-
-# Review Ad Monetization Review
+# Review Ad Monetization
 
 Produce an **Ad Monetization Contract** that maximizes incremental retained
 contribution without turning attention, privacy, gameplay, or core utility into

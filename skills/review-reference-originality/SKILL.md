@@ -1,6 +1,6 @@
 ---
 name: review-reference-originality
-description: "Review reference originality and produce one actionable assessment."
+description: "Determine whether a subject is independently expressed relative to declared references. Use exact source pairs, not a visual impression or legal conclusion."
 ---
 
 # Review Reference Originality

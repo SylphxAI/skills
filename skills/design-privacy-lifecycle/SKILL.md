@@ -5,8 +5,6 @@ description: "Design a privacy lifecycle across collection, purpose, consent, re
 
 # Design Privacy Lifecycle
 
-# Review Privacy Data Lifecycle Review
-
 Produce one **Privacy Data Lifecycle Contract** that makes every material personal-data flow purpose-bound, controllable, time-bounded, and change-safe. This is a product and operating design artifact, not legal advice or a claim of compliance.
 
 ## Atomic boundary

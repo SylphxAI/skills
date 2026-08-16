@@ -1,11 +1,9 @@
 ---
 name: review-customer-success-operations
-description: "Review customer success operations and produce one actionable assessment."
+description: "Review post-sale success operations: outcomes, health, playbooks, and interventions. Use when retention work must follow real customer success rather than trap unsuccessful accounts."
 ---
 
-# review-customer-success-operations
-
-# Review Customer Success Operations Review
+# Review Customer Success Operations
 
 Produce one **Customer Success Operating Contract** that turns promised customer outcomes into observable milestones, honest account states, proportionate interventions, scalable learning, and durable value. Optimize for customer success that predicts retention—not retention tactics that trap an unsuccessful customer.
 

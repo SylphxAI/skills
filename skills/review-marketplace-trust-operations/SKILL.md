@@ -1,11 +1,9 @@
 ---
 name: review-marketplace-trust-operations
-description: "Review marketplace trust operations and produce one actionable assessment."
+description: "Review marketplace trust operations: policy, evidence, queues, appeals, and restoration. Use when visibility, money, or account survival must not hang on one opaque score."
 ---
 
-# review-marketplace-trust-operations
-
-# Review Marketplace Trust Operations Review
+# Review Marketplace Trust Operations
 
 Produce one **Marketplace Trust Operating Contract** that protects participants
 and market quality without making one opaque score the authority for visibility,

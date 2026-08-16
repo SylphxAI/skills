@@ -1,11 +1,9 @@
 ---
 name: review-game-economy
-description: "Review game economy and produce one actionable assessment."
+description: "Review a game economy so fun, progression, scarcity, fairness, and monetization stay sustainable across seasons, refunds, and population swings."
 ---
 
-# review-game-economy
-
-# Review Game Economy Review
+# Review Game Economy
 
 Produce a **Game Economy Specification** whose fun, progression, scarcity,
 fairness, and monetization remain sustainable across launch, seasons, veteran

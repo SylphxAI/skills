@@ -1,6 +1,6 @@
 ---
 name: review-optimization-objective
-description: "Review optimization objective and produce one actionable assessment."
+description: "Review an optimization objective so the measured target still improves the real outcome after the optimizer learns the proxy's weaknesses."
 ---
 
 # Review an Optimization Objective

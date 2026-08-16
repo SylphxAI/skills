@@ -1,6 +1,6 @@
 ---
 name: review-search-discovery-quality
-description: "Review search discovery quality and produce one actionable assessment."
+description: "Review whether a search or discovery surface helps the right user find a trustworthy, eligible result for the intended job."
 ---
 
 # Review Search and Discovery Quality

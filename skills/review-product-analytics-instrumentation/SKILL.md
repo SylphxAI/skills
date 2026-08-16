@@ -1,6 +1,6 @@
 ---
 name: review-product-analytics-instrumentation
-description: "Review product analytics instrumentation and produce one actionable assessment."
+description: "Review analytics events, identity, and metrics so product decisions stay reproducible without treating client events as false authority."
 ---
 
 # Review Product Analytics Instrumentation

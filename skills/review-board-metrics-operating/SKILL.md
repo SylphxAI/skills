@@ -1,11 +1,9 @@
 ---
 name: review-board-metrics-operating
-description: "Review board metrics operating and produce one actionable assessment."
+description: "Turn source-backed operating metrics into board decisions. Use when a reporting packet must stay unknown until the authoritative source supplies the number."
 ---
 
-# review-board-metrics-operating
-
-# Review Board Metrics Operating Review
+# Review Board Metrics Operating
 
 Turn source-backed operating metrics into decisions. Missing data remains explicitly marked until its
 authoritative source supplies the board number.

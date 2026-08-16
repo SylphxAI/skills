@@ -1,9 +1,7 @@
 ---
 name: review-agent-planning-system
-description: "Review agent planning system and produce one actionable assessment."
+description: "Review an autonomous planning and control loop: goals, plans, actions, observation, and replanning. Use before shipping a reusable agent or changing its effect authority."
 ---
-
-# review-agent-planning-system
 
 # Review Agent Planning System
 

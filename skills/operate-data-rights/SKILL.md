@@ -5,8 +5,6 @@ description: "Operate data-rights requests through authorized intake, fulfillmen
 
 # Operate Data Rights
 
-# Review Data Rights Operations Review
-
 Produce one **Data Rights Operations Contract** that can accept, authorize, fulfill, prove, communicate, and safely recover each supported request without deleting the wrong person's data or making false promises.
 
 ## Atomic boundary

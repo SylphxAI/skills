@@ -1,6 +1,6 @@
 ---
 name: review-product-experiment
-description: "Review product experiment and produce one actionable assessment."
+description: "Turn a product uncertainty into a valid experiment protocol. Use only when the result can change a decision and the design supports the causal claim."
 ---
 
 # Review a Product Experiment

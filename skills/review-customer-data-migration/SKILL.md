@@ -1,11 +1,9 @@
 ---
 name: review-customer-data-migration
-description: "Review customer data migration and produce one actionable assessment."
+description: "Review a customer-data migration so meaning, ownership, access, and history survive the cutover. Use for import programs, rehearsals, and rollback proof."
 ---
 
-# review-customer-data-migration
-
-# Review Customer Data Migration Review
+# Review Customer Data Migration
 
 Produce one **Customer Data Migration Contract** that preserves meaning, ownership, access, history, and customer trust across a verifiable source-to-target transition. Acceptance covers those preserved semantics and customer outcomes rather than row count alone.
 

@@ -1,11 +1,9 @@
 ---
 name: review-developer-product-experience
-description: "Review developer product experience and produce one actionable assessment."
+description: "Review a developer product journey across docs, SDKs, errors, sandbox, and versioning. Use when evaluation, integration, or production operability is the gap."
 ---
 
-# review-developer-product-experience
-
-# Review Developer Product Experience Review
+# Review Developer Product Experience
 
 Produce one **Developer Adoption Contract** that makes a developer product fast
 to evaluate, safe to integrate, observable in production, and maintainable across

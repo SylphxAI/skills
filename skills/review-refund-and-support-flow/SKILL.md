@@ -1,6 +1,6 @@
 ---
 name: review-refund-and-support-flow
-description: "Review refund and support flow and produce one actionable assessment."
+description: "Review refund and support consequences so trust holds and abuse cannot break entitlement. Money truth stays with the payment owner."
 ---
 
 # Review a Refund and Support Flow

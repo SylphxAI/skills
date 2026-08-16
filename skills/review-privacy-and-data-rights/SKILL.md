@@ -1,6 +1,6 @@
 ---
 name: review-privacy-and-data-rights
-description: "Review privacy and data rights and produce one actionable assessment."
+description: "Assess privacy lifecycle and data-rights posture in one review record. Use design-privacy-lifecycle or operate-data-rights when the accepted artifact is the contract itself."
 ---
 
 # Review Privacy and Data Rights

@@ -1,6 +1,6 @@
 ---
 name: review-security-assurance-operations
-description: "Review security assurance operations and produce one actionable assessment."
+description: "Answer customer security questions from current scoped evidence, not templates, sales pressure, or planned controls."
 ---
 
 # Review Security Assurance Operations

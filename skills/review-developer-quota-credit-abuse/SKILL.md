@@ -1,11 +1,9 @@
 ---
 name: review-developer-quota-credit-abuse
-description: "Review developer quota credit abuse and produce one actionable assessment."
+description: "Review quota, credit, and rate controls so finite platform resources stay protected without treating successful legitimate use as abuse."
 ---
 
-# review-developer-quota-credit-abuse
-
-# Review Developer Quota Credit Abuse Review
+# Review Developer Quota Credit Abuse
 
 Protect finite platform resources without making successful legitimate developers
 look indistinguishable from abuse.

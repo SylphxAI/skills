@@ -1,6 +1,6 @@
 ---
 name: review-offline-sync-conflict
-description: "Review offline sync conflict and produce one actionable assessment."
+description: "Review offline sync and conflict handling so user intent survives network loss, retries, multi-device concurrency, and partial failure."
 ---
 
 # Review Offline Sync Conflicts
