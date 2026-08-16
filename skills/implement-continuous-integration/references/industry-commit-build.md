@@ -54,4 +54,6 @@ pull request or merge group
 
 Use stable required-context names for repository rules. Share one local entrypoint between developer feedback and CI. Cache supported toolchain inputs and keep cache misses equivalent to a clean build.
 
+Use the runner labels the repository already declares. If they point at self-hosted or organization-owned machines, do not hide a capacity incident by moving the commit build onto GitHub-hosted runners. Workflow source is not assignment proof; a quiet queue is a runner-owner gap.
+
 The finished pipeline makes ordinary product changes inexpensive while keeping failures specific, reproducible, and connected to product behavior.

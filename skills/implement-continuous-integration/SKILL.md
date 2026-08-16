@@ -1,6 +1,6 @@
 ---
 name: implement-continuous-integration
-description: Build or simplify a repository's continuous integration around fast product-behavior checks. Use when CI is slow, flaky, duplicated, or coupled to prose, naming, and file layout.
+description: Build or simplify a repository's continuous integration around fast product-behavior checks. Use when CI is slow, flaky, duplicated, coupled to prose, or has fallen back from declared self-hosted or organization-owned runners onto GitHub-hosted machines.
 ---
 
 # Implement Continuous Integration
@@ -16,7 +16,7 @@ Create a fast commit build whose result answers whether the product still works 
 5. Consolidate duplicate setup and duplicate test execution into one clear commit-build entrypoint.
 6. Replace prose, wording, generated-copy, naming, and layout scans with tests at the behavior or public contract they intend to protect.
 7. Place long performance, exhaustive compatibility, exploratory, and environment-heavy suites on the release, deployment, scheduled, or explicitly risk-triggered path that consumes their result.
-8. Use standard hosted actions and supported toolchain caches. Pin third-party actions to immutable revisions when the repository requires supply-chain pinning.
+8. Use the runner labels the repository already declares, and use supported toolchain caches. If those labels point at self-hosted or organization-owned machines, do not add a GitHub-hosted label as a fallback. A quiet runner queue is a runner-owner gap, not a reason to move the commit build onto hosted machines. GitHub-hosted runners remain the default only when the repository has not declared a self-hosted or organization-owned runner. Pin third-party actions to immutable revisions when the repository requires supply-chain pinning.
 9. Trigger the commit build on pull requests and merge groups when the repository uses a merge queue. Keep required context names stable in repository rules.
 10. Run the workflow's local entrypoint and validate workflow syntax before landing.
 
@@ -32,4 +32,4 @@ See [Industry commit build](references/industry-commit-build.md) when classifyin
 
 ## Output
 
-Return the protected product behavior, retained and retired checks, commit-build command, workflow triggers, measured runtime when available, and repository-rule changes.
+Return the protected product behavior, retained and retired checks, commit-build command, runner labels, workflow triggers, measured runtime when available, repository-rule changes, and any runner-owner gap.
