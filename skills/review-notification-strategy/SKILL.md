@@ -15,9 +15,8 @@ suppression/dedupe, privacy/redaction, deliverability, event schema, incident
 readback, and measurement. Retention strategy, each offer, each daily loop, and
 provider implementations remain with their owning artifacts.
 
-Name the draft and its revision, then consume sibling decisions by owner and explicit
-contract. Let deterministic delivery tooling seal serialized versions and
-digests later; use owner-supplied identifiers during design.
+Name the draft and its revision, then consume sibling decisions by owner and
+explicit contract.
 
 ## Operating model
 

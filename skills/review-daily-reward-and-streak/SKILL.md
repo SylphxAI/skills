@@ -16,9 +16,8 @@ notification intent, abuse, support, and measurement. Whole-game or app retentio
 channel delivery, payment providers, and the complete economy remain with their
 respective owners.
 
-Begin with a named draft and revision, then reference sibling artifacts by owner and
-required decision. Let deterministic delivery tooling seal exact versions and
-digests later; design outputs carry an explicit draft revision until delivery tooling seals them.
+Begin with a named draft and revision, then reference sibling artifacts by
+owner and required decision.
 
 ## Product behavior
 

@@ -17,10 +17,9 @@ incentive grant/reversal, caps, fraud, privacy, support, experiments, and
 shutdown. The marketing operating system, social or community design, each
 temporary promotion, and payment settlement remain with their named owners.
 
-Name the draft and its revision, then consume product, identity, payment, promotion,
-analytics, notification, privacy, and support decisions by owner and explicit
-contract. Let deterministic delivery tooling seal versions/digests later; use
-owner-supplied identifiers during design.
+Name the draft and its revision, then consume product, identity, payment,
+promotion, analytics, notification, privacy, and support decisions by owner
+and explicit contract.
 
 ## Operating model
 

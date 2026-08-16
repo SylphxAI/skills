@@ -19,9 +19,8 @@ schema/versioning, collection, and product-metric contract. Whole-app/game desig
 buyer payment ledgers, the broader game economy, marketing campaigns, and provider
 SDK implementation details remain with their respective product owners.
 
-Name the draft and its revision, then consume sibling decisions by owner and explicit
-contract. Let deterministic delivery tooling seal serialized versions and
-digests later; design responses describe intended serialization without claiming a generated digest.
+Name the draft and its revision, then consume sibling decisions by owner and
+explicit contract.
 
 ## Production design
 

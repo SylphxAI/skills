@@ -18,9 +18,8 @@ observability selected for the actual authority and business model.
 The complete core game, provider payment ledger, daily loops, campaigns, and release/distribution program
 remain with their respective owners.
 
-Use a named draft and revision, named assumptions, and explicit sibling handoffs while
-designing. Let deterministic delivery tooling seal serialized versions and
-digests later; design outputs carry a draft revision until that delivery state exists.
+Use a named draft and revision, named assumptions, and explicit sibling
+handoffs while designing.
 
 ## Economy implementation
 

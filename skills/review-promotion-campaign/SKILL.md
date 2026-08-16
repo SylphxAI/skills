@@ -17,9 +17,8 @@ support, experiment, and shutdown. The whole marketing system, payment provider
 ledger, referral program, store listing, and game/app design remain with their owners.
 
 Name the draft and its revision. Consume payment, refund, economy, referral,
-notification, analytics, marketing, and product decisions by owner and explicit
-contract. Let deterministic delivery tooling seal versions/digests later; use
-owner-supplied identifiers during design.
+notification, analytics, marketing, and product decisions by owner and
+explicit contract.
 
 ## Operating model
 
