@@ -26,7 +26,7 @@ jobs:
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
           lycheeVersion: v0.24.2
-          args: --offline --no-progress 'skills/**/*.md'
+          args: --offline --no-progress '*.md' 'docs/**/*.md' 'runtime/**/*.md' 'skills/**/*.md'
           fail: true
       - name: Check bundled scripts
         run: |

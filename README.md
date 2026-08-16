@@ -29,6 +29,11 @@ The host owns its plugin cache and update flow. Installed skill names use the
 plugin namespace, such as `sylphx-skills:analyze-critically`. Restart or reload
 the host after changing plugins.
 
+Codex reads the repo-scoped marketplace from `.agents/plugins/marketplace.json`
+and the plugin manifest from `.codex-plugin/plugin.json`. Claude Code keeps its
+native compatibility metadata under `.claude-plugin/`; neither host delegates
+installation or update state to this repository.
+
 ## Repository layout
 
 ```text
