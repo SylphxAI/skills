@@ -1,6 +1,6 @@
 ---
 name: optimize-store-listing
-description: "Optimize store listing: metadata, creatives, conversion, compliance."
+description: "Create one truthful store listing and creative sequence for install, trial, or purchase. Use produce-product-assets for the rendered media and build-distribution-readiness for channel publication."
 ---
 
 # Optimize Store Listing

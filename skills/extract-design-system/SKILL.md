@@ -1,6 +1,6 @@
 ---
 name: extract-design-system
-description: "Extract a reusable design system from an existing product corpus."
+description: "Extract a reusable design system from an existing product corpus. Use when recovering tokens, components, and patterns from shipped surfaces; use craft-product-interface to design or polish one flow."
 ---
 
 # Extract Design System

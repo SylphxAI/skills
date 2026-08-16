@@ -1,6 +1,6 @@
 ---
 name: produce-game-2d-sprites
-description: "Produce engine-ready 2D game sprites/sheets with QC."
+description: "Produce engine-ready 2D sprites, animation sheets, HUD art, and icon sets with isolation, alignment, and import QC. Use for characters, creatures, props, projectiles, and effects; use produce-game-2d-map-assets for tilesets and produce-product-assets for store or marketing media."
 ---
 
 # Produce Game 2D Sprites

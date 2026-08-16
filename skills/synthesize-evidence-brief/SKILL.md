@@ -1,6 +1,6 @@
 ---
 name: synthesize-evidence-brief
-description: "Synthesize multi-source evidence into one bounded brief with residuals."
+description: "Synthesize multi-source evidence into one bounded brief with residuals. Use when a consequential question needs a traceable review; routine product work uses compiler and behavior tests instead."
 ---
 
 # Synthesize Evidence Brief

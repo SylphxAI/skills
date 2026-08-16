@@ -1,6 +1,6 @@
 ---
 name: research-user-needs
-description: "Research user needs: jobs, evidence, segments, opportunity ranking."
+description: "Study user behavior and experience for a specific product decision. Use for jobs, segments, and opportunity ranking from observed or elicited evidence; use synthesize-market-research for competitor and demand synthesis."
 ---
 
 # Research User Needs

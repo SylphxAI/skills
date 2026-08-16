@@ -1,6 +1,6 @@
 ---
 name: price-saas-subscription
-description: "Price a SaaS subscription: packaging, meters, fences, migration."
+description: "Choose SaaS packaging, meters, fences, and migration so price matches value and margin. Use build-payment-readiness for checkout and ledger execution."
 ---
 
 # Price SaaS Subscription

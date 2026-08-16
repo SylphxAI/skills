@@ -85,7 +85,7 @@ Keep the record internal and proportionate. A low-risk, known-state case may use
 - Use `review-product-abuse-risk` for the product-wide abuse policy and enforcement ladder; this skill applies the approved policy to one case.
 - Use `review-account-recovery`, data-rights, incident, security, safety, marketplace, legal, sales, or customer-success owners for their protected decisions.
 - Use `edit-preserving-voice` when the facts and decision are fixed and the only job is language quality; use `design-review-solicitation-policy` for public review eligibility.
-- Keep public app-store, marketplace, or social review ingestion and public response records with ``run-product-feedback-loop` unless the reviewer enters a private support case; then link the two artifacts without exposing private case facts publicly.
+- Keep public app-store, marketplace, or social review ingestion and public response records with `run-product-feedback-loop` unless the reviewer enters a private support case; then link the two artifacts without exposing private case facts publicly.
 
 ## Done
 

@@ -1,6 +1,6 @@
 ---
 name: write-high-signal-update
-description: "Write short high-signal output: answer-first replies/updates, decisions, risks, asks."
+description: "Write a short answer-first update covering outcome, facts, risks, and next action. Use craft-human-agent-language for longer instructions and edit-preserving-voice when the author's voice must stay intact."
 ---
 
 # Write High-Signal Update

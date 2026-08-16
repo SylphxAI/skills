@@ -1,6 +1,6 @@
 ---
 name: operate-customer-support
-description: "Operate customer support: triage, resolution, escalation, quality loops."
+description: "Design or improve the support system: channels, taxonomy, queues, authority, and quality loops. Use resolve-customer-support-case for one customer's truthful outcome."
 ---
 
 # Operate Customer Support
