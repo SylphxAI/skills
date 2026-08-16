@@ -1,39 +1,33 @@
 ---
 name: run-background-work
-description: "Runs cron, queues, or jobs as Platform Work that HTTP-wakes a web service. Use when adding scheduled or background work."
+description: Run cron, queues, or jobs through the product's current scheduler or worker path. Use when adding scheduled or background work that outlives one request.
 ---
 
 # Run Background Work
 
-Run work that outlives one request as a Sylphx Platform Work Operation.
-Platform wakes the `type=web` handler.
-
-## When to use
-
-- Adding cron, a queue consumer, a batch job, or function invoke
-- Replacing a long-lived worker process
+Run work that outlives one request through the owning product's current
+scheduler, queue, or worker contract.
 
 ## Method
 
-1. **Name** the activation (time, queue, invoke).
-2. **Keep compute as `type=web`.** Open
-   `../build-product/references/sylphx-platform-first-policy/references/serverless-web.md`.
-3. **Create** the Work Resource. Open
-   `../build-product/references/sylphx-platform-first-policy/references/work.md`.
-4. **Implement** an idempotent HTTP callback. Store progress in Platform Data.
-5. **Prove** the Operation reaches a typed terminal.
+1. Name the activation (time, queue, invoke), idempotency key, progress
+   store, retry, and observable terminal.
+2. Inspect the repository's current job runner, queue, or scheduler and its
+   official documentation. Do not add a parallel worker plane when one already
+   owns the job.
+3. Implement an idempotent handler on that current contract. Persist progress
+   with `persist-app-data`. Isolated untrusted exec uses
+   `provision-agent-workspace`.
+4. Prove one activation reaches a typed terminal, including retry and
+   duplicate delivery.
 
-## Done
+## Output
 
-Activation owner is a Platform Work Resource; handler is request-wake web;
-terminal observed.
-
-## Progressive disclosure
-
-- `../build-product/references/sylphx-platform-first-policy/references/work.md`
-- `../build-product/references/sylphx-platform-first-policy/references/serverless-web.md`
+Return the activation owner, handler contract, progress store, terminal
+observed, and strongest truthful delivery state.
 
 ## Boundaries
 
-Platform control-plane always-on web is not the customer template.
-Isolated exec Sessions are provisioned through `provision-agent-workspace`.
+HTTP request handling stays on the product web surface. Durable state stays
+with `persist-app-data`. Isolated exec sessions stay with
+`provision-agent-workspace`.
