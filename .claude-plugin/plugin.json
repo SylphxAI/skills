@@ -1,5 +1,6 @@
 {
   "name": "sylphx-skills",
+  "version": "0.1.0",
   "description": "Reusable Agent Skills for product, engineering, operations, design, and research work",
   "author": {
     "name": "SylphxAI"
