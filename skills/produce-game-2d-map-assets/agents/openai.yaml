@@ -1,4 +1,0 @@
-interface:
-  display_name: "Produce Game 2D Map Assets"
-  short_description: "Produce 2D map tiles/props packs with extract/preview."
-  default_prompt: "Run this skill on the active workspace."

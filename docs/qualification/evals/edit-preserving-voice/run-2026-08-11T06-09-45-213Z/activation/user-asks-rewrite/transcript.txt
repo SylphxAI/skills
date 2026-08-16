@@ -1,5 +1,0 @@
-Done — `edited.txt` is ready. The rewrite is organized into three short sections (launch, beta performance, leadership), uses professional phrasing, and preserves every fact, number, date, and name exactly:
-
-- `2026-09-01`, EU and US regions, `$0.0045`/`$0.012` per GB-month, `2027-03-31` price hold, `2026-07-15` beta close, `3,214` participants, `42` countries, `99.95%` uptime target, `38 ms` p95 in Frankfurt, Dr. Mei Chen
-- Certainty levels unchanged: uptime remains a "target," latency remains "reported," and APAC keeps "no commit date has been set"
-- No facts added or removed

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Postprocess Grok image_to_video clips into dense 2D sprites.
 
-Pipeline steps (deterministic only — no creative generation):
+Deterministic postprocessing steps:
   extract  → ffmpeg frames from mp4
   clean    → magenta flood-fill chroma + light despill
   sample   → even-index frame sets + feet/center normalize
@@ -345,13 +345,10 @@ def write_readme(out_dir: Path, meta: dict) -> None:
         "frames-raw/     decoded frames",
         "frames-clean/   chroma-keyed RGBA frames",
         "sprite/         sampled normalized sprites + strips/grids/GIFs",
-        "pipeline-meta.json",
         "",
         "This folder was produced for Grok Build (image_gen + image_to_video).",
-        "Codex/other agents cannot run the video step; they can still re-sample",
-        "existing frames with: python video2dsprite.py sample --clean-dir ...",
-        "",
-        json.dumps(meta, indent=2),
+        "Grok supplies the video step. Every host can re-sample existing frames",
+        "with: python video2dsprite.py sample --clean-dir ...",
         "",
     ]
     (out_dir / "README.txt").write_text("\n".join(lines), encoding="utf-8")
@@ -386,7 +383,10 @@ def cmd_sample(args: argparse.Namespace) -> int:
         "clean_dir": str(Path(args.clean_dir).resolve()),
         **meta,
     }
-    (out / "pipeline-meta.json").write_text(json.dumps(full, indent=2), encoding="utf-8")
+    if args.metadata:
+        metadata_path = Path(args.metadata)
+        metadata_path.parent.mkdir(parents=True, exist_ok=True)
+        metadata_path.write_text(json.dumps(full, indent=2), encoding="utf-8")
     write_readme(out, full)
     print("sample done")
     return 0
@@ -429,7 +429,10 @@ def cmd_process(args: argparse.Namespace) -> int:
         "anchor": args.anchor,
         **meta_sample,
     }
-    (out / "pipeline-meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
+    if args.metadata:
+        metadata_path = Path(args.metadata)
+        metadata_path.parent.mkdir(parents=True, exist_ok=True)
+        metadata_path.write_text(json.dumps(meta, indent=2), encoding="utf-8")
     write_readme(out, meta)
     print("process done")
     return 0
@@ -445,6 +448,7 @@ def build_parser() -> argparse.ArgumentParser:
         sp.add_argument("--body-height", type=int, default=100)
         sp.add_argument("--foot-y", type=int, default=118)
         sp.add_argument("--anchor", choices=("feet", "center"), default="feet")
+        sp.add_argument("--metadata")
 
     pe = sub.add_parser("extract", help="ffmpeg extract frames")
     pe.add_argument("--video", required=True)

@@ -1,89 +1,55 @@
 # Database cutover and migration
 
-Universal fleet method. Do not invent a smaller method for a small repository.
-Agent wall-clock is short; dual-system entropy is the expensive budget.
+Use this method to move persistent state from a predecessor to one destination while preserving data and ending with one production writer.
 
-Compose with:
+## Choose the migration shape
 
-- `select-dependency-versions` → `technology-stack-profile` (Atlas pin)
-- `engineering-standard` (`eng-hard-cut-*`, `eng-schema-multistep-01`,
-  `eng-product-dual-ban-01`, `eng-max-scale-01`, `eng-entropy-cutover-01`)
-- `source-authoring-standard` L3: schemas/migrations land with the outcome
+- Use a brief write pause for a clear consistency boundary when the product can tolerate short downtime.
+- Use destination-local schema preparation for large or locking-sensitive changes: add the new shape, backfill, validate, then enforce final constraints.
+- Use transactional change capture when continuous writes are a real product requirement and both stores can share an exact ordered boundary.
+- Use the database and repository's standard versioned migration tool as the sole production schema applicator.
 
-## Taxonomy (do not conflate)
+The completed cutover has one authoritative schema, one writer, one read path, and one operational owner.
 
-| Pattern | Meaning | Default |
-| --- | --- | --- |
-| **Product dual systems** | Long-lived A and B both own writers/readers/authority | **Forbidden** steady state |
-| **Temporary dual-write / shadow** | Fenced cutover technique with dated retirement | Only under risk-class gates |
-| **Schema multi-step inside B** | nullable → backfill → constrain; create-new → swap | **Required** when live DDL/lock risk |
-| **Hard-cut terminal** | Destination sole writer; predecessor deleted | **Always** the end state |
+## Cutover method
 
-## Default sequence (A → B)
+1. Inventory tables, relationships, callers, jobs, webhooks, workers, reports, permissions, retention rules, and operational dependencies.
+2. Prepare the destination schema, indexes, constraints, capacity, access policy, observability, and migration code.
+3. Establish a recovery point with point-in-time recovery, a snapshot, an append-only business log, or a forward-repair migration appropriate to the data.
+4. Test the migration against a representative copy and rehearse recovery from an interrupted apply.
+5. Pause or fence writes at the chosen consistency boundary.
+6. Run an idempotent backfill that records stable progress and supports safe retry.
+7. Validate row counts, checksums, conserved totals, foreign keys, uniqueness, permissions, and representative tenant or account reads.
+8. Switch writers and readers to the destination, then resume service.
+9. Exercise new writes, updates, reads, jobs, and recovery behavior through the real product path.
+10. Remove predecessor schemas, code, credentials, jobs, flags, documentation, and operational ownership after the destination checks pass.
 
-1. Build B to sole-writer readiness (schema, code, oracles).
-2. Apply **schema multi-step inside B** when live DDL/lock/data-depend risk
-   exists (not a second product system).
-3. Migrate/backfill all required data A→B with declared oracles (counts,
-   checksums, conservation, tenant samples). Idempotent re-run must be safe.
-4. If a **risk class** hits, open a **temporary** dual-write or shadow fence
-   (prefer same-transaction dual-write; never log-and-continue divergence)
-   with owner + expiry + contract proof.
-5. Flip writers, then readers; block new predecessor writes.
-6. Verify live oracles on B.
-7. **Delete A** (code, routes, jobs, docs, flags, installers) in the same
-   delivery unit when readiness gates pass.
-8. Revert surface remains: PITR/snapshot, append-only business log, forward
-   repair migration, previous healthy deployment — **not** system A.
+## High-integrity data
 
-## Risk classes (any one → special procedure)
+Money, ledgers, multi-tenant shared state, large online rewrites, externally controlled clients, and irreversible side effects benefit from stronger preparation:
 
-- Conserved value / money / ledger integrity
-- Multi-tenant shared mutable tables with cross-tenant blast radius
-- Large-table online rewrite / exclusive lock risk
-- External un-updatable clients
-- Irreversible external effects
+- define conservation equations and domain invariants;
+- use transaction boundaries or ordered change capture;
+- test migration retry and partial-apply recovery;
+- name the restore point and forward-repair procedure;
+- rehearse the authority switch with production-equivalent volume; and
+- confirm predecessor write volume reaches zero at completion.
 
-## Procedure gates (all required when a risk class hits)
+## Migration tooling
 
-1. Named live failure mode if hard-cut now without the temporary path
-2. Temporary dual/expand EV lower than expected hard-cut incident EV
-3. Owner + dated contract/retirement predicate
-4. Sole-writer readiness oracles green
-5. Recovery drill recorded (forward repair and/or PITR restore point)
+- Pin the migration CLI to an exact version and the production operating system and architecture.
+- Keep migration files append-only after production application.
+- Replay the full migration history against an ephemeral database in CI.
+- Run the tool's schema lint and destructive-change analysis when available.
+- Generate migration integrity files with the same pinned tool used by CI and production.
+- Prefer forward repair and point-in-time recovery for production recovery.
 
-**Do not** use “agents are fast” or calendar scarcity to skip these gates.
-**Do not** leave undated dual-write, forever flags, or “support both.”
+## Completion checklist
 
-## Atlas apply contract
-
-- Sole production applicator: **Atlas versioned migrations**
-- Ban: ORM push to live DB; second migration runner; unpinned CLI; macOS hash
-  for Linux apply; migrate-down as ordinary recovery
-- CI: ephemeral full-history replay + destructive/data-depend gate + directory
-  integrity; `atlas migrate lint` when the admitted edition can evaluate the
-  schema source
-- Pin OS/arch-matching CLI; regenerate integrity hashes only with that binary
-
-## Sole-writer readiness checklist
-
-- [ ] Dependency inventory complete (API, jobs, webhooks, workers, docs)
-- [ ] Backfill oracles green and re-runnable
-- [ ] Zero intended predecessor writers in telemetry (or fenced residual with
-      dated kill criteria under risk-class gates only)
-- [ ] Forward repair migration path known for partial apply failures
-- [ ] PITR or snapshot restore point named before destructive contract
-- [ ] Predecessor paths deleted or reduced to one-way no-write adapters with
-      exact retirement predicates
-
-## Forbidden residuals
-
-- Permanent dual-write or dual-read product authority
-- Forever feature flags for old behavior
-- Undated compatibility shims
-- “Support both” without a terminal
-- Silent dual writers after destination is ready
-- Residuals used as permission to keep A alive
-
-A residual is **truthful incomplete status**, not a scope waiver and not a
-second system.
+- [ ] Every predecessor dependency has a destination.
+- [ ] Backfill supports safe retry and completes for the full data set.
+- [ ] Counts, checksums, conservation rules, relationships, and permissions pass.
+- [ ] Restore or forward-repair procedures are ready.
+- [ ] Product reads, writes, jobs, and operational telemetry use the destination.
+- [ ] The predecessor has zero production writers and zero operating responsibility.
+- [ ] Obsolete code, configuration, credentials, jobs, and documentation are removed.

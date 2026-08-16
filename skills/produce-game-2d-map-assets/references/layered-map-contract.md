@@ -1,12 +1,8 @@
-# Keel-native absorption note
-
-Distilled from external map-skill materials. **Default runtime is Sylphx Keel** (Asset → title pack paths; World/System owns playable geometry). Do **not** treat Phaser, Godot, Unity, Three.js, or Grok workspace-kit as the product stack.
-
-Playable deliverable rule: a single baked image is never the only map artifact for a playable title unless the user explicitly wants a flat background.
-
----
-
 # Layered Raster Map Contract
+
+The product repository selects the runtime and owns playable geometry. A
+playable layered title ships structured map artifacts; a flat-background title
+may use one baked image.
 
 Use this contract for hand-painted or generated 2D RPG scenes, monster-taming exploration maps, shrine/town/dungeon maps, and any top-down scene where actors must interact with props.
 
@@ -28,18 +24,22 @@ Default to clean HD maps for gameplay readability unless the user explicitly ask
 Create a clean hand-painted top-down 2D RPG game map.
 This is a BASE GROUND MAP ONLY for a layered raster exploration scene.
 Style: clean HD game asset style, sharp readable terrain shapes, crisp silhouettes, smooth painted surfaces, low texture noise, controlled accent lighting.
-Do not make pixel art. Avoid chunky pixels, retro dithering, noisy microtexture, tiny debris, clutter, blurry painterly mush, and over-detailed grime.
+Use smooth hand-painted HD forms, crisp silhouettes, controlled texture, clear spacing, and restrained environmental detail.
 Include terrain, paths, grass/water/floor materials, ground markings, floor patterns, and flat anchor pads.
-Do not include tall collidable objects: no buildings, gates, fences, lanterns, trees, signs, barrels, NPCs, monsters, UI, or text.
+Keep the base layer to ground terrain and low non-collidable detail. Place buildings, gates, fences, lanterns, trees, signs, barrels, actors, UI, and text in their appropriate separate layers.
 Leave clear empty spaces where props will be placed later.
 Make walkable paths and zone boundaries easy to trace.
 ```
 
-If the user wants a pixel-adjacent look, use `clean modern pixel-art-inspired` and still forbid heavy dithering and noisy microtexture. Use `16-bit pixel art`, `retro JRPG pixel art`, or similar terms only when the user explicitly asks for a retro pixel look.
+If the user wants a pixel-adjacent look, use `clean modern pixel-art-inspired`
+with broad clean clusters, restrained dithering, and restrained microtexture.
+Use `16-bit pixel art`, `retro JRPG pixel art`, or similar terms only when the
+user explicitly asks for a retro pixel look.
 
 ## Prop Generation
 
-Use `$generate2dsprite` when the map needs reusable transparent props. Choose one of two approaches:
+Use `produce-game-2d-sprites` when the map needs reusable transparent props.
+Choose one of two approaches:
 
 - One-by-one props: safest for large, important, irregular, animated, or identity-critical props.
 - Prop packs: faster for sets of small/medium static environmental props.
@@ -51,12 +51,12 @@ Read [prop-pack-contract.md](prop-pack-contract.md) before batching props.
 For generated layered raster maps, use a dressed reference pass before final prop extraction:
 
 1. Generate the base as ground-only terrain.
-2. Make the base visible to built-in `host image generation tools`. If the base exists as a local file, call `read_file` first; do not expect a filesystem path in the prompt to work as the visual reference.
+2. Make the base visible to built-in `host image generation tools`. When the base is a local file, call `read_file` first and pass the resulting visual reference to generation.
 3. Ask for a dressed-reference version of the same map by adding props only.
 4. Preserve exact camera, framing, dimensions, terrain, paths, water, anchor pads, collision-relevant boundaries, and map edges.
 5. Use the dressed reference to choose prop identities and placement coordinates, but compose the final runtime preview from the original base plus extracted transparent props.
 
-The dressed reference is a planning artifact. Do not ship it as the only runtime map when props need collision, y-sort, occlusion, or reuse.
+The dressed reference is a planning artifact. Build the runtime map from separate props whenever collision, y-sort, occlusion, or reuse applies.
 
 Prompt shape:
 
@@ -64,7 +64,7 @@ Prompt shape:
 Use the image just shown as the exact base map reference.
 Create a dressed-reference version of the same map by adding props only.
 Preserve exactly: camera, framing, image size, terrain, paths, water, anchor pads, rocks, map boundaries, and all walkable routes.
-Do not crop, zoom, rotate, repaint, or redesign the terrain.
+Preserve the exact terrain crop, scale, rotation, pixels, and design.
 Add these props naturally on top of the existing map: <list>.
 Props should feel intentionally placed along paths, landmarks, encounter-zone edges, rest points, and entrances.
 No UI, no text, no labels, no watermark.
@@ -75,7 +75,7 @@ No UI, no text, no labels, no watermark.
 ```text
 Create a single <prop> prop for a top-down 2D RPG map.
 Use the same selected map art style: clean HD hand-painted by default, pixel-inspired only when requested, retro pixel only when explicitly requested.
-Mostly front-facing top-down RPG object view: upright objects are vertical and centered, with only a small visible top face. Avoid strong isometric diagonal rotation.
+Mostly front-facing top-down RPG object view: upright objects are vertical and centered, with only a small visible top face and restrained diagonal rotation.
 Full object visible, centered, crisp but not chunky outlines.
 Background must be 100% solid flat #FF00FF magenta, no gradients, no texture, no shadows, no floor plane.
 No text, labels, UI, or watermark.
@@ -182,10 +182,11 @@ Guidelines:
 
 ## Preview Composition
 
-Use `scripts/compose_layered_preview.py` to flatten a base map and placement JSON:
+Use `skills/produce-game-2d-map-assets/scripts/compose_layered_preview.py` to
+flatten a base map and placement JSON:
 
 ```bash
-python3 skills/generate2dmap/scripts/compose_layered_preview.py \
+python3 skills/produce-game-2d-map-assets/scripts/compose_layered_preview.py \
   --base assets/map/shrine-base.png \
   --placements data/shrine-props.json \
   --output assets/map/shrine-layered-preview.png
@@ -205,15 +206,11 @@ The script assumes prop placement uses center-bottom anchoring unless a prop exp
 - Actors sort correctly when walking in front of and behind tall props.
 - The flattened preview matches the in-game layered render closely enough for visual review.
 
-## Anti-Patterns
+## Delivery shape
 
-Avoid:
-
-- Cutting props out of a fully baked generated map.
-- Using a complete flattened map as the only source when collision/occlusion matters.
-- Baking text, signs, UI, NPCs, or monsters into the base.
-- Letting prop sprites touch image edges.
-- Treating transparent PNG bounding boxes as collision automatically.
-- Updating art without updating collision and critical point tests.
-
-================================================================================
+- Generate props as independent transparent assets.
+- Keep layered sources whenever collision or occlusion matters.
+- Keep text, signs, UI, NPCs, and monsters in their owning layers.
+- Preserve clear padding around each prop sprite.
+- Define collision from gameplay geometry.
+- Update collision and critical-point tests with related art changes.

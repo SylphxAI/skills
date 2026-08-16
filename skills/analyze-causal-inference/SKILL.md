@@ -1,81 +1,27 @@
 ---
 name: analyze-causal-inference
-description: "Estimate causal effects: identification, estimators, robustness bounds."
+description: Estimate the causal effect of an intervention using an explicit estimand, identification assumptions, suitable design, diagnostics, and sensitivity analysis.
 ---
 
 # Analyze Causal Inference
 
-Turn a causal claim into an explicit intervention, estimand, identification
-argument, and falsifiable analysis. Read
-[references/causal-inference-methods.md](references/causal-inference-methods.md)
-before choosing a design or adjustment strategy.
+Turn a causal question into an identified analysis whose assumptions and limits are visible.
 
+## Method
 
-## When to use
-- A claim says one thing causes another and the counterfactual contrast can be stated
-- You need an identified estimate (not correlation, prediction, or temporal order) with assumptions and sensitivity
-- Designing or auditing an experiment, holdout, switchback, or observational study of an intervention
-- Not for competing root-cause hypotheses without an estimand (`analyze-critically`) or feedback dynamics over time (`analyze-system-dynamics`)
+1. Define the intervention, comparator, population, outcome, time zero, follow-up horizon, and target estimand.
+2. Establish temporal order and draw the causal assumptions. Mark confounders, mediators, colliders, selection, interference, measurement error, and time-varying treatment where relevant.
+3. Describe the target experiment: eligibility, assignment, follow-up, outcome, contrast, and analysis plan.
+4. Select a design that matches the assignment process and available data: randomized experiment, adjustment, matching, target-trial emulation, difference-in-differences, regression discontinuity, instrumental variables, or another identified strategy.
+5. State the identification assumptions and data requirements before estimation.
+6. Check overlap, balance, exposure integrity, missingness, model dependence, design-specific diagnostics, negative controls, alternative specifications, and sensitivity to unmeasured bias.
+7. Estimate the effect with uncertainty and explain the population, time, and settings to which it can transport.
+8. Label the result according to the design's actual identification strength.
 
-## Workflow
-
-1. Define the intervention or exposure, comparator, population, outcome, time
-   zero, follow-up horizon, and target estimand. Reject vague verbs such as
-
-Example: "Does the new onboarding flow (intervention) change 7-day retention (outcome) vs the current flow (comparator) for new signups (population) within 30 days (horizon)?" is a complete causal question; "impact" alone is not.
-   “impact” until the counterfactual contrast is clear.
-2. Establish temporal ordering and draw the causal assumptions. Distinguish
-   confounders, mediators, colliders, selection mechanisms, measurement error,
-   interference, and time-varying treatment or confounding.
-3. Emulate the target experiment conceptually even when only observational data
-   are available: eligibility, assignment strategy, follow-up, outcome, causal
-   contrast, and analysis plan.
-4. Select a design whose assumptions fit the data and assignment process.
-   Prefer randomized evidence when ethical and feasible; otherwise justify
-   adjustment, matching, target-trial emulation, difference-in-differences,
-   regression discontinuity, instrumental variables, or another identified
-   strategy rather than choosing by fashion.
-5. State the identification assumptions and data requirements before analysis.
-   Never adjust mechanically for every observed variable or condition on a
-   mediator or collider without a causal reason.
-6. Check overlap, balance, assignment and exposure integrity, missingness,
-   model dependence, pre-trends or design-specific diagnostics, negative
-   controls, alternative specifications, and sensitivity to unmeasured bias.
-7. Report the estimate with uncertainty, assumptions, diagnostics, limits on
-   transportability, and plausible alternative explanations. `Not identified`
-   is a valid result when the evidence cannot support the causal claim.
+Read [Causal inference methods](references/causal-inference-methods.md) when selecting adjustment sets, study designs, estimators, or sensitivity methods.
 
 ## Output
 
-Produce a **Causal Inference Record**:
+Return the causal question, estimand, causal model, design, assumptions, diagnostics, estimate, uncertainty, sensitivity, transportability, and conclusion.
 
-- **Causal question** — intervention, comparator, population, outcome, horizon,
-  and estimand.
-- **Causal model** — DAG or equivalent assumptions, timing, assignment,
-  interference, measurement, and selection.
-- **Identification and design** — strategy, required assumptions, data, and
-  why alternatives were rejected.
-- **Analysis and diagnostics** — estimate, uncertainty, robustness, negative
-  controls, sensitivity, and unresolved threats.
-- **Claim boundary** — supported causal statement, non-supported statements,
-  transportability, and evidence that would change the conclusion.
-
-
-## Progressive disclosure
-
-- [references/causal-inference-methods.md](references/causal-inference-methods.md) — open when needed for depth
-
-## Boundaries
-
-- Use `../review-domain/references/product-experiment/` to design or audit a product A/B test,
-  holdout, switchback, or staged experiment protocol.
-- Use `analyze-critically` for competing explanations or software root-cause
-  diagnosis without a population-level intervention estimand.
-- Use `analyze-system-dynamics` for feedback, delay, accumulation, and policy
-  resistance over time.
-- Use `../review-domain/references/product-analytics-instrumentation/` for event definitions and data pipelines;
-  measurement availability alone does not identify a causal effect.
-
-## Path
-
-- A causal claim carries an intervention, estimand, identification argument, and diagnostics. Association, prediction accuracy, temporal order, and a diagram by themselves stay labeled as those classes.
+Use `analyze-critically` for competing explanations about a specific event and `analyze-system-dynamics` for feedback, delays, and accumulations over time.

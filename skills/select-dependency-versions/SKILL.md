@@ -1,52 +1,30 @@
 ---
 name: select-dependency-versions
-description: "Select package/runtime versions from live authoritative sources."
+description: Select package, runtime, framework, SDK, plugin, or tool versions from current authoritative sources. Use when adding, upgrading, or pinning a dependency.
 ---
 
 # Select Dependency Versions
 
-Query the live registry this session. Memory, templates, and tutorials are leads, not pins.
+Choose an exact supported version that fits the active repository and current upstream state.
 
-## When to use
+## Method
 
-- Adding a dependency
-- Upgrading a runtime, framework, SDK, plugin, or generator
-- Pinning versions in manifests or Docker/toolchains
+1. Identify the package, ecosystem, owning manifest, runtime constraints, compatibility range, and deployment target.
+2. Query the official registry, release page, support policy, and security advisory source in the current session.
+3. Choose the latest stable version compatible with the repository's supported runtimes and public contracts.
+4. Review its release notes and migration guide across every version crossed by the upgrade.
+5. Apply the exact version through the ecosystem's standard manifest and lockfile workflow.
+6. Run the repository's install, compile, tests, and representative runtime path.
+7. Update code or configuration for documented breaking changes and repeat the changed-path checks.
 
-## Workflow
+## Selection rules
 
-1. **Name the package and ecosystem** (npm, crates.io, PyPI, Go module, GitHub release, distro, etc.).
-2. **Query the live authoritative source** for current stable releases and support policy.
-3. **Prefer the latest stable** that satisfies security and compatibility constraints of the active repo.
-4. **Record the exact version** and source URL/command used.
-5. **Apply pins** in the owning manifests; run install/build/tests required by the repo.
-6. **Pin** only versions confirmed from that live source.
-
-## Path
-
-- Pin immutable versions for production. Moving tags stay out of production pins.
-- Pre-release channels are opt-in.
-- After install, read the lockfile for transitive versions and known vulnerabilities.
-
-## Validation
-
-- Version came from a live registry/release API or official channel in this session
-- Install/build/test commands from the repo pass or residuals are explicit
+- Use immutable production pins where the ecosystem supports them.
+- Select prerelease channels when the product explicitly targets that channel.
+- Let the native package manager own transitive resolution and lockfile format.
+- Prefer upstream-supported combinations over locally invented compatibility layers.
+- Recheck current official sources whenever the decision is revisited.
 
 ## Output
 
-Chosen versions · sources · commands run · residuals
-
-
-## Progressive disclosure
-
-- [references/registry-resolution.md](references/registry-resolution.md) — how to query registries
-- [references/runtime-channels.md](references/runtime-channels.md) — runtime release channels
-- [references/technology-stack-profile/](references/technology-stack-profile/) — stack profile constraints when selecting versions for this fleet (includes Atlas database-migration pin)
-- [../execute-hard-cutover/references/database-cutover-and-migration.md](../execute-hard-cutover/references/database-cutover-and-migration.md) — hard-cut data migration and dual-write taxonomy when applying schema change
-- [references/pre-v3-entry-method.md](references/pre-v3-entry-method.md) — archived depth only if the thinner entry is insufficient
-
-## Archived depth
-
-If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
-
+Return the selected version, official source links, compatibility reason, files changed, commands run, and any upstream constraint that remains.

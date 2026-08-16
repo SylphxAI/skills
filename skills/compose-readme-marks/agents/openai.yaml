@@ -1,4 +1,0 @@
-interface:
-  display_name: "Compose README Marks"
-  short_description: "Public API badges/banners for README and docs."
-  default_prompt: "Compose README badges or banners from public mark APIs; probe URLs and return markdown."

@@ -1,121 +1,33 @@
 ---
 name: engineer-testable-requirements
-description: "Turn requirements into testable acceptance criteria with oracles."
+description: Turn product, system, or operational needs into testable requirements and acceptance criteria. Use when a team needs precise observable behavior before design, implementation, or review.
 ---
 
 # Engineer Testable Requirements
 
-Produce one **Requirements Contract** that states what outcome and observable
-behavior the system must provide without prematurely hiding a design choice
-inside a requirement. Read
-[references/requirements-method.md](references/requirements-method.md) before
-baselining the contract.
-
-
-## When to use
-- Needs/requirements must become testable acceptance criteria with oracles and traceability
-- Ambiguous adjectives (fast, secure, user-friendly) need observable context and boundaries
-- Not for architecture shape (`decide-architecture-shape`) or user research (`research-user-needs`)
+Express the required outcome clearly enough for design, implementation, and acceptance to share the same meaning.
 
 ## Method
 
-1. Define the subject, system boundary, lifecycle stage, intended outcomes,
-   stakeholders, users and affected parties, operating contexts, external
-   authorities, assumptions, constraints, and decision owners.
-2. Elicit needs from current primary evidence: user research, existing behavior,
-   incidents, contracts, policies, regulations, interfaces, operational data,
-   and stakeholder input. Label observed need, requested preference, inferred
-   need, assumption, and binding constraint separately.
-3. Resolve terminology and model contexts, actors, goals, scenarios, state
-   transitions, normal flows, alternatives, failures, recovery, misuse, and
-   lifecycle events. Expose conflicts and missing authorities before drafting.
-4. Derive uniquely identified requirements across functional behavior, data,
-   interfaces, quality attributes, safety/security/privacy/accessibility,
-   operations, migration, observability, support, retirement, and verification
-   where applicable.
-5. Make each requirement necessary, feasible, unambiguous, singular, consistent,
-   solution-independent where choice remains open, and verifiable. Quantify a
-   condition and success boundary when the requirement makes a measurable
-   claim; do not invent a number without rationale.
-6. Negotiate conflicts using user and stakeholder outcomes, hard authorities,
-   risk, evidence, dependency, and lifecycle value. Record rejected or deferred
-   needs with rationale rather than silently deleting them.
-7. Validate the contract with scenario walkthroughs, examples and
-   counterexamples, prototypes or models where useful, interface checks, and
-   acceptance-test design. Requirements do not validate themselves.
-8. Trace each accepted requirement backward to source need and authority, and
-   forward to design owner, implementation evidence, test, release boundary,
-   and delivered observation as those artifacts become available.
-9. Baseline a version with change authority. For each proposed change, assess
-   affected needs, requirements, interfaces, risks, designs, tests, migrations,
-   operations, and downstream commitments before superseding the baseline.
+1. Define the subject, users and affected parties, system boundary, operating contexts, outcomes, and decision owner.
+2. Gather current needs from users, contracts, policies, incidents, interfaces, existing behavior, and operational knowledge.
+3. Separate binding constraints, user needs, requested preferences, assumptions, and open decisions.
+4. Model representative normal, alternate, degraded, recovery, misuse, migration, and retirement scenarios that apply to the system.
+5. Write each requirement as one necessary observable behavior or quality. Keep design choices open until an accepted constraint or decision selects them.
+6. Add acceptance criteria with a triggering condition, observable result, and verification method. Base quantities and limits on a named product, technical, legal, or operational reason.
+7. Resolve conflicts with the decision owner and record the selected tradeoff where implementers will find it.
+8. Review the set for consistency, feasibility, missing lifecycle behavior, and clear ownership.
+9. Connect each accepted requirement to its source need and downstream design or test using the repository's existing documentation system.
 
-## Output contract
+## Useful techniques
 
-Produce a **Requirements Contract** containing:
+Open only the technique that matches the requirement:
 
-- artifact identity/version, subject and boundary, stakeholders/affected
-  parties, contexts, outcomes, definitions, assumptions, constraints,
-  authorities, non-goals, audience, sensitivity, authorized access, retention,
-  and any separately versioned public/customer projection;
-- stakeholder and user need register with source, rationale, evidence state,
-  owner, conflicts, and disposition;
-- scenario and state model covering normal, alternate, failure, recovery,
-  misuse, migration, and retirement paths as applicable;
-- requirement register with stable ID, type, normative statement, rationale,
-  source need/authority, conditions, success boundary, verification method,
-  owner, and status;
-- interface and quality-attribute contracts with operating and failure
-  envelopes rather than vague adjectives;
-- conflict decisions, rejected alternatives, unresolved authority, risks, and
-  exact downstream handoffs;
-- bidirectional traceability from need to requirement to design/test/delivery
-  evidence without making this artifact the owner of those downstream facts;
-  and
-- validation record, baseline/change authority, impact analysis, and
-  supersession history.
+- [Formal modeling](references/formal-modeling.md) for state machines, protocols, and invariants.
+- [Generative testing](references/generative-testing.md) for behavior across broad input spaces.
+- [Metamorphic and differential testing](references/metamorphic-and-differential-testing.md) when an exact expected output is difficult to enumerate.
+- [CRDT convergence](references/crdt-convergence.md) for replicated data with convergence requirements.
 
-## Integrity rules
+## Output
 
-- Do not write implementation choices as requirements unless an external
-  constraint or accepted decision truly fixes that choice.
-- Avoid `fast`, `secure`, `scalable`, `user-friendly`, `robust`, or `best
-  practice` without observable context and acceptance boundaries.
-- Acceptance criteria are not complete requirements when purpose, context,
-  affected parties, failure behavior, or quality constraints are missing.
-- Do not make every conceivable quality attribute mandatory. Include what the
-  outcome, environment, authority, or material risk justifies.
-- Do not treat priority labels, stakeholder seniority, generated prose, or
-  internal consistency as validation evidence.
-- Do not publish raw stakeholder evidence, contract/security details, misuse
-  cases, internal process state, or diagnostic sources merely because a
-  Requirements Contract is committed. A public/customer derivative has a named
-  audience, purpose, minimum allowlist, authorization where applicable, and
-  negative leakage review; it points opaquely to protected evidence.
-- Keep requirements, architecture decisions, work items, tests, and observed
-  delivery as linked artifacts with distinct owners.
-
-
-## Progressive disclosure
-
-- [references/requirements-method.md](references/requirements-method.md) — open when needed for depth
-- [references/specification-control-plane-standard/](references/specification-control-plane-standard/) — open when this topic applies
-- Industry doc homes (Vision · NSM · OKR · PRD vs interface **specs**):
-  `../drive-to-delivery/references/source-authoring-standard/references/documentation-standard/`
-  — requirements/specs own field-level behavior; they do not replace the North Star Metric.
-
-## Boundaries
-
-- `research-user-needs` and whole-product blueprint Skills own direct
-  user evidence, opportunity, user promise, market fit, and capability
-  selection before requirements stabilize.
-- Per-tool **details** land as requirements → specs/tests/contracts; the **PRD**
-  owns the feature/capability **inventory**.
-- `../record-structured-deliberation/references/decision-quality-standard/` owns material option selection; architecture and
-  engineering Skills own how accepted requirements are realized.
-- `references/specification-control-plane-standard/` owns executable implementation
-  specifications and work/evaluation contracts after requirements establish
-  the required behavior.
-- `../drive-to-delivery/` owns driving an accepted objective. Open
-  `../synthesize-evidence-brief/` only when the job itself is a disputed or
-  public claim. Do not treat completion as a live-delivery pack.
+Use the project's existing PRD, specification, issue, or requirements document. Include scope, terms, scenarios, requirements, acceptance criteria, assumptions, constraints, owners, and unresolved decisions at the level the work needs.

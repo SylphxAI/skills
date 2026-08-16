@@ -29,9 +29,8 @@ def resolve_path(value: str, roots: list[Path]) -> Path:
 def load_props(data: Any) -> list[dict[str, Any]]:
     """Load placement entries from a list or object with layer lists.
 
-    When the payload is an object, merge *all* of props / foreground / objects
-    (in that order) so layered QA previews do not drop platforms or occluders
-    just because another key appeared first.
+    When the payload is an object, merge props, foreground, and objects in that
+    order so layered previews preserve platforms and occluders together.
     """
     if isinstance(data, list):
         return data

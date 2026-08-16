@@ -1,0 +1,14 @@
+{
+  "name": "sylphx",
+  "owner": {
+    "name": "SylphxAI"
+  },
+  "description": "Official SylphxAI Agent Skills",
+  "plugins": [
+    {
+      "name": "sylphx-skills",
+      "source": "./",
+      "description": "Reusable Agent Skills for product, engineering, operations, design, and research work"
+    }
+  ]
+}

@@ -1,37 +1,23 @@
 ---
 name: authenticate-app-users
-description: "Adds app sign-in, session, and recovery through Platform Auth. Use when implementing login, OAuth, passkeys, or account recovery."
+description: Add app sign-in, sessions, OAuth or OIDC, passkeys, logout, and account recovery through the product's current identity provider.
 ---
 
 # Authenticate App Users
 
-Give the app a real front door on Sylphx Platform Identity.
-
-## When to use
-
-- Adding or replacing login, session, OAuth/OIDC, passkeys, or recovery
-- A protected route must authorize a verified principal
+Give users a secure entry, session, and recovery path using the active product identity contract.
 
 ## Method
 
-1. **Frame** the journey and the protected resources.
-2. **Open** `../build-product/references/sylphx-platform-first-policy/references/identity.md`
-   and `../build-product/references/sylphx-platform-first-policy/references/cli-and-planes.md`.
-3. **Implement** through the Platform Auth runtime SDK/API (`sk_…` in the app).
-   Server decisions use the verified principal and tenant.
-4. **Prove:** session issued; protected route accepts it; logout or revoke
-   rejects reuse.
+1. Define the sign-in journey, user and tenant identities, protected resources, session lifetime, recovery path, and entitlement boundary.
+2. Read the active repository's identity configuration and the provider's current official SDK or API documentation.
+3. Use the provider's standard authorization flow and redirect, token, session, key, and cookie protections for the chosen application type.
+4. Validate identity and session state on the server at every protected boundary.
+5. Keep product authorization and entitlement decisions in the product domain after identity verification.
+6. Implement logout, revocation, expiry, recovery, and account-linking behavior required by the journey.
+7. Cover normal sign-in, invalid or expired state, revoked sessions, tenant separation, recovery, and replay protection.
+8. Run the real sign-in and protected-route path in the target environment.
 
-## Done
+## Completion
 
-Sign-in works on the current Auth contract; revoke is demonstrated.
-
-## Progressive disclosure
-
-- `../build-product/references/sylphx-platform-first-policy/references/identity.md`
-- `../build-product/references/sylphx-platform-first-policy/references/cli-and-planes.md`
-
-## Boundaries
-
-Operator IAM (`svc_`) is a different issuer. Product entitlement rules stay
-in the product repo.
+Return the identity provider and flow, protected boundary, session behavior, recovery behavior, checks run, and strongest truthful delivery state.

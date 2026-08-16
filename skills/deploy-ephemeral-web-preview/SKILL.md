@@ -1,76 +1,26 @@
 ---
 name: deploy-ephemeral-web-preview
-description: "Publish a short-lived public web URL for demos or agent proof; record claim/expiry honesty."
+description: Publish a short-lived public web preview for a demo, review, or integration check. Use when a temporary URL materially helps collaborators inspect the current candidate.
 ---
 
 # Deploy Ephemeral Web Preview
 
-Ship a **public URL** so humans or other agents can hit a demo without SSH, Docker on their machine, or a permanent hosting account. Prefer no-login temporary platforms when the proof window is minutes to hours.
-
-## When to use
-
-- Prototype needs a shareable HTTP(S) surface
-- Agent must prove “it loads on the public internet,” not only localhost
-- Static site, Worker, or small full-stack preview with short TTL is enough
-
-## When not to use
-
-- Production traffic, customer data, long-lived domains, or secrets in the artifact
-- Local-only visual QA → use `verify-local-web-preview` instead
-- Durable multi-service backend → use `wire-managed-backend-services` or real PaaS/BaaS with account
+Publish a bounded preview with a clear candidate identity, access policy, and expiry.
 
 ## Method
 
-Known deploy CLIs live in [references/recipes.md](references/recipes.md). Open that file when a provider is chosen. It is not a search replacement: if a flag or host may have moved, use current official docs via the host's web search and fetch tools.
+1. Confirm that a public preview is useful for the requested review and that the content is authorized for external hosting.
+2. Identify the exact source revision, build command, output directory, runtime needs, routes, and environment variables.
+3. Select the smallest supported preview provider that matches static or dynamic runtime requirements.
+4. Remove secrets, customer data, internal endpoints, privileged controls, and production credentials from the preview artifact.
+5. Add authentication or an unguessable access route when the approved audience is limited.
+6. Deploy the exact candidate and record the resulting URL and provider expiry or removal method.
+7. Load the URL from an external path and exercise the representative interaction, asset loading, routing, and responsive layout.
+8. Share the candidate identity, audience, expiry, and any functional difference from production.
+9. Remove the preview when its review purpose ends or the provider's short retention period expires.
 
-### 1. Classify the artifact
+Read [Acceptance](references/acceptance.md) for preview checks, [Provider selection](references/provider-selection.md) for the hosting path, and [Recipes](references/recipes.md) for common static and dynamic deployments.
 
-- **Static files** (HTML/CSS/JS, zip of assets)
-- **Edge Worker / single-file server**
-- **App needing account-backed free tier** (Pages, Netlify, Vercel hobby)
+## Output
 
-Open [references/providers/INDEX.md](references/providers/INDEX.md) and pick the lowest-auth provider that fits.
-
-### 2. Deploy with the lowest friction path that works
-
-Default ladder (stop at first success):
-
-1. **Cloudflare Temporary Account** — `npx wrangler@≥4.102 deploy --temporary` (see recipes). No permanent CF login. **Claim within 60 minutes** or resources expire.
-2. **Cloudflare Drop** (or equivalent no-login static drop) when the artifact is static-only and supported by the current Drop surface.
-3. **Account free static** (Surge, GitHub Pages, CF Pages free) when you already have credentials and need longer than ~1h.
-4. **Hobby full-stack previews** (Vercel/Netlify free) when the app needs their build pipeline.
-
-Record exact CLI output: public URL, claim URL (if any), expiry, and project/worker name.
-
-### 3. Verify the live URL
-
-- Probe `<url>` from the agent host (host fetch if present, otherwise `curl -sI` or GET); note status and `server`/`cf-ray` headers when present.
-- Prefer a real browser load when UI matters. A 200 on `/` is characterization when the product is a SPA.
-- Treat the claim URL as an ownership bearer. Share it only on a trusted channel.
-
-### 4. Honesty and handoff
-
-- State **expiry** and **what happens if unclaimed**.
-- Separate **preview** from **production**.
-- If the human must claim ownership, give them the claim URL and steps; do not imply the temporary URL is durable.
-
-## Done for this run
-
-- Public URL obtained and probe recorded
-- Provider + free class (L2 temporary vs L3 account free) stated
-- Expiry/claim path documented or N/A
-- Residuals: custom domain, secrets, durable data, auth
-
-## Progressive disclosure
-
-- [references/recipes.md](references/recipes.md) — known deploy CLIs when the provider is already chosen
-- [references/providers/INDEX.md](references/providers/INDEX.md) — choose provider
-- [references/providers/cloudflare-temporary.md](references/providers/cloudflare-temporary.md) — CF temp Workers / Drop
-- [references/providers/static-free.md](references/providers/static-free.md) — Surge / Pages / Tiiny class
-- [references/acceptance.md](references/acceptance.md) — proof bar
-
-## Path
-
-- Temporary deploys carry demo data only. Production secrets stay with the durable owner.
-- Temporary no-login is abuse-limited. Rate limits and ToS are expected.
-- Free tiers change. Re-probe when a claim depends on current availability.
+Return the public URL, candidate revision, provider, audience, expiry, interaction checked, and removal state.

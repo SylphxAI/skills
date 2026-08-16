@@ -32,21 +32,20 @@ asked again. Preserve the original question and resolution rule.
 After resolution, use a proper scoring rule. For binary events the Brier score
 is the squared difference between forecast probability and outcome. Log scores
 penalize unjustified extreme certainty more sharply. Choose the scoring rule in
-advance and never change it after seeing the result.
+advance and preserve it after seeing the result.
 
 For continuous outcomes, publish the declared representation—a full predictive
 distribution, named parametric family, or fixed quantiles/intervals. Score the
 same object that was elicited: logarithmic score for a defensible predictive
 density, continuous ranked probability score (CRPS) for a full distribution,
-or predeclared quantile/interval scores for quantile forecasts. Do not infer a
-distribution after resolution or select whichever score makes the forecast
-look best.
+or predeclared quantile/interval scores for quantile forecasts. Select the
+distribution and scoring rule before resolution and retain that selection.
 
 Assess calibration and discrimination across a set of comparable forecasts.
 One correct low-probability event or one incorrect high-probability event does
 not by itself establish skill or failure.
 
-## Agent-native use
+## Use in agent work
 
 Parallel agents can improve coverage when they use distinct reference classes,
 decompositions, evidence sources, or models. Sharing an anchor before the first
@@ -55,8 +54,7 @@ and correlation.
 
 Use resolved forecasts as training evidence: identify missed base rates,
 misread evidence, overconfidence, stale updates, bad decomposition, and
-resolution defects. Do not rewrite history to make earlier estimates look
-better.
+resolution defects. Preserve the original estimate history for learning.
 
 ## Sources
 

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Curate Skill Repository"
-  short_description: "Curate skill portfolio: merge/split, collisions, retirement."
-  default_prompt: "Run this skill on the active workspace."

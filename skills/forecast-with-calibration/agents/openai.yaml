@@ -1,4 +1,0 @@
-interface:
-  display_name: "Forecast With Calibration"
-  short_description: "Produce calibrated probabilistic forecasts with base rates and ranges."
-  default_prompt: "Run this skill on the active workspace."

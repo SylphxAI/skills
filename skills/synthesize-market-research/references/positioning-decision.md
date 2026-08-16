@@ -8,7 +8,7 @@ does not retroactively manufacture the research proof.
 
 ## Positioning record
 
-| Component | Decision question | Required evidence | Common failure |
+| Component | Decision question | Required evidence | Success condition |
 | --- | --- | --- | --- |
 | Segment | Who experiences the urgent job and switching pressure most? | cohort/problem evidence and exclusions | “everyone” audience |
 | Job/outcome | What progress is sought and what failure is costly? | observed workflow, trigger and desired result | feature list |
@@ -16,15 +16,15 @@ does not retroactively manufacture the research proof.
 | Category | Which familiar frame enables accurate comparison and trust? | buyer language and comparable products | premature invented category |
 | Differentiator | Which mechanism changes a buyer-valued outcome? | product truth plus comparative evidence | generic speed/ease/AI claim |
 | Proof | Why should this segment believe the claim now? | demo, benchmark, case, quote, source or maturity evidence | unsupported superlative |
-| Fit boundary | Who should not choose it, and why? | limitation, cost, workflow or risk evidence | bad-fit churn hidden for reach |
+| Fit boundary | Who is a poor fit, and why? | limitation, cost, workflow or risk evidence | honest exclusion and routing |
 
 Each row cites supporting and contradicting claim IDs, evidence class,
 confidence, scope/date and a reversal condition.
 
 ## Method
 
-1. Start with the highest-pain defensible segment, not the broadest possible
-   audience. Name adjacent segments as hypotheses, not implied inclusion.
+1. Start with the highest-pain defensible segment. Name adjacent segments as
+   hypotheses with their own inclusion evidence.
 2. Map the full alternative set: direct competitors, adjacent tools, internal
    work, spreadsheet/manual workflow, service/agency and no action.
 3. Choose a category that shortens buyer comprehension without erasing the
@@ -36,9 +36,9 @@ confidence, scope/date and a reversal condition.
    statements.
 6. Stress-test with the strongest competitor, substitute, skeptical buyer,
    procurement/risk owner, and wrong-fit user. Record the best counterargument.
-7. Define one concrete first action for product-led use or qualification/risk
-   reducers for sales-led use.
-8. Hand the stable decision and proof IDs to Marketing for channel translation,
+7. Define one concrete first action for product-led use or adoption and risk
+   reduction for sales-led use.
+8. Hand the stable decision and source locators to Marketing for channel translation,
    Store Listing for listing narrative, and Product Design for promise checks.
 
 ## Decision patterns
@@ -78,9 +78,9 @@ Message hierarchy:
 6. exclusions, limitations, price/eligibility where material
 
 Objection map, counterevidence, confidence and reversal test:
-Channel translation handoff and prohibited unsupported claims:
+Channel translation handoff and supported-claim boundary:
 ```
 
-Do not copy competitor language, call a tagline positioning, claim uniqueness
-without comparison evidence, or let channel performance rewrite the positioning
-without a new source-bounded decision revision.
+Write original positioning, distinguish it from a tagline, ground uniqueness in
+comparison evidence, and revise it through a new source-bounded decision when
+channel performance supplies decision-changing evidence.

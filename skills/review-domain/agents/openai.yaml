@@ -1,4 +1,0 @@
-interface:
-  display_name: "Review Domain"
-  short_description: "Review a product/ops domain into one assessment; domain packs are references."
-  default_prompt: "Run review-domain for the active workspace."

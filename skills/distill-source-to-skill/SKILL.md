@@ -1,139 +1,27 @@
 ---
 name: distill-source-to-skill
-description: "Distill docs/repos/notes into one installable Skill package."
+description: Distill documentation, repositories, notes, transcripts, or expert material into one installable Agent Skill package while preserving useful procedures, authority, and licensing boundaries.
 ---
-
-# distill-source-to-skill
 
 # Distill Source To Skill
 
+Turn source material into a concise reusable skill that can perform the recurring job on its own.
 
-## When to use
-- Source material (docs, repos, notes, transcripts) should become one installable skill package
-- Mechanisms, decision rules, and failure modes need extraction; not summaries
-- Not for revising an existing package in place (`author-skill`)
+## Method
 
-## Overview
+1. Confirm the source, owner, revision, visibility, license, intended users, and publication boundary.
+2. Identify concrete recurring requests, expected outcomes, specialized procedures, domain terms, failure modes, and reusable resources.
+3. Separate authoritative facts from examples, commentary, history, and source-specific structure.
+4. Choose one requestable job with an independently useful result.
+5. Write a verb-led skill name and a description that says what the skill does and when it applies.
+6. Put the essential procedure in `SKILL.md` and detailed domain material in directly linked references.
+7. Add scripts for repeatable deterministic work and assets for files used in outputs.
+8. Synthesize in original language appropriate to the skill's audience while retaining required attribution and license notices.
+9. Run included scripts, resolve links, and exercise the package on a representative request using the intended source-independent workflow.
+10. Compare the result with the original source for missing mechanisms, altered meaning, sensitive leakage, and attribution accuracy.
 
-Use this skill to turn source material into a compact, installable skill package that a future agent can use without rereading the original source. Distill mechanisms, not summaries.
+Read [Source-to-skill patterns](references/source-to-skill-patterns.md) for source selection, package shapes, and knowledge-preservation checks.
 
-## Resource Guide
+## Output
 
-- Read `references/source-to-skill-patterns.md` for source intake rules, multilingual handling, mechanism cards, package shape decisions, and validation checklists.
-- Use the target repository's own validator, registry generator, catalog generator, and eval conventions before adding new local scripts.
-
-## First Principle
-
-The source is evidence. The skill is the reusable control surface: trigger, decision rules, workflow, output contract, boundaries, and validation.
-
-## Workflow
-
-1. Name the evidence boundary: source paths, links, languages, formats, sections
-   read, sections unavailable, assumptions, sensitivity, intended audience,
-   license, and publication authority. Access to a private source or history is
-   not authority to publish it.
-2. Choose the smallest mode:
-   - quick brief: short pasted method or memo;
-   - source audit: multiple files, transcripts, repositories, media, or mixed languages;
-   - package build: user asks for files, repo changes, installability, or validation;
-   - repair: existing skill fails, over-triggers, summarizes, or cannot validate.
-3. Extract mechanism cards from the source: trigger, user job, decision rule, procedure, output, quality signal, failure mode, and keep/merge/discard decision.
-4. Choose one package shape before writing: single procedural skill by default,
-   one skill with modes when source tasks share a route. Put extra knowledge in
-   `references/` or merge into an existing owner unless the recurring jobs,
-   independently accepted artifacts, and acceptance authorities are distinct.
-5. Author the skill around action: concise front-loaded metadata naming the
-   job, artifact, material contexts, and nearby exclusions; then a focused
-   workflow, output protocol, boundaries, and linked references. Keywords are
-   semantic anchors, not a list to stuff. Put long examples, rubrics, language
-   tables, and edge cases in references.
-6. Add deterministic helpers only when repeated mechanical work exists. Judgment-heavy synthesis stays in the method.
-7. Add eval and behavior examples: positive prompts, nearby negative prompts, expected behaviors, and artifact-shape assertions.
-8. Validate locally, patch validator failures once, and report the exact command results and remaining gaps.
-
-## Multilingual Handling
-
-- Preserve source-language trigger phrases when they are likely future user wording.
-- Keep code, commands, identifiers, product names, model names, citations, filenames, URLs, and technical tokens stable across languages.
-- Separate source language from output language. A Cantonese source can produce an English public skill, but the evidence boundary should say what was translated, preserved, or normalized.
-- For RTL, CJK, locale-specific punctuation, pluralization, politeness level, or code-switching, move the detailed rules into a reference instead of crowding `SKILL.md`.
-
-## Output format
-
-### Source-To-Skill Brief
-
-```text
-Source boundary:
-Languages and formats:
-Root job:
-Target users:
-Mechanisms kept:
-Mechanisms discarded:
-Skill shape:
-Files to create or patch:
-Validation plan:
-Open uncertainty:
-```
-
-### Mechanism Card
-
-```text
-Name:
-Source evidence:
-Trigger:
-User job:
-Decision rule:
-Procedure:
-Output:
-Quality signal:
-Failure mode:
-Skill location:
-Keep / merge / discard:
-```
-
-### Package Report
-
-```text
-Skill name:
-Evidence boundary:
-Package shape:
-Files changed:
-Validation run:
-Trigger examples:
-Negative trigger:
-Rollback point:
-Residual risks:
-```
-
-
-## Progressive disclosure
-
-- [references/source-to-skill-patterns.md](references/source-to-skill-patterns.md) — open when needed for depth
-
-## Path
-
-- Details come from sources actually read. Inaccessible documents, private repos, audio, video, screenshots, and links stay marked unavailable.
-- Public packages use original wording plus short attributed quotes when licensing allows.
-- Secrets, customer data, raw telemetry, private topology, control knobs, and hidden identifiers stay out. Redaction keeps the reusable mechanism and leaves the hidden source non-reconstructable.
-- Keep mechanisms that change future agent behavior.
-- One procedural skill with modes or a `references/` section is the default shape. Distinct jobs, artifacts, and acceptance authorities earn another listing.
-- Discovery is `name` and `description`. Codex and Claude may shorten or omit listings; prove routes on each supported runtime.
-- A new listing reads the target contributing contract and existing descriptions first. One semantic owner.
-- The skill runs with public tools and the sources it names.
-- Publish, push, and quality claims use the target repository's validation and delivery gates.
-
-## Quality Standard
-
-A finished conversion:
-
-- names what evidence was actually read;
-- records the intended audience, sensitivity, license, and publication
-  authority for reused material;
-- extracts decisions and failure modes, not only themes;
-- gives compact semantic metadata that can route without body context;
-- runs without the original source in context;
-- includes output contracts and validation signals;
-- stores language, examples, and rubrics in references when they would bloat the main file;
-- includes positive and negative eval prompts;
-- passes structural validation for the target repository;
-- reports skipped validation honestly.
+Return the package path, one-line job, source and license summary, knowledge placed in each resource, representative task result, and remaining source limitation.

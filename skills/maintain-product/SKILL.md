@@ -1,66 +1,26 @@
 ---
 name: maintain-product
-description: "Cut live/regression harm with a root-cause fix on the owning layer."
+description: Repair a product defect or regression at its owning layer. Use for live or dogfood failures, flaky paths, noisy errors, security or privacy defects, and other current user or operator harm.
 ---
 
 # Maintain Product
 
-When users or operators are **hurt** by failures or regressions, run **one** maintain cycle.
-
-## When to use
-
-- Live/prod/dogfood breakage, flaky paths, security/privacy incidents
-- Regressions, noisy errors, undiagnosable failure modes
+Restore the affected contract with a focused owning-cause repair.
 
 ## Method
 
-**Symptom → blast radius → fix cause on owning layer → re-run the failing path.**  
-Prefer a regression lock over silent cleanup. Do not invent a harm metric.
+1. Define the observed symptom, affected users or operators, severity, current product contract, and strongest observed lifecycle layer.
+2. Stabilize active harm with a safe reversible mitigation when service impact requires immediate action.
+3. Reproduce the defect at the lowest semantic boundary that faithfully represents the affected behavior.
+4. Locate the owning cause through current logs, traces, tests, recent changes, comparisons, or reduced inputs.
+5. Repair the semantic owner and keep one implementation path.
+6. Add or refine a regression check at the product behavior or public contract when it provides durable defect detection.
+7. Run the reproducer and relevant affected-path checks on the exact candidate.
+8. Remove temporary diagnostics, superseded containment, exploratory edits, and obsolete compatibility code.
+9. Advance through landing, deployment, or live recovery when those states are part of the request and authority is available.
 
-### 1. Frame
-- Symptom, severity, audience (user/ops/data/security)
-- Health signal that must improve this cycle
-- Non-goals: feature expansion; visual redesign without harm link
-
-### 2. Research
-- Reproduce or gather evidence (logs, tests, live smoke, reports)
-- Bisect likely change sets; map owning component
-- Stop when root-cause hypotheses are actionable
-
-### 3. Admit work
-- **In:** fixes/guards that reduce the framed harm; instrumentation if diagnosis is blocked
-- **Out:** unrelated refactors; “improve everything”; polish
-- Multiple related fixes OK if they share one harm theme
-
-### 4. Implement
-- When landing source: apply constraints from `../drive-to-delivery/references/source-authoring-standard/` — **L1** batch this cycle's admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome (queue/squash unit).
-- Fix cause; add a regression oracle on the failing **product behavior**
-  when automatable. Do not lock a heading, brand, or file path.
-- Small blast radius
-- Do not paper over shared floors in the wrong layer
-- When the harm *is* a bloated or false-red pipeline, use
-  `../implement-continuous-integration/`.
-
-### 5. Deliver / verify
-- Re-run the failing path
-- Spot-check the touched path for a new regression
-- Note structural follow-ups if a deeper build/expand is still required later
-
-## Cycle done
-
-1. Framed harm fixed or mitigated on the failing path  
-2. Reproduction closed or residual owner named  
-3. No obvious new regression on the touched path  
-4. Scope stayed harm-linked  
-
-
-## Progressive disclosure
-
-- Related jobs when requested: `run-open-product-betterment`, `remediate-frontend-performance`, `remediate-agent-harness`, `implement-continuous-integration`
-- Source landing: `../drive-to-delivery/references/source-authoring-standard/`
-
+Read [Reproduction-driven repair](references/reproduction-driven-repair.md) when the cause, reproducer, nondeterminism, or test boundary needs deeper treatment. Use `implement-continuous-integration` when the product defect is the pipeline itself.
 
 ## Output
 
-Harm · cause · fix · path re-run · residual risk
-
+Return the symptom, cause, repair, changed path run, strongest truthful delivery state, and remaining external dependency.

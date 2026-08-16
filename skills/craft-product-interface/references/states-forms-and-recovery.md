@@ -17,7 +17,7 @@ Good interface quality is state quality. Model the states that the system can ac
 | Success | durable result and destination | continue, view, undo, or close |
 | Destructive | exact scope and consequence | cancel, confirm, export, undo, or restore where feasible |
 
-Do not collapse “no data,” “no result,” permission denial, offline, and server failure into one generic blank state.
+Give “no data,” “no result,” permission denial, offline, and server failure distinct states and recovery actions.
 
 ## Transition model
 
@@ -33,37 +33,37 @@ succeeded -> undoing -> restored        (when reversal is supported)
 offline editing -> queued -> syncing -> synced | conflict | failed
 ```
 
-Optimistic UI may show intent early, but it must distinguish pending from durable success and reconcile rejection. Disable or idempotently guard duplicate expensive actions. Never erase valid input because a network, permission, validation, or authentication transition failed.
+Optimistic UI may show intent early, while distinguishing pending from durable success and reconciling rejection. Disable or idempotently guard duplicate expensive actions. Preserve valid input across network, permission, validation, and authentication transitions.
 
 ## Form rules
 
-- `ic-form-1` — Ask only for data needed for the user’s current goal; explain sensitive or surprising fields before collection.
-- `ic-form-2` — Programmatically associate labels, controls, descriptions, and errors. Placeholder text is not a label.
-- `ic-form-3` — Validate at the least disruptive truthful time: format guidance during entry only when stable, field errors on blur or submit, and server truth after submission.
-- `ic-form-4` — Focus or summarize the first actionable error, retain every valid value, and state how to correct the problem without relying on color.
-- `ic-form-5` — Preserve IME composition, paste, autocomplete, password managers, mobile keyboards, scanning, and long localized input.
-- `ic-form-6` — Make Enter context-aware: submit a single-line form, insert a newline in multiline input, or choose the active combobox option.
-- `ic-form-7` — Provide save/resume or draft recovery when the flow is long, interruption-prone, high-value, or cross-device.
-- `ic-form-8` — Confirm high-risk actions using the exact object and consequence; add audit, reversal, or support paths proportional to risk.
-- `ic-form-9` — Keep long values editable: preserve caret visibility, selection, scrolling, wrapping, and access to meaningful starts and ends instead of clipping input into an unrecoverable region.
-- `ic-form-10` — Offer paste or scan helpers only where pasting is a frequent valid path, such as invite codes, URLs, tokens, addresses, or recovery codes; never block ordinary paste.
-- `ic-form-11` — A disabled control explains the unmet requirement in nearby accessible text; use validation or progressive disclosure instead when disabling would create a silent dead end.
+- Ask only for data needed for the user’s current goal; explain sensitive or surprising fields before collection.
+- Programmatically associate labels, controls, descriptions, and errors. Placeholder text is not a label.
+- Validate at the least disruptive truthful time: format guidance during entry only when stable, field errors on blur or submit, and server truth after submission.
+- Focus or summarize the first actionable error, retain every valid value, and state how to correct the problem without relying on color.
+- Preserve IME composition, paste, autocomplete, password managers, mobile keyboards, scanning, and long localized input.
+- Make Enter context-aware: submit a single-line form, insert a newline in multiline input, or choose the active combobox option.
+- Provide save/resume or draft recovery when the flow is long, interruption-prone, high-value, or cross-device.
+- Confirm high-risk actions using the exact object and consequence; add audit, reversal, or support paths proportional to risk.
+- Keep long values editable: preserve caret visibility, selection, scrolling, wrapping, and access to meaningful starts and ends instead of clipping input into an unrecoverable region.
+- Offer paste or scan helpers where pasting is a frequent valid path, such as invite codes, URLs, tokens, addresses, or recovery codes, and preserve ordinary paste.
+- A disabled control explains the unmet requirement in nearby accessible text; use validation or progressive disclosure instead when disabling would create a silent dead end.
 
 ## Permission and education rules
 
 - Model the reachable state explicitly:
   `feature-interest -> value-explained -> requested -> allowed | limited |
   denied -> fallback | settings-recovery | skipped`. Reconcile permission
-  changes made outside the product; never assume the last in-app result remains
-  current.
+  changes made outside the product and refresh the authoritative state when the
+  journey resumes.
 - Keep a permission inventory by platform, feature, permission/data class,
   purpose, value moment, sensitivity, required/optional/background state,
   fallback, settings path, privacy owner, and current distribution-review
   handoff.
 - Ask at the value moment, not at cold start merely because a platform permits
-  it. A pre-prompt explains the concrete user benefit and actual data behavior;
-  it must not imitate the operating-system dialog or claim a grant before the
-  authoritative prompt returns.
+  it. A pre-prompt explains the concrete user benefit and actual data behavior
+  in the product's own visual language. The authoritative prompt supplies the
+  grant result.
 - Separate required access from optional enhancement and offer useful limited,
   approximate, selected-item, foreground-only, manual-entry/upload, in-product,
   or skip paths where the platform and product semantics permit them.
@@ -72,31 +72,30 @@ Optimistic UI may show intent early, but it must distinguish pending from durabl
   privacy and trust surfaces. Copy must match the canonical collection,
   retention, sharing, control, and disabled-state behavior.
 - After denial, restriction, parental/enterprise control, or a one-shot prompt,
-  explain the actual next choice and settings recovery without repeated
-  nagging, shame, a fake prompt loop, or a dead end. Do not deep-link to
-  settings when retrying in context is still authoritative.
+  explain the actual next choice and settings recovery in a calm single path.
+  Retry in context while it remains authoritative, then offer settings when
+  the platform requires it.
 - Respect platform-specific capability states such as approximate location,
   limited photo selection, notification channels, browser prompt states, and
   desktop privacy controls; retrieve current platform behavior at execution.
 - Measure the permission journey only with approved privacy-safe events:
   value moment, rationale, authoritative request/result, limited state,
-  fallback, settings open, externally changed state, and abandonment. Do not
-  fingerprint users or optimize grant rate without feature value and trust
-  countermetrics.
+  fallback, settings open, externally changed state, and abandonment. Use
+  approved events and balance grant rate with feature value and trust measures.
 - Use the lightest education that solves observed confusion: inline cue, example, contextual tip, walkthrough, or retained help.
 - Persist dismissal, completion, and snooze state. Expert users must be able to skip and later recover guidance.
-- Do not disguise upsells as education or use onboarding to compensate for broken information architecture.
+- Keep education focused on product understanding and place commercial offers in clearly labeled commercial surfaces.
 
 ## Recovery checklist
 
 - Loading geometry matches final content closely enough to prevent layout shift.
 - Noticeable waits state what is happening; long operations expose progress, cancel/background behavior, status recovery, and safe re-entry where possible.
 - Background status uses ambient updates rather than blocking modal interruptions.
-- Incremental or live content never steals focus. Preserve the user's reading position; auto-follow only while the user explicitly enabled it or remains at the live edge, and pause after manual navigation. When arrivals are buffered or hidden, indicate them without repetitive announcements. Preserve the item being inspected and reconcile late or reordered updates against system truth.
+- Incremental or live content preserves focus and the user's reading position. Auto-follow while the user explicitly enabled it or remains at the live edge, and pause after manual navigation. Indicate buffered arrivals with quiet announcements, preserve the item being inspected, and reconcile late or reordered updates against system truth.
 - Error copy distinguishes user-correctable, retryable, permission, conflict, authentication, capacity, and terminal failure.
 - Retry is idempotent or duplicate-safe. Offline queues show pending, syncing, conflict, failed, and synced truth.
 - Success confirms the durable outcome rather than simply disappearing.
 - Destructive work has consequence clarity and recovery proportional to irreversibility.
 - Support/debug context is useful but contains no secrets, personal data, raw stack traces, or internal identifiers unsafe for the user.
 
-Instrument state exposure, recovery action, completion, abandonment, and repeated failure only with approved privacy-safe analytics. Never infer product satisfaction merely from the absence of an error.
+Instrument state exposure, recovery action, completion, abandonment, and repeated failure with approved privacy-safe analytics. Measure satisfaction through an appropriate user or product signal.

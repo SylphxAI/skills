@@ -1,61 +1,17 @@
 # Security
 
-## What this repository is
+This repository distributes public Markdown instructions and small executable
+helpers. Installed scripts run with the permissions of the agent host, so
+review a skill's scripts and requested tools before enabling it.
 
-Public static capability packages (Markdown and small helpers) plus a local
-install/sync CLI. There is **no hosted multi-tenant service** in this tree and
-no requirement to send credentials to Sylphx to install.
+Contributions contain public, redistributable material. Credentials, private
+keys, access tokens, customer data, private incident material, and private
+third-party content stay in their owning secure systems.
 
-## What the integrity gates do and do not prove
+Report vulnerabilities through a
+[private GitHub security advisory](https://github.com/SylphxAI/skills/security/advisories/new).
+Include the affected skill, revision, impact, and a minimal reproduction when
+available. General quality issues belong in the public issue tracker.
 
-- CI validates package shape, qualification records,
-  secrets hygiene, link integrity, and catalog digests. Hashes prove **bytes**,
-  not publisher intent or semantic safety.
-- `qualified` means version-scoped, expiring evidence from a named evaluator,
-  including a pattern scan for secrets and dangerous instruction patterns.
-  As of 2026-08-13, **0 of 61** packages carry that badge; all remain
-  installable. The pattern scan is a regex backstop, not a security review.
-- There is **no current automated gate that evaluates malicious instructions,
-  unsafe scripts, or capability permissions**. Treat any installed package as
-  code from its author. This gap is tracked as a qualification gate, not
-  silently covered by hashes.
-
-## AutoSync distribution model
-
-AutoSync applies **only immutable annotated release tags** carrying a verified
-promotion manifest — never the current head of a mutable branch — and verifies
-the manifest (catalog digest, qualification projection, sourceRevision) against
-the exact candidate tree **before** the candidate's repository-owned CLI runs
-under the user's privileges (see [docs/PROMOTION.md](docs/PROMOTION.md)).
-Without `requireVerifiedTag: true`, the authority is repository governance plus
-tag immutability; with it, the authority is cryptographic (GPG/SSH `git
-verify-tag`). Branch-following AutoSync configs (schemaVersion 1) are retired
-and fail closed. `unqualified` is the honest default and remains usable.
-AutoSync refuses to downgrade an installed `qualified` name to `unqualified`.
-
-## Do not commit
-
-- Credentials, private keys, access tokens, or API secrets
-- Customer data, private incident material, or proprietary third-party content
-- Personal identifiable information that is not already public by design
-
-The integrity CI scans for common secret patterns; treat that as a backstop,
-not a guarantee.
-
-## Reporting a vulnerability
-
-Use GitHub's **private security advisory** for this repository:
-
-https://github.com/SylphxAI/skills/security/advisories/new
-
-Do **not** open a public issue with exploit details, tokens, or customer data.
-
-If the issue is only "a skill gives bad advice," prefer a Discussion or a
-normal bug report without sensitive context.
-
-## Scope notes
-
-- Skill **quality and judgment** failures are product issues, not always
-  security issues.
-- Compromise of a third-party agent runtime (Codex / Claude / Grok) is outside
-  this repository's control; report those to the runtime vendor as well.
+The agent runtime owns process isolation, permissions, and tool authorization.
+Each skill owns the safety of its instructions and bundled helpers.

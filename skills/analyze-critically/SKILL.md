@@ -1,73 +1,34 @@
 ---
 name: analyze-critically
-description: "Adversarially critique a claim/plan/design with kill criteria."
+description: Critically assess a claim, plan, diagnosis, or design using competing explanations and rejection criteria. Use when a decision needs stronger reasoning, disconfirming facts, or calibrated confidence.
 ---
 
 # Analyze Critically
 
-Investigate uncertainty without confusing fluency, consensus, or exhaustive
-prose with truth. Read
-[references/critical-analysis-method.md](references/critical-analysis-method.md)
-for the method and templates.
-Read [references/bayesian-evidence-updates.md](references/bayesian-evidence-updates.md)
-when evidence should update ranked hypotheses quantitatively or
-semi-quantitatively.
+Test the leading view against credible alternatives and decision-relevant facts.
 
 ## Method
 
-1. Frame the exact question, decision relevance, boundary, and deadline.
+1. State the exact question, decision at stake, scope, deadline, and standard for changing course.
 2. Separate observations, inferences, assumptions, and unknowns.
-3. Generate the smallest decision-relevant bounded set of materially distinct
-   hypotheses or contributing explanations, including the status quo and a
-   credible opposing explanation; retain missing-hypothesis risk as residual
-   uncertainty.
-4. Identify evidence expected under each hypothesis and prioritize evidence
-   that discriminates between them.
-5. Search for disconfirmation, missing causes, base rates, incentives,
-   survivorship, selection effects, and reversible alternatives.
-6. Run the risk-matched challenge method: assumptions check, premortem,
-   competing-hypothesis matrix, devil's advocate, or independent perspective.
-7. Update the ranking and express a calibrated conclusion, alternatives still
-   alive, and what would change the answer.
-
-Do not mechanically enumerate remote possibilities. Include a possibility only
-when it could change the conclusion, action, risk floor, or evidence plan.
+3. Generate a small set of materially different explanations or options, including the current leading view.
+4. Ask what each explanation predicts and which available observation would best distinguish them.
+5. Check base rates, incentives, selection effects, missing causes, dependency failures, and reversibility.
+6. Build the strongest credible case against the leading conclusion.
+7. Define rejection conditions for the claim or proposal before interpreting ambiguous results.
+8. Gather only the additional information likely to change the conclusion or action.
+9. Update the ranking and state the conclusion, confidence, remaining alternatives, and next useful action.
 
 ## Output
 
-Produce a **Critical Analysis Brief**:
+Return a concise critical assessment containing:
 
-- **Question and stakes**
-- **Observed facts and evidence quality**
-- **Competing hypotheses or explanations**
-- **Discriminating evidence**
-- **Strongest case for and against the leading conclusion**
-- **Assumptions and failure paths**
-- **Conclusion and calibrated confidence**
-- **What would change the conclusion**
+- question and stakes;
+- observations and source quality;
+- competing explanations or options;
+- strongest supporting and opposing cases;
+- decisive assumptions and rejection conditions;
+- conclusion with calibrated confidence; and
+- facts that would change the conclusion.
 
-
-## Progressive disclosure
-
-- [references/bayesian-evidence-updates.md](references/bayesian-evidence-updates.md) — open when needed for depth
-- [references/critical-analysis-method.md](references/critical-analysis-method.md) — open when needed for depth
-
-## Boundaries
-
-- This skill diagnoses and challenges; `../record-structured-deliberation/references/decision-quality-standard/` owns final
-  material option selection and durable decision tradeoffs.
-- Use design exploration depth under `design-product` when relevant to generate materially different solution
-  options before selection.
-- Open `../synthesize-evidence-brief/` only when the requested job is a
-  disputed or public claim. Do not open it for ordinary diagnosis.
-- Use a domain skill for technical, commercial, security, legal, or product
-  requirements.
-- Multiple agents may provide independent perspectives, but agreement is not
-  evidence and disagreement is not automatically uncertainty.
-
-## Routing examples
-
-Use for “critical think why agents keep doing half a migration,” “compare the
-credible causes,” “challenge this architecture thesis,” and “what evidence
-would distinguish these explanations?” Do not route a settled implementation
-task with a known cause and acceptance test.
+Use a domain skill for specialized technical, legal, commercial, product, or security criteria. Use `record-structured-deliberation` when several participants must contribute and respond to positions.

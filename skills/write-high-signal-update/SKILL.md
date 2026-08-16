@@ -5,40 +5,31 @@ description: "Write short high-signal output: answer-first replies/updates, deci
 
 # Write High-Signal Update
 
-## Workflow
+Write an update that lets its audience understand the outcome and act quickly.
 
-1. State the **decision or outcome** first.
-2. List **facts** with sources; separate inference.
-3. List **risks/blockers** with owners and dates.
-4. Make **explicit asks** (who, what, by when).
-5. Cut narrative, timeline fluff, and repeated context the audience already has.
+## Method
+
+1. Lead with the decision, outcome, or strongest current state.
+2. Include the few facts needed to understand it; label material inference.
+3. Name material risks or blockers with owner and timing when known.
+4. State each required action with who, what, and when.
+5. End with the next event or decision point.
+6. Match local, candidate, landed, released, and live wording to the actual
+   layer reached.
 
 ## Template
 
 ```markdown
-## Outcome
-## Facts
-## Risks / blockers
-## Asks
-## Next
+Outcome:
+Facts:
+Risks or blockers:
+Actions:
+Next:
 ```
 
-## Gotchas
-
-- Updates that bury the ask produce no action.
-- Do not claim live/production status unless that layer is actually true.
-
-
-## Progressive disclosure
-
-- [../edit-preserving-voice/](../edit-preserving-voice/) — edit while preserving voice and facts
-- [references/research-basis.md](references/research-basis.md)
+Use only the sections the audience needs. For voice-sensitive editing, use
+`edit-preserving-voice`.
 
 ## Output
 
-A short update ready to send.
-
-## Archived depth
-
-If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
-
+A concise update ready to send.

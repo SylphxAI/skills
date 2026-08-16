@@ -1,4 +1,0 @@
-interface:
-  display_name: "Hello Check"
-  short_description: "Validate checklist JSON against its declared gates"
-  default_prompt: "Use $skill-hello-check to validate that a checklist JSON file passes its declared gates."

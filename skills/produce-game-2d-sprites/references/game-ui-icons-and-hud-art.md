@@ -15,7 +15,7 @@ assets (not app product chrome implemented in code).
 - One style contract before generating: stroke weight, fill treatment (all
   outline or all solid), palette family, padding, visual weight.
 - Edit-chain icons 2..N from icon 1.
-- Squint-test at ~32px; reject set members that break the contract.
+- Squint-test at ~32px; select set members that preserve the contract.
 
 ## Panels, bars, wordmarks
 

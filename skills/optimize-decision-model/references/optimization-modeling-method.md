@@ -2,7 +2,8 @@
 
 Formulate the decision before choosing a solver. An optimization model is a
 policy-bearing abstraction: objectives and constraints encode what the system
-will favor, sacrifice, prohibit, and leave unmodeled.
+will favor, the tradeoffs it accepts, its feasible boundary, and its declared
+scope.
 
 ## Formulation contract
 
@@ -22,8 +23,8 @@ Define:
   cadence.
 
 Use dimensional analysis. An objective that adds money, minutes, incidents, and
-customer harm requires explicit normalization or lexicographic policy; a solver
-cannot decide their social or business exchange rate.
+customer harm requires explicit normalization or lexicographic policy supplied
+by the social or business owner.
 
 ## Model family selection
 
@@ -35,14 +36,14 @@ Choose the simplest family that represents the decision:
 - network flow for flow conservation, routing, matching, and capacity networks;
 - constraint programming for rich logical, scheduling, and combinatorial
   feasibility;
-- nonlinear optimization only when material nonlinear relationships cannot be
-  represented accurately by a simpler formulation;
+- nonlinear optimization only when a simpler formulation represents material
+  nonlinear relationships with insufficient accuracy;
 - stochastic programming when decisions precede uncertain outcomes and
   scenario-dependent recourse matters;
 - robust optimization when policies must remain feasible or acceptable across
   a declared uncertainty set without trusting one probability distribution.
 
-Do not assume a model family from the tool already installed. Record why the
+Select the model family from the decision structure and record why the
 family fits the operational semantics and scale.
 
 ## Uncertainty and robustness
@@ -79,7 +80,8 @@ Before relying on an optimized solution:
    unstable decisions and identify thresholds at which the recommendation
    changes.
 9. Diagnose infeasibility with conflicts, irreducible inconsistent sets, or
-   controlled relaxations. Never silently delete a constraint to get a result.
+   controlled relaxations. Preserve every constraint unless its owner approves
+   and records a relaxation.
 
 Solver output proves only what follows from the encoded model and supplied
 data. It does not prove that the model represents reality or that its objective

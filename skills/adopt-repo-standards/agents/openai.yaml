@@ -1,4 +1,0 @@
-interface:
-  display_name: "Adopt Repo Standards"
-  short_description: "Adopt engineering standards into a repo: constitution, manifest, fences, conformance entrypoints; hard-cut predecessor instruction layouts."
-  default_prompt: "Apply adopt-repo-standards constraints on the active task/workspace."

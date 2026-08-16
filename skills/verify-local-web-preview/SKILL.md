@@ -1,72 +1,32 @@
 ---
 name: verify-local-web-preview
-description: "Verify local web/game preview: load, screenshot, console gate."
+description: "Verify a local web or game preview through load, screenshot, and console checks."
 ---
 
 # Verify Local Web Preview
 
-When a product has a **local web preview** (dev server, pack web host, title
-preview) and you need agent-owned visual/load proof—not curl-only—run this job.
-
-## When to use
-
-- After wiring a web UI or canvas game preview
-- Before claiming “it runs in browser” or handing a human a preview
-- When capturing a PNG the agent can re-read for visual defects
-- When you need a fail-closed console/pageerror gate on load
+Load a local web or canvas preview through a browser, inspect the rendered
+result, and report console or page errors.
 
 ## Method
 
-### 1. Locate the live preview
+1. Discover the actual local preview URL from the product's running server.
+2. Open it with the host browser or the product repository's existing browser
+   test interface.
+3. Capture a screenshot and inspect layout, content, canvas state, clipping,
+   loading, and obvious visual defects.
+4. Exercise the interaction changed by the task. For games, use visible input
+   and movement behavior in addition to the screenshot.
+5. Record URL, navigation result, screenshot path, console/page errors, and the
+   behavior exercised.
+6. Communicate the result using
+   [preview honesty](references/preview-honesty.md), matching local preview,
+   public preview, released, and live states to the observed layer.
 
-- Discover the actual listen URL/port from the product (Vite, pack host, custom).
-- Prefer loopback addresses the agent can open. Do not invent a port.
+## Output
 
-### 2. Capture
+Return the preview URL, browser result, screenshot path, console/page errors,
+interaction result, and material untested areas.
 
-Prefer host browser / computer-use tools when they can open the URL and
-screenshot. Otherwise, if Playwright is available:
-
-```bash
-node skills/verify-local-web-preview/scripts/browser-smoke.mjs \
-  http://127.0.0.1:<port>/ \
-  ./screenshots/<name>.png
-```
-
-Read `--` argv: `[url] [out.png]`. Env: `BROWSER_SMOKE_TIMEOUT_MS`,
-`BROWSER_SMOKE_URL`, `BROWSER_ALLOW_EXTERNAL_HOST=1` (rare),
-`BROWSER_SMOKE_ALLOW_ROOT` (extra output roots, `:`/`;` separated).
-
-Exit codes: `0` ok, `1` nav/HTTP fail, `2` console/page errors, `3` no Playwright.
-
-### 3. Inspect
-
-- Open the PNG (or host screenshot) and note layout, blank canvas, obvious bugs.
-- For movement games, run player-visible control signs (A left / D right) per
-  whole-game design controls self-test—not screenshot-only for steer.
-- Production claim still needs product build/test oracles—not smoke alone.
-
-### 4. Communicate (human-facing)
-
-Follow [references/preview-honesty.md](references/preview-honesty.md): the human
-sees **their** preview channel; do not send them agent-only localhost chores.
-
-### 5. Record evidence
-
-URL, status, screenshot path, console errors, what remains untested. Compose
-atomic commits and a revert-safe PR outcome L1/L2/L3 only when this job mutates product source.
-
-## Done for this run
-
-- Preview URL known and load attempted with recorded result
-- Screenshot or explicit tool-gap
-- Console/page errors listed or clean
-- Human-facing summary without false production claims
-
-## Progressive disclosure
-
-- [references/preview-honesty.md](references/preview-honesty.md) — open when needed for depth
-
-## Related
-
-- Need a **public** temporary URL instead of localhost? Use `deploy-ephemeral-web-preview`.
+Use `deploy-ephemeral-web-preview` when the requested result is a public
+temporary URL.

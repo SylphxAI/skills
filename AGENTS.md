@@ -1,21 +1,18 @@
-# Skills repository (Sylphx Verified Capabilities open foundation)
+# Skills repository
 
-- **Search before you act.** Before any work, search `skills/` for the matching
-  capability and open it; never skip discovery because the task looks familiar.
-- Listings: requestable jobs under `skills/<id>/` (no hard count cap)
-- Depth: standards, shapes, domains, matrices under owner `references/`
-- Never standards bag; never docs-only agent binding depth
-- Do not demote real jobs only to shrink the catalog
-- Package format is industry Agent Skills: `SKILL.md` required. Do not write
-  `capability.json`. `qualification.json` is optional (missing = unqualified).
-  File evidence via `design-skill-evals` only when claiming lift.
-- Never claim qualification without version-scoped, expiring evidence; Quality
-  North Star (`q-*`) is authoring quality, not qualification evidence.
-  Unqualified packages stay usable. Do not steer work with house coverage
-  or yield KPIs.
-- Universal principles (any design: code/product/ops/business): `docs/policies/PRINCIPLES.md`; compact floor in `runtime/constitution.md`
-- Prefer app/product/game language; Keel depth under `build-product`
-- `npm run build:catalog && npm test`
-- Commit build tests product behavior only. Pipeline job:
-  `implement-continuous-integration`. Do not add slogan, brand, heading-list,
-  file-existence-as-architecture, or meta-check tests.
+This repository owns reusable Agent Skill packages under `skills/<name>/`.
+Each `SKILL.md` is the package source and follows the Agent Skills specification.
+
+## Working agreement
+
+- Search `skills/` for the semantic owner before editing or adding a package.
+- Keep one recurring job per skill and one semantic owner per instruction.
+- Write positive action paths, ownership boundaries, and selection conditions.
+- Place optional depth in directly relevant references.
+- Keep scripts that implement real skill behavior and test those scripts.
+- Use native host discovery and installation paths.
+- Run the format, local-link, and changed-script checks before landing.
+- Report local, landed, released, and live state precisely.
+
+Repository history remains available through Git. The active tree contains only
+current product instructions and executable helpers.

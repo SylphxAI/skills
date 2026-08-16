@@ -1,4 +1,0 @@
-interface:
-  display_name: "Deliver App Events"
-  short_description: "Sends email, webhooks, realtime, or push through Platform Events."
-  default_prompt: "Send this message through Sylphx Platform Events and prove the receipt."

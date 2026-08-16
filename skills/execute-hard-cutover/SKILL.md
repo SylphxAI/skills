@@ -1,54 +1,30 @@
 ---
 name: execute-hard-cutover
-description: "Hard-cut predecessor to destination sole writer; retire dual paths."
+description: Replace a predecessor with one destination and retire the old path in the same delivery. Use for system, API, package, instruction, installer, configuration, or data migrations that require a single final authority.
 ---
 
 # Execute Hard Cutover
 
-Run a hard cutover when a predecessor implementation must stop owning a path and a destination must become the only writer.
+Move all required behavior and data to the destination, switch authority once, and leave one operating path.
 
-## When to use
+## Method
 
-- Replacing a system, package, API, instruction set, or data path
-- Dual-write / dual-read shims have become permanent residue
-- Expand/contract is only a temporary phase, not the end state
+1. Name the predecessor, destination, users, callers, data, jobs, interfaces, install paths, and final authority.
+2. Inventory every dependency on the predecessor and define its exact destination.
+3. Prepare the destination with the required behavior, schema, capacity, permissions, observability, and recovery path.
+4. Create a recoverable snapshot or forward-repair point for state that could be lost during the cut.
+5. Pause or fence writes for the brief interval needed to establish one consistent migration boundary.
+6. Migrate and backfill all required data. Use idempotent operations where retries are possible.
+7. Validate conservation, counts, key invariants, referential integrity, permissions, and representative reads before switching authority.
+8. Switch writers, readers, traffic, jobs, and native installation paths to the destination.
+9. Run the changed customer or operator path and confirm new writes appear only at the destination.
+10. Remove predecessor code, configuration, jobs, flags, documentation, installers, and operational ownership in the same delivery.
+11. Confirm service recovery, data completeness, sole authority, and the requested landed, released, deployed, or live state.
 
-## Workflow
+## Data cutovers
 
-1. **Name the cut.** Predecessor, destination, traffic/data surface, and terminal: destination sole writer; predecessor retired for that surface.
-2. **Inventory dependency.** Callers, data, jobs, docs, install paths, feature flags. Record what must migrate.
-3. **Prefer hard cut.** Default terminal is switch + retire. Temporary dual-write/shadow only under eng-hard-cut-01 risk-class gates with owner, date, oracles, and recovery drill. Agent speed does not skip those gates.
-4. **Schema multi-step inside destination** when live DDL/lock risk exists (not a second product system). Relational apply authority is Atlas (technology-stack-profile).
-5. **Backfill.** Move or rebuild required state at the destination before cut. Verify with original oracles, not memory.
-6. **Cut traffic.** Point writers and readers at destination. Block new predecessor writes.
-7. **Retire predecessor.** Delete or quarantine dead paths in the same delivery unit. Residuals are incomplete status.
-8. **Prove.** Destination handles the surface under real checks. Predecessor no longer receives production responsibility for that surface.
+Use [Database cutover and migration](references/database-cutover-and-migration.md) for online schema changes, conserved-value data, large-table locking risk, shared multi-tenant state, or external clients. Apply the destination database's standard migration tool and keep one production writer at completion.
 
-## Checks
+## Completion
 
-- Done is destination sole writer and predecessor retired.
-- Remaining flags have an expiry and kill criteria.
-- Docs and installers point at the destination.
-- Schema steps inside the destination stay inside that system.
-
-## Validation
-
-- Destination sole writer for the named surface
-- Predecessor retired or explicitly time-boxed with kill criteria under risk-class gates only
-- Evidence for backfill + cut; residuals are incomplete-status only, not dual-system permission
-
-
-## Progressive disclosure
-
-- [references/cutover-rules.md](references/cutover-rules.md) — open when needed for depth
-- [references/database-cutover-and-migration.md](references/database-cutover-and-migration.md) — database/Atlas cutover, dual taxonomy, readiness checklist
-- [references/pre-v3-entry-method.md](references/pre-v3-entry-method.md) — open when needed for depth
-
-## Output
-
-Cutover plan executed · evidence · residuals
-
-## Archived depth
-
-If the thinner entry is insufficient, read [pre-v3-entry-method.md](references/pre-v3-entry-method.md).
-
+Return the destination authority, migrated data and invariants checked, recovery point, user path exercised, predecessor surfaces removed, downtime observed, and strongest truthful delivery state.

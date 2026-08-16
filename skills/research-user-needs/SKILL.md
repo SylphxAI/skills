@@ -5,76 +5,33 @@ description: "Research user needs: jobs, evidence, segments, opportunity ranking
 
 # Research User Needs
 
-Produce decision-relevant user evidence without turning a convenient sample,
-memorable quotation, or researcher's interpretation into a population claim.
-Read [references/research-method.md](references/research-method.md) before
-selecting participants, collecting data, or interpreting findings.
+Study user behavior and experience for a specific product or service decision.
 
+## Method
 
-## When to use
-- A decision needs user evidence: jobs, segments, opportunity ranking
-- Qualitative or mixed-method study design and findings with traceability
-- Not for market/category evidence (`synthesize-market-research`) or post-use feedback loops (`run-product-feedback-loop`)
+1. Open the [research method](references/research-method.md).
+2. Define the decision, research questions, target users, context, existing
+   knowledge, uncertainty, and observation that could change the decision.
+3. Choose the smallest method mix that can observe the behavior or elicit the
+   experience. Use real-task observation for behavioral questions.
+4. Recruit across material behaviors, experience, access needs, contexts, and
+   risks. State the covered population and sample limits.
+5. Establish consent, privacy, recording, compensation, safeguarding,
+   accessibility, retention, withdrawal, and sensitive-topic handling.
+6. Pilot neutral tasks and prompts, then run the study consistently.
+7. Preserve traceability from participant action or words to observation,
+   interpretation, pattern, and recommendation.
+8. Analyze contradictory cases, segments, researcher effects, non-response,
+   proxy-user limitations, and alternative explanations.
+9. Return to the original decision and rank findings by consequence, coverage,
+   and confidence.
 
-## Workflow
+## Output
 
-1. Bind the study to a decision, target users, context, known evidence,
-   assumptions, unknowns, and evidence that could change the decision.
-2. Choose the smallest method mix that can observe the relevant behavior or
-   elicit the relevant experience. Prefer observation of real work over stated
-   preference when the research question concerns behavior.
-3. Define a purposive recruitment matrix across material behaviors, access
-   needs, experience, context, and risk. State excluded groups and coverage
-   limits. A qualitative sample stays scoped to that sample.
-4. Establish consent, privacy, recording, compensation, safeguarding,
-   accessibility, retention, withdrawal, and sensitive-topic handling before
-   recruitment. Collect only data required by the study.
-5. Write and pilot a protocol. Use neutral prompts, realistic tasks, consistent
-   probes, and explicit stopping or escalation rules. Prompts stay neutral to
-   the intended design.
-6. Preserve traceability from session evidence to observations, interpretations,
-   themes, and recommendations. Separate what a participant did or said from
-   what the researcher inferred.
-7. Analyze iteratively across participants. Search for negative cases,
-   contradictory segments, researcher effects, non-response, proxy-user error,
-   and alternative explanations. Saturation is a coverage claim with a named
-   sample, not repetition in a narrow group.
-8. Connect findings to the original decision. Rank findings by consequence,
-   evidence coverage, and confidence; state unresolved questions and the next
-   evidence needed.
+Return a User Research Protocol and Findings with decision, participants,
+method, consent and privacy, study materials, session locators, findings,
+contradictory observations, coverage, confidence, limits, implications, and
+open questions.
 
-## Artifact
-
-Produce a **User Research Protocol and Findings**:
-
-- decision, research questions, users, context, scope, and prior evidence;
-- method, recruitment matrix, inclusion and exclusion, consent, privacy,
-  accessibility, retention, and study materials;
-- session ledger with evidence locators and material deviations;
-- findings with supporting and disconfirming observations, affected groups,
-  coverage, confidence, and limitations;
-- design or service implications, non-claims, unresolved risks, and decision
-  handoff.
-
-If only the protocol or only the findings are requested, produce that section
-without inventing the missing study phase.
-
-
-## Progressive disclosure
-
-- [references/research-method.md](references/research-method.md) — open when needed for depth
-
-## Path
-
-- Prevalence comes from an appropriately sampled quantitative study. Qualitative evidence stays scoped to the sample.
-
-## Boundaries
-
-- Use `synthesize-market-research` for category, competitor, pricing, or demand
-  evidence from market sources.
-- Use `../run-product-feedback-loop/` for recurring post-use feedback intake,
-  triage, prioritization, and closure.
-- Use `../review-domain/references/product-analytics-instrumentation/` for event definitions,
-  telemetry coverage, and quantitative behavioral measurement.
-- Use `../review-domain/references/product-experiment/` for randomized, holdout, switchback, or staged
-  product experiments; use `../analyze-causal-inference/` for causal effect claims.
+Qualitative findings describe the studied sample. Population prevalence comes
+from an appropriately sampled quantitative study.

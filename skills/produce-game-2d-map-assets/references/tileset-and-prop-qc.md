@@ -4,7 +4,7 @@
 
 - Prompt for uniform stochastic texture: even density/lighting, pattern
   continues off every edge, no landmark motifs that tile forever.
-- **Mandatory:** composite a real 2×2 (or larger) and inspect for seam lines,
+- **Composite check:** assemble a real 2×2 (or larger) and inspect for seam lines,
   repeated recognizable clumps, and large-scale tone checkerboarding.
 
 ## Transition sets (e.g. grass→dirt)

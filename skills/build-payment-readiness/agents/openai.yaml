@@ -1,4 +1,0 @@
-interface:
-  display_name: "Build Payment Readiness"
-  short_description: "Build production payments: providers, ledger, webhooks, reconciliation."
-  default_prompt: "Run this skill on the active workspace."

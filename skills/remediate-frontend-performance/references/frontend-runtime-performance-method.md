@@ -14,7 +14,7 @@ Bind the baseline to:
 - route, state, content/data fixture, cache state, input sequence and duration;
 - warm-up and sample count;
 - declared budget or exact user-visible symptom; and
-- control scenarios that should not exhibit the failure.
+- control scenarios that remain unaffected.
 
 Capture at least the failing state and the transitions that enter and leave it.
 For long-session or accumulation failures, include bounded idle and repeated
@@ -62,7 +62,7 @@ Prefer, in order:
 1. remove work that has no user value;
 2. bind work to the owning component, route, visibility and cancellation
    lifecycle;
-3. avoid recomputation through stable data flow, derived state, batching, and
+3. minimize recomputation through stable data flow, derived state, batching, and
    appropriate memoization;
 4. move non-critical work outside the interaction/rendering critical path;
 5. reduce algorithmic, allocation, layout, paint, decode, or transfer cost;
@@ -92,7 +92,7 @@ Report raw observations or distributions, sampling method, environmental
 variance and the product budget. A percentage without baseline units and a
 single best run are not sufficient.
 
-The proof matrix should connect:
+The result record should connect:
 
 ```text
 Claim -> scenario -> source evidence -> runtime observation

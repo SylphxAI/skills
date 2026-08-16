@@ -7,7 +7,7 @@ finished game.
 ## Experience and art thesis
 
 State the player fantasy, emotional tone, three to five experience pillars,
-anti-pillars, and one coherent art/experience thesis. Resolve:
+explicit design limits, and one coherent art/experience thesis. Resolve:
 
 - silhouette, proportion, shape, scale, material, texture, palette, lighting,
   weather, atmosphere, architecture, environment, prop, character, UI, VFX,
@@ -26,7 +26,7 @@ geometry, repeated primitives, missing materials, placeholder animation, or
 default lighting are not final merely because they are internally consistent.
 
 Finish one representative playable vertical slice before scaling content. It
-should contain final-fidelity environment, character/prop treatment, UI,
+should contain the approved environment, character and prop treatment, UI,
 feedback, audio, camera, performance, and a complete mechanic-to-payoff loop.
 
 ## Gameplay resolution
@@ -45,9 +45,9 @@ For every selected mechanic and loop, resolve:
 - content variety, recombination grammar, authored moments, repetition rate,
   reward cadence, narrative coherence, and late-entry/catch-up behavior.
 
-More mechanics, particles, items, currencies, quests, or screens do not imply
-depth. Prefer a small verb set with rich, legible interaction and durable
-decision space.
+Depth comes from rich, legible interaction and durable decision space. Prefer a
+small verb set over a larger count of mechanics, particles, items, currencies,
+quests, or screens.
 
 ## Numbers and balance
 
@@ -59,8 +59,9 @@ cooldown, probability, pity, decay, and reset values where applicable.
 
 Test interactions, distributions, extremes, progression paths, dominant
 strategies, exploits, inflation/sinks, new/returning/veteran cohorts, and
-accessibility adjustments. A simulation may disprove balance; it cannot alone
-prove fun, comprehension, fairness, cultural meaning, or delight.
+accessibility adjustments. A simulation establishes modeled balance behavior;
+player observation establishes fun, comprehension, perceived fairness, cultural
+meaning, and delight.
 
 ## Playthrough matrix
 
@@ -76,5 +77,5 @@ Inspect and capture representative:
 - quiet, dense, combat/action, traversal, menu/meta, economy, social, failure,
   and recovery scenes.
 
-Do not accept a trailer shot, one beautiful room, or a scripted happy path as
-whole-game finish evidence.
+Run representative play across the selected scope; a trailer shot, one
+beautiful room, or a scripted happy path covers only that captured slice.

@@ -19,12 +19,13 @@ Define before recruitment:
 The session count is a coverage decision, not a ritual number. Add participants
 when they cover a material behavior, context, access need, risk, or unresolved
 contradiction. Stop when the decision has adequate coverage and additional
-sessions have low expected information value; do not claim statistical
-representativeness or universal saturation.
+sessions have low expected information value. Describe the achieved qualitative
+coverage, and reserve statistical representativeness or universal saturation
+for designs that establish those properties.
 
 ## Method selection
 
-| Question | Suitable evidence | Common failure |
+| Question | Suitable evidence | Interpretation boundary |
 | --- | --- | --- |
 | What are users trying to achieve and why? | Contextual interview, observation, diary study | Asking only what feature they want |
 | How is work actually performed? | Contextual inquiry, shadowing, artifact walkthrough | Treating recalled behavior as observed behavior |
@@ -33,7 +34,7 @@ representativeness or universal saturation.
 | How common is a behavior or problem? | Appropriately sampled quantitative research | Counting a purposive qualitative sample |
 
 Use mixed methods when different evidence classes answer different parts of the
-decision. Do not call multiple weak methods triangulation unless they have
+decision. Call a result triangulated when the contributing methods have
 meaningfully different error structures.
 
 ## Recruitment and participant protection
@@ -42,7 +43,7 @@ meaningfully different error structures.
   only internal staff, power users, or easy respondents.
 - Include access needs and adverse or edge conditions that can materially
   change the design.
-- Avoid proxies when the affected person can participate safely. If a proxy is
+- Prefer direct participation from the affected person when it is safe. If a proxy is
   necessary, label proxy evidence.
 - Minimize personally identifiable and sensitive data. Separate contact data
   from research data where practical and enforce retention and deletion.
@@ -55,8 +56,9 @@ meaningfully different error structures.
 ## Collection discipline
 
 Pilot the guide and tasks. Begin with context and recent concrete experience.
-Use open prompts, then neutral probes. Avoid leading language, hypothetical
-feature voting, bundled questions, praise cues, and defending the design.
+Use open prompts, then neutral probes about recent concrete experience. Keep
+questions singular and neutral, and let participants evaluate the design in
+their own language.
 
 For every material session preserve:
 

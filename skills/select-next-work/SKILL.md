@@ -1,51 +1,31 @@
 ---
 name: select-next-work
-description: "Select/claim next high-value Work from evidence under WIP limits."
+description: Select and claim the next high-value work item from current product and repository state. Use when the user wants the agent to choose what to do next from an existing backlog or open opportunity set.
 ---
 
 # Select Next Work
 
-When you must **pick and advance the next Work from evidence** without the user
-naming the ticket, run **one tick** of this method.
+Choose one bounded outcome that can materially advance now.
 
-## When to use
+## Method
 
-- Queue/ledger/capacity signals exist (or must be established)
-- Job is continuous selection + claim under WIP/backpressure
-- Continuous selection + claim under queue/capacity signals
-
-## Method (one tick)
-
-1. Resolve org/project and live Work authority.
-2. Inspect queue, claims, capacity, material signals.
-3. Deduplicate; keep only independently useful bounded outcomes.
-4. Claim/launch only positive-net lanes under WIP and cost backpressure.
-5. Checkpoint material state; emit a compact tick report; **end the tick**.
-6. Continuous mode needs external scheduler/wake + bounded WIP + readout—not an immortal chat session.
-
-### Progressive disclosure
-
-- [references/full-standard.md](references/full-standard.md) — full selection method, authority map, tick shape, backpressure.
-
-### composition (no meta-router)
-
-- `references/work-coordination-standard/` — portable ledger semantics
-- `drive-to-delivery` — **inside** each claimed bounded Work (this package does not close that objective)
-- `../synthesize-evidence-brief/` — only when a tick itself is a disputed or public claim
-- `../run-open-product-betterment/` — only when the continuous job is specifically multi-aspect product betterment (compose; do not merge packages)
+1. Identify the authoritative backlog, product state, active commitments, available capacity, and claim mechanism.
+2. Inspect current user impact, incidents, dependencies, deadlines, strategic outcomes, and recently completed work.
+3. Combine duplicate items and express each candidate as an independently useful outcome.
+4. Compare candidates using direct product value, urgency, dependency leverage, feasibility, reversibility, and likely completion cost.
+5. Select the strongest unblocked candidate that fits current capacity. Explain the decisive reasons in plain language.
+6. Claim it through the team's existing tracker when claim authority is available.
+7. Hand the accepted item to the appropriate implementation or delivery skill.
 
 ## Output
 
-A **bounded tick report** plus durable Work/claim/checkpoint effects when authority surfaces exist.
+Return:
 
+- selected outcome;
+- why it is the best current choice;
+- owning product or repository;
+- relevant dependencies and constraints;
+- claim state; and
+- immediate next action.
 
-## Progressive disclosure
-
-- [references/full-standard.md](references/full-standard.md) — open when needed for depth
-- [references/work-coordination-standard/](references/work-coordination-standard/) — open when this topic applies
-
-## Boundaries
-
-- Grants no deploy or credential capabilities.
-- One **tick** selects/claims; closing a claimed multi-phase objective uses the delivery method for that Work.
-- This package is method text, not a runtime scheduler.
+Repeat the method from fresh state whenever another selection is requested.

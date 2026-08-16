@@ -1,4 +1,0 @@
-interface:
-  display_name: "Verify Local Web Preview"
-  short_description: "Headless load/screenshot + honest preview QA for local web."
-  default_prompt: "Verify the local web preview loads cleanly; capture screenshot evidence and residual console errors."

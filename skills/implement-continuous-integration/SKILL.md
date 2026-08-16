@@ -1,64 +1,35 @@
 ---
 name: implement-continuous-integration
-description: "Make this repository's CI a fast commit build of product behavior. Use when writing or cutting GitHub Actions, when CI is slow, or when tests fail after a rename, heading change, or file move."
+description: Build or simplify a repository's continuous integration around fast product-behavior checks. Use when CI is slow, flaky, duplicated, or coupled to prose, naming, and file layout.
 ---
 
 # Implement Continuous Integration
 
-Turn this repository's pipeline into a **commit build**: every integration
-proves the product still works. Prefer industry CI, and go **lighter** than
-industry when a check does not buy a real defect signal.
-
-## When to use
-
-- Write, cut, or replace GitHub Actions / required checks for a repo
-- CI or pre-commit is slow, flaky, or blocks landing after a rename or rewrite
-- Agents keep adding tests that police slogans, file layout, or other checks
+Create a fast commit build whose result answers whether the product still works after integration.
 
 ## Method
 
-1. **Name the product.** What must keep working after a merge (CLI, package,
-   API, install, user journey)? That is the suite's job.
-2. **Inventory.** List every required job, script, and test file. Separate
-   commit build from later stages. Open
-   [references/industry-commit-build.md](references/industry-commit-build.md)
-   for the keep / move / delete table.
-3. **Classify each check.** Keep only if a red result is a real product
-   defect and a green result raises confidence the product works. Delete
-   slogan, brand, heading-list, file-existence-as-architecture, coverage-
-   threshold, and meta-checks. Move slow acceptance, security, and perf
-   off the commit build unless this change's risk requires them.
-4. **Implement the slimmest commit build** that still fails closed on
-   compile/typecheck, product-behavior tests, one fast acceptance path when
-   one exists, secrets/license bytes, and public contracts. Do not add a
-   test that the standard was followed.
-5. **Wire two layers.** PR head = attributable feedback. Merge-group =
-   admission. Main does **not** re-run the admitted suite; pack/identity
-   smoke only. Open
-   `../drive-to-delivery/references/ci-admission-standard/` for required
-   contexts, flake policy, and gate wiring. Open
-   `../drive-to-delivery/references/ci-runner-capacity-standard/` only when
-   queue or runner capacity is the bottleneck.
-6. **Stop** when `green` means the product works, `red` has a clear repair,
-   and ordinary product edits do not require rewriting the suite.
+1. Name the product artifact or user behavior that each merge must preserve.
+2. Inventory required jobs, workflow triggers, scripts, test suites, runtimes, caches, and branch or merge-queue rules.
+3. Classify each check by the concrete defect a red result detects and the repair its owner can make.
+4. Keep the fastest compiler, type, product-behavior, public-contract, security, and representative acceptance checks that protect the repository's real output.
+5. Consolidate duplicate setup and duplicate test execution into one clear commit-build entrypoint.
+6. Replace prose, wording, generated-copy, naming, and layout scans with tests at the behavior or public contract they intend to protect.
+7. Place long performance, exhaustive compatibility, exploratory, and environment-heavy suites on the release, deployment, scheduled, or explicitly risk-triggered path that consumes their result.
+8. Use standard hosted actions and supported toolchain caches. Pin third-party actions to immutable revisions when the repository requires supply-chain pinning.
+9. Trigger the commit build on pull requests and merge groups when the repository uses a merge queue. Keep required context names stable in repository rules.
+10. Run the workflow's local entrypoint and validate workflow syntax before landing.
 
-## Progressive disclosure
+## Commit-build test
 
-- [references/industry-commit-build.md](references/industry-commit-build.md) —
-  Humble/Fowler/DORA/Kent table and classification
-- `../drive-to-delivery/references/ci-admission-standard/` — admission wiring
-- `../drive-to-delivery/references/ci-runner-capacity-standard/` — compute
-- `../build-product/references/engineering-standard/references/control-effectiveness.md`
-  — when a required check claims to detect a failure class
+A useful required check has all three properties:
+
+- red identifies a real product, build, security, or public-compatibility defect;
+- green materially raises confidence in the integrated product; and
+- the owning engineer can repair the result directly in product code, contracts, dependencies, or tests.
+
+See [Industry commit build](references/industry-commit-build.md) when classifying an existing suite or deciding where a slow check belongs.
 
 ## Output
 
-Product under test · keep/move/delete list · commit-build entrypoint ·
-pipeline layers · residuals
-
-## Boundaries
-
-- Does not own skill evals (`design-skill-evals`) or a single product-bug
-  fix (`maintain-product`).
-- Does not grant deploy or credential capabilities.
-- Does not replace product-local ADRs for this repo's stack.
+Return the protected product behavior, retained and retired checks, commit-build command, workflow triggers, measured runtime when available, and repository-rule changes.

@@ -9,29 +9,29 @@
 5. Support: invoice/receipt lookup, refunds, disputes, adjustment ledger.
 6. Reconciliation: processor/store truth versus internal ledger.
 
-## Rule IDs
+## Operating principles
 
-- `payment-1` — Treat platform/store/processor events as the source for money movement; treat internal entitlements as derived product state.
-- `payment-2` — Use idempotency keys and immutable ledger events for purchase, grant, renewal, refund, dispute, and adjustment.
-- `payment-3` — Separate catalog identifiers from entitlement identifiers so products can change without corrupting access history.
-- `payment-4` — Restore purchases must be visible, testable, and supportable for app-store products.
-- `payment-5` — Apple Pay and Google Pay are wallet checkout methods, not subscription policy systems by themselves.
-- `payment-6` — Google Play Billing and App Store IAP require store-specific purchase tokens/receipts, renewal states, refund/revoke handling, and sandbox tests.
-- `payment-7` — Web checkout needs tax/VAT assumptions, invoice email, payment method update, cancellation, and failed-payment recovery.
-- `payment-8` — Marketplaces need seller onboarding, payouts, disputes, tax identity, holds, and buyer/seller support separation.
-- `payment-9` — Payment UI must disclose renewal, trial, price, period, cancellation, refund path, and material limits.
-- `payment-10` — Support tooling must find transactions by user, order ID, provider ID, product ID, entitlement ID, and support case.
-- `payment-11` — Cross-platform subscriptions need provider-specific precedence rules; Apple, Google, Stripe, promo, restore, renewal, refund, revocation, and chargeback events must not be collapsed into one generic policy.
-- `payment-12` — Entitlements should be projected from an append-only ledger using provider effective time, receipt lineage, revocation evidence, and explicit internal adjustment events.
-- `payment-13` — Restore purchases and client callbacks are lookup or refresh triggers, not money events.
-- `payment-14` — Refund, cancellation, revocation, dispute, chargeback, billing retry, grace, account hold, pause, and expiration have different customer-access and risk semantics.
-- `payment-15` — Reconciliation must cover provider state, internal ledger, entitlement projection, invoices, taxes, fees, settlement, refunds, disputes, and support overrides.
-- `payment-16` — Manual correction is a ledger event with actor, reason, evidence, approval, expiry, and customer-visible explanation; never mutate provider payloads or ledger history.
-- `payment-17` — Launch gates must include out-of-order events, duplicate webhooks, delayed renewals, restore-before-webhook, webhook-before-client, partial refund, chargeback, provider outage, dead-letter replay, and projector replay from zero, each tied to a dashboard, alert, rollback/kill switch, owner, and approval artifact.
-- `payment-18` — Customer trust requires temporary access or grace only when policy permits, clear status messaging, fast restore/retry paths, and support-safe remediation for false revocations.
-- `payment-19` — Webhook outages and backlogs need explicit replay states: paused, quarantined, deduplicated, ordered by provider effective time, replaying, projector-repaired, finance-reconciled, and resumed; arrival order is evidence, not entitlement truth.
-- `payment-20` — Month-close readiness requires separate ledger events and owners for invoice, tax, coupon, credit note, payment, refund, dispute, fee, settlement, revenue export, entitlement, dunning, and manual adjustment; invoice status is not access truth.
-- `payment-21` — Finance-close gates need numeric tolerances, source systems, owner, exception queue, SLA, and close-blocking rule; vague "reconcile monthly" language is not launch-ready.
+- Treat platform/store/processor events as the source for money movement; treat internal entitlements as derived product state.
+- Use idempotency keys and immutable ledger events for purchase, grant, renewal, refund, dispute, and adjustment.
+- Separate catalog identifiers from entitlement identifiers so products can change without corrupting access history.
+- Restore purchases must be visible, testable, and supportable for app-store products.
+- Apple Pay and Google Pay are wallet checkout methods, not subscription policy systems by themselves.
+- Google Play Billing and App Store IAP require store-specific purchase tokens/receipts, renewal states, refund/revoke handling, and sandbox tests.
+- Web checkout needs tax/VAT assumptions, invoice email, payment method update, cancellation, and failed-payment recovery.
+- Marketplaces need seller onboarding, payouts, disputes, tax identity, holds, and buyer/seller support separation.
+- Payment UI must disclose renewal, trial, price, period, cancellation, refund path, and material limits.
+- Support tooling must find transactions by user, order ID, provider ID, product ID, entitlement ID, and support case.
+- Cross-platform subscriptions use provider-specific precedence rules and keep Apple, Google, Stripe, promo, restore, renewal, refund, revocation, and chargeback events distinct.
+- Entitlements should be projected from an append-only ledger using provider effective time, receipt lineage, revocation evidence, and explicit internal adjustment events.
+- Restore purchases and client callbacks are lookup or refresh triggers, not money events.
+- Refund, cancellation, revocation, dispute, chargeback, billing retry, grace, account hold, pause, and expiration have different customer-access and risk semantics.
+- Reconciliation must cover provider state, internal ledger, entitlement projection, invoices, taxes, fees, settlement, refunds, disputes, and support overrides.
+- Manual correction appends a ledger event with actor, reason, source, approval, expiry, and customer-visible explanation. Provider payloads and prior ledger history remain immutable.
+- Launch checks include out-of-order events, duplicate webhooks, delayed renewals, restore-before-webhook, webhook-before-client, partial refund, chargeback, provider outage, dead-letter replay, and projector replay from zero, each tied to an alert, recovery action, owner, and observed result.
+- Customer trust requires temporary access or grace only when policy permits, clear status messaging, fast restore/retry paths, and support-safe remediation for false revocations.
+- Webhook outages and backlogs need explicit replay states: paused, quarantined, deduplicated, ordered by provider effective time, replaying, projector-repaired, finance-reconciled, and resumed; arrival order is evidence, not entitlement truth.
+- Month-close readiness requires separate ledger events and owners for invoice, tax, coupon, credit note, payment, refund, dispute, fee, settlement, revenue export, entitlement, dunning, and manual adjustment; invoice status is not access truth.
+- Finance close uses numeric tolerances, source systems, owner, exception queue, service expectation, and a clear close decision.
 
 ## State machine
 
@@ -67,11 +67,11 @@ Provider precedence:
 | Google Play Billing | verified purchase token and RTDN/API state | purchase token + order ID + notification ID | grant/renew/account-hold/grace/pause/revoke by token lineage |
 | Stripe Checkout/subscriptions | signed webhook plus invoice/payment/subscription state | event ID + subscription/invoice/payment intent/charge ID | grant after paid confirmation; update on invoice/subscription/refund/dispute |
 | Apple Pay / Google Pay wallet | wallet checkout evidence through processor | processor payment intent/charge ID | wallet does not define subscription policy by itself |
-| Promo code | signed internal redemption | promo redemption ID | grant only the promo entitlement/duration; never override paid chargeback restrictions unless policy says so |
-| Restore purchase | server-side provider lookup | restore request ID plus provider lineage | no money event; relink or recompute existing provider ownership |
+| Promo code | signed internal redemption | promo redemption ID | grant the promo entitlement and duration while preserving paid chargeback restrictions defined by policy |
+| Restore purchase | server-side provider lookup | restore request ID plus provider lineage | relink or recompute existing provider ownership from prior money events |
 | Support/admin | role-gated internal adjustment | adjustment ID | temporary grant, revoke, correction, or note with actor/reason/expiry |
 
-Ordering rule: accept valid events in arrival order, store provider effective time, then recompute entitlement from lineage and policy. Never rely on "last webhook wins."
+Ordering rule: accept valid events in arrival order, store provider effective time, then recompute entitlement from complete lineage and policy.
 For replay, sort projection by provider effective time within provider lineage after dedupe; preserve received_at for audit and SLA metrics.
 
 ## Refund, chargeback, and access semantics
@@ -81,10 +81,10 @@ For replay, sort projection by provider effective time within provider lineage a
 | Cancellation | future renewal stopped | keep paid access until paid-through date unless provider says otherwise | show access end date |
 | Billing retry / grace | payment not fully settled but provider permits grace | keep access through provider grace end | explain payment update path |
 | Refund | money returned by provider/merchant | revoke or shorten affected entitlement according to refund policy | distinguish full and partial refund |
-| Partial refund | partial money returned | no access change, proportional change, or revoke only if policy says so | do not surprise revoke without policy |
+| Partial refund | partial money returned | apply the policy-defined access effect: unchanged, proportional, or revoked | show the policy and customer consequence |
 | Revocation | provider explicitly removes entitlement | revoke affected provider period | show restore/support path if disputed |
 | Chargeback/dispute | cardholder or issuer disputes payment | mark disputed, may suspend paid access and block promos pending review | keep appeal/support route |
-| Restore | user requests ownership lookup | verify provider history and recompute | do not create duplicate paid period |
+| Restore | user requests ownership lookup | verify provider history and recompute | preserve one paid period for each owned entitlement interval |
 | Promo/admin grant | internal commercial/support decision | grant exact entitlement/duration and expiry | make source visible to support |
 
 ## Entitlement projection
@@ -100,7 +100,7 @@ Project current access by replaying ledger events:
 7. Emit projection with `active`, `trialing`, `grace`, `billing_retry`, `paused`, `expired`, `revoked`, `disputed`, or `manual_review`.
 8. Store projection version and source ledger event IDs.
 
-When provider state is ambiguous, prefer a short, policy-approved grace or support review path for legitimate customers; do not permanently revoke from missing webhooks alone.
+When provider state is ambiguous, use a short policy-approved grace or support review path and base permanent access changes on confirmed provider lineage.
 
 ## Reconciliation plan
 
@@ -118,7 +118,7 @@ Exception handling:
 | --- | --- |
 | Provider paid, no entitlement | append `entitlement_corrected_grant`, notify customer if affected |
 | Entitlement active, provider expired/refunded | append `entitlement_corrected_revoke` or grace/manual review |
-| Duplicate webhook | no-op with duplicate evidence |
+| Duplicate webhook | no-op with the duplicate record retained |
 | Dead-letter event | replay after fix; projector recomputes |
 | Account restore conflict | block automatic transfer, route support with provider proof |
 | Fee/tax/settlement mismatch | finance exception, no entitlement edit unless payment state changes |
@@ -127,20 +127,20 @@ Exception handling:
 
 Use this when provider notifications, webhooks, RTDN, settlement files, or client callbacks drift:
 
-| State | Owner | Evidence | Ordering and idempotency rule | Exit gate |
+| State | Owner | Observed result | Ordering and idempotency rule | Exit condition |
 | --- | --- | --- | --- | --- |
 | ingestion_paused | payments incident commander | provider status, lag alert, freeze flag | stop side effects; continue durable capture where safe | affected providers and products identified |
 | events_quarantined | payments on-call | raw payload hash, provider event ID, received_at, account/product scope | store only; no entitlement mutation from client success callbacks | quarantine backlog complete |
 | events_deduplicated | payments engineer | provider event IDs, notification UUIDs, purchase tokens, invoice/payment IDs | duplicate events become no-op ledger evidence | duplicate and collision report reviewed |
-| events_ordered | payments engineer | provider lineage, effective_at, received_at, sequence/version when available | replay by provider effective time within lineage, never last-webhook-wins | ordering assumptions documented |
-| ledger_replaying | payments engineer | append-only ledger events and repair events | append compensating events; do not patch prior payloads or entitlements | replay completes without dead-letter errors |
+| events_ordered | payments engineer | provider lineage, effective_at, received_at, sequence/version when available | replay by provider effective time within complete lineage | ordering assumptions documented |
+| ledger_replaying | payments engineer | append-only ledger events and repair events | append compensating events while retaining prior payloads and entitlement history | replay completes without dead-letter errors |
 | projector_repaired | entitlement owner | projection version, before/after diff, affected account list | rebuild projection from zero and compare changed access | false-revoke and over-grant review complete |
-| finance_reconciled | finance owner | settlement, invoice, tax, fee, refund, dispute, revenue export checks | money close exceptions do not directly edit entitlement | exception queue has owner and SLA |
+| finance_reconciled | finance owner | settlement, invoice, tax, fee, refund, dispute, revenue export checks | route money-close exceptions through owned ledger events and entitlement projection | exception queue has owner and SLA |
 | resumed | incident commander | dashboard green, support macros, customer notices, owner approval | resume side effects and provider-specific processing | post-incident review created |
 
-Customer trust during replay: keep policy-approved temporary access for verified payers when provider truth is delayed; message "payment is being verified" rather than "payment failed" until provider evidence supports failure. Support can issue expiring access only through a correction ledger event with reason, approval, expiry, and customer-visible note.
+Customer trust during replay: keep policy-approved temporary access for verified payers when provider truth is delayed; message "payment is being verified" until provider records support a final status. Support issues expiring access through a correction ledger event with reason, approval, expiry, and customer-visible note.
 
-Replay runbooks should also name dead-letter handling for each provider: quarantine reason, retry budget, poison event owner, payload hash, source provider ticket when needed, replay decision, and final disposition. The incident review is incomplete unless it records provider timeline, retry/dead-letter metrics, projector before/after diff, false-revoke/over-grant account list, finance exception list, customer/support themes, permanent control fix, and approval artifact.
+Replay runbooks name dead-letter handling for each provider: quarantine reason, retry budget, poison event owner, payload hash, source provider ticket when needed, replay decision, and final disposition. The incident review records provider timeline, retry/dead-letter metrics, projector before/after diff, false-revoke/over-grant account list, finance exception list, customer/support themes, permanent control fix, and approval.
 
 ## Invoice, tax, and finance-close event model
 
@@ -188,7 +188,7 @@ Support console must show:
 
 Runbooks: missing purchase, duplicate charge, failed renewal, restore conflict, family/account transfer, refund request, partial refund, chargeback/dispute, provider outage, webhook backlog, dead-letter replay, promo abuse, false revocation.
 
-## Launch checklist
+## Launch checks
 
 - Sandbox and production credentials separated.
 - Product catalog reviewed for region, currency, and tax assumptions.
@@ -220,7 +220,7 @@ Rollback controls:
 - Support grace control: issue expiring temporary access with reason code and approval during provider outage.
 - Customer messaging: payment pending, restore in progress, refund processed, dispute review, and degraded-mode notices.
 
-## Release gate fixtures
+## Release behavior fixtures
 
 Before launch, run and record:
 

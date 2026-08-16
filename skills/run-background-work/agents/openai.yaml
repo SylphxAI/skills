@@ -1,4 +1,0 @@
-interface:
-  display_name: "Run Background Work"
-  short_description: "Runs cron, queues, or jobs as Platform Work that wakes web."
-  default_prompt: "Run this background work as Sylphx Platform Work that HTTP-wakes the web service."

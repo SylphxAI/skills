@@ -2,7 +2,7 @@
 
 Distilled from app-builder workspace kits; portable to any host.
 
-## Do
+## Verification contract
 
 - Treat the human’s visible surface as **their** preview/client—not your loopback
   shell, container path, or agent-only port.
@@ -10,15 +10,16 @@ Distilled from app-builder workspace kits; portable to any host.
   when a local server exists.
 - Describe product behavior and residual risk in user language.
 - Keep the preview server up when the human is expected to look.
-- Say clearly when a capability needs native APIs you cannot polyfill in-web.
+- Say clearly when a capability requires native APIs beyond an in-web polyfill.
 
-## Avoid
+## Communication boundary
 
-- Asking the human to open `localhost`, paste logs, or run install commands for
-  basic QA you can do.
-- Implying they can see `/tmp`, container paths, or your IDE terminals.
-- Ending with “let me know if it works” as a substitute for verification.
-- Confusing **preview** (ephemeral, may reset DB/state) with **production**.
+- Perform available basic QA directly before asking the human for inaccessible
+  environment steps.
+- Share paths and surfaces the human can actually access.
+- Report the observed result and remaining checks directly.
+- Label **preview** as ephemeral and potentially state-resetting, distinct from
+  **production**.
 
 ## Evidence
 

@@ -3,7 +3,7 @@
 ## Contents
 
 1. Issue taxonomy and routing
-2. Ticket state machine
+2. Ticket lifecycle
 3. Support tooling
 4. Metrics, quality, and automation
 5. Trust recovery
@@ -36,17 +36,17 @@
 
 | Signal | Primary queue | Required evidence | Escalate when | Customer promise |
 | --- | --- | --- | --- | --- |
-| Account cannot authenticate | identity/access | actor, tenant, auth method, recovery attempts, security signals | suspected takeover, SSO/SCIM defect, or recovery control unavailable | safe recovery step and next update time |
+| Sign-in unavailable | identity/access | actor, tenant, auth method, recovery attempts, security signals | suspected takeover, SSO/SCIM defect, or recovery control unavailable | safe recovery step and next update time |
 | Charged/access mismatch | billing-entitlement | provider event, internal ledger, entitlement projection, account timeline | provider/internal truth differs or money/access correction is required | authority being checked; no invented refund promise |
-| Data missing or conflicting | data-recovery | object/version IDs, backup/sync state, client version, restore attempts | destructive repair, multi-device conflict, or data-loss blast radius | preserve state; do not retry destructive actions |
+| Data missing or conflicting | data-recovery | object/version IDs, backup/sync state, client version, restore attempts | destructive repair, multi-device conflict, or data-loss blast radius | preserve state; destructive retries require verified recovery authority |
 | Product defect | product-support | reproduction, version, environment, logs/trace, impact | severity threshold or repeat pattern is met | workaround or bounded status, not a fabricated ETA |
 | Abuse/safety report | trust-safety | report type, content/account IDs, evidence preservation, urgency | credible harm, coordinated abuse, legal/safety boundary | acknowledgement without exposing enforcement internals |
 | Active incident | incident-command | service/region/version, start time, symptom, trace/status evidence | declared incident threshold is met | one incident source and update cadence |
 
-`support-7` — A queue name is not a decision. Every route names authority,
-evidence required at intake, handoff trigger, and customer-facing promise.
+Every route names its decision authority, intake facts, handoff trigger, and
+customer-facing promise.
 
-## Ticket state machine
+## Ticket lifecycle
 
 ```text
 new
@@ -65,23 +65,23 @@ resolved
 
 State rules:
 
-- `support-8` — Every waiting state has a named dependency, owner, next-check
+- Every waiting state has a named dependency, owner, next-check
   time, and customer update deadline.
-- `support-9` — `resolved` requires observable confirmation, not merely an agent
+- `resolved` requires observable confirmation, not merely an agent
   reply or internal status change.
-- `support-10` — Reopen preserves the prior classification, evidence, actions,
+- Reopen preserves the prior classification, evidence, actions,
   and reason the resolution failed.
-- `support-11` — Money, access, deletion, identity, and safety corrections use
-  the owning system's audit trail; a ticket comment is never the authority.
+- Money, access, deletion, identity, and safety corrections use
+  the owning system's audit trail as authority; a ticket comment provides context.
 
 ## Support tooling requirements
 
-- `support-1` — Support should see relevant state without asking users for screenshots: account, platform, app version, purchase IDs, entitlement state, device, logs, last backup.
-- `support-2` — Billing support needs purchase/refund/entitlement ledger, not only current plan.
-- `support-3` — Data-loss support needs backup snapshots, restore attempts, device/app version, and conflict state.
-- `support-4` — Store review responses should route repeated complaints into product fixes.
-- `support-5` — Macros should be empathetic, specific, and action-oriented.
-- `support-6` — Abuse review should be evidence-based and appealable.
+- Support should see relevant state without asking users for screenshots: account, platform, app version, purchase IDs, entitlement state, device, logs, last backup.
+- Billing support needs purchase/refund/entitlement ledger, not only current plan.
+- Data-loss support needs backup snapshots, restore attempts, device/app version, and conflict state.
+- Store review responses should route repeated complaints into product fixes.
+- Macros should be empathetic, specific, and action-oriented.
+- Abuse review should be evidence-based and appealable.
 
 ## Metrics
 
@@ -126,7 +126,7 @@ high-impact side effects.
 
 - [ ] channel and issue taxonomy;
 - [ ] routing table and decision rights;
-- [ ] ticket state machine and waiting-state clocks;
+- [ ] ticket lifecycle and waiting-state clocks;
 - [ ] evidence contract for every high-volume/high-risk category;
 - [ ] macros or response principles tied to current sources;
 - [ ] automation scope, abstention, and protected actions;
@@ -142,7 +142,7 @@ When the product fails:
 - acknowledge what happened;
 - explain what state is known;
 - give the next action;
-- avoid blaming the user;
+- use neutral language focused on resolution;
 - preserve support traceability;
 - create a product fix if the same issue repeats.
 
@@ -165,8 +165,8 @@ help_needed
 Rules:
 
 - Separate education, troubleshooting, billing/refund, account access,
-  incident, policy, integration, bug, and safety intents; they do not share one
-  automation or escalation floor.
+  incident, policy, integration, bug, and safety intents; each has its own
+  automation and escalation floor.
 - Every article declares audience, owner, product/version scope, prerequisites,
   safe steps, expected result, last verification, expiry, and human/escalation
   route.
@@ -177,10 +177,11 @@ Rules:
   identity, money, deletion, safety, privacy, or incident state is uncertain.
   They preserve diagnostic context on handoff.
 - Offer visible specialist or owning-authority escalation for high-stakes or
-  repeatedly unresolved cases. Never trap a user to improve a deflection metric.
-- Diagnostics collect only bounded safe context such as product version,
-  environment, trace/request ID, state, and attempted steps; never request
-  secrets or destructive repetition.
+  repeatedly unresolved cases. Resolution quality takes precedence over the
+  deflection metric, and users retain an escalation path.
+- Diagnostics collect bounded safe context such as product version,
+  environment, trace/request ID, state, and attempted steps. Secret material
+  stays with its secure owner, and diagnostic collection preserves current state.
 - Split content defects from product defects. Repeated contact drivers create
   owned product, onboarding, error-message, or policy work rather than endless
   duplicate articles.

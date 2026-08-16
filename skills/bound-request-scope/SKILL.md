@@ -1,35 +1,35 @@
 ---
 name: bound-request-scope
-description: "Bound this request: objective, in/out, non-goals, cut lines."
+description: Define a request's objective, boundaries, terminal condition, and cut lines. Use when scope is ambiguous, expanding, or mixing several independently accepted outcomes.
 ---
 
 # Bound Request Scope
 
-Keep **this request** right-sized: objective, in/out, non-goals, cut lines, and ceremony matched to risk.
+Create enough shared clarity for useful work to begin and stay focused.
 
-## When to use
+## Method
 
-- Scope is expanding, ambiguous, or thrashing
-- Need an explicit in/out contract before or during implementation
-- Choosing between direct path vs deeper analysis
+1. State the requested outcome in one sentence from the user's point of view.
+2. Name the owning system, repository, product surface, and decision authority.
+3. Define the terminal condition: local change, landed source, release, deployment, live behavior, or another explicit result.
+4. List the work included because it is required for that terminal.
+5. List adjacent outcomes that have independent acceptance and can remain separate.
+6. Mark hard cut lines around permissions, destructive effects, public contracts, credentials, infrastructure, money, and sensitive data.
+7. Resolve only facts that could change the chosen path. State assumptions and unknowns beside the decisions they affect.
+8. Select the smallest complete path that reaches the terminal through existing product boundaries and standard tools.
 
-## Method (short)
+## Working contract
 
-1. **Bind** objective, owning boundary, terminal condition, risk floor, non-goals.
-   Request scope is an **OKR-style completable goal**, not a second North Star
-   Metric. Product vision and NSM stay in their industry homes
-   (`documentation-standard` under `drive-to-delivery`).
-2. **Ground** facts vs inference; acquire only decision-critical evidence.
-3. **Choose the smallest complete path** (avoid → reuse → stdlib/platform → existing dep → new only if required).
-4. **Scale ceremony to risk** — trivial reversible edits stay direct; irreversible material changes earn deeper analysis.
-5. **Do not** turn this into a mandatory report, proof ladder, or live-readback pack for ordinary work. Extra proof is only for money, safety, incident, or an explicit ship/live claim.
+Keep the result compact and usable in the current task:
 
-## Depth
+```text
+Objective:
+Terminal:
+In scope:
+Adjacent work:
+Constraints and authorities:
+Assumptions or unknowns:
+Chosen path:
+```
 
-Full procedure, ladders, and examples: [full-method.md](references/full-method.md).
-
-Also: [right-sized-agent-engineering.md](references/right-sized-agent-engineering.md), [closure-brief.md](references/closure-brief.md).
-
-## Output
-
-Stable scope contract · path chosen · residuals
+Refresh the contract when the user changes the objective or a discovered fact changes the path.

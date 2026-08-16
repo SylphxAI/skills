@@ -1,73 +1,27 @@
 ---
 name: forecast-with-calibration
-description: "Produce calibrated probabilistic forecasts with base rates and ranges."
+description: Produce an updateable probability or distribution for a resolvable future event using base rates, explicit assumptions, current information, and a declared resolution source.
 ---
 
 # Forecast With Calibration
 
-Make uncertainty explicit, updateable, and accountable. Read
-[references/probabilistic-forecasting-methods.md](references/probabilistic-forecasting-methods.md)
-for elicitation, aggregation, calibration, and scoring detail.
+Make uncertainty explicit enough to support a decision and later learning.
 
+## Method
 
-## When to use
-- A resolvable future event needs an explicit probability or distribution with a deadline and resolution source
-- Decisions depend on calibrated uncertainty, base rates, or updateable forecasts
-- Not for confidence in an explanation of what already happened (`analyze-critically`)
+1. Write a resolvable question with an outcome, deadline, resolution date, authoritative resolution source, and ambiguity rules.
+2. Establish a relevant reference class and base rate with its provenance and selection limits.
+3. Decompose the event into causal drivers, necessary milestones, conditional branches, or sufficiently independent subquestions.
+4. Elicit an initial probability or distribution and identify the assumptions and observations most likely to move it.
+5. For material forecasts, combine estimates formed from genuinely different information or models and account for their dependence.
+6. Set an update cadence based on event speed and decision value. Preserve timestamped updates and their causes.
+7. Resolve against the declared source and use a proper scoring rule across a meaningful set of comparable forecasts.
+8. Feed calibration and resolution errors into future reference classes, decomposition, and updating.
 
-## Workflow
-
-1. Write one resolvable question with an outcome, deadline, resolution date,
-   authoritative resolution source, and rules for ambiguous, canceled, or
-   partially observed outcomes. Reframe or decline an unresolvable question.
-
-Example: "Will the merge queue admit PR #124 before 2026-08-10T00:00Z?" is resolvable with a deadline and an authoritative resolution source; "will it be fast?" is not.
-2. Establish the reference class and base rate before inspecting vivid case
-   details. Record data provenance, selection effects, and relevance limits.
-3. Decompose the event into causal drivers, necessary milestones, conditional
-   branches, or independent subquestions without double-counting dependencies.
-4. Elicit an initial probability or distribution. State the strongest evidence
-   for and against, key assumptions, and the observation most likely to move
-   the estimate.
-5. For material forecasts, obtain estimates from agents using different
-   evidence or models before sharing their numbers. Aggregate transparently;
-   correlated agreement is not independent evidence.
-6. Set an update policy based on event cadence and decision value. Update on
-   material evidence, preserve the full history, and distinguish evidence
-   changes from preference or risk-tolerance changes.
-7. Resolve against the predeclared source. Score with an appropriate proper
-   scoring rule, inspect calibration across a meaningful set, and record what
-   should change in future forecasts.
+Read [Probabilistic forecasting methods](references/probabilistic-forecasting-methods.md) for elicitation, aggregation, scoring, and calibration techniques.
 
 ## Output
 
-Produce a **Probabilistic Forecast Record**:
+Return the resolvable question, timestamped forecast, base rate, decomposition, assumptions, update triggers, resolution source, and calibration result when resolved.
 
-- **Question contract** — outcome, horizon, resolution source, ambiguity rules,
-  and owner.
-- **Forecast** — probability or distribution, timestamp, base rate, model, and
-  decomposition.
-- **Evidence and assumptions** — supports, objections, unknowns, dependence,
-  and update triggers.
-- **History** — timestamped estimates and the evidence that caused each change.
-- **Resolution and learning** — outcome, score, calibration context, failure
-  analysis, and reusable update.
-
-
-## Progressive disclosure
-
-- [references/probabilistic-forecasting-methods.md](references/probabilistic-forecasting-methods.md) — open when needed for depth
-
-## Boundaries
-
-- Use `analyze-critically` for confidence in a present explanation rather than a
-  resolvable future event.
-- Use `../record-structured-deliberation/references/decision-quality-standard/` to combine forecasts with value, cost, risk
-  appetite, reversibility, and authority to choose an action.
-- Domain skills own the meaning of revenue, reliability, delivery, safety, or
-  other specialized outcomes; this skill owns the forecasting method.
-
-## Path
-
-- Precise probabilities come from a resolvable question plus evidence. Unsupported precision becomes a range or an insufficient-evidence mark.
-- Score process, proper score, and calibration across repeated forecasts. One outcome is one resolution, not the method verdict.
+Use `analyze-critically` for confidence in a present explanation and a domain skill for the meaning and consequences of the forecasted outcome.

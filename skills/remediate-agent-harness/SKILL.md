@@ -5,72 +5,30 @@ description: "Remediate an agent harness with measured deltas and failure modes.
 
 # Remediate Agent Harness
 
-Turn repeated agent behavior into a tested system change, not another reminder.
-Read [references/learning-system-methods.md](references/learning-system-methods.md)
-before choosing the intervention and evaluation design.
-
-
-## When to use
-- Repeated agent behavior needs a tested system change, not another reminder
-- Baseline rate, countermetrics, and promotion threshold are measurable
-- Not for a single uncertain cause (`analyze-critically`)
+Correct a recurring agent-system behavior at the layer that causes it.
 
 ## Method
 
-When landing source, apply constraints from `../drive-to-delivery/references/source-authoring-standard/` — **L1** batch admitted work, **L2** atomic valid commits, **L3** one revert-safe complete PR outcome per independent outcome.
-
-1. Define the recurring outcome, affected population, impact, baseline rate,
-   observation window, and evidence quality. Separate one incident from a
-   repeatable class.
-2. Trace the behavior through the whole agent system: objective, instruction,
-   injected Skills, context and memory, model, tools, permissions, state,
-   evaluator, coordination, and feedback. Do not assume the prompt is the cause.
-
-Example: repeated half-migrations may come from objective pressure, missing tools, or evaluator reward — trace before adding instruction.
-3. Form competing causal hypotheses and identify the observation that would
-   distinguish each one. Check whether the system is optimizing the wrong
-   objective before adding more instruction.
-4. Choose the smallest intervention at the owning layer. Change policy,
-   procedure, context, tool contract, evaluator, or feedback only where the
-   causal mechanism lives.
-5. Freeze the baseline, candidate, expected effect, countermetrics, rollback,
-   and promotion threshold. Use replay, a held-out task set, shadow execution,
-   a bounded experiment, or live comparison appropriate to the claim.
-6. Compare outcome, critical failures, cost, latency, and transfer across task
-   and model families. Reject improvements that merely move the failure or
-   overfit the observed examples.
-7. Promote, revise, or revert. Record the exact changed artifact and install or
-   deployment boundary. Monitor the original recurrence signal and retire
-   superseded instructions or compensating workarounds.
+1. Open [learning system methods](references/learning-system-methods.md).
+2. Define the recurring outcome, affected tasks, impact, current rate, and
+   observation window. Separate the recurring class from one incident.
+3. Trace objective, instructions, loaded skills, context, memory, model, tools,
+   permissions, state, evaluator, coordination, and feedback.
+4. Form competing causal explanations and identify observations that
+   distinguish them.
+5. Change the smallest owning layer: objective, instruction, context, tool
+   contract, evaluator, permission, state, or feedback.
+6. Compare the candidate with the current harness on representative tasks.
+   Measure the target behavior plus critical failures, cost, latency, and
+   transfer across relevant task or model families.
+7. Keep, revise, or revert the change from the observed result. Retire the
+   superseded instruction or compensating path when the new owner takes effect.
 
 ## Output
 
-Produce one **Learning Change Record** containing:
+Return the recurring behavior, system trace, causal explanation, change,
+representative comparison, critical failures, decision, rollback, owner, and
+remaining uncertainty.
 
-- recurring behavior, impact, population, baseline, and evidence;
-- system map and competing causal hypotheses;
-- selected owning cause and disconfirming evidence;
-- intervention, exact candidate, expected mechanism, and alternatives rejected;
-- evaluation design, countermetrics, critical failures, and results;
-- promote, revise, or revert verdict with rollback;
-- recurrence signal, review trigger, owner, and retained uncertainty.
-
-
-## Progressive disclosure
-
-- [references/learning-system-methods.md](references/learning-system-methods.md) — open when needed for depth
-
-## Boundaries
-
-- Use `../analyze-critically/` when the primary job is diagnosing an uncertain cause.
-- Use `../design-skill-evals/` for a complete exact-candidate Skill evaluation;
-  this skill owns why the agent system should change and whether the broader
-  intervention solved the recurring problem.
-- Use `../review-domain/references/optimization-objective/` when the objective, reward, KPI, or
-  evaluator may be creating the behavior.
-- Use `run-incident-response` to contain and recover a live incident. A post-incident
-  recurring system change may then use this skill.
-
-## Path
-
-- Promote against the frozen threshold. Monitor the recurrence signal afterward.
+Use `analyze-critically` when diagnosis is the requested terminal. Use
+`design-skill-evals` when the requested artifact is a reusable skill evaluation.

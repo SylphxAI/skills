@@ -1,4 +1,0 @@
-interface:
-  display_name: "Authenticate App Users"
-  short_description: "Adds app sign-in, session, and recovery through Platform Auth."
-  default_prompt: "Add sign-in and session for this app using Sylphx Platform Auth."

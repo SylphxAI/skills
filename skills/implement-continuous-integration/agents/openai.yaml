@@ -1,4 +1,0 @@
-interface:
-  display_name: "Implement Continuous Integration"
-  short_description: "Make this repository's CI a fast commit build of product behavior; cut theater checks."
-  default_prompt: "Shape this repository's CI to an industry-or-lighter commit build of product behavior."

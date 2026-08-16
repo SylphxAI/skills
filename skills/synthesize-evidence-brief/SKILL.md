@@ -5,85 +5,43 @@ description: "Synthesize multi-source evidence into one bounded brief with resid
 
 # Synthesize Evidence Brief
 
-Produce one **Evidence Synthesis** whose coverage, exclusions, conflicts, and
-certainty can be audited and reproduced. Read
-[references/reproducible-evidence-synthesis.md](references/reproducible-evidence-synthesis.md)
-before defining the review protocol.
+Answer one consequential multi-source question with a proportionate,
+traceable synthesis.
 
 ## Method
 
-1. Frame the answerable question, intended decision, population/system/context,
-   intervention or exposure where relevant, outcomes, time horizon, scope, and
-   claim boundary. Define what evidence could change the conclusion.
-2. Predeclare a proportionate protocol: review type, sources, search strings,
-   dates, languages, inclusion/exclusion rules, deduplication, screening,
-   extraction fields, quality assessment, synthesis method, and deviations.
-3. Search multiple appropriate channels. Preserve exact queries, filters,
-   timestamps, result counts, unavailable sources, and citation chaining.
-   Prefer primary studies or original records while using reviews to locate and
-   contextualize them.
-4. Screen against declared criteria. Record reasons for material exclusions.
-   Use independent duplicate screening or targeted second review when a
-   consequential inclusion judgment is ambiguous; do not add ceremony when a
-   deterministic criterion resolves it.
-5. Extract comparable facts into an evidence table: source identity, design,
-   context/sample, intervention/exposure, comparator, outcome, estimate,
-   uncertainty, limitations, funding/conflicts, and applicability.
-6. Assess risk of bias, source dependence, measurement validity, missingness,
-   selective reporting, indirectness, precision, consistency, and relevance
-   using a framework suited to the domain. Do not count repeated reports of one
-   underlying dataset as independent evidence.
-7. Synthesize results. Preserve direction, magnitude, uncertainty, conflicts,
-   and heterogeneity. Pool quantitatively only when the measures and contexts
-   make the result meaningful; otherwise use a structured qualitative
-   synthesis.
-8. State conclusion, certainty, applicability, evidence gaps, and exact limits.
-   Separate absence of evidence from evidence of no effect and association from
-   causation.
+1. Open the [reproducible synthesis method](references/reproducible-evidence-synthesis.md).
+2. Define the question, decision, population or system, outcomes, horizon,
+   scope, and evidence that could change the conclusion.
+3. Choose review depth from the consequence and uncertainty. Record the
+   sources, queries, dates, inclusion criteria, and synthesis method needed for
+   that depth.
+4. Search appropriate primary and secondary channels. Use reviews to locate and
+   contextualize original records.
+5. Extract comparable source, design, context, population, intervention or
+   exposure, comparator, outcome, estimate, uncertainty, limitations,
+   conflicts, and applicability.
+6. Assess source dependence, measurement validity, bias, missingness,
+   selective reporting, indirectness, precision, consistency, and relevance.
+7. Synthesize direction, magnitude, uncertainty, conflicts, and heterogeneity.
+   Pool estimates when measures and contexts support a meaningful combined
+   result.
+8. State the conclusion, certainty, applicability, limits, and next research
+   with positive expected information value.
 
-## Output contract
+## Output
 
-Produce an **Evidence Synthesis** containing:
+Return one brief with question, scope, search and source record,
+included evidence, conflicts and limitations, synthesis, calibrated conclusion,
+applicability, and material gaps.
 
-- question, decision use, scope, review type, protocol, and deviations;
-- search log with sources, exact queries, dates, filters, coverage, and access
-  limitations;
-- screening flow and inclusion/exclusion reasons;
-- evidence table with provenance, design, context, measures, findings,
-  uncertainty, quality, dependence, and applicability;
-- conflict, heterogeneity, bias, missing-evidence, and sensitivity analysis;
-- synthesis by outcome or claim, including contrary and null evidence;
-- calibrated certainty and the strongest supportable claim boundary; and
-- evidence gaps, update triggers, and next research that has positive expected
-  information value.
+The review procedure stays smaller than the decision it protects. Routine
+product implementation uses its compiler and behavior tests; this skill is for
+questions that genuinely require multi-source synthesis.
 
-## Path
-
-- Freeze the protocol before reading toward a preferred conclusion. Record any justified amendment.
-- Search-result rank, citation count, prestige, repetition, and agent consensus stay labeled as those classes. Quality is design, bias, and relevance.
-- PRISMA is a reporting aid. Review quality, causal validity, and certainty have their own oracles.
-- Methods, sample sizes, effect estimates, quotations, and conclusions come from sources actually read.
-- Conflicts and incompatible measures stay visible. Pool only when the measures and contexts make the result meaningful.
-- A rapid review names the narrowed scope or skipped duplicate work and keeps the resulting uncertainty visible.
-
-
-## Progressive disclosure
-
-- [references/reproducible-evidence-synthesis.md](references/reproducible-evidence-synthesis.md)
-- [references/evidence-and-claims-standard/](references/evidence-and-claims-standard/)
-- Related analysis jobs (separate skills): `analyze-critically`, `analyze-causal-inference`, `analyze-system-dynamics`, `forecast-with-calibration`, `optimize-decision-model`, `record-structured-deliberation`
-
-
-## Boundaries
-
-- `synthesize-market-research` owns market, category, competitor, positioning,
-  pricing, or demand recommendations.
-- `analyze-critically` owns competing hypotheses and diagnosis for one uncertain
-  material question.
-- `references/evidence-and-claims-standard/` owns the verdict on one material or disputed
-  factual, completion, causality, or delivery claim.
-- `analyze-causal-inference` owns identification and estimation of a causal
-  effect from data; this Skill may synthesize multiple causal studies without
-  replacing their identification analyses.
-- A domain Skill owns domain-specific interpretation and decisions that consume
-  this synthesis.
+For a disputed individual claim, open
+[claim-evidence method](references/claim-evidence-method.md). For conclusions
+with mutable premises, open
+[claim dependency revision](references/claim-dependency-revision.md). For a
+high-impact multi-layer claim, open
+[assurance cases](references/assurance-cases.md).

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Share Ephemeral Artifact"
-  short_description: "Short-lived public file/log URL after secret scrub."
-  default_prompt: "Share this non-secret artifact via a short-lived public URL; state retention and safety residuals."
