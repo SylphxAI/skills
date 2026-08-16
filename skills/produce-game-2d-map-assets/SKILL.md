@@ -1,6 +1,6 @@
 ---
 name: produce-game-2d-map-assets
-description: "Produce 2D map tiles/props packs with extract/preview."
+description: "Produce engine-ready 2D map tilesets, props, layers, collision metadata, and composed previews. Use for tilemaps and placement packs; use produce-game-2d-sprites for character or HUD art and produce-product-assets for store or marketing media."
 ---
 
 # Produce Game 2D Map Assets

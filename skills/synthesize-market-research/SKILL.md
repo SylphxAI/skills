@@ -1,6 +1,6 @@
 ---
 name: synthesize-market-research
-description: "Synthesize market research: segments, competitors, demand, implications."
+description: "Synthesize current market sources into a positioning, pricing, or demand decision. Use for competitor, substitute, and category comparison; use research-user-needs for primary user study."
 ---
 
 # Synthesize Market Research

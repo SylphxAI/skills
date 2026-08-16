@@ -1,6 +1,6 @@
 ---
 name: produce-product-assets
-description: Produce finished product media and design assets from a current brief and product truth. Use for screenshots, key art, store media, campaign visuals, motion, audio, localization, and accessible variants.
+description: "Produce finished product media and design assets from a current brief and product truth. Use for screenshots, key art, store media, campaign visuals, motion, audio, localization, and accessible variants; use produce-game-2d-sprites or produce-game-2d-map-assets for engine sprite and map packs."
 ---
 
 # Produce Product Assets

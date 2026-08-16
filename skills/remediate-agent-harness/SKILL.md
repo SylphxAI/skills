@@ -1,6 +1,6 @@
 ---
 name: remediate-agent-harness
-description: "Remediate an agent harness with measured deltas and failure modes."
+description: "Correct a recurring agent-system failure at the owning harness layer. Use for repeated wrong routes, tool misuse, or instruction loops rather than one incident."
 ---
 
 # Remediate Agent Harness

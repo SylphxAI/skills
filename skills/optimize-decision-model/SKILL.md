@@ -1,6 +1,6 @@
 ---
 name: optimize-decision-model
-description: "Model a decision for optimization: objective, constraints, sensitivity."
+description: "Translate an operational decision into a constrained mathematical model and recompute the solution. Use review-optimization-objective when the measured target itself may be a proxy failure."
 ---
 
 # Optimize Decision Model

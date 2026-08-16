@@ -1,6 +1,6 @@
 ---
 name: remediate-frontend-performance
-description: "Remediate frontend performance with before/after path metrics."
+description: "Improve one user-visible frontend path and remeasure the same metric. Use for LCP, INP, FPS, or bundle regressions on an existing surface."
 ---
 
 # Remediate Frontend Performance
