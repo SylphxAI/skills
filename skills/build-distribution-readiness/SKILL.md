@@ -21,6 +21,10 @@ behavior as distinct facts.
 - Read [release communication](references/release-communication.md) when the
   release needs a changelog, update note, migration notice, patch note, support
   brief, or incident follow-up.
+- When the requested terminal includes publication, installation, deployment,
+  or live behavior, open [`delivery-standard`](../delivery-standard/SKILL.md)
+  and its [`full-standard.md`](../delivery-standard/references/full-standard.md)
+  before making a delivery claim.
 
 Current official channel requirements own execution-time details.
 
