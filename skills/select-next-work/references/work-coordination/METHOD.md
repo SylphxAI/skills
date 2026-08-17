@@ -1,7 +1,7 @@
 # Work Coordination
 
-Labor law is `SylphxAI/owner` `decisions/ADR-009-IMPLEMENT-TO-PR.md`
-revision `2026-08-17.2`. This method cites that law. It does not restore
+Labor law is `SylphxAI/owner` `decisions/ADR-012-CONCISE-OWNER.md`.
+This method cites that law. It does not restore
 a work-coordination ledger and does not invent a second stack.
 
 Use this depth when selecting, claiming, or dispatching labor that would
@@ -11,43 +11,48 @@ otherwise wait on CI or own an outcome end-to-end.
 
 ```text
 Chairman
-  -> COO
-       -> workers
+  -> Owner
+       -> Workers
 ```
 
-The COO classifies work, names write sets, and dispatches. A worker
-labors on one write set. There is no PM rank and no fourth executive.
+The Owner maintains product lifecycle, locks contracts, computes the feasible
+ready set, names write/effect sets, and dispatches. A Worker executes one
+claimed node. There is no PM rank and no fourth executive.
 
-## Two classes
+## Outcome, node, attempt
 
-| Class | Stay |
-| --- | --- |
-| Causal chain | Until the next hand you cannot advance |
-| Independent slice | On that write set while it stays free and local work remains |
+- Every Active product has a standing continuous-betterment Outcome.
+- A node is one independently terminal slice with one contract or diagnostic
+  question, one write/effect set, one oracle, and one asked terminal.
+- A Worker attempt is disposable and ends at that terminal.
 
-A destination with many capabilities is a PRD, not a launch order.
+Active does not mean a resident Worker. Each product frontier is `ready`,
+`claimed`, or `deferred(exact predicate + event source)`. Unknown or stale
+truth creates a bounded scout node; a fresh empty frontier remains Active with
+an exact wake or re-scout predicate. Only explicit lifecycle authority moves a
+product to Standby.
 
-## Keep going
+## Return at the asked terminal
 
-If the write set is still free and local work remains, continue.
-Publish or update a pull request when there is a reviewable quantum so
-the owner can see the slice. Do not wait for that pull request to merge
-before the next commit on the same branch.
+The default product implementation terminal is a pull request submitted with
+the named local oracle. At that terminal the Worker returns and releases its
+lease. A different explicit terminal may require a local candidate, diagnostic
+finding, review, merge, release, deploy, or live readback; execute only that
+claimed node and do not silently expand its authority.
 
-Return only when you would sit:
+When further progress depends on official CI, review, merge, deploy, a human
+credential, or another event, record the exact predicate and event source and
+return. Do not keep a session warm to preserve context or poll.
 
-- the next step is a wait you cannot advance (review you must not do
-  yourself, official CI, deploy, human credential); or
-- the write set is exhausted for now.
+Pull request means candidate source. It is not landed, released, deployed, or
+live, and it does not complete the standing product Outcome.
 
-A pull request is visibility for landable source. It is not landed and
-not live. It is not the halt.
+## Owner integrates
 
-## COO integrates
-
-Review, merge, conflict, CI-red, and deploy-fail are other slices if they
-need labor. Official CI and deploy remain Delivery truth layers. They
-are not a start condition for the next independent slice.
+Review, merge, conflict, CI-red, and deploy-fail become later nodes when their
+events make work executable. Official CI and deploy remain distinct truth
+layers. An external wait on one frontier does not block unrelated feasible
+nodes.
 
 ## One writer per write set
 
@@ -61,8 +66,13 @@ Hide the wait. Do not fan out onto one lock.
 
 ## Dispatch
 
-- Classify, then name the write set, before launching.
-- One writer per write set. Launch ready, non-overlapping write sets.
-- Publish a pull request for visibility. Return only if you would sit.
-- Hand review or repair to a different worker on the exact SHA.
-- Do not keep a session warm to poll CI.
+- Build real precedence separately from symmetric write/effect conflicts and
+  finite model, compute, review, CI, merge, and integration capacity.
+- Select the highest-value feasible ready set across all Active products; do
+  not target a worker count or use one-product-one-Worker.
+- Claim the complete selected set through the existing atomic lease mechanism
+  before launching.
+- One Worker per node and one active writer per mutation surface.
+- Hand later review or repair to a newly claimed Worker on the exact SHA.
+- Apply downstream backpressure and use age/staleness to avoid starvation
+  without round-robin quotas.

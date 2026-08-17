@@ -53,7 +53,9 @@ Vision is not a metric. A metric is not a Goal. A Goal is not a PRD.
 1. Add `docs/vision.md` if missing, or the five-line header on the alias.
 2. Point README at the destination. Do not copy it.
 3. Leave historical ADRs and research dumps historical.
-4. Dark products stay dark. Do not run a fleet rewrite.
+4. Active products converge entry docs when a claimed node already touches the
+   authority. Standby and retired products remain custody/history. Do not run a
+   one-shot fleet rewrite.
 
 ## Catch-up
 
