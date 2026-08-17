@@ -106,6 +106,10 @@ frontier.
   using real user, runtime, delivery, or commercial surfaces as the claim
   requires. Commits, tests, previews, or activity counts are evidence only for
   their own layer, never proof by volume.
+- Review cadence is trigger-based: PM checks each material batch and runs one
+  fresh challenge for a broad claim or other named trigger; the Owner may
+  appoint one bounded reviewer by exception. Never create a permanent
+  Owner/QA queue or wait for approval before continuing safe work.
 - Treat source, candidate, landed, released, deployed, and live as separate
   states in every checkpoint and terminal claim.
 - A repeated Owner correction is changed-behavior evidence: apply it now,
@@ -133,6 +137,9 @@ opportunities.
 - `select-next-work`, `drive-to-delivery`, `analyze-critically`, and
   `write-high-signal-update` remain the canonical owners for their independent
   jobs; use them rather than copying their procedures here.
+- `finish-product` owns integrated completion claims; `craft-product-interface`
+  and `review-developer-product-experience` remain the specialist owners for
+  interface and developer-journey evidence.
 - This method does not own a product-specific North Star, model routing,
   portfolio KPI, CI ceremony, or Owner-appointed reviewer authority. Use the
   authority supplied by the active product and task; do not invent a reviewer

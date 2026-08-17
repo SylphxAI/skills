@@ -47,6 +47,31 @@ identity, comprehension, behavior, feedback, trust, accessibility,
 performance, delight, or another selected outcome. The declared target decides
 whether a prototype, graybox, placeholder, or lower-fidelity surface is final.
 
+## Completion pillars
+
+For an integrated product or broad completion, parity, or
+commercial-readiness claim, review four applicable pillars independently:
+
+- **Experience quality — UI, UX, and DX:** the intended user can Orient, Act,
+  Trust, Recover, and experience an intentional Fit for the job.
+- **Capability depth:** the declared job is correct, deep, and complete across
+  its core, repeat, edge, data, and commercial semantics—not merely exposed by
+  a feature, endpoint, or happy-path demo.
+- **Engineering integrity:** active paths and semantic ownership are clear,
+  change is safe and evolvable, and no refactor, lint, file, or cleanup count
+  substitutes for source and architecture evidence.
+- **Reliability assurance:** evidence is risk-complete for the named claim,
+  including material failure, interruption, recovery, runtime, dependency,
+  performance, security, privacy, money, destructive, or public-contract
+  conditions as applicable. “Fully tested” is not a terminal for an open state
+  space.
+
+Use `Established`, `Weak`, `Not established`, `Unknown`, or
+`Not applicable — reason` for each pillar. A critical `Weak`, `Not established`,
+or `Unknown` narrows or defeats the broad claim; strong evidence in another
+pillar does not compensate. Delivery truth remains separate: a pillar verdict
+never upgrades local, candidate, landed, released, deployed, or live state.
+
 ## Target
 
 Choose the requested mode:
@@ -66,6 +91,8 @@ The requested target stays fixed throughout the pass.
 
 - Open [Finish contract](references/finish-contract.md) when target fidelity,
   surface coverage, or finish acceptance needs definition.
+- Open [completion claim evaluations](references/completion-claim-evals.md)
+  when reviewing a broad claim or maintaining this contract.
 - For games and interaction whose primary promise is play, also open
   [Game finish](references/game-finish.md).
 - For apps, SaaS, websites, and desktop products, also open
@@ -111,6 +138,9 @@ The requested target stays fixed throughout the pass.
   format, effect, and validation or tuning basis.
 - Correctness, accessibility, localization, performance, responsiveness, input
   parity, recovery, and product truth remain intact.
+- Broad claims include the four pillar dispositions, weakest material finding,
+  fresh disconfirming review, residual `Unknown` scope, and separate delivery
+  state.
 - Claims, prices, testimonials, legal text, player findings, analytics, and live
   behavior come from their current owners and observed layers.
 - CI tests product behavior and compiler contracts. Visual judgment remains in

@@ -52,6 +52,8 @@ Environment and fixture:
 Rendered route/story and command:
 Matrix cells inspected:
 Screenshots or recordings:
+Vision observations and gate verdicts:
+Coverage, confidence, and Unknowns:
 Static/test commands and exact results:
 Keyboard/assistive/device checks:
 Performance/resilience observations:
@@ -65,6 +67,16 @@ Advance the delivery state from its owning source: local render, merged source, 
 ## Review evidence
 
 Review mode may stop at findings, but each finding needs an observable source: exact file/line, rendered state, screenshot region, accessibility tree, trace, test failure, or reproducible interaction. Rank by blocked task, irreversible harm, access failure, trust/confusion, recovery failure, responsive/input break, performance, then cosmetic consistency.
+
+For screenshot or vision review, record the exact product revision, route and
+state, viewport, locale and input context, and whether the frame is
+representative. Return observed findings, applicable gate verdicts, coverage,
+confidence, and explicit `Unknown` conditions. An image can disconfirm visual
+finish, hierarchy, clipping, density, identity, or placeholder presentation;
+it cannot establish interaction, motion, audio, responsive behavior outside the
+captured context, accessibility semantics, reliability, or human delight.
+Do not average a taste score, present agent or vision output as representative
+human research, or turn a reviewer's preferred redesign into a backlog.
 
 ## Completion rules
 
