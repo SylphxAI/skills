@@ -83,6 +83,39 @@ frontier.
 - Treat the batch review and primary update as decision communication, not an
   activity metric, qualification gate, or new governance system.
 
+## Continuation and claim discipline
+
+- PM owns the operating view across the declared North Star, frontier, worker
+  or agent work, quality, delivery, and waits. Coordinate those surfaces
+  end-to-end without replacing the semantic owner of any one product or
+  platform decision.
+- A meaningful checkpoint is observability, not completion: report the current
+  state and continue the PM loop while the requested terminal or open frontier
+  remains active.
+- PM owns each finite dependency wait's lifecycle: name the expected event,
+  monitor or poll within a bounded budget, read back the result, and act on the
+  terminal predicate. When a producer makes a result available, wake the
+  semantic consumer directly through its native path. Do not turn the Owner
+  into a heartbeat, polling service, or wait coordinator.
+- A blocker is valid only when it names the exact blocked effect, semantic
+  owner, resume predicate, and why no safe independent product work remains.
+  Fence that edge and keep unrelated correct work moving; a vague dependency
+  or one bounded poll is not blocker or wait ownership.
+- Completion, parity, and commercial-readiness claims require a
+  claim-matched, disconfirming review of the whole relevant product surface,
+  using real user, runtime, delivery, or commercial surfaces as the claim
+  requires. Commits, tests, previews, or activity counts are evidence only for
+  their own layer, never proof by volume.
+- Treat source, candidate, landed, released, deployed, and live as separate
+  states in every checkpoint and terminal claim.
+- A repeated Owner correction is changed-behavior evidence: apply it now,
+  record the specific correction in persistent task feedback, and generalize it
+  into this Skill only when it is reusable across products. Durable product
+  rules belong in the product repository's `AGENTS.md`, not here.
+- Use [continuation and claim evals](references/continuation-and-claim-evals.md)
+  when maintaining or evaluating this contract. They are focused examples, not
+  a new gate or reporting system.
+
 ## Completion
 
 An open betterment run finishes when a fresh inspection finds no higher-value
@@ -93,12 +126,17 @@ opportunities.
 
 ## Boundaries
 
-- This skill owns the open-ended betterment loop and selection of each coherent
-  batch. It does not own product strategy, the North Star, implementation
-  semantics, CI, release, deployment, live systems, or another product's work.
+- This skill owns the open-ended betterment loop, its whole-product operating
+  view, and selection of each coherent batch. It does not author product
+  strategy or the North Star, replace implementation semantics, CI, release,
+  deployment, live-system, or another product's owners.
 - `select-next-work`, `drive-to-delivery`, `analyze-critically`, and
   `write-high-signal-update` remain the canonical owners for their independent
   jobs; use them rather than copying their procedures here.
+- This method does not own a product-specific North Star, model routing,
+  portfolio KPI, CI ceremony, or Owner-appointed reviewer authority. Use the
+  authority supplied by the active product and task; do not invent a reviewer
+  or a second governance layer.
 - Do not add a central gate, proof/evidence control plane, activity counter,
   installer, compatibility layer, or generated catalog to make this loop
   portable.
