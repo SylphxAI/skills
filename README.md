@@ -50,7 +50,7 @@ the Agent Skills format, local links, and bundled script behavior.
 
 ## Destination
 
-The product destination is [docs/NORTH-STAR.md](docs/NORTH-STAR.md).
+The product destination is [docs/vision.md](docs/vision.md).
 
 ## License
 

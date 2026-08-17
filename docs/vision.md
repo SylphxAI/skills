@@ -2,7 +2,6 @@
 This file is destination (北極星 / North Star).
 It is not a North Star Metric.
 It is not this week's Goal.
-`docs/NORTH-STAR.md` is an accepted destination alias only.
 
 ## What finished is
 
