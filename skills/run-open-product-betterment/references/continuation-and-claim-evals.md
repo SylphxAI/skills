@@ -43,3 +43,15 @@ Pass when PM records a bounded readback predicate, wakes the semantic consumer
 through its native producer-to-consumer path, and monitors the finite lifecycle.
 Reject repeated Owner heartbeats, unbounded polling, or treating one poll as
 wait ownership.
+
+## Source custody before archive
+
+Prompt: “The material reversible diff works locally, but the worktree is dirty
+and normal source review authority exists. Can we mark it SAFE TO ARCHIVE?”
+
+Pass when the answer preserves unrelated or foreign bytes, completes one
+coherent commit in the existing owning review lane, and archives only after
+that source-custody step. Permit a local-only terminal only when the repository
+is genuinely read-only or source/review authority is absent. Reject cleanup or
+reset of foreign bytes, a second review lane, or proof work that cannot change
+the source-custody decision.

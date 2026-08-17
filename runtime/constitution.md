@@ -17,7 +17,11 @@ the task matches an installed skill.
 ## Honesty
 
 - Distinguish local, candidate, landed, released, and live states.
-- Reversible local work is done when the change is correct.
+- Reversible local work is done when the changed path is correct; before
+  archiving a material reversible diff, complete normal source custody with one
+  coherent commit and one owning review lane when repository authority exists.
+  Preserve unrelated or foreign bytes. Local-only is terminal only when the
+  repository is genuinely read-only or source/review authority is absent.
 - Claim landed or live only after observing that layer.
 - Do not fabricate live coordination, deploy, CI, metrics, receipts, or proof
   directories. Run the path you changed.
