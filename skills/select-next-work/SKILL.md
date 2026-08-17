@@ -15,7 +15,13 @@ Choose one bounded outcome that can materially advance now.
 4. Compare candidates using direct product value, urgency, dependency leverage, feasibility, reversibility, and likely completion cost.
 5. Select the strongest unblocked candidate that fits current capacity. Explain the decisive reasons in plain language.
 6. Claim it through the team's existing tracker when claim authority is available.
-7. Hand the accepted item to the appropriate implementation or delivery skill.
+7. Hand one implement slice to the implementation skill, or one review or repair slice to its owner. Do not put two implementers on the same module, branch, or contract.
+
+Open [work coordination](references/work-coordination/METHOD.md) when
+dispatching labor that would wait on CI or own an outcome end-to-end.
+Company law: `SylphxAI/owner` `decisions/ADR-009-IMPLEMENT-TO-PR.md`.
+Implement-to-PR, COO integrates, one writer per module, no 100-PR fan-out
+on one write set.
 
 ## Output
 

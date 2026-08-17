@@ -48,6 +48,10 @@ Browse [`skills/`](skills/) by job name. The frontmatter description in each
 See [CONTRIBUTING.md](CONTRIBUTING.md). Pull requests run one fast check for
 the Agent Skills format, local links, and bundled script behavior.
 
+## Destination
+
+The product destination is [docs/NORTH-STAR.md](docs/NORTH-STAR.md).
+
 ## License
 
 MIT.
