@@ -20,6 +20,10 @@ Restore safe service quickly while preserving clear ownership and truthful commu
 9. Close active response when user impact is resolved and operational ownership is clear.
 10. Record cause, contributing conditions, detection and response improvements, and follow-up owners in the team's incident system.
 
+## Active response continuity
+
+An active incident turn must not end at a nonterminal checkpoint. A checkpoint is observability, not closure: retain the current-turn finite wait/readback until recovery or hand off to an explicitly active supported monitor with an owner, scope, cadence, and resume predicate. Do not leave the lifecycle dependent on a future Owner wakeup or an unproved monitor promise; if no supported monitor exists, report that capability gap and keep ownership explicit.
+
 ## Incident updates
 
 Each update should state:
