@@ -2,6 +2,7 @@
 
 This repository owns reusable Agent Skill packages under `skills/<name>/`.
 Each `SKILL.md` is the package source and follows the Agent Skills specification.
+The product destination is [docs/vision.md](docs/vision.md).
 
 ## Working agreement
 

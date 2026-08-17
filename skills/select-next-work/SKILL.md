@@ -15,7 +15,14 @@ Choose one bounded outcome that can materially advance now.
 4. Compare candidates using direct product value, urgency, dependency leverage, feasibility, reversibility, and likely completion cost.
 5. Select the strongest unblocked candidate that fits current capacity. Explain the decisive reasons in plain language.
 6. Claim it through the team's existing tracker when claim authority is available.
-7. Hand the accepted item to the appropriate implementation or delivery skill.
+7. Classify the work and hand one writer to one write set, or one review or repair slice to its owner. Do not put two implementers on the same write set.
+
+Open [work coordination](references/work-coordination/METHOD.md) when
+dispatching labor that would wait on CI or own an outcome end-to-end.
+Labor law: `SylphxAI/owner` `decisions/ADR-009-IMPLEMENT-TO-PR.md`
+revision `2026-08-17.2`. Causal chain stays until un-advanceable;
+independent slice keeps going on a free write set. Publish a pull
+request for visibility. Return only if you would sit.
 
 ## Output
 
