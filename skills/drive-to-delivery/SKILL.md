@@ -15,8 +15,8 @@ Keep one accepted objective moving until its requested result is true or an exte
 4. Execute each action at its owning layer. Integrate related changes into one coherent outcome.
 5. Run the path changed and repair failures while the objective remains open.
 6. Keep local, landed, released, deployed, and live states distinct in decisions and updates.
-7. Classify the work. A causal-chain worker does not return at a pull request if the chain can still move. An independent-slice worker keeps going on a free write set. Publish or update a pull request for visibility. Return only if you would sit.
-8. Continue through landing, release, deployment, or live verification when the requested terminal is that layer and this worker can still advance it.
+7. Execute only the claimed node. The default implementation terminal is a pull request submitted with the named local oracle; return there and release the lease even while the standing product outcome remains open.
+8. Continue through landing, release, deployment, or live verification only when that layer is the explicit asked terminal of this claimed node and it can advance without waiting or crossing authority.
 9. Close when the requested terminal is met. Record an external blocker only after safe in-scope alternatives are exhausted.
 
 When writing or placing product documentation, open
@@ -27,8 +27,7 @@ alias only. Company law: `SylphxAI/owner` `standards/docs.md` and
 
 When this worker would wait on CI or own the outcome end-to-end, open
 [work coordination](../select-next-work/references/work-coordination/METHOD.md).
-Labor law: `SylphxAI/owner` `decisions/ADR-009-IMPLEMENT-TO-PR.md`
-revision `2026-08-17.2`.
+Labor law: `SylphxAI/owner` `decisions/ADR-012-CONCISE-OWNER.md`.
 
 ## Delivery shape
 
