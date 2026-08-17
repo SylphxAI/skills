@@ -9,15 +9,16 @@ Restore safe service quickly while preserving clear ownership and truthful commu
 
 ## Method
 
-1. Declare the incident, commander, severity, affected users, current impact, start time, and communication channel.
-2. Stabilize users and conserved data with the fastest safe reversible mitigation available.
-3. Communicate observed facts, actions underway, user guidance, and the next update time.
-4. Preserve logs, traces, metrics, deploy identities, and relevant state needed for diagnosis.
-5. Locate the owning failure through current telemetry, recent changes, reproduction, and dependency status.
-6. Apply the durable repair or permanent mitigation at the owning layer.
-7. Confirm recovery through the affected customer path and the telemetry that originally showed impact.
-8. Close active response when user impact is resolved and operational ownership is clear.
-9. Record cause, contributing conditions, detection and response improvements, and follow-up owners in the team's incident system.
+1. Admit the incident from a firsthand Human Owner report of active customer harm; do not require the reporter to reproduce or prove complete blast radius or root cause first. Record the commander, severity, affected users, current impact, start time, and communication channel.
+2. Before a reversible mitigation, perform only hard safety checks: target, authorization, reversibility, and immediate collateral, data-loss, or security risk.
+3. Stabilize users and conserved data with the fastest safe reversible mitigation available. Restoration precedes complete blast-radius or root-cause proof.
+4. Communicate observed facts, actions underway, user guidance, and the next update time.
+5. Preserve logs, traces, metrics, deploy identities, and relevant state needed for diagnosis.
+6. Locate the owning failure through current telemetry, recent changes, reproduction, and dependency status after mitigation is underway.
+7. Apply the durable repair or permanent mitigation at the owning layer.
+8. Confirm recovery through the affected customer path and the telemetry that originally showed impact.
+9. Close active response when user impact is resolved and operational ownership is clear.
+10. Record cause, contributing conditions, detection and response improvements, and follow-up owners in the team's incident system.
 
 ## Incident updates
 

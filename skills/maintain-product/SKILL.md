@@ -19,6 +19,12 @@ Restore the affected contract with a focused owning-cause repair.
 8. Remove temporary diagnostics, superseded containment, exploratory edits, and obsolete compatibility code.
 9. Advance through landing, deployment, or live recovery when those states are part of the request and authority is available.
 
+### Verification budget
+
+- Select the cheapest check that can change the mitigation, repair, rollback, or claim; scale evidence to consequence.
+- Stop when another check cannot change action, rollback, or claim. Record residual Unknowns instead of accumulating decorative proof.
+- Unknown does not automatically block reversible narrow work; pause only when the next action is unsafe, irreversible, or requires a claim the evidence cannot support.
+
 Read [Reproduction-driven repair](references/reproduction-driven-repair.md) when the cause, reproducer, nondeterminism, or test boundary needs deeper treatment. Use `implement-continuous-integration` when the product defect is the pipeline itself.
 
 ## Output

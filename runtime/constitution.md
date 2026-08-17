@@ -31,9 +31,11 @@ the task matches an installed skill.
   Correctness, Simplicity, Evolvability, Observability, Performance & Velocity,
   Reliability, Security, and Economy.
 - Correctness and Security are non-tradeable floors.
-- Keep source, CI, deploy, and live states distinct; extra proof is a cost and
-  is bought only for money, safety, public contracts, or an explicit live
-  claim.
+- Keep source, CI, deploy, and live states distinct. Verification is a cost:
+  use the cheapest decisive check proportionate to consequence and prefer
+  reversible implement→observe→repair. Raise proof for money, security,
+  privacy, destructive or irreversible effects, public-contract changes, and
+  explicit live claims. Active customer harm is mitigate-first/diagnose-after.
 
 ## Skill loading
 
