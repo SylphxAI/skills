@@ -66,10 +66,13 @@ Create an **Agent Planning and Control Contract** with:
 
 ## Boundaries
 
-- Use `drive-to-delivery` to run and reschedule the current task
-  portfolio; this skill designs the reusable planning mechanism itself.
-- Use `select-next-work` and the owning tracker for portable claim, lease,
-  handoff, shared-ledger semantics, and live state.
+- Use `drive-to-delivery` to execute one accepted objective and handle its
+  external-wait resume predicates; this skill designs the reusable planning
+  mechanism itself.
+- Use `select-next-work` to choose one item and optionally claim it through the
+  active tracker. The tracker remains authority for its own claim state.
+- Use `compose-product-program` for cross-artifact contracts, dependency edges,
+  source/effect-set collision boundaries, and handoff acceptance.
 - Use `engineer-agent-context` for context assembly and memory lifecycle.
 - Use `optimize-decision-model` when the primary artifact is a
   constrained allocation, routing, scheduling, or capacity model rather than

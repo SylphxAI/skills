@@ -59,6 +59,36 @@ Planning and observed state are separate. A later observation can index exact
 accepted outputs, but a planning brief must not consume its own future result or
 silently refer to “latest.”
 
+## Contract-first parallelism
+
+When independently owned artifacts or repositories consume the same interface,
+stabilize the smallest shared contract before parallel consumer work. Record:
+
+- schema and semantic authority;
+- sole writer or conflict-resolution authority;
+- error and failure behavior;
+- compatibility and version policy;
+- executable fixtures or contract tests; and
+- the exact revision each consumer implements.
+
+Parallel consumers may proceed against that exact contract. Serialize changes
+to the contract itself, the same source write set, the same irreversible effect
+set, a cutover, or correction of a contract already shown to be wrong. A source
+write set is the files or repository-owned state an action can mutate. An
+effect set includes external state such as schemas, deployments, accounts,
+messages, or live data even when source files do not overlap.
+
+Keep two constraints distinct:
+
+- a **dependency edge** means one outcome is semantically impossible or invalid
+  until another result exists; and
+- a **collision boundary** means actions are independently meaningful but
+  cannot mutate the same source or effect authority concurrently.
+
+Represent prerequisites in the DAG. Record collision boundaries beside the
+affected actions and serialize them only while the overlap exists; do not turn
+them into permanent dependency edges or a new scheduling control plane.
+
 ## External and live truth
 
 Retrieve volatile platform, policy, fee, quota, SDK, locale, store, and
@@ -70,6 +100,7 @@ must read back the exact installed, deployed, published, or observed state.
 ## Completion
 
 The brief is complete when every selected capability has one owner, a complete
-target, an acyclic dependency, an executable handoff test, recovery behavior,
-and a truthful delivery state. Unresolved external authority remains an exact
-blocker with an owner and next action.
+target, an acyclic dependency, exact shared-contract revision where applicable,
+an executable handoff test, explicit source/effect collision boundaries,
+recovery behavior, and a truthful delivery state. Unresolved external authority
+remains an exact blocker with an owner and next action.

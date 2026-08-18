@@ -16,11 +16,18 @@ Keep one accepted objective moving until its requested result is true or an exte
 5. Run the path changed and repair failures while the objective remains open.
 6. Keep local, landed, released, deployed, and live states distinct in decisions and updates.
 7. Continue through source landing, release, deployment, or live verification when those states are part of the request and the required authority is available.
-8. Close when the requested terminal is met. Record an external blocker only after safe in-scope alternatives are exhausted.
+8. When an external result gates the next action, record the exact resume
+   predicate, authority, and evidence surface. Continue independent safe work;
+   otherwise return and resume from the event instead of holding an active
+   executor or polling unchanged state.
+9. Close when the requested terminal is met. Record an external blocker only after safe in-scope alternatives are exhausted.
 
 When writing or placing product documentation, open
 [documentation-standard](references/source-authoring-standard/references/documentation-standard/METHOD.md).
-Destination is `docs/vision.md`.
+
+When one objective spans independently owned artifacts or a shared interface,
+use `compose-product-program` to establish the contract, dependency, and
+handoff shape before driving the accepted actions.
 
 ## Delivery shape
 
@@ -29,6 +36,9 @@ Destination is `docs/vision.md`.
 - Rebase or merge current upstream changes before final validation when the repository requires it.
 - Use the repository's native CI, release, and deployment surfaces.
 - Report progress in the primary result instead of creating a parallel tracking artifact.
+- Treat a pending external result as a dependency state, not work for an
+  executor to simulate. Resume only from a material event or an explicitly
+  requested observation.
 
 ## Output
 
