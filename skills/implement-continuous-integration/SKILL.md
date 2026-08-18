@@ -30,11 +30,6 @@ A useful required check has all three properties:
 
 See [Industry commit build](references/industry-commit-build.md) when classifying an existing suite or deciding where a slow check belongs.
 
-For Sylphx repositories, the company
-[proof standard](https://github.com/SylphxAI/owner/blob/main/standards/proof.md)
-owns the artifact/check/live distinction and verification-economy floor. This
-skill applies those constraints to the repository's commit build.
-
 ## Output
 
 Return the protected product behavior, retained and retired checks, commit-build command, workflow triggers, measured runtime when available, and repository-rule changes.

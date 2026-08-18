@@ -33,10 +33,9 @@ implements it.
 
 ## Principles
 
-For Sylphx products, use the company
-[backup and restore standard](https://github.com/SylphxAI/owner/blob/main/standards/backup.md)
-for state classes and restore obligations. Live cadence, retention, tool pins,
-and actual drills remain with the current runtime owner.
+Classify authoritative state by its actual storage and recovery behavior. Live
+cadence, retention, tool pins, and drills remain with the current runtime
+owner.
 
 - Recoverable means an exact restore path has produced retained verification against the same product contract.
 - Restore keeps tenancy, authorization, deletion, retention, legal hold, and entitlement authority.

@@ -12,9 +12,6 @@ Choose one bounded outcome that can materially advance now.
 - The user asks what to do next, or to pick from an existing backlog
 - Queue, issues, PRs, or a project ledger already exist
 
-If the current repository is the Sylphx Owner notebook, open that
-repo's project skill `run-owner-tick` instead.
-
 ## Method
 
 1. Identify the authoritative backlog, product state, active commitments, available capacity, and claim mechanism.
@@ -40,6 +37,6 @@ Repeat the method from fresh state whenever another selection is requested.
 
 ## Boundaries
 
-- Do not invent a second graph, coverage table, or company ledger
-- Do not encode one organization's titles, dashboard files, or CI
-  topology as universal method
+- Do not invent a second graph, coverage table, or coordination ledger.
+- Do not encode one organization's titles, dashboard files, or CI topology as
+  universal method.

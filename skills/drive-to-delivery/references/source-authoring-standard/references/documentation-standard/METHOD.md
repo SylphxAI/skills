@@ -1,61 +1,58 @@
 # Documentation Standard
 
-Place product facts in the locked industry homes. Company law is
-[standards/docs.md](https://github.com/SylphxAI/owner/blob/main/standards/docs.md)
-and [ADR-008-DOC-LOCK](https://github.com/SylphxAI/owner/blob/main/decisions/ADR-008-DOC-LOCK.md).
-This method cites that law. It does not replace it and does not copy the owner
-notebook.
+Place each durable product fact in one authoritative home without creating a
+parallel status system. The active repository's declared documentation
+contract wins. When none exists, use the smallest conventional structure that
+keeps destination, requirements, architecture, decisions, and current work
+distinct.
 
 ## Method
 
-1. Map the fact to one locked home in owner `standards/docs.md` **Industry
-   layers**. One writable path per layer.
-2. Write destination in `docs/vision.md` (`standards/docs.md` **Product
-   Vision**). New destination files are only `docs/vision.md`. Existing
-   `NORTH-STAR` filenames are migration input; converge them when that
-   destination is next changed.
-3. Put a North Star Metric only as a short section inside `docs/vision.md`,
-   and only when one real customer-value quantity exists.
-4. Write the capability DAG in `docs/capabilities.md`. The
-   `ID | Depends on | Done when` table is authority. Current work lives on
-   the product PR.
-5. Keep PRD, spec, and ADR in their own homes. README and `PROJECT.md` only
-   link.
-6. Draw durable diagrams as Mermaid (`standards/docs.md` **Diagrams**). Write
-   durable math as LaTeX (`standards/docs.md` **Mathematics**). Durable text
-   is English (`standards/docs.md` **Writing language**).
-7. Write the action, the home, and the done look (`standards/docs.md`
-   **Write the path**). A "do not" is a neighbour, not a chapter.
+1. Read the repository's current contributor instructions, documentation
+   index, and existing files before choosing a path. Preserve a declared home.
+2. Classify the fact: destination, problem and requirements, capability or
+   architecture, durable decision, operating procedure, or current change.
+3. Use one writable authority for each fact. Link to it from README or other
+   indexes instead of copying the content.
+4. If the repository has no declared structure, prefer `docs/vision.md` for
+   destination, `docs/prd.md` for a real product requirements document,
+   `docs/capabilities.md` for a durable capability graph, and the repository's
+   existing ADR convention for accepted decisions.
+5. Keep current implementation and review state on the change surface the
+   repository already uses, such as a pull request. Do not create a second
+   dashboard merely to restate it.
+6. Use Mermaid for durable diagrams and LaTeX for durable mathematical
+   notation when the repository's renderer supports them.
+7. State the action, authoritative home, and observable done condition. Keep
+   neighbour exclusions short.
 
 ## Form
 
-| Need | Owner section | Form |
+| Need | Default home when undeclared | Form |
 | --- | --- | --- |
-| Durable diagram | Diagrams | Mermaid. A capability picture is a `flowchart` that names the same IDs as the table |
-| Durable math | Mathematics | LaTeX in the `.md` |
-| Durable prose | Writing language | English. Destination file is `docs/vision.md` |
-| Instruction shape | Write the path | Positive path; neighbour exclusion is one line |
-
-Open owner `standards/docs.md` for the locked map. This package does not
-publish a second documentation law.
+| Product destination | `docs/vision.md` | Stable promise and boundaries |
+| Product requirements | `docs/prd.md` | Problem, users, requirements, scope, success, and risks |
+| Capability architecture | `docs/capabilities.md` | IDs, dependencies, and falsifiable done conditions |
+| Durable decision | Existing ADR convention | Context, decision, consequences, and supersession |
+| Durable diagram | Owning document | Mermaid whose nodes match the authoritative terms |
+| Durable math | Owning document | LaTeX in Markdown |
 
 ## Adopt while already touching the repo
 
-When this product is already being changed, apply owner `standards/docs.md`
-**Adoption**: add `docs/vision.md` if missing, point README at it, write
-`docs/capabilities.md` when the graph is touched, and keep `docs/prd.md`
-only when it is a real PRD. Leave historical ADRs historical. Do not add
-file-existence CI or run a fleet rewrite of empty files.
+When a product is already being changed, fill only the documentation required
+to make that change truthful. Add a destination or capability document when
+its fact is otherwise missing, point indexes at the authority, and keep
+`docs/prd.md` only when it is a real PRD. Leave historical ADRs historical. Do
+not add file-existence CI or run a fleet rewrite of empty files.
 
 ## Catch-up
 
-README → `docs/vision.md` → `docs/capabilities.md` → real PRD if the feature
-has one → the latest binding ADR → the code you will change.
+Contributor instructions → documentation index → destination → capability or
+requirements authority → latest binding decision → code being changed.
 
 ## Boundaries
 
 - This standard grants no tools, credentials, or permissions.
-- Product repositories own product facts. `SylphxAI/owner` owns company
-  documentation law. This package does not invent a second map.
+- Product repositories own product facts and may declare different homes.
 - A missing heading is not a product defect. A second writable
   destination is.

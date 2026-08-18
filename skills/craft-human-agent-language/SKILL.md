@@ -13,7 +13,7 @@ Write the smallest clear artifact that helps its intended reader understand or a
 2. Define the audience, their existing knowledge, the authority behind the text, and the decision or action it should enable.
 3. Choose the language and register the audience understands best. Keep technical terms consistent with the product and industry.
 4. Lead with the job, the current truth, or the requested decision.
-5. Write the action, the home, and the done look ([owner `standards/docs.md`](https://github.com/SylphxAI/owner/blob/main/standards/docs.md) **Write the path**). A neighbour exclusion is one line.
+5. Write the action, where its result belongs, and the done look. A neighbour exclusion is one line.
 6. Structure with descriptive headings, short paragraphs, lists, examples, and code only where each improves comprehension.
 7. Use prose or Markdown for human and agent reading. Use a schema or structured payload when an actual runtime consumer requires it.
 8. Keep facts, instructions, examples, assumptions, and quoted source material visibly distinct.

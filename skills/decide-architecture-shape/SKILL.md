@@ -31,8 +31,3 @@ Include:
 - implementation consequences and open external dependencies.
 
 Use `execute-hard-cutover` to perform an accepted replacement and `engineer-testable-requirements` to turn required behavior into acceptance criteria.
-
-For Sylphx products, apply the company
-[architecture standard](https://github.com/SylphxAI/owner/blob/main/standards/architecture.md)
-as the destination constraint. This skill owns option selection and the
-decision record, not a competing architecture.

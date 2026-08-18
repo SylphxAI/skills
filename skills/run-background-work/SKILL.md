@@ -1,12 +1,12 @@
 ---
 name: run-background-work
-description: "Runs cron, queues, or jobs as Platform Work that HTTP-wakes a web service. Use when adding scheduled or background work."
+description: Run cron, queues, jobs, or durable workflows through a product's current background-work provider. Use when work outlives one request.
 ---
 
 # Run Background Work
 
-Run work that outlives one request as a Sylphx Platform Work Operation.
-Platform wakes the `type=web` handler.
+Run work that outlives one request through the product's current scheduler,
+queue, job, or workflow contract.
 
 ## When to use
 
@@ -15,24 +15,24 @@ Platform wakes the `type=web` handler.
 
 ## Method
 
-1. **Name** the activation (time, queue, invoke).
-2. **Keep compute as `type=web`** when required by the active Platform
-   contract; request wake-up does not make process memory durable.
-3. **Create** the Work Resource using the
-   [Sylphx Platform Work contract](../build-product/references/sylphx-platform-contract.md#work-resources).
-4. **Implement** an idempotent HTTP callback. Store progress in Platform Data.
-5. **Prove** the Operation reaches a typed terminal.
+1. **Name** the activation, such as time, queue, event, or explicit invoke.
+2. **Read** the product's current background-work contract and the selected
+   provider's current official documentation.
+3. **Define** payload authority, identity, ordering, concurrency, retries,
+   timeout, cancellation, retention, dead-letter or quarantine, and terminal
+   states.
+4. **Implement** an idempotent handler. Persist authoritative progress outside
+   process memory and make callbacks safe to replay.
+5. **Prove** duplicate, retry, timeout, cancellation, recovery, and the real
+   typed terminal that apply to the job.
 
 ## Done
 
-Activation owner is a Platform Work Resource; handler is request-wake web;
-terminal observed.
-
-## Progressive disclosure
-
-- [Sylphx Platform Work contract](../build-product/references/sylphx-platform-contract.md#work-resources)
+Activation and execution authorities are named, the handler is idempotent,
+progress is durable, and the owning terminal was observed.
 
 ## Boundaries
 
-Platform control-plane always-on web is not the customer template.
-Isolated exec Sessions are provisioned through `provision-agent-workspace`.
+Queue acceptance is not completion. Do not create a second scheduler or hide
+durable progress in a long-lived process. Isolated agent execution workspaces
+belong to `provision-agent-workspace`.

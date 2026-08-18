@@ -78,12 +78,3 @@ Return one **Product Program Brief** containing:
 - This skill creates a human-readable brief only. It does not create a
   generated manifest, qualification gate, installer, scheduler, or proof
   control plane.
-
-## Source lineage
-
-This portable method is derived from the Sylphx company
-[architecture](https://github.com/SylphxAI/owner/blob/main/standards/architecture.md),
-[product](https://github.com/SylphxAI/owner/blob/main/standards/product.md), and
-[proof](https://github.com/SylphxAI/owner/blob/main/standards/proof.md)
-standards. Those pages remain company law; this package owns only the
-requestable composition method.

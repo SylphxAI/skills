@@ -12,7 +12,7 @@ Create a small, self-contained package that follows the [Agent Skills specificat
 1. Start from concrete requests that should activate the skill and the outcome users expect.
 2. Choose one short, verb-led, lowercase hyphenated name. Match the folder name exactly.
 3. Write a description that says what the skill does and when it applies. Include nearby contexts only when they improve selection.
-4. Write the action, the home, and the done look ([owner `standards/docs.md`](https://github.com/SylphxAI/owner/blob/main/standards/docs.md) **Write the path**). Neighbour exclusions are one line; do not add a listing whose job is a kill list. Keep the body focused on specialized knowledge the agent needs after selection.
+4. Write the action, where its result belongs, and the done look. Neighbour exclusions are one line; do not add a listing whose job is a kill list. Keep the body focused on specialized knowledge the agent needs after selection.
 5. Add `references/` for detailed knowledge, `scripts/` for repeatable deterministic work, and `assets/` for files used in outputs. Include each resource only when it directly supports the job.
 6. Link every optional resource from `SKILL.md` with a clear reason to open or run it.
 7. Exercise the skill on a representative request and refine any instruction that causes ambiguity or unnecessary work.

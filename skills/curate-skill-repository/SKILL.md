@@ -74,8 +74,3 @@ Return one curation report with:
 - Company standards remain with their company owner. A public skill carries
   only authorized reusable method, not owner-only procedure, secrets, customer
   data, private topology, volatile live facts, or a second body of company law.
-
-This boundary follows the Sylphx company
-[agent-method ownership](https://github.com/SylphxAI/owner/blob/main/standards/agents.md)
-standard; the source remains company law and this package remains the portable
-curation method.

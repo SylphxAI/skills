@@ -139,8 +139,3 @@ quality remain separate delivery results.
   engineering skills own their independent artifacts.
 - `finish-product` owns the integrated finish pass after game direction is
   established.
-
-The Sylphx company [game](https://github.com/SylphxAI/owner/blob/main/standards/games.md)
-and [feedback](https://github.com/SylphxAI/owner/blob/main/standards/feedback.md)
-standards remain source authority; this skill owns the requestable game
-blueprint.

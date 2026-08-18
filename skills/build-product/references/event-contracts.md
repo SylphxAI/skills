@@ -4,12 +4,6 @@ Open this reference when a product capability creates, publishes, consumes,
 delivers, measures, or observes something called an event. Classify the fact
 before choosing its schema, owner, transport, or specialist.
 
-The Sylphx company [event type system](https://github.com/SylphxAI/owner/blob/main/standards/events.md),
-[architecture](https://github.com/SylphxAI/owner/blob/main/standards/architecture.md),
-and [stack](https://github.com/SylphxAI/owner/blob/main/standards/stack.md)
-remain source authority. This reference turns those constraints into the
-portable build path without copying live provider or product facts.
-
 ## Classify first
 
 | Kind | Meaning and authority | Method owner |

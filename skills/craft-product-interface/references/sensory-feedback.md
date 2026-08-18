@@ -5,9 +5,7 @@ camera response, particles, motion, or other sensory feedback. This is
 interaction feedback, not customer-review ingestion or product-learning work;
 that separate job belongs to `run-product-feedback-loop`.
 
-The Sylphx company [sound, haptics, and feedback](https://github.com/SylphxAI/owner/blob/main/standards/feedback.md)
-standard remains source authority. Product and engine contracts own concrete
-APIs and live capability; this reference owns the portable interface method.
+Product and engine contracts own concrete APIs, routing, and live capability.
 
 ## Feedback chain
 
@@ -49,10 +47,9 @@ hit, save, or network action as final.
   reduced-effects, low-end device, background/foreground, and authoritative
   correction paths.
 
-## Sylphx and Keel sound mapping
+## Sound routing
 
-For a Keel title or another company product that uses the company audio
-contract, use the four first-class buses:
+Use the active engine or product audio contract. A common four-bus shape is:
 
 | Bus | Use |
 | --- | --- |
@@ -61,9 +58,9 @@ contract, use the four first-class buses:
 | `SFX` | World, action, dialogue, ambience, and voice/chat families |
 | `UI` | Click, open, invalid, confirm, and accessibility cues |
 
-Dialogue, ambience, voice/chat, and accessibility are mix families on these
-buses, not a fifth company bus or a title-local audio API. A product may add
-family-level mute or mix controls without replacing the engine contract.
+Dialogue, ambience, voice/chat, and accessibility may be mix families within
+these buses. A product may add family-level mute or mix controls without
+creating a second routing authority.
 
 ## Output
 

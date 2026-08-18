@@ -31,11 +31,6 @@ Create one coherent user flow that works across its important states, inputs, an
   affect the flow.
 - [Visual verification and delivery](references/visual-verification-and-delivery.md) for implementation review.
 
-The Sylphx company [experience](https://github.com/SylphxAI/owner/blob/main/standards/experience.md)
-and [feedback](https://github.com/SylphxAI/owner/blob/main/standards/feedback.md)
-standards remain source authority; these references provide the applying
-interface method.
-
 ## Output
 
 Return the finished flow or review, the states and surfaces covered, the files changed when applicable, and the representative render or interaction checks performed.

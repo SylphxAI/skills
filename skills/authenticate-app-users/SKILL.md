@@ -9,8 +9,8 @@ Give users a secure entry, session, and recovery path using the active product i
 
 ## Method
 
-1. For a Sylphx product, open the [Sylphx Platform contract](../build-product/references/sylphx-platform-contract.md)
-   and keep customer identity separate from operator IAM.
+1. Read the product's current identity contract and keep customer identity
+   separate from operator or infrastructure IAM.
 2. Define the sign-in journey, user and tenant identities, protected resources, session lifetime, recovery path, and entitlement boundary.
 3. Read the active repository's identity configuration and the provider's current official SDK or API documentation.
 4. Use the provider's standard authorization flow and redirect, token, session, key, and cookie protections for the chosen application type.
