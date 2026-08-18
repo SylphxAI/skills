@@ -21,6 +21,11 @@ Connect the real system boundary to credible attacker paths, owned controls, ver
 
 Read [Threat modeling method](references/threat-modeling-method.md) for detailed system modeling, threat enumeration, prioritization, and control design.
 
+For Sylphx products, the company
+[security and privacy standard](https://github.com/SylphxAI/owner/blob/main/standards/security.md)
+owns threat-model triggers and data classes; this skill owns the executable
+modeling method.
+
 ## Output
 
 Return the system and trust-boundary model, assets, attacker paths, ranked threats, controls and owners, verification methods, residual-risk decisions, sensitivity classification, and implementation handoff.

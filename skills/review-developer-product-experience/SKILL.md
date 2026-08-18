@@ -30,6 +30,11 @@ their canonical owners; those owners retain their system designs.
 
 ## Source verification
 
+For Sylphx products, the company
+[developer-experience standard](https://github.com/SylphxAI/owner/blob/main/standards/dx.md)
+owns the destination for first useful success, contracts, errors, docs, and
+operations; this skill owns the review artifact.
+
 Retrieve current product surfaces, supported runtimes, package versions, API and
 SDK contracts, authentication setup, sandbox capabilities, quotas, pricing,
 status, deprecation policy, certification rules, support routes, and privacy or

@@ -1,9 +1,10 @@
 # Documentation Standard
 
 Place product facts in the locked industry homes. Company law is
-`SylphxAI/owner` `standards/docs.md` and `SylphxAI/owner`
-`decisions/ADR-008-DOC-LOCK.md`. This method cites that law. It does not
-replace it and does not copy the owner notebook.
+[standards/docs.md](https://github.com/SylphxAI/owner/blob/main/standards/docs.md)
+and [ADR-008-DOC-LOCK](https://github.com/SylphxAI/owner/blob/main/decisions/ADR-008-DOC-LOCK.md).
+This method cites that law. It does not replace it and does not copy the owner
+notebook.
 
 ## Method
 
@@ -20,7 +21,7 @@ replace it and does not copy the owner notebook.
 5. Put a North Star Metric only as a short section inside the destination
    file, and only when one real customer-value quantity exists. Omit it
    otherwise. Do not invent a metric so the repo “has a North Star.”
-6. Keep Goal, PRD, spec, and ADR in their own homes. README and
+6. Keep capability architecture, Goal, PRD, spec, and ADR in their own homes. README and
    `PROJECT.md` only link. Do not add file-existence CI.
 
 ## Locked homes
@@ -30,8 +31,9 @@ replace it and does not copy the owner notebook.
 | What is this repo? How do I run it? | README | `README.md` |
 | What finished product is this? For whom? Not doing what? | Destination | `docs/vision.md` |
 | One customer-value quantity? | North Star Metric | Optional section in the destination file |
+| What durable responsibilities and prerequisites exist? | Capability DAG | `docs/capabilities.md` (ID \| Capability \| Depends on \| Done when) |
+| What problem, users, requirements, scope, success, and risks define a feature? | PRD | `docs/prd.md` when a real PRD is needed |
 | What completable slice now? | Goal | this product's current claimed slice |
-| What capabilities / journeys / non-goals? | PRD / capability DAG | `docs/prd.md` (ID \| Capability \| Depends on \| Done when) |
 | Exact I/O and failures? | Spec / tests | Schema, protobuf, tests |
 | Why did we choose A? | ADR | `docs/adr/` |
 | How does a user learn / do / look up? | Diátaxis | User docs only |
@@ -54,15 +56,17 @@ Vision is not a metric. A metric is not a Goal. A Goal is not a PRD.
 2. Point README at the destination. Do not copy it.
 3. Leave historical ADRs and research dumps historical.
 4. Active products converge entry docs when a claimed node already touches the
-   authority. Add or extend `docs/prd.md` with the capability table when that
-   product is touched. Standby and retired products remain custody/history.
-   Do not run a one-shot fleet rewrite of empty PRDs.
+   authority. Add or extend `docs/capabilities.md` with the capability graph
+   when that product is touched. Migrate an existing capability-only
+   `docs/prd.md` rather than creating an alias; keep a real PRD when its product
+   problem and requirements are still active. Standby and retired products
+   remain custody/history. Do not run a one-shot fleet rewrite of empty files.
 
 ## Catch-up
 
-README → destination → PRD if changing a feature → the latest binding ADR
-→ the code you will change. Do not reconstruct from chat or the whole
-ADR tree.
+README → destination → capability DAG → real PRD if the feature has one → the
+latest binding ADR → the code you will change. Do not reconstruct from chat or
+the whole ADR tree.
 
 ## Boundaries
 

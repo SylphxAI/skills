@@ -16,10 +16,10 @@ Platform wakes the `type=web` handler.
 ## Method
 
 1. **Name** the activation (time, queue, invoke).
-2. **Keep compute as `type=web`.** Open
-   `../build-product/references/sylphx-platform-first-policy/references/serverless-web.md`.
-3. **Create** the Work Resource. Open
-   `../build-product/references/sylphx-platform-first-policy/references/work.md`.
+2. **Keep compute as `type=web`** when required by the active Platform
+   contract; request wake-up does not make process memory durable.
+3. **Create** the Work Resource using the
+   [Sylphx Platform Work contract](../build-product/references/sylphx-platform-contract.md#work-resources).
 4. **Implement** an idempotent HTTP callback. Store progress in Platform Data.
 5. **Prove** the Operation reaches a typed terminal.
 
@@ -30,8 +30,7 @@ terminal observed.
 
 ## Progressive disclosure
 
-- `../build-product/references/sylphx-platform-first-policy/references/work.md`
-- `../build-product/references/sylphx-platform-first-policy/references/serverless-web.md`
+- [Sylphx Platform Work contract](../build-product/references/sylphx-platform-contract.md#work-resources)
 
 ## Boundaries
 

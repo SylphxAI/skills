@@ -1,78 +1,93 @@
 # Source-To-Skill Patterns
 
 Use this reference when source material spans several files, formats,
-languages, or repositories.
+languages, repositories, or historical states.
 
-## Select the reusable job
+## Evidence boundary
 
-Start from requests that recur and produce an independently useful result.
-Extract the source's distinctive mechanisms:
+Record what was read, what was unavailable, what is inferred, and which source
+owns conflicting claims before writing instructions. For a repository, inspect
+current behavior, tests, public interfaces, active proposals, relevant history,
+and closed-unmerged work when the requested recovery needs them. Historical
+presence proves neither current truth nor permission to republish.
 
-- decisions and the facts that drive them;
-- actions, ordering, and tool use;
-- output shape and quality criteria;
-- domain terms, edge cases, and recovery behavior;
-- attribution, license, privacy, and publication limits.
+## Mechanism card
 
-Source structure is an input. Organize the skill around the future user's job.
-One skill serves one coherent job and output family. Distinct jobs with
-independently accepted results become sibling skills.
+```text
+Name:
+Source and revision:
+Source language:
+Trigger phrases:
+User job:
+Decision rule:
+Procedure:
+Output contract:
+Quality signal:
+Failure mode:
+Package location:
+Keep / merge / discard:
+```
 
-## Choose package contents
+Keep mechanisms that change future agent behavior: decisions and their inputs,
+action order, tool use, output shape, domain terms, edge cases, recovery, and
+validation. Discard prose that only explains the topic or source structure.
 
-Place the shortest complete procedure in `SKILL.md`. Keep detailed domain
-material, variants, examples, and long tables in directly linked references.
-Use scripts for deterministic work that recurs. Use assets for files copied or
-adapted into results.
+## Package shape
 
-The frontmatter description states the concrete job and the circumstances that
-should select it. Native skill discovery uses `name` and `description`, so the
-description carries the routing meaning.
+| Shape | Use when | Avoid when |
+| --- | --- | --- |
+| Single procedural skill | One recurring job with one accepted output family | The source contains unrelated jobs |
+| One skill with modes | The root job and acceptance authority stay the same | Modes hide different triggers or artifacts |
+| Skill plus reference | Rules, examples, rubrics, or locale detail are useful but long | The body never links or selects the reference |
+| Skill plus script | Repeated extraction, transformation, or checking is mechanical | The work requires judgment or synthesis |
+| Separate sibling skills | Jobs are independently requested and accepted | They only differ by noun, file type, or implementation layer |
 
-## Work across languages and formats
+Source structure is an input. Organize around the future user's job. A new
+listing reads the target repository's contribution contract and existing
+descriptions first so one semantic owner remains.
 
-Preserve identifiers, commands, product names, legal terms, named error codes,
-and source-language phrases that materially affect user intent. Write the
-package in the repository's audience language and keep locale-specific nuance
-in a reference when it changes behavior.
+## Discovery and behavior examples
 
-For repositories, use current behavior, tests, public interfaces, and owned
-documentation together. Resolve conflicts through the source owner and record
-the chosen basis in ordinary prose.
+The frontmatter description carries routing meaning before the body loads.
+Front-load the concrete job, result, and closest useful exclusion in natural
+language. Use keywords as semantic anchors, not as a synonym list.
 
-For audio or video, use an authorized transcript, subtitles, or notes as the
-working source. For screenshots and scans, retain enough visual context to
-distinguish observed interface behavior from interpretation.
+For material route changes include:
 
-## Preserve knowledge accurately
+- direct positive requests;
+- nearby requests owned by another skill;
+- ambiguous and misleading-keyword requests;
+- compound requests that need composition;
+- correction turns; and
+- source-language or code-switched requests likely to recur.
 
-Compare the draft with the source and check:
+Evaluate the requested artifact or observable decision, not whether an output
+copies wording from `SKILL.md`. A static example is evidence of package intent,
+not proof that a native host selected the route.
 
-- every distinctive decision rule and procedure has a destination;
-- examples teach the mechanism rather than copy source prose;
-- history and commentary stay contextual;
+## Languages and formats
+
+- Preserve code, commands, identifiers, product names, model names, filenames,
+  URLs, and exact error tokens.
+- Preserve source-language trigger phrases only when they affect future
+  selection or behavior. State what was translated, normalized, or retained.
+- Keep CJK/RTL punctuation, pluralization, politeness, code-switching, and
+  locale-specific edge cases in a reference when they would crowd the main
+  procedure.
+- Audio and video need an authorized transcript, subtitles, or notes.
+  Screenshots and scans need enough visual context to separate observation from
+  interpretation.
+
+## Loss and publication review
+
+Before finalizing, check that:
+
+- every distinctive decision rule, state, failure mode, example, and oracle has
+  one destination;
+- current authority, history, commentary, and proposals remain distinct;
 - public text is original synthesis with required attribution;
-- sensitive or private material follows its publication boundary;
-- links point directly from `SKILL.md` to each useful reference;
-- the package can perform the job using the installed contents.
-
-## Validate the package
-
-Run the repository's native skill validator, resolve links, execute included
-scripts, and try one representative request. Inspect whether the result follows
-the extracted method, preserves meaning, and remains useful independently of
-the original source.
-
-For a material routing change, try realistic direct, adjacent, ambiguous, and
-multilingual requests on the supported native runtimes. Use the results to
-improve the frontmatter description and procedure.
-
-## Report the distillation
-
-Return:
-
-1. package path and one-line job;
-2. source, revision, ownership, license, and publication scope;
-3. knowledge placed in `SKILL.md`, references, scripts, and assets;
-4. representative task result and validator result;
-5. source material that still needs owner input.
+- private or sensitive details are non-reconstructable from the package;
+- every reference is linked from `SKILL.md` with a condition for opening it;
+- the package can perform its job without the original source in context; and
+- repository-native format, links, scripts, and representative behavior pass,
+  or the skipped proof is stated precisely.

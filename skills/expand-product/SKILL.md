@@ -21,3 +21,8 @@ Remove the current constraint on a working product while preserving its core jou
 ## Output
 
 Return the validated core, scale target, binding constraint, selected expansion, implementation, changed paths run, measured result when available, and new operating responsibilities.
+
+For Sylphx products, the company
+[growth standard](https://github.com/SylphxAI/owner/blob/main/standards/growth.md)
+owns the retention, activation, marketing, support, and trust floors. This skill
+owns one selected expansion, not a second growth doctrine.
