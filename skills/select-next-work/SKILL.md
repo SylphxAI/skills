@@ -10,8 +10,9 @@ Choose the valuable feasible node or node set that can advance now.
 ## Method
 
 1. Read Owner `PORTFOLIO.md` (Active/Standby), `DASHBOARD.md` (current
-   nodes), and the product `docs/prd.md` Capability IDs. Do not invent
-   a second graph.
+   nodes), and the product `docs/prd.md` Capability IDs. Re-read exact
+   Git, PR, CI, and live owners before trusting a dashboard row. Do not
+   invent a second graph.
 2. Inspect current user impact, incidents, and real dependencies.
 3. Form nodes from named capabilities. Do not create a scout because a
    product is Unknown. A scout exists only with two mutually exclusive
@@ -19,9 +20,10 @@ Choose the valuable feasible node or node set that can advance now.
    one of them.
 4. Lock a shared contract before two repos implement the same interface.
    One Worker per write-set. Integration is a later node.
-5. Run **every** ready node whose write-set is free. No 1-product-1-agent
-   rule. No headcount cap. JIT only blocks nodes that need official
-   runners.
+5. Run every ready node whose write-set is free and that fits real
+   capacity (model, compute, CI, merge, integration). No 1-product-1-agent
+   rule and no fixed headcount quota. JIT only blocks nodes that need
+   official runners.
 6. Claim through the existing mechanism when one exists. Default Worker
    terminal is implement-to-PR. Return. Do not poll CI.
 

@@ -39,6 +39,10 @@ CI, review, merge, deploy, and live are later nodes.
 
 ## Dispatch
 
-Run every ready node that does not collide.
+Run every ready node that does not collide and that fits real
+capacity (model, compute, CI, merge, integration). There is no
+fixed headcount quota.
 A Depends-on edge is a real prerequisite.
 A write-set collision is not an edge.
+Owner Git `main` is the durable execution ledger. It is not launch
+authorization and does not block disjoint ready work.
