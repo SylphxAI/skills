@@ -25,6 +25,11 @@ Choose an exact supported version that fits the active repository and current up
 - Prefer upstream-supported combinations over locally invented compatibility layers.
 - Recheck current official sources whenever the decision is revisited.
 
+For Sylphx products, the company
+[stack standard](https://github.com/SylphxAI/owner/blob/main/standards/stack.md)
+selects roles and technology families. Resolve current supported versions live;
+do not turn this skill into a competing or stale stack.
+
 ## Output
 
 Return the selected version, official source links, compatibility reason, files changed, commands run, and any upstream constraint that remains.

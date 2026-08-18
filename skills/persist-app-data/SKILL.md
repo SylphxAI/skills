@@ -16,7 +16,7 @@ Give the app durable memory on Sylphx Platform Data. The process may exit.
 ## Method
 
 1. **Name** the data job.
-2. **Open** `../build-product/references/sylphx-platform-first-policy/references/data.md`.
+2. **Open** the [Sylphx Platform data contract](../build-product/references/sylphx-platform-contract.md#data-resources).
 3. **Declare** the resource in `sylphx.toml` and use the injected contract.
 4. **Apply schema** with Atlas via `[database.migrations]` when relational.
 5. **Prove** write then read.
@@ -27,8 +27,10 @@ Binding consumed; write-then-read holds; migrations Job used when schema changed
 
 ## Progressive disclosure
 
-- `../build-product/references/sylphx-platform-first-policy/references/data.md`
-- `../execute-hard-cutover/references/database-cutover-and-migration.md`
+- [Sylphx Platform data contract](../build-product/references/sylphx-platform-contract.md#data-resources)
+- Use `execute-hard-cutover` for a replacement or migration of an existing
+  authority; its product-owned migration contract remains the source for the
+  specific cutover.
 
 ## Boundaries
 
