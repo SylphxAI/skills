@@ -29,8 +29,6 @@ product's current configuration and operating requirements.
 
 - [Provider comparison](references/providers/peers.md)
 - [Service selection](references/service-selection.md)
-- [Sylphx Platform contract](../build-product/references/sylphx-platform-contract.md)
-  when the active product uses the company platform.
 
 ## Boundaries
 

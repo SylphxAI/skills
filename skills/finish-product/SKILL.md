@@ -140,9 +140,3 @@ Return one Product Finish Pass with:
 The pass completes when every applicable selected surface reaches the declared
 target, material exposed details are deliberate, cross-surface identity and
 semantics agree, and the finished path has been run or rendered.
-
-For Sylphx products, the company
-[product](https://github.com/SylphxAI/owner/blob/main/standards/product.md) and
-[performance](https://github.com/SylphxAI/owner/blob/main/standards/performance.md)
-standards own assertion and destination budgets; this skill owns the integrated
-finish pass.

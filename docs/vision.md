@@ -45,5 +45,6 @@ depth, public source history, and the repository's own checks. Codex,
 Claude Code, Grok, and other hosts own native discovery, installation,
 update, and cache behavior.
 
-Company documentation homes and labor shape are set in `SylphxAI/owner`.
-This file is destination only. It is not the current Goal.
+Organization, project, and runtime policy stays with its owning repository or
+host. A generic package must not require hidden company context to perform its
+job. This file is destination only. It is not the current Goal.

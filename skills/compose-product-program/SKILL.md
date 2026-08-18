@@ -33,10 +33,12 @@ operations.
 3. Sweep every selected capability across lifecycle, failure, recovery,
    security, privacy, accessibility, localization, support, migration, and
    withdrawal. Give each a complete target or an exact non-applicability reason.
-4. Draw an acyclic dependency graph. Each edge names its producer, consumer,
-   contract, version or revision, acceptance test, failure behavior, and next
-   owner action. Use asynchronous reconciliation when peers must converge
-   without lockstep availability.
+4. Before parallel consumer work, lock each shared-interface contract and its
+   exact revision. Draw an acyclic dependency graph whose edges name producer,
+   consumer, contract, acceptance test, failure behavior, and next action.
+   Distinguish a true prerequisite from a temporary write/effect-set collision.
+   Use asynchronous reconciliation when peers must converge without lockstep
+   availability.
 5. Route each artifact to its specialist owner. The program owns coverage,
    ordering, collision boundaries, and handoff acceptance; it does not rewrite
    a sibling artifact or create a second control plane.
@@ -48,8 +50,8 @@ operations.
    authority as a named blocker instead of filling it with prose.
 
 Read [program composition method](references/program-composition-method.md) when
-the program spans multiple release channels, locales, SDKs, or external
-certification boundaries.
+the program spans repositories, shared interfaces, parallel write/effect sets,
+multiple release channels, locales, SDKs, or external certification boundaries.
 
 Read [behavior examples](references/behavior-examples.md) when checking native
 discovery boundaries or the Product Program Brief artifact shape.
@@ -62,8 +64,8 @@ Return one **Product Program Brief** containing:
 - canonical artifact and owner map with exact paths or revisions;
 - selected capability matrix with target, lifecycle, failure, recovery, and
   delivery state;
-- dependency DAG, collision boundaries, handoff acceptance tests, and release
-  order;
+- dependency DAG, shared-contract revisions, write/effect-set collision
+  boundaries, handoff acceptance tests, and release order;
 - specialist handoffs, external authority gates, unresolved blockers, and the
   next owner action for each incomplete item.
 
@@ -78,12 +80,3 @@ Return one **Product Program Brief** containing:
 - This skill creates a human-readable brief only. It does not create a
   generated manifest, qualification gate, installer, scheduler, or proof
   control plane.
-
-## Source lineage
-
-This portable method is derived from the Sylphx company
-[architecture](https://github.com/SylphxAI/owner/blob/main/standards/architecture.md),
-[product](https://github.com/SylphxAI/owner/blob/main/standards/product.md), and
-[proof](https://github.com/SylphxAI/owner/blob/main/standards/proof.md)
-standards. Those pages remain company law; this package owns only the
-requestable composition method.
