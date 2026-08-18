@@ -9,14 +9,16 @@ Give users a secure entry, session, and recovery path using the active product i
 
 ## Method
 
-1. Define the sign-in journey, user and tenant identities, protected resources, session lifetime, recovery path, and entitlement boundary.
-2. Read the active repository's identity configuration and the provider's current official SDK or API documentation.
-3. Use the provider's standard authorization flow and redirect, token, session, key, and cookie protections for the chosen application type.
-4. Validate identity and session state on the server at every protected boundary.
-5. Keep product authorization and entitlement decisions in the product domain after identity verification.
-6. Implement logout, revocation, expiry, recovery, and account-linking behavior required by the journey.
-7. Cover normal sign-in, invalid or expired state, revoked sessions, tenant separation, recovery, and replay protection.
-8. Run the real sign-in and protected-route path in the target environment.
+1. For a Sylphx product, open the [Sylphx Platform contract](../build-product/references/sylphx-platform-contract.md)
+   and keep customer identity separate from operator IAM.
+2. Define the sign-in journey, user and tenant identities, protected resources, session lifetime, recovery path, and entitlement boundary.
+3. Read the active repository's identity configuration and the provider's current official SDK or API documentation.
+4. Use the provider's standard authorization flow and redirect, token, session, key, and cookie protections for the chosen application type.
+5. Validate identity and session state on the server at every protected boundary.
+6. Keep product authorization and entitlement decisions in the product domain after identity verification.
+7. Implement logout, revocation, expiry, recovery, and account-linking behavior required by the journey.
+8. Cover normal sign-in, invalid or expired state, revoked sessions, tenant separation, recovery, and replay protection.
+9. Run the real sign-in and protected-route path in the target environment.
 
 ## Completion
 

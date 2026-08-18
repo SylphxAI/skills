@@ -70,6 +70,9 @@ The requested target stays fixed throughout the pass.
   [Game finish](references/game-finish.md).
 - For apps, SaaS, websites, and desktop products, also open
   [App and SaaS finish](references/app-saas-finish.md).
+- Open [sensory feedback](../craft-product-interface/references/sensory-feedback.md)
+  when the finish target includes sound, music, haptics, camera, effects, or
+  action-feedback hierarchy.
 - Open both domain references when the product genuinely spans both.
 
 ## Method
@@ -137,3 +140,9 @@ Return one Product Finish Pass with:
 The pass completes when every applicable selected surface reaches the declared
 target, material exposed details are deliberate, cross-surface identity and
 semantics agree, and the finished path has been run or rendered.
+
+For Sylphx products, the company
+[product](https://github.com/SylphxAI/owner/blob/main/standards/product.md) and
+[performance](https://github.com/SylphxAI/owner/blob/main/standards/performance.md)
+standards own assertion and destination budgets; this skill owns the integrated
+finish pass.

@@ -1,7 +1,7 @@
 # Skills capability DAG
 
 This file is the product capability graph. Destination stays in
-[vision.md](vision.md). Problem, users, and scope stay in [prd.md](prd.md)
+[vision.md](vision.md). Problem, users, and scope stay in `docs/prd.md`
 when that document is a real PRD. Current work stays on the product PR.
 
 Skills owns **installable agent methods derived from** `SylphxAI/owner`

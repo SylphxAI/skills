@@ -95,6 +95,9 @@ runtime engineering and release owners establish later delivery facts.
 - [Experience quality](references/game-experience-quality.md) covers feel,
   audiovisual feedback, input, accessibility, platforms, performance,
   networking, and localization.
+- Open [sensory feedback](../craft-product-interface/references/sensory-feedback.md)
+  when the blueprint needs a concrete action-feedback, audio-bus, haptic, or
+  reduced-effects contract.
 - [Validation and metrics](references/game-validation-and-metrics.md) covers
   measures, telemetry, playtests, simulations, experiments, and the blueprint
   outline.
@@ -136,3 +139,8 @@ quality remain separate delivery results.
   engineering skills own their independent artifacts.
 - `finish-product` owns the integrated finish pass after game direction is
   established.
+
+The Sylphx company [game](https://github.com/SylphxAI/owner/blob/main/standards/games.md)
+and [feedback](https://github.com/SylphxAI/owner/blob/main/standards/feedback.md)
+standards remain source authority; this skill owns the requestable game
+blueprint.

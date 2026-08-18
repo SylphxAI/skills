@@ -19,6 +19,10 @@ validation, and blind spots. Keep logs, metrics, traces, profiles, synthetics,
 and events together when they answer the same operating questions; organize the
 Skill around operator questions rather than telemetry medium.
 
+Use [event contracts](../build-product/references/event-contracts.md) to keep
+protected operational telemetry distinct from domain, integration, delivery,
+and analytics contracts.
+
 Read [references/operational-observability-contract.md](references/operational-observability-contract.md)
 for signal, audience, SLO, alert, validation, and public-boundary patterns.
 

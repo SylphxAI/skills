@@ -21,6 +21,10 @@ operational observability, even when the same pipeline also carries product
 events. Keep their purposes, schemas, access, retention, and authorities
 separate.
 
+Use [event contracts](../build-product/references/event-contracts.md) to keep
+analytics measurement distinct from domain facts, cross-boundary integration,
+message delivery, and protected operational telemetry.
+
 Read `references/data-quality-and-metric-layer.md` when the request includes
 warehouse or semantic metrics, conflicting dashboards, dataset trust states,
 quality monitoring, backfill, certified metrics, access, or cross-source

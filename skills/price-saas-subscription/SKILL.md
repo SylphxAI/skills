@@ -35,3 +35,8 @@ usage and overages, procurement, upgrade moments, cancellation/downgrade,
 commercial arithmetic, assumptions, measures, migration, and owner handoffs.
 
 Payment and ledger execution belongs to `build-payment-readiness`.
+
+For Sylphx products, the company
+[commercial standard](https://github.com/SylphxAI/owner/blob/main/standards/commercial.md)
+remains source authority for decision homes, money truth, experiments, and
+irreversible commercial boundaries.

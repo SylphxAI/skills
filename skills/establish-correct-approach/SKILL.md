@@ -19,6 +19,12 @@ Name one current owner-aligned method and hand it to implementation.
 8. Stop research when additional sources can no longer change the chosen method.
 9. Hand the selected method, authority links, constraints, and open external dependency to the matching implementation skill.
 
+For Sylphx work, apply the company
+[exception standard](https://github.com/SylphxAI/owner/blob/main/standards/exceptions.md):
+a temporary mitigation records its owning violation, scope, expiry, removal
+predicate, owner, and verification, while the supported owner-aligned method
+remains the destination. Do not relabel a permanent bypass as compatibility.
+
 Read [owner-aligned method selection](references/owner-aligned-method.md) for
 selection criteria and [method sources](references/method-sources.md) for
 research techniques.
