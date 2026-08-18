@@ -29,6 +29,28 @@ The host owns its plugin cache and update flow. Installed skill names use the
 plugin namespace, such as `sylphx-skills:analyze-critically`. Restart or reload
 the host after changing plugins.
 
+The plugin exposes only `skills/`. It does not install an always-on prompt,
+runtime, scheduler, daemon, or background updater.
+
+## Update
+
+Refresh the host-owned marketplace and plugin cache:
+
+```bash
+# Codex
+codex plugin marketplace upgrade sylphx
+codex plugin add sylphx-skills@sylphx
+
+# Claude Code
+claude plugin marketplace update sylphx
+claude plugin update sylphx-skills@sylphx --scope user
+```
+
+Codex uses the semantic version in `.codex-plugin/plugin.json`; a Codex plugin
+release bumps that version. Claude Code intentionally uses the source commit as
+its version because `.claude-plugin/plugin.json` omits a fixed version. Restart
+or reload the host after an update.
+
 ## Repository layout
 
 ```text
