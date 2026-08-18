@@ -19,10 +19,8 @@ Improve the active product from its current reality when the user has invited au
 4. Bind one claimed node, one write-set, one asked terminal. Default
    terminal is implement-to-PR.
 5. Run the changed path. Return at the terminal. Do not poll CI.
-6. An Active product never silently becomes Standby. If no worthwhile
-   node exists, say so. Do not invent a scout to occupy a cell.
-
-Labor law: `SylphxAI/owner` `decisions/ADR-012-CONCISE-OWNER.md`.
+6. If no worthwhile node exists, say so. Do not invent work to occupy
+   a slot.
 
 ## Output
 

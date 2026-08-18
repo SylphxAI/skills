@@ -21,13 +21,10 @@ Keep one accepted objective moving until its requested result is true or an exte
 
 When writing or placing product documentation, open
 [documentation-standard](references/source-authoring-standard/references/documentation-standard/METHOD.md).
-Destination is `docs/vision.md`. `NORTH-STAR.md` is an accepted destination
-alias only. Company law: `SylphxAI/owner` `standards/docs.md` and
-`decisions/ADR-008-DOC-LOCK.md`.
+Destination is `docs/vision.md`.
 
-When this worker would wait on CI or own the outcome end-to-end, open
+When this worker would wait on CI, open
 [work coordination](../select-next-work/references/work-coordination/METHOD.md).
-Labor law: `SylphxAI/owner` `decisions/ADR-012-CONCISE-OWNER.md`.
 
 ## Delivery shape
 

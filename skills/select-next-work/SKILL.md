@@ -5,35 +5,52 @@ description: Select and claim the next high-value work item from current product
 
 # Select Next Work
 
-Choose the valuable feasible node or node set that can advance now.
+Choose one bounded outcome that can materially advance now from this
+repository's live authority. Not a company operating system.
+
+## When to use
+
+- The user asks what to do next, or to pick from an existing backlog
+- Queue, issues, PRs, or a project ledger already exist
+
+If the current repository is the Sylphx Owner notebook, open that
+repo's project skill `run-owner-tick` instead.
 
 ## Method
 
-1. Read Owner `PORTFOLIO.md` (Active/Standby), `DASHBOARD.md` (current
-   nodes), and the product `docs/prd.md` Capability IDs. Re-read exact
-   Git, PR, CI, and live owners before trusting a dashboard row. Do not
-   invent a second graph.
-2. Inspect current user impact, incidents, and real dependencies.
-3. Form nodes from named capabilities. Do not create a scout because a
-   product is Unknown. A scout exists only with two mutually exclusive
-   actions A/B and an observation O that would select, cancel, or recut
-   one of them.
-4. Lock a shared contract before two repos implement the same interface.
-   One Worker per write-set. Integration is a later node.
-5. Run every ready node whose write-set is free and that fits real
-   capacity (model, compute, CI, merge, integration). No 1-product-1-agent
-   rule and no fixed headcount quota. JIT only blocks nodes that need
-   official runners.
-6. Claim through the existing mechanism when one exists. Default Worker
-   terminal is implement-to-PR. Return. Do not poll CI.
-
-Labor law: `SylphxAI/owner` `decisions/ADR-012-CONCISE-OWNER.md`.
-Depth: [work coordination](references/work-coordination/METHOD.md).
+1. Identify the authoritative backlog, product state, active claims,
+   available capacity, and claim mechanism **in this repository**.
+2. Inspect current user impact, incidents, dependencies, deadlines,
+   and recently completed work.
+3. Combine duplicate items. Express each candidate as an independently
+   useful outcome.
+4. Compare candidates using direct product value, urgency, dependency
+   leverage, feasibility, reversibility, and likely completion cost.
+5. Select the strongest unblocked candidate that fits current capacity.
+   Explain the decisive reasons in plain language.
+6. Claim it through the team's existing tracker when claim authority
+   exists.
+7. Hand the accepted item to the appropriate implementation or
+   delivery skill. Default implementation terminal is a pull request.
+   Do not poll CI.
 
 ## Output
 
-- selected node or ready set
-- Capability ID and owning repo
-- write-set and real dependencies
-- claim / PR locator
-- next event if the Worker returned
+Return:
+
+- selected outcome
+- why it is the best current choice
+- owning product or repository
+- relevant dependencies and constraints
+- claim state
+- immediate next action
+
+Repeat the method from fresh state whenever another selection is requested.
+
+## Boundaries
+
+- Do not invent a second graph, coverage table, or company ledger
+- Do not encode one organization's titles, dashboard files, or CI
+  topology as universal method
+- Depth: [work coordination](references/work-coordination/METHOD.md)
+  when a wait or cross-repo claim is the issue

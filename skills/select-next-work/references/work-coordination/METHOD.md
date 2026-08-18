@@ -1,48 +1,34 @@
 # Work Coordination
 
-Labor law is `SylphxAI/owner` `decisions/ADR-012-CONCISE-OWNER.md`.
-This method cites that law. It does not invent a second ledger.
+Portable claim and wait rules. Open when a worker would sit on CI
+or when one outcome crosses repositories.
 
-Use this depth when labor would wait on CI or the outcome crosses repos.
+This is not a company operating system and not a scheduler.
 
-## Roles
+## Authority
 
-```text
-Chairman → Owner → Workers
-```
+Use the current repository's live authority: its tracker, PR queue,
+docs, and runtime. Do not invent a second ledger.
 
-Owner locks contracts, cuts nodes, dispatches, challenges, and keeps
-`DASHBOARD.md`. Owner is the outcome owner. Owner does not implement
-every repository on a cross-repo outcome.
-
-## Homes
-
-| Fact | Home |
-| --- | --- |
-| Destination | product `docs/vision.md` |
-| Capability DAG | product `docs/prd.md` |
-| Current execution nodes | Owner `DASHBOARD.md` |
-| Schedule rules | Owner `DAG.md` |
+If this checkout **is** the Sylphx Owner notebook, stop and use that
+repo's `.agents/skills/run-owner-tick` instead of this file.
 
 ## Contract-first
 
-Lock the shared contract (schema, sole writer, errors, tests, exact
-revision). Then one Worker per write-set in parallel. Then integration.
+When two repositories must implement the same interface, lock the
+shared contract (schema, sole writer, errors, tests, exact revision)
+before parallel work. One worker per write-set. Integration is later.
 
 Workers do not coordinate by chat. Still serial: editing the contract
 itself, the same write-set, cutover, or a wrong contract.
 
 ## Return
 
-Default terminal: implement-to-PR. Then return.
-CI, review, merge, deploy, and live are later nodes.
+Default terminal: implement-to-PR, then return.
+CI, review, merge, deploy, and live are later events.
 
 ## Dispatch
 
-Run every ready node that does not collide and that fits real
-capacity (model, compute, CI, merge, integration). There is no
-fixed headcount quota.
-A Depends-on edge is a real prerequisite.
-A write-set collision is not an edge.
-Owner Git `main` is the durable execution ledger. It is not launch
-authorization and does not block disjoint ready work.
+Run ready work that does not collide and that fits real capacity.
+A dependency is a real prerequisite. A write-set collision is not
+a dependency edge.
