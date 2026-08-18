@@ -22,3 +22,9 @@ Turn a product opportunity into a coherent blueprint that can guide implementati
 ## Output
 
 Return the product promise, users, journeys, capability and state model, interface surfaces, architecture and ownership, business and operating model, lifecycle behavior, accepted decisions, and open questions.
+
+For Sylphx products, compose the company
+[design](https://github.com/SylphxAI/owner/blob/main/standards/design.md),
+[growth](https://github.com/SylphxAI/owner/blob/main/standards/growth.md), and
+[product](https://github.com/SylphxAI/owner/blob/main/standards/product.md)
+standards into the blueprint without copying them into a second product truth.

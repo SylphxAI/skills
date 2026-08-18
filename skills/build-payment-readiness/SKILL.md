@@ -22,6 +22,12 @@ Create a payment path whose money, access, provider, support, and finance states
 
 Read [Payment platform patterns](references/payment-platform-patterns.md) for channel behavior and [Billing reconciliation patterns](references/billing-reconciliation-patterns.md) for settlement and close design.
 
+For Sylphx products, apply the company
+[commercial](https://github.com/SylphxAI/owner/blob/main/standards/commercial.md)
+and [Platform](../build-product/references/sylphx-platform-contract.md)
+contracts. Those sources own company constraints; this skill owns the
+requestable payment-readiness method.
+
 ## Output
 
 Return the authority map, payment and entitlement state model, event precedence, ledger and projection design, reconciliation controls, support flow, operational checks, and launch blockers.

@@ -18,12 +18,27 @@ Turn an accepted product outcome into a complete capability on a real user path.
 7. Run the changed path with the repository's compiler, tests, and the fastest representative user journey.
 8. Land, release, or deploy when the requested terminal and available authority include that layer.
 
+## References
+
+- Open [event contracts](references/event-contracts.md) when the slice creates,
+  publishes, consumes, delivers, measures, or observes something called an
+  event. Classify the event kind before choosing its contract or specialist.
+- Open [Sylphx Platform contract](references/sylphx-platform-contract.md) when a
+  Sylphx product binds identity, data, work, delivery, commerce, AI, or deploy
+  capabilities. Route the product verb to its specialist rather than rebuilding
+  Platform.
+
 ## Ownership
 
 - Keep product rules with the product that owns them.
 - Reuse an existing platform capability when it already owns the infrastructure job.
 - Use a specialist skill when the whole request is authentication, storage, background work, event delivery, payments, interface craft, distribution, or CI.
 - Use `execute-hard-cutover` when the capability replaces an existing implementation or data path.
+
+The Sylphx company [code](https://github.com/SylphxAI/owner/blob/main/standards/code.md)
+and [architecture](https://github.com/SylphxAI/owner/blob/main/standards/architecture.md)
+standards remain the source for company-owned implementation constraints; this
+skill supplies the portable build method.
 
 ## Completion
 

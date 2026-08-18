@@ -15,6 +15,10 @@ suppression/dedupe, privacy/redaction, deliverability, event schema, incident
 readback, and measurement. Retention strategy, each offer, each daily loop, and
 provider implementations remain with their owning artifacts.
 
+Use [event contracts](../build-product/references/event-contracts.md) to keep
+notification policy distinct from domain/integration facts and analytics;
+`deliver-app-events` owns the actual channel delivery path and receipt.
+
 Name the draft and its revision, then consume sibling decisions by owner and explicit
 contract. Let deterministic delivery tooling seal serialized versions and
 digests later; use owner-supplied identifiers during design.
