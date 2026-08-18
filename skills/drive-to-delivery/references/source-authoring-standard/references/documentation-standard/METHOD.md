@@ -30,7 +30,7 @@ replace it and does not copy the owner notebook.
 | What is this repo? How do I run it? | README | `README.md` |
 | What finished product is this? For whom? Not doing what? | Destination | `docs/vision.md` |
 | One customer-value quantity? | North Star Metric | Optional section in the destination file |
-| What completable slice now? | Goal | Owner `DASHBOARD.md` |
+| What completable slice now? | Goal | this product's current claimed slice |
 | What capabilities / journeys / non-goals? | PRD / capability DAG | `docs/prd.md` (ID \| Capability \| Depends on \| Done when) |
 | Exact I/O and failures? | Spec / tests | Schema, protobuf, tests |
 | Why did we choose A? | ADR | `docs/adr/` |
