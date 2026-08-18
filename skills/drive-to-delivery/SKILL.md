@@ -15,23 +15,19 @@ Keep one accepted objective moving until its requested result is true or an exte
 4. Execute each action at its owning layer. Integrate related changes into one coherent outcome.
 5. Run the path changed and repair failures while the objective remains open.
 6. Keep local, landed, released, deployed, and live states distinct in decisions and updates.
-7. Execute only the claimed node. The default implementation terminal is a pull request submitted with the named local oracle; return there and release the lease even while the standing product outcome remains open.
-8. Continue through landing, release, deployment, or live verification only when that layer is the explicit asked terminal of this claimed node and it can advance without waiting or crossing authority.
-9. Close when the requested terminal is met. Record an external blocker only after safe in-scope alternatives are exhausted.
+7. Continue through source landing, release, deployment, or live verification when those states are part of the request and the required authority is available.
+8. Close when the requested terminal is met. Record an external blocker only after safe in-scope alternatives are exhausted.
 
 When writing or placing product documentation, open
 [documentation-standard](references/source-authoring-standard/references/documentation-standard/METHOD.md).
 Destination is `docs/vision.md`.
-
-When this worker would wait on CI, open
-[work coordination](../select-next-work/references/work-coordination/METHOD.md).
 
 ## Delivery shape
 
 - Keep commits focused and valid.
 - Keep each pull request independently revertible and complete for its accepted outcome.
 - Rebase or merge current upstream changes before final validation when the repository requires it.
-- Use the repository's native CI, release, and deployment surfaces without holding the implementer on those waits.
+- Use the repository's native CI, release, and deployment surfaces.
 - Report progress in the primary result instead of creating a parallel tracking artifact.
 
 ## Output

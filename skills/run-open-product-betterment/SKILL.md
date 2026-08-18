@@ -9,20 +9,23 @@ Improve the active product from its current reality when the user has invited au
 
 ## Method
 
-1. Read this product's `docs/vision.md` and `docs/prd.md`. If the PRD
-   has no capability table, add the short ID table when you already
-   touch the repo. Do not invent capabilities to fill rows.
-2. Inspect enough of the product to name independent nodes: user pain,
-   missing capability, reliability, or a real engine gap.
-3. If the outcome crosses repos, stop and require a locked contract.
-   Do not implement two crafts in one Worker.
-4. Bind one claimed node, one write-set, one asked terminal. Default
-   terminal is implement-to-PR.
-5. Run the changed path. Return at the terminal. Do not poll CI.
-6. If no worthwhile node exists, say so. Do not invent work to occupy
-   a slot.
+1. Discover the product, primary users, important journeys, current source, live signals available to the task, and recent work.
+2. Inspect enough of the product to identify material user pain, missing capability, reliability risk, performance constraint, or quality gap.
+3. Choose the strongest unblocked improvement using direct user value, strategic leverage, feasibility, reversibility, and lifecycle cost.
+4. Define a bounded complete outcome and its observable done condition.
+5. Implement it at the owning layer, including the product behavior and operational details required for a durable result.
+6. Run the changed path and repair issues found there.
+7. Land, release, or deploy when the user's request and available authority include those states.
+8. Reinspect the updated product before selecting another improvement.
 
-## Output
+## Selection discipline
 
-Improvements delivered, Capability IDs touched, checks run, residual,
-and whether a later node is ready.
+- Prefer changes that materially improve a real user path or remove a current delivery constraint.
+- Keep product and platform responsibilities with their existing owners.
+- Complete one coherent outcome before opening another conflicting write set.
+- Use current product facts and plain reasoning to explain priority.
+- Record external dependencies where they can be resumed by their owner.
+
+## Completion
+
+An open betterment run finishes when a fresh inspection finds the highest-value in-scope improvements complete. Return the improvements delivered, changed paths run, strongest truthful delivery state, and remaining externally blocked opportunities.
