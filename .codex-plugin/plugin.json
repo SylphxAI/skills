@@ -1,0 +1,39 @@
+{
+  "name": "sylphx-skills",
+  "version": "0.1.0",
+  "description": "Reusable Agent Skills for product, engineering, operations, design, and research work",
+  "author": {
+    "name": "SylphxAI",
+    "url": "https://github.com/SylphxAI"
+  },
+  "homepage": "https://github.com/SylphxAI/skills",
+  "repository": "https://github.com/SylphxAI/skills",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "product",
+    "engineering",
+    "operations",
+    "design",
+    "research"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Sylphx Skills",
+    "shortDescription": "Reusable Agent Skills",
+    "longDescription": "A passive catalog of reusable Agent Skills for product, engineering, operations, design, and research work.",
+    "developerName": "SylphxAI",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/SylphxAI/skills",
+    "defaultPrompt": [
+      "Critically review this proposal",
+      "Turn this requirement into a testable contract",
+      "Choose the correct architecture for this change"
+    ]
+  }
+}
