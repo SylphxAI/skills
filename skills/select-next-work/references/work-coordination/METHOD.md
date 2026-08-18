@@ -1,83 +1,44 @@
 # Work Coordination
 
 Labor law is `SylphxAI/owner` `decisions/ADR-012-CONCISE-OWNER.md`.
-This method cites that law. It does not restore
-a work-coordination ledger and does not invent a second stack.
+This method cites that law. It does not invent a second ledger.
 
-Use this depth when selecting, claiming, or dispatching labor that would
-otherwise wait on CI or own an outcome end-to-end.
+Use this depth when labor would wait on CI or the outcome crosses repos.
 
-## Labor shape
+## Roles
 
 ```text
-Chairman
-  -> Owner
-       -> Workers
+Chairman → Owner → Workers
 ```
 
-The Owner keeps the Active/Standby register and coverage evidence, locks
-contracts, admits work, computes the feasible ready set, and dispatches.
-A Worker executes one claimed node. There is no PM rank and no fourth
-executive.
+Owner locks contracts, cuts nodes, dispatches, challenges, and keeps
+`DASHBOARD.md`. Owner is the outcome owner. Owner does not implement
+every repository on a cross-repo outcome.
 
-## Duty, coverage, chance, admitted work
+## Homes
 
-- Active is continuous betterment duty, not a scheduler cell.
-- Coverage evidence is the last substantive judgment and pointer. It
-  cannot dispatch or occupy a Worker.
-- A this-tick candidate is an admission proposal only.
-- An admitted node is one independently terminal slice with one contract
-  or A/B/O diagnostic, one write/effect set, one oracle, and one asked
-  terminal. Only admitted work is `ready`, `claimed`, or `deferred`.
-- A Worker attempt is disposable and ends at that terminal.
-
-Unknown is not scout-ready. Scout is admitted only when two mutually
-exclusive actions A/B and one observation O would select, cancel, or
-recut A/B. An Active product with no admitted node this tick remains
-in betterment if coverage evidence is current. Only explicit lifecycle
-authority moves a product to Standby.
-
-## Return at the asked terminal
-
-The default product implementation terminal is a pull request submitted with
-the named local oracle. At that terminal the Worker returns and releases its
-lease. A different explicit terminal may require a local candidate, diagnostic
-finding, review, merge, release, deploy, or live readback; execute only that
-claimed node and do not silently expand its authority.
-
-When further progress depends on official CI, review, merge, deploy, a human
-credential, or another event, record the exact predicate and event source and
-return. Do not keep a session warm to preserve context or poll.
-
-Pull request means candidate source. It is not landed, released, deployed, or
-live, and it does not complete the standing product Outcome.
-
-## Owner integrates
-
-Review, merge, conflict, CI-red, and deploy-fail become later nodes when their
-events make work executable. Official CI and deploy remain distinct truth
-layers. An external wait on one frontier does not block unrelated feasible
-nodes.
-
-## One writer per write set
-
-| Parallel | Serial |
+| Fact | Home |
 | --- | --- |
-| Different repositories or disjoint modules | Same module, same branch, same contract |
-| Implement on A while review or merge runs on B | Two implementers on one core write set |
-| Independent remaster and engine write sets | 100 PRs into one write set |
+| Destination | product `docs/vision.md` |
+| Capability DAG | product `docs/prd.md` |
+| Current execution nodes | Owner `DASHBOARD.md` |
+| Schedule rules | Owner `DAG.md` |
 
-Hide the wait. Do not fan out onto one lock.
+## Contract-first
+
+Lock the shared contract (schema, sole writer, errors, tests, exact
+revision). Then one Worker per write-set in parallel. Then integration.
+
+Workers do not coordinate by chat. Still serial: editing the contract
+itself, the same write-set, cutover, or a wrong contract.
+
+## Return
+
+Default terminal: implement-to-PR. Then return.
+CI, review, merge, deploy, and live are later nodes.
 
 ## Dispatch
 
-- Build real precedence separately from symmetric write/effect conflicts and
-  finite model, compute, review, CI, merge, and integration capacity.
-- Select the highest-value feasible ready set across all Active products; do
-  not target a worker count or use one-product-one-Worker.
-- Claim the complete selected set through the existing atomic lease mechanism
-  before launching.
-- One Worker per node and one active writer per mutation surface.
-- Hand later review or repair to a newly claimed Worker on the exact SHA.
-- Apply downstream backpressure and use age/staleness to avoid starvation
-  without round-robin quotas.
+Run every ready node that does not collide.
+A Depends-on edge is a real prerequisite.
+A write-set collision is not an edge.

@@ -5,34 +5,33 @@ description: Select and claim the next high-value work item from current product
 
 # Select Next Work
 
-Choose the valuable feasible node or node set that can materially advance now.
+Choose the valuable feasible node or node set that can advance now.
 
 ## Method
 
-1. Identify the authoritative Active/Standby lifecycle, coverage evidence, current admitted claims, available capacity, and claim mechanism. Active means continuous betterment duty plus current coverage evidence, not a scheduler cell.
-2. Inspect current user impact, incidents, dependencies, deadlines, strategic outcomes, and recently completed work.
-3. Combine duplicates into this-tick admission proposals. Do not create a scout because truth is Unknown. Scout only with named actions A/B and observation O that would select, cancel, or recut A/B. Unadmitted candidates are not durable scheduler state.
-4. Compare **admitted** and proposed nodes using direct product value, urgency, dependency leverage, feasibility, reversibility, and likely completion cost.
-5. For one Worker, select the strongest feasible admitted node. For an Owner dispatch, select the highest-value conflict-free, capacity-feasible subset of admitted ready nodes. Use no fixed worker quota; apply downstream backpressure and age/staleness among admitted nodes only.
-6. Claim the selected node or complete set atomically through the team's existing mechanism when claim authority is available.
-7. Hand one Worker to one claimed node and one write/effect set. Do not put two implementers on the same mutation surface or assign a resident Worker merely because a product is Active.
+1. Read Owner `PORTFOLIO.md` (Active/Standby), `DASHBOARD.md` (current
+   nodes), and the product `docs/prd.md` Capability IDs. Do not invent
+   a second graph.
+2. Inspect current user impact, incidents, and real dependencies.
+3. Form nodes from named capabilities. Do not create a scout because a
+   product is Unknown. A scout exists only with two mutually exclusive
+   actions A/B and an observation O that would select, cancel, or recut
+   one of them.
+4. Lock a shared contract before two repos implement the same interface.
+   One Worker per write-set. Integration is a later node.
+5. Run **every** ready node whose write-set is free. No 1-product-1-agent
+   rule. No headcount cap. JIT only blocks nodes that need official
+   runners.
+6. Claim through the existing mechanism when one exists. Default Worker
+   terminal is implement-to-PR. Return. Do not poll CI.
 
-Open [work coordination](references/work-coordination/METHOD.md) when
-dispatching labor that would wait on CI or own an outcome end-to-end.
 Labor law: `SylphxAI/owner` `decisions/ADR-012-CONCISE-OWNER.md`.
-The default implementation terminal is pull request submitted with the named
-local oracle. CI, review, merge, deploy, and live readback are event-triggered
-later nodes; the Worker returns instead of waiting.
+Depth: [work coordination](references/work-coordination/METHOD.md).
 
 ## Output
 
-Return:
-
-- selected node or feasible node set;
-- why it is the best current choice;
-- owning product or repository;
-- relevant dependencies and constraints;
-- claim state; and
-- immediate next action.
-
-Repeat the method from fresh state whenever another selection is requested.
+- selected node or ready set
+- Capability ID and owning repo
+- write-set and real dependencies
+- claim / PR locator
+- next event if the Worker returned

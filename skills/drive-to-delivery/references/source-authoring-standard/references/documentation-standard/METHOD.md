@@ -31,7 +31,7 @@ replace it and does not copy the owner notebook.
 | What finished product is this? For whom? Not doing what? | Destination | `docs/vision.md` |
 | One customer-value quantity? | North Star Metric | Optional section in the destination file |
 | What completable slice now? | Goal | Owner `DASHBOARD.md` |
-| What capabilities / journeys / non-goals? | PRD | `docs/prd.md` |
+| What capabilities / journeys / non-goals? | PRD / capability DAG | `docs/prd.md` (ID \| Capability \| Depends on \| Done when) |
 | Exact I/O and failures? | Spec / tests | Schema, protobuf, tests |
 | Why did we choose A? | ADR | `docs/adr/` |
 | How does a user learn / do / look up? | Diátaxis | User docs only |
@@ -54,8 +54,9 @@ Vision is not a metric. A metric is not a Goal. A Goal is not a PRD.
 2. Point README at the destination. Do not copy it.
 3. Leave historical ADRs and research dumps historical.
 4. Active products converge entry docs when a claimed node already touches the
-   authority. Standby and retired products remain custody/history. Do not run a
-   one-shot fleet rewrite.
+   authority. Add or extend `docs/prd.md` with the capability table when that
+   product is touched. Standby and retired products remain custody/history.
+   Do not run a one-shot fleet rewrite of empty PRDs.
 
 ## Catch-up
 

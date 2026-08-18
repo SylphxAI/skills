@@ -9,23 +9,22 @@ Improve the active product from its current reality when the user has invited au
 
 ## Method
 
-1. Discover the product lifecycle state, primary users, important journeys, current source, live signals available to the task, exact claim, and recent work.
-2. Inspect enough of the product to identify all material independent candidates: user pain, missing capability, reliability risk, performance constraint, or quality gap.
-3. If acting as a scout, return the candidate nodes, real dependencies, write/effect conflicts, capacity needs, and disconfirming observations to the Owner. Do not choose portfolio priority or self-claim work.
-4. If acting as a Worker, bind the one claimed node, its write/effect set, authority, base, oracle, and asked terminal. Implement only that node at the owning layer.
-5. Run the changed path and repair issues found there while the claimed terminal remains open.
-6. Default product implementation terminal is pull request submitted with the named local oracle. Land, release, deploy, or verify live only when that exact layer is the explicit claimed terminal and authority includes it.
-7. Return at the asked terminal with the exact candidate locator, checks, residual contradiction, and next event or predicate. Do not wait on CI, review, merge, deploy, or live change.
+1. Read this product's `docs/vision.md` and `docs/prd.md`. If the PRD
+   has no capability table, add the short ID table when you already
+   touch the repo. Do not invent capabilities to fill rows.
+2. Inspect enough of the product to name independent nodes: user pain,
+   missing capability, reliability, or a real engine gap.
+3. If the outcome crosses repos, stop and require a locked contract.
+   Do not implement two crafts in one Worker.
+4. Bind one claimed node, one write-set, one asked terminal. Default
+   terminal is implement-to-PR.
+5. Run the changed path. Return at the terminal. Do not poll CI.
+6. An Active product never silently becomes Standby. If no worthwhile
+   node exists, say so. Do not invent a scout to occupy a cell.
 
-## Selection discipline
+Labor law: `SylphxAI/owner` `decisions/ADR-012-CONCISE-OWNER.md`.
 
-- Prefer changes that materially improve a real user path or remove a current delivery constraint.
-- Keep product and platform responsibilities with their existing owners.
-- Complete one coherent claimed node before opening another conflicting write set.
-- Use current product facts and plain reasoning to explain priority.
-- Record external dependencies as exact predicates and event sources.
-- An Active product never silently becomes Standby. If no worthwhile executable node exists, write coverage evidence (judgment + pointer) and leave the product with no admitted node. Only explicit lifecycle authority changes Standby. Do not invent a scout to keep a scheduler cell filled.
+## Output
 
-## Completion
-
-One betterment attempt finishes when its claimed node terminal is reached. The Active product remains in continuous betterment by duty and current coverage evidence, not by remaining `ready` / `claimed` / `deferred`. It is never declared permanently complete. Return admitted work delivered, changed paths run, strongest truthful delivery state, remaining predicates, and updated coverage evidence.
+Improvements delivered, Capability IDs touched, checks run, residual,
+and whether a later node is ready.
