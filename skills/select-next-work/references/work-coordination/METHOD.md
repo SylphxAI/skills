@@ -15,22 +15,27 @@ Chairman
        -> Workers
 ```
 
-The Owner maintains product lifecycle, locks contracts, computes the feasible
-ready set, names write/effect sets, and dispatches. A Worker executes one
-claimed node. There is no PM rank and no fourth executive.
+The Owner keeps the Active/Standby register and coverage evidence, locks
+contracts, admits work, computes the feasible ready set, and dispatches.
+A Worker executes one claimed node. There is no PM rank and no fourth
+executive.
 
-## Outcome, node, attempt
+## Duty, coverage, chance, admitted work
 
-- Every Active product has a standing continuous-betterment Outcome.
-- A node is one independently terminal slice with one contract or diagnostic
-  question, one write/effect set, one oracle, and one asked terminal.
+- Active is continuous betterment duty, not a scheduler cell.
+- Coverage evidence is the last substantive judgment and pointer. It
+  cannot dispatch or occupy a Worker.
+- A this-tick candidate is an admission proposal only.
+- An admitted node is one independently terminal slice with one contract
+  or A/B/O diagnostic, one write/effect set, one oracle, and one asked
+  terminal. Only admitted work is `ready`, `claimed`, or `deferred`.
 - A Worker attempt is disposable and ends at that terminal.
 
-Active does not mean a resident Worker. Each product frontier is `ready`,
-`claimed`, or `deferred(exact predicate + event source)`. Unknown or stale
-truth creates a bounded scout node; a fresh empty frontier remains Active with
-an exact wake or re-scout predicate. Only explicit lifecycle authority moves a
-product to Standby.
+Unknown is not scout-ready. Scout is admitted only when two mutually
+exclusive actions A/B and one observation O would select, cancel, or
+recut A/B. An Active product with no admitted node this tick remains
+in betterment if coverage evidence is current. Only explicit lifecycle
+authority moves a product to Standby.
 
 ## Return at the asked terminal
 

@@ -24,8 +24,8 @@ Improve the active product from its current reality when the user has invited au
 - Complete one coherent claimed node before opening another conflicting write set.
 - Use current product facts and plain reasoning to explain priority.
 - Record external dependencies as exact predicates and event sources.
-- An Active product never silently becomes Standby. A fresh scout with no worthwhile executable candidate returns an exact external wake or re-scout predicate; only explicit lifecycle authority changes Standby state.
+- An Active product never silently becomes Standby. If no worthwhile executable node exists, write coverage evidence (judgment + pointer) and leave the product with no admitted node. Only explicit lifecycle authority changes Standby. Do not invent a scout to keep a scheduler cell filled.
 
 ## Completion
 
-One betterment attempt finishes when its scout terminal or claimed node terminal is reached. The Active product remains in continuous betterment as `ready`, `claimed`, or `deferred(exact predicate + event source)`; it is never declared permanently complete. Return candidates or improvements delivered, changed paths run, strongest truthful delivery state, and remaining predicates.
+One betterment attempt finishes when its claimed node terminal is reached. The Active product remains in continuous betterment by duty and current coverage evidence, not by remaining `ready` / `claimed` / `deferred`. It is never declared permanently complete. Return admitted work delivered, changed paths run, strongest truthful delivery state, remaining predicates, and updated coverage evidence.
