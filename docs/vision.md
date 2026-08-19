@@ -6,9 +6,10 @@ It is not this week's Goal.
 ## What finished is
 
 Give an agent a lightweight, requestable guide for each real job: particular
-opinions, gotchas, and interfaces a capable model would otherwise miss. This
-repository is an open-source catalog of Agent Skills, not an agent runtime
-or a control plane.
+opinions, gotchas, and current interfaces a capable model's training would
+otherwise miss. Skills exist because model knowledge lags live APIs and
+writing standards. This repository is an open-source catalog of Agent Skills,
+not an agent runtime or a control plane.
 
 ## For whom
 

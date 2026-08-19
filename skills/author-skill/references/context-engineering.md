@@ -7,6 +7,7 @@ Authority: Anthropic, [The new rules of context engineering for Claude 5 generat
 - **System prompt** — what product this agent is in. Host-owned unless you are building a harness.
 - **CLAUDE.md / AGENTS.md** — what this repo is, then gotchas the filesystem does not show. Not a dump of every practice you might run into.
 - **Skills** — lightweight guides for one job. Particular opinions for this team or product. Overconstrain only in highly important areas.
+- **Subagent prompt** — the same writing standard at a narrower job. Pass the gotchas that job will miss; do not paste the parent system prompt.
 - **References** — load on demand. Prefer code, tests, and HTML mockups over a prose spec.
 
 ## Retired habits
