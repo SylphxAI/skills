@@ -31,4 +31,4 @@ Return a concise critical assessment containing:
 - conclusion with calibrated confidence; and
 - facts that would change the conclusion.
 
-Use a domain skill for specialized technical, legal, commercial, product, or security criteria. Use `record-structured-deliberation` when several participants must contribute and respond to positions.
+Use `review-domain` for specialized technical, legal, commercial, product, or security assessments. Use `record-structured-deliberation` when several participants must contribute and respond to positions.

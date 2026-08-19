@@ -24,5 +24,8 @@ Run the smallest real probe that can change a product decision.
 
 Return the hypothesis, probe, observed result, decision, and next work kind.
 
-A public demo can use `deploy-ephemeral-web-preview`. A probe that specifically
-tests managed infrastructure can use `wire-managed-backend-services`.
+For a short-lived public demo URL, open
+[ephemeral web preview](references/ephemeral-web-preview/METHOD.md).
+To share a non-secret file or log, open
+[ephemeral artifact](references/ephemeral-artifact/METHOD.md).
+A probe of managed infrastructure uses `build-product`.

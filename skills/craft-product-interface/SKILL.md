@@ -22,14 +22,15 @@ Create one coherent user flow that works across its important states, inputs, an
 
 ## References
 
-- [Interface craft rules](references/interface-craft-rules.md) for hierarchy and visual direction.
-- [States, forms, and recovery](references/states-forms-and-recovery.md) for stateful flows.
-- [Responsive mobile and input](references/responsive-mobile-and-input.md) for layout and control behavior.
-- [Accessibility, motion, and performance](references/accessibility-motion-and-performance.md) for inclusive interaction.
-- [Sensory feedback](references/sensory-feedback.md) when sound, music,
+- [Interface craft rules](./references/interface-craft-rules.md) for hierarchy and visual direction.
+- [States, forms, and recovery](./references/states-forms-and-recovery.md) for stateful flows.
+- [Responsive mobile and input](./references/responsive-mobile-and-input.md) for layout and control behavior.
+- [Accessibility, motion, and performance](./references/accessibility-motion-and-performance.md) for inclusive interaction.
+- [Sensory feedback](./references/sensory-feedback.md) when sound, music,
   haptics, camera, visual effects, or action-feedback hierarchy materially
   affect the flow.
 - [Visual verification and delivery](references/visual-verification-and-delivery.md) for implementation review.
+- [Verify local preview](references/verify-local-preview/METHOD.md) for load, screenshot, and console checks of a local web or game preview.
 
 ## Output
 

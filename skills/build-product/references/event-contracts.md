@@ -10,13 +10,13 @@ before choosing its schema, owner, transport, or specialist.
 | --- | --- | --- |
 | Domain event | In-process fact already decided by the owning domain or capability | `build-product` with this reference |
 | Integration event | The same fact crossing a capability, process, repository, runtime, or external-consumer boundary | `build-product` with this reference |
-| Delivery | A message sent to a person or another system, with a delivery operation and receipt | `deliver-app-events` |
-| Analytics | Measurement used by a declared product decision; never money, entitlement, or policy truth | `review-product-analytics-instrumentation` |
-| Operational telemetry | Protected evidence used to operate a system | `review-operational-observability` |
+| Delivery | A message sent to a person or another system, with a delivery operation and receipt | [deliver app events](deliver-app-events.md) |
+| Analytics | Measurement used by a declared product decision; never money, entitlement, or policy truth | `review-domain` (`product-analytics-instrumentation`) |
+| Operational telemetry | Protected evidence used to operate a system | `review-domain` (`operational-observability`) |
 
 Notifications add user-value, consent, preference, cadence, and suppression
-policy through `review-notification-strategy`; sending them still uses
-`deliver-app-events`. Do not use a delivery or analytics event as proof that the
+policy through `review-domain` (`notification-strategy`); sending them still uses
+`build-product`. Do not use a delivery or analytics event as proof that the
 domain transition committed.
 
 ## Domain and integration method
