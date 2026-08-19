@@ -11,6 +11,9 @@ constraints, objective, and solution represent the real decision.
 ## Method
 
 1. Open the [optimization modeling method](references/optimization-modeling-method.md).
+   Open [Goodhart and proxy failure](references/goodhart-and-proxy-failure.md)
+   when the objective can be gamed, leaked, or improved without improving the
+   real outcome.
 2. Define the decision owner, controllable actions, entities, horizon,
    frequency, latency, downstream effects, baseline policy, and output.
 3. Declare sets, parameters, units, sources, timestamps, uncertainty, and

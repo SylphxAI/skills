@@ -134,11 +134,11 @@ Rules:
 - When monetization is selected, state one primary commercial model and keep any alternatives explicitly subordinate. A free, public-interest, bundled, or otherwise non-commercial app may omit commerce for its business model and keep payment and advertising runtime absent.
 - Where the app creates honest durable or recurring paid value, evaluate purchase, IAP, or subscription as the primary exchange before relying on interruption-based IAA. Paid mechanics require credible paid value.
 - Ads are a contextual or supplementary model unless product evidence supports them as primary. Preserve useful core behavior, consent, age modes, payer/ad-free treatment, startup and low-end budgets.
-- Use `price-saas-subscription` when subscription/SaaS packaging is the independent decision, `build-payment-readiness` for provider/ledger correctness, and `review-domain` (`ad-monetization`) for in-product advertising.
+- Use `price-saas-subscription` when subscription/SaaS packaging is the independent decision, and `build-payment-readiness` for provider/ledger correctness. In-product advertising stays with the owning product design.
 
 ### Refund Consequence Contract
 
-App/game design declares semantics; `build-payment-readiness` and `review-domain` (`refund-and-support-flow`) implement and adjudicate them.
+App/game design declares semantics; `build-payment-readiness` and `operate-customer-support` implement and adjudicate them.
 
 ```text
 purchase/entitlement/value type:
@@ -216,16 +216,16 @@ Public review eligibility remains neutral across inferred sentiment, spend, rati
 | App monetization model and value-exchange semantics | `design-product` |
 | Subscription/SaaS price and package decision | `price-saas-subscription` |
 | Provider payment, ledger, settlement and entitlement projection | `build-payment-readiness` |
-| Refund consequence, repurchase, restriction, support and appeal | `review-domain` (`refund-and-support-flow`) |
+| Refund consequence, repurchase, restriction, support and appeal | `operate-customer-support` |
 | Subscription access state | `build-payment-readiness` |
-| Ad placement/monetization | `review-domain` (`ad-monetization`) |
+| Ad placement/monetization | owning product design |
 | Notification channel strategy | `review-domain` (`notification-strategy`) |
 | Daily rewards and streaks | `review-domain` (`daily-reward-and-streak`) |
-| Referral qualification, grant, reversal and fraud | `review-domain` (`referral-loop`) |
-| One promotion/update/cross-promotion campaign | `review-domain` (`promotion-campaign`) |
+| Referral qualification, grant, reversal and fraud | owning product design |
+| One promotion/update/cross-promotion campaign | owning product design |
 | Platform-specific authentic public review request policy | `run-product-feedback-loop` |
 | Universal private feedback, review ingestion and product-learning close-loop | `run-product-feedback-loop` |
-| Event/identity/metric instrumentation | `review-domain` (`product-analytics-instrumentation`) |
+| Event/identity/metric instrumentation | owning product repository |
 | Offline/sync conflict | `review-domain` (`offline-sync-conflict`) |
 | Store/channel release evidence | `build-distribution-readiness` |
 | Localized experience semantics | `design-product` |

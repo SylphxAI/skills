@@ -19,7 +19,7 @@ Restore the affected contract with a focused owning-cause repair.
 8. Remove temporary diagnostics, superseded containment, exploratory edits, and obsolete compatibility code.
 9. Advance through landing, deployment, or live recovery when those states are part of the request and authority is available.
 
-Read [reproduction-driven repair](references/reproduction-driven-repair.md) when the cause, reproducer, nondeterminism, or test boundary needs deeper treatment. Read [finish product](references/finish-product/METHOD.md) when the job is to deburr an already integrated candidate to a declared target. Use `implement-continuous-integration` when the product defect is the pipeline itself. Use `remediate-frontend-performance` when the defect is a measured frontend path.
+Read [reproduction-driven repair](references/reproduction-driven-repair.md) when the cause, reproducer, nondeterminism, or test boundary needs deeper treatment. Read [finish product](references/finish-product/METHOD.md) when the job is to deburr an already integrated candidate to a declared target. Read [frontend performance](references/frontend-performance/METHOD.md) when the defect is a measured frontend path. Use `implement-continuous-integration` when the product defect is the pipeline itself.
 
 ## Output
 
