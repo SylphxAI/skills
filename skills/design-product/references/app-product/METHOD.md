@@ -22,7 +22,3 @@ Open only the files the current app needs:
 - [Quality and reach](app-quality-and-reach.md)
 - [Desktop OS](desktop-os-experience.md)
 - [Validation](app-validation-and-automation.md)
-
-Return an app blueprint another builder can implement. Games use
-[game product](../game-product/METHOD.md). Multi-tenant service platforms use
-[SaaS web platform](../saas-web-platform/METHOD.md).

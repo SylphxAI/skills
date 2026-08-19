@@ -1,37 +1,10 @@
 ---
 name: craft-product-interface
-description: Design, review, build, or polish one product interface flow with clear hierarchy, complete states, responsive behavior, accessibility, and representative visual verification.
+description: "Design, implement, or review one product UI flow across loading, empty, error, and success, with accessibility and a real render check. Use when the user asks to build a screen, review UX, fix a form, or check responsive or accessible behavior of a specific flow. Do not use to extract a design system, build a Telegram bot, or produce store screenshots."
 ---
 
 # Craft Product Interface
 
-Create one coherent user flow that works across its important states, inputs, and viewport conditions.
+Match surrounding design-system density. Verify on a real render, not a description of the UI. Essential meaning has a visual or textual path — audio, haptics, and color never carry unique required state.
 
-## Method
-
-1. Define the user, primary job, entry point, completion state, product truth, and target platforms.
-2. Inspect the existing design system, components, routes, content, state ownership, and nearby flows.
-3. Map the complete journey: initial, loading, empty, partial, success, validation, error, offline, permission, and recovery states that apply.
-4. Establish information hierarchy, action priority, semantic roles, typography, spacing, color, and elevation before decorative detail.
-5. Use existing tokens and components, adding the smallest new reusable role that the flow needs.
-6. Adapt layout and interaction to compact, medium, and wide viewports plus touch, keyboard, pointer, controller, and assistive input where relevant.
-7. Write interface text in user vocabulary with concrete actions and recovery guidance.
-8. Implement accessibility through semantic structure, labels, focus, contrast, target size, text scaling, reduced motion, captions, sensory alternatives, and input alternatives.
-9. Render the representative path and inspect real content, overflow, state transitions, focus behavior, responsive layouts, and console output.
-10. For a review request, return prioritized findings with precise locations. For a build or polish request, return the implementation and changed-path checks.
-
-## References
-
-- [Interface craft rules](./references/interface-craft-rules.md) for hierarchy and visual direction.
-- [States, forms, and recovery](./references/states-forms-and-recovery.md) for stateful flows.
-- [Responsive mobile and input](./references/responsive-mobile-and-input.md) for layout and control behavior.
-- [Accessibility, motion, and performance](./references/accessibility-motion-and-performance.md) for inclusive interaction.
-- [Sensory feedback](./references/sensory-feedback.md) when sound, music,
-  haptics, camera, visual effects, or action-feedback hierarchy materially
-  affect the flow.
-- [Visual verification and delivery](references/visual-verification-and-delivery.md) for implementation review.
-- [Verify local preview](references/verify-local-preview/METHOD.md) for load, screenshot, and console checks of a local web or game preview.
-
-## Output
-
-Return the finished flow or review, the states and surfaces covered, the files changed when applicable, and the representative render or interaction checks performed.
+Open [interface craft rules](references/interface-craft-rules.md) for hierarchy. Open [states, forms, and recovery](references/states-forms-and-recovery.md) for stateful flows. Open [responsive mobile and input](references/responsive-mobile-and-input.md) for layout. Open [accessibility, motion, and performance](references/accessibility-motion-and-performance.md) for inclusive interaction. Open [sensory feedback](references/sensory-feedback.md) when sound, haptics, camera, or effects matter. Open [visual verification](references/visual-verification-and-delivery.md) and [local preview](references/verify-local-preview/METHOD.md) when checking a running surface.

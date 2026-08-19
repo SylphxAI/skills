@@ -2,22 +2,25 @@
 
 ## Package shape
 
-A skill represents one recurring job that benefits from a reusable method.
-Create `skills/<name>/SKILL.md` with the standard `name` and `description`
-frontmatter. Put detailed material in references and executable helpers in
-scripts only when the main method uses them.
+A skill represents one recurring job that benefits from a particular opinion,
+gotcha, or interface a capable model would otherwise miss. Create
+`skills/<name>/SKILL.md` with the standard `name` and `description`
+frontmatter. Put long material in references and executable helpers in
+scripts only when the body uses them.
 
 The best contribution usually improves an existing semantic owner. A new
 package is appropriate when users request an independently meaningful job with
-its own loading description and output.
+its own loading description.
 
 ## Writing
 
-- Lead with the action path and expected result.
-- Use plain product and domain language.
-- State the permitted path, owner, boundary, or selection condition directly.
-- Open references only where they help the current task.
-- Keep one source for each instruction or fact.
+- Encode particular opinions and gotchas, not numbered recipes of ordinary work.
+- Write a description that says what the skill does and when to use it,
+  including phrases a user would type and nearby cases that should not trigger.
+- Open references only when a stated condition holds.
+- Prefer a script or a short template when the job is fragile or needs a format.
+- Do not constrain judgement except money, deletion, credentials, safety, or a
+  public contract.
 - Use host-specific metadata for a real consumed setting outside the
   `SKILL.md` contract.
 

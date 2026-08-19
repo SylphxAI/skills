@@ -6,13 +6,8 @@ Use when the primary promise is play, mastery, fantasy, or progression.
 
 - Core loop, meta loop, and session loop are named and independently fun.
 - Baseline play remains viable without paid acceleration.
-- Economy, gacha, and live-ops decisions hand off to
-  [game economy](../../../review-domain/references/game-economy/METHOD.md) rather
-  than being restated here.
 - Controls, juice, and failure feedback are tested on the actual input device.
-- Soft launch is a bounded learning exposure, not a hidden global launch. Use
-  `review-domain` (game-soft-launch) when that is the decision. Use
-  `design-product-experiment` when the job is a pre-registered causal protocol.
+- Soft launch is a bounded learning exposure, not a hidden global launch.
 
 ## Depth
 
@@ -30,5 +25,3 @@ Open only the files the current game needs:
 - [Genre checks](genre-acceptance-checks.md)
 - [Multiplayer trust](multiplayer-trust-boundary.md)
 - [Controls self-test](player-controls-self-test.md)
-
-Return a game blueprint another builder can implement.

@@ -137,9 +137,8 @@ For a material policy/rule/model/queue change, define:
 9. halt, rollback, decision replay, and correction of already affected parties;
 10. incident routing and post-release delayed-outcome review.
 
-Define the product evidence obligation here, then hand implementation to
-`engineer-testable-requirements`, the owning product repository and release
-path, and `run-incident-response`.
+Define the product evidence obligation here. Implementation, release, and
+incident routing stay with the owning repository.
 
 ## Trust economics
 

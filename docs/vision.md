@@ -5,13 +5,14 @@ It is not this week's Goal.
 
 ## What finished is
 
-Give an agent one reusable, requestable method for each real job. This
+Give an agent a lightweight, requestable guide for each real job: particular
+opinions, gotchas, and interfaces a capable model would otherwise miss. This
 repository is an open-source catalog of Agent Skills, not an agent runtime
 or a control plane.
 
 ## For whom
 
-Agents and people who need a specialized method for a recurring product,
+Agents and people who need a specialized guide for a recurring product,
 engineering, operations, design, or research job.
 
 ## Not doing
@@ -27,16 +28,16 @@ engineering, operations, design, or research job.
 A real request can discover, load, and perform the named job from
 `skills/<name>/SKILL.md` under the [Agent Skills
 specification](https://agentskills.io/specification). Hosts own discovery
-and installation. A green structural check is not proof that the method
+and installation. A green structural check is not proof that the guide
 improves outcomes.
 
 ## Product promise
 
-**Right job -> right method -> trust capped by current evidence.**
+**Right job -> right guide -> trust capped by current evidence.**
 
 Every installable package has one semantic owner and one source contract:
 `skills/<name>/SKILL.md`. Optional references, scripts, and assets deepen
-that method; they do not create a second job manifest.
+that guide; they do not create a second job manifest.
 
 ## Boundary
 
