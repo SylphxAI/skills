@@ -11,16 +11,18 @@ behavior as distinct facts.
 
 ## Resource selection
 
-- Read [distribution channel matrix](references/distribution-channel-matrix.md)
+- Read [distribution channel matrix](./references/distribution-channel-matrix.md)
   for app stores, web/PWA, Microsoft Store, Steam, PC storefronts, and consoles.
-- Read [CLI and package distribution](references/cli-and-package-distribution.md)
+- Read [CLI and package distribution](./references/cli-and-package-distribution.md)
   for direct downloads, shell and PowerShell installers, npm, Homebrew, WinGet,
   Cargo, OCI, and command-line update ownership.
-- Read [desktop and PC release readiness](references/desktop-and-pc-release-readiness.md)
+- Read [desktop and PC release readiness](./references/desktop-and-pc-release-readiness.md)
   for macOS, Windows, signing, installers, launchers, and storefront behavior.
 - Read [release communication](references/release-communication.md) when the
   release needs a changelog, update note, migration notice, patch note, support
   brief, or incident follow-up.
+- Read [store listing](references/store-listing/METHOD.md) when metadata,
+  creatives, conversion, or store-compliance copy is the job.
 
 Current official channel requirements own execution-time details.
 

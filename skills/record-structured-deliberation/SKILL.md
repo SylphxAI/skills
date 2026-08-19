@@ -32,4 +32,4 @@ Use the team's existing meeting note, issue, decision record, or ADR format. Inc
 
 Store sensitive participant views and source material in their authorized location. Publish the minimum useful synthesis for the intended audience.
 
-Use `analyze-critically` for a single-analyst challenge and a domain skill for subject-specific criteria.
+Use `analyze-critically` for a single-analyst challenge and `review-domain` for subject-specific assessment criteria.

@@ -32,9 +32,9 @@ loop with the affected people.
    the observed outcome and durable decision.
 
 Read [feedback learning](references/feedback-learning-loop.md) when the task
-needs deeper intake, clustering, routing, or measurement guidance. Use
-`design-review-solicitation-policy` when the request asks when or how to invite
-a public store or platform review.
+needs deeper intake, clustering, routing, or measurement guidance. Open
+[review solicitation policy](references/review-solicitation-policy/METHOD.md)
+when the request asks when or how to invite a public store or platform review.
 
 ## Output
 

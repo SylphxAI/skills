@@ -9,9 +9,11 @@ for product, engineering, operations, design, and research work.
 - Capabilities: [`docs/capabilities.md`](docs/capabilities.md)
 
 Each package lives at `skills/<name>/` and uses `SKILL.md` as its source. A
-package may include references, scripts, and assets when the skill genuinely
-uses them. `SKILL.md` is the sole package contract, and each agent host owns
-installation and discovery through its native interface.
+listing is one recurring, independently accepted job. Domain checklists and
+shape-specific depth live in `references/` of the owning job. A package may
+include scripts and assets when the skill genuinely uses them. `SKILL.md` is
+the sole package contract, and each agent host owns installation and discovery
+through its native interface.
 
 ## Install
 

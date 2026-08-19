@@ -25,9 +25,11 @@ Keep one accepted objective moving until its requested result is true or an exte
 When writing or placing product documentation, open
 [documentation-standard](references/source-authoring-standard/references/documentation-standard/METHOD.md).
 
-When one objective spans independently owned artifacts or a shared interface,
-use `compose-product-program` to establish the contract, dependency, and
-handoff shape before driving the accepted actions.
+Open only the matching depth:
+
+- [Product program](references/product-program/METHOD.md) when one outcome spans independently owned artifacts or a shared interface
+- [Select next work](references/select-next-work/METHOD.md) when the user asks the agent to choose from an existing backlog
+- [Open product betterment](references/open-product-betterment/METHOD.md) when the job is to find and land the highest-value available improvement
 
 ## Delivery shape
 

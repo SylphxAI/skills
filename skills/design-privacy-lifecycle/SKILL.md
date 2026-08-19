@@ -1,11 +1,9 @@
 ---
 name: design-privacy-lifecycle
-description: "Design a privacy lifecycle across collection, purpose, consent, retention, access, and deletion."
+description: "Design a privacy lifecycle across collection, purpose, consent, retention, access, and deletion. Use also when operating a specific data-rights request through intake, fulfillment, and closure."
 ---
 
 # Design Privacy Lifecycle
-
-# Review Privacy Data Lifecycle Review
 
 Produce one **Privacy Data Lifecycle Contract** that makes every material personal-data flow purpose-bound, controllable, time-bounded, and change-safe. This is a product and operating design artifact, not legal advice or a claim of compliance.
 
@@ -21,8 +19,9 @@ A combined brief composes those owners. Keep one canonical fact home and pass ex
 
 ## Resource routing
 
-- Read `references/data-inventory-purpose-and-controls.md` when data categories, purposes, lineage, access, vendors, or control ownership matter.
-- Read `references/consent-retention-and-change.md` when choices, permissions, vendors, retention, regional controls, AI reuse, or material changes matter.
+- Read [data inventory, purpose, and controls](references/data-inventory-purpose-and-controls.md) when data categories, purposes, lineage, access, vendors, or control ownership matter.
+- Read [consent, retention, and change](references/consent-retention-and-change.md) when choices, permissions, vendors, retention, regional controls, AI reuse, or material changes matter.
+- Read [operate data rights](references/operate-data-rights/METHOD.md) when the job is fulfilling a specific access, export, correction, deletion, restriction, objection, or appeal request.
 
 ## Source verification
 
