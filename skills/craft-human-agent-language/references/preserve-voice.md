@@ -1,8 +1,3 @@
----
-name: edit-preserving-voice
-description: Edit text for clarity, structure, correctness, or length while preserving the author's voice, meaning, factual claims, dialect, register, and intentional style.
----
-
 # Edit Preserving Voice
 
 Improve the text while keeping it recognizably authored by the same person.

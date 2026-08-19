@@ -159,7 +159,7 @@ Use this for iOS and Android subscription apps before store submission.
 ## Entitlement and refund integration
 
 `build-payment-readiness` owns provider normalization, ledger, and entitlement
-correctness. `review-domain` (`refund-and-support-flow`) owns spent or transferred value,
+correctness. `operate-customer-support` owns spent or transferred value,
 account action, support, appeal, and abuse semantics.
 
 | Provider event | Release integration check |

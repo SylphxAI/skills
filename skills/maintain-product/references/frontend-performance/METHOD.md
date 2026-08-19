@@ -1,8 +1,3 @@
----
-name: remediate-frontend-performance
-description: "Remediate frontend performance with before/after path metrics."
----
-
 # Remediate Frontend Performance
 
 Improve one user-visible frontend path and remeasure the same behavior.
@@ -20,7 +15,7 @@ Improve one user-visible frontend path and remeasure the same behavior.
    accessibility, visual fidelity, and representative lower-end behavior.
 6. Report local, candidate, or production measurements at their observed layer.
 
-Open the [frontend runtime performance method](references/frontend-runtime-performance-method.md)
+Open the [frontend runtime performance method](frontend-runtime-performance-method.md)
 for technique depth.
 
 ## Output

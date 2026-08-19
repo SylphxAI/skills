@@ -196,13 +196,13 @@ experimental design.
 | Need | Owner artifact |
 | --- | --- |
 | Treatment content and policy | exact domain-specialist decision |
-| Events, identity, metric computation, QA | `review-domain` (`product-analytics-instrumentation`) |
+| Events, identity, metric computation, QA | owning product repository |
 | Assignment service, flags, exposure logs | owning engineering project |
 | Deployment, rollback, health, live readback | owning release-path artifact |
 | High-risk rights/safety/privacy/AI review | current domain evidence plus applicable binding Skills |
 | Price/package architecture | `price-saas-subscription` |
 | Notification policy | `review-domain` (`notification-strategy`) |
-| Marketplace seller intervention | `review-domain` (`marketplace-seller-performance`) when published |
+| Marketplace seller intervention | `review-domain` (`marketplace-trust-operations`) when published |
 
 Each handoff has a stable artifact/version, exact requirement, blocked decision,
 acceptance condition, and result reference. Resolve only immutable artifact versions.

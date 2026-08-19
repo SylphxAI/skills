@@ -47,8 +47,8 @@ evidence for this experiment.
 
 - The owning product repository and release path own feature flags, assignment
   services, exposure infrastructure, deployment, rollback, and production proof.
-- `review-domain` (`product-analytics-instrumentation`) owns event, identity, warehouse,
-  metric-pipeline, and QA implementation; this skill states measurement needs.
+- The owning product repository owns event, identity, warehouse,
+  metric-pipeline, and QA implementation; this pack states measurement needs.
 - Domain specialists own the treatment: pricing, notifications, game economy,
   marketplace policy, AI behavior, accessibility, privacy, and support.
 - Use `synthesize-market-research` when the uncertainty requires sourced market

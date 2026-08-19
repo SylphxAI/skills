@@ -28,7 +28,7 @@ Next:
 ```
 
 Use only the sections the audience needs. For voice-sensitive editing, use
-`edit-preserving-voice`.
+`craft-human-agent-language` and its preserve-voice reference.
 
 ## Output
 

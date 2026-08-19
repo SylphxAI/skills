@@ -20,7 +20,7 @@ Write the smallest clear artifact that helps its intended reader understand or a
 9. Keep only repetition, terminology, and process detail that supports a reader action.
 10. Re-read from the audience's starting point and exercise executable instructions on the changed path.
 
-Read [ISO plain-language guidance](references/iso-plain-language.md) for formal or long-lived public documents.
+Read [ISO plain-language guidance](references/iso-plain-language.md) for formal or long-lived public documents. Read [preserve voice](references/preserve-voice.md) when the job is to edit without erasing the author's stance, rhythm, dialect, or commitments. Use `write-high-signal-update` when the artifact is a short status or decision update.
 
 ## Output
 

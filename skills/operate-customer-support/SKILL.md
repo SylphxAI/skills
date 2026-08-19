@@ -10,7 +10,7 @@ recurring product problems into owned corrections.
 
 ## Method
 
-1. Open [support operations patterns](./references/support-ops-patterns.md).
+1. Open [support operations patterns](references/support-ops-patterns.md).
 2. Define products, customers, locales, accessibility needs, channels,
    operating hours, contact reasons, service expectations, and risk boundaries.
 3. Give each contact reason a source of truth, required context, priority,

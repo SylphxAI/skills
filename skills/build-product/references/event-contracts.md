@@ -10,9 +10,9 @@ before choosing its schema, owner, transport, or specialist.
 | --- | --- | --- |
 | Domain event | In-process fact already decided by the owning domain or capability | `build-product` with this reference |
 | Integration event | The same fact crossing a capability, process, repository, runtime, or external-consumer boundary | `build-product` with this reference |
-| Delivery | A message sent to a person or another system, with a delivery operation and receipt | [deliver app events](deliver-app-events.md) |
-| Analytics | Measurement used by a declared product decision; never money, entitlement, or policy truth | `review-domain` (`product-analytics-instrumentation`) |
-| Operational telemetry | Protected evidence used to operate a system | `review-domain` (`operational-observability`) |
+| Delivery | A message sent to a person or another system, with a delivery operation and receipt | `build-product` delivery path |
+| Analytics | Measurement used by a declared product decision; never money, entitlement, or policy truth | product analytics in the owning repository |
+| Operational telemetry | Protected evidence used to operate a system | operations in the owning repository |
 
 Notifications add user-value, consent, preference, cadence, and suppression
 policy through `review-domain` (`notification-strategy`); sending them still uses

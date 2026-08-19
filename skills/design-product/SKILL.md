@@ -5,35 +5,43 @@ description: "Design a product blueprint for an app, game, SaaS, or other digita
 
 # Design Product
 
-Turn a product opportunity into a coherent blueprint that can guide implementation and evaluation.
+Turn a product opportunity into a coherent blueprint another builder can
+implement.
 
 ## Method
 
-1. Define the target users, job, current alternatives, product promise, desired outcome, constraints, and decision owner.
-2. Describe the core value loop and the shortest journey from entry to first meaningful value and recurring value.
-3. Map capabilities, user roles, information, content, states, permissions, failure behavior, recovery, and lifecycle events.
-4. Define the product's primary surfaces and how they adapt across platforms, devices, locales, accessibility needs, and connectivity conditions.
-5. Choose the architecture, state ownership, public interfaces, trust boundaries, external services, observability, and operational responsibilities that support the product promise.
-6. Design activation, retention, collaboration, support, pricing or entitlement, distribution, privacy, safety, and exit behavior where they apply.
-7. Use realistic end-to-end scenarios to expose missing states, contradictions, and ownership gaps.
-8. Separate accepted product decisions, assumptions, open questions, and implementation choices.
-9. Place the blueprint in the project's existing product documentation and hand implementation slices to `build-product`.
+1. Define users, job, current alternatives, product promise, desired outcome,
+   constraints, and decision owner.
+2. If materially different concepts are still live, open
+   [space exploration](references/space-exploration/METHOD.md) before locking
+   a direction.
+3. Describe the core value loop and the shortest path from entry to first
+   meaningful value and recurring value.
+4. Map capabilities, roles, information, states, permissions, failure,
+   recovery, and lifecycle events.
+5. Define primary surfaces and how they adapt across platforms, devices,
+   locales, accessibility, and connectivity.
+6. Choose architecture, state ownership, public interfaces, trust boundaries,
+   external services, observability, and operational responsibilities.
+7. Design activation, retention, collaboration, support, pricing, distribution,
+   privacy, safety, and exit where they apply.
+8. Open only the shape pack the product actually is:
+   [app](references/app-product/METHOD.md),
+   [game](references/game-product/METHOD.md), or
+   [SaaS web platform](references/saas-web-platform/METHOD.md).
+9. Open further depth only when the job needs it:
+   [portfolio](references/product-portfolio/METHOD.md),
+   [marketing automation](references/marketing-automation/METHOD.md),
+   [provenance](references/provenance-system/METHOD.md),
+   [semantic taxonomy](references/semantic-taxonomy/METHOD.md).
+10. Separate accepted decisions, assumptions, open questions, and
+    implementation choices. Hand slices to `build-product`.
 
-## References
-
-Open only the pack the current product shape needs:
-
-- [Space exploration](references/space-exploration/METHOD.md) when materially different concepts must be generated before a direction is chosen
-- [App product](references/app-product/METHOD.md) for application journeys, reach, and desktop or mobile surfaces
-- [Game product](references/game-product/METHOD.md) when the promise is play, mastery, progression, or live game operations
-- [SaaS web platform](references/saas-web-platform/METHOD.md) for public-acquisition-to-authenticated-service platforms
-- [Product portfolio](references/product-portfolio/METHOD.md) for multi-product boundaries, shared capabilities, and bundles
-- [Marketing automation](references/marketing-automation/METHOD.md) for authorized journeys and messaging
-- [Provenance system](references/provenance-system/METHOD.md) for traceable sources and transformations
-- [Semantic taxonomy](references/semantic-taxonomy/METHOD.md) for a usable product vocabulary
-
-Privacy lifecycle, pricing, payments, and interface craft stay on their own listings.
+Privacy lifecycle, pricing, payments, and interface craft stay on their own
+listings.
 
 ## Output
 
-Return the product promise, users, journeys, capability and state model, interface surfaces, architecture and ownership, business and operating model, lifecycle behavior, accepted decisions, and open questions.
+Return promise, users, journeys, capability and state model, surfaces,
+architecture and ownership, business and operating model, accepted decisions,
+and open questions.
