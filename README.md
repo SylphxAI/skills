@@ -1,7 +1,12 @@
 # Sylphx Agent Skills
 
-Reusable [Agent Skills](https://agentskills.io/specification) for product,
-engineering, operations, design, and research work.
+Reusable, organization-neutral [Agent Skills](https://agentskills.io/specification)
+for product, engineering, operations, design, and research work.
+
+- Ordinary: `none` — this catalog is not a public website. Customers browse this repository and install through host plugin marketplaces. `https://sylphx.com` is the Sylphx Platform marketing site, not this catalog.
+- Preview: `none` — GitHub Pages is not enabled, and no product-owned preview or dogfood web host is admitted. `https://sylphx.com/skills` redirects to a Platform login, not this catalog.
+- Vision: [`docs/vision.md`](docs/vision.md)
+- Capabilities: [`docs/capabilities.md`](docs/capabilities.md)
 
 Each package lives at `skills/<name>/` and uses `SKILL.md` as its source. A
 package may include references, scripts, and assets when the skill genuinely
@@ -69,10 +74,6 @@ Browse [`skills/`](skills/) by job name. The frontmatter description in each
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Pull requests run one fast check for
 the Agent Skills format, local links, and bundled script behavior.
-
-## Destination
-
-The product destination is [docs/vision.md](docs/vision.md).
 
 ## License
 
