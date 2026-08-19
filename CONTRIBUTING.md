@@ -15,6 +15,9 @@ its own loading description.
 ## Writing
 
 - Encode particular opinions and gotchas, not numbered recipes of ordinary work.
+- Prefer one judgement heuristic that stays true over absolute rules that are
+  not always true. Constrain only money, deletion, credentials, safety, or a
+  public contract.
 - Write a description that says what the skill does and when to use it,
   including phrases a user would type and nearby cases that should not trigger.
 - Open references only when a stated condition holds.

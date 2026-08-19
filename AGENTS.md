@@ -9,6 +9,7 @@ The product destination is [docs/vision.md](docs/vision.md).
 - Search `skills/` for the semantic owner before editing or adding a package.
 - Keep one recurring job per skill and one semantic owner per instruction.
 - Encode particular opinions and gotchas, not numbered recipes of ordinary work.
+  Prefer judgement heuristics that stay true over absolute rules that do not.
 - Place optional depth in references and say when to open each file.
 - Keep scripts that implement real skill behavior and test those scripts.
 - Use native host discovery and installation paths.
