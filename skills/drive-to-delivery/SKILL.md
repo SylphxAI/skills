@@ -1,6 +1,6 @@
 ---
 name: drive-to-delivery
-description: "Drive one accepted engineering or product objective to its requested terminal. Use when work spans several dependent actions and completion matters more than a plan or partial checkpoint."
+description: "Drive one already accepted engineering or product objective to its requested terminal. Use when completion matters more than a plan. Do not use to choose what to do next from a backlog."
 ---
 
 # Drive To Delivery
@@ -33,9 +33,7 @@ external blocker requires new authority.
 When writing or placing product documentation, open
 [documentation-standard](references/source-authoring-standard/references/documentation-standard/METHOD.md).
 
-If the user asks what to do next from an existing backlog, select the strongest
-unblocked independently useful outcome and claim it in the team's existing
-tracker. Do not invent a second coordination ledger.
+If the user asks what to do next from a backlog, use `select-next-work`.
 
 ## Delivery shape
 

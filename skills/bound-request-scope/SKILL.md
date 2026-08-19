@@ -33,3 +33,6 @@ Chosen path:
 ```
 
 Refresh the contract when the user changes the objective or a discovered fact changes the path.
+
+Completing an already accepted multi-step objective is `drive-to-delivery`.
+Choosing the next backlog item is `select-next-work`.

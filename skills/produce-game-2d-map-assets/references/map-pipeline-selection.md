@@ -19,22 +19,6 @@ Use these modes as the first decision layer:
 After choosing a mode, define its `visual_model`, `runtime_object_model`,
 `collision_model`, and `engine_target`.
 
-## Genre Routing Table
-
-| User asks for | Default mode | Notes |
-| --- | --- | --- |
-| Pokemon-like, monster-taming RPG, top-down RPG route/town | `tile_mode` | Add props, encounter zones, exits, NPC/actor spawn markers, and collision. |
-| Tower defense, Kingdom Rush-like | `scene_mode` | Add path metadata, build slots, spawn/exit hooks, blockers, and optional engine scene scaffold. |
-| Survivors-like arena | `scene_mode` or `tile_mode` | Use sparse blockers, spawn zones/rings, camera bounds, and props. |
-| Mega Man-like, side-view action, platformer, runner | `side_scroll_mode` | Use parallax layers plus platform/object/collision metadata. |
-| Metroidvania | `side_scroll_mode` or `room_chunk_mode` | Use room/chunk exits and camera bounds; use tilemap when the engine expects grid collision. |
-| Beat-em-up / brawler | `side_scroll_mode` | Use parallax/background depth plus a walkable belt polygon, enemy wave zones, and props. |
-| Tactical RPG, grid strategy | `grid_mode` | Store terrain, move cost, defense/effects, unit slots, and collision. |
-| Factory / automation | `grid_mode` | Store buildable cells, resource nodes, machine slots, belts/conveyors, and item lanes. |
-| Card/board battler or UI-heavy game | `grid_mode` | Store board slots, UI zones, interaction regions, and background art. |
-| Roguelike room, procedural dungeon, modular rooms | `room_chunk_mode` | Store chunk sockets, exits, collision, spawn markers, and seam validation. |
-| Visual novel, title screen, fixed battle background | `baked_scene_mode` | Select for a fixed visual whose runtime uses the image as one unit. |
-
 ## Playable Map Default
 
 For a playable map, level, stage, room, prototype, or engine scene, deliver a

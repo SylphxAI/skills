@@ -1,35 +1,32 @@
 ---
 name: review-domain
-description: "Review one product or operations domain into a ranked assessment. Use for launch readiness, accessibility, game economy, marketplace trust, abuse, experiments, offline sync, notifications, or similar go/no-go reviews. Domain methods live in references."
+description: "Assess one product or operations domain into ranked findings for a go/no-go, hold, or risk decision. Use for launch readiness, soft launch, accessibility, originality, game economy, marketplace trust, account recovery, notifications, or daily rewards. Do not use for designing an experiment, sync protocol, or abuse-control system."
 ---
 
 # Review Domain
 
-Produce one assessment for a single product or operations domain. Domain
-checklists differ; they are references, not separate listing skills.
-
-## When to use
-
-- A go/no-go, hold, or ranked-findings decision
-- Launch, accessibility, economy, trust, abuse, experiment, sync, or
-  notification review
-- Not to implement the fix unless the user expands scope to `build-product`
-  or `maintain-product`
+Produce one ranked assessment of an exact candidate in one domain. This is a
+review job: findings, residuals, and an owner action. It is not a design
+protocol and not a router for every product topic.
 
 ## Method
 
-1. Frame the subject, exact candidate, users, success criteria, non-goals, and
-   decision owner.
-2. Open [the shared review rhythm](references/review-playbook-skeleton.md).
-3. Open **one** matching pack from [the domain index](references/INDEX.md).
-   If no pack matches, still run the shared rhythm against current evidence.
-4. Gather evidence from current systems. Separate fact, inference, and unknown.
-5. Return ranked findings, residuals, and owner actions for that domain.
-6. After several domain reviews, open
-   [multi-review synthesis](references/multi-review-synthesis/METHOD.md)
-   only when the ask is a combined closure decision.
+1. Frame the exact candidate, users at risk, decision (launch, hold, withdraw,
+   or ranked findings), non-goals, and decision owner.
+2. Separate observation, inference, and unknown. Prefer current systems over
+   memory.
+3. Open [the shared review rhythm](references/review-playbook-skeleton.md).
+4. Open **one** matching pack from [the domain index](references/INDEX.md) when
+   that domain has specialized rules. If none matches, still complete the
+   assessment from evidence.
+5. Return ranked findings, evidence gaps, and owner actions.
+6. After several domain reviews of the same candidate, open
+   [multi-review synthesis](references/multi-review-synthesis/METHOD.md).
+
+Design an experiment with `design-product-experiment`. Design offline sync with
+`design-offline-sync`. Model abuse controls with `model-product-abuse-risk`.
+Implement a fix with `build-product` or `maintain-product`.
 
 ## Output
 
-One domain review record: ranked findings, evidence gaps, residuals, and
-recommended actions.
+One domain review record: ranked findings, residuals, and recommended actions.
