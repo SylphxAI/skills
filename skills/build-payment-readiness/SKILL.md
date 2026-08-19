@@ -20,7 +20,7 @@ Create a payment path whose money, access, provider, support, and finance states
 9. Exercise sandbox and production-shaped success, decline, retry, restore, refund, dispute, delayed-event, and outage-replay paths.
 10. Assign dashboards, alerts, runbooks, pause controls, exception queues, and finance-close ownership.
 
-Read [Payment platform patterns](references/payment-platform-patterns.md) for channel behavior and [Billing reconciliation patterns](references/billing-reconciliation-patterns.md) for settlement and close design.
+Read [Payment platform patterns](references/payment-platform-patterns.md) for channel behavior and [Billing reconciliation patterns](references/billing-reconciliation-patterns.md) for settlement and close design. Seller payouts belong to `operate-marketplace-payouts`. Customer and entitlement consequence of a refund belong to `design-refund-support-flow`.
 
 ## Output
 

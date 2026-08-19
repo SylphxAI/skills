@@ -23,7 +23,7 @@ Move all required behavior and data to the destination, switch authority once, a
 
 ## Data cutovers
 
-Use [Database cutover and migration](references/database-cutover-and-migration.md) for online schema changes, conserved-value data, large-table locking risk, shared multi-tenant state, or external clients. Apply the destination database's standard migration tool and keep one production writer at completion.
+Use [Database cutover and migration](references/database-cutover-and-migration.md) for online schema changes, conserved-value data, large-table locking risk, shared multi-tenant state, or external clients. Apply the destination database's standard migration tool and keep one production writer at completion. When the job is preserving customer meaning across a source and target, use `migrate-customer-data` for mapping and rehearsal, then this skill for the authority switch.
 
 ## Completion
 

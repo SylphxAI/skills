@@ -11,8 +11,8 @@ Use when the primary promise is play, mastery, fantasy, or progression.
   than being restated here.
 - Controls, juice, and failure feedback are tested on the actual input device.
 - Soft launch is a bounded learning exposure, not a hidden global launch. Use
-  [game soft launch](../../../review-domain/references/game-soft-launch/METHOD.md)
-  when that is the decision.
+  `review-domain` (game-soft-launch) when that is the decision. Use
+  `design-product-experiment` when the job is a pre-registered causal protocol.
 
 ## Depth
 

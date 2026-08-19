@@ -18,7 +18,7 @@ Turn a causal question into an identified analysis whose assumptions and limits 
 7. Estimate the effect with uncertainty and explain the population, time, and settings to which it can transport.
 8. Label the result according to the design's actual identification strength.
 
-Read [Causal inference methods](references/causal-inference-methods.md) when selecting adjustment sets, study designs, estimators, or sensitivity methods.
+Read [Causal inference methods](references/causal-inference-methods.md) when selecting adjustment sets, study designs, estimators, or sensitivity methods. A product A/B or holdout protocol belongs to `design-product-experiment`.
 
 ## Output
 

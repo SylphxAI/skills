@@ -1,6 +1,6 @@
 ---
 name: operate-customer-support
-description: "Operate customer support: triage, resolution, escalation, quality loops."
+description: "Design or improve the support system: contact taxonomy, routing, waiting-state clocks, authority, and quality loops. Use for the operating model, not for answering one ticket."
 ---
 
 # Operate Customer Support
@@ -30,18 +30,12 @@ recurring product problems into owned corrections.
    source freshness, and false-positive correction. Send confirmed recurring
    defects to the product-feedback owner.
 
+For one customer case, use `resolve-customer-support-case`. For the product-wide
+refund consequence flow, use `design-refund-support-flow`.
+
 ## Output
 
 Return one Support Operating Model with scope, channels, contact taxonomy,
 routing and authority, case lifecycle, self-service and assisted handoff,
 approved agent actions, specialist routes, service expectations, quality
 measures, recovery, and product-feedback closure.
-
-For one customer case, open
-[resolve one customer support case](references/resolve-case/METHOD.md).
-
-## Completion
-
-The system is ready when every material contact reason has a current owner,
-route, authority, customer response, resolution condition, appeal or reopen
-behavior, and product-learning path.

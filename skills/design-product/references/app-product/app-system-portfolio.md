@@ -226,7 +226,7 @@ Public review eligibility remains neutral across inferred sentiment, spend, rati
 | Platform-specific authentic public review request policy | `run-product-feedback-loop` |
 | Universal private feedback, review ingestion and product-learning close-loop | `run-product-feedback-loop` |
 | Event/identity/metric instrumentation | owning product repository |
-| Offline/sync conflict | `review-domain` (`offline-sync-conflict`) |
+| Offline/sync conflict | `design-offline-sync` |
 | Store/channel release evidence | `build-distribution-readiness` |
 | Localized experience semantics | `design-product` |
 | Deterministic product capture, cross-channel asset transformation, localized production and LQA pack | `produce-product-assets` |

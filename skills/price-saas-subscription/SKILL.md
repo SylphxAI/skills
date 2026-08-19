@@ -34,4 +34,5 @@ Return a Pricing and Packaging Decision with value metric, plan architecture,
 usage and overages, procurement, upgrade moments, cancellation/downgrade,
 commercial arithmetic, assumptions, measures, migration, and owner handoffs.
 
-Payment and ledger execution belongs to `build-payment-readiness`.
+Payment and ledger execution belongs to `build-payment-readiness`. A live price
+increase through existing contracts belongs to `design-price-increase-retention`.

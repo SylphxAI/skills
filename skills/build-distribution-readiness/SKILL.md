@@ -1,6 +1,6 @@
 ---
 name: build-distribution-readiness
-description: "Prepare and verify an exact product artifact for its selected distribution channels."
+description: "Prepare and verify a signed product package for its distribution channels: install, update, uninstall, and live readback. Use for the binary or package, not for writing the store listing."
 ---
 
 # Build Distribution Readiness
@@ -21,8 +21,7 @@ behavior as distinct facts.
 - Read [release communication](references/release-communication.md) when the
   release needs a changelog, update note, migration notice, patch note, support
   brief, or incident follow-up.
-- Read [store listing](references/store-listing/METHOD.md) when metadata,
-  creatives, conversion, or store-compliance copy is the job.
+Store listing copy and creatives belong to `optimize-store-listing`.
 
 Current official channel requirements own execution-time details.
 

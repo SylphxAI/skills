@@ -1,6 +1,6 @@
 ---
 name: prototype-product
-description: "Run a cheap real prototype with kill/continue criteria."
+description: "Run the cheapest real probe that can change a product decision, then kill, continue, or pivot from the observation. A demo without a decision criterion is not this job."
 ---
 
 # Prototype Product
@@ -18,7 +18,8 @@ Run the smallest real probe that can change a product decision.
    environment when practical. Mark placeholder and disposable work clearly.
 5. Run or show the slice to the relevant system or participants.
 6. Record the observation and choose `continue`, `stop`, `pivot`, or
-   `run another probe`.
+   `run another probe`. A polished demo that cannot falsify the hypothesis is
+   not a prototype.
 
 A short-lived public URL or file share is a probe accessory, not the job. Use
 the host's existing preview or sharing path, keep secrets out, and state expiry.

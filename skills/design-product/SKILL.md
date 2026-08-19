@@ -1,6 +1,6 @@
 ---
 name: design-product
-description: "Design a product blueprint for an app, game, SaaS, or other digital product. Use when promise, users, journeys, capabilities, system shape, and operating model need one coherent design. Shape-specific depth lives in references."
+description: "Design one product blueprint: promise, users, journeys, capabilities, system shape, and operating model. Use for an app, game, or SaaS product. Provenance, taxonomy, and multi-product portfolio are separate skills."
 ---
 
 # Design Product
@@ -29,16 +29,16 @@ implement.
    [app](references/app-product/METHOD.md),
    [game](references/game-product/METHOD.md), or
    [SaaS web platform](references/saas-web-platform/METHOD.md).
-9. Open further depth only when the job needs it:
-   [portfolio](references/product-portfolio/METHOD.md),
-   [marketing automation](references/marketing-automation/METHOD.md),
-   [provenance](references/provenance-system/METHOD.md),
-   [semantic taxonomy](references/semantic-taxonomy/METHOD.md).
+9. Open [marketing automation](references/marketing-automation/METHOD.md) only
+   when authorized journeys and spend are part of this product's design.
 10. Separate accepted decisions, assumptions, open questions, and
     implementation choices. Hand slices to `build-product`.
 
-Privacy lifecycle, pricing, payments, and interface craft stay on their own
-listings.
+Use `design-provenance-system` for lineage. Use `design-semantic-taxonomy` for
+a shared vocabulary. Use `compose-product-portfolio` for product boundaries
+across several products. Use `design-privacy-lifecycle` for personal data.
+Use `price-saas-subscription` and `build-payment-readiness` for packaging and
+money. Use `craft-product-interface` for one flow.
 
 ## Output
 
