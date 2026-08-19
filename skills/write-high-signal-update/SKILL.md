@@ -1,23 +1,11 @@
 ---
 name: write-high-signal-update
-description: "Write short high-signal output: answer-first replies/updates, decisions, risks, asks."
+description: "Write a short high-signal update that leads with the outcome. Use when the user wants a status, decision, incident update, or handoff. Do not use to rewrite a long document in someone else's voice unless asked to preserve that voice."
 ---
 
 # Write High-Signal Update
 
-Write an update that lets its audience understand the outcome and act quickly.
-
-## Method
-
-1. Lead with the decision, outcome, or strongest current state.
-2. Include the few facts needed to understand it; label material inference.
-3. Name material risks or blockers with owner and timing when known.
-4. State each required action with who, what, and when.
-5. End with the next event or decision point.
-6. Match local, candidate, landed, released, and live wording to the actual
-   layer reached.
-
-## Template
+Lead with the outcome. Do not say live unless that layer was observed.
 
 ```markdown
 Outcome:
@@ -27,9 +15,4 @@ Actions:
 Next:
 ```
 
-Use only the sections the audience needs. For voice-sensitive editing, use
-`craft-human-agent-language` and its preserve-voice reference.
-
-## Output
-
-A concise update ready to send.
+Use only the sections the audience needs. Open [preserve voice](references/preserve-voice.md) when editing without erasing the author's stance. Open [plain language](references/iso-plain-language.md) for long-lived public documents.

@@ -14,7 +14,3 @@ with tenancy, entitlements, and mixed public/private routes.
   deliberately, not by defaulting to a long setup wizard.
 - PWA, push, and offline are selected only when they create product value, and
   they have update, eviction, and uninstall behavior.
-
-Hand pricing to `price-saas-subscription` and money movement to
-`build-payment-readiness`. Return a platform blueprint another builder can
-implement.

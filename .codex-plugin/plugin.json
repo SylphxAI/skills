@@ -1,6 +1,6 @@
 {
   "name": "sylphx-skills",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Reusable Agent Skills for product, engineering, operations, design, and research work",
   "author": {
     "name": "SylphxAI",
@@ -32,8 +32,8 @@
     "websiteURL": "https://github.com/SylphxAI/skills",
     "defaultPrompt": [
       "Critically review this proposal",
-      "Turn this requirement into a testable contract",
-      "Choose the correct architecture for this change"
+      "Build this missing capability on the current providers",
+      "Cut over this system to one destination and retire the old path"
     ]
   }
 }
