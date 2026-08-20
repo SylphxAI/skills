@@ -1,7 +1,7 @@
-# Sylphx Agent Skills North Star
-This file is destination (北極星 / North Star).
-It is not a North Star Metric.
-It is not this week's Goal.
+# Sylphx Agent Skills
+
+This file is the product destination. It is not a North Star Metric.
+The identity graph is [capabilities.md](capabilities.md).
 
 ## What finished is
 
@@ -49,4 +49,4 @@ update, and cache behavior.
 
 Organization, project, and runtime policy stays with its owning repository or
 host. A generic package must not require hidden company context to perform its
-job. This file is destination only. It is not the current Goal.
+job.
