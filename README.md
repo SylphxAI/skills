@@ -56,6 +56,9 @@ codex plugin add sylphx-skills@sylphx
 # Claude Code
 claude plugin marketplace update sylphx
 claude plugin update sylphx-skills@sylphx --scope user
+
+# DeepSeek Harness (DSH)
+dsh plugin --profile web update sylphx-skills
 ```
 
 Codex uses the semantic version in `.codex-plugin/plugin.json`; a Codex plugin
