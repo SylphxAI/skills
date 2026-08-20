@@ -31,11 +31,15 @@ claude plugin install sylphx-skills@sylphx --scope user
 
 # Grok
 grok plugin install SylphxAI/skills --trust
+
+# DeepSeek Harness (DSH)
+dsh plugin --profile web add git+https://github.com/SylphxAI/skills.git
 ```
 
 The host owns its plugin cache and update flow. Installed skill names use the
 plugin namespace, such as `sylphx-skills:analyze-critically`. Restart or reload
-the host after changing plugins.
+the host after changing plugins. DSH mounts the catalog as a global skill
+provider under the plain skill names; restart the harness after installing.
 
 The plugin exposes only `skills/`. It does not install an always-on prompt,
 runtime, scheduler, daemon, or background updater.

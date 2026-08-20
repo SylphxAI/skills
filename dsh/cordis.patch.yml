@@ -1,0 +1,7 @@
+# sylphx-skills DSH bundle: mount the public Agent Skills catalog into the
+# global skill-registry layer of every DSH profile that installs this bundle.
+# The row's module (package main) registers a filesystem skill provider whose
+# only root is this package's skills/ directory.
+- insert:
+    - id: sylphx-skills
+      name: 'sylphx-skills'

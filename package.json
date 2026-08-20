@@ -1,0 +1,29 @@
+{
+  "name": "sylphx-skills",
+  "version": "0.6.0",
+  "description": "Reusable Agent Skills for product, engineering, operations, design, and research work",
+  "type": "module",
+  "main": "./lib/dsh/index.js",
+  "exports": {
+    ".": "./lib/dsh/index.js"
+  },
+  "files": [
+    "lib",
+    "skills",
+    "dsh"
+  ],
+  "dependencies": {
+    "@deepseek-ai/dsh-skill-filesystem": "0.1.0-rc.8"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./dsh/cordis.patch.yml"
+    }
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/SylphxAI/skills",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SylphxAI/skills.git"
+  }
+}
