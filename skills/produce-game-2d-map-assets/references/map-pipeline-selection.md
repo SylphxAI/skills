@@ -39,7 +39,7 @@ playable preset below. Select `baked_raster` for a fixed visual background.
 
 Deliver tileset art, map data, tile layers, object layers, collision, exits, and a preview. Good output formats include Tiled JSON, Godot TileMap, Unity Tilemap, or an equivalent engine-native format.
 
-Use the `produce-game-2d-sprites` processing script for reusable transparent
+Use `produce-game-2d-sprites` for reusable transparent
 props, NPCs, animated objects,
 or scene objects outside the tile set. A pure terrain map can stay tileset +
 map data + collision metadata.

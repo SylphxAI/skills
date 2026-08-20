@@ -182,11 +182,11 @@ Guidelines:
 
 ## Preview Composition
 
-Use `skills/produce-game-2d-map-assets/scripts/compose_layered_preview.py` to
-flatten a base map and placement JSON:
+Use this package's `compose_layered_preview.py` to flatten a base map and
+placement JSON:
 
 ```bash
-python3 skills/produce-game-2d-map-assets/scripts/compose_layered_preview.py \
+python3 scripts/compose_layered_preview.py \
   --base assets/map/shrine-base.png \
   --placements data/shrine-props.json \
   --output assets/map/shrine-layered-preview.png

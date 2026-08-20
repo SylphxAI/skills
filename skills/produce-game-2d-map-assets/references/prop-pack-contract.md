@@ -58,17 +58,10 @@ If a square pack fails because a wide or tall object touches the cell edge, pres
 
 ## Prompt Pattern
 
-For `3x3` and `4x4` packs, create a layout-only guide first with
-`produce-game-2d-sprites`:
-
-```bash
-python3 skills/produce-game-2d-sprites/scripts/make_layout_guide.py \
-  --rows <ROWS> \
-  --cols <COLS> \
-  --cell-width 384 \
-  --cell-height 384 \
-  --output assets/props/raw/<name>-layout-guide.png
-```
+For `3x3` and `4x4` packs, create a layout-only guide first: a
+rows×cols grid with explicit cell size and safe padding. The neighboring
+`produce-game-2d-sprites` job can emit that grid when it is loaded; otherwise
+draw the same invisible slot geometry by hand.
 
 Make the guide visible before image generation. Tell the model to use it only for invisible slot count, spacing, centering, and safe padding. The output contains only the requested assets on the intended background, with guide geometry kept invisible.
 
@@ -118,7 +111,7 @@ hard-key first; if fringe remains after visual QC, regenerate the sheet with a
 flatter `#FF00FF` background or tighten thresholds via the script flags.
 
 ```bash
-python3 skills/produce-game-2d-map-assets/scripts/extract_prop_pack.py \
+python3 scripts/extract_prop_pack.py \
   --input assets/props/raw/forest-props-sheet.png \
   --rows 3 \
   --cols 3 \
@@ -166,8 +159,8 @@ After extraction, create placement JSON:
 }
 ```
 
-Then compose a QA preview with
-`skills/produce-game-2d-map-assets/scripts/compose_layered_preview.py`.
+Then compose a QA preview with this package's
+`compose_layered_preview.py`.
 
 ## QC Rules
 
