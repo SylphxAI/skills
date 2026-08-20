@@ -7,4 +7,6 @@ description: "Drive one already accepted engineering or product objective to its
 
 Local, landed, released, deployed, and live are distinct facts. Do not poll unchanged external state. Do not become the semantic owner of other people's artifacts.
 
-When writing or placing product documentation, open [documentation-standard](references/source-authoring-standard/references/documentation-standard/METHOD.md).
+The repository's declared documentation contract wins. Place each durable fact in one writable home and link to it; do not start a second status dashboard. A missing heading is not a defect. A second writable destination is.
+
+Open [documentation placement](references/documentation-placement.md) when the objective writes or places product documentation.
