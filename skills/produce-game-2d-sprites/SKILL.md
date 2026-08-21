@@ -11,4 +11,4 @@ Use the package scripts for layout, chroma/alpha, sheet extraction, and video-to
 - [layout guide](scripts/make_layout_guide.py)
 - [video conversion](scripts/video2dsprite.py)
 
-Open [engine-ready defaults](references/engine-ready-defaults.md) and [modes, actions, and bundles](references/modes-actions-bundles.md) for the selected action. Open [character consistency](references/character-consistency.md) for recurring identity. Open [animation loop QC](references/animation-loop-qc.md) for motion. See [SOURCE.md](SOURCE.md) for license.
+Open [engine-ready defaults](references/engine-ready-defaults.md) and [modes, actions, and bundles](references/modes-actions-bundles.md) for the selected action. Open [character consistency](references/character-consistency.md) for recurring identity. Open [animation loop QC](references/animation-loop-qc.md) for motion. See [script source](references/source.md) for license.
