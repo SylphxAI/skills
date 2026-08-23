@@ -15,7 +15,7 @@ ID | Identity | Fate | Depends on | Done when
 | ID | Identity | Fate | Depends on | Done when |
 | --- | --- | --- | --- | --- |
 | SKL-CATALOG | Installable agent methods catalog | live | — | Each package at `skills/<name>/SKILL.md` owns one semantic method; optional `references/`, `scripts/`, `assets/` deepen that method without creating a second manifest; host-native discovery/install (Codex, Claude Code, Grok) loads the named job via `SKILL.md` at the source layer. |
-| SKL-QUALITY | Skills cite Owner — no competing labor law | live | SKL-CATALOG | Packages cite `SylphxAI/owner` standards as law without inventing a second principle set, scheduler, or qualification control plane; a green structural check is not proof the method improves outcomes. |
+| SKL-QUALITY | No competing labor law in public packages | live | SKL-CATALOG | Public packages stay organization-neutral and self-contained: they do not cite `SylphxAI/owner`, copy company standards, or invent a second principle set, scheduler, or qualification control plane; company documentation homes and labor shape remain in `SylphxAI/owner`; a green structural check is not proof the method improves outcomes. |
 | SKL-CONTROL | Custom installer/control plane | dead | — | No custom installer, scheduler, generated catalog, or qualification control plane is product authority; hosts own plugin cache and update flow. |
 
 Edges are hard prerequisites. A catalog file count or `GET /healthz` is not the product oracle.

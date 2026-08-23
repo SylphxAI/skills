@@ -21,6 +21,8 @@ engineering, operations, design, or research job.
 - A second company stack or a second principle set
 - A required North Star Metric, capability count, or house score
 - File-existence CI for documentation headings
+- Company-law stamps, organization stamps, or Owner-notebook citations
+  inside public packages
 
 ## Oracle
 
@@ -38,6 +40,12 @@ Every installable package has one semantic owner and one source contract:
 `skills/<name>/SKILL.md`. Optional references, scripts, and assets deepen
 that method; they do not create a second job manifest.
 
+Public packages stay organization-neutral and self-contained. They cite
+current public or supplied authority when the job depends on external
+facts. Company documentation homes, labor shape, and how-we-build law
+remain in `SylphxAI/owner`; this catalog does not copy, inject, or
+project that law into `SKILL.md`.
+
 ## Boundary
 
 The repository owns current `SKILL.md` packages, their directly referenced
@@ -45,5 +53,4 @@ depth, public source history, and the repository's own checks. Codex,
 Claude Code, Grok, and other hosts own native discovery, installation,
 update, and cache behavior.
 
-Company documentation homes and labor shape are set in `SylphxAI/owner`.
 This file is destination only. It is not the current Goal.
