@@ -1,69 +1,21 @@
 # Skills identity graph
 
-This file is the identity graph. Destination stays in
-[vision.md](vision.md).
+**Status:** Identity registry. Not live proof.
+**Scope:** Sylphx Agent Skills — reusable organization-neutral methods.
+**Cite:** the **ID** column.
 
-The repository ships reusable Agent Skill packages. It does not ship company
-policy, project-specific coordination state, a runtime, an installer, or a
-control plane. A generic skill may still produce a bounded planning,
-coordination, handoff, or review artifact requested by its user.
+This file is the identity graph. It is not a PRD, ADR index, or live grade. Destination stays in [`vision.md`](vision.md). Field law stays in `skills/<name>/SKILL.md` and `specification` references. If this file conflicts with those, this file is wrong.
 
-One colloquial name has one row and one fate (`live`, `dead`, or
-`rename-to:<ID>`).
+```text
+ID | Identity | Fate | Depends on | Done when
+```
 
 ## Graph
 
-The table is authority. This picture names the same IDs and edges.
-
-```mermaid
-flowchart TD
-  SKL_PACKAGE["SKL-PACKAGE<br/>Passive standard package"]
-  SKL_ROUTE["SKL-ROUTE<br/>Discover the right job"]
-  SKL_CITE["SKL-CITE<br/>Portable authority boundary"]
-  SKL_METHODS["SKL-METHODS<br/>Self-contained reusable methods"]
-  SKL_EVIDENCE["SKL-EVIDENCE<br/>Trust capped by evidence"]
-
-  SKL_PACKAGE --> SKL_ROUTE
-  SKL_PACKAGE --> SKL_CITE
-  SKL_ROUTE --> SKL_METHODS
-  SKL_CITE --> SKL_METHODS
-  SKL_METHODS --> SKL_EVIDENCE
-```
-
-## Identities
-
 | ID | Identity | Fate | Depends on | Done when |
 | --- | --- | --- | --- | --- |
-| `SKL-PACKAGE` | Passive standard package | live | — | Every installable entry is `skills/<name>/SKILL.md`; its frontmatter name matches its folder; optional references, scripts, and assets support that one package. No package injects global instructions, runs a daemon, installs itself, or starts a persistent coordinator merely by being installed. |
-| `SKL-ROUTE` | Discover the right job | live | `SKL-PACKAGE` | The concise `name` and `description` select one recurring, independently useful job and distinguish its nearest neighbours under host-native discovery. No catalog-owned router or keyword engine is required. |
-| `SKL-CITE` | Portable authority boundary | live | `SKL-PACKAGE` | A generic package is organization-neutral and self-contained. It cites current public or supplied authority when the job depends on external facts. Company policy, private topology, volatile live state, and project-only procedures stay with their owners. |
-| `SKL-METHODS` | Self-contained reusable methods | live | `SKL-ROUTE`, `SKL-CITE` | A user can request the job and apply the guide without hidden organizational context. Particular opinions, gotchas, and interfaces the model would otherwise miss are preserved. Numbered recipes of ordinary work and output noun piles are not published. A guide may create a bounded coordination artifact, but it does not become authority for project state or a runtime control plane. |
-| `SKL-EVIDENCE` | Trust capped by evidence | live | `SKL-METHODS` | Package format, local links, and bundled scripts pass repository checks; material method or routing changes are exercised on representative requests when the relevant host is available. Structural green is never presented as proof of behavior or adoption. |
+| SKL-CATALOG | Installable agent methods catalog | live | — | Each package at `skills/<name>/SKILL.md` owns one semantic method; optional `references/`, `scripts/`, `assets/` deepen that method without creating a second manifest; host-native discovery/install (Codex, Claude Code, Grok) loads the named job via `SKILL.md` at the source layer. |
+| SKL-QUALITY | Skills cite Owner — no competing labor law | live | SKL-CATALOG | Packages cite `SylphxAI/owner` standards as law without inventing a second principle set, scheduler, or qualification control plane; a green structural check is not proof the method improves outcomes. |
+| SKL-CONTROL | Custom installer/control plane | dead | — | No custom installer, scheduler, generated catalog, or qualification control plane is product authority; hosts own plugin cache and update flow. |
 
-## Edge test
-
-An edge exists only when the child cannot be correct before the parent:
-
-- routing requires a valid package contract;
-- a reusable method requires both a discoverable job and a portable authority
-  boundary; and
-- behavioral evidence can evaluate only a concrete method.
-
-Roadmap order, package count, review state, and installation state are not
-identity edges.
-
-## Falsification
-
-This graph is wrong if any of the following is true:
-
-- a generic skill requires hidden organization-only policy, role, topology, or
-  state to execute;
-- two packages own the same request, artifact, and acceptance boundary;
-- one colloquial name has two rows or two fates;
-- a package hides unique useful method behind an unselectable description;
-- a global prompt, constitution injector, scheduler, installer, or catalog
-  daemon is shipped as Skill behavior; or
-- a format check is claimed as proof that a method works in practice.
-
-Fix the owning package or this graph. Do not add a parallel catalog or status
-document.
+Edges are hard prerequisites. A catalog file count or `GET /healthz` is not the product oracle.
