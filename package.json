@@ -1,4 +1,6 @@
 {
+  "packageManager": "bun@1.4.0",
+  "engines": { "bun": ">=1.4.0" },
   "name": "sylphx-skills",
   "version": "0.6.0",
   "description": "Reusable Agent Skills for product, engineering, operations, design, and research work",
