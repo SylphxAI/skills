@@ -5,6 +5,8 @@ description: "Design or improve the support operating model: contact taxonomy, r
 
 # Operate Customer Support
 
-Every waiting state has an owner and a next update time. Money, identity, and deletion stay with those owners.
+Every waiting state has an owner and a next update time. Money, identity, and deletion stay with those owners. A queue without a clock is not an operating model.
 
 Open [support operations patterns](references/support-ops-patterns.md) when routing, clocks, or quality loops need depth.
+
+Use `resolve-customer-support-case` for one ticket.

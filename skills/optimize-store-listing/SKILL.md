@@ -5,6 +5,8 @@ description: "Create a truthful store or channel listing and creative sequence f
 
 # Optimize Store Listing
 
-Listing claims come from the shipped product, not aspiration.
+Listing claims come from the shipped product, not aspiration. A screenshot of a state the current build cannot reach is a false claim.
 
 Open [store listing patterns](references/store-listing-optimization-patterns.md) when metadata, screenshots, or conversion narrative need depth.
+
+Use `build-distribution-readiness` to sign and publish. Use `produce-product-assets` to make the media.

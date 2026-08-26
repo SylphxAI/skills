@@ -5,6 +5,6 @@ description: "Cluster support tickets, in-app feedback, and authorized store rev
 
 # Run Product Feedback Loop
 
-Preserve original wording and source. Do not invite public reviews in ways the current platform forbids. Native public-review requests stay voluntary, policy-current, and independent of money, access, and support. Sentiment and spend do not change eligibility.
+Preserve original wording and source. Do not invite public reviews in ways the current platform forbids. Native public-review requests stay voluntary, policy-current, and independent of money, access, and support. Sentiment and spend do not change eligibility. A theme without an owner is not a loop.
 
 Open [feedback learning](references/feedback-learning-loop.md) for intake and clustering. Open [review solicitation](references/review-solicitation-policy.md) when asking when or how to invite a public store review.

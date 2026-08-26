@@ -5,6 +5,6 @@ description: "Model product abuse and a least-harm control ladder. Use when atta
 
 # Model Product Abuse Risk
 
-Prefer the least harmful effective control. A high loss estimate does not justify collective punishment, secret confiscation, or inaccessible appeal. Legitimate recovery is first-class. Do not teach an attacker how to bypass the control.
+Prefer the least harmful effective control. A high loss estimate does not justify collective punishment, secret confiscation, or inaccessible appeal. Legitimate recovery is first-class. Do not teach an attacker how to bypass the control. A score that cannot be appealed is not a control, it is an unaccountable taking.
 
 Open [abuse model and control ladder](references/abuse-model-and-control-ladder.md) when actors, assets, or controls need depth. Open [decision evidence and adaptive operations](references/decision-evidence-and-adaptive-operations.md) when scoring, appeals, or automation need depth.

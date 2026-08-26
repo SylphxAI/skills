@@ -5,6 +5,8 @@ description: "Choose SaaS plan architecture and list prices — value metric, se
 
 # Price SaaS Subscription
 
-Meters, fences, and grandfathering are different decisions.
+Meters, fences, and grandfathering are different decisions. A meter the product cannot measure truthfully is not a price, it is a dispute generator.
 
 Open [pricing and packaging patterns](references/pricing-packaging-patterns.md) when plan architecture needs depth.
+
+Use `design-price-increase-retention` to raise live prices. Use `build-payment-readiness` to implement checkout.

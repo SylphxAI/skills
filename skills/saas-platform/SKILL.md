@@ -5,7 +5,7 @@ description: "Design a multi-tenant SaaS web platform from public acquisition th
 
 # SaaS Web Platform
 
-Design a public-acquisition-to-authenticated-service platform with tenancy, entitlements, and mixed public/private routes.
+Design a public-acquisition-to-authenticated-service platform with tenancy, entitlements, and mixed public/private routes. A long setup wizard is not first value unless that is the deliberately chosen first value.
 
 - Public marketing, docs, and status routes are explicitly indexable; product workspace routes are explicitly not.
 - Tenant isolation, invites, roles, and (when required) SSO/SCIM have one owner each.
@@ -14,3 +14,5 @@ Design a public-acquisition-to-authenticated-service platform with tenancy, enti
 - PWA, push, and offline are selected only when they create product value, and they have update, eviction, and uninstall behavior.
 
 Open [marketing automation](references/marketing-automation.md) when owned, earned, paid, and lifecycle channels are part of this product.
+
+Use `app-product` when the promise is a recurring personal job rather than tenancy. Use `price-saas-subscription` for plan architecture.

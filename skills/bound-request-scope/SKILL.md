@@ -5,7 +5,7 @@ description: "Bound a request into one objective, one terminal (local, landed, r
 
 # Bound Request Scope
 
-State the outcome in one sentence. Name the terminal layer actually requested. Adjacent work that has its own acceptance stays out.
+State the outcome in one sentence. Name the terminal layer actually requested. Adjacent work that has its own acceptance stays out. If two outcomes can ship independently, they are two jobs.
 
 Hard cut lines: credentials, destructive effects, public contracts, infrastructure, money, and sensitive data.
 
@@ -16,3 +16,5 @@ In scope:
 Adjacent:
 Cut lines:
 ```
+
+Use `select-next-work` to pick from an existing backlog. Use `drive-to-delivery` once one objective is already accepted.

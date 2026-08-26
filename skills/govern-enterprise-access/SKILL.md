@@ -5,6 +5,6 @@ description: "Govern who may grant, inherit, exercise, review, recover, and revo
 
 # Govern Enterprise Access
 
-Identity-provider assertions are inputs. Tenant and permission semantics stay in the product. Join is not permission. Break-glass is a logged, time-bounded grant with a removal predicate, not a standing admin role.
+Identity-provider assertions are inputs. Tenant and permission semantics stay in the product. Join is not permission. Break-glass is a logged, time-bounded grant with a removal predicate, not a standing admin role. An IdP group name is not product authority.
 
 Open [access authority lifecycle](references/access-authority-lifecycle.md) and [privileged evidence](references/privileged-evidence-operations.md) when the grant ledger or review evidence needs depth.

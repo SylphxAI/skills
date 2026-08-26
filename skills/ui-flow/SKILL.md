@@ -5,6 +5,8 @@ description: "Design or implement one product UI flow with loading, empty, error
 
 # UI Flow
 
-Match surrounding design-system density. Verify on a real render, not a description of the UI. Essential meaning has a visual or textual path — audio, haptics, and color never carry unique required state.
+Match surrounding design-system density. Verify on a real render, not a description of the UI. Essential meaning has a visual or textual path — audio, haptics, and color never carry unique required state. A happy-path mock is not the flow.
 
 Open [interface craft rules](references/interface-craft-rules.md) for hierarchy. Open [states, forms, and recovery](references/states-forms-and-recovery.md) for stateful flows. Open [responsive mobile and input](references/responsive-mobile-and-input.md) for layout. Open [sensory feedback](references/sensory-feedback.md) when sound, haptics, camera, or effects matter.
+
+Use `ui-review` to judge an existing render. Use `accessibility-conformance` for a conformance claim.

@@ -5,6 +5,8 @@ description: "Migrate customer data so meaning, ownership, access, and history s
 
 # Migrate Customer Data
 
-Row-count equality is weak proof. Meaning, access, and history have to survive.
+Row-count equality is weak proof. Meaning, access, and history have to survive. A migrated row the owner can no longer find, export, or delete is a failed migration.
 
 Open [migration contract and mapping](references/migration-contract-and-mapping.md) and [rehearsal and cutover](references/rehearsal-cutover-and-acceptance.md) when the mapping or rehearsal needs depth.
+
+Use `execute-hard-cutover` for the live writer switch.

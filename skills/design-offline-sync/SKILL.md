@@ -5,6 +5,6 @@ description: "Design an offline sync and conflict protocol that preserves user i
 
 # Design Offline Sync
 
-Last-write-wins needs explicit bounded-harm acceptance. A disabled sync domain queues nothing and starts no background or network work. Money, permissions, legal records, inventory, and deletion use an explicit conflict protocol, not silent merge.
+Last-write-wins needs explicit bounded-harm acceptance. A disabled sync domain queues nothing and starts no background or network work. Money, permissions, legal records, inventory, and deletion use an explicit conflict protocol, not silent merge. A CRDT name is not a merge proof.
 
 Open [offline sync patterns](references/offline-sync-conflict-patterns.md) when classifying operations or choosing a merge. Open [CRDT convergence](references/crdt-convergence.md) only when a CRDT is a candidate, and prove the merge algebra rather than selecting it by name.

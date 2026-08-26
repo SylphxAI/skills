@@ -5,6 +5,8 @@ description: "Prepare and verify a signed product package for its distribution c
 
 # Build Distribution Readiness
 
-Local build, upload, review, publication, indexing, installation, and live behavior are different facts. Current official channel docs own the details.
+Local build, upload, review, publication, indexing, installation, and live behavior are different facts. A signed artifact that cannot install, update, or uninstall is not ready. Current official channel docs own the details.
 
 Open [distribution channel matrix](references/distribution-channel-matrix.md) for app stores, web/PWA, Microsoft Store, Steam, and consoles. Open [CLI and package distribution](references/cli-and-package-distribution.md) for direct download, npm, Homebrew, WinGet, Cargo, or OCI. Open [desktop and PC release readiness](references/desktop-and-pc-release-readiness.md) for signing, installers, and launchers. Open [release communication](references/release-communication.md) when the release needs a changelog or migration notice.
+
+Use `optimize-store-listing` for listing copy. Use `launch-readiness` for the go/no-go on the exact build.
