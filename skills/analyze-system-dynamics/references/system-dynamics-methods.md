@@ -8,7 +8,9 @@ intervention.
 Validate whether the proposed structure can generate the observed pattern
 across more than one period. Check units, conservation, loop polarity, extreme
 cases, and alternative structures that fit equally well. Keep unparameterized
-models explicitly qualitative.
+models explicitly qualitative. A loop map frames hypotheses only; quantify the
+stock–flow structure, even coarsely, before it justifies choosing an
+intervention.
 
 Test interventions at multiple horizons. Look for policy resistance, burden
 shifting, moving bottlenecks, delayed collapse, metric gaming, local wins that

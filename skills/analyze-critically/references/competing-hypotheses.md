@@ -5,6 +5,9 @@ method: generate a small set of materially different explanations, ask what
 each predicts, and run the observation that can exclude one or more of them.
 Heuer's Analysis of Competing Hypotheses is an ancestor; mechanical ACH
 matrices have mixed evidence and do not replace the decision owner's judgement.
+Score rivals with stated likelihoods where the evidence supports a number —
+binary inconsistency tallies recover less. No step of the method completes the
+hypothesis set; an omitted alternative silently wins every tally.
 
 Do this before reading more:
 

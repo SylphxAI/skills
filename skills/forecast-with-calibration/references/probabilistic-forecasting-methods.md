@@ -23,7 +23,9 @@ when material evidence arrives or a declared checkpoint passes. After
 resolution, use the predeclared proper scoring rule — Brier for binaries, log
 score when unjustified certainty is costly, CRPS or declared quantile scores
 for distributions. Assess calibration across a set. Change the question or the
-resolution source only before seeing the outcome.
+resolution source only before seeing the outcome. Calibration skill decays
+without continuously scored questions; treat forecasting as ongoing practice,
+not a one-off exercise.
 
 ## Sources
 

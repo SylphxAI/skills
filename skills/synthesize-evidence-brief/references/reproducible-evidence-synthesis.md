@@ -1,7 +1,8 @@
 # Reproducible Evidence Synthesis
 
 Choose review depth from consequence and uncertainty. Record queries, dates,
-inclusion rules, and the synthesis method at that depth. Use reviews to locate
+inclusion rules, and the synthesis method at that depth, before searching.
+Declare what triggers a refresh; ad-hoc re-runs launder selection. Use reviews to locate
 original records, not as a substitute for them.
 
 Appraise measurement validity, confounding, selection, missingness, selective
