@@ -5,4 +5,4 @@ description: "Select an exact package, runtime, framework, SDK, or tool version 
 
 # Select Dependency Versions
 
-Query the official registry in this session — not model memory. Native lockfile owns transitives. No locally invented compatibility layers. Immutable production pins where the ecosystem supports them.
+Query the official registry in this session — not model memory. Native lockfile owns transitives. No locally invented compatibility layers. Immutable production pins where the ecosystem supports them. A remembered version is not a current version.

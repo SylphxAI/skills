@@ -5,6 +5,8 @@ description: "Design and verify production payments — checkout, provider event
 
 # Build Payment Readiness
 
-Keep the money ledger append-only. Entitlements, invoices, support, and finance views are projections from owned events. Support corrections are new reason-coded ledger events, not silent edits. Do not confiscate value because a score moved.
+Keep the money ledger append-only. Entitlements, invoices, support, and finance views are projections from owned events. Support corrections are new reason-coded ledger events, not silent edits. Do not confiscate value because a score moved. Provider dashboard truth is not the product ledger.
 
 Read current official provider, store, tax, and dispute docs for the selected channels. Open [payment platform patterns](references/payment-platform-patterns.md) for channel behavior and [billing reconciliation](references/billing-reconciliation-patterns.md) for settlement and close.
+
+Use `operate-marketplace-payouts` for two-sided seller payouts. Use `design-price-increase-retention` for raising live prices. Use `design-refund-support-flow` for entitlement consequence after a refund.

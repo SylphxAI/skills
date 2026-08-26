@@ -5,6 +5,6 @@ description: "Build or slim a repository's required commit build around fast pro
 
 # Implement Continuous Integration
 
-A required check is useful when red names a real product, build, security, or public-contract defect a human can fix in product code. Retire wording, naming, and layout scans from the required path.
+A required check is useful when red names a real product, build, security, or public-contract defect a human can fix in product code. Retire wording, naming, and layout scans from the required path. Flakes on the required path are product defects, not weather.
 
 Open [industry commit build](references/industry-commit-build.md) when classifying an existing suite or parking a slow check.

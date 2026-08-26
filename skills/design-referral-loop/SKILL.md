@@ -5,6 +5,6 @@ description: "Design a referral or invite loop where attribution, qualification,
 
 # Design Referral Loop
 
-Qualification is not install. Grant only after a declared useful event; reverse grants on fraud or self-dealing. No coerced address book.
+Qualification is not install. Grant only after a declared useful event; reverse grants on fraud or self-dealing. No coerced address book. Attribution, qualification, and grant that collapse into one event will pay for spam.
 
 Open [referral loop systems](references/referral-loop-systems.md) for attribution and reversal.

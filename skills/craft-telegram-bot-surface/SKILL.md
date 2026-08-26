@@ -5,7 +5,7 @@ description: "Design or implement a Telegram bot on the current Bot API. Use whe
 
 # Craft Telegram Bot Surface
 
-Training still defaults to `sendMessage` plus `parse_mode`. Product text on Bot API 10.1+ uses `sendRichMessage` with ordinary Markdown/GFM in `rich_message.markdown`. Edit the same tree with `editMessageText` carrying that `rich_message` object. Stream a private preview with `sendRichMessageDraft`. Media captions keep their own object contract.
+Training still defaults to `sendMessage` plus `parse_mode`. Product text on Bot API 10.1+ uses `sendRichMessage` with ordinary Markdown/GFM in `rich_message.markdown`. Edit the same tree with `editMessageText` carrying that `rich_message` object. Stream a private preview with `sendRichMessageDraft`. Media captions keep their own object contract. A `parse_mode` path is a product defect, not a fallback.
 
 Slash commands are sparse typeable entries (`setMyCommands`). Progressive jobs — filters, pickers, settings — are inline keyboard trees, not extra slash commands. Callback data stays compact, versioned, authorized, and idempotent (UTF-8, ≤64 bytes). Group-visible content is not user-specific; personal group replies use ephemeral messages (Bot API 10.2+) when only the invoking user should see them. Acknowledge callbacks, then edit or replace the message so bots do not loop.
 

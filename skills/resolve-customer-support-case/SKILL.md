@@ -5,6 +5,8 @@ description: "Resolve one customer support case through a truthful outcome, auth
 
 # Resolve a Customer Support Case
 
-Never ask for passwords, OTPs, or full payment data in this channel. Do not trade refunds or gifts for review deletion, silence, or ratings. Equal facts get equal remedies regardless of threat volume.
+Never ask for passwords, OTPs, or full payment data in this channel. Do not trade refunds or gifts for review deletion, silence, or ratings. Equal facts get equal remedies regardless of threat volume. Closure without verifying the customer-visible outcome is not resolution.
 
 Open [case decisions and playbooks](references/case-decisions-remedies-and-playbooks.md) when the remedy envelope needs depth.
+
+Use `operate-customer-support` for the operating model. Use `design-refund-support-flow` when the entitlement rule itself is wrong.

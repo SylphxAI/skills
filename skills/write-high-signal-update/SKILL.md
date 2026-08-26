@@ -5,7 +5,7 @@ description: "Write a short high-signal update that leads with the outcome. Use 
 
 # Write High-Signal Update
 
-Lead with the outcome. Do not say live unless that layer was observed.
+Lead with the outcome. Do not say live unless that layer was observed. Do not convert inferences into facts to make the update shorter.
 
 ```markdown
 Outcome:

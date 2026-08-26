@@ -5,7 +5,7 @@ description: "Design in-product ad placements and rewarded-ad grants. Use when t
 
 # Design Ad Monetization
 
-Place ads only at natural breaks. A disabled placement starts no SDK, network, or background work.
+Place ads only at natural breaks. A disabled placement starts no SDK, network, or background work. Ads may not become the only viable path through the core loop.
 
 Rewarded grants follow eligible → requested → loaded → started → completed → verified → granted. No-fill, timeout, and duplicate callbacks do not grant.
 
