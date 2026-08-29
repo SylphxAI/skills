@@ -31,7 +31,8 @@ its own loading description.
 
 Run the check that exercises the changed behavior. For Markdown-only changes,
 the pull-request workflow validates the Agent Skills format and local links.
-For bundled scripts, run their syntax check and tests as well.
+For bundled scripts, run their syntax check and tests as well. The package
+contract check imports the published DSH module and observes the catalog mount.
 
 CI remains one fast commit build. A failing merge check identifies a broken
 skill contract, resource link, script, or script test.

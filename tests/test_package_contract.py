@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -34,6 +36,33 @@ FORBIDDEN_ROOT_COMPONENTS = (
 )
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 FRONTMATTER_RE = re.compile(r"\A---\r?\n(.*?)\r?\n---(?:\r?\n|\Z)", re.S)
+DSH_MOUNT_ORACLE = Path(__file__).resolve().parent / "dsh_mount_oracle.mjs"
+DSH_LOOKALIKE_MODULE = """\
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import { apply as applySkillFilesystem } from '@deepseek-ai/dsh-skill-filesystem';
+
+const catalogRoot = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'skills');
+
+export const name = 'sylphx-skills';
+
+export const inject = ['skills'];
+
+/**
+ * includeDefaultRoots: false
+ * customSkillDirs: [catalogRoot]
+ * export const inject = ['skills'];
+ * , '..', '..', 'skills)
+ */
+export function apply(ctx, config = {}) {
+  return applySkillFilesystem(ctx, {
+    providerName: 'sylphx-catalog',
+    includeDefaultRoots: true,
+    customSkillDirs: [catalogRoot, join(catalogRoot, '..', 'other')],
+    ...config
+  });
+}
+"""
 
 
 def parse_frontmatter_map(text: str) -> dict[str, str] | None:
@@ -173,6 +202,95 @@ def catalog_metadata_errors(repo_root: Path) -> list[str]:
     return errors
 
 
+def _yaml_code_line(line: str) -> str:
+    stripped = line.lstrip()
+    if not stripped or stripped.startswith("#"):
+        return ""
+    in_single = False
+    in_double = False
+    chars: list[str] = []
+    for index, char in enumerate(line):
+        if char == "'" and not in_double:
+            in_single = not in_single
+            chars.append(char)
+            continue
+        if char == '"' and not in_single:
+            in_double = not in_double
+            chars.append(char)
+            continue
+        if char == "#" and not in_single and not in_double:
+            if index == 0 or line[index - 1] in " \t":
+                break
+        chars.append(char)
+    return "".join(chars).rstrip()
+
+
+def _unquote_yaml_scalar(value: str) -> str:
+    value = value.strip()
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
+        return value[1:-1]
+    return value
+
+
+def dsh_insert_ids(patch_text: str) -> list[str]:
+    ids: list[str] = []
+    in_insert = False
+    current: dict[str, str] | None = None
+
+    def flush() -> None:
+        nonlocal current
+        if current is not None and "id" in current:
+            ids.append(current["id"])
+        current = None
+
+    for raw in patch_text.splitlines():
+        line = _yaml_code_line(raw)
+        if not line:
+            continue
+        item = re.match(r"^(\s*)-\s+(.*)$", line)
+        if item:
+            indent = len(item.group(1).replace("\t", "  "))
+            rest = item.group(2)
+            if indent == 0 and rest.startswith("insert:"):
+                flush()
+                in_insert = True
+                continue
+            if in_insert and indent > 0:
+                flush()
+                current = {}
+                if ":" in rest:
+                    key, raw_value = rest.split(":", 1)
+                    current[key.strip()] = _unquote_yaml_scalar(raw_value)
+                continue
+            flush()
+            in_insert = False
+            continue
+        if not in_insert or current is None or ":" not in line:
+            continue
+        key, raw_value = line.split(":", 1)
+        current[key.strip()] = _unquote_yaml_scalar(raw_value)
+    flush()
+    return ids
+
+
+def run_dsh_mount_oracle(module_path: Path, catalog_root: Path) -> subprocess.CompletedProcess[str]:
+    node = shutil.which("node")
+    if node is None:
+        return subprocess.CompletedProcess(
+            args=["node"],
+            returncode=127,
+            stdout="",
+            stderr="node is required to exercise the DSH catalog mount",
+        )
+    return subprocess.run(
+        [node, str(DSH_MOUNT_ORACLE), str(module_path), str(catalog_root)],
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+
+
 def _dsh_bundle_errors(repo_root: Path, package_json: dict, dsh: dict) -> list[str]:
     errors: list[str] = []
     patch_field = ((dsh.get("bundle") or {}) if isinstance(dsh.get("bundle"), dict) else {}).get(
@@ -185,8 +303,8 @@ def _dsh_bundle_errors(repo_root: Path, package_json: dict, dsh: dict) -> list[s
     if not patch_path.is_file():
         errors.append(f"DSH patch {patch_field} is missing")
         return errors
-    patch_text = patch_path.read_text(encoding="utf-8")
-    if patch_text.count("id: sylphx-skills") != 1:
+    ids = dsh_insert_ids(patch_path.read_text(encoding="utf-8"))
+    if ids != ["sylphx-skills"]:
         errors.append("DSH patch must insert exactly one sylphx-skills row")
 
     main_field = package_json.get("main")
@@ -197,15 +315,10 @@ def _dsh_bundle_errors(repo_root: Path, package_json: dict, dsh: dict) -> list[s
     if not main_path.is_file():
         errors.append(f"DSH module {main_field} is missing")
         return errors
-    source = main_path.read_text(encoding="utf-8")
-    if "includeDefaultRoots: false" not in source:
-        errors.append("DSH module must not add host default skill roots")
-    if "customSkillDirs: [catalogRoot]" not in source:
-        errors.append("DSH module must mount only the catalog skills/ directory")
-    if "export const inject = ['skills'];" not in source:
-        errors.append("DSH module may depend on the host skills service only")
-    if ", '..', '..', 'skills')" not in source and ', "..", "..", "skills")' not in source:
-        errors.append("DSH module must point catalogRoot at skills/")
+    result = run_dsh_mount_oracle(main_path, repo_root / "skills")
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout or "DSH mount oracle failed").strip()
+        errors.append(detail)
     return errors
 
 
@@ -289,6 +402,48 @@ class PackageContractTest(unittest.TestCase):
     def test_catalog_satisfies_package_contract(self) -> None:
         errors = package_contract_errors(REPO_ROOT)
         self.assertEqual(errors, [])
+
+    def test_dsh_patch_parser_ignores_comment_tokens(self) -> None:
+        comment_and_real = (
+            "# id: sylphx-skills\n"
+            "- insert:\n"
+            "    - id: sylphx-skills\n"
+            "      name: 'sylphx-skills'\n"
+        )
+        comment_hides_wrong_id = (
+            "# id: sylphx-skills\n"
+            "- insert:\n"
+            "    - id: other-plugin\n"
+            "      name: 'sylphx-skills'\n"
+        )
+        self.assertEqual(dsh_insert_ids(comment_and_real), ["sylphx-skills"])
+        self.assertEqual(dsh_insert_ids(comment_hides_wrong_id), ["other-plugin"])
+        self.assertEqual(
+            dsh_insert_ids((REPO_ROOT / "dsh" / "cordis.patch.yml").read_text(encoding="utf-8")),
+            ["sylphx-skills"],
+        )
+
+    def test_dsh_oracle_rejects_source_tokens_without_mount_behavior(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            module_path = root / "lib" / "dsh" / "index.js"
+            catalog = root / "skills"
+            catalog.mkdir(parents=True)
+            _write(module_path, DSH_LOOKALIKE_MODULE)
+
+            result = run_dsh_mount_oracle(module_path, catalog)
+            blob = (result.stderr or result.stdout).strip()
+            self.assertNotEqual(result.returncode, 0, blob)
+            self.assertTrue(
+                "must not add host default skill roots" in blob
+                or "must mount only the catalog skills/ directory" in blob,
+                blob,
+            )
+
+    def test_dsh_oracle_accepts_published_catalog_module(self) -> None:
+        result = run_dsh_mount_oracle(REPO_ROOT / "lib" / "dsh" / "index.js", REPO_ROOT / "skills")
+        blob = (result.stderr or result.stdout).strip()
+        self.assertEqual(result.returncode, 0, blob)
 
 
 if __name__ == "__main__":
