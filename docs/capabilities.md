@@ -14,23 +14,21 @@ ID | Identity | Fate | Depends on | Done when
 
 | ID | Identity | Fate | Depends on | Done when |
 | --- | --- | --- | --- | --- |
-| SKL-CATALOG | Installable agent methods catalog | live | — | Each package at `skills/<name>/SKILL.md` owns one semantic method; optional `references/`, `scripts/`, `assets/` deepen that method without creating a second manifest; host-native discovery/install (Codex, Claude Code, Grok) loads the named job via `SKILL.md` at the source layer. |
+| SKL-CATALOG | Installable agent methods catalog | live | — | Each package at `skills/<name>/SKILL.md` owns one semantic method; optional `references/`, `scripts/`, `assets/` deepen that method without creating a second manifest; host-native discovery/install (Codex, Claude Code, Grok, DSH) loads the named job via `SKILL.md` at the source layer. |
 | SKL-QUALITY | No competing labor law in public packages | live | SKL-CATALOG | Public packages stay organization-neutral and self-contained: they do not cite `SylphxAI/owner`, copy company standards, or invent a second principle set, scheduler, or qualification control plane; company documentation homes and labor shape remain in `SylphxAI/owner`; a green structural check is not proof the method improves outcomes. |
 | SKL-CONTROL | Custom installer/control plane | dead | — | No custom installer, scheduler, generated catalog, or qualification control plane is product authority; hosts own plugin cache and update flow. |
 
 Edges are hard prerequisites. A catalog file count or `GET /healthz` is not the product oracle.
 
-## Release boundary (GOV-017)
+## Release identity
 
-Declared per [ADR-030](https://github.com/SylphxAI/owner/blob/main/decisions/ADR-030-RELEASE-CONTROL-PLANE.md)
-and [GOV-017](https://github.com/SylphxAI/owner/blob/main/runbook/GOVERNANCE-AUDIT-2026-08-28.md),
-grounded in the rows above and the README. This is dest, not live proof.
+Grounded in the rows above and the README. This is dest, not live proof.
 
 - **Public probe.** Install through a host's native plugin interface
   (`codex plugin marketplace add SylphxAI/skills`, `claude plugin ...`,
-  `grok plugin ...`) and invoke the named job: the host loads
-  `skills/<name>/SKILL.md` from this public repository at the source layer
-  (SKL-CATALOG).
+  `grok plugin ...`, `dsh plugin ...`) and invoke the named job: the host
+  loads `skills/<name>/SKILL.md` from this public repository at the source
+  layer (SKL-CATALOG).
 - **Owned writers.** None. Plainly, this product owns no manifest, migration,
   or release-intent writers — no build, publish, or deployment writer exists
   (`check.yml` runs structural checks only). Hosts own plugin cache,

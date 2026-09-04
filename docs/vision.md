@@ -1,5 +1,5 @@
 # Sylphx Agent Skills North Star
-This file is destination (北極星 / North Star).
+This file is destination (North Star).
 It is not a North Star Metric.
 It is not this week's Goal.
 
@@ -23,6 +23,8 @@ engineering, operations, design, or research job.
 - File-existence CI for documentation headings
 - Company-law stamps, organization stamps, or Owner-notebook citations
   inside public packages
+- Republishing company operating law; dest names `SylphxAI/owner` as the
+  home and does not copy that law here
 
 ## Oracle
 
@@ -50,7 +52,7 @@ project that law into `SKILL.md`.
 
 The repository owns current `SKILL.md` packages, their directly referenced
 depth, public source history, and the repository's own checks. Codex,
-Claude Code, Grok, and other hosts own native discovery, installation,
-update, and cache behavior.
+Claude Code, Grok, DeepSeek Harness (DSH), and other hosts own native
+discovery, installation, update, and cache behavior.
 
 This file is destination only. It is not the current Goal.
