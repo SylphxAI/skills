@@ -1,6 +1,6 @@
 {
   "name": "sylphx-skills",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Reusable Agent Skills for product, engineering, operations, design, and research work",
   "author": {
     "name": "SylphxAI",
@@ -32,8 +32,6 @@
     "websiteURL": "https://github.com/SylphxAI/skills",
     "defaultPrompt": [
       "What would change your mind about this claim?",
-      "Did this change cause that outcome, or is it not identified?",
-      "Forecast this event with a resolvable question and a base rate",
       "Build this missing capability on the current providers",
       "Cut over this system to one destination and retire the old path"
     ]
