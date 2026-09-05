@@ -40,7 +40,7 @@ placement_eligible -> suppressed_by_user_state
 
 The ad domain owns the meanings and required fields below. The shared event
 identity, envelope, schema revision, collection, consent filtering, and product
-metric contract are owned by `review-domain` (`product-analytics-instrumentation`); reuse
+metric contract are owned by the owning product repository; reuse
 that owner here.
 
 Required events:

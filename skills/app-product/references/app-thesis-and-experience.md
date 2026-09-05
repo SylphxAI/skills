@@ -217,7 +217,7 @@ emotional intensity by onboarding, core work, success, error and recovery:
 performance, battery, accessibility and cultural constraints:
 ```
 
-Use feedback intensity to clarify importance and create emotional contrast. Keep the product recognizable across platforms without forcing identical layouts or ignoring native expectations. Route file-level implementation and polish to `craft-product-interface`.
+Use feedback intensity to clarify importance and create emotional contrast. Keep the product recognizable across platforms without forcing identical layouts or ignoring native expectations. Route file-level implementation and polish to `ui-flow`. Use `ui-review` to judge the render.
 
 ## 8. Feedback and interface state
 
