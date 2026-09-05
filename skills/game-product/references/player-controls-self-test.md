@@ -38,6 +38,6 @@ Optional debug hook (title-local, not a portfolio dependency):
 
 ## Composition
 
-- Design intent: `design-product`
+- Design intent: `game-product`
 - Implementation: title and product-runtime **input** ports
 - Use the game's current control contract and direct player-visible tests as authority

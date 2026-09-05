@@ -213,7 +213,7 @@ Public review eligibility remains neutral across inferred sentiment, spend, rati
 
 | Artifact | Primary owner |
 | --- | --- |
-| App monetization model and value-exchange semantics | `design-product` |
+| App monetization model and value-exchange semantics | owning product design |
 | Subscription/SaaS price and package decision | `price-saas-subscription` |
 | Provider payment, ledger, settlement and entitlement projection | `build-payment-readiness` |
 | Refund consequence, repurchase, restriction, support and appeal | `operate-customer-support` |
@@ -228,9 +228,9 @@ Public review eligibility remains neutral across inferred sentiment, spend, rati
 | Event/identity/metric instrumentation | owning product repository |
 | Offline/sync conflict | `design-offline-sync` |
 | Store/channel release evidence | `build-distribution-readiness` |
-| Localized experience semantics | `design-product` |
+| Localized experience semantics | owning product design |
 | Deterministic product capture, cross-channel asset transformation, localized production and LQA pack | `produce-product-assets` |
-| Multi-channel marketing control plane | `design-product` |
+| Multi-channel marketing control plane | owning product design |
 | Cross-domain release dependencies and sibling artifacts | active product release plan and each artifact's owning project |
 
 ## 5. Dangerous interaction tests
