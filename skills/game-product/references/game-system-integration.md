@@ -20,7 +20,7 @@ Evaluate every row and every user-requested addition. A sweep prevents omission;
 | --- | --- | --- |
 | Core play/content | Which verbs, encounters, challenge, content grammar and mastery create the promise? | Game Design |
 | Progression/quests | Which layers create choice, competence, expression and reachable goals? | `game-progression-and-quests.md` |
-| Economy/rewards | Which values flow, accumulate, convert, expire, refund and remain fair? | `review-domain` (`game-economy`) |
+| Economy/rewards | Which values flow, accumulate, convert, expire, refund and remain fair? | `game-economy` |
 | IAP/IAA/gacha | What value exchange fits the audience and platform, and what stays off? | Economy + Ad Monetization + Payment |
 | Return loops | What real value changes by session/day/week/season/comeback? | Game Design + Daily Reward/Streak |
 | Notifications | Which user-requested or stateful value deserves interruption? | Notification Strategy |

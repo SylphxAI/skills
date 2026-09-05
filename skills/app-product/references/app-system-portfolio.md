@@ -219,8 +219,8 @@ Public review eligibility remains neutral across inferred sentiment, spend, rati
 | Refund consequence, repurchase, restriction, support and appeal | `operate-customer-support` |
 | Subscription access state | `build-payment-readiness` |
 | Ad placement/monetization | owning product design |
-| Notification channel strategy | `review-domain` (`notification-strategy`) |
-| Daily rewards and streaks | `review-domain` (`daily-reward-and-streak`) |
+| Notification channel strategy | `notification-strategy` |
+| Daily rewards and streaks | `daily-reward-and-streak` |
 | Referral qualification, grant, reversal and fraud | owning product design |
 | One promotion/update/cross-promotion campaign | owning product design |
 | Platform-specific authentic public review request policy | `run-product-feedback-loop` |

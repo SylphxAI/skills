@@ -15,7 +15,7 @@ before choosing its schema, owner, transport, or specialist.
 | Operational telemetry | Protected evidence used to operate a system | operations in the owning repository |
 
 Notifications add user-value, consent, preference, cadence, and suppression
-policy through `review-domain` (`notification-strategy`); sending them still uses
+policy through `notification-strategy`; sending them still uses
 `build-product`. Do not use a delivery or analytics event as proof that the
 domain transition committed.
 
