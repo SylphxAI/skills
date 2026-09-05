@@ -201,8 +201,8 @@ experimental design.
 | Deployment, rollback, health, live readback | owning release-path artifact |
 | High-risk rights/safety/privacy/AI review | current domain evidence plus applicable binding Skills |
 | Price/package architecture | `price-saas-subscription` |
-| Notification policy | `review-domain` (`notification-strategy`) |
-| Marketplace seller intervention | `review-domain` (`marketplace-trust-operations`) when published |
+| Notification policy | `notification-strategy` |
+| Marketplace seller intervention | `marketplace-trust-operations` |
 
 Each handoff has a stable artifact/version, exact requirement, blocked decision,
 acceptance condition, and result reference. Resolve only immutable artifact versions.
