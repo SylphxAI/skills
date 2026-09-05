@@ -3,8 +3,8 @@
 Reusable, organization-neutral [Agent Skills](https://agentskills.io/specification)
 for product, engineering, operations, design, and research work.
 
-- Ordinary: `none` — this catalog is not a public website. Customers browse this repository and install through host plugin marketplaces. `https://sylphx.com` is the Sylphx Platform marketing site, not this catalog.
-- Preview: `none` — GitHub Pages is not enabled, and no product-owned preview or dogfood web host is admitted. `https://sylphx.com/skills` redirects to a Platform login, not this catalog.
+- Ordinary: `https://github.com/SylphxAI/skills` — this public repository is the catalog customers browse. Host plugin marketplaces are the install path. `https://sylphx.com` is the Sylphx Platform marketing site, not this catalog. `https://sylphx.com/skills` redirects to a Platform login, not this catalog.
+- Preview: `none` — GitHub Pages is not enabled, and no product-owned preview or dogfood web host is admitted.
 - Vision: [`docs/vision.md`](docs/vision.md)
 - Capabilities: [`docs/capabilities.md`](docs/capabilities.md)
 

@@ -32,6 +32,7 @@ body:
         - Codex
         - Claude Code
         - Grok
+        - DeepSeek Harness (DSH)
         - Another Agent Skills host
         - Host independent
     validations:

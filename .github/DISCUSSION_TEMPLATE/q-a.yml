@@ -19,6 +19,7 @@ body:
         - Codex
         - Claude Code
         - Grok
+        - DeepSeek Harness (DSH)
         - Multiple hosts
         - Choosing a host
     validations:
