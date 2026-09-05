@@ -18,6 +18,11 @@ engineering, operations, design, or research job.
 
 - A custom installer, scheduler, generated catalog, or qualification
   control plane
+- `npx github:SylphxAI/skills sync`, auto-sync, or any other non-host
+  install path
+- A product website at `skills.sylphx.com` or `sylphx.com/skills`
+- GitHub Releases as dest, a promotion channel, or a qualification score
+- GitHub wiki as a documentation home
 - A second company stack or a second principle set
 - A required North Star Metric, capability count, or house score
 - File-existence CI for documentation headings
@@ -40,7 +45,9 @@ improves outcomes.
 
 Every installable package has one semantic owner and one source contract:
 `skills/<name>/SKILL.md`. Optional references, scripts, and assets deepen
-that method; they do not create a second job manifest.
+that method; they do not create a second job manifest. Packages stay
+passive: they do not inject always-on instructions, hooks, or
+default-install.
 
 Public packages stay organization-neutral and self-contained. They cite
 current public or supplied authority when the job depends on external
@@ -51,8 +58,14 @@ project that law into `SKILL.md`.
 ## Boundary
 
 The repository owns current `SKILL.md` packages, their directly referenced
-depth, public source history, and the repository's own checks. Codex,
-Claude Code, Grok, DeepSeek Harness (DSH), and other hosts own native
-discovery, installation, update, and cache behavior.
+depth, public source history, the repository's own checks, and this
+GitHub listing (description, homepage, topics) plus Discussions. README
+is the public install text. Codex, Claude Code, Grok, DeepSeek Harness
+(DSH), and other hosts own native discovery, installation, update, and
+cache behavior.
+
+The ordinary customer surface is this public GitHub repository. Preview
+is none. Homepage is this repository URL. This catalog is not a product
+site.
 
 This file is destination only. It is not the current Goal.

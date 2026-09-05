@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Falsify SKL-PACKAGE: installable entries are passive standard packages."""
+"""Falsify SKL-CATALOG: installable entries are passive standard packages."""
 
 from __future__ import annotations
 
