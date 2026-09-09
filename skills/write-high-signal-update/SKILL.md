@@ -1,6 +1,6 @@
 ---
 name: write-high-signal-update
-description: "Write a short high-signal update that leads with the outcome. Use when the user wants a status, decision, incident update, or handoff. Do not use to rewrite a long document in someone else's voice unless asked to preserve that voice."
+description: "Write a short high-signal update that leads with the outcome. Use when the user wants a status, decision, or incident update. Do not use for work handoffs across machines or sessions (use handoff-work) or to rewrite a long document in someone else's voice unless asked to preserve that voice."
 ---
 
 # Write High-Signal Update
