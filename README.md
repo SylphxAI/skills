@@ -3,18 +3,11 @@
 Reusable, organization-neutral [Agent Skills](https://agentskills.io/specification)
 for product, engineering, operations, design, and research work.
 
-- Ordinary: `https://github.com/SylphxAI/skills` — this public repository is the catalog customers browse. Host plugin marketplaces are the install path. `https://sylphx.com` is the Sylphx Platform marketing site, not this catalog. `https://sylphx.com/skills` redirects to a Platform login, not this catalog.
-- Preview: `none` — GitHub Pages is not enabled, and no product-owned preview or dogfood web host is admitted.
-- Vision: [`docs/vision.md`](docs/vision.md)
-- Capabilities: [`docs/capabilities.md`](docs/capabilities.md)
-
-Each package lives at `skills/<name>/` and uses `SKILL.md` as its source. A
-listing is one recurring, independently accepted job. The body encodes
-particular opinions, gotchas, and interfaces a capable model would otherwise
-miss. Domain depth lives in `references/` of the owning job and loads only
-when a stated condition holds. A package may include scripts and assets when
-the skill genuinely uses them. `SKILL.md` is the sole package contract, and
-each agent host owns installation and discovery through its native interface.
+Browse the catalog in [`skills/`](skills/). Each skill is a folder with a
+`SKILL.md` that says when it applies and what to do, plus optional reference
+files, scripts and assets that load only when the skill needs them. Install it
+as a plugin in Codex, Claude Code, Grok or DeepSeek Harness; nothing else runs
+in the background.
 
 ## Install
 
