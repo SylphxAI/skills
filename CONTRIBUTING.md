@@ -34,8 +34,10 @@ the pull-request workflow validates the Agent Skills format and local links.
 For bundled scripts, run their syntax check and tests as well. The package
 contract check imports the published DSH module and observes the catalog mount.
 
-CI remains one fast commit build. A failing merge check identifies a broken
-skill contract, resource link, script, or script test.
+CI remains one fast commit build on Sylphx-owned runners
+(`sylphx-linux-standard`); GitHub-hosted labels fail the build. A failing
+merge check identifies a broken skill contract, resource link, script, or
+script test.
 
 ## Pull requests
 
