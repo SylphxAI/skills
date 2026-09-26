@@ -1,5 +1,9 @@
 # Sylphx Agent Skills
 
+<p align="center">
+  <img src="https://mark.sylphx.com/api/v1/mark/hero.svg?type=aurora&theme=grape&text=Sylphx%20Agent%20Skills&desc=Reusable%20skills%20for%20coding%20agents" alt="Sylphx Agent Skills" width="100%" />
+</p>
+
 Reusable, organization-neutral [Agent Skills](https://agentskills.io/specification)
 for product, engineering, operations, design, and research work.
 
