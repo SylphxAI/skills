@@ -4,14 +4,24 @@
   <img src="https://mark.sylphx.com/api/v1/mark/hero.svg?type=aurora&theme=grape&text=Sylphx%20Agent%20Skills&desc=Reusable%20skills%20for%20coding%20agents" alt="Sylphx Agent Skills" width="100%" />
 </p>
 
-Reusable, organization-neutral [Agent Skills](https://agentskills.io/specification)
-for product, engineering, operations, design, and research work.
+Sylphx Agent Skills: install battle-tested skills into Claude Code and Codex in one command.
 
-Browse the catalog in [`skills/`](skills/). Each skill is a folder with a
-`SKILL.md` that says when it applies and what to do, plus optional reference
-files, scripts and assets that load only when the skill needs them. Install it
-as a plugin in Codex, Claude Code, Grok or DeepSeek Harness; nothing else runs
-in the background.
+```bash
+# Claude Code
+claude plugin marketplace add SylphxAI/skills --scope user && claude plugin install sylphx-skills@sylphx --scope user
+
+# Codex
+codex plugin marketplace add SylphxAI/skills && codex plugin add sylphx-skills@sylphx
+```
+
+## What you get
+
+Reusable, organization-neutral [Agent Skills](https://agentskills.io/specification)
+for product, engineering, operations, design, and research work. Browse the
+catalog in [`skills/`](skills/). Each skill is a folder with a `SKILL.md` that
+says when it applies and what to do, plus optional reference files, scripts and
+assets that load only when the skill needs them. It also installs in Grok and
+DeepSeek Harness. Nothing runs in the background.
 
 ## Install
 
@@ -81,6 +91,17 @@ Browse [`skills/`](skills/) by job name. The frontmatter description in each
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Pull requests run one fast check for
 the Agent Skills format, local links, and bundled script behavior.
+
+## Also from Sylphx
+
+<!-- generated:also-from -->
+- [**anymd**](https://github.com/SylphxAI/anymd): Any file (PDF, Word, PowerPoint, Excel, EPUB, HTML, images) to clean Markdown for AI agents.
+- [**repomap**](https://github.com/SylphxAI/repomap): A map of your codebase for AI agents: code graph, search, call paths and change impact.
+- [**lockdocs**](https://github.com/SylphxAI/lockdocs): Exact-version library docs from your lockfile. Local, offline, no rate limits.
+- [**readme-mark**](https://github.com/SylphxAI/readme-mark): Beautiful README images from one URL: banners, badges, icons and stats cards.
+
+More from Sylphx: https://sylphx.com/open-source
+<!-- /generated:also-from -->
 
 ## License
 
