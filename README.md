@@ -4,7 +4,9 @@
   <img src="https://mark.sylphx.com/api/v1/mark/hero.svg?type=aurora&theme=grape&text=Sylphx%20Agent%20Skills&desc=Reusable%20skills%20for%20coding%20agents" alt="Sylphx Agent Skills" width="100%" />
 </p>
 
-Sylphx Agent Skills: install battle-tested skills into Claude Code and Codex in one command.
+Sylphx Agent Skills gives your coding agent a proven method for each recurring
+job: install the whole catalog into Claude Code, Codex, Grok, or DeepSeek
+Harness in one command.
 
 ```bash
 # Claude Code
@@ -12,29 +14,6 @@ claude plugin marketplace add SylphxAI/skills --scope user && claude plugin inst
 
 # Codex
 codex plugin marketplace add SylphxAI/skills && codex plugin add sylphx-skills@sylphx
-```
-
-## What you get
-
-Reusable, organization-neutral [Agent Skills](https://agentskills.io/specification)
-for product, engineering, operations, design, and research work. Browse the
-catalog in [`skills/`](skills/). Each skill is a folder with a `SKILL.md` that
-says when it applies and what to do, plus optional reference files, scripts and
-assets that load only when the skill needs them. It also installs in Grok and
-DeepSeek Harness. Nothing runs in the background.
-
-## Install
-
-Install through the host's native plugin interface:
-
-```bash
-# Codex
-codex plugin marketplace add SylphxAI/skills
-codex plugin add sylphx-skills@sylphx
-
-# Claude Code
-claude plugin marketplace add SylphxAI/skills --scope user
-claude plugin install sylphx-skills@sylphx --scope user
 
 # Grok
 grok plugin install SylphxAI/skills --trust
@@ -43,35 +22,40 @@ grok plugin install SylphxAI/skills --trust
 dsh plugin --profile web add git+https://github.com/SylphxAI/skills.git
 ```
 
-The host owns its plugin cache and update flow. Installed skill names use the
-plugin namespace, such as `sylphx-skills:analyze-critically`. Restart or reload
-the host after changing plugins. DSH mounts the catalog as a global skill
-provider under the plain skill names; restart the harness after installing.
+## Why it works
 
-The plugin exposes only `skills/`. It does not install an always-on prompt,
-runtime, scheduler, daemon, or background updater.
+- **The right method, on request.** Each skill is one folder with a
+  `SKILL.md` that says when it applies and what to do, covering product,
+  engineering, operations, design, and research. Browse the catalog in
+  [`skills/`](skills/).
+- **Opinions, not boilerplate.** Skills carry the gotchas and judgement a
+  capable model would otherwise miss, following the open
+  [Agent Skills](https://agentskills.io/specification) specification.
+- **Loads only what it needs.** Reference files, scripts, and assets are read
+  when a skill calls for them. Nothing runs in the background: no always-on
+  prompt, runtime, scheduler, daemon, or updater.
+- **Native everywhere.** The host owns its plugin cache and update flow.
+  Installed names use the plugin namespace, such as
+  `sylphx-skills:analyze-critically`; DSH mounts the catalog under the plain
+  skill names. Restart or reload the host after installing.
 
 ## Update
 
-Refresh the host-owned marketplace and plugin cache:
-
 ```bash
-# Codex
-codex plugin marketplace upgrade sylphx
-codex plugin add sylphx-skills@sylphx
-
 # Claude Code
 claude plugin marketplace update sylphx
 claude plugin update sylphx-skills@sylphx --scope user
+
+# Codex
+codex plugin marketplace upgrade sylphx
+codex plugin add sylphx-skills@sylphx
 
 # DeepSeek Harness (DSH)
 dsh plugin --profile web update sylphx-skills
 ```
 
-Codex uses the semantic version in `.codex-plugin/plugin.json`; a Codex plugin
-release bumps that version. Claude Code intentionally uses the source commit as
-its version because `.claude-plugin/plugin.json` omits a fixed version. Restart
-or reload the host after an update.
+Codex follows the version in `.codex-plugin/plugin.json`; Claude Code follows
+the source commit.
 
 ## Repository layout
 
