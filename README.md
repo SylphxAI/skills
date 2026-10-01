@@ -87,6 +87,8 @@ the Agent Skills format, local links, and bundled script behavior.
 More from Sylphx: https://sylphx.com/open-source
 <!-- /generated:also-from -->
 
+- [**Sylphx apps**](https://sylphx.com/apps): Apps and tools from Sylphx.
+
 ## License
 
 MIT.
