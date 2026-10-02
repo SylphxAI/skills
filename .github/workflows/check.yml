@@ -30,6 +30,8 @@ jobs:
           node-version: '22'
       - name: Check package contract
         run: python3 tests/test_package_contract.py
+      - name: Check eval files
+        run: python3 tests/test_evals.py
       - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           enable-cache: false
