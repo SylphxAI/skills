@@ -50,3 +50,29 @@ jobs:
           python3 -m compileall -q skills
           find skills -type f -name 'test_*.py' -print0 | \
             xargs -0 -r -n1 uv run --with numpy --with pillow python3
+
+  host-install:
+    # Installs the checkout through the real host CLI (offline, no login, no keys)
+    # and proves every skill is discovered in the host's plugin cache.
+    runs-on: sylphx-linux-standard
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - host: claude
+            package: '@anthropic-ai/claude-code@2.1.286'
+          - host: codex
+            package: '@openai/codex@0.160.0'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+      - name: Install ${{ matrix.host }} CLI
+        run: npm install --global '${{ matrix.package }}'
+      - name: Install the plugin through ${{ matrix.host }}
+        run: bash tests/host_install.sh '${{ matrix.host }}'
