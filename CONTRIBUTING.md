@@ -34,5 +34,7 @@ broken skill contract, link, script, or test.
 
 ## Pull requests
 
+Change a skill, bump the patch version in `.codex-plugin/plugin.json` and `package.json`: Codex installs follow that version, and CI fails a `skills/` change without a bump.
+
 Describe the job or behavior improved, the path you ran, and any user-visible
 migration.
