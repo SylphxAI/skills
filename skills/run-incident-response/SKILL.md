@@ -5,6 +5,10 @@ description: "Coordinate a production incident from declaration through mitigati
 
 # Run Incident Response
 
-Stabilize first. Communicate observed facts, actions underway, and the next update time. Keep estimates labeled as estimates. Keep security-sensitive and personal data in authorized incident channels. A timeline of inferences is not a timeline of observations. Do not wait for root cause before stopping active harm.
+Stabilize first and do not wait for root cause to stop active harm. Updates carry observed facts, actions underway, and the next update time, with estimates labeled as estimates. Three rules for the record:
 
-Use `maintain-product` once harm is stable and the owning repair remains. Use `write-high-signal-update` for the customer or internal update text.
+- **Timeline of observations, kept apart from inferences.** Each entry is a time and something seen or done (a deploy, an error rate reading, a rollback). Write suspected causes and "it seems fixed" in a separate inference list until a reading confirms them.
+- **Sensitive data stays out of the timeline.** Never paste credentials, tokens, personal data, or customer records into it. If someone posts them in a public channel, remove them, move that handling to an authorized incident channel, and keep stabilizing meanwhile.
+- **The timeline is the record at close.** Close once harm is stable and the readings confirm it; hand the remaining repair to `maintain-product`, and keep the timeline as what was observed, done, and learned. Do not hold the incident open for root cause.
+
+Use `handoff-work` for the update text.

@@ -1,4 +1,7 @@
-# Evals: write-high-signal-update
+# Evals: write-high-signal-update (historical)
+
+This skill was merged into `handoff-work` on 2026-10-03 and its directory deleted; see `docs/evals.md`. The tasks and rubric below are kept as the record of what was graded. They are not run by `tests/test_evals.py`.
+
 
 Scoring: each rubric item is pass or fail; a task passes at 3 of 4 items. Prompts are self-contained; the model answers in text only, under 300 words.
 
